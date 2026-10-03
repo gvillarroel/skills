@@ -12,6 +12,8 @@ Design the explanation before packing the page. Deliver one coherent figure whos
 subdiagrams answer different questions and whose relationships explain the whole.
 Keep generated files outside this read-only bundle.
 
+Read [arrow-visibility.md](references/arrow-visibility.md) when producing, importing or reviewing directional arrows. Audit actual shafts/heads at delivery scale.
+
 ## Execution contract
 
 Keep every source, draft, report, and screenshot inside the user's workspace;

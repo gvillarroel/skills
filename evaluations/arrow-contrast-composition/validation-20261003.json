@@ -1,0 +1,587 @@
+{
+  "date": "2026-10-03",
+  "status": "passed",
+  "canonicalSourceFreeze": "source-freeze-20261003.json",
+  "changedBundles": [
+    "compose-synchronized-svg",
+    "diagram-composition",
+    "usefulcharts-style",
+    "hyperframes-explainer",
+    "video",
+    "manim-svg-video"
+  ],
+  "inventoryOnly": [
+    "hierarchy-lens"
+  ],
+  "scope": "Actual arrow shaft/head paint and geometry on listed readable sampled states and delivery sizes; no universal arbitrary-SVG or whole-fade claim.",
+  "strictAcceptedPending": [],
+  "deterministicEvidence": [
+    {
+      "path": "projects/arrow-contrast-composition/artifacts/projection/qualification.json",
+      "sha256": "1f55a05803ffa0285ddb202e2e854784647e7bd2acccc627d1639f751c0ab397",
+      "summary": null
+    },
+    {
+      "path": "projects/arrow-contrast-composition/artifacts/producers/results.json",
+      "sha256": "fab7985201dc345eccc709218a5764ebc1ed130fc1ca406bd5868555e00bbf4f",
+      "summary": {
+        "passed": true,
+        "cases": 12
+      }
+    },
+    {
+      "path": "projects/arrow-contrast-composition/artifacts/reverse-flows/results.json",
+      "sha256": "eb575020b040004f955deec89e595e6d5c8e418e7952e0ee94f289dc966ff4cd",
+      "summary": {
+        "passed": true,
+        "cases": 0
+      }
+    },
+    {
+      "path": "projects/arrow-contrast-composition/artifacts/video-template/results.json",
+      "sha256": "ce6c5f8dc0f56e01c27f5d54e37633ba63e59037980d5baeb909dfc672015f88",
+      "summary": {
+        "passed": true,
+        "cases": 2
+      }
+    },
+    {
+      "path": "projects/arrow-contrast-composition/artifacts/browser/summary.json",
+      "sha256": "8a0a477fa02e78e906b41dd61772806bbe6ebf3b3351c53f7e109394a21ee05e",
+      "summary": {
+        "states": 141,
+        "errors": [],
+        "shafts": 314,
+        "heads": 384,
+        "failures": []
+      }
+    },
+    {
+      "path": "projects/arrow-contrast-composition/artifacts/hf-native/summary.json",
+      "sha256": "acc65b7efd33e12790e189079f983ae481310af0c8255b0fb7ec2d4b8fa02b78",
+      "summary": {
+        "passed": true,
+        "cases": [
+          {
+            "id": "colorset1-inlet",
+            "states": 88
+          },
+          {
+            "id": "colorset1-vehicle",
+            "states": 88
+          },
+          {
+            "id": "colorset2-inlet",
+            "states": 88
+          },
+          {
+            "id": "colorset2-vehicle",
+            "states": 88
+          }
+        ]
+      }
+    },
+    {
+      "path": "projects/arrow-contrast-composition/artifacts/wheel-pointers/results.json",
+      "sha256": "ca55b2ff514e4240bd391c484a2d0e8d4e692faa75583f919cbd35aefa89d547",
+      "summary": {
+        "passed": true,
+        "cases": 4
+      }
+    },
+    {
+      "path": "projects/arrow-contrast-composition/artifacts/hierarchy-controls/results.json",
+      "sha256": "e81dbe604ae40fa3a2fff4540785a08a47e27ee94a02d7cc4dc85997b98932be",
+      "summary": {
+        "passed": true,
+        "cases": 63
+      }
+    },
+    {
+      "path": "projects/arrow-contrast-composition/artifacts/source-media/results.json",
+      "sha256": "339c06875eebb5482f01893a670e7b4ef5953faa053c8e8b95f55ee2b3bda690",
+      "summary": {
+        "passed": true,
+        "cases": 15
+      }
+    },
+    {
+      "path": "projects/arrow-contrast-composition/artifacts/media-evidence.json",
+      "sha256": "00501ee4f25cc9d476e0d3b102ab4b483af7f353d9b2c19b15919b1be7231e33",
+      "summary": null
+    },
+    {
+      "path": "projects/arrow-contrast-composition/artifacts/manim-backing/results.json",
+      "sha256": "037abb2f01dcf00720e189b66feef98b715562542f7dcf94996df1f97ecb4865",
+      "summary": {
+        "passed": true,
+        "cases": 17
+      }
+    },
+    {
+      "path": "projects/arrow-contrast-composition/artifacts/contact-sheet-tail/results.json",
+      "sha256": "d730020fdc44384ae476ca1f5d609cbaea581ffc27a69f6e389298425d6d93e9",
+      "summary": {
+        "passed": true,
+        "cases": 7,
+        "clips": 3,
+        "sampledFrames": 90
+      }
+    }
+  ],
+  "exceptions": {
+    "sourceMedia": "Only exact explicitly selected originals may retain low-contrast/thin source findings; authoredQualityPassed remains false and absent/covered/hidden heads still block. Actual tile and CSS/rectangle backing paint order are audited; root background images explicitly reject automatic marker conversion.",
+    "signalOverlay": "Only three shaft samples in inference-pulse focus-burst-focus classify its connector-owned signal as semantic overlay; no head exemption.",
+    "arrowTransition": "Video visible-intent arrows use opaque readable paint; whole-parent fades remain; exact individual-arrow fade choreography is not preserved.",
+    "samplerLimits": "URL arrow/backing paint and marker-mid are rejected; custom alignment, clip/mask, blur and complex filters require separate pixel review."
+  },
+  "releaseOwner": "Root owns repository gates, local installation, commit, push and exact-SHA Pages publication.",
+  "plannedFinalTrials": {},
+  "passed": true,
+  "selectedTrials": [
+    "arrow-composition-compose-synchronized-svg-20261003-2",
+    "arrow-composition-diagram-composition-20261003-2",
+    "arrow-composition-usefulcharts-style-20261003-2",
+    "arrow-composition-hyperframes-explainer-20261003-2",
+    "arrow-composition-manim-svg-video-20261003-6",
+    "arrow-composition-video-20261003-8"
+  ],
+  "acceptedCases": [
+    {
+      "skill": "compose-synchronized-svg",
+      "runId": "arrow-composition-compose-synchronized-svg-20261003-2",
+      "model": "gpt-5.6-luna",
+      "passed": true,
+      "runtimePayloadSha256": "9a20e30272b9a1db8f16d4d3293d8032705f1df5b437d4dad80740aa04355ee2",
+      "runtimeFileCount": 38,
+      "expectedOutputs": {
+        "output/brief.json": {
+          "sizeBytes": 9673,
+          "sha256": "cea828d8edc1691d01b617ee591e2e0d066fb62366f0cae0d4dcaf7ea834ee65"
+        },
+        "output/plan.json": {
+          "sizeBytes": 24162,
+          "sha256": "e2752cf790ef8549a45feefef8ded1c18436e223bbe7fece0709400bf13a30c4"
+        },
+        "output/diagram.svg": {
+          "sizeBytes": 139877,
+          "sha256": "61e06fac7addce14672e93c573ec7443a8703648261a9dce94e7ad698633388f"
+        },
+        "output/browser.json": {
+          "sizeBytes": 12981,
+          "sha256": "84151f10698c70d09fdff8896ba4b8ea9e69dd48dced53fc3665221fd131321d"
+        },
+        "output/preview.png": {
+          "sizeBytes": 117171,
+          "sha256": "f80f835a2c204956cbb1db2bff94842c5f58ce1523cae107effb42425acbe614"
+        },
+        "output/arrow-audit.json": {
+          "sizeBytes": 8684,
+          "sha256": "9f0ad5cee4e4fff026bedaec254ecf53d1ce3fc55cc651d99a70eb4062977185"
+        }
+      },
+      "reportedArrows": [
+        {
+          "path": "output/arrow-audit.json",
+          "shafts": 9,
+          "heads": 9,
+          "minimum": 7.645920672817288
+        }
+      ],
+      "independentReadableStates": [
+        {
+          "shafts": 9,
+          "heads": 9,
+          "minimum": 7.645920672817288,
+          "issues": 0,
+          "time": null
+        }
+      ],
+      "media": []
+    },
+    {
+      "skill": "diagram-composition",
+      "runId": "arrow-composition-diagram-composition-20261003-2",
+      "model": "gpt-5.6-luna",
+      "passed": true,
+      "runtimePayloadSha256": "6566394c030158041baac0e2b5360a23ea0ff0f7d372fe4de57051c7997ce1a4",
+      "runtimeFileCount": 27,
+      "expectedOutputs": {
+        "output/brief.json": {
+          "sizeBytes": 3471,
+          "sha256": "10d0c47f7ab98afa63f721b1d8c6109dc1633d5283350916c8c21126133fcefe"
+        },
+        "output/diagram.svg": {
+          "sizeBytes": 24021,
+          "sha256": "3d75a992edad167fef106a59752ec32f1866397eac3f9cc533b26c3a399776f7"
+        },
+        "output/browser.json": {
+          "sizeBytes": 16705,
+          "sha256": "848aed1d0c34186834aecc32ec7ae5b82cd3b3f83b907007e4d2aa3f10523ffc"
+        },
+        "output/preview.png": {
+          "sizeBytes": 30321,
+          "sha256": "5511f8fea4a773bac4c2f0ed6f1c0bebf686d56a481ed445e803cd45db33b06e"
+        },
+        "output/arrow-audit.json": {
+          "sizeBytes": 7708,
+          "sha256": "3bd267c974c1c50ab04c63bb0e68873fb35d192e5bb9c44bf53f8dfc5b84a24c"
+        }
+      },
+      "reportedArrows": [
+        {
+          "path": "output/arrow-audit.json",
+          "shafts": 8,
+          "heads": 8,
+          "minimum": 5.124406531604723
+        },
+        {
+          "path": "output/audit.json",
+          "shafts": 8,
+          "heads": 8,
+          "minimum": 5.124406531604723
+        },
+        {
+          "path": "output/browser.json",
+          "shafts": 8,
+          "heads": 8,
+          "minimum": 5.124406531604723
+        }
+      ],
+      "independentReadableStates": [
+        {
+          "shafts": 8,
+          "heads": 8,
+          "minimum": 5.124406531604723,
+          "issues": 0,
+          "time": null
+        }
+      ],
+      "media": []
+    },
+    {
+      "skill": "usefulcharts-style",
+      "runId": "arrow-composition-usefulcharts-style-20261003-2",
+      "model": "gpt-5.6-luna",
+      "passed": true,
+      "runtimePayloadSha256": "8d802317505889992cee51520ccce5b60e43cda70145392051476e8d720c292a",
+      "runtimeFileCount": 138,
+      "expectedOutputs": {
+        "output/source.json": {
+          "sizeBytes": 1774,
+          "sha256": "def596ae78522ecaf37111e80226545985406c45170f33bc369ecbdf65f4ac11"
+        },
+        "output/poster.svg": {
+          "sizeBytes": 160027,
+          "sha256": "8144d1394a1e064ec8e289c694ff613a5e8873afb9768fd92e613d6aac7c3410"
+        },
+        "output/poster.html": {
+          "sizeBytes": 161514,
+          "sha256": "b2a3583a0a941f4d8f95185cf3259785475ad7ab01a0dc73233e9ac2b45903d3"
+        },
+        "output/render.json": {
+          "sizeBytes": 477,
+          "sha256": "89a1f0e5707c912c2b27d6a40590dcc857dc46a48ef31e19e3bdf30f48f90196"
+        },
+        "output/browser.json": {
+          "sizeBytes": 13198,
+          "sha256": "f706c3c60648644d584860766411ed3e8058789456ed55fd414fed9589c40508"
+        },
+        "output/preview.png": {
+          "sizeBytes": 44462,
+          "sha256": "efd14bbcb5872da2dc743206014f2b5891fbf529c4851a0695a50eb2df7507b6"
+        }
+      },
+      "reportedArrows": [
+        {
+          "path": "output/browser.json",
+          "shafts": 2,
+          "heads": 2,
+          "minimum": 3.6457378015961366
+        }
+      ],
+      "independentReadableStates": [
+        {
+          "shafts": 2,
+          "heads": 2,
+          "minimum": 3.6457378015961366,
+          "issues": 0,
+          "time": null
+        }
+      ],
+      "media": []
+    },
+    {
+      "skill": "hyperframes-explainer",
+      "runId": "arrow-composition-hyperframes-explainer-20261003-2",
+      "model": "gpt-6-luna",
+      "passed": true,
+      "runtimePayloadSha256": "d39d9c5662ddae29cf3ef1f67c9d0bca2a68e34bd41601e084c2fc3930157e8f",
+      "runtimeFileCount": 33,
+      "expectedOutputs": {
+        "output/brief.json": {
+          "sizeBytes": 3919,
+          "sha256": "0aa7fe12e93ad2ed56e937f68297c7e9e6f48e328959dea455b7beff8294fa81"
+        },
+        "output/project/index.html": {
+          "sizeBytes": 10473,
+          "sha256": "e14ccf9be0c69d653d9865e6d55521cc8cd1ff55ac1248b3a6fd590145cbeb14"
+        },
+        "output/audit.json": {
+          "sizeBytes": 115192,
+          "sha256": "77d4469c20664e04bb975632372afda84bcf66b2ae6458555d741374fdf3d79d"
+        },
+        "output/preview.png": {
+          "sizeBytes": 28252,
+          "sha256": "2c3ab2ae3035b44ca6fbadf5e0ad18a93031e62d95802540dfc8340a99da695b"
+        }
+      },
+      "reportedArrows": [
+        {
+          "path": "output/audit.json",
+          "states": 92,
+          "shafts": 92,
+          "heads": 92,
+          "minimum": 7.378543797130064
+        }
+      ],
+      "independentReadableStates": [
+        {
+          "shafts": 1,
+          "heads": 1,
+          "minimum": 7.378543797130064,
+          "issues": 0,
+          "time": 0
+        },
+        {
+          "shafts": 1,
+          "heads": 1,
+          "minimum": 7.378543797130064,
+          "issues": 0,
+          "time": 4
+        },
+        {
+          "shafts": 1,
+          "heads": 1,
+          "minimum": 7.378543797130064,
+          "issues": 0,
+          "time": 7
+        }
+      ],
+      "media": []
+    },
+    {
+      "skill": "manim-svg-video",
+      "runId": "arrow-composition-manim-svg-video-20261003-6",
+      "model": "gpt-5.6-luna",
+      "passed": true,
+      "runtimePayloadSha256": "2d7d2597f24e787f6b18bdecd5db09bfb18f508024020494738c7a98d664b6fb",
+      "runtimeFileCount": 13,
+      "expectedOutputs": {
+        "output/source.svg": {
+          "sizeBytes": 600,
+          "sha256": "a0c403950186dbc0de0531842c0400fecbbb6077b7859b29798aa797e011fc1a"
+        },
+        "output/composition/composition-manifest.json": {
+          "sizeBytes": 1521,
+          "sha256": "6f33912cdb893f22a12ff8037abba72105c08e3875d268a8b9d9d2de9052c44d"
+        },
+        "output/composition/manim_svg_video_scene.py": {
+          "sizeBytes": 9965,
+          "sha256": "b933193041a7dda742aeac4011ffcd4c4edaa69222e6101f05fd9e5f12845aa2"
+        },
+        "output/composition/media/videos/manim_svg_video_scene/360p12/arrow-check-exact-2s.mp4": {
+          "sizeBytes": 9246,
+          "sha256": "479187650fdd2fb5aa8e90395ce6d43f0c22cbf47c5ca9385f718db7b6304351"
+        },
+        "output/frame.png": {
+          "sizeBytes": 4574,
+          "sha256": "e539a421d83694de2727d81e5ec34636fc5cfc13d40bd78fa47f715b9b49008d"
+        }
+      },
+      "reportedArrows": [
+        {
+          "path": "output/arrow-audit.json",
+          "shafts": 1,
+          "heads": 1,
+          "minimum": 5.489814557409947
+        }
+      ],
+      "independentReadableStates": [
+        {
+          "shafts": 1,
+          "heads": 1,
+          "minimum": 5.489814557409947,
+          "issues": 0,
+          "time": null
+        }
+      ],
+      "media": [
+        {
+          "path": "output/composition/media/videos/manim_svg_video_scene/360p12/arrow-check-exact-2s.mp4",
+          "durationSeconds": 2.0,
+          "width": 720,
+          "height": 360,
+          "frameRate": "12/1",
+          "decodedFrame": "projects/arrow-contrast-composition/artifacts/pi-inspection/manim-svg-video-decoded.png",
+          "decodedTerminalHeadHeight": 25,
+          "decodedOpaqueArrowBounds": [
+            253,
+            178,
+            466,
+            203
+          ],
+          "authoredSourcePaints": [
+            "#333e48",
+            "#696969",
+            "#9e1b32",
+            "#ffffff"
+          ]
+        }
+      ]
+    },
+    {
+      "skill": "video",
+      "runId": "arrow-composition-video-20261003-8",
+      "model": "gpt-5.6-luna",
+      "passed": true,
+      "runtimePayloadSha256": "1b0b0cc682be51262c910fe1c0b952d2378d19b23c3885993daa693100e90f2a",
+      "runtimeFileCount": 54,
+      "expectedOutputs": {
+        "output/index.html": {
+          "sizeBytes": 2981,
+          "sha256": "576aca02078ebb6c52894a176eb4df17fe06ece4fd4efe7710141e96f48b8944"
+        },
+        "output/svg-arrows.js": {
+          "sizeBytes": 7609,
+          "sha256": "d2c4668649eb32c44e7653ad21a8c37a761d66fec22651bf90d1a170a171fa16"
+        },
+        "output/video.mp4": {
+          "sizeBytes": 5828,
+          "sha256": "40db2453bcaa2d13e37473bc1eae852f74041040957535442e05261a2ad0b18d"
+        },
+        "output/arrow-audit.json": {
+          "sizeBytes": 1109,
+          "sha256": "cc4583a9c980cdc0f74bedbe6cc03964f557f09cad9898a13da75a4d264b33f6"
+        },
+        "output/frame.png": {
+          "sizeBytes": 12218,
+          "sha256": "68fab0e264894076b4c2ebe91b4a7ca61bb25216b6d96de9c9deed50c05d66c4"
+        }
+      },
+      "reportedArrows": [
+        {
+          "path": "output/arrow-audit.json",
+          "shafts": 1,
+          "heads": 1,
+          "minimum": 9.319198228461115
+        }
+      ],
+      "independentReadableStates": [
+        {
+          "shafts": 1,
+          "heads": 1,
+          "minimum": 9.319198228461115,
+          "issues": 0,
+          "time": 0
+        },
+        {
+          "shafts": 1,
+          "heads": 1,
+          "minimum": 9.319198228461115,
+          "issues": 0,
+          "time": 0.5
+        },
+        {
+          "shafts": 1,
+          "heads": 1,
+          "minimum": 9.319198228461115,
+          "issues": 0,
+          "time": 1
+        },
+        {
+          "shafts": 1,
+          "heads": 1,
+          "minimum": 9.319198228461115,
+          "issues": 0,
+          "time": 1.5
+        },
+        {
+          "shafts": 1,
+          "heads": 1,
+          "minimum": 9.319198228461115,
+          "issues": 0,
+          "time": 1.9166666666666667
+        },
+        {
+          "shafts": 1,
+          "heads": 1,
+          "minimum": 9.319198228461115,
+          "issues": 0,
+          "time": 2
+        }
+      ],
+      "media": [
+        {
+          "path": "output/video.mp4",
+          "durationSeconds": 2.0,
+          "width": 720,
+          "height": 360,
+          "frameRate": "12/1",
+          "decodedFrame": "projects/arrow-contrast-composition/artifacts/pi-inspection/video-decoded.png",
+          "decodedTerminalHeadHeight": null,
+          "decodedOpaqueArrowBounds": null,
+          "authoredSourcePaints": null
+        }
+      ]
+    }
+  ],
+  "independentInspection": {
+    "path": "projects/arrow-contrast-composition/artifacts/pi-inspection/results.json",
+    "sha256": "e03d94eace31b4a9a53ed1f3347634e4a068038758daed078e6e9395f88bf183",
+    "passed": true,
+    "completedCases": 6
+  },
+  "videoLabelAcceptance": {
+    "passed": true,
+    "cards": [
+      {
+        "id": "source-card",
+        "fill": "rgb(158, 27, 50)",
+        "stroke": "none",
+        "opacity": "1",
+        "label": "Source",
+        "text": "rgb(255, 255, 255)",
+        "fillHex": "#9e1b32",
+        "textHex": "#ffffff",
+        "expectedText": "#ffffff",
+        "contrast": 7.9046884551695875
+      },
+      {
+        "id": "target-card",
+        "fill": "rgb(0, 114, 152)",
+        "stroke": "none",
+        "opacity": "1",
+        "label": "Target",
+        "text": "rgb(255, 255, 255)",
+        "fillHex": "#007298",
+        "textHex": "#ffffff",
+        "expectedText": "#ffffff",
+        "contrast": 5.4399561950875235
+      }
+    ]
+  },
+  "sourceFreezeSha256": "5bc21a74813b565c55b48508a7d8eea8d62d5559f7fc33c8d04aba593b961bde",
+  "failureLedgers": [
+    "isolated-20261003.json",
+    "isolated-second-attempt-20261003.json",
+    "isolated-third-attempt-20261003.json",
+    "isolated-fourth-attempt-20261003.json",
+    "isolated-fifth-attempt-20261003.json",
+    "isolated-sixth-attempt-20261003.json",
+    "isolated-seventh-attempt-20261003.json"
+  ],
+  "selectedLedger": "isolated-retry-20261003.json",
+  "sourceFidelityExceptionsCountedAsAuthoredPass": false,
+  "publicationCompletedByThisWorkstream": false
+}

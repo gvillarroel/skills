@@ -21,6 +21,8 @@ Prefer local rendering for private diagrams. Use a remote fallback such as Kroki
 
 ## Workflow
 
+Read [native arrow contrast and clearance](references/arrow-contrast.md) when authoring directional links, rendering compound regions, or checking head position. Inspect shaft and complete head against actual painted backings; require at least 3:1 at delivery.
+
 1. Read `references/diagram-types.md` and its machine-readable source `references/diagram-types.json` when the task asks which PlantUML diagram types are covered or when maintaining examples.
 2. Run `scripts/render_plantuml_directory.py` against the requested directory with `--colorset colorset2` or `--colorset colorset1`, `--format svg --format png`, and a JSON report.
 3. Inspect the report. Confirm `ok` is `true`, failures are zero, and each result has the requested or capability-declared formats.

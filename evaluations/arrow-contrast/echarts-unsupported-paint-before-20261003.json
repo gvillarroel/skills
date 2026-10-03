@@ -1,0 +1,70 @@
+{
+  "phase": "before",
+  "passed": false,
+  "rows": [
+    {
+      "id": "gradient-arrow",
+      "input": {
+        "color": {
+          "type": "linear",
+          "colorStops": [
+            {
+              "offset": 0,
+              "color": "#ffffff"
+            },
+            {
+              "offset": 1,
+              "color": "#cfcfcf"
+            }
+          ]
+        }
+      },
+      "output": {
+        "color": {
+          "type": "linear",
+          "colorStops": [
+            {
+              "offset": 0,
+              "color": "#ffffff"
+            },
+            {
+              "offset": 1,
+              "color": "#cfcfcf"
+            }
+          ]
+        },
+        "opacity": 1,
+        "width": 2
+      },
+      "rejected": false
+    },
+    {
+      "id": "unresolved-css-paint",
+      "input": {
+        "color": "var(--arrow-color)"
+      },
+      "output": {
+        "color": "var(--arrow-color)",
+        "opacity": 1,
+        "width": 2
+      },
+      "rejected": false
+    },
+    {
+      "id": "percentage-alpha",
+      "input": {
+        "color": "rgba(0,0,0,25%)"
+      },
+      "output": {
+        "color": "rgba(0,0,0,25%)",
+        "opacity": 1,
+        "width": 2
+      },
+      "rejected": false
+    }
+  ],
+  "gradientBackingRejected": false,
+  "helperSha256": "eabef4a5d8232e7c56e981da2eaf796bae377d9b73e3e6abda780629a5fc6b54",
+  "helperSource": "Sealed final-4 workspace helper, superseded by these counterexamples",
+  "scope": "Concrete helper counterexamples: unknown paint must not be qualified using fallback gray; percentage color alpha must be parsed and composited."
+}

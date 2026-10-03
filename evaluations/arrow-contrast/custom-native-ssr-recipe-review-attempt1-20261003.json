@@ -1,0 +1,267 @@
+{
+  "date": "2026-10-03",
+  "skill": "echarts-animated-svg",
+  "case": "independent-native-ssr-graph-recipe",
+  "model": null,
+  "validationType": "deterministic independent read-only artifact review",
+  "command": "node --experimental-strip-types projects/arrow-contrast-custom/scripts/review_echarts_ssr_recipe.ts",
+  "echartsVersion": "6.1.0",
+  "sourceHashes": {
+    "skills/echarts-animated-svg/references/arrow-contrast.md": "ba2f77823bdbfe329850dcd6fec410cf2b920c281b53782d72fa608d0be39b76",
+    "skills/echarts-animated-svg/assets/templates/echarts-colorsets.mjs": "2d0efdadd18d071af33305ebff9b86a3520f5efc6af84905217f33d7c9cb008b"
+  },
+  "sourceUnchanged": true,
+  "errors": [],
+  "states": [
+    {
+      "colorset": "colorset1",
+      "actualCoordinateSystem": "view",
+      "preparationReturnsSameObject": true,
+      "baselineLineStyle": {
+        "color": "#cfcfcf",
+        "opacity": 0.25
+      },
+      "preparedLineStyle": {
+        "color": "#828282",
+        "opacity": 1,
+        "width": 2
+      },
+      "preparedEdgeStyle": {
+        "color": "#828282",
+        "opacity": 1,
+        "width": 2
+      },
+      "symbolSize": 60,
+      "edgeSymbolSize": 16,
+      "artifact": "projects/arrow-contrast-custom/artifacts/reviews/echarts-native-ssr-recipe/colorset1.svg",
+      "screenshot": "projects/arrow-contrast-custom/artifacts/reviews/echarts-native-ssr-recipe/colorset1.png",
+      "svgSha256": "3c5a98d4c7d863bfa979ef3b88dfc30daf9add188a91db46f2c25a99bb3d24fb",
+      "nodes": [
+        {
+          "fill": "rgb(158, 27, 50)",
+          "opacity": 1,
+          "stroke": "none",
+          "strokeWidth": 1,
+          "bounds": {
+            "x": 34.00037384033203,
+            "y": 149.85000610351562,
+            "width": 59.99962615966797,
+            "height": 60
+          }
+        },
+        {
+          "fill": "rgb(51, 62, 72)",
+          "opacity": 1,
+          "stroke": "none",
+          "strokeWidth": 1,
+          "bounds": {
+            "x": 546.0003662109375,
+            "y": 149.85000610351562,
+            "width": 59.9996337890625,
+            "height": 60
+          }
+        }
+      ],
+      "labels": [
+        {
+          "text": "A",
+          "fill": "rgb(255, 255, 255)",
+          "expected": "rgb(255, 255, 255)",
+          "actualBacking": [
+            158,
+            27,
+            50
+          ],
+          "passed": true
+        },
+        {
+          "text": "B",
+          "fill": "rgb(255, 255, 255)",
+          "expected": "rgb(255, 255, 255)",
+          "actualBacking": [
+            51,
+            62,
+            72
+          ],
+          "passed": true
+        }
+      ],
+      "shaftCount": 1,
+      "headCount": 1,
+      "records": [
+        {
+          "part": "shaft",
+          "d": "M100 180L476.6 180",
+          "transform": "matrix(1.28,0,0,1.28,-64,-50.4)",
+          "paint": "rgb(130, 130, 130)",
+          "opacity": 1,
+          "strokeWidth": 1.5625,
+          "bounds": {
+            "x": 63.999996185302734,
+            "y": 180,
+            "width": 482.0479736328125,
+            "height": 0
+          },
+          "sampleCount": 127,
+          "minimumContrast": 2.056935123649281,
+          "coveredSampleCount": 9,
+          "xRange": [
+            63.999996185302734,
+            546.0479736328125
+          ]
+        },
+        {
+          "part": "head",
+          "d": "M0 0L10.7 16L0 12L-10.7 16L0 0Z",
+          "transform": "matrix(0,1,-1,0,546,180)",
+          "paint": "rgb(130, 130, 130)",
+          "opacity": 1,
+          "strokeWidth": 1,
+          "bounds": {
+            "x": 530,
+            "y": 169.3000030517578,
+            "width": 16,
+            "height": 21.399993896484375
+          },
+          "sampleCount": 238,
+          "minimumContrast": 2.8411124212510397,
+          "coveredSampleCount": 2,
+          "xRange": [
+            530.0653076171875,
+            546
+          ]
+        }
+      ],
+      "nativeTipClearance": 0.0003662109375,
+      "targetLeft": 546.0003662109375,
+      "nativeTipX": 546,
+      "passed": false
+    },
+    {
+      "colorset": "colorset2",
+      "actualCoordinateSystem": "view",
+      "preparationReturnsSameObject": true,
+      "baselineLineStyle": {
+        "color": "#cfcfcf",
+        "opacity": 0.25
+      },
+      "preparedLineStyle": {
+        "color": "#828282",
+        "opacity": 1,
+        "width": 2
+      },
+      "preparedEdgeStyle": {
+        "color": "#828282",
+        "opacity": 1,
+        "width": 2
+      },
+      "symbolSize": 60,
+      "edgeSymbolSize": 16,
+      "artifact": "projects/arrow-contrast-custom/artifacts/reviews/echarts-native-ssr-recipe/colorset2.svg",
+      "screenshot": "projects/arrow-contrast-custom/artifacts/reviews/echarts-native-ssr-recipe/colorset2.png",
+      "svgSha256": "2987f70c34191a2e08fe36741cb68f3795cb76d6172ae38e71cde50afcd6fe4e",
+      "nodes": [
+        {
+          "fill": "rgb(158, 27, 50)",
+          "opacity": 1,
+          "stroke": "none",
+          "strokeWidth": 1,
+          "bounds": {
+            "x": 34.00037384033203,
+            "y": 149.85000610351562,
+            "width": 59.99962615966797,
+            "height": 60
+          }
+        },
+        {
+          "fill": "rgb(0, 114, 152)",
+          "opacity": 1,
+          "stroke": "none",
+          "strokeWidth": 1,
+          "bounds": {
+            "x": 546.0003662109375,
+            "y": 149.85000610351562,
+            "width": 59.9996337890625,
+            "height": 60
+          }
+        }
+      ],
+      "labels": [
+        {
+          "text": "A",
+          "fill": "rgb(255, 255, 255)",
+          "expected": "rgb(255, 255, 255)",
+          "actualBacking": [
+            158,
+            27,
+            50
+          ],
+          "passed": true
+        },
+        {
+          "text": "B",
+          "fill": "rgb(255, 255, 255)",
+          "expected": "rgb(255, 255, 255)",
+          "actualBacking": [
+            0,
+            114,
+            152
+          ],
+          "passed": true
+        }
+      ],
+      "shaftCount": 1,
+      "headCount": 1,
+      "records": [
+        {
+          "part": "shaft",
+          "d": "M100 180L476.6 180",
+          "transform": "matrix(1.28,0,0,1.28,-64,-50.4)",
+          "paint": "rgb(130, 130, 130)",
+          "opacity": 1,
+          "strokeWidth": 1.5625,
+          "bounds": {
+            "x": 63.999996185302734,
+            "y": 180,
+            "width": 482.0479736328125,
+            "height": 0
+          },
+          "sampleCount": 127,
+          "minimumContrast": 1.4155696372158877,
+          "coveredSampleCount": 9,
+          "xRange": [
+            63.999996185302734,
+            546.0479736328125
+          ]
+        },
+        {
+          "part": "head",
+          "d": "M0 0L10.7 16L0 12L-10.7 16L0 0Z",
+          "transform": "matrix(0,1,-1,0,546,180)",
+          "paint": "rgb(130, 130, 130)",
+          "opacity": 1,
+          "strokeWidth": 1,
+          "bounds": {
+            "x": 530,
+            "y": 169.3000030517578,
+            "width": 16,
+            "height": 21.399993896484375
+          },
+          "sampleCount": 238,
+          "minimumContrast": 1.4155696372158877,
+          "coveredSampleCount": 2,
+          "xRange": [
+            530.0653076171875,
+            546
+          ]
+        }
+      ],
+      "nativeTipClearance": 0.0003662109375,
+      "targetLeft": 546.0003662109375,
+      "nativeTipX": 546,
+      "passed": false
+    }
+  ],
+  "passed": false,
+  "scope": "Exact compact SSR graph recipe with fresh nested options in both palettes. Actual view coordinates, solid borderless 60px circle nodes, native 16px arrow symbol, dense shaft/head interior and boundary backing probes, and max black/white labels. No native source changes or Pi process. This fixture exercises static exported geometry; arbitrary crossed fills and custom arrows still require independent checks."
+}

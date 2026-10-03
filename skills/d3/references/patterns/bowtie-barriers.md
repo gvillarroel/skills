@@ -1,5 +1,12 @@
 # Critical Bowtie Barrier
 
+Place critical callouts in genuine row gutters; their leaders must avoid moving
+flow-pulse paths as well as filled barriers. Point the terminal tangent toward
+the named barrier and leave at least 4 units before its filled face.
+Bind callout labels to their enclosing badge with `data-text-backing="rect"`.
+Use inline font size for compact captions so general `.caption` CSS cannot
+override their fit; verify both black/white contrast and full text containment.
+
 - **Pattern ID:** `d3-bowtie-barriers`
 - **Gallery source ID:** `bowtie-barriers`
 - **Use when:** A safety, process, reliability, or operational-risk artifact needs to show how threats are prevented from reaching a top event and how consequences are mitigated after the top event.
@@ -25,6 +32,8 @@ Useful source links:
 6. Place critical-gap badges outside tight scenario rows. Route badge leaders with orthogonal elbows around other barrier cards, headers, and labels; never draw a straight leader through readable text.
 7. Add degradation controls as a separate bottom row so the main bowtie remains readable.
 8. Draw scenario paths behind cards and barriers; keep motion tokens on hidden paths that do not cross text.
+
+9. Keep critical-gap leaders and their full arrowhead silhouettes above barrier fills with at least 4 units of visible gutter. Clip persistent head silhouettes out of moving pulse layers without changing pulse trajectories or adding a halo.
 
 ## Semantic Color Roles
 

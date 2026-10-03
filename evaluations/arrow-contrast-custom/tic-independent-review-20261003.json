@@ -1,0 +1,44 @@
+[
+  {
+    "d": "M448,140V130H366V94H352",
+    "source": "r-101",
+    "target": "tic-102",
+    "tip": {
+      "x": 891.6138392857142,
+      "y": 479.20982142857144,
+      "z": 0,
+      "w": 1
+    },
+    "center": {
+      "x": 861.8995666503906,
+      "y": 481.4955291748047
+    },
+    "clearancePx": 4.659201812873487,
+    "alignment": 0.9970544997000115,
+    "shaftPaint": "rgb(105, 105, 105)",
+    "marker": "<marker id=\"process-control-loop-direction-4\" viewBox=\"0 -5 10 10\" refX=\"10\" refY=\"0\" markerUnits=\"userSpaceOnUse\" markerWidth=\"8\" markerHeight=\"8\" orient=\"auto\"><path d=\"M0,-5L10,0L0,5Z\" fill=\"#696969\" stroke=\"none\" style=\"fill: rgb(105, 105, 105);\"></path></marker>",
+    "unresolved": null,
+    "gallery": "d3-animated-svg-cs1"
+  },
+  {
+    "d": "M448,140V130H366V94H352",
+    "source": "r-101",
+    "target": "tic-102",
+    "tip": {
+      "x": 891.6138392857142,
+      "y": 479.20982142857144,
+      "z": 0,
+      "w": 1
+    },
+    "center": {
+      "x": 861.8995666503906,
+      "y": 481.4955291748047
+    },
+    "clearancePx": 4.659201812873487,
+    "alignment": 0.9970544997000115,
+    "shaftPaint": "rgb(231, 114, 4)",
+    "marker": "<marker id=\"process-control-loop-direction-4\" viewBox=\"0 -5 10 10\" refX=\"10\" refY=\"0\" markerUnits=\"userSpaceOnUse\" markerWidth=\"8\" markerHeight=\"8\" orient=\"auto\"><path d=\"M0,-5L10,0L0,5Z\" fill=\"#e77204\" stroke=\"none\" style=\"fill: rgb(231, 114, 4);\"></path></marker>",
+    "unresolved": null,
+    "gallery": "d3-animated-svg-colorset2"
+  }
+]

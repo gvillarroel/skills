@@ -74,8 +74,8 @@ CONSEQUENCES = [
 ]
 
 GAPS = [
-    {"id": "inspection-gap", "barrier_id": "inspection-program", "label": "inspection overdue", "x": 252, "y": 96, "target_x": 252, "target_y": ROWS[0] - 22},
-    {"id": "deluge-gap", "barrier_id": "deluge-system", "label": "deluge offline", "x": 568, "y": 96, "target_x": 568, "target_y": ROWS[1] - 22, "via_x": 502},
+    {"id": "inspection-gap", "barrier_id": "inspection-program", "label": "inspection overdue", "x": 252, "y": 70, "target_x": 252, "target_y": ROWS[0] - 30},
+    {"id": "deluge-gap", "barrier_id": "deluge-system", "label": "deluge offline", "x": 684, "y": 155, "h": 16, "font_size": 6.6, "from_x": 628, "target_x": 568, "target_y": ROWS[1] - BARRIER_H / 2 - 4, "via_x": 602, "via_y": 151},
 ]
 
 CONTROLS = [
@@ -189,17 +189,19 @@ def barrier(record: dict[str, object], class_name: str, side: str, normal_color:
 
 
 def gap_markup(gap: dict[str, object]) -> str:
-    if "via_x" in gap:
+    if "from_x" in gap:
+        leader_d = f"M{gap['from_x']},{gap['y']}H{gap['via_x']}V{gap['via_y']}H{gap['target_x']}V{gap['target_y']}"
+    elif "via_x" in gap:
         leader_d = f"M{gap['x']},{gap['y'] + 12}H{gap['via_x']}V{gap['target_y']}H{gap['target_x']}"
     else:
         leader_d = f"M{gap['x']},{gap['y'] + 12}L{gap['target_x']},{gap['target_y']}"
     return f"""
-      <g class="critical-barrier-gap" data-gap-id="{esc(gap['id'])}" data-barrier-id="{esc(gap['barrier_id'])}" opacity="0">
+      <g class="critical-barrier-gap" data-text-backing="rect" data-gap-id="{esc(gap['id'])}" data-barrier-id="{esc(gap['barrier_id'])}" opacity="0">
         <animate attributeName="opacity" values="0;1" dur=".42s" begin=".68s" fill="freeze"/>
         <path d="{leader_d}" fill="none" stroke="{color('red')}"
           stroke-width="1.2" stroke-dasharray="3 3" marker-end="url(#critical-bowtie-gap)"/>
-        <rect x="{gap['x'] - 52}" y="{gap['y'] - 11}" width="104" height="22" rx="6" fill="#ffffff" stroke="{color('red')}" stroke-width="1.1"/>
-        <text class="caption" x="{gap['x']}" y="{gap['y'] + 4}" text-anchor="middle" font-size="7.2" font-weight="850" fill="{color('red')}">{esc(gap['label'])}</text>
+        <rect x="{gap['x'] - 52}" y="{gap['y'] - gap.get('h',22)/2}" width="104" height="{gap.get('h',22)}" rx="6" fill="#ffffff" stroke="{color('red')}" stroke-width="1.1"/>
+        <text class="caption" x="{gap['x']}" y="{gap['y'] + (2.8 if gap.get('h') else 4)}" text-anchor="middle" font-size="{gap.get('font_size',7.2)}" style="font-size:{gap.get('font_size',7.2)}px" font-weight="850" fill="{color('red')}">{esc(gap['label'])}</text>
       </g>"""
 
 

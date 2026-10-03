@@ -8,6 +8,7 @@ import argparse
 import copy
 import json
 import math
+import re
 from pathlib import Path
 import xml.etree.ElementTree as ET
 
@@ -63,10 +64,12 @@ def arrow(group, start, end, weight, identity):
     ux, uy = dx / length, dy / length
     size = min(weight * 4, length / 4)
     back = (end[0] - ux * size, end[1] - uy * size)
-    node(group, "line", id=identity + "-shaft", x1=start[0], y1=start[1], x2=end[0], y2=end[1])
+    paint = group.get("data-arrow-paint")
+    node(group, "line", id=identity + "-shaft", x1=start[0], y1=start[1], x2=end[0], y2=end[1], stroke=paint,
+         data_direction_role="shaft")
     node(group, "path", id=identity + "-head", d=path_points([
         (back[0] - uy * size * .5, back[1] + ux * size * .5), end,
-        (back[0] + uy * size * .5, back[1] - ux * size * .5)]))
+        (back[0] + uy * size * .5, back[1] - ux * size * .5)]), stroke=paint, fill="none", data_direction_role="head")
 
 
 def label(group, text, x, y, size, identity, anchor="middle"):
@@ -214,8 +217,9 @@ def flow(group, p, box, weight):
              font_size=size, font_family="DejaVu Sans, sans-serif", text_anchor="middle",
              dominant_baseline="middle", fill=PALETTES[group.get("data-colorset")]["textOnFill"][group.get("color")], stroke="none")
         if i < n - 1:
-            start = (nx + bw, ny + bh / 2) if horizontal else (nx + bw / 2, ny + bh)
-            end = (start[0] + gap, start[1]) if horizontal else (start[0], start[1] + gap)
+            clearance = min(4, gap / 8)
+            start = (nx + bw + clearance, ny + bh / 2) if horizontal else (nx + bw / 2, ny + bh + clearance)
+            end = (nx + bw + gap - clearance, start[1]) if horizontal else (start[0], ny + bh + gap - clearance)
             arrow(group, start, end, weight, f"edge-{i}-{i+1}")
 
 
@@ -301,7 +305,8 @@ def composition(group, p, box, weight):
         if ix < x or iy < y or ix+iw > x+w or iy+ih > y+h:
             raise ValueError("Item box must stay inside the canvas margins")
         identity = str(item.get("id", f"part-{index}"))
-        part = node(group, "g", id=identity, color=group.get("color"), data_colorset=group.get("data-colorset"))
+        part = node(group, "g", id=identity, color=group.get("color"), data_colorset=group.get("data-colorset"),
+                    data_arrow_paint=group.get("data-arrow-paint"))
         params = dict(defaults(kind)["parameters"])
         params.update(item.get("parameters", {}))
         DRAW[kind](part, params, (ix, iy, iw, ih), weight)
@@ -347,9 +352,25 @@ def build(recipe):
     allowed = set(PALETTES[colorset]["allowed"])
     if color not in allowed:
         raise ValueError("Color must be an exact lowercase six-digit token from the active colorset")
+    backing = canvas.get("background", "#ffffff")
+    if backing not in allowed:
+        raise ValueError("Canvas background must be an exact active colorset token")
+    def luminance(paint):
+        channels = [int(paint[index:index+2], 16) / 255 for index in (1, 3, 5)]
+        return sum((channel / 12.92 if channel <= .04045 else ((channel + .055) / 1.055) ** 2.4) * factor
+                   for channel, factor in zip(channels, (.2126, .7152, .0722)))
+    def contrast(paint, ground):
+        a, b = luminance(paint), luminance(ground)
+        return (max(a, b) + .05) / (min(a, b) + .05)
+    # Arrows communicate direction independently of the categorical node paint.
+    arrow_paint = style.get("arrow_color", PALETTES[colorset]["textOnFill"][backing])
+    if arrow_paint not in allowed or contrast(arrow_paint, backing) < 3:
+        raise ValueError("Arrow color must be an allowed token with at least 3:1 contrast against the canvas")
     if weight >= margin:
         raise ValueError("Margin must exceed the stroke width")
     root = ET.Element(f"{{{NS}}}svg", {"viewBox": f"0 0 {number(w)} {number(h)}", "width": number(w), "height": number(h), "color": color, "data-colorset": colorset})
+    if "background" in canvas:
+        node(root, "rect", id="canvas-background", width=w, height=h, fill=backing, stroke="none")
     underlay = node(root, "g", id="underlay", fill="none", stroke="currentColor", stroke_width=weight)
     background = recipe.get("underlay", [])
     if not isinstance(background, list) or len(background) > 500:
@@ -357,6 +378,7 @@ def build(recipe):
     for detail in background:
         add_detail(underlay, detail, allowed)
     group = node(root, "g", id="structure", color=color, data_colorset=colorset,
+                 data_arrow_paint=arrow_paint,
                  fill="none", stroke="currentColor", stroke_width=weight, stroke_linecap="round", stroke_linejoin="round")
     if recipe["kind"] in DRAW:
         DRAW[recipe["kind"]](group, p, (margin, margin, w-2*margin, h-2*margin), weight)
@@ -366,6 +388,63 @@ def build(recipe):
         raise ValueError("details must be a list with at most 500 entries")
     for detail in details:
         add_detail(detail_group, detail, allowed)
+    # Resolve ordinary rect/circle/ellipse backings after composition. Keep
+    # uncommon transformed/path artwork explicit for the required browser audit.
+    parents = {child: parent for parent in root.iter() for child in parent}
+    def inherited(element, key, default):
+        while element is not None:
+            if element.get(key) is not None:
+                return element.get(key)
+            element = parents.get(element)
+        return default
+    def contains(element, x, y):
+        tag = element.tag.split('}')[-1]
+        if inherited(element, 'transform', ''):
+            return False
+        if tag == 'rect':
+            px, py = float(element.get('x', 0)), float(element.get('y', 0))
+            return px <= x <= px + float(element.get('width', 0)) and py <= y <= py + float(element.get('height', 0))
+        if tag in {'circle', 'ellipse'}:
+            rx = float(element.get('r', element.get('rx', 0)))
+            ry = float(element.get('r', element.get('ry', 0)))
+            return rx > 0 and ry > 0 and ((x-float(element.get('cx', 0)))/rx)**2 + ((y-float(element.get('cy', 0)))/ry)**2 <= 1
+        return False
+    def ground_at(x, y):
+        ground = backing
+        for element in root.iter():
+            fill = inherited(element, 'fill', 'none')
+            if fill == 'currentColor':
+                fill = inherited(element, 'color', color)
+            if fill not in allowed or not contains(element, x, y):
+                continue
+            alpha = 1.0
+            current = element
+            while current is not None:
+                alpha *= float(current.get('opacity', 1))
+                current = parents.get(current)
+            ground = '#' + ''.join(f'{round(int(fill[i:i+2],16)*alpha+int(ground[i:i+2],16)*(1-alpha)):02x}' for i in (1,3,5))
+        return ground
+    for element in root.iter():
+        role = element.get('data-direction-role')
+        if not role:
+            continue
+        if role == 'shaft':
+            x1,y1,x2,y2 = (float(element.get(key)) for key in ('x1','y1','x2','y2'))
+            points = [(x1+(x2-x1)*i/16,y1+(y2-y1)*i/16) for i in range(17)]
+        else:
+            coords = [float(v) for v in re.findall(r'-?\d+(?:\.\d+)?', element.get('d'))]
+            points = list(zip(coords[::2],coords[1::2]))
+        grounds = [ground_at(x,y) for x,y in points]
+        preferred = style.get('arrow_color', arrow_paint)
+        candidates = [paint for paint in PALETTES[colorset]['allowed'] if all(contrast(paint, ground) >= 3 for ground in grounds)]
+        if preferred not in candidates:
+            if 'arrow_color' in style or not candidates:
+                raise ValueError('Arrow crosses incompatible local backings; move its gutter or select contrasting scoped paint')
+            preferred = max(candidates, key=lambda paint: min(contrast(paint, ground) for ground in grounds))
+        element.set('stroke', preferred)
+        element.set('data-arrow-contrast', number(min(contrast(preferred, ground) for ground in grounds)))
+        if any(e.get('transform') or (e.tag.endswith('}path') and e.get('fill', 'none') != 'none') for e in underlay.iter()):
+            element.set('data-arrow-audit', 'inspect-custom-underlay-in-browser')
     ids = [e.get("id") for e in root.iter() if e.get("id")]
     if len(ids) != len(set(ids)):
         raise ValueError("Element IDs must be unique")

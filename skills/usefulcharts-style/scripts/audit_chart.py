@@ -7,6 +7,7 @@
 
 from __future__ import annotations
 
+from arrow_quality import ARROW_AUDIT
 import argparse
 import json
 import math
@@ -365,6 +366,11 @@ def main():
             page.goto(args.svg.resolve().as_uri())
             page.evaluate("document.fonts.ready")
             report = page.evaluate(AUDIT)
+            w,h = report["canvas"]
+            page.set_viewport_size({"width":int(w),"height":int(h)})
+            arrows = page.evaluate(ARROW_AUDIT)
+            report["arrows"] = arrows
+            report["findings"].extend({"type": issue["kind"], **issue} for issue in arrows["issues"])
             report["browser"] = browser.version
             if args.source:
                 check_source(report,json.loads(args.source.read_text(encoding="utf-8-sig")))

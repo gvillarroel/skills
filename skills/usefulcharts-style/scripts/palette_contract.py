@@ -5,6 +5,8 @@
 # ///
 """Finite authored-paint contract; imported source media stays producer-owned."""
 import json
+import re
+import colorsys
 from pathlib import Path
 
 COLORSETS = json.loads((Path(__file__).resolve().parent.parent / "assets/palettes/colorsets.json").read_text(encoding="utf-8"))["colorsets"]
@@ -18,6 +20,29 @@ def nearest_color(value, colorset="colorset2"):
     """Snap an intentional generated tint to the selected finite token set."""
     channels = [int(value[i:i + 2], 16) for i in (1, 3, 5)]
     return min(COLORSETS[colorset]["allowed"], key=lambda c: sum((x - int(c[i:i + 2], 16)) ** 2 for x, i in zip(channels, (1, 3, 5))))
+
+
+SVG_PAINT_ATTRIBUTES = {"fill", "stroke", "color", "stop-color", "flood-color", "lighting-color"}
+
+
+def require_svg_paint(value, colorset):
+    """Check authored fragment paints while retaining local references and inheritance."""
+    text = value.strip().lower()
+    if text in {"none", "inherit", "transparent", "currentcolor", "context-fill", "context-stroke"}:
+        return text
+    variable = re.fullmatch(r"var\(--[a-z0-9-]+(?:,\s*(.+))?\)", text)
+    if variable:
+        if variable.group(1):
+            require_svg_paint(variable.group(1), colorset)
+        return text
+    if re.fullmatch(r"url\(['\"]?#[a-z0-9_-]+['\"]?\)", text):
+        return text
+    text = {"black": "#000000", "white": "#ffffff"}.get(text, text)
+    if re.fullmatch(r"#[0-9a-f]{3,4}", text):
+        text = "#" + "".join(channel * 2 for channel in text[1:4])
+    elif re.fullmatch(r"#[0-9a-f]{8}", text):
+        text = text[:7]
+    return require_color(text, colorset)
 
 
 def text_on_fill(fill, colorset="colorset2"):
@@ -37,6 +62,25 @@ def relative_luminance(fill):
 def contrast_ratio(first, second):
     luminances = sorted((relative_luminance(first), relative_luminance(second)))
     return (luminances[1] + .05) / (luminances[0] + .05)
+
+def arrow_color(paint, backgrounds=("#ffffff", "#f7f7f7"), colorset="colorset2"):
+    """Keep semantic hue while selecting an allowed opaque arrow paint >=3:1."""
+    fallback = re.fullmatch(r"var\(--[a-z0-9-]+,\s*(#[0-9a-fA-F]{6})\)", paint)
+    paint = require_color(fallback.group(1) if fallback else paint, colorset)
+    candidates = [c for c in COLORSETS[colorset]["allowed"]
+                  if all(contrast_ratio(c, bg) >= 3 for bg in backgrounds)]
+    if not candidates:
+        raise ValueError("No palette arrow paint contrasts with every backing; route through a clear gutter")
+    if paint in candidates:
+        return paint
+    def hsv(c):
+        return colorsys.rgb_to_hsv(*(int(c[i:i+2],16)/255 for i in (1,3,5)))
+    hue, saturation, value = hsv(paint)
+    def distance(c):
+        h, s, v = hsv(c)
+        hue_error = min(abs(h-hue), 1-abs(h-hue)) if saturation > .12 and s > .12 else (0 if saturation <= .12 and s <= .12 else 1)
+        return (hue_error, abs(s-saturation), abs(v-value))
+    return min(candidates, key=distance)
 
 def category_style(index, colorset="colorset2", canvas="#f7f7f7"):
     """Exhaust solids before finite contrast-safe border/dash/width variants."""

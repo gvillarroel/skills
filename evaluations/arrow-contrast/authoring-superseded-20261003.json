@@ -1,0 +1,843 @@
+{
+  "schemaVersion": 1,
+  "passed": true,
+  "skillCount": 34,
+  "bundleCount": 68,
+  "issueCounts": {},
+  "limitations": "Measurable authoring/navigation and copied payloads; no claim of model-wide behavioral certification.",
+  "date": "2026-10-03",
+  "phase": "superseded",
+  "command": [
+    "uv",
+    "run",
+    "--script",
+    "scripts/audit-skill-authoring.py",
+    "--check-bundles",
+    "--output",
+    "projects/arrow-contrast/artifacts/reviews/skill-authoring-audit-final.json"
+  ],
+  "detailedEvidence": {
+    "path": "projects/arrow-contrast/artifacts/reviews/skill-authoring-audit-superseded.json",
+    "sha256": "dcba9897631e4e500e87ffb955acd184748a260f15d8e640ace4291b08848ed6",
+    "sizeBytes": 54294
+  },
+  "results": [
+    {
+      "skill": "ambientcg-material-search",
+      "profile": "source",
+      "passed": true,
+      "fileCount": 8,
+      "payloadSha256": "1bbe0afbf455e5b531acc07ca86ed3a02aa582388cc9de9b3cd173c5c710679f",
+      "issues": []
+    },
+    {
+      "skill": "ambientcg-material-search",
+      "profile": "runtime",
+      "passed": true,
+      "fileCount": 8,
+      "payloadSha256": "1bbe0afbf455e5b531acc07ca86ed3a02aa582388cc9de9b3cd173c5c710679f",
+      "issues": []
+    },
+    {
+      "skill": "ambientcg-material-search",
+      "profile": "full",
+      "passed": true,
+      "fileCount": 8,
+      "payloadSha256": "1bbe0afbf455e5b531acc07ca86ed3a02aa582388cc9de9b3cd173c5c710679f",
+      "issues": []
+    },
+    {
+      "skill": "animated-svg-to-gif",
+      "profile": "source",
+      "passed": true,
+      "fileCount": 7,
+      "payloadSha256": "27c42a9457010d66893bcd423ca9ca4700afeb4e4340c5e17cb0edc303fdfb3b",
+      "issues": []
+    },
+    {
+      "skill": "animated-svg-to-gif",
+      "profile": "runtime",
+      "passed": true,
+      "fileCount": 7,
+      "payloadSha256": "27c42a9457010d66893bcd423ca9ca4700afeb4e4340c5e17cb0edc303fdfb3b",
+      "issues": []
+    },
+    {
+      "skill": "animated-svg-to-gif",
+      "profile": "full",
+      "passed": true,
+      "fileCount": 7,
+      "payloadSha256": "27c42a9457010d66893bcd423ca9ca4700afeb4e4340c5e17cb0edc303fdfb3b",
+      "issues": []
+    },
+    {
+      "skill": "asciinema-real-command-video",
+      "profile": "source",
+      "passed": true,
+      "fileCount": 21,
+      "payloadSha256": "e3602a02095879f2c1aeb16f4a1548347965fcfcc21034c34f6512afaf7405a3",
+      "issues": []
+    },
+    {
+      "skill": "asciinema-real-command-video",
+      "profile": "runtime",
+      "passed": true,
+      "fileCount": 21,
+      "payloadSha256": "e3602a02095879f2c1aeb16f4a1548347965fcfcc21034c34f6512afaf7405a3",
+      "issues": []
+    },
+    {
+      "skill": "asciinema-real-command-video",
+      "profile": "full",
+      "passed": true,
+      "fileCount": 21,
+      "payloadSha256": "e3602a02095879f2c1aeb16f4a1548347965fcfcc21034c34f6512afaf7405a3",
+      "issues": []
+    },
+    {
+      "skill": "compose-synchronized-svg",
+      "profile": "source",
+      "passed": true,
+      "fileCount": 43,
+      "payloadSha256": "b60225ee09322212728b3f15e5d76153e7bec9088221169e8c6bb298343df294",
+      "issues": []
+    },
+    {
+      "skill": "compose-synchronized-svg",
+      "profile": "runtime",
+      "passed": true,
+      "fileCount": 38,
+      "payloadSha256": "9a20e30272b9a1db8f16d4d3293d8032705f1df5b437d4dad80740aa04355ee2",
+      "issues": []
+    },
+    {
+      "skill": "compose-synchronized-svg",
+      "profile": "full",
+      "passed": true,
+      "fileCount": 43,
+      "payloadSha256": "b60225ee09322212728b3f15e5d76153e7bec9088221169e8c6bb298343df294",
+      "issues": []
+    },
+    {
+      "skill": "d3",
+      "profile": "source",
+      "passed": true,
+      "fileCount": 324,
+      "payloadSha256": "f5f0a4df0ba301fcf5466a87ffe0b7029bffb6716804deec0c83da2f8e00b10b",
+      "issues": []
+    },
+    {
+      "skill": "d3",
+      "profile": "runtime",
+      "passed": true,
+      "fileCount": 288,
+      "payloadSha256": "9d9e1a54cc1508bed56301be068c6d8948e510156350f28c40958a96a0644bb2",
+      "issues": []
+    },
+    {
+      "skill": "d3",
+      "profile": "full",
+      "passed": true,
+      "fileCount": 324,
+      "payloadSha256": "f5f0a4df0ba301fcf5466a87ffe0b7029bffb6716804deec0c83da2f8e00b10b",
+      "issues": []
+    },
+    {
+      "skill": "destockd-video-search",
+      "profile": "source",
+      "passed": true,
+      "fileCount": 7,
+      "payloadSha256": "97b969a650cfd0b2f0e6ebdfef530cb79b2011e898e0d76c257bc2ca153abc75",
+      "issues": []
+    },
+    {
+      "skill": "destockd-video-search",
+      "profile": "runtime",
+      "passed": true,
+      "fileCount": 7,
+      "payloadSha256": "97b969a650cfd0b2f0e6ebdfef530cb79b2011e898e0d76c257bc2ca153abc75",
+      "issues": []
+    },
+    {
+      "skill": "destockd-video-search",
+      "profile": "full",
+      "passed": true,
+      "fileCount": 7,
+      "payloadSha256": "97b969a650cfd0b2f0e6ebdfef530cb79b2011e898e0d76c257bc2ca153abc75",
+      "issues": []
+    },
+    {
+      "skill": "diagram-composition",
+      "profile": "source",
+      "passed": true,
+      "fileCount": 27,
+      "payloadSha256": "6566394c030158041baac0e2b5360a23ea0ff0f7d372fe4de57051c7997ce1a4",
+      "issues": []
+    },
+    {
+      "skill": "diagram-composition",
+      "profile": "runtime",
+      "passed": true,
+      "fileCount": 27,
+      "payloadSha256": "6566394c030158041baac0e2b5360a23ea0ff0f7d372fe4de57051c7997ce1a4",
+      "issues": []
+    },
+    {
+      "skill": "diagram-composition",
+      "profile": "full",
+      "passed": true,
+      "fileCount": 27,
+      "payloadSha256": "6566394c030158041baac0e2b5360a23ea0ff0f7d372fe4de57051c7997ce1a4",
+      "issues": []
+    },
+    {
+      "skill": "echarts-animated-svg",
+      "profile": "source",
+      "passed": true,
+      "fileCount": 22,
+      "payloadSha256": "a8216f0a7068a174d3d2f4f7b6516e5f35f4df969d149c5d148b6d5ce995f410",
+      "issues": []
+    },
+    {
+      "skill": "echarts-animated-svg",
+      "profile": "runtime",
+      "passed": true,
+      "fileCount": 17,
+      "payloadSha256": "07590acbf38e4d4cbd7bc67402744cbe5baba73191b4b338bc6d2df5d4dec9a8",
+      "issues": []
+    },
+    {
+      "skill": "echarts-animated-svg",
+      "profile": "full",
+      "passed": true,
+      "fileCount": 22,
+      "payloadSha256": "a8216f0a7068a174d3d2f4f7b6516e5f35f4df969d149c5d148b6d5ce995f410",
+      "issues": []
+    },
+    {
+      "skill": "google-cloud-sku-pricing",
+      "profile": "source",
+      "passed": true,
+      "fileCount": 9,
+      "payloadSha256": "c288209abecede02a52a6f6a8a530aa8b3ee22f2612a4b46e15a70ed3734ef72",
+      "issues": []
+    },
+    {
+      "skill": "google-cloud-sku-pricing",
+      "profile": "runtime",
+      "passed": true,
+      "fileCount": 9,
+      "payloadSha256": "c288209abecede02a52a6f6a8a530aa8b3ee22f2612a4b46e15a70ed3734ef72",
+      "issues": []
+    },
+    {
+      "skill": "google-cloud-sku-pricing",
+      "profile": "full",
+      "passed": true,
+      "fileCount": 9,
+      "payloadSha256": "c288209abecede02a52a6f6a8a530aa8b3ee22f2612a4b46e15a70ed3734ef72",
+      "issues": []
+    },
+    {
+      "skill": "harbor-author-evaluation-datasets",
+      "profile": "source",
+      "passed": true,
+      "fileCount": 11,
+      "payloadSha256": "2fa406114cdbc489d5bdce690303059dbacfabe841200a9f707cc2bbf9d46ae0",
+      "issues": []
+    },
+    {
+      "skill": "harbor-author-evaluation-datasets",
+      "profile": "runtime",
+      "passed": true,
+      "fileCount": 11,
+      "payloadSha256": "2fa406114cdbc489d5bdce690303059dbacfabe841200a9f707cc2bbf9d46ae0",
+      "issues": []
+    },
+    {
+      "skill": "harbor-author-evaluation-datasets",
+      "profile": "full",
+      "passed": true,
+      "fileCount": 11,
+      "payloadSha256": "2fa406114cdbc489d5bdce690303059dbacfabe841200a9f707cc2bbf9d46ae0",
+      "issues": []
+    },
+    {
+      "skill": "hierarchy-lens",
+      "profile": "source",
+      "passed": true,
+      "fileCount": 29,
+      "payloadSha256": "b2adaef24cb7efff9568435636b0dabdfb69a983f3c1f91ea95e90d4c3a9afe6",
+      "issues": []
+    },
+    {
+      "skill": "hierarchy-lens",
+      "profile": "runtime",
+      "passed": true,
+      "fileCount": 23,
+      "payloadSha256": "0c0dc05eef17a02d0876c8c6d16442ad42310025ff630ad5c448954c09d313fd",
+      "issues": []
+    },
+    {
+      "skill": "hierarchy-lens",
+      "profile": "full",
+      "passed": true,
+      "fileCount": 29,
+      "payloadSha256": "b2adaef24cb7efff9568435636b0dabdfb69a983f3c1f91ea95e90d4c3a9afe6",
+      "issues": []
+    },
+    {
+      "skill": "hyperframes-explainer",
+      "profile": "source",
+      "passed": true,
+      "fileCount": 34,
+      "payloadSha256": "f7d65b578956e032be6e8c570f014762ba152c7757c6022b4d098d3a11aed7cd",
+      "issues": []
+    },
+    {
+      "skill": "hyperframes-explainer",
+      "profile": "runtime",
+      "passed": true,
+      "fileCount": 33,
+      "payloadSha256": "d39d9c5662ddae29cf3ef1f67c9d0bca2a68e34bd41601e084c2fc3930157e8f",
+      "issues": []
+    },
+    {
+      "skill": "hyperframes-explainer",
+      "profile": "full",
+      "passed": true,
+      "fileCount": 34,
+      "payloadSha256": "f7d65b578956e032be6e8c570f014762ba152c7757c6022b4d098d3a11aed7cd",
+      "issues": []
+    },
+    {
+      "skill": "iconify-icon-search",
+      "profile": "source",
+      "passed": true,
+      "fileCount": 8,
+      "payloadSha256": "d3886fdb569d0f1a673e210e6a8cc736bf179ca39eb47bf70eefb0eae858219c",
+      "issues": []
+    },
+    {
+      "skill": "iconify-icon-search",
+      "profile": "runtime",
+      "passed": true,
+      "fileCount": 8,
+      "payloadSha256": "d3886fdb569d0f1a673e210e6a8cc736bf179ca39eb47bf70eefb0eae858219c",
+      "issues": []
+    },
+    {
+      "skill": "iconify-icon-search",
+      "profile": "full",
+      "passed": true,
+      "fileCount": 8,
+      "payloadSha256": "d3886fdb569d0f1a673e210e6a8cc736bf179ca39eb47bf70eefb0eae858219c",
+      "issues": []
+    },
+    {
+      "skill": "jev-batch-decisions",
+      "profile": "source",
+      "passed": true,
+      "fileCount": 13,
+      "payloadSha256": "537b9477b85b85f1101dd6b776c2509674ec4d19b82117a049654fa37a487f5f",
+      "issues": []
+    },
+    {
+      "skill": "jev-batch-decisions",
+      "profile": "runtime",
+      "passed": true,
+      "fileCount": 12,
+      "payloadSha256": "066c6a49103b332820d48a856036cb99b5a5a8ed5305c36f5524d758b2855204",
+      "issues": []
+    },
+    {
+      "skill": "jev-batch-decisions",
+      "profile": "full",
+      "passed": true,
+      "fileCount": 13,
+      "payloadSha256": "537b9477b85b85f1101dd6b776c2509674ec4d19b82117a049654fa37a487f5f",
+      "issues": []
+    },
+    {
+      "skill": "kenney-asset-search",
+      "profile": "source",
+      "passed": true,
+      "fileCount": 8,
+      "payloadSha256": "19c063c4e6448d6cabcabb6b3e66b9b73034c5cc9ce84b55448374ace0ec1d12",
+      "issues": []
+    },
+    {
+      "skill": "kenney-asset-search",
+      "profile": "runtime",
+      "passed": true,
+      "fileCount": 8,
+      "payloadSha256": "19c063c4e6448d6cabcabb6b3e66b9b73034c5cc9ce84b55448374ace0ec1d12",
+      "issues": []
+    },
+    {
+      "skill": "kenney-asset-search",
+      "profile": "full",
+      "passed": true,
+      "fileCount": 8,
+      "payloadSha256": "19c063c4e6448d6cabcabb6b3e66b9b73034c5cc9ce84b55448374ace0ec1d12",
+      "issues": []
+    },
+    {
+      "skill": "manim-svg-video",
+      "profile": "source",
+      "passed": true,
+      "fileCount": 13,
+      "payloadSha256": "3f4591854c64ab0c57da1f9f9a3baec040d7db648bad96c0272923e50f2c9176",
+      "issues": []
+    },
+    {
+      "skill": "manim-svg-video",
+      "profile": "runtime",
+      "passed": true,
+      "fileCount": 13,
+      "payloadSha256": "3f4591854c64ab0c57da1f9f9a3baec040d7db648bad96c0272923e50f2c9176",
+      "issues": []
+    },
+    {
+      "skill": "manim-svg-video",
+      "profile": "full",
+      "passed": true,
+      "fileCount": 13,
+      "payloadSha256": "3f4591854c64ab0c57da1f9f9a3baec040d7db648bad96c0272923e50f2c9176",
+      "issues": []
+    },
+    {
+      "skill": "mermaid",
+      "profile": "source",
+      "passed": true,
+      "fileCount": 238,
+      "payloadSha256": "848a91eb3648e05916813f1e4bf8c732ced51a1c94fdca3a04bf34d7114ebd60",
+      "issues": []
+    },
+    {
+      "skill": "mermaid",
+      "profile": "runtime",
+      "passed": true,
+      "fileCount": 27,
+      "payloadSha256": "8e350ae361819866a6e2b5bbe65ba2e6bca32f2e19f74daee4ecb0c99ee5a901",
+      "issues": []
+    },
+    {
+      "skill": "mermaid",
+      "profile": "full",
+      "passed": true,
+      "fileCount": 238,
+      "payloadSha256": "848a91eb3648e05916813f1e4bf8c732ced51a1c94fdca3a04bf34d7114ebd60",
+      "issues": []
+    },
+    {
+      "skill": "one-bit-dither-svg",
+      "profile": "source",
+      "passed": true,
+      "fileCount": 12,
+      "payloadSha256": "a97b6b0f688b04c8927b8008ef07d828d811a746b58d1e858c56b1aed5460e24",
+      "issues": []
+    },
+    {
+      "skill": "one-bit-dither-svg",
+      "profile": "runtime",
+      "passed": true,
+      "fileCount": 12,
+      "payloadSha256": "a97b6b0f688b04c8927b8008ef07d828d811a746b58d1e858c56b1aed5460e24",
+      "issues": []
+    },
+    {
+      "skill": "one-bit-dither-svg",
+      "profile": "full",
+      "passed": true,
+      "fileCount": 12,
+      "payloadSha256": "a97b6b0f688b04c8927b8008ef07d828d811a746b58d1e858c56b1aed5460e24",
+      "issues": []
+    },
+    {
+      "skill": "pexels-media-search",
+      "profile": "source",
+      "passed": true,
+      "fileCount": 8,
+      "payloadSha256": "62807f1f278855edbeb16d3bdbf7d9c2bcfec74576e74fbce897664dbef8bf24",
+      "issues": []
+    },
+    {
+      "skill": "pexels-media-search",
+      "profile": "runtime",
+      "passed": true,
+      "fileCount": 8,
+      "payloadSha256": "62807f1f278855edbeb16d3bdbf7d9c2bcfec74576e74fbce897664dbef8bf24",
+      "issues": []
+    },
+    {
+      "skill": "pexels-media-search",
+      "profile": "full",
+      "passed": true,
+      "fileCount": 8,
+      "payloadSha256": "62807f1f278855edbeb16d3bdbf7d9c2bcfec74576e74fbce897664dbef8bf24",
+      "issues": []
+    },
+    {
+      "skill": "pixel-art-image-video",
+      "profile": "source",
+      "passed": true,
+      "fileCount": 9,
+      "payloadSha256": "6688a728f4a5605b52289a1fc7989ae821c6259e2cbe107148f0cad919a7b443",
+      "issues": []
+    },
+    {
+      "skill": "pixel-art-image-video",
+      "profile": "runtime",
+      "passed": true,
+      "fileCount": 9,
+      "payloadSha256": "6688a728f4a5605b52289a1fc7989ae821c6259e2cbe107148f0cad919a7b443",
+      "issues": []
+    },
+    {
+      "skill": "pixel-art-image-video",
+      "profile": "full",
+      "passed": true,
+      "fileCount": 9,
+      "payloadSha256": "6688a728f4a5605b52289a1fc7989ae821c6259e2cbe107148f0cad919a7b443",
+      "issues": []
+    },
+    {
+      "skill": "plantuml-colorset-renderer",
+      "profile": "source",
+      "passed": true,
+      "fileCount": 115,
+      "payloadSha256": "7e0816af424785db33f610fbe5d5b2cea86226e72266f9c095ff9f3430a8dadc",
+      "issues": []
+    },
+    {
+      "skill": "plantuml-colorset-renderer",
+      "profile": "runtime",
+      "passed": true,
+      "fileCount": 20,
+      "payloadSha256": "a59c777e8febfc5af45626e5f6eb60068d6957f3ab653d7d7c33148414a2617a",
+      "issues": []
+    },
+    {
+      "skill": "plantuml-colorset-renderer",
+      "profile": "full",
+      "passed": true,
+      "fileCount": 115,
+      "payloadSha256": "7e0816af424785db33f610fbe5d5b2cea86226e72266f9c095ff9f3430a8dadc",
+      "issues": []
+    },
+    {
+      "skill": "polyhaven-asset-search",
+      "profile": "source",
+      "passed": true,
+      "fileCount": 8,
+      "payloadSha256": "dbd9e99123fe85cfd8e0efbe2575852687cd3c21b8d358fd16f582d30d2e7530",
+      "issues": []
+    },
+    {
+      "skill": "polyhaven-asset-search",
+      "profile": "runtime",
+      "passed": true,
+      "fileCount": 8,
+      "payloadSha256": "dbd9e99123fe85cfd8e0efbe2575852687cd3c21b8d358fd16f582d30d2e7530",
+      "issues": []
+    },
+    {
+      "skill": "polyhaven-asset-search",
+      "profile": "full",
+      "passed": true,
+      "fileCount": 8,
+      "payloadSha256": "dbd9e99123fe85cfd8e0efbe2575852687cd3c21b8d358fd16f582d30d2e7530",
+      "issues": []
+    },
+    {
+      "skill": "procedural-svg-animation",
+      "profile": "source",
+      "passed": true,
+      "fileCount": 88,
+      "payloadSha256": "09bd3e99f9b98c244044cc8ae5af4ed31bc6a5c618b44cc491c6da6906605306",
+      "issues": []
+    },
+    {
+      "skill": "procedural-svg-animation",
+      "profile": "runtime",
+      "passed": true,
+      "fileCount": 18,
+      "payloadSha256": "59b32b8637120803741d8345358647671dde9fc3367e84f3f0330a98fedb7898",
+      "issues": []
+    },
+    {
+      "skill": "procedural-svg-animation",
+      "profile": "full",
+      "passed": true,
+      "fileCount": 88,
+      "payloadSha256": "09bd3e99f9b98c244044cc8ae5af4ed31bc6a5c618b44cc491c6da6906605306",
+      "issues": []
+    },
+    {
+      "skill": "repository-reviewer-creator",
+      "profile": "source",
+      "passed": true,
+      "fileCount": 12,
+      "payloadSha256": "06202e7a5b252a1fd80a52a93944e1f4936dd984bf6cffa75c85b18023dd462c",
+      "issues": []
+    },
+    {
+      "skill": "repository-reviewer-creator",
+      "profile": "runtime",
+      "passed": true,
+      "fileCount": 11,
+      "payloadSha256": "b1d9a64557482588cb7eb7f3d165e0b1c8edd34de308c6dd7632d4fbeb3e9988",
+      "issues": []
+    },
+    {
+      "skill": "repository-reviewer-creator",
+      "profile": "full",
+      "passed": true,
+      "fileCount": 12,
+      "payloadSha256": "06202e7a5b252a1fd80a52a93944e1f4936dd984bf6cffa75c85b18023dd462c",
+      "issues": []
+    },
+    {
+      "skill": "simulation-data-lab",
+      "profile": "source",
+      "passed": true,
+      "fileCount": 23,
+      "payloadSha256": "62c105645b64dc2b47b114480f411c8f7998245c8e3db223f7b0e4ed624de4e6",
+      "issues": []
+    },
+    {
+      "skill": "simulation-data-lab",
+      "profile": "runtime",
+      "passed": true,
+      "fileCount": 23,
+      "payloadSha256": "62c105645b64dc2b47b114480f411c8f7998245c8e3db223f7b0e4ed624de4e6",
+      "issues": []
+    },
+    {
+      "skill": "simulation-data-lab",
+      "profile": "full",
+      "passed": true,
+      "fileCount": 23,
+      "payloadSha256": "62c105645b64dc2b47b114480f411c8f7998245c8e3db223f7b0e4ed624de4e6",
+      "issues": []
+    },
+    {
+      "skill": "slidev-animejs",
+      "profile": "source",
+      "passed": true,
+      "fileCount": 47,
+      "payloadSha256": "28166467628d2ad5a92d22dc41230f1736d67dc2cffd9dbd9a20ab0999e1619d",
+      "issues": []
+    },
+    {
+      "skill": "slidev-animejs",
+      "profile": "runtime",
+      "passed": true,
+      "fileCount": 37,
+      "payloadSha256": "7eebfdd50dfb5c282b6a97af2357ed1d26e90a60be34484219c1cac3b1597ced",
+      "issues": []
+    },
+    {
+      "skill": "slidev-animejs",
+      "profile": "full",
+      "passed": true,
+      "fileCount": 47,
+      "payloadSha256": "28166467628d2ad5a92d22dc41230f1736d67dc2cffd9dbd9a20ab0999e1619d",
+      "issues": []
+    },
+    {
+      "skill": "slidev-echarts",
+      "profile": "source",
+      "passed": true,
+      "fileCount": 58,
+      "payloadSha256": "fa670c881d011191cca8031212f1b40f0a49628838d6b7442a050a64fffc6709",
+      "issues": []
+    },
+    {
+      "skill": "slidev-echarts",
+      "profile": "runtime",
+      "passed": true,
+      "fileCount": 34,
+      "payloadSha256": "d29e0479e2e18e6f33f7d8459f5ea21cf2640c4f6c84b00e41862950f78ff598",
+      "issues": []
+    },
+    {
+      "skill": "slidev-echarts",
+      "profile": "full",
+      "passed": true,
+      "fileCount": 58,
+      "payloadSha256": "fa670c881d011191cca8031212f1b40f0a49628838d6b7442a050a64fffc6709",
+      "issues": []
+    },
+    {
+      "skill": "slidev-quality-audit",
+      "profile": "source",
+      "passed": true,
+      "fileCount": 7,
+      "payloadSha256": "fa2859228d442f5d68058db0442ef25d68e3160d00e983905cc1550ad45c37ee",
+      "issues": []
+    },
+    {
+      "skill": "slidev-quality-audit",
+      "profile": "runtime",
+      "passed": true,
+      "fileCount": 7,
+      "payloadSha256": "fa2859228d442f5d68058db0442ef25d68e3160d00e983905cc1550ad45c37ee",
+      "issues": []
+    },
+    {
+      "skill": "slidev-quality-audit",
+      "profile": "full",
+      "passed": true,
+      "fileCount": 7,
+      "payloadSha256": "fa2859228d442f5d68058db0442ef25d68e3160d00e983905cc1550ad45c37ee",
+      "issues": []
+    },
+    {
+      "skill": "svg-brief-design",
+      "profile": "source",
+      "passed": true,
+      "fileCount": 10,
+      "payloadSha256": "d9b777955d4aa1ee712b9460cb1ce61c8453f706a6b64721482e90e29d5ef06c",
+      "issues": []
+    },
+    {
+      "skill": "svg-brief-design",
+      "profile": "runtime",
+      "passed": true,
+      "fileCount": 10,
+      "payloadSha256": "d9b777955d4aa1ee712b9460cb1ce61c8453f706a6b64721482e90e29d5ef06c",
+      "issues": []
+    },
+    {
+      "skill": "svg-brief-design",
+      "profile": "full",
+      "passed": true,
+      "fileCount": 10,
+      "payloadSha256": "d9b777955d4aa1ee712b9460cb1ce61c8453f706a6b64721482e90e29d5ef06c",
+      "issues": []
+    },
+    {
+      "skill": "technical-logo-assets",
+      "profile": "source",
+      "passed": true,
+      "fileCount": 8572,
+      "payloadSha256": "9d9a95898b13851196c7dda9de7b8b7025ffc103e6215015342d0d256beb3812",
+      "issues": []
+    },
+    {
+      "skill": "technical-logo-assets",
+      "profile": "runtime",
+      "passed": true,
+      "fileCount": 8572,
+      "payloadSha256": "9d9a95898b13851196c7dda9de7b8b7025ffc103e6215015342d0d256beb3812",
+      "issues": []
+    },
+    {
+      "skill": "technical-logo-assets",
+      "profile": "full",
+      "passed": true,
+      "fileCount": 8572,
+      "payloadSha256": "9d9a95898b13851196c7dda9de7b8b7025ffc103e6215015342d0d256beb3812",
+      "issues": []
+    },
+    {
+      "skill": "threejs-animated-3d",
+      "profile": "source",
+      "passed": true,
+      "fileCount": 18,
+      "payloadSha256": "3f0607629a610df4bc5c19e16204010400ee2c29ab90e36a888100eb3eece0eb",
+      "issues": []
+    },
+    {
+      "skill": "threejs-animated-3d",
+      "profile": "runtime",
+      "passed": true,
+      "fileCount": 11,
+      "payloadSha256": "da31890f7259575249c6704ac7c96f965d376db4381ed7bd2b228db79c26b631",
+      "issues": []
+    },
+    {
+      "skill": "threejs-animated-3d",
+      "profile": "full",
+      "passed": true,
+      "fileCount": 18,
+      "payloadSha256": "3f0607629a610df4bc5c19e16204010400ee2c29ab90e36a888100eb3eece0eb",
+      "issues": []
+    },
+    {
+      "skill": "usefulcharts-style",
+      "profile": "source",
+      "passed": true,
+      "fileCount": 155,
+      "payloadSha256": "5cbe8ccda9315e20a728825589141e6389edd5ec87c8cc08c61a76543e3d1407",
+      "issues": []
+    },
+    {
+      "skill": "usefulcharts-style",
+      "profile": "runtime",
+      "passed": true,
+      "fileCount": 138,
+      "payloadSha256": "8d802317505889992cee51520ccce5b60e43cda70145392051476e8d720c292a",
+      "issues": []
+    },
+    {
+      "skill": "usefulcharts-style",
+      "profile": "full",
+      "passed": true,
+      "fileCount": 155,
+      "payloadSha256": "5cbe8ccda9315e20a728825589141e6389edd5ec87c8cc08c61a76543e3d1407",
+      "issues": []
+    },
+    {
+      "skill": "vectorize-art-patterns",
+      "profile": "source",
+      "passed": true,
+      "fileCount": 184,
+      "payloadSha256": "9a0b46b070063ed951f225482197ae9592fe1385b625dedd32e3c442ad486818",
+      "issues": []
+    },
+    {
+      "skill": "vectorize-art-patterns",
+      "profile": "runtime",
+      "passed": true,
+      "fileCount": 55,
+      "payloadSha256": "3e81d3098d50729416b17c7377f265fa22415c24257057551c3dccead1d8ec57",
+      "issues": []
+    },
+    {
+      "skill": "vectorize-art-patterns",
+      "profile": "full",
+      "passed": true,
+      "fileCount": 184,
+      "payloadSha256": "9a0b46b070063ed951f225482197ae9592fe1385b625dedd32e3c442ad486818",
+      "issues": []
+    },
+    {
+      "skill": "video",
+      "profile": "source",
+      "passed": true,
+      "fileCount": 82,
+      "payloadSha256": "f535bb072052e64a3f88e2ed5fb7017676df45e3d9378a0ef32b83e3c9880296",
+      "issues": []
+    },
+    {
+      "skill": "video",
+      "profile": "runtime",
+      "passed": true,
+      "fileCount": 54,
+      "payloadSha256": "02c5dc99851830a12adac0decf8e57caea5497bec69fa49f8da317709e3a4650",
+      "issues": []
+    },
+    {
+      "skill": "video",
+      "profile": "full",
+      "passed": true,
+      "fileCount": 82,
+      "payloadSha256": "f535bb072052e64a3f88e2ed5fb7017676df45e3d9378a0ef32b83e3c9880296",
+      "issues": []
+    }
+  ],
+  "classification": "Passing snapshot retained, superseded by subsequent concrete source repairs."
+}

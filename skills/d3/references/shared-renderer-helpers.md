@@ -6,6 +6,7 @@
 - [Minimal Helpers](#minimal-helpers)
 - [Schematic Land Context](#schematic-land-context)
 - [Standalone Conversion Rules](#standalone-conversion-rules)
+- [Directional Connector Contract](#directional-connector-contract)
 
 Use this reference only when a per-pattern file under `references/patterns/` includes helper names from the gallery fixture. Recreate the minimal behavior locally; do not read the gallery source for normal pattern generation.
 
@@ -15,6 +16,12 @@ Preserve transparency only on explicit `data-opacity-role="semantic"` shapes
 or groups when it communicates overlap, density, values, or a named selection
 state. Describe that meaning. Use `data-opacity-role="reveal"` for a
 programmatic reveal; CSS and SVG opacity animation also remains supported.
+Choose label ink against a freeze-to-visible reveal's final filled backing,
+including ancestor opacity, so initially hidden marks do not lock labels to
+canvas ink. Keep the reveal clock and explicit semantic alpha unchanged.
+For labels inside a growing face, set `data-text-backing="circle"` (or a local
+face selector) on their enclosing group. Inspect actual containment at delivery;
+the explicit face avoids the initial small geometry selecting canvas ink.
 
 ## Default Geometry And Tokens
 
@@ -241,3 +248,19 @@ labels or add symbols or split views rather than generating wider borders.
 - If the final artifact must be self-contained, use static SVG geometry and SVG-native animation. Do not depend on CDN D3 or runtime JavaScript.
 - Keep the excerpt's deterministic layout choices, such as seeded force simulations and fixed viewBox dimensions.
 - Replace gallery-specific CSS classes with local styles when needed, especially for `.mark-label`, `.axis`, grid lines, and label halos.
+
+## Directional connector contract
+
+Mark non-marker direction silhouettes with `data-direction-role="glyph"`: put it on a paired shaft/head group or the direction path inside an equipment symbol. The finalizer samples actual filled underlays, preserves geometry and magnitude encoding, and scopes one allowed contrasting paint to the pair. Keep semantic symbols and source artwork exempt from generic arrow inference; only explicitly directional glyphs receive this correction.
+
+For data-coded arrow ramps, choose distinct contrasting role variants before correction; the vector-field recipe uses dark yellow, dark orange and red to retain three magnitude bins. Closest-color repair of a light yellow would otherwise merge it with the orange bin. Retain arrow length as the quantitative magnitude cue.
+
+For a direction glyph fully contained inside one equipment face, set `data-direction-backing="circle"` (or a matching local face selector) and verify containment in the browser. The selector resolves within the glyph's parent, reads the actual face paint and persistent alpha, and avoids a reveal-time hit test selecting the canvas. Moving pulses are clipped out of the exact triangle silhouettes of these glyphs as well as marker tips.
+
+For a backing with a freeze-to-visible SMIL or Web Animation opacity reveal, choose persistent arrow paint against the final backing alpha, while preserving its actual hidden/reveal state. Explicit semantic opacity continues to use actual alpha. Keep the terminal shaft outside a filled actuator too; retreating a marker alone does not remove a same-colored shaft fragment inside that actuator.
+
+Keep categorical nodes opaque and borderless. Give each arrow a real gutter: its tip stays at least 4 SVG units outside the target fill, and its complete head fits between the source and target. Route the final control point outside the target so its terminal tangent points toward that target. Use explicit `markerUnits="userSpaceOnUse"` with bounded 8–10-unit heads when shaft widths vary; stroke-scaled heads can consume an entire narrow gutter. Scope marker paint per edge rather than sharing a blue head with a green reply. Preserve open heads, dots and source artwork semantics.
+
+`assets/templates/solid-style.js` finalizes authored end markers using actual filled backing geometry, composited persistent alpha, terminal tangents and explicit portable marker paint. It samples visible shaft portions independently of terminal paint, retains partial reveal/focus animation, and marks an edge `data-arrow-unresolved` when no allowed paint reaches 3:1. Resolve that finding by rerouting or splitting the semantic edge into separately painted spans; never accept its fallback paint as a pass. Transparent SVG backgrounds inherit the composited page background. The helper does not rewrite start/mid markers or embedded source artwork; inspect any such authored markers explicitly.
+
+Check tip, wings and shaft against their local backing at settled delivery, keyboard focus and reduced-motion states. Moving flow pulse layers preserve their trajectories and clocks but clip the exact triangular head silhouettes out of their paint, so persistent arrow tips remain visible without a halo. Audit the resulting clip geometry in exported SVG. Do not add outlines or halos around nodes to repair an arrow.

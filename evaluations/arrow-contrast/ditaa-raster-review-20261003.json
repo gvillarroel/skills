@@ -1,0 +1,213 @@
+{
+  "date": "2026-10-03",
+  "passed": true,
+  "states": [
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer/png/ditaa.png",
+      "sha256": "6e5d82292a88434b8b9bcb4408693fc2478b91842ae355fcfa88b9f2d3ccedc9",
+      "size": [
+        370,
+        182
+      ],
+      "samples": [
+        {
+          "role": "shaft/head",
+          "xy": [
+            170,
+            49
+          ],
+          "rgba": [
+            0,
+            0,
+            0,
+            255
+          ]
+        },
+        {
+          "role": "shaft/head",
+          "xy": [
+            195,
+            49
+          ],
+          "rgba": [
+            0,
+            0,
+            0,
+            255
+          ]
+        },
+        {
+          "role": "shaft/head",
+          "xy": [
+            213,
+            47
+          ],
+          "rgba": [
+            0,
+            0,
+            0,
+            255
+          ]
+        },
+        {
+          "role": "shaft/head",
+          "xy": [
+            213,
+            49
+          ],
+          "rgba": [
+            0,
+            0,
+            0,
+            255
+          ]
+        },
+        {
+          "role": "shaft/head",
+          "xy": [
+            213,
+            51
+          ],
+          "rgba": [
+            0,
+            0,
+            0,
+            255
+          ]
+        },
+        {
+          "role": "backing",
+          "xy": [
+            170,
+            44
+          ],
+          "rgba": [
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "role": "backing",
+          "xy": [
+            213,
+            40
+          ],
+          "rgba": [
+            255,
+            255,
+            255,
+            255
+          ]
+        }
+      ],
+      "contrast": 21,
+      "passed": true
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer-cs1/png/ditaa.png",
+      "sha256": "6e5d82292a88434b8b9bcb4408693fc2478b91842ae355fcfa88b9f2d3ccedc9",
+      "size": [
+        370,
+        182
+      ],
+      "samples": [
+        {
+          "role": "shaft/head",
+          "xy": [
+            170,
+            49
+          ],
+          "rgba": [
+            0,
+            0,
+            0,
+            255
+          ]
+        },
+        {
+          "role": "shaft/head",
+          "xy": [
+            195,
+            49
+          ],
+          "rgba": [
+            0,
+            0,
+            0,
+            255
+          ]
+        },
+        {
+          "role": "shaft/head",
+          "xy": [
+            213,
+            47
+          ],
+          "rgba": [
+            0,
+            0,
+            0,
+            255
+          ]
+        },
+        {
+          "role": "shaft/head",
+          "xy": [
+            213,
+            49
+          ],
+          "rgba": [
+            0,
+            0,
+            0,
+            255
+          ]
+        },
+        {
+          "role": "shaft/head",
+          "xy": [
+            213,
+            51
+          ],
+          "rgba": [
+            0,
+            0,
+            0,
+            255
+          ]
+        },
+        {
+          "role": "backing",
+          "xy": [
+            170,
+            44
+          ],
+          "rgba": [
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "role": "backing",
+          "xy": [
+            213,
+            40
+          ],
+          "rgba": [
+            255,
+            255,
+            255,
+            255
+          ]
+        }
+      ],
+      "contrast": 21,
+      "passed": true
+    }
+  ],
+  "scope": "Two unchanged native raster-only Ditaa fixtures: opaque black shaft/head interior samples on white. The source arrow and its clear arrival gutter were manually inspected; ordinary unheaded dependencies are not reclassified as arrows. This finite control does not certify arbitrary imported raster artwork."
+}

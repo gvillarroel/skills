@@ -148,6 +148,17 @@ const option = computed(() => ({
 
 Keep `id` stable when the series is conceptually the same across clicks. Use `replaceMerge: ['series']` only when the number or meaning of series changes.
 
+For directed output, follow [arrow contrast and placement](arrow-contrast.md).
+Prepare options with the bundled colorset helper before `setOption`. For a
+continuous two-point Cartesian route ending in a radius-4 scatter mark, lay
+out the original option, then call `insetCartesianArrowRoutes(option, chart, 7)`
+and apply its result. Keep the original option for semantic endpoints and
+recompute the pixel inset after resize and click changes. The example wrapper
+exposes `arrowTerminalClearance`, and its route slide sets 7 px; other chart
+families retain their native endpoint geometry. Inspect actual heads, local
+backings and settled focus states rather than treating the option helper as
+a complete rendered-arrow audit.
+
 ## Accessibility And Export
 
 - Set `aria.show: true` and register `AriaComponent` for accessible chart descriptions.

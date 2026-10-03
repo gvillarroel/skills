@@ -50,7 +50,7 @@
       if (mark.kind === 'text') node.setAttribute('text-anchor', mark.anchor || 'start');
       if (mark.arrow) {
         const marker = element('marker', {id: `arrow-${mark.id}`, markerWidth: 4, markerHeight: 4,
-          refX: 3, refY: 2, orient: 'auto', markerUnits: 'strokeWidth'}, defs);
+          refX: 4, refY: 2, orient: 'auto', markerUnits: 'strokeWidth'}, defs);
         element('path', {d: 'M0 0 L4 2 L0 4 Z', fill: palette.roles[(brief.entities || {})[mark.entity] || mark.stroke || 'ink']}, marker);
         node.setAttribute('marker-end', `url(#arrow-${mark.id})`);
       }

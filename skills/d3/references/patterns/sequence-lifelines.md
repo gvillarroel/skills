@@ -59,7 +59,7 @@ function renderD3SequenceLifelines() {
     fadeIn(activation, .35, .4);
     const msg = svg.append("g").selectAll("g.seq-message").data(messages).join("g").attr("class", "seq-message");
     const paths = msg.append("path")
-      .attr("d", d => `M${x.get(d.from)},${d.y}H${x.get(d.to)}`)
+      .attr("d", d => { const direction = Math.sign(x.get(d.to) - x.get(d.from)); const edge = actor => actor === "API" ? 12 : 4; return `M${x.get(d.from) + direction * edge(d.from)},${d.y}H${x.get(d.to) - direction * edge(d.to)}`; })
       .attr("fill", "none")
       .attr("stroke", d => d.reply ? palette.green : palette.blueHover)
       .attr("stroke-width", 2)

@@ -1,0 +1,412 @@
+{
+  "date": "2026-10-03",
+  "bundleCount": 34,
+  "skills": [
+    {
+      "skill": "ambientcg-material-search",
+      "owner": "root-support",
+      "outputScope": "authored-colorset",
+      "boundary": "Retrieved/source logo or icon arrows preserve identity; authored preview chrome uses existing binary contrast. No semantic connector route is generated.",
+      "runtimeCodeIndicators": []
+    },
+    {
+      "skill": "animated-svg-to-gif",
+      "owner": "root-support",
+      "outputScope": "authored-colorset",
+      "boundary": "Conversion/capture preserves supplied arrow artwork and timing; verify representative exported arrow visibility rather than inventing a semantic route.",
+      "runtimeCodeIndicators": []
+    },
+    {
+      "skill": "asciinema-real-command-video",
+      "owner": "root-support",
+      "outputScope": "authored-colorset",
+      "boundary": "Conversion/capture preserves supplied arrow artwork and timing; verify representative exported arrow visibility rather than inventing a semantic route.",
+      "runtimeCodeIndicators": []
+    },
+    {
+      "skill": "compose-synchronized-svg",
+      "owner": "composition",
+      "outputScope": "authored-colorset",
+      "boundary": "Owning group reviews authored shafts, heads, terminals and relevant renderer/import/auditor behavior.",
+      "runtimeCodeIndicators": [
+        {
+          "path": "scripts/audit_synchronized_svg.py",
+          "indicatorCount": 3
+        },
+        {
+          "path": "scripts/compose_synchronized_svg.py",
+          "indicatorCount": 6
+        },
+        {
+          "path": "scripts/scaffold_synchronized_svg.py",
+          "indicatorCount": 6
+        },
+        {
+          "path": "scripts/test_synchronized_svg_tools.py",
+          "indicatorCount": 4
+        },
+        {
+          "path": "scripts/validate_synchronized_svg.py",
+          "indicatorCount": 1
+        }
+      ]
+    },
+    {
+      "skill": "d3",
+      "owner": "custom",
+      "outputScope": "authored-colorset",
+      "boundary": "Owning group reviews authored shafts, heads, terminals and relevant renderer/import/auditor behavior.",
+      "runtimeCodeIndicators": [
+        {
+          "path": "assets/templates/solid-style.js",
+          "indicatorCount": 1
+        },
+        {
+          "path": "scripts/build_contract_artifact.py",
+          "indicatorCount": 3
+        },
+        {
+          "path": "scripts/build_critical_bowtie_barrier.py",
+          "indicatorCount": 3
+        },
+        {
+          "path": "scripts/build_process_pid_control_loop.py",
+          "indicatorCount": 2
+        },
+        {
+          "path": "scripts/test_colorset_adapter.py",
+          "indicatorCount": 1
+        }
+      ]
+    },
+    {
+      "skill": "destockd-video-search",
+      "owner": "root-support",
+      "outputScope": "authored-colorset",
+      "boundary": "Retrieved/source logo or icon arrows preserve identity; authored preview chrome uses existing binary contrast. No semantic connector route is generated.",
+      "runtimeCodeIndicators": []
+    },
+    {
+      "skill": "diagram-composition",
+      "owner": "composition",
+      "outputScope": "authored-colorset",
+      "boundary": "Owning group reviews authored shafts, heads, terminals and relevant renderer/import/auditor behavior.",
+      "runtimeCodeIndicators": [
+        {
+          "path": "scripts/audit_diagram.py",
+          "indicatorCount": 2
+        },
+        {
+          "path": "scripts/build_panels.py",
+          "indicatorCount": 1
+        },
+        {
+          "path": "scripts/compose_diagram.py",
+          "indicatorCount": 1
+        },
+        {
+          "path": "scripts/test_composition.py",
+          "indicatorCount": 1
+        }
+      ]
+    },
+    {
+      "skill": "echarts-animated-svg",
+      "owner": "diagrams",
+      "outputScope": "authored-colorset",
+      "boundary": "Owning group reviews authored shafts, heads, terminals and relevant renderer/import/auditor behavior.",
+      "runtimeCodeIndicators": [
+        {
+          "path": "assets/templates/echarts-colorsets.mjs",
+          "indicatorCount": 1
+        },
+        {
+          "path": "scripts/test_arrow_options.py",
+          "indicatorCount": 4
+        }
+      ]
+    },
+    {
+      "skill": "google-cloud-sku-pricing",
+      "owner": "root-support",
+      "outputScope": "nonvisual",
+      "boundary": "No authored visual arrows; retain nonvisual data/report contracts.",
+      "runtimeCodeIndicators": []
+    },
+    {
+      "skill": "harbor-author-evaluation-datasets",
+      "owner": "root-support",
+      "outputScope": "authored-colorset",
+      "boundary": "Two authored directional arrow glyphs in axis captions; actual stage/text contrast review.",
+      "runtimeCodeIndicators": [
+        {
+          "path": "scripts/consolidate_harbor_reports.py",
+          "indicatorCount": 2
+        }
+      ]
+    },
+    {
+      "skill": "hierarchy-lens",
+      "owner": "composition",
+      "outputScope": "authored-colorset",
+      "boundary": "No native semantic arrow producer; inspect navigation/source-derived geometry without adding unrelated arrows.",
+      "runtimeCodeIndicators": [
+        {
+          "path": "assets/templates/decision-ui.js",
+          "indicatorCount": 2
+        },
+        {
+          "path": "assets/templates/explorer.html",
+          "indicatorCount": 3
+        },
+        {
+          "path": "assets/templates/pixels.html",
+          "indicatorCount": 6
+        }
+      ]
+    },
+    {
+      "skill": "hyperframes-explainer",
+      "owner": "composition",
+      "outputScope": "authored-colorset",
+      "boundary": "Owning group reviews authored shafts, heads, terminals and relevant renderer/import/auditor behavior.",
+      "runtimeCodeIndicators": [
+        {
+          "path": "assets/templates/audit.ts",
+          "indicatorCount": 2
+        },
+        {
+          "path": "assets/templates/index.html",
+          "indicatorCount": 1
+        }
+      ]
+    },
+    {
+      "skill": "iconify-icon-search",
+      "owner": "root-support",
+      "outputScope": "authored-colorset",
+      "boundary": "Retrieved/source logo or icon arrows preserve identity; authored preview chrome uses existing binary contrast. No semantic connector route is generated.",
+      "runtimeCodeIndicators": []
+    },
+    {
+      "skill": "jev-batch-decisions",
+      "owner": "root-support",
+      "outputScope": "nonvisual",
+      "boundary": "No authored visual arrows; retain nonvisual data/report contracts.",
+      "runtimeCodeIndicators": []
+    },
+    {
+      "skill": "kenney-asset-search",
+      "owner": "root-support",
+      "outputScope": "authored-colorset",
+      "boundary": "Retrieved/source logo or icon arrows preserve identity; authored preview chrome uses existing binary contrast. No semantic connector route is generated.",
+      "runtimeCodeIndicators": []
+    },
+    {
+      "skill": "manim-svg-video",
+      "owner": "composition",
+      "outputScope": "authored-colorset",
+      "boundary": "Owning group reviews authored shafts, heads, terminals and relevant renderer/import/auditor behavior.",
+      "runtimeCodeIndicators": [
+        {
+          "path": "scripts/compose_svg_video.py",
+          "indicatorCount": 5
+        }
+      ]
+    },
+    {
+      "skill": "mermaid",
+      "owner": "diagrams",
+      "outputScope": "authored-colorset",
+      "boundary": "Owning group reviews authored shafts, heads, terminals and relevant renderer/import/auditor behavior.",
+      "runtimeCodeIndicators": [
+        {
+          "path": "scripts/animate_mermaid_svg.py",
+          "indicatorCount": 46
+        },
+        {
+          "path": "scripts/arrow_contrast.py",
+          "indicatorCount": 13
+        },
+        {
+          "path": "scripts/mermaid_animation/style.py",
+          "indicatorCount": 46
+        },
+        {
+          "path": "scripts/style_mermaid_directory.py",
+          "indicatorCount": 2
+        },
+        {
+          "path": "scripts/test_arrow_contrast.py",
+          "indicatorCount": 12
+        }
+      ]
+    },
+    {
+      "skill": "one-bit-dither-svg",
+      "owner": "root-support",
+      "outputScope": "authored-colorset",
+      "boundary": "Conversion/capture preserves supplied arrow artwork and timing; verify representative exported arrow visibility rather than inventing a semantic route.",
+      "runtimeCodeIndicators": []
+    },
+    {
+      "skill": "pexels-media-search",
+      "owner": "root-support",
+      "outputScope": "authored-colorset",
+      "boundary": "Retrieved/source logo or icon arrows preserve identity; authored preview chrome uses existing binary contrast. No semantic connector route is generated.",
+      "runtimeCodeIndicators": []
+    },
+    {
+      "skill": "pixel-art-image-video",
+      "owner": "root-support",
+      "outputScope": "authored-colorset",
+      "boundary": "Conversion/capture preserves supplied arrow artwork and timing; verify representative exported arrow visibility rather than inventing a semantic route.",
+      "runtimeCodeIndicators": []
+    },
+    {
+      "skill": "plantuml-colorset-renderer",
+      "owner": "diagrams",
+      "outputScope": "authored-colorset",
+      "boundary": "Owning group reviews authored shafts, heads, terminals and relevant renderer/import/auditor behavior.",
+      "runtimeCodeIndicators": [
+        {
+          "path": "scripts/arrow_contrast.py",
+          "indicatorCount": 13
+        },
+        {
+          "path": "scripts/test_arrow_contrast.py",
+          "indicatorCount": 11
+        }
+      ]
+    },
+    {
+      "skill": "polyhaven-asset-search",
+      "owner": "root-support",
+      "outputScope": "authored-colorset",
+      "boundary": "Retrieved/source logo or icon arrows preserve identity; authored preview chrome uses existing binary contrast. No semantic connector route is generated.",
+      "runtimeCodeIndicators": []
+    },
+    {
+      "skill": "procedural-svg-animation",
+      "owner": "custom",
+      "outputScope": "authored-colorset",
+      "boundary": "Owning group reviews authored shafts, heads, terminals and relevant renderer/import/auditor behavior.",
+      "runtimeCodeIndicators": []
+    },
+    {
+      "skill": "repository-reviewer-creator",
+      "owner": "root-support",
+      "outputScope": "nonvisual",
+      "boundary": "No authored visual arrows; retain nonvisual data/report contracts.",
+      "runtimeCodeIndicators": []
+    },
+    {
+      "skill": "simulation-data-lab",
+      "owner": "root-support",
+      "outputScope": "nonvisual",
+      "boundary": "No authored visual arrows; retain nonvisual data/report contracts.",
+      "runtimeCodeIndicators": []
+    },
+    {
+      "skill": "slidev-animejs",
+      "owner": "diagrams",
+      "outputScope": "authored-colorset",
+      "boundary": "Owning group reviews authored shafts, heads, terminals and relevant renderer/import/auditor behavior.",
+      "runtimeCodeIndicators": []
+    },
+    {
+      "skill": "slidev-echarts",
+      "owner": "diagrams",
+      "outputScope": "authored-colorset",
+      "boundary": "Owning group reviews authored shafts, heads, terminals and relevant renderer/import/auditor behavior.",
+      "runtimeCodeIndicators": [
+        {
+          "path": "assets/templates/echarts-colorsets.mjs",
+          "indicatorCount": 1
+        },
+        {
+          "path": "scripts/test_arrow_options.py",
+          "indicatorCount": 4
+        }
+      ]
+    },
+    {
+      "skill": "slidev-quality-audit",
+      "owner": "diagrams",
+      "outputScope": "authored-colorset",
+      "boundary": "Owning group reviews authored shafts, heads, terminals and relevant renderer/import/auditor behavior.",
+      "runtimeCodeIndicators": [
+        {
+          "path": "scripts/audit-slidev-quality.ts",
+          "indicatorCount": 2
+        }
+      ]
+    },
+    {
+      "skill": "svg-brief-design",
+      "owner": "custom",
+      "outputScope": "authored-colorset",
+      "boundary": "Owning group reviews authored shafts, heads, terminals and relevant renderer/import/auditor behavior.",
+      "runtimeCodeIndicators": []
+    },
+    {
+      "skill": "technical-logo-assets",
+      "owner": "root-support",
+      "outputScope": "authored-colorset",
+      "boundary": "Retrieved/source logo or icon arrows preserve identity; authored preview chrome uses existing binary contrast. No semantic connector route is generated.",
+      "runtimeCodeIndicators": []
+    },
+    {
+      "skill": "threejs-animated-3d",
+      "owner": "custom",
+      "outputScope": "authored-colorset",
+      "boundary": "Owning group reviews authored shafts, heads, terminals and relevant renderer/import/auditor behavior.",
+      "runtimeCodeIndicators": [
+        {
+          "path": "assets/templates/self-contained-token-orbit.html",
+          "indicatorCount": 1
+        }
+      ]
+    },
+    {
+      "skill": "usefulcharts-style",
+      "owner": "composition",
+      "outputScope": "authored-colorset",
+      "boundary": "Owning group reviews authored shafts, heads, terminals and relevant renderer/import/auditor behavior.",
+      "runtimeCodeIndicators": [
+        {
+          "path": "scripts/audit_panel_poster.py",
+          "indicatorCount": 2
+        },
+        {
+          "path": "scripts/create_panel_poster.py",
+          "indicatorCount": 2
+        },
+        {
+          "path": "scripts/render_chart.py",
+          "indicatorCount": 1
+        }
+      ]
+    },
+    {
+      "skill": "vectorize-art-patterns",
+      "owner": "custom",
+      "outputScope": "authored-colorset",
+      "boundary": "No native semantic arrow producer; inspect navigation/source-derived geometry without adding unrelated arrows.",
+      "runtimeCodeIndicators": []
+    },
+    {
+      "skill": "video",
+      "owner": "composition",
+      "outputScope": "authored-colorset",
+      "boundary": "Owning group reviews authored shafts, heads, terminals and relevant renderer/import/auditor behavior.",
+      "runtimeCodeIndicators": [
+        {
+          "path": "assets/templates/svg-arrows.js",
+          "indicatorCount": 3
+        }
+      ]
+    }
+  ],
+  "scope": "Full 34-bundle inventory and manual ownership boundaries. Text indicators locate candidates, not proof that an arrow is generated or passes actual contrast. Owning rendered/isolated evidence supplies acceptance."
+}

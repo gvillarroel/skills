@@ -1,7 +1,7 @@
 #!/usr/bin/env -S uv run --script
 # /// script
 # requires-python = ">=3.11"
-# dependencies = ["pillow>=11.0"]
+# dependencies = ["pillow>=11.0", "resvg-py>=0.5,<0.6"]
 # ///
 
 from __future__ import annotations
@@ -14,6 +14,7 @@ import shutil
 import subprocess
 import sys
 import time
+import tempfile
 import urllib.error
 import urllib.request
 import zlib
@@ -23,6 +24,7 @@ from pathlib import Path
 
 from plantuml_coverage import fixture_index, load_manifest
 from palette_paints import COLORSETS, NAMES, canonical, nearest, readable_text, require_svg_palette, svg_paints
+from arrow_contrast import finish_native_arrows
 
 
 SCRIPT_DIR = Path(__file__).resolve().parent
@@ -48,6 +50,7 @@ class RenderOutput:
     engine: str
     palette_normalized: bool = False
     source_media_preserved: bool = False
+    svg_derived: bool = False
 
 
 @dataclass
@@ -401,8 +404,7 @@ def render_source(
         if not expected_formats:
             raise RuntimeError("No requested output format is supported for this coverage fixture")
         kroki_diagram_type = kroki_diagram_type_for(start_directive)
-        for fmt in expected_formats:
-            target = output_path_for(source_path, input_dir, output_dir, fmt)
+        def render_native(fmt, target):
             if engine == "server":
                 render_with_server(themed_source_text, fmt, target, server_url, timeout)
             elif engine == "kroki":
@@ -418,15 +420,36 @@ def render_source(
                 render_with_cli(themed_source_text, fmt, target, plantuml_command, timeout)
             else:
                 raise ValueError(f"Unsupported engine: {engine}")
-            contains_source_media = bool(re.search(r"<img:|!include.*(?:aws|azure|gcp)|sprite", raw_source, re.I))
-            if fmt == "svg":
-                tree = ET.parse(target)
-                svg_paints(tree.getroot(), colorset, normalize=True)
-                preserve_native_details(tree.getroot())
-                tree.getroot().set("data-colorset", colorset)
-                tree.write(target, encoding="utf-8", xml_declaration=True)
-                require_svg_palette(tree.getroot(), colorset)
-            elif fmt == "png" and not contains_source_media:
+        def finish_svg(target):
+            tree = ET.parse(target)
+            svg_paints(tree.getroot(), colorset, normalize=True)
+            preserve_native_details(tree.getroot())
+            finish_native_arrows(tree.getroot(), colorset, 'plantuml')
+            tree.getroot().set("data-colorset", colorset)
+            tree.write(target, encoding="utf-8", xml_declaration=True)
+            require_svg_palette(tree.getroot(), colorset)
+        contains_source_media = bool(re.search(r"<img:|!include.*(?:aws|azure|gcp)|sprite", raw_source, re.I))
+        finished_svg = None
+        for fmt in sorted(expected_formats,key=lambda value:value != 'svg'):
+            target = output_path_for(source_path, input_dir, output_dir, fmt)
+            target.parent.mkdir(parents=True,exist_ok=True)
+            svg_derived = False
+            svg_capable = start_directive not in NO_THEME_START_DIRECTIVES and (coverage_fixture is None or 'svg' in coverage_fixture.get('formats',[]))
+            if fmt == 'png' and svg_capable and not contains_source_media:
+                # Use one finished geometry/paint source for both delivery formats,
+                # including PNG-only requests. Temporary sources stay under output.
+                import resvg_py
+                with tempfile.TemporaryDirectory(prefix='.native-svg-',dir=output_dir) as temporary:
+                    source_svg = finished_svg or Path(temporary)/'diagram.svg'
+                    if finished_svg is None:
+                        render_native('svg',source_svg);finish_svg(source_svg)
+                    target.write_bytes(resvg_py.svg_to_bytes(svg_path=str(source_svg),background='#ffffff',font_family='Arial'))
+                svg_derived = True
+            else:
+                render_native(fmt,target)
+                if fmt == 'svg':
+                    finish_svg(target);finished_svg=target
+            if fmt == "png" and not contains_source_media:
                 # Raster-only Ditaa and standalone math use renderer-native syntax.
                 # Map their output, rather than corrupting the input with theme text.
                 from PIL import Image
@@ -448,6 +471,7 @@ def render_source(
                     engine=engine,
                     palette_normalized=fmt == "svg" or not contains_source_media,
                     source_media_preserved=contains_source_media,
+                    svg_derived=svg_derived,
                 )
             )
         return DiagramResult(

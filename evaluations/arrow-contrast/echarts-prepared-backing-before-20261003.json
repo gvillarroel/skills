@@ -1,0 +1,6 @@
+{
+  "phase": "before",
+  "passed": false,
+  "preparedGradientRejected": false,
+  "scope": "The normal prepareColorsetOption path must pass the actual declared backing into arrow qualification rather than its rounded label backing."
+}

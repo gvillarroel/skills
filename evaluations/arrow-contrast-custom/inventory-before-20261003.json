@@ -1,0 +1,42 @@
+{
+  "date": "2026-10-03",
+  "phase": "before",
+  "evidenceStatus": "Initial D3 and SVG-brief raw inventory was accidentally overwritten by an intermediate rerun before phase-specific output paths were introduced. These counts were reported to the parent before edits and are retained as a session-derived summary, not as recreated raw measurements. Current raw file and mislabeled screenshots are renamed intermediate-overwrite/intermediate. The independent Three.js before report and later non-marker glyph before inventory were preserved.",
+  "galleries": [
+    {
+      "gallery": "d3-animated-svg-cs1",
+      "markerArrowCount": 50,
+      "headOcclusionCount": 13,
+      "headLowContrastCount": 16,
+      "shaftLowContrastCount": 30,
+      "markerMismatchCount": 8
+    },
+    {
+      "gallery": "d3-animated-svg-colorset2",
+      "markerArrowCount": 50,
+      "headOcclusionCount": 13,
+      "headLowContrastCount": 13,
+      "shaftLowContrastCount": 23,
+      "markerMismatchCount": 8
+    }
+  ],
+  "svgBrief": {
+    "allowedTokenCount": 54,
+    "lowContrastTokenCount": 24,
+    "baselineMechanism": "Arrow inherited category fill on white canvas"
+  },
+  "threePublishedVectorField": {
+    "arrowCount": 20,
+    "deliveryTimes": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "interiorSampleCount": 100,
+    "lowContrastInteriorSampleCount": 28,
+    "rawReport": "projects/arrow-contrast-custom/artifacts/data/three-vector-field-before.json"
+  },
+  "separateNonMarkerGlyphBaseline": "evaluations/arrow-contrast-custom/glyphs-before-20261003.json"
+}

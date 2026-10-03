@@ -10,6 +10,7 @@ import xml.etree.ElementTree as ET
 import time
 from pathlib import Path
 from palette_paints import canonical, readable_text, rgb, solid_colors, solid_style
+from arrow_contrast import finish_native_arrows
 
 def style(element: ET.Element, declarations: str) -> None:
     keys = {part.split(':', 1)[0].strip() for part in declarations.split(';') if ':' in part}
@@ -381,4 +382,5 @@ def native_solid_presentation(root: ET.Element, colorset: str) -> None:
                 if child.tag.rsplit('}',1)[-1] in {'rect','path'}:fill_shape(child,colors[0])
             label(element,colors[0])
     native_family_details(root, colorset)
+    finish_native_arrows(root, colorset)
     root.set('data-category-presentation','solid-first')

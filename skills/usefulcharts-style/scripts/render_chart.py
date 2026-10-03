@@ -18,7 +18,7 @@ import math
 import re
 import sys
 from pathlib import Path
-from palette_contract import require_color
+from palette_contract import require_color, arrow_color
 
 INK = "#1c1c1c"
 MUTED = "#4f4f4f"
@@ -410,9 +410,9 @@ class Poster:
                 label = "Partnership"
             else:
                 dash, label = KINDS[kind]
-                self.line([(x, y - 4), (x + 38, y - 4)], self.muted, 3, dash)
+                self.line([(x, y - 4), (x + 38, y - 4)], self.muted, 3, dash, extra=f'data-arrow-shaft="true" data-arrow-id="legend-{kind}"' if kind in ("influence", "succession") else "")
                 if kind in ("influence", "succession"):
-                    self.add(f'<path d="M {x+30} {y-9} L {x+39} {y-4} L {x+30} {y+1}" fill="none" stroke="{self.muted}" stroke-width="2"/>')
+                    self.add(f'<path data-arrow-head="true" data-arrow-id="legend-{kind}" d="M {x+30} {y-9} L {x+39} {y-4} L {x+30} {y+1}" fill="none" stroke="{self.muted}" stroke-width="2"/>')
             self.text(x + 48, y + 2, label, 16, anchor="start")
         self.line([(65, self.top - 68), (self.w - 65, self.top - 68)], "#b5b5b5", 1)
 
@@ -587,14 +587,15 @@ class Poster:
             require(not any(segment_hits(p, q, box, 0) for p,q in zip(path,path[1:]) for box in self.boxes.values()), f"Relation {eid} touches a label rectangle. Reorder the branch.")
             group = edge.get("group", self.nodes[target]["group"])
             require(group in self.groups, f"Unknown color group for edge {eid}.")
-            paint = self.groups[group]["color"]
+            paint = arrow_color(self.groups[group]["color"], (self.paper,))
             # Thin under-stroke separates unrelated crossings without a false junction dot.
             self.line(path, self.paper, 7)
+            arrow_attrs = f' data-arrow-shaft="true" data-arrow-id="{eid}"' if kind in ("influence", "succession") else ""
             self.line(path, paint, 3.3, KINDS[kind][0],
-                      extra=f'data-edge-id="{eid}" data-source="{source}" data-target="{target}" data-kind="{kind}"')
+                      extra=f'data-edge-id="{eid}" data-source="{source}" data-target="{target}" data-kind="{kind}"{arrow_attrs}')
             if kind in ("influence", "succession"):
                 x, y = end
-                self.add(f'<path d="M {fmt(x-5)} {fmt(y-9)} L {fmt(x)} {fmt(y-1)} L {fmt(x+5)} {fmt(y-9)}" fill="none" stroke="{paint}" stroke-width="3"/>')
+                self.add(f'<path data-arrow-head="true" data-arrow-id="{eid}" d="M {fmt(x-5)} {fmt(y-11)} L {fmt(x)} {fmt(y-3)} L {fmt(x+5)} {fmt(y-11)}" fill="none" stroke="{paint}" stroke-width="3"/>')
             self.routes.append(dict(edge, points=path))
             segments.extend(zip(path, path[1:]))
 

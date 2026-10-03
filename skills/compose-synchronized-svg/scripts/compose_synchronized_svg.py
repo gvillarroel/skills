@@ -34,7 +34,7 @@ sys.dont_write_bytecode = True
 
 import replace_svg_module as replacer  # noqa: E402
 import scaffold_synchronized_svg as scaffold  # noqa: E402
-from palette_contract import text_on_fill, category_style
+from palette_contract import text_on_fill, category_style, arrow_color
 
 
 SVG_NS = "http://www.w3.org/2000/svg"
@@ -582,6 +582,12 @@ def category_outline(plan: dict[str, Any], info: BindingInfo) -> str:
     style = category_style(index, colorset, theme["colors"]["canvas"])
     return (f'stroke="{style["stroke"]}" stroke-width="{style["strokeWidth"]}" '
             f'stroke-dasharray="{style["dash"]}" data-category-style="{"overflow" if style["overflow"] else "solid"}"')
+
+
+def flow_arrow_color(plan: dict[str, Any], info: BindingInfo) -> str:
+    theme = scaffold.theme_for_plan(plan)
+    colorset = "colorset1" if theme["preset"] in {"editorial", "colorset1"} else "colorset2"
+    return arrow_color(info.color, (theme["colors"]["canvas"], theme["colors"]["surface"]), colorset)
 
 
 def render_mark(
@@ -1222,8 +1228,8 @@ def render_flow_family(
         f'data-flow-center-y="{fmt(flow_center_y)}" data-flow-source-x="{fmt(source_x)}" '
         f'data-flow-label-min-y="{fmt(top + 14)}" '
         f'data-flow-reverse-marker="url(#{esc(reverse_marker_id)})">',
-        f'<defs><marker id="{esc(reverse_marker_id)}" viewBox="0 0 8 8" refX="7" refY="4" '
-        f'markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L8 4 L0 8 Z" '
+        f'<defs><marker id="{esc(reverse_marker_id)}" viewBox="0 0 8 8" refX="8" refY="4" '
+        f'markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0 L8 4 L0 8 Z" '
         f'fill="context-stroke"/></marker></defs>',
         f'<text data-flow-source-label="true" data-base-label="{esc(source_base_label)}" x="{fmt(left)}" '
         f'y="{fmt(top + 14)}" font-size="10" font-weight="650" '
@@ -1284,7 +1290,7 @@ def render_flow_family(
                 f'data-flow-forward-path="{forward_path}" data-flow-reverse-path="{reverse_path}" '
                 f'data-flow-direction="{direction}">',
                 f'<path d="{reverse_path if is_negative else forward_path}" data-sync-flow-path="{index}" fill="none" '
-                f'stroke="{esc(info.color)}" stroke-opacity="0.44" stroke-width="{fmt(thickness)}" '
+                f'stroke="{esc(flow_arrow_color(plan, info))}" stroke-opacity="1" stroke-width="{fmt(thickness)}" '
                 f'stroke-linecap="round"{negative_path_attrs}/>',
                 f'<rect x="{fmt(destination_x)}" y="{fmt(destination_y)}" '
                 f'width="{fmt(destination_width)}" height="{fmt(destination_height)}" class="text-surface" fill="var(--surface-subtle)" rx="5"/>',
@@ -1783,8 +1789,8 @@ def render_network_family(
                         positions[node["id"]] = (x, y)
         marker_id = f"{module_id}-structural-arrow"
         parts.append(
-            f'<defs><marker id="{esc(marker_id)}" viewBox="0 0 8 8" refX="7" refY="4" '
-            'markerWidth="6" markerHeight="6" orient="auto-start-reverse">'
+            f'<defs><marker id="{esc(marker_id)}" viewBox="0 0 8 8" refX="8" refY="4" '
+            'markerWidth="7" markerHeight="7" markerUnits="userSpaceOnUse" orient="auto-start-reverse">'
             '<path d="M0 0 L8 4 L0 8 Z" fill="var(--muted)"/></marker></defs>'
         )
         radius_scale = 0.80 if dense_radial else 1.0
@@ -1830,7 +1836,7 @@ def render_network_family(
                 else (' stroke-dasharray="3 4"' if link["kind"] == "dependency" else "")
             )
             parts.append(
-                f'<path d="{path}" fill="none" stroke="var(--muted)" stroke-width="1.8" '
+                f'<path d="{path}" fill="none" stroke="var(--muted)" stroke-width="1.8" vector-effect="non-scaling-stroke" '
                 f'marker-end="url(#{esc(marker_id)})"{dash} '
                 f'data-structural-link-id="{esc(link["id"])}" '
                 f'data-source-node="{esc(link["source"])}" data-target-node="{esc(link["target"])}">'
@@ -2062,7 +2068,7 @@ def render_network_family(
                 path = f"M{fmt(x1)} {fmt(y1)} H{fmt(bend_x)} V{fmt(y2)} H{fmt(x2)}"
             parts.append(
                 f'<path d="{path}" fill="none" '
-                'stroke="var(--ink)" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#'
+                'stroke="var(--ink)" stroke-width="1.5" vector-effect="non-scaling-stroke" stroke-linejoin="round" marker-end="url(#'
                 f'{esc(marker_id)})" '
                 f'data-dependency-edge="{esc(source_id)}:{esc(target_id)}"/>'
             )

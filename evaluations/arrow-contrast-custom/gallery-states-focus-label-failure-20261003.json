@@ -1,0 +1,937 @@
+{
+  "date": "2026-10-03",
+  "passed": false,
+  "stateCount": 36,
+  "errors": [],
+  "rows": [
+    {
+      "gallery": "d3-animated-svg-cs1",
+      "item": "flowchart-dag",
+      "state": "focus",
+      "markerArrowCount": 7,
+      "glyphCount": 0,
+      "targetPorts": [],
+      "instrumentLabels": [],
+      "failures": [],
+      "passed": true
+    },
+    {
+      "gallery": "d3-animated-svg-cs1",
+      "item": "flowchart-dag",
+      "state": "expanded",
+      "markerArrowCount": 7,
+      "glyphCount": 0,
+      "targetPorts": [],
+      "instrumentLabels": [],
+      "failures": [],
+      "passed": true
+    },
+    {
+      "gallery": "d3-animated-svg-cs1",
+      "item": "flowchart-dag",
+      "state": "fit",
+      "markerArrowCount": 7,
+      "glyphCount": 0,
+      "targetPorts": [],
+      "instrumentLabels": [],
+      "failures": [],
+      "passed": true
+    },
+    {
+      "gallery": "d3-animated-svg-cs1",
+      "item": "sequence-lifelines",
+      "state": "focus",
+      "markerArrowCount": 7,
+      "glyphCount": 0,
+      "targetPorts": [],
+      "instrumentLabels": [],
+      "failures": [],
+      "passed": true
+    },
+    {
+      "gallery": "d3-animated-svg-cs1",
+      "item": "sequence-lifelines",
+      "state": "expanded",
+      "markerArrowCount": 7,
+      "glyphCount": 0,
+      "targetPorts": [],
+      "instrumentLabels": [],
+      "failures": [],
+      "passed": true
+    },
+    {
+      "gallery": "d3-animated-svg-cs1",
+      "item": "sequence-lifelines",
+      "state": "fit",
+      "markerArrowCount": 7,
+      "glyphCount": 0,
+      "targetPorts": [],
+      "instrumentLabels": [],
+      "failures": [],
+      "passed": true
+    },
+    {
+      "gallery": "d3-animated-svg-cs1",
+      "item": "state-machine",
+      "state": "focus",
+      "markerArrowCount": 11,
+      "glyphCount": 0,
+      "targetPorts": [],
+      "instrumentLabels": [],
+      "failures": [],
+      "passed": true
+    },
+    {
+      "gallery": "d3-animated-svg-cs1",
+      "item": "state-machine",
+      "state": "expanded",
+      "markerArrowCount": 11,
+      "glyphCount": 0,
+      "targetPorts": [],
+      "instrumentLabels": [],
+      "failures": [],
+      "passed": true
+    },
+    {
+      "gallery": "d3-animated-svg-cs1",
+      "item": "state-machine",
+      "state": "fit",
+      "markerArrowCount": 11,
+      "glyphCount": 0,
+      "targetPorts": [],
+      "instrumentLabels": [],
+      "failures": [],
+      "passed": true
+    },
+    {
+      "gallery": "d3-animated-svg-cs1",
+      "item": "process-control-loop",
+      "state": "focus",
+      "markerArrowCount": 6,
+      "glyphCount": 1,
+      "targetPorts": [
+        {
+          "targetId": "tic-102",
+          "alignment": 0.9970544855015816,
+          "clearance": 4.076809620810661,
+          "passed": true
+        }
+      ],
+      "instrumentLabels": [
+        {
+          "instrumentId": "lic-101",
+          "text": "LIC",
+          "faceFill": "rgb(79, 79, 79)",
+          "actual": "rgb(255, 255, 255)",
+          "expected": "rgb(255, 255, 255)",
+          "alpha": 1,
+          "contrast": 8.191131276481592,
+          "passed": true
+        },
+        {
+          "instrumentId": "lic-101",
+          "text": "101",
+          "faceFill": "rgb(79, 79, 79)",
+          "actual": "rgb(255, 255, 255)",
+          "expected": "rgb(255, 255, 255)",
+          "alpha": 1,
+          "contrast": 8.191131276481592,
+          "passed": true
+        },
+        {
+          "instrumentId": "tic-102",
+          "text": "TIC",
+          "faceFill": "rgb(105, 105, 105)",
+          "actual": "rgb(255, 255, 255)",
+          "expected": "rgb(255, 255, 255)",
+          "alpha": 1,
+          "contrast": 5.489814557409947,
+          "passed": true
+        },
+        {
+          "instrumentId": "tic-102",
+          "text": "102",
+          "faceFill": "rgb(105, 105, 105)",
+          "actual": "rgb(255, 255, 255)",
+          "expected": "rgb(255, 255, 255)",
+          "alpha": 1,
+          "contrast": 5.489814557409947,
+          "passed": true
+        },
+        {
+          "instrumentId": "fic-103",
+          "text": "FIC",
+          "faceFill": "rgb(130, 130, 130)",
+          "actual": "rgb(0, 0, 0)",
+          "expected": "rgb(0, 0, 0)",
+          "alpha": 1,
+          "contrast": 5.46455914633617,
+          "passed": true
+        },
+        {
+          "instrumentId": "fic-103",
+          "text": "103",
+          "faceFill": "rgb(130, 130, 130)",
+          "actual": "rgb(0, 0, 0)",
+          "expected": "rgb(0, 0, 0)",
+          "alpha": 1,
+          "contrast": 5.46455914633617,
+          "passed": true
+        },
+        {
+          "instrumentId": "hs-104",
+          "text": "HS",
+          "faceFill": "rgb(158, 27, 50)",
+          "actual": "rgb(255, 255, 255)",
+          "expected": "rgb(255, 255, 255)",
+          "alpha": 1,
+          "contrast": 7.9046884551695875,
+          "passed": true
+        },
+        {
+          "instrumentId": "hs-104",
+          "text": "104",
+          "faceFill": "rgb(158, 27, 50)",
+          "actual": "rgb(255, 255, 255)",
+          "expected": "rgb(255, 255, 255)",
+          "alpha": 1,
+          "contrast": 7.9046884551695875,
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "passed": true
+    },
+    {
+      "gallery": "d3-animated-svg-cs1",
+      "item": "process-control-loop",
+      "state": "expanded",
+      "markerArrowCount": 6,
+      "glyphCount": 1,
+      "targetPorts": [
+        {
+          "targetId": "tic-102",
+          "alignment": 0.9970544855015816,
+          "clearance": 4.076809620810554,
+          "passed": true
+        }
+      ],
+      "instrumentLabels": [
+        {
+          "instrumentId": "lic-101",
+          "text": "LIC",
+          "faceFill": "rgb(79, 79, 79)",
+          "actual": "rgb(255, 255, 255)",
+          "expected": "rgb(255, 255, 255)",
+          "alpha": 1,
+          "contrast": 8.191131276481592,
+          "passed": true
+        },
+        {
+          "instrumentId": "lic-101",
+          "text": "101",
+          "faceFill": "rgb(79, 79, 79)",
+          "actual": "rgb(255, 255, 255)",
+          "expected": "rgb(255, 255, 255)",
+          "alpha": 1,
+          "contrast": 8.191131276481592,
+          "passed": true
+        },
+        {
+          "instrumentId": "tic-102",
+          "text": "TIC",
+          "faceFill": "rgb(105, 105, 105)",
+          "actual": "rgb(255, 255, 255)",
+          "expected": "rgb(255, 255, 255)",
+          "alpha": 1,
+          "contrast": 5.489814557409947,
+          "passed": true
+        },
+        {
+          "instrumentId": "tic-102",
+          "text": "102",
+          "faceFill": "rgb(105, 105, 105)",
+          "actual": "rgb(255, 255, 255)",
+          "expected": "rgb(255, 255, 255)",
+          "alpha": 1,
+          "contrast": 5.489814557409947,
+          "passed": true
+        },
+        {
+          "instrumentId": "fic-103",
+          "text": "FIC",
+          "faceFill": "rgb(130, 130, 130)",
+          "actual": "rgb(0, 0, 0)",
+          "expected": "rgb(0, 0, 0)",
+          "alpha": 1,
+          "contrast": 5.46455914633617,
+          "passed": true
+        },
+        {
+          "instrumentId": "fic-103",
+          "text": "103",
+          "faceFill": "rgb(130, 130, 130)",
+          "actual": "rgb(0, 0, 0)",
+          "expected": "rgb(0, 0, 0)",
+          "alpha": 1,
+          "contrast": 5.46455914633617,
+          "passed": true
+        },
+        {
+          "instrumentId": "hs-104",
+          "text": "HS",
+          "faceFill": "rgb(158, 27, 50)",
+          "actual": "rgb(255, 255, 255)",
+          "expected": "rgb(255, 255, 255)",
+          "alpha": 1,
+          "contrast": 7.9046884551695875,
+          "passed": true
+        },
+        {
+          "instrumentId": "hs-104",
+          "text": "104",
+          "faceFill": "rgb(158, 27, 50)",
+          "actual": "rgb(255, 255, 255)",
+          "expected": "rgb(255, 255, 255)",
+          "alpha": 1,
+          "contrast": 7.9046884551695875,
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "passed": true
+    },
+    {
+      "gallery": "d3-animated-svg-cs1",
+      "item": "process-control-loop",
+      "state": "fit",
+      "markerArrowCount": 6,
+      "glyphCount": 1,
+      "targetPorts": [
+        {
+          "targetId": "tic-102",
+          "alignment": 0.9970544855015816,
+          "clearance": 4.076809620810661,
+          "passed": true
+        }
+      ],
+      "instrumentLabels": [
+        {
+          "instrumentId": "lic-101",
+          "text": "LIC",
+          "faceFill": "rgb(79, 79, 79)",
+          "actual": "rgb(255, 255, 255)",
+          "expected": "rgb(255, 255, 255)",
+          "alpha": 1,
+          "contrast": 8.191131276481592,
+          "passed": true
+        },
+        {
+          "instrumentId": "lic-101",
+          "text": "101",
+          "faceFill": "rgb(79, 79, 79)",
+          "actual": "rgb(255, 255, 255)",
+          "expected": "rgb(255, 255, 255)",
+          "alpha": 1,
+          "contrast": 8.191131276481592,
+          "passed": true
+        },
+        {
+          "instrumentId": "tic-102",
+          "text": "TIC",
+          "faceFill": "rgb(105, 105, 105)",
+          "actual": "rgb(255, 255, 255)",
+          "expected": "rgb(255, 255, 255)",
+          "alpha": 1,
+          "contrast": 5.489814557409947,
+          "passed": true
+        },
+        {
+          "instrumentId": "tic-102",
+          "text": "102",
+          "faceFill": "rgb(105, 105, 105)",
+          "actual": "rgb(255, 255, 255)",
+          "expected": "rgb(255, 255, 255)",
+          "alpha": 1,
+          "contrast": 5.489814557409947,
+          "passed": true
+        },
+        {
+          "instrumentId": "fic-103",
+          "text": "FIC",
+          "faceFill": "rgb(130, 130, 130)",
+          "actual": "rgb(0, 0, 0)",
+          "expected": "rgb(0, 0, 0)",
+          "alpha": 1,
+          "contrast": 5.46455914633617,
+          "passed": true
+        },
+        {
+          "instrumentId": "fic-103",
+          "text": "103",
+          "faceFill": "rgb(130, 130, 130)",
+          "actual": "rgb(0, 0, 0)",
+          "expected": "rgb(0, 0, 0)",
+          "alpha": 1,
+          "contrast": 5.46455914633617,
+          "passed": true
+        },
+        {
+          "instrumentId": "hs-104",
+          "text": "HS",
+          "faceFill": "rgb(158, 27, 50)",
+          "actual": "rgb(255, 255, 255)",
+          "expected": "rgb(255, 255, 255)",
+          "alpha": 1,
+          "contrast": 7.9046884551695875,
+          "passed": true
+        },
+        {
+          "instrumentId": "hs-104",
+          "text": "104",
+          "faceFill": "rgb(158, 27, 50)",
+          "actual": "rgb(255, 255, 255)",
+          "expected": "rgb(255, 255, 255)",
+          "alpha": 1,
+          "contrast": 7.9046884551695875,
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "passed": true
+    },
+    {
+      "gallery": "d3-animated-svg-cs1",
+      "item": "bowtie-barriers",
+      "state": "focus",
+      "markerArrowCount": 18,
+      "glyphCount": 0,
+      "targetPorts": [],
+      "instrumentLabels": [],
+      "failures": [],
+      "passed": true
+    },
+    {
+      "gallery": "d3-animated-svg-cs1",
+      "item": "bowtie-barriers",
+      "state": "expanded",
+      "markerArrowCount": 18,
+      "glyphCount": 0,
+      "targetPorts": [],
+      "instrumentLabels": [],
+      "failures": [],
+      "passed": true
+    },
+    {
+      "gallery": "d3-animated-svg-cs1",
+      "item": "bowtie-barriers",
+      "state": "fit",
+      "markerArrowCount": 18,
+      "glyphCount": 0,
+      "targetPorts": [],
+      "instrumentLabels": [],
+      "failures": [],
+      "passed": true
+    },
+    {
+      "gallery": "d3-animated-svg-cs1",
+      "item": "vector-field",
+      "state": "focus",
+      "markerArrowCount": 0,
+      "glyphCount": 35,
+      "targetPorts": [],
+      "instrumentLabels": [],
+      "failures": [],
+      "passed": true
+    },
+    {
+      "gallery": "d3-animated-svg-cs1",
+      "item": "vector-field",
+      "state": "expanded",
+      "markerArrowCount": 0,
+      "glyphCount": 35,
+      "targetPorts": [],
+      "instrumentLabels": [],
+      "failures": [],
+      "passed": true
+    },
+    {
+      "gallery": "d3-animated-svg-cs1",
+      "item": "vector-field",
+      "state": "fit",
+      "markerArrowCount": 0,
+      "glyphCount": 35,
+      "targetPorts": [],
+      "instrumentLabels": [],
+      "failures": [],
+      "passed": true
+    },
+    {
+      "gallery": "d3-animated-svg-colorset2",
+      "item": "flowchart-dag",
+      "state": "focus",
+      "markerArrowCount": 7,
+      "glyphCount": 0,
+      "targetPorts": [],
+      "instrumentLabels": [],
+      "failures": [],
+      "passed": true
+    },
+    {
+      "gallery": "d3-animated-svg-colorset2",
+      "item": "flowchart-dag",
+      "state": "expanded",
+      "markerArrowCount": 7,
+      "glyphCount": 0,
+      "targetPorts": [],
+      "instrumentLabels": [],
+      "failures": [],
+      "passed": true
+    },
+    {
+      "gallery": "d3-animated-svg-colorset2",
+      "item": "flowchart-dag",
+      "state": "fit",
+      "markerArrowCount": 7,
+      "glyphCount": 0,
+      "targetPorts": [],
+      "instrumentLabels": [],
+      "failures": [],
+      "passed": true
+    },
+    {
+      "gallery": "d3-animated-svg-colorset2",
+      "item": "sequence-lifelines",
+      "state": "focus",
+      "markerArrowCount": 7,
+      "glyphCount": 0,
+      "targetPorts": [],
+      "instrumentLabels": [],
+      "failures": [],
+      "passed": true
+    },
+    {
+      "gallery": "d3-animated-svg-colorset2",
+      "item": "sequence-lifelines",
+      "state": "expanded",
+      "markerArrowCount": 7,
+      "glyphCount": 0,
+      "targetPorts": [],
+      "instrumentLabels": [],
+      "failures": [],
+      "passed": true
+    },
+    {
+      "gallery": "d3-animated-svg-colorset2",
+      "item": "sequence-lifelines",
+      "state": "fit",
+      "markerArrowCount": 7,
+      "glyphCount": 0,
+      "targetPorts": [],
+      "instrumentLabels": [],
+      "failures": [],
+      "passed": true
+    },
+    {
+      "gallery": "d3-animated-svg-colorset2",
+      "item": "state-machine",
+      "state": "focus",
+      "markerArrowCount": 11,
+      "glyphCount": 0,
+      "targetPorts": [],
+      "instrumentLabels": [],
+      "failures": [],
+      "passed": true
+    },
+    {
+      "gallery": "d3-animated-svg-colorset2",
+      "item": "state-machine",
+      "state": "expanded",
+      "markerArrowCount": 11,
+      "glyphCount": 0,
+      "targetPorts": [],
+      "instrumentLabels": [],
+      "failures": [],
+      "passed": true
+    },
+    {
+      "gallery": "d3-animated-svg-colorset2",
+      "item": "state-machine",
+      "state": "fit",
+      "markerArrowCount": 11,
+      "glyphCount": 0,
+      "targetPorts": [],
+      "instrumentLabels": [],
+      "failures": [],
+      "passed": true
+    },
+    {
+      "gallery": "d3-animated-svg-colorset2",
+      "item": "process-control-loop",
+      "state": "focus",
+      "markerArrowCount": 6,
+      "glyphCount": 1,
+      "targetPorts": [
+        {
+          "targetId": "tic-102",
+          "alignment": 0.9970544855015816,
+          "clearance": 4.076809620810661,
+          "passed": true
+        }
+      ],
+      "instrumentLabels": [
+        {
+          "instrumentId": "lic-101",
+          "text": "LIC",
+          "faceFill": "rgb(69, 132, 42)",
+          "actual": "rgb(0, 0, 0)",
+          "expected": "rgb(0, 0, 0)",
+          "alpha": 1,
+          "contrast": 4.586980899522477,
+          "passed": true
+        },
+        {
+          "instrumentId": "lic-101",
+          "text": "101",
+          "faceFill": "rgb(69, 132, 42)",
+          "actual": "rgb(0, 0, 0)",
+          "expected": "rgb(0, 0, 0)",
+          "alpha": 1,
+          "contrast": 4.586980899522477,
+          "passed": true
+        },
+        {
+          "instrumentId": "tic-102",
+          "text": "TIC",
+          "faceFill": "rgb(231, 114, 4)",
+          "actual": "rgb(0, 0, 0)",
+          "expected": "rgb(0, 0, 0)",
+          "alpha": 1,
+          "contrast": 6.806463514207582,
+          "passed": true
+        },
+        {
+          "instrumentId": "tic-102",
+          "text": "102",
+          "faceFill": "rgb(231, 114, 4)",
+          "actual": "rgb(0, 0, 0)",
+          "expected": "rgb(0, 0, 0)",
+          "alpha": 1,
+          "contrast": 6.806463514207582,
+          "passed": true
+        },
+        {
+          "instrumentId": "fic-103",
+          "text": "FIC",
+          "faceFill": "rgb(101, 47, 108)",
+          "actual": "rgb(0, 0, 0)",
+          "expected": "rgb(255, 255, 255)",
+          "alpha": 1,
+          "contrast": 9.648570110443664,
+          "passed": false
+        },
+        {
+          "instrumentId": "fic-103",
+          "text": "103",
+          "faceFill": "rgb(101, 47, 108)",
+          "actual": "rgb(0, 0, 0)",
+          "expected": "rgb(255, 255, 255)",
+          "alpha": 1,
+          "contrast": 9.648570110443664,
+          "passed": false
+        },
+        {
+          "instrumentId": "hs-104",
+          "text": "HS",
+          "faceFill": "rgb(158, 27, 50)",
+          "actual": "rgb(0, 0, 0)",
+          "expected": "rgb(255, 255, 255)",
+          "alpha": 1,
+          "contrast": 7.9046884551695875,
+          "passed": false
+        },
+        {
+          "instrumentId": "hs-104",
+          "text": "104",
+          "faceFill": "rgb(158, 27, 50)",
+          "actual": "rgb(0, 0, 0)",
+          "expected": "rgb(255, 255, 255)",
+          "alpha": 1,
+          "contrast": 7.9046884551695875,
+          "passed": false
+        }
+      ],
+      "failures": [
+        "fic-103",
+        "fic-103",
+        "hs-104",
+        "hs-104"
+      ],
+      "passed": false
+    },
+    {
+      "gallery": "d3-animated-svg-colorset2",
+      "item": "process-control-loop",
+      "state": "expanded",
+      "markerArrowCount": 6,
+      "glyphCount": 1,
+      "targetPorts": [
+        {
+          "targetId": "tic-102",
+          "alignment": 0.9970544855015816,
+          "clearance": 4.076809620810554,
+          "passed": true
+        }
+      ],
+      "instrumentLabels": [
+        {
+          "instrumentId": "lic-101",
+          "text": "LIC",
+          "faceFill": "rgb(69, 132, 42)",
+          "actual": "rgb(0, 0, 0)",
+          "expected": "rgb(0, 0, 0)",
+          "alpha": 1,
+          "contrast": 4.586980899522477,
+          "passed": true
+        },
+        {
+          "instrumentId": "lic-101",
+          "text": "101",
+          "faceFill": "rgb(69, 132, 42)",
+          "actual": "rgb(0, 0, 0)",
+          "expected": "rgb(0, 0, 0)",
+          "alpha": 1,
+          "contrast": 4.586980899522477,
+          "passed": true
+        },
+        {
+          "instrumentId": "tic-102",
+          "text": "TIC",
+          "faceFill": "rgb(231, 114, 4)",
+          "actual": "rgb(0, 0, 0)",
+          "expected": "rgb(0, 0, 0)",
+          "alpha": 1,
+          "contrast": 6.806463514207582,
+          "passed": true
+        },
+        {
+          "instrumentId": "tic-102",
+          "text": "102",
+          "faceFill": "rgb(231, 114, 4)",
+          "actual": "rgb(0, 0, 0)",
+          "expected": "rgb(0, 0, 0)",
+          "alpha": 1,
+          "contrast": 6.806463514207582,
+          "passed": true
+        },
+        {
+          "instrumentId": "fic-103",
+          "text": "FIC",
+          "faceFill": "rgb(101, 47, 108)",
+          "actual": "rgb(255, 255, 255)",
+          "expected": "rgb(255, 255, 255)",
+          "alpha": 1,
+          "contrast": 9.648570110443664,
+          "passed": true
+        },
+        {
+          "instrumentId": "fic-103",
+          "text": "103",
+          "faceFill": "rgb(101, 47, 108)",
+          "actual": "rgb(255, 255, 255)",
+          "expected": "rgb(255, 255, 255)",
+          "alpha": 1,
+          "contrast": 9.648570110443664,
+          "passed": true
+        },
+        {
+          "instrumentId": "hs-104",
+          "text": "HS",
+          "faceFill": "rgb(158, 27, 50)",
+          "actual": "rgb(255, 255, 255)",
+          "expected": "rgb(255, 255, 255)",
+          "alpha": 1,
+          "contrast": 7.9046884551695875,
+          "passed": true
+        },
+        {
+          "instrumentId": "hs-104",
+          "text": "104",
+          "faceFill": "rgb(158, 27, 50)",
+          "actual": "rgb(255, 255, 255)",
+          "expected": "rgb(255, 255, 255)",
+          "alpha": 1,
+          "contrast": 7.9046884551695875,
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "passed": true
+    },
+    {
+      "gallery": "d3-animated-svg-colorset2",
+      "item": "process-control-loop",
+      "state": "fit",
+      "markerArrowCount": 6,
+      "glyphCount": 1,
+      "targetPorts": [
+        {
+          "targetId": "tic-102",
+          "alignment": 0.9970544855015816,
+          "clearance": 4.076809620810661,
+          "passed": true
+        }
+      ],
+      "instrumentLabels": [
+        {
+          "instrumentId": "lic-101",
+          "text": "LIC",
+          "faceFill": "rgb(69, 132, 42)",
+          "actual": "rgb(0, 0, 0)",
+          "expected": "rgb(0, 0, 0)",
+          "alpha": 1,
+          "contrast": 4.586980899522477,
+          "passed": true
+        },
+        {
+          "instrumentId": "lic-101",
+          "text": "101",
+          "faceFill": "rgb(69, 132, 42)",
+          "actual": "rgb(0, 0, 0)",
+          "expected": "rgb(0, 0, 0)",
+          "alpha": 1,
+          "contrast": 4.586980899522477,
+          "passed": true
+        },
+        {
+          "instrumentId": "tic-102",
+          "text": "TIC",
+          "faceFill": "rgb(231, 114, 4)",
+          "actual": "rgb(0, 0, 0)",
+          "expected": "rgb(0, 0, 0)",
+          "alpha": 1,
+          "contrast": 6.806463514207582,
+          "passed": true
+        },
+        {
+          "instrumentId": "tic-102",
+          "text": "102",
+          "faceFill": "rgb(231, 114, 4)",
+          "actual": "rgb(0, 0, 0)",
+          "expected": "rgb(0, 0, 0)",
+          "alpha": 1,
+          "contrast": 6.806463514207582,
+          "passed": true
+        },
+        {
+          "instrumentId": "fic-103",
+          "text": "FIC",
+          "faceFill": "rgb(101, 47, 108)",
+          "actual": "rgb(255, 255, 255)",
+          "expected": "rgb(255, 255, 255)",
+          "alpha": 1,
+          "contrast": 9.648570110443664,
+          "passed": true
+        },
+        {
+          "instrumentId": "fic-103",
+          "text": "103",
+          "faceFill": "rgb(101, 47, 108)",
+          "actual": "rgb(255, 255, 255)",
+          "expected": "rgb(255, 255, 255)",
+          "alpha": 1,
+          "contrast": 9.648570110443664,
+          "passed": true
+        },
+        {
+          "instrumentId": "hs-104",
+          "text": "HS",
+          "faceFill": "rgb(158, 27, 50)",
+          "actual": "rgb(255, 255, 255)",
+          "expected": "rgb(255, 255, 255)",
+          "alpha": 1,
+          "contrast": 7.9046884551695875,
+          "passed": true
+        },
+        {
+          "instrumentId": "hs-104",
+          "text": "104",
+          "faceFill": "rgb(158, 27, 50)",
+          "actual": "rgb(255, 255, 255)",
+          "expected": "rgb(255, 255, 255)",
+          "alpha": 1,
+          "contrast": 7.9046884551695875,
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "passed": true
+    },
+    {
+      "gallery": "d3-animated-svg-colorset2",
+      "item": "bowtie-barriers",
+      "state": "focus",
+      "markerArrowCount": 18,
+      "glyphCount": 0,
+      "targetPorts": [],
+      "instrumentLabels": [],
+      "failures": [],
+      "passed": true
+    },
+    {
+      "gallery": "d3-animated-svg-colorset2",
+      "item": "bowtie-barriers",
+      "state": "expanded",
+      "markerArrowCount": 18,
+      "glyphCount": 0,
+      "targetPorts": [],
+      "instrumentLabels": [],
+      "failures": [],
+      "passed": true
+    },
+    {
+      "gallery": "d3-animated-svg-colorset2",
+      "item": "bowtie-barriers",
+      "state": "fit",
+      "markerArrowCount": 18,
+      "glyphCount": 0,
+      "targetPorts": [],
+      "instrumentLabels": [],
+      "failures": [],
+      "passed": true
+    },
+    {
+      "gallery": "d3-animated-svg-colorset2",
+      "item": "vector-field",
+      "state": "focus",
+      "markerArrowCount": 0,
+      "glyphCount": 35,
+      "targetPorts": [],
+      "instrumentLabels": [],
+      "failures": [],
+      "passed": true
+    },
+    {
+      "gallery": "d3-animated-svg-colorset2",
+      "item": "vector-field",
+      "state": "expanded",
+      "markerArrowCount": 0,
+      "glyphCount": 35,
+      "targetPorts": [],
+      "instrumentLabels": [],
+      "failures": [],
+      "passed": true
+    },
+    {
+      "gallery": "d3-animated-svg-colorset2",
+      "item": "vector-field",
+      "state": "fit",
+      "markerArrowCount": 0,
+      "glyphCount": 35,
+      "targetPorts": [],
+      "instrumentLabels": [],
+      "failures": [],
+      "passed": true
+    }
+  ]
+}

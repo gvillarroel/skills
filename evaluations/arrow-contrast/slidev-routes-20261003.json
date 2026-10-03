@@ -1,0 +1,1132 @@
+{
+  "date": "2026-10-03",
+  "passed": true,
+  "slide": 30,
+  "expectedRoutes": 4,
+  "errors": [],
+  "hostWarnings": [
+    "Wake Lock permission request denied"
+  ],
+  "clickChange": true,
+  "states": [
+    {
+      "id": "no-preference-0-1280",
+      "motion": "no-preference",
+      "step": 0,
+      "width": 1280,
+      "shaftCount": 4,
+      "headCount": 4,
+      "records": [
+        {
+          "kind": "shaft",
+          "paint": "rgb(0, 114, 152)",
+          "effectiveOpacity": 0.72,
+          "width": "3px",
+          "minimumContrast": 3.2184583741017057,
+          "sampleCount": 5,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "shaft",
+          "paint": "rgb(0, 114, 152)",
+          "effectiveOpacity": 0.72,
+          "width": "4px",
+          "minimumContrast": 3.2184583741017057,
+          "sampleCount": 5,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "shaft",
+          "paint": "rgb(0, 114, 152)",
+          "effectiveOpacity": 0.72,
+          "width": "2.25px",
+          "minimumContrast": 3.2184583741017057,
+          "sampleCount": 5,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "shaft",
+          "paint": "rgb(0, 114, 152)",
+          "effectiveOpacity": 0.72,
+          "width": "2px",
+          "minimumContrast": 3.2184583741017057,
+          "sampleCount": 5,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "head",
+          "paint": "rgb(0, 114, 152)",
+          "effectiveOpacity": 0.72,
+          "width": "1px",
+          "minimumContrast": 3.2184583741017057,
+          "sampleCount": 10,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "head",
+          "paint": "rgb(0, 114, 152)",
+          "effectiveOpacity": 0.72,
+          "width": "1px",
+          "minimumContrast": 3.2184583741017057,
+          "sampleCount": 10,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "head",
+          "paint": "rgb(0, 114, 152)",
+          "effectiveOpacity": 0.72,
+          "width": "1px",
+          "minimumContrast": 3.2184583741017057,
+          "sampleCount": 10,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "head",
+          "paint": "rgb(0, 114, 152)",
+          "effectiveOpacity": 0.72,
+          "width": "1px",
+          "minimumContrast": 3.2184583741017057,
+          "sampleCount": 10,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        }
+      ],
+      "passed": true
+    },
+    {
+      "id": "no-preference-0-1600",
+      "motion": "no-preference",
+      "step": 0,
+      "width": 1600,
+      "shaftCount": 4,
+      "headCount": 4,
+      "records": [
+        {
+          "kind": "shaft",
+          "paint": "rgb(0, 114, 152)",
+          "effectiveOpacity": 0.72,
+          "width": "3px",
+          "minimumContrast": 3.2184583741017057,
+          "sampleCount": 5,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "shaft",
+          "paint": "rgb(0, 114, 152)",
+          "effectiveOpacity": 0.72,
+          "width": "4px",
+          "minimumContrast": 3.2184583741017057,
+          "sampleCount": 5,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "shaft",
+          "paint": "rgb(0, 114, 152)",
+          "effectiveOpacity": 0.72,
+          "width": "2.25px",
+          "minimumContrast": 3.2184583741017057,
+          "sampleCount": 5,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "shaft",
+          "paint": "rgb(0, 114, 152)",
+          "effectiveOpacity": 0.72,
+          "width": "2px",
+          "minimumContrast": 3.2184583741017057,
+          "sampleCount": 5,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "head",
+          "paint": "rgb(0, 114, 152)",
+          "effectiveOpacity": 0.72,
+          "width": "1px",
+          "minimumContrast": 3.2184583741017057,
+          "sampleCount": 10,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "head",
+          "paint": "rgb(0, 114, 152)",
+          "effectiveOpacity": 0.72,
+          "width": "1px",
+          "minimumContrast": 3.2184583741017057,
+          "sampleCount": 10,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "head",
+          "paint": "rgb(0, 114, 152)",
+          "effectiveOpacity": 0.72,
+          "width": "1px",
+          "minimumContrast": 3.2184583741017057,
+          "sampleCount": 10,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "head",
+          "paint": "rgb(0, 114, 152)",
+          "effectiveOpacity": 0.72,
+          "width": "1px",
+          "minimumContrast": 3.2184583741017057,
+          "sampleCount": 10,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        }
+      ],
+      "passed": true
+    },
+    {
+      "id": "no-preference-1-1280",
+      "motion": "no-preference",
+      "step": 1,
+      "width": 1280,
+      "shaftCount": 4,
+      "headCount": 4,
+      "records": [
+        {
+          "kind": "shaft",
+          "paint": "rgb(0, 114, 152)",
+          "effectiveOpacity": 0.72,
+          "width": "4px",
+          "minimumContrast": 3.2184583741017057,
+          "sampleCount": 5,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "shaft",
+          "paint": "rgb(0, 114, 152)",
+          "effectiveOpacity": 0.72,
+          "width": "5px",
+          "minimumContrast": 3.2184583741017057,
+          "sampleCount": 5,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "shaft",
+          "paint": "rgb(0, 114, 152)",
+          "effectiveOpacity": 0.72,
+          "width": "3.25px",
+          "minimumContrast": 3.2184583741017057,
+          "sampleCount": 5,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "shaft",
+          "paint": "rgb(0, 114, 152)",
+          "effectiveOpacity": 0.72,
+          "width": "2.75px",
+          "minimumContrast": 3.2184583741017057,
+          "sampleCount": 5,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "head",
+          "paint": "rgb(0, 114, 152)",
+          "effectiveOpacity": 0.72,
+          "width": "1px",
+          "minimumContrast": 3.2184583741017057,
+          "sampleCount": 10,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "head",
+          "paint": "rgb(0, 114, 152)",
+          "effectiveOpacity": 0.72,
+          "width": "1px",
+          "minimumContrast": 3.2184583741017057,
+          "sampleCount": 10,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "head",
+          "paint": "rgb(0, 114, 152)",
+          "effectiveOpacity": 0.72,
+          "width": "1px",
+          "minimumContrast": 3.2184583741017057,
+          "sampleCount": 10,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "head",
+          "paint": "rgb(0, 114, 152)",
+          "effectiveOpacity": 0.72,
+          "width": "1px",
+          "minimumContrast": 3.2184583741017057,
+          "sampleCount": 10,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        }
+      ],
+      "passed": true
+    },
+    {
+      "id": "no-preference-1-1600",
+      "motion": "no-preference",
+      "step": 1,
+      "width": 1600,
+      "shaftCount": 4,
+      "headCount": 4,
+      "records": [
+        {
+          "kind": "shaft",
+          "paint": "rgb(0, 114, 152)",
+          "effectiveOpacity": 0.72,
+          "width": "4px",
+          "minimumContrast": 3.2184583741017057,
+          "sampleCount": 5,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "shaft",
+          "paint": "rgb(0, 114, 152)",
+          "effectiveOpacity": 0.72,
+          "width": "5px",
+          "minimumContrast": 3.2184583741017057,
+          "sampleCount": 5,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "shaft",
+          "paint": "rgb(0, 114, 152)",
+          "effectiveOpacity": 0.72,
+          "width": "3.25px",
+          "minimumContrast": 3.2184583741017057,
+          "sampleCount": 5,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "shaft",
+          "paint": "rgb(0, 114, 152)",
+          "effectiveOpacity": 0.72,
+          "width": "2.75px",
+          "minimumContrast": 3.2184583741017057,
+          "sampleCount": 5,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "head",
+          "paint": "rgb(0, 114, 152)",
+          "effectiveOpacity": 0.72,
+          "width": "1px",
+          "minimumContrast": 3.2184583741017057,
+          "sampleCount": 10,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "head",
+          "paint": "rgb(0, 114, 152)",
+          "effectiveOpacity": 0.72,
+          "width": "1px",
+          "minimumContrast": 3.2184583741017057,
+          "sampleCount": 10,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "head",
+          "paint": "rgb(0, 114, 152)",
+          "effectiveOpacity": 0.72,
+          "width": "1px",
+          "minimumContrast": 3.2184583741017057,
+          "sampleCount": 10,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "head",
+          "paint": "rgb(0, 114, 152)",
+          "effectiveOpacity": 0.72,
+          "width": "1px",
+          "minimumContrast": 3.2184583741017057,
+          "sampleCount": 10,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        }
+      ],
+      "passed": true
+    },
+    {
+      "id": "reduce-0-1280",
+      "motion": "reduce",
+      "step": 0,
+      "width": 1280,
+      "shaftCount": 4,
+      "headCount": 4,
+      "records": [
+        {
+          "kind": "shaft",
+          "paint": "rgb(0, 114, 152)",
+          "effectiveOpacity": 0.72,
+          "width": "3px",
+          "minimumContrast": 3.2184583741017057,
+          "sampleCount": 5,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "shaft",
+          "paint": "rgb(0, 114, 152)",
+          "effectiveOpacity": 0.72,
+          "width": "4px",
+          "minimumContrast": 3.2184583741017057,
+          "sampleCount": 5,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "shaft",
+          "paint": "rgb(0, 114, 152)",
+          "effectiveOpacity": 0.72,
+          "width": "2.25px",
+          "minimumContrast": 3.2184583741017057,
+          "sampleCount": 5,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "shaft",
+          "paint": "rgb(0, 114, 152)",
+          "effectiveOpacity": 0.72,
+          "width": "2px",
+          "minimumContrast": 3.2184583741017057,
+          "sampleCount": 5,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "head",
+          "paint": "rgb(0, 114, 152)",
+          "effectiveOpacity": 0.72,
+          "width": "1px",
+          "minimumContrast": 3.2184583741017057,
+          "sampleCount": 10,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "head",
+          "paint": "rgb(0, 114, 152)",
+          "effectiveOpacity": 0.72,
+          "width": "1px",
+          "minimumContrast": 3.2184583741017057,
+          "sampleCount": 10,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "head",
+          "paint": "rgb(0, 114, 152)",
+          "effectiveOpacity": 0.72,
+          "width": "1px",
+          "minimumContrast": 3.2184583741017057,
+          "sampleCount": 10,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "head",
+          "paint": "rgb(0, 114, 152)",
+          "effectiveOpacity": 0.72,
+          "width": "1px",
+          "minimumContrast": 3.2184583741017057,
+          "sampleCount": 10,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        }
+      ],
+      "passed": true
+    },
+    {
+      "id": "reduce-0-1600",
+      "motion": "reduce",
+      "step": 0,
+      "width": 1600,
+      "shaftCount": 4,
+      "headCount": 4,
+      "records": [
+        {
+          "kind": "shaft",
+          "paint": "rgb(0, 114, 152)",
+          "effectiveOpacity": 0.72,
+          "width": "3px",
+          "minimumContrast": 3.2184583741017057,
+          "sampleCount": 5,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "shaft",
+          "paint": "rgb(0, 114, 152)",
+          "effectiveOpacity": 0.72,
+          "width": "4px",
+          "minimumContrast": 3.2184583741017057,
+          "sampleCount": 5,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "shaft",
+          "paint": "rgb(0, 114, 152)",
+          "effectiveOpacity": 0.72,
+          "width": "2.25px",
+          "minimumContrast": 3.2184583741017057,
+          "sampleCount": 5,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "shaft",
+          "paint": "rgb(0, 114, 152)",
+          "effectiveOpacity": 0.72,
+          "width": "2px",
+          "minimumContrast": 3.2184583741017057,
+          "sampleCount": 5,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "head",
+          "paint": "rgb(0, 114, 152)",
+          "effectiveOpacity": 0.72,
+          "width": "1px",
+          "minimumContrast": 3.2184583741017057,
+          "sampleCount": 10,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "head",
+          "paint": "rgb(0, 114, 152)",
+          "effectiveOpacity": 0.72,
+          "width": "1px",
+          "minimumContrast": 3.2184583741017057,
+          "sampleCount": 10,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "head",
+          "paint": "rgb(0, 114, 152)",
+          "effectiveOpacity": 0.72,
+          "width": "1px",
+          "minimumContrast": 3.2184583741017057,
+          "sampleCount": 10,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "head",
+          "paint": "rgb(0, 114, 152)",
+          "effectiveOpacity": 0.72,
+          "width": "1px",
+          "minimumContrast": 3.2184583741017057,
+          "sampleCount": 10,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        }
+      ],
+      "passed": true
+    },
+    {
+      "id": "reduce-1-1280",
+      "motion": "reduce",
+      "step": 1,
+      "width": 1280,
+      "shaftCount": 4,
+      "headCount": 4,
+      "records": [
+        {
+          "kind": "shaft",
+          "paint": "rgb(0, 114, 152)",
+          "effectiveOpacity": 0.72,
+          "width": "4px",
+          "minimumContrast": 3.2184583741017057,
+          "sampleCount": 5,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "shaft",
+          "paint": "rgb(0, 114, 152)",
+          "effectiveOpacity": 0.72,
+          "width": "5px",
+          "minimumContrast": 3.2184583741017057,
+          "sampleCount": 5,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "shaft",
+          "paint": "rgb(0, 114, 152)",
+          "effectiveOpacity": 0.72,
+          "width": "3.25px",
+          "minimumContrast": 3.2184583741017057,
+          "sampleCount": 5,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "shaft",
+          "paint": "rgb(0, 114, 152)",
+          "effectiveOpacity": 0.72,
+          "width": "2.75px",
+          "minimumContrast": 3.2184583741017057,
+          "sampleCount": 5,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "head",
+          "paint": "rgb(0, 114, 152)",
+          "effectiveOpacity": 0.72,
+          "width": "1px",
+          "minimumContrast": 3.2184583741017057,
+          "sampleCount": 10,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "head",
+          "paint": "rgb(0, 114, 152)",
+          "effectiveOpacity": 0.72,
+          "width": "1px",
+          "minimumContrast": 3.2184583741017057,
+          "sampleCount": 10,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "head",
+          "paint": "rgb(0, 114, 152)",
+          "effectiveOpacity": 0.72,
+          "width": "1px",
+          "minimumContrast": 3.2184583741017057,
+          "sampleCount": 10,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "head",
+          "paint": "rgb(0, 114, 152)",
+          "effectiveOpacity": 0.72,
+          "width": "1px",
+          "minimumContrast": 3.2184583741017057,
+          "sampleCount": 10,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        }
+      ],
+      "passed": true
+    },
+    {
+      "id": "reduce-1-1600",
+      "motion": "reduce",
+      "step": 1,
+      "width": 1600,
+      "shaftCount": 4,
+      "headCount": 4,
+      "records": [
+        {
+          "kind": "shaft",
+          "paint": "rgb(0, 114, 152)",
+          "effectiveOpacity": 0.72,
+          "width": "4px",
+          "minimumContrast": 3.2184583741017057,
+          "sampleCount": 5,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "shaft",
+          "paint": "rgb(0, 114, 152)",
+          "effectiveOpacity": 0.72,
+          "width": "5px",
+          "minimumContrast": 3.2184583741017057,
+          "sampleCount": 5,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "shaft",
+          "paint": "rgb(0, 114, 152)",
+          "effectiveOpacity": 0.72,
+          "width": "3.25px",
+          "minimumContrast": 3.2184583741017057,
+          "sampleCount": 5,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "shaft",
+          "paint": "rgb(0, 114, 152)",
+          "effectiveOpacity": 0.72,
+          "width": "2.75px",
+          "minimumContrast": 3.2184583741017057,
+          "sampleCount": 5,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "head",
+          "paint": "rgb(0, 114, 152)",
+          "effectiveOpacity": 0.72,
+          "width": "1px",
+          "minimumContrast": 3.2184583741017057,
+          "sampleCount": 10,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "head",
+          "paint": "rgb(0, 114, 152)",
+          "effectiveOpacity": 0.72,
+          "width": "1px",
+          "minimumContrast": 3.2184583741017057,
+          "sampleCount": 10,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "head",
+          "paint": "rgb(0, 114, 152)",
+          "effectiveOpacity": 0.72,
+          "width": "1px",
+          "minimumContrast": 3.2184583741017057,
+          "sampleCount": 10,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "head",
+          "paint": "rgb(0, 114, 152)",
+          "effectiveOpacity": 0.72,
+          "width": "1px",
+          "minimumContrast": 3.2184583741017057,
+          "sampleCount": 10,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        }
+      ],
+      "passed": true
+    }
+  ],
+  "scope": "Actual built offline Slidev route slide: click states0/1, resize1280/1600, normal/reduced motion, native curved arrow heads outside radius4 targets. Browser SVG geometry/composite check; antialias edge pixels are not categorical paint.",
+  "probeRepair": "Initial probe guessed3routes but the fixture has4. Raw failed scan is retained under projects/arrow-contrast/artifacts/slidev/initial-probe.json. Exact offline Wake Lock permission denial is a host warning and does not change arrow paint or geometry; all other page errors fail.",
+  "detailedSampleEvidence": {
+    "path": "projects/arrow-contrast/artifacts/reviews/detailed-slidev-routes-20261003.json",
+    "sha256": "64b8c2531c9460142a5be6dbe49db83e489b2562790cbcd19e683acf81568bce",
+    "sizeBytes": 115112
+  }
+}

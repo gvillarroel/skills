@@ -1,0 +1,319 @@
+{
+  "passed": true,
+  "runtimePayloadSha256": "2d7d2597f24e787f6b18bdecd5db09bfb18f508024020494738c7a98d664b6fb",
+  "runtimeFileCount": 13,
+  "matrixCases": 16,
+  "pngAlphaLevels": [
+    0,
+    128,
+    192,
+    255
+  ],
+  "authoredAccepted": 7,
+  "sourceGuardCases": 15,
+  "sourceGuardRequiredCases": [
+    "authored-pale-refused",
+    "opaque-white-source-over-dark-tile-passed",
+    "preserved-covered-head-refused",
+    "preserved-hidden-snapshot-refused",
+    "preserved-transparent-dark-delivery-disclosed",
+    "preserved-transparent-head-refused",
+    "preserved-transparent-shaft-refused",
+    "preserved-vector-marker-refused",
+    "transparent-dark-delivery-refused",
+    "transparent-white-delivery-passed",
+    "unmatched-path-no-exemption"
+  ],
+  "unsupportedRootImageRefused": true,
+  "rows": [
+    {
+      "id": "transparent-white",
+      "pngSha256": "53f81118c2d0df8250ed3faefbceaa2d1f1f5f1eb4d8042b83d5b78e20d0a97e",
+      "sourceAlpha": 0,
+      "actualDeliveryBackground": [
+        255,
+        255,
+        255
+      ],
+      "expectedPaintOrderBackground": [
+        255,
+        255,
+        255
+      ],
+      "minimumReportedContrast": 5.489814557409947,
+      "actualPixelContrast": 5.489814557409947,
+      "authoredQualityPassed": true
+    },
+    {
+      "id": "css-white-white",
+      "pngSha256": "74f852ff34cdb38fe6e2c4f44d0f00ac1f0205a63e814a0ca23c29803e810bb5",
+      "sourceAlpha": 255,
+      "actualDeliveryBackground": [
+        255,
+        255,
+        255
+      ],
+      "expectedPaintOrderBackground": [
+        255,
+        255,
+        255
+      ],
+      "minimumReportedContrast": 5.489814557409947,
+      "actualPixelContrast": 5.489814557409947,
+      "authoredQualityPassed": true
+    },
+    {
+      "id": "css-alpha-white-white",
+      "pngSha256": "3e824b1abd37859c6dd3c063fa711423f218cbbf6eaaf4decd4ef19e27faeda4",
+      "sourceAlpha": 128,
+      "actualDeliveryBackground": [
+        255,
+        255,
+        255
+      ],
+      "expectedPaintOrderBackground": [
+        255.0,
+        255.0,
+        255.0
+      ],
+      "minimumReportedContrast": 5.489814557409947,
+      "actualPixelContrast": 5.489814557409947,
+      "authoredQualityPassed": true
+    },
+    {
+      "id": "rect-white-white",
+      "pngSha256": "74f852ff34cdb38fe6e2c4f44d0f00ac1f0205a63e814a0ca23c29803e810bb5",
+      "sourceAlpha": 255,
+      "actualDeliveryBackground": [
+        255,
+        255,
+        255
+      ],
+      "expectedPaintOrderBackground": [
+        255,
+        255,
+        255
+      ],
+      "minimumReportedContrast": 5.489814557409947,
+      "actualPixelContrast": 5.489814557409947,
+      "authoredQualityPassed": true
+    },
+    {
+      "id": "rect-alpha-white-white",
+      "pngSha256": "3e824b1abd37859c6dd3c063fa711423f218cbbf6eaaf4decd4ef19e27faeda4",
+      "sourceAlpha": 128,
+      "actualDeliveryBackground": [
+        255,
+        255,
+        255
+      ],
+      "expectedPaintOrderBackground": [
+        255.0,
+        255.0,
+        255.0
+      ],
+      "minimumReportedContrast": 5.489814557409947,
+      "actualPixelContrast": 5.489814557409947,
+      "authoredQualityPassed": true
+    },
+    {
+      "id": "css-alpha-rect-alpha-white",
+      "pngSha256": "750b021374a8db5d4ec53e97afb4ff04027a2ef4c6d16443c5e431661eb720ad",
+      "sourceAlpha": 192,
+      "actualDeliveryBackground": [
+        127,
+        184,
+        203
+      ],
+      "expectedPaintOrderBackground": [
+        127.5,
+        184.5,
+        203.5
+      ],
+      "minimumReportedContrast": 2.529250390413131,
+      "actualPixelContrast": 2.5151089905015,
+      "authoredQualityPassed": false
+    },
+    {
+      "id": "css-white-rect-alpha-white",
+      "pngSha256": "89821ffc635ef2b886268d8c703bf9bb0e9f45bcd1791b8f301538852436766a",
+      "sourceAlpha": 255,
+      "actualDeliveryBackground": [
+        153,
+        159,
+        164
+      ],
+      "expectedPaintOrderBackground": [
+        153.0,
+        158.5,
+        163.5
+      ],
+      "minimumReportedContrast": 2.0421722384902035,
+      "actualPixelContrast": 2.0520882199862154,
+      "authoredQualityPassed": false
+    },
+    {
+      "id": "css-alpha-rect-opaque-white",
+      "pngSha256": "f1eab8179c43d4e06203f79a0fd0bffbb9fd42240d7504d0af1d17cf2fc218e0",
+      "sourceAlpha": 255,
+      "actualDeliveryBackground": [
+        51,
+        62,
+        72
+      ],
+      "expectedPaintOrderBackground": [
+        51.0,
+        62.0,
+        72.0
+      ],
+      "minimumReportedContrast": 1.988817387226247,
+      "actualPixelContrast": 1.988817387226247,
+      "authoredQualityPassed": false
+    },
+    {
+      "id": "transparent-dark",
+      "pngSha256": "53f81118c2d0df8250ed3faefbceaa2d1f1f5f1eb4d8042b83d5b78e20d0a97e",
+      "sourceAlpha": 0,
+      "actualDeliveryBackground": [
+        51,
+        62,
+        72
+      ],
+      "expectedPaintOrderBackground": [
+        51,
+        62,
+        72
+      ],
+      "minimumReportedContrast": 1.988817387226247,
+      "actualPixelContrast": 1.988817387226247,
+      "authoredQualityPassed": false
+    },
+    {
+      "id": "css-white-dark",
+      "pngSha256": "74f852ff34cdb38fe6e2c4f44d0f00ac1f0205a63e814a0ca23c29803e810bb5",
+      "sourceAlpha": 255,
+      "actualDeliveryBackground": [
+        255,
+        255,
+        255
+      ],
+      "expectedPaintOrderBackground": [
+        255,
+        255,
+        255
+      ],
+      "minimumReportedContrast": 5.489814557409947,
+      "actualPixelContrast": 5.489814557409947,
+      "authoredQualityPassed": true
+    },
+    {
+      "id": "css-alpha-white-dark",
+      "pngSha256": "3e824b1abd37859c6dd3c063fa711423f218cbbf6eaaf4decd4ef19e27faeda4",
+      "sourceAlpha": 128,
+      "actualDeliveryBackground": [
+        153,
+        159,
+        164
+      ],
+      "expectedPaintOrderBackground": [
+        153.0,
+        158.5,
+        163.5
+      ],
+      "minimumReportedContrast": 2.0520882199862154,
+      "actualPixelContrast": 2.0520882199862154,
+      "authoredQualityPassed": false
+    },
+    {
+      "id": "rect-white-dark",
+      "pngSha256": "74f852ff34cdb38fe6e2c4f44d0f00ac1f0205a63e814a0ca23c29803e810bb5",
+      "sourceAlpha": 255,
+      "actualDeliveryBackground": [
+        255,
+        255,
+        255
+      ],
+      "expectedPaintOrderBackground": [
+        255,
+        255,
+        255
+      ],
+      "minimumReportedContrast": 5.489814557409947,
+      "actualPixelContrast": 5.489814557409947,
+      "authoredQualityPassed": true
+    },
+    {
+      "id": "rect-alpha-white-dark",
+      "pngSha256": "3e824b1abd37859c6dd3c063fa711423f218cbbf6eaaf4decd4ef19e27faeda4",
+      "sourceAlpha": 128,
+      "actualDeliveryBackground": [
+        153,
+        159,
+        164
+      ],
+      "expectedPaintOrderBackground": [
+        153.0,
+        158.5,
+        163.5
+      ],
+      "minimumReportedContrast": 2.0421722384902035,
+      "actualPixelContrast": 2.0520882199862154,
+      "authoredQualityPassed": false
+    },
+    {
+      "id": "css-alpha-rect-alpha-dark",
+      "pngSha256": "750b021374a8db5d4ec53e97afb4ff04027a2ef4c6d16443c5e431661eb720ad",
+      "sourceAlpha": 192,
+      "actualDeliveryBackground": [
+        77,
+        137,
+        158
+      ],
+      "expectedPaintOrderBackground": [
+        76.5,
+        136.25,
+        157.75
+      ],
+      "minimumReportedContrast": 1.3999117592610908,
+      "actualPixelContrast": 1.4084105201208097,
+      "authoredQualityPassed": false
+    },
+    {
+      "id": "css-white-rect-alpha-dark",
+      "pngSha256": "89821ffc635ef2b886268d8c703bf9bb0e9f45bcd1791b8f301538852436766a",
+      "sourceAlpha": 255,
+      "actualDeliveryBackground": [
+        153,
+        159,
+        164
+      ],
+      "expectedPaintOrderBackground": [
+        153.0,
+        158.5,
+        163.5
+      ],
+      "minimumReportedContrast": 2.0421722384902035,
+      "actualPixelContrast": 2.0520882199862154,
+      "authoredQualityPassed": false
+    },
+    {
+      "id": "css-alpha-rect-opaque-dark",
+      "pngSha256": "f1eab8179c43d4e06203f79a0fd0bffbb9fd42240d7504d0af1d17cf2fc218e0",
+      "sourceAlpha": 255,
+      "actualDeliveryBackground": [
+        51,
+        62,
+        72
+      ],
+      "expectedPaintOrderBackground": [
+        51.0,
+        62.0,
+        72.0
+      ],
+      "minimumReportedContrast": 1.988817387226247,
+      "actualPixelContrast": 1.988817387226247,
+      "authoredQualityPassed": false
+    }
+  ],
+  "scope": "Finite supported solid/alpha root CSS and SVG rectangle combinations over opaque delivery tiles; no unsupported custom geometry claim."
+}

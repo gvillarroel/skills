@@ -1,0 +1,81 @@
+{
+  "date": "2026-10-03",
+  "d3RuntimePayload": {
+    "fileCount": 288,
+    "payloadSha256": "9d9e1a54cc1508bed56301be068c6d8948e510156350f28c40958a96a0644bb2"
+  },
+  "baselineCommit": "45d51fea02490eef1ae5a8b2e83440827872a527",
+  "vendors": [
+    {
+      "path": "skills/d3/assets/vendor/D3-LICENSE.txt",
+      "sha256": "3e6849627f74ff73c257a3ae1efb574015d94fc1035c05ec3c15805165efcbc4",
+      "matchesBaseline": true
+    },
+    {
+      "path": "skills/d3/assets/vendor/d3.v7.9.0.min.js",
+      "sha256": "f2094bbf6141b359722c4fe454eb6c4b0f0e42cc10cc7af921fc158fceb86539",
+      "matchesBaseline": true
+    },
+    {
+      "path": "skills/threejs-animated-3d/assets/vendor/three.core.min.js",
+      "sha256": "6486aa0d719cfa87ec88dc47223b59b1fb8417a1a407fc0e52467c943e2f8cc9",
+      "matchesBaseline": true
+    },
+    {
+      "path": "skills/threejs-animated-3d/assets/vendor/three.module.min.js",
+      "sha256": "36a60b0120335f89a80a0dab70292292b0ec414b3d05e83cd09a3ea428c6712a",
+      "matchesBaseline": true
+    }
+  ],
+  "allVendorBytesPreserved": true,
+  "publishedThreeGeometry": {
+    "before": {
+      "constructors": [
+        "new THREE.BoxGeometry(5.4, 0.06, 4.2),",
+        "new THREE.CylinderGeometry(0.045, 0.045, 0.58, 12),",
+        "new THREE.ConeGeometry(0.12, 0.28, 16),"
+      ],
+      "positions": [
+        ".position.set(5.3, 4.2, 6)",
+        ".position.y = -0.25",
+        ".position.x = 0.42",
+        ".position.set((x - 2) * 1.02, 0.2, (z - 1.5) * 0.82)",
+        ".position.y = 0.2 + Math.sin(seconds * 1.6 + phase) * 0.12",
+        ".position.y = 0.2"
+      ],
+      "phases": [
+        "rotation.z = Math.PI / 2",
+        "rotation.z = -Math.PI / 2",
+        "rotation.y = Math.sin(seconds * 1.25 + phase) * 0.9",
+        "rotation.z = Math.cos(seconds * 1.1 + phase) * 0.18"
+      ]
+    },
+    "after": {
+      "constructors": [
+        "new THREE.BoxGeometry(5.4, 0.06, 4.2),",
+        "new THREE.CylinderGeometry(0.045, 0.045, 0.58, 12),",
+        "new THREE.ConeGeometry(0.12, 0.28, 16),"
+      ],
+      "positions": [
+        ".position.set(5.3, 4.2, 6)",
+        ".position.y = -0.25",
+        ".position.x = 0.42",
+        ".position.set((x - 2) * 1.02, 0.2, (z - 1.5) * 0.82)",
+        ".position.y = 0.2 + Math.sin(seconds * 1.6 + phase) * 0.12",
+        ".position.y = 0.2"
+      ],
+      "phases": [
+        "rotation.z = Math.PI / 2",
+        "rotation.z = -Math.PI / 2",
+        "rotation.y = Math.sin(seconds * 1.25 + phase) * 0.9",
+        "rotation.z = Math.cos(seconds * 1.1 + phase) * 0.18"
+      ]
+    },
+    "preserved": true
+  },
+  "d3FinalizerFixture": {
+    "sha256": "755e27738f2841a2f2abb9ff92017c515a5bd6d8326a9d3609519160673ee66d",
+    "matchesRuntime": true
+  },
+  "paletteChanges": []
+}

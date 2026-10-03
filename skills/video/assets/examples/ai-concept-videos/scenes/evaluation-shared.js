@@ -1,3 +1,4 @@
+import {drawArrow as safeArrow} from '../svg-arrows.js';
 import { drawLlmModelBox } from "./llm-model-box.js";
 
 export const evalColors = {
@@ -139,29 +140,7 @@ export function drawPromptTray(g, x, y, tokens, ctx, options = {}) {
 }
 
 export function drawArrow(g, from, to, color, opacity = 1, width = 3) {
-  if (opacity <= 0.01) return;
-  const angle = Math.atan2(to.y - from.y, to.x - from.x);
-  const head = 10;
-  const hx = to.x - Math.cos(angle) * head;
-  const hy = to.y - Math.sin(angle) * head;
-  g.append("line")
-    .attr("x1", from.x)
-    .attr("y1", from.y)
-    .attr("x2", hx)
-    .attr("y2", hy)
-    .attr("stroke", color)
-    .attr("stroke-width", width)
-    .attr("stroke-linecap", "round")
-    .attr("opacity", opacity);
-  g.append("path")
-    .attr("d", [
-      `M${to.x},${to.y}`,
-      `L${hx - Math.cos(angle - Math.PI / 2) * 5},${hy - Math.sin(angle - Math.PI / 2) * 5}`,
-      `L${hx - Math.cos(angle + Math.PI / 2) * 5},${hy - Math.sin(angle + Math.PI / 2) * 5}`,
-      "Z"
-    ].join(" "))
-    .attr("fill", color)
-    .attr("opacity", opacity);
+  safeArrow(g, from, to, color, opacity, width, 10);
 }
 
 export function drawModelBox(g, box, ctx, options = {}) {

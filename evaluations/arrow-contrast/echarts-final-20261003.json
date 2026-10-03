@@ -1,0 +1,761 @@
+{
+  "date": "2026-10-03",
+  "phase": "final",
+  "passed": true,
+  "states": [
+    {
+      "id": "colorset1-ffffff",
+      "family": "graph",
+      "colorset": "colorset1",
+      "background": "#ffffff",
+      "artifact": "projects/arrow-contrast/artifacts/echarts-final/colorset1-ffffff.svg",
+      "preparedLinks": [
+        {
+          "source": "a",
+          "target": "b",
+          "lineStyle": {
+            "color": "#828282",
+            "opacity": 1,
+            "width": 2
+          },
+          "emphasis": {
+            "lineStyle": {
+              "color": "#828282",
+              "opacity": 1,
+              "width": 2
+            }
+          },
+          "select": {
+            "lineStyle": {
+              "color": "#828282",
+              "opacity": 1,
+              "width": 2
+            }
+          },
+          "blur": {
+            "lineStyle": {
+              "color": "#828282",
+              "opacity": 1,
+              "width": 2
+            }
+          }
+        }
+      ],
+      "preparedLineStyle": {
+        "color": "#828282",
+        "opacity": 1,
+        "width": 2
+      },
+      "shaftCount": 1,
+      "headCount": 1,
+      "records": [
+        {
+          "part": "shaft",
+          "paint": "rgb(130, 130, 130)",
+          "effectiveOpacity": 1,
+          "minimumContrast": 3.8429449545037673,
+          "sampleCount": 5,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "part": "head",
+          "paint": "rgb(130, 130, 130)",
+          "effectiveOpacity": 1,
+          "minimumContrast": 3.8429449545037673,
+          "sampleCount": 10,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        }
+      ],
+      "passed": true
+    },
+    {
+      "id": "colorset1-ffffff-routes",
+      "family": "routes",
+      "colorset": "colorset1",
+      "background": "#ffffff",
+      "artifact": "projects/arrow-contrast/artifacts/echarts-final/colorset1-ffffff-routes.svg",
+      "preparedLineStyle": {
+        "color": "#333e48",
+        "curveness": 0.18,
+        "opacity": 0.72,
+        "width": 2
+      },
+      "shaftCount": 3,
+      "headCount": 3,
+      "records": [
+        {
+          "part": "shaft",
+          "paint": "rgb(51, 62, 72)",
+          "effectiveOpacity": 0.72,
+          "minimumContrast": 4.7443130113430865,
+          "sampleCount": 5,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "part": "shaft",
+          "paint": "rgb(51, 62, 72)",
+          "effectiveOpacity": 0.72,
+          "minimumContrast": 4.7443130113430865,
+          "sampleCount": 5,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "part": "shaft",
+          "paint": "rgb(51, 62, 72)",
+          "effectiveOpacity": 0.72,
+          "minimumContrast": 4.7443130113430865,
+          "sampleCount": 5,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "part": "head",
+          "paint": "rgb(51, 62, 72)",
+          "effectiveOpacity": 0.72,
+          "minimumContrast": 4.7443130113430865,
+          "sampleCount": 10,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "part": "head",
+          "paint": "rgb(51, 62, 72)",
+          "effectiveOpacity": 0.72,
+          "minimumContrast": 4.7443130113430865,
+          "sampleCount": 10,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "part": "head",
+          "paint": "rgb(51, 62, 72)",
+          "effectiveOpacity": 0.72,
+          "minimumContrast": 4.7443130113430865,
+          "sampleCount": 12,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        }
+      ],
+      "passed": true
+    },
+    {
+      "id": "colorset1-f7f7f7",
+      "family": "graph",
+      "colorset": "colorset1",
+      "background": "#f7f7f7",
+      "artifact": "projects/arrow-contrast/artifacts/echarts-final/colorset1-f7f7f7.svg",
+      "preparedLinks": [
+        {
+          "source": "a",
+          "target": "b",
+          "lineStyle": {
+            "color": "#828282",
+            "opacity": 1,
+            "width": 2
+          },
+          "emphasis": {
+            "lineStyle": {
+              "color": "#828282",
+              "opacity": 1,
+              "width": 2
+            }
+          },
+          "select": {
+            "lineStyle": {
+              "color": "#828282",
+              "opacity": 1,
+              "width": 2
+            }
+          },
+          "blur": {
+            "lineStyle": {
+              "color": "#828282",
+              "opacity": 1,
+              "width": 2
+            }
+          }
+        }
+      ],
+      "preparedLineStyle": {
+        "color": "#828282",
+        "opacity": 1,
+        "width": 2
+      },
+      "shaftCount": 1,
+      "headCount": 1,
+      "records": [
+        {
+          "part": "shaft",
+          "paint": "rgb(130, 130, 130)",
+          "effectiveOpacity": 1,
+          "minimumContrast": 3.587154360045896,
+          "sampleCount": 5,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              247,
+              247,
+              247
+            ]
+          ]
+        },
+        {
+          "part": "head",
+          "paint": "rgb(130, 130, 130)",
+          "effectiveOpacity": 1,
+          "minimumContrast": 3.587154360045896,
+          "sampleCount": 10,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              247,
+              247,
+              247
+            ]
+          ]
+        }
+      ],
+      "passed": true
+    },
+    {
+      "id": "colorset1-f7f7f7-routes",
+      "family": "routes",
+      "colorset": "colorset1",
+      "background": "#f7f7f7",
+      "artifact": "projects/arrow-contrast/artifacts/echarts-final/colorset1-f7f7f7-routes.svg",
+      "preparedLineStyle": {
+        "color": "#333e48",
+        "curveness": 0.18,
+        "opacity": 0.72,
+        "width": 2
+      },
+      "shaftCount": 3,
+      "headCount": 3,
+      "records": [
+        {
+          "part": "shaft",
+          "paint": "rgb(51, 62, 72)",
+          "effectiveOpacity": 0.72,
+          "minimumContrast": 4.574216875534806,
+          "sampleCount": 5,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              247,
+              247,
+              247
+            ]
+          ]
+        },
+        {
+          "part": "shaft",
+          "paint": "rgb(51, 62, 72)",
+          "effectiveOpacity": 0.72,
+          "minimumContrast": 4.574216875534806,
+          "sampleCount": 5,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              247,
+              247,
+              247
+            ]
+          ]
+        },
+        {
+          "part": "shaft",
+          "paint": "rgb(51, 62, 72)",
+          "effectiveOpacity": 0.72,
+          "minimumContrast": 4.574216875534806,
+          "sampleCount": 5,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              247,
+              247,
+              247
+            ]
+          ]
+        },
+        {
+          "part": "head",
+          "paint": "rgb(51, 62, 72)",
+          "effectiveOpacity": 0.72,
+          "minimumContrast": 4.574216875534806,
+          "sampleCount": 10,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              247,
+              247,
+              247
+            ]
+          ]
+        },
+        {
+          "part": "head",
+          "paint": "rgb(51, 62, 72)",
+          "effectiveOpacity": 0.72,
+          "minimumContrast": 4.574216875534806,
+          "sampleCount": 10,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              247,
+              247,
+              247
+            ]
+          ]
+        },
+        {
+          "part": "head",
+          "paint": "rgb(51, 62, 72)",
+          "effectiveOpacity": 0.72,
+          "minimumContrast": 4.574216875534806,
+          "sampleCount": 12,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              247,
+              247,
+              247
+            ]
+          ]
+        }
+      ],
+      "passed": true
+    },
+    {
+      "id": "colorset2-ffffff",
+      "family": "graph",
+      "colorset": "colorset2",
+      "background": "#ffffff",
+      "artifact": "projects/arrow-contrast/artifacts/echarts-final/colorset2-ffffff.svg",
+      "preparedLinks": [
+        {
+          "source": "a",
+          "target": "b",
+          "lineStyle": {
+            "color": "#828282",
+            "opacity": 1,
+            "width": 2
+          },
+          "emphasis": {
+            "lineStyle": {
+              "color": "#828282",
+              "opacity": 1,
+              "width": 2
+            }
+          },
+          "select": {
+            "lineStyle": {
+              "color": "#828282",
+              "opacity": 1,
+              "width": 2
+            }
+          },
+          "blur": {
+            "lineStyle": {
+              "color": "#828282",
+              "opacity": 1,
+              "width": 2
+            }
+          }
+        }
+      ],
+      "preparedLineStyle": {
+        "color": "#828282",
+        "opacity": 1,
+        "width": 2
+      },
+      "shaftCount": 1,
+      "headCount": 1,
+      "records": [
+        {
+          "part": "shaft",
+          "paint": "rgb(130, 130, 130)",
+          "effectiveOpacity": 1,
+          "minimumContrast": 3.8429449545037673,
+          "sampleCount": 5,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "part": "head",
+          "paint": "rgb(130, 130, 130)",
+          "effectiveOpacity": 1,
+          "minimumContrast": 3.8429449545037673,
+          "sampleCount": 10,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        }
+      ],
+      "passed": true
+    },
+    {
+      "id": "colorset2-ffffff-routes",
+      "family": "routes",
+      "colorset": "colorset2",
+      "background": "#ffffff",
+      "artifact": "projects/arrow-contrast/artifacts/echarts-final/colorset2-ffffff-routes.svg",
+      "preparedLineStyle": {
+        "color": "#007298",
+        "curveness": 0.18,
+        "opacity": 0.72,
+        "width": 2
+      },
+      "shaftCount": 3,
+      "headCount": 3,
+      "records": [
+        {
+          "part": "shaft",
+          "paint": "rgb(0, 114, 152)",
+          "effectiveOpacity": 0.72,
+          "minimumContrast": 3.2184583741017057,
+          "sampleCount": 5,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "part": "shaft",
+          "paint": "rgb(0, 114, 152)",
+          "effectiveOpacity": 0.72,
+          "minimumContrast": 3.2184583741017057,
+          "sampleCount": 5,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "part": "shaft",
+          "paint": "rgb(0, 114, 152)",
+          "effectiveOpacity": 0.72,
+          "minimumContrast": 3.2184583741017057,
+          "sampleCount": 5,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "part": "head",
+          "paint": "rgb(0, 114, 152)",
+          "effectiveOpacity": 0.72,
+          "minimumContrast": 3.2184583741017057,
+          "sampleCount": 10,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "part": "head",
+          "paint": "rgb(0, 114, 152)",
+          "effectiveOpacity": 0.72,
+          "minimumContrast": 3.2184583741017057,
+          "sampleCount": 10,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "part": "head",
+          "paint": "rgb(0, 114, 152)",
+          "effectiveOpacity": 0.72,
+          "minimumContrast": 3.2184583741017057,
+          "sampleCount": 12,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        }
+      ],
+      "passed": true
+    },
+    {
+      "id": "colorset2-f7f7f7",
+      "family": "graph",
+      "colorset": "colorset2",
+      "background": "#f7f7f7",
+      "artifact": "projects/arrow-contrast/artifacts/echarts-final/colorset2-f7f7f7.svg",
+      "preparedLinks": [
+        {
+          "source": "a",
+          "target": "b",
+          "lineStyle": {
+            "color": "#828282",
+            "opacity": 1,
+            "width": 2
+          },
+          "emphasis": {
+            "lineStyle": {
+              "color": "#828282",
+              "opacity": 1,
+              "width": 2
+            }
+          },
+          "select": {
+            "lineStyle": {
+              "color": "#828282",
+              "opacity": 1,
+              "width": 2
+            }
+          },
+          "blur": {
+            "lineStyle": {
+              "color": "#828282",
+              "opacity": 1,
+              "width": 2
+            }
+          }
+        }
+      ],
+      "preparedLineStyle": {
+        "color": "#828282",
+        "opacity": 1,
+        "width": 2
+      },
+      "shaftCount": 1,
+      "headCount": 1,
+      "records": [
+        {
+          "part": "shaft",
+          "paint": "rgb(130, 130, 130)",
+          "effectiveOpacity": 1,
+          "minimumContrast": 3.587154360045896,
+          "sampleCount": 5,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              247,
+              247,
+              247
+            ]
+          ]
+        },
+        {
+          "part": "head",
+          "paint": "rgb(130, 130, 130)",
+          "effectiveOpacity": 1,
+          "minimumContrast": 3.587154360045896,
+          "sampleCount": 10,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              247,
+              247,
+              247
+            ]
+          ]
+        }
+      ],
+      "passed": true
+    },
+    {
+      "id": "colorset2-f7f7f7-routes",
+      "family": "routes",
+      "colorset": "colorset2",
+      "background": "#f7f7f7",
+      "artifact": "projects/arrow-contrast/artifacts/echarts-final/colorset2-f7f7f7-routes.svg",
+      "preparedLineStyle": {
+        "color": "#007298",
+        "curveness": 0.18,
+        "opacity": 0.72,
+        "width": 2
+      },
+      "shaftCount": 3,
+      "headCount": 3,
+      "records": [
+        {
+          "part": "shaft",
+          "paint": "rgb(0, 114, 152)",
+          "effectiveOpacity": 0.72,
+          "minimumContrast": 3.0898704594047484,
+          "sampleCount": 5,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              247,
+              247,
+              247
+            ]
+          ]
+        },
+        {
+          "part": "shaft",
+          "paint": "rgb(0, 114, 152)",
+          "effectiveOpacity": 0.72,
+          "minimumContrast": 3.0898704594047484,
+          "sampleCount": 5,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              247,
+              247,
+              247
+            ]
+          ]
+        },
+        {
+          "part": "shaft",
+          "paint": "rgb(0, 114, 152)",
+          "effectiveOpacity": 0.72,
+          "minimumContrast": 3.0898704594047484,
+          "sampleCount": 5,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              247,
+              247,
+              247
+            ]
+          ]
+        },
+        {
+          "part": "head",
+          "paint": "rgb(0, 114, 152)",
+          "effectiveOpacity": 0.72,
+          "minimumContrast": 3.0898704594047484,
+          "sampleCount": 10,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              247,
+              247,
+              247
+            ]
+          ]
+        },
+        {
+          "part": "head",
+          "paint": "rgb(0, 114, 152)",
+          "effectiveOpacity": 0.72,
+          "minimumContrast": 3.0898704594047484,
+          "sampleCount": 10,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              247,
+              247,
+              247
+            ]
+          ]
+        },
+        {
+          "part": "head",
+          "paint": "rgb(0, 114, 152)",
+          "effectiveOpacity": 0.72,
+          "minimumContrast": 3.0898704594047484,
+          "sampleCount": 12,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              247,
+              247,
+              247
+            ]
+          ]
+        }
+      ],
+      "passed": true
+    }
+  ],
+  "scope": "Independent native ECharts SSR graph and curved continuous Cartesian lines: explicit pale low-alpha edge input, actual filled arrowhead geometry and shaft paint on white/quiet canvases in both palettes. Cartesian tips are inset outside radius-four endpoint marks. Arbitrary custom renderers and filled route crossings require their own actual-backing inspection.",
+  "detailedSampleEvidence": {
+    "path": "projects/arrow-contrast/artifacts/reviews/detailed-echarts-final-20261003.json",
+    "sha256": "62ced1983b231580b3c65fc346b8ecd969c95369cdab25688e1a4a6cdf8cc4a3",
+    "sizeBytes": 64385
+  }
+}

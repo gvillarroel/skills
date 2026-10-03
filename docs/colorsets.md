@@ -16,6 +16,16 @@ Only after all usable solid fills have assignments, expand the style capacity by
 
 Keep overflow borders distinct from their fill and prefer at least 3:1 contrast against it. Use a finite pool of border colors, solid/dashed/dotted traces and widths from 1 to 3 pixels; do not increase widths indefinitely. Once that pool is exhausted, report the limit and use direct labels, geometry or grouping instead of claiming another unique style. On translucent canvases, evaluate text and border contrast against the actual composited backing.
 
+## Arrow paint and terminal placement
+
+Essential arrow shafts and heads must reach at least 3:1 contrast against the actual adjacent paint at readable resting, focus and delivery states. Palette membership alone is insufficient. Include fill paths, regions, shaded 3D backings, alpha compositing and the surface around the terminal. Treat text carried by an arrow as text, using its separate contrast rule. Partial reveal/fade-to-hidden transitions are distinct from an arrow's readable state.
+
+Prefer opaque contrast-safe palette paint and clear route gutters. Keep arrowheads visible outside opaque node silhouettes, aligned to the final path tangent, associated with the intended target port and free of clipping or text overlap. Preserve semantic direction and category meaning. Match marker paint to its edge where the same backing supports it; scope marker variants to that edge when its local backing requires another allowed color. Match `refX`/`refY` to the actual painted tip and account for marker units, transforms, line caps and head size rather than trusting the endpoint attribute alone.
+
+If one color cannot contrast with all crossed surfaces, first reroute or add a small documented terminal clearance. Use a scoped contrast-safe paint change only when the meaningful crossing is unavoidable. Preserve solid borderless nodes instead of adding outlines or general halos to compensate. Imported source arrows retain their source-fidelity contract; authored wrappers and newly generated arrows use this rule.
+
+Validate both shaft and actual referenced head geometry over their real local backings, including paths and transparent regions. Check both palettes, direction reversals, zoom/focus, reduced motion, final export scale and video/3D views when relevant. Retain explicit classifications for ordinary diagram lines and source glyphs so a broad path scan does not invent arrows. The 3:1 graphical-object target follows [WCAG non-text contrast guidance](https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html); marker placement follows the [SVG marker model](https://www.w3.org/TR/SVG2/painting.html#Markers). This rule is a design and verification target, not a claim of complete accessibility conformance.
+
 | Role | Colorset1 | Colorset2 additions |
 | --- | --- | --- |
 | Stage / surface | `#f7f7f7` / `#ffffff` | Same |
@@ -35,7 +45,7 @@ Apply the contract to authored base paint: CSS, SVG fill/stroke, gradient stops,
 
 Preserve source fidelity explicitly. Downloaded photos, videos, textures/HDRIs, original brand artwork, embedded source artwork and requested exact-RGB conversion modes keep their original colors and provenance. Their authored frame, controls, captions and diagrams still follow a colorset. Resolve `currentColor` at the consuming surface. Do not claim these original pixels satisfy the authored contract or silently modify source identity.
 
-The [34-skill output inventory](../evaluations/colorset-audit/coverage.json) records formats and paths, including nonvisual data/report outputs and source-fidelity boundaries. The [original audit](../evaluations/colorset-audit/validation-20261002.md) records output coverage; the [solid presentation revision](../evaluations/solid-colorset-style/validation-20261003.md) records current renderer, isolated-runtime, contrast and publication checks. Run:
+The [34-skill output inventory](../evaluations/colorset-audit/coverage.json) records formats and paths, including nonvisual data/report outputs and source-fidelity boundaries. The [original audit](../evaluations/colorset-audit/validation-20261002.md) records output coverage; the [solid presentation revision](../evaluations/solid-colorset-style/validation-20261003.md) records the preceding renderer, isolated-runtime, contrast and publication checks. The [arrow revision](../evaluations/arrow-contrast/validation-20261003.md) records arrow-specific geometry, paint, export and final-payload verification. Run:
 
 ```powershell
 uv run --script scripts/validate-colorsets.py

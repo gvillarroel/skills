@@ -32,7 +32,7 @@ Replace the example value with the exact requested path. Do not substitute descr
 
 - `references/scene-patterns.md`: read when choosing scene types, structuring a Three.js gallery, or implementing cameras, lights, materials, particles, and resize-safe renderers.
 - `references/validation.md`: read when writing Playwright checks, canvas pixel probes, movement checks, replay checks, or screenshot verification for Three.js output.
-- `scripts/build_standalone_threejs.py`: run for isolated runtime smoke tests or any task that needs a portable no-network HTML scene at an exact path.
+- `scripts/build_standalone_threejs.py`: run for portable no-network HTML at an exact path. Use `--scene vector-field --token-count 20` for the directed cone/cylinder field; read its compact recipe in `references/scene-patterns.md`.
 - `scripts/validate_standalone_threejs.py`: run after the standalone builder; it performs static, desktop/mobile canvas, animation, replay, pointer, overflow, and browser-error checks in one fail-closed command.
 - `assets/templates/self-contained-token-orbit.html`: builder source template; do not copy it directly because its runtime marker must be expanded.
 - `assets/vendor/three.module.min.js` and `assets/vendor/three.core.min.js`: bundled inputs that the builder embeds into the standalone HTML.

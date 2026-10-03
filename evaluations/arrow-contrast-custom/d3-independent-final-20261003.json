@@ -1,0 +1,1114 @@
+{
+  "passed": true,
+  "sourcePayloadSha256": "9d9e1a54cc1508bed56301be068c6d8948e510156350f28c40958a96a0644bb2",
+  "rows": [
+    {
+      "surface": "gallery",
+      "gallery": "d3-animated-svg-cs1",
+      "kind": "pid",
+      "state": "focus",
+      "actual": {
+        "labels": [
+          {
+            "id": "lic-101",
+            "text": "LIC",
+            "backing": "rgb(79, 79, 79)",
+            "paint": "rgb(255, 255, 255)",
+            "expected": "rgb(255, 255, 255)",
+            "fontSize": "12px",
+            "passed": true,
+            "fit": true
+          },
+          {
+            "id": "lic-101",
+            "text": "101",
+            "backing": "rgb(79, 79, 79)",
+            "paint": "rgb(255, 255, 255)",
+            "expected": "rgb(255, 255, 255)",
+            "fontSize": "12px",
+            "passed": true,
+            "fit": true
+          },
+          {
+            "id": "tic-102",
+            "text": "TIC",
+            "backing": "rgb(105, 105, 105)",
+            "paint": "rgb(255, 255, 255)",
+            "expected": "rgb(255, 255, 255)",
+            "fontSize": "12px",
+            "passed": true,
+            "fit": true
+          },
+          {
+            "id": "tic-102",
+            "text": "102",
+            "backing": "rgb(105, 105, 105)",
+            "paint": "rgb(255, 255, 255)",
+            "expected": "rgb(255, 255, 255)",
+            "fontSize": "12px",
+            "passed": true,
+            "fit": true
+          },
+          {
+            "id": "fic-103",
+            "text": "FIC",
+            "backing": "rgb(130, 130, 130)",
+            "paint": "rgb(0, 0, 0)",
+            "expected": "rgb(0, 0, 0)",
+            "fontSize": "12px",
+            "passed": true,
+            "fit": true
+          },
+          {
+            "id": "fic-103",
+            "text": "103",
+            "backing": "rgb(130, 130, 130)",
+            "paint": "rgb(0, 0, 0)",
+            "expected": "rgb(0, 0, 0)",
+            "fontSize": "12px",
+            "passed": true,
+            "fit": true
+          },
+          {
+            "id": "hs-104",
+            "text": "HS",
+            "backing": "rgb(158, 27, 50)",
+            "paint": "rgb(255, 255, 255)",
+            "expected": "rgb(255, 255, 255)",
+            "fontSize": "12px",
+            "passed": true,
+            "fit": true
+          },
+          {
+            "id": "hs-104",
+            "text": "104",
+            "backing": "rgb(158, 27, 50)",
+            "paint": "rgb(255, 255, 255)",
+            "expected": "rgb(255, 255, 255)",
+            "fontSize": "12px",
+            "passed": true,
+            "fit": true
+          }
+        ]
+      },
+      "passed": true
+    },
+    {
+      "surface": "gallery",
+      "gallery": "d3-animated-svg-cs1",
+      "kind": "pid",
+      "state": "expanded",
+      "actual": {
+        "labels": [
+          {
+            "id": "lic-101",
+            "text": "LIC",
+            "backing": "rgb(79, 79, 79)",
+            "paint": "rgb(255, 255, 255)",
+            "expected": "rgb(255, 255, 255)",
+            "fontSize": "12px",
+            "passed": true,
+            "fit": true
+          },
+          {
+            "id": "lic-101",
+            "text": "101",
+            "backing": "rgb(79, 79, 79)",
+            "paint": "rgb(255, 255, 255)",
+            "expected": "rgb(255, 255, 255)",
+            "fontSize": "12px",
+            "passed": true,
+            "fit": true
+          },
+          {
+            "id": "tic-102",
+            "text": "TIC",
+            "backing": "rgb(105, 105, 105)",
+            "paint": "rgb(255, 255, 255)",
+            "expected": "rgb(255, 255, 255)",
+            "fontSize": "12px",
+            "passed": true,
+            "fit": true
+          },
+          {
+            "id": "tic-102",
+            "text": "102",
+            "backing": "rgb(105, 105, 105)",
+            "paint": "rgb(255, 255, 255)",
+            "expected": "rgb(255, 255, 255)",
+            "fontSize": "12px",
+            "passed": true,
+            "fit": true
+          },
+          {
+            "id": "fic-103",
+            "text": "FIC",
+            "backing": "rgb(130, 130, 130)",
+            "paint": "rgb(0, 0, 0)",
+            "expected": "rgb(0, 0, 0)",
+            "fontSize": "12px",
+            "passed": true,
+            "fit": true
+          },
+          {
+            "id": "fic-103",
+            "text": "103",
+            "backing": "rgb(130, 130, 130)",
+            "paint": "rgb(0, 0, 0)",
+            "expected": "rgb(0, 0, 0)",
+            "fontSize": "12px",
+            "passed": true,
+            "fit": true
+          },
+          {
+            "id": "hs-104",
+            "text": "HS",
+            "backing": "rgb(158, 27, 50)",
+            "paint": "rgb(255, 255, 255)",
+            "expected": "rgb(255, 255, 255)",
+            "fontSize": "12px",
+            "passed": true,
+            "fit": true
+          },
+          {
+            "id": "hs-104",
+            "text": "104",
+            "backing": "rgb(158, 27, 50)",
+            "paint": "rgb(255, 255, 255)",
+            "expected": "rgb(255, 255, 255)",
+            "fontSize": "12px",
+            "passed": true,
+            "fit": true
+          }
+        ]
+      },
+      "passed": true
+    },
+    {
+      "surface": "gallery",
+      "gallery": "d3-animated-svg-cs1",
+      "kind": "pid",
+      "state": "fit",
+      "actual": {
+        "labels": [
+          {
+            "id": "lic-101",
+            "text": "LIC",
+            "backing": "rgb(79, 79, 79)",
+            "paint": "rgb(255, 255, 255)",
+            "expected": "rgb(255, 255, 255)",
+            "fontSize": "12px",
+            "passed": true,
+            "fit": true
+          },
+          {
+            "id": "lic-101",
+            "text": "101",
+            "backing": "rgb(79, 79, 79)",
+            "paint": "rgb(255, 255, 255)",
+            "expected": "rgb(255, 255, 255)",
+            "fontSize": "12px",
+            "passed": true,
+            "fit": true
+          },
+          {
+            "id": "tic-102",
+            "text": "TIC",
+            "backing": "rgb(105, 105, 105)",
+            "paint": "rgb(255, 255, 255)",
+            "expected": "rgb(255, 255, 255)",
+            "fontSize": "12px",
+            "passed": true,
+            "fit": true
+          },
+          {
+            "id": "tic-102",
+            "text": "102",
+            "backing": "rgb(105, 105, 105)",
+            "paint": "rgb(255, 255, 255)",
+            "expected": "rgb(255, 255, 255)",
+            "fontSize": "12px",
+            "passed": true,
+            "fit": true
+          },
+          {
+            "id": "fic-103",
+            "text": "FIC",
+            "backing": "rgb(130, 130, 130)",
+            "paint": "rgb(0, 0, 0)",
+            "expected": "rgb(0, 0, 0)",
+            "fontSize": "12px",
+            "passed": true,
+            "fit": true
+          },
+          {
+            "id": "fic-103",
+            "text": "103",
+            "backing": "rgb(130, 130, 130)",
+            "paint": "rgb(0, 0, 0)",
+            "expected": "rgb(0, 0, 0)",
+            "fontSize": "12px",
+            "passed": true,
+            "fit": true
+          },
+          {
+            "id": "hs-104",
+            "text": "HS",
+            "backing": "rgb(158, 27, 50)",
+            "paint": "rgb(255, 255, 255)",
+            "expected": "rgb(255, 255, 255)",
+            "fontSize": "12px",
+            "passed": true,
+            "fit": true
+          },
+          {
+            "id": "hs-104",
+            "text": "104",
+            "backing": "rgb(158, 27, 50)",
+            "paint": "rgb(255, 255, 255)",
+            "expected": "rgb(255, 255, 255)",
+            "fontSize": "12px",
+            "passed": true,
+            "fit": true
+          }
+        ]
+      },
+      "passed": true
+    },
+    {
+      "surface": "gallery",
+      "gallery": "d3-animated-svg-cs1",
+      "kind": "bowtie",
+      "state": "focus",
+      "actual": {
+        "labels": [
+          {
+            "id": "inspection-gap",
+            "text": "inspection overdue",
+            "backing": "rgb(158, 27, 50)",
+            "paint": "rgb(255, 255, 255)",
+            "expected": "rgb(255, 255, 255)",
+            "fontSize": "7.2px",
+            "passed": true,
+            "fit": true
+          },
+          {
+            "id": "deluge-gap",
+            "text": "deluge offline",
+            "backing": "rgb(158, 27, 50)",
+            "paint": "rgb(255, 255, 255)",
+            "expected": "rgb(255, 255, 255)",
+            "fontSize": "6.6px",
+            "passed": true,
+            "fit": true
+          }
+        ],
+        "d": "M628,155H602V151H568V159",
+        "targetId": "deluge-system",
+        "tip": {
+          "x": 568,
+          "y": 159
+        },
+        "targetTopSvgUnits": 162.99999131405121,
+        "targetGapUnits": 3.9999913140512056,
+        "terminalUnit": {
+          "x": 0,
+          "y": 1
+        },
+        "pulseTrajectoryMinimumClearanceUnits": 17.00000971218605,
+        "markerPaint": "rgb(158, 27, 50)",
+        "shaftPaint": "rgb(158, 27, 50)",
+        "unresolved": null
+      },
+      "passed": true
+    },
+    {
+      "surface": "gallery",
+      "gallery": "d3-animated-svg-cs1",
+      "kind": "bowtie",
+      "state": "expanded",
+      "actual": {
+        "labels": [
+          {
+            "id": "inspection-gap",
+            "text": "inspection overdue",
+            "backing": "rgb(158, 27, 50)",
+            "paint": "rgb(255, 255, 255)",
+            "expected": "rgb(255, 255, 255)",
+            "fontSize": "7.2px",
+            "passed": true,
+            "fit": true
+          },
+          {
+            "id": "deluge-gap",
+            "text": "deluge offline",
+            "backing": "rgb(158, 27, 50)",
+            "paint": "rgb(255, 255, 255)",
+            "expected": "rgb(255, 255, 255)",
+            "fontSize": "6.6px",
+            "passed": true,
+            "fit": true
+          }
+        ],
+        "d": "M628,155H602V151H568V159",
+        "targetId": "deluge-system",
+        "tip": {
+          "x": 568,
+          "y": 159
+        },
+        "targetTopSvgUnits": 163,
+        "targetGapUnits": 4,
+        "terminalUnit": {
+          "x": 0,
+          "y": 1
+        },
+        "pulseTrajectoryMinimumClearanceUnits": 17.00000971218605,
+        "markerPaint": "rgb(158, 27, 50)",
+        "shaftPaint": "rgb(158, 27, 50)",
+        "unresolved": null
+      },
+      "passed": true
+    },
+    {
+      "surface": "gallery",
+      "gallery": "d3-animated-svg-cs1",
+      "kind": "bowtie",
+      "state": "fit",
+      "actual": {
+        "labels": [
+          {
+            "id": "inspection-gap",
+            "text": "inspection overdue",
+            "backing": "rgb(158, 27, 50)",
+            "paint": "rgb(255, 255, 255)",
+            "expected": "rgb(255, 255, 255)",
+            "fontSize": "7.2px",
+            "passed": true,
+            "fit": true
+          },
+          {
+            "id": "deluge-gap",
+            "text": "deluge offline",
+            "backing": "rgb(158, 27, 50)",
+            "paint": "rgb(255, 255, 255)",
+            "expected": "rgb(255, 255, 255)",
+            "fontSize": "6.6px",
+            "passed": true,
+            "fit": true
+          }
+        ],
+        "d": "M628,155H602V151H568V159",
+        "targetId": "deluge-system",
+        "tip": {
+          "x": 568,
+          "y": 159
+        },
+        "targetTopSvgUnits": 162.99999131405121,
+        "targetGapUnits": 3.9999913140512056,
+        "terminalUnit": {
+          "x": 0,
+          "y": 1
+        },
+        "pulseTrajectoryMinimumClearanceUnits": 17.00000971218605,
+        "markerPaint": "rgb(158, 27, 50)",
+        "shaftPaint": "rgb(158, 27, 50)",
+        "unresolved": null
+      },
+      "passed": true
+    },
+    {
+      "surface": "gallery",
+      "gallery": "d3-animated-svg-colorset2",
+      "kind": "pid",
+      "state": "focus",
+      "actual": {
+        "labels": [
+          {
+            "id": "lic-101",
+            "text": "LIC",
+            "backing": "rgb(69, 132, 42)",
+            "paint": "rgb(0, 0, 0)",
+            "expected": "rgb(0, 0, 0)",
+            "fontSize": "12px",
+            "passed": true,
+            "fit": true
+          },
+          {
+            "id": "lic-101",
+            "text": "101",
+            "backing": "rgb(69, 132, 42)",
+            "paint": "rgb(0, 0, 0)",
+            "expected": "rgb(0, 0, 0)",
+            "fontSize": "12px",
+            "passed": true,
+            "fit": true
+          },
+          {
+            "id": "tic-102",
+            "text": "TIC",
+            "backing": "rgb(231, 114, 4)",
+            "paint": "rgb(0, 0, 0)",
+            "expected": "rgb(0, 0, 0)",
+            "fontSize": "12px",
+            "passed": true,
+            "fit": true
+          },
+          {
+            "id": "tic-102",
+            "text": "102",
+            "backing": "rgb(231, 114, 4)",
+            "paint": "rgb(0, 0, 0)",
+            "expected": "rgb(0, 0, 0)",
+            "fontSize": "12px",
+            "passed": true,
+            "fit": true
+          },
+          {
+            "id": "fic-103",
+            "text": "FIC",
+            "backing": "rgb(101, 47, 108)",
+            "paint": "rgb(255, 255, 255)",
+            "expected": "rgb(255, 255, 255)",
+            "fontSize": "12px",
+            "passed": true,
+            "fit": true
+          },
+          {
+            "id": "fic-103",
+            "text": "103",
+            "backing": "rgb(101, 47, 108)",
+            "paint": "rgb(255, 255, 255)",
+            "expected": "rgb(255, 255, 255)",
+            "fontSize": "12px",
+            "passed": true,
+            "fit": true
+          },
+          {
+            "id": "hs-104",
+            "text": "HS",
+            "backing": "rgb(158, 27, 50)",
+            "paint": "rgb(255, 255, 255)",
+            "expected": "rgb(255, 255, 255)",
+            "fontSize": "12px",
+            "passed": true,
+            "fit": true
+          },
+          {
+            "id": "hs-104",
+            "text": "104",
+            "backing": "rgb(158, 27, 50)",
+            "paint": "rgb(255, 255, 255)",
+            "expected": "rgb(255, 255, 255)",
+            "fontSize": "12px",
+            "passed": true,
+            "fit": true
+          }
+        ]
+      },
+      "passed": true
+    },
+    {
+      "surface": "gallery",
+      "gallery": "d3-animated-svg-colorset2",
+      "kind": "pid",
+      "state": "expanded",
+      "actual": {
+        "labels": [
+          {
+            "id": "lic-101",
+            "text": "LIC",
+            "backing": "rgb(69, 132, 42)",
+            "paint": "rgb(0, 0, 0)",
+            "expected": "rgb(0, 0, 0)",
+            "fontSize": "12px",
+            "passed": true,
+            "fit": true
+          },
+          {
+            "id": "lic-101",
+            "text": "101",
+            "backing": "rgb(69, 132, 42)",
+            "paint": "rgb(0, 0, 0)",
+            "expected": "rgb(0, 0, 0)",
+            "fontSize": "12px",
+            "passed": true,
+            "fit": true
+          },
+          {
+            "id": "tic-102",
+            "text": "TIC",
+            "backing": "rgb(231, 114, 4)",
+            "paint": "rgb(0, 0, 0)",
+            "expected": "rgb(0, 0, 0)",
+            "fontSize": "12px",
+            "passed": true,
+            "fit": true
+          },
+          {
+            "id": "tic-102",
+            "text": "102",
+            "backing": "rgb(231, 114, 4)",
+            "paint": "rgb(0, 0, 0)",
+            "expected": "rgb(0, 0, 0)",
+            "fontSize": "12px",
+            "passed": true,
+            "fit": true
+          },
+          {
+            "id": "fic-103",
+            "text": "FIC",
+            "backing": "rgb(101, 47, 108)",
+            "paint": "rgb(255, 255, 255)",
+            "expected": "rgb(255, 255, 255)",
+            "fontSize": "12px",
+            "passed": true,
+            "fit": true
+          },
+          {
+            "id": "fic-103",
+            "text": "103",
+            "backing": "rgb(101, 47, 108)",
+            "paint": "rgb(255, 255, 255)",
+            "expected": "rgb(255, 255, 255)",
+            "fontSize": "12px",
+            "passed": true,
+            "fit": true
+          },
+          {
+            "id": "hs-104",
+            "text": "HS",
+            "backing": "rgb(158, 27, 50)",
+            "paint": "rgb(255, 255, 255)",
+            "expected": "rgb(255, 255, 255)",
+            "fontSize": "12px",
+            "passed": true,
+            "fit": true
+          },
+          {
+            "id": "hs-104",
+            "text": "104",
+            "backing": "rgb(158, 27, 50)",
+            "paint": "rgb(255, 255, 255)",
+            "expected": "rgb(255, 255, 255)",
+            "fontSize": "12px",
+            "passed": true,
+            "fit": true
+          }
+        ]
+      },
+      "passed": true
+    },
+    {
+      "surface": "gallery",
+      "gallery": "d3-animated-svg-colorset2",
+      "kind": "pid",
+      "state": "fit",
+      "actual": {
+        "labels": [
+          {
+            "id": "lic-101",
+            "text": "LIC",
+            "backing": "rgb(69, 132, 42)",
+            "paint": "rgb(0, 0, 0)",
+            "expected": "rgb(0, 0, 0)",
+            "fontSize": "12px",
+            "passed": true,
+            "fit": true
+          },
+          {
+            "id": "lic-101",
+            "text": "101",
+            "backing": "rgb(69, 132, 42)",
+            "paint": "rgb(0, 0, 0)",
+            "expected": "rgb(0, 0, 0)",
+            "fontSize": "12px",
+            "passed": true,
+            "fit": true
+          },
+          {
+            "id": "tic-102",
+            "text": "TIC",
+            "backing": "rgb(231, 114, 4)",
+            "paint": "rgb(0, 0, 0)",
+            "expected": "rgb(0, 0, 0)",
+            "fontSize": "12px",
+            "passed": true,
+            "fit": true
+          },
+          {
+            "id": "tic-102",
+            "text": "102",
+            "backing": "rgb(231, 114, 4)",
+            "paint": "rgb(0, 0, 0)",
+            "expected": "rgb(0, 0, 0)",
+            "fontSize": "12px",
+            "passed": true,
+            "fit": true
+          },
+          {
+            "id": "fic-103",
+            "text": "FIC",
+            "backing": "rgb(101, 47, 108)",
+            "paint": "rgb(255, 255, 255)",
+            "expected": "rgb(255, 255, 255)",
+            "fontSize": "12px",
+            "passed": true,
+            "fit": true
+          },
+          {
+            "id": "fic-103",
+            "text": "103",
+            "backing": "rgb(101, 47, 108)",
+            "paint": "rgb(255, 255, 255)",
+            "expected": "rgb(255, 255, 255)",
+            "fontSize": "12px",
+            "passed": true,
+            "fit": true
+          },
+          {
+            "id": "hs-104",
+            "text": "HS",
+            "backing": "rgb(158, 27, 50)",
+            "paint": "rgb(255, 255, 255)",
+            "expected": "rgb(255, 255, 255)",
+            "fontSize": "12px",
+            "passed": true,
+            "fit": true
+          },
+          {
+            "id": "hs-104",
+            "text": "104",
+            "backing": "rgb(158, 27, 50)",
+            "paint": "rgb(255, 255, 255)",
+            "expected": "rgb(255, 255, 255)",
+            "fontSize": "12px",
+            "passed": true,
+            "fit": true
+          }
+        ]
+      },
+      "passed": true
+    },
+    {
+      "surface": "gallery",
+      "gallery": "d3-animated-svg-colorset2",
+      "kind": "bowtie",
+      "state": "focus",
+      "actual": {
+        "labels": [
+          {
+            "id": "inspection-gap",
+            "text": "inspection overdue",
+            "backing": "rgb(158, 27, 50)",
+            "paint": "rgb(255, 255, 255)",
+            "expected": "rgb(255, 255, 255)",
+            "fontSize": "7.2px",
+            "passed": true,
+            "fit": true
+          },
+          {
+            "id": "deluge-gap",
+            "text": "deluge offline",
+            "backing": "rgb(158, 27, 50)",
+            "paint": "rgb(255, 255, 255)",
+            "expected": "rgb(255, 255, 255)",
+            "fontSize": "6.6px",
+            "passed": true,
+            "fit": true
+          }
+        ],
+        "d": "M628,155H602V151H568V159",
+        "targetId": "deluge-system",
+        "tip": {
+          "x": 568,
+          "y": 159
+        },
+        "targetTopSvgUnits": 162.99999131405121,
+        "targetGapUnits": 3.9999913140512056,
+        "terminalUnit": {
+          "x": 0,
+          "y": 1
+        },
+        "pulseTrajectoryMinimumClearanceUnits": 17.00000971218605,
+        "markerPaint": "rgb(158, 27, 50)",
+        "shaftPaint": "rgb(158, 27, 50)",
+        "unresolved": null
+      },
+      "passed": true
+    },
+    {
+      "surface": "gallery",
+      "gallery": "d3-animated-svg-colorset2",
+      "kind": "bowtie",
+      "state": "expanded",
+      "actual": {
+        "labels": [
+          {
+            "id": "inspection-gap",
+            "text": "inspection overdue",
+            "backing": "rgb(158, 27, 50)",
+            "paint": "rgb(255, 255, 255)",
+            "expected": "rgb(255, 255, 255)",
+            "fontSize": "7.2px",
+            "passed": true,
+            "fit": true
+          },
+          {
+            "id": "deluge-gap",
+            "text": "deluge offline",
+            "backing": "rgb(158, 27, 50)",
+            "paint": "rgb(255, 255, 255)",
+            "expected": "rgb(255, 255, 255)",
+            "fontSize": "6.6px",
+            "passed": true,
+            "fit": true
+          }
+        ],
+        "d": "M628,155H602V151H568V159",
+        "targetId": "deluge-system",
+        "tip": {
+          "x": 568,
+          "y": 159
+        },
+        "targetTopSvgUnits": 163,
+        "targetGapUnits": 4,
+        "terminalUnit": {
+          "x": 0,
+          "y": 1
+        },
+        "pulseTrajectoryMinimumClearanceUnits": 17.00000971218605,
+        "markerPaint": "rgb(158, 27, 50)",
+        "shaftPaint": "rgb(158, 27, 50)",
+        "unresolved": null
+      },
+      "passed": true
+    },
+    {
+      "surface": "gallery",
+      "gallery": "d3-animated-svg-colorset2",
+      "kind": "bowtie",
+      "state": "fit",
+      "actual": {
+        "labels": [
+          {
+            "id": "inspection-gap",
+            "text": "inspection overdue",
+            "backing": "rgb(158, 27, 50)",
+            "paint": "rgb(255, 255, 255)",
+            "expected": "rgb(255, 255, 255)",
+            "fontSize": "7.2px",
+            "passed": true,
+            "fit": true
+          },
+          {
+            "id": "deluge-gap",
+            "text": "deluge offline",
+            "backing": "rgb(158, 27, 50)",
+            "paint": "rgb(255, 255, 255)",
+            "expected": "rgb(255, 255, 255)",
+            "fontSize": "6.6px",
+            "passed": true,
+            "fit": true
+          }
+        ],
+        "d": "M628,155H602V151H568V159",
+        "targetId": "deluge-system",
+        "tip": {
+          "x": 568,
+          "y": 159
+        },
+        "targetTopSvgUnits": 162.99999131405121,
+        "targetGapUnits": 3.9999913140512056,
+        "terminalUnit": {
+          "x": 0,
+          "y": 1
+        },
+        "pulseTrajectoryMinimumClearanceUnits": 17.00000971218605,
+        "markerPaint": "rgb(158, 27, 50)",
+        "shaftPaint": "rgb(158, 27, 50)",
+        "unresolved": null
+      },
+      "passed": true
+    },
+    {
+      "surface": "standalone",
+      "palette": "colorset1",
+      "kind": "pid",
+      "state": "settled",
+      "actual": {
+        "labels": [
+          {
+            "id": "lic-101",
+            "text": "LIC",
+            "backing": "rgb(79, 79, 79)",
+            "paint": "rgb(255, 255, 255)",
+            "expected": "rgb(255, 255, 255)",
+            "fontSize": "12px",
+            "passed": true,
+            "fit": true
+          },
+          {
+            "id": "lic-101",
+            "text": "101",
+            "backing": "rgb(79, 79, 79)",
+            "paint": "rgb(255, 255, 255)",
+            "expected": "rgb(255, 255, 255)",
+            "fontSize": "12px",
+            "passed": true,
+            "fit": true
+          },
+          {
+            "id": "tic-102",
+            "text": "TIC",
+            "backing": "rgb(158, 27, 50)",
+            "paint": "rgb(255, 255, 255)",
+            "expected": "rgb(255, 255, 255)",
+            "fontSize": "12px",
+            "passed": true,
+            "fit": true
+          },
+          {
+            "id": "tic-102",
+            "text": "102",
+            "backing": "rgb(158, 27, 50)",
+            "paint": "rgb(255, 255, 255)",
+            "expected": "rgb(255, 255, 255)",
+            "fontSize": "12px",
+            "passed": true,
+            "fit": true
+          },
+          {
+            "id": "fic-103",
+            "text": "FIC",
+            "backing": "rgb(109, 18, 34)",
+            "paint": "rgb(255, 255, 255)",
+            "expected": "rgb(255, 255, 255)",
+            "fontSize": "12px",
+            "passed": true,
+            "fit": true
+          },
+          {
+            "id": "fic-103",
+            "text": "103",
+            "backing": "rgb(109, 18, 34)",
+            "paint": "rgb(255, 255, 255)",
+            "expected": "rgb(255, 255, 255)",
+            "fontSize": "12px",
+            "passed": true,
+            "fit": true
+          },
+          {
+            "id": "hs-104",
+            "text": "HS",
+            "backing": "rgb(158, 27, 50)",
+            "paint": "rgb(255, 255, 255)",
+            "expected": "rgb(255, 255, 255)",
+            "fontSize": "12px",
+            "passed": true,
+            "fit": true
+          },
+          {
+            "id": "hs-104",
+            "text": "104",
+            "backing": "rgb(158, 27, 50)",
+            "paint": "rgb(255, 255, 255)",
+            "expected": "rgb(255, 255, 255)",
+            "fontSize": "12px",
+            "passed": true,
+            "fit": true
+          }
+        ]
+      },
+      "passed": true
+    },
+    {
+      "surface": "standalone",
+      "palette": "colorset1",
+      "kind": "bowtie",
+      "state": "settled",
+      "actual": {
+        "labels": [
+          {
+            "id": "inspection-gap",
+            "text": "inspection overdue",
+            "backing": "rgb(158, 27, 50)",
+            "paint": "rgb(255, 255, 255)",
+            "expected": "rgb(255, 255, 255)",
+            "fontSize": "7.2px",
+            "passed": true,
+            "fit": true
+          },
+          {
+            "id": "deluge-gap",
+            "text": "deluge offline",
+            "backing": "rgb(158, 27, 50)",
+            "paint": "rgb(255, 255, 255)",
+            "expected": "rgb(255, 255, 255)",
+            "fontSize": "6.6px",
+            "passed": true,
+            "fit": true
+          }
+        ],
+        "d": "M628,155H602V151H568V159.0",
+        "targetId": "deluge-system",
+        "tip": {
+          "x": 568,
+          "y": 159
+        },
+        "targetTopSvgUnits": 162.99998548458126,
+        "targetGapUnits": 3.9999854845812393,
+        "terminalUnit": {
+          "x": 0,
+          "y": 1
+        },
+        "pulseTrajectoryMinimumClearanceUnits": 17.00000971218605,
+        "markerPaint": "rgb(158, 27, 50)",
+        "shaftPaint": "rgb(158, 27, 50)",
+        "unresolved": null
+      },
+      "passed": true
+    },
+    {
+      "surface": "standalone",
+      "palette": "colorset2",
+      "kind": "pid",
+      "state": "settled",
+      "actual": {
+        "labels": [
+          {
+            "id": "lic-101",
+            "text": "LIC",
+            "backing": "rgb(69, 132, 42)",
+            "paint": "rgb(0, 0, 0)",
+            "expected": "rgb(0, 0, 0)",
+            "fontSize": "12px",
+            "passed": true,
+            "fit": true
+          },
+          {
+            "id": "lic-101",
+            "text": "101",
+            "backing": "rgb(69, 132, 42)",
+            "paint": "rgb(0, 0, 0)",
+            "expected": "rgb(0, 0, 0)",
+            "fontSize": "12px",
+            "passed": true,
+            "fit": true
+          },
+          {
+            "id": "tic-102",
+            "text": "TIC",
+            "backing": "rgb(231, 114, 4)",
+            "paint": "rgb(0, 0, 0)",
+            "expected": "rgb(0, 0, 0)",
+            "fontSize": "12px",
+            "passed": true,
+            "fit": true
+          },
+          {
+            "id": "tic-102",
+            "text": "102",
+            "backing": "rgb(231, 114, 4)",
+            "paint": "rgb(0, 0, 0)",
+            "expected": "rgb(0, 0, 0)",
+            "fontSize": "12px",
+            "passed": true,
+            "fit": true
+          },
+          {
+            "id": "fic-103",
+            "text": "FIC",
+            "backing": "rgb(101, 47, 108)",
+            "paint": "rgb(255, 255, 255)",
+            "expected": "rgb(255, 255, 255)",
+            "fontSize": "12px",
+            "passed": true,
+            "fit": true
+          },
+          {
+            "id": "fic-103",
+            "text": "103",
+            "backing": "rgb(101, 47, 108)",
+            "paint": "rgb(255, 255, 255)",
+            "expected": "rgb(255, 255, 255)",
+            "fontSize": "12px",
+            "passed": true,
+            "fit": true
+          },
+          {
+            "id": "hs-104",
+            "text": "HS",
+            "backing": "rgb(158, 27, 50)",
+            "paint": "rgb(255, 255, 255)",
+            "expected": "rgb(255, 255, 255)",
+            "fontSize": "12px",
+            "passed": true,
+            "fit": true
+          },
+          {
+            "id": "hs-104",
+            "text": "104",
+            "backing": "rgb(158, 27, 50)",
+            "paint": "rgb(255, 255, 255)",
+            "expected": "rgb(255, 255, 255)",
+            "fontSize": "12px",
+            "passed": true,
+            "fit": true
+          }
+        ]
+      },
+      "passed": true
+    },
+    {
+      "surface": "standalone",
+      "palette": "colorset2",
+      "kind": "bowtie",
+      "state": "settled",
+      "actual": {
+        "labels": [
+          {
+            "id": "inspection-gap",
+            "text": "inspection overdue",
+            "backing": "rgb(158, 27, 50)",
+            "paint": "rgb(255, 255, 255)",
+            "expected": "rgb(255, 255, 255)",
+            "fontSize": "7.2px",
+            "passed": true,
+            "fit": true
+          },
+          {
+            "id": "deluge-gap",
+            "text": "deluge offline",
+            "backing": "rgb(158, 27, 50)",
+            "paint": "rgb(255, 255, 255)",
+            "expected": "rgb(255, 255, 255)",
+            "fontSize": "6.6px",
+            "passed": true,
+            "fit": true
+          }
+        ],
+        "d": "M628,155H602V151H568V159.0",
+        "targetId": "deluge-system",
+        "tip": {
+          "x": 568,
+          "y": 159
+        },
+        "targetTopSvgUnits": 162.99998548458126,
+        "targetGapUnits": 3.9999854845812393,
+        "terminalUnit": {
+          "x": 0,
+          "y": 1
+        },
+        "pulseTrajectoryMinimumClearanceUnits": 17.00000971218605,
+        "markerPaint": "rgb(158, 27, 50)",
+        "shaftPaint": "rgb(158, 27, 50)",
+        "unresolved": null
+      },
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "sampledMotionPathPositions": 257,
+  "leaderSamplePositions": 128,
+  "boundary": "Finite actual default marker geometry and native pulse trajectories; partial geometry reveal remains a transient."
+}

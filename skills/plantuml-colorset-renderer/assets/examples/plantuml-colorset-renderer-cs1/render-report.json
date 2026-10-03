@@ -99,7 +99,7 @@
         {
           "format": "svg",
           "path": "svg/archimate.svg",
-          "size_bytes": 2881,
+          "size_bytes": 3248,
           "engine": "kroki",
           "palette_normalized": true,
           "source_media_preserved": false
@@ -171,7 +171,7 @@
         {
           "format": "svg",
           "path": "svg/chen.svg",
-          "size_bytes": 4793,
+          "size_bytes": 5275,
           "engine": "kroki",
           "palette_normalized": true,
           "source_media_preserved": false
@@ -233,7 +233,7 @@
         {
           "format": "svg",
           "path": "svg/class.svg",
-          "size_bytes": 4768,
+          "size_bytes": 4880,
           "engine": "kroki",
           "palette_normalized": true,
           "source_media_preserved": false
@@ -269,7 +269,7 @@
         {
           "format": "svg",
           "path": "svg/component.svg",
-          "size_bytes": 5017,
+          "size_bytes": 5523,
           "engine": "kroki",
           "palette_normalized": true,
           "source_media_preserved": false
@@ -305,7 +305,7 @@
         {
           "format": "svg",
           "path": "svg/deployment.svg",
-          "size_bytes": 5930,
+          "size_bytes": 6286,
           "engine": "kroki",
           "palette_normalized": true,
           "source_media_preserved": false
@@ -485,7 +485,7 @@
         {
           "format": "svg",
           "path": "svg/ie.svg",
-          "size_bytes": 4766,
+          "size_bytes": 5262,
           "engine": "kroki",
           "palette_normalized": true,
           "source_media_preserved": false
@@ -701,7 +701,7 @@
         {
           "format": "svg",
           "path": "svg/object.svg",
-          "size_bytes": 3407,
+          "size_bytes": 3772,
           "engine": "kroki",
           "palette_normalized": true,
           "source_media_preserved": false
@@ -917,7 +917,7 @@
         {
           "format": "svg",
           "path": "svg/state.svg",
-          "size_bytes": 5391,
+          "size_bytes": 6234,
           "engine": "kroki",
           "palette_normalized": true,
           "source_media_preserved": false
@@ -989,7 +989,7 @@
         {
           "format": "svg",
           "path": "svg/usecase.svg",
-          "size_bytes": 4331,
+          "size_bytes": 4845,
           "engine": "kroki",
           "palette_normalized": true,
           "source_media_preserved": false

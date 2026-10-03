@@ -1,0 +1,132 @@
+{
+  "date": "2026-10-03",
+  "passed": true,
+  "rows": [
+    {
+      "second": 0,
+      "passed": true,
+      "groups": [
+        {
+          "id": "smil",
+          "alpha": 0,
+          "text": "rgb(255, 255, 255)",
+          "radius": null
+        },
+        {
+          "id": "css",
+          "alpha": 0,
+          "text": "rgb(255, 255, 255)",
+          "radius": null
+        },
+        {
+          "id": "wa",
+          "alpha": 0,
+          "text": "rgb(255, 255, 255)",
+          "radius": null
+        },
+        {
+          "id": "hidden",
+          "alpha": 0,
+          "text": "rgb(0, 0, 0)",
+          "radius": null
+        },
+        {
+          "id": "semantic",
+          "alpha": 0.3,
+          "text": "rgb(0, 0, 0)",
+          "radius": null
+        },
+        {
+          "id": "growing",
+          "alpha": 1,
+          "text": "rgb(255, 255, 255)",
+          "radius": 45
+        }
+      ]
+    },
+    {
+      "second": 1,
+      "passed": true,
+      "groups": [
+        {
+          "id": "smil",
+          "alpha": 0,
+          "text": "rgb(255, 255, 255)",
+          "radius": null
+        },
+        {
+          "id": "css",
+          "alpha": 0,
+          "text": "rgb(255, 255, 255)",
+          "radius": null
+        },
+        {
+          "id": "wa",
+          "alpha": 0,
+          "text": "rgb(255, 255, 255)",
+          "radius": null
+        },
+        {
+          "id": "hidden",
+          "alpha": 0,
+          "text": "rgb(0, 0, 0)",
+          "radius": null
+        },
+        {
+          "id": "semantic",
+          "alpha": 0.3,
+          "text": "rgb(0, 0, 0)",
+          "radius": null
+        },
+        {
+          "id": "growing",
+          "alpha": 1,
+          "text": "rgb(255, 255, 255)",
+          "radius": 45
+        }
+      ]
+    },
+    {
+      "second": 4.1,
+      "passed": true,
+      "groups": [
+        {
+          "id": "smil",
+          "alpha": 1,
+          "text": "rgb(255, 255, 255)",
+          "radius": null
+        },
+        {
+          "id": "css",
+          "alpha": 1,
+          "text": "rgb(255, 255, 255)",
+          "radius": null
+        },
+        {
+          "id": "wa",
+          "alpha": 1,
+          "text": "rgb(255, 255, 255)",
+          "radius": null
+        },
+        {
+          "id": "hidden",
+          "alpha": 0,
+          "text": "rgb(0, 0, 0)",
+          "radius": null
+        },
+        {
+          "id": "semantic",
+          "alpha": 0.3,
+          "text": "rgb(0, 0, 0)",
+          "radius": null
+        },
+        {
+          "id": "growing",
+          "alpha": 1,
+          "text": "rgb(255, 255, 255)",
+          "radius": 45
+        }
+      ]
+    }
+  ]
+}

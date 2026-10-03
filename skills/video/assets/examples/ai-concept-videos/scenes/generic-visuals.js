@@ -1,3 +1,4 @@
+import {drawArrow as safeArrow} from '../svg-arrows.js';
 const specs = {
   billing: {
     core: "$",
@@ -143,26 +144,7 @@ function text(g, label, x, y, ctx, options = {}) {
 }
 
 function arrow(g, from, to, color, opacity, width = 3) {
-  g.append("line")
-    .attr("x1", from.x)
-    .attr("y1", from.y)
-    .attr("x2", to.x)
-    .attr("y2", to.y)
-    .attr("stroke", color)
-    .attr("stroke-width", width)
-    .attr("stroke-linecap", "round")
-    .attr("opacity", opacity);
-  const angle = Math.atan2(to.y - from.y, to.x - from.x);
-  const size = 12;
-  g.append("path")
-    .attr("d", [
-      `M${to.x},${to.y}`,
-      `L${to.x - Math.cos(angle - Math.PI / 6) * size},${to.y - Math.sin(angle - Math.PI / 6) * size}`,
-      `L${to.x - Math.cos(angle + Math.PI / 6) * size},${to.y - Math.sin(angle + Math.PI / 6) * size}`,
-      "Z"
-    ].join(" "))
-    .attr("fill", color)
-    .attr("opacity", opacity);
+  safeArrow(g, from, to, color, opacity, width, 12);
 }
 
 function node(g, x, y, w, h, label, color, ctx, options = {}) {

@@ -1,0 +1,164 @@
+{
+  "date": "2026-10-03",
+  "passed": true,
+  "stateCount": 6,
+  "errors": [],
+  "rows": [
+    {
+      "gallery": "d3-animated-svg-cs1",
+      "item": "bowtie-barriers",
+      "state": "focus",
+      "markerArrowCount": 18,
+      "glyphCount": 0,
+      "targetPorts": [
+        {
+          "targetId": "inspection-program",
+          "port": "top",
+          "alignment": 1,
+          "clearance": 11,
+          "passed": true
+        },
+        {
+          "targetId": "deluge-system",
+          "port": "top",
+          "alignment": 1,
+          "clearance": 4,
+          "passed": true
+        }
+      ],
+      "instrumentLabels": [],
+      "failures": [],
+      "passed": true
+    },
+    {
+      "gallery": "d3-animated-svg-cs1",
+      "item": "bowtie-barriers",
+      "state": "expanded",
+      "markerArrowCount": 18,
+      "glyphCount": 0,
+      "targetPorts": [
+        {
+          "targetId": "inspection-program",
+          "port": "top",
+          "alignment": 1,
+          "clearance": 11,
+          "passed": true
+        },
+        {
+          "targetId": "deluge-system",
+          "port": "top",
+          "alignment": 1,
+          "clearance": 4,
+          "passed": true
+        }
+      ],
+      "instrumentLabels": [],
+      "failures": [],
+      "passed": true
+    },
+    {
+      "gallery": "d3-animated-svg-cs1",
+      "item": "bowtie-barriers",
+      "state": "fit",
+      "markerArrowCount": 18,
+      "glyphCount": 0,
+      "targetPorts": [
+        {
+          "targetId": "inspection-program",
+          "port": "top",
+          "alignment": 1,
+          "clearance": 11,
+          "passed": true
+        },
+        {
+          "targetId": "deluge-system",
+          "port": "top",
+          "alignment": 1,
+          "clearance": 4,
+          "passed": true
+        }
+      ],
+      "instrumentLabels": [],
+      "failures": [],
+      "passed": true
+    },
+    {
+      "gallery": "d3-animated-svg-colorset2",
+      "item": "bowtie-barriers",
+      "state": "focus",
+      "markerArrowCount": 18,
+      "glyphCount": 0,
+      "targetPorts": [
+        {
+          "targetId": "inspection-program",
+          "port": "top",
+          "alignment": 1,
+          "clearance": 11,
+          "passed": true
+        },
+        {
+          "targetId": "deluge-system",
+          "port": "top",
+          "alignment": 1,
+          "clearance": 4,
+          "passed": true
+        }
+      ],
+      "instrumentLabels": [],
+      "failures": [],
+      "passed": true
+    },
+    {
+      "gallery": "d3-animated-svg-colorset2",
+      "item": "bowtie-barriers",
+      "state": "expanded",
+      "markerArrowCount": 18,
+      "glyphCount": 0,
+      "targetPorts": [
+        {
+          "targetId": "inspection-program",
+          "port": "top",
+          "alignment": 1,
+          "clearance": 11,
+          "passed": true
+        },
+        {
+          "targetId": "deluge-system",
+          "port": "top",
+          "alignment": 1,
+          "clearance": 4,
+          "passed": true
+        }
+      ],
+      "instrumentLabels": [],
+      "failures": [],
+      "passed": true
+    },
+    {
+      "gallery": "d3-animated-svg-colorset2",
+      "item": "bowtie-barriers",
+      "state": "fit",
+      "markerArrowCount": 18,
+      "glyphCount": 0,
+      "targetPorts": [
+        {
+          "targetId": "inspection-program",
+          "port": "top",
+          "alignment": 1,
+          "clearance": 11,
+          "passed": true
+        },
+        {
+          "targetId": "deluge-system",
+          "port": "top",
+          "alignment": 1,
+          "clearance": 4,
+          "passed": true
+        }
+      ],
+      "instrumentLabels": [],
+      "failures": [],
+      "passed": true
+    }
+  ]
+}

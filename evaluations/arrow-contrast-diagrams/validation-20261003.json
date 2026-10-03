@@ -1,0 +1,525 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-03",
+  "behaviorChangedBundles": [
+    "mermaid",
+    "plantuml-colorset-renderer",
+    "slidev-quality-audit"
+  ],
+  "unchangedInspectedBundle": "slidev-animejs",
+  "parentOwnedBundles": [
+    "echarts-animated-svg",
+    "slidev-echarts"
+  ],
+  "minimumNonTextContrast": 3,
+  "nativeEvidence": {
+    "states": 252,
+    "statesByRenderer": {
+      "mermaid": 186,
+      "plantuml": 54,
+      "animejs": 12
+    },
+    "shaftInstances": 1210,
+    "explicitHeadInstances": 30,
+    "referencedMarkerInstances": 716,
+    "referencedMarkerSamples": 5272,
+    "coveredMarkerSamples": 0,
+    "contrastFindingCount": 0,
+    "minimumReadableSampleContrast": 3.085302662118927,
+    "occludedShaftSamplesByFamilyState": {
+      "mermaid:gitGraph:static": 20,
+      "mermaid:gitGraph:settled": 20,
+      "mermaid:gitGraph:mid-reveal": 18,
+      "mermaid:mindmap:static": 106,
+      "mermaid:mindmap:settled": 106,
+      "mermaid:mindmap:mid-reveal": 106,
+      "mermaid:timeline:static": 24,
+      "mermaid:timeline:settled": 24,
+      "mermaid:timeline:mid-reveal": 8,
+      "mermaid:architecture:static": 24,
+      "mermaid:architecture:settled": 24,
+      "mermaid:architecture:mid-reveal": 16,
+      "mermaid:wardley:static": 20,
+      "mermaid:wardley:settled": 20,
+      "mermaid:wardley:mid-reveal": 20,
+      "plantuml:EBNF:static": 8,
+      "plantuml:GANTT:static": 4,
+      "plantuml:REGEX:static": 8
+    },
+    "transientShaftSamplesByFamilyState": {
+      "mermaid:gitGraph:mid-reveal": 2,
+      "mermaid:timeline:mid-reveal": 4,
+      "mermaid:architecture:mid-reveal": 2
+    },
+    "occlusionClassification": {
+      "gitGraph": "Native branch shafts terminate beneath commit dots; the visible branch route remains continuous and its native chronology is preserved.",
+      "mindmap": "Native radial branch shafts meet solid label/root silhouettes; these connections have no directional marker to hide.",
+      "timeline": "Native vertical dotted connectors pass behind date/event boxes; the delivered backbone and heads remain clear.",
+      "architecture": "Native shafts begin beneath service icon silhouettes, while complete target heads remain in their exterior gutters.",
+      "wardley": "Native links meet procurement glyph overlays; these retain their meaningful layered symbol geometry.",
+      "plantumlEBNFAndREGEX": "Railroad links meet white terminal contours; loop arrows and direction remain visibly complete.",
+      "plantumlGANTT": "Task dependency shafts end at native task silhouettes; the directional polygon remains outside the task body.",
+      "transient": "Eight samples at mid-reveal contact partially revealing GitGraph commit, Timeline event and Architecture service shapes. They are explicitly recorded apart from readable final samples.",
+      "manualReview": "All eight semantic occlusion families were also inspected in actual browser screenshots. No referenced head sample is covered."
+    },
+    "inventorySha256": "cb185eab8d1c065dc64a5e513d3c489ce28b349afd4dafbaf4f7de9a94abc455",
+    "summarySha256": "8e0c327250aa95a2a285c1ee4a9ca7fc2942936e3e6b9203fc8c31bdbccaf531"
+  },
+  "qualityBrowserRegression": {
+    "passed": true,
+    "caseCount": 10,
+    "caseIds": [
+      "low-shaft",
+      "low-head",
+      "safe-head-shaft",
+      "dark-filled-path",
+      "alpha-region",
+      "alpha-shaft",
+      "alpha-canvas",
+      "covered-head",
+      "transformed-instance",
+      "solid-explicit-head"
+    ],
+    "errors": [],
+    "sha256": "451d1b97c3813d6ff60548f632cc757734f30f6738ec125832b785fc062ffc64"
+  },
+  "fixtureBoundary": {
+    "svgCount": 178,
+    "crFiles": [],
+    "gitNormalizedBlobMismatches": [],
+    "mermaidGallerySha256": "8e6369677754ff3148a80aab007ad325eace22cfec495311d9733b0599275722"
+  },
+  "runtimeTrials": [
+    {
+      "skill": "mermaid",
+      "runId": "arrow-native-mermaid-luna1-20261003",
+      "selected": false,
+      "passed": false,
+      "startedAtUtc": "2026-10-03T16:58:05.406340+00:00",
+      "finishedAtUtc": "2026-10-03T17:01:58.963153+00:00",
+      "model": "openai-codex/gpt-5.6-luna",
+      "profile": "runtime",
+      "payloadSha256": "db5a696e475ac712012faf48b9d47ec4383e27814f91ae6f1b11dd110d8a85c8",
+      "unchangedPayload": true,
+      "strictGates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "toolErrorCount": 1,
+      "eventFindings": [
+        {
+          "code": "tool-error",
+          "line": 1016,
+          "tool": "bash"
+        }
+      ],
+      "expectedOutputs": [
+        "diagram.mmd",
+        "style.json",
+        "check.json",
+        "diagram.static.svg",
+        "diagram.animated.svg",
+        "review.md"
+      ],
+      "artifacts": [
+        {
+          "path": "diagram.mmd",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 1859,
+          "sha256": "b3347829eb46505ab147261baff07dd44e7ee814e89f0e46fddc33e88fad5ad1",
+          "error": null
+        },
+        {
+          "path": "style.json",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 6099,
+          "sha256": "7b96cb594f094cb8ad93e1ce5bdb00f7a18dfe9a694527819540c15bae3a209d",
+          "error": null
+        },
+        {
+          "path": "check.json",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 6097,
+          "sha256": "61f064e3d38c8bd36f97d77bd648e41c9292dab151dc1a47fe6f3b6a6df80d38",
+          "error": null
+        },
+        {
+          "path": "diagram.static.svg",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 11967,
+          "sha256": "1d03d4d24cbeee6035ee87582a64cb757d93d7383080deb493d34d6dfa7060bb",
+          "error": null
+        },
+        {
+          "path": "diagram.animated.svg",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 18255,
+          "sha256": "4ac61b84077b6783aa9ee39c894dd8d491a1dbf4dfa7249cd7c934b3e5798502",
+          "error": null
+        },
+        {
+          "path": "review.md",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 2033,
+          "sha256": "54dff31a65f6702588cebdd3a90c112d7e09251e5bbef8dd8e4b81924f2a48f5",
+          "error": null
+        }
+      ],
+      "promptSha256": "d48b1874a0d4a0f5927d8bc68409584843a28e237186075f0f74ee353425a8da",
+      "classification": "Strict runtime failure: source was edited after styling, then checked before restyling; one tool error. Repaired outputs retained. Snapshot also predates final native caption repairs."
+    },
+    {
+      "skill": "mermaid",
+      "runId": "arrow-native-mermaid-luna2-20261003",
+      "selected": true,
+      "passed": true,
+      "startedAtUtc": "2026-10-03T17:07:59.833349+00:00",
+      "finishedAtUtc": "2026-10-03T17:10:27.916181+00:00",
+      "model": "openai-codex/gpt-5.6-luna",
+      "profile": "runtime",
+      "payloadSha256": "8e350ae361819866a6e2b5bbe65ba2e6bca32f2e19f74daee4ecb0c99ee5a901",
+      "unchangedPayload": true,
+      "strictGates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "toolErrorCount": 0,
+      "eventFindings": [],
+      "expectedOutputs": [
+        "diagram.mmd",
+        "style.json",
+        "check.json",
+        "diagram.static.svg",
+        "diagram.animated.svg",
+        "review.md"
+      ],
+      "artifacts": [
+        {
+          "path": "diagram.mmd",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 1545,
+          "sha256": "1821801dad4143f1a92120caf9588f08a266fce02a7f085813dc50972fb17e90",
+          "error": null
+        },
+        {
+          "path": "style.json",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 6121,
+          "sha256": "d7e5eb6d6a63082f0eae59183079326a0fe9867e5a05fa786d6a3a0546b18544",
+          "error": null
+        },
+        {
+          "path": "check.json",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 6097,
+          "sha256": "b1a71c661bec6ba60804d1fefca035d51dc87e4eb9b28a350a8b6b592fd19572",
+          "error": null
+        },
+        {
+          "path": "diagram.static.svg",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 11702,
+          "sha256": "4f730d57bd79eb5a402abc853065ee37570ae8266707d7b64c57e2789c8dc689",
+          "error": null
+        },
+        {
+          "path": "diagram.animated.svg",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 17990,
+          "sha256": "d5c989590152a897dc8b6cd3d9bb8c131441e34c294617bdd4eac7d8d170fb9b",
+          "error": null
+        },
+        {
+          "path": "review.md",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 1677,
+          "sha256": "f91f3975d9eedbebd0d3d7e3ff9a6b7cf00deace9a26c32c9dbb5c368e56cbea",
+          "error": null
+        }
+      ],
+      "promptSha256": "f0c146c0f85e8bffa7a9789040451bfcf0a0c4dfea3be104ea1faf992163fae0",
+      "currentSourcePayloadSha256": "8e350ae361819866a6e2b5bbe65ba2e6bca32f2e19f74daee4ecb0c99ee5a901",
+      "currentSourceMatchesAccepted": true
+    },
+    {
+      "skill": "plantuml-colorset-renderer",
+      "runId": "arrow-native-plantuml-colorset-renderer-luna1-20261003",
+      "selected": false,
+      "passed": true,
+      "startedAtUtc": "2026-10-03T17:02:01.728616+00:00",
+      "finishedAtUtc": "2026-10-03T17:04:55.847827+00:00",
+      "model": "openai-codex/gpt-5.6-luna",
+      "profile": "runtime",
+      "payloadSha256": "dd4a2e98a6902f92899c97f05357eb8e89a0f6ffb5d95d117e83888f0d487455",
+      "unchangedPayload": true,
+      "strictGates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "toolErrorCount": 0,
+      "eventFindings": [],
+      "expectedOutputs": [
+        "input/deployment.puml",
+        "renders/svg/deployment.svg",
+        "renders/png/deployment.png",
+        "render-report.json",
+        "review.md"
+      ],
+      "artifacts": [
+        {
+          "path": "input/deployment.puml",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 229,
+          "sha256": "3a841a6be332868f1776d12d231419d5ce32eefd3fd8a2147bf8de567d88a085",
+          "error": null
+        },
+        {
+          "path": "renders/svg/deployment.svg",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 3333,
+          "sha256": "17f06ba7abdbee6d7a98ffaf734e5682019ed1977b17439229cba9afb503b45a",
+          "error": null
+        },
+        {
+          "path": "renders/png/deployment.png",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 5268,
+          "sha256": "213f1a2f144ec3cfb1406a7a9652807e01461f87987a8bd85557da56fbad4bd1",
+          "error": null
+        },
+        {
+          "path": "render-report.json",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 1623,
+          "sha256": "26893ffcbe968a0942b45c921bef6ee8e7d7ba2b37092134d13b2181255e1d9f",
+          "error": null
+        },
+        {
+          "path": "review.md",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 1475,
+          "sha256": "fe44fbf998c6627a8fd742bf8bf448c64f7f1bbf9876291911f86b51283cd6ce",
+          "error": null
+        }
+      ],
+      "promptSha256": "71dedce39b107b3d118ad921666fd5220adc952cdf706d7ad1bb7ddd648e015c",
+      "classification": "Passed but superseded: manual PNG review exposed transparent raster canvas; final producer uses an explicit opaque white canvas."
+    },
+    {
+      "skill": "plantuml-colorset-renderer",
+      "runId": "arrow-native-plantuml-colorset-renderer-luna2-20261003",
+      "selected": true,
+      "passed": true,
+      "startedAtUtc": "2026-10-03T17:13:15.638462+00:00",
+      "finishedAtUtc": "2026-10-03T17:16:20.480469+00:00",
+      "model": "openai-codex/gpt-5.6-luna",
+      "profile": "runtime",
+      "payloadSha256": "a59c777e8febfc5af45626e5f6eb60068d6957f3ab653d7d7c33148414a2617a",
+      "unchangedPayload": true,
+      "strictGates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "toolErrorCount": 0,
+      "eventFindings": [],
+      "expectedOutputs": [
+        "input/deployment.puml",
+        "renders/svg/deployment.svg",
+        "renders/png/deployment.png",
+        "render-report.json",
+        "review.md"
+      ],
+      "artifacts": [
+        {
+          "path": "input/deployment.puml",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 643,
+          "sha256": "5f089051c8822504266b0e7a98828c02f0447d3e2117ac0a24dd05239142e848",
+          "error": null
+        },
+        {
+          "path": "renders/svg/deployment.svg",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 3327,
+          "sha256": "eafa4c31fca0d4e69710bde099c98d5d42d693101ed0e33ea15c8d9e60bcbaa9",
+          "error": null
+        },
+        {
+          "path": "renders/png/deployment.png",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 5985,
+          "sha256": "716bf1bd463731c596d727a7ed52307ab99649feff7cdfcf1e21f512c0ce8f27",
+          "error": null
+        },
+        {
+          "path": "render-report.json",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 1634,
+          "sha256": "060f0a2644b6fd9fcebceae37e9282d2e7ea7d9f75a44d9ed16dfbf51333f8d3",
+          "error": null
+        },
+        {
+          "path": "review.md",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 1172,
+          "sha256": "1ed53d104b48694a15d84f4edb5062bc8c87c2031c2f22e8b74207398d9686c3",
+          "error": null
+        }
+      ],
+      "promptSha256": "71dedce39b107b3d118ad921666fd5220adc952cdf706d7ad1bb7ddd648e015c",
+      "currentSourcePayloadSha256": "a59c777e8febfc5af45626e5f6eb60068d6957f3ab653d7d7c33148414a2617a",
+      "currentSourceMatchesAccepted": true
+    },
+    {
+      "skill": "slidev-quality-audit",
+      "runId": "arrow-native-slidev-quality-audit-luna1-20261003",
+      "selected": false,
+      "passed": true,
+      "startedAtUtc": "2026-10-03T17:04:58.450720+00:00",
+      "finishedAtUtc": "2026-10-03T17:05:47.229655+00:00",
+      "model": "openai-codex/gpt-5.6-luna",
+      "profile": "runtime",
+      "payloadSha256": "69907d939dd8c8a5b9db867609449b9960b3d95b4275e366c22f1885103c62e6",
+      "unchangedPayload": true,
+      "strictGates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "toolErrorCount": 0,
+      "eventFindings": [],
+      "expectedOutputs": [
+        "review.md",
+        "repairs.json"
+      ],
+      "artifacts": [
+        {
+          "path": "review.md",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 2115,
+          "sha256": "d691bd2a911827284064d06db480c9c188335036f4c7081d8947672d8f9d759a",
+          "error": null
+        },
+        {
+          "path": "repairs.json",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 1499,
+          "sha256": "cd8a84c67d5b02e3932e673370f90cc20f4fd43e3fd3f3997f542bf8b1b4b005",
+          "error": null
+        }
+      ],
+      "promptSha256": "ab9a89b542eb632f12c9bdc4bee60ea1c32f875bc095124dd49542c40b79fecf",
+      "classification": "Passed but superseded: the final producer additionally composites translucent HTML ancestor canvas paint; a tenth actual browser regression covers it."
+    },
+    {
+      "skill": "slidev-quality-audit",
+      "runId": "arrow-native-slidev-quality-audit-luna2-20261003",
+      "selected": true,
+      "passed": true,
+      "startedAtUtc": "2026-10-03T17:16:23.725835+00:00",
+      "finishedAtUtc": "2026-10-03T17:17:19.873637+00:00",
+      "model": "openai-codex/gpt-5.6-luna",
+      "profile": "runtime",
+      "payloadSha256": "fa2859228d442f5d68058db0442ef25d68e3160d00e983905cc1550ad45c37ee",
+      "unchangedPayload": true,
+      "strictGates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "toolErrorCount": 0,
+      "eventFindings": [],
+      "expectedOutputs": [
+        "review.md",
+        "repairs.json"
+      ],
+      "artifacts": [
+        {
+          "path": "review.md",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 2218,
+          "sha256": "6784dae02262ebb2b9e85c389f9f9a72a16c9f32d48f132cfdff32569071ad31",
+          "error": null
+        },
+        {
+          "path": "repairs.json",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 1636,
+          "sha256": "31f6194c36d216c6a8da1c237f7657b6bf36f31be73865dd0480b43a3edcc7e6",
+          "error": null
+        }
+      ],
+      "promptSha256": "ab9a89b542eb632f12c9bdc4bee60ea1c32f875bc095124dd49542c40b79fecf",
+      "currentSourcePayloadSha256": "fa2859228d442f5d68058db0442ef25d68e3160d00e983905cc1550ad45c37ee",
+      "currentSourceMatchesAccepted": true
+    }
+  ],
+  "limitations": [
+    "The native producer samples supported straight, quadratic, cubic and elliptical-arc paths and actual polygon contours; C4 and event routes target native renderer geometry, not arbitrary transformed SVG imports.",
+    "Hollow cardinality symbols are judged by their visible native rims, while white voids retain semantics. Complete glyphs and animation marker identities are preserved.",
+    "Imported source SVGs, Ditaa and standalone mathematical raster diagrams preserve source fidelity; finished authored SVG-capable PlantUML diagrams share SVG and PNG geometry with an opaque white raster canvas.",
+    "Gradients, complex masks/clips/filters, custom marker hierarchies and narrow connector crossings still require explicit actual rendered inspection; automatic sampling is supplementary, not a universal clearance proof."
+  ]
+}

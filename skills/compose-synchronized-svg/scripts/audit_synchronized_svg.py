@@ -55,6 +55,7 @@ from playwright.sync_api import (  # noqa: E402
 )
 
 from scaffold_synchronized_svg import validate_plan  # noqa: E402
+from arrow_quality import ARROW_AUDIT
 from text_contrast import audit_text_contrast  # noqa: E402
 
 
@@ -1876,6 +1877,8 @@ def audit_quantitative_semantics(page: Page, audit: Audit, check_id: str) -> Non
 
 
 def audit_relationship_contrast(page: Page, audit: Audit, check_id: str) -> None:
+    actual = page.evaluate(ARROW_AUDIT)
+    audit.finish_check(check_id + "-actual-arrow-paint", [json.dumps(issue) for issue in actual["issues"]], actual)
     details = page.evaluate(RELATIONSHIP_CONTRAST_JS)
     issues = details.get("issues", []) if isinstance(details, dict) else []
     errors = [
@@ -1943,7 +1946,7 @@ def audit_relationship_state(
             let distance = null;
             if (path && pulse && path.getTotalLength) {
               const length = path.getTotalLength();
-              const expected = path.getPointAtLength(length * Math.min(Math.max(progress, 0), 1));
+              const expected = path.getPointAtLength(Math.min(length, 6 + Math.max(0, length - 20) * Math.min(Math.max(progress, 0), 1)));
               const actualX = Number(pulse.getAttribute("cx"));
               const actualY = Number(pulse.getAttribute("cy"));
               if (Number.isFinite(actualX) && Number.isFinite(actualY)) {
@@ -1958,6 +1961,10 @@ def audit_relationship_state(
               label: group.getAttribute("aria-label") || "",
               active: group.getAttribute("data-active") === "true",
               pulseOpacity: pulse ? Number(getComputedStyle(pulse).opacity) : null,
+              pulseNearHead: pulse && [...root.querySelectorAll(".relationship-path")].some(other => {
+                const end = other.getPointAtLength(other.getTotalLength());
+                return Math.hypot(Number(pulse.getAttribute("cx")) - end.x, Number(pulse.getAttribute("cy")) - end.y) < 16;
+              }),
               pulseDistance: distance
             };
           });
@@ -2008,7 +2015,7 @@ def audit_relationship_state(
                 f"expected {expected_active!r} for focus {focus_id!r}"
             )
         opacity = record.get("pulseOpacity")
-        pulse_should_show = bool(expected_active and plan.get("timeline") and not reduced_motion)
+        pulse_should_show = bool(expected_active and plan.get("timeline") and not reduced_motion and not record.get("pulseNearHead"))
         if pulse_should_show:
             if not isinstance(opacity, (int, float)) or opacity < 0.99:
                 errors.append(f"active relationship {relationship_id!r} pulse is not visible")

@@ -14,6 +14,7 @@ from decimal import Decimal, ROUND_HALF_UP, localcontext
 import html
 import json
 import math
+import xml.etree.ElementTree as ET
 import re
 import sys
 import textwrap
@@ -1208,11 +1209,18 @@ def relationship_markup(plan: dict[str, Any]) -> str:
     if not relationships:
         return ""
     modules = {module["id"]: module for module in plan["modules"]}
+    from arrow_routing import clear_path, path_points
+    label_markup = focus_region_markup(plan)[1]
+    plaque_boxes = [tuple(float(node.get(key)) for key in ("x", "y", "width", "height"))
+                    for node in ET.fromstring(label_markup or "<g/>").iter()
+                    if node.get("class") == "focus-region-label-plaque"]
+    occupied_routes = []
+    module_boxes = [tuple(float(v) for v in module["region"]) for module in plan["modules"]]
     marker_id = f"{plan['compositionId']}--relationship-arrow"
     parts = [
         '<g id="composition-relationships" class="composition-relationships" '
         'aria-label="Causal and feedback relationships">',
-        f'<defs><marker id="{esc(marker_id)}" viewBox="0 0 8 8" refX="7" refY="4" '
+        f'<defs><marker id="{esc(marker_id)}" viewBox="0 0 8 8" refX="8" refY="4" '
         'markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0 L8 4 L0 8 Z" '
         'fill="context-stroke"/></marker></defs>',
     ]
@@ -1231,6 +1239,7 @@ def relationship_markup(plan: dict[str, Any]) -> str:
     key_cell_width = (root_width - 96.0) / key_columns
     key_start_y = root_y + root_height - (key_rows - 1) * 14.0 - 8.0
     key_plaque_top = key_start_y - 11.0
+    plaque_boxes.append((root_x+40.0,key_plaque_top,root_width-80.0,key_rows*14.0+5.0))
     incident_ids: dict[str, list[str]] = {module_id: [] for module_id in modules}
     for relationship in relationships:
         incident_ids[relationship["source"]].append(relationship["id"])
@@ -1413,6 +1422,9 @@ def relationship_markup(plan: dict[str, Any]) -> str:
                     f"H{fmt(outer_x)} V{fmt(ty + th + gap_offset)} "
                     f"H{fmt(target_center_x)} V{fmt(ty + th)}"
                 )
+        path = clear_path(path, plaque_boxes, module_boxes, (root_x,root_y,root_width,root_height), occupied_routes)
+        route_points = path_points(path)
+        occupied_routes.extend(zip(route_points, route_points[1:]))
         relationship_id = esc(raw_relationship_id)
         dash = (
             ' stroke-dasharray="8 7"'
@@ -1478,6 +1490,37 @@ def world_markup(plan: dict[str, Any]) -> str:
     bounds = [float(item) for item in world["bounds"]]
     district_by_id = {item["id"]: item for item in world["districts"]}
     module_by_id = {item["id"]: item for item in plan["modules"]}
+    from arrow_routing import orthogonal_route, hits
+    route_obstacles=[]
+    for district in world["districts"]:
+        cx,cy=(float(v) for v in district["center"])
+        radius=98.0 if district["id"]==world["rootDistrictId"] else 72.0
+        route_obstacles.append((cx-radius,cy-radius,2*radius,2*radius))
+        halo=168.0 if district["id"]==world["rootDistrictId"] else 118.0
+        label_width=max(760.0,min(1540.0,len(str(district["label"]))*84.0+180.0))
+        route_obstacles.append((cx-label_width/2,cy-halo-200.0,label_width,158.0))
+        node_radius=62.0 if len(district["moduleIds"])==1 else 42.0
+        for module_id in district["moduleIds"]:
+            mx,my,mw,mh=(float(v) for v in module_by_id[module_id]["region"])
+            route_obstacles.append((mx+mw/2-node_radius,my+mh/2-node_radius,2*node_radius,2*node_radius))
+    link_labels={}
+    for link in world["links"]:
+        sx,sy=(float(v) for v in district_by_id[link["source"]]["center"])
+        tx,ty=(float(v) for v in district_by_id[link["target"]]["center"])
+        bend=.17 if link["kind"]!="feedback" else -.28
+        lx=(sx+tx)/2-(ty-sy)*bend*.72;ly=(sy+ty)/2+(tx-sx)*bend*.72
+        link_labels[link["id"]]=(lx,ly)
+        route_obstacles.append((lx-410,ly-70,820,140))
+    def clear_port(center, bearing, gap):
+        cx,cy=center
+        padded=[(x-40,y-40,w+80,h+80) for x,y,w,h in route_obstacles]
+        angles=[bearing+offset for offset in (0,math.pi/6,-math.pi/6,math.pi/3,-math.pi/3,math.pi/2,-math.pi/2,math.pi)]
+        angles += [0,math.pi/2,math.pi,3*math.pi/2]
+        for angle in angles:
+            ux,uy=math.cos(angle),math.sin(angle)
+            port=(cx+ux*gap,cy+uy*gap);stub=(cx+ux*(gap+76),cy+uy*(gap+76))
+            if not any(hits(port,stub,box) or box[0]<port[0]<box[0]+box[2] and box[1]<port[1]<box[1]+box[3] for box in padded):return port,stub
+        raise ValueError('No clear world-arrow hub port exists; expand the district layout')
     marker_id = f"{plan['compositionId']}--world-arrow"
     parts = [
         '<g id="composition-world-map" data-world-map="true" '
@@ -1486,8 +1529,8 @@ def world_markup(plan: dict[str, Any]) -> str:
         f'<pattern id="{esc(plan["compositionId"])}--world-grid" width="160" height="160" '
         'patternUnits="userSpaceOnUse"><circle cx="8" cy="8" r="2.4" fill="var(--muted)" '
         'fill-opacity="0.25"/></pattern>',
-        f'<marker id="{esc(marker_id)}" viewBox="0 0 10 10" refX="8.5" refY="5" '
-        'markerWidth="6" markerHeight="6" orient="auto-start-reverse">'
+        f'<marker id="{esc(marker_id)}" viewBox="0 0 10 10" refX="9" refY="5" '
+        'markerWidth="48" markerHeight="48" markerUnits="userSpaceOnUse" orient="auto-start-reverse">'
         '<path d="M1 1 L9 5 L1 9 Z" fill="context-stroke"/></marker>',
         '</defs>',
         f'<rect class="world-field" x="{fmt(bounds[0])}" y="{fmt(bounds[1])}" '
@@ -1510,43 +1553,30 @@ def world_markup(plan: dict[str, Any]) -> str:
         c1y = sy + dy * 0.34 + normal_y
         c2x = sx + dx * 0.66 + normal_x
         c2y = sy + dy * 0.66 + normal_y
-        path = (
-            f"M{fmt(sx)} {fmt(sy)} C{fmt(c1x)} {fmt(c1y)} "
-            f"{fmt(c2x)} {fmt(c2y)} {fmt(tx)} {fmt(ty)}"
-        )
+        # Keep the whole head outside the actual district hub silhouette.
+        source_gap = (98.0 if source["id"] == world["rootDistrictId"] else 72.0) + 60.0
+        target_gap = (98.0 if target["id"] == world["rootDistrictId"] else 72.0) + 60.0
+        source_port,source_stub=clear_port((sx,sy),math.atan2(c1y-sy,c1x-sx),source_gap)
+        target_port,target_stub=clear_port((tx,ty),math.atan2(c2y-ty,c2x-tx),target_gap)
+        routed=[source_port,*orthogonal_route(source_stub,target_stub,route_obstacles,bounds,clearance=40),target_port]
+        sx,sy=source_port;tx,ty=target_port
+        path="M"+" L".join(f"{fmt(x)} {fmt(y)}" for x,y in routed)
         chevrons: list[str] = []
         if link["treeRole"] == "trunk":
+            lengths=[math.hypot(b[0]-a[0],b[1]-a[1]) for a,b in zip(routed,routed[1:])]
             for progress in (0.50, 0.70):
-                inverse = 1.0 - progress
-                chevron_x = (
-                    inverse**3 * sx
-                    + 3.0 * inverse**2 * progress * c1x
-                    + 3.0 * inverse * progress**2 * c2x
-                    + progress**3 * tx
-                )
-                chevron_y = (
-                    inverse**3 * sy
-                    + 3.0 * inverse**2 * progress * c1y
-                    + 3.0 * inverse * progress**2 * c2y
-                    + progress**3 * ty
-                )
-                tangent_x = (
-                    3.0 * inverse**2 * (c1x - sx)
-                    + 6.0 * inverse * progress * (c2x - c1x)
-                    + 3.0 * progress**2 * (tx - c2x)
-                )
-                tangent_y = (
-                    3.0 * inverse**2 * (c1y - sy)
-                    + 6.0 * inverse * progress * (c2y - c1y)
-                    + 3.0 * progress**2 * (ty - c2y)
-                )
-                angle = math.degrees(math.atan2(tangent_y, tangent_x))
+                remaining=sum(lengths)*progress
+                for index,length in enumerate(lengths):
+                    if remaining<=length:break
+                    remaining-=length
+                a,b=routed[index:index+2];fraction=remaining/max(length,1)
+                chevron_x=a[0]+(b[0]-a[0])*fraction;chevron_y=a[1]+(b[1]-a[1])*fraction
+                angle=math.degrees(math.atan2(b[1]-a[1],b[0]-a[0]))
                 chevrons.append(
-                    f'<path class="world-link-chevron" d="M-28 -24 L0 0 L-28 24" '
+                    f'<path class="world-link-chevron" data-arrow-head="true" d="M-28 -24 L0 0 L-28 24" '
                     f'transform="translate({fmt(chevron_x)} {fmt(chevron_y)}) rotate({fmt(angle)})"/>'
                 )
-        label_x = (sx + tx) / 2 + normal_x * 0.72
-        label_y = (sy + ty) / 2 + normal_y * 0.72
+        label_x,label_y = link_labels[link["id"]]
         dash = (
             ' stroke-dasharray="18 12"'
             if link["kind"] == "feedback"
@@ -1560,6 +1590,7 @@ def world_markup(plan: dict[str, Any]) -> str:
             f'<g id="world-link-{esc(link["id"])}" '
             f'class="world-link {"world-link-primary" if link["treeRole"] == "trunk" else "world-link-secondary"}" '
             f'data-world-link-id="{esc(link["id"])}" data-kind="{esc(link["kind"])}" '
+            f'data-arrow-id="world-{esc(link["id"])}" '
             f'data-tree-role="{esc(link["treeRole"])}" '
             'data-route-active="false" data-route-traveling="false" '
             f'data-source-district="{esc(link["source"])}" '
@@ -2589,10 +2620,16 @@ RUNTIME_JS = r"""
       if (!path || !pulse) return;
       const length = path.getTotalLength();
       const progress = Math.min(Math.max(phaseProgress, 0), 1);
-      const point = path.getPointAtLength(length * progress);
+      // Keep moving tokens outside endpoint silhouettes and marker bodies.
+      const travel = Math.max(0, length - 20);
+      const point = path.getPointAtLength(Math.min(length, 6 + travel * progress));
+      const nearHead = [...root.querySelectorAll(".relationship-path")].some(other => {
+        const end = other.getPointAtLength(other.getTotalLength());
+        return Math.hypot(point.x - end.x, point.y - end.y) < 16;
+      });
       pulse.setAttribute("cx", String(point.x));
       pulse.setAttribute("cy", String(point.y));
-      pulse.setAttribute("opacity", active && Boolean(plan.timeline) && !reduceMotion ? "1" : "0");
+      pulse.setAttribute("opacity", active && Boolean(plan.timeline) && !reduceMotion && !nearHead ? "1" : "0");
       pulse.setAttribute("data-pulse-index", String(index));
     });
     root.setAttribute("data-focus-id", focusId || "");
@@ -3112,20 +3149,20 @@ def build_svg(plan: dict[str, Any]) -> str:
     .timeline-label {{ font-size: 10px; font-weight: 650; fill: var(--muted); }}
     .timeline-scrubber:focus .timeline-track {{ stroke: var(--accent); stroke-width: 2; }}
     .composition-relationships {{ pointer-events: none; }}
-    .relationship-path {{ vector-effect: non-scaling-stroke; opacity: 0.86; transition: opacity 180ms ease, stroke 180ms ease, stroke-width 180ms ease; }}
+    .relationship-path {{ vector-effect: non-scaling-stroke; opacity: 1; transition: opacity 180ms ease, stroke 180ms ease, stroke-width 180ms ease; }}
     .relationship-key-plaque {{ fill: var(--canvas); fill-opacity: 1; }}
     .relationship-key-label {{ font-size: 9.25px; font-weight: 620; fill: var(--muted); }}
     [data-relationship-id][data-kind="feedback"] .relationship-path {{ stroke: var(--warning); }}
-    [data-relationship-id][data-active="true"] .relationship-path {{ stroke: var(--accent); stroke-width: 3.5; opacity: 0.96; }}
+    [data-relationship-id][data-active="true"] .relationship-path {{ stroke: var(--accent); stroke-width: 3.5; opacity: 1; }}
     [data-relationship-id][data-kind="feedback"][data-active="true"] .relationship-path {{ stroke: var(--warning); stroke-width: 4; }}
     .relationship-pulse {{ pointer-events: none; filter: drop-shadow(0 0 4px var(--accent)); }}
     #composition-world-viewport {{ touch-action: none; cursor: grab; }}
     #composition-world-viewport:active {{ cursor: grabbing; }}
     .world-field {{ fill: var(--canvas); }}
     .world-district-links {{ pointer-events: none; }}
-    .world-link-halo {{ fill: none; stroke: var(--surface-subtle); stroke-width: 16; vector-effect: non-scaling-stroke; opacity: 0.94; }}
-    .world-link-path {{ fill: none; stroke: var(--muted); stroke-width: 3; vector-effect: non-scaling-stroke; opacity: 0.52; }}
-    .world-link-primary .world-link-path {{ stroke-width: 5.5; opacity: 0.92; }}
+    .world-link-halo {{ display: none; }}
+    .world-link-path {{ fill: none; stroke: var(--muted); stroke-width: 3; vector-effect: non-scaling-stroke; opacity: 1; }}
+    .world-link-primary .world-link-path {{ stroke-width: 5.5; opacity: 1; }}
     .world-link-primary .world-link-halo {{ stroke-width: 15; opacity: 0.98; }}
     .world-link-secondary .world-link-halo {{ stroke-width: 11; opacity: 0.72; }}
     .world-link[data-kind="feedback"] .world-link-path {{ stroke: var(--warning); }}
@@ -3175,13 +3212,12 @@ def build_svg(plan: dict[str, Any]) -> str:
     .svg-sync-ready[data-world-mode="true"][data-camera-tier="world"] .district-field {{ opacity: 0; }}
     .svg-sync-ready[data-world-mode="true"][data-camera-tier="world"] :is(.district-title-detail, .district-summary, .world-module-node-label, .world-module-node-label-plaque, .district-singleton-preview) {{ opacity: 0; pointer-events: none; }}
     .svg-sync-ready[data-world-mode="true"][data-camera-tier="world"] :is(.district-title-world, .district-title-world-plaque) {{ opacity: 1; }}
-    .svg-sync-ready[data-world-mode="true"][data-camera-tier="world"] .world-link-secondary:not([data-kind="feedback"]) {{ opacity: 0.07; }}
-    .svg-sync-ready[data-world-mode="true"][data-camera-tier="world"] .world-link-secondary[data-kind="feedback"] {{ opacity: 0.14; }}
+    .svg-sync-ready[data-world-mode="true"][data-camera-tier="world"] .world-link-secondary {{ opacity: 1; }}
     .svg-sync-ready[data-world-mode="true"][data-camera-tier="world"] .world-link-label {{ opacity: 0; }}
     .svg-sync-ready[data-world-mode="true"][data-camera-tier="world"] .world-local-branch {{ stroke-opacity: 0.46; }}
     .svg-sync-ready[data-world-mode="true"][data-camera-tier="world"] .sync-module > .module-frame {{ fill-opacity: 0; stroke-opacity: 0; pointer-events: none; }}
     .svg-sync-ready[data-world-mode="true"][data-camera-tier="world"] .sync-module > :is(.module-kicker, .module-question, .module-claim, .module-content, .module-focus-control) {{ opacity: 0; pointer-events: none; }}
-    .svg-sync-ready[data-world-mode="true"][data-camera-tier="district"] .world-link {{ opacity: 0.08; }}
+    .svg-sync-ready[data-world-mode="true"][data-camera-tier="district"] .world-link {{ opacity: 0; }}
     .svg-sync-ready[data-world-mode="true"][data-camera-tier="district"] .world-link-label {{ opacity: 0; }}
     .svg-sync-ready[data-world-mode="true"][data-camera-tier="district"] :is(.district-title-world, .district-title-world-plaque) {{ opacity: 0; }}
     .svg-sync-ready[data-world-mode="true"][data-camera-tier="district"] .world-district[data-camera-active="true"] .district-singleton-preview {{ opacity: 1; }}
@@ -3210,6 +3246,7 @@ def build_svg(plan: dict[str, Any]) -> str:
     .navigation-control[aria-disabled="true"] {{ cursor: not-allowed; }}
     .navigation-control[aria-disabled="true"] rect {{ stroke-dasharray: 3 3; }}
     .minimap-field {{ fill: var(--ink); fill-opacity: 0.92; stroke: var(--muted); stroke-width: 1.5; }}
+    [data-focus-id]:not([data-focus-id=""]) .sync-module[data-focused="false"] .module-content :is([marker-end], [marker-start], [data-arrow-head], marker path) {{ filter: none !important; }}
     .minimap-district {{ fill: var(--district-accent); fill-opacity: 0.38; stroke: var(--district-accent); stroke-width: 1; }}
     .minimap-viewport {{ fill: var(--surface-subtle); fill-opacity: 0.08; stroke: var(--surface-subtle); stroke-width: 2.5; vector-effect: non-scaling-stroke; }}
     svg:not(.svg-sync-ready) .navigation-hud {{ display: none; }}

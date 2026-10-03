@@ -1,5 +1,16 @@
 # Composition Configuration
 
+## Contents
+
+- [Commands](#commands)
+- [Timing](#timing)
+- [Layout](#layout)
+- [Palette](#palette)
+- [Discovery](#discovery)
+- [Outputs](#outputs)
+- [Validation](#validation)
+
+
 Use `scripts/compose_svg_video.py` as the stable entrypoint for Manim SVG video composition.
 
 Set `$env:MANIM_SVG_VIDEO_SKILL` to the skill directory, then invoke the script through
@@ -83,7 +94,7 @@ Each run writes:
 
 - `composition-manifest.json`: selected assets, render sources, conversion errors, scene path, and render settings.
 - `manim_svg_video_scene.py`: generated Manim scene.
-- `assets/*.png`: rasterized SVGs when `--import-mode image` is used and a local rasterizer is available.
+- `assets/*.png`: rasterized SVGs when `--import-mode image` or marker-bearing `auto` import uses browser rasterization.
 - `media/`: Manim output, including MP4 after `--render`.
 - `rendered_video_raw` in the manifest when the raw Manim MP4 required duration repair.
 
@@ -98,3 +109,11 @@ Before delivery:
 3. Inspect at least the first, middle, and final rendered states at full resolution.
 4. Probe the MP4 with `ffprobe`; verify exact width, height, fps, codec, and duration against the request.
 5. Confirm the manifest's `rendered_video` exists and that exact-duration repair did not silently replace the requested visual settings.
+
+Default `--import-mode auto` preserves unmarked vector sources and rasterizes marked arrows with Chromium. For final animated marker sources, supply a readable static companion. Use `--render-source animated --snapshot-seconds <time>` only for an intentional source-time snapshot. See [manim-svg-import.md](manim-svg-import.md).
+
+For explicitly preserved original media, repeat `--preserve-source-media
+<original-path>` for each selected asset. The manifest records the exact paths
+and per-asset `source_media_preserved`; raster arrow sidecars retain any existing
+low-contrast/thin source findings without calling them authored passes. All other
+head/geometry/snapshot guards remain active. Disclose those source limitations.

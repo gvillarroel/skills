@@ -58,7 +58,7 @@ Use the assignment form that the selected grammar renders:
 
 The styler applies [compact native padding](compact-composition.md) to supported box families at every size. At the full nine-role boundary it also retains these Mermaid 11.16.0 layout defaults:
 
-- ER uses `config.er.minEntityWidth: 180` and `rankSpacing: 20`; keep `direction TB` for a long linear chain. This prevents nine short entity IDs from rendering as an excessively narrow column.
+- ER uses `config.er.minEntityWidth: 180` and `rankSpacing: 80`; keep `direction TB` for a long linear chain. Preserve enough gutter for the full cardinality glyphs, including circles and crowfeet, at both ends of each relation. A short gutter can hide the circle beneath the preceding entity even when the destination tip is clear.
 - Swimlane uses `config.flowchart.nodeSpacing: 10` and `rankSpacing: 20`. Prefer `swimlane-beta TB` for three dense lanes unless left-to-right order is itself required; the compact LR form remains suitable when direction matters.
 
 Explicit user layout settings take precedence. In State diagrams, an alias replaces the visible state ID. When the input supplies IDs without separate display labels, use the IDs directly; do not invent `state "Label" as ID` aliases that hide required visible terms.

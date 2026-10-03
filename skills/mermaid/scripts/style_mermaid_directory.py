@@ -189,7 +189,7 @@ SEMANTIC_CAPACITY_LAYOUTS: dict[str, tuple[str, dict[str, int]]] = {
         "er",
         {
             "minEntityWidth": 180,
-            "rankSpacing": 20,
+            "rankSpacing": 80,
         },
     ),
     "swimlane": (

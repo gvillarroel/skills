@@ -10,10 +10,13 @@ Read [solid-surfaces.md](references/solid-surfaces.md) for solid-first category 
 
 Set `$env:MANIM_SVG_VIDEO_SKILL` to this skill directory before invoking bundled commands.
 
+Read [arrow-visibility.md](references/arrow-visibility.md) when producing, importing or reviewing directional arrows. Audit actual shafts/heads at delivery scale.
+
 ## Ownership boundary
 
 - Own SVG discovery, final-state companion selection, Manim import, SVG-only layout and timing, scene generation, MP4 rendering, exact-duration repair, and the composition manifest.
 - Preserve source SVGs. Treat their authoring, semantics, geometry, accessibility, and native animation as producer-owned.
+- For faithful imported media with existing pale/thin arrows, name each original asset with `--preserve-source-media <path>` and disclose its retained source findings. Keep authored arrows subject to the quality gate.
 - Do not claim that Manim executes CSS or SMIL embedded in an SVG. Read `references/manim-svg-import.md` before choosing a source or import mode.
 - Hand off the finished MP4 and manifest to `video` only when a later task needs mixed media, cross-asset interactions, narration/audio, storyboarding, or final-program composition.
 

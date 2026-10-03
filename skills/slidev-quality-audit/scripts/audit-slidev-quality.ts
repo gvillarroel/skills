@@ -612,6 +612,119 @@ async function inspectState(page: any, options: Options): Promise<StateInspectio
         || ['Top','Right','Bottom','Left'].some((side) => Number.parseFloat((style as any)[`border${side}Width`]) > 0 && (style as any)[`border${side}Style`] !== 'none')
       if (outlined && (categoryIds.size <= solidCapacity || !node.hasAttribute('data-colorset-overflow'))) add(findings,'premature-category-outline','error',describeElement(node),`Category outline appears with ${categoryIds.size} categories and ${solidCapacity} usable solid colors.`,'Initial category marks use decorative borders before solid capacity is exhausted.','Remove the outline and use one opaque fill. Declare data-colorset-overflow only after assigning all usable colors; use data-allow-category-outline for an explicit meaningful boundary or user style.',node.getBoundingClientRect())
     }
+    // Marked authored arrows are opt-in geometry, not imported source artwork.
+    // Horizontal/vertical strokes have a zero-area DOM box but visible ink.
+    for (const edge of allElements.filter(node => node.matches('[data-arrow-id],[data-connector-id],[data-role="edge"]'))) {
+      if (!(edge instanceof SVGGeometryElement) || edge.closest('[data-source-media],defs,marker,clipPath')) continue
+      const svg = edge.ownerSVGElement
+      const style = getComputedStyle(edge), length = edge.getTotalLength()
+      const matrix = edge.getScreenCTM()
+      if (!svg || !matrix || !length) continue
+      const opacity = (node: Element) => {
+        let value = 1
+        for (let parent: Element | null = node; parent; parent = parent.parentElement) value *= Number.parseFloat(getComputedStyle(parent).opacity)
+        return value
+      }
+      if (style.display === 'none' || style.visibility !== 'visible' || opacity(edge) <= .001 || !edge.getClientRects().length) continue
+      // Only an explicitly declared, active partial reveal may be below 3:1.
+      const partialReveal = edge.hasAttribute('data-arrow-transient') && edge.getAnimations({subtree:true}).some(animation => animation.playState === 'running')
+      if (partialReveal) continue
+      let canvas = {r:255,g:255,b:255,a:1}
+      const canvasLayers:Element[] = []
+      for (let ancestor:Element|null = svg; ancestor; ancestor = ancestor.parentElement) canvasLayers.push(ancestor)
+      for (const ancestor of canvasLayers.reverse()) {
+        const color = parseCssColor(getComputedStyle(ancestor).backgroundColor)
+        if (color && color.a) canvas = blend(color,canvas)
+      }
+      const shapes = [...svg.querySelectorAll('rect,circle,ellipse,polygon,path')].filter(node => node !== edge && !node.closest('defs,marker,clipPath') && !node.matches('[data-arrow-id],[data-connector-id],[data-role="edge"]'))
+      const backing = (point: DOMPoint) => {
+        let paint = canvas
+        let covered = false
+        for (const shape of shapes) {
+          if (!(shape instanceof SVGGeometryElement)) continue
+          const shapeMatrix = shape.getScreenCTM()
+          if (!shapeMatrix || Math.abs(shapeMatrix.a*shapeMatrix.d-shapeMatrix.b*shapeMatrix.c) < 1e-12) continue
+          const shapeStyle = getComputedStyle(shape), fill = parseCssColor(shapeStyle.fill)
+          if (!fill || !fill.a || shapeStyle.display === 'none' || !shape.isPointInFill(point.matrixTransform(shapeMatrix.inverse()))) continue
+          fill.a *= Number.parseFloat(shapeStyle.fillOpacity)*opacity(shape)
+          paint = blend(fill,paint)
+          if ((edge.compareDocumentPosition(shape)&Node.DOCUMENT_POSITION_FOLLOWING) && fill.a >= .999) covered = true
+        }
+        return {paint,covered}
+      }
+      const measures: number[] = [], heads: number[] = []
+      const shaft = parseCssColor(style.stroke)
+      if (shaft && Number.parseFloat(style.strokeWidth) > 0) {
+        shaft.a *= Number.parseFloat(style.strokeOpacity)*opacity(edge)
+        for (const fraction of [.015,.05,.2,.4,.6,.8,.95,.985]) {
+          const under = backing(edge.getPointAtLength(length*fraction).matrixTransform(matrix))
+          if (!under.covered) measures.push(contrastRatio(shaft,under.paint))
+        }
+      }
+      else {
+        const fill = parseCssColor(style.fill), box = edge.getBBox()
+        if (fill) {
+          fill.a *= Number.parseFloat(style.fillOpacity)*opacity(edge)
+          for (const x of [.3,.5,.7]) for (const y of [.3,.5,.7]) {
+            const point = new DOMPoint(box.x+box.width*x,box.y+box.height*y)
+            if (!edge.isPointInFill(point)) continue
+            const under = backing(point.matrixTransform(matrix))
+            if (!under.covered) heads.push(contrastRatio(fill,under.paint))
+          }
+        }
+      }
+      let coveredHead = false
+      for (const [property,fraction] of [['markerStart',0],['markerEnd',1]] as const) {
+        const id = style[property].match(/#([^"')]+)/)?.[1]
+        const marker = id ? document.getElementById(id) : null
+        if (!(marker instanceof SVGMarkerElement)) continue
+        const anchor = edge.getPointAtLength(length*fraction)
+        const near = edge.getPointAtLength(fraction ? Math.max(0,length-.1) : Math.min(.1,length))
+        let angle = Math.atan2(fraction ? anchor.y-near.y : near.y-anchor.y,fraction ? anchor.x-near.x : near.x-anchor.x)*180/Math.PI
+        if (fraction === 0 && marker.getAttribute('orient') === 'auto-start-reverse') angle += 180
+        if (!/^auto/.test(marker.getAttribute('orient') || '')) angle = marker.orientAngle.baseVal.value
+        const units = marker.getAttribute('markerUnits') === 'userSpaceOnUse' ? 1 : Number.parseFloat(style.strokeWidth)
+        const box = marker.viewBox.baseVal
+        let sx = box.width > 0 ? marker.markerWidth.baseVal.value/box.width : 1
+        let sy = box.height > 0 ? marker.markerHeight.baseVal.value/box.height : 1
+        if (marker.preserveAspectRatio.baseVal.align !== 1) sx = sy = marker.preserveAspectRatio.baseVal.meetOrSlice === 2 ? Math.max(sx,sy) : Math.min(sx,sy)
+        const instance = new DOMMatrix([matrix.a,matrix.b,matrix.c,matrix.d,matrix.e,matrix.f]).translate(anchor.x,anchor.y).rotate(angle).scale(units*sx,units*sy).translate(-marker.refX.baseVal.value,-marker.refY.baseVal.value)
+        for (const shape of marker.querySelectorAll('path,polygon,polyline,line,circle,rect')) {
+          if (!(shape instanceof SVGGeometryElement)) continue
+          const shapeStyle = getComputedStyle(shape), box = shape.getBBox()
+          const fill = parseCssColor(shapeStyle.fill === 'context-stroke' ? style.stroke : shapeStyle.fill)
+          const stroke = parseCssColor(shapeStyle.stroke === 'context-stroke' ? style.stroke : shapeStyle.stroke)
+          const points: Array<{point:DOMPoint,paint:any}> = []
+          let markerOpacity = 1
+          for (let ancestor:Element|null = shape; ancestor; ancestor = ancestor.parentElement) {
+            markerOpacity *= Number.parseFloat(getComputedStyle(ancestor).opacity)
+            if (ancestor === marker) break
+          }
+          // Hollow ER cardinality symbols communicate through their visible rim.
+          if (fill && !(stroke && Number.parseFloat(shapeStyle.strokeWidth) > 0)) {
+            fill.a *= Number.parseFloat(shapeStyle.fillOpacity)*markerOpacity*opacity(edge)
+            for (const x of [.3,.5,.7]) for (const y of [.3,.5,.7]) {
+              const point = new DOMPoint(box.x+box.width*x,box.y+box.height*y)
+              if (shape.isPointInFill(point)) points.push({point,paint:fill})
+            }
+          }
+          if (stroke && Number.parseFloat(shapeStyle.strokeWidth) > 0 && shape.getTotalLength()) {
+            stroke.a *= Number.parseFloat(shapeStyle.strokeOpacity)*markerOpacity*opacity(edge)
+            for (const f of [.1,.3,.5,.7,.9]) points.push({point:shape.getPointAtLength(shape.getTotalLength()*f),paint:stroke})
+          }
+          const local = shape.transform.baseVal.consolidate()?.matrix
+          for (const sample of points) {
+            const point = (local ? sample.point.matrixTransform(local) : sample.point).matrixTransform(instance)
+            const under = backing(point)
+            if (under.covered) coveredHead = true
+            else heads.push(contrastRatio(sample.paint,under.paint))
+          }
+        }
+      }
+      const minimum = Math.min(...measures,...heads)
+      if (minimum+1e-10 < 3) add(findings,'arrow-low-contrast','error',describeElement(edge),`Arrow shaft or referenced head has ${minimum.toFixed(2)}:1 contrast against its actual local backing.`,'The connection loses readable direction on the painted region or canvas.','Move the route and its head into a clear gutter, or choose an allowed paint with at least 3:1 visible composite contrast. Keep solid nodes borderless.',edge.getBoundingClientRect())
+      if (coveredHead) add(findings,'arrowhead-covered','error',describeElement(edge),'A referenced arrowhead is covered by a later opaque shape.','The destination silhouette hides part of the direction glyph.','End the head outside the target body with a small explicit clearance; inspect marker viewBox, refX, units, and orientation.',edge.getBoundingClientRect())
+    }
     for (const node of [layout, ...visibleElements]) {
       // Imported source pixels are a fidelity boundary. Authored wrappers remain checked.
       if (node.closest('[data-source-media]')) continue

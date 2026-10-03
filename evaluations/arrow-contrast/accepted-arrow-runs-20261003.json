@@ -1,0 +1,206 @@
+{
+  "date": "2026-10-03",
+  "passed": true,
+  "runs": [
+    {
+      "skill": "mermaid",
+      "runId": "arrow-native-mermaid-luna2-20261003",
+      "payloadSha256": "8e350ae361819866a6e2b5bbe65ba2e6bca32f2e19f74daee4ecb0c99ee5a901",
+      "runtimeFileCount": 27,
+      "independentlyPassed": true,
+      "evidencePaths": [
+        "evaluations/arrow-contrast-diagrams/validation-20261003.json"
+      ],
+      "evidenceSha256": {
+        "evaluations/arrow-contrast-diagrams/validation-20261003.json": "784deb74d53b06119f8f46e8c73cfa56a0f9fa1d2e807f954d8c4c2c3bb6d7f8"
+      }
+    },
+    {
+      "skill": "plantuml-colorset-renderer",
+      "runId": "arrow-native-plantuml-colorset-renderer-luna2-20261003",
+      "payloadSha256": "a59c777e8febfc5af45626e5f6eb60068d6957f3ab653d7d7c33148414a2617a",
+      "runtimeFileCount": 20,
+      "independentlyPassed": true,
+      "evidencePaths": [
+        "evaluations/arrow-contrast-diagrams/validation-20261003.json"
+      ],
+      "evidenceSha256": {
+        "evaluations/arrow-contrast-diagrams/validation-20261003.json": "784deb74d53b06119f8f46e8c73cfa56a0f9fa1d2e807f954d8c4c2c3bb6d7f8"
+      }
+    },
+    {
+      "skill": "slidev-quality-audit",
+      "runId": "arrow-native-slidev-quality-audit-luna2-20261003",
+      "payloadSha256": "fa2859228d442f5d68058db0442ef25d68e3160d00e983905cc1550ad45c37ee",
+      "runtimeFileCount": 7,
+      "independentlyPassed": true,
+      "evidencePaths": [
+        "evaluations/arrow-contrast-diagrams/validation-20261003.json"
+      ],
+      "evidenceSha256": {
+        "evaluations/arrow-contrast-diagrams/validation-20261003.json": "784deb74d53b06119f8f46e8c73cfa56a0f9fa1d2e807f954d8c4c2c3bb6d7f8"
+      }
+    },
+    {
+      "skill": "d3",
+      "runId": "custom-arrow-d3-naturalistic-20261003-luna-4",
+      "payloadSha256": "9d9e1a54cc1508bed56301be068c6d8948e510156350f28c40958a96a0644bb2",
+      "runtimeFileCount": 288,
+      "independentlyPassed": true,
+      "evidencePaths": [
+        "evaluations/arrow-contrast-custom/results-20261003.json",
+        "evaluations/arrow-contrast-custom/d3-independent-final-20261003.json"
+      ],
+      "evidenceSha256": {
+        "evaluations/arrow-contrast-custom/results-20261003.json": "1edad30d1bd57538d72d57422ab974f67cb1845ba3d8963baa6cbe9a57ba5f5b",
+        "evaluations/arrow-contrast-custom/d3-independent-final-20261003.json": "303d4622ade2efe463075efc0c6649ae144c571eae4439be899ee035ff19e886"
+      }
+    },
+    {
+      "skill": "threejs-animated-3d",
+      "runId": "custom-arrow-threejs-animated-3d-naturalistic-20261003-luna-1",
+      "payloadSha256": "da31890f7259575249c6704ac7c96f965d376db4381ed7bd2b228db79c26b631",
+      "runtimeFileCount": 11,
+      "independentlyPassed": true,
+      "evidencePaths": [
+        "evaluations/arrow-contrast-custom/results-20261003.json"
+      ],
+      "evidenceSha256": {
+        "evaluations/arrow-contrast-custom/results-20261003.json": "1edad30d1bd57538d72d57422ab974f67cb1845ba3d8963baa6cbe9a57ba5f5b"
+      }
+    },
+    {
+      "skill": "procedural-svg-animation",
+      "runId": "custom-arrow-procedural-svg-animation-naturalistic-20261003-luna-1",
+      "payloadSha256": "59b32b8637120803741d8345358647671dde9fc3367e84f3f0330a98fedb7898",
+      "runtimeFileCount": 18,
+      "independentlyPassed": true,
+      "evidencePaths": [
+        "evaluations/arrow-contrast-custom/results-20261003.json"
+      ],
+      "evidenceSha256": {
+        "evaluations/arrow-contrast-custom/results-20261003.json": "1edad30d1bd57538d72d57422ab974f67cb1845ba3d8963baa6cbe9a57ba5f5b"
+      }
+    },
+    {
+      "skill": "svg-brief-design",
+      "runId": "custom-arrow-svg-brief-design-naturalistic-20261003-luna-1",
+      "payloadSha256": "d9b777955d4aa1ee712b9460cb1ce61c8453f706a6b64721482e90e29d5ef06c",
+      "runtimeFileCount": 10,
+      "independentlyPassed": true,
+      "evidencePaths": [
+        "evaluations/arrow-contrast-custom/results-20261003.json"
+      ],
+      "evidenceSha256": {
+        "evaluations/arrow-contrast-custom/results-20261003.json": "1edad30d1bd57538d72d57422ab974f67cb1845ba3d8963baa6cbe9a57ba5f5b"
+      }
+    },
+    {
+      "skill": "echarts-animated-svg",
+      "runId": "20261003-arrow-echarts-animated-svg-final-11",
+      "payloadSha256": "07590acbf38e4d4cbd7bc67402744cbe5baba73191b4b338bc6d2df5d4dec9a8",
+      "runtimeFileCount": 17,
+      "independentlyPassed": true,
+      "evidencePaths": [
+        "evaluations/arrow-contrast/echarts-runtime-artifacts-20261003.json"
+      ],
+      "evidenceSha256": {
+        "evaluations/arrow-contrast/echarts-runtime-artifacts-20261003.json": "0fef28b2e820c8598e5e72648c8aa47c67e43c16f6808181e1553659fd387354"
+      }
+    },
+    {
+      "skill": "slidev-echarts",
+      "runId": "20261003-arrow-slidev-echarts-final-8",
+      "payloadSha256": "d29e0479e2e18e6f33f7d8459f5ea21cf2640c4f6c84b00e41862950f78ff598",
+      "runtimeFileCount": 34,
+      "independentlyPassed": true,
+      "evidencePaths": [
+        "evaluations/arrow-contrast/echarts-runtime-artifacts-20261003.json"
+      ],
+      "evidenceSha256": {
+        "evaluations/arrow-contrast/echarts-runtime-artifacts-20261003.json": "0fef28b2e820c8598e5e72648c8aa47c67e43c16f6808181e1553659fd387354"
+      }
+    },
+    {
+      "skill": "compose-synchronized-svg",
+      "runId": "arrow-composition-compose-synchronized-svg-20261003-2",
+      "payloadSha256": "9a20e30272b9a1db8f16d4d3293d8032705f1df5b437d4dad80740aa04355ee2",
+      "runtimeFileCount": 38,
+      "independentlyPassed": true,
+      "evidencePaths": [
+        "evaluations/arrow-contrast-composition/validation-20261003.json"
+      ],
+      "evidenceSha256": {
+        "evaluations/arrow-contrast-composition/validation-20261003.json": "699a458c8e0be935f0b4c579ad5c841df3af5657d6191f54d6fbc1afb09d531a"
+      }
+    },
+    {
+      "skill": "diagram-composition",
+      "runId": "arrow-composition-diagram-composition-20261003-2",
+      "payloadSha256": "6566394c030158041baac0e2b5360a23ea0ff0f7d372fe4de57051c7997ce1a4",
+      "runtimeFileCount": 27,
+      "independentlyPassed": true,
+      "evidencePaths": [
+        "evaluations/arrow-contrast-composition/validation-20261003.json"
+      ],
+      "evidenceSha256": {
+        "evaluations/arrow-contrast-composition/validation-20261003.json": "699a458c8e0be935f0b4c579ad5c841df3af5657d6191f54d6fbc1afb09d531a"
+      }
+    },
+    {
+      "skill": "usefulcharts-style",
+      "runId": "arrow-composition-usefulcharts-style-20261003-2",
+      "payloadSha256": "8d802317505889992cee51520ccce5b60e43cda70145392051476e8d720c292a",
+      "runtimeFileCount": 138,
+      "independentlyPassed": true,
+      "evidencePaths": [
+        "evaluations/arrow-contrast-composition/validation-20261003.json"
+      ],
+      "evidenceSha256": {
+        "evaluations/arrow-contrast-composition/validation-20261003.json": "699a458c8e0be935f0b4c579ad5c841df3af5657d6191f54d6fbc1afb09d531a"
+      }
+    },
+    {
+      "skill": "hyperframes-explainer",
+      "runId": "arrow-composition-hyperframes-explainer-20261003-2",
+      "payloadSha256": "d39d9c5662ddae29cf3ef1f67c9d0bca2a68e34bd41601e084c2fc3930157e8f",
+      "runtimeFileCount": 33,
+      "independentlyPassed": true,
+      "evidencePaths": [
+        "evaluations/arrow-contrast-composition/validation-20261003.json"
+      ],
+      "evidenceSha256": {
+        "evaluations/arrow-contrast-composition/validation-20261003.json": "699a458c8e0be935f0b4c579ad5c841df3af5657d6191f54d6fbc1afb09d531a"
+      }
+    },
+    {
+      "skill": "video",
+      "runId": "arrow-composition-video-20261003-8",
+      "payloadSha256": "1b0b0cc682be51262c910fe1c0b952d2378d19b23c3885993daa693100e90f2a",
+      "runtimeFileCount": 54,
+      "independentlyPassed": true,
+      "evidencePaths": [
+        "evaluations/arrow-contrast-composition/validation-20261003.json"
+      ],
+      "evidenceSha256": {
+        "evaluations/arrow-contrast-composition/validation-20261003.json": "699a458c8e0be935f0b4c579ad5c841df3af5657d6191f54d6fbc1afb09d531a"
+      }
+    },
+    {
+      "skill": "manim-svg-video",
+      "runId": "arrow-composition-manim-svg-video-20261003-6",
+      "payloadSha256": "2d7d2597f24e787f6b18bdecd5db09bfb18f508024020494738c7a98d664b6fb",
+      "runtimeFileCount": 13,
+      "independentlyPassed": true,
+      "evidencePaths": [
+        "evaluations/arrow-contrast-composition/validation-20261003.json",
+        "evaluations/arrow-contrast/manim-backing-independent-20261003.json"
+      ],
+      "evidenceSha256": {
+        "evaluations/arrow-contrast-composition/validation-20261003.json": "699a458c8e0be935f0b4c579ad5c841df3af5657d6191f54d6fbc1afb09d531a",
+        "evaluations/arrow-contrast/manim-backing-independent-20261003.json": "036877101a497a8a702af8a6609e869b1295663e2efe30d18a8751f39ccd6ab5"
+      }
+    }
+  ],
+  "scope": "Explicit final reviewer allowlist: current strict trial and independently accepted actual outputs. Failed, superseded, output-rejected and unfinalized trials are excluded regardless of strict-pass discovery."
+}

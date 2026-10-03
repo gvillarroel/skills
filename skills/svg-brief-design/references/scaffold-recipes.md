@@ -85,3 +85,9 @@ No stored path or artwork is used. Inspect overlaps after changing coverage: a
 protected center does not guarantee resolved junctions or a finished ornament.
 Keep the recipe for proportion edits; edit original vector paths for local
 finishing, and do not regenerate over those direct edits.
+
+## Direction and actual backings
+
+Flow tips and shafts leave a 4-unit gutter at both box ports. Their open chevron geometry remains editable line art and uses independent opaque direction ink; light node colors never determine arrow paint. The builder chooses black or white against the canvas, then checks sampled shafts and head vertices against ordinary local rect/circle/ellipse fills including ancestor opacity. `canvas.background` optionally emits an exact palette fill; `style.arrow_color` requests an allowed direction token and fails below 3:1 against the checked backings.
+
+Complex filled paths and transformed underlays require browser inspection and are marked `data-arrow-audit="inspect-custom-underlay-in-browser"`. Inspect actual alpha composites and any foreground details crossing a shaft or tip. Reposition the gutter or scope direction paint to the local backing when one paint cannot reach 3:1; avoid decorative rims, halos or node borders. Transparent SVGs assume white presentation unless an explicit canvas backing is supplied.

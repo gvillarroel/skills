@@ -1,0 +1,38 @@
+{
+  "date": "2026-10-03",
+  "phase": "after",
+  "sampleCount": 100,
+  "failingSamples": 0,
+  "rows": [
+    {
+      "second": 0,
+      "headCount": 20,
+      "minimumInteriorContrast": 3.6500896413642634,
+      "maximumPaintDistance": 0.0
+    },
+    {
+      "second": 1,
+      "headCount": 20,
+      "minimumInteriorContrast": 3.6500896413642634,
+      "maximumPaintDistance": 0.0
+    },
+    {
+      "second": 2,
+      "headCount": 20,
+      "minimumInteriorContrast": 3.6500896413642634,
+      "maximumPaintDistance": 0.0
+    },
+    {
+      "second": 3,
+      "headCount": 20,
+      "minimumInteriorContrast": 3.6500896413642634,
+      "maximumPaintDistance": 0.0
+    },
+    {
+      "second": 4,
+      "headCount": 20,
+      "minimumInteriorContrast": 3.6500896413642634,
+      "maximumPaintDistance": 0.0
+    }
+  ]
+}

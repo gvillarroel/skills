@@ -44,7 +44,9 @@ function renderD3StateMachine() {
     const pathFor = d => {
       const a = byId.get(d.source);
       const b = byId.get(d.target);
-      if (d.loop) return "M300,228C260,294 114,294 96,232";
+      if (d.loop) return "M300,228C260,294 114,294 96,240";
+      if (d.source === "Fork" && d.target === "Publish") return "M476,106C476,90 462,96 478,96";
+      if (d.source === "Fork" && d.target === "Archive") return "M476,178C476,206 462,190 478,190";
       const bend = Math.abs(a.y - b.y) > 50 ? 34 : 0;
       return `M${a.x},${a.y}C${(a.x + b.x) / 2},${a.y + bend} ${(a.x + b.x) / 2},${b.y - bend} ${b.x},${b.y}`;
     };

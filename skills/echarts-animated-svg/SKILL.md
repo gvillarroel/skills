@@ -7,6 +7,8 @@ description: "Animates already-rendered Apache ECharts SVG output and builds rep
 
 Read [the colorset output contract](references/colorset-contract.md) before authoring or auditing visual output. Apply one exact bundled palette to every authored output path and inspect rendered paint. Default to colorset1; declare colorset2 when its category distinctions are needed. Start category marks with opaque solid fills and no decorative borders; exhaust the selected palette's usable unique solids before outlined overflow variants. Choose black or white inside text by actual fill contrast.
 
+For directed edges, read [arrow contrast and placement](references/arrow-contrast.md). Qualify actual shafts and heads at 3:1 against their local backings, preserve native endpoint geometry, and keep heads visible outside nodes. Use the bundled option helper before rendering authored arrow charts; inspect filled crossings and final exports separately.
+
 ## Exact Output Contract
 
 When a task names specific files, treat those names as fixed API values. Before writing files or running commands, make a two-value map from the prompt:

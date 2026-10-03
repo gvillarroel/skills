@@ -120,7 +120,7 @@ the bundled path remains usable without them.
 
 ## Verify and render
 
-Read [validation.md](references/validation.md). Setup requires Node.js 24+, Chrome
+Read [validation.md](references/validation.md) and [arrow-visibility.md](references/arrow-visibility.md) for actual projected arrow paint and endpoint checks. Setup requires Node.js 24+, Chrome
 or Chromium and FFmpeg. Run the following from the workspace root using the actual
 project and artifact paths. The scripts locate their project from their own file:
 

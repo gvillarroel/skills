@@ -149,3 +149,9 @@ When adding a pattern:
 4. Reuse an existing renderer only when the visual mechanism remains distinct after parameters change.
 5. Make the same seed byte-stable; make a different seed change generated geometry without breaking structure.
 6. Add the pattern to the machine catalog, generator, gallery, reference routing, and validator inventory together.
+
+## Vector-line direction paint
+
+`procedural-svg-vector-field` retains its established 9×15 bare line glyphs: orientation and length come from the same analytic vector sample, and no arrowheads are added. Its direction paint now selects allowed solids with at least 3:1 against the pale surface/background at readable full emphasis. The .35→1→.35 opacity cycle remains a deliberate transient emphasis, while reduced motion shows opaque settled glyphs. Other streamlines, contour lines, symmetric field-glyph morphs and agent heading traces retain their geometry and numerical meaning.
+
+When a brief explicitly requests arrow glyphs, construct both shaft and tip from the same normalized vector; leave room for the complete tip, use opaque contrasting allowed ink, and audit the actual local backing. Do not infer directed heads from unrelated axes, contours or source artwork.

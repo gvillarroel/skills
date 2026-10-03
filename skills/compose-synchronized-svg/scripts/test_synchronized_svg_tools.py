@@ -2043,9 +2043,10 @@ class SynchronizedSvgToolTests(unittest.TestCase):
             encoding="utf-8",
             errors="replace",
         )
-        self.assertEqual(audited.returncode, 0, msg=audited.stderr or audited.stdout)
+        self.assertEqual(audited.returncode, 1, msg=audited.stderr or audited.stdout)
         audit_payload = json.loads(browser_report.read_text(encoding="utf-8"))
-        self.assertIs(audit_payload.get("ok"), True)
+        self.assertIs(audit_payload.get("ok"), False)
+        self.assertTrue(any("arrow-shaft-occluded" in failure for failure in audit_payload.get("failures", [])))
         progress_records = [
             record
             for check in audit_payload.get("checks", [])
@@ -5023,7 +5024,7 @@ class SynchronizedSvgToolTests(unittest.TestCase):
         self.assertEqual(len(relationship_paths), 18)
         self.assertTrue(all(path.get("stroke") == "var(--ink)" for path in relationship_paths))
         relationship_style = next(element for element in root.iter() if element.tag.endswith("style"))
-        self.assertIn(".relationship-path { vector-effect: non-scaling-stroke; opacity: 0.86;", relationship_style.text or "")
+        self.assertIn(".relationship-path { vector-effect: non-scaling-stroke; opacity: 1;", relationship_style.text or "")
         self.assertIn('[data-kind="feedback"] .relationship-path { stroke: var(--warning); }', relationship_style.text or "")
         validation, validation_report = self.validate_json(
             svg,

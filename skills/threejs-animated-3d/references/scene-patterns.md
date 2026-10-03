@@ -56,3 +56,11 @@ Use a shared renderer harness for canvas setup, resizing, camera aspect updates,
 - Prefer shared geometries/materials where many meshes repeat.
 - Dispose geometries, materials, and renderers if a component can unmount.
 - Avoid postprocessing in baseline fixtures unless the effect is the point of the example.
+
+## Directed vector field
+
+For directional flow over a plane, use the offline builder with `--scene vector-field --token-count 20`; this promotes the published `threejs-vector-field` pattern without reading its gallery. A five-column grid contains up to 24 independent cone/cylinder groups. Each cylinder has radius .045 and length .58; each cone has radius .12, length .28 and center x=.42, pointing along local +x. The cone base overlaps the shaft tip slightly, with no outline mesh. Animate group heading and lift from deterministic seconds; reduced motion keeps the settled time-zero scene.
+
+Use opaque, untone-mapped `MeshBasicMaterial` for directional glyphs and allowed solid tokens that reach 3:1 against the white stage, nominal pale plane and its actual darker shading. The runtime includes a conservative #9c9c9c shade bound and verifies actual head/shaft pixels at delivery views. This isolates communicative paint from lighting; keep physically lit surrounding geometry. The default elevated camera and .46 minimum drag pitch prevent a ground-level view collapsing the tip into the shaft. Replay resets heading and camera. The scene inspection API returns projected head positions and material colors.
+
+Verify head and shaft interior pixels at multiple delivery times, responsive sizes and camera positions against the same scene rendered without arrows. Retain antialiased edge samples separately: a low blended edge pixel is not evidence that the glyph interior lacks contrast. Inspect the actual cone silhouette for occlusion or foreshortening, including reduced motion and keyboard focus.

@@ -1,0 +1,331 @@
+{
+  "date": "2026-10-03",
+  "finalPayloads": {
+    "d3": {
+      "fileCount": 288,
+      "payloadSha256": "a7368514727b62d5f4c02ffb6ad7ba271722fa7482d4089812e5b4a50b3dcb95"
+    },
+    "threejs-animated-3d": {
+      "fileCount": 11,
+      "payloadSha256": "da31890f7259575249c6704ac7c96f965d376db4381ed7bd2b228db79c26b631"
+    },
+    "procedural-svg-animation": {
+      "fileCount": 18,
+      "payloadSha256": "59b32b8637120803741d8345358647671dde9fc3367e84f3f0330a98fedb7898"
+    },
+    "svg-brief-design": {
+      "fileCount": 10,
+      "payloadSha256": "d9b777955d4aa1ee712b9460cb1ce61c8453f706a6b64721482e90e29d5ef06c"
+    },
+    "vectorize-art-patterns": {
+      "fileCount": 55,
+      "payloadSha256": "3e81d3098d50729416b17c7377f265fa22415c24257057551c3dccead1d8ec57"
+    }
+  },
+  "attempts": [
+    {
+      "runId": "custom-arrow-d3-naturalistic-20261003-luna-1",
+      "skill": "d3",
+      "strictPassed": true,
+      "payloadSha256": "a7368514727b62d5f4c02ffb6ad7ba271722fa7482d4089812e5b4a50b3dcb95",
+      "matchesFinalPayload": true,
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.6-luna"
+        }
+      ],
+      "toolErrorCount": 0,
+      "readSurface": [
+        "../prompt.md",
+        "skills/d3/SKILL.md",
+        "skills/d3/references/patterns/process-control-loop.md",
+        "pid-cs1.html",
+        "pid-cs2.html",
+        "pid-cs2.html",
+        "pid-cs1.html",
+        "scratch/pid-cs1.png",
+        "scratch/pid-cs2.png",
+        "scratch/pid-cs2-rerun.png"
+      ],
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "durationSeconds": 72.229,
+      "artifactPassed": true,
+      "outputs": {
+        "pid-cs1.html": {
+          "sizeBytes": 44289,
+          "sha256": "2570c150bc4cd2d0aca81e2b6c06bfc8cf98496f69cb478c7cf44e8e605571df"
+        },
+        "pid-cs2.html": {
+          "sizeBytes": 45214,
+          "sha256": "fbffd133782314622cb9fe57aa365cae92d1959c4710f61d241e22e7b6d21ca6"
+        }
+      },
+      "inspection": [
+        {
+          "output": "pid-cs1.html",
+          "second": 3.1,
+          "markerArrowCount": 6,
+          "glyphCount": 1,
+          "minimumHeadContrast": 7.9046884551695875,
+          "minimumShaftContrast": 7.9046884551695875,
+          "glyphMinimumContrast": 3.976854422623276
+        },
+        {
+          "output": "pid-cs1.html",
+          "second": 4.8,
+          "markerArrowCount": 6,
+          "glyphCount": 1,
+          "minimumHeadContrast": 7.9046884551695875,
+          "minimumShaftContrast": 7.9046884551695875,
+          "glyphMinimumContrast": 3.976854422623276
+        },
+        {
+          "output": "pid-cs1.html",
+          "second": 6.2,
+          "markerArrowCount": 6,
+          "glyphCount": 1,
+          "minimumHeadContrast": 7.9046884551695875,
+          "minimumShaftContrast": 7.9046884551695875,
+          "glyphMinimumContrast": 3.976854422623276
+        },
+        {
+          "output": "pid-cs2.html",
+          "second": 3.1,
+          "markerArrowCount": 6,
+          "glyphCount": 1,
+          "minimumHeadContrast": 3.085302662118927,
+          "minimumShaftContrast": 3.085302662118927,
+          "glyphMinimumContrast": 4.1820201067584275
+        },
+        {
+          "output": "pid-cs2.html",
+          "second": 4.8,
+          "markerArrowCount": 6,
+          "glyphCount": 1,
+          "minimumHeadContrast": 3.085302662118927,
+          "minimumShaftContrast": 3.085302662118927,
+          "glyphMinimumContrast": 4.1820201067584275
+        },
+        {
+          "output": "pid-cs2.html",
+          "second": 6.2,
+          "markerArrowCount": 6,
+          "glyphCount": 1,
+          "minimumHeadContrast": 3.085302662118927,
+          "minimumShaftContrast": 3.085302662118927,
+          "glyphMinimumContrast": 4.1820201067584275
+        }
+      ],
+      "browserErrors": []
+    },
+    {
+      "runId": "custom-arrow-procedural-svg-animation-naturalistic-20261003-luna-1",
+      "skill": "procedural-svg-animation",
+      "strictPassed": true,
+      "payloadSha256": "59b32b8637120803741d8345358647671dde9fc3367e84f3f0330a98fedb7898",
+      "matchesFinalPayload": true,
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.6-luna"
+        }
+      ],
+      "toolErrorCount": 0,
+      "readSurface": [
+        "../prompt.md",
+        "skills/procedural-svg-animation/SKILL.md",
+        "skills/procedural-svg-animation/references/runtime-and-validation.md",
+        "field.png",
+        "field-static.png",
+        "field-static-browser.json",
+        "field-browser.json",
+        "field-report.json",
+        "field-static-report.json"
+      ],
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "durationSeconds": 63.797,
+      "artifactPassed": true,
+      "outputs": {
+        "field.svg": {
+          "sizeBytes": 60963,
+          "sha256": "b9e22929eda495035440026e4365eefeb6d36185be9203bd810e4ab61d364e7e"
+        },
+        "field-static.svg": {
+          "sizeBytes": 23088,
+          "sha256": "7f65358192f8b1a421486d5b14c94a10c88b3c5d0bc041fc3c524bf5388d919b"
+        }
+      },
+      "geometryPreservedAcrossMotionModes": true,
+      "inspection": [
+        {
+          "output": "field.svg",
+          "bareLineCount": 135,
+          "headCount": 0,
+          "minimumFullEmphasisContrast": 4.578174721021005
+        },
+        {
+          "output": "field-static.svg",
+          "bareLineCount": 135,
+          "headCount": 0,
+          "minimumFullEmphasisContrast": 4.578174721021005
+        }
+      ],
+      "browserErrors": []
+    },
+    {
+      "runId": "custom-arrow-svg-brief-design-naturalistic-20261003-luna-1",
+      "skill": "svg-brief-design",
+      "strictPassed": true,
+      "payloadSha256": "d9b777955d4aa1ee712b9460cb1ce61c8453f706a6b64721482e90e29d5ef06c",
+      "matchesFinalPayload": true,
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.6-luna"
+        }
+      ],
+      "toolErrorCount": 0,
+      "readSurface": [
+        "../prompt.md",
+        "skills/svg-brief-design/SKILL.md",
+        "skills/svg-brief-design/references/scaffold-recipes.md",
+        "skills/svg-brief-design/assets/palettes/colorsets.json",
+        "light.svg",
+        "light.json",
+        "dark.svg",
+        "dark.json",
+        "dark.json",
+        "light.json",
+        "light.svg",
+        "dark.svg",
+        "dark-preview.png",
+        "light-preview.png"
+      ],
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "durationSeconds": 74.148,
+      "artifactPassed": true,
+      "outputs": {
+        "light.svg": {
+          "sizeBytes": 2093,
+          "sha256": "41a462816fa644002f28705cf8d5e4c44fe7bea47b991b8f865c1b336ee1e1a7"
+        },
+        "dark.svg": {
+          "sizeBytes": 2114,
+          "sha256": "479c372b7b134084d1f9aa4c063bc248af94725aef1733244b25a5a7e9f0354a"
+        },
+        "light.json": {
+          "sizeBytes": 430,
+          "sha256": "b9b60d13141f577bacabf848e3e8121e5c34e60e59f87fb27c624a79e14e8943"
+        },
+        "dark.json": {
+          "sizeBytes": 602,
+          "sha256": "2de52b6929de48da94d53b5f713a7c494f0e28a0b79f29d196ed28201fa98160"
+        }
+      },
+      "inspection": [
+        {
+          "output": "light.svg",
+          "arrowCount": 2,
+          "tipClearance": 4,
+          "contrast": 21.0
+        },
+        {
+          "output": "dark.svg",
+          "arrowCount": 2,
+          "tipClearance": 4,
+          "contrast": 17.04206683163051
+        }
+      ],
+      "browserErrors": []
+    },
+    {
+      "runId": "custom-arrow-threejs-animated-3d-naturalistic-20261003-luna-1",
+      "skill": "threejs-animated-3d",
+      "strictPassed": true,
+      "payloadSha256": "da31890f7259575249c6704ac7c96f965d376db4381ed7bd2b228db79c26b631",
+      "matchesFinalPayload": true,
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.6-luna"
+        }
+      ],
+      "toolErrorCount": 0,
+      "readSurface": [
+        "../prompt.md",
+        "skills/threejs-animated-3d/SKILL.md",
+        "skills/threejs-animated-3d/references/scene-patterns.md",
+        "skills/threejs-animated-3d/references/visual-tokens.md",
+        "skills/threejs-animated-3d/references/validation.md",
+        "field-validation.json",
+        "field.png"
+      ],
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "durationSeconds": 41.365,
+      "artifactPassed": true,
+      "outputs": {
+        "field.html": {
+          "sizeBytes": 1018499,
+          "sha256": "8f2690a35e3c1dcf3cb4e2bb72289ef40898153508292c946d88b50189311aef"
+        }
+      },
+      "inspection": [
+        {
+          "motion": "no-preference",
+          "second": 0,
+          "pixelSampleCount": 40,
+          "minimumInteriorContrast": 3.919144240364196
+        },
+        {
+          "motion": "no-preference",
+          "second": 1.7,
+          "pixelSampleCount": 40,
+          "minimumInteriorContrast": 3.919144240364196
+        },
+        {
+          "motion": "no-preference",
+          "second": 3.2,
+          "pixelSampleCount": 40,
+          "minimumInteriorContrast": 3.919144240364196
+        },
+        {
+          "motion": "reduce",
+          "second": 0,
+          "pixelSampleCount": 40,
+          "minimumInteriorContrast": 3.919144240364196
+        }
+      ],
+      "browserErrors": []
+    }
+  ],
+  "strictPasses": 4,
+  "jointCurrentPasses": 4,
+  "behaviorChangedBundles": [
+    "d3",
+    "threejs-animated-3d",
+    "procedural-svg-animation",
+    "svg-brief-design"
+  ],
+  "inventoryOnlyBundle": "vectorize-art-patterns"
+}

@@ -1,0 +1,190 @@
+{
+  "date": "2026-10-03",
+  "passed": true,
+  "checks": [
+    {
+      "script": "scripts/validate-pattern-ids.py",
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/validate-pattern-ids.py"
+      ],
+      "startedAtUtc": "2026-10-03T19:38:16.747085+00:00",
+      "completedAtUtc": "2026-10-03T19:38:21.039029+00:00",
+      "exitCode": 0,
+      "passed": true,
+      "log": "projects/arrow-contrast/artifacts/reviews/validate-pattern-ids-final.log",
+      "output": "Pattern ID validation passed: 1222 canonical item IDs across families, maximum length 46, 519 explicit canonical IDs, 833 source declarations, 0 IDs above the 48-character review threshold."
+    },
+    {
+      "script": "scripts/validate-skills.py",
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/validate-skills.py"
+      ],
+      "startedAtUtc": "2026-10-03T19:38:16.747250+00:00",
+      "completedAtUtc": "2026-10-03T19:38:33.191172+00:00",
+      "exitCode": 0,
+      "passed": true,
+      "log": "projects/arrow-contrast/artifacts/reviews/validate-skills-final.log",
+      "output": "Validation passed."
+    },
+    {
+      "script": "scripts/test-skill-independence.py",
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/test-skill-independence.py"
+      ],
+      "startedAtUtc": "2026-10-03T19:38:16.747860+00:00",
+      "completedAtUtc": "2026-10-03T19:38:17.004332+00:00",
+      "exitCode": 0,
+      "passed": true,
+      "log": "projects/arrow-contrast/artifacts/reviews/test-skill-independence-final.log",
+      "output": "Skill independence validator tests passed."
+    },
+    {
+      "script": "scripts/check-repo-payload.py",
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/check-repo-payload.py"
+      ],
+      "startedAtUtc": "2026-10-03T19:38:17.004639+00:00",
+      "completedAtUtc": "2026-10-03T19:38:17.745193+00:00",
+      "exitCode": 0,
+      "passed": true,
+      "log": "projects/arrow-contrast/artifacts/reviews/check-repo-payload-final.log",
+      "output": "Payload check passed."
+    },
+    {
+      "script": "scripts/test-colorsets.py",
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/test-colorsets.py"
+      ],
+      "startedAtUtc": "2026-10-03T19:04:05.955497+00:00",
+      "completedAtUtc": "2026-10-03T19:04:06.538667+00:00",
+      "exitCode": 0,
+      "passed": true,
+      "log": "projects/arrow-contrast/artifacts/reviews/test-colorsets-final.log",
+      "output": "...............\n----------------------------------------------------------------------\nRan 15 tests in 0.336s\n\nOK"
+    },
+    {
+      "script": "scripts/test-pages-output.py",
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/test-pages-output.py"
+      ],
+      "startedAtUtc": "2026-10-03T19:04:06.538899+00:00",
+      "completedAtUtc": "2026-10-03T19:04:06.900162+00:00",
+      "exitCode": 0,
+      "passed": true,
+      "log": "projects/arrow-contrast/artifacts/reviews/test-pages-output-final.log",
+      "output": "...\n----------------------------------------------------------------------\nRan 3 tests in 0.029s\n\nOK"
+    },
+    {
+      "script": "scripts/test-pi-eval-harness.py",
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/test-pi-eval-harness.py"
+      ],
+      "startedAtUtc": "2026-10-03T19:04:06.900426+00:00",
+      "completedAtUtc": "2026-10-03T19:04:09.620549+00:00",
+      "exitCode": 0,
+      "passed": true,
+      "log": "projects/arrow-contrast/artifacts/reviews/test-pi-eval-harness-final.log",
+      "output": ".................\n----------------------------------------------------------------------\nRan 17 tests in 2.368s\n\nOK"
+    },
+    {
+      "script": "scripts/test-bundle-validation.py",
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/test-bundle-validation.py"
+      ],
+      "startedAtUtc": "2026-10-03T19:04:09.229874+00:00",
+      "completedAtUtc": "2026-10-03T19:04:12.607901+00:00",
+      "exitCode": 0,
+      "passed": true,
+      "log": "projects/arrow-contrast/artifacts/reviews/test-bundle-validation-final.log",
+      "output": "...........\n----------------------------------------------------------------------\nRan 11 tests in 2.994s\n\nOK"
+    },
+    {
+      "script": "skills/repository-reviewer-creator/scripts/test_skill_authoring.py",
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "skills/repository-reviewer-creator/scripts/test_skill_authoring.py"
+      ],
+      "startedAtUtc": "2026-10-03T19:04:09.620817+00:00",
+      "completedAtUtc": "2026-10-03T19:04:10.273187+00:00",
+      "exitCode": 0,
+      "passed": true,
+      "log": "projects/arrow-contrast/artifacts/reviews/test_skill_authoring-final.log",
+      "output": "..............................\n----------------------------------------------------------------------\nRan 30 tests in 0.399s\n\nOK"
+    },
+    {
+      "script": "skills/repository-reviewer-creator/scripts/test_validate_reviewer.py",
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "skills/repository-reviewer-creator/scripts/test_validate_reviewer.py"
+      ],
+      "startedAtUtc": "2026-10-03T19:04:10.273700+00:00",
+      "completedAtUtc": "2026-10-03T19:04:11.797658+00:00",
+      "exitCode": 0,
+      "passed": true,
+      "log": "projects/arrow-contrast/artifacts/reviews/test_validate_reviewer-final.log",
+      "output": "................................\n----------------------------------------------------------------------\nRan 32 tests in 1.171s\n\nOK"
+    },
+    {
+      "script": "scripts/validate-diagram-type-coverage.py",
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/validate-diagram-type-coverage.py",
+        "--disable-mermaid-browser-sandbox"
+      ],
+      "startedAtUtc": "2026-10-03T19:04:11.797835+00:00",
+      "completedAtUtc": "2026-10-03T19:04:13.810193+00:00",
+      "exitCode": 0,
+      "passed": true,
+      "log": "projects/arrow-contrast/artifacts/reviews/validate-diagram-type-coverage-final.log",
+      "output": "{\n  \"checks\": [\n    {\n      \"exitCode\": 0,\n      \"name\": \"PlantUML fixture, render-report, and gallery coverage\",\n      \"ok\": true\n    },\n    {\n      \"exitCode\": 0,\n      \"name\": \"PlantUML coverage unit tests\",\n      \"ok\": true\n    },\n    {\n      \"exitCode\": 0,\n      \"name\": \"PlantUML colorset2 artifact validation\",\n      \"ok\": true\n    },\n    {\n      \"exitCode\": 0,\n      \"name\": \"PlantUML colorset1 artifact validation\",\n      \"ok\": true\n    }\n  ],\n  \"findings\": [],\n  \"mermaid\": {\n    \"classDefFamilyCount\": 8,\n    \"currentDeclarationCount\": 40,\n    \"familyCount\": 31,\n    \"familyCoveragePercent\": 100.0,\n    \"renderableDeclarationCount\": 48,\n    \"version\": \"11.16.0\"\n  },\n  \"ok\": true,\n  \"plantuml\": {\n    \"availableFamilyCount\": 27,\n    \"availableFamilyCoveragePercent\": 100.0,\n    \"canonicalFamilyCount\": 27,\n    \"fixtureCount\": 29,\n    \"publishedFixtureCount\": 28,\n    \"releaseExtraFamilyCount\": 1,\n    \"trackedFamilyCount\": 28,\n    \"trackedFamilyCoveragePercent\": 100.0,\n    \"upstreamUnavailableFamilies\": [\n      \"chronology\"\n    ],\n    \"version\": \"1.2026.6\"\n  }\n}"
+    },
+    {
+      "script": "scripts/validate-colorsets.py",
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/validate-colorsets.py",
+        "--report",
+        "projects/arrow-contrast/artifacts/reviews/colorset-audit-final.json"
+      ],
+      "startedAtUtc": "2026-10-03T19:04:12.608258+00:00",
+      "completedAtUtc": "2026-10-03T19:04:18.781533+00:00",
+      "exitCode": 0,
+      "passed": true,
+      "log": "projects/arrow-contrast/artifacts/reviews/validate-colorsets-final.log",
+      "output": "Colorset validation passed: 34 skills, 30 palette copies, 672 artifacts, 0 findings."
+    }
+  ],
+  "scope": "Latest actual result for each required gate. Targeted structural reruns preserve earlier unchanged functional suites; every result retains its command and timestamps."
+}

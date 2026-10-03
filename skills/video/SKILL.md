@@ -12,6 +12,8 @@ Treat this as the mixed-media video orchestrator. Own the source contract, outpu
 
 Set `$env:VIDEO_SKILL` to this skill directory before copying bundled commands.
 
+Read [arrow-visibility.md](references/arrow-visibility.md) when producing, importing or reviewing directional arrows. Audit actual shafts/heads at delivery scale.
+
 ## Ownership boundary
 
 - Route each source visual to one producer. The producer owns its internal semantics, geometry, styling, animation hooks, and validation report.

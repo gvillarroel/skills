@@ -828,8 +828,9 @@
       .attr("viewBox", "0 -5 10 10")
       .attr("refX", 9)
       .attr("refY", 0)
-      .attr("markerWidth", 7)
-      .attr("markerHeight", 7)
+      .attr("markerUnits", "userSpaceOnUse")
+      .attr("markerWidth", 8)
+      .attr("markerHeight", 8)
       .attr("orient", "auto")
       .append("path")
       .attr("d", "M0,-5L10,0L0,5Z")
@@ -2415,7 +2416,7 @@
       .attr("y", d => d.y + 36)
       .attr("text-anchor", "end")
       .attr("fill", palette.muted)
-      .text(d => `${d3.format(".0%")(d.ratio)} Â· ${d.tokens}`);
+      .text(d => `${d3.format(".0%")(d.ratio)} Ã‚Â· ${d.tokens}`);
     bucketGroups.append("rect")
       .attr("x", d => d.x + 14)
       .attr("y", d => d.y + d.h - 13)
@@ -3498,7 +3499,7 @@
       { id: "start", label: "Start", type: "circle", x: 52, y: 210, w: 56, h: 56, fill: palette.blueHighlight, stroke: palette.blue },
       { id: "collect", label: "Collect\nrequest", type: "input", x: 145, y: 210, w: 90, h: 54, fill: palette.surface, stroke: palette.blue },
       { id: "validate", label: "Valid\npayload?", type: "diamond", x: 258, y: 210, w: 82, h: 70, fill: palette.yellowHighlight, stroke: palette.orange },
-      { id: "persist", label: "Store\nevent", type: "store", x: 374, y: 140, w: 96, h: 48, fill: palette.yellowHighlight, stroke: palette.orange },
+      { id: "persist", label: "Store\nevent", type: "store", x: 354, y: 140, w: 96, h: 48, fill: palette.yellowHighlight, stroke: palette.orange },
       { id: "repair", label: "Repair\ninput", type: "rect", x: 374, y: 282, w: 96, h: 48, fill: palette.redHighlight, stroke: palette.red },
       { id: "notify", label: "Notify\nsubscriber", type: "rect", x: 486, y: 140, w: 112, h: 48, fill: palette.greenHighlight, stroke: palette.green },
       { id: "done", label: "Done", type: "double", x: 522, y: 250, w: 58, h: 58, fill: palette.blueHighlight, stroke: palette.blue }
@@ -3525,9 +3526,10 @@
       if (d.loop) return "M330,282C248,336 132,326 116,238";
       const s = nodeEdge(source, target);
       const t = nodeEdge(target, source);
-      const mx = (s.x + t.x) / 2;
-      const bend = d.bend || 0;
-      return `M${s.x},${s.y}C${mx},${s.y + bend} ${mx},${t.y + bend} ${t.x},${t.y}`;
+      const reach = Math.max(20, Math.hypot(t.x-s.x,t.y-s.y)*.42);
+      const sx = Math.sign(s.x-source.x), sy = Math.sign(s.y-source.y);
+      const tx = Math.sign(t.x-target.x), ty = Math.sign(t.y-target.y);
+      return `M${s.x},${s.y}C${s.x+sx*reach},${s.y+sy*reach} ${t.x+tx*reach},${t.y+ty*reach} ${t.x},${t.y}`;
     };
     const paths = svg.append("g").selectAll("path.flow-link").data(links).join("path")
       .attr("class", "flow-link")
@@ -3610,7 +3612,7 @@
     fadeIn(activation, .35, .4);
     const msg = svg.append("g").selectAll("g.seq-message").data(messages).join("g").attr("class", "seq-message");
     const paths = msg.append("path")
-      .attr("d", d => `M${x.get(d.from)},${d.y}H${x.get(d.to)}`)
+      .attr("d", d => { const direction = Math.sign(x.get(d.to) - x.get(d.from)); const edge = actor => actor === "API" ? 12 : 4; return `M${x.get(d.from) + direction * edge(d.from)},${d.y}H${x.get(d.to) - direction * edge(d.to)}`; })
       .attr("fill", "none")
       .attr("stroke", d => d.reply ? palette.green : palette.blueHover)
       .attr("stroke-width", 2)
@@ -3655,7 +3657,9 @@
     const pathFor = d => {
       const a = byId.get(d.source);
       const b = byId.get(d.target);
-      if (d.loop) return "M300,228C260,294 114,294 96,232";
+      if (d.loop) return "M300,228C260,294 114,294 96,240";
+      if (d.source === "Fork" && d.target === "Publish") return "M476,106C476,90 462,96 478,96";
+      if (d.source === "Fork" && d.target === "Archive") return "M476,178C476,206 462,190 478,190";
       const bend = Math.abs(a.y - b.y) > 50 ? 34 : 0;
       return `M${a.x},${a.y}C${(a.x + b.x) / 2},${a.y + bend} ${(a.x + b.x) / 2},${b.y - bend} ${b.x},${b.y}`;
     };
@@ -8453,7 +8457,7 @@
 
     const pump = equipmentLayer.append("g").attr("class", "pid-equipment pid-pump").attr("data-equipment-id", "p-101").attr("transform", "translate(204 262)");
     pump.append("circle").attr("r", 22).attr("fill", palette.gray50).attr("stroke", palette.ink).attr("stroke-width", 1.8);
-    pump.append("path").attr("d", "M-8,-10L14,0L-8,10Z").attr("fill", palette.blueHighlight).attr("stroke", palette.blue).attr("stroke-width", 1.4);
+    pump.append("path").attr("data-direction-role", "glyph").attr("data-direction-backing", "circle").attr("d", "M-8,-10L14,0L-8,10Z").attr("fill", palette.blueHighlight).attr("stroke", palette.blue).attr("stroke-width", 1.4);
     label(204, 300, "P-101");
 
     const exchanger = equipmentLayer.append("g").attr("class", "pid-equipment pid-heat-exchanger").attr("data-equipment-id", "e-101");
@@ -8510,6 +8514,7 @@
       .join("g")
       .attr("class", "pid-instrument")
       .attr("data-instrument-id", d => d.id)
+      .attr("data-text-backing", "circle")
       .attr("data-loop", d => d.loop)
       .attr("transform", d => `translate(${d.x} ${d.y})`);
     instrumentGroups.append("circle").attr("r", 22).attr("fill", palette.surface).attr("stroke", d => d.color).attr("stroke-width", 1.8);
@@ -8520,10 +8525,10 @@
 
     const signals = [
       { id: "lic-to-lv", source: "lic-101", d: "M98,126V152H146V230", color: palette.green, target: "lv-101" },
-      { id: "tic-to-tv", source: "tic-102", d: "M326,118V184H304V312", color: palette.orange, target: "tv-102" },
+      { id: "tic-to-tv", source: "tic-102", d: "M326,118V184H272V304H304V308", color: palette.orange, target: "tv-102" },
       { id: "fic-to-fv", source: "fic-103", d: "M506,130V230", color: palette.purple, target: "fv-103" },
-      { id: "reactor-temp", source: "r-101", d: "M448,154V116H350", color: palette.orange, target: "tic-102" },
-      { id: "high-high-trip", source: "hs-104", d: "M430,94H482V238", color: palette.red, target: "fv-103", trip: true }
+      { id: "reactor-temp", source: "r-101", d: "M448,140V130H366V94H352", color: palette.orange, target: "tic-102" },
+      { id: "high-high-trip", source: "hs-104", d: "M430,94H478V78H532V214H506V226", color: palette.red, target: "fv-103", trip: true }
     ];
     const signalPaths = svg.append("g").attr("class", "pid-signal-lines").selectAll("path.pid-signal-line")
       .data(signals)
@@ -11247,8 +11252,8 @@
       { id: "override-review", label: "Override review", value: "open", x: 604, color: palette.purple }
     ];
     const gaps = [
-      { id: "inspection-gap", barrierId: "inspection-program", label: "inspection overdue", x: 252, y: 96, targetX: 252, targetY: rows[0] - 22 },
-      { id: "deluge-gap", barrierId: "deluge-system", label: "deluge offline", x: 568, y: 96, targetX: 568, targetY: rows[1] - 22, viaX: 502 }
+      { id: "inspection-gap", barrierId: "inspection-program", label: "inspection overdue", x: 252, y: 70, targetX: 252, targetY: rows[0] - 30 },
+      { id: "deluge-gap", barrierId: "deluge-system", label: "deluge offline", x: 684, y: 155, h: 16, fontSize: 6.6, fromX: 628, targetX: 568, targetY: rows[1] - barrierH / 2 - 4, viaX: 602, viaY: 151 }
     ];
 
     function labelLines(group, lines, x, y, fontSize = 8.4, cls = "mark-label") {
@@ -11446,10 +11451,13 @@
       .data(gaps)
       .join("g")
       .attr("class", "critical-barrier-gap")
+      .attr("data-text-backing", "rect")
       .attr("data-gap-id", d => d.id)
       .attr("data-barrier-id", d => d.barrierId);
     gapGroups.append("path")
-      .attr("d", d => d.viaX
+      .attr("d", d => d.fromX
+        ? `M${d.fromX},${d.y}H${d.viaX}V${d.viaY}H${d.targetX}V${d.targetY}`
+        : d.viaX
         ? `M${d.x},${d.y + 12}H${d.viaX}V${d.targetY}H${d.targetX}`
         : `M${d.x},${d.y + 12}L${d.targetX},${d.targetY}`)
       .attr("fill", "none")
@@ -11459,9 +11467,9 @@
       .attr("marker-end", gapArrow);
     gapGroups.append("rect")
       .attr("x", d => d.x - 52)
-      .attr("y", d => d.y - 11)
+      .attr("y", d => d.y - (d.h || 22) / 2)
       .attr("width", 104)
-      .attr("height", 22)
+      .attr("height", d => d.h || 22)
       .attr("rx", 6)
       .attr("fill", palette.surface)
       .attr("stroke", palette.red)
@@ -11469,9 +11477,10 @@
     gapGroups.append("text")
       .attr("class", "caption")
       .attr("x", d => d.x)
-      .attr("y", d => d.y + 4)
+      .attr("y", d => d.y + (d.h ? 2.8 : 4))
       .attr("text-anchor", "middle")
-      .attr("font-size", 7.2)
+      .attr("font-size", d => d.fontSize || 7.2)
+      .style("font-size", d => `${d.fontSize || 7.2}px`)
       .attr("font-weight", 850)
       .attr("fill", palette.red)
       .text(d => d.label);
@@ -13193,10 +13202,10 @@
       const mag = .55 + Math.abs(Math.sin(i + j * .7)) * .45;
       return { i, j, angle, mag };
     }));
-    const color = quantizedRamp([.55, 1], [palette.gold, palette.orange, palette.red]);
+    const color = quantizedRamp([.55, 1], [palette.yellowHover, palette.orangeHover, palette.red]);
     d3.range(7).forEach(i => svg.append("line").attr("x1", x(i)).attr("x2", x(i)).attr("y1", y(0)).attr("y2", y(4)).attr("stroke", palette.gray100));
     d3.range(5).forEach(j => svg.append("line").attr("x1", x(0)).attr("x2", x(6)).attr("y1", y(j)).attr("y2", y(j)).attr("stroke", palette.gray100));
-    const arrows = svg.append("g").selectAll("g").data(data).join("g").attr("transform", d => `translate(${x(d.i)},${y(d.j)}) rotate(${d.angle * 48})`);
+    const arrows = svg.append("g").selectAll("g").data(data).join("g").attr("data-direction-role", "glyph").attr("transform", d => `translate(${x(d.i)},${y(d.j)}) rotate(${d.angle * 48})`);
     arrows.append("line").attr("x1", -11).attr("x2", d => 18 * d.mag).attr("y1", 0).attr("y2", 0).attr("stroke", d => color(d.mag)).attr("stroke-width", 2.6).attr("stroke-linecap", "round");
     arrows.append("path").attr("d", d3.symbol().type(d3.symbolTriangle).size(42)).attr("transform", d => `translate(${18 * d.mag},0) rotate(90)`).attr("fill", d => color(d.mag));
     fadeIn(arrows, .025, .55);
@@ -13248,14 +13257,14 @@
     const sun = projection([subsolar.lon, subsolar.lat]);
     svg.append("circle").attr("cx", sun[0]).attr("cy", sun[1]).attr("r", 10).attr("fill", palette.gold).attr("stroke", palette.yellowHover).attr("stroke-width", 2);
     svg.append("text").attr("class", "mark-label").attr("x", sun[0] + 14).attr("y", sun[1] - 12).text("subsolar point");
-    const longitudeLabel = `${Math.abs(subsolar.lon).toFixed(2)}Â°${subsolar.lon >= 0 ? "E" : "W"}`;
+    const longitudeLabel = `${Math.abs(subsolar.lon).toFixed(2)}Ã‚Â°${subsolar.lon >= 0 ? "E" : "W"}`;
     svg.append("text")
       .attr("class", "caption")
       .attr("x", 48)
       .attr("y", 354)
       .attr("font-size", 10.5)
       .attr("font-weight", 760)
-      .text(`2026-06-21 12:00 UTC Â· subsolar ${longitudeLabel} Â· declination ${subsolar.lat.toFixed(2)}Â°N`);
+      .text(`2026-06-21 12:00 UTC Ã‚Â· subsolar ${longitudeLabel} Ã‚Â· declination ${subsolar.lat.toFixed(2)}Ã‚Â°N`);
   }
 
   function renderStarMap() {
@@ -14079,7 +14088,7 @@
       .attr("class", "mark-label")
       .attr("x", frame.x)
       .attr("y", 44)
-      .text("surface coordinates â€¢ zoom 1Ã—");
+      .text("surface coordinates Ã¢â‚¬Â¢ zoom 1Ãƒâ€”");
     svg.append("path")
       .attr("d", `M${frame.x + 190},40H${frame.x + frame.w - 82}`)
       .attr("fill", "none")
@@ -14092,7 +14101,7 @@
       .attr("x", frame.x + frame.w)
       .attr("y", 44)
       .attr("text-anchor", "end")
-      .text("2Ã— â€¢ next level");
+      .text("2Ãƒâ€” Ã¢â‚¬Â¢ next level");
 
     svg.append("rect")
       .attr("x", frame.x)
@@ -14191,7 +14200,7 @@
 
     const notes = [
       { x: 52, label: "pinned surface IDs", color: palette.red },
-      { x: 216, label: "1 â†’ 4 Bayer layers", color: palette.blue },
+      { x: 216, label: "1 Ã¢â€ â€™ 4 Bayer layers", color: palette.blue },
       { x: 386, label: "constant screen radius", color: palette.green }
     ];
     const noteGroups = svg.append("g").selectAll("g.fractal-note").data(notes).join("g")

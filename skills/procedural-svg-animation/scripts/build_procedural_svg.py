@@ -27,7 +27,7 @@ from pathlib import Path
 from typing import Any, Callable, Iterable, Sequence, TypeVar
 
 from multistrata_core import compute_multistrata
-from solid_style import finalize_svg
+from solid_style import finalize_svg, luminance
 
 
 for _stream in (sys.stdout, sys.stderr):
@@ -1196,6 +1196,12 @@ def render_field(ctx: Context) -> str:
     body: list[str] = []
     rng = ctx.rng("field")
     if variant == 0:
+        # Keep the established line glyphs and vector samples. Directional ink
+        # must survive the pale surface at its readable emphasis state.
+        grounds = (ctx.palette['surface'], ctx.palette['background'])
+        direction_colors = [paint for paint in _PAINT_CONTRACT[ctx.palette_name]['solidSequence']
+                            if all((max(luminance(paint), luminance(ground)) + .05) /
+                                   (min(luminance(paint), luminance(ground)) + .05) >= 3 for ground in grounds)]
         rows, columns = 9, 15
         for row in range(rows):
             for column in range(columns):
@@ -1208,7 +1214,8 @@ def render_field(ctx: Context) -> str:
                 length = 8 + min(20, magnitude * 11)
                 dx, dy = vx / magnitude * length, vy / magnitude * length
                 animate = smil(ctx, f'<animate attributeName="opacity" values=".35;1;.35" dur="{ctx.duration_s}" begin="{fmt(-(row+column)*.05)}s" repeatCount="indefinite"/>')
-                body.append(f'<line x1="{fmt(x-dx/2)}" y1="{fmt(y-dy/2)}" x2="{fmt(x+dx/2)}" y2="{fmt(y+dy/2)}" stroke="{ctx.color(int(magnitude*3))}" stroke-width="2.4" stroke-linecap="round">{animate}</line>')
+                paint = direction_colors[int(magnitude*3) % len(direction_colors)]
+                body.append(f'<line data-direction-role="vector-line" x1="{fmt(x-dx/2)}" y1="{fmt(y-dy/2)}" x2="{fmt(x+dx/2)}" y2="{fmt(y+dy/2)}" stroke="{paint}" stroke-width="2.4" stroke-linecap="round">{animate}</line>')
     elif variant in (1, 3):
         paths: list[str] = []
         representative_points: list[tuple[float, float]] = []

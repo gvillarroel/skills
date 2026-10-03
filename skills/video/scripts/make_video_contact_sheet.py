@@ -14,6 +14,7 @@ import statistics
 import subprocess
 import sys
 import tempfile
+from fractions import Fraction
 from pathlib import Path
 
 from PIL import Image, ImageChops, ImageDraw, ImageFont
@@ -41,7 +42,7 @@ def run_command(cmd: list[str]) -> subprocess.CompletedProcess[str]:
     return subprocess.run(cmd, text=True, capture_output=True, check=False)
 
 
-def video_duration(video: Path) -> float:
+def video_timing(video: Path) -> tuple[float, float]:
     exe = shutil.which("ffprobe")
     if not exe:
         raise RuntimeError("ffprobe is required but was not found on PATH.")
@@ -51,24 +52,41 @@ def video_duration(video: Path) -> float:
             "-v",
             "error",
             "-show_entries",
-            "format=duration",
+            "format=duration:stream=avg_frame_rate,r_frame_rate",
+            "-select_streams",
+            "v:0",
             "-of",
-            "default=noprint_wrappers=1:nokey=1",
+            "json",
             str(video),
         ]
     )
     if result.returncode != 0:
         raise RuntimeError(result.stderr.strip() or "ffprobe failed.")
-    return float(result.stdout.strip())
+    timing = json.loads(result.stdout)
+    intervals = []
+    for stream in timing.get("streams", []):
+        for field in ("avg_frame_rate", "r_frame_rate"):
+            try:
+                value = Fraction(stream.get(field, "0/1"))
+            except (ValueError, ZeroDivisionError):
+                continue
+            if value > 0:
+                intervals.append(float(1 / value))
+    return float(timing["format"]["duration"]), max(intervals, default=0.0)
 
 
-def sample_times(duration: float, samples: int) -> list[float]:
+def video_duration(video: Path) -> float:
+    return video_timing(video)[0]
+
+
+def sample_times(duration: float, samples: int, frame_interval: float = 0.0) -> list[float]:
     if samples <= 0:
         raise ValueError("--samples must be positive")
     if samples == 1:
         return [0.0]
-    # Include a near-final frame without sampling exact EOF; ffmpeg may return no frame at the tail.
-    tail_guard = min(0.25, duration / max(samples * 4, 1))
+    # Leave at least one probed frame period before EOF, including dense sample
+    # counts and low-fps captures. Unreadable/nonconstant tails still fail extraction.
+    tail_guard = max(frame_interval, min(0.25, duration / max(samples * 4, 1)))
     last_time = max(0.0, duration - tail_guard)
     return [last_time * index / (samples - 1) for index in range(samples)]
 
@@ -82,7 +100,9 @@ def extract_frame(video: Path, timestamp: float, output: Path, width: int) -> No
             exe,
             "-y",
             "-ss",
-            f"{timestamp:.3f}",
+            # Rounding a last-frame PTS upward can seek past that frame. Keep
+            # microsecond precision and floor the requested time toward it.
+            f"{math.floor(timestamp * 1_000_000) / 1_000_000:.6f}",
             "-i",
             str(video),
             "-frames:v",
@@ -248,8 +268,8 @@ def main() -> int:
     if not args.video.exists():
         print(f"Missing video: {args.video}", file=sys.stderr)
         return 2
-    duration = video_duration(args.video)
-    times = sample_times(duration, args.samples)
+    duration, frame_interval = video_timing(args.video)
+    times = sample_times(duration, args.samples, frame_interval)
     with tempfile.TemporaryDirectory(prefix="video-contact-sheet-") as temp:
         temp_dir = Path(temp)
         frame_paths = []
@@ -264,7 +284,9 @@ def main() -> int:
         "video": args.video.as_posix(),
         "output": args.output.as_posix(),
         "durationSeconds": duration,
+        "frameIntervalSeconds": frame_interval,
         "sampleTimes": times,
+        "seekTimes": [math.floor(time * 1_000_000) / 1_000_000 for time in times],
         "samples": len(times),
         "sheet": sheet_info,
         "thresholds": {

@@ -1,0 +1,709 @@
+{
+  "phase": "after",
+  "records": [
+    {
+      "gallery": "d3-animated-svg-cs1",
+      "glyphCount": 36,
+      "lowContrastCount": 0,
+      "rows": [
+        {
+          "pattern": "d3-process-control-loop-cs1",
+          "role": "pump-direction",
+          "paint": "rgb(156, 156, 156)",
+          "backing": "rgb(51, 62, 72)",
+          "contrast": 3.976854422623276,
+          "declared": "3.977",
+          "unresolved": null,
+          "tagged": "glyph",
+          "backingHit": true,
+          "local": [
+            -3.6000000000000227,
+            0
+          ],
+          "underlays": [
+            {
+              "tag": "rect",
+              "fill": "rgb(255, 255, 255)",
+              "opacity": "1",
+              "cls": null
+            },
+            {
+              "tag": "circle",
+              "fill": "rgb(51, 62, 72)",
+              "opacity": "1",
+              "cls": null
+            }
+          ]
+        },
+        {
+          "pattern": "d3-vector-field-cs1",
+          "role": "vector-glyph",
+          "head": "rgb(130, 130, 130)",
+          "shaft": "rgb(130, 130, 130)",
+          "headContrast": 3.8429449545037673,
+          "shaftContrast": 3.8429449545037673
+        },
+        {
+          "pattern": "d3-vector-field-cs1",
+          "role": "vector-glyph",
+          "head": "rgb(105, 105, 105)",
+          "shaft": "rgb(105, 105, 105)",
+          "headContrast": 5.489814557409947,
+          "shaftContrast": 5.489814557409947
+        },
+        {
+          "pattern": "d3-vector-field-cs1",
+          "role": "vector-glyph",
+          "head": "rgb(158, 27, 50)",
+          "shaft": "rgb(158, 27, 50)",
+          "headContrast": 7.9046884551695875,
+          "shaftContrast": 7.9046884551695875
+        },
+        {
+          "pattern": "d3-vector-field-cs1",
+          "role": "vector-glyph",
+          "head": "rgb(158, 27, 50)",
+          "shaft": "rgb(158, 27, 50)",
+          "headContrast": 7.9046884551695875,
+          "shaftContrast": 7.9046884551695875
+        },
+        {
+          "pattern": "d3-vector-field-cs1",
+          "role": "vector-glyph",
+          "head": "rgb(105, 105, 105)",
+          "shaft": "rgb(105, 105, 105)",
+          "headContrast": 5.489814557409947,
+          "shaftContrast": 5.489814557409947
+        },
+        {
+          "pattern": "d3-vector-field-cs1",
+          "role": "vector-glyph",
+          "head": "rgb(158, 27, 50)",
+          "shaft": "rgb(158, 27, 50)",
+          "headContrast": 7.9046884551695875,
+          "shaftContrast": 7.9046884551695875
+        },
+        {
+          "pattern": "d3-vector-field-cs1",
+          "role": "vector-glyph",
+          "head": "rgb(158, 27, 50)",
+          "shaft": "rgb(158, 27, 50)",
+          "headContrast": 7.9046884551695875,
+          "shaftContrast": 7.9046884551695875
+        },
+        {
+          "pattern": "d3-vector-field-cs1",
+          "role": "vector-glyph",
+          "head": "rgb(158, 27, 50)",
+          "shaft": "rgb(158, 27, 50)",
+          "headContrast": 7.9046884551695875,
+          "shaftContrast": 7.9046884551695875
+        },
+        {
+          "pattern": "d3-vector-field-cs1",
+          "role": "vector-glyph",
+          "head": "rgb(130, 130, 130)",
+          "shaft": "rgb(130, 130, 130)",
+          "headContrast": 3.8429449545037673,
+          "shaftContrast": 3.8429449545037673
+        },
+        {
+          "pattern": "d3-vector-field-cs1",
+          "role": "vector-glyph",
+          "head": "rgb(105, 105, 105)",
+          "shaft": "rgb(105, 105, 105)",
+          "headContrast": 5.489814557409947,
+          "shaftContrast": 5.489814557409947
+        },
+        {
+          "pattern": "d3-vector-field-cs1",
+          "role": "vector-glyph",
+          "head": "rgb(158, 27, 50)",
+          "shaft": "rgb(158, 27, 50)",
+          "headContrast": 7.9046884551695875,
+          "shaftContrast": 7.9046884551695875
+        },
+        {
+          "pattern": "d3-vector-field-cs1",
+          "role": "vector-glyph",
+          "head": "rgb(105, 105, 105)",
+          "shaft": "rgb(105, 105, 105)",
+          "headContrast": 5.489814557409947,
+          "shaftContrast": 5.489814557409947
+        },
+        {
+          "pattern": "d3-vector-field-cs1",
+          "role": "vector-glyph",
+          "head": "rgb(130, 130, 130)",
+          "shaft": "rgb(130, 130, 130)",
+          "headContrast": 3.8429449545037673,
+          "shaftContrast": 3.8429449545037673
+        },
+        {
+          "pattern": "d3-vector-field-cs1",
+          "role": "vector-glyph",
+          "head": "rgb(158, 27, 50)",
+          "shaft": "rgb(158, 27, 50)",
+          "headContrast": 7.9046884551695875,
+          "shaftContrast": 7.9046884551695875
+        },
+        {
+          "pattern": "d3-vector-field-cs1",
+          "role": "vector-glyph",
+          "head": "rgb(158, 27, 50)",
+          "shaft": "rgb(158, 27, 50)",
+          "headContrast": 7.9046884551695875,
+          "shaftContrast": 7.9046884551695875
+        },
+        {
+          "pattern": "d3-vector-field-cs1",
+          "role": "vector-glyph",
+          "head": "rgb(130, 130, 130)",
+          "shaft": "rgb(130, 130, 130)",
+          "headContrast": 3.8429449545037673,
+          "shaftContrast": 3.8429449545037673
+        },
+        {
+          "pattern": "d3-vector-field-cs1",
+          "role": "vector-glyph",
+          "head": "rgb(105, 105, 105)",
+          "shaft": "rgb(105, 105, 105)",
+          "headContrast": 5.489814557409947,
+          "shaftContrast": 5.489814557409947
+        },
+        {
+          "pattern": "d3-vector-field-cs1",
+          "role": "vector-glyph",
+          "head": "rgb(158, 27, 50)",
+          "shaft": "rgb(158, 27, 50)",
+          "headContrast": 7.9046884551695875,
+          "shaftContrast": 7.9046884551695875
+        },
+        {
+          "pattern": "d3-vector-field-cs1",
+          "role": "vector-glyph",
+          "head": "rgb(158, 27, 50)",
+          "shaft": "rgb(158, 27, 50)",
+          "headContrast": 7.9046884551695875,
+          "shaftContrast": 7.9046884551695875
+        },
+        {
+          "pattern": "d3-vector-field-cs1",
+          "role": "vector-glyph",
+          "head": "rgb(105, 105, 105)",
+          "shaft": "rgb(105, 105, 105)",
+          "headContrast": 5.489814557409947,
+          "shaftContrast": 5.489814557409947
+        },
+        {
+          "pattern": "d3-vector-field-cs1",
+          "role": "vector-glyph",
+          "head": "rgb(158, 27, 50)",
+          "shaft": "rgb(158, 27, 50)",
+          "headContrast": 7.9046884551695875,
+          "shaftContrast": 7.9046884551695875
+        },
+        {
+          "pattern": "d3-vector-field-cs1",
+          "role": "vector-glyph",
+          "head": "rgb(158, 27, 50)",
+          "shaft": "rgb(158, 27, 50)",
+          "headContrast": 7.9046884551695875,
+          "shaftContrast": 7.9046884551695875
+        },
+        {
+          "pattern": "d3-vector-field-cs1",
+          "role": "vector-glyph",
+          "head": "rgb(158, 27, 50)",
+          "shaft": "rgb(158, 27, 50)",
+          "headContrast": 7.9046884551695875,
+          "shaftContrast": 7.9046884551695875
+        },
+        {
+          "pattern": "d3-vector-field-cs1",
+          "role": "vector-glyph",
+          "head": "rgb(130, 130, 130)",
+          "shaft": "rgb(130, 130, 130)",
+          "headContrast": 3.8429449545037673,
+          "shaftContrast": 3.8429449545037673
+        },
+        {
+          "pattern": "d3-vector-field-cs1",
+          "role": "vector-glyph",
+          "head": "rgb(105, 105, 105)",
+          "shaft": "rgb(105, 105, 105)",
+          "headContrast": 5.489814557409947,
+          "shaftContrast": 5.489814557409947
+        },
+        {
+          "pattern": "d3-vector-field-cs1",
+          "role": "vector-glyph",
+          "head": "rgb(158, 27, 50)",
+          "shaft": "rgb(158, 27, 50)",
+          "headContrast": 7.9046884551695875,
+          "shaftContrast": 7.9046884551695875
+        },
+        {
+          "pattern": "d3-vector-field-cs1",
+          "role": "vector-glyph",
+          "head": "rgb(105, 105, 105)",
+          "shaft": "rgb(105, 105, 105)",
+          "headContrast": 5.489814557409947,
+          "shaftContrast": 5.489814557409947
+        },
+        {
+          "pattern": "d3-vector-field-cs1",
+          "role": "vector-glyph",
+          "head": "rgb(130, 130, 130)",
+          "shaft": "rgb(130, 130, 130)",
+          "headContrast": 3.8429449545037673,
+          "shaftContrast": 3.8429449545037673
+        },
+        {
+          "pattern": "d3-vector-field-cs1",
+          "role": "vector-glyph",
+          "head": "rgb(158, 27, 50)",
+          "shaft": "rgb(158, 27, 50)",
+          "headContrast": 7.9046884551695875,
+          "shaftContrast": 7.9046884551695875
+        },
+        {
+          "pattern": "d3-vector-field-cs1",
+          "role": "vector-glyph",
+          "head": "rgb(158, 27, 50)",
+          "shaft": "rgb(158, 27, 50)",
+          "headContrast": 7.9046884551695875,
+          "shaftContrast": 7.9046884551695875
+        },
+        {
+          "pattern": "d3-vector-field-cs1",
+          "role": "vector-glyph",
+          "head": "rgb(130, 130, 130)",
+          "shaft": "rgb(130, 130, 130)",
+          "headContrast": 3.8429449545037673,
+          "shaftContrast": 3.8429449545037673
+        },
+        {
+          "pattern": "d3-vector-field-cs1",
+          "role": "vector-glyph",
+          "head": "rgb(105, 105, 105)",
+          "shaft": "rgb(105, 105, 105)",
+          "headContrast": 5.489814557409947,
+          "shaftContrast": 5.489814557409947
+        },
+        {
+          "pattern": "d3-vector-field-cs1",
+          "role": "vector-glyph",
+          "head": "rgb(158, 27, 50)",
+          "shaft": "rgb(158, 27, 50)",
+          "headContrast": 7.9046884551695875,
+          "shaftContrast": 7.9046884551695875
+        },
+        {
+          "pattern": "d3-vector-field-cs1",
+          "role": "vector-glyph",
+          "head": "rgb(158, 27, 50)",
+          "shaft": "rgb(158, 27, 50)",
+          "headContrast": 7.9046884551695875,
+          "shaftContrast": 7.9046884551695875
+        },
+        {
+          "pattern": "d3-vector-field-cs1",
+          "role": "vector-glyph",
+          "head": "rgb(105, 105, 105)",
+          "shaft": "rgb(105, 105, 105)",
+          "headContrast": 5.489814557409947,
+          "shaftContrast": 5.489814557409947
+        }
+      ]
+    },
+    {
+      "gallery": "d3-animated-svg-colorset2",
+      "glyphCount": 36,
+      "lowContrastCount": 0,
+      "rows": [
+        {
+          "pattern": "d3-process-control-loop-cs2",
+          "role": "pump-direction",
+          "paint": "rgb(0, 172, 230)",
+          "backing": "rgb(51, 62, 72)",
+          "contrast": 4.1820201067584275,
+          "declared": "4.182",
+          "unresolved": null,
+          "tagged": "glyph",
+          "backingHit": true,
+          "local": [
+            -3.6000000000000227,
+            0
+          ],
+          "underlays": [
+            {
+              "tag": "rect",
+              "fill": "rgb(255, 255, 255)",
+              "opacity": "1",
+              "cls": null
+            },
+            {
+              "tag": "circle",
+              "fill": "rgb(51, 62, 72)",
+              "opacity": "1",
+              "cls": null
+            }
+          ]
+        },
+        {
+          "pattern": "d3-vector-field-cs2",
+          "role": "vector-glyph",
+          "head": "rgb(231, 114, 4)",
+          "shaft": "rgb(231, 114, 4)",
+          "headContrast": 3.085302662118927,
+          "shaftContrast": 3.085302662118927
+        },
+        {
+          "pattern": "d3-vector-field-cs2",
+          "role": "vector-glyph",
+          "head": "rgb(231, 114, 4)",
+          "shaft": "rgb(231, 114, 4)",
+          "headContrast": 3.085302662118927,
+          "shaftContrast": 3.085302662118927
+        },
+        {
+          "pattern": "d3-vector-field-cs2",
+          "role": "vector-glyph",
+          "head": "rgb(158, 27, 50)",
+          "shaft": "rgb(158, 27, 50)",
+          "headContrast": 7.9046884551695875,
+          "shaftContrast": 7.9046884551695875
+        },
+        {
+          "pattern": "d3-vector-field-cs2",
+          "role": "vector-glyph",
+          "head": "rgb(158, 27, 50)",
+          "shaft": "rgb(158, 27, 50)",
+          "headContrast": 7.9046884551695875,
+          "shaftContrast": 7.9046884551695875
+        },
+        {
+          "pattern": "d3-vector-field-cs2",
+          "role": "vector-glyph",
+          "head": "rgb(231, 114, 4)",
+          "shaft": "rgb(231, 114, 4)",
+          "headContrast": 3.085302662118927,
+          "shaftContrast": 3.085302662118927
+        },
+        {
+          "pattern": "d3-vector-field-cs2",
+          "role": "vector-glyph",
+          "head": "rgb(158, 27, 50)",
+          "shaft": "rgb(158, 27, 50)",
+          "headContrast": 7.9046884551695875,
+          "shaftContrast": 7.9046884551695875
+        },
+        {
+          "pattern": "d3-vector-field-cs2",
+          "role": "vector-glyph",
+          "head": "rgb(158, 27, 50)",
+          "shaft": "rgb(158, 27, 50)",
+          "headContrast": 7.9046884551695875,
+          "shaftContrast": 7.9046884551695875
+        },
+        {
+          "pattern": "d3-vector-field-cs2",
+          "role": "vector-glyph",
+          "head": "rgb(158, 27, 50)",
+          "shaft": "rgb(158, 27, 50)",
+          "headContrast": 7.9046884551695875,
+          "shaftContrast": 7.9046884551695875
+        },
+        {
+          "pattern": "d3-vector-field-cs2",
+          "role": "vector-glyph",
+          "head": "rgb(231, 114, 4)",
+          "shaft": "rgb(231, 114, 4)",
+          "headContrast": 3.085302662118927,
+          "shaftContrast": 3.085302662118927
+        },
+        {
+          "pattern": "d3-vector-field-cs2",
+          "role": "vector-glyph",
+          "head": "rgb(231, 114, 4)",
+          "shaft": "rgb(231, 114, 4)",
+          "headContrast": 3.085302662118927,
+          "shaftContrast": 3.085302662118927
+        },
+        {
+          "pattern": "d3-vector-field-cs2",
+          "role": "vector-glyph",
+          "head": "rgb(158, 27, 50)",
+          "shaft": "rgb(158, 27, 50)",
+          "headContrast": 7.9046884551695875,
+          "shaftContrast": 7.9046884551695875
+        },
+        {
+          "pattern": "d3-vector-field-cs2",
+          "role": "vector-glyph",
+          "head": "rgb(231, 114, 4)",
+          "shaft": "rgb(231, 114, 4)",
+          "headContrast": 3.085302662118927,
+          "shaftContrast": 3.085302662118927
+        },
+        {
+          "pattern": "d3-vector-field-cs2",
+          "role": "vector-glyph",
+          "head": "rgb(231, 114, 4)",
+          "shaft": "rgb(231, 114, 4)",
+          "headContrast": 3.085302662118927,
+          "shaftContrast": 3.085302662118927
+        },
+        {
+          "pattern": "d3-vector-field-cs2",
+          "role": "vector-glyph",
+          "head": "rgb(158, 27, 50)",
+          "shaft": "rgb(158, 27, 50)",
+          "headContrast": 7.9046884551695875,
+          "shaftContrast": 7.9046884551695875
+        },
+        {
+          "pattern": "d3-vector-field-cs2",
+          "role": "vector-glyph",
+          "head": "rgb(158, 27, 50)",
+          "shaft": "rgb(158, 27, 50)",
+          "headContrast": 7.9046884551695875,
+          "shaftContrast": 7.9046884551695875
+        },
+        {
+          "pattern": "d3-vector-field-cs2",
+          "role": "vector-glyph",
+          "head": "rgb(231, 114, 4)",
+          "shaft": "rgb(231, 114, 4)",
+          "headContrast": 3.085302662118927,
+          "shaftContrast": 3.085302662118927
+        },
+        {
+          "pattern": "d3-vector-field-cs2",
+          "role": "vector-glyph",
+          "head": "rgb(231, 114, 4)",
+          "shaft": "rgb(231, 114, 4)",
+          "headContrast": 3.085302662118927,
+          "shaftContrast": 3.085302662118927
+        },
+        {
+          "pattern": "d3-vector-field-cs2",
+          "role": "vector-glyph",
+          "head": "rgb(158, 27, 50)",
+          "shaft": "rgb(158, 27, 50)",
+          "headContrast": 7.9046884551695875,
+          "shaftContrast": 7.9046884551695875
+        },
+        {
+          "pattern": "d3-vector-field-cs2",
+          "role": "vector-glyph",
+          "head": "rgb(158, 27, 50)",
+          "shaft": "rgb(158, 27, 50)",
+          "headContrast": 7.9046884551695875,
+          "shaftContrast": 7.9046884551695875
+        },
+        {
+          "pattern": "d3-vector-field-cs2",
+          "role": "vector-glyph",
+          "head": "rgb(231, 114, 4)",
+          "shaft": "rgb(231, 114, 4)",
+          "headContrast": 3.085302662118927,
+          "shaftContrast": 3.085302662118927
+        },
+        {
+          "pattern": "d3-vector-field-cs2",
+          "role": "vector-glyph",
+          "head": "rgb(158, 27, 50)",
+          "shaft": "rgb(158, 27, 50)",
+          "headContrast": 7.9046884551695875,
+          "shaftContrast": 7.9046884551695875
+        },
+        {
+          "pattern": "d3-vector-field-cs2",
+          "role": "vector-glyph",
+          "head": "rgb(158, 27, 50)",
+          "shaft": "rgb(158, 27, 50)",
+          "headContrast": 7.9046884551695875,
+          "shaftContrast": 7.9046884551695875
+        },
+        {
+          "pattern": "d3-vector-field-cs2",
+          "role": "vector-glyph",
+          "head": "rgb(158, 27, 50)",
+          "shaft": "rgb(158, 27, 50)",
+          "headContrast": 7.9046884551695875,
+          "shaftContrast": 7.9046884551695875
+        },
+        {
+          "pattern": "d3-vector-field-cs2",
+          "role": "vector-glyph",
+          "head": "rgb(231, 114, 4)",
+          "shaft": "rgb(231, 114, 4)",
+          "headContrast": 3.085302662118927,
+          "shaftContrast": 3.085302662118927
+        },
+        {
+          "pattern": "d3-vector-field-cs2",
+          "role": "vector-glyph",
+          "head": "rgb(231, 114, 4)",
+          "shaft": "rgb(231, 114, 4)",
+          "headContrast": 3.085302662118927,
+          "shaftContrast": 3.085302662118927
+        },
+        {
+          "pattern": "d3-vector-field-cs2",
+          "role": "vector-glyph",
+          "head": "rgb(158, 27, 50)",
+          "shaft": "rgb(158, 27, 50)",
+          "headContrast": 7.9046884551695875,
+          "shaftContrast": 7.9046884551695875
+        },
+        {
+          "pattern": "d3-vector-field-cs2",
+          "role": "vector-glyph",
+          "head": "rgb(231, 114, 4)",
+          "shaft": "rgb(231, 114, 4)",
+          "headContrast": 3.085302662118927,
+          "shaftContrast": 3.085302662118927
+        },
+        {
+          "pattern": "d3-vector-field-cs2",
+          "role": "vector-glyph",
+          "head": "rgb(231, 114, 4)",
+          "shaft": "rgb(231, 114, 4)",
+          "headContrast": 3.085302662118927,
+          "shaftContrast": 3.085302662118927
+        },
+        {
+          "pattern": "d3-vector-field-cs2",
+          "role": "vector-glyph",
+          "head": "rgb(158, 27, 50)",
+          "shaft": "rgb(158, 27, 50)",
+          "headContrast": 7.9046884551695875,
+          "shaftContrast": 7.9046884551695875
+        },
+        {
+          "pattern": "d3-vector-field-cs2",
+          "role": "vector-glyph",
+          "head": "rgb(158, 27, 50)",
+          "shaft": "rgb(158, 27, 50)",
+          "headContrast": 7.9046884551695875,
+          "shaftContrast": 7.9046884551695875
+        },
+        {
+          "pattern": "d3-vector-field-cs2",
+          "role": "vector-glyph",
+          "head": "rgb(231, 114, 4)",
+          "shaft": "rgb(231, 114, 4)",
+          "headContrast": 3.085302662118927,
+          "shaftContrast": 3.085302662118927
+        },
+        {
+          "pattern": "d3-vector-field-cs2",
+          "role": "vector-glyph",
+          "head": "rgb(231, 114, 4)",
+          "shaft": "rgb(231, 114, 4)",
+          "headContrast": 3.085302662118927,
+          "shaftContrast": 3.085302662118927
+        },
+        {
+          "pattern": "d3-vector-field-cs2",
+          "role": "vector-glyph",
+          "head": "rgb(158, 27, 50)",
+          "shaft": "rgb(158, 27, 50)",
+          "headContrast": 7.9046884551695875,
+          "shaftContrast": 7.9046884551695875
+        },
+        {
+          "pattern": "d3-vector-field-cs2",
+          "role": "vector-glyph",
+          "head": "rgb(158, 27, 50)",
+          "shaft": "rgb(158, 27, 50)",
+          "headContrast": 7.9046884551695875,
+          "shaftContrast": 7.9046884551695875
+        },
+        {
+          "pattern": "d3-vector-field-cs2",
+          "role": "vector-glyph",
+          "head": "rgb(231, 114, 4)",
+          "shaft": "rgb(231, 114, 4)",
+          "headContrast": 3.085302662118927,
+          "shaftContrast": 3.085302662118927
+        }
+      ]
+    },
+    {
+      "gallery": "pid-colorset1",
+      "glyphCount": 1,
+      "lowContrastCount": 0,
+      "rows": [
+        {
+          "pattern": "d3-process-control-loop",
+          "role": "pump-direction",
+          "paint": "rgb(156, 156, 156)",
+          "backing": "rgb(51, 62, 72)",
+          "contrast": 3.976854422623276,
+          "declared": "3.977",
+          "unresolved": null,
+          "tagged": "glyph",
+          "backingHit": true,
+          "local": [
+            -4.599999999999966,
+            0
+          ],
+          "underlays": [
+            {
+              "tag": "rect",
+              "fill": "rgb(255, 255, 255)",
+              "opacity": "1",
+              "cls": null
+            },
+            {
+              "tag": "circle",
+              "fill": "rgb(51, 62, 72)",
+              "opacity": "1",
+              "cls": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "gallery": "pid-colorset2",
+      "glyphCount": 1,
+      "lowContrastCount": 0,
+      "rows": [
+        {
+          "pattern": "d3-process-control-loop",
+          "role": "pump-direction",
+          "paint": "rgb(0, 172, 230)",
+          "backing": "rgb(51, 62, 72)",
+          "contrast": 4.1820201067584275,
+          "declared": "4.182",
+          "unresolved": null,
+          "tagged": "glyph",
+          "backingHit": true,
+          "local": [
+            -4.599999999999966,
+            0
+          ],
+          "underlays": [
+            {
+              "tag": "rect",
+              "fill": "rgb(255, 255, 255)",
+              "opacity": "1",
+              "cls": null
+            },
+            {
+              "tag": "circle",
+              "fill": "rgb(51, 62, 72)",
+              "opacity": "1",
+              "cls": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

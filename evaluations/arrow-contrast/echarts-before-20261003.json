@@ -1,0 +1,712 @@
+{
+  "date": "2026-10-03",
+  "phase": "before",
+  "passed": false,
+  "states": [
+    {
+      "id": "colorset1-ffffff",
+      "colorset": "colorset1",
+      "background": "#ffffff",
+      "artifact": "projects/arrow-contrast/artifacts/echarts-before/colorset1-ffffff.svg",
+      "preparedLinks": [
+        {
+          "source": "a",
+          "target": "b",
+          "lineStyle": {
+            "color": "#cfcfcf",
+            "opacity": 0.25
+          }
+        }
+      ],
+      "preparedLineStyle": {
+        "color": "#cfcfcf",
+        "opacity": 0.25
+      },
+      "shaftCount": 1,
+      "headCount": 1,
+      "records": [
+        {
+          "part": "shaft",
+          "paint": "rgb(207, 207, 207)",
+          "effectiveOpacity": 0.25,
+          "minimumContrast": 1.109620634183961,
+          "points": [
+            {
+              "ratio": 1.109620634183961,
+              "backing": [
+                255,
+                255,
+                255
+              ],
+              "covered": []
+            },
+            {
+              "ratio": 1.109620634183961,
+              "backing": [
+                255,
+                255,
+                255
+              ],
+              "covered": []
+            },
+            {
+              "ratio": 1.109620634183961,
+              "backing": [
+                255,
+                255,
+                255
+              ],
+              "covered": []
+            },
+            {
+              "ratio": 1.109620634183961,
+              "backing": [
+                255,
+                255,
+                255
+              ],
+              "covered": []
+            },
+            {
+              "ratio": 1.109620634183961,
+              "backing": [
+                255,
+                255,
+                255
+              ],
+              "covered": []
+            }
+          ]
+        },
+        {
+          "part": "head",
+          "paint": "rgb(207, 207, 207)",
+          "effectiveOpacity": 0.25,
+          "minimumContrast": 1.109620634183961,
+          "points": [
+            {
+              "ratio": 1.109620634183961,
+              "backing": [
+                255,
+                255,
+                255
+              ],
+              "covered": []
+            },
+            {
+              "ratio": 1.109620634183961,
+              "backing": [
+                255,
+                255,
+                255
+              ],
+              "covered": []
+            },
+            {
+              "ratio": 1.109620634183961,
+              "backing": [
+                255,
+                255,
+                255
+              ],
+              "covered": []
+            },
+            {
+              "ratio": 1.109620634183961,
+              "backing": [
+                255,
+                255,
+                255
+              ],
+              "covered": []
+            },
+            {
+              "ratio": 1.109620634183961,
+              "backing": [
+                255,
+                255,
+                255
+              ],
+              "covered": []
+            },
+            {
+              "ratio": 1.109620634183961,
+              "backing": [
+                255,
+                255,
+                255
+              ],
+              "covered": []
+            },
+            {
+              "ratio": 1.109620634183961,
+              "backing": [
+                255,
+                255,
+                255
+              ],
+              "covered": []
+            },
+            {
+              "ratio": 1.109620634183961,
+              "backing": [
+                255,
+                255,
+                255
+              ],
+              "covered": []
+            },
+            {
+              "ratio": 1.109620634183961,
+              "backing": [
+                255,
+                255,
+                255
+              ],
+              "covered": []
+            },
+            {
+              "ratio": 1.109620634183961,
+              "backing": [
+                255,
+                255,
+                255
+              ],
+              "covered": []
+            }
+          ]
+        }
+      ],
+      "passed": false
+    },
+    {
+      "id": "colorset1-f7f7f7",
+      "colorset": "colorset1",
+      "background": "#f7f7f7",
+      "artifact": "projects/arrow-contrast/artifacts/echarts-before/colorset1-f7f7f7.svg",
+      "preparedLinks": [
+        {
+          "source": "a",
+          "target": "b",
+          "lineStyle": {
+            "color": "#cfcfcf",
+            "opacity": 0.25
+          }
+        }
+      ],
+      "preparedLineStyle": {
+        "color": "#cfcfcf",
+        "opacity": 0.25
+      },
+      "shaftCount": 1,
+      "headCount": 1,
+      "records": [
+        {
+          "part": "shaft",
+          "paint": "rgb(207, 207, 207)",
+          "effectiveOpacity": 0.25,
+          "minimumContrast": 1.0928086868257154,
+          "points": [
+            {
+              "ratio": 1.0928086868257154,
+              "backing": [
+                247,
+                247,
+                247
+              ],
+              "covered": []
+            },
+            {
+              "ratio": 1.0928086868257154,
+              "backing": [
+                247,
+                247,
+                247
+              ],
+              "covered": []
+            },
+            {
+              "ratio": 1.0928086868257154,
+              "backing": [
+                247,
+                247,
+                247
+              ],
+              "covered": []
+            },
+            {
+              "ratio": 1.0928086868257154,
+              "backing": [
+                247,
+                247,
+                247
+              ],
+              "covered": []
+            },
+            {
+              "ratio": 1.0928086868257154,
+              "backing": [
+                247,
+                247,
+                247
+              ],
+              "covered": []
+            }
+          ]
+        },
+        {
+          "part": "head",
+          "paint": "rgb(207, 207, 207)",
+          "effectiveOpacity": 0.25,
+          "minimumContrast": 1.0928086868257154,
+          "points": [
+            {
+              "ratio": 1.0928086868257154,
+              "backing": [
+                247,
+                247,
+                247
+              ],
+              "covered": []
+            },
+            {
+              "ratio": 1.0928086868257154,
+              "backing": [
+                247,
+                247,
+                247
+              ],
+              "covered": []
+            },
+            {
+              "ratio": 1.0928086868257154,
+              "backing": [
+                247,
+                247,
+                247
+              ],
+              "covered": []
+            },
+            {
+              "ratio": 1.0928086868257154,
+              "backing": [
+                247,
+                247,
+                247
+              ],
+              "covered": []
+            },
+            {
+              "ratio": 1.0928086868257154,
+              "backing": [
+                247,
+                247,
+                247
+              ],
+              "covered": []
+            },
+            {
+              "ratio": 1.0928086868257154,
+              "backing": [
+                247,
+                247,
+                247
+              ],
+              "covered": []
+            },
+            {
+              "ratio": 1.0928086868257154,
+              "backing": [
+                247,
+                247,
+                247
+              ],
+              "covered": []
+            },
+            {
+              "ratio": 1.0928086868257154,
+              "backing": [
+                247,
+                247,
+                247
+              ],
+              "covered": []
+            },
+            {
+              "ratio": 1.0928086868257154,
+              "backing": [
+                247,
+                247,
+                247
+              ],
+              "covered": []
+            },
+            {
+              "ratio": 1.0928086868257154,
+              "backing": [
+                247,
+                247,
+                247
+              ],
+              "covered": []
+            }
+          ]
+        }
+      ],
+      "passed": false
+    },
+    {
+      "id": "colorset2-ffffff",
+      "colorset": "colorset2",
+      "background": "#ffffff",
+      "artifact": "projects/arrow-contrast/artifacts/echarts-before/colorset2-ffffff.svg",
+      "preparedLinks": [
+        {
+          "source": "a",
+          "target": "b",
+          "lineStyle": {
+            "color": "#cfcfcf",
+            "opacity": 0.25
+          }
+        }
+      ],
+      "preparedLineStyle": {
+        "color": "#cfcfcf",
+        "opacity": 0.25
+      },
+      "shaftCount": 1,
+      "headCount": 1,
+      "records": [
+        {
+          "part": "shaft",
+          "paint": "rgb(207, 207, 207)",
+          "effectiveOpacity": 0.25,
+          "minimumContrast": 1.109620634183961,
+          "points": [
+            {
+              "ratio": 1.109620634183961,
+              "backing": [
+                255,
+                255,
+                255
+              ],
+              "covered": []
+            },
+            {
+              "ratio": 1.109620634183961,
+              "backing": [
+                255,
+                255,
+                255
+              ],
+              "covered": []
+            },
+            {
+              "ratio": 1.109620634183961,
+              "backing": [
+                255,
+                255,
+                255
+              ],
+              "covered": []
+            },
+            {
+              "ratio": 1.109620634183961,
+              "backing": [
+                255,
+                255,
+                255
+              ],
+              "covered": []
+            },
+            {
+              "ratio": 1.109620634183961,
+              "backing": [
+                255,
+                255,
+                255
+              ],
+              "covered": []
+            }
+          ]
+        },
+        {
+          "part": "head",
+          "paint": "rgb(207, 207, 207)",
+          "effectiveOpacity": 0.25,
+          "minimumContrast": 1.109620634183961,
+          "points": [
+            {
+              "ratio": 1.109620634183961,
+              "backing": [
+                255,
+                255,
+                255
+              ],
+              "covered": []
+            },
+            {
+              "ratio": 1.109620634183961,
+              "backing": [
+                255,
+                255,
+                255
+              ],
+              "covered": []
+            },
+            {
+              "ratio": 1.109620634183961,
+              "backing": [
+                255,
+                255,
+                255
+              ],
+              "covered": []
+            },
+            {
+              "ratio": 1.109620634183961,
+              "backing": [
+                255,
+                255,
+                255
+              ],
+              "covered": []
+            },
+            {
+              "ratio": 1.109620634183961,
+              "backing": [
+                255,
+                255,
+                255
+              ],
+              "covered": []
+            },
+            {
+              "ratio": 1.109620634183961,
+              "backing": [
+                255,
+                255,
+                255
+              ],
+              "covered": []
+            },
+            {
+              "ratio": 1.109620634183961,
+              "backing": [
+                255,
+                255,
+                255
+              ],
+              "covered": []
+            },
+            {
+              "ratio": 1.109620634183961,
+              "backing": [
+                255,
+                255,
+                255
+              ],
+              "covered": []
+            },
+            {
+              "ratio": 1.109620634183961,
+              "backing": [
+                255,
+                255,
+                255
+              ],
+              "covered": []
+            },
+            {
+              "ratio": 1.109620634183961,
+              "backing": [
+                255,
+                255,
+                255
+              ],
+              "covered": []
+            }
+          ]
+        }
+      ],
+      "passed": false
+    },
+    {
+      "id": "colorset2-f7f7f7",
+      "colorset": "colorset2",
+      "background": "#f7f7f7",
+      "artifact": "projects/arrow-contrast/artifacts/echarts-before/colorset2-f7f7f7.svg",
+      "preparedLinks": [
+        {
+          "source": "a",
+          "target": "b",
+          "lineStyle": {
+            "color": "#cfcfcf",
+            "opacity": 0.25
+          }
+        }
+      ],
+      "preparedLineStyle": {
+        "color": "#cfcfcf",
+        "opacity": 0.25
+      },
+      "shaftCount": 1,
+      "headCount": 1,
+      "records": [
+        {
+          "part": "shaft",
+          "paint": "rgb(207, 207, 207)",
+          "effectiveOpacity": 0.25,
+          "minimumContrast": 1.0928086868257154,
+          "points": [
+            {
+              "ratio": 1.0928086868257154,
+              "backing": [
+                247,
+                247,
+                247
+              ],
+              "covered": []
+            },
+            {
+              "ratio": 1.0928086868257154,
+              "backing": [
+                247,
+                247,
+                247
+              ],
+              "covered": []
+            },
+            {
+              "ratio": 1.0928086868257154,
+              "backing": [
+                247,
+                247,
+                247
+              ],
+              "covered": []
+            },
+            {
+              "ratio": 1.0928086868257154,
+              "backing": [
+                247,
+                247,
+                247
+              ],
+              "covered": []
+            },
+            {
+              "ratio": 1.0928086868257154,
+              "backing": [
+                247,
+                247,
+                247
+              ],
+              "covered": []
+            }
+          ]
+        },
+        {
+          "part": "head",
+          "paint": "rgb(207, 207, 207)",
+          "effectiveOpacity": 0.25,
+          "minimumContrast": 1.0928086868257154,
+          "points": [
+            {
+              "ratio": 1.0928086868257154,
+              "backing": [
+                247,
+                247,
+                247
+              ],
+              "covered": []
+            },
+            {
+              "ratio": 1.0928086868257154,
+              "backing": [
+                247,
+                247,
+                247
+              ],
+              "covered": []
+            },
+            {
+              "ratio": 1.0928086868257154,
+              "backing": [
+                247,
+                247,
+                247
+              ],
+              "covered": []
+            },
+            {
+              "ratio": 1.0928086868257154,
+              "backing": [
+                247,
+                247,
+                247
+              ],
+              "covered": []
+            },
+            {
+              "ratio": 1.0928086868257154,
+              "backing": [
+                247,
+                247,
+                247
+              ],
+              "covered": []
+            },
+            {
+              "ratio": 1.0928086868257154,
+              "backing": [
+                247,
+                247,
+                247
+              ],
+              "covered": []
+            },
+            {
+              "ratio": 1.0928086868257154,
+              "backing": [
+                247,
+                247,
+                247
+              ],
+              "covered": []
+            },
+            {
+              "ratio": 1.0928086868257154,
+              "backing": [
+                247,
+                247,
+                247
+              ],
+              "covered": []
+            },
+            {
+              "ratio": 1.0928086868257154,
+              "backing": [
+                247,
+                247,
+                247
+              ],
+              "covered": []
+            },
+            {
+              "ratio": 1.0928086868257154,
+              "backing": [
+                247,
+                247,
+                247
+              ],
+              "covered": []
+            }
+          ]
+        }
+      ],
+      "passed": false
+    }
+  ],
+  "scope": "Independent native ECharts SSR graph: explicit pale low-alpha edge input, actual filled arrowhead geometry and shaft paint on white/quiet canvases in both palettes. This is one directed graph family, not arbitrary custom renderers."
+}

@@ -14,7 +14,7 @@
 <script setup>
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, shallowRef, watch } from 'vue'
 import { echarts } from '../lib/echarts-setup.js'
-import { colorsetTheme, enforceColorsetRenderer, prepareColorsetOption } from '../../../templates/echarts-colorsets.mjs'
+import { colorsetTheme, enforceColorsetRenderer, insetCartesianArrowRoutes, prepareColorsetOption } from '../../../templates/echarts-colorsets.mjs'
 
 const props = defineProps({
   option: {
@@ -53,6 +53,10 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  arrowTerminalClearance: {
+    type: Number,
+    default: 0,
+  },
 })
 
 const chartElement = ref(null)
@@ -66,7 +70,10 @@ function applyOption() {
   if (!chart.value)
     return
 
-  chart.value.setOption(prepareColorsetOption(props.option, 'colorset2'), props.updateOptions)
+  const option = prepareColorsetOption(props.option, 'colorset2')
+  chart.value.setOption(option, props.updateOptions)
+  if (props.arrowTerminalClearance > 0)
+    chart.value.setOption(insetCartesianArrowRoutes(option, chart.value, props.arrowTerminalClearance), props.updateOptions)
 }
 
 function resizeChart() {
@@ -75,6 +82,8 @@ function resizeChart() {
 
   window.requestAnimationFrame(() => {
     chart.value?.resize()
+    if (props.arrowTerminalClearance > 0)
+      applyOption()
   })
 }
 
@@ -164,6 +173,11 @@ watch(
     await initChart()
   },
 )
+
+watch(() => props.arrowTerminalClearance, () => {
+  if (chart.value)
+    applyOption()
+})
 
 defineExpose({ replaySvg })
 </script>

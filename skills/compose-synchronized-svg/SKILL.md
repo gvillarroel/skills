@@ -10,6 +10,8 @@ Read [solid-surfaces.md](references/solid-surfaces.md) for solid-first category 
 
 Build one explanatory SVG whose recurring values come from one canonical state. Give each module a distinct viewer question. Semantic propagation is required; animation is optional.
 
+Read [arrow-visibility.md](references/arrow-visibility.md) when producing, importing or reviewing directional arrows. Audit actual shafts/heads at delivery scale.
+
 ## Read for the current task
 
 - **Create or revise a brief:** read [asset-selection-and-composition.md](references/asset-selection-and-composition.md) and [semantic-state-contract.md](references/semantic-state-contract.md). Then select exactly one template: [composition-brief.json](assets/templates/composition-brief.json) for a compact 6–16-module canvas, or [navigable-world-brief.json](assets/templates/navigable-world-brief.json) for 12–48 modules in 4–12 districts.

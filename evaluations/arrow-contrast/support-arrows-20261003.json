@@ -1,0 +1,528 @@
+{
+  "date": "2026-10-03",
+  "passed": true,
+  "commands": [
+    {
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "skills/harbor-author-evaluation-datasets/scripts/consolidate_harbor_reports.py",
+        "C:\\Users\\villa\\dev\\skills\\projects\\arrow-contrast\\artifacts\\support\\harbor-input.json",
+        "--output-dir",
+        "C:\\Users\\villa\\dev\\skills\\projects\\arrow-contrast\\artifacts\\support\\harbor",
+        "--overwrite"
+      ],
+      "exitCode": 0,
+      "log": "projects/arrow-contrast/artifacts/support/consolidate_harbor_reports.log"
+    },
+    {
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "skills/animated-svg-to-gif/scripts/convert_animated_svg_to_gif.py",
+        "C:\\Users\\villa\\dev\\skills\\projects\\arrow-contrast\\artifacts\\support\\markers.svg",
+        "-o",
+        "C:\\Users\\villa\\dev\\skills\\projects\\arrow-contrast\\artifacts\\support\\markers.gif",
+        "--fps",
+        "6",
+        "--width",
+        "320",
+        "--duration",
+        "1",
+        "--scale",
+        "1",
+        "--background",
+        "#ffffff",
+        "--include-static"
+      ],
+      "exitCode": 0,
+      "log": "projects/arrow-contrast/artifacts/support/convert_animated_svg_to_gif.log"
+    },
+    {
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "skills/one-bit-dither-svg/scripts/stylize_svg.py",
+        "C:\\Users\\villa\\dev\\skills\\projects\\arrow-contrast\\artifacts\\support\\markers.svg",
+        "-o",
+        "C:\\Users\\villa\\dev\\skills\\projects\\arrow-contrast\\artifacts\\support\\markers-one-bit.svg",
+        "--mode",
+        "original",
+        "--quality-profile",
+        "detailed",
+        "--render-width",
+        "320",
+        "--cell-size",
+        "1",
+        "--preview-png",
+        "C:\\Users\\villa\\dev\\skills\\projects\\arrow-contrast\\artifacts\\support\\markers-one-bit.png",
+        "--json-report",
+        "C:\\Users\\villa\\dev\\skills\\projects\\arrow-contrast\\artifacts\\support\\markers-one-bit.json"
+      ],
+      "exitCode": 0,
+      "log": "projects/arrow-contrast/artifacts/support/stylize_svg.log"
+    },
+    {
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "skills/one-bit-dither-svg/scripts/validate_stylized_svg.py",
+        "C:\\Users\\villa\\dev\\skills\\projects\\arrow-contrast\\artifacts\\support\\markers-one-bit.svg",
+        "--expect-mode",
+        "original"
+      ],
+      "exitCode": 0,
+      "log": "projects/arrow-contrast/artifacts/support/validate_stylized_svg.log"
+    },
+    {
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "skills/pixel-art-image-video/scripts/pixel_art.py",
+        "C:\\Users\\villa\\dev\\skills\\projects\\arrow-contrast\\artifacts\\support\\markers.svg",
+        "-o",
+        "C:\\Users\\villa\\dev\\skills\\projects\\arrow-contrast\\artifacts\\support\\markers-pixel.png",
+        "--quality-profile",
+        "detailed",
+        "--width",
+        "320",
+        "--height",
+        "160",
+        "--pixel-size",
+        "1",
+        "--palette",
+        "colorset1",
+        "--json-report",
+        "C:\\Users\\villa\\dev\\skills\\projects\\arrow-contrast\\artifacts\\support\\markers-pixel.json"
+      ],
+      "exitCode": 0,
+      "log": "projects/arrow-contrast/artifacts/support/pixel_art.log"
+    },
+    {
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "skills/pixel-art-image-video/scripts/validate_pixel_art.py",
+        "C:\\Users\\villa\\dev\\skills\\projects\\arrow-contrast\\artifacts\\support\\markers-pixel.png",
+        "--manifest",
+        "C:\\Users\\villa\\dev\\skills\\projects\\arrow-contrast\\artifacts\\support\\markers-pixel.json",
+        "--expect-pixel-size",
+        "1",
+        "--expect-palette-mode",
+        "colorset1",
+        "--expect-colorset",
+        "colorset1"
+      ],
+      "exitCode": 0,
+      "log": "projects/arrow-contrast/artifacts/support/validate_pixel_art.log"
+    }
+  ],
+  "harbor": [
+    {
+      "artifact": "projects/arrow-contrast/artifacts/support/harbor/efficiency-frontier.svg",
+      "glyphs": [
+        {
+          "text": "cost per completed trial (USD) \u2192",
+          "paint": "rgb(0, 0, 0)",
+          "effectiveOpacity": 1,
+          "backing": "#ffffff",
+          "contrast": 21,
+          "bounds": {
+            "x": 472.4921875,
+            "y": 785,
+            "width": 173.015625,
+            "height": 16
+          },
+          "contained": true
+        },
+        {
+          "text": "pass rate \u2192",
+          "paint": "rgb(0, 0, 0)",
+          "effectiveOpacity": 1,
+          "backing": "#ffffff",
+          "contrast": 21,
+          "bounds": {
+            "x": 15,
+            "y": 464.5546875,
+            "width": 16,
+            "height": 60.890625
+          },
+          "contained": true
+        }
+      ]
+    },
+    {
+      "artifact": "projects/arrow-contrast/artifacts/support/harbor/quality-comparison.svg",
+      "glyphs": []
+    },
+    {
+      "artifact": "projects/arrow-contrast/artifacts/support/harbor/resource-comparison.svg",
+      "glyphs": []
+    }
+  ],
+  "decodedMarkers": [
+    {
+      "artifact": "projects/arrow-contrast/artifacts/support/markers-source.png",
+      "size": [
+        320,
+        160
+      ],
+      "passed": true,
+      "samples": [
+        {
+          "y": 40,
+          "shaftAndHeadPixels": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "expectedForeground": 0,
+          "adjacentPixels": [
+            [
+              255,
+              255,
+              255
+            ],
+            [
+              255,
+              255,
+              255
+            ]
+          ],
+          "expectedBacking": 255
+        },
+        {
+          "y": 120,
+          "shaftAndHeadPixels": [
+            [
+              255,
+              255,
+              255
+            ],
+            [
+              255,
+              255,
+              255
+            ],
+            [
+              255,
+              255,
+              255
+            ],
+            [
+              255,
+              255,
+              255
+            ]
+          ],
+          "expectedForeground": 255,
+          "adjacentPixels": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "expectedBacking": 0
+        }
+      ],
+      "scope": "Decoded interiors of both shafts and heads, plus adjacent backing; black on white and white on black."
+    },
+    {
+      "artifact": "projects/arrow-contrast/artifacts/support/markers.gif",
+      "size": [
+        320,
+        160
+      ],
+      "passed": true,
+      "samples": [
+        {
+          "y": 40,
+          "shaftAndHeadPixels": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "expectedForeground": 0,
+          "adjacentPixels": [
+            [
+              255,
+              255,
+              255
+            ],
+            [
+              255,
+              255,
+              255
+            ]
+          ],
+          "expectedBacking": 255
+        },
+        {
+          "y": 120,
+          "shaftAndHeadPixels": [
+            [
+              255,
+              255,
+              255
+            ],
+            [
+              255,
+              255,
+              255
+            ],
+            [
+              255,
+              255,
+              255
+            ],
+            [
+              255,
+              255,
+              255
+            ]
+          ],
+          "expectedForeground": 255,
+          "adjacentPixels": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "expectedBacking": 0
+        }
+      ],
+      "scope": "Decoded interiors of both shafts and heads, plus adjacent backing; black on white and white on black."
+    },
+    {
+      "artifact": "projects/arrow-contrast/artifacts/support/markers-one-bit.png",
+      "size": [
+        320,
+        160
+      ],
+      "passed": true,
+      "samples": [
+        {
+          "y": 40,
+          "shaftAndHeadPixels": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "expectedForeground": 0,
+          "adjacentPixels": [
+            [
+              255,
+              255,
+              255
+            ],
+            [
+              255,
+              255,
+              255
+            ]
+          ],
+          "expectedBacking": 255
+        },
+        {
+          "y": 120,
+          "shaftAndHeadPixels": [
+            [
+              255,
+              255,
+              255
+            ],
+            [
+              255,
+              255,
+              255
+            ],
+            [
+              255,
+              255,
+              255
+            ],
+            [
+              255,
+              255,
+              255
+            ]
+          ],
+          "expectedForeground": 255,
+          "adjacentPixels": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "expectedBacking": 0
+        }
+      ],
+      "scope": "Decoded interiors of both shafts and heads, plus adjacent backing; black on white and white on black."
+    },
+    {
+      "artifact": "projects/arrow-contrast/artifacts/support/markers-pixel.png",
+      "size": [
+        320,
+        160
+      ],
+      "passed": true,
+      "samples": [
+        {
+          "y": 40,
+          "shaftAndHeadPixels": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "expectedForeground": 0,
+          "adjacentPixels": [
+            [
+              255,
+              255,
+              255
+            ],
+            [
+              255,
+              255,
+              255
+            ]
+          ],
+          "expectedBacking": 255
+        },
+        {
+          "y": 120,
+          "shaftAndHeadPixels": [
+            [
+              255,
+              255,
+              255
+            ],
+            [
+              255,
+              255,
+              255
+            ],
+            [
+              255,
+              255,
+              255
+            ],
+            [
+              255,
+              255,
+              255
+            ]
+          ],
+          "expectedForeground": 255,
+          "adjacentPixels": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "expectedBacking": 0
+        }
+      ],
+      "scope": "Decoded interiors of both shafts and heads, plus adjacent backing; black on white and white on black."
+    }
+  ],
+  "limits": "Representative conversion fixture only; converters preserve or intentionally restyle source imagery. This does not certify arbitrary source arrow geometry or lossy settings. No producer behavior changed in these support bundles."
+}

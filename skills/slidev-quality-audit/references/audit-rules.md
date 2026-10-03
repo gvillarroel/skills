@@ -10,6 +10,8 @@ Prefer fixing layout structure before suppressing findings. Use exception marker
 
 ## Rules and Recommended Fixes
 
+For marked SVG connections, [the arrow audit](arrow-audit.md) defines `arrow-low-contrast` and `arrowhead-covered`. These rules inspect shafts, actual referenced head instances, alpha composites, and filled path backings at a minimum of 3:1 non-text contrast.
+
 | Rule | What It Detects | Recommended Improvement |
 | --- | --- | --- |
 | `layout-missing` | No visible `.slidev-layout` was found. | Fix the Slidev route, server startup, or slide rendering error before judging visual quality. |

@@ -44,6 +44,8 @@ Use `--strict` when the audit should exit nonzero on error-level findings. Use `
 
 ## Quality Rules
 
+Read [the marked SVG arrow audit](references/arrow-audit.md) for authored diagram connections. Use stable arrow attributes and inspect both shaft and referenced head at 3:1 against their actual local backing, including opacity and filled paths.
+
 The script currently checks these issue families:
 
 - Missing or blank visible Slidev layout.

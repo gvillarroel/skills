@@ -81,11 +81,11 @@ INSTRUMENTS = [
 ]
 
 SIGNALS = [
-    {"id": "lic-to-lv", "source": "lic-101", "target": "lv-101", "points": [(134, 144), (134, 196), (198, 196), (198, 276)], "color": "green", "kind": "control"},
-    {"id": "tic-to-tv", "source": "tic-102", "target": "tv-102", "points": [(452, 136), (452, 218), (420, 218), (420, 394)], "color": "orange", "kind": "control"},
-    {"id": "fic-to-fv", "source": "fic-103", "target": "fv-103", "points": [(684, 154), (684, 276)], "color": "purple", "kind": "control"},
-    {"id": "reactor-temp", "source": "r-101", "target": "tic-102", "points": [(604, 174), (604, 142), (480, 142)], "color": "orange", "kind": "measurement"},
-    {"id": "high-high-trip", "source": "hs-104", "target": "fv-103", "points": [(594, 104), (656, 104), (656, 276)], "color": "red", "kind": "trip"},
+    {"id": "lic-to-lv", "source": "lic-101", "target": "lv-101", "points": [(134, 144), (134, 196), (198, 196), (198, 270)], "color": "green", "kind": "control"},
+    {"id": "tic-to-tv", "source": "tic-102", "target": "tv-102", "points": [(452, 136), (452, 218), (372, 218), (372, 390), (420, 390)], "color": "orange", "kind": "control"},
+    {"id": "fic-to-fv", "source": "fic-103", "target": "fv-103", "points": [(684, 154), (684, 270)], "color": "purple", "kind": "control"},
+    {"id": "reactor-temp", "source": "r-101", "target": "tic-102", "points": [(604, 172), (604, 152), (504, 152), (504, 108), (483, 108)], "color": "orange", "kind": "measurement"},
+    {"id": "high-high-trip", "source": "hs-104", "target": "fv-103", "points": [(594, 104), (648, 104), (648, 84), (724, 84), (724, 264), (684, 264), (684, 270)], "color": "red", "kind": "trip"},
 ]
 
 
@@ -125,13 +125,13 @@ def draw_animation(points: list[tuple[int, int]], delay: float, duration: float)
 def marker_defs() -> str:
     return f"""
     <defs>
-      <marker id="pid-flow-arrow" viewBox="0 -5 10 10" refX="9" refY="0" markerWidth="7" markerHeight="7" orient="auto">
+      <marker id="pid-flow-arrow" viewBox="0 -5 10 10" refX="9" refY="0" markerUnits="userSpaceOnUse" markerWidth="8" markerHeight="8" orient="auto">
         <path d="M0,-5L10,0L0,5Z" fill="{PALETTE['blue']}"/>
       </marker>
-      <marker id="pid-signal-arrow" viewBox="0 -5 10 10" refX="9" refY="0" markerWidth="7" markerHeight="7" orient="auto">
+      <marker id="pid-signal-arrow" viewBox="0 -5 10 10" refX="9" refY="0" markerUnits="userSpaceOnUse" markerWidth="8" markerHeight="8" orient="auto">
         <path d="M0,-5L10,0L0,5Z" fill="{PALETTE['purple']}"/>
       </marker>
-      <marker id="pid-trip-arrow" viewBox="0 -5 10 10" refX="9" refY="0" markerWidth="7" markerHeight="7" orient="auto">
+      <marker id="pid-trip-arrow" viewBox="0 -5 10 10" refX="9" refY="0" markerUnits="userSpaceOnUse" markerWidth="8" markerHeight="8" orient="auto">
         <path d="M0,-5L10,0L0,5Z" fill="{PALETTE['red']}"/>
       </marker>
     </defs>"""
@@ -183,7 +183,7 @@ def valve_markup(valve: dict[str, object]) -> str:
 def instrument_markup(item: dict[str, object]) -> str:
     color = PALETTE[str(item["color"])]
     return f"""
-      <g class="pid-instrument" data-instrument-id="{esc(item['id'])}" data-loop="{esc(item['loop'])}" transform="translate({item['x']} {item['y']})">
+      <g class="pid-instrument" data-instrument-id="{esc(item['id'])}" data-text-backing="circle" data-loop="{esc(item['loop'])}" transform="translate({item['x']} {item['y']})">
         <circle r="27" fill="{PALETTE['surface']}" stroke="{color}" stroke-width="2"/>
         <line x1="-19" x2="19" y1="1" y2="1" stroke="{PALETTE['gray300']}" stroke-width="1"/>
         <text class="mark-label" x="0" y="-6" text-anchor="middle" font-size="11">{esc(item['tag'])}</text>
@@ -219,7 +219,7 @@ def equipment_markup() -> str:
       </g>
       <g class="pid-equipment pid-pump" data-equipment-id="p-101" transform="translate(272 312)">
         <circle r="27" fill="{PALETTE['gray50']}" stroke="{PALETTE['ink']}" stroke-width="2"/>
-        <path d="M-10,-12L17,0L-10,12Z" fill="{PALETTE['blue_highlight']}" stroke="{PALETTE['blue']}" stroke-width="1.6"/>
+        <path data-direction-role="glyph" data-direction-backing="circle" d="M-10,-12L17,0L-10,12Z" fill="{PALETTE['blue_highlight']}" stroke="{PALETTE['blue']}" stroke-width="1.6"/>
         <text class="mark-label" x="0" y="48" text-anchor="middle">P-101</text>
       </g>
       <g class="pid-equipment pid-heat-exchanger" data-equipment-id="e-101">

@@ -12,6 +12,8 @@ Create an original information poster with clear relationships, stable family co
 
 **Require at least the useful knowledge density of the relevant reference.** Read [knowledge density](references/knowledge-density.md) before accepting the content selection or finished poster. Compare the amount of distinct supported records, relationships, temporal information and explanatory context at the same poster area, then inspect its distribution and readability. A sparse, clean diagram does not meet this default. More boxes, smaller text or decorative fill cannot substitute for more useful knowledge.
 
+Read [arrow-visibility.md](references/arrow-visibility.md) when producing, importing or reviewing directional arrows. Audit actual shafts/heads at delivery scale.
+
 ## Pack measured calendar labels without drawing
 
 For a layout-only request with supplied horizontal footprints, read [shared time rows](references/shared-time-rows.md), serialize the measured input, and run its documented helper in `numeric` mode. Deliver the generated layout at the requested path, retain owner identities, and state the remaining visual checks. Stop before poster rendering. Keep measured calendar x positions fixed; assign only y tracks and family pockets. Create input parents before writing nested files; use the helper's CLI without reading implementation or tests.

@@ -7,6 +7,8 @@ description: "Builds and troubleshoots Apache ECharts visualizations inside Slid
 
 Read [the colorset output contract](references/colorset-contract.md) before authoring or auditing visual output. Apply one exact bundled palette to every authored output path and inspect rendered paint. Default to colorset1; declare colorset2 when its category distinctions are needed. Start category marks with opaque solid fills and no decorative borders; exhaust the selected palette's usable unique solids before outlined overflow variants. Choose black or white inside text by actual fill contrast.
 
+For directed graph/route/mark-line output, read [arrow contrast and placement](references/arrow-contrast.md). Apply the bundled option helper before rendering, then inspect actual shafts and heads at 3:1 against local backings, outside node silhouettes and clear of labels. Check settled click/focus states and the final export scale.
+
 ## Core Workflow
 
 1. Put chart behavior in Vue components under the Slidev `components/` directory. Keep `slides.md` focused on composition, copy, and passing small props such as `$clicks`.

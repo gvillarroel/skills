@@ -269,10 +269,10 @@ function renderVectorField() {
       const mag = .55 + Math.abs(Math.sin(i + j * .7)) * .45;
       return { i, j, angle, mag };
     }));
-    const color = quantizedRamp([.55, 1], [palette.gold, palette.orange, palette.red]);
+    const color = quantizedRamp([.55, 1], [palette.yellowHover, palette.orangeHover, palette.red]);
     d3.range(7).forEach(i => svg.append("line").attr("x1", x(i)).attr("x2", x(i)).attr("y1", y(0)).attr("y2", y(4)).attr("stroke", palette.gray100));
     d3.range(5).forEach(j => svg.append("line").attr("x1", x(0)).attr("x2", x(6)).attr("y1", y(j)).attr("y2", y(j)).attr("stroke", palette.gray100));
-    const arrows = svg.append("g").selectAll("g").data(data).join("g").attr("transform", d => `translate(${x(d.i)},${y(d.j)}) rotate(${d.angle * 48})`);
+    const arrows = svg.append("g").selectAll("g").data(data).join("g").attr("data-direction-role", "glyph").attr("transform", d => `translate(${x(d.i)},${y(d.j)}) rotate(${d.angle * 48})`);
     arrows.append("line").attr("x1", -11).attr("x2", d => 18 * d.mag).attr("y1", 0).attr("y2", 0).attr("stroke", d => color(d.mag)).attr("stroke-width", 2.6).attr("stroke-linecap", "round");
     arrows.append("path").attr("d", d3.symbol().type(d3.symbolTriangle).size(42)).attr("transform", d => `translate(${18 * d.mag},0) rotate(90)`).attr("fill", d => color(d.mag));
     fadeIn(arrows, .025, .55);

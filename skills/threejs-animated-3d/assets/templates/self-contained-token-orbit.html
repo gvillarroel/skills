@@ -104,7 +104,7 @@
       }
     </style>
   </head>
-  <body data-colorset="__COLORSET__" data-density="__DENSITY__">
+  <body data-colorset="__COLORSET__" data-density="__DENSITY__" data-scene="__SCENE__">
     <main>
       <div class="toolbar">
         <h1>__TITLE__</h1>
@@ -124,6 +124,8 @@
       const status = document.getElementById("status");
       const colorset = document.body.dataset.colorset;
       const tokenCount = __TOKEN_COUNT__;
+      const isField = document.body.dataset.scene === 'vector-field';
+      const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
       const palette = {
         brand: 0x9e1b32,
         blue: 0x007298,
@@ -185,13 +187,41 @@
         }),
       );
       scene.add(hub);
+      hub.visible = !isField;
+      floor.visible = !isField;
+      const fieldBase = new THREE.Mesh(new THREE.BoxGeometry(5.4, .06, 4.2),
+        new THREE.MeshStandardMaterial({color: palette.gray, roughness: .88, metalness: 0}));
+      fieldBase.position.y = -.25;
+      fieldBase.visible = isField;
+      scene.add(fieldBase);
 
       const bundledPalettes = __PALETTES__;
       const tokenColors = bundledPalettes[colorset].solidSequence
         .filter(value => value !== '#ffffff' && value !== '#9e1b32')
         .map(value => Number.parseInt(value.slice(1), 16));
       const tokenGeometry = new THREE.IcosahedronGeometry(0.32, 1);
+      const luminance = paint => [1,3,5].map(i => parseInt(paint.slice(i,i+2),16)/255)
+        .map(v => v <= .04045 ? v/12.92 : ((v+.055)/1.055)**2.4)
+        .reduce((sum,v,i)=>sum+v*[.2126,.7152,.0722][i],0);
+      const contrast = (a,b) => (Math.max(luminance(a),luminance(b))+.05)/(Math.min(luminance(a),luminance(b))+.05);
+      const arrowColors = bundledPalettes[colorset].solidSequence.filter(paint =>
+        // The physically lit plane renders darker than its nominal gray token.
+        // Include a conservative measured shade bound, then verify real pixels.
+        ['#ffffff','#e7e7e7','#9c9c9c'].every(backing => contrast(paint,backing)>=3));
       const tokens = Array.from({ length: tokenCount }, (_, index) => {
+        if (isField) {
+          const arrow = new THREE.Group();
+          const material = new THREE.MeshBasicMaterial({color: arrowColors[index % arrowColors.length], toneMapped: false});
+          const shaft = new THREE.Mesh(new THREE.CylinderGeometry(.045,.045,.58,12),material);
+          shaft.rotation.z = Math.PI/2;
+          const head = new THREE.Mesh(new THREE.ConeGeometry(.12,.28,16),material);
+          head.rotation.z = -Math.PI/2; head.position.x = .42;
+          head.userData.directionRole = 'head'; shaft.userData.directionRole = 'shaft';
+          arrow.add(shaft,head);
+          arrow.position.set((index % 5 - 2)*1.02,.2,(Math.floor(index/5)-1.5)*.82);
+          arrow.userData.phase = index % 5 * .65 + Math.floor(index/5) * .92;
+          scene.add(arrow); return arrow;
+        }
         const color = tokenColors[index % tokenColors.length];
         const token = new THREE.Mesh(
           tokenGeometry,
@@ -222,10 +252,11 @@
         spokes.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(points), spokeMaterial));
       }
       scene.add(spokes);
+      spokes.visible = !isField;
 
       let startedAt = performance.now();
       let yaw = 0.72;
-      let pitch = 0.34;
+      let pitch = isField ? .6 : 0.34;
       let dragging = false;
       let lastX = 0;
       let lastY = 0;
@@ -250,8 +281,9 @@
         let radius = 0;
         for (let i = 0; i < 64; i += 1) {
           const angle = i * Math.PI / 32;
-          for (const lift of [-1.05, 1.05]) {
-            const point = new THREE.Vector3(Math.cos(angle) * 3.72, lift, Math.sin(angle) * 3.72);
+          for (const lift of (isField ? [-.65,.65] : [-1.05,1.05])) {
+            const reach = isField ? 2.95 : 3.72;
+            const point = new THREE.Vector3(Math.cos(angle) * reach, lift, Math.sin(angle) * reach);
             radius = Math.max(radius, point.dot(back) + Math.max(Math.abs(point.dot(right)) / tanX, Math.abs(point.dot(up)) / tanY) * 1.12);
           }
         }
@@ -266,6 +298,13 @@
         hub.rotation.y = seconds * 0.72;
         tokens.forEach((token, index) => {
           const data = token.userData;
+          if (isField) {
+            const phase = data.phase;
+            token.rotation.y = Math.sin(seconds*1.25+phase)*.9;
+            token.rotation.z = Math.cos(seconds*1.1+phase)*.18;
+            token.position.y = .2+Math.sin(seconds*1.6+phase)*.12;
+            return;
+          }
           const angle = seconds * data.speed + data.phase;
           token.position.set(
             Math.cos(angle) * data.radius,
@@ -284,13 +323,13 @@
       function animate() {
         if (disposed) return;
         animationId = requestAnimationFrame(animate);
-        renderAt((performance.now() - startedAt) / 1000);
+        renderAt(reducedMotion ? 0 : (performance.now() - startedAt) / 1000);
       }
 
       replay.addEventListener("click", () => {
         startedAt = performance.now();
         yaw = 0.72;
-        pitch = 0.34;
+        pitch = isField ? .6 : 0.34;
         status.textContent = "Replay started.";
       });
 
@@ -309,7 +348,7 @@
         lastX = event.clientX;
         lastY = event.clientY;
         yaw += dx * 0.008;
-        pitch = Math.max(-0.25, Math.min(0.92, pitch + dy * 0.006));
+        pitch = Math.max(isField ? .46 : -.25, Math.min(.92, pitch + dy * .006));
       });
 
       canvas.addEventListener("pointerup", (event) => {
@@ -325,13 +364,30 @@
       window.__threeRuntimeScene = {
         replay: () => replay.click(),
         renderAt,
+        arrowPixelSamples: (seconds) => {
+          if (!isField) return [];
+          renderAt(seconds); scene.updateMatrixWorld(true);
+          const gl=renderer.getContext(), width=canvas.width, height=canvas.height;
+          const read=(x,y)=>{const pixel=new Uint8Array(4);gl.readPixels(x,height-y-1,1,1,gl.RGBA,gl.UNSIGNED_BYTE,pixel);return Array.from(pixel).slice(0,3);};
+          const samples=tokens.flatMap(group=>group.children.map(mesh=>{
+            const role=mesh.userData.directionRole, local=new THREE.Vector3(0,role==='head'?.055:0,0);
+            const p=mesh.localToWorld(local).project(camera), x=Math.round((p.x+1)*width/2), y=Math.round((1-p.y)*height/2);
+            return {role,x,y,color:'#'+mesh.material.color.getHexString(),interiorPatch:[-1,0,1].flatMap(dx=>[-1,0,1].map(dy=>read(x+dx,y+dy)))};
+          }));
+          tokens.forEach(group=>group.visible=false);renderer.render(scene,camera);
+          samples.forEach(sample=>sample.backing=read(sample.x,sample.y));
+          tokens.forEach(group=>group.visible=true);renderer.render(scene,camera);
+          return samples;
+        },
         inspect: () => ({
           colorset,
+          scene: document.body.dataset.scene,
           tokenCount,
           density: document.body.dataset.density,
           fillStyle: 'solid-first',
           decorativeOutlineCount: 0,
-          materialColors: [hub, ...tokens].map(mesh => `#${mesh.material.color.getHexString()}`),
+          materialColors: (isField ? tokens.flatMap(group=>group.children) : [hub,...tokens]).map(mesh => `#${mesh.material.color.getHexString()}`),
+          arrowHeads: isField ? tokens.map(group=>{const head=group.children[1], p=head.localToWorld(new THREE.Vector3(0,.055,0)).project(camera);return {x:p.x,y:p.y,color:'#'+head.material.color.getHexString()};}) : [],
           lightColors: scene.children.filter(object => object.isLight).map(light => `#${light.color.getHexString()}`),
           outputColorSpace: renderer.outputColorSpace,
           cameraAspect: camera.aspect,

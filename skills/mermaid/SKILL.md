@@ -27,6 +27,7 @@ Read [the colorset output contract](references/colorset-contract.md) before auth
 - Read `references/accessible-svg-metadata.md` for newly authored diagrams, authorized accessibility edits, or any `--require-accessibility` release gate.
 - Read `references/diagram-types.json` only for an exact declaration, alias, canonical family ID, or `classDef` capability.
 - Read `references/palette-capacity.md` when a task asks for maximum distinct colors, a palette boundary, or enough peer branches, sections, curves, groups, sets, slices, columns, or series to approach cycling.
+- Read `references/arrow-contrast.md` when authoring or inspecting arrow direction, head clearance, compound-region contrast, or native marker output.
 - Read `references/animation.md` only for animated output, custom choreography, or directive selectors.
 - Execute scripts without reading their implementation. Inspect script source only to debug a failed command.
 - For a source-only task that delegates rendering to an evaluator, do not read animation material or render locally.

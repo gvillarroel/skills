@@ -1,0 +1,1410 @@
+{
+  "date": "2026-10-03",
+  "passed": true,
+  "stateCount": 36,
+  "errors": [],
+  "rows": [
+    {
+      "gallery": "d3-animated-svg-cs1",
+      "item": "flowchart-dag",
+      "state": "focus",
+      "markerArrowCount": 7,
+      "glyphCount": 0,
+      "targetPorts": [],
+      "instrumentLabels": [],
+      "failures": [],
+      "passed": true
+    },
+    {
+      "gallery": "d3-animated-svg-cs1",
+      "item": "flowchart-dag",
+      "state": "expanded",
+      "markerArrowCount": 7,
+      "glyphCount": 0,
+      "targetPorts": [],
+      "instrumentLabels": [],
+      "failures": [],
+      "passed": true
+    },
+    {
+      "gallery": "d3-animated-svg-cs1",
+      "item": "flowchart-dag",
+      "state": "fit",
+      "markerArrowCount": 7,
+      "glyphCount": 0,
+      "targetPorts": [],
+      "instrumentLabels": [],
+      "failures": [],
+      "passed": true
+    },
+    {
+      "gallery": "d3-animated-svg-cs1",
+      "item": "sequence-lifelines",
+      "state": "focus",
+      "markerArrowCount": 7,
+      "glyphCount": 0,
+      "targetPorts": [],
+      "instrumentLabels": [],
+      "failures": [],
+      "passed": true
+    },
+    {
+      "gallery": "d3-animated-svg-cs1",
+      "item": "sequence-lifelines",
+      "state": "expanded",
+      "markerArrowCount": 7,
+      "glyphCount": 0,
+      "targetPorts": [],
+      "instrumentLabels": [],
+      "failures": [],
+      "passed": true
+    },
+    {
+      "gallery": "d3-animated-svg-cs1",
+      "item": "sequence-lifelines",
+      "state": "fit",
+      "markerArrowCount": 7,
+      "glyphCount": 0,
+      "targetPorts": [],
+      "instrumentLabels": [],
+      "failures": [],
+      "passed": true
+    },
+    {
+      "gallery": "d3-animated-svg-cs1",
+      "item": "state-machine",
+      "state": "focus",
+      "markerArrowCount": 11,
+      "glyphCount": 0,
+      "targetPorts": [],
+      "instrumentLabels": [],
+      "failures": [],
+      "passed": true
+    },
+    {
+      "gallery": "d3-animated-svg-cs1",
+      "item": "state-machine",
+      "state": "expanded",
+      "markerArrowCount": 11,
+      "glyphCount": 0,
+      "targetPorts": [],
+      "instrumentLabels": [],
+      "failures": [],
+      "passed": true
+    },
+    {
+      "gallery": "d3-animated-svg-cs1",
+      "item": "state-machine",
+      "state": "fit",
+      "markerArrowCount": 11,
+      "glyphCount": 0,
+      "targetPorts": [],
+      "instrumentLabels": [],
+      "failures": [],
+      "passed": true
+    },
+    {
+      "gallery": "d3-animated-svg-cs1",
+      "item": "process-control-loop",
+      "state": "focus",
+      "markerArrowCount": 6,
+      "glyphCount": 1,
+      "targetPorts": [
+        {
+          "targetId": "tic-102",
+          "alignment": 0.9970544855015816,
+          "clearance": 4.076809620810661,
+          "passed": true
+        }
+      ],
+      "instrumentLabels": [
+        {
+          "instrumentId": "lic-101",
+          "text": "LIC",
+          "faceFill": "rgb(79, 79, 79)",
+          "actual": "rgb(255, 255, 255)",
+          "expected": "rgb(255, 255, 255)",
+          "alpha": 1,
+          "contrast": 8.191131276481592,
+          "passed": true
+        },
+        {
+          "instrumentId": "lic-101",
+          "text": "101",
+          "faceFill": "rgb(79, 79, 79)",
+          "actual": "rgb(255, 255, 255)",
+          "expected": "rgb(255, 255, 255)",
+          "alpha": 1,
+          "contrast": 8.191131276481592,
+          "passed": true
+        },
+        {
+          "instrumentId": "tic-102",
+          "text": "TIC",
+          "faceFill": "rgb(105, 105, 105)",
+          "actual": "rgb(255, 255, 255)",
+          "expected": "rgb(255, 255, 255)",
+          "alpha": 1,
+          "contrast": 5.489814557409947,
+          "passed": true
+        },
+        {
+          "instrumentId": "tic-102",
+          "text": "102",
+          "faceFill": "rgb(105, 105, 105)",
+          "actual": "rgb(255, 255, 255)",
+          "expected": "rgb(255, 255, 255)",
+          "alpha": 1,
+          "contrast": 5.489814557409947,
+          "passed": true
+        },
+        {
+          "instrumentId": "fic-103",
+          "text": "FIC",
+          "faceFill": "rgb(130, 130, 130)",
+          "actual": "rgb(0, 0, 0)",
+          "expected": "rgb(0, 0, 0)",
+          "alpha": 1,
+          "contrast": 5.46455914633617,
+          "passed": true
+        },
+        {
+          "instrumentId": "fic-103",
+          "text": "103",
+          "faceFill": "rgb(130, 130, 130)",
+          "actual": "rgb(0, 0, 0)",
+          "expected": "rgb(0, 0, 0)",
+          "alpha": 1,
+          "contrast": 5.46455914633617,
+          "passed": true
+        },
+        {
+          "instrumentId": "hs-104",
+          "text": "HS",
+          "faceFill": "rgb(158, 27, 50)",
+          "actual": "rgb(255, 255, 255)",
+          "expected": "rgb(255, 255, 255)",
+          "alpha": 1,
+          "contrast": 7.9046884551695875,
+          "passed": true
+        },
+        {
+          "instrumentId": "hs-104",
+          "text": "104",
+          "faceFill": "rgb(158, 27, 50)",
+          "actual": "rgb(255, 255, 255)",
+          "expected": "rgb(255, 255, 255)",
+          "alpha": 1,
+          "contrast": 7.9046884551695875,
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "passed": true
+    },
+    {
+      "gallery": "d3-animated-svg-cs1",
+      "item": "process-control-loop",
+      "state": "expanded",
+      "markerArrowCount": 6,
+      "glyphCount": 1,
+      "targetPorts": [
+        {
+          "targetId": "tic-102",
+          "alignment": 0.9970544855015816,
+          "clearance": 4.076809620810554,
+          "passed": true
+        }
+      ],
+      "instrumentLabels": [
+        {
+          "instrumentId": "lic-101",
+          "text": "LIC",
+          "faceFill": "rgb(79, 79, 79)",
+          "actual": "rgb(255, 255, 255)",
+          "expected": "rgb(255, 255, 255)",
+          "alpha": 1,
+          "contrast": 8.191131276481592,
+          "passed": true
+        },
+        {
+          "instrumentId": "lic-101",
+          "text": "101",
+          "faceFill": "rgb(79, 79, 79)",
+          "actual": "rgb(255, 255, 255)",
+          "expected": "rgb(255, 255, 255)",
+          "alpha": 1,
+          "contrast": 8.191131276481592,
+          "passed": true
+        },
+        {
+          "instrumentId": "tic-102",
+          "text": "TIC",
+          "faceFill": "rgb(105, 105, 105)",
+          "actual": "rgb(255, 255, 255)",
+          "expected": "rgb(255, 255, 255)",
+          "alpha": 1,
+          "contrast": 5.489814557409947,
+          "passed": true
+        },
+        {
+          "instrumentId": "tic-102",
+          "text": "102",
+          "faceFill": "rgb(105, 105, 105)",
+          "actual": "rgb(255, 255, 255)",
+          "expected": "rgb(255, 255, 255)",
+          "alpha": 1,
+          "contrast": 5.489814557409947,
+          "passed": true
+        },
+        {
+          "instrumentId": "fic-103",
+          "text": "FIC",
+          "faceFill": "rgb(130, 130, 130)",
+          "actual": "rgb(0, 0, 0)",
+          "expected": "rgb(0, 0, 0)",
+          "alpha": 1,
+          "contrast": 5.46455914633617,
+          "passed": true
+        },
+        {
+          "instrumentId": "fic-103",
+          "text": "103",
+          "faceFill": "rgb(130, 130, 130)",
+          "actual": "rgb(0, 0, 0)",
+          "expected": "rgb(0, 0, 0)",
+          "alpha": 1,
+          "contrast": 5.46455914633617,
+          "passed": true
+        },
+        {
+          "instrumentId": "hs-104",
+          "text": "HS",
+          "faceFill": "rgb(158, 27, 50)",
+          "actual": "rgb(255, 255, 255)",
+          "expected": "rgb(255, 255, 255)",
+          "alpha": 1,
+          "contrast": 7.9046884551695875,
+          "passed": true
+        },
+        {
+          "instrumentId": "hs-104",
+          "text": "104",
+          "faceFill": "rgb(158, 27, 50)",
+          "actual": "rgb(255, 255, 255)",
+          "expected": "rgb(255, 255, 255)",
+          "alpha": 1,
+          "contrast": 7.9046884551695875,
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "passed": true
+    },
+    {
+      "gallery": "d3-animated-svg-cs1",
+      "item": "process-control-loop",
+      "state": "fit",
+      "markerArrowCount": 6,
+      "glyphCount": 1,
+      "targetPorts": [
+        {
+          "targetId": "tic-102",
+          "alignment": 0.9970544855015816,
+          "clearance": 4.076809620810661,
+          "passed": true
+        }
+      ],
+      "instrumentLabels": [
+        {
+          "instrumentId": "lic-101",
+          "text": "LIC",
+          "faceFill": "rgb(79, 79, 79)",
+          "actual": "rgb(255, 255, 255)",
+          "expected": "rgb(255, 255, 255)",
+          "alpha": 1,
+          "contrast": 8.191131276481592,
+          "passed": true
+        },
+        {
+          "instrumentId": "lic-101",
+          "text": "101",
+          "faceFill": "rgb(79, 79, 79)",
+          "actual": "rgb(255, 255, 255)",
+          "expected": "rgb(255, 255, 255)",
+          "alpha": 1,
+          "contrast": 8.191131276481592,
+          "passed": true
+        },
+        {
+          "instrumentId": "tic-102",
+          "text": "TIC",
+          "faceFill": "rgb(105, 105, 105)",
+          "actual": "rgb(255, 255, 255)",
+          "expected": "rgb(255, 255, 255)",
+          "alpha": 1,
+          "contrast": 5.489814557409947,
+          "passed": true
+        },
+        {
+          "instrumentId": "tic-102",
+          "text": "102",
+          "faceFill": "rgb(105, 105, 105)",
+          "actual": "rgb(255, 255, 255)",
+          "expected": "rgb(255, 255, 255)",
+          "alpha": 1,
+          "contrast": 5.489814557409947,
+          "passed": true
+        },
+        {
+          "instrumentId": "fic-103",
+          "text": "FIC",
+          "faceFill": "rgb(130, 130, 130)",
+          "actual": "rgb(0, 0, 0)",
+          "expected": "rgb(0, 0, 0)",
+          "alpha": 1,
+          "contrast": 5.46455914633617,
+          "passed": true
+        },
+        {
+          "instrumentId": "fic-103",
+          "text": "103",
+          "faceFill": "rgb(130, 130, 130)",
+          "actual": "rgb(0, 0, 0)",
+          "expected": "rgb(0, 0, 0)",
+          "alpha": 1,
+          "contrast": 5.46455914633617,
+          "passed": true
+        },
+        {
+          "instrumentId": "hs-104",
+          "text": "HS",
+          "faceFill": "rgb(158, 27, 50)",
+          "actual": "rgb(255, 255, 255)",
+          "expected": "rgb(255, 255, 255)",
+          "alpha": 1,
+          "contrast": 7.9046884551695875,
+          "passed": true
+        },
+        {
+          "instrumentId": "hs-104",
+          "text": "104",
+          "faceFill": "rgb(158, 27, 50)",
+          "actual": "rgb(255, 255, 255)",
+          "expected": "rgb(255, 255, 255)",
+          "alpha": 1,
+          "contrast": 7.9046884551695875,
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "passed": true
+    },
+    {
+      "gallery": "d3-animated-svg-cs1",
+      "item": "vector-field",
+      "state": "focus",
+      "markerArrowCount": 0,
+      "glyphCount": 35,
+      "targetPorts": [],
+      "instrumentLabels": [],
+      "failures": [],
+      "passed": true
+    },
+    {
+      "gallery": "d3-animated-svg-cs1",
+      "item": "vector-field",
+      "state": "expanded",
+      "markerArrowCount": 0,
+      "glyphCount": 35,
+      "targetPorts": [],
+      "instrumentLabels": [],
+      "failures": [],
+      "passed": true
+    },
+    {
+      "gallery": "d3-animated-svg-cs1",
+      "item": "vector-field",
+      "state": "fit",
+      "markerArrowCount": 0,
+      "glyphCount": 35,
+      "targetPorts": [],
+      "instrumentLabels": [],
+      "failures": [],
+      "passed": true
+    },
+    {
+      "gallery": "d3-animated-svg-colorset2",
+      "item": "flowchart-dag",
+      "state": "focus",
+      "markerArrowCount": 7,
+      "glyphCount": 0,
+      "targetPorts": [],
+      "instrumentLabels": [],
+      "failures": [],
+      "passed": true
+    },
+    {
+      "gallery": "d3-animated-svg-colorset2",
+      "item": "flowchart-dag",
+      "state": "expanded",
+      "markerArrowCount": 7,
+      "glyphCount": 0,
+      "targetPorts": [],
+      "instrumentLabels": [],
+      "failures": [],
+      "passed": true
+    },
+    {
+      "gallery": "d3-animated-svg-colorset2",
+      "item": "flowchart-dag",
+      "state": "fit",
+      "markerArrowCount": 7,
+      "glyphCount": 0,
+      "targetPorts": [],
+      "instrumentLabels": [],
+      "failures": [],
+      "passed": true
+    },
+    {
+      "gallery": "d3-animated-svg-colorset2",
+      "item": "sequence-lifelines",
+      "state": "focus",
+      "markerArrowCount": 7,
+      "glyphCount": 0,
+      "targetPorts": [],
+      "instrumentLabels": [],
+      "failures": [],
+      "passed": true
+    },
+    {
+      "gallery": "d3-animated-svg-colorset2",
+      "item": "sequence-lifelines",
+      "state": "expanded",
+      "markerArrowCount": 7,
+      "glyphCount": 0,
+      "targetPorts": [],
+      "instrumentLabels": [],
+      "failures": [],
+      "passed": true
+    },
+    {
+      "gallery": "d3-animated-svg-colorset2",
+      "item": "sequence-lifelines",
+      "state": "fit",
+      "markerArrowCount": 7,
+      "glyphCount": 0,
+      "targetPorts": [],
+      "instrumentLabels": [],
+      "failures": [],
+      "passed": true
+    },
+    {
+      "gallery": "d3-animated-svg-colorset2",
+      "item": "state-machine",
+      "state": "focus",
+      "markerArrowCount": 11,
+      "glyphCount": 0,
+      "targetPorts": [],
+      "instrumentLabels": [],
+      "failures": [],
+      "passed": true
+    },
+    {
+      "gallery": "d3-animated-svg-colorset2",
+      "item": "state-machine",
+      "state": "expanded",
+      "markerArrowCount": 11,
+      "glyphCount": 0,
+      "targetPorts": [],
+      "instrumentLabels": [],
+      "failures": [],
+      "passed": true
+    },
+    {
+      "gallery": "d3-animated-svg-colorset2",
+      "item": "state-machine",
+      "state": "fit",
+      "markerArrowCount": 11,
+      "glyphCount": 0,
+      "targetPorts": [],
+      "instrumentLabels": [],
+      "failures": [],
+      "passed": true
+    },
+    {
+      "gallery": "d3-animated-svg-colorset2",
+      "item": "process-control-loop",
+      "state": "focus",
+      "markerArrowCount": 6,
+      "glyphCount": 1,
+      "targetPorts": [
+        {
+          "targetId": "tic-102",
+          "alignment": 0.9970544855015816,
+          "clearance": 4.076809620810661,
+          "passed": true
+        }
+      ],
+      "instrumentLabels": [
+        {
+          "instrumentId": "lic-101",
+          "text": "LIC",
+          "faceFill": "rgb(69, 132, 42)",
+          "actual": "rgb(0, 0, 0)",
+          "expected": "rgb(0, 0, 0)",
+          "alpha": 1,
+          "contrast": 4.586980899522477,
+          "passed": true
+        },
+        {
+          "instrumentId": "lic-101",
+          "text": "101",
+          "faceFill": "rgb(69, 132, 42)",
+          "actual": "rgb(0, 0, 0)",
+          "expected": "rgb(0, 0, 0)",
+          "alpha": 1,
+          "contrast": 4.586980899522477,
+          "passed": true
+        },
+        {
+          "instrumentId": "tic-102",
+          "text": "TIC",
+          "faceFill": "rgb(231, 114, 4)",
+          "actual": "rgb(0, 0, 0)",
+          "expected": "rgb(0, 0, 0)",
+          "alpha": 1,
+          "contrast": 6.806463514207582,
+          "passed": true
+        },
+        {
+          "instrumentId": "tic-102",
+          "text": "102",
+          "faceFill": "rgb(231, 114, 4)",
+          "actual": "rgb(0, 0, 0)",
+          "expected": "rgb(0, 0, 0)",
+          "alpha": 1,
+          "contrast": 6.806463514207582,
+          "passed": true
+        },
+        {
+          "instrumentId": "fic-103",
+          "text": "FIC",
+          "faceFill": "rgb(101, 47, 108)",
+          "actual": "rgb(255, 255, 255)",
+          "expected": "rgb(255, 255, 255)",
+          "alpha": 1,
+          "contrast": 9.648570110443664,
+          "passed": true
+        },
+        {
+          "instrumentId": "fic-103",
+          "text": "103",
+          "faceFill": "rgb(101, 47, 108)",
+          "actual": "rgb(255, 255, 255)",
+          "expected": "rgb(255, 255, 255)",
+          "alpha": 1,
+          "contrast": 9.648570110443664,
+          "passed": true
+        },
+        {
+          "instrumentId": "hs-104",
+          "text": "HS",
+          "faceFill": "rgb(158, 27, 50)",
+          "actual": "rgb(255, 255, 255)",
+          "expected": "rgb(255, 255, 255)",
+          "alpha": 1,
+          "contrast": 7.9046884551695875,
+          "passed": true
+        },
+        {
+          "instrumentId": "hs-104",
+          "text": "104",
+          "faceFill": "rgb(158, 27, 50)",
+          "actual": "rgb(255, 255, 255)",
+          "expected": "rgb(255, 255, 255)",
+          "alpha": 1,
+          "contrast": 7.9046884551695875,
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "passed": true
+    },
+    {
+      "gallery": "d3-animated-svg-colorset2",
+      "item": "process-control-loop",
+      "state": "expanded",
+      "markerArrowCount": 6,
+      "glyphCount": 1,
+      "targetPorts": [
+        {
+          "targetId": "tic-102",
+          "alignment": 0.9970544855015816,
+          "clearance": 4.076809620810554,
+          "passed": true
+        }
+      ],
+      "instrumentLabels": [
+        {
+          "instrumentId": "lic-101",
+          "text": "LIC",
+          "faceFill": "rgb(69, 132, 42)",
+          "actual": "rgb(0, 0, 0)",
+          "expected": "rgb(0, 0, 0)",
+          "alpha": 1,
+          "contrast": 4.586980899522477,
+          "passed": true
+        },
+        {
+          "instrumentId": "lic-101",
+          "text": "101",
+          "faceFill": "rgb(69, 132, 42)",
+          "actual": "rgb(0, 0, 0)",
+          "expected": "rgb(0, 0, 0)",
+          "alpha": 1,
+          "contrast": 4.586980899522477,
+          "passed": true
+        },
+        {
+          "instrumentId": "tic-102",
+          "text": "TIC",
+          "faceFill": "rgb(231, 114, 4)",
+          "actual": "rgb(0, 0, 0)",
+          "expected": "rgb(0, 0, 0)",
+          "alpha": 1,
+          "contrast": 6.806463514207582,
+          "passed": true
+        },
+        {
+          "instrumentId": "tic-102",
+          "text": "102",
+          "faceFill": "rgb(231, 114, 4)",
+          "actual": "rgb(0, 0, 0)",
+          "expected": "rgb(0, 0, 0)",
+          "alpha": 1,
+          "contrast": 6.806463514207582,
+          "passed": true
+        },
+        {
+          "instrumentId": "fic-103",
+          "text": "FIC",
+          "faceFill": "rgb(101, 47, 108)",
+          "actual": "rgb(255, 255, 255)",
+          "expected": "rgb(255, 255, 255)",
+          "alpha": 1,
+          "contrast": 9.648570110443664,
+          "passed": true
+        },
+        {
+          "instrumentId": "fic-103",
+          "text": "103",
+          "faceFill": "rgb(101, 47, 108)",
+          "actual": "rgb(255, 255, 255)",
+          "expected": "rgb(255, 255, 255)",
+          "alpha": 1,
+          "contrast": 9.648570110443664,
+          "passed": true
+        },
+        {
+          "instrumentId": "hs-104",
+          "text": "HS",
+          "faceFill": "rgb(158, 27, 50)",
+          "actual": "rgb(255, 255, 255)",
+          "expected": "rgb(255, 255, 255)",
+          "alpha": 1,
+          "contrast": 7.9046884551695875,
+          "passed": true
+        },
+        {
+          "instrumentId": "hs-104",
+          "text": "104",
+          "faceFill": "rgb(158, 27, 50)",
+          "actual": "rgb(255, 255, 255)",
+          "expected": "rgb(255, 255, 255)",
+          "alpha": 1,
+          "contrast": 7.9046884551695875,
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "passed": true
+    },
+    {
+      "gallery": "d3-animated-svg-colorset2",
+      "item": "process-control-loop",
+      "state": "fit",
+      "markerArrowCount": 6,
+      "glyphCount": 1,
+      "targetPorts": [
+        {
+          "targetId": "tic-102",
+          "alignment": 0.9970544855015816,
+          "clearance": 4.076809620810661,
+          "passed": true
+        }
+      ],
+      "instrumentLabels": [
+        {
+          "instrumentId": "lic-101",
+          "text": "LIC",
+          "faceFill": "rgb(69, 132, 42)",
+          "actual": "rgb(0, 0, 0)",
+          "expected": "rgb(0, 0, 0)",
+          "alpha": 1,
+          "contrast": 4.586980899522477,
+          "passed": true
+        },
+        {
+          "instrumentId": "lic-101",
+          "text": "101",
+          "faceFill": "rgb(69, 132, 42)",
+          "actual": "rgb(0, 0, 0)",
+          "expected": "rgb(0, 0, 0)",
+          "alpha": 1,
+          "contrast": 4.586980899522477,
+          "passed": true
+        },
+        {
+          "instrumentId": "tic-102",
+          "text": "TIC",
+          "faceFill": "rgb(231, 114, 4)",
+          "actual": "rgb(0, 0, 0)",
+          "expected": "rgb(0, 0, 0)",
+          "alpha": 1,
+          "contrast": 6.806463514207582,
+          "passed": true
+        },
+        {
+          "instrumentId": "tic-102",
+          "text": "102",
+          "faceFill": "rgb(231, 114, 4)",
+          "actual": "rgb(0, 0, 0)",
+          "expected": "rgb(0, 0, 0)",
+          "alpha": 1,
+          "contrast": 6.806463514207582,
+          "passed": true
+        },
+        {
+          "instrumentId": "fic-103",
+          "text": "FIC",
+          "faceFill": "rgb(101, 47, 108)",
+          "actual": "rgb(255, 255, 255)",
+          "expected": "rgb(255, 255, 255)",
+          "alpha": 1,
+          "contrast": 9.648570110443664,
+          "passed": true
+        },
+        {
+          "instrumentId": "fic-103",
+          "text": "103",
+          "faceFill": "rgb(101, 47, 108)",
+          "actual": "rgb(255, 255, 255)",
+          "expected": "rgb(255, 255, 255)",
+          "alpha": 1,
+          "contrast": 9.648570110443664,
+          "passed": true
+        },
+        {
+          "instrumentId": "hs-104",
+          "text": "HS",
+          "faceFill": "rgb(158, 27, 50)",
+          "actual": "rgb(255, 255, 255)",
+          "expected": "rgb(255, 255, 255)",
+          "alpha": 1,
+          "contrast": 7.9046884551695875,
+          "passed": true
+        },
+        {
+          "instrumentId": "hs-104",
+          "text": "104",
+          "faceFill": "rgb(158, 27, 50)",
+          "actual": "rgb(255, 255, 255)",
+          "expected": "rgb(255, 255, 255)",
+          "alpha": 1,
+          "contrast": 7.9046884551695875,
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "passed": true
+    },
+    {
+      "gallery": "d3-animated-svg-colorset2",
+      "item": "vector-field",
+      "state": "focus",
+      "markerArrowCount": 0,
+      "glyphCount": 35,
+      "targetPorts": [],
+      "instrumentLabels": [],
+      "failures": [],
+      "passed": true
+    },
+    {
+      "gallery": "d3-animated-svg-colorset2",
+      "item": "vector-field",
+      "state": "expanded",
+      "markerArrowCount": 0,
+      "glyphCount": 35,
+      "targetPorts": [],
+      "instrumentLabels": [],
+      "failures": [],
+      "passed": true
+    },
+    {
+      "gallery": "d3-animated-svg-colorset2",
+      "item": "vector-field",
+      "state": "fit",
+      "markerArrowCount": 0,
+      "glyphCount": 35,
+      "targetPorts": [],
+      "instrumentLabels": [],
+      "failures": [],
+      "passed": true
+    },
+    {
+      "gallery": "d3-animated-svg-cs1",
+      "item": "bowtie-barriers",
+      "state": "focus",
+      "markerArrowCount": 18,
+      "glyphCount": 0,
+      "targetPorts": [
+        {
+          "targetId": "inspection-program",
+          "port": "top",
+          "alignment": 1,
+          "clearance": 11,
+          "passed": true
+        },
+        {
+          "targetId": "deluge-system",
+          "port": "top",
+          "alignment": 1,
+          "clearance": 4,
+          "passed": true
+        }
+      ],
+      "instrumentLabels": [],
+      "calloutLabels": [
+        {
+          "calloutId": "inspection-gap",
+          "text": "inspection overdue",
+          "faceFill": "rgb(158, 27, 50)",
+          "actual": "rgb(255, 255, 255)",
+          "expected": "rgb(255, 255, 255)",
+          "fontSize": "7.2px",
+          "textBounds": {
+            "x": 277.6198425292969,
+            "y": 442.732421875,
+            "width": 76.151123046875,
+            "height": 10,
+            "top": 442.732421875,
+            "right": 353.7709655761719,
+            "bottom": 452.732421875,
+            "left": 277.6198425292969
+          },
+          "faceBounds": {
+            "x": 260.3416748046875,
+            "y": 434.8048095703125,
+            "width": 110.43136596679688,
+            "height": 23.360504150390625,
+            "top": 434.8048095703125,
+            "right": 370.7730407714844,
+            "bottom": 458.1653137207031,
+            "left": 260.3416748046875
+          },
+          "contained": true,
+          "contrast": 7.9046884551695875,
+          "passed": true
+        },
+        {
+          "calloutId": "deluge-gap",
+          "text": "deluge offline",
+          "faceFill": "rgb(158, 27, 50)",
+          "actual": "rgb(255, 255, 255)",
+          "expected": "rgb(255, 255, 255)",
+          "fontSize": "6.6px",
+          "textBounds": {
+            "x": 749.2880249023438,
+            "y": 532.7146606445312,
+            "width": 50.63665771484375,
+            "height": 9,
+            "top": 532.7146606445312,
+            "right": 799.9246826171875,
+            "bottom": 541.7146606445312,
+            "left": 749.2880249023438
+          },
+          "faceBounds": {
+            "x": 719.056640625,
+            "y": 528.2467651367188,
+            "width": 110.431396484375,
+            "height": 16.98944091796875,
+            "top": 528.2467651367188,
+            "right": 829.488037109375,
+            "bottom": 545.2362060546875,
+            "left": 719.056640625
+          },
+          "contained": true,
+          "contrast": 7.9046884551695875,
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "passed": true
+    },
+    {
+      "gallery": "d3-animated-svg-cs1",
+      "item": "bowtie-barriers",
+      "state": "expanded",
+      "markerArrowCount": 18,
+      "glyphCount": 0,
+      "targetPorts": [
+        {
+          "targetId": "inspection-program",
+          "port": "top",
+          "alignment": 1,
+          "clearance": 11,
+          "passed": true
+        },
+        {
+          "targetId": "deluge-system",
+          "port": "top",
+          "alignment": 1,
+          "clearance": 4,
+          "passed": true
+        }
+      ],
+      "instrumentLabels": [],
+      "calloutLabels": [
+        {
+          "calloutId": "inspection-gap",
+          "text": "inspection overdue",
+          "faceFill": "rgb(158, 27, 50)",
+          "actual": "rgb(255, 255, 255)",
+          "expected": "rgb(255, 255, 255)",
+          "fontSize": "7.2px",
+          "textBounds": {
+            "x": 232.2421875,
+            "y": 438.15625,
+            "width": 72.05337524414062,
+            "height": 10,
+            "top": 438.15625,
+            "right": 304.2955627441406,
+            "bottom": 448.15625,
+            "left": 232.2421875
+          },
+          "faceBounds": {
+            "x": 216,
+            "y": 431.15625,
+            "width": 104,
+            "height": 22,
+            "top": 431.15625,
+            "right": 320,
+            "bottom": 453.15625,
+            "left": 216
+          },
+          "contained": true,
+          "contrast": 7.9046884551695875,
+          "passed": true
+        },
+        {
+          "calloutId": "deluge-gap",
+          "text": "deluge offline",
+          "faceFill": "rgb(158, 27, 50)",
+          "actual": "rgb(255, 255, 255)",
+          "expected": "rgb(255, 255, 255)",
+          "fontSize": "6.6px",
+          "textBounds": {
+            "x": 676.4453125,
+            "y": 522.9562377929688,
+            "width": 48.02886962890625,
+            "height": 9,
+            "top": 522.9562377929688,
+            "right": 724.4741821289062,
+            "bottom": 531.9562377929688,
+            "left": 676.4453125
+          },
+          "faceBounds": {
+            "x": 648,
+            "y": 519.15625,
+            "width": 104,
+            "height": 16,
+            "top": 519.15625,
+            "right": 752,
+            "bottom": 535.15625,
+            "left": 648
+          },
+          "contained": true,
+          "contrast": 7.9046884551695875,
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "passed": true
+    },
+    {
+      "gallery": "d3-animated-svg-cs1",
+      "item": "bowtie-barriers",
+      "state": "fit",
+      "markerArrowCount": 18,
+      "glyphCount": 0,
+      "targetPorts": [
+        {
+          "targetId": "inspection-program",
+          "port": "top",
+          "alignment": 1,
+          "clearance": 11,
+          "passed": true
+        },
+        {
+          "targetId": "deluge-system",
+          "port": "top",
+          "alignment": 1,
+          "clearance": 4,
+          "passed": true
+        }
+      ],
+      "instrumentLabels": [],
+      "calloutLabels": [
+        {
+          "calloutId": "inspection-gap",
+          "text": "inspection overdue",
+          "faceFill": "rgb(158, 27, 50)",
+          "actual": "rgb(255, 255, 255)",
+          "expected": "rgb(255, 255, 255)",
+          "fontSize": "7.2px",
+          "textBounds": {
+            "x": 277.6198425292969,
+            "y": 442.732421875,
+            "width": 76.151123046875,
+            "height": 10,
+            "top": 442.732421875,
+            "right": 353.7709655761719,
+            "bottom": 452.732421875,
+            "left": 277.6198425292969
+          },
+          "faceBounds": {
+            "x": 260.3416748046875,
+            "y": 434.8048095703125,
+            "width": 110.43136596679688,
+            "height": 23.360504150390625,
+            "top": 434.8048095703125,
+            "right": 370.7730407714844,
+            "bottom": 458.1653137207031,
+            "left": 260.3416748046875
+          },
+          "contained": true,
+          "contrast": 7.9046884551695875,
+          "passed": true
+        },
+        {
+          "calloutId": "deluge-gap",
+          "text": "deluge offline",
+          "faceFill": "rgb(158, 27, 50)",
+          "actual": "rgb(255, 255, 255)",
+          "expected": "rgb(255, 255, 255)",
+          "fontSize": "6.6px",
+          "textBounds": {
+            "x": 749.2880249023438,
+            "y": 532.7146606445312,
+            "width": 50.63665771484375,
+            "height": 9,
+            "top": 532.7146606445312,
+            "right": 799.9246826171875,
+            "bottom": 541.7146606445312,
+            "left": 749.2880249023438
+          },
+          "faceBounds": {
+            "x": 719.056640625,
+            "y": 528.2467651367188,
+            "width": 110.431396484375,
+            "height": 16.98944091796875,
+            "top": 528.2467651367188,
+            "right": 829.488037109375,
+            "bottom": 545.2362060546875,
+            "left": 719.056640625
+          },
+          "contained": true,
+          "contrast": 7.9046884551695875,
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "passed": true
+    },
+    {
+      "gallery": "d3-animated-svg-colorset2",
+      "item": "bowtie-barriers",
+      "state": "focus",
+      "markerArrowCount": 18,
+      "glyphCount": 0,
+      "targetPorts": [
+        {
+          "targetId": "inspection-program",
+          "port": "top",
+          "alignment": 1,
+          "clearance": 11,
+          "passed": true
+        },
+        {
+          "targetId": "deluge-system",
+          "port": "top",
+          "alignment": 1,
+          "clearance": 4,
+          "passed": true
+        }
+      ],
+      "instrumentLabels": [],
+      "calloutLabels": [
+        {
+          "calloutId": "inspection-gap",
+          "text": "inspection overdue",
+          "faceFill": "rgb(158, 27, 50)",
+          "actual": "rgb(255, 255, 255)",
+          "expected": "rgb(255, 255, 255)",
+          "fontSize": "7.2px",
+          "textBounds": {
+            "x": 277.6198425292969,
+            "y": 442.732421875,
+            "width": 76.151123046875,
+            "height": 10,
+            "top": 442.732421875,
+            "right": 353.7709655761719,
+            "bottom": 452.732421875,
+            "left": 277.6198425292969
+          },
+          "faceBounds": {
+            "x": 260.3416748046875,
+            "y": 434.8048095703125,
+            "width": 110.43136596679688,
+            "height": 23.360504150390625,
+            "top": 434.8048095703125,
+            "right": 370.7730407714844,
+            "bottom": 458.1653137207031,
+            "left": 260.3416748046875
+          },
+          "contained": true,
+          "contrast": 7.9046884551695875,
+          "passed": true
+        },
+        {
+          "calloutId": "deluge-gap",
+          "text": "deluge offline",
+          "faceFill": "rgb(158, 27, 50)",
+          "actual": "rgb(255, 255, 255)",
+          "expected": "rgb(255, 255, 255)",
+          "fontSize": "6.6px",
+          "textBounds": {
+            "x": 749.2880249023438,
+            "y": 532.7146606445312,
+            "width": 50.63665771484375,
+            "height": 9,
+            "top": 532.7146606445312,
+            "right": 799.9246826171875,
+            "bottom": 541.7146606445312,
+            "left": 749.2880249023438
+          },
+          "faceBounds": {
+            "x": 719.056640625,
+            "y": 528.2467651367188,
+            "width": 110.431396484375,
+            "height": 16.98944091796875,
+            "top": 528.2467651367188,
+            "right": 829.488037109375,
+            "bottom": 545.2362060546875,
+            "left": 719.056640625
+          },
+          "contained": true,
+          "contrast": 7.9046884551695875,
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "passed": true
+    },
+    {
+      "gallery": "d3-animated-svg-colorset2",
+      "item": "bowtie-barriers",
+      "state": "expanded",
+      "markerArrowCount": 18,
+      "glyphCount": 0,
+      "targetPorts": [
+        {
+          "targetId": "inspection-program",
+          "port": "top",
+          "alignment": 1,
+          "clearance": 11,
+          "passed": true
+        },
+        {
+          "targetId": "deluge-system",
+          "port": "top",
+          "alignment": 1,
+          "clearance": 4,
+          "passed": true
+        }
+      ],
+      "instrumentLabels": [],
+      "calloutLabels": [
+        {
+          "calloutId": "inspection-gap",
+          "text": "inspection overdue",
+          "faceFill": "rgb(158, 27, 50)",
+          "actual": "rgb(255, 255, 255)",
+          "expected": "rgb(255, 255, 255)",
+          "fontSize": "7.2px",
+          "textBounds": {
+            "x": 232.2421875,
+            "y": 438.15625,
+            "width": 72.05337524414062,
+            "height": 10,
+            "top": 438.15625,
+            "right": 304.2955627441406,
+            "bottom": 448.15625,
+            "left": 232.2421875
+          },
+          "faceBounds": {
+            "x": 216,
+            "y": 431.15625,
+            "width": 104,
+            "height": 22,
+            "top": 431.15625,
+            "right": 320,
+            "bottom": 453.15625,
+            "left": 216
+          },
+          "contained": true,
+          "contrast": 7.9046884551695875,
+          "passed": true
+        },
+        {
+          "calloutId": "deluge-gap",
+          "text": "deluge offline",
+          "faceFill": "rgb(158, 27, 50)",
+          "actual": "rgb(255, 255, 255)",
+          "expected": "rgb(255, 255, 255)",
+          "fontSize": "6.6px",
+          "textBounds": {
+            "x": 676.4453125,
+            "y": 522.9562377929688,
+            "width": 48.02886962890625,
+            "height": 9,
+            "top": 522.9562377929688,
+            "right": 724.4741821289062,
+            "bottom": 531.9562377929688,
+            "left": 676.4453125
+          },
+          "faceBounds": {
+            "x": 648,
+            "y": 519.15625,
+            "width": 104,
+            "height": 16,
+            "top": 519.15625,
+            "right": 752,
+            "bottom": 535.15625,
+            "left": 648
+          },
+          "contained": true,
+          "contrast": 7.9046884551695875,
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "passed": true
+    },
+    {
+      "gallery": "d3-animated-svg-colorset2",
+      "item": "bowtie-barriers",
+      "state": "fit",
+      "markerArrowCount": 18,
+      "glyphCount": 0,
+      "targetPorts": [
+        {
+          "targetId": "inspection-program",
+          "port": "top",
+          "alignment": 1,
+          "clearance": 11,
+          "passed": true
+        },
+        {
+          "targetId": "deluge-system",
+          "port": "top",
+          "alignment": 1,
+          "clearance": 4,
+          "passed": true
+        }
+      ],
+      "instrumentLabels": [],
+      "calloutLabels": [
+        {
+          "calloutId": "inspection-gap",
+          "text": "inspection overdue",
+          "faceFill": "rgb(158, 27, 50)",
+          "actual": "rgb(255, 255, 255)",
+          "expected": "rgb(255, 255, 255)",
+          "fontSize": "7.2px",
+          "textBounds": {
+            "x": 277.6198425292969,
+            "y": 442.732421875,
+            "width": 76.151123046875,
+            "height": 10,
+            "top": 442.732421875,
+            "right": 353.7709655761719,
+            "bottom": 452.732421875,
+            "left": 277.6198425292969
+          },
+          "faceBounds": {
+            "x": 260.3416748046875,
+            "y": 434.8048095703125,
+            "width": 110.43136596679688,
+            "height": 23.360504150390625,
+            "top": 434.8048095703125,
+            "right": 370.7730407714844,
+            "bottom": 458.1653137207031,
+            "left": 260.3416748046875
+          },
+          "contained": true,
+          "contrast": 7.9046884551695875,
+          "passed": true
+        },
+        {
+          "calloutId": "deluge-gap",
+          "text": "deluge offline",
+          "faceFill": "rgb(158, 27, 50)",
+          "actual": "rgb(255, 255, 255)",
+          "expected": "rgb(255, 255, 255)",
+          "fontSize": "6.6px",
+          "textBounds": {
+            "x": 749.2880249023438,
+            "y": 532.7146606445312,
+            "width": 50.63665771484375,
+            "height": 9,
+            "top": 532.7146606445312,
+            "right": 799.9246826171875,
+            "bottom": 541.7146606445312,
+            "left": 749.2880249023438
+          },
+          "faceBounds": {
+            "x": 719.056640625,
+            "y": 528.2467651367188,
+            "width": 110.431396484375,
+            "height": 16.98944091796875,
+            "top": 528.2467651367188,
+            "right": 829.488037109375,
+            "bottom": 545.2362060546875,
+            "left": 719.056640625
+          },
+          "contained": true,
+          "contrast": 7.9046884551695875,
+          "passed": true
+        }
+      ],
+      "failures": [],
+      "passed": true
+    }
+  ],
+  "currentD3PayloadSha256": "9d9e1a54cc1508bed56301be068c6d8948e510156350f28c40958a96a0644bb2",
+  "method": "30 unchanged pattern states plus 6 fresh final bowtie states; the finalizer and other pattern geometry/paint code are unchanged by the final callout delta.",
+  "gallerySourceSha256": "7c7977478b6c8e2494e82f8916fb7556027a55efa2af0983758b3689feda43e1",
+  "finalizerSha256": "755e27738f2841a2f2abb9ff92017c515a5bd6d8326a9d3609519160673ee66d"
+}

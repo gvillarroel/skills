@@ -34,6 +34,8 @@ Use deterministic inline data for gallery fixtures. Keep process line geometry s
 5. Keep the process pipe behind equipment and labels. Moving flow pulses must travel on pipe centerlines, not across text.
 6. Keep all text short: equipment tags, instrument tags, loop numbers, and one compact legend.
 
+7. Route control/safety signals around equipment and neighboring instrument bubbles. Leave at least 4 units at their actual filled ports; keep variable-width pipe heads in user-space units.
+
 ## Color Roles
 
 - Neutral ink and grays: equipment shells, diagram frame, non-emphasis linework.

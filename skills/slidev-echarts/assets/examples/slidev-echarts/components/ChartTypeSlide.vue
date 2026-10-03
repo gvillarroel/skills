@@ -23,6 +23,7 @@
         height="280px"
         :renderer="renderer"
         :replayable="renderer === 'svg'"
+        :arrow-terminal-clearance="spec.type === 'lines' ? 7 : 0"
         :aria-label="`${spec.title} animation demo`"
         class-name="chart-lab-frame"
       />

@@ -1,0 +1,132 @@
+[
+  {
+    "palette": "colorset1",
+    "instrumentLabels": [
+      {
+        "id": "lic-101",
+        "fill": "rgb(79, 79, 79)",
+        "groupOpacity": "1",
+        "text": [
+          {
+            "text": "LIC",
+            "fill": "rgb(0, 0, 0)"
+          },
+          {
+            "text": "101",
+            "fill": "rgb(0, 0, 0)"
+          }
+        ]
+      },
+      {
+        "id": "tic-102",
+        "fill": "rgb(158, 27, 50)",
+        "groupOpacity": "1",
+        "text": [
+          {
+            "text": "TIC",
+            "fill": "rgb(0, 0, 0)"
+          },
+          {
+            "text": "102",
+            "fill": "rgb(0, 0, 0)"
+          }
+        ]
+      },
+      {
+        "id": "fic-103",
+        "fill": "rgb(109, 18, 34)",
+        "groupOpacity": "1",
+        "text": [
+          {
+            "text": "FIC",
+            "fill": "rgb(0, 0, 0)"
+          },
+          {
+            "text": "103",
+            "fill": "rgb(0, 0, 0)"
+          }
+        ]
+      },
+      {
+        "id": "hs-104",
+        "fill": "rgb(158, 27, 50)",
+        "groupOpacity": "1",
+        "text": [
+          {
+            "text": "HS",
+            "fill": "rgb(0, 0, 0)"
+          },
+          {
+            "text": "104",
+            "fill": "rgb(0, 0, 0)"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "palette": "colorset2",
+    "instrumentLabels": [
+      {
+        "id": "lic-101",
+        "fill": "rgb(69, 132, 42)",
+        "groupOpacity": "1",
+        "text": [
+          {
+            "text": "LIC",
+            "fill": "rgb(0, 0, 0)"
+          },
+          {
+            "text": "101",
+            "fill": "rgb(0, 0, 0)"
+          }
+        ]
+      },
+      {
+        "id": "tic-102",
+        "fill": "rgb(231, 114, 4)",
+        "groupOpacity": "1",
+        "text": [
+          {
+            "text": "TIC",
+            "fill": "rgb(0, 0, 0)"
+          },
+          {
+            "text": "102",
+            "fill": "rgb(0, 0, 0)"
+          }
+        ]
+      },
+      {
+        "id": "fic-103",
+        "fill": "rgb(101, 47, 108)",
+        "groupOpacity": "1",
+        "text": [
+          {
+            "text": "FIC",
+            "fill": "rgb(0, 0, 0)"
+          },
+          {
+            "text": "103",
+            "fill": "rgb(0, 0, 0)"
+          }
+        ]
+      },
+      {
+        "id": "hs-104",
+        "fill": "rgb(158, 27, 50)",
+        "groupOpacity": "1",
+        "text": [
+          {
+            "text": "HS",
+            "fill": "rgb(0, 0, 0)"
+          },
+          {
+            "text": "104",
+            "fill": "rgb(0, 0, 0)"
+          }
+        ]
+      }
+    ]
+  }
+]

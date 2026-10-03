@@ -366,7 +366,7 @@ def build(brief_path, project, refresh=False):
     for folder in ["vendor", "fonts"]:
         shutil.copytree(BUNDLE / "assets" / folder, project / "assets" / folder, dirs_exist_ok=True)
     scripts = project / "scripts"; scripts.mkdir(exist_ok=True)
-    for name in ["hf.ts", "local-runtime.ts", "audit.ts"]:
+    for name in ["hf.ts", "local-runtime.ts", "audit.ts", "arrow-quality.js"]:
         shutil.copy2(templates / name, scripts / name)
     shutil.copy2(templates / "kernel.js", project / "kernel.js")
     palettes = json.loads((BUNDLE / "assets/palettes/colorsets.json").read_text(encoding="utf-8"))["colorsets"]

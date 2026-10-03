@@ -111,8 +111,27 @@ class ScaffoldTests(unittest.TestCase):
             for i in range(2):
                 before, after, edge = ids[f"node-{i}"], ids[f"node-{i+1}"], ids[f"edge-{i}-{i+1}-shaft"]
                 axis, extent = ("x", "width") if direction == "horizontal" else ("y", "height")
-                self.assertAlmostEqual(float(edge.get(axis + "1")), float(before.get(axis)) + float(before.get(extent)), places=4)
-                self.assertAlmostEqual(float(edge.get(axis + "2")), float(after.get(axis)), places=4)
+                self.assertAlmostEqual(float(edge.get(axis + "1")), float(before.get(axis)) + float(before.get(extent)) + 4, places=4)
+                self.assertAlmostEqual(float(edge.get(axis + "2")), float(after.get(axis)) - 4, places=4)
+
+    def test_direction_paint_is_independent_of_light_nodes_and_dark_canvas(self):
+        recipe = scaffold.defaults("flow")
+        recipe['style'].update(colorset='colorset2', color='#f1c319')
+        root = ET.fromstring(scaffold.build(recipe))
+        directions = [e for e in root.iter() if e.get('data-direction-role')]
+        self.assertTrue(all(e.get('stroke') == '#000000' for e in directions))
+        self.assertTrue(all(e.get('fill') == 'none' for e in directions if e.get('data-direction-role') == 'head'))
+        recipe['canvas']['background'] = '#1c1c1c'
+        root = ET.fromstring(scaffold.build(recipe))
+        self.assertTrue(all(e.get('stroke') == '#ffffff' for e in root.iter() if e.get('data-direction-role')))
+        recipe['style']['arrow_color'] = '#f1c319'
+        recipe['canvas']['background'] = '#ffffff'
+        with self.assertRaisesRegex(ValueError, '3:1'):
+            scaffold.build(recipe)
+        recipe['style'].pop('arrow_color')
+        recipe['underlay'] = [{'tag': 'rect', 'attrs': {'width': 720, 'height': 300, 'fill': '#1c1c1c'}}]
+        root = ET.fromstring(scaffold.build(recipe))
+        self.assertTrue(all(e.get('stroke') == '#ffffff' for e in root.iter() if e.get('data-direction-role')))
 
     def test_panel_retains_requested_strings(self):
         recipe = scaffold.defaults("panel")

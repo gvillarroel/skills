@@ -15,8 +15,10 @@ function paintChannels(value) {
     const hex = h[1].length < 5 ? [...h[1]].map(c => c+c).join('') : h[1]
     return [...rgb('#'+hex.slice(0,6)),hex.length === 8 ? parseInt(hex.slice(6),16)/255 : 1]
   }
-  const m = /^rgba?\(\s*([\d.]+)[, ]+([\d.]+)[, ]+([\d.]+)(?:\s*[,/]\s*([\d.]+))?\s*\)$/.exec(v)
-  return m ? [Number(m[1]),Number(m[2]),Number(m[3]),m[4] === undefined ? 1 : Number(m[4])] : null
+  const m = /^rgba?\(\s*([\d.]+)[, ]+([\d.]+)[, ]+([\d.]+)(?:\s*[,/]\s*([\d.]+)(%)?)?\s*\)$/.exec(v)
+  if (!m) return null
+  const channels = [Number(m[1]),Number(m[2]),Number(m[3]),m[4] === undefined ? 1 : Math.max(0,Math.min(1,Number(m[4])/(m[5] ? 100 : 1)))]
+  return channels.every(Number.isFinite) ? channels : null
 }
 function paintHex(channels) {
   return '#'+channels.slice(0,3).map(c => Math.round(c).toString(16).padStart(2,'0')).join('')
@@ -43,6 +45,118 @@ function contrast(a,b) {
 }
 export function readableText(fill) {
   return contrast(fill,'#000000') >= contrast(fill,'#ffffff') ? '#000000' : '#ffffff'
+}
+export function contrastSafeArrowStyle(style = {}, colorset = 'colorset1', background = '#ffffff') {
+  // Inspect the visible composite, including both color alpha and line opacity.
+  const normalizedSurface = normalizePaint(background,colorset)
+  const surface = normalizedSurface === 'transparent' ? [255,255,255,0] : paintChannels(normalizedSurface)
+  if (!surface) throw new Error('Arrow backing requires a known solid color; inspect gradients or unresolved paint explicitly')
+  const backing = surface.slice(0,3).map(c => c*surface[3]+255*(1-surface[3]))
+  const raw = normalizePaint(style.color ?? '#696969',colorset)
+  const channels = raw === 'transparent' ? [0,0,0,0] : paintChannels(raw)
+  if (!channels) throw new Error('Arrow paint requires a known solid color; resolve gradients or CSS paint before qualification')
+  const opacity = Math.max(0,Math.min(1,Number(style.opacity ?? 1)))
+  const width = Math.max(1.5,Number(style.width ?? 2))
+  if (!Number.isFinite(opacity) || !Number.isFinite(width)) throw new Error('Arrow opacity and width must be finite numbers')
+  const luminanceChannels = c => c.map(v => v/255).map(v => v <= .04045 ? v/12.92 : ((v+.055)/1.055)**2.4).reduce((sum,v,i) => sum+v*[.2126,.7152,.0722][i],0)
+  const level = color => {
+    const a=luminanceChannels(color),b=luminanceChannels(backing)
+    return (Math.max(a,b)+.05)/(Math.min(a,b)+.05)
+  }
+  const alpha = channels[3]*opacity
+  const visible = channels.slice(0,3).map((c,i) => c*alpha+backing[i]*(1-alpha))
+  if (level(visible) >= 3) return {...style,color:raw,opacity,width}
+  const choices = colorsets[colorset].filter(color => level(rgb(color)) >= 3)
+  if (!choices.length) throw new Error('No allowed arrow paint contrasts with this backing; use a clear route gutter')
+  const origin = channels.slice(0,3)
+  const color = choices.reduce((best,value) => {
+    const distance = c => rgb(c).reduce((sum,v,i) => sum+(v-origin[i])**2,0)
+    return distance(value) < distance(best) ? value : best
+  })
+  return {...style,color,opacity:1,width}
+}
+export function insetCartesianArrowRoutes(option, chart, clearancePx = 7) {
+  // Call after the original option is laid out; always pass original route data
+  // again after resizing so clearance is in pixels rather than data units.
+  if (!Number.isFinite(clearancePx) || clearancePx < 0) throw new Error('Arrow clearance must be a finite nonnegative pixel distance')
+  if (!clearancePx) return option
+  const seriesList=Array.isArray(option.series)?option.series:[option.series]
+  const series=seriesList.map((series,index)=>{
+    if (series?.type!=='lines' || series.coordinateSystem!=='cartesian2d') return series
+    const layout=chart.getOption()
+    if (layout.xAxis?.[series.xAxisIndex??0]?.type==='category' || layout.yAxis?.[series.yAxisIndex??0]?.type==='category') throw new Error('Arrow inset requires continuous Cartesian axes; qualify categorical routes explicitly')
+    return {...series,data:(series.data??[]).map(edge=>{
+      const symbols=edge.symbol??series.symbol
+      const ends=Array.isArray(symbols)?symbols:[symbols,symbols]
+      if (!ends.includes('arrow')) return edge
+      if (series.polyline || !Array.isArray(edge.coords) || edge.coords.length!==2) throw new Error('Arrow inset supports two-point Cartesian routes; qualify other geometry explicitly')
+      const finder={seriesIndex:index},points=edge.coords.map(point=>chart.convertToPixel(finder,point))
+      if (points.some(p=>!Array.isArray(p)||p.some(v=>!Number.isFinite(v)))) throw new Error('Initialize the Cartesian chart before applying arrow clearance')
+      const [a,b]=points,dx=b[0]-a[0],dy=b[1]-a[1]
+      if (Math.hypot(dx,dy)<clearancePx*3) throw new Error('Route is too short for the requested arrow clearance')
+      const curve=Number(edge.lineStyle?.curveness??series.lineStyle?.curveness??0)
+      if (!Number.isFinite(curve)) throw new Error('Arrow route curveness must be a finite number')
+      const control=[(a[0]+b[0])/2+dy*curve,(a[1]+b[1])/2-dx*curve]
+      const coords=edge.coords.map((point,end)=>{
+        if (ends[end]!=='arrow') return [...point]
+        const anchor=points[end],direction=[control[0]-anchor[0],control[1]-anchor[1]],length=Math.hypot(...direction)
+        return chart.convertFromPixel(finder,anchor.map((v,i)=>v+direction[i]*clearancePx/length))
+      })
+      return {...edge,coords}
+    })}
+  })
+  return {...option,series:Array.isArray(option.series)?series:series[0]}
+}
+function arrowPresentation(seriesList, colorset, canvas) {
+  const hasArrow = symbols => (Array.isArray(symbols) ? symbols : [symbols]).some(symbol => symbol === 'arrow')
+  const states = ['emphasis','select','blur']
+  for (const series of seriesList) {
+    const nodes = new Map()
+    for (const [index,node] of (series.data ?? []).entries()) {
+      if (node && typeof node === 'object') for (const key of [index,node.id,node.name]) if (key !== undefined) nodes.set(String(key),node)
+    }
+    const resolve = (style,edge) => {
+      const color = style.color
+      const node = color === 'source' ? nodes.get(String(edge?.source)) : color === 'target' ? nodes.get(String(edge?.target)) : null
+      return {...style,color:node?.itemStyle?.color ?? (['source','target','auto'].includes(color) ? '#696969' : color ?? '#696969')}
+    }
+    const finish = (owner,base,edge) => {
+      owner.lineStyle = contrastSafeArrowStyle(resolve({...base,...owner.lineStyle},edge),colorset,canvas)
+      for (const state of states) {
+        owner[state] ??= {}
+        owner[state].lineStyle = contrastSafeArrowStyle(resolve({...owner.lineStyle,...owner[state].lineStyle},edge),colorset,canvas)
+      }
+    }
+    if (series.type === 'graph') {
+      const directed = hasArrow(series.edgeSymbol)
+      if (directed) finish(series,series.lineStyle ?? {})
+      for (const edge of series.links ?? series.edges ?? []) if (directed || hasArrow(edge.symbol)) finish(edge,series.lineStyle ?? {},edge)
+    } else if (series.type === 'lines') {
+      // Native EffectLine is chosen at series level. An edge's show:false
+      // does not disable its glyph once that renderer has been selected.
+      const moving = effect => series.effect?.show && hasArrow(effect?.symbol)
+      const finishEffect = (owner, inherited, lineStyle) => {
+        const effect = {...inherited,...owner}
+        const style = contrastSafeArrowStyle({color:effect.color ?? lineStyle.color,opacity:effect.opacity ?? 1},colorset,canvas)
+        owner.color = style.color
+        owner.opacity = style.opacity
+      }
+      const directed = hasArrow(series.symbol)
+      if (directed || moving(series.effect)) finish(series,series.lineStyle ?? {})
+      if (moving(series.effect)) finishEffect(series.effect,{},series.lineStyle)
+      for (const edge of series.data ?? []) if (edge && typeof edge === 'object') {
+        const effect = {...series.effect,...edge.effect}
+        if (hasArrow(edge.symbol ?? series.symbol) || moving(effect)) finish(edge,series.lineStyle ?? {},edge)
+        if (moving(effect) && edge.effect) finishEffect(edge.effect,series.effect,edge.lineStyle)
+      }
+    }
+    const terminalArrow = series.markLine?.data?.some(entry => (Array.isArray(entry)?entry:[entry]).some(terminal => hasArrow(terminal?.symbol)))
+    if (series.markLine && (series.markLine.symbol === undefined || hasArrow(series.markLine.symbol) || terminalArrow)) {
+      const mark = series.markLine
+      finish(mark,mark.lineStyle ?? {})
+      for (const entry of mark.data ?? []) for (const edge of Array.isArray(entry) ? entry : [entry]) if (edge && typeof edge === 'object') finish(edge,mark.lineStyle,edge)
+    }
+  }
 }
 export function solidColors(colorset = 'colorset1', canvas = '#ffffff') {
   return sequences[colorset].filter((color) => color !== canonicalOpaque(canvas))
@@ -120,6 +234,7 @@ function solidPresentation(option, colorset, canvas, categoryOrder = []) {
     }
     visit(series,solidCategoryStyle(index,colorset,canvas),{},positions[series.type] ?? 'outside',shapeTypes.has(series.type))
   })
+  arrowPresentation(seriesList,colorset,option.backgroundColor ?? '#ffffff')
   if (option.tooltip) option.tooltip.borderWidth = 0
 }
 
@@ -244,5 +359,5 @@ export function enforceColorsetRenderer(container, colorset = 'colorset1') {
 }
 export function colorsetTheme(colorset = 'colorset1') {
   const axis = { axisLine:{lineStyle:{color:'#cfcfcf'}},axisTick:{lineStyle:{color:'#cfcfcf'}},axisLabel:{color:'#696969'},splitLine:{lineStyle:{color:'#e7e7e7'}},splitArea:{areaStyle:{color:['#ffffff','#f7f7f7']}} }
-  return { color: sequences[colorset], backgroundColor:'#ffffff', textStyle:{color:'#333e48'}, title:{textStyle:{color:'#333e48'},subtextStyle:{color:'#696969'}},legend:{textStyle:{color:'#333e48'}},categoryAxis:axis,valueAxis:axis,timeAxis:axis,logAxis:axis,radar:axis,tooltip:{backgroundColor:'#ffffff',borderWidth:0,borderColor:'#cfcfcf',textStyle:{color:'#333e48'}},candlestick:{itemStyle:{color:'#9e1b32',color0:colorset==='colorset2'?'#45842a':'#333e48',borderColor:'#6d1222',borderColor0:'#696969'}},tree:{lineStyle:{color:'#cfcfcf'}},graph:{lineStyle:{color:'#cfcfcf'}},sankey:{lineStyle:{color:'#828282'}},gauge:{axisLine:{lineStyle:{color:[[1,'#cfcfcf']]}},axisTick:{lineStyle:{color:'#828282'}},splitLine:{lineStyle:{color:'#696969'}},axisLabel:{color:'#696969'},detail:{color:'#333e48'}},calendar:{itemStyle:{color:'#ffffff',borderColor:'#cfcfcf'},dayLabel:{color:'#696969'},monthLabel:{color:'#696969'},yearLabel:{color:'#333e48'}} }
+  return { color: sequences[colorset], backgroundColor:'#ffffff', textStyle:{color:'#333e48'}, title:{textStyle:{color:'#333e48'},subtextStyle:{color:'#696969'}},legend:{textStyle:{color:'#333e48'}},categoryAxis:axis,valueAxis:axis,timeAxis:axis,logAxis:axis,radar:axis,tooltip:{backgroundColor:'#ffffff',borderWidth:0,borderColor:'#cfcfcf',textStyle:{color:'#333e48'}},candlestick:{itemStyle:{color:'#9e1b32',color0:colorset==='colorset2'?'#45842a':'#333e48',borderColor:'#6d1222',borderColor0:'#696969'}},tree:{lineStyle:{color:'#696969',opacity:1,width:2}},graph:{lineStyle:{color:'#696969',opacity:1,width:2}},lines:{lineStyle:{color:'#696969',opacity:1,width:2}},sankey:{lineStyle:{color:'#828282'}},gauge:{axisLine:{lineStyle:{color:[[1,'#cfcfcf']]}},axisTick:{lineStyle:{color:'#828282'}},splitLine:{lineStyle:{color:'#696969'}},axisLabel:{color:'#696969'},detail:{color:'#333e48'}},calendar:{itemStyle:{color:'#ffffff',borderColor:'#cfcfcf'},dayLabel:{color:'#696969'},monthLabel:{color:'#696969'},yearLabel:{color:'#333e48'}} }
 }

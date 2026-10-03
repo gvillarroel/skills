@@ -1,5 +1,10 @@
 # D3 Flowchart DAG
 
+## Contents
+
+- [Reuse Contract](#reuse-contract)
+- [Source Excerpt](#source-excerpt)
+
 - **Pattern ID:** `d3-flowchart-dag`
 - **Gallery source ID:** `flowchart-dag`
 - **Family:** Diagram
@@ -26,7 +31,7 @@ function renderD3FlowchartDag() {
       { id: "start", label: "Start", type: "circle", x: 52, y: 210, w: 56, h: 56, fill: palette.blueHighlight, stroke: palette.blue },
       { id: "collect", label: "Collect\nrequest", type: "input", x: 145, y: 210, w: 90, h: 54, fill: palette.surface, stroke: palette.blue },
       { id: "validate", label: "Valid\npayload?", type: "diamond", x: 258, y: 210, w: 82, h: 70, fill: palette.yellowHighlight, stroke: palette.orange },
-      { id: "persist", label: "Store\nevent", type: "store", x: 374, y: 140, w: 96, h: 48, fill: palette.yellowHighlight, stroke: palette.orange },
+      { id: "persist", label: "Store\nevent", type: "store", x: 354, y: 140, w: 96, h: 48, fill: palette.yellowHighlight, stroke: palette.orange },
       { id: "repair", label: "Repair\ninput", type: "rect", x: 374, y: 282, w: 96, h: 48, fill: palette.redHighlight, stroke: palette.red },
       { id: "notify", label: "Notify\nsubscriber", type: "rect", x: 486, y: 140, w: 112, h: 48, fill: palette.greenHighlight, stroke: palette.green },
       { id: "done", label: "Done", type: "double", x: 522, y: 250, w: 58, h: 58, fill: palette.blueHighlight, stroke: palette.blue }
@@ -53,9 +58,10 @@ function renderD3FlowchartDag() {
       if (d.loop) return "M330,282C248,336 132,326 116,238";
       const s = nodeEdge(source, target);
       const t = nodeEdge(target, source);
-      const mx = (s.x + t.x) / 2;
-      const bend = d.bend || 0;
-      return `M${s.x},${s.y}C${mx},${s.y + bend} ${mx},${t.y + bend} ${t.x},${t.y}`;
+      const reach = Math.max(20, Math.hypot(t.x-s.x,t.y-s.y)*.42);
+      const sx = Math.sign(s.x-source.x), sy = Math.sign(s.y-source.y);
+      const tx = Math.sign(t.x-target.x), ty = Math.sign(t.y-target.y);
+      return `M${s.x},${s.y}C${s.x+sx*reach},${s.y+sy*reach} ${t.x+tx*reach},${t.y+ty*reach} ${t.x},${t.y}`;
     };
     const paths = svg.append("g").selectAll("path.flow-link").data(links).join("path")
       .attr("class", "flow-link")

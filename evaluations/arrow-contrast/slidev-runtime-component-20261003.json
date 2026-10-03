@@ -1,0 +1,853 @@
+{
+  "date": "2026-10-03",
+  "passed": true,
+  "errors": [],
+  "states": [
+    {
+      "id": "component-no-preference-640-0",
+      "runId": "20261003-arrow-slidev-echarts-final-8",
+      "shaftCount": 3,
+      "headCount": 3,
+      "records": [
+        {
+          "kind": "shaft",
+          "paint": "rgb(130, 130, 130)",
+          "effectiveOpacity": 1,
+          "width": "2px",
+          "minimumContrast": 3.8429449545037673,
+          "sampleCount": 5,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "shaft",
+          "paint": "rgb(130, 130, 130)",
+          "effectiveOpacity": 1,
+          "width": "2px",
+          "minimumContrast": 3.8429449545037673,
+          "sampleCount": 5,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "shaft",
+          "paint": "rgb(130, 130, 130)",
+          "effectiveOpacity": 1,
+          "width": "2px",
+          "minimumContrast": 3.8429449545037673,
+          "sampleCount": 5,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "head",
+          "paint": "rgb(130, 130, 130)",
+          "effectiveOpacity": 1,
+          "width": "1px",
+          "minimumContrast": 3.8429449545037673,
+          "sampleCount": 9,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "head",
+          "paint": "rgb(130, 130, 130)",
+          "effectiveOpacity": 1,
+          "width": "1px",
+          "minimumContrast": 3.8429449545037673,
+          "sampleCount": 9,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "head",
+          "paint": "rgb(130, 130, 130)",
+          "effectiveOpacity": 1,
+          "width": "1px",
+          "minimumContrast": 3.8429449545037673,
+          "sampleCount": 9,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        }
+      ],
+      "passed": true
+    },
+    {
+      "id": "component-no-preference-640-1",
+      "runId": "20261003-arrow-slidev-echarts-final-8",
+      "shaftCount": 3,
+      "headCount": 3,
+      "records": [
+        {
+          "kind": "shaft",
+          "paint": "rgb(130, 130, 130)",
+          "effectiveOpacity": 1,
+          "width": "2px",
+          "minimumContrast": 3.8429449545037673,
+          "sampleCount": 5,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "shaft",
+          "paint": "rgb(130, 130, 130)",
+          "effectiveOpacity": 1,
+          "width": "2px",
+          "minimumContrast": 3.8429449545037673,
+          "sampleCount": 5,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "shaft",
+          "paint": "rgb(130, 130, 130)",
+          "effectiveOpacity": 1,
+          "width": "2px",
+          "minimumContrast": 3.8429449545037673,
+          "sampleCount": 5,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "head",
+          "paint": "rgb(130, 130, 130)",
+          "effectiveOpacity": 1,
+          "width": "1px",
+          "minimumContrast": 3.8429449545037673,
+          "sampleCount": 9,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "head",
+          "paint": "rgb(130, 130, 130)",
+          "effectiveOpacity": 1,
+          "width": "1px",
+          "minimumContrast": 3.8429449545037673,
+          "sampleCount": 9,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "head",
+          "paint": "rgb(130, 130, 130)",
+          "effectiveOpacity": 1,
+          "width": "1px",
+          "minimumContrast": 3.8429449545037673,
+          "sampleCount": 9,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        }
+      ],
+      "passed": true
+    },
+    {
+      "id": "component-no-preference-1000-0",
+      "runId": "20261003-arrow-slidev-echarts-final-8",
+      "shaftCount": 3,
+      "headCount": 3,
+      "records": [
+        {
+          "kind": "shaft",
+          "paint": "rgb(130, 130, 130)",
+          "effectiveOpacity": 1,
+          "width": "2px",
+          "minimumContrast": 3.8429449545037673,
+          "sampleCount": 5,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "shaft",
+          "paint": "rgb(130, 130, 130)",
+          "effectiveOpacity": 1,
+          "width": "2px",
+          "minimumContrast": 3.8429449545037673,
+          "sampleCount": 5,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "shaft",
+          "paint": "rgb(130, 130, 130)",
+          "effectiveOpacity": 1,
+          "width": "2px",
+          "minimumContrast": 3.8429449545037673,
+          "sampleCount": 5,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "head",
+          "paint": "rgb(130, 130, 130)",
+          "effectiveOpacity": 1,
+          "width": "1px",
+          "minimumContrast": 3.8429449545037673,
+          "sampleCount": 9,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "head",
+          "paint": "rgb(130, 130, 130)",
+          "effectiveOpacity": 1,
+          "width": "1px",
+          "minimumContrast": 3.8429449545037673,
+          "sampleCount": 9,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "head",
+          "paint": "rgb(130, 130, 130)",
+          "effectiveOpacity": 1,
+          "width": "1px",
+          "minimumContrast": 3.8429449545037673,
+          "sampleCount": 9,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        }
+      ],
+      "passed": true
+    },
+    {
+      "id": "component-no-preference-1000-1",
+      "runId": "20261003-arrow-slidev-echarts-final-8",
+      "shaftCount": 3,
+      "headCount": 3,
+      "records": [
+        {
+          "kind": "shaft",
+          "paint": "rgb(130, 130, 130)",
+          "effectiveOpacity": 1,
+          "width": "2px",
+          "minimumContrast": 3.8429449545037673,
+          "sampleCount": 5,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "shaft",
+          "paint": "rgb(130, 130, 130)",
+          "effectiveOpacity": 1,
+          "width": "2px",
+          "minimumContrast": 3.8429449545037673,
+          "sampleCount": 5,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "shaft",
+          "paint": "rgb(130, 130, 130)",
+          "effectiveOpacity": 1,
+          "width": "2px",
+          "minimumContrast": 3.8429449545037673,
+          "sampleCount": 5,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "head",
+          "paint": "rgb(130, 130, 130)",
+          "effectiveOpacity": 1,
+          "width": "1px",
+          "minimumContrast": 3.8429449545037673,
+          "sampleCount": 9,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "head",
+          "paint": "rgb(130, 130, 130)",
+          "effectiveOpacity": 1,
+          "width": "1px",
+          "minimumContrast": 3.8429449545037673,
+          "sampleCount": 9,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "head",
+          "paint": "rgb(130, 130, 130)",
+          "effectiveOpacity": 1,
+          "width": "1px",
+          "minimumContrast": 3.8429449545037673,
+          "sampleCount": 9,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        }
+      ],
+      "passed": true
+    },
+    {
+      "id": "component-reduce-640-0",
+      "runId": "20261003-arrow-slidev-echarts-final-8",
+      "shaftCount": 3,
+      "headCount": 3,
+      "records": [
+        {
+          "kind": "shaft",
+          "paint": "rgb(130, 130, 130)",
+          "effectiveOpacity": 1,
+          "width": "2px",
+          "minimumContrast": 3.8429449545037673,
+          "sampleCount": 5,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "shaft",
+          "paint": "rgb(130, 130, 130)",
+          "effectiveOpacity": 1,
+          "width": "2px",
+          "minimumContrast": 3.8429449545037673,
+          "sampleCount": 5,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "shaft",
+          "paint": "rgb(130, 130, 130)",
+          "effectiveOpacity": 1,
+          "width": "2px",
+          "minimumContrast": 3.8429449545037673,
+          "sampleCount": 5,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "head",
+          "paint": "rgb(130, 130, 130)",
+          "effectiveOpacity": 1,
+          "width": "1px",
+          "minimumContrast": 3.8429449545037673,
+          "sampleCount": 9,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "head",
+          "paint": "rgb(130, 130, 130)",
+          "effectiveOpacity": 1,
+          "width": "1px",
+          "minimumContrast": 3.8429449545037673,
+          "sampleCount": 9,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "head",
+          "paint": "rgb(130, 130, 130)",
+          "effectiveOpacity": 1,
+          "width": "1px",
+          "minimumContrast": 3.8429449545037673,
+          "sampleCount": 9,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        }
+      ],
+      "passed": true
+    },
+    {
+      "id": "component-reduce-640-1",
+      "runId": "20261003-arrow-slidev-echarts-final-8",
+      "shaftCount": 3,
+      "headCount": 3,
+      "records": [
+        {
+          "kind": "shaft",
+          "paint": "rgb(130, 130, 130)",
+          "effectiveOpacity": 1,
+          "width": "2px",
+          "minimumContrast": 3.8429449545037673,
+          "sampleCount": 5,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "shaft",
+          "paint": "rgb(130, 130, 130)",
+          "effectiveOpacity": 1,
+          "width": "2px",
+          "minimumContrast": 3.8429449545037673,
+          "sampleCount": 5,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "shaft",
+          "paint": "rgb(130, 130, 130)",
+          "effectiveOpacity": 1,
+          "width": "2px",
+          "minimumContrast": 3.8429449545037673,
+          "sampleCount": 5,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "head",
+          "paint": "rgb(130, 130, 130)",
+          "effectiveOpacity": 1,
+          "width": "1px",
+          "minimumContrast": 3.8429449545037673,
+          "sampleCount": 9,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "head",
+          "paint": "rgb(130, 130, 130)",
+          "effectiveOpacity": 1,
+          "width": "1px",
+          "minimumContrast": 3.8429449545037673,
+          "sampleCount": 9,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "head",
+          "paint": "rgb(130, 130, 130)",
+          "effectiveOpacity": 1,
+          "width": "1px",
+          "minimumContrast": 3.8429449545037673,
+          "sampleCount": 9,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        }
+      ],
+      "passed": true
+    },
+    {
+      "id": "component-reduce-1000-0",
+      "runId": "20261003-arrow-slidev-echarts-final-8",
+      "shaftCount": 3,
+      "headCount": 3,
+      "records": [
+        {
+          "kind": "shaft",
+          "paint": "rgb(130, 130, 130)",
+          "effectiveOpacity": 1,
+          "width": "2px",
+          "minimumContrast": 3.8429449545037673,
+          "sampleCount": 5,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "shaft",
+          "paint": "rgb(130, 130, 130)",
+          "effectiveOpacity": 1,
+          "width": "2px",
+          "minimumContrast": 3.8429449545037673,
+          "sampleCount": 5,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "shaft",
+          "paint": "rgb(130, 130, 130)",
+          "effectiveOpacity": 1,
+          "width": "2px",
+          "minimumContrast": 3.8429449545037673,
+          "sampleCount": 5,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "head",
+          "paint": "rgb(130, 130, 130)",
+          "effectiveOpacity": 1,
+          "width": "1px",
+          "minimumContrast": 3.8429449545037673,
+          "sampleCount": 9,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "head",
+          "paint": "rgb(130, 130, 130)",
+          "effectiveOpacity": 1,
+          "width": "1px",
+          "minimumContrast": 3.8429449545037673,
+          "sampleCount": 9,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "head",
+          "paint": "rgb(130, 130, 130)",
+          "effectiveOpacity": 1,
+          "width": "1px",
+          "minimumContrast": 3.8429449545037673,
+          "sampleCount": 9,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        }
+      ],
+      "passed": true
+    },
+    {
+      "id": "component-reduce-1000-1",
+      "runId": "20261003-arrow-slidev-echarts-final-8",
+      "shaftCount": 3,
+      "headCount": 3,
+      "records": [
+        {
+          "kind": "shaft",
+          "paint": "rgb(130, 130, 130)",
+          "effectiveOpacity": 1,
+          "width": "2px",
+          "minimumContrast": 3.8429449545037673,
+          "sampleCount": 5,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "shaft",
+          "paint": "rgb(130, 130, 130)",
+          "effectiveOpacity": 1,
+          "width": "2px",
+          "minimumContrast": 3.8429449545037673,
+          "sampleCount": 5,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "shaft",
+          "paint": "rgb(130, 130, 130)",
+          "effectiveOpacity": 1,
+          "width": "2px",
+          "minimumContrast": 3.8429449545037673,
+          "sampleCount": 5,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "head",
+          "paint": "rgb(130, 130, 130)",
+          "effectiveOpacity": 1,
+          "width": "1px",
+          "minimumContrast": 3.8429449545037673,
+          "sampleCount": 9,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "head",
+          "paint": "rgb(130, 130, 130)",
+          "effectiveOpacity": 1,
+          "width": "1px",
+          "minimumContrast": 3.8429449545037673,
+          "sampleCount": 9,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        },
+        {
+          "kind": "head",
+          "paint": "rgb(130, 130, 130)",
+          "effectiveOpacity": 1,
+          "width": "1px",
+          "minimumContrast": 3.8429449545037673,
+          "sampleCount": 9,
+          "coveredSampleCount": 0,
+          "distinctLocalBackings": [
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        }
+      ],
+      "passed": true
+    }
+  ],
+  "scope": "Independent actual browser inspection of exact accepted Pi artifacts: four native charts, static/reduced/final animation, and generated Vue component compiled and rendered at two widths, click steps and motion preferences. Local samples exclude antialias edge blends. Finishing an animation samples its readable final state; it does not certify every reveal frame.",
+  "detailedSampleEvidence": {
+    "path": "projects/arrow-contrast/artifacts/reviews/detailed-slidev-runtime-component-20261003.json",
+    "sha256": "ac55ad2d022a657dac7fd7ea343f6551317e79b9e116e62f5b60e384555b8d69",
+    "sizeBytes": 81650
+  }
+}

@@ -34,6 +34,8 @@ try {
   page.on('pageerror', error => consoleErrors.push(error.message));
   await page.goto(`http://127.0.0.1:${server.address().port}/index.html`, {waitUntil: 'networkidle0'});
   await page.evaluate(async () => {await document.fonts.ready;});
+  await page.addScriptTag({path: path.join(project, 'scripts/arrow-quality.js')});
+  const arrowStates = [];
   const scenarios = oracle.oracle;
   let checks = 0;
   for (const scenario of [...scenarios, ...scenarios.slice().reverse().filter(s => !Object.keys(s.overrides).length)]) {
@@ -108,8 +110,20 @@ try {
         if (Math.min(a.right,b.right)-Math.max(a.left,b.left)>2 && Math.min(a.bottom,b.bottom)-Math.max(a.top,b.top)>2)
           errors.push(`Overlapping direct labels: ${labels[i].dataset.mark}, ${labels[j].dataset.mark} at ${scenario.time}`);
       }
-      return {errors, state: frame.state};
+      // Calibrated composers materialize heads as normal paths/lines. These
+      // stable semantic IDs expose them to the same actual paint sampler.
+      for (const node of document.querySelectorAll('[data-mark]')) {
+        const id = node.dataset.mark;
+        if (/(^|-)velocity-shaft$/.test(id)) node.dataset.arrowShaft = 'true';
+        if (/(^|-)velocity-head-(up|down)$/.test(id) || /(^|-)position-pointer$/.test(id)) node.dataset.arrowHead = 'true';
+        if (/(^|-)flow-direction$/.test(id)) {node.dataset.arrowShaft='true'; node.dataset.arrowHead='true';}
+        if (/(^|-)velocity-(shaft|head-up|head-down)$/.test(id)) node.dataset.arrowId=id.replace(/velocity-(shaft|head-up|head-down)$/,'velocity');
+      }
+      const arrows = window.auditArrowPaint({selector: 'svg'});
+      errors.push(...arrows.issues.map(issue => `Arrow ${issue.kind}: ${issue.id || issue.arrow || 'unnamed'}`));
+      return {errors, state: frame.state, arrows};
     }, {scenario, bindings: oracle.bindings});
+    arrowStates.push({time: scenario.time, overrides: scenario.overrides, ...result.arrows});
     for (const error of result.errors) if (!findings.includes(error)) findings.push(error);
     checks++;
   }
@@ -154,9 +168,10 @@ try {
     await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));}, brief.output.duration*.65);
   mkdirSync(path.dirname(screenshotPath), {recursive: true}); await page.screenshot({path: screenshotPath});
   findings.push(...consoleErrors);
+  if (findings.length) process.exitCode = 1;
   mkdirSync(path.dirname(reportPath), {recursive: true});
   writeFileSync(reportPath, JSON.stringify({ok: !findings.length, findings, sampledFrames: checks,
-    palette: oracle.palette, inputTests, previewTest, screenshot: screenshotPath}, null, 2));
+    palette: oracle.palette, arrowStates, inputTests, previewTest, screenshot: screenshotPath}, null, 2));
   console.log(JSON.stringify({ok: !findings.length, report: reportPath, findings: findings.length, sampledFrames: checks}));
 } catch (error) {
   mkdirSync(path.dirname(reportPath), {recursive: true});

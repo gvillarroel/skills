@@ -67,7 +67,7 @@ class Renderer:
         defs = element(self.root, "defs")
         marker = element(defs, "marker", {"id": "arrow", "viewBox": "0 0 10 10", "refX": 9, "refY": 5,
             "markerWidth": 7, "markerHeight": 7, "markerUnits": "userSpaceOnUse", "orient": "auto-start-reverse"})
-        element(marker, "path", {"d": "M1 1L9 5L1 9Z", "fill": LINE, "stroke": "none"})
+        element(marker, "path", {"d": "M1 1L9 5L1 9Z", "fill": MUTED, "stroke": "none"})
 
     def rect(self, x, y, w, h, fill="#f7f7f7", stroke="none", radius=5):
         for paint in (fill, stroke):
@@ -172,7 +172,7 @@ class Renderer:
         self.ports_for(node["id"], x, y, w, h, mark=box, concept=node.get("concept"))
 
     def path(self, points, directed=False, label=None, owners=None):
-        attrs = {"d": "M " + " L ".join(f"{x},{y}" for x,y in points), "fill": "none", "stroke": LINE, "stroke-width": 1.5, "data-connector":"native"}
+        attrs = {"d": "M " + " L ".join(f"{x},{y}" for x,y in points), "fill": "none", "stroke": MUTED, "stroke-width": 1.8, "data-connector":"native"}
         if owners:
             attrs.update({"data-from-node":owners[0],"data-to-node":owners[1]})
         if directed: attrs["marker-end"] = "url(#arrow)"

@@ -1,3 +1,4 @@
+import {drawArrow as safeArrow, finishArrows} from './svg-arrows.js';
 // Quantize animated paint changes to the declared colorset2 token set.
 const authoredColorset2 = ["#000000", "#004d66", "#007298", "#00ace6", "#1c1c1c", "#294d19", "#333e48", "#363636", "#36b300", "#431f47", "#45842a", "#4f4f4f", "#652f6c", "#696969", "#6d1222", "#828282", "#98700c", "#994a00", "#9c9c9c", "#9e00b3", "#9e1b32", "#b5b5b5", "#cdf3ff", "#cfcfcf", "#dbffcc", "#e77204", "#e7e7e7", "#e8002a", "#f1c319", "#f7f7f7", "#f9ccff", "#ff9633", "#ffccd5", "#ffd332", "#ffe5cc", "#fff4cc", "#ffffff"];
 globalThis.quantizeColorset2 = (a, b, t) => {
@@ -260,7 +261,7 @@ function prepareSvg(concept, seconds) {
   merge.append("feMergeNode").attr("in", "SourceGraphic");
 
   svg.append("rect").attr("width", frameWidth).attr("height", frameHeight).attr("fill", "#ffffff");
-  svg.append("rect").attr("width", frameWidth).attr("height", frameHeight).attr("fill", "url(#soft-grid)").attr("opacity", visualOnly ? 0.34 : 0.72);
+  // Directional routes use the existing solid canvas, without decorative grid paint.
   if (!visualOnly) {
     svg.append("text")
       .attr("x", 24)
@@ -390,25 +391,7 @@ function solidCategorySurfaces(root) {
 }
 
 function arrow(g, x1, y1, x2, y2, color = palette.gray500, opacity = 1, width = 2.5) {
-  const dx = x2 - x1;
-  const dy = y2 - y1;
-  const angle = Math.atan2(dy, dx);
-  const head = 9;
-  const hx = x2 - Math.cos(angle) * head;
-  const hy = y2 - Math.sin(angle) * head;
-  g.append("line")
-    .attr("x1", x1)
-    .attr("y1", y1)
-    .attr("x2", hx)
-    .attr("y2", hy)
-    .attr("stroke", color)
-    .attr("stroke-width", width)
-    .attr("stroke-linecap", "round")
-    .attr("opacity", opacity);
-  g.append("path")
-    .attr("d", `M${x2},${y2} L${hx - Math.cos(angle - Math.PI / 2) * 5},${hy - Math.sin(angle - Math.PI / 2) * 5} L${hx - Math.cos(angle + Math.PI / 2) * 5},${hy - Math.sin(angle + Math.PI / 2) * 5} Z`)
-    .attr("fill", color)
-    .attr("opacity", opacity);
+  safeArrow(g, {x:x1,y:y1}, {x:x2,y:y2}, color, opacity, width, 9);
 }
 
 function movingDotOnLine(g, x1, y1, x2, y2, progress, color = palette.red, r = 6) {
@@ -2397,6 +2380,7 @@ export function renderConceptFrame(conceptId, seconds, options = {}) {
   setInterface(concept, time);
   drawConceptVisual(concept, time);
   solidCategorySurfaces(svg.node());
+  finishArrows(svg.node(), {allowed:authoredColorset2,canvas:palette.white});
   return {
     conceptId: concept.id,
     patternId: concept.patternId,

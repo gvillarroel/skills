@@ -17,6 +17,7 @@ from pathlib import Path
 
 sys.dont_write_bytecode = True
 from compose_diagram import parse_svg, require, tag, write_target
+from arrow_quality import ARROW_AUDIT
 from visual_quality import MEASURE, QUALITY
 from playwright.sync_api import Error as PlaywrightError, sync_playwright
 
@@ -219,6 +220,9 @@ def run(args):
                 parse_svg(args.output)
                 return {"ok": True, "output": str(args.output), "sourceSha256": digest}
             audit = page.evaluate(AUDIT, {"minimum": minimum})
+            arrows = page.evaluate(ARROW_AUDIT)
+            audit["issues"].extend(arrows["issues"])
+            audit["arrows"] = arrows
             color_audit = page.evaluate(COLOR_AUDIT, {"colors": report.get("semanticColors", {}), "panels": report["panels"]})
             audit["issues"].extend(color_audit.pop("issues"))
             audit["semanticColors"] = color_audit

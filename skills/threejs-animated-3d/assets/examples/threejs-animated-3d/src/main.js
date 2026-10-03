@@ -978,6 +978,18 @@ function setupVectorField({ root, camera }) {
   base.position.y = -0.25
   root.add(base)
 
+  // Direction must remain readable through lighting and motion on the pale plane.
+  const luminance = paint => [1,3,5].map(i=>parseInt(paint.slice(i,i+2),16)/255)
+    .map(v=>v<=.04045?v/12.92:((v+.055)/1.055)**2.4)
+    .reduce((sum,v,i)=>sum+v*[.2126,.7152,.0722][i],0)
+  const contrast = (a,b)=>(Math.max(luminance(a),luminance(b))+.05)/(Math.min(luminance(a),luminance(b))+.05)
+  const safe = Object.values(TOKEN_HEX).filter(paint=>['#ffffff','#e7e7e7'].every(backing=>contrast(paint,backing)>=3))
+  const directionMaterial = token => {
+    const original=TOKEN_HEX[token], channels=paint=>[1,3,5].map(i=>parseInt(paint.slice(i,i+2),16))
+    const distance=paint=>channels(paint).reduce((sum,v,i)=>sum+(v-channels(original)[i])**2,0)
+    const paint=[...safe].sort((a,b)=>distance(a)-distance(b))[0]
+    return new THREE.MeshBasicMaterial({color:paint,toneMapped:false})
+  }
   const arrows = []
   for (let z = 0; z < 4; z += 1) {
     for (let x = 0; x < 5; x += 1) {
@@ -985,12 +997,12 @@ function setupVectorField({ root, camera }) {
       const arrow = new THREE.Group()
       const shaft = new THREE.Mesh(
         new THREE.CylinderGeometry(0.045, 0.045, 0.58, 12),
-        tokenMaterial(token, { roughness: 0.5, metalness: 0.05 }),
+        directionMaterial(token),
       )
       shaft.rotation.z = Math.PI / 2
       const head = new THREE.Mesh(
         new THREE.ConeGeometry(0.12, 0.28, 16),
-        tokenMaterial(token, { roughness: 0.42, metalness: 0.08 }),
+        directionMaterial(token),
       )
       head.rotation.z = -Math.PI / 2
       head.position.x = 0.42

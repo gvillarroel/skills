@@ -1,0 +1,140 @@
+{
+  "phase": "after",
+  "date": "2026-10-03",
+  "producerFileCount": 18,
+  "producerFiles": [
+    {
+      "skill": "d3",
+      "path": "skills/d3/scripts/build_contract_artifact.py",
+      "matchCount": 2
+    },
+    {
+      "skill": "d3",
+      "path": "skills/d3/scripts/build_critical_bowtie_barrier.py",
+      "matchCount": 6
+    },
+    {
+      "skill": "d3",
+      "path": "skills/d3/scripts/build_process_pid_control_loop.py",
+      "matchCount": 5
+    },
+    {
+      "skill": "d3",
+      "path": "skills/d3/scripts/test_colorset_adapter.py",
+      "matchCount": 1
+    },
+    {
+      "skill": "d3",
+      "path": "skills/d3/references/patterns/bowtie-barriers.md",
+      "matchCount": 1
+    },
+    {
+      "skill": "d3",
+      "path": "skills/d3/references/patterns/flowchart-dag.md",
+      "matchCount": 2
+    },
+    {
+      "skill": "d3",
+      "path": "skills/d3/references/patterns/sequence-lifelines.md",
+      "matchCount": 2
+    },
+    {
+      "skill": "d3",
+      "path": "skills/d3/references/patterns/state-machine.md",
+      "matchCount": 2
+    },
+    {
+      "skill": "d3",
+      "path": "skills/d3/assets/templates/solid-style.js",
+      "matchCount": 1
+    },
+    {
+      "skill": "d3",
+      "path": "skills/d3/assets/examples/d3-animated-svg/composition-sheets.js",
+      "matchCount": 1
+    },
+    {
+      "skill": "d3",
+      "path": "skills/d3/assets/examples/d3-animated-svg/gallery.js",
+      "matchCount": 18
+    },
+    {
+      "skill": "d3",
+      "path": "skills/d3/assets/examples/d3-animated-svg/solid-style.js",
+      "matchCount": 1
+    },
+    {
+      "skill": "threejs-animated-3d",
+      "path": "skills/threejs-animated-3d/assets/templates/self-contained-token-orbit.html",
+      "matchCount": 1
+    },
+    {
+      "skill": "threejs-animated-3d",
+      "path": "skills/threejs-animated-3d/assets/examples/threejs-animated-3d/src/main.js",
+      "matchCount": 2
+    },
+    {
+      "skill": "procedural-svg-animation",
+      "path": "skills/procedural-svg-animation/references/pattern-families.md",
+      "matchCount": 1
+    },
+    {
+      "skill": "svg-brief-design",
+      "path": "skills/svg-brief-design/references/construction-decisions.md",
+      "matchCount": 1
+    },
+    {
+      "skill": "svg-brief-design",
+      "path": "skills/svg-brief-design/references/detail-editing.md",
+      "matchCount": 1
+    },
+    {
+      "skill": "svg-brief-design",
+      "path": "skills/svg-brief-design/scripts/scaffold.py",
+      "matchCount": 1
+    }
+  ],
+  "galleries": [
+    {
+      "gallery": "d3-animated-svg-cs1",
+      "markerArrowCount": 50,
+      "directionGlyphCount": 36,
+      "directionGlyphLowCount": 0,
+      "headOcclusionCount": 0,
+      "headLowContrastCount": 0,
+      "shaftLowContrastCount": 0,
+      "markerMismatchCount": 0,
+      "unresolvedCount": 0,
+      "targetPorts": [
+        {
+          "targetId": "tic-102",
+          "alignment": 0.9970544855015809,
+          "clearance": 4.076809620810678,
+          "passed": true
+        }
+      ],
+      "targetPortFailureCount": 0
+    },
+    {
+      "gallery": "d3-animated-svg-colorset2",
+      "markerArrowCount": 50,
+      "directionGlyphCount": 36,
+      "directionGlyphLowCount": 0,
+      "headOcclusionCount": 0,
+      "headLowContrastCount": 0,
+      "shaftLowContrastCount": 0,
+      "markerMismatchCount": 0,
+      "unresolvedCount": 0,
+      "targetPorts": [
+        {
+          "targetId": "tic-102",
+          "alignment": 0.9970544855015809,
+          "clearance": 4.076809620810678,
+          "passed": true
+        }
+      ],
+      "targetPortFailureCount": 0
+    }
+  ],
+  "svgBriefFailingTokens": []
+}

@@ -1,0 +1,68 @@
+[
+  {
+    "gallery": "d3-animated-svg-cs1",
+    "labels": [
+      {
+        "id": "inspection-gap",
+        "fill": "rgb(158, 27, 50)",
+        "text": "rgb(0, 0, 0)",
+        "fontSize": "12px",
+        "rect": {
+          "x": 216,
+          "width": 104
+        },
+        "textBox": {
+          "x": 208.40625,
+          "width": 119.755859375
+        }
+      },
+      {
+        "id": "deluge-gap",
+        "fill": "rgb(158, 27, 50)",
+        "text": "rgb(255, 255, 255)",
+        "fontSize": "12px",
+        "rect": {
+          "x": 648,
+          "width": 104
+        },
+        "textBox": {
+          "x": 657.171875,
+          "width": 86.234375
+        }
+      }
+    ]
+  },
+  {
+    "gallery": "d3-animated-svg-colorset2",
+    "labels": [
+      {
+        "id": "inspection-gap",
+        "fill": "rgb(158, 27, 50)",
+        "text": "rgb(0, 0, 0)",
+        "fontSize": "12px",
+        "rect": {
+          "x": 216,
+          "width": 104
+        },
+        "textBox": {
+          "x": 208.40625,
+          "width": 119.755859375
+        }
+      },
+      {
+        "id": "deluge-gap",
+        "fill": "rgb(158, 27, 50)",
+        "text": "rgb(255, 255, 255)",
+        "fontSize": "12px",
+        "rect": {
+          "x": 648,
+          "width": 104
+        },
+        "textBox": {
+          "x": 657.171875,
+          "width": 86.234375
+        }
+      }
+    ]
+  }
+]
