@@ -44,6 +44,8 @@ uv run --script <d3-skill>/scripts/render_d3_svg.py <requested.html> --output <r
 python <d3-skill>/scripts/check_palette_contract.py <requested.svg> --colorset colorset1
 ```
 
+The builder's SVG root has `id="treemap"`; its canonical pattern metadata is `data-pattern-id="d3-treemap-cs1"` or `d3-treemap-cs2`. Use `--require-id treemap` if checking the root with `check_visual_contract.py`, and derive any class cardinality from the requested input. Check only IDs and counts supplied by the caller or documented builder contract.
+
 Use `colorset2` consistently for an explicit extended-palette request. Keep generated input, output and screenshots outside the read-only skill bundle. Do not post-edit a supported builder output: correct the input or flags, rerun the builder, then export from its finalized HTML. Inspect names, values, area proportions, all sibling tones, header and leaf text at desktop and narrow widths, Replay twice, reduced motion and the exported SVG. More than three siblings share the finite ramp; neutral gutters and direct labels retain cell identity. For an extreme tiny cell that cannot fit readable direct text, the builder supplies a complete visible data key below the SVG rather than omitting a name or value. Normal-sized cells keep their labels inside the cell.
 
 The source excerpt below remains the maintenance recipe for the published gallery. Preserve its existing data and coordinates when repairing that fixture; a new hierarchy uses its own D3 geometry through the standalone builder.

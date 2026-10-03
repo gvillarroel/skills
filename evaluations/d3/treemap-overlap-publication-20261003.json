@@ -1,0 +1,809 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-03",
+  "verifiedAtUtc": "2026-10-03T21:17:05.769174+00:00",
+  "outcome": "pass",
+  "scope": "Public CS1 treemap tonal separation and dense-overlap semantic transparency, rendered paint/contrast, preserved native data/geometry, and exact deployed resource bytes. This is not an all-layout collision audit.",
+  "sourceCommit": "22dfd7643bc554d3ef24a629865b5db526c58725",
+  "deployment": {
+    "runId": "37154218920",
+    "url": "https://github.com/gvillarroel/skills/actions/runs/37154218920",
+    "headSha": "22dfd7643bc554d3ef24a629865b5db526c58725",
+    "status": "completed",
+    "conclusion": "success",
+    "deployStep": {
+      "completedAt": "2026-10-03T21:12:47Z",
+      "conclusion": "success",
+      "name": "Deploy Pages",
+      "number": 16,
+      "startedAt": "2026-10-03T21:12:41Z",
+      "status": "completed"
+    }
+  },
+  "publicGallery": "https://gvillarroel.github.io/skills/examples/d3-animated-svg-cs1/?commit=22dfd7643bc554d3ef24a629865b5db526c58725",
+  "stablePatternUrls": [
+    "https://gvillarroel.github.io/skills/examples/d3-animated-svg-cs1/#d3-treemap-cs1",
+    "https://gvillarroel.github.io/skills/examples/d3-animated-svg-cs1/#d3-task-overlap-dense-cs1"
+  ],
+  "deployedBytes": {
+    "clean": true,
+    "resources": [
+      {
+        "path": "d3-animated-svg-cs1/index.html",
+        "url": "https://gvillarroel.github.io/skills/examples/d3-animated-svg-cs1/index.html?commit=22dfd7643bc554d3ef24a629865b5db526c58725",
+        "status": 200,
+        "headers": {
+          "Content-Type": "text/html; charset=utf-8",
+          "ETag": "\"6ac16fcc-14e3\"",
+          "Last-Modified": "Sat, 03 Oct 2026 21:12:44 GMT"
+        },
+        "expectedOrigin": "matching local Pages build, LF newlines on Linux deployment runner",
+        "expectedSha256": "6eba7df3796d62480cd3f9fe5c82a1db44364b7fa3b78d8d1d4885764b01ea0a",
+        "publicSha256": "6eba7df3796d62480cd3f9fe5c82a1db44364b7fa3b78d8d1d4885764b01ea0a",
+        "publicBytes": 5347,
+        "exactExpectedMatch": true,
+        "localBuildRawSha256": "6eba7df3796d62480cd3f9fe5c82a1db44364b7fa3b78d8d1d4885764b01ea0a",
+        "localBuildRawMatch": true,
+        "localBuildLfSha256": "6eba7df3796d62480cd3f9fe5c82a1db44364b7fa3b78d8d1d4885764b01ea0a",
+        "localBuildLfMatch": true,
+        "deployedArtifact": "projects/treemap-tones/artifacts/publication/22dfd7643bc554d3ef24a629865b5db526c58725/deployed/d3-animated-svg-cs1/index.html",
+        "expectedArtifact": "projects/treemap-tones/artifacts/publication/22dfd7643bc554d3ef24a629865b5db526c58725/expected/d3-animated-svg-cs1/index.html"
+      },
+      {
+        "path": "d3-animated-svg-cs1/cs1-config.js",
+        "url": "https://gvillarroel.github.io/skills/examples/d3-animated-svg-cs1/cs1-config.js?commit=22dfd7643bc554d3ef24a629865b5db526c58725",
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/javascript; charset=utf-8",
+          "ETag": "\"6ac16fcc-a1a\"",
+          "Last-Modified": "Sat, 03 Oct 2026 21:12:44 GMT"
+        },
+        "expectedOrigin": "exact committed Git blob",
+        "expectedSha256": "f8916914af3ca054427a9cb9d57143f0b748d11f5fe8928ed79338ad0aa4cca1",
+        "publicSha256": "f8916914af3ca054427a9cb9d57143f0b748d11f5fe8928ed79338ad0aa4cca1",
+        "publicBytes": 2586,
+        "exactExpectedMatch": true,
+        "localBuildRawSha256": "f8916914af3ca054427a9cb9d57143f0b748d11f5fe8928ed79338ad0aa4cca1",
+        "localBuildRawMatch": true,
+        "localBuildLfSha256": "f8916914af3ca054427a9cb9d57143f0b748d11f5fe8928ed79338ad0aa4cca1",
+        "localBuildLfMatch": true,
+        "deployedArtifact": "projects/treemap-tones/artifacts/publication/22dfd7643bc554d3ef24a629865b5db526c58725/deployed/d3-animated-svg-cs1/cs1-config.js",
+        "expectedArtifact": "projects/treemap-tones/artifacts/publication/22dfd7643bc554d3ef24a629865b5db526c58725/expected/d3-animated-svg-cs1/cs1-config.js"
+      },
+      {
+        "path": "d3-animated-svg/gallery.js",
+        "url": "https://gvillarroel.github.io/skills/examples/d3-animated-svg/gallery.js?commit=22dfd7643bc554d3ef24a629865b5db526c58725",
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/javascript; charset=utf-8",
+          "ETag": "\"6ac16fcc-bd6c7\"",
+          "Last-Modified": "Sat, 03 Oct 2026 21:12:44 GMT"
+        },
+        "expectedOrigin": "exact committed Git blob",
+        "expectedSha256": "ef6c231c8f410c0e665a0ba40aca6610fff55a1a9d3238151774f1e1915ff89a",
+        "publicSha256": "ef6c231c8f410c0e665a0ba40aca6610fff55a1a9d3238151774f1e1915ff89a",
+        "publicBytes": 775879,
+        "exactExpectedMatch": true,
+        "localBuildRawSha256": "ef6c231c8f410c0e665a0ba40aca6610fff55a1a9d3238151774f1e1915ff89a",
+        "localBuildRawMatch": true,
+        "localBuildLfSha256": "ef6c231c8f410c0e665a0ba40aca6610fff55a1a9d3238151774f1e1915ff89a",
+        "localBuildLfMatch": true,
+        "deployedArtifact": "projects/treemap-tones/artifacts/publication/22dfd7643bc554d3ef24a629865b5db526c58725/deployed/d3-animated-svg/gallery.js",
+        "expectedArtifact": "projects/treemap-tones/artifacts/publication/22dfd7643bc554d3ef24a629865b5db526c58725/expected/d3-animated-svg/gallery.js"
+      },
+      {
+        "path": "d3-animated-svg/solid-style.js",
+        "url": "https://gvillarroel.github.io/skills/examples/d3-animated-svg/solid-style.js?commit=22dfd7643bc554d3ef24a629865b5db526c58725",
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/javascript; charset=utf-8",
+          "ETag": "\"6ac16fcd-6b1f\"",
+          "Last-Modified": "Sat, 03 Oct 2026 21:12:45 GMT"
+        },
+        "expectedOrigin": "exact committed Git blob",
+        "expectedSha256": "755e27738f2841a2f2abb9ff92017c515a5bd6d8326a9d3609519160673ee66d",
+        "publicSha256": "755e27738f2841a2f2abb9ff92017c515a5bd6d8326a9d3609519160673ee66d",
+        "publicBytes": 27423,
+        "exactExpectedMatch": true,
+        "localBuildRawSha256": "755e27738f2841a2f2abb9ff92017c515a5bd6d8326a9d3609519160673ee66d",
+        "localBuildRawMatch": true,
+        "localBuildLfSha256": "755e27738f2841a2f2abb9ff92017c515a5bd6d8326a9d3609519160673ee66d",
+        "localBuildLfMatch": true,
+        "deployedArtifact": "projects/treemap-tones/artifacts/publication/22dfd7643bc554d3ef24a629865b5db526c58725/deployed/d3-animated-svg/solid-style.js",
+        "expectedArtifact": "projects/treemap-tones/artifacts/publication/22dfd7643bc554d3ef24a629865b5db526c58725/expected/d3-animated-svg/solid-style.js"
+      },
+      {
+        "path": "d3-animated-svg/task-overlap-layouts.js",
+        "url": "https://gvillarroel.github.io/skills/examples/d3-animated-svg/task-overlap-layouts.js?commit=22dfd7643bc554d3ef24a629865b5db526c58725",
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/javascript; charset=utf-8",
+          "ETag": "\"6ac16fcd-10268\"",
+          "Last-Modified": "Sat, 03 Oct 2026 21:12:45 GMT"
+        },
+        "expectedOrigin": "exact committed Git blob",
+        "expectedSha256": "333912a89479a8020f1f2279ed3e3dfa32a37f8809c5c0c1bb3540262d3b0419",
+        "publicSha256": "333912a89479a8020f1f2279ed3e3dfa32a37f8809c5c0c1bb3540262d3b0419",
+        "publicBytes": 66152,
+        "exactExpectedMatch": true,
+        "localBuildRawSha256": "333912a89479a8020f1f2279ed3e3dfa32a37f8809c5c0c1bb3540262d3b0419",
+        "localBuildRawMatch": true,
+        "localBuildLfSha256": "333912a89479a8020f1f2279ed3e3dfa32a37f8809c5c0c1bb3540262d3b0419",
+        "localBuildLfMatch": true,
+        "deployedArtifact": "projects/treemap-tones/artifacts/publication/22dfd7643bc554d3ef24a629865b5db526c58725/deployed/d3-animated-svg/task-overlap-layouts.js",
+        "expectedArtifact": "projects/treemap-tones/artifacts/publication/22dfd7643bc554d3ef24a629865b5db526c58725/expected/d3-animated-svg/task-overlap-layouts.js"
+      },
+      {
+        "path": "d3-animated-svg/gallery-page.css",
+        "url": "https://gvillarroel.github.io/skills/examples/d3-animated-svg/gallery-page.css?commit=22dfd7643bc554d3ef24a629865b5db526c58725",
+        "status": 200,
+        "headers": {
+          "Content-Type": "text/css; charset=utf-8",
+          "ETag": "\"6ac16fcc-1d01\"",
+          "Last-Modified": "Sat, 03 Oct 2026 21:12:44 GMT"
+        },
+        "expectedOrigin": "exact committed Git blob",
+        "expectedSha256": "876094b6c1b0a29edfc89ac8e0e7330172c9a39ed55702766fa35139e3e86ccd",
+        "publicSha256": "876094b6c1b0a29edfc89ac8e0e7330172c9a39ed55702766fa35139e3e86ccd",
+        "publicBytes": 7425,
+        "exactExpectedMatch": true,
+        "localBuildRawSha256": "876094b6c1b0a29edfc89ac8e0e7330172c9a39ed55702766fa35139e3e86ccd",
+        "localBuildRawMatch": true,
+        "localBuildLfSha256": "876094b6c1b0a29edfc89ac8e0e7330172c9a39ed55702766fa35139e3e86ccd",
+        "localBuildLfMatch": true,
+        "deployedArtifact": "projects/treemap-tones/artifacts/publication/22dfd7643bc554d3ef24a629865b5db526c58725/deployed/d3-animated-svg/gallery-page.css",
+        "expectedArtifact": "projects/treemap-tones/artifacts/publication/22dfd7643bc554d3ef24a629865b5db526c58725/expected/d3-animated-svg/gallery-page.css"
+      }
+    ],
+    "newlinePolicy": "The repository .gitattributes pins text to LF. Five copied resources are checked against exact commit Git blobs. The generated CS1 HTML is checked against the matching local build with the Linux runner's LF newlines; raw local build hashes and equality are retained separately.",
+    "evidence": {
+      "path": "projects/treemap-tones/artifacts/publication/22dfd7643bc554d3ef24a629865b5db526c58725/deployed-bytes.json",
+      "bytes": 14519,
+      "sha256": "29f38b00e63a608590a21d284d0b5c2f7bd427727932d0d22c7e2e892e68743e"
+    }
+  },
+  "treemap": {
+    "patternId": "d3-treemap-cs1",
+    "clean": true,
+    "states": 12,
+    "matrix": "1440/390 px, normal/reduced motion, settled initial plus two replays",
+    "findings": 0,
+    "browserErrors": [],
+    "branchesPerState": 3,
+    "leavesPerState": 9,
+    "geometryDataComparisons": 144,
+    "geometryComparison": {
+      "clean": true,
+      "states": 12,
+      "findings": []
+    },
+    "labelChecks": 144,
+    "minimumLabelContrast": 4.703674697982679,
+    "siblingRamps": [
+      {
+        "branch": "Learn",
+        "order": [
+          "Tune",
+          "Eval",
+          "Trace"
+        ],
+        "fills": [
+          "#6d1222",
+          "#9e1b32",
+          "#e8002a"
+        ],
+        "luminances": [
+          0.03799315767331869,
+          0.08283255955689314,
+          0.17322972301854248
+        ],
+        "steps": [
+          0.04483940188357445,
+          0.09039716346164933
+        ]
+      },
+      {
+        "branch": "Create",
+        "order": [
+          "Draft",
+          "Review",
+          "Prompt"
+        ],
+        "fills": [
+          "#4f4f4f",
+          "#828282",
+          "#b5b5b5"
+        ],
+        "luminances": [
+          0.07818742180518631,
+          0.22322795731680853,
+          0.4620769996544071
+        ],
+        "steps": [
+          0.14504053551162222,
+          0.23884904233759854
+        ]
+      },
+      {
+        "branch": "Serve",
+        "order": [
+          "Observe",
+          "Cache",
+          "Route"
+        ],
+        "fills": [
+          "#363636",
+          "#696969",
+          "#9c9c9c"
+        ],
+        "luminances": [
+          0.03688945040110004,
+          0.14126329114027164,
+          0.33245153634617935
+        ],
+        "steps": [
+          0.10437384073917161,
+          0.19118824520590771
+        ]
+      }
+    ],
+    "gutterChecks": 108,
+    "gutterWidthsSvgUnits": [
+      3
+    ],
+    "gutterPaints": [
+      "#ffffff"
+    ],
+    "negativeControls": [
+      {
+        "name": "same-sibling-fill",
+        "rejected": true,
+        "findings": [
+          "Review: label is not maximum-contrast black/white on #4f4f4f.",
+          "Review: label contrast is 2.564:1.",
+          "Prompt: label is not maximum-contrast black/white on #4f4f4f.",
+          "Prompt: label contrast is 2.564:1.",
+          "Route: label is not maximum-contrast black/white on #363636.",
+          "Route: label contrast is 1.738:1.",
+          "Learn: sibling cells share paint.",
+          "Learn: sibling luminance does not form distinct ordered steps.",
+          "Create: sibling cells share paint.",
+          "Create: sibling luminance does not form distinct ordered steps.",
+          "Serve: sibling cells share paint.",
+          "Serve: sibling luminance does not form distinct ordered steps."
+        ]
+      },
+      {
+        "name": "wrong-label-contrast",
+        "rejected": true,
+        "findings": [
+          "Tune: label is not maximum-contrast black/white on #6d1222.",
+          "Tune: label contrast is 2.537:1."
+        ]
+      },
+      {
+        "name": "decorative-border",
+        "rejected": true,
+        "findings": [
+          "Tune: a decorative outline is visible."
+        ]
+      },
+      {
+        "name": "changed-cell-geometry",
+        "rejected": true,
+        "findings": [
+          "Tune: the data rectangle geometry changed."
+        ]
+      }
+    ],
+    "evidence": {
+      "path": "projects/treemap-tones/artifacts/publication/22dfd7643bc554d3ef24a629865b5db526c58725/treemap/verification.json",
+      "bytes": 177145,
+      "sha256": "3a8150aa2c01e2265859ac8ee5a95f215a6c9d06028072e00b19acc3f2b0ee33"
+    }
+  },
+  "overlap": {
+    "patternId": "d3-task-overlap-dense-cs1",
+    "clean": true,
+    "states": 4,
+    "matrix": "1440/390 px, normal/reduced motion, settled initial state",
+    "findings": 0,
+    "browserErrors": [],
+    "semanticRegionsPerState": 9,
+    "regionAlpha": 0.28,
+    "regionStrokes": [
+      "none"
+    ],
+    "regionPaint": [
+      {
+        "id": "backlog",
+        "cx": 330,
+        "cy": 135,
+        "r": 74,
+        "fill": "#9e1b32",
+        "alpha": 0.28,
+        "semantic": true,
+        "stroke": "none"
+      },
+      {
+        "id": "ux",
+        "cx": 412,
+        "cy": 100,
+        "r": 66,
+        "fill": "#696969",
+        "alpha": 0.28,
+        "semantic": true,
+        "stroke": "none"
+      },
+      {
+        "id": "api",
+        "cx": 506,
+        "cy": 135,
+        "r": 76,
+        "fill": "#4f4f4f",
+        "alpha": 0.28,
+        "semantic": true,
+        "stroke": "none"
+      },
+      {
+        "id": "security",
+        "cx": 594,
+        "cy": 100,
+        "r": 58,
+        "fill": "#9e1b32",
+        "alpha": 0.28,
+        "semantic": true,
+        "stroke": "none"
+      },
+      {
+        "id": "docs",
+        "cx": 276,
+        "cy": 215,
+        "r": 62,
+        "fill": "#828282",
+        "alpha": 0.28,
+        "semantic": true,
+        "stroke": "none"
+      },
+      {
+        "id": "data",
+        "cx": 412,
+        "cy": 206,
+        "r": 86,
+        "fill": "#696969",
+        "alpha": 0.28,
+        "semantic": true,
+        "stroke": "none"
+      },
+      {
+        "id": "qa",
+        "cx": 524,
+        "cy": 228,
+        "r": 74,
+        "fill": "#6d1222",
+        "alpha": 0.28,
+        "semantic": true,
+        "stroke": "none"
+      },
+      {
+        "id": "release",
+        "cx": 340,
+        "cy": 280,
+        "r": 68,
+        "fill": "#363636",
+        "alpha": 0.28,
+        "semantic": true,
+        "stroke": "none"
+      },
+      {
+        "id": "ops",
+        "cx": 600,
+        "cy": 290,
+        "r": 60,
+        "fill": "#4f4f4f",
+        "alpha": 0.28,
+        "semantic": true,
+        "stroke": "none"
+      }
+    ],
+    "opaqueTaskDotsPerState": 100,
+    "opaqueTaskLabelFacesPerState": 100,
+    "textLabelsPerState": 113,
+    "labelChecks": 452,
+    "minimumLabelContrast": 11.90831784428423,
+    "geometryDataComparisons": 436,
+    "baselineGeometryDataUnchanged": true,
+    "actualPixelSamples": 12,
+    "multiplicities": [
+      1,
+      2,
+      3
+    ],
+    "maximumPixelChannelError": 0.745599999999996,
+    "pixelToleranceChannelUnits": 5,
+    "samples": [
+      {
+        "multiplicity": 1,
+        "memberships": [
+          "ux"
+        ],
+        "svgPoint": {
+          "x": 415,
+          "y": 40
+        },
+        "screenPoint": {
+          "x": 440.78211805555554,
+          "y": 164.1298611111111
+        },
+        "expectedRgb": [
+          213,
+          213,
+          213
+        ],
+        "expectedHex": "#d5d5d5",
+        "observedRgb": [
+          213,
+          213,
+          213
+        ],
+        "maximumChannelError": 0
+      },
+      {
+        "multiplicity": 2,
+        "memberships": [
+          "ux",
+          "api"
+        ],
+        "svgPoint": {
+          "x": 465,
+          "y": 80
+        },
+        "screenPoint": {
+          "x": 493.87413194444446,
+          "y": 206.6034722222222
+        },
+        "expectedRgb": [
+          175.48,
+          175.48,
+          175.48
+        ],
+        "expectedHex": "#afafaf",
+        "observedRgb": [
+          175,
+          175,
+          175
+        ],
+        "maximumChannelError": 0.47999999999998977
+      },
+      {
+        "multiplicity": 3,
+        "memberships": [
+          "ux",
+          "api",
+          "data"
+        ],
+        "svgPoint": {
+          "x": 435,
+          "y": 135
+        },
+        "screenPoint": {
+          "x": 462.0189236111111,
+          "y": 265.00468750000005
+        },
+        "expectedRgb": [
+          155.7456,
+          155.7456,
+          155.7456
+        ],
+        "expectedHex": "#9c9c9c",
+        "observedRgb": [
+          155,
+          155,
+          155
+        ],
+        "maximumChannelError": 0.745599999999996
+      },
+      {
+        "multiplicity": 1,
+        "memberships": [
+          "ux"
+        ],
+        "svgPoint": {
+          "x": 415,
+          "y": 40
+        },
+        "screenPoint": {
+          "x": 440.78211805555554,
+          "y": 164.1298611111111
+        },
+        "expectedRgb": [
+          213,
+          213,
+          213
+        ],
+        "expectedHex": "#d5d5d5",
+        "observedRgb": [
+          213,
+          213,
+          213
+        ],
+        "maximumChannelError": 0
+      },
+      {
+        "multiplicity": 2,
+        "memberships": [
+          "ux",
+          "api"
+        ],
+        "svgPoint": {
+          "x": 465,
+          "y": 80
+        },
+        "screenPoint": {
+          "x": 493.87413194444446,
+          "y": 206.6034722222222
+        },
+        "expectedRgb": [
+          175.48,
+          175.48,
+          175.48
+        ],
+        "expectedHex": "#afafaf",
+        "observedRgb": [
+          175,
+          175,
+          175
+        ],
+        "maximumChannelError": 0.47999999999998977
+      },
+      {
+        "multiplicity": 3,
+        "memberships": [
+          "ux",
+          "api",
+          "data"
+        ],
+        "svgPoint": {
+          "x": 435,
+          "y": 135
+        },
+        "screenPoint": {
+          "x": 462.0189236111111,
+          "y": 265.00468750000005
+        },
+        "expectedRgb": [
+          155.7456,
+          155.7456,
+          155.7456
+        ],
+        "expectedHex": "#9c9c9c",
+        "observedRgb": [
+          155,
+          155,
+          155
+        ],
+        "maximumChannelError": 0.745599999999996
+      },
+      {
+        "multiplicity": 1,
+        "memberships": [
+          "ux"
+        ],
+        "svgPoint": {
+          "x": 415,
+          "y": 40
+        },
+        "screenPoint": {
+          "x": 160.0060763888889,
+          "y": 180.4902777777778
+        },
+        "expectedRgb": [
+          213,
+          213,
+          213
+        ],
+        "expectedHex": "#d5d5d5",
+        "observedRgb": [
+          213,
+          213,
+          213
+        ],
+        "maximumChannelError": 0
+      },
+      {
+        "multiplicity": 2,
+        "memberships": [
+          "ux",
+          "api"
+        ],
+        "svgPoint": {
+          "x": 465,
+          "y": 80
+        },
+        "screenPoint": {
+          "x": 209.99392361111114,
+          "y": 220.48055555555555
+        },
+        "expectedRgb": [
+          175.48,
+          175.48,
+          175.48
+        ],
+        "expectedHex": "#afafaf",
+        "observedRgb": [
+          175,
+          175,
+          175
+        ],
+        "maximumChannelError": 0.47999999999998977
+      },
+      {
+        "multiplicity": 3,
+        "memberships": [
+          "ux",
+          "api",
+          "data"
+        ],
+        "svgPoint": {
+          "x": 435,
+          "y": 135
+        },
+        "screenPoint": {
+          "x": 180.00121527777782,
+          "y": 275.4671875
+        },
+        "expectedRgb": [
+          155.7456,
+          155.7456,
+          155.7456
+        ],
+        "expectedHex": "#9c9c9c",
+        "observedRgb": [
+          155,
+          155,
+          155
+        ],
+        "maximumChannelError": 0.745599999999996
+      },
+      {
+        "multiplicity": 1,
+        "memberships": [
+          "ux"
+        ],
+        "svgPoint": {
+          "x": 415,
+          "y": 40
+        },
+        "screenPoint": {
+          "x": 160.0060763888889,
+          "y": 180.4902777777778
+        },
+        "expectedRgb": [
+          213,
+          213,
+          213
+        ],
+        "expectedHex": "#d5d5d5",
+        "observedRgb": [
+          213,
+          213,
+          213
+        ],
+        "maximumChannelError": 0
+      },
+      {
+        "multiplicity": 2,
+        "memberships": [
+          "ux",
+          "api"
+        ],
+        "svgPoint": {
+          "x": 465,
+          "y": 80
+        },
+        "screenPoint": {
+          "x": 209.99392361111114,
+          "y": 220.48055555555555
+        },
+        "expectedRgb": [
+          175.48,
+          175.48,
+          175.48
+        ],
+        "expectedHex": "#afafaf",
+        "observedRgb": [
+          175,
+          175,
+          175
+        ],
+        "maximumChannelError": 0.47999999999998977
+      },
+      {
+        "multiplicity": 3,
+        "memberships": [
+          "ux",
+          "api",
+          "data"
+        ],
+        "svgPoint": {
+          "x": 435,
+          "y": 135
+        },
+        "screenPoint": {
+          "x": 180.00121527777782,
+          "y": 275.4671875
+        },
+        "expectedRgb": [
+          155.7456,
+          155.7456,
+          155.7456
+        ],
+        "expectedHex": "#9c9c9c",
+        "observedRgb": [
+          155,
+          155,
+          155
+        ],
+        "maximumChannelError": 0.745599999999996
+      }
+    ],
+    "evidence": {
+      "path": "projects/task-overlap-transparency/artifacts/publication/22dfd7643bc554d3ef24a629865b5db526c58725/overlap/verification.json",
+      "bytes": 239817,
+      "sha256": "4396be1b37ccbd9fa9739875b46a4c1113dbfc1347162e41488baafb187e40d1"
+    }
+  },
+  "manualReview": {
+    "independent": true,
+    "outcome": "pass within the stated scope",
+    "screenshots": [
+      {
+        "path": "projects/treemap-tones/artifacts/publication/22dfd7643bc554d3ef24a629865b5db526c58725/treemap/treemap-1440-normal-card.png",
+        "bytes": 14127,
+        "sha256": "caca5e84c554cdf3da9a15050800cfb98e0cea10b68ae8962f5dc1d7f575844d"
+      },
+      {
+        "path": "projects/treemap-tones/artifacts/publication/22dfd7643bc554d3ef24a629865b5db526c58725/treemap/treemap-390-normal-card.png",
+        "bytes": 12563,
+        "sha256": "0fd112a0d9d3bfdbbec3a57d85a11575a9bff795d78386749b6019cb2a233e0d"
+      },
+      {
+        "path": "projects/task-overlap-transparency/artifacts/publication/22dfd7643bc554d3ef24a629865b5db526c58725/overlap/overlap-1440-normal-0-card.png",
+        "bytes": 202329,
+        "sha256": "d64413b7cd0a2cc9ab77967d490eedf705a437bc693c3a12fd1e3c0569538c4a"
+      },
+      {
+        "path": "projects/task-overlap-transparency/artifacts/publication/22dfd7643bc554d3ef24a629865b5db526c58725/overlap/overlap-390-normal-0-card.png",
+        "bytes": 81457,
+        "sha256": "f3c11801f9c7341fef017b8dbf36f06a5b9fa715f3df7ce2d20361a3f9cb22aa"
+      }
+    ],
+    "findings": "Public desktop and mobile treemaps preserve three distinct solid tones within each branch, white backing gaps, borderless faces and maximum-contrast black/white labels. Public overlap views reveal single/double/triple membership intersections with opaque dots and label faces. Mobile overlap retains the existing horizontally scrolling layout and the capture centers that viewport.",
+    "existingFixtureLimit": {
+      "description": "The inherited footer summary caption contacts the T095 task label. The contact is present in the original baseline, accepted native source, and public desktop image. It is not a transparency regression; original task/label/caption geometry is preserved. The scope does not assert that all fixture text pairs are collision-free.",
+      "baselineScreenshot": "projects/task-overlap-transparency/artifacts/baseline/overlap-1440-normal-0-card.png",
+      "acceptedNativeScreenshot": "projects/task-overlap-transparency/artifacts/final-cs1/overlap-1440-normal-0-card.png",
+      "publicScreenshot": "projects/task-overlap-transparency/artifacts/publication/22dfd7643bc554d3ef24a629865b5db526c58725/overlap/overlap-1440-normal-0-card.png"
+    }
+  },
+  "priorLocalEvidence": [
+    {
+      "path": "evaluations/d3/treemap-tones-visual-20261003.json",
+      "bytes": 24435,
+      "sha256": "7216e3e553e0edeb3f1b29bdc4ec4365573322f315f1a102558d5e244cce12e2"
+    },
+    {
+      "path": "evaluations/d3/task-overlap-transparency-visual-20261003.json",
+      "bytes": 21690,
+      "sha256": "d6c457c9e7ab99779d2f0d777d781e363c20b0584b588bf1c6cdc84eb55a535f"
+    }
+  ],
+  "commands": [
+    "gh run view 37154218920 --repo gvillarroel/skills --json headSha,status,conclusion,url,jobs",
+    "uv run --script projects/treemap-tones/artifacts/publication/22dfd7643bc554d3ef24a629865b5db526c58725/capture_deployed_bytes.py",
+    "uv run --script projects/treemap-tones/scripts/verify_treemap.py 'https://gvillarroel.github.io/skills/examples/d3-animated-svg-cs1/?commit=22dfd7643bc554d3ef24a629865b5db526c58725' --output-directory projects/treemap-tones/artifacts/publication/22dfd7643bc554d3ef24a629865b5db526c58725/treemap --compare-reference projects/treemap-tones/artifacts/baseline/verification.json",
+    "uv run --script projects/task-overlap-transparency/scripts/verify_overlap.py 'https://gvillarroel.github.io/skills/examples/d3-animated-svg-cs1/?commit=22dfd7643bc554d3ef24a629865b5db526c58725' --output-directory projects/task-overlap-transparency/artifacts/publication/22dfd7643bc554d3ef24a629865b5db526c58725/overlap --replays 1",
+    "uv run --script projects/treemap-tones/artifacts/publication/22dfd7643bc554d3ef24a629865b5db526c58725/summarize_publication.py"
+  ],
+  "artifactRetention": "Downloaded served bytes, expected bytes, workflow metadata, full verification JSON, screenshots, exported SVGs, and one-off capture/summary scripts remain under ignored project artifact directories. Canonical runtime files were unchanged during publication verification."
+}

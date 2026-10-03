@@ -1,0 +1,112 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-03",
+  "skill": "d3",
+  "auditScope": "Independent read-only audit of canonical runtime, frozen final-cohort bundles, consolidated ledger and retained raw release evidence, followed by bounded LF normalization of the authored ledger and an explicit LF writer fix in its project consolidator. No Pi run, runtime edit or artifact repair was performed by this audit.",
+  "passed": true,
+  "ledger": {
+    "path": "evaluations/d3/treemap-tones-isolated-20261003.json",
+    "sha256": "2e189fc1c61ab64fe3a5f07b2667422432b23184c7eccb30490f6bf7a5fd0c2c",
+    "newline": "LF",
+    "matchesGitIndexBytes": true,
+    "normalization": {
+      "previousCrLfSha256": "da247e8bbf613477fa664dad6201487e07e2cf903b96741a23c93b46431902a6",
+      "jsonCrLfReplacementCount": 2277,
+      "markdownCrLfReplacementCount": 66,
+      "markdownLfSha256": "6209d2b5ead8c05d20b0f1e02fdf214d72439df38f1ef8cc440e8eb5009c2767",
+      "parsedContentAndAcceptanceDecisionsUnchanged": true,
+      "originalIgnoredPiEvidenceUntouched": true,
+      "consolidatorWritesLfExplicitly": true
+    },
+    "phase": "complete",
+    "retainedAttemptCount": 18,
+    "uniqueRunIdCount": 18,
+    "finalizedAttemptCount": 17,
+    "unfinalizedInfrastructureAttemptCount": 1,
+    "allAuthoredAttemptsRetained": true
+  },
+  "runtime": {
+    "canonicalPath": "skills/d3",
+    "profile": "runtime",
+    "pathCount": 290,
+    "payloadSha256": "85f8b06cb64e88ba83448270804dab58671e707d1cf1cb1b48983313c90d5bd0",
+    "currentRunCount": 7,
+    "frozenPathHashComparisonCount": 2030,
+    "canonicalAndAllCurrentFrozenBundlesMatch": true,
+    "currentIntegrityDigestsMatch": true,
+    "addedRuntimePaths": 0,
+    "removedRuntimePaths": 0,
+    "modifiedRuntimePaths": 0,
+    "completedReviewHashChecks": 6,
+    "completedReviewHashesMatch": true,
+    "reviewedHashes": {
+      "skills/d3/SKILL.md": "e9fb2788dc7f4bccb8e2538a83eca51708ff10109e0c00858e366bddd950d2bf",
+      "skills/d3/references/patterns/treemap.md": "e8d7534c2de5eef68dcb27ac4ef0fd5582999fab3d412af4235453673c8f31f9",
+      "skills/d3/references/patterns/task-overlap-dense.md": "b42de8f51113abd3af17f80a24c8eabe8fbc22dfac92789c641793a7f42446fc",
+      "skills/d3/scripts/build_treemap.py": "53fb3be9152d7107dadf9aa0b573736ecaef147cba483fc322e1f4d23742eac2",
+      "skills/d3/scripts/build_dense_task_overlap.py": "528752d9267f59d1c46c6147350b006b3a35c40804bbb4ff0ed6ac7776ff0aa3",
+      "skills/d3/assets/examples/skill-tests/test_build_dense_task_overlap.py": "61cee9c32e0246dc863c5fb900c4786861a728bf93da40854c4011066bfcfc76"
+    },
+    "owningTestIsExcludedFromRuntime": true,
+    "gitIndexProvenance": {
+      "runtimePathCount": 290,
+      "byteIdenticalPathCount": 213,
+      "utf8CrLfToLfOnlyPathCount": 77,
+      "indexRuntimePayloadSha256": "88c7c8314bd747731860abf29b5f6121b530a8ef84c430a5f9731b82c3358be1",
+      "permittedDifference": "UTF-8 CRLF to LF normalization performed by Git staging only; canonical runtime files were not normalized.",
+      "missingIndexPathCount": 0,
+      "extraIndexPathCount": 0,
+      "substantiveMismatchCount": 0,
+      "frozenWindowsPayloadSha256Unchanged": true
+    }
+  },
+  "rawEvidenceChecks": {
+    "manifestCount": 18,
+    "finalizedResultCount": 17,
+    "eventGateRecordCount": 17,
+    "artifactGateRecordCount": 17,
+    "skillIntegrityGateRecordCount": 17,
+    "actualOutputHashCount": 38,
+    "independentGradeHashCount": 17,
+    "recordedEvidenceHashCount": 103,
+    "normalizedOriginalAndCopiedPromptHashCount": 18,
+    "currentObservedModelAndSettingsCheckCount": 7,
+    "currentManualReviewDecisionCount": 7,
+    "rawResultsAndLedgerAgree": true,
+    "exactRequiredOutputPathsAgree": true,
+    "allFinalizedOriginalArtifactsUnchanged": true,
+    "promptNormalization": "The harness hashes UTF-8 prompt text before Windows write_text converts LF to CRLF in copied prompt.md. All original and copied prompt texts match after universal-newline decoding.",
+    "currentModel": "openai-codex/gpt-5.6-luna",
+    "currentThinking": "medium",
+    "currentMode": "json",
+    "strictPolicyEnabledForEveryRetainedAttempt": true
+  },
+  "jointReleaseGates": {
+    "jointDefinition": "Finalized strict harness PASS, skill integrity PASS, unchanged required artifacts, independent rendered artifact PASS and recorded direct manual review PASS.",
+    "naturalisticRunIds": [
+      "d3-treemap-tones-naturalistic-20261003-luna-7",
+      "d3-treemap-tones-naturalistic-20261003-luna-8",
+      "d3-treemap-tones-naturalistic-20261003-luna-9"
+    ],
+    "freshNaturalisticRunCount": 3,
+    "jointNaturalisticPassCount": 2,
+    "requiredJointNaturalisticPassCount": 2,
+    "naturalisticIndependentArtifactStateCount": 21,
+    "naturalisticThresholdPassed": true,
+    "acceptedTreemapContract": "d3-treemap-tones-contract-20261003-luna-5",
+    "acceptedTreemapContractIndependentStateCount": 7,
+    "acceptedDenseOverlapContract": "d3-dense-overlap-contract-20261003-luna-4",
+    "acceptedDenseOverlapContractIndependentStateCount": 6,
+    "bothContractJointGatesPassed": true,
+    "allCurrentIndependentArtifactStateCount": 47,
+    "allCurrentIndependentArtifactAndManualReviewGatesPassed": true,
+    "currentStrictFailureRunIds": [
+      "d3-treemap-tones-contract-20261003-luna-4",
+      "d3-treemap-tones-naturalistic-20261003-luna-7",
+      "d3-dense-overlap-contract-20261003-luna-3"
+    ],
+    "strictFailuresRetainedAndExcludedFromJointPasses": true,
+    "earlierPayloadPassesExcludedFromFinalReleaseSelection": true
+  },
+  "findings": []
+}

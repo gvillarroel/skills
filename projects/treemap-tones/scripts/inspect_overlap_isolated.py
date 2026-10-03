@@ -19,6 +19,11 @@ ROOT = Path(__file__).resolve().parents[3]
 SPEC = importlib.util.spec_from_file_location('overlap_verifier', ROOT / 'projects/task-overlap-transparency/scripts/verify_overlap.py')
 VERIFIER = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(VERIFIER)
+# Evaluate painted circle geometry, including CSS/SMIL radii, instead of only
+# the underlying attribute value. Unmaterialized exports still fail at r=0.
+INSPECT = VERIFIER.INSPECT.replace('  const findings=[];',
+    '  const findings=[]; const paintedRadius=element=>element.getBBox().width/2;')
+INSPECT = INSPECT.replace('region.r.baseVal.value','paintedRadius(region)').replace('dot.r.baseVal.value','paintedRadius(dot)')
 
 
 def main():
@@ -51,8 +56,27 @@ def main():
                     button.click()
                     page.wait_for_timeout(1800)
                 page.evaluate('const svg=document.querySelector("svg");svg.pauseAnimations();svg.setCurrentTime(5)')
-                state = page.evaluate(VERIFIER.INSPECT,{'reference':reference})
+                state = page.evaluate(INSPECT,{'reference':reference})
                 state.update({'format':extension,'reducedMotion':reduced,'replay':replay})
+                state['captionLabelCollisions'] = page.evaluate("""() => {
+                  const captions=[...document.querySelectorAll('svg text.caption')];
+                  const labels=[...document.querySelectorAll('svg .task-label-group')];
+                  const collisions=[];
+                  for(const caption of captions){const a=caption.getBoundingClientRect();
+                    for(const label of labels){const b=label.getBoundingClientRect();
+                      const width=Math.min(a.right,b.right)-Math.max(a.left,b.left);
+                      const height=Math.min(a.bottom,b.bottom)-Math.max(a.top,b.top);
+                      if(width>.5&&height>.5)collisions.push({caption:caption.textContent,
+                        captionFontSize:getComputedStyle(caption).fontSize,
+                        taskId:label.dataset.taskId,intersection:{width,height},
+                        captionBounds:{x:a.x,y:a.y,width:a.width,height:a.height},
+                        labelBounds:{x:b.x,y:b.y,width:b.width,height:b.height}});
+                    }
+                  }
+                  return collisions;
+                }""")
+                for collision in state['captionLabelCollisions']:
+                    state['findings'].append(f'Caption "{collision["caption"]}" overlaps {collision["taskId"]} at font size {collision["captionFontSize"]}.')
                 if state['tasks'] != baseline['tasks']:
                     state['findings'].append('Task positions, leaders, labels, or memberships differ from the generated layout.')
                 if state['invariants'] != baseline['invariants']:
@@ -86,7 +110,7 @@ def main():
     (output/'independent-grade.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')
     print(json.dumps({'passed':report['passed'],'renderedStates':len(report['states']),
                       'errors':report['errors'],'networkRequests':report['networkRequests'],
-                      'findings':{f"{state['format']}/{state['reducedMotion']}/{state['replay']}":state['findings'] for state in report['states']}}))
+                      'findingCounts':{f"{state['format']}/{state['reducedMotion']}/{state['replay']}":len(state['findings']) for state in report['states']}}))
     raise SystemExit(0 if report['passed'] else 1)
 
 

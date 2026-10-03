@@ -1,0 +1,364 @@
+{
+  "passed": false,
+  "session": {
+    "version": 3,
+    "id": "01a103a6-831e-77b9-b372-9ad5b510ccce",
+    "cwd": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\d3-dense-overlap-contract-20261003-luna-2\\workspace"
+  },
+  "models": {
+    "gpt-5.6-luna": 22
+  },
+  "providers": {
+    "openai-codex": 22
+  },
+  "usageTotals": {
+    "input": 37463,
+    "output": 5973,
+    "cacheRead": 317696,
+    "cacheWrite": 0,
+    "totalTokens": 361132
+  },
+  "invalidJsonLineCount": 0,
+  "invalidJsonLineSamples": [],
+  "invalidEventRecordCount": 0,
+  "invalidEventRecordLineSamples": [],
+  "toolCounts": {
+    "read": 6,
+    "bash": 15,
+    "edit": 3
+  },
+  "paths": [
+    {
+      "path": "scratch/draft.html",
+      "calls": 3,
+      "resultBytes": 13198
+    },
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 1774
+    },
+    {
+      "path": "skills/d3/SKILL.md",
+      "calls": 1,
+      "resultBytes": 29280
+    },
+    {
+      "path": "skills/d3/references/patterns/task-overlap-dense.md",
+      "calls": 1,
+      "resultBytes": 14317
+    },
+    {
+      "path": "task-overlap-layouts.js",
+      "calls": 1,
+      "resultBytes": 792
+    },
+    {
+      "path": "skills/d3/assets/palettes/colorsets.json",
+      "calls": 1,
+      "resultBytes": 3291
+    },
+    {
+      "path": "scratch/overlap.png",
+      "calls": 1,
+      "resultBytes": 263550
+    }
+  ],
+  "readPaths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 1774
+    },
+    {
+      "path": "skills/d3/SKILL.md",
+      "calls": 1,
+      "resultBytes": 29280
+    },
+    {
+      "path": "skills/d3/references/patterns/task-overlap-dense.md",
+      "calls": 1,
+      "resultBytes": 14317
+    },
+    {
+      "path": "task-overlap-layouts.js",
+      "calls": 1,
+      "resultBytes": 792
+    },
+    {
+      "path": "skills/d3/assets/palettes/colorsets.json",
+      "calls": 1,
+      "resultBytes": 3291
+    },
+    {
+      "path": "scratch/overlap.png",
+      "calls": 1,
+      "resultBytes": 263550
+    }
+  ],
+  "policyReadPaths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1
+    },
+    {
+      "path": "skills/d3/SKILL.md",
+      "calls": 1
+    },
+    {
+      "path": "skills/d3/references/patterns/task-overlap-dense.md",
+      "calls": 1
+    },
+    {
+      "path": "task-overlap-layouts.js",
+      "calls": 1
+    },
+    {
+      "path": "skills/d3/assets/palettes/colorsets.json",
+      "calls": 1
+    },
+    {
+      "path": "scratch/overlap.png",
+      "calls": 1
+    }
+  ],
+  "totalReadResultBytes": 313004,
+  "calls": [
+    {
+      "line": 20,
+      "tool": "read",
+      "path": "../prompt.md",
+      "policyPath": "../prompt.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 1774
+    },
+    {
+      "line": 45,
+      "tool": "read",
+      "path": "skills/d3/SKILL.md",
+      "policyPath": "skills/d3/SKILL.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 29280
+    },
+    {
+      "line": 77,
+      "tool": "read",
+      "path": "skills/d3/references/patterns/task-overlap-dense.md",
+      "policyPath": "skills/d3/references/patterns/task-overlap-dense.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 14317
+    },
+    {
+      "line": 120,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "uv run --script skills/d3/scripts/layout_task_overlap_labels.py --output task-overlap-layouts.js",
+      "isError": false,
+      "resultBytes": 404
+    },
+    {
+      "line": 148,
+      "tool": "read",
+      "path": "task-overlap-layouts.js",
+      "policyPath": "task-overlap-layouts.js",
+      "command": null,
+      "isError": false,
+      "resultBytes": 792
+    },
+    {
+      "line": 240,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python - <<'PY'\nimport re\ns=open('task-overlap-layouts.js').read()\nfor line in s.splitlines():\n if '\"fill\"' in line or '\"stroke\"' in line or '\"leaderColorKey\"' in line:\n  print(line.strip())\nPY",
+      "isError": false,
+      "resultBytes": 3963
+    },
+    {
+      "line": 272,
+      "tool": "read",
+      "path": "skills/d3/assets/palettes/colorsets.json",
+      "policyPath": "skills/d3/assets/palettes/colorsets.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 3291
+    },
+    {
+      "line": 2557,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "mkdir -p scratch && python - <<'PY'\nfrom pathlib import Path\nlayout=Path('task-overlap-layouts.js').read_text()\nhtml=f'''<!doctype html>\n<html lang=\"en\">\n<head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-",
+      "isError": false,
+      "resultBytes": 204
+    },
+    {
+      "line": 2580,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python skills/d3/scripts/check_self_contained_html.py dense-overlap.html",
+      "isError": true,
+      "resultBytes": 169
+    },
+    {
+      "line": 2581,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python skills/d3/scripts/check_palette_contract.py dense-overlap.html --colorset colorset1",
+      "isError": false,
+      "resultBytes": 770
+    },
+    {
+      "line": 2808,
+      "tool": "edit",
+      "path": "scratch/draft.html",
+      "policyPath": "scratch/draft.html",
+      "command": null,
+      "isError": true,
+      "resultBytes": 174
+    },
+    {
+      "line": 2865,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python - <<'PY'\ns=open('scratch/draft.html').read(); i=s.find(\"txt('title'\"); print(s[i-100:i+260])\nPY",
+      "isError": false,
+      "resultBytes": 410
+    },
+    {
+      "line": 3086,
+      "tool": "edit",
+      "path": "scratch/draft.html",
+      "policyPath": "scratch/draft.html",
+      "command": null,
+      "isError": false,
+      "resultBytes": 7234
+    },
+    {
+      "line": 3108,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python - <<'PY'\nfrom pathlib import Path\nprint(Path('scratch/draft.html').stat().st_size)\nPY",
+      "isError": false,
+      "resultBytes": 52
+    },
+    {
+      "line": 3111,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "uv run --script skills/d3/scripts/colorset_adapter.py scratch/draft.html dense-overlap.html --colorset colorset1",
+      "isError": true,
+      "resultBytes": 284
+    },
+    {
+      "line": 3203,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "uv run --script skills/d3/scripts/colorset_adapter.py scratch/draft.html dense-overlap.html --colorset colorset1 --force && python skills/d3/scripts/check_self_contained_html.py dense-overlap.html && python skills/d3/scripts/check_palette_c",
+      "isError": false,
+      "resultBytes": 908
+    },
+    {
+      "line": 3273,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "uv run --script skills/d3/scripts/render_d3_svg.py dense-overlap.html --output dense-overlap.svg --screenshot scratch/overlap.png --wait-ms 2200 --viewport 1440x1200",
+      "isError": false,
+      "resultBytes": 452
+    },
+    {
+      "line": 3297,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python skills/d3/scripts/check_palette_contract.py dense-overlap.svg --colorset colorset1",
+      "isError": false,
+      "resultBytes": 889
+    },
+    {
+      "line": 3298,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "grep -o 'class=\"overlap-circle\"' dense-overlap.svg | wc -l && grep -o 'class=\"task-dot\"' dense-overlap.svg | wc -l && grep -o 'class=\"task-label\"' dense-overlap.svg | wc -l",
+      "isError": false,
+      "resultBytes": 56
+    },
+    {
+      "line": 3323,
+      "tool": "read",
+      "path": "scratch/overlap.png",
+      "policyPath": "scratch/overlap.png",
+      "command": null,
+      "isError": false,
+      "resultBytes": 263550
+    },
+    {
+      "line": 3415,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python skills/d3/scripts/check_visual_contract.py dense-overlap.svg --require-attribute \"viewBox=0 0 880 450\" --require-class overlap-circle:9 --require-class task-dot:100 --require-class task-label:100 --require-class task-leader:100 --req",
+      "isError": false,
+      "resultBytes": 1207
+    },
+    {
+      "line": 3474,
+      "tool": "edit",
+      "path": "scratch/draft.html",
+      "policyPath": "scratch/draft.html",
+      "command": null,
+      "isError": false,
+      "resultBytes": 5790
+    },
+    {
+      "line": 3702,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "uv run --script skills/d3/scripts/colorset_adapter.py scratch/draft.html dense-overlap.html --colorset colorset1 --force && python skills/d3/scripts/check_self_contained_html.py dense-overlap.html && python skills/d3/scripts/check_palette_c",
+      "isError": false,
+      "resultBytes": 3296
+    },
+    {
+      "line": 3975,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "uv run --with playwright python - <<'PY'\nfrom pathlib import Path\nfrom playwright.sync_api import sync_playwright\nurl=Path('dense-overlap.html').resolve().as_uri()\nwith sync_playwright() as p:\n    browser=p.chromium.launch(headless=True)\n  ",
+      "isError": false,
+      "resultBytes": 196
+    }
+  ],
+  "findings": [
+    {
+      "code": "tool-error",
+      "line": 2580,
+      "tool": "bash",
+      "path": null
+    },
+    {
+      "code": "tool-error",
+      "line": 2808,
+      "tool": "edit",
+      "path": "scratch/draft.html"
+    },
+    {
+      "code": "tool-error",
+      "line": 3111,
+      "tool": "bash",
+      "path": null
+    }
+  ]
+}

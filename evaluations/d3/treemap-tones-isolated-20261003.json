@@ -2,10 +2,26 @@
   "schemaVersion": 1,
   "date": "2026-10-03",
   "skill": "d3",
-  "phase": "builder-pending",
-  "passed": false,
-  "finalPayloadSha256": null,
+  "phase": "complete",
+  "passed": true,
+  "finalPayloadSha256": "85f8b06cb64e88ba83448270804dab58671e707d1cf1cb1b48983313c90d5bd0",
   "modelException": "openai-codex/gpt-5.6-luna, as recorded in the D3 backlog because Spark was unsupported.",
+  "releaseSelection": {
+    "naturalisticCohort": [
+      "d3-treemap-tones-naturalistic-20261003-luna-7",
+      "d3-treemap-tones-naturalistic-20261003-luna-8",
+      "d3-treemap-tones-naturalistic-20261003-luna-9"
+    ],
+    "jointNaturalisticPassCount": 2,
+    "jointTreemapContractPasses": [
+      "d3-treemap-tones-contract-20261003-luna-5"
+    ],
+    "jointOverlapContractPasses": [
+      "d3-dense-overlap-contract-20261003-luna-4"
+    ],
+    "currentCohortPayloadsAgree": true,
+    "retainedAttemptCount": 18
+  },
   "settingsNote": "Retained pre-steering high cases are separate. The combined frozen paint revision uses Luna medium consistently; strict and artifact gates are unchanged, and no direct model-quality comparison is claimed.",
   "casePolicy": "A passing contract smoke for each changed form and exactly three fresh naturalistic repetitions on the final payload; require at least two joint strict/artifact naturalistic passes. Every failed/superseded attempt remains recorded.",
   "attempts": [
@@ -25,6 +41,12 @@
         "profile": "runtime",
         "fileCount": 288,
         "payloadSha256": "fec0c61e4ff3ad2a4ffc4a0fec4444040f5be94d07767e45bc93bc24a253ca30"
+      },
+      "harnessCommand": "uv run --script scripts/run-pi-skill-eval.py d3 --prompt-file evaluations/d3/treemap-tones-contract-prompt-20261003.md --model openai-codex/gpt-5.6-luna --thinking high --mode json --strict --profile runtime --run-id d3-treemap-tones-contract-20261003-luna-1 --timeout-seconds 900 --expect-output contract-treemap.html --expect-output contract-treemap.svg",
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/d3/treemap-tones-contract-prompt-20261003.md",
+        "sizeBytes": 1389,
+        "sha256": "b08ac88171b928144d37675c9bf5c243e51342836e093ff9e14bf4e0ef67b761"
       },
       "harnessPassed": false,
       "evaluationFinalized": true,
@@ -55,6 +77,7 @@
           "error": null
         }
       ],
+      "artifactsUnchanged": true,
       "eventFindings": [
         {
           "code": "tool-error",
@@ -106,7 +129,23 @@
       "independentlyPassed": true,
       "independentGrade": "projects/treemap-tones/artifacts/isolated/contract-1/independent-grade.json",
       "independentGradeSha256": "710df73d35f04d1f0d8e6630ab551e201621358f798ce451a53d3213eedd67bb",
+      "independentValidatorCommands": [
+        "uv run --script projects/treemap-tones/scripts/inspect_isolated_artifact.py evaluations/runs/d3-treemap-tones-contract-20261003-luna-1/workspace --output projects/treemap-tones/artifacts/isolated/contract-1 --basename contract-treemap",
+        "uv run --script projects/treemap-tones/scripts/grade_isolated_artifact.py projects/treemap-tones/artifacts/isolated/contract-1/render-review.json --case contract --output projects/treemap-tones/artifacts/isolated/contract-1/independent-grade.json"
+      ],
       "independentFindings": [],
+      "representativeCaptionCollisions": [],
+      "minimumMeasuredTextContrast": 4.703674697982679,
+      "compositingPixelSampleCount": 0,
+      "maximumCompositingChannelError": null,
+      "captionLabelCollisionCount": 0,
+      "independentStateCount": 4,
+      "independentStateFindingCounts": [
+        0,
+        0,
+        0,
+        0
+      ],
       "evidenceSha256": {
         "run-manifest.json": "ba1f4e4695caddc5c5b99372d92e661d947b5aeed856f90578fd3cccf2485210",
         "evaluation-result.json": "dd51f642619a05fcaac3e4a95b5b3400fcc40628aef015c4fa9bdd91656a362c",
@@ -114,7 +153,8 @@
         "artifact-check.json": "b62c49971e05b88366bdc2accf282ddc36bf7217d0e492fb47d8118a13d81adc",
         "skill-integrity-check.json": "da7f2ccd292dc1a9314e066d63f790604c5cd061e9d2a9bbf4c7b0838ba3eb7f",
         "events.jsonl": "d742e786e8cd0cdaa4e4ce3b2063682aa74e6f0944e2e2771630b86bb1061cce"
-      }
+      },
+      "manualRenderReviewed": false
     },
     {
       "runId": "d3-treemap-tones-naturalistic-20261003-luna-1",
@@ -133,11 +173,18 @@
         "fileCount": 288,
         "payloadSha256": "fec0c61e4ff3ad2a4ffc4a0fec4444040f5be94d07767e45bc93bc24a253ca30"
       },
+      "harnessCommand": "uv run --script scripts/run-pi-skill-eval.py d3 --prompt-file evaluations/d3/treemap-tones-prompt-20261003.md --model openai-codex/gpt-5.6-luna --thinking high --mode json --strict --profile runtime --run-id d3-treemap-tones-naturalistic-20261003-luna-1 --timeout-seconds 900 --expect-output portfolio-treemap.html --expect-output portfolio-treemap.svg",
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/d3/treemap-tones-prompt-20261003.md",
+        "sizeBytes": 1419,
+        "sha256": "9d7bb1022ab77619205f4d2e94b033ea035f5d2ae20693f945565f9c91af158a"
+      },
       "harnessPassed": false,
       "evaluationFinalized": false,
       "durationSeconds": null,
       "gates": null,
       "expectedArtifacts": [],
+      "artifactsUnchanged": false,
       "eventFindings": [],
       "failedCalls": [],
       "readSurface": [],
@@ -145,10 +192,19 @@
       "independentlyPassed": null,
       "independentGrade": null,
       "independentGradeSha256": null,
+      "independentValidatorCommands": [],
       "independentFindings": null,
+      "representativeCaptionCollisions": [],
+      "minimumMeasuredTextContrast": null,
+      "compositingPixelSampleCount": 0,
+      "maximumCompositingChannelError": null,
+      "captionLabelCollisionCount": 0,
+      "independentStateCount": null,
+      "independentStateFindingCounts": [],
       "evidenceSha256": {
         "run-manifest.json": "aee19cf8b759b7595ef821fd5e52b3e910403e94670914edff7cc49172c82177"
-      }
+      },
+      "manualRenderReviewed": false
     },
     {
       "runId": "d3-treemap-tones-contract-20261003-luna-2",
@@ -166,6 +222,12 @@
         "profile": "runtime",
         "fileCount": 288,
         "payloadSha256": "fd964189150e248e286954dc1b3019473980a2c47c2efe178a4d891241d39195"
+      },
+      "harnessCommand": "uv run --script scripts/run-pi-skill-eval.py d3 --prompt-file evaluations/d3/treemap-tones-contract-prompt-20261003.md --model openai-codex/gpt-5.6-luna --thinking medium --mode json --strict --profile runtime --run-id d3-treemap-tones-contract-20261003-luna-2 --timeout-seconds 900 --expect-output contract-treemap.html --expect-output contract-treemap.svg",
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/d3/treemap-tones-contract-prompt-20261003.md",
+        "sizeBytes": 1389,
+        "sha256": "b08ac88171b928144d37675c9bf5c243e51342836e093ff9e14bf4e0ef67b761"
       },
       "harnessPassed": false,
       "evaluationFinalized": true,
@@ -196,6 +258,7 @@
           "error": null
         }
       ],
+      "artifactsUnchanged": true,
       "eventFindings": [
         {
           "code": "tool-error",
@@ -224,6 +287,10 @@
       "independentlyPassed": false,
       "independentGrade": "projects/treemap-tones/artifacts/isolated/contract-2/independent-grade.json",
       "independentGradeSha256": "5965d40ed90b4a7dc84f5b33b3631c19bc292dca8a162d28a6efeb9b62506a91",
+      "independentValidatorCommands": [
+        "uv run --script projects/treemap-tones/scripts/inspect_isolated_artifact.py evaluations/runs/d3-treemap-tones-contract-20261003-luna-2/workspace --output projects/treemap-tones/artifacts/isolated/contract-2 --basename contract-treemap",
+        "uv run --script projects/treemap-tones/scripts/grade_isolated_artifact.py projects/treemap-tones/artifacts/isolated/contract-2/render-review.json --case contract --output projects/treemap-tones/artifacts/isolated/contract-2/independent-grade.json"
+      ],
       "independentFindings": [
         "html-960: Delivery: label is not maximum-contrast black or white.",
         "html-960: Delivery: label is not maximum-contrast black or white.",
@@ -254,6 +321,18 @@
         "svg-420: Recovery: label is not maximum-contrast black or white.",
         "svg-420: Operations: leaf area proportions diverge materially from values (0.0734)."
       ],
+      "representativeCaptionCollisions": [],
+      "minimumMeasuredTextContrast": 4.703674697982679,
+      "compositingPixelSampleCount": 0,
+      "maximumCompositingChannelError": null,
+      "captionLabelCollisionCount": 0,
+      "independentStateCount": 4,
+      "independentStateFindingCounts": [
+        7,
+        7,
+        7,
+        7
+      ],
       "evidenceSha256": {
         "run-manifest.json": "08bb96e16de941e4aadd4621bd427c4e1889711d0fbb0f865be11b3ad5458353",
         "evaluation-result.json": "7a063363ede679568e54efd96cd0c7c225a8e59d8edd112db121098b9bed9be8",
@@ -261,7 +340,8 @@
         "artifact-check.json": "2239418df836138f55ad9093a0808b945b536086817e30a8443ac76cea72334a",
         "skill-integrity-check.json": "0cd9140b31cb54b0e4e73f253e76c52b8e6d8988a49376bc8e4571c8386f46b7",
         "events.jsonl": "91cfdcde83ebedc6a59820d5e3f266780590c03409afbb82c6ff3b058bfe76d5"
-      }
+      },
+      "manualRenderReviewed": false
     },
     {
       "runId": "d3-treemap-tones-naturalistic-20261003-luna-2",
@@ -279,6 +359,12 @@
         "profile": "runtime",
         "fileCount": 288,
         "payloadSha256": "fd964189150e248e286954dc1b3019473980a2c47c2efe178a4d891241d39195"
+      },
+      "harnessCommand": "uv run --script scripts/run-pi-skill-eval.py d3 --prompt-file evaluations/d3/treemap-tones-prompt-20261003.md --model openai-codex/gpt-5.6-luna --thinking medium --mode json --strict --profile runtime --run-id d3-treemap-tones-naturalistic-20261003-luna-2 --timeout-seconds 900 --expect-output portfolio-treemap.html --expect-output portfolio-treemap.svg",
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/d3/treemap-tones-prompt-20261003.md",
+        "sizeBytes": 1419,
+        "sha256": "9d7bb1022ab77619205f4d2e94b033ea035f5d2ae20693f945565f9c91af158a"
       },
       "harnessPassed": false,
       "evaluationFinalized": true,
@@ -309,6 +395,7 @@
           "error": null
         }
       ],
+      "artifactsUnchanged": true,
       "eventFindings": [
         {
           "code": "tool-error",
@@ -373,6 +460,10 @@
       "independentlyPassed": false,
       "independentGrade": "projects/treemap-tones/artifacts/isolated/naturalistic-2/independent-grade.json",
       "independentGradeSha256": "1bc005aff02488e5039d027f0766dda77727660f67493724fdadd4c40ca70950",
+      "independentValidatorCommands": [
+        "uv run --script projects/treemap-tones/scripts/inspect_isolated_artifact.py evaluations/runs/d3-treemap-tones-naturalistic-20261003-luna-2/workspace --output projects/treemap-tones/artifacts/isolated/naturalistic-2 --basename portfolio-treemap",
+        "uv run --script projects/treemap-tones/scripts/grade_isolated_artifact.py projects/treemap-tones/artifacts/isolated/naturalistic-2/render-review.json --case naturalistic --output projects/treemap-tones/artifacts/isolated/naturalistic-2/independent-grade.json"
+      ],
       "independentFindings": [
         "html-960: Learning: label is not maximum-contrast black or white.",
         "html-960: Learning: label is not maximum-contrast black or white.",
@@ -403,6 +494,18 @@
         "svg-420: Network: label is not maximum-contrast black or white.",
         "svg-420: Network: label is not maximum-contrast black or white."
       ],
+      "representativeCaptionCollisions": [],
+      "minimumMeasuredTextContrast": 4.703674697982679,
+      "compositingPixelSampleCount": 0,
+      "maximumCompositingChannelError": null,
+      "captionLabelCollisionCount": 0,
+      "independentStateCount": 4,
+      "independentStateFindingCounts": [
+        6,
+        6,
+        8,
+        8
+      ],
       "evidenceSha256": {
         "run-manifest.json": "8336d4c256bcca61973e5669f47a7e7288c729037785ebe2b582ef54e66587e5",
         "evaluation-result.json": "a7d3cc120878fe47b21f8909355d2645a7a3e4c1cfec901dbe9aa69bdcb2d256",
@@ -410,7 +513,8 @@
         "artifact-check.json": "2e44450545c6640aaa2c62c61db34d98b4d10204e2b6592dac7a0e61cc1fa4f4",
         "skill-integrity-check.json": "0cd9140b31cb54b0e4e73f253e76c52b8e6d8988a49376bc8e4571c8386f46b7",
         "events.jsonl": "942478b01cc4589de79c1f682ead173980f18d9afab15fa65b006643b1d3d7f3"
-      }
+      },
+      "manualRenderReviewed": false
     },
     {
       "runId": "d3-treemap-tones-naturalistic-20261003-luna-3",
@@ -428,6 +532,12 @@
         "profile": "runtime",
         "fileCount": 288,
         "payloadSha256": "fd964189150e248e286954dc1b3019473980a2c47c2efe178a4d891241d39195"
+      },
+      "harnessCommand": "uv run --script scripts/run-pi-skill-eval.py d3 --prompt-file evaluations/d3/treemap-tones-prompt-20261003.md --model openai-codex/gpt-5.6-luna --thinking medium --mode json --strict --profile runtime --run-id d3-treemap-tones-naturalistic-20261003-luna-3 --timeout-seconds 900 --expect-output portfolio-treemap.html --expect-output portfolio-treemap.svg",
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/d3/treemap-tones-prompt-20261003.md",
+        "sizeBytes": 1419,
+        "sha256": "9d7bb1022ab77619205f4d2e94b033ea035f5d2ae20693f945565f9c91af158a"
       },
       "harnessPassed": false,
       "evaluationFinalized": true,
@@ -458,6 +568,7 @@
           "error": null
         }
       ],
+      "artifactsUnchanged": true,
       "eventFindings": [
         {
           "code": "tool-error",
@@ -497,6 +608,10 @@
       "independentlyPassed": false,
       "independentGrade": "projects/treemap-tones/artifacts/isolated/naturalistic-3/independent-grade.json",
       "independentGradeSha256": "37af84d3d16245573f2573ee7cddadadbefe8c1cf4109bdf27d555e3cb773075",
+      "independentValidatorCommands": [
+        "uv run --script projects/treemap-tones/scripts/inspect_isolated_artifact.py evaluations/runs/d3-treemap-tones-naturalistic-20261003-luna-3/workspace --output projects/treemap-tones/artifacts/isolated/naturalistic-3 --basename portfolio-treemap",
+        "uv run --script projects/treemap-tones/scripts/grade_isolated_artifact.py projects/treemap-tones/artifacts/isolated/naturalistic-3/render-review.json --case naturalistic --output projects/treemap-tones/artifacts/isolated/naturalistic-3/independent-grade.json"
+      ],
       "independentFindings": [
         "html-960: Learning: label is not maximum-contrast black or white.",
         "html-960: Learning: label is not maximum-contrast black or white.",
@@ -523,6 +638,18 @@
         "svg-420: Network: label is not maximum-contrast black or white.",
         "svg-420: Network: label is not maximum-contrast black or white."
       ],
+      "representativeCaptionCollisions": [],
+      "minimumMeasuredTextContrast": 4.703674697982679,
+      "compositingPixelSampleCount": 0,
+      "maximumCompositingChannelError": null,
+      "captionLabelCollisionCount": 0,
+      "independentStateCount": 4,
+      "independentStateFindingCounts": [
+        6,
+        6,
+        6,
+        6
+      ],
       "evidenceSha256": {
         "run-manifest.json": "03e0d086020032457ad29058c108dbe0f42a2b371c7df537d526c4230389619b",
         "evaluation-result.json": "b25d66c220fc7f0543657a8e77d5fb57d89f81cb8901242e61f5312bc2e78966",
@@ -530,7 +657,1599 @@
         "artifact-check.json": "c3ee942ef04f317c81e4382a7533bb4c9578310ba1205ae93bfe279c3d1445b5",
         "skill-integrity-check.json": "0cd9140b31cb54b0e4e73f253e76c52b8e6d8988a49376bc8e4571c8386f46b7",
         "events.jsonl": "847ae2a9cfa73b3698691fc1978f86ab92d772b5aa2bdffaab2ec675a508dc7b"
-      }
+      },
+      "manualRenderReviewed": false
+    },
+    {
+      "runId": "d3-treemap-tones-contract-20261003-luna-3",
+      "status": "superseded",
+      "classification": null,
+      "note": "The first deterministic-builder payload passes strict and seven independently rendered states. A later dense-overlap builder changes the complete runtime payload, so this retained pass cannot certify that later digest.",
+      "model": {
+        "model": "openai-codex/gpt-5.6-luna",
+        "thinking": "medium",
+        "mode": "json",
+        "timeoutSeconds": 900
+      },
+      "payload": {
+        "name": "d3",
+        "profile": "runtime",
+        "fileCount": 289,
+        "payloadSha256": "869500828be9b356d53b9603c2aac23597f24562832e9fc77c758bdbf42de869"
+      },
+      "harnessCommand": "uv run --script scripts/run-pi-skill-eval.py d3 --prompt-file evaluations/d3/treemap-tones-contract-prompt-20261003.md --model openai-codex/gpt-5.6-luna --thinking medium --mode json --strict --profile runtime --run-id d3-treemap-tones-contract-20261003-luna-3 --timeout-seconds 900 --expect-output contract-treemap.html --expect-output contract-treemap.svg",
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/d3/treemap-tones-contract-prompt-20261003.md",
+        "sizeBytes": 1389,
+        "sha256": "b08ac88171b928144d37675c9bf5c243e51342836e093ff9e14bf4e0ef67b761"
+      },
+      "harnessPassed": true,
+      "evaluationFinalized": true,
+      "durationSeconds": 67.495,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "expectedArtifacts": [
+        {
+          "path": "contract-treemap.html",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 317231,
+          "sha256": "a7ad86521316446b5aa05495a070facebbeed7573c2d254fc0d64cb93709fe90",
+          "error": null
+        },
+        {
+          "path": "contract-treemap.svg",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 29369,
+          "sha256": "3b1a0093cbf88aa2555f9c2dea074ebbfe14de5e4f0f249aabfb7b4d6e67ce9b",
+          "error": null
+        }
+      ],
+      "artifactsUnchanged": true,
+      "eventFindings": [],
+      "failedCalls": [],
+      "readSurface": [
+        "../prompt.md",
+        "skills/d3/SKILL.md",
+        "skills/d3/references/patterns/treemap.md",
+        "scratch/treemap-960.png",
+        "scratch/treemap-420.png",
+        "contract-treemap.svg"
+      ],
+      "skillIntegrityPassed": true,
+      "independentlyPassed": true,
+      "independentGrade": "projects/treemap-tones/artifacts/isolated/contract-3/independent-grade.json",
+      "independentGradeSha256": "6610ce32afcda12df3d47f1a55d2b2d7d99326b508d2cde454f181390416b0b4",
+      "independentValidatorCommands": [
+        "uv run --script projects/treemap-tones/scripts/inspect_isolated_artifact.py evaluations/runs/d3-treemap-tones-contract-20261003-luna-3/workspace --output projects/treemap-tones/artifacts/isolated/contract-3 --basename contract-treemap --replay",
+        "uv run --script projects/treemap-tones/scripts/grade_isolated_artifact.py projects/treemap-tones/artifacts/isolated/contract-3/render-review.json --case contract --output projects/treemap-tones/artifacts/isolated/contract-3/independent-grade.json"
+      ],
+      "independentFindings": [],
+      "representativeCaptionCollisions": [],
+      "minimumMeasuredTextContrast": 4.703674697982679,
+      "compositingPixelSampleCount": 0,
+      "maximumCompositingChannelError": null,
+      "captionLabelCollisionCount": 0,
+      "independentStateCount": 7,
+      "independentStateFindingCounts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "evidenceSha256": {
+        "run-manifest.json": "ac8b11cf086aacf939bb2a2728b2dd9bc7694369523ff7f87137a5f6aa1b7a8c",
+        "evaluation-result.json": "a8312caafad2f83d6fe1a3c9969881ccd0653b8b5059d80c2f6e3eaf87ff5eb4",
+        "event-check.json": "145c3250fff9101b08c429e54b00d78a18465819a14c9835c9c4749c921299f2",
+        "artifact-check.json": "428d9e7e07e1ab76246df7fa47dd15fb7a5b13ca8ccd411d4ddaba0f9b02cc3a",
+        "skill-integrity-check.json": "0889bdba23d1b77edf8917a805d8c800794be71b1846437090d444894169804b",
+        "events.jsonl": "7a846f485741fd2455217ab43dae4123759f9c21c459cf1953499a3a3588b32e"
+      },
+      "manualRenderReviewed": true
+    },
+    {
+      "runId": "d3-treemap-tones-naturalistic-20261003-luna-4",
+      "status": "superseded",
+      "classification": null,
+      "note": "The first deterministic-builder payload passes strict and seven independently rendered states; retained as part of its exactly three-run naturalistic cohort.",
+      "model": {
+        "model": "openai-codex/gpt-5.6-luna",
+        "thinking": "medium",
+        "mode": "json",
+        "timeoutSeconds": 900
+      },
+      "payload": {
+        "name": "d3",
+        "profile": "runtime",
+        "fileCount": 289,
+        "payloadSha256": "869500828be9b356d53b9603c2aac23597f24562832e9fc77c758bdbf42de869"
+      },
+      "harnessCommand": "uv run --script scripts/run-pi-skill-eval.py d3 --prompt-file evaluations/d3/treemap-tones-prompt-20261003.md --model openai-codex/gpt-5.6-luna --thinking medium --mode json --strict --profile runtime --run-id d3-treemap-tones-naturalistic-20261003-luna-4 --timeout-seconds 900 --expect-output portfolio-treemap.html --expect-output portfolio-treemap.svg",
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/d3/treemap-tones-prompt-20261003.md",
+        "sizeBytes": 1419,
+        "sha256": "9d7bb1022ab77619205f4d2e94b033ea035f5d2ae20693f945565f9c91af158a"
+      },
+      "harnessPassed": true,
+      "evaluationFinalized": true,
+      "durationSeconds": 71.286,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "expectedArtifacts": [
+        {
+          "path": "portfolio-treemap.html",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 317235,
+          "sha256": "19bbd5b356bfa5562a3d988fbb69862e6b34450ae0a00497ee5070724378d25f",
+          "error": null
+        },
+        {
+          "path": "portfolio-treemap.svg",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 30186,
+          "sha256": "0c132b965caa32b3ee2a6a5622bc95ed5ac03ee9e604ba52f5d34a39a836df98",
+          "error": null
+        }
+      ],
+      "artifactsUnchanged": true,
+      "eventFindings": [],
+      "failedCalls": [],
+      "readSurface": [
+        "../prompt.md",
+        "skills/d3/SKILL.md",
+        "skills/d3/references/patterns/treemap.md",
+        "scratch-treemap.png",
+        "scratch-treemap-narrow.png",
+        "portfolio-treemap.svg"
+      ],
+      "skillIntegrityPassed": true,
+      "independentlyPassed": true,
+      "independentGrade": "projects/treemap-tones/artifacts/isolated/naturalistic-4/independent-grade.json",
+      "independentGradeSha256": "88eff4adcc6a8d8ab6b2004ab2be73cca4673e3b2ae464c13cd65e08b4dd01fb",
+      "independentValidatorCommands": [
+        "uv run --script projects/treemap-tones/scripts/inspect_isolated_artifact.py evaluations/runs/d3-treemap-tones-naturalistic-20261003-luna-4/workspace --output projects/treemap-tones/artifacts/isolated/naturalistic-4 --basename portfolio-treemap --replay",
+        "uv run --script projects/treemap-tones/scripts/grade_isolated_artifact.py projects/treemap-tones/artifacts/isolated/naturalistic-4/render-review.json --case naturalistic --output projects/treemap-tones/artifacts/isolated/naturalistic-4/independent-grade.json"
+      ],
+      "independentFindings": [],
+      "representativeCaptionCollisions": [],
+      "minimumMeasuredTextContrast": 4.703674697982679,
+      "compositingPixelSampleCount": 0,
+      "maximumCompositingChannelError": null,
+      "captionLabelCollisionCount": 0,
+      "independentStateCount": 7,
+      "independentStateFindingCounts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "evidenceSha256": {
+        "run-manifest.json": "0110e601c32f561e6024e43ed628b65f6dd653ea7d663949aed740511a051eb9",
+        "evaluation-result.json": "3ef38b78f58ea97a4274126b46cb27e575f0ef1f907ea7f9f6dff6185b04f9fa",
+        "event-check.json": "fc2dc6bad259adfd3f443950b0d410e0c99673081ba71db0cf67ac0fff527cc6",
+        "artifact-check.json": "8e68d5a0f4725eec7dab6ac344817f08cd499d0f3320866ca15853bd2eb52709",
+        "skill-integrity-check.json": "0889bdba23d1b77edf8917a805d8c800794be71b1846437090d444894169804b",
+        "events.jsonl": "407d7af9e4e85b3fdb2dd207b1b9cd175603eb0a135a0b052bac725d1ecbf2ac"
+      },
+      "manualRenderReviewed": true
+    },
+    {
+      "runId": "d3-treemap-tones-naturalistic-20261003-luna-5",
+      "status": "superseded",
+      "classification": "agent",
+      "note": "Agent required d3-treemap-cs1 pattern metadata as the SVG DOM id, although the builder root id is treemap. Actual artifacts pass all seven independent states; the single failed guessed-ID check rejects strict acceptance.",
+      "model": {
+        "model": "openai-codex/gpt-5.6-luna",
+        "thinking": "medium",
+        "mode": "json",
+        "timeoutSeconds": 900
+      },
+      "payload": {
+        "name": "d3",
+        "profile": "runtime",
+        "fileCount": 289,
+        "payloadSha256": "869500828be9b356d53b9603c2aac23597f24562832e9fc77c758bdbf42de869"
+      },
+      "harnessCommand": "uv run --script scripts/run-pi-skill-eval.py d3 --prompt-file evaluations/d3/treemap-tones-prompt-20261003.md --model openai-codex/gpt-5.6-luna --thinking medium --mode json --strict --profile runtime --run-id d3-treemap-tones-naturalistic-20261003-luna-5 --timeout-seconds 900 --expect-output portfolio-treemap.html --expect-output portfolio-treemap.svg",
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/d3/treemap-tones-prompt-20261003.md",
+        "sizeBytes": 1419,
+        "sha256": "9d7bb1022ab77619205f4d2e94b033ea035f5d2ae20693f945565f9c91af158a"
+      },
+      "harnessPassed": false,
+      "evaluationFinalized": true,
+      "durationSeconds": 41.674,
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "expectedArtifacts": [
+        {
+          "path": "portfolio-treemap.html",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 317235,
+          "sha256": "19bbd5b356bfa5562a3d988fbb69862e6b34450ae0a00497ee5070724378d25f",
+          "error": null
+        },
+        {
+          "path": "portfolio-treemap.svg",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 30186,
+          "sha256": "0c132b965caa32b3ee2a6a5622bc95ed5ac03ee9e604ba52f5d34a39a836df98",
+          "error": null
+        }
+      ],
+      "artifactsUnchanged": true,
+      "eventFindings": [
+        {
+          "code": "tool-error",
+          "line": 444,
+          "tool": "bash"
+        }
+      ],
+      "failedCalls": [
+        {
+          "line": 444,
+          "tool": "bash",
+          "path": null,
+          "command": "python \"skills/d3/scripts/check_visual_contract.py\" portfolio-treemap.svg --require-id d3-treemap-cs1 --require-text Delivery --require-text Parcel --require-text 41 --require-text Experience --require-text Support --require-text 31 --require-text Platform --require-text Runtime --require-text 29",
+          "isError": true
+        }
+      ],
+      "readSurface": [
+        "../prompt.md",
+        "skills/d3/SKILL.md",
+        "skills/d3/references/patterns/treemap.md",
+        "portfolio-treemap.svg",
+        "scratch/desktop.png",
+        "scratch/narrow.png"
+      ],
+      "skillIntegrityPassed": true,
+      "independentlyPassed": true,
+      "independentGrade": "projects/treemap-tones/artifacts/isolated/naturalistic-5/independent-grade.json",
+      "independentGradeSha256": "798dcb6f70902c36e57c66191a4095b603f5513d16a8c6af8689374687e79c65",
+      "independentValidatorCommands": [
+        "uv run --script projects/treemap-tones/scripts/inspect_isolated_artifact.py evaluations/runs/d3-treemap-tones-naturalistic-20261003-luna-5/workspace --output projects/treemap-tones/artifacts/isolated/naturalistic-5 --basename portfolio-treemap --replay",
+        "uv run --script projects/treemap-tones/scripts/grade_isolated_artifact.py projects/treemap-tones/artifacts/isolated/naturalistic-5/render-review.json --case naturalistic --output projects/treemap-tones/artifacts/isolated/naturalistic-5/independent-grade.json"
+      ],
+      "independentFindings": [],
+      "representativeCaptionCollisions": [],
+      "minimumMeasuredTextContrast": 4.703674697982679,
+      "compositingPixelSampleCount": 0,
+      "maximumCompositingChannelError": null,
+      "captionLabelCollisionCount": 0,
+      "independentStateCount": 7,
+      "independentStateFindingCounts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "evidenceSha256": {
+        "run-manifest.json": "f769774abab2e7354defd593946e9123d2ae1b00c841dd7a7466c8eea7a35329",
+        "evaluation-result.json": "560c14dcd57519e93fc7f175ead1c10e316d0a4659e79782ad51ef9ac11c0e7a",
+        "event-check.json": "605b7274e1a9ab0f8dcb57d7bf5d47187fb704898ce1f5048a93df27878555c7",
+        "artifact-check.json": "8e68d5a0f4725eec7dab6ac344817f08cd499d0f3320866ca15853bd2eb52709",
+        "skill-integrity-check.json": "0889bdba23d1b77edf8917a805d8c800794be71b1846437090d444894169804b",
+        "events.jsonl": "6842347923705d359e4414258478727ed48457ca9a46a9b390c613781024709a"
+      },
+      "manualRenderReviewed": true
+    },
+    {
+      "runId": "d3-treemap-tones-naturalistic-20261003-luna-6",
+      "status": "superseded",
+      "classification": null,
+      "note": "The first deterministic-builder payload passes strict and seven independently rendered states; its naturalistic cohort has exactly two joint passes from three fresh runs.",
+      "model": {
+        "model": "openai-codex/gpt-5.6-luna",
+        "thinking": "medium",
+        "mode": "json",
+        "timeoutSeconds": 900
+      },
+      "payload": {
+        "name": "d3",
+        "profile": "runtime",
+        "fileCount": 289,
+        "payloadSha256": "869500828be9b356d53b9603c2aac23597f24562832e9fc77c758bdbf42de869"
+      },
+      "harnessCommand": "uv run --script scripts/run-pi-skill-eval.py d3 --prompt-file evaluations/d3/treemap-tones-prompt-20261003.md --model openai-codex/gpt-5.6-luna --thinking medium --mode json --strict --profile runtime --run-id d3-treemap-tones-naturalistic-20261003-luna-6 --timeout-seconds 900 --expect-output portfolio-treemap.html --expect-output portfolio-treemap.svg",
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/d3/treemap-tones-prompt-20261003.md",
+        "sizeBytes": 1419,
+        "sha256": "9d7bb1022ab77619205f4d2e94b033ea035f5d2ae20693f945565f9c91af158a"
+      },
+      "harnessPassed": true,
+      "evaluationFinalized": true,
+      "durationSeconds": 38.852,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "expectedArtifacts": [
+        {
+          "path": "portfolio-treemap.html",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 317235,
+          "sha256": "35c29bfc4e9b7190508525113e92d2c414a447ebc6fa728ed52708b09fd11deb",
+          "error": null
+        },
+        {
+          "path": "portfolio-treemap.svg",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 30185,
+          "sha256": "ac0a55c22fb46b1ac67e85563b2ae34e695ac935e1cee10929eba6497945ddf8",
+          "error": null
+        }
+      ],
+      "artifactsUnchanged": true,
+      "eventFindings": [],
+      "failedCalls": [],
+      "readSurface": [
+        "../prompt.md",
+        "skills/d3/SKILL.md",
+        "skills/d3/references/patterns/treemap.md",
+        "scratch/treemap-960.png",
+        "scratch/treemap-420.png",
+        "portfolio-treemap.svg"
+      ],
+      "skillIntegrityPassed": true,
+      "independentlyPassed": true,
+      "independentGrade": "projects/treemap-tones/artifacts/isolated/naturalistic-6/independent-grade.json",
+      "independentGradeSha256": "b7e74ba6014fe7b9f61a8c8c7e350a470ae49a3efac2885e2b58d4b4179705ae",
+      "independentValidatorCommands": [
+        "uv run --script projects/treemap-tones/scripts/inspect_isolated_artifact.py evaluations/runs/d3-treemap-tones-naturalistic-20261003-luna-6/workspace --output projects/treemap-tones/artifacts/isolated/naturalistic-6 --basename portfolio-treemap --replay",
+        "uv run --script projects/treemap-tones/scripts/grade_isolated_artifact.py projects/treemap-tones/artifacts/isolated/naturalistic-6/render-review.json --case naturalistic --output projects/treemap-tones/artifacts/isolated/naturalistic-6/independent-grade.json"
+      ],
+      "independentFindings": [],
+      "representativeCaptionCollisions": [],
+      "minimumMeasuredTextContrast": 4.703674697982679,
+      "compositingPixelSampleCount": 0,
+      "maximumCompositingChannelError": null,
+      "captionLabelCollisionCount": 0,
+      "independentStateCount": 7,
+      "independentStateFindingCounts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "evidenceSha256": {
+        "run-manifest.json": "7bb9f07373b4d76b139729e65cb409423a4d2ed718d0623adb498c43d8d793e4",
+        "evaluation-result.json": "352482a9cde152ba8991c3e0f31a524e5d11bdf59969abe734d48531cfebde95",
+        "event-check.json": "4a841a1728accb75c05dabd87a29d41c101ae82ed29cefa2c5225b15220ddd27",
+        "artifact-check.json": "fd511b576f9b7aafe002d2c34d89dc185db2a2d4fc76bddc63e16846683d3544",
+        "skill-integrity-check.json": "0889bdba23d1b77edf8917a805d8c800794be71b1846437090d444894169804b",
+        "events.jsonl": "c82c6180c557ceb37e355d66cab3b212241344066303709a794c37ecba89f36e"
+      },
+      "manualRenderReviewed": true
+    },
+    {
+      "runId": "d3-dense-overlap-contract-20261003-luna-1",
+      "status": "superseded",
+      "classification": "agent",
+      "note": "Agent omitted --force when replacing an existing finalized HTML, causing a strict tool error. Native HTML passes four painted-radius states, but CSS/Web Animation radii leave the exported SVG at r=0 for nine regions and 100 dots; both portable SVG states fail. Originals remain untouched.",
+      "model": {
+        "model": "openai-codex/gpt-5.6-luna",
+        "thinking": "medium",
+        "mode": "json",
+        "timeoutSeconds": 900
+      },
+      "payload": {
+        "name": "d3",
+        "profile": "runtime",
+        "fileCount": 289,
+        "payloadSha256": "869500828be9b356d53b9603c2aac23597f24562832e9fc77c758bdbf42de869"
+      },
+      "harnessCommand": "uv run --script scripts/run-pi-skill-eval.py d3 --prompt-file evaluations/d3/dense-overlap-contract-prompt-20261003.md --model openai-codex/gpt-5.6-luna --thinking medium --mode json --strict --profile runtime --run-id d3-dense-overlap-contract-20261003-luna-1 --timeout-seconds 900 --expect-output task-overlap-layouts.js --expect-output dense-overlap.html --expect-output dense-overlap.svg",
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/d3/dense-overlap-contract-prompt-20261003.md",
+        "sizeBytes": 1692,
+        "sha256": "9960542691d787a62e8bff3262e9a6b33133eec97b8358cc12f45259700a0dc0"
+      },
+      "harnessPassed": false,
+      "evaluationFinalized": true,
+      "durationSeconds": 130.405,
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "expectedArtifacts": [
+        {
+          "path": "task-overlap-layouts.js",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 66152,
+          "sha256": "333912a89479a8020f1f2279ed3e3dfa32a37f8809c5c0c1bb3540262d3b0419",
+          "error": null
+        },
+        {
+          "path": "dense-overlap.html",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 101507,
+          "sha256": "614ea542e732d3bc9182492628976f8b130e8f970ca420402512f861488cc0d8",
+          "error": null
+        },
+        {
+          "path": "dense-overlap.svg",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 375532,
+          "sha256": "be5ad6cd78039d3a671438eabb1a71fac8dff10a572e02b4f85098312ee560f3",
+          "error": null
+        }
+      ],
+      "artifactsUnchanged": true,
+      "eventFindings": [
+        {
+          "code": "tool-error",
+          "line": 3488,
+          "tool": "bash"
+        }
+      ],
+      "failedCalls": [
+        {
+          "line": 3488,
+          "tool": "bash",
+          "path": null,
+          "command": "uv run --script skills/d3/scripts/colorset_adapter.py dense-overlap-draft.html dense-overlap.html --colorset colorset1 && python skills/d3/scripts/check_self_contained_html.py dense-overlap.html && python skills/d3/scripts/check_palette_contract.py dense-overlap.html --colorset colorset1 && uv run --script skills/d3/scripts/render_d3_svg.py dense-overlap.html --output dense-overlap.svg --screenshot verification/overlap.png --wait-ms 2200 --viewport 880x450 && python skills/d3/scripts/check_palette_contract.py dense-overlap.svg --colorset colorset1 && python skills/d3/scripts/check_visual_contract.py dense-overlap.svg --require-attribute \"viewBox=0 0 880 450\" --require-class overlap-circle:9 --require-class task-dot:100 --require-class task-label:100 --require-class task-label-bg:100 --require-class task-leader:100 --require-id title --require-id desc",
+          "isError": true
+        }
+      ],
+      "readSurface": [
+        "../prompt.md",
+        "skills/d3/SKILL.md",
+        "skills/d3/references/patterns/task-overlap-dense.md",
+        "task-overlap-layouts.js",
+        "task-overlap-layouts.js",
+        "skills/d3/assets/palettes/colorsets.json",
+        "verification/overlap.png",
+        "verification/overlap.png"
+      ],
+      "skillIntegrityPassed": true,
+      "independentlyPassed": false,
+      "independentGrade": "projects/treemap-tones/artifacts/isolated/overlap-contract-1/independent-grade.json",
+      "independentGradeSha256": "05c3fc8672e8ca1dec11b2da76b2dfe5d1f245158c87252c3ad03e0230ccb4f2",
+      "independentValidatorCommands": [
+        "uv run --script projects/treemap-tones/scripts/inspect_overlap_isolated.py evaluations/runs/d3-dense-overlap-contract-20261003-luna-1/workspace --output projects/treemap-tones/artifacts/isolated/overlap-contract-1"
+      ],
+      "independentFindings": [
+        "Missing clear single/double/triple overlap samples.",
+        "T001: task geometry changed.",
+        "T002: task geometry changed.",
+        "T003: task geometry changed.",
+        "T004: task geometry changed.",
+        "T005: task geometry changed.",
+        "T006: task geometry changed.",
+        "T007: task geometry changed.",
+        "T008: task geometry changed.",
+        "T009: task geometry changed.",
+        "T010: task geometry changed.",
+        "T011: task geometry changed.",
+        "T012: task geometry changed.",
+        "T013: task geometry changed.",
+        "T014: task geometry changed.",
+        "T015: task geometry changed.",
+        "T016: task geometry changed.",
+        "T017: task geometry changed.",
+        "T018: task geometry changed.",
+        "T019: task geometry changed.",
+        "T020: task geometry changed.",
+        "T021: task geometry changed.",
+        "T022: task geometry changed.",
+        "T023: task geometry changed.",
+        "T024: task geometry changed.",
+        "T025: task geometry changed.",
+        "T026: task geometry changed.",
+        "T027: task geometry changed.",
+        "T028: task geometry changed.",
+        "T029: task geometry changed.",
+        "T030: task geometry changed.",
+        "T031: task geometry changed.",
+        "T032: task geometry changed.",
+        "T033: task geometry changed.",
+        "T034: task geometry changed.",
+        "T035: task geometry changed.",
+        "T036: task geometry changed.",
+        "T037: task geometry changed.",
+        "T038: task geometry changed.",
+        "T039: task geometry changed.",
+        "T040: task geometry changed.",
+        "T041: task geometry changed.",
+        "T042: task geometry changed.",
+        "T043: task geometry changed.",
+        "T044: task geometry changed.",
+        "T045: task geometry changed.",
+        "T046: task geometry changed.",
+        "T047: task geometry changed.",
+        "T048: task geometry changed.",
+        "T049: task geometry changed.",
+        "T050: task geometry changed.",
+        "T051: task geometry changed.",
+        "T052: task geometry changed.",
+        "T053: task geometry changed.",
+        "T054: task geometry changed.",
+        "T055: task geometry changed.",
+        "T056: task geometry changed.",
+        "T057: task geometry changed.",
+        "T058: task geometry changed.",
+        "T059: task geometry changed.",
+        "T060: task geometry changed.",
+        "T061: task geometry changed.",
+        "T062: task geometry changed.",
+        "T063: task geometry changed.",
+        "T064: task geometry changed.",
+        "T065: task geometry changed.",
+        "T066: task geometry changed.",
+        "T067: task geometry changed.",
+        "T068: task geometry changed.",
+        "T069: task geometry changed.",
+        "T070: task geometry changed.",
+        "T071: task geometry changed.",
+        "T072: task geometry changed.",
+        "T073: task geometry changed.",
+        "T074: task geometry changed.",
+        "T075: task geometry changed.",
+        "T076: task geometry changed.",
+        "T077: task geometry changed.",
+        "T078: task geometry changed.",
+        "T079: task geometry changed.",
+        "T080: task geometry changed.",
+        "T081: task geometry changed.",
+        "T082: task geometry changed.",
+        "T083: task geometry changed.",
+        "T084: task geometry changed.",
+        "T085: task geometry changed.",
+        "T086: task geometry changed.",
+        "T087: task geometry changed.",
+        "T088: task geometry changed.",
+        "T089: task geometry changed.",
+        "T090: task geometry changed.",
+        "T091: task geometry changed.",
+        "T092: task geometry changed.",
+        "T093: task geometry changed.",
+        "T094: task geometry changed.",
+        "T095: task geometry changed.",
+        "T096: task geometry changed.",
+        "T097: task geometry changed.",
+        "T098: task geometry changed.",
+        "T099: task geometry changed.",
+        "T100: task geometry changed.",
+        "api: set geometry changed.",
+        "backlog: set geometry changed.",
+        "data: set geometry changed.",
+        "docs: set geometry changed.",
+        "ops: set geometry changed.",
+        "qa: set geometry changed.",
+        "release: set geometry changed.",
+        "security: set geometry changed.",
+        "ux: set geometry changed."
+      ],
+      "representativeCaptionCollisions": [],
+      "minimumMeasuredTextContrast": 12.627737689079677,
+      "compositingPixelSampleCount": 12,
+      "maximumCompositingChannelError": 0.5138560000000041,
+      "captionLabelCollisionCount": 0,
+      "independentStateCount": 6,
+      "independentStateFindingCounts": [
+        0,
+        0,
+        0,
+        0,
+        110,
+        110
+      ],
+      "evidenceSha256": {
+        "run-manifest.json": "5fb6b30f1c428ed534514934db90a26c15860194b0214de9e4c62b8b55f85fbb",
+        "evaluation-result.json": "f3b7df4334b3a7f72025a095fc4b162242b764db2b55308a1b5e709a65e667da",
+        "event-check.json": "9904539d0d273505636bb24a72d9b495955788ccedf3c1624ed3bb254921bfa0",
+        "artifact-check.json": "1a5a218c05800a57816bdc01d3c3fed916693c9f2558728c10e195f1c29d5754",
+        "skill-integrity-check.json": "0889bdba23d1b77edf8917a805d8c800794be71b1846437090d444894169804b",
+        "events.jsonl": "76803afe05366120b138411bd801369ae1c7f887298ad9a5b352a5ad70a5280f"
+      },
+      "manualRenderReviewed": true
+    },
+    {
+      "runId": "d3-dense-overlap-contract-20261003-luna-2",
+      "status": "superseded",
+      "classification": "agent",
+      "note": "Agent first omitted SVG desc, attempted a stale exact edit and again omitted --force on an existing final HTML. Actual geometry, semantic alpha, maximum BW and sampled pixels pass, but its inherited 16px footer overlaps T094, T095 and T100 in every HTML/SVG state. Strict and independently rendered acceptance both fail; no artifact repair is accepted.",
+      "model": {
+        "model": "openai-codex/gpt-5.6-luna",
+        "thinking": "medium",
+        "mode": "json",
+        "timeoutSeconds": 900
+      },
+      "payload": {
+        "name": "d3",
+        "profile": "runtime",
+        "fileCount": 289,
+        "payloadSha256": "869500828be9b356d53b9603c2aac23597f24562832e9fc77c758bdbf42de869"
+      },
+      "harnessCommand": "uv run --script scripts/run-pi-skill-eval.py d3 --prompt-file evaluations/d3/dense-overlap-contract-prompt-20261003.md --model openai-codex/gpt-5.6-luna --thinking medium --mode json --strict --profile runtime --run-id d3-dense-overlap-contract-20261003-luna-2 --timeout-seconds 900 --expect-output task-overlap-layouts.js --expect-output dense-overlap.html --expect-output dense-overlap.svg",
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/d3/dense-overlap-contract-prompt-20261003.md",
+        "sizeBytes": 1692,
+        "sha256": "9960542691d787a62e8bff3262e9a6b33133eec97b8358cc12f45259700a0dc0"
+      },
+      "harnessPassed": false,
+      "evaluationFinalized": true,
+      "durationSeconds": 157.359,
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "expectedArtifacts": [
+        {
+          "path": "task-overlap-layouts.js",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 66152,
+          "sha256": "333912a89479a8020f1f2279ed3e3dfa32a37f8809c5c0c1bb3540262d3b0419",
+          "error": null
+        },
+        {
+          "path": "dense-overlap.html",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 101280,
+          "sha256": "5672692b5a5767109722771014e96cd956c6deaadb385dd77ddd704f9c40b730",
+          "error": null
+        },
+        {
+          "path": "dense-overlap.svg",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 363692,
+          "sha256": "649506f8218964cac11c8d267f34979635af1aa65c1579df58198b4d5a075e83",
+          "error": null
+        }
+      ],
+      "artifactsUnchanged": true,
+      "eventFindings": [
+        {
+          "code": "tool-error",
+          "line": 2580,
+          "tool": "bash"
+        },
+        {
+          "code": "tool-error",
+          "line": 2808,
+          "tool": "edit"
+        },
+        {
+          "code": "tool-error",
+          "line": 3111,
+          "tool": "bash"
+        }
+      ],
+      "failedCalls": [
+        {
+          "line": 2580,
+          "tool": "bash",
+          "path": null,
+          "command": "python skills/d3/scripts/check_self_contained_html.py dense-overlap.html",
+          "isError": true
+        },
+        {
+          "line": 2808,
+          "tool": "edit",
+          "path": "scratch/draft.html",
+          "command": null,
+          "isError": true
+        },
+        {
+          "line": 3111,
+          "tool": "bash",
+          "path": null,
+          "command": "uv run --script skills/d3/scripts/colorset_adapter.py scratch/draft.html dense-overlap.html --colorset colorset1",
+          "isError": true
+        }
+      ],
+      "readSurface": [
+        "../prompt.md",
+        "skills/d3/SKILL.md",
+        "skills/d3/references/patterns/task-overlap-dense.md",
+        "task-overlap-layouts.js",
+        "skills/d3/assets/palettes/colorsets.json",
+        "scratch/overlap.png"
+      ],
+      "skillIntegrityPassed": true,
+      "independentlyPassed": false,
+      "independentGrade": "projects/treemap-tones/artifacts/isolated/overlap-contract-2/independent-grade.json",
+      "independentGradeSha256": "b4bf24b1e343946bbd153ae8b1963986af92c776d1d25cd117593574b5cae5d2",
+      "independentValidatorCommands": [
+        "uv run --script projects/treemap-tones/scripts/inspect_overlap_isolated.py evaluations/runs/d3-dense-overlap-contract-20261003-luna-2/workspace --output projects/treemap-tones/artifacts/isolated/overlap-contract-2"
+      ],
+      "independentFindings": [
+        "Caption \"100 tasks, direct leaders, 0 label collisions\" overlaps T094 at font size 16px.",
+        "Caption \"100 tasks, direct leaders, 0 label collisions\" overlaps T095 at font size 16px.",
+        "Caption \"100 tasks, direct leaders, 0 label collisions\" overlaps T100 at font size 16px."
+      ],
+      "representativeCaptionCollisions": [
+        {
+          "caption": "100 tasks, direct leaders, 0 label collisions",
+          "captionFontSize": "16px",
+          "taskId": "T094",
+          "intersection": {
+            "width": 13.080108642578125,
+            "height": 7.7022705078125
+          },
+          "captionBounds": {
+            "x": 294.855224609375,
+            "y": 487.5895690917969,
+            "width": 394.56365966796875,
+            "height": 22.999969482421875
+          },
+          "labelBounds": {
+            "x": 270.4559020996094,
+            "y": 481.2828063964844,
+            "width": 37.47943115234375,
+            "height": 14.009033203125
+          }
+        },
+        {
+          "caption": "100 tasks, direct leaders, 0 label collisions",
+          "captionFontSize": "16px",
+          "taskId": "T095",
+          "intersection": {
+            "width": 60.56298828125,
+            "height": 13.38177490234375
+          },
+          "captionBounds": {
+            "x": 294.855224609375,
+            "y": 487.5895690917969,
+            "width": 394.56365966796875,
+            "height": 22.999969482421875
+          },
+          "labelBounds": {
+            "x": 370.8192443847656,
+            "y": 489.90777587890625,
+            "width": 60.56298828125,
+            "height": 13.38177490234375
+          }
+        },
+        {
+          "caption": "100 tasks, direct leaders, 0 label collisions",
+          "captionFontSize": "16px",
+          "taskId": "T100",
+          "intersection": {
+            "width": 66.4713134765625,
+            "height": 12.056793212890625
+          },
+          "captionBounds": {
+            "x": 294.855224609375,
+            "y": 487.5895690917969,
+            "width": 394.56365966796875,
+            "height": 22.999969482421875
+          },
+          "labelBounds": {
+            "x": 270.4559020996094,
+            "y": 498.5327453613281,
+            "width": 90.87063598632812,
+            "height": 12.12725830078125
+          }
+        }
+      ],
+      "minimumMeasuredTextContrast": 12.627737689079677,
+      "compositingPixelSampleCount": 18,
+      "maximumCompositingChannelError": 0.6035840000000121,
+      "captionLabelCollisionCount": 18,
+      "independentStateCount": 6,
+      "independentStateFindingCounts": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "evidenceSha256": {
+        "run-manifest.json": "5bf1b3a02c1a9d14ee8dd3e821410f5c672c229045cab6b435c806310ceab9ad",
+        "evaluation-result.json": "c9080e67b4cb089776c44d5ed8f9529d704dc5725b6d07bb5857293bc068b936",
+        "event-check.json": "c258cdde93e50a1ea52b1ae79babe91e89881a5f85006fcb6e6cb39863df38ff",
+        "artifact-check.json": "4dd068939d5665e024a56ad4b697cbeb109bc9a058421a2fc2de20a3c0d43361",
+        "skill-integrity-check.json": "0889bdba23d1b77edf8917a805d8c800794be71b1846437090d444894169804b",
+        "events.jsonl": "d63640dc168194b0a46a907c00011d2cc7af4828aeef9dc4c75e44439963e093"
+      },
+      "manualRenderReviewed": true
+    },
+    {
+      "runId": "d3-treemap-tones-contract-20261003-luna-4",
+      "status": "current",
+      "classification": "agent",
+      "note": "Agent imposed an unrequested parent/children interleaving order with --ordered-text although the builder emits parent headers and then leaves. Required names, values, true geometry, tonal paint and all seven independent rendered states pass; the invented ordering assertion rejects strict acceptance.",
+      "model": {
+        "model": "openai-codex/gpt-5.6-luna",
+        "thinking": "medium",
+        "mode": "json",
+        "timeoutSeconds": 900
+      },
+      "payload": {
+        "name": "d3",
+        "profile": "runtime",
+        "fileCount": 290,
+        "payloadSha256": "85f8b06cb64e88ba83448270804dab58671e707d1cf1cb1b48983313c90d5bd0"
+      },
+      "harnessCommand": "uv run --script scripts/run-pi-skill-eval.py d3 --prompt-file evaluations/d3/treemap-tones-contract-prompt-20261003.md --model openai-codex/gpt-5.6-luna --thinking medium --mode json --strict --profile runtime --run-id d3-treemap-tones-contract-20261003-luna-4 --timeout-seconds 900 --expect-output contract-treemap.html --expect-output contract-treemap.svg",
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/d3/treemap-tones-contract-prompt-20261003.md",
+        "sizeBytes": 1389,
+        "sha256": "b08ac88171b928144d37675c9bf5c243e51342836e093ff9e14bf4e0ef67b761"
+      },
+      "harnessPassed": false,
+      "evaluationFinalized": true,
+      "durationSeconds": 73.311,
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "expectedArtifacts": [
+        {
+          "path": "contract-treemap.html",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 317231,
+          "sha256": "a7ad86521316446b5aa05495a070facebbeed7573c2d254fc0d64cb93709fe90",
+          "error": null
+        },
+        {
+          "path": "contract-treemap.svg",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 29369,
+          "sha256": "3b1a0093cbf88aa2555f9c2dea074ebbfe14de5e4f0f249aabfb7b4d6e67ce9b",
+          "error": null
+        }
+      ],
+      "artifactsUnchanged": true,
+      "eventFindings": [
+        {
+          "code": "tool-error",
+          "line": 454,
+          "tool": "bash"
+        }
+      ],
+      "failedCalls": [
+        {
+          "line": 454,
+          "tool": "bash",
+          "path": null,
+          "command": "python \"skills/d3/scripts/check_visual_contract.py\" contract-treemap.svg --require-id treemap --require-class treemap-node:12 --require-class treemap-parent:3 --require-class treemap-leaf:9 --require-class treemap-branch-header:3 --require-class treemap-leaf-cell:9 --require-tag title:1 --require-tag desc:1 --require-attribute \"data-pattern-id=d3-treemap-cs1\" --require-text Research --require-text Models --require-text Findings --require-text Studies --require-text Services --require-text Search --require-text Delivery --require-text Identity --require-text Operations --require-text Compute --require-text Storage --require-text Recovery --ordered-text \"Research\" --ordered-text \"Models\" --ordered-text \"Findings\" --ordered-text \"Studies\" --ordered-text \"Services\" --ordered-text \"Search\" --ordered-text \"Delivery\" --ordered-text \"Identity\" --ordered-text \"Operations\" --ordered-text \"Compute\" --ordered-text \"Storage\" --ordered-text \"Recovery\"",
+          "isError": true
+        }
+      ],
+      "readSurface": [
+        "../prompt.md",
+        "skills/d3/SKILL.md",
+        "skills/d3/references/patterns/treemap.md",
+        "scratch/treemap-420.png",
+        "scratch/treemap-960.png"
+      ],
+      "skillIntegrityPassed": true,
+      "independentlyPassed": true,
+      "independentGrade": "projects/treemap-tones/artifacts/isolated/contract-4/independent-grade.json",
+      "independentGradeSha256": "34ebd6f2208d59fb4c65d5afe1ec08b52b3f71378fdf9924d0739174a62cbc0f",
+      "independentValidatorCommands": [
+        "uv run --script projects/treemap-tones/scripts/inspect_isolated_artifact.py evaluations/runs/d3-treemap-tones-contract-20261003-luna-4/workspace --output projects/treemap-tones/artifacts/isolated/contract-4 --basename contract-treemap --replay",
+        "uv run --script projects/treemap-tones/scripts/grade_isolated_artifact.py projects/treemap-tones/artifacts/isolated/contract-4/render-review.json --case contract --output projects/treemap-tones/artifacts/isolated/contract-4/independent-grade.json"
+      ],
+      "independentFindings": [],
+      "representativeCaptionCollisions": [],
+      "minimumMeasuredTextContrast": 4.703674697982679,
+      "compositingPixelSampleCount": 0,
+      "maximumCompositingChannelError": null,
+      "captionLabelCollisionCount": 0,
+      "independentStateCount": 7,
+      "independentStateFindingCounts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "evidenceSha256": {
+        "run-manifest.json": "e70d328343acd84756ff39df84218bdceca50291407512cae8b7fd1ef377aac4",
+        "evaluation-result.json": "dcc62f0c13259ddb229819563e789c335d6b9d1f3b92d7fafe6bdf4632859947",
+        "event-check.json": "cad9b988eca71783a290a0a6c3ad3da58c05e4081ffd29441951309eedbca316",
+        "artifact-check.json": "428d9e7e07e1ab76246df7fa47dd15fb7a5b13ca8ccd411d4ddaba0f9b02cc3a",
+        "skill-integrity-check.json": "a1a186e5b062d88c465c76feeb41afad63dd0dce7d156b42ac7d319e0225a971",
+        "events.jsonl": "c237ff14fa7136f5d5cecae79531c2334bc6583d79f8c43a82d8263d05308ae4"
+      },
+      "manualRenderReviewed": true
+    },
+    {
+      "runId": "d3-treemap-tones-naturalistic-20261003-luna-7",
+      "status": "current",
+      "classification": "agent",
+      "note": "Agent imposed a guessed fixed viewBox of 0 0 960 540 on a responsive export. The task and builder do not promise those dimensions; all seven independent rendered states and direct narrow review pass, but the unnecessary fixed-size assertion rejects strict acceptance.",
+      "model": {
+        "model": "openai-codex/gpt-5.6-luna",
+        "thinking": "medium",
+        "mode": "json",
+        "timeoutSeconds": 900
+      },
+      "payload": {
+        "name": "d3",
+        "profile": "runtime",
+        "fileCount": 290,
+        "payloadSha256": "85f8b06cb64e88ba83448270804dab58671e707d1cf1cb1b48983313c90d5bd0"
+      },
+      "harnessCommand": "uv run --script scripts/run-pi-skill-eval.py d3 --prompt-file evaluations/d3/treemap-tones-prompt-20261003.md --model openai-codex/gpt-5.6-luna --thinking medium --mode json --strict --profile runtime --run-id d3-treemap-tones-naturalistic-20261003-luna-7 --timeout-seconds 900 --expect-output portfolio-treemap.html --expect-output portfolio-treemap.svg",
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/d3/treemap-tones-prompt-20261003.md",
+        "sizeBytes": 1419,
+        "sha256": "9d7bb1022ab77619205f4d2e94b033ea035f5d2ae20693f945565f9c91af158a"
+      },
+      "harnessPassed": false,
+      "evaluationFinalized": true,
+      "durationSeconds": 78.881,
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "expectedArtifacts": [
+        {
+          "path": "portfolio-treemap.html",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 317235,
+          "sha256": "19bbd5b356bfa5562a3d988fbb69862e6b34450ae0a00497ee5070724378d25f",
+          "error": null
+        },
+        {
+          "path": "portfolio-treemap.svg",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 30186,
+          "sha256": "0c132b965caa32b3ee2a6a5622bc95ed5ac03ee9e604ba52f5d34a39a836df98",
+          "error": null
+        }
+      ],
+      "artifactsUnchanged": true,
+      "eventFindings": [
+        {
+          "code": "tool-error",
+          "line": 764,
+          "tool": "bash"
+        }
+      ],
+      "failedCalls": [
+        {
+          "line": 764,
+          "tool": "bash",
+          "path": null,
+          "command": "python \"C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\d3-treemap-tones-naturalistic-20261003-luna-7\\workspace\\skills\\d3\\scripts\\check_visual_contract.py\" portfolio-treemap.svg --require-id treemap --require-class treemap-node:12 --require-class treemap-parent:3 --require-class treemap-leaf:9 --require-attribute \"viewBox=0 0 960 540\" --require-text \"Delivery\" --require-text \"Experience\" --require-text \"Platform\" --require-text \"Parcel\" --require-text \"Routing\" --require-text \"Intake\" --require-text \"Support\" --require-text \"Learning\" --require-text \"Discovery\" --require-text \"Runtime\" --require-text \"Storage\" --require-text \"Network\"",
+          "isError": true
+        }
+      ],
+      "readSurface": [
+        "../prompt.md",
+        "skills/d3/SKILL.md",
+        "skills/d3/references/patterns/treemap.md",
+        "preview-960.png",
+        "preview-420.png",
+        "portfolio-treemap.svg"
+      ],
+      "skillIntegrityPassed": true,
+      "independentlyPassed": true,
+      "independentGrade": "projects/treemap-tones/artifacts/isolated/naturalistic-7/independent-grade.json",
+      "independentGradeSha256": "74788393d0a4d0fb9012b48139bc7e69cefa6e3e8d7ec46bbb6758a1c5849871",
+      "independentValidatorCommands": [
+        "uv run --script projects/treemap-tones/scripts/inspect_isolated_artifact.py evaluations/runs/d3-treemap-tones-naturalistic-20261003-luna-7/workspace --output projects/treemap-tones/artifacts/isolated/naturalistic-7 --basename portfolio-treemap --replay",
+        "uv run --script projects/treemap-tones/scripts/grade_isolated_artifact.py projects/treemap-tones/artifacts/isolated/naturalistic-7/render-review.json --case naturalistic --output projects/treemap-tones/artifacts/isolated/naturalistic-7/independent-grade.json"
+      ],
+      "independentFindings": [],
+      "representativeCaptionCollisions": [],
+      "minimumMeasuredTextContrast": 4.703674697982679,
+      "compositingPixelSampleCount": 0,
+      "maximumCompositingChannelError": null,
+      "captionLabelCollisionCount": 0,
+      "independentStateCount": 7,
+      "independentStateFindingCounts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "evidenceSha256": {
+        "run-manifest.json": "a919d445f2425449f70e76c0c9fcf542a52b64d1df3956ab49efbc37d1d5b5ef",
+        "evaluation-result.json": "80ebdd9f4c0e2278bb4d633b3e98f893c12962890729c809878f9ec3f6aa694d",
+        "event-check.json": "f1c57efbf14ac5b587a9c31c510b4a5b74b88c779a1a6b4d254f31c10d3013dc",
+        "artifact-check.json": "8e68d5a0f4725eec7dab6ac344817f08cd499d0f3320866ca15853bd2eb52709",
+        "skill-integrity-check.json": "a1a186e5b062d88c465c76feeb41afad63dd0dce7d156b42ac7d319e0225a971",
+        "events.jsonl": "06e0171ed4720dc7bcc89df3e3391597291b8a0df5e4770e6f22adeed788a5ed"
+      },
+      "manualRenderReviewed": true
+    },
+    {
+      "runId": "d3-treemap-tones-naturalistic-20261003-luna-8",
+      "status": "current",
+      "classification": null,
+      "note": "Final deterministic-route cohort; generated outputs are not repaired outside the trace.",
+      "model": {
+        "model": "openai-codex/gpt-5.6-luna",
+        "thinking": "medium",
+        "mode": "json",
+        "timeoutSeconds": 900
+      },
+      "payload": {
+        "name": "d3",
+        "profile": "runtime",
+        "fileCount": 290,
+        "payloadSha256": "85f8b06cb64e88ba83448270804dab58671e707d1cf1cb1b48983313c90d5bd0"
+      },
+      "harnessCommand": "uv run --script scripts/run-pi-skill-eval.py d3 --prompt-file evaluations/d3/treemap-tones-prompt-20261003.md --model openai-codex/gpt-5.6-luna --thinking medium --mode json --strict --profile runtime --run-id d3-treemap-tones-naturalistic-20261003-luna-8 --timeout-seconds 900 --expect-output portfolio-treemap.html --expect-output portfolio-treemap.svg",
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/d3/treemap-tones-prompt-20261003.md",
+        "sizeBytes": 1419,
+        "sha256": "9d7bb1022ab77619205f4d2e94b033ea035f5d2ae20693f945565f9c91af158a"
+      },
+      "harnessPassed": true,
+      "evaluationFinalized": true,
+      "durationSeconds": 43.927,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "expectedArtifacts": [
+        {
+          "path": "portfolio-treemap.html",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 317235,
+          "sha256": "19bbd5b356bfa5562a3d988fbb69862e6b34450ae0a00497ee5070724378d25f",
+          "error": null
+        },
+        {
+          "path": "portfolio-treemap.svg",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 30186,
+          "sha256": "0c132b965caa32b3ee2a6a5622bc95ed5ac03ee9e604ba52f5d34a39a836df98",
+          "error": null
+        }
+      ],
+      "artifactsUnchanged": true,
+      "eventFindings": [],
+      "failedCalls": [],
+      "readSurface": [
+        "../prompt.md",
+        "skills/d3/SKILL.md",
+        "skills/d3/references/patterns/treemap.md",
+        "scratch-preview.png",
+        "portfolio-treemap.svg",
+        "scratch-narrow.png"
+      ],
+      "skillIntegrityPassed": true,
+      "independentlyPassed": true,
+      "independentGrade": "projects/treemap-tones/artifacts/isolated/naturalistic-8/independent-grade.json",
+      "independentGradeSha256": "cb2b27812691b89bec1d5d157f551d66678e4ced8f308c2860d937f7d6331ef8",
+      "independentValidatorCommands": [
+        "uv run --script projects/treemap-tones/scripts/inspect_isolated_artifact.py evaluations/runs/d3-treemap-tones-naturalistic-20261003-luna-8/workspace --output projects/treemap-tones/artifacts/isolated/naturalistic-8 --basename portfolio-treemap --replay",
+        "uv run --script projects/treemap-tones/scripts/grade_isolated_artifact.py projects/treemap-tones/artifacts/isolated/naturalistic-8/render-review.json --case naturalistic --output projects/treemap-tones/artifacts/isolated/naturalistic-8/independent-grade.json"
+      ],
+      "independentFindings": [],
+      "representativeCaptionCollisions": [],
+      "minimumMeasuredTextContrast": 4.703674697982679,
+      "compositingPixelSampleCount": 0,
+      "maximumCompositingChannelError": null,
+      "captionLabelCollisionCount": 0,
+      "independentStateCount": 7,
+      "independentStateFindingCounts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "evidenceSha256": {
+        "run-manifest.json": "651e55c4f9041120f12dc7e8f60ddc507155067709098e386b6093b9b550bc4c",
+        "evaluation-result.json": "9845b2ba2e6dc2d2f9251cbc923629721500e5208c6f573fe407b99faf6c0e75",
+        "event-check.json": "2bfd0781a69c45f330aa5f395b1958db032d6981292fbf9fc389c9c7161bdab9",
+        "artifact-check.json": "8e68d5a0f4725eec7dab6ac344817f08cd499d0f3320866ca15853bd2eb52709",
+        "skill-integrity-check.json": "a1a186e5b062d88c465c76feeb41afad63dd0dce7d156b42ac7d319e0225a971",
+        "events.jsonl": "5a4df2d0c189dba763507e64576d59a5e147b62168e6d02f26b885357a333648"
+      },
+      "manualRenderReviewed": true
+    },
+    {
+      "runId": "d3-treemap-tones-naturalistic-20261003-luna-9",
+      "status": "current",
+      "classification": null,
+      "note": "Final deterministic-route cohort; generated outputs are not repaired outside the trace.",
+      "model": {
+        "model": "openai-codex/gpt-5.6-luna",
+        "thinking": "medium",
+        "mode": "json",
+        "timeoutSeconds": 900
+      },
+      "payload": {
+        "name": "d3",
+        "profile": "runtime",
+        "fileCount": 290,
+        "payloadSha256": "85f8b06cb64e88ba83448270804dab58671e707d1cf1cb1b48983313c90d5bd0"
+      },
+      "harnessCommand": "uv run --script scripts/run-pi-skill-eval.py d3 --prompt-file evaluations/d3/treemap-tones-prompt-20261003.md --model openai-codex/gpt-5.6-luna --thinking medium --mode json --strict --profile runtime --run-id d3-treemap-tones-naturalistic-20261003-luna-9 --timeout-seconds 900 --expect-output portfolio-treemap.html --expect-output portfolio-treemap.svg",
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/d3/treemap-tones-prompt-20261003.md",
+        "sizeBytes": 1419,
+        "sha256": "9d7bb1022ab77619205f4d2e94b033ea035f5d2ae20693f945565f9c91af158a"
+      },
+      "harnessPassed": true,
+      "evaluationFinalized": true,
+      "durationSeconds": 69.153,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "expectedArtifacts": [
+        {
+          "path": "portfolio-treemap.html",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 317203,
+          "sha256": "bc0c482b774c26c9e26b1f0afa12e868f0384938a3e73bb49fa2612b256afa15",
+          "error": null
+        },
+        {
+          "path": "portfolio-treemap.svg",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 30178,
+          "sha256": "01dc0058f7b8a383cc50b0529d597eb640edad0e0fe343e1971dcd38bac197eb",
+          "error": null
+        }
+      ],
+      "artifactsUnchanged": true,
+      "eventFindings": [],
+      "failedCalls": [],
+      "readSurface": [
+        "../prompt.md",
+        "skills/d3/SKILL.md",
+        "skills/d3/references/patterns/treemap.md",
+        "scratch/treemap-420.png",
+        "scratch/treemap-960.png",
+        "portfolio-treemap.svg"
+      ],
+      "skillIntegrityPassed": true,
+      "independentlyPassed": true,
+      "independentGrade": "projects/treemap-tones/artifacts/isolated/naturalistic-9/independent-grade.json",
+      "independentGradeSha256": "4d7948e9e359ba18170c33b75ab95bea5a9d214b36a03a9667817a5b7028ff64",
+      "independentValidatorCommands": [
+        "uv run --script projects/treemap-tones/scripts/inspect_isolated_artifact.py evaluations/runs/d3-treemap-tones-naturalistic-20261003-luna-9/workspace --output projects/treemap-tones/artifacts/isolated/naturalistic-9 --basename portfolio-treemap --replay",
+        "uv run --script projects/treemap-tones/scripts/grade_isolated_artifact.py projects/treemap-tones/artifacts/isolated/naturalistic-9/render-review.json --case naturalistic --output projects/treemap-tones/artifacts/isolated/naturalistic-9/independent-grade.json"
+      ],
+      "independentFindings": [],
+      "representativeCaptionCollisions": [],
+      "minimumMeasuredTextContrast": 4.703674697982679,
+      "compositingPixelSampleCount": 0,
+      "maximumCompositingChannelError": null,
+      "captionLabelCollisionCount": 0,
+      "independentStateCount": 7,
+      "independentStateFindingCounts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "evidenceSha256": {
+        "run-manifest.json": "669ed6feb3e31133b37ce69562fe4458e44f1a6a34b49b2d9bddbdc3b2bf7e4b",
+        "evaluation-result.json": "3506f3afc8f2aef8353beb1496a7a757f7363866a3ba875262c36a9a5fbf81ba",
+        "event-check.json": "98b727e3bb79c1a12bf3ab9a26ab3363b68d94eec28443c6a9a06b746df18430",
+        "artifact-check.json": "8f7a1d89844204deaca74218c2c64615e55450003fc619f9f47de2636d063e5d",
+        "skill-integrity-check.json": "a1a186e5b062d88c465c76feeb41afad63dd0dce7d156b42ac7d319e0225a971",
+        "events.jsonl": "7df80bb55f4c6fca3d978b3343caaa7bef550ecd389bb519ae3fca18c5c37445"
+      },
+      "manualRenderReviewed": true
+    },
+    {
+      "runId": "d3-dense-overlap-contract-20261003-luna-3",
+      "status": "current",
+      "classification": "agent",
+      "note": "Agent imposed a rounded fixed viewBox of 0 0 880 490 on the portable export, then repeated the same false requirement with lower-case attribute spelling. Actual export is 0 0 880 489.85; all six independent rendered states and direct SVG review pass. Both unnecessary dimension assertions remain strict tool errors.",
+      "model": {
+        "model": "openai-codex/gpt-5.6-luna",
+        "thinking": "medium",
+        "mode": "json",
+        "timeoutSeconds": 900
+      },
+      "payload": {
+        "name": "d3",
+        "profile": "runtime",
+        "fileCount": 290,
+        "payloadSha256": "85f8b06cb64e88ba83448270804dab58671e707d1cf1cb1b48983313c90d5bd0"
+      },
+      "harnessCommand": "uv run --script scripts/run-pi-skill-eval.py d3 --prompt-file evaluations/d3/dense-overlap-contract-prompt-20261003.md --model openai-codex/gpt-5.6-luna --thinking medium --mode json --strict --profile runtime --run-id d3-dense-overlap-contract-20261003-luna-3 --timeout-seconds 900 --expect-output task-overlap-layouts.js --expect-output dense-overlap.html --expect-output dense-overlap.svg",
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/d3/dense-overlap-contract-prompt-20261003.md",
+        "sizeBytes": 1692,
+        "sha256": "9960542691d787a62e8bff3262e9a6b33133eec97b8358cc12f45259700a0dc0"
+      },
+      "harnessPassed": false,
+      "evaluationFinalized": true,
+      "durationSeconds": 55.499,
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "expectedArtifacts": [
+        {
+          "path": "task-overlap-layouts.js",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 66152,
+          "sha256": "333912a89479a8020f1f2279ed3e3dfa32a37f8809c5c0c1bb3540262d3b0419",
+          "error": null
+        },
+        {
+          "path": "dense-overlap.html",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 367692,
+          "sha256": "1cfdb7b25f37311c853ac2b16b3cd3f4847be7d288515a49c7e2c7c34c097b03",
+          "error": null
+        },
+        {
+          "path": "dense-overlap.svg",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 395706,
+          "sha256": "3a2e8eb62f784263450901a909a935e5e04a0e992e603688d5950407a0faeac8",
+          "error": null
+        }
+      ],
+      "artifactsUnchanged": true,
+      "eventFindings": [
+        {
+          "code": "tool-error",
+          "line": 356,
+          "tool": "bash"
+        },
+        {
+          "code": "tool-error",
+          "line": 453,
+          "tool": "bash"
+        }
+      ],
+      "failedCalls": [
+        {
+          "line": 356,
+          "tool": "bash",
+          "path": null,
+          "command": "python \"skills/d3/scripts/check_visual_contract.py\" dense-overlap.svg --require-id task-overlap-dense --require-class overlap-circle:9 --require-class task-dot:100 --require-class task-label-group:100 --require-class task-leader:100 --require-attribute \"viewBox=0 0 880 490\"",
+          "isError": true
+        },
+        {
+          "line": 453,
+          "tool": "bash",
+          "path": null,
+          "command": "python \"skills/d3/scripts/check_visual_contract.py\" dense-overlap.svg --require-id task-overlap-dense --require-class overlap-circle:9 --require-class task-dot:100 --require-class task-label-group:100 --require-class task-leader:100 --require-attribute \"viewbox=0 0 880 490\"",
+          "isError": true
+        }
+      ],
+      "readSurface": [
+        "../prompt.md",
+        "skills/d3/SKILL.md",
+        "skills/d3/references/patterns/task-overlap-dense.md",
+        "scratch/overlap.png",
+        "dense-overlap.svg"
+      ],
+      "skillIntegrityPassed": true,
+      "independentlyPassed": true,
+      "independentGrade": "projects/treemap-tones/artifacts/isolated/overlap-contract-3/independent-grade.json",
+      "independentGradeSha256": "1e35dab2c439abfdf92127130bb57ce97df280ea40daa1d942dca8e759ab9d9d",
+      "independentValidatorCommands": [
+        "uv run --script projects/treemap-tones/scripts/inspect_overlap_isolated.py evaluations/runs/d3-dense-overlap-contract-20261003-luna-3/workspace --output projects/treemap-tones/artifacts/isolated/overlap-contract-3"
+      ],
+      "independentFindings": [],
+      "representativeCaptionCollisions": [],
+      "minimumMeasuredTextContrast": 11.90831784428423,
+      "compositingPixelSampleCount": 18,
+      "maximumCompositingChannelError": 0.745599999999996,
+      "captionLabelCollisionCount": 0,
+      "independentStateCount": 6,
+      "independentStateFindingCounts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "evidenceSha256": {
+        "run-manifest.json": "d731e95d8e45b2afc85c67e80b3e63e2ae1bc257422c8b46e8a71203f5c6fd67",
+        "evaluation-result.json": "97518195624bb40bcc2d1a9a922a482815cc7d237aa90b9223a011bd523f9b95",
+        "event-check.json": "7aade9af455619d0203b9281fba1de21ab712d5574e33c92aa6343edb868d144",
+        "artifact-check.json": "c40deb4491b0c6f9c4f457ea122a9056cbdcd41a2f3c491b4054423d568d1f7f",
+        "skill-integrity-check.json": "a1a186e5b062d88c465c76feeb41afad63dd0dce7d156b42ac7d319e0225a971",
+        "events.jsonl": "d8938dcd47f6aa66eae14b263bffdc97620fd80c32f6f5dad10d4b144924f301"
+      },
+      "manualRenderReviewed": true
+    },
+    {
+      "runId": "d3-treemap-tones-contract-20261003-luna-5",
+      "status": "current",
+      "classification": null,
+      "note": "Final deterministic-route cohort; generated outputs are not repaired outside the trace.",
+      "model": {
+        "model": "openai-codex/gpt-5.6-luna",
+        "thinking": "medium",
+        "mode": "json",
+        "timeoutSeconds": 900
+      },
+      "payload": {
+        "name": "d3",
+        "profile": "runtime",
+        "fileCount": 290,
+        "payloadSha256": "85f8b06cb64e88ba83448270804dab58671e707d1cf1cb1b48983313c90d5bd0"
+      },
+      "harnessCommand": "uv run --script scripts/run-pi-skill-eval.py d3 --prompt-file evaluations/d3/treemap-tones-contract-prompt-20261003.md --model openai-codex/gpt-5.6-luna --thinking medium --mode json --strict --profile runtime --run-id d3-treemap-tones-contract-20261003-luna-5 --timeout-seconds 900 --expect-output contract-treemap.html --expect-output contract-treemap.svg",
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/d3/treemap-tones-contract-prompt-20261003.md",
+        "sizeBytes": 1389,
+        "sha256": "b08ac88171b928144d37675c9bf5c243e51342836e093ff9e14bf4e0ef67b761"
+      },
+      "harnessPassed": true,
+      "evaluationFinalized": true,
+      "durationSeconds": 78.591,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "expectedArtifacts": [
+        {
+          "path": "contract-treemap.html",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 317231,
+          "sha256": "a7ad86521316446b5aa05495a070facebbeed7573c2d254fc0d64cb93709fe90",
+          "error": null
+        },
+        {
+          "path": "contract-treemap.svg",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 29369,
+          "sha256": "3b1a0093cbf88aa2555f9c2dea074ebbfe14de5e4f0f249aabfb7b4d6e67ce9b",
+          "error": null
+        }
+      ],
+      "artifactsUnchanged": true,
+      "eventFindings": [],
+      "failedCalls": [],
+      "readSurface": [
+        "../prompt.md",
+        "skills/d3/SKILL.md",
+        "skills/d3/references/patterns/treemap.md",
+        "scratch/preview-420.png",
+        "scratch/preview-960.png",
+        "contract-treemap.svg"
+      ],
+      "skillIntegrityPassed": true,
+      "independentlyPassed": true,
+      "independentGrade": "projects/treemap-tones/artifacts/isolated/contract-5/independent-grade.json",
+      "independentGradeSha256": "61f2b078fdc6444e9df03d7953b72ff097c63eb1d6d53d059f866dd5d5eef16d",
+      "independentValidatorCommands": [
+        "uv run --script projects/treemap-tones/scripts/inspect_isolated_artifact.py evaluations/runs/d3-treemap-tones-contract-20261003-luna-5/workspace --output projects/treemap-tones/artifacts/isolated/contract-5 --basename contract-treemap --replay",
+        "uv run --script projects/treemap-tones/scripts/grade_isolated_artifact.py projects/treemap-tones/artifacts/isolated/contract-5/render-review.json --case contract --output projects/treemap-tones/artifacts/isolated/contract-5/independent-grade.json"
+      ],
+      "independentFindings": [],
+      "representativeCaptionCollisions": [],
+      "minimumMeasuredTextContrast": 4.703674697982679,
+      "compositingPixelSampleCount": 0,
+      "maximumCompositingChannelError": null,
+      "captionLabelCollisionCount": 0,
+      "independentStateCount": 7,
+      "independentStateFindingCounts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "evidenceSha256": {
+        "run-manifest.json": "f6afdffcd7c5df8fdb03520cd3b84c6cac44c9ac29e4063ea2f52efd8793f336",
+        "evaluation-result.json": "64bb5182b03f4a77f8899bd841c5fdc797dde96f2595d573d36741f0c8ca371a",
+        "event-check.json": "4eac8867aefd2ad58eeac11c961f5abfd273fb9a737c8040bfd91b80c4e197ad",
+        "artifact-check.json": "428d9e7e07e1ab76246df7fa47dd15fb7a5b13ca8ccd411d4ddaba0f9b02cc3a",
+        "skill-integrity-check.json": "a1a186e5b062d88c465c76feeb41afad63dd0dce7d156b42ac7d319e0225a971",
+        "events.jsonl": "88dbacb5bca2b093c27adc91a77becbde50fb08559c4dd74ee443e7474853bda"
+      },
+      "manualRenderReviewed": true
+    },
+    {
+      "runId": "d3-dense-overlap-contract-20261003-luna-4",
+      "status": "current",
+      "classification": null,
+      "note": "Final deterministic-route cohort; generated outputs are not repaired outside the trace.",
+      "model": {
+        "model": "openai-codex/gpt-5.6-luna",
+        "thinking": "medium",
+        "mode": "json",
+        "timeoutSeconds": 900
+      },
+      "payload": {
+        "name": "d3",
+        "profile": "runtime",
+        "fileCount": 290,
+        "payloadSha256": "85f8b06cb64e88ba83448270804dab58671e707d1cf1cb1b48983313c90d5bd0"
+      },
+      "harnessCommand": "uv run --script scripts/run-pi-skill-eval.py d3 --prompt-file evaluations/d3/dense-overlap-contract-prompt-20261003.md --model openai-codex/gpt-5.6-luna --thinking medium --mode json --strict --profile runtime --run-id d3-dense-overlap-contract-20261003-luna-4 --timeout-seconds 900 --expect-output task-overlap-layouts.js --expect-output dense-overlap.html --expect-output dense-overlap.svg",
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/d3/dense-overlap-contract-prompt-20261003.md",
+        "sizeBytes": 1692,
+        "sha256": "9960542691d787a62e8bff3262e9a6b33133eec97b8358cc12f45259700a0dc0"
+      },
+      "harnessPassed": true,
+      "evaluationFinalized": true,
+      "durationSeconds": 92.467,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "expectedArtifacts": [
+        {
+          "path": "task-overlap-layouts.js",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 66152,
+          "sha256": "333912a89479a8020f1f2279ed3e3dfa32a37f8809c5c0c1bb3540262d3b0419",
+          "error": null
+        },
+        {
+          "path": "dense-overlap.html",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 367692,
+          "sha256": "1cfdb7b25f37311c853ac2b16b3cd3f4847be7d288515a49c7e2c7c34c097b03",
+          "error": null
+        },
+        {
+          "path": "dense-overlap.svg",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 395706,
+          "sha256": "3a2e8eb62f784263450901a909a935e5e04a0e992e603688d5950407a0faeac8",
+          "error": null
+        }
+      ],
+      "artifactsUnchanged": true,
+      "eventFindings": [],
+      "failedCalls": [],
+      "readSurface": [
+        "../prompt.md",
+        "skills/d3/SKILL.md",
+        "skills/d3/references/patterns/task-overlap-dense.md",
+        "verification/overlap.png",
+        "dense-overlap.svg",
+        "dense-overlap.html",
+        "dense-overlap.html",
+        "dense-overlap.html",
+        "dense-overlap.html"
+      ],
+      "skillIntegrityPassed": true,
+      "independentlyPassed": true,
+      "independentGrade": "projects/treemap-tones/artifacts/isolated/overlap-contract-4/independent-grade.json",
+      "independentGradeSha256": "1e35dab2c439abfdf92127130bb57ce97df280ea40daa1d942dca8e759ab9d9d",
+      "independentValidatorCommands": [
+        "uv run --script projects/treemap-tones/scripts/inspect_overlap_isolated.py evaluations/runs/d3-dense-overlap-contract-20261003-luna-4/workspace --output projects/treemap-tones/artifacts/isolated/overlap-contract-4"
+      ],
+      "independentFindings": [],
+      "representativeCaptionCollisions": [],
+      "minimumMeasuredTextContrast": 11.90831784428423,
+      "compositingPixelSampleCount": 18,
+      "maximumCompositingChannelError": 0.745599999999996,
+      "captionLabelCollisionCount": 0,
+      "independentStateCount": 6,
+      "independentStateFindingCounts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "evidenceSha256": {
+        "run-manifest.json": "2284200348b8c977205cad7dbff54a6d3547aa0f48e646e81a7dd3344315264e",
+        "evaluation-result.json": "26f2eac3dbd732777451fbf70b7bf567b8957d6d3effde8dc42801adf4c51f96",
+        "event-check.json": "39d5c30b14196b128564708f705290a6b7ad5266664a8ad7594c76cb8a055d71",
+        "artifact-check.json": "c40deb4491b0c6f9c4f457ea122a9056cbdcd41a2f3c491b4054423d568d1f7f",
+        "skill-integrity-check.json": "a1a186e5b062d88c465c76feeb41afad63dd0dce7d156b42ac7d319e0225a971",
+        "events.jsonl": "9cfc370d5192ffa13cae6e86f424ee31828964c158aa2ac013b58c90d7c18f22"
+      },
+      "manualRenderReviewed": true
     }
   ],
   "diagnosticFinalizer": {
@@ -551,6 +2270,8 @@
   "evaluatorCorrections": [
     "Separate adjacent text tspan lines when reading visible name/value tokens.",
     "Enforce responsive viewport overflow on HTML; portable SVG retains intrinsic export dimensions.",
-    "Use viewport screenshots for native SVG after a full-page screenshot timeout; this is an evaluator capture correction."
+    "Use viewport screenshots for native SVG after a full-page screenshot timeout; this is an evaluator capture correction.",
+    "Measure actual painted circle radius with getBBox for CSS/SMIL animations rather than only the underlying r attribute; unmaterialized zero-radius exports still fail.",
+    "Record rendered caption/task-label intersections after direct inspection found an oversized footer; preserve original artifacts."
   ]
 }

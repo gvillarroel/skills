@@ -3,6 +3,7 @@
 ## Contents
 
 - [Reuse Contract](#reuse-contract)
+- [Standalone Builder](#standalone-builder)
 - [Semantic transparency and standalone input](#semantic-transparency-and-standalone-input)
 - [Source Excerpt](#source-excerpt)
 
@@ -19,6 +20,24 @@
 - Preserve the pattern's core geometry and semantic color roles before changing labels or domain data.
 - Use SVG-native animation for standalone output; do not leave runtime D3 or CDN dependencies in a self-contained deliverable.
 - Include an SVG `<title>`, `<desc>`, stable `viewBox`, and final-state geometry.
+
+## Standalone Builder
+
+For the supported nine-region/100-task form, use `scripts/build_dense_task_overlap.py`. Generate the layout with the exact input command below, then supply that file through `--layout`. The builder reads this compact renderer excerpt, embeds the layout and bundled D3 runtime, and automatically applies the colorset finalizer. It constructs actual final circle and dot radii before Replay, so a portable SVG retains its geometry. Native opacity animation supports Replay and reduced motion. A separate compact footer rail keeps summary and legend text clear of task labels while preserving all task, region and leader coordinates.
+
+```text
+python <d3-skill>/scripts/build_dense_task_overlap.py --help
+uv run --script <d3-skill>/scripts/layout_task_overlap_labels.py --output <requested-layout.js>
+python <d3-skill>/scripts/build_dense_task_overlap.py --layout <requested-layout.js> --output <requested.html> --colorset colorset1
+python <d3-skill>/scripts/check_self_contained_html.py <requested.html>
+python <d3-skill>/scripts/check_palette_contract.py <requested.html> --colorset colorset1
+uv run --script <d3-skill>/scripts/render_d3_svg.py <requested.html> --output <requested.svg> --screenshot <owned-scratch>/overlap.png --wait-ms 2200 --viewport 1440x1200
+python <d3-skill>/scripts/check_palette_contract.py <requested.svg> --colorset colorset1
+```
+
+Use `colorset2` consistently for an explicit extended palette request. Keep every input/output/scratch path outside the read-only skill bundle. Correct supported builder flags or input and rerun; use `--force` when deliberately replacing an existing owned HTML output. Export from the finalized HTML and directly render the resulting SVG to inspect its nine visible regions, 100 dots and labels, source-over intersections and caption clearance. Preserve exact caller output paths. The excerpt below remains the maintenance source for the published gallery, whose existing geometry is unchanged.
+
+The SVG root has `id="task-overlap-dense"`; its canonical pattern metadata is `data-pattern-id="d3-task-overlap-dense-cs1"` or `d3-task-overlap-dense-cs2`. Use `--require-id task-overlap-dense` for a root-ID check with `check_visual_contract.py`. Check only caller-supplied or documented builder IDs and counts.
 
 ## Semantic transparency and standalone input
 
@@ -42,7 +61,7 @@ HTML. The excerpt consumes `window.D3_TASK_OVERLAP_LAYOUTS.saturated`. For a
 portable SVG, export the rendered settled geometry; do not leave that data
 assignment as an external runtime dependency.
 
-For custom HTML, complete the finalizer before the first palette check or SVG
+For custom HTML beyond the supported builder form, complete the finalizer before the first palette check or SVG
 export. Write the draft to an owned scratch path, and produce the requested
 HTML through the adapter; do not treat raw hand-authored paint as finalized.
 

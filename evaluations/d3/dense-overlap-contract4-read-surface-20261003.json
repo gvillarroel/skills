@@ -1,0 +1,321 @@
+{
+  "passed": true,
+  "session": {
+    "version": 3,
+    "id": "01a103cb-2854-7275-9ad9-65a2099ee865",
+    "cwd": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\d3-dense-overlap-contract-20261003-luna-4\\workspace"
+  },
+  "models": {
+    "gpt-5.6-luna": 21
+  },
+  "providers": {
+    "openai-codex": 21
+  },
+  "usageTotals": {
+    "input": 76790,
+    "output": 2190,
+    "cacheRead": 494336,
+    "cacheWrite": 0,
+    "totalTokens": 573316
+  },
+  "invalidJsonLineCount": 0,
+  "invalidJsonLineSamples": [],
+  "invalidEventRecordCount": 0,
+  "invalidEventRecordLineSamples": [],
+  "toolCounts": {
+    "read": 9,
+    "bash": 13
+  },
+  "paths": [
+    {
+      "path": "dense-overlap.html",
+      "calls": 4,
+      "resultBytes": 65085
+    },
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 1774
+    },
+    {
+      "path": "skills/d3/SKILL.md",
+      "calls": 1,
+      "resultBytes": 29779
+    },
+    {
+      "path": "skills/d3/references/patterns/task-overlap-dense.md",
+      "calls": 1,
+      "resultBytes": 16704
+    },
+    {
+      "path": "verification/overlap.png",
+      "calls": 1,
+      "resultBytes": 226922
+    },
+    {
+      "path": "dense-overlap.svg",
+      "calls": 1,
+      "resultBytes": 3681
+    }
+  ],
+  "readPaths": [
+    {
+      "path": "dense-overlap.html",
+      "calls": 4,
+      "resultBytes": 65085
+    },
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 1774
+    },
+    {
+      "path": "skills/d3/SKILL.md",
+      "calls": 1,
+      "resultBytes": 29779
+    },
+    {
+      "path": "skills/d3/references/patterns/task-overlap-dense.md",
+      "calls": 1,
+      "resultBytes": 16704
+    },
+    {
+      "path": "verification/overlap.png",
+      "calls": 1,
+      "resultBytes": 226922
+    },
+    {
+      "path": "dense-overlap.svg",
+      "calls": 1,
+      "resultBytes": 3681
+    }
+  ],
+  "policyReadPaths": [
+    {
+      "path": "dense-overlap.html",
+      "calls": 4
+    },
+    {
+      "path": "../prompt.md",
+      "calls": 1
+    },
+    {
+      "path": "skills/d3/SKILL.md",
+      "calls": 1
+    },
+    {
+      "path": "skills/d3/references/patterns/task-overlap-dense.md",
+      "calls": 1
+    },
+    {
+      "path": "verification/overlap.png",
+      "calls": 1
+    },
+    {
+      "path": "dense-overlap.svg",
+      "calls": 1
+    }
+  ],
+  "totalReadResultBytes": 343945,
+  "calls": [
+    {
+      "line": 20,
+      "tool": "read",
+      "path": "../prompt.md",
+      "policyPath": "../prompt.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 1774
+    },
+    {
+      "line": 45,
+      "tool": "read",
+      "path": "skills/d3/SKILL.md",
+      "policyPath": "skills/d3/SKILL.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 29779
+    },
+    {
+      "line": 77,
+      "tool": "read",
+      "path": "skills/d3/references/patterns/task-overlap-dense.md",
+      "policyPath": "skills/d3/references/patterns/task-overlap-dense.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 16704
+    },
+    {
+      "line": 146,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python \"C:/Users/villa/dev/skills/evaluations/runs/d3-dense-overlap-contract-20261003-luna-4/workspace/skills/d3/scripts/build_dense_task_overlap.py\" --help",
+      "isError": false,
+      "resultBytes": 835
+    },
+    {
+      "line": 189,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "uv run --script skills/d3/scripts/layout_task_overlap_labels.py --output task-overlap-layouts.js",
+      "isError": false,
+      "resultBytes": 404
+    },
+    {
+      "line": 276,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python \"C:/Users/villa/dev/skills/evaluations/runs/d3-dense-overlap-contract-20261003-luna-4/workspace/skills/d3/scripts/build_dense_task_overlap.py\" --layout task-overlap-layouts.js --output dense-overlap.html --colorset colorset1",
+      "isError": false,
+      "resultBytes": 285
+    },
+    {
+      "line": 351,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "mkdir -p verification && uv run --script skills/d3/scripts/render_d3_svg.py dense-overlap.html --output dense-overlap.svg --screenshot verification/overlap.png --wait-ms 2200 --viewport 1440x1200",
+      "isError": false,
+      "resultBytes": 457
+    },
+    {
+      "line": 378,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python \"C:/Users/villa/dev/skills/evaluations/runs/d3-dense-overlap-contract-20261003-luna-4/workspace/skills/d3/scripts/check_self_contained_html.py\" dense-overlap.html",
+      "isError": false,
+      "resultBytes": 80
+    },
+    {
+      "line": 380,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python \"C:/Users/villa/dev/skills/evaluations/runs/d3-dense-overlap-contract-20261003-luna-4/workspace/skills/d3/scripts/check_palette_contract.py\" dense-overlap.html --colorset colorset1",
+      "isError": false,
+      "resultBytes": 750
+    },
+    {
+      "line": 382,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python \"C:/Users/villa/dev/skills/evaluations/runs/d3-dense-overlap-contract-20261003-luna-4/workspace/skills/d3/scripts/check_palette_contract.py\" dense-overlap.svg --colorset colorset1",
+      "isError": false,
+      "resultBytes": 869
+    },
+    {
+      "line": 409,
+      "tool": "read",
+      "path": "verification/overlap.png",
+      "policyPath": "verification/overlap.png",
+      "command": null,
+      "isError": false,
+      "resultBytes": 226922
+    },
+    {
+      "line": 470,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "grep -nE \"Replay|prefers-reduced-motion|task-overlap-dense|overlap-circle|task-dot|task-label\" dense-overlap.html | head -40",
+      "isError": false,
+      "resultBytes": 60271
+    },
+    {
+      "line": 496,
+      "tool": "read",
+      "path": "dense-overlap.svg",
+      "policyPath": "dense-overlap.svg",
+      "command": null,
+      "isError": false,
+      "resultBytes": 3681
+    },
+    {
+      "line": 639,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python \"C:/Users/villa/dev/skills/evaluations/runs/d3-dense-overlap-contract-20261003-luna-4/workspace/skills/d3/scripts/check_visual_contract.py\" dense-overlap.svg --require-id task-overlap-dense --require-class overlap-circle:9 --require-",
+      "isError": false,
+      "resultBytes": 1222
+    },
+    {
+      "line": 669,
+      "tool": "read",
+      "path": "dense-overlap.html",
+      "policyPath": "dense-overlap.html",
+      "command": null,
+      "isError": false,
+      "resultBytes": 59192
+    },
+    {
+      "line": 699,
+      "tool": "read",
+      "path": "dense-overlap.html",
+      "policyPath": "dense-overlap.html",
+      "command": null,
+      "isError": false,
+      "resultBytes": 1470
+    },
+    {
+      "line": 725,
+      "tool": "read",
+      "path": "dense-overlap.html",
+      "policyPath": "dense-overlap.html",
+      "command": null,
+      "isError": false,
+      "resultBytes": 1253
+    },
+    {
+      "line": 773,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "grep -n \"replay\\|renderAsymmetric\\|prefers\" dense-overlap.html | tail -12",
+      "isError": false,
+      "resultBytes": 536
+    },
+    {
+      "line": 799,
+      "tool": "read",
+      "path": "dense-overlap.html",
+      "policyPath": "dense-overlap.html",
+      "command": null,
+      "isError": false,
+      "resultBytes": 3170
+    },
+    {
+      "line": 845,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "grep -o 'class=\"task-label-bg\"[^>]*' dense-overlap.svg | head -1",
+      "isError": false,
+      "resultBytes": 606
+    },
+    {
+      "line": 890,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "grep -o 'class=\"task-dot\"[^>]*' dense-overlap.svg | head -1",
+      "isError": false,
+      "resultBytes": 616
+    },
+    {
+      "line": 955,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "test -s task-overlap-layouts.js && test -s dense-overlap.html && test -s dense-overlap.svg && printf 'All three deliverables are non-empty.\\n'",
+      "isError": false,
+      "resultBytes": 82
+    }
+  ],
+  "findings": []
+}

@@ -76,7 +76,8 @@ def main():
     states = []
     findings = []
     for state in review['states']:
-        state_id = f"{state['format']}-{state['width']}"
+        suffix = f"-normal-{state.get('replay',0)}" if not state.get('reducedMotion',True) else ''
+        state_id = f"{state['format']}-{state['width']}{suffix}"
         checked = {'state': state_id, 'branches': {}, 'findings': []}
         local = checked['findings']
         if state['pageErrors'] or state['networkRequests']:
@@ -171,6 +172,10 @@ def main():
                 right = pair[1]['branches'].get(branch, {}).get('leaves', [])
                 if [(leaf['name'],leaf['fill']) for leaf in left] != [(leaf['name'],leaf['fill']) for leaf in right]:
                     findings.append(f'{width}: {branch} HTML/SVG name and paint parity failed.')
+    for branch in data:
+        sequences = [[(leaf['name'],leaf['fill']) for leaf in state['branches'].get(branch,{}).get('leaves',[])] for state in states]
+        if sequences and any(sequence != sequences[0] for sequence in sequences[1:]):
+            findings.append(f'{branch}: colors or names changed across native, Replay, responsive or export states.')
     result = {'schemaVersion':1, 'case':args.case, 'passed':not findings,
               'captureSha256':hashlib.sha256(args.review.read_bytes()).hexdigest(),
               'renderedStates':len(states), 'states':states, 'findings':findings,

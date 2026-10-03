@@ -32,6 +32,8 @@ For an editable KPI/service dashboard, first run `python "<d3-skill>/scripts/cre
 
 For a standalone two-level treemap, first run `python "<d3-skill>/scripts/build_treemap.py" --help`, then read `references/patterns/treemap.md`. Supply the requested hierarchy as JSON and build with that script; it computes D3 area geometry and finalizes solid tones, exact black/white text and palette metadata automatically. Correct the data or flags and rerun instead of hand-authoring or post-editing a supported treemap. Export its settled SVG with `render_d3_svg.py`.
 
+For dense task overlap with nine scope regions and 100 tasks, first run `python "<d3-skill>/scripts/build_dense_task_overlap.py" --help`, then read `references/patterns/task-overlap-dense.md`. Generate the layout with its documented command and pass that file to the builder. It sets portable final geometry, semantic region transparency, compact captions and palette finalization automatically. Correct flags and rerun the builder for supported output; export its SVG with `render_d3_svg.py`.
+
 Run dependency-declaring helpers such as `render_d3_svg.py` and
 `dither_d3_output.py` with `uv run --script`, including their `--help` calls.
 Their uv metadata provides Pillow and Playwright in a clean isolated workspace.

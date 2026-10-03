@@ -8,6 +8,7 @@
 import argparse
 import json
 from pathlib import Path
+import re
 import sys
 
 from playwright.sync_api import sync_playwright
@@ -52,6 +53,7 @@ def main():
     parser.add_argument('workspace', type=Path)
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--basename', default='portfolio-treemap')
+    parser.add_argument('--replay', action='store_true', help='Check the native HTML state and two Replay executions.')
     args = parser.parse_args()
     workspace = args.workspace.resolve()
     output = args.output.resolve()
@@ -73,10 +75,28 @@ def main():
                 page.goto(artifact.as_uri(), wait_until='load')
                 page.wait_for_timeout(1200)
                 state = page.evaluate(DOM_REVIEW)
-                state.update({'format':extension, 'width':width, 'pageErrors':errors, 'networkRequests':network})
+                state.update({'format':extension, 'width':width, 'reducedMotion':True, 'replay':0, 'pageErrors':errors, 'networkRequests':network})
                 page.screenshot(path=str(output / f'{extension}-{width}.png'), full_page=False)
                 report['states'].append(state)
                 context.close()
+        if args.replay:
+            context = browser.new_context(viewport={'width':960,'height':720}, reduced_motion='no-preference')
+            page = context.new_page()
+            errors, network = [], []
+            page.on('pageerror', lambda error: errors.append(str(error)))
+            page.on('request', lambda request: network.append(request.url) if request.url.startswith(('http:','https:')) else None)
+            page.goto((workspace/f'{args.basename}.html').as_uri(),wait_until='load')
+            page.wait_for_timeout(1200)
+            for replay in (0,1,2):
+                if replay:
+                    page.get_by_role('button',name=re.compile('Replay',re.IGNORECASE)).click()
+                    page.wait_for_timeout(1200)
+                state = page.evaluate(DOM_REVIEW)
+                state.update({'format':'html','width':960,'reducedMotion':False,'replay':replay,
+                              'pageErrors':list(errors),'networkRequests':list(network)})
+                page.screenshot(path=str(output/f'html-960-normal-{replay}.png'),full_page=False)
+                report['states'].append(state)
+            context.close()
         browser.close()
     destination = output / 'render-review.json'
     destination.write_text(json.dumps(report, indent=2) + '\n', encoding='utf-8')

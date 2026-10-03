@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-03",
+  "outcome": "pass",
+  "scope": "Independent read-only review of the standalone dense overlap builder, its owning test, and the D3 skill/pattern routes. No canonical file was changed by the reviewer.",
+  "actionableFindings": [],
+  "reviewedSources": [
+    {"path": "skills/d3/scripts/build_dense_task_overlap.py", "sha256": "528752d9267f59d1c46c6147350b006b3a35c40804bbb4ff0ed6ac7776ff0aa3"},
+    {"path": "skills/d3/assets/examples/skill-tests/test_build_dense_task_overlap.py", "sha256": "61cee9c32e0246dc863c5fb900c4786861a728bf93da40854c4011066bfcfc76"},
+    {"path": "skills/d3/SKILL.md", "sha256": "e9fb2788dc7f4bccb8e2538a83eca51708ff10109e0c00858e366bddd950d2bf"},
+    {"path": "skills/d3/references/patterns/task-overlap-dense.md", "sha256": "b42de8f51113abd3af17f80a24c8eabe8fbc22dfac92789c641793a7f42446fc"},
+    {"path": "skills/d3/references/patterns/treemap.md", "sha256": "e8d7534c2de5eef68dcb27ac4ef0fd5582999fab3d412af4235453673c8f31f9"}
+  ],
+  "sourceConclusions": [
+    "The grow helper writes actual final radius attributes immediately, so portable circles and dots do not depend on transient CSS or browser animation state.",
+    "The embedded generated layout retains original region, task, label-face and leader coordinates and source task memberships.",
+    "Only declared semantic regions use fill-opacity 0.28. Opaque task dots and explicit local label backings retain borderless colorset paint and exact maximum-contrast black/white labels.",
+    "Replay uses root opacity animation only; reduced motion bypasses that animation. Geometry remains final before and after Replay.",
+    "The standalone builder extends the canvas with a separate caption rail without moving source task, label, leader or region coordinates.",
+    "All required inputs, renderer excerpts, templates, palette data and vendor runtime are inside the D3 bundle. Generated outputs are rejected inside the read-only skill resource. Documented root IDs and canonical pattern IDs match the builder.",
+    "Published gallery, shared solid-style runtime, colorset adapter, SVG exporter and shared renderer helper files have no diff from the accepted source. The added standalone caption rail does not modify the published fixture."
+  ],
+  "resolvedTestFinding": {
+    "problem": "Viewport-only captures could omit standalone mobile SVG sample points beyond 390 pixels.",
+    "resolution": "The owning test captures the complete standalone SVG locator and subtracts that element's bounding-box origin. Mobile HTML keeps its centered scrolling frame and visible candidate filter.",
+    "runtimeChanged": false
+  },
+  "owningTestEvidence": {
+    "path": "projects/task-overlap-transparency/artifacts/builder/test-report.json",
+    "sha256": "1bd712b805ef8f16e8678ab8c2968fecf3b0e86e12a20b8f13761642dcd19595",
+    "passed": true,
+    "tests": 3,
+    "htmlStates": 24,
+    "svgStates": 8,
+    "palettes": ["colorset1", "colorset2"],
+    "actualPositiveRadiiPerState": 109,
+    "captionTaskCollisions": 0,
+    "maximumPixelChannelError": 0.8656000000000006,
+    "pixelToleranceChannelUnits": 5
+  },
+  "additionalIndependentEvidence": {
+    "path": "projects/task-overlap-transparency/artifacts/builder/independent/independent-grade.json",
+    "sha256": "1e35dab2c439abfdf92127130bb57ce97df280ea40daa1d942dca8e759ab9d9d",
+    "reportedStates": 6,
+    "outcome": "pass"
+  },
+  "independentManualDeliveryReview": {
+    "screenshots": [
+      "projects/task-overlap-transparency/artifacts/builder/colorset1/html-1440-no-preference-0.png",
+      "projects/task-overlap-transparency/artifacts/builder/colorset2/html-1440-no-preference-0.png"
+    ],
+    "outcome": "pass within the stated scope",
+    "finding": "Both palette deliveries visibly preserve the dense set/task arrangement, shared membership intersections and opaque task labels. The footer and legend occupy a clear separate rail below all task labels."
+  },
+  "limits": "This review verifies the supported generated nine-region/100-task layout, finite reported states, and the source paths named above. It does not claim arbitrary custom labels or every possible viewport are collision-free. The published fixture's inherited footer/T095-caption contact remains separately disclosed in prior publication evidence; the new standalone builder clears it through its caption rail."
+}
