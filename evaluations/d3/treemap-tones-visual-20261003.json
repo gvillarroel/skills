@@ -1,0 +1,685 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-03",
+  "patternId": "d3-treemap-cs1",
+  "reviewer": "Independent read-only visual review agent; verifier inspects native bound D3 data and computed browser paint rather than trusting new authored classes.",
+  "outcome": "pass",
+  "rootCause": "All descendants inherited the same branch fill. Removing the old white strokes left identically painted parent underlays in child padding gaps, merging each branch into one block.",
+  "scope": [
+    "d3-treemap-cs1",
+    "d3-treemap-cs2",
+    "d3-treemap"
+  ],
+  "stateMatrix": {
+    "viewportWidths": [
+      1440,
+      390
+    ],
+    "height": 1100,
+    "motionModes": [
+      "normal",
+      "reduced"
+    ],
+    "settledReplays": [
+      0,
+      1,
+      2
+    ],
+    "statesPerGallery": 12,
+    "finalPositiveStates": 36,
+    "additionalControlSetupStates": 1
+  },
+  "baseline": {
+    "states": 12,
+    "findings": 180,
+    "findingsPerState": 15,
+    "browserErrors": [],
+    "classifications": [
+      "Repeated sibling paint in all three branches",
+      "Zero sibling luminance steps in all three branches",
+      "All nine sibling gaps reveal the same paint as their leaves"
+    ],
+    "originalFills": {
+      "Learn": [
+        "#9e1b32",
+        "#9e1b32",
+        "#9e1b32"
+      ],
+      "Create": [
+        "#696969",
+        "#696969",
+        "#696969"
+      ],
+      "Serve": [
+        "#4f4f4f",
+        "#4f4f4f",
+        "#4f4f4f"
+      ]
+    }
+  },
+  "finalGalleries": {
+    "colorset1": {
+      "clean": true,
+      "states": 12,
+      "findings": 0,
+      "browserErrors": [],
+      "branches": 3,
+      "leaves": 9,
+      "opaqueBorderlessFaces": true,
+      "labelsPerState": 12,
+      "allLabelsMaximumContrastBlackWhite": true,
+      "minimumLabelContrast": 4.703674697982679,
+      "labelContainmentPassed": true,
+      "ramps": [
+        {
+          "branch": "Learn",
+          "order": [
+            "Tune",
+            "Eval",
+            "Trace"
+          ],
+          "fills": [
+            "#6d1222",
+            "#9e1b32",
+            "#e8002a"
+          ],
+          "luminances": [
+            0.03799315767331869,
+            0.08283255955689314,
+            0.17322972301854248
+          ],
+          "steps": [
+            0.04483940188357445,
+            0.09039716346164933
+          ]
+        },
+        {
+          "branch": "Create",
+          "order": [
+            "Draft",
+            "Review",
+            "Prompt"
+          ],
+          "fills": [
+            "#4f4f4f",
+            "#828282",
+            "#b5b5b5"
+          ],
+          "luminances": [
+            0.07818742180518631,
+            0.22322795731680853,
+            0.4620769996544071
+          ],
+          "steps": [
+            0.14504053551162222,
+            0.23884904233759854
+          ]
+        },
+        {
+          "branch": "Serve",
+          "order": [
+            "Observe",
+            "Cache",
+            "Route"
+          ],
+          "fills": [
+            "#363636",
+            "#696969",
+            "#9c9c9c"
+          ],
+          "luminances": [
+            0.03688945040110004,
+            0.14126329114027164,
+            0.33245153634617935
+          ],
+          "steps": [
+            0.10437384073917161,
+            0.19118824520590771
+          ]
+        }
+      ],
+      "gutters": {
+        "samples": 108,
+        "perState": 9,
+        "widths": [
+          3
+        ],
+        "fills": [
+          "#ffffff"
+        ]
+      }
+    },
+    "colorset2": {
+      "clean": true,
+      "states": 12,
+      "findings": 0,
+      "browserErrors": [],
+      "branches": 3,
+      "leaves": 9,
+      "opaqueBorderlessFaces": true,
+      "labelsPerState": 12,
+      "allLabelsMaximumContrastBlackWhite": true,
+      "minimumLabelContrast": 4.586980899522477,
+      "labelContainmentPassed": true,
+      "ramps": [
+        {
+          "branch": "Learn",
+          "order": [
+            "Tune",
+            "Eval",
+            "Trace"
+          ],
+          "fills": [
+            "#004d66",
+            "#007298",
+            "#00ace6"
+          ],
+          "luminances": [
+            0.06267063692166866,
+            0.14301626012139362,
+            0.3521821884557038
+          ],
+          "steps": [
+            0.08034562319972496,
+            0.2091659283343102
+          ]
+        },
+        {
+          "branch": "Create",
+          "order": [
+            "Draft",
+            "Review",
+            "Prompt"
+          ],
+          "fills": [
+            "#994a00",
+            "#e77204",
+            "#ff9633"
+          ],
+          "luminances": [
+            0.11669863210210954,
+            0.29032317571037913,
+            0.43311709116920055
+          ],
+          "steps": [
+            0.1736245436082696,
+            0.14279391545882142
+          ]
+        },
+        {
+          "branch": "Serve",
+          "order": [
+            "Observe",
+            "Cache",
+            "Route"
+          ],
+          "fills": [
+            "#294d19",
+            "#45842a",
+            "#36b300"
+          ],
+          "luminances": [
+            0.058493583903078336,
+            0.17934904497612386,
+            0.33024468904117127
+          ],
+          "steps": [
+            0.12085546107304553,
+            0.1508956440650474
+          ]
+        }
+      ],
+      "gutters": {
+        "samples": 108,
+        "perState": 9,
+        "widths": [
+          3
+        ],
+        "fills": [
+          "#ffffff"
+        ]
+      }
+    },
+    "base": {
+      "clean": true,
+      "states": 12,
+      "findings": 0,
+      "browserErrors": [],
+      "branches": 3,
+      "leaves": 9,
+      "opaqueBorderlessFaces": true,
+      "labelsPerState": 12,
+      "allLabelsMaximumContrastBlackWhite": true,
+      "minimumLabelContrast": 4.586980899522477,
+      "labelContainmentPassed": true,
+      "ramps": [
+        {
+          "branch": "Learn",
+          "order": [
+            "Tune",
+            "Eval",
+            "Trace"
+          ],
+          "fills": [
+            "#004d66",
+            "#007298",
+            "#00ace6"
+          ],
+          "luminances": [
+            0.06267063692166866,
+            0.14301626012139362,
+            0.3521821884557038
+          ],
+          "steps": [
+            0.08034562319972496,
+            0.2091659283343102
+          ]
+        },
+        {
+          "branch": "Create",
+          "order": [
+            "Draft",
+            "Review",
+            "Prompt"
+          ],
+          "fills": [
+            "#994a00",
+            "#e77204",
+            "#ff9633"
+          ],
+          "luminances": [
+            0.11669863210210954,
+            0.29032317571037913,
+            0.43311709116920055
+          ],
+          "steps": [
+            0.1736245436082696,
+            0.14279391545882142
+          ]
+        },
+        {
+          "branch": "Serve",
+          "order": [
+            "Observe",
+            "Cache",
+            "Route"
+          ],
+          "fills": [
+            "#294d19",
+            "#45842a",
+            "#36b300"
+          ],
+          "luminances": [
+            0.058493583903078336,
+            0.17934904497612386,
+            0.33024468904117127
+          ],
+          "steps": [
+            0.12085546107304553,
+            0.1508956440650474
+          ]
+        }
+      ],
+      "gutters": {
+        "samples": 108,
+        "perState": 9,
+        "widths": [
+          3
+        ],
+        "fills": [
+          "#ffffff"
+        ]
+      }
+    }
+  },
+  "geometryComparison": {
+    "clean": true,
+    "states": 36,
+    "nodeComparisons": 432,
+    "findings": [],
+    "fields": [
+      "name",
+      "depth",
+      "value",
+      "branch",
+      "x0",
+      "y0",
+      "x1",
+      "y1",
+      "painted width",
+      "painted height"
+    ]
+  },
+  "negativeControls": {
+    "colorset1": [
+      {
+        "name": "same-sibling-fill",
+        "rejected": true,
+        "findings": [
+          "Review: label is not maximum-contrast black/white on #4f4f4f.",
+          "Review: label contrast is 2.564:1.",
+          "Prompt: label is not maximum-contrast black/white on #4f4f4f.",
+          "Prompt: label contrast is 2.564:1.",
+          "Route: label is not maximum-contrast black/white on #363636.",
+          "Route: label contrast is 1.738:1.",
+          "Learn: sibling cells share paint.",
+          "Learn: sibling luminance does not form distinct ordered steps.",
+          "Create: sibling cells share paint.",
+          "Create: sibling luminance does not form distinct ordered steps.",
+          "Serve: sibling cells share paint.",
+          "Serve: sibling luminance does not form distinct ordered steps."
+        ]
+      },
+      {
+        "name": "wrong-label-contrast",
+        "rejected": true,
+        "findings": [
+          "Tune: label is not maximum-contrast black/white on #6d1222.",
+          "Tune: label contrast is 2.537:1."
+        ]
+      },
+      {
+        "name": "decorative-border",
+        "rejected": true,
+        "findings": [
+          "Tune: a decorative outline is visible."
+        ]
+      },
+      {
+        "name": "changed-cell-geometry",
+        "rejected": true,
+        "findings": [
+          "Tune: the data rectangle geometry changed."
+        ]
+      }
+    ],
+    "base": [
+      {
+        "name": "same-sibling-fill",
+        "rejected": true,
+        "findings": [
+          "Trace: label is not maximum-contrast black/white on #004d66.",
+          "Trace: label contrast is 2.253:1.",
+          "Review: label is not maximum-contrast black/white on #994a00.",
+          "Review: label contrast is 3.334:1.",
+          "Prompt: label is not maximum-contrast black/white on #994a00.",
+          "Prompt: label contrast is 3.334:1.",
+          "Cache: label is not maximum-contrast black/white on #294d19.",
+          "Cache: label contrast is 2.170:1.",
+          "Route: label is not maximum-contrast black/white on #294d19.",
+          "Route: label contrast is 2.170:1.",
+          "Learn: sibling cells share paint.",
+          "Learn: sibling luminance does not form distinct ordered steps.",
+          "Create: sibling cells share paint.",
+          "Create: sibling luminance does not form distinct ordered steps.",
+          "Serve: sibling cells share paint.",
+          "Serve: sibling luminance does not form distinct ordered steps."
+        ]
+      },
+      {
+        "name": "wrong-label-contrast",
+        "rejected": true,
+        "findings": [
+          "Tune: label is not maximum-contrast black/white on #004d66.",
+          "Tune: label contrast is 1.981:1."
+        ]
+      },
+      {
+        "name": "decorative-border",
+        "rejected": true,
+        "findings": [
+          "Tune: a decorative outline is visible."
+        ]
+      },
+      {
+        "name": "changed-cell-geometry",
+        "rejected": true,
+        "findings": [
+          "Tune: the data rectangle geometry changed."
+        ]
+      }
+    ],
+    "mutations": "Native DOM paint/geometry mutations are inspected immediately, before the automatic style normalizer repairs them; originals are restored after each control."
+  },
+  "manualReview": {
+    "independent": true,
+    "outcome": "pass",
+    "inspected": [
+      "projects/treemap-tones/artifacts/baseline/treemap-1440-normal-card.png",
+      "projects/treemap-tones/artifacts/baseline/treemap-390-normal-card.png",
+      "projects/treemap-tones/artifacts/final-cs1/treemap-1440-normal-card.png",
+      "projects/treemap-tones/artifacts/final-cs1/treemap-390-normal-card.png",
+      "projects/treemap-tones/artifacts/final-cs2/treemap-1440-normal-card.png",
+      "projects/treemap-tones/artifacts/final-cs2/treemap-390-normal-card.png",
+      "projects/treemap-tones/artifacts/final-base/treemap-1440-normal-card.png",
+      "projects/treemap-tones/artifacts/final-base/treemap-390-normal-card.png"
+    ],
+    "baselineObservation": "Three flat branch blocks with child labels floating inside; child rectangles cannot be seen.",
+    "finalObservation": "All nine leaf rectangles are immediately distinguishable in desktop and mobile views. Dark/base/bright or grayscale steps preserve branch families. White spaces expose separation without adding decorative outlines. Black/white labels remain visible and inside cells.",
+    "limits": "The review covers the named fixture's three branches and nine leaves at documented finite states. It does not certify arbitrary hierarchy cardinalities or all future data."
+  },
+  "commands": [
+    "uv run --script projects/treemap-tones/scripts/verify_treemap.py skills/d3/assets/examples/d3-animated-svg-cs1/index.html --output-directory projects/treemap-tones/artifacts/baseline --baseline",
+    "uv run --script projects/treemap-tones/scripts/verify_treemap.py skills/d3/assets/examples/d3-animated-svg-cs1/index.html --output-directory projects/treemap-tones/artifacts/final-cs1",
+    "uv run --script projects/treemap-tones/scripts/verify_treemap.py skills/d3/assets/examples/d3-animated-svg-colorset2/index.html --output-directory projects/treemap-tones/artifacts/final-cs2",
+    "uv run --script projects/treemap-tones/scripts/verify_treemap.py skills/d3/assets/examples/d3-animated-svg/index.html --output-directory projects/treemap-tones/artifacts/final-base --compare-reference projects/treemap-tones/artifacts/baseline/verification.json",
+    "uv run --script projects/treemap-tones/scripts/compare_treemap_reports.py projects/treemap-tones/artifacts/baseline/verification.json projects/treemap-tones/artifacts/final-cs1/verification.json projects/treemap-tones/artifacts/final-cs2/verification.json projects/treemap-tones/artifacts/final-base/verification.json --output projects/treemap-tones/artifacts/geometry-comparison.json",
+    "uv run --script projects/treemap-tones/scripts/verify_treemap.py skills/d3/assets/examples/d3-animated-svg-cs1/index.html --output-directory projects/treemap-tones/artifacts/negative-controls-cs1 --negative-controls-only --compare-reference projects/treemap-tones/artifacts/baseline/verification.json"
+  ],
+  "baselineProvenance": "Baseline capture completed before the shared gallery patch. Complete pre-change source folders are frozen under ignored projects/treemap-tones/artifacts/baseline-source/. Reproduction must use that copy; the original baseline command targeted canonical files before their update.",
+  "verifierEvolution": "The independent positive paint/geometry scanner is unchanged across baseline and final captures. Negative-control and optional report-comparison support were added after the CS1/CS2 positive runs; the base and additional CS1 control runs use the final verifier.",
+  "sourceHashes": {
+    "projects/treemap-tones/artifacts/baseline-source/d3-animated-svg/gallery.js": {
+      "path": "projects/treemap-tones/artifacts/baseline-source/d3-animated-svg/gallery.js",
+      "sha256": "7c7977478b6c8e2494e82f8916fb7556027a55efa2af0983758b3689feda43e1",
+      "bytes": 773611
+    },
+    "skills/d3/assets/examples/d3-animated-svg/gallery.js": {
+      "path": "skills/d3/assets/examples/d3-animated-svg/gallery.js",
+      "sha256": "298e3eaf24b2d3553711931a76e95fcdf08a7d0c1ca583a9a20ff64a946a5934",
+      "bytes": 775681
+    },
+    "skills/d3/references/patterns/treemap.md": {
+      "path": "skills/d3/references/patterns/treemap.md",
+      "sha256": "79ea68fdf9462e43d79636c4d7001001042cbc9d063445eda070c4e888e6cbca",
+      "bytes": 7067
+    },
+    "skills/d3/assets/examples/d3-animated-svg/solid-style.js": {
+      "path": "skills/d3/assets/examples/d3-animated-svg/solid-style.js",
+      "sha256": "755e27738f2841a2f2abb9ff92017c515a5bd6d8326a9d3609519160673ee66d",
+      "bytes": 27423
+    },
+    "skills/d3/assets/examples/d3-animated-svg/index.html": {
+      "path": "skills/d3/assets/examples/d3-animated-svg/index.html",
+      "sha256": "753f721c8cbae0f6301465d8a43766642759f3d209ee89c794a3f10e1cce20d5",
+      "bytes": 5126
+    },
+    "skills/d3/assets/examples/d3-animated-svg-cs1/index.html": {
+      "path": "skills/d3/assets/examples/d3-animated-svg-cs1/index.html",
+      "sha256": "478b0981d2c95ec2d2a4bed3a733a299d1a94cc400063678f5a87d45ce861545",
+      "bytes": 5340
+    },
+    "skills/d3/assets/examples/d3-animated-svg-cs1/cs1-config.js": {
+      "path": "skills/d3/assets/examples/d3-animated-svg-cs1/cs1-config.js",
+      "sha256": "f8916914af3ca054427a9cb9d57143f0b748d11f5fe8928ed79338ad0aa4cca1",
+      "bytes": 2586
+    },
+    "skills/d3/assets/examples/d3-animated-svg-colorset2/index.html": {
+      "path": "skills/d3/assets/examples/d3-animated-svg-colorset2/index.html",
+      "sha256": "c8bba0fb1fea4eeff7881293d0bddc8cccc152d20aba73072d846fe37383c53d",
+      "bytes": 5358
+    },
+    "skills/d3/assets/examples/d3-animated-svg-colorset2/colorset2-config.js": {
+      "path": "skills/d3/assets/examples/d3-animated-svg-colorset2/colorset2-config.js",
+      "sha256": "3476294c9429c9bb834adfef9e81e504096194528bc4180f30b2a213fd47a92c",
+      "bytes": 494
+    },
+    "skills/d3/assets/palettes/colorsets.json": {
+      "path": "skills/d3/assets/palettes/colorsets.json",
+      "sha256": "9bd70695e01fddeb9b65694e195666afcd2233434b0f85e865cd536b3afc0e8d",
+      "bytes": 5927
+    },
+    "projects/treemap-tones/scripts/verify_treemap.py": {
+      "path": "projects/treemap-tones/scripts/verify_treemap.py",
+      "sha256": "c38cb9f9d86441032b34fe86fb4d7512f8448ebde2c8d53b33567edaba7bc434",
+      "bytes": 16268
+    },
+    "projects/treemap-tones/scripts/compare_treemap_reports.py": {
+      "path": "projects/treemap-tones/scripts/compare_treemap_reports.py",
+      "sha256": "556b68405bb621ed44dedc45c823d83a86af926b7d630292666ece0a9c88191f",
+      "bytes": 2308
+    }
+  },
+  "artifactHashes": [
+    {
+      "path": "projects/treemap-tones/artifacts/baseline/verification.json",
+      "sha256": "8f96207c28c0cb7b39dad7ebd1ff8f94e68bd51cd4e6366255f532bfc93d1b38",
+      "bytes": 186318
+    },
+    {
+      "path": "projects/treemap-tones/artifacts/baseline/treemap-1440-normal-card.png",
+      "sha256": "ef86a80b7d1efe76161a4d9de8c475919b36708736487d76b80575ac2c6dafd4",
+      "bytes": 13256
+    },
+    {
+      "path": "projects/treemap-tones/artifacts/baseline/treemap-1440-normal-svg.png",
+      "sha256": "0987bd022328758f458092511f2d13c4c50e374bc6c50f11bb9d5dc99bb01294",
+      "bytes": 6501
+    },
+    {
+      "path": "projects/treemap-tones/artifacts/baseline/treemap-1440-normal.svg",
+      "sha256": "3662f4b69eac41f32bb6857d4d2407510bfd4bd9d97abeabbc3f1c6f41e6beea",
+      "bytes": 7065
+    },
+    {
+      "path": "projects/treemap-tones/artifacts/baseline/treemap-390-normal-card.png",
+      "sha256": "592ca80fd2f1ae6cbdfb774e5e078b15538b047d495f5a86bea9d9b392de7b94",
+      "bytes": 11822
+    },
+    {
+      "path": "projects/treemap-tones/artifacts/baseline/treemap-390-normal-svg.png",
+      "sha256": "39319d9d3e164c16c142dd35def12ca6846967ee7c905665b68e0d61703f456d",
+      "bytes": 6264
+    },
+    {
+      "path": "projects/treemap-tones/artifacts/baseline/treemap-390-normal.svg",
+      "sha256": "3662f4b69eac41f32bb6857d4d2407510bfd4bd9d97abeabbc3f1c6f41e6beea",
+      "bytes": 7065
+    },
+    {
+      "path": "projects/treemap-tones/artifacts/final-cs1/verification.json",
+      "sha256": "c2171e4cb344ee6b081ec62642928020b31be8ea32c748c38dfbd90b4ff685a7",
+      "bytes": 175674
+    },
+    {
+      "path": "projects/treemap-tones/artifacts/final-cs1/treemap-1440-normal-card.png",
+      "sha256": "caca5e84c554cdf3da9a15050800cfb98e0cea10b68ae8962f5dc1d7f575844d",
+      "bytes": 14127
+    },
+    {
+      "path": "projects/treemap-tones/artifacts/final-cs1/treemap-1440-normal-svg.png",
+      "sha256": "874cf2b98e4818b6a236e84b579de547f28b484324aa32abdebf8bcc1d31ca30",
+      "bytes": 7369
+    },
+    {
+      "path": "projects/treemap-tones/artifacts/final-cs1/treemap-1440-normal.svg",
+      "sha256": "7295e80d0db7fe150037d7f946de70a632df8e0910b886d7071635086eb518bb",
+      "bytes": 9659
+    },
+    {
+      "path": "projects/treemap-tones/artifacts/final-cs1/treemap-390-normal-card.png",
+      "sha256": "0fd112a0d9d3bfdbbec3a57d85a11575a9bff795d78386749b6019cb2a233e0d",
+      "bytes": 12563
+    },
+    {
+      "path": "projects/treemap-tones/artifacts/final-cs1/treemap-390-normal-svg.png",
+      "sha256": "0e9f623b67c267ffb19bee751835974537e340695aec9212e174db6b535d4ae4",
+      "bytes": 6989
+    },
+    {
+      "path": "projects/treemap-tones/artifacts/final-cs1/treemap-390-normal.svg",
+      "sha256": "7295e80d0db7fe150037d7f946de70a632df8e0910b886d7071635086eb518bb",
+      "bytes": 9659
+    },
+    {
+      "path": "projects/treemap-tones/artifacts/final-cs2/verification.json",
+      "sha256": "36b3636720a3b186e92a58bc49c3b47025ea8f9d9f70749fcbf8e29e761a3270",
+      "bytes": 175656
+    },
+    {
+      "path": "projects/treemap-tones/artifacts/final-cs2/treemap-1440-normal-card.png",
+      "sha256": "64b49df99841fd49e1ba71607bbc6053627369288bcfaa4cbff70b91cf0e17ac",
+      "bytes": 14266
+    },
+    {
+      "path": "projects/treemap-tones/artifacts/final-cs2/treemap-1440-normal-svg.png",
+      "sha256": "f144ba0afe5097481ac029adec9680ebc707164aae9e12ef75300009a6f98de0",
+      "bytes": 7462
+    },
+    {
+      "path": "projects/treemap-tones/artifacts/final-cs2/treemap-1440-normal.svg",
+      "sha256": "5021726d800e054da8e2ad1d53bf3c99066baddc3eac962586446858b170b9ad",
+      "bytes": 9634
+    },
+    {
+      "path": "projects/treemap-tones/artifacts/final-cs2/treemap-390-normal-card.png",
+      "sha256": "389ea7e9e881618752fe5e53a4aafce6a7507dbe4ae4613031f745cd4730677a",
+      "bytes": 12590
+    },
+    {
+      "path": "projects/treemap-tones/artifacts/final-cs2/treemap-390-normal-svg.png",
+      "sha256": "1e71dbc02a2da75f486f5a44adbff095153173d1e097f9ff791346d05a36751c",
+      "bytes": 6945
+    },
+    {
+      "path": "projects/treemap-tones/artifacts/final-cs2/treemap-390-normal.svg",
+      "sha256": "5021726d800e054da8e2ad1d53bf3c99066baddc3eac962586446858b170b9ad",
+      "bytes": 9634
+    },
+    {
+      "path": "projects/treemap-tones/artifacts/final-base/verification.json",
+      "sha256": "f9ee37e5ed25a4c7077db99714c76ceb1cff50451dc44d739a5bb87b7f1560c0",
+      "bytes": 177334
+    },
+    {
+      "path": "projects/treemap-tones/artifacts/final-base/treemap-1440-normal-card.png",
+      "sha256": "ac16496bd7b77f889a67cb1eaa671c4246c0871bd6e87b297fb97a0c9b6652b2",
+      "bytes": 14098
+    },
+    {
+      "path": "projects/treemap-tones/artifacts/final-base/treemap-1440-normal-svg.png",
+      "sha256": "f144ba0afe5097481ac029adec9680ebc707164aae9e12ef75300009a6f98de0",
+      "bytes": 7462
+    },
+    {
+      "path": "projects/treemap-tones/artifacts/final-base/treemap-1440-normal.svg",
+      "sha256": "4025c1c5c2b0f42b031d978db27a5b2c46f127840a62323776b9d7844b9ff37d",
+      "bytes": 9571
+    },
+    {
+      "path": "projects/treemap-tones/artifacts/final-base/treemap-390-normal-card.png",
+      "sha256": "791a6f62e4c003f8ad3d3fa40f5990145223338a9ab66076ce53768a8c1f169e",
+      "bytes": 12447
+    },
+    {
+      "path": "projects/treemap-tones/artifacts/final-base/treemap-390-normal-svg.png",
+      "sha256": "1e71dbc02a2da75f486f5a44adbff095153173d1e097f9ff791346d05a36751c",
+      "bytes": 6945
+    },
+    {
+      "path": "projects/treemap-tones/artifacts/final-base/treemap-390-normal.svg",
+      "sha256": "4025c1c5c2b0f42b031d978db27a5b2c46f127840a62323776b9d7844b9ff37d",
+      "bytes": 9571
+    },
+    {
+      "path": "projects/treemap-tones/artifacts/geometry-comparison.json",
+      "sha256": "e998f0e1665cc4a91100991bec9a0086bccc43e5390be0f0d59d8a1f4e989ca2",
+      "bytes": 949
+    },
+    {
+      "path": "projects/treemap-tones/artifacts/negative-controls-cs1/verification.json",
+      "sha256": "a01026e8b58b4ead7af5ce83e39598f640e7c7dec71b7a53c829e2c2f3f6bc8b",
+      "bytes": 16359
+    }
+  ]
+}

@@ -30,6 +30,8 @@ For an evaluation or composition audit, your first command after reading this fi
 
 For an editable KPI/service dashboard, first run `python "<d3-skill>/scripts/create_d3_svg_starter.py" --help`, then read `references/user-artifact-workflow.md`. Generate the `operational-dashboard` starter and edit its output data. This route already provides compact neutral panels, active-colorset metadata, local runtime files, and the KPI/table layout.
 
+For a standalone two-level treemap, first run `python "<d3-skill>/scripts/build_treemap.py" --help`, then read `references/patterns/treemap.md`. Supply the requested hierarchy as JSON and build with that script; it computes D3 area geometry and finalizes solid tones, exact black/white text and palette metadata automatically. Correct the data or flags and rerun instead of hand-authoring or post-editing a supported treemap. Export its settled SVG with `render_d3_svg.py`.
+
 Run dependency-declaring helpers such as `render_d3_svg.py` and
 `dither_d3_output.py` with `uv run --script`, including their `--help` calls.
 Their uv metadata provides Pillow and Playwright in a clean isolated workspace.
@@ -71,6 +73,7 @@ For `build_evaluation_report.py`, pass each `requiredTerms` value unchanged with
 
 - Form selection and implementation: `references/visualization-type-index.md`, `references/layout-patterns.md`, and `references/pattern-selection-contracts.md`.
 - Named reusable pattern: select its directly linked recipe below and read it in full. Use `references/pattern-routing.md` when the family is unclear, or `references/pattern-index.md` when a canonical ID or legacy alias needs lookup. For exact counts, also read `references/cardinality-generalization.md`.
+- Treemap sibling visibility: use `scripts/build_treemap.py` and `references/patterns/treemap.md` for stepped family tones, neutral gutters, separate parent headers, and contrast-aware labels. Preserve existing weighted cell geometry when maintaining a supplied renderer.
 - Speculative decoding: read `references/patterns/speculative-decoding.md` and use `scripts/build_speculative_decoding.py` for a draft sequence, accepted prefix, rejected tail and target continuation; it supports changed tokens, counts, dimensions and optional alternates. Use its bundled `verify_speculative_decoding.py` browser command for Replay, SVG parity, reduced motion and the inspection PNG. Check HTML controls against HTML and SVG geometry against SVG.
 - Kinetic or deconstructed typography: `references/patterns/kinetic-glyph-mosaic.md`; use `scripts/build_kinetic_type.py` for ordinary-looking text that reveals moving tile, line, dot, or hybrid glyph components. Follow that route's HTML-specific validation commands; do not substitute the generic settled-SVG contract check or look for acceptance fixtures in a runtime bundle.
 - Offline or animated output: `references/self-contained-output.md` and `references/animation-patterns.md`.

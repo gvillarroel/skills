@@ -1,0 +1,556 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-03",
+  "skill": "d3",
+  "phase": "builder-pending",
+  "passed": false,
+  "finalPayloadSha256": null,
+  "modelException": "openai-codex/gpt-5.6-luna, as recorded in the D3 backlog because Spark was unsupported.",
+  "settingsNote": "Retained pre-steering high cases are separate. The combined frozen paint revision uses Luna medium consistently; strict and artifact gates are unchanged, and no direct model-quality comparison is claimed.",
+  "casePolicy": "A passing contract smoke for each changed form and exactly three fresh naturalistic repetitions on the final payload; require at least two joint strict/artifact naturalistic passes. Every failed/superseded attempt remains recorded.",
+  "attempts": [
+    {
+      "runId": "d3-treemap-tones-contract-20261003-luna-1",
+      "status": "superseded",
+      "classification": "agent",
+      "note": "Agent omitted active palette metadata at its first check and attempted an exact SVG replacement with stale oldText. The final artifact passes independently; strict release acceptance fails.",
+      "model": {
+        "model": "openai-codex/gpt-5.6-luna",
+        "thinking": "high",
+        "mode": "json",
+        "timeoutSeconds": 900
+      },
+      "payload": {
+        "name": "d3",
+        "profile": "runtime",
+        "fileCount": 288,
+        "payloadSha256": "fec0c61e4ff3ad2a4ffc4a0fec4444040f5be94d07767e45bc93bc24a253ca30"
+      },
+      "harnessPassed": false,
+      "evaluationFinalized": true,
+      "durationSeconds": 459.267,
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "expectedArtifacts": [
+        {
+          "path": "contract-treemap.html",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 12490,
+          "sha256": "4c57fd2f494b413613415b663c6ce23b7e362412cea4c0f1bec48a371505a987",
+          "error": null
+        },
+        {
+          "path": "contract-treemap.svg",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 28213,
+          "sha256": "1bfc7596704e5fa8c7015d8e24e031eb58a55e94a6212ca09a25c1acaaa8df0c",
+          "error": null
+        }
+      ],
+      "eventFindings": [
+        {
+          "code": "tool-error",
+          "line": 3765,
+          "tool": "bash"
+        },
+        {
+          "code": "tool-error",
+          "line": 7845,
+          "tool": "edit"
+        }
+      ],
+      "failedCalls": [
+        {
+          "line": 3765,
+          "tool": "bash",
+          "path": null,
+          "command": "python skills/d3/scripts/check_palette_contract.py contract-treemap.html --colorset colorset1",
+          "isError": true
+        },
+        {
+          "line": 7845,
+          "tool": "edit",
+          "path": "contract-treemap.svg",
+          "command": null,
+          "isError": true
+        }
+      ],
+      "readSurface": [
+        "../prompt.md",
+        "skills/d3/SKILL.md",
+        "skills/d3/references/patterns/treemap.md",
+        "skills/d3/assets/palettes/colorsets.json",
+        "skills/d3/references/shared-renderer-helpers.md",
+        "contract-treemap.html",
+        "contract-treemap.svg",
+        "skills/d3/scripts/check_palette_contract.py",
+        "scratch/preview-420.png",
+        "scratch/preview-960.png",
+        "scratch/preview-420.png",
+        "scratch/preview-960.png",
+        "contract-treemap.html",
+        "contract-treemap.html",
+        "scratch/preview-420.png",
+        "scratch/preview-960.png",
+        "scratch/settled-960.svg"
+      ],
+      "skillIntegrityPassed": true,
+      "independentlyPassed": true,
+      "independentGrade": "projects/treemap-tones/artifacts/isolated/contract-1/independent-grade.json",
+      "independentGradeSha256": "710df73d35f04d1f0d8e6630ab551e201621358f798ce451a53d3213eedd67bb",
+      "independentFindings": [],
+      "evidenceSha256": {
+        "run-manifest.json": "ba1f4e4695caddc5c5b99372d92e661d947b5aeed856f90578fd3cccf2485210",
+        "evaluation-result.json": "dd51f642619a05fcaac3e4a95b5b3400fcc40628aef015c4fa9bdd91656a362c",
+        "event-check.json": "0b8fb2d6f8a8b5061af300bad50477e8c7e9dd1a5783a84f0ca87c5e41b4c716",
+        "artifact-check.json": "b62c49971e05b88366bdc2accf282ddc36bf7217d0e492fb47d8118a13d81adc",
+        "skill-integrity-check.json": "da7f2ccd292dc1a9314e066d63f790604c5cd061e9d2a9bbf4c7b0838ba3eb7f",
+        "events.jsonl": "d742e786e8cd0cdaa4e4ce3b2063682aa74e6f0944e2e2771630b86bb1061cce"
+      }
+    },
+    {
+      "runId": "d3-treemap-tones-naturalistic-20261003-luna-1",
+      "status": "unfinalized-infrastructure",
+      "classification": "infrastructure",
+      "note": "The environment update interrupted the run and no evaluation-result.json or live runner remained. Its payload was superseded by added overlap steering. No pass is claimed.",
+      "model": {
+        "model": "openai-codex/gpt-5.6-luna",
+        "thinking": "high",
+        "mode": "json",
+        "timeoutSeconds": 900
+      },
+      "payload": {
+        "name": "d3",
+        "profile": "runtime",
+        "fileCount": 288,
+        "payloadSha256": "fec0c61e4ff3ad2a4ffc4a0fec4444040f5be94d07767e45bc93bc24a253ca30"
+      },
+      "harnessPassed": false,
+      "evaluationFinalized": false,
+      "durationSeconds": null,
+      "gates": null,
+      "expectedArtifacts": [],
+      "eventFindings": [],
+      "failedCalls": [],
+      "readSurface": [],
+      "skillIntegrityPassed": null,
+      "independentlyPassed": null,
+      "independentGrade": null,
+      "independentGradeSha256": null,
+      "independentFindings": null,
+      "evidenceSha256": {
+        "run-manifest.json": "aee19cf8b759b7595ef821fd5e52b3e910403e94670914edff7cc49172c82177"
+      }
+    },
+    {
+      "runId": "d3-treemap-tones-contract-20261003-luna-2",
+      "status": "superseded",
+      "classification": "agent",
+      "note": "Agent omitted active palette metadata at its first check; actual labels violate exact maximum-contrast black/white, and Operations area fractions diverge by 0.0734. Both strict and artifact gates fail.",
+      "model": {
+        "model": "openai-codex/gpt-5.6-luna",
+        "thinking": "medium",
+        "mode": "json",
+        "timeoutSeconds": 900
+      },
+      "payload": {
+        "name": "d3",
+        "profile": "runtime",
+        "fileCount": 288,
+        "payloadSha256": "fd964189150e248e286954dc1b3019473980a2c47c2efe178a4d891241d39195"
+      },
+      "harnessPassed": false,
+      "evaluationFinalized": true,
+      "durationSeconds": 123.904,
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "expectedArtifacts": [
+        {
+          "path": "contract-treemap.html",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 5531,
+          "sha256": "43e53b8f3e6d18bc88b708be431f5e8eaa7e1f565ca038fab7b8b3c694dfcd7c",
+          "error": null
+        },
+        {
+          "path": "contract-treemap.svg",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 5045,
+          "sha256": "4e05b562285a756eb451e7fda03dd6ee516e08c6515ec1b146425f5fc05c9720",
+          "error": null
+        }
+      ],
+      "eventFindings": [
+        {
+          "code": "tool-error",
+          "line": 2010,
+          "tool": "bash"
+        }
+      ],
+      "failedCalls": [
+        {
+          "line": 2010,
+          "tool": "bash",
+          "path": null,
+          "command": "python skills/d3/scripts/check_palette_contract.py contract-treemap.html --colorset colorset1",
+          "isError": true
+        }
+      ],
+      "readSurface": [
+        "../prompt.md",
+        "skills/d3/SKILL.md",
+        "skills/d3/references/patterns/treemap.md",
+        "skills/d3/scripts/check_palette_contract.py",
+        "scratch/preview-960.png",
+        "scratch/preview-420.png"
+      ],
+      "skillIntegrityPassed": true,
+      "independentlyPassed": false,
+      "independentGrade": "projects/treemap-tones/artifacts/isolated/contract-2/independent-grade.json",
+      "independentGradeSha256": "5965d40ed90b4a7dc84f5b33b3631c19bc292dca8a162d28a6efeb9b62506a91",
+      "independentFindings": [
+        "html-960: Delivery: label is not maximum-contrast black or white.",
+        "html-960: Delivery: label is not maximum-contrast black or white.",
+        "html-960: Identity: label is not maximum-contrast black or white.",
+        "html-960: Identity: label is not maximum-contrast black or white.",
+        "html-960: Recovery: label is not maximum-contrast black or white.",
+        "html-960: Recovery: label is not maximum-contrast black or white.",
+        "html-960: Operations: leaf area proportions diverge materially from values (0.0734).",
+        "html-420: Delivery: label is not maximum-contrast black or white.",
+        "html-420: Delivery: label is not maximum-contrast black or white.",
+        "html-420: Identity: label is not maximum-contrast black or white.",
+        "html-420: Identity: label is not maximum-contrast black or white.",
+        "html-420: Recovery: label is not maximum-contrast black or white.",
+        "html-420: Recovery: label is not maximum-contrast black or white.",
+        "html-420: Operations: leaf area proportions diverge materially from values (0.0734).",
+        "svg-960: Delivery: label is not maximum-contrast black or white.",
+        "svg-960: Delivery: label is not maximum-contrast black or white.",
+        "svg-960: Identity: label is not maximum-contrast black or white.",
+        "svg-960: Identity: label is not maximum-contrast black or white.",
+        "svg-960: Recovery: label is not maximum-contrast black or white.",
+        "svg-960: Recovery: label is not maximum-contrast black or white.",
+        "svg-960: Operations: leaf area proportions diverge materially from values (0.0734).",
+        "svg-420: Delivery: label is not maximum-contrast black or white.",
+        "svg-420: Delivery: label is not maximum-contrast black or white.",
+        "svg-420: Identity: label is not maximum-contrast black or white.",
+        "svg-420: Identity: label is not maximum-contrast black or white.",
+        "svg-420: Recovery: label is not maximum-contrast black or white.",
+        "svg-420: Recovery: label is not maximum-contrast black or white.",
+        "svg-420: Operations: leaf area proportions diverge materially from values (0.0734)."
+      ],
+      "evidenceSha256": {
+        "run-manifest.json": "08bb96e16de941e4aadd4621bd427c4e1889711d0fbb0f865be11b3ad5458353",
+        "evaluation-result.json": "7a063363ede679568e54efd96cd0c7c225a8e59d8edd112db121098b9bed9be8",
+        "event-check.json": "733be19968f4d6111f0f290741720e3cc0be450605a2dbd885a4bcfb6e633f72",
+        "artifact-check.json": "2239418df836138f55ad9093a0808b945b536086817e30a8443ac76cea72334a",
+        "skill-integrity-check.json": "0cd9140b31cb54b0e4e73f253e76c52b8e6d8988a49376bc8e4571c8386f46b7",
+        "events.jsonl": "91cfdcde83ebedc6a59820d5e3f266780590c03409afbb82c6ff3b058bfe76d5"
+      }
+    },
+    {
+      "runId": "d3-treemap-tones-naturalistic-20261003-luna-2",
+      "status": "superseded",
+      "classification": "agent",
+      "note": "Agent used #fff shorthand and omitted active metadata, guessed a missing ID, and issued unsuccessful edit/substring probes. Actual light-gray leaf labels violate maximum-contrast black/white; the portable SVG additionally gets Intake wrong.",
+      "model": {
+        "model": "openai-codex/gpt-5.6-luna",
+        "thinking": "medium",
+        "mode": "json",
+        "timeoutSeconds": 900
+      },
+      "payload": {
+        "name": "d3",
+        "profile": "runtime",
+        "fileCount": 288,
+        "payloadSha256": "fd964189150e248e286954dc1b3019473980a2c47c2efe178a4d891241d39195"
+      },
+      "harnessPassed": false,
+      "evaluationFinalized": true,
+      "durationSeconds": 189.783,
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "expectedArtifacts": [
+        {
+          "path": "portfolio-treemap.html",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 5789,
+          "sha256": "5bcc9acb373fca08a80d71dd67b03bf17cf93e79f39eeabb7068dcffa939827e",
+          "error": null
+        },
+        {
+          "path": "portfolio-treemap.svg",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 6381,
+          "sha256": "0af73fcca753e85160889f3307eedbcbff8ca51815a5aa49267bddf22da9f05c",
+          "error": null
+        }
+      ],
+      "eventFindings": [
+        {
+          "code": "tool-error",
+          "line": 4536,
+          "tool": "bash"
+        },
+        {
+          "code": "tool-error",
+          "line": 4858,
+          "tool": "bash"
+        },
+        {
+          "code": "tool-error",
+          "line": 4877,
+          "tool": "edit"
+        },
+        {
+          "code": "tool-error",
+          "line": 4947,
+          "tool": "bash"
+        }
+      ],
+      "failedCalls": [
+        {
+          "line": 4536,
+          "tool": "bash",
+          "path": null,
+          "command": "uv run --script skills/d3/scripts/render_d3_svg.py portfolio-treemap.html --output scratch/narrow.svg --screenshot scratch/narrow.png --wait-ms 200 --viewport 420x800 && python skills/d3/scripts/check_self_contained_html.py portfolio-treemap.html && python skills/d3/scripts/check_palette_contract.py portfolio-treemap.html --colorset colorset1",
+          "isError": true
+        },
+        {
+          "line": 4858,
+          "tool": "bash",
+          "path": null,
+          "command": "python skills/d3/scripts/check_visual_contract.py portfolio-treemap.svg --require-id d3-treemap-cs1 --require-class treemap-parent:3 --require-class treemap-leaf:9 --require-class treemap-branch-header:3 --require-class treemap-leaf-cell:9 --require-text Delivery --require-text Parcel --require-text 41 --require-text Experience --require-text Support --require-text 31 --require-text Platform --require-text Runtime --require-text 29 --require-attribute \"viewBox=0 0 960 560\"",
+          "isError": true
+        },
+        {
+          "line": 4877,
+          "tool": "edit",
+          "path": "portfolio-treemap.html",
+          "command": null,
+          "isError": true
+        },
+        {
+          "line": 4947,
+          "tool": "bash",
+          "path": null,
+          "command": "python - <<'PY'\nfrom pathlib import Path\ns=Path('portfolio-treemap.html').read_text()\ni=s.index(\"out+=`<title\")\nprint(s[i:i+300])\nPY",
+          "isError": true
+        }
+      ],
+      "readSurface": [
+        "../prompt.md",
+        "skills/d3/SKILL.md",
+        "skills/d3/references/patterns/treemap.md",
+        "scratch/preview.png",
+        "scratch/narrow.png",
+        "scratch/preview-final.png"
+      ],
+      "skillIntegrityPassed": true,
+      "independentlyPassed": false,
+      "independentGrade": "projects/treemap-tones/artifacts/isolated/naturalistic-2/independent-grade.json",
+      "independentGradeSha256": "1bc005aff02488e5039d027f0766dda77727660f67493724fdadd4c40ca70950",
+      "independentFindings": [
+        "html-960: Learning: label is not maximum-contrast black or white.",
+        "html-960: Learning: label is not maximum-contrast black or white.",
+        "html-960: Discovery: label is not maximum-contrast black or white.",
+        "html-960: Discovery: label is not maximum-contrast black or white.",
+        "html-960: Network: label is not maximum-contrast black or white.",
+        "html-960: Network: label is not maximum-contrast black or white.",
+        "html-420: Learning: label is not maximum-contrast black or white.",
+        "html-420: Learning: label is not maximum-contrast black or white.",
+        "html-420: Discovery: label is not maximum-contrast black or white.",
+        "html-420: Discovery: label is not maximum-contrast black or white.",
+        "html-420: Network: label is not maximum-contrast black or white.",
+        "html-420: Network: label is not maximum-contrast black or white.",
+        "svg-960: Intake: label is not maximum-contrast black or white.",
+        "svg-960: Intake: label is not maximum-contrast black or white.",
+        "svg-960: Learning: label is not maximum-contrast black or white.",
+        "svg-960: Learning: label is not maximum-contrast black or white.",
+        "svg-960: Discovery: label is not maximum-contrast black or white.",
+        "svg-960: Discovery: label is not maximum-contrast black or white.",
+        "svg-960: Network: label is not maximum-contrast black or white.",
+        "svg-960: Network: label is not maximum-contrast black or white.",
+        "svg-420: Intake: label is not maximum-contrast black or white.",
+        "svg-420: Intake: label is not maximum-contrast black or white.",
+        "svg-420: Learning: label is not maximum-contrast black or white.",
+        "svg-420: Learning: label is not maximum-contrast black or white.",
+        "svg-420: Discovery: label is not maximum-contrast black or white.",
+        "svg-420: Discovery: label is not maximum-contrast black or white.",
+        "svg-420: Network: label is not maximum-contrast black or white.",
+        "svg-420: Network: label is not maximum-contrast black or white."
+      ],
+      "evidenceSha256": {
+        "run-manifest.json": "8336d4c256bcca61973e5669f47a7e7288c729037785ebe2b582ef54e66587e5",
+        "evaluation-result.json": "a7d3cc120878fe47b21f8909355d2645a7a3e4c1cfec901dbe9aa69bdcb2d256",
+        "event-check.json": "7e6a8ec704818a34151d7a4879ae3d836b23c6be8e93749479a988d03a730a9b",
+        "artifact-check.json": "2e44450545c6640aaa2c62c61db34d98b4d10204e2b6592dac7a0e61cc1fa4f4",
+        "skill-integrity-check.json": "0cd9140b31cb54b0e4e73f253e76c52b8e6d8988a49376bc8e4571c8386f46b7",
+        "events.jsonl": "942478b01cc4589de79c1f682ead173980f18d9afab15fa65b006643b1d3d7f3"
+      }
+    },
+    {
+      "runId": "d3-treemap-tones-naturalistic-20261003-luna-3",
+      "status": "superseded",
+      "classification": "agent",
+      "note": "Agent used #fff shorthand and omitted active metadata. Its custom no-network assertion incorrectly rejects the required SVG xmlns URI as an external dependency. Actual light-gray labels violate maximum-contrast black/white.",
+      "model": {
+        "model": "openai-codex/gpt-5.6-luna",
+        "thinking": "medium",
+        "mode": "json",
+        "timeoutSeconds": 900
+      },
+      "payload": {
+        "name": "d3",
+        "profile": "runtime",
+        "fileCount": 288,
+        "payloadSha256": "fd964189150e248e286954dc1b3019473980a2c47c2efe178a4d891241d39195"
+      },
+      "harnessPassed": false,
+      "evaluationFinalized": true,
+      "durationSeconds": 178.445,
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "expectedArtifacts": [
+        {
+          "path": "portfolio-treemap.html",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 4554,
+          "sha256": "de9c1836e5f25d36a77d605239806c7043c559448fb8cebd347f06c134ed0a74",
+          "error": null
+        },
+        {
+          "path": "portfolio-treemap.svg",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 4646,
+          "sha256": "603168a78a1b7f8022688c34d183744671b0e1b5e0cb4c9fc689f9ec0487e0c0",
+          "error": null
+        }
+      ],
+      "eventFindings": [
+        {
+          "code": "tool-error",
+          "line": 3276,
+          "tool": "bash"
+        },
+        {
+          "code": "tool-error",
+          "line": 3920,
+          "tool": "bash"
+        }
+      ],
+      "failedCalls": [
+        {
+          "line": 3276,
+          "tool": "bash",
+          "path": null,
+          "command": "python skills/d3/scripts/check_palette_contract.py portfolio-treemap.html --colorset colorset1",
+          "isError": true
+        },
+        {
+          "line": 3920,
+          "tool": "bash",
+          "path": null,
+          "command": "python - <<'PY'\nfrom pathlib import Path\ns=Path('portfolio-treemap.svg').read_text().lower()\nassert '<script' not in s and 'http://' not in s and 'https://' not in s\nassert 'stroke=' not in s or 'stroke=\"none\"' in s\nprint('portable-static-svg-ok')\nPY",
+          "isError": true
+        }
+      ],
+      "readSurface": [
+        "../prompt.md",
+        "skills/d3/SKILL.md",
+        "skills/d3/references/patterns/treemap.md",
+        "scratch/preview.png",
+        "scratch/narrow.png"
+      ],
+      "skillIntegrityPassed": true,
+      "independentlyPassed": false,
+      "independentGrade": "projects/treemap-tones/artifacts/isolated/naturalistic-3/independent-grade.json",
+      "independentGradeSha256": "37af84d3d16245573f2573ee7cddadadbefe8c1cf4109bdf27d555e3cb773075",
+      "independentFindings": [
+        "html-960: Learning: label is not maximum-contrast black or white.",
+        "html-960: Learning: label is not maximum-contrast black or white.",
+        "html-960: Discovery: label is not maximum-contrast black or white.",
+        "html-960: Discovery: label is not maximum-contrast black or white.",
+        "html-960: Network: label is not maximum-contrast black or white.",
+        "html-960: Network: label is not maximum-contrast black or white.",
+        "html-420: Learning: label is not maximum-contrast black or white.",
+        "html-420: Learning: label is not maximum-contrast black or white.",
+        "html-420: Discovery: label is not maximum-contrast black or white.",
+        "html-420: Discovery: label is not maximum-contrast black or white.",
+        "html-420: Network: label is not maximum-contrast black or white.",
+        "html-420: Network: label is not maximum-contrast black or white.",
+        "svg-960: Learning: label is not maximum-contrast black or white.",
+        "svg-960: Learning: label is not maximum-contrast black or white.",
+        "svg-960: Discovery: label is not maximum-contrast black or white.",
+        "svg-960: Discovery: label is not maximum-contrast black or white.",
+        "svg-960: Network: label is not maximum-contrast black or white.",
+        "svg-960: Network: label is not maximum-contrast black or white.",
+        "svg-420: Learning: label is not maximum-contrast black or white.",
+        "svg-420: Learning: label is not maximum-contrast black or white.",
+        "svg-420: Discovery: label is not maximum-contrast black or white.",
+        "svg-420: Discovery: label is not maximum-contrast black or white.",
+        "svg-420: Network: label is not maximum-contrast black or white.",
+        "svg-420: Network: label is not maximum-contrast black or white."
+      ],
+      "evidenceSha256": {
+        "run-manifest.json": "03e0d086020032457ad29058c108dbe0f42a2b371c7df537d526c4230389619b",
+        "evaluation-result.json": "b25d66c220fc7f0543657a8e77d5fb57d89f81cb8901242e61f5312bc2e78966",
+        "event-check.json": "f01910a357e678b0d61efa0a0b9348356ffef153759afa94ae14f1ea51063814",
+        "artifact-check.json": "c3ee942ef04f317c81e4382a7533bb4c9578310ba1205ae93bfe279c3d1445b5",
+        "skill-integrity-check.json": "0cd9140b31cb54b0e4e73f253e76c52b8e6d8988a49376bc8e4571c8386f46b7",
+        "events.jsonl": "847ae2a9cfa73b3698691fc1978f86ab92d772b5aa2bdffaab2ec675a508dc7b"
+      }
+    }
+  ],
+  "diagnosticFinalizer": {
+    "acceptedAsRunPass": false,
+    "purpose": "Determine whether the existing mandatory finalizer corrects the agent omission on a copied artifact.",
+    "originalArtifactsUnchanged": true,
+    "gradePassed": true,
+    "gradeSha256": "e8c4a247380c8faa79d34fc3f207036d24f9f873cfeae17c9a9573a1606f0767",
+    "commands": [
+      "uv run --script skills/d3/scripts/colorset_adapter.py evaluations/runs/d3-treemap-tones-naturalistic-20261003-luna-2/workspace/portfolio-treemap.html projects/treemap-tones/artifacts/diagnostic/naturalistic-2/portfolio-treemap.html --colorset colorset1",
+      "uv run --script skills/d3/scripts/render_d3_svg.py projects/treemap-tones/artifacts/diagnostic/naturalistic-2/portfolio-treemap.html --output projects/treemap-tones/artifacts/diagnostic/naturalistic-2/portfolio-treemap.svg --screenshot projects/treemap-tones/artifacts/diagnostic/naturalistic-2/normalized-960.png --viewport 960x720 --wait-ms 1200",
+      "python skills/d3/scripts/check_palette_contract.py projects/treemap-tones/artifacts/diagnostic/naturalistic-2/portfolio-treemap.html --colorset colorset1",
+      "uv run --script projects/treemap-tones/scripts/inspect_isolated_artifact.py projects/treemap-tones/artifacts/diagnostic/naturalistic-2 --output projects/treemap-tones/artifacts/diagnostic/naturalistic-2/review",
+      "uv run --script projects/treemap-tones/scripts/grade_isolated_artifact.py projects/treemap-tones/artifacts/diagnostic/naturalistic-2/review/render-review.json --case naturalistic --output projects/treemap-tones/artifacts/diagnostic/naturalistic-2/independent-grade.json"
+    ],
+    "result": "The finalizer repairs active palette metadata, shorthand paint and maximum-contrast labels; a fresh export from that normalized HTML passes all four independent states. This proves the corrective operation, not the failed Pi run."
+  },
+  "evaluatorCorrections": [
+    "Separate adjacent text tspan lines when reading visible name/value tokens.",
+    "Enforce responsive viewport overflow on HTML; portable SVG retains intrinsic export dimensions.",
+    "Use viewport screenshots for native SVG after a full-page screenshot timeout; this is an evaluator capture correction."
+  ]
+}

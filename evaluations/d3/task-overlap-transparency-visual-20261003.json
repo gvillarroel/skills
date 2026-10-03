@@ -1,0 +1,478 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-03",
+  "patternId": "d3-task-overlap-dense-cs1",
+  "outcome": "pass",
+  "authorizedScope": "Use semantic transparency on overlapping set regions so intersections remain understandable, preserving opaque ordinary category nodes, task dots and label faces.",
+  "change": "The nine scope circles use their existing saturated colorset tokens at fill-opacity 0.28, declare data-opacity-role=semantic, and have no decorative stroke. The reusable standalone recipe mirrors this renderer, documents source-over set-membership meaning and generates local layout data outside the read-only skill bundle.",
+  "baseline": {
+    "states": 1,
+    "findings": 18,
+    "browserErrors": [],
+    "classification": "All nine regions lacked a semantic opacity declaration and were opaque. Later circles therefore hid earlier membership intersections."
+  },
+  "native": {
+    "states": 12,
+    "matrix": "1440/390 px by normal/reduced motion by initial settled state and two replays",
+    "clean": true,
+    "findings": 0,
+    "regionChecks": 108,
+    "taskDotsPerState": 100,
+    "taskLabelsPerState": 100,
+    "scopeLabelsPerState": 9,
+    "totalTextLabelsPerState": 113,
+    "minimumLabelContrast": 11.90831784428423,
+    "allLabelsMaximumContrastBlackWhite": true,
+    "opaqueTaskDotsAndLabelFaces": true,
+    "regionPaint": [
+      {
+        "id": "backlog",
+        "cx": 330,
+        "cy": 135,
+        "r": 74,
+        "fill": "#9e1b32",
+        "alpha": 0.28,
+        "semantic": true,
+        "stroke": "none"
+      },
+      {
+        "id": "ux",
+        "cx": 412,
+        "cy": 100,
+        "r": 66,
+        "fill": "#696969",
+        "alpha": 0.28,
+        "semantic": true,
+        "stroke": "none"
+      },
+      {
+        "id": "api",
+        "cx": 506,
+        "cy": 135,
+        "r": 76,
+        "fill": "#4f4f4f",
+        "alpha": 0.28,
+        "semantic": true,
+        "stroke": "none"
+      },
+      {
+        "id": "security",
+        "cx": 594,
+        "cy": 100,
+        "r": 58,
+        "fill": "#9e1b32",
+        "alpha": 0.28,
+        "semantic": true,
+        "stroke": "none"
+      },
+      {
+        "id": "docs",
+        "cx": 276,
+        "cy": 215,
+        "r": 62,
+        "fill": "#828282",
+        "alpha": 0.28,
+        "semantic": true,
+        "stroke": "none"
+      },
+      {
+        "id": "data",
+        "cx": 412,
+        "cy": 206,
+        "r": 86,
+        "fill": "#696969",
+        "alpha": 0.28,
+        "semantic": true,
+        "stroke": "none"
+      },
+      {
+        "id": "qa",
+        "cx": 524,
+        "cy": 228,
+        "r": 74,
+        "fill": "#6d1222",
+        "alpha": 0.28,
+        "semantic": true,
+        "stroke": "none"
+      },
+      {
+        "id": "release",
+        "cx": 340,
+        "cy": 280,
+        "r": 68,
+        "fill": "#363636",
+        "alpha": 0.28,
+        "semantic": true,
+        "stroke": "none"
+      },
+      {
+        "id": "ops",
+        "cx": 600,
+        "cy": 290,
+        "r": 60,
+        "fill": "#4f4f4f",
+        "alpha": 0.28,
+        "semantic": true,
+        "stroke": "none"
+      }
+    ],
+    "clearIntersectionSamples": 36,
+    "sampleMultiplicities": [
+      1,
+      2,
+      3
+    ],
+    "maximumPixelChannelError": 0.745599999999996,
+    "pixelTolerance": 5,
+    "mobileCapture": "The existing wide-card horizontal scroll container is centered; the SVG/layout/CSS are unchanged."
+  },
+  "dataPreservation": {
+    "clean": true,
+    "nativeGeometryComparisons": 1308,
+    "fields": "Nine set IDs/centers/radii and one hundred task IDs/positions/memberships/labels/leader endpoints per state; collision/crossing/membership buckets unchanged.",
+    "invariants": {
+      "membershipBuckets": {
+        "1": 36,
+        "2": 36,
+        "3+": 28
+      },
+      "labelOverlapCount": 0,
+      "labelCircleOverlapCount": 0,
+      "labelDotOverlapCount": 0,
+      "labelLeaderOverlapCount": 83,
+      "leaderCrossingCount": 39,
+      "sameColorLeaderCrossingCount": 0
+    },
+    "regeneratedLayoutByteMatchesPublished": true
+  },
+  "portableSvg": {
+    "clean": true,
+    "exportPreparationStates": 4,
+    "deliveryStates": 4,
+    "maximumPixelChannelError": 0.745599999999996,
+    "minimumLabelContrast": 11.90831784428423,
+    "serialization": "XMLSerializer supplies the SVG namespace; inherited text font family/size/weight are materialized from the live browser. Scope alpha and native SMIL remain intact."
+  },
+  "productionSvg": {
+    "clean": true,
+    "renderer": "skills/d3/scripts/render_d3_svg.py",
+    "deliveryStates": 4,
+    "maximumPixelChannelError": 0.745599999999996,
+    "minimumLabelContrast": 11.90831784428423,
+    "source": "projects/task-overlap-transparency/artifacts/production-export/dense-overlap.svg"
+  },
+  "negativeControls": {
+    "controls": [
+      {
+        "name": "opaque-set-regions",
+        "rejected": true,
+        "findings": [
+          "backlog: expected readable semantic alpha .28, found 1.",
+          "ux: expected readable semantic alpha .28, found 1.",
+          "api: expected readable semantic alpha .28, found 1.",
+          "security: expected readable semantic alpha .28, found 1.",
+          "docs: expected readable semantic alpha .28, found 1.",
+          "data: expected readable semantic alpha .28, found 1.",
+          "qa: expected readable semantic alpha .28, found 1.",
+          "release: expected readable semantic alpha .28, found 1.",
+          "ops: expected readable semantic alpha .28, found 1.",
+          "UX: label is not maximum-contrast black/white over #696969.",
+          "UX: label contrast is below 4.5:1.",
+          "Data: label is not maximum-contrast black/white over #696969.",
+          "Data: label contrast is below 4.5:1.",
+          "QA: label is not maximum-contrast black/white over #6d1222.",
+          "QA: label contrast is below 4.5:1."
+        ]
+      },
+      {
+        "name": "missing-semantic-declaration",
+        "rejected": true,
+        "findings": [
+          "backlog: semantic opacity is undeclared.",
+          "backlog: expected readable semantic alpha .28, found 1."
+        ]
+      },
+      {
+        "name": "translucent-task-dot",
+        "rejected": true,
+        "findings": [
+          "T001: a task dot or label face became translucent."
+        ]
+      },
+      {
+        "name": "wrong-label-contrast",
+        "rejected": true,
+        "findings": [
+          "T001: label is not maximum-contrast black/white over #ffffff.",
+          "T001: label contrast is below 4.5:1."
+        ]
+      },
+      {
+        "name": "off-palette-region-fill",
+        "rejected": true,
+        "findings": [
+          "backlog: authored region fill is outside colorset1."
+        ]
+      }
+    ],
+    "allRejected": true,
+    "ordinaryOpaqueProbe": {
+      "ordinaryAlpha": 1,
+      "semanticAlphas": [
+        0.28,
+        0.28,
+        0.28,
+        0.28,
+        0.28,
+        0.28,
+        0.28,
+        0.28,
+        0.28
+      ]
+    },
+    "scope": "Only the nine declared regions preserve alpha. A new ordinary unmarked filled rectangle is finalized to alpha 1; removing a semantic marker or making task dots translucent is rejected."
+  },
+  "colorset2Regression": {
+    "states": 1,
+    "clean": true,
+    "findings": [],
+    "scope": "One desktop settled smoke state because the shared renderer also serves colorset2."
+  },
+  "treemapRegression": {
+    "states": 12,
+    "clean": true,
+    "findings": 0,
+    "geometryComparison": {
+      "clean": true,
+      "states": 12,
+      "findings": []
+    },
+    "rendererByteIdenticalAfterLfNormalization": true,
+    "rendererLfSha256": "e5f3434c35fd2ac4e0632360e67836d44024443d52589e1f584d5f4e0d076bfc",
+    "priorVisualReport": "evaluations/d3/treemap-tones-visual-20261003.json",
+    "priorReportUnchanged": true,
+    "note": "The earlier 36-state report remains bound to its old full-gallery hash. This new 12-state CS1 regression verifies the final combined source."
+  },
+  "recipeExcerptMatchesRendererAfterLfNormalization": true,
+  "manualReview": {
+    "independent": true,
+    "outcome": "pass for the scoped transparency, paint, contrast and data-preservation checks",
+    "inspected": [
+      "Baseline desktop card",
+      "Final desktop card",
+      "Final mobile center scroll view",
+      "Standalone SVG at desktop and mobile size",
+      "Production renderer PNG and standalone production SVG"
+    ],
+    "finding": "Transparency reveals the shared lens-shaped intersections while task dots remain visible. Labels use black on the actual pale composited regions or opaque white faces, and the region fills remain borderless. The final exporter preserves inherited caption font sizes instead of enlarging the footer.",
+    "existingFixtureLimit": {
+      "description": "The bottom summary caption contacts the T095 task label in the inherited fixture. The contact exists in baseline and final screenshots and is also visible in the production SVG. It is not caused by transparency and remains unchanged because this pass preserves original task/label geometry. This report does not claim every fixture text pair is collision-free.",
+      "baselineScreenshot": "projects/task-overlap-transparency/artifacts/baseline/overlap-1440-normal-0-card.png",
+      "finalScreenshot": "projects/task-overlap-transparency/artifacts/final-cs1/overlap-1440-normal-0-card.png",
+      "productionScreenshot": "projects/task-overlap-transparency/artifacts/production-export/dense-overlap.png"
+    },
+    "limits": "Finite named fixture states are covered. Native mobile dense diagrams retain their existing horizontal scrolling layout; fitting every task label simultaneously into 390 pixels is outside this transparency change. The preserved generated collision counts refer to the task-label model, not an audit of every caption in the SVG."
+  },
+  "retainedVerifierDevelopment": [
+    {
+      "path": "projects/task-overlap-transparency/artifacts/baseline/verification-scanner-v1.json",
+      "classification": "Scanner-only false positives: exact double equality with SVG float32 coordinate storage flagged 99 unchanged task coordinates. Final tolerance is 0.001 SVG units; the true baseline has 18 alpha/declaration findings."
+    },
+    {
+      "path": "projects/task-overlap-transparency/artifacts/final-cs1-scanner-v2/verification.json",
+      "classification": "Scanner-only pixel framing error: samples outside the horizontally clipped mobile SVG read blank page paint. Final capture uses the actual wide-card scroll container."
+    },
+    {
+      "classification": "One standalone inspector extension initially destructured Playwright null arguments; corrected to an optional options object before the final passing run."
+    },
+    {
+      "path": "projects/task-overlap-transparency/artifacts/final-cs1/overlap-1440-normal-0.svg",
+      "classification": "Early helper export omitted SVG namespace. Retained as failed export input; XMLSerializer supplies the namespace for accepted exports."
+    },
+    {
+      "path": "projects/task-overlap-transparency/artifacts/export-source/overlap-1440-normal-0.svg",
+      "classification": "Initial namespace-correct raw export lost inherited caption font sizes. Numerical paint tests passed, but manual review rejected enlarged footer text. Final font-materialized exports and the production renderer pass."
+    }
+  ],
+  "commands": [
+    "uv run --script projects/task-overlap-transparency/scripts/verify_overlap.py projects/task-overlap-transparency/artifacts/baseline-source/d3-animated-svg-cs1/index.html --output-directory projects/task-overlap-transparency/artifacts/baseline --baseline --quick",
+    "uv run --script projects/task-overlap-transparency/scripts/patch_overlap.py",
+    "uv run --script projects/task-overlap-transparency/scripts/verify_overlap.py skills/d3/assets/examples/d3-animated-svg-cs1/index.html --output-directory projects/task-overlap-transparency/artifacts/final-cs1",
+    "uv run --script projects/task-overlap-transparency/scripts/verify_overlap.py skills/d3/assets/examples/d3-animated-svg-cs1/index.html --output-directory projects/task-overlap-transparency/artifacts/export-source-final --replays 1",
+    "uv run --script projects/task-overlap-transparency/scripts/check_overlap_delivery.py --source skills/d3/assets/examples/d3-animated-svg-cs1/index.html --reference projects/task-overlap-transparency/artifacts/final-cs1/verification.json --baseline projects/task-overlap-transparency/artifacts/baseline/verification.json --export-directory projects/task-overlap-transparency/artifacts/export-source-final --output-directory projects/task-overlap-transparency/artifacts/delivery-final",
+    "uv run --script skills/d3/scripts/render_d3_svg.py skills/d3/assets/examples/d3-animated-svg-cs1/index.html --selector '#task-overlap-dense' --output projects/task-overlap-transparency/artifacts/production-export/dense-overlap.svg --screenshot projects/task-overlap-transparency/artifacts/production-export/dense-overlap.png --wait-ms 4500 --viewport 1440x1100",
+    "uv run --script projects/task-overlap-transparency/scripts/check_overlap_delivery.py --source skills/d3/assets/examples/d3-animated-svg-cs1/index.html --reference projects/task-overlap-transparency/artifacts/final-cs1/verification.json --baseline projects/task-overlap-transparency/artifacts/baseline/verification.json --svg projects/task-overlap-transparency/artifacts/production-export/dense-overlap.svg --output-directory projects/task-overlap-transparency/artifacts/production-delivery",
+    "uv run --script projects/task-overlap-transparency/scripts/verify_overlap.py skills/d3/assets/examples/d3-animated-svg-colorset2/index.html --output-directory projects/task-overlap-transparency/artifacts/cs2-smoke --quick",
+    "uv run --script skills/d3/scripts/layout_task_overlap_labels.py --output projects/task-overlap-transparency/artifacts/layout/task-overlap-layouts.js",
+    "uv run --script projects/treemap-tones/scripts/verify_treemap.py skills/d3/assets/examples/d3-animated-svg-cs1/index.html --output-directory projects/task-overlap-transparency/artifacts/treemap-regression --compare-reference projects/treemap-tones/artifacts/baseline/verification.json"
+  ],
+  "sources": [
+    {
+      "path": "projects/task-overlap-transparency/artifacts/baseline-source/d3-animated-svg/gallery.js",
+      "sha256": "298e3eaf24b2d3553711931a76e95fcdf08a7d0c1ca583a9a20ff64a946a5934",
+      "bytes": 775681
+    },
+    {
+      "path": "skills/d3/assets/examples/d3-animated-svg/gallery.js",
+      "sha256": "ef6c231c8f410c0e665a0ba40aca6610fff55a1a9d3238151774f1e1915ff89a",
+      "bytes": 775879
+    },
+    {
+      "path": "skills/d3/references/patterns/task-overlap-dense.md",
+      "sha256": "a1dd3d5eda945fe3e849eced70b9830a414121243d2150039ff1d14326f84ac5",
+      "bytes": 13244
+    },
+    {
+      "path": "skills/d3/assets/examples/d3-animated-svg/task-overlap-layouts.js",
+      "sha256": "333912a89479a8020f1f2279ed3e3dfa32a37f8809c5c0c1bb3540262d3b0419",
+      "bytes": 66152
+    },
+    {
+      "path": "skills/d3/assets/examples/d3-animated-svg/solid-style.js",
+      "sha256": "755e27738f2841a2f2abb9ff92017c515a5bd6d8326a9d3609519160673ee66d",
+      "bytes": 27423
+    },
+    {
+      "path": "skills/d3/assets/templates/solid-style.js",
+      "sha256": "755e27738f2841a2f2abb9ff92017c515a5bd6d8326a9d3609519160673ee66d",
+      "bytes": 27423
+    },
+    {
+      "path": "skills/d3/scripts/render_d3_svg.py",
+      "sha256": "213b3c1ea1ec172c6869616ac45b9157a49f18167ceee1d3279789fe7f2aeb3a",
+      "bytes": 9261
+    },
+    {
+      "path": "skills/d3/scripts/layout_task_overlap_labels.py",
+      "sha256": "0fd72945cf65f6714c606aa7240a1a4d6539e19600f0bef13fe7e404c2b714ca",
+      "bytes": 24049
+    },
+    {
+      "path": "projects/task-overlap-transparency/scripts/verify_overlap.py",
+      "sha256": "5913d35999822954e6ed700870f8fa2f0961bc97040681278d1dc7fe9f5d3a60",
+      "bytes": 12900
+    },
+    {
+      "path": "projects/task-overlap-transparency/scripts/check_overlap_delivery.py",
+      "sha256": "6d4c4b05cfb9148bb8b7877d8f4a0c01cba854e460cf3fd12c88805d6e13557a",
+      "bytes": 8214
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "projects/task-overlap-transparency/artifacts/baseline/verification.json",
+      "sha256": "ee2f45abc3da2b967db32e4ffd76efeb7e063fd99b9f6d7963ef6c0cc3a36d5b",
+      "bytes": 61061
+    },
+    {
+      "path": "projects/task-overlap-transparency/artifacts/final-cs1/verification.json",
+      "sha256": "1237a513603e156c56ca177d53b0f0434f0f8c4d206d62a0a8f7b70a3ff1ee72",
+      "bytes": 718967
+    },
+    {
+      "path": "projects/task-overlap-transparency/artifacts/export-source-final/verification.json",
+      "sha256": "1dd033aee421f21e16e70dd94f76cecac3187d4b2ab4cc97453ba0651a304d6d",
+      "bytes": 239759
+    },
+    {
+      "path": "projects/task-overlap-transparency/artifacts/delivery-final/delivery.json",
+      "sha256": "81128e8e77891270630a00b043ebd2141263bc4fcc37d951f14cb7f9de3701e8",
+      "bytes": 242309
+    },
+    {
+      "path": "projects/task-overlap-transparency/artifacts/production-delivery/delivery.json",
+      "sha256": "73d4608d3f98d4d7a27763da637e7934d4fcd815e26c7a1120714774edc4ba1b",
+      "bytes": 242269
+    },
+    {
+      "path": "projects/task-overlap-transparency/artifacts/cs2-smoke/verification.json",
+      "sha256": "2a82269eefd3968fcef2da48531fbd35512d8776c38bf03f56d064da6b953d46",
+      "bytes": 60149
+    },
+    {
+      "path": "projects/task-overlap-transparency/artifacts/treemap-regression/verification.json",
+      "sha256": "ee7af8d86672c2ab94cac321718b882b3d5cff6f47c9e82e21e0f1b41c591055",
+      "bytes": 177172
+    },
+    {
+      "path": "projects/task-overlap-transparency/artifacts/baseline/verification-scanner-v1.json",
+      "sha256": "a8c7d8de40f4421c51b066309a71c6b67976688ef031db66b0d312c52f9fe294",
+      "bytes": 65085
+    },
+    {
+      "path": "projects/task-overlap-transparency/artifacts/final-cs1-scanner-v2/verification.json",
+      "sha256": "cf827336207f1bdc074d27bc2af7eafdc774ade18f705536223a17952d32083b",
+      "bytes": 720780
+    },
+    {
+      "path": "projects/task-overlap-transparency/artifacts/layout/task-overlap-layouts.js",
+      "sha256": "333912a89479a8020f1f2279ed3e3dfa32a37f8809c5c0c1bb3540262d3b0419",
+      "bytes": 66152
+    },
+    {
+      "path": "projects/task-overlap-transparency/artifacts/production-export/dense-overlap.svg",
+      "sha256": "151367e484365b3a0f9df7c3e6882e1cf13afbc516782ac7a0ba00899c2151ce",
+      "bytes": 649251
+    },
+    {
+      "path": "projects/task-overlap-transparency/artifacts/production-export/dense-overlap.png",
+      "sha256": "c5f34cad34799eda4072e3ad07e45f1428cbf02381d9c640dbf92f0e31cae3d0",
+      "bytes": 190952
+    },
+    {
+      "path": "projects/task-overlap-transparency/artifacts/baseline/overlap-1440-normal-0-card.png",
+      "sha256": "850f11f03efb8ac8352a715e9e17e4048a768cb81f8e918f58c8aa3fd29d25a9",
+      "bytes": 200089
+    },
+    {
+      "path": "projects/task-overlap-transparency/artifacts/final-cs1/overlap-1440-normal-0-card.png",
+      "sha256": "d64413b7cd0a2cc9ab77967d490eedf705a437bc693c3a12fd1e3c0569538c4a",
+      "bytes": 202329
+    },
+    {
+      "path": "projects/task-overlap-transparency/artifacts/final-cs1/overlap-390-normal-0-card.png",
+      "sha256": "f3c11801f9c7341fef017b8dbf36f06a5b9fa715f3df7ce2d20361a3f9cb22aa",
+      "bytes": 81457
+    },
+    {
+      "path": "projects/task-overlap-transparency/artifacts/export-source-final/overlap-1440-normal-0.svg",
+      "sha256": "5a8ad287e401377e25445f8c641f4d125036f54685d2ceb3c66cb02a895cc016",
+      "bytes": 209957
+    },
+    {
+      "path": "projects/task-overlap-transparency/artifacts/export-source-final/overlap-1440-reduced-0.svg",
+      "sha256": "5a8ad287e401377e25445f8c641f4d125036f54685d2ceb3c66cb02a895cc016",
+      "bytes": 209957
+    },
+    {
+      "path": "projects/task-overlap-transparency/artifacts/export-source-final/overlap-390-normal-0.svg",
+      "sha256": "5a8ad287e401377e25445f8c641f4d125036f54685d2ceb3c66cb02a895cc016",
+      "bytes": 209957
+    },
+    {
+      "path": "projects/task-overlap-transparency/artifacts/export-source-final/overlap-390-reduced-0.svg",
+      "sha256": "5a8ad287e401377e25445f8c641f4d125036f54685d2ceb3c66cb02a895cc016",
+      "bytes": 209957
+    },
+    {
+      "path": "projects/task-overlap-transparency/artifacts/production-delivery/export-1440-normal.png",
+      "sha256": "a50d680c2e87c4d9a96f192bc1b844c5bf709eb0b1e97cf51ed05fd294bb92f7",
+      "bytes": 330760
+    },
+    {
+      "path": "projects/task-overlap-transparency/artifacts/production-delivery/export-1440-reduced.png",
+      "sha256": "8ee4a2605aba77a69956be37089a7a5f2e67e9a808e242edea469b1631999a97",
+      "bytes": 330739
+    },
+    {
+      "path": "projects/task-overlap-transparency/artifacts/production-delivery/export-390-normal.png",
+      "sha256": "bdd6e45a6bfafde54a3564cd21fadc9356d399abe4a8fab330f10eec684802bb",
+      "bytes": 56583
+    },
+    {
+      "path": "projects/task-overlap-transparency/artifacts/production-delivery/export-390-reduced.png",
+      "sha256": "bdd6e45a6bfafde54a3564cd21fadc9356d399abe4a8fab330f10eec684802bb",
+      "bytes": 56583
+    }
+  ]
+}

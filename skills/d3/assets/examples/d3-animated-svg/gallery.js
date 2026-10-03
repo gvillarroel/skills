@@ -1423,21 +1423,52 @@
   }
 
   function renderTreemap() {
-    const svg = prepareSvg("treemap", "Treemap", "D3 treemap layout showing nested area allocation.");
+    const svg = prepareSvg("treemap", "Treemap", "D3 treemap layout showing nested area allocation. Stepped solid tones distinguish siblings; cell area encodes value.");
     const root = d3.hierarchy(hierarchyData()).sum(d => d.value || 0).sort((a, b) => b.value - a.value);
     d3.treemap().size([width - 48, height - 56]).paddingOuter(5).paddingTop(20).paddingInner(3).round(true)(root);
     const g = svg.append("g").attr("transform", "translate(24,28)");
     const color = d3.scaleOrdinal(root.children.map(d => d.data.name), colors);
-    const branchName = d => d.depth === 1 ? d.data.name : d.parent.data.name;
+    const branchName = d => d.ancestors().find(node => node.depth === 1).data.name;
+    const familyTones = new Map(activeColorset === "colorset1" ? [
+      [palette.blue, [palette.redHover, palette.red, palette.error]],
+      [palette.orange, [palette.gray700, palette.gray500, palette.gray300]],
+      [palette.green, [palette.gray800, palette.gray600, palette.gray400]]
+    ] : [
+      [palette.blue, [palette.blueHover, palette.blue, palette.cyan]],
+      [palette.orange, [palette.orangeHover, palette.orange, palette.warning]],
+      [palette.green, [palette.greenHover, palette.green, palette.success]]
+    ]);
+    const toneIndex = d => {
+      const siblings = d.parent.children;
+      return siblings.length === 1 ? 1 : Math.round(siblings.indexOf(d) * 2 / (siblings.length - 1));
+    };
+    const cellFill = d => {
+      const base = color(branchName(d));
+      return (familyTones.get(base) || [palette.gray800, palette.gray500, palette.gray200])[toneIndex(d)];
+    };
+    const textFor = fill => {
+      const channels = [1, 3, 5].map(i => parseInt(fill.slice(i, i + 2), 16) / 255)
+        .map(v => v <= .04045 ? v / 12.92 : ((v + .055) / 1.055) ** 2.4);
+      const luminance = channels.reduce((sum, value, i) => sum + value * [.2126, .7152, .0722][i], 0);
+      return (luminance + .05) / .05 >= 1.05 / (luminance + .05) ? palette.black : palette.white;
+    };
     const nodes = g.selectAll("g").data(root.descendants().filter(d => d.depth)).join("g")
+      .attr("class", d => `treemap-node ${d.children ? "treemap-parent" : "treemap-leaf"}`)
+      .attr("data-name", d => d.data.name).attr("data-branch", branchName).attr("data-value", d => d.value)
+      .attr("data-text-backing", d => d.children ? ".treemap-branch-header" : ".treemap-leaf-cell")
       .attr("transform", d => `translate(${d.x0},${d.y0})`);
-    nodes.append("rect").attr("width", d => Math.max(0, d.x1 - d.x0)).attr("height", d => Math.max(0, d.y1 - d.y0))
-      .attr("rx", 3).attr("fill", d => color(branchName(d))).attr("fill-opacity", 1)
-      .attr("stroke", "#fff");
+    nodes.append("rect").attr("class", d => d.children ? "treemap-branch-backing" : "treemap-leaf-cell")
+      .attr("width", d => Math.max(0, d.x1 - d.x0)).attr("height", d => Math.max(0, d.y1 - d.y0))
+      .attr("data-tone-index", d => d.children ? null : toneIndex(d))
+      .attr("rx", 3).attr("fill", d => d.children ? palette.surface : cellFill(d)).attr("fill-opacity", 1)
+      .attr("stroke", "none");
+    nodes.filter(d => d.children).append("rect").attr("class", "treemap-branch-header")
+      .attr("width", d => Math.max(0, d.x1 - d.x0)).attr("height", 18).attr("rx", 3)
+      .attr("fill", d => color(branchName(d))).attr("stroke", "none");
     nodes.filter(d => d.children && (d.x1 - d.x0) > 52 && (d.y1 - d.y0) > 22).append("text")
       .attr("class", "treemap-parent-label")
       .attr("x", 7).attr("y", 15)
-      .attr("fill", palette.ink)
+      .attr("fill", d => textFor(color(branchName(d))))
       .attr("stroke", "none")
       .attr("font-size", 12)
       .attr("font-weight", 800)
@@ -1445,7 +1476,7 @@
     nodes.filter(d => !d.children && (d.x1 - d.x0) > 52 && (d.y1 - d.y0) > 24).append("text")
       .attr("class", "treemap-leaf-label")
       .attr("x", 7).attr("y", 17)
-      .attr("fill", d => branchName(d) === "Create" ? palette.gray900 : palette.surface)
+      .attr("fill", d => textFor(cellFill(d)))
       .attr("stroke", "none")
       .attr("font-size", 12)
       .attr("font-weight", 760)
@@ -2864,7 +2895,7 @@
 
   function renderAsymmetricTaskOverlapSaturated() {
     const layout = window.D3_TASK_OVERLAP_LAYOUTS && window.D3_TASK_OVERLAP_LAYOUTS.saturated;
-    const svg = prepareSvg("task-overlap-dense", "Saturated task overlap", "Nine asymmetric scope circles with 100 task dots, external collision-audited labels, and direct leader lines colored to reduce same-color crossings.");
+    const svg = prepareSvg("task-overlap-dense", "Saturated task overlap", "Nine asymmetric scope circles use semantic transparency to reveal shared set membership. The 100 task dots and external collision-audited labels stay opaque; direct leader lines preserve each task's associations.");
     if (!layout) {
       svg.append("text")
         .attr("class", "mark-label")
@@ -2880,6 +2911,8 @@
       .attr("viewBox", `0 0 ${svgWidth} ${svgHeight}`)
       .attr("data-target-count", layout.targetCount)
       .attr("data-circle-count", layout.circleCount)
+      .attr("data-overlap-opacity", .28)
+      .attr("data-overlap-encoding", "source-over-alpha-set-membership")
       .attr("data-label-count", layout.tasks.length)
       .attr("data-label-algorithm", layout.labelAlgorithm)
       .attr("data-label-overlap-count", layout.labelOverlapCount)
@@ -2929,11 +2962,10 @@
       .attr("data-set-id", d => d.id)
       .attr("cx", d => d.cx)
       .attr("cy", d => d.cy)
-      .attr("fill", d => d.fillColor)
-      .attr("fill-opacity", 1)
-      .attr("stroke", d => d.strokeColor)
-      .attr("stroke-width", 1.7)
-      .attr("stroke-opacity", .78);
+      .attr("fill", d => d.strokeColor)
+      .attr("data-opacity-role", "semantic")
+      .attr("fill-opacity", .28)
+      .attr("stroke", "none");
     grow(overlapCircles, "r", 4, d => d.r, .05, .7);
 
     const circleLabels = svg.append("g")
@@ -3015,7 +3047,8 @@
       .attr("data-label-lane", d => d.labelLane)
       .attr("data-label-side", d => d.labelSide)
       .attr("data-label-length-bucket", d => d.labelLengthBucket)
-      .attr("data-label-font-size", d => d.labelFontSize || layout.labelFontSize);
+      .attr("data-label-font-size", d => d.labelFontSize || layout.labelFontSize)
+      .attr("data-text-backing", ".task-label-bg");
 
     const labelBoxes = labelGroups.append("rect")
       .attr("class", "task-label-bg")

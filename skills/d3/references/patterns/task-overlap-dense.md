@@ -3,6 +3,7 @@
 ## Contents
 
 - [Reuse Contract](#reuse-contract)
+- [Semantic transparency and standalone input](#semantic-transparency-and-standalone-input)
 - [Source Excerpt](#source-excerpt)
 
 - **Pattern ID:** `d3-task-overlap-dense`
@@ -19,6 +20,55 @@
 - Use SVG-native animation for standalone output; do not leave runtime D3 or CDN dependencies in a self-contained deliverable.
 - Include an SVG `<title>`, `<desc>`, stable `viewBox`, and final-state geometry.
 
+## Semantic transparency and standalone input
+
+Use the scope regions as the explicit exception to opaque categorical fills:
+their intersections encode shared set membership. Paint each region with its
+existing saturated palette token, `fill-opacity="0.28"`,
+`data-opacity-role="semantic"`, and `stroke="none"`. Keep task dots and
+external label faces opaque and borderless. Do not apply semantic opacity to
+the whole SVG or to the labels, controls, legends or unrelated filled marks.
+Keep the exact set geometry, tasks, memberships, leader endpoints and IDs.
+
+Generate the deterministic inline layout without reading an example fixture:
+
+```text
+uv run --script <d3-skill>/scripts/layout_task_overlap_labels.py --output <owned-output>/task-overlap-layouts.js
+```
+
+Always supply `--output` outside the read-only skill bundle. Load that small
+generated data file before rendering, or inline its assignment in the final
+HTML. The excerpt consumes `window.D3_TASK_OVERLAP_LAYOUTS.saturated`. For a
+portable SVG, export the rendered settled geometry; do not leave that data
+assignment as an external runtime dependency.
+
+For custom HTML, complete the finalizer before the first palette check or SVG
+export. Write the draft to an owned scratch path, and produce the requested
+HTML through the adapter; do not treat raw hand-authored paint as finalized.
+
+```text
+uv run --script <d3-skill>/scripts/colorset_adapter.py <owned-scratch>/draft.html <requested.html> --colorset colorset1
+python <d3-skill>/scripts/check_self_contained_html.py <requested.html>
+python <d3-skill>/scripts/check_palette_contract.py <requested.html> --colorset colorset1
+uv run --script <d3-skill>/scripts/render_d3_svg.py <requested.html> --output <requested.svg> --screenshot <owned-scratch>/overlap.png --wait-ms 2200 --viewport 1440x1200
+python <d3-skill>/scripts/check_palette_contract.py <requested.svg> --colorset colorset1
+```
+
+Use `colorset2` consistently for an explicit extended-palette request. The SVG
+namespace `http://www.w3.org/2000/svg` declares its format and does not make an
+external network request; judge offline behavior by actual dependencies and
+observed browser requests.
+
+Finalize the custom HTML with the bundled colorset adapter, then check computed
+region alpha and source-over intersection paint in the browser and exported
+SVG. Choose each label's exact black or white fill against the actual
+composited backing. A task label declares `.task-label-bg` as its local opaque
+face; scope labels may sit over several transparent regions. Inspect both
+single-region and two/three-region areas at the requested scale, Replay,
+reduced motion and export. Repeated overlap must remain visible instead of
+the last opaque region hiding earlier sets. Do not introduce decorative
+borders or make ordinary category nodes translucent to achieve this effect.
+
 ## Source Excerpt
 
 The excerpt below is the compact renderer source for this pattern. If it references helpers such as `prepareSvg`, `fadeIn`, `grow`, `drawPath`, `palette`, `ramps`, `axisBottom`, or `axisLeft`, read `references/shared-renderer-helpers.md` and recreate only the needed helper behavior in the final artifact.
@@ -26,7 +76,7 @@ The excerpt below is the compact renderer source for this pattern. If it referen
 ```js
 function renderAsymmetricTaskOverlapSaturated() {
     const layout = window.D3_TASK_OVERLAP_LAYOUTS && window.D3_TASK_OVERLAP_LAYOUTS.saturated;
-    const svg = prepareSvg("task-overlap-dense", "Saturated task overlap", "Nine asymmetric scope circles with 100 task dots, external collision-audited labels, and direct leader lines colored to reduce same-color crossings.");
+    const svg = prepareSvg("task-overlap-dense", "Saturated task overlap", "Nine asymmetric scope circles use semantic transparency to reveal shared set membership. The 100 task dots and external collision-audited labels stay opaque; direct leader lines preserve each task's associations.");
     if (!layout) {
       svg.append("text")
         .attr("class", "mark-label")
@@ -42,6 +92,8 @@ function renderAsymmetricTaskOverlapSaturated() {
       .attr("viewBox", `0 0 ${svgWidth} ${svgHeight}`)
       .attr("data-target-count", layout.targetCount)
       .attr("data-circle-count", layout.circleCount)
+      .attr("data-overlap-opacity", .28)
+      .attr("data-overlap-encoding", "source-over-alpha-set-membership")
       .attr("data-label-count", layout.tasks.length)
       .attr("data-label-algorithm", layout.labelAlgorithm)
       .attr("data-label-overlap-count", layout.labelOverlapCount)
@@ -91,11 +143,10 @@ function renderAsymmetricTaskOverlapSaturated() {
       .attr("data-set-id", d => d.id)
       .attr("cx", d => d.cx)
       .attr("cy", d => d.cy)
-      .attr("fill", d => d.fillColor)
-      .attr("data-opacity-role", "semantic").attr("fill-opacity", .18)
-      .attr("stroke", d => d.strokeColor)
-      .attr("stroke-width", 1.7)
-      .attr("stroke-opacity", .78);
+      .attr("fill", d => d.strokeColor)
+      .attr("data-opacity-role", "semantic")
+      .attr("fill-opacity", .28)
+      .attr("stroke", "none");
     grow(overlapCircles, "r", 4, d => d.r, .05, .7);
 
     const circleLabels = svg.append("g")
@@ -177,7 +228,8 @@ function renderAsymmetricTaskOverlapSaturated() {
       .attr("data-label-lane", d => d.labelLane)
       .attr("data-label-side", d => d.labelSide)
       .attr("data-label-length-bucket", d => d.labelLengthBucket)
-      .attr("data-label-font-size", d => d.labelFontSize || layout.labelFontSize);
+      .attr("data-label-font-size", d => d.labelFontSize || layout.labelFontSize)
+      .attr("data-text-backing", ".task-label-bg");
 
     const labelBoxes = labelGroups.append("rect")
       .attr("class", "task-label-bg")
