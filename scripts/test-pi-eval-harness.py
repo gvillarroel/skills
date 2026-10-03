@@ -14,7 +14,7 @@ import os
 import sys
 import tempfile
 import unittest
-from pathlib import Path
+from pathlib import Path, PurePosixPath, PureWindowsPath
 from unittest import mock
 
 
@@ -91,6 +91,41 @@ class RunnerUnitTests(unittest.TestCase):
         self.assertFalse(RUNNER.is_safe_workspace_relative(Path(r"\outside.json")))
         self.assertFalse(RUNNER.is_safe_workspace_relative(Path("outputs/result.json:stream")))
         self.assertTrue(RUNNER.targets_skill_payload(Path("skills/demo-skill/SKILL.md")))
+
+    def test_workspace_path_guard_checks_both_path_flavors(self) -> None:
+        safe = (
+            "outputs/result.json",
+            r"outputs\result.json",
+            "outputs/nested/result.json",
+            r"outputs/nested\result.json",
+        )
+        unsafe = (
+            "",
+            ".",
+            "../outside.json",
+            r"..\outside.json",
+            "outputs/../outside.json",
+            r"outputs\..\outside.json",
+            r"outputs/..\outside.json",
+            r"outputs\../outside.json",
+            "/outside.json",
+            r"\outside.json",
+            "C:/outside.json",
+            r"C:\outside.json",
+            "C:outside.json",
+            r"\\server\share\outside.json",
+            "//server/share/outside.json",
+            r"\\?\C:\outside.json",
+            r"\\.\device\outside.json",
+            "outputs/result.json:stream",
+        )
+        for path_type in (Path, PurePosixPath, PureWindowsPath):
+            for raw in safe:
+                with self.subTest(flavor=path_type.__name__, path=raw):
+                    self.assertTrue(RUNNER.is_safe_workspace_relative(path_type(raw)))
+            for raw in unsafe:
+                with self.subTest(flavor=path_type.__name__, path=raw):
+                    self.assertFalse(RUNNER.is_safe_workspace_relative(path_type(raw)))
 
     def test_nested_value_distinguishes_missing_from_null(self) -> None:
         payload = {"items": [{"value": None}]}
@@ -231,6 +266,33 @@ class RunnerUnitTests(unittest.TestCase):
 
 
 class RunnerIntegrationTests(unittest.TestCase):
+    def test_foreign_output_paths_are_rejected_before_workspace_or_pi(self) -> None:
+        unsafe = (
+            r"\outside.json",
+            r"outputs\..\outside.json",
+            r"outputs/..\outside.json",
+            r"\\server\share\outside.json",
+            "C:outside.json",
+            "/outside.json",
+        )
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            for raw in unsafe:
+                for option in ("--expect-output", "--expect-output-json-field"):
+                    value = raw if option == "--expect-output" else f"{raw}::ok=true"
+                    argv = ["run-pi-skill-eval.py", "demo-skill", "--prompt", "Task", "--run-id", "unsafe-output", option, value]
+                    with (
+                        self.subTest(option=option, path=raw),
+                        mock.patch.object(RUNNER, "repo_root", return_value=root) as locate,
+                        mock.patch.object(RUNNER, "pi_command_prefix") as launch,
+                        mock.patch.object(sys, "argv", argv),
+                        contextlib.redirect_stderr(io.StringIO()),
+                    ):
+                        self.assertEqual(RUNNER.main(), 2)
+                        locate.assert_not_called()
+                        launch.assert_not_called()
+                    self.assertFalse((root / "evaluations/runs/unsafe-output").exists())
+
     def test_invalid_bundle_is_rejected_before_pi_or_workspace_creation(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)

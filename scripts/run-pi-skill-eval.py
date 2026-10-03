@@ -16,7 +16,7 @@ import shutil
 import subprocess
 import sys
 import time
-from pathlib import Path
+from pathlib import Path, PurePath, PurePosixPath, PureWindowsPath
 from typing import Any
 
 
@@ -56,14 +56,15 @@ def repo_root() -> Path:
     return Path(__file__).resolve().parents[1]
 
 
-def is_safe_workspace_relative(path: Path) -> bool:
-    return (
-        path != Path(".")
-        and not path.is_absolute()
-        and not path.drive
-        and not path.root
-        and ".." not in path.parts
-        and all(":" not in part for part in path.parts)
+def is_safe_workspace_relative(path: PurePath) -> bool:
+    # Check both syntaxes: the host Path treats foreign separators as literals.
+    raw = str(path)
+    return all(
+        candidate.parts
+        and not candidate.anchor
+        and ".." not in candidate.parts
+        and all(":" not in part for part in candidate.parts)
+        for candidate in (PurePosixPath(raw), PureWindowsPath(raw))
     )
 
 
