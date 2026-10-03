@@ -1,0 +1,443 @@
+{
+  "date": "2026-10-03",
+  "verifiedAtUtc": "2026-10-03T15:14:42.126758+00:00",
+  "passed": true,
+  "sourceCommit": "eca4f5c1a6cf8ab47289cf3930f075754006b48d",
+  "workflow": {
+    "conclusion": "success",
+    "headSha": "eca4f5c1a6cf8ab47289cf3930f075754006b48d",
+    "jobs": [
+      {
+        "completedAt": "2026-10-03T15:13:53Z",
+        "conclusion": "success",
+        "databaseId": 111230064769,
+        "name": "deploy",
+        "startedAt": "2026-10-03T15:12:51Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-10-03T15:12:56Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-10-03T15:12:52Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-03T15:13:02Z",
+            "conclusion": "success",
+            "name": "Checkout",
+            "number": 2,
+            "startedAt": "2026-10-03T15:12:56Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-03T15:13:04Z",
+            "conclusion": "success",
+            "name": "Install uv",
+            "number": 3,
+            "startedAt": "2026-10-03T15:13:02Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-03T15:13:04Z",
+            "conclusion": "success",
+            "name": "Install Node.js",
+            "number": 4,
+            "startedAt": "2026-10-03T15:13:04Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-03T15:13:11Z",
+            "conclusion": "success",
+            "name": "Validate skills",
+            "number": 5,
+            "startedAt": "2026-10-03T15:13:04Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-03T15:13:11Z",
+            "conclusion": "success",
+            "name": "Test colorset output contract",
+            "number": 6,
+            "startedAt": "2026-10-03T15:13:11Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-03T15:13:13Z",
+            "conclusion": "success",
+            "name": "Test standalone authoring and generated-reviewer validation",
+            "number": 7,
+            "startedAt": "2026-10-03T15:13:11Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-03T15:13:21Z",
+            "conclusion": "success",
+            "name": "Audit runtime and full skill bundles",
+            "number": 8,
+            "startedAt": "2026-10-03T15:13:13Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-03T15:13:22Z",
+            "conclusion": "success",
+            "name": "Validate diagram-type coverage",
+            "number": 9,
+            "startedAt": "2026-10-03T15:13:21Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-03T15:13:23Z",
+            "conclusion": "success",
+            "name": "Check repository payload",
+            "number": 10,
+            "startedAt": "2026-10-03T15:13:22Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-03T15:13:23Z",
+            "conclusion": "success",
+            "name": "Test generated Pages output boundary",
+            "number": 11,
+            "startedAt": "2026-10-03T15:13:23Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-03T15:13:42Z",
+            "conclusion": "success",
+            "name": "Build Pages from skill assets",
+            "number": 12,
+            "startedAt": "2026-10-03T15:13:23Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-03T15:13:42Z",
+            "conclusion": "success",
+            "name": "Validate unified Pages output",
+            "number": 13,
+            "startedAt": "2026-10-03T15:13:42Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-03T15:13:42Z",
+            "conclusion": "success",
+            "name": "Configure Pages",
+            "number": 14,
+            "startedAt": "2026-10-03T15:13:42Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-03T15:13:44Z",
+            "conclusion": "success",
+            "name": "Upload Pages artifact",
+            "number": 15,
+            "startedAt": "2026-10-03T15:13:42Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-03T15:13:51Z",
+            "conclusion": "success",
+            "name": "Deploy Pages",
+            "number": 16,
+            "startedAt": "2026-10-03T15:13:44Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-03T15:13:51Z",
+            "conclusion": "success",
+            "name": "Post Install Node.js",
+            "number": 30,
+            "startedAt": "2026-10-03T15:13:51Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-03T15:13:51Z",
+            "conclusion": "success",
+            "name": "Post Install uv",
+            "number": 31,
+            "startedAt": "2026-10-03T15:13:51Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-03T15:13:51Z",
+            "conclusion": "success",
+            "name": "Post Checkout",
+            "number": 32,
+            "startedAt": "2026-10-03T15:13:51Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-03T15:13:51Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 33,
+            "startedAt": "2026-10-03T15:13:51Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/gvillarroel/skills/actions/runs/37132440216/job/111230064769"
+      }
+    ],
+    "status": "completed",
+    "url": "https://github.com/gvillarroel/skills/actions/runs/37132440216",
+    "workflowName": "Publish GitHub Pages"
+  },
+  "comparisons": [
+    {
+      "path": "index.html",
+      "url": "https://gvillarroel.github.io/skills/",
+      "status": 200,
+      "buildSha256": "a1a009c909aa6614641243365c51a67a3eabd0cce4847030b694663a98c26e14",
+      "publicSha256": "a1a009c909aa6614641243365c51a67a3eabd0cce4847030b694663a98c26e14",
+      "matches": true
+    },
+    {
+      "path": "examples/d3-animated-svg-cs1/index.html",
+      "url": "https://gvillarroel.github.io/skills/examples/d3-animated-svg-cs1/",
+      "status": 200,
+      "buildSha256": "6eba7df3796d62480cd3f9fe5c82a1db44364b7fa3b78d8d1d4885764b01ea0a",
+      "publicSha256": "6eba7df3796d62480cd3f9fe5c82a1db44364b7fa3b78d8d1d4885764b01ea0a",
+      "matches": true
+    },
+    {
+      "path": "examples/d3-animated-svg-colorset2/index.html",
+      "url": "https://gvillarroel.github.io/skills/examples/d3-animated-svg-colorset2/",
+      "status": 200,
+      "buildSha256": "10a37b7134e3e792cb8548ac6b0bc5eac1ca8564ddf9033dd39b93ac52692371",
+      "publicSha256": "10a37b7134e3e792cb8548ac6b0bc5eac1ca8564ddf9033dd39b93ac52692371",
+      "matches": true
+    },
+    {
+      "path": "examples/d3-logo-design/index.html",
+      "url": "https://gvillarroel.github.io/skills/examples/d3-logo-design/",
+      "status": 200,
+      "buildSha256": "d280a57d53eb016366119cf9ea38a6aa10e9f27bed1a67680209771c9287cd7c",
+      "publicSha256": "d280a57d53eb016366119cf9ea38a6aa10e9f27bed1a67680209771c9287cd7c",
+      "matches": true
+    },
+    {
+      "path": "examples/mermaid-max-complexity/index.html",
+      "url": "https://gvillarroel.github.io/skills/examples/mermaid-max-complexity/",
+      "status": 200,
+      "buildSha256": "115a29ef8b9148e0736c1c44ba0df8c1588e798e7029287451317641e6d44a25",
+      "publicSha256": "115a29ef8b9148e0736c1c44ba0df8c1588e798e7029287451317641e6d44a25",
+      "matches": true
+    },
+    {
+      "path": "examples/plantuml-colorset-renderer/index.html",
+      "url": "https://gvillarroel.github.io/skills/examples/plantuml-colorset-renderer/",
+      "status": 200,
+      "buildSha256": "ce4cca9626991b0a957bf48f08ca2c7a9557adc8ad2db03695d955892ba3cd9f",
+      "publicSha256": "ce4cca9626991b0a957bf48f08ca2c7a9557adc8ad2db03695d955892ba3cd9f",
+      "matches": true
+    },
+    {
+      "path": "examples/plantuml-colorset-renderer-cs1/index.html",
+      "url": "https://gvillarroel.github.io/skills/examples/plantuml-colorset-renderer-cs1/",
+      "status": 200,
+      "buildSha256": "6a8fa287f6d84378ee5eaf6e9f8ef7047e523fdf9787f41d564961de16bd54c8",
+      "publicSha256": "6a8fa287f6d84378ee5eaf6e9f8ef7047e523fdf9787f41d564961de16bd54c8",
+      "matches": true
+    },
+    {
+      "path": "examples/echarts-animated-svg/index.html",
+      "url": "https://gvillarroel.github.io/skills/examples/echarts-animated-svg/",
+      "status": 200,
+      "buildSha256": "5e87244e521d7e48f75decec32426d6218543540ca49b7c2b38f8c408480dea9",
+      "publicSha256": "5e87244e521d7e48f75decec32426d6218543540ca49b7c2b38f8c408480dea9",
+      "matches": true
+    },
+    {
+      "path": "examples/procedural-svg-animation/index.html",
+      "url": "https://gvillarroel.github.io/skills/examples/procedural-svg-animation/",
+      "status": 200,
+      "buildSha256": "ddb9236daf9f54eb8831da2308c527f96a9b6eb801bef26ddc416fd83ab00590",
+      "publicSha256": "ddb9236daf9f54eb8831da2308c527f96a9b6eb801bef26ddc416fd83ab00590",
+      "matches": true
+    },
+    {
+      "path": "examples/threejs-animated-3d/index.html",
+      "url": "https://gvillarroel.github.io/skills/examples/threejs-animated-3d/",
+      "status": 200,
+      "buildSha256": "ba36d1030ec332402b766b64217423ae03cecc5b5c39cc6333954a534629cf07",
+      "publicSha256": "ba36d1030ec332402b766b64217423ae03cecc5b5c39cc6333954a534629cf07",
+      "matches": true
+    },
+    {
+      "path": "examples/vectorize-abstract-world-maps/index.html",
+      "url": "https://gvillarroel.github.io/skills/examples/vectorize-abstract-world-maps/",
+      "status": 200,
+      "buildSha256": "1d218a1ac9b4f6aa4751fdf881b570aa3885ca6c4bb5effb5becbff57b8c2fd0",
+      "publicSha256": "1d218a1ac9b4f6aa4751fdf881b570aa3885ca6c4bb5effb5becbff57b8c2fd0",
+      "matches": true
+    },
+    {
+      "path": "examples/compose-synchronized-svg/index.html",
+      "url": "https://gvillarroel.github.io/skills/examples/compose-synchronized-svg/",
+      "status": 200,
+      "buildSha256": "b85e5070375f0835c22d2989be6044b075e0a778742d4fd59566de6cbba10b36",
+      "publicSha256": "b85e5070375f0835c22d2989be6044b075e0a778742d4fd59566de6cbba10b36",
+      "matches": true
+    },
+    {
+      "path": "examples/hierarchy-lens/index.html",
+      "url": "https://gvillarroel.github.io/skills/examples/hierarchy-lens/",
+      "status": 200,
+      "buildSha256": "beef6165236230a630379c7f04bbbfc5637c3464c6c0c9c00c91102360a37718",
+      "publicSha256": "beef6165236230a630379c7f04bbbfc5637c3464c6c0c9c00c91102360a37718",
+      "matches": true
+    },
+    {
+      "path": "examples/usefulcharts-style/index.html",
+      "url": "https://gvillarroel.github.io/skills/examples/usefulcharts-style/",
+      "status": 200,
+      "buildSha256": "118f9e5f1a9ce45e8d5b8312e92aec5a53cd5a00f2afe2588fbb1b555900ec1d",
+      "publicSha256": "118f9e5f1a9ce45e8d5b8312e92aec5a53cd5a00f2afe2588fbb1b555900ec1d",
+      "matches": true
+    },
+    {
+      "path": "examples/ai-concept-videos/index.html",
+      "url": "https://gvillarroel.github.io/skills/examples/ai-concept-videos/",
+      "status": 200,
+      "buildSha256": "68ce97c58f6b82abdcddca123f32ae012de5d9ddcc177ccaca778853c2341961",
+      "publicSha256": "68ce97c58f6b82abdcddca123f32ae012de5d9ddcc177ccaca778853c2341961",
+      "matches": true
+    },
+    {
+      "path": "examples/slidev-echarts/index.html",
+      "url": "https://gvillarroel.github.io/skills/examples/slidev-echarts/",
+      "status": 200,
+      "buildSha256": "6850050af216795ec1e94f040577d8be889947481435383a6987b6fbee52eb52",
+      "publicSha256": "6850050af216795ec1e94f040577d8be889947481435383a6987b6fbee52eb52",
+      "matches": true
+    },
+    {
+      "path": "examples/slidev-animejs/index.html",
+      "url": "https://gvillarroel.github.io/skills/examples/slidev-animejs/",
+      "status": 200,
+      "buildSha256": "9da20bc70932177e82ffa27e7e12c2b8709fee5cdaa3951820918633fa66ef27",
+      "publicSha256": "9da20bc70932177e82ffa27e7e12c2b8709fee5cdaa3951820918633fa66ef27",
+      "matches": true
+    },
+    {
+      "path": "examples/d3-animated-svg/gallery.js",
+      "url": "https://gvillarroel.github.io/skills/examples/d3-animated-svg/gallery.js",
+      "status": 200,
+      "buildSha256": "0673f148d9fba9455649ce41b6d9f2a52b4b0c36e36766f6859737f141c07f00",
+      "publicSha256": "0673f148d9fba9455649ce41b6d9f2a52b4b0c36e36766f6859737f141c07f00",
+      "matches": true
+    },
+    {
+      "path": "examples/d3-animated-svg/gallery-page.css",
+      "url": "https://gvillarroel.github.io/skills/examples/d3-animated-svg/gallery-page.css",
+      "status": 200,
+      "buildSha256": "876094b6c1b0a29edfc89ac8e0e7330172c9a39ed55702766fa35139e3e86ccd",
+      "publicSha256": "876094b6c1b0a29edfc89ac8e0e7330172c9a39ed55702766fa35139e3e86ccd",
+      "matches": true
+    },
+    {
+      "path": "examples/mermaid-max-complexity/gallery.js",
+      "url": "https://gvillarroel.github.io/skills/examples/mermaid-max-complexity/gallery.js",
+      "status": 200,
+      "buildSha256": "91b9518487ef5f9c3be9f421735973eaab0a10c972055874d46121ed67f35fa7",
+      "publicSha256": "91b9518487ef5f9c3be9f421735973eaab0a10c972055874d46121ed67f35fa7",
+      "matches": true
+    },
+    {
+      "path": "examples/mermaid-max-complexity/gallery.css",
+      "url": "https://gvillarroel.github.io/skills/examples/mermaid-max-complexity/gallery.css",
+      "status": 200,
+      "buildSha256": "163fe000e8687e0c634711549c7e00f7ef882975c18560f01316528a6a9eadad",
+      "publicSha256": "163fe000e8687e0c634711549c7e00f7ef882975c18560f01316528a6a9eadad",
+      "matches": true
+    },
+    {
+      "path": "examples/mermaid-max-complexity/gallery.json",
+      "url": "https://gvillarroel.github.io/skills/examples/mermaid-max-complexity/gallery.json",
+      "status": 200,
+      "buildSha256": "9aaabd8ff84a07a9e992be16b247f5b3d90975f0df00efaceb1841df62a8a900",
+      "publicSha256": "9aaabd8ff84a07a9e992be16b247f5b3d90975f0df00efaceb1841df62a8a900",
+      "matches": true
+    },
+    {
+      "path": "examples/mermaid-max-complexity/svg/colorset1/c4.static.svg",
+      "url": "https://gvillarroel.github.io/skills/examples/mermaid-max-complexity/svg/colorset1/c4.static.svg",
+      "status": 200,
+      "buildSha256": "6b061fb3f792648c2da94cfdc1f4da38bb830ab3c3d336c4c0ab86aa37797cf6",
+      "publicSha256": "6b061fb3f792648c2da94cfdc1f4da38bb830ab3c3d336c4c0ab86aa37797cf6",
+      "matches": true
+    },
+    {
+      "path": "examples/mermaid-max-complexity/svg/colorset1/c4.animated.svg",
+      "url": "https://gvillarroel.github.io/skills/examples/mermaid-max-complexity/svg/colorset1/c4.animated.svg",
+      "status": 200,
+      "buildSha256": "7aa0a746a4258687d89d3fac65b4abe9259e585bfa6f9f00390da49a36ddbb03",
+      "publicSha256": "7aa0a746a4258687d89d3fac65b4abe9259e585bfa6f9f00390da49a36ddbb03",
+      "matches": true
+    },
+    {
+      "path": "examples/mermaid-max-complexity/svg/colorset1/treemap.static.svg",
+      "url": "https://gvillarroel.github.io/skills/examples/mermaid-max-complexity/svg/colorset1/treemap.static.svg",
+      "status": 200,
+      "buildSha256": "93cc2c95c6a851da268f40c0249168cea12a07db55fc1c63e1236e35b08fbac4",
+      "publicSha256": "93cc2c95c6a851da268f40c0249168cea12a07db55fc1c63e1236e35b08fbac4",
+      "matches": true
+    },
+    {
+      "path": "examples/mermaid-max-complexity/svg/colorset2/c4.static.svg",
+      "url": "https://gvillarroel.github.io/skills/examples/mermaid-max-complexity/svg/colorset2/c4.static.svg",
+      "status": 200,
+      "buildSha256": "2e7844a975f0c4a766d9bbee013781325dadb665990171fe35024611c3ed9e74",
+      "publicSha256": "2e7844a975f0c4a766d9bbee013781325dadb665990171fe35024611c3ed9e74",
+      "matches": true
+    },
+    {
+      "path": "examples/mermaid-max-complexity/svg/colorset2/c4.animated.svg",
+      "url": "https://gvillarroel.github.io/skills/examples/mermaid-max-complexity/svg/colorset2/c4.animated.svg",
+      "status": 200,
+      "buildSha256": "20643fc1c5e438b29e5b758df93a9cf001c0162b4726b8e9ca1ad654eb0cdbb5",
+      "publicSha256": "20643fc1c5e438b29e5b758df93a9cf001c0162b4726b8e9ca1ad654eb0cdbb5",
+      "matches": true
+    },
+    {
+      "path": "examples/mermaid-max-complexity/svg/colorset2/treemap.static.svg",
+      "url": "https://gvillarroel.github.io/skills/examples/mermaid-max-complexity/svg/colorset2/treemap.static.svg",
+      "status": 200,
+      "buildSha256": "6f2fa93770e75be6fc41301abe81549560c38584c0c29f5e9d5be59588ea04fc",
+      "publicSha256": "6f2fa93770e75be6fc41301abe81549560c38584c0c29f5e9d5be59588ea04fc",
+      "matches": true
+    },
+    {
+      "path": "examples/threejs-animated-3d/assets/index-DG1eC6WR.js",
+      "url": "https://gvillarroel.github.io/skills/examples/threejs-animated-3d/assets/index-DG1eC6WR.js",
+      "status": 200,
+      "buildSha256": "e530644c324d6f37d1694fc17cca1106f78003661384866d45cfc9797abf9213",
+      "publicSha256": "e530644c324d6f37d1694fc17cca1106f78003661384866d45cfc9797abf9213",
+      "matches": true
+    },
+    {
+      "path": "examples/threejs-animated-3d/assets/index-DrIfF5cc.css",
+      "url": "https://gvillarroel.github.io/skills/examples/threejs-animated-3d/assets/index-DrIfF5cc.css",
+      "status": 200,
+      "buildSha256": "b0eb1f524087e9b80e8f74f536b3a518cb62db8e4c53dcfedffeead0720a275f",
+      "publicSha256": "b0eb1f524087e9b80e8f74f536b3a518cb62db8e4c53dcfedffeead0720a275f",
+      "matches": true
+    },
+    {
+      "path": "examples/mermaid-max-complexity/svg/colorset1/architecture.animated.svg",
+      "url": "https://gvillarroel.github.io/skills/examples/mermaid-max-complexity/svg/colorset1/architecture.animated.svg",
+      "status": 200,
+      "buildSha256": "800948d2d5693223ac851de3caf7eeb620c23964260463987637155239e3571c",
+      "publicSha256": "800948d2d5693223ac851de3caf7eeb620c23964260463987637155239e3571c",
+      "matches": true
+    }
+  ],
+  "buildFileCount": 646,
+  "buildRoot": "projects/solid-colorset-style/artifacts/publication/37132440216/pages",
+  "artifactId": 11277118024,
+  "artifactDigest": "sha256:e660f2a2a106bab13edf4a3176e0fc8f2f0a37d5bb9e080e6d0a4e7b56e99d54",
+  "tarSha256": "7815de159721a82574b9af548a1b53bb8973c7deb03c58ea7ecff12655e248ec",
+  "artifactProvenanceVerified": true,
+  "deployStepSucceeded": true
+}

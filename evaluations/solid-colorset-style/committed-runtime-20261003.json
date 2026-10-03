@@ -1,0 +1,522 @@
+{
+  "date": "2026-10-03",
+  "sourceCommit": "eca4f5c1a6cf8ab47289cf3930f075754006b48d",
+  "passed": true,
+  "visualSkillCount": 30,
+  "runtimeFileCount": 9501,
+  "normalizedTextCount": 240,
+  "scope": "Sealed local Pi bytes compared directly with committed Git blobs. UTF-8 CRLF to LF normalization is disclosed; this is not a new Pi trial.",
+  "skills": [
+    {
+      "skill": "ambientcg-material-search",
+      "fileCount": 8,
+      "localRuntimeSha256": "1bbe0afbf455e5b531acc07ca86ed3a02aa582388cc9de9b3cd173c5c710679f",
+      "committedRuntimeSha256": "20c3f39a05424a405629a611987b01a3fc3e6e2885989c46f0df2f221d30cda3",
+      "normalizedTextPaths": [
+        "skills/ambientcg-material-search/SKILL.md",
+        "skills/ambientcg-material-search/assets/palettes/colorsets.json",
+        "skills/ambientcg-material-search/scripts/ambientcg.py",
+        "skills/ambientcg-material-search/scripts/asset_io.py",
+        "skills/ambientcg-material-search/scripts/test_ambientcg.py",
+        "skills/ambientcg-material-search/scripts/test_asset_io.py"
+      ],
+      "sealedLocalRun": "20261003-solid-ambientcg-material-search-support-final"
+    },
+    {
+      "skill": "animated-svg-to-gif",
+      "fileCount": 7,
+      "localRuntimeSha256": "27c42a9457010d66893bcd423ca9ca4700afeb4e4340c5e17cb0edc303fdfb3b",
+      "committedRuntimeSha256": "ff0259cb710e357971fe78b03fa696c5afa76279a722b17cbe1f0629bff3bab5",
+      "normalizedTextPaths": [
+        "skills/animated-svg-to-gif/SKILL.md",
+        "skills/animated-svg-to-gif/assets/palettes/colorsets.json",
+        "skills/animated-svg-to-gif/assets/templates/pulse.animated.svg"
+      ],
+      "sealedLocalRun": "20261003-solid-animated-svg-to-gif-support-final2"
+    },
+    {
+      "skill": "asciinema-real-command-video",
+      "fileCount": 21,
+      "localRuntimeSha256": "e3602a02095879f2c1aeb16f4a1548347965fcfcc21034c34f6512afaf7405a3",
+      "committedRuntimeSha256": "7aab3ef275083dad5fc5e4363151a5bf9cbac2326aa3af19ec370812690af847",
+      "normalizedTextPaths": [
+        "skills/asciinema-real-command-video/SKILL.md",
+        "skills/asciinema-real-command-video/assets/palettes/colorsets.json",
+        "skills/asciinema-real-command-video/references/recording-lifecycle.md"
+      ],
+      "sealedLocalRun": "20261003-solid-asciinema-real-command-video-support-final"
+    },
+    {
+      "skill": "compose-synchronized-svg",
+      "fileCount": 35,
+      "localRuntimeSha256": "e20220f0844702cafe110417abbc818a6e6c731695b48e80c273dde7d5f1d732",
+      "committedRuntimeSha256": "a2aa6e3b4ffa8f2ba67082710e96615aba5dfe51e7707d0f8f43161c19cd40a2",
+      "normalizedTextPaths": [
+        "skills/compose-synchronized-svg/assets/palettes/colorsets.json",
+        "skills/compose-synchronized-svg/references/palette-policy.md",
+        "skills/compose-synchronized-svg/references/semantic-state-contract.md",
+        "skills/compose-synchronized-svg/references/solid-surfaces.md",
+        "skills/compose-synchronized-svg/scripts/compile_synchronized_svg_plan.py",
+        "skills/compose-synchronized-svg/scripts/palette_contract.py",
+        "skills/compose-synchronized-svg/scripts/theme_contract.py"
+      ],
+      "sealedLocalRun": "solid-composition-compose-synchronized-svg-20261003-5"
+    },
+    {
+      "skill": "d3",
+      "fileCount": 288,
+      "localRuntimeSha256": "b6a4839c0a1aad96da170f698a9861beb898c41b6565119615fda22c43769633",
+      "committedRuntimeSha256": "2f5a1c017607388f56ffd1cb1dd5d172060de963571a9c7d9150d66d068bc107",
+      "normalizedTextPaths": [
+        "skills/d3/assets/palettes/colorsets.json",
+        "skills/d3/references/patterns/agent-loop-overlay.md",
+        "skills/d3/references/patterns/ai-line-writing.md",
+        "skills/d3/references/patterns/alluvial.md",
+        "skills/d3/references/patterns/antimeridian-cutting.md",
+        "skills/d3/references/patterns/area-missing-data.md",
+        "skills/d3/references/patterns/attention-tiles.md",
+        "skills/d3/references/patterns/bollinger-bands.md",
+        "skills/d3/references/patterns/bubble-map.md",
+        "skills/d3/references/patterns/chord.md",
+        "skills/d3/references/patterns/circle-pack.md",
+        "skills/d3/references/patterns/circular-bar.md",
+        "skills/d3/references/patterns/cluster-hulls.md",
+        "skills/d3/references/patterns/column-profile.md",
+        "skills/d3/references/patterns/correlogram.md",
+        "skills/d3/references/patterns/creature-stippling.md",
+        "skills/d3/references/patterns/delaunay-mesh.md",
+        "skills/d3/references/patterns/density-radial-collection.md",
+        "skills/d3/references/patterns/difference-chart.md",
+        "skills/d3/references/patterns/directed-chord.md",
+        "skills/d3/references/patterns/dorling.md",
+        "skills/d3/references/patterns/drag-collisions.md",
+        "skills/d3/references/patterns/embedding-neighborhood.md",
+        "skills/d3/references/patterns/er-schema.md",
+        "skills/d3/references/patterns/focus-context.md",
+        "skills/d3/references/patterns/forecast-fan.md",
+        "skills/d3/references/patterns/freehand-trace.md",
+        "skills/d3/references/patterns/gantt-rollout.md",
+        "skills/d3/references/patterns/gemma-comparison.md",
+        "skills/d3/references/patterns/geo-route.md",
+        "skills/d3/references/patterns/geofence-join.md",
+        "skills/d3/references/patterns/hexbin-map.md",
+        "skills/d3/references/patterns/hierarchical-bars.md",
+        "skills/d3/references/patterns/horizon.md",
+        "skills/d3/references/patterns/icicle.md",
+        "skills/d3/references/patterns/incident-escalation.md",
+        "skills/d3/references/patterns/inline-bar-table.md",
+        "skills/d3/references/patterns/interaction-motion-collection.md",
+        "skills/d3/references/patterns/kanban-board.md",
+        "skills/d3/references/patterns/lasso-selection.md",
+        "skills/d3/references/patterns/marimekko.md",
+        "skills/d3/references/patterns/mirrored-beeswarm.md",
+        "skills/d3/references/patterns/moe-router-capacity.md",
+        "skills/d3/references/patterns/multi-head-attention-merge.md",
+        "skills/d3/references/patterns/nucleus-sampling.md",
+        "skills/d3/references/patterns/occlusion-labels.md",
+        "skills/d3/references/patterns/paged-kv-cache.md",
+        "skills/d3/references/patterns/pen-curve-study.md",
+        "skills/d3/references/patterns/point-cloud.md",
+        "skills/d3/references/patterns/polar-area.md",
+        "skills/d3/references/patterns/polygon-clipping.md",
+        "skills/d3/references/patterns/projection-comparison.md",
+        "skills/d3/references/patterns/projection-switch.md",
+        "skills/d3/references/patterns/qkv-projection-flow.md",
+        "skills/d3/references/patterns/quadtree-search.md",
+        "skills/d3/references/patterns/quantitative-collection.md",
+        "skills/d3/references/patterns/radar.md",
+        "skills/d3/references/patterns/residual-rmsnorm-stream.md",
+        "skills/d3/references/patterns/rope-rotation.md",
+        "skills/d3/references/patterns/scaled-dot-product-attention.md",
+        "skills/d3/references/patterns/scatterplot-matrix.md",
+        "skills/d3/references/patterns/science-geometry-collection.md",
+        "skills/d3/references/patterns/smooth-zoom.md",
+        "skills/d3/references/patterns/solar-terminator.md",
+        "skills/d3/references/patterns/statistical-collection.md",
+        "skills/d3/references/patterns/sunburst.md",
+        "skills/d3/references/patterns/swiglu-feed-forward.md",
+        "skills/d3/references/patterns/symbol-glyphs.md",
+        "skills/d3/references/patterns/task-overlap-dense.md",
+        "skills/d3/references/patterns/temperature-softmax.md",
+        "skills/d3/references/patterns/tiled-matmul.md",
+        "skills/d3/references/patterns/token-roulette.md",
+        "skills/d3/references/patterns/token-sampler.md",
+        "skills/d3/references/patterns/treemap.md",
+        "skills/d3/references/patterns/voronoi-stippling.md",
+        "skills/d3/references/patterns/world-tour.md",
+        "skills/d3/references/patterns/zoom-to-bounds.md"
+      ],
+      "sealedLocalRun": "custom-solid-d3-naturalistic-20261003-luna-17"
+    },
+    {
+      "skill": "destockd-video-search",
+      "fileCount": 7,
+      "localRuntimeSha256": "97b969a650cfd0b2f0e6ebdfef530cb79b2011e898e0d76c257bc2ca153abc75",
+      "committedRuntimeSha256": "cfaf46b520c7bbf9284b7977ac9601e049b9fa528d9b4e600a094840d55e72a4",
+      "normalizedTextPaths": [
+        "skills/destockd-video-search/SKILL.md",
+        "skills/destockd-video-search/assets/palettes/colorsets.json",
+        "skills/destockd-video-search/scripts/destockd.py"
+      ],
+      "sealedLocalRun": "20261003-solid-destockd-video-search-support-final2"
+    },
+    {
+      "skill": "diagram-composition",
+      "fileCount": 25,
+      "localRuntimeSha256": "e6d1db143038c9d9b75739417ef835f290e9780098acaded096b5be11e04bb87",
+      "committedRuntimeSha256": "831da235c410bfa69734e34eff9836e9de3e7b472ca96e9ee45f8409e25a2fd2",
+      "normalizedTextPaths": [
+        "skills/diagram-composition/assets/palettes/colorsets.json",
+        "skills/diagram-composition/assets/templates/composition.json",
+        "skills/diagram-composition/references/palette-policy.md",
+        "skills/diagram-composition/references/solid-surfaces.md",
+        "skills/diagram-composition/scripts/compose_diagram.py",
+        "skills/diagram-composition/scripts/palette_contract.py",
+        "skills/diagram-composition/scripts/test_browser.py",
+        "skills/diagram-composition/scripts/test_composition.py",
+        "skills/diagram-composition/scripts/test_connector_quality.py",
+        "skills/diagram-composition/scripts/test_native_panels.py",
+        "skills/diagram-composition/scripts/test_shared_colors.py"
+      ],
+      "sealedLocalRun": "solid-composition-diagram-composition-20261003-2"
+    },
+    {
+      "skill": "echarts-animated-svg",
+      "fileCount": 15,
+      "localRuntimeSha256": "3053b1ceabdce959bc1b841298eb738b68508a0c1a4fc2302475e8f66f43eda1",
+      "committedRuntimeSha256": "e7d63dc7e9cf0dde9786b3d821ecbf6e405f7ab0bc545b126c41f4a252dd93ce",
+      "normalizedTextPaths": [
+        "skills/echarts-animated-svg/SKILL.md",
+        "skills/echarts-animated-svg/assets/palettes/colorsets.json",
+        "skills/echarts-animated-svg/scripts/palette_paints.py"
+      ],
+      "sealedLocalRun": "20261003-diagram-solid-echarts-animated-svg-luna-9"
+    },
+    {
+      "skill": "harbor-author-evaluation-datasets",
+      "fileCount": 11,
+      "localRuntimeSha256": "2fa406114cdbc489d5bdce690303059dbacfabe841200a9f707cc2bbf9d46ae0",
+      "committedRuntimeSha256": "d40193bf53b0d0324eba272711d47a1cbfb29a65144d5fd2a0554c670343cea9",
+      "normalizedTextPaths": [
+        "skills/harbor-author-evaluation-datasets/SKILL.md",
+        "skills/harbor-author-evaluation-datasets/assets/palettes/colorsets.json"
+      ],
+      "sealedLocalRun": "20261003-solid-harbor-author-evaluation-datasets-support-final6"
+    },
+    {
+      "skill": "hierarchy-lens",
+      "fileCount": 23,
+      "localRuntimeSha256": "0c0dc05eef17a02d0876c8c6d16442ad42310025ff630ad5c448954c09d313fd",
+      "committedRuntimeSha256": "388af9fb9d560fdb1572bb4df0d2142d8e2416f630981b0399059cef1483d6f1",
+      "normalizedTextPaths": [
+        "skills/hierarchy-lens/agents/openai.yaml",
+        "skills/hierarchy-lens/assets/palettes/colorsets.json",
+        "skills/hierarchy-lens/assets/templates/decision-ui.js",
+        "skills/hierarchy-lens/references/palette-policy.md",
+        "skills/hierarchy-lens/references/validation.md",
+        "skills/hierarchy-lens/scripts/audit_pixels.py"
+      ],
+      "sealedLocalRun": "solid-composition-hierarchy-lens-20261003-1"
+    },
+    {
+      "skill": "hyperframes-explainer",
+      "fileCount": 31,
+      "localRuntimeSha256": "1125cc89b8ba7cc13d901661063761a268301818019c0a1f0ab66db44cb71cf6",
+      "committedRuntimeSha256": "70218d94c3e830b80983e7d73f58b413cb32f857bc8fb934d3308a115d64a7ae",
+      "normalizedTextPaths": [
+        "skills/hyperframes-explainer/assets/fonts/OFL.txt",
+        "skills/hyperframes-explainer/assets/palettes/colorsets.json"
+      ],
+      "sealedLocalRun": "solid-composition-hyperframes-explainer-20261003-1"
+    },
+    {
+      "skill": "iconify-icon-search",
+      "fileCount": 8,
+      "localRuntimeSha256": "d3886fdb569d0f1a673e210e6a8cc736bf179ca39eb47bf70eefb0eae858219c",
+      "committedRuntimeSha256": "6b9ca0a4c5df1212e7a5610ca43df096ec15131f17cd263d537d2425c9dfea85",
+      "normalizedTextPaths": [
+        "skills/iconify-icon-search/SKILL.md",
+        "skills/iconify-icon-search/assets/palettes/colorsets.json",
+        "skills/iconify-icon-search/scripts/asset_io.py",
+        "skills/iconify-icon-search/scripts/test_asset_io.py",
+        "skills/iconify-icon-search/scripts/test_iconify.py"
+      ],
+      "sealedLocalRun": "20261003-solid-iconify-icon-search-support-final"
+    },
+    {
+      "skill": "kenney-asset-search",
+      "fileCount": 8,
+      "localRuntimeSha256": "19c063c4e6448d6cabcabb6b3e66b9b73034c5cc9ce84b55448374ace0ec1d12",
+      "committedRuntimeSha256": "843756a70a92610da78e03a70e042850ecc14392d9436c50ee406decf0b6da93",
+      "normalizedTextPaths": [
+        "skills/kenney-asset-search/SKILL.md",
+        "skills/kenney-asset-search/assets/palettes/colorsets.json",
+        "skills/kenney-asset-search/scripts/asset_io.py",
+        "skills/kenney-asset-search/scripts/kenney.py",
+        "skills/kenney-asset-search/scripts/test_asset_io.py",
+        "skills/kenney-asset-search/scripts/test_kenney.py"
+      ],
+      "sealedLocalRun": "20261003-solid-kenney-asset-search-support-final"
+    },
+    {
+      "skill": "manim-svg-video",
+      "fileCount": 10,
+      "localRuntimeSha256": "af6fef580f557102594be19d371bed1532465134f7252beb6be6352593a963ca",
+      "committedRuntimeSha256": "551182fa4d716edc4d19c23cec3e1011d3b9b6ab43058bbe7f0e415c43e7b5d4",
+      "normalizedTextPaths": [
+        "skills/manim-svg-video/assets/palettes/colorsets.json",
+        "skills/manim-svg-video/references/composition-config.md",
+        "skills/manim-svg-video/references/palette-policy.md",
+        "skills/manim-svg-video/references/solid-surfaces.md",
+        "skills/manim-svg-video/scripts/palette_contract.py"
+      ],
+      "sealedLocalRun": "solid-composition-manim-svg-video-20261003-3"
+    },
+    {
+      "skill": "mermaid",
+      "fileCount": 24,
+      "localRuntimeSha256": "92b8c1f8873dc1a386ba9528e39bce3c715513d88407b835bb3e5a41cbaaa472",
+      "committedRuntimeSha256": "6e5e2a5f8b7d987cd819281ee505ea96d1806d4b34a21a9629bf3940c113711f",
+      "normalizedTextPaths": [
+        "skills/mermaid/SKILL.md",
+        "skills/mermaid/assets/palettes/colorsets.json",
+        "skills/mermaid/references/animation.md",
+        "skills/mermaid/scripts/palette_paints.py",
+        "skills/mermaid/scripts/style_mermaid_directory.py",
+        "skills/mermaid/scripts/mermaid_animation/solid.py"
+      ],
+      "sealedLocalRun": "20261003-diagram-solid-mermaid-luna-12"
+    },
+    {
+      "skill": "one-bit-dither-svg",
+      "fileCount": 12,
+      "localRuntimeSha256": "a97b6b0f688b04c8927b8008ef07d828d811a746b58d1e858c56b1aed5460e24",
+      "committedRuntimeSha256": "99fb096ed5abba96b7aa49180c2cbb1e2a6bc899c9923ad39c593424945b6c81",
+      "normalizedTextPaths": [
+        "skills/one-bit-dither-svg/SKILL.md",
+        "skills/one-bit-dither-svg/assets/palettes/colorsets.json"
+      ],
+      "sealedLocalRun": "20261003-solid-one-bit-dither-svg-support-final"
+    },
+    {
+      "skill": "pexels-media-search",
+      "fileCount": 8,
+      "localRuntimeSha256": "62807f1f278855edbeb16d3bdbf7d9c2bcfec74576e74fbce897664dbef8bf24",
+      "committedRuntimeSha256": "a1008bbca2b5047f528259b6ad75aad95f55747b9bff5a9a77617e1ad9152f57",
+      "normalizedTextPaths": [
+        "skills/pexels-media-search/SKILL.md",
+        "skills/pexels-media-search/assets/palettes/colorsets.json",
+        "skills/pexels-media-search/scripts/asset_io.py",
+        "skills/pexels-media-search/scripts/pexels.py",
+        "skills/pexels-media-search/scripts/test_asset_io.py",
+        "skills/pexels-media-search/scripts/test_pexels.py"
+      ],
+      "sealedLocalRun": "20261003-solid-pexels-media-search-support-final"
+    },
+    {
+      "skill": "pixel-art-image-video",
+      "fileCount": 9,
+      "localRuntimeSha256": "6688a728f4a5605b52289a1fc7989ae821c6259e2cbe107148f0cad919a7b443",
+      "committedRuntimeSha256": "5fb1780f31aaf4bed8c7c551c6653d66301943b33d96bb684d54ce26b3bff903",
+      "normalizedTextPaths": [
+        "skills/pixel-art-image-video/SKILL.md",
+        "skills/pixel-art-image-video/assets/palettes/colorsets.json"
+      ],
+      "sealedLocalRun": "20261003-solid-pixel-art-image-video-support-final"
+    },
+    {
+      "skill": "plantuml-colorset-renderer",
+      "fileCount": 16,
+      "localRuntimeSha256": "f70e85ad0dba691d2257843a52910a1fd6a3438d697e37b13de411519c4955b5",
+      "committedRuntimeSha256": "1160f715678f8cf38dc3384f5dd639b4b94460bb24f555786a06d7d95d2b4c71",
+      "normalizedTextPaths": [
+        "skills/plantuml-colorset-renderer/SKILL.md",
+        "skills/plantuml-colorset-renderer/assets/palettes/colorsets.json",
+        "skills/plantuml-colorset-renderer/assets/themes/cs1.puml",
+        "skills/plantuml-colorset-renderer/assets/themes/cs2.puml",
+        "skills/plantuml-colorset-renderer/references/colorset-contract.md",
+        "skills/plantuml-colorset-renderer/scripts/palette_paints.py"
+      ],
+      "sealedLocalRun": "20261003-diagram-solid-plantuml-colorset-renderer-luna-4"
+    },
+    {
+      "skill": "polyhaven-asset-search",
+      "fileCount": 8,
+      "localRuntimeSha256": "dbd9e99123fe85cfd8e0efbe2575852687cd3c21b8d358fd16f582d30d2e7530",
+      "committedRuntimeSha256": "59530c9c961e42bccc4364fde711286b26fb460537059f6fda71f63e24a8c2ae",
+      "normalizedTextPaths": [
+        "skills/polyhaven-asset-search/SKILL.md",
+        "skills/polyhaven-asset-search/assets/palettes/colorsets.json",
+        "skills/polyhaven-asset-search/scripts/asset_io.py",
+        "skills/polyhaven-asset-search/scripts/polyhaven.py",
+        "skills/polyhaven-asset-search/scripts/test_asset_io.py",
+        "skills/polyhaven-asset-search/scripts/test_polyhaven.py"
+      ],
+      "sealedLocalRun": "20261003-solid-polyhaven-asset-search-support-final"
+    },
+    {
+      "skill": "procedural-svg-animation",
+      "fileCount": 18,
+      "localRuntimeSha256": "ca3352642eff1fe7f0731ca7f7fa330cd10f1c709b881999e2a557d51863103a",
+      "committedRuntimeSha256": "e7c9fa641aa5f0fd7bef4a0448f282649a74bafb649bfb587b00396353c9c8aa",
+      "normalizedTextPaths": [
+        "skills/procedural-svg-animation/assets/palettes/colorsets.json"
+      ],
+      "sealedLocalRun": "custom-solid-procedural-svg-animation-naturalistic-20261003-luna-13"
+    },
+    {
+      "skill": "slidev-animejs",
+      "fileCount": 37,
+      "localRuntimeSha256": "7eebfdd50dfb5c282b6a97af2357ed1d26e90a60be34484219c1cac3b1597ced",
+      "committedRuntimeSha256": "517900f61373bf91d5cb5c245a6c52b661d6e46309049150a2118f51319dfdce",
+      "normalizedTextPaths": [
+        "skills/slidev-animejs/SKILL.md",
+        "skills/slidev-animejs/assets/palettes/colorsets.json",
+        "skills/slidev-animejs/assets/templates/slidev-svg-asset-pack/assets/animated-svg/drawable-circuit.svg",
+        "skills/slidev-animejs/assets/templates/slidev-svg-asset-pack/assets/animated-svg/interactive-hotspots.svg",
+        "skills/slidev-animejs/assets/templates/slidev-svg-asset-pack/assets/animated-svg/morphing-badge.svg",
+        "skills/slidev-animejs/assets/templates/slidev-svg-asset-pack/assets/animated-svg/motion-orbit.svg",
+        "skills/slidev-animejs/assets/templates/slidev-svg-asset-pack/assets/animated-svg/stagger-dashboard.svg",
+        "skills/slidev-animejs/assets/templates/slidev-svg-asset-pack/assets/animated-svg/timeline-machine.svg",
+        "skills/slidev-animejs/assets/templates/slidev-svg-asset-pack/components/SvgAssetSlide.vue",
+        "skills/slidev-animejs/references/colorset-contract.md",
+        "skills/slidev-animejs/references/visual-tokens.md"
+      ],
+      "sealedLocalRun": "20261003-diagram-solid-slidev-animejs-luna-4"
+    },
+    {
+      "skill": "slidev-echarts",
+      "fileCount": 32,
+      "localRuntimeSha256": "006686055e4244fe9634707f69a30a2bd3d96dd0a14db5360934675a8ecf141a",
+      "committedRuntimeSha256": "b7a546cf661a016a6fecc62305dca8b805ea89f1af9f30f5c127637adf4e9615",
+      "normalizedTextPaths": [
+        "skills/slidev-echarts/SKILL.md",
+        "skills/slidev-echarts/assets/palettes/colorsets.json",
+        "skills/slidev-echarts/references/visual-tokens.md"
+      ],
+      "sealedLocalRun": "20261003-diagram-solid-slidev-echarts-luna-12"
+    },
+    {
+      "skill": "slidev-quality-audit",
+      "fileCount": 6,
+      "localRuntimeSha256": "c83dda6160a1fe99e832736b68f9769ec61e66eccb09d31666f8478a53e7e53d",
+      "committedRuntimeSha256": "149ae0b14024af9bc98b31c3a36c9e6edb48addd4ee2471cadf10b0c31c5afad",
+      "normalizedTextPaths": [
+        "skills/slidev-quality-audit/SKILL.md",
+        "skills/slidev-quality-audit/assets/palettes/colorsets.json",
+        "skills/slidev-quality-audit/references/colorset-contract.md"
+      ],
+      "sealedLocalRun": "20261003-diagram-solid-slidev-quality-audit-luna-3"
+    },
+    {
+      "skill": "svg-brief-design",
+      "fileCount": 10,
+      "localRuntimeSha256": "374da01c957b98b3b6e9e6fb5db3977a51c9a1561688b057601725f1ea07bfa8",
+      "committedRuntimeSha256": "237ccc327464760a8d2c4afd75a0f075a376fb341d0ac27292259eacc2a4ddde",
+      "normalizedTextPaths": [
+        "skills/svg-brief-design/assets/palettes/colorsets.json",
+        "skills/svg-brief-design/references/scaffold-recipes.md"
+      ],
+      "sealedLocalRun": "custom-solid-svg-brief-design-contract-20261003-luna-2"
+    },
+    {
+      "skill": "technical-logo-assets",
+      "fileCount": 8572,
+      "localRuntimeSha256": "9d9a95898b13851196c7dda9de7b8b7025ffc103e6215015342d0d256beb3812",
+      "committedRuntimeSha256": "4662436fd9e84278c7f739b60c29859ddef1ce5c27917f57b9429eacbaf3dcf8",
+      "normalizedTextPaths": [
+        "skills/technical-logo-assets/SKILL.md",
+        "skills/technical-logo-assets/assets/logo-audit.html",
+        "skills/technical-logo-assets/assets/palettes/colorsets.json"
+      ],
+      "sealedLocalRun": "20261003-solid-technical-logo-assets-support-final5"
+    },
+    {
+      "skill": "threejs-animated-3d",
+      "fileCount": 11,
+      "localRuntimeSha256": "5c243bd8b3226eef250da8e6015ce43f8dc8d015ed5071f5f7470d92736e957f",
+      "committedRuntimeSha256": "ec5982f8b7f76939f36132d71576f6a91abf9c87076c7f67ce26ba52e58c4e3a",
+      "normalizedTextPaths": [
+        "skills/threejs-animated-3d/assets/palettes/colorsets.json"
+      ],
+      "sealedLocalRun": "custom-solid-threejs-animated-3d-contract-20261003-luna-2"
+    },
+    {
+      "skill": "usefulcharts-style",
+      "fileCount": 136,
+      "localRuntimeSha256": "1eb555bb5473a6efb4176bdc4e526c7450cb506f4f0c94f6c498dd53d3d14fb7",
+      "committedRuntimeSha256": "a03956d56334d6039dd537539ef9a2539d23d0acbd0f540b17fabf8bd5298032",
+      "normalizedTextPaths": [
+        "skills/usefulcharts-style/assets/illustrations/astrolabe-observation.svg",
+        "skills/usefulcharts-style/assets/illustrations/clock-escapement.svg",
+        "skills/usefulcharts-style/assets/illustrations/provenance.json",
+        "skills/usefulcharts-style/assets/maps/milner-1850.json",
+        "skills/usefulcharts-style/assets/maps/provenance.json",
+        "skills/usefulcharts-style/assets/maps/world-countries.json",
+        "skills/usefulcharts-style/assets/objects/provenance.json",
+        "skills/usefulcharts-style/assets/palettes/colorsets.json",
+        "skills/usefulcharts-style/assets/portraits/provenance.json",
+        "skills/usefulcharts-style/assets/templates/cohorts.json",
+        "skills/usefulcharts-style/assets/templates/compact-timeline.json",
+        "skills/usefulcharts-style/assets/templates/lineage.json",
+        "skills/usefulcharts-style/assets/templates/narrative-timeline.json",
+        "skills/usefulcharts-style/assets/templates/packed-lineage.json",
+        "skills/usefulcharts-style/assets/templates/starter.json",
+        "skills/usefulcharts-style/references/palette-policy.md",
+        "skills/usefulcharts-style/references/panel-outlines.md",
+        "skills/usefulcharts-style/references/solid-surfaces.md",
+        "skills/usefulcharts-style/scripts/editorial_art.py",
+        "skills/usefulcharts-style/scripts/palette_contract.py",
+        "skills/usefulcharts-style/scripts/test_branch_bundle.py",
+        "skills/usefulcharts-style/scripts/test_branch_caption_audit.py",
+        "skills/usefulcharts-style/scripts/test_branch_source.py",
+        "skills/usefulcharts-style/scripts/test_branching_layout.py",
+        "skills/usefulcharts-style/scripts/test_chart.py",
+        "skills/usefulcharts-style/scripts/test_context_landmarks.py",
+        "skills/usefulcharts-style/scripts/test_density.py",
+        "skills/usefulcharts-style/scripts/test_editorial.py",
+        "skills/usefulcharts-style/scripts/test_editorial_art.py",
+        "skills/usefulcharts-style/scripts/test_editorial_insets.py",
+        "skills/usefulcharts-style/scripts/test_exploration_review.py",
+        "skills/usefulcharts-style/scripts/test_family_baselines.py",
+        "skills/usefulcharts-style/scripts/test_illustrated_review.py",
+        "skills/usefulcharts-style/scripts/test_lineage_runs.py",
+        "skills/usefulcharts-style/scripts/test_panel_poster.py",
+        "skills/usefulcharts-style/scripts/test_shared_rows.py",
+        "skills/usefulcharts-style/scripts/test_timeline_events.py",
+        "skills/usefulcharts-style/scripts/test_timeline_geometry.py"
+      ],
+      "sealedLocalRun": "solid-composition-usefulcharts-style-20261003-2"
+    },
+    {
+      "skill": "vectorize-art-patterns",
+      "fileCount": 55,
+      "localRuntimeSha256": "3e81d3098d50729416b17c7377f265fa22415c24257057551c3dccead1d8ec57",
+      "committedRuntimeSha256": "f3ffbcf71a24c59a14abddf90cb25ac0db7c68d90efccbf276e03fc041fc1c8a",
+      "normalizedTextPaths": [
+        "skills/vectorize-art-patterns/assets/palettes/colorsets.json"
+      ],
+      "sealedLocalRun": "custom-solid-vectorize-art-patterns-contract-20261003-luna-2"
+    },
+    {
+      "skill": "video",
+      "fileCount": 50,
+      "localRuntimeSha256": "df81bc9fbab765e6780dfab34eea32a0942b3fc2ef5573ce54ccd3fc67c957f0",
+      "committedRuntimeSha256": "b8e28402af07664b5cc8edab469c231b06cc761b20036bc3d809d1411464d97c",
+      "normalizedTextPaths": [
+        "skills/video/assets/palettes/colorsets.json",
+        "skills/video/assets/templates/composite-scene-template.html",
+        "skills/video/assets/templates/scene-contract.json",
+        "skills/video/references/composition-brief-contract.md",
+        "skills/video/references/palette-policy.md",
+        "skills/video/references/solid-surfaces.md",
+        "skills/video/references/transition-plan-contract.md",
+        "skills/video/scripts/make_video_contact_sheet.py",
+        "skills/video/scripts/palette_contract.py",
+        "skills/video/scripts/test_scene_contracts.py"
+      ],
+      "sealedLocalRun": "solid-composition-video-20261003-2"
+    }
+  ],
+  "findings": []
+}
