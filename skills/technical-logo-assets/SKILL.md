@@ -5,6 +5,10 @@ description: "Searches, selects, validates, and exports a verified vector-only c
 
 # Technical Logo Assets
 
+## Solid-fill presentation
+
+For authored filled marks and preview chrome, start with one opaque colorset fill and no decorative border. Prefer saturated/base colors, then dark, bright and neutral solids, with soft fills late. Assign unique usable fills before introducing border variants; exclude the actual canvas color. Choose exact black or white text on each fill by maximum relative-luminance contrast. Keep semantic mappings stable across previews, legends and exports. Only after the usable solid colors are exhausted, expand with contrasting palette border colors, dash patterns and widths. Preserve meaningful line art, connectors, keyboard focus indicators, original source media and explicitly requested conversion aesthetics. Apply this preference to newly authored visuals and framing; preserve required source identity and fidelity.
+
 ## Core Contract
 
 Use the bundled catalog for exact, redistributable technical brand artwork. It contains 1,960 stable identities across AWS, Google Cloud, Devicon, individually licensed Simple Icons, Font Awesome Brands, Ollama, code assistants, AI providers, agent frameworks, and adjacent developer tools. Every selectable asset is a self-contained vector SVG with a `256×256` viewport, 16-unit padding, and centered `meet` scaling; embedded raster images are forbidden.

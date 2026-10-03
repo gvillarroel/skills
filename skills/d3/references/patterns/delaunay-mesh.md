@@ -35,7 +35,7 @@ function renderDelaunayMesh() {
     const dots = svg.append("g").selectAll("circle").data(pts).join("circle")
       .attr("cx", d => d[0]).attr("cy", d => d[1])
       .attr("fill", palette.purple)
-      .attr("fill-opacity", .86)
+      .attr("fill-opacity", 1)
       .attr("stroke", "#fff");
     grow(dots, "r", 1, 4.6, .18, .62);
   }

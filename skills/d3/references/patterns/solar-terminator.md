@@ -92,7 +92,7 @@ function renderSolarTerminator() {
       return [lon, lat];
     });
     const night = { type: "Polygon", coordinates: [[[-180, -90], [180, -90], ...boundary.slice().reverse(), [-180, -90]]] };
-    const nightPath = svg.append("path").datum(night).attr("d", path).attr("fill", palette.ink).attr("fill-opacity", .38);
+    const nightPath = svg.append("path").datum(night).attr("d", path).attr("fill", palette.ink).attr("data-opacity-role", "semantic").attr("fill-opacity", .38);
     fadeIn(nightPath, .12, .55);
     const line = svg.append("path").datum({ type: "LineString", coordinates: boundary }).attr("d", path).attr("fill", "none").attr("stroke", palette.orange).attr("stroke-width", 3.5);
     drawPath(line, .15, 1);

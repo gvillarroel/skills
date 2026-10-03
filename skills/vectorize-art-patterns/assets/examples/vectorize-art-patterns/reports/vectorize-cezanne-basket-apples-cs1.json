@@ -4,12 +4,12 @@
   "input": "assets/base-images/cezanne-basket-apples.jpg",
   "input_sha256": "cec937b803d6288fe88859167676291af8549fe0070337cd22a6e0743d3694c4",
   "output": "svgs/vectorize-cezanne-basket-apples-cs1.svg",
-  "output_sha256": "39bd482d398382b3060fd8de64246e52c266ecf02856502739449d9577dd811e",
+  "output_sha256": "27b0ba242f52ac7d34ca9bceb67f91acdab6fcc972ce6e5f441812843e61aa0e",
   "pattern_id": "vectorize-cezanne-basket-apples-cs1",
   "mode": "collage",
   "tile": "none",
   "colorset": "colorset1",
-  "palette_contract_sha256": "c81d32ffb0d55d44e7d3102c7470e251baf34f0bb6472fbede7753df8b9a9eb5",
+  "palette_contract_sha256": "f36eb8a9fe171108383767c7697f023218121e51d3e45247e87b58e397b36d62",
   "variation_seed": 0,
   "composition_sha256": "5744765221001b2e142cdff03d53f70bc73faf59cf2cfa198357e8583abd2b77",
   "parameters": {
@@ -29,31 +29,31 @@
         },
         {
           "source": "#3b3e3a",
-          "target": "#1c1c1c"
+          "target": "#363636"
         },
         {
           "source": "#909687",
-          "target": "#828282"
+          "target": "#9c9c9c"
         },
         {
           "source": "#624c39",
-          "target": "#6d1222"
+          "target": "#4f4f4f"
         },
         {
           "source": "#606455",
-          "target": "#e8002a"
+          "target": "#696969"
         },
         {
           "source": "#a1a699",
-          "target": "#cfcfcf"
+          "target": "#b5b5b5"
         },
         {
           "source": "#b3af9b",
-          "target": "#ffccd5"
+          "target": "#cfcfcf"
         },
         {
           "source": "#8d8870",
-          "target": "#f7f7f7"
+          "target": "#828282"
         }
       ],
       "source_colors": [
@@ -70,13 +70,13 @@
       "target_colors": [
         "#333e48",
         "#9e1b32",
-        "#1c1c1c",
-        "#828282",
-        "#6d1222",
-        "#e8002a",
+        "#363636",
+        "#9c9c9c",
+        "#4f4f4f",
+        "#696969",
+        "#b5b5b5",
         "#cfcfcf",
-        "#ffccd5",
-        "#f7f7f7"
+        "#828282"
       ]
     }
   },
@@ -87,15 +87,15 @@
   "render_width": 560,
   "render_height": 447,
   "palette": [
-    "#1c1c1c",
     "#333e48",
-    "#6d1222",
+    "#363636",
+    "#4f4f4f",
+    "#696969",
     "#828282",
+    "#9c9c9c",
     "#9e1b32",
-    "#cfcfcf",
-    "#e8002a",
-    "#f7f7f7",
-    "#ffccd5"
+    "#b5b5b5",
+    "#cfcfcf"
   ],
   "path_count": 161,
   "output_bytes": 251472,

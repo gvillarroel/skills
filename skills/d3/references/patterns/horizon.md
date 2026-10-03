@@ -32,7 +32,7 @@ function renderHorizon() {
       .attr("fill", palette.gray50).attr("stroke", palette.gray100);
     [0, 1, 2].forEach(i => {
       const shifted = data.map(d => ({ x: d.x, y: Math.max(0, d.y - i * 22) }));
-      const path = svg.append("path").datum(shifted).attr("d", area).attr("fill", bandColors[i]).attr("fill-opacity", .78);
+      const path = svg.append("path").datum(shifted).attr("d", area).attr("fill", bandColors[i]).attr("fill-opacity", 1);
       fadeIn(path, .08 + i * .08, .75);
     });
     svg.append("line").attr("x1", 42).attr("x2", width - 34).attr("y1", baseY).attr("y2", baseY).attr("stroke", "#9c9c9c");

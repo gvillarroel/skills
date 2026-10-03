@@ -64,7 +64,7 @@ TRANSLATE_RE = re.compile(
     r"(?:[\s,]+)([-+]?(?:\d+(?:\.\d*)?|\.\d+)(?:[eE][-+]?\d+)?)\s*\)$"
 )
 CONCEPT_TOKEN_RE = re.compile(r"var\(\s*--concept-([a-z0-9]+(?:-[a-z0-9]+)*)")
-TEXT_TOKEN_RE = re.compile(r"var\(\s*--text-value-([a-z0-9]+(?:-[a-z0-9]+)*)")
+TEXT_TOKEN_RE = re.compile(r"var\(\s*--(?:text|on)-value-([a-z0-9]+(?:-[a-z0-9]+)*)")
 CONCEPT_COLOR_RE = re.compile(
     r"--concept-([a-z0-9]+(?:-[a-z0-9]+)*)\s*:\s*(#[0-9a-fA-F]{6})\s*;"
 )

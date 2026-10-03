@@ -4,12 +4,12 @@
   "input": "assets/base-images/monet-water-lilies.jpg",
   "input_sha256": "ff684c1a344422bb2ac4c51585524dc1afdb416715cfe3127c88ccd5c40e2c7f",
   "output": "svgs/vectorize-monet-water-lilies-cs2.svg",
-  "output_sha256": "427af879f228eec0d5bfb148b976cd98f3032291f408fd64b93d15c5b4311b24",
+  "output_sha256": "f036be1e0a27fc2f5320873270cc42ef7f4ef3853a5f59cd0afc5845ce674893",
   "pattern_id": "vectorize-monet-water-lilies-cs2",
   "mode": "stain",
   "tile": "none",
   "colorset": "colorset2",
-  "palette_contract_sha256": "c81d32ffb0d55d44e7d3102c7470e251baf34f0bb6472fbede7753df8b9a9eb5",
+  "palette_contract_sha256": "f36eb8a9fe171108383767c7697f023218121e51d3e45247e87b58e397b36d62",
   "variation_seed": 0,
   "composition_sha256": "7a949867623d00462831eebeeba129f2eedc7bc0d711e3ace65408c164693c51",
   "parameters": {
@@ -33,11 +33,11 @@
         },
         {
           "source": "#6c6064",
-          "target": "#004d66"
+          "target": "#696969"
         },
         {
           "source": "#214b51",
-          "target": "#652f6c"
+          "target": "#004d66"
         },
         {
           "source": "#466d42",
@@ -45,11 +45,11 @@
         },
         {
           "source": "#899c75",
-          "target": "#cfcfcf"
+          "target": "#9c9c9c"
         },
         {
           "source": "#b1ada9",
-          "target": "#f7f7f7"
+          "target": "#b5b5b5"
         }
       ],
       "source_colors": [
@@ -66,11 +66,11 @@
         "#333e48",
         "#007298",
         "#828282",
+        "#696969",
         "#004d66",
-        "#652f6c",
         "#45842a",
-        "#cfcfcf",
-        "#f7f7f7"
+        "#9c9c9c",
+        "#b5b5b5"
       ]
     }
   },
@@ -85,7 +85,7 @@
     "#007298",
     "#333e48",
     "#45842a",
-    "#652f6c",
+    "#696969",
     "#828282"
   ],
   "path_count": 38,

@@ -1,0 +1,43 @@
+[
+  {
+    "skill": "harbor-author-evaluation-datasets",
+    "runId": "20261003-solid-harbor-author-evaluation-datasets-support-final3",
+    "model": "gpt-5.6-luna",
+    "command": [
+      "uv",
+      "run",
+      "--script",
+      "scripts/run-pi-skill-eval.py",
+      "harbor-author-evaluation-datasets",
+      "--prompt-file",
+      "evaluations/pi-prompts/colorset-harbor-author-evaluation-datasets.md",
+      "--model",
+      "openai-codex/gpt-5.6-luna",
+      "--mode",
+      "json",
+      "--strict",
+      "--run-id",
+      "20261003-solid-harbor-author-evaluation-datasets-support-final3",
+      "--timeout-seconds",
+      "600",
+      "--expect-output",
+      "comparison/comparison-report.json",
+      "--expect-output",
+      "comparison/comparison-report.md",
+      "--expect-output",
+      "comparison/quality-comparison.svg",
+      "--expect-output",
+      "comparison/resource-comparison.svg",
+      "--expect-output",
+      "comparison/efficiency-frontier.svg"
+    ],
+    "exitCode": 4,
+    "outputs": [
+      "comparison/comparison-report.json",
+      "comparison/comparison-report.md",
+      "comparison/quality-comparison.svg",
+      "comparison/resource-comparison.svg",
+      "comparison/efficiency-frontier.svg"
+    ]
+  }
+]

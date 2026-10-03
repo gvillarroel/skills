@@ -7,6 +7,10 @@ description: "Converts local raster or SVG images and local videos or animated r
 
 Turn source imagery into a low-resolution logical color grid, then enlarge it with nearest-neighbor sampling. The shipped converter supports still PNG/lossless WebP output from raster, self-contained SVG, or one video frame, and animated MP4/GIF or lossless MKV output from local video or animated raster input. The output format follows `--output`. Keep generated files outside this skill directory and honor exact user-provided paths.
 
+## Solid-fill presentation
+
+For authored filled marks and preview chrome, start with one opaque colorset fill and no decorative border. Prefer saturated/base colors, then dark, bright and neutral solids, with soft fills late. Assign unique usable fills before introducing border variants; exclude the actual canvas color. Choose exact black or white text on each fill by maximum relative-luminance contrast. Keep semantic mappings stable across previews, legends and exports. Only after the usable solid colors are exhausted, expand with contrasting palette border colors, dash patterns and widths. Preserve meaningful line art, connectors, keyboard focus indicators, original source media and explicitly requested conversion aesthetics. Apply this preference to newly authored visuals and framing; preserve required source identity and fidelity.
+
 ## Choose the look
 
 Use `--palette colorset1` by default or `--palette colorset2` for extended semantic categories. The bundled [colorsets.json](assets/palettes/colorsets.json) defines exact allowed paints. Adaptive fitting maps source medoids to `--colorset` tokens; custom colors and backgrounds must belong to that active set. `forest4` and `sunset8` are compact colorset2 subsets. Use `preserve` only when exact source RGB is explicitly required; its manifest declares `paintScope: source-fidelity` and no colorset claim. Review sheets use colorset1 chrome. Decoded lossy video and antialiased edges can contain derived tones; test authored palette membership before encoding and use lossless PNG/WebP/GIF/MKV for an exact pixel-color deliverable.

@@ -171,7 +171,7 @@ function renderAiLineWriting() {
     pen.append("circle")
       .attr("r", 11.5)
       .attr("fill", palette.red)
-      .attr("fill-opacity", .96);
+      .attr("fill-opacity", 1);
     pen.append("animateMotion")
       .attr("dur", `${totalDuration}s`)
       .attr("begin", "0s")

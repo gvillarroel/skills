@@ -10,7 +10,7 @@ Use this refinement when a family resembles a succession of thin colored strips 
 
 The medium-family baseline helper supplies these measured defaults: ordinary principal records use inside details, portrait records and explicit `date_label` records use outside details, and explicit source treatments remain unchanged. Avoid overriding every record before seeing the preview. For a dense authored source, change the intended treatments, then recompose with [local baselines](branch-baselines.md). Painting a taller card over the previous layout can occupy a previously clear connector attachment.
 
-When the task supplies no category colors, use the light coral, sky blue, gold, sage, lilac, orange and pink palette in `SKILL.md`. Keep names predominantly black or near-black. A dark palette can pass contrast checks yet have a visibly different balance from the reference. Respect supplied colors; do not silently recolor categories to satisfy this preference.
+When the task supplies no category colors, use the selected colorset solid sequence from `SKILL.md`. Keep category nameplates borderless and choose pure black or white by the maximum WCAG contrast against the actual fill. Respect supplied colors; do not silently recolor categories to satisfy this preference.
 
 ## Separate territory and local court captions
 

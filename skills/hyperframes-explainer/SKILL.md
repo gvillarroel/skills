@@ -22,7 +22,8 @@ Build one canonical state and one seekable clock for the whole composition.
    Read [explanation-design.md](references/explanation-design.md) before laying out
    a scene, especially for multiple simultaneous effects.
 4. Start with **colorset1**. Read [palette-policy.md](references/palette-policy.md).
-   Try direct labels, grouping, position, shape and stroke before additional hue.
+Read [solid-surfaces.md](references/solid-surfaces.md) for solid-first category fills, black/white text on the actual fill, and palette exhaustion before border variants.
+   Try direct labels, grouping, position and semantic shape before additional hue. Filled category surfaces start without decorative strokes; meaningful mechanism paths remain visible.
    Use colorset2 for an explicit request or a documented semantic-separation need;
    never for decoration or simply because more objects exist.
 5. Default to no headline, chapter banner, brand lockup, frame metadata or closing

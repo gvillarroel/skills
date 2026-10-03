@@ -92,10 +92,10 @@
 
 .hero-facts span,
 .step-pills span {
-  background: #cdf3ff;
-  border: 1px solid #cdf3ff;
+  background: #007298;
+  border: 0;
   border-radius: 999px;
-  color: #004d66;
+  color: #ffffff;
   font-size: 0.75rem;
   font-weight: 700;
   padding: 0.28rem 0.55rem;
@@ -103,7 +103,7 @@
 
 .chart-example {
   background: #ffffff;
-  border: 1px solid #e7e7e7;
+  border: 0;
   border-radius: 8px;
   box-shadow: 0 16px 34px rgba(28, 28, 28, 0.08);
   max-width: 100%;
@@ -131,7 +131,7 @@
 
 .echart-frame {
   background: #ffffff;
-  border: 1px solid #e7e7e7;
+  border: 0;
   border-radius: 8px;
   display: block;
   margin: 0;
@@ -162,7 +162,7 @@
 .revenue-story,
 .dashboard-demo {
   background: #ffffff;
-  border: 1px solid #e7e7e7;
+  border: 0;
   border-radius: 8px;
   box-shadow: 0 14px 30px rgba(28, 28, 28, 0.07);
   max-width: 100%;
@@ -242,9 +242,9 @@
 }
 
 .step-pills span.active {
-  background: #dbffcc;
+  background: #45842a;
   border-color: #36b300;
-  color: #294d19;
+  color: #000000;
 }
 
 .story-notes {
@@ -261,7 +261,7 @@
 
 .story-notes li {
   background: #ffffff;
-  border: 1px solid #e7e7e7;
+  border: 0;
   border-radius: 8px;
   line-height: 1.35;
   padding: 0.55rem 0.65rem;
@@ -282,7 +282,7 @@
 
 .dashboard-metrics > div {
   background: #f7f7f7;
-  border: 1px solid #cfcfcf;
+  border: 0;
   border-radius: 8px;
   min-height: 48px;
   padding: 0.48rem 0.62rem;
@@ -314,7 +314,7 @@
 
 .composition-scene {
   background: #ffffff;
-  border: 1px solid #e7e7e7;
+  border: 0;
   border-radius: 8px;
   box-shadow: 0 14px 30px rgba(28, 28, 28, 0.07);
   max-width: 100%;
@@ -363,7 +363,7 @@
 .composition-steps span,
 .comparison-notes span {
   background: #f7f7f7;
-  border: 1px solid #cfcfcf;
+  border: 0;
   border-radius: 8px;
   color: #4f4f4f;
   font-size: 0.75rem;
@@ -374,9 +374,9 @@
 
 .composition-steps span.active,
 .comparison-notes span.active {
-  background: #dbffcc;
+  background: #45842a;
   border-color: #36b300;
-  color: #294d19;
+  color: #000000;
 }
 
 .spotlight-stage {
@@ -401,7 +401,7 @@
 
 .spotlight-callouts > div {
   background: rgba(255, 255, 255, 0.92);
-  border: 1px solid #cfcfcf;
+  border: 0;
   border-radius: 8px;
   box-shadow: 0 10px 22px rgba(28, 28, 28, 0.12);
   padding: 0.48rem 0.58rem;
@@ -443,7 +443,7 @@
 
 .comparison-panel {
   background: #f7f7f7;
-  border: 1px solid #cfcfcf;
+  border: 0;
   border-radius: 8px;
   min-width: 0;
   padding: 0.52rem;
@@ -521,7 +521,7 @@
 
 .chart-type-slide {
   background: #ffffff;
-  border: 1px solid #e7e7e7;
+  border: 0;
   border-radius: 8px;
   box-shadow: 0 14px 30px rgba(28, 28, 28, 0.07);
   max-width: 100%;
@@ -574,14 +574,14 @@
 }
 
 .renderer-badge {
-  background: #f9ccff;
-  border: 1px solid #652f6c;
-  color: #431f47;
+  background: #652f6c;
+  border: 0;
+  color: #ffffff;
 }
 
 .chart-type-controls button {
   background: #ffffff;
-  border: 1px solid #9c9c9c;
+  border: 0;
   color: #333e48;
   cursor: pointer;
 }
@@ -612,7 +612,7 @@
 
 .chart-type-notes > div {
   background: #f7f7f7;
-  border: 1px solid #e7e7e7;
+  border: 0;
   border-radius: 8px;
   padding: 0.4rem 0.44rem;
 }
@@ -633,7 +633,7 @@
 
 .generated-svg-slide {
   background: #ffffff;
-  border: 1px solid #e7e7e7;
+  border: 0;
   border-radius: 8px;
   box-shadow: 0 14px 30px rgba(28, 28, 28, 0.07);
   display: grid;
@@ -674,7 +674,7 @@
 
 .generated-svg-controls button {
   background: #ffffff;
-  border: 1px solid #9c9c9c;
+  border: 0;
   border-radius: 8px;
   color: #333e48;
   cursor: pointer;
@@ -699,7 +699,7 @@
 
 .generated-svg-frame {
   background: #ffffff;
-  border: 1px solid #cfcfcf;
+  border: 0;
   border-radius: 8px;
   height: 300px;
   overflow: hidden;
@@ -725,7 +725,7 @@
 
 .generated-svg-notes > div {
   background: #f7f7f7;
-  border: 1px solid #e7e7e7;
+  border: 0;
   border-radius: 8px;
   padding: 0.5rem;
 }
@@ -916,10 +916,10 @@
 }
 
 .chart-clicks li {
-  background: #dbffcc;
-  border: 1px solid #dbffcc;
+  background: #45842a;
+  border: 0;
   border-radius: 8px;
-  color: #294d19;
+  color: #000000;
   line-height: 1.18;
   list-style: none !important;
   min-height: 2.2rem;

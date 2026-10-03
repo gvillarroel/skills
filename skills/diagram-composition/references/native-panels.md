@@ -76,7 +76,8 @@ prepare CSS-bearing exports first. Brand artwork is preserved without recoloring
 
 For cross-panel color identity, use the shared concept registry and native
 `concept` fields from [shared-colors.md](shared-colors.md). These produce consistent
-outlines, bands, or swatches and auditable SVG bindings. Keep row/card labels dark;
+solid borderless category surfaces or swatches and auditable SVG bindings.
+Choose pure black or white for card labels by their actual fill contrast;
 an icon and its semantic swatch may coexist. Literal local `color` values below
 remain supported for isolated encodings, but recurring categories use `concept`.
 

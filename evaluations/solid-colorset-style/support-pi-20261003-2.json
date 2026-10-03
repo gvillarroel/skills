@@ -1,0 +1,49 @@
+[
+  {
+    "skill": "one-bit-dither-svg",
+    "runId": "20261003-solid-one-bit-dither-svg-support-2",
+    "model": "gpt-5.6-luna",
+    "command": [
+      "uv",
+      "run",
+      "--script",
+      "scripts/run-pi-skill-eval.py",
+      "one-bit-dither-svg",
+      "--prompt-file",
+      "evaluations/pi-prompts/colorset-one-bit-dither-svg.md",
+      "--model",
+      "openai-codex/gpt-5.6-luna",
+      "--mode",
+      "json",
+      "--strict",
+      "--run-id",
+      "20261003-solid-one-bit-dither-svg-support-2",
+      "--timeout-seconds",
+      "600",
+      "--expect-output",
+      "source.svg",
+      "--expect-output",
+      "regional.svg",
+      "--expect-output",
+      "regional.png",
+      "--expect-output",
+      "regional.json",
+      "--expect-output",
+      "extended.svg",
+      "--expect-output",
+      "extended.png",
+      "--expect-output",
+      "extended.json"
+    ],
+    "exitCode": 0,
+    "outputs": [
+      "source.svg",
+      "regional.svg",
+      "regional.png",
+      "regional.json",
+      "extended.svg",
+      "extended.png",
+      "extended.json"
+    ]
+  }
+]

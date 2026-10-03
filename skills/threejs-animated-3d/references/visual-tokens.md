@@ -23,13 +23,15 @@ expanded, multicolor, or full-color request; record it in `data-colorset`.
 
 Start with neutral materials and use red for a declared focal object, selection,
 change, or risk. Reuse colors for objects with the same role. Use geometry,
-position, texture, outline, and direct labels before adding another hue.
+position, texture, and direct labels before adding another hue. Keep filled
+meshes free of decorative `EdgesGeometry`, wireframes, or silhouette overlays.
 
 Pink `#ffccd5` is a **last-resort category**, after usable reds, grays, black,
 and white cannot distinguish an additional meaningful category. It is also
 available for an explicit pink request. Record the reason; do not automatically
 use pink as the second material, a soft background, replay fill, or focus color.
-Use white or gray surfaces with an opaque red outline for selection.
+Use a solid red material, position, motion or a direct label for selection.
+An outline is a documented overflow option after the full usable solid palette.
 
 Colorset2 adds blue `#007298`, orange `#e77204`, green `#45842a`, purple
 `#652f6c`, and yellow `#f1c319`. Use additions for meaningful categories.
@@ -78,7 +80,8 @@ The builder defaults to `--density compact`; `--density comfortable` retains a
 - Use `"Open Sans", Arial, sans-serif`; allow the local fallback in offline HTML.
 - Use Material Symbols Rounded when already available locally; otherwise use
   labeled controls or inline SVG icons, without network font dependencies.
-- Use dark text on light surfaces and white text on dark/red surfaces.
-- Pair interaction states with labels, outlines, or shape changes.
+- Use the bundled `textOnFill` mapping: choose exactly black or white by maximum
+  WCAG contrast against the actual material swatch or HTML surface.
+- Pair interaction states with labels, solid fills, or shape changes.
 - Use a visible red focus outline and an accessible name for every icon control.
 - Verify desktop/mobile framing, contrast, label fit, replay, and pointer input.

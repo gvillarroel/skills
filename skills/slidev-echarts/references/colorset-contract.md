@@ -11,3 +11,42 @@ Preserve imported logos, photos, footage, and third-party source image pixels an
 Validate every output format and state the skill supports: source, static vector, animated vector, canvas, raster/export, gallery/deck chrome, controls, alternate states, and any downstream capture. Keep output paths, chart/diagram facts, relationships, stable IDs, labels, geometry, and accessibility metadata intact when repairing paint.
 
 Copy `assets/templates/echarts-colorsets.mjs` into the deck. Initialize with `colorsetTheme(selected)` and call `prepareColorsetOption(option, selected)` before `setOption`. For browser charts, call `enforceColorsetRenderer(container, selected)` immediately after initialization and before the first `setOption`; call its returned disconnect function during cleanup. It snaps authored Canvas base paints and SVG defaults, hover rules, and paint tweens to exact palette values while keeping geometry and opacity intact. Validate both CanvasRenderer and SVGRenderer paths, chart labels/axes/legends/visualMap states, Slidev controls, and exported HTML. The acceptance deck deliberately uses colorset2 for its chart-category demonstrations. Source numeric data remains unchanged when continuous color maps become exact discrete bins.
+
+## Solid-first category style
+
+Use one opaque solid fill and no decorative outline for initial category choices. Keep the exact finite palette. Allocate every distinct usable palette color before recycling a fill with an outline; exclude the actual canvas color, put saturated/base colors first, then dark/bright/neutral colors, and soft colors last. Keep each category's fill, text and any overflow outline stable across panels, series, legends and motion states. Declare overflow explicitly and cycle border color, dash and width only after that solid capacity is exhausted.
+
+For text inside a filled shape, choose exactly `#000000` or `#ffffff` by the greater WCAG relative-luminance contrast against the actual fill. Do not assume every saturated color needs white text: orange, yellow, cyan and medium green often need black. Labels outside shapes use the canvas contrast. Use spacing and silhouette for grouping before borders. Preserve connectors, chart lines, class compartments, actor line art, meaningful data boundaries, source artwork and explicit user style. Containers are layout surfaces, not new categories.
+
+
+Use the independent `assets/templates/echarts-colorsets.mjs` helpers: `solidColors(colorset, canvas)` gives the complete solid capacity; `solidCategoryStyle(index, colorset, canvas)` returns stable fill, border, inside text and explicit overflow. Build a stable category ID-to-index map before rendering; use the same map for legends and data. `prepareColorsetOption` defaults filled marks to zero border width and resolves inside text contrast, while keeping chart/connector lines. For an explicit source-style preservation request set `colorsetPresentation: 'source'` on the editable option. Quantitative continuous scales, boxplot whiskers and candlestick wicks retain their measurement meaning.
+
+The public signatures are `solidColors(colorset, canvas)`,
+`solidCategoryStyle(index, colorset, canvas)`, and
+`prepareColorsetOption(option, colorset, categoryOrder = [])`. The canvas may be
+an equivalent opaque CSS color (including rgba with alpha 1 or eight-digit hex).
+The option canvas paint retains its meaning while allocation excludes its exact
+opaque palette token. Each category must have a stable `id` or `name`. Defaults
+sort identities in natural order so reordering the same set retains its colors.
+For changing subsets or additions, pass the same complete `categoryOrder` array
+to every option, panel and state; the array includes categories currently hidden.
+Keep any explicit palette mappings consistent with that manifest. Caller palette
+fills and the full `solidCategoryStyle` object are retained; its `overflow` flag
+is allocation metadata and is removed from ECharts `itemStyle` after preparation.
+Observe rendered overflow through `borderWidth > 0`, rather than expecting an
+unsupported ECharts `itemStyle.overflow` property.
+
+Inside labels use their effective inherited position and actual label backing;
+outer labels use the canvas. For a translucent canvas, contrast uses its composite
+over a white host fallback while keeping the requested canvas paint. Place an
+embedded chart on a different opaque host by supplying that effective opaque
+backgroundColor; the helper cannot infer external host pixels. Native pie/funnel defaults are outer, graph defaults
+are inside. Label background colors and rich-token backgrounds take precedence
+when they cover the mark. Normal and authored motion-state label styles remove
+decorative text borders and shadows. Validate actual rendered text paint, not
+only option fields, especially for graph defaults and inherited data labels.
+
+Overflow borders have at least 3:1 contrast against the solid fill and enumerate
+allowed border colors, solid/dashed/dotted patterns, and bounded 1–3 px widths.
+After these finite combinations repeat, use labels, symbols or split views to
+retain distinguishable categories; do not widen borders until they hide the fill.

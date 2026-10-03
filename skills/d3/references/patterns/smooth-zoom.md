@@ -33,11 +33,11 @@ function renderSmoothZoom() {
     });
     svg.append("rect").attr("x", plot.x).attr("y", plot.y).attr("width", plot.w).attr("height", plot.h).attr("fill", palette.gray50).attr("stroke", palette.gray200);
     const dots = svg.append("g").selectAll("circle").data(points).join("circle")
-      .attr("cx", d => d.x).attr("cy", d => d.y).attr("fill", d => d.focus ? palette.orange : colors[d.group]).attr("fill-opacity", d => d.focus ? .9 : .36).attr("stroke", "#fff");
+      .attr("cx", d => d.x).attr("cy", d => d.y).attr("fill", d => d.focus ? palette.orange : colors[d.group]).attr("data-opacity-role", "semantic").attr("fill-opacity", d => d.focus ? .9 : .36).attr("stroke", "#fff");
     grow(dots, "r", 1, d => d.focus ? 6 : 4, .04, .5);
     const view = svg.append("rect")
       .attr("x", 136).attr("y", 74).attr("width", 286).attr("height", 216).attr("rx", 8)
-      .attr("fill", palette.orangeHighlight).attr("fill-opacity", .48).attr("stroke", palette.orange).attr("stroke-width", 2.6);
+      .attr("fill", palette.orangeHighlight).attr("fill-opacity", 1).attr("stroke", palette.orange).attr("stroke-width", 2.6);
     view.append("animate").attr("attributeName", "x").attr("from", target.x).attr("to", 136).attr("dur", "1s").attr("fill", "freeze");
     view.append("animate").attr("attributeName", "y").attr("from", target.y).attr("to", 74).attr("dur", "1s").attr("fill", "freeze");
     view.append("animate").attr("attributeName", "width").attr("from", target.w).attr("to", 286).attr("dur", "1s").attr("fill", "freeze");

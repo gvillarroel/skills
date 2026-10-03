@@ -50,7 +50,7 @@ function renderEmbeddingNeighborhood() {
     dots.append("circle")
       .attr("r", d => d.r)
       .attr("fill", d => d.color)
-      .attr("fill-opacity", d => d.query ? .96 : d.near ? .76 : .42)
+      .attr("data-opacity-role", "semantic").attr("fill-opacity", d => d.query ? .96 : d.near ? .76 : .42)
       .attr("stroke", palette.surface)
       .attr("stroke-width", d => d.query ? 2.2 : 1.4);
     dots.append("text")

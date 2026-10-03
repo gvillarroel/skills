@@ -4,12 +4,12 @@
   "input": "assets/base-images/seurat-grande-jatte.jpg",
   "input_sha256": "659a2ff0a990f0d2a038a231d2d2dadf924afa9f078221af53241fd310fc2175",
   "output": "svgs/vectorize-seurat-grande-jatte-cs2.svg",
-  "output_sha256": "d5ac1eee9576209797aef333987b0a757093051239d40568d01d81c55d18e202",
+  "output_sha256": "b6907870849b74a86f7482f756c71322be6c459e2f4616235a122de2c7183242",
   "pattern_id": "vectorize-seurat-grande-jatte-cs2",
   "mode": "organic",
   "tile": "none",
   "colorset": "colorset2",
-  "palette_contract_sha256": "c81d32ffb0d55d44e7d3102c7470e251baf34f0bb6472fbede7753df8b9a9eb5",
+  "palette_contract_sha256": "f36eb8a9fe171108383767c7697f023218121e51d3e45247e87b58e397b36d62",
   "variation_seed": 0,
   "composition_sha256": "0641ca85c916636a083053e542a0cbb3c4a504cb840afc0dab83eb60723bea8c",
   "parameters": {
@@ -29,7 +29,7 @@
         },
         {
           "source": "#4e5d52",
-          "target": "#004d66"
+          "target": "#4f4f4f"
         },
         {
           "source": "#83796e",
@@ -37,23 +37,23 @@
         },
         {
           "source": "#6a7266",
-          "target": "#45842a"
+          "target": "#696969"
         },
         {
           "source": "#4b4e4f",
-          "target": "#652f6c"
+          "target": "#004d66"
         },
         {
           "source": "#9e9c87",
-          "target": "#cfcfcf"
+          "target": "#9c9c9c"
         },
         {
           "source": "#616061",
-          "target": "#9e1b32"
+          "target": "#363636"
         },
         {
           "source": "#706364",
-          "target": "#1c1c1c"
+          "target": "#294d19"
         }
       ],
       "source_colors": [
@@ -70,13 +70,13 @@
       "target_colors": [
         "#333e48",
         "#007298",
-        "#004d66",
+        "#4f4f4f",
         "#828282",
-        "#45842a",
-        "#652f6c",
-        "#cfcfcf",
-        "#9e1b32",
-        "#1c1c1c"
+        "#696969",
+        "#004d66",
+        "#9c9c9c",
+        "#363636",
+        "#294d19"
       ]
     }
   },
@@ -89,13 +89,13 @@
   "palette": [
     "#004d66",
     "#007298",
-    "#1c1c1c",
+    "#294d19",
     "#333e48",
-    "#45842a",
-    "#652f6c",
+    "#363636",
+    "#4f4f4f",
+    "#696969",
     "#828282",
-    "#9e1b32",
-    "#cfcfcf"
+    "#9c9c9c"
   ],
   "path_count": 82,
   "output_bytes": 187071,

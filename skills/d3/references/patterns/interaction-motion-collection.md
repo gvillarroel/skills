@@ -53,7 +53,7 @@ function renderShapeTween() {
       return [cx + Math.cos(a) * r * 1.35, cy + Math.sin(a) * r * .78];
     });
     const line = d3.line().curve(d3.curveLinearClosed);
-    const path = svg.append("path").attr("d", line(end)).attr("fill", palette.blue).attr("fill-opacity", .26).attr("stroke", palette.blue).attr("stroke-width", 3);
+    const path = svg.append("path").attr("d", line(end)).attr("fill", palette.blue).attr("fill-opacity", 1).attr("stroke", palette.blue).attr("stroke-width", 3);
     path.append("animate").attr("attributeName", "d").attr("from", line(start)).attr("to", line(end)).attr("dur", "1.35s").attr("begin", ".08s").attr("fill", "freeze");
     const dots = svg.append("g").selectAll("circle").data(end).join("circle").attr("cx", d => d[0]).attr("cy", d => d[1]).attr("fill", palette.red);
     grow(dots, "r", 2, 5.5, .25, .5);
@@ -179,7 +179,7 @@ function renderTextTween() {
       { label: "Risk", from: 61, to: 29, c: palette.red, fill: palette.redHighlight }
     ];
     const group = svg.append("g").selectAll("g").data(metrics).join("g").attr("transform", (d, i) => `translate(${122 + i * 158},${height / 2})`);
-    group.append("circle").attr("r", 56).attr("fill", d => d.fill).attr("fill-opacity", .78).attr("stroke", d => d.c).attr("stroke-width", 2.8);
+    group.append("circle").attr("r", 56).attr("fill", d => d.fill).attr("fill-opacity", 1).attr("stroke", d => d.c).attr("stroke-width", 2.8);
     const text = group.append("text").attr("text-anchor", "middle").attr("dy", ".18em").attr("font-size", 32).attr("font-weight", 800).attr("fill", palette.ink).text(d => d.to);
     text.each(function (d, i) {
       const node = d3.select(this);
@@ -224,7 +224,7 @@ function renderBrushHandles() {
     axisBottom(svg, x, 316, 6);
     const brush = { x0: x(24), x1: x(64), y0: 82, y1: 296 };
     const rect = svg.append("rect").attr("x", brush.x0).attr("y", brush.y0).attr("width", brush.x1 - brush.x0).attr("height", brush.y1 - brush.y0)
-      .attr("fill", "#cdf3ff").attr("fill-opacity", .42).attr("stroke", palette.blue).attr("stroke-width", 1.8);
+      .attr("fill", "#cdf3ff").attr("fill-opacity", 1).attr("stroke", palette.blue).attr("stroke-width", 1.8);
     rect.append("animate").attr("attributeName", "x").attr("from", x(16)).attr("to", brush.x0).attr("dur", ".75s").attr("begin", ".12s").attr("fill", "freeze");
     const handles = svg.append("g").selectAll("rect").data([brush.x0, brush.x1]).join("rect")
       .attr("x", d => d - 5).attr("y", brush.y0 - 6).attr("width", 10).attr("height", brush.y1 - brush.y0 + 12).attr("rx", 5)
@@ -262,11 +262,11 @@ function renderBrushSnapping() {
     const y = d3.scaleLinear().domain([0, 100]).range([302, 72]);
     const data = d3.range(12).map(i => ({ i, value: 28 + ((i * 19) % 62) }));
     svg.append("g").selectAll("rect.bar").data(data).join("rect")
-      .attr("class", "bar").attr("x", d => x(String(d.i))).attr("y", d => y(d.value)).attr("width", x.bandwidth()).attr("height", d => y(0) - y(d.value)).attr("fill", palette.green).attr("fill-opacity", .68);
+      .attr("class", "bar").attr("x", d => x(String(d.i))).attr("y", d => y(d.value)).attr("width", x.bandwidth()).attr("height", d => y(0) - y(d.value)).attr("fill", palette.green).attr("fill-opacity", 1);
     axisBottom(svg, d3.scaleLinear().domain([0, 11]).range([62, width - 54]), 322, 6);
     const loose = { x: x("2") - 13, w: x("7") - x("2") + x.bandwidth() + 26 };
     const snapped = { x: x("2"), w: x("7") - x("2") + x.bandwidth() };
-    const selection = svg.append("rect").attr("x", snapped.x).attr("y", 62).attr("width", snapped.w).attr("height", 242).attr("fill", palette.yellowHighlight).attr("fill-opacity", .65).attr("stroke", palette.yellowHover).attr("stroke-width", 2);
+    const selection = svg.append("rect").attr("x", snapped.x).attr("y", 62).attr("width", snapped.w).attr("height", 242).attr("fill", palette.yellowHighlight).attr("fill-opacity", 1).attr("stroke", palette.yellowHover).attr("stroke-width", 2);
     selection.append("animate").attr("attributeName", "x").attr("from", loose.x).attr("to", snapped.x).attr("dur", ".8s").attr("begin", ".12s").attr("fill", "freeze");
     selection.append("animate").attr("attributeName", "width").attr("from", loose.w).attr("to", snapped.w).attr("dur", ".8s").attr("begin", ".12s").attr("fill", "freeze");
     svg.append("text").attr("class", "mark-label").attr("x", snapped.x + snapped.w / 2).attr("y", 52).attr("text-anchor", "middle").text("snaps to bins 2-7");
@@ -305,10 +305,10 @@ function renderOrdinalBrushing() {
     svg.append("g").selectAll("line").data(groups).join("line").attr("x1", d => x(d)).attr("x2", d => x(d)).attr("y1", 72).attr("y2", 304).attr("stroke", "#e7e7e7");
     const dots = svg.append("g").selectAll("circle").data(data).join("circle")
       .attr("cx", d => x(d.group) + (((d.value * 7) % 17) - 8)).attr("cy", d => y(d.value))
-      .attr("fill", d => d.selected ? palette.red : palette.blue).attr("fill-opacity", d => d.selected ? .9 : .42);
+      .attr("fill", d => d.selected ? palette.red : palette.blue).attr("data-opacity-role", "semantic").attr("fill-opacity", d => d.selected ? .9 : .42);
     grow(dots, "r", 2, 4.6, .05, .45);
     const x0 = x("C") - 32, x1 = x("E") + 32;
-    const brush = svg.append("rect").attr("x", x0).attr("y", 62).attr("width", x1 - x0).attr("height", 254).attr("fill", "#ffccd5").attr("fill-opacity", .28).attr("stroke", palette.red).attr("stroke-width", 2);
+    const brush = svg.append("rect").attr("x", x0).attr("y", 62).attr("width", x1 - x0).attr("height", 254).attr("fill", "#ffccd5").attr("fill-opacity", 1).attr("stroke", palette.red).attr("stroke-width", 2);
     fadeIn(brush, .14, .45);
     svg.selectAll(".ordinal-label").data(groups).join("text").attr("class", "mark-label").attr("x", d => x(d)).attr("y", 336).attr("text-anchor", "middle").text(d => d);
   }
@@ -393,10 +393,10 @@ function renderXyZoom() {
     const y1 = d3.scaleLinear().domain([focus.y0, focus.y1]).range([right.y + right.h, right.y]);
     svg.append("rect").attr("x", left.x).attr("y", left.y).attr("width", left.w).attr("height", left.h).attr("fill", "#ffffff").attr("stroke", palette.line);
     svg.append("rect").attr("x", right.x).attr("y", right.y).attr("width", right.w).attr("height", right.h).attr("fill", "#ffffff").attr("stroke", palette.line);
-    svg.append("g").selectAll("circle.context").data(data).join("circle").attr("class", "context").attr("cx", d => x0(d.x)).attr("cy", d => y0(d.y)).attr("r", 3).attr("fill", palette.blue).attr("fill-opacity", .42);
-    svg.append("rect").attr("x", x0(focus.x0)).attr("y", y0(focus.y1)).attr("width", x0(focus.x1) - x0(focus.x0)).attr("height", y0(focus.y0) - y0(focus.y1)).attr("fill", "#cdf3ff").attr("fill-opacity", .28).attr("stroke", palette.blue).attr("stroke-width", 2);
+    svg.append("g").selectAll("circle.context").data(data).join("circle").attr("class", "context").attr("cx", d => x0(d.x)).attr("cy", d => y0(d.y)).attr("r", 3).attr("fill", palette.blue).attr("fill-opacity", 1);
+    svg.append("rect").attr("x", x0(focus.x0)).attr("y", y0(focus.y1)).attr("width", x0(focus.x1) - x0(focus.x0)).attr("height", y0(focus.y0) - y0(focus.y1)).attr("fill", "#cdf3ff").attr("fill-opacity", 1).attr("stroke", palette.blue).attr("stroke-width", 2);
     const detail = data.filter(d => d.x >= focus.x0 && d.x <= focus.x1 && d.y >= focus.y0 && d.y <= focus.y1);
-    const dots = svg.append("g").selectAll("circle.detail").data(detail).join("circle").attr("class", "detail").attr("cx", d => x1(d.x)).attr("cy", d => y1(d.y)).attr("fill", palette.red).attr("fill-opacity", .82);
+    const dots = svg.append("g").selectAll("circle.detail").data(detail).join("circle").attr("class", "detail").attr("cx", d => x1(d.x)).attr("cy", d => y1(d.y)).attr("fill", palette.red).attr("fill-opacity", 1);
     grow(dots, "r", 2, 5, .12, .45);
     svg.append("text").attr("class", "mark-label").attr("x", left.x).attr("y", 48).text("context");
   }

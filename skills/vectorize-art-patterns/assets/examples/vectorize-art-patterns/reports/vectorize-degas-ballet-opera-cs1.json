@@ -4,12 +4,12 @@
   "input": "assets/base-images/degas-ballet-opera.jpg",
   "input_sha256": "c2d302129b902fefa71f784a3ada8701c9204d6eabcdcf8f108b993f8f5df767",
   "output": "svgs/vectorize-degas-ballet-opera-cs1.svg",
-  "output_sha256": "a7c6c94d38cbf76102fa534ae727722698849244ac8c32642773d4df4be769dc",
+  "output_sha256": "5373d75d9e39b33e3583246a7120784e2336ae2956f73801e6c4a046db0a0e60",
   "pattern_id": "vectorize-degas-ballet-opera-cs1",
   "mode": "collage",
   "tile": "none",
   "colorset": "colorset1",
-  "palette_contract_sha256": "c81d32ffb0d55d44e7d3102c7470e251baf34f0bb6472fbede7753df8b9a9eb5",
+  "palette_contract_sha256": "f36eb8a9fe171108383767c7697f023218121e51d3e45247e87b58e397b36d62",
   "variation_seed": 0,
   "composition_sha256": "95a0083aacba6a4d72f433850eae9c55bd39c7c69b80e5837ec20ee255ef5907",
   "parameters": {
@@ -29,7 +29,7 @@
         },
         {
           "source": "#777264",
-          "target": "#6d1222"
+          "target": "#696969"
         },
         {
           "source": "#c9bdb0",
@@ -37,19 +37,19 @@
         },
         {
           "source": "#626c5d",
-          "target": "#1c1c1c"
+          "target": "#4f4f4f"
         },
         {
           "source": "#32312d",
-          "target": "#e8002a"
+          "target": "#363636"
         },
         {
           "source": "#565245",
-          "target": "#cfcfcf"
+          "target": "#6d1222"
         },
         {
           "source": "#424c47",
-          "target": "#ffccd5"
+          "target": "#1c1c1c"
         }
       ],
       "source_colors": [
@@ -65,12 +65,12 @@
       "target_colors": [
         "#333e48",
         "#828282",
-        "#6d1222",
+        "#696969",
         "#9e1b32",
-        "#1c1c1c",
-        "#e8002a",
-        "#cfcfcf",
-        "#ffccd5"
+        "#4f4f4f",
+        "#363636",
+        "#6d1222",
+        "#1c1c1c"
       ]
     }
   },
@@ -83,12 +83,12 @@
   "palette": [
     "#1c1c1c",
     "#333e48",
+    "#363636",
+    "#4f4f4f",
+    "#696969",
     "#6d1222",
     "#828282",
-    "#9e1b32",
-    "#cfcfcf",
-    "#e8002a",
-    "#ffccd5"
+    "#9e1b32"
   ],
   "path_count": 120,
   "output_bytes": 196308,

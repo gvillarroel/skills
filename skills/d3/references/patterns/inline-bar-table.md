@@ -69,7 +69,7 @@ function renderInlineBarTable() {
       y0 + rows.length * rowH - 18,
       d3.range(1, rows.length).map(i => y0 - 18 + i * rowH)
     );
-    g.append("circle").attr("cx", 4).attr("cy", 1).attr("r", 3.2).attr("fill", d => d.color).attr("fill-opacity", .86);
+    g.append("circle").attr("cx", 4).attr("cy", 1).attr("r", 3.2).attr("fill", d => d.color).attr("fill-opacity", 1);
     g.append("text").attr("class", "mark-label").attr("x", 14).attr("y", 1).attr("font-weight", 700).attr("font-size", 11.5).text(d => d.model);
     g.append("text").attr("class", "caption").attr("x", 14).attr("y", 14).attr("font-weight", 700).attr("font-size", 9.2).attr("fill", palette.gray600).text(d => d.provider);
     metrics.forEach(metric => {

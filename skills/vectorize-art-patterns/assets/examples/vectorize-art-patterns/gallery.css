@@ -2,9 +2,9 @@
   color-scheme: light;
   --paper: #f7f7f7;
   --surface: #ffffff;
-  --ink: #1c1c1c;
-  --ink-soft: #333e48;
-  --muted: #696969;
+  --ink: #000000;
+  --ink-soft: #000000;
+  --muted: #000000;
   --line: #cfcfcf;
   --quiet: #e7e7e7;
   --red: #9e1b32;
@@ -50,7 +50,7 @@ select {
   align-items: center;
   justify-content: space-between;
   gap: 28px;
-  border-bottom: 1px solid var(--line);
+  border: 0;
   background: var(--surface);
 }
 
@@ -61,7 +61,7 @@ select {
 }
 
 .masthead nav a {
-  color: var(--red-dark);
+  color: #000000;
   font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.07em;
@@ -103,12 +103,12 @@ main {
   grid-template-columns: minmax(0, 1.3fr) minmax(320px, 0.7fr);
   align-items: center;
   gap: 24px;
-  border-bottom: 1px solid var(--line);
+  border: 0;
 }
 
 .eyebrow {
   margin: 0 0 20px;
-  color: var(--red);
+  color: #000000;
   font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.1em;
@@ -144,22 +144,22 @@ h1 {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   margin: 0;
-  border: 1px solid var(--line);
+  border: 0;
   background: var(--surface);
 }
 
 .hero-stats div {
   min-height: 112px;
   padding: 20px;
-  border-right: 1px solid var(--line);
+  border: 0;
 }
 
 .hero-stats div:last-child {
-  border-right: 0;
+  border: 0;
 }
 
 .hero-stats dt {
-  color: var(--red-dark);
+  color: #000000;
   font-size: 25px;
   font-weight: 900;
 }
@@ -193,15 +193,15 @@ h1 {
 }
 
 .method .eyebrow {
-  color: #ffccd5;
+  color: #ffffff;
 }
 
 .method-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1px;
-  background: #4f4f4f;
-  border: 1px solid #4f4f4f;
+  background: var(--ink);
+  border: 0;
 }
 
 .method-grid article {
@@ -211,7 +211,7 @@ h1 {
 }
 
 .method-grid strong {
-  color: #ffccd5;
+  color: #ffffff;
   font-size: 13px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -232,7 +232,7 @@ h1 {
   grid-template-columns: auto minmax(260px, 1fr) minmax(190px, 0.35fr) auto;
   align-items: end;
   gap: 18px;
-  border-bottom: 1px solid var(--line);
+  border: 0;
   background: rgb(247 247 247 / 96%);
   backdrop-filter: blur(10px);
 }
@@ -267,7 +267,7 @@ h1 {
   display: inline-flex;
   align-items: center;
   gap: 9px;
-  border: 1px solid var(--ink);
+  border: 0;
   background: var(--surface);
   color: var(--ink);
   cursor: pointer;
@@ -294,7 +294,7 @@ h1 {
   width: 100%;
   min-height: 44px;
   padding: 0 13px;
-  border: 1px solid var(--line);
+  border: 0;
   border-radius: 0;
   background: var(--surface);
   color: var(--ink);
@@ -315,7 +315,7 @@ h1 {
 }
 
 .result-count strong {
-  color: var(--red-dark);
+  color: #000000;
   font-size: 20px;
 }
 
@@ -341,7 +341,7 @@ h1 {
   min-width: 0;
   display: flex;
   flex-direction: column;
-  border: 1px solid var(--line);
+  border: 0;
   background: var(--surface);
 }
 
@@ -353,7 +353,7 @@ h1 {
   display: block;
   aspect-ratio: 4 / 3;
   padding: 18px;
-  border-bottom: 1px solid var(--line);
+  border: 0;
   background:
     linear-gradient(45deg, #f7f7f7 25%, transparent 25%),
     linear-gradient(-45deg, #f7f7f7 25%, transparent 25%),
@@ -366,7 +366,7 @@ h1 {
 
 .image-link:hover,
 .image-link:focus-visible {
-  background-color: #ffccd5;
+  background-color: #ffffff;
 }
 
 .artwork-image {
@@ -387,7 +387,7 @@ h1 {
   display: flex;
   justify-content: space-between;
   gap: 12px;
-  color: var(--red);
+  color: #000000;
   font-size: 10px;
   font-weight: 800;
   letter-spacing: 0.08em;
@@ -420,7 +420,7 @@ h1 {
 
 .card-data {
   margin: 26px 0;
-  border-top: 1px solid var(--line);
+  border: 0;
 }
 
 .card-data div {
@@ -428,7 +428,7 @@ h1 {
   display: grid;
   grid-template-columns: 0.42fr 0.58fr;
   gap: 10px;
-  border-bottom: 1px solid var(--line);
+  border: 0;
 }
 
 .card-data dt,
@@ -461,7 +461,7 @@ h1 {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid var(--ink);
+  border: 0;
   color: var(--ink);
   font-size: 11px;
   font-weight: 800;
@@ -477,14 +477,13 @@ h1 {
 
 .actions a:hover,
 .actions a:focus-visible {
-  border-color: var(--red);
   background: var(--red);
   color: var(--surface);
 }
 
 .empty-state {
   padding: 80px;
-  border: 1px solid var(--line);
+  border: 0;
   text-align: center;
 }
 
@@ -499,7 +498,7 @@ h1 {
 }
 
 .rights .eyebrow {
-  color: #ffccd5;
+  color: #ffffff;
 }
 
 .rights > p {
@@ -516,7 +515,7 @@ footer {
   align-items: center;
   justify-content: space-between;
   gap: 30px;
-  border-top: 1px solid var(--line);
+  border: 0;
   color: var(--muted);
   font-size: 11px;
 }
@@ -575,12 +574,12 @@ footer {
 
   .hero-stats div {
     min-height: 86px;
-    border-right: 0;
-    border-bottom: 1px solid var(--line);
+    border: 0;
+    border: 0;
   }
 
   .hero-stats div:last-child {
-    border-bottom: 0;
+    border: 0;
   }
 
   .method,

@@ -43,7 +43,7 @@ venn-beta
 
 ## Configured and semantic slots
 
-- The generated Sankey node map uses eight colors and cycles only after eight distinct node IDs. Write comma-safe labels as unquoted CSV fields, for example `Transfer node 01,Transfer node 02,80`. Use CSV double quotes only when a label itself requires them; single quotes become visible label characters.
+- The generated Sankey node map consumes the selected palette's entire usable solid sequence before repeating. The historical eight-node fixture exercises the first eight choices; it is not the current palette capacity. Write comma-safe labels as unquoted CSV fields, for example `Transfer node 01,Transfer node 02,80`. Use CSV double quotes only when a label itself requires them; single quotes become visible label characters. For more nodes than usable solid colors, declare overflow styles separately or split the view; do not introduce outlines at the older eight-node boundary.
 - The extended XY palette contains six plot colors; the standard palette contains five. A six-series acceptance case exercises both the extended tail and standard cycling behavior.
 - Quadrant and Cynefin use four and five fixed domains respectively.
 - Event Modeling uses five semantic element roles: UI, processor, read model, command, and event.

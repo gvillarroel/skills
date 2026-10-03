@@ -60,7 +60,7 @@ function renderTokenRouletteSampler() {
     wedgeGroups.append("path")
       .attr("d", arc)
       .attr("fill", d => d.data.color)
-      .attr("fill-opacity", d => d.data.selected ? .94 : .72)
+      .attr("data-opacity-role", "semantic").attr("fill-opacity", d => d.data.selected ? .94 : .72)
       .attr("stroke", palette.surface)
       .attr("stroke-width", 2);
     wedgeGroups.append("path")
@@ -97,7 +97,7 @@ function renderTokenRouletteSampler() {
       .attr("height", 13)
       .attr("rx", 3)
       .attr("fill", d => d.color)
-      .attr("fill-opacity", d => d.selected ? .94 : .7);
+      .attr("data-opacity-role", "semantic").attr("fill-opacity", d => d.selected ? .94 : .7);
     legendRows.append("text")
       .attr("class", "mark-label")
       .attr("x", 20)

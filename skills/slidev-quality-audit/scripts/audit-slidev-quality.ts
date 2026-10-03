@@ -599,6 +599,19 @@ async function inspectState(page: any, options: Options): Promise<StateInspectio
     const layoutRect = layout.getBoundingClientRect()
     const allElements = [...layout.querySelectorAll('*')].filter((node) => !matchesClosest(node, auditOptions.ignoreSelector))
     const visibleElements = allElements.filter((node) => isVisible(node, false))
+    const categoryMarks = visibleElements.filter((node) => node.hasAttribute('data-category-id'))
+    const categoryIds = new Set(categoryMarks.map((node) => node.getAttribute('data-category-id')))
+    const canvasPaint = parseCssColor(getComputedStyle(layout).backgroundColor)
+    const canvasHex = canvasPaint ? '#' + [canvasPaint.r,canvasPaint.g,canvasPaint.b].map((c)=>Math.round(c).toString(16).padStart(2,'0')).join('') : '#ffffff'
+    const solidCapacity = auditOptions.paletteColors.filter((color) => color !== canvasHex).length
+    for (const node of categoryMarks) {
+      if (node.closest('[data-source-media]') || node.hasAttribute('data-allow-category-outline')) continue
+      const style = getComputedStyle(node)
+      const stroke = parseCssColor(style.stroke)
+      const outlined = (stroke && stroke.a > 0 && Number.parseFloat(style.strokeWidth) > 0)
+        || ['Top','Right','Bottom','Left'].some((side) => Number.parseFloat((style as any)[`border${side}Width`]) > 0 && (style as any)[`border${side}Style`] !== 'none')
+      if (outlined && (categoryIds.size <= solidCapacity || !node.hasAttribute('data-colorset-overflow'))) add(findings,'premature-category-outline','error',describeElement(node),`Category outline appears with ${categoryIds.size} categories and ${solidCapacity} usable solid colors.`,'Initial category marks use decorative borders before solid capacity is exhausted.','Remove the outline and use one opaque fill. Declare data-colorset-overflow only after assigning all usable colors; use data-allow-category-outline for an explicit meaningful boundary or user style.',node.getBoundingClientRect())
+    }
     for (const node of [layout, ...visibleElements]) {
       // Imported source pixels are a fidelity boundary. Authored wrappers remain checked.
       if (node.closest('[data-source-media]')) continue

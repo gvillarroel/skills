@@ -4,12 +4,12 @@
   "input": "assets/base-images/pissarro-place-du-havre.jpg",
   "input_sha256": "c62f31ef16dc3b8ac3a89aa928d530ba3a5d3f284abb6dd28f449fa76a626731",
   "output": "svgs/vectorize-pissarro-place-du-havre-cs1.svg",
-  "output_sha256": "167c6810abba235a02f9cdefb2b9d1367054fb03b865f43b3887d87a45c890e1",
+  "output_sha256": "ee7b40e23e269e43fb36618cdc3c1a8c26ec9d023d86fdfb2a55dae2f86892bb",
   "pattern_id": "vectorize-pissarro-place-du-havre-cs1",
   "mode": "organic",
   "tile": "none",
   "colorset": "colorset1",
-  "palette_contract_sha256": "c81d32ffb0d55d44e7d3102c7470e251baf34f0bb6472fbede7753df8b9a9eb5",
+  "palette_contract_sha256": "f36eb8a9fe171108383767c7697f023218121e51d3e45247e87b58e397b36d62",
   "variation_seed": 0,
   "composition_sha256": "2b2f04683b088e0d53abd46c766c2ca68dd9e84280ea41c3c7d2e36f3a9e5e3c",
   "parameters": {
@@ -25,23 +25,23 @@
       "layers": [
         {
           "source": "#9db1be",
-          "target": "#cfcfcf"
+          "target": "#b5b5b5"
         },
         {
           "source": "#6d5f4f",
-          "target": "#828282"
+          "target": "#696969"
         },
         {
           "source": "#e2bf97",
-          "target": "#ffccd5"
+          "target": "#cfcfcf"
         },
         {
           "source": "#3f556f",
-          "target": "#6d1222"
+          "target": "#4f4f4f"
         },
         {
           "source": "#b5806a",
-          "target": "#e8002a"
+          "target": "#828282"
         },
         {
           "source": "#4e719f",
@@ -49,11 +49,11 @@
         },
         {
           "source": "#253744",
-          "target": "#1c1c1c"
+          "target": "#363636"
         },
         {
           "source": "#eceadb",
-          "target": "#f7f7f7"
+          "target": "#e7e7e7"
         }
       ],
       "source_colors": [
@@ -69,14 +69,14 @@
       ],
       "target_colors": [
         "#333e48",
+        "#b5b5b5",
+        "#696969",
         "#cfcfcf",
+        "#4f4f4f",
         "#828282",
-        "#ffccd5",
-        "#6d1222",
-        "#e8002a",
         "#9e1b32",
-        "#1c1c1c",
-        "#f7f7f7"
+        "#363636",
+        "#e7e7e7"
       ]
     }
   },
@@ -87,14 +87,14 @@
   "render_width": 560,
   "render_height": 456,
   "palette": [
-    "#1c1c1c",
     "#333e48",
-    "#6d1222",
+    "#363636",
+    "#4f4f4f",
+    "#696969",
     "#828282",
     "#9e1b32",
-    "#cfcfcf",
-    "#e8002a",
-    "#ffccd5"
+    "#b5b5b5",
+    "#cfcfcf"
   ],
   "path_count": 94,
   "output_bytes": 241842,

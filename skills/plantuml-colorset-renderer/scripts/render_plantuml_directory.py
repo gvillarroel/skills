@@ -22,7 +22,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from plantuml_coverage import fixture_index, load_manifest
-from palette_paints import COLORSETS, NAMES, canonical, nearest, require_svg_palette, svg_paints
+from palette_paints import COLORSETS, NAMES, canonical, nearest, readable_text, require_svg_palette, svg_paints
 
 
 SCRIPT_DIR = Path(__file__).resolve().parent
@@ -76,6 +76,32 @@ def relative(path: Path, root: Path) -> str:
         return path.relative_to(root).as_posix()
     except ValueError:
         return path.as_posix()
+
+
+def preserve_native_details(root: ET.Element) -> None:
+    """Keep structural open lines visible when native shape outline width is zero.
+
+    This applies only to newly rendered native SVG, never supplied source artwork.
+    Class compartments and cylinder/queue details are open geometry inside entity
+    groups; connector lines remain separate native groups or activity primitives.
+    """
+    for group in root.iter():
+        if "entity" not in group.get("class", "").split():
+            continue
+        fill = next((node.get("fill") for node in group.iter() if node.get("fill", "").startswith("#") and node.tag.rsplit("}", 1)[-1] not in {"text"}), None)
+        if not fill:
+            continue
+        detail_color = readable_text(fill)
+        for node in group.iter():
+            local = node.tag.rsplit("}", 1)[-1]
+            if local == "line" or local == "path" and node.get("fill") == "none":
+                style = node.get("style", "")
+                if "stroke:" not in style:
+                    node.set("style", f"{style}stroke:{detail_color};stroke-width:1;")
+    if root.get("data-diagram-type") == "ACTIVITY":
+        for node in root.iter():
+            if node.tag.rsplit("}", 1)[-1] == "line" and "stroke:" not in node.get("style", ""):
+                node.set("style", "stroke:#696969;stroke-width:1.5;")
 
 
 def discover_sources(input_dir: Path) -> list[Path]:
@@ -396,6 +422,7 @@ def render_source(
             if fmt == "svg":
                 tree = ET.parse(target)
                 svg_paints(tree.getroot(), colorset, normalize=True)
+                preserve_native_details(tree.getroot())
                 tree.getroot().set("data-colorset", colorset)
                 tree.write(target, encoding="utf-8", xml_declaration=True)
                 require_svg_palette(tree.getroot(), colorset)

@@ -1,0 +1,26 @@
+{
+  "date": "2026-10-03",
+  "passed": true,
+  "states": [
+    {
+      "issues": [],
+      "borders": 0,
+      "unavailableParagraphs": 11,
+      "rows": 12,
+      "overflow": false,
+      "width": 1440,
+      "errors": []
+    },
+    {
+      "issues": [],
+      "borders": 0,
+      "unavailableParagraphs": 11,
+      "rows": 12,
+      "overflow": false,
+      "width": 390,
+      "errors": []
+    }
+  ],
+  "findings": [],
+  "scope": "Computed caption/button contrast and borderless chrome at desktop/mobile; original vector/logo paints are source identity and excluded."
+}

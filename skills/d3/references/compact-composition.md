@@ -45,7 +45,7 @@ red role and reuse the same role across all nodes, frames, and linked views.
 Use grayscale, labels, shape, stroke weight, or dash pattern for further
 distinctions. More objects do not automatically require more colors.
 
-Use `#e7e7e7` for a quiet selected surface and an opaque red outline or mark for
+Use a solid red fill or a direct label for
 emphasis. Do not wash large red surfaces with white to simulate a pink secondary
 category. Keep `#ffccd5` outside automatic sequences; use it only when remaining
 red/neutral choices cannot distinguish an additional meaningful category, or

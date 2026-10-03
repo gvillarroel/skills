@@ -28,7 +28,7 @@ function renderProjectionSwitch() {
     const globe = d3.geoOrthographic().rotate([35, -10]).scale(105).translate([165, 179]);
     const flat = d3.geoEquirectangular().fitExtent([[320, 82], [522, 282]], { type: "Sphere" });
     const globePoint = d => globe([d.lon, d.lat]) || [165, 179];
-    svg.append("circle").attr("cx", 165).attr("cy", 179).attr("r", 105).attr("fill", palette.blueHighlight).attr("fill-opacity", .28).attr("stroke", palette.gray200);
+    svg.append("circle").attr("cx", 165).attr("cy", 179).attr("r", 105).attr("fill", palette.blueHighlight).attr("fill-opacity", 1).attr("stroke", palette.gray200);
     svg.append("rect").attr("x", 320).attr("y", 82).attr("width", 202).attr("height", 200).attr("rx", 5).attr("fill", palette.gray50).attr("stroke", palette.gray200);
     const lines = d3.geoGraticule().step([45, 30]).lines();
     const globePath = d3.geoPath(globe);

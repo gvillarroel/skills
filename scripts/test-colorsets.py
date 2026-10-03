@@ -5,6 +5,7 @@
 # ///
 """Test observable palette rejections and fidelity-aware SVG extraction."""
 import importlib.util
+import json
 import tempfile
 import unittest
 from pathlib import Path
@@ -16,6 +17,38 @@ SPEC.loader.exec_module(MODULE)
 
 
 class ColorAuditTests(unittest.TestCase):
+    def contract_with(self, modify):
+        directory = MODULE.ROOT / "projects/solid-colorset-style/artifacts/tmp"
+        directory.mkdir(parents=True, exist_ok=True)
+        with tempfile.TemporaryDirectory(dir=directory) as temp:
+            root = Path(temp)
+            (root / "docs").mkdir()
+            contract = json.loads((MODULE.ROOT / "docs/colorsets.json").read_text(encoding="utf-8"))
+            modify(contract)
+            (root / "docs/colorsets.json").write_text(json.dumps(contract), encoding="utf-8")
+            output = root / "mark.svg"
+            output.write_text('<svg xmlns="http://www.w3.org/2000/svg"><rect fill="#9e1b32"/></svg>', encoding="utf-8")
+            return MODULE.validate(root, [output], "colorset1")
+
+    def test_solid_sequence_cannot_drop_or_duplicate_colors(self):
+        def drop(contract):
+            contract["colorsets"]["colorset1"]["solidSequence"].pop()
+        def duplicate(contract):
+            contract["colorsets"]["colorset2"]["solidSequence"].append("#9e1b32")
+        self.assertFalse(self.contract_with(drop)["ok"])
+        self.assertFalse(self.contract_with(duplicate)["ok"])
+
+    def test_text_decision_rejects_weak_contrast_and_non_black_white(self):
+        for fill, text in (("#9e1b32", "#000000"), ("#f1c319", "#ffffff"), ("#007298", "#333e48")):
+            def change(contract):
+                contract["colorsets"]["colorset2"]["textOnFill"][fill] = text
+            self.assertFalse(self.contract_with(change)["ok"], (fill, text))
+
+    def test_text_decision_requires_every_solid_token(self):
+        def change(contract):
+            del contract["colorsets"]["colorset1"]["textOnFill"]["#ffccd5"]
+        self.assertFalse(self.contract_with(change)["ok"])
+
     def inspect(self, body, mode="colorset1"):
         directory = MODULE.ROOT / "projects/colorset-audit/artifacts/tmp"
         directory.mkdir(parents=True, exist_ok=True)

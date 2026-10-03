@@ -6,6 +6,7 @@ description: "Creates editable educational posters inspired by UsefulCharts, wit
 # UsefulCharts-style posters
 
 Read [palette-policy.md](references/palette-policy.md) before authoring or composing visuals. Apply one exact colorset to authored content and report preserved source media separately.
+Read [solid-surfaces.md](references/solid-surfaces.md) for solid-first category fills, black/white text on the actual fill, and palette exhaustion before border variants.
 
 Create an original information poster with clear relationships, stable family colors, compact labels, and deliberate connector corridors. UsefulCharts is the design reference; identify the result by its subject and author. A cream background and colored boxes alone do not establish a convincing resemblance.
 
@@ -32,7 +33,7 @@ uv run --script <skill-dir>/scripts/compare_density.py <reference-census.json> <
 
 ## Compose a poster
 
-When no colors are supplied, use light category fills: coral `#ff9633`, sky blue `#b5b5b5`, gold `#ffd332`, sage `#9c9c9c`, lilac `#b5b5b5`, orange `#ff9633`, and pink `#b5b5b5`. Keep names predominantly black or near-black and verify contrast. Preserve any palette explicitly supplied by the user or source.
+When no colors are supplied, assign categories from the selected colorset solid sequence, use borderless opaque fills, and select pure black or white text by the actual fill contrast. Preserve explicit colors supplied by the user or source.
 
 When the subject or user calls for a different atmosphere, read [thematic art direction](references/thematic-art-direction.md), including for a planning-only request. Choose the background, imagery and visual metaphor together. Use reference-guided image generation when it would improve recognizable focal illustrations, while retaining factual text and quantitative geometry as editable vector layers. The default paper palette is not a universal template.
 

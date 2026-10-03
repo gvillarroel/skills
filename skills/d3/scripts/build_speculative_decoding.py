@@ -13,6 +13,7 @@ import json
 from pathlib import Path
 import sys
 import unicodedata
+from colorset_adapter import adapt_artifact
 
 
 PATTERN_ID = "d3-speculative-decoding"
@@ -55,8 +56,9 @@ def build_svg(tokens: list[str], accepted: int, resume: str, *, width: int = 720
             raise ValueError("Each alternate must name a unique draft position from 1 to the draft-token count")
         positions.add(position)
     palette_path = Path(__file__).resolve().parents[1] / "assets/palettes/colorsets.json"
-    palette = json.loads(palette_path.read_text(encoding="utf-8"))["colorsets"][colorset]["roles"]
-    bg, ink, surface = palette["background"], palette["ink"], palette["surface"]
+    paint_contract = json.loads(palette_path.read_text(encoding="utf-8"))["colorsets"][colorset]
+    palette = paint_contract["roles"]
+    bg, ink, surface = palette["background"], "#000000", palette["surface"]
     draft = palette.get("secondary", palette["primaryDark"])
     positive = palette.get("positive", palette["primaryDark"])
     rejected, target = palette["primary"], palette.get("special", palette["inkDark"])
@@ -93,7 +95,7 @@ def build_svg(tokens: list[str], accepted: int, resume: str, *, width: int = 720
     subtitle = "Draft ahead. Verify together. Keep the prefix."
     add_text(24, 65, subtitle, size=text_size(subtitle, 14, w - 48))
     chunks.append(f'<g class="verification-batch"><rect x="24" y="92" width="{w - 48}" height="60" rx="10" '
-                  f'fill="{surface}" stroke="{palette["line"]}"/>')
+                  f'fill="{surface}" stroke="none"/>')
     chunks.append(f'<rect x="25" y="93" width="{w - 50}" height="58" rx="9" fill="{verifier}" fill-opacity=".45">'
                   f'<animate attributeName="width" from="0" to="{w - 50}" begin=".65s" dur="1.2s" fill="remove"/></rect>')
     add_text(38, 116, f"Target verifies {len(tokens)} draft tokens together", size=14, weight="bold")
@@ -124,8 +126,8 @@ def build_svg(tokens: list[str], accepted: int, resume: str, *, width: int = 720
         add_text(x, token_y - 30, top, anchor="middle", size=12)
         chunks.append(f'<g class="token {status}" data-token-index="{index}">'
                       f'<rect x="{x - box / 2:g}" y="{token_y - 21:g}" width="{box:g}" height="42" rx="8" '
-                      f'fill="{color}" stroke="{color}"/>')
-        add_text(x, token_y + 5, label, anchor="middle", size=text_size(label, 16, box - 12), fill=surface, css="token-label", weight="bold")
+                      f'fill="{color}" stroke="none"/>')
+        add_text(x, token_y + 5, label, anchor="middle", size=text_size(label, 16, box - 12), fill=paint_contract["textOnFill"][color], css="token-label", weight="bold")
         chunks.append('</g>')
         add_text(x, token_y + 43, {"accepted": "Accepted", "rejected": "Rejected", "context": "Context", "target": "Resumes"}[status],
                  size=12, anchor="middle", css="token-status")
@@ -148,7 +150,7 @@ def build_html(svg: str, colorset: str, title: str) -> str:
     palette = json.loads((Path(__file__).resolve().parents[1] / "assets/palettes/colorsets.json").read_text(encoding="utf-8"))["colorsets"][colorset]["roles"]
     # Replay clones only the SVG. No source string is injected into executable
     # JavaScript, and no external runtime is required for the exported SVG.
-    return (f'<!doctype html>\n<html lang="en"><head><meta charset="utf-8">'
+    return adapt_artifact((f'<!doctype html>\n<html lang="en"><head><meta charset="utf-8">'
             f'<meta name="viewport" content="width=device-width,initial-scale=1"><title>{escape(title)}</title>'
             f'<style>body{{margin:0;padding:16px;background:{palette["background"]};color:{palette["ink"]};font-family:Arial,Helvetica,sans-serif}}'
             'main{max-width:1200px;margin:auto}svg{display:block;max-width:100%;height:auto}'
@@ -157,7 +159,7 @@ def build_html(svg: str, colorset: str, title: str) -> str:
             f'button:focus-visible{{outline:2px solid {palette["primaryDark"]};outline-offset:3px}}</style></head>'
             f'<body><main>{svg}<button id="replay" type="button" aria-controls="decode">Replay</button></main>'
             '<script>document.getElementById("replay").addEventListener("click",()=>{'
-            'const svg=document.getElementById("decode");svg.replaceWith(svg.cloneNode(true));});</script></body></html>\n')
+            'const svg=document.getElementById("decode");svg.replaceWith(svg.cloneNode(true));});</script></body></html>\n'), colorset)
 
 
 def alternate(value: str) -> tuple[int, str]:

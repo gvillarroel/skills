@@ -28,6 +28,8 @@ from collections import Counter
 from pathlib import Path
 from typing import Any, Iterable
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from solid_style import category_style
 
 SKILL_ROOT = Path(__file__).resolve().parents[1]
 CATALOG_PATH = SKILL_ROOT / "assets" / "pattern-specs.json"
@@ -45,11 +47,11 @@ REMOTE_REFERENCE_RE = re.compile(
 
 GALLERY_CSS = r""":root {
   color-scheme: dark;
-  --ink: #f7f7f7;
-  --ink-muted: #b5b5b5;
+  --ink: #ffffff;
+  --ink-muted: #ffffff;
   --paper: #f7f7f7;
-  --paper-ink: #1c1c1c;
-  --paper-muted: #696969;
+  --paper-ink: #000000;
+  --paper-muted: #000000;
   --night: #1c1c1c;
   --night-soft: #363636;
   --night-line: rgba(255, 255, 255, 0.12);
@@ -90,7 +92,7 @@ a { color: inherit; }
   top: 0.75rem;
   left: 0.75rem;
   padding: 0.7rem 1rem;
-  color: #000000;
+  color: #ffffff;
   background: var(--focus);
   border-radius: 999px;
   transform: translateY(-180%);
@@ -109,7 +111,7 @@ a { color: inherit; }
   overflow: hidden;
   min-height: 0;
   padding: 24px;
-  border: 1px solid var(--night-line);
+  border: 0;
   border-radius: var(--radius-xl);
   background:
     linear-gradient(125deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.01)),
@@ -124,7 +126,7 @@ a { color: inherit; }
   bottom: -15rem;
   width: 38rem;
   height: 38rem;
-  border: 1px solid rgba(232, 0, 42, 0.23);
+  border: 0;
   border-radius: 50%;
   box-shadow:
     0 0 0 3rem rgba(232, 0, 42, 0.035),
@@ -170,7 +172,7 @@ a { color: inherit; }
   align-items: center;
   min-height: 2.35rem;
   padding: 0.55rem 0.85rem;
-  border: 1px solid var(--night-line);
+  border: 0;
   border-radius: 999px;
   color: var(--ink-muted);
   background: rgba(255, 255, 255, 0.035);
@@ -182,7 +184,7 @@ a { color: inherit; }
 .manifest-link:hover { color: var(--ink); border-color: var(--accent); }
 
 .family-browser { margin-top: 16px; }
-.family-browser > summary { min-height: 44px; padding: 10px 12px; cursor: pointer; border: 1px solid var(--night-line); border-radius: 8px; }
+.family-browser > summary { min-height: 44px; padding: 10px 12px; cursor: pointer; border: 0; border-radius: 8px; }
 @media (pointer: coarse) { button, select, input { min-height: 44px !important; } }
 
 .section-heading {
@@ -216,19 +218,19 @@ a { color: inherit; }
   position: relative;
   min-height: 0;
   padding: 12px;
-  color: var(--ink);
+  color: var(--family-text, #ffffff);
   text-align: left;
-  border: 1px solid var(--night-line);
+  border: 0;
   border-radius: var(--radius-lg);
-  background: rgba(255, 255, 255, 0.035);
+  background: var(--family-accent, var(--accent));
   cursor: pointer;
 }
 
 .family-tile:hover, .family-tile[aria-pressed="true"] {
-  border-color: var(--family-accent, var(--accent));
-  background: #363636;
   transform: translateY(-2px);
 }
+
+.family-tile[aria-pressed="true"] strong { text-decoration: underline; }
 
 .family-count {
   display: inline-grid;
@@ -236,15 +238,15 @@ a { color: inherit; }
   height: 2.2rem;
   place-items: center;
   margin-bottom: 1.25rem;
-  color: #000000;
-  background: var(--family-accent, var(--accent));
+  color: inherit;
+  background: transparent;
   border-radius: 50%;
   font-size: 0.78rem;
   font-weight: 900;
 }
 
 .family-tile strong { display: block; font-size: 1rem; line-height: 1.25; }
-.family-tile small { display: block; margin-top: 0.6rem; color: var(--ink-muted); line-height: 1.45; }
+.family-tile small { display: block; margin-top: 0.6rem; color: inherit; line-height: 1.45; }
 
 .catalog-toolbar {
   position: sticky;
@@ -256,7 +258,7 @@ a { color: inherit; }
   align-items: end;
   margin: 1.4rem 0;
   padding: 0.85rem;
-  border: 1px solid var(--night-line);
+  border: 0;
   border-radius: 22px;
   background: rgba(28, 28, 28, 0.9);
   box-shadow: 0 16px 45px rgba(0, 0, 0, 0.24);
@@ -271,7 +273,7 @@ a { color: inherit; }
   min-height: 2.8rem;
   padding: 0.62rem 0.8rem;
   color: var(--ink);
-  border: 1px solid var(--night-line);
+  border: 0;
   border-radius: 12px;
   background: #363636;
   outline: none;
@@ -291,7 +293,7 @@ a { color: inherit; }
   justify-content: center;
   min-height: 2.7rem;
   padding: 0.62rem 0.86rem;
-  border: 1px solid var(--night-line);
+  border: 0;
   border-radius: 12px;
   color: var(--ink);
   background: rgba(255, 255, 255, 0.045);
@@ -301,8 +303,8 @@ a { color: inherit; }
 }
 
 .button:hover { border-color: var(--accent); background: rgba(232, 0, 42, 0.1); }
-.button.primary { color: #000000; border-color: var(--accent); background: var(--accent); }
-.button.primary:hover { background: #e7e7e7; }
+.button.primary { color: #ffffff; background: var(--accent); }
+.button.primary:hover { background: var(--accent-warm); }
 
 .results-bar {
   display: flex;
@@ -328,7 +330,7 @@ body[data-reduced-motion="true"] .motion-note { display: inline; }
   overflow: hidden !important;
   clip: rect(0, 0, 0, 0) !important;
   white-space: nowrap !important;
-  border: 0 !important;
+  border: 0;
 }
 
 .gallery {
@@ -367,7 +369,7 @@ body[data-reduced-motion="true"] .motion-note { display: inline; }
     linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
     #1c1c1c;
   background-size: 24px 24px;
-  border-bottom: 4px solid var(--family-accent);
+  border: 0;
 }
 
 .pattern-preview { width: 100%; height: 100%; border: 0; background: transparent; }
@@ -381,8 +383,8 @@ body[data-reduced-motion="true"] .motion-note { display: inline; }
   align-items: center;
   min-height: 1.8rem;
   padding: 0.35rem 0.58rem;
-  color: #f7f7f7;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  border: 0;
   border-radius: 999px;
   background: rgba(0, 0, 0, 0.72);
   font-size: 0.68rem;
@@ -405,7 +407,7 @@ body[data-reduced-motion="true"] .motion-note { display: inline; }
   text-transform: uppercase;
 }
 
-.family-label { color: #4f4f4f; }
+.family-label { color: #000000; }
 
 .pattern-card h3 {
   margin: 0.65rem 0 0;
@@ -419,7 +421,7 @@ body[data-reduced-motion="true"] .motion-note { display: inline; }
   width: fit-content;
   max-width: 100%;
   margin-top: 0.45rem;
-  color: #4f4f4f;
+  color: #000000;
   font-size: 0.72rem;
   font-weight: 760;
   text-decoration-thickness: 1px;
@@ -433,16 +435,16 @@ body[data-reduced-motion="true"] .motion-note { display: inline; }
   margin: 0.85rem 0 0;
   padding: 0.75rem;
   overflow-x: auto;
-  color: #333e48;
-  border: 1px solid rgba(28, 28, 28, 0.1);
+  color: #000000;
+  border: 0;
   border-radius: 12px;
-  background: rgba(255, 255, 255, 0.55);
+  background: #ffffff;
   font: 650 0.73rem/1.45 ui-monospace, SFMono-Regular, Consolas, monospace;
 }
 
 .metadata-list { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.85rem 0 0; padding: 0; list-style: none; }
-.metadata-list li { padding: 0.35rem 0.52rem; color: #4f4f4f; border: 1px solid rgba(28, 28, 28, 0.1); border-radius: 999px; background: rgba(255, 255, 255, 0.47); font-size: 0.68rem; font-weight: 760; }
-.metadata-list .diagnostic-pill { color: #4f4f4f; border-color: rgba(51, 62, 72, 0.25); background: rgba(232, 0, 42, 0.24); }
+.metadata-list li { padding: 0.35rem 0.52rem; color: #000000; border: 0; border-radius: 999px; background: #ffffff; font-size: 0.68rem; font-weight: 760; }
+.metadata-list .diagnostic-pill { color: #000000; background: #ffccd5; }
 
 .card-controls {
   display: grid;
@@ -451,13 +453,13 @@ body[data-reduced-motion="true"] .motion-note { display: inline; }
   margin-top: 1rem;
 }
 
-.card-controls .button { min-height: 2.45rem; padding: 0.5rem; color: var(--paper-ink); border-color: rgba(28, 28, 28, 0.15); background: rgba(255, 255, 255, 0.58); }
+.card-controls .button { min-height: 2.45rem; padding: 0.5rem; color: var(--paper-ink); background: #ffffff; }
 .card-controls .button:hover { border-color: #4f4f4f; background: #fff; }
 
 .open-svg {
   display: inline-flex;
   margin-top: 0.8rem;
-  color: #4f4f4f;
+  color: #000000;
   font-size: 0.76rem;
   font-weight: 800;
   text-underline-offset: 3px;
@@ -468,7 +470,7 @@ body[data-reduced-motion="true"] .motion-note { display: inline; }
   padding: 4rem 1rem;
   text-align: center;
   color: var(--ink-muted);
-  border: 1px dashed var(--night-line);
+  border: 0;
   border-radius: var(--radius-lg);
 }
 
@@ -482,21 +484,11 @@ body[data-reduced-motion="true"] .motion-note { display: inline; }
   margin-top: 4rem;
   padding-top: 1.5rem;
   color: var(--ink-muted);
-  border-top: 1px solid var(--night-line);
+  border: 0;
   font-size: 0.82rem;
 }
 
-[data-family-id="timing"], [data-family-filter="timing"] { --family-accent: #e8002a; }
-[data-family-id="transform"], [data-family-filter="transform"] { --family-accent: #9e1b32; }
-[data-family-id="path"], [data-family-filter="path"] { --family-accent: #828282; }
-[data-family-id="parametric"], [data-family-filter="parametric"] { --family-accent: #e8002a; }
-[data-family-id="field"], [data-family-filter="field"] { --family-accent: #cfcfcf; }
-[data-family-id="simulation"], [data-family-filter="simulation"] { --family-accent: #b5b5b5; }
-[data-family-id="growth"], [data-family-filter="growth"] { --family-accent: #cfcfcf; }
-[data-family-id="tiling"], [data-family-filter="tiling"] { --family-accent: #9c9c9c; }
-[data-family-id="paint"], [data-family-filter="paint"] { --family-accent: #9e1b32; }
-[data-family-id="composition"], [data-family-filter="composition"] { --family-accent: #cfcfcf; }
-[data-family-id="multistrata"], [data-family-filter="multistrata"] { --family-accent: #b5b5b5; }
+__FAMILY_SOLID_RULES__
 
 @media (max-width: 1180px) {
   .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -1854,6 +1846,22 @@ def write_text(path: Path, value: str) -> None:
     path.write_text(value, encoding="utf-8", newline="\n")
 
 
+def render_gallery_css(families: list[dict[str, Any]], palette: str) -> str:
+    """Give each family a unique solid token and its maximum-contrast text."""
+    contract = json.loads((SKILL_ROOT / "assets/palettes/colorsets.json").read_text(encoding="utf-8"))["colorsets"][palette]
+    # The family browser is painted on the gallery's actual dark canvas.
+    rules = []
+    for index, family in enumerate(families):
+        style = category_style(index, contract, "#1c1c1c")
+        family_id = family["id"]
+        rules.append(f'[data-family-id="{family_id}"], [data-family-filter="{family_id}"] {{ --family-accent: {style["fill"]}; --family-text: {style["text"]}; }}')
+        if style["tier"] == "overflow":
+            line = "solid" if style["strokeDasharray"] is None else "dashed" if style["strokeDasharray"] == "6 4" else "dotted"
+            rules.append(f'[data-family-filter="{family_id}"] {{ border: {style["strokeWidth"]}px {line} {style["stroke"]}; }}')
+        # Every family tile carries its visible label even after finite rims run out.
+    return GALLERY_CSS.replace("__FAMILY_SOLID_RULES__", "\n".join(rules)).strip() + "\n"
+
+
 def materialize_build(
     destination: Path,
     catalog: dict[str, Any],
@@ -1894,7 +1902,7 @@ def materialize_build(
         base_seed=base_seed,
         catalog_hash=catalog_hash,
     )
-    write_text(destination / "gallery.css", GALLERY_CSS.strip() + "\n")
+    write_text(destination / "gallery.css", render_gallery_css(families, palette))
     write_text(destination / "gallery.js", GALLERY_JS.strip() + "\n")
     write_text(destination / "index.html", render_index(catalog, families, records, catalog_hash, palette))
     write_text(

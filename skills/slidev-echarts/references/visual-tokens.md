@@ -86,3 +86,7 @@ Use these exact tokens for this skill’s authored visuals. Read [the colorset o
 - Use highlight colors for subtle fills, selection states, and replay-running states.
 - Use interaction colors for hover, active, and pressed states.
 - Preserve source-rendered geometry, but remap editable example palettes to these tokens when the example is not demonstrating a third-party source theme.
+
+## Initial fill treatment
+
+Use saturated/base solid fills for category chips, blocks and animated marks, with zero decorative border width. Choose black or white inside text by the higher WCAG contrast on the final fill; animate text color categorically with its fill. Preserve drawable paths, connection lines, axes, measurement lines and keyboard focus indicators. Use border/dash/width variants only after all usable colors in the bundled solidSequence (excluding the actual canvas) have been assigned.

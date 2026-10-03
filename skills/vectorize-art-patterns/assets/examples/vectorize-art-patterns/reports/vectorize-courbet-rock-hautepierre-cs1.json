@@ -4,12 +4,12 @@
   "input": "assets/base-images/courbet-rock-hautepierre.jpg",
   "input_sha256": "047199df08b28ab30c2cdb0ef4d48e1104373ec038524f4cd260e4833d78c7cd",
   "output": "svgs/vectorize-courbet-rock-hautepierre-cs1.svg",
-  "output_sha256": "80e890626ef725dfc8bb4c25bfd0343d3ec08bfec20af647455c477fc318b6f3",
+  "output_sha256": "64d95f33528518a05281965b479be7251e17c1246693ae69bb8b4ebbd7188415",
   "pattern_id": "vectorize-courbet-rock-hautepierre-cs1",
   "mode": "stain",
   "tile": "none",
   "colorset": "colorset1",
-  "palette_contract_sha256": "c81d32ffb0d55d44e7d3102c7470e251baf34f0bb6472fbede7753df8b9a9eb5",
+  "palette_contract_sha256": "f36eb8a9fe171108383767c7697f023218121e51d3e45247e87b58e397b36d62",
   "variation_seed": 0,
   "composition_sha256": "e6c30420ed8421ec5a531128075369fc6f1846e97775d79706cdf4a04fb36a6e",
   "parameters": {
@@ -29,23 +29,23 @@
         },
         {
           "source": "#3d4948",
-          "target": "#6d1222"
+          "target": "#4f4f4f"
         },
         {
           "source": "#5a7373",
-          "target": "#828282"
+          "target": "#696969"
         },
         {
           "source": "#939785",
-          "target": "#cfcfcf"
+          "target": "#9c9c9c"
         },
         {
           "source": "#89775d",
-          "target": "#e8002a"
+          "target": "#828282"
         },
         {
           "source": "#59684c",
-          "target": "#ffccd5"
+          "target": "#363636"
         },
         {
           "source": "#775538",
@@ -65,11 +65,11 @@
       "target_colors": [
         "#333e48",
         "#1c1c1c",
-        "#6d1222",
+        "#4f4f4f",
+        "#696969",
+        "#9c9c9c",
         "#828282",
-        "#cfcfcf",
-        "#e8002a",
-        "#ffccd5",
+        "#363636",
         "#9e1b32"
       ]
     }
@@ -83,12 +83,12 @@
   "palette": [
     "#1c1c1c",
     "#333e48",
-    "#6d1222",
+    "#363636",
+    "#4f4f4f",
+    "#696969",
     "#828282",
-    "#9e1b32",
-    "#cfcfcf",
-    "#e8002a",
-    "#ffccd5"
+    "#9c9c9c",
+    "#9e1b32"
   ],
   "path_count": 22,
   "output_bytes": 69019,

@@ -32,7 +32,7 @@ function renderDifferenceChart() {
     axisBottom(svg, x, height - margin.bottom, 5);
     axisLeft(svg, y, margin.left, 4);
     const area = d3.area().x(d => x(d.t)).y0(d => y(d.plan)).y1(d => y(d.actual)).curve(d3.curveMonotoneX);
-    const band = svg.append("path").datum(data).attr("d", area).attr("fill", palette.green).attr("fill-opacity", .22);
+    const band = svg.append("path").datum(data).attr("d", area).attr("fill", palette.green).attr("data-opacity-role", "semantic").attr("fill-opacity", .22);
     fadeIn(band, .1, .6);
     const line = key => d3.line().x(d => x(d.t)).y(d => y(d[key])).curve(d3.curveMonotoneX);
     const plan = svg.append("path").datum(data).attr("d", line("plan")).attr("fill", "none").attr("stroke", palette.muted).attr("stroke-width", 2.3).attr("stroke-dasharray", "5 5");

@@ -3,9 +3,9 @@
   <desc id="drawable-circuit-desc" data-allow-hidden="true">A circuit-style SVG with independent path and node hooks for Anime.js draw-on and stagger animations.</desc>
   <rect class="svg-backdrop" width="960" height="540" rx="42" fill="#f7f7f7"/>
   <g class="circuit-panels" data-anime-group="panels">
-    <rect class="circuit-panel" x="78" y="96" width="164" height="112" rx="18" fill="#ffffff" stroke="#cfcfcf" stroke-width="4"/>
-    <rect class="circuit-panel" x="716" y="92" width="168" height="122" rx="18" fill="#ffffff" stroke="#cfcfcf" stroke-width="4"/>
-    <rect class="circuit-panel" x="376" y="334" width="206" height="98" rx="18" fill="#ffffff" stroke="#cfcfcf" stroke-width="4"/>
+    <rect class="circuit-panel" x="78" y="96" width="164" height="112" rx="18" fill="#ffffff" stroke="none" stroke-width="0"/>
+    <rect class="circuit-panel" x="716" y="92" width="168" height="122" rx="18" fill="#ffffff" stroke="none" stroke-width="0"/>
+    <rect class="circuit-panel" x="376" y="334" width="206" height="98" rx="18" fill="#ffffff" stroke="none" stroke-width="0"/>
   </g>
   <g data-anime-group="drawables" fill="none" stroke-linecap="round" stroke-linejoin="round">
     <path id="circuit-main-a" class="svg-drawable circuit-line primary" d="M158 208 C158 284 262 292 318 238 S454 142 524 212 S690 304 798 214" stroke="#007298" stroke-width="13"/>

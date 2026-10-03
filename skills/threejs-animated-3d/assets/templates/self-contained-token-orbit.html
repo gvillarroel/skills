@@ -25,7 +25,7 @@
         align-content: start;
         padding: 12px;
         background: var(--page);
-        color: var(--neutral);
+        color: #000000;
         font-family: "Open Sans", Arial, sans-serif;
       }
 
@@ -50,9 +50,9 @@
       }
 
       button {
-        border: 1px solid var(--neutral);
-        background: #ffffff;
-        color: var(--neutral);
+        border: 0;
+        background: #9e1b32;
+        color: #ffffff;
         border-radius: 6px;
         padding: 4px 10px;
         min-height: 32px;
@@ -61,7 +61,7 @@
       }
 
       button:hover {
-        background: var(--gray-100);
+        background: #6d1222;
       }
 
       button:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
@@ -77,7 +77,7 @@
         aspect-ratio: 16 / 9;
         min-height: 200px;
         overflow: hidden;
-        border: 1px solid var(--gray-100);
+        border: 0;
         background: #ffffff;
       }
 
@@ -98,7 +98,7 @@
         padding: 4px 8px;
         border-radius: 6px;
         background: rgba(255, 255, 255, 0.86);
-        color: var(--neutral);
+        color: #000000;
         font-size: 13px;
         pointer-events: none;
       }
@@ -186,9 +186,10 @@
       );
       scene.add(hub);
 
-      const tokenColors = colorset === "colorset2"
-        ? [palette.blue, palette.green, palette.orange, palette.yellow, palette.purple]
-        : [palette.neutral, palette.gray700, palette.gray500, palette.dark, palette.gray200];
+      const bundledPalettes = __PALETTES__;
+      const tokenColors = bundledPalettes[colorset].solidSequence
+        .filter(value => value !== '#ffffff' && value !== '#9e1b32')
+        .map(value => Number.parseInt(value.slice(1), 16));
       const tokenGeometry = new THREE.IcosahedronGeometry(0.32, 1);
       const tokens = Array.from({ length: tokenCount }, (_, index) => {
         const color = tokenColors[index % tokenColors.length];
@@ -328,6 +329,8 @@
           colorset,
           tokenCount,
           density: document.body.dataset.density,
+          fillStyle: 'solid-first',
+          decorativeOutlineCount: 0,
           materialColors: [hub, ...tokens].map(mesh => `#${mesh.material.color.getHexString()}`),
           lightColors: scene.children.filter(object => object.isLight).map(light => `#${light.color.getHexString()}`),
           outputColorSpace: renderer.outputColorSpace,

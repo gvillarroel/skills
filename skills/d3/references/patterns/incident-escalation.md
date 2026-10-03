@@ -267,7 +267,7 @@ function renderCriticalIncidentEscalation() {
       .attr("height", 52)
       .attr("rx", 6)
       .attr("fill", palette.gray50)
-      .attr("fill-opacity", .9);
+      .attr("fill-opacity", 1);
     laneGroups.append("line")
       .attr("x1", left)
       .attr("x2", right)

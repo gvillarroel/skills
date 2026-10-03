@@ -4,12 +4,12 @@
   "input": "assets/base-images/hilma-primordial-chaos-16.jpg",
   "input_sha256": "2e4e637dc0c70e99f8b6b81c84d17dc022d9a1f650939176aa07ea426d547817",
   "output": "svgs/vectorize-hilma-primordial-chaos-16-cs2.svg",
-  "output_sha256": "9cfa65bc109a9e0dbf7722cbb449af542027a6dd6a68f00fbd5839bfc5ae6c4c",
+  "output_sha256": "5d27014eb66e0d5088797474b8d80a7619a44b363e435bf10b5f2e53b63a19fd",
   "pattern_id": "vectorize-hilma-primordial-chaos-16-cs2",
   "mode": "organic",
   "tile": "none",
   "colorset": "colorset2",
-  "palette_contract_sha256": "c81d32ffb0d55d44e7d3102c7470e251baf34f0bb6472fbede7753df8b9a9eb5",
+  "palette_contract_sha256": "f36eb8a9fe171108383767c7697f023218121e51d3e45247e87b58e397b36d62",
   "variation_seed": 0,
   "composition_sha256": "124eb7c65d602528d01e4f67e3abe9b896e267ddc6270fd09d25e17efbf67ab1",
   "parameters": {
@@ -29,23 +29,23 @@
         },
         {
           "source": "#9bb093",
-          "target": "#cfcfcf"
+          "target": "#b5b5b5"
         },
         {
           "source": "#75755d",
-          "target": "#828282"
+          "target": "#696969"
         },
         {
           "source": "#7488b8",
-          "target": "#004d66"
+          "target": "#828282"
         },
         {
           "source": "#c1aa5c",
-          "target": "#f1c319"
+          "target": "#ff9633"
         },
         {
           "source": "#c7c7bf",
-          "target": "#f7f7f7"
+          "target": "#cfcfcf"
         },
         {
           "source": "#ffffff",
@@ -65,11 +65,11 @@
       "target_colors": [
         "#333e48",
         "#007298",
-        "#cfcfcf",
+        "#b5b5b5",
+        "#696969",
         "#828282",
-        "#004d66",
-        "#f1c319",
-        "#f7f7f7",
+        "#ff9633",
+        "#cfcfcf",
         "#ffffff"
       ]
     }
@@ -81,13 +81,13 @@
   "render_width": 405,
   "render_height": 560,
   "palette": [
-    "#004d66",
     "#007298",
     "#333e48",
+    "#696969",
     "#828282",
+    "#b5b5b5",
     "#cfcfcf",
-    "#f1c319",
-    "#f7f7f7",
+    "#ff9633",
     "#ffffff"
   ],
   "path_count": 145,

@@ -40,7 +40,7 @@ function renderSymbolGlyphs() {
       .attr("d", symbol)
       .attr("transform", d => `translate(${x(d.x)},${y(d.y)})`)
       .attr("fill", d => colors[d.type])
-      .attr("fill-opacity", .78)
+      .attr("fill-opacity", 1)
       .attr("stroke", "#fff")
       .attr("stroke-width", 1.2);
     fadeIn(glyphs, .06, .72);

@@ -16,7 +16,7 @@ from pathlib import Path
 
 sys.dont_write_bytecode = True
 from compose_diagram import element, identity, namespace, parse_svg, plan, require, tag, write_target
-from palette_contract import require_color
+from palette_contract import require_color, text_on_fill
 
 INK, MUTED, LINE, ACCENT = "#363636", "#696969", "#9c9c9c", "#9e1b32"
 ICON_PATHS = {
@@ -69,7 +69,7 @@ class Renderer:
             "markerWidth": 7, "markerHeight": 7, "markerUnits": "userSpaceOnUse", "orient": "auto-start-reverse"})
         element(marker, "path", {"d": "M1 1L9 5L1 9Z", "fill": LINE, "stroke": "none"})
 
-    def rect(self, x, y, w, h, fill="#f7f7f7", stroke="#cfcfcf", radius=5):
+    def rect(self, x, y, w, h, fill="#f7f7f7", stroke="none", radius=5):
         for paint in (fill, stroke):
             if paint != "none":
                 require_color(paint)
@@ -106,14 +106,14 @@ class Renderer:
                 "fill": color, "text-anchor": "middle" if center else "start"}, line)
             baseline += leading
 
-    def icon(self, value, x, y, size, label):
+    def icon(self, value, x, y, size, label, color=MUTED):
         self.count += 1
         if not value: return
         if value in ICON_PATHS:
             group = element(self.root, "svg", {"x": x, "y": y, "width": size, "height": size,
                 "viewBox": "0 0 24 24", "role": "img", "aria-label": label, "data-icon": value})
             element(group, "title", text=label)
-            element(group, "path", {"d": ICON_PATHS[value], "fill": "none", "stroke": MUTED,
+            element(group, "path", {"d": ICON_PATHS[value], "fill": "none", "stroke": color,
                 "stroke-width": 1.6, "stroke-linecap": "round", "stroke-linejoin": "round"})
         else:
             path = Path(value)
@@ -160,13 +160,15 @@ class Renderer:
         needed, label_h, details = self.card_metrics(node,text_w+20)
         require(needed <= text_h, f"Node '{node['label']}' needs {needed:.0f}px text height, has {text_h:.0f}px; shorten detail or increase its panel")
         accent = self.concept_color(node)
-        fill,stroke=node.get('fill','#f7f7f7'),accent or color or '#b5b5b5'
+        fill = node.get('fill', accent or color or '#9c9c9c')
+        stroke = node.get('stroke', 'none')
+        foreground = text_on_fill(fill)
         box=element(self.root,'ellipse',{'cx':x+w/2,'cy':y+h/2,'rx':w/2,'ry':h/2,'fill':fill,'stroke':stroke,'stroke-width':1.2}) if shape=='ellipse' else self.rect(x,y,w,h,fill,stroke)
-        self.bind_color(box,node,'stroke')
+        self.bind_color(box,node,'fill')
         yy = y + pad_y + (text_h-needed)/2 + 7
-        self.icon(icon, x+pad_x, yy+(label_h-26)/2, 26, node["label"])
-        self.label(node["label"], x+pad_x+indent, yy, text_w-indent, label_h, bold=True, center=not bool(icon))
-        if details: self.label(node["detail"], x+pad_x, yy+label_h+6, text_w, len(details)*self.f*1.3, center=True, color=MUTED)
+        self.icon(icon, x+pad_x, yy+(label_h-26)/2, 26, node["label"], color=foreground)
+        self.label(node["label"], x+pad_x+indent, yy, text_w-indent, label_h, bold=True, center=not bool(icon), color=foreground)
+        if details: self.label(node["detail"], x+pad_x, yy+label_h+6, text_w, len(details)*self.f*1.3, center=True, color=foreground)
         self.ports_for(node["id"], x, y, w, h, mark=box, concept=node.get("concept"))
 
     def path(self, points, directed=False, label=None, owners=None):
@@ -184,7 +186,7 @@ class Renderer:
     def hub(self, data):
         if data.get('enclosure'):
             enclosure=data['enclosure'];top=24+self.f*1.6
-            outer=self.rect(4,4,self.w-8,self.h-8,'#f7f7f7',LINE)
+            outer=self.rect(4,4,self.w-8,self.h-8,'#f7f7f7','none')
             self.label(enclosure['label'],16,10,self.w-32,self.f*1.6,bold=True)
             child=Renderer(self.w-32,self.h-top-16,self.f,self.directory,self.colors)
             child.hub({k:v for k,v in data.items() if k!='enclosure'})
@@ -245,7 +247,7 @@ class Renderer:
                 indent = (32 if icon else 0) + (18 if show_swatch else 0)
                 self.icon(icon,xx+7+(18 if show_swatch else 0),yy+(rh-24)/2,24,str(cell["text"]))
                 if show_swatch:
-                    self.bind_color(self.rect(xx+8,yy+(rh-11)/2,11,11,swatch,"#696969",1),cell,"fill")
+                    self.bind_color(self.rect(xx+8,yy+(rh-11)/2,11,11,swatch,"none",1),cell,"fill")
                 self.label(cell["text"],xx+9+indent,yy+4,cw-18-indent,rh-8,bold=j==0,color=INK)
                 xx+=cw
             self.ports_for(row["id"],x,yy,w,rh,mark=row_box,concept=row.get("concept"))
@@ -266,12 +268,13 @@ class Renderer:
         self.label(data["root"],16,10,self.w-32,self.f*1.6,bold=True)
         for i,g in enumerate(groups):
             gx=16+i*(gw+gap)
-            group_box=self.rect(gx,gy,gw,gh,"#ffffff","#cfcfcf")
             accent = self.concept_color(g)
-            if accent: self.bind_color(self.rect(gx+1,gy+1,gw-2,4,accent,"none",1),g,"fill")
-            self.label(g["label"],gx+10,gy+8,gw-20,title_h,bold=True,color=INK)
+            paint = accent or "#9c9c9c"
+            group_box=self.bind_color(self.rect(gx,gy,gw,gh,paint,"none"),g,"fill")
+            foreground = text_on_fill(paint)
+            self.label(g["label"],gx+10,gy+8,gw-20,title_h,bold=True,color=foreground)
             items="\n".join(g["items"])
-            self.label(items,gx+10,gy+title_h+12,gw-20,gh-title_h-22,top=True)
+            self.label(items,gx+10,gy+title_h+12,gw-20,gh-title_h-22,top=True,color=foreground)
             self.ports_for(g["id"],gx,gy,gw,gh,mark=group_box,concept=g.get("concept"))
         self.ports_for(data.get("id","taxonomy"),4,4,self.w-8,outer_h,mark=outer,kind="container")
 
@@ -304,8 +307,10 @@ class Renderer:
     def boundary(self, data):
         nodes=data["nodes"]
         require(1<=len(nodes)<=5,"Native boundary supports 1-5 semantic objects")
-        outer=self.bind_color(self.rect(4,4,self.w-8,self.h-8,"#f7f7f7",self.concept_color(data) or LINE),data,"stroke")
-        self.label(data["label"],16,12,self.w-32,self.f*1.7,bold=True)
+        outer=self.rect(4,4,self.w-8,self.h-8,"#f7f7f7","none")
+        paint=self.concept_color(data) or "#9c9c9c"
+        self.bind_color(self.rect(8,8,self.w-16,self.f*1.7+10,paint,"none"),data,"fill")
+        self.label(data["label"],16,12,self.w-32,self.f*1.7,bold=True,color=text_on_fill(paint))
         relations=data.get("relations",[])
         ids=[n["id"] for n in nodes]
         groups=data.get("groups",[])
@@ -329,9 +334,10 @@ class Renderer:
             positions.append(cursor);cursor+=height+gap
         for group,first,last in group_ranges:
             gy=positions[first]-group_head+3
-            box=self.bind_color(self.rect(x-12,gy,width+24,positions[last]+height+9-gy,"none",self.concept_color(group) or ACCENT,5),group,"stroke")
-            box.set("stroke-dasharray","6 4")
-            self.label(group["label"],x,gy+2,width,group_head-7,bold=True)
+            box=self.rect(x-12,gy,width+24,positions[last]+height+9-gy,"#ffffff","none",5)
+            paint=self.concept_color(group) or ACCENT
+            self.bind_color(self.rect(x-8,gy,width+16,group_head-4,paint,"none"),group,"fill")
+            self.label(group["label"],x,gy+2,width,group_head-7,bold=True,color=text_on_fill(paint))
             self.ports_for(group["id"],x-12,gy,width+24,positions[last]+height+9-gy,mark=box,kind="container",concept=group.get("concept"))
         for i,node in enumerate(nodes): self.card(node,x,positions[i],width,height)
         outer_height=positions[-1]+height+14

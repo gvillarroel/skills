@@ -21,9 +21,9 @@
     {"id": "history", "question": "How do the amounts change oppositely through the transfer?", "region": [1180, 150, 660, 750], "importance": "support"}
   ],
   "marks": [
-    {"id": "container-a", "view": "stores", "kind": "rect", "attrs": {"x": 130, "y": 220, "width": 270, "height": 510}, "fill": "surface", "stroke": "ink", "strokeWidth": 5},
+    {"id": "container-a", "view": "stores", "kind": "rect", "attrs": {"x": 130, "y": 220, "width": 270, "height": 510}, "fill": "muted", "stroke": "none", "strokeWidth": 0},
     {"id": "amount-a", "view": "stores", "kind": "rect", "attrs": {"x": 137, "y": {"sub": [724, {"mul": [5, "a"]}]}, "width": 256, "height": {"mul": [5, "a"]}}, "fill": "primary", "entity": "store-a"},
-    {"id": "container-b", "view": "stores", "kind": "rect", "attrs": {"x": 660, "y": 220, "width": 270, "height": 510}, "fill": "surface", "stroke": "ink", "strokeWidth": 5},
+    {"id": "container-b", "view": "stores", "kind": "rect", "attrs": {"x": 660, "y": 220, "width": 270, "height": 510}, "fill": "muted", "stroke": "none", "strokeWidth": 0},
     {"id": "amount-b", "view": "stores", "kind": "rect", "attrs": {"x": 667, "y": {"sub": [724, {"mul": [5, "b"]}]}, "width": 256, "height": {"mul": [5, "b"]}}, "fill": "secondary", "entity": "store-b"},
     {"id": "allocation", "view": "stores", "kind": "line", "attrs": {"x1": 430, "y1": 430, "x2": 630, "y2": 430}, "fill": "none", "stroke": "ink", "strokeWidth": 3},
     {"id": "allocation-position", "view": "stores", "kind": "circle", "attrs": {"cx": {"add": [430, {"mul": [200, "fraction"]}]}, "cy": 430, "r": 12}, "fill": "ink"},

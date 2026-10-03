@@ -9,6 +9,10 @@ Use `render.theme: colorset1` by default, or `colorset2` for extended terminal r
 
 Treat the asciicast as the source of truth and the MP4 as its rendered derivative. Run the named product with the requested prompts in the requested project. Never substitute prerecorded text, a browser terminal, generated output, or a look-alike command.
 
+## Solid-fill presentation
+
+For authored filled marks and preview chrome, start with one opaque colorset fill and no decorative border. Prefer saturated/base colors, then dark, bright and neutral solids, with soft fills late. Assign unique usable fills before introducing border variants; exclude the actual canvas color. Choose exact black or white text on each fill by maximum relative-luminance contrast. Keep semantic mappings stable across previews, legends and exports. Only after the usable solid colors are exhausted, expand with contrasting palette border colors, dash patterns and widths. Preserve meaningful line art, connectors, keyboard focus indicators, original source media and explicitly requested conversion aesthetics. Apply this preference to newly authored visuals and framing; preserve required source identity and fidelity.
+
 ## Choose the execution mode
 
 Use interactive TUI mode when the user wants the product UI, visible typing, live work, selections, command keys, conversational continuity, or multiple terminal applications in one video. Persistent prompts type text, send real Enter, and wait for ready-without-busy. One-shot pickers and command-key TUIs use explicit text/key/pause actions and target-exit gating. Direct-argv mode is for explicitly non-interactive recordings; pass each prompt as one direct argument and omit the entire `interaction` key, including `null` or `{}`.

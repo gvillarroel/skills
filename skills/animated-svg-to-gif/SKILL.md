@@ -5,6 +5,10 @@ description: "Converts animated SVG files into high-quality GIFs by rendering br
 
 # Animated SVG to GIF
 
+## Solid-fill presentation
+
+For authored filled marks and preview chrome, start with one opaque colorset fill and no decorative border. Prefer saturated/base colors, then dark, bright and neutral solids, with soft fills late. Assign unique usable fills before introducing border variants; exclude the actual canvas color. Choose exact black or white text on each fill by maximum relative-luminance contrast. Keep semantic mappings stable across previews, legends and exports. Only after the usable solid colors are exhausted, expand with contrasting palette border colors, dash patterns and widths. Preserve meaningful line art, connectors, keyboard focus indicators, original source media and explicitly requested conversion aesthetics. Apply this preference to newly authored visuals and framing; preserve required source identity and fidelity.
+
 ## Exact Output Contract
 
 When a task names specific files, treat those names as fixed API values. Before writing files or running commands, make a two-value map from the prompt:

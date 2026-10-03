@@ -6,6 +6,7 @@ description: "Orchestrates, composes, renders, and validates mixed-media videos 
 # Video
 
 Read [palette-policy.md](references/palette-policy.md) before authoring or composing visuals. Apply one exact colorset to authored content and report preserved source media separately.
+Read [solid-surfaces.md](references/solid-surfaces.md) for solid-first category fills, black/white text on the actual fill, and palette exhaustion before border variants.
 
 Treat this as the mixed-media video orchestrator. Own the source contract, output format, scene composition, cross-asset interaction, master timeline, final renderer, audio mux, review loop, and delivery gate. Do not recreate diagrams, charts, illustrations, 3D scenes, or standalone SVG-only video rendering that an available specialist skill owns.
 

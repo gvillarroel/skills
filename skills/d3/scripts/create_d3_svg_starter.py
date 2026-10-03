@@ -523,6 +523,7 @@ HTML_TEMPLATE = r"""<!doctype html>
   <link rel="stylesheet" href="styles.css">
   __D3_SCRIPT__
   <script src="data.js"></script>
+  <script src="solid-style.js" defer></script>
 </head>
 <body data-colorset="__COLORSET__">
   <main class="page">
@@ -532,6 +533,7 @@ HTML_TEMPLATE = r"""<!doctype html>
   </main>
   <script>
     const palette = __PALETTE_JSON__;
+    window.D3_SOLID_PALETTES = __SOLID_PALETTES__;
     window.D3_STARTER_TITLE = __TITLE_JSON__;
     const starterSize = window.D3_STARTER_DATA.size || { width: 720, height: 420 };
     const width = starterSize.width;
@@ -599,7 +601,7 @@ svg {
   width: min(100%, 960px);
   height: auto;
   background: #ffffff;
-  border: 1px solid #cfcfcf;
+  border: 0;
 }
 
 .title {
@@ -693,7 +695,7 @@ svg {
   margin: 32px auto;
   padding: 16px;
   background: #ffffff;
-  border: 1px solid #cfcfcf;
+  border: 0;
 }
 """
 
@@ -760,6 +762,9 @@ def write_starter(out_dir: Path, pattern: str, title: str, force: bool, allow_sk
         .replace("__PATTERN_CODE__", PATTERN_CODE[pattern].strip())
     )
 
+    solid_root = Path(__file__).resolve().parents[1]
+    html = html.replace("__SOLID_PALETTES__", json.dumps(json.loads((solid_root / "assets/palettes/colorsets.json").read_text(encoding="utf-8"))["colorsets"]))
+    shutil.copy2(solid_root / "assets/templates/solid-style.js", resolved_out / "solid-style.js")
     (resolved_out / "index.html").write_text(html, encoding="utf-8")
     (resolved_out / "styles.css").write_text(STYLE_CSS, encoding="utf-8")
     (resolved_out / "data.js").write_text(

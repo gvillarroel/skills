@@ -2,7 +2,7 @@
 
 Use this layer when a genealogy or institutional history contains meaningful places, territories, schools, courts or movements that are difficult to find among individual records. It complements the graph. It cannot repair repetitive topology or supply missing historical explanations.
 
-Choose a few source-supported orientation points before adding artwork. Use a place caption for a territory, a white outlined pill for a family, and a portrait only for an identified person or a clearly declared fictional demonstration. Keep the distinction visible. A decorative mark at every equal interval produces another mechanical pattern.
+Choose a few source-supported orientation points before adding artwork. Use a place caption for a territory, a solid borderless pill with contrast-selected black or white text for a family, and a portrait only for an identified person or a clearly declared fictional demonstration. Keep the distinction visible. A decorative mark at every equal interval produces another mechanical pattern.
 
 ## Bind content to a record
 

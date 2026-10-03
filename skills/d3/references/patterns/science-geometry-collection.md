@@ -54,7 +54,7 @@ function renderHrDiagram() {
     axisLeft(svg, y, margin.left, 4);
     const dots = svg.append("g").selectAll("circle").data(data).join("circle")
       .attr("cx", d => x(d.temp)).attr("cy", d => y(d.lum)).attr("fill", d => d.type === "hot" ? "#cdf3ff" : d.type === "cool" ? "#ffe5cc" : "#fff4cc")
-      .attr("stroke", d => d.type === "hot" ? palette.blue : d.type === "cool" ? palette.orange : palette.gold).attr("stroke-width", .8).attr("fill-opacity", .78);
+      .attr("stroke", d => d.type === "hot" ? palette.blue : d.type === "cool" ? palette.orange : palette.gold).attr("stroke-width", .8).attr("fill-opacity", 1);
     grow(dots, "r", 1, d => d.type === "main" ? 3.5 : 5.5, .02, .5);
   }
 ```
@@ -190,7 +190,7 @@ function renderApolloniusCircles() {
     ];
     svg.append("g").selectAll("circle").data(anchors).join("circle")
       .attr("cx", d => d.x).attr("cy", d => d.y).attr("r", d => d.r)
-      .attr("fill", d => d.c).attr("fill-opacity", .14).attr("stroke", d => d.c).attr("stroke-width", 2.2);
+      .attr("fill", d => d.c).attr("fill-opacity", 1).attr("stroke", d => d.c).attr("stroke-width", 2.2);
     const solution = svg.append("g").selectAll("circle").data(solutions).join("circle")
       .attr("cx", d => d.x).attr("cy", d => d.y).attr("fill", "none").attr("stroke", d => d.c).attr("stroke-width", 2.4).attr("stroke-dasharray", "7 5");
     grow(solution, "r", 5, d => d.r, .1, .9);
@@ -232,7 +232,7 @@ function renderTissotIndicatrix() {
     const circles = [];
     [-120, -60, 0, 60, 120].forEach(lon => [-50, 0, 50].forEach(lat => circles.push(d3.geoCircle().center([lon, lat]).radius(8)())));
     const marks = svg.append("g").selectAll("path").data(circles).join("path")
-      .attr("d", path).attr("fill", palette.orangeHighlight).attr("fill-opacity", .45).attr("stroke", palette.orange).attr("stroke-width", 2);
+      .attr("d", path).attr("fill", palette.orangeHighlight).attr("fill-opacity", 1).attr("stroke", palette.orange).attr("stroke-width", 2);
     fadeIn(marks, .06, .55);
   }
 ```
@@ -355,7 +355,7 @@ function renderAdaptiveSampling() {
     svg.append("path").datum(coarse).attr("d", line).attr("fill", "none").attr("stroke", palette.gray600).attr("stroke-width", 2).attr("stroke-dasharray", "6 5");
     const sampled = svg.append("path").datum(dense).attr("d", line).attr("fill", "none").attr("stroke", palette.orange).attr("stroke-width", 3);
     drawPath(sampled, .08, .9);
-    const points = svg.append("g").selectAll("circle").data(dense).join("circle").attr("cx", d => d[0]).attr("cy", d => d[1]).attr("fill", palette.red).attr("fill-opacity", .82).attr("stroke", "#fff").attr("stroke-width", 1);
+    const points = svg.append("g").selectAll("circle").data(dense).join("circle").attr("cx", d => d[0]).attr("cy", d => d[1]).attr("fill", palette.red).attr("fill-opacity", 1).attr("stroke", "#fff").attr("stroke-width", 1);
     grow(points, "r", 1.5, 3.5, .12, .45);
   }
 ```
@@ -392,11 +392,11 @@ function renderSatelliteProjection() {
       { r: 58, c: palette.greenHighlight, stroke: palette.green, label: "nadir" }
     ];
     rings.forEach((ring, i) => {
-      const circle = svg.append("circle").attr("cx", cx).attr("cy", cy).attr("fill", ring.c).attr("fill-opacity", .34).attr("stroke", ring.stroke).attr("stroke-width", 2);
+      const circle = svg.append("circle").attr("cx", cx).attr("cy", cy).attr("fill", ring.c).attr("fill-opacity", 1).attr("stroke", ring.stroke).attr("stroke-width", 2);
       grow(circle, "r", 4, ring.r, .08 + i * .08, .55);
       svg.append("text").attr("class", "mark-label").attr("x", cx + ring.r * .7).attr("y", cy - ring.r * .58).text(ring.label);
     });
-    const beam = svg.append("path").attr("d", `M${cx},${cy - 186}L${cx - 58},${cy - 58}L${cx + 58},${cy - 58}Z`).attr("fill", palette.redHighlight).attr("fill-opacity", .36).attr("stroke", palette.red).attr("stroke-width", 2);
+    const beam = svg.append("path").attr("d", `M${cx},${cy - 186}L${cx - 58},${cy - 58}L${cx + 58},${cy - 58}Z`).attr("fill", palette.redHighlight).attr("fill-opacity", 1).attr("stroke", palette.red).attr("stroke-width", 2);
     fadeIn(beam, .2, .55);
     svg.append("circle").attr("cx", cx).attr("cy", cy - 186).attr("r", 8).attr("fill", palette.red).attr("stroke", "#fff").attr("stroke-width", 2);
   }
@@ -441,7 +441,7 @@ function renderExoplanetOrbits() {
       grow(orbits, "r", 4, d => d, .06 + si * .04, .5);
       const planets = svg.append("g").selectAll("circle.planet").data(system.planets).join("circle")
         .attr("class", "planet").attr("cx", d => system.x + d).attr("cy", (d, i) => cy + Math.sin(i * 1.7) * 8)
-        .attr("fill", systemColor).attr("fill-opacity", .88).attr("stroke", "#fff").attr("stroke-width", 1.3);
+        .attr("fill", systemColor).attr("fill-opacity", 1).attr("stroke", "#fff").attr("stroke-width", 1.3);
       grow(planets, "r", 2, (d, i) => 4 + (i % 3) * 1.8, .12 + si * .04, .45);
       svg.append("text").attr("class", "mark-label").attr("x", system.x).attr("y", 348).attr("text-anchor", "middle").text(system.name);
     });

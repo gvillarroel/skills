@@ -177,7 +177,7 @@ def render(data,layout):
     txt(44,157,facts,17,'#e7e7e7','#363636')
     for panel in layout['panels']:
         group=groups[panel['id']];x,y=panel['x'],panel['y'];color=group['color']
-        pieces.append(f'<g data-panel-id="{esc(panel["id"])}"><rect data-panel-box="true" x="{x}" y="{y}" width="{panel["w"]}" height="{panel["h"]}" rx="7" fill="#f7f7f7" stroke="#cfcfcf"/>')
+        pieces.append(f'<g data-panel-id="{esc(panel["id"])}"><rect data-panel-box="true" x="{x}" y="{y}" width="{panel["w"]}" height="{panel["h"]}" rx="7" fill="#f7f7f7" stroke="none"/>')
         pieces.append(f'<path d="M {x+18} {y+18} H {x+panel["w"]-18}" stroke="{color}" stroke-width="5"/>')
         for j,line in enumerate(panel['headings']):txt(x+26,y+52+j*36,line,31,color,PAPER,'class="display"')
         for r in panel['records']:
@@ -199,10 +199,10 @@ def render(data,layout):
         pieces.append(f'<path data-link-id="{esc(edge["id"])}" data-source="{esc(edge["source"])}" data-target="{esc(edge["target"])}" data-kind="{esc(edge["kind"])}" d="M {ax} {ay} V {byy} H {bx}" fill="none" stroke="{color}" stroke-width="1.6"/>')
     for i,r in layout['nodes'].items():
         color=groups[by[i]['group']]['color']
-        pieces.append(f'<circle cx="{r["x"]-24}" cy="{r["y"]+12}" r="3.6" fill="{PAPER}" stroke="{color}" stroke-width="1.6"/>')
+        pieces.append(f'<circle cx="{r["x"]-24}" cy="{r["y"]+12}" r="3.6" fill="{color}" stroke="none"/>')
     if layout['reading_pocket']:
         pocket=layout['reading_pocket'];x,y=pocket['x'],pocket['y']
-        pieces.append(f'<rect data-reading-pocket="true" x="{x}" y="{y}" width="{pocket["w"]}" height="{pocket["h"]}" rx="7" fill="{PAPER}" stroke="#cfcfcf"/>')
+        pieces.append(f'<rect data-reading-pocket="true" x="{x}" y="{y}" width="{pocket["w"]}" height="{pocket["h"]}" rx="7" fill="{PAPER}" stroke="none"/>')
         txt(x+26,y+41,'READING THE CONNECTIONS',26,INK,PAPER,'class="display"')
         for j,line in enumerate(pocket['lines']):txt(x+26,y+77+j*21,line,16)
     yy=height-24-len(layout['footer_lines'])*20

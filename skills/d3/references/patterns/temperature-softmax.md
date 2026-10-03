@@ -56,7 +56,7 @@ function renderTemperatureSoftmax() {
         .attr("height", rowHeight)
         .attr("rx", 5)
         .attr("fill", (d, i) => i === 0 ? panel.color : palette.gray300)
-        .attr("fill-opacity", (d, i) => i === 0 ? .86 : .55)
+        .attr("data-opacity-role", "semantic").attr("fill-opacity", (d, i) => i === 0 ? .86 : .55)
         .each(function (d, i) {
           d3.select(this).append("animate")
             .attr("attributeName", "width")

@@ -13,6 +13,7 @@ import json
 from pathlib import Path
 import re
 import sys
+from colorset_adapter import adapt_artifact, category_style
 
 
 COLORSET1 = {
@@ -120,7 +121,7 @@ def base_html(args: argparse.Namespace, description: str, attributes: dict[str, 
     runtime = runtime.replace("</script", "<\\/script")
     palette = palette_for(args.colorset)
     attrs = svg_attribute_text(args, attributes)
-    return f"""<!doctype html>
+    return adapt_artifact(f"""<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{escape(args.title)}</title><style>{css_for(palette)}</style></head>
 <body data-renderer="d3" data-colorset="{args.colorset}"><div class="diagram-viewport" role="region" aria-label="{escape(args.title, quote=True)}" tabindex="0" style="--diagram-min-width:{args.width}px">
@@ -128,7 +129,7 @@ def base_html(args: argparse.Namespace, description: str, attributes: dict[str, 
 </div>
 <script id="d3-runtime">/* D3 v7.9.0, BSD-3-Clause */\n{runtime}</script><script>{script}</script>
 </body></html>
-"""
+""", args.colorset)
 
 
 def bar_script(args: argparse.Namespace, palette: dict[str, str]) -> str:
@@ -266,8 +267,12 @@ def flow_script(args: argparse.Namespace, palette: dict[str, str]) -> str:
         except ValueError as error:
             raise ValueError(f"Flow link value must be numeric: {source}->{target}={display}") from error
         links.append({"source": source, "target": target, "value": numeric, "display": display})
+    paint_contract = json.loads((Path(__file__).resolve().parents[1] / "assets/palettes/colorsets.json").read_text(encoding="utf-8"))["colorsets"][args.colorset]
+    node_styles = [category_style(index, paint_contract, palette["surface"]) for index in range(len(node_labels))]
     spec = {
-        "svgId": args.svg_id, "nodes": [{"id": label} for label in node_labels], "links": links,
+        "svgId": args.svg_id, "nodes": [{"id": label, "color": style["fill"], **style}
+            for label, style in zip(node_labels, node_styles, strict=True)], "links": links,
+        "textOnFill": paint_contract["textOnFill"],
         "nodeClass": args.node_class, "linkClass": args.link_class,
         "width": args.width, "height": args.height, "palette": palette,
         "paddingX": getattr(args, "node_padding_x", 10), "paddingY": getattr(args, "node_padding_y", 6),
@@ -279,8 +284,8 @@ defs.append("marker").attr("id",`${spec.svgId}-arrow`).attr("viewBox","0 0 10 10
 .attr("markerUnits","userSpaceOnUse").attr("markerWidth",10).attr("markerHeight",10).attr("orient","auto").append("path").attr("d","M0,0 L10,5 L0,10 Z").attr("fill",spec.palette.ink);
 const x=d3.scalePoint().domain(spec.nodes.map(d=>d.id)).range([m.left,spec.width-m.right]).padding(.25),cy=spec.height*.52;
 spec.nodes.forEach(node=>{node.x=x(node.id);node.y=cy});const byId=new Map(spec.nodes.map(node=>[node.id,node]));
-const groups=svg.append("g").selectAll("g.flow-node").data(spec.nodes).join("g").attr("class","flow-node").attr("transform",d=>`translate(${d.x},${d.y})`);
-groups.append("text").attr("class","flow-node-label").attr("text-anchor","middle").attr("dy",".35em").attr("font-weight",700).text(d=>d.id)
+const groups=svg.append("g").selectAll("g.flow-node").data(spec.nodes).join("g").attr("class","flow-node").attr("data-outline-tier",d=>d.tier).attr("transform",d=>`translate(${d.x},${d.y})`);
+groups.append("text").attr("class","flow-node-label").style("fill",d=>spec.textOnFill[d.color]).attr("text-anchor","middle").attr("dy",".35em").attr("font-weight",700).text(d=>d.id)
 .each(function(d){const box=this.getBBox();d.w=Math.max(80,box.width+2*spec.paddingX);d.h=Math.max(32,box.height+2*spec.paddingY)});
 svg.append("text").attr("class","contract-title").attr("x",m.left).attr("y",42).text(spec.title);
 const links=svg.append("g").selectAll("path").data(spec.links).join("path").attr("class",spec.linkClass)
@@ -291,7 +296,7 @@ svg.append("g").selectAll("text.link-value").data(spec.links).join("text").attr(
 .attr("x",d=>(byId.get(d.source).x+byId.get(d.target).x)/2).attr("y",cy-24).attr("text-anchor","middle").attr("font-weight",700).text(d=>d.display);
 const rects=groups.insert("rect","text").attr("class",spec.nodeClass).attr("tabindex",0).attr("role","img").attr("aria-label",d=>d.id)
 .attr("x",d=>-d.w/2).attr("y",d=>-d.h/2).attr("width",d=>d.w).attr("height",d=>d.h).attr("rx",6)
-.attr("fill",spec.palette.surface).attr("stroke",spec.palette.primary).attr("stroke-width",2).attr("opacity",.2);
+.attr("fill",d=>d.color).attr("stroke",d=>d.stroke).attr("stroke-width",d=>d.strokeWidth).attr("stroke-dasharray",d=>d.strokeDasharray).attr("opacity",.2);
 rects.on("focus",function(){d3.select(this).classed("is-focus",true)}).on("blur",function(){d3.select(this).classed("is-focus",false)});
 links.transition().duration(360).delay((d,i)=>i*45).ease(d3.easeCubicOut).attr("opacity",1);
 rects.transition().duration(360).delay((d,i)=>80+i*55).ease(d3.easeCubicOut).attr("opacity",1);})();

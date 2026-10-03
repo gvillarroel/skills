@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 960 600" width="960" height="600" role="img" aria-labelledby="trim-window-title trim-window-desc" data-procedural-svg-version="1" data-pattern-id="procedural-svg-trim-window" data-example-id="trim-window" data-family="path" data-renderer="path" data-variant="4" data-pattern-revision="1" data-seed="346323" data-palette="colorset1" data-motion="full" data-motion-engine="css" data-duration-ms="8000" data-loop="true" data-loop-contract="master-phase" data-reduced-motion-fallback="layered" data-driver="CSS dash animation" data-technique="moving stroke window" data-deterministic="true" data-standalone="true" data-parameter-values="{}" data-parameter-hash="c8be268032e6e2a56b01036166da41c4a5b152c078018c59e874b408b047afc3">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" width="960" height="600" role="img" aria-labelledby="trim-window-title trim-window-desc" data-procedural-svg-version="1" data-pattern-id="procedural-svg-trim-window" data-example-id="trim-window" data-family="path" data-renderer="path" data-variant="4" data-pattern-revision="1" data-seed="346323" data-palette="colorset1" data-motion="full" data-motion-engine="css" data-duration-ms="8000" data-loop="true" data-loop-contract="master-phase" data-reduced-motion-fallback="layered" data-driver="CSS dash animation" data-technique="moving stroke window" data-deterministic="true" data-standalone="true" data-parameter-values="{}" data-parameter-hash="c8be268032e6e2a56b01036166da41c4a5b152c078018c59e874b408b047afc3" data-fill-style="solid-first">
   <title id="trim-window-title">Trim Window</title>
   <desc id="trim-window-desc">Coordinated dash array and offset expose only a moving window of a longer route. Deterministic seed 346323; full motion.</desc>
 
   <style>:root{color-scheme:light}
 *{box-sizing:border-box}
-.psvg-panel{fill:#ffffff;stroke:#cfcfcf;stroke-width:1.5}
+.psvg-panel{fill:#ffffff;stroke:none}
 .psvg-guide{fill:none;stroke:#cfcfcf;stroke-width:2}
-.psvg-title{font:700 24px Arial,sans-serif;fill:#333e48}
-.psvg-subtitle{font:13px Arial,sans-serif;fill:#696969}
-.psvg-kicker{font:700 11px Arial,sans-serif;letter-spacing:1.222px;fill:#9e1b32}
-.psvg-label{font:600 13px Arial,sans-serif;fill:#333e48}
-.psvg-node-label{font:700 10px Arial,sans-serif;fill:#ffffff;pointer-events:none}
-.psvg-note{font:11px Arial,sans-serif;fill:#696969}
+.psvg-title{font:700 24px Arial,sans-serif;}
+.psvg-subtitle{font:13px Arial,sans-serif;}
+.psvg-kicker{font:700 11px Arial,sans-serif;letter-spacing:1.222px;}
+.psvg-label{font:600 13px Arial,sans-serif;}
+.psvg-node-label{font:700 10px Arial,sans-serif;pointer-events:none}
+.psvg-note{font:11px Arial,sans-serif;}
 .psvg-cell,.psvg-art circle,.psvg-art rect,.psvg-art path,.psvg-art polygon{transform-box:fill-box;transform-origin:center}
 .psvg-reduced-layer{display:none}
 
@@ -35,9 +35,9 @@
 @keyframes psvg-state-card{0%,18%,100%{opacity:.38;transform:scale(.94)}35%,58%{opacity:1;transform:scale(1.08)}75%{opacity:.62;transform:scale(1)}}
 
 @media(prefers-reduced-motion:reduce){.psvg-motion-layer{display:none!important}.psvg-reduced-layer{display:inline!important}*{animation:none!important}}</style>
-  <rect width="960" height="600" fill="#f7f7f7"/>
-  <text class="psvg-kicker" x="40" y="34">PATH · moving stroke window</text>
-  <text class="psvg-title" x="40" y="68">Trim Window</text>
-  <text class="psvg-subtitle" x="40" y="92">seed 346323 · 8000 ms · colorset1 · full motion</text>
-  <g class="psvg-motion-layer" data-motion-layer="animated"><rect class="psvg-panel" x="40" y="112" width="880" height="444" rx="12"/><g class="psvg-art" data-role="procedural-art"><path d="M 88 422.8 C 216 147.52, 374.4 529.36, 515.2 298.48 S 744 174.16, 872 356.2" fill="none" stroke="#e7e7e7" stroke-width="5"/><path d="M 88 422.8 C 216 147.52, 374.4 529.36, 515.2 298.48 S 744 174.16, 872 356.2" pathLength="1" fill="none" stroke="#9c9c9c" stroke-width="12" stroke-linecap="round" style="animation:psvg-trim 8000ms linear 0ms infinite both"/></g><text class="psvg-note" x="58" y="540">visible segment = [s(t), s(t)+w]</text></g><g class="psvg-reduced-layer" data-motion-layer="reduced"><rect class="psvg-panel" x="40" y="112" width="880" height="444" rx="12"/><g class="psvg-art" data-role="procedural-art"><path d="M 88 422.8 C 216 147.52, 374.4 529.36, 515.2 298.48 S 744 174.16, 872 356.2" fill="none" stroke="#e7e7e7" stroke-width="5"/><path d="M 88 422.8 C 216 147.52, 374.4 529.36, 515.2 298.48 S 744 174.16, 872 356.2" pathLength="1" fill="none" stroke="#9c9c9c" stroke-width="12" stroke-linecap="round" style=""/></g><text class="psvg-note" x="58" y="540">visible segment = [s(t), s(t)+w]</text></g>
+  <rect width="960" height="600" fill="#f7f7f7" stroke="none" data-fill-style="solid" />
+  <text class="psvg-kicker" x="40" y="34" fill="#000000" stroke="none">PATH · moving stroke window</text>
+  <text class="psvg-title" x="40" y="68" fill="#000000" stroke="none">Trim Window</text>
+  <text class="psvg-subtitle" x="40" y="92" fill="#000000" stroke="none">seed 346323 · 8000 ms · colorset1 · full motion</text>
+  <g class="psvg-motion-layer" data-motion-layer="animated"><rect class="psvg-panel" x="40" y="112" width="880" height="444" rx="12" stroke="none" data-fill-style="solid" /><g class="psvg-art" data-role="procedural-art"><path d="M 88 422.8 C 216 147.52, 374.4 529.36, 515.2 298.48 S 744 174.16, 872 356.2" fill="none" stroke="#e7e7e7" stroke-width="5" /><path d="M 88 422.8 C 216 147.52, 374.4 529.36, 515.2 298.48 S 744 174.16, 872 356.2" pathLength="1" fill="none" stroke="#828282" stroke-width="12" stroke-linecap="round" style="animation:psvg-trim 8000ms linear 0ms infinite both" /></g><text class="psvg-note" x="58" y="540" fill="#000000" stroke="none">visible segment = [s(t), s(t)+w]</text></g><g class="psvg-reduced-layer" data-motion-layer="reduced"><rect class="psvg-panel" x="40" y="112" width="880" height="444" rx="12" stroke="none" data-fill-style="solid" /><g class="psvg-art" data-role="procedural-art"><path d="M 88 422.8 C 216 147.52, 374.4 529.36, 515.2 298.48 S 744 174.16, 872 356.2" fill="none" stroke="#e7e7e7" stroke-width="5" /><path d="M 88 422.8 C 216 147.52, 374.4 529.36, 515.2 298.48 S 744 174.16, 872 356.2" pathLength="1" fill="none" stroke="#828282" stroke-width="12" stroke-linecap="round" style="" /></g><text class="psvg-note" x="58" y="540" fill="#000000" stroke="none">visible segment = [s(t), s(t)+w]</text></g>
 </svg>

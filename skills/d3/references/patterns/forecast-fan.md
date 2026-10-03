@@ -39,7 +39,7 @@ function renderForecastFan() {
     ];
     const bandPaths = svg.append("g").selectAll("path").data(bands).join("path")
       .attr("d", d => area(d.lo, d.hi)(future))
-      .attr("fill", d => d.fill).attr("fill-opacity", .66);
+      .attr("fill", d => d.fill).attr("data-opacity-role", "semantic").attr("fill-opacity", .66);
     fadeIn(bandPaths, .12, .75);
     const line = d3.line().x(d => x(d.t)).y(d => y(d.y ?? d.median)).curve(d3.curveMonotoneX);
     const historyPath = svg.append("path").datum(history).attr("d", line).attr("fill", "none").attr("stroke", palette.ink).attr("stroke-width", 2.6);

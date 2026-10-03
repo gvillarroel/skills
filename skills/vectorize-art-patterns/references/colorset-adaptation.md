@@ -21,7 +21,9 @@ validator rejects the former unconstrained `source` output contract.
 ## Invariants
 
 - Permit only exact six-digit lowercase hex tokens from the selected colorset.
-- Apply the active contract to background, paths, and outlines.
+- Apply the active contract to background and paths. Keep `--outline 0` for
+  ordinary filled derivatives; outlines require a requested source style or a
+  documented palette overflow after usable unique solid tokens are exhausted.
 - Do not interpolate, blend, or invent colors between tokens.
 - Preserve `viewBox`, path count, path data, fill rules, pattern transforms,
   and source SHA-256 between paired variants.
@@ -31,7 +33,8 @@ validator rejects the former unconstrained `source` output contract.
 
 The vectorizer maps the background to a suitable light or dark surface, assigns
 ink explicitly, and maps color layers deterministically by perceptual
-proximity. Colorset1 reserves its primary red for the strongest chromatic
+proximity within the complete usable `solidSequence`, reserving soft pastels
+until other unused tokens are exhausted. Colorset1 reserves its primary red for the strongest chromatic
 source layer. Colorset2 reserves its secondary blue for the largest traced
 layer so light source crops retain a visible expressive anchor.
 

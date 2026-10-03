@@ -4,12 +4,12 @@
   "input": "assets/base-images/renoir-two-sisters.jpg",
   "input_sha256": "385098ad88f6be0095e025f7484073bc24ef8de9b863d46a56807097eb127e35",
   "output": "svgs/vectorize-renoir-two-sisters-cs1.svg",
-  "output_sha256": "df2012414c029859f4cca5e765074daa3c4041696fa8188ec71c0dc6a14a0202",
+  "output_sha256": "3689f537b98e391d5b10e39b2948eb04020535d6ab09d36a62d85a049ea86e73",
   "pattern_id": "vectorize-renoir-two-sisters-cs1",
   "mode": "organic",
   "tile": "none",
   "colorset": "colorset1",
-  "palette_contract_sha256": "c81d32ffb0d55d44e7d3102c7470e251baf34f0bb6472fbede7753df8b9a9eb5",
+  "palette_contract_sha256": "f36eb8a9fe171108383767c7697f023218121e51d3e45247e87b58e397b36d62",
   "variation_seed": 0,
   "composition_sha256": "0f060850941bfc4318e2384c93b82b4f2c0be3a86c48460045828620e032e6a9",
   "parameters": {
@@ -25,7 +25,7 @@
       "layers": [
         {
           "source": "#a5ac8d",
-          "target": "#cfcfcf"
+          "target": "#9c9c9c"
         },
         {
           "source": "#608245",
@@ -33,19 +33,19 @@
         },
         {
           "source": "#232d32",
-          "target": "#1c1c1c"
+          "target": "#363636"
         },
         {
           "source": "#195187",
-          "target": "#6d1222"
+          "target": "#4f4f4f"
         },
         {
           "source": "#823036",
-          "target": "#e8002a"
+          "target": "#6d1222"
         },
         {
           "source": "#d6dad4",
-          "target": "#ffccd5"
+          "target": "#cfcfcf"
         },
         {
           "source": "#c66751",
@@ -53,7 +53,7 @@
         },
         {
           "source": "#5487b4",
-          "target": "#f7f7f7"
+          "target": "#696969"
         }
       ],
       "source_colors": [
@@ -69,14 +69,14 @@
       ],
       "target_colors": [
         "#333e48",
-        "#cfcfcf",
+        "#9c9c9c",
         "#828282",
-        "#1c1c1c",
+        "#363636",
+        "#4f4f4f",
         "#6d1222",
-        "#e8002a",
-        "#ffccd5",
+        "#cfcfcf",
         "#9e1b32",
-        "#f7f7f7"
+        "#696969"
       ]
     }
   },
@@ -87,15 +87,15 @@
   "render_width": 451,
   "render_height": 560,
   "palette": [
-    "#1c1c1c",
     "#333e48",
+    "#363636",
+    "#4f4f4f",
+    "#696969",
     "#6d1222",
     "#828282",
+    "#9c9c9c",
     "#9e1b32",
-    "#cfcfcf",
-    "#e8002a",
-    "#f7f7f7",
-    "#ffccd5"
+    "#cfcfcf"
   ],
   "path_count": 81,
   "output_bytes": 222429,

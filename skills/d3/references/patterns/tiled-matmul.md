@@ -49,7 +49,7 @@ function renderMatmulTileAccumulation() {
         .attr("height", bw)
         .attr("rx", 4)
         .attr("fill", d => matrix.active(d) ? matrix.color : palette.gray100)
-        .attr("fill-opacity", d => matrix.active(d) ? .62 : .48)
+        .attr("data-opacity-role", "semantic").attr("fill-opacity", d => matrix.active(d) ? .62 : .48)
         .attr("stroke", palette.surface)
         .attr("stroke-width", 1.2);
       rects.append("animate")
@@ -118,7 +118,7 @@ function renderMatmulTileAccumulation() {
       .each(function (d) {
         const group = d3.select(this);
         group.append("rect").attr("x", -24).attr("y", 0).attr("width", 48).attr("height", 26).attr("rx", 7).attr("fill", palette.gray100).attr("stroke", palette.gray300);
-        const fill = group.append("rect").attr("x", -24).attr("y", 0).attr("width", 48).attr("height", 26).attr("rx", 7).attr("fill", d.k % 2 ? palette.orange : palette.blue).attr("fill-opacity", .58);
+        const fill = group.append("rect").attr("x", -24).attr("y", 0).attr("width", 48).attr("height", 26).attr("rx", 7).attr("fill", d.k % 2 ? palette.orange : palette.blue).attr("fill-opacity", 1);
         fill.append("animate").attr("attributeName", "width").attr("from", 0).attr("to", 48).attr("dur", ".28s").attr("begin", `${1.1 + d.k * .18}s`).attr("fill", "freeze");
         group.append("text").attr("class", "reverse-label").attr("x", 0).attr("y", 17).attr("text-anchor", "middle").attr("font-weight", 800).style("font-size", "10px").text(`k${d.k}`);
       });
@@ -130,7 +130,7 @@ function renderMatmulTileAccumulation() {
       .attr("height", band.step() * 2 - 2)
       .attr("rx", 8)
       .attr("fill", palette.green)
-      .attr("fill-opacity", .08)
+      .attr("fill-opacity", 1)
       .attr("stroke", palette.red)
       .attr("stroke-width", 3)
       .attr("opacity", 0);

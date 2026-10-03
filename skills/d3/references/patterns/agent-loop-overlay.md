@@ -107,7 +107,7 @@ function renderAgentLoopPartialCovers() {
       .attr("height", d => d.h)
       .attr("rx", 7)
       .attr("fill", d => d.fill)
-      .attr("fill-opacity", .19)
+      .attr("fill-opacity", 1)
       .attr("stroke", d => d.stroke)
       .attr("stroke-width", 1.4)
       .attr("stroke-opacity", .78)

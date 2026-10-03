@@ -4,12 +4,12 @@
   "input": "assets/base-images/gauguin-day-god.jpg",
   "input_sha256": "d0ec07d3ec2be4065a3321ae55f690f212f4a0db92d6346a258d214760f4b09f",
   "output": "svgs/vectorize-gauguin-day-god-cs2.svg",
-  "output_sha256": "e8a8f69d7ac3f9bf2ca093dae485f12836afc2dc0512c0ac792e1ee1a6282644",
+  "output_sha256": "95819c9ea8e3e2d8b2dff673f1496ee74a845d8788dea3f7b2a1c1d296759def",
   "pattern_id": "vectorize-gauguin-day-god-cs2",
   "mode": "collage",
   "tile": "none",
   "colorset": "colorset2",
-  "palette_contract_sha256": "c81d32ffb0d55d44e7d3102c7470e251baf34f0bb6472fbede7753df8b9a9eb5",
+  "palette_contract_sha256": "f36eb8a9fe171108383767c7697f023218121e51d3e45247e87b58e397b36d62",
   "variation_seed": 0,
   "composition_sha256": "af72512edf902504d6ae693ac883dce88bc16145e4d251571b69b5aedd4e4b82",
   "parameters": {
@@ -29,19 +29,19 @@
         },
         {
           "source": "#755347",
-          "target": "#9e1b32"
+          "target": "#4f4f4f"
         },
         {
           "source": "#173043",
-          "target": "#1c1c1c"
+          "target": "#363636"
         },
         {
           "source": "#4a6a68",
-          "target": "#828282"
+          "target": "#696969"
         },
         {
           "source": "#b08267",
-          "target": "#e77204"
+          "target": "#828282"
         },
         {
           "source": "#17485e",
@@ -49,11 +49,11 @@
         },
         {
           "source": "#798d84",
-          "target": "#45842a"
+          "target": "#9c9c9c"
         },
         {
           "source": "#b5ab8c",
-          "target": "#cfcfcf"
+          "target": "#b5b5b5"
         }
       ],
       "source_colors": [
@@ -70,13 +70,13 @@
       "target_colors": [
         "#333e48",
         "#007298",
-        "#9e1b32",
-        "#1c1c1c",
+        "#4f4f4f",
+        "#363636",
+        "#696969",
         "#828282",
-        "#e77204",
         "#004d66",
-        "#45842a",
-        "#cfcfcf"
+        "#9c9c9c",
+        "#b5b5b5"
       ]
     }
   },
@@ -89,13 +89,13 @@
   "palette": [
     "#004d66",
     "#007298",
-    "#1c1c1c",
     "#333e48",
-    "#45842a",
+    "#363636",
+    "#4f4f4f",
+    "#696969",
     "#828282",
-    "#9e1b32",
-    "#cfcfcf",
-    "#e77204"
+    "#9c9c9c",
+    "#b5b5b5"
   ],
   "path_count": 171,
   "output_bytes": 229349,

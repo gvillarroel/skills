@@ -191,7 +191,7 @@ function renderPocketMonsterStippling() {
       .join("path")
       .attr("d", d => voronoi.renderCell(d.cellIndex))
       .attr("fill", d => cellFill[d.region] || palette.yellowHighlight)
-      .attr("fill-opacity", d => d.region === "ink" || d.region === "tip" ? .22 : .58)
+      .attr("data-opacity-role", "semantic").attr("fill-opacity", d => d.region === "ink" || d.region === "tip" ? .22 : .58)
       .attr("stroke", palette.surface)
       .attr("stroke-width", .95)
       .attr("opacity", .96);
@@ -214,7 +214,7 @@ function renderPocketMonsterStippling() {
       .attr("cy", d => d.y)
       .attr("r", d => d.region === "ink" || d.region === "tip" ? 2.9 + d.weight * 2.4 : 2.1 + d.weight * 2.1)
       .attr("fill", d => dotFill[d.region] || palette.gold)
-      .attr("fill-opacity", d => d.region === "body" ? .78 : .92);
+      .attr("data-opacity-role", "semantic").attr("fill-opacity", d => d.region === "body" ? .78 : .92);
 
     dots.each(function (d, i) {
       const delay = .16 + i * .006;

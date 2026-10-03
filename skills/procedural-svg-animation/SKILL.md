@@ -98,3 +98,28 @@ Treat each result as a pipeline:
 ## Maintenance
 
 Keep gallery fixtures under `assets/examples/procedural-svg-animation/`; normal runtime work must not read them. When adding a reusable mechanism, update the catalog, generator, compact family guidance, gallery, tests, and canonical ID inventory together. Validate exact paths, deterministic hashes, alternate seeds, standalone SVG behavior, reduced motion, desktop/mobile layout, isolated skill use, and the canonical multi-strata adversarial test before marking the skill done.
+
+## Solid fill priority
+
+Use opaque, single-token filled marks without decorative borders first. Read
+`solidSequence` and `textOnFill` from `assets/palettes/colorsets.json`. Reuse a
+fill for the same semantic role; when roles must be distinct, exhaust every
+usable distinct token in the preferred sequence, excluding the actual canvas,
+before creating outline or tint combinations. Soft tokens occur late. For text
+on a fill, use exactly black or white with the larger WCAG contrast computed
+from the actual background; composite opacity before evaluating translucent
+backgrounds. Do not infer text color from a hue name.
+
+Keep connectors, axes, signal traces, open line art, physical geometry and
+explicit source-fidelity modes. A stroke that depicts a relationship or is the
+geometry itself is meaningful. Reserve decorative outlines for a documented
+palette overflow or an explicit requested style; mark SVG overflow treatments
+with `data-outline-tier="overflow"`. A transient keyboard focus ring remains an
+interaction affordance. Use position, whitespace and direct labels for ordinary
+selection and grouping.
+
+Use `scripts/solid_style.py::category_style` for ordered categories. After all
+usable solids, cycle allowed border colors with fill contrast at least 3:1,
+then solid/dashed/dotted styles, then widths of 1–3 px. After that finite set,
+use labels, symbols or split views instead of wider rims or indistinguishable
+color combinations.

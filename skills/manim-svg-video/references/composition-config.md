@@ -49,15 +49,21 @@ Use `--layout mosaic` only when every SVG should keep a final grid cell after it
 
 ## Palette
 
-The default palette uses a white scene background with light tiles:
+The default wrapper uses opaque neutral tiles without borders. Its palette is
+colorset1; producer-owned source media keeps its own paint:
 
 - `--background #ffffff`
-- `--title-color #1c1c1c`
+- Title color: automatically `#000000` on the default background.
 - `--tile-fill #f7f7f7`
-- `--tile-stroke #cfcfcf`
-- `--label-color #333e48`
+- `--tile-border-width 0`
+- Tile labels: automatically `#000000` on the default tile fill.
+- `--placeholder-border-width 0`; error placeholders use a solid red fill with white text.
 
-When changing the background, adjust the title, tile, and placeholder colors together so the title, empty regions, and conversion placeholders stay readable.
+The default text color recomputes to pure black or white by maximum WCAG contrast
+on its actual background or tile fill. An explicit title, label, or placeholder
+text color overrides that choice. Keep default border widths at zero; introduce
+an outline only for an explicit request or category overflow after all usable
+unique solid palette colors have been exhausted.
 
 ## Discovery
 

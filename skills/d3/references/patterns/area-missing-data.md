@@ -28,7 +28,7 @@ function renderAreaMissingData() {
     axisBottom(svg, x, height - margin.bottom, 6);
     axisLeft(svg, y, margin.left, 5);
     const area = d3.area().defined(d => d.value != null).x(d => x(d.t)).y0(y(0)).y1(d => y(d.value)).curve(d3.curveMonotoneX);
-    const fill = svg.append("path").datum(data).attr("d", area).attr("fill", palette.greenHighlight).attr("fill-opacity", .78).attr("stroke", palette.green).attr("stroke-width", 3);
+    const fill = svg.append("path").datum(data).attr("d", area).attr("fill", palette.greenHighlight).attr("fill-opacity", 1).attr("stroke", palette.green).attr("stroke-width", 3);
     fadeIn(fill, .08, .65);
     const line = d3.line().defined(d => d.value != null).x(d => x(d.t)).y(d => y(d.value)).curve(d3.curveMonotoneX);
     drawPath(svg.append("path").datum(data).attr("d", line).attr("fill", "none").attr("stroke", palette.green).attr("stroke-width", 2.6), .12, .9);

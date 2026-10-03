@@ -332,3 +332,37 @@ Select the matching recipe and read it in full.
 - [word cloud](references/patterns/word-cloud.md).
 - [world tour](references/patterns/world-tour.md).
 - [zoom to bounds](references/patterns/zoom-to-bounds.md).
+
+## Solid fill priority
+
+Use opaque, single-token filled marks without decorative borders first. Read
+`solidSequence` and `textOnFill` from `assets/palettes/colorsets.json`. Reuse a
+fill for the same semantic role; when roles must be distinct, exhaust every
+usable distinct token in the preferred sequence, excluding the actual canvas,
+before creating outline or tint combinations. Soft tokens occur late. For text
+on a fill, use exactly black or white with the larger WCAG contrast computed
+from the actual background; composite opacity before evaluating translucent
+backgrounds. Do not infer text color from a hue name.
+
+Named builders and the editable starter finalize this styling automatically.
+The finalizer makes ordinary static filled marks opaque. Declare
+`data-opacity-role="semantic"` on only the shapes or groups whose alpha
+communicates overlap, density, a numeric value, or a named selection state;
+document that meaning in the visual's description. Use
+`data-opacity-role="reveal"` for programmatic reveal animation. CSS and SVG
+opacity animations remain supported. Do not use low alpha as a routine
+category tint or decorative background treatment.
+Preserve zero-opacity hidden states until their visibility or reveal changes.
+For custom HTML, run `uv run --script <d3-skill>/scripts/colorset_adapter.py
+<authored.html> <final.html> --colorset <colorset1|colorset2>`, then capture the
+settled SVG from the finalized HTML. The runtime exposes
+`D3SolidStyle.categoryStyle(index, colorset, actualCanvas)` for categorical
+allocation; use its complete solid tier before its overflow tier.
+
+Keep connectors, axes, signal traces, open line art, physical geometry and
+explicit source-fidelity modes. A stroke that depicts a relationship or is the
+geometry itself is meaningful. Reserve decorative outlines for a documented
+palette overflow or an explicit requested style; mark SVG overflow treatments
+with `data-outline-tier="overflow"`. A transient keyboard focus ring remains an
+interaction affordance. Use position, whitespace and direct labels for ordinary
+selection and grouping.

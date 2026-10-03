@@ -208,8 +208,11 @@ def flow(group, p, box, weight):
         size = min(18, (bw - 20) / max(1, len(text) * .65), bh * .32)
         if size < 9:
             raise ValueError("Flow labels would be too small; widen the canvas or shorten labels")
-        node(group, "rect", id=f"node-{i}", x=nx, y=ny, width=bw, height=bh, rx=rounding)
-        label(group, text, nx + bw / 2, ny + bh / 2, size, f"label-{i}")
+        node(group, "rect", id=f"node-{i}", x=nx, y=ny, width=bw, height=bh, rx=rounding,
+             fill="currentColor", stroke="none", data_fill_style="solid")
+        node(group, "text", text, id=f"label-{i}", x=nx + bw / 2, y=ny + bh / 2,
+             font_size=size, font_family="DejaVu Sans, sans-serif", text_anchor="middle",
+             dominant_baseline="middle", fill=PALETTES[group.get("data-colorset")]["textOnFill"][group.get("color")], stroke="none")
         if i < n - 1:
             start = (nx + bw, ny + bh / 2) if horizontal else (nx + bw / 2, ny + bh)
             end = (start[0] + gap, start[1]) if horizontal else (start[0], start[1] + gap)
@@ -265,7 +268,7 @@ def frond(group, p, box, weight):
             hull.extend(((px, py), first, (tx, ty), second))
             d = (f"M {point(px, py)} Q {point(*first)} {point(tx, ty)} "
                  f"Q {point(*second)} {point(px, py)} Z")
-            node(stem, "path", id=f"leaflet-{i}-{'left' if side<0 else 'right'}", d=d, stroke_width=weight * .7)
+            node(stem, "path", id=f"leaflet-{i}-{'left' if side<0 else 'right'}", d=d, fill="currentColor", stroke="none")
     # A Bezier lies inside its control hull. Fit that hull after rotation,
     # preserving aspect and making no assumptions about rendered path parsing.
     angle = math.radians(rotation)
@@ -298,7 +301,7 @@ def composition(group, p, box, weight):
         if ix < x or iy < y or ix+iw > x+w or iy+ih > y+h:
             raise ValueError("Item box must stay inside the canvas margins")
         identity = str(item.get("id", f"part-{index}"))
-        part = node(group, "g", id=identity)
+        part = node(group, "g", id=identity, color=group.get("color"), data_colorset=group.get("data-colorset"))
         params = dict(defaults(kind)["parameters"])
         params.update(item.get("parameters", {}))
         DRAW[kind](part, params, (ix, iy, iw, ih), weight)
@@ -353,7 +356,8 @@ def build(recipe):
         raise ValueError("underlay must be a list with at most 500 entries")
     for detail in background:
         add_detail(underlay, detail, allowed)
-    group = node(root, "g", id="structure", fill="none", stroke="currentColor", stroke_width=weight, stroke_linecap="round", stroke_linejoin="round")
+    group = node(root, "g", id="structure", color=color, data_colorset=colorset,
+                 fill="none", stroke="currentColor", stroke_width=weight, stroke_linecap="round", stroke_linejoin="round")
     if recipe["kind"] in DRAW:
         DRAW[recipe["kind"]](group, p, (margin, margin, w-2*margin, h-2*margin), weight)
     detail_group = node(root, "g", id="details", fill="none", stroke="currentColor", stroke_width=weight)

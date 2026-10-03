@@ -1,0 +1,197 @@
+{
+  "date": "2026-10-03",
+  "method": "Playwright Microsoft Edge against a local HTTP server rooted in dist/pages; two animation frames before screenshots",
+  "pages": [
+    {
+      "page": "catalog",
+      "pageErrors": [],
+      "viewports": [
+        {
+          "width": 1440,
+          "horizontalOverflowPx": 0
+        },
+        {
+          "width": 390,
+          "horizontalOverflowPx": 0
+        }
+      ],
+      "cardCount": 14,
+      "borderCount": 0,
+      "badges": {
+        "checkCount": 14,
+        "passedCount": 14,
+        "failures": []
+      }
+    },
+    {
+      "page": "d3-animated-svg-cs1",
+      "pageErrors": [],
+      "viewports": [
+        {
+          "width": 1440,
+          "horizontalOverflowPx": 0
+        },
+        {
+          "width": 390,
+          "horizontalOverflowPx": 0
+        }
+      ],
+      "svgCount": 225,
+      "eligibleFilledMarkCount": 7498,
+      "decorativeOutlineCount": 0,
+      "outlineExamples": [],
+      "labelPaints": [
+        "#000000",
+        "#ffffff"
+      ],
+      "nonBlackWhiteLabels": [],
+      "cartogram": {
+        "fillCount": 5,
+        "markCount": 5,
+        "opaque": true,
+        "borderless": true
+      },
+      "categoryBurst": {
+        "nodeCount": 9,
+        "distinctFills": 9,
+        "separateRimCount": 0,
+        "filterCount": 0,
+        "spokeCount": 8
+      }
+    },
+    {
+      "page": "d3-animated-svg-colorset2",
+      "pageErrors": [],
+      "viewports": [
+        {
+          "width": 1440,
+          "horizontalOverflowPx": 0
+        },
+        {
+          "width": 390,
+          "horizontalOverflowPx": 0
+        }
+      ],
+      "svgCount": 225,
+      "eligibleFilledMarkCount": 7498,
+      "decorativeOutlineCount": 0,
+      "outlineExamples": [],
+      "labelPaints": [
+        "#000000",
+        "#ffffff"
+      ],
+      "nonBlackWhiteLabels": [],
+      "cartogram": {
+        "fillCount": 5,
+        "markCount": 5,
+        "opaque": true,
+        "borderless": true
+      },
+      "categoryBurst": {
+        "nodeCount": 9,
+        "distinctFills": 9,
+        "separateRimCount": 0,
+        "filterCount": 0,
+        "spokeCount": 8
+      }
+    },
+    {
+      "page": "threejs-animated-3d",
+      "pageErrors": [],
+      "viewports": [
+        {
+          "width": 1440,
+          "horizontalOverflowPx": 0
+        },
+        {
+          "width": 390,
+          "horizontalOverflowPx": 0
+        }
+      ],
+      "sceneCount": 24,
+      "authoredEdgesGeometryCount": 0,
+      "replayWorks": true,
+      "controls": {
+        "checkCount": 25,
+        "passedCount": 25,
+        "failures": []
+      }
+    },
+    {
+      "page": "procedural-svg-animation",
+      "pageErrors": [],
+      "viewports": [
+        {
+          "width": 1440,
+          "horizontalOverflowPx": 0
+        },
+        {
+          "width": 390,
+          "horizontalOverflowPx": 0
+        }
+      ],
+      "patternCount": 66,
+      "controls": {
+        "checkCount": 645,
+        "passedCount": 645,
+        "failures": []
+      }
+    },
+    {
+      "page": "vectorize-art-patterns",
+      "pageErrors": [],
+      "viewports": [
+        {
+          "width": 1440,
+          "horizontalOverflowPx": 0
+        },
+        {
+          "width": 390,
+          "horizontalOverflowPx": 0
+        }
+      ]
+    },
+    {
+      "page": "vectorize-abstract-world-maps",
+      "pageErrors": [],
+      "viewports": [
+        {
+          "width": 1440,
+          "horizontalOverflowPx": 0
+        },
+        {
+          "width": 390,
+          "horizontalOverflowPx": 0
+        }
+      ]
+    },
+    {
+      "svgCount": 1,
+      "eligibleFilledMarkCount": 21,
+      "decorativeOutlineCount": 0,
+      "outlineExamples": [],
+      "labelPaints": [
+        "#000000",
+        "#ffffff"
+      ],
+      "nonBlackWhiteLabels": [],
+      "page": "procedural-svg-state-sequencer"
+    },
+    {
+      "svgCount": 1,
+      "eligibleFilledMarkCount": 135,
+      "decorativeOutlineCount": 0,
+      "outlineExamples": [],
+      "labelPaints": [
+        "#000000"
+      ],
+      "nonBlackWhiteLabels": [],
+      "page": "procedural-svg-stagger-wave"
+    }
+  ],
+  "copyCheckCount": 206,
+  "copyMismatchCount": 0,
+  "logoVendorBytesPreserved": true,
+  "findings": [],
+  "passed": true
+}

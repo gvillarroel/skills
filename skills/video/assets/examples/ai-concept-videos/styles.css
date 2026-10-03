@@ -154,7 +154,7 @@ h1 {
   min-width: 0;
   min-height: 0;
   background: #ffffff;
-  border: 1px solid var(--line-soft);
+  border: 0;
   border-radius: 8px;
   box-shadow: 0 10px 24px rgba(51, 62, 72, 0.08);
 }
@@ -217,7 +217,7 @@ h1 {
 
 .scene-callout {
   margin: 0;
-  border-left: 4px solid var(--brand-primary);
+  border-left: 0;
   background: #fff4cc;
   color: #333e48;
   font-size: 15px;
@@ -292,7 +292,7 @@ h1 {
 
 .source-card {
   background: #f7f7f7;
-  border: 1px solid #e7e7e7;
+  border: 0;
   border-radius: 8px;
   padding: 12px;
 }
@@ -313,7 +313,7 @@ h1 {
 
 .source-tags span {
   background: #cdf3ff;
-  border: 1px solid #cdf3ff;
+  border: 0;
   border-radius: 999px;
   color: #004d66;
   font-size: 11px;
@@ -347,7 +347,7 @@ h1 {
   height: 42px;
   border-radius: 8px;
   background: #f7f7f7;
-  border: 1px solid #e7e7e7;
+  border: 0;
   overflow: hidden;
   position: relative;
 }
@@ -386,10 +386,7 @@ h1 {
   font-family: var(--font-primary);
   font-size: 13px;
   font-weight: 780;
-  paint-order: stroke;
-  stroke: #ffffff;
-  stroke-linejoin: round;
-  stroke-width: 4px;
+  stroke: none;
 }
 
 .svg-caption {

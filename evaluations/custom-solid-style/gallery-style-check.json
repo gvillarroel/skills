@@ -1,0 +1,81 @@
+{
+  "passed": true,
+  "galleries": [
+    {
+      "cardCount": 225,
+      "solidStyleCount": 225,
+      "filledCount": 7498,
+      "outlineViolations": [],
+      "staticAlphaViolations": [],
+      "textPaints": [
+        "#000000",
+        "#ffffff"
+      ],
+      "textExceptions": [],
+      "gallery": "d3-animated-svg-cs1",
+      "pageErrors": [],
+      "passed": true
+    },
+    {
+      "cardCount": 225,
+      "solidStyleCount": 225,
+      "filledCount": 7498,
+      "outlineViolations": [],
+      "staticAlphaViolations": [],
+      "textPaints": [
+        "#000000",
+        "#ffffff"
+      ],
+      "textExceptions": [],
+      "gallery": "d3-animated-svg-colorset2",
+      "pageErrors": [],
+      "passed": true
+    },
+    {
+      "gallery": "procedural-svg-animation",
+      "passed": true
+    },
+    {
+      "gallery": "vectorize-art-patterns",
+      "passed": true,
+      "browserChecks": [
+        {
+          "viewport": {
+            "width": 1440,
+            "height": 1100
+          },
+          "decorativeBorderCount": 0
+        },
+        {
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "decorativeBorderCount": 0
+        }
+      ],
+      "borderlessFilledPaths": 5290
+    },
+    {
+      "gallery": "vectorize-abstract-world-maps",
+      "passed": true,
+      "browserChecks": [
+        {
+          "viewport": {
+            "width": 1440,
+            "height": 1100
+          },
+          "decorativeBorderCount": 0
+        },
+        {
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "decorativeBorderCount": 0
+        }
+      ],
+      "borderlessFilledPaths": 61
+    }
+  ]
+}

@@ -37,7 +37,7 @@ function renderRadar() {
       g.append("line").attr("x2", Math.cos(a) * r(100)).attr("y2", Math.sin(a) * r(100)).attr("stroke", "#e7e7e7");
       g.append("text").attr("class", "label").attr("x", Math.cos(a) * 160).attr("y", Math.sin(a) * 160).attr("text-anchor", "middle").text(m);
     });
-    const areas = g.selectAll(".profile").data(profiles).join("path").attr("d", d => line(d.values)).attr("fill", d => d.color).attr("fill-opacity", .24).attr("stroke", d => d.color).attr("stroke-width", 2.2);
+    const areas = g.selectAll(".profile").data(profiles).join("path").attr("d", d => line(d.values)).attr("fill", d => d.color).attr("data-opacity-role", "semantic").attr("fill-opacity", .24).attr("stroke", d => d.color).attr("stroke-width", 2.2);
     drawPath(areas, .12, .9);
   }
 ```

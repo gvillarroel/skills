@@ -72,7 +72,7 @@ function renderD3ErSchema() {
       .attr("class", "er-entity")
       .attr("transform", d => `translate(${d.x},${d.y})`);
     groups.append("rect").attr("width", box.w).attr("height", d => d.h).attr("rx", 8).attr("fill", palette.surface).attr("stroke", d => d.color).attr("stroke-width", 2);
-    groups.append("rect").attr("width", box.w).attr("height", box.header).attr("rx", 8).attr("fill", d => d.color).attr("fill-opacity", .88);
+    groups.append("rect").attr("width", box.w).attr("height", box.header).attr("rx", 8).attr("fill", d => d.color).attr("fill-opacity", 1);
     groups.append("text").attr("class", "reverse-label").attr("x", box.w / 2).attr("y", 19).attr("text-anchor", "middle").attr("font-weight", 800).text(d => d.id);
     groups.each(function (entity) {
       d3.select(this).selectAll("text.er-field").data(entity.fields).join("text")

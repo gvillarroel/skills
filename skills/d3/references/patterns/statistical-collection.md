@@ -135,7 +135,7 @@ function renderBoxPlot() {
     axisLeft(svg, y, 56, 5);
     const g = svg.append("g").selectAll("g").data(stats).join("g").attr("transform", d => `translate(${x(d.group) + x.bandwidth() / 2},0)`);
     g.append("line").attr("y1", d => y(d.min)).attr("y2", d => y(d.max)).attr("stroke", palette.ink);
-    g.append("rect").attr("x", -28).attr("y", d => y(d.q3)).attr("width", 56).attr("height", d => y(d.q1) - y(d.q3)).attr("fill", palette.orange).attr("fill-opacity", .75).attr("stroke", "#fff");
+    g.append("rect").attr("x", -28).attr("y", d => y(d.q3)).attr("width", 56).attr("height", d => y(d.q1) - y(d.q3)).attr("fill", palette.orange).attr("fill-opacity", 1).attr("stroke", "#fff");
     g.append("line").attr("x1", -32).attr("x2", 32).attr("y1", d => y(d.median)).attr("y2", d => y(d.median)).attr("stroke", palette.ink).attr("stroke-width", 2);
     svg.append("g").attr("class", "axis").attr("transform", `translate(0,${height - 58})`).call(d3.axisBottom(x));
     fadeIn(g, .05, .7);

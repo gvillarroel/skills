@@ -27,6 +27,7 @@ from pathlib import Path
 from typing import Any, Callable, Iterable, Sequence, TypeVar
 
 from multistrata_core import compute_multistrata
+from solid_style import finalize_svg
 
 
 for _stream in (sys.stdout, sys.stderr):
@@ -61,6 +62,10 @@ PALETTES: dict[str, dict[str, str | list[str]]] = {
         "accents": ["#9e1b32", "#e77204", "#f1c319", "#45842a", "#007298", "#652f6c"],
     },
 }
+
+_PAINT_CONTRACT = json.loads((SKILL_ROOT / 'assets/palettes/colorsets.json').read_text(encoding='utf-8'))['colorsets']
+for _colorset, _paint in PALETTES.items():
+    _paint['accents'] = [value for value in _PAINT_CONTRACT[_colorset]['solidSequence'] if value != _paint['surface']]
 
 DEFAULT_BUILD_OPTIONS: dict[str, object] = {
     "seed": 20260720,
@@ -3660,7 +3665,7 @@ def common_style(ctx: Context) -> str:
     return f"""
 :root{{color-scheme:light}}
 *{{box-sizing:border-box}}
-.psvg-panel{{fill:{ctx.palette['surface']};stroke:{ctx.palette['line']};stroke-width:1.5}}
+.psvg-panel{{fill:{ctx.palette['surface']};stroke:none}}
 .psvg-guide{{fill:none;stroke:{ctx.palette['line']};stroke-width:2}}
 .psvg-title{{font:700 {fmt(title_size)}px Arial,sans-serif;fill:{ctx.palette['ink']}}}
 .psvg-subtitle{{font:{fmt(subtitle_size)}px Arial,sans-serif;fill:{ctx.palette['muted']}}}
@@ -3764,7 +3769,7 @@ def build_svg(ctx: Context) -> str:
     description = escape(str(ctx.spec["description"]))
     family = escape(str(ctx.spec["family"]).upper())
     technique = escape(str(ctx.spec["technique"]))
-    return f'''<?xml version="1.0" encoding="UTF-8"?>
+    return finalize_svg(f'''<?xml version="1.0" encoding="UTF-8"?>
 <svg {attr_text}>
   <title id="{title_id}">{title}</title>
   <desc id="{desc_id}">{description} Deterministic seed {ctx.seed}; {ctx.motion} motion.</desc>
@@ -3776,7 +3781,7 @@ def build_svg(ctx: Context) -> str:
   <text class="psvg-subtitle" x="40" y="92">seed {ctx.seed} · {ctx.duration_ms} ms · {escape(ctx.palette_name)} · {escape(ctx.motion)} motion</text>
   {body}
 </svg>
-'''
+''', ctx.palette)
 
 
 def parameter_hash(ctx: Context) -> str:

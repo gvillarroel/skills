@@ -49,13 +49,13 @@ function renderCorrelogramHistogram() {
         const x = d3.scaleLinear().domain(extent(col)).range([10, size - 10]);
         const bars = svg.append("g").selectAll("rect").data(bins).join("rect")
           .attr("x", d => x0 + x(d.x0)).attr("width", d => Math.max(1, x(d.x1) - x(d.x0) - 1))
-          .attr("y", d => y0 + y(d.length)).attr("height", d => size - 10 - y(d.length)).attr("fill", palette.blue).attr("fill-opacity", .58);
+          .attr("y", d => y0 + y(d.length)).attr("height", d => size - 10 - y(d.length)).attr("fill", palette.blue).attr("fill-opacity", 1);
         fadeIn(bars, .05, .35);
       } else if (r > c) {
         const xs = scales.get(col), ys = scales.get(row);
         const dots = svg.append("g").selectAll("circle").data(data.filter((_, i) => i % 3 === 0)).join("circle")
           .attr("cx", d => x0 + xs(d[col])).attr("cy", d => y0 + size - ys(d[row]))
-          .attr("fill", palette.purple).attr("fill-opacity", .75);
+          .attr("fill", palette.purple).attr("fill-opacity", 1);
         grow(dots, "r", 1.2, 2.5, .03, .35);
       } else {
         const corr = pearson(col, row);

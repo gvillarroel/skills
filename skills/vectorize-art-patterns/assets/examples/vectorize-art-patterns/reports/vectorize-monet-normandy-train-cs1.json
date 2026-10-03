@@ -4,12 +4,12 @@
   "input": "assets/base-images/monet-normandy-train.jpg",
   "input_sha256": "8fe269a7a572659063c4fb842ad485e9b88c69c9554efee94c3b218df09a3f43",
   "output": "svgs/vectorize-monet-normandy-train-cs1.svg",
-  "output_sha256": "078530861ad334fcae91aa3b8abd65b6d913dd85e6700fc67502528127b5af2a",
+  "output_sha256": "ba2815af4b45d899f7f227d8755b88a19c2e414d9916a34e5133b6956378faeb",
   "pattern_id": "vectorize-monet-normandy-train-cs1",
   "mode": "stain",
   "tile": "none",
   "colorset": "colorset1",
-  "palette_contract_sha256": "c81d32ffb0d55d44e7d3102c7470e251baf34f0bb6472fbede7753df8b9a9eb5",
+  "palette_contract_sha256": "f36eb8a9fe171108383767c7697f023218121e51d3e45247e87b58e397b36d62",
   "variation_seed": 0,
   "composition_sha256": "c9c6444d8ec6eee0f15c69da166069224c2a20a680626dbeede5ca0eeeee4a58",
   "parameters": {
@@ -29,11 +29,11 @@
         },
         {
           "source": "#a3a39b",
-          "target": "#cfcfcf"
+          "target": "#9c9c9c"
         },
         {
           "source": "#615a4b",
-          "target": "#6d1222"
+          "target": "#4f4f4f"
         },
         {
           "source": "#405d77",
@@ -41,15 +41,15 @@
         },
         {
           "source": "#878367",
-          "target": "#e8002a"
+          "target": "#696969"
         },
         {
           "source": "#262b31",
-          "target": "#1c1c1c"
+          "target": "#363636"
         },
         {
           "source": "#c9cdcc",
-          "target": "#ffccd5"
+          "target": "#cfcfcf"
         }
       ],
       "source_colors": [
@@ -65,12 +65,12 @@
       "target_colors": [
         "#333e48",
         "#828282",
-        "#cfcfcf",
-        "#6d1222",
+        "#9c9c9c",
+        "#4f4f4f",
         "#9e1b32",
-        "#e8002a",
-        "#1c1c1c",
-        "#ffccd5"
+        "#696969",
+        "#363636",
+        "#cfcfcf"
       ]
     }
   },
@@ -81,14 +81,14 @@
   "render_width": 560,
   "render_height": 421,
   "palette": [
-    "#1c1c1c",
     "#333e48",
-    "#6d1222",
+    "#363636",
+    "#4f4f4f",
+    "#696969",
     "#828282",
+    "#9c9c9c",
     "#9e1b32",
-    "#cfcfcf",
-    "#e8002a",
-    "#ffccd5"
+    "#cfcfcf"
   ],
   "path_count": 37,
   "output_bytes": 101202,

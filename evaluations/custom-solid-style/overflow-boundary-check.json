@@ -1,0 +1,37 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "colorset": "colorset1",
+      "canvas": "#ffffff",
+      "solidCount": 16,
+      "checkedIndices": 1183,
+      "longBoundary": 100000,
+      "passed": true
+    },
+    {
+      "colorset": "colorset1",
+      "canvas": "#1c1c1c",
+      "solidCount": 16,
+      "checkedIndices": 1183,
+      "longBoundary": 100000,
+      "passed": true
+    },
+    {
+      "colorset": "colorset2",
+      "canvas": "#ffffff",
+      "solidCount": 36,
+      "checkedIndices": 5347,
+      "longBoundary": 100000,
+      "passed": true
+    },
+    {
+      "colorset": "colorset2",
+      "canvas": "#1c1c1c",
+      "solidCount": 36,
+      "checkedIndices": 5311,
+      "longBoundary": 100000,
+      "passed": true
+    }
+  ]
+}

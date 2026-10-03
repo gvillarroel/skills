@@ -57,7 +57,7 @@ function renderAlluvial() {
     const ribbons = svg.append("g").selectAll("path").data(flows.map(band)).join("path")
       .attr("d", d => d.path)
       .attr("fill", d => colors[left.indexOf(d.source)])
-      .attr("fill-opacity", .32)
+      .attr("data-opacity-role", "semantic").attr("fill-opacity", .32)
       .attr("stroke", d => colors[left.indexOf(d.source)])
       .attr("stroke-width", .8);
     fadeIn(ribbons, .08, .85);

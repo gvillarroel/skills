@@ -687,10 +687,10 @@ class SynchronizedSvgToolTests(unittest.TestCase):
 
     def test_extended_canonical_palette_repeats_only_exact_tokens(self) -> None:
         colors = [composer.scaffold.color_for_index(index) for index in range(96)]
-        allowed = set(composer.scaffold.color_for_index(index) for index in range(19))
-        self.assertEqual(len(allowed), 19)
+        allowed = set(composer.scaffold.PALETTE)
+        self.assertEqual(len(allowed), 36)
         self.assertEqual(set(colors), allowed)
-        self.assertEqual(colors[0], colors[19])
+        self.assertEqual(colors[0], colors[len(allowed)])
         self.assertTrue(all(re.fullmatch(r"#[0-9a-f]{6}", color) for color in colors))
 
     def test_literal_formatting_matches_en_us_intl_contract(self) -> None:
@@ -964,7 +964,7 @@ class SynchronizedSvgToolTests(unittest.TestCase):
         self.assertEqual(validated.returncode, 0, msg=validated.stderr or validated.stdout)
         identity_metrics = report.get("metrics", {}).get("identity", {})
         self.assertEqual(identity_metrics.get("canonicalIdentityCount"), 17)
-        self.assertEqual(identity_metrics.get("physicalColorTokenCount"), 10)
+        self.assertEqual(identity_metrics.get("physicalColorTokenCount"), 16)
         self.assertTrue(identity_metrics.get("physicalColorCollisions"))
         self.assertTrue(any("non-color cues" in warning for warning in report["warnings"]))
 
@@ -3874,9 +3874,10 @@ class SynchronizedSvgToolTests(unittest.TestCase):
         node_cards = [
             element
             for element in network_group
-            if element.tag.endswith("rect") and element.get("stroke", "").startswith("var(--concept-")
+            if element.tag.endswith("rect") and element.get("data-dependency-node")
         ]
         self.assertEqual(len(node_cards), len(topology["bindings"]))
+        self.assertTrue(all(card.get("stroke") == "none" for card in node_cards))
         self.assertEqual(
             {(card.get("width"), card.get("height")) for card in node_cards},
             {(node_cards[0].get("width"), node_cards[0].get("height"))},

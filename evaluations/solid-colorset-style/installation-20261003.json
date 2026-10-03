@@ -1,0 +1,14 @@
+{
+  "date": "2026-10-03",
+  "passed": true,
+  "commands": [
+    "uv run --script scripts/sync-local-skills.py",
+    "uv run --script scripts/sync-local-skills.py --check"
+  ],
+  "changedSourceFilesCopied": 730,
+  "canonicalSourceFilesCompared": 10201,
+  "sourceBundleValidationPassed": true,
+  "installedBundleValidationPassed": true,
+  "sourceOwnedFileDrift": 0,
+  "scope": "All canonical source-owned files match the ignored repository-local .agents/skills installation after the final source freeze. Extra local files are preserved. This is not a claim about external global skill installations."
+}

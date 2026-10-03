@@ -32,7 +32,7 @@ function renderCircularBar() {
       .attr("fill", "none")
       .attr("stroke", palette.gray200)
       .attr("stroke-dasharray", "3 5"));
-    const bars = g.selectAll("path").data(data).join("path").attr("d", arc).attr("fill", (d, i) => colors[i % colors.length]).attr("fill-opacity", .86);
+    const bars = g.selectAll("path").data(data).join("path").attr("d", arc).attr("fill", (d, i) => colors[i % colors.length]).attr("fill-opacity", 1);
     fadeIn(bars, .06, .75);
     g.append("g").selectAll("text").data(data).join("text")
       .attr("class", "caption")

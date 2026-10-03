@@ -1,5 +1,12 @@
 # Canonical Logo Pattern Catalog
 
+For ordinary briefs, select filled mechanisms with opaque single-token paint
+and no decorative outline first. Choose outline-led mechanisms such as
+`d3-logo-fill-outline-cadence` or `d3-logo-multi-stroke-wordmark` only when the
+user explicitly requests outlines or line art, or after every usable distinct
+solid palette color is exhausted. Keep their existing IDs and artistic
+mechanisms available for those conditions.
+
 Choose one primary pattern per mark. Parameters are adjustment surfaces, not separate patterns. Keep the canonical ID in `data-pattern-id` on the composition container and rendered SVG.
 
 This file catalogs the 60 typographic and generative mechanisms. For the 30 mathematical mechanisms that complete the 90-pattern catalog, route to `mathematical-patterns.md`.

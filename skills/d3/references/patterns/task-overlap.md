@@ -63,7 +63,13 @@ const tasks = [
 ## Geometry Contract
 
 - Keep all circles in one 560 by 420 viewBox.
-- Use translucent token highlight fills and solid token strokes for circles.
+- Use one base solid token per scope and no circle outline. Preserve explicit
+  fill opacity only because it reveals shared set regions; transparency is
+  meaningful geometry here rather than an extra category style. Keep ordinary
+  categorical dots opaque and borderless. Use the bundled `solidSequence` for
+  additional distinct scopes before considering any border overflow treatment.
+- Mark the shared-region circles with `data-opacity-role="semantic"`; their
+  alpha exposes set intersections. Keep task dots and label backplates opaque.
 - Use compact white label backplates for task labels so labels remain readable across overlaps.
 - Estimate label backplate width conservatively; the white background must be wider than the rendered text for every `.task-label`.
 - If `.task-label` also uses the shared `.mark-label` class, set the intended label `font-size` with inline style or a more-specific CSS rule so the global gallery label size does not outgrow the backplate calculation.

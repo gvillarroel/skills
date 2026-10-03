@@ -4,8 +4,8 @@
   --font-icons: "Material Symbols Rounded";
   --brand-primary: #9e1b32;
   --brand-neutral: #333e48;
-  --ink: #333e48;
-  --muted: #696969;
+  --ink: #000000;
+  --muted: #000000;
   --line: #cfcfcf;
   --line-soft: #e7e7e7;
   --surface: #ffffff;
@@ -51,7 +51,7 @@ button {
   gap: 12px;
   align-items: end;
   padding: 4px 0 12px;
-  border-bottom: 1px solid var(--line);
+  border: 0;
 }
 
 h1 {
@@ -102,7 +102,7 @@ h1 {
 
 .example-card {
   min-width: 0;
-  border: 1px solid var(--line);
+  border: 0;
   border-radius: 8px;
   background: var(--surface);
   overflow: hidden;
@@ -112,7 +112,7 @@ h1 {
 .example-header {
   min-height: 0;
   padding: 10px 12px;
-  border-bottom: 1px solid var(--line-soft);
+  border: 0;
 }
 
 .example-header-top {
@@ -144,7 +144,7 @@ h2 {
   width: max-content;
   max-width: 100%;
   margin: 6px 0 0;
-  border: 1px solid var(--line-soft);
+  border: 0;
   border-radius: 6px;
   background: var(--page);
   color: var(--muted);
@@ -183,10 +183,10 @@ h2 {
 .card-replay-button {
   appearance: none;
   min-height: 32px;
-  border: 1px solid var(--line);
+  border: 0;
   border-radius: 8px;
-  background: var(--white);
-  color: var(--ink);
+  background: var(--brand-primary);
+  color: #ffffff;
   cursor: pointer;
   display: inline-flex;
   gap: 5px;
@@ -206,8 +206,8 @@ h2 {
 .replay-all-button:hover,
 .card-replay-button:hover {
   border-color: var(--blue);
-  background: var(--blue-highlight);
-  color: var(--blue-hover);
+  background: var(--blue);
+  color: #ffffff;
 }
 
 .replay-all-button:focus-visible,
@@ -227,12 +227,12 @@ h2 {
 .example-card[data-replay-state="running"] .card-replay-button,
 .page-shell[data-replay-state="running"] .replay-all-button {
   border-color: var(--blue);
-  background: var(--blue-highlight);
-  color: var(--blue-hover);
+  background: var(--blue);
+  color: #ffffff;
 }
 
 .example-card[data-replay-state="running"] .scene-frame {
-  box-shadow: inset 0 0 0 2px rgba(0, 114, 152, .24);
+  box-shadow: none;
 }
 
 @media (max-width: 1240px) {

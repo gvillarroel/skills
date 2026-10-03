@@ -35,7 +35,7 @@ function renderQkvProjectionFlow() {
 
     rows.forEach((row, i) => {
       const g = svg.append("g").attr("transform", `translate(${row.x},${row.y})`);
-      g.append("rect").attr("width", tokenW).attr("height", tokenH).attr("rx", 8).attr("fill", row.color).attr("fill-opacity", .82).attr("stroke", palette.surface);
+      g.append("rect").attr("width", tokenW).attr("height", tokenH).attr("rx", 8).attr("fill", row.color).attr("fill-opacity", 1).attr("stroke", palette.surface);
       g.append("text").attr("class", "reverse-label").attr("x", tokenW / 2).attr("y", 26).attr("text-anchor", "middle").attr("font-weight", 800).text(row.token);
       fadeIn(g, .08 + i * .05, .34);
     });

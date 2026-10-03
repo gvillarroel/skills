@@ -4,12 +4,12 @@
   "input": "assets/base-images/kandinsky-improvisation-27.jpg",
   "input_sha256": "fd40933f2efaae993e9d7103a45cb9cc5dfa807548e4770dc18a43cabe80ad28",
   "output": "svgs/vectorize-kandinsky-improvisation-27-cs1.svg",
-  "output_sha256": "9bb18b8d5eb6d0188d85531222e2d973e5bf10ee411f432f165350369de3f97a",
+  "output_sha256": "5d52041b4535cc6e24c589e2a7397b03b1153632a30f06e8f5fa4a89ffd618a4",
   "pattern_id": "vectorize-kandinsky-improvisation-27-cs1",
   "mode": "organic",
   "tile": "none",
   "colorset": "colorset1",
-  "palette_contract_sha256": "c81d32ffb0d55d44e7d3102c7470e251baf34f0bb6472fbede7753df8b9a9eb5",
+  "palette_contract_sha256": "f36eb8a9fe171108383767c7697f023218121e51d3e45247e87b58e397b36d62",
   "variation_seed": 0,
   "composition_sha256": "de1617485ed4c60793af44f8742aa9048eb11ef9591b6bc868f72bb353ef6eff",
   "parameters": {
@@ -25,15 +25,15 @@
       "layers": [
         {
           "source": "#f3f2ec",
-          "target": "#ffffff"
+          "target": "#e7e7e7"
         },
         {
           "source": "#879f70",
-          "target": "#828282"
+          "target": "#9c9c9c"
         },
         {
           "source": "#6f5048",
-          "target": "#333e48"
+          "target": "#4f4f4f"
         },
         {
           "source": "#c75656",
@@ -45,15 +45,15 @@
         },
         {
           "source": "#131006",
-          "target": "#1c1c1c"
+          "target": "#000000"
         },
         {
           "source": "#104062",
-          "target": "#6d1222"
+          "target": "#333e48"
         },
         {
           "source": "#4d94b0",
-          "target": "#cfcfcf"
+          "target": "#828282"
         }
       ],
       "source_colors": [
@@ -69,14 +69,14 @@
       ],
       "target_colors": [
         "#f7f7f7",
-        "#ffffff",
-        "#828282",
-        "#333e48",
+        "#e7e7e7",
+        "#9c9c9c",
+        "#4f4f4f",
         "#e8002a",
         "#9e1b32",
-        "#1c1c1c",
-        "#6d1222",
-        "#cfcfcf"
+        "#000000",
+        "#333e48",
+        "#828282"
       ]
     }
   },
@@ -87,15 +87,15 @@
   "render_width": 560,
   "render_height": 479,
   "palette": [
-    "#1c1c1c",
+    "#000000",
     "#333e48",
-    "#6d1222",
+    "#4f4f4f",
     "#828282",
+    "#9c9c9c",
     "#9e1b32",
-    "#cfcfcf",
+    "#e7e7e7",
     "#e8002a",
-    "#f7f7f7",
-    "#ffffff"
+    "#f7f7f7"
   ],
   "path_count": 131,
   "output_bytes": 243379,

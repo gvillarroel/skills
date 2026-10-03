@@ -1,0 +1,763 @@
+{
+  "date": "2026-10-03",
+  "scope": [
+    "mermaid",
+    "plantuml-colorset-renderer",
+    "echarts-animated-svg",
+    "slidev-echarts",
+    "slidev-animejs",
+    "slidev-quality-audit"
+  ],
+  "selectedTrials": [
+    {
+      "skill": "mermaid",
+      "runId": "20261003-diagram-solid-mermaid-luna-12",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "profile": "runtime",
+      "startedAtUtc": "2026-10-03T15:03:22.870255+00:00",
+      "finishedAtUtc": "2026-10-03T15:06:14.538917+00:00",
+      "payloadSha256": "92b8c1f8873dc1a386ba9528e39bce3c715513d88407b835bb3e5a41cbaaa472",
+      "promptSha256": "79162a82079b697340cc4293b89233e2ce5e2eb1cd4ca256509c2a22876c8e3e",
+      "expectedOutputs": [
+        "source.mmd",
+        "style-report.json",
+        "solid-styles.json",
+        "native-check.json",
+        "native-family-tests.log"
+      ],
+      "outputHashes": {
+        "source.mmd": "e379e4647718643acff30eec5289edeb94de3e3ccd73010fccee4b83db680fc4",
+        "style-report.json": "8065ce1c8c06427becf02123f0b9da4371022a542a654f4dba1c897c163766ac",
+        "solid-styles.json": "d7181c07434c9996471d05030a92adf44fba67717832ff46a8962d11cf64cc13",
+        "native-check.json": "23a1fde40c2bda53313ee9ec31e44081cfbe7bb38d416b939b2f0cce71f9eb0f",
+        "native-family-tests.log": "9ff1596305d45a1665e12096cda4d48db41a500a96cd46dab2f4d21c38686d2b"
+      },
+      "toolCallCount": 22,
+      "readPaths": [
+        "../prompt.md",
+        "native-check.json",
+        "native-family-tests.log",
+        "skills/mermaid/SKILL.md",
+        "skills/mermaid/assets/palettes/colorsets.json",
+        "skills/mermaid/references/colorset-contract.md",
+        "skills/mermaid/references/palette-capacity.md",
+        "solid-styles.json",
+        "source.mmd",
+        "style-check-report.json",
+        "style-report.json"
+      ]
+    },
+    {
+      "skill": "plantuml-colorset-renderer",
+      "runId": "20261003-diagram-solid-plantuml-colorset-renderer-luna-4",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "profile": "runtime",
+      "startedAtUtc": "2026-10-03T13:59:03.376798+00:00",
+      "finishedAtUtc": "2026-10-03T14:00:28.397890+00:00",
+      "payloadSha256": "f70e85ad0dba691d2257843a52910a1fd6a3438d697e37b13de411519c4955b5",
+      "promptSha256": "3962a66617e5dcdfbd3b2e068b5197b736c51d4e313a204738ad7311c921cbf7",
+      "expectedOutputs": [
+        "rendered/svg/pipeline.svg",
+        "render-report.json",
+        "solid-styles.json"
+      ],
+      "outputHashes": {
+        "rendered/svg/pipeline.svg": "dea074b87d8769612d756241e269afc85f681565417708751efe2a68bc25e49d",
+        "render-report.json": "bd9cbfdd49771893760ff4140514e425871c8a4e4c4eb3f4d2d2fc73b8460c6d",
+        "solid-styles.json": "5a0ac26284ee5e805fe44b0dee098d28b75c800ea59d7b4afe8bcf040a4e42e8"
+      },
+      "toolCallCount": 12,
+      "readPaths": [
+        "../prompt.md",
+        "render-report.json",
+        "rendered/svg/pipeline.svg",
+        "skills/plantuml-colorset-renderer/SKILL.md",
+        "skills/plantuml-colorset-renderer/assets/palettes/colorsets.json",
+        "skills/plantuml-colorset-renderer/references/colorset-contract.md",
+        "skills/plantuml-colorset-renderer/scripts/palette_paints.py",
+        "solid-styles.json"
+      ]
+    },
+    {
+      "skill": "echarts-animated-svg",
+      "runId": "20261003-diagram-solid-echarts-animated-svg-luna-9",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "profile": "runtime",
+      "startedAtUtc": "2026-10-03T14:11:04.726977+00:00",
+      "finishedAtUtc": "2026-10-03T14:14:06.487426+00:00",
+      "payloadSha256": "3053b1ceabdce959bc1b841298eb738b68508a0c1a4fc2302475e8f66f43eda1",
+      "promptSha256": "42e1d27d6a2beddd49ef314c01e5fe65a0c75b01903e59c6279c1f47cb8ba32c",
+      "expectedOutputs": [
+        "styles.json",
+        "chart.static.svg",
+        "chart.animated.svg",
+        "chart-validation.json",
+        "canvas-check.json",
+        "advanced-check.json"
+      ],
+      "outputHashes": {
+        "styles.json": "3fa32a2c42ee411b97d1789af1523e0f965d4260306048d1c30c0c0137c338cc",
+        "chart.static.svg": "8f42359d87db7196644ee16581c2de00627f2a1b474a808bde68d129025d01be",
+        "chart.animated.svg": "5857fd811b023f6b1dd3fa1168f03be7d47f37bd36d56f2870d50a21366a3dbe",
+        "chart-validation.json": "6eddf0c07be955592b22eddf469506499e7f26d7d88fc64b6275946f138a2d2a",
+        "canvas-check.json": "0dc1ec35b006d2fb74c2cd8ee1b487b7fb00e8136bb1ec4f8ea230115edd6b76",
+        "advanced-check.json": "de6a472661687f5bb2d014fae15f1661ce2f9072e623d2873d5b0729d861a079"
+      },
+      "toolCallCount": 15,
+      "readPaths": [
+        "../prompt.md",
+        "advanced-check.json",
+        "canvas-check.json",
+        "chart-validation.json",
+        "skills/echarts-animated-svg/SKILL.md",
+        "skills/echarts-animated-svg/assets/templates/echarts-colorsets.mjs",
+        "skills/echarts-animated-svg/assets/templates/static-bar-chart.svg",
+        "skills/echarts-animated-svg/references/colorset-contract.md",
+        "styles.json"
+      ]
+    },
+    {
+      "skill": "slidev-echarts",
+      "runId": "20261003-diagram-solid-slidev-echarts-luna-12",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "profile": "runtime",
+      "startedAtUtc": "2026-10-03T14:11:16.825672+00:00",
+      "finishedAtUtc": "2026-10-03T14:15:10.687100+00:00",
+      "payloadSha256": "006686055e4244fe9634707f69a30a2bd3d96dd0a14db5360934675a8ecf141a",
+      "promptSha256": "66d8c3fd932a5b42c5923b4b1b36d1c7659721cb9b44d3c36f1dcabdc161c348",
+      "expectedOutputs": [
+        "styles.json",
+        "option.json",
+        "integration.md",
+        "canvas-check.json",
+        "advanced-check.json"
+      ],
+      "outputHashes": {
+        "styles.json": "d82138a5ae3b312403bb3182b1fc006d014d8f863d74157eab963312cc23170f",
+        "option.json": "f9931ee0f69942ad23c0c7318a9c72315617337fb206188fe8161bf290d09e7f",
+        "integration.md": "c588e55b71d945ce33fb164dbd414dbe2cbd23319fbbd2441fbee09bb70f20a9",
+        "canvas-check.json": "8b6a4e142d56a271e8b52fec6a3ceea295485312d7cf0f91a25dd6eff4f717a1",
+        "advanced-check.json": "352d5c3d4990138ba65aa534ea8ef7a6aa9b8db9104b0f4570c32ba71d945aad"
+      },
+      "toolCallCount": 20,
+      "readPaths": [
+        "../prompt.md",
+        "advanced-check.json",
+        "canvas-check.json",
+        "integration.md",
+        "option.json",
+        "skills/slidev-echarts/SKILL.md",
+        "skills/slidev-echarts/assets/templates/echarts-colorsets.mjs",
+        "skills/slidev-echarts/references/colorset-contract.md",
+        "styles.json"
+      ]
+    },
+    {
+      "skill": "slidev-animejs",
+      "runId": "20261003-diagram-solid-slidev-animejs-luna-4",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "profile": "runtime",
+      "startedAtUtc": "2026-10-03T13:21:04.088949+00:00",
+      "finishedAtUtc": "2026-10-03T13:22:40.475793+00:00",
+      "payloadSha256": "7eebfdd50dfb5c282b6a97af2357ed1d26e90a60be34484219c1cac3b1597ced",
+      "promptSha256": "56998dae45c3e808676982b4bf2b4651e8a672f1e2b72b8c3d2b7d25931708d2",
+      "expectedOutputs": [
+        "deck/assets/animated-svg/stagger-dashboard.svg",
+        "style-review.json",
+        "integration.md"
+      ],
+      "outputHashes": {
+        "deck/assets/animated-svg/stagger-dashboard.svg": "37741ed29f0b66a96bda0e87147ba285b41ea161d19ef822b4b1b691435bfd81",
+        "style-review.json": "dbd4ab783a5b4b0f53f343486f911c1e0d5f857b84da5f15331f574eb2d35c40",
+        "integration.md": "828fe58040ae224a463d7687e329199accbf5940214be7e28974b89c577fc73d"
+      },
+      "toolCallCount": 14,
+      "readPaths": [
+        "../prompt.md",
+        "deck/assets/animated-svg/stagger-dashboard.svg",
+        "integration.md",
+        "skills/slidev-animejs/SKILL.md",
+        "skills/slidev-animejs/assets/palettes/colorsets.json",
+        "skills/slidev-animejs/references/assets/animated-svg-assets.md",
+        "skills/slidev-animejs/references/colorset-contract.md",
+        "skills/slidev-animejs/references/integration-patterns.md",
+        "skills/slidev-animejs/references/visual-tokens.md",
+        "style-review.json"
+      ]
+    },
+    {
+      "skill": "slidev-quality-audit",
+      "runId": "20261003-diagram-solid-slidev-quality-audit-luna-3",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "profile": "runtime",
+      "startedAtUtc": "2026-10-03T12:56:45.363155+00:00",
+      "finishedAtUtc": "2026-10-03T12:58:11.225306+00:00",
+      "payloadSha256": "c83dda6160a1fe99e832736b68f9769ec61e66eccb09d31666f8478a53e7e53d",
+      "promptSha256": "7b10d698085d0f38a934190b09bad0bb56e839bf2ca128f0bbff26e05ae07b78",
+      "expectedOutputs": [
+        "style-audit-plan.json",
+        "integration.md"
+      ],
+      "outputHashes": {
+        "style-audit-plan.json": "7edddc802517306eddf53e05d53c5c5b4d5c1454acadba3a62c1169ad2c18364",
+        "integration.md": "2d06f2859b419d880218a3721d63519be7183fe07c380e6b4c7c74094ec44132"
+      },
+      "toolCallCount": 14,
+      "readPaths": [
+        "../prompt.md",
+        "integration.md",
+        "skills/slidev-quality-audit/SKILL.md",
+        "skills/slidev-quality-audit/assets/palettes/colorsets.json",
+        "skills/slidev-quality-audit/references/audit-rules.md",
+        "skills/slidev-quality-audit/references/colorset-contract.md",
+        "skills/slidev-quality-audit/scripts/audit-slidev-quality.ts",
+        "style-audit-plan.json"
+      ]
+    }
+  ],
+  "retainedFailedTrials": [
+    {
+      "runId": "20261003-diagram-solid-echarts-animated-svg-luna-1",
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "findings": [
+        {
+          "code": "tool-error",
+          "line": 231,
+          "tool": "bash"
+        },
+        {
+          "code": "tool-error",
+          "line": 438,
+          "tool": "bash"
+        },
+        {
+          "code": "tool-error",
+          "line": 1588,
+          "tool": "bash"
+        },
+        {
+          "code": "tool-error",
+          "line": 1992,
+          "tool": "edit"
+        }
+      ]
+    },
+    {
+      "runId": "20261003-diagram-solid-echarts-animated-svg-luna-2",
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "findings": [
+        {
+          "code": "tool-error",
+          "line": 423,
+          "tool": "bash"
+        }
+      ]
+    },
+    {
+      "runId": "20261003-diagram-solid-echarts-animated-svg-luna-4",
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "findings": [
+        {
+          "code": "tool-error",
+          "line": 1352,
+          "tool": "bash"
+        }
+      ]
+    },
+    {
+      "runId": "20261003-diagram-solid-echarts-animated-svg-luna-6",
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "findings": [
+        {
+          "code": "forbidden-read",
+          "line": 202,
+          "path": "../run-manifest.json",
+          "policyPath": "C:/Users/villa/dev/skills/evaluations/runs/20261003-diagram-solid-echarts-animated-svg-luna-6/run-manifest.json",
+          "pattern": "(?i)^(?:[A-Za-z]:[\\\\/]|/|\\\\\\\\)"
+        }
+      ]
+    },
+    {
+      "runId": "20261003-diagram-solid-mermaid-luna-10",
+      "gates": {
+        "artifacts": false,
+        "events": false,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "findings": [
+        {
+          "code": "tool-error",
+          "line": 870,
+          "tool": "bash"
+        }
+      ]
+    },
+    {
+      "runId": "20261003-diagram-solid-mermaid-luna-11",
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "findings": [
+        {
+          "code": "tool-error",
+          "line": 2772,
+          "tool": "bash"
+        }
+      ]
+    },
+    {
+      "runId": "20261003-diagram-solid-mermaid-luna-4",
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "findings": [
+        {
+          "code": "tool-error",
+          "line": 2848,
+          "tool": "bash"
+        }
+      ]
+    },
+    {
+      "runId": "20261003-diagram-solid-mermaid-luna-5",
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "findings": [
+        {
+          "code": "tool-error",
+          "line": 2964,
+          "tool": "bash"
+        }
+      ]
+    },
+    {
+      "runId": "20261003-diagram-solid-mermaid-luna-6",
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "findings": [
+        {
+          "code": "tool-error",
+          "line": 622,
+          "tool": "bash"
+        }
+      ]
+    },
+    {
+      "runId": "20261003-diagram-solid-mermaid-luna-8",
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "findings": [
+        {
+          "code": "tool-error",
+          "line": 2023,
+          "tool": "bash"
+        }
+      ]
+    },
+    {
+      "runId": "20261003-diagram-solid-slidev-animejs-luna-2",
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "findings": [
+        {
+          "code": "tool-error",
+          "line": 542,
+          "tool": "bash"
+        }
+      ]
+    },
+    {
+      "runId": "20261003-diagram-solid-slidev-echarts-luna-10",
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "findings": [
+        {
+          "code": "tool-error",
+          "line": 141,
+          "tool": "read"
+        },
+        {
+          "code": "tool-error",
+          "line": 3068,
+          "tool": "bash"
+        }
+      ]
+    },
+    {
+      "runId": "20261003-diagram-solid-slidev-echarts-luna-3",
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "findings": [
+        {
+          "code": "tool-error",
+          "line": 1302,
+          "tool": "bash"
+        }
+      ]
+    },
+    {
+      "runId": "20261003-diagram-solid-slidev-echarts-luna-4",
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "findings": [
+        {
+          "code": "forbidden-read",
+          "line": 283,
+          "path": "../run-manifest.json",
+          "policyPath": "C:/Users/villa/dev/skills/evaluations/runs/20261003-diagram-solid-slidev-echarts-luna-4/run-manifest.json",
+          "pattern": "(?i)^(?:[A-Za-z]:[\\\\/]|/|\\\\\\\\)"
+        }
+      ]
+    },
+    {
+      "runId": "20261003-diagram-solid-slidev-echarts-luna-5",
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "findings": [
+        {
+          "code": "tool-error",
+          "line": 1357,
+          "tool": "bash"
+        }
+      ]
+    },
+    {
+      "runId": "20261003-diagram-solid-slidev-echarts-luna-6",
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "findings": [
+        {
+          "code": "tool-error",
+          "line": 2141,
+          "tool": "bash"
+        }
+      ]
+    },
+    {
+      "runId": "20261003-diagram-solid-slidev-echarts-luna-7",
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "findings": [
+        {
+          "code": "tool-error",
+          "line": 1977,
+          "tool": "bash"
+        }
+      ]
+    },
+    {
+      "runId": "20261003-diagram-solid-slidev-echarts-luna-9",
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "findings": [
+        {
+          "code": "tool-error",
+          "line": 3286,
+          "tool": "bash"
+        }
+      ]
+    },
+    {
+      "runId": "20261003-diagram-solid-slidev-animejs-luna-3",
+      "manualRejection": "Strict harness passed, but ancestor git status/diff exposed repository context; replaced by a clean standalone trial."
+    }
+  ],
+  "mermaidFixture": {
+    "families": 31,
+    "pairs": 62,
+    "svgCount": 124,
+    "alreadyLF": true,
+    "hashesMatch": true,
+    "manifestSha256": "2cfb39eb8ba41884f9c0de504d12e76fb15ac54a61c625cce0d0224b331919df"
+  },
+  "echartsFixture": {
+    "cards": 43,
+    "browserVerified": true
+  },
+  "plantumlFixture": {
+    "reports": 2,
+    "resultCountPerPalette": 29,
+    "renderedCountPerPalette": 28,
+    "svgCount": 54,
+    "pngCount": 2,
+    "expectedUnavailableFamily": "chronology"
+  },
+  "slidevEchartsAudit": {
+    "slideCount": 36,
+    "stateCount": 129,
+    "findingCount": 2,
+    "severityCounts": {
+      "warning": 2
+    },
+    "ruleCounts": {
+      "dense-slide": 2
+    }
+  },
+  "slidevAnimejsAudit": {
+    "slideCount": 30,
+    "stateCount": 93,
+    "findingCount": 0,
+    "severityCounts": {},
+    "ruleCounts": {}
+  },
+  "actualEchartsSsr": {
+    "passed": true,
+    "actualSvgCases": 14,
+    "rows": [
+      {
+        "skill": "echarts-animated-svg",
+        "case": "pie-outer",
+        "passed": true,
+        "texts": [
+          "<text dominant-baseline=\"central\" text-anchor=\"start\" style=\"font-size:12px;font-family:Microsoft YaHei;\" transform=\"translate(445.9327 127.5)\" fill=\"#000000\">A</text>",
+          "<text dominant-baseline=\"central\" text-anchor=\"end\" style=\"font-size:12px;font-family:Microsoft YaHei;\" transform=\"translate(194.0673 232.5)\" fill=\"#000000\">B</text>"
+        ]
+      },
+      {
+        "skill": "echarts-animated-svg",
+        "case": "funnel-outer",
+        "passed": true,
+        "texts": [
+          "<text dominant-baseline=\"central\" text-anchor=\"start\" style=\"font-size:12px;font-family:Microsoft YaHei;\" x=\"405\" y=\"236.25\" fill=\"#000000\">A</text>",
+          "<text dominant-baseline=\"central\" text-anchor=\"start\" style=\"font-size:12px;font-family:Microsoft YaHei;\" x=\"525\" y=\"118.75\" fill=\"#000000\">B</text>"
+        ]
+      },
+      {
+        "skill": "echarts-animated-svg",
+        "case": "graph-default",
+        "passed": true,
+        "texts": [
+          "<text dominant-baseline=\"central\" text-anchor=\"middle\" style=\"font-size:12px;font-family:Microsoft YaHei;\" transform=\"translate(320 324)\" fill=\"#ffffff\">A</text>",
+          "<text dominant-baseline=\"central\" text-anchor=\"middle\" style=\"font-size:12px;font-family:Microsoft YaHei;\" transform=\"translate(320 36)\" fill=\"#ffffff\">B</text>"
+        ]
+      },
+      {
+        "skill": "echarts-animated-svg",
+        "case": "white-label-backing",
+        "passed": true,
+        "texts": [
+          "<text dominant-baseline=\"central\" text-anchor=\"middle\" style=\"font-size:12px;font-family:Microsoft YaHei;\" transform=\"translate(336 172.5)\" fill=\"#000000\">Backing</text>"
+        ]
+      },
+      {
+        "skill": "echarts-animated-svg",
+        "case": "inherited-outer",
+        "passed": true,
+        "texts": [
+          "<text dominant-baseline=\"central\" text-anchor=\"start\" style=\"font-size:12px;font-family:Microsoft YaHei;\" transform=\"translate(445.9327 127.5)\" fill=\"#000000\">A</text>",
+          "<text dominant-baseline=\"central\" text-anchor=\"middle\" style=\"font-size:12px;font-family:Microsoft YaHei;\" transform=\"translate(278.4308 204)\" fill=\"#000000\">B</text>"
+        ]
+      },
+      {
+        "skill": "echarts-animated-svg",
+        "case": "translucent-canvas-rgba",
+        "passed": true,
+        "texts": [
+          "<text dominant-baseline=\"central\" text-anchor=\"start\" style=\"font-size:12px;font-family:Microsoft YaHei;\" transform=\"translate(355 285)\" fill=\"#000000\">A</text>"
+        ]
+      },
+      {
+        "skill": "echarts-animated-svg",
+        "case": "translucent-canvas-hex",
+        "passed": true,
+        "texts": [
+          "<text dominant-baseline=\"central\" text-anchor=\"start\" style=\"font-size:12px;font-family:Microsoft YaHei;\" transform=\"translate(355 285)\" fill=\"#000000\">A</text>"
+        ]
+      },
+      {
+        "skill": "slidev-echarts",
+        "case": "pie-outer",
+        "passed": true,
+        "texts": [
+          "<text dominant-baseline=\"central\" text-anchor=\"start\" style=\"font-size:12px;font-family:Microsoft YaHei;\" transform=\"translate(445.9327 127.5)\" fill=\"#000000\">A</text>",
+          "<text dominant-baseline=\"central\" text-anchor=\"end\" style=\"font-size:12px;font-family:Microsoft YaHei;\" transform=\"translate(194.0673 232.5)\" fill=\"#000000\">B</text>"
+        ]
+      },
+      {
+        "skill": "slidev-echarts",
+        "case": "funnel-outer",
+        "passed": true,
+        "texts": [
+          "<text dominant-baseline=\"central\" text-anchor=\"start\" style=\"font-size:12px;font-family:Microsoft YaHei;\" x=\"405\" y=\"236.25\" fill=\"#000000\">A</text>",
+          "<text dominant-baseline=\"central\" text-anchor=\"start\" style=\"font-size:12px;font-family:Microsoft YaHei;\" x=\"525\" y=\"118.75\" fill=\"#000000\">B</text>"
+        ]
+      },
+      {
+        "skill": "slidev-echarts",
+        "case": "graph-default",
+        "passed": true,
+        "texts": [
+          "<text dominant-baseline=\"central\" text-anchor=\"middle\" style=\"font-size:12px;font-family:Microsoft YaHei;\" transform=\"translate(320 324)\" fill=\"#ffffff\">A</text>",
+          "<text dominant-baseline=\"central\" text-anchor=\"middle\" style=\"font-size:12px;font-family:Microsoft YaHei;\" transform=\"translate(320 36)\" fill=\"#ffffff\">B</text>"
+        ]
+      },
+      {
+        "skill": "slidev-echarts",
+        "case": "white-label-backing",
+        "passed": true,
+        "texts": [
+          "<text dominant-baseline=\"central\" text-anchor=\"middle\" style=\"font-size:12px;font-family:Microsoft YaHei;\" transform=\"translate(336 172.5)\" fill=\"#000000\">Backing</text>"
+        ]
+      },
+      {
+        "skill": "slidev-echarts",
+        "case": "inherited-outer",
+        "passed": true,
+        "texts": [
+          "<text dominant-baseline=\"central\" text-anchor=\"start\" style=\"font-size:12px;font-family:Microsoft YaHei;\" transform=\"translate(445.9327 127.5)\" fill=\"#000000\">A</text>",
+          "<text dominant-baseline=\"central\" text-anchor=\"middle\" style=\"font-size:12px;font-family:Microsoft YaHei;\" transform=\"translate(278.4308 204)\" fill=\"#000000\">B</text>"
+        ]
+      },
+      {
+        "skill": "slidev-echarts",
+        "case": "translucent-canvas-rgba",
+        "passed": true,
+        "texts": [
+          "<text dominant-baseline=\"central\" text-anchor=\"start\" style=\"font-size:12px;font-family:Microsoft YaHei;\" transform=\"translate(355 285)\" fill=\"#000000\">A</text>"
+        ]
+      },
+      {
+        "skill": "slidev-echarts",
+        "case": "translucent-canvas-hex",
+        "passed": true,
+        "texts": [
+          "<text dominant-baseline=\"central\" text-anchor=\"start\" style=\"font-size:12px;font-family:Microsoft YaHei;\" transform=\"translate(355 285)\" fill=\"#000000\">A</text>"
+        ]
+      }
+    ]
+  },
+  "markedAuditRegression": {
+    "slideCount": 4,
+    "stateCount": 4,
+    "findingCount": 4,
+    "severityCounts": {
+      "error": 3,
+      "warning": 1
+    },
+    "ruleCounts": {
+      "premature-category-outline": 3,
+      "dense-slide": 1
+    }
+  },
+  "nativeMermaidPortableRegressions": {
+    "testCount": 17,
+    "passed": true,
+    "script": "skills/mermaid/scripts/test_native_solid.py"
+  },
+  "nativeMermaidComputedPaintAudit": {
+    "passed": true,
+    "staticFixtures": 62,
+    "animatedFixtures": 62,
+    "states": 186,
+    "statesCovered": [
+      "static",
+      "settled",
+      "mid-reveal"
+    ],
+    "contrastPolicy": "Label-center isPointInFill tests include closed filled paths and partial containment. Actual RGBA/fill-opacity layers are composited in paint order over white canvas. Sequence number text is paired explicitly with its referenced marker circle despite zero marker bounds.",
+    "revealPolicy": "CSS opacity animation targets/ancestors are sampled at half of the common global end time; partial reveal is intentional and skipped for contrast, while fill-opacity remains a separate paint property. Hidden/partial reveal target counts are recorded for every state.",
+    "zeroAreaAndCanvasPolicy": "Zero-area metadata rectangles, transparent/canvas-only layers, and invisible clip geometry are excluded from decorative rim checks.",
+    "summarySha256": "13d9f21c090d3055e479051f555b091942073a1f226a37a9e80b3560dd398bcf",
+    "unexplainedRimCount": 0,
+    "contrastFindingCount": 0,
+    "revealTargetCountsAcrossStates": {
+      "opacityRevealTargets": 832,
+      "hiddenRevealTargets": 618,
+      "partialRevealTargets": 138
+    }
+  },
+  "nativeMermaidIndependentReview": {
+    "checkedAtUtc": "2026-10-03T14:58:13.646Z",
+    "staticCount": 62,
+    "stable": true,
+    "changedPaths": [],
+    "contrastFindings": 0,
+    "outsideActorFindings": 0,
+    "unexplainedRims": 0,
+    "classifiedRims": 55,
+    "method": "Actual computed leaf paint against native filled shape at text center via isPointInFill; excludes background/stage layers; explicit sequenceNumber-marker paint pairing; independently checks actor-man captions outside filled body; alpha composed over published white canvas. Contrasting filled rims are classified only for explicit palette overflow, journey emotion glyphs, critical status and procurement glyphs.",
+    "metadataSha256": "ac1f3e4aa298f536226893696327b25c4c222607b8309d1d006a666369dd6a87"
+  },
+  "nativeBrowserReview": {
+    "cards": 12,
+    "loadedImages": 12,
+    "overflow": 0
+  }
+}

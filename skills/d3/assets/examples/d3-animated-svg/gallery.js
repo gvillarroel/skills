@@ -893,7 +893,7 @@
       .join("path")
       .attr("d", path)
       .attr("fill", fill)
-      .attr("fill-opacity", .92)
+      .attr("fill-opacity", 1)
       .attr("stroke", palette.gray300)
       .attr("stroke-width", .8)
       .attr("stroke-linejoin", "round");
@@ -1137,37 +1137,15 @@
       };
     });
 
-    const defs = svg.append("defs");
-    const glow = defs.append("filter")
-      .attr("id", "category-burst-soft-shadow")
-      .attr("x", "-30%")
-      .attr("y", "-30%")
-      .attr("width", "160%")
-      .attr("height", "160%");
-    glow.append("feDropShadow")
-      .attr("dx", 0)
-      .attr("dy", 4)
-      .attr("stdDeviation", 5)
-      .attr("flood-color", palette.gray700)
-      .attr("flood-opacity", .18);
-
-    svg.append("circle")
-      .attr("cx", center.x)
-      .attr("cy", center.y)
-      .attr("r", 152)
-      .attr("fill", "none")
-      .attr("stroke", palette.gray100)
-      .attr("stroke-width", 1.2)
-      .attr("stroke-dasharray", "4 8")
-      .attr("opacity", .72);
+    const rootStyle = window.D3SolidStyle.categoryStyle(0, activeColorset, palette.surface);
+    spokes.forEach((spoke, index) => { const style = window.D3SolidStyle.categoryStyle(index + 1, activeColorset, palette.surface); spoke.color = style.fill; spoke.fill = style.fill; });
 
     const rootHalo = svg.append("circle")
       .attr("cx", center.x)
       .attr("cy", center.y)
       .attr("r", 12)
-      .attr("fill", "none")
-      .attr("stroke", palette.blueHighlight)
-      .attr("stroke-width", 12)
+      .attr("fill", rootStyle.fill)
+      .attr("stroke", "none")
       .attr("opacity", .55);
     rootHalo.append("animate")
       .attr("attributeName", "r")
@@ -1223,13 +1201,11 @@
     const root = svg.append("g")
       .attr("class", "category-burst-root")
       .attr("data-node-role", "root")
-      .attr("transform", `translate(${center.x},${center.y})`)
-      .attr("filter", "url(#category-burst-soft-shadow)");
+      .attr("transform", `translate(${center.x},${center.y})`);
     const rootCircle = root.append("circle")
       .attr("r", 36)
-      .attr("fill", palette.ink)
-      .attr("stroke", palette.surface)
-      .attr("stroke-width", 3);
+      .attr("fill", rootStyle.fill)
+      .attr("stroke", "none");
     rootCircle.append("animate")
       .attr("attributeName", "r")
       .attr("values", "0;36")
@@ -1288,8 +1264,7 @@
     const satelliteCircles = nodeGroups.append("circle")
       .attr("r", d => d.r)
       .attr("fill", d => d.fill)
-      .attr("stroke", d => d.color)
-      .attr("stroke-width", 2.4);
+      .attr("stroke", "none");
     satelliteCircles.each(function (d) {
       d3.select(this).append("animate")
         .attr("attributeName", "r")
@@ -1300,13 +1275,6 @@
         .attr("calcMode", "spline")
         .attr("keySplines", ".2 .8 .2 1;.28 0 .22 1");
     });
-    nodeGroups.append("circle")
-      .attr("r", d => d.r + 5)
-      .attr("fill", "none")
-      .attr("stroke", d => d.color)
-      .attr("stroke-width", 1.4)
-      .attr("stroke-opacity", .18);
-
     const labels = nodeGroups.append("text")
       .attr("class", "mark-label")
       .attr("x", d => d.radialX * (d.r + 16))
@@ -1438,7 +1406,7 @@
     const ribbon = d3.ribbon().radius(innerRadius - 2).padAngle(.02);
     const chord = d3.chord().padAngle(.06).sortSubgroups(d3.descending)(matrix);
     const g = svg.append("g").attr("transform", `translate(${width / 2},${height / 2 + 8})`);
-    const ribbons = g.append("g").attr("fill-opacity", .68).selectAll("path").data(chord).join("path")
+    const ribbons = g.append("g").attr("data-opacity-role", "semantic").attr("fill-opacity", .68).selectAll("path").data(chord).join("path")
       .attr("d", ribbon).attr("fill", d => color(names[d.source.index]))
       .attr("stroke", d => d3.color(color(names[d.source.index])).darker(.55));
     fadeIn(ribbons, .25, .95);
@@ -1463,7 +1431,7 @@
     const nodes = g.selectAll("g").data(root.descendants().filter(d => d.depth)).join("g")
       .attr("transform", d => `translate(${d.x0},${d.y0})`);
     nodes.append("rect").attr("width", d => Math.max(0, d.x1 - d.x0)).attr("height", d => Math.max(0, d.y1 - d.y0))
-      .attr("rx", 3).attr("fill", d => color(branchName(d))).attr("fill-opacity", d => d.children ? .25 : .82)
+      .attr("rx", 3).attr("fill", d => color(branchName(d))).attr("fill-opacity", 1)
       .attr("stroke", "#fff");
     nodes.filter(d => d.children && (d.x1 - d.x0) > 52 && (d.y1 - d.y0) > 22).append("text")
       .attr("class", "treemap-parent-label")
@@ -1498,7 +1466,7 @@
       if (d.children) return parentFill.get(d.data.name) || palette.blueHighlight;
       return leafFill.get(branchName(d)) || palette.blue;
     })
-      .attr("fill-opacity", d => d.depth === 0 ? 1 : .94)
+      .attr("fill-opacity", 1)
       .attr("stroke", d => d.depth === 0 ? palette.blueHighlight : "#fff").attr("stroke-width", d => d.depth === 0 ? 2 : 2.4);
     grow(nodes.selectAll("circle"), "r", 1, d => d.r, .05, .75);
     nodes.filter(d => d.depth === 1).append("text").attr("class", "mark-label")
@@ -1518,7 +1486,7 @@
     const g = svg.append("g").attr("transform", `translate(${width / 2},${height / 2 + 10})`);
     const paths = g.selectAll("path").data(root.descendants().filter(d => d.depth)).join("path")
       .attr("d", arc).attr("fill", d => color((d.depth === 1 ? d : d.parent).data.name))
-      .attr("fill-opacity", d => d.depth === 1 ? .72 : .95).attr("stroke", "#fff");
+      .attr("fill-opacity", 1).attr("stroke", "#fff");
     fadeIn(paths, .08, .75);
     g.append("text").attr("class", "mark-label").attr("text-anchor", "middle").attr("dy", ".35em").text("Platform");
     const legend = svg.append("g").attr("transform", "translate(48,48)").selectAll("g").data(["Create", "Serve", "Learn"]).join("g")
@@ -1535,7 +1503,7 @@
     const g = svg.append("g").attr("transform", "translate(24,30)");
     const nodes = g.selectAll("g").data(root.descendants()).join("g").attr("transform", d => `translate(${d.x0},${d.y0})`);
     nodes.append("rect").attr("width", d => d.x1 - d.x0).attr("height", d => Math.max(0, d.y1 - d.y0))
-      .attr("fill", d => color(d.depth <= 1 ? d.data.name : d.parent.data.name)).attr("fill-opacity", d => d.depth ? .85 : .22)
+      .attr("fill", d => color(d.depth <= 1 ? d.data.name : d.parent.data.name)).attr("fill-opacity", 1)
       .attr("stroke", "#fff").attr("rx", 2);
     nodes.filter(d => (d.x1 - d.x0) > 42).append("text")
       .attr("class", d => d.depth === 0 ? "mark-label" : "reverse-label")
@@ -1737,7 +1705,7 @@
       y0 + rows.length * rowH - 18,
       d3.range(1, rows.length).map(i => y0 - 18 + i * rowH)
     );
-    g.append("circle").attr("cx", 4).attr("cy", 1).attr("r", 3.2).attr("fill", d => d.color).attr("fill-opacity", .86);
+    g.append("circle").attr("cx", 4).attr("cy", 1).attr("r", 3.2).attr("fill", d => d.color).attr("fill-opacity", 1);
     g.append("text").attr("class", "mark-label").attr("x", 14).attr("y", 1).attr("font-weight", 700).attr("font-size", 11.5).text(d => d.model);
     g.append("text").attr("class", "caption").attr("x", 14).attr("y", 14).attr("font-weight", 700).attr("font-size", 9.2).attr("fill", palette.gray600).text(d => d.provider);
     metrics.forEach(metric => {
@@ -1976,7 +1944,7 @@
         .attr("height", value => y(value))
         .attr("rx", 2)
         .attr("fill", d.type === "number" ? palette.blue : palette.purple)
-        .attr("fill-opacity", .82)
+        .attr("fill-opacity", 1)
         .attr("stroke", palette.surface)
         .attr("stroke-width", .7);
       fadeIn(bars, .18, .45);
@@ -2631,7 +2599,7 @@
       .attr("height", d => d.h)
       .attr("rx", 7)
       .attr("fill", d => d.fill)
-      .attr("fill-opacity", .19)
+      .attr("fill-opacity", 1)
       .attr("stroke", d => d.stroke)
       .attr("stroke-width", 1.4)
       .attr("stroke-opacity", .78)
@@ -2793,7 +2761,7 @@
       .attr("cx", d => d.cx)
       .attr("cy", d => d.cy)
       .attr("fill", d => d.fill)
-      .attr("fill-opacity", .24)
+      .attr("fill-opacity", 1)
       .attr("stroke", d => d.stroke)
       .attr("stroke-width", 2)
       .attr("stroke-opacity", .9);
@@ -2845,7 +2813,7 @@
       .attr("height", 17)
       .attr("rx", 5)
       .attr("fill", palette.surface)
-      .attr("fill-opacity", .9)
+      .attr("fill-opacity", 1)
       .attr("stroke", palette.gray200)
       .attr("stroke-width", .8);
     fadeIn(labelBoxes, .42, .45);
@@ -2961,7 +2929,7 @@
       .attr("cx", d => d.cx)
       .attr("cy", d => d.cy)
       .attr("fill", d => d.fillColor)
-      .attr("fill-opacity", .18)
+      .attr("fill-opacity", 1)
       .attr("stroke", d => d.strokeColor)
       .attr("stroke-width", 1.7)
       .attr("stroke-opacity", .78);
@@ -3056,7 +3024,7 @@
       .attr("height", d => d.labelHeight)
       .attr("rx", 3.6)
       .attr("fill", palette.surface)
-      .attr("fill-opacity", .96)
+      .attr("fill-opacity", 1)
       .attr("stroke", palette.gray200)
       .attr("stroke-width", .65);
     fadeIn(labelBoxes, .5, .42);
@@ -3235,7 +3203,7 @@
         .attr("fill", palette.surface)
         .attr("stroke", palette.ink)
         .attr("stroke-width", 1.6)
-        .attr("fill-opacity", .86);
+        .attr("fill-opacity", 1);
       vennTextBlock(core, options.centerLabel, 0, -5, {
         className: "venn-core-text",
         fontSize: 11,
@@ -3778,7 +3746,7 @@
       .attr("class", "er-entity")
       .attr("transform", d => `translate(${d.x},${d.y})`);
     groups.append("rect").attr("width", box.w).attr("height", d => d.h).attr("rx", 8).attr("fill", palette.surface).attr("stroke", d => d.color).attr("stroke-width", 2);
-    groups.append("rect").attr("width", box.w).attr("height", box.header).attr("rx", 8).attr("fill", d => d.color).attr("fill-opacity", .88);
+    groups.append("rect").attr("width", box.w).attr("height", box.header).attr("rx", 8).attr("fill", d => d.color).attr("fill-opacity", 1);
     groups.append("text").attr("class", "reverse-label").attr("x", box.w / 2).attr("y", 19).attr("text-anchor", "middle").attr("font-weight", 800).text(d => d.id);
     groups.each(function (entity) {
       d3.select(this).selectAll("text.er-field").data(entity.fields).join("text")
@@ -3825,7 +3793,7 @@
       .attr("width", d => Math.max(8, x(d.endDate) - x(d.startDate)))
       .attr("rx", 7)
       .attr("fill", d => d.color)
-      .attr("fill-opacity", .82)
+      .attr("fill-opacity", 1)
       .attr("stroke", d => d.status === "crit" ? palette.redHover : palette.surface)
       .attr("stroke-width", d => d.status === "crit" ? 2.4 : 1.2);
     bars.filter(d => d.status === "milestone").append("path")
@@ -3925,7 +3893,7 @@
       .attr("data-column-order", d => columnOrder.get(d.id))
       .attr("transform", d => `translate(${d.x},54)`);
     colGroups.append("rect").attr("width", colW).attr("height", 310).attr("rx", 10).attr("fill", palette.gray50).attr("stroke", palette.gray200);
-    colGroups.append("rect").attr("width", colW).attr("height", 34).attr("rx", 10).attr("fill", d => d.color).attr("fill-opacity", .86);
+    colGroups.append("rect").attr("width", colW).attr("height", 34).attr("rx", 10).attr("fill", d => d.color).attr("fill-opacity", 1);
     colGroups.append("text").attr("class", "reverse-label").attr("x", colW / 2).attr("y", 22).attr("text-anchor", "middle").attr("font-weight", 800).text(d => d.id);
     revealIn(colGroups, (_, i) => .08 + i * .04, .34);
     const counts = new Map();
@@ -4196,7 +4164,7 @@
       .attr("width", colW)
       .attr("height", headerH)
       .attr("fill", d => d.color)
-      .attr("fill-opacity", .88);
+      .attr("fill-opacity", 1);
     colGroups.append("text")
       .attr("class", "reverse-label")
       .attr("x", colW / 2)
@@ -4225,7 +4193,7 @@
         .attr("width", legendW)
         .attr("height", headerH)
         .attr("fill", palette.gray800)
-        .attr("fill-opacity", .9);
+        .attr("fill-opacity", 1);
       legendColumn.append("text")
         .attr("class", "reverse-label")
         .attr("x", legendW / 2)
@@ -4438,7 +4406,7 @@
     axisBottom(svg, x, height - margin.bottom, 5);
     axisLeft(svg, y, margin.left, 5);
     const dots = svg.append("g").selectAll("circle").data(data).join("circle")
-      .attr("cx", d => x(d.x)).attr("cy", d => y(d.y)).attr("fill", d => colors[d.group]).attr("fill-opacity", .78).attr("stroke", "#fff");
+      .attr("cx", d => x(d.x)).attr("cy", d => y(d.y)).attr("fill", d => colors[d.group]).attr("fill-opacity", 1).attr("stroke", "#fff");
     grow(dots, "r", 1, d => d.r, .08, .7);
   }
 
@@ -4511,7 +4479,7 @@
       .attr("cy", d => d.y)
       .attr("r", d => d.r)
       .attr("fill", palette.gray200)
-      .attr("fill-opacity", .9);
+      .attr("fill-opacity", 1);
     dots.each(function (d) {
       const dot = d3.select(this);
       dot.append("animate")
@@ -5109,7 +5077,7 @@
       .attr("height", d => d.h)
       .attr("rx", 7)
       .attr("fill", tokens.panel)
-      .attr("fill-opacity", .88)
+      .attr("fill-opacity", 1)
       .attr("stroke", tokens.panelStroke)
       .attr("stroke-width", .85);
     cards.append("circle")
@@ -5281,7 +5249,7 @@
           .attr("height", 10)
           .attr("rx", 2)
           .attr("fill", row.fill)
-          .attr("fill-opacity", .78)
+          .attr("fill-opacity", 1)
           .attr("stroke", "none")
           .each(function () {
             d3.select(this).append("animate")
@@ -5318,7 +5286,7 @@
     axisLeft(svg, y, 56, 5);
     const g = svg.append("g").selectAll("g").data(stats).join("g").attr("transform", d => `translate(${x(d.group) + x.bandwidth() / 2},0)`);
     g.append("line").attr("y1", d => y(d.min)).attr("y2", d => y(d.max)).attr("stroke", palette.ink);
-    g.append("rect").attr("x", -28).attr("y", d => y(d.q3)).attr("width", 56).attr("height", d => y(d.q1) - y(d.q3)).attr("fill", palette.orange).attr("fill-opacity", .75).attr("stroke", "#fff");
+    g.append("rect").attr("x", -28).attr("y", d => y(d.q3)).attr("width", 56).attr("height", d => y(d.q1) - y(d.q3)).attr("fill", palette.orange).attr("fill-opacity", 1).attr("stroke", "#fff");
     g.append("line").attr("x1", -32).attr("x2", 32).attr("y1", d => y(d.median)).attr("y2", d => y(d.median)).attr("stroke", palette.ink).attr("stroke-width", 2);
     svg.append("g").attr("class", "axis").attr("transform", `translate(0,${height - 58})`).call(d3.axisBottom(x));
     fadeIn(g, .05, .7);
@@ -5338,7 +5306,7 @@
         return { v, w };
       });
       const grp = svg.append("g").attr("transform", `translate(${x(g)},0)`);
-      grp.append("path").datum(density).attr("d", area).attr("fill", colors[gi]).attr("fill-opacity", .75).attr("stroke", "#fff");
+      grp.append("path").datum(density).attr("d", area).attr("fill", colors[gi]).attr("fill-opacity", 1).attr("stroke", "#fff");
       grp.append("text").attr("class", "mark-label").attr("x", 0).attr("y", height - 28).attr("text-anchor", "middle").text(g);
       fadeIn(grp, .1 + gi * .08, .7);
     });
@@ -5353,7 +5321,7 @@
     groups.forEach((group, gi) => {
       const data = d3.range(28).map(i => ({ x: i * 3.7, y: 12 + Math.exp(-Math.pow((i - (9 + gi * 4)) / 5, 2)) * 62 }));
       const g = svg.append("g").attr("transform", `translate(0,${yBase(group)})`);
-      g.append("path").datum(data).attr("d", line).attr("fill", colors[gi]).attr("fill-opacity", .72).attr("stroke", d3.color(colors[gi]).darker(.45));
+      g.append("path").datum(data).attr("d", line).attr("fill", colors[gi]).attr("fill-opacity", 1).attr("stroke", d3.color(colors[gi]).darker(.45));
       g.append("text").attr("class", "mark-label").attr("x", 42).attr("y", -8).text(group);
       fadeIn(g, .08 + gi * .08, .6);
     });
@@ -5438,7 +5406,7 @@
       .attr("fill", "none")
       .attr("stroke", palette.gray200)
       .attr("stroke-dasharray", "3 5"));
-    const bars = g.selectAll("path").data(data).join("path").attr("d", arc).attr("fill", (d, i) => colors[i % colors.length]).attr("fill-opacity", .86);
+    const bars = g.selectAll("path").data(data).join("path").attr("d", arc).attr("fill", (d, i) => colors[i % colors.length]).attr("fill-opacity", 1);
     fadeIn(bars, .06, .75);
     g.append("g").selectAll("text").data(data).join("text")
       .attr("class", "caption")
@@ -5468,7 +5436,7 @@
       g.append("line").attr("x2", Math.cos(a) * r(100)).attr("y2", Math.sin(a) * r(100)).attr("stroke", "#d8dee6");
       g.append("text").attr("class", "label").attr("x", Math.cos(a) * 160).attr("y", Math.sin(a) * 160).attr("text-anchor", "middle").text(m);
     });
-    const areas = g.selectAll(".profile").data(profiles).join("path").attr("d", d => line(d.values)).attr("fill", d => d.color).attr("fill-opacity", .24).attr("stroke", d => d.color).attr("stroke-width", 2.2);
+    const areas = g.selectAll(".profile").data(profiles).join("path").attr("d", d => line(d.values)).attr("fill", d => d.color).attr("data-opacity-role", "semantic").attr("fill-opacity", .24).attr("stroke", d => d.color).attr("stroke-width", 2.2);
     drawPath(areas, .12, .9);
   }
 
@@ -5520,7 +5488,7 @@
       .attr("fill", palette.gray50).attr("stroke", palette.gray100);
     [0, 1, 2].forEach(i => {
       const shifted = data.map(d => ({ x: d.x, y: Math.max(0, d.y - i * 22) }));
-      const path = svg.append("path").datum(shifted).attr("d", area).attr("fill", bandColors[i]).attr("fill-opacity", .78);
+      const path = svg.append("path").datum(shifted).attr("d", area).attr("fill", bandColors[i]).attr("fill-opacity", 1);
       fadeIn(path, .08 + i * .08, .75);
     });
     svg.append("line").attr("x1", 42).attr("x2", width - 34).attr("y1", baseY).attr("y2", baseY).attr("stroke", "#9ba6b3");
@@ -5539,7 +5507,7 @@
     const projection = d3.geoNaturalEarth1().fitExtent([[38, 42], [width - 38, height - 52]], { type: "Sphere" });
     const path = d3.geoPath(projection);
     const graticule = d3.geoGraticule10();
-    svg.append("path").datum({ type: "Sphere" }).attr("d", path).attr("fill", palette.blueHighlight).attr("fill-opacity", .22).attr("stroke", palette.gray300);
+    svg.append("path").datum({ type: "Sphere" }).attr("d", path).attr("fill", palette.blueHighlight).attr("fill-opacity", 1).attr("stroke", palette.gray300);
     appendSchematicLand(svg, path);
     svg.append("path").datum(graticule).attr("d", path).attr("fill", "none").attr("stroke", "#d4dbe4").attr("stroke-width", .7);
     const cities = [
@@ -5579,7 +5547,7 @@
       .attr("d", symbol)
       .attr("transform", d => `translate(${x(d.x)},${y(d.y)})`)
       .attr("fill", d => colors[d.type])
-      .attr("fill-opacity", .78)
+      .attr("fill-opacity", 1)
       .attr("stroke", "#fff")
       .attr("stroke-width", 1.2);
     fadeIn(glyphs, .06, .72);
@@ -5609,7 +5577,7 @@
     const wedges = center.selectAll("path").data(data).join("path")
       .attr("d", arc)
       .attr("fill", (d, i) => colors[i % colors.length])
-      .attr("fill-opacity", .82)
+      .attr("fill-opacity", 1)
       .attr("stroke", "#fff")
       .attr("stroke-width", 1.2);
     fadeIn(wedges, .06, .75);
@@ -5654,7 +5622,7 @@
       .attr("width", d => Math.max(1, x(d.x1) - x(d.x0) - 2))
       .attr("height", d => Math.max(1, y(d.y0) - y(d.y1)))
       .attr("fill", d => colors[d.ki])
-      .attr("fill-opacity", .84)
+      .attr("fill-opacity", 1)
       .attr("stroke", "#fff");
     fadeIn(rects, .05, .7);
     const labels = svg.append("g").selectAll("text").data(data).join("text")
@@ -5708,7 +5676,7 @@
     const ribbons = svg.append("g").selectAll("path").data(flows.map(band)).join("path")
       .attr("d", d => d.path)
       .attr("fill", d => colors[left.indexOf(d.source)])
-      .attr("fill-opacity", .32)
+      .attr("data-opacity-role", "semantic").attr("fill-opacity", .32)
       .attr("stroke", d => colors[left.indexOf(d.source)])
       .attr("stroke-width", .8);
     fadeIn(ribbons, .08, .85);
@@ -5749,7 +5717,7 @@
       svg.append("path")
         .attr("d", hull ? `M${hull.join("L")}Z` : "")
         .attr("fill", cluster.color)
-        .attr("fill-opacity", .16)
+        .attr("data-opacity-role", "semantic").attr("fill-opacity", .16)
         .attr("stroke", cluster.color)
         .attr("stroke-width", 2);
     });
@@ -5782,7 +5750,7 @@
     const dots = svg.append("g").selectAll("circle").data(pts).join("circle")
       .attr("cx", d => d[0]).attr("cy", d => d[1])
       .attr("fill", palette.purple)
-      .attr("fill-opacity", .86)
+      .attr("fill-opacity", 1)
       .attr("stroke", "#fff");
     grow(dots, "r", 1, 4.6, .18, .62);
   }
@@ -6202,7 +6170,7 @@
       .attr("height", y.bandwidth())
       .attr("rx", 5)
       .attr("fill", d => d.selected ? palette.red : d.color)
-      .attr("fill-opacity", d => d.selected ? .92 : .68);
+      .attr("data-opacity-role", "semantic").attr("fill-opacity", d => d.selected ? .92 : .68);
     bars.append("animate")
       .attr("attributeName", "width")
       .attr("from", 0)
@@ -6226,7 +6194,7 @@
       .attr("height", strip.h)
       .attr("rx", 4)
       .attr("fill", d => d.selected ? palette.red : d.color)
-      .attr("fill-opacity", d => d.selected ? .92 : .62)
+      .attr("data-opacity-role", "semantic").attr("fill-opacity", d => d.selected ? .92 : .62)
       .attr("stroke", palette.surface)
       .attr("stroke-width", 1.4);
     fadeIn(segments, .55, .5);
@@ -6251,7 +6219,7 @@
     const sampler = svg.append("circle")
       .attr("r", 8)
       .attr("fill", palette.red)
-      .attr("fill-opacity", .96);
+      .attr("fill-opacity", 1);
     sampler.append("animateMotion")
       .attr("dur", "1.65s")
       .attr("begin", ".45s")
@@ -6301,7 +6269,7 @@
     wedgeGroups.append("path")
       .attr("d", arc)
       .attr("fill", d => d.data.color)
-      .attr("fill-opacity", d => d.data.selected ? .94 : .72)
+      .attr("data-opacity-role", "semantic").attr("fill-opacity", d => d.data.selected ? .94 : .72)
       .attr("stroke", palette.surface)
       .attr("stroke-width", 2);
     wedgeGroups.append("path")
@@ -6338,7 +6306,7 @@
       .attr("height", 13)
       .attr("rx", 3)
       .attr("fill", d => d.color)
-      .attr("fill-opacity", d => d.selected ? .94 : .7);
+      .attr("data-opacity-role", "semantic").attr("fill-opacity", d => d.selected ? .94 : .7);
     legendRows.append("text")
       .attr("class", "mark-label")
       .attr("x", 20)
@@ -6417,7 +6385,7 @@
         .attr("height", rowHeight)
         .attr("rx", 5)
         .attr("fill", (d, i) => i === 0 ? panel.color : palette.gray300)
-        .attr("fill-opacity", (d, i) => i === 0 ? .86 : .55)
+        .attr("data-opacity-role", "semantic").attr("fill-opacity", (d, i) => i === 0 ? .86 : .55)
         .each(function (d, i) {
           d3.select(this).append("animate")
             .attr("attributeName", "width")
@@ -6470,7 +6438,7 @@
       .attr("height", strip.h)
       .attr("rx", 6)
       .attr("fill", d => d.included ? d.color : palette.gray300)
-      .attr("fill-opacity", d => d.included ? .86 : .34)
+      .attr("data-opacity-role", "semantic").attr("fill-opacity", d => d.included ? .86 : .34)
       .attr("stroke", palette.surface)
       .attr("stroke-width", 1.5);
     fadeIn(rects, .12, .45);
@@ -6814,7 +6782,7 @@
     dots.append("circle")
       .attr("r", d => d.r)
       .attr("fill", d => d.color)
-      .attr("fill-opacity", d => d.query ? .96 : d.near ? .76 : .42)
+      .attr("data-opacity-role", "semantic").attr("fill-opacity", d => d.query ? .96 : d.near ? .76 : .42)
       .attr("stroke", palette.surface)
       .attr("stroke-width", d => d.query ? 2.2 : 1.4);
     dots.append("text")
@@ -6928,7 +6896,7 @@
       .attr("height", cell)
       .attr("rx", 4)
       .attr("fill", tileColor)
-      .attr("fill-opacity", d => d.causal ? .36 + d.weight * .58 : .36)
+      .attr("data-opacity-role", "semantic").attr("fill-opacity", d => d.causal ? .36 + d.weight * .58 : .36)
       .attr("stroke", palette.surface)
       .attr("stroke-width", 1.2);
     tiles.append("animate")
@@ -6995,7 +6963,7 @@
           .attr("height", 14 + ((j + head.offset) % 4) * 5)
           .attr("rx", 3)
           .attr("fill", j === activeRow % 7 ? palette.red : head.color)
-          .attr("fill-opacity", .74)
+          .attr("fill-opacity", 1)
           .append("animate")
           .attr("attributeName", "height")
           .attr("values", `4;${14 + ((j + head.offset) % 4) * 5};${14 + ((j + head.offset) % 4) * 5}`)
@@ -7022,7 +6990,7 @@
 
     rows.forEach((row, i) => {
       const g = svg.append("g").attr("transform", `translate(${row.x},${row.y})`);
-      g.append("rect").attr("width", tokenW).attr("height", tokenH).attr("rx", 8).attr("fill", row.color).attr("fill-opacity", .82).attr("stroke", palette.surface);
+      g.append("rect").attr("width", tokenW).attr("height", tokenH).attr("rx", 8).attr("fill", row.color).attr("fill-opacity", 1).attr("stroke", palette.surface);
       g.append("text").attr("class", "reverse-label").attr("x", tokenW / 2).attr("y", 26).attr("text-anchor", "middle").attr("font-weight", 800).text(row.token);
       fadeIn(g, .08 + i * .05, .34);
     });
@@ -7269,7 +7237,7 @@
       .attr("height", cell)
       .attr("rx", 3)
       .attr("fill", d => d.color)
-      .attr("fill-opacity", d => .16 + d.value * .78)
+      .attr("data-opacity-role", "semantic").attr("fill-opacity", d => .16 + d.value * .78)
       .attr("stroke", palette.surface)
       .attr("stroke-width", 1)
       .append("animate")
@@ -7309,7 +7277,7 @@
     const tokenGroups = svg.append("g").selectAll("g.moe-token").data(tokens).join("g")
       .attr("class", "moe-token")
       .attr("transform", d => `translate(${tokenX},${d.y - 16})`);
-    tokenGroups.append("rect").attr("width", 68).attr("height", 32).attr("rx", 8).attr("fill", d => d.color).attr("fill-opacity", .82).attr("stroke", palette.surface).attr("stroke-width", 1.5);
+    tokenGroups.append("rect").attr("width", 68).attr("height", 32).attr("rx", 8).attr("fill", d => d.color).attr("fill-opacity", 1).attr("stroke", palette.surface).attr("stroke-width", 1.5);
     tokenGroups.append("text").attr("class", "reverse-label").attr("x", 34).attr("y", 21).attr("text-anchor", "middle").attr("font-weight", 800).text(d => d.label);
     fadeIn(tokenGroups, .08, .35);
 
@@ -7340,7 +7308,7 @@
       });
       if (expert.id === "E1") {
         group.append("text").attr("class", "mark-label").attr("x", 112).attr("y", 18).attr("text-anchor", "middle").style("font-size", "10px").attr("fill", palette.red).text("spill");
-        group.append("rect").attr("x", 101).attr("y", 24).attr("width", 22).attr("height", 16).attr("rx", 4).attr("fill", palette.red).attr("fill-opacity", .76);
+        group.append("rect").attr("x", 101).attr("y", 24).attr("width", 22).attr("height", 16).attr("rx", 4).attr("fill", palette.red).attr("fill-opacity", 1);
         group.append("text").attr("class", "reverse-label").attr("x", 112).attr("y", 36).attr("text-anchor", "middle").style("font-size", "8px").text("T4");
       }
     });
@@ -7480,7 +7448,7 @@
       group.append("line").attr("x1", -radius).attr("x2", radius).attr("y1", 0).attr("y2", 0).attr("stroke", palette.gray200);
       group.append("line").attr("x1", 0).attr("x2", 0).attr("y1", -radius).attr("y2", radius).attr("stroke", palette.gray200);
       const arc = d3.arc().innerRadius(radius + 11).outerRadius(radius + 14).startAngle(0).endAngle(position.angleQ * Math.PI / 180);
-      group.append("path").attr("d", arc()).attr("fill", position.color).attr("fill-opacity", .46);
+      group.append("path").attr("d", arc()).attr("fill", position.color).attr("fill-opacity", 1);
       const qVector = group.append("g").attr("transform", `rotate(${position.angleQ})`);
       qVector.append("line").attr("x1", 0).attr("y1", 0).attr("x2", radius).attr("y2", 0).attr("stroke", palette.red).attr("stroke-width", 3).attr("stroke-linecap", "round");
       qVector.append("circle").attr("cx", radius).attr("cy", 0).attr("r", 4.5).attr("fill", palette.red);
@@ -7568,7 +7536,7 @@
         .attr("height", bw)
         .attr("rx", 4)
         .attr("fill", d => matrix.active(d) ? matrix.color : palette.gray100)
-        .attr("fill-opacity", d => matrix.active(d) ? .62 : .48)
+        .attr("data-opacity-role", "semantic").attr("fill-opacity", d => matrix.active(d) ? .62 : .48)
         .attr("stroke", palette.surface)
         .attr("stroke-width", 1.2);
       rects.append("animate")
@@ -7637,7 +7605,7 @@
       .each(function (d) {
         const group = d3.select(this);
         group.append("rect").attr("x", -24).attr("y", 0).attr("width", 48).attr("height", 26).attr("rx", 7).attr("fill", palette.gray100).attr("stroke", palette.gray300);
-        const fill = group.append("rect").attr("x", -24).attr("y", 0).attr("width", 48).attr("height", 26).attr("rx", 7).attr("fill", d.k % 2 ? palette.orange : palette.blue).attr("fill-opacity", .58);
+        const fill = group.append("rect").attr("x", -24).attr("y", 0).attr("width", 48).attr("height", 26).attr("rx", 7).attr("fill", d.k % 2 ? palette.orange : palette.blue).attr("fill-opacity", 1);
         fill.append("animate").attr("attributeName", "width").attr("from", 0).attr("to", 48).attr("dur", ".28s").attr("begin", `${1.1 + d.k * .18}s`).attr("fill", "freeze");
         group.append("text").attr("class", "reverse-label").attr("x", 0).attr("y", 17).attr("text-anchor", "middle").attr("font-weight", 800).style("font-size", "10px").text(`k${d.k}`);
       });
@@ -7649,7 +7617,7 @@
       .attr("height", band.step() * 2 - 2)
       .attr("rx", 8)
       .attr("fill", palette.green)
-      .attr("fill-opacity", .08)
+      .attr("fill-opacity", 1)
       .attr("stroke", palette.red)
       .attr("stroke-width", 3)
       .attr("opacity", 0);
@@ -7677,7 +7645,7 @@
         .attr("height", cell)
         .attr("rx", 3)
         .attr("fill", d => d.value < 0 ? palette.gray100 : color)
-        .attr("fill-opacity", d => d.value < 0 ? .5 : .18 + d.value * .72)
+        .attr("data-opacity-role", "semantic").attr("fill-opacity", d => d.value < 0 ? .5 : .18 + d.value * .72)
         .attr("stroke", palette.surface)
         .attr("stroke-width", 1)
         .append("animate")
@@ -7714,7 +7682,7 @@
     const out = svg.append("g").attr("transform", "translate(226,296)");
     out.append("rect").attr("x", -12).attr("y", -28).attr("width", 124).attr("height", 56).attr("rx", 10).attr("fill", palette.yellowHighlight).attr("stroke", palette.gold).attr("stroke-width", 2);
     [34, 58, 82].forEach((x, i) => {
-      out.append("rect").attr("x", x).attr("y", -16).attr("width", 14).attr("height", 32).attr("rx", 4).attr("fill", [palette.blue, palette.green, palette.orange][i]).attr("fill-opacity", .74)
+      out.append("rect").attr("x", x).attr("y", -16).attr("width", 14).attr("height", 32).attr("rx", 4).attr("fill", [palette.blue, palette.green, palette.orange][i]).attr("fill-opacity", 1)
         .append("animate").attr("attributeName", "height").attr("from", 4).attr("to", 32).attr("dur", ".35s").attr("begin", `${1.45 + i * .12}s`).attr("fill", "freeze");
     });
     out.append("text").attr("class", "mark-label").attr("x", 50).attr("y", 47).attr("text-anchor", "middle").text("weighted output");
@@ -7751,7 +7719,7 @@
         .attr("height", cell)
         .attr("rx", 4)
         .attr("fill", d => d.future ? palette.gray100 : d.focused ? palette.red : head.color)
-        .attr("fill-opacity", d => d.future ? .46 : .22 + d.value * .62)
+        .attr("data-opacity-role", "semantic").attr("fill-opacity", d => d.future ? .46 : .22 + d.value * .62)
         .attr("stroke", palette.surface)
         .attr("stroke-width", 1)
         .append("animate")
@@ -7767,7 +7735,7 @@
     const concatY = 118;
     const strips = heads.map((head, i) => ({ ...head, y: concatY + i * 42 }));
     strips.forEach((strip, i) => {
-      svg.append("rect").attr("x", concatX).attr("y", strip.y).attr("width", 74).attr("height", 24).attr("rx", 6).attr("fill", strip.color).attr("fill-opacity", .72).attr("stroke", palette.surface);
+      svg.append("rect").attr("x", concatX).attr("y", strip.y).attr("width", 74).attr("height", 24).attr("rx", 6).attr("fill", strip.color).attr("fill-opacity", 1).attr("stroke", palette.surface);
       svg.append("text").attr("class", "reverse-label").attr("x", concatX + 37).attr("y", strip.y + 16).attr("text-anchor", "middle").style("font-size", "9px").text(`head ${i + 1}`);
       const source = { x: strip.x + 86, y: strip.y < 210 ? strip.y - 20 : strip.y + 6 };
       const path = svg.append("path")
@@ -7871,7 +7839,7 @@
         group.append("circle").attr("r", 18).attr("fill", palette.redHighlight).attr("stroke", palette.red).attr("stroke-width", 2.2);
         group.append("text").attr("class", "mark-label").attr("x", 0).attr("y", 6).attr("text-anchor", "middle").attr("font-size", 20).text("+");
       } else {
-        group.append("rect").attr("x", -35).attr("y", -18).attr("width", 70).attr("height", 36).attr("rx", 8).attr("fill", stage.color).attr("fill-opacity", .8).attr("stroke", palette.surface);
+        group.append("rect").attr("x", -35).attr("y", -18).attr("width", 70).attr("height", 36).attr("rx", 8).attr("fill", stage.color).attr("fill-opacity", 1).attr("stroke", palette.surface);
         group.append("text").attr("class", "reverse-label").attr("x", 0).attr("y", 5).attr("text-anchor", "middle").attr("font-weight", 800).style("font-size", stage.label === "attention" || stage.label === "RMSNorm" ? "9px" : "11px").text(stage.label);
       }
       fadeIn(group, .12 + i * .1, .28);
@@ -7899,7 +7867,7 @@
         group.append("rect").attr("x", i * 17).attr("y", -h).attr("width", 12).attr("height", h).attr("rx", 3).attr("fill", block.color).attr("fill-opacity", blockIndex ? .3 : .62);
       });
       block.after.forEach((h, i) => {
-        const bar = group.append("rect").attr("x", i * 17).attr("y", -h).attr("width", 12).attr("height", h).attr("rx", 3).attr("fill", block.color).attr("fill-opacity", .76);
+        const bar = group.append("rect").attr("x", i * 17).attr("y", -h).attr("width", 12).attr("height", h).attr("rx", 3).attr("fill", block.color).attr("fill-opacity", 1);
         if (blockIndex) bar.append("animate").attr("attributeName", "height").attr("values", `${block.before[i]};${h}`).attr("dur", ".45s").attr("begin", `${1.15 + i * .06}s`).attr("fill", "freeze");
       });
     });
@@ -7918,7 +7886,7 @@
       const group = svg.append("g").attr("transform", `translate(${x},${y})`);
       group.append("text").attr("class", "mark-label").attr("x", 28).attr("y", -18).attr("text-anchor", "middle").text(label);
       values.forEach((value, i) => {
-        const bar = group.append("rect").attr("x", i * 14).attr("y", -value).attr("width", 10).attr("height", value).attr("rx", 3).attr("fill", color).attr("fill-opacity", .72).attr("stroke", palette.surface);
+        const bar = group.append("rect").attr("x", i * 14).attr("y", -value).attr("width", 10).attr("height", value).attr("rx", 3).attr("fill", color).attr("fill-opacity", 1).attr("stroke", palette.surface);
         bar.append("animate").attr("attributeName", "height").attr("from", 3).attr("to", value).attr("dur", ".34s").attr("begin", `${delay + i * .035}s`).attr("fill", "freeze");
       });
       return group;
@@ -7963,7 +7931,7 @@
     svg.append("text").attr("class", "mark-label").attr("x", 396).attr("y", 62).attr("text-anchor", "middle").text("KV memory pages");
     requests.forEach((request, i) => {
       const group = svg.append("g").attr("transform", `translate(48,${request.y - 18})`);
-      group.append("rect").attr("width", 94).attr("height", 36).attr("rx", 8).attr("fill", request.color).attr("fill-opacity", .8).attr("stroke", palette.surface);
+      group.append("rect").attr("width", 94).attr("height", 36).attr("rx", 8).attr("fill", request.color).attr("fill-opacity", 1).attr("stroke", palette.surface);
       group.append("text").attr("class", "reverse-label").attr("x", 47).attr("y", 23).attr("text-anchor", "middle").attr("font-weight", 800).text(request.id);
       if (request.reused) {
         group.append("text").attr("class", "caption").attr("x", 108).attr("y", 23).attr("fill", palette.green).text("reuses freed page");
@@ -7984,7 +7952,7 @@
       .attr("height", cell)
       .attr("rx", 7)
       .attr("fill", d => pageOwner.get(d.index)?.color || palette.gray100)
-      .attr("fill-opacity", d => pageOwner.has(d.index) ? .72 : .48)
+      .attr("data-opacity-role", "semantic").attr("fill-opacity", d => pageOwner.has(d.index) ? .72 : .48)
       .attr("stroke", d => d.index === 1 ? palette.green : palette.surface)
       .attr("stroke-width", d => d.index === 1 ? 2.6 : 1.2)
       .append("animate")
@@ -8479,7 +8447,7 @@
     tank.append("rect").attr("x", 70).attr("y", 170).attr("width", 58).attr("height", 106).attr("fill", palette.gray50).attr("stroke", palette.ink).attr("stroke-width", 1.7);
     tank.append("ellipse").attr("cx", 99).attr("cy", 170).attr("rx", 29).attr("ry", 9).attr("fill", palette.surface).attr("stroke", palette.ink).attr("stroke-width", 1.7);
     tank.append("ellipse").attr("cx", 99).attr("cy", 276).attr("rx", 29).attr("ry", 9).attr("fill", palette.gray100).attr("stroke", palette.ink).attr("stroke-width", 1.4);
-    tank.append("rect").attr("x", 76).attr("y", 220).attr("width", 46).attr("height", 48).attr("fill", palette.blueHighlight).attr("fill-opacity", .55).attr("stroke", "none");
+    tank.append("rect").attr("x", 76).attr("y", 220).attr("width", 46).attr("height", 48).attr("fill", palette.blueHighlight).attr("fill-opacity", 1).attr("stroke", "none");
     tank.append("line").attr("x1", 76).attr("x2", 122).attr("y1", 220).attr("y2", 220).attr("stroke", palette.blue).attr("stroke-width", 2);
     label(99, 300, "T-101 feed");
 
@@ -8886,7 +8854,7 @@
     const circles = svg.append("g").selectAll("circle").data(nodes).join("circle")
       .attr("cx", d => d.x).attr("cy", d => d.y)
       .attr("fill", d => colors[d.index % colors.length])
-      .attr("fill-opacity", .78)
+      .attr("fill-opacity", 1)
       .attr("stroke", "#fff")
       .attr("stroke-width", 1.5);
     grow(circles, "r", 2, d => d.radius, .12, .72);
@@ -8990,7 +8958,7 @@
       .attr("width", x2(windowRange[1]) - x2(windowRange[0]))
       .attr("height", height - context.bottom - context.top + 24)
       .attr("fill", palette.orange)
-      .attr("fill-opacity", .18)
+      .attr("data-opacity-role", "semantic").attr("fill-opacity", .18)
       .attr("stroke", palette.orange)
       .attr("rx", 4);
     brush.append("animate")
@@ -9037,7 +9005,7 @@
     fadeIn(cellRects, .04, .55);
     const dots = svg.append("g").selectAll("circle").data(points).join("circle")
       .attr("cx", d => d.x).attr("cy", d => d.y)
-      .attr("fill", palette.blue).attr("fill-opacity", .72).attr("stroke", "#fff");
+      .attr("fill", palette.blue).attr("fill-opacity", 1).attr("stroke", "#fff");
     grow(dots, "r", 1, 4.4, .1, .55);
     const link = svg.append("line")
       .attr("x1", target[0]).attr("y1", target[1])
@@ -9330,7 +9298,7 @@
     const dots = svg.append("g").selectAll("circle").data(points).join("circle")
       .attr("cx", d => d.x).attr("cy", d => d.y)
       .attr("fill", d => d.region === "Outside" ? "#9aa7b5" : palette.blue)
-      .attr("fill-opacity", d => d.region === "Outside" ? .35 : .82)
+      .attr("data-opacity-role", "semantic").attr("fill-opacity", d => d.region === "Outside" ? .35 : .82)
       .attr("stroke", "#fff");
     grow(dots, "r", 1, d => d.region === "Outside" ? 3 : 5, .1, .55);
     svg.append("g").selectAll("text").data(regions).join("text")
@@ -9410,7 +9378,7 @@
     ];
     const bandPaths = svg.append("g").selectAll("path").data(bands).join("path")
       .attr("d", d => area(d.lo, d.hi)(future))
-      .attr("fill", d => d.fill).attr("fill-opacity", .66);
+      .attr("fill", d => d.fill).attr("data-opacity-role", "semantic").attr("fill-opacity", .66);
     fadeIn(bandPaths, .12, .75);
     const line = d3.line().x(d => x(d.t)).y(d => y(d.y ?? d.median)).curve(d3.curveMonotoneX);
     const historyPath = svg.append("path").datum(history).attr("d", line).attr("fill", "none").attr("stroke", palette.ink).attr("stroke-width", 2.6);
@@ -9430,10 +9398,10 @@
     const dots = svg.append("g").selectAll("circle").data(points).join("circle")
       .attr("cx", d => d.x).attr("cy", d => d.y)
       .attr("fill", d => d.selected ? palette.orange : "#9aa7b5")
-      .attr("fill-opacity", d => d.selected ? .88 : .28)
+      .attr("data-opacity-role", "semantic").attr("fill-opacity", d => d.selected ? .88 : .28)
       .attr("stroke", "#fff").attr("stroke-width", 1.2);
     grow(dots, "r", 1, d => d.selected ? 6 : 4, .06, .55);
-    const lassoPath = svg.append("path").attr("d", `${d3.line()(lasso)}Z`).attr("fill", palette.orange).attr("fill-opacity", .1).attr("stroke", palette.orange).attr("stroke-width", 2.5);
+    const lassoPath = svg.append("path").attr("d", `${d3.line()(lasso)}Z`).attr("fill", palette.orange).attr("fill-opacity", 1).attr("stroke", palette.orange).attr("stroke-width", 2.5);
     drawPath(lassoPath, .2, .9);
     const selected = points.filter(d => d.selected).length;
     svg.append("text").attr("class", "mark-label").attr("x", 352).attr("y", 70).text(`${selected} selected`);
@@ -9546,7 +9514,7 @@
     point.append("circle")
       .attr("r", 13)
       .attr("fill", palette.redHighlight)
-      .attr("fill-opacity", .78);
+      .attr("fill-opacity", 1);
     point.append("circle")
       .attr("r", 6.6)
       .attr("fill", palette.red)
@@ -9707,7 +9675,7 @@
     pen.append("circle")
       .attr("r", 11.5)
       .attr("fill", palette.red)
-      .attr("fill-opacity", .96);
+      .attr("fill-opacity", 1);
     pen.append("animateMotion")
       .attr("dur", `${totalDuration}s`)
       .attr("begin", "0s")
@@ -9906,7 +9874,7 @@
       .attr("class", "pen-curve-ribbon")
       .attr("d", d => d.ribbonD)
       .attr("fill", palette.redHover)
-      .attr("fill-opacity", .98)
+      .attr("fill-opacity", 1)
       .attr("opacity", 0);
     ribbon.append("animate")
       .attr("attributeName", "opacity")
@@ -9964,7 +9932,7 @@
     pen.append("circle")
       .attr("r", 12.5)
       .attr("fill", palette.red)
-      .attr("fill-opacity", .96);
+      .attr("fill-opacity", 1);
     pen.append("animateMotion")
       .attr("dur", `${totalDuration}s`)
       .attr("begin", "0s")
@@ -10263,7 +10231,7 @@
         .attr("rx", cluster.rx)
         .attr("ry", cluster.ry)
         .attr("fill", palette.blueHighlight)
-        .attr("fill-opacity", .12)
+        .attr("fill-opacity", 1)
         .attr("stroke", palette.gray200)
         .attr("stroke-dasharray", "4 5");
     });
@@ -10275,7 +10243,7 @@
       .attr("cx", d => d.x)
       .attr("cy", d => d.y)
       .attr("fill", d => visibleIds.has(d.id) ? palette.blue : palette.gray300)
-      .attr("fill-opacity", d => visibleIds.has(d.id) ? .82 : .5)
+      .attr("data-opacity-role", "semantic").attr("fill-opacity", d => visibleIds.has(d.id) ? .82 : .5)
       .attr("stroke", palette.surface)
       .attr("stroke-width", 1);
     grow(marks, "r", 1, d => visibleIds.has(d.id) ? 3.6 : 2.2, .05, .45);
@@ -10312,7 +10280,7 @@
       .attr("height", d => d.box.h)
       .attr("rx", 4)
       .attr("fill", palette.surface)
-      .attr("fill-opacity", .94)
+      .attr("fill-opacity", 1)
       .attr("stroke", d => d.point.priority > 76 ? palette.blue : palette.gray200)
       .attr("stroke-width", .85);
     labelGroups.append("text")
@@ -10376,7 +10344,7 @@
       .attr("height", 6)
       .attr("rx", 3)
       .attr("fill", d => d.name === best.name ? palette.green : palette.blue)
-      .attr("fill-opacity", .78);
+      .attr("fill-opacity", 1);
     fadeIn(rows, .58, .5);
 
     svg.append("text")
@@ -10657,7 +10625,7 @@
       .attr("height", 52)
       .attr("rx", 6)
       .attr("fill", palette.gray50)
-      .attr("fill-opacity", .9);
+      .attr("fill-opacity", 1);
     laneGroups.append("line")
       .attr("x1", left)
       .attr("x2", right)
@@ -12445,7 +12413,7 @@
       .attr("cx", d => d.x)
       .attr("cy", d => d.y)
       .attr("fill", palette.ink)
-      .attr("fill-opacity", d => .34 + d.weight * .55);
+      .attr("data-opacity-role", "semantic").attr("fill-opacity", d => .34 + d.weight * .55);
     grow(dots, "r", .8, d => 1.9 + d.weight * 4.8, .1, .65);
     svg.append("path")
       .attr("d", "M168,68 C244,38 384,62 432,144 C480,226 410,330 286,344 C176,356 92,278 106,184 C114,126 124,92 168,68Z")
@@ -12622,7 +12590,7 @@
       .join("path")
       .attr("d", d => voronoi.renderCell(d.cellIndex))
       .attr("fill", d => cellFill[d.region] || palette.yellowHighlight)
-      .attr("fill-opacity", d => d.region === "ink" || d.region === "tip" ? .22 : .58)
+      .attr("data-opacity-role", "semantic").attr("fill-opacity", d => d.region === "ink" || d.region === "tip" ? .22 : .58)
       .attr("stroke", palette.surface)
       .attr("stroke-width", .95)
       .attr("opacity", .96);
@@ -12645,7 +12613,7 @@
       .attr("cy", d => d.y)
       .attr("r", d => d.region === "ink" || d.region === "tip" ? 2.9 + d.weight * 2.4 : 2.1 + d.weight * 2.1)
       .attr("fill", d => dotFill[d.region] || palette.gold)
-      .attr("fill-opacity", d => d.region === "body" ? .78 : .92);
+      .attr("data-opacity-role", "semantic").attr("fill-opacity", d => d.region === "body" ? .78 : .92);
 
     dots.each(function (d, i) {
       const delay = .16 + i * .006;
@@ -12763,7 +12731,7 @@
     const dots = svg.append("g").selectAll("circle").data(points).join("circle")
       .attr("cx", d => d.x).attr("cy", d => d.y)
       .attr("fill", d => d.selected ? palette.orange : colors[d.group])
-      .attr("fill-opacity", d => d.selected ? .9 : .42)
+      .attr("data-opacity-role", "semantic").attr("fill-opacity", d => d.selected ? .9 : .42)
       .attr("stroke", "#fff");
     grow(dots, "r", 1.5, d => d.selected ? 5.8 : 4.2, .05, .5);
     const focusRect = svg.append("rect")
@@ -12800,7 +12768,7 @@
     axisBottom(svg, x, height - margin.bottom, 5);
     axisLeft(svg, y, margin.left, 4);
     const area = d3.area().x(d => x(d.t)).y0(d => y(d.plan)).y1(d => y(d.actual)).curve(d3.curveMonotoneX);
-    const band = svg.append("path").datum(data).attr("d", area).attr("fill", palette.green).attr("fill-opacity", .22);
+    const band = svg.append("path").datum(data).attr("d", area).attr("fill", palette.green).attr("data-opacity-role", "semantic").attr("fill-opacity", .22);
     fadeIn(band, .1, .6);
     const line = key => d3.line().x(d => x(d.t)).y(d => y(d[key])).curve(d3.curveMonotoneX);
     const plan = svg.append("path").datum(data).attr("d", line("plan")).attr("fill", "none").attr("stroke", palette.muted).attr("stroke-width", 2.3).attr("stroke-dasharray", "5 5");
@@ -12840,7 +12808,7 @@
       .attr("width", d => x(d.value))
       .attr("rx", 5)
       .attr("fill", d => d.children ? palette.blue : palette.cyan)
-      .attr("fill-opacity", d => d.children ? .82 : .58);
+      .attr("fill-opacity", 1);
     bars.each(function (d, i) {
       d3.select(this).append("animate")
         .attr("attributeName", "width")
@@ -12911,11 +12879,11 @@
     });
     svg.append("rect").attr("x", plot.x).attr("y", plot.y).attr("width", plot.w).attr("height", plot.h).attr("fill", palette.gray50).attr("stroke", palette.gray200);
     const dots = svg.append("g").selectAll("circle").data(points).join("circle")
-      .attr("cx", d => d.x).attr("cy", d => d.y).attr("fill", d => d.focus ? palette.orange : colors[d.group]).attr("fill-opacity", d => d.focus ? .9 : .36).attr("stroke", "#fff");
+      .attr("cx", d => d.x).attr("cy", d => d.y).attr("fill", d => d.focus ? palette.orange : colors[d.group]).attr("data-opacity-role", "semantic").attr("fill-opacity", d => d.focus ? .9 : .36).attr("stroke", "#fff");
     grow(dots, "r", 1, d => d.focus ? 6 : 4, .04, .5);
     const view = svg.append("rect")
       .attr("x", 136).attr("y", 74).attr("width", 286).attr("height", 216).attr("rx", 8)
-      .attr("fill", palette.orangeHighlight).attr("fill-opacity", .48).attr("stroke", palette.orange).attr("stroke-width", 2.6);
+      .attr("fill", palette.orangeHighlight).attr("fill-opacity", 1).attr("stroke", palette.orange).attr("stroke-width", 2.6);
     view.append("animate").attr("attributeName", "x").attr("from", target.x).attr("to", 136).attr("dur", "1s").attr("fill", "freeze");
     view.append("animate").attr("attributeName", "y").attr("from", target.y).attr("to", 74).attr("dur", "1s").attr("fill", "freeze");
     view.append("animate").attr("attributeName", "width").attr("from", target.w).attr("to", 286).attr("dur", "1s").attr("fill", "freeze");
@@ -12932,7 +12900,7 @@
     const globe = d3.geoOrthographic().rotate([35, -10]).scale(105).translate([165, 179]);
     const flat = d3.geoEquirectangular().fitExtent([[320, 82], [522, 282]], { type: "Sphere" });
     const globePoint = d => globe([d.lon, d.lat]) || [165, 179];
-    svg.append("circle").attr("cx", 165).attr("cy", 179).attr("r", 105).attr("fill", palette.blueHighlight).attr("fill-opacity", .28).attr("stroke", palette.gray200);
+    svg.append("circle").attr("cx", 165).attr("cy", 179).attr("r", 105).attr("fill", palette.blueHighlight).attr("fill-opacity", 1).attr("stroke", palette.gray200);
     svg.append("rect").attr("x", 320).attr("y", 82).attr("width", 202).attr("height", 200).attr("rx", 5).attr("fill", palette.gray50).attr("stroke", palette.gray200);
     const lines = d3.geoGraticule().step([45, 30]).lines();
     const globePath = d3.geoPath(globe);
@@ -12958,7 +12926,7 @@
     ];
     const route = d3.pairs(cities).flatMap(([a, b]) => d3.range(24).map(i => d3.geoInterpolate(a.coord, b.coord)(i / 24)));
     route.push(cities.at(-1).coord);
-    svg.append("path").datum({ type: "Sphere" }).attr("d", path).attr("fill", palette.blueHighlight).attr("fill-opacity", .26).attr("stroke", palette.gray200);
+    svg.append("path").datum({ type: "Sphere" }).attr("d", path).attr("fill", palette.blueHighlight).attr("fill-opacity", 1).attr("stroke", palette.gray200);
     svg.append("g").selectAll("path").data(d3.geoGraticule().step([30, 30]).lines()).join("path")
       .attr("d", path).attr("fill", "none").attr("stroke", palette.gray200).attr("stroke-width", .8);
     const routePath = svg.append("path").datum({ type: "LineString", coordinates: route })
@@ -13010,7 +12978,7 @@
     axisBottom(svg, x, height - margin.bottom, 5);
     axisLeft(svg, y, margin.left, 4);
     const area = d3.area().x(d => x(d.t)).y0(d => y(d.lo)).y1(d => y(d.hi)).curve(d3.curveMonotoneX);
-    const band = svg.append("path").datum(bands).attr("d", area).attr("fill", palette.blueHighlight).attr("fill-opacity", .72);
+    const band = svg.append("path").datum(bands).attr("d", area).attr("fill", palette.blueHighlight).attr("data-opacity-role", "semantic").attr("fill-opacity", .72);
     fadeIn(band, .12, .6);
     const line = key => d3.line().x(d => x(d.t)).y(d => y(d[key])).curve(d3.curveMonotoneX);
     const price = svg.append("path").datum(bands).attr("d", line("price")).attr("fill", "none").attr("stroke", palette.ink).attr("stroke-width", 2.7);
@@ -13059,7 +13027,7 @@
       .attr("cx", d => scales.get(d.xVar)(d.row[d.xVar]))
       .attr("cy", d => size - scales.get(d.yVar)(d.row[d.yVar]))
       .attr("fill", d => colors[d.row.group])
-      .attr("fill-opacity", .7)
+      .attr("data-opacity-role", "semantic").attr("fill-opacity", .7)
       .attr("stroke", "#fff")
       .attr("stroke-width", .8);
     grow(dots, "r", 1, 3.4, .02, .45);
@@ -13194,7 +13162,7 @@
       svg.append("clipPath").attr("id", item.clipId).append("rect").attr("x", item.x).attr("y", 66).attr("width", 216).attr("height", 236).attr("rx", 6);
       svg.append("rect").attr("x", item.x).attr("y", 66).attr("width", 216).attr("height", 236).attr("rx", 6).attr("fill", palette.gray50).attr("stroke", palette.gray200);
       const panel = svg.append("g").attr("clip-path", `url(#${item.clipId})`);
-      panel.append("path").datum(item.outline).attr("d", path).attr("fill", palette.blueHighlight).attr("fill-opacity", .18).attr("stroke", palette.gray300);
+      panel.append("path").datum(item.outline).attr("d", path).attr("fill", palette.blueHighlight).attr("fill-opacity", 1).attr("stroke", palette.gray300);
       appendSchematicLand(panel, path, palette.surface);
       panel.append("g").selectAll("path").data(graticule).join("path").attr("d", path).attr("fill", "none").attr("stroke", palette.gray200).attr("stroke-width", .8);
       const routePath = panel.append("path").datum(route).attr("d", path).attr("fill", "none").attr("stroke", colors[pi]).attr("stroke-width", 3.2);
@@ -13212,7 +13180,7 @@
     const circles = [];
     [-120, -60, 0, 60, 120].forEach(lon => [-50, 0, 50].forEach(lat => circles.push(d3.geoCircle().center([lon, lat]).radius(8)())));
     const marks = svg.append("g").selectAll("path").data(circles).join("path")
-      .attr("d", path).attr("fill", palette.orangeHighlight).attr("fill-opacity", .45).attr("stroke", palette.orange).attr("stroke-width", 2);
+      .attr("d", path).attr("fill", palette.orangeHighlight).attr("fill-opacity", 1).attr("stroke", palette.orange).attr("stroke-width", 2);
     fadeIn(marks, .06, .55);
   }
 
@@ -13273,7 +13241,7 @@
       return [lon, lat];
     });
     const night = { type: "Polygon", coordinates: [[[-180, -90], [180, -90], ...boundary.slice().reverse(), [-180, -90]]] };
-    const nightPath = svg.append("path").datum(night).attr("d", path).attr("fill", palette.ink).attr("fill-opacity", .38);
+    const nightPath = svg.append("path").datum(night).attr("d", path).attr("fill", palette.ink).attr("data-opacity-role", "semantic").attr("fill-opacity", .38);
     fadeIn(nightPath, .12, .55);
     const line = svg.append("path").datum({ type: "LineString", coordinates: boundary }).attr("d", path).attr("fill", "none").attr("stroke", palette.orange).attr("stroke-width", 3.5);
     drawPath(line, .15, 1);
@@ -13488,7 +13456,7 @@
     ];
     svg.append("g").selectAll("circle").data(anchors).join("circle")
       .attr("cx", d => d.x).attr("cy", d => d.y).attr("r", d => d.r)
-      .attr("fill", d => d.c).attr("fill-opacity", .14).attr("stroke", d => d.c).attr("stroke-width", 2.2);
+      .attr("fill", d => d.c).attr("fill-opacity", 1).attr("stroke", d => d.c).attr("stroke-width", 2.2);
     const solution = svg.append("g").selectAll("circle").data(solutions).join("circle")
       .attr("cx", d => d.x).attr("cy", d => d.y).attr("fill", "none").attr("stroke", d => d.c).attr("stroke-width", 2.4).attr("stroke-dasharray", "7 5");
     grow(solution, "r", 5, d => d.r, .1, .9);
@@ -13536,7 +13504,7 @@
     ].map(d => ({ xy: projection([d[0], d[1]]), value: d[2] }));
     const r = d3.scaleSqrt().domain([15, 50]).range([8, 30]);
     const bubbles = svg.append("g").selectAll("circle").data(data).join("circle")
-      .attr("cx", d => d.xy[0]).attr("cy", d => d.xy[1]).attr("fill", palette.blue).attr("fill-opacity", .42).attr("stroke", palette.blue).attr("stroke-width", 2);
+      .attr("cx", d => d.xy[0]).attr("cy", d => d.xy[1]).attr("fill", palette.blue).attr("data-opacity-role", "semantic").attr("fill-opacity", .42).attr("stroke", palette.blue).attr("stroke-width", 2);
     grow(bubbles, "r", 2, d => r(d.value), .08, .65);
     const sizeLegend = svg.append("g").attr("transform", "translate(404,360)");
     [15, 50].forEach((value, index) => {
@@ -13587,7 +13555,7 @@
     const groups = center.append("g").selectAll("path").data(chord.groups).join("path")
       .attr("d", arc).attr("fill", d => colors[d.index]).attr("stroke", "#fff").attr("stroke-width", 1.4);
     fadeIn(groups, .08, .55);
-    const ribbons = center.append("g").attr("fill-opacity", .55).selectAll("path").data(chord).join("path")
+    const ribbons = center.append("g").attr("data-opacity-role", "semantic").attr("fill-opacity", .55).selectAll("path").data(chord).join("path")
       .attr("d", ribbon).attr("fill", d => colors[d.source.index]).attr("stroke", d => colors[d.source.index]).attr("stroke-width", .7);
     fadeIn(ribbons, .16, .75);
     center.selectAll("text").data(chord.groups).join("text")
@@ -13627,7 +13595,7 @@
     const area = d3.radialArea().angle(d => d.angle).innerRadius(42).outerRadius(d => r(d.value)).curve(d3.curveCatmullRomClosed);
     const center = svg.append("g").attr("transform", `translate(${width / 2},${height / 2 + 10})`);
     d3.range(1, 4).forEach(i => center.append("circle").attr("r", 42 + i * 36).attr("fill", "none").attr("stroke", "#e7e7e7"));
-    const mark = center.append("path").datum(data).attr("d", area).attr("fill", palette.blueHighlight).attr("fill-opacity", .58).attr("stroke", palette.blue).attr("stroke-width", 2.8);
+    const mark = center.append("path").datum(data).attr("d", area).attr("fill", palette.blueHighlight).attr("fill-opacity", 1).attr("stroke", palette.blue).attr("stroke-width", 2.8);
     fadeIn(mark, .08, .7);
     drawPath(center.append("path").datum(data).attr("d", d3.lineRadial().angle(d => d.angle).radius(d => r(d.value)).curve(d3.curveCatmullRomClosed)).attr("fill", "none").attr("stroke", palette.blue).attr("stroke-width", 2.1), .1, 1);
   }
@@ -13646,10 +13614,10 @@
     axisBottom(svg, x, y0, 6);
     svg.append("line").attr("x1", 64).attr("x2", width - 56).attr("y1", y0).attr("y2", y0).attr("stroke", palette.line).attr("stroke-width", 1.4);
     const dots = svg.append("g").selectAll("circle").data(nodes).join("circle")
-      .attr("cx", d => d.x).attr("cy", d => d.y).attr("fill", d => d.side === "Current" ? palette.red : palette.blue).attr("fill-opacity", .86);
+      .attr("cx", d => d.x).attr("cy", d => d.y).attr("fill", d => d.side === "Current" ? palette.red : palette.blue).attr("fill-opacity", 1);
     grow(dots, "r", 2, 6.5, .06, .55);
-    svg.append("rect").attr("x", 62).attr("y", y0 - 78).attr("width", width - 124).attr("height", 48).attr("fill", palette.redHighlight).attr("fill-opacity", .18).lower();
-    svg.append("rect").attr("x", 62).attr("y", y0 + 30).attr("width", width - 124).attr("height", 64).attr("fill", palette.blueHighlight).attr("fill-opacity", .18).lower();
+    svg.append("rect").attr("x", 62).attr("y", y0 - 78).attr("width", width - 124).attr("height", 48).attr("fill", palette.redHighlight).attr("fill-opacity", 1).lower();
+    svg.append("rect").attr("x", 62).attr("y", y0 + 30).attr("width", width - 124).attr("height", 64).attr("fill", palette.blueHighlight).attr("fill-opacity", 1).lower();
     svg.append("text").attr("class", "mark-label").attr("fill", palette.red).attr("x", 72).attr("y", y0 - 72).text("Current");
     svg.append("text").attr("class", "mark-label").attr("fill", palette.blue).attr("x", 72).attr("y", y0 + 88).text("Prior");
   }
@@ -13729,7 +13697,7 @@
     const byId = new Map(simNodes.map(d => [d.id, d]));
     const circles = svg.append("g").selectAll("circle").data(nodes).join("circle")
       .attr("cx", d => byId.get(d.id).x).attr("cy", d => byId.get(d.id).y).attr("r", d => d.r)
-      .attr("fill", (d, i) => colors[i % 4]).attr("fill-opacity", .82).attr("stroke", d => d.r > 10 ? palette.gray700 : "#fff").attr("stroke-width", 1.4);
+      .attr("fill", (d, i) => colors[i % 4]).attr("fill-opacity", 1).attr("stroke", d => d.r > 10 ? palette.gray700 : "#fff").attr("stroke-width", 1.4);
     circles.each(function (d, i) {
       const end = byId.get(d.id);
       const node = d3.select(this);
@@ -13783,7 +13751,7 @@
     axisBottom(svg, x, height - margin.bottom, 6);
     axisLeft(svg, y, margin.left, 5);
     const area = d3.area().defined(d => d.value != null).x(d => x(d.t)).y0(y(0)).y1(d => y(d.value)).curve(d3.curveMonotoneX);
-    const fill = svg.append("path").datum(data).attr("d", area).attr("fill", palette.greenHighlight).attr("fill-opacity", .78).attr("stroke", palette.green).attr("stroke-width", 3);
+    const fill = svg.append("path").datum(data).attr("d", area).attr("fill", palette.greenHighlight).attr("fill-opacity", 1).attr("stroke", palette.green).attr("stroke-width", 3);
     fadeIn(fill, .08, .65);
     const line = d3.line().defined(d => d.value != null).x(d => x(d.t)).y(d => y(d.value)).curve(d3.curveMonotoneX);
     drawPath(svg.append("path").datum(data).attr("d", line).attr("fill", "none").attr("stroke", palette.green).attr("stroke-width", 2.6), .12, .9);
@@ -13856,7 +13824,7 @@
       return [cx + Math.cos(a) * r * 1.35, cy + Math.sin(a) * r * .78];
     });
     const line = d3.line().curve(d3.curveLinearClosed);
-    const path = svg.append("path").attr("d", line(end)).attr("fill", palette.blue).attr("fill-opacity", .26).attr("stroke", palette.blue).attr("stroke-width", 3);
+    const path = svg.append("path").attr("d", line(end)).attr("fill", palette.blue).attr("fill-opacity", 1).attr("stroke", palette.blue).attr("stroke-width", 3);
     path.append("animate").attr("attributeName", "d").attr("from", line(start)).attr("to", line(end)).attr("dur", "1.35s").attr("begin", ".08s").attr("fill", "freeze");
     const dots = svg.append("g").selectAll("circle").data(end).join("circle").attr("cx", d => d[0]).attr("cy", d => d[1]).attr("fill", palette.red);
     grow(dots, "r", 2, 5.5, .25, .5);
@@ -13910,7 +13878,7 @@
       { label: "Risk", from: 61, to: 29, c: palette.red, fill: palette.redHighlight }
     ];
     const group = svg.append("g").selectAll("g").data(metrics).join("g").attr("transform", (d, i) => `translate(${122 + i * 158},${height / 2})`);
-    group.append("circle").attr("r", 56).attr("fill", d => d.fill).attr("fill-opacity", .78).attr("stroke", d => d.c).attr("stroke-width", 2.8);
+    group.append("circle").attr("r", 56).attr("fill", d => d.fill).attr("fill-opacity", 1).attr("stroke", d => d.c).attr("stroke-width", 2.8);
     const text = group.append("text").attr("text-anchor", "middle").attr("dy", ".18em").attr("font-size", 24).attr("font-weight", 800).attr("fill", palette.ink).text(d => d.to);
     text.each(function (d, i) {
       const node = d3.select(this);
@@ -13931,7 +13899,7 @@
     axisBottom(svg, x, 316, 6);
     const brush = { x0: x(24), x1: x(64), y0: 82, y1: 296 };
     const rect = svg.append("rect").attr("x", brush.x0).attr("y", brush.y0).attr("width", brush.x1 - brush.x0).attr("height", brush.y1 - brush.y0)
-      .attr("fill", "#cdf3ff").attr("fill-opacity", .42).attr("stroke", palette.blue).attr("stroke-width", 1.8);
+      .attr("fill", "#cdf3ff").attr("fill-opacity", 1).attr("stroke", palette.blue).attr("stroke-width", 1.8);
     rect.append("animate").attr("attributeName", "x").attr("from", x(16)).attr("to", brush.x0).attr("dur", ".75s").attr("begin", ".12s").attr("fill", "freeze");
     const handles = svg.append("g").selectAll("rect").data([brush.x0, brush.x1]).join("rect")
       .attr("x", d => d - 5).attr("y", brush.y0 - 6).attr("width", 10).attr("height", brush.y1 - brush.y0 + 12).attr("rx", 5)
@@ -13945,11 +13913,11 @@
     const y = d3.scaleLinear().domain([0, 100]).range([302, 72]);
     const data = d3.range(12).map(i => ({ i, value: 28 + ((i * 19) % 62) }));
     svg.append("g").selectAll("rect.bar").data(data).join("rect")
-      .attr("class", "bar").attr("x", d => x(String(d.i))).attr("y", d => y(d.value)).attr("width", x.bandwidth()).attr("height", d => y(0) - y(d.value)).attr("fill", palette.green).attr("fill-opacity", .68);
+      .attr("class", "bar").attr("x", d => x(String(d.i))).attr("y", d => y(d.value)).attr("width", x.bandwidth()).attr("height", d => y(0) - y(d.value)).attr("fill", palette.green).attr("fill-opacity", 1);
     axisBottom(svg, d3.scaleLinear().domain([0, 11]).range([62, width - 54]), 322, 6);
     const loose = { x: x("2") - 13, w: x("7") - x("2") + x.bandwidth() + 26 };
     const snapped = { x: x("2"), w: x("7") - x("2") + x.bandwidth() };
-    const selection = svg.append("rect").attr("x", snapped.x).attr("y", 62).attr("width", snapped.w).attr("height", 242).attr("fill", palette.yellowHighlight).attr("fill-opacity", .65).attr("stroke", palette.yellowHover).attr("stroke-width", 2);
+    const selection = svg.append("rect").attr("x", snapped.x).attr("y", 62).attr("width", snapped.w).attr("height", 242).attr("fill", palette.yellowHighlight).attr("fill-opacity", 1).attr("stroke", palette.yellowHover).attr("stroke-width", 2);
     selection.append("animate").attr("attributeName", "x").attr("from", loose.x).attr("to", snapped.x).attr("dur", ".8s").attr("begin", ".12s").attr("fill", "freeze");
     selection.append("animate").attr("attributeName", "width").attr("from", loose.w).attr("to", snapped.w).attr("dur", ".8s").attr("begin", ".12s").attr("fill", "freeze");
     svg.append("text").attr("class", "mark-label").attr("x", snapped.x + snapped.w / 2).attr("y", 52).attr("text-anchor", "middle").text("snaps to bins 2-7");
@@ -13964,10 +13932,10 @@
     svg.append("g").selectAll("line").data(groups).join("line").attr("x1", d => x(d)).attr("x2", d => x(d)).attr("y1", 72).attr("y2", 304).attr("stroke", "#e7e7e7");
     const dots = svg.append("g").selectAll("circle").data(data).join("circle")
       .attr("cx", d => x(d.group) + (((d.value * 7) % 17) - 8)).attr("cy", d => y(d.value))
-      .attr("fill", d => d.selected ? palette.red : palette.blue).attr("fill-opacity", d => d.selected ? .9 : .42);
+      .attr("fill", d => d.selected ? palette.red : palette.blue).attr("data-opacity-role", "semantic").attr("fill-opacity", d => d.selected ? .9 : .42);
     grow(dots, "r", 2, 4.6, .05, .45);
     const x0 = x("C") - 32, x1 = x("E") + 32;
-    const brush = svg.append("rect").attr("x", x0).attr("y", 62).attr("width", x1 - x0).attr("height", 254).attr("fill", "#ffccd5").attr("fill-opacity", .28).attr("stroke", palette.red).attr("stroke-width", 2);
+    const brush = svg.append("rect").attr("x", x0).attr("y", 62).attr("width", x1 - x0).attr("height", 254).attr("fill", "#ffccd5").attr("fill-opacity", 1).attr("stroke", palette.red).attr("stroke-width", 2);
     fadeIn(brush, .14, .45);
     svg.selectAll(".ordinal-label").data(groups).join("text").attr("class", "mark-label").attr("x", d => x(d)).attr("y", 336).attr("text-anchor", "middle").text(d => d);
   }
@@ -14004,10 +13972,10 @@
     const y1 = d3.scaleLinear().domain([focus.y0, focus.y1]).range([right.y + right.h, right.y]);
     svg.append("rect").attr("x", left.x).attr("y", left.y).attr("width", left.w).attr("height", left.h).attr("fill", "#ffffff").attr("stroke", palette.line);
     svg.append("rect").attr("x", right.x).attr("y", right.y).attr("width", right.w).attr("height", right.h).attr("fill", "#ffffff").attr("stroke", palette.line);
-    svg.append("g").selectAll("circle.context").data(data).join("circle").attr("class", "context").attr("cx", d => x0(d.x)).attr("cy", d => y0(d.y)).attr("r", 3).attr("fill", palette.blue).attr("fill-opacity", .42);
-    svg.append("rect").attr("x", x0(focus.x0)).attr("y", y0(focus.y1)).attr("width", x0(focus.x1) - x0(focus.x0)).attr("height", y0(focus.y0) - y0(focus.y1)).attr("fill", "#cdf3ff").attr("fill-opacity", .28).attr("stroke", palette.blue).attr("stroke-width", 2);
+    svg.append("g").selectAll("circle.context").data(data).join("circle").attr("class", "context").attr("cx", d => x0(d.x)).attr("cy", d => y0(d.y)).attr("r", 3).attr("fill", palette.blue).attr("fill-opacity", 1);
+    svg.append("rect").attr("x", x0(focus.x0)).attr("y", y0(focus.y1)).attr("width", x0(focus.x1) - x0(focus.x0)).attr("height", y0(focus.y0) - y0(focus.y1)).attr("fill", "#cdf3ff").attr("fill-opacity", 1).attr("stroke", palette.blue).attr("stroke-width", 2);
     const detail = data.filter(d => d.x >= focus.x0 && d.x <= focus.x1 && d.y >= focus.y0 && d.y <= focus.y1);
-    const dots = svg.append("g").selectAll("circle.detail").data(detail).join("circle").attr("class", "detail").attr("cx", d => x1(d.x)).attr("cy", d => y1(d.y)).attr("fill", palette.red).attr("fill-opacity", .82);
+    const dots = svg.append("g").selectAll("circle.detail").data(detail).join("circle").attr("class", "detail").attr("cx", d => x1(d.x)).attr("cy", d => y1(d.y)).attr("fill", palette.red).attr("fill-opacity", 1);
     grow(dots, "r", 2, 5, .12, .45);
     svg.append("text").attr("class", "mark-label").attr("x", left.x).attr("y", 48).text("context");
   }
@@ -14188,7 +14156,7 @@
       .attr("cy", dot => dot.y)
       .attr("r", dot => dot.startRadius / 2)
       .attr("fill", palette.surface)
-      .attr("fill-opacity", .94)
+      .attr("fill-opacity", 1)
       .attr("stroke", dot => dot.id === pinned.id ? palette.red : "none")
       .attr("stroke-width", dot => dot.id === pinned.id ? 1.4 : 0)
       .attr("vector-effect", "non-scaling-stroke")
@@ -14289,7 +14257,7 @@
     axisLeft(svg, y, margin.left, 4);
     const dots = svg.append("g").selectAll("circle").data(data).join("circle")
       .attr("cx", d => x(d.temp)).attr("cy", d => y(d.lum)).attr("fill", d => d.type === "hot" ? "#cdf3ff" : d.type === "cool" ? "#ffe5cc" : "#fff4cc")
-      .attr("stroke", d => d.type === "hot" ? palette.blue : d.type === "cool" ? palette.orange : palette.gold).attr("stroke-width", .8).attr("fill-opacity", .78);
+      .attr("stroke", d => d.type === "hot" ? palette.blue : d.type === "cool" ? palette.orange : palette.gold).attr("stroke-width", .8).attr("fill-opacity", 1);
     grow(dots, "r", 1, d => d.type === "main" ? 3.5 : 5.5, .02, .5);
   }
 
@@ -14323,9 +14291,10 @@
       { id: "E", points: [[266, 214], [442, 232], [418, 342], [278, 326]], v: 1.08, c: palette.red }
     ];
     const line = d3.line().curve(d3.curveLinearClosed);
-    regions.forEach(region => {
+    regions.forEach((region, index) => {
+      region.c = window.D3SolidStyle.categoryStyle(index, activeColorset, palette.surface).fill;
       const cx = d3.mean(region.points, d => d[0]), cy = d3.mean(region.points, d => d[1]);
-      const path = svg.append("path").attr("d", line(region.points)).attr("fill", region.c).attr("fill-opacity", .32 + region.v * .18).attr("stroke", region.c).attr("stroke-width", 2)
+      const path = svg.append("path").attr("d", line(region.points)).attr("fill", region.c).attr("fill-opacity", 1).attr("stroke", "none")
         .attr("transform-origin", `${cx}px ${cy}px`).attr("transform", `scale(${region.v})`);
       path.append("animateTransform").attr("attributeName", "transform").attr("type", "scale").attr("from", "1").attr("to", region.v).attr("dur", ".9s").attr("begin", ".08s").attr("fill", "freeze");
       svg.append("text").attr("class", "mark-label").attr("x", cx).attr("y", cy).attr("text-anchor", "middle").text(region.id);
@@ -14352,7 +14321,7 @@
       return [d.x + Math.cos(a) * 13, d.y + Math.sin(a) * 13];
     });
     const cells = svg.append("g").selectAll("path").data(bins).join("path")
-      .attr("d", d => `${d3.line()(hex(d))}Z`).attr("fill", d => color(d.count)).attr("fill-opacity", .78).attr("stroke", "#fff").attr("stroke-width", 1.2);
+      .attr("d", d => `${d3.line()(hex(d))}Z`).attr("fill", d => color(d.count)).attr("fill-opacity", 1).attr("stroke", "#fff").attr("stroke-width", 1.2);
     fadeIn(cells, .08, .6);
     const legend = svg.append("g").attr("transform", "translate(64,370)");
     ramps.heat.forEach((colorValue, index) => legend.append("rect").attr("x", index * 38).attr("width", 38).attr("height", 12).attr("fill", colorValue));
@@ -14408,9 +14377,9 @@
       }, points);
     }
     const line = d3.line().curve(d3.curveLinearClosed);
-    svg.append("path").attr("d", line(subject)).attr("fill", palette.blueHighlight).attr("fill-opacity", .64).attr("stroke", palette.blue).attr("stroke-width", 2).attr("stroke-dasharray", "6 5");
+    svg.append("path").attr("d", line(subject)).attr("fill", palette.blueHighlight).attr("data-opacity-role", "semantic").attr("fill-opacity", .64).attr("stroke", palette.blue).attr("stroke-width", 2).attr("stroke-dasharray", "6 5");
     svg.append("rect").attr("x", clip.x0).attr("y", clip.y0).attr("width", clip.x1 - clip.x0).attr("height", clip.y1 - clip.y0).attr("fill", "none").attr("stroke", palette.ink).attr("stroke-width", 2);
-    const clipped = svg.append("path").attr("d", line(clipPolygon(subject))).attr("fill", palette.redHighlight).attr("fill-opacity", .84).attr("stroke", palette.red).attr("stroke-width", 3);
+    const clipped = svg.append("path").attr("d", line(clipPolygon(subject))).attr("fill", palette.redHighlight).attr("data-opacity-role", "semantic").attr("fill-opacity", .84).attr("stroke", palette.red).attr("stroke-width", 3);
     fadeIn(clipped, .18, .65);
     const subjectDots = svg.append("g").selectAll("circle.subject-point").data(subject).join("circle")
       .attr("class", "subject-point").attr("cx", d => d[0]).attr("cy", d => d[1]).attr("fill", palette.blue).attr("stroke", "#fff").attr("stroke-width", 1.5);
@@ -14436,7 +14405,7 @@
       const overlaps = kept.some(k => !(box.x1 < k.box.x0 || box.x0 > k.box.x1 || box.y1 < k.box.y0 || box.y0 > k.box.y1));
       if (!overlaps) kept.push({ ...d, box });
     });
-    const dots = svg.append("g").selectAll("circle").data(raw).join("circle").attr("cx", d => d.x).attr("cy", d => d.y).attr("fill", palette.blue).attr("fill-opacity", .65);
+    const dots = svg.append("g").selectAll("circle").data(raw).join("circle").attr("cx", d => d.x).attr("cy", d => d.y).attr("fill", palette.blue).attr("data-opacity-role", "semantic").attr("fill-opacity", .65);
     grow(dots, "r", 1.5, 3.5, .04, .45);
     const labels = svg.append("g").selectAll("g").data(kept).join("g").attr("transform", d => `translate(${d.x},${d.y})`);
     labels.append("line").attr("x1", 4).attr("x2", 10).attr("y1", -3).attr("y2", -10).attr("stroke", palette.gray400);
@@ -14475,13 +14444,13 @@
         const x = d3.scaleLinear().domain(extent(col)).range([10, size - 10]);
         const bars = svg.append("g").selectAll("rect").data(bins).join("rect")
           .attr("x", d => x0 + x(d.x0)).attr("width", d => Math.max(1, x(d.x1) - x(d.x0) - 1))
-          .attr("y", d => y0 + y(d.length)).attr("height", d => size - 10 - y(d.length)).attr("fill", palette.blue).attr("fill-opacity", .58);
+          .attr("y", d => y0 + y(d.length)).attr("height", d => size - 10 - y(d.length)).attr("fill", palette.blue).attr("fill-opacity", 1);
         fadeIn(bars, .05, .35);
       } else if (r > c) {
         const xs = scales.get(col), ys = scales.get(row);
         const dots = svg.append("g").selectAll("circle").data(data.filter((_, i) => i % 3 === 0)).join("circle")
           .attr("cx", d => x0 + xs(d[col])).attr("cy", d => y0 + size - ys(d[row]))
-          .attr("fill", palette.purple).attr("fill-opacity", .75);
+          .attr("fill", palette.purple).attr("fill-opacity", 1);
         grow(dots, "r", 1.2, 2.5, .03, .35);
       } else {
         const corr = pearson(col, row);
@@ -14599,7 +14568,7 @@
     const svg = prepareSvg("antimeridian-cutting", "Antimeridian cutting", "A route splits cleanly at the dateline instead of crossing the map.");
     const projection = d3.geoEquirectangular().fitExtent([[52, 58], [508, 334]], { type: "Sphere" });
     const path = d3.geoPath(projection);
-    svg.append("path").datum({ type: "Sphere" }).attr("d", path).attr("fill", palette.blueHighlight).attr("fill-opacity", .18).attr("stroke", palette.line);
+    svg.append("path").datum({ type: "Sphere" }).attr("d", path).attr("fill", palette.blueHighlight).attr("fill-opacity", 1).attr("stroke", palette.line);
     appendSchematicLand(svg, path);
     svg.append("g").selectAll("path").data(d3.geoGraticule().step([30, 30]).lines()).join("path")
       .attr("d", path).attr("fill", "none").attr("stroke", palette.gray200).attr("stroke-width", .8);
@@ -14629,7 +14598,7 @@
     svg.append("path").datum(coarse).attr("d", line).attr("fill", "none").attr("stroke", palette.gray600).attr("stroke-width", 2).attr("stroke-dasharray", "6 5");
     const sampled = svg.append("path").datum(dense).attr("d", line).attr("fill", "none").attr("stroke", palette.orange).attr("stroke-width", 3);
     drawPath(sampled, .08, .9);
-    const points = svg.append("g").selectAll("circle").data(dense).join("circle").attr("cx", d => d[0]).attr("cy", d => d[1]).attr("fill", palette.red).attr("fill-opacity", .82).attr("stroke", "#fff").attr("stroke-width", 1);
+    const points = svg.append("g").selectAll("circle").data(dense).join("circle").attr("cx", d => d[0]).attr("cy", d => d[1]).attr("fill", palette.red).attr("fill-opacity", 1).attr("stroke", "#fff").attr("stroke-width", 1);
     grow(points, "r", 1.5, 3.5, .12, .45);
   }
 
@@ -14662,11 +14631,11 @@
       { r: 58, c: palette.greenHighlight, stroke: palette.green, label: "nadir" }
     ];
     rings.forEach((ring, i) => {
-      const circle = svg.append("circle").attr("cx", cx).attr("cy", cy).attr("fill", ring.c).attr("fill-opacity", .34).attr("stroke", ring.stroke).attr("stroke-width", 2);
+      const circle = svg.append("circle").attr("cx", cx).attr("cy", cy).attr("fill", ring.c).attr("fill-opacity", 1).attr("stroke", ring.stroke).attr("stroke-width", 2);
       grow(circle, "r", 4, ring.r, .08 + i * .08, .55);
       svg.append("text").attr("class", "mark-label").attr("x", cx + ring.r * .7).attr("y", cy - ring.r * .58).text(ring.label);
     });
-    const beam = svg.append("path").attr("d", `M${cx},${cy - 186}L${cx - 58},${cy - 58}L${cx + 58},${cy - 58}Z`).attr("fill", palette.redHighlight).attr("fill-opacity", .36).attr("stroke", palette.red).attr("stroke-width", 2);
+    const beam = svg.append("path").attr("d", `M${cx},${cy - 186}L${cx - 58},${cy - 58}L${cx + 58},${cy - 58}Z`).attr("fill", palette.redHighlight).attr("fill-opacity", 1).attr("stroke", palette.red).attr("stroke-width", 2);
     fadeIn(beam, .2, .55);
     svg.append("circle").attr("cx", cx).attr("cy", cy - 186).attr("r", 8).attr("fill", palette.red).attr("stroke", "#fff").attr("stroke-width", 2);
   }
@@ -14687,7 +14656,7 @@
       grow(orbits, "r", 4, d => d, .06 + si * .04, .5);
       const planets = svg.append("g").selectAll("circle.planet").data(system.planets).join("circle")
         .attr("class", "planet").attr("cx", d => system.x + d).attr("cy", (d, i) => cy + Math.sin(i * 1.7) * 8)
-        .attr("fill", systemColor).attr("fill-opacity", .88).attr("stroke", "#fff").attr("stroke-width", 1.3);
+        .attr("fill", systemColor).attr("fill-opacity", 1).attr("stroke", "#fff").attr("stroke-width", 1.3);
       grow(planets, "r", 2, (d, i) => 4 + (i % 3) * 1.8, .12 + si * .04, .45);
       svg.append("text").attr("class", "mark-label").attr("x", system.x).attr("y", 348).attr("text-anchor", "middle").text(system.name);
     });

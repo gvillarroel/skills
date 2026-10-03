@@ -52,7 +52,7 @@ function renderResidualRmsnormStream() {
         group.append("circle").attr("r", 18).attr("fill", palette.redHighlight).attr("stroke", palette.red).attr("stroke-width", 2.2);
         group.append("text").attr("class", "mark-label").attr("x", 0).attr("y", 6).attr("text-anchor", "middle").attr("font-size", 20).text("+");
       } else {
-        group.append("rect").attr("x", -35).attr("y", -18).attr("width", 70).attr("height", 36).attr("rx", 8).attr("fill", stage.color).attr("fill-opacity", .8).attr("stroke", palette.surface);
+        group.append("rect").attr("x", -35).attr("y", -18).attr("width", 70).attr("height", 36).attr("rx", 8).attr("fill", stage.color).attr("fill-opacity", 1).attr("stroke", palette.surface);
         group.append("text").attr("class", "reverse-label").attr("x", 0).attr("y", 5).attr("text-anchor", "middle").attr("font-weight", 800).style("font-size", stage.label === "attention" || stage.label === "RMSNorm" ? "9px" : "11px").text(stage.label);
       }
       fadeIn(group, .12 + i * .1, .28);
@@ -80,7 +80,7 @@ function renderResidualRmsnormStream() {
         group.append("rect").attr("x", i * 17).attr("y", -h).attr("width", 12).attr("height", h).attr("rx", 3).attr("fill", block.color).attr("fill-opacity", blockIndex ? .3 : .62);
       });
       block.after.forEach((h, i) => {
-        const bar = group.append("rect").attr("x", i * 17).attr("y", -h).attr("width", 12).attr("height", h).attr("rx", 3).attr("fill", block.color).attr("fill-opacity", .76);
+        const bar = group.append("rect").attr("x", i * 17).attr("y", -h).attr("width", 12).attr("height", h).attr("rx", 3).attr("fill", block.color).attr("fill-opacity", 1);
         if (blockIndex) bar.append("animate").attr("attributeName", "height").attr("values", `${block.before[i]};${h}`).attr("dur", ".45s").attr("begin", `${1.15 + i * .06}s`).attr("fill", "freeze");
       });
     });

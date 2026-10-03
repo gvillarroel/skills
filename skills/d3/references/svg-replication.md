@@ -146,7 +146,7 @@ const palette = {
 };
 ```
 
-Prefer the primary palette for categories. Use highlights for low-emphasis fills, selection areas, and background bands. Reserve red for risk, pressure, selected states, negative deltas, or final-alert values.
+Prefer borderless base solid fills for categories. Use highlights only after usable solid choices, or for a meaningful quantitative band. Reserve red for risk, pressure, selected states, negative deltas, or final-alert values.
 
 ## Base SVG Skeleton
 

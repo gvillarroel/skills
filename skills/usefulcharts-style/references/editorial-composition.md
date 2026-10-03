@@ -5,7 +5,7 @@ Use this reference to match the visual family, not just its palette. The first g
 ## Build the hierarchy in four scales
 
 1. **Page:** a 2:3 silhouette for dense material, approximately 4–5% height for a strong condensed title, a continuous ivory field, narrow perimeter, and compact provenance. Avoid a large app-like toolbar or explanatory panel inside the printable field.
-2. **Families:** allocate width to actual branch complexity. Origins may be central, but subsequent branches should follow their own history. Put white outlined family labels near the relevant branch, not in a rigid legend row divorced from the graph. Schematic positions may be uneven; numeric time positions may not.
+2. **Families:** allocate width to actual branch complexity. Origins may be central, but subsequent branches should follow their own history. Put solid borderless family labels near the relevant branch, not in a rigid legend row divorced from the graph. Schematic positions may be uneven; numeric time positions may not.
 3. **Entities:** use several purposeful treatments. Colored cards mark principal actors; smaller unboxed names supply supporting lineage; white image/emblem panels distinguish selected landmarks; pills identify families or movements. A card's dimensions should follow its label and importance rather than one universal box size. In dense institutional histories, keep dates above the colored name panel and contextual captions below it; the paper around these details helps separate the reading levels.
 4. **Detail:** subordinate dates, explanatory fragments, image credits, uncertain links, and fine context reward close reading. At whole-page scale these create texture; at 100% they must remain legible and correct.
 
@@ -25,7 +25,7 @@ Treat succession, division, and political union as different source relationship
 
 ## Color and artwork
 
-Use clear coral, sky blue, gold, sage, lilac, orange, and pink family colors, with a neutral precursor color when meaningful. Carry the same category through nodes and connectors. Black or near-black text usually fits these light fills; measure contrast. Keep color area varied: a mixture of colored cards and unboxed names reads differently from an all-box diagram.
+Assign family colors from the chosen colorset solid sequence, including a neutral precursor when meaningful. Carry the same category through nodes and meaningful connectors. Use borderless fills and pure black or white text selected by maximum contrast on that fill. Keep color area varied: a mixture of colored cards and unboxed names reads differently from an all-box diagram.
 
 The renderer includes original vector emblems, a public-domain Natural Earth locator map, and small public-domain museum portrait/object collections. Map category assignments must be supplied; the renderer does not assert geographical prevalence. Museum samples are decorative resources for synthetic demonstrations. For a factual genealogy, use correctly identified likenesses with verified provenance; never attach a convenient historical face to the wrong real person. For factual timelines, match an object's actual date and provenance rather than implying it belongs to an unrelated event.
 

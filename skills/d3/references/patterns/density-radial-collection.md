@@ -211,7 +211,7 @@ function renderRadialArea() {
     const area = d3.radialArea().angle(d => d.angle).innerRadius(42).outerRadius(d => r(d.value)).curve(d3.curveCatmullRomClosed);
     const center = svg.append("g").attr("transform", `translate(${width / 2},${height / 2 + 10})`);
     d3.range(1, 4).forEach(i => center.append("circle").attr("r", 42 + i * 36).attr("fill", "none").attr("stroke", "#e7e7e7"));
-    const mark = center.append("path").datum(data).attr("d", area).attr("fill", palette.blueHighlight).attr("fill-opacity", .58).attr("stroke", palette.blue).attr("stroke-width", 2.8);
+    const mark = center.append("path").datum(data).attr("d", area).attr("fill", palette.blueHighlight).attr("fill-opacity", 1).attr("stroke", palette.blue).attr("stroke-width", 2.8);
     fadeIn(mark, .08, .7);
     drawPath(center.append("path").datum(data).attr("d", d3.lineRadial().angle(d => d.angle).radius(d => r(d.value)).curve(d3.curveCatmullRomClosed)).attr("fill", "none").attr("stroke", palette.blue).attr("stroke-width", 2.1), .1, 1);
   }

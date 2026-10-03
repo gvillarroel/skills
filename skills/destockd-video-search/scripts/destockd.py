@@ -171,13 +171,13 @@ def gallery(document, path):
     output = '''<!doctype html><html lang="en" data-colorset="colorset1"><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Destockd video options</title><style>
-body{font:16px/1.5 system-ui,sans-serif;background:#f7f7f7;color:#333e48;margin:0;padding:24px}
+body{font:16px/1.5 system-ui,sans-serif;background:#f7f7f7;color:#000000;margin:0;padding:24px}
 main{max-width:1200px;margin:auto}header{margin-bottom:28px}h1{font-size:32px;margin:0}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:20px}
-article{background:#ffffff;border:1px solid #cfcfcf;padding:18px;border-radius:12px;overflow-wrap:anywhere}
+article{background:#ffffff;border:0;padding:18px;border-radius:12px;overflow-wrap:anywhere}
 video,img,.missing-preview{display:block;width:100%;aspect-ratio:4/3;object-fit:contain;background:#e7e7e7}
 .missing-preview{display:grid;place-items:center;padding:16px;text-align:center;box-sizing:border-box}
-h2{font-size:19px}h3{font-size:17px}a{color:#9e1b32}code{font-size:13px}p{color:#333e48}
+h2{font-size:19px}h3{font-size:17px}a{color:#9e1b32}code{font-size:13px}p{color:#000000}
 a:focus-visible{outline:2px solid #9e1b32;outline-offset:3px}
 </style><main><header><h1>Destockd video options</h1>
 <p>Preview candidates, then use the saved option number to request a download.

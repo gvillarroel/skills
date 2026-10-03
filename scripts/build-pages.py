@@ -450,8 +450,8 @@ def write_index() -> None:
       color-scheme: light;
       --page: #f7f7f7;
       --surface: #ffffff;
-      --ink: #333e48;
-      --muted: #4f4f4f;
+      --ink: #000000;
+      --muted: #000000;
       --line: #cfcfcf;
       --red: #9e1b32;
       --blue: #007298;
@@ -467,7 +467,7 @@ def write_index() -> None:
       font: 15px/1.45 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }}
     header {{
-      border-bottom: 1px solid var(--line);
+      border-bottom: 0;
       background: var(--surface);
     }}
     .wrap {{
@@ -503,7 +503,7 @@ def write_index() -> None:
       white-space: nowrap;
     }}
     .pill {{
-      border: 1px solid var(--line);
+      border: 0;
       border-radius: 999px;
       background: #fff;
       padding: 6px 10px;
@@ -521,24 +521,23 @@ def write_index() -> None:
       display: grid;
       align-content: start;
       gap: 10px;
-      border: 1px solid var(--line);
+      border: 0;
       border-radius: 8px;
       background: var(--surface);
       color: inherit;
       padding: 18px;
       text-decoration: none;
-      box-shadow: 0 8px 20px rgba(51, 62, 72, .06);
+      box-shadow: none;
     }}
     .card:hover {{
-      border-color: #007298;
-      box-shadow: 0 12px 28px rgba(51, 62, 72, .10);
+      background: #e7e7e7;
     }}
     a:focus-visible {{ outline: 2px solid #9e1b32; outline-offset: 3px; }}
     .kind {{
       width: max-content;
       border-radius: 999px;
-      background: #cdf3ff;
-      color: #004d66;
+      background: #007298;
+      color: #ffffff;
       padding: 4px 9px;
       font-size: 12px;
       font-weight: 700;
@@ -551,7 +550,7 @@ def write_index() -> None:
     }}
     .card code {{
       width: max-content;
-      border: 1px solid var(--line);
+      border: 0;
       border-radius: 6px;
       background: #f7f7f7;
       color: var(--muted);

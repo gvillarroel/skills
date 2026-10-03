@@ -185,7 +185,9 @@ Keep exact shared values canonical in the compact brief and bind the same value 
 
 The validator checks the declared canonical value token on each bound mark and checks that its `data-role` retains a declared non-color cue. Two distinct identities may share a color only when their non-color cues remain disjoint; they must never share the complete color/non-color signature. Unit conversions and rate/amount forms may be aliases when the rationale makes the semantic relationship explicit.
 
-Keep these cues stable while geometry changes by asset. Salary may be a bar length, waterfall source, and projection input, but its accent, unit, and label identity should remain recognizable. Use a non-color cue for important concepts. Focus should add outline, halo, weight, or contrast rather than silently changing semantic color.
+Keep these cues stable while geometry changes by asset. Salary may be a bar length, waterfall source, and projection input, but its accent, unit, and label identity should remain recognizable. Use a non-color cue for important concepts. Focus should start with weight, scale or contrast while preserving semantic
+color. Use a narrow keyboard focus indicator when needed; decorative outline
+variants begin only after full usable solid palette capacity is exhausted.
 
 In navigable-world mode, require at least one canonical source to recur in materially different encodings across two distant districts. This proves that synchronized identity survives spatial separation rather than only neighboring modules. Keep its color token, non-color cue, label vocabulary, unit, and semantic direction stable at world, district, and module scales.
 

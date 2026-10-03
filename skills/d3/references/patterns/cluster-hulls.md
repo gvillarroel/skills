@@ -37,7 +37,7 @@ function renderClusterHulls() {
       svg.append("path")
         .attr("d", hull ? `M${hull.join("L")}Z` : "")
         .attr("fill", cluster.color)
-        .attr("fill-opacity", .16)
+        .attr("data-opacity-role", "semantic").attr("fill-opacity", .16)
         .attr("stroke", cluster.color)
         .attr("stroke-width", 2);
     });

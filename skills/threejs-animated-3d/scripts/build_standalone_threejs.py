@@ -77,6 +77,8 @@ def build(output: Path, *, force: bool, colorset: str = "colorset1", density: st
     html = template.replace(RUNTIME_MARKER, inline_runtime())
     html = html.replace("__COLORSET__", colorset).replace("__DENSITY__", density).replace("__TITLE__", escape(title))
     html = html.replace("__TOKEN_COUNT__", str(token_count))
+    palette_contract = json.loads((SKILL_ROOT / "assets/palettes/colorsets.json").read_text(encoding="utf-8"))
+    html = html.replace("__PALETTES__", json.dumps(palette_contract["colorsets"], separators=(",", ":")))
     if RUNTIME_MARKER in html or 'import * as THREE from "./skills/' in html:
         raise SystemExit("Standalone HTML still contains a filesystem-relative Three.js vendor import.")
 

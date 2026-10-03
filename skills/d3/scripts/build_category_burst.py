@@ -11,8 +11,9 @@ from __future__ import annotations
 import argparse
 import html
 import math
+import json
 from pathlib import Path
-from colorset_adapter import colorset_output
+from colorset_adapter import adapt_artifact, category_style, CONTRACT
 
 
 WIDTH = 560
@@ -102,7 +103,7 @@ def link_markup(spoke: dict[str, float | int | str]) -> str:
     delay = 0.52 + int(spoke["index"]) * 0.07
     duration = 1.1
     total = delay + duration
-    color = PALETTE[str(spoke["color"])]
+    color = PALETTE.get(str(spoke["color"]), str(spoke["color"]))
     return f"""
       <path class="category-burst-link" data-subcategory-id="{html.escape(str(spoke['id']))}" d="{path_for_spoke(spoke)}"
         fill="none" stroke="{color}" stroke-width="2.2" stroke-opacity=".68" stroke-linecap="round"
@@ -130,8 +131,7 @@ def node_markup(spoke: dict[str, float | int | str]) -> str:
     label_delay = delay + 1.1
     label_dur = 0.42
     label_total = label_delay + label_dur
-    color = PALETTE[str(spoke["color"])]
-    fill = PALETTE[str(spoke["fill"])]
+    fill = PALETTE.get(str(spoke["fill"]), str(spoke["fill"]))
     label = html.escape(str(spoke["label"]))
     return f"""
       <g class="category-burst-node" data-node-role="subcategory" data-subcategory-id="{html.escape(str(spoke['id']))}"
@@ -142,11 +142,10 @@ def node_markup(spoke: dict[str, float | int | str]) -> str:
           calcMode="spline" keySplines=".4 0 .2 1;.22 .82 .22 1;.3 0 .1 1"/>
         <animate attributeName="opacity" values="0;0;1" keyTimes="0;{delay / (delay + 0.42):.3f};1"
           dur="{fmt(delay + 0.42)}s" begin="0s" fill="freeze"/>
-        <circle r="{fmt(radius)}" fill="{fill}" stroke="{color}" stroke-width="2.4">
+        <circle r="{fmt(radius)}" fill="{fill}" stroke="none">
           <animate attributeName="r" values="5;{fmt(radius + 2)};{fmt(radius)}" dur=".72s"
             begin="{fmt(delay + 0.28)}s" fill="freeze" calcMode="spline" keySplines=".2 .8 .2 1;.28 0 .22 1"/>
         </circle>
-        <circle r="{fmt(radius + 5)}" fill="none" stroke="{color}" stroke-width="1.4" stroke-opacity=".18"/>
         <text class="mark-label" x="{fmt(label_x)}" y="{fmt(label_y)}" text-anchor="{label_anchor(radial_x)}"
           font-size="11.2" font-weight="800">{label}
           <animate attributeName="opacity" values="0;0;1" keyTimes="0;{label_delay / label_total:.3f};1"
@@ -155,12 +154,16 @@ def node_markup(spoke: dict[str, float | int | str]) -> str:
       </g>"""
 
 
-@colorset_output
-def build_html() -> str:
+def build_html(colorset="colorset1") -> str:
+    contract = json.loads(CONTRACT.read_text(encoding="utf-8"))["colorsets"][colorset]
+    root_style = category_style(0, contract, PALETTE["surface"])
     spokes = enriched_spokes()
+    for index, spoke in enumerate(spokes):
+        style = category_style(index + 1, contract, PALETTE["surface"])
+        spoke.update(color=style["fill"], fill=style["fill"])
     links = "\n".join(link_markup(spoke) for spoke in spokes)
     nodes = "\n".join(node_markup(spoke) for spoke in spokes)
-    return f"""<!doctype html>
+    source = f"""<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -205,24 +208,15 @@ def build_html() -> str:
     role="img" aria-labelledby="category-burst-title category-burst-desc">
     <title id="category-burst-title">Category burst</title>
     <desc id="category-burst-desc">A central main category appears, draws curved spokes outward, and settles eight floating subcategory circles into a radial concept map.</desc>
-    <defs>
-      <filter id="category-burst-soft-shadow" x="-30%" y="-30%" width="160%" height="160%">
-        <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="{PALETTE["gray700"]}" flood-opacity=".18"/>
-      </filter>
-    </defs>
-    <circle cx="{fmt(CENTER_X)}" cy="{fmt(CENTER_Y)}" r="152" fill="none" stroke="{PALETTE["gray100"]}"
-      stroke-width="1.2" stroke-dasharray="4 8" opacity=".72"/>
-    <circle cx="{fmt(CENTER_X)}" cy="{fmt(CENTER_Y)}" r="12" fill="none" stroke="{PALETTE["blue_highlight"]}"
-      stroke-width="12" opacity=".55">
+    <circle cx="{fmt(CENTER_X)}" cy="{fmt(CENTER_Y)}" r="12" fill="{root_style["fill"]}" stroke="none" opacity=".55">
       <animate attributeName="r" from="12" to="54" dur=".85s" begin="0s" fill="freeze"/>
       <animate attributeName="opacity" from=".55" to="0" dur=".85s" begin="0s" fill="freeze"/>
     </circle>
     <g class="category-burst-links">
 {links}
     </g>
-    <g class="category-burst-root" data-node-role="root" transform="translate({fmt(CENTER_X)} {fmt(CENTER_Y)})"
-      filter="url(#category-burst-soft-shadow)">
-      <circle r="36" fill="{PALETTE["ink"]}" stroke="{PALETTE["surface"]}" stroke-width="3">
+    <g class="category-burst-root" data-node-role="root" transform="translate({fmt(CENTER_X)} {fmt(CENTER_Y)})">
+      <circle r="36" fill="{root_style["fill"]}" stroke="none">
         <animate attributeName="r" values="0;36" dur=".56s" begin="0s" fill="freeze"
           calcMode="spline" keySplines=".2 .8 .2 1"/>
       </circle>
@@ -236,6 +230,7 @@ def build_html() -> str:
 </body>
 </html>
 """
+    return adapt_artifact(source, colorset)
 
 
 def main() -> int:

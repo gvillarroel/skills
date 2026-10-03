@@ -36,7 +36,7 @@ function renderZoomToBounds() {
     const dots = svg.append("g").selectAll("circle").data(points).join("circle")
       .attr("cx", d => d.x).attr("cy", d => d.y)
       .attr("fill", d => d.selected ? palette.orange : colors[d.group])
-      .attr("fill-opacity", d => d.selected ? .9 : .42)
+      .attr("data-opacity-role", "semantic").attr("fill-opacity", d => d.selected ? .9 : .42)
       .attr("stroke", "#fff");
     grow(dots, "r", 1.5, d => d.selected ? 5.8 : 4.2, .05, .5);
     const focusRect = svg.append("rect")

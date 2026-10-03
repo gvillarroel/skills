@@ -12,6 +12,7 @@ from __future__ import annotations
 import argparse
 import fnmatch
 import json
+import math
 import re
 import shutil
 import subprocess
@@ -22,7 +23,7 @@ from typing import Any
 from xml.etree import ElementTree
 
 import yaml
-from palette_contract import require_color
+from palette_contract import require_color, text_on_fill
 
 
 INVOCATION_CWD = Path.cwd()
@@ -58,10 +59,10 @@ DEFAULTS: dict[str, Any] = {
     "title_color": "#1c1c1c",
     "tile_fill": "#f7f7f7",
     "tile_stroke": "#cfcfcf",
-    "label_color": "#333e48",
-    "placeholder_fill": "#f7f7f7",
+    "label_color": "#000000",
+    "placeholder_fill": "#9e1b32",
     "placeholder_stroke": "#e8002a",
-    "placeholder_text": "#9e1b32",
+    "placeholder_text": "#ffffff",
     "quality": "l",
     "fps": 15.0,
     "resolution": "854,480",
@@ -181,9 +182,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--title-color", default=DEFAULTS["title_color"])
     parser.add_argument("--tile-fill", default=DEFAULTS["tile_fill"])
     parser.add_argument("--tile-stroke", default=DEFAULTS["tile_stroke"])
+    parser.add_argument("--tile-border-width", type=float, default=0, help="Explicit outline width; borderless by default.")
     parser.add_argument("--label-color", default=DEFAULTS["label_color"])
     parser.add_argument("--placeholder-fill", default=DEFAULTS["placeholder_fill"])
     parser.add_argument("--placeholder-stroke", default=DEFAULTS["placeholder_stroke"])
+    parser.add_argument("--placeholder-border-width", type=float, default=0, help="Explicit placeholder outline width; borderless by default.")
     parser.add_argument("--placeholder-text", default=DEFAULTS["placeholder_text"])
     parser.add_argument("--quality", choices=("l", "m", "h", "p", "k"), default=DEFAULTS["quality"])
     parser.add_argument("--fps", type=float, default=DEFAULTS["fps"])
@@ -219,6 +222,13 @@ def normalize_args(args: argparse.Namespace) -> argparse.Namespace:
         raise SystemExit('--resolution must use Manim format "W,H".')
     if args.dry_run:
         args.render = False
+    for field in ("tile_border_width", "placeholder_border_width"):
+        if getattr(args, field) < 0 or not math.isfinite(getattr(args, field)):
+            raise SystemExit(f"{field.replace('_', '-')} must be finite and nonnegative.")
+    for field, background in (("title_color", "background"), ("label_color", "tile_fill"), ("placeholder_text", "placeholder_fill")):
+        option = "--" + field.replace("_", "-")
+        if option not in sys.argv and field not in config:
+            setattr(args, field, text_on_fill(getattr(args, background)))
     for field in ("background", "title_color", "tile_fill", "tile_stroke", "label_color", "placeholder_fill", "placeholder_stroke", "placeholder_text"):
         setattr(args, field, require_color(getattr(args, field)))
     return args
@@ -415,9 +425,11 @@ def build_manifest(
             "title_color": args.title_color,
             "tile_fill": args.tile_fill,
             "tile_stroke": args.tile_stroke,
+            "tile_border_width": args.tile_border_width,
             "label_color": args.label_color,
             "placeholder_fill": args.placeholder_fill,
             "placeholder_stroke": args.placeholder_stroke,
+            "placeholder_border_width": args.placeholder_border_width,
             "placeholder_text": args.placeholder_text,
             "quality": args.quality,
             "fps": args.fps,
@@ -612,10 +624,10 @@ def make_tile_at(asset, center_x, center_y, cell_w, cell_h, tile_w, tile_h, sett
         corner_radius=0.035,
         width=cell_w * 0.93,
         height=cell_h * 0.9,
-        stroke_width=0.45,
+        stroke_width=settings["tile_border_width"],
         stroke_color=settings["tile_stroke"],
         fill_color=settings["tile_fill"],
-        fill_opacity=0.82,
+        fill_opacity=1,
     )
     frame.move_to([center_x, center_y, -0.02])
 
@@ -658,7 +670,8 @@ def placeholder(asset, reason, settings):
         height=0.8,
         stroke_color=settings["placeholder_stroke"],
         fill_color=settings["placeholder_fill"],
-        fill_opacity=0.8,
+        fill_opacity=1,
+        stroke_width=settings["placeholder_border_width"],
     )
     label = Text(f"SVG {{asset['index']}}", font_size=16, color=settings["placeholder_text"])
     note = Text(str(reason)[:24], font_size=8, color=settings["placeholder_text"])

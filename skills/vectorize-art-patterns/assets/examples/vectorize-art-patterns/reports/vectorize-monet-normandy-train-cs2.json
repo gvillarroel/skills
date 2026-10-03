@@ -4,12 +4,12 @@
   "input": "assets/base-images/monet-normandy-train.jpg",
   "input_sha256": "8fe269a7a572659063c4fb842ad485e9b88c69c9554efee94c3b218df09a3f43",
   "output": "svgs/vectorize-monet-normandy-train-cs2.svg",
-  "output_sha256": "563ee99bfd072578d30253fe19e55500cea279d43ded172cf8457c2b9c5c26a1",
+  "output_sha256": "6019dd688209a74559ed0dba7cd903704f6fefb47ba267530067145833990358",
   "pattern_id": "vectorize-monet-normandy-train-cs2",
   "mode": "stain",
   "tile": "none",
   "colorset": "colorset2",
-  "palette_contract_sha256": "c81d32ffb0d55d44e7d3102c7470e251baf34f0bb6472fbede7753df8b9a9eb5",
+  "palette_contract_sha256": "f36eb8a9fe171108383767c7697f023218121e51d3e45247e87b58e397b36d62",
   "variation_seed": 0,
   "composition_sha256": "c9c6444d8ec6eee0f15c69da166069224c2a20a680626dbeede5ca0eeeee4a58",
   "parameters": {
@@ -29,23 +29,23 @@
         },
         {
           "source": "#a3a39b",
-          "target": "#828282"
+          "target": "#9c9c9c"
         },
         {
           "source": "#615a4b",
-          "target": "#004d66"
+          "target": "#4f4f4f"
         },
         {
           "source": "#405d77",
-          "target": "#652f6c"
+          "target": "#004d66"
         },
         {
           "source": "#878367",
-          "target": "#45842a"
+          "target": "#828282"
         },
         {
           "source": "#262b31",
-          "target": "#1c1c1c"
+          "target": "#363636"
         },
         {
           "source": "#c9cdcc",
@@ -65,11 +65,11 @@
       "target_colors": [
         "#333e48",
         "#007298",
-        "#828282",
+        "#9c9c9c",
+        "#4f4f4f",
         "#004d66",
-        "#652f6c",
-        "#45842a",
-        "#1c1c1c",
+        "#828282",
+        "#363636",
         "#cfcfcf"
       ]
     }
@@ -83,11 +83,11 @@
   "palette": [
     "#004d66",
     "#007298",
-    "#1c1c1c",
     "#333e48",
-    "#45842a",
-    "#652f6c",
+    "#363636",
+    "#4f4f4f",
     "#828282",
+    "#9c9c9c",
     "#cfcfcf"
   ],
   "path_count": 37,

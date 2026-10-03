@@ -3,14 +3,13 @@
 Choose colors once, before rendering. The composition owns the palette; individual
 renderers receive it. One concept keeps its color across radial nodes, matrix rows,
 containers, annotations, and the synthesis. Orientation and position do not change
-identity. Do not reuse a categorical accent for an unrelated meaning. Prefer a few
-meaningful accents and shared neutral surfaces to a different color per panel.
+identity. Do not reuse a categorical accent for an unrelated meaning. Prefer a few meaningful solid category surfaces. A repeated concept keeps its
+fill across panels; neutral layout surfaces carry no decorative outline.
 
 Preserve user-specified colors. Otherwise use the chosen companion theme as the
 starting palette, then pass exact overrides to every renderer. Align background,
 ink, muted text, neutral edges, and emphasis treatment as well as concept accents.
-Keep essential labels readable on the final background; bright colors belong on
-swatches, bands, or outlines. Reinforce identity with a label, icon, shape, or
+Keep essential labels readable on the final background; choose pure black or white by the actual category fill contrast. Reinforce identity with a label, icon, shape, or
 pattern so color is never the only cue. Explain the mapping once if necessary.
 
 ## Executable categorical contract
@@ -31,7 +30,8 @@ bound mark inside that panel; a mark in another panel or the legend cannot cover
 
 Native hub cards, cycle steps, boundary nodes/groups/outer enclosure, taxonomy
 groups, matrix row headers, and matrix value objects accept `"concept":"source"`.
-The builder looks up its color, preserves dark labels, and adds the SVG bindings.
+The builder uses its solid fill, chooses black or white labels by contrast, and
+adds the SVG bindings.
 For example, the same concept can appear in both of these native objects:
 
 ```json
@@ -40,11 +40,10 @@ For example, the same concept can appear in both of these native objects:
 ```
 
 A local `color` that conflicts with `concept` is rejected. The final audit also
-checks the node's fill: use neutral surfaces or related tints/shades with readable
-text. A correct border alone cannot validate a contradictory dominant fill.
+checks the node's fill: use the exact solid category fill with readable black or white text. A correct border alone cannot validate a contradictory dominant fill.
 Do not use independent
 literal colors for repeated semantic categories. Brand SVGs retain their official
-artwork; the card outline or adjacent swatch carries the composition's concept
+artwork; a separate solid label or adjacent swatch carries the composition's concept
 color. Never infer a semantic category from a logo's original color.
 
 For custom or specialist SVGs, set the actual paint and tag **each visible accent
@@ -54,10 +53,10 @@ surface with `data-node-id` and `data-concept-id`; a separate band or swatch use
 [connectors-and-surfaces.md](connectors-and-surfaces.md):
 
 ```svg
-<rect x="12" y="12" width="120" height="56" fill="#ffffff"
-      stroke="#007298" stroke-width="2.4"
+<rect x="12" y="12" width="120" height="56" fill="#007298"
+      stroke="none" stroke-width="0"
       data-node-id="source" data-concept-id="source"
-      data-color-concept="source" data-color-channel="stroke"/>
+      data-color-concept="source" data-color-channel="fill"/>
 ```
 
 Use `fill` or `stroke` as the channel on a native path, rect, circle, ellipse,

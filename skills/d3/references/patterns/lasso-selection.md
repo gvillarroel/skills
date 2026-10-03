@@ -30,10 +30,10 @@ function renderLassoSelection() {
     const dots = svg.append("g").selectAll("circle").data(points).join("circle")
       .attr("cx", d => d.x).attr("cy", d => d.y)
       .attr("fill", d => d.selected ? palette.orange : "#9c9c9c")
-      .attr("fill-opacity", d => d.selected ? .88 : .28)
+      .attr("data-opacity-role", "semantic").attr("fill-opacity", d => d.selected ? .88 : .28)
       .attr("stroke", "#fff").attr("stroke-width", 1.2);
     grow(dots, "r", 1, d => d.selected ? 6 : 4, .06, .55);
-    const lassoPath = svg.append("path").attr("d", `${d3.line()(lasso)}Z`).attr("fill", palette.orange).attr("fill-opacity", .1).attr("stroke", palette.orange).attr("stroke-width", 2.5);
+    const lassoPath = svg.append("path").attr("d", `${d3.line()(lasso)}Z`).attr("fill", palette.orange).attr("fill-opacity", 1).attr("stroke", palette.orange).attr("stroke-width", 2.5);
     drawPath(lassoPath, .2, .9);
     const selected = points.filter(d => d.selected).length;
     svg.append("text").attr("class", "mark-label").attr("x", 352).attr("y", 70).text(`${selected} selected`);

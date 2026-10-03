@@ -4,12 +4,12 @@
   "input": "assets/base-images/juan-gris-still-life-1919.jpg",
   "input_sha256": "2f2d277467ede0c568ce79d4ac22b74868e0e5ad2faca2987e3f2a1a1c586f97",
   "output": "svgs/vectorize-juan-gris-still-life-1919-cs2.svg",
-  "output_sha256": "d9ae47bf0a3490c1848558602c983dc2eff99727c5d298eac8481a76a6843768",
+  "output_sha256": "d9d37e9a95db568d231cf229a605a67cdf7b9a4f15f82388be282ec5ba057f1b",
   "pattern_id": "vectorize-juan-gris-still-life-1919-cs2",
   "mode": "collage",
   "tile": "none",
   "colorset": "colorset2",
-  "palette_contract_sha256": "c81d32ffb0d55d44e7d3102c7470e251baf34f0bb6472fbede7753df8b9a9eb5",
+  "palette_contract_sha256": "f36eb8a9fe171108383767c7697f023218121e51d3e45247e87b58e397b36d62",
   "variation_seed": 0,
   "composition_sha256": "d229e24eb7e08c3e3f8075964ccc79fb907147bf2c6ca30312bd790791314769",
   "parameters": {
@@ -33,7 +33,7 @@
         },
         {
           "source": "#e9e5d6",
-          "target": "#f7f7f7"
+          "target": "#e7e7e7"
         },
         {
           "source": "#39629b",
@@ -41,19 +41,19 @@
         },
         {
           "source": "#283730",
-          "target": "#333e48"
+          "target": "#363636"
         },
         {
           "source": "#5d7187",
-          "target": "#828282"
+          "target": "#696969"
         },
         {
           "source": "#eff3f3",
-          "target": "#ffffff"
+          "target": "#f7f7f7"
         },
         {
           "source": "#f5f7ef",
-          "target": "#cfcfcf"
+          "target": "#ffffff"
         }
       ],
       "source_colors": [
@@ -71,12 +71,12 @@
         "#1c1c1c",
         "#007298",
         "#f1c319",
-        "#f7f7f7",
+        "#e7e7e7",
         "#004d66",
-        "#333e48",
-        "#828282",
-        "#ffffff",
-        "#cfcfcf"
+        "#363636",
+        "#696969",
+        "#f7f7f7",
+        "#ffffff"
       ]
     }
   },
@@ -90,9 +90,9 @@
     "#004d66",
     "#007298",
     "#1c1c1c",
-    "#333e48",
-    "#828282",
-    "#cfcfcf",
+    "#363636",
+    "#696969",
+    "#e7e7e7",
     "#f1c319",
     "#f7f7f7",
     "#ffffff"

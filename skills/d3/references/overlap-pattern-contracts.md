@@ -13,7 +13,9 @@ Read this reference after a `references/patterns/*overlap*.md`, `*rosette*.md`, 
 ## Geometry and Label Contract
 
 - Use the exact circle centers and radii in the routed pattern file. Quantitative overlap is protected geometry.
-- Use translucent token fills with solid token strokes. Keep the white semantic-center disk above overlapping fills.
+- Use base token fills without circle outlines. Preserve explicit opacity only
+  to reveal shared set regions. Keep the white semantic-center disk above
+  overlapping fills and use opaque borderless marks for ordinary categories.
 - External labels use a 15-unit colored code circle, a white two-letter code, and a dark or matching-color label below it.
 - Put the semantic center on the stated center coordinate. Keep the note inside `y=382` so it cannot collide with lower labels.
 - When a set is already named by the semantic center, mark it `hideExternalLabel: true` instead of duplicating a label over a peer.

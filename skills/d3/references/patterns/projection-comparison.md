@@ -34,7 +34,7 @@ function renderProjectionComparison() {
       svg.append("clipPath").attr("id", item.clipId).append("rect").attr("x", item.x).attr("y", 66).attr("width", 216).attr("height", 236).attr("rx", 6);
       svg.append("rect").attr("x", item.x).attr("y", 66).attr("width", 216).attr("height", 236).attr("rx", 6).attr("fill", palette.gray50).attr("stroke", palette.gray200);
       const panel = svg.append("g").attr("clip-path", `url(#${item.clipId})`);
-      panel.append("path").datum(item.outline).attr("d", path).attr("fill", palette.blueHighlight).attr("fill-opacity", .18).attr("stroke", palette.gray300);
+      panel.append("path").datum(item.outline).attr("d", path).attr("fill", palette.blueHighlight).attr("fill-opacity", 1).attr("stroke", palette.gray300);
       appendSchematicLand(panel, path, palette.surface);
       panel.append("g").selectAll("path").data(graticule).join("path").attr("d", path).attr("fill", "none").attr("stroke", palette.gray200).attr("stroke-width", .8);
       const routePath = panel.append("path").datum(route).attr("d", path).attr("fill", "none").attr("stroke", colors[pi]).attr("stroke-width", 3.2);

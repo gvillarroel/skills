@@ -4,12 +4,12 @@
   "input": "assets/base-images/hokusai-great-wave.jpg",
   "input_sha256": "14d2887f90578eb14a3e9894d05a0d5558717fe520c14dc662ae98fb5b85171c",
   "output": "svgs/vectorize-hokusai-great-wave-cs1.svg",
-  "output_sha256": "c600f2cb576b0d61fa73fdb1e23a922210395b6324b92c101565bbb29fd53f1c",
+  "output_sha256": "d7374f8a2dfdd66d575d1e051b9949be2e438487acb4b16824c12216896d64c5",
   "pattern_id": "vectorize-hokusai-great-wave-cs1",
   "mode": "collage",
   "tile": "none",
   "colorset": "colorset1",
-  "palette_contract_sha256": "c81d32ffb0d55d44e7d3102c7470e251baf34f0bb6472fbede7753df8b9a9eb5",
+  "palette_contract_sha256": "f36eb8a9fe171108383767c7697f023218121e51d3e45247e87b58e397b36d62",
   "variation_seed": 0,
   "composition_sha256": "ca359b3f26aea20b91b65107392b975da6fdf006a5417a9d07d6c73047144b12",
   "parameters": {
@@ -25,7 +25,7 @@
       "layers": [
         {
           "source": "#c3b196",
-          "target": "#cfcfcf"
+          "target": "#b5b5b5"
         },
         {
           "source": "#22344d",
@@ -37,19 +37,19 @@
         },
         {
           "source": "#a1a8a0",
-          "target": "#828282"
+          "target": "#9c9c9c"
         },
         {
           "source": "#576771",
-          "target": "#6d1222"
+          "target": "#696969"
         },
         {
           "source": "#efe0c5",
-          "target": "#ffccd5"
+          "target": "#e7e7e7"
         },
         {
           "source": "#c1baa4",
-          "target": "#ffffff"
+          "target": "#cfcfcf"
         }
       ],
       "source_colors": [
@@ -64,13 +64,13 @@
       ],
       "target_colors": [
         "#f7f7f7",
-        "#cfcfcf",
+        "#b5b5b5",
         "#333e48",
         "#9e1b32",
-        "#828282",
-        "#6d1222",
-        "#ffccd5",
-        "#ffffff"
+        "#9c9c9c",
+        "#696969",
+        "#e7e7e7",
+        "#cfcfcf"
       ]
     }
   },
@@ -82,13 +82,13 @@
   "render_height": 425,
   "palette": [
     "#333e48",
-    "#6d1222",
-    "#828282",
+    "#696969",
+    "#9c9c9c",
     "#9e1b32",
+    "#b5b5b5",
     "#cfcfcf",
-    "#f7f7f7",
-    "#ffccd5",
-    "#ffffff"
+    "#e7e7e7",
+    "#f7f7f7"
   ],
   "path_count": 127,
   "output_bytes": 280633,

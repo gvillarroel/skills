@@ -234,3 +234,22 @@ Do not add a new mode as an untested stylistic alias.
 - `assets/base-images/manifest.json`: canonical metadata and hashes for bundled open source images.
 - `assets/examples/vectorize-art-patterns/`: published acceptance fixture; exclude it from ordinary runtime reads.
 - `assets/examples/vectorize-abstract-world-maps/`: focused Pages fixture for the biomorphic and straight-line global studies.
+
+## Solid fill priority
+
+Use opaque, single-token filled marks without decorative borders first. Read
+`solidSequence` and `textOnFill` from `assets/palettes/colorsets.json`. Reuse a
+fill for the same semantic role; when roles must be distinct, exhaust every
+usable distinct token in the preferred sequence, excluding the actual canvas,
+before creating outline or tint combinations. Soft tokens occur late. For text
+on a fill, use exactly black or white with the larger WCAG contrast computed
+from the actual background; composite opacity before evaluating translucent
+backgrounds. Do not infer text color from a hue name.
+
+Keep connectors, axes, signal traces, open line art, physical geometry and
+explicit source-fidelity modes. A stroke that depicts a relationship or is the
+geometry itself is meaningful. Reserve decorative outlines for a documented
+palette overflow or an explicit requested style; mark SVG overflow treatments
+with `data-outline-tier="overflow"`. A transient keyboard focus ring remains an
+interaction affordance. Use position, whitespace and direct labels for ordinary
+selection and grouping.

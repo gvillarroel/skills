@@ -9,7 +9,7 @@ from __future__ import annotations
 
 import re
 from typing import Mapping, Sequence
-from palette_contract import nearest_color, require_color
+from palette_contract import nearest_color, require_color, solid_colors, text_on_fill, category_style
 
 
 _HEX = re.compile(r"^#[0-9a-fA-F]{6}$")
@@ -17,8 +17,8 @@ _ROLES = ("canvas", "surface", "ink", "muted", "line", "accent", "focus", "warni
 _PRESETS = {"colorset1", "colorset2", "editorial", "classic"}
 _EDITORIAL = {"canvas": "#f7f7f7", "surface": "#ffffff", "ink": "#333e48", "muted": "#696969", "line": "#cfcfcf", "accent": "#9e1b32", "focus": "#6d1222", "warning": "#4f4f4f", "danger": "#9e1b32"}
 _CLASSIC = {**_EDITORIAL, "accent": "#007298", "focus": "#004d66", "warning": "#994a00"}
-PALETTE = ["#9e1b32", "#007298", "#994a00", "#45842a", "#652f6c", "#98700c", "#333e48", "#004d66", "#6d1222", "#294d19", "#431f47", "#9e00b3", "#e8002a", "#828282", "#696969", "#4f4f4f", "#363636", "#1c1c1c", "#000000"]
-RED_NEUTRAL = ["#9e1b32", "#333e48", "#6d1222", "#828282", "#e8002a", "#696969", "#4f4f4f", "#363636", "#1c1c1c", "#000000"]
+PALETTE = solid_colors("colorset2")
+RED_NEUTRAL = solid_colors("colorset1")
 
 def color_for_index(index: int) -> str:
     if index < 0:
@@ -86,14 +86,15 @@ def derived_theme_colors(theme: Mapping) -> dict[str, str]:
         "warning-soft": safe_surface_tint(colors, colors["warning"], 0.12, colorset),
         "danger-soft": safe_surface_tint(colors, colors["danger"], 0.08, colorset),
     }
+    derived["on-accent"] = text_on_fill(colors["accent"], colorset)
     backgrounds = [colors["canvas"], colors["surface"], *derived.values()]
     for root, color in theme["conceptColors"].items():
         derived[f"text-value-{root}"] = readable_text(backgrounds, [color, colors["ink"]])
-        derived[f"surface-value-{root}"] = safe_surface_tint(colors, color, 0.18, colorset)
-    inverse = readable_text([colors["ink"]], [colors["surface"], colors["canvas"]])
-    secondary = nearest_color(mix_color(colors["ink"], inverse, 0.22), colorset)
+        derived[f"surface-value-{root}"] = color
+        derived[f"on-value-{root}"] = text_on_fill(color, colorset)
+    inverse = text_on_fill(colors["ink"], colorset)
     derived["on-ink"] = inverse
-    derived["on-ink-muted"] = readable_text([colors["ink"]], [secondary, inverse])
+    derived["on-ink-muted"] = inverse
     return derived
 
 
@@ -163,8 +164,9 @@ def resolve_theme(raw: object, value_ids: Sequence[str], token_map: Mapping[str,
             suffix = f"; {key!r} is an alias owned by root {root!r}" if root else ""
             _fail(f"concept color key {key!r} is not a root token{suffix}")
     concepts = {}
+    solids = solid_colors(colorset, colors["canvas"])
     for index, root in enumerate(roots):
-        concepts[root] = _color(supplied_concepts[root], f"conceptColors.{root}") if root in supplied_concepts else (color_for_index(index) if colorset == "colorset2" else _editorial_token(index))
+        concepts[root] = _color(supplied_concepts[root], f"conceptColors.{root}") if root in supplied_concepts else solids[index % len(solids)]
         require_color(concepts[root], colorset)
     for role in ("ink", "muted", "accent", "warning", "danger"):
         if min(contrast_ratio(colors[role], base) for base in (colors["canvas"], colors["surface"])) < 4.5:
@@ -172,7 +174,6 @@ def resolve_theme(raw: object, value_ids: Sequence[str], token_map: Mapping[str,
     for role in ("focus",):
         if min(contrast_ratio(colors[role], base) for base in (colors["canvas"], colors["surface"])) < 3:
             _fail(f"colors.{role} has insufficient contrast against canvas and surface")
-    for root, value in concepts.items():
-        if min(contrast_ratio(value, base) for base in (colors["canvas"], colors["surface"])) < 3:
-            _fail(f"conceptColors.{root} has insufficient contrast against canvas and surface")
+    # Solid category surfaces have direct black/white labels. The fill itself
+    # need not meet the contrast threshold intended for a thin line on canvas.
     return {"preset": preset, "colors": colors, "conceptColors": concepts}

@@ -52,7 +52,7 @@ function renderAttentionMatrixTiles() {
       .attr("height", cell)
       .attr("rx", 4)
       .attr("fill", tileColor)
-      .attr("fill-opacity", d => d.causal ? .36 + d.weight * .58 : .36)
+      .attr("data-opacity-role", "semantic").attr("fill-opacity", d => d.causal ? .36 + d.weight * .58 : .36)
       .attr("stroke", palette.surface)
       .attr("stroke-width", 1.2);
     tiles.append("animate")
@@ -119,7 +119,7 @@ function renderAttentionMatrixTiles() {
           .attr("height", 14 + ((j + head.offset) % 4) * 5)
           .attr("rx", 3)
           .attr("fill", j === activeRow % 7 ? palette.red : head.color)
-          .attr("fill-opacity", .74)
+          .attr("fill-opacity", 1)
           .append("animate")
           .attr("attributeName", "height")
           .attr("values", `4;${14 + ((j + head.offset) % 4) * 5};${14 + ((j + head.offset) % 4) * 5}`)

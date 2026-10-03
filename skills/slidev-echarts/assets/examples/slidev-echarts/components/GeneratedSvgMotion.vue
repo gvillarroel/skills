@@ -229,7 +229,7 @@ const particles = computed(() => {
 })
 
 const bands = computed(() => {
-  const fills = ['#cdf3ff', '#cdf3ff', '#cdf3ff', '#ffe5cc', '#ffccd5']
+  const fills = ['#007298', '#45842a', '#652f6c', '#e77204', '#9e1b32']
   return fills.map((fill, index) => {
     const top = 222 - index * 36
     const lower = top + 24
@@ -246,7 +246,7 @@ const bands = computed(() => {
       id: index,
       d,
       fill,
-      opacity: 0.72,
+      opacity: 1,
     }
   })
 })

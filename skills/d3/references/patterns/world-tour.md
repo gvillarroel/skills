@@ -29,7 +29,7 @@ function renderWorldTour() {
     ];
     const route = d3.pairs(cities).flatMap(([a, b]) => d3.range(24).map(i => d3.geoInterpolate(a.coord, b.coord)(i / 24)));
     route.push(cities.at(-1).coord);
-    svg.append("path").datum({ type: "Sphere" }).attr("d", path).attr("fill", palette.blueHighlight).attr("fill-opacity", .26).attr("stroke", palette.gray200);
+    svg.append("path").datum({ type: "Sphere" }).attr("d", path).attr("fill", palette.blueHighlight).attr("fill-opacity", 1).attr("stroke", palette.gray200);
     svg.append("g").selectAll("path").data(d3.geoGraticule().step([30, 30]).lines()).join("path")
       .attr("d", path).attr("fill", "none").attr("stroke", palette.gray200).attr("stroke-width", .8);
     const routePath = svg.append("path").datum({ type: "LineString", coordinates: route })

@@ -72,3 +72,6 @@ ancestor. Do not suppress a whole code block to work around this geometry case.
 3. Re-run the same command.
 4. Confirm that the affected rule counts dropped and no new findings appeared on nearby slides.
 5. Keep the before/after reports only under `projects/<project-id>/artifacts/reports/` when they are useful validation artifacts.
+# Solid category treatment
+
+Mark authored category shapes with `data-category-id` so the browser audit can distinguish decoration from axes, class compartments, chart whiskers and connectors. The audit reports `premature-category-outline` when a visible marked shape has a border before the selected palette's usable unique solid colors are exhausted. An overflow outline requires `data-colorset-overflow`; an explicit meaningful data boundary or user-requested outline uses the narrow `data-allow-category-outline` exception. This gate sees the current visible state; independently check a category allocation manifest when categories are paginated, hidden, or distributed across scenes. The existing contrast rule remains required for black/white inside labels, and Canvas category boundaries require source/option inspection.

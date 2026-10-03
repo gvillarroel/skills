@@ -6,6 +6,7 @@ description: "Renders one or many SVG or animated-SVG source assets into a confi
 # Manim SVG Video
 
 Read [palette-policy.md](references/palette-policy.md) before authoring or composing visuals. Apply one exact colorset to authored content and report preserved source media separately.
+Read [solid-surfaces.md](references/solid-surfaces.md) for solid-first category fills, black/white text on the actual fill, and palette exhaustion before border variants.
 
 Set `$env:MANIM_SVG_VIDEO_SKILL` to this skill directory before invoking bundled commands.
 

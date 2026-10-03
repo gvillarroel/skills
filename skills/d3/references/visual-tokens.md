@@ -6,7 +6,7 @@ Use `assets/palettes/colorsets.json` and `references/palette-contract.md` as the
 
 - Primary font: `"Open Sans", Arial, sans-serif`.
 - Apply it explicitly to SVG text because extracted SVG may not inherit page CSS.
-- Keep labels horizontal when possible, use concise direct labels, and add a light halo over dense marks.
+- Keep labels horizontal when possible and use concise direct labels. Choose `#000000` or `#ffffff` by maximum WCAG contrast against the actual containing fill; use placement or a dedicated solid label area when dense marks impair readability.
 
 ## Palette Policy
 
@@ -14,7 +14,7 @@ Use `assets/palettes/colorsets.json` and `references/palette-contract.md` as the
 - Use colorset2 only after an explicit extended/full-color request and only for meaningful categorical or state separation.
 - Do not use raw D3 interpolator palettes. Build discrete ramps from the active colorset.
 - Use opacity rather than generating RGBA colors.
-- Use white and gray for secondary fills; reserve pink for a justified final category after red/neutrals. Use an opaque red focus outline.
+- Allocate categorical fills from the active palette's complete `solidSequence`, excluding only the actual canvas. Use the saturated/base colors first, then the remaining dark, bright, and neutral tokens; soft tokens come late. Keep each filled mark borderless until all usable unique solid colors are exhausted, then add explicit overflow outline variants. Keep an opaque red keyboard focus outline for interaction visibility.
 
 ## Density
 
@@ -30,4 +30,4 @@ touch). Preserve font sizes, scales, label clearance, and explicit dimensions.
 
 ## Published Fixtures
 
-The legacy `d3-animated-svg`, `d3-animated-svg-cs1`, `d3-animated-svg-colorset2`, `d3-logo-design`, and `d3-logo-textures` example-set IDs remain stable after skill consolidation. New runtime artifacts follow the unified colorset1-default policy even when an older base gallery preserves historical styling for link compatibility.
+The legacy `d3-animated-svg`, `d3-animated-svg-cs1`, `d3-animated-svg-colorset2`, `d3-logo-design`, and `d3-logo-textures` example-set IDs remain stable after skill consolidation. Apply the same solid-first paint and contrasting-label policy to their editable filled marks and new runtime artifacts while preserving their links.

@@ -104,3 +104,37 @@ def require_svg_palette(root: ET.Element, colorset: str | None = None) -> str:
         if not outside:
             return name
     raise ValueError("SVG paints are outside the bundled colorsets: " + json.dumps(findings, sort_keys=True) + ". Restyle the editable source before animation.")
+
+
+def relative_luminance(fill: str) -> float:
+    channels = [value / 255 for value in rgb(canonical(fill))]
+    values = [value / 12.92 if value <= 0.04045 else ((value + 0.055) / 1.055) ** 2.4 for value in channels]
+    return sum(value * weight for value, weight in zip(values, (0.2126, 0.7152, 0.0722)))
+
+def readable_text(fill: str) -> str:
+    """Choose the higher WCAG relative-luminance contrast, including bright colors."""
+    luminance = relative_luminance(fill)
+    return "#000000" if (luminance + 0.05) / 0.05 >= 1.05 / (luminance + 0.05) else "#ffffff"
+
+def solid_colors(colorset: str = "colorset1", canvas: str = "#ffffff") -> list[str]:
+    palette = COLORSETS[colorset]
+    if "solidSequence" in palette:
+        return [color for color in palette["solidSequence"] if color != canonical(canvas)]
+    preferred = palette["sequence"]
+    soft = {"#ffccd5", "#cdf3ff", "#dbffcc", "#ffe5cc", "#fff4cc", "#f9ccff", "#e7e7e7", "#f7f7f7", "#ffffff", "#cfcfcf"}
+    order = [c for c in preferred if c not in soft] + [c for c in palette["allowed"] if c not in soft] + [c for c in preferred if c in soft] + [c for c in palette["allowed"] if c in soft]
+    return list(dict.fromkeys(c for c in order if c != canonical(canvas)))
+
+def solid_style(index: int, colorset: str = "colorset1", canvas: str = "#ffffff") -> dict[str, object]:
+    """Exhaust unique solid fills before explicit, deterministic outline overflow."""
+    if index < 0:
+        raise ValueError("Category index must be nonnegative")
+    colors = solid_colors(colorset, canvas)
+    cycle, slot = divmod(index, len(colors))
+    fill = colors[slot]
+    borders = [color for color in COLORSETS[colorset]['allowed'] if color != fill and (max(relative_luminance(fill), relative_luminance(color)) + 0.05) / (min(relative_luminance(fill), relative_luminance(color)) + 0.05) >= 3]
+    phase = max(0, cycle - 1)
+    width = 1 + (phase // (len(borders) * 3)) % 3 if cycle else 0
+    border = borders[phase % len(borders)] if cycle else "none"
+    dash = ("", "6 3", "2 2")[(phase // len(borders)) % 3] if cycle else ""
+    return {"fill": fill, "text": readable_text(fill), "stroke": border, "strokeWidth": width, "dash": dash, "overflow": cycle > 0}

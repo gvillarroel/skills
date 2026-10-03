@@ -4,12 +4,12 @@
   "input": "assets/base-images/el-greco-assumption.jpg",
   "input_sha256": "0bf0ec0b8a39a7c2bb2a8f3321971c6088485e5fb978fd478a9a538da0c5622d",
   "output": "svgs/vectorize-el-greco-assumption-cs1.svg",
-  "output_sha256": "b17c09ceaa33f2e5f53aff1edcea68dd348229d93b1315e1b2cd424532edf5a7",
+  "output_sha256": "e7751dbcbd94a9f6b4214711847f7ad87d6c19ad7b0958bc95dd5bd96591d54d",
   "pattern_id": "vectorize-el-greco-assumption-cs1",
   "mode": "organic",
   "tile": "none",
   "colorset": "colorset1",
-  "palette_contract_sha256": "c81d32ffb0d55d44e7d3102c7470e251baf34f0bb6472fbede7753df8b9a9eb5",
+  "palette_contract_sha256": "f36eb8a9fe171108383767c7697f023218121e51d3e45247e87b58e397b36d62",
   "variation_seed": 0,
   "composition_sha256": "a054b8f84fa6b172014ff7ed617ca9c69e569d286faff0363c09e23ecd3b0429",
   "parameters": {
@@ -25,15 +25,15 @@
       "layers": [
         {
           "source": "#656b67",
-          "target": "#828282"
+          "target": "#696969"
         },
         {
           "source": "#a37982",
-          "target": "#cfcfcf"
+          "target": "#828282"
         },
         {
           "source": "#82512f",
-          "target": "#6d1222"
+          "target": "#4f4f4f"
         },
         {
           "source": "#171008",
@@ -41,11 +41,11 @@
         },
         {
           "source": "#10395a",
-          "target": "#e8002a"
+          "target": "#363636"
         },
         {
           "source": "#82abbe",
-          "target": "#ffccd5"
+          "target": "#9c9c9c"
         },
         {
           "source": "#376f99",
@@ -53,7 +53,7 @@
         },
         {
           "source": "#d0c7a9",
-          "target": "#f7f7f7"
+          "target": "#cfcfcf"
         }
       ],
       "source_colors": [
@@ -69,14 +69,14 @@
       ],
       "target_colors": [
         "#333e48",
+        "#696969",
         "#828282",
-        "#cfcfcf",
-        "#6d1222",
+        "#4f4f4f",
         "#1c1c1c",
-        "#e8002a",
-        "#ffccd5",
+        "#363636",
+        "#9c9c9c",
         "#9e1b32",
-        "#f7f7f7"
+        "#cfcfcf"
       ]
     }
   },
@@ -89,13 +89,13 @@
   "palette": [
     "#1c1c1c",
     "#333e48",
-    "#6d1222",
+    "#363636",
+    "#4f4f4f",
+    "#696969",
     "#828282",
+    "#9c9c9c",
     "#9e1b32",
-    "#cfcfcf",
-    "#e8002a",
-    "#f7f7f7",
-    "#ffccd5"
+    "#cfcfcf"
   ],
   "path_count": 97,
   "output_bytes": 179831,

@@ -16,11 +16,18 @@
 
 ## Source Excerpt
 
+Load the bundled `assets/palettes/colorsets.json` during authoring and pass the
+parsed contract to this renderer. Area scaling carries the numeric value;
+keep region fills opaque and borderless. Allocate distinct region colors from
+the complete solid sequence before considering overflow outline variants.
+
 The excerpt below is the compact renderer source for this pattern. If it references helpers such as `prepareSvg`, `fadeIn`, `grow`, `drawPath`, `palette`, `ramps`, `axisBottom`, or `axisLeft`, read `references/shared-renderer-helpers.md` and recreate only the needed helper behavior in the final artifact.
 
 ```js
-function renderNonContiguousCartogram() {
+function renderNonContiguousCartogram(paletteContract, activeColorset = "colorset1") {
     const svg = prepareSvg("non-contiguous-cartogram", "Non-contiguous cartogram", "Region shapes scale around fixed centroids by value.");
+    const activePalette = paletteContract.colorsets[activeColorset];
+    const solidColors = activePalette.solidSequence.filter(color => color !== "#ffffff");
     const regions = [
       { id: "A", points: [[80, 90], [190, 76], [204, 166], [98, 184]], v: 1.18, c: palette.blue },
       { id: "B", points: [[218, 82], [344, 96], [330, 198], [214, 176]], v: .84, c: palette.green },
@@ -29,12 +36,13 @@ function renderNonContiguousCartogram() {
       { id: "E", points: [[266, 214], [442, 232], [418, 342], [278, 326]], v: 1.08, c: palette.red }
     ];
     const line = d3.line().curve(d3.curveLinearClosed);
-    regions.forEach(region => {
+    regions.forEach((region, index) => {
+      region.c = solidColors[index];
       const cx = d3.mean(region.points, d => d[0]), cy = d3.mean(region.points, d => d[1]);
-      const path = svg.append("path").attr("d", line(region.points)).attr("fill", region.c).attr("fill-opacity", .32 + region.v * .18).attr("stroke", region.c).attr("stroke-width", 2)
+      const path = svg.append("path").attr("d", line(region.points)).attr("fill", region.c).attr("fill-opacity", 1).attr("stroke", "none")
         .attr("transform-origin", `${cx}px ${cy}px`).attr("transform", `scale(${region.v})`);
       path.append("animateTransform").attr("attributeName", "transform").attr("type", "scale").attr("from", "1").attr("to", region.v).attr("dur", ".9s").attr("begin", ".08s").attr("fill", "freeze");
-      svg.append("text").attr("class", "mark-label").attr("x", cx).attr("y", cy).attr("text-anchor", "middle").text(region.id);
+      svg.append("text").attr("class", "mark-label").attr("fill", activePalette.textOnFill[region.c]).attr("x", cx).attr("y", cy).attr("text-anchor", "middle").text(region.id);
     });
   }
 ```

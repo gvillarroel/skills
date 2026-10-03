@@ -4,12 +4,12 @@
   "input": "assets/base-images/hokusai-great-wave.jpg",
   "input_sha256": "14d2887f90578eb14a3e9894d05a0d5558717fe520c14dc662ae98fb5b85171c",
   "output": "svgs/vectorize-hokusai-great-wave-cs2.svg",
-  "output_sha256": "aef0466476ba4aaa00573d8efa7ec7177bbe809598b0c9e3b64317abf18f97b2",
+  "output_sha256": "9f5b514269e7fa69577ecd63323b6f8e1bd0f9f3c9697db373b5ebc81d960406",
   "pattern_id": "vectorize-hokusai-great-wave-cs2",
   "mode": "collage",
   "tile": "none",
   "colorset": "colorset2",
-  "palette_contract_sha256": "c81d32ffb0d55d44e7d3102c7470e251baf34f0bb6472fbede7753df8b9a9eb5",
+  "palette_contract_sha256": "f36eb8a9fe171108383767c7697f023218121e51d3e45247e87b58e397b36d62",
   "variation_seed": 0,
   "composition_sha256": "ca359b3f26aea20b91b65107392b975da6fdf006a5417a9d07d6c73047144b12",
   "parameters": {
@@ -37,19 +37,19 @@
         },
         {
           "source": "#a1a8a0",
-          "target": "#828282"
+          "target": "#9c9c9c"
         },
         {
           "source": "#576771",
-          "target": "#004d66"
+          "target": "#696969"
         },
         {
           "source": "#efe0c5",
-          "target": "#ffffff"
+          "target": "#e7e7e7"
         },
         {
           "source": "#c1baa4",
-          "target": "#f1c319"
+          "target": "#b5b5b5"
         }
       ],
       "source_colors": [
@@ -67,10 +67,10 @@
         "#007298",
         "#333e48",
         "#cfcfcf",
-        "#828282",
-        "#004d66",
-        "#ffffff",
-        "#f1c319"
+        "#9c9c9c",
+        "#696969",
+        "#e7e7e7",
+        "#b5b5b5"
       ]
     }
   },
@@ -81,14 +81,14 @@
   "render_width": 620,
   "render_height": 425,
   "palette": [
-    "#004d66",
     "#007298",
     "#333e48",
-    "#828282",
+    "#696969",
+    "#9c9c9c",
+    "#b5b5b5",
     "#cfcfcf",
-    "#f1c319",
-    "#f7f7f7",
-    "#ffffff"
+    "#e7e7e7",
+    "#f7f7f7"
   ],
   "path_count": 127,
   "output_bytes": 280633,

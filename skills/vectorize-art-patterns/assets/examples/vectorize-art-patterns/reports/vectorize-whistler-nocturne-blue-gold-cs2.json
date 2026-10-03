@@ -4,12 +4,12 @@
   "input": "assets/base-images/whistler-nocturne-blue-gold.jpg",
   "input_sha256": "bee14ae88b745943494ad3ad62124681755813549919045c9071c30a9c00f9cc",
   "output": "svgs/vectorize-whistler-nocturne-blue-gold-cs2.svg",
-  "output_sha256": "165074fbeb8e9ac7b96d2ea5ddfece21941362b01bdad01dfc3aff733949525a",
+  "output_sha256": "aa0f5b8b1d0f798528efe41efa623560f2f8d07b007841b534d11f84ad4ac427",
   "pattern_id": "vectorize-whistler-nocturne-blue-gold-cs2",
   "mode": "stain",
   "tile": "none",
   "colorset": "colorset2",
-  "palette_contract_sha256": "c81d32ffb0d55d44e7d3102c7470e251baf34f0bb6472fbede7753df8b9a9eb5",
+  "palette_contract_sha256": "f36eb8a9fe171108383767c7697f023218121e51d3e45247e87b58e397b36d62",
   "variation_seed": 0,
   "composition_sha256": "930dc80870672b2a5d22fe337c8ccea37144d2c665fc45931dc3c5e41b7c219c",
   "parameters": {
@@ -29,23 +29,23 @@
         },
         {
           "source": "#676d66",
-          "target": "#828282"
+          "target": "#696969"
         },
         {
           "source": "#72766d",
-          "target": "#45842a"
+          "target": "#828282"
         },
         {
           "source": "#44483e",
-          "target": "#004d66"
+          "target": "#4f4f4f"
         },
         {
           "source": "#7d8170",
-          "target": "#9e1b32"
+          "target": "#9c9c9c"
         },
         {
           "source": "#75705e",
-          "target": "#652f6c"
+          "target": "#98700c"
         }
       ],
       "source_colors": [
@@ -60,11 +60,11 @@
       "target_colors": [
         "#333e48",
         "#007298",
+        "#696969",
         "#828282",
-        "#45842a",
-        "#004d66",
-        "#9e1b32",
-        "#652f6c"
+        "#4f4f4f",
+        "#9c9c9c",
+        "#98700c"
       ]
     }
   },
@@ -75,12 +75,12 @@
   "render_width": 560,
   "render_height": 370,
   "palette": [
-    "#004d66",
     "#007298",
     "#333e48",
-    "#45842a",
+    "#4f4f4f",
+    "#696969",
     "#828282",
-    "#9e1b32"
+    "#9c9c9c"
   ],
   "path_count": 13,
   "output_bytes": 24102,

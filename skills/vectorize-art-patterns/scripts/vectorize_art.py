@@ -211,7 +211,7 @@ def apply_colorset(
         mapped_background = nearest_token(background, background_candidates)
         candidates = [
             str(value).lower()
-            for value in colorset["artSequence"]
+            for value in colorset["solidSequence"]
             if str(value).lower() != mapped_background
         ]
         mapped_layers = [dict(layer) for layer in layers]
@@ -250,10 +250,15 @@ def apply_colorset(
                 continue
             available = candidates or [
                 str(value).lower()
-                for value in colorset["artSequence"]
+                for value in colorset["solidSequence"]
                 if str(value).lower() != mapped_background
             ]
-            target = nearest_token(str(layer["fill"]), available)
+            # Source contours and perceptual proximity remain meaningful. Use
+            # the complete solid palette and reserve soft pastel alternatives
+            # until the other unused tokens have been assigned.
+            soft = {"#ffccd5", "#cdf3ff", "#ffe5cc", "#dbffcc", "#f9ccff", "#fff4cc"}
+            preferred = [value for value in available if value not in soft] or available
+            target = nearest_token(str(layer["fill"]), preferred)
             layer["fill"] = target
             if target in candidates:
                 candidates.remove(target)

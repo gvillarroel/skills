@@ -47,7 +47,7 @@ function renderGemmaComparison() {
       .attr("height", d => d.h)
       .attr("rx", 7)
       .attr("fill", tokens.panel)
-      .attr("fill-opacity", .88)
+      .attr("fill-opacity", 1)
       .attr("stroke", tokens.panelStroke)
       .attr("stroke-width", .85);
     cards.append("circle")
@@ -219,7 +219,7 @@ function renderGemmaComparison() {
           .attr("height", 10)
           .attr("rx", 2)
           .attr("fill", row.fill)
-          .attr("fill-opacity", .78)
+          .attr("fill-opacity", 1)
           .attr("stroke", "none")
           .each(function () {
             d3.select(this).append("animate")

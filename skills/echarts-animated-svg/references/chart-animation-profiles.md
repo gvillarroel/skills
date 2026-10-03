@@ -70,7 +70,7 @@ Selector hints: browser SVG may emit translated filled paths plus white backplat
 
 Reveal rings from inner to outer levels. Use radial scale and opacity for segments; avoid path morphing because ring geometry is brittle in raw SVG.
 
-Selector hints: SSR output can tag sunburst segments with `ecmeta_data_index`; browser fallback should scope to filled arc paths with white borders. Reveal inner rings before outer rings and rely on ECharts `universalTransition` for value morphs before capture.
+Selector hints: SSR output can tag sunburst segments with `ecmeta_data_index`; browser fallback should scope to filled arc paths by geometry or stable data metadata. Initial segments have no decorative borders, so border paint is not a selector contract. Reveal inner rings before outer rings and rely on ECharts `universalTransition` for value morphs before capture.
 
 ### funnel
 

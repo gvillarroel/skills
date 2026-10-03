@@ -238,7 +238,7 @@ class EditorialPoster(Poster):
 
     def frame_and_key(self):
         self.rect((0,0,self.w,self.h),self.frame)
-        self.rect((34,self.title_height,self.w-68,self.h-self.title_height-34),self.paper,'#FFFFFF',3,13)
+        self.rect((34,self.title_height,self.w-68,self.h-self.title_height-34),self.paper,'none',0,13)
         self.text(self.w/2,87,self.title_lines[0],self.title_size,text_color(self.frame),bold=True,background=self.frame,
                   css='font-family="PosterTitle, Arial Narrow, sans-serif" letter-spacing="0.8"')
         # A neutral folio mark provides balance without reproducing another publisher's logo.
@@ -249,9 +249,9 @@ class EditorialPoster(Poster):
             self.text(self.w-45,38+i*16,line,10 if i==0 else 9.5,'#FFFFFF',anchor='end',bold=i==0,background=self.frame)
         for item in self.data.get('_cohort_key',{}).get('cells',[]):
             x,y,w,h=item['box'];paint=self.groups[item['group']]['color']
-            self.rect((x,y,w,h),'#ffffff',paint,2,12)
+            self.rect((x,y,w,h),paint,'none',0,12)
             for i,line in enumerate(wrap(item['label'],w-22,13,True)):
-                self.text(x+w/2,y+17+i*15,line,13,bold=True,background='#ffffff')
+                self.text(x+w/2,y+17+i*15,line,13,text_color(paint),bold=True,background=paint)
 
     def footer(self):
         lines=wrap(self.data['source_note']+' '+self.data.get('reading_note',self.default_note()),self.w-155,10)
@@ -419,13 +419,13 @@ class EditorialPoster(Poster):
         for nid,n in self.nodes.items():
             x,y,w,h=self.boxes[nid];paint=self.groups[n['group']]['color'];style=n.get('style','card')
             require(style in ('plain','card','pill','emblem','hero'),'Unknown editorial node treatment.')
-            fill=self.paper if style=='plain' else '#ffffff' if style=='pill' else paint
+            fill=self.paper if style=='plain' else paint
             ink=text_color(fill)
             self.add(f'<g id="node-{nid}" data-node-id="{nid}" data-group="{n["group"]}" data-treatment="{style}">')
             if n.get('detail_position')=='outside':
                 self.draw_separated_node(nid,n,(x,y,w,h),fill,paint)
                 self.add('</g>');continue
-            self.rect((x,y,w,h),fill,paint if style=='pill' else 'none',2.5,12 if style=='pill' else 1,extra='data-node-box="true"')
+            self.rect((x,y,w,h),fill,'none',0,12 if style=='pill' else 1,extra='data-node-box="true"')
             iconw=n.get('icon_width',30) if n.get('icon') else 0
             if iconw:
                 self.rect((x+2,y+2,iconw,h-4),'#ffffff')
@@ -450,7 +450,7 @@ class EditorialPoster(Poster):
         for i,line in enumerate(parts['dates']):
             self.text(x+w/2,y+small+3+i*small*1.25,line,small,owner=nid,css='data-content-role="date"')
         py=y+parts['date_height'];ph=parts['panel_height']
-        self.rect((x,py,w,ph),fill,paint if node.get('style')=='pill' else 'none',2.5,12 if node.get('style')=='pill' else 1,extra='data-name-panel="true"')
+        self.rect((x,py,w,ph),fill,'none',0,12 if node.get('style')=='pill' else 1,extra='data-name-panel="true"')
         if iconw:
             self.rect((x+2,py+2,iconw,ph-4),'#ffffff')
             self.artwork(node['icon'],x+2,py+(ph-iconw)/2,iconw,iconw,paint,node.get('variant',0))
@@ -523,7 +523,7 @@ class EditorialPoster(Poster):
                 require(safe,f'No clear placement for annotation {a["label"]!r}. Move its anchor.')
                 x,y,placed=safe[0];self.annotation_boxes.append(placed)
             self.add(f'<g data-annotation-id="annotation-{annotation_index}" data-annotation-kind="{attr(a.get("kind","note"))}">')
-            if a.get('kind')=='pill':self.rect((x-w/2,y-h/2,w,h),'#ffffff',paint,2.5,12)
+            if a.get('kind')=='pill':self.rect((x-w/2,y-h/2,w,h),paint,'none',0,12)
             if a.get('kind')=='heading':
                 if self.data.get('_branch_annotation_envelopes') and a.get('node'):
                     self.annotation_boxes.append(caption_box(a,self.nodes[a['node']],self.boxes[a['node']]))
@@ -531,7 +531,7 @@ class EditorialPoster(Poster):
             yy=y-h/2+size
             for line in lines:
                 css='font-family="Georgia, serif" font-style="italic"' if a.get('kind')=='heading' else ''
-                self.text(x,yy,line,size,bold=a.get('kind')!='heading',css=css,background='#ffffff' if a.get('kind')=='pill' else self.paper);yy+=size*1.12
+                self.text(x,yy,line,size,text_color(paint) if a.get('kind')=='pill' else text_color(self.paper),bold=a.get('kind')!='heading',css=css,background=paint if a.get('kind')=='pill' else self.paper);yy+=size*1.12
             self.add('</g>')
 
     def map_art(self,x,y,w,h,mapping=None,opacity=1):
@@ -709,8 +709,8 @@ class EditorialPoster(Poster):
                 self.rect((x,y,w,h),'none',extra='data-node-box="true"')
                 sw=n['_duration_width']
                 self.rect((x+(w-sw)/2,y,sw,h),paint,extra='data-period-stem="true"')
-                self.rect(n['_label_box'],paint,self.paper,1,4,extra='data-label-box="true" data-period-label="true"')
-            else:self.rect((x,y,w,h),paint,self.paper,1,5,extra='data-node-box="true"')
+                self.rect(n['_label_box'],paint,'none',0,4,extra='data-label-box="true" data-period-label="true"')
+            else:self.rect((x,y,w,h),paint,'none',0,5,extra='data-node-box="true"')
             if '_horizontal_lines' in n:
                 lx,ly,lw,lh=n['_label_box'];size=n['size']
                 self.rect((lx,ly,lw,lh),self.paper,extra='data-label-box="true"')

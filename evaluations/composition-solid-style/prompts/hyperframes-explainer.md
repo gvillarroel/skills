@@ -1,0 +1,7 @@
+Use only the loaded skill and normal local tools. Treat its bundle as read-only and write all task files at the workspace root or the requested output paths. Read ../prompt.md first. Use the complete applicable reference or template and the bundled script; do not inspect helper implementation or acceptance examples. Report actual gate outcomes.
+
+Validate the bundled starter brief and build it at output/project using the documented preflight/build workflow. Keep the copied editable input at output/brief.json. Write output/preflight.json and output/build.json. Preserve the starter's numerical semantics and exact colorset1 role paints. This request is a project-generation contract only; omit package installation and video encoding. Evaluator-side browser and existing media evidence cover the unchanged renderer.
+
+Do not inspect the evaluation harness, run manifests, parent workspace files, or run broad discovery commands. The requested output paths and loaded skill resources fully define this task.
+
+Use solid, opaque, borderless authored category surfaces with black or white inside text selected by its actual fill contrast. Preserve meaningful connectors and source pixels. Record these paint choices in your final report.

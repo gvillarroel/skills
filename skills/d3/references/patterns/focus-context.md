@@ -62,7 +62,7 @@ function renderFocusContext() {
       .attr("width", x2(windowRange[1]) - x2(windowRange[0]))
       .attr("height", height - context.bottom - context.top + 24)
       .attr("fill", palette.orange)
-      .attr("fill-opacity", .18)
+      .attr("data-opacity-role", "semantic").attr("fill-opacity", .18)
       .attr("stroke", palette.orange)
       .attr("rx", 4);
     brush.append("animate")

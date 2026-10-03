@@ -11,3 +11,9 @@ Preserve imported logos, photos, footage, and third-party source image pixels an
 Validate every output format and state the skill supports: source, static vector, animated vector, canvas, raster/export, gallery/deck chrome, controls, alternate states, and any downstream capture. Keep output paths, chart/diagram facts, relationships, stable IDs, labels, geometry, and accessibility metadata intact when repairing paint.
 
 The six runtime SVG templates deliberately use colorset2 to distinguish independent asset mechanisms. For a new red/neutral deck, replace every authored paint with the colorset1 roles before animating. Give categorical fill/background changes per-property `ease: steps(1)`; retain smooth motion/opacity. Check all 21 feature paths, six generated SVG assets, controls, drag/scroll/click states, and exported HTML.
+
+## Solid-first category style
+
+Use one opaque solid fill and no decorative outline for initial category choices. Keep the exact finite palette. Allocate every distinct usable palette color before recycling a fill with an outline; exclude the actual canvas color, put saturated/base colors first, then dark/bright/neutral colors, and soft colors last. Keep each category's fill, text and any overflow outline stable across panels, series, legends and motion states. Declare overflow explicitly and cycle border color, dash and width only after that solid capacity is exhausted.
+
+For text inside a filled shape, choose exactly `#000000` or `#ffffff` by the greater WCAG relative-luminance contrast against the actual fill. Do not assume every saturated color needs white text: orange, yellow, cyan and medium green often need black. Labels outside shapes use the canvas contrast. Use spacing and silhouette for grouping before borders. Preserve connectors, chart lines, class compartments, actor line art, meaningful data boundaries, source artwork and explicit user style. Containers are layout surfaces, not new categories.

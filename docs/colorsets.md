@@ -2,7 +2,19 @@
 
 Every authored visual output in this repository must use one active colorset. The exact machine-readable definition is [colorsets.json](colorsets.json). Runtime skills keep their own copy or equivalent finite token definition so an isolated bundle never depends on repository documentation or a sibling skill.
 
-Default to colorset1: white and gray surfaces, dark readable labels and red emphasis. Use colorset2 when requested or when the output requires simultaneous semantic categories that cannot be distinguished clearly with labels, geometry and neutral/red roles. Record the active colorset in a manifest, SVG attribute or HTML attribute. Keep the choice consistent across panels, previews, exports and video wrappers.
+Default to colorset1: solid red and neutral marks on a quiet stage. Use colorset2 when requested or when the output requires simultaneous semantic categories that cannot be distinguished clearly with labels, geometry and neutral/red roles. Record the active colorset in a manifest, SVG attribute or HTML attribute. Keep the choice consistent across panels, previews, exports and video wrappers.
+
+## Solid fills before outline variants
+
+Start filled nodes, cards, bars, cells, badges and 3D objects with one opaque colorset fill and no decorative outline, shadow rim or contrasting edge overlay. A light surface may be useful for layout, but do not make pale fill plus dark border the default semantic style. Preserve connector paths, axes, line drawings, physical mesh structure, licensed source artwork and explicit user style requests.
+
+Assign distinct categories from the active palette's `solidSequence`, excluding the actual canvas color. Base saturated colors come first, followed by dark, bright and neutral solids; soft colors come late. Keep assignments stable across panels, animation states, legends and exports. Similar shades still need direct labels or meaningful geometry. Do not add outlines merely because six semantic base colors have been used: the other usable solid tokens remain available. For a white canvas, colorset1 has 16 usable solid fills and colorset2 has 36; a different canvas excludes that token instead.
+
+For text inside a solid fill, choose exact black `#000000` or white `#ffffff`, whichever has the greater relative-luminance contrast. The palette's `textOnFill` records that decision for every token. Linearize each sRGB channel with `c / 12.92` for `c <= 0.04045`, otherwise `((c + 0.055) / 1.055) ** 2.4`; compute `L = 0.2126 R + 0.7152 G + 0.0722 B`. Compare black contrast `(L + 0.05) / 0.05` with white contrast `1.05 / (L + 0.05)`. Saturation or a simple RGB average is insufficient. Check the actual backing after compositing if transparency is required.
+
+Only after all usable solid fills have assignments, expand the style capacity by cycling those fills with a contrasting palette border color, then border dash and width. Keep the original solid assignments unchanged. Document the overflow mapping and mirror it in legends. A selected or focused interactive control may show a temporary focus indicator; this is an interaction state, not an early categorical style. Light fills with contrasting borders belong to this overflow stage when needed.
+
+Keep overflow borders distinct from their fill and prefer at least 3:1 contrast against it. Use a finite pool of border colors, solid/dashed/dotted traces and widths from 1 to 3 pixels; do not increase widths indefinitely. Once that pool is exhausted, report the limit and use direct labels, geometry or grouping instead of claiming another unique style. On translucent canvases, evaluate text and border contrast against the actual composited backing.
 
 | Role | Colorset1 | Colorset2 additions |
 | --- | --- | --- |
@@ -15,7 +27,7 @@ Default to colorset1: white and gray surfaces, dark readable labels and red emph
 | Special | Neutral or direct label | `#652f6c`, dark `#431f47`, bright `#9e00b3`, soft `#f9ccff` |
 | Orange category | Neutral or direct label | `#e77204`, dark `#994a00`, bright `#ff9633`, soft `#ffe5cc` |
 | Attention | Red or direct label | `#f1c319`, dark `#98700c`, bright `#ffd332`, soft `#fff4cc` |
-| Borders / quiet structure | `#cfcfcf` / `#e7e7e7` | Same |
+| Quiet solids / overflow borders | `#cfcfcf` / `#e7e7e7` | Same |
 
 Pink `#ffccd5` is available in both sets but is a last-resort extra category, not the default secondary fill. Exact membership does not establish contrast; inspect small labels, saturated backings, thin lines and animation states independently.
 
@@ -23,7 +35,7 @@ Apply the contract to authored base paint: CSS, SVG fill/stroke, gradient stops,
 
 Preserve source fidelity explicitly. Downloaded photos, videos, textures/HDRIs, original brand artwork, embedded source artwork and requested exact-RGB conversion modes keep their original colors and provenance. Their authored frame, controls, captions and diagrams still follow a colorset. Resolve `currentColor` at the consuming surface. Do not claim these original pixels satisfy the authored contract or silently modify source identity.
 
-The [34-skill output inventory](../evaluations/colorset-audit/coverage.json) records formats and paths, including nonvisual data/report outputs and source-fidelity boundaries. The [audit record](../evaluations/colorset-audit/validation-20261002.md) reports actual tests and remaining limits. Run:
+The [34-skill output inventory](../evaluations/colorset-audit/coverage.json) records formats and paths, including nonvisual data/report outputs and source-fidelity boundaries. The [original audit](../evaluations/colorset-audit/validation-20261002.md) records output coverage; the [solid presentation revision](../evaluations/solid-colorset-style/validation-20261003.md) records current renderer, isolated-runtime, contrast and publication checks. Run:
 
 ```powershell
 uv run --script scripts/validate-colorsets.py

@@ -7,6 +7,12 @@ description: "Transforms local SVGs and raster images into self-contained pixel 
 
 Load a local image, reduce it to a controlled ordered-dither grid, and emit either a static SVG or an animated GIF. For static output, accept a self-contained SVG or any raster format Pillow can read and rebuild the grid as run-length-compressed SVG rectangles. For animated output, either sample a self-contained CSS/SMIL SVG at explicit browser timeline positions or decode every composited raster frame, then keep one stable grid and regional palette across the timeline and encode a GIF with a whole-animation ffmpeg palette. Source pixels, paths, text objects, and interaction are intentionally flattened.
 
+## Solid-fill presentation
+
+For authored filled marks and preview chrome, start with one opaque colorset fill and no decorative border. Prefer saturated/base colors, then dark, bright and neutral solids, with soft fills late. Assign unique usable fills before introducing border variants; exclude the actual canvas color. Choose exact black or white text on each fill by maximum relative-luminance contrast. Keep semantic mappings stable across previews, legends and exports. Only after the usable solid colors are exhausted, expand with contrasting palette border colors, dash patterns and widths. Preserve meaningful line art, connectors, keyboard focus indicators, original source media and explicitly requested conversion aesthetics. Apply this preference to newly authored visuals and framing; preserve required source identity and fidelity.
+
+Keep zoom previews and verification helpers in the active workspace, for example `regional-zoom.png`. Read the same workspace-relative path with the image tool; do not use `/tmp` or an external temporary directory. If a new Python verification helper needs Pillow, declare `pillow` in its own uv script metadata and run it with `uv run --script` so it has the dependency independently of the converter.
+
 ## Choose one mode
 
 Use `--colorset colorset1` by default or `--colorset colorset2` for extended paint. The bundled [colorsets.json](assets/palettes/colorsets.json) defines exact allowed tokens. Original black/white already fits colorset1; custom ink must belong to the selected set. Regional source medoids retain region geometry but map their authored ink to the nearest active token before pairing it with black or white. Both static SVG and GIF validators reject off-palette paints. Describe regional results as palette restyling, not preservation of original RGB values.

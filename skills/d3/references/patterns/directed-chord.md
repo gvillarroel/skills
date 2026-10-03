@@ -37,7 +37,7 @@ function renderDirectedChord() {
     const groups = center.append("g").selectAll("path").data(chord.groups).join("path")
       .attr("d", arc).attr("fill", d => colors[d.index]).attr("stroke", "#fff").attr("stroke-width", 1.4);
     fadeIn(groups, .08, .55);
-    const ribbons = center.append("g").attr("fill-opacity", .55).selectAll("path").data(chord).join("path")
+    const ribbons = center.append("g").attr("data-opacity-role", "semantic").attr("fill-opacity", .55).selectAll("path").data(chord).join("path")
       .attr("d", ribbon).attr("fill", d => colors[d.source.index]).attr("stroke", d => colors[d.source.index]).attr("stroke-width", .7);
     fadeIn(ribbons, .16, .75);
     center.selectAll("text").data(chord.groups).join("text")

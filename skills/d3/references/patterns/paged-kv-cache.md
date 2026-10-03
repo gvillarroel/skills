@@ -41,7 +41,7 @@ function renderPagedKvCache() {
     svg.append("text").attr("class", "mark-label").attr("x", 396).attr("y", 62).attr("text-anchor", "middle").text("KV memory pages");
     requests.forEach((request, i) => {
       const group = svg.append("g").attr("transform", `translate(48,${request.y - 18})`);
-      group.append("rect").attr("width", 94).attr("height", 36).attr("rx", 8).attr("fill", request.color).attr("fill-opacity", .8).attr("stroke", palette.surface);
+      group.append("rect").attr("width", 94).attr("height", 36).attr("rx", 8).attr("fill", request.color).attr("fill-opacity", 1).attr("stroke", palette.surface);
       group.append("text").attr("class", "reverse-label").attr("x", 47).attr("y", 23).attr("text-anchor", "middle").attr("font-weight", 800).text(request.id);
       if (request.reused) {
         group.append("text").attr("class", "caption").attr("x", 108).attr("y", 23).attr("fill", palette.green).text("reuses freed page");
@@ -62,7 +62,7 @@ function renderPagedKvCache() {
       .attr("height", cell)
       .attr("rx", 7)
       .attr("fill", d => pageOwner.get(d.index)?.color || palette.gray100)
-      .attr("fill-opacity", d => pageOwner.has(d.index) ? .72 : .48)
+      .attr("data-opacity-role", "semantic").attr("fill-opacity", d => pageOwner.has(d.index) ? .72 : .48)
       .attr("stroke", d => d.index === 1 ? palette.green : palette.surface)
       .attr("stroke-width", d => d.index === 1 ? 2.6 : 1.2)
       .append("animate")

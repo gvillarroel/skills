@@ -6,6 +6,7 @@ description: "Builds offline interactive hierarchies with decision-driven pixel 
 # Hierarchy Lens
 
 Read [palette-policy.md](references/palette-policy.md) before authoring or composing visuals. Apply one exact colorset to authored content and report preserved source media separately.
+Read [solid-surfaces.md](references/solid-surfaces.md) for solid-first category fills, black/white text on the actual fill, and palette exhaustion before border variants.
 
 Create one explorable hierarchy image inside a self-contained HTML file. Put the root in the center and organize generations outward. Keep geometry independent of the selected color dimension.
 

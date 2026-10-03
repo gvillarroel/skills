@@ -39,7 +39,7 @@ function renderPolarArea() {
     const wedges = center.selectAll("path").data(data).join("path")
       .attr("d", arc)
       .attr("fill", (d, i) => colors[i % colors.length])
-      .attr("fill-opacity", .82)
+      .attr("fill-opacity", 1)
       .attr("stroke", "#fff")
       .attr("stroke-width", 1.2);
     fadeIn(wedges, .06, .75);

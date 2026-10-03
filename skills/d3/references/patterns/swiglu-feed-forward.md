@@ -32,7 +32,7 @@ function renderSwigluFeedForward() {
       const group = svg.append("g").attr("transform", `translate(${x},${y})`);
       group.append("text").attr("class", "mark-label").attr("x", 28).attr("y", -18).attr("text-anchor", "middle").text(label);
       values.forEach((value, i) => {
-        const bar = group.append("rect").attr("x", i * 14).attr("y", -value).attr("width", 10).attr("height", value).attr("rx", 3).attr("fill", color).attr("fill-opacity", .72).attr("stroke", palette.surface);
+        const bar = group.append("rect").attr("x", i * 14).attr("y", -value).attr("width", 10).attr("height", value).attr("rx", 3).attr("fill", color).attr("fill-opacity", 1).attr("stroke", palette.surface);
         bar.append("animate").attr("attributeName", "height").attr("from", 3).attr("to", value).attr("dur", ".34s").attr("begin", `${delay + i * .035}s`).attr("fill", "freeze");
       });
       return group;

@@ -35,6 +35,13 @@ class ColorsetTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             adapt_artifact('<svg/>', 'neon')
 
+    def test_vendor_runtime_bytes_are_not_authored_paint(self):
+        vendor = '<script id="d3-runtime">const libraryDefault="#007298"; const hiddenMarkup="<svg fill=\\"#123456\\">";</script>'
+        source = '<body>' + vendor + '<svg><rect fill="#007298"/></svg></body>'
+        adapted = adapt_artifact(source)
+        self.assertIn(vendor, adapted)
+        self.assertIn('<rect fill="#333e48"/>', adapted)
+
     def test_hex_looking_geometry_references_are_preserved(self):
         source = '<svg><style>#abcdef {stroke:#123456}</style><defs><marker id="abcdef"/></defs><path marker-end="url(#abcdef)" stroke="#123456"/><use href="#abcdef"/></svg>'
         adapted = adapt_artifact(source)

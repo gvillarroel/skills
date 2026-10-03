@@ -111,3 +111,11 @@ For repository validation after changing this skill:
 ```powershell
 uv run --script scripts/validate-skills.py
 ```
+
+The starter ships `solid-style.js` and its exact bundled palette contract. Keep
+this runtime file with the editable artifact: it removes decorative outlines,
+uses a solid role fill for light nodes with dark borders, and computes contained
+black/white label contrast. For new categorical roles call
+`D3SolidStyle.categoryStyle(index, colorset, actualCanvas)`; its initial tier
+exhausts all usable solid tokens before any border variant. Preserve genuine
+line geometry and use explicit `data-paint-mode` for source or line-art modes.

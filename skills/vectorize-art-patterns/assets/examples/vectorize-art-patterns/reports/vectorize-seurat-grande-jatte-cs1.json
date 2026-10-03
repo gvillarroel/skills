@@ -4,12 +4,12 @@
   "input": "assets/base-images/seurat-grande-jatte.jpg",
   "input_sha256": "659a2ff0a990f0d2a038a231d2d2dadf924afa9f078221af53241fd310fc2175",
   "output": "svgs/vectorize-seurat-grande-jatte-cs1.svg",
-  "output_sha256": "e9c4f555321a40c6dc55c4dd233674705af546731774ce260ea86c3ece895f94",
+  "output_sha256": "f808521aa288b90de7144cdcf1047913e4e9fd4479b635344abd678c0d999c04",
   "pattern_id": "vectorize-seurat-grande-jatte-cs1",
   "mode": "organic",
   "tile": "none",
   "colorset": "colorset1",
-  "palette_contract_sha256": "c81d32ffb0d55d44e7d3102c7470e251baf34f0bb6472fbede7753df8b9a9eb5",
+  "palette_contract_sha256": "f36eb8a9fe171108383767c7697f023218121e51d3e45247e87b58e397b36d62",
   "variation_seed": 0,
   "composition_sha256": "0641ca85c916636a083053e542a0cbb3c4a504cb840afc0dab83eb60723bea8c",
   "parameters": {
@@ -25,23 +25,23 @@
       "layers": [
         {
           "source": "#595c5b",
-          "target": "#828282"
+          "target": "#4f4f4f"
         },
         {
           "source": "#4e5d52",
-          "target": "#6d1222"
+          "target": "#696969"
         },
         {
           "source": "#83796e",
-          "target": "#cfcfcf"
+          "target": "#828282"
         },
         {
           "source": "#6a7266",
-          "target": "#e8002a"
+          "target": "#9c9c9c"
         },
         {
           "source": "#4b4e4f",
-          "target": "#1c1c1c"
+          "target": "#363636"
         },
         {
           "source": "#9e9c87",
@@ -49,11 +49,11 @@
         },
         {
           "source": "#616061",
-          "target": "#ffccd5"
+          "target": "#6d1222"
         },
         {
           "source": "#706364",
-          "target": "#f7f7f7"
+          "target": "#b5b5b5"
         }
       ],
       "source_colors": [
@@ -69,14 +69,14 @@
       ],
       "target_colors": [
         "#333e48",
+        "#4f4f4f",
+        "#696969",
         "#828282",
-        "#6d1222",
-        "#cfcfcf",
-        "#e8002a",
-        "#1c1c1c",
+        "#9c9c9c",
+        "#363636",
         "#9e1b32",
-        "#ffccd5",
-        "#f7f7f7"
+        "#6d1222",
+        "#b5b5b5"
       ]
     }
   },
@@ -87,15 +87,15 @@
   "render_width": 560,
   "render_height": 375,
   "palette": [
-    "#1c1c1c",
     "#333e48",
+    "#363636",
+    "#4f4f4f",
+    "#696969",
     "#6d1222",
     "#828282",
+    "#9c9c9c",
     "#9e1b32",
-    "#cfcfcf",
-    "#e8002a",
-    "#f7f7f7",
-    "#ffccd5"
+    "#b5b5b5"
   ],
   "path_count": 82,
   "output_bytes": 187071,

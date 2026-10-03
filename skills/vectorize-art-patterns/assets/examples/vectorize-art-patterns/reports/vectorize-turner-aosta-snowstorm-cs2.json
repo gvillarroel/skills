@@ -4,12 +4,12 @@
   "input": "assets/base-images/turner-aosta-snowstorm.jpg",
   "input_sha256": "b0b07257992499378e05d60d1aa49e326e97e9889b110533a699407c1c2e051c",
   "output": "svgs/vectorize-turner-aosta-snowstorm-cs2.svg",
-  "output_sha256": "9d605089106d53d0f1dd06d76fe259a3e544d5e3140e1abcb1089e1efd04678f",
+  "output_sha256": "1bc614c9c9f0a648227962794ad74320b2adae87d69b3bca7740109abd7772cb",
   "pattern_id": "vectorize-turner-aosta-snowstorm-cs2",
   "mode": "stain",
   "tile": "none",
   "colorset": "colorset2",
-  "palette_contract_sha256": "c81d32ffb0d55d44e7d3102c7470e251baf34f0bb6472fbede7753df8b9a9eb5",
+  "palette_contract_sha256": "f36eb8a9fe171108383767c7697f023218121e51d3e45247e87b58e397b36d62",
   "variation_seed": 0,
   "composition_sha256": "3d50652e35edcea87c6f5b06daa3cc7bdf10b1f1d2281dd400d239b64c77f97c",
   "parameters": {
@@ -33,19 +33,19 @@
         },
         {
           "source": "#3d2f22",
-          "target": "#1c1c1c"
+          "target": "#363636"
         },
         {
           "source": "#78531c",
-          "target": "#9e1b32"
+          "target": "#994a00"
         },
         {
           "source": "#876c43",
-          "target": "#45842a"
+          "target": "#98700c"
         },
         {
           "source": "#a38c5b",
-          "target": "#e77204"
+          "target": "#9c9c9c"
         },
         {
           "source": "#dcd7cf",
@@ -66,10 +66,10 @@
         "#333e48",
         "#007298",
         "#828282",
-        "#1c1c1c",
-        "#9e1b32",
-        "#45842a",
-        "#e77204",
+        "#363636",
+        "#994a00",
+        "#98700c",
+        "#9c9c9c",
         "#cfcfcf"
       ]
     }
@@ -82,13 +82,13 @@
   "render_height": 418,
   "palette": [
     "#007298",
-    "#1c1c1c",
     "#333e48",
-    "#45842a",
+    "#363636",
     "#828282",
-    "#9e1b32",
-    "#cfcfcf",
-    "#e77204"
+    "#98700c",
+    "#994a00",
+    "#9c9c9c",
+    "#cfcfcf"
   ],
   "path_count": 20,
   "output_bytes": 50343,

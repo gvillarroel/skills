@@ -18,7 +18,9 @@ uv run --script skills/d3/scripts/build_category_burst.py category-burst.html
 - Keep the central category visible first, then draw outward links, then move subcategory nodes from the center into final positions.
 - Keep final geometry deterministic. Do not run a live force simulation for a standalone artifact unless the simulation is pre-ticked and exported to fixed coordinates.
 - Use SVG-native animation (`animate`, `animateTransform`, or CSS keyframes) so extracted SVG output remains animated without JavaScript.
-- Labels must remain readable in the settled frame. Put labels outside the satellite circles with white halos when needed.
+- Labels must remain readable in the settled frame. Put black labels outside
+  satellites on a light canvas or use the bundled black/white contrast mapping
+  for labels placed inside an opaque circle. Keep ordinary text free of halos.
 
 ## Data Contract
 
@@ -31,19 +33,22 @@ Use one root record and 6-10 subcategory records. Each subcategory needs:
   angle: 0,
   distance: 132,
   color: "#007298",
-  fill: "#cdf3ff",
+  fill: "#007298",
   r: 22
 }
 ```
 
-Angles are degrees around the root, with `0` at the top and clockwise positive. Distances are pixel radii from the root in a `560x420` viewBox. Use the repository token palette for `color` and highlight fills.
+Angles are degrees around the root, with `0` at the top and clockwise positive.
+Distances are pixel radii from the root in a `560x420` viewBox. Use the bundled
+palette contract for opaque, single-token circle fills and no decorative
+stroke. Keep the spoke paths because they encode parent-child relationships.
 
 ## Implementation Steps
 
 1. Create a root SVG with `viewBox="0 0 560 420"`, a `<title>`, a `<desc>`, and `data-pattern-id="d3-category-burst"` when delivered outside the gallery.
 2. Place the root at `{ x: 280, y: 214 }`.
 3. Convert each subcategory angle with `(degrees - 90) * Math.PI / 180`, then compute final `x/y` from `root + unitVector * distance`.
-4. Draw a subtle guide ring first, then animate the root circle radius from `0` to about `36`.
+4. Animate the root circle radius from `0` to about `36`. Use a filled fade for an optional reveal pulse; omit guide rings, satellite rims and drop shadows.
 5. Draw one curved path per subcategory from the root to the final node. Use path drawing by animating `stroke-dashoffset` from total path length to `0`, with small per-spoke delays.
 6. Draw one `<g>` per subcategory with final `transform="translate(x,y)"`, then add `animateTransform type="translate"` values from the root position to a tangential float midpoint and finally to the fixed destination.
 7. Grow each satellite circle from about `5` to its final radius while the group is moving.

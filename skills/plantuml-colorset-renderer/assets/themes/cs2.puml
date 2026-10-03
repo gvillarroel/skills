@@ -2,151 +2,198 @@
 skinparam backgroundColor #ffffff
 skinparam shadowing false
 skinparam DefaultFontName Arial
-skinparam DefaultFontColor #333e48
+skinparam DefaultFontColor #000000
 skinparam ArrowColor #696969
-skinparam BorderColor #696969
 skinparam RoundCorner 6
-
-skinparam TitleFontColor #333e48
-skinparam NoteBackgroundColor #e7e7e7
-skinparam NoteBorderColor #9c9c9c
-skinparam NoteFontColor #333e48
-
-skinparam SequenceParticipantBackgroundColor #ffccd5
-skinparam SequenceParticipantBorderColor #9e1b32
-skinparam SequenceActorBackgroundColor #cdf3ff
-skinparam SequenceActorBorderColor #007298
+skinparam TitleFontColor #000000
+skinparam NoteBackgroundColor #9e1b32
+skinparam NoteBorderColor #9e1b32
+skinparam NoteBorderThickness 0
+skinparam NoteFontColor #ffffff
+skinparam SequenceParticipantBackgroundColor #007298
+skinparam SequenceParticipantBorderColor #007298
+skinparam SequenceParticipantBorderThickness 0
+skinparam SequenceParticipantFontColor #ffffff
+skinparam UsecaseBackgroundColor #e77204
+skinparam UsecaseBorderColor #e77204
+skinparam UsecaseBorderThickness 0
+skinparam UsecaseFontColor #000000
+skinparam ClassBackgroundColor #45842a
+skinparam ClassBorderColor #45842a
+skinparam ClassBorderThickness 0
+skinparam ClassFontColor #000000
+skinparam ObjectBackgroundColor #652f6c
+skinparam ObjectBorderColor #652f6c
+skinparam ObjectBorderThickness 0
+skinparam ObjectFontColor #ffffff
+skinparam ActivityBackgroundColor #f1c319
+skinparam ActivityBorderColor #f1c319
+skinparam ActivityBorderThickness 0
+skinparam ActivityFontColor #000000
+skinparam ActivityDiamondBackgroundColor #6d1222
+skinparam ActivityDiamondBorderColor #6d1222
+skinparam ActivityDiamondBorderThickness 0
+skinparam ActivityDiamondFontColor #ffffff
+skinparam ComponentBackgroundColor #004d66
+skinparam ComponentBorderColor #004d66
+skinparam ComponentBorderThickness 0
+skinparam ComponentFontColor #ffffff
+skinparam InterfaceBackgroundColor #994a00
+skinparam InterfaceBorderColor #994a00
+skinparam InterfaceBorderThickness 0
+skinparam InterfaceFontColor #ffffff
+skinparam NodeBackgroundColor #294d19
+skinparam NodeBorderColor #294d19
+skinparam NodeBorderThickness 0
+skinparam NodeFontColor #ffffff
+skinparam DatabaseBackgroundColor #431f47
+skinparam DatabaseBorderColor #431f47
+skinparam DatabaseBorderThickness 0
+skinparam DatabaseFontColor #ffffff
+skinparam CloudBackgroundColor #98700c
+skinparam CloudBorderColor #98700c
+skinparam CloudBorderThickness 0
+skinparam CloudFontColor #000000
+skinparam QueueBackgroundColor #e8002a
+skinparam QueueBorderColor #e8002a
+skinparam QueueBorderThickness 0
+skinparam QueueFontColor #ffffff
+skinparam StateBackgroundColor #00ace6
+skinparam StateBorderColor #00ace6
+skinparam StateBorderThickness 0
+skinparam StateFontColor #000000
+skinparam ClassHeaderBackgroundColor #45842a
+skinparam SequenceActorBackgroundColor #ffffff
+skinparam SequenceActorBorderColor #333e48
+skinparam SequenceActorFontColor #000000
 skinparam SequenceLifeLineBorderColor #696969
 skinparam SequenceArrowColor #696969
-
-skinparam UsecaseBackgroundColor #cdf3ff
-skinparam UsecaseBorderColor #007298
-skinparam ActorBackgroundColor #ffccd5
-skinparam ActorBorderColor #9e1b32
-
-skinparam ClassBackgroundColor #ffffff
-skinparam ClassBorderColor #9e1b32
-skinparam ClassHeaderBackgroundColor #ffccd5
-skinparam ObjectBackgroundColor #ffffff
-skinparam ObjectBorderColor #007298
-
-skinparam ActivityBackgroundColor #ffffff
-skinparam ActivityBorderColor #007298
-skinparam ActivityStartColor #45842a
+skinparam ActorBackgroundColor #ffffff
+skinparam ActorBorderColor #333e48
+skinparam ActorFontColor #000000
+skinparam ActivityStartColor #333e48
 skinparam ActivityEndColor #e8002a
-skinparam ActivityDiamondBackgroundColor #ffe5cc
-skinparam ActivityDiamondBorderColor #e77204
-
-skinparam ComponentBackgroundColor #ffffff
-skinparam ComponentBorderColor #007298
-skinparam InterfaceBackgroundColor #dbffcc
-skinparam InterfaceBorderColor #45842a
-skinparam NodeBackgroundColor #e7e7e7
-skinparam NodeBorderColor #333e48
-skinparam DatabaseBackgroundColor #cdf3ff
-skinparam DatabaseBorderColor #007298
-skinparam CloudBackgroundColor #f9ccff
-skinparam CloudBorderColor #652f6c
-skinparam QueueBackgroundColor #ffe5cc
-skinparam QueueBorderColor #e77204
-
-skinparam StateBackgroundColor #ffffff
-skinparam StateBorderColor #007298
-skinparam StateStartColor #45842a
+skinparam StateStartColor #333e48
 skinparam StateEndColor #e8002a
-
 skinparam TimingBackgroundColor #ffffff
-skinparam TimingFontColor #333e48
+skinparam TimingFontColor #000000
 skinparam TimingLineColor #696969
-
 skinparam LegendBackgroundColor #ffffff
-skinparam LegendBorderColor #cfcfcf
-
+skinparam LegendBorderColor #ffffff
+skinparam LegendBorderThickness 0
 <style>
+title {
+  LineThickness 0
+  BackgroundColor transparent
+}
 root {
   Padding 6
-  FontColor #333e48
+  FontColor #000000
   LineColor #696969
   BackgroundColor #ffffff
-  HyperLinkColor #007298
-}
-element {
-  FontColor #333e48
-  LineColor #696969
-  BackGroundColor #ffffff
-}
-header {
-  FontColor #333e48
-  BackGroundColor #e7e7e7
-  LineColor #9c9c9c
-}
-node, artifact, folder, frame, rectangle, card {
-  FontColor #333e48
-  LineColor #007298
-  BackGroundColor #cdf3ff
-}
-component, interface {
-  FontColor #333e48
-  LineColor #007298
-  BackGroundColor #ffffff
-}
-database, storage, collections {
-  FontColor #333e48
-  LineColor #007298
-  BackGroundColor #cdf3ff
-}
-cloud {
-  FontColor #333e48
-  LineColor #652f6c
-  BackGroundColor #f9ccff
-}
-queue {
-  FontColor #333e48
-  LineColor #e77204
-  BackGroundColor #ffe5cc
-}
-agent, actor, participant {
-  FontColor #333e48
-  LineColor #9e1b32
-  BackGroundColor #ffccd5
-}
-class {
-  FontColor #333e48
-  LineColor #9e1b32
-  BackGroundColor #ffffff
-}
-diamond {
-  FontColor #333e48
-  LineColor #e77204
-  BackGroundColor #ffe5cc
 }
 arrow {
-  FontColor #333e48
+  LineThickness 1.5
   LineColor #696969
+  FontColor #000000
+}
+actor {
+  LineColor #333e48
+  FontColor #000000
+  BackGroundColor #ffffff
+}
+node, artifact, folder, frame, rectangle, card {
+  FontColor #ffffff
+  LineColor #294d19
+  LineThickness 0
+  BackGroundColor #294d19
+}
+component, interface {
+  FontColor #ffffff
+  LineColor #004d66
+  LineThickness 0
+  BackGroundColor #004d66
+}
+database, storage, collections {
+  FontColor #ffffff
+  LineColor #431f47
+  LineThickness 0
+  BackGroundColor #431f47
+}
+cloud {
+  FontColor #000000
+  LineColor #98700c
+  LineThickness 0
+  BackGroundColor #98700c
+}
+queue {
+  FontColor #ffffff
+  LineColor #e8002a
+  LineThickness 0
+  BackGroundColor #e8002a
+}
+agent, participant {
+  FontColor #ffffff
+  LineColor #007298
+  LineThickness 0
+  BackGroundColor #007298
+}
+class {
+  FontColor #000000
+  LineColor #45842a
+  LineThickness 0
+  BackGroundColor #45842a
+}
+diamond {
+  FontColor #ffffff
+  LineColor #6d1222
+  LineThickness 0
+  BackGroundColor #6d1222
+}
+note {
+  FontColor #ffffff
+  LineColor #9e1b32
+  LineThickness 0
+  BackGroundColor #9e1b32
+}
+activity {
+  FontColor #000000
+  LineColor #f1c319
+  LineThickness 0
+  BackGroundColor #f1c319
+}
+state {
+  FontColor #000000
+  LineColor #00ace6
+  LineThickness 0
+  BackGroundColor #00ace6
 }
 chartDiagram {
   BackGroundColor #ffffff
-  FontColor #333e48
+  FontColor #000000
   axis {
     LineColor #696969
-    FontColor #333e48
+    FontColor #000000
   }
   grid {
     LineColor #e7e7e7
   }
   bar {
-    LineColor #007298
-    BackGroundColor #cdf3ff
+    LineColor #9e1b32
+    BackGroundColor #9e1b32
+    LineThickness 0
   }
   line {
-    LineColor #9e1b32
+    LineColor #007298
   }
   scatter {
     MarkerColor #e77204
   }
-  legend {
-    FontColor #333e48
-    BackGroundColor #ffffff
+}
+activityDiagram {
+  arrow {
+    LineColor #696969
+    LineThickness 1.5
   }
 }
 </style>

@@ -85,7 +85,7 @@ function renderD3KanbanBoard() {
       .attr("data-column-order", d => columnOrder.get(d.id))
       .attr("transform", d => `translate(${d.x},54)`);
     colGroups.append("rect").attr("width", colW).attr("height", 310).attr("rx", 10).attr("fill", palette.gray50).attr("stroke", palette.gray200);
-    colGroups.append("rect").attr("width", colW).attr("height", 34).attr("rx", 10).attr("fill", d => d.color).attr("fill-opacity", .86);
+    colGroups.append("rect").attr("width", colW).attr("height", 34).attr("rx", 10).attr("fill", d => d.color).attr("fill-opacity", 1);
     colGroups.append("text").attr("class", "reverse-label").attr("x", colW / 2).attr("y", 22).attr("text-anchor", "middle").attr("font-weight", 800).text(d => d.id);
     revealIn(colGroups, (_, i) => .08 + i * .04, .34);
     const counts = new Map();

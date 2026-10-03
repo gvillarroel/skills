@@ -68,8 +68,7 @@ def contrast(a, b):
 
 
 def text_color(background):
-    preferred = max((INK, "#FFFFFF"), key=lambda c: contrast(c, background))
-    return preferred if contrast(preferred, background) >= 4.5 else "#000000"
+    return max(("#000000", "#ffffff"), key=lambda c: contrast(c, background))
 
 
 def text_width(value, size, bold=False):
@@ -389,7 +388,7 @@ class Poster:
 
     def frame_and_key(self):
         self.rect((0, 0, self.w, self.h), self.frame)
-        self.rect((28, self.title_height, self.w - 56, self.h - self.title_height - 28), self.paper, "#FFFFFF", 2, 12)
+        self.rect((28, self.title_height, self.w - 56, self.h - self.title_height - 28), self.paper, "none", 0, 12)
         for i, line in enumerate(self.title_lines):
             self.text(self.w / 2, 83 + i * 79, line, 70, text_color(self.frame), bold=True,
                       background=self.frame, css='font-family="PosterTitle, Arial Narrow, Impact, sans-serif" letter-spacing="1.2"')
@@ -399,7 +398,7 @@ class Poster:
         pitch = (self.w - 130) / cols
         for i, group in enumerate(self.groups.values()):
             x, y = 65 + (i % cols) * pitch, self.title_height + 39 + (i // cols) * 38
-            self.rect((x, y - 17, 25, 20), group["color"], self.muted, .7, 2)
+            self.rect((x, y - 17, 25, 20), group["color"], "none", 0, 2)
             self.text(x + 36, y, group["label"], 18, anchor="start", bold=True)
         cols = max(1, int((self.w - 130) / 300))
         pitch = (self.w - 130) / cols
@@ -449,7 +448,7 @@ class Poster:
             if self.mode == "timeline":
                 self.rect(box, "none", extra='data-node-box="true"')
                 bar_width = min(54,w*.2)
-                self.rect((x,y,bar_width,h),paint,self.paper,2,3)
+                self.rect((x,y,bar_width,h),paint,"none",0,3)
                 self.line([(x+bar_width+8,y),(x+w,y)],"#cfcfcf",1)
                 label_width = w-bar_width-22
                 names,details,height = self.node_content(node,label_width)
@@ -457,7 +456,7 @@ class Poster:
                 ink,background = self.ink,self.paper
                 self.rect((x+bar_width+8,y+(h-height)/2,label_width+12,height+4),self.paper)
             else:
-                self.rect(box, paint, ink if node.get("emphasis") else paint, 2.8 if node.get("emphasis") else 1,
+                self.rect(box, paint, "none", 0,
                           2, extra='data-node-box="true"')
                 names, details, height = self.node_content(node, w)
                 label_x,background = x+w/2,paint
@@ -504,8 +503,8 @@ class Poster:
             span = pitch * lane["span"]
             require(self.left <= x and x + span <= self.right + .1 and span > 0, "Lane heading exceeds chart width.")
             paint = self.groups[lane["group"]]["color"]
-            self.rect((x + 5, self.top - 104, span - 10, 29), self.paper, paint, 2, 14)
-            self.text(x + span / 2, self.top - 84, lane["label"].upper(), 15, bold=True)
+            self.rect((x + 5, self.top - 104, span - 10, 29), paint, "none", 0, 14)
+            self.text(x + span / 2, self.top - 84, lane["label"].upper(), 15, text_color(paint), bold=True, background=paint)
         self.build_unions()
         self.check_boxes()
         self.build_routes()

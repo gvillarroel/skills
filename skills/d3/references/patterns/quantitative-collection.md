@@ -45,7 +45,7 @@ function renderBubbleScatter() {
     axisBottom(svg, x, height - margin.bottom, 5);
     axisLeft(svg, y, margin.left, 5);
     const dots = svg.append("g").selectAll("circle").data(data).join("circle")
-      .attr("cx", d => x(d.x)).attr("cy", d => y(d.y)).attr("fill", d => colors[d.group]).attr("fill-opacity", .78).attr("stroke", "#fff");
+      .attr("cx", d => x(d.x)).attr("cy", d => y(d.y)).attr("fill", d => colors[d.group]).attr("fill-opacity", 1).attr("stroke", "#fff");
     grow(dots, "r", 1, d => d.r, .08, .7);
   }
 ```
@@ -82,7 +82,7 @@ function renderRidgeline() {
     groups.forEach((group, gi) => {
       const data = d3.range(28).map(i => ({ x: i * 3.7, y: 12 + Math.exp(-Math.pow((i - (9 + gi * 4)) / 5, 2)) * 62 }));
       const g = svg.append("g").attr("transform", `translate(0,${yBase(group)})`);
-      g.append("path").datum(data).attr("d", line).attr("fill", colors[gi]).attr("fill-opacity", .72).attr("stroke", d3.color(colors[gi]).darker(.45));
+      g.append("path").datum(data).attr("d", line).attr("fill", colors[gi]).attr("fill-opacity", 1).attr("stroke", d3.color(colors[gi]).darker(.45));
       g.append("text").attr("class", "mark-label").attr("x", 42).attr("y", -8).text(group);
       fadeIn(g, .08 + gi * .08, .6);
     });
@@ -203,7 +203,7 @@ function renderViolin() {
         return { v, w };
       });
       const grp = svg.append("g").attr("transform", `translate(${x(g)},0)`);
-      grp.append("path").datum(density).attr("d", area).attr("fill", colors[gi]).attr("fill-opacity", .75).attr("stroke", "#fff");
+      grp.append("path").datum(density).attr("d", area).attr("fill", colors[gi]).attr("fill-opacity", 1).attr("stroke", "#fff");
       grp.append("text").attr("class", "mark-label").attr("x", 0).attr("y", height - 28).attr("text-anchor", "middle").text(g);
       fadeIn(grp, .1 + gi * .08, .7);
     });

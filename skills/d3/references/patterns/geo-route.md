@@ -24,7 +24,7 @@ function renderGeoRoute() {
     const projection = d3.geoNaturalEarth1().fitExtent([[38, 42], [width - 38, height - 52]], { type: "Sphere" });
     const path = d3.geoPath(projection);
     const graticule = d3.geoGraticule10();
-    svg.append("path").datum({ type: "Sphere" }).attr("d", path).attr("fill", palette.blueHighlight).attr("fill-opacity", .22).attr("stroke", palette.gray300);
+    svg.append("path").datum({ type: "Sphere" }).attr("d", path).attr("fill", palette.blueHighlight).attr("fill-opacity", 1).attr("stroke", palette.gray300);
     appendSchematicLand(svg, path);
     svg.append("path").datum(graticule).attr("d", path).attr("fill", "none").attr("stroke", "#e7e7e7").attr("stroke-width", .7);
     const cities = [

@@ -25,7 +25,7 @@ sys.dont_write_bytecode = True
 
 import navigation_contract as navigation  # noqa: E402
 from theme_contract import PALETTE, color_for_index, resolve_theme, derived_theme_colors  # noqa: E402
-from palette_contract import require_color
+from palette_contract import require_color, text_on_fill
 
 ID_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 ROLE_SELECTOR_RE = re.compile(r"^\[data-role=(?:'([^']+)'|\"([^\"]+)\")\]$")
@@ -1044,7 +1044,7 @@ def module_markup(
 <g id="module-{module_id}" class="sync-module" transform="translate({fmt(x)} {fmt(y)})"
    data-module-id="{module_id}" data-asset-type="{esc(module["assetType"])}"
    data-district-id="{district_id}"{navigation_anchor}
-   style="--district-accent: {district_accent};"
+   style="--district-accent: {district_accent}; --on-district: {text_on_fill(district_accent) if district_accent.startswith("#") else "#ffffff"};"
    data-focus-group="{esc(focus)}" data-placeholder="true"
    data-content-top="{fmt(content_top)}"
    role="group"
@@ -1172,7 +1172,7 @@ def fragment_markup(module: dict[str, Any], values: dict[str, float], locale: st
         for index, binding in enumerate(module["bindings"])
     ]
     marks_markup = "\n  ".join(marks)
-    return f'''<?xml version="1.0" encoding="UTF-8"?>
+    output = f'''<?xml version="1.0" encoding="UTF-8"?>
 <g xmlns="http://www.w3.org/2000/svg" class="module-content"
    transform="translate(0 {fmt(content_top)})"
    data-module-content-for="{esc(module['id'])}" data-content-origin="0 {fmt(content_top)}"
@@ -1185,6 +1185,7 @@ def fragment_markup(module: dict[str, Any], values: dict[str, float], locale: st
   {marks_markup}
 </g>
 '''
+    return "\n".join(line.rstrip() for line in output.splitlines()) + "\n"
 
 
 def button_markup(
@@ -1687,6 +1688,7 @@ def world_markup(plan: dict[str, Any]) -> str:
                 preview_parts = [
                     '<g class="district-singleton-preview" aria-hidden="true">'
                 ]
+                preview_branches = []
                 inner_count = max(1, len(preview_nodes) // 2)
                 for preview_index, preview_node in enumerate(preview_nodes):
                     inner = preview_index < inner_count
@@ -1706,10 +1708,12 @@ def world_markup(plan: dict[str, Any]) -> str:
                     distance = max(1.0, math.hypot(vector_x, vector_y))
                     end_x = preview_x - vector_x / distance * 32.0
                     end_y = preview_y - vector_y / distance * 32.0
-                    preview_parts.append(
+                    preview_branches.append(
                         f'<line class="district-singleton-preview-branch" '
                         f'x1="{fmt(node_x)}" y1="{fmt(node_y)}" '
                         f'x2="{fmt(end_x)}" y2="{fmt(end_y)}"/>'
+                    )
+                    preview_parts.append(
                         f'<circle class="district-singleton-preview-node" '
                         f'cx="{fmt(preview_x)}" cy="{fmt(preview_y)}" r="26"/>'
                     )
@@ -1718,7 +1722,12 @@ def world_markup(plan: dict[str, Any]) -> str:
                         width=19,
                         break_long_words=False,
                     ) or [str(preview_node.get("label", "Concept"))]
+                    preview_width = max(len(line) for line in preview_lines) * 14.5 + 24.0
+                    preview_height = 30.0 + max(0, len(preview_lines) - 1) * 27.0
                     preview_parts.append(
+                        f'<rect class="district-singleton-preview-label-plaque text-surface" '
+                        f'x="{fmt(preview_x - preview_width / 2)}" y="{fmt(preview_y + 30)}" '
+                        f'width="{fmt(preview_width)}" height="{fmt(preview_height)}" rx="8"/>'
                         f'<text class="district-singleton-preview-label" '
                         f'x="{fmt(preview_x)}" y="{fmt(preview_y + 52)}" text-anchor="middle">'
                     )
@@ -1729,12 +1738,13 @@ def world_markup(plan: dict[str, Any]) -> str:
                         )
                     preview_parts.append('</text>')
                 preview_parts.append('</g>')
+                preview_parts[1:1] = preview_branches
                 singleton_preview_markup = "".join(preview_parts)
             local_node_parts.append(
                 f'<g id="world-module-node-{esc(module_id)}" class="world-module-node" '
                 f'data-world-module-id="{esc(module_id)}" data-world-node-district="{esc(district["id"])}" '
                 f'data-local-root="{str(module_index == 1).lower()}" '
-                f'style="--district-accent: {esc(district["accent"])};">'
+                f'style="--district-accent: {esc(district["accent"])}; --on-district: {text_on_fill(district["accent"])};">'
                 f'{singleton_preview_markup}'
                 f'<circle class="world-module-node-halo" cx="{fmt(node_x)}" cy="{fmt(node_y)}" r="{fmt(node_halo_radius)}"/>'
                 f'<circle class="world-module-node-core" cx="{fmt(node_x)}" cy="{fmt(node_y)}" r="{fmt(node_core_radius)}"/>'
@@ -1765,7 +1775,7 @@ def world_markup(plan: dict[str, Any]) -> str:
             f'data-local-armature="{esc(district["localArmature"])}" '
             f'data-world-root="{str(is_root_district).lower()}" '
             f'data-single-module="{str(len(district["moduleIds"]) == 1).lower()}" '
-            f'style="--district-accent: {esc(district["accent"])};">'
+            f'style="--district-accent: {esc(district["accent"])}; --on-district: {text_on_fill(district["accent"])};">'
             f'<title>{esc(district["label"])}: {esc(district["summary"])}</title>'
             f'<rect class="district-field" x="{fmt(x)}" y="{fmt(y)}" '
             f'width="{fmt(width)}" height="{fmt(height)}" rx="180"/>'
@@ -1844,7 +1854,7 @@ def navigation_hud_markup(plan: dict[str, Any]) -> str:
             f'x="{fmt(x / world_width * map_width)}" y="{fmt(y / world_height * map_height)}" '
             f'width="{fmt(width / world_width * map_width)}" '
             f'height="{fmt(height / world_height * map_height)}" '
-            f'style="--district-accent: {esc(district["accent"])};"/>'
+            f'style="--district-accent: {esc(district["accent"])}; --on-district: {text_on_fill(district["accent"])};"/>'
         )
     parts.append(
         '<rect class="minimap-viewport" data-minimap-viewport="true" '
@@ -3074,23 +3084,23 @@ def build_svg(plan: dict[str, Any]) -> str:
     .provenance {{ font-size: 10.5px; fill: var(--muted); letter-spacing: 0.02em; }}
     .focus-region-label-plaque {{ fill: var(--canvas); fill-opacity: 1; }}
     .focus-region-label {{ font-size: 10px; font-weight: 760; letter-spacing: 0.1em; fill: var(--muted); }}
-    .module-frame {{ fill: var(--surface); fill-opacity: 1; stroke: var(--line); stroke-width: 1; rx: 12; }}
+    .module-frame {{ fill: var(--surface); fill-opacity: 1; stroke: none; stroke-width: 1; rx: 12; }}
     .module-kicker {{ font-size: 10px; font-weight: 760; letter-spacing: 0.10em; fill: var(--muted); }}
     .module-question {{ font-size: 12px; fill: var(--muted); }}
     .module-claim {{ font-size: 14px; font-weight: 620; }}
     .module-content text:not([font-size]) {{ font-size: 12px; }}
     .module-placeholder {{ opacity: 0.78; }}
-    .placeholder-mark {{ fill: var(--accent-soft); stroke: var(--accent); stroke-width: 1.5; }}
+    .placeholder-mark {{ fill: var(--accent); stroke: none; stroke-width: 1.5; }}
     .placeholder-value {{ font-size: 12px; fill: var(--muted); }}
     .sync-module .module-frame, .sync-module .module-content :is(path, rect, line, circle, ellipse, polygon, polyline) {{ transition: filter 180ms ease; }}
     .module-focus-control {{ cursor: pointer; outline: none; }}
-    .module-focus-control rect {{ fill: var(--accent-soft); stroke: var(--muted); stroke-width: 1.25; }}
-    .module-focus-control text {{ font-size: 10px; font-weight: 720; fill: var(--ink); pointer-events: none; }}
-    .module-focus-control:focus rect, .module-focus-control[aria-pressed="true"] rect {{ fill: var(--accent-soft); stroke: var(--accent); stroke-width: 2.5; }}
+    .module-focus-control rect {{ fill: var(--accent); stroke: none; stroke-width: 1.25; }}
+    .module-focus-control text {{ font-size: 10px; font-weight: 720; fill: var(--on-accent); pointer-events: none; }}
+    .module-focus-control:focus rect, .module-focus-control[aria-pressed="true"] rect {{ fill: var(--accent); stroke: var(--on-accent); stroke-width: 2.5; }}
     [data-focus-id]:not([data-focus-id=""]) .sync-module[data-focused="false"] .module-content :is(path, rect, line, circle, ellipse, polygon, polyline) {{ filter: opacity(48%) saturate(58%); }}
     .sync-module .module-content .text-surface {{ filter: none !important; }}
     .control-button {{ cursor: pointer; outline: none; }}
-    .control-button rect {{ fill: var(--surface); stroke: var(--line); rx: 8; }}
+    .control-button rect {{ fill: var(--surface); stroke: none; rx: 8; }}
     .control-button text {{ font-size: 12px; font-weight: 650; pointer-events: none; }}
     .control-button[aria-pressed="true"] rect, .control-button:focus rect {{ stroke: var(--accent); stroke-width: 2.5; }}
     .control-button[aria-disabled="true"] {{ cursor: not-allowed; }}
@@ -3124,7 +3134,8 @@ def build_svg(plan: dict[str, Any]) -> str:
     .world-link[data-route-traveling="true"] .world-link-path {{ stroke: var(--accent); stroke-width: 9; opacity: 1; }}
     .world-link[data-route-traveling="true"] .world-link-halo {{ stroke-width: 22; opacity: 1; }}
     .world-link[data-route-traveling="true"] .world-link-chevron {{ stroke: var(--accent); stroke-width: 11; }}
-    .world-link-label rect {{ fill: var(--surface-subtle); fill-opacity: 1; stroke: var(--line); stroke-width: 1.5; vector-effect: non-scaling-stroke; }}
+    .world-link-label {{ opacity: 0; }}
+    .world-link-label rect {{ fill: var(--surface-subtle); fill-opacity: 1; stroke: none; }}
     .world-link-label text {{ font-size: 72px; font-weight: 760; fill: var(--ink); }}
     .world-local-branches {{ pointer-events: none; }}
     .world-local-branch {{ fill: none; stroke: var(--district-accent); stroke-width: 3.5; stroke-opacity: 0.68; vector-effect: non-scaling-stroke; }}
@@ -3132,33 +3143,34 @@ def build_svg(plan: dict[str, Any]) -> str:
     .world-local-orbit-ring {{ stroke-dasharray: 18 14; stroke-width: 5; }}
     .world-district[data-local-armature="lanes"] .world-local-branch {{ stroke-linejoin: round; stroke-width: 5; }}
     .world-district[data-local-armature="branch"] .world-local-root-branch {{ stroke-width: 7; }}
-    .world-module-node-halo {{ fill: var(--district-accent); fill-opacity: 0.14; stroke: var(--district-accent); stroke-width: 4; stroke-opacity: 0.64; vector-effect: non-scaling-stroke; }}
-    .world-module-node-core {{ fill: var(--surface); stroke: var(--district-accent); stroke-width: 4; vector-effect: non-scaling-stroke; }}
+    .world-module-node-halo {{ fill: none; fill-opacity: 0; stroke: none; stroke-width: 4; stroke-opacity: 0.64; vector-effect: non-scaling-stroke; }}
+    .world-module-node-core {{ fill: var(--district-accent); stroke: none; stroke-width: 4; vector-effect: non-scaling-stroke; }}
     .world-module-node[data-local-root="true"] .world-module-node-halo {{ stroke-width: 6; }}
-    .world-module-node-index {{ font-size: 40px; font-weight: 840; fill: var(--ink); }}
-    .world-module-node-label-plaque {{ fill: var(--surface); fill-opacity: 1; stroke: var(--district-accent); stroke-width: 2; vector-effect: non-scaling-stroke; }}
+    .world-module-node-index {{ font-size: 40px; font-weight: 840; fill: var(--on-district); }}
+    .world-module-node-label-plaque {{ fill: var(--surface); fill-opacity: 1; stroke: none; stroke-width: 2; vector-effect: non-scaling-stroke; }}
     .world-module-node-label {{ font-size: 42px; font-weight: 740; fill: var(--ink); }}
     .district-singleton-preview {{ opacity: 0; pointer-events: none; }}
     .district-singleton-preview-branch {{ stroke: var(--district-accent); stroke-width: 3; stroke-opacity: 0.42; vector-effect: non-scaling-stroke; }}
-    .district-singleton-preview-node {{ fill: var(--surface); stroke: var(--district-accent); stroke-width: 3; vector-effect: non-scaling-stroke; }}
+    .district-singleton-preview-node {{ fill: var(--district-accent); stroke: none; stroke-width: 3; vector-effect: non-scaling-stroke; }}
     .district-singleton-preview-label {{ font-size: 24px; font-weight: 680; fill: var(--muted); }}
+    .district-singleton-preview-label-plaque {{ fill: var(--surface); stroke: none; }}
     .world-module-nav-control {{ outline: none; cursor: pointer; }}
     .world-module-nav-control circle {{ fill: transparent; stroke: transparent; stroke-width: 5; vector-effect: non-scaling-stroke; }}
     .world-module-nav-control:focus circle {{ stroke: var(--district-accent); }}
-    .district-field {{ fill: var(--surface-subtle); stroke: var(--district-accent); stroke-width: 3; vector-effect: non-scaling-stroke; }}
-    .district-hub-halo {{ fill: var(--district-accent); fill-opacity: 0.12; stroke: var(--district-accent); stroke-width: 4; vector-effect: non-scaling-stroke; pointer-events: none; }}
-    .district-hub {{ fill: var(--surface); stroke: var(--district-accent); stroke-width: 5; vector-effect: non-scaling-stroke; pointer-events: none; }}
+    .district-field {{ fill: var(--surface-subtle); stroke: none; stroke-width: 3; vector-effect: non-scaling-stroke; }}
+    .district-hub-halo {{ fill: none; fill-opacity: 0; stroke: none; stroke-width: 4; vector-effect: non-scaling-stroke; pointer-events: none; }}
+    .district-hub {{ fill: var(--district-accent); stroke: none; stroke-width: 5; vector-effect: non-scaling-stroke; pointer-events: none; }}
     .world-district[data-world-root="true"] .district-hub-halo {{ stroke-width: 9; }}
     .world-district[data-world-root="true"] .district-hub {{ stroke-width: 8; }}
-    .district-index {{ font-size: 42px; font-weight: 820; fill: var(--ink); }}
+    .district-index {{ font-size: 42px; font-weight: 820; fill: var(--on-district); }}
     .district-title {{ font-size: 96px; font-weight: 820; letter-spacing: -0.035em; fill: var(--ink); }}
-    .district-title-world-plaque {{ opacity: 0; fill: var(--surface); fill-opacity: 1; stroke: var(--district-accent); stroke-width: 3; vector-effect: non-scaling-stroke; }}
+    .district-title-world-plaque {{ opacity: 0; fill: var(--surface); fill-opacity: 1; stroke: none; stroke-width: 3; vector-effect: non-scaling-stroke; }}
     .district-title-world {{ opacity: 0; font-size: 118px; }}
     .district-summary {{ font-size: 34px; font-weight: 580; fill: var(--muted); }}
     .district-nav-control {{ outline: none; cursor: pointer; }}
     .district-nav-control circle {{ fill: transparent; stroke: transparent; stroke-width: 7; vector-effect: non-scaling-stroke; }}
     .district-nav-control:focus circle {{ stroke: var(--district-accent); }}
-    [data-world-mode="true"] .sync-module .module-frame {{ fill-opacity: 1; stroke: var(--district-accent); stroke-width: 2; vector-effect: non-scaling-stroke; rx: 24; }}
+    [data-world-mode="true"] .sync-module .module-frame {{ fill-opacity: 1; stroke: none; stroke-width: 0; vector-effect: non-scaling-stroke; rx: 24; }}
     [data-world-mode="true"] .sync-module {{ filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.12)); }}
     .svg-sync-ready[data-world-mode="true"][data-camera-tier="world"] .district-field {{ opacity: 0; }}
     .svg-sync-ready[data-world-mode="true"][data-camera-tier="world"] :is(.district-title-detail, .district-summary, .world-module-node-label, .world-module-node-label-plaque, .district-singleton-preview) {{ opacity: 0; pointer-events: none; }}
@@ -3178,21 +3190,21 @@ def build_svg(plan: dict[str, Any]) -> str:
     .svg-sync-ready[data-world-mode="true"][data-camera-tier="district"] .world-district[data-camera-active="false"] text {{ visibility: hidden; }}
     .svg-sync-ready[data-world-mode="true"][data-camera-tier="district"] .sync-module > .module-frame {{ fill-opacity: 0; stroke-opacity: 0; pointer-events: none; }}
     .svg-sync-ready[data-world-mode="true"][data-camera-tier="district"] .sync-module > :is(.module-kicker, .module-question, .module-claim, .module-content, .module-focus-control) {{ opacity: 0; pointer-events: none; }}
-    .svg-sync-ready[data-world-mode="true"][data-camera-tier="module"] :is(.world-link, .world-local-branches, .world-local-nodes, .district-summary, .district-title, .district-hub, .district-hub-halo, .district-field, .district-nav-control) {{ opacity: 0; pointer-events: none; }}
+    .svg-sync-ready[data-world-mode="true"][data-camera-tier="module"] :is(.world-link, .world-local-branches, .world-local-nodes, .district-summary, .district-title, .district-hub, .district-hub-halo, .district-index, .district-field, .district-nav-control) {{ opacity: 0; pointer-events: none; }}
     .svg-sync-ready[data-world-mode="true"][data-camera-tier="module"] .sync-module[data-camera-active="false"] > :is(.module-frame, .module-kicker, .module-question, .module-claim, .module-content, .module-focus-control) {{ opacity: 0; pointer-events: none; }}
     .svg-sync-ready[data-world-mode="true"][data-camera-tier="module"] .sync-module[data-camera-active="true"] > :is(.module-frame, .module-kicker, .module-question, .module-claim, .module-content, .module-focus-control) {{ opacity: 1; }}
     .svg-sync-ready[data-world-mode="true"][data-camera-tier="module"] .sync-module[data-camera-active="true"] {{ filter: drop-shadow(0 18px 32px rgba(0, 0, 0, 0.18)); }}
     .svg-sync-ready[data-world-mode="true"]:is([data-camera-tier="world"], [data-camera-tier="district"]) .world-link[data-route-traveling="true"] {{ opacity: 1; }}
     .svg-sync-ready[data-world-mode="true"]:is([data-camera-tier="world"], [data-camera-tier="district"]) .world-link[data-route-traveling="true"] .world-link-label {{ opacity: 1; }}
-    .header-plaque {{ fill: var(--surface-subtle); fill-opacity: 1; stroke: var(--line); stroke-width: 1; }}
-    .navigation-hud-panel {{ fill: var(--ink); fill-opacity: 1; stroke: var(--ink); stroke-width: 1.5; }}
+    .header-plaque {{ fill: var(--surface-subtle); fill-opacity: 1; stroke: none; stroke-width: 1; }}
+    .navigation-hud-panel {{ fill: var(--ink); fill-opacity: 1; stroke: none; stroke-width: 1.5; }}
     .navigation-eyebrow {{ font-size: 11px; font-weight: 780; letter-spacing: 0.14em; fill: var(--on-ink); }}
     .navigation-current-label {{ font-size: 14.5px; font-weight: 760; fill: var(--on-ink); }}
     .navigation-current-tier {{ font-size: 11px; font-weight: 640; letter-spacing: 0.08em; fill: var(--on-ink-muted); }}
     .navigation-handoff {{ font-size: 11.5px; font-weight: 650; fill: var(--on-ink-muted); }}
     .navigation-help {{ font-size: 9.5px; font-weight: 650; letter-spacing: 0.04em; fill: var(--on-ink-muted); }}
     .navigation-control {{ outline: none; cursor: pointer; }}
-    .navigation-control rect {{ fill: var(--ink); stroke: var(--on-ink-muted); stroke-width: 1.5; }}
+    .navigation-control rect {{ fill: var(--ink); stroke: none; stroke-width: 1.5; }}
     .navigation-control text {{ font-size: 13px; font-weight: 780; fill: var(--on-ink); pointer-events: none; }}
     .navigation-control:focus rect, .navigation-control[aria-pressed="true"] rect {{ stroke: var(--on-ink); stroke-width: 3; }}
     .navigation-control[aria-disabled="true"] {{ cursor: not-allowed; }}
@@ -3258,6 +3270,13 @@ def build_svg(plan: dict[str, Any]) -> str:
     )
     focus_regions, focus_region_labels = focus_region_markup(plan)
     relationships = relationship_markup(plan)
+    # Paint the legend after the module bodies so its opaque text surface is
+    # preserved in the script-free view as well as interactive camera states.
+    relationship_key = ""
+    key_start = relationships.find('<g id="composition-relationship-key"')
+    if key_start >= 0:
+        relationship_key = relationships[key_start:-4]
+        relationships = relationships[:key_start] + "</g>"
     world = world_markup(plan)
     navigation_hud = navigation_hud_markup(plan)
     navigation_plan = plan.get("navigation")
@@ -3287,7 +3306,7 @@ def build_svg(plan: dict[str, Any]) -> str:
             f'overflow="hidden" role="group" aria-label="Navigable world viewport" '
             f'data-world-bounds="{world_bounds_text}" data-nav-anchor-id="world">'
             f'<g id="composition-world">{world}{focus_regions}{relationships}'
-            f'{focus_region_labels}<g id="composition-modules">{modules}</g></g></svg>'
+            f'{focus_region_labels}<g id="composition-modules">{modules}</g>{relationship_key}</g></svg>'
         )
         header_plaque = (
             f'<rect class="header-plaque" x="20" y="16" '
@@ -3301,11 +3320,11 @@ def build_svg(plan: dict[str, Any]) -> str:
     else:
         composition_body = (
             f'{focus_regions}{relationships}{focus_region_labels}'
-            f'<g id="composition-modules">{modules}</g>'
+            f'<g id="composition-modules">{modules}</g>{relationship_key}'
         )
         header_plaque = ""
         root_navigation_attributes = ' data-world-mode="false"'
-    return f'''<?xml version="1.0" encoding="UTF-8"?>
+    output = f'''<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" id="{esc(plan['compositionId'])}" viewBox="{fmt(float(root_x))} {fmt(float(root_y))} {fmt(float(root_width))} {fmt(float(root_height))}" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" role="group" aria-labelledby="composition-title" aria-describedby="composition-desc" data-composition-id="{esc(plan['compositionId'])}" data-plan-version="1" data-colorset="{'colorset1' if theme['preset'] in {'colorset1', 'editorial'} else 'colorset2'}" data-sync-ready="false" data-static-state="{esc(plan['initialScenario'])}" data-state-revision="0"{root_navigation_attributes}>
   <title id="composition-title">{esc(plan['title'])}</title>
   <desc id="composition-desc">{esc(description)}</desc>
@@ -3325,6 +3344,7 @@ def build_svg(plan: dict[str, Any]) -> str:
   <script><![CDATA[{RUNTIME_JS}]]></script>
 </svg>
 '''
+    return "\n".join(line.rstrip() for line in output.splitlines()) + "\n"
 
 
 def main() -> int:

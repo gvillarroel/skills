@@ -48,9 +48,9 @@ function renderPolygonClipping() {
       }, points);
     }
     const line = d3.line().curve(d3.curveLinearClosed);
-    svg.append("path").attr("d", line(subject)).attr("fill", palette.blueHighlight).attr("fill-opacity", .64).attr("stroke", palette.blue).attr("stroke-width", 2).attr("stroke-dasharray", "6 5");
+    svg.append("path").attr("d", line(subject)).attr("fill", palette.blueHighlight).attr("data-opacity-role", "semantic").attr("fill-opacity", .64).attr("stroke", palette.blue).attr("stroke-width", 2).attr("stroke-dasharray", "6 5");
     svg.append("rect").attr("x", clip.x0).attr("y", clip.y0).attr("width", clip.x1 - clip.x0).attr("height", clip.y1 - clip.y0).attr("fill", "none").attr("stroke", palette.ink).attr("stroke-width", 2);
-    const clipped = svg.append("path").attr("d", line(clipPolygon(subject))).attr("fill", palette.redHighlight).attr("fill-opacity", .84).attr("stroke", palette.red).attr("stroke-width", 3);
+    const clipped = svg.append("path").attr("d", line(clipPolygon(subject))).attr("fill", palette.redHighlight).attr("data-opacity-role", "semantic").attr("fill-opacity", .84).attr("stroke", palette.red).attr("stroke-width", 3);
     fadeIn(clipped, .18, .65);
     const subjectDots = svg.append("g").selectAll("circle.subject-point").data(subject).join("circle")
       .attr("class", "subject-point").attr("cx", d => d[0]).attr("cy", d => d[1]).attr("fill", palette.blue).attr("stroke", "#fff").attr("stroke-width", 1.5);

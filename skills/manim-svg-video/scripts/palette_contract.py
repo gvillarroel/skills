@@ -18,3 +18,45 @@ def nearest_color(value, colorset="colorset2"):
     """Snap an intentional generated tint to the selected finite token set."""
     channels = [int(value[i:i + 2], 16) for i in (1, 3, 5)]
     return min(COLORSETS[colorset]["allowed"], key=lambda c: sum((x - int(c[i:i + 2], 16)) ** 2 for x, i in zip(channels, (1, 3, 5))))
+
+
+def text_on_fill(fill, colorset="colorset2"):
+    """Select pure black or white by the actual opaque fill's WCAG contrast."""
+    return COLORSETS[colorset]["textOnFill"][require_color(fill, colorset)]
+
+def solid_colors(colorset="colorset2", canvas="#f7f7f7"):
+    """Exhaust every unique palette solid before introducing outline variants."""
+    return [paint for paint in COLORSETS[colorset]["solidSequence"] if paint != canvas.lower()]
+
+def relative_luminance(fill):
+    """Compute WCAG sRGB relative luminance for an opaque palette token."""
+    channels = [int(fill[i:i + 2], 16) / 255 for i in (1, 3, 5)]
+    linear = [c / 12.92 if c <= .04045 else ((c + .055) / 1.055) ** 2.4 for c in channels]
+    return sum(c * weight for c, weight in zip(linear, (.2126, .7152, .0722)))
+
+def contrast_ratio(first, second):
+    luminances = sorted((relative_luminance(first), relative_luminance(second)))
+    return (luminances[1] + .05) / (luminances[0] + .05)
+
+def category_style(index, colorset="colorset2", canvas="#f7f7f7"):
+    """Exhaust solids before finite contrast-safe border/dash/width variants."""
+    if not isinstance(index, int) or index < 0:
+        raise ValueError("Category index must be a nonnegative integer")
+    solids = solid_colors(colorset, canvas)
+    fill = solids[index % len(solids)]
+    cycle = index // len(solids)
+    style = {"fill": fill, "text": text_on_fill(fill, colorset), "stroke": "none",
+             "strokeWidth": 0, "dash": "", "overflow": False,
+             "overflowExhausted": False}
+    if cycle:
+        borders = [paint for paint in COLORSETS[colorset]["allowed"]
+                   if paint != fill and contrast_ratio(paint, fill) >= 3]
+        # Border colors vary first, then three dash types, then widths 1..3.
+        # The finite pool eventually repeats; labels/symbols/split views must
+        # distinguish identities beyond it rather than growing border width.
+        phase = cycle - 1
+        style.update(stroke=borders[phase % len(borders)],
+                     strokeWidth=1 + (phase // (3 * len(borders))) % 3,
+                     dash=("", "6 3", "2 3")[(phase // len(borders)) % 3],
+                     overflow=True, overflowExhausted=phase >= 9 * len(borders))
+    return style

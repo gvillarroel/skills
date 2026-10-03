@@ -32,7 +32,7 @@ function renderBubbleMap() {
     ].map(d => ({ xy: projection([d[0], d[1]]), value: d[2] }));
     const r = d3.scaleSqrt().domain([15, 50]).range([8, 30]);
     const bubbles = svg.append("g").selectAll("circle").data(data).join("circle")
-      .attr("cx", d => d.xy[0]).attr("cy", d => d.xy[1]).attr("fill", palette.blue).attr("fill-opacity", .42).attr("stroke", palette.blue).attr("stroke-width", 2);
+      .attr("cx", d => d.xy[0]).attr("cy", d => d.xy[1]).attr("fill", palette.blue).attr("data-opacity-role", "semantic").attr("fill-opacity", .42).attr("stroke", palette.blue).attr("stroke-width", 2);
     grow(bubbles, "r", 2, d => r(d.value), .08, .65);
     const sizeLegend = svg.append("g").attr("transform", "translate(404,360)");
     [15, 50].forEach((value, index) => {

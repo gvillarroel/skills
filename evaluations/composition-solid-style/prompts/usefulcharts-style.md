@@ -1,0 +1,5 @@
+Use only the loaded skill and normal local tools. Treat its bundle as read-only and write all task files at the workspace root or the requested output paths. Read ../prompt.md first. Use the complete applicable reference or template and the bundled script; do not inspect helper implementation or acceptance examples. Report actual gate outcomes.
+
+Render the bundled starter lineage template without changing its invented records or relationships. Preserve output/source.json as the copied source. Create output/poster.svg, output/poster.html and output/render.json with the bundled renderer. Use the template's canonical colorset2 family colors, since four simultaneous craft families require independently labeled category cues. This is a render contract rather than a new historical research or visual-criticism task. Verify successful output and explain the active palette in output/palette.md.
+
+Use solid, opaque, borderless authored category surfaces with black or white inside text selected by its actual fill contrast. Preserve meaningful connectors and source pixels. Record these paint choices in your final report.

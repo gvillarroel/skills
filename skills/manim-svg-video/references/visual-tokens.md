@@ -81,8 +81,15 @@ Use these tokens for D3 animated examples, replayable galleries, generated SVG a
 ## Implementation Notes
 
 - Prefer CSS custom properties named from these tokens in galleries and standalone HTML artifacts.
+- Default wrapper tiles and error placeholders have zero border width and opaque
+  fills. Titles, tile labels and placeholder text use pure black or white by
+  maximum contrast on their actual background unless explicitly overridden.
+  Use `--tile-border-width` or `--placeholder-border-width` only for an explicit
+  requested outline or a declared category overflow after all usable solids.
 - For SVG output, set text `font-family` explicitly because extracted SVGs may not inherit page CSS.
 - Use the primary palette for categorical charts before using derived colors.
-- Use highlight colors for subtle fills, selection states, and replay-running states.
+- Use opaque borderless base/saturated category fills first and choose black or
+  white labels by their actual contrast. Use highlight colors late in the solid
+  sequence, and introduce border variants only after every usable solid is used.
 - Use interaction colors for hover, active, and pressed states.
 - Preserve source-rendered geometry, but remap editable example palettes to these tokens when the example is not demonstrating a third-party source theme.

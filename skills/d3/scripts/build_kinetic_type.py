@@ -11,6 +11,7 @@ import argparse
 from html import escape
 import json
 from pathlib import Path
+from colorset_adapter import adapt_artifact
 import sys
 from typing import Any
 
@@ -34,7 +35,7 @@ def load_palette(colorset: str) -> dict[str, Any]:
     if not isinstance(record, dict):
         raise ValueError(f"Unknown colorset: {colorset}")
     roles = record.get("roles")
-    sequence = record.get("sequence")
+    sequence = [value for value in record.get("solidSequence", []) if value != roles.get("background")]
     if not isinstance(roles, dict) or not isinstance(sequence, list):
         raise ValueError(f"Malformed palette record for {colorset}")
     return {"id": colorset, "name": record["name"], "roles": roles, "sequence": sequence}
@@ -585,7 +586,7 @@ __CARDS__
     remaining = sorted({token for token in template.split() if token.startswith("__") and token.endswith("__")})
     if remaining:
         raise ValueError(f"Unresolved template placeholders: {remaining}")
-    return template
+    return adapt_artifact(template, colorset)
 
 
 def make_parser() -> argparse.ArgumentParser:

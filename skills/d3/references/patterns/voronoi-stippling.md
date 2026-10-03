@@ -45,7 +45,7 @@ function renderVoronoiStippling() {
       .attr("cx", d => d.x)
       .attr("cy", d => d.y)
       .attr("fill", palette.ink)
-      .attr("fill-opacity", d => .34 + d.weight * .55);
+      .attr("data-opacity-role", "semantic").attr("fill-opacity", d => .34 + d.weight * .55);
     grow(dots, "r", .8, d => 1.9 + d.weight * 4.8, .1, .65);
     svg.append("path")
       .attr("d", "M168,68 C244,38 384,62 432,144 C480,226 410,330 286,344 C176,356 92,278 106,184 C114,126 124,92 168,68Z")

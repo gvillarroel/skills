@@ -210,7 +210,7 @@ function renderPenCurveStudy() {
       .attr("class", "pen-curve-ribbon")
       .attr("d", d => d.ribbonD)
       .attr("fill", palette.redHover)
-      .attr("fill-opacity", .98)
+      .attr("fill-opacity", 1)
       .attr("opacity", 0);
     ribbon.append("animate")
       .attr("attributeName", "opacity")
@@ -268,7 +268,7 @@ function renderPenCurveStudy() {
     pen.append("circle")
       .attr("r", 12.5)
       .attr("fill", palette.red)
-      .attr("fill-opacity", .96);
+      .attr("fill-opacity", 1);
     pen.append("animateMotion")
       .attr("dur", `${totalDuration}s`)
       .attr("begin", "0s")

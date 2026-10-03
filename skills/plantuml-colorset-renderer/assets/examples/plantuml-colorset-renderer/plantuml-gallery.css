@@ -55,7 +55,7 @@ header {
   gap: 12px;
   align-items: end;
   padding: 0 0 12px;
-  border-bottom: 1px solid var(--line);
+  border: 0;
 }
 
 h1 {
@@ -101,7 +101,7 @@ h1 {
 .control-button,
 .card-replay-button {
   min-height: 30px;
-  border: 1px solid var(--line);
+  border: 0;
   border-radius: 8px;
   background: var(--surface);
   color: var(--accent-hover);
@@ -168,7 +168,7 @@ h1 {
   gap: 18px;
   margin-top: 18px;
   padding: 12px;
-  border: 1px solid var(--line);
+  border: 0;
   border-radius: 10px;
   background: var(--surface);
 }
@@ -195,7 +195,7 @@ h1 {
   gap: 6px;
   min-width: 0;
   padding: 12px;
-  border-left: 3px solid var(--accent);
+  border: 0;
   background: var(--page);
 }
 
@@ -217,7 +217,7 @@ h1 {
   align-items: end;
   margin-top: 14px;
   padding: 10px 12px;
-  border: 1px solid var(--line);
+  border: 0;
   border-radius: 10px;
   background: var(--surface);
 }
@@ -283,7 +283,7 @@ h1 {
 
 .example-card {
   min-width: 0;
-  border: 1px solid var(--line);
+  border: 0;
   border-radius: 8px;
   background: var(--surface);
   overflow: hidden;
@@ -297,7 +297,7 @@ h1 {
 .example-header {
   min-height: 116px;
   padding: 14px 14px 12px;
-  border-bottom: 1px solid var(--line-soft);
+  border: 0;
 }
 
 .example-header-top {

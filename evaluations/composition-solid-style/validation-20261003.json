@@ -1,0 +1,514 @@
+{
+  "date": "2026-10-03",
+  "purpose": "Supplementary solid-first revision, not a new full release cohort",
+  "records": [
+    {
+      "skill": "compose-synchronized-svg",
+      "runId": "solid-composition-compose-synchronized-svg-20261003-5",
+      "model": "openai-codex/gpt-5.6-luna",
+      "strict": true,
+      "passed": true,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "runtimeSha256": "e20220f0844702cafe110417abbc818a6e6c731695b48e80c273dde7d5f1d732",
+      "fileCount": 35,
+      "exactOutputs": [
+        {
+          "path": "output/diagram.svg",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 139391,
+          "sha256": "d8ac6e512f8bc7c30274eaa15c1b3bc3953d66b0c5babe48f98239f42d3448db",
+          "error": null
+        },
+        {
+          "path": "output/plan.json",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 24134,
+          "sha256": "d6c633eb2a86c05716ff60d2d4c8d641de78685c03aecb07b57330ba2f3a75c4",
+          "error": null
+        },
+        {
+          "path": "output/composition.json",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 1571,
+          "sha256": "49f0731a2a6a7d5164c5a3018a50d0d3e402e0436e98ae8e08d3138fa156e46e",
+          "error": null
+        },
+        {
+          "path": "output/brief.json",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 9301,
+          "sha256": "9537c08c3c23b0bbae9a4c098c6c0e274c76d1f3321fff21081bed9f30e5c3fc",
+          "error": null
+        },
+        {
+          "path": "output/static.json",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 3791,
+          "sha256": "97e432822c4a307bdb9db9b79c3723fc4d420b2277952ccca90da3872653d9f6",
+          "error": null
+        }
+      ],
+      "manifestPath": "evaluations/runs/solid-composition-compose-synchronized-svg-20261003-5/run-manifest.json",
+      "supersededPassingFreezes": [
+        "solid-composition-compose-synchronized-svg-20261003-1",
+        "solid-composition-compose-synchronized-svg-20261003-2",
+        "solid-composition-compose-synchronized-svg-20261003-3",
+        "solid-composition-compose-synchronized-svg-20261003-4"
+      ],
+      "harnessCommand": "C:\\Users\\villa\\AppData\\Roaming\\npm\\pi.CMD --model openai-codex/gpt-5.6-luna --thinking high --mode json --no-context-files --no-extensions --no-skills --no-prompt-templates --no-themes --no-session --skill skills/compose-synchronized-svg --print \"You are running an isolated forward test for `compose-synchronized-svg`. Use the read tool to read `../prompt.md` first, then follow it exactly. The loaded bundle is rooted at `skills/compose-synchronized-svg` from the current workspace; never prefix that path with `../`. Immediately after the prompt, read the bundle entry point at `skills/compose-synchronized-svg/SKILL.md`; do not probe for README.md or other conventional entry-point filenames. The shell tool is bash, not PowerShell; do not run PowerShell commands. Do not list directories or inspect script source before reading the prompt. If the prompt gives an exact command, run it verbatim and verify the required outputs.\""
+    },
+    {
+      "skill": "diagram-composition",
+      "runId": "solid-composition-diagram-composition-20261003-2",
+      "model": "openai-codex/gpt-5.6-luna",
+      "strict": true,
+      "passed": true,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "runtimeSha256": "e6d1db143038c9d9b75739417ef835f290e9780098acaded096b5be11e04bb87",
+      "fileCount": 25,
+      "exactOutputs": [
+        {
+          "path": "output/brief.json",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 3523,
+          "sha256": "94675daca8bdff6f02468466b4e0279afffda63cc21fcad0833175f06903cfd9",
+          "error": null
+        },
+        {
+          "path": "output/plan.json",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 9028,
+          "sha256": "eb1ec1f88b7fd728319fa37a4d70f7c2734633124bd02819fb18f2cb29029acb",
+          "error": null
+        },
+        {
+          "path": "output/panels.json",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 1017,
+          "sha256": "ccecf4ff4a8e99a6d15ca703f080f17a934284959ab4cfb78e7e5d947c1dba36",
+          "error": null
+        },
+        {
+          "path": "output/diagram.svg",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 16456,
+          "sha256": "24d5210bc65d945dbed583e5f1bd8d70caf0e8845ade36c5c2186a9ad1505b6d",
+          "error": null
+        },
+        {
+          "path": "output/composition.json",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 9052,
+          "sha256": "83b74eb9e236015d2579ae571c2ca2d4ea6b836ef4411fc34c585d5e023ebc6c",
+          "error": null
+        }
+      ],
+      "manifestPath": "evaluations/runs/solid-composition-diagram-composition-20261003-2/run-manifest.json",
+      "supersededPassingFreezes": [
+        "solid-composition-diagram-composition-20261003-1"
+      ],
+      "harnessCommand": "C:\\Users\\villa\\AppData\\Roaming\\npm\\pi.CMD --model openai-codex/gpt-5.6-luna --thinking high --mode json --no-context-files --no-extensions --no-skills --no-prompt-templates --no-themes --no-session --skill skills/diagram-composition --print \"You are running an isolated forward test for `diagram-composition`. Use the read tool to read `../prompt.md` first, then follow it exactly. The loaded bundle is rooted at `skills/diagram-composition` from the current workspace; never prefix that path with `../`. Immediately after the prompt, read the bundle entry point at `skills/diagram-composition/SKILL.md`; do not probe for README.md or other conventional entry-point filenames. The shell tool is bash, not PowerShell; do not run PowerShell commands. Do not list directories or inspect script source before reading the prompt. If the prompt gives an exact command, run it verbatim and verify the required outputs.\""
+    },
+    {
+      "skill": "hierarchy-lens",
+      "runId": "solid-composition-hierarchy-lens-20261003-1",
+      "model": "openai-codex/gpt-5.6-luna",
+      "strict": true,
+      "passed": true,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "runtimeSha256": "0c0dc05eef17a02d0876c8c6d16442ad42310025ff630ad5c448954c09d313fd",
+      "fileCount": 23,
+      "exactOutputs": [
+        {
+          "path": "output/explorer.html",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 68559,
+          "sha256": "11bcf54fc00397e6888a90e4072a19ce76863bb1d45c130286fa74db33299613",
+          "error": null
+        },
+        {
+          "path": "output/decision.html",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 159631,
+          "sha256": "1de34248c48031ba7166bf47c1efa883601898bb2df3c73e7e899494f0c99723",
+          "error": null
+        },
+        {
+          "path": "output/source.json",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 33186,
+          "sha256": "24b9cde4789bfe1c1eec4eb64ed1b53be260f4ba2400a298b398bf96e9c265da",
+          "error": null
+        },
+        {
+          "path": "output/commands.md",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 841,
+          "sha256": "b78352659ff3ab47129a02b4d89064e82ffc6f607b34afa76cb7703d792fa242",
+          "error": null
+        }
+      ],
+      "manifestPath": "evaluations/runs/solid-composition-hierarchy-lens-20261003-1/run-manifest.json",
+      "supersededPassingFreezes": [],
+      "harnessCommand": "C:\\Users\\villa\\AppData\\Roaming\\npm\\pi.CMD --model openai-codex/gpt-5.6-luna --thinking high --mode json --no-context-files --no-extensions --no-skills --no-prompt-templates --no-themes --no-session --skill skills/hierarchy-lens --print \"You are running an isolated forward test for `hierarchy-lens`. Use the read tool to read `../prompt.md` first, then follow it exactly. The loaded bundle is rooted at `skills/hierarchy-lens` from the current workspace; never prefix that path with `../`. Immediately after the prompt, read the bundle entry point at `skills/hierarchy-lens/SKILL.md`; do not probe for README.md or other conventional entry-point filenames. The shell tool is bash, not PowerShell; do not run PowerShell commands. Do not list directories or inspect script source before reading the prompt. If the prompt gives an exact command, run it verbatim and verify the required outputs.\""
+    },
+    {
+      "skill": "usefulcharts-style",
+      "runId": "solid-composition-usefulcharts-style-20261003-2",
+      "model": "openai-codex/gpt-5.6-luna",
+      "strict": true,
+      "passed": true,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "runtimeSha256": "1eb555bb5473a6efb4176bdc4e526c7450cb506f4f0c94f6c498dd53d3d14fb7",
+      "fileCount": 136,
+      "exactOutputs": [
+        {
+          "path": "output/source.json",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 3133,
+          "sha256": "abadb248d98cfb5dab68c5b3d8f5f3e1781667107b589b88c4b0f27421bdd3a6",
+          "error": null
+        },
+        {
+          "path": "output/poster.svg",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 170455,
+          "sha256": "4604a4f3cbca47cb50c0de3e5dc0d909e73447430e89b2c30797ad797ec0cfd1",
+          "error": null
+        },
+        {
+          "path": "output/poster.html",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 171926,
+          "sha256": "597cec02d90dc81dbb3947da37c271673434e2c8fd030aeae333bf5b14da36ca",
+          "error": null
+        },
+        {
+          "path": "output/render.json",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 1760,
+          "sha256": "18d464fb0ddd0ba046e6487826b3f60176c7e309dd2fde1280674a79842ca18b",
+          "error": null
+        },
+        {
+          "path": "output/palette.md",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 834,
+          "sha256": "ed833abccaa86ee8fefd2bbe0c0c217e166ab9bb53b3377166836e8b8f94147b",
+          "error": null
+        }
+      ],
+      "manifestPath": "evaluations/runs/solid-composition-usefulcharts-style-20261003-2/run-manifest.json",
+      "supersededPassingFreezes": [
+        "solid-composition-usefulcharts-style-20261003-1"
+      ],
+      "harnessCommand": "C:\\Users\\villa\\AppData\\Roaming\\npm\\pi.CMD --model openai-codex/gpt-5.6-luna --thinking high --mode json --no-context-files --no-extensions --no-skills --no-prompt-templates --no-themes --no-session --skill skills/usefulcharts-style --print \"You are running an isolated forward test for `usefulcharts-style`. Use the read tool to read `../prompt.md` first, then follow it exactly. The loaded bundle is rooted at `skills/usefulcharts-style` from the current workspace; never prefix that path with `../`. Immediately after the prompt, read the bundle entry point at `skills/usefulcharts-style/SKILL.md`; do not probe for README.md or other conventional entry-point filenames. The shell tool is bash, not PowerShell; do not run PowerShell commands. Do not list directories or inspect script source before reading the prompt. If the prompt gives an exact command, run it verbatim and verify the required outputs.\""
+    },
+    {
+      "skill": "hyperframes-explainer",
+      "runId": "solid-composition-hyperframes-explainer-20261003-1",
+      "model": "openai-codex/gpt-6-luna",
+      "strict": true,
+      "passed": true,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "runtimeSha256": "1125cc89b8ba7cc13d901661063761a268301818019c0a1f0ab66db44cb71cf6",
+      "fileCount": 31,
+      "exactOutputs": [
+        {
+          "path": "output/brief.json",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 3919,
+          "sha256": "0aa7fe12e93ad2ed56e937f68297c7e9e6f48e328959dea455b7beff8294fa81",
+          "error": null
+        },
+        {
+          "path": "output/preflight.json",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 9319,
+          "sha256": "f96390967bff785843c62cef5c950d0f7371643fadfda6f5497de7e2011c426c",
+          "error": null
+        },
+        {
+          "path": "output/build.json",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 578,
+          "sha256": "957651d78bc56b255b255b4ab4bf3c47bb5ff06ad197993cc7e5b63f6618a49a",
+          "error": null
+        },
+        {
+          "path": "output/project/index.html",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 10473,
+          "sha256": "29036a10ad432fac5abc2a03390c4fce853a0a982c569ef20ab8e49d66425ef3",
+          "error": null
+        }
+      ],
+      "manifestPath": "evaluations/runs/solid-composition-hyperframes-explainer-20261003-1/run-manifest.json",
+      "supersededPassingFreezes": [],
+      "harnessCommand": "C:\\Users\\villa\\AppData\\Roaming\\npm\\pi.CMD --model openai-codex/gpt-6-luna --thinking high --mode json --no-context-files --no-extensions --no-skills --no-prompt-templates --no-themes --no-session --skill skills/hyperframes-explainer --print \"You are running an isolated forward test for `hyperframes-explainer`. Use the read tool to read `../prompt.md` first, then follow it exactly. The loaded bundle is rooted at `skills/hyperframes-explainer` from the current workspace; never prefix that path with `../`. Immediately after the prompt, read the bundle entry point at `skills/hyperframes-explainer/SKILL.md`; do not probe for README.md or other conventional entry-point filenames. The shell tool is bash, not PowerShell; do not run PowerShell commands. Do not list directories or inspect script source before reading the prompt. If the prompt gives an exact command, run it verbatim and verify the required outputs.\""
+    },
+    {
+      "skill": "video",
+      "runId": "solid-composition-video-20261003-2",
+      "model": "openai-codex/gpt-5.6-luna",
+      "strict": true,
+      "passed": true,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "runtimeSha256": "df81bc9fbab765e6780dfab34eea32a0942b3fc2ef5573ce54ccd3fc67c957f0",
+      "fileCount": 50,
+      "exactOutputs": [
+        {
+          "path": "output/scene-contract.json",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 3881,
+          "sha256": "10e8b354a18f83abe9fe6891e0b566ca67253d439cd870793440b85930bbb157",
+          "error": null
+        },
+        {
+          "path": "output/validation.json",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 606,
+          "sha256": "5eba7cb1626ef55390f37462f11818e562bfbe8221d47899db8058984d9a717a",
+          "error": null
+        },
+        {
+          "path": "output/palette.md",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 1384,
+          "sha256": "3dc6ddf9fbfa276db0c647ccf4beab58ae525f232ab901564fc7684cba886e1a",
+          "error": null
+        }
+      ],
+      "manifestPath": "evaluations/runs/solid-composition-video-20261003-2/run-manifest.json",
+      "supersededPassingFreezes": [
+        "solid-composition-video-20261003-1"
+      ],
+      "harnessCommand": "C:\\Users\\villa\\AppData\\Roaming\\npm\\pi.CMD --model openai-codex/gpt-5.6-luna --thinking high --mode json --no-context-files --no-extensions --no-skills --no-prompt-templates --no-themes --no-session --skill skills/video --print \"You are running an isolated forward test for `video`. Use the read tool to read `../prompt.md` first, then follow it exactly. The loaded bundle is rooted at `skills/video` from the current workspace; never prefix that path with `../`. Immediately after the prompt, read the bundle entry point at `skills/video/SKILL.md`; do not probe for README.md or other conventional entry-point filenames. The shell tool is bash, not PowerShell; do not run PowerShell commands. Do not list directories or inspect script source before reading the prompt. If the prompt gives an exact command, run it verbatim and verify the required outputs.\""
+    },
+    {
+      "skill": "manim-svg-video",
+      "runId": "solid-composition-manim-svg-video-20261003-3",
+      "model": "openai-codex/gpt-5.6-luna",
+      "strict": true,
+      "passed": true,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "runtimeSha256": "af6fef580f557102594be19d371bed1532465134f7252beb6be6352593a963ca",
+      "fileCount": 10,
+      "exactOutputs": [
+        {
+          "path": "output/source.svg",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 389,
+          "sha256": "7ffab318898e7b32a4484b20aa5272d13fd2fce3ea2bec7ddabdea6f4cd85fab",
+          "error": null
+        },
+        {
+          "path": "output/composition/composition-manifest.json",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 1294,
+          "sha256": "6a90fbf7aa02c7dd32bbc275cbb85c5cd458c6585567ccf3b68aeefe35d8dc72",
+          "error": null
+        },
+        {
+          "path": "output/composition/manim_svg_video_scene.py",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 9965,
+          "sha256": "f55a7a07efe45f3f442f296f3bc9db1aa73f6fa2ef188c4cc4d697be6f41a3af",
+          "error": null
+        }
+      ],
+      "manifestPath": "evaluations/runs/solid-composition-manim-svg-video-20261003-3/run-manifest.json",
+      "supersededPassingFreezes": [
+        "solid-composition-manim-svg-video-20261003-1",
+        "solid-composition-manim-svg-video-20261003-2"
+      ],
+      "harnessCommand": "C:\\Users\\villa\\AppData\\Roaming\\npm\\pi.CMD --model openai-codex/gpt-5.6-luna --thinking high --mode json --no-context-files --no-extensions --no-skills --no-prompt-templates --no-themes --no-session --skill skills/manim-svg-video --print \"You are running an isolated forward test for `manim-svg-video`. Use the read tool to read `../prompt.md` first, then follow it exactly. The loaded bundle is rooted at `skills/manim-svg-video` from the current workspace; never prefix that path with `../`. Immediately after the prompt, read the bundle entry point at `skills/manim-svg-video/SKILL.md`; do not probe for README.md or other conventional entry-point filenames. The shell tool is bash, not PowerShell; do not run PowerShell commands. Do not list directories or inspect script source before reading the prompt. If the prompt gives an exact command, run it verbatim and verify the required outputs.\""
+    }
+  ],
+  "changedSkillPaths": [
+    "skills/compose-synchronized-svg/SKILL.md",
+    "skills/compose-synchronized-svg/assets/examples/compose-synchronized-svg/heatwave-tree.svg",
+    "skills/compose-synchronized-svg/assets/examples/compose-synchronized-svg/inference-pulse.svg",
+    "skills/compose-synchronized-svg/assets/palettes/colorsets.json",
+    "skills/compose-synchronized-svg/references/asset-selection-and-composition.md",
+    "skills/compose-synchronized-svg/references/color-and-visual-quality.md",
+    "skills/compose-synchronized-svg/references/solid-surfaces.md",
+    "skills/compose-synchronized-svg/scripts/compose_synchronized_svg.py",
+    "skills/compose-synchronized-svg/scripts/palette_contract.py",
+    "skills/compose-synchronized-svg/scripts/scaffold_synchronized_svg.py",
+    "skills/compose-synchronized-svg/scripts/test_svg_text_pairs.py",
+    "skills/compose-synchronized-svg/scripts/test_svg_themes.py",
+    "skills/compose-synchronized-svg/scripts/test_synchronized_svg_tools.py",
+    "skills/compose-synchronized-svg/scripts/test_theme_contract.py",
+    "skills/compose-synchronized-svg/scripts/theme_contract.py",
+    "skills/compose-synchronized-svg/scripts/validate_synchronized_svg.py",
+    "skills/diagram-composition/SKILL.md",
+    "skills/diagram-composition/assets/palettes/colorsets.json",
+    "skills/diagram-composition/references/connectors-and-surfaces.md",
+    "skills/diagram-composition/references/native-panels.md",
+    "skills/diagram-composition/references/shared-colors.md",
+    "skills/diagram-composition/references/solid-surfaces.md",
+    "skills/diagram-composition/scripts/build_panels.py",
+    "skills/diagram-composition/scripts/palette_contract.py",
+    "skills/hierarchy-lens/SKILL.md",
+    "skills/hierarchy-lens/assets/examples/hierarchy-lens/analytical.html",
+    "skills/hierarchy-lens/assets/examples/hierarchy-lens/index.html",
+    "skills/hierarchy-lens/assets/examples/hierarchy-lens/organic.html",
+    "skills/hierarchy-lens/assets/examples/hierarchy-lens/radial.html",
+    "skills/hierarchy-lens/assets/palettes/colorsets.json",
+    "skills/hierarchy-lens/assets/templates/explorer.html",
+    "skills/hierarchy-lens/assets/templates/pixels.html",
+    "skills/hierarchy-lens/references/solid-surfaces.md",
+    "skills/hyperframes-explainer/SKILL.md",
+    "skills/hyperframes-explainer/assets/examples/conserved-exchange.json",
+    "skills/hyperframes-explainer/assets/palettes/colorsets.json",
+    "skills/hyperframes-explainer/assets/templates/brief.json",
+    "skills/hyperframes-explainer/references/solid-surfaces.md",
+    "skills/hyperframes-explainer/scripts/compose_mechanism.py",
+    "skills/manim-svg-video/SKILL.md",
+    "skills/manim-svg-video/assets/palettes/colorsets.json",
+    "skills/manim-svg-video/references/composition-config.md",
+    "skills/manim-svg-video/references/solid-surfaces.md",
+    "skills/manim-svg-video/references/visual-tokens.md",
+    "skills/manim-svg-video/scripts/compose_svg_video.py",
+    "skills/manim-svg-video/scripts/palette_contract.py",
+    "skills/usefulcharts-style/SKILL.md",
+    "skills/usefulcharts-style/assets/examples/usefulcharts-style/atlas-of-inquiry.html",
+    "skills/usefulcharts-style/assets/examples/usefulcharts-style/atlas-of-inquiry.svg",
+    "skills/usefulcharts-style/assets/examples/usefulcharts-style/aurelian-families.html",
+    "skills/usefulcharts-style/assets/examples/usefulcharts-style/aurelian-families.svg",
+    "skills/usefulcharts-style/assets/examples/usefulcharts-style/five-regional-histories.html",
+    "skills/usefulcharts-style/assets/examples/usefulcharts-style/five-regional-histories.svg",
+    "skills/usefulcharts-style/assets/palettes/colorsets.json",
+    "skills/usefulcharts-style/references/context-landmarks.md",
+    "skills/usefulcharts-style/references/data-contract.md",
+    "skills/usefulcharts-style/references/editorial-composition.md",
+    "skills/usefulcharts-style/references/genealogy-nameplates.md",
+    "skills/usefulcharts-style/references/solid-surfaces.md",
+    "skills/usefulcharts-style/references/visual-grammar.md",
+    "skills/usefulcharts-style/scripts/create_panel_poster.py",
+    "skills/usefulcharts-style/scripts/editorial_poster.py",
+    "skills/usefulcharts-style/scripts/palette_contract.py",
+    "skills/usefulcharts-style/scripts/render_chart.py",
+    "skills/video/SKILL.md",
+    "skills/video/assets/examples/ai-concept-videos/renderer.js",
+    "skills/video/assets/examples/ai-concept-videos/scenes/llm-model-box.js",
+    "skills/video/assets/examples/ai-concept-videos/styles.css",
+    "skills/video/assets/palettes/colorsets.json",
+    "skills/video/references/solid-surfaces.md",
+    "skills/video/scripts/palette_contract.py"
+  ],
+  "paletteMetadataOwner": "Root agent; palette allowed tokens unchanged",
+  "browser": {
+    "styleStates": 83,
+    "styleReport": "projects/composition-solid-style/artifacts/browser/audit.json",
+    "compositionStrongReport": "projects/composition-solid-style/artifacts/heatwave-browser-navigation.json",
+    "navigationReport": "projects/composition-solid-style/artifacts/navigation-final.json",
+    "hierarchyStrongReport": "projects/composition-solid-style/artifacts/hierarchy-analytical-audit.json"
+  },
+  "deterministicCommands": "projects/composition-solid-style/artifacts/tests/commands.json",
+  "overflowCopiesReport": "projects/composition-solid-style/artifacts/overflow-helpers-final.json",
+  "fixtureRegenerationCommands": "projects/composition-solid-style/artifacts/regeneration/commands.json",
+  "retainedFailures": [
+    "projects/composition-solid-style/artifacts/compose-tests-revision-final.txt",
+    "projects/composition-solid-style/artifacts/heatwave-browser.json",
+    "projects/composition-solid-style/artifacts/heatwave-browser-repaired.json",
+    "projects/composition-solid-style/artifacts/heatwave-browser-final.json",
+    "projects/composition-solid-style/artifacts/navigation-before.json",
+    "projects/composition-solid-style/artifacts/svg-navigation-pairs.txt",
+    "projects/composition-solid-style/artifacts/manim-smoke/middle.png"
+  ]
+}

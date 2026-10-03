@@ -4,12 +4,12 @@
   "input": "assets/base-images/van-gogh-self-portrait.jpg",
   "input_sha256": "2c452724d2a65af0aa9d88ace86003b8aa863b666d683cfaa11af6af5e880061",
   "output": "svgs/vectorize-van-gogh-self-portrait-cs1.svg",
-  "output_sha256": "1ad34f9410e6bfa849d160a5e35474aff1ca05c293c312a3b5e276e287cbca44",
+  "output_sha256": "2ca27ac0b4eb66dc14c6c21b888a90ee8b055c134aa673e4d64c92fb3a19fa61",
   "pattern_id": "vectorize-van-gogh-self-portrait-cs1",
   "mode": "organic",
   "tile": "none",
   "colorset": "colorset1",
-  "palette_contract_sha256": "c81d32ffb0d55d44e7d3102c7470e251baf34f0bb6472fbede7753df8b9a9eb5",
+  "palette_contract_sha256": "f36eb8a9fe171108383767c7697f023218121e51d3e45247e87b58e397b36d62",
   "variation_seed": 0,
   "composition_sha256": "3d2c855ce6697a0883c96e1e6a3f37ebe383a412ab35d6e085ce75a4005dcfa6",
   "parameters": {
@@ -25,11 +25,11 @@
       "layers": [
         {
           "source": "#695938",
-          "target": "#333e48"
+          "target": "#4f4f4f"
         },
         {
           "source": "#495967",
-          "target": "#828282"
+          "target": "#696969"
         },
         {
           "source": "#a06046",
@@ -37,11 +37,11 @@
         },
         {
           "source": "#c1a27b",
-          "target": "#cfcfcf"
+          "target": "#9c9c9c"
         },
         {
           "source": "#8f9579",
-          "target": "#ffccd5"
+          "target": "#828282"
         },
         {
           "source": "#762623",
@@ -49,11 +49,11 @@
         },
         {
           "source": "#6f7860",
-          "target": "#e8002a"
+          "target": "#333e48"
         },
         {
           "source": "#bdbda7",
-          "target": "#f7f7f7"
+          "target": "#b5b5b5"
         }
       ],
       "source_colors": [
@@ -69,14 +69,14 @@
       ],
       "target_colors": [
         "#1c1c1c",
-        "#333e48",
-        "#828282",
+        "#4f4f4f",
+        "#696969",
         "#9e1b32",
-        "#cfcfcf",
-        "#ffccd5",
+        "#9c9c9c",
+        "#828282",
         "#6d1222",
-        "#e8002a",
-        "#f7f7f7"
+        "#333e48",
+        "#b5b5b5"
       ]
     }
   },
@@ -89,13 +89,13 @@
   "palette": [
     "#1c1c1c",
     "#333e48",
+    "#4f4f4f",
+    "#696969",
     "#6d1222",
     "#828282",
+    "#9c9c9c",
     "#9e1b32",
-    "#cfcfcf",
-    "#e8002a",
-    "#f7f7f7",
-    "#ffccd5"
+    "#b5b5b5"
   ],
   "path_count": 51,
   "output_bytes": 199716,

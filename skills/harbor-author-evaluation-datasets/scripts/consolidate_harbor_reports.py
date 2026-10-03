@@ -37,19 +37,10 @@ OUTPUT_FILES = (
     "resource-comparison.svg",
     "efficiency-frontier.svg",
 )
-PALETTE = (
-    "#007298",
-    "#652f6c",
-    "#45842a",
-    "#98700c",
-    "#9e1b32",
-    "#004d66",
-    "#431f47",
-    "#294d19",
-    "#e77204",
-    "#00ace6",
-    "#9e00b3",
-    "#36b300",
+PALETTE = tuple(
+    color for color in json.loads(
+        (Path(__file__).resolve().parent.parent / "assets/palettes/colorsets.json").read_text(encoding="utf-8")
+    )["colorsets"]["colorset2"]["solidSequence"] if color != "#f7f7f7"
 )
 ID_PATTERN = re.compile(r"[^a-zA-Z0-9._-]+")
 
@@ -868,16 +859,17 @@ def svg_document(title: str, description: str, width: int, height: int, body: st
       <feDropShadow dx="0" dy="8" stdDeviation="14" flood-color="#000000" flood-opacity="0.28"/>
     </filter>
     <style>
-      text {{ font-family: Inter, Segoe UI, Arial, sans-serif; fill: #333e48; }}
-      .eyebrow {{ font-size: 14px; font-weight: 700; letter-spacing: 2px; fill: #9e1b32; }}
+      text {{ font-family: Inter, Segoe UI, Arial, sans-serif; fill: #000000; }}
+      .eyebrow {{ font-size: 14px; font-weight: 700; letter-spacing: 2px; fill: #000000; }}
       .title {{ font-size: 34px; font-weight: 750; }}
-      .subtitle {{ font-size: 15px; fill: #4f4f4f; }}
+      .subtitle {{ font-size: 15px; fill: #000000; }}
       .section {{ font-size: 18px; font-weight: 700; }}
       .label {{ font-size: 14px; font-weight: 650; }}
-      .small {{ font-size: 12px; fill: #4f4f4f; }}
+      .small {{ font-size: 12px; fill: #000000; }}
       .value {{ font-size: 14px; font-variant-numeric: tabular-nums; }}
+      .on-error {{ fill: #ffffff; }}
       .grid {{ stroke: #cfcfcf; stroke-width: 1; opacity: 0.55; }}
-      .panel {{ fill: #ffffff; stroke: #cfcfcf; stroke-width: 1; filter: url(#shadow); }}
+      .panel {{ fill: #ffffff; stroke: none; }}
     </style>
   </defs>
   <rect width="{width}" height="{height}" rx="24" fill="url(#background)"/>
@@ -889,11 +881,11 @@ def svg_document(title: str, description: str, width: int, height: int, body: st
 def svg_header(report: dict[str, Any], width: int, subtitle: str) -> str:
     return "\n".join(
         [
-            '<rect x="56" y="44" width="248" height="30" rx="15" fill="#e7e7e7" opacity="0.72"/>',
+            '<rect x="56" y="44" width="248" height="30" rx="15" fill="#e7e7e7"/>',
             '<text x="74" y="65" class="eyebrow">HARBOR · RUN COMPARISON</text>',
             f'<text x="56" y="119" class="title">{esc(truncate(report["title"], 66))}</text>',
             f'<text x="56" y="151" class="subtitle">{esc(subtitle)}</text>',
-            f'<rect x="{width - 340}" y="62" width="284" height="64" rx="14" fill="#ffffff" stroke="#cfcfcf"/>',
+            f'<rect x="{width - 340}" y="62" width="284" height="64" rx="14" fill="#ffffff" stroke="none"/>',
             f'<text x="{width - 320}" y="87" class="small">BASELINE</text>',
             f'<text x="{width - 320}" y="111" class="label">{esc(truncate(report["baselineLabel"], 34))}</text>',
         ]
@@ -923,26 +915,26 @@ def render_quality_svg(report: dict[str, Any]) -> str:
     reward_ceiling = nice_max(max([abs(value) for value in reward_values] or [1.0]))
     for panel_x, maximum, percentage in ((left_x, 1.0, True), (right_x, reward_ceiling, False)):
         bar_x = panel_x + 190
-        bar_w = panel_w - 250
+        bar_w = panel_w - 320
         for tick in range(5):
             x = bar_x + bar_w * tick / 4
             label = f"{tick * 25}%" if percentage else compact(maximum * tick / 4)
             body.append(f'<line x1="{x:.1f}" y1="{panel_y + 60}" x2="{x:.1f}" y2="{panel_y + panel_h - 30}" class="grid"/>')
             body.append(f'<text x="{x:.1f}" y="{panel_y + panel_h - 12}" text-anchor="middle" class="small">{esc(label)}</text>')
     for index, run in enumerate(runs):
-        color = PALETTE[index % len(PALETTE)]
+        color = PALETTE[index]
         y = panel_y + 78 + index * row_height
         is_baseline = run["runId"] == report["baselineRunId"]
         baseline_mark = "● " if is_baseline else ""
         for panel_x in (left_x, right_x):
             body.append(f'<text x="{panel_x + 28}" y="{y + 18}" class="label">{esc(baseline_mark + truncate(run["label"], 20))}</text>')
-        pass_width = (panel_w - 250) * run["passRate"]
-        body.append(f'<rect x="{left_x + 190}" y="{y}" width="{panel_w - 250}" height="24" rx="12" fill="#e7e7e7"/>')
+        pass_width = (panel_w - 320) * run["passRate"]
+        body.append(f'<rect x="{left_x + 190}" y="{y}" width="{panel_w - 320}" height="24" rx="12" fill="#e7e7e7"/>')
         body.append(f'<rect x="{left_x + 190}" y="{y}" width="{pass_width:.1f}" height="24" rx="12" fill="{color}"/>')
         body.append(f'<text x="{left_x + panel_w - 24}" y="{y + 18}" text-anchor="end" class="value">{format_percent(run["passRate"])}</text>')
         reward = run["averageReward"]
-        reward_width = (panel_w - 250) * max(0, reward or 0) / reward_ceiling
-        body.append(f'<rect x="{right_x + 190}" y="{y}" width="{panel_w - 250}" height="24" rx="12" fill="#e7e7e7"/>')
+        reward_width = (panel_w - 320) * max(0, reward or 0) / reward_ceiling
+        body.append(f'<rect x="{right_x + 190}" y="{y}" width="{panel_w - 320}" height="24" rx="12" fill="#e7e7e7"/>')
         if reward is not None:
             body.append(f'<rect x="{right_x + 190}" y="{y}" width="{reward_width:.1f}" height="24" rx="12" fill="{color}"/>')
         reward_label = summary_coverage(
@@ -955,7 +947,7 @@ def render_quality_svg(report: dict[str, Any]) -> str:
         body.append(f'<text x="{right_x + panel_w - 24}" y="{y + 18}" text-anchor="end" class="value">{esc(reward_label)}</text>')
         if run["erroredTrials"]:
             body.append(f'<circle cx="{left_x + 171}" cy="{y + 12}" r="9" fill="#9e1b32"/>')
-            body.append(f'<text x="{left_x + 171}" y="{y + 16}" text-anchor="middle" font-size="10" fill="#ffffff">{run["erroredTrials"]}</text>')
+            body.append(f'<text x="{left_x + 171}" y="{y + 16}" text-anchor="middle" font-size="10" class="on-error">{run["erroredTrials"]}</text>')
     body.append(f'<text x="56" y="{height - 34}" class="small">A red badge is the number of execution errors. A dot marks the selected baseline. Aggregate views do not replace native fairness checks.</text>')
     return svg_document(
         f"{report['title']} — quality comparison",
@@ -1143,28 +1135,30 @@ def render_efficiency_svg(report: dict[str, Any]) -> str:
     token_values = [run["tokensPerTrial"] for run, _, _ in points if run["tokensPerTrial"] is not None]
     token_max = max(token_values or [1])
     for index, (run, cost, quality) in enumerate(points):
-        color = PALETTE[runs.index(run) % len(PALETTE)]
+        color = PALETTE[runs.index(run)]
         x = chart_x + chart_w * cost / cost_max
         y = chart_y + chart_h * (1 - quality)
         token_value = run["tokensPerTrial"] or 0
         radius = 10 + 17 * math.sqrt(token_value / token_max) if token_max else 12
-        if run["runId"] in frontier:
-            body.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="{radius + 7:.1f}" fill="none" stroke="#98700c" stroke-width="2"/>')
-        if run["runId"] == report["baselineRunId"]:
-            body.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="{radius + 12:.1f}" fill="none" stroke="#333e48" stroke-width="2" stroke-dasharray="4 5"/>')
-        body.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="{radius:.1f}" fill="{color}" fill-opacity="0.86" stroke="#ffffff" stroke-width="1.5"/>')
+        body.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="{radius:.1f}" fill="{color}" stroke="none"/>')
         label_y = y - radius - 18 if index % 2 == 0 else y + radius + 28
-        body.append(f'<text x="{x:.1f}" y="{label_y:.1f}" text-anchor="middle" class="label">{esc(truncate(run["label"], 22))}</text>')
+        qualifiers = []
+        if run["runId"] in frontier:
+            qualifiers.append("frontier")
+        if run["runId"] == report["baselineRunId"]:
+            qualifiers.append("baseline")
+        label = truncate(run["label"], 22) + (" · " + ", ".join(qualifiers) if qualifiers else "")
+        body.append(f'<text x="{x:.1f}" y="{label_y:.1f}" text-anchor="middle" class="label">{esc(label)}</text>')
     if not points:
         body.append(f'<text x="{chart_x + chart_w / 2}" y="{chart_y + chart_h / 2}" text-anchor="middle" class="subtitle">No complete cost metric is available for a frontier.</text>')
     for index, run in enumerate(runs):
         y = 274 + index * 52
-        color = PALETTE[index % len(PALETTE)]
+        color = PALETTE[index]
         body.append(f'<circle cx="1108" cy="{y - 5}" r="7" fill="{color}"/>')
         body.append(f'<text x="1126" y="{y}" class="label">{esc(truncate(run["label"], 28))}</text>')
         body.append(f'<text x="1126" y="{y + 19}" class="small">{esc(compact(run["tokensPerTrial"]))} tok/trial · {esc(compact(run["costPerPassUsd"], money=True))}/pass · {esc(compact(run["agentSecondsPerTrial"]))}s agent/trial</text>')
     footer_y = height - 30
-    body.append(f'<text x="56" y="{footer_y}" class="small">Gold rings mark non-dominated aggregate points; dashed white marks the baseline. Missing or partial cost values are omitted from the frontier; partial resource totals never drive efficiency deltas.</text>')
+    body.append(f'<text x="56" y="{footer_y}" class="small">Direct labels identify frontier points and the baseline. Missing or partial cost values are omitted from the frontier; partial resource totals never drive efficiency deltas.</text>')
     return svg_document(
         f"{report['title']} — efficiency frontier",
         "A scatter plot compares pass rate with cost per completed trial. Bubble size represents total tokens per trial.",

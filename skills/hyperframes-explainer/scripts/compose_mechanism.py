@@ -42,7 +42,9 @@ class Drawing:
         ET.SubElement(self.root, "desc").text = "Editable original geometry with state-driven hooks; no autonomous animation clock."
         self.parent = self.root
 
-    def add(self, kind, identity, *, fill="none", stroke="ink", sw=3, text=None, **attrs):
+    def add(self, kind, identity, *, fill="none", stroke=None, sw=3, text=None, **attrs):
+        if stroke is None:
+            stroke = "none" if fill != "none" else "ink"
         cooked = {"id": identity, "fill": self.palette.get(fill, fill), "stroke": self.palette.get(stroke, stroke),
                   "stroke-width": fmt(sw*self.scale), "stroke-linecap": "round", "stroke-linejoin": "round"}
         for key, value in attrs.items():
@@ -89,8 +91,8 @@ def chart_marks(view, source, unit, limit, duration, paint, scale):
 
 def inlet_art(draw, source, quantity, maximum, capacity, fps, quantity_role, source_label, quantity_label):
     s, e = draw.scale, expression
-    draw.add("path", "tank-shell", d="M640 312 V780 C640 832 940 832 940 780 V312", fill="surface", sw=5)
-    draw.add("ellipse", "tank-cap", cx=790, cy=312, rx=150, ry=38, fill="surface", sw=5)
+    draw.add("path", "tank-shell", d="M640 312 V780 C640 832 940 832 940 780 V312 Z", fill="muted", sw=5)
+    draw.add("ellipse", "tank-cap", cx=790, cy=312, rx=150, ry=38, fill="muted", sw=5)
     # The rectangular cutaway and its graduated ruler have identical zero/capacity edges.
     draw.add("rect", "fluid", x=655, y=610, width=270, height=170, fill=quantity_role, stroke="none")
     draw.add("line", "waterline", x1=655, x2=925, y1=610, y2=610, stroke=quantity_role, sw=5)
@@ -102,9 +104,9 @@ def inlet_art(draw, source, quantity, maximum, capacity, fps, quantity_role, sou
         draw.add("line", f"capacity-tick-{i}", x1=955, x2=979, y1=y, y2=y, stroke="muted", sw=2)
         draw.label(f"capacity-label-{i}", 1020, y+10, fmt(value), anchor="end")
     draw.label("capacity-unit", 975, 257, "L")
-    draw.add("rect", "pipe-shell", x=100, y=305, width=555, height=50, rx=25, fill="quiet", sw=3)
+    draw.add("rect", "pipe-shell", x=100, y=305, width=555, height=50, rx=25, fill="muted", sw=3)
     draw.add("rect", "pipe-channel", x=101, y=317, width=554, height=26, rx=13, fill="surface", stroke="none")
-    draw.add("path", "valve-body", d="M305 283 H405 L430 305 V355 L405 377 H305 L280 355 V305 Z", fill="surface", sw=5)
+    draw.add("path", "valve-body", d="M305 283 H405 L430 305 V355 L405 377 H305 L280 355 V305 Z", fill="muted", sw=5)
     draw.add("path", "open-channel", d="M280 317 H430 M280 343 H430", stroke="line", sw=2)
     draw.add("line", "valve-gate", x1=342, y1=306, x2=368, y2=354, stroke="primary", sw=10)
     draw.add("circle", "gate-bearing", cx=355, cy=330, r=5, fill="ink", stroke="none")
@@ -157,7 +159,7 @@ def vehicle_art(draw, source, quantity, maximum, extent, quantity_role, source_l
     draw.add("line", "velocity-head-up", x1=255, y1=242, x2=270, y2=255, stroke="primary", sw=6)
     draw.add("line", "velocity-head-down", x1=255, y1=268, x2=270, y2=255, stroke="primary", sw=6)
     draw.parent = ET.SubElement(draw.root, "g", id="car")
-    draw.add("path", "car-body", d="M95 405 L110 365 L172 355 L202 310 H281 L319 355 L366 365 L385 406 V431 H95 Z", fill="surface", sw=5)
+    draw.add("path", "car-body", d="M95 405 L110 365 L172 355 L202 310 H281 L319 355 L366 365 L385 406 V431 H95 Z", fill="muted", sw=5)
     draw.add("path", "rear-window", d="M184 350 L211 320 H236 V350 Z", fill="quiet", sw=3)
     draw.add("path", "front-window", d="M245 320 H274 L305 350 H245 Z", fill="quiet", sw=3)
     draw.add("line", "door", x1=245, x2=245, y1=357, y2=416, stroke="line", sw=2)
@@ -168,7 +170,7 @@ def vehicle_art(draw, source, quantity, maximum, extent, quantity_role, source_l
                 "input-value": {"value": source, "unit": "m/s", "digits": 1},
                 "quantity-value": {"value": quantity, "unit": "m", "digits": 1}}
     for name, cx in [("rear",180),("front",330)]:
-        draw.add("circle", f"{name}-tyre", cx=cx, cy=425, r=35, fill="quiet", sw=5)
+        draw.add("circle", f"{name}-tyre", cx=cx, cy=425, r=35, fill="ink", sw=5)
         draw.add("circle", f"{name}-rim", cx=cx, cy=425, r=25, fill="surface", sw=3)
         draw.add("path", f"{name}-spokes", d="M-23 0 H23 M0 -23 V23 M0 0 L15 15",
                  transform=f"translate({fmt(cx*s)} {fmt(425*s)})", stroke="ink", sw=3)

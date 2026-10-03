@@ -49,7 +49,7 @@ function renderDorlingCartogram() {
     const circles = svg.append("g").selectAll("circle").data(nodes).join("circle")
       .attr("cx", d => d.x).attr("cy", d => d.y)
       .attr("fill", d => colors[d.index % colors.length])
-      .attr("fill-opacity", .78)
+      .attr("fill-opacity", 1)
       .attr("stroke", "#fff")
       .attr("stroke-width", 1.5);
     grow(circles, "r", 2, d => d.radius, .12, .72);

@@ -4,12 +4,12 @@
   "input": "assets/base-images/hiroshige-sudden-shower.jpg",
   "input_sha256": "155beee4cb5698ee542361c69e67db82a7f0d4899d4dde77186c0106533fb31d",
   "output": "svgs/vectorize-hiroshige-sudden-shower-cs1.svg",
-  "output_sha256": "672dd724d8841ffc0e622034c94efa91c81fa27b7adeea972e9319f26c6f271a",
+  "output_sha256": "e85c2eb821adf30e4ea3c37208d7170bb0d85e16a6a6af19d631bc4f6d62dfeb",
   "pattern_id": "vectorize-hiroshige-sudden-shower-cs1",
   "mode": "collage",
   "tile": "none",
   "colorset": "colorset1",
-  "palette_contract_sha256": "c81d32ffb0d55d44e7d3102c7470e251baf34f0bb6472fbede7753df8b9a9eb5",
+  "palette_contract_sha256": "f36eb8a9fe171108383767c7697f023218121e51d3e45247e87b58e397b36d62",
   "variation_seed": 0,
   "composition_sha256": "a9035ca6af317f81102a474d8c38f3347b1ff5ef75378d6e9b50139ae6573762",
   "parameters": {
@@ -29,27 +29,27 @@
         },
         {
           "source": "#64594f",
-          "target": "#828282"
+          "target": "#4f4f4f"
         },
         {
           "source": "#73786e",
-          "target": "#6d1222"
+          "target": "#828282"
         },
         {
           "source": "#3a3b3e",
-          "target": "#1c1c1c"
+          "target": "#363636"
         },
         {
           "source": "#aca08a",
-          "target": "#cfcfcf"
+          "target": "#9c9c9c"
         },
         {
           "source": "#98806e",
-          "target": "#e8002a"
+          "target": "#696969"
         },
         {
           "source": "#edd5bb",
-          "target": "#ffccd5"
+          "target": "#cfcfcf"
         }
       ],
       "source_colors": [
@@ -65,12 +65,12 @@
       "target_colors": [
         "#333e48",
         "#9e1b32",
+        "#4f4f4f",
         "#828282",
-        "#6d1222",
-        "#1c1c1c",
-        "#cfcfcf",
-        "#e8002a",
-        "#ffccd5"
+        "#363636",
+        "#9c9c9c",
+        "#696969",
+        "#cfcfcf"
       ]
     }
   },
@@ -81,14 +81,14 @@
   "render_width": 425,
   "render_height": 620,
   "palette": [
-    "#1c1c1c",
     "#333e48",
-    "#6d1222",
+    "#363636",
+    "#4f4f4f",
+    "#696969",
     "#828282",
+    "#9c9c9c",
     "#9e1b32",
-    "#cfcfcf",
-    "#e8002a",
-    "#ffccd5"
+    "#cfcfcf"
   ],
   "path_count": 98,
   "output_bytes": 213485,

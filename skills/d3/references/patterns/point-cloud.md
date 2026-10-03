@@ -93,7 +93,7 @@ function renderPointCloud() {
       .attr("cy", d => d.y)
       .attr("r", d => d.r)
       .attr("fill", palette.gray200)
-      .attr("fill-opacity", .9);
+      .attr("fill-opacity", 1);
     dots.each(function (d) {
       const dot = d3.select(this);
       dot.append("animate")

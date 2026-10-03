@@ -59,7 +59,7 @@ function renderTokenProbabilitySampler() {
       .attr("height", y.bandwidth())
       .attr("rx", 5)
       .attr("fill", d => d.selected ? palette.red : d.color)
-      .attr("fill-opacity", d => d.selected ? .92 : .68);
+      .attr("data-opacity-role", "semantic").attr("fill-opacity", d => d.selected ? .92 : .68);
     bars.append("animate")
       .attr("attributeName", "width")
       .attr("from", 0)
@@ -83,7 +83,7 @@ function renderTokenProbabilitySampler() {
       .attr("height", strip.h)
       .attr("rx", 4)
       .attr("fill", d => d.selected ? palette.red : d.color)
-      .attr("fill-opacity", d => d.selected ? .92 : .62)
+      .attr("data-opacity-role", "semantic").attr("fill-opacity", d => d.selected ? .92 : .62)
       .attr("stroke", palette.surface)
       .attr("stroke-width", 1.4);
     fadeIn(segments, .55, .5);
@@ -108,7 +108,7 @@ function renderTokenProbabilitySampler() {
     const sampler = svg.append("circle")
       .attr("r", 8)
       .attr("fill", palette.red)
-      .attr("fill-opacity", .96);
+      .attr("fill-opacity", 1);
     sampler.append("animateMotion")
       .attr("dur", "1.65s")
       .attr("begin", ".45s")

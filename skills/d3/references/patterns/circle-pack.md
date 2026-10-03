@@ -33,7 +33,7 @@ function renderCirclePack() {
       if (d.children) return parentFill.get(d.data.name) || palette.blueHighlight;
       return leafFill.get(branchName(d)) || palette.blue;
     })
-      .attr("fill-opacity", d => d.depth === 0 ? 1 : .94)
+      .attr("fill-opacity", 1)
       .attr("stroke", d => d.depth === 0 ? palette.blueHighlight : "#fff").attr("stroke-width", d => d.depth === 0 ? 2 : 2.4);
     grow(nodes.selectAll("circle"), "r", 1, d => d.r, .05, .75);
     nodes.filter(d => d.depth === 1).append("text").attr("class", "mark-label")

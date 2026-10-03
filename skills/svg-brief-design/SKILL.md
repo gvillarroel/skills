@@ -67,8 +67,9 @@ for an existing recipe change `style.colorset` and every affected paint together
 - Choose a suitable aspect ratio before drawing. A long strip should remain
   long, a radial symbol should read as radial, and a portrait should not become
   a generic badge merely because a border is easy to construct.
-- Choose one primary treatment: open line drawing, solid silhouette with
-  cutouts, or a deliberate mixture. Use the same curve character, corner
+- Start with a solid silhouette with cutouts. Choose open line drawing when
+  requested or when the line itself conveys the subject, or use a deliberate
+  mixture. Use the same curve character, corner
   language, and weight hierarchy throughout.
 - Treat empty areas as designed shapes. Leave breathing room around the focal
   feature and between neighboring parts; added detail must improve recognition.
@@ -139,3 +140,22 @@ invent fresh geometry for the current brief. Do not import their paths, trace
 their contours, encode the source artwork, or store distinctive designs in this
 bundle. Deliver the requested SVG; include its recipe or preview only when
 useful or requested.
+
+## Solid fill priority
+
+Use opaque, single-token filled marks without decorative borders first. Read
+`solidSequence` and `textOnFill` from `assets/palettes/colorsets.json`. Reuse a
+fill for the same semantic role; when roles must be distinct, exhaust every
+usable distinct token in the preferred sequence, excluding the actual canvas,
+before creating outline or tint combinations. Soft tokens occur late. For text
+on a fill, use exactly black or white with the larger WCAG contrast computed
+from the actual background; composite opacity before evaluating translucent
+backgrounds. Do not infer text color from a hue name.
+
+Keep connectors, axes, signal traces, open line art, physical geometry and
+explicit source-fidelity modes. A stroke that depicts a relationship or is the
+geometry itself is meaningful. Reserve decorative outlines for a documented
+palette overflow or an explicit requested style; mark SVG overflow treatments
+with `data-outline-tier="overflow"`. A transient keyboard focus ring remains an
+interaction affordance. Use position, whitespace and direct labels for ordinary
+selection and grouping.

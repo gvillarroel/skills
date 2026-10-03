@@ -4,8 +4,125 @@ export const colorsets = {
   colorset1: ['#000000','#1c1c1c','#333e48','#363636','#4f4f4f','#696969','#6d1222','#828282','#9c9c9c','#9e1b32','#b5b5b5','#cfcfcf','#e7e7e7','#e8002a','#f7f7f7','#ffccd5','#ffffff'],
   colorset2: ['#000000','#004d66','#007298','#00ace6','#1c1c1c','#294d19','#333e48','#363636','#36b300','#431f47','#45842a','#4f4f4f','#652f6c','#696969','#6d1222','#828282','#98700c','#994a00','#9c9c9c','#9e00b3','#9e1b32','#b5b5b5','#cdf3ff','#cfcfcf','#dbffcc','#e77204','#e7e7e7','#e8002a','#f1c319','#f7f7f7','#f9ccff','#ff9633','#ffccd5','#ffd332','#ffe5cc','#fff4cc','#ffffff'],
 }
-const sequences = { colorset1: ['#9e1b32','#333e48','#6d1222','#828282','#e8002a','#cfcfcf'], colorset2: ['#9e1b32','#007298','#e77204','#45842a','#652f6c','#f1c319'] }
+const sequences = {"colorset1": ["#9e1b32", "#333e48", "#6d1222", "#828282", "#e8002a", "#4f4f4f", "#696969", "#9c9c9c", "#b5b5b5", "#1c1c1c", "#363636", "#000000", "#cfcfcf", "#e7e7e7", "#ffccd5", "#ffffff", "#f7f7f7"], "colorset2": ["#9e1b32", "#007298", "#e77204", "#45842a", "#652f6c", "#f1c319", "#6d1222", "#004d66", "#994a00", "#294d19", "#431f47", "#98700c", "#e8002a", "#00ace6", "#ff9633", "#36b300", "#9e00b3", "#ffd332", "#333e48", "#4f4f4f", "#696969", "#828282", "#9c9c9c", "#b5b5b5", "#1c1c1c", "#363636", "#000000", "#cfcfcf", "#e7e7e7", "#ffccd5", "#cdf3ff", "#dbffcc", "#f9ccff", "#ffe5cc", "#fff4cc", "#ffffff", "#f7f7f7"]}
 const rgb = (hex) => [1,3,5].map((index) => Number.parseInt(hex.slice(index,index+2),16))
+
+function paintChannels(value) {
+  if (typeof value !== 'string') return null
+  const v = value.trim().toLowerCase()
+  const h = /^#([\da-f]{3,4}|[\da-f]{6}|[\da-f]{8})$/.exec(v)
+  if (h) {
+    const hex = h[1].length < 5 ? [...h[1]].map(c => c+c).join('') : h[1]
+    return [...rgb('#'+hex.slice(0,6)),hex.length === 8 ? parseInt(hex.slice(6),16)/255 : 1]
+  }
+  const m = /^rgba?\(\s*([\d.]+)[, ]+([\d.]+)[, ]+([\d.]+)(?:\s*[,/]\s*([\d.]+))?\s*\)$/.exec(v)
+  return m ? [Number(m[1]),Number(m[2]),Number(m[3]),m[4] === undefined ? 1 : Number(m[4])] : null
+}
+function paintHex(channels) {
+  return '#'+channels.slice(0,3).map(c => Math.round(c).toString(16).padStart(2,'0')).join('')
+}
+function canonicalOpaque(value) {
+  const channels = paintChannels(value)
+  return channels && channels[3] === 1 ? paintHex(channels) : String(value).trim().toLowerCase()
+}
+function compositePaint(value, under, colorset) {
+  const channels = paintChannels(typeof value === 'string' ? normalizePaint(value,colorset) : '')
+  if (!channels) return under
+  const base = paintChannels(under) ?? [255,255,255,1]
+  return paintHex(channels.slice(0,3).map((c,i) => c*channels[3]+base[i]*(1-channels[3])))
+}
+
+function luminance(fill) {
+  const paint = paintChannels(fill) ?? [255,255,255,1]
+  const channels = paint.slice(0,3).map(c => c*paint[3]+255*(1-paint[3])).map((c) => c / 255).map((c) => c <= .04045 ? c / 12.92 : ((c + .055) / 1.055) ** 2.4)
+  return channels.reduce((sum,c,i) => sum+c*[.2126,.7152,.0722][i],0)
+}
+function contrast(a,b) {
+  const left=luminance(a),right=luminance(b)
+  return (Math.max(left,right)+.05)/(Math.min(left,right)+.05)
+}
+export function readableText(fill) {
+  return contrast(fill,'#000000') >= contrast(fill,'#ffffff') ? '#000000' : '#ffffff'
+}
+export function solidColors(colorset = 'colorset1', canvas = '#ffffff') {
+  return sequences[colorset].filter((color) => color !== canonicalOpaque(canvas))
+}
+export function solidCategoryStyle(index, colorset = 'colorset1', canvas = '#ffffff') {
+  if (!Number.isInteger(index) || index < 0) throw new Error('Category index must be a nonnegative integer')
+  const colors = solidColors(colorset,canvas),cycle = Math.floor(index/colors.length),slot = index%colors.length,fill = colors[slot]
+  const borders = colorsets[colorset].filter(color => color !== fill && contrast(fill,color) >= 3)
+  const phase = Math.max(0,cycle-1)
+  return {color:fill,borderColor:cycle ? borders[phase%borders.length] : 'none',borderWidth:cycle ? 1+Math.floor(phase/(borders.length*3))%3 : 0,borderType:cycle ? ['solid','dashed','dotted'][Math.floor(phase/borders.length)%3] : 'solid',textColor:readableText(fill),overflow:cycle>0}
+}
+function solidPresentation(option, colorset, canvas, categoryOrder = []) {
+  if (option.colorsetPresentation === 'source') { delete option.colorsetPresentation; return }
+  delete option.colorsetPresentation
+  const textCanvas = compositePaint(canvas,'#ffffff',colorset)
+  const soft = {'#ffccd5':'#9e1b32','#cdf3ff':'#007298','#dbffcc':'#45842a','#ffe5cc':'#e77204','#fff4cc':'#f1c319','#f9ccff':'#652f6c'}
+  const shapeTypes = new Set(['bar','pie','funnel','graph','tree','treemap','sunburst','sankey','scatter','effectScatter','pictorialBar','heatmap'])
+  const nodeTypes = new Set(['pie','funnel','graph','tree','treemap','sunburst','sankey'])
+  const positions = {pie:'outer',funnel:'outer',graph:'inside',tree:'left',treemap:'inside',sunburst:'inside',sankey:'right',bar:'inside',scatter:'inside',effectScatter:'inside',pictorialBar:'inside',heatmap:'inside'}
+  const seriesList = Array.isArray(option.series) ? option.series : option.series ? [option.series] : []
+  const keys = new Set(), identities = new WeakMap()
+  const collect = (node, scope, path) => {
+    if (!node || typeof node !== 'object' || Array.isArray(node)) return
+    const key = String(node.id ?? node.name ?? `${scope}/${path}`)
+    identities.set(node,key);keys.add(key)
+    ;(node.children ?? []).forEach((child,index) => collect(child,scope,`${path}.${index}`))
+  }
+  seriesList.forEach((series,index) => {
+    if (!shapeTypes.has(series.type)) return
+    const scope = String(series.id ?? series.name ?? `series-${index}`)
+    if (nodeTypes.has(series.type) || series.colorBy === 'data') (series.data ?? []).forEach((node,i) => collect(node,scope,String(i)))
+    else { identities.set(series,scope);keys.add(scope) }
+  })
+  const order = [...new Set(categoryOrder.map(String))]
+  const compare = new Intl.Collator('en',{numeric:true}).compare
+  order.push(...[...keys].filter(key => !order.includes(key)).sort(compare))
+  const categoryIndices = new Map(order.map((key,index) => [key,index]))
+  const paintFor = (node, fallback) => identities.has(node) ? solidCategoryStyle(categoryIndices.get(identities.get(node)),colorset,canvas) : fallback
+  const labelStyle = (value, fill, defaultPosition) => {
+    const position = value.position ?? defaultPosition
+    const inside = typeof position === 'string' && /^(?:inside|middle|center)/.test(position)
+    const under = inside ? compositePaint(fill,textCanvas,colorset) : textCanvas
+    const backing = value.backgroundColor === 'inherit' ? fill : compositePaint(value.backgroundColor, under, colorset)
+    const result = {...value,position,color:readableText(backing),textBorderColor:'none',textBorderWidth:0,textShadowBlur:0,borderWidth:0}
+    if (value.rich) result.rich = Object.fromEntries(Object.entries(value.rich).map(([key,token]) => [key,{...token,color:readableText(token.backgroundColor === 'inherit' ? fill : compositePaint(token.backgroundColor,backing,colorset)),textBorderColor:'none',textBorderWidth:0,textShadowBlur:0,borderWidth:0}]))
+    return result
+  }
+  const visit = (node, inheritedPaint, inheritedLabel, defaultPosition, filled) => {
+    if (!node || typeof node !== 'object' || Array.isArray(node)) return
+    const own = node.itemStyle ?? {}, declared = typeof own.overflow === 'boolean'
+    const paint = declared ? own : paintFor(node,inheritedPaint)
+    let fill = typeof own.color === 'string' ? normalizePaint(own.color,colorset) : paint.color
+    if (!declared && typeof own.color === 'string' && soft[fill]) fill = normalizePaint(soft[fill],colorset)
+    const labels = {...inheritedLabel,...node.label}
+    if (filled) {
+      const width = declared ? (own.overflow ? own.borderWidth : 0) : paint.borderWidth
+      node.itemStyle = {...own,color:fill,opacity:1,borderWidth:width ?? 0,borderColor:width ? paint.borderColor : 'none',borderType:paint.borderType ?? 'solid'}
+      delete node.itemStyle.textColor;delete node.itemStyle.overflow
+      node.label = labelStyle(labels,fill,defaultPosition)
+      for (const state of ['emphasis','select','blur']) if (node[state]) {
+        const stateFill = typeof node[state].itemStyle?.color === 'string' ? normalizePaint(node[state].itemStyle.color,colorset) : fill
+        if (node[state].itemStyle) node[state].itemStyle = {...node[state].itemStyle,borderWidth:width ?? 0,borderColor:width ? paint.borderColor : 'none'}
+        node[state].label = labelStyle({...labels,...node[state].label},stateFill,defaultPosition)
+      }
+    }
+    for (const child of node.children ?? []) visit(child,{...paint,color:fill},labels,defaultPosition,filled)
+    for (const child of node.data ?? []) visit(child,{...paint,color:fill},labels,defaultPosition,filled)
+    for (const child of node.levels ?? []) visit(child,{...paint,color:fill},labels,defaultPosition,filled)
+  }
+  seriesList.forEach((series,index) => {
+    if (series.type === 'tree' && (!series.symbol || series.symbol === 'emptyCircle')) series.symbol = 'circle'
+    if (series.type === 'boxplot') {
+      series.itemStyle = {...series.itemStyle,color:normalizePaint(soft[series.itemStyle?.color] ?? series.itemStyle?.color ?? '#007298',colorset)}
+      series.itemStyle.borderColor = series.itemStyle.color
+    }
+    visit(series,solidCategoryStyle(index,colorset,canvas),{},positions[series.type] ?? 'outside',shapeTypes.has(series.type))
+  })
+  if (option.tooltip) option.tooltip.borderWidth = 0
+}
+
 export function nearestColor(value, colorset = 'colorset1') {
   const hex = value.toLowerCase().replace(/^#([\da-f])([\da-f])([\da-f])$/, '#$1$1$2$2$3$3')
   if (colorsets[colorset].includes(hex)) return hex
@@ -15,7 +132,7 @@ export function nearestColor(value, colorset = 'colorset1') {
     return distance(color) < distance(best) ? color : best
   })
 }
-export function prepareColorsetOption(option, colorset = 'colorset1') {
+export function prepareColorsetOption(option, colorset = 'colorset1', categoryOrder = []) {
   const walk = (value) => {
     if (!value || typeof value !== 'object') return
     if (!Array.isArray(value)) {
@@ -30,8 +147,11 @@ export function prepareColorsetOption(option, colorset = 'colorset1') {
       walk(value[key])
     }
   }
+  const canvas = typeof option.backgroundColor === 'string' && option.backgroundColor !== 'transparent' ? canonicalOpaque(normalizePaint(option.backgroundColor, colorset)) : '#ffffff'
+  if (option.colorsetPresentation !== 'source') option.color = solidColors(colorset, canvas)
+  option.color ||= solidColors(colorset, canvas)
+  solidPresentation(option, colorset, canvas, categoryOrder)
   walk(option)
-  option.color ||= sequences[colorset]
   option.textStyle = { color: '#333e48', ...option.textStyle }
   const maps = option.visualMap ? (Array.isArray(option.visualMap) ? option.visualMap : [option.visualMap]) : []
   for (const map of maps) {
@@ -124,5 +244,5 @@ export function enforceColorsetRenderer(container, colorset = 'colorset1') {
 }
 export function colorsetTheme(colorset = 'colorset1') {
   const axis = { axisLine:{lineStyle:{color:'#cfcfcf'}},axisTick:{lineStyle:{color:'#cfcfcf'}},axisLabel:{color:'#696969'},splitLine:{lineStyle:{color:'#e7e7e7'}},splitArea:{areaStyle:{color:['#ffffff','#f7f7f7']}} }
-  return { color: sequences[colorset], backgroundColor:'#ffffff', textStyle:{color:'#333e48'}, title:{textStyle:{color:'#333e48'},subtextStyle:{color:'#696969'}},legend:{textStyle:{color:'#333e48'}},categoryAxis:axis,valueAxis:axis,timeAxis:axis,logAxis:axis,radar:axis,tooltip:{backgroundColor:'#ffffff',borderColor:'#cfcfcf',textStyle:{color:'#333e48'}},candlestick:{itemStyle:{color:'#9e1b32',color0:colorset==='colorset2'?'#45842a':'#333e48',borderColor:'#6d1222',borderColor0:'#696969'}},tree:{lineStyle:{color:'#cfcfcf'}},graph:{lineStyle:{color:'#cfcfcf'}},sankey:{lineStyle:{color:'#828282'}},gauge:{axisLine:{lineStyle:{color:[[1,'#cfcfcf']]}},axisTick:{lineStyle:{color:'#828282'}},splitLine:{lineStyle:{color:'#696969'}},axisLabel:{color:'#696969'},detail:{color:'#333e48'}},calendar:{itemStyle:{color:'#ffffff',borderColor:'#cfcfcf'},dayLabel:{color:'#696969'},monthLabel:{color:'#696969'},yearLabel:{color:'#333e48'}} }
+  return { color: sequences[colorset], backgroundColor:'#ffffff', textStyle:{color:'#333e48'}, title:{textStyle:{color:'#333e48'},subtextStyle:{color:'#696969'}},legend:{textStyle:{color:'#333e48'}},categoryAxis:axis,valueAxis:axis,timeAxis:axis,logAxis:axis,radar:axis,tooltip:{backgroundColor:'#ffffff',borderWidth:0,borderColor:'#cfcfcf',textStyle:{color:'#333e48'}},candlestick:{itemStyle:{color:'#9e1b32',color0:colorset==='colorset2'?'#45842a':'#333e48',borderColor:'#6d1222',borderColor0:'#696969'}},tree:{lineStyle:{color:'#cfcfcf'}},graph:{lineStyle:{color:'#cfcfcf'}},sankey:{lineStyle:{color:'#828282'}},gauge:{axisLine:{lineStyle:{color:[[1,'#cfcfcf']]}},axisTick:{lineStyle:{color:'#828282'}},splitLine:{lineStyle:{color:'#696969'}},axisLabel:{color:'#696969'},detail:{color:'#333e48'}},calendar:{itemStyle:{color:'#ffffff',borderColor:'#cfcfcf'},dayLabel:{color:'#696969'},monthLabel:{color:'#696969'},yearLabel:{color:'#333e48'}} }
 }

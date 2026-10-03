@@ -4,12 +4,12 @@
   "input": "assets/base-images/kandinsky-improvisation-27.jpg",
   "input_sha256": "fd40933f2efaae993e9d7103a45cb9cc5dfa807548e4770dc18a43cabe80ad28",
   "output": "svgs/vectorize-kandinsky-improvisation-27-cs2.svg",
-  "output_sha256": "24b16e40d1b7c1d4f309c5b0fdeb91669700cfbe050d9a236c4a6e6965207a70",
+  "output_sha256": "bf45b8578efbb60ca73a4344531f31901d0d44d22907f7c61c8002f03963611c",
   "pattern_id": "vectorize-kandinsky-improvisation-27-cs2",
   "mode": "organic",
   "tile": "none",
   "colorset": "colorset2",
-  "palette_contract_sha256": "c81d32ffb0d55d44e7d3102c7470e251baf34f0bb6472fbede7753df8b9a9eb5",
+  "palette_contract_sha256": "f36eb8a9fe171108383767c7697f023218121e51d3e45247e87b58e397b36d62",
   "variation_seed": 0,
   "composition_sha256": "de1617485ed4c60793af44f8742aa9048eb11ef9591b6bc868f72bb353ef6eff",
   "parameters": {
@@ -29,15 +29,15 @@
         },
         {
           "source": "#879f70",
-          "target": "#828282"
+          "target": "#9c9c9c"
         },
         {
           "source": "#6f5048",
-          "target": "#333e48"
+          "target": "#4f4f4f"
         },
         {
           "source": "#c75656",
-          "target": "#9e1b32"
+          "target": "#e8002a"
         },
         {
           "source": "#c4a417",
@@ -45,7 +45,7 @@
         },
         {
           "source": "#131006",
-          "target": "#1c1c1c"
+          "target": "#000000"
         },
         {
           "source": "#104062",
@@ -53,7 +53,7 @@
         },
         {
           "source": "#4d94b0",
-          "target": "#cfcfcf"
+          "target": "#828282"
         }
       ],
       "source_colors": [
@@ -70,13 +70,13 @@
       "target_colors": [
         "#f7f7f7",
         "#007298",
-        "#828282",
-        "#333e48",
-        "#9e1b32",
+        "#9c9c9c",
+        "#4f4f4f",
+        "#e8002a",
         "#f1c319",
-        "#1c1c1c",
+        "#000000",
         "#004d66",
-        "#cfcfcf"
+        "#828282"
       ]
     }
   },
@@ -87,13 +87,13 @@
   "render_width": 560,
   "render_height": 479,
   "palette": [
+    "#000000",
     "#004d66",
     "#007298",
-    "#1c1c1c",
-    "#333e48",
+    "#4f4f4f",
     "#828282",
-    "#9e1b32",
-    "#cfcfcf",
+    "#9c9c9c",
+    "#e8002a",
     "#f1c319",
     "#f7f7f7"
   ],

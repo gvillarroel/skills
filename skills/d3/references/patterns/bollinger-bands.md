@@ -34,7 +34,7 @@ function renderBollingerBands() {
     axisBottom(svg, x, height - margin.bottom, 5);
     axisLeft(svg, y, margin.left, 4);
     const area = d3.area().x(d => x(d.t)).y0(d => y(d.lo)).y1(d => y(d.hi)).curve(d3.curveMonotoneX);
-    const band = svg.append("path").datum(bands).attr("d", area).attr("fill", palette.blueHighlight).attr("fill-opacity", .72);
+    const band = svg.append("path").datum(bands).attr("d", area).attr("fill", palette.blueHighlight).attr("data-opacity-role", "semantic").attr("fill-opacity", .72);
     fadeIn(band, .12, .6);
     const line = key => d3.line().x(d => x(d.t)).y(d => y(d[key])).curve(d3.curveMonotoneX);
     const price = svg.append("path").datum(bands).attr("d", line("price")).attr("fill", "none").attr("stroke", palette.ink).attr("stroke-width", 2.7);

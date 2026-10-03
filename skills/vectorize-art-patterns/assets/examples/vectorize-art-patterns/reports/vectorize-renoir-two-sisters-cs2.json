@@ -4,12 +4,12 @@
   "input": "assets/base-images/renoir-two-sisters.jpg",
   "input_sha256": "385098ad88f6be0095e025f7484073bc24ef8de9b863d46a56807097eb127e35",
   "output": "svgs/vectorize-renoir-two-sisters-cs2.svg",
-  "output_sha256": "b914bbd0580609e25e990aedf175cc73c5463273018093a9d6838007ebc28d07",
+  "output_sha256": "105df088f7ded4e21fcb6d45af0fa7cf7864f019095bc477098c7d79b75ff905",
   "pattern_id": "vectorize-renoir-two-sisters-cs2",
   "mode": "organic",
   "tile": "none",
   "colorset": "colorset2",
-  "palette_contract_sha256": "c81d32ffb0d55d44e7d3102c7470e251baf34f0bb6472fbede7753df8b9a9eb5",
+  "palette_contract_sha256": "f36eb8a9fe171108383767c7697f023218121e51d3e45247e87b58e397b36d62",
   "variation_seed": 0,
   "composition_sha256": "0f060850941bfc4318e2384c93b82b4f2c0be3a86c48460045828620e032e6a9",
   "parameters": {
@@ -33,7 +33,7 @@
         },
         {
           "source": "#232d32",
-          "target": "#1c1c1c"
+          "target": "#363636"
         },
         {
           "source": "#195187",
@@ -49,7 +49,7 @@
         },
         {
           "source": "#c66751",
-          "target": "#e77204"
+          "target": "#98700c"
         },
         {
           "source": "#5487b4",
@@ -71,11 +71,11 @@
         "#333e48",
         "#007298",
         "#45842a",
-        "#1c1c1c",
+        "#363636",
         "#004d66",
         "#9e1b32",
         "#cfcfcf",
-        "#e77204",
+        "#98700c",
         "#828282"
       ]
     }
@@ -89,13 +89,13 @@
   "palette": [
     "#004d66",
     "#007298",
-    "#1c1c1c",
     "#333e48",
+    "#363636",
     "#45842a",
     "#828282",
+    "#98700c",
     "#9e1b32",
-    "#cfcfcf",
-    "#e77204"
+    "#cfcfcf"
   ],
   "path_count": 81,
   "output_bytes": 222429,

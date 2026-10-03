@@ -14,6 +14,7 @@ import json
 import sys
 from pathlib import Path
 from typing import Any
+from colorset_adapter import adapt_artifact
 
 
 SKILL_ROOT = Path(__file__).resolve().parents[1]
@@ -147,6 +148,7 @@ def main() -> int:
 
     output = args.output.expanduser().resolve()
     output.parent.mkdir(parents=True, exist_ok=True)
+    output_html = adapt_artifact(output_html, args.colorset)
     output.write_text(output_html, encoding="utf-8", newline="\n")
 
     result = {

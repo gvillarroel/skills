@@ -54,7 +54,7 @@ function renderD3GanttRollout() {
       .attr("width", d => Math.max(8, x(d.endDate) - x(d.startDate)))
       .attr("rx", 7)
       .attr("fill", d => d.color)
-      .attr("fill-opacity", .82)
+      .attr("fill-opacity", 1)
       .attr("stroke", d => d.status === "crit" ? palette.redHover : palette.surface)
       .attr("stroke-width", d => d.status === "crit" ? 2.4 : 1.2);
     bars.filter(d => d.status === "milestone").append("path")

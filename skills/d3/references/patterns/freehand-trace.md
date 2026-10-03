@@ -131,7 +131,7 @@ function renderFreehandTrace() {
     point.append("circle")
       .attr("r", 13)
       .attr("fill", palette.redHighlight)
-      .attr("fill-opacity", .78);
+      .attr("fill-opacity", 1);
     point.append("circle")
       .attr("r", 6.6)
       .attr("fill", palette.red)

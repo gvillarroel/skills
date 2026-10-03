@@ -4,11 +4,11 @@ Use this reference when authoring boxes, reducing vertical whitespace, or choosi
 
 ## Color priority
 
-1. Use white and neutral gray surfaces for ordinary boxes, containers, notes, and secondary elements. Keep the background white.
-2. Use brand red `#9e1b32` for the main emphasis. `csPrimary` uses solid red and white text; default unclassified boxes use white with a red border. Use dark ink `#333e48` or white according to the fill.
-3. Reuse roles when the meaning repeats. Use labels, grouping, or shape before introducing another color. `csAccent`, `csMuted`, `csWarning`, `csInfo`, `csSpecial`, and `csNeutral` stay neutral in colorset1; `csCritical` uses a red outline and `csSuccess` uses dark ink with white text.
-4. For genuinely indexed series, consume red, dark red, ink, and the gray range first. All 12 generated colorset1 scale slots fit this range. Pink `#ffccd5` is only a last-resort additional category when usable red and neutral choices are exhausted and an additional hue is necessary. It is absent from standard generated styling. Do not turn selected states, secondary roles, or a larger node count into automatic pink fills.
-5. Keep colorset2's extended palette only for an explicit extended/full-color request.
+1. Keep the canvas white and distinguish ordinary category boxes with opaque solid fills and zero decorative border width. Containers remain quiet layout surfaces.
+2. Use brand red `#9e1b32` first. `csPrimary` and default unclassified boxes use a solid red fill and white inside text. For every other fill choose exactly black or white by the greater WCAG relative-luminance contrast.
+3. Reuse roles when meaning repeats. The nine semantic classes use the first nine unique entries of the selected bundled `solidSequence`; every class has no decorative stroke. Preserve connector and class-compartment lines.
+4. For indexed categories consume the entire usable `solidSequence`, excluding the actual canvas, before recycling a fill with an explicit border/dash/width overflow variant. Saturated/base colors precede dark/bright/neutral choices; soft colors are late. Native fixed-index families have their documented renderer capacity: extend category styling deliberately, split the view, or retain labels/shape when that native capacity cycles. Do not use borders merely because a fixed native scale ended while usable solid palette colors remain.
+5. Use colorset2 for an explicit extended/full-color request or a documented semantic category need. Keep category IDs and styles stable across static/animated views.
 
 ## Native compact defaults
 

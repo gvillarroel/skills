@@ -49,7 +49,7 @@ a {
 }
 
 a {
-  color:var(--#e8002a);
+  color:var(--red);
 }
 
 .skip-link {
@@ -115,7 +115,7 @@ a {
   grid-template-columns: repeat(4, minmax(0, 1fr));
   max-width: 920px;
   margin-top: 20px;
-  border-top: 1px solid rgba(255, 255, 255, 0.18);
+  border: 0;
 }
 
 .hero__stats div {
@@ -143,7 +143,7 @@ a {
   right: -90px;
   width: 600px;
   height: 600px;
-  border: 42px solid rgba(255, 255, 255, 0.06);
+  border: 0;
   border-radius: 50%;
 }
 
@@ -188,7 +188,7 @@ footer {
 
 .method .section-kicker,
 .catalog .section-kicker {
-  color:var(--#e8002a);
+  color:var(--red);
 }
 
 .method h2,
@@ -241,7 +241,7 @@ footer {
   grid-template-columns: minmax(240px, 1fr) minmax(180px, 0.55fr) auto;
   gap: 14px;
   padding: 16px;
-  border: 1px solid rgba(207, 207, 207, 0.92);
+  border: 0;
   border-radius: 18px;
   background:rgba(247,247,247,0.94);
   box-shadow: 0 12px 35px rgba(51, 62, 72, 0.08);
@@ -272,7 +272,7 @@ footer {
   width: 100%;
   min-height: 44px;
   padding: 10px 12px;
-  border: 1px solid var(--line);
+  border: 0;
   border-radius: 11px;
   background:var(--surface);
   color:var(--ink);
@@ -287,7 +287,7 @@ footer {
   display: flex;
   gap: 4px;
   padding: 4px;
-  border: 1px solid var(--line);
+  border: 0;
   border-radius: 12px;
   background:var(--surface);
 }
@@ -320,7 +320,7 @@ footer {
 .family-nav a {
   flex: 0 0 auto;
   padding: 8px 12px;
-  border: 1px solid var(--line);
+  border: 0;
   border-radius: 999px;
   background:var(--surface);
   color:var(--ink-soft);
@@ -332,7 +332,7 @@ footer {
 .family-nav a:hover,
 .family-nav a:focus-visible {
   border-color: var(--red);
-  color:var(--#e8002a);
+  color:var(--red);
 }
 
 .gallery {
@@ -343,8 +343,8 @@ footer {
 .family-card {
   scroll-margin-top: 122px;
   overflow: hidden;
-  border: 1px solid var(--line);
-  border-top: 5px solid var(--red);
+  border: 0;
+  border: 0;
   border-radius: var(--radius);
   background:var(--surface);
   box-shadow: var(--shadow);
@@ -382,7 +382,7 @@ footer {
 .family-card__declaration {
   display: inline-block;
   margin-top: 5px;
-  color:var(--#e8002a);
+  color:var(--red);
   font: 700 0.78rem/1.4 ui-monospace, SFMono-Regular, Consolas, monospace;
 }
 
@@ -426,13 +426,13 @@ footer {
 .capacity-pill {
   margin-right: 8px;
   background:var(--#e8002a-soft);
-  color:var(--#e8002a);
+  color:var(--red);
 }
 
 .variants {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  border-top: 1px solid var(--line);
+  border: 0;
 }
 
 .variants[data-palette-view="cs1"],
@@ -447,7 +447,7 @@ footer {
 }
 
 .variant + .variant {
-  border-left: 1px solid var(--line);
+  border: 0;
 }
 
 .variant[hidden] {
@@ -480,7 +480,7 @@ footer {
   min-height: 160px;
   overflow: auto;
   place-items: center;
-  border: 1px solid #e7e7e7;
+  border: 0;
   border-radius: 15px;
   background-color:#f7f7f7;
   background-image: linear-gradient(rgba(51, 62, 72, 0.035) 1px, transparent 1px),
@@ -506,7 +506,7 @@ footer {
 .variant__actions a,
 .variant__actions button {
   min-height: 34px;
-  border: 1px solid var(--line);
+  border: 0;
   border-radius: 999px;
   padding: 7px 11px;
   background:var(--surface);
@@ -522,7 +522,7 @@ footer {
 .variant__actions a:focus-visible,
 .variant__actions button:focus-visible {
   border-color: var(--red);
-  color:var(--#e8002a);
+  color:var(--red);
 }
 
 .source-view {
@@ -538,7 +538,7 @@ footer {
 }
 
 .family-card details {
-  border-top: 1px solid var(--line);
+  border: 0;
   padding: 16px 26px 20px;
 }
 
@@ -575,7 +575,7 @@ footer {
 
 .empty-state {
   padding: 60px 20px;
-  border: 1px dashed var(--line);
+  border: 0;
   border-radius: var(--radius);
   text-align: center;
 }
@@ -585,7 +585,7 @@ footer {
   justify-content: space-between;
   gap: 24px;
   padding: 30px 0 54px;
-  border-top: 1px solid var(--line);
+  border: 0;
   color:var(--ink-soft);
   font-size: 0.82rem;
 }
@@ -626,8 +626,8 @@ footer p {
   }
 
   .variant + .variant {
-    border-top: 1px solid var(--line);
-    border-left: 0;
+    border: 0;
+    border: 0;
   }
 
   .preview {

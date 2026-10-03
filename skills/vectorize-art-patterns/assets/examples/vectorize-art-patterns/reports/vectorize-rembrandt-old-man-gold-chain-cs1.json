@@ -4,12 +4,12 @@
   "input": "assets/base-images/rembrandt-old-man-gold-chain.jpg",
   "input_sha256": "b1971f3ed733f26980900b8671ca56afa2b999391b176cb31bb06726f58e5698",
   "output": "svgs/vectorize-rembrandt-old-man-gold-chain-cs1.svg",
-  "output_sha256": "58c60b074084af34359cbed09b1ffcff88f7ee9fc5c886d54da810919539052a",
+  "output_sha256": "38cd8acf3260075708f80303628bf589cbadf2153311f717ab3bfd6a1ad00878",
   "pattern_id": "vectorize-rembrandt-old-man-gold-chain-cs1",
   "mode": "organic",
   "tile": "none",
   "colorset": "colorset1",
-  "palette_contract_sha256": "c81d32ffb0d55d44e7d3102c7470e251baf34f0bb6472fbede7753df8b9a9eb5",
+  "palette_contract_sha256": "f36eb8a9fe171108383767c7697f023218121e51d3e45247e87b58e397b36d62",
   "variation_seed": 0,
   "composition_sha256": "92fbece86b188ffc0551746e323807bcfe55014a79d6a2f1899291deacc583e2",
   "parameters": {
@@ -25,15 +25,15 @@
       "layers": [
         {
           "source": "#0c0808",
-          "target": "#1c1c1c"
+          "target": "#000000"
         },
         {
           "source": "#51514f",
-          "target": "#828282"
+          "target": "#4f4f4f"
         },
         {
           "source": "#7a512e",
-          "target": "#6d1222"
+          "target": "#696969"
         },
         {
           "source": "#ab814f",
@@ -41,15 +41,15 @@
         },
         {
           "source": "#706e69",
-          "target": "#e8002a"
+          "target": "#828282"
         },
         {
           "source": "#a8a194",
-          "target": "#cfcfcf"
+          "target": "#9c9c9c"
         },
         {
           "source": "#928777",
-          "target": "#ffccd5"
+          "target": "#b5b5b5"
         }
       ],
       "source_colors": [
@@ -64,13 +64,13 @@
       ],
       "target_colors": [
         "#333e48",
-        "#1c1c1c",
-        "#828282",
-        "#6d1222",
+        "#000000",
+        "#4f4f4f",
+        "#696969",
         "#9e1b32",
-        "#e8002a",
-        "#cfcfcf",
-        "#ffccd5"
+        "#828282",
+        "#9c9c9c",
+        "#b5b5b5"
       ]
     }
   },
@@ -81,10 +81,10 @@
   "render_width": 514,
   "render_height": 560,
   "palette": [
-    "#1c1c1c",
+    "#000000",
     "#333e48",
-    "#6d1222",
-    "#828282",
+    "#4f4f4f",
+    "#696969",
     "#9e1b32"
   ],
   "path_count": 13,

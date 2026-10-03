@@ -30,7 +30,7 @@ function renderChord() {
     const ribbon = d3.ribbon().radius(innerRadius - 2).padAngle(.02);
     const chord = d3.chord().padAngle(.06).sortSubgroups(d3.descending)(matrix);
     const g = svg.append("g").attr("transform", `translate(${width / 2},${height / 2 + 8})`);
-    const ribbons = g.append("g").attr("fill-opacity", .68).selectAll("path").data(chord).join("path")
+    const ribbons = g.append("g").attr("data-opacity-role", "semantic").attr("fill-opacity", .68).selectAll("path").data(chord).join("path")
       .attr("d", ribbon).attr("fill", d => color(names[d.source.index]))
       .attr("stroke", d => d3.color(color(names[d.source.index])).darker(.55));
     fadeIn(ribbons, .25, .95);

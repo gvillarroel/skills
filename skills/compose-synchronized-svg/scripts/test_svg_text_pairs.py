@@ -63,7 +63,7 @@ class SvgTextPairTests(unittest.TestCase):
         })""")
         self.assertEqual(actual["mark"], "#828282")
         self.assertEqual(plan["theme"]["conceptColors"]["input-rate"], "#828282")
-        self.assertEqual(actual["fill"], "rgb(51, 62, 72)")
+        self.assertEqual(actual["fill"], "rgb(0, 0, 0)")
         self.assertEqual(actual["explicit"], "rgb(255, 255, 255)")
         self.assertTrue(audit_text_contrast(page)["ok"])
 
@@ -89,7 +89,7 @@ class SvgTextPairTests(unittest.TestCase):
         }""")
         self.assertEqual(colors["background"], "rgb(51, 62, 72)")
         self.assertEqual(colors["focus"], "rgb(255, 255, 255)")
-        self.assertEqual(colors["tier"], "rgb(207, 207, 207)")
+        self.assertEqual(colors["tier"], "rgb(255, 255, 255)")
         self.assertEqual(colors["help"], colors["tier"])
         self.assertTrue(audit_text_contrast(page)["ok"])
 

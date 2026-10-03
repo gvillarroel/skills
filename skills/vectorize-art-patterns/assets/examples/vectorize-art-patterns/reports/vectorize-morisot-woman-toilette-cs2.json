@@ -4,12 +4,12 @@
   "input": "assets/base-images/morisot-woman-toilette.jpg",
   "input_sha256": "2889eb24afc56bd4753d09806cc1bcc9a33039e9e2d0d3544dbcfe93f511ba5c",
   "output": "svgs/vectorize-morisot-woman-toilette-cs2.svg",
-  "output_sha256": "f5e36d84f156d5210673ae2300b2cfe8e41e209fa1e65f21b2f2199b525a18a6",
+  "output_sha256": "3374499589de95334705635a30c9cf5d95a6ef00fcf8882a86de8c99c7f49508",
   "pattern_id": "vectorize-morisot-woman-toilette-cs2",
   "mode": "stain",
   "tile": "none",
   "colorset": "colorset2",
-  "palette_contract_sha256": "c81d32ffb0d55d44e7d3102c7470e251baf34f0bb6472fbede7753df8b9a9eb5",
+  "palette_contract_sha256": "f36eb8a9fe171108383767c7697f023218121e51d3e45247e87b58e397b36d62",
   "variation_seed": 0,
   "composition_sha256": "e37b8e9a9f89593e206f9d1bb3cba3ff7294337549d43fec32c10a3e3af70858",
   "parameters": {
@@ -29,19 +29,19 @@
         },
         {
           "source": "#606361",
-          "target": "#828282"
+          "target": "#696969"
         },
         {
           "source": "#977c5c",
-          "target": "#45842a"
+          "target": "#828282"
         },
         {
           "source": "#cfb9a0",
-          "target": "#cfcfcf"
+          "target": "#b5b5b5"
         },
         {
           "source": "#644f28",
-          "target": "#333e48"
+          "target": "#4f4f4f"
         },
         {
           "source": "#172a30",
@@ -49,7 +49,7 @@
         },
         {
           "source": "#d4d2d2",
-          "target": "#ffffff"
+          "target": "#cfcfcf"
         }
       ],
       "source_colors": [
@@ -65,12 +65,12 @@
       "target_colors": [
         "#f7f7f7",
         "#007298",
+        "#696969",
         "#828282",
-        "#45842a",
-        "#cfcfcf",
-        "#333e48",
+        "#b5b5b5",
+        "#4f4f4f",
         "#1c1c1c",
-        "#ffffff"
+        "#cfcfcf"
       ]
     }
   },
@@ -83,10 +83,10 @@
   "palette": [
     "#007298",
     "#1c1c1c",
-    "#333e48",
-    "#45842a",
+    "#4f4f4f",
+    "#696969",
     "#828282",
-    "#cfcfcf",
+    "#b5b5b5",
     "#f7f7f7"
   ],
   "path_count": 34,

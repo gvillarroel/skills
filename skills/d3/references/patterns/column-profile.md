@@ -72,7 +72,7 @@ function renderColumnProfileTable() {
         .attr("height", value => y(value))
         .attr("rx", 2)
         .attr("fill", d.type === "number" ? palette.blue : palette.purple)
-        .attr("fill-opacity", .82)
+        .attr("fill-opacity", 1)
         .attr("stroke", palette.surface)
         .attr("stroke-width", .7);
       fadeIn(bars, .18, .45);

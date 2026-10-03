@@ -1,0 +1,134 @@
+{
+  "ok": true,
+  "checks": [
+    {
+      "command": "uv run --script scripts/test-colorsets.py",
+      "exitCode": 0,
+      "log": "projects/colorset-audit/artifacts/reviews/scripts--test-colorsets.py.log",
+      "tests": 15
+    },
+    {
+      "command": "uv run --script skills/animated-svg-to-gif/scripts/test_capture_colorset.py",
+      "exitCode": 0,
+      "log": "projects/colorset-audit/artifacts/reviews/skills--animated-svg-to-gif--scripts--test_capture_colorset.py.log",
+      "tests": 3
+    },
+    {
+      "command": "uv run --script skills/animated-svg-to-gif/scripts/test_convert_animated_svg_to_gif.py",
+      "exitCode": 0,
+      "log": "projects/colorset-audit/artifacts/reviews/skills--animated-svg-to-gif--scripts--test_convert_animated_svg_to_gif.py.log",
+      "tests": 2
+    },
+    {
+      "command": "uv run --script skills/asciinema-real-command-video/scripts/test_asciinema_command_video.py",
+      "exitCode": 0,
+      "log": "projects/colorset-audit/artifacts/reviews/skills--asciinema-real-command-video--scripts--test_asciinema_command_video.py.log",
+      "tests": 55
+    },
+    {
+      "command": "uv run --script skills/asciinema-real-command-video/scripts/test_terminal_colorsets.py",
+      "exitCode": 0,
+      "log": "projects/colorset-audit/artifacts/reviews/skills--asciinema-real-command-video--scripts--test_terminal_colorsets.py.log",
+      "tests": 4
+    },
+    {
+      "command": "uv run --script skills/one-bit-dither-svg/scripts/test_stylize_svg.py",
+      "exitCode": 0,
+      "log": "projects/colorset-audit/artifacts/reviews/skills--one-bit-dither-svg--scripts--test_stylize_svg.py.log",
+      "tests": 19
+    },
+    {
+      "command": "uv run --script skills/one-bit-dither-svg/scripts/test_stylize_animated_image.py",
+      "exitCode": 0,
+      "log": "projects/colorset-audit/artifacts/reviews/skills--one-bit-dither-svg--scripts--test_stylize_animated_image.py.log",
+      "tests": 8
+    },
+    {
+      "command": "uv run --script skills/pixel-art-image-video/scripts/test_pixel_art.py",
+      "exitCode": 0,
+      "log": "projects/colorset-audit/artifacts/reviews/skills--pixel-art-image-video--scripts--test_pixel_art.py.log",
+      "tests": 13
+    },
+    {
+      "command": "uv run --script skills/harbor-author-evaluation-datasets/scripts/test_consolidate_harbor_reports.py",
+      "exitCode": 0,
+      "log": "projects/colorset-audit/artifacts/reviews/skills--harbor-author-evaluation-datasets--scripts--test_consolidate_harbor_reports.py.log",
+      "tests": 6
+    },
+    {
+      "command": "uv run --script skills/technical-logo-assets/scripts/test_logo_variants.py",
+      "exitCode": 0,
+      "log": "projects/colorset-audit/artifacts/reviews/skills--technical-logo-assets--scripts--test_logo_variants.py.log",
+      "tests": 26
+    },
+    {
+      "command": "uv run --script skills/ambientcg-material-search/scripts/test_asset_io.py",
+      "exitCode": 0,
+      "log": "projects/colorset-audit/artifacts/reviews/skills--ambientcg-material-search--scripts--test_asset_io.py.log",
+      "tests": 13
+    },
+    {
+      "command": "uv run --script skills/iconify-icon-search/scripts/test_asset_io.py",
+      "exitCode": 0,
+      "log": "projects/colorset-audit/artifacts/reviews/skills--iconify-icon-search--scripts--test_asset_io.py.log",
+      "tests": 13
+    },
+    {
+      "command": "uv run --script skills/kenney-asset-search/scripts/test_asset_io.py",
+      "exitCode": 0,
+      "log": "projects/colorset-audit/artifacts/reviews/skills--kenney-asset-search--scripts--test_asset_io.py.log",
+      "tests": 13
+    },
+    {
+      "command": "uv run --script skills/pexels-media-search/scripts/test_asset_io.py",
+      "exitCode": 0,
+      "log": "projects/colorset-audit/artifacts/reviews/skills--pexels-media-search--scripts--test_asset_io.py.log",
+      "tests": 13
+    },
+    {
+      "command": "uv run --script skills/polyhaven-asset-search/scripts/test_asset_io.py",
+      "exitCode": 0,
+      "log": "projects/colorset-audit/artifacts/reviews/skills--polyhaven-asset-search--scripts--test_asset_io.py.log",
+      "tests": 13
+    },
+    {
+      "command": "uv run --script skills/ambientcg-material-search/scripts/test_ambientcg.py",
+      "exitCode": 0,
+      "log": "projects/colorset-audit/artifacts/reviews/skills--ambientcg-material-search--scripts--test_ambientcg.py.log",
+      "tests": 6
+    },
+    {
+      "command": "uv run --script skills/iconify-icon-search/scripts/test_iconify.py",
+      "exitCode": 0,
+      "log": "projects/colorset-audit/artifacts/reviews/skills--iconify-icon-search--scripts--test_iconify.py.log",
+      "tests": 5
+    },
+    {
+      "command": "uv run --script skills/kenney-asset-search/scripts/test_kenney.py",
+      "exitCode": 0,
+      "log": "projects/colorset-audit/artifacts/reviews/skills--kenney-asset-search--scripts--test_kenney.py.log",
+      "tests": 6
+    },
+    {
+      "command": "uv run --script skills/pexels-media-search/scripts/test_pexels.py",
+      "exitCode": 0,
+      "log": "projects/colorset-audit/artifacts/reviews/skills--pexels-media-search--scripts--test_pexels.py.log",
+      "tests": 6
+    },
+    {
+      "command": "uv run --script skills/polyhaven-asset-search/scripts/test_polyhaven.py",
+      "exitCode": 0,
+      "log": "projects/colorset-audit/artifacts/reviews/skills--polyhaven-asset-search--scripts--test_polyhaven.py.log",
+      "tests": 7
+    },
+    {
+      "command": "uv run --script skills/destockd-video-search/scripts/test_destockd.py",
+      "exitCode": 0,
+      "log": "projects/colorset-audit/artifacts/reviews/skills--destockd-video-search--scripts--test_destockd.py.log",
+      "tests": 18
+    }
+  ],
+  "date": "2026-10-03",
+  "suiteCount": 21,
+  "unitCaseCount": 264
+}

@@ -80,10 +80,10 @@
 }
 
 .hero-facts span {
-  background: #cdf3ff;
-  border: 1px solid #cdf3ff;
+  background: #007298;
+  border: 0;
   border-radius: 999px;
-  color: #004d66;
+  color: #ffffff;
   font-size: 0.75rem;
   font-weight: 700;
   padding: 0.28rem 0.55rem;
@@ -95,7 +95,7 @@
 .validation-grid > div,
 .anime-feature-slide {
   background: #ffffff;
-  border: 1px solid #e7e7e7;
+  border: 0;
   border-radius: 8px;
   box-shadow: 0 14px 30px rgba(28, 28, 28, 0.07);
 }
@@ -110,7 +110,7 @@
 
 .motion-chip {
   align-items: center;
-  border: 1px solid #e7e7e7;
+  border: 0;
   border-radius: 8px;
   display: flex;
   font-weight: 750;
@@ -118,11 +118,11 @@
   min-height: 72px;
 }
 
-.motion-chip:nth-child(1) { background: #dbffcc; color: #294d19; }
-.motion-chip:nth-child(2) { background: #cdf3ff; color: #004d66; }
-.motion-chip:nth-child(3) { background: #fff4cc; color: #994a00; }
-.motion-chip:nth-child(4) { background: #ffccd5; color: #6d1222; }
-.motion-chip:nth-child(5) { background: #f9ccff; color: #431f47; }
+.motion-chip:nth-child(1) { background: #45842a; color: #000000; }
+.motion-chip:nth-child(2) { background: #007298; color: #ffffff; }
+.motion-chip:nth-child(3) { background: #f1c319; color: #000000; }
+.motion-chip:nth-child(4) { background: #9e1b32; color: #ffffff; }
+.motion-chip:nth-child(5) { background: #652f6c; color: #ffffff; }
 .motion-chip:nth-child(6) { background: #f7f7f7; color: #4f4f4f; }
 
 .two-column {
@@ -195,7 +195,7 @@
 
 .anime-stage {
   background: #f7f7f7;
-  border: 1px solid #cfcfcf;
+  border: 0;
   border-radius: 8px;
   height: 270px;
   overflow: hidden;
@@ -209,7 +209,7 @@
 
 .anime-feature-notes > div {
   background: #f7f7f7;
-  border: 1px solid #e7e7e7;
+  border: 0;
   border-radius: 8px;
   padding: 0.65rem;
 }
@@ -243,10 +243,10 @@
 }
 
 .chart-clicks li {
-  background: #dbffcc;
-  border: 1px solid #dbffcc;
+  background: #45842a;
+  border: 0;
   border-radius: 8px;
-  color: #294d19;
+  color: #000000;
   line-height: 1.25;
   list-style: none !important;
   min-height: 2.2rem;
@@ -283,7 +283,7 @@
 
 .css-card {
   background: #ffffff;
-  border: 1px solid #cfcfcf;
+  border: 0;
   border-radius: 8px;
   box-shadow: 0 10px 24px rgba(28, 28, 28, 0.14);
   display: grid;
@@ -331,8 +331,9 @@
 
 .property-panel {
   --accent-size: 16px;
-  background: #cdf3ff;
-  border: 1px solid #00ace6;
+  background: #007298;
+  color: #ffffff;
+  border: 0;
   border-radius: 8px;
   box-shadow: inset var(--accent-size) 0 0 rgba(0, 114, 152, 0.28);
   display: grid;
@@ -340,6 +341,11 @@
   min-height: 112px;
   padding: 1rem 1.2rem;
   width: 170px;
+}
+
+.property-panel strong,
+.property-panel span {
+  color: inherit;
 }
 
 .track-line,
@@ -412,7 +418,7 @@
 .playback-status,
 .engine-status {
   background: #ffffff;
-  border: 1px solid #e7e7e7;
+  border: 0;
   border-radius: 999px;
   color: #4f4f4f;
   font-size: 0.76rem;
@@ -499,10 +505,10 @@
 
 .stagger-cell {
   align-items: center;
-  background: #cdf3ff;
-  border: 1px solid #cdf3ff;
+  background: #007298;
+  border: 0;
   border-radius: 8px;
-  color: #333e48;
+  color: #ffffff;
   display: flex;
   font-size: 0.8rem;
   font-weight: 750;
@@ -651,7 +657,7 @@
 .scope-mark {
   align-items: center;
   background: #ffffff;
-  border: 1px solid #cfcfcf;
+  border: 0;
   border-radius: 8px;
   box-shadow: 0 10px 20px rgba(28, 28, 28, 0.08);
   color: #333e48;
@@ -670,7 +676,7 @@
     linear-gradient(rgba(156, 156, 156, 0.22) 1px, transparent 1px),
     #ffffff;
   background-size: 34px 34px;
-  border: 1px solid #cfcfcf;
+  border: 0;
   border-radius: 8px;
   inset: 34px;
   position: absolute;
@@ -678,10 +684,10 @@
 
 .drag-card {
   align-items: center;
-  background: #fff4cc;
-  border: 1px solid #e77204;
+  background: #f1c319;
+  border: 0;
   border-radius: 8px;
-  color: #994a00;
+  color: #000000;
   cursor: grab;
   display: flex;
   font-weight: 800;
@@ -699,7 +705,7 @@
 
 .scroll-panel {
   background: #ffffff;
-  border: 1px solid #cfcfcf;
+  border: 0;
   border-radius: 8px;
   height: 262px;
   overflow-y: auto;
@@ -721,10 +727,10 @@
 
 .scroll-card {
   align-items: center;
-  background: #cdf3ff;
-  border: 1px solid #00ace6;
+  background: #007298;
+  border: 0;
   border-radius: 8px;
-  color: #004d66;
+  color: #ffffff;
   display: flex;
   font-weight: 800;
   height: 62px;
@@ -745,10 +751,10 @@
   height: 70px;
 }
 
-.scope-mark:nth-child(1) { background: #cdf3ff; }
-.scope-mark:nth-child(2) { background: #dbffcc; }
-.scope-mark:nth-child(3) { background: #fff4cc; }
-.scope-mark:nth-child(4) { background: #ffccd5; }
+.scope-mark:nth-child(1) { background: #007298; }
+.scope-mark:nth-child(2) { background: #45842a; }
+.scope-mark:nth-child(3) { background: #f1c319; }
+.scope-mark:nth-child(4) { background: #9e1b32; }
 
 .waapi-row {
   align-items: center;
@@ -760,10 +766,10 @@
 
 .waapi-pill {
   align-items: center;
-  background: #f9ccff;
-  border: 1px solid #f9ccff;
+  background: #652f6c;
+  border: 0;
   border-radius: 999px;
-  color: #431f47;
+  color: #ffffff;
   display: flex;
   font-weight: 850;
   height: 56px;

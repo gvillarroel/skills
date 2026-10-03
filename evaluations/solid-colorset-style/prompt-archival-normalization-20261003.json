@@ -1,0 +1,41 @@
+{
+  "date": "2026-10-03",
+  "scope": "Archived Markdown prompts normalized only for trailing line whitespace and LF before committing. Original submitted prompts and hashes remain unchanged in sealed Pi run workspaces; this archival normalization is not a new model trial or a relabeled pass.",
+  "files": [
+    {
+      "path": "evaluations/composition-solid-style/prompts/compose-synchronized-svg.md",
+      "originalSha256": "982ea434ebaa79e04c367d213f5e7d83660d54a5491b69eb25d44a09d1228a66",
+      "archivedSha256": "3af86cb21ac0280245c90ba181cdfb82dd0c0904654aeb433810be064ba37a16"
+    },
+    {
+      "path": "evaluations/composition-solid-style/prompts/diagram-composition.md",
+      "originalSha256": "a107406edabeb86941dd14f627148597d91ad9d035a85285108eb92bd7ac26e5",
+      "archivedSha256": "9706759ee4a6ff20e562443c50a5494d4aba450ec25c5db7cfde651be3da5d0b"
+    },
+    {
+      "path": "evaluations/composition-solid-style/prompts/hierarchy-lens.md",
+      "originalSha256": "fbbf03a8b5d330549cc78534885d605e4718f5c5f2ebe92e09d983aa3af1692c",
+      "archivedSha256": "3aa588cb267284d4096ef5bd56222189c5ed069d2a02ae8728afceab655ca59d"
+    },
+    {
+      "path": "evaluations/composition-solid-style/prompts/hyperframes-explainer.md",
+      "originalSha256": "ae366825b61ede6729fea1212b43d9cf470f4268d7222be55ae65ebbbb3344ed",
+      "archivedSha256": "4070972fd4c0293fcd626572ded5df464990a9ace37ec4d9813c222a8ff61196"
+    },
+    {
+      "path": "evaluations/composition-solid-style/prompts/manim-svg-video.md",
+      "originalSha256": "ef5e6721de6fcd107c0402d328958afee47d036f5842893991705cf063e64d07",
+      "archivedSha256": "42e11b1605d34b7f7af58acd78491cc3a65077c0f1b7a245ceac968c303d3140"
+    },
+    {
+      "path": "evaluations/composition-solid-style/prompts/usefulcharts-style.md",
+      "originalSha256": "94f2545d80a11d17f3bb9787ed181469ccf811a2a8412f6febd9457b05c4d7e0",
+      "archivedSha256": "3d397fc45b8a81f7751addf2d725608617f17b4d0e466acf469851b23ab333ad"
+    },
+    {
+      "path": "evaluations/composition-solid-style/prompts/video.md",
+      "originalSha256": "1ddbafb37962b721f591e81dcb256496c6d12a9c5097f1ef4241b2965bfceacd",
+      "archivedSha256": "e0aaa67ca00a35625a0829048a1a2a32516a277ef66825b6107e6d131ecab823"
+    }
+  ]
+}

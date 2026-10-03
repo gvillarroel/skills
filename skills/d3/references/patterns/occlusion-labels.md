@@ -33,7 +33,7 @@ function renderOcclusionLabels() {
       const overlaps = kept.some(k => !(box.x1 < k.box.x0 || box.x0 > k.box.x1 || box.y1 < k.box.y0 || box.y0 > k.box.y1));
       if (!overlaps) kept.push({ ...d, box });
     });
-    const dots = svg.append("g").selectAll("circle").data(raw).join("circle").attr("cx", d => d.x).attr("cy", d => d.y).attr("fill", palette.blue).attr("fill-opacity", .65);
+    const dots = svg.append("g").selectAll("circle").data(raw).join("circle").attr("cx", d => d.x).attr("cy", d => d.y).attr("fill", palette.blue).attr("data-opacity-role", "semantic").attr("fill-opacity", .65);
     grow(dots, "r", 1.5, 3.5, .04, .45);
     const labels = svg.append("g").selectAll("g").data(kept).join("g").attr("transform", d => `translate(${d.x},${d.y})`);
     labels.append("line").attr("x1", 4).attr("x2", 10).attr("y1", -3).attr("y2", -10).attr("stroke", palette.gray400);

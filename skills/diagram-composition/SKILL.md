@@ -6,6 +6,7 @@ description: "Decomposes a complex idea into related subdiagrams, chooses suitab
 # Diagram Composition
 
 Read [palette-policy.md](references/palette-policy.md) before authoring or composing visuals. Apply one exact colorset to authored content and report preserved source media separately.
+Read [solid-surfaces.md](references/solid-surfaces.md) for solid-first category fills, black/white text on the actual fill, and palette exhaustion before border variants.
 
 Design the explanation before packing the page. Deliver one coherent figure whose
 subdiagrams answer different questions and whose relationships explain the whole.

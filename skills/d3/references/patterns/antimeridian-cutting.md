@@ -23,7 +23,7 @@ function renderAntimeridianCutting() {
     const svg = prepareSvg("antimeridian-cutting", "Antimeridian cutting", "A route splits cleanly at the dateline instead of crossing the map.");
     const projection = d3.geoEquirectangular().fitExtent([[52, 58], [508, 334]], { type: "Sphere" });
     const path = d3.geoPath(projection);
-    svg.append("path").datum({ type: "Sphere" }).attr("d", path).attr("fill", palette.blueHighlight).attr("fill-opacity", .18).attr("stroke", palette.line);
+    svg.append("path").datum({ type: "Sphere" }).attr("d", path).attr("fill", palette.blueHighlight).attr("fill-opacity", 1).attr("stroke", palette.line);
     appendSchematicLand(svg, path);
     svg.append("g").selectAll("path").data(d3.geoGraticule().step([30, 30]).lines()).join("path")
       .attr("d", path).attr("fill", "none").attr("stroke", palette.gray200).attr("stroke-width", .8);

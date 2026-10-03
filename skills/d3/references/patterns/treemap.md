@@ -29,7 +29,7 @@ function renderTreemap() {
     const nodes = g.selectAll("g").data(root.descendants().filter(d => d.depth)).join("g")
       .attr("transform", d => `translate(${d.x0},${d.y0})`);
     nodes.append("rect").attr("width", d => Math.max(0, d.x1 - d.x0)).attr("height", d => Math.max(0, d.y1 - d.y0))
-      .attr("rx", 3).attr("fill", d => color(branchName(d))).attr("fill-opacity", d => d.children ? .25 : .82)
+      .attr("rx", 3).attr("fill", d => color(branchName(d))).attr("fill-opacity", 1)
       .attr("stroke", "#fff");
     nodes.filter(d => d.children && (d.x1 - d.x0) > 52 && (d.y1 - d.y0) > 22).append("text")
       .attr("class", "treemap-parent-label")

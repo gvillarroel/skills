@@ -47,7 +47,7 @@ function renderHierarchicalBars() {
       .attr("width", d => x(d.value))
       .attr("rx", 5)
       .attr("fill", d => d.children ? palette.blue : palette.cyan)
-      .attr("fill-opacity", d => d.children ? .82 : .58);
+      .attr("fill-opacity", 1);
     bars.each(function (d, i) {
       d3.select(this).append("animate")
         .attr("attributeName", "width")

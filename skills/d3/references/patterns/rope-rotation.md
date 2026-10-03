@@ -42,7 +42,7 @@ function renderRopePositionRotation() {
       group.append("line").attr("x1", -radius).attr("x2", radius).attr("y1", 0).attr("y2", 0).attr("stroke", palette.gray200);
       group.append("line").attr("x1", 0).attr("x2", 0).attr("y1", -radius).attr("y2", radius).attr("stroke", palette.gray200);
       const arc = d3.arc().innerRadius(radius + 11).outerRadius(radius + 14).startAngle(0).endAngle(position.angleQ * Math.PI / 180);
-      group.append("path").attr("d", arc()).attr("fill", position.color).attr("fill-opacity", .46);
+      group.append("path").attr("d", arc()).attr("fill", position.color).attr("fill-opacity", 1);
       const qVector = group.append("g").attr("transform", `rotate(${position.angleQ})`);
       qVector.append("line").attr("x1", 0).attr("y1", 0).attr("x2", radius).attr("y2", 0).attr("stroke", palette.red).attr("stroke-width", 3).attr("stroke-linecap", "round");
       qVector.append("circle").attr("cx", radius).attr("cy", 0).attr("r", 4.5).attr("fill", palette.red);

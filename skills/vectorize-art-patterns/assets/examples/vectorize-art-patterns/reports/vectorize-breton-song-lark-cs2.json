@@ -4,12 +4,12 @@
   "input": "assets/base-images/breton-song-lark.jpg",
   "input_sha256": "04cd98272b805ae0a16d05bb9cd52da513e19d2dc66271f6635d36e4b005ab46",
   "output": "svgs/vectorize-breton-song-lark-cs2.svg",
-  "output_sha256": "7ca195e69e23bd437cda1efd72c8f3b4732572da5308f8223942618be292cbb5",
+  "output_sha256": "f63e83a6dc3144cf96df6bb1ca7f1c491bbfd7d25882d7088dddfe598fd1e433",
   "pattern_id": "vectorize-breton-song-lark-cs2",
   "mode": "collage",
   "tile": "none",
   "colorset": "colorset2",
-  "palette_contract_sha256": "c81d32ffb0d55d44e7d3102c7470e251baf34f0bb6472fbede7753df8b9a9eb5",
+  "palette_contract_sha256": "f36eb8a9fe171108383767c7697f023218121e51d3e45247e87b58e397b36d62",
   "variation_seed": 0,
   "composition_sha256": "1493664ecf2f49395e141bd99e0fc56ccb64ad632d651d7d809a74f37cf50ee9",
   "parameters": {
@@ -29,31 +29,31 @@
         },
         {
           "source": "#554838",
-          "target": "#333e48"
+          "target": "#4f4f4f"
         },
         {
           "source": "#3c3b31",
-          "target": "#004d66"
+          "target": "#363636"
         },
         {
           "source": "#484034",
-          "target": "#1c1c1c"
+          "target": "#333e48"
         },
         {
           "source": "#675945",
-          "target": "#828282"
+          "target": "#696969"
         },
         {
           "source": "#302a2a",
-          "target": "#652f6c"
+          "target": "#1c1c1c"
         },
         {
           "source": "#54533f",
-          "target": "#9e1b32"
+          "target": "#294d19"
         },
         {
           "source": "#847059",
-          "target": "#45842a"
+          "target": "#828282"
         }
       ],
       "source_colors": [
@@ -70,13 +70,13 @@
       "target_colors": [
         "#f7f7f7",
         "#007298",
+        "#4f4f4f",
+        "#363636",
         "#333e48",
-        "#004d66",
+        "#696969",
         "#1c1c1c",
-        "#828282",
-        "#652f6c",
-        "#9e1b32",
-        "#45842a"
+        "#294d19",
+        "#828282"
       ]
     }
   },
@@ -87,14 +87,14 @@
   "render_width": 432,
   "render_height": 560,
   "palette": [
-    "#004d66",
     "#007298",
     "#1c1c1c",
+    "#294d19",
     "#333e48",
-    "#45842a",
-    "#652f6c",
+    "#363636",
+    "#4f4f4f",
+    "#696969",
     "#828282",
-    "#9e1b32",
     "#f7f7f7"
   ],
   "path_count": 93,

@@ -27,7 +27,7 @@ function renderIcicle() {
     const g = svg.append("g").attr("transform", "translate(24,30)");
     const nodes = g.selectAll("g").data(root.descendants()).join("g").attr("transform", d => `translate(${d.x0},${d.y0})`);
     nodes.append("rect").attr("width", d => d.x1 - d.x0).attr("height", d => Math.max(0, d.y1 - d.y0))
-      .attr("fill", d => color(d.depth <= 1 ? d.data.name : d.parent.data.name)).attr("fill-opacity", d => d.depth ? .85 : .22)
+      .attr("fill", d => color(d.depth <= 1 ? d.data.name : d.parent.data.name)).attr("fill-opacity", 1)
       .attr("stroke", "#fff").attr("rx", 2);
     nodes.filter(d => (d.x1 - d.x0) > 42).append("text")
       .attr("class", d => d.depth === 0 ? "mark-label" : "reverse-label")

@@ -39,7 +39,7 @@ function renderScaledDotProductAttention() {
         .attr("height", cell)
         .attr("rx", 3)
         .attr("fill", d => d.value < 0 ? palette.gray100 : color)
-        .attr("fill-opacity", d => d.value < 0 ? .5 : .18 + d.value * .72)
+        .attr("data-opacity-role", "semantic").attr("fill-opacity", d => d.value < 0 ? .5 : .18 + d.value * .72)
         .attr("stroke", palette.surface)
         .attr("stroke-width", 1)
         .append("animate")
@@ -76,7 +76,7 @@ function renderScaledDotProductAttention() {
     const out = svg.append("g").attr("transform", "translate(226,296)");
     out.append("rect").attr("x", -12).attr("y", -28).attr("width", 124).attr("height", 56).attr("rx", 10).attr("fill", palette.yellowHighlight).attr("stroke", palette.gold).attr("stroke-width", 2);
     [34, 58, 82].forEach((x, i) => {
-      out.append("rect").attr("x", x).attr("y", -16).attr("width", 14).attr("height", 32).attr("rx", 4).attr("fill", [palette.blue, palette.green, palette.orange][i]).attr("fill-opacity", .74)
+      out.append("rect").attr("x", x).attr("y", -16).attr("width", 14).attr("height", 32).attr("rx", 4).attr("fill", [palette.blue, palette.green, palette.orange][i]).attr("fill-opacity", 1)
         .append("animate").attr("attributeName", "height").attr("from", 4).attr("to", 32).attr("dur", ".35s").attr("begin", `${1.45 + i * .12}s`).attr("fill", "freeze");
     });
     out.append("text").attr("class", "mark-label").attr("x", 50).attr("y", 47).attr("text-anchor", "middle").text("weighted output");

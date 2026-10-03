@@ -51,9 +51,8 @@ export function drawLlmModelBox(g, llm, ctx, options = {}) {
     .attr("width", box.w)
     .attr("height", box.h)
     .attr("rx", 0)
-    .attr("fill", "#ffffff")
-    .attr("stroke", palette.brandPrimary)
-    .attr("stroke-width", 4 * scale);
+    .attr("fill", palette.brandPrimary)
+    .attr("stroke", "none");
 
   const nodes = buildMlpNodes(box);
   const links = buildMlpLinks(nodes);
@@ -73,8 +72,7 @@ export function drawLlmModelBox(g, llm, ctx, options = {}) {
     .attr("height", box.h - 16 * scale)
     .attr("rx", 0)
     .attr("fill", "none")
-    .attr("stroke", palette.redHighlight)
-    .attr("stroke-width", 10 * scale)
+    .attr("stroke", "none")
     .attr("opacity", boxActivation * 0.22);
 
   const ghostGroup = group.append("g").attr("opacity", 0.26);

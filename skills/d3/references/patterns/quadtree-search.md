@@ -52,7 +52,7 @@ function renderQuadtreeSearch() {
     fadeIn(cellRects, .04, .55);
     const dots = svg.append("g").selectAll("circle").data(points).join("circle")
       .attr("cx", d => d.x).attr("cy", d => d.y)
-      .attr("fill", palette.blue).attr("fill-opacity", .72).attr("stroke", "#fff");
+      .attr("fill", palette.blue).attr("fill-opacity", 1).attr("stroke", "#fff");
     grow(dots, "r", 1, 4.4, .1, .55);
     const link = svg.append("line")
       .attr("x1", target[0]).attr("y1", target[1])

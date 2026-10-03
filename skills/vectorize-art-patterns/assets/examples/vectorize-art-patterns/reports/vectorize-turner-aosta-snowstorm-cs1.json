@@ -4,12 +4,12 @@
   "input": "assets/base-images/turner-aosta-snowstorm.jpg",
   "input_sha256": "b0b07257992499378e05d60d1aa49e326e97e9889b110533a699407c1c2e051c",
   "output": "svgs/vectorize-turner-aosta-snowstorm-cs1.svg",
-  "output_sha256": "e86f0366aeabde9b9b6956704598b7378aaa3b2c37f96cf05933847ddee880b8",
+  "output_sha256": "bf1d565f216cee10035a43598bba6e2bf467437201912229ca9832dca36dfc96",
   "pattern_id": "vectorize-turner-aosta-snowstorm-cs1",
   "mode": "stain",
   "tile": "none",
   "colorset": "colorset1",
-  "palette_contract_sha256": "c81d32ffb0d55d44e7d3102c7470e251baf34f0bb6472fbede7753df8b9a9eb5",
+  "palette_contract_sha256": "f36eb8a9fe171108383767c7697f023218121e51d3e45247e87b58e397b36d62",
   "variation_seed": 0,
   "composition_sha256": "3d50652e35edcea87c6f5b06daa3cc7bdf10b1f1d2281dd400d239b64c77f97c",
   "parameters": {
@@ -25,7 +25,7 @@
       "layers": [
         {
           "source": "#aaa9a5",
-          "target": "#cfcfcf"
+          "target": "#b5b5b5"
         },
         {
           "source": "#7d7c78",
@@ -33,7 +33,7 @@
         },
         {
           "source": "#3d2f22",
-          "target": "#1c1c1c"
+          "target": "#363636"
         },
         {
           "source": "#78531c",
@@ -41,15 +41,15 @@
         },
         {
           "source": "#876c43",
-          "target": "#e8002a"
+          "target": "#696969"
         },
         {
           "source": "#a38c5b",
-          "target": "#ffccd5"
+          "target": "#9c9c9c"
         },
         {
           "source": "#dcd7cf",
-          "target": "#f7f7f7"
+          "target": "#cfcfcf"
         }
       ],
       "source_colors": [
@@ -64,13 +64,13 @@
       ],
       "target_colors": [
         "#333e48",
-        "#cfcfcf",
+        "#b5b5b5",
         "#828282",
-        "#1c1c1c",
+        "#363636",
         "#9e1b32",
-        "#e8002a",
-        "#ffccd5",
-        "#f7f7f7"
+        "#696969",
+        "#9c9c9c",
+        "#cfcfcf"
       ]
     }
   },
@@ -81,14 +81,14 @@
   "render_width": 560,
   "render_height": 418,
   "palette": [
-    "#1c1c1c",
     "#333e48",
+    "#363636",
+    "#696969",
     "#828282",
+    "#9c9c9c",
     "#9e1b32",
-    "#cfcfcf",
-    "#e8002a",
-    "#f7f7f7",
-    "#ffccd5"
+    "#b5b5b5",
+    "#cfcfcf"
   ],
   "path_count": 20,
   "output_bytes": 50343,

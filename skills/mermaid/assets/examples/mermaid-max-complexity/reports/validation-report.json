@@ -6,7 +6,7 @@
   "sourceCount": 62,
   "staticSvgCount": 62,
   "animatedSvgCount": 62,
-  "minimumColorset1SvgColors": 5,
-  "minimumColorset2SvgColors": 5,
+  "minimumColorset1SvgColors": 8,
+  "minimumColorset2SvgColors": 6,
   "findings": []
 }

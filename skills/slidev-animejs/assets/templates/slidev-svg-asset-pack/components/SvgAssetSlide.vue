@@ -143,6 +143,13 @@ function runMorphingBadge() {
     loop: true,
     alternate: true,
   })
+  animate('.badge-center-mark', {
+    fill: { from: '#000000', to: activeStep.value === 0 ? '#000000' : '#ffffff', ease: steps(1) },
+    duration: 1500,
+    ease: 'inOutExpo',
+    loop: true,
+    alternate: true,
+  })
   animate('.badge-spark', {
     scale: [0.82, 1.22],
     opacity: [0.56, 1],
@@ -272,7 +279,7 @@ watch(() => [props.asset, activeStep.value], start, { flush: 'post' })
 <style scoped>
 .svg-asset-slide {
   background: #ffffff;
-  border: 1px solid #e7e7e7;
+  border: 0;
   border-radius: 8px;
   box-shadow: 0 14px 30px rgba(28, 28, 28, 0.07);
   box-sizing: border-box;
@@ -315,7 +322,7 @@ watch(() => [props.asset, activeStep.value], start, { flush: 'post' })
 
 .svg-asset-stage {
   background: #f7f7f7;
-  border: 1px solid #cfcfcf;
+  border: 0;
   border-radius: 8px;
   height: 312px;
   overflow: hidden;
@@ -335,7 +342,7 @@ watch(() => [props.asset, activeStep.value], start, { flush: 'post' })
 
 .svg-asset-notes > div {
   background: #f7f7f7;
-  border: 1px solid #e7e7e7;
+  border: 0;
   border-radius: 8px;
   min-width: 0;
   padding: 0.52rem;

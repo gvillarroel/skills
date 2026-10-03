@@ -181,6 +181,21 @@ def validate(root: Path, inputs: list[Path] | None = None, mode: str = "auto") -
     contract = json.loads((root / "docs/colorsets.json").read_text(encoding="utf-8"))
     allowed = {name: set(row["allowed"]) for name, row in contract["colorsets"].items()}
     findings, checked, copies = [], [], []
+    for name, row in contract["colorsets"].items():
+        sequence = row.get("solidSequence", [])
+        text_map = row.get("textOnFill", {})
+        if len(sequence) != len(set(sequence)) or set(sequence) != allowed[name]:
+            findings.append({"path": "docs/colorsets.json", "colorset": name, "error": "Solid sequence must contain every allowed token exactly once"})
+        if set(text_map) != allowed[name]:
+            findings.append({"path": "docs/colorsets.json", "colorset": name, "error": "Every solid token needs a black/white text decision"})
+        for fill, text in text_map.items():
+            rgb = [int(fill[i:i + 2], 16) / 255 for i in (1, 3, 5)]
+            linear = [c / 12.92 if c <= .04045 else ((c + .055) / 1.055) ** 2.4 for c in rgb]
+            luminance = sum(c * w for c, w in zip(linear, (.2126, .7152, .0722)))
+            black, white = (luminance + .05) / .05, 1.05 / (luminance + .05)
+            expected = "#000000" if black >= white else "#ffffff"
+            if text != expected:
+                findings.append({"path": "docs/colorsets.json", "colorset": name, "fill": fill, "error": "Text must maximize exact black/white contrast", "expected": expected})
     if inputs is None:
         inventory = json.loads((root / "evaluations/colorset-audit/coverage.json").read_text(encoding="utf-8"))
         names = [row["skill"] for row in inventory["skills"]]

@@ -105,6 +105,40 @@ def write_json(path: Path, value: Any, *, allow_nan: bool = False) -> None:
 class ConsolidatorTests(unittest.TestCase):
     maxDiff = None
 
+    def test_filled_report_marks_are_opaque_borderless_and_categories_are_unique(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            source = report()
+            source["jobs"] = [report(f"run-{index}")["jobs"][0] for index in range(24)]
+            path = root / "final-report.json"
+            write_json(path, source)
+            output = root / "comparison"
+            result = self.run_cli([path], output)
+            self.assertEqual(result.returncode, 0, result.stderr)
+            svg = ET.fromstring((output / "efficiency-frontier.svg").read_text(encoding="utf-8"))
+            circles = list(svg.iter("{http://www.w3.org/2000/svg}circle"))
+            self.assertEqual(len({node.get("fill") for node in circles}), 24)
+            for node in circles:
+                self.assertNotEqual(node.get("fill"), "none")
+                self.assertIn(node.get("stroke", "none"), {"none", "transparent"})
+                self.assertEqual(node.get("fill-opacity", "1"), "1")
+            text = (output / "efficiency-frontier.svg").read_text(encoding="utf-8")
+            self.assertIn("Direct labels identify frontier points and the baseline", text)
+            self.assertIn("stroke: none", text)
+
+    def test_category_capacity_rejects_reports_beyond_the_supported_run_limit(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            source = report()
+            source["jobs"] = [report(f"run-{index}")["jobs"][0] for index in range(25)]
+            path = root / "final-report.json"
+            write_json(path, source)
+            output = root / "comparison"
+            result = self.run_cli([path], output)
+            self.assertEqual(result.returncode, 2)
+            self.assertIn("at most 24 runs", result.stderr)
+            self.assertFalse(output.exists())
+
     def run_cli(
         self, reports: list[Path], output: Path, *arguments: object
     ) -> subprocess.CompletedProcess[str]:

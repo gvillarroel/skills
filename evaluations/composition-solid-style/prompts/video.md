@@ -1,0 +1,5 @@
+Use only the loaded skill and normal local tools. Treat its bundle as read-only and write all task files at the workspace root or the requested output paths. Read ../prompt.md first. Use the complete applicable reference or template and the bundled script; do not inspect helper implementation or acceptance examples. Report actual gate outcomes.
+
+Create a planning-only scene contract by copying the complete bundled scene-contract.json template to output/scene-contract.json. Retain its two existing elements, shared events and signal connector. Use a colorset1 stage background and colorset1 connector paint. Validate the contract without requiring source asset files, because no producer files are supplied. Save output/validation.json and output/palette.md identifying preserved imported source media as distinct from authored stage and connectors. No renderer or MP4 is requested.
+
+Use solid, opaque, borderless authored category surfaces with black or white inside text selected by its actual fill contrast. Preserve meaningful connectors and source pixels. Record these paint choices in your final report.

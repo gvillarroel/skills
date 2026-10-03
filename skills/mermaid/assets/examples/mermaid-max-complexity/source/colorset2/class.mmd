@@ -4,27 +4,32 @@ config:
   theme: "base"
   themeVariables:
     background: "#ffffff"
-    primaryColor: "#ffccd5"
-    primaryTextColor: "#333e48"
+    primaryColor: "#9e1b32"
+    primaryTextColor: "#ffffff"
     primaryBorderColor: "#9e1b32"
-    secondaryColor: "#cdf3ff"
-    secondaryTextColor: "#333e48"
+    secondaryColor: "#007298"
+    secondaryTextColor: "#ffffff"
     secondaryBorderColor: "#007298"
-    tertiaryColor: "#e7e7e7"
-    tertiaryTextColor: "#333e48"
-    tertiaryBorderColor: "#9c9c9c"
+    tertiaryColor: "#e77204"
+    tertiaryTextColor: "#000000"
+    tertiaryBorderColor: "#e77204"
     lineColor: "#696969"
     textColor: "#333e48"
-    mainBkg: "#cdf3ff"
-    nodeBkg: "#cdf3ff"
+    mainBkg: "#9e1b32"
+    nodeBkg: "#9e1b32"
     nodeBorder: "#9e1b32"
     clusterBkg: "#e7e7e7"
     clusterBorder: "#9c9c9c"
     defaultLinkColor: "#696969"
     edgeLabelBackground: "#ffffff"
-    classText: "#333e48"
-    labelColor: "#333e48"
+    classText: "#ffffff"
+    labelColor: "#ffffff"
     titleColor: "#333e48"
+  themeCSS: ".node > rect, .node > circle, .node > ellipse, .node > polygon, .node > path, rect.actor, .note, .task, .task0, .task1, .task2, .task3 { stroke-width: 0 !important; }"
+  class:
+    padding: 6
+    nodeSpacing: 28
+    rankSpacing: 36
 # mermaid: config end
 # mermaid: metadata begin
 mermaid:
@@ -54,12 +59,12 @@ classDiagram
   ClassRole06 --> ClassRole07
   ClassRole07 --> ClassRole08
   ClassRole08 --> ClassRole09
-  classDef csPrimary fill:#ffccd5,stroke:#9e1b32,color:#333e48,stroke-width:2px;
-  classDef csAccent fill:#cdf3ff,stroke:#007298,color:#333e48,stroke-width:2px;
-  classDef csMuted fill:#e7e7e7,stroke:#828282,color:#333e48,stroke-width:2px;
-  classDef csCritical fill:#ffccd5,stroke:#e8002a,color:#333e48,stroke-width:2px;
-  classDef csWarning fill:#ffe5cc,stroke:#e77204,color:#333e48,stroke-width:2px;
-  classDef csSuccess fill:#dbffcc,stroke:#45842a,color:#333e48,stroke-width:2px;
-  classDef csInfo fill:#cdf3ff,stroke:#00ace6,color:#333e48,stroke-width:2px;
-  classDef csSpecial fill:#f9ccff,stroke:#652f6c,color:#333e48,stroke-width:2px;
-  classDef csNeutral fill:#e7e7e7,stroke:#333e48,color:#333e48,stroke-width:2px;
+  classDef csPrimary fill:#9e1b32,stroke:none,color:#ffffff,stroke-width:0px;
+  classDef csAccent fill:#007298,stroke:none,color:#ffffff,stroke-width:0px;
+  classDef csMuted fill:#e77204,stroke:none,color:#000000,stroke-width:0px;
+  classDef csCritical fill:#45842a,stroke:none,color:#000000,stroke-width:0px;
+  classDef csWarning fill:#652f6c,stroke:none,color:#ffffff,stroke-width:0px;
+  classDef csSuccess fill:#f1c319,stroke:none,color:#000000,stroke-width:0px;
+  classDef csInfo fill:#6d1222,stroke:none,color:#ffffff,stroke-width:0px;
+  classDef csSpecial fill:#004d66,stroke:none,color:#ffffff,stroke-width:0px;
+  classDef csNeutral fill:#994a00,stroke:none,color:#ffffff,stroke-width:0px;

@@ -49,7 +49,7 @@ function renderMultiHeadAttentionMerge() {
         .attr("height", cell)
         .attr("rx", 4)
         .attr("fill", d => d.future ? palette.gray100 : d.focused ? palette.red : head.color)
-        .attr("fill-opacity", d => d.future ? .46 : .22 + d.value * .62)
+        .attr("data-opacity-role", "semantic").attr("fill-opacity", d => d.future ? .46 : .22 + d.value * .62)
         .attr("stroke", palette.surface)
         .attr("stroke-width", 1)
         .append("animate")
@@ -65,7 +65,7 @@ function renderMultiHeadAttentionMerge() {
     const concatY = 118;
     const strips = heads.map((head, i) => ({ ...head, y: concatY + i * 42 }));
     strips.forEach((strip, i) => {
-      svg.append("rect").attr("x", concatX).attr("y", strip.y).attr("width", 74).attr("height", 24).attr("rx", 6).attr("fill", strip.color).attr("fill-opacity", .72).attr("stroke", palette.surface);
+      svg.append("rect").attr("x", concatX).attr("y", strip.y).attr("width", 74).attr("height", 24).attr("rx", 6).attr("fill", strip.color).attr("fill-opacity", 1).attr("stroke", palette.surface);
       svg.append("text").attr("class", "reverse-label").attr("x", concatX + 37).attr("y", strip.y + 16).attr("text-anchor", "middle").style("font-size", "9px").text(`head ${i + 1}`);
       const source = { x: strip.x + 86, y: strip.y < 210 ? strip.y - 20 : strip.y + 6 };
       const path = svg.append("path")

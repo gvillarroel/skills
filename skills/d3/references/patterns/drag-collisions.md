@@ -37,7 +37,7 @@ function renderDragCollisions() {
     const byId = new Map(simNodes.map(d => [d.id, d]));
     const circles = svg.append("g").selectAll("circle").data(nodes).join("circle")
       .attr("cx", d => byId.get(d.id).x).attr("cy", d => byId.get(d.id).y).attr("r", d => d.r)
-      .attr("fill", (d, i) => colors[i % 4]).attr("fill-opacity", .82).attr("stroke", d => d.r > 10 ? palette.gray700 : "#fff").attr("stroke-width", 1.4);
+      .attr("fill", (d, i) => colors[i % 4]).attr("fill-opacity", 1).attr("stroke", d => d.r > 10 ? palette.gray700 : "#fff").attr("stroke-width", 1.4);
     circles.each(function (d, i) {
       const end = byId.get(d.id);
       const node = d3.select(this);

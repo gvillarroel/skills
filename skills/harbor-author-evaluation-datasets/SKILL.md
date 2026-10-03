@@ -5,13 +5,21 @@ description: "Authors and audits leakage-resistant native Harbor task datasets b
 
 # Harbor Author Evaluation Datasets
 
-The aggregate report renderer uses colorset2 for distinct token, cost, timing and run categories, with light neutral panels and dark labels. Keep every authored SVG fill, stroke and gradient stop in this exact palette: neutrals `#000000`, `#1c1c1c`, `#333e48`, `#363636`, `#4f4f4f`, `#696969`, `#828282`, `#9c9c9c`, `#b5b5b5`, `#cfcfcf`, `#e7e7e7`, `#f7f7f7`, `#ffffff`; red `#6d1222`, `#9e1b32`, `#e8002a`, `#ffccd5`; extended chart roles `#004d66`, `#007298`, `#00ace6`, `#cdf3ff`, `#294d19`, `#45842a`, `#36b300`, `#dbffcc`, `#431f47`, `#652f6c`, `#9e00b3`, `#f9ccff`, `#994a00`, `#e77204`, `#ff9633`, `#ffe5cc`, `#98700c`, `#f1c319`, `#ffd332`, `#fff4cc`. Reuse labels and ordering when categories outnumber paints; do not invent additional hues. JSON/Markdown data and sealed evidence do not receive paint changes.
+The aggregate report renderer uses colorset2 for distinct token, cost, timing and run categories, with borderless neutral panels and black labels. Keep every authored SVG fill, stroke and gradient stop in this exact palette: neutrals `#000000`, `#1c1c1c`, `#333e48`, `#363636`, `#4f4f4f`, `#696969`, `#828282`, `#9c9c9c`, `#b5b5b5`, `#cfcfcf`, `#e7e7e7`, `#f7f7f7`, `#ffffff`; red `#6d1222`, `#9e1b32`, `#e8002a`, `#ffccd5`; extended chart roles `#004d66`, `#007298`, `#00ace6`, `#cdf3ff`, `#294d19`, `#45842a`, `#36b300`, `#dbffcc`, `#431f47`, `#652f6c`, `#9e00b3`, `#f9ccff`, `#994a00`, `#e77204`, `#ff9633`, `#ffe5cc`, `#98700c`, `#f1c319`, `#ffd332`, `#fff4cc`. Reuse labels and ordering when categories outnumber paints; do not invent additional hues. JSON/Markdown data and sealed evidence do not receive paint changes.
 
 Create native Harbor task roots whose split membership, response contracts, and
 verifiers support a credible skill-evolution claim. This bundle owns dataset
 authoring and preflight only. `harbor-organize-evaluations` remains the owner of
 dataset locks, stage ordering, validation and holdout release, and publication.
 In commands, `<skill-root>` means this installed skill directory.
+
+Honor exact input and output paths named by the user. For an aggregate report task naming `final-report.json` and `comparison/`, create those paths directly in the active workspace and pass that exact output directory to the consolidator. Choose a project directory only when the task leaves paths unspecified; a default directory must not replace a requested artifact path.
+
+For a report-comparison task, read [the compact aggregate input contract](references/aggregate-report-input.md) and follow Aggregate Execution Comparison below. The dataset-authoring workflow applies when creating task datasets.
+
+## Solid-fill presentation
+
+For authored filled marks and preview chrome, start with one opaque colorset fill and no decorative border. Prefer saturated/base colors, then dark, bright and neutral solids, with soft fills late. Assign unique usable fills before introducing border variants; exclude the actual canvas color. Choose exact black or white text on each fill by maximum relative-luminance contrast. Keep semantic mappings stable across previews, legends and exports. Only after the usable solid colors are exhausted, expand with contrasting palette border colors, dash patterns and widths. Preserve meaningful line art, connectors, keyboard focus indicators, original source media and explicitly requested conversion aesthetics. Apply this preference to newly authored visuals and framing; preserve required source identity and fidelity.
 
 ## Workflow
 

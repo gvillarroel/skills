@@ -42,7 +42,7 @@ function renderScatterplotMatrix() {
       .attr("cx", d => scales.get(d.xVar)(d.row[d.xVar]))
       .attr("cy", d => size - scales.get(d.yVar)(d.row[d.yVar]))
       .attr("fill", d => colors[d.row.group])
-      .attr("fill-opacity", .7)
+      .attr("data-opacity-role", "semantic").attr("fill-opacity", .7)
       .attr("stroke", "#fff")
       .attr("stroke-width", .8);
     grow(dots, "r", 1, 3.4, .02, .45);

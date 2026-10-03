@@ -90,4 +90,3 @@ Use overlay marks for moving tokens, cursors, highlights, and callouts so the Me
 - Arrowheads become visible with their lines rather than floating early.
 - The final frame preserves all static labels, markers, geometry, theme variables, and custom CSS.
 - `prefers-reduced-motion` exposes a complete, readable final state.
-

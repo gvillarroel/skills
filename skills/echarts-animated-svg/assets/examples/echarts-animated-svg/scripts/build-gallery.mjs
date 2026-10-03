@@ -1576,9 +1576,9 @@ h1 { margin: 0 0 6px; font-size: 32px; line-height: 1.1; letter-spacing: 0; }
 .lede { margin: 0; color: var(--brand-gray-70); max-width: 760px; line-height: 1.45; }
 .actions { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
 button {
-  border: 1px solid var(--brand-gray-20);
-  background: #fff;
-  color: var(--brand-neutral);
+  border: 0;
+  background: var(--brand-primary);
+  color: #ffffff;
   border-radius: 8px;
   display: inline-flex;
   align-items: center;
@@ -1590,7 +1590,7 @@ button {
   cursor: pointer;
   box-shadow: 0 1px 2px rgba(51, 62, 72, .08);
 }
-button:hover { border-color: var(--brand-link); background: var(--brand-highlight-blue); color: var(--brand-link-hover); }
+button:hover { background: #6d1222; color: #ffffff; }
 button:focus-visible { outline: 3px solid var(--brand-focus); outline-offset: 2px; }
 .material-symbols-rounded {
   font-family: var(--font-icons);
@@ -1605,7 +1605,7 @@ button:focus-visible { outline: 3px solid var(--brand-focus); outline-offset: 2p
 }
 .chart-card {
   background: #fff;
-  border: 1px solid var(--brand-gray-20);
+  border: 0;
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 10px 26px rgba(51, 62, 72, .07);
@@ -1616,7 +1616,7 @@ button:focus-visible { outline: 3px solid var(--brand-focus); outline-offset: 2p
   gap: 12px;
   align-items: start;
   padding: 10px 12px 8px;
-  border-bottom: 1px solid var(--brand-gray-10);
+  border-bottom: 0;
 }
 .card-header h2 { margin: 0 0 4px; font-size: 17px; line-height: 1.2; letter-spacing: 0; }
 .card-header p { margin: 0; color: var(--brand-gray-60); line-height: 1.35; font-size: 13px; }

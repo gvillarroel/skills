@@ -24,7 +24,7 @@ import tempfile
 import textwrap
 import time
 import xml.etree.ElementTree as ET
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from pathlib import Path
 from types import SimpleNamespace
 from typing import Any
@@ -34,6 +34,7 @@ sys.dont_write_bytecode = True
 
 import replace_svg_module as replacer  # noqa: E402
 import scaffold_synchronized_svg as scaffold  # noqa: E402
+from palette_contract import text_on_fill, category_style
 
 
 SVG_NS = "http://www.w3.org/2000/svg"
@@ -563,6 +564,26 @@ def render_text_binding(
     )
 
 
+def solid_binding(plan: dict[str, Any], info: BindingInfo) -> BindingInfo:
+    """Pair a label with its category surface rather than the outer canvas."""
+    theme = scaffold.theme_for_plan(plan)
+    preset = theme["preset"]
+    colorset = "colorset1" if preset in {"editorial", "colorset1"} else "colorset2"
+    token = scaffold.theme_token_map(plan)[info.value_id]
+    return replace(info, text_color=f"var(--on-value-{token})")
+
+
+def category_outline(plan: dict[str, Any], info: BindingInfo) -> str:
+    """Introduce composite border variants only beyond full solid capacity."""
+    theme = scaffold.theme_for_plan(plan)
+    colorset = "colorset1" if theme["preset"] in {"editorial", "colorset1"} else "colorset2"
+    root = scaffold.theme_token_map(plan)[info.value_id]
+    index = list(theme["conceptColors"]).index(root)
+    style = category_style(index, colorset, theme["colors"]["canvas"])
+    return (f'stroke="{style["stroke"]}" stroke-width="{style["strokeWidth"]}" '
+            f'stroke-dasharray="{style["dash"]}" data-category-style="{"overflow" if style["overflow"] else "solid"}"')
+
+
 def render_mark(
     plan: dict[str, Any],
     module_id: str,
@@ -633,7 +654,7 @@ def render_mark(
             return (
                 f'<g transform="translate({fmt(translate_x)} {fmt(y + height / 2)}) scale({fmt_scale(scale)} 1)">'
                 f'<rect {common} x="{fmt(initial)}" y="-5" width="{fmt(marker_extent)}" height="10" rx="0.5" '
-                f'fill="{color}" stroke="var(--surface)" stroke-width="2" vector-effect="non-scaling-stroke"/></g>'
+                f'fill="{color}" stroke="none" stroke-width="0" vector-effect="non-scaling-stroke"/></g>'
             )
         scale = positive_scale(height - 12, span)
         marker_extent = max(0.01, 4.0 / scale)
@@ -641,7 +662,7 @@ def render_mark(
         return (
             f'<g transform="translate({fmt(x + width / 2)} {fmt(translate_y)}) scale(1 {fmt_scale(scale)})">'
             f'<rect {common} x="-5" y="{fmt(initial)}" width="10" height="{fmt(marker_extent)}" rx="0.5" '
-            f'fill="{color}" stroke="var(--surface)" stroke-width="2" vector-effect="non-scaling-stroke"/></g>'
+            f'fill="{color}" stroke="none" stroke-width="0" vector-effect="non-scaling-stroke"/></g>'
         )
 
     if channel == "transform":
@@ -845,7 +866,7 @@ def render_stacked_bar_family(
         f'<text x="{fmt(right)}" y="{fmt(stack_y - 12)}" text-anchor="end" font-size="10" '
         f'fill="var(--muted)" aria-hidden="true">{esc(ceiling_copy)}</text>',
         f'<rect x="{fmt(left)}" y="{fmt(stack_y)}" width="{fmt(plot_width)}" height="{fmt(stack_height)}" '
-        f'fill="var(--surface-subtle)" stroke="var(--line)" rx="4"/>',
+        f'fill="var(--surface-subtle)" stroke="none" rx="4"/>',
     ]
     legend_y = min(visual_bottom - 9, stack_y + stack_height + 30)
     legend_cell = plot_width / len(stack_marks)
@@ -1578,7 +1599,7 @@ def render_table_family(
     asset = module["assetType"].lower()
     parts.append(
         f'<rect x="22" y="{fmt(top)}" width="{fmt(width-44)}" height="{fmt(max(18.0,bottom-top))}" '
-        f'class="text-surface" fill="var(--surface-subtle)" stroke="var(--line)" rx="6"/>'
+        f'class="text-surface" fill="var(--surface-subtle)" stroke="none" rx="6"/>'
     )
     if "attention" in asset:
         field_left = 28.0
@@ -1826,9 +1847,9 @@ def render_network_family(
                 f'data-structural-node-id="{esc(node["id"])}" data-node-kind="{esc(node["kind"])}">'
                 f'<title>{esc(node["label"])}</title>'
                 f'<circle cx="{fmt(x)}" cy="{fmt(y)}" r="{fmt(radius + 7)}" fill="none" '
-                f'stroke="{esc(color)}" stroke-opacity="0.28" stroke-width="5"/>'
-                f'<circle cx="{fmt(x)}" cy="{fmt(y)}" r="{fmt(radius)}" fill="var(--surface)" '
-                f'stroke="{esc(color)}" stroke-width="3"/>'
+                f'stroke="none" stroke-width="0"/>'
+                f'<circle class="text-surface" cx="{fmt(x)}" cy="{fmt(y)}" r="{fmt(radius)}" fill="{esc(color)}" '
+                f'{category_outline(plan, info) if info is not None else "stroke=\"none\" stroke-width=\"0\""}/>'
             )
             if info is not None:
                 value_text = scaffold.format_value(
@@ -1842,13 +1863,12 @@ def render_network_family(
                     f'<rect class="structural-value-plaque text-surface" '
                     f'x="{fmt(x - value_width / 2)}" y="{fmt(y - 11)}" '
                     f'width="{fmt(value_width)}" height="20" rx="10" '
-                    f'fill="var(--surface)" stroke="{esc(color)}" '
-                    f'stroke-opacity="0.36" stroke-width="1.2"/>'
+                    f'fill="{esc(color)}" stroke="none" stroke-width="0"/>'
                 )
                 parts.append(
                     render_text_binding(
                         module_id,
-                        info,
+                        solid_binding(plan, info),
                         x,
                         y + 4,
                         anchor="middle",
@@ -1858,7 +1878,7 @@ def render_network_family(
             else:
                 parts.append(
                     f'<text x="{fmt(x)}" y="{fmt(y + 6)}" text-anchor="middle" '
-                    f'font-size="14" font-weight="780" fill="var(--ink)" aria-hidden="true">'
+                    f'font-size="14" font-weight="780" fill="{text_on_fill(color if color.startswith("#") else "#696969")}" aria-hidden="true">'
                     f'{esc(node["label"][0].upper())}</text>'
                 )
             label_lines = textwrap.wrap(
@@ -1874,7 +1894,7 @@ def render_network_family(
                 f'<rect class="structural-label-plaque text-surface" '
                 f'x="{fmt(x - label_width / 2)}" y="{fmt(label_top)}" '
                 f'width="{fmt(label_width)}" height="{fmt(label_height)}" rx="8" '
-                'fill="var(--surface)" stroke="var(--line)" stroke-width="1"/>',
+                'fill="var(--surface)" stroke="none" stroke-width="0"/>',
                 f'<text x="{fmt(x)}" y="{fmt(y + radius + 18)}" text-anchor="middle" '
                 'font-size="9.5" font-weight="650" fill="var(--muted)" aria-hidden="true">'
             ]
@@ -2047,6 +2067,7 @@ def render_network_family(
                 f'data-dependency-edge="{esc(source_id)}:{esc(target_id)}"/>'
             )
         for info in texts:
+            info = solid_binding(plan, info)
             x, y = positions[info.value_id]
             dense = card_height < 42.0
             label_y = y + min(16.0, max(8.0, card_height * 0.34))
@@ -2054,12 +2075,12 @@ def render_network_family(
             label_limit = max(8, min(24, int(card_width / 6.0)))
             parts.append(
                 f'<rect x="{fmt(x)}" y="{fmt(y)}" width="{fmt(card_width)}" '
-                f'height="{fmt(card_height)}" class="text-surface" data-dependency-node="{esc(info.value_id)}" fill="var(--surface)" stroke="{esc(info.color)}" '
-                'stroke-width="2" rx="8"/>'
+                f'height="{fmt(card_height)}" class="text-surface" data-dependency-node="{esc(info.value_id)}" fill="{esc(info.color)}" '
+                f'{category_outline(plan, info)} rx="8"/>'
             )
             parts.append(
                 f'<text x="{fmt(x + card_width / 2)}" y="{fmt(label_y)}" '
-                f'text-anchor="middle" font-size="{8 if dense else 10}" fill="var(--muted)" aria-hidden="true">'
+                f'text-anchor="middle" font-size="{8 if dense else 10}" fill="{esc(info.text_color)}" aria-hidden="true">'
                 f'{esc(binding_label(info, label_limit))}</text>'
             )
             parts.append(
@@ -2119,7 +2140,7 @@ def render_fallback_family(
             x, y = left+column*cell_width, top+row*cell_height
             parts.append(
                 f'<rect x="{fmt(x+2)}" y="{fmt(y+2)}" width="{fmt(cell_width-4)}" '
-                f'height="{fmt(cell_height-4)}" fill="var(--surface-subtle)" stroke="var(--line)" rx="7"/>'
+                f'height="{fmt(cell_height-4)}" fill="var(--surface-subtle)" stroke="none" rx="7"/>'
             )
             parts.append(render_mark(plan, module_id, info, (x+6,y+6,cell_width-12,cell_height-12)))
     parts.append("</g>")

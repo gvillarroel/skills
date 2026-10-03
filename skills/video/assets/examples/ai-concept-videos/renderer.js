@@ -316,7 +316,15 @@ function prepareSvg(concept, seconds) {
   }
 }
 
+function textOnFill(fill) {
+  const channels = [1, 3, 5].map(i => parseInt(fill.slice(i, i + 2), 16) / 255);
+  const linear = channels.map(v => v <= 0.04045 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4);
+  const L = linear[0] * 0.2126 + linear[1] * 0.7152 + linear[2] * 0.0722;
+  return (L + 0.05) / 0.05 >= 1.05 / (L + 0.05) ? "#000000" : "#ffffff";
+}
+
 function chip(g, x, y, text, options = {}) {
+  const fill = options.fill ?? palette.blue;
   const padding = options.padding ?? 12;
   const width = options.width ?? Math.max(64, text.length * 7.5 + padding * 2);
   const height = options.height ?? 30;
@@ -325,17 +333,60 @@ function chip(g, x, y, text, options = {}) {
     .attr("width", width)
     .attr("height", height)
     .attr("rx", 8)
-    .attr("fill", options.fill ?? palette.blueHighlight)
-    .attr("stroke", options.stroke ?? palette.blue)
+    .attr("fill", fill)
+    .attr("stroke", options.stroke ?? "none")
     .attr("stroke-opacity", options.strokeOpacity ?? 0.45);
   group.append("text")
     .attr("x", width / 2)
     .attr("y", height / 2 + 4)
     .attr("text-anchor", "middle")
     .attr("class", "svg-small")
-    .attr("fill", options.textColor ?? palette.brandNeutral)
+    .attr("fill", options.textColor ?? textOnFill(fill))
     .text(text);
   return group;
+}
+
+function solidCategorySurfaces(root) {
+  // All gallery renderers share this authored-surface boundary. Open paths,
+  // links, axes, source images and physical line geometry retain their paint.
+  const neutral = new Set(["#000000", "#1c1c1c", "#333e48", "#363636", "#4f4f4f", "#696969", "#828282", "#9c9c9c", "#b5b5b5", "#cfcfcf", "#e7e7e7", "#f7f7f7", "#ffffff"]);
+  const soft = new Set(["#ffccd5", "#cdf3ff", "#dbffcc", "#ffe5cc", "#fff4cc", "#f9ccff"]);
+  const hex = value => {
+    if (/^#[0-9a-f]{6}$/i.test(value)) return value.toLowerCase();
+    const channels = value.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+    return channels ? "#" + channels.slice(1).map(v => Number(v).toString(16).padStart(2, "0")).join("") : null;
+  };
+  const surfaces = [...root.querySelectorAll("rect,circle,ellipse,polygon")].filter(mark => !mark.closest("defs,[data-source-preserved]"));
+  for (const mark of surfaces) {
+    const computed = getComputedStyle(mark), fill = hex(computed.fill), stroke = hex(computed.stroke);
+    if (!fill) continue;
+    // A pale card carrying a category outline becomes its category's solid.
+    if (stroke && !neutral.has(stroke) && (soft.has(fill) || neutral.has(fill))) mark.setAttribute("fill", stroke);
+    mark.setAttribute("stroke", "none");
+    mark.style.stroke = "none";
+    mark.setAttribute("stroke-width", "0");
+    mark.dataset.surfaceStyle = "solid";
+  }
+  for (const text of root.querySelectorAll("text")) {
+    if (text.closest("defs,[data-source-preserved]")) continue;
+    const box = text.getBoundingClientRect();
+    if (!box.width || !box.height) continue;
+    const samples = [[box.left + box.width * .2, box.top + box.height * .5], [box.left + box.width * .8, box.top + box.height * .5]];
+    const background = [...surfaces].reverse().find(mark => {
+      // Geometry tests include unpainted activation outlines. Skip them when
+      // selecting the actual opaque surface under a label.
+      if (!hex(getComputedStyle(mark).fill)) return false;
+      if (!(mark.compareDocumentPosition(text) & Node.DOCUMENT_POSITION_FOLLOWING)) return false;
+      const matrix = mark.getScreenCTM();
+      if (!matrix || !mark.isPointInFill) return false;
+      return samples.every(([x, y]) => mark.isPointInFill(new DOMPoint(x, y).matrixTransform(matrix.inverse())));
+    });
+    const fill = background && hex(getComputedStyle(background).fill);
+    if (fill) {
+      text.setAttribute("fill", textOnFill(fill));
+      text.style.fill = textOnFill(fill);
+    }
+  }
 }
 
 function arrow(g, x1, y1, x2, y2, color = palette.gray500, opacity = 1, width = 2.5) {
@@ -380,7 +431,7 @@ function lerp(start, end, progress) {
   return start + (end - start) * clamp(progress, 0, 1);
 }
 
-function drawTokenRect(g, x, y, width, height, color, opacity = 1, stroke = "#ffffff") {
+function drawTokenRect(g, x, y, width, height, color, opacity = 1, stroke = "none") {
   g.append("rect")
     .attr("x", x)
     .attr("y", y)
@@ -2345,6 +2396,7 @@ export function renderConceptFrame(conceptId, seconds, options = {}) {
   document.body.classList.toggle("visual-only", isVisualOnlyConcept(concept));
   setInterface(concept, time);
   drawConceptVisual(concept, time);
+  solidCategorySurfaces(svg.node());
   return {
     conceptId: concept.id,
     patternId: concept.patternId,

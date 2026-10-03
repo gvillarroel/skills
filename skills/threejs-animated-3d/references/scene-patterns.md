@@ -8,7 +8,9 @@ Use these patterns when implementing Three.js scenes or galleries for this repos
 - Use `BufferGeometry` for particle fields, wave surfaces, point clouds, and generated scientific or data-driven shapes.
 - Use `InstancedMesh` when repeating many similar objects with different transforms or token colors.
 - Use local generated data unless the request requires a specific model or dataset. Avoid large remote assets in acceptance fixtures.
-- For the bundled orbit, `--token-count` accepts 1–24 objects within the same motion envelope. Cycle existing role colors; do not introduce pink or new hues just because the object count exceeds the palette length. Increase the scene size or simplify trajectories when overlap obscures identity.
+- For the bundled orbit, `--token-count` accepts 1–24 objects within the same motion envelope. Reuse fills for the same semantic role. For unique roles use the complete
+  bundled `solidSequence` before any optional outline variant; exclude the actual
+  canvas and any color already reserved for another distinct role. Increase the scene size or simplify trajectories when overlap obscures identity.
 
 ## Renderer Structure
 
@@ -36,6 +38,8 @@ Use a shared renderer harness for canvas setup, resizing, camera aspect updates,
 
 - Follow `visual-tokens.md`: colorset1 uses red `#9e1b32`, black, white, and grays first. Pink is a last resort; colorset2's extended hues require an explicit request.
 - Use `MeshStandardMaterial` with ambient and directional lights for most scenes.
+- Keep filled meshes free of decorative edge geometry and default wireframes.
+  Relationship lines, trajectories and scientific line geometry remain visible.
 - Keep lights neutral white, enable normal sRGB input/output conversion, and inspect final shading so red does not become a broad pink wash. Validate material colors separately from naturally shaded pixels.
 - Use `PointsMaterial` with vertex colors for particles.
 - Keep clear colors white or light neutral unless the scene requires a dark inspection environment.

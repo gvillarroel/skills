@@ -1,0 +1,3263 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-03",
+  "model": "openai-codex/gpt-5.6-luna",
+  "modelException": "Existing SKILLS.md colorset audit model exception",
+  "finalPayloads": {
+    "d3": {
+      "fileCount": 288,
+      "payloadSha256": "b6a4839c0a1aad96da170f698a9861beb898c41b6565119615fda22c43769633"
+    },
+    "threejs-animated-3d": {
+      "fileCount": 11,
+      "payloadSha256": "5c243bd8b3226eef250da8e6015ce43f8dc8d015ed5071f5f7470d92736e957f"
+    },
+    "procedural-svg-animation": {
+      "fileCount": 18,
+      "payloadSha256": "ca3352642eff1fe7f0731ca7f7fa330cd10f1c709b881999e2a557d51863103a"
+    },
+    "svg-brief-design": {
+      "fileCount": 10,
+      "payloadSha256": "374da01c957b98b3b6e9e6fb5db3977a51c9a1561688b057601725f1ea07bfa8"
+    },
+    "vectorize-art-patterns": {
+      "fileCount": 55,
+      "payloadSha256": "3e81d3098d50729416b17c7377f265fa22415c24257057551c3dccead1d8ec57"
+    }
+  },
+  "attemptCount": 47,
+  "strictPassCount": 41,
+  "styleArtifactPassCount": 47,
+  "finalJointPassCount": 20,
+  "attempts": [
+    {
+      "runId": "custom-solid-d3-contract-20261003-luna-1",
+      "skill": "d3",
+      "strictPassed": false,
+      "matchesFinalPayload": false,
+      "payloadSha256": "bd0984c430e793c2ab9a1ba23f6358dfeeff62224dd1026b1228720936d9d810",
+      "artifactPassed": true,
+      "vendorRuntimePreserved": false,
+      "case": "contract",
+      "date": "2026-10-03",
+      "model": "openai-codex/gpt-5.6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.6-luna"
+        }
+      ],
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/run-pi-skill-eval.py",
+        "d3",
+        "--prompt-file",
+        "evaluations/pi-prompts/custom-solid-style/d3-contract.md",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--mode",
+        "json",
+        "--strict",
+        "--run-id",
+        "custom-solid-d3-contract-20261003-luna-1",
+        "--timeout-seconds",
+        "600",
+        "--require-exact-command-from-prompt",
+        "--expect-output",
+        "flow.html",
+        "--expect-output",
+        "flow.json"
+      ],
+      "commandText": "uv run --script scripts/run-pi-skill-eval.py d3 --prompt-file evaluations/pi-prompts/custom-solid-style/d3-contract.md --model openai-codex/gpt-5.6-luna --mode json --strict --run-id custom-solid-d3-contract-20261003-luna-1 --timeout-seconds 600 --require-exact-command-from-prompt --expect-output flow.html --expect-output flow.json",
+      "outputs": [
+        "flow.html",
+        "flow.json"
+      ],
+      "promptSha256": "4910cccab4ad875428ea1e923a3af5816780f37b5c652e9c7eb0972bd669d956",
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "findings": [
+        {
+          "code": "no-fenced-command-in-prompt"
+        }
+      ],
+      "toolErrorCount": 0,
+      "reads": [
+        "../prompt.md",
+        "skills/d3/SKILL.md",
+        "flow.json",
+        "flow.html",
+        "flow.html",
+        ".d3-scratch/preview.png",
+        ".d3-scratch/settled.svg"
+      ],
+      "rawEvidence": "evaluations/runs/custom-solid-d3-contract-20261003-luna-1/",
+      "classification": "harness",
+      "cohort": "retained-failure"
+    },
+    {
+      "runId": "custom-solid-d3-contract-20261003-luna-10",
+      "skill": "d3",
+      "strictPassed": true,
+      "matchesFinalPayload": false,
+      "payloadSha256": "1d3bff352ff799cf1b7a4feca5893474417f417f04bd6708aa7123d600f3973c",
+      "artifactPassed": true,
+      "vendorRuntimePreserved": true,
+      "case": "contract",
+      "date": "2026-10-03",
+      "model": "openai-codex/gpt-5.6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.6-luna"
+        }
+      ],
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/run-pi-skill-eval.py",
+        "d3",
+        "--prompt-file",
+        "evaluations/pi-prompts/custom-solid-style/d3-contract.md",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--mode",
+        "json",
+        "--strict",
+        "--run-id",
+        "custom-solid-d3-contract-20261003-luna-10",
+        "--timeout-seconds",
+        "600",
+        "--require-exact-command-from-prompt",
+        "--expect-output",
+        "flow.html",
+        "--expect-output",
+        "flow.json"
+      ],
+      "commandText": "uv run --script scripts/run-pi-skill-eval.py d3 --prompt-file evaluations/pi-prompts/custom-solid-style/d3-contract.md --model openai-codex/gpt-5.6-luna --mode json --strict --run-id custom-solid-d3-contract-20261003-luna-10 --timeout-seconds 600 --require-exact-command-from-prompt --expect-output flow.html --expect-output flow.json",
+      "outputs": [
+        "flow.html",
+        "flow.json"
+      ],
+      "promptSha256": "897bd930bb9374007490109c5d95d5f4e4fd8bd4fccba5f6390e8e51c140d5d1",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "findings": [],
+      "toolErrorCount": 0,
+      "reads": [
+        "../prompt.md",
+        "skills/d3/SKILL.md",
+        "flow.json",
+        "flow.html",
+        "flow.html"
+      ],
+      "rawEvidence": "evaluations/runs/custom-solid-d3-contract-20261003-luna-10/",
+      "classification": "pass",
+      "cohort": "superseded"
+    },
+    {
+      "runId": "custom-solid-d3-contract-20261003-luna-11",
+      "skill": "d3",
+      "strictPassed": true,
+      "matchesFinalPayload": false,
+      "payloadSha256": "422cc1ae81ccaa6a430346d825d346bf257c9890d9f7b057bfcb21fd80a09aca",
+      "artifactPassed": true,
+      "vendorRuntimePreserved": true,
+      "case": "contract",
+      "date": "2026-10-03",
+      "model": "openai-codex/gpt-5.6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.6-luna"
+        }
+      ],
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/run-pi-skill-eval.py",
+        "d3",
+        "--prompt-file",
+        "evaluations/pi-prompts/custom-solid-style/d3-contract.md",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--mode",
+        "json",
+        "--strict",
+        "--run-id",
+        "custom-solid-d3-contract-20261003-luna-11",
+        "--timeout-seconds",
+        "600",
+        "--require-exact-command-from-prompt",
+        "--expect-output",
+        "flow.html",
+        "--expect-output",
+        "flow.json"
+      ],
+      "commandText": "uv run --script scripts/run-pi-skill-eval.py d3 --prompt-file evaluations/pi-prompts/custom-solid-style/d3-contract.md --model openai-codex/gpt-5.6-luna --mode json --strict --run-id custom-solid-d3-contract-20261003-luna-11 --timeout-seconds 600 --require-exact-command-from-prompt --expect-output flow.html --expect-output flow.json",
+      "outputs": [
+        "flow.html",
+        "flow.json"
+      ],
+      "promptSha256": "897bd930bb9374007490109c5d95d5f4e4fd8bd4fccba5f6390e8e51c140d5d1",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "findings": [],
+      "toolErrorCount": 0,
+      "reads": [
+        "../prompt.md",
+        "skills/d3/SKILL.md",
+        "flow.json",
+        "flow.html",
+        "flow.html",
+        ".d3-check/settled.svg",
+        ".d3-check/preview.png"
+      ],
+      "rawEvidence": "evaluations/runs/custom-solid-d3-contract-20261003-luna-11/",
+      "classification": "pass",
+      "cohort": "superseded"
+    },
+    {
+      "runId": "custom-solid-d3-contract-20261003-luna-14",
+      "skill": "d3",
+      "strictPassed": true,
+      "matchesFinalPayload": true,
+      "payloadSha256": "b6a4839c0a1aad96da170f698a9861beb898c41b6565119615fda22c43769633",
+      "artifactPassed": true,
+      "vendorRuntimePreserved": true,
+      "case": "contract",
+      "date": "2026-10-03",
+      "model": "openai-codex/gpt-5.6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.6-luna"
+        }
+      ],
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/run-pi-skill-eval.py",
+        "d3",
+        "--prompt-file",
+        "evaluations/pi-prompts/custom-solid-style/d3-contract.md",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--mode",
+        "json",
+        "--strict",
+        "--run-id",
+        "custom-solid-d3-contract-20261003-luna-14",
+        "--timeout-seconds",
+        "600",
+        "--require-exact-command-from-prompt",
+        "--expect-output",
+        "flow.html",
+        "--expect-output",
+        "flow.json"
+      ],
+      "commandText": "uv run --script scripts/run-pi-skill-eval.py d3 --prompt-file evaluations/pi-prompts/custom-solid-style/d3-contract.md --model openai-codex/gpt-5.6-luna --mode json --strict --run-id custom-solid-d3-contract-20261003-luna-14 --timeout-seconds 600 --require-exact-command-from-prompt --expect-output flow.html --expect-output flow.json",
+      "outputs": [
+        "flow.html",
+        "flow.json"
+      ],
+      "promptSha256": "897bd930bb9374007490109c5d95d5f4e4fd8bd4fccba5f6390e8e51c140d5d1",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "findings": [],
+      "toolErrorCount": 0,
+      "reads": [
+        "../prompt.md",
+        "skills/d3/SKILL.md",
+        "flow.json",
+        "flow.html",
+        "flow.html"
+      ],
+      "rawEvidence": "evaluations/runs/custom-solid-d3-contract-20261003-luna-14/",
+      "classification": "pass",
+      "cohort": "final"
+    },
+    {
+      "runId": "custom-solid-d3-contract-20261003-luna-4",
+      "skill": "d3",
+      "strictPassed": true,
+      "matchesFinalPayload": false,
+      "payloadSha256": "57b5ba5dbdc7e712fa1e4fd3afcab181c56fa3267e0ea814f265107ad0d6c213",
+      "artifactPassed": true,
+      "vendorRuntimePreserved": false,
+      "case": "contract",
+      "date": "2026-10-03",
+      "model": "openai-codex/gpt-5.6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.6-luna"
+        }
+      ],
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/run-pi-skill-eval.py",
+        "d3",
+        "--prompt-file",
+        "evaluations/pi-prompts/custom-solid-style/d3-contract.md",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--mode",
+        "json",
+        "--strict",
+        "--run-id",
+        "custom-solid-d3-contract-20261003-luna-4",
+        "--timeout-seconds",
+        "600",
+        "--require-exact-command-from-prompt",
+        "--expect-output",
+        "flow.html",
+        "--expect-output",
+        "flow.json"
+      ],
+      "commandText": "uv run --script scripts/run-pi-skill-eval.py d3 --prompt-file evaluations/pi-prompts/custom-solid-style/d3-contract.md --model openai-codex/gpt-5.6-luna --mode json --strict --run-id custom-solid-d3-contract-20261003-luna-4 --timeout-seconds 600 --require-exact-command-from-prompt --expect-output flow.html --expect-output flow.json",
+      "outputs": [
+        "flow.html",
+        "flow.json"
+      ],
+      "promptSha256": "897bd930bb9374007490109c5d95d5f4e4fd8bd4fccba5f6390e8e51c140d5d1",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "findings": [],
+      "toolErrorCount": 0,
+      "reads": [
+        "../prompt.md",
+        "skills/d3/SKILL.md",
+        "flow.json",
+        "flow.html",
+        "flow.html"
+      ],
+      "rawEvidence": "evaluations/runs/custom-solid-d3-contract-20261003-luna-4/",
+      "classification": "skill",
+      "cohort": "superseded"
+    },
+    {
+      "runId": "custom-solid-d3-contract-20261003-luna-7",
+      "skill": "d3",
+      "strictPassed": true,
+      "matchesFinalPayload": false,
+      "payloadSha256": "46e6c5f0b21c9b83fd057c5eadf2c1ce1d79fdc0e871eebd8e361961d54a0eeb",
+      "artifactPassed": true,
+      "vendorRuntimePreserved": false,
+      "case": "contract",
+      "date": "2026-10-03",
+      "model": "openai-codex/gpt-5.6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.6-luna"
+        }
+      ],
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/run-pi-skill-eval.py",
+        "d3",
+        "--prompt-file",
+        "evaluations/pi-prompts/custom-solid-style/d3-contract.md",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--mode",
+        "json",
+        "--strict",
+        "--run-id",
+        "custom-solid-d3-contract-20261003-luna-7",
+        "--timeout-seconds",
+        "600",
+        "--require-exact-command-from-prompt",
+        "--expect-output",
+        "flow.html",
+        "--expect-output",
+        "flow.json"
+      ],
+      "commandText": "uv run --script scripts/run-pi-skill-eval.py d3 --prompt-file evaluations/pi-prompts/custom-solid-style/d3-contract.md --model openai-codex/gpt-5.6-luna --mode json --strict --run-id custom-solid-d3-contract-20261003-luna-7 --timeout-seconds 600 --require-exact-command-from-prompt --expect-output flow.html --expect-output flow.json",
+      "outputs": [
+        "flow.html",
+        "flow.json"
+      ],
+      "promptSha256": "897bd930bb9374007490109c5d95d5f4e4fd8bd4fccba5f6390e8e51c140d5d1",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "findings": [],
+      "toolErrorCount": 0,
+      "reads": [
+        "../prompt.md",
+        "skills/d3/SKILL.md",
+        "flow.json",
+        "flow.html",
+        "flow.html",
+        "validation/flow.svg",
+        "validation/flow.png"
+      ],
+      "rawEvidence": "evaluations/runs/custom-solid-d3-contract-20261003-luna-7/",
+      "classification": "skill",
+      "cohort": "superseded"
+    },
+    {
+      "runId": "custom-solid-d3-naturalistic-20261003-luna-1",
+      "skill": "d3",
+      "strictPassed": true,
+      "matchesFinalPayload": false,
+      "payloadSha256": "bd0984c430e793c2ab9a1ba23f6358dfeeff62224dd1026b1228720936d9d810",
+      "artifactPassed": true,
+      "vendorRuntimePreserved": false,
+      "case": "naturalistic",
+      "date": "2026-10-03",
+      "model": "openai-codex/gpt-5.6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.6-luna"
+        }
+      ],
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/run-pi-skill-eval.py",
+        "d3",
+        "--prompt-file",
+        "evaluations/pi-prompts/custom-solid-style/d3-naturalistic.md",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--mode",
+        "json",
+        "--strict",
+        "--run-id",
+        "custom-solid-d3-naturalistic-20261003-luna-1",
+        "--timeout-seconds",
+        "600",
+        "--expect-output",
+        "workflow.html",
+        "--expect-output",
+        "decision.json"
+      ],
+      "commandText": "uv run --script scripts/run-pi-skill-eval.py d3 --prompt-file evaluations/pi-prompts/custom-solid-style/d3-naturalistic.md --model openai-codex/gpt-5.6-luna --mode json --strict --run-id custom-solid-d3-naturalistic-20261003-luna-1 --timeout-seconds 600 --expect-output workflow.html --expect-output decision.json",
+      "outputs": [
+        "workflow.html",
+        "decision.json"
+      ],
+      "promptSha256": "869db0455214fb039b9d2c4fbc234e4f851b16ee912768ef9b7397987207cdf8",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "findings": [],
+      "toolErrorCount": 0,
+      "reads": [
+        "../prompt.md",
+        "skills/d3/SKILL.md",
+        "skills/d3/references/cardinality-generalization.md",
+        "skills/d3/references/patterns/flowchart-dag.md",
+        "skills/d3/references/patterns/flow-tokens.md",
+        "skills/d3/references/self-contained-output.md",
+        "skills/d3/references/visualizations/flow-path-choreography.md",
+        "skills/d3/references/command-reference.md",
+        "skills/d3/references/pattern-routing.md",
+        "decision.json",
+        "workflow.html",
+        "workflow.html",
+        "scratch/workflow.png",
+        "scratch/workflow.svg",
+        "scratch/workflow-selector.png"
+      ],
+      "rawEvidence": "evaluations/runs/custom-solid-d3-naturalistic-20261003-luna-1/",
+      "classification": "skill",
+      "cohort": "superseded"
+    },
+    {
+      "runId": "custom-solid-d3-naturalistic-20261003-luna-10",
+      "skill": "d3",
+      "strictPassed": true,
+      "matchesFinalPayload": false,
+      "payloadSha256": "1d3bff352ff799cf1b7a4feca5893474417f417f04bd6708aa7123d600f3973c",
+      "artifactPassed": true,
+      "vendorRuntimePreserved": true,
+      "case": "naturalistic",
+      "date": "2026-10-03",
+      "model": "openai-codex/gpt-5.6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.6-luna"
+        }
+      ],
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/run-pi-skill-eval.py",
+        "d3",
+        "--prompt-file",
+        "evaluations/pi-prompts/custom-solid-style/d3-naturalistic.md",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--mode",
+        "json",
+        "--strict",
+        "--run-id",
+        "custom-solid-d3-naturalistic-20261003-luna-10",
+        "--timeout-seconds",
+        "600",
+        "--expect-output",
+        "workflow.html",
+        "--expect-output",
+        "decision.json"
+      ],
+      "commandText": "uv run --script scripts/run-pi-skill-eval.py d3 --prompt-file evaluations/pi-prompts/custom-solid-style/d3-naturalistic.md --model openai-codex/gpt-5.6-luna --mode json --strict --run-id custom-solid-d3-naturalistic-20261003-luna-10 --timeout-seconds 600 --expect-output workflow.html --expect-output decision.json",
+      "outputs": [
+        "workflow.html",
+        "decision.json"
+      ],
+      "promptSha256": "869db0455214fb039b9d2c4fbc234e4f851b16ee912768ef9b7397987207cdf8",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "findings": [],
+      "toolErrorCount": 0,
+      "reads": [
+        "../prompt.md",
+        "skills/d3/SKILL.md",
+        "skills/d3/references/patterns/flowchart-dag.md",
+        "skills/d3/references/visualizations/flow-path-choreography.md",
+        "skills/d3/references/self-contained-output.md",
+        "decision.json",
+        "workflow.html",
+        "workflow.html",
+        "scratch/workflow.svg",
+        "scratch/workflow.png"
+      ],
+      "rawEvidence": "evaluations/runs/custom-solid-d3-naturalistic-20261003-luna-10/",
+      "classification": "pass",
+      "cohort": "superseded"
+    },
+    {
+      "runId": "custom-solid-d3-naturalistic-20261003-luna-11",
+      "skill": "d3",
+      "strictPassed": true,
+      "matchesFinalPayload": false,
+      "payloadSha256": "422cc1ae81ccaa6a430346d825d346bf257c9890d9f7b057bfcb21fd80a09aca",
+      "artifactPassed": true,
+      "vendorRuntimePreserved": true,
+      "case": "naturalistic",
+      "date": "2026-10-03",
+      "model": "openai-codex/gpt-5.6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.6-luna"
+        }
+      ],
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/run-pi-skill-eval.py",
+        "d3",
+        "--prompt-file",
+        "evaluations/pi-prompts/custom-solid-style/d3-naturalistic.md",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--mode",
+        "json",
+        "--strict",
+        "--run-id",
+        "custom-solid-d3-naturalistic-20261003-luna-11",
+        "--timeout-seconds",
+        "600",
+        "--expect-output",
+        "workflow.html",
+        "--expect-output",
+        "decision.json"
+      ],
+      "commandText": "uv run --script scripts/run-pi-skill-eval.py d3 --prompt-file evaluations/pi-prompts/custom-solid-style/d3-naturalistic.md --model openai-codex/gpt-5.6-luna --mode json --strict --run-id custom-solid-d3-naturalistic-20261003-luna-11 --timeout-seconds 600 --expect-output workflow.html --expect-output decision.json",
+      "outputs": [
+        "workflow.html",
+        "decision.json"
+      ],
+      "promptSha256": "869db0455214fb039b9d2c4fbc234e4f851b16ee912768ef9b7397987207cdf8",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "findings": [],
+      "toolErrorCount": 0,
+      "reads": [
+        "../prompt.md",
+        "skills/d3/SKILL.md",
+        "skills/d3/references/visualizations/flow-path-choreography.md",
+        "skills/d3/references/patterns/flowchart-dag.md",
+        "decision.json",
+        "workflow.html",
+        "workflow.html",
+        ".d3-inspect/preview.png",
+        ".d3-inspect/settled.svg",
+        ".d3-inspect/preview.png"
+      ],
+      "rawEvidence": "evaluations/runs/custom-solid-d3-naturalistic-20261003-luna-11/",
+      "classification": "pass",
+      "cohort": "superseded"
+    },
+    {
+      "runId": "custom-solid-d3-naturalistic-20261003-luna-12",
+      "skill": "d3",
+      "strictPassed": true,
+      "matchesFinalPayload": false,
+      "payloadSha256": "422cc1ae81ccaa6a430346d825d346bf257c9890d9f7b057bfcb21fd80a09aca",
+      "artifactPassed": true,
+      "vendorRuntimePreserved": true,
+      "case": "naturalistic",
+      "date": "2026-10-03",
+      "model": "openai-codex/gpt-5.6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.6-luna"
+        }
+      ],
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/run-pi-skill-eval.py",
+        "d3",
+        "--prompt-file",
+        "evaluations/pi-prompts/custom-solid-style/d3-naturalistic.md",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--mode",
+        "json",
+        "--strict",
+        "--run-id",
+        "custom-solid-d3-naturalistic-20261003-luna-12",
+        "--timeout-seconds",
+        "600",
+        "--expect-output",
+        "workflow.html",
+        "--expect-output",
+        "decision.json"
+      ],
+      "commandText": "uv run --script scripts/run-pi-skill-eval.py d3 --prompt-file evaluations/pi-prompts/custom-solid-style/d3-naturalistic.md --model openai-codex/gpt-5.6-luna --mode json --strict --run-id custom-solid-d3-naturalistic-20261003-luna-12 --timeout-seconds 600 --expect-output workflow.html --expect-output decision.json",
+      "outputs": [
+        "workflow.html",
+        "decision.json"
+      ],
+      "promptSha256": "869db0455214fb039b9d2c4fbc234e4f851b16ee912768ef9b7397987207cdf8",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "findings": [],
+      "toolErrorCount": 0,
+      "reads": [
+        "../prompt.md",
+        "skills/d3/SKILL.md",
+        "skills/d3/references/patterns/flowchart-dag.md",
+        "decision.json",
+        ".d3-scratch/settled.svg",
+        ".d3-scratch/preview.png",
+        "workflow.html"
+      ],
+      "rawEvidence": "evaluations/runs/custom-solid-d3-naturalistic-20261003-luna-12/",
+      "classification": "pass",
+      "cohort": "superseded"
+    },
+    {
+      "runId": "custom-solid-d3-naturalistic-20261003-luna-13",
+      "skill": "d3",
+      "strictPassed": true,
+      "matchesFinalPayload": false,
+      "payloadSha256": "422cc1ae81ccaa6a430346d825d346bf257c9890d9f7b057bfcb21fd80a09aca",
+      "artifactPassed": true,
+      "vendorRuntimePreserved": true,
+      "case": "naturalistic",
+      "date": "2026-10-03",
+      "model": "openai-codex/gpt-5.6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.6-luna"
+        }
+      ],
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/run-pi-skill-eval.py",
+        "d3",
+        "--prompt-file",
+        "evaluations/pi-prompts/custom-solid-style/d3-naturalistic.md",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--mode",
+        "json",
+        "--strict",
+        "--run-id",
+        "custom-solid-d3-naturalistic-20261003-luna-13",
+        "--timeout-seconds",
+        "600",
+        "--expect-output",
+        "workflow.html",
+        "--expect-output",
+        "decision.json"
+      ],
+      "commandText": "uv run --script scripts/run-pi-skill-eval.py d3 --prompt-file evaluations/pi-prompts/custom-solid-style/d3-naturalistic.md --model openai-codex/gpt-5.6-luna --mode json --strict --run-id custom-solid-d3-naturalistic-20261003-luna-13 --timeout-seconds 600 --expect-output workflow.html --expect-output decision.json",
+      "outputs": [
+        "workflow.html",
+        "decision.json"
+      ],
+      "promptSha256": "869db0455214fb039b9d2c4fbc234e4f851b16ee912768ef9b7397987207cdf8",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "findings": [],
+      "toolErrorCount": 0,
+      "reads": [
+        "../prompt.md",
+        "skills/d3/SKILL.md",
+        "skills/d3/references/visualizations/flow-path-choreography.md",
+        "decision.json",
+        "workflow.html",
+        ".scratch/workflow.svg",
+        ".scratch/preview.png",
+        ".scratch/preview.png"
+      ],
+      "rawEvidence": "evaluations/runs/custom-solid-d3-naturalistic-20261003-luna-13/",
+      "classification": "pass",
+      "cohort": "superseded"
+    },
+    {
+      "runId": "custom-solid-d3-naturalistic-20261003-luna-14",
+      "skill": "d3",
+      "strictPassed": true,
+      "matchesFinalPayload": true,
+      "payloadSha256": "b6a4839c0a1aad96da170f698a9861beb898c41b6565119615fda22c43769633",
+      "artifactPassed": true,
+      "vendorRuntimePreserved": true,
+      "case": "naturalistic",
+      "date": "2026-10-03",
+      "model": "openai-codex/gpt-5.6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.6-luna"
+        }
+      ],
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/run-pi-skill-eval.py",
+        "d3",
+        "--prompt-file",
+        "evaluations/pi-prompts/custom-solid-style/d3-naturalistic.md",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--mode",
+        "json",
+        "--strict",
+        "--run-id",
+        "custom-solid-d3-naturalistic-20261003-luna-14",
+        "--timeout-seconds",
+        "600",
+        "--expect-output",
+        "workflow.html",
+        "--expect-output",
+        "decision.json"
+      ],
+      "commandText": "uv run --script scripts/run-pi-skill-eval.py d3 --prompt-file evaluations/pi-prompts/custom-solid-style/d3-naturalistic.md --model openai-codex/gpt-5.6-luna --mode json --strict --run-id custom-solid-d3-naturalistic-20261003-luna-14 --timeout-seconds 600 --expect-output workflow.html --expect-output decision.json",
+      "outputs": [
+        "workflow.html",
+        "decision.json"
+      ],
+      "promptSha256": "869db0455214fb039b9d2c4fbc234e4f851b16ee912768ef9b7397987207cdf8",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "findings": [],
+      "toolErrorCount": 0,
+      "reads": [
+        "../prompt.md",
+        "skills/d3/SKILL.md",
+        "skills/d3/references/visualizations/flow-path-choreography.md",
+        "skills/d3/references/command-reference.md",
+        "decision.json",
+        "workflow.html",
+        ".d3-check/workflow.png",
+        ".d3-check/workflow.svg",
+        ".d3-check/workflow-selector.png"
+      ],
+      "rawEvidence": "evaluations/runs/custom-solid-d3-naturalistic-20261003-luna-14/",
+      "classification": "pass",
+      "cohort": "final"
+    },
+    {
+      "runId": "custom-solid-d3-naturalistic-20261003-luna-15",
+      "skill": "d3",
+      "strictPassed": true,
+      "matchesFinalPayload": true,
+      "payloadSha256": "b6a4839c0a1aad96da170f698a9861beb898c41b6565119615fda22c43769633",
+      "artifactPassed": true,
+      "vendorRuntimePreserved": true,
+      "case": "naturalistic",
+      "date": "2026-10-03",
+      "model": "openai-codex/gpt-5.6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.6-luna"
+        }
+      ],
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/run-pi-skill-eval.py",
+        "d3",
+        "--prompt-file",
+        "evaluations/pi-prompts/custom-solid-style/d3-naturalistic.md",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--mode",
+        "json",
+        "--strict",
+        "--run-id",
+        "custom-solid-d3-naturalistic-20261003-luna-15",
+        "--timeout-seconds",
+        "600",
+        "--expect-output",
+        "workflow.html",
+        "--expect-output",
+        "decision.json"
+      ],
+      "commandText": "uv run --script scripts/run-pi-skill-eval.py d3 --prompt-file evaluations/pi-prompts/custom-solid-style/d3-naturalistic.md --model openai-codex/gpt-5.6-luna --mode json --strict --run-id custom-solid-d3-naturalistic-20261003-luna-15 --timeout-seconds 600 --expect-output workflow.html --expect-output decision.json",
+      "outputs": [
+        "workflow.html",
+        "decision.json"
+      ],
+      "promptSha256": "869db0455214fb039b9d2c4fbc234e4f851b16ee912768ef9b7397987207cdf8",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "findings": [],
+      "toolErrorCount": 0,
+      "reads": [
+        "../prompt.md",
+        "skills/d3/SKILL.md",
+        "skills/d3/references/patterns/flowchart-dag.md",
+        "skills/d3/references/visualizations/flow-path-choreography.md",
+        "decision.json",
+        "workflow.html",
+        "workflow.html",
+        "scratch/preview.png",
+        "scratch/preview-wide.png",
+        "scratch/preview-svg.png",
+        "scratch/preview-svg-only.png"
+      ],
+      "rawEvidence": "evaluations/runs/custom-solid-d3-naturalistic-20261003-luna-15/",
+      "classification": "pass",
+      "cohort": "final"
+    },
+    {
+      "runId": "custom-solid-d3-naturalistic-20261003-luna-16",
+      "skill": "d3",
+      "strictPassed": false,
+      "matchesFinalPayload": true,
+      "payloadSha256": "b6a4839c0a1aad96da170f698a9861beb898c41b6565119615fda22c43769633",
+      "artifactPassed": true,
+      "vendorRuntimePreserved": true,
+      "case": "naturalistic",
+      "date": "2026-10-03",
+      "model": "openai-codex/gpt-5.6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.6-luna"
+        }
+      ],
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/run-pi-skill-eval.py",
+        "d3",
+        "--prompt-file",
+        "evaluations/pi-prompts/custom-solid-style/d3-naturalistic.md",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--mode",
+        "json",
+        "--strict",
+        "--run-id",
+        "custom-solid-d3-naturalistic-20261003-luna-16",
+        "--timeout-seconds",
+        "600",
+        "--expect-output",
+        "workflow.html",
+        "--expect-output",
+        "decision.json"
+      ],
+      "commandText": "uv run --script scripts/run-pi-skill-eval.py d3 --prompt-file evaluations/pi-prompts/custom-solid-style/d3-naturalistic.md --model openai-codex/gpt-5.6-luna --mode json --strict --run-id custom-solid-d3-naturalistic-20261003-luna-16 --timeout-seconds 600 --expect-output workflow.html --expect-output decision.json",
+      "outputs": [
+        "workflow.html",
+        "decision.json"
+      ],
+      "promptSha256": "869db0455214fb039b9d2c4fbc234e4f851b16ee912768ef9b7397987207cdf8",
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "findings": [
+        {
+          "code": "tool-error",
+          "line": 112,
+          "tool": "read"
+        }
+      ],
+      "toolErrorCount": 1,
+      "reads": [
+        "../prompt.md",
+        "skills/d3/SKILL.md",
+        "skills/d3/references/patterns/flow-spine.md",
+        "skills/d3/references/patterns/flowchart-dag.md",
+        "skills/d3/references/pattern-routing.md",
+        "decision.json",
+        "workflow.html",
+        "workflow.html",
+        "scratch/preview.png",
+        "scratch/settled.svg",
+        "scratch/preview-full.png",
+        "skills/d3/scripts/build_contract_artifact.py"
+      ],
+      "rawEvidence": "evaluations/runs/custom-solid-d3-naturalistic-20261003-luna-16/",
+      "classification": "agent",
+      "cohort": "retained-failure"
+    },
+    {
+      "runId": "custom-solid-d3-naturalistic-20261003-luna-17",
+      "skill": "d3",
+      "strictPassed": true,
+      "matchesFinalPayload": true,
+      "payloadSha256": "b6a4839c0a1aad96da170f698a9861beb898c41b6565119615fda22c43769633",
+      "artifactPassed": true,
+      "vendorRuntimePreserved": true,
+      "case": "naturalistic",
+      "date": "2026-10-03",
+      "model": "openai-codex/gpt-5.6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.6-luna"
+        }
+      ],
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/run-pi-skill-eval.py",
+        "d3",
+        "--prompt-file",
+        "evaluations/pi-prompts/custom-solid-style/d3-naturalistic.md",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--mode",
+        "json",
+        "--strict",
+        "--run-id",
+        "custom-solid-d3-naturalistic-20261003-luna-17",
+        "--timeout-seconds",
+        "600",
+        "--expect-output",
+        "workflow.html",
+        "--expect-output",
+        "decision.json"
+      ],
+      "commandText": "uv run --script scripts/run-pi-skill-eval.py d3 --prompt-file evaluations/pi-prompts/custom-solid-style/d3-naturalistic.md --model openai-codex/gpt-5.6-luna --mode json --strict --run-id custom-solid-d3-naturalistic-20261003-luna-17 --timeout-seconds 600 --expect-output workflow.html --expect-output decision.json",
+      "outputs": [
+        "workflow.html",
+        "decision.json"
+      ],
+      "promptSha256": "869db0455214fb039b9d2c4fbc234e4f851b16ee912768ef9b7397987207cdf8",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "findings": [],
+      "toolErrorCount": 0,
+      "reads": [
+        "../prompt.md",
+        "skills/d3/SKILL.md",
+        "skills/d3/references/patterns/flowchart-dag.md",
+        "decision.json",
+        "workflow.html",
+        "workflow.html",
+        "scratch/preview.png",
+        "scratch/settled.svg"
+      ],
+      "rawEvidence": "evaluations/runs/custom-solid-d3-naturalistic-20261003-luna-17/",
+      "classification": "pass",
+      "cohort": "final"
+    },
+    {
+      "runId": "custom-solid-d3-naturalistic-20261003-luna-2",
+      "skill": "d3",
+      "strictPassed": true,
+      "matchesFinalPayload": false,
+      "payloadSha256": "dca32fa676383f615ddfceeb92b544d19160142de6677521581f3ba76e498260",
+      "artifactPassed": true,
+      "vendorRuntimePreserved": false,
+      "case": "naturalistic",
+      "date": "2026-10-03",
+      "model": "openai-codex/gpt-5.6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.6-luna"
+        }
+      ],
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/run-pi-skill-eval.py",
+        "d3",
+        "--prompt-file",
+        "evaluations/pi-prompts/custom-solid-style/d3-naturalistic.md",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--mode",
+        "json",
+        "--strict",
+        "--run-id",
+        "custom-solid-d3-naturalistic-20261003-luna-2",
+        "--timeout-seconds",
+        "600",
+        "--expect-output",
+        "workflow.html",
+        "--expect-output",
+        "decision.json"
+      ],
+      "commandText": "uv run --script scripts/run-pi-skill-eval.py d3 --prompt-file evaluations/pi-prompts/custom-solid-style/d3-naturalistic.md --model openai-codex/gpt-5.6-luna --mode json --strict --run-id custom-solid-d3-naturalistic-20261003-luna-2 --timeout-seconds 600 --expect-output workflow.html --expect-output decision.json",
+      "outputs": [
+        "workflow.html",
+        "decision.json"
+      ],
+      "promptSha256": "869db0455214fb039b9d2c4fbc234e4f851b16ee912768ef9b7397987207cdf8",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "findings": [],
+      "toolErrorCount": 0,
+      "reads": [
+        "../prompt.md",
+        "skills/d3/SKILL.md",
+        "skills/d3/references/patterns/flowchart-dag.md",
+        "skills/d3/references/visualizations/flow-path-choreography.md",
+        "skills/d3/references/command-reference.md",
+        "decision.json",
+        "workflow.html",
+        "workflow.html",
+        "scratch/workflow.svg",
+        "scratch/workflow.png",
+        "scratch/workflow-full.png",
+        "decision.json",
+        "scratch/workflow-final.png",
+        "scratch/workflow-selected.png"
+      ],
+      "rawEvidence": "evaluations/runs/custom-solid-d3-naturalistic-20261003-luna-2/",
+      "classification": "skill",
+      "cohort": "superseded"
+    },
+    {
+      "runId": "custom-solid-d3-naturalistic-20261003-luna-3",
+      "skill": "d3",
+      "strictPassed": true,
+      "matchesFinalPayload": false,
+      "payloadSha256": "dca32fa676383f615ddfceeb92b544d19160142de6677521581f3ba76e498260",
+      "artifactPassed": true,
+      "vendorRuntimePreserved": false,
+      "case": "naturalistic",
+      "date": "2026-10-03",
+      "model": "openai-codex/gpt-5.6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.6-luna"
+        }
+      ],
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/run-pi-skill-eval.py",
+        "d3",
+        "--prompt-file",
+        "evaluations/pi-prompts/custom-solid-style/d3-naturalistic.md",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--mode",
+        "json",
+        "--strict",
+        "--run-id",
+        "custom-solid-d3-naturalistic-20261003-luna-3",
+        "--timeout-seconds",
+        "600",
+        "--expect-output",
+        "workflow.html",
+        "--expect-output",
+        "decision.json"
+      ],
+      "commandText": "uv run --script scripts/run-pi-skill-eval.py d3 --prompt-file evaluations/pi-prompts/custom-solid-style/d3-naturalistic.md --model openai-codex/gpt-5.6-luna --mode json --strict --run-id custom-solid-d3-naturalistic-20261003-luna-3 --timeout-seconds 600 --expect-output workflow.html --expect-output decision.json",
+      "outputs": [
+        "workflow.html",
+        "decision.json"
+      ],
+      "promptSha256": "869db0455214fb039b9d2c4fbc234e4f851b16ee912768ef9b7397987207cdf8",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "findings": [],
+      "toolErrorCount": 0,
+      "reads": [
+        "../prompt.md",
+        "skills/d3/SKILL.md",
+        "skills/d3/references/patterns/flowchart-dag.md",
+        "skills/d3/references/visualizations/flow-path-choreography.md",
+        "decision.json",
+        "workflow.html",
+        "scratch/preview.png",
+        "scratch/settled.svg",
+        "skills/d3/references/command-reference.md"
+      ],
+      "rawEvidence": "evaluations/runs/custom-solid-d3-naturalistic-20261003-luna-3/",
+      "classification": "skill",
+      "cohort": "superseded"
+    },
+    {
+      "runId": "custom-solid-d3-naturalistic-20261003-luna-4",
+      "skill": "d3",
+      "strictPassed": true,
+      "matchesFinalPayload": false,
+      "payloadSha256": "57b5ba5dbdc7e712fa1e4fd3afcab181c56fa3267e0ea814f265107ad0d6c213",
+      "artifactPassed": true,
+      "vendorRuntimePreserved": false,
+      "case": "naturalistic",
+      "date": "2026-10-03",
+      "model": "openai-codex/gpt-5.6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.6-luna"
+        }
+      ],
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/run-pi-skill-eval.py",
+        "d3",
+        "--prompt-file",
+        "evaluations/pi-prompts/custom-solid-style/d3-naturalistic.md",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--mode",
+        "json",
+        "--strict",
+        "--run-id",
+        "custom-solid-d3-naturalistic-20261003-luna-4",
+        "--timeout-seconds",
+        "600",
+        "--expect-output",
+        "workflow.html",
+        "--expect-output",
+        "decision.json"
+      ],
+      "commandText": "uv run --script scripts/run-pi-skill-eval.py d3 --prompt-file evaluations/pi-prompts/custom-solid-style/d3-naturalistic.md --model openai-codex/gpt-5.6-luna --mode json --strict --run-id custom-solid-d3-naturalistic-20261003-luna-4 --timeout-seconds 600 --expect-output workflow.html --expect-output decision.json",
+      "outputs": [
+        "workflow.html",
+        "decision.json"
+      ],
+      "promptSha256": "869db0455214fb039b9d2c4fbc234e4f851b16ee912768ef9b7397987207cdf8",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "findings": [],
+      "toolErrorCount": 0,
+      "reads": [
+        "../prompt.md",
+        "skills/d3/SKILL.md",
+        "skills/d3/references/patterns/flowchart-dag.md",
+        "skills/d3/references/command-reference.md",
+        "skills/d3/references/visualizations/flow-path-choreography.md",
+        "workflow.html",
+        "decision.json",
+        "scratch/settled.svg",
+        "scratch/preview.png",
+        "scratch/preview.png",
+        "scratch/inspection.png"
+      ],
+      "rawEvidence": "evaluations/runs/custom-solid-d3-naturalistic-20261003-luna-4/",
+      "classification": "skill",
+      "cohort": "superseded"
+    },
+    {
+      "runId": "custom-solid-d3-naturalistic-20261003-luna-5",
+      "skill": "d3",
+      "strictPassed": true,
+      "matchesFinalPayload": false,
+      "payloadSha256": "57b5ba5dbdc7e712fa1e4fd3afcab181c56fa3267e0ea814f265107ad0d6c213",
+      "artifactPassed": true,
+      "vendorRuntimePreserved": false,
+      "case": "naturalistic",
+      "date": "2026-10-03",
+      "model": "openai-codex/gpt-5.6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.6-luna"
+        }
+      ],
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/run-pi-skill-eval.py",
+        "d3",
+        "--prompt-file",
+        "evaluations/pi-prompts/custom-solid-style/d3-naturalistic.md",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--mode",
+        "json",
+        "--strict",
+        "--run-id",
+        "custom-solid-d3-naturalistic-20261003-luna-5",
+        "--timeout-seconds",
+        "600",
+        "--expect-output",
+        "workflow.html",
+        "--expect-output",
+        "decision.json"
+      ],
+      "commandText": "uv run --script scripts/run-pi-skill-eval.py d3 --prompt-file evaluations/pi-prompts/custom-solid-style/d3-naturalistic.md --model openai-codex/gpt-5.6-luna --mode json --strict --run-id custom-solid-d3-naturalistic-20261003-luna-5 --timeout-seconds 600 --expect-output workflow.html --expect-output decision.json",
+      "outputs": [
+        "workflow.html",
+        "decision.json"
+      ],
+      "promptSha256": "869db0455214fb039b9d2c4fbc234e4f851b16ee912768ef9b7397987207cdf8",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "findings": [],
+      "toolErrorCount": 0,
+      "reads": [
+        "../prompt.md",
+        "skills/d3/SKILL.md",
+        "skills/d3/references/patterns/flowchart-dag.md",
+        "decision.json",
+        "workflow.html",
+        "workflow.html",
+        "scratch/preview.png",
+        "scratch/settled.svg"
+      ],
+      "rawEvidence": "evaluations/runs/custom-solid-d3-naturalistic-20261003-luna-5/",
+      "classification": "skill",
+      "cohort": "superseded"
+    },
+    {
+      "runId": "custom-solid-d3-naturalistic-20261003-luna-6",
+      "skill": "d3",
+      "strictPassed": true,
+      "matchesFinalPayload": false,
+      "payloadSha256": "57b5ba5dbdc7e712fa1e4fd3afcab181c56fa3267e0ea814f265107ad0d6c213",
+      "artifactPassed": true,
+      "vendorRuntimePreserved": false,
+      "case": "naturalistic",
+      "date": "2026-10-03",
+      "model": "openai-codex/gpt-5.6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.6-luna"
+        }
+      ],
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/run-pi-skill-eval.py",
+        "d3",
+        "--prompt-file",
+        "evaluations/pi-prompts/custom-solid-style/d3-naturalistic.md",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--mode",
+        "json",
+        "--strict",
+        "--run-id",
+        "custom-solid-d3-naturalistic-20261003-luna-6",
+        "--timeout-seconds",
+        "600",
+        "--expect-output",
+        "workflow.html",
+        "--expect-output",
+        "decision.json"
+      ],
+      "commandText": "uv run --script scripts/run-pi-skill-eval.py d3 --prompt-file evaluations/pi-prompts/custom-solid-style/d3-naturalistic.md --model openai-codex/gpt-5.6-luna --mode json --strict --run-id custom-solid-d3-naturalistic-20261003-luna-6 --timeout-seconds 600 --expect-output workflow.html --expect-output decision.json",
+      "outputs": [
+        "workflow.html",
+        "decision.json"
+      ],
+      "promptSha256": "869db0455214fb039b9d2c4fbc234e4f851b16ee912768ef9b7397987207cdf8",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "findings": [],
+      "toolErrorCount": 0,
+      "reads": [
+        "../prompt.md",
+        "skills/d3/SKILL.md",
+        "skills/d3/references/patterns/flowchart-dag.md",
+        "decision.json",
+        "workflow.html",
+        ".d3-check/preview.png",
+        ".d3-check/settled.svg",
+        ".d3-check/preview-full.png"
+      ],
+      "rawEvidence": "evaluations/runs/custom-solid-d3-naturalistic-20261003-luna-6/",
+      "classification": "skill",
+      "cohort": "superseded"
+    },
+    {
+      "runId": "custom-solid-d3-naturalistic-20261003-luna-7",
+      "skill": "d3",
+      "strictPassed": true,
+      "matchesFinalPayload": false,
+      "payloadSha256": "46e6c5f0b21c9b83fd057c5eadf2c1ce1d79fdc0e871eebd8e361961d54a0eeb",
+      "artifactPassed": true,
+      "vendorRuntimePreserved": false,
+      "case": "naturalistic",
+      "date": "2026-10-03",
+      "model": "openai-codex/gpt-5.6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.6-luna"
+        }
+      ],
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/run-pi-skill-eval.py",
+        "d3",
+        "--prompt-file",
+        "evaluations/pi-prompts/custom-solid-style/d3-naturalistic.md",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--mode",
+        "json",
+        "--strict",
+        "--run-id",
+        "custom-solid-d3-naturalistic-20261003-luna-7",
+        "--timeout-seconds",
+        "600",
+        "--expect-output",
+        "workflow.html",
+        "--expect-output",
+        "decision.json"
+      ],
+      "commandText": "uv run --script scripts/run-pi-skill-eval.py d3 --prompt-file evaluations/pi-prompts/custom-solid-style/d3-naturalistic.md --model openai-codex/gpt-5.6-luna --mode json --strict --run-id custom-solid-d3-naturalistic-20261003-luna-7 --timeout-seconds 600 --expect-output workflow.html --expect-output decision.json",
+      "outputs": [
+        "workflow.html",
+        "decision.json"
+      ],
+      "promptSha256": "869db0455214fb039b9d2c4fbc234e4f851b16ee912768ef9b7397987207cdf8",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "findings": [],
+      "toolErrorCount": 0,
+      "reads": [
+        "../prompt.md",
+        "skills/d3/SKILL.md",
+        "skills/d3/references/patterns/flowchart-dag.md",
+        "decision.json",
+        "workflow.html",
+        "workflow.html",
+        ".d3-scratch/settled.svg",
+        ".d3-scratch/preview.png"
+      ],
+      "rawEvidence": "evaluations/runs/custom-solid-d3-naturalistic-20261003-luna-7/",
+      "classification": "skill",
+      "cohort": "superseded"
+    },
+    {
+      "runId": "custom-solid-d3-naturalistic-20261003-luna-8",
+      "skill": "d3",
+      "strictPassed": true,
+      "matchesFinalPayload": false,
+      "payloadSha256": "1d3bff352ff799cf1b7a4feca5893474417f417f04bd6708aa7123d600f3973c",
+      "artifactPassed": true,
+      "vendorRuntimePreserved": true,
+      "case": "naturalistic",
+      "date": "2026-10-03",
+      "model": "openai-codex/gpt-5.6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.6-luna"
+        }
+      ],
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/run-pi-skill-eval.py",
+        "d3",
+        "--prompt-file",
+        "evaluations/pi-prompts/custom-solid-style/d3-naturalistic.md",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--mode",
+        "json",
+        "--strict",
+        "--run-id",
+        "custom-solid-d3-naturalistic-20261003-luna-8",
+        "--timeout-seconds",
+        "600",
+        "--expect-output",
+        "workflow.html",
+        "--expect-output",
+        "decision.json"
+      ],
+      "commandText": "uv run --script scripts/run-pi-skill-eval.py d3 --prompt-file evaluations/pi-prompts/custom-solid-style/d3-naturalistic.md --model openai-codex/gpt-5.6-luna --mode json --strict --run-id custom-solid-d3-naturalistic-20261003-luna-8 --timeout-seconds 600 --expect-output workflow.html --expect-output decision.json",
+      "outputs": [
+        "workflow.html",
+        "decision.json"
+      ],
+      "promptSha256": "869db0455214fb039b9d2c4fbc234e4f851b16ee912768ef9b7397987207cdf8",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "findings": [],
+      "toolErrorCount": 0,
+      "reads": [
+        "../prompt.md",
+        "skills/d3/SKILL.md",
+        "decision.json",
+        "workflow.html",
+        "workflow.html",
+        ".d3-check/preview.png",
+        ".d3-check/settled.svg",
+        "skills/d3/scripts/build_contract_artifact.py",
+        ".d3-check/preview-final.png"
+      ],
+      "rawEvidence": "evaluations/runs/custom-solid-d3-naturalistic-20261003-luna-8/",
+      "classification": "pass",
+      "cohort": "superseded"
+    },
+    {
+      "runId": "custom-solid-d3-naturalistic-20261003-luna-9",
+      "skill": "d3",
+      "strictPassed": true,
+      "matchesFinalPayload": false,
+      "payloadSha256": "1d3bff352ff799cf1b7a4feca5893474417f417f04bd6708aa7123d600f3973c",
+      "artifactPassed": true,
+      "vendorRuntimePreserved": true,
+      "case": "naturalistic",
+      "date": "2026-10-03",
+      "model": "openai-codex/gpt-5.6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.6-luna"
+        }
+      ],
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/run-pi-skill-eval.py",
+        "d3",
+        "--prompt-file",
+        "evaluations/pi-prompts/custom-solid-style/d3-naturalistic.md",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--mode",
+        "json",
+        "--strict",
+        "--run-id",
+        "custom-solid-d3-naturalistic-20261003-luna-9",
+        "--timeout-seconds",
+        "600",
+        "--expect-output",
+        "workflow.html",
+        "--expect-output",
+        "decision.json"
+      ],
+      "commandText": "uv run --script scripts/run-pi-skill-eval.py d3 --prompt-file evaluations/pi-prompts/custom-solid-style/d3-naturalistic.md --model openai-codex/gpt-5.6-luna --mode json --strict --run-id custom-solid-d3-naturalistic-20261003-luna-9 --timeout-seconds 600 --expect-output workflow.html --expect-output decision.json",
+      "outputs": [
+        "workflow.html",
+        "decision.json"
+      ],
+      "promptSha256": "869db0455214fb039b9d2c4fbc234e4f851b16ee912768ef9b7397987207cdf8",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "findings": [],
+      "toolErrorCount": 0,
+      "reads": [
+        "../prompt.md",
+        "skills/d3/SKILL.md",
+        "skills/d3/references/patterns/flow-tokens.md",
+        "skills/d3/references/patterns/flowchart-dag.md",
+        "skills/d3/references/visualizations/flow-path-choreography.md",
+        "decision.json",
+        "workflow.html",
+        "workflow.html",
+        ".d3-scratch/preview.png",
+        ".d3-scratch/settled.svg"
+      ],
+      "rawEvidence": "evaluations/runs/custom-solid-d3-naturalistic-20261003-luna-9/",
+      "classification": "pass",
+      "cohort": "superseded"
+    },
+    {
+      "runId": "custom-solid-procedural-svg-animation-contract-20261003-luna-1",
+      "skill": "procedural-svg-animation",
+      "strictPassed": false,
+      "matchesFinalPayload": false,
+      "payloadSha256": "3a457ecdf29a9cd8c9079e82a3e8d3d798356a64fea278c864f5482ec53592f2",
+      "artifactPassed": true,
+      "case": "contract",
+      "date": "2026-10-03",
+      "model": "openai-codex/gpt-5.6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.6-luna"
+        }
+      ],
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/run-pi-skill-eval.py",
+        "procedural-svg-animation",
+        "--prompt-file",
+        "evaluations/pi-prompts/custom-solid-style/procedural-svg-animation-contract.md",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--mode",
+        "json",
+        "--strict",
+        "--run-id",
+        "custom-solid-procedural-svg-animation-contract-20261003-luna-1",
+        "--timeout-seconds",
+        "600",
+        "--require-exact-command-from-prompt",
+        "--expect-output",
+        "sequencer.svg"
+      ],
+      "commandText": "uv run --script scripts/run-pi-skill-eval.py procedural-svg-animation --prompt-file evaluations/pi-prompts/custom-solid-style/procedural-svg-animation-contract.md --model openai-codex/gpt-5.6-luna --mode json --strict --run-id custom-solid-procedural-svg-animation-contract-20261003-luna-1 --timeout-seconds 600 --require-exact-command-from-prompt --expect-output sequencer.svg",
+      "outputs": [
+        "sequencer.svg"
+      ],
+      "promptSha256": "17e414d567bf7f1e83ec2fca757cac4f5c23ade908f63e006e2307f0dbd691d8",
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "findings": [
+        {
+          "code": "no-fenced-command-in-prompt"
+        }
+      ],
+      "toolErrorCount": 0,
+      "reads": [
+        "../prompt.md",
+        "skills/procedural-svg-animation/SKILL.md"
+      ],
+      "rawEvidence": "evaluations/runs/custom-solid-procedural-svg-animation-contract-20261003-luna-1/",
+      "classification": "harness",
+      "cohort": "retained-failure"
+    },
+    {
+      "runId": "custom-solid-procedural-svg-animation-contract-20261003-luna-11",
+      "skill": "procedural-svg-animation",
+      "strictPassed": true,
+      "matchesFinalPayload": true,
+      "payloadSha256": "ca3352642eff1fe7f0731ca7f7fa330cd10f1c709b881999e2a557d51863103a",
+      "artifactPassed": true,
+      "case": "contract",
+      "date": "2026-10-03",
+      "model": "openai-codex/gpt-5.6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.6-luna"
+        }
+      ],
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/run-pi-skill-eval.py",
+        "procedural-svg-animation",
+        "--prompt-file",
+        "evaluations/pi-prompts/custom-solid-style/procedural-svg-animation-contract.md",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--mode",
+        "json",
+        "--strict",
+        "--run-id",
+        "custom-solid-procedural-svg-animation-contract-20261003-luna-11",
+        "--timeout-seconds",
+        "600",
+        "--require-exact-command-from-prompt",
+        "--expect-output",
+        "sequencer.svg"
+      ],
+      "commandText": "uv run --script scripts/run-pi-skill-eval.py procedural-svg-animation --prompt-file evaluations/pi-prompts/custom-solid-style/procedural-svg-animation-contract.md --model openai-codex/gpt-5.6-luna --mode json --strict --run-id custom-solid-procedural-svg-animation-contract-20261003-luna-11 --timeout-seconds 600 --require-exact-command-from-prompt --expect-output sequencer.svg",
+      "outputs": [
+        "sequencer.svg"
+      ],
+      "promptSha256": "3d429a9c1c65b0b4f4a032f2a62acc9b301c17df07096f11a51aa92797362772",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "findings": [],
+      "toolErrorCount": 0,
+      "reads": [
+        "../prompt.md",
+        "skills/procedural-svg-animation/SKILL.md"
+      ],
+      "rawEvidence": "evaluations/runs/custom-solid-procedural-svg-animation-contract-20261003-luna-11/",
+      "classification": "pass",
+      "cohort": "final"
+    },
+    {
+      "runId": "custom-solid-procedural-svg-animation-contract-20261003-luna-2",
+      "skill": "procedural-svg-animation",
+      "strictPassed": true,
+      "matchesFinalPayload": false,
+      "payloadSha256": "3a457ecdf29a9cd8c9079e82a3e8d3d798356a64fea278c864f5482ec53592f2",
+      "artifactPassed": true,
+      "case": "contract",
+      "date": "2026-10-03",
+      "model": "openai-codex/gpt-5.6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.6-luna"
+        }
+      ],
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/run-pi-skill-eval.py",
+        "procedural-svg-animation",
+        "--prompt-file",
+        "evaluations/pi-prompts/custom-solid-style/procedural-svg-animation-contract.md",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--mode",
+        "json",
+        "--strict",
+        "--run-id",
+        "custom-solid-procedural-svg-animation-contract-20261003-luna-2",
+        "--timeout-seconds",
+        "600",
+        "--require-exact-command-from-prompt",
+        "--expect-output",
+        "sequencer.svg"
+      ],
+      "commandText": "uv run --script scripts/run-pi-skill-eval.py procedural-svg-animation --prompt-file evaluations/pi-prompts/custom-solid-style/procedural-svg-animation-contract.md --model openai-codex/gpt-5.6-luna --mode json --strict --run-id custom-solid-procedural-svg-animation-contract-20261003-luna-2 --timeout-seconds 600 --require-exact-command-from-prompt --expect-output sequencer.svg",
+      "outputs": [
+        "sequencer.svg"
+      ],
+      "promptSha256": "3d429a9c1c65b0b4f4a032f2a62acc9b301c17df07096f11a51aa92797362772",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "findings": [],
+      "toolErrorCount": 0,
+      "reads": [
+        "../prompt.md",
+        "skills/procedural-svg-animation/SKILL.md"
+      ],
+      "rawEvidence": "evaluations/runs/custom-solid-procedural-svg-animation-contract-20261003-luna-2/",
+      "classification": "pass",
+      "cohort": "superseded"
+    },
+    {
+      "runId": "custom-solid-procedural-svg-animation-naturalistic-20261003-luna-1",
+      "skill": "procedural-svg-animation",
+      "strictPassed": true,
+      "matchesFinalPayload": false,
+      "payloadSha256": "3a457ecdf29a9cd8c9079e82a3e8d3d798356a64fea278c864f5482ec53592f2",
+      "artifactPassed": true,
+      "case": "naturalistic",
+      "date": "2026-10-03",
+      "model": "openai-codex/gpt-5.6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.6-luna"
+        }
+      ],
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/run-pi-skill-eval.py",
+        "procedural-svg-animation",
+        "--prompt-file",
+        "evaluations/pi-prompts/custom-solid-style/procedural-svg-animation-naturalistic.md",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--mode",
+        "json",
+        "--strict",
+        "--run-id",
+        "custom-solid-procedural-svg-animation-naturalistic-20261003-luna-1",
+        "--timeout-seconds",
+        "600",
+        "--expect-output",
+        "clock.svg",
+        "--expect-output",
+        "clock-static.svg"
+      ],
+      "commandText": "uv run --script scripts/run-pi-skill-eval.py procedural-svg-animation --prompt-file evaluations/pi-prompts/custom-solid-style/procedural-svg-animation-naturalistic.md --model openai-codex/gpt-5.6-luna --mode json --strict --run-id custom-solid-procedural-svg-animation-naturalistic-20261003-luna-1 --timeout-seconds 600 --expect-output clock.svg --expect-output clock-static.svg",
+      "outputs": [
+        "clock.svg",
+        "clock-static.svg"
+      ],
+      "promptSha256": "af0747cef5bb14991f155fb91bc29503978133e9cc35743404f7469e22ac78a4",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "findings": [],
+      "toolErrorCount": 0,
+      "reads": [
+        "../prompt.md",
+        "skills/procedural-svg-animation/SKILL.md",
+        "clock.png",
+        "clock-static.png"
+      ],
+      "rawEvidence": "evaluations/runs/custom-solid-procedural-svg-animation-naturalistic-20261003-luna-1/",
+      "classification": "pass",
+      "cohort": "superseded"
+    },
+    {
+      "runId": "custom-solid-procedural-svg-animation-naturalistic-20261003-luna-11",
+      "skill": "procedural-svg-animation",
+      "strictPassed": true,
+      "matchesFinalPayload": true,
+      "payloadSha256": "ca3352642eff1fe7f0731ca7f7fa330cd10f1c709b881999e2a557d51863103a",
+      "artifactPassed": true,
+      "case": "naturalistic",
+      "date": "2026-10-03",
+      "model": "openai-codex/gpt-5.6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.6-luna"
+        }
+      ],
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/run-pi-skill-eval.py",
+        "procedural-svg-animation",
+        "--prompt-file",
+        "evaluations/pi-prompts/custom-solid-style/procedural-svg-animation-naturalistic.md",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--mode",
+        "json",
+        "--strict",
+        "--run-id",
+        "custom-solid-procedural-svg-animation-naturalistic-20261003-luna-11",
+        "--timeout-seconds",
+        "600",
+        "--expect-output",
+        "clock.svg",
+        "--expect-output",
+        "clock-static.svg"
+      ],
+      "commandText": "uv run --script scripts/run-pi-skill-eval.py procedural-svg-animation --prompt-file evaluations/pi-prompts/custom-solid-style/procedural-svg-animation-naturalistic.md --model openai-codex/gpt-5.6-luna --mode json --strict --run-id custom-solid-procedural-svg-animation-naturalistic-20261003-luna-11 --timeout-seconds 600 --expect-output clock.svg --expect-output clock-static.svg",
+      "outputs": [
+        "clock.svg",
+        "clock-static.svg"
+      ],
+      "promptSha256": "af0747cef5bb14991f155fb91bc29503978133e9cc35743404f7469e22ac78a4",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "findings": [],
+      "toolErrorCount": 0,
+      "reads": [
+        "../prompt.md",
+        "skills/procedural-svg-animation/SKILL.md",
+        "clock.svg",
+        "clock.png",
+        "clock-static.png"
+      ],
+      "rawEvidence": "evaluations/runs/custom-solid-procedural-svg-animation-naturalistic-20261003-luna-11/",
+      "classification": "pass",
+      "cohort": "final"
+    },
+    {
+      "runId": "custom-solid-procedural-svg-animation-naturalistic-20261003-luna-12",
+      "skill": "procedural-svg-animation",
+      "strictPassed": true,
+      "matchesFinalPayload": true,
+      "payloadSha256": "ca3352642eff1fe7f0731ca7f7fa330cd10f1c709b881999e2a557d51863103a",
+      "artifactPassed": true,
+      "case": "naturalistic",
+      "date": "2026-10-03",
+      "model": "openai-codex/gpt-5.6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.6-luna"
+        }
+      ],
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/run-pi-skill-eval.py",
+        "procedural-svg-animation",
+        "--prompt-file",
+        "evaluations/pi-prompts/custom-solid-style/procedural-svg-animation-naturalistic.md",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--mode",
+        "json",
+        "--strict",
+        "--run-id",
+        "custom-solid-procedural-svg-animation-naturalistic-20261003-luna-12",
+        "--timeout-seconds",
+        "600",
+        "--expect-output",
+        "clock.svg",
+        "--expect-output",
+        "clock-static.svg"
+      ],
+      "commandText": "uv run --script scripts/run-pi-skill-eval.py procedural-svg-animation --prompt-file evaluations/pi-prompts/custom-solid-style/procedural-svg-animation-naturalistic.md --model openai-codex/gpt-5.6-luna --mode json --strict --run-id custom-solid-procedural-svg-animation-naturalistic-20261003-luna-12 --timeout-seconds 600 --expect-output clock.svg --expect-output clock-static.svg",
+      "outputs": [
+        "clock.svg",
+        "clock-static.svg"
+      ],
+      "promptSha256": "af0747cef5bb14991f155fb91bc29503978133e9cc35743404f7469e22ac78a4",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "findings": [],
+      "toolErrorCount": 0,
+      "reads": [
+        "../prompt.md",
+        "skills/procedural-svg-animation/SKILL.md",
+        "clock.png",
+        "clock-static.png"
+      ],
+      "rawEvidence": "evaluations/runs/custom-solid-procedural-svg-animation-naturalistic-20261003-luna-12/",
+      "classification": "pass",
+      "cohort": "final"
+    },
+    {
+      "runId": "custom-solid-procedural-svg-animation-naturalistic-20261003-luna-13",
+      "skill": "procedural-svg-animation",
+      "strictPassed": true,
+      "matchesFinalPayload": true,
+      "payloadSha256": "ca3352642eff1fe7f0731ca7f7fa330cd10f1c709b881999e2a557d51863103a",
+      "artifactPassed": true,
+      "case": "naturalistic",
+      "date": "2026-10-03",
+      "model": "openai-codex/gpt-5.6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.6-luna"
+        }
+      ],
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/run-pi-skill-eval.py",
+        "procedural-svg-animation",
+        "--prompt-file",
+        "evaluations/pi-prompts/custom-solid-style/procedural-svg-animation-naturalistic.md",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--mode",
+        "json",
+        "--strict",
+        "--run-id",
+        "custom-solid-procedural-svg-animation-naturalistic-20261003-luna-13",
+        "--timeout-seconds",
+        "600",
+        "--expect-output",
+        "clock.svg",
+        "--expect-output",
+        "clock-static.svg"
+      ],
+      "commandText": "uv run --script scripts/run-pi-skill-eval.py procedural-svg-animation --prompt-file evaluations/pi-prompts/custom-solid-style/procedural-svg-animation-naturalistic.md --model openai-codex/gpt-5.6-luna --mode json --strict --run-id custom-solid-procedural-svg-animation-naturalistic-20261003-luna-13 --timeout-seconds 600 --expect-output clock.svg --expect-output clock-static.svg",
+      "outputs": [
+        "clock.svg",
+        "clock-static.svg"
+      ],
+      "promptSha256": "af0747cef5bb14991f155fb91bc29503978133e9cc35743404f7469e22ac78a4",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "findings": [],
+      "toolErrorCount": 0,
+      "reads": [
+        "../prompt.md",
+        "skills/procedural-svg-animation/SKILL.md",
+        "clock.svg",
+        "clock.svg",
+        "clock-static.svg",
+        "clock-static-preview.png",
+        "clock-preview.png"
+      ],
+      "rawEvidence": "evaluations/runs/custom-solid-procedural-svg-animation-naturalistic-20261003-luna-13/",
+      "classification": "pass",
+      "cohort": "final"
+    },
+    {
+      "runId": "custom-solid-procedural-svg-animation-naturalistic-20261003-luna-2",
+      "skill": "procedural-svg-animation",
+      "strictPassed": true,
+      "matchesFinalPayload": false,
+      "payloadSha256": "3a457ecdf29a9cd8c9079e82a3e8d3d798356a64fea278c864f5482ec53592f2",
+      "artifactPassed": true,
+      "case": "naturalistic",
+      "date": "2026-10-03",
+      "model": "openai-codex/gpt-5.6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.6-luna"
+        }
+      ],
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/run-pi-skill-eval.py",
+        "procedural-svg-animation",
+        "--prompt-file",
+        "evaluations/pi-prompts/custom-solid-style/procedural-svg-animation-naturalistic.md",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--mode",
+        "json",
+        "--strict",
+        "--run-id",
+        "custom-solid-procedural-svg-animation-naturalistic-20261003-luna-2",
+        "--timeout-seconds",
+        "600",
+        "--expect-output",
+        "clock.svg",
+        "--expect-output",
+        "clock-static.svg"
+      ],
+      "commandText": "uv run --script scripts/run-pi-skill-eval.py procedural-svg-animation --prompt-file evaluations/pi-prompts/custom-solid-style/procedural-svg-animation-naturalistic.md --model openai-codex/gpt-5.6-luna --mode json --strict --run-id custom-solid-procedural-svg-animation-naturalistic-20261003-luna-2 --timeout-seconds 600 --expect-output clock.svg --expect-output clock-static.svg",
+      "outputs": [
+        "clock.svg",
+        "clock-static.svg"
+      ],
+      "promptSha256": "af0747cef5bb14991f155fb91bc29503978133e9cc35743404f7469e22ac78a4",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "findings": [],
+      "toolErrorCount": 0,
+      "reads": [
+        "../prompt.md",
+        "skills/procedural-svg-animation/SKILL.md",
+        "clock.svg",
+        "clock-static.png",
+        "clock.png"
+      ],
+      "rawEvidence": "evaluations/runs/custom-solid-procedural-svg-animation-naturalistic-20261003-luna-2/",
+      "classification": "pass",
+      "cohort": "superseded"
+    },
+    {
+      "runId": "custom-solid-procedural-svg-animation-naturalistic-20261003-luna-3",
+      "skill": "procedural-svg-animation",
+      "strictPassed": true,
+      "matchesFinalPayload": false,
+      "payloadSha256": "3a457ecdf29a9cd8c9079e82a3e8d3d798356a64fea278c864f5482ec53592f2",
+      "artifactPassed": true,
+      "case": "naturalistic",
+      "date": "2026-10-03",
+      "model": "openai-codex/gpt-5.6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.6-luna"
+        }
+      ],
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/run-pi-skill-eval.py",
+        "procedural-svg-animation",
+        "--prompt-file",
+        "evaluations/pi-prompts/custom-solid-style/procedural-svg-animation-naturalistic.md",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--mode",
+        "json",
+        "--strict",
+        "--run-id",
+        "custom-solid-procedural-svg-animation-naturalistic-20261003-luna-3",
+        "--timeout-seconds",
+        "600",
+        "--expect-output",
+        "clock.svg",
+        "--expect-output",
+        "clock-static.svg"
+      ],
+      "commandText": "uv run --script scripts/run-pi-skill-eval.py procedural-svg-animation --prompt-file evaluations/pi-prompts/custom-solid-style/procedural-svg-animation-naturalistic.md --model openai-codex/gpt-5.6-luna --mode json --strict --run-id custom-solid-procedural-svg-animation-naturalistic-20261003-luna-3 --timeout-seconds 600 --expect-output clock.svg --expect-output clock-static.svg",
+      "outputs": [
+        "clock.svg",
+        "clock-static.svg"
+      ],
+      "promptSha256": "af0747cef5bb14991f155fb91bc29503978133e9cc35743404f7469e22ac78a4",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "findings": [],
+      "toolErrorCount": 0,
+      "reads": [
+        "../prompt.md",
+        "skills/procedural-svg-animation/SKILL.md",
+        "skills/procedural-svg-animation/references/pattern-families.md"
+      ],
+      "rawEvidence": "evaluations/runs/custom-solid-procedural-svg-animation-naturalistic-20261003-luna-3/",
+      "classification": "pass",
+      "cohort": "superseded"
+    },
+    {
+      "runId": "custom-solid-svg-brief-design-contract-20261003-luna-1",
+      "skill": "svg-brief-design",
+      "strictPassed": false,
+      "matchesFinalPayload": true,
+      "payloadSha256": "374da01c957b98b3b6e9e6fb5db3977a51c9a1561688b057601725f1ea07bfa8",
+      "artifactPassed": true,
+      "case": "contract",
+      "date": "2026-10-03",
+      "model": "openai-codex/gpt-5.6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.6-luna"
+        }
+      ],
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/run-pi-skill-eval.py",
+        "svg-brief-design",
+        "--prompt-file",
+        "evaluations/pi-prompts/custom-solid-style/svg-brief-design-contract.md",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--mode",
+        "json",
+        "--strict",
+        "--run-id",
+        "custom-solid-svg-brief-design-contract-20261003-luna-1",
+        "--timeout-seconds",
+        "600",
+        "--require-exact-command-from-prompt",
+        "--expect-output",
+        "flow.json",
+        "--expect-output",
+        "flow.svg"
+      ],
+      "commandText": "uv run --script scripts/run-pi-skill-eval.py svg-brief-design --prompt-file evaluations/pi-prompts/custom-solid-style/svg-brief-design-contract.md --model openai-codex/gpt-5.6-luna --mode json --strict --run-id custom-solid-svg-brief-design-contract-20261003-luna-1 --timeout-seconds 600 --require-exact-command-from-prompt --expect-output flow.json --expect-output flow.svg",
+      "outputs": [
+        "flow.json",
+        "flow.svg"
+      ],
+      "promptSha256": "970e013743f538f2eed35783dd661e68e963d30eedd81b91e9056d2bcfa8ae62",
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "findings": [
+        {
+          "code": "no-fenced-command-in-prompt"
+        }
+      ],
+      "toolErrorCount": 0,
+      "reads": [
+        "../prompt.md",
+        "skills/svg-brief-design/SKILL.md",
+        "flow.json",
+        "flow.svg"
+      ],
+      "rawEvidence": "evaluations/runs/custom-solid-svg-brief-design-contract-20261003-luna-1/",
+      "classification": "harness",
+      "cohort": "retained-failure"
+    },
+    {
+      "runId": "custom-solid-svg-brief-design-contract-20261003-luna-2",
+      "skill": "svg-brief-design",
+      "strictPassed": true,
+      "matchesFinalPayload": true,
+      "payloadSha256": "374da01c957b98b3b6e9e6fb5db3977a51c9a1561688b057601725f1ea07bfa8",
+      "artifactPassed": true,
+      "case": "contract",
+      "date": "2026-10-03",
+      "model": "openai-codex/gpt-5.6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.6-luna"
+        }
+      ],
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/run-pi-skill-eval.py",
+        "svg-brief-design",
+        "--prompt-file",
+        "evaluations/pi-prompts/custom-solid-style/svg-brief-design-contract.md",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--mode",
+        "json",
+        "--strict",
+        "--run-id",
+        "custom-solid-svg-brief-design-contract-20261003-luna-2",
+        "--timeout-seconds",
+        "600",
+        "--require-exact-command-from-prompt",
+        "--expect-output",
+        "flow.json",
+        "--expect-output",
+        "flow.svg"
+      ],
+      "commandText": "uv run --script scripts/run-pi-skill-eval.py svg-brief-design --prompt-file evaluations/pi-prompts/custom-solid-style/svg-brief-design-contract.md --model openai-codex/gpt-5.6-luna --mode json --strict --run-id custom-solid-svg-brief-design-contract-20261003-luna-2 --timeout-seconds 600 --require-exact-command-from-prompt --expect-output flow.json --expect-output flow.svg",
+      "outputs": [
+        "flow.json",
+        "flow.svg"
+      ],
+      "promptSha256": "9683a0350d9c222db1a987e157e52a65c5e21307f7a5a3322934cfd2daca12e2",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "findings": [],
+      "toolErrorCount": 0,
+      "reads": [
+        "../prompt.md",
+        "skills/svg-brief-design/SKILL.md",
+        "flow.json",
+        "flow.svg"
+      ],
+      "rawEvidence": "evaluations/runs/custom-solid-svg-brief-design-contract-20261003-luna-2/",
+      "classification": "pass",
+      "cohort": "final"
+    },
+    {
+      "runId": "custom-solid-svg-brief-design-naturalistic-20261003-luna-1",
+      "skill": "svg-brief-design",
+      "strictPassed": true,
+      "matchesFinalPayload": true,
+      "payloadSha256": "374da01c957b98b3b6e9e6fb5db3977a51c9a1561688b057601725f1ea07bfa8",
+      "artifactPassed": true,
+      "case": "naturalistic",
+      "date": "2026-10-03",
+      "model": "openai-codex/gpt-5.6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.6-luna"
+        }
+      ],
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/run-pi-skill-eval.py",
+        "svg-brief-design",
+        "--prompt-file",
+        "evaluations/pi-prompts/custom-solid-style/svg-brief-design-naturalistic.md",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--mode",
+        "json",
+        "--strict",
+        "--run-id",
+        "custom-solid-svg-brief-design-naturalistic-20261003-luna-1",
+        "--timeout-seconds",
+        "600",
+        "--expect-output",
+        "maroon.svg",
+        "--expect-output",
+        "yellow.svg",
+        "--expect-output",
+        "maroon.json",
+        "--expect-output",
+        "yellow.json"
+      ],
+      "commandText": "uv run --script scripts/run-pi-skill-eval.py svg-brief-design --prompt-file evaluations/pi-prompts/custom-solid-style/svg-brief-design-naturalistic.md --model openai-codex/gpt-5.6-luna --mode json --strict --run-id custom-solid-svg-brief-design-naturalistic-20261003-luna-1 --timeout-seconds 600 --expect-output maroon.svg --expect-output yellow.svg --expect-output maroon.json --expect-output yellow.json",
+      "outputs": [
+        "maroon.svg",
+        "yellow.svg",
+        "maroon.json",
+        "yellow.json"
+      ],
+      "promptSha256": "40a536c08f6f7c10b789dd5cd6684836f463912349777036ac3c6d05b2a704d5",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "findings": [],
+      "toolErrorCount": 0,
+      "reads": [
+        "../prompt.md",
+        "skills/svg-brief-design/SKILL.md",
+        "skills/svg-brief-design/references/scaffold-recipes.md",
+        "skills/svg-brief-design/assets/palettes/colorsets.json",
+        "skills/svg-brief-design/references/construction-decisions.md",
+        "maroon.json",
+        "yellow.json",
+        "maroon.svg",
+        "yellow.json",
+        "yellow.svg",
+        "maroon.svg",
+        "maroon.json",
+        "maroon-preview.png",
+        "yellow-preview.png"
+      ],
+      "rawEvidence": "evaluations/runs/custom-solid-svg-brief-design-naturalistic-20261003-luna-1/",
+      "classification": "pass",
+      "cohort": "final"
+    },
+    {
+      "runId": "custom-solid-svg-brief-design-naturalistic-20261003-luna-2",
+      "skill": "svg-brief-design",
+      "strictPassed": true,
+      "matchesFinalPayload": true,
+      "payloadSha256": "374da01c957b98b3b6e9e6fb5db3977a51c9a1561688b057601725f1ea07bfa8",
+      "artifactPassed": true,
+      "case": "naturalistic",
+      "date": "2026-10-03",
+      "model": "openai-codex/gpt-5.6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.6-luna"
+        }
+      ],
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/run-pi-skill-eval.py",
+        "svg-brief-design",
+        "--prompt-file",
+        "evaluations/pi-prompts/custom-solid-style/svg-brief-design-naturalistic.md",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--mode",
+        "json",
+        "--strict",
+        "--run-id",
+        "custom-solid-svg-brief-design-naturalistic-20261003-luna-2",
+        "--timeout-seconds",
+        "600",
+        "--expect-output",
+        "maroon.svg",
+        "--expect-output",
+        "yellow.svg",
+        "--expect-output",
+        "maroon.json",
+        "--expect-output",
+        "yellow.json"
+      ],
+      "commandText": "uv run --script scripts/run-pi-skill-eval.py svg-brief-design --prompt-file evaluations/pi-prompts/custom-solid-style/svg-brief-design-naturalistic.md --model openai-codex/gpt-5.6-luna --mode json --strict --run-id custom-solid-svg-brief-design-naturalistic-20261003-luna-2 --timeout-seconds 600 --expect-output maroon.svg --expect-output yellow.svg --expect-output maroon.json --expect-output yellow.json",
+      "outputs": [
+        "maroon.svg",
+        "yellow.svg",
+        "maroon.json",
+        "yellow.json"
+      ],
+      "promptSha256": "40a536c08f6f7c10b789dd5cd6684836f463912349777036ac3c6d05b2a704d5",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "findings": [],
+      "toolErrorCount": 0,
+      "reads": [
+        "../prompt.md",
+        "skills/svg-brief-design/SKILL.md",
+        "skills/svg-brief-design/references/scaffold-recipes.md",
+        "skills/svg-brief-design/assets/palettes/colorsets.json",
+        "maroon.json",
+        "yellow.json",
+        "yellow.svg",
+        "maroon.svg",
+        "maroon-preview.png",
+        "yellow-preview.png"
+      ],
+      "rawEvidence": "evaluations/runs/custom-solid-svg-brief-design-naturalistic-20261003-luna-2/",
+      "classification": "pass",
+      "cohort": "final"
+    },
+    {
+      "runId": "custom-solid-svg-brief-design-naturalistic-20261003-luna-3",
+      "skill": "svg-brief-design",
+      "strictPassed": true,
+      "matchesFinalPayload": true,
+      "payloadSha256": "374da01c957b98b3b6e9e6fb5db3977a51c9a1561688b057601725f1ea07bfa8",
+      "artifactPassed": true,
+      "case": "naturalistic",
+      "date": "2026-10-03",
+      "model": "openai-codex/gpt-5.6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.6-luna"
+        }
+      ],
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/run-pi-skill-eval.py",
+        "svg-brief-design",
+        "--prompt-file",
+        "evaluations/pi-prompts/custom-solid-style/svg-brief-design-naturalistic.md",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--mode",
+        "json",
+        "--strict",
+        "--run-id",
+        "custom-solid-svg-brief-design-naturalistic-20261003-luna-3",
+        "--timeout-seconds",
+        "600",
+        "--expect-output",
+        "maroon.svg",
+        "--expect-output",
+        "yellow.svg",
+        "--expect-output",
+        "maroon.json",
+        "--expect-output",
+        "yellow.json"
+      ],
+      "commandText": "uv run --script scripts/run-pi-skill-eval.py svg-brief-design --prompt-file evaluations/pi-prompts/custom-solid-style/svg-brief-design-naturalistic.md --model openai-codex/gpt-5.6-luna --mode json --strict --run-id custom-solid-svg-brief-design-naturalistic-20261003-luna-3 --timeout-seconds 600 --expect-output maroon.svg --expect-output yellow.svg --expect-output maroon.json --expect-output yellow.json",
+      "outputs": [
+        "maroon.svg",
+        "yellow.svg",
+        "maroon.json",
+        "yellow.json"
+      ],
+      "promptSha256": "40a536c08f6f7c10b789dd5cd6684836f463912349777036ac3c6d05b2a704d5",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "findings": [],
+      "toolErrorCount": 0,
+      "reads": [
+        "../prompt.md",
+        "skills/svg-brief-design/SKILL.md",
+        "skills/svg-brief-design/references/scaffold-recipes.md",
+        "skills/svg-brief-design/assets/palettes/colorsets.json",
+        "yellow.json",
+        "yellow.svg",
+        "maroon.json",
+        "maroon.svg",
+        "maroon.json",
+        "yellow.json",
+        "maroon.svg",
+        "yellow.svg",
+        "yellow.png",
+        "maroon.png"
+      ],
+      "rawEvidence": "evaluations/runs/custom-solid-svg-brief-design-naturalistic-20261003-luna-3/",
+      "classification": "pass",
+      "cohort": "final"
+    },
+    {
+      "runId": "custom-solid-threejs-animated-3d-contract-20261003-luna-1",
+      "skill": "threejs-animated-3d",
+      "strictPassed": false,
+      "matchesFinalPayload": true,
+      "payloadSha256": "5c243bd8b3226eef250da8e6015ce43f8dc8d015ed5071f5f7470d92736e957f",
+      "artifactPassed": true,
+      "case": "contract",
+      "date": "2026-10-03",
+      "model": "openai-codex/gpt-5.6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.6-luna"
+        }
+      ],
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/run-pi-skill-eval.py",
+        "threejs-animated-3d",
+        "--prompt-file",
+        "evaluations/pi-prompts/custom-solid-style/threejs-animated-3d-contract.md",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--mode",
+        "json",
+        "--strict",
+        "--run-id",
+        "custom-solid-threejs-animated-3d-contract-20261003-luna-1",
+        "--timeout-seconds",
+        "600",
+        "--require-exact-command-from-prompt",
+        "--expect-output",
+        "orbit.html"
+      ],
+      "commandText": "uv run --script scripts/run-pi-skill-eval.py threejs-animated-3d --prompt-file evaluations/pi-prompts/custom-solid-style/threejs-animated-3d-contract.md --model openai-codex/gpt-5.6-luna --mode json --strict --run-id custom-solid-threejs-animated-3d-contract-20261003-luna-1 --timeout-seconds 600 --require-exact-command-from-prompt --expect-output orbit.html",
+      "outputs": [
+        "orbit.html"
+      ],
+      "promptSha256": "d037bfeb4d3566a601405564e9f1654ac593f7a9b1841efc76ad34b47562ae2c",
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "findings": [
+        {
+          "code": "no-fenced-command-in-prompt"
+        }
+      ],
+      "toolErrorCount": 0,
+      "reads": [
+        "../prompt.md",
+        "skills/threejs-animated-3d/SKILL.md",
+        "orbit.html",
+        "orbit.html"
+      ],
+      "rawEvidence": "evaluations/runs/custom-solid-threejs-animated-3d-contract-20261003-luna-1/",
+      "classification": "harness",
+      "cohort": "retained-failure"
+    },
+    {
+      "runId": "custom-solid-threejs-animated-3d-contract-20261003-luna-2",
+      "skill": "threejs-animated-3d",
+      "strictPassed": true,
+      "matchesFinalPayload": true,
+      "payloadSha256": "5c243bd8b3226eef250da8e6015ce43f8dc8d015ed5071f5f7470d92736e957f",
+      "artifactPassed": true,
+      "case": "contract",
+      "date": "2026-10-03",
+      "model": "openai-codex/gpt-5.6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.6-luna"
+        }
+      ],
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/run-pi-skill-eval.py",
+        "threejs-animated-3d",
+        "--prompt-file",
+        "evaluations/pi-prompts/custom-solid-style/threejs-animated-3d-contract.md",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--mode",
+        "json",
+        "--strict",
+        "--run-id",
+        "custom-solid-threejs-animated-3d-contract-20261003-luna-2",
+        "--timeout-seconds",
+        "600",
+        "--require-exact-command-from-prompt",
+        "--expect-output",
+        "orbit.html"
+      ],
+      "commandText": "uv run --script scripts/run-pi-skill-eval.py threejs-animated-3d --prompt-file evaluations/pi-prompts/custom-solid-style/threejs-animated-3d-contract.md --model openai-codex/gpt-5.6-luna --mode json --strict --run-id custom-solid-threejs-animated-3d-contract-20261003-luna-2 --timeout-seconds 600 --require-exact-command-from-prompt --expect-output orbit.html",
+      "outputs": [
+        "orbit.html"
+      ],
+      "promptSha256": "a4a81eecd1614342e9c969ac4d898f4b2272f93ea9d503489904f2bb6802afd1",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "findings": [],
+      "toolErrorCount": 0,
+      "reads": [
+        "../prompt.md",
+        "skills/threejs-animated-3d/SKILL.md",
+        "orbit.html",
+        "orbit.html",
+        "orbit.html"
+      ],
+      "rawEvidence": "evaluations/runs/custom-solid-threejs-animated-3d-contract-20261003-luna-2/",
+      "classification": "pass",
+      "cohort": "final"
+    },
+    {
+      "runId": "custom-solid-threejs-animated-3d-naturalistic-20261003-luna-1",
+      "skill": "threejs-animated-3d",
+      "strictPassed": true,
+      "matchesFinalPayload": true,
+      "payloadSha256": "5c243bd8b3226eef250da8e6015ce43f8dc8d015ed5071f5f7470d92736e957f",
+      "artifactPassed": true,
+      "case": "naturalistic",
+      "date": "2026-10-03",
+      "model": "openai-codex/gpt-5.6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.6-luna"
+        }
+      ],
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/run-pi-skill-eval.py",
+        "threejs-animated-3d",
+        "--prompt-file",
+        "evaluations/pi-prompts/custom-solid-style/threejs-animated-3d-naturalistic.md",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--mode",
+        "json",
+        "--strict",
+        "--run-id",
+        "custom-solid-threejs-animated-3d-naturalistic-20261003-luna-1",
+        "--timeout-seconds",
+        "600",
+        "--expect-output",
+        "roles.html"
+      ],
+      "commandText": "uv run --script scripts/run-pi-skill-eval.py threejs-animated-3d --prompt-file evaluations/pi-prompts/custom-solid-style/threejs-animated-3d-naturalistic.md --model openai-codex/gpt-5.6-luna --mode json --strict --run-id custom-solid-threejs-animated-3d-naturalistic-20261003-luna-1 --timeout-seconds 600 --expect-output roles.html",
+      "outputs": [
+        "roles.html"
+      ],
+      "promptSha256": "45affc603786adb659cb6d4b28f7e85120437d302a27d8ba6bda48d1793fd0ab",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "findings": [],
+      "toolErrorCount": 0,
+      "reads": [
+        "../prompt.md",
+        "skills/threejs-animated-3d/SKILL.md",
+        "skills/threejs-animated-3d/references/visual-tokens.md",
+        "roles-validation.json"
+      ],
+      "rawEvidence": "evaluations/runs/custom-solid-threejs-animated-3d-naturalistic-20261003-luna-1/",
+      "classification": "pass",
+      "cohort": "final"
+    },
+    {
+      "runId": "custom-solid-threejs-animated-3d-naturalistic-20261003-luna-2",
+      "skill": "threejs-animated-3d",
+      "strictPassed": true,
+      "matchesFinalPayload": true,
+      "payloadSha256": "5c243bd8b3226eef250da8e6015ce43f8dc8d015ed5071f5f7470d92736e957f",
+      "artifactPassed": true,
+      "case": "naturalistic",
+      "date": "2026-10-03",
+      "model": "openai-codex/gpt-5.6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.6-luna"
+        }
+      ],
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/run-pi-skill-eval.py",
+        "threejs-animated-3d",
+        "--prompt-file",
+        "evaluations/pi-prompts/custom-solid-style/threejs-animated-3d-naturalistic.md",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--mode",
+        "json",
+        "--strict",
+        "--run-id",
+        "custom-solid-threejs-animated-3d-naturalistic-20261003-luna-2",
+        "--timeout-seconds",
+        "600",
+        "--expect-output",
+        "roles.html"
+      ],
+      "commandText": "uv run --script scripts/run-pi-skill-eval.py threejs-animated-3d --prompt-file evaluations/pi-prompts/custom-solid-style/threejs-animated-3d-naturalistic.md --model openai-codex/gpt-5.6-luna --mode json --strict --run-id custom-solid-threejs-animated-3d-naturalistic-20261003-luna-2 --timeout-seconds 600 --expect-output roles.html",
+      "outputs": [
+        "roles.html"
+      ],
+      "promptSha256": "45affc603786adb659cb6d4b28f7e85120437d302a27d8ba6bda48d1793fd0ab",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "findings": [],
+      "toolErrorCount": 0,
+      "reads": [
+        "../prompt.md",
+        "skills/threejs-animated-3d/SKILL.md",
+        "skills/threejs-animated-3d/references/visual-tokens.md",
+        "roles-validation.json"
+      ],
+      "rawEvidence": "evaluations/runs/custom-solid-threejs-animated-3d-naturalistic-20261003-luna-2/",
+      "classification": "pass",
+      "cohort": "final"
+    },
+    {
+      "runId": "custom-solid-threejs-animated-3d-naturalistic-20261003-luna-3",
+      "skill": "threejs-animated-3d",
+      "strictPassed": true,
+      "matchesFinalPayload": true,
+      "payloadSha256": "5c243bd8b3226eef250da8e6015ce43f8dc8d015ed5071f5f7470d92736e957f",
+      "artifactPassed": true,
+      "case": "naturalistic",
+      "date": "2026-10-03",
+      "model": "openai-codex/gpt-5.6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.6-luna"
+        }
+      ],
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/run-pi-skill-eval.py",
+        "threejs-animated-3d",
+        "--prompt-file",
+        "evaluations/pi-prompts/custom-solid-style/threejs-animated-3d-naturalistic.md",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--mode",
+        "json",
+        "--strict",
+        "--run-id",
+        "custom-solid-threejs-animated-3d-naturalistic-20261003-luna-3",
+        "--timeout-seconds",
+        "600",
+        "--expect-output",
+        "roles.html"
+      ],
+      "commandText": "uv run --script scripts/run-pi-skill-eval.py threejs-animated-3d --prompt-file evaluations/pi-prompts/custom-solid-style/threejs-animated-3d-naturalistic.md --model openai-codex/gpt-5.6-luna --mode json --strict --run-id custom-solid-threejs-animated-3d-naturalistic-20261003-luna-3 --timeout-seconds 600 --expect-output roles.html",
+      "outputs": [
+        "roles.html"
+      ],
+      "promptSha256": "45affc603786adb659cb6d4b28f7e85120437d302a27d8ba6bda48d1793fd0ab",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "findings": [],
+      "toolErrorCount": 0,
+      "reads": [
+        "../prompt.md",
+        "skills/threejs-animated-3d/SKILL.md",
+        "skills/threejs-animated-3d/references/visual-tokens.md",
+        "roles-validation.json",
+        "roles.png"
+      ],
+      "rawEvidence": "evaluations/runs/custom-solid-threejs-animated-3d-naturalistic-20261003-luna-3/",
+      "classification": "pass",
+      "cohort": "final"
+    },
+    {
+      "runId": "custom-solid-vectorize-art-patterns-contract-20261003-luna-1",
+      "skill": "vectorize-art-patterns",
+      "strictPassed": false,
+      "matchesFinalPayload": true,
+      "payloadSha256": "3e81d3098d50729416b17c7377f265fa22415c24257057551c3dccead1d8ec57",
+      "artifactPassed": true,
+      "case": "contract",
+      "date": "2026-10-03",
+      "model": "openai-codex/gpt-5.6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.6-luna"
+        }
+      ],
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/run-pi-skill-eval.py",
+        "vectorize-art-patterns",
+        "--prompt-file",
+        "evaluations/pi-prompts/custom-solid-style/vectorize-art-patterns-contract.md",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--mode",
+        "json",
+        "--strict",
+        "--run-id",
+        "custom-solid-vectorize-art-patterns-contract-20261003-luna-1",
+        "--timeout-seconds",
+        "600",
+        "--require-exact-command-from-prompt",
+        "--expect-output",
+        "bailly.svg",
+        "--expect-output",
+        "bailly.json"
+      ],
+      "commandText": "uv run --script scripts/run-pi-skill-eval.py vectorize-art-patterns --prompt-file evaluations/pi-prompts/custom-solid-style/vectorize-art-patterns-contract.md --model openai-codex/gpt-5.6-luna --mode json --strict --run-id custom-solid-vectorize-art-patterns-contract-20261003-luna-1 --timeout-seconds 600 --require-exact-command-from-prompt --expect-output bailly.svg --expect-output bailly.json",
+      "outputs": [
+        "bailly.svg",
+        "bailly.json"
+      ],
+      "promptSha256": "eaca5f0617b48bdc72c1e0fcb1311e663193652ed37b1b670bb1585ffaf3ef0f",
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "findings": [
+        {
+          "code": "no-fenced-command-in-prompt"
+        }
+      ],
+      "toolErrorCount": 0,
+      "reads": [
+        "../prompt.md",
+        "skills/vectorize-art-patterns/SKILL.md",
+        "bailly.svg",
+        "bailly.json"
+      ],
+      "rawEvidence": "evaluations/runs/custom-solid-vectorize-art-patterns-contract-20261003-luna-1/",
+      "classification": "harness",
+      "cohort": "retained-failure"
+    },
+    {
+      "runId": "custom-solid-vectorize-art-patterns-contract-20261003-luna-2",
+      "skill": "vectorize-art-patterns",
+      "strictPassed": true,
+      "matchesFinalPayload": true,
+      "payloadSha256": "3e81d3098d50729416b17c7377f265fa22415c24257057551c3dccead1d8ec57",
+      "artifactPassed": true,
+      "case": "contract",
+      "date": "2026-10-03",
+      "model": "openai-codex/gpt-5.6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.6-luna"
+        }
+      ],
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/run-pi-skill-eval.py",
+        "vectorize-art-patterns",
+        "--prompt-file",
+        "evaluations/pi-prompts/custom-solid-style/vectorize-art-patterns-contract.md",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--mode",
+        "json",
+        "--strict",
+        "--run-id",
+        "custom-solid-vectorize-art-patterns-contract-20261003-luna-2",
+        "--timeout-seconds",
+        "600",
+        "--require-exact-command-from-prompt",
+        "--expect-output",
+        "bailly.svg",
+        "--expect-output",
+        "bailly.json"
+      ],
+      "commandText": "uv run --script scripts/run-pi-skill-eval.py vectorize-art-patterns --prompt-file evaluations/pi-prompts/custom-solid-style/vectorize-art-patterns-contract.md --model openai-codex/gpt-5.6-luna --mode json --strict --run-id custom-solid-vectorize-art-patterns-contract-20261003-luna-2 --timeout-seconds 600 --require-exact-command-from-prompt --expect-output bailly.svg --expect-output bailly.json",
+      "outputs": [
+        "bailly.svg",
+        "bailly.json"
+      ],
+      "promptSha256": "4a2766b5cfe76da4516964a871c89b096ac24a01d9cdf3be49ec21f56e69d3e7",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "findings": [],
+      "toolErrorCount": 0,
+      "reads": [
+        "../prompt.md",
+        "skills/vectorize-art-patterns/SKILL.md",
+        "bailly.svg",
+        "bailly.json"
+      ],
+      "rawEvidence": "evaluations/runs/custom-solid-vectorize-art-patterns-contract-20261003-luna-2/",
+      "classification": "pass",
+      "cohort": "final"
+    },
+    {
+      "runId": "custom-solid-vectorize-art-patterns-naturalistic-20261003-luna-1",
+      "skill": "vectorize-art-patterns",
+      "strictPassed": true,
+      "matchesFinalPayload": true,
+      "payloadSha256": "3e81d3098d50729416b17c7377f265fa22415c24257057551c3dccead1d8ec57",
+      "artifactPassed": true,
+      "case": "naturalistic",
+      "date": "2026-10-03",
+      "model": "openai-codex/gpt-5.6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.6-luna"
+        }
+      ],
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/run-pi-skill-eval.py",
+        "vectorize-art-patterns",
+        "--prompt-file",
+        "evaluations/pi-prompts/custom-solid-style/vectorize-art-patterns-naturalistic.md",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--mode",
+        "json",
+        "--strict",
+        "--run-id",
+        "custom-solid-vectorize-art-patterns-naturalistic-20261003-luna-1",
+        "--timeout-seconds",
+        "600",
+        "--expect-output",
+        "artwork-cs1.svg",
+        "--expect-output",
+        "artwork-cs2.svg",
+        "--expect-output",
+        "artwork-cs1.json",
+        "--expect-output",
+        "artwork-cs2.json"
+      ],
+      "commandText": "uv run --script scripts/run-pi-skill-eval.py vectorize-art-patterns --prompt-file evaluations/pi-prompts/custom-solid-style/vectorize-art-patterns-naturalistic.md --model openai-codex/gpt-5.6-luna --mode json --strict --run-id custom-solid-vectorize-art-patterns-naturalistic-20261003-luna-1 --timeout-seconds 600 --expect-output artwork-cs1.svg --expect-output artwork-cs2.svg --expect-output artwork-cs1.json --expect-output artwork-cs2.json",
+      "outputs": [
+        "artwork-cs1.svg",
+        "artwork-cs2.svg",
+        "artwork-cs1.json",
+        "artwork-cs2.json"
+      ],
+      "promptSha256": "3367d2da4819d52ab12b3197114e3b07cba7f1a6237cb80160a564da9dfcb462",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "findings": [],
+      "toolErrorCount": 0,
+      "reads": [
+        "../prompt.md",
+        "skills/vectorize-art-patterns/SKILL.md",
+        "skills/vectorize-art-patterns/references/colorset-adaptation.md",
+        "skills/vectorize-art-patterns/references/pipeline-selection.md",
+        "skills/vectorize-art-patterns/assets/base-images/manifest.json",
+        "skills/vectorize-art-patterns/assets/palettes/colorsets.json",
+        "skills/vectorize-art-patterns/assets/base-images/bailly-beauties-fancy.jpg"
+      ],
+      "rawEvidence": "evaluations/runs/custom-solid-vectorize-art-patterns-naturalistic-20261003-luna-1/",
+      "classification": "pass",
+      "cohort": "final"
+    },
+    {
+      "runId": "custom-solid-vectorize-art-patterns-naturalistic-20261003-luna-2",
+      "skill": "vectorize-art-patterns",
+      "strictPassed": true,
+      "matchesFinalPayload": true,
+      "payloadSha256": "3e81d3098d50729416b17c7377f265fa22415c24257057551c3dccead1d8ec57",
+      "artifactPassed": true,
+      "case": "naturalistic",
+      "date": "2026-10-03",
+      "model": "openai-codex/gpt-5.6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.6-luna"
+        }
+      ],
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/run-pi-skill-eval.py",
+        "vectorize-art-patterns",
+        "--prompt-file",
+        "evaluations/pi-prompts/custom-solid-style/vectorize-art-patterns-naturalistic.md",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--mode",
+        "json",
+        "--strict",
+        "--run-id",
+        "custom-solid-vectorize-art-patterns-naturalistic-20261003-luna-2",
+        "--timeout-seconds",
+        "600",
+        "--expect-output",
+        "artwork-cs1.svg",
+        "--expect-output",
+        "artwork-cs2.svg",
+        "--expect-output",
+        "artwork-cs1.json",
+        "--expect-output",
+        "artwork-cs2.json"
+      ],
+      "commandText": "uv run --script scripts/run-pi-skill-eval.py vectorize-art-patterns --prompt-file evaluations/pi-prompts/custom-solid-style/vectorize-art-patterns-naturalistic.md --model openai-codex/gpt-5.6-luna --mode json --strict --run-id custom-solid-vectorize-art-patterns-naturalistic-20261003-luna-2 --timeout-seconds 600 --expect-output artwork-cs1.svg --expect-output artwork-cs2.svg --expect-output artwork-cs1.json --expect-output artwork-cs2.json",
+      "outputs": [
+        "artwork-cs1.svg",
+        "artwork-cs2.svg",
+        "artwork-cs1.json",
+        "artwork-cs2.json"
+      ],
+      "promptSha256": "3367d2da4819d52ab12b3197114e3b07cba7f1a6237cb80160a564da9dfcb462",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "findings": [],
+      "toolErrorCount": 0,
+      "reads": [
+        "../prompt.md",
+        "skills/vectorize-art-patterns/SKILL.md",
+        "skills/vectorize-art-patterns/assets/base-images/manifest.json",
+        "skills/vectorize-art-patterns/assets/base-images/bailly-beauties-fancy.jpg",
+        "skills/vectorize-art-patterns/references/pipeline-selection.md",
+        "skills/vectorize-art-patterns/assets/palettes/colorsets.json",
+        "skills/vectorize-art-patterns/references/colorset-adaptation.md"
+      ],
+      "rawEvidence": "evaluations/runs/custom-solid-vectorize-art-patterns-naturalistic-20261003-luna-2/",
+      "classification": "pass",
+      "cohort": "final"
+    },
+    {
+      "runId": "custom-solid-vectorize-art-patterns-naturalistic-20261003-luna-3",
+      "skill": "vectorize-art-patterns",
+      "strictPassed": true,
+      "matchesFinalPayload": true,
+      "payloadSha256": "3e81d3098d50729416b17c7377f265fa22415c24257057551c3dccead1d8ec57",
+      "artifactPassed": true,
+      "case": "naturalistic",
+      "date": "2026-10-03",
+      "model": "openai-codex/gpt-5.6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.6-luna"
+        }
+      ],
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/run-pi-skill-eval.py",
+        "vectorize-art-patterns",
+        "--prompt-file",
+        "evaluations/pi-prompts/custom-solid-style/vectorize-art-patterns-naturalistic.md",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--mode",
+        "json",
+        "--strict",
+        "--run-id",
+        "custom-solid-vectorize-art-patterns-naturalistic-20261003-luna-3",
+        "--timeout-seconds",
+        "600",
+        "--expect-output",
+        "artwork-cs1.svg",
+        "--expect-output",
+        "artwork-cs2.svg",
+        "--expect-output",
+        "artwork-cs1.json",
+        "--expect-output",
+        "artwork-cs2.json"
+      ],
+      "commandText": "uv run --script scripts/run-pi-skill-eval.py vectorize-art-patterns --prompt-file evaluations/pi-prompts/custom-solid-style/vectorize-art-patterns-naturalistic.md --model openai-codex/gpt-5.6-luna --mode json --strict --run-id custom-solid-vectorize-art-patterns-naturalistic-20261003-luna-3 --timeout-seconds 600 --expect-output artwork-cs1.svg --expect-output artwork-cs2.svg --expect-output artwork-cs1.json --expect-output artwork-cs2.json",
+      "outputs": [
+        "artwork-cs1.svg",
+        "artwork-cs2.svg",
+        "artwork-cs1.json",
+        "artwork-cs2.json"
+      ],
+      "promptSha256": "3367d2da4819d52ab12b3197114e3b07cba7f1a6237cb80160a564da9dfcb462",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "findings": [],
+      "toolErrorCount": 0,
+      "reads": [
+        "../prompt.md",
+        "skills/vectorize-art-patterns/SKILL.md",
+        "skills/vectorize-art-patterns/assets/base-images/manifest.json",
+        "skills/vectorize-art-patterns/references/colorset-adaptation.md",
+        "skills/vectorize-art-patterns/assets/base-images/bailly-beauties-fancy.jpg",
+        "artwork-cs2.json",
+        "artwork-cs1.json"
+      ],
+      "rawEvidence": "evaluations/runs/custom-solid-vectorize-art-patterns-naturalistic-20261003-luna-3/",
+      "classification": "pass",
+      "cohort": "final"
+    }
+  ],
+  "matchingFinalPayloadAttemptCount": 24,
+  "matchingFinalPayloadStrictFailures": [
+    {
+      "runId": "custom-solid-d3-naturalistic-20261003-luna-16",
+      "skill": "d3",
+      "classification": "agent",
+      "findings": [
+        {
+          "code": "tool-error",
+          "line": 112,
+          "tool": "read"
+        }
+      ]
+    },
+    {
+      "runId": "custom-solid-svg-brief-design-contract-20261003-luna-1",
+      "skill": "svg-brief-design",
+      "classification": "harness",
+      "findings": [
+        {
+          "code": "no-fenced-command-in-prompt"
+        }
+      ]
+    },
+    {
+      "runId": "custom-solid-threejs-animated-3d-contract-20261003-luna-1",
+      "skill": "threejs-animated-3d",
+      "classification": "harness",
+      "findings": [
+        {
+          "code": "no-fenced-command-in-prompt"
+        }
+      ]
+    },
+    {
+      "runId": "custom-solid-vectorize-art-patterns-contract-20261003-luna-1",
+      "skill": "vectorize-art-patterns",
+      "classification": "harness",
+      "findings": [
+        {
+          "code": "no-fenced-command-in-prompt"
+        }
+      ]
+    }
+  ],
+  "finalNaturalisticRepetitions": {
+    "d3": {
+      "attempts": 4,
+      "strictPasses": 3,
+      "runIds": [
+        "custom-solid-d3-naturalistic-20261003-luna-14",
+        "custom-solid-d3-naturalistic-20261003-luna-15",
+        "custom-solid-d3-naturalistic-20261003-luna-16",
+        "custom-solid-d3-naturalistic-20261003-luna-17"
+      ]
+    },
+    "threejs-animated-3d": {
+      "attempts": 3,
+      "strictPasses": 3,
+      "runIds": [
+        "custom-solid-threejs-animated-3d-naturalistic-20261003-luna-1",
+        "custom-solid-threejs-animated-3d-naturalistic-20261003-luna-2",
+        "custom-solid-threejs-animated-3d-naturalistic-20261003-luna-3"
+      ]
+    },
+    "procedural-svg-animation": {
+      "attempts": 3,
+      "strictPasses": 3,
+      "runIds": [
+        "custom-solid-procedural-svg-animation-naturalistic-20261003-luna-11",
+        "custom-solid-procedural-svg-animation-naturalistic-20261003-luna-12",
+        "custom-solid-procedural-svg-animation-naturalistic-20261003-luna-13"
+      ]
+    },
+    "svg-brief-design": {
+      "attempts": 3,
+      "strictPasses": 3,
+      "runIds": [
+        "custom-solid-svg-brief-design-naturalistic-20261003-luna-1",
+        "custom-solid-svg-brief-design-naturalistic-20261003-luna-2",
+        "custom-solid-svg-brief-design-naturalistic-20261003-luna-3"
+      ]
+    },
+    "vectorize-art-patterns": {
+      "attempts": 3,
+      "strictPasses": 3,
+      "runIds": [
+        "custom-solid-vectorize-art-patterns-naturalistic-20261003-luna-1",
+        "custom-solid-vectorize-art-patterns-naturalistic-20261003-luna-2",
+        "custom-solid-vectorize-art-patterns-naturalistic-20261003-luna-3"
+      ]
+    }
+  }
+}

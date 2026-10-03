@@ -25,6 +25,7 @@ import subprocess
 import sys
 import tempfile
 from palette_paints import require_svg_palette, svg_paints
+from mermaid_animation.solid import native_solid_presentation, write_native_svg
 
 
 # --- common: consolidated runtime section ---
@@ -6599,10 +6600,11 @@ def main() -> int:
                 source_text = args.source.read_text(encoding="utf-8")
                 colorset = "colorset2" if re.search(r'colorset:\s*["\']?colorset2', source_text) else "colorset1"
                 replacements = svg_paints(root, colorset, normalize=True)
+                native_solid_presentation(root, colorset)
                 root.set("data-colorset", colorset)
                 if replacements:
                     root.set("data-palette-normalization", json.dumps(replacements, sort_keys=True))
-                tree.write(static_path, encoding="utf-8", xml_declaration=True)
+                write_native_svg(tree, static_path)
                 require_svg_palette(root, colorset)
             else:
                 root.set("data-colorset", require_svg_palette(root))
@@ -6639,7 +6641,7 @@ def main() -> int:
             if directive_plan is not None:
                 apply_directive_plan(root, directive_plan)
             args.output.parent.mkdir(parents=True, exist_ok=True)
-            tree.write(args.output, encoding="utf-8", xml_declaration=True, short_empty_elements=True)
+            write_native_svg(tree, args.output)
 
             total = 0.0
             if planned:

@@ -42,7 +42,7 @@ function renderGeofenceJoin() {
     const dots = svg.append("g").selectAll("circle").data(points).join("circle")
       .attr("cx", d => d.x).attr("cy", d => d.y)
       .attr("fill", d => d.region === "Outside" ? "#9c9c9c" : palette.blue)
-      .attr("fill-opacity", d => d.region === "Outside" ? .35 : .82)
+      .attr("data-opacity-role", "semantic").attr("fill-opacity", d => d.region === "Outside" ? .35 : .82)
       .attr("stroke", "#fff");
     grow(dots, "r", 1, d => d.region === "Outside" ? 3 : 5, .1, .55);
     svg.append("g").selectAll("text").data(regions).join("text")

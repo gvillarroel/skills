@@ -11,8 +11,8 @@
   "geometryLockedPairCount": 30,
   "sourceManifest": "assets/base-images/manifest.json",
   "sourceManifestSha256": "24fe9d362d6089975a67861e72590b3aa840e240c969e7055e2741876bc7c3cc",
-  "paletteContractSha256": "c81d32ffb0d55d44e7d3102c7470e251baf34f0bb6472fbede7753df8b9a9eb5",
-  "inventorySha256": "34523ed91695fe42ec5bf7a22b6e052afa30fd7f3b39812f46de978613d63355",
+  "paletteContractSha256": "f36eb8a9fe171108383767c7697f023218121e51d3e45247e87b58e397b36d62",
+  "inventorySha256": "8332fb4ffcadadcd6dcf5f1c0bf92a3f1b17efb17f79d52bbcdeebbb4fba2574",
   "genres": [
     "abstraction",
     "city",
@@ -55,38 +55,38 @@
           "patternId": "vectorize-bailly-beauties-fancy-cs1",
           "file": "svgs/vectorize-bailly-beauties-fancy-cs1.svg",
           "report": "reports/vectorize-bailly-beauties-fancy-cs1.json",
-          "sha256": "16cbb48e6f131a8eae56845c387aca7bc044151bcc0b1e60585108a768f0c869",
+          "sha256": "797b7736dfb0448401fa2b6c2ba99db541c67a0549243eed277e2689cb6a6b76",
           "bytes": 343075,
           "pathCount": 235,
           "palette": [
             "#1c1c1c",
             "#333e48",
-            "#6d1222",
+            "#363636",
+            "#4f4f4f",
             "#828282",
+            "#9c9c9c",
             "#9e1b32",
             "#cfcfcf",
-            "#e8002a",
-            "#f7f7f7",
-            "#ffccd5"
+            "#e7e7e7"
           ]
         },
         "colorset2": {
           "patternId": "vectorize-bailly-beauties-fancy-cs2",
           "file": "svgs/vectorize-bailly-beauties-fancy-cs2.svg",
           "report": "reports/vectorize-bailly-beauties-fancy-cs2.json",
-          "sha256": "2d341382fbf8f954a45ae230f032c9ad46b98ca43876f3ebe6000ed390031425",
+          "sha256": "83ecce269b58143cb9cee8450872f2bdcf04caee1e080d2d6fb5217217f0213e",
           "bytes": 343075,
           "pathCount": 235,
           "palette": [
-            "#004d66",
             "#007298",
             "#1c1c1c",
             "#333e48",
-            "#45842a",
-            "#652f6c",
+            "#363636",
+            "#4f4f4f",
             "#828282",
+            "#9c9c9c",
             "#cfcfcf",
-            "#f7f7f7"
+            "#e7e7e7"
           ]
         }
       }
@@ -118,37 +118,37 @@
           "patternId": "vectorize-breton-song-lark-cs1",
           "file": "svgs/vectorize-breton-song-lark-cs1.svg",
           "report": "reports/vectorize-breton-song-lark-cs1.json",
-          "sha256": "31aeeccecaba169828328b94c75b91a67197d37c79b6325641d8415499360481",
+          "sha256": "c33e5c80a8ec8e43bf51bbc24db4781814266ce87825beb006c24b8719df8607",
           "bytes": 219480,
           "pathCount": 93,
           "palette": [
             "#1c1c1c",
             "#333e48",
-            "#6d1222",
+            "#363636",
+            "#4f4f4f",
+            "#696969",
             "#828282",
+            "#9c9c9c",
             "#9e1b32",
-            "#cfcfcf",
-            "#e8002a",
-            "#f7f7f7",
-            "#ffccd5"
+            "#f7f7f7"
           ]
         },
         "colorset2": {
           "patternId": "vectorize-breton-song-lark-cs2",
           "file": "svgs/vectorize-breton-song-lark-cs2.svg",
           "report": "reports/vectorize-breton-song-lark-cs2.json",
-          "sha256": "7ca195e69e23bd437cda1efd72c8f3b4732572da5308f8223942618be292cbb5",
+          "sha256": "f63e83a6dc3144cf96df6bb1ca7f1c491bbfd7d25882d7088dddfe598fd1e433",
           "bytes": 219480,
           "pathCount": 93,
           "palette": [
-            "#004d66",
             "#007298",
             "#1c1c1c",
+            "#294d19",
             "#333e48",
-            "#45842a",
-            "#652f6c",
+            "#363636",
+            "#4f4f4f",
+            "#696969",
             "#828282",
-            "#9e1b32",
             "#f7f7f7"
           ]
         }
@@ -181,38 +181,38 @@
           "patternId": "vectorize-caillebotte-paris-street-cs1",
           "file": "svgs/vectorize-caillebotte-paris-street-cs1.svg",
           "report": "reports/vectorize-caillebotte-paris-street-cs1.json",
-          "sha256": "640dda727e9c9f9a5affabd80459fb669345145c481b1c0a66da54562cba6d95",
+          "sha256": "0f6e53b46fa9066305043ae2d74d194fb61ad0d9a3c1fd338928829cf335d94e",
           "bytes": 221583,
           "pathCount": 123,
           "palette": [
             "#1c1c1c",
             "#333e48",
-            "#6d1222",
+            "#4f4f4f",
+            "#696969",
             "#828282",
             "#9e1b32",
+            "#b5b5b5",
             "#cfcfcf",
-            "#f7f7f7",
-            "#ffccd5",
-            "#ffffff"
+            "#f7f7f7"
           ]
         },
         "colorset2": {
           "patternId": "vectorize-caillebotte-paris-street-cs2",
           "file": "svgs/vectorize-caillebotte-paris-street-cs2.svg",
           "report": "reports/vectorize-caillebotte-paris-street-cs2.json",
-          "sha256": "dd696f050caddc7280a0e7d3420d4a7ed027902d8b0edb98c58f72d49bf87130",
+          "sha256": "699533b0fe84335f6eefdeb3a53515b04316f594e46d27ecfa61bd7e361cf856",
           "bytes": 221583,
           "pathCount": 123,
           "palette": [
-            "#004d66",
             "#007298",
             "#1c1c1c",
             "#333e48",
+            "#4f4f4f",
             "#828282",
+            "#b5b5b5",
             "#cfcfcf",
-            "#f1c319",
-            "#f7f7f7",
-            "#ffffff"
+            "#e7e7e7",
+            "#f7f7f7"
           ]
         }
       }
@@ -244,38 +244,38 @@
           "patternId": "vectorize-cassatt-childs-bath-cs1",
           "file": "svgs/vectorize-cassatt-childs-bath-cs1.svg",
           "report": "reports/vectorize-cassatt-childs-bath-cs1.json",
-          "sha256": "cb413d2fcb01fb650d42ecc745deb220d9f66d843dc9bb5717ab15559b64ea70",
+          "sha256": "55ebf31fa5a0a580420fb18edeed89f2340304abcf1f64513839671398100761",
           "bytes": 143350,
           "pathCount": 82,
           "palette": [
-            "#1c1c1c",
             "#333e48",
-            "#6d1222",
+            "#363636",
+            "#4f4f4f",
+            "#696969",
             "#828282",
+            "#9c9c9c",
             "#9e1b32",
-            "#cfcfcf",
-            "#f7f7f7",
-            "#ffccd5",
-            "#ffffff"
+            "#b5b5b5",
+            "#cfcfcf"
           ]
         },
         "colorset2": {
           "patternId": "vectorize-cassatt-childs-bath-cs2",
           "file": "svgs/vectorize-cassatt-childs-bath-cs2.svg",
           "report": "reports/vectorize-cassatt-childs-bath-cs2.json",
-          "sha256": "03e92c9d0fcb5b28887e81edb29c2cab68ad23383472c4c53165c90ebd99f2c5",
+          "sha256": "9525ccaf48b9053929f1737b45f1dbfd62b8bd4f14cde65e9458d7744b5ed52c",
           "bytes": 143350,
           "pathCount": 82,
           "palette": [
-            "#004d66",
             "#007298",
-            "#1c1c1c",
             "#333e48",
-            "#45842a",
+            "#363636",
+            "#4f4f4f",
+            "#696969",
             "#828282",
-            "#cfcfcf",
-            "#f7f7f7",
-            "#ffffff"
+            "#9c9c9c",
+            "#b5b5b5",
+            "#cfcfcf"
           ]
         }
       }
@@ -307,38 +307,38 @@
           "patternId": "vectorize-cezanne-basket-apples-cs1",
           "file": "svgs/vectorize-cezanne-basket-apples-cs1.svg",
           "report": "reports/vectorize-cezanne-basket-apples-cs1.json",
-          "sha256": "39bd482d398382b3060fd8de64246e52c266ecf02856502739449d9577dd811e",
+          "sha256": "27b0ba242f52ac7d34ca9bceb67f91acdab6fcc972ce6e5f441812843e61aa0e",
           "bytes": 251472,
           "pathCount": 161,
           "palette": [
-            "#1c1c1c",
             "#333e48",
-            "#6d1222",
+            "#363636",
+            "#4f4f4f",
+            "#696969",
             "#828282",
+            "#9c9c9c",
             "#9e1b32",
-            "#cfcfcf",
-            "#e8002a",
-            "#f7f7f7",
-            "#ffccd5"
+            "#b5b5b5",
+            "#cfcfcf"
           ]
         },
         "colorset2": {
           "patternId": "vectorize-cezanne-basket-apples-cs2",
           "file": "svgs/vectorize-cezanne-basket-apples-cs2.svg",
           "report": "reports/vectorize-cezanne-basket-apples-cs2.json",
-          "sha256": "1fe41d811ee2a8929222fcc4f15dda1897a0c65a88509d1a7a592cc4ffb45a4e",
+          "sha256": "6570aff9f3a318ec82ca417bdada8a2e0bc45e41430c80dfd169806425c1d63a",
           "bytes": 251472,
           "pathCount": 161,
           "palette": [
-            "#004d66",
             "#007298",
             "#333e48",
-            "#45842a",
+            "#363636",
+            "#4f4f4f",
+            "#696969",
             "#828282",
-            "#9e1b32",
-            "#cfcfcf",
-            "#e77204",
-            "#f7f7f7"
+            "#9c9c9c",
+            "#b5b5b5",
+            "#cfcfcf"
           ]
         }
       }
@@ -370,36 +370,36 @@
           "patternId": "vectorize-courbet-rock-hautepierre-cs1",
           "file": "svgs/vectorize-courbet-rock-hautepierre-cs1.svg",
           "report": "reports/vectorize-courbet-rock-hautepierre-cs1.json",
-          "sha256": "80e890626ef725dfc8bb4c25bfd0343d3ec08bfec20af647455c477fc318b6f3",
+          "sha256": "64d95f33528518a05281965b479be7251e17c1246693ae69bb8b4ebbd7188415",
           "bytes": 69019,
           "pathCount": 22,
           "palette": [
             "#1c1c1c",
             "#333e48",
-            "#6d1222",
+            "#363636",
+            "#4f4f4f",
+            "#696969",
             "#828282",
-            "#9e1b32",
-            "#cfcfcf",
-            "#e8002a",
-            "#ffccd5"
+            "#9c9c9c",
+            "#9e1b32"
           ]
         },
         "colorset2": {
           "patternId": "vectorize-courbet-rock-hautepierre-cs2",
           "file": "svgs/vectorize-courbet-rock-hautepierre-cs2.svg",
           "report": "reports/vectorize-courbet-rock-hautepierre-cs2.json",
-          "sha256": "243e717fa04d683dbdda650cc96fff5b4341318453302cbdca35fbd845e67905",
+          "sha256": "dcc4d22eb40ed03ea27301c5188f0860f16ff803a470bebed25102a5984d8796",
           "bytes": 69019,
           "pathCount": 22,
           "palette": [
-            "#004d66",
             "#007298",
-            "#1c1c1c",
+            "#294d19",
             "#333e48",
-            "#45842a",
-            "#652f6c",
+            "#4f4f4f",
+            "#696969",
             "#828282",
-            "#9e1b32"
+            "#994a00",
+            "#9c9c9c"
           ]
         }
       }
@@ -431,36 +431,36 @@
           "patternId": "vectorize-degas-ballet-opera-cs1",
           "file": "svgs/vectorize-degas-ballet-opera-cs1.svg",
           "report": "reports/vectorize-degas-ballet-opera-cs1.json",
-          "sha256": "a7c6c94d38cbf76102fa534ae727722698849244ac8c32642773d4df4be769dc",
+          "sha256": "5373d75d9e39b33e3583246a7120784e2336ae2956f73801e6c4a046db0a0e60",
           "bytes": 196308,
           "pathCount": 120,
           "palette": [
             "#1c1c1c",
             "#333e48",
+            "#363636",
+            "#4f4f4f",
+            "#696969",
             "#6d1222",
             "#828282",
-            "#9e1b32",
-            "#cfcfcf",
-            "#e8002a",
-            "#ffccd5"
+            "#9e1b32"
           ]
         },
         "colorset2": {
           "patternId": "vectorize-degas-ballet-opera-cs2",
           "file": "svgs/vectorize-degas-ballet-opera-cs2.svg",
           "report": "reports/vectorize-degas-ballet-opera-cs2.json",
-          "sha256": "6328b4b8e35e469d866f2f55525743d4da6991ef99c81e7d4048836f64136012",
+          "sha256": "f08dbaa91346a29a2a2d83aa9025ba304df267bdeb51bd089c57c82c05671560",
           "bytes": 196308,
           "pathCount": 120,
           "palette": [
             "#004d66",
             "#007298",
-            "#1c1c1c",
             "#333e48",
-            "#652f6c",
+            "#363636",
+            "#4f4f4f",
+            "#696969",
             "#828282",
-            "#9e1b32",
-            "#cfcfcf"
+            "#b5b5b5"
           ]
         }
       }
@@ -492,26 +492,26 @@
           "patternId": "vectorize-el-greco-assumption-cs1",
           "file": "svgs/vectorize-el-greco-assumption-cs1.svg",
           "report": "reports/vectorize-el-greco-assumption-cs1.json",
-          "sha256": "b17c09ceaa33f2e5f53aff1edcea68dd348229d93b1315e1b2cd424532edf5a7",
+          "sha256": "e7751dbcbd94a9f6b4214711847f7ad87d6c19ad7b0958bc95dd5bd96591d54d",
           "bytes": 179831,
           "pathCount": 97,
           "palette": [
             "#1c1c1c",
             "#333e48",
-            "#6d1222",
+            "#363636",
+            "#4f4f4f",
+            "#696969",
             "#828282",
+            "#9c9c9c",
             "#9e1b32",
-            "#cfcfcf",
-            "#e8002a",
-            "#f7f7f7",
-            "#ffccd5"
+            "#cfcfcf"
           ]
         },
         "colorset2": {
           "patternId": "vectorize-el-greco-assumption-cs2",
           "file": "svgs/vectorize-el-greco-assumption-cs2.svg",
           "report": "reports/vectorize-el-greco-assumption-cs2.json",
-          "sha256": "7d3b3a12c5704747b2154478c25c2e91fd568cec66eb6f9560583847aa02c87a",
+          "sha256": "9c0523ae925e76fbcd9d41ac5a771166884485e3c3c31f7deaf9dddd29587171",
           "bytes": 179831,
           "pathCount": 97,
           "palette": [
@@ -519,11 +519,11 @@
             "#007298",
             "#1c1c1c",
             "#333e48",
-            "#652f6c",
+            "#696969",
             "#828282",
-            "#9e1b32",
-            "#cfcfcf",
-            "#f7f7f7"
+            "#994a00",
+            "#9c9c9c",
+            "#cfcfcf"
           ]
         }
       }
@@ -555,38 +555,38 @@
           "patternId": "vectorize-gauguin-day-god-cs1",
           "file": "svgs/vectorize-gauguin-day-god-cs1.svg",
           "report": "reports/vectorize-gauguin-day-god-cs1.json",
-          "sha256": "a32f0d39eb216fc9b252b57b11ac16f300e689d5ec00aa998f4bf44a897fa482",
+          "sha256": "645a971ab9484d9aa28db4e69893cbc786c7693fb10b3076e792d3fbd9c9486f",
           "bytes": 229349,
           "pathCount": 171,
           "palette": [
             "#1c1c1c",
             "#333e48",
-            "#6d1222",
+            "#363636",
+            "#4f4f4f",
+            "#696969",
             "#828282",
+            "#9c9c9c",
             "#9e1b32",
-            "#cfcfcf",
-            "#e8002a",
-            "#f7f7f7",
-            "#ffccd5"
+            "#b5b5b5"
           ]
         },
         "colorset2": {
           "patternId": "vectorize-gauguin-day-god-cs2",
           "file": "svgs/vectorize-gauguin-day-god-cs2.svg",
           "report": "reports/vectorize-gauguin-day-god-cs2.json",
-          "sha256": "e8a8f69d7ac3f9bf2ca093dae485f12836afc2dc0512c0ac792e1ee1a6282644",
+          "sha256": "95819c9ea8e3e2d8b2dff673f1496ee74a845d8788dea3f7b2a1c1d296759def",
           "bytes": 229349,
           "pathCount": 171,
           "palette": [
             "#004d66",
             "#007298",
-            "#1c1c1c",
             "#333e48",
-            "#45842a",
+            "#363636",
+            "#4f4f4f",
+            "#696969",
             "#828282",
-            "#9e1b32",
-            "#cfcfcf",
-            "#e77204"
+            "#9c9c9c",
+            "#b5b5b5"
           ]
         }
       }
@@ -618,17 +618,17 @@
           "patternId": "vectorize-hilma-primordial-chaos-16-cs1",
           "file": "svgs/vectorize-hilma-primordial-chaos-16-cs1.svg",
           "report": "reports/vectorize-hilma-primordial-chaos-16-cs1.json",
-          "sha256": "1d8735ebed9ead46917e6436cd3df6650c9dfcc4cccb98670be8c651dad140fe",
+          "sha256": "7f13ab60602be6203614d3b2fc2a0457656df83ed5009b58405091620c6e1317",
           "bytes": 201159,
           "pathCount": 145,
           "palette": [
             "#333e48",
-            "#6d1222",
+            "#696969",
             "#828282",
+            "#9c9c9c",
             "#9e1b32",
+            "#b5b5b5",
             "#cfcfcf",
-            "#f7f7f7",
-            "#ffccd5",
             "#ffffff"
           ]
         },
@@ -636,17 +636,17 @@
           "patternId": "vectorize-hilma-primordial-chaos-16-cs2",
           "file": "svgs/vectorize-hilma-primordial-chaos-16-cs2.svg",
           "report": "reports/vectorize-hilma-primordial-chaos-16-cs2.json",
-          "sha256": "9cfa65bc109a9e0dbf7722cbb449af542027a6dd6a68f00fbd5839bfc5ae6c4c",
+          "sha256": "5d27014eb66e0d5088797474b8d80a7619a44b363e435bf10b5f2e53b63a19fd",
           "bytes": 201159,
           "pathCount": 145,
           "palette": [
-            "#004d66",
             "#007298",
             "#333e48",
+            "#696969",
             "#828282",
+            "#b5b5b5",
             "#cfcfcf",
-            "#f1c319",
-            "#f7f7f7",
+            "#ff9633",
             "#ffffff"
           ]
         }
@@ -679,36 +679,36 @@
           "patternId": "vectorize-hiroshige-sudden-shower-cs1",
           "file": "svgs/vectorize-hiroshige-sudden-shower-cs1.svg",
           "report": "reports/vectorize-hiroshige-sudden-shower-cs1.json",
-          "sha256": "672dd724d8841ffc0e622034c94efa91c81fa27b7adeea972e9319f26c6f271a",
+          "sha256": "e85c2eb821adf30e4ea3c37208d7170bb0d85e16a6a6af19d631bc4f6d62dfeb",
           "bytes": 213485,
           "pathCount": 98,
           "palette": [
-            "#1c1c1c",
             "#333e48",
-            "#6d1222",
+            "#363636",
+            "#4f4f4f",
+            "#696969",
             "#828282",
+            "#9c9c9c",
             "#9e1b32",
-            "#cfcfcf",
-            "#e8002a",
-            "#ffccd5"
+            "#cfcfcf"
           ]
         },
         "colorset2": {
           "patternId": "vectorize-hiroshige-sudden-shower-cs2",
           "file": "svgs/vectorize-hiroshige-sudden-shower-cs2.svg",
           "report": "reports/vectorize-hiroshige-sudden-shower-cs2.json",
-          "sha256": "8d3f321f6d713ae38da96dfb9e8deafd2a145db13607d872b5fb68262fd1b9ce",
+          "sha256": "b900a511e938723d8382e5c44e4f2209196611e20921fd9e1c023ca8fc326c35",
           "bytes": 213485,
           "pathCount": 98,
           "palette": [
-            "#004d66",
             "#007298",
-            "#1c1c1c",
             "#333e48",
-            "#45842a",
+            "#363636",
+            "#4f4f4f",
+            "#696969",
             "#828282",
-            "#cfcfcf",
-            "#f7f7f7"
+            "#9c9c9c",
+            "#cfcfcf"
           ]
         }
       }
@@ -740,36 +740,36 @@
           "patternId": "vectorize-hokusai-great-wave-cs1",
           "file": "svgs/vectorize-hokusai-great-wave-cs1.svg",
           "report": "reports/vectorize-hokusai-great-wave-cs1.json",
-          "sha256": "c600f2cb576b0d61fa73fdb1e23a922210395b6324b92c101565bbb29fd53f1c",
+          "sha256": "d7374f8a2dfdd66d575d1e051b9949be2e438487acb4b16824c12216896d64c5",
           "bytes": 280633,
           "pathCount": 127,
           "palette": [
             "#333e48",
-            "#6d1222",
-            "#828282",
+            "#696969",
+            "#9c9c9c",
             "#9e1b32",
+            "#b5b5b5",
             "#cfcfcf",
-            "#f7f7f7",
-            "#ffccd5",
-            "#ffffff"
+            "#e7e7e7",
+            "#f7f7f7"
           ]
         },
         "colorset2": {
           "patternId": "vectorize-hokusai-great-wave-cs2",
           "file": "svgs/vectorize-hokusai-great-wave-cs2.svg",
           "report": "reports/vectorize-hokusai-great-wave-cs2.json",
-          "sha256": "aef0466476ba4aaa00573d8efa7ec7177bbe809598b0c9e3b64317abf18f97b2",
+          "sha256": "9f5b514269e7fa69577ecd63323b6f8e1bd0f9f3c9697db373b5ebc81d960406",
           "bytes": 280633,
           "pathCount": 127,
           "palette": [
-            "#004d66",
             "#007298",
             "#333e48",
-            "#828282",
+            "#696969",
+            "#9c9c9c",
+            "#b5b5b5",
             "#cfcfcf",
-            "#f1c319",
-            "#f7f7f7",
-            "#ffffff"
+            "#e7e7e7",
+            "#f7f7f7"
           ]
         }
       }
@@ -801,32 +801,32 @@
           "patternId": "vectorize-homer-herring-net-cs1",
           "file": "svgs/vectorize-homer-herring-net-cs1.svg",
           "report": "reports/vectorize-homer-herring-net-cs1.json",
-          "sha256": "451c43771e6b6ef782812626ffc56fdc341c6340982b31946c9c58734926b61e",
+          "sha256": "c04f094d4d6632c4018592b5ffc2ffdc36d55f9e6718025ee21f4ce025a84434",
           "bytes": 83797,
           "pathCount": 37,
           "palette": [
             "#1c1c1c",
             "#333e48",
-            "#6d1222",
+            "#363636",
+            "#4f4f4f",
             "#828282",
-            "#9e1b32",
-            "#cfcfcf"
+            "#9e1b32"
           ]
         },
         "colorset2": {
           "patternId": "vectorize-homer-herring-net-cs2",
           "file": "svgs/vectorize-homer-herring-net-cs2.svg",
           "report": "reports/vectorize-homer-herring-net-cs2.json",
-          "sha256": "a5b31818935d9bca6f8ed923f4d2fa319ec845f60f3e3501cf3d0e9e09f0c633",
+          "sha256": "07b6a978f703ff2bd391dd6e0f4b7d21b84e5445340fe73057bec0c37b002664",
           "bytes": 83797,
           "pathCount": 37,
           "palette": [
-            "#004d66",
             "#007298",
             "#1c1c1c",
+            "#294d19",
             "#333e48",
-            "#828282",
-            "#9e1b32"
+            "#6d1222",
+            "#828282"
           ]
         }
       }
@@ -858,18 +858,18 @@
           "patternId": "vectorize-juan-gris-still-life-1919-cs1",
           "file": "svgs/vectorize-juan-gris-still-life-1919-cs1.svg",
           "report": "reports/vectorize-juan-gris-still-life-1919-cs1.json",
-          "sha256": "665ccccdacd7873e909856b2acfde3404af8ef10a02d1c037b5dcb041c2b9fcc",
+          "sha256": "1a0496a06631efff305ae3caebe572f41b1cc34a74bd3f7f002c7c70febb7faa",
           "bytes": 135539,
           "pathCount": 86,
           "palette": [
             "#1c1c1c",
-            "#333e48",
-            "#6d1222",
+            "#363636",
+            "#4f4f4f",
+            "#696969",
             "#828282",
             "#9e1b32",
-            "#cfcfcf",
+            "#e7e7e7",
             "#f7f7f7",
-            "#ffccd5",
             "#ffffff"
           ]
         },
@@ -877,16 +877,16 @@
           "patternId": "vectorize-juan-gris-still-life-1919-cs2",
           "file": "svgs/vectorize-juan-gris-still-life-1919-cs2.svg",
           "report": "reports/vectorize-juan-gris-still-life-1919-cs2.json",
-          "sha256": "d9ae47bf0a3490c1848558602c983dc2eff99727c5d298eac8481a76a6843768",
+          "sha256": "d9d37e9a95db568d231cf229a605a67cdf7b9a4f15f82388be282ec5ba057f1b",
           "bytes": 135539,
           "pathCount": 86,
           "palette": [
             "#004d66",
             "#007298",
             "#1c1c1c",
-            "#333e48",
-            "#828282",
-            "#cfcfcf",
+            "#363636",
+            "#696969",
+            "#e7e7e7",
             "#f1c319",
             "#f7f7f7",
             "#ffffff"
@@ -921,36 +921,36 @@
           "patternId": "vectorize-kandinsky-improvisation-27-cs1",
           "file": "svgs/vectorize-kandinsky-improvisation-27-cs1.svg",
           "report": "reports/vectorize-kandinsky-improvisation-27-cs1.json",
-          "sha256": "9bb18b8d5eb6d0188d85531222e2d973e5bf10ee411f432f165350369de3f97a",
+          "sha256": "5d52041b4535cc6e24c589e2a7397b03b1153632a30f06e8f5fa4a89ffd618a4",
           "bytes": 243379,
           "pathCount": 131,
           "palette": [
-            "#1c1c1c",
+            "#000000",
             "#333e48",
-            "#6d1222",
+            "#4f4f4f",
             "#828282",
+            "#9c9c9c",
             "#9e1b32",
-            "#cfcfcf",
+            "#e7e7e7",
             "#e8002a",
-            "#f7f7f7",
-            "#ffffff"
+            "#f7f7f7"
           ]
         },
         "colorset2": {
           "patternId": "vectorize-kandinsky-improvisation-27-cs2",
           "file": "svgs/vectorize-kandinsky-improvisation-27-cs2.svg",
           "report": "reports/vectorize-kandinsky-improvisation-27-cs2.json",
-          "sha256": "24b16e40d1b7c1d4f309c5b0fdeb91669700cfbe050d9a236c4a6e6965207a70",
+          "sha256": "bf45b8578efbb60ca73a4344531f31901d0d44d22907f7c61c8002f03963611c",
           "bytes": 243379,
           "pathCount": 131,
           "palette": [
+            "#000000",
             "#004d66",
             "#007298",
-            "#1c1c1c",
-            "#333e48",
+            "#4f4f4f",
             "#828282",
-            "#9e1b32",
-            "#cfcfcf",
+            "#9c9c9c",
+            "#e8002a",
             "#f1c319",
             "#f7f7f7"
           ]
@@ -984,37 +984,37 @@
           "patternId": "vectorize-manet-jesus-mocked-cs1",
           "file": "svgs/vectorize-manet-jesus-mocked-cs1.svg",
           "report": "reports/vectorize-manet-jesus-mocked-cs1.json",
-          "sha256": "f132601973d4fdcd9ca604213c23985e5fce87188a47d7eeca6af4efe970e622",
+          "sha256": "8b4d9173a6506a6a2f594324dc278cc63a99ed02081d3690cefd9320bc203998",
           "bytes": 223399,
           "pathCount": 128,
           "palette": [
             "#1c1c1c",
+            "#333e48",
+            "#363636",
+            "#4f4f4f",
+            "#696969",
             "#6d1222",
-            "#828282",
             "#9e1b32",
-            "#cfcfcf",
-            "#e8002a",
-            "#f7f7f7",
-            "#ffccd5"
+            "#b5b5b5"
           ]
         },
         "colorset2": {
           "patternId": "vectorize-manet-jesus-mocked-cs2",
           "file": "svgs/vectorize-manet-jesus-mocked-cs2.svg",
           "report": "reports/vectorize-manet-jesus-mocked-cs2.json",
-          "sha256": "96c69547af7101153362081d2c0c19baffd49133b2d0d8d124be7c7017c8c283",
+          "sha256": "0a9b9243cfa124fc01398a730bd616f696e7b2684e4f21cc193306948b11e390",
           "bytes": 223399,
           "pathCount": 128,
           "palette": [
-            "#004d66",
+            "#000000",
             "#007298",
             "#1c1c1c",
             "#333e48",
-            "#45842a",
-            "#652f6c",
+            "#363636",
+            "#431f47",
+            "#4f4f4f",
             "#828282",
-            "#9e1b32",
-            "#cfcfcf"
+            "#b5b5b5"
           ]
         }
       }
@@ -1046,35 +1046,35 @@
           "patternId": "vectorize-monet-normandy-train-cs1",
           "file": "svgs/vectorize-monet-normandy-train-cs1.svg",
           "report": "reports/vectorize-monet-normandy-train-cs1.json",
-          "sha256": "078530861ad334fcae91aa3b8abd65b6d913dd85e6700fc67502528127b5af2a",
+          "sha256": "ba2815af4b45d899f7f227d8755b88a19c2e414d9916a34e5133b6956378faeb",
           "bytes": 101202,
           "pathCount": 37,
           "palette": [
-            "#1c1c1c",
             "#333e48",
-            "#6d1222",
+            "#363636",
+            "#4f4f4f",
+            "#696969",
             "#828282",
+            "#9c9c9c",
             "#9e1b32",
-            "#cfcfcf",
-            "#e8002a",
-            "#ffccd5"
+            "#cfcfcf"
           ]
         },
         "colorset2": {
           "patternId": "vectorize-monet-normandy-train-cs2",
           "file": "svgs/vectorize-monet-normandy-train-cs2.svg",
           "report": "reports/vectorize-monet-normandy-train-cs2.json",
-          "sha256": "563ee99bfd072578d30253fe19e55500cea279d43ded172cf8457c2b9c5c26a1",
+          "sha256": "6019dd688209a74559ed0dba7cd903704f6fefb47ba267530067145833990358",
           "bytes": 101202,
           "pathCount": 37,
           "palette": [
             "#004d66",
             "#007298",
-            "#1c1c1c",
             "#333e48",
-            "#45842a",
-            "#652f6c",
+            "#363636",
+            "#4f4f4f",
             "#828282",
+            "#9c9c9c",
             "#cfcfcf"
           ]
         }
@@ -1107,23 +1107,23 @@
           "patternId": "vectorize-monet-water-lilies-cs1",
           "file": "svgs/vectorize-monet-water-lilies-cs1.svg",
           "report": "reports/vectorize-monet-water-lilies-cs1.json",
-          "sha256": "6d5b91e5ccd7c011cc62468eab2dff79157927aed12426d729e56f4f921c7a38",
+          "sha256": "afed4935d5b4c59e878770397cf78ef9db51013ef44d940ad1e01b4da7bfd1d8",
           "bytes": 111958,
           "pathCount": 38,
           "palette": [
-            "#1c1c1c",
             "#333e48",
-            "#6d1222",
+            "#363636",
+            "#4f4f4f",
+            "#696969",
             "#828282",
-            "#9e1b32",
-            "#e8002a"
+            "#9e1b32"
           ]
         },
         "colorset2": {
           "patternId": "vectorize-monet-water-lilies-cs2",
           "file": "svgs/vectorize-monet-water-lilies-cs2.svg",
           "report": "reports/vectorize-monet-water-lilies-cs2.json",
-          "sha256": "427af879f228eec0d5bfb148b976cd98f3032291f408fd64b93d15c5b4311b24",
+          "sha256": "f036be1e0a27fc2f5320873270cc42ef7f4ef3853a5f59cd0afc5845ce674893",
           "bytes": 111958,
           "pathCount": 38,
           "palette": [
@@ -1131,7 +1131,7 @@
             "#007298",
             "#333e48",
             "#45842a",
-            "#652f6c",
+            "#696969",
             "#828282"
           ]
         }
@@ -1164,16 +1164,16 @@
           "patternId": "vectorize-morisot-woman-toilette-cs1",
           "file": "svgs/vectorize-morisot-woman-toilette-cs1.svg",
           "report": "reports/vectorize-morisot-woman-toilette-cs1.json",
-          "sha256": "f3d470a19e384f2cc4bce7708f7647edabf89a4e3fd251a9f021fc9f3e7cb0e3",
+          "sha256": "06a1986f72f22f0f591751f01b9e004502ce5322f8b49a509e5a0edab9d8c6a2",
           "bytes": 67805,
           "pathCount": 34,
           "palette": [
             "#1c1c1c",
-            "#333e48",
+            "#696969",
             "#828282",
+            "#9c9c9c",
             "#9e1b32",
-            "#cfcfcf",
-            "#e8002a",
+            "#b5b5b5",
             "#f7f7f7"
           ]
         },
@@ -1181,16 +1181,16 @@
           "patternId": "vectorize-morisot-woman-toilette-cs2",
           "file": "svgs/vectorize-morisot-woman-toilette-cs2.svg",
           "report": "reports/vectorize-morisot-woman-toilette-cs2.json",
-          "sha256": "f5e36d84f156d5210673ae2300b2cfe8e41e209fa1e65f21b2f2199b525a18a6",
+          "sha256": "3374499589de95334705635a30c9cf5d95a6ef00fcf8882a86de8c99c7f49508",
           "bytes": 67805,
           "pathCount": 34,
           "palette": [
             "#007298",
             "#1c1c1c",
-            "#333e48",
-            "#45842a",
+            "#4f4f4f",
+            "#696969",
             "#828282",
-            "#cfcfcf",
+            "#b5b5b5",
             "#f7f7f7"
           ]
         }
@@ -1223,36 +1223,36 @@
           "patternId": "vectorize-pissarro-place-du-havre-cs1",
           "file": "svgs/vectorize-pissarro-place-du-havre-cs1.svg",
           "report": "reports/vectorize-pissarro-place-du-havre-cs1.json",
-          "sha256": "167c6810abba235a02f9cdefb2b9d1367054fb03b865f43b3887d87a45c890e1",
+          "sha256": "ee7b40e23e269e43fb36618cdc3c1a8c26ec9d023d86fdfb2a55dae2f86892bb",
           "bytes": 241842,
           "pathCount": 94,
           "palette": [
-            "#1c1c1c",
             "#333e48",
-            "#6d1222",
+            "#363636",
+            "#4f4f4f",
+            "#696969",
             "#828282",
             "#9e1b32",
-            "#cfcfcf",
-            "#e8002a",
-            "#ffccd5"
+            "#b5b5b5",
+            "#cfcfcf"
           ]
         },
         "colorset2": {
           "patternId": "vectorize-pissarro-place-du-havre-cs2",
           "file": "svgs/vectorize-pissarro-place-du-havre-cs2.svg",
           "report": "reports/vectorize-pissarro-place-du-havre-cs2.json",
-          "sha256": "d8ff6adc85590243d6a4812a7ea8e0134602da0abb5cd01991fb57f009db76a2",
+          "sha256": "3fbd42442427ad8b8906385ebecfb3930b2ec659e368359ce7657704fc8d7078",
           "bytes": 241842,
           "pathCount": 94,
           "palette": [
             "#004d66",
             "#007298",
-            "#1c1c1c",
             "#333e48",
-            "#652f6c",
+            "#363636",
+            "#4f4f4f",
+            "#696969",
             "#828282",
-            "#cfcfcf",
-            "#e77204"
+            "#cfcfcf"
           ]
         }
       }
@@ -1284,36 +1284,36 @@
           "patternId": "vectorize-redon-flower-clouds-cs1",
           "file": "svgs/vectorize-redon-flower-clouds-cs1.svg",
           "report": "reports/vectorize-redon-flower-clouds-cs1.json",
-          "sha256": "742f689a5b3dd8f3088ffb57790509dd1971260a81f930c2ba8b6a0e47259266",
+          "sha256": "c8eade473eb5fce570522e043a09e32b6ed70bc65281b8025605bedf70df620e",
           "bytes": 71395,
           "pathCount": 35,
           "palette": [
             "#1c1c1c",
             "#333e48",
-            "#6d1222",
+            "#363636",
+            "#4f4f4f",
+            "#696969",
             "#828282",
-            "#9e1b32",
-            "#cfcfcf",
-            "#e8002a",
-            "#ffccd5"
+            "#9c9c9c",
+            "#9e1b32"
           ]
         },
         "colorset2": {
           "patternId": "vectorize-redon-flower-clouds-cs2",
           "file": "svgs/vectorize-redon-flower-clouds-cs2.svg",
           "report": "reports/vectorize-redon-flower-clouds-cs2.json",
-          "sha256": "83117deacee4d076a9cdfda9e2915fe835961fe0f669881fc8a668dc56b604e1",
+          "sha256": "b6a4e76b5a0524f5eb53c2632007e9e26c9ff980de3fb4e74f0b7da33203826f",
           "bytes": 71395,
           "pathCount": 35,
           "palette": [
             "#004d66",
             "#007298",
-            "#1c1c1c",
             "#333e48",
+            "#363636",
+            "#4f4f4f",
             "#652f6c",
-            "#828282",
-            "#9e1b32",
-            "#cfcfcf"
+            "#994a00",
+            "#9c9c9c"
           ]
         }
       }
@@ -1345,14 +1345,14 @@
           "patternId": "vectorize-rembrandt-old-man-gold-chain-cs1",
           "file": "svgs/vectorize-rembrandt-old-man-gold-chain-cs1.svg",
           "report": "reports/vectorize-rembrandt-old-man-gold-chain-cs1.json",
-          "sha256": "58c60b074084af34359cbed09b1ffcff88f7ee9fc5c886d54da810919539052a",
+          "sha256": "38cd8acf3260075708f80303628bf589cbadf2153311f717ab3bfd6a1ad00878",
           "bytes": 38871,
           "pathCount": 13,
           "palette": [
-            "#1c1c1c",
+            "#000000",
             "#333e48",
-            "#6d1222",
-            "#828282",
+            "#4f4f4f",
+            "#696969",
             "#9e1b32"
           ]
         },
@@ -1360,15 +1360,15 @@
           "patternId": "vectorize-rembrandt-old-man-gold-chain-cs2",
           "file": "svgs/vectorize-rembrandt-old-man-gold-chain-cs2.svg",
           "report": "reports/vectorize-rembrandt-old-man-gold-chain-cs2.json",
-          "sha256": "be501f6612b002260e5eee085178049281b3f577856291ba2537a4515c0a06b6",
+          "sha256": "357d657110d7d12bc3497a84d10e2e92d91c78f7a07ed0bfa7e4ec311f88ce60",
           "bytes": 38871,
           "pathCount": 13,
           "palette": [
-            "#004d66",
             "#007298",
             "#333e48",
-            "#828282",
-            "#9e1b32"
+            "#4f4f4f",
+            "#98700c",
+            "#994a00"
           ]
         }
       }
@@ -1400,38 +1400,38 @@
           "patternId": "vectorize-renoir-two-sisters-cs1",
           "file": "svgs/vectorize-renoir-two-sisters-cs1.svg",
           "report": "reports/vectorize-renoir-two-sisters-cs1.json",
-          "sha256": "df2012414c029859f4cca5e765074daa3c4041696fa8188ec71c0dc6a14a0202",
+          "sha256": "3689f537b98e391d5b10e39b2948eb04020535d6ab09d36a62d85a049ea86e73",
           "bytes": 222429,
           "pathCount": 81,
           "palette": [
-            "#1c1c1c",
             "#333e48",
+            "#363636",
+            "#4f4f4f",
+            "#696969",
             "#6d1222",
             "#828282",
+            "#9c9c9c",
             "#9e1b32",
-            "#cfcfcf",
-            "#e8002a",
-            "#f7f7f7",
-            "#ffccd5"
+            "#cfcfcf"
           ]
         },
         "colorset2": {
           "patternId": "vectorize-renoir-two-sisters-cs2",
           "file": "svgs/vectorize-renoir-two-sisters-cs2.svg",
           "report": "reports/vectorize-renoir-two-sisters-cs2.json",
-          "sha256": "b914bbd0580609e25e990aedf175cc73c5463273018093a9d6838007ebc28d07",
+          "sha256": "105df088f7ded4e21fcb6d45af0fa7cf7864f019095bc477098c7d79b75ff905",
           "bytes": 222429,
           "pathCount": 81,
           "palette": [
             "#004d66",
             "#007298",
-            "#1c1c1c",
             "#333e48",
+            "#363636",
             "#45842a",
             "#828282",
+            "#98700c",
             "#9e1b32",
-            "#cfcfcf",
-            "#e77204"
+            "#cfcfcf"
           ]
         }
       }
@@ -1463,38 +1463,38 @@
           "patternId": "vectorize-seurat-grande-jatte-cs1",
           "file": "svgs/vectorize-seurat-grande-jatte-cs1.svg",
           "report": "reports/vectorize-seurat-grande-jatte-cs1.json",
-          "sha256": "e9c4f555321a40c6dc55c4dd233674705af546731774ce260ea86c3ece895f94",
+          "sha256": "f808521aa288b90de7144cdcf1047913e4e9fd4479b635344abd678c0d999c04",
           "bytes": 187071,
           "pathCount": 82,
           "palette": [
-            "#1c1c1c",
             "#333e48",
+            "#363636",
+            "#4f4f4f",
+            "#696969",
             "#6d1222",
             "#828282",
+            "#9c9c9c",
             "#9e1b32",
-            "#cfcfcf",
-            "#e8002a",
-            "#f7f7f7",
-            "#ffccd5"
+            "#b5b5b5"
           ]
         },
         "colorset2": {
           "patternId": "vectorize-seurat-grande-jatte-cs2",
           "file": "svgs/vectorize-seurat-grande-jatte-cs2.svg",
           "report": "reports/vectorize-seurat-grande-jatte-cs2.json",
-          "sha256": "d5ac1eee9576209797aef333987b0a757093051239d40568d01d81c55d18e202",
+          "sha256": "b6907870849b74a86f7482f756c71322be6c459e2f4616235a122de2c7183242",
           "bytes": 187071,
           "pathCount": 82,
           "palette": [
             "#004d66",
             "#007298",
-            "#1c1c1c",
+            "#294d19",
             "#333e48",
-            "#45842a",
-            "#652f6c",
+            "#363636",
+            "#4f4f4f",
+            "#696969",
             "#828282",
-            "#9e1b32",
-            "#cfcfcf"
+            "#9c9c9c"
           ]
         }
       }
@@ -1526,36 +1526,36 @@
           "patternId": "vectorize-tanner-two-disciples-cs1",
           "file": "svgs/vectorize-tanner-two-disciples-cs1.svg",
           "report": "reports/vectorize-tanner-two-disciples-cs1.json",
-          "sha256": "45a8c6488b73d7ec8ac3cc31e8b807ff2c09b4bc0e89f1c169084183add7bc36",
+          "sha256": "89049d1ab3f13afd7f9204186be2047b705880d6b6ca69b6bd64103e6420d49b",
           "bytes": 46665,
           "pathCount": 17,
           "palette": [
             "#1c1c1c",
-            "#333e48",
+            "#4f4f4f",
+            "#696969",
             "#6d1222",
             "#828282",
             "#9e1b32",
-            "#cfcfcf",
-            "#e8002a",
-            "#ffccd5"
+            "#b5b5b5",
+            "#e8002a"
           ]
         },
         "colorset2": {
           "patternId": "vectorize-tanner-two-disciples-cs2",
           "file": "svgs/vectorize-tanner-two-disciples-cs2.svg",
           "report": "reports/vectorize-tanner-two-disciples-cs2.json",
-          "sha256": "d8908e0f0d952328bab0ecd510dfde1433802f4fe7a51641daf210e620257621",
+          "sha256": "3b3c816aa7251ceeaf692ee886fef11e993126d973b8ce7525e7e68b3b15e1b1",
           "bytes": 46665,
           "pathCount": 17,
           "palette": [
             "#007298",
             "#1c1c1c",
-            "#333e48",
+            "#4f4f4f",
             "#828282",
-            "#9e1b32",
-            "#cfcfcf",
-            "#e77204",
-            "#f1c319"
+            "#98700c",
+            "#994a00",
+            "#f1c319",
+            "#ff9633"
           ]
         }
       }
@@ -1587,38 +1587,38 @@
           "patternId": "vectorize-toulouse-lautrec-moulin-rouge-cs1",
           "file": "svgs/vectorize-toulouse-lautrec-moulin-rouge-cs1.svg",
           "report": "reports/vectorize-toulouse-lautrec-moulin-rouge-cs1.json",
-          "sha256": "6dbf04b208ce2d75c3981f6032765b0bc17c5c9c8d314379e09e3ba5436ce1a5",
+          "sha256": "4724e81bc286b91e36ebc18fe007a150f84a5b5c8ca05908adb7c92374a5102c",
           "bytes": 207238,
           "pathCount": 103,
           "palette": [
+            "#000000",
             "#1c1c1c",
             "#333e48",
+            "#363636",
+            "#4f4f4f",
+            "#696969",
             "#6d1222",
             "#828282",
-            "#9e1b32",
-            "#cfcfcf",
-            "#e8002a",
-            "#f7f7f7",
-            "#ffccd5"
+            "#9e1b32"
           ]
         },
         "colorset2": {
           "patternId": "vectorize-toulouse-lautrec-moulin-rouge-cs2",
           "file": "svgs/vectorize-toulouse-lautrec-moulin-rouge-cs2.svg",
           "report": "reports/vectorize-toulouse-lautrec-moulin-rouge-cs2.json",
-          "sha256": "e54166f38e2584b25a5eb9c8e6a2c507893e488ad27456f4349d83114c671671",
+          "sha256": "f3f34f9dfd252220e9e56fb04a2f5759c412ecca65d4e374bd4916ed5c68370e",
           "bytes": 207238,
           "pathCount": 103,
           "palette": [
-            "#004d66",
+            "#000000",
             "#007298",
             "#1c1c1c",
             "#333e48",
-            "#45842a",
-            "#652f6c",
-            "#828282",
-            "#9e1b32",
-            "#e77204"
+            "#363636",
+            "#4f4f4f",
+            "#696969",
+            "#6d1222",
+            "#994a00"
           ]
         }
       }
@@ -1650,36 +1650,36 @@
           "patternId": "vectorize-turner-aosta-snowstorm-cs1",
           "file": "svgs/vectorize-turner-aosta-snowstorm-cs1.svg",
           "report": "reports/vectorize-turner-aosta-snowstorm-cs1.json",
-          "sha256": "e86f0366aeabde9b9b6956704598b7378aaa3b2c37f96cf05933847ddee880b8",
+          "sha256": "bf1d565f216cee10035a43598bba6e2bf467437201912229ca9832dca36dfc96",
           "bytes": 50343,
           "pathCount": 20,
           "palette": [
-            "#1c1c1c",
             "#333e48",
+            "#363636",
+            "#696969",
             "#828282",
+            "#9c9c9c",
             "#9e1b32",
-            "#cfcfcf",
-            "#e8002a",
-            "#f7f7f7",
-            "#ffccd5"
+            "#b5b5b5",
+            "#cfcfcf"
           ]
         },
         "colorset2": {
           "patternId": "vectorize-turner-aosta-snowstorm-cs2",
           "file": "svgs/vectorize-turner-aosta-snowstorm-cs2.svg",
           "report": "reports/vectorize-turner-aosta-snowstorm-cs2.json",
-          "sha256": "9d605089106d53d0f1dd06d76fe259a3e544d5e3140e1abcb1089e1efd04678f",
+          "sha256": "1bc614c9c9f0a648227962794ad74320b2adae87d69b3bca7740109abd7772cb",
           "bytes": 50343,
           "pathCount": 20,
           "palette": [
             "#007298",
-            "#1c1c1c",
             "#333e48",
-            "#45842a",
+            "#363636",
             "#828282",
-            "#9e1b32",
-            "#cfcfcf",
-            "#e77204"
+            "#98700c",
+            "#994a00",
+            "#9c9c9c",
+            "#cfcfcf"
           ]
         }
       }
@@ -1711,38 +1711,38 @@
           "patternId": "vectorize-van-gogh-bedroom-cs1",
           "file": "svgs/vectorize-van-gogh-bedroom-cs1.svg",
           "report": "reports/vectorize-van-gogh-bedroom-cs1.json",
-          "sha256": "3479712de142a13bcc7499ecdf35ce63f9af62932e0cbdb304512cf3eb5f5b15",
+          "sha256": "c9f3f2273b4e1b3b5a97a7c46b54b99e9c3ad48496adf5ff98513a9a869d4c31",
           "bytes": 263045,
           "pathCount": 171,
           "palette": [
-            "#1c1c1c",
             "#333e48",
-            "#6d1222",
+            "#363636",
+            "#4f4f4f",
+            "#696969",
             "#828282",
+            "#9c9c9c",
             "#9e1b32",
-            "#cfcfcf",
-            "#e8002a",
-            "#f7f7f7",
-            "#ffccd5"
+            "#b5b5b5",
+            "#e8002a"
           ]
         },
         "colorset2": {
           "patternId": "vectorize-van-gogh-bedroom-cs2",
           "file": "svgs/vectorize-van-gogh-bedroom-cs2.svg",
           "report": "reports/vectorize-van-gogh-bedroom-cs2.json",
-          "sha256": "2982dcca3c0b801bcee86e814f062c2450fe118706bc68f1911faa37dd1bb580",
+          "sha256": "36b46528d44446ff2954561a3161c1c2a36d7a2a8e9d2453fdf159298501b875",
           "bytes": 263045,
           "pathCount": 171,
           "palette": [
-            "#004d66",
             "#007298",
             "#333e48",
-            "#45842a",
-            "#652f6c",
+            "#4f4f4f",
+            "#696969",
             "#828282",
-            "#9e1b32",
-            "#cfcfcf",
-            "#e77204"
+            "#98700c",
+            "#994a00",
+            "#9c9c9c",
+            "#b5b5b5"
           ]
         }
       }
@@ -1774,38 +1774,38 @@
           "patternId": "vectorize-van-gogh-self-portrait-cs1",
           "file": "svgs/vectorize-van-gogh-self-portrait-cs1.svg",
           "report": "reports/vectorize-van-gogh-self-portrait-cs1.json",
-          "sha256": "1ad34f9410e6bfa849d160a5e35474aff1ca05c293c312a3b5e276e287cbca44",
+          "sha256": "2ca27ac0b4eb66dc14c6c21b888a90ee8b055c134aa673e4d64c92fb3a19fa61",
           "bytes": 199716,
           "pathCount": 51,
           "palette": [
             "#1c1c1c",
             "#333e48",
+            "#4f4f4f",
+            "#696969",
             "#6d1222",
             "#828282",
+            "#9c9c9c",
             "#9e1b32",
-            "#cfcfcf",
-            "#e8002a",
-            "#f7f7f7",
-            "#ffccd5"
+            "#b5b5b5"
           ]
         },
         "colorset2": {
           "patternId": "vectorize-van-gogh-self-portrait-cs2",
           "file": "svgs/vectorize-van-gogh-self-portrait-cs2.svg",
           "report": "reports/vectorize-van-gogh-self-portrait-cs2.json",
-          "sha256": "66432aac955a28503fb75c6c6377dc3f3b1ef9df4c719f00291a275056274736",
+          "sha256": "5200929ca1d0c20681e14083c351b642ba74066727b894347be25b83bcda1f81",
           "bytes": 199716,
           "pathCount": 51,
           "palette": [
-            "#004d66",
             "#007298",
             "#1c1c1c",
-            "#333e48",
-            "#45842a",
+            "#4f4f4f",
+            "#696969",
+            "#6d1222",
             "#828282",
-            "#9e1b32",
-            "#cfcfcf",
-            "#f7f7f7"
+            "#994a00",
+            "#9c9c9c",
+            "#b5b5b5"
           ]
         }
       }
@@ -1837,33 +1837,33 @@
           "patternId": "vectorize-whistler-nocturne-blue-gold-cs1",
           "file": "svgs/vectorize-whistler-nocturne-blue-gold-cs1.svg",
           "report": "reports/vectorize-whistler-nocturne-blue-gold-cs1.json",
-          "sha256": "1617b3e486a3f0b331643a9d0985de39fd1cd1734d1f94e227e4aeecccc6c454",
+          "sha256": "004ca60f38c36a3ede9eba59d530c558872b4e307e75bdf50752bcc9d3c6e9f7",
           "bytes": 24102,
           "pathCount": 13,
           "palette": [
-            "#1c1c1c",
             "#333e48",
-            "#6d1222",
+            "#363636",
+            "#4f4f4f",
+            "#696969",
             "#828282",
-            "#9e1b32",
-            "#cfcfcf",
-            "#ffccd5"
+            "#9c9c9c",
+            "#9e1b32"
           ]
         },
         "colorset2": {
           "patternId": "vectorize-whistler-nocturne-blue-gold-cs2",
           "file": "svgs/vectorize-whistler-nocturne-blue-gold-cs2.svg",
           "report": "reports/vectorize-whistler-nocturne-blue-gold-cs2.json",
-          "sha256": "165074fbeb8e9ac7b96d2ea5ddfece21941362b01bdad01dfc3aff733949525a",
+          "sha256": "aa0f5b8b1d0f798528efe41efa623560f2f8d07b007841b534d11f84ad4ac427",
           "bytes": 24102,
           "pathCount": 13,
           "palette": [
-            "#004d66",
             "#007298",
             "#333e48",
-            "#45842a",
+            "#4f4f4f",
+            "#696969",
             "#828282",
-            "#9e1b32"
+            "#9c9c9c"
           ]
         }
       }

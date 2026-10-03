@@ -94,8 +94,8 @@ erase the part of the connection that identifies a nested target.
 ## Color application and legibility
 
 Apply the palette to the whole semantic object coherently. A correctly colored
-border does not excuse an unrelated saturated fill. Use neutral surfaces or a
-tint/shade of the same concept, with a clearly visible exact-color accent. Keep
+border does not excuse an unrelated saturated fill. Use the exact opaque category fill without a decorative outline. Choose pure
+black or white for its inside labels by the higher actual fill contrast. Keep
 text readable against its actual surface, not just against the white page.
 The solid-surface check uses 4.5:1 for normal text and 3:1 for large text, following
 [W3C's contrast guidance](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html).

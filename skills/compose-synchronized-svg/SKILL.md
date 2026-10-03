@@ -6,6 +6,7 @@ description: "Designs, builds, synchronizes, and validates giant standalone SVG 
 # Compose Synchronized SVG
 
 Read [palette-policy.md](references/palette-policy.md) before authoring or composing visuals. Apply one exact colorset to authored content and report preserved source media separately.
+Read [solid-surfaces.md](references/solid-surfaces.md) for solid-first category fills, black/white text on the actual fill, and palette exhaustion before border variants.
 
 Build one explanatory SVG whose recurring values come from one canonical state. Give each module a distinct viewer question. Semantic propagation is required; animation is optional.
 

@@ -76,7 +76,7 @@ function renderMoeRouterCapacity() {
       .attr("height", cell)
       .attr("rx", 3)
       .attr("fill", d => d.color)
-      .attr("fill-opacity", d => .16 + d.value * .78)
+      .attr("data-opacity-role", "semantic").attr("fill-opacity", d => .16 + d.value * .78)
       .attr("stroke", palette.surface)
       .attr("stroke-width", 1)
       .append("animate")
@@ -116,7 +116,7 @@ function renderMoeRouterCapacity() {
     const tokenGroups = svg.append("g").selectAll("g.moe-token").data(tokens).join("g")
       .attr("class", "moe-token")
       .attr("transform", d => `translate(${tokenX},${d.y - 16})`);
-    tokenGroups.append("rect").attr("width", 68).attr("height", 32).attr("rx", 8).attr("fill", d => d.color).attr("fill-opacity", .82).attr("stroke", palette.surface).attr("stroke-width", 1.5);
+    tokenGroups.append("rect").attr("width", 68).attr("height", 32).attr("rx", 8).attr("fill", d => d.color).attr("fill-opacity", 1).attr("stroke", palette.surface).attr("stroke-width", 1.5);
     tokenGroups.append("text").attr("class", "reverse-label").attr("x", 34).attr("y", 21).attr("text-anchor", "middle").attr("font-weight", 800).text(d => d.label);
     fadeIn(tokenGroups, .08, .35);
 
@@ -147,7 +147,7 @@ function renderMoeRouterCapacity() {
       });
       if (expert.id === "E1") {
         group.append("text").attr("class", "mark-label").attr("x", 112).attr("y", 18).attr("text-anchor", "middle").style("font-size", "10px").attr("fill", palette.red).text("spill");
-        group.append("rect").attr("x", 101).attr("y", 24).attr("width", 22).attr("height", 16).attr("rx", 4).attr("fill", palette.red).attr("fill-opacity", .76);
+        group.append("rect").attr("x", 101).attr("y", 24).attr("width", 22).attr("height", 16).attr("rx", 4).attr("fill", palette.red).attr("fill-opacity", 1);
         group.append("text").attr("class", "reverse-label").attr("x", 112).attr("y", 36).attr("text-anchor", "middle").style("font-size", "8px").text("T4");
       }
     });

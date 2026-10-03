@@ -49,7 +49,7 @@ function renderNucleusSampling() {
       .attr("height", strip.h)
       .attr("rx", 6)
       .attr("fill", d => d.included ? d.color : palette.gray300)
-      .attr("fill-opacity", d => d.included ? .86 : .34)
+      .attr("data-opacity-role", "semantic").attr("fill-opacity", d => d.included ? .86 : .34)
       .attr("stroke", palette.surface)
       .attr("stroke-width", 1.5);
     fadeIn(rects, .12, .45);

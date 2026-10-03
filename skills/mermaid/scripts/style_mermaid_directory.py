@@ -15,6 +15,8 @@ from dataclasses import dataclass
 from decimal import Decimal, InvalidOperation
 from pathlib import Path
 from typing import Iterable
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from palette_paints import solid_colors, solid_style
 
 
 SCRIPT_DIR = Path(__file__).resolve().parent
@@ -518,43 +520,13 @@ def contrast_ratio(first: str, second: str) -> float:
 
 
 def readable_text_color(fill: str, palette: dict[str, str]) -> str:
-    candidates = (palette["surface"], palette["ink"], palette["gray900"], palette["black"])
+    candidates = ("#ffffff", "#000000")
     return max(candidates, key=lambda candidate: contrast_ratio(fill, candidate))
 
 
 def series_colors(palette: dict[str, str], extended: bool) -> list[str]:
-    roles = (
-        (
-            "primary",
-            "accent",
-            "warning",
-            "success",
-            "special",
-            "info",
-            "critical",
-            "primary_dark",
-            "gray700",
-            "gray500",
-            "gray900",
-            "gray400",
-        )
-        if extended
-        else (
-            "primary",
-            "gray700",
-            "gray500",
-            "ink",
-            "gray600",
-            "critical",
-            "primary_dark",
-            "gray800",
-            "gray400",
-            "gray900",
-            "gray300",
-            "gray200",
-        )
-    )
-    return [palette[role] for role in roles]
+    return solid_colors("colorset2" if extended else "colorset1")
+
 
 
 def theme_variables(colorset: str, family: str | None = None) -> dict[str, object]:
@@ -562,30 +534,7 @@ def theme_variables(colorset: str, family: str | None = None) -> dict[str, objec
     extended = colorset == "colorset2"
     scale_colors = series_colors(p, extended)
     scale_labels = [readable_text_color(color, p) for color in scale_colors]
-    fill_type_roles = (
-        (
-            "primary_light",
-            "accent_light",
-            "warning_light",
-            "success_light",
-            "special_light",
-            "neutral_light",
-            "gray200",
-            "gray300",
-        )
-        if extended
-        else (
-            "surface",
-            "gray100",
-            "gray200",
-            "gray300",
-            "gray400",
-            "page",
-            "gray500",
-            "gray600",
-        )
-    )
-    fill_type_colors = [p[role] for role in fill_type_roles]
+    fill_type_colors = scale_colors[:8]
     variables = {
         "THEME_COLOR_LIMIT": THEME_COLOR_LIMIT,
         "background": p["background"],
@@ -779,6 +728,28 @@ def theme_variables(colorset: str, family: str | None = None) -> dict[str, objec
             "textColor": p["ink"],
         },
     }
+    # Native diagram containers retain their layout semantics; filled category
+    # nodes use saturated solids and never require a contrasting rim.
+    for fill_key, border_key, text_key, color in (
+        ("primaryColor", "primaryBorderColor", "primaryTextColor", scale_colors[0]),
+        ("secondaryColor", "secondaryBorderColor", "secondaryTextColor", scale_colors[1]),
+        ("tertiaryColor", "tertiaryBorderColor", "tertiaryTextColor", scale_colors[2]),
+        ("noteBkgColor", "noteBorderColor", "noteTextColor", scale_colors[3]),
+        ("actorBkg", "actorBorder", "actorTextColor", scale_colors[0]),
+        ("taskBkgColor", "taskBorderColor", "taskTextColor", scale_colors[1]),
+        ("activeTaskBkgColor", "activeTaskBorderColor", None, scale_colors[2]),
+        ("doneTaskBkgColor", "doneTaskBorderColor", None, scale_colors[3]),
+        ("stateBkg", "compositeBorder", "stateLabelColor", scale_colors[1]),
+    ):
+        variables[fill_key] = color
+        variables[border_key] = color
+        if text_key:
+            variables[text_key] = readable_text_color(color, p)
+    variables.update(mainBkg=scale_colors[0], nodeBkg=scale_colors[0], nodeBorder=scale_colors[0], classText=readable_text_color(scale_colors[0], p), labelBackgroundColor=scale_colors[1], labelColor=readable_text_color(scale_colors[1], p), activationBkgColor=scale_colors[2], activationBorderColor=scale_colors[2])
+    for role in ("Ui", "Processor", "ReadModel", "Command", "Event"):
+        position = ("Ui", "Processor", "ReadModel", "Command", "Event").index(role)
+        variables[f"em{role}Fill"] = scale_colors[position]
+        variables[f"em{role}Stroke"] = scale_colors[position]
     keys = set(CORE_THEME_KEYS)
     keys.update(FAMILY_THEME_KEYS.get(family or "", []))
     return {key: variables[key] for key in variables if key in keys}
@@ -815,28 +786,8 @@ def yaml_mapping_lines(mapping: dict[str, object], indent: int = 0) -> list[str]
 
 
 def class_style(colorset: str, class_name: str) -> str:
-    p = PALETTES[colorset]
-    styles = {
-        "csPrimary": (p["primary_light"], p["primary"], p["ink"]),
-        "csAccent": (p["accent_light"], p["accent"], p["ink"]),
-        "csMuted": (p["gray100"], p["gray500"], p["ink"]),
-        "csCritical": (p["primary_light"], p["critical"], p["ink"]),
-        "csWarning": (p["warning_light"], p["warning"], p["ink"]),
-        "csSuccess": (p["success_light"], p["success"], p["ink"]),
-        "csInfo": (p["info_light"], p["info"], p["ink"]),
-        "csSpecial": (p["special_light"], p["special"], p["ink"]),
-        "csNeutral": (p["neutral_light"], p["neutral"], p["ink"]),
-    }
-    if colorset == "colorset1":
-        styles.update({
-            "csPrimary": (p["primary"], p["primary_dark"], p["surface"]),
-            "csCritical": (p["surface"], p["critical"], p["ink"]),
-            "csSuccess": (p["ink"], p["ink"], p["surface"]),
-            "csInfo": (p["surface"], p["gray600"], p["ink"]),
-            "csNeutral": (p["surface"], p["neutral"], p["ink"]),
-        })
-    fill, stroke, text = styles[class_name]
-    return f"classDef {class_name} fill:{fill},stroke:{stroke},color:{text},stroke-width:2px;"
+    style = solid_style(COLOR_CLASS_ORDER.index(class_name), colorset)
+    return f"classDef {class_name} fill:{style['fill']},stroke:{style['stroke']},color:{style['text']},stroke-width:{style['strokeWidth']}px;"
 
 
 def sankey_node_colors(source: str, colorset: str) -> dict[str, str]:
@@ -859,11 +810,7 @@ def sankey_node_colors(source: str, colorset: str) -> dict[str, str]:
             if node and node not in nodes:
                 nodes.append(node)
 
-    p = PALETTES[colorset]
-    if colorset == "colorset2":
-        palette = [p["primary"], p["accent"], p["warning"], p["success"], p["special"], p["info"], p["gray500"], p["critical"]]
-    else:
-        palette = [p["primary"], p["gray700"], p["gray500"], p["gray300"], p["primary_dark"], p["gray600"], p["gray400"], p["gray800"]]
+    palette = solid_colors(colorset)
     return {node: palette[index % len(palette)] for index, node in enumerate(nodes)}
 
 
@@ -894,6 +841,8 @@ def colorset_config(
         "theme": "base",
         "themeVariables": theme_variables(colorset, family),
     }
+    # Remove decorative node rims; meaningful edge/compartment paths stay native.
+    config["themeCSS"] = ".node > rect, .node > circle, .node > ellipse, .node > polygon, .node > path, rect.actor, .note, .task, .task0, .task1, .task2, .task3 { stroke-width: 0 !important; }"
     for config_key, defaults in compact_layouts(family, source).items():
         if config_key not in (existing_config_keys or set()):
             config[config_key] = dict(defaults)
@@ -904,8 +853,8 @@ def colorset_config(
             "nodeColors": sankey_node_colors(source, colorset),
         }
     elif family == "treemap":
-        config["themeCSS"] = (
-            ".treemapLeaf { fill-opacity: 0.5 !important; stroke-width: 6px !important; }"
+        config["themeCSS"] += (
+            ".treemapLeaf { fill-opacity: 1 !important; stroke-width: 0 !important; }"
         )
         config["treemap"] = {
             **(functional_options or {}),

@@ -20,7 +20,7 @@
     {"id": "inlet", "view": "tank", "kind": "path", "d": "M 80 100 H 510 V 230", "attrs": {}, "fill": "none", "stroke": "ink", "strokeWidth": 14},
     {"id": "valve", "view": "tank", "kind": "line", "attrs": {"x1": 310, "y1": 100, "x2": {"add": [310, {"mul": [18, "rate"]}]}, "y2": 100}, "fill": "none", "stroke": "primary", "strokeWidth": 22},
     {"id": "flow", "view": "tank", "kind": "line", "attrs": {"x1": 510, "y1": 235, "x2": 510, "y2": {"add": [265, {"mul": [12, "rate"]}]}}, "fill": "none", "stroke": "primary", "strokeWidth": 8, "arrow": true, "entity": "water"},
-    {"id": "tank-body", "view": "tank", "kind": "rect", "attrs": {"x": 300, "y": 330, "width": 420, "height": 500}, "fill": "surface", "stroke": "ink", "strokeWidth": 5},
+    {"id": "tank-body", "view": "tank", "kind": "rect", "attrs": {"x": 300, "y": 330, "width": 420, "height": 500}, "fill": "muted", "stroke": "none", "strokeWidth": 0},
     {"id": "stored", "view": "tank", "kind": "rect", "attrs": {"x": 307, "y": {"sub": [824, {"mul": [6, "volume"]}]}, "width": 406, "height": {"mul": [6, "volume"]}}, "fill": "primary", "entity": "water"},
     {"id": "surface", "view": "tank", "kind": "line", "attrs": {"x1": 307, "y1": {"sub": [824, {"mul": [6, "volume"]}]}, "x2": 713, "y2": {"sub": [824, {"mul": [6, "volume"]}]}}, "fill": "none", "stroke": "primaryDark", "strokeWidth": 5},
     {"id": "rate-label", "view": "tank", "kind": "text", "attrs": {"x": 620, "y": 175, "fontSize": 36}, "text": "flow", "value": "rate", "digits": 1, "unit": "L/s", "fill": "ink"},

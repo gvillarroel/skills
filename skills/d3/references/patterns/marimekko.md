@@ -52,7 +52,7 @@ function renderMarimekko() {
       .attr("width", d => Math.max(1, x(d.x1) - x(d.x0) - 2))
       .attr("height", d => Math.max(1, y(d.y0) - y(d.y1)))
       .attr("fill", d => colors[d.ki])
-      .attr("fill-opacity", .84)
+      .attr("fill-opacity", 1)
       .attr("stroke", "#fff");
     fadeIn(rects, .05, .7);
     const labels = svg.append("g").selectAll("text").data(data).join("text")

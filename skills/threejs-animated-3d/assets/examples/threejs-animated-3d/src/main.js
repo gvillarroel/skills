@@ -37,7 +37,7 @@ const examples = [
     id: 'token-cube',
     kicker: 'Materials',
     title: 'Token Color Cube',
-    description: 'Six known palette faces rotate as a compact material and edge-lighting sanity check.',
+    description: 'Six known palette faces rotate as a compact material and lighting sanity check.',
     setup: setupTokenCube,
   },
   {
@@ -444,11 +444,7 @@ function setupTokenCube({ root, camera }) {
   const cube = new THREE.Mesh(geometry, materials)
   cubeGroup.add(cube)
 
-  const edges = new THREE.LineSegments(
-    new THREE.EdgesGeometry(geometry),
-    new THREE.LineBasicMaterial({ color: TOKEN_HEX.black, transparent: true, opacity: 0.32 }),
-  )
-  cubeGroup.add(edges)
+  // Filled mesh faces carry identity without a decorative edge overlay.
 
   const base = new THREE.Mesh(
     new THREE.CylinderGeometry(1.75, 1.75, 0.08, 64),
@@ -562,11 +558,7 @@ function setupDataTowers({ root, camera }) {
     bar.position.set(x, value / 2, z)
     root.add(bar)
 
-    const edge = new THREE.LineSegments(
-      new THREE.EdgesGeometry(bar.geometry),
-      new THREE.LineBasicMaterial({ color: TOKEN_HEX.white, transparent: true, opacity: 0.55 }),
-    )
-    bar.add(edge)
+    // Keep towers as uninterrupted filled materials.
     bars.push(bar)
   })
 

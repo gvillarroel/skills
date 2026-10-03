@@ -39,7 +39,7 @@ function renderHexbinMap() {
       return [d.x + Math.cos(a) * 13, d.y + Math.sin(a) * 13];
     });
     const cells = svg.append("g").selectAll("path").data(bins).join("path")
-      .attr("d", d => `${d3.line()(hex(d))}Z`).attr("fill", d => color(d.count)).attr("fill-opacity", .78).attr("stroke", "#fff").attr("stroke-width", 1.2);
+      .attr("d", d => `${d3.line()(hex(d))}Z`).attr("fill", d => color(d.count)).attr("fill-opacity", 1).attr("stroke", "#fff").attr("stroke-width", 1.2);
     fadeIn(cells, .08, .6);
     const legend = svg.append("g").attr("transform", "translate(64,370)");
     ramps.heat.forEach((colorValue, index) => legend.append("rect").attr("x", index * 38).attr("width", 38).attr("height", 12).attr("fill", colorValue));

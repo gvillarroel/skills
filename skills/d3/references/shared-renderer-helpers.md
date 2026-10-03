@@ -9,6 +9,13 @@
 
 Use this reference only when a per-pattern file under `references/patterns/` includes helper names from the gallery fixture. Recreate the minimal behavior locally; do not read the gallery source for normal pattern generation.
 
+Filled marks default to opaque single-token paint with no decorative stroke.
+Finalize custom HTML with the bundled colorset adapter before capturing SVG.
+Preserve transparency only on explicit `data-opacity-role="semantic"` shapes
+or groups when it communicates overlap, density, values, or a named selection
+state. Describe that meaning. Use `data-opacity-role="reveal"` for a
+programmatic reveal; CSS and SVG opacity animation also remains supported.
+
 ## Default Geometry And Tokens
 
 Most gallery excerpts assume these small constants:
@@ -214,15 +221,21 @@ function appendSchematicLand(svg, path, fill = palette.gray100) {
     .join("path")
     .attr("d", path)
     .attr("fill", fill)
-    .attr("fill-opacity", .92)
-    .attr("stroke", palette.gray300)
-    .attr("stroke-width", .8);
+    .attr("fill-opacity", 1)
+    .attr("stroke", "none");
 }
 ```
 
 Keep the coarse land geometry visibly subordinate. When geographic boundary accuracy is part of the data question, replace it with a verified local GeoJSON source rather than presenting the schematic polygons as real boundaries.
 
 ## Standalone Conversion Rules
+
+For ordered categories use `D3SolidStyle.categoryStyle` or the matching Python
+`scripts/colorset_adapter.py::category_style`. After every usable solid, cycle
+allowed contrasting border colors (at least 3:1 against the fill), then
+solid/dashed/dotted styles, then widths of 1–3 px. The finite alternatives end
+with `tier: "structural"` and `cue: "label-symbol-or-split"`; retain direct
+labels or add symbols or split views rather than generating wider borders.
 
 - Inline the required helpers into the generated HTML or SVG; do not leave references to shared gallery state.
 - If the final artifact must be self-contained, use static SVG geometry and SVG-native animation. Do not depend on CDN D3 or runtime JavaScript.

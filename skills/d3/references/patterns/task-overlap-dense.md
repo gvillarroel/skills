@@ -92,7 +92,7 @@ function renderAsymmetricTaskOverlapSaturated() {
       .attr("cx", d => d.cx)
       .attr("cy", d => d.cy)
       .attr("fill", d => d.fillColor)
-      .attr("fill-opacity", .18)
+      .attr("data-opacity-role", "semantic").attr("fill-opacity", .18)
       .attr("stroke", d => d.strokeColor)
       .attr("stroke-width", 1.7)
       .attr("stroke-opacity", .78);
@@ -187,7 +187,7 @@ function renderAsymmetricTaskOverlapSaturated() {
       .attr("height", d => d.labelHeight)
       .attr("rx", 3.6)
       .attr("fill", palette.surface)
-      .attr("fill-opacity", .96)
+      .attr("fill-opacity", 1)
       .attr("stroke", palette.gray200)
       .attr("stroke-width", .65);
     fadeIn(labelBoxes, .5, .42);

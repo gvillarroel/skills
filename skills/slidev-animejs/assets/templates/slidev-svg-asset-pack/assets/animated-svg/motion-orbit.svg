@@ -9,9 +9,9 @@
   </g>
   <path id="orbit-path" class="svg-drawable orbit-path" d="M126 292 C194 88 388 92 470 250 S700 452 826 176" fill="none" stroke="#828282" stroke-width="10" stroke-linecap="round"/>
   <g class="orbit-pulses" data-anime-group="pulses">
-    <circle class="orbit-pulse" cx="190" cy="164" r="24" fill="#cdf3ff"/>
-    <circle class="orbit-pulse" cx="484" cy="264" r="30" fill="#dbffcc"/>
-    <circle class="orbit-pulse" cx="754" cy="264" r="26" fill="#fff4cc"/>
+    <circle class="orbit-pulse" cx="190" cy="164" r="24" fill="#007298"/>
+    <circle class="orbit-pulse" cx="484" cy="264" r="30" fill="#45842a"/>
+    <circle class="orbit-pulse" cx="754" cy="264" r="26" fill="#f1c319"/>
   </g>
   <g id="orbit-traveler" class="svg-traveler orbit-traveler" data-anime-target="traveler">
     <circle cx="0" cy="0" r="26" fill="#9e1b32"/>
