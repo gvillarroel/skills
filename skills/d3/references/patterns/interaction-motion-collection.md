@@ -1,5 +1,19 @@
 # Interaction and Motion Pattern Collection
 
+## Contents
+
+- [d3-shape-tween](#d3-shape-tween)
+- [d3-arc-tween](#d3-arc-tween)
+- [d3-path-tween](#d3-path-tween)
+- [d3-text-tween](#d3-text-tween)
+- [d3-brush-handles](#d3-brush-handles)
+- [d3-brush-snapping](#d3-brush-snapping)
+- [d3-ordinal-brushing](#d3-ordinal-brushing)
+- [d3-zoomable-bar](#d3-zoomable-bar)
+- [d3-xy-zoom](#d3-xy-zoom)
+- [d3-versor-dragging](#d3-versor-dragging)
+- [d3-you-draw-it](#d3-you-draw-it)
+
 Use the pattern index to route directly to one section in this compact collection. Read only that section and any reference it explicitly names.
 
 ## d3-shape-tween

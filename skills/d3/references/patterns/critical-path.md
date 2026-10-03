@@ -36,7 +36,7 @@ function renderCriticalPath() {
     const link = d3.linkHorizontal().x(d => d.x).y(d => d.y);
     const paths = svg.append("g").selectAll("path").data(links).join("path")
       .attr("d", d => link({ source: { x: x(byId.get(d.source).rank), y: y(byId.get(d.source).row) }, target: { x: x(byId.get(d.target).rank), y: y(byId.get(d.target).row) } }))
-      .attr("fill", "none").attr("stroke", d => d.critical ? palette.red : "#b8c4d1")
+      .attr("fill", "none").attr("stroke", d => d.critical ? palette.red : "#cfcfcf")
       .attr("stroke-width", d => d.critical ? 3 : 1.8).attr("stroke-opacity", d => d.critical ? .88 : .55);
     drawPath(paths, .08, .85);
     const groups = svg.append("g").selectAll("g").data(nodes).join("g").attr("transform", d => `translate(${x(d.rank)},${y(d.row)})`);

@@ -1,9 +1,11 @@
 ---
 name: slidev-animejs
-description: Build, choreograph, troubleshoot, and validate Anime.js animations inside Slidev presentations. Use when Codex needs to add reusable Vue animation components to a Slidev deck, wire Anime.js lifecycle cleanup with Slidev clicks and slide mounts, create CSS, keyframe, JavaScript object, stagger, timeline, playback, timer, animatable, easing, SVG, text, layout, draggable, scroll, scope, WAAPI, or engine-control demos, or verify animated Slidev decks in browser and export workflows.
+description: "Builds, choreographs, troubleshoots, and validates Anime.js animations inside Slidev presentations. Use when Codex needs to add reusable Vue animation components to a Slidev deck, wire Anime.js lifecycle cleanup with Slidev clicks and slide mounts, create CSS, keyframe, JavaScript object, stagger, timeline, playback, timer, animatable, easing, SVG, text, layout, draggable, scroll, scope, WAAPI, or engine-control demos, or verify animated Slidev decks in browser and export workflows."
 ---
 
 # Slidev Anime.js
+
+Read [the colorset output contract](references/colorset-contract.md) before authoring or auditing visual output. Apply one exact bundled palette to every authored output path and inspect rendered paint. Default to colorset1; declare colorset2 when its category distinctions are needed.
 
 ## Core Workflow
 
@@ -20,7 +22,7 @@ description: Build, choreograph, troubleshoot, and validate Anime.js animations 
 
 Read `references/integration-patterns.md` before implementing or debugging an Anime.js Slidev deck. It covers project shape, Vue lifecycle, scoped cleanup, `$clicks`, export, and verification.
 
-Read `references/animation-type-index.md` when the task names a specific Anime.js capability or asks for broad animation coverage. It routes to one dedicated reference file per animation pattern demonstrated in the acceptance deck.
+For a named Anime.js capability, select its directly linked recipe below. Read `references/animation-type-index.md` for broad coverage or API lookup. Each animation pattern has one dedicated reference.
 
 Read `references/assets/animated-svg-assets.md` when the task asks for SVGs that Anime.js can animate. It documents the generated SVG asset pack, stable selectors, and the copy-ready runtime template under `assets/templates/slidev-svg-asset-pack/`.
 
@@ -37,3 +39,33 @@ Read `references/visual-tokens.md` before creating or updating animated Slidev e
 ## Pattern Promotion
 
 When an Anime.js animation pattern, SVG asset hook, or Slidev lifecycle pattern proves reusable, update the owning reference before finishing. Use `references/animation-type-index.md` and the dedicated animation files for API-specific patterns, `references/integration-patterns.md` for Vue/Slidev lifecycle and `$clicks`, and `references/assets/animated-svg-assets.md` for SVG selector contracts. Include trigger, DOM contract, Anime.js API, cleanup/replay behavior, and validation command.
+
+## Additional reference routes
+
+Read only the resource matching the task.
+
+## Direct recipe links
+
+Select the matching recipe and read it in full.
+
+- [animatable live input](references/animations/animatable-live-input.md).
+- [css properties colors](references/animations/css-properties-colors.md).
+- [css transforms](references/animations/css-transforms.md).
+- [draggable interactions](references/animations/draggable-interactions.md).
+- [easings springs](references/animations/easings-springs.md).
+- [engine controls](references/animations/engine-controls.md).
+- [js object values](references/animations/js-object-values.md).
+- [keyframes relative values](references/animations/keyframes-relative-values.md).
+- [layout transitions](references/animations/layout-transitions.md).
+- [playback controls](references/animations/playback-controls.md).
+- [scope media cleanup](references/animations/scope-media-cleanup.md).
+- [scroll observer](references/animations/scroll-observer.md).
+- [stagger sequences](references/animations/stagger-sequences.md).
+- [svg drawable](references/animations/svg-drawable.md).
+- [svg morph](references/animations/svg-morph.md).
+- [svg motion path](references/animations/svg-motion-path.md).
+- [text scramble](references/animations/text-scramble.md).
+- [text split](references/animations/text-split.md).
+- [timeline sequencing](references/animations/timeline-sequencing.md).
+- [timers](references/animations/timers.md).
+- [waapi animations](references/animations/waapi-animations.md).

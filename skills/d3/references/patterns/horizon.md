@@ -35,9 +35,9 @@ function renderHorizon() {
       const path = svg.append("path").datum(shifted).attr("d", area).attr("fill", bandColors[i]).attr("fill-opacity", .78);
       fadeIn(path, .08 + i * .08, .75);
     });
-    svg.append("line").attr("x1", 42).attr("x2", width - 34).attr("y1", baseY).attr("y2", baseY).attr("stroke", "#9ba6b3");
+    svg.append("line").attr("x1", 42).attr("x2", width - 34).attr("y1", baseY).attr("y2", baseY).attr("stroke", "#9c9c9c");
     d3.range(0, 49, 8).forEach(tick => {
-      svg.append("line").attr("x1", x(tick)).attr("x2", x(tick)).attr("y1", baseY).attr("y2", baseY + 6).attr("stroke", "#9ba6b3");
+      svg.append("line").attr("x1", x(tick)).attr("x2", x(tick)).attr("y1", baseY).attr("y2", baseY + 6).attr("stroke", "#9c9c9c");
       svg.append("text").attr("class", "label").attr("x", x(tick)).attr("y", baseY + 22).attr("text-anchor", "middle").text(`T${tick}`);
     });
     ["low", "mid", "high"].forEach((label, i) => {

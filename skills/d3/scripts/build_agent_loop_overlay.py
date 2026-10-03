@@ -13,6 +13,7 @@ import base64
 import hashlib
 import json
 from pathlib import Path
+from colorset_adapter import colorset_output
 
 
 SKILL_ROOT = Path(__file__).resolve().parents[1]
@@ -29,6 +30,7 @@ REGIONS = (
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("output", type=Path, help="Exact standalone HTML output path")
+    parser.add_argument("--colorset", choices=("colorset1", "colorset2"), default="colorset1")
     parser.add_argument("--force", action="store_true", help="Overwrite an existing output")
     return parser.parse_args()
 
@@ -60,6 +62,7 @@ def region_markup() -> str:
     return "\n".join(groups)
 
 
+@colorset_output
 def build_html() -> str:
     if not REFERENCE_IMAGE.is_file():
         raise SystemExit(f"Bundled reference image is missing: {REFERENCE_IMAGE}")
@@ -120,7 +123,7 @@ def main() -> int:
     if output.exists() and not args.force:
         raise SystemExit(f"Output already exists: {output}. Pass --force to overwrite it.")
     output.parent.mkdir(parents=True, exist_ok=True)
-    html = build_html()
+    html = build_html(colorset=args.colorset)
     forbidden = ("http://", "https://", "skills", "skills/d3", "assets/examples")
     leftovers = [value for value in forbidden if value in html]
     if leftovers:

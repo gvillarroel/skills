@@ -1,0 +1,4 @@
+interface:
+  display_name: "Diagram Composition"
+  short_description: "Compose compact ideas from the right subdiagrams"
+  default_prompt: "Use $diagram-composition to divide this idea into meaningful subdiagrams, choose their visual forms, and assemble a compact, readable SVG composition with one consistent semantic palette across panels."

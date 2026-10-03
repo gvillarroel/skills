@@ -1,5 +1,10 @@
 # Deep Learning Model Execution
 
+## Contents
+
+- [Reuse Contract](#reuse-contract)
+- [Source Excerpt](#source-excerpt)
+
 - **Pattern ID:** `d3-mlp-execution`
 - **Gallery source ID:** `mlp-execution`
 - **Family:** AI

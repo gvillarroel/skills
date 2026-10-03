@@ -54,7 +54,7 @@ function renderFocusContext() {
       .datum(data)
       .attr("d", line2)
       .attr("fill", "none")
-      .attr("stroke", "#91a2b5")
+      .attr("stroke", "#9c9c9c")
       .attr("stroke-width", 2);
     const brush = svg.append("rect")
       .attr("x", x2(windowRange[0]))

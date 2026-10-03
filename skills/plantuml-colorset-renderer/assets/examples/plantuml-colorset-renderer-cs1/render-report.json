@@ -64,7 +64,9 @@
           "format": "svg",
           "path": "svg/activity.svg",
           "size_bytes": 6771,
-          "engine": "cli"
+          "engine": "cli",
+          "palette_normalized": true,
+          "source_media_preserved": false
         }
       ]
     },
@@ -97,8 +99,10 @@
         {
           "format": "svg",
           "path": "svg/archimate.svg",
-          "size_bytes": 4165,
-          "engine": "cli"
+          "size_bytes": 3032,
+          "engine": "cli",
+          "palette_normalized": true,
+          "source_media_preserved": false
         }
       ]
     },
@@ -132,7 +136,9 @@
           "format": "svg",
           "path": "svg/chart.svg",
           "size_bytes": 6282,
-          "engine": "cli"
+          "engine": "cli",
+          "palette_normalized": true,
+          "source_media_preserved": false
         }
       ]
     },
@@ -166,7 +172,9 @@
           "format": "svg",
           "path": "svg/chen.svg",
           "size_bytes": 5938,
-          "engine": "cli"
+          "engine": "cli",
+          "palette_normalized": true,
+          "source_media_preserved": false
         }
       ]
     },
@@ -226,7 +234,9 @@
           "format": "svg",
           "path": "svg/class.svg",
           "size_bytes": 7083,
-          "engine": "cli"
+          "engine": "cli",
+          "palette_normalized": true,
+          "source_media_preserved": false
         }
       ]
     },
@@ -260,7 +270,9 @@
           "format": "svg",
           "path": "svg/component.svg",
           "size_bytes": 6487,
-          "engine": "cli"
+          "engine": "cli",
+          "palette_normalized": true,
+          "source_media_preserved": false
         }
       ]
     },
@@ -294,7 +306,9 @@
           "format": "svg",
           "path": "svg/deployment.svg",
           "size_bytes": 7208,
-          "engine": "cli"
+          "engine": "cli",
+          "palette_normalized": true,
+          "source_media_preserved": false
         }
       ]
     },
@@ -327,8 +341,10 @@
         {
           "format": "png",
           "path": "png/ditaa.png",
-          "size_bytes": 8374,
-          "engine": "cli"
+          "size_bytes": 4578,
+          "engine": "cli",
+          "palette_normalized": true,
+          "source_media_preserved": false
         }
       ]
     },
@@ -362,7 +378,9 @@
           "format": "svg",
           "path": "svg/ebnf.svg",
           "size_bytes": 7983,
-          "engine": "cli"
+          "engine": "cli",
+          "palette_normalized": true,
+          "source_media_preserved": false
         }
       ]
     },
@@ -395,8 +413,10 @@
         {
           "format": "svg",
           "path": "svg/files.svg",
-          "size_bytes": 19897,
-          "engine": "cli"
+          "size_bytes": 18933,
+          "engine": "cli",
+          "palette_normalized": true,
+          "source_media_preserved": false
         }
       ]
     },
@@ -430,7 +450,9 @@
           "format": "svg",
           "path": "svg/gantt.svg",
           "size_bytes": 9494,
-          "engine": "cli"
+          "engine": "cli",
+          "palette_normalized": true,
+          "source_media_preserved": false
         }
       ]
     },
@@ -464,7 +486,9 @@
           "format": "svg",
           "path": "svg/ie.svg",
           "size_bytes": 7621,
-          "engine": "cli"
+          "engine": "cli",
+          "palette_normalized": true,
+          "source_media_preserved": false
         }
       ]
     },
@@ -498,7 +522,9 @@
           "format": "svg",
           "path": "svg/json.svg",
           "size_bytes": 4453,
-          "engine": "cli"
+          "engine": "cli",
+          "palette_normalized": true,
+          "source_media_preserved": false
         }
       ]
     },
@@ -532,7 +558,9 @@
           "format": "svg",
           "path": "svg/latex.svg",
           "size_bytes": 501,
-          "engine": "cli"
+          "engine": "cli",
+          "palette_normalized": true,
+          "source_media_preserved": false
         }
       ]
     },
@@ -566,7 +594,9 @@
           "format": "svg",
           "path": "svg/math.svg",
           "size_bytes": 522,
-          "engine": "cli"
+          "engine": "cli",
+          "palette_normalized": true,
+          "source_media_preserved": false
         }
       ]
     },
@@ -600,7 +630,9 @@
           "format": "svg",
           "path": "svg/mindmap.svg",
           "size_bytes": 5272,
-          "engine": "cli"
+          "engine": "cli",
+          "palette_normalized": true,
+          "source_media_preserved": false
         }
       ]
     },
@@ -634,7 +666,9 @@
           "format": "svg",
           "path": "svg/nwdiag.svg",
           "size_bytes": 4405,
-          "engine": "cli"
+          "engine": "cli",
+          "palette_normalized": true,
+          "source_media_preserved": false
         }
       ]
     },
@@ -668,7 +702,9 @@
           "format": "svg",
           "path": "svg/object.svg",
           "size_bytes": 5202,
-          "engine": "cli"
+          "engine": "cli",
+          "palette_normalized": true,
+          "source_media_preserved": false
         }
       ]
     },
@@ -702,7 +738,9 @@
           "format": "svg",
           "path": "svg/packetdiag.svg",
           "size_bytes": 5965,
-          "engine": "cli"
+          "engine": "cli",
+          "palette_normalized": true,
+          "source_media_preserved": false
         }
       ]
     },
@@ -736,7 +774,9 @@
           "format": "svg",
           "path": "svg/regex.svg",
           "size_bytes": 7604,
-          "engine": "cli"
+          "engine": "cli",
+          "palette_normalized": true,
+          "source_media_preserved": false
         }
       ]
     },
@@ -769,8 +809,10 @@
         {
           "format": "svg",
           "path": "svg/salt.svg",
-          "size_bytes": 3406,
-          "engine": "cli"
+          "size_bytes": 2317,
+          "engine": "cli",
+          "palette_normalized": true,
+          "source_media_preserved": false
         }
       ]
     },
@@ -804,7 +846,9 @@
           "format": "svg",
           "path": "svg/sdl.svg",
           "size_bytes": 4916,
-          "engine": "cli"
+          "engine": "cli",
+          "palette_normalized": true,
+          "source_media_preserved": false
         }
       ]
     },
@@ -838,7 +882,9 @@
           "format": "svg",
           "path": "svg/sequence.svg",
           "size_bytes": 10954,
-          "engine": "cli"
+          "engine": "cli",
+          "palette_normalized": true,
+          "source_media_preserved": false
         }
       ]
     },
@@ -872,7 +918,9 @@
           "format": "svg",
           "path": "svg/state.svg",
           "size_bytes": 6596,
-          "engine": "cli"
+          "engine": "cli",
+          "palette_normalized": true,
+          "source_media_preserved": false
         }
       ]
     },
@@ -906,7 +954,9 @@
           "format": "svg",
           "path": "svg/timing.svg",
           "size_bytes": 6313,
-          "engine": "cli"
+          "engine": "cli",
+          "palette_normalized": true,
+          "source_media_preserved": false
         }
       ]
     },
@@ -940,7 +990,9 @@
           "format": "svg",
           "path": "svg/usecase.svg",
           "size_bytes": 5759,
-          "engine": "cli"
+          "engine": "cli",
+          "palette_normalized": true,
+          "source_media_preserved": false
         }
       ]
     },
@@ -974,7 +1026,9 @@
           "format": "svg",
           "path": "svg/wbs.svg",
           "size_bytes": 5660,
-          "engine": "cli"
+          "engine": "cli",
+          "palette_normalized": true,
+          "source_media_preserved": false
         }
       ]
     },
@@ -1008,7 +1062,9 @@
           "format": "svg",
           "path": "svg/yaml.svg",
           "size_bytes": 8583,
-          "engine": "cli"
+          "engine": "cli",
+          "palette_normalized": true,
+          "source_media_preserved": false
         }
       ]
     }

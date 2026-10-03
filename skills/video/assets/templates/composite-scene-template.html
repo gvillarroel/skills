@@ -187,13 +187,13 @@
         overlay.style.zIndex = String(interaction.connector?.zIndex ?? 1000);
         const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
         path.setAttribute("fill", "none");
-        path.setAttribute("stroke", interaction.connector?.color ?? "#ff0000");
+        path.setAttribute("stroke", interaction.connector?.color ?? "#e8002a");
         path.setAttribute("stroke-width", String(interaction.connector?.width ?? 3));
         path.setAttribute("stroke-linecap", "round");
         path.setAttribute("stroke-linejoin", "round");
         const signal = document.createElementNS("http://www.w3.org/2000/svg", "circle");
         signal.setAttribute("r", String(Math.max(3, Number(interaction.connector?.width ?? 3) * 1.75)));
-        signal.setAttribute("fill", interaction.connector?.color ?? "#ff0000");
+        signal.setAttribute("fill", interaction.connector?.color ?? "#e8002a");
         overlay.append(path, signal);
         stage.appendChild(overlay);
         runtimeInteractions.set(interaction.id, { interaction, overlay, path, signal, progress: 0 });

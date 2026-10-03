@@ -1,5 +1,19 @@
 # Science and Geometry Pattern Collection
 
+## Contents
+
+- [d3-hr-diagram](#d3-hr-diagram)
+- [d3-solar-path](#d3-solar-path)
+- [d3-parabolic-arcs](#d3-parabolic-arcs)
+- [d3-apollonius-circles](#d3-apollonius-circles)
+- [d3-tissot-indicatrix](#d3-tissot-indicatrix)
+- [d3-vector-field](#d3-vector-field)
+- [d3-curve-contexts](#d3-curve-contexts)
+- [d3-adaptive-sampling](#d3-adaptive-sampling)
+- [d3-satellite-projection](#d3-satellite-projection)
+- [d3-exoplanet-orbits](#d3-exoplanet-orbits)
+- [d3-epicyclic-gearing](#d3-epicyclic-gearing)
+
 Use the pattern index to route directly to one section in this compact collection. Read only that section and any reference it explicitly names.
 
 ## d3-hr-diagram

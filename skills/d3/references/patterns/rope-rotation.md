@@ -1,5 +1,10 @@
 # RoPE Position Rotation
 
+## Contents
+
+- [Reuse Contract](#reuse-contract)
+- [Source Excerpt](#source-excerpt)
+
 - **Pattern ID:** `d3-rope-rotation`
 - **Gallery source ID:** `rope-rotation`
 - **Family:** Transformer

@@ -61,6 +61,9 @@ class ConversionResult:
     colors: int
     dither: str
     manifest: str
+    capture_colorset: str
+    capture_background: str
+    source_paint_scope: str
 
 
 def main() -> int:
@@ -129,6 +132,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--max-height", type=int, default=DEFAULT_MAX_HEIGHT)
     parser.add_argument("--scale", type=float, default=DEFAULT_SCALE, help="Browser device scale factor.")
     parser.add_argument("--background", default=DEFAULT_BACKGROUND)
+    parser.add_argument("--colorset", choices=("colorset1", "colorset2"), default="colorset1", help="Canonical authored capture-background palette; input SVG paints retain source fidelity.")
     parser.add_argument("--colors", type=int, default=256)
     parser.add_argument("--stats-mode", default="full", choices=["full", "diff", "single"])
     parser.add_argument("--dither", default="sierra2_4a")
@@ -141,6 +145,15 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--browser-executable", type=Path, help="Path to a Chromium-compatible browser executable.")
     parser.add_argument("--verbose", action="store_true")
     args = parser.parse_args()
+
+    contract = json.loads((Path(__file__).resolve().parents[1] / "assets/palettes/colorsets.json").read_text(encoding="utf-8"))
+    background = args.background.lower().strip()
+    background = {"white": "#ffffff", "black": "#000000"}.get(background, background)
+    if re.fullmatch(r"#[0-9a-f]{3}", background):
+        background = "#" + "".join(channel * 2 for channel in background[1:])
+    if background != "transparent" and background not in contract["colorsets"][args.colorset]["allowed"]:
+        raise SystemExit(f"--background must be transparent or an exact {args.colorset} token.")
+    args.background = background
 
     if args.fps <= 0:
         raise SystemExit("--fps must be greater than zero.")
@@ -235,6 +248,9 @@ def convert_one(source: Path, output_dir: Path, ffmpeg: str, browser: Any, args:
         colors=args.colors,
         dither=args.dither,
         manifest=str(item_manifest),
+        capture_colorset=args.colorset,
+        capture_background=args.background,
+        source_paint_scope="source-fidelity",
     )
     item_manifest.write_text(json.dumps(asdict(result), indent=2) + "\n", encoding="utf-8")
     print(

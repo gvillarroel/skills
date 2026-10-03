@@ -1,0 +1,4 @@
+interface:
+  display_name: "Repository Reviewer Creator"
+  short_description: "Create evidence-based reviewers for a repository"
+  default_prompt: "Use $repository-reviewer-creator to generate a standalone reviewer skill for this repository, grounded in its project resources, contracts, security boundaries, and relevant change validation."

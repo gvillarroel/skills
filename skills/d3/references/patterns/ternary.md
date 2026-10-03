@@ -48,7 +48,7 @@ function renderTernary() {
       const cb = toPoint({ a: 0, b: 1 - t, c: t });
       [[ab, ac], [ba, bc], [ca, cb]].forEach(pair => svg.append("line")
         .attr("x1", pair[0][0]).attr("y1", pair[0][1]).attr("x2", pair[1][0]).attr("y2", pair[1][1])
-        .attr("stroke", "#dbe2ea").attr("stroke-width", .8));
+        .attr("stroke", "#e7e7e7").attr("stroke-width", .8));
     });
     const dots = svg.append("g").selectAll("circle").data(data).join("circle")
       .attr("cx", d => toPoint(d)[0]).attr("cy", d => toPoint(d)[1])

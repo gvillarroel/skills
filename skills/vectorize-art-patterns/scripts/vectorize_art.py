@@ -988,15 +988,15 @@ def vectorize(args: argparse.Namespace) -> dict[str, Any]:
         background=background_rgb,
         palette_method=args.palette_method,
     )
-    colorset_name = args.colorset or "source"
+    colorset_name = args.colorset or "colorset1"
     palette_contract_sha256 = ""
     colorset_mapping: list[dict[str, str]] = []
-    if args.colorset:
+    if colorset_name:
         background, layers, colorset_record = apply_colorset(
             background,
             layers,
             mode=args.mode,
-            colorset_name=args.colorset,
+            colorset_name=colorset_name,
         )
         palette_contract_sha256 = colorset_record["contract_sha256"]
         colorset_mapping = colorset_record["mapping"]
@@ -1098,6 +1098,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--colorset",
         choices=COLORSET_NAMES,
+        default="colorset1",
         help="Map every visible SVG color to the selected bundled colorset.",
     )
     parser.add_argument("--min-area", type=float, default=18.0)

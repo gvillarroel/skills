@@ -249,7 +249,7 @@ function radarOption(step) {
       indicator: distributions.capabilities.labels.map((name) => ({ name, max: 100 })),
       axisName: { color: '#696969' },
       splitLine: { lineStyle: { color: '#cfcfcf' } },
-      splitArea: { areaStyle: { color: ['#f7f7f7', '#eef2f7'] } },
+      splitArea: { areaStyle: { color: ['#f7f7f7', '#f7f7f7'] } },
     },
     series: [
       {
@@ -376,7 +376,7 @@ function graphOption(step) {
         links: weightedRelationshipLinks(stage),
         label: {
           show: true,
-          color: '#1e293b',
+          color: '#333e48',
           position: 'right',
           distance: 6,
           backgroundColor: 'rgba(255, 255, 255, 0.82)',
@@ -404,7 +404,7 @@ function chordOption(step) {
         data: relationships.nodes.slice(0, 6).map((node) => ({ name: node.name, value: node.value })),
         links: relationshipLinks(stage, relationships.chordLinks),
         label: {
-          color: '#1e293b',
+          color: '#333e48',
           backgroundColor: 'rgba(255, 255, 255, 0.82)',
           padding: [1, 3],
         },
@@ -507,7 +507,7 @@ function sankeyOption(step) {
         data: relationships.nodes,
         links: relationshipLinks(stage),
         label: {
-          color: '#1e293b',
+          color: '#333e48',
           backgroundColor: 'rgba(255, 255, 255, 0.76)',
           padding: [1, 3],
         },
@@ -621,7 +621,7 @@ function heatmapOption(step) {
         type: 'heatmap',
         data: distributions.heatmap.values.map(([x, y, value]) => [x, y, value + stage * (x + y)]),
         label: { show: stage > 1 },
-        emphasis: { itemStyle: { shadowBlur: 8, shadowColor: 'rgba(15,23,42,0.25)' } },
+        emphasis: { itemStyle: { shadowBlur: 8, shadowColor: 'rgba(28, 28, 28,0.25)' } },
       },
     ],
   }

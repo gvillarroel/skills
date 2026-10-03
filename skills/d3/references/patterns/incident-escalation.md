@@ -1,5 +1,10 @@
 # Critical Incident Escalation
 
+## Contents
+
+- [Reuse Contract](#reuse-contract)
+- [Source Excerpt](#source-excerpt)
+
 - **Pattern ID:** `d3-incident-escalation`
 - **Gallery source ID:** `incident-escalation`
 - **Family:** Critical

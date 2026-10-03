@@ -142,7 +142,7 @@ const radarOption = computed(() => ({
     ],
     axisName: { color: '#696969', fontSize: 11 },
     splitLine: { lineStyle: { color: '#cfcfcf' } },
-    splitArea: { areaStyle: { color: ['#f7f7f7', '#eef2f7'] } },
+    splitArea: { areaStyle: { color: ['#f7f7f7', '#f7f7f7'] } },
   },
   series: [
     {

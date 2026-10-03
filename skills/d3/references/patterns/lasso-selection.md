@@ -29,7 +29,7 @@ function renderLassoSelection() {
     points.forEach(point => point.selected = d3.polygonContains(lasso, [point.x, point.y]));
     const dots = svg.append("g").selectAll("circle").data(points).join("circle")
       .attr("cx", d => d.x).attr("cy", d => d.y)
-      .attr("fill", d => d.selected ? palette.orange : "#9aa7b5")
+      .attr("fill", d => d.selected ? palette.orange : "#9c9c9c")
       .attr("fill-opacity", d => d.selected ? .88 : .28)
       .attr("stroke", "#fff").attr("stroke-width", 1.2);
     grow(dots, "r", 1, d => d.selected ? 6 : 4, .06, .55);

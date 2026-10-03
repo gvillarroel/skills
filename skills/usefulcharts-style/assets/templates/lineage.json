@@ -5,27 +5,126 @@
   "mode": "lineage",
   "layout": "auto",
   "groups": [
-    {"id": "origin", "label": "Shared origin", "color": "#A6A18B"},
-    {"id": "botany", "label": "Botany", "color": "#A6C49B"},
-    {"id": "geology", "label": "Geology", "color": "#F4C948"}
+    {
+      "id": "origin",
+      "label": "Shared origin",
+      "color": "#9e1b32"
+    },
+    {
+      "id": "botany",
+      "label": "Botany",
+      "color": "#007298"
+    },
+    {
+      "id": "geology",
+      "label": "Geology",
+      "color": "#e77204"
+    }
   ],
   "nodes": [
-    {"id": "cabinet", "label": "The Common Cabinet", "detail_position": "outside", "date_label": "1720", "detail": "A shared collection", "group": "origin"},
-    {"id": "garden", "label": "Garden Society", "detail_position": "outside", "date_label": "1754", "detail": "Living collections", "group": "botany"},
-    {"id": "herbarium", "label": "Regional Herbarium", "detail_position": "outside", "date_label": "1818", "detail": "Preserved specimens", "group": "botany"},
-    {"id": "seed", "label": "Seed Exchange", "detail_position": "outside", "date_label": "1792", "detail": "Closed in 1851", "group": "botany"},
-    {"id": "survey", "label": "Mineral Survey", "detail_position": "outside", "date_label": "1776", "detail": "Field records", "group": "geology"},
-    {"id": "museum", "label": "Geological Museum", "detail_position": "outside", "date_label": "1840", "detail": "Public collections", "group": "geology", "emphasis": true, "icon": "book"},
-    {"id": "institute", "label": "Botanical Institute", "detail_position": "outside", "date_label": "1880", "detail": "Garden and herbarium unite", "group": "botany", "emphasis": true}
+    {
+      "id": "cabinet",
+      "label": "The Common Cabinet",
+      "detail_position": "outside",
+      "date_label": "1720",
+      "detail": "A shared collection",
+      "group": "origin"
+    },
+    {
+      "id": "garden",
+      "label": "Garden Society",
+      "detail_position": "outside",
+      "date_label": "1754",
+      "detail": "Living collections",
+      "group": "botany"
+    },
+    {
+      "id": "herbarium",
+      "label": "Regional Herbarium",
+      "detail_position": "outside",
+      "date_label": "1818",
+      "detail": "Preserved specimens",
+      "group": "botany"
+    },
+    {
+      "id": "seed",
+      "label": "Seed Exchange",
+      "detail_position": "outside",
+      "date_label": "1792",
+      "detail": "Closed in 1851",
+      "group": "botany"
+    },
+    {
+      "id": "survey",
+      "label": "Mineral Survey",
+      "detail_position": "outside",
+      "date_label": "1776",
+      "detail": "Field records",
+      "group": "geology"
+    },
+    {
+      "id": "museum",
+      "label": "Geological Museum",
+      "detail_position": "outside",
+      "date_label": "1840",
+      "detail": "Public collections",
+      "group": "geology",
+      "emphasis": true,
+      "icon": "book"
+    },
+    {
+      "id": "institute",
+      "label": "Botanical Institute",
+      "detail_position": "outside",
+      "date_label": "1880",
+      "detail": "Garden and herbarium unite",
+      "group": "botany",
+      "emphasis": true
+    }
   ],
   "edges": [
-    {"id": "garden-founded", "source": "cabinet", "target": "garden", "kind": "branch"},
-    {"id": "survey-founded", "source": "cabinet", "target": "survey", "kind": "branch"},
-    {"id": "herbarium-founded", "source": "garden", "target": "herbarium", "kind": "branch"},
-    {"id": "seed-founded", "source": "garden", "target": "seed", "kind": "branch"},
-    {"id": "museum-founded", "source": "survey", "target": "museum", "kind": "succession"},
-    {"id": "garden-merged", "source": "garden", "target": "institute", "kind": "branch"},
-    {"id": "herbarium-merged", "source": "herbarium", "target": "institute", "kind": "branch"}
+    {
+      "id": "garden-founded",
+      "source": "cabinet",
+      "target": "garden",
+      "kind": "branch"
+    },
+    {
+      "id": "survey-founded",
+      "source": "cabinet",
+      "target": "survey",
+      "kind": "branch"
+    },
+    {
+      "id": "herbarium-founded",
+      "source": "garden",
+      "target": "herbarium",
+      "kind": "branch"
+    },
+    {
+      "id": "seed-founded",
+      "source": "garden",
+      "target": "seed",
+      "kind": "branch"
+    },
+    {
+      "id": "museum-founded",
+      "source": "survey",
+      "target": "museum",
+      "kind": "succession"
+    },
+    {
+      "id": "garden-merged",
+      "source": "garden",
+      "target": "institute",
+      "kind": "branch"
+    },
+    {
+      "id": "herbarium-merged",
+      "source": "herbarium",
+      "target": "institute",
+      "kind": "branch"
+    }
   ],
   "source_note": "Original synthetic history; institutions and dates are invented.",
   "reading_note": "Solid links show branching; dash-dot links show succession. Two incoming links mark a merger. Vertical spacing is schematic, not elapsed time."

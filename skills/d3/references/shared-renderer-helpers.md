@@ -1,5 +1,12 @@
 # Shared Renderer Helpers
 
+## Contents
+
+- [Default Geometry And Tokens](#default-geometry-and-tokens)
+- [Minimal Helpers](#minimal-helpers)
+- [Schematic Land Context](#schematic-land-context)
+- [Standalone Conversion Rules](#standalone-conversion-rules)
+
 Use this reference only when a per-pattern file under `references/patterns/` includes helper names from the gallery fixture. Recreate the minimal behavior locally; do not read the gallery source for normal pattern generation.
 
 ## Default Geometry And Tokens

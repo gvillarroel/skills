@@ -15,6 +15,7 @@ import re
 import sys
 from pathlib import Path
 from typing import Any
+from palette_contract import require_color
 
 
 ID_RE = re.compile(r"^[a-z][a-z0-9-]*$")
@@ -153,6 +154,11 @@ def validate_contract(
         failures.append(f"canvas.aspectRatio must equal the reduced ratio {expected_ratio}")
     if not nonempty(canvas.get("background")):
         failures.append("canvas.background is missing")
+    else:
+        try:
+            require_color(canvas["background"])
+        except ValueError as error:
+            failures.append(str(error))
     safe_area = canvas.get("safeArea")
     if not isinstance(safe_area, dict):
         failures.append("canvas.safeArea must be an object")
@@ -421,6 +427,11 @@ def validate_contract(
                     failures.append(f"{label}.connector.zIndex must be an integer")
                 if not nonempty(connector.get("color")):
                     failures.append(f"{label}.connector.color is missing")
+                else:
+                    try:
+                        require_color(connector["color"])
+                    except ValueError as error:
+                        failures.append(str(error))
 
     if len(producer_skills) > 1 and not raw_interactions:
         warnings.append("scene uses multiple producers but declares no cross-element interactions")

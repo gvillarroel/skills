@@ -1,5 +1,10 @@
 # Token Probability Sampler
 
+## Contents
+
+- [Reuse Contract](#reuse-contract)
+- [Source Excerpt](#source-excerpt)
+
 - **Pattern ID:** `d3-token-sampler`
 - **Gallery source ID:** `token-sampler`
 - **Family:** LLM

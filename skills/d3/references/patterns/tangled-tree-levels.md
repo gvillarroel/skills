@@ -1,5 +1,10 @@
 # Tangled Tree Levels
 
+## Contents
+
+- [Reuse Contract](#reuse-contract)
+- [Source Excerpt](#source-excerpt)
+
 - **Pattern ID:** `d3-tangled-tree-levels`
 - **Gallery source ID:** `tangled-tree-levels`
 - **Family:** Hierarchy

@@ -1,5 +1,15 @@
 # Slidev ECharts Integration Patterns
 
+## Contents
+
+- [Project Shape](#project-shape)
+- [Dependencies](#dependencies)
+- [ECharts Module Registration](#echarts-module-registration)
+- [Responsive Wrapper Contract](#responsive-wrapper-contract)
+- [Slidev Click Stories](#slidev-click-stories)
+- [Accessibility And Export](#accessibility-and-export)
+- [Verification Checklist](#verification-checklist)
+
 ## Project Shape
 
 Use this structure for a local Slidev deck:
@@ -66,10 +76,28 @@ A reusable wrapper should:
 
 - Render a div with an explicit height or aspect ratio.
 - Initialize ECharts only after mount and after the DOM node has size.
-- Call `chart.setOption(option, updateOptions)` whenever the option changes.
+- Copy `assets/templates/echarts-colorsets.mjs` into the deck and select `colorset1` by default; use `colorset2` for a documented multivariate color role.
+- Initialize with `colorsetTheme(selected)`, attach `enforceColorsetRenderer` before the first paint, and pass every option through `prepareColorsetOption`.
 - Observe container size changes with `ResizeObserver` and call `chart.resize()`.
-- Remove observers and call `chart.dispose()` on unmount.
+- Disconnect the palette observer and size observer, then call `chart.dispose()` on unmount.
 - Expose `renderer`, `theme`, `height`, `option`, and `updateOptions` props.
+
+Keep the selected palette in the wrapper lifecycle, including hover styles and
+Canvas/SVG animation frames:
+
+```js
+import { colorsetTheme, prepareColorsetOption, enforceColorsetRenderer } from '../lib/echarts-colorsets.mjs'
+const selected = 'colorset1'
+chart = echarts.init(container, colorsetTheme(selected), { renderer: props.renderer })
+const disconnectPalette = enforceColorsetRenderer(container, selected)
+chart.setOption(prepareColorsetOption(props.option, selected), props.updateOptions)
+// Repeat prepareColorsetOption on updates; disconnectPalette() before disposal.
+```
+
+The helper preserves numeric data and geometry, uses discrete palette bins for
+color scales, and snaps authored paint defaults and tween states to exact palette
+tokens. Imported image pixels retain their source fidelity. See
+[the colorset contract](colorset-contract.md) for that narrow boundary.
 
 Use stable CSS dimensions in slides:
 

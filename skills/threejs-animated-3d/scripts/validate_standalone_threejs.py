@@ -252,8 +252,11 @@ def main() -> int:
             add(findings, colorset in {"colorset1", "colorset2"}, f"{name} missing active colorset")
             add(findings, set(composition.get("lightColors", [])) == {"#ffffff"}, f"{name} default lights are not white")
             colors = set(composition.get("materialColors", []))
+            if colorset in {"colorset1", "colorset2"}:
+                contract_path = Path(__file__).resolve().parents[1] / "assets/palettes/colorsets.json"
+                allowed = set(json.loads(contract_path.read_text(encoding="utf-8"))["colorsets"][colorset]["allowed"])
+                add(findings, colors <= allowed, f"{name} materials violate {colorset}: {sorted(colors - allowed)}")
             if colorset == "colorset1":
-                allowed = {"#000000", "#1c1c1c", "#333e48", "#363636", "#4f4f4f", "#696969", "#6d1222", "#828282", "#9c9c9c", "#9e1b32", "#b5b5b5", "#cfcfcf", "#e7e7e7", "#e8002a", "#f7f7f7", "#ffffff"}
                 add(findings, bool(colors) and colors <= allowed, f"{name} default material is outside red/neutral colors")
             else:
                 add(findings, bool(colors & {"#007298", "#e77204", "#45842a", "#652f6c", "#f1c319"}), f"{name} extended palette has no visible material")

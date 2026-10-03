@@ -47,15 +47,15 @@ WORLD_HEAVY_MODULE_WIDTH = 780
 WORLD_MODULE_HEIGHT = 500
 WORLD_HEAVY_MODULE_HEIGHT = 540
 WORLD_DISTRICT_PALETTE = (
-    "#7c3aed",
-    "#0891b2",
-    "#2563eb",
-    "#16a34a",
-    "#db2777",
-    "#ea580c",
-    "#0f766e",
-    "#9333ea",
-    "#b45309",
+    "#9e1b32",
+    "#333e48",
+    "#6d1222",
+    "#828282",
+    "#e8002a",
+    "#696969",
+    "#4f4f4f",
+    "#363636",
+    "#1c1c1c",
 )
 
 
@@ -815,6 +815,25 @@ def dependency_closure(value_id: str, dependencies: dict[str, set[str]]) -> set[
     return result
 
 
+def stack_rollup_ids(
+    values: list[str],
+    computations: dict[str, Any],
+    dependencies: dict[str, set[str]],
+) -> set[str]:
+    """Return selected additive subtotals that should be text-only in a stack."""
+
+    selected = set(values)
+    rollups: set[str] = set()
+    for value_id in values:
+        node = computations.get(value_id)
+        if not isinstance(node, dict) or node.get("op") != "add":
+            continue
+        descendants = dependency_closure(value_id, dependencies) & (selected - {value_id})
+        if len(descendants) >= 2:
+            rollups.add(value_id)
+    return rollups
+
+
 def leading_subtract_ref(node: Any) -> str | None:
     current = node
     while isinstance(current, dict) and current.get("op") == "subtract":
@@ -1250,11 +1269,7 @@ def compile_module_shells(
         is_stack = family == "bar" and "stack" in asset_type
         if is_stack:
             selected_values = set(values)
-            stack_rollups = {
-                value_id
-                for value_id in values
-                if dependency_closure(value_id, dependencies) & (selected_values - {value_id})
-            }
+            stack_rollups = stack_rollup_ids(values, computations, dependencies)
             if stack_total is None and stack_rollups:
                 stack_total = max(
                     stack_rollups,
@@ -1444,6 +1459,8 @@ def compile_module_shells(
             }
         if stack_total is not None:
             compiled_module["stackTotal"] = stack_total
+        if "title" in item:
+            compiled_module["title"] = require_text(item["title"], f"module {module_id!r} title")
         if structural_diagram is not None:
             compiled_module["diagram"] = structural_diagram
         result.append(compiled_module)
@@ -2561,6 +2578,7 @@ def compile_brief(brief: dict[str, Any]) -> tuple[dict[str, Any], list[dict[str,
     if "subtitle" in brief:
         plan["subtitle"] = require_text(brief["subtitle"], "subtitle")
     try:
+        plan["theme"] = scaffold.resolve_theme(brief.get("theme"), value_ids, color_tokens)
         scaffold.validate_plan(plan)
     except ValueError as exc:
         raise BriefError(f"compiled plan failed v1 validation: {exc}") from exc

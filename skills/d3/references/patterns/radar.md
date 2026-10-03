@@ -31,10 +31,10 @@ function renderRadar() {
     const angle = i => i / metrics.length * 2 * Math.PI - Math.PI / 2;
     const line = d3.lineRadial().radius((d, i) => r(d)).angle((d, i) => angle(i)).curve(d3.curveLinearClosed);
     const g = svg.append("g").attr("transform", `translate(${center[0]},${center[1]})`);
-    [40, 70, 100].forEach(v => g.append("circle").attr("r", r(v)).attr("fill", "none").attr("stroke", "#d8dee6"));
+    [40, 70, 100].forEach(v => g.append("circle").attr("r", r(v)).attr("fill", "none").attr("stroke", "#e7e7e7"));
     metrics.forEach((m, i) => {
       const a = angle(i);
-      g.append("line").attr("x2", Math.cos(a) * r(100)).attr("y2", Math.sin(a) * r(100)).attr("stroke", "#d8dee6");
+      g.append("line").attr("x2", Math.cos(a) * r(100)).attr("y2", Math.sin(a) * r(100)).attr("stroke", "#e7e7e7");
       g.append("text").attr("class", "label").attr("x", Math.cos(a) * 160).attr("y", Math.sin(a) * 160).attr("text-anchor", "middle").text(m);
     });
     const areas = g.selectAll(".profile").data(profiles).join("path").attr("d", d => line(d.values)).attr("fill", d => d.color).attr("fill-opacity", .24).attr("stroke", d => d.color).attr("stroke-width", 2.2);

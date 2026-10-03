@@ -32,7 +32,7 @@ def audit(path, screenshot=None):
         snapshot=lambda:page.evaluate("hierarchyDecisions.snapshot()")
         start=snapshot();count=len(data["nodes"]);width=data["pixels"]["cellPixels"]
         def step(value):page.locator("#decision-step").evaluate("(el,value)=>{el.value=value;el.dispatchEvent(new Event('input',{bubbles:true}));}",value)
-        def painted():return page.locator("#art").evaluate("c=>{const d=c.getContext('2d').getImageData(0,0,c.width,c.height).data;let n=0;for(let i=0;i<d.length;i+=4)if(d[i]!==16||d[i+1]!==21||d[i+2]!==31)n++;return n;}")
+        def painted():return page.locator("#art").evaluate("c=>{const d=c.getContext('2d').getImageData(0,0,c.width,c.height).data;let n=0;for(let i=0;i<d.length;i+=4)if(d[i]!==247||d[i+1]!==247||d[i+2]!==247)n++;return n;}")
         check("complete-decision-log",len(start["decisions"])==count and {r["node"] for r in start["decisions"]}==set(range(count)))
         placed=set();priority_ok=True;parent_ok=True;score_ok=True
         config=start["config"];dim=next(d for d in data["dimensions"] if d["key"]==config["priority"]["key"])

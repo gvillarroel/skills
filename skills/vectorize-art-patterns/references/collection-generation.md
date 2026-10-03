@@ -1,5 +1,13 @@
 # Unique Collection Generation
 
+## Contents
+
+- [Count Drawings, Not Recolors](#count-drawings-not-recolors)
+- [Deterministic Variation](#deterministic-variation)
+- [Parameter Coverage](#parameter-coverage)
+- [Uniqueness Gate](#uniqueness-gate)
+- [Visual Review](#visual-review)
+
 Use this workflow when the request is for several independent patterns rather
 than one SVG or a paint-only comparison pair.
 

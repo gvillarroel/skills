@@ -1,5 +1,11 @@
 # Solar Terminator
 
+## Contents
+
+- [Reuse Contract](#reuse-contract)
+- [Astronomical Contract](#astronomical-contract)
+- [Source Excerpt](#source-excerpt)
+
 - **Pattern ID:** `d3-solar-terminator`
 - **Gallery source ID:** `solar-terminator`
 - **Family:** Geospatial

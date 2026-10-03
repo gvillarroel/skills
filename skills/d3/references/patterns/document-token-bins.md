@@ -1,5 +1,10 @@
 # Document Extraction Buckets
 
+## Contents
+
+- [Reuse Contract](#reuse-contract)
+- [Source Excerpt](#source-excerpt)
+
 - **Pattern ID:** `d3-document-token-bins`
 - **Gallery source ID:** `document-token-bins`
 - **Family:** Document

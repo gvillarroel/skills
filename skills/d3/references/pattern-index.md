@@ -1,5 +1,11 @@
 # D3 Pattern Index
 
+## Contents
+
+- [Recipe](#recipe)
+
+## Recipe
+
 Read this file when a user names a `d3-*` ID or asks to adapt a gallery pattern. Then read only the matching file under `references/patterns/`.
 
 Do not read the gallery source for normal pattern generation. Use the gallery source only when changing or validating the gallery fixture.

@@ -1634,10 +1634,12 @@ def build_report(
 
 
 def run(args: argparse.Namespace) -> int:
-    root = args.root.resolve()
-    if not root.exists() or not root.is_dir():
-        print(f"Directory not found: {root}", file=sys.stderr)
+    requested = args.root.resolve()
+    if not requested.exists() or not (requested.is_dir() or requested.is_file()):
+        print(f"Source file or directory not found: {requested}", file=sys.stderr)
         return 2
+    root = requested.parent if requested.is_file() else requested
+    paths = [requested] if requested.is_file() else mermaid_files(root)
     if args.check and args.write:
         print("Use either --check or --write, not both.", file=sys.stderr)
         return 2
@@ -1646,7 +1648,7 @@ def run(args: argparse.Namespace) -> int:
     changed_files: list[str] = []
     pending_writes: list[tuple[Path, str]] = []
 
-    for path in mermaid_files(root):
+    for path in paths:
         styled_text, file_results, changed = style_file(path, root, args.colorset)
         diagrams.extend(file_results)
         if changed:
@@ -1693,9 +1695,9 @@ def run(args: argparse.Namespace) -> int:
 
 def main() -> int:
     parser = argparse.ArgumentParser(
-        description="Apply the standard colorset1 or extended colorset2 palette to Mermaid files in a directory."
+        description="Apply the standard colorset1 or extended colorset2 palette to a Mermaid source file or directory."
     )
-    parser.add_argument("root", type=Path, help="Directory containing .mmd, .mermaid, .md, or .markdown files.")
+    parser.add_argument("root", type=Path, help="One .mmd/.mermaid/.md/.markdown file, or a directory containing only task sources.")
     parser.add_argument(
         "--colorset",
         choices=sorted(PALETTES),

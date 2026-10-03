@@ -406,7 +406,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("input", type=Path)
     parser.add_argument("output", type=Path)
     parser.add_argument("--mode", choices=("organic", "ink", "stain", "collage"), default="collage")
-    parser.add_argument("--colorset", choices=("colorset1", "colorset2"), required=True)
+    parser.add_argument("--colorset", choices=("colorset1", "colorset2"), default="colorset1")
     parser.add_argument("--colors", type=int, default=8)
     parser.add_argument("--smoothing", type=float, default=0.42)
     parser.add_argument(

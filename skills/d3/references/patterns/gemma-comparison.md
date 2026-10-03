@@ -1,5 +1,10 @@
 # Gemma Compare
 
+## Contents
+
+- [Reuse Contract](#reuse-contract)
+- [Source Excerpt](#source-excerpt)
+
 - **Pattern ID:** `d3-gemma-comparison`
 - **Gallery source ID:** `gemma-comparison`
 - **Family:** AI Model

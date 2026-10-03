@@ -1,6 +1,6 @@
 ---
 name: procedural-svg-animation
-description: "Generate, combine, animate, and validate deterministic standalone SVG systems from programmatic geometry, oscillators, paths, particles, fields, simulations, topology, transport, recursive growth, tilings, masks, gradients, and filter graphs. Use for procedural motion studies, generative SVG art, mathematical animation, multi-strata numerical solvers, seeded visual systems, technique exploration, seamless loops, or self-contained animated SVG/HTML where a chart, Mermaid diagram, or manually authored timeline is not the primary abstraction."
+description: "Generates, combines, animates, and validates deterministic standalone SVG systems from programmatic geometry, oscillators, paths, particles, fields, simulations, topology, transport, recursive growth, tilings, masks, gradients, and filter graphs. Use for procedural motion studies, generative SVG art, mathematical animation, multi-strata numerical solvers, seeded visual systems, technique exploration, seamless loops, or self-contained animated SVG/HTML where a chart, Mermaid diagram, or manually authored timeline is not the primary abstraction."
 ---
 
 # Procedural SVG Animation
@@ -35,6 +35,13 @@ uv run --script skills/procedural-svg-animation/scripts/validate_procedural_svg.
 
 6. Open the SVG directly in a browser. Inspect the first state, an intermediate state, the loop boundary, the reduced-motion state, and the final readable composition. Read `references/runtime-and-validation.md` for embedding modes, replay, performance, and browser checks.
 
+Use the bundled browser capture instead of probing rendering packages:
+`uv run --script <skill-root>/scripts/render_procedural_svg.py <output.svg> --screenshot <preview.png> --report <browser.json>`.
+It provisions Playwright, reuses installed Edge/Chrome when managed Chromium is
+absent, and captures ordinary plus reduced-motion evidence. Inspect the PNG
+after the command succeeds; its hashes and nonblank structure are not a visual
+quality verdict. Keep capture outputs in the task workspace.
+
 For a complete browsable pattern catalog, read the catalog command in
 `references/runtime-and-validation.md` and use `build_procedural_gallery.py`
 with an explicit task output directory. Validate that directory with the same
@@ -58,6 +65,8 @@ Treat each result as a pipeline:
 - Encode a complete readable base state in SVG attributes. Animation must enhance that state rather than create the only visible content.
 
 ## Output Rules
+
+- Use `colorset1` by default and `--palette colorset2` for an explicit multicolor request or necessary semantic categories. Read exact tokens from `assets/palettes/colorsets.json`. Apply one active contract to SVG paint, stops, animated paint values, labels, filters and catalog chrome; use opacity separately. The validator checks authored paint as well as `data-palette`. Antialiasing, gradients and filter compositing may produce intermediate rendered pixels; their authored inputs must remain canonical tokens.
 
 - Emit a stable `viewBox`, direct `<title>` and `<desc>`, semantic groups, finite coordinates, unique IDs, and self-contained paint/filter definitions.
 - Preserve root audit metadata from the builder: pattern ID and revision, family, techniques, seed, duration, loop flag, motion engine, resolved parameters, and parameter hash.

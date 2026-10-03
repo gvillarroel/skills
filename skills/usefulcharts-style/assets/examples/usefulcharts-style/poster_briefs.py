@@ -5,7 +5,7 @@
 # ///
 """Original synthetic acceptance data for dense editorial poster compositions."""
 
-COLORS=['#F56550','#77BDDD','#F2C529','#98BD92','#B88BC6','#F49A2C','#EBA1BA','#B7B3A1']
+COLORS=['#9e1b32','#007298','#e77204','#45842a','#652f6c','#f1c319','#004d66','#9e00b3']
 
 
 def base(identifier,title,mode,labels):

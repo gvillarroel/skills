@@ -51,11 +51,27 @@ def period_parts(period, envelope):
     if period.get('treatment') != 'stem':
         return [envelope]
     size = number(period.get('size', 13), 'period.size')
-    names = wrap(period['label'], height-14, size, True)
-    require(len(names)*size*1.1 <= width-4, 'The period name needs a wider capsule.')
-    label_height = min(height, math.ceil(max(text_width(line, size, True) for line in names)+14))
+    if period.get('label_orientation', 'vertical') == 'horizontal':
+        names = horizontal_period_lines(period, width, height)
+        label_height = math.ceil(len(names)*size*1.1+10)
+    else:
+        names = wrap(period['label'], height-14, size, True)
+        require(len(names)*size*1.1 <= width-4, 'The period name needs a wider capsule.')
+        label_height = min(height, math.ceil(max(text_width(line, size, True) for line in names)+14))
     label_y = y+(height-label_height)*period.get('label_position', .5)
     return [(x+(width-stem)/2, y, stem, height), (x, label_y, width, label_height)]
+
+
+def horizontal_period_lines(period, width, height):
+    """Fit an upright name inside its exact dated interval, without shrinking."""
+    size = number(period.get('size', 13), 'period.size')
+    require(width > 14 and size >= 8, 'Horizontal period names need readable type and a usable ribbon width.')
+    names = wrap(period['label'], width-12, size, True)
+    require(all(text_width(line,size,True) <= width-12+.01 for line in names),
+            f'Period {period["id"]} needs a wider horizontal name panel.')
+    require(math.ceil(len(names)*size*1.1+10) <= height,
+            f'Period {period["id"]} needs more room for its horizontal name; widen its ribbon or recompose the page.')
+    return names
 
 
 def transition_geometry(edge, source, target, source_box, target_box):

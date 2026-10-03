@@ -7,7 +7,7 @@ import { chromium } from 'playwright'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const exampleRoot = resolve(__dirname, '..')
-const repoRoot = resolve(exampleRoot, '..', '..', '..', '..', '..', '..')
+const repoRoot = resolve(exampleRoot, '..', '..', '..', '..', '..')
 const outputDir = resolve(repoRoot, 'projects', 'threejs-animated-3d-validation', 'artifacts', 'screenshots')
 const viteBin = resolve(exampleRoot, 'node_modules', 'vite', 'bin', 'vite.js')
 

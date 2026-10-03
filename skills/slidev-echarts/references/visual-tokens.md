@@ -1,6 +1,6 @@
 # Visual Tokens
 
-Use these tokens for D3 animated examples, replayable galleries, generated SVG assets, and standalone animation-focused artifacts.
+Use these exact tokens for this skill’s authored visuals. Read [the colorset output contract](colorset-contract.md): colorset1 is the default red/neutral subset; the full-color roles below belong to colorset2 and require its declared selection.
 
 ## Typography
 

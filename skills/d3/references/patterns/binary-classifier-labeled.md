@@ -1,5 +1,10 @@
 # Binary Classifier Labels
 
+## Contents
+
+- [Reuse Contract](#reuse-contract)
+- [Source Excerpt](#source-excerpt)
+
 - **Pattern ID:** `d3-binary-classifier-labeled`
 - **Gallery source ID:** `binary-classifier-labeled`
 - **Family:** AI

@@ -13,13 +13,13 @@ npm install --save-dev playwright tsx
 Validate without recording video:
 
 ```powershell
-npx tsx C:\path\to\skills\video\scripts\record-slidev-video.ts --deck C:\path\to\deck --skip-video
+npx tsx C:/path/to/skills/video/scripts/record-slidev-video.ts --deck C:/path/to/deck --skip-video
 ```
 
 Record final video artifacts:
 
 ```powershell
-npx tsx C:\path\to\skills\video\scripts\record-slidev-video.ts --deck C:\path\to\deck --out C:\path\to\projects\deck-video\artifacts\videos
+npx tsx C:/path/to/skills/video/scripts/record-slidev-video.ts --deck C:/path/to/deck --out C:/path/to/projects/deck-video/artifacts/videos
 ```
 
 ## Requirements

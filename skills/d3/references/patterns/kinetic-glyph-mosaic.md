@@ -1,5 +1,17 @@
 # Kinetic Glyph Mosaic
 
+## Contents
+
+- [Route Contract](#route-contract)
+- [Data Contract](#data-contract)
+- [Geometry Contract](#geometry-contract)
+- [Material And Motion Contract](#material-and-motion-contract)
+- [Interaction And Accessibility](#interaction-and-accessibility)
+- [Minimal Manual Recipe](#minimal-manual-recipe)
+- [Validation](#validation)
+- [Known Pitfalls](#known-pitfalls)
+- [Isolated Workspace Notes](#isolated-workspace-notes)
+
 - **Pattern ID:** `d3-kinetic-glyph-mosaic`
 - **Family:** Text interaction
 - **Use when:** Text should look like ordinary bold typography at rest, then reveal that its glyphs are assembled from squares, short line segments, dots, or mixed geometry on hover, keyboard focus, or press.

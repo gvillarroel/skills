@@ -3,6 +3,7 @@
 # requires-python = ">=3.11"
 # dependencies = [
 #   "playwright>=1.52.0",
+#   "pillow>=10.0.0",
 # ]
 # ///
 
@@ -54,6 +55,7 @@ from playwright.sync_api import (  # noqa: E402
 )
 
 from scaffold_synchronized_svg import validate_plan  # noqa: E402
+from text_contrast import audit_text_contrast  # noqa: E402
 
 
 REQUIRED_METHODS = {
@@ -1083,6 +1085,9 @@ class Audit:
             "focusGroupCount": 0,
             "focusReadabilityCheckCount": 0,
             "focusReadabilityIssueCount": 0,
+            "textContrastCheckCount": 0,
+            "textContrastLabelCount": 0,
+            "textContrastIssueCount": 0,
             "timelineSampleCount": 0,
             "bindingCount": 0,
             "negativeControlComparisons": 0,
@@ -2457,6 +2462,7 @@ def audit_scenarios(page: Page, audit: Audit, plan: dict[str, Any], current: dic
             idempotence_errors(after, repeated_capture),
         )
         audit_visual_geometry(page, audit, f"scenario-{scenario_id}-visual-geometry")
+        audit_rendered_text(page, audit, f"scenario-{scenario_id}-text-contrast")
         audit_quantitative_semantics(page, audit, f"scenario-{scenario_id}-quantitative-semantics")
         audit_accessibility_tree(page, audit, f"scenario-{scenario_id}-accessibility-tree")
         audit.snapshots["scenarios"][scenario_id] = repeated_capture["snapshot"]
@@ -2892,83 +2898,41 @@ def audit_zero_flow_boundaries(page: Page, audit: Audit, plan: dict[str, Any]) -
     invoke(page, "reset")
 
 
-def audit_focus_readability(page: Page, audit: Audit, check_id: str) -> None:
-    details = page.evaluate(
-        r"""
-        () => {
-          const navigable = Boolean(window.svgSync.getPlan().navigation);
-          const parseColor = (value) => {
-            const match = String(value).match(/rgba?\((\d+(?:\.\d+)?),\s*(\d+(?:\.\d+)?),\s*(\d+(?:\.\d+)?)/);
-            return match ? match.slice(1, 4).map(Number) : null;
-          };
-          const linear = (channel) => {
-            const value = channel / 255;
-            return value <= 0.04045 ? value / 12.92 : ((value + 0.055) / 1.055) ** 2.4;
-          };
-          const luminance = (rgb) => 0.2126 * linear(rgb[0]) + 0.7152 * linear(rgb[1]) + 0.0722 * linear(rgb[2]);
-          const contrast = (first, second) => {
-            const light = Math.max(luminance(first), luminance(second));
-            const dark = Math.min(luminance(first), luminance(second));
-            return (light + 0.05) / (dark + 0.05);
-          };
-          const modules = [];
-          const issues = [];
-          for (const group of document.querySelectorAll('.sync-module[data-focused="false"]')) {
-            if (navigable && group.getAttribute("data-camera-active") !== "true") continue;
-            const moduleId = group.getAttribute("data-module-id") || "unknown";
-            const groupStyle = getComputedStyle(group);
-            const frame = group.querySelector(":scope > .module-frame");
-            const background = parseColor(frame ? getComputedStyle(frame).fill : "rgb(255,255,255)") || [255,255,255];
-            const textRecords = [];
-            const forbiddenFilter = groupStyle.filter !== "none" && (
-              !navigable || /(?:opacity|brightness|contrast|saturate)\(/.test(groupStyle.filter)
-            );
-            if (Number(groupStyle.opacity) < 0.999 || forbiddenFilter) {
-              issues.push({moduleId, reason: "focus treatment dims or filters the whole module container"});
-            }
-            for (const text of group.querySelectorAll("text")) {
-              let opacity = 1;
-              let current = text;
-              while (current) {
-                opacity *= Number.parseFloat(getComputedStyle(current).opacity || "1");
-                if (current === group) break;
-                current = current.parentElement;
-              }
-              const foreground = parseColor(getComputedStyle(text).fill);
-              const ratio = foreground ? contrast(foreground, background) : 0;
-              const record = {
-                text: (text.textContent || "").replace(/\s+/g, " ").trim(),
-                opacity: Number(opacity.toFixed(3)),
-                contrast: Number(ratio.toFixed(2))
-              };
-              textRecords.push(record);
-              if (opacity < 0.999) issues.push({...record, moduleId, reason: "non-focused text is opacity-dimmed"});
-              if (ratio < 4.5) issues.push({...record, moduleId, reason: "non-focused text contrast is below 4.5:1"});
-            }
-            modules.push({moduleId, groupOpacity: groupStyle.opacity, groupFilter: groupStyle.filter, textRecords});
-          }
-          return {modules, issues};
-        }
-        """
-    )
-    issues = details.get("issues", []) if isinstance(details, dict) else []
+def audit_rendered_text(page: Page, audit: Audit, check_id: str) -> dict[str, Any]:
+    details = audit_text_contrast(page)
+    findings = [item for item in details["findings"] if item["status"] != "pass"]
     errors = [
-        f"module {issue.get('moduleId')!r}: {issue.get('reason')} "
-        f"(text={issue.get('text')!r}, opacity={issue.get('opacity')}, contrast={issue.get('contrast')})"
-        for issue in issues
-        if isinstance(issue, dict)
+        f"text {item['id']!r} {item.get('text', '')!r}: "
+        f"{item.get('reason', 'local text/background contrast is below 4.5:1')} "
+        f"(ratio={item.get('ratio')}, background={item.get('background')})"
+        for item in findings
     ]
+    if not details["checked"] and not errors:
+        errors.append("no visible text was measured in this view")
+    audit.metrics["textContrastCheckCount"] += 1
+    audit.metrics["textContrastLabelCount"] += details["checked"]
+    audit.metrics["textContrastIssueCount"] += len(errors)
+    audit.finish_check(check_id, errors, {
+        key: value for key, value in details.items() if key != "findings"
+    } | {"findings": findings})
+    return details
+
+
+def audit_focus_readability(page: Page, audit: Audit, check_id: str) -> None:
+    # Include focused text and outer controls; use the local painted background.
+    details = audit_rendered_text(page, audit, check_id)
     audit.metrics["focusReadabilityCheckCount"] += 1
-    audit.metrics["focusReadabilityIssueCount"] += len(errors)
-    audit.finish_check(
-        check_id,
-        errors,
-        {
-            "moduleCount": len(details.get("modules", [])) if isinstance(details, dict) else 0,
-            "modules": details.get("modules", []) if isinstance(details, dict) else [],
-            "issues": issues,
-        },
-    )
+    audit.metrics["focusReadabilityIssueCount"] += details["failed"] + details["incomplete"]
+
+
+def audit_navigation_text(page: Page, audit: Audit, plan: dict[str, Any]) -> None:
+    if not is_navigable_plan(plan):
+        return
+    invoke(page, "pauseCamera")
+    for anchor in plan["navigation"]["anchors"]:
+        page.evaluate("id => window.svgSync.navigateTo(id, {updateHash:false})", anchor["id"])
+        audit_rendered_text(page, audit, f"text-view-{anchor['id']}-contrast")
+    invoke(page, "resetCamera")
 
 
 def audit_focus(page: Page, audit: Audit, plan: dict[str, Any]) -> None:
@@ -4082,6 +4046,7 @@ def audit_reduced_motion(
     try:
         open_svg(page, svg_path, timeout_ms)
         reduced_plan = page.evaluate("() => window.svgSync.getPlan()")
+        audit_rendered_text(page, audit, "reduced-motion-text-contrast")
         if reduced_plan != plan:
             audit.fail("reduced-motion-plan", "reduced-motion load returned a different plan")
         initial_source, initial_derived = scenario_state(plan, plan["initialScenario"])
@@ -4128,7 +4093,7 @@ def audit_reduced_motion(
             "pressed": "false",
             "disabled": "true",
             "tabIndex": -1,
-        }
+        } if plan.get("timeline") else None
         audit.finish_check(
             "reduced-motion-playback-control",
             [] if reduced_control == expected_reduced_control else [
@@ -4280,6 +4245,7 @@ def audit_script_free(
     attach_error_collectors(page, audit, "script-free")
     try:
         page.goto(svg_path.as_uri(), wait_until="load", timeout=timeout_ms)
+        audit_rendered_text(page, audit, "script-free-text-contrast")
         details = page.evaluate(
             r"""
             () => {
@@ -4407,7 +4373,7 @@ def audit_normal_page(
     try:
         open_svg(page, svg_path, args.timeout_ms)
         plan = check_api(page, audit)
-        if plan.get("timeline", {}).get("autoplay"):
+        if (plan.get("timeline") or {}).get("autoplay"):
             autoplay_before = capture(page)
             page.wait_for_timeout(120)
             autoplay_after = capture(page)
@@ -4439,6 +4405,7 @@ def audit_normal_page(
         invoke(page, "pause")
         invoke(page, "reset")
         audit_visual_geometry(page, audit)
+        audit_rendered_text(page, audit, "initial-text-contrast")
         audit_quantitative_semantics(page, audit, "initial-quantitative-semantics")
         audit_accessibility_tree(page, audit, "initial-accessibility-tree")
         audit_relationship_contrast(page, audit, "initial-relationship-contrast")
@@ -4469,6 +4436,7 @@ def audit_normal_page(
         audit.metrics["bindingCount"] = len(current["bindings"])
 
         audit_navigation(page, audit, plan, args.timeout_ms)
+        audit_navigation_text(page, audit, plan)
         audit_real_input_controls(page, audit, plan)
         current = capture(page)
         current = audit_scenarios(page, audit, plan, current)

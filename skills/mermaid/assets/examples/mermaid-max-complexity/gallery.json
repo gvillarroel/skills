@@ -860,8 +860,8 @@
       "staticSvg": "svg/colorset1/flowchart.static.svg",
       "animatedSvg": "svg/colorset1/flowchart.animated.svg",
       "sourceSha256": "2964a749695b9fc488f5c65bcdb0cdfbc95ae40d6e2498aad0cf815a91de93d2",
-      "staticSha256": "e471eacdf1e0f1b595bc4090a3ab3552601cbfeb2b154d4e63fb3a098c639d96",
-      "animatedSha256": "f6df187fc56131d0e0c7562b4fd23a1cae93cf6a10618edfaafe3d546d988c05"
+      "staticSha256": "24f384c5e8e4e25118d47d1171b13ee5e4dd4b6d13707f0f28a36b02cce3c8ce",
+      "animatedSha256": "875adfe38489aae8ee7b3f66e76000a35cacd25eb85747a3d08e0da4ffd56970"
     },
     {
       "id": "mermaid-flowchart-cs2",
@@ -872,8 +872,8 @@
       "staticSvg": "svg/colorset2/flowchart.static.svg",
       "animatedSvg": "svg/colorset2/flowchart.animated.svg",
       "sourceSha256": "63b5612a0c7a5ec50b76dc8bc1b28d9034bf7e8b6fea6adaff6cd67bd911eb56",
-      "staticSha256": "eec35e192d6059006eb871fe5b1f1b49b2eda9fd6b307a7cc3ed33a49636cf95",
-      "animatedSha256": "ac29fb072466d9fc0bc80267bc806707e7d3d248f22346ecbceb8604499cfaaa"
+      "staticSha256": "3dd0810dc23ba3c9465b163c3e1f2b0375a87d867da0ea7dfb8ce99db742b0fc",
+      "animatedSha256": "b08510bb042ed9b659dbac0ad1a5c9a630f3ce07f7945926280854947c7ffddc"
     },
     {
       "id": "mermaid-swimlane-cs1",
@@ -884,8 +884,8 @@
       "staticSvg": "svg/colorset1/swimlane.static.svg",
       "animatedSvg": "svg/colorset1/swimlane.animated.svg",
       "sourceSha256": "38ec08e8e3b4c8c5a9a459fb00261d198e8680406bfbf665dd64fb098bc26c6d",
-      "staticSha256": "6206a76961d9cfd87555a5c9c90612bb91d361676e4bf0b7fc8882725529aa0d",
-      "animatedSha256": "6da2b48fab073c22720b9f6d67fc154229400cbdcffa25e1f1e9ce7f1a8937f3"
+      "staticSha256": "54cb0325ee6ac8d673f4eedacf2cd4dad2fc0d828197505b00816d4cb1ba4793",
+      "animatedSha256": "6c2c10553bee32f986229a453caec61c044aa8b7d4c2e0949e200768c7733400"
     },
     {
       "id": "mermaid-swimlane-cs2",
@@ -896,8 +896,8 @@
       "staticSvg": "svg/colorset2/swimlane.static.svg",
       "animatedSvg": "svg/colorset2/swimlane.animated.svg",
       "sourceSha256": "0e60d5040b61106579d70a1c5d49b9199eb93aac18cec0c521a8fe6a390dd26f",
-      "staticSha256": "5efade39d9682091a7ce8eeb688c55e7beca4726a71706a1aafd6d16ca3d4274",
-      "animatedSha256": "89731241b1c6a6b3368d57423843d956ea3c0443afcd08176a26f727cb443a64"
+      "staticSha256": "c69b6119cfec32c5c00d7320f2ccab9b33155e4bfbfbb968d278e92ed33d9039",
+      "animatedSha256": "968f8f3b6718ab029aa7f92668598da2e99f1043e2e69f08c05d36a1aeb66077"
     },
     {
       "id": "mermaid-sequence-cs1",
@@ -908,8 +908,8 @@
       "staticSvg": "svg/colorset1/sequence.static.svg",
       "animatedSvg": "svg/colorset1/sequence.animated.svg",
       "sourceSha256": "a265929b027cc727046652e17633c6ae09c87fbea6e414f22750bf3fd1381a78",
-      "staticSha256": "8b68ff4f5f6d157358d70ee2a7535dcbd8715c3fec956a058819bc2f0a526726",
-      "animatedSha256": "1552c67938a2ad95c59b5c8143cd69a2cdf9e7cd343f5fde67ed4a63104580c6"
+      "staticSha256": "5b9f6ca8d8e4a75171ad379a624d10a9cf351f4a4b1b417ba58b9c298ad09e24",
+      "animatedSha256": "08b46f07e49804d6edf7cac8a4b4d63eb7564e35901e65b5656c4c368d073097"
     },
     {
       "id": "mermaid-sequence-cs2",
@@ -920,8 +920,8 @@
       "staticSvg": "svg/colorset2/sequence.static.svg",
       "animatedSvg": "svg/colorset2/sequence.animated.svg",
       "sourceSha256": "545e9fe3063efda3bfa50195d814a7429837a627c1b8c449a45cca1efc2d2d15",
-      "staticSha256": "a950179395f635f9006eb859eea6d64ac12a285462711700134ec7fa29cb66d2",
-      "animatedSha256": "16d5d87783e1a1cd82fee5adde323fe69f32a6ab1eebb57c25b8330996fc10a2"
+      "staticSha256": "bc63334a8891c6d108543aebbd8485ce806ceb61a3d72061cea19fa344a8120b",
+      "animatedSha256": "f36a2dd123b2aec36f4a267b1a1ca45c6758276c1de012cae1d6509a50341756"
     },
     {
       "id": "mermaid-class-cs1",
@@ -932,8 +932,8 @@
       "staticSvg": "svg/colorset1/class.static.svg",
       "animatedSvg": "svg/colorset1/class.animated.svg",
       "sourceSha256": "f478dc9a5cdeae7feec6ab58822300ae1f200296d02f0a7db5295761b83e63f5",
-      "staticSha256": "d9b26eb635dd74bfcaa5e1e3bf854e3fcb6a73ec8dcc895d8d3424dd195f5fc9",
-      "animatedSha256": "829bddc205ebff32de68621aff60dfd8cccaa57645f1f4828bd403f09f575a2b"
+      "staticSha256": "f5e0d3585a7c241745909d7aab258f152b0122243b0dafce72eb2254238caeb2",
+      "animatedSha256": "44a36eb3e88b9b43068d92e5d2ca8732f68b341b719fa85599453a9814046693"
     },
     {
       "id": "mermaid-class-cs2",
@@ -944,8 +944,8 @@
       "staticSvg": "svg/colorset2/class.static.svg",
       "animatedSvg": "svg/colorset2/class.animated.svg",
       "sourceSha256": "3f85f3bd3748bfd59c1fdf3ca665f346d60cf017e39413f6088f2b3a7d327646",
-      "staticSha256": "4af35a1d64e0772cb33c690d181aa9d1b3069487f3de0e2eb439e8fbb6573a18",
-      "animatedSha256": "f4eb6e93ccf4d1fd4f2dd867055a6a7505249b83593af472483a9a5c744ba522"
+      "staticSha256": "233bffa80d82669557e7ecbdba4338f130f667be910a21ab6618e7bf8f1dfc2f",
+      "animatedSha256": "386e6d67a64f0beb085f4b8915132a8ea6ca262890ff7b0c9bf385df8e1836af"
     },
     {
       "id": "mermaid-state-cs1",
@@ -956,8 +956,8 @@
       "staticSvg": "svg/colorset1/state.static.svg",
       "animatedSvg": "svg/colorset1/state.animated.svg",
       "sourceSha256": "1ecb7cc628683d384d50f6141536c132f9873c099fb5033c2f975ece6830052e",
-      "staticSha256": "163c86211da2ad321be119cd12bb3fba89af646a8f8a00c50b1e181873767b75",
-      "animatedSha256": "14bd9e532ddc34ef58c8a7c21d8e724505fd3cce41f721dd003c92a18661827b"
+      "staticSha256": "46f072db9c7e1343687ccbe68d37f97be266bbc7091ca26116e395a7ce1d3e78",
+      "animatedSha256": "74efe520d2f4315357ebd79dc2376a24bd11b365efc123eb2544629369d7afa1"
     },
     {
       "id": "mermaid-state-cs2",
@@ -968,8 +968,8 @@
       "staticSvg": "svg/colorset2/state.static.svg",
       "animatedSvg": "svg/colorset2/state.animated.svg",
       "sourceSha256": "004f853665b5f861a38a0d8d3553b5f9b43505399701c39058b7194a4f4ecbc3",
-      "staticSha256": "e5464b70142b2f572c2ed0e0d90151bc49b50795b8b7d3d26d117e2771463c1d",
-      "animatedSha256": "959d2b3ed3c55299833fdd4cb0cb5c0e0a6f98c000dad77b1be3b4302c90fdc4"
+      "staticSha256": "b5f26709714979bd68ecefb3f14f99cb69025e43b60713c172a5cb4e06ae717e",
+      "animatedSha256": "4b3e222af5806eed4cb8fbbd74a0cbb989a7bc9820cc4c227ad67967f8d26b17"
     },
     {
       "id": "mermaid-er-cs1",
@@ -980,8 +980,8 @@
       "staticSvg": "svg/colorset1/er.static.svg",
       "animatedSvg": "svg/colorset1/er.animated.svg",
       "sourceSha256": "f2c2addf4b3a02faff5b531a5325a8be8b71ef3836bd98ed8bb82663b322814e",
-      "staticSha256": "ccf151a7922b7991512ffa917cdfda4f65963aa0f11af8ef1400c53e07d5616d",
-      "animatedSha256": "d12d69a72228468b06639b8c2629f691418dcfa2a3ff5d9a0b71ecefd3cfeb99"
+      "staticSha256": "96a1ed059e3db890f9436e03c567bb8b3a46d5c1876c3d6e147bee311cdf4989",
+      "animatedSha256": "c05270aec8363a09efa28eb6a36df1c8509afc2f53ada2b4941bcf3f33e76218"
     },
     {
       "id": "mermaid-er-cs2",
@@ -992,8 +992,8 @@
       "staticSvg": "svg/colorset2/er.static.svg",
       "animatedSvg": "svg/colorset2/er.animated.svg",
       "sourceSha256": "6bd314923bb854bc4deeef60bb463056db038063538f09128c0fabd5d9660e32",
-      "staticSha256": "106b3e4536902a91318ab82f66d979010513331b55419a8081e244f807efbe15",
-      "animatedSha256": "1c69898218a22f1f5e3dd90d9e926c9f13f9878b20553747edbe07f899c649d6"
+      "staticSha256": "e8e351e1566b12ec014a29c6851e7004489e7a03ca0977b10640b911e8f9dfef",
+      "animatedSha256": "3770c2fa55650ebfb921eb3ff4bdb4b4d840db16e925b5d245cc3f33152ebdb9"
     },
     {
       "id": "mermaid-user-journey-cs1",
@@ -1004,8 +1004,8 @@
       "staticSvg": "svg/colorset1/user-journey.static.svg",
       "animatedSvg": "svg/colorset1/user-journey.animated.svg",
       "sourceSha256": "a0551fe5612b9e4ddc6a1e9b4ac65ea755caba04bc2d5d92b7da141c1a621792",
-      "staticSha256": "ed604f12ca34fe4fe7e696ea978063fcfb13dfff7eea84caa511c615ef229ad2",
-      "animatedSha256": "1a055adca1c6bcb3f9151e67c737557f075a63f751c5d768815f6ecc75bc075c"
+      "staticSha256": "24a91c80969f25070d9bbf63d2c8d06e1f35c6ef0300e5f6d1442a2c47e0cdf8",
+      "animatedSha256": "260f82d409aef5225d80c4b272a602d5c8a0ee1f6a7fe10c70cbe2a7e7e6df5b"
     },
     {
       "id": "mermaid-user-journey-cs2",
@@ -1016,8 +1016,8 @@
       "staticSvg": "svg/colorset2/user-journey.static.svg",
       "animatedSvg": "svg/colorset2/user-journey.animated.svg",
       "sourceSha256": "57904522455e0aafc27ffa2fe4c36b8f5d4e4b597e6d6c241aac1cf19ec96a19",
-      "staticSha256": "615af07597563347121f5b5db58aae83e7fa1eeb0224bd4874e8e1f647a26e51",
-      "animatedSha256": "1f3bfa9d6efba367a85b63aa3f90a88e9b56b085a8ac2220d780048cc2e80ef6"
+      "staticSha256": "bf6cd47907a2e0e4a8c124d269cdbe293bf0069ae0dee25f81458147cb6e42d4",
+      "animatedSha256": "634a4665eef0fa17c64e3d3059f86f8b53e6de9def84e8060cc1f6238a77b90d"
     },
     {
       "id": "mermaid-gantt-cs1",
@@ -1028,8 +1028,8 @@
       "staticSvg": "svg/colorset1/gantt.static.svg",
       "animatedSvg": "svg/colorset1/gantt.animated.svg",
       "sourceSha256": "8e10e69140fa126c71905692d0fdf008f4e4b8f47ff3793c0cbd2d61ec9e72c9",
-      "staticSha256": "082e9b9377576630818db74740dc3076b7605aff1e2208daa9f1283d2f41af36",
-      "animatedSha256": "90fe843ca9a80c83753d5b08a48a10150340c59bf00ec49e67d06a97b0f0f811"
+      "staticSha256": "41529e45006a3221902fe54d3cb2c73aa45609078bce9b7825c8e96569562af9",
+      "animatedSha256": "c4143c5f24507ff8fa9d5e871a915544f0677916a2cd4b5424e039ec0a0c8858"
     },
     {
       "id": "mermaid-gantt-cs2",
@@ -1040,8 +1040,8 @@
       "staticSvg": "svg/colorset2/gantt.static.svg",
       "animatedSvg": "svg/colorset2/gantt.animated.svg",
       "sourceSha256": "a1f2fbe182c89b1115a0b4d776da68a0d00cff7e2326047e15519d00fe331dc6",
-      "staticSha256": "c8ff4f7e2e28324e8d8669ef0fa77101235ee88dc80c5ae556f66ee07c175ce9",
-      "animatedSha256": "28ed86279768142cd29dcc7c13fa6722a136520a1fed322dac84b47a4ae0ad83"
+      "staticSha256": "b565165337ca182e90626cb14750c772a414ad840426e0f00fa41e01b7816e98",
+      "animatedSha256": "4f8cb87f6548ff6f0f11f97b5f587047ed65d709ef58eac5b88e8887cd1342b8"
     },
     {
       "id": "mermaid-pie-cs1",
@@ -1052,8 +1052,8 @@
       "staticSvg": "svg/colorset1/pie.static.svg",
       "animatedSvg": "svg/colorset1/pie.animated.svg",
       "sourceSha256": "cb3f0952a06a6773e3dd31923e9ca2c84647cb0737dcdc25d1762b6ad32a5b1a",
-      "staticSha256": "85b110286e71f5412afaf71e37fd5344fa29077c9f06331b328b0257fd5861fb",
-      "animatedSha256": "affdef2bca74405b407ee9c2f3aff832842dd39456754c03d5a23343f6011e2b"
+      "staticSha256": "3ad13cda1300f99a1ec6e4747f3e6d1a34c8a0454454d57be51fc4a42a1a4ceb",
+      "animatedSha256": "c1c8f547ed96d3c630fcb89331da880c7d16f2cc71fadfb332c5e2065699d234"
     },
     {
       "id": "mermaid-pie-cs2",
@@ -1064,8 +1064,8 @@
       "staticSvg": "svg/colorset2/pie.static.svg",
       "animatedSvg": "svg/colorset2/pie.animated.svg",
       "sourceSha256": "f3449b7501fd25d030af7ee8ef349e39ecf56c3bdd8089a5dc7b44fa7e317b52",
-      "staticSha256": "df537f57fe9120b82b3270745ab7ebed33411503829d4fe600e198bd3bc3f88e",
-      "animatedSha256": "2412bcc181fba136513cec532ed4ea736701d43a1e06a217533ad2872ab5bfa5"
+      "staticSha256": "8540708c967819652d2b1d1d550ad7a66a09dff36316c4d74a99d7ce695c3a7d",
+      "animatedSha256": "53496bdc7574db618d48a52e79654f9c1c69bd5b169b5ce5e3f457be3910405e"
     },
     {
       "id": "mermaid-quadrant-cs1",
@@ -1076,8 +1076,8 @@
       "staticSvg": "svg/colorset1/quadrant.static.svg",
       "animatedSvg": "svg/colorset1/quadrant.animated.svg",
       "sourceSha256": "df8f81a17c1c6e660bc4696f46178e1885624e618b1282c1f1c8b8fe83912d5b",
-      "staticSha256": "f9b0fd84dd64a3f550b9e4bf421b6bd1d291a6674fcec4d688b335f06c86fe5a",
-      "animatedSha256": "31fe3122096b4c1e9f03ca4856c554d1065b22be88e2944b5aff4e4f6442dd8b"
+      "staticSha256": "5be737d6fdd5746d8ceddc64b5a323457d94c77a2adf39b22146d98475a28eec",
+      "animatedSha256": "1badad79f00bc26edb1ecf56480c8ba18553aa7e5bd0fd8ac66fa982c60c06a3"
     },
     {
       "id": "mermaid-quadrant-cs2",
@@ -1088,8 +1088,8 @@
       "staticSvg": "svg/colorset2/quadrant.static.svg",
       "animatedSvg": "svg/colorset2/quadrant.animated.svg",
       "sourceSha256": "309b93c0a03b406b905d61a9d59c049d6a1745132518c3d42660ce848dea39a8",
-      "staticSha256": "3306bea58c5832433b92b364af5dfef19294974f97737b3c21148a49a2c75b57",
-      "animatedSha256": "ac254c07e5819750cb6a7352d94e0cc8e8b62b0a9386022346e0adab6bf42ea5"
+      "staticSha256": "39f7e05f2175b641e338d676b7089333594e825eff4899dd8f8b1d6500c6f9e6",
+      "animatedSha256": "7dfa6abf260e7b0b15984a213fbec909b66836294bdd4e0fb253eb31bb5b460f"
     },
     {
       "id": "mermaid-requirement-cs1",
@@ -1100,8 +1100,8 @@
       "staticSvg": "svg/colorset1/requirement.static.svg",
       "animatedSvg": "svg/colorset1/requirement.animated.svg",
       "sourceSha256": "02f45a7d2556740196109dd61a67570df078df332d92a15798fed97fd4224838",
-      "staticSha256": "dbd9214a7622dd556eb51deb175fc7431a75e8c6551130de0ac399f7e4293c1e",
-      "animatedSha256": "abda4af2fa1b4878e3c4edb0326de4fe44c3378caa96c32fe34c6e03cb92c04e"
+      "staticSha256": "2eca90bbe7462e852d7cf6fc555d5aeb22f9aefca1b3c91d547d9b5bad9726dd",
+      "animatedSha256": "beff89c8cf97c8091aeb9e96dea18bf07de7dbc12950a2469a02a8bd34384f5b"
     },
     {
       "id": "mermaid-requirement-cs2",
@@ -1112,8 +1112,8 @@
       "staticSvg": "svg/colorset2/requirement.static.svg",
       "animatedSvg": "svg/colorset2/requirement.animated.svg",
       "sourceSha256": "23d80789be6aeb4ac826dde90aa247f076bf1076cbbaa1f52f034d270f61fbd8",
-      "staticSha256": "0390df93d7e9d7cdce2ed360139705cc582e4831ba4e4021e42666c3de2222a8",
-      "animatedSha256": "88196022b7f60989c7236562fc1918298caa05ced4bb4149705737903b0d59f8"
+      "staticSha256": "9551153099c93f16cc54365ee7480b5306c44248812290981060b22e69b462b0",
+      "animatedSha256": "4648add0e6e439edf231407616f9b7aff98e4edf0f232bfb839f6907ca5d296c"
     },
     {
       "id": "mermaid-gitgraph-cs1",
@@ -1124,8 +1124,8 @@
       "staticSvg": "svg/colorset1/gitgraph.static.svg",
       "animatedSvg": "svg/colorset1/gitgraph.animated.svg",
       "sourceSha256": "da2d091c5dd4c81955ee216d981553d55964d82159fe167c826ef51129f62bb6",
-      "staticSha256": "e771fa90a4ac2c1d76502b8a6e0fe7b28ef60e0354c3d19a90ab4755de698676",
-      "animatedSha256": "cd092611fc7f2a2bc24be97d453ec6392ad27d750f74a429b26d434e02354ae8"
+      "staticSha256": "3cf2e1e534feadacae941e15c1933da1410e86f2f919ee829946076ab183ea6c",
+      "animatedSha256": "c19e08c0dce36bac849af4eef110b8e5e2d54cdaae2903d67d98e140d4275e2e"
     },
     {
       "id": "mermaid-gitgraph-cs2",
@@ -1136,8 +1136,8 @@
       "staticSvg": "svg/colorset2/gitgraph.static.svg",
       "animatedSvg": "svg/colorset2/gitgraph.animated.svg",
       "sourceSha256": "8d0dceea9c23ddf7956c8e16ba2bb6c41fae35846d8578f84aad250d0dd950cc",
-      "staticSha256": "86d14e69b0a0a9d0200ccef93078bf9c0f101f8bd3eff69e171bc2b9bb2a14d1",
-      "animatedSha256": "29a2766ef3a970dbd7a7cd212bd60483cfe2b72ae56d0237b1c4f82d056f4de9"
+      "staticSha256": "d86d29a7dbcd53d2ccb1a35c102a0b6a036eddab89762680e4573a3b55303e65",
+      "animatedSha256": "af7def55d911ee7ff1e357d1ebedc37409fabb2b3489688e9fba6eb12269f2d1"
     },
     {
       "id": "mermaid-c4-cs1",
@@ -1148,8 +1148,8 @@
       "staticSvg": "svg/colorset1/c4.static.svg",
       "animatedSvg": "svg/colorset1/c4.animated.svg",
       "sourceSha256": "87e266f53de442e52bbfc289ed24a859b0efc3c02f75797e0fe9383ebff683ec",
-      "staticSha256": "189e83294860ac79e2b7bffc83fd1b42ed651d75e4fc2973739dda269337acb7",
-      "animatedSha256": "ded49f0cd548e7fa25c794a4b915ddd8658efedabd2cf48e1fca8a4d5e6ad952"
+      "staticSha256": "cedfe54e92ba1b3552620e9cdc30397721db129b775f795e4386d98237ae988a",
+      "animatedSha256": "e801866025f495919b539f82d96fca5079cfc06512a84868914058a32692b0c8"
     },
     {
       "id": "mermaid-c4-cs2",
@@ -1160,8 +1160,8 @@
       "staticSvg": "svg/colorset2/c4.static.svg",
       "animatedSvg": "svg/colorset2/c4.animated.svg",
       "sourceSha256": "eb56a6b5553093987ff0b329f932401215c246e0d5b990f380e7bd63fe541145",
-      "staticSha256": "3b860391ef0dbbd495d5db3bdaad1ee82eb458396cd4f5456e19040e294313e9",
-      "animatedSha256": "72f67057c0aa88caa966111cc3faacfd33baf89572d1c38eb52f3c0cc14d37f6"
+      "staticSha256": "2f7be0c6446583b40842de599c636d1f8a36ab2a2ba7f7b595932a5676d9df5c",
+      "animatedSha256": "4a9662b025ffdd2cfcd2c12fc00eb06896feb970346093b71d7355af660c647a"
     },
     {
       "id": "mermaid-mindmap-cs1",
@@ -1172,8 +1172,8 @@
       "staticSvg": "svg/colorset1/mindmap.static.svg",
       "animatedSvg": "svg/colorset1/mindmap.animated.svg",
       "sourceSha256": "f8a1e6fab0c4fd0a5b9f53fec8649aacd1a46c82c68fabac9abebee0ed88bcbb",
-      "staticSha256": "b847e7049679e7e6e73338e7f0cff88ade585ace624b6f4bf6063463278af51c",
-      "animatedSha256": "5f7d8b8375a529ab68cf932865d2552f4f92bd3ec8f1e864ad2e93ea80989da7"
+      "staticSha256": "d10030b6ec8464aa276c8dc33bc629b81ac087acfad53fa1e78916fdd1526db3",
+      "animatedSha256": "68259c192fc08eb6e3294d145a10e10f302d97e525c08f2eaf4060f7b0c0de48"
     },
     {
       "id": "mermaid-mindmap-cs2",
@@ -1184,8 +1184,8 @@
       "staticSvg": "svg/colorset2/mindmap.static.svg",
       "animatedSvg": "svg/colorset2/mindmap.animated.svg",
       "sourceSha256": "80f8bbbcbe1bee31f26a887e52190234b2f8381f6eeca50e7b405d57deb08e9e",
-      "staticSha256": "efeff00350634b8848b9946c86163d1a860b3422eff733f1d8cef26700af39a6",
-      "animatedSha256": "3badc34e162173966117e46f313334f807ff35f7a5300c4d48bd2c7382e05c9e"
+      "staticSha256": "cb02fe1e1537a4c943845b96d65ecad7d875abbd4ee4fa649b10c6380a77cec1",
+      "animatedSha256": "9bc15a1e779bd646f3913f16c84e97cee1eb9912532a427b7aa317d38c1744f9"
     },
     {
       "id": "mermaid-timeline-cs1",
@@ -1196,8 +1196,8 @@
       "staticSvg": "svg/colorset1/timeline.static.svg",
       "animatedSvg": "svg/colorset1/timeline.animated.svg",
       "sourceSha256": "5fc9950707d56f8336cd74801e518ac2d6cfd3a0358c0e701cb7f5caccf4c6db",
-      "staticSha256": "f78df615fde5c74bb765a86ab6f7004464c537bba32ce80e64858099a46a929e",
-      "animatedSha256": "94684398c35acf3a545486db80c1594c38a8e1cfa6d9b4e381405e237bd120be"
+      "staticSha256": "10954ddce2e6879313bd14af48d3fea7b825291aab9e7c1eea126b7206d8b33f",
+      "animatedSha256": "142b09f8f9ee95d6248d28bba159ed99784e88120234f5c4444cbd4e5f064c5d"
     },
     {
       "id": "mermaid-timeline-cs2",
@@ -1208,8 +1208,8 @@
       "staticSvg": "svg/colorset2/timeline.static.svg",
       "animatedSvg": "svg/colorset2/timeline.animated.svg",
       "sourceSha256": "69b8299c058b8dd05e2a8a5d02cc6f897e12ef68b76de3c3906230a439ae94db",
-      "staticSha256": "1a8dc604e96a816b2e52bd9db8c72454055a398fb3f7102075b34fdfe5f6c81e",
-      "animatedSha256": "effbbce5b4d976d054e5ceacbe23baed1b9a0ed59fee5aeab076a7ff23966338"
+      "staticSha256": "9ec05a1dbbfbf0eac8cfc1f895b45e0d66345507365f6a74d072245924dbd074",
+      "animatedSha256": "6366587dbf78e19428c1153718e50cbbd431a4cfe3ed083388f21017f6666810"
     },
     {
       "id": "mermaid-zenuml-cs1",
@@ -1220,8 +1220,8 @@
       "staticSvg": "svg/colorset1/zenuml.static.svg",
       "animatedSvg": "svg/colorset1/zenuml.animated.svg",
       "sourceSha256": "c08359b7b62edf16d46d51269813372bb34a22edad132af4592b97c9a095ebee",
-      "staticSha256": "b9c28e12e4a2ce7ad8d86649437ff5776a664e76458f1c8fad26fcfd2ddd5c2d",
-      "animatedSha256": "098191b43d14712b8ace7a22c7afb1180e97d055725472fb5c9e174f7413d4bd"
+      "staticSha256": "f2c33e6768354928ebedf0225a704f26e20040bfe52b5bef3ffb6709aa36ff2b",
+      "animatedSha256": "4b9176a3def86bc6c1ed581e0529eb12877d2406936478c0355676f3560f374a"
     },
     {
       "id": "mermaid-zenuml-cs2",
@@ -1232,8 +1232,8 @@
       "staticSvg": "svg/colorset2/zenuml.static.svg",
       "animatedSvg": "svg/colorset2/zenuml.animated.svg",
       "sourceSha256": "23ddc5cab4e06edcf260abe936ba83c0e637e2f41ec87960668597a8d20251c3",
-      "staticSha256": "e7c97fc889b2e4adfa8db715e4f81bc2a3c248b54925672b89a52131692d203c",
-      "animatedSha256": "687d716ef25467f6e79451df2e981e88f367da15fc61c9f2468ee8cededeb8a3"
+      "staticSha256": "8a5a1b45de563d904994b0b72a733bcf6fa294e9a2d4c1b9b7a7f93d330971ef",
+      "animatedSha256": "01095de326b7cf547e93ed02a39217b2c5d4378f8afef6c488155422a6c6f7eb"
     },
     {
       "id": "mermaid-sankey-cs1",
@@ -1244,8 +1244,8 @@
       "staticSvg": "svg/colorset1/sankey.static.svg",
       "animatedSvg": "svg/colorset1/sankey.animated.svg",
       "sourceSha256": "21486951789ded7b0b2c9637268225ca22fc6bda4ad6ec5dbb384676154bff9e",
-      "staticSha256": "803e7cf5cf8889c7a7ca0d49a4a946d7f90cab557ece21a7c7451fe1a0f6f586",
-      "animatedSha256": "c333ac3ef011c55a1ec389d4691ad9a41ee3a16c3a54bdde7495e75b844340a9"
+      "staticSha256": "950b13caef69467485cfc49b9aabcf6e6369e53105eba5f0049739312c52241d",
+      "animatedSha256": "e84baca843a9e63ba7bb0cf4771970855571ff2593e1f9b115459df44cc9e8a2"
     },
     {
       "id": "mermaid-sankey-cs2",
@@ -1256,8 +1256,8 @@
       "staticSvg": "svg/colorset2/sankey.static.svg",
       "animatedSvg": "svg/colorset2/sankey.animated.svg",
       "sourceSha256": "264b6dd32654d022b2191783454f712706020b34ef93d7633af3da9f5d5939c4",
-      "staticSha256": "3c150440eae5c09220ed0753d3e437d3ef518a63208c7a76534ffe9e7f553134",
-      "animatedSha256": "4d774d9afe73c87d33c2994f114b5f2be563674463398b2b88cff5dd10603e3c"
+      "staticSha256": "3c7797fc8688f68b18ff7a68095dba532520c68f3476f5d74e0914d588194c70",
+      "animatedSha256": "c69bcca24bc91613faa70a87045a0863b6c2a90776a84114d8145a6befba54e3"
     },
     {
       "id": "mermaid-xy-chart-cs1",
@@ -1268,8 +1268,8 @@
       "staticSvg": "svg/colorset1/xy-chart.static.svg",
       "animatedSvg": "svg/colorset1/xy-chart.animated.svg",
       "sourceSha256": "089bf26ff5911808af1f71923b5fea63b09b6d45dac441982d171484ed1f7b44",
-      "staticSha256": "a583ebc7133dbb8d162d2421e655d8662b865ceffef9d53c6eef5f45a5315317",
-      "animatedSha256": "a0e96c827dc8d8434b15959d0f6522f89a76cddd20dc26417515446dee98f99a"
+      "staticSha256": "2f5754f3afbe01dd538b92c33139270aac8e10b12538d91047bda3f28cac03a2",
+      "animatedSha256": "d327df879f5821f90ecb6619dcf5513a684d9c7d8fc8468f3251ab1e7ee9d30a"
     },
     {
       "id": "mermaid-xy-chart-cs2",
@@ -1280,8 +1280,8 @@
       "staticSvg": "svg/colorset2/xy-chart.static.svg",
       "animatedSvg": "svg/colorset2/xy-chart.animated.svg",
       "sourceSha256": "04b6c704ff6399ae614d6035546e3792b752e9d33773a6cb07ccbb85e7a12c78",
-      "staticSha256": "f02bca394d0c26320d7e6ce306b60809302035282f1ddaa0c44c33cca4565fe1",
-      "animatedSha256": "61f755bc15097189f340db1eaf5210d67bcb8387f076dccf3313f53b11abb7eb"
+      "staticSha256": "3297c2d1b8bb323db1dcbf12b5ac62a1f9547fdedea56bbd4bef0fa12eb0e09e",
+      "animatedSha256": "6f9dec007d0cf1a0b22a62bd564eccf2a26bfca304aa794c34e34f5957dd1c8a"
     },
     {
       "id": "mermaid-block-cs1",
@@ -1292,8 +1292,8 @@
       "staticSvg": "svg/colorset1/block.static.svg",
       "animatedSvg": "svg/colorset1/block.animated.svg",
       "sourceSha256": "68581032082e1b0173243b209b1abd59564affe12e9701b2ab6d33aecaee4814",
-      "staticSha256": "645bf09f6d25c925077e5f126c52a656ef8424f7bb77ced65ae9e3ddab586b4e",
-      "animatedSha256": "d92c580fe71c6a71833a8bdc79c42d7c0011b7bb15d0b1e000c2ca2b68cfb4cb"
+      "staticSha256": "a79303214240e1b105b60279cc2336da68d61a5b3f786b225680d6131530a399",
+      "animatedSha256": "b38c2d0f4603b434715f4a67092208e24d490d35ff1b15a1203c1e2a9230d0f2"
     },
     {
       "id": "mermaid-block-cs2",
@@ -1304,8 +1304,8 @@
       "staticSvg": "svg/colorset2/block.static.svg",
       "animatedSvg": "svg/colorset2/block.animated.svg",
       "sourceSha256": "613812601e5dbe25e6349d3aa1addc1f7be98874ecec2054ed2b725873ffb9c5",
-      "staticSha256": "e0afa55cb1ec1a9e1a5960d68124c2cee6bfac235aa7243a3674cd07cfba7614",
-      "animatedSha256": "1283d5a6430f3c5aa3481f2cee619ec5c05f2442f60faf31384b40d35db34106"
+      "staticSha256": "35fb8275f5807da4c7c608e013d8ce02031f3a5b80d44ba6049dba67dabcf9c2",
+      "animatedSha256": "0d0123c8becb0457a8596893d4278f68a67c24ec5bf0c2ef747b1d7db355d5a7"
     },
     {
       "id": "mermaid-packet-cs1",
@@ -1316,8 +1316,8 @@
       "staticSvg": "svg/colorset1/packet.static.svg",
       "animatedSvg": "svg/colorset1/packet.animated.svg",
       "sourceSha256": "c70a7055c61b6544afaafc57aba870fbab450069ff1821d5965a8da0c57f096f",
-      "staticSha256": "55a34c72d61857da4f1a0c14733028cff54b8a88058a896da02698ed10db0d76",
-      "animatedSha256": "dd678a8fc58b386f327af97c013e1147f4c03952ee5a2b5304f8659eeab4d2da"
+      "staticSha256": "27170047ef1190a6af4d7fde8c9b98573a8d836781446539cf967d430760ef5c",
+      "animatedSha256": "47a7fb1e51646da5da94a6b4867a1d8233558ea3c1202cd9cdfcf5ce409a5837"
     },
     {
       "id": "mermaid-packet-cs2",
@@ -1328,8 +1328,8 @@
       "staticSvg": "svg/colorset2/packet.static.svg",
       "animatedSvg": "svg/colorset2/packet.animated.svg",
       "sourceSha256": "da1cbd540c6debfe24d4137c45eda8af368e69343210612e925ae5bc2582579a",
-      "staticSha256": "55a34c72d61857da4f1a0c14733028cff54b8a88058a896da02698ed10db0d76",
-      "animatedSha256": "dd678a8fc58b386f327af97c013e1147f4c03952ee5a2b5304f8659eeab4d2da"
+      "staticSha256": "27170047ef1190a6af4d7fde8c9b98573a8d836781446539cf967d430760ef5c",
+      "animatedSha256": "47a7fb1e51646da5da94a6b4867a1d8233558ea3c1202cd9cdfcf5ce409a5837"
     },
     {
       "id": "mermaid-kanban-cs1",
@@ -1340,8 +1340,8 @@
       "staticSvg": "svg/colorset1/kanban.static.svg",
       "animatedSvg": "svg/colorset1/kanban.animated.svg",
       "sourceSha256": "86edc5a976941df1074e452dedea087eaa5501bf9053a30de39cde9f7c23df91",
-      "staticSha256": "3d2fc68a96fa21444b906e2452298db00516abaddedaeb73ef716a8959e12b07",
-      "animatedSha256": "27ac4d4a7f237f407fbf03be8f747c66eae2c023380d7edbe7ab5832deec721c"
+      "staticSha256": "aa8c1910c73bc1dbac7aca3020825b9dac97c9c310bee6e675909cb171fd8bab",
+      "animatedSha256": "29d9d917fea593dac6e7f99b3925e29e3bb9893f6950175fd42dbc5c50d29caf"
     },
     {
       "id": "mermaid-kanban-cs2",
@@ -1352,8 +1352,8 @@
       "staticSvg": "svg/colorset2/kanban.static.svg",
       "animatedSvg": "svg/colorset2/kanban.animated.svg",
       "sourceSha256": "d91e55a3d49518b6e49e6c4137f0d98a555ad0b2aee82febb5407ebb062e97af",
-      "staticSha256": "5ff605c58e8a30e5a37a8b5ac3b3a739f2948553c7de13bd1bec07e5c3eaeafa",
-      "animatedSha256": "6d76508fca14a33707e3d3a078c3c31eb27550d2c6d9fd0f2f3e96d526105e7e"
+      "staticSha256": "aee1d351eae6942ecdf44004913f326d75a25f9874685a70588acef5bd667bc8",
+      "animatedSha256": "7f17d55a412de0dc4df5dded6ed7051677d6c7896357e2c629a233df49fa9a7e"
     },
     {
       "id": "mermaid-architecture-cs1",
@@ -1364,8 +1364,8 @@
       "staticSvg": "svg/colorset1/architecture.static.svg",
       "animatedSvg": "svg/colorset1/architecture.animated.svg",
       "sourceSha256": "5332ab87e696e81c6821322de31d2de2da205b212af3f94e40c496b07b8a8a26",
-      "staticSha256": "bc9b29008866601b4abb3aaf6ed5a7306267887a4e6c2e0e0e8b3958116ad3e2",
-      "animatedSha256": "b9968823f6ad5c0f7d89d7ec7396563f39f534c0d41462fc7e1453b9036b80e7"
+      "staticSha256": "1e64c31e250e38e23f4c4f8383371de93b7b5cb22ca0fe6b164cdd1e6a550bbc",
+      "animatedSha256": "d4565975f3bdd5b755c7432ed3896c061c8ecec9a5fbf5ae50a01bba7feb54d0"
     },
     {
       "id": "mermaid-architecture-cs2",
@@ -1376,8 +1376,8 @@
       "staticSvg": "svg/colorset2/architecture.static.svg",
       "animatedSvg": "svg/colorset2/architecture.animated.svg",
       "sourceSha256": "ee18dc5df5e88a226753a6d82446b2f4edc20a3d4a2d8b9ac4fa751023914659",
-      "staticSha256": "3c665e837202d5d4c0a274504a52b72733c6c45f34827c45cc21c12306b6d30d",
-      "animatedSha256": "4b59a3de7f0c04826b7c8cae6ac8b670e4324c032670437e845514a52c8e7b39"
+      "staticSha256": "97b5fbd24b0c3274ff0eb32bd5df3d9b22e68043d5ceed4614de33d91bacb127",
+      "animatedSha256": "e685531062186271f83e59faeafa5557d29f5ab863daa2bf9d7508884221e1c4"
     },
     {
       "id": "mermaid-radar-cs1",
@@ -1388,8 +1388,8 @@
       "staticSvg": "svg/colorset1/radar.static.svg",
       "animatedSvg": "svg/colorset1/radar.animated.svg",
       "sourceSha256": "e24c2a80be4ebf36751e48c9762970130d93b8cb1c8aa1c8873c2ea2d2f7e23d",
-      "staticSha256": "67962daae228f5c3f0c5d95864af7feaa4c777f21eb7625998428294c7531413",
-      "animatedSha256": "2624c43d73bb0b4fbcdcdd3eaa352dac4781e35d4a86f51a69cecce2b620fb1b"
+      "staticSha256": "e501627befb1e405395bdbceda834e574a90a4f9d8603c53dff42485b2f1eefe",
+      "animatedSha256": "1ccaae099a8f372a5f7d7c0744cd4587b9a35ccfd6799907840569de0e617727"
     },
     {
       "id": "mermaid-radar-cs2",
@@ -1400,8 +1400,8 @@
       "staticSvg": "svg/colorset2/radar.static.svg",
       "animatedSvg": "svg/colorset2/radar.animated.svg",
       "sourceSha256": "81e1c3bc2b48286c08b29a761c2068d8f42d6631b7cd4130d9b1d321154c80e1",
-      "staticSha256": "47aef4da6b3dc543bca4de077aed2bd57c06f0e146a38b25de575993dc13f157",
-      "animatedSha256": "0e0e91fe9bd3bcfa71b9a882ea0e54ed13fe7074b56c0e9fa82d608cc5f8818e"
+      "staticSha256": "704824514edc50aa1b9839bb711be554b3f5acac1d705d4f54d88586779ec5e0",
+      "animatedSha256": "883899dabe0028040c6b7b04e82aa600ff8e661a275f9077dbf541d48ed76433"
     },
     {
       "id": "mermaid-event-modeling-cs1",
@@ -1412,8 +1412,8 @@
       "staticSvg": "svg/colorset1/event-modeling.static.svg",
       "animatedSvg": "svg/colorset1/event-modeling.animated.svg",
       "sourceSha256": "16d0ad2ea726c61778208c77a02dcbb1663ef960500352e5e398a4606dfceae9",
-      "staticSha256": "3b058783e08b5e2070c36ebd87348a28e1b37b31f568c8413fa1f1f8836328d6",
-      "animatedSha256": "6f52b8f6f0cafa8d5406337dfd032998fa76df422974dfeecc255f1eb835f61d"
+      "staticSha256": "dd4fd52f46017e3eaeea9a9b98f58e24bd0da817f8452bb1f99247cdf9ffd816",
+      "animatedSha256": "aa5a99a670ea8071a7b601846955ed4d7104e921a019b080f296a93bfd2104f4"
     },
     {
       "id": "mermaid-event-modeling-cs2",
@@ -1424,8 +1424,8 @@
       "staticSvg": "svg/colorset2/event-modeling.static.svg",
       "animatedSvg": "svg/colorset2/event-modeling.animated.svg",
       "sourceSha256": "926f1a9983091cc1bc4d1ee4dbcfc3da561562a80e9a73afacfc3958c6f10507",
-      "staticSha256": "b0b81e51c11c99069d079d8b2cb14424aa96c2825de46c52b1c73182daf74ecd",
-      "animatedSha256": "605066601cd8fb200aa55b27015750cd8f703142dc18be8c45fbbaedc76a4f74"
+      "staticSha256": "e836feae53b18cdc579236aaca979761e337d9f2009e51af20e646139a3f92c8",
+      "animatedSha256": "44b41e15060f288736f3337fae8a96c6a38dd914eb0459169754fa679d222699"
     },
     {
       "id": "mermaid-treemap-cs1",
@@ -1436,8 +1436,8 @@
       "staticSvg": "svg/colorset1/treemap.static.svg",
       "animatedSvg": "svg/colorset1/treemap.animated.svg",
       "sourceSha256": "25e34ae6d745e0f53b59b6157c81c715e6cc0a4ff0fca3d317537ea99ffb5423",
-      "staticSha256": "bdf0dd56269600cc1c85b585362e40b1a4500449f7925fceb6e392403011104b",
-      "animatedSha256": "2ce09a10e3c42514c1d1607d6cfe270a12116f3932f324a6d3da94c3171e108b"
+      "staticSha256": "81f46dd402130e682a88518f5fb84487ef40d1634ebfdc08f34f5fbc81bc1388",
+      "animatedSha256": "07806b6aa064abde412a9eb7b43adc2ece764c59a983da8d9bad4fe11a456911"
     },
     {
       "id": "mermaid-treemap-cs2",
@@ -1448,8 +1448,8 @@
       "staticSvg": "svg/colorset2/treemap.static.svg",
       "animatedSvg": "svg/colorset2/treemap.animated.svg",
       "sourceSha256": "3fe93c7989eeaa25c3780122ff34c48e7d68350db1d00c468a7386ee940dac59",
-      "staticSha256": "d22ca815adb5a1be1bf0ecf512fde7e86399beafcf2e8b71becdd45042228df0",
-      "animatedSha256": "c76c9a82ffeafc2f9d6475403b18bc7ef4cdd12a4f9c953876570e53188cfcae"
+      "staticSha256": "063dc4e3f7c07e61422055fdac2b2c2300151f6bd7b38c55565c1c59ae3306c2",
+      "animatedSha256": "d208fcc187bbe44a1c37fbe200affedb313bd8051254130758343796592cdde1"
     },
     {
       "id": "mermaid-venn-cs1",
@@ -1460,8 +1460,8 @@
       "staticSvg": "svg/colorset1/venn.static.svg",
       "animatedSvg": "svg/colorset1/venn.animated.svg",
       "sourceSha256": "d3505066e41d158b87c568b33ec4ce1b372bc5b5fa3c5db57487b610a33c6c85",
-      "staticSha256": "2eceaf3ca176b80575eec07c0836922a27fa650be141dfab1cdf82182eec5a82",
-      "animatedSha256": "f4bca2a820eafd267f422154457a170a544124b98248e70f992d57e2f97150aa"
+      "staticSha256": "78bf3b8b0512faaa06a6a5fcf9fc7edb952716cead3729cca9d41e13fa6ed979",
+      "animatedSha256": "17bd68167dbc9f592e31d57fe0802a92fef2cc4c9979d5eb4c55d0555b9f4c7f"
     },
     {
       "id": "mermaid-venn-cs2",
@@ -1472,8 +1472,8 @@
       "staticSvg": "svg/colorset2/venn.static.svg",
       "animatedSvg": "svg/colorset2/venn.animated.svg",
       "sourceSha256": "6924924a02d4ddc6b48edc898957e4ae589475a00d1a5dc21b8b3fcb86cfad35",
-      "staticSha256": "eedb76dbb06f6cd674d92f2891f5c638061aedf29c2d54a66c98087ee3962d31",
-      "animatedSha256": "0b6b43ae7fc9f21c3aa154c93f11f2e241abe4e03a40b0ec23e758ece8382a66"
+      "staticSha256": "d4d54bba037c00d9f5b03f4595206b357081fe7ab84a09dc80707c9a7a656589",
+      "animatedSha256": "d2684d3417c9105802e888da6db53e0c17326ce56c656751df92a0dceeba0689"
     },
     {
       "id": "mermaid-ishikawa-cs1",
@@ -1484,8 +1484,8 @@
       "staticSvg": "svg/colorset1/ishikawa.static.svg",
       "animatedSvg": "svg/colorset1/ishikawa.animated.svg",
       "sourceSha256": "2ca4ad184a8a86fe1847a8898742277652e622e95479847c58fd46c6d97bb4a5",
-      "staticSha256": "1c0cd205c50ba125671fa57dd22abfe022bbb5b37076a6df967459d856eef1dc",
-      "animatedSha256": "83c05d20a29fe2e2f64d950cb162e96503602fac0cdc9a4c3182075b8bdfe910"
+      "staticSha256": "91f53a09a9e18b3c335ac32f353d48e3c66934194aa6aab6f89ffe82e3d35f7c",
+      "animatedSha256": "3788b75c79cfed8210d938c99fd702fa996d04655db4ac509ea6329f4ec0f4f9"
     },
     {
       "id": "mermaid-ishikawa-cs2",
@@ -1496,8 +1496,8 @@
       "staticSvg": "svg/colorset2/ishikawa.static.svg",
       "animatedSvg": "svg/colorset2/ishikawa.animated.svg",
       "sourceSha256": "8af79308424a16e0e9aefd7bba4ad4a595a0742cb6047dc58b043f1d0fa989f7",
-      "staticSha256": "6700cc38c48e11ab7870515b2eae5f7137964f45ff539dc6d05432f8d88e5332",
-      "animatedSha256": "9adca7acc43620ab9cac3a8e71b219c56df5cab2d0f0e5ad61fe660285164ba8"
+      "staticSha256": "20497e82072cb31c49dfe438760149dbbc888b98a2f7e53eb7d9147265487f28",
+      "animatedSha256": "7e0f7ce18f106abc8392b4dc6a234af7461617373cac5ae71ee6bbb83632bb1e"
     },
     {
       "id": "mermaid-wardley-cs1",
@@ -1508,8 +1508,8 @@
       "staticSvg": "svg/colorset1/wardley.static.svg",
       "animatedSvg": "svg/colorset1/wardley.animated.svg",
       "sourceSha256": "3b722c6281f9b43d10c27045e52afbeef0e40495a1c23f97db2689e2f63ec492",
-      "staticSha256": "2b2169a9def44a2f049091d3f6f5225ba75ed42116eaa332ca08d8b294f71744",
-      "animatedSha256": "1eeb90d7eaa0a5cb9142735a7b7cea3a108a1b740b5d0044725095e686e0b569"
+      "staticSha256": "490c3d7ad75b76be433d10527a24df4d88fcd324e6525b26637b2dee8f7177f3",
+      "animatedSha256": "0f22ae73de3bf5b01e364a642243466467d077ab3f66f55383a4b963d031d4c4"
     },
     {
       "id": "mermaid-wardley-cs2",
@@ -1520,8 +1520,8 @@
       "staticSvg": "svg/colorset2/wardley.static.svg",
       "animatedSvg": "svg/colorset2/wardley.animated.svg",
       "sourceSha256": "ddd604983cbe6302ca62618308a61d473741c2908a5ece8eca387dd764d13966",
-      "staticSha256": "2b2169a9def44a2f049091d3f6f5225ba75ed42116eaa332ca08d8b294f71744",
-      "animatedSha256": "1eeb90d7eaa0a5cb9142735a7b7cea3a108a1b740b5d0044725095e686e0b569"
+      "staticSha256": "490c3d7ad75b76be433d10527a24df4d88fcd324e6525b26637b2dee8f7177f3",
+      "animatedSha256": "0f22ae73de3bf5b01e364a642243466467d077ab3f66f55383a4b963d031d4c4"
     },
     {
       "id": "mermaid-cynefin-cs1",
@@ -1532,8 +1532,8 @@
       "staticSvg": "svg/colorset1/cynefin.static.svg",
       "animatedSvg": "svg/colorset1/cynefin.animated.svg",
       "sourceSha256": "e716508d073973d833634e1de8201da72361366f34dea14abb791939b27857ad",
-      "staticSha256": "76e4ac7c29b90614cc4645587ba5dfeeb6246e04e0bc71f679e89adae43d4aa6",
-      "animatedSha256": "e124d95aad35a6a29fc7786c23abcfd097fa614c08b2315e7fbf95fed2d6e380"
+      "staticSha256": "a4dc090a744f8e624529ef694bda91e976ddea1a9d676ce83a556c405b4b1b36",
+      "animatedSha256": "8d98f467289c8ba37d299ee5655dacbeb993d86f6117fd60ff1a4a878d71467d"
     },
     {
       "id": "mermaid-cynefin-cs2",
@@ -1544,8 +1544,8 @@
       "staticSvg": "svg/colorset2/cynefin.static.svg",
       "animatedSvg": "svg/colorset2/cynefin.animated.svg",
       "sourceSha256": "054967a532532e7d3f343307b37529d2ed92d429342d0fc868661d1733ba5453",
-      "staticSha256": "4893adc7975be84e49bbef070e98809865494883218b47f5212faac370f3cecf",
-      "animatedSha256": "4f538b05d4f373d3a31d60102adf1e65078bb169e0e2d3f06e147229126d8713"
+      "staticSha256": "457846e80f4b1d8ca139f63553618ae3387ab1c2f5c378f18ef6dd1e9bd46f24",
+      "animatedSha256": "aac45c9edb3fedcd5b6eaa05b7bc74256db07e62a0571f8fc6f40c4f48ce44e3"
     },
     {
       "id": "mermaid-treeview-cs1",
@@ -1556,8 +1556,8 @@
       "staticSvg": "svg/colorset1/treeview.static.svg",
       "animatedSvg": "svg/colorset1/treeview.animated.svg",
       "sourceSha256": "d94387601660bb80a49da7f1a749b3a7145699246d7437d73a6e7e1a3dae44ad",
-      "staticSha256": "19924593f36a93d67a403739210029ab0a1e24c2f1b1052636e36ca3c41566d6",
-      "animatedSha256": "7b1373b71c74523c8193d54e08803b52b913a93a091398d0541a847ff7c32e4f"
+      "staticSha256": "28ca1f4665ec06d7f9c752a8699cee7d68879c49867d510600e1a3f771bf7968",
+      "animatedSha256": "b1f8f1aa4124fe3481201b84c969734d29f390a2d3821e070b48e589ae5003db"
     },
     {
       "id": "mermaid-treeview-cs2",
@@ -1568,8 +1568,8 @@
       "staticSvg": "svg/colorset2/treeview.static.svg",
       "animatedSvg": "svg/colorset2/treeview.animated.svg",
       "sourceSha256": "646d5be48d0d8cacbee2aacd0c9d8a3b7def48b8530aad1e8a88fb1150cbc089",
-      "staticSha256": "19924593f36a93d67a403739210029ab0a1e24c2f1b1052636e36ca3c41566d6",
-      "animatedSha256": "7b1373b71c74523c8193d54e08803b52b913a93a091398d0541a847ff7c32e4f"
+      "staticSha256": "e62c74774a1f1f390b14f320df32a6118f2ee9971dff669beb2906c10365ce82",
+      "animatedSha256": "9e5e4b9b4c62aad0a99426bcb3cd275a439055b00d8f43b3d8cb871acd19b352"
     },
     {
       "id": "mermaid-railroad-cs1",
@@ -1580,8 +1580,8 @@
       "staticSvg": "svg/colorset1/railroad.static.svg",
       "animatedSvg": "svg/colorset1/railroad.animated.svg",
       "sourceSha256": "34e6303e43dd6c6321f2f9dc83b5d6cb7f114c15bef317c816629ab40c0d6858",
-      "staticSha256": "2809df4f622342f05e0c8ca8f5ad433eeed7469e403639b63a3852ccd4bdd31a",
-      "animatedSha256": "f824f42732d9f1962a2b56e50c5a6cb498fb60f2028afd674a9fe29a0b61ec49"
+      "staticSha256": "4697db568630131a64d1153c6dcc08b5616aa4c8d3307edd29f060bcdc1b50fe",
+      "animatedSha256": "58df346c90087b255622dd9da27761b5de140bc3b6fc2c196acc85ba297d519b"
     },
     {
       "id": "mermaid-railroad-cs2",
@@ -1592,8 +1592,8 @@
       "staticSvg": "svg/colorset2/railroad.static.svg",
       "animatedSvg": "svg/colorset2/railroad.animated.svg",
       "sourceSha256": "cbeed00f1ac0cdd084f97d954888e700c492c910ce43f599d08b1c6c721eb7ac",
-      "staticSha256": "1b83b5d4df55983430f4126e4260320a3f5326b3716787a045b29f1324cf1c5e",
-      "animatedSha256": "5724a7d1ed1f234c45195e2f6103eb8408a6eb6582be16eac3c724a1775500a6"
+      "staticSha256": "c013439409094c36890c95864bd2c6bd50475a595bebb00bba1babc99cc6ce26",
+      "animatedSha256": "272677f6e06adafafaa6092a37db4f7ad666e0df22519f80219363109272a4ad"
     }
   ]
 }

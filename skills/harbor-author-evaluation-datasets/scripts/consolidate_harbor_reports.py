@@ -38,18 +38,18 @@ OUTPUT_FILES = (
     "efficiency-frontier.svg",
 )
 PALETTE = (
-    "#38BDF8",
-    "#A78BFA",
-    "#34D399",
-    "#FBBF24",
-    "#FB7185",
-    "#22D3EE",
-    "#C084FC",
-    "#A3E635",
-    "#F97316",
-    "#60A5FA",
-    "#F472B6",
-    "#2DD4BF",
+    "#007298",
+    "#652f6c",
+    "#45842a",
+    "#98700c",
+    "#9e1b32",
+    "#004d66",
+    "#431f47",
+    "#294d19",
+    "#e77204",
+    "#00ace6",
+    "#9e00b3",
+    "#36b300",
 )
 ID_PATTERN = re.compile(r"[^a-zA-Z0-9._-]+")
 
@@ -855,29 +855,29 @@ def nice_max(value: float, floor: float = 1.0) -> float:
 
 
 def svg_document(title: str, description: str, width: int, height: int, body: str) -> str:
-    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img" aria-labelledby="chart-title chart-desc">
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img" data-colorset="colorset2" aria-labelledby="chart-title chart-desc">
   <title id="chart-title">{esc(title)}</title>
   <desc id="chart-desc">{esc(description)}</desc>
   <defs>
     <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#070B18"/>
-      <stop offset="0.55" stop-color="#10172A"/>
-      <stop offset="1" stop-color="#071827"/>
+      <stop offset="0" stop-color="#f7f7f7"/>
+      <stop offset="0.55" stop-color="#f7f7f7"/>
+      <stop offset="1" stop-color="#f7f7f7"/>
     </linearGradient>
     <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
       <feDropShadow dx="0" dy="8" stdDeviation="14" flood-color="#000000" flood-opacity="0.28"/>
     </filter>
     <style>
-      text {{ font-family: Inter, Segoe UI, Arial, sans-serif; fill: #E5EEF9; }}
-      .eyebrow {{ font-size: 14px; font-weight: 700; letter-spacing: 2px; fill: #7DD3FC; }}
+      text {{ font-family: Inter, Segoe UI, Arial, sans-serif; fill: #333e48; }}
+      .eyebrow {{ font-size: 14px; font-weight: 700; letter-spacing: 2px; fill: #9e1b32; }}
       .title {{ font-size: 34px; font-weight: 750; }}
-      .subtitle {{ font-size: 15px; fill: #94A3B8; }}
+      .subtitle {{ font-size: 15px; fill: #4f4f4f; }}
       .section {{ font-size: 18px; font-weight: 700; }}
       .label {{ font-size: 14px; font-weight: 650; }}
-      .small {{ font-size: 12px; fill: #94A3B8; }}
+      .small {{ font-size: 12px; fill: #4f4f4f; }}
       .value {{ font-size: 14px; font-variant-numeric: tabular-nums; }}
-      .grid {{ stroke: #334155; stroke-width: 1; opacity: 0.55; }}
-      .panel {{ fill: #111827; stroke: #263247; stroke-width: 1; filter: url(#shadow); }}
+      .grid {{ stroke: #cfcfcf; stroke-width: 1; opacity: 0.55; }}
+      .panel {{ fill: #ffffff; stroke: #cfcfcf; stroke-width: 1; filter: url(#shadow); }}
     </style>
   </defs>
   <rect width="{width}" height="{height}" rx="24" fill="url(#background)"/>
@@ -889,11 +889,11 @@ def svg_document(title: str, description: str, width: int, height: int, body: st
 def svg_header(report: dict[str, Any], width: int, subtitle: str) -> str:
     return "\n".join(
         [
-            '<rect x="56" y="44" width="248" height="30" rx="15" fill="#0C4A6E" opacity="0.72"/>',
+            '<rect x="56" y="44" width="248" height="30" rx="15" fill="#e7e7e7" opacity="0.72"/>',
             '<text x="74" y="65" class="eyebrow">HARBOR · RUN COMPARISON</text>',
             f'<text x="56" y="119" class="title">{esc(truncate(report["title"], 66))}</text>',
             f'<text x="56" y="151" class="subtitle">{esc(subtitle)}</text>',
-            f'<rect x="{width - 340}" y="62" width="284" height="64" rx="14" fill="#0F2234" stroke="#155E75"/>',
+            f'<rect x="{width - 340}" y="62" width="284" height="64" rx="14" fill="#ffffff" stroke="#cfcfcf"/>',
             f'<text x="{width - 320}" y="87" class="small">BASELINE</text>',
             f'<text x="{width - 320}" y="111" class="label">{esc(truncate(report["baselineLabel"], 34))}</text>',
         ]
@@ -937,12 +937,12 @@ def render_quality_svg(report: dict[str, Any]) -> str:
         for panel_x in (left_x, right_x):
             body.append(f'<text x="{panel_x + 28}" y="{y + 18}" class="label">{esc(baseline_mark + truncate(run["label"], 20))}</text>')
         pass_width = (panel_w - 250) * run["passRate"]
-        body.append(f'<rect x="{left_x + 190}" y="{y}" width="{panel_w - 250}" height="24" rx="12" fill="#1E293B"/>')
+        body.append(f'<rect x="{left_x + 190}" y="{y}" width="{panel_w - 250}" height="24" rx="12" fill="#e7e7e7"/>')
         body.append(f'<rect x="{left_x + 190}" y="{y}" width="{pass_width:.1f}" height="24" rx="12" fill="{color}"/>')
         body.append(f'<text x="{left_x + panel_w - 24}" y="{y + 18}" text-anchor="end" class="value">{format_percent(run["passRate"])}</text>')
         reward = run["averageReward"]
         reward_width = (panel_w - 250) * max(0, reward or 0) / reward_ceiling
-        body.append(f'<rect x="{right_x + 190}" y="{y}" width="{panel_w - 250}" height="24" rx="12" fill="#1E293B"/>')
+        body.append(f'<rect x="{right_x + 190}" y="{y}" width="{panel_w - 250}" height="24" rx="12" fill="#e7e7e7"/>')
         if reward is not None:
             body.append(f'<rect x="{right_x + 190}" y="{y}" width="{reward_width:.1f}" height="24" rx="12" fill="{color}"/>')
         reward_label = summary_coverage(
@@ -954,8 +954,8 @@ def render_quality_svg(report: dict[str, Any]) -> str:
         )
         body.append(f'<text x="{right_x + panel_w - 24}" y="{y + 18}" text-anchor="end" class="value">{esc(reward_label)}</text>')
         if run["erroredTrials"]:
-            body.append(f'<circle cx="{left_x + 171}" cy="{y + 12}" r="9" fill="#FB7185"/>')
-            body.append(f'<text x="{left_x + 171}" y="{y + 16}" text-anchor="middle" font-size="10" fill="#111827">{run["erroredTrials"]}</text>')
+            body.append(f'<circle cx="{left_x + 171}" cy="{y + 12}" r="9" fill="#9e1b32"/>')
+            body.append(f'<text x="{left_x + 171}" y="{y + 16}" text-anchor="middle" font-size="10" fill="#ffffff">{run["erroredTrials"]}</text>')
     body.append(f'<text x="56" y="{height - 34}" class="small">A red badge is the number of execution errors. A dot marks the selected baseline. Aggregate views do not replace native fairness checks.</text>')
     return svg_document(
         f"{report['title']} — quality comparison",
@@ -1006,11 +1006,11 @@ def render_resource_svg(report: dict[str, Any]) -> str:
     legend_y = panel_y + panel_h - 42
     body.extend(
         [
-            f'<rect x="{token_x}" y="{legend_y - 10}" width="12" height="12" rx="3" fill="#38BDF8"/><text x="{token_x + 18}" y="{legend_y}" class="small">fresh input</text>',
-            f'<rect x="{token_x + 112}" y="{legend_y - 10}" width="12" height="12" rx="3" fill="#A78BFA"/><text x="{token_x + 130}" y="{legend_y}" class="small">cached input</text>',
-            f'<rect x="{token_x + 238}" y="{legend_y - 10}" width="12" height="12" rx="3" fill="#34D399"/><text x="{token_x + 256}" y="{legend_y}" class="small">output</text>',
-            f'<rect x="{time_x}" y="{legend_y - 10}" width="12" height="12" rx="3" fill="#FBBF24"/><text x="{time_x + 18}" y="{legend_y}" class="small">agent</text>',
-            f'<rect x="{time_x + 86}" y="{legend_y - 10}" width="12" height="12" rx="3" fill="#FB7185"/><text x="{time_x + 104}" y="{legend_y}" class="small">wall</text>',
+            f'<rect x="{token_x}" y="{legend_y - 10}" width="12" height="12" rx="3" fill="#007298"/><text x="{token_x + 18}" y="{legend_y}" class="small">fresh input</text>',
+            f'<rect x="{token_x + 112}" y="{legend_y - 10}" width="12" height="12" rx="3" fill="#652f6c"/><text x="{token_x + 130}" y="{legend_y}" class="small">cached input</text>',
+            f'<rect x="{token_x + 238}" y="{legend_y - 10}" width="12" height="12" rx="3" fill="#45842a"/><text x="{token_x + 256}" y="{legend_y}" class="small">output</text>',
+            f'<rect x="{time_x}" y="{legend_y - 10}" width="12" height="12" rx="3" fill="#98700c"/><text x="{time_x + 18}" y="{legend_y}" class="small">agent</text>',
+            f'<rect x="{time_x + 86}" y="{legend_y - 10}" width="12" height="12" rx="3" fill="#9e1b32"/><text x="{time_x + 104}" y="{legend_y}" class="small">wall</text>',
         ]
     )
     for index, run in enumerate(runs):
@@ -1022,7 +1022,7 @@ def render_resource_svg(report: dict[str, Any]) -> str:
         output_tokens = token_total(run, "output")
         total_metric = run["tokens"]["total"]
         total_tokens = total_metric["total"] if total_metric else None
-        body.append(f'<rect x="{token_x}" y="{y}" width="{token_w}" height="26" rx="8" fill="#1E293B"/>')
+        body.append(f'<rect x="{token_x}" y="{y}" width="{token_w}" height="26" rx="8" fill="#e7e7e7"/>')
         if token_components_match_complete_total(run):
             assert input_tokens is not None
             assert cache_tokens is not None
@@ -1030,14 +1030,14 @@ def render_resource_svg(report: dict[str, Any]) -> str:
             cache = min(cache_tokens or 0, input_tokens)
             fresh = max(0, input_tokens - cache)
             cursor = token_x
-            for value, color in ((fresh, "#38BDF8"), (cache, "#A78BFA"), (output_tokens, "#34D399")):
+            for value, color in ((fresh, "#007298"), (cache, "#652f6c"), (output_tokens, "#45842a")):
                 segment = token_w * value / token_max
                 if segment > 0:
                     body.append(f'<rect x="{cursor:.1f}" y="{y}" width="{segment:.1f}" height="26" rx="5" fill="{color}"/>')
                     cursor += segment
         elif total_tokens is not None:
             segment = min(token_w, max(0.0, token_w * total_tokens / token_max))
-            body.append(f'<rect x="{token_x}" y="{y}" width="{segment:.1f}" height="26" rx="8" fill="#64748B"/>')
+            body.append(f'<rect x="{token_x}" y="{y}" width="{segment:.1f}" height="26" rx="8" fill="#828282"/>')
         reasoning = token_total(run, "reasoning")
         total_label = summary_coverage(
             total_tokens,
@@ -1046,10 +1046,10 @@ def render_resource_svg(report: dict[str, Any]) -> str:
             compact,
         )
         body.append(f'<text x="{token_x}" y="{y + 48}" class="small">total {esc(total_label)} · reasoning {esc(compact(reasoning))}</text>')
-        body.append(f'<rect x="{cost_x}" y="{y}" width="{cost_w}" height="18" rx="9" fill="#1E293B"/>')
+        body.append(f'<rect x="{cost_x}" y="{y}" width="{cost_w}" height="18" rx="9" fill="#e7e7e7"/>')
         if run["costUsd"] is not None:
             cost_width = cost_w * run["costUsd"] / cost_max
-            body.append(f'<rect x="{cost_x}" y="{y}" width="{cost_width:.1f}" height="18" rx="9" fill="#22D3EE"/>')
+            body.append(f'<rect x="{cost_x}" y="{y}" width="{cost_width:.1f}" height="18" rx="9" fill="#004d66"/>')
         cost_label = summary_coverage(
             run["costUsd"],
             run["costObservedTrials"],
@@ -1058,11 +1058,11 @@ def render_resource_svg(report: dict[str, Any]) -> str:
         )
         body.append(f'<text x="{cost_x}" y="{y + 43}" class="value">{esc(cost_label)}</text>')
         for offset, value, color, prefix in (
-            (0, run["agentTimeSeconds"], "#FBBF24", "A"),
-            (24, run["wallTimeSeconds"], "#FB7185", "W"),
+            (0, run["agentTimeSeconds"], "#98700c", "A"),
+            (24, run["wallTimeSeconds"], "#9e1b32", "W"),
         ):
             body.append(f'<text x="{time_x - 20}" y="{y + offset + 13}" text-anchor="end" class="small">{prefix}</text>')
-            body.append(f'<rect x="{time_x}" y="{y + offset}" width="{time_w}" height="15" rx="7.5" fill="#1E293B"/>')
+            body.append(f'<rect x="{time_x}" y="{y + offset}" width="{time_w}" height="15" rx="7.5" fill="#e7e7e7"/>')
             if value is not None:
                 bar_width = time_w * value / time_max
                 body.append(f'<rect x="{time_x}" y="{y + offset}" width="{bar_width:.1f}" height="15" rx="7.5" fill="{color}"/>')
@@ -1139,7 +1139,7 @@ def render_efficiency_svg(report: dict[str, Any]) -> str:
             + f" {chart_x + chart_w * cost / cost_max:.1f} {chart_y + chart_h * (1 - quality):.1f}"
             for index, (_, cost, quality) in enumerate(frontier_points)
         )
-        body.append(f'<path d="{path_data}" fill="none" stroke="#FBBF24" stroke-width="2" stroke-dasharray="7 7" opacity="0.8"/>')
+        body.append(f'<path d="{path_data}" fill="none" stroke="#98700c" stroke-width="2" stroke-dasharray="7 7" opacity="0.8"/>')
     token_values = [run["tokensPerTrial"] for run, _, _ in points if run["tokensPerTrial"] is not None]
     token_max = max(token_values or [1])
     for index, (run, cost, quality) in enumerate(points):
@@ -1149,10 +1149,10 @@ def render_efficiency_svg(report: dict[str, Any]) -> str:
         token_value = run["tokensPerTrial"] or 0
         radius = 10 + 17 * math.sqrt(token_value / token_max) if token_max else 12
         if run["runId"] in frontier:
-            body.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="{radius + 7:.1f}" fill="none" stroke="#FBBF24" stroke-width="2"/>')
+            body.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="{radius + 7:.1f}" fill="none" stroke="#98700c" stroke-width="2"/>')
         if run["runId"] == report["baselineRunId"]:
-            body.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="{radius + 12:.1f}" fill="none" stroke="#E2E8F0" stroke-width="2" stroke-dasharray="4 5"/>')
-        body.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="{radius:.1f}" fill="{color}" fill-opacity="0.86" stroke="#F8FAFC" stroke-width="1.5"/>')
+            body.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="{radius + 12:.1f}" fill="none" stroke="#333e48" stroke-width="2" stroke-dasharray="4 5"/>')
+        body.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="{radius:.1f}" fill="{color}" fill-opacity="0.86" stroke="#ffffff" stroke-width="1.5"/>')
         label_y = y - radius - 18 if index % 2 == 0 else y + radius + 28
         body.append(f'<text x="{x:.1f}" y="{label_y:.1f}" text-anchor="middle" class="label">{esc(truncate(run["label"], 22))}</text>')
     if not points:

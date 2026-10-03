@@ -8,6 +8,7 @@ import { mkdir, readFile, rm, writeFile } from 'node:fs/promises'
 import { createRequire } from 'node:module'
 import { createServer } from 'node:net'
 import { basename, isAbsolute, relative, resolve } from 'node:path'
+import { fileURLToPath } from 'node:url'
 
 type Severity = 'error' | 'warning' | 'info'
 type WaitUntil = 'load' | 'domcontentloaded' | 'networkidle'
@@ -42,6 +43,8 @@ type Options = {
   ignoreSelector: string
   allowOverflowSelector: string
   allowHiddenSelector: string
+  colorset: string
+  paletteColors: string[]
 }
 
 type SlidePlan = {
@@ -93,6 +96,9 @@ main().catch((error) => {
 
 async function main() {
   const options = normalizeOptions(parseArgs(process.argv.slice(2)))
+  const palettes = JSON.parse(await readFile(fileURLToPath(new URL('../assets/palettes/colorsets.json', import.meta.url)), 'utf8'))
+  if (!palettes.colorsets[options.colorset]) throw new Error('--colorset must be colorset1 or colorset2')
+  options.paletteColors = palettes.colorsets[options.colorset].allowed
   const screenshotsDir = resolve(options.outDir, 'screenshots')
   const jsonPath = resolve(options.outDir, 'quality-report.json')
   const markdownPath = resolve(options.outDir, 'quality-report.md')
@@ -301,6 +307,10 @@ function parseArgs(argv: string[]) {
       parsed.deck = requireValue(arg, next)
       index++
     }
+    else if (arg === '--colorset') {
+      parsed.colorset = requireValue(arg, next)
+      index++
+    }
     else if (arg === '--slides') {
       parsed.slides = requireValue(arg, next)
       index++
@@ -439,6 +449,8 @@ function normalizeOptions(parsed: Record<string, string | boolean>): Options {
 
   return {
     deckDir,
+    colorset: String(parsed.colorset ?? 'colorset1'),
+    paletteColors: [],
     slidesFile,
     outDir,
     name,
@@ -497,6 +509,7 @@ Common options:
   --max-clicks <n>                      Cap detected click states per slide
   --screenshots <issues|all|none>       Screenshot capture mode, default issues
   --strict                              Exit nonzero on error-level findings
+  --colorset <colorset1|colorset2>       Exact authored paint palette, default colorset1
   --min-font-size <px>                  Minimum visible text size, default 12
   --min-contrast <ratio>                Minimum normal text contrast, default 4.5
   --overflow-tolerance <px>             Allowed off-frame tolerance, default 4
@@ -586,6 +599,20 @@ async function inspectState(page: any, options: Options): Promise<StateInspectio
     const layoutRect = layout.getBoundingClientRect()
     const allElements = [...layout.querySelectorAll('*')].filter((node) => !matchesClosest(node, auditOptions.ignoreSelector))
     const visibleElements = allElements.filter((node) => isVisible(node, false))
+    for (const node of [layout, ...visibleElements]) {
+      // Imported source pixels are a fidelity boundary. Authored wrappers remain checked.
+      if (node.closest('[data-source-media]')) continue
+      const style = getComputedStyle(node)
+      const properties = ['color','backgroundColor','borderTopColor','borderRightColor','borderBottomColor','borderLeftColor','fill','stroke','stopColor','outlineColor']
+      for (const property of properties) {
+        if (property.startsWith('border') && Number.parseFloat(style.getPropertyValue(property.replace('Color','Width').replace(/[A-Z]/g,(c)=>`-${c.toLowerCase()}`))) === 0) continue
+        if (property === 'outlineColor' && style.outlineStyle === 'none') continue
+        const paint = parseCssColor((style as any)[property])
+        if (!paint || paint.a === 0) continue
+        const hex = '#' + [paint.r,paint.g,paint.b].map((c)=>Math.round(c).toString(16).padStart(2,'0')).join('')
+        if (!auditOptions.paletteColors.includes(hex)) add(findings,'off-palette-paint','error',describeElement(node),`${property} uses ${hex} outside ${auditOptions.colorset}.`,'Authored marks and chrome do not follow the selected colorset.','Replace this base paint with an exact selected palette token; preserve source pixels only with a narrow data-source-media boundary.',node.getBoundingClientRect())
+      }
+    }
     const textElements = allElements.filter((node) => hasMeaningfulText(node))
     const visibleTextElements = textElements.filter((node) => isVisible(node, false))
     const textBlocks = visibleTextElements.filter((node) => isTextBlock(node))
@@ -1267,6 +1294,8 @@ async function inspectState(page: any, options: Options): Promise<StateInspectio
     ignoreSelector: options.ignoreSelector,
     allowOverflowSelector: options.allowOverflowSelector,
     allowHiddenSelector: options.allowHiddenSelector,
+    colorset: options.colorset,
+    paletteColors: options.paletteColors,
   })
 }
 

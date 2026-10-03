@@ -18,7 +18,7 @@ NS={'s':'http://www.w3.org/2000/svg'}
 
 def graph():
     return dict(id='editorial-contract',title='A SMALL HISTORY',design='editorial',mode='lineage',width=1200,height=1400,
-        source_note='Synthetic test data.',groups=[dict(id='red',label='Red',color='#F56550'),dict(id='blue',label='Blue',color='#77BDDD')],
+        source_note='Synthetic test data.',groups=[dict(id='red',label='Red',color='#ff9633'),dict(id='blue',label='Blue',color='#b5b5b5')],
         nodes=[dict(id='root',label='The founding school',group='red',x=600,y=240,width=145,style='pill'),
                dict(id='left',label='Western academy',group='red',x=320,y=510,width=120,style='plain'),
                dict(id='right',label='Eastern society',group='blue',x=820,y=640,width=120,style='emblem',icon='book',icon_width=25)],
@@ -27,7 +27,7 @@ def graph():
 
 def timeline():
     return dict(id='editorial-time',title='CHRONOLOGY',design='editorial',mode='timeline',width=1200,height=1400,
-        source_note='Synthetic intervals.',groups=[dict(id='g',label='Region',color='#98BD92')],
+        source_note='Synthetic intervals.',groups=[dict(id='g',label='Region',color='#9c9c9c')],
         time=dict(start=1000,end=2000,step=100),lanes=[dict(id='lane',label='A region')],
         periods=[dict(id='a',label='Early council',group='g',lane='lane',start=1000,end=1400,offset=30,bar_width=40),
                  dict(id='b',label='Later council',group='g',lane='lane',start=1450,end=2000,offset=60,bar_width=55)],
@@ -202,7 +202,7 @@ class EditorialTests(unittest.TestCase):
     def test_compact_cohort_key_wraps_above_the_first_generation(self):
         data=graph();data.update(mode='genealogy',layout='cohorts',edges=[])
         data.pop('width');data.pop('height')
-        palette=['#77BDDD','#F56550','#98BD92','#EBCB3C','#B992C9','#EFAC63','#A7A49D']
+        palette=['#9e1b32','#007298','#e77204','#45842a','#652f6c','#f1c319','#004d66']
         data['groups']=[dict(id=f'g{i}',label=f'Founding house {i} and its documented descendants',color=palette[i]) for i in range(7)]
         data['nodes']=[dict(id='a',label='First founder',group='g0',row=0),dict(id='c',label='Second founder',group='g2',row=0),dict(id='b',label='Their child',group='g1',row=1)]
         data['unions']=[dict(id='u',partners=['a','c'],children=['b'])]

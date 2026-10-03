@@ -64,6 +64,8 @@ class BindingInfo:
     unit: str
     domain: tuple[float, float] | None
     accessible_value: str
+    text_color: str = "var(--ink)"
+    surface_color: str = "var(--surface-subtle)"
 
 
 def parse_args() -> argparse.Namespace:
@@ -194,30 +196,12 @@ def table_binding_label(info: BindingInfo, limit: int = 24) -> str:
 
 
 def source_color_map(plan: dict[str, Any]) -> dict[str, str]:
-    all_ids = [item["id"] for item in [*plan["concepts"], *plan.get("derived", [])]]
-    token_index = {value_id: index for index, value_id in enumerate(all_ids)}
-    result: dict[str, str] = {
-        value_id: (
-            f"var(--concept-{value_id}, "
-            f"{scaffold.color_for_index(index)})"
-        )
-        for index, value_id in enumerate(all_ids)
+    tokens = scaffold.theme_token_map(plan)
+    colors = scaffold.theme_for_plan(plan)["conceptColors"]
+    return {
+        value_id: f"var(--concept-{token}, {colors[token]})"
+        for value_id, token in tokens.items()
     }
-    identity = plan.get("identity", {})
-    aliases = plan.get("identityAliases", [])
-    if isinstance(identity, dict) and isinstance(aliases, list):
-        for alias in aliases:
-            if not isinstance(alias, dict) or not isinstance(alias.get("values"), list):
-                continue
-            definition = identity.get(alias.get("identity"))
-            token = definition.get("colorToken") if isinstance(definition, dict) else None
-            if token not in token_index:
-                continue
-            fallback = scaffold.color_for_index(token_index[token])
-            for value_id in alias["values"]:
-                if value_id in result:
-                    result[value_id] = f"var(--concept-{token}, {fallback})"
-    return result
 
 
 def accessible_value_text(
@@ -274,6 +258,7 @@ def binding_infos(
 ) -> list[BindingInfo]:
     roles: set[str] = set()
     infos: list[BindingInfo] = []
+    color_tokens = scaffold.theme_token_map(plan)
     value_definitions = {
         item["id"]: item for item in [*plan["concepts"], *plan.get("derived", [])]
     }
@@ -307,6 +292,8 @@ def binding_infos(
                 raw=raw,
                 rendered=rendered,
                 color=colors[value_id],
+                text_color=f"var(--text-value-{color_tokens[value_id]})",
+                surface_color=f"var(--surface-value-{color_tokens[value_id]})",
                 unit=unit,
                 domain=domain,
                 accessible_value=accessible_value_text(
@@ -571,7 +558,7 @@ def render_text_binding(
     value = scaffold.format_value(info.raw, info.binding.get("format"), "en-US")
     return (
         f'<text {common_attributes(module_id, info, kind="value")} x="{fmt(x)}" y="{fmt(y)}" '
-        f'text-anchor="{anchor}" font-size="{fmt(font_size)}" font-weight="720" fill="{esc(info.color)}">'
+        f'text-anchor="{anchor}" font-size="{fmt(font_size)}" font-weight="720" fill="{esc(info.text_color)}">'
         f'{esc(value)}</text>'
     )
 
@@ -646,7 +633,7 @@ def render_mark(
             return (
                 f'<g transform="translate({fmt(translate_x)} {fmt(y + height / 2)}) scale({fmt_scale(scale)} 1)">'
                 f'<rect {common} x="{fmt(initial)}" y="-5" width="{fmt(marker_extent)}" height="10" rx="0.5" '
-                f'fill="{color}" stroke="#ffffff" stroke-width="2" vector-effect="non-scaling-stroke"/></g>'
+                f'fill="{color}" stroke="var(--surface)" stroke-width="2" vector-effect="non-scaling-stroke"/></g>'
             )
         scale = positive_scale(height - 12, span)
         marker_extent = max(0.01, 4.0 / scale)
@@ -654,7 +641,7 @@ def render_mark(
         return (
             f'<g transform="translate({fmt(x + width / 2)} {fmt(translate_y)}) scale(1 {fmt_scale(scale)})">'
             f'<rect {common} x="-5" y="{fmt(initial)}" width="10" height="{fmt(marker_extent)}" rx="0.5" '
-            f'fill="{color}" stroke="#ffffff" stroke-width="2" vector-effect="non-scaling-stroke"/></g>'
+            f'fill="{color}" stroke="var(--surface)" stroke-width="2" vector-effect="non-scaling-stroke"/></g>'
         )
 
     if channel == "transform":
@@ -753,7 +740,7 @@ def render_text_rail(
     row_height = available / rows
     parts = [
         f'<g id="{esc(module_id)}-value-rail" class="value-rail">',
-        f'<line x1="{fmt(left)}" y1="{fmt(top)}" x2="{fmt(right)}" y2="{fmt(top)}" stroke="#d6dce8"/>',
+        f'<line x1="{fmt(left)}" y1="{fmt(top)}" x2="{fmt(right)}" y2="{fmt(top)}" stroke="var(--line)"/>',
     ]
     for index, info in enumerate(text_infos):
         row, column = divmod(index, columns)
@@ -772,14 +759,14 @@ def render_text_rail(
         parts.append(
             f'<text x="{fmt(cell_left + 4)}" y="{fmt(label_y)}" '
             f'font-size="{9 if row_height < 30 else 10}" '
-            f'letter-spacing="0.04em" fill="#637087" aria-hidden="true">'
+            f'letter-spacing="0.04em" fill="var(--muted)" aria-hidden="true">'
             f'{esc(visible_label)}</text>'
         )
         parts.append(render_text_binding(module_id, info, cell_right - 5, value_y))
         if column > 0:
             parts.append(
                 f'<line x1="{fmt(cell_left)}" y1="{fmt(cell_top + 5)}" x2="{fmt(cell_left)}" '
-                f'y2="{fmt(min(bottom, cell_top + row_height - 3))}" stroke="#e5e9f1"/>'
+                f'y2="{fmt(min(bottom, cell_top + row_height - 3))}" stroke="var(--line)"/>'
             )
     parts.append("</g>")
     return "".join(parts)
@@ -853,12 +840,12 @@ def render_stacked_bar_family(
         f'data-stack-total="{esc(stack_total_id)}" '
         f'data-layout-x="{fmt(left + 1)}" data-layout-y="{fmt(stack_y)}" data-layout-scale="{fmt_scale(scale)}" '
         f'data-layout-max-span="{fmt(layout_max_span)}">',
-        f'<text x="{fmt(left)}" y="{fmt(stack_y - 12)}" font-size="10" fill="#637087" '
+        f'<text x="{fmt(left)}" y="{fmt(stack_y - 12)}" font-size="10" fill="var(--muted)" '
         f'aria-hidden="true">Absolute scale</text>',
         f'<text x="{fmt(right)}" y="{fmt(stack_y - 12)}" text-anchor="end" font-size="10" '
-        f'fill="#637087" aria-hidden="true">{esc(ceiling_copy)}</text>',
+        f'fill="var(--muted)" aria-hidden="true">{esc(ceiling_copy)}</text>',
         f'<rect x="{fmt(left)}" y="{fmt(stack_y)}" width="{fmt(plot_width)}" height="{fmt(stack_height)}" '
-        f'fill="#e8edf5" stroke="#d6dce8" rx="4"/>',
+        f'fill="var(--surface-subtle)" stroke="var(--line)" rx="4"/>',
     ]
     legend_y = min(visual_bottom - 9, stack_y + stack_height + 30)
     legend_cell = plot_width / len(stack_marks)
@@ -880,7 +867,7 @@ def render_stacked_bar_family(
             [
                 f'<rect x="{fmt(legend_x)}" y="{fmt(legend_y - 9)}" width="10" height="10" '
                 f'fill="{esc(info.color)}" rx="2"/>',
-                f'<text x="{fmt(legend_x + 15)}" y="{fmt(legend_y)}" font-size="10" fill="#637087" '
+                f'<text x="{fmt(legend_x + 15)}" y="{fmt(legend_y)}" font-size="10" fill="var(--muted)" '
                 f'aria-hidden="true">{esc(binding_label(info, 22))}</text>',
             ]
         )
@@ -932,17 +919,30 @@ def render_bar_family(
             mark_y = row_top + mark_offset
             mark_height = max(6.0, min(14.0, row_height - mark_offset - 2.0))
             label_limit = max(12, min(28, int(cell_width / 6.2)))
+            mark_x, mark_width = cell_left, cell_width
+            if row_height < 24:
+                # Put labels beside dense bars; stacking them above makes a row's
+                # text fall over the preceding row's colored mark.
+                if row_height < 12:
+                    raise CompositionError(f"bar module {module_id!r} needs more vertical space or fewer values")
+                label_width = min(150.0, cell_width * .52)
+                label_limit = max(8, min(26, int(label_width / 5.8)))
+                label_y = row_top + row_height / 2 + 3
+                mark_x = cell_left + label_width + 10
+                mark_width = cell_width - label_width - 10
+                mark_height = min(10.0, row_height - 4)
+                mark_y = row_top + (row_height - mark_height) / 2
             parts.extend(
                 [
                     f'<text x="{fmt(cell_left)}" y="{fmt(label_y)}" font-size="{9 if row_height < 30 else 10}" '
-                    f'fill="#637087" aria-hidden="true">{esc(binding_label(info, label_limit))}</text>',
-                    f'<rect x="{fmt(cell_left)}" y="{fmt(mark_y)}" width="{fmt(cell_width)}" '
-                    f'height="{fmt(mark_height)}" fill="#e8edf5" rx="3"/>',
+                    f'fill="var(--muted)" aria-hidden="true">{esc(binding_label(info, label_limit))}</text>',
+                    f'<rect x="{fmt(mark_x)}" y="{fmt(mark_y)}" width="{fmt(mark_width)}" '
+                    f'height="{fmt(mark_height)}" fill="var(--surface-subtle)" rx="3"/>',
                     render_mark(
                         plan,
                         module_id,
                         info,
-                        (cell_left, mark_y, cell_width, mark_height),
+                        (mark_x, mark_y, mark_width, mark_height),
                     ),
                 ]
             )
@@ -962,7 +962,7 @@ def render_waterfall_family(
     other_marks = [info for info in marks if info.channel != "height"]
     left, right = 22.0, width - 22.0
     validate_waterfall_scale(module_id, height_marks)
-    baseline = max(top + 20, visual_bottom - 5)
+    baseline = max(top + 20, visual_bottom - 20)
     plot_height = max(18.0, baseline - top - 6)
     extent = scenario_raw_extent(plan, height_marks) * 1.08
     scale = positive_scale(plot_height - 2, extent)
@@ -972,7 +972,7 @@ def render_waterfall_family(
         f'data-sync-layout="waterfall" data-layout-baseline="{fmt(baseline)}" '
         f'data-layout-scale="{fmt_scale(scale)}" data-layout-top="{fmt(top)}" '
         f'data-layout-max-value="{fmt(max_visual_value)}">',
-        f'<line x1="{fmt(left)}" y1="{fmt(baseline)}" x2="{fmt(right)}" y2="{fmt(baseline)}" stroke="#aeb8c8"/>',
+        f'<line x1="{fmt(left)}" y1="{fmt(baseline)}" x2="{fmt(right)}" y2="{fmt(baseline)}" stroke="var(--muted)"/>',
     ]
     if height_marks:
         column_width = (right - left) / len(height_marks)
@@ -1033,14 +1033,14 @@ def render_waterfall_family(
                 parts.append(
                     f'<line data-sync-layout-connector="{index}" x1="{fmt(positions[index] + bar_width)}" '
                     f'y1="{fmt(connector_y)}" x2="{fmt(positions[index + 1])}" y2="{fmt(connector_y)}" '
-                    f'stroke="#9aa6b8" stroke-width="1.5"/>'
+                    f'stroke="var(--muted)" stroke-width="1.5"/>'
                 )
             waterfall_label = binding_label(info, 19 if not is_total else 16)
             if index > 0 and not is_total:
                 waterfall_label = f"{waterfall_label} ↓"
             parts.append(
                 f'<text x="{fmt(positions[index] + bar_width / 2)}" y="{fmt(baseline + 13)}" '
-                f'text-anchor="middle" font-size="10" fill="#637087" aria-hidden="true">'
+                f'text-anchor="middle" font-size="10" fill="var(--muted)" aria-hidden="true">'
                 f'{esc(waterfall_label)}</text>'
             )
             sign_kind = "plus" if index == 0 else ("total" if is_total else "minus")
@@ -1054,7 +1054,7 @@ def render_waterfall_family(
                 f'<text data-waterfall-signed-index="{index}" data-waterfall-sign="{sign_kind}" '
                 f'x="{fmt(positions[index] + bar_width / 2)}" '
                 f'y="{fmt(max(top + 12, bar_top - 7))}" '
-                f'text-anchor="middle" font-size="10" font-weight="700" fill="#334155" '
+                f'text-anchor="middle" font-size="10" font-weight="700" fill="var(--ink)" '
                 f'aria-hidden="true">{esc(signed_copy)}</text>'
             )
     if other_marks:
@@ -1088,7 +1088,7 @@ def render_line_family(
             f"{fmt(right)} {fmt(top + height*0.2)}"
         )
         extra_layers.append(
-            f'<text x="{fmt(left)}" y="{fmt(top + 12)}" font-size="9" fill="#637087" '
+            f'<text x="{fmt(left)}" y="{fmt(top + 12)}" font-size="9" fill="var(--muted)" '
             'aria-hidden="true">demand burst</text>'
         )
     elif "response" in asset or "token" in asset:
@@ -1102,7 +1102,7 @@ def render_line_family(
             f"H{fmt(left + step*5)} V{fmt(top + height * 0.22)} H{fmt(right)}"
         )
         extra_layers.append(
-            f'<text x="{fmt(left)}" y="{fmt(top + 12)}" font-size="9" fill="#637087" '
+            f'<text x="{fmt(left)}" y="{fmt(top + 12)}" font-size="9" fill="var(--muted)" '
             'aria-hidden="true">token emission</text>'
         )
     elif "slo" in asset or "threshold" in asset:
@@ -1117,11 +1117,11 @@ def render_line_family(
         extra_layers.extend(
             [
                 f'<rect x="{fmt(left)}" y="{fmt(top)}" width="{fmt(right-left)}" '
-                f'height="{fmt(threshold_y-top)}" fill="#fff1f2" opacity="0.7"/>',
-                f'<path d="M{fmt(left)} {fmt(threshold_y)} H{fmt(right)}" stroke="#be123c" '
+                f'height="{fmt(threshold_y-top)}" fill="var(--danger-soft)" opacity="0.7"/>',
+                f'<path d="M{fmt(left)} {fmt(threshold_y)} H{fmt(right)}" stroke="var(--danger)" '
                 'stroke-width="1.5" stroke-dasharray="5 4"/>',
                 f'<text x="{fmt(right)}" y="{fmt(threshold_y-5)}" text-anchor="end" font-size="9" '
-                'fill="#9f1239" aria-hidden="true">SLO threshold</text>',
+                'fill="var(--danger)" aria-hidden="true">SLO threshold</text>',
             ]
         )
     else:
@@ -1134,9 +1134,9 @@ def render_line_family(
         )
     parts = [
         f'<g id="{esc(module_id)}-line-plot" class="asset-line-plot">',
-        f'<path d="M{fmt(left)} {fmt(visual_bottom)} H{fmt(right)}" stroke="#d6dce8"/>',
+        f'<path d="M{fmt(left)} {fmt(visual_bottom)} H{fmt(right)}" stroke="var(--line)"/>',
         *extra_layers,
-        f'<path d="{path}" fill="none" stroke="#94a3b8" stroke-width="2.5"/>',
+        f'<path d="{path}" fill="none" stroke="var(--muted)" stroke-width="2.5"/>',
     ]
     if marks:
         cell_width = (right - left) / len(marks)
@@ -1199,16 +1199,16 @@ def render_flow_family(
     parts = [
         f'<g id="{esc(module_id)}-flow-plot" class="asset-flow-plot" data-sync-layout="flow" '
         f'data-flow-center-y="{fmt(flow_center_y)}" data-flow-source-x="{fmt(source_x)}" '
-        f'data-flow-label-min-y="{fmt(top + 10)}" '
+        f'data-flow-label-min-y="{fmt(top + 14)}" '
         f'data-flow-reverse-marker="url(#{esc(reverse_marker_id)})">',
         f'<defs><marker id="{esc(reverse_marker_id)}" viewBox="0 0 8 8" refX="7" refY="4" '
         f'markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L8 4 L0 8 Z" '
         f'fill="context-stroke"/></marker></defs>',
         f'<text data-flow-source-label="true" data-base-label="{esc(source_base_label)}" x="{fmt(left)}" '
-        f'y="{fmt(max(top + 10, source_node_y - 8))}" font-size="10" font-weight="650" '
-        f'fill="#475569" aria-hidden="true">{esc(source_copy)}</text>',
+        f'y="{fmt(top + 14)}" font-size="10" font-weight="650" '
+        f'fill="var(--muted)" aria-hidden="true">{esc(source_copy)}</text>',
         f'<g data-flow-source="true"><rect data-flow-source-frame="true" x="{fmt(left)}" y="{fmt(source_node_y)}" '
-        f'width="{fmt(source_node_width)}" height="{fmt(source_node_height)}" fill="#dbe4f1" rx="7"/>',
+        f'width="{fmt(source_node_width)}" height="{fmt(source_node_height)}" fill="var(--line)" rx="7"/>',
     ]
     if source_info is not None:
         if source_info.channel == "width":
@@ -1230,7 +1230,9 @@ def render_flow_family(
         center_y = flow_top + (index + 0.5) * lane_height
         source_start_y = source_cursor + thickness / 2
         source_cursor += thickness
-        destination_x = right - min(112.0, (right - left) * 0.19)
+        # Reserve the endpoint's label and value area before routing ribbons.
+        # A narrow mark-sized card lets ordinary labels spill onto its border.
+        destination_x = right - min(180.0, (right - left) * 0.44)
         destination_height = max(28.0, lane_height * 0.4)
         destination_y = center_y - destination_height / 2
         destination_width = right - destination_x
@@ -1264,9 +1266,9 @@ def render_flow_family(
                 f'stroke="{esc(info.color)}" stroke-opacity="0.44" stroke-width="{fmt(thickness)}" '
                 f'stroke-linecap="round"{negative_path_attrs}/>',
                 f'<rect x="{fmt(destination_x)}" y="{fmt(destination_y)}" '
-                f'width="{fmt(destination_width)}" height="{fmt(destination_height)}" fill="#edf1f7" rx="5"/>',
+                f'width="{fmt(destination_width)}" height="{fmt(destination_height)}" class="text-surface" fill="var(--surface-subtle)" rx="5"/>',
                 f'<rect x="{fmt(destination_x + 3)}" y="{fmt(destination_y + 3)}" width="12" '
-                f'height="{fmt(destination_height - 6)}" fill="{esc(info.color)}" fill-opacity="0.18" rx="3"/>',
+                f'height="{fmt(destination_height - 6)}" fill="{esc(info.surface_color)}" rx="3"/>',
             ]
         )
         if info.channel != "text":
@@ -1282,13 +1284,13 @@ def render_flow_family(
             [
                 f'<text data-flow-branch-label="true" data-base-label="{esc(binding_label(info, 20))}" '
                 f'x="{fmt(destination_x + 20)}" y="{fmt(center_y - 1)}" '
-                f'font-size="10" font-weight="650" fill="#475569" '
+                f'font-size="10" font-weight="650" fill="var(--muted)" '
                 f'aria-hidden="true">{esc(binding_label(info, 20))}</text>',
                 f'<text data-flow-value-label="true" data-flow-value-role="{esc(info.role)}" '
                 f'x="{fmt(destination_x + 20)}" y="{fmt(center_y + 12)}" font-size="10" '
-                f'font-weight="650" fill="#334155" aria-hidden="true">{esc(info.accessible_value)}</text>',
+                f'font-weight="650" fill="var(--ink)" aria-hidden="true">{esc(info.accessible_value)}</text>',
                 f'<text data-flow-sign-label="true" x="{fmt(destination_x + 20)}" y="{fmt(center_y + 24)}" '
-                f'font-size="10" font-weight="700" fill="#9f1239" aria-hidden="true">'
+                f'font-size="10" font-weight="700" fill="var(--danger)" aria-hidden="true">'
                 f'{"DEFICIT" if is_negative else ""}</text>',
                 "</g>",
             ]
@@ -1406,10 +1408,10 @@ def render_gauge_family(
         parts.extend(
             [
                 f'<path d="M{fmt(center_x-radius)} {fmt(center_y)} A{fmt(radius)} {fmt(radius)} 0 0 1 '
-                f'{fmt(center_x+radius)} {fmt(center_y)}" fill="none" stroke="#dbe2ec" stroke-width="10" '
+                f'{fmt(center_x+radius)} {fmt(center_y)}" fill="none" stroke="var(--line)" stroke-width="10" '
                 f'stroke-linecap="round"/>',
                 f'<path d="M{fmt(center_x-radius)} {fmt(center_y)} A{fmt(radius)} {fmt(radius)} 0 0 1 '
-                f'{fmt(center_x+radius)} {fmt(center_y)}" fill="none" stroke="#94a3b8" stroke-width="2" '
+                f'{fmt(center_x+radius)} {fmt(center_y)}" fill="none" stroke="var(--muted)" stroke-width="2" '
                 f'stroke-dasharray="2 8"/>',
             ]
         )
@@ -1434,9 +1436,9 @@ def render_gauge_family(
             parts.extend(
                 [
                     f'<text x="{fmt(center_x - radius)}" y="{fmt(center_y + 16)}" font-size="10" '
-                    f'fill="#637087">{esc(percentage_label(float(domain[0]), multiplier))}</text>',
+                    f'fill="var(--muted)">{esc(percentage_label(float(domain[0]), multiplier))}</text>',
                     f'<text x="{fmt(center_x + radius)}" y="{fmt(center_y + 16)}" text-anchor="end" '
-                    f'font-size="10" fill="#637087">{esc(percentage_label(float(domain[1]), multiplier))}</text>',
+                    f'font-size="10" fill="var(--muted)">{esc(percentage_label(float(domain[1]), multiplier))}</text>',
                 ]
             )
     if other_marks:
@@ -1449,13 +1451,13 @@ def render_gauge_family(
             target_x = percent_target_x(plan, info, left, right) if show_percent_target and info.channel == "width" else None
             parts.append(
                 f'<rect x="{fmt(left)}" y="{fmt(track_y)}" width="{fmt(right-left)}" '
-                f'height="{fmt(track_height)}" fill="#e8edf5" rx="4"/>'
+                f'height="{fmt(track_height)}" fill="var(--surface-subtle)" rx="4"/>'
             )
             if target_x is not None:
                 parts.append(
                     f'<rect class="progress-over-target-band" x="{fmt(target_x)}" '
                     f'y="{fmt(track_y)}" width="{fmt(max(0.0, right - target_x))}" '
-                    f'height="{fmt(track_height)}" fill="#f59e0b" fill-opacity="0.14" rx="3"/>'
+                    f'height="{fmt(track_height)}" fill="var(--focus)" fill-opacity="0.14" rx="3"/>'
                 )
             parts.append(
                 render_mark(plan, module_id, info, (left, y, right-left, lane_height))
@@ -1472,10 +1474,10 @@ def render_gauge_family(
                     [
                         f'<line class="percent-target-marker" data-target-ratio="1" '
                         f'x1="{fmt(target_x)}" y1="{fmt(track_y - 5)}" x2="{fmt(target_x)}" '
-                        f'y2="{fmt(track_y + track_height + 5)}" stroke="#b45309" stroke-width="2" '
+                        f'y2="{fmt(track_y + track_height + 5)}" stroke="var(--warning)" stroke-width="2" '
                         f'aria-label="100% target"/>',
                         f'<text x="{fmt(target_label_x)}" y="{fmt(max(top + 8, track_y - 8))}" text-anchor="middle" '
-                        f'font-size="10" font-weight="650" fill="#92400e" aria-hidden="true">100% target</text>',
+                        f'font-size="10" font-weight="650" fill="var(--warning)" aria-hidden="true">100% target</text>',
                     ]
                 )
                 if endpoint_x is not None:
@@ -1492,9 +1494,9 @@ def render_gauge_family(
                     parts.extend(
                         [
                             f'<text data-progress-current="true" x="{fmt(left)}" y="{fmt(readout_y)}" '
-                            f'font-size="10" font-weight="650" fill="#475569">{esc(current_copy)}</text>',
+                            f'font-size="10" font-weight="650" fill="var(--muted)">{esc(current_copy)}</text>',
                             f'<text x="{fmt(right)}" y="{fmt(readout_y)}" text-anchor="end" font-size="10" '
-                            f'fill="#637087">{esc(maximum_copy)}</text>',
+                            f'fill="var(--muted)">{esc(maximum_copy)}</text>',
                         ]
                     )
     parts.append("</g>")
@@ -1527,23 +1529,23 @@ def render_spatial_family(
             parts.append(
                 f'<line x1="{fmt(hub_x)}" y1="{fmt(hub_y)}" '
                 f'x2="{fmt(node_x + node_width/2)}" y2="{fmt(node_y + node_height/2)}" '
-                'stroke="#b8c5d8" stroke-width="2"/>'
+                'stroke="var(--muted)" stroke-width="2"/>'
             )
             parts.append(
                 f'<rect x="{fmt(node_x)}" y="{fmt(node_y)}" width="{fmt(node_width)}" '
-                f'height="{fmt(node_height)}" fill="{("#dbeafe" if label == "g3" else "#e8edf5")}" '
-                f'stroke="{("#2563eb" if label == "g3" else "#cbd5e1")}" rx="5"/>'
+                f'height="{fmt(node_height)}" fill="{("var(--accent-soft)" if label == "g3" else "var(--surface-subtle)")}" '
+                f'stroke="{("var(--accent)" if label == "g3" else "var(--line)")}" rx="5"/>'
             )
             parts.append(
                 f'<text x="{fmt(node_x + node_width/2)}" y="{fmt(node_y + node_height/2 + 4)}" '
-                f'text-anchor="middle" font-size="10" font-weight="700" fill="#475569" '
+                f'text-anchor="middle" font-size="10" font-weight="700" fill="var(--muted)" '
                 f'aria-hidden="true">{label}</text>'
             )
         parts.extend(
             [
-                f'<circle cx="{fmt(hub_x)}" cy="{fmt(hub_y)}" r="15" fill="#64748b"/>',
+                f'<circle cx="{fmt(hub_x)}" cy="{fmt(hub_y)}" r="15" fill="var(--muted)"/>',
                 f'<text x="{fmt(hub_x)}" y="{fmt(hub_y + 31)}" text-anchor="middle" '
-                'font-size="9" fill="#637087" aria-hidden="true">batch router</text>',
+                'font-size="9" fill="var(--muted)" aria-hidden="true">batch router</text>',
             ]
         )
     else:
@@ -1555,7 +1557,7 @@ def render_spatial_family(
                 parts.append(
                     f'<rect x="{fmt(left+column*cell_width+inset)}" y="{fmt(top+row*cell_height+inset)}" '
                     f'width="{fmt(cell_width-inset*2)}" height="{fmt(cell_height-inset*2)}" '
-                    f'fill="{("#e2e8f0" if (row+column)%3 else "#d5deeb")}" rx="5"/>'
+                    f'fill="{("var(--line)" if (row+column)%3 else "var(--line)")}" rx="5"/>'
                 )
     if marks:
         cell = (right-left)/len(marks)
@@ -1576,7 +1578,7 @@ def render_table_family(
     asset = module["assetType"].lower()
     parts.append(
         f'<rect x="22" y="{fmt(top)}" width="{fmt(width-44)}" height="{fmt(max(18.0,bottom-top))}" '
-        f'fill="#f8fafc" stroke="#e2e8f0" rx="6"/>'
+        f'class="text-surface" fill="var(--surface-subtle)" stroke="var(--line)" rx="6"/>'
     )
     if "attention" in asset:
         field_left = 28.0
@@ -1595,12 +1597,12 @@ def render_table_family(
                     f'<rect x="{fmt(field_left + column * cell_width + 1)}" '
                     f'y="{fmt(field_top + row * cell_height + 1)}" '
                     f'width="{fmt(max(1.0, cell_width - 2))}" '
-                    f'height="{fmt(max(1.0, cell_height - 2))}" fill="#2563eb" '
+                    f'height="{fmt(max(1.0, cell_height - 2))}" fill="var(--accent)" '
                     f'fill-opacity="{fmt(opacity)}" rx="1"/>'
                 )
         parts.append(
             f'<text x="{fmt(field_left)}" y="{fmt(field_top - 1)}" font-size="9" '
-            'fill="#637087" aria-hidden="true">prompt → evidence attention</text>'
+            'fill="var(--muted)" aria-hidden="true">prompt → evidence attention</text>'
         )
         rail_top = field_top + field_height + 7.0
         parts.append(render_text_rail(module_id, texts, width, rail_top, bottom, table=True))
@@ -1618,7 +1620,7 @@ def render_table_family(
         for row in range(rows):
             for column in range(columns):
                 index = row * columns + column
-                fill = "#2563eb" if index < 8 else ("#7c3aed" if index < 16 else "#e2e8f0")
+                fill = "var(--accent)" if index < 8 else ("var(--accent)" if index < 16 else "var(--line)")
                 opacity = 0.78 if index < 16 else 1.0
                 parts.append(
                     f'<rect x="{fmt(field_left + column * cell_width + 1)}" '
@@ -1629,7 +1631,7 @@ def render_table_family(
                 )
         parts.append(
             f'<text x="{fmt(field_left)}" y="{fmt(field_top - 1)}" font-size="9" '
-            'fill="#637087" aria-hidden="true">prompt · retrieved · free capacity</text>'
+            'fill="var(--muted)" aria-hidden="true">prompt · retrieved · free capacity</text>'
         )
         rail_top = field_top + field_height + 7.0
         parts.append(render_text_rail(module_id, texts, width, rail_top, bottom, table=True))
@@ -1762,7 +1764,7 @@ def render_network_family(
         parts.append(
             f'<defs><marker id="{esc(marker_id)}" viewBox="0 0 8 8" refX="7" refY="4" '
             'markerWidth="6" markerHeight="6" orient="auto-start-reverse">'
-            '<path d="M0 0 L8 4 L0 8 Z" fill="#64748b"/></marker></defs>'
+            '<path d="M0 0 L8 4 L0 8 Z" fill="var(--muted)"/></marker></defs>'
         )
         radius_scale = 0.80 if dense_radial else 1.0
         radius_by_kind = {
@@ -1807,7 +1809,7 @@ def render_network_family(
                 else (' stroke-dasharray="3 4"' if link["kind"] == "dependency" else "")
             )
             parts.append(
-                f'<path d="{path}" fill="none" stroke="#64748b" stroke-width="1.8" '
+                f'<path d="{path}" fill="none" stroke="var(--muted)" stroke-width="1.8" '
                 f'marker-end="url(#{esc(marker_id)})"{dash} '
                 f'data-structural-link-id="{esc(link["id"])}" '
                 f'data-source-node="{esc(link["source"])}" data-target-node="{esc(link["target"])}">'
@@ -1818,14 +1820,14 @@ def render_network_family(
             x, y = positions[node["id"]]
             radius = radius_by_kind[node["kind"]]
             info = info_by_value.get(node.get("bind"))
-            color = info.color if info is not None else str(module.get("districtAccent", "#64748b"))
+            color = info.color if info is not None else str(module.get("districtAccent", "var(--muted)"))
             parts.append(
                 f'<g class="structural-node structural-node-{esc(node["kind"])}" '
                 f'data-structural-node-id="{esc(node["id"])}" data-node-kind="{esc(node["kind"])}">'
                 f'<title>{esc(node["label"])}</title>'
                 f'<circle cx="{fmt(x)}" cy="{fmt(y)}" r="{fmt(radius + 7)}" fill="none" '
                 f'stroke="{esc(color)}" stroke-opacity="0.28" stroke-width="5"/>'
-                f'<circle cx="{fmt(x)}" cy="{fmt(y)}" r="{fmt(radius)}" fill="#ffffff" '
+                f'<circle cx="{fmt(x)}" cy="{fmt(y)}" r="{fmt(radius)}" fill="var(--surface)" '
                 f'stroke="{esc(color)}" stroke-width="3"/>'
             )
             if info is not None:
@@ -1837,10 +1839,10 @@ def render_network_family(
                 value_width = max(38.0, min(124.0, len(value_text) * 5.4 + 16.0))
                 value_font_size = 8.5 if len(value_text) <= 14 else 7.3
                 parts.append(
-                    f'<rect class="structural-value-plaque" '
+                    f'<rect class="structural-value-plaque text-surface" '
                     f'x="{fmt(x - value_width / 2)}" y="{fmt(y - 11)}" '
                     f'width="{fmt(value_width)}" height="20" rx="10" '
-                    f'fill="#ffffff" fill-opacity="0.96" stroke="{esc(color)}" '
+                    f'fill="var(--surface)" stroke="{esc(color)}" '
                     f'stroke-opacity="0.36" stroke-width="1.2"/>'
                 )
                 parts.append(
@@ -1856,7 +1858,7 @@ def render_network_family(
             else:
                 parts.append(
                     f'<text x="{fmt(x)}" y="{fmt(y + 6)}" text-anchor="middle" '
-                    f'font-size="14" font-weight="780" fill="{esc(color)}" aria-hidden="true">'
+                    f'font-size="14" font-weight="780" fill="var(--ink)" aria-hidden="true">'
                     f'{esc(node["label"][0].upper())}</text>'
                 )
             label_lines = textwrap.wrap(
@@ -1864,17 +1866,17 @@ def render_network_family(
             ) or [str(node["label"])]
             label_width = max(
                 54.0,
-                min(154.0, max(len(line) for line in label_lines) * 5.8 + 18.0),
+                min(154.0, max(len(line) for line in label_lines) * 6.4 + 22.0),
             )
-            label_height = 19.0 + max(0, len(label_lines) - 1) * 12.0
-            label_top = y + radius + 7.0
+            label_height = 24.0 + max(0, len(label_lines) - 1) * 12.0
+            label_top = y + radius + 3.0
             label_markup = [
-                f'<rect class="structural-label-plaque" '
+                f'<rect class="structural-label-plaque text-surface" '
                 f'x="{fmt(x - label_width / 2)}" y="{fmt(label_top)}" '
                 f'width="{fmt(label_width)}" height="{fmt(label_height)}" rx="8" '
-                'fill="#ffffff" fill-opacity="0.92" stroke="#e2e8f0" stroke-width="1"/>',
+                'fill="var(--surface)" stroke="var(--line)" stroke-width="1"/>',
                 f'<text x="{fmt(x)}" y="{fmt(y + radius + 18)}" text-anchor="middle" '
-                'font-size="9.5" font-weight="650" fill="#475569" aria-hidden="true">'
+                'font-size="9.5" font-weight="650" fill="var(--muted)" aria-hidden="true">'
             ]
             for line_index, line in enumerate(label_lines):
                 label_markup.append(
@@ -1890,19 +1892,21 @@ def render_network_family(
         # units, while edges come only from the declared derived-value DAG.
         content_height = float(scaffold.module_content_geometry(module)[4])
         order = {info.value_id: index for index, info in enumerate(texts)}
+        # Keep the canonical text order as the only source of layout ordering.
+        # Sets are useful for membership checks, but must not drive coordinates.
         included = set(order)
         derived_by_id = {item["id"]: item for item in plan.get("derived", [])}
         dependencies = {
-            value_id: [
+            info.value_id: [
                 dependency
-                for dependency in derived_by_id.get(value_id, {}).get("dependsOn", [])
+                for dependency in derived_by_id.get(info.value_id, {}).get("dependsOn", [])
                 if dependency in included
             ]
-            for value_id in included
+            for info in texts
         }
         edges = [
             (dependency, value_id)
-            for value_id in included
+            for value_id in (info.value_id for info in texts)
             for dependency in dependencies[value_id]
         ]
         if not edges:
@@ -1924,8 +1928,13 @@ def render_network_family(
         for info in texts:
             levels.setdefault(depth(info.value_id), []).append(info)
         level_ids = sorted(levels)
+        skipped_edges = sorted(
+            [edge for edge in edges if depth(edge[1]) - depth(edge[0]) > 1],
+            key=lambda edge: (order[edge[0]], order[edge[1]]),
+        )
+        routing_height = min(34.0, content_height * 0.18, 8.0 + 4.0 * len(skipped_edges)) if skipped_edges else 0.0
         left_edge, right_edge = 22.0, width - 22.0
-        top_edge, bottom_edge = 8.0, max(68.0, content_height - 10.0)
+        top_edge, bottom_edge = 8.0 + routing_height, max(68.0, content_height - 10.0)
         available_width = right_edge - left_edge
         available_height = bottom_edge - top_edge
         column_count = len(level_ids)
@@ -1950,11 +1959,29 @@ def render_network_family(
                 for index in range(column_count)
             ]
         positions: dict[str, tuple[float, float]] = {}
+        row_order = {
+            info.value_id: (index + 0.5) / len(level_infos)
+            for level_infos in levels.values() for index, info in enumerate(level_infos)
+        }
+        # Bounded barycenter sweeps reduce crossings without changing semantic depth.
+        for sweep in (level_ids, list(reversed(level_ids))):
+            for level_id in sweep:
+                def barycenter(info: BindingInfo) -> tuple[float, int]:
+                    neighbors = dependencies[info.value_id] + [
+                        target_id for target_id, parents in dependencies.items() if info.value_id in parents
+                    ]
+                    mean = sum(row_order[neighbor] for neighbor in neighbors) / len(neighbors) if neighbors else row_order[info.value_id]
+                    return mean, order[info.value_id]
+
+                levels[level_id] = sorted(levels[level_id], key=barycenter)
+                for index, info in enumerate(levels[level_id]):
+                    row_order[info.value_id] = (index + 0.5) / len(levels[level_id])
         for column_index, level_id in enumerate(level_ids):
-            level_infos = sorted(levels[level_id], key=lambda info: order[info.value_id])
+            level_infos = levels[level_id]
             level_height = len(level_infos) * card_height + (len(level_infos) - 1) * vertical_gap
             start_y = top_edge + (available_height - level_height) / 2
             for row_index, info in enumerate(level_infos):
+                row_order[info.value_id] = row_index
                 positions[info.value_id] = (
                     column_centers[column_index] - card_width / 2,
                     start_y + row_index * (card_height + vertical_gap),
@@ -1962,22 +1989,61 @@ def render_network_family(
 
         marker_id = f"{module_id}-dependency-arrow"
         parts.append(
-            f'<defs><marker id="{esc(marker_id)}" viewBox="0 0 8 8" refX="7" refY="4" '
-            'markerWidth="6" markerHeight="6" orient="auto-start-reverse">'
-            '<path d="M0 0 L8 4 L0 8 Z" fill="#526176"/></marker></defs>'
+            f'<defs><marker id="{esc(marker_id)}" viewBox="0 0 8 8" refX="8" refY="4" '
+            'markerUnits="userSpaceOnUse" markerWidth="6" markerHeight="6" orient="auto-start-reverse">'
+            '<path d="M0 0 L8 4 L0 8 Z" fill="var(--ink)"/></marker></defs>'
         )
+        # Give each edge its own ordered lane at both ends.  Incoming lanes are
+        # ordered by source position and outgoing lanes by target position, so
+        # fan-in/fan-out edges do not converge on a shared midpoint.
+        edge_order = sorted(edges, key=lambda edge: (order[edge[0]], order[edge[1]]))
+        incoming: dict[str, list[tuple[str, str]]] = {info.value_id: [] for info in texts}
+        outgoing: dict[str, list[tuple[str, str]]] = {info.value_id: [] for info in texts}
+        for source_id, target_id in edge_order:
+            outgoing[source_id].append((source_id, target_id))
+            incoming[target_id].append((source_id, target_id))
+        for value_id in incoming:
+            incoming[value_id].sort(key=lambda edge: (positions[edge[0]][1], order[edge[0]]))
+            outgoing[value_id].sort(key=lambda edge: (positions[edge[1]][1], order[edge[1]]))
+
+        def lane_y(node_id: str, edge: tuple[str, str], lanes: dict[str, list[tuple[str, str]]]) -> float:
+            node_edges = lanes[node_id]
+            edge_index = node_edges.index(edge)
+            node_y = positions[node_id][1]
+            lane_gap = min(8.0, max(0.0, card_height - 8.0) / max(1, len(node_edges) - 1))
+            return node_y + card_height / 2 + (edge_index - (len(node_edges) - 1) / 2) * lane_gap
+
+        column_gap = column_centers[1] - column_centers[0] - card_width
+        gap_edges = {
+            level: [edge for edge in edge_order if depth(edge[0]) == level and depth(edge[1]) == level + 1]
+            for level in level_ids
+        }
         for source_id, target_id in sorted(edges, key=lambda edge: (order[edge[1]], order[edge[0]])):
             source_x, source_y = positions[source_id]
             target_x, target_y = positions[target_id]
-            x1 = source_x + card_width
-            y1 = source_y + card_height / 2
-            x2 = target_x
-            y2 = target_y + card_height / 2
-            control = (x1 + x2) / 2
+            clearance = min(3.0, column_gap * 0.2)
+            x1 = source_x + card_width + clearance
+            y1 = lane_y(source_id, (source_id, target_id), outgoing)
+            x2 = target_x - clearance
+            y2 = lane_y(target_id, (source_id, target_id), incoming)
+            edge = (source_id, target_id)
+            if edge in skipped_edges:
+                # Reserve one horizontal lane per long edge above every node.
+                route_y = 4.0 + routing_height * (skipped_edges.index(edge) + 1) / (len(skipped_edges) + 1)
+                out_rank = outgoing[source_id].index(edge)
+                in_rank = incoming[target_id].index(edge)
+                out_x = source_x + card_width + column_gap * (0.35 + 0.3 * (out_rank + 1) / (len(outgoing[source_id]) + 1))
+                in_x = target_x - column_gap * (0.35 + 0.3 * (in_rank + 1) / (len(incoming[target_id]) + 1))
+                path = f"M{fmt(x1)} {fmt(y1)} H{fmt(out_x)} V{fmt(route_y)} H{fmt(in_x)} V{fmt(y2)} H{fmt(x2)}"
+            else:
+                peers = gap_edges[depth(source_id)]
+                lane = peers.index(edge)
+                bend_x = x1 + (x2 - x1) * (lane + 1) / (len(peers) + 1)
+                path = f"M{fmt(x1)} {fmt(y1)} H{fmt(bend_x)} V{fmt(y2)} H{fmt(x2)}"
             parts.append(
-                f'<path d="M{fmt(x1)} {fmt(y1)} C{fmt(control)} {fmt(y1)} '
-                f'{fmt(control)} {fmt(y2)} {fmt(x2)} {fmt(y2)}" fill="none" '
-                f'stroke="#526176" stroke-width="1.8" marker-end="url(#{esc(marker_id)})" '
+                f'<path d="{path}" fill="none" '
+                'stroke="var(--ink)" stroke-width="1.5" stroke-linejoin="round" marker-end="url(#'
+                f'{esc(marker_id)})" '
                 f'data-dependency-edge="{esc(source_id)}:{esc(target_id)}"/>'
             )
         for info in texts:
@@ -1988,12 +2054,12 @@ def render_network_family(
             label_limit = max(8, min(24, int(card_width / 6.0)))
             parts.append(
                 f'<rect x="{fmt(x)}" y="{fmt(y)}" width="{fmt(card_width)}" '
-                f'height="{fmt(card_height)}" fill="#ffffff" stroke="{esc(info.color)}" '
+                f'height="{fmt(card_height)}" class="text-surface" data-dependency-node="{esc(info.value_id)}" fill="var(--surface)" stroke="{esc(info.color)}" '
                 'stroke-width="2" rx="8"/>'
             )
             parts.append(
                 f'<text x="{fmt(x + card_width / 2)}" y="{fmt(label_y)}" '
-                f'text-anchor="middle" font-size="{8 if dense else 10}" fill="#475569" aria-hidden="true">'
+                f'text-anchor="middle" font-size="{8 if dense else 10}" fill="var(--muted)" aria-hidden="true">'
                 f'{esc(binding_label(info, label_limit))}</text>'
             )
             parts.append(
@@ -2014,21 +2080,21 @@ def render_network_family(
             px = left + (index + 0.5) * cell
             parts.append(
                 f'<line x1="{fmt(center_x)}" y1="{fmt(center_y)}" x2="{fmt(px)}" y2="{fmt(center_y)}" '
-                f'stroke="#cbd5e1" stroke-width="2"/>'
+                f'stroke="var(--line)" stroke-width="2"/>'
             )
     else:
         parts.append(
             f'<circle cx="{fmt(center_x)}" cy="{fmt(center_y)}" r="38" fill="none" '
-            f'stroke="#cbd5e1" stroke-width="2" stroke-dasharray="5 5"/>'
+            f'stroke="var(--line)" stroke-width="2" stroke-dasharray="5 5"/>'
         )
-    parts.append(f'<circle cx="{fmt(center_x)}" cy="{fmt(center_y)}" r="10" fill="#94a3b8"/>')
+    parts.append(f'<circle cx="{fmt(center_x)}" cy="{fmt(center_y)}" r="10" fill="var(--muted)"/>')
     if marks:
         for index, info in enumerate(marks):
             parts.append(render_mark(plan, module_id, info, (left+index*cell, top, cell, plot_height)))
             parts.append(
                 f'<text x="{fmt(left + (index + 0.5) * cell)}" '
                 f'y="{fmt(center_y + min(68.0, plot_height * 0.28))}" '
-                f'text-anchor="middle" font-size="10" fill="#475569" aria-hidden="true">'
+                f'text-anchor="middle" font-size="10" fill="var(--muted)" aria-hidden="true">'
                 f'{esc(binding_label(info, 22))}</text>'
             )
     parts.append("</g>")
@@ -2053,7 +2119,7 @@ def render_fallback_family(
             x, y = left+column*cell_width, top+row*cell_height
             parts.append(
                 f'<rect x="{fmt(x+2)}" y="{fmt(y+2)}" width="{fmt(cell_width-4)}" '
-                f'height="{fmt(cell_height-4)}" fill="#f1f5f9" stroke="#e2e8f0" rx="7"/>'
+                f'height="{fmt(cell_height-4)}" fill="var(--surface-subtle)" stroke="var(--line)" rx="7"/>'
             )
             parts.append(render_mark(plan, module_id, info, (x+6,y+6,cell_width-12,cell_height-12)))
     parts.append("</g>")
@@ -2248,7 +2314,7 @@ COMPOSER_LAYOUT_RUNTIME = r'''  function layoutFlow(plot, group) {
     }
     if (sourceLabel) {
       const minimumY = numeric(plot.dataset.flowLabelMinY, "flow label minimum y");
-      sourceLabel.setAttribute("y", String(Math.max(minimumY, centerY - sourceHeight / 2 - 8)));
+      sourceLabel.setAttribute("y", String(minimumY));
     }
     const sourceBound = plot.querySelector("[data-flow-source-bound]");
     if (sourceBound) {

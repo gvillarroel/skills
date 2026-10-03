@@ -1,7 +1,7 @@
 #!/usr/bin/env -S uv run --script
 # /// script
 # requires-python = ">=3.11"
-# dependencies = []
+# dependencies = ["pillow>=11.0"]
 # ///
 
 from __future__ import annotations
@@ -17,18 +17,20 @@ import time
 import urllib.error
 import urllib.request
 import zlib
+import xml.etree.ElementTree as ET
 from dataclasses import dataclass
 from pathlib import Path
 
 from plantuml_coverage import fixture_index, load_manifest
+from palette_paints import COLORSETS, NAMES, canonical, nearest, require_svg_palette, svg_paints
 
 
 SCRIPT_DIR = Path(__file__).resolve().parent
 SKILL_DIR = SCRIPT_DIR.parent
-DEFAULT_THEME = SKILL_DIR / "assets" / "themes" / "cs2.puml"
+DEFAULT_THEME = SKILL_DIR / "assets" / "themes" / "cs1.puml"
 THEME_BY_COLORSET = {
-    "colorset1": SKILL_DIR / "assets" / "themes" / "cs1.puml",
-    "colorset2": DEFAULT_THEME,
+    "colorset1": DEFAULT_THEME,
+    "colorset2": SKILL_DIR / "assets" / "themes" / "cs2.puml",
 }
 DEFAULT_SERVER_URL = "https://www.plantuml.com/plantuml"
 DEFAULT_KROKI_URL = "https://kroki.io"
@@ -44,6 +46,8 @@ class RenderOutput:
     path: str
     size_bytes: int
     engine: str
+    palette_normalized: bool = False
+    source_media_preserved: bool = False
 
 
 @dataclass
@@ -136,6 +140,41 @@ def inject_theme(source: str, theme: str, theme_mode: str | None = None) -> str:
         if line.strip().lower().startswith("@start"):
             return "\n".join(lines[: index + 1] + [theme.rstrip()] + lines[index + 1 :]) + "\n"
     raise ValueError("PlantUML source is missing an @start... directive")
+
+
+def normalize_source_paints(source: str, colorset: str) -> str:
+    """Normalize explicit presentation syntax, never unquoted fact-bearing labels."""
+    color = r"#[0-9a-fA-F]{3,8}\b|#(?:" + "|".join(NAMES) + r")\b"
+    token = re.compile(r'"(?:[^"\\]|\\.)*"|' + color, re.I)
+    def replace(match: re.Match[str]) -> str:
+        value = match.group()
+        if value.startswith('"'):
+            return value
+        base = canonical(value[1:]) if value[1:].lower() in NAMES else canonical(value)
+        return value if base in COLORSETS[colorset]["allowed"] else nearest(base, colorset)
+    lines = []
+    in_style = False
+    for line in source.splitlines():
+        stripped = line.lstrip()
+        if stripped.lower().startswith('<style>'):
+            in_style = True
+        if stripped.startswith("'"):
+            lines.append(line)
+            continue
+        if in_style or re.match(r'(?i)\s*(?:skinparam|!\$|!define)\b', line):
+            updated = token.sub(replace, line)
+        else:
+            # A colon starts a display label in diagrams. Preserve its values and identifiers.
+            head, separator, label = line.partition(':')
+            head = re.sub(r'(?<=\[)#[0-9a-fA-F]{3,8}\b|(?<=\[)#(?:' + '|'.join(NAMES) + r')\b', replace, head, flags=re.I)
+            # Trailing entity fill syntax is presentation; do not infer colors in prose.
+            if not separator and re.match(r'(?i)\s*(?:class|object|component|rectangle|actor|participant|database|queue|node|cloud|storage|package|folder|artifact|interface|entity|boundary|control|collections|card|agent|usecase|state)\b', head):
+                head = re.sub(r'#[0-9a-fA-F]{3,8}\s*$|#(?:' + '|'.join(NAMES) + r')\s*$', lambda match: replace(re.match(color, match.group().strip(), re.I)), head, flags=re.I)
+            updated = head + separator + label
+        lines.append(updated)
+        if stripped.lower().startswith('</style>'):
+            in_style = False
+    return '\n'.join(lines) + '\n'
 
 
 def encode_triplet(b1: int, b2: int, b3: int) -> str:
@@ -271,6 +310,7 @@ def render_source(
     write_themed: bool,
     coverage_fixture: dict[str, object] | None = None,
     publication_only: bool = False,
+    colorset: str = "colorset1",
 ) -> DiagramResult:
     raw_source = source_path.read_text(encoding="utf-8")
     start_directive = first_start_directive(raw_source)
@@ -298,6 +338,8 @@ def render_source(
 
     themed_source_text = inject_theme(raw_source, theme, theme_mode)
     theme_applied = theme_mode == "inject" and themed_source_text != raw_source
+    if theme_mode == "inject":
+        themed_source_text = normalize_source_paints(themed_source_text, colorset)
     themed_source_path: Path | None = None
     if write_themed:
         themed_source_path = output_dir / "themed-source" / source_path.relative_to(input_dir)
@@ -350,12 +392,35 @@ def render_source(
                 render_with_cli(themed_source_text, fmt, target, plantuml_command, timeout)
             else:
                 raise ValueError(f"Unsupported engine: {engine}")
+            contains_source_media = bool(re.search(r"<img:|!include.*(?:aws|azure|gcp)|sprite", raw_source, re.I))
+            if fmt == "svg":
+                tree = ET.parse(target)
+                svg_paints(tree.getroot(), colorset, normalize=True)
+                tree.getroot().set("data-colorset", colorset)
+                tree.write(target, encoding="utf-8", xml_declaration=True)
+                require_svg_palette(tree.getroot(), colorset)
+            elif fmt == "png" and not contains_source_media:
+                # Raster-only Ditaa and standalone math use renderer-native syntax.
+                # Map their output, rather than corrupting the input with theme text.
+                from PIL import Image
+                colors = COLORSETS[colorset]["allowed"]
+                palette = Image.new("P", (1, 1))
+                channels = [int(color[i:i+2], 16) for color in colors for i in (1, 3, 5)]
+                palette.putpalette(channels + channels[:3] * (256 - len(colors)))
+                with Image.open(target) as image:
+                    alpha = image.getchannel("A") if "A" in image.getbands() else None
+                    mapped = image.convert("RGB").quantize(palette=palette, dither=Image.Dither.NONE).convert("RGB")
+                    if alpha is not None:
+                        mapped.putalpha(alpha)
+                    mapped.save(target)
             outputs.append(
                 RenderOutput(
                     format=fmt,
                     path=relative(target, output_dir),
                     size_bytes=target.stat().st_size,
                     engine=engine,
+                    palette_normalized=fmt == "svg" or not contains_source_media,
+                    source_media_preserved=contains_source_media,
                 )
             )
         return DiagramResult(
@@ -385,7 +450,7 @@ def main() -> int:
     parser.add_argument("input", type=Path, help="Directory containing .puml, .plantuml, or .pu files.")
     parser.add_argument("--output", type=Path, required=True, help="Output directory for rendered files.")
     parser.add_argument("--format", choices=sorted(SUPPORTED_FORMATS), action="append", dest="formats", help="Output format. May be repeated.")
-    parser.add_argument("--colorset", choices=sorted(THEME_BY_COLORSET), help="Bundled colorset theme to inject. Default: colorset2.")
+    parser.add_argument("--colorset", choices=sorted(THEME_BY_COLORSET), help="Bundled colorset theme to inject. Default: colorset1.")
     parser.add_argument("--theme", type=Path, help="Custom PlantUML theme file to inject after @start.")
     parser.add_argument("--engine", choices=["auto", "kroki", "server", "cli"], default="auto", help="Render engine. Default: auto.")
     parser.add_argument("--server-url", default=DEFAULT_SERVER_URL, help="PlantUML Server base URL for server rendering.")
@@ -409,7 +474,7 @@ def main() -> int:
     if args.publication_only and not args.coverage_manifest:
         print("--publication-only requires --coverage-manifest", file=sys.stderr)
         return 2
-    color_set = args.colorset or "colorset2"
+    color_set = args.colorset or "colorset1"
     theme_path = (args.theme or THEME_BY_COLORSET[color_set]).resolve()
     if not theme_path.exists():
         print(f"Theme file does not exist: {theme_path}", file=sys.stderr)
@@ -434,6 +499,7 @@ def main() -> int:
             write_themed=args.write_themed,
             coverage_fixture=coverage_by_source.get(source.relative_to(input_dir).as_posix()),
             publication_only=args.publication_only,
+            colorset=color_set,
         )
         for source in sources
     ]

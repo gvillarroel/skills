@@ -1,5 +1,39 @@
 # D3 Example Pattern Recipes
 
+## Contents
+
+- [Pattern Promotion Rule](#pattern-promotion-rule)
+- [Document Token Quality](#document-token-quality)
+- [Document Extraction Buckets](#document-extraction-buckets)
+- [Image Partial Covers](#image-partial-covers)
+- [Asymmetric Task Overlap](#asymmetric-task-overlap)
+- [Venn Overlap Family](#venn-overlap-family)
+- [Kanban Assignee Legend Modes](#kanban-assignee-legend-modes)
+- [Pen Label Optimizer](#pen-label-optimizer)
+- [Inline Bar Tables](#inline-bar-tables)
+- [Sketchy Overlay](#sketchy-overlay)
+- [Model Execution Box](#model-execution-box)
+- [Token Roulette Sampler](#token-roulette-sampler)
+- [Circuit Signal Traces](#circuit-signal-traces)
+- [Critical Chain Buffer](#critical-chain-buffer)
+- [Critical Incident Escalation](#critical-incident-escalation)
+- [Critical Fault Tree](#critical-fault-tree)
+- [Critical Bowtie Barrier](#critical-bowtie-barrier)
+- [Critical SLO Burn Rate](#critical-slo-burn-rate)
+- [Critical Queue Backpressure](#critical-queue-backpressure)
+- [Critical Cache Stampede](#critical-cache-stampede)
+- [Critical Circuit Breaker](#critical-circuit-breaker)
+- [Critical Bulkhead Isolation](#critical-bulkhead-isolation)
+- [Critical Rate Limit Token Bucket](#critical-rate-limit-token-bucket)
+- [Critical Idempotency Replay Guard](#critical-idempotency-replay-guard)
+- [Critical Replication Failover](#critical-replication-failover)
+- [Critical Dependency Blast Radius](#critical-dependency-blast-radius)
+- [Organic Growth Patterns](#organic-growth-patterns)
+- [Natural Math Archetypes](#natural-math-archetypes)
+- [Process P&ID Control Loop](#process-pid-control-loop)
+- [Parabolic Arcs For SDLC Tasks](#parabolic-arcs-for-sdlc-tasks)
+- [Adaptation Checklist](#adaptation-checklist)
+
 Use this reference when a good gallery example should become reusable skill knowledge, or when adapting an existing gallery pattern into a new SVG, video scene, or example card.
 
 ## Pattern Promotion Rule

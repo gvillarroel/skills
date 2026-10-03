@@ -353,7 +353,7 @@ function addDefaultLights(scene) {
   key.position.set(5, 6, 5)
   scene.add(key)
 
-  const fill = new THREE.DirectionalLight(TOKEN_HEX.blue, 0.65)
+  const fill = new THREE.DirectionalLight(TOKEN_HEX.white, 0.65)
   fill.position.set(-4, 3, -3)
   scene.add(fill)
 }
@@ -685,7 +685,7 @@ function setupWaveSurface({ root, camera }) {
         const upperToken = normalized < 0.5 ? 'green' : 'red'
         colorA.copy(COLOR_OBJECTS[lowerToken])
         colorB.copy(COLOR_OBJECTS[upperToken])
-        mixed.lerpColors(colorA, colorB, normalized < 0.5 ? normalized * 2 : (normalized - 0.5) * 2)
+        mixed.copy(COLOR_OBJECTS[["blue", "green", "yellow", "red"][Math.min(3, Math.floor(normalized * 4))]])
         colorAttr.setXYZ(i, mixed.r, mixed.g, mixed.b)
       }
 
@@ -846,7 +846,7 @@ function setupMaterialSampler({ root, camera }) {
     root.add(shape)
   })
 
-  const spotlight = new THREE.PointLight(TOKEN_HEX.yellow, 1.5, 8)
+  const spotlight = new THREE.PointLight(TOKEN_HEX.white, 1.5, 8)
   spotlight.position.set(-1.2, 2.2, 1.8)
   root.add(spotlight)
 

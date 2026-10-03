@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="__LANG__">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>__ID__</title>
+  <style>
+    @font-face {font-family: Explainer; src: url('assets/fonts/space-grotesk.ttf') format('truetype'); font-weight: 500; font-display: block;}
+    * {box-sizing: border-box;}
+    html, body {width: 100%; height: 100%; margin: 0; overflow: hidden; background: __BACKGROUND__;}
+    #__ID__ {position: relative; width: 100%; height: 100%; overflow: hidden;}
+    svg {display: block; width: 100%; height: 100%; font-family: Explainer, sans-serif; font-weight: 500;}
+    text {white-space: pre;}
+  </style>
+</head>
+<body>
+  <div id="__ID__" data-composition-id="__ID__" data-width="__WIDTH__" data-height="__HEIGHT__" data-duration="__DURATION__" data-fps="__FPS__">
+    <svg id="stage" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 __WIDTH__ __HEIGHT__" role="img" aria-label="__ARIA__"></svg>
+    __AUDIO__
+  </div>
+  <script src="assets/vendor/gsap.min.js"></script>
+  <script src="kernel.js"></script>
+  <script>
+    const brief = __BRIEF__;
+    const palette = __PALETTE__;
+    const kernel = ExplainerKernel.create(brief, palette);
+    const svg = document.getElementById('stage');
+    const ns = svg.namespaceURI;
+    const nodes = new Map();
+    const groups = new Map();
+    let inputs = {}, current = 0;
+    function element(tag, attrs, parent) {
+      const node = document.createElementNS(ns, tag);
+      for (const [k, v] of Object.entries(attrs)) node.setAttribute(k, v);
+      parent.append(node); return node;
+    }
+    const defs = element('defs', {}, svg);
+    for (const view of brief.views) {
+      const [x, y] = view.region;
+      const group = element('g', {'data-view': view.id, transform: `translate(${x} ${y})`}, svg);
+      groups.set(view.id, group);
+    }
+    for (const mark of brief.marks) {
+      const tag = mark.kind === 'plot' ? 'path' : mark.kind;
+      const node = element(tag, {'data-mark': mark.id, 'data-view': mark.view,
+        'stroke-width': mark.strokeWidth ?? 3, opacity: mark.opacity ?? 1}, groups.get(mark.view));
+      if (mark.dash) node.setAttribute('stroke-dasharray', mark.dash);
+      node.setAttribute('stroke-linecap', mark.linecap || 'round');
+      node.setAttribute('stroke-linejoin', mark.linejoin || 'round');
+      if (mark.kind === 'text') node.setAttribute('text-anchor', mark.anchor || 'start');
+      if (mark.arrow) {
+        const marker = element('marker', {id: `arrow-${mark.id}`, markerWidth: 4, markerHeight: 4,
+          refX: 3, refY: 2, orient: 'auto', markerUnits: 'strokeWidth'}, defs);
+        element('path', {d: 'M0 0 L4 2 L0 4 Z', fill: palette.roles[(brief.entities || {})[mark.entity] || mark.stroke || 'ink']}, marker);
+        node.setAttribute('marker-end', `url(#arrow-${mark.id})`);
+      }
+      if (mark.kind === 'plot') node.__point = element('circle', {'data-point': mark.id, r: 7}, groups.get(mark.view));
+      nodes.set(mark.id, node);
+    }
+    function renderAt(seconds) {
+      current = Math.max(0, Math.min(brief.output.duration, seconds));
+      const frame = kernel.snapshot(current, inputs);
+      for (const mark of frame.marks) {
+        const node = nodes.get(mark.id);
+        for (const [key, value] of Object.entries(mark.attrs)) {
+          if (['translateX', 'translateY', 'rotation', 'pointX', 'pointY'].includes(key)) continue;
+          node.setAttribute(key === 'fontSize' ? 'font-size' : key, value);
+        }
+        if (mark.kind === 'path') node.setAttribute('transform', `translate(${mark.attrs.translateX || 0} ${mark.attrs.translateY || 0}) rotate(${mark.attrs.rotation || 0})`);
+        node.setAttribute('fill', mark.fill); node.setAttribute('stroke', mark.stroke);
+        if (mark.kind === 'text') node.textContent = mark.text;
+        if (mark.kind === 'path' || mark.kind === 'plot') node.setAttribute('d', mark.d);
+        if (node.__point) {
+          node.__point.setAttribute('cx', mark.attrs.pointX); node.__point.setAttribute('cy', mark.attrs.pointY);
+          node.__point.setAttribute('fill', mark.stroke);
+        }
+      }
+      svg.dataset.time = current;
+      return frame;
+    }
+    const clock = {seconds: 0};
+    const timeline = gsap.timeline({paused: true});
+    timeline.to(clock, {seconds: brief.output.duration, duration: brief.output.duration, ease: 'none', onUpdate: () => renderAt(clock.seconds)}, 0);
+    window.__timelines = window.__timelines || {};
+    window.__timelines['__ID__'] = timeline;
+    window.explainer = {
+      brief, palette,
+      stateAt: kernel.stateAt, snapshot: kernel.snapshot, renderAt,
+      seek: seconds => {timeline.totalTime(Math.max(0, Math.min(brief.output.duration, seconds)), false); return renderAt(clock.seconds);},
+      setInputs: values => {
+        for (const [name, value] of Object.entries(values)) {
+          if (!Object.hasOwn(brief.sources, name) || !Number.isFinite(value)) throw Error(`Invalid input: ${name}`);
+          const [lo, hi] = brief.sources[name].domain;
+          if (value < lo || value > hi) throw Error(`Input outside domain: ${name}`);
+        }
+        inputs = {...inputs, ...values}; return renderAt(current);
+      },
+      clearInputs: () => {inputs = {}; return renderAt(current);},
+    };
+    renderAt(0);
+  </script>
+</body>
+</html>

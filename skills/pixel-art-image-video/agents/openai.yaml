@@ -1,0 +1,4 @@
+interface:
+  display_name: "Pixel Art Image and Video"
+  short_description: "Turn images and video into crisp pixel art"
+  default_prompt: "Use $pixel-art-image-video to turn my local image or video into pixel art, choose an appropriate pixel density and palette, inspect the result, and validate the output."

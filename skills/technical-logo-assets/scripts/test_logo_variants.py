@@ -133,11 +133,11 @@ class SvgContractTests(unittest.TestCase):
 
 class CatalogSelectionTests(unittest.TestCase):
     def test_custom_color_is_labeled_and_geometry_is_vector(self) -> None:
-        payload, metadata, license_bytes = prepare_export(asset_directory(), "devicon-python", "adaptive", "#07a")
+        payload, metadata, license_bytes = prepare_export(asset_directory(), "devicon-python", "adaptive", "#007298")
         self.assertTrue(inspect_vector(payload)["vectorOnly"])
         root = ET.fromstring(payload)
         self.assertEqual(root.get("data-logo-variant"), "custom-color")
-        self.assertEqual(root.get("data-color-value"), "#0077aa")
+        self.assertEqual(root.get("data-color-value"), "#007298")
         self.assertEqual(metadata["requestedVariant"], "adaptive")
         self.assertIn(b"MIT License", license_bytes)
         self.assertNotIn(b'fill="currentColor"', payload)

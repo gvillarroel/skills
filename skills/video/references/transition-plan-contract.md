@@ -1,5 +1,10 @@
 # Transition Plan Contract
 
+## Contents
+
+- [Output Shape](#output-shape)
+- [Validation](#validation)
+
 Use this file before writing `transition-plan.md`, `transition-plan.json`, or a renderer handoff.
 
 ## Output Shape
@@ -36,9 +41,9 @@ For `transition-plan.json`, use this shape:
       "alignmentRule": "Outgoing packet center and incoming observe node share the same row baseline.",
       "edgeRule": "All masks and panels remain square, rectangular, and 0-radius through the transition.",
       "boxPaddingRule": "All masks, panels, cards, and apertures keep internalPaddingPx 0; content remains flush to bounds.",
-      "grayscaleHierarchyRule": "Outgoing, bridge, and incoming hierarchy use distinct grayscale levels #333333, #696969, and #9c9c9c; hue only marks semantic state.",
+      "grayscaleHierarchyRule": "Outgoing, bridge, and incoming hierarchy use distinct grayscale levels #363636, #696969, and #9c9c9c; hue only marks semantic state.",
       "grayscaleHierarchy": [
-        { "level": 0, "role": "primary focal", "grayHex": "#333333" },
+        { "level": 0, "role": "primary focal", "grayHex": "#363636" },
         { "level": 1, "role": "secondary support", "grayHex": "#696969" },
         { "level": 2, "role": "tertiary structure", "grayHex": "#9c9c9c" }
       ],

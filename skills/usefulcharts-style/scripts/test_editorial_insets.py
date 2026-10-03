@@ -25,7 +25,7 @@ ET.register_namespace('',NS['s'])
 def brief():
     return dict(id='contextual-collections',title='A HISTORY OF PUBLIC COLLECTIONS',design='editorial',mode='lineage',layout='authored',
                 width=1200,height=1100,font_size=18,source_note='Fictional institutions and illustrative emblems.',
-                groups=[dict(id='craft',label='Workshop collections',color='#F7CD26'),dict(id='public',label='Public institutions',color='#77BDDD')],
+                groups=[dict(id='craft',label='Workshop collections',color='#ffd332'),dict(id='public',label='Public institutions',color='#b5b5b5')],
                 nodes=[dict(id='a',label='Cabinet of Instruments',group='craft',x=400,y=250,width=180),
                        dict(id='b',label='Public Library',group='public',x=400,y=850,width=180),
                        dict(id='c',label='Reading Society',group='public',x=750,y=850,width=180)],
@@ -172,7 +172,7 @@ class ContextualInsets(unittest.TestCase):
             marks=group.findall('s:path[@data-count-mark]',NS)
             if change=='delete':group.remove(marks[0])
             if change=='hide':marks[0].set('opacity','0')
-            if change=='paint':marks[0].set('fill','#FF0000')
+            if change=='paint':marks[0].set('fill','#e8002a')
             if change=='total':group.find('s:text[@data-inset-role="count"]',NS).text='99'
             if change=='overlap':marks[1].set('d',marks[0].get('d'))
             if change=='font':group.find('s:text[@data-inset-role="count"]',NS).set('font-size','8')

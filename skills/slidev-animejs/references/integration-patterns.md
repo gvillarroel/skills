@@ -1,5 +1,15 @@
 # Slidev Anime.js Integration Patterns
 
+## Contents
+
+- [Project Shape](#project-shape)
+- [Dependencies](#dependencies)
+- [Vue Lifecycle Contract](#vue-lifecycle-contract)
+- [Slidev Click Stories](#slidev-click-stories)
+- [Scope And Cleanup](#scope-and-cleanup)
+- [Slide And Export Constraints](#slide-and-export-constraints)
+- [Verification Checklist](#verification-checklist)
+
 ## Project Shape
 
 Use this structure for a local Slidev animation lab:

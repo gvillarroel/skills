@@ -1,5 +1,14 @@
 # User-Owned D3 Artifact Workflow
 
+## Contents
+
+- [Output Policy](#output-policy)
+- [Starter-First Workflow](#starter-first-workflow)
+- [Portable Visual Defaults](#portable-visual-defaults)
+- [Starter Contract](#starter-contract)
+- [Adapting Gallery Patterns](#adapting-gallery-patterns)
+- [Validation](#validation)
+
 Use this reference when creating a new D3 visualization, SVG, or editable starter for a user's project. The goal is to produce code the user can keep editing without mutating this skill's validation gallery.
 
 ## Output Policy

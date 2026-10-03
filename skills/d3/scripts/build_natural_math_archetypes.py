@@ -12,6 +12,7 @@ import argparse
 import html
 import math
 from pathlib import Path
+from colorset_adapter import colorset_output
 
 
 WIDTH = 980
@@ -328,6 +329,7 @@ def voronoi_cells() -> str:
     </g>"""
 
 
+@colorset_output
 def build_html() -> str:
     verify_constants()
     return f"""<!doctype html>
@@ -395,9 +397,10 @@ def build_html() -> str:
 def main() -> int:
     parser = argparse.ArgumentParser(description="Build a standalone Natural Math Archetypes SVG/HTML artifact.")
     parser.add_argument("output", type=Path, help="Output HTML path.")
+    parser.add_argument("--colorset", choices=("colorset1", "colorset2"), default="colorset1")
     args = parser.parse_args()
     args.output.parent.mkdir(parents=True, exist_ok=True)
-    args.output.write_text(build_html(), encoding="utf-8", newline="\n")
+    args.output.write_text(build_html(colorset=args.colorset), encoding="utf-8", newline="\n")
     print(f"Wrote {args.output}")
     return 0
 

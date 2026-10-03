@@ -1,9 +1,11 @@
 ---
 name: slidev-echarts
-description: Build and troubleshoot Apache ECharts visualizations inside Slidev presentations. Use when Codex needs to add reusable ECharts Vue components to a Slidev deck, wire responsive chart containers, create click-driven data stories, tune chart modules and renderers, expose deterministic chart states for downstream capture, or validate charts in the browser; hand video composition and recording to the video skill.
+description: "Builds and troubleshoots Apache ECharts visualizations inside Slidev presentations. Use when Codex needs to add reusable ECharts Vue components to a Slidev deck, wire responsive chart containers, create click-driven data stories, tune chart modules and renderers, expose deterministic chart states for downstream capture, or validate charts in the browser; hand video composition and recording to the video skill."
 ---
 
 # Slidev ECharts
+
+Read [the colorset output contract](references/colorset-contract.md) before authoring or auditing visual output. Apply one exact bundled palette to every authored output path and inspect rendered paint. Default to colorset1; declare colorset2 when its category distinctions are needed.
 
 ## Core Workflow
 
@@ -22,7 +24,7 @@ description: Build and troubleshoot Apache ECharts visualizations inside Slidev 
 
 Read `references/integration-patterns.md` when implementing or debugging a Slidev ECharts deck. It contains a reusable wrapper pattern, module registration guidance, Slidev click patterns, and a verification checklist.
 
-Read `references/chart-type-index.md` when the task names a specific ECharts chart type or asks for broad chart coverage. It routes to one dedicated reference file per ECharts 6.1.0 chart installer, covering data shape, animation approach, display guidance, modules, and pitfalls.
+For a named chart type, select its directly linked recipe below. Read `references/chart-type-index.md` for broad coverage or installer lookup. Each ECharts 6.1.0 chart reference covers data shape, animation, display, modules, and pitfalls.
 
 Read `references/video-handoff.md` when a downstream video needs deterministic ECharts states, settle timing, or a deck handoff contract.
 
@@ -33,3 +35,35 @@ Read `references/visual-tokens.md` before creating or updating animated Slidev/E
 ## Pattern Promotion
 
 When a Slidev/ECharts pattern proves reusable, update the owning reference before finishing. Use `references/chart-type-index.md` and the chart-specific files for chart data, modules, animation, and pitfalls; use `references/integration-patterns.md` for wrapper, lifecycle, click-story, or sizing patterns; use `references/video-handoff.md` only for deterministic state/export handoff fields. Include trigger, props/data contract, implementation steps, validation commands, and any export caveats.
+
+## Additional reference routes
+
+Read only the resource matching the task.
+
+## Direct recipe links
+
+Select the matching recipe and read it in full.
+
+- [bar](references/charts/bar.md).
+- [boxplot](references/charts/boxplot.md).
+- [candlestick](references/charts/candlestick.md).
+- [chord](references/charts/chord.md).
+- [custom](references/charts/custom.md).
+- [effect scatter](references/charts/effect-scatter.md).
+- [funnel](references/charts/funnel.md).
+- [gauge](references/charts/gauge.md).
+- [graph](references/charts/graph.md).
+- [heatmap](references/charts/heatmap.md).
+- [line](references/charts/line.md).
+- [lines](references/charts/lines.md).
+- [map](references/charts/map.md).
+- [parallel](references/charts/parallel.md).
+- [pictorial bar](references/charts/pictorial-bar.md).
+- [pie](references/charts/pie.md).
+- [radar](references/charts/radar.md).
+- [sankey](references/charts/sankey.md).
+- [scatter](references/charts/scatter.md).
+- [sunburst](references/charts/sunburst.md).
+- [theme river](references/charts/theme-river.md).
+- [tree](references/charts/tree.md).
+- [treemap](references/charts/treemap.md).

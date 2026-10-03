@@ -1,24 +1,24 @@
 :root {
   color-scheme: light;
-  --ink: #26343f;
-  --ink-soft: #53616b;
-  --paper: #f4f1ee;
-  --surface: #ffffff;
-  --surface-soft: #f8f7f5;
-  --line: #d8d5d1;
-  --red: #9e1b32;
-  --red-bright: #e8002a;
-  --red-soft: #ffccd5;
-  --blue: #007298;
-  --blue-soft: #cdf3ff;
-  --green: #45842a;
-  --green-soft: #dbffcc;
-  --orange: #e77204;
-  --orange-soft: #ffe5cc;
-  --purple: #652f6c;
-  --purple-soft: #f9ccff;
-  --shadow: 0 18px 50px rgba(38, 52, 63, 0.1);
-  --radius: 22px;
+  --ink:#363636;
+  --ink-soft:#696969;
+  --paper:#f7f7f7;
+  --surface:#ffffff;
+  --surface-soft:#f7f7f7;
+  --line:#cfcfcf;
+  --red:#9e1b32;
+  --red-bright:#e8002a;
+  --red-soft:#ffccd5;
+  --blue:#333e48;
+  --blue-soft:#e7e7e7;
+  --green:#4f4f4f;
+  --green-soft:#e7e7e7;
+  --orange:#e8002a;
+  --orange-soft:#ffccd5;
+  --purple:#4f4f4f;
+  --purple-soft:#e7e7e7;
+  --shadow:0 18px 50px rgba(54,54,54,0.1);
+  --radius:22px;
 }
 
 * {
@@ -31,8 +31,8 @@ html {
 
 body {
   margin: 0;
-  background: var(--paper);
-  color: var(--ink);
+  background:var(--paper);
+  color:var(--ink);
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   line-height: 1.5;
 }
@@ -49,7 +49,7 @@ a {
 }
 
 a {
-  color: var(--red);
+  color:var(--#e8002a);
 }
 
 .skip-link {
@@ -59,8 +59,8 @@ a {
   z-index: 50;
   padding: 10px 14px;
   border-radius: 999px;
-  background: var(--surface);
-  color: var(--ink);
+  background:var(--surface);
+  color:var(--ink);
   transform: translateY(-160%);
 }
 
@@ -72,8 +72,8 @@ a {
   position: relative;
   min-height: 0;
   overflow: hidden;
-  background: var(--ink);
-  color: white;
+  background:var(--ink);
+  color:white;
 }
 
 .hero__content {
@@ -87,7 +87,7 @@ a {
 .eyebrow,
 .section-kicker {
   margin: 0 0 14px;
-  color: #ff9caf;
+  color:#ffccd5;
   font-size: 0.75rem;
   font-weight: 800;
   letter-spacing: 0.14em;
@@ -106,7 +106,7 @@ a {
 .hero__lede {
   max-width: 760px;
   margin: 16px 0 0;
-  color: #d9e0e5;
+  color:#e7e7e7;
   font-size: clamp(1rem, 2vw, 1.28rem);
 }
 
@@ -133,7 +133,7 @@ a {
 }
 
 .hero__stats span {
-  color: #bfc8cf;
+  color:#cfcfcf;
   font-size: 0.82rem;
 }
 
@@ -154,7 +154,7 @@ a {
 
 .hero__mark span:nth-child(1) {
   inset: 90px;
-  background: rgba(158, 27, 50, 0.88);
+  background:rgba(158, 27, 50, 0.88);
 }
 
 .hero__mark span:nth-child(2) {
@@ -162,7 +162,7 @@ a {
   height: 130px;
   right: 14px;
   bottom: 50px;
-  background: rgba(0, 114, 152, 0.72);
+  background:rgba(51,62,72,0.72);
 }
 
 .hero__mark span:nth-child(3) {
@@ -170,7 +170,7 @@ a {
   height: 78px;
   left: 38px;
   bottom: 100px;
-  background: rgba(231, 114, 4, 0.72);
+  background:rgba(232,0,42,0.72);
 }
 
 main,
@@ -188,7 +188,7 @@ footer {
 
 .method .section-kicker,
 .catalog .section-kicker {
-  color: var(--red);
+  color:var(--#e8002a);
 }
 
 .method h2,
@@ -200,7 +200,7 @@ footer {
 }
 
 .method__copy {
-  color: var(--ink-soft);
+  color:var(--ink-soft);
   font-size: 1.05rem;
 }
 
@@ -229,7 +229,7 @@ footer {
 
 .visible-count {
   margin: 0;
-  color: var(--ink-soft);
+  color:var(--ink-soft);
   font-weight: 700;
 }
 
@@ -241,10 +241,10 @@ footer {
   grid-template-columns: minmax(240px, 1fr) minmax(180px, 0.55fr) auto;
   gap: 14px;
   padding: 16px;
-  border: 1px solid rgba(216, 213, 209, 0.92);
+  border: 1px solid rgba(207, 207, 207, 0.92);
   border-radius: 18px;
-  background: rgba(244, 241, 238, 0.94);
-  box-shadow: 0 12px 35px rgba(38, 52, 63, 0.08);
+  background:rgba(247,247,247,0.94);
+  box-shadow: 0 12px 35px rgba(51, 62, 72, 0.08);
   backdrop-filter: blur(14px);
 }
 
@@ -260,7 +260,7 @@ footer {
 .palette-control legend {
   display: block;
   margin: 0 0 6px;
-  color: var(--ink-soft);
+  color:var(--ink-soft);
   font-size: 0.72rem;
   font-weight: 800;
   letter-spacing: 0.08em;
@@ -274,8 +274,8 @@ footer {
   padding: 10px 12px;
   border: 1px solid var(--line);
   border-radius: 11px;
-  background: var(--surface);
-  color: var(--ink);
+  background:var(--surface);
+  color:var(--ink);
 }
 
 .palette-control {
@@ -289,7 +289,7 @@ footer {
   padding: 4px;
   border: 1px solid var(--line);
   border-radius: 12px;
-  background: var(--surface);
+  background:var(--surface);
 }
 
 .palette-control button {
@@ -297,16 +297,16 @@ footer {
   border: 0;
   border-radius: 8px;
   padding: 7px 11px;
-  background: transparent;
-  color: var(--ink-soft);
+  background:transparent;
+  color:var(--ink-soft);
   cursor: pointer;
   font-size: 0.82rem;
   font-weight: 750;
 }
 
 .palette-control button.is-active {
-  background: var(--ink);
-  color: white;
+  background:var(--ink);
+  color:white;
 }
 
 .family-nav {
@@ -322,8 +322,8 @@ footer {
   padding: 8px 12px;
   border: 1px solid var(--line);
   border-radius: 999px;
-  background: var(--surface);
-  color: var(--ink-soft);
+  background:var(--surface);
+  color:var(--ink-soft);
   font-size: 0.78rem;
   font-weight: 700;
   text-decoration: none;
@@ -332,7 +332,7 @@ footer {
 .family-nav a:hover,
 .family-nav a:focus-visible {
   border-color: var(--red);
-  color: var(--red);
+  color:var(--#e8002a);
 }
 
 .gallery {
@@ -346,7 +346,7 @@ footer {
   border: 1px solid var(--line);
   border-top: 5px solid var(--red);
   border-radius: var(--radius);
-  background: var(--surface);
+  background:var(--surface);
   box-shadow: var(--shadow);
 }
 
@@ -368,8 +368,8 @@ footer {
   height: 38px;
   place-items: center;
   border-radius: 10px;
-  background: var(--ink);
-  color: white;
+  background:var(--ink);
+  color:white;
   font-weight: 800;
 }
 
@@ -382,7 +382,7 @@ footer {
 .family-card__declaration {
   display: inline-block;
   margin-top: 5px;
-  color: var(--red);
+  color:var(--#e8002a);
   font: 700 0.78rem/1.4 ui-monospace, SFMono-Regular, Consolas, monospace;
 }
 
@@ -400,8 +400,8 @@ footer {
 }
 
 .category-pill {
-  background: var(--surface-soft);
-  color: var(--ink-soft);
+  background:var(--surface-soft);
+  color:var(--ink-soft);
 }
 
 .family-card__summary {
@@ -409,7 +409,7 @@ footer {
   grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
   gap: 22px;
   padding: 0 12px 12px 68px;
-  color: var(--ink-soft);
+  color:var(--ink-soft);
 }
 
 .family-card__summary p {
@@ -419,14 +419,14 @@ footer {
 .capacity-note {
   padding: 8px 10px;
   border-radius: 13px;
-  background: var(--surface-soft);
-  color: var(--ink);
+  background:var(--surface-soft);
+  color:var(--ink);
 }
 
 .capacity-pill {
   margin-right: 8px;
-  background: var(--red-soft);
-  color: var(--red);
+  background:var(--#e8002a-soft);
+  color:var(--#e8002a);
 }
 
 .variants {
@@ -469,7 +469,7 @@ footer {
 
 .variant__id {
   overflow: hidden;
-  color: var(--ink-soft);
+  color:var(--ink-soft);
   font: 600 0.68rem/1.4 ui-monospace, SFMono-Regular, Consolas, monospace;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -480,11 +480,11 @@ footer {
   min-height: 160px;
   overflow: auto;
   place-items: center;
-  border: 1px solid #e9e6e2;
+  border: 1px solid #e7e7e7;
   border-radius: 15px;
-  background-color: #fbfaf9;
-  background-image: linear-gradient(rgba(38, 52, 63, 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(38, 52, 63, 0.035) 1px, transparent 1px);
+  background-color:#f7f7f7;
+  background-image: linear-gradient(rgba(51, 62, 72, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(51, 62, 72, 0.035) 1px, transparent 1px);
   background-size: 20px 20px;
 }
 
@@ -509,8 +509,8 @@ footer {
   border: 1px solid var(--line);
   border-radius: 999px;
   padding: 7px 11px;
-  background: var(--surface);
-  color: var(--ink);
+  background:var(--surface);
+  color:var(--ink);
   cursor: pointer;
   font-size: 0.74rem;
   font-weight: 750;
@@ -522,7 +522,7 @@ footer {
 .variant__actions a:focus-visible,
 .variant__actions button:focus-visible {
   border-color: var(--red);
-  color: var(--red);
+  color:var(--#e8002a);
 }
 
 .source-view {
@@ -531,8 +531,8 @@ footer {
   margin: 12px 0 0;
   padding: 16px;
   border-radius: 12px;
-  background: #1f2a33;
-  color: #f4f6f8;
+  background:#363636;
+  color:#f7f7f7;
   font: 0.72rem/1.55 ui-monospace, SFMono-Regular, Consolas, monospace;
   white-space: pre;
 }
@@ -557,11 +557,11 @@ footer {
 .contract-grid div {
   padding: 10px;
   border-radius: 12px;
-  background: var(--surface-soft);
+  background:var(--surface-soft);
 }
 
 .contract-grid dt {
-  color: var(--ink-soft);
+  color:var(--ink-soft);
   font-size: 0.7rem;
   font-weight: 800;
   letter-spacing: 0.06em;
@@ -586,7 +586,7 @@ footer {
   gap: 24px;
   padding: 30px 0 54px;
   border-top: 1px solid var(--line);
-  color: var(--ink-soft);
+  color:var(--ink-soft);
   font-size: 0.82rem;
 }
 

@@ -1,5 +1,14 @@
 # Organic Growth Patterns
 
+## Contents
+
+- [Research Basis](#research-basis)
+- [Reuse Contract](#reuse-contract)
+- [Variant Contracts](#variant-contracts)
+- [Semantic Color Roles](#semantic-color-roles)
+- [Minimal D3 Renderer Patterns](#minimal-d3-renderer-patterns)
+- [Validation Hooks](#validation-hooks)
+
 - **Pattern IDs:** `d3-organic-growth`, `d3-phyllotaxis-seed-head`, `d3-lsystem-canopy`, `d3-reaction-diffusion-field`, `d3-diffusion-limited-aggregation`
 - **Gallery source ID:** standalone pattern recipe
 - **Family:** Organic growth

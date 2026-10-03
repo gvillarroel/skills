@@ -1,5 +1,10 @@
 # Point Cloud
 
+## Contents
+
+- [Reuse Contract](#reuse-contract)
+- [Source Excerpt](#source-excerpt)
+
 - **Pattern ID:** `d3-point-cloud`
 - **Gallery source ID:** `point-cloud`
 - **Family:** Distribution

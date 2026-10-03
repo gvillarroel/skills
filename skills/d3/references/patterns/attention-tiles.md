@@ -1,5 +1,10 @@
 # Attention Matrix Tiles
 
+## Contents
+
+- [Reuse Contract](#reuse-contract)
+- [Source Excerpt](#source-excerpt)
+
 - **Pattern ID:** `d3-attention-tiles`
 - **Gallery source ID:** `attention-tiles`
 - **Family:** LLM

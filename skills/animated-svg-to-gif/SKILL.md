@@ -1,6 +1,6 @@
 ---
 name: animated-svg-to-gif
-description: Convert animated SVG files into high-quality GIFs by rendering browser-accurate frames and encoding them with an optimized ffmpeg palette. Use when Codex needs to turn CSS, SMIL, Mermaid, D3, ECharts, Slidev, or other animated SVG assets into shareable GIF files, batch-convert SVG folders, tune GIF dimensions, frame rate, duration, loop behavior, or verify conversion quality.
+description: "Converts animated SVG files into high-quality GIFs by rendering browser-accurate frames and encoding them with an optimized ffmpeg palette. Use when Codex needs to turn CSS, SMIL, Mermaid, D3, ECharts, Slidev, or other animated SVG assets into shareable GIF files, batch-convert SVG folders, tune GIF dimensions, frame rate, duration, loop behavior, or verify conversion quality."
 ---
 
 # Animated SVG to GIF
@@ -23,6 +23,8 @@ Replace the example values with the exact requested paths and numeric settings. 
 For a basic pulse smoke task, copy `assets/templates/pulse.animated.svg` to the exact requested source path instead of rewriting the SVG from memory.
 
 ## Core Workflow
+
+For newly authored source SVGs use colorset1 (white/gray, `#333e48` labels and `#9e1b32` emphasis), or colorset2 for explicitly extended semantic color. The bundled pulse template follows colorset1. Converting an existing source is a fidelity operation: preserve its paint and report its source palette; if the task requires colorset compliance, restyle the editable SVG before capture. The converter defaults to `--colorset colorset1` and rejects capture backgrounds outside the [bundled palette](assets/palettes/colorsets.json); pass `--colorset colorset2` for an extended token. Antialiasing and GIF quantization can introduce derived raster tones; validate source paints separately from decoded pixel counts.
 
 1. Capture any user-provided input and output filenames before running commands. Use those paths exactly for the source SVG, GIF, manifest, and validation checks; do not rename them or move them to a default project directory.
 2. Use `scripts/convert_animated_svg_to_gif.py` for conversion instead of static SVG rasterizers. Browser capture preserves CSS keyframes, SMIL timing, foreignObject labels, filters, markers, and SVG text rendering.
@@ -89,4 +91,4 @@ uv run --script skills/animated-svg-to-gif/scripts/convert_animated_svg_to_gif.p
 uv run --script scripts/validate-skills.py
 ```
 
-For converted assets, run `ffprobe` on representative GIFs and inspect at least one generated preview frame or contact sheet. Confirm that dimensions, duration, frame rate, background, labels, and final animation state match the source intent.
+For converted assets, run `ffprobe` on representative GIFs and inspect at least one generated preview frame or contact sheet. Write any extracted preview to an explicit workspace-owned path and read that same absolute path; avoid `/tmp` paths in Windows tool calls. Confirm that dimensions, duration, frame rate, background, labels, and final animation state match the source intent.

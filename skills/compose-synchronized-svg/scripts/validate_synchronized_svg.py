@@ -20,8 +20,10 @@ import xml.etree.ElementTree as ET
 
 sys.dont_write_bytecode = True
 
-from scaffold_synchronized_svg import ID_RE, ROLE_SELECTOR_RE, initial_values, validate_plan
+from scaffold_synchronized_svg import ID_RE, ROLE_SELECTOR_RE, initial_values, validate_plan, theme_for_plan, theme_token_map
 import navigation_contract as navigation
+from theme_contract import derived_theme_colors
+from palette_contract import SVG_PAINT_ATTRIBUTES, require_svg_paint
 
 SVG_NS = "http://www.w3.org/2000/svg"
 URL_REF_RE = re.compile(r"url\(\s*['\"]?#([^)'\"\s]+)['\"]?\s*\)")
@@ -62,6 +64,7 @@ TRANSLATE_RE = re.compile(
     r"(?:[\s,]+)([-+]?(?:\d+(?:\.\d*)?|\.\d+)(?:[eE][-+]?\d+)?)\s*\)$"
 )
 CONCEPT_TOKEN_RE = re.compile(r"var\(\s*--concept-([a-z0-9]+(?:-[a-z0-9]+)*)")
+TEXT_TOKEN_RE = re.compile(r"var\(\s*--text-value-([a-z0-9]+(?:-[a-z0-9]+)*)")
 CONCEPT_COLOR_RE = re.compile(
     r"--concept-([a-z0-9]+(?:-[a-z0-9]+)*)\s*:\s*(#[0-9a-fA-F]{6})\s*;"
 )
@@ -181,6 +184,8 @@ def visual_concept_tokens(element: ET.Element) -> set[str]:
     for descendant in element.iter():
         for value in descendant.attrib.values():
             tokens.update(CONCEPT_TOKEN_RE.findall(str(value)))
+            if local_name(descendant.tag) in {"text", "tspan"}:
+                tokens.update(TEXT_TOKEN_RE.findall(str(value)))
     return tokens
 
 
@@ -1385,6 +1390,31 @@ def main() -> int:
             token: color.lower()
             for token, color in CONCEPT_COLOR_RE.findall(style_text)
         }
+        active_theme = theme_for_plan(plan)
+        active_colorset = "colorset1" if active_theme["preset"] in {"colorset1", "editorial"} else "colorset2"
+        for element in all_elements:
+            for name, value in element.attrib.items():
+                if local_name(name).lower() in SVG_PAINT_ATTRIBUTES:
+                    try:
+                        require_svg_paint(value, active_colorset)
+                    except ValueError as error:
+                        failures.append(f"{element.get('id') or local_name(element.tag)} {local_name(name)}: {error}")
+        if plan.get("theme") is not None:
+            theme = theme_for_plan(plan)
+            declarations = re.findall(r"--([a-z0-9-]+)\s*:\s*(#[0-9a-fA-F]{6})\s*;", style_text)
+            colors_by_name: dict[str, list[str]] = defaultdict(list)
+            for name, color in declarations:
+                colors_by_name[name].append(color.lower())
+            expected_colors = dict(theme["colors"])
+            expected_colors.update(derived_theme_colors(theme))
+            expected_colors.update({
+                f"concept-{value_id}": theme["conceptColors"][token]
+                for value_id, token in theme_token_map(plan).items()
+            })
+            for name, color in expected_colors.items():
+                if colors_by_name[name] != [color]:
+                    failures.append(f"theme token --{name} must be declared exactly once as {color}")
+            details["theme"] = {"preset": theme["preset"], "canonicalColorCount": len(theme["conceptColors"])}
         identity = plan.get("identity")
         if isinstance(identity, dict):
             tokens = {
@@ -1403,8 +1433,8 @@ def main() -> int:
                 if len(token_ids) > 1
             }
             if collisions:
-                failures.append(
-                    "distinct canonical color tokens resolve to identical physical colors: "
+                warnings.append(
+                    "finite palette paints repeat across canonical identities; preserve their validated non-color cues: "
                     + json.dumps(collisions, sort_keys=True)
                 )
             identity_details = details.get("identity")

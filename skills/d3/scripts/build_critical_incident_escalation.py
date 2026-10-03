@@ -11,6 +11,7 @@ from __future__ import annotations
 import argparse
 import html
 from pathlib import Path
+from colorset_adapter import colorset_output
 
 
 WIDTH = 1180
@@ -29,18 +30,18 @@ PALETTE = {
     "orange_hover": "#994a00",
     "orange_highlight": "#ffe5cc",
     "green": "#45842a",
-    "green_hover": "#2f5c1d",
+    "green_hover": "#294d19",
     "green_highlight": "#dbffcc",
     "blue": "#007298",
-    "blue_hover": "#00516c",
+    "blue_hover": "#004d66",
     "blue_highlight": "#cdf3ff",
     "purple": "#652f6c",
-    "purple_hover": "#46214b",
+    "purple_hover": "#431f47",
     "purple_highlight": "#f9ccff",
     "ink": "#333e48",
     "surface": "#ffffff",
     "page": "#f7f7f7",
-    "gray50": "#f3f3f3",
+    "gray50": "#f7f7f7",
     "gray100": "#e7e7e7",
     "gray200": "#cfcfcf",
     "gray300": "#b5b5b5",
@@ -494,6 +495,7 @@ def team_markup() -> str:
     return "\n".join(parts)
 
 
+@colorset_output
 def build_html() -> str:
     critical_links = [link for link in ESCALATIONS if link["critical"]]
     links = "\n".join(link_markup(link, index) for index, link in enumerate(ESCALATIONS))
@@ -614,9 +616,10 @@ def build_html() -> str:
 def main() -> int:
     parser = argparse.ArgumentParser(description="Build a standalone Critical Incident Escalation D3/SVG pattern HTML artifact.")
     parser.add_argument("output", type=Path, help="Output HTML path.")
+    parser.add_argument("--colorset", choices=("colorset1", "colorset2"), default="colorset1")
     args = parser.parse_args()
     args.output.parent.mkdir(parents=True, exist_ok=True)
-    args.output.write_text(build_html(), encoding="utf-8")
+    args.output.write_text(build_html(colorset=args.colorset), encoding="utf-8")
     print(f"Wrote {args.output}")
     return 0
 

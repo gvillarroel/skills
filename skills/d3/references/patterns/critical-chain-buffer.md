@@ -1,5 +1,15 @@
 # Critical Chain Buffer
 
+## Contents
+
+- [Reuse Contract](#reuse-contract)
+- [Data Contract](#data-contract)
+- [Geometry Contract](#geometry-contract)
+- [Animation Contract](#animation-contract)
+- [Semantic Color Roles](#semantic-color-roles)
+- [Minimal D3 Renderer Pattern](#minimal-d3-renderer-pattern)
+- [Validation Hooks](#validation-hooks)
+
 - **Pattern ID:** `d3-critical-chain-buffer`
 - **Gallery source ID:** standalone pattern recipe
 - **Family:** Critical

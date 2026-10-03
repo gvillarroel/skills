@@ -15,7 +15,7 @@
     "rows": 24
   },
   "render": {
-    "theme": "github-dark",
+    "theme": "colorset1",
     "font_size": 18,
     "line_height": 1.4,
     "fps": 30,

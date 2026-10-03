@@ -46,7 +46,7 @@ def base_plan(executable: str, helper: str | None = None) -> dict[str, object]:
         },
         "terminal": {"cols": 80, "rows": 24},
         "render": {
-            "theme": "github-dark",
+            "theme": "colorset1",
             "font_size": 16,
             "line_height": 1.4,
             "fps": 24,

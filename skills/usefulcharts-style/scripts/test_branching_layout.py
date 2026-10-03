@@ -17,8 +17,8 @@ from branching_envelopes import caption_box
 def history():
     return dict(id='branch-composition', title='A HISTORY OF PUBLIC COLLECTIONS', design='editorial', mode='lineage',
                 layout='branches', source_note='Fictional development data.',
-                groups=[dict(id='civic', label='Civic collections', color='#F7CD26'),
-                        dict(id='science', label='Scientific collections', color='#77BDDD')],
+                groups=[dict(id='civic', label='Civic collections', color='#ffd332'),
+                        dict(id='science', label='Scientific collections', color='#b5b5b5')],
                 nodes=[dict(id=nid, label=label, founded=year, date_label=str(year), group=group, detail=detail)
                        for nid, label, year, group, detail in [
                            ('cabinet', 'Common Cabinet', 1700, 'civic', ''),

@@ -8,6 +8,6 @@
     }
   </style>
   <rect width="360" height="240" fill="#ffffff"/>
-  <circle class="pulse" cx="180" cy="112" r="46" fill="#38BDF8" stroke="#0F172A" stroke-width="4"/>
-  <text x="180" y="194" text-anchor="middle" font-family="Open Sans, Arial, sans-serif" font-size="24" fill="#0F172A">Pulse</text>
+  <circle class="pulse" cx="180" cy="112" r="46" fill="#9e1b32" stroke="#333e48" stroke-width="4"/>
+  <text x="180" y="194" text-anchor="middle" font-family="Open Sans, Arial, sans-serif" font-size="24" fill="#333e48">Pulse</text>
 </svg>

@@ -12,6 +12,7 @@ import argparse
 import html
 import math
 from pathlib import Path
+from colorset_adapter import colorset_output
 
 
 WIDTH = 960
@@ -383,6 +384,7 @@ def dla_markup() -> str:
     </g>"""
 
 
+@colorset_output
 def build_html() -> str:
     return f"""<!doctype html>
 <html lang="en">
@@ -470,9 +472,10 @@ def build_html() -> str:
 def main() -> int:
     parser = argparse.ArgumentParser(description="Build a standalone Organic Growth Patterns D3/SVG pattern HTML artifact.")
     parser.add_argument("output", type=Path, help="Output HTML path.")
+    parser.add_argument("--colorset", choices=("colorset1", "colorset2"), default="colorset1")
     args = parser.parse_args()
     args.output.parent.mkdir(parents=True, exist_ok=True)
-    args.output.write_text(build_html(), encoding="utf-8")
+    args.output.write_text(build_html(colorset=args.colorset), encoding="utf-8")
     print(f"Wrote {args.output}")
     return 0
 

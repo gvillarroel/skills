@@ -1,0 +1,4 @@
+interface:
+  display_name: "Jev Batch Decisions"
+  short_description: "Batch document decisions with Jev and MapReduce"
+  default_prompt: "Use $jev-batch-decisions to divide these documents into bounded batches, evaluate a typed decision rubric through OpenRouter, and aggregate an answer with source coverage and measured usage."

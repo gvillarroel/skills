@@ -1,0 +1,4055 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-02",
+  "passed": true,
+  "visualSkillCount": 30,
+  "selectedRuns": [
+    {
+      "runId": "20261002-colorset-ambientcg-material-search-final",
+      "skill": "ambientcg-material-search",
+      "startedAtUtc": "2026-10-03T03:11:01.467468+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "48e753484149a7df553218b491c595884c4acdacd67c2bc2e3b765bf34da7734",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/20261002-colorset-ambientcg-material-search-final/evaluation-result.json",
+      "currentRuntimeMatches": true,
+      "runtimeFileCount": 8,
+      "outputs": [
+        {
+          "path": "preview.html",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 1288,
+          "sha256": "bf3da485e54df730373420b37b7b1a80869642aa63d6417243dc9ce58a46f150",
+          "error": null
+        },
+        {
+          "path": "candidates.json",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 431,
+          "sha256": "565d003f6db877ed747a1904606d8b313a0e888e6bd4acb243ba0502b1c60954",
+          "error": null
+        }
+      ],
+      "isolatedCommand": [
+        "C:\\Users\\villa\\AppData\\Roaming\\npm\\pi.CMD",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--thinking",
+        "high",
+        "--mode",
+        "json",
+        "--no-context-files",
+        "--no-extensions",
+        "--no-skills",
+        "--no-prompt-templates",
+        "--no-themes",
+        "--no-session",
+        "--skill",
+        "skills/ambientcg-material-search",
+        "--print",
+        "You are running an isolated forward test for `ambientcg-material-search`. Use the read tool to read `../prompt.md` first, then follow it exactly. The loaded bundle is rooted at `skills/ambientcg-material-search` from the current workspace; never prefix that path with `../`. Immediately after the prompt, read the bundle entry point at `skills/ambientcg-material-search/SKILL.md`; do not probe for README.md or other conventional entry-point filenames. The shell tool is bash, not PowerShell; do not run PowerShell commands. Do not list directories or inspect script source before reading the prompt. If the prompt gives an exact command, run it verbatim and verify the required outputs."
+      ]
+    },
+    {
+      "runId": "20261002-colorset-gif-luna-3",
+      "skill": "animated-svg-to-gif",
+      "startedAtUtc": "2026-10-03T02:57:54.648337+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "c10bba6640f50822f24f946261dcf1555d359006b5ea6fd5e0952d8f9bc2b238",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/20261002-colorset-gif-luna-3/evaluation-result.json",
+      "currentRuntimeMatches": true,
+      "runtimeFileCount": 7,
+      "outputs": [
+        {
+          "path": "pulse.animated.svg",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 707,
+          "sha256": "366ca5e910f59e27f841d4032f81a91e9786f189bd18bc25950bdff1b1fc53c4",
+          "error": null
+        },
+        {
+          "path": "pulse.gif",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 42962,
+          "sha256": "22d59dcd54d6df0a6cebf437ad9ff80a0fd9e93678b17f595f2a1e2cf7270e16",
+          "error": null
+        }
+      ],
+      "isolatedCommand": [
+        "C:\\Users\\villa\\AppData\\Roaming\\npm\\pi.CMD",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--thinking",
+        "high",
+        "--mode",
+        "json",
+        "--no-context-files",
+        "--no-extensions",
+        "--no-skills",
+        "--no-prompt-templates",
+        "--no-themes",
+        "--no-session",
+        "--skill",
+        "skills/animated-svg-to-gif",
+        "--print",
+        "You are running an isolated forward test for `animated-svg-to-gif`. Use the read tool to read `../prompt.md` first, then follow it exactly. The loaded bundle is rooted at `skills/animated-svg-to-gif` from the current workspace; never prefix that path with `../`. Immediately after the prompt, read the bundle entry point at `skills/animated-svg-to-gif/SKILL.md`; do not probe for README.md or other conventional entry-point filenames. The shell tool is bash, not PowerShell; do not run PowerShell commands. Do not list directories or inspect script source before reading the prompt. If the prompt gives an exact command, run it verbatim and verify the required outputs."
+      ]
+    },
+    {
+      "runId": "20261002-colorset-terminal-5",
+      "skill": "asciinema-real-command-video",
+      "startedAtUtc": "2026-10-03T03:01:39.615430+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "7d0f73c71d4136f97c8fbf4c31115a65fc514e339f93ef73c7e9b1b799a2d536",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/20261002-colorset-terminal-5/evaluation-result.json",
+      "currentRuntimeMatches": true,
+      "runtimeFileCount": 21,
+      "outputs": [
+        {
+          "path": "sample.cast",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 83,
+          "sha256": "b2caacdc0526cb1abe58e95a35564c2dbf378fc6f93c94ccdb758e23e2f361dc",
+          "error": null
+        },
+        {
+          "path": "themed.cast",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 278,
+          "sha256": "363a97143f1bb340d81f1dbf1f40159b38eb1854c8d284267a71c0db72f8b9c9",
+          "error": null
+        },
+        {
+          "path": "theme.json",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 389,
+          "sha256": "99fb656a0295e487133a6a0ba89869c8c59e36ef0a4877b8bd27a6e80a0fdf08",
+          "error": null
+        }
+      ],
+      "isolatedCommand": [
+        "C:\\Users\\villa\\AppData\\Roaming\\npm\\pi.CMD",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--thinking",
+        "high",
+        "--mode",
+        "json",
+        "--no-context-files",
+        "--no-extensions",
+        "--no-skills",
+        "--no-prompt-templates",
+        "--no-themes",
+        "--no-session",
+        "--skill",
+        "skills/asciinema-real-command-video",
+        "--print",
+        "You are running an isolated forward test for `asciinema-real-command-video`. Use the read tool to read `../prompt.md` first, then follow it exactly. The loaded bundle is rooted at `skills/asciinema-real-command-video` from the current workspace; never prefix that path with `../`. Immediately after the prompt, read the bundle entry point at `skills/asciinema-real-command-video/SKILL.md`; do not probe for README.md or other conventional entry-point filenames. The shell tool is bash, not PowerShell; do not run PowerShell commands. Do not list directories or inspect script source before reading the prompt. If the prompt gives an exact command, run it verbatim and verify the required outputs."
+      ]
+    },
+    {
+      "runId": "colorset-compose-synchronized-svg-20261002-8",
+      "skill": "compose-synchronized-svg",
+      "startedAtUtc": "2026-10-03T03:20:29.306960+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "55c47702247f003387a31d5a1b83f2fd1524c2e230d51bcbd7e5d2ef87a1f633",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/colorset-compose-synchronized-svg-20261002-8/evaluation-result.json",
+      "currentRuntimeMatches": true,
+      "runtimeFileCount": 34,
+      "outputs": [
+        {
+          "path": "output/diagram.svg",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 138744,
+          "sha256": "7041c13ff0749fb97987e35e0193e1d9c7ec288722349b8e54a15f8b09b80bbd",
+          "error": null
+        },
+        {
+          "path": "output/plan.json",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 24160,
+          "sha256": "7081d1d81e652545aca332ed917580fb9d358a08b433aac56493c6f685f2c45c",
+          "error": null
+        },
+        {
+          "path": "output/brief.json",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 9327,
+          "sha256": "a0e2a4c53982111f8e369d1d64e60d48dfe46385a48d1e6797e9532961d62b33",
+          "error": null
+        },
+        {
+          "path": "output/composition.json",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 1553,
+          "sha256": "797fcf0381c478a6949b651ce27d26be7528f8fa2c75735ed63e9d4707d72de0",
+          "error": null
+        },
+        {
+          "path": "output/static.json",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 3782,
+          "sha256": "8d80923af1b9c8d5a53b675f1db5beee4370370d9edadf25955ad21a359a222f",
+          "error": null
+        }
+      ],
+      "isolatedCommand": [
+        "C:\\Users\\villa\\AppData\\Roaming\\npm\\pi.CMD",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--thinking",
+        "high",
+        "--mode",
+        "json",
+        "--no-context-files",
+        "--no-extensions",
+        "--no-skills",
+        "--no-prompt-templates",
+        "--no-themes",
+        "--no-session",
+        "--skill",
+        "skills/compose-synchronized-svg",
+        "--print",
+        "You are running an isolated forward test for `compose-synchronized-svg`. Use the read tool to read `../prompt.md` first, then follow it exactly. The loaded bundle is rooted at `skills/compose-synchronized-svg` from the current workspace; never prefix that path with `../`. Immediately after the prompt, read the bundle entry point at `skills/compose-synchronized-svg/SKILL.md`; do not probe for README.md or other conventional entry-point filenames. The shell tool is bash, not PowerShell; do not run PowerShell commands. Do not list directories or inspect script source before reading the prompt. If the prompt gives an exact command, run it verbatim and verify the required outputs."
+      ]
+    },
+    {
+      "runId": "colorset-d3-20261002-final6",
+      "skill": "d3",
+      "startedAtUtc": "2026-10-03T03:05:37.218305+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "f5486ad4a39ce9df08a1aa158cb60321c254ab5809bf697c7b7a93bc0bac2977",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/colorset-d3-20261002-final6/evaluation-result.json",
+      "currentRuntimeMatches": true,
+      "runtimeFileCount": 287,
+      "outputs": [
+        {
+          "path": "artifacts/circuit.html",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 23483,
+          "sha256": "ae89ab4a05c9cac00cc045fdd45ed4141bd2daedab83ae7ad287658857da0d26",
+          "error": null
+        },
+        {
+          "path": "artifacts/circuit-cs2.html",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 23483,
+          "sha256": "41f82a1a643a1c3d0ca86c8a4678e72bad2bc38941fff8241da29ed2199d709c",
+          "error": null
+        },
+        {
+          "path": "artifacts/circuit.svg",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 92404,
+          "sha256": "b264ebb721c2e9c37342128f3298572d6d1049ccc907eb796436cb6b8358bf3e",
+          "error": null
+        },
+        {
+          "path": "artifacts/circuit.png",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 27613,
+          "sha256": "1e23f5f29db411d261adfb3622c39ca1dff3edb1535cf8d1f5763234feaf4c32",
+          "error": null
+        },
+        {
+          "path": "artifacts/templates/circuit.seed.svg",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 92375,
+          "sha256": "3d410d6bfa8647ede362fea176422d5cfb65289312e38b52e01e88d04adf8c1e",
+          "error": null
+        },
+        {
+          "path": "artifacts/templates/circuit.template.html",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 375223,
+          "sha256": "adb657286d3e947166a69a5c16b2a05e2a22d8b93ee6a66bd8f17aa9fae68697",
+          "error": null
+        },
+        {
+          "path": "artifacts/expected/circuit.svg",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 92375,
+          "sha256": "3d410d6bfa8647ede362fea176422d5cfb65289312e38b52e01e88d04adf8c1e",
+          "error": null
+        },
+        {
+          "path": "artifacts/circuit-dither.svg",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 458693,
+          "sha256": "ee7eacbc77093835ccba82782923213ac0d1194278db5e38d56f282ed0a2f209",
+          "error": null
+        },
+        {
+          "path": "artifacts/circuit-dither.png",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 13732,
+          "sha256": "d68be127540d56d22a924df99b2a9eb8a31f2dea226fad94da6588a10bc1269c",
+          "error": null
+        }
+      ],
+      "isolatedCommand": [
+        "C:\\Users\\villa\\AppData\\Roaming\\npm\\pi.CMD",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--thinking",
+        "high",
+        "--mode",
+        "json",
+        "--no-context-files",
+        "--no-extensions",
+        "--no-skills",
+        "--no-prompt-templates",
+        "--no-themes",
+        "--no-session",
+        "--skill",
+        "skills/d3",
+        "--print",
+        "You are running an isolated forward test for `d3`. Use the read tool to read `../prompt.md` first, then follow it exactly. The loaded bundle is rooted at `skills/d3` from the current workspace; never prefix that path with `../`. Immediately after the prompt, read the bundle entry point at `skills/d3/SKILL.md`; do not probe for README.md or other conventional entry-point filenames. The shell tool is bash, not PowerShell; do not run PowerShell commands. Do not list directories or inspect script source before reading the prompt. If the prompt gives an exact command, run it verbatim and verify the required outputs."
+      ]
+    },
+    {
+      "runId": "20261002-colorset-destockd-final2",
+      "skill": "destockd-video-search",
+      "startedAtUtc": "2026-10-03T03:17:26.605747+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "ae62ff64c1e148e09dcdcfd6ca74b9522905e85373043d60c9d5a26002166ec4",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/20261002-colorset-destockd-final2/evaluation-result.json",
+      "currentRuntimeMatches": true,
+      "runtimeFileCount": 7,
+      "outputs": [
+        {
+          "path": "candidates.json",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 337,
+          "sha256": "a4a427346e1f05edd32f01d38079c96487158d1a938c4fbd777a40271262c132",
+          "error": null
+        },
+        {
+          "path": "preview.html",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 1640,
+          "sha256": "d28ece9b9765a5c46bf5cd7a9539ae86133fb45cb621befb1628b300cfbe6108",
+          "error": null
+        }
+      ],
+      "isolatedCommand": [
+        "C:\\Users\\villa\\AppData\\Roaming\\npm\\pi.CMD",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--thinking",
+        "high",
+        "--mode",
+        "json",
+        "--no-context-files",
+        "--no-extensions",
+        "--no-skills",
+        "--no-prompt-templates",
+        "--no-themes",
+        "--no-session",
+        "--skill",
+        "skills/destockd-video-search",
+        "--print",
+        "You are running an isolated forward test for `destockd-video-search`. Use the read tool to read `../prompt.md` first, then follow it exactly. The loaded bundle is rooted at `skills/destockd-video-search` from the current workspace; never prefix that path with `../`. Immediately after the prompt, read the bundle entry point at `skills/destockd-video-search/SKILL.md`; do not probe for README.md or other conventional entry-point filenames. The shell tool is bash, not PowerShell; do not run PowerShell commands. Do not list directories or inspect script source before reading the prompt. If the prompt gives an exact command, run it verbatim and verify the required outputs."
+      ]
+    },
+    {
+      "runId": "colorset-diagram-composition-20261002-2",
+      "skill": "diagram-composition",
+      "startedAtUtc": "2026-10-03T02:27:51.899341+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "f91c37c8afe5c3260c98f45e77dd2b6fa25b62410df29d62f232c53f75e3aa75",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/colorset-diagram-composition-20261002-2/evaluation-result.json",
+      "currentRuntimeMatches": true,
+      "runtimeFileCount": 24,
+      "outputs": [
+        {
+          "path": "output/diagram.svg",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 16460,
+          "sha256": "a8256745583966918ddbc43836d401ce011727bb9f989057f6cf7a17730f58d5",
+          "error": null
+        },
+        {
+          "path": "output/composition.json",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 9144,
+          "sha256": "f8e10559f74d5cd5876f7c18b5c2a55e7a8a1621f020364af50751dd7bf24da5",
+          "error": null
+        }
+      ],
+      "isolatedCommand": [
+        "C:\\Users\\villa\\AppData\\Roaming\\npm\\pi.CMD",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--thinking",
+        "high",
+        "--mode",
+        "json",
+        "--no-context-files",
+        "--no-extensions",
+        "--no-skills",
+        "--no-prompt-templates",
+        "--no-themes",
+        "--no-session",
+        "--skill",
+        "skills/diagram-composition",
+        "--print",
+        "You are running an isolated forward test for `diagram-composition`. Use the read tool to read `../prompt.md` first, then follow it exactly. The loaded bundle is rooted at `skills/diagram-composition` from the current workspace; never prefix that path with `../`. Immediately after the prompt, read the bundle entry point at `skills/diagram-composition/SKILL.md`; do not probe for README.md or other conventional entry-point filenames. The shell tool is bash, not PowerShell; do not run PowerShell commands. Do not list directories or inspect script source before reading the prompt. If the prompt gives an exact command, run it verbatim and verify the required outputs."
+      ]
+    },
+    {
+      "runId": "20261002-colorset-echarts-luna-5",
+      "skill": "echarts-animated-svg",
+      "startedAtUtc": "2026-10-03T02:55:13.220647+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "16d51fe4f9acc2fc52dc6ae15ff0387b3461d507b0e98d5d2e40fdca4b35c7b1",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/20261002-colorset-echarts-luna-5/evaluation-result.json",
+      "currentRuntimeMatches": true,
+      "runtimeFileCount": 15,
+      "outputs": [
+        {
+          "path": "bar.static.svg",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 1752,
+          "sha256": "8f42359d87db7196644ee16581c2de00627f2a1b474a808bde68d129025d01be",
+          "error": null
+        },
+        {
+          "path": "bar.animated.svg",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 4986,
+          "sha256": "5857fd811b023f6b1dd3fa1168f03be7d47f37bd36d56f2870d50a21366a3dbe",
+          "error": null
+        },
+        {
+          "path": "bar-validation.json",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 1154,
+          "sha256": "5d50dbbcd653923b10422feb73b4631b755c60bf836b326a1cf0b049fc103904",
+          "error": null
+        }
+      ],
+      "isolatedCommand": [
+        "C:\\Users\\villa\\AppData\\Roaming\\npm\\pi.CMD",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--thinking",
+        "high",
+        "--mode",
+        "json",
+        "--no-context-files",
+        "--no-extensions",
+        "--no-skills",
+        "--no-prompt-templates",
+        "--no-themes",
+        "--no-session",
+        "--skill",
+        "skills/echarts-animated-svg",
+        "--print",
+        "You are running an isolated forward test for `echarts-animated-svg`. Use the read tool to read `../prompt.md` first, then follow it exactly. The loaded bundle is rooted at `skills/echarts-animated-svg` from the current workspace; never prefix that path with `../`. Immediately after the prompt, read the bundle entry point at `skills/echarts-animated-svg/SKILL.md`; do not probe for README.md or other conventional entry-point filenames. The shell tool is bash, not PowerShell; do not run PowerShell commands. Do not list directories or inspect script source before reading the prompt. If the prompt gives an exact command, run it verbatim and verify the required outputs."
+      ]
+    },
+    {
+      "runId": "20261002-colorset-harbor-2",
+      "skill": "harbor-author-evaluation-datasets",
+      "startedAtUtc": "2026-10-03T02:57:54.457892+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "6d713c55f7833ec9aa39b583ec16439a3fee4031fcf020b95d4a2c20678257ff",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/20261002-colorset-harbor-2/evaluation-result.json",
+      "currentRuntimeMatches": true,
+      "runtimeFileCount": 9,
+      "outputs": [
+        {
+          "path": "comparison/comparison-report.json",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 5078,
+          "sha256": "76d339c0dda5aa0962c7eb9bcb2195502751f1f704e95f30ac397fc8c1b0ce69",
+          "error": null
+        },
+        {
+          "path": "comparison/comparison-report.md",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 2114,
+          "sha256": "2df0ec3775d224fb47da3090643e78a98461f151225b6a7c508e1a28a6d6a10f",
+          "error": null
+        },
+        {
+          "path": "comparison/quality-comparison.svg",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 4907,
+          "sha256": "32ae6deedb4bbf43cc586b314b2e755f04a5465c75f5e3d19952b51a025c64d8",
+          "error": null
+        },
+        {
+          "path": "comparison/resource-comparison.svg",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 5437,
+          "sha256": "4b01478807862511821f7dff399c0f84ccf527356a09c9d48bf5d45481fefa10",
+          "error": null
+        },
+        {
+          "path": "comparison/efficiency-frontier.svg",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 5188,
+          "sha256": "d99e265286a5eba9a915624f7490656c13c9b06ee4ecb7222df50e392b4fe4e9",
+          "error": null
+        }
+      ],
+      "isolatedCommand": [
+        "C:\\Users\\villa\\AppData\\Roaming\\npm\\pi.CMD",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--thinking",
+        "high",
+        "--mode",
+        "json",
+        "--no-context-files",
+        "--no-extensions",
+        "--no-skills",
+        "--no-prompt-templates",
+        "--no-themes",
+        "--no-session",
+        "--skill",
+        "skills/harbor-author-evaluation-datasets",
+        "--print",
+        "You are running an isolated forward test for `harbor-author-evaluation-datasets`. Use the read tool to read `../prompt.md` first, then follow it exactly. The loaded bundle is rooted at `skills/harbor-author-evaluation-datasets` from the current workspace; never prefix that path with `../`. Immediately after the prompt, read the bundle entry point at `skills/harbor-author-evaluation-datasets/SKILL.md`; do not probe for README.md or other conventional entry-point filenames. The shell tool is bash, not PowerShell; do not run PowerShell commands. Do not list directories or inspect script source before reading the prompt. If the prompt gives an exact command, run it verbatim and verify the required outputs."
+      ]
+    },
+    {
+      "runId": "colorset-hierarchy-lens-20261002-6",
+      "skill": "hierarchy-lens",
+      "startedAtUtc": "2026-10-03T02:47:17.510743+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "3d60fb524841d044a345c1ba869896b98166524cf283f6849a22af5eac0ff8dc",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/colorset-hierarchy-lens-20261002-6/evaluation-result.json",
+      "currentRuntimeMatches": true,
+      "runtimeFileCount": 22,
+      "outputs": [
+        {
+          "path": "output/explorer.html",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 68678,
+          "sha256": "bf3510dc211160a3dabe381966292673c4369d9cebff42916160cba062f7ec7e",
+          "error": null
+        },
+        {
+          "path": "output/decision.html",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 159671,
+          "sha256": "d1d917804a2494271a8cc0d5a7bfc3b97fdcd0f722fab1f4f8a360b7a7c7746c",
+          "error": null
+        },
+        {
+          "path": "output/source.json",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 33186,
+          "sha256": "24b9cde4789bfe1c1eec4eb64ed1b53be260f4ba2400a298b398bf96e9c265da",
+          "error": null
+        },
+        {
+          "path": "output/commands.md",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 421,
+          "sha256": "1758e49d134701ec71cabe4506d1001eb38f57116c4e3afba1602ddbb629c5e3",
+          "error": null
+        }
+      ],
+      "isolatedCommand": [
+        "C:\\Users\\villa\\AppData\\Roaming\\npm\\pi.CMD",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--thinking",
+        "high",
+        "--mode",
+        "json",
+        "--no-context-files",
+        "--no-extensions",
+        "--no-skills",
+        "--no-prompt-templates",
+        "--no-themes",
+        "--no-session",
+        "--skill",
+        "skills/hierarchy-lens",
+        "--print",
+        "You are running an isolated forward test for `hierarchy-lens`. Use the read tool to read `../prompt.md` first, then follow it exactly. The loaded bundle is rooted at `skills/hierarchy-lens` from the current workspace; never prefix that path with `../`. Immediately after the prompt, read the bundle entry point at `skills/hierarchy-lens/SKILL.md`; do not probe for README.md or other conventional entry-point filenames. The shell tool is bash, not PowerShell; do not run PowerShell commands. Do not list directories or inspect script source before reading the prompt. If the prompt gives an exact command, run it verbatim and verify the required outputs."
+      ]
+    },
+    {
+      "runId": "colorset-hyperframes-explainer-20261002-3",
+      "skill": "hyperframes-explainer",
+      "startedAtUtc": "2026-10-03T02:32:59.785680+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-6-luna",
+      "payloadSha256": "5eb61d48fe048614c924de2559ca43dbe17b70e0cb12d899462a8f406afb3a9a",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/colorset-hyperframes-explainer-20261002-3/evaluation-result.json",
+      "currentRuntimeMatches": true,
+      "runtimeFileCount": 30,
+      "outputs": [
+        {
+          "path": "output/project/index.html",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 9878,
+          "sha256": "cd0f3a13851a304c520bba668042935174c3b5c617ab5d0115d4222b2bca02e3",
+          "error": null
+        },
+        {
+          "path": "output/brief.json",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 3920,
+          "sha256": "164fd461ec84226ad083b4636b3a338e65cbcd8422737977f349c6f0cc4139d4",
+          "error": null
+        },
+        {
+          "path": "output/preflight.json",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 9319,
+          "sha256": "f96390967bff785843c62cef5c950d0f7371643fadfda6f5497de7e2011c426c",
+          "error": null
+        },
+        {
+          "path": "output/build.json",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 569,
+          "sha256": "49300329da8fe0a9aeba323728ba2e5108ed6be3e2b335448f237f7a7421e147",
+          "error": null
+        }
+      ],
+      "isolatedCommand": [
+        "C:\\Users\\villa\\AppData\\Roaming\\npm\\pi.CMD",
+        "--model",
+        "openai-codex/gpt-6-luna",
+        "--thinking",
+        "high",
+        "--mode",
+        "json",
+        "--no-context-files",
+        "--no-extensions",
+        "--no-skills",
+        "--no-prompt-templates",
+        "--no-themes",
+        "--no-session",
+        "--skill",
+        "skills/hyperframes-explainer",
+        "--print",
+        "You are running an isolated forward test for `hyperframes-explainer`. Use the read tool to read `../prompt.md` first, then follow it exactly. The loaded bundle is rooted at `skills/hyperframes-explainer` from the current workspace; never prefix that path with `../`. Immediately after the prompt, read the bundle entry point at `skills/hyperframes-explainer/SKILL.md`; do not probe for README.md or other conventional entry-point filenames. The shell tool is bash, not PowerShell; do not run PowerShell commands. Do not list directories or inspect script source before reading the prompt. If the prompt gives an exact command, run it verbatim and verify the required outputs."
+      ]
+    },
+    {
+      "runId": "20261002-colorset-iconify-icon-search-final",
+      "skill": "iconify-icon-search",
+      "startedAtUtc": "2026-10-03T03:10:12.139906+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "b6f5eeb31e4eaa770da34a3b1361c69304cd42f4a14ef6ea607af73ce062d0f9",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/20261002-colorset-iconify-icon-search-final/evaluation-result.json",
+      "currentRuntimeMatches": true,
+      "runtimeFileCount": 8,
+      "outputs": [
+        {
+          "path": "preview.html",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 1288,
+          "sha256": "bf3da485e54df730373420b37b7b1a80869642aa63d6417243dc9ce58a46f150",
+          "error": null
+        },
+        {
+          "path": "candidates.json",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 466,
+          "sha256": "7a86433f9a95c56e88b082c80352905101a45555bbed4fb63764e9e90194adf0",
+          "error": null
+        }
+      ],
+      "isolatedCommand": [
+        "C:\\Users\\villa\\AppData\\Roaming\\npm\\pi.CMD",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--thinking",
+        "high",
+        "--mode",
+        "json",
+        "--no-context-files",
+        "--no-extensions",
+        "--no-skills",
+        "--no-prompt-templates",
+        "--no-themes",
+        "--no-session",
+        "--skill",
+        "skills/iconify-icon-search",
+        "--print",
+        "You are running an isolated forward test for `iconify-icon-search`. Use the read tool to read `../prompt.md` first, then follow it exactly. The loaded bundle is rooted at `skills/iconify-icon-search` from the current workspace; never prefix that path with `../`. Immediately after the prompt, read the bundle entry point at `skills/iconify-icon-search/SKILL.md`; do not probe for README.md or other conventional entry-point filenames. The shell tool is bash, not PowerShell; do not run PowerShell commands. Do not list directories or inspect script source before reading the prompt. If the prompt gives an exact command, run it verbatim and verify the required outputs."
+      ]
+    },
+    {
+      "runId": "20261002-colorset-kenney-asset-search-final",
+      "skill": "kenney-asset-search",
+      "startedAtUtc": "2026-10-03T03:11:33.816494+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "3f554ba5edacc19cc79eff47a41fb9c603ff7098dd89105b52ea127a6a7c60fe",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/20261002-colorset-kenney-asset-search-final/evaluation-result.json",
+      "currentRuntimeMatches": true,
+      "runtimeFileCount": 8,
+      "outputs": [
+        {
+          "path": "preview.html",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 1288,
+          "sha256": "bf3da485e54df730373420b37b7b1a80869642aa63d6417243dc9ce58a46f150",
+          "error": null
+        },
+        {
+          "path": "candidates.json",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 349,
+          "sha256": "4446f8c42e39bc77d32d4a4d1b12161a71d2bf6d0b57dc02eee7a5338c070eb9",
+          "error": null
+        }
+      ],
+      "isolatedCommand": [
+        "C:\\Users\\villa\\AppData\\Roaming\\npm\\pi.CMD",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--thinking",
+        "high",
+        "--mode",
+        "json",
+        "--no-context-files",
+        "--no-extensions",
+        "--no-skills",
+        "--no-prompt-templates",
+        "--no-themes",
+        "--no-session",
+        "--skill",
+        "skills/kenney-asset-search",
+        "--print",
+        "You are running an isolated forward test for `kenney-asset-search`. Use the read tool to read `../prompt.md` first, then follow it exactly. The loaded bundle is rooted at `skills/kenney-asset-search` from the current workspace; never prefix that path with `../`. Immediately after the prompt, read the bundle entry point at `skills/kenney-asset-search/SKILL.md`; do not probe for README.md or other conventional entry-point filenames. The shell tool is bash, not PowerShell; do not run PowerShell commands. Do not list directories or inspect script source before reading the prompt. If the prompt gives an exact command, run it verbatim and verify the required outputs."
+      ]
+    },
+    {
+      "runId": "colorset-manim-svg-video-20261002-2",
+      "skill": "manim-svg-video",
+      "startedAtUtc": "2026-10-03T02:27:52.531741+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "0f1431000d5bf3678b6003f45b4ae857c9185be8cd34ec324d23033eff8ec2f2",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/colorset-manim-svg-video-20261002-2/evaluation-result.json",
+      "currentRuntimeMatches": true,
+      "runtimeFileCount": 9,
+      "outputs": [
+        {
+          "path": "output/composition/composition-manifest.json",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 1229,
+          "sha256": "e01f6cd831359520f5ad3725e4240d4a5c443c42c14bad6c7830a971ea56dc21",
+          "error": null
+        },
+        {
+          "path": "output/composition/manim_svg_video_scene.py",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 9876,
+          "sha256": "50e077a2677c28fae4f4b68c7b3da6b2206a994905337755c72268e27ae99720",
+          "error": null
+        }
+      ],
+      "isolatedCommand": [
+        "C:\\Users\\villa\\AppData\\Roaming\\npm\\pi.CMD",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--thinking",
+        "high",
+        "--mode",
+        "json",
+        "--no-context-files",
+        "--no-extensions",
+        "--no-skills",
+        "--no-prompt-templates",
+        "--no-themes",
+        "--no-session",
+        "--skill",
+        "skills/manim-svg-video",
+        "--print",
+        "You are running an isolated forward test for `manim-svg-video`. Use the read tool to read `../prompt.md` first, then follow it exactly. The loaded bundle is rooted at `skills/manim-svg-video` from the current workspace; never prefix that path with `../`. Immediately after the prompt, read the bundle entry point at `skills/manim-svg-video/SKILL.md`; do not probe for README.md or other conventional entry-point filenames. The shell tool is bash, not PowerShell; do not run PowerShell commands. Do not list directories or inspect script source before reading the prompt. If the prompt gives an exact command, run it verbatim and verify the required outputs."
+      ]
+    },
+    {
+      "runId": "20261002-colorset-mermaid-luna-3",
+      "skill": "mermaid",
+      "startedAtUtc": "2026-10-03T02:55:12.926804+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "1319ec2db7a26ff7efe1fbfa5099da94f0724e33bdcbc2283c2751bc512fe61e",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/20261002-colorset-mermaid-luna-3/evaluation-result.json",
+      "currentRuntimeMatches": true,
+      "runtimeFileCount": 22,
+      "outputs": [
+        {
+          "path": "flow.mmd",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 1218,
+          "sha256": "8a82c5dbdd5ee9da369b2f178964e489714f629b1af5d4a6f77268a52758cb8e",
+          "error": null
+        },
+        {
+          "path": "flow.static.svg",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 12748,
+          "sha256": "4f9cd8d2e944543e73133aec65a1f5afc3918417578a2ff6915556df723f457d",
+          "error": null
+        },
+        {
+          "path": "flow.animated.svg",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 18933,
+          "sha256": "1bcd6f64b3c8ccf06ca9f712953d99d70e6ab6bf0b4ae8b2f3335d2e839d727b",
+          "error": null
+        },
+        {
+          "path": "style.json",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 6112,
+          "sha256": "2bb00fedaf2ac99d2b61e96717abe5007eabae1f58cd3f5214f12fc739d46957",
+          "error": null
+        },
+        {
+          "path": "check.json",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 6091,
+          "sha256": "a593a36b4394c570ff513adbf2ad97e77dae2d8f927c6e91d96fe75bbac9aa37",
+          "error": null
+        }
+      ],
+      "isolatedCommand": [
+        "C:\\Users\\villa\\AppData\\Roaming\\npm\\pi.CMD",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--thinking",
+        "high",
+        "--mode",
+        "json",
+        "--no-context-files",
+        "--no-extensions",
+        "--no-skills",
+        "--no-prompt-templates",
+        "--no-themes",
+        "--no-session",
+        "--skill",
+        "skills/mermaid",
+        "--print",
+        "You are running an isolated forward test for `mermaid`. Use the read tool to read `../prompt.md` first, then follow it exactly. The loaded bundle is rooted at `skills/mermaid` from the current workspace; never prefix that path with `../`. Immediately after the prompt, read the bundle entry point at `skills/mermaid/SKILL.md`; do not probe for README.md or other conventional entry-point filenames. The shell tool is bash, not PowerShell; do not run PowerShell commands. Do not list directories or inspect script source before reading the prompt. If the prompt gives an exact command, run it verbatim and verify the required outputs."
+      ]
+    },
+    {
+      "runId": "20261002-colorset-dither-1",
+      "skill": "one-bit-dither-svg",
+      "startedAtUtc": "2026-10-03T02:20:54.100104+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "b3837dcc7e9b075db6e9d0e9560c774734703a90fb486ff2b4c0dfe4c68e3854",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/20261002-colorset-dither-1/evaluation-result.json",
+      "currentRuntimeMatches": true,
+      "runtimeFileCount": 12,
+      "outputs": [
+        {
+          "path": "source.svg",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 251,
+          "sha256": "8da476dfc79a6d87005ae8f765e1b3d261313883ce5eae9f93238a599b9b4cba",
+          "error": null
+        },
+        {
+          "path": "regional.svg",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 38863,
+          "sha256": "b2e7e315b0b4fe5ccd5bc66e760392c7359a4923ba2b6599fe3378b4169f4c8c",
+          "error": null
+        },
+        {
+          "path": "regional.png",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 508,
+          "sha256": "875c46e6a7f2a64b07d3a69d028783ad39e56897713aea80072d8c9eb21d5857",
+          "error": null
+        },
+        {
+          "path": "regional.json",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 1965,
+          "sha256": "d6449b81e009697688506f0169ad09094c95a991622a81401c8f6857de093e8e",
+          "error": null
+        },
+        {
+          "path": "extended.svg",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 38840,
+          "sha256": "b587304b8b274607bc9040fff5dc031e1cc8c3b3e9be546025415032487e7786",
+          "error": null
+        },
+        {
+          "path": "extended.png",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 490,
+          "sha256": "0bb35509e53ba2432ff5fe92d15055a6d78a72c7c5e8ce8880dcb0c4f3129a77",
+          "error": null
+        },
+        {
+          "path": "extended.json",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 1945,
+          "sha256": "4e7e5772efab023ed57d4c6a0e03dcbe4be4fb690d40e002bb9224ba43d39421",
+          "error": null
+        }
+      ],
+      "isolatedCommand": [
+        "C:\\Users\\villa\\AppData\\Roaming\\npm\\pi.CMD",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--thinking",
+        "high",
+        "--mode",
+        "json",
+        "--no-context-files",
+        "--no-extensions",
+        "--no-skills",
+        "--no-prompt-templates",
+        "--no-themes",
+        "--no-session",
+        "--skill",
+        "skills/one-bit-dither-svg",
+        "--print",
+        "You are running an isolated forward test for `one-bit-dither-svg`. Use the read tool to read `../prompt.md` first, then follow it exactly. The loaded bundle is rooted at `skills/one-bit-dither-svg` from the current workspace; never prefix that path with `../`. Immediately after the prompt, read the bundle entry point at `skills/one-bit-dither-svg/SKILL.md`; do not probe for README.md or other conventional entry-point filenames. The shell tool is bash, not PowerShell; do not run PowerShell commands. Do not list directories or inspect script source before reading the prompt. If the prompt gives an exact command, run it verbatim and verify the required outputs."
+      ]
+    },
+    {
+      "runId": "20261002-colorset-pexels-media-search-final",
+      "skill": "pexels-media-search",
+      "startedAtUtc": "2026-10-03T03:09:13.295666+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "c1030f53167282ac87831f279a3ae79ff8991bf39e49149a37b537faae0a2545",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/20261002-colorset-pexels-media-search-final/evaluation-result.json",
+      "currentRuntimeMatches": true,
+      "runtimeFileCount": 8,
+      "outputs": [
+        {
+          "path": "preview.html",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 1288,
+          "sha256": "bf3da485e54df730373420b37b7b1a80869642aa63d6417243dc9ce58a46f150",
+          "error": null
+        },
+        {
+          "path": "candidates.json",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 431,
+          "sha256": "ff85a6159f35144a8a092517a61070cc7adc3e819c74c8a6b4128afccc9fe084",
+          "error": null
+        }
+      ],
+      "isolatedCommand": [
+        "C:\\Users\\villa\\AppData\\Roaming\\npm\\pi.CMD",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--thinking",
+        "high",
+        "--mode",
+        "json",
+        "--no-context-files",
+        "--no-extensions",
+        "--no-skills",
+        "--no-prompt-templates",
+        "--no-themes",
+        "--no-session",
+        "--skill",
+        "skills/pexels-media-search",
+        "--print",
+        "You are running an isolated forward test for `pexels-media-search`. Use the read tool to read `../prompt.md` first, then follow it exactly. The loaded bundle is rooted at `skills/pexels-media-search` from the current workspace; never prefix that path with `../`. Immediately after the prompt, read the bundle entry point at `skills/pexels-media-search/SKILL.md`; do not probe for README.md or other conventional entry-point filenames. The shell tool is bash, not PowerShell; do not run PowerShell commands. Do not list directories or inspect script source before reading the prompt. If the prompt gives an exact command, run it verbatim and verify the required outputs."
+      ]
+    },
+    {
+      "runId": "20261002-colorset-pixel-1",
+      "skill": "pixel-art-image-video",
+      "startedAtUtc": "2026-10-03T02:20:53.787790+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "e7e8ff457816e4fb97a27b5ce75961961e91533a7797adddcc39442492665278",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/20261002-colorset-pixel-1/evaluation-result.json",
+      "currentRuntimeMatches": true,
+      "runtimeFileCount": 9,
+      "outputs": [
+        {
+          "path": "source.svg",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 251,
+          "sha256": "02953a3675398c2d258d261e7956df89740c04c619f80e7ea905c8aed8ed2aa1",
+          "error": null
+        },
+        {
+          "path": "pixel.png",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 322,
+          "sha256": "16b112ac6f6161909acd7c0428ddbf70e54b9eb0a0ab4953bda4cb7c1fd62274",
+          "error": null
+        },
+        {
+          "path": "pixel.json",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 1426,
+          "sha256": "928c0e824958992397a323b220e5d03809f0cb8fc8b76d2a003947e824384730",
+          "error": null
+        },
+        {
+          "path": "extended.webp",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 126,
+          "sha256": "e3df4a876a0ba0b61ede1cfee76fa023f76c7d934aeed983e68997c2f3c438f3",
+          "error": null
+        },
+        {
+          "path": "extended.json",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 1770,
+          "sha256": "e0ea11c5896107825dbacff1360d0bef89eb2fe5992af809b3840a08c63ed499",
+          "error": null
+        }
+      ],
+      "isolatedCommand": [
+        "C:\\Users\\villa\\AppData\\Roaming\\npm\\pi.CMD",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--thinking",
+        "high",
+        "--mode",
+        "json",
+        "--no-context-files",
+        "--no-extensions",
+        "--no-skills",
+        "--no-prompt-templates",
+        "--no-themes",
+        "--no-session",
+        "--skill",
+        "skills/pixel-art-image-video",
+        "--print",
+        "You are running an isolated forward test for `pixel-art-image-video`. Use the read tool to read `../prompt.md` first, then follow it exactly. The loaded bundle is rooted at `skills/pixel-art-image-video` from the current workspace; never prefix that path with `../`. Immediately after the prompt, read the bundle entry point at `skills/pixel-art-image-video/SKILL.md`; do not probe for README.md or other conventional entry-point filenames. The shell tool is bash, not PowerShell; do not run PowerShell commands. Do not list directories or inspect script source before reading the prompt. If the prompt gives an exact command, run it verbatim and verify the required outputs."
+      ]
+    },
+    {
+      "runId": "20261002-colorset-plantuml-luna-7",
+      "skill": "plantuml-colorset-renderer",
+      "startedAtUtc": "2026-10-03T03:01:03.597266+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "7142b53549d9091f04a091754ff1209ef4fffc355ffe8623ae10e307fed7b928",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/20261002-colorset-plantuml-luna-7/evaluation-result.json",
+      "currentRuntimeMatches": true,
+      "runtimeFileCount": 16,
+      "outputs": [
+        {
+          "path": "input/diagram.puml",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 121,
+          "sha256": "ec938f39d43aa04fd36891e386b8cf6589caad717763ba31fd3a994c5b38560d",
+          "error": null
+        },
+        {
+          "path": "rendered/svg/diagram.svg",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 4475,
+          "sha256": "bbc77c2b1c28acc459739f1007c8d1b4986f5fc222283d40ccc20f515c5f3d6e",
+          "error": null
+        },
+        {
+          "path": "rendered/png/diagram.png",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 3935,
+          "sha256": "f87daed12419dc04145d3c9ef8c37dfbc70bb0367ea569db3569d15ced567f90",
+          "error": null
+        },
+        {
+          "path": "render-report.json",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 1548,
+          "sha256": "b97ec365296498bcbf0d923574b9f9f58f0fa9e0cb9bf87bc796f33aebccb04c",
+          "error": null
+        }
+      ],
+      "isolatedCommand": [
+        "C:\\Users\\villa\\AppData\\Roaming\\npm\\pi.CMD",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--thinking",
+        "high",
+        "--mode",
+        "json",
+        "--no-context-files",
+        "--no-extensions",
+        "--no-skills",
+        "--no-prompt-templates",
+        "--no-themes",
+        "--no-session",
+        "--skill",
+        "skills/plantuml-colorset-renderer",
+        "--print",
+        "You are running an isolated forward test for `plantuml-colorset-renderer`. Use the read tool to read `../prompt.md` first, then follow it exactly. The loaded bundle is rooted at `skills/plantuml-colorset-renderer` from the current workspace; never prefix that path with `../`. Immediately after the prompt, read the bundle entry point at `skills/plantuml-colorset-renderer/SKILL.md`; do not probe for README.md or other conventional entry-point filenames. The shell tool is bash, not PowerShell; do not run PowerShell commands. Do not list directories or inspect script source before reading the prompt. If the prompt gives an exact command, run it verbatim and verify the required outputs."
+      ]
+    },
+    {
+      "runId": "20261002-colorset-polyhaven-asset-search-final",
+      "skill": "polyhaven-asset-search",
+      "startedAtUtc": "2026-10-03T03:12:29.700965+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "7a247b618614fd2b7931494005ec681ec08f07150ccab5a65c8e1740e87c5061",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/20261002-colorset-polyhaven-asset-search-final/evaluation-result.json",
+      "currentRuntimeMatches": true,
+      "runtimeFileCount": 8,
+      "outputs": [
+        {
+          "path": "preview.html",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 1288,
+          "sha256": "bf3da485e54df730373420b37b7b1a80869642aa63d6417243dc9ce58a46f150",
+          "error": null
+        },
+        {
+          "path": "candidates.json",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 323,
+          "sha256": "11da48eada3ef98f866c333abd7559566e35c0264c95c9739cf93c6ff49e003d",
+          "error": null
+        }
+      ],
+      "isolatedCommand": [
+        "C:\\Users\\villa\\AppData\\Roaming\\npm\\pi.CMD",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--thinking",
+        "high",
+        "--mode",
+        "json",
+        "--no-context-files",
+        "--no-extensions",
+        "--no-skills",
+        "--no-prompt-templates",
+        "--no-themes",
+        "--no-session",
+        "--skill",
+        "skills/polyhaven-asset-search",
+        "--print",
+        "You are running an isolated forward test for `polyhaven-asset-search`. Use the read tool to read `../prompt.md` first, then follow it exactly. The loaded bundle is rooted at `skills/polyhaven-asset-search` from the current workspace; never prefix that path with `../`. Immediately after the prompt, read the bundle entry point at `skills/polyhaven-asset-search/SKILL.md`; do not probe for README.md or other conventional entry-point filenames. The shell tool is bash, not PowerShell; do not run PowerShell commands. Do not list directories or inspect script source before reading the prompt. If the prompt gives an exact command, run it verbatim and verify the required outputs."
+      ]
+    },
+    {
+      "runId": "colorset-procedural-svg-animation-20261002-final3",
+      "skill": "procedural-svg-animation",
+      "startedAtUtc": "2026-10-03T03:15:54.809848+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "efb46ac61be970ef214bc33e7d5bc3decfe963eebe9335e0c0283cd86958f44f",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/colorset-procedural-svg-animation-20261002-final3/evaluation-result.json",
+      "currentRuntimeMatches": true,
+      "runtimeFileCount": 17,
+      "outputs": [
+        {
+          "path": "artifacts/wave.svg",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 228418,
+          "sha256": "82744fccc8b52e58b64d110423aa29ca3b967ed2fe1525db09f7f5cd52d0b4a1",
+          "error": null
+        },
+        {
+          "path": "artifacts/wave-cs2.svg",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 228418,
+          "sha256": "f63517fa0b34b8a32a3227233936378c70246eca0fa1386b844aa4b3fe777724",
+          "error": null
+        }
+      ],
+      "isolatedCommand": [
+        "C:\\Users\\villa\\AppData\\Roaming\\npm\\pi.CMD",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--thinking",
+        "high",
+        "--mode",
+        "json",
+        "--no-context-files",
+        "--no-extensions",
+        "--no-skills",
+        "--no-prompt-templates",
+        "--no-themes",
+        "--no-session",
+        "--skill",
+        "skills/procedural-svg-animation",
+        "--print",
+        "You are running an isolated forward test for `procedural-svg-animation`. Use the read tool to read `../prompt.md` first, then follow it exactly. The loaded bundle is rooted at `skills/procedural-svg-animation` from the current workspace; never prefix that path with `../`. Immediately after the prompt, read the bundle entry point at `skills/procedural-svg-animation/SKILL.md`; do not probe for README.md or other conventional entry-point filenames. The shell tool is bash, not PowerShell; do not run PowerShell commands. Do not list directories or inspect script source before reading the prompt. If the prompt gives an exact command, run it verbatim and verify the required outputs."
+      ]
+    },
+    {
+      "runId": "20261002-colorset-slidev-animejs-luna-2",
+      "skill": "slidev-animejs",
+      "startedAtUtc": "2026-10-03T02:41:43.346153+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "d71432e12f8fc39e4f1cab6e1db1a78467c81a6fff19743291d60dee57ef5a02",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/20261002-colorset-slidev-animejs-luna-2/evaluation-result.json",
+      "currentRuntimeMatches": true,
+      "runtimeFileCount": 37,
+      "outputs": [
+        {
+          "path": "deck/components/SvgAssetSlide.vue",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 8518,
+          "sha256": "813ca2a29aaa606eb9f290a6a110b05986133e3c0a8cc5d02acd171b4ee2d43f",
+          "error": null
+        },
+        {
+          "path": "deck/lib/svg-assets.js",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 3845,
+          "sha256": "c5fa3596621aa2ad25f8ffbd4cff235040a0fc50e768f90c6bfafa67bbe95ade",
+          "error": null
+        },
+        {
+          "path": "deck/assets/animated-svg/drawable-circuit.svg",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 2808,
+          "sha256": "7f6f0a3f3c4d70cf318d659ed4b0c8220efab42004d6cc88572574fa1dcd2eba",
+          "error": null
+        },
+        {
+          "path": "deck/assets/animated-svg/interactive-hotspots.svg",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 2412,
+          "sha256": "a55cda46df017678a508f1e2bcc9d119f44d061c2bcadb3af4730aa275f3643d",
+          "error": null
+        },
+        {
+          "path": "deck/assets/animated-svg/morphing-badge.svg",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 2564,
+          "sha256": "9ecef69421b633b3d090713662be1a5fb91c7ad7a97d78a06cd5fa593c82c58b",
+          "error": null
+        },
+        {
+          "path": "deck/assets/animated-svg/motion-orbit.svg",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 1908,
+          "sha256": "181eeeda8db14399034c49a120b925ab0cd94a892b76adaa97882ca474df993c",
+          "error": null
+        },
+        {
+          "path": "deck/assets/animated-svg/stagger-dashboard.svg",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 2632,
+          "sha256": "3113ddf67c6ddff7dfad005cb19c543158097a410fd510591c9c16dde70843be",
+          "error": null
+        },
+        {
+          "path": "deck/assets/animated-svg/timeline-machine.svg",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 2372,
+          "sha256": "5bace1c51a2c9a4394be230028669f0586b9ff29fcfa8f351c1cc87f88ca329b",
+          "error": null
+        },
+        {
+          "path": "palette-selection.json",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 287,
+          "sha256": "75a9c743978bdd372885c214a73b6493b7af80e8f5795b6686241b8390a77c22",
+          "error": null
+        }
+      ],
+      "isolatedCommand": [
+        "C:\\Users\\villa\\AppData\\Roaming\\npm\\pi.CMD",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--thinking",
+        "high",
+        "--mode",
+        "json",
+        "--no-context-files",
+        "--no-extensions",
+        "--no-skills",
+        "--no-prompt-templates",
+        "--no-themes",
+        "--no-session",
+        "--skill",
+        "skills/slidev-animejs",
+        "--print",
+        "You are running an isolated forward test for `slidev-animejs`. Use the read tool to read `../prompt.md` first, then follow it exactly. The loaded bundle is rooted at `skills/slidev-animejs` from the current workspace; never prefix that path with `../`. Immediately after the prompt, read the bundle entry point at `skills/slidev-animejs/SKILL.md`; do not probe for README.md or other conventional entry-point filenames. The shell tool is bash, not PowerShell; do not run PowerShell commands. Do not list directories or inspect script source before reading the prompt. If the prompt gives an exact command, run it verbatim and verify the required outputs."
+      ]
+    },
+    {
+      "runId": "20261002-colorset-slidev-echarts-luna-4",
+      "skill": "slidev-echarts",
+      "startedAtUtc": "2026-10-03T02:55:16.183225+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "a42f900c3cb47ca5193222f5dfd8332680746d15e3e19f158c5798b62ca07b89",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/20261002-colorset-slidev-echarts-luna-4/evaluation-result.json",
+      "currentRuntimeMatches": true,
+      "runtimeFileCount": 32,
+      "outputs": [
+        {
+          "path": "deck/echarts-colorsets.mjs",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 11594,
+          "sha256": "020d981d65b9118943313ad931837649fbdbf1c7a27158029932f7401720110e",
+          "error": null
+        },
+        {
+          "path": "deck/chart-option.mjs",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 775,
+          "sha256": "3470634c93ca0350963221013ec94690bfd8e326af2a8b077b72c053462da594",
+          "error": null
+        }
+      ],
+      "isolatedCommand": [
+        "C:\\Users\\villa\\AppData\\Roaming\\npm\\pi.CMD",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--thinking",
+        "high",
+        "--mode",
+        "json",
+        "--no-context-files",
+        "--no-extensions",
+        "--no-skills",
+        "--no-prompt-templates",
+        "--no-themes",
+        "--no-session",
+        "--skill",
+        "skills/slidev-echarts",
+        "--print",
+        "You are running an isolated forward test for `slidev-echarts`. Use the read tool to read `../prompt.md` first, then follow it exactly. The loaded bundle is rooted at `skills/slidev-echarts` from the current workspace; never prefix that path with `../`. Immediately after the prompt, read the bundle entry point at `skills/slidev-echarts/SKILL.md`; do not probe for README.md or other conventional entry-point filenames. The shell tool is bash, not PowerShell; do not run PowerShell commands. Do not list directories or inspect script source before reading the prompt. If the prompt gives an exact command, run it verbatim and verify the required outputs."
+      ]
+    },
+    {
+      "runId": "20261002-colorset-slidev-quality-luna-2",
+      "skill": "slidev-quality-audit",
+      "startedAtUtc": "2026-10-03T02:41:41.622512+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "cb85c25cf93825e20a66d152729c6bb31241302b9abe12a197e02720f7abd834",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/20261002-colorset-slidev-quality-luna-2/evaluation-result.json",
+      "currentRuntimeMatches": true,
+      "runtimeFileCount": 6,
+      "outputs": [
+        {
+          "path": "audit-plan.json",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 729,
+          "sha256": "66a80d0ff485e23aa5e895f6708c9bd0d8f27fb8b99df7cb1e62c5ee9ec3a0c5",
+          "error": null
+        }
+      ],
+      "isolatedCommand": [
+        "C:\\Users\\villa\\AppData\\Roaming\\npm\\pi.CMD",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--thinking",
+        "high",
+        "--mode",
+        "json",
+        "--no-context-files",
+        "--no-extensions",
+        "--no-skills",
+        "--no-prompt-templates",
+        "--no-themes",
+        "--no-session",
+        "--skill",
+        "skills/slidev-quality-audit",
+        "--print",
+        "You are running an isolated forward test for `slidev-quality-audit`. Use the read tool to read `../prompt.md` first, then follow it exactly. The loaded bundle is rooted at `skills/slidev-quality-audit` from the current workspace; never prefix that path with `../`. Immediately after the prompt, read the bundle entry point at `skills/slidev-quality-audit/SKILL.md`; do not probe for README.md or other conventional entry-point filenames. The shell tool is bash, not PowerShell; do not run PowerShell commands. Do not list directories or inspect script source before reading the prompt. If the prompt gives an exact command, run it verbatim and verify the required outputs."
+      ]
+    },
+    {
+      "runId": "colorset-svg-brief-design-20261002-5",
+      "skill": "svg-brief-design",
+      "startedAtUtc": "2026-10-03T02:30:38.139360+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "efe7b8b7a3477d882a62193ebc6707b7741ac5330744c9e1f833bae1e94e1f12",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/colorset-svg-brief-design-20261002-5/evaluation-result.json",
+      "currentRuntimeMatches": true,
+      "runtimeFileCount": 10,
+      "outputs": [
+        {
+          "path": "artifacts/emblem.svg",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 1483,
+          "sha256": "369a2e1af39c0d102e6d99ff50e51acd0a3fa9ef7b077585ef23b725b6971d17",
+          "error": null
+        },
+        {
+          "path": "artifacts/emblem.json",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 377,
+          "sha256": "ba55b2e1bc4c2a5d0ef96ac7189f76af43c10c797301fa50d2555c7bcc889bb2",
+          "error": null
+        },
+        {
+          "path": "artifacts/emblem-cs2.svg",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 1483,
+          "sha256": "bb6de404cfed70d4d9b2bfadd20c2c0d1361e875b269d7b31b658e49bb3652b5",
+          "error": null
+        },
+        {
+          "path": "artifacts/emblem-cs2.json",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 377,
+          "sha256": "a97029103b6c744900a2b403597010a1ff710c7a3ab3f4f2c6bcaa3e71b37656",
+          "error": null
+        },
+        {
+          "path": "artifacts/emblem.png",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 27737,
+          "sha256": "07bf82d9deed04c112190228517105875d6b72672102011d753ca917c65d4947",
+          "error": null
+        }
+      ],
+      "isolatedCommand": [
+        "C:\\Users\\villa\\AppData\\Roaming\\npm\\pi.CMD",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--thinking",
+        "high",
+        "--mode",
+        "json",
+        "--no-context-files",
+        "--no-extensions",
+        "--no-skills",
+        "--no-prompt-templates",
+        "--no-themes",
+        "--no-session",
+        "--skill",
+        "skills/svg-brief-design",
+        "--print",
+        "You are running an isolated forward test for `svg-brief-design`. Use the read tool to read `../prompt.md` first, then follow it exactly. The loaded bundle is rooted at `skills/svg-brief-design` from the current workspace; never prefix that path with `../`. Immediately after the prompt, read the bundle entry point at `skills/svg-brief-design/SKILL.md`; do not probe for README.md or other conventional entry-point filenames. The shell tool is bash, not PowerShell; do not run PowerShell commands. Do not list directories or inspect script source before reading the prompt. If the prompt gives an exact command, run it verbatim and verify the required outputs."
+      ]
+    },
+    {
+      "runId": "20261002-colorset-technical-logo-assets-final",
+      "skill": "technical-logo-assets",
+      "startedAtUtc": "2026-10-03T03:12:25.832724+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "ecbf0e3887dab19c9b4d7c8d0d7c9628553500e09e647c626f9ca19100645975",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/20261002-colorset-technical-logo-assets-final/evaluation-result.json",
+      "currentRuntimeMatches": true,
+      "runtimeFileCount": 8572,
+      "outputs": [
+        {
+          "path": "logo.svg",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 1893,
+          "sha256": "1d67ad481e7f8655ad85cf97d4c08aca55487989867cb222cf3af38bec7874e4",
+          "error": null
+        },
+        {
+          "path": "logo.provenance.json",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 1128,
+          "sha256": "9310478947a98e9d228b2880651b90df00e7532c6b0483142b119cebac1ca086",
+          "error": null
+        },
+        {
+          "path": "logo.license.txt",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 1072,
+          "sha256": "121194741d4a915b9f5890fdd6dd95121f9b1f816517c792358d72d7c838d664",
+          "error": null
+        }
+      ],
+      "isolatedCommand": [
+        "C:\\Users\\villa\\AppData\\Roaming\\npm\\pi.CMD",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--thinking",
+        "high",
+        "--mode",
+        "json",
+        "--no-context-files",
+        "--no-extensions",
+        "--no-skills",
+        "--no-prompt-templates",
+        "--no-themes",
+        "--no-session",
+        "--skill",
+        "skills/technical-logo-assets",
+        "--print",
+        "You are running an isolated forward test for `technical-logo-assets`. Use the read tool to read `../prompt.md` first, then follow it exactly. The loaded bundle is rooted at `skills/technical-logo-assets` from the current workspace; never prefix that path with `../`. Immediately after the prompt, read the bundle entry point at `skills/technical-logo-assets/SKILL.md`; do not probe for README.md or other conventional entry-point filenames. The shell tool is bash, not PowerShell; do not run PowerShell commands. Do not list directories or inspect script source before reading the prompt. If the prompt gives an exact command, run it verbatim and verify the required outputs."
+      ]
+    },
+    {
+      "runId": "colorset-threejs-animated-3d-20261002-1",
+      "skill": "threejs-animated-3d",
+      "startedAtUtc": "2026-10-03T02:20:05.631642+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "e55402be88a629d3b4cfb01b467d08646c0ba9a2376fd6f198533477bb28818e",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/colorset-threejs-animated-3d-20261002-1/evaluation-result.json",
+      "currentRuntimeMatches": true,
+      "runtimeFileCount": 11,
+      "outputs": [
+        {
+          "path": "artifacts/orbit.html",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 1011543,
+          "sha256": "393da093504bccb19036336e72ec93e188de488a837a3a138bcbf57e431a62c9",
+          "error": null
+        },
+        {
+          "path": "artifacts/orbit-cs2.html",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 1011543,
+          "sha256": "8b9661325e07cb30164f52b4dc10ec8e0efdcbfb24bab2ad1897db71bea2218c",
+          "error": null
+        },
+        {
+          "path": "artifacts/orbit-validation.json",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 40246,
+          "sha256": "8bc87a8119b18a17a19039a98c2cc4958fe049973ec427526f6cd0242e456982",
+          "error": null
+        },
+        {
+          "path": "artifacts/orbit-cs2-validation.json",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 40229,
+          "sha256": "557163ad7137d992ab722d14e95c7816987e2847850e4986d4c9d53c31352732",
+          "error": null
+        }
+      ],
+      "isolatedCommand": [
+        "C:\\Users\\villa\\AppData\\Roaming\\npm\\pi.CMD",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--thinking",
+        "high",
+        "--mode",
+        "json",
+        "--no-context-files",
+        "--no-extensions",
+        "--no-skills",
+        "--no-prompt-templates",
+        "--no-themes",
+        "--no-session",
+        "--skill",
+        "skills/threejs-animated-3d",
+        "--print",
+        "You are running an isolated forward test for `threejs-animated-3d`. Use the read tool to read `../prompt.md` first, then follow it exactly. The loaded bundle is rooted at `skills/threejs-animated-3d` from the current workspace; never prefix that path with `../`. Immediately after the prompt, read the bundle entry point at `skills/threejs-animated-3d/SKILL.md`; do not probe for README.md or other conventional entry-point filenames. The shell tool is bash, not PowerShell; do not run PowerShell commands. Do not list directories or inspect script source before reading the prompt. If the prompt gives an exact command, run it verbatim and verify the required outputs."
+      ]
+    },
+    {
+      "runId": "colorset-usefulcharts-style-20261002-4",
+      "skill": "usefulcharts-style",
+      "startedAtUtc": "2026-10-03T02:46:30.255493+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "dbfd3bec75180048bf0760d21d322fcc4b3a6f061c1c2b835b4fe7b80af8eb5a",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/colorset-usefulcharts-style-20261002-4/evaluation-result.json",
+      "currentRuntimeMatches": true,
+      "runtimeFileCount": 135,
+      "outputs": [
+        {
+          "path": "output/poster.svg",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 170624,
+          "sha256": "289d37d33427fbddf76236eaec6fb8153cdeff0a7a92aeab4a1cc4fc4f647864",
+          "error": null
+        },
+        {
+          "path": "output/poster.html",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 172087,
+          "sha256": "5b7284bd3970b36c3a991ad2bec51d7a1aedfb865625d4cc942b506a94c840bc",
+          "error": null
+        },
+        {
+          "path": "output/source.json",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 3476,
+          "sha256": "72d89e35fdb360f405e5c91df38aaedaf94edb5193806856d81ecf755b0c334c",
+          "error": null
+        },
+        {
+          "path": "output/render.json",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 464,
+          "sha256": "d85aab8317ddf370dabd7dbe1693550b44c218345b598c41dbad9a892746fa54",
+          "error": null
+        },
+        {
+          "path": "output/palette.md",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 501,
+          "sha256": "347cfa15b6cd840aeb4ad89a890eea6d4ee998570bb7f4be5285ffce46d952f7",
+          "error": null
+        }
+      ],
+      "isolatedCommand": [
+        "C:\\Users\\villa\\AppData\\Roaming\\npm\\pi.CMD",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--thinking",
+        "high",
+        "--mode",
+        "json",
+        "--no-context-files",
+        "--no-extensions",
+        "--no-skills",
+        "--no-prompt-templates",
+        "--no-themes",
+        "--no-session",
+        "--skill",
+        "skills/usefulcharts-style",
+        "--print",
+        "You are running an isolated forward test for `usefulcharts-style`. Use the read tool to read `../prompt.md` first, then follow it exactly. The loaded bundle is rooted at `skills/usefulcharts-style` from the current workspace; never prefix that path with `../`. Immediately after the prompt, read the bundle entry point at `skills/usefulcharts-style/SKILL.md`; do not probe for README.md or other conventional entry-point filenames. The shell tool is bash, not PowerShell; do not run PowerShell commands. Do not list directories or inspect script source before reading the prompt. If the prompt gives an exact command, run it verbatim and verify the required outputs."
+      ]
+    },
+    {
+      "runId": "colorset-vectorize-art-patterns-20261002-2",
+      "skill": "vectorize-art-patterns",
+      "startedAtUtc": "2026-10-03T02:22:19.223595+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "b4919a5e52700476e56ebb65b5a6f537500fb470d6bb5da32ccb55aa55a1b59d",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/colorset-vectorize-art-patterns-20261002-2/evaluation-result.json",
+      "currentRuntimeMatches": true,
+      "runtimeFileCount": 55,
+      "outputs": [
+        {
+          "path": "artifacts/art.svg",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 3197,
+          "sha256": "23cd5ec2f076a58597f06d616ac41cb5fd10244aab0cf49a39410bd4041e8111",
+          "error": null
+        },
+        {
+          "path": "artifacts/art.json",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 2402,
+          "sha256": "ec8ed7b2afc380c49928f220387ac77aeebcc79c5da96bb2b67253fd2b4b1c86",
+          "error": null
+        },
+        {
+          "path": "artifacts/art-cs2.svg",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 3209,
+          "sha256": "c5aab15dedd5a418640029a61665436d08a2135d85ca310ca6097aa4886628d0",
+          "error": null
+        },
+        {
+          "path": "artifacts/art-cs2.json",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 2410,
+          "sha256": "936b756fefa1ad85d4169dcb14cf8c6581fe715bd2fad98f74cf31af7765d8cf",
+          "error": null
+        }
+      ],
+      "isolatedCommand": [
+        "C:\\Users\\villa\\AppData\\Roaming\\npm\\pi.CMD",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--thinking",
+        "high",
+        "--mode",
+        "json",
+        "--no-context-files",
+        "--no-extensions",
+        "--no-skills",
+        "--no-prompt-templates",
+        "--no-themes",
+        "--no-session",
+        "--skill",
+        "skills/vectorize-art-patterns",
+        "--print",
+        "You are running an isolated forward test for `vectorize-art-patterns`. Use the read tool to read `../prompt.md` first, then follow it exactly. The loaded bundle is rooted at `skills/vectorize-art-patterns` from the current workspace; never prefix that path with `../`. Immediately after the prompt, read the bundle entry point at `skills/vectorize-art-patterns/SKILL.md`; do not probe for README.md or other conventional entry-point filenames. The shell tool is bash, not PowerShell; do not run PowerShell commands. Do not list directories or inspect script source before reading the prompt. If the prompt gives an exact command, run it verbatim and verify the required outputs."
+      ]
+    },
+    {
+      "runId": "colorset-video-20261002-2",
+      "skill": "video",
+      "startedAtUtc": "2026-10-03T02:27:52.531802+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "0be8b5a4dff0a43ccb3e9dd3674a786102510d561e17c2505d654574f5a413d1",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/colorset-video-20261002-2/evaluation-result.json",
+      "currentRuntimeMatches": true,
+      "runtimeFileCount": 49,
+      "outputs": [
+        {
+          "path": "output/scene-contract.json",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 3889,
+          "sha256": "0e0189a7f708aba071137d3123a7fd97a22b4ef68c62d84c7c501774b9e60d53",
+          "error": null
+        },
+        {
+          "path": "output/validation.json",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 614,
+          "sha256": "17d9f548b6eee65090247b38a50f4fe96133270ec52b5eb233e5048785b9f4d0",
+          "error": null
+        }
+      ],
+      "isolatedCommand": [
+        "C:\\Users\\villa\\AppData\\Roaming\\npm\\pi.CMD",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--thinking",
+        "high",
+        "--mode",
+        "json",
+        "--no-context-files",
+        "--no-extensions",
+        "--no-skills",
+        "--no-prompt-templates",
+        "--no-themes",
+        "--no-session",
+        "--skill",
+        "skills/video",
+        "--print",
+        "You are running an isolated forward test for `video`. Use the read tool to read `../prompt.md` first, then follow it exactly. The loaded bundle is rooted at `skills/video` from the current workspace; never prefix that path with `../`. Immediately after the prompt, read the bundle entry point at `skills/video/SKILL.md`; do not probe for README.md or other conventional entry-point filenames. The shell tool is bash, not PowerShell; do not run PowerShell commands. Do not list directories or inspect script source before reading the prompt. If the prompt gives an exact command, run it verbatim and verify the required outputs."
+      ]
+    }
+  ],
+  "traceSummaries": [
+    {
+      "runId": "20261002-colorset-ambientcg-material-search-final",
+      "exitCode": 0,
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/summarize-pi-json-events.py",
+        "evaluations/runs/20261002-colorset-ambientcg-material-search-final/events.jsonl",
+        "--require-model",
+        "gpt-5.6-luna",
+        "--fail-on-invalid-json",
+        "--fail-on-tool-error"
+      ]
+    },
+    {
+      "runId": "20261002-colorset-gif-luna-3",
+      "exitCode": 0,
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/summarize-pi-json-events.py",
+        "evaluations/runs/20261002-colorset-gif-luna-3/events.jsonl",
+        "--require-model",
+        "gpt-5.6-luna",
+        "--fail-on-invalid-json",
+        "--fail-on-tool-error"
+      ]
+    },
+    {
+      "runId": "20261002-colorset-terminal-5",
+      "exitCode": 0,
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/summarize-pi-json-events.py",
+        "evaluations/runs/20261002-colorset-terminal-5/events.jsonl",
+        "--require-model",
+        "gpt-5.6-luna",
+        "--fail-on-invalid-json",
+        "--fail-on-tool-error"
+      ]
+    },
+    {
+      "runId": "colorset-compose-synchronized-svg-20261002-8",
+      "exitCode": 0,
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/summarize-pi-json-events.py",
+        "evaluations/runs/colorset-compose-synchronized-svg-20261002-8/events.jsonl",
+        "--require-model",
+        "gpt-5.6-luna",
+        "--fail-on-invalid-json",
+        "--fail-on-tool-error"
+      ]
+    },
+    {
+      "runId": "colorset-d3-20261002-final6",
+      "exitCode": 0,
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/summarize-pi-json-events.py",
+        "evaluations/runs/colorset-d3-20261002-final6/events.jsonl",
+        "--require-model",
+        "gpt-5.6-luna",
+        "--fail-on-invalid-json",
+        "--fail-on-tool-error"
+      ]
+    },
+    {
+      "runId": "20261002-colorset-destockd-final2",
+      "exitCode": 0,
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/summarize-pi-json-events.py",
+        "evaluations/runs/20261002-colorset-destockd-final2/events.jsonl",
+        "--require-model",
+        "gpt-5.6-luna",
+        "--fail-on-invalid-json",
+        "--fail-on-tool-error"
+      ]
+    },
+    {
+      "runId": "colorset-diagram-composition-20261002-2",
+      "exitCode": 0,
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/summarize-pi-json-events.py",
+        "evaluations/runs/colorset-diagram-composition-20261002-2/events.jsonl",
+        "--require-model",
+        "gpt-5.6-luna",
+        "--fail-on-invalid-json",
+        "--fail-on-tool-error"
+      ]
+    },
+    {
+      "runId": "20261002-colorset-echarts-luna-5",
+      "exitCode": 0,
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/summarize-pi-json-events.py",
+        "evaluations/runs/20261002-colorset-echarts-luna-5/events.jsonl",
+        "--require-model",
+        "gpt-5.6-luna",
+        "--fail-on-invalid-json",
+        "--fail-on-tool-error"
+      ]
+    },
+    {
+      "runId": "20261002-colorset-harbor-2",
+      "exitCode": 0,
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/summarize-pi-json-events.py",
+        "evaluations/runs/20261002-colorset-harbor-2/events.jsonl",
+        "--require-model",
+        "gpt-5.6-luna",
+        "--fail-on-invalid-json",
+        "--fail-on-tool-error"
+      ]
+    },
+    {
+      "runId": "colorset-hierarchy-lens-20261002-6",
+      "exitCode": 0,
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/summarize-pi-json-events.py",
+        "evaluations/runs/colorset-hierarchy-lens-20261002-6/events.jsonl",
+        "--require-model",
+        "gpt-5.6-luna",
+        "--fail-on-invalid-json",
+        "--fail-on-tool-error"
+      ]
+    },
+    {
+      "runId": "colorset-hyperframes-explainer-20261002-3",
+      "exitCode": 0,
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/summarize-pi-json-events.py",
+        "evaluations/runs/colorset-hyperframes-explainer-20261002-3/events.jsonl",
+        "--require-model",
+        "gpt-6-luna",
+        "--fail-on-invalid-json",
+        "--fail-on-tool-error"
+      ]
+    },
+    {
+      "runId": "20261002-colorset-iconify-icon-search-final",
+      "exitCode": 0,
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/summarize-pi-json-events.py",
+        "evaluations/runs/20261002-colorset-iconify-icon-search-final/events.jsonl",
+        "--require-model",
+        "gpt-5.6-luna",
+        "--fail-on-invalid-json",
+        "--fail-on-tool-error"
+      ]
+    },
+    {
+      "runId": "20261002-colorset-kenney-asset-search-final",
+      "exitCode": 0,
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/summarize-pi-json-events.py",
+        "evaluations/runs/20261002-colorset-kenney-asset-search-final/events.jsonl",
+        "--require-model",
+        "gpt-5.6-luna",
+        "--fail-on-invalid-json",
+        "--fail-on-tool-error"
+      ]
+    },
+    {
+      "runId": "colorset-manim-svg-video-20261002-2",
+      "exitCode": 0,
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/summarize-pi-json-events.py",
+        "evaluations/runs/colorset-manim-svg-video-20261002-2/events.jsonl",
+        "--require-model",
+        "gpt-5.6-luna",
+        "--fail-on-invalid-json",
+        "--fail-on-tool-error"
+      ]
+    },
+    {
+      "runId": "20261002-colorset-mermaid-luna-3",
+      "exitCode": 0,
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/summarize-pi-json-events.py",
+        "evaluations/runs/20261002-colorset-mermaid-luna-3/events.jsonl",
+        "--require-model",
+        "gpt-5.6-luna",
+        "--fail-on-invalid-json",
+        "--fail-on-tool-error"
+      ]
+    },
+    {
+      "runId": "20261002-colorset-dither-1",
+      "exitCode": 0,
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/summarize-pi-json-events.py",
+        "evaluations/runs/20261002-colorset-dither-1/events.jsonl",
+        "--require-model",
+        "gpt-5.6-luna",
+        "--fail-on-invalid-json",
+        "--fail-on-tool-error"
+      ]
+    },
+    {
+      "runId": "20261002-colorset-pexels-media-search-final",
+      "exitCode": 0,
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/summarize-pi-json-events.py",
+        "evaluations/runs/20261002-colorset-pexels-media-search-final/events.jsonl",
+        "--require-model",
+        "gpt-5.6-luna",
+        "--fail-on-invalid-json",
+        "--fail-on-tool-error"
+      ]
+    },
+    {
+      "runId": "20261002-colorset-pixel-1",
+      "exitCode": 0,
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/summarize-pi-json-events.py",
+        "evaluations/runs/20261002-colorset-pixel-1/events.jsonl",
+        "--require-model",
+        "gpt-5.6-luna",
+        "--fail-on-invalid-json",
+        "--fail-on-tool-error"
+      ]
+    },
+    {
+      "runId": "20261002-colorset-plantuml-luna-7",
+      "exitCode": 0,
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/summarize-pi-json-events.py",
+        "evaluations/runs/20261002-colorset-plantuml-luna-7/events.jsonl",
+        "--require-model",
+        "gpt-5.6-luna",
+        "--fail-on-invalid-json",
+        "--fail-on-tool-error"
+      ]
+    },
+    {
+      "runId": "20261002-colorset-polyhaven-asset-search-final",
+      "exitCode": 0,
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/summarize-pi-json-events.py",
+        "evaluations/runs/20261002-colorset-polyhaven-asset-search-final/events.jsonl",
+        "--require-model",
+        "gpt-5.6-luna",
+        "--fail-on-invalid-json",
+        "--fail-on-tool-error"
+      ]
+    },
+    {
+      "runId": "colorset-procedural-svg-animation-20261002-final3",
+      "exitCode": 0,
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/summarize-pi-json-events.py",
+        "evaluations/runs/colorset-procedural-svg-animation-20261002-final3/events.jsonl",
+        "--require-model",
+        "gpt-5.6-luna",
+        "--fail-on-invalid-json",
+        "--fail-on-tool-error"
+      ]
+    },
+    {
+      "runId": "20261002-colorset-slidev-animejs-luna-2",
+      "exitCode": 0,
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/summarize-pi-json-events.py",
+        "evaluations/runs/20261002-colorset-slidev-animejs-luna-2/events.jsonl",
+        "--require-model",
+        "gpt-5.6-luna",
+        "--fail-on-invalid-json",
+        "--fail-on-tool-error"
+      ]
+    },
+    {
+      "runId": "20261002-colorset-slidev-echarts-luna-4",
+      "exitCode": 0,
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/summarize-pi-json-events.py",
+        "evaluations/runs/20261002-colorset-slidev-echarts-luna-4/events.jsonl",
+        "--require-model",
+        "gpt-5.6-luna",
+        "--fail-on-invalid-json",
+        "--fail-on-tool-error"
+      ]
+    },
+    {
+      "runId": "20261002-colorset-slidev-quality-luna-2",
+      "exitCode": 0,
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/summarize-pi-json-events.py",
+        "evaluations/runs/20261002-colorset-slidev-quality-luna-2/events.jsonl",
+        "--require-model",
+        "gpt-5.6-luna",
+        "--fail-on-invalid-json",
+        "--fail-on-tool-error"
+      ]
+    },
+    {
+      "runId": "colorset-svg-brief-design-20261002-5",
+      "exitCode": 0,
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/summarize-pi-json-events.py",
+        "evaluations/runs/colorset-svg-brief-design-20261002-5/events.jsonl",
+        "--require-model",
+        "gpt-5.6-luna",
+        "--fail-on-invalid-json",
+        "--fail-on-tool-error"
+      ]
+    },
+    {
+      "runId": "20261002-colorset-technical-logo-assets-final",
+      "exitCode": 0,
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/summarize-pi-json-events.py",
+        "evaluations/runs/20261002-colorset-technical-logo-assets-final/events.jsonl",
+        "--require-model",
+        "gpt-5.6-luna",
+        "--fail-on-invalid-json",
+        "--fail-on-tool-error"
+      ]
+    },
+    {
+      "runId": "colorset-threejs-animated-3d-20261002-1",
+      "exitCode": 0,
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/summarize-pi-json-events.py",
+        "evaluations/runs/colorset-threejs-animated-3d-20261002-1/events.jsonl",
+        "--require-model",
+        "gpt-5.6-luna",
+        "--fail-on-invalid-json",
+        "--fail-on-tool-error"
+      ]
+    },
+    {
+      "runId": "colorset-usefulcharts-style-20261002-4",
+      "exitCode": 0,
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/summarize-pi-json-events.py",
+        "evaluations/runs/colorset-usefulcharts-style-20261002-4/events.jsonl",
+        "--require-model",
+        "gpt-5.6-luna",
+        "--fail-on-invalid-json",
+        "--fail-on-tool-error"
+      ]
+    },
+    {
+      "runId": "colorset-vectorize-art-patterns-20261002-2",
+      "exitCode": 0,
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/summarize-pi-json-events.py",
+        "evaluations/runs/colorset-vectorize-art-patterns-20261002-2/events.jsonl",
+        "--require-model",
+        "gpt-5.6-luna",
+        "--fail-on-invalid-json",
+        "--fail-on-tool-error"
+      ]
+    },
+    {
+      "runId": "colorset-video-20261002-2",
+      "exitCode": 0,
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/summarize-pi-json-events.py",
+        "evaluations/runs/colorset-video-20261002-2/events.jsonl",
+        "--require-model",
+        "gpt-5.6-luna",
+        "--fail-on-invalid-json",
+        "--fail-on-tool-error"
+      ]
+    }
+  ],
+  "retainedAttempts": [
+    {
+      "runId": "20261002-colorset-ambientcg-1",
+      "skill": "ambientcg-material-search",
+      "startedAtUtc": "2026-10-03T02:22:03.850296+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "08e90b0d5825f5be4669bbaf3f9591dbce7f1424040f630079e58b7352810be1",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/20261002-colorset-ambientcg-1/evaluation-result.json"
+    },
+    {
+      "runId": "20261002-colorset-ambientcg-material-search-final",
+      "skill": "ambientcg-material-search",
+      "startedAtUtc": "2026-10-03T03:11:01.467468+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "48e753484149a7df553218b491c595884c4acdacd67c2bc2e3b765bf34da7734",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/20261002-colorset-ambientcg-material-search-final/evaluation-result.json"
+    },
+    {
+      "runId": "20261002-colorset-animated-svg-to-gif-luna-1",
+      "skill": "animated-svg-to-gif",
+      "startedAtUtc": "2026-10-03T02:49:39.199840+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "933b761d4eef7a498b9fd005940e65d75564d856bea909523db2b886e1e55b6f",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/20261002-colorset-animated-svg-to-gif-luna-1/evaluation-result.json"
+    },
+    {
+      "runId": "20261002-colorset-asciinema-real-command-video-2",
+      "skill": "asciinema-real-command-video",
+      "startedAtUtc": "2026-10-03T02:48:50.252567+00:00",
+      "passed": false,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "645a5821c4a4dc69fc1189b24fc80d8656ffe8f20b239c223ab7dcab7c438df0",
+      "gates": {
+        "artifacts": false,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/20261002-colorset-asciinema-real-command-video-2/evaluation-result.json"
+    },
+    {
+      "runId": "20261002-colorset-destockd-final2",
+      "skill": "destockd-video-search",
+      "startedAtUtc": "2026-10-03T03:17:26.605747+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "ae62ff64c1e148e09dcdcfd6ca74b9522905e85373043d60c9d5a26002166ec4",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/20261002-colorset-destockd-final2/evaluation-result.json"
+    },
+    {
+      "runId": "20261002-colorset-destockd-video-search-1",
+      "skill": "destockd-video-search",
+      "startedAtUtc": "2026-10-03T02:50:25.411535+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "28301626d7d455a9e8aeae39a080c0b4390f822dba79a023b20aa6f9489d6ba3",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/20261002-colorset-destockd-video-search-1/evaluation-result.json"
+    },
+    {
+      "runId": "20261002-colorset-destockd-video-search-final",
+      "skill": "destockd-video-search",
+      "startedAtUtc": "2026-10-03T03:09:13.313721+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "be5711eba3ba946b2f5685b801328ceacc7348dc064bc71da583010b54741790",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/20261002-colorset-destockd-video-search-final/evaluation-result.json"
+    },
+    {
+      "runId": "20261002-colorset-dither-1",
+      "skill": "one-bit-dither-svg",
+      "startedAtUtc": "2026-10-03T02:20:54.100104+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "b3837dcc7e9b075db6e9d0e9560c774734703a90fb486ff2b4c0dfe4c68e3854",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/20261002-colorset-dither-1/evaluation-result.json"
+    },
+    {
+      "runId": "20261002-colorset-echarts-luna-1",
+      "skill": "echarts-animated-svg",
+      "startedAtUtc": "2026-10-03T02:26:42.175932+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "097066332613ca907c2884a9a452807b2158afddbf3bc84abd14f1cca97e9a69",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/20261002-colorset-echarts-luna-1/evaluation-result.json"
+    },
+    {
+      "runId": "20261002-colorset-echarts-luna-2",
+      "skill": "echarts-animated-svg",
+      "startedAtUtc": "2026-10-03T02:34:31.907041+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "ab809475807d30fcdd8071524c7fe819c030bc2791123c7c9303ca079c72966d",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/20261002-colorset-echarts-luna-2/evaluation-result.json"
+    },
+    {
+      "runId": "20261002-colorset-echarts-luna-3",
+      "skill": "echarts-animated-svg",
+      "startedAtUtc": "2026-10-03T02:43:57.094774+00:00",
+      "passed": false,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "600bc7ee4e42a6eaba8ba39e2cdac9191bb30b20ae5a141e19c2cc67f746454b",
+      "gates": {
+        "artifacts": false,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/20261002-colorset-echarts-luna-3/evaluation-result.json"
+    },
+    {
+      "runId": "20261002-colorset-echarts-luna-4",
+      "skill": "echarts-animated-svg",
+      "startedAtUtc": "2026-10-03T02:44:26.194974+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "600bc7ee4e42a6eaba8ba39e2cdac9191bb30b20ae5a141e19c2cc67f746454b",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/20261002-colorset-echarts-luna-4/evaluation-result.json"
+    },
+    {
+      "runId": "20261002-colorset-echarts-luna-5",
+      "skill": "echarts-animated-svg",
+      "startedAtUtc": "2026-10-03T02:55:13.220647+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "16d51fe4f9acc2fc52dc6ae15ff0387b3461d507b0e98d5d2e40fdca4b35c7b1",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/20261002-colorset-echarts-luna-5/evaluation-result.json"
+    },
+    {
+      "runId": "20261002-colorset-gif-luna-2",
+      "skill": "animated-svg-to-gif",
+      "startedAtUtc": "2026-10-03T02:52:50.140541+00:00",
+      "passed": false,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "5a187db323565b3fe8877e4dacbe83050160a66821bef674e5245338c8f82b79",
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/20261002-colorset-gif-luna-2/evaluation-result.json"
+    },
+    {
+      "runId": "20261002-colorset-gif-luna-3",
+      "skill": "animated-svg-to-gif",
+      "startedAtUtc": "2026-10-03T02:57:54.648337+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "c10bba6640f50822f24f946261dcf1555d359006b5ea6fd5e0952d8f9bc2b238",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/20261002-colorset-gif-luna-3/evaluation-result.json"
+    },
+    {
+      "runId": "20261002-colorset-gif-spark-1",
+      "skill": "animated-svg-to-gif",
+      "startedAtUtc": "2026-10-03T02:20:54.363917+00:00",
+      "passed": false,
+      "model": "openai-codex/gpt-5.3-codex-spark",
+      "payloadSha256": "933b761d4eef7a498b9fd005940e65d75564d856bea909523db2b886e1e55b6f",
+      "gates": {
+        "artifacts": false,
+        "events": false,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/20261002-colorset-gif-spark-1/evaluation-result.json"
+    },
+    {
+      "runId": "20261002-colorset-harbor-2",
+      "skill": "harbor-author-evaluation-datasets",
+      "startedAtUtc": "2026-10-03T02:57:54.457892+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "6d713c55f7833ec9aa39b583ec16439a3fee4031fcf020b95d4a2c20678257ff",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/20261002-colorset-harbor-2/evaluation-result.json"
+    },
+    {
+      "runId": "20261002-colorset-harbor-author-evaluation-datasets-1",
+      "skill": "harbor-author-evaluation-datasets",
+      "startedAtUtc": "2026-10-03T02:51:44.498697+00:00",
+      "passed": false,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "6d713c55f7833ec9aa39b583ec16439a3fee4031fcf020b95d4a2c20678257ff",
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/20261002-colorset-harbor-author-evaluation-datasets-1/evaluation-result.json"
+    },
+    {
+      "runId": "20261002-colorset-iconify-1",
+      "skill": "iconify-icon-search",
+      "startedAtUtc": "2026-10-03T02:22:04.036717+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "da998d0a0f6b7558ea7f64a5cc0b5d23aba4e352828c812fba759d1f0c1808a6",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/20261002-colorset-iconify-1/evaluation-result.json"
+    },
+    {
+      "runId": "20261002-colorset-iconify-icon-search-2",
+      "skill": "iconify-icon-search",
+      "startedAtUtc": "2026-10-03T02:53:35.906839+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "d69e3eb9930b9664de7b1597494bdb9b4242c371593e47d44b19cbf9a1d2a76f",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/20261002-colorset-iconify-icon-search-2/evaluation-result.json"
+    },
+    {
+      "runId": "20261002-colorset-iconify-icon-search-final",
+      "skill": "iconify-icon-search",
+      "startedAtUtc": "2026-10-03T03:10:12.139906+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "b6f5eeb31e4eaa770da34a3b1361c69304cd42f4a14ef6ea607af73ce062d0f9",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/20261002-colorset-iconify-icon-search-final/evaluation-result.json"
+    },
+    {
+      "runId": "20261002-colorset-kenney-1",
+      "skill": "kenney-asset-search",
+      "startedAtUtc": "2026-10-03T02:26:58.171104+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "bc7f9657be0e53b287103d5cab5656e834c795d5a59a2ed9a9eff7d6c1c64f6a",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/20261002-colorset-kenney-1/evaluation-result.json"
+    },
+    {
+      "runId": "20261002-colorset-kenney-asset-search-final",
+      "skill": "kenney-asset-search",
+      "startedAtUtc": "2026-10-03T03:11:33.816494+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "3f554ba5edacc19cc79eff47a41fb9c603ff7098dd89105b52ea127a6a7c60fe",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/20261002-colorset-kenney-asset-search-final/evaluation-result.json"
+    },
+    {
+      "runId": "20261002-colorset-mermaid-luna-1",
+      "skill": "mermaid",
+      "startedAtUtc": "2026-10-03T02:26:42.424721+00:00",
+      "passed": false,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "aa3f8194907f446d6872dc1ce26b48cc094f7ff746581b2e611e99eab7952423",
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": null,
+        "skillIntegrity": false
+      },
+      "resultPath": "evaluations/runs/20261002-colorset-mermaid-luna-1/evaluation-result.json"
+    },
+    {
+      "runId": "20261002-colorset-mermaid-luna-2",
+      "skill": "mermaid",
+      "startedAtUtc": "2026-10-03T02:32:00.541337+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "dca06f7ea15c2f7fa9b43033020aa8eb32c7f6360c3ac92b15b77081b54c0070",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/20261002-colorset-mermaid-luna-2/evaluation-result.json"
+    },
+    {
+      "runId": "20261002-colorset-mermaid-luna-3",
+      "skill": "mermaid",
+      "startedAtUtc": "2026-10-03T02:55:12.926804+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "1319ec2db7a26ff7efe1fbfa5099da94f0724e33bdcbc2283c2751bc512fe61e",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/20261002-colorset-mermaid-luna-3/evaluation-result.json"
+    },
+    {
+      "runId": "20261002-colorset-pexels-1",
+      "skill": "pexels-media-search",
+      "startedAtUtc": "2026-10-03T02:26:57.772377+00:00",
+      "passed": false,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "e7a077eb3a3db641f4a69eff9ddfcd79f9aaf284a0fe0364c8b8108493141b97",
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/20261002-colorset-pexels-1/evaluation-result.json"
+    },
+    {
+      "runId": "20261002-colorset-pexels-media-search-2",
+      "skill": "pexels-media-search",
+      "startedAtUtc": "2026-10-03T02:48:50.145571+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "e7a077eb3a3db641f4a69eff9ddfcd79f9aaf284a0fe0364c8b8108493141b97",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/20261002-colorset-pexels-media-search-2/evaluation-result.json"
+    },
+    {
+      "runId": "20261002-colorset-pexels-media-search-final",
+      "skill": "pexels-media-search",
+      "startedAtUtc": "2026-10-03T03:09:13.295666+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "c1030f53167282ac87831f279a3ae79ff8991bf39e49149a37b537faae0a2545",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/20261002-colorset-pexels-media-search-final/evaluation-result.json"
+    },
+    {
+      "runId": "20261002-colorset-pixel-1",
+      "skill": "pixel-art-image-video",
+      "startedAtUtc": "2026-10-03T02:20:53.787790+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "e7e8ff457816e4fb97a27b5ce75961961e91533a7797adddcc39442492665278",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/20261002-colorset-pixel-1/evaluation-result.json"
+    },
+    {
+      "runId": "20261002-colorset-plantuml-luna-1",
+      "skill": "plantuml-colorset-renderer",
+      "startedAtUtc": "2026-10-03T02:28:52.982833+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "e2c5cff6423af9400b800cff5c5d59315f4df9890418a6813a1ae58e5f378d40",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/20261002-colorset-plantuml-luna-1/evaluation-result.json"
+    },
+    {
+      "runId": "20261002-colorset-plantuml-luna-2",
+      "skill": "plantuml-colorset-renderer",
+      "startedAtUtc": "2026-10-03T02:34:31.932343+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "7ef014d05d4b5b2fbe0a3c7192671176aee25bf654eefb7d369c16c436109ad2",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/20261002-colorset-plantuml-luna-2/evaluation-result.json"
+    },
+    {
+      "runId": "20261002-colorset-plantuml-luna-3",
+      "skill": "plantuml-colorset-renderer",
+      "startedAtUtc": "2026-10-03T02:46:42.532277+00:00",
+      "passed": false,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "c81dd20462e342927cff5e06a1012d4d14b1174a7c44606151f011f4f5c1950b",
+      "gates": {
+        "artifacts": false,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/20261002-colorset-plantuml-luna-3/evaluation-result.json"
+    },
+    {
+      "runId": "20261002-colorset-plantuml-luna-4",
+      "skill": "plantuml-colorset-renderer",
+      "startedAtUtc": "2026-10-03T02:47:05.492174+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "c81dd20462e342927cff5e06a1012d4d14b1174a7c44606151f011f4f5c1950b",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/20261002-colorset-plantuml-luna-4/evaluation-result.json"
+    },
+    {
+      "runId": "20261002-colorset-plantuml-luna-5",
+      "skill": "plantuml-colorset-renderer",
+      "startedAtUtc": "2026-10-03T02:48:00.541577+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "82c5bf0ad8bbf5024f0fa5fe3ffed188d0e3a0c44fd68aba3c0cfa71f7955956",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/20261002-colorset-plantuml-luna-5/evaluation-result.json"
+    },
+    {
+      "runId": "20261002-colorset-plantuml-luna-6",
+      "skill": "plantuml-colorset-renderer",
+      "startedAtUtc": "2026-10-03T02:55:12.907501+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "19ea159598bc80aafcdfe8c851f11e06ba13184f7feaab1902893cbf3aba6320",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/20261002-colorset-plantuml-luna-6/evaluation-result.json"
+    },
+    {
+      "runId": "20261002-colorset-plantuml-luna-7",
+      "skill": "plantuml-colorset-renderer",
+      "startedAtUtc": "2026-10-03T03:01:03.597266+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "7142b53549d9091f04a091754ff1209ef4fffc355ffe8623ae10e307fed7b928",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/20261002-colorset-plantuml-luna-7/evaluation-result.json"
+    },
+    {
+      "runId": "20261002-colorset-polyhaven-1",
+      "skill": "polyhaven-asset-search",
+      "startedAtUtc": "2026-10-03T02:26:58.428305+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "86998486b8387296a870e6984d7a63a687b3dbf4c474fe0e94e9f2602a02fbe6",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/20261002-colorset-polyhaven-1/evaluation-result.json"
+    },
+    {
+      "runId": "20261002-colorset-polyhaven-asset-search-final",
+      "skill": "polyhaven-asset-search",
+      "startedAtUtc": "2026-10-03T03:12:29.700965+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "7a247b618614fd2b7931494005ec681ec08f07150ccab5a65c8e1740e87c5061",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/20261002-colorset-polyhaven-asset-search-final/evaluation-result.json"
+    },
+    {
+      "runId": "20261002-colorset-slidev-animejs-luna-1",
+      "skill": "slidev-animejs",
+      "startedAtUtc": "2026-10-03T02:29:51.776042+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "15aa63574b076dca11bfe1d10a092f9c335c1d1792167c18c336eb0a7c5f3dd4",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/20261002-colorset-slidev-animejs-luna-1/evaluation-result.json"
+    },
+    {
+      "runId": "20261002-colorset-slidev-animejs-luna-2",
+      "skill": "slidev-animejs",
+      "startedAtUtc": "2026-10-03T02:41:43.346153+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "d71432e12f8fc39e4f1cab6e1db1a78467c81a6fff19743291d60dee57ef5a02",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/20261002-colorset-slidev-animejs-luna-2/evaluation-result.json"
+    },
+    {
+      "runId": "20261002-colorset-slidev-animejs-spark-1",
+      "skill": "slidev-animejs",
+      "startedAtUtc": "2026-10-03T02:26:45.145374+00:00",
+      "passed": false,
+      "model": "openai-codex/gpt-5.3-codex-spark",
+      "payloadSha256": "b3b2613eb2ecdc93f985604f9c4f73d075ee114db2f71aa964f3e7b87ee41756",
+      "gates": {
+        "artifacts": false,
+        "events": false,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/20261002-colorset-slidev-animejs-spark-1/evaluation-result.json"
+    },
+    {
+      "runId": "20261002-colorset-slidev-echarts-luna-1",
+      "skill": "slidev-echarts",
+      "startedAtUtc": "2026-10-03T02:32:03.274645+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "b89a03ba5eac94235b9f636d2995450d45146e92464c364f0e714130cbf98470",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/20261002-colorset-slidev-echarts-luna-1/evaluation-result.json"
+    },
+    {
+      "runId": "20261002-colorset-slidev-echarts-luna-2",
+      "skill": "slidev-echarts",
+      "startedAtUtc": "2026-10-03T02:34:34.846478+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "6eb28fda815209d49dfd51088cd6da57db62ea43dc163db7713df4b5e858b5a8",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/20261002-colorset-slidev-echarts-luna-2/evaluation-result.json"
+    },
+    {
+      "runId": "20261002-colorset-slidev-echarts-luna-3",
+      "skill": "slidev-echarts",
+      "startedAtUtc": "2026-10-03T02:41:43.713154+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "82a0f1341661659729dc0c68f087e63e87d5e2960df4e8378a6c7d04271f5658",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/20261002-colorset-slidev-echarts-luna-3/evaluation-result.json"
+    },
+    {
+      "runId": "20261002-colorset-slidev-echarts-luna-4",
+      "skill": "slidev-echarts",
+      "startedAtUtc": "2026-10-03T02:55:16.183225+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "a42f900c3cb47ca5193222f5dfd8332680746d15e3e19f158c5798b62ca07b89",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/20261002-colorset-slidev-echarts-luna-4/evaluation-result.json"
+    },
+    {
+      "runId": "20261002-colorset-slidev-echarts-spark-1",
+      "skill": "slidev-echarts",
+      "startedAtUtc": "2026-10-03T02:28:56.227434+00:00",
+      "passed": false,
+      "model": "openai-codex/gpt-5.3-codex-spark",
+      "payloadSha256": "b83024892791d37fa3b09086940fb9d25bb6b50b9eb8c4b5245285cad32644ad",
+      "gates": {
+        "artifacts": false,
+        "events": false,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/20261002-colorset-slidev-echarts-spark-1/evaluation-result.json"
+    },
+    {
+      "runId": "20261002-colorset-slidev-quality-luna-1",
+      "skill": "slidev-quality-audit",
+      "startedAtUtc": "2026-10-03T02:29:49.820348+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "f97718f379bf5e6a048771bbbc7f4a38b7f0e3b2bd6ccfa08bc0338b5b3be0f7",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/20261002-colorset-slidev-quality-luna-1/evaluation-result.json"
+    },
+    {
+      "runId": "20261002-colorset-slidev-quality-luna-2",
+      "skill": "slidev-quality-audit",
+      "startedAtUtc": "2026-10-03T02:41:41.622512+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "cb85c25cf93825e20a66d152729c6bb31241302b9abe12a197e02720f7abd834",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/20261002-colorset-slidev-quality-luna-2/evaluation-result.json"
+    },
+    {
+      "runId": "20261002-colorset-slidev-quality-spark-1",
+      "skill": "slidev-quality-audit",
+      "startedAtUtc": "2026-10-03T02:28:53.660875+00:00",
+      "passed": false,
+      "model": "openai-codex/gpt-5.3-codex-spark",
+      "payloadSha256": "f97718f379bf5e6a048771bbbc7f4a38b7f0e3b2bd6ccfa08bc0338b5b3be0f7",
+      "gates": {
+        "artifacts": false,
+        "events": false,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/20261002-colorset-slidev-quality-spark-1/evaluation-result.json"
+    },
+    {
+      "runId": "20261002-colorset-technical-logo-assets-1",
+      "skill": "technical-logo-assets",
+      "startedAtUtc": "2026-10-03T02:52:43.792486+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "7e10b7bf7913c45b9fea38658407e2ebd62c7de81a96bcfaf8071eed72544c61",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/20261002-colorset-technical-logo-assets-1/evaluation-result.json"
+    },
+    {
+      "runId": "20261002-colorset-technical-logo-assets-final",
+      "skill": "technical-logo-assets",
+      "startedAtUtc": "2026-10-03T03:12:25.832724+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "ecbf0e3887dab19c9b4d7c8d0d7c9628553500e09e647c626f9ca19100645975",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/20261002-colorset-technical-logo-assets-final/evaluation-result.json"
+    },
+    {
+      "runId": "20261002-colorset-terminal-1",
+      "skill": "asciinema-real-command-video",
+      "startedAtUtc": "2026-10-03T02:22:04.504244+00:00",
+      "passed": false,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "645a5821c4a4dc69fc1189b24fc80d8656ffe8f20b239c223ab7dcab7c438df0",
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/20261002-colorset-terminal-1/evaluation-result.json"
+    },
+    {
+      "runId": "20261002-colorset-terminal-3",
+      "skill": "asciinema-real-command-video",
+      "startedAtUtc": "2026-10-03T02:52:26.253619+00:00",
+      "passed": false,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "210441f0e8832b0aaba41747602d9c45cd9ce02778467405b9c208ff7096ed4b",
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/20261002-colorset-terminal-3/evaluation-result.json"
+    },
+    {
+      "runId": "20261002-colorset-terminal-4",
+      "skill": "asciinema-real-command-video",
+      "startedAtUtc": "2026-10-03T02:57:03.829926+00:00",
+      "passed": false,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "f467e859aad587a6d55a4f152243dcdad0bccc703b18ca3f15a437229e67023a",
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/20261002-colorset-terminal-4/evaluation-result.json"
+    },
+    {
+      "runId": "20261002-colorset-terminal-5",
+      "skill": "asciinema-real-command-video",
+      "startedAtUtc": "2026-10-03T03:01:39.615430+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "7d0f73c71d4136f97c8fbf4c31115a65fc514e339f93ef73c7e9b1b799a2d536",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/20261002-colorset-terminal-5/evaluation-result.json"
+    },
+    {
+      "runId": "colorset-compose-synchronized-svg-20261002-2",
+      "skill": "compose-synchronized-svg",
+      "startedAtUtc": "2026-10-03T02:27:51.899342+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "36c9dd67f0da43523cba15923421ca61fb057fb75fc2a532ab759105aec20cc3",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/colorset-compose-synchronized-svg-20261002-2/evaluation-result.json"
+    },
+    {
+      "runId": "colorset-compose-synchronized-svg-20261002-3",
+      "skill": "compose-synchronized-svg",
+      "startedAtUtc": "2026-10-03T02:33:00.559322+00:00",
+      "passed": false,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "d20a4003d7a1083845d748bd3bba72bda32baaf24ee9349de809ee71606a77f5",
+      "gates": {
+        "artifacts": false,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/colorset-compose-synchronized-svg-20261002-3/evaluation-result.json"
+    },
+    {
+      "runId": "colorset-compose-synchronized-svg-20261002-4",
+      "skill": "compose-synchronized-svg",
+      "startedAtUtc": "2026-10-03T02:34:06.353403+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "d20a4003d7a1083845d748bd3bba72bda32baaf24ee9349de809ee71606a77f5",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/colorset-compose-synchronized-svg-20261002-4/evaluation-result.json"
+    },
+    {
+      "runId": "colorset-compose-synchronized-svg-20261002-5",
+      "skill": "compose-synchronized-svg",
+      "startedAtUtc": "2026-10-03T02:38:33.502575+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "60c11cdadc6937a8f9e83455ae28f4553bfe4de930bf195680a997ee45a71454",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/colorset-compose-synchronized-svg-20261002-5/evaluation-result.json"
+    },
+    {
+      "runId": "colorset-compose-synchronized-svg-20261002-6",
+      "skill": "compose-synchronized-svg",
+      "startedAtUtc": "2026-10-03T02:50:21.945310+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "149882c09dfa05b3e4c7d36b369b4c55e857d5fe099a0410662a0a2f155caabd",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/colorset-compose-synchronized-svg-20261002-6/evaluation-result.json"
+    },
+    {
+      "runId": "colorset-compose-synchronized-svg-20261002-7",
+      "skill": "compose-synchronized-svg",
+      "startedAtUtc": "2026-10-03T02:55:07.631220+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "3cb411d48c24b86a882d7302c11efa9f234a429fd6b9a6c3e4a6055d8b774a10",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/colorset-compose-synchronized-svg-20261002-7/evaluation-result.json"
+    },
+    {
+      "runId": "colorset-compose-synchronized-svg-20261002-8",
+      "skill": "compose-synchronized-svg",
+      "startedAtUtc": "2026-10-03T03:20:29.306960+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "55c47702247f003387a31d5a1b83f2fd1524c2e230d51bcbd7e5d2ef87a1f633",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/colorset-compose-synchronized-svg-20261002-8/evaluation-result.json"
+    },
+    {
+      "runId": "colorset-d3-20261002-1",
+      "skill": "d3",
+      "startedAtUtc": "2026-10-03T02:19:43.465128+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "410227a0c48acca3bd39e9d6ede51a120e9249664b41d17ab2f3581f748e9dbb",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/colorset-d3-20261002-1/evaluation-result.json"
+    },
+    {
+      "runId": "colorset-d3-20261002-final",
+      "skill": "d3",
+      "startedAtUtc": "2026-10-03T02:34:50.156990+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "c312adf9204882d5b308cf36204cc54a7c9860e28125217608abd2f1f80805e5",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/colorset-d3-20261002-final/evaluation-result.json"
+    },
+    {
+      "runId": "colorset-d3-20261002-final2",
+      "skill": "d3",
+      "startedAtUtc": "2026-10-03T02:44:21.978725+00:00",
+      "passed": false,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "be19c88183a6a9c7c1220339d7d49ec6feaebe90e95c494adfea7218d68d97da",
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/colorset-d3-20261002-final2/evaluation-result.json"
+    },
+    {
+      "runId": "colorset-d3-20261002-final3",
+      "skill": "d3",
+      "startedAtUtc": "2026-10-03T02:51:56.207910+00:00",
+      "passed": false,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "a611f63010fccc3bba0ad4b44aeba084f7690ad82c04ffa087a546ad12346daa",
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/colorset-d3-20261002-final3/evaluation-result.json"
+    },
+    {
+      "runId": "colorset-d3-20261002-final4",
+      "skill": "d3",
+      "startedAtUtc": "2026-10-03T02:58:08.683593+00:00",
+      "passed": false,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "fc92a416964202644c3027d848a30965f8936bb3dc6967c74641fdac2235fa1f",
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/colorset-d3-20261002-final4/evaluation-result.json"
+    },
+    {
+      "runId": "colorset-d3-20261002-final5",
+      "skill": "d3",
+      "startedAtUtc": "2026-10-03T03:01:54.960691+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "a9b65746362dfb0fe1d078a889ac8637e80f1bcf078c088da8d1494e8d1401a8",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/colorset-d3-20261002-final5/evaluation-result.json"
+    },
+    {
+      "runId": "colorset-d3-20261002-final6",
+      "skill": "d3",
+      "startedAtUtc": "2026-10-03T03:05:37.218305+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "f5486ad4a39ce9df08a1aa158cb60321c254ab5809bf697c7b7a93bc0bac2977",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/colorset-d3-20261002-final6/evaluation-result.json"
+    },
+    {
+      "runId": "colorset-diagram-composition-20261002-2",
+      "skill": "diagram-composition",
+      "startedAtUtc": "2026-10-03T02:27:51.899341+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "f91c37c8afe5c3260c98f45e77dd2b6fa25b62410df29d62f232c53f75e3aa75",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/colorset-diagram-composition-20261002-2/evaluation-result.json"
+    },
+    {
+      "runId": "colorset-hierarchy-lens-20261002-1",
+      "skill": "hierarchy-lens",
+      "startedAtUtc": "2026-10-03T02:21:25.849986+00:00",
+      "passed": false,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "5e37a1f0eb038dba4176d88236efa90ff2f24201898348e70349ed5f49cc4923",
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/colorset-hierarchy-lens-20261002-1/evaluation-result.json"
+    },
+    {
+      "runId": "colorset-hierarchy-lens-20261002-3",
+      "skill": "hierarchy-lens",
+      "startedAtUtc": "2026-10-03T02:32:59.495436+00:00",
+      "passed": false,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "9a27a2aa935114085803a68e87de532ffae7e061a4f90c35840127f3168176e5",
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/colorset-hierarchy-lens-20261002-3/evaluation-result.json"
+    },
+    {
+      "runId": "colorset-hierarchy-lens-20261002-4",
+      "skill": "hierarchy-lens",
+      "startedAtUtc": "2026-10-03T02:38:33.136976+00:00",
+      "passed": false,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "9a27a2aa935114085803a68e87de532ffae7e061a4f90c35840127f3168176e5",
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/colorset-hierarchy-lens-20261002-4/evaluation-result.json"
+    },
+    {
+      "runId": "colorset-hierarchy-lens-20261002-5",
+      "skill": "hierarchy-lens",
+      "startedAtUtc": "2026-10-03T02:42:36.800014+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "8571ec7d66212537913d23dad14c472e7a5e9e53530fcc6a8885bd04b3944d7c",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/colorset-hierarchy-lens-20261002-5/evaluation-result.json"
+    },
+    {
+      "runId": "colorset-hierarchy-lens-20261002-6",
+      "skill": "hierarchy-lens",
+      "startedAtUtc": "2026-10-03T02:47:17.510743+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "3d60fb524841d044a345c1ba869896b98166524cf283f6849a22af5eac0ff8dc",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/colorset-hierarchy-lens-20261002-6/evaluation-result.json"
+    },
+    {
+      "runId": "colorset-hyperframes-explainer-20261002-2",
+      "skill": "hyperframes-explainer",
+      "startedAtUtc": "2026-10-03T02:27:52.205404+00:00",
+      "passed": false,
+      "model": "openai-codex/gpt-6-luna",
+      "payloadSha256": "5eb61d48fe048614c924de2559ca43dbe17b70e0cb12d899462a8f406afb3a9a",
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/colorset-hyperframes-explainer-20261002-2/evaluation-result.json"
+    },
+    {
+      "runId": "colorset-hyperframes-explainer-20261002-3",
+      "skill": "hyperframes-explainer",
+      "startedAtUtc": "2026-10-03T02:32:59.785680+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-6-luna",
+      "payloadSha256": "5eb61d48fe048614c924de2559ca43dbe17b70e0cb12d899462a8f406afb3a9a",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/colorset-hyperframes-explainer-20261002-3/evaluation-result.json"
+    },
+    {
+      "runId": "colorset-manim-svg-video-20261002-1",
+      "skill": "manim-svg-video",
+      "startedAtUtc": "2026-10-03T02:21:26.387065+00:00",
+      "passed": false,
+      "model": "openai-codex/gpt-5.3-codex-spark",
+      "payloadSha256": "e58c383908f9643743e6dae3820b54e6bbdd41748586ca6ba16451021371787c",
+      "gates": {
+        "artifacts": false,
+        "events": false,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/colorset-manim-svg-video-20261002-1/evaluation-result.json"
+    },
+    {
+      "runId": "colorset-manim-svg-video-20261002-2",
+      "skill": "manim-svg-video",
+      "startedAtUtc": "2026-10-03T02:27:52.531741+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "0f1431000d5bf3678b6003f45b4ae857c9185be8cd34ec324d23033eff8ec2f2",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/colorset-manim-svg-video-20261002-2/evaluation-result.json"
+    },
+    {
+      "runId": "colorset-procedural-svg-animation-20261002-1",
+      "skill": "procedural-svg-animation",
+      "startedAtUtc": "2026-10-03T02:19:43.479995+00:00",
+      "passed": false,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "9eea2e3598c786e4eb99b19c90dc87ba6715f3fa7b4cc284bb9e889f47d87650",
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/colorset-procedural-svg-animation-20261002-1/evaluation-result.json"
+    },
+    {
+      "runId": "colorset-procedural-svg-animation-20261002-2",
+      "skill": "procedural-svg-animation",
+      "startedAtUtc": "2026-10-03T02:25:04.564635+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "45fd9121985a40334b1d3b0d204f395e2e9dce164b74b660ba054a73472942a6",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/colorset-procedural-svg-animation-20261002-2/evaluation-result.json"
+    },
+    {
+      "runId": "colorset-procedural-svg-animation-20261002-final",
+      "skill": "procedural-svg-animation",
+      "startedAtUtc": "2026-10-03T02:34:46.246569+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "134ca58364023ea7d57e0e42b0d328836fea840f432cd5c4b93ab1c37460e672",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/colorset-procedural-svg-animation-20261002-final/evaluation-result.json"
+    },
+    {
+      "runId": "colorset-procedural-svg-animation-20261002-final2",
+      "skill": "procedural-svg-animation",
+      "startedAtUtc": "2026-10-03T02:40:05.892145+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "b2b3100b4720b22c6e3712da6036f68cb2b7385f16107195aabe54fc9afe6fa2",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/colorset-procedural-svg-animation-20261002-final2/evaluation-result.json"
+    },
+    {
+      "runId": "colorset-procedural-svg-animation-20261002-final3",
+      "skill": "procedural-svg-animation",
+      "startedAtUtc": "2026-10-03T03:15:54.809848+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "efb46ac61be970ef214bc33e7d5bc3decfe963eebe9335e0c0283cd86958f44f",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/colorset-procedural-svg-animation-20261002-final3/evaluation-result.json"
+    },
+    {
+      "runId": "colorset-svg-brief-design-20261002-1",
+      "skill": "svg-brief-design",
+      "startedAtUtc": "2026-10-03T02:19:47.294758+00:00",
+      "passed": false,
+      "model": "openai-codex/gpt-5.3-codex-spark",
+      "payloadSha256": "9ae9c391fc64667937632dfd51f80801c450a9e28e17e76d7c557bb2019de462",
+      "gates": {
+        "artifacts": false,
+        "events": false,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/colorset-svg-brief-design-20261002-1/evaluation-result.json"
+    },
+    {
+      "runId": "colorset-svg-brief-design-20261002-2",
+      "skill": "svg-brief-design",
+      "startedAtUtc": "2026-10-03T02:21:39.236921+00:00",
+      "passed": false,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "9ae9c391fc64667937632dfd51f80801c450a9e28e17e76d7c557bb2019de462",
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/colorset-svg-brief-design-20261002-2/evaluation-result.json"
+    },
+    {
+      "runId": "colorset-svg-brief-design-20261002-3",
+      "skill": "svg-brief-design",
+      "startedAtUtc": "2026-10-03T02:25:15.088348+00:00",
+      "passed": false,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "951bac51e95a1477157785244907df397e0bc566cf36029ffba4f3939baa6dd4",
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/colorset-svg-brief-design-20261002-3/evaluation-result.json"
+    },
+    {
+      "runId": "colorset-svg-brief-design-20261002-4",
+      "skill": "svg-brief-design",
+      "startedAtUtc": "2026-10-03T02:28:26.836623+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "951bac51e95a1477157785244907df397e0bc566cf36029ffba4f3939baa6dd4",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/colorset-svg-brief-design-20261002-4/evaluation-result.json"
+    },
+    {
+      "runId": "colorset-svg-brief-design-20261002-5",
+      "skill": "svg-brief-design",
+      "startedAtUtc": "2026-10-03T02:30:38.139360+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "efe7b8b7a3477d882a62193ebc6707b7741ac5330744c9e1f833bae1e94e1f12",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/colorset-svg-brief-design-20261002-5/evaluation-result.json"
+    },
+    {
+      "runId": "colorset-threejs-animated-3d-20261002-1",
+      "skill": "threejs-animated-3d",
+      "startedAtUtc": "2026-10-03T02:20:05.631642+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "e55402be88a629d3b4cfb01b467d08646c0ba9a2376fd6f198533477bb28818e",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/colorset-threejs-animated-3d-20261002-1/evaluation-result.json"
+    },
+    {
+      "runId": "colorset-usefulcharts-style-20261002-1",
+      "skill": "usefulcharts-style",
+      "startedAtUtc": "2026-10-03T02:21:27.437703+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "47ce4ea1b256bd854e25c8b73143aae249f38dca26086d51d2d7950829d083cf",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/colorset-usefulcharts-style-20261002-1/evaluation-result.json"
+    },
+    {
+      "runId": "colorset-usefulcharts-style-20261002-3",
+      "skill": "usefulcharts-style",
+      "startedAtUtc": "2026-10-03T02:33:01.204104+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "a4fc56e0a4422cdf83bb089ecbba18ec08c2d5c66f3df917a3d63c66179d2272",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/colorset-usefulcharts-style-20261002-3/evaluation-result.json"
+    },
+    {
+      "runId": "colorset-usefulcharts-style-20261002-4",
+      "skill": "usefulcharts-style",
+      "startedAtUtc": "2026-10-03T02:46:30.255493+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "dbfd3bec75180048bf0760d21d322fcc4b3a6f061c1c2b835b4fe7b80af8eb5a",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/colorset-usefulcharts-style-20261002-4/evaluation-result.json"
+    },
+    {
+      "runId": "colorset-vectorize-art-patterns-20261002-1",
+      "skill": "vectorize-art-patterns",
+      "startedAtUtc": "2026-10-03T02:19:56.634685+00:00",
+      "passed": false,
+      "model": "openai-codex/gpt-5.3-codex-spark",
+      "payloadSha256": "b4919a5e52700476e56ebb65b5a6f537500fb470d6bb5da32ccb55aa55a1b59d",
+      "gates": {
+        "artifacts": false,
+        "events": false,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/colorset-vectorize-art-patterns-20261002-1/evaluation-result.json"
+    },
+    {
+      "runId": "colorset-vectorize-art-patterns-20261002-2",
+      "skill": "vectorize-art-patterns",
+      "startedAtUtc": "2026-10-03T02:22:19.223595+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "b4919a5e52700476e56ebb65b5a6f537500fb470d6bb5da32ccb55aa55a1b59d",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/colorset-vectorize-art-patterns-20261002-2/evaluation-result.json"
+    },
+    {
+      "runId": "colorset-video-20261002-1",
+      "skill": "video",
+      "startedAtUtc": "2026-10-03T02:21:26.763993+00:00",
+      "passed": false,
+      "model": "openai-codex/gpt-5.3-codex-spark",
+      "payloadSha256": "0be8b5a4dff0a43ccb3e9dd3674a786102510d561e17c2505d654574f5a413d1",
+      "gates": {
+        "artifacts": false,
+        "events": false,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/colorset-video-20261002-1/evaluation-result.json"
+    },
+    {
+      "runId": "colorset-video-20261002-2",
+      "skill": "video",
+      "startedAtUtc": "2026-10-03T02:27:52.531802+00:00",
+      "passed": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "0be8b5a4dff0a43ccb3e9dd3674a786102510d561e17c2505d654574f5a413d1",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "resultPath": "evaluations/runs/colorset-video-20261002-2/evaluation-result.json"
+    }
+  ],
+  "failures": [],
+  "limits": "One supplemental colorset case per current runtime; previous release cohorts and broader skill validation statuses remain unchanged. Four bundles have no authored painter; simulation live-Pi prohibition respected."
+}

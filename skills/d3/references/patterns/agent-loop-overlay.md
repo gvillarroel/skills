@@ -1,5 +1,10 @@
 # Agent Loop Partial Covers
 
+## Contents
+
+- [Reuse Contract](#reuse-contract)
+- [Source Excerpt](#source-excerpt)
+
 - **Pattern ID:** `d3-agent-loop-overlay`
 - **Gallery source ID:** `agent-loop-overlay`
 - **Family:** Image Overlay

@@ -40,6 +40,9 @@ def prepare_export(directory: Path, logo_id: str, variant: str, color: str | Non
         if not re.fullmatch(r"#[0-9A-Fa-f]{3}(?:[0-9A-Fa-f]{3})?", color):
             raise ValueError("Color must be a literal #RGB or #RRGGBB value")
         color = normalize_color(color)
+        palettes = json.loads((Path(__file__).resolve().parents[1] / "assets/palettes/colorsets.json").read_text(encoding="utf-8"))["colorsets"]
+        if color not in palettes["colorset2"]["allowed"]:
+            raise ValueError("Authored monochrome paint must fit colorset1 or colorset2")
         for node in root.iter():
             for key, value in list(node.attrib.items()):
                 if value.lower() == "currentcolor" and key in {"fill", "stroke", "color"}:

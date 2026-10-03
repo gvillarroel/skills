@@ -1,5 +1,10 @@
 # Context Window Matrix
 
+## Contents
+
+- [Reuse Contract](#reuse-contract)
+- [Source Excerpt](#source-excerpt)
+
 - **Pattern ID:** `d3-context-window-matrix`
 - **Gallery source ID:** `context-window-matrix`
 - **Family:** Context

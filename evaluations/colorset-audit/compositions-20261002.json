@@ -1,0 +1,2118 @@
+{
+  "date": "2026-10-02",
+  "status": "validated-awaiting-repository-publication",
+  "canonicalPalette": "skills/hyperframes-explainer/assets/palettes/colorsets.json",
+  "skills": [
+    {
+      "skill": "compose-synchronized-svg",
+      "activeSet": "colorset1",
+      "outputs": [
+        "compiled compact and navigable SVG",
+        "custom module scaffold/replacement SVG",
+        "static and reduced-motion SVG",
+        "browser screenshots",
+        "published inference-pulse and heatwave-tree SVG"
+      ],
+      "authoredScan": [
+        "scripts/theme_contract.py",
+        "scripts/compile_synchronized_svg_plan.py",
+        "scripts/scaffold_synchronized_svg.py",
+        "scripts/compose_synchronized_svg.py",
+        "assets/templates/*.json",
+        "assets/examples/compose-synchronized-svg/*.svg",
+        "assets/examples/compose-synchronized-svg/index.html",
+        "scripts/palette_contract.py",
+        "scripts/replace_svg_module.py",
+        "scripts/validate_synchronized_svg.py"
+      ],
+      "sourceExemptions": [
+        {
+          "scope": "Only embedded raster image href payloads in explicit source-preserve custom fragments",
+          "excluded": "Image pixels only; surrounding SVG paints and wrappers remain checked"
+        }
+      ],
+      "changes": "Finite colorset1 default and colorset2 alias; palette-only derived tints; exact override checks; runtime and published regeneration validated; custom-fragment and final SVG attribute paints guarded; opaque mix synthesis removed; transparent halos use fill-opacity; published gallery shadow base and explicit keyboard-focus outline canonical",
+      "publicationRequired": true,
+      "isolatedValidation": {
+        "runId": "colorset-compose-synchronized-svg-20261002-8",
+        "model": "gpt-5.6-luna",
+        "strict": true,
+        "passed": true,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        },
+        "skillDigest": "55c47702247f003387a31d5a1b83f2fd1524c2e230d51bcbd7e5d2ef87a1f633",
+        "outputs": [
+          {
+            "path": "output/diagram.svg",
+            "sha256": "7041c13ff0749fb97987e35e0193e1d9c7ec288722349b8e54a15f8b09b80bbd"
+          },
+          {
+            "path": "output/plan.json",
+            "sha256": "7081d1d81e652545aca332ed917580fb9d358a08b433aac56493c6f685f2c45c"
+          },
+          {
+            "path": "output/brief.json",
+            "sha256": "a0e2a4c53982111f8e369d1d64e60d48dfe46385a48d1e6797e9532961d62b33"
+          },
+          {
+            "path": "output/composition.json",
+            "sha256": "797fcf0381c478a6949b651ce27d26be7528f8fa2c75735ed63e9d4707d72de0"
+          },
+          {
+            "path": "output/static.json",
+            "sha256": "8d80923af1b9c8d5a53b675f1db5beee4370370d9edadf25955ad21a359a222f"
+          }
+        ],
+        "traceSummaryCommand": "uv run --script scripts/summarize-pi-json-events.py evaluations/runs/colorset-compose-synchronized-svg-20261002-8/events.jsonl --require-model gpt-5.6-luna --fail-on-invalid-json --fail-on-tool-error"
+      },
+      "testedCommands": [
+        {
+          "command": "uv run --script skills/compose-synchronized-svg/scripts/test_synchronized_svg_tools.py",
+          "result": "80 tests passed, including authored-fragment paint rejection",
+          "passed": true
+        },
+        {
+          "command": "uv run --script skills/compose-synchronized-svg/scripts/test_theme_contract.py",
+          "result": "13 passed",
+          "passed": true
+        },
+        {
+          "command": "uv run --script skills/compose-synchronized-svg/scripts/test_svg_themes.py",
+          "result": "6 passed",
+          "passed": true
+        },
+        {
+          "command": "uv run --script skills/compose-synchronized-svg/scripts/test_svg_text_pairs.py",
+          "result": "3 passed; actual browser dark/tinted text pairs",
+          "passed": true
+        },
+        {
+          "command": "uv run --script scripts/validate-colorsets.py --input skills/compose-synchronized-svg/assets/examples/compose-synchronized-svg/index.html --colorset colorset2",
+          "result": "Published gallery shadow and explicit focus paints passed; 0 findings",
+          "passed": true
+        },
+        {
+          "command": "uv run --script projects/colorset-audit/scripts/support_composition_browser_qa.py",
+          "result": "Composition gallery desktop/mobile initial, hover and keyboard focus all passed; support browser report covers 54 states with 0 findings",
+          "passed": true
+        },
+        {
+          "command": "uv run --script scripts/validate-colorsets.py --input evaluations/runs/colorset-compose-synchronized-svg-20261002-8/workspace/output/diagram.svg --colorset colorset1",
+          "result": "Final strict output passed exact colorset1 check; 0 findings",
+          "passed": true
+        }
+      ],
+      "openGaps": [],
+      "touchedPaths": [
+        "skills/compose-synchronized-svg/SKILL.md",
+        "skills/compose-synchronized-svg/assets/examples/compose-synchronized-svg/heatwave-tree.svg",
+        "skills/compose-synchronized-svg/assets/examples/compose-synchronized-svg/index.html",
+        "skills/compose-synchronized-svg/assets/examples/compose-synchronized-svg/inference-pulse.svg",
+        "skills/compose-synchronized-svg/assets/palettes/colorsets.json",
+        "skills/compose-synchronized-svg/references/color-and-visual-quality.md",
+        "skills/compose-synchronized-svg/references/palette-policy.md",
+        "skills/compose-synchronized-svg/references/spatial-world-and-camera.md",
+        "skills/compose-synchronized-svg/scripts/compile_synchronized_svg_plan.py",
+        "skills/compose-synchronized-svg/scripts/compose_synchronized_svg.py",
+        "skills/compose-synchronized-svg/scripts/palette_contract.py",
+        "skills/compose-synchronized-svg/scripts/replace_svg_module.py",
+        "skills/compose-synchronized-svg/scripts/scaffold_synchronized_svg.py",
+        "skills/compose-synchronized-svg/scripts/test_svg_text_pairs.py",
+        "skills/compose-synchronized-svg/scripts/test_svg_themes.py",
+        "skills/compose-synchronized-svg/scripts/test_synchronized_svg_tools.py",
+        "skills/compose-synchronized-svg/scripts/test_theme_contract.py",
+        "skills/compose-synchronized-svg/scripts/theme_contract.py",
+        "skills/compose-synchronized-svg/scripts/validate_synchronized_svg.py"
+      ],
+      "runtimeDependencyClosure": [
+        {
+          "path": "skills/compose-synchronized-svg/agents/openai.yaml",
+          "sha256": "010c878945df265c904812a86f6866ca15c0435ccb95441a604119281cadabd2"
+        },
+        {
+          "path": "skills/compose-synchronized-svg/assets/palettes/colorsets.json",
+          "sha256": "6f3f7e36565d2747bd5567555c960a9de463f70b534a86267e721ffad5ae1031"
+        },
+        {
+          "path": "skills/compose-synchronized-svg/assets/templates/composition-brief.json",
+          "sha256": "4436eff26189def8fc2f2af41273d7a92e243f33f97c0e0cd95af46152a6244f"
+        },
+        {
+          "path": "skills/compose-synchronized-svg/assets/templates/composition-plan.json",
+          "sha256": "c572541a2ba0f672d2cecce58c71b057567a492c3ef342e578b9143d341323fd"
+        },
+        {
+          "path": "skills/compose-synchronized-svg/assets/templates/navigable-world-brief.json",
+          "sha256": "b9cd26062006fa702491799e78070cdc70568145b44138eb62bc5007268ca582"
+        },
+        {
+          "path": "skills/compose-synchronized-svg/references/asset-selection-and-composition.md",
+          "sha256": "d42a57d35f55ef8c72a909802452e3f354bea05dc75075bb5c8a713988455f37"
+        },
+        {
+          "path": "skills/compose-synchronized-svg/references/color-and-visual-quality.md",
+          "sha256": "f192a097c1630c944404080346547ebf6921b759198beb2ad70f9fefef090b61"
+        },
+        {
+          "path": "skills/compose-synchronized-svg/references/compiled-plan-and-bindings.md",
+          "sha256": "941c122352d745e047b2591f389d151d630628e5c706da74c185a7d3a66a67cf"
+        },
+        {
+          "path": "skills/compose-synchronized-svg/references/critique-and-validation.md",
+          "sha256": "01d3246153f027e6cdc8c86ed20bbbfc9404216f0bda08ba84daf79e990d32b5"
+        },
+        {
+          "path": "skills/compose-synchronized-svg/references/palette-policy.md",
+          "sha256": "250f3695d4731181ccd6e5543271788fac2cb7f27eb8f6585670aee51552f0de"
+        },
+        {
+          "path": "skills/compose-synchronized-svg/references/runtime-api.md",
+          "sha256": "b2935c2489af1cd6f75a937c109d52b1a65cf093681473b4d451004fa83b79b9"
+        },
+        {
+          "path": "skills/compose-synchronized-svg/references/semantic-state-contract.md",
+          "sha256": "147e2ab803a4b658987cde18b38a9b62ab79ad44d9215c7f40d2b24cbfef8017"
+        },
+        {
+          "path": "skills/compose-synchronized-svg/references/spatial-world-and-camera.md",
+          "sha256": "74c9e6f9821cff65ca5be52d93e59ebea7239dde9acb4cb33c2301a6aa4c7ee2"
+        },
+        {
+          "path": "skills/compose-synchronized-svg/scripts/audit_synchronized_svg.py",
+          "sha256": "68a3257c3964808ac9f46c5a8a6903e9d0591061d1493c7f0f19890b3b4c3cdb"
+        },
+        {
+          "path": "skills/compose-synchronized-svg/scripts/audit_worker_supervisor.py",
+          "sha256": "ca94d40e8495a8abf1483935e5155a8ab44ce6f19d9f241ce67c9f22523b2910"
+        },
+        {
+          "path": "skills/compose-synchronized-svg/scripts/compact_audit_report.py",
+          "sha256": "301d6c1b12bba95ae440985655861a6ae1fd45b39ea001aea5b5f736f73c9c4b"
+        },
+        {
+          "path": "skills/compose-synchronized-svg/scripts/compile_synchronized_svg_plan.py",
+          "sha256": "7552c1917e5f7a5481059cf1fb5a8cd0d0b133e34373bd8eaf6f7b611607bdda"
+        },
+        {
+          "path": "skills/compose-synchronized-svg/scripts/compose_synchronized_svg.py",
+          "sha256": "588415054083fcfc7896a9490f82f1fbc9edfb2edcc140749a8d22061965236e"
+        },
+        {
+          "path": "skills/compose-synchronized-svg/scripts/navigation_contract.py",
+          "sha256": "4bc5fa1d547befc1d186f4e15dc5c2408e92a1b05f84d2a62613ddbbc7ba2911"
+        },
+        {
+          "path": "skills/compose-synchronized-svg/scripts/palette_contract.py",
+          "sha256": "ead514366d446b71c4499017ad060e5e169dc099d310d424ca48965ea62b193a"
+        },
+        {
+          "path": "skills/compose-synchronized-svg/scripts/preflight_svg_brief.py",
+          "sha256": "272949e022ad31660910b0b6ad02ff621708ab21075c0b2c38387ca307ddf4cc"
+        },
+        {
+          "path": "skills/compose-synchronized-svg/scripts/replace_svg_module.py",
+          "sha256": "b68d3ef02884206e4c3a4cb7d6f2ae3a58dc43d9e86a3d21210869dee6086ee8"
+        },
+        {
+          "path": "skills/compose-synchronized-svg/scripts/scaffold_synchronized_svg.py",
+          "sha256": "5906295dfd7418af0d6893b1aeb6ad20ed5a33e6beff06533ed2a56d0efc2577"
+        },
+        {
+          "path": "skills/compose-synchronized-svg/scripts/test_network_ports.py",
+          "sha256": "ee36021d9d23aeb2fe29361271749d9c4132678d59692e0ef65d84bf38700d8f"
+        },
+        {
+          "path": "skills/compose-synchronized-svg/scripts/test_stack_reconciliation.py",
+          "sha256": "aa196fab8e8e86c9481e9f623112cc2abdde68477dbe08afaef2fe192ca996a9"
+        },
+        {
+          "path": "skills/compose-synchronized-svg/scripts/test_svg_text_pairs.py",
+          "sha256": "f096363752888fca4859acc9246b2dbf13b775ee38037e5cbac494a7eff54786"
+        },
+        {
+          "path": "skills/compose-synchronized-svg/scripts/test_svg_themes.py",
+          "sha256": "4aaa308bc5f425895ea4b8556f2967ff37f842a964432834ccb6a4b2b05f28d8"
+        },
+        {
+          "path": "skills/compose-synchronized-svg/scripts/test_synchronized_svg_tools.py",
+          "sha256": "9101fa1a27368c7b87897cb455b740e6cbf5ba370044f901f926d5cd47887916"
+        },
+        {
+          "path": "skills/compose-synchronized-svg/scripts/test_text_contrast.py",
+          "sha256": "8a3f2fd49b57b8220709f2c24d108089563e2f45e3541906855f0cf372b5a812"
+        },
+        {
+          "path": "skills/compose-synchronized-svg/scripts/test_theme_contract.py",
+          "sha256": "094c117ee3df68b266b0cc1ff7d35bdc90205a88d901a508bdd5bfb081617285"
+        },
+        {
+          "path": "skills/compose-synchronized-svg/scripts/text_contrast.py",
+          "sha256": "40426e5aea8e4dcd7de003ff9166550ab494a2089588e22858f3e46ca8bc806d"
+        },
+        {
+          "path": "skills/compose-synchronized-svg/scripts/theme_contract.py",
+          "sha256": "bb43eb9b3be2bda5db92b18cbd4f782c00d25642068566fe6420ab5d9b89990e"
+        },
+        {
+          "path": "skills/compose-synchronized-svg/scripts/validate_synchronized_svg.py",
+          "sha256": "3d3e0da6fecde3727cf2b5502f295e232b7a6a633dc43db314c3ff913a3dda41"
+        },
+        {
+          "path": "skills/compose-synchronized-svg/SKILL.md",
+          "sha256": "a33b897f9a1d1f320f9120d6d782c7cfdca864f887004a35dc740c03126e644e"
+        }
+      ],
+      "supersededValidation": {
+        "runId": "colorset-compose-synchronized-svg-20261002-7",
+        "passed": true,
+        "reason": "Accepted before the test_synchronized_svg_tools.py fixture diagnostic changed. Root's exact-byte closure audit detected the digest difference; run8 validates the current unchanged bundle."
+      }
+    },
+    {
+      "skill": "diagram-composition",
+      "activeSet": "colorset1",
+      "outputs": [
+        "five native SVG panel families",
+        "composed SVG",
+        "rendered PNG/PDF",
+        "imported panel compositions"
+      ],
+      "authoredScan": [
+        "scripts/build_panels.py",
+        "scripts/compose_diagram.py",
+        "assets/templates/composition.json"
+      ],
+      "sourceExemptions": [
+        {
+          "scope": "Nested producer SVG elements svg[data-source=<panel-id>]",
+          "excluded": "Original imported panel paints only; generated native panels, headings, frames and cross-panel links remain checked"
+        }
+      ],
+      "changes": "Canonical neutral renderer/surface defaults; exact semantic color and native shape color guards",
+      "publicationRequired": false,
+      "isolatedValidation": {
+        "runId": "colorset-diagram-composition-20261002-2",
+        "model": "gpt-5.6-luna",
+        "strict": true,
+        "passed": true,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        },
+        "skillDigest": "f91c37c8afe5c3260c98f45e77dd2b6fa25b62410df29d62f232c53f75e3aa75",
+        "outputs": [
+          {
+            "path": "output/diagram.svg",
+            "sha256": "a8256745583966918ddbc43836d401ce011727bb9f989057f6cf7a17730f58d5"
+          },
+          {
+            "path": "output/composition.json",
+            "sha256": "f8e10559f74d5cd5876f7c18b5c2a55e7a8a1621f020364af50751dd7bf24da5"
+          }
+        ],
+        "traceSummaryCommand": "uv run --script scripts/summarize-pi-json-events.py evaluations/runs/colorset-diagram-composition-20261002-2/events.jsonl --require-model gpt-5.6-luna --fail-on-invalid-json --fail-on-tool-error"
+      },
+      "testedCommands": [
+        {
+          "command": "uv run --script skills/diagram-composition/scripts/test_composition.py",
+          "result": "24 passed",
+          "passed": true
+        },
+        {
+          "command": "uv run --script skills/diagram-composition/scripts/test_native_panels.py",
+          "result": "13 passed",
+          "passed": true
+        },
+        {
+          "command": "uv run --script skills/diagram-composition/scripts/test_shared_colors.py",
+          "result": "8 passed",
+          "passed": true
+        },
+        {
+          "command": "uv run --script skills/diagram-composition/scripts/test_connector_quality.py",
+          "result": "21 passed",
+          "passed": true
+        }
+      ],
+      "openGaps": [],
+      "alternateSet": "colorset2 for explicitly supplied semantic categories",
+      "touchedPaths": [
+        "skills/diagram-composition/SKILL.md",
+        "skills/diagram-composition/assets/palettes/colorsets.json",
+        "skills/diagram-composition/references/connectors-and-surfaces.md",
+        "skills/diagram-composition/references/native-panels.md",
+        "skills/diagram-composition/references/palette-policy.md",
+        "skills/diagram-composition/references/shared-colors.md",
+        "skills/diagram-composition/scripts/build_panels.py",
+        "skills/diagram-composition/scripts/compose_diagram.py",
+        "skills/diagram-composition/scripts/palette_contract.py",
+        "skills/diagram-composition/scripts/test_browser.py",
+        "skills/diagram-composition/scripts/test_composition.py",
+        "skills/diagram-composition/scripts/test_connector_quality.py",
+        "skills/diagram-composition/scripts/test_native_panels.py",
+        "skills/diagram-composition/scripts/test_shared_colors.py",
+        "skills/diagram-composition/scripts/visual_quality.py"
+      ],
+      "runtimeDependencyClosure": [
+        {
+          "path": "skills/diagram-composition/agents/openai.yaml",
+          "sha256": "5c86eb10d00d9b641e6c124f0ca405ef7c53134ccd1005c048d9a11e020a6e30"
+        },
+        {
+          "path": "skills/diagram-composition/assets/palettes/colorsets.json",
+          "sha256": "6f3f7e36565d2747bd5567555c960a9de463f70b534a86267e721ffad5ae1031"
+        },
+        {
+          "path": "skills/diagram-composition/assets/templates/composition.json",
+          "sha256": "6a33ed5799cf8ff2016c532e43164ad31d95f15c138511207ae08bbac56ca90e"
+        },
+        {
+          "path": "skills/diagram-composition/references/composition-contract.md",
+          "sha256": "349d41068a1bfece26590226c61d6630993fc3dd9ecdc776a1b3a4fc752d6322"
+        },
+        {
+          "path": "skills/diagram-composition/references/connectors-and-surfaces.md",
+          "sha256": "21dbea91702c2e0361b9137a30dc11ce8f10d1b8871c05597767dfe7f2de309e"
+        },
+        {
+          "path": "skills/diagram-composition/references/layout-and-density.md",
+          "sha256": "cf7dd35e02f7f2b9912a20cbd70582756588f2b141a060c9e0b477f3d80aece8"
+        },
+        {
+          "path": "skills/diagram-composition/references/native-panels.md",
+          "sha256": "2ec33fc723413fa40ff21b44315887282538611599bc664c32ce6fb0436dac64"
+        },
+        {
+          "path": "skills/diagram-composition/references/palette-policy.md",
+          "sha256": "250f3695d4731181ccd6e5543271788fac2cb7f27eb8f6585670aee51552f0de"
+        },
+        {
+          "path": "skills/diagram-composition/references/shared-colors.md",
+          "sha256": "f8222f1264c67652f63c9cb3037346aed4e7a8f9f5431f669d6d130595c22359"
+        },
+        {
+          "path": "skills/diagram-composition/references/specialist-handoffs.md",
+          "sha256": "efce50082e3ad935547a9fc407735ca73105c025a2023af42159022fc5072586"
+        },
+        {
+          "path": "skills/diagram-composition/references/visual-selection.md",
+          "sha256": "b149206ddc56c69e1a887d37f1d0c181911087f9b018395abeb94b0251d3a431"
+        },
+        {
+          "path": "skills/diagram-composition/scripts/audit_diagram.py",
+          "sha256": "05f9dd53ef1693d9296640ef24c3e826e4780b9945515bd595449e49272e2208"
+        },
+        {
+          "path": "skills/diagram-composition/scripts/build_panels.py",
+          "sha256": "0e3e062c149866ada770a0e59e415cd4dfa18b30819d886ebf161f8e458acd16"
+        },
+        {
+          "path": "skills/diagram-composition/scripts/compose_diagram.py",
+          "sha256": "a08e5b4ec3f2a80b7ef890782fe646640beee4241a8de5a292430ed0f1ec6cf1"
+        },
+        {
+          "path": "skills/diagram-composition/scripts/palette_contract.py",
+          "sha256": "c31b3b4f14b7651acac853ccb74482f14c08ff587b5263f236a33f521339ae6d"
+        },
+        {
+          "path": "skills/diagram-composition/scripts/render_diagram.py",
+          "sha256": "a131a1b2e0475052ecafd7c1ef2b99d7ddd1f22f9fd99d80c5edc6a2a9c87b85"
+        },
+        {
+          "path": "skills/diagram-composition/scripts/route_connectors.py",
+          "sha256": "5177b207c3e6f696f6b93d59aba7a0cdb44b9118e20f60ac20db0dcdc7d91bf0"
+        },
+        {
+          "path": "skills/diagram-composition/scripts/test_browser.py",
+          "sha256": "31789468eefa459673c572078d977c71bd98bd07a7097e6563532cf5b9fa3e7c"
+        },
+        {
+          "path": "skills/diagram-composition/scripts/test_composition.py",
+          "sha256": "9f16c44051f5dddc51e56250d129f067c66fcd952195875ed3ce3fad3488dcdc"
+        },
+        {
+          "path": "skills/diagram-composition/scripts/test_connector_quality.py",
+          "sha256": "ecdc3f0f58aeb9522e2ce1d27376f715816006cc78cd9031fbd1439be7a8e4c6"
+        },
+        {
+          "path": "skills/diagram-composition/scripts/test_native_panels.py",
+          "sha256": "452d489e14aae3d9c59c970b0655b65e37157d050db3f217327bc1d956c04e3d"
+        },
+        {
+          "path": "skills/diagram-composition/scripts/test_shared_colors.py",
+          "sha256": "d688a17ba3eea0f5c0b22c2e5f2fe455094b4b86f0864744424176e4b7d0acd6"
+        },
+        {
+          "path": "skills/diagram-composition/scripts/visual_quality.py",
+          "sha256": "82f3f761d69df256cb840a4b0f3e513fa4cd7dd15a71ed93a84e9661f2206ef7"
+        },
+        {
+          "path": "skills/diagram-composition/SKILL.md",
+          "sha256": "0eb02bef69a47c6ee57cc376f8fb4733cf1100f63ebc0a21b03ed95029806d3e"
+        }
+      ]
+    },
+    {
+      "skill": "hierarchy-lens",
+      "activeSet": "colorset2",
+      "reason": "Up to eight labeled categorical attributes and explicit numeric heat bands",
+      "outputs": [
+        "analytical SVG explorer HTML",
+        "radial pixel canvas HTML",
+        "organic pixel canvas HTML",
+        "decision-growth canvas HTML",
+        "analytical SVG export",
+        "pixel SVG export",
+        "canvas PNG export"
+      ],
+      "authoredScan": [
+        "assets/templates/explorer.html",
+        "assets/templates/pixels.html",
+        "assets/templates/decision-ui.js",
+        "assets/examples/hierarchy-lens/*.html"
+      ],
+      "sourceExemptions": [],
+      "changes": "Canonical categories and discrete numeric bands; neutral inactive pixels; all four published views regenerated; URL-encoded favicon canonical; stale browser oracle colors updated without weakening zero/missing/playback checks",
+      "publicationRequired": true,
+      "isolatedValidation": {
+        "runId": "colorset-hierarchy-lens-20261002-6",
+        "model": "gpt-5.6-luna",
+        "strict": true,
+        "passed": true,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        },
+        "skillDigest": "3d60fb524841d044a345c1ba869896b98166524cf283f6849a22af5eac0ff8dc",
+        "outputs": [
+          {
+            "path": "output/explorer.html",
+            "sha256": "bf3510dc211160a3dabe381966292673c4369d9cebff42916160cba062f7ec7e"
+          },
+          {
+            "path": "output/decision.html",
+            "sha256": "d1d917804a2494271a8cc0d5a7bfc3b97fdcd0f722fab1f4f8a360b7a7c7746c"
+          },
+          {
+            "path": "output/source.json",
+            "sha256": "24b9cde4789bfe1c1eec4eb64ed1b53be260f4ba2400a298b398bf96e9c265da"
+          },
+          {
+            "path": "output/commands.md",
+            "sha256": "1758e49d134701ec71cabe4506d1001eb38f57116c4e3afba1602ddbb629c5e3"
+          }
+        ],
+        "traceSummaryCommand": "uv run --script scripts/summarize-pi-json-events.py evaluations/runs/colorset-hierarchy-lens-20261002-6/events.jsonl --require-model gpt-5.6-luna --fail-on-invalid-json --fail-on-tool-error"
+      },
+      "testedCommands": [
+        {
+          "command": "uv run --script skills/hierarchy-lens/scripts/test_explorer.py",
+          "result": "21 passed",
+          "passed": true
+        },
+        {
+          "command": "uv run --script skills/hierarchy-lens/scripts/test_decisions.py",
+          "result": "11 passed",
+          "passed": true
+        },
+        {
+          "command": "uv run --script skills/hierarchy-lens/scripts/audit_decisions.py skills/hierarchy-lens/assets/examples/hierarchy-lens/index.html --report projects/compositions-colorset-audit/artifacts/reviews/published-decisions.json --screenshot projects/compositions-colorset-audit/artifacts/reviews/published-decisions.png",
+          "result": "1200 decisions; 54 pixel checks; no failed checks or browser errors",
+          "passed": true
+        },
+        {
+          "command": "uv run --script skills/hierarchy-lens/scripts/audit_pixels.py skills/hierarchy-lens/assets/examples/hierarchy-lens/radial.html --report projects/compositions-colorset-audit/artifacts/reviews/published-radial.json --screenshot projects/compositions-colorset-audit/artifacts/reviews/published-radial.png",
+          "result": "1200 records; 512 grid; passed",
+          "passed": true
+        },
+        {
+          "command": "uv run --script skills/hierarchy-lens/scripts/audit_pixels.py skills/hierarchy-lens/assets/examples/hierarchy-lens/organic.html --report projects/compositions-colorset-audit/artifacts/reviews/published-organic.json --screenshot projects/compositions-colorset-audit/artifacts/reviews/published-organic.png",
+          "result": "1200 records; 128 grid; passed",
+          "passed": true
+        }
+      ],
+      "openGaps": [],
+      "touchedPaths": [
+        "skills/hierarchy-lens/SKILL.md",
+        "skills/hierarchy-lens/assets/examples/hierarchy-lens/analytical.html",
+        "skills/hierarchy-lens/assets/examples/hierarchy-lens/index.html",
+        "skills/hierarchy-lens/assets/examples/hierarchy-lens/organic.html",
+        "skills/hierarchy-lens/assets/examples/hierarchy-lens/radial.html",
+        "skills/hierarchy-lens/assets/palettes/colorsets.json",
+        "skills/hierarchy-lens/assets/templates/decision-ui.js",
+        "skills/hierarchy-lens/assets/templates/explorer.html",
+        "skills/hierarchy-lens/assets/templates/pixels.html",
+        "skills/hierarchy-lens/references/palette-policy.md",
+        "skills/hierarchy-lens/scripts/audit_decisions.py",
+        "skills/hierarchy-lens/scripts/audit_pixels.py"
+      ],
+      "runtimeDependencyClosure": [
+        {
+          "path": "skills/hierarchy-lens/agents/openai.yaml",
+          "sha256": "c6758480745ca75be97554f6a40b80de8ff0d09d118f66f9947817a787e5c96c"
+        },
+        {
+          "path": "skills/hierarchy-lens/assets/palettes/colorsets.json",
+          "sha256": "6f3f7e36565d2747bd5567555c960a9de463f70b534a86267e721ffad5ae1031"
+        },
+        {
+          "path": "skills/hierarchy-lens/assets/templates/decision-engine.js",
+          "sha256": "a44df21f5d1ddb5293250f382c9a8b357432a4d9295cf00b4cb569b16428c4aa"
+        },
+        {
+          "path": "skills/hierarchy-lens/assets/templates/decision-ui.js",
+          "sha256": "d67c978266c4f389dbc2e8f27d024f6e4208f493506a3f55a8e3a0d874f5a9ac"
+        },
+        {
+          "path": "skills/hierarchy-lens/assets/templates/explorer.html",
+          "sha256": "c02ef21b0547644ae33ec905c27ac641265c7b347270c012df78e7618cf30f7f"
+        },
+        {
+          "path": "skills/hierarchy-lens/assets/templates/pixels.html",
+          "sha256": "32f5c3c60b15d2eb625035287c872d79383a3d4f427491a9a526506bb3b39781"
+        },
+        {
+          "path": "skills/hierarchy-lens/references/data-contract.md",
+          "sha256": "2091e771b733b86b0601b64e3d3957f512efa28ca4b7ef4334408713e77b3e19"
+        },
+        {
+          "path": "skills/hierarchy-lens/references/decision-growth.md",
+          "sha256": "4a953e9e6983dd55e96a4a179a2f34d5383c278377fc12c071482afc2a22e59a"
+        },
+        {
+          "path": "skills/hierarchy-lens/references/organic-pixels.md",
+          "sha256": "eb2fab619303226c7ea569ecdec38b2aa2a44b0d8cb164de99a454a044c814db"
+        },
+        {
+          "path": "skills/hierarchy-lens/references/palette-policy.md",
+          "sha256": "250f3695d4731181ccd6e5543271788fac2cb7f27eb8f6585670aee51552f0de"
+        },
+        {
+          "path": "skills/hierarchy-lens/references/radial-lenses.md",
+          "sha256": "3a56908464dd809191f54f624648cc5dee045c07e1525808a98e57aaaafa6902"
+        },
+        {
+          "path": "skills/hierarchy-lens/references/radial-pixels.md",
+          "sha256": "51d241a9fe06572a310fd5f45ca6f535ea7b555c18b5a3b5899be4c2d3ebe0a6"
+        },
+        {
+          "path": "skills/hierarchy-lens/references/validation.md",
+          "sha256": "34b6fa13d80dd64fa5e9108e39f2843052ba254df87b183e6d1e3ac6cdfc185d"
+        },
+        {
+          "path": "skills/hierarchy-lens/scripts/audit_decisions.py",
+          "sha256": "43226f9b5995da7a00f9c8ba74cb5d57769dd4614f59d34b6598e1ea0aec36e6"
+        },
+        {
+          "path": "skills/hierarchy-lens/scripts/audit_explorer.py",
+          "sha256": "81f1687e6d327829aa19eb719c78c921b1c8c1abe8e1f1fdddbb878816dfd21f"
+        },
+        {
+          "path": "skills/hierarchy-lens/scripts/audit_pixels.py",
+          "sha256": "06b9c8ff23eaa4a831e133d7cc9b450e8a38875b0823f33449346af253e399b3"
+        },
+        {
+          "path": "skills/hierarchy-lens/scripts/build_explorer.py",
+          "sha256": "fe3514a8fdd739a45326a7c123bdc9fe6fbdb5ed8ad92f67ae532675e153ee44"
+        },
+        {
+          "path": "skills/hierarchy-lens/scripts/decision_layout.py",
+          "sha256": "52d4b5ac51ca9e80ebcfafac8c05519c1880c1b0931f2a7ab7077b8d43b62cf4"
+        },
+        {
+          "path": "skills/hierarchy-lens/scripts/organic_layout.py",
+          "sha256": "7b030fc19f058d8817aa4eac32ffc54b4d869e64a04800324da47ec5c297add0"
+        },
+        {
+          "path": "skills/hierarchy-lens/scripts/test_decisions.py",
+          "sha256": "df67e78d514923f381ad06b2d7cae7acea3d103b3421adddd1b61566a7ba0dd2"
+        },
+        {
+          "path": "skills/hierarchy-lens/scripts/test_explorer.py",
+          "sha256": "5f53c74b04d6e91a4240853137ff21afe73277b65e1c65a6acc41591f0139a8a"
+        },
+        {
+          "path": "skills/hierarchy-lens/SKILL.md",
+          "sha256": "19029a6ece9346309d5ca8afb9cc5a5c3e57fa89cb57e92b8a7e7def9e61629a"
+        }
+      ]
+    },
+    {
+      "skill": "usefulcharts-style",
+      "activeSet": "colorset2",
+      "reason": "Simultaneous labeled families, institutions and timeline groups in dense posters",
+      "outputs": [
+        "lineage and genealogy SVG",
+        "numeric timeline SVG",
+        "editorial illustrated SVG",
+        "outline-panel SVG",
+        "offline poster HTML",
+        "PNG and PDF render derivatives",
+        "three published poster fixtures"
+      ],
+      "authoredScan": [
+        "scripts/render_chart.py",
+        "scripts/editorial_poster.py",
+        "scripts/create_panel_poster.py",
+        "scripts/editorial_art.py",
+        "assets/templates/*.json",
+        "assets/illustrations/*.svg",
+        "assets/examples/usefulcharts-style/*.svg",
+        "assets/examples/usefulcharts-style/*.html",
+        "assets/examples/usefulcharts-style/*.py",
+        "assets/examples/usefulcharts-style/*.json"
+      ],
+      "sourceExemptions": [
+        {
+          "paths": [
+            "assets/portraits/*.jpg",
+            "assets/objects/*.jpg",
+            "assets/maps/milner-1850.jpg",
+            "assets/illustrations/*.png"
+          ],
+          "scope": "Embedded image href data payloads",
+          "excluded": "Source image pixels only; authored SVG map geometry, category fills, icons, frames, insets and labels remain checked"
+        }
+      ],
+      "changes": "Canonical paper/frame/text/art paints; exact category guards; distinct category templates; three published posters rebuilt",
+      "publicationRequired": true,
+      "isolatedValidation": {
+        "runId": "colorset-usefulcharts-style-20261002-4",
+        "model": "gpt-5.6-luna",
+        "strict": true,
+        "passed": true,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        },
+        "skillDigest": "dbfd3bec75180048bf0760d21d322fcc4b3a6f061c1c2b835b4fe7b80af8eb5a",
+        "outputs": [
+          {
+            "path": "output/poster.svg",
+            "sha256": "289d37d33427fbddf76236eaec6fb8153cdeff0a7a92aeab4a1cc4fc4f647864"
+          },
+          {
+            "path": "output/poster.html",
+            "sha256": "5b7284bd3970b36c3a991ad2bec51d7a1aedfb865625d4cc942b506a94c840bc"
+          },
+          {
+            "path": "output/source.json",
+            "sha256": "72d89e35fdb360f405e5c91df38aaedaf94edb5193806856d81ecf755b0c334c"
+          },
+          {
+            "path": "output/render.json",
+            "sha256": "d85aab8317ddf370dabd7dbe1693550b44c218345b598c41dbad9a892746fa54"
+          },
+          {
+            "path": "output/palette.md",
+            "sha256": "347cfa15b6cd840aeb4ad89a890eea6d4ee998570bb7f4be5285ffce46d952f7"
+          }
+        ],
+        "traceSummaryCommand": "uv run --script scripts/summarize-pi-json-events.py evaluations/runs/colorset-usefulcharts-style-20261002-4/events.jsonl --require-model gpt-5.6-luna --fail-on-invalid-json --fail-on-tool-error"
+      },
+      "testedCommands": [
+        {
+          "command": "uv run --with 'shapely>=2,<3' --with 'osqp>=1,<2' --with 'numpy>=2,<3' --with 'scipy>=1.14,<2' --with 'playwright>=1.45.0' --with 'pillow>=10' python -m unittest discover -s skills/usefulcharts-style/scripts -p 'test_*.py'",
+          "result": "243 passed",
+          "passed": true
+        },
+        {
+          "command": "uv run --script skills/usefulcharts-style/assets/examples/usefulcharts-style/build_examples.py --renderer skills/usefulcharts-style/scripts/render_chart.py",
+          "result": "Three posters rebuilt; 561/141/50 nodes; no node or connector-node collisions",
+          "passed": true
+        }
+      ],
+      "openGaps": [],
+      "touchedPaths": [
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/assets/examples/usefulcharts-style/atlas-of-inquiry.html",
+        "skills/usefulcharts-style/assets/examples/usefulcharts-style/atlas-of-inquiry.json",
+        "skills/usefulcharts-style/assets/examples/usefulcharts-style/atlas-of-inquiry.svg",
+        "skills/usefulcharts-style/assets/examples/usefulcharts-style/aurelian-families.html",
+        "skills/usefulcharts-style/assets/examples/usefulcharts-style/aurelian-families.json",
+        "skills/usefulcharts-style/assets/examples/usefulcharts-style/aurelian-families.svg",
+        "skills/usefulcharts-style/assets/examples/usefulcharts-style/build_examples.py",
+        "skills/usefulcharts-style/assets/examples/usefulcharts-style/five-regional-histories.html",
+        "skills/usefulcharts-style/assets/examples/usefulcharts-style/five-regional-histories.json",
+        "skills/usefulcharts-style/assets/examples/usefulcharts-style/five-regional-histories.svg",
+        "skills/usefulcharts-style/assets/examples/usefulcharts-style/index.html",
+        "skills/usefulcharts-style/assets/examples/usefulcharts-style/lineage_brief.py",
+        "skills/usefulcharts-style/assets/examples/usefulcharts-style/manifest.json",
+        "skills/usefulcharts-style/assets/examples/usefulcharts-style/poster_briefs.py",
+        "skills/usefulcharts-style/assets/examples/usefulcharts-style/timeline_brief.py",
+        "skills/usefulcharts-style/assets/illustrations/astrolabe-observation.svg",
+        "skills/usefulcharts-style/assets/illustrations/clock-escapement.svg",
+        "skills/usefulcharts-style/assets/palettes/colorsets.json",
+        "skills/usefulcharts-style/assets/templates/cohorts.json",
+        "skills/usefulcharts-style/assets/templates/compact-timeline.json",
+        "skills/usefulcharts-style/assets/templates/lineage.json",
+        "skills/usefulcharts-style/assets/templates/narrative-timeline.json",
+        "skills/usefulcharts-style/assets/templates/packed-lineage.json",
+        "skills/usefulcharts-style/assets/templates/starter.json",
+        "skills/usefulcharts-style/references/palette-policy.md",
+        "skills/usefulcharts-style/references/panel-outlines.md",
+        "skills/usefulcharts-style/scripts/create_panel_poster.py",
+        "skills/usefulcharts-style/scripts/editorial_art.py",
+        "skills/usefulcharts-style/scripts/editorial_poster.py",
+        "skills/usefulcharts-style/scripts/palette_contract.py",
+        "skills/usefulcharts-style/scripts/render_chart.py",
+        "skills/usefulcharts-style/scripts/test_branch_bundle.py",
+        "skills/usefulcharts-style/scripts/test_branch_caption_audit.py",
+        "skills/usefulcharts-style/scripts/test_branch_source.py",
+        "skills/usefulcharts-style/scripts/test_branching_layout.py",
+        "skills/usefulcharts-style/scripts/test_chart.py",
+        "skills/usefulcharts-style/scripts/test_context_landmarks.py",
+        "skills/usefulcharts-style/scripts/test_density.py",
+        "skills/usefulcharts-style/scripts/test_editorial.py",
+        "skills/usefulcharts-style/scripts/test_editorial_art.py",
+        "skills/usefulcharts-style/scripts/test_editorial_insets.py",
+        "skills/usefulcharts-style/scripts/test_exploration_review.py",
+        "skills/usefulcharts-style/scripts/test_family_baselines.py",
+        "skills/usefulcharts-style/scripts/test_illustrated_review.py",
+        "skills/usefulcharts-style/scripts/test_lineage_runs.py",
+        "skills/usefulcharts-style/scripts/test_panel_poster.py",
+        "skills/usefulcharts-style/scripts/test_shared_rows.py",
+        "skills/usefulcharts-style/scripts/test_timeline_events.py",
+        "skills/usefulcharts-style/scripts/test_timeline_geometry.py"
+      ],
+      "runtimeDependencyClosure": [
+        {
+          "path": "skills/usefulcharts-style/agents/openai.yaml",
+          "sha256": "232b806967f20a1c3aac60aaef70e27eaa71939cacbeaca36d06ed8b924bb7c8"
+        },
+        {
+          "path": "skills/usefulcharts-style/assets/fonts/BarlowCondensed-Bold.ttf",
+          "sha256": "e476562ec9c1e16cf16475895b511f08c804f438cc9a9f80a44ea50a0eeb5b65"
+        },
+        {
+          "path": "skills/usefulcharts-style/assets/fonts/OFL.txt",
+          "sha256": "10b0e6bb43166a50fbe7cde2895bd7f703738a5da843acb5c97c95dc9ea26817"
+        },
+        {
+          "path": "skills/usefulcharts-style/assets/illustrations/astrolabe-observation.svg",
+          "sha256": "f900c2b1770fb33b521f1ba74da5acfb85cd9478efeb320f197b53b7a2e60e83"
+        },
+        {
+          "path": "skills/usefulcharts-style/assets/illustrations/clock-escapement.svg",
+          "sha256": "8b844e719d10f5488796ed9f017c2ef211da8e209b09b22789baeef9853e1ed4"
+        },
+        {
+          "path": "skills/usefulcharts-style/assets/illustrations/cogwheel-psf.png",
+          "sha256": "042fb220c776b43039e514832ca78d8cd8bced7d8ebd41e01904561926e4d173"
+        },
+        {
+          "path": "skills/usefulcharts-style/assets/illustrations/compass-card-psf.png",
+          "sha256": "8b2f2b059f05c97e265f0f8078b8562a5f0e619fdf145881355335bcafc84479"
+        },
+        {
+          "path": "skills/usefulcharts-style/assets/illustrations/cuneiform-tablet.png",
+          "sha256": "47f330f9b68cdb3388871f93f9742639ac6d72724406eb456083d55bae38671f"
+        },
+        {
+          "path": "skills/usefulcharts-style/assets/illustrations/printing-press-bookman.svg",
+          "sha256": "39bdab40e90ed5fdeedfddafa1578a7b3b3fe5ff7d7106d3a5b33ea414ef7387"
+        },
+        {
+          "path": "skills/usefulcharts-style/assets/illustrations/provenance.json",
+          "sha256": "d060146e2ca4358321ef7587b6c878c57cadb2734f5e032df081b6a970690deb"
+        },
+        {
+          "path": "skills/usefulcharts-style/assets/illustrations/sextant-1904.png",
+          "sha256": "b2fe0bf2acd852ed3932a7de1c0c51b5977c1fd1e5db5f0403db3dc91a26341f"
+        },
+        {
+          "path": "skills/usefulcharts-style/assets/illustrations/square-rigged-ship.svg",
+          "sha256": "7b0a0eb5e0e0fbe5b16489f3b88a8b60445f3a79709f7c3e137fbe7ced25ba86"
+        },
+        {
+          "path": "skills/usefulcharts-style/assets/illustrations/stagecoach.svg",
+          "sha256": "8cfd62b357f733481807062a4a84e9588282833b0ac1ff74599657c121f94a99"
+        },
+        {
+          "path": "skills/usefulcharts-style/assets/illustrations/suspension-bridge.svg",
+          "sha256": "78406eaf59afc56ad898885c6c00edce39a866043690f9cbfc14825035010f1a"
+        },
+        {
+          "path": "skills/usefulcharts-style/assets/illustrations/telescope-observer.svg",
+          "sha256": "0d6f7043cebdf939be2e82264d220c702d3580e97607b689c87ca31054da1466"
+        },
+        {
+          "path": "skills/usefulcharts-style/assets/illustrations/theodolite-psf.png",
+          "sha256": "adfaf88d42c094970c52eb8b672347c70943a2ed07544d4dec559a14ed20a55e"
+        },
+        {
+          "path": "skills/usefulcharts-style/assets/maps/milner-1850.jpg",
+          "sha256": "30ceeeebf9a3597b69c8a0663222667f58cb6a66065e0c72948d0570d46c483d"
+        },
+        {
+          "path": "skills/usefulcharts-style/assets/maps/milner-1850.json",
+          "sha256": "d9b2b9a1b86e5aa6eba806383a2d2f2b3d69d2d939a883c8bd51b54e80dcdc01"
+        },
+        {
+          "path": "skills/usefulcharts-style/assets/maps/provenance.json",
+          "sha256": "950ec10d355cb34c176ee2afa6d1b6dcffce2357239b7d5050e68b003f3b1dd2"
+        },
+        {
+          "path": "skills/usefulcharts-style/assets/maps/world-countries.json",
+          "sha256": "1d97028314cbf37c0d8b6ecf1f08952ee960c796f735d5a97b018d26499ba510"
+        },
+        {
+          "path": "skills/usefulcharts-style/assets/objects/15190.jpg",
+          "sha256": "8bdefdd56112957d01ed3a876ab25ad749dca7e94fe08d2a9b3a1ce3567d87d8"
+        },
+        {
+          "path": "skills/usefulcharts-style/assets/objects/191.jpg",
+          "sha256": "b94c90ead0caa46353ffb5174391bf4fc0a3748a4f41c3e8967761911b3f014f"
+        },
+        {
+          "path": "skills/usefulcharts-style/assets/objects/246.jpg",
+          "sha256": "302f1c9619b9293f11a59b5b1bd7fc4b668f94270e2c550bb8bae4321fc02da3"
+        },
+        {
+          "path": "skills/usefulcharts-style/assets/objects/27881.jpg",
+          "sha256": "9979e5f610edd5a2753d5976160fcd81001e47ad3c934e86d37d911cc3023bd1"
+        },
+        {
+          "path": "skills/usefulcharts-style/assets/objects/50240.jpg",
+          "sha256": "51572f4f827a1ddeed950f6175db55b71ed32fdf9b12fcdf22e96e38224dc4e3"
+        },
+        {
+          "path": "skills/usefulcharts-style/assets/objects/57819.jpg",
+          "sha256": "1728f6f3b6df124ab8b330fd06697c3c5ddf79fcc1dcc35df0a331c50761a2a8"
+        },
+        {
+          "path": "skills/usefulcharts-style/assets/objects/60878.jpg",
+          "sha256": "b15d4bbb428593fa815d846aa4453d3324d3a0f1d246169ea3b58c36a30440a8"
+        },
+        {
+          "path": "skills/usefulcharts-style/assets/objects/90589.jpg",
+          "sha256": "68f00aafce3cdbeb7d9a0b382b2efd1970de3218b354dc7bac8ee8789431a4b9"
+        },
+        {
+          "path": "skills/usefulcharts-style/assets/objects/provenance.json",
+          "sha256": "bb2b0017865e18dbaee878cd29e50fea22d53e3c3f5669a29e31a3c1732c86d9"
+        },
+        {
+          "path": "skills/usefulcharts-style/assets/palettes/colorsets.json",
+          "sha256": "6f3f7e36565d2747bd5567555c960a9de463f70b534a86267e721ffad5ae1031"
+        },
+        {
+          "path": "skills/usefulcharts-style/assets/portraits/105600.jpg",
+          "sha256": "d6abc0810bd8e9ff3102a8f16550ef75325e4a927f44c007356618765b3fa43c"
+        },
+        {
+          "path": "skills/usefulcharts-style/assets/portraits/105945.jpg",
+          "sha256": "276b263487a83c990ed4fb6467bd63e3892e392a7943cccc6f3c7bb32549aa8f"
+        },
+        {
+          "path": "skills/usefulcharts-style/assets/portraits/111317.jpg",
+          "sha256": "0ce35a30e508c1ec877bec9651d2b83c4ef2121a05ca6e21df4d3bedcd5fd349"
+        },
+        {
+          "path": "skills/usefulcharts-style/assets/portraits/11390.jpg",
+          "sha256": "7c1baa9688c5e128e3ff91b8694798c49a51da5b1e48805cdd2060e378669c7c"
+        },
+        {
+          "path": "skills/usefulcharts-style/assets/portraits/15708.jpg",
+          "sha256": "7c88a70fc564437d892e674151f2f76f0c9786e29dbc573c8907aef8d5991fb8"
+        },
+        {
+          "path": "skills/usefulcharts-style/assets/portraits/16367.jpg",
+          "sha256": "ee672c6bd71e1eb270a88d4cbde8b11c0acac888480d758d3a23ef9c585d42ff"
+        },
+        {
+          "path": "skills/usefulcharts-style/assets/portraits/24684.jpg",
+          "sha256": "46b148e87d04e838bee0e34abd1d0fb988a098d5e8967bf27783f85c7f67ab6c"
+        },
+        {
+          "path": "skills/usefulcharts-style/assets/portraits/31233.jpg",
+          "sha256": "dc4c1d7551e755c8461bfabc0e070d51d7fa3b9e1fdf25a42482bd439bf572d6"
+        },
+        {
+          "path": "skills/usefulcharts-style/assets/portraits/75374.jpg",
+          "sha256": "0c379a1db6e9c3857cf1ed9bd9dcaa96b94ddfe03e1e22c74837b2e1646b3473"
+        },
+        {
+          "path": "skills/usefulcharts-style/assets/portraits/78591.jpg",
+          "sha256": "2477f37c516ade952c9aa6ada5994d38b81c3e1eda0055ec7eca63f1c87a4e99"
+        },
+        {
+          "path": "skills/usefulcharts-style/assets/portraits/862.jpg",
+          "sha256": "4876bc2a1abe09ad14fee783db1b36030aed0c39507ea5dc59e7d4d42f2400e6"
+        },
+        {
+          "path": "skills/usefulcharts-style/assets/portraits/864.jpg",
+          "sha256": "38eb0f6575605992bba9751d93569cd054059a62b0fa1c8a430b5a6a09fc7d14"
+        },
+        {
+          "path": "skills/usefulcharts-style/assets/portraits/866.jpg",
+          "sha256": "fb42fcc65f19f21d9296fe6c3d913cc3a35698698fab0e10bc1d5d9010009e78"
+        },
+        {
+          "path": "skills/usefulcharts-style/assets/portraits/87760.jpg",
+          "sha256": "03fa3ecd906a2f1c10a46cfd4e9925d1da09d7f8c307408d5952040e3d4960a2"
+        },
+        {
+          "path": "skills/usefulcharts-style/assets/portraits/89043.jpg",
+          "sha256": "1e5368215adada5a8ddb2fb7c69ed957fb4d3bcfe9c5e4d785e669dc6f8c0fc9"
+        },
+        {
+          "path": "skills/usefulcharts-style/assets/portraits/95998.jpg",
+          "sha256": "c0c37799993514444743da36a9a11861a8496b142783d8ef78b0302521ba6fd7"
+        },
+        {
+          "path": "skills/usefulcharts-style/assets/portraits/provenance.json",
+          "sha256": "867edf5fe5de843e79261016c42d9efaac304ac83db1bc640277db61d6b412df"
+        },
+        {
+          "path": "skills/usefulcharts-style/assets/templates/cohorts.json",
+          "sha256": "7f79cb65ad2033e0fabdb025b8dfab0141fc89bef17776acd04255578e40bcaa"
+        },
+        {
+          "path": "skills/usefulcharts-style/assets/templates/compact-timeline.json",
+          "sha256": "e2b30252a0a5f026140c968ca2a96df1ed93777b642a895b6d9ba528e397b04d"
+        },
+        {
+          "path": "skills/usefulcharts-style/assets/templates/density-census.json",
+          "sha256": "5d290ca03f2f25e2ed273040c694ae59e9f994f00c6fddfd4b539308635a1239"
+        },
+        {
+          "path": "skills/usefulcharts-style/assets/templates/exploration-review.json",
+          "sha256": "ab14178e5b047373bfe3f5573618a648079d9611600e653edfca711657bb9f92"
+        },
+        {
+          "path": "skills/usefulcharts-style/assets/templates/illustrated-review.json",
+          "sha256": "552bf1a10f6d20d1f432471ba5672afc3bf63696ed5bbca8e98cee7165653065"
+        },
+        {
+          "path": "skills/usefulcharts-style/assets/templates/lineage.json",
+          "sha256": "abadb248d98cfb5dab68c5b3d8f5f3e1781667107b589b88c4b0f27421bdd3a6"
+        },
+        {
+          "path": "skills/usefulcharts-style/assets/templates/narrative-timeline.json",
+          "sha256": "47ceb58e50194df5b7c969913bc5dae8fbed3a13656d5d706e9d257df7a82691"
+        },
+        {
+          "path": "skills/usefulcharts-style/assets/templates/packed-lineage.json",
+          "sha256": "b523ba010cca07768bea2c8ee77ec23ebaede7390d4b6d2b69c39303305bd077"
+        },
+        {
+          "path": "skills/usefulcharts-style/assets/templates/starter.json",
+          "sha256": "72d89e35fdb360f405e5c91df38aaedaf94edb5193806856d81ecf755b0c334c"
+        },
+        {
+          "path": "skills/usefulcharts-style/references/branch-baselines.md",
+          "sha256": "fcc36af9efcc41e505f84f3ac13a514bc7b59d3a5f289af752e7f317e0f11c0b"
+        },
+        {
+          "path": "skills/usefulcharts-style/references/branch-structure.md",
+          "sha256": "20f6246ba9f0e646f40fb189793edfc7d34149cd7fb8c6018964b35880eeff14"
+        },
+        {
+          "path": "skills/usefulcharts-style/references/cohort-composition.md",
+          "sha256": "4abf779a92af4e962fab25865544a98783eeec7fd038523b739786bfa876cc59"
+        },
+        {
+          "path": "skills/usefulcharts-style/references/compact-chronology.md",
+          "sha256": "3a45222b9e58100933a7f3da2b9e7b920c01b9440626aee5a9abe68dd3d80ff7"
+        },
+        {
+          "path": "skills/usefulcharts-style/references/compact-lineage.md",
+          "sha256": "7c2abb0af860e057edf1a9b01dce91417b30463abc218f112ae65ba278316150"
+        },
+        {
+          "path": "skills/usefulcharts-style/references/context-insets.md",
+          "sha256": "1dd18738ecd8a2a2a24d2b0b00c37f478c6b3baba2fea2279527988df0e2e36e"
+        },
+        {
+          "path": "skills/usefulcharts-style/references/context-landmarks.md",
+          "sha256": "86d6a61f4f1d956f56cdbe9ffc5df0816326f05e5db87523fe120c5d49eca8d5"
+        },
+        {
+          "path": "skills/usefulcharts-style/references/data-contract.md",
+          "sha256": "57c136ae4348970cbb29e385d5c0ed72d924c392f0cc51ffdcb17dd90386c384"
+        },
+        {
+          "path": "skills/usefulcharts-style/references/data-first-branches.md",
+          "sha256": "9c509dafb2ec7f2adc821c5514f1ec92c3453b3cff8650fe388ac2d848a26472"
+        },
+        {
+          "path": "skills/usefulcharts-style/references/editorial-composition.md",
+          "sha256": "a2dc490e329fe38014888aa216893d42dd051dad069e7515413dda595714bbae"
+        },
+        {
+          "path": "skills/usefulcharts-style/references/editorial-contract.md",
+          "sha256": "69ed86a6ebc54e077132d527287a50060a2eb3240562fc433457b189b198a235"
+        },
+        {
+          "path": "skills/usefulcharts-style/references/evaluation.md",
+          "sha256": "01535c803f3a074fd07b82734ec389b8e16570c0485a5fe24782380df10c4651"
+        },
+        {
+          "path": "skills/usefulcharts-style/references/focal-people.md",
+          "sha256": "e936c2cdd810e0c9a4cf6ff0b9eaf4e5099b722d2a7b184f62fb90f5ec39c181"
+        },
+        {
+          "path": "skills/usefulcharts-style/references/genealogy-nameplates.md",
+          "sha256": "0421ac32f705670eba3d7166744dcabb8c8951679905679db3cd14bed833ebd1"
+        },
+        {
+          "path": "skills/usefulcharts-style/references/illustrated-discovery.md",
+          "sha256": "d41a0dafa1eeab4c240be625a03536314567b15d3c443d8e33d17a356867af32"
+        },
+        {
+          "path": "skills/usefulcharts-style/references/influence-routes.md",
+          "sha256": "cfd526dbec813ec11b8f771932dd20cee46409e178734dbf4c02ee0a3be2f42c"
+        },
+        {
+          "path": "skills/usefulcharts-style/references/information-design.md",
+          "sha256": "cb9050e95f53616751631af334add5c10e6bad65ce6a8c4b01e1ae740debdc6a"
+        },
+        {
+          "path": "skills/usefulcharts-style/references/institution-composition.md",
+          "sha256": "0d89789c18e35bb93738a7d4ca1a4a593fb24b6317d3861a45e272a39543d781"
+        },
+        {
+          "path": "skills/usefulcharts-style/references/knowledge-density.md",
+          "sha256": "53df92092217b6b61a84532e6b1fb6da77d0a90b271db6bcf1886e77fc26306d"
+        },
+        {
+          "path": "skills/usefulcharts-style/references/narrative-chronology.md",
+          "sha256": "23f7ba8f27883a1d2022384c7f47abc17357a418f60b12da991625798324cc47"
+        },
+        {
+          "path": "skills/usefulcharts-style/references/note-hierarchy.md",
+          "sha256": "603b842db5448e9fa2586649bdf4bed69a0db2c07d9c19d3005097840a6e4fa6"
+        },
+        {
+          "path": "skills/usefulcharts-style/references/packed-stories.md",
+          "sha256": "222648b18f30b80ff31a42c44e15141f9c0ee2bba529960aff143f323a5d67ce"
+        },
+        {
+          "path": "skills/usefulcharts-style/references/palette-policy.md",
+          "sha256": "250f3695d4731181ccd6e5543271788fac2cb7f27eb8f6585670aee51552f0de"
+        },
+        {
+          "path": "skills/usefulcharts-style/references/panel-outlines.md",
+          "sha256": "8b89e3b4b6c9c755420bb769bdbf6c595636619f6650248b9c43e2c1800cdda8"
+        },
+        {
+          "path": "skills/usefulcharts-style/references/pattern-recipes.md",
+          "sha256": "85e4986ca9dc8c8a569c097c9f24670a039c4d7246afc6fd28f6220da012e7f5"
+        },
+        {
+          "path": "skills/usefulcharts-style/references/semantic-emblems.md",
+          "sha256": "d6e92e30d6e1171c2493cc14e2604f529029891ec1f27f054f3ed893f4bf2cbe"
+        },
+        {
+          "path": "skills/usefulcharts-style/references/shared-time-rows.md",
+          "sha256": "c79ba5df9468dcef3fecf53dc65c0b32db50d3ce07a9c9fd86f5fe950f44698c"
+        },
+        {
+          "path": "skills/usefulcharts-style/references/thematic-art-direction.md",
+          "sha256": "1dbc6f86c1294e9ebf0e0be9d992c129d11fa92321a2527b7710c45e28d715ef"
+        },
+        {
+          "path": "skills/usefulcharts-style/references/visible-discovery.md",
+          "sha256": "b5f97b9d37820933ecd8f1924cc7e7e0e4be815cbda5a4595391ad757cc98f94"
+        },
+        {
+          "path": "skills/usefulcharts-style/references/visual-grammar.md",
+          "sha256": "0c94f526aa5151db4288390ed5d335806a5c1a2d646b28b7f53d05926e0f55ba"
+        },
+        {
+          "path": "skills/usefulcharts-style/scripts/assess_exploration_review.py",
+          "sha256": "a2229cbf439fe1a8fa0d6b80d9ccb04edd406c2da39ef1e8a76b409561cc6a6c"
+        },
+        {
+          "path": "skills/usefulcharts-style/scripts/assess_illustrated_review.py",
+          "sha256": "1c49d4ed5b1b2dd2ec67e61e41632c4a26cddcb55902d398bf3b7482b5f7cb9d"
+        },
+        {
+          "path": "skills/usefulcharts-style/scripts/audit_branch_captions.py",
+          "sha256": "caa6a61aac0b99e7791cc6324092b6d0720531cac883ab7c59f7a65a49ae9f02"
+        },
+        {
+          "path": "skills/usefulcharts-style/scripts/audit_chart.py",
+          "sha256": "e37090d4438fb0abde8973b45298410ab2ab5db007d33a723ebffc60cfd9351d"
+        },
+        {
+          "path": "skills/usefulcharts-style/scripts/audit_context_insets.py",
+          "sha256": "e214932a3f20a37d30ec8d84cfd0c5ee9f6a23b0fc06db518542fda17289e169"
+        },
+        {
+          "path": "skills/usefulcharts-style/scripts/audit_panel_poster.py",
+          "sha256": "73fee278452bc02e4c186c0fa9d250039804406fad6a2c56884d6dfb458a16af"
+        },
+        {
+          "path": "skills/usefulcharts-style/scripts/audit_timeline_annotations.py",
+          "sha256": "1d1e58e43da09e0fd36947b3d3c0b5e64e6c58bb5c8d40cc6ad47d212063dcf4"
+        },
+        {
+          "path": "skills/usefulcharts-style/scripts/branching_envelopes.py",
+          "sha256": "ca2675208dd6cb6d0c0cbe3e1804d30202478e407412a203bb3bb0ad1b896bd3"
+        },
+        {
+          "path": "skills/usefulcharts-style/scripts/branching_layout.py",
+          "sha256": "60f9d3e350403f462a1ad6648d64fd4c80e9fee209cf6b2a962f1ddef1905c7a"
+        },
+        {
+          "path": "skills/usefulcharts-style/scripts/cohort_layout.py",
+          "sha256": "1574b6f7859ab19a555f2c43c984a34cdae5e31bd7244d9171bd5c6961870673"
+        },
+        {
+          "path": "skills/usefulcharts-style/scripts/compare_density.py",
+          "sha256": "bc775d05b3ccf76cd0b438f67f16c9db9c6963320c42e4994a538584186f2cee"
+        },
+        {
+          "path": "skills/usefulcharts-style/scripts/compose_branching_history.py",
+          "sha256": "aa94e0416987f84aaac008a7b93b90c473ce77063971fe69ecf7597c8f9008ac"
+        },
+        {
+          "path": "skills/usefulcharts-style/scripts/compose_context_insets.py",
+          "sha256": "8a6f34d1c2e34dcefa2df3409b051733ac4149b2cd0bbbf89ab3757eb9b3e657"
+        },
+        {
+          "path": "skills/usefulcharts-style/scripts/create_branch_poster.py",
+          "sha256": "24b27d784f12ebe025803b58f9e22d90c2ab4780a3754df0014a7c509cb96916"
+        },
+        {
+          "path": "skills/usefulcharts-style/scripts/create_panel_poster.py",
+          "sha256": "fbee147eb56c3cdfaa6a5a1e17ab7c3da9d34b1ac9efe767eddb094cfa1b9371"
+        },
+        {
+          "path": "skills/usefulcharts-style/scripts/editorial_art.py",
+          "sha256": "24f268e3a21df6f99a1735c70b16a55483d38bae6c32ed0fcaadca079899fa5c"
+        },
+        {
+          "path": "skills/usefulcharts-style/scripts/editorial_insets.py",
+          "sha256": "8ec568e8587e02d0f84f7042ad4a0f7fcf80d313380807293598cc60759787be"
+        },
+        {
+          "path": "skills/usefulcharts-style/scripts/editorial_landmarks.py",
+          "sha256": "7731537293eddf30bbdf5e45fc6b10f102d589ec691dc583df784f55477361a9"
+        },
+        {
+          "path": "skills/usefulcharts-style/scripts/editorial_poster.py",
+          "sha256": "5095e6ba2bf01e725b5d9e32feaa7dbed088d27ea78615cd583c5a9ef83c1dd0"
+        },
+        {
+          "path": "skills/usefulcharts-style/scripts/pack_shared_rows.py",
+          "sha256": "f48f16956405438e103470fd56475cbb9d9328e6599654a17824b645b08a656e"
+        },
+        {
+          "path": "skills/usefulcharts-style/scripts/pack_timeline_events.py",
+          "sha256": "ad840f292e52bdc2a784005e4b6e62b2836c93853c6aa945efec9fef1a35823f"
+        },
+        {
+          "path": "skills/usefulcharts-style/scripts/palette_contract.py",
+          "sha256": "c31b3b4f14b7651acac853ccb74482f14c08ff587b5263f236a33f521339ae6d"
+        },
+        {
+          "path": "skills/usefulcharts-style/scripts/place_context_landmarks.py",
+          "sha256": "3b946e7311ced098fdb1103ce406b249860d973a83dd40f4c35c16acfe042b86"
+        },
+        {
+          "path": "skills/usefulcharts-style/scripts/render_chart.py",
+          "sha256": "6432571f29bae316f2a93297ce5a29eda3e76f55415be0c39159a440e1864544"
+        },
+        {
+          "path": "skills/usefulcharts-style/scripts/route_influences.py",
+          "sha256": "a92a5a793023dd44a55d0ea9512a348d39d3b8f5f5ca7408a18cfe977fb69314"
+        },
+        {
+          "path": "skills/usefulcharts-style/scripts/space_family_branches.py",
+          "sha256": "3cce245b70f43501ee1c99dc435b620b9a2c27c09bae6949b485492a3cf3930b"
+        },
+        {
+          "path": "skills/usefulcharts-style/scripts/story_layout.py",
+          "sha256": "56f40dd9a307e9768ecead536848a7b2ccb899507f763742afeb63ab9d5e068d"
+        },
+        {
+          "path": "skills/usefulcharts-style/scripts/test_branch_bundle.py",
+          "sha256": "0704db1efa3918abd49e8fa724c8690803d7ea69e94aa6e92842403a6d7f7148"
+        },
+        {
+          "path": "skills/usefulcharts-style/scripts/test_branch_caption_audit.py",
+          "sha256": "6cca7b2800a1b1b46062d3a1ad4370304441aec9d95059384f1d5ff489ff356f"
+        },
+        {
+          "path": "skills/usefulcharts-style/scripts/test_branch_source.py",
+          "sha256": "c46190a3d6b5a8a2a1bac84ed4c7f086afcbda3792d95aaee92f96d230453def"
+        },
+        {
+          "path": "skills/usefulcharts-style/scripts/test_branching_layout.py",
+          "sha256": "58556258e8b14fb90ef3affb089baf2c8415c312d38f264a74987e8b63af756e"
+        },
+        {
+          "path": "skills/usefulcharts-style/scripts/test_chart.py",
+          "sha256": "a862ae9e96d29f4085f0323c91ac3885d2a6bc923a56f17e81abf184a35a01a6"
+        },
+        {
+          "path": "skills/usefulcharts-style/scripts/test_context_landmarks.py",
+          "sha256": "d2a1adb2847d93598cd6bc7664a2d5ff0531e44f3b69091648e81c7c25bb98b2"
+        },
+        {
+          "path": "skills/usefulcharts-style/scripts/test_density.py",
+          "sha256": "07c5430939578de6d08ad5a737ce658fa705d1030f5c7363b9fd0443ae1beed9"
+        },
+        {
+          "path": "skills/usefulcharts-style/scripts/test_editorial.py",
+          "sha256": "21eb97fbdbb1042d9879eeff8f7d1c911110c4bbec99c9d3fb31f1fec18b514a"
+        },
+        {
+          "path": "skills/usefulcharts-style/scripts/test_editorial_art.py",
+          "sha256": "82654bb2b8684434ec5fe1476ff0f25e4d9ddeb92a1fdcc1f2bb9fc26860a7c4"
+        },
+        {
+          "path": "skills/usefulcharts-style/scripts/test_editorial_insets.py",
+          "sha256": "7d6dd1d908e0dbb98a4f12a2a4c2dc8c5720782a6338911871ecc7a760413376"
+        },
+        {
+          "path": "skills/usefulcharts-style/scripts/test_exploration_review.py",
+          "sha256": "0704332916bacb8f68176824494adcf9a158b02c30e196a9d25795d43854b89e"
+        },
+        {
+          "path": "skills/usefulcharts-style/scripts/test_family_baselines.py",
+          "sha256": "bb4755fdba0e3c313cebf7304645acd0545c294510167cc73651c943d0b2bee7"
+        },
+        {
+          "path": "skills/usefulcharts-style/scripts/test_illustrated_review.py",
+          "sha256": "5cd31ffdf16e5b84e18e8133db3a2f637be1c06955e808ce681330536db3f4c1"
+        },
+        {
+          "path": "skills/usefulcharts-style/scripts/test_lineage_runs.py",
+          "sha256": "182788b6212e9d3927d1084d306553e5abf5c3510a047ef47f5d77de3d3921da"
+        },
+        {
+          "path": "skills/usefulcharts-style/scripts/test_panel_poster.py",
+          "sha256": "906f3dd5378dd6c5310f354a523f142ce2f2279a0ecaadaa082c89c4b22c04b2"
+        },
+        {
+          "path": "skills/usefulcharts-style/scripts/test_shared_rows.py",
+          "sha256": "1bf5766c7930f37dad028aa3b4f9fb4d47f55b10db489b12642cb15221b59fa7"
+        },
+        {
+          "path": "skills/usefulcharts-style/scripts/test_timeline_events.py",
+          "sha256": "dfa7e9b9eb9d91ff6d6814b423ddbc316527563ed4df7b54a27bb97305b0ae22"
+        },
+        {
+          "path": "skills/usefulcharts-style/scripts/test_timeline_geometry.py",
+          "sha256": "f79b28f95393e126dd84c87d98885d9732260bb93fa2286958bb260c1d62a743"
+        },
+        {
+          "path": "skills/usefulcharts-style/scripts/timeline_annotations.py",
+          "sha256": "bc50729ba63861e0286362bb53438741dca72631e87785c9ba2ecd7a3eaff8b9"
+        },
+        {
+          "path": "skills/usefulcharts-style/scripts/timeline_geometry.py",
+          "sha256": "4ab540dac17b97204bc1e3208f85a753d960e3711c01cb4c84e88d23330940c1"
+        },
+        {
+          "path": "skills/usefulcharts-style/scripts/verify_branch_source.py",
+          "sha256": "835b3ab6df6f4544745081b3ea323b499e5359608fbdb01ed2045b0436a100e5"
+        },
+        {
+          "path": "skills/usefulcharts-style/SKILL.md",
+          "sha256": "c61cb1e5f814dffaeba546e0429e67f5d68adf1eba2da10ea01a24b6d7bb7954"
+        }
+      ]
+    },
+    {
+      "skill": "hyperframes-explainer",
+      "activeSet": "colorset1",
+      "alternateSet": "colorset2 with existing explicit/semantic-capacity decision gate",
+      "outputs": [
+        "primitive authored HyperFrames HTML",
+        "calibrated inlet/vehicle SVG assets",
+        "imported flattened SVG marks",
+        "preview HTML",
+        "browser PNG/contact sheet",
+        "encoded MP4"
+      ],
+      "authoredScan": [
+        "assets/templates/index.html",
+        "assets/templates/preview.html",
+        "assets/templates/kernel.js",
+        "scripts/explainer.py",
+        "scripts/compose_mechanism.py",
+        "scripts/import_assets.py",
+        "assets/templates/brief.json",
+        "assets/examples/conserved-exchange.json"
+      ],
+      "sourceExemptions": [],
+      "changes": "Existing exact role palette and imported-mark enforcement audited; no renderer change",
+      "publicationRequired": false,
+      "isolatedValidation": {
+        "runId": "colorset-hyperframes-explainer-20261002-3",
+        "model": "gpt-6-luna",
+        "strict": true,
+        "passed": true,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        },
+        "skillDigest": "5eb61d48fe048614c924de2559ca43dbe17b70e0cb12d899462a8f406afb3a9a",
+        "outputs": [
+          {
+            "path": "output/project/index.html",
+            "sha256": "cd0f3a13851a304c520bba668042935174c3b5c617ab5d0115d4222b2bca02e3"
+          },
+          {
+            "path": "output/brief.json",
+            "sha256": "164fd461ec84226ad083b4636b3a338e65cbcd8422737977f349c6f0cc4139d4"
+          },
+          {
+            "path": "output/preflight.json",
+            "sha256": "f96390967bff785843c62cef5c950d0f7371643fadfda6f5497de7e2011c426c"
+          },
+          {
+            "path": "output/build.json",
+            "sha256": "49300329da8fe0a9aeba323728ba2e5108ed6be3e2b335448f237f7a7421e147"
+          }
+        ],
+        "traceSummaryCommand": "uv run --script scripts/summarize-pi-json-events.py evaluations/runs/colorset-hyperframes-explainer-20261002-3/events.jsonl --require-model gpt-6-luna --fail-on-invalid-json --fail-on-tool-error"
+      },
+      "testedCommands": [
+        {
+          "command": "uv run --script skills/hyperframes-explainer/scripts/test_explainer.py --work-dir projects/compositions-colorset-audit/artifacts/hyperframes-tests",
+          "result": "45 passed; unchanged renderer",
+          "passed": true
+        }
+      ],
+      "openGaps": [],
+      "touchedPaths": [],
+      "runtimeDependencyClosure": [
+        {
+          "path": "skills/hyperframes-explainer/agents/openai.yaml",
+          "sha256": "8e97916a2f1564737f628d34004346264e8d2b78ea3e6c12452690687feee4f2"
+        },
+        {
+          "path": "skills/hyperframes-explainer/assets/fonts/OFL.txt",
+          "sha256": "564ce565c371c5e5bbf286006565a7c9aa55a9f56e7ca58d56e05d649dd61a72"
+        },
+        {
+          "path": "skills/hyperframes-explainer/assets/fonts/space-grotesk.ttf",
+          "sha256": "3e699ead1876244fa392243054ddefe7cf631b488438828a8a100731a22ab995"
+        },
+        {
+          "path": "skills/hyperframes-explainer/assets/palettes/colorsets.json",
+          "sha256": "5ff838f9eaa5af5e80edcf3b23d00b0ce0aea92cd47bcda2bf0dad95d1395c26"
+        },
+        {
+          "path": "skills/hyperframes-explainer/assets/templates/audit.ts",
+          "sha256": "844ab0e55d346dc2df16c7f70432092bcb9b7acfdb61f4391394482852ad79e5"
+        },
+        {
+          "path": "skills/hyperframes-explainer/assets/templates/brief.json",
+          "sha256": "164fd461ec84226ad083b4636b3a338e65cbcd8422737977f349c6f0cc4139d4"
+        },
+        {
+          "path": "skills/hyperframes-explainer/assets/templates/hf.ts",
+          "sha256": "11a4e32cde23c7aca4c27cf76ca1a798c070e23ee4f515be8c7ec5f7f12ceaf0"
+        },
+        {
+          "path": "skills/hyperframes-explainer/assets/templates/index.html",
+          "sha256": "b3ef55c124eaefb41b8ea1389083ea7198f056da8d703f94bebcbf638996d36c"
+        },
+        {
+          "path": "skills/hyperframes-explainer/assets/templates/kernel.js",
+          "sha256": "2658ed4ea2927dc43e7e1f44cc03404b7c080f967de50de5b0301877ef883039"
+        },
+        {
+          "path": "skills/hyperframes-explainer/assets/templates/local-runtime.ts",
+          "sha256": "49206064f798fc72d26a2b0d94d56c87f01cdca232dcd8e8afb43ff0ea6e194a"
+        },
+        {
+          "path": "skills/hyperframes-explainer/assets/templates/preview.html",
+          "sha256": "67077c8c989c3f7f301242fcd7e55aceb7f575e526fe4da627a047a592082cb3"
+        },
+        {
+          "path": "skills/hyperframes-explainer/assets/vendor/GSAP-LICENSE.txt",
+          "sha256": "5e97d0bff35968b4642580876d00489591dc2d1cca0aaccf10e0fb7bb2302e75"
+        },
+        {
+          "path": "skills/hyperframes-explainer/assets/vendor/gsap.min.js",
+          "sha256": "c174bfce53a729418d57a8ad8625e7247c793a22fef8e2851e3cfa3de9cd8280"
+        },
+        {
+          "path": "skills/hyperframes-explainer/references/asset-contract.md",
+          "sha256": "4c681944fb28b8a53aba0439ac6a6d4101712da4c943d650bc8fe512902724f4"
+        },
+        {
+          "path": "skills/hyperframes-explainer/references/asset-direction.md",
+          "sha256": "b29f0e29cc12da5bb2b834ae099849fc17e48effb8c9b55011508d9b762ec4cf"
+        },
+        {
+          "path": "skills/hyperframes-explainer/references/calibrated-mechanisms.md",
+          "sha256": "83526ad4e12dae92367395ed3f0d124ef8accfac423c4c2eb62a79b193e983cc"
+        },
+        {
+          "path": "skills/hyperframes-explainer/references/explanation-design.md",
+          "sha256": "aa9a55626151a6285ba6a72ca3658f699b5636843e3f97b917a92d538cf0000b"
+        },
+        {
+          "path": "skills/hyperframes-explainer/references/hyperframes-runtime.md",
+          "sha256": "97b6779a9de0617434846952e9afc88c179d8ef774fb76d28a8b10dc5509ad14"
+        },
+        {
+          "path": "skills/hyperframes-explainer/references/palette-policy.md",
+          "sha256": "fa2a133f343d48ae3df3e3857d8bd96eb1dd9f683e0f6d2697f499a868be2de9"
+        },
+        {
+          "path": "skills/hyperframes-explainer/references/scene-contract.md",
+          "sha256": "514d90b27fd78710037ce34acc4e0483b1c87b3324a841f50af67338db289746"
+        },
+        {
+          "path": "skills/hyperframes-explainer/references/validation.md",
+          "sha256": "1aaa2ae4961254e3edae69bf25947bab54f256ca69875c91e82b45d47400842f"
+        },
+        {
+          "path": "skills/hyperframes-explainer/scripts/compose_mechanism.py",
+          "sha256": "4b5b59d2d6419c526a257eb1c1151af3d1024a35b855d0a66a6339441f189811"
+        },
+        {
+          "path": "skills/hyperframes-explainer/scripts/compose_mechanism.py.lock",
+          "sha256": "5f1151c6aa30526aad7026077df5376a79aa05ef1d990b04a69ea60e7c5018e2"
+        },
+        {
+          "path": "skills/hyperframes-explainer/scripts/explainer.py",
+          "sha256": "6f2924bddb5514081334fec667b28869e33059992108b1ed9ec72f83b11fb9e2"
+        },
+        {
+          "path": "skills/hyperframes-explainer/scripts/import_assets.py",
+          "sha256": "04b27abf57bd7d7f77b400a6e8784e9048bd917ff3fe64539d35e894228aa474"
+        },
+        {
+          "path": "skills/hyperframes-explainer/scripts/test_asset_import.py",
+          "sha256": "5a7c838c710c53a06709b094384cb363717d20105ea13264c4e6aff00cd6fb13"
+        },
+        {
+          "path": "skills/hyperframes-explainer/scripts/test_composition.py",
+          "sha256": "059b0a1ea5e503cd63bb987ee22b5e7da14a7a6f2c5d0f4b56235e74eb49c4a9"
+        },
+        {
+          "path": "skills/hyperframes-explainer/scripts/test_composition.py.lock",
+          "sha256": "5f1151c6aa30526aad7026077df5376a79aa05ef1d990b04a69ea60e7c5018e2"
+        },
+        {
+          "path": "skills/hyperframes-explainer/scripts/test_explainer.py",
+          "sha256": "cfc20755ec4bf9cdb098a1fdc9c3b81d75a73a576df21e540cce3882a1d98b32"
+        },
+        {
+          "path": "skills/hyperframes-explainer/SKILL.md",
+          "sha256": "b50102a90c7cc53208dce7771a8fb2960b5683e2c101a4411c4b9f29d159e5ef"
+        }
+      ]
+    },
+    {
+      "skill": "video",
+      "activeSet": "colorset1",
+      "alternateSet": "colorset2 for category-rich published concept gallery",
+      "outputs": [
+        "mixed SVG/GIF/raster/HTML/video compositor HTML",
+        "authored scene connectors and signal dots",
+        "browser MP4",
+        "Slidev recording",
+        "transition wrapper",
+        "concept gallery HTML/SVG",
+        "contact sheets"
+      ],
+      "authoredScan": [
+        "assets/templates/composite-scene-template.html",
+        "assets/templates/scene-contract.json",
+        "assets/examples/ai-concept-videos/*.css",
+        "assets/examples/ai-concept-videos/*.js",
+        "assets/examples/ai-concept-videos/scenes/*.js",
+        "assets/examples/ai-concept-videos/index.html"
+      ],
+      "sourceExemptions": [
+        {
+          "paths": [
+            "assets/examples/ai-concept-videos/assets/earth-globe-wikimedia.svg",
+            "assets/examples/ai-concept-videos/assets/*.png"
+          ],
+          "scope": "Original source pixels inside imported image assets or producer-owned GIF/HTML/Slidev/video elements",
+          "excluded": "Source pixels only; canvas, connectors, signal dots and authored gallery SVG shapes remain checked"
+        }
+      ],
+      "changes": "Canonical canvas/connector templates and runtime guards; quantized authored animated colors in published concept gallery",
+      "publicationRequired": true,
+      "isolatedValidation": {
+        "runId": "colorset-video-20261002-2",
+        "model": "gpt-5.6-luna",
+        "strict": true,
+        "passed": true,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        },
+        "skillDigest": "0be8b5a4dff0a43ccb3e9dd3674a786102510d561e17c2505d654574f5a413d1",
+        "outputs": [
+          {
+            "path": "output/scene-contract.json",
+            "sha256": "0e0189a7f708aba071137d3123a7fd97a22b4ef68c62d84c7c501774b9e60d53"
+          },
+          {
+            "path": "output/validation.json",
+            "sha256": "17d9f548b6eee65090247b38a50f4fe96133270ec52b5eb233e5048785b9f4d0"
+          }
+        ],
+        "traceSummaryCommand": "uv run --script scripts/summarize-pi-json-events.py evaluations/runs/colorset-video-20261002-2/events.jsonl --require-model gpt-5.6-luna --fail-on-invalid-json --fail-on-tool-error"
+      },
+      "testedCommands": [
+        {
+          "command": "uv run --script skills/video/scripts/test_scene_contracts.py --json",
+          "result": "13 passed, including real mixed-media MP4 render and validation",
+          "passed": true
+        }
+      ],
+      "openGaps": [
+        "No MP4 files ship in this gallery source. If an external media release also publishes old encoded gallery videos, regenerate those from the corrected renderer during that release; source photographs and video assets retain fidelity."
+      ],
+      "touchedPaths": [
+        "skills/video/SKILL.md",
+        "skills/video/assets/examples/ai-concept-videos/index.html",
+        "skills/video/assets/examples/ai-concept-videos/renderer.js",
+        "skills/video/assets/examples/ai-concept-videos/scenes/llm-mechanism.js",
+        "skills/video/assets/palettes/colorsets.json",
+        "skills/video/assets/templates/composite-scene-template.html",
+        "skills/video/assets/templates/scene-contract.json",
+        "skills/video/references/composition-brief-contract.md",
+        "skills/video/references/palette-policy.md",
+        "skills/video/references/transition-plan-contract.md",
+        "skills/video/scripts/make_video_contact_sheet.py",
+        "skills/video/scripts/palette_contract.py",
+        "skills/video/scripts/test_scene_contracts.py",
+        "skills/video/scripts/validate_scene_contract.py"
+      ],
+      "runtimeDependencyClosure": [
+        {
+          "path": "skills/video/agents/openai.yaml",
+          "sha256": "7df1a6ae8eb51d516d9af8b5c01bca5c8ae600e57a42ec9834596b9b1cd180bd"
+        },
+        {
+          "path": "skills/video/assets/palettes/colorsets.json",
+          "sha256": "6f3f7e36565d2747bd5567555c960a9de463f70b534a86267e721ffad5ae1031"
+        },
+        {
+          "path": "skills/video/assets/templates/brief-template.md",
+          "sha256": "d975b3a0fe6fa427d94fd6a37315df812067ca4ccb00d4c6e95b7c81ee2e1f7f"
+        },
+        {
+          "path": "skills/video/assets/templates/composite-scene-template.html",
+          "sha256": "4187af27155ec6b0993ff830e7461356aa712408db0e1adf84d3c247f1bbd210"
+        },
+        {
+          "path": "skills/video/assets/templates/production-notes-template.md",
+          "sha256": "0529eefaf504f89fdc9daf8295a293a38f3d1674ce9149d335f8c63cbcdeb810"
+        },
+        {
+          "path": "skills/video/assets/templates/scene-contract.json",
+          "sha256": "5305742536edf4558e4e37fbd315cfda409e061cf4a405ecbb03a4d076e1cb2f"
+        },
+        {
+          "path": "skills/video/references/browser-rendering.md",
+          "sha256": "7d6f2c2f17065d4ecb0df3ab4a5739e46fc60fcffccf8e02073d167f8e539bf7"
+        },
+        {
+          "path": "skills/video/references/composition-brief-contract.md",
+          "sha256": "f0671586a644bd4989023fd961731e38cd970e536c3aae1bc0c873cafebe8469"
+        },
+        {
+          "path": "skills/video/references/composition-selection-guide.md",
+          "sha256": "95bcfc27ae1d44c4e8f91ed39765a6f2815fcb8583ba5744b535ce2c1386b142"
+        },
+        {
+          "path": "skills/video/references/content-budget-and-fidelity.md",
+          "sha256": "7a36ab7dae254f921dde9f7cfb04fb77c1b75d1344f36e71ca33e73858f1995b"
+        },
+        {
+          "path": "skills/video/references/output-format-contract.md",
+          "sha256": "74312497c4d3c8d8ad517c813b73216c4945be64245d4710215f62bbfbeba05e"
+        },
+        {
+          "path": "skills/video/references/palette-policy.md",
+          "sha256": "250f3695d4731181ccd6e5543271788fac2cb7f27eb8f6585670aee51552f0de"
+        },
+        {
+          "path": "skills/video/references/scene-interaction-contract.md",
+          "sha256": "56a33c40a809e17c16b171eab503c5164c5595548e65c2a45ccddeea8cbb2994"
+        },
+        {
+          "path": "skills/video/references/slidev-recorder-options.md",
+          "sha256": "07ca2f7b9eb9bb16916e3894b0219b9a46cd4bb60fb938035c24df67d7ba721f"
+        },
+        {
+          "path": "skills/video/references/slidev-recording-troubleshooting.md",
+          "sha256": "29e0d238161fa0186f710c68d8b68a67d0587eb9f98078393275fc9860b47ea0"
+        },
+        {
+          "path": "skills/video/references/slidev-recording-workflow.md",
+          "sha256": "ed8db3872df2fb959cec21436222d95d731b4ee943d3153d77d757d2bae1be0c"
+        },
+        {
+          "path": "skills/video/references/slidev-video-quality.md",
+          "sha256": "f5dd721de53c1f8ead753720d795465e53bd3616ac7aa32a89f5083ef894f728"
+        },
+        {
+          "path": "skills/video/references/source-package.md",
+          "sha256": "bc5f21885a40ecc71754c5bdc935b01afae5c38742e69291a15895b68469bb62"
+        },
+        {
+          "path": "skills/video/references/source-preservation.md",
+          "sha256": "4414817094c55d026144f8e872351bdcba0a94b2d6605d194f991ee7aac3e427"
+        },
+        {
+          "path": "skills/video/references/storyboard-contract.md",
+          "sha256": "440d8123f0e92cc24f3c2496aa60a28ab746d6f04ab739009a65fdefdc363f81"
+        },
+        {
+          "path": "skills/video/references/tool-routing.md",
+          "sha256": "92b3bf2f88009bcc94a0600834af59d67650e570e0ea3dd82ecdf3c602a53e71"
+        },
+        {
+          "path": "skills/video/references/transition-decision-guide.md",
+          "sha256": "b6ae6eed854a8119b101c6bba1c3ad43974ab9e273e7bc8b28370911fa06dd8b"
+        },
+        {
+          "path": "skills/video/references/transition-pattern-catalog.md",
+          "sha256": "11a9bf6b8883205f5a5adbc139ceb62ff3326a5408ad7f39e0b09333cdd57ba5"
+        },
+        {
+          "path": "skills/video/references/transition-plan-contract.md",
+          "sha256": "5c9ae0c82ecc7e586c08cd09d6dca67f8e73e6f652539fe43d1918bbf7447904"
+        },
+        {
+          "path": "skills/video/references/transition-source-preservation.md",
+          "sha256": "651695fbb3c9c1305bda896a94eea0a4f2fd45057db174c25248739e6f610464"
+        },
+        {
+          "path": "skills/video/scripts/audit_video_motion.py",
+          "sha256": "320d2ac699470d9ba0d17fa91d4f46f6201a0835c181a2c92422d59dcfc06f3f"
+        },
+        {
+          "path": "skills/video/scripts/build_composite_scene.py",
+          "sha256": "b90db6cc69bdaae88bdb016414439c838d47a366acd798cd2a57776ff1282506"
+        },
+        {
+          "path": "skills/video/scripts/capture_html_video.py",
+          "sha256": "8a0fee786e0e1a9ab60605bb5a89bc6b8a5a561c01365a43397cd4af4ed10633"
+        },
+        {
+          "path": "skills/video/scripts/check_html_render_state.py",
+          "sha256": "7c52fd0d36d660515d408618790ab77967f0d0a9eb4c32b888fc1413f99595f3"
+        },
+        {
+          "path": "skills/video/scripts/check_renderer_contract.py",
+          "sha256": "63a59136c6a2ef50724c73dffa60ef6c6d69a8094a0fb004aca928702c7e178c"
+        },
+        {
+          "path": "skills/video/scripts/check_runtime_tools.py",
+          "sha256": "2f6d3ad25adbbd053619012fd1d54c0c65992093a0f80e540404d34f29c58876"
+        },
+        {
+          "path": "skills/video/scripts/check_video_artifact.py",
+          "sha256": "fa00639e50cd26c652492fbf4b7181861bdb72406407876ead5e36be94e1ee1d"
+        },
+        {
+          "path": "skills/video/scripts/check_video_brief.py",
+          "sha256": "b886c3b1342a7c3d29005064f159d95a4c9575595c407ed9549198762af89190"
+        },
+        {
+          "path": "skills/video/scripts/check_video_outputs.py",
+          "sha256": "192790c28f7bd74877bbbdab2baa8cda8d26c01a07f3de246ed90009d5d359f1"
+        },
+        {
+          "path": "skills/video/scripts/check_visual_contract.py",
+          "sha256": "3c84ed54eab0d6efe409dfd6f71b48eb31920821791de4c66c3e9efc0ce95679"
+        },
+        {
+          "path": "skills/video/scripts/extract_voiceover_cues.py",
+          "sha256": "460731b4467fdf097c84bfdd2287ea480747125e812ac6205a2895d21094f7ba"
+        },
+        {
+          "path": "skills/video/scripts/finalize_production_notes.py",
+          "sha256": "f5f55307a3b8049cff761ded3e5b703087a46cfdbb135b7b47d3628613a3c080"
+        },
+        {
+          "path": "skills/video/scripts/make_video_contact_sheet.py",
+          "sha256": "75137bb0df5b26babbd493914094d62a45a8d1e7e02bce2e85bfdae66995198c"
+        },
+        {
+          "path": "skills/video/scripts/palette_contract.py",
+          "sha256": "c31b3b4f14b7651acac853ccb74482f14c08ff587b5263f236a33f521339ae6d"
+        },
+        {
+          "path": "skills/video/scripts/record-slidev-video.ts",
+          "sha256": "ddcb95df69818c192e7bf4a78581488a8952bf2375a59730fb23a323d0367f6c"
+        },
+        {
+          "path": "skills/video/scripts/render_concept_video.py",
+          "sha256": "6b50318953a01436a6af755159f50b946a2c07d42299c340511675b530505430"
+        },
+        {
+          "path": "skills/video/scripts/review_video_quality.py",
+          "sha256": "7d857f0e94fe4baa23e7ab05eb138987252658a67b9460d96b912b56e20afeb4"
+        },
+        {
+          "path": "skills/video/scripts/scaffold_video_project.py",
+          "sha256": "8cf8bf5b1b5769b3a743795784160b8e02ce520ed0882c7e73a2291760eadf8e"
+        },
+        {
+          "path": "skills/video/scripts/test_scene_contracts.py",
+          "sha256": "4218f54c0a83c44e4c82e0f4612f4c1c612ffc619ac9cb9c90e263a5cd58d98a"
+        },
+        {
+          "path": "skills/video/scripts/validate_scene_composition_plan.py",
+          "sha256": "f21ac47f87f319b936b6337eebf40d27d9d55da218495a871afa0c08c25e8fb5"
+        },
+        {
+          "path": "skills/video/scripts/validate_scene_contract.py",
+          "sha256": "0f994d035e190b9204074e38852de1d06a032fb671dfa52b4e6f242e3722e66b"
+        },
+        {
+          "path": "skills/video/scripts/validate_transition_plan.py",
+          "sha256": "b8f9a991fe29d303e4b1ae849ef5e7a1538bf34e3955717e295114125d3d39ac"
+        },
+        {
+          "path": "skills/video/scripts/validate_video_contract.py",
+          "sha256": "ad66b1353eef4899e01b013d1a673e78a5a7f3bf390c2c193eef4583d565da76"
+        },
+        {
+          "path": "skills/video/SKILL.md",
+          "sha256": "b8f6c86ddde4001289c3c8ff9f94b78ddd673e31faac7f003335a789d37bf471"
+        }
+      ]
+    },
+    {
+      "skill": "manim-svg-video",
+      "activeSet": "colorset1",
+      "outputs": [
+        "replacement/mosaic generated Manim scene",
+        "vector and raster SVG imports",
+        "wrapper labels and placeholders",
+        "composition manifest",
+        "raw and exact-duration MP4"
+      ],
+      "authoredScan": [
+        "scripts/compose_svg_video.py",
+        "references/visual-tokens.md"
+      ],
+      "sourceExemptions": [
+        {
+          "scope": "Imported producer SVG/image content loaded by SVGMobject or ImageMobject",
+          "excluded": "Source shapes/image pixels only; all wrapper paints and placeholders remain checked"
+        }
+      ],
+      "changes": "Canonical wrapper, tile, label and failure paints; runtime exact token guards",
+      "publicationRequired": false,
+      "isolatedValidation": {
+        "runId": "colorset-manim-svg-video-20261002-2",
+        "model": "gpt-5.6-luna",
+        "strict": true,
+        "passed": true,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        },
+        "skillDigest": "0f1431000d5bf3678b6003f45b4ae857c9185be8cd34ec324d23033eff8ec2f2",
+        "outputs": [
+          {
+            "path": "output/composition/composition-manifest.json",
+            "sha256": "e01f6cd831359520f5ad3725e4240d4a5c443c42c14bad6c7830a971ea56dc21"
+          },
+          {
+            "path": "output/composition/manim_svg_video_scene.py",
+            "sha256": "50e077a2677c28fae4f4b68c7b3da6b2206a994905337755c72268e27ae99720"
+          }
+        ],
+        "traceSummaryCommand": "uv run --script scripts/summarize-pi-json-events.py evaluations/runs/colorset-manim-svg-video-20261002-2/events.jsonl --require-model gpt-5.6-luna --fail-on-invalid-json --fail-on-tool-error"
+      },
+      "testedCommands": [
+        {
+          "command": "uv run --script skills/manim-svg-video/scripts/compose_svg_video.py --from-list projects/compositions-colorset-audit/artifacts/manim-smoke/sources.txt --out projects/compositions-colorset-audit/artifacts/manim-smoke/render --duration 3 --fps 5 --resolution 640,360 --intro-seconds 0.2 --outro-seconds 0.2 --enter-seconds 0.3 --exit-seconds 0.3 --show-labels --render",
+          "result": "Real MP4 passed; SVG text import warning retained",
+          "passed": true
+        },
+        {
+          "command": "ffprobe -v error -select_streams v:0 -show_entries stream=width,height,r_frame_rate,nb_frames:format=duration -of json projects/compositions-colorset-audit/artifacts/manim-smoke/render/media/videos/manim_svg_video_scene/360p5/manim-svg-video.mp4",
+          "result": "640x360; 5/1 fps; 15 frames; exactly 3.000000 seconds",
+          "passed": true
+        }
+      ],
+      "openGaps": [
+        "Manim vector import does not reproduce SVG text/CSS/SMIL; the smoke retained its unsupported text-element warning. Use outlined text or documented raster import when source fidelity requires it."
+      ],
+      "touchedPaths": [
+        "skills/manim-svg-video/SKILL.md",
+        "skills/manim-svg-video/assets/palettes/colorsets.json",
+        "skills/manim-svg-video/references/composition-config.md",
+        "skills/manim-svg-video/references/palette-policy.md",
+        "skills/manim-svg-video/scripts/compose_svg_video.py",
+        "skills/manim-svg-video/scripts/palette_contract.py"
+      ],
+      "runtimeDependencyClosure": [
+        {
+          "path": "skills/manim-svg-video/agents/openai.yaml",
+          "sha256": "70cb251461600bd5645985a4886e0a36f23216380a08e10d107b52ea755c2955"
+        },
+        {
+          "path": "skills/manim-svg-video/assets/palettes/colorsets.json",
+          "sha256": "6f3f7e36565d2747bd5567555c960a9de463f70b534a86267e721ffad5ae1031"
+        },
+        {
+          "path": "skills/manim-svg-video/references/composition-config.md",
+          "sha256": "fb8aba852069ae0234b1ad29d1f7143535b256b852feeb7cfa940255dcce01e9"
+        },
+        {
+          "path": "skills/manim-svg-video/references/manim-svg-import.md",
+          "sha256": "a353f01a1d5d01f9a98941e3cb961b5203497c034e84b73c099d93a4f095113a"
+        },
+        {
+          "path": "skills/manim-svg-video/references/palette-policy.md",
+          "sha256": "250f3695d4731181ccd6e5543271788fac2cb7f27eb8f6585670aee51552f0de"
+        },
+        {
+          "path": "skills/manim-svg-video/references/visual-tokens.md",
+          "sha256": "244602498d5bcac8664d3923e11bb45095c6e0a70c34df935a4a61f7439a74e0"
+        },
+        {
+          "path": "skills/manim-svg-video/scripts/compose_svg_video.py",
+          "sha256": "89a5f00c4836ed43a5b2b422c32c24e40864b0f454315f0edafa487d313559ad"
+        },
+        {
+          "path": "skills/manim-svg-video/scripts/palette_contract.py",
+          "sha256": "c31b3b4f14b7651acac853ccb74482f14c08ff587b5263f236a33f521339ae6d"
+        },
+        {
+          "path": "skills/manim-svg-video/SKILL.md",
+          "sha256": "8f86d4830ab9215515f8a410a145cb070fd038b0ed292129310ee32d5ea117bc"
+        }
+      ]
+    }
+  ],
+  "scope": "Authored paints, exact canvas cells, renderer defaults and supported output/export routes. Source-preserved media is reported separately.",
+  "canonicalPaletteSha256": "5ff838f9eaa5af5e80edcf3b23d00b0ce0aea92cd47bcda2bf0dad95d1395c26",
+  "sharedValidation": [
+    {
+      "command": "uv run --script projects/compositions-colorset-audit/scripts/audit_browser_palettes.py",
+      "passed": true,
+      "states": 147,
+      "report": "projects/compositions-colorset-audit/artifacts/reviews/browser-palette-audit.json",
+      "coverage": "Four hierarchy views, all lenses/scopes/scales and SVG exports; composition scenarios; three posters; every video concept at seven times; HyperFrames starter at six times"
+    },
+    {
+      "command": "uv run --script projects/compositions-colorset-audit/scripts/test_palette_guards.py",
+      "passed": true,
+      "coverage": "Five configurable entry points reject #123456; hierarchy and HyperFrames use fixed exact roles"
+    }
+  ],
+  "browserEnvironment": {
+    "PLAYWRIGHT_BROWSERS_PATH": "C:/Users/villa/dev/skills/projects/compositions-colorset-audit/artifacts/browsers",
+    "TEMP": "C:/Users/villa/dev/skills/projects/compositions-colorset-audit/artifacts/tmp",
+    "TMP": "same as TEMP"
+  },
+  "publication": {
+    "owner": "root agent",
+    "sets": [
+      "compose-synchronized-svg",
+      "hierarchy-lens",
+      "usefulcharts-style",
+      "ai-concept-videos"
+    ],
+    "needed": "Build dist/pages, run final repository/payload/pattern validators, refresh local installation, commit/push authorized sources and verify Pages workflow"
+  },
+  "retainedFailures": [
+    {
+      "runs": [
+        "colorset-video-20261002-1",
+        "colorset-manim-svg-video-20261002-1"
+      ],
+      "class": "provider-model-unavailable",
+      "reason": "The gpt-5.3-codex-spark model is not supported when using Codex with this ChatGPT account; zero tool calls",
+      "resolution": "Authorized gpt-5.6-luna exception required in backlog"
+    },
+    {
+      "runs": [
+        "colorset-hierarchy-lens-20261002-1",
+        "colorset-hierarchy-lens-20261002-3",
+        "colorset-hierarchy-lens-20261002-4"
+      ],
+      "class": "strict-forward-failures",
+      "reason": "Ad hoc probe tool errors, obsolete dark-palette audit expectations, and invented usage.md read respectively",
+      "resolution": "Updated actual color oracles; precise real reference routing; final strict candidate passed"
+    },
+    {
+      "runs": [
+        "colorset-hyperframes-explainer-20261002-2"
+      ],
+      "class": "forbidden-harness-read",
+      "reason": "Agent read ../run-manifest.json",
+      "resolution": "Prompt clarified harness boundary; final strict candidate passed"
+    },
+    {
+      "runs": [
+        "colorset-compose-synchronized-svg-20261002-3"
+      ],
+      "class": "evaluation-configuration",
+      "reason": "Expect-output flags named different files than the written task prompt",
+      "resolution": "Aligned flags with actual requested paths; subsequent strict runs passed"
+    }
+  ],
+  "touchedPaths": [
+    "skills/compose-synchronized-svg/SKILL.md",
+    "skills/compose-synchronized-svg/assets/examples/compose-synchronized-svg/heatwave-tree.svg",
+    "skills/compose-synchronized-svg/assets/examples/compose-synchronized-svg/index.html",
+    "skills/compose-synchronized-svg/assets/examples/compose-synchronized-svg/inference-pulse.svg",
+    "skills/compose-synchronized-svg/assets/palettes/colorsets.json",
+    "skills/compose-synchronized-svg/references/color-and-visual-quality.md",
+    "skills/compose-synchronized-svg/references/palette-policy.md",
+    "skills/compose-synchronized-svg/references/spatial-world-and-camera.md",
+    "skills/compose-synchronized-svg/scripts/compile_synchronized_svg_plan.py",
+    "skills/compose-synchronized-svg/scripts/compose_synchronized_svg.py",
+    "skills/compose-synchronized-svg/scripts/palette_contract.py",
+    "skills/compose-synchronized-svg/scripts/replace_svg_module.py",
+    "skills/compose-synchronized-svg/scripts/scaffold_synchronized_svg.py",
+    "skills/compose-synchronized-svg/scripts/test_svg_text_pairs.py",
+    "skills/compose-synchronized-svg/scripts/test_svg_themes.py",
+    "skills/compose-synchronized-svg/scripts/test_synchronized_svg_tools.py",
+    "skills/compose-synchronized-svg/scripts/test_theme_contract.py",
+    "skills/compose-synchronized-svg/scripts/theme_contract.py",
+    "skills/compose-synchronized-svg/scripts/validate_synchronized_svg.py",
+    "skills/diagram-composition/SKILL.md",
+    "skills/diagram-composition/assets/palettes/colorsets.json",
+    "skills/diagram-composition/references/connectors-and-surfaces.md",
+    "skills/diagram-composition/references/native-panels.md",
+    "skills/diagram-composition/references/palette-policy.md",
+    "skills/diagram-composition/references/shared-colors.md",
+    "skills/diagram-composition/scripts/build_panels.py",
+    "skills/diagram-composition/scripts/compose_diagram.py",
+    "skills/diagram-composition/scripts/palette_contract.py",
+    "skills/diagram-composition/scripts/test_browser.py",
+    "skills/diagram-composition/scripts/test_composition.py",
+    "skills/diagram-composition/scripts/test_connector_quality.py",
+    "skills/diagram-composition/scripts/test_native_panels.py",
+    "skills/diagram-composition/scripts/test_shared_colors.py",
+    "skills/diagram-composition/scripts/visual_quality.py",
+    "skills/hierarchy-lens/SKILL.md",
+    "skills/hierarchy-lens/assets/examples/hierarchy-lens/analytical.html",
+    "skills/hierarchy-lens/assets/examples/hierarchy-lens/index.html",
+    "skills/hierarchy-lens/assets/examples/hierarchy-lens/organic.html",
+    "skills/hierarchy-lens/assets/examples/hierarchy-lens/radial.html",
+    "skills/hierarchy-lens/assets/palettes/colorsets.json",
+    "skills/hierarchy-lens/assets/templates/decision-ui.js",
+    "skills/hierarchy-lens/assets/templates/explorer.html",
+    "skills/hierarchy-lens/assets/templates/pixels.html",
+    "skills/hierarchy-lens/references/palette-policy.md",
+    "skills/hierarchy-lens/scripts/audit_decisions.py",
+    "skills/hierarchy-lens/scripts/audit_pixels.py",
+    "skills/manim-svg-video/SKILL.md",
+    "skills/manim-svg-video/assets/palettes/colorsets.json",
+    "skills/manim-svg-video/references/composition-config.md",
+    "skills/manim-svg-video/references/palette-policy.md",
+    "skills/manim-svg-video/scripts/compose_svg_video.py",
+    "skills/manim-svg-video/scripts/palette_contract.py",
+    "skills/usefulcharts-style/SKILL.md",
+    "skills/usefulcharts-style/assets/examples/usefulcharts-style/atlas-of-inquiry.html",
+    "skills/usefulcharts-style/assets/examples/usefulcharts-style/atlas-of-inquiry.json",
+    "skills/usefulcharts-style/assets/examples/usefulcharts-style/atlas-of-inquiry.svg",
+    "skills/usefulcharts-style/assets/examples/usefulcharts-style/aurelian-families.html",
+    "skills/usefulcharts-style/assets/examples/usefulcharts-style/aurelian-families.json",
+    "skills/usefulcharts-style/assets/examples/usefulcharts-style/aurelian-families.svg",
+    "skills/usefulcharts-style/assets/examples/usefulcharts-style/build_examples.py",
+    "skills/usefulcharts-style/assets/examples/usefulcharts-style/five-regional-histories.html",
+    "skills/usefulcharts-style/assets/examples/usefulcharts-style/five-regional-histories.json",
+    "skills/usefulcharts-style/assets/examples/usefulcharts-style/five-regional-histories.svg",
+    "skills/usefulcharts-style/assets/examples/usefulcharts-style/index.html",
+    "skills/usefulcharts-style/assets/examples/usefulcharts-style/lineage_brief.py",
+    "skills/usefulcharts-style/assets/examples/usefulcharts-style/manifest.json",
+    "skills/usefulcharts-style/assets/examples/usefulcharts-style/poster_briefs.py",
+    "skills/usefulcharts-style/assets/examples/usefulcharts-style/timeline_brief.py",
+    "skills/usefulcharts-style/assets/illustrations/astrolabe-observation.svg",
+    "skills/usefulcharts-style/assets/illustrations/clock-escapement.svg",
+    "skills/usefulcharts-style/assets/palettes/colorsets.json",
+    "skills/usefulcharts-style/assets/templates/cohorts.json",
+    "skills/usefulcharts-style/assets/templates/compact-timeline.json",
+    "skills/usefulcharts-style/assets/templates/lineage.json",
+    "skills/usefulcharts-style/assets/templates/narrative-timeline.json",
+    "skills/usefulcharts-style/assets/templates/packed-lineage.json",
+    "skills/usefulcharts-style/assets/templates/starter.json",
+    "skills/usefulcharts-style/references/palette-policy.md",
+    "skills/usefulcharts-style/references/panel-outlines.md",
+    "skills/usefulcharts-style/scripts/create_panel_poster.py",
+    "skills/usefulcharts-style/scripts/editorial_art.py",
+    "skills/usefulcharts-style/scripts/editorial_poster.py",
+    "skills/usefulcharts-style/scripts/palette_contract.py",
+    "skills/usefulcharts-style/scripts/render_chart.py",
+    "skills/usefulcharts-style/scripts/test_branch_bundle.py",
+    "skills/usefulcharts-style/scripts/test_branch_caption_audit.py",
+    "skills/usefulcharts-style/scripts/test_branch_source.py",
+    "skills/usefulcharts-style/scripts/test_branching_layout.py",
+    "skills/usefulcharts-style/scripts/test_chart.py",
+    "skills/usefulcharts-style/scripts/test_context_landmarks.py",
+    "skills/usefulcharts-style/scripts/test_density.py",
+    "skills/usefulcharts-style/scripts/test_editorial.py",
+    "skills/usefulcharts-style/scripts/test_editorial_art.py",
+    "skills/usefulcharts-style/scripts/test_editorial_insets.py",
+    "skills/usefulcharts-style/scripts/test_exploration_review.py",
+    "skills/usefulcharts-style/scripts/test_family_baselines.py",
+    "skills/usefulcharts-style/scripts/test_illustrated_review.py",
+    "skills/usefulcharts-style/scripts/test_lineage_runs.py",
+    "skills/usefulcharts-style/scripts/test_panel_poster.py",
+    "skills/usefulcharts-style/scripts/test_shared_rows.py",
+    "skills/usefulcharts-style/scripts/test_timeline_events.py",
+    "skills/usefulcharts-style/scripts/test_timeline_geometry.py",
+    "skills/video/SKILL.md",
+    "skills/video/assets/examples/ai-concept-videos/index.html",
+    "skills/video/assets/examples/ai-concept-videos/renderer.js",
+    "skills/video/assets/examples/ai-concept-videos/scenes/llm-mechanism.js",
+    "skills/video/assets/palettes/colorsets.json",
+    "skills/video/assets/templates/composite-scene-template.html",
+    "skills/video/assets/templates/scene-contract.json",
+    "skills/video/references/composition-brief-contract.md",
+    "skills/video/references/palette-policy.md",
+    "skills/video/references/transition-plan-contract.md",
+    "skills/video/scripts/make_video_contact_sheet.py",
+    "skills/video/scripts/palette_contract.py",
+    "skills/video/scripts/test_scene_contracts.py",
+    "skills/video/scripts/validate_scene_contract.py"
+  ],
+  "touchedPathsNote": "Explicit canonical source files edited by this audit, including test-fixture rewrite sweeps that can leave identical bytes. These files can also contain pre-existing uncommitted authoring work; this list does not claim exclusive diff ownership. No Hyperframes source mutation was required.",
+  "dependencyClosureNote": "Exact standalone runtime payload paths and hashes; excludes assets/examples, node_modules, __pycache__ and environment folders. Copy these dependencies explicitly if the detached release checkout lacks pre-existing uncommitted runtime resources. No sibling bundle or repository-root runtime reading is required.",
+  "durableAuditPaths": [
+    "evaluations/colorset-audit/compositions-20261002.md",
+    "evaluations/colorset-audit/compositions-20261002.json",
+    "evaluations/colorset-audit/prompts/compose-synchronized-svg.md",
+    "evaluations/colorset-audit/prompts/diagram-composition.md",
+    "evaluations/colorset-audit/prompts/echarts-diagrams-20261002.md",
+    "evaluations/colorset-audit/prompts/hierarchy-lens.md",
+    "evaluations/colorset-audit/prompts/hyperframes-explainer.md",
+    "evaluations/colorset-audit/prompts/manim-svg-video.md",
+    "evaluations/colorset-audit/prompts/mermaid-diagrams-20261002.md",
+    "evaluations/colorset-audit/prompts/plantuml-diagrams-20261002.md",
+    "evaluations/colorset-audit/prompts/slidev-animejs-diagrams-20261002.md",
+    "evaluations/colorset-audit/prompts/slidev-echarts-diagrams-20261002.md",
+    "evaluations/colorset-audit/prompts/slidev-quality-diagrams-20261002.md",
+    "evaluations/colorset-audit/prompts/usefulcharts-style.md",
+    "evaluations/colorset-audit/prompts/video.md"
+  ],
+  "supportBrowserReport": "evaluations/colorset-audit/support-browser-20261002.json",
+  "allStrictPassed": true
+}

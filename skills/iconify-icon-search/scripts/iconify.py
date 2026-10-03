@@ -8,6 +8,7 @@ import argparse
 import json
 import re
 import sys
+from pathlib import Path
 from urllib.parse import urlencode
 
 sys.dont_write_bytecode = True
@@ -28,7 +29,7 @@ def split_id(value):
 def normalize(asset_id, info):
     prefix, name = split_id(asset_id)
     return {"id": asset_id, "title": name.replace("-", " "), "type": "icon", "family": prefix,
-            "page_url": f"https://icon-sets.iconify.design/{prefix}/{name}/", "thumbnail": f"{API}/{prefix}/{name}.svg?height=128&color=%2317222d",
+            "page_url": f"https://icon-sets.iconify.design/{prefix}/{name}/", "thumbnail": f"{API}/{prefix}/{name}.svg?height=128&color=%23333e48",
             "author": info.get("author", {}).get("name"), "license": info.get("license", {"title": "Check collection source"}),
             "collection": info.get("name", prefix), "multicolor": info.get("palette"), "collection_tags": info.get("tags", [])}
 
@@ -46,6 +47,13 @@ def svg_entry(asset_id, color, size):
     prefix, name = split_id(asset_id)
     if not re.fullmatch(r"(?:#[0-9a-fA-F]{3,8}|[a-zA-Z]+)", color) or not 1 <= size <= 4096:
         raise ResourceError("Use a CSS color name or hex color and --size between 1 and 4096.")
+    token = color.lower()
+    if re.fullmatch(r"#[0-9a-f]{3}", token):
+        token = "#" + "".join(value * 2 for value in token[1:])
+    contract = json.loads((Path(__file__).resolve().parents[1] / "assets/palettes/colorsets.json").read_text(encoding="utf-8"))
+    allowed = set(contract["colorsets"]["colorset2"]["allowed"])
+    if token not in allowed and token != "currentcolor":
+        raise ResourceError("Monochrome icon paint must fit colorset1/colorset2; resolve currentColor in the consuming surface.")
     return {"key": "svg", "extension": "svg", "url": f"{API}/{prefix}/{name}.svg?" + urlencode({"color": color, "height": size})}
 
 
@@ -68,7 +76,7 @@ def parser():
             s.add_argument("--out", required=True)
         else:
             s.add_argument("--output", required=True)
-            s.add_argument("--color", default="currentColor")
+            s.add_argument("--color", default="#333e48")
             s.add_argument("--size", type=int, default=24)
             s.add_argument("--max-mib", type=float, default=4)
     return p

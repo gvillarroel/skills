@@ -1,9 +1,11 @@
 ---
 name: plantuml-colorset-renderer
-description: Render and validate PlantUML diagrams with bundled colorset themes across UML and non-UML families. Use for PlantUML creation, styling, cloud architecture diagrams, SVG or PNG batch rendering, deterministic reports, private local rendering, and diagram-family coverage; do not use for standalone logo search or export.
+description: "Renders and validates PlantUML diagrams with bundled colorset themes across UML and non-UML families. Use for PlantUML creation, styling, cloud architecture diagrams, SVG or PNG batch rendering, deterministic reports, private local rendering, and diagram-family coverage; do not use for standalone logo search or export."
 ---
 
 # PlantUML Colorset Renderer
+
+Read [the colorset output contract](references/colorset-contract.md) before authoring or auditing visual output. Apply one exact bundled palette to every authored output path and inspect rendered paint. Default to colorset1; declare colorset2 when its category distinctions are needed.
 
 ## Core Contract
 
@@ -13,7 +15,7 @@ Map exact paths before rendering: the renderer writes
 `--output rendered`, and use that same root in the report validator. Do not
 pass `rendered/svg` as the root. Keep the requested input filename unchanged.
 
-Preserve the user's PlantUML source semantics. Apply the requested bundled colorset theme as presentation only, then render SVG and PNG outputs with a report that records every source, output path, format, colorset, and render engine. Default to colorset2 unless the user asks for colorset1.
+Preserve the user's PlantUML source semantics. Apply the requested bundled colorset theme as presentation only, then render SVG and PNG outputs with a report that records every source, output path, format, colorset, and render engine. Default to colorset1; use colorset2 for an explicit full-color request or a documented semantic category need.
 
 Prefer local rendering for private diagrams. Use a remote fallback such as Kroki or PlantUML Server only when the user permits external rendering or the task is validation/example work with non-sensitive sources.
 

@@ -1,5 +1,11 @@
 # Procedural Pattern Families
 
+## Contents
+
+- [Selection Matrix](#selection-matrix)
+- [Family Catalog](#family-catalog)
+- [Extension Contract](#extension-contract)
+
 Use this reference when choosing or extending a mechanism. From the task workspace root, query exact catalog metadata with `uv run --script skills/procedural-svg-animation/scripts/build_procedural_svg.py --list` or `--describe <id>`.
 
 ## Selection Matrix

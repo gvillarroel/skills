@@ -1,0 +1,4 @@
+interface:
+  display_name: "SVG Brief Design"
+  short_description: "Build and refine original editable SVG artwork"
+  default_prompt: "Use $svg-brief-design to create an original editable SVG from my brief, using a suitable procedural base and refining its proportions and details."

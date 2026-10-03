@@ -9,6 +9,7 @@ A maintained collection of reusable skills, compact references, deterministic he
 - [Agent instructions](../AGENTS.md)
 - [Skill backlog and validation status](../SKILLS.md)
 - [Evaluation methodology](../evaluations/README.md)
+- [Colorset contract and skill output coverage](colorsets.md)
 
 ## Build output boundary
 

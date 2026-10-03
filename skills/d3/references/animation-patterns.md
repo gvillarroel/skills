@@ -10,6 +10,8 @@ Use these patterns when the final artifact is an animated SVG, not only a live D
 
 Keep standalone SVG animation separate from HTML gallery replay behavior. A gallery replay button may call a render function and rebuild one SVG, but an extracted SVG should still animate when opened without external JavaScript.
 
+Put SMIL timing and lifetime settings on animation elements as attributes, such as `<animate attributeName="opacity" from="0" to="1" dur=".4s" fill="freeze"/>`. They are not CSS properties: `fill: freeze` is invalid CSS paint. Keep final geometry and visible text in the underlying attributes so the meaningful state survives extraction and reduced motion.
+
 ## Common Patterns
 
 - **Staged reveal:** Use for discrete marks, matrices, waffle grids, choropleth tiles, and labels. Set per-mark delays and reveal labels after marks.

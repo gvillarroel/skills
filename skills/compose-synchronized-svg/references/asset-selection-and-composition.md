@@ -1,5 +1,18 @@
 # Asset Selection And Composition
 
+## Contents
+
+- [Start From Questions](#start-from-questions)
+- [Match Questions To Assets](#match-questions-to-assets)
+- [Score Candidates](#score-candidates)
+- [Check Coverage And Nonredundancy](#check-coverage-and-nonredundancy)
+- [Build a Navigable World When One Screen Is Not Enough](#build-a-navigable-world-when-one-screen-is-not-enough)
+- [Choose One Global Armature](#choose-one-global-armature)
+- [Declare Honest Cross-Module Relationships](#declare-honest-cross-module-relationships)
+- [Preserve Shared Identity](#preserve-shared-identity)
+- [Import SVG Assets Safely](#import-svg-assets-safely)
+- [Composition Review Gate](#composition-review-gate)
+
 Use this reference before drawing modules. Select assets from the questions the composition must answer, then choose one global armature and one shared identity system. Decide whether the result is a compact 6–16-module megacanvas or a 12–48-module navigable world before assigning geometry. Both must read as one explanatory object, not as unrelated dashboard cards.
 
 ## Start From Questions

@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "brief": "State the intended audience, illustrated character and reading question.",
+  "artifacts": {"whole": {"path": "poster.png", "sha256": ""}, "detail": {"path": "detail.png", "sha256": ""}},
+  "reviewed_images": false,
+  "content_verified": false,
+  "technical_verified": false,
+  "required_groups": [],
+  "record_ids": [],
+  "minimum_body_regions": 2,
+  "body_images": [],
+  "discovery_invitations": [],
+  "dimensions": {
+    "composition": {"score": 0, "observation": ""},
+    "image_usefulness": {"score": 0, "observation": ""},
+    "image_integration": {"score": 0, "observation": ""},
+    "playful_discovery": {"score": 0, "observation": ""},
+    "legibility": {"score": 0, "observation": ""}
+  },
+  "before_weaknesses": [],
+  "repairs_observed": [],
+  "unresolved_defects": [],
+  "reference_density_status": "pending"
+}

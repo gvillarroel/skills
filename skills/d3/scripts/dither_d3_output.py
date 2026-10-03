@@ -29,6 +29,19 @@ from playwright.sync_api import sync_playwright
 
 
 DEFAULT_PALETTE = "#000000,#333e48,#9e1b32,#ffffff"
+PALETTE_CONTRACT = Path(__file__).resolve().parents[1] / "assets/palettes/colorsets.json"
+
+
+def validate_palette_contract(palette: Sequence[Sequence[int]], colorset: str) -> None:
+    contracts = json.loads(PALETTE_CONTRACT.read_text(encoding="utf-8"))["colorsets"]
+    if colorset not in contracts:
+        raise ValueError("Select colorset1 or colorset2")
+    allowed = set(contracts[colorset]["allowed"])
+    bad = sorted({color_hex(color) for color in palette} - allowed)
+    if bad:
+        raise ValueError(f"Dither palette contains colors outside {colorset}: {', '.join(bad)}")
+
+
 BAYER_MATRICES = {
     2: ((0, 2), (3, 1)),
     4: (
@@ -257,13 +270,16 @@ def build_svg(
     title: str,
     animate: bool,
     duration: float,
+    colorset: str = "colorset1",
 ) -> tuple[str, int]:
+    validate_palette_contract(palette, colorset)
     palette_tokens = tuple(color_hex(color) for color in palette)
     runs = list(iter_runs(indices, alphas, alpha_threshold))
     if not runs:
         raise SystemExit("Dithering produced no visible pixels; lower --alpha-threshold or choose another selector")
 
     metadata = {
+        "data-colorset": colorset,
         "data-dither-algorithm": algorithm,
         "data-dither-matrix-size": str(matrix_size if algorithm == "ordered" else 0),
         "data-dither-cell-size": str(cell_size),
@@ -320,7 +336,9 @@ def build_preview(
     width: int,
     height: int,
     alpha_threshold: int,
+    colorset: str = "colorset1",
 ) -> Image.Image:
+    validate_palette_contract(palette, colorset)
     grid_height = len(indices)
     grid_width = len(indices[0]) if grid_height else 0
     preview = Image.new("RGBA", (grid_width, grid_height), (0, 0, 0, 0))
@@ -350,6 +368,7 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument("--algorithm", choices=("ordered", "floyd-steinberg", "atkinson", "nearest"), default="ordered")
     parser.add_argument("--palette", type=parse_palette, default=parse_palette(DEFAULT_PALETTE))
+    parser.add_argument("--colorset", choices=("colorset1", "colorset2"), default="colorset1", help="Exact token contract for the dither palette")
     parser.add_argument("--cell-size", type=int, default=4, help="Output dither-cell size in captured CSS pixels")
     parser.add_argument("--matrix-size", type=int, choices=tuple(BAYER_MATRICES), default=4, help="Bayer matrix size for ordered dithering")
     parser.add_argument("--ordered-strength", type=float, default=0.72, help="Ordered-threshold perturbation strength from 0 to 2")
@@ -365,6 +384,10 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--json-report", type=Path, help="Optional machine-readable validation report")
     parser.add_argument("--ignore-console-errors", action="store_true")
     args = parser.parse_args()
+    try:
+        validate_palette_contract(args.palette, args.colorset)
+    except ValueError as error:
+        parser.error(str(error))
     if args.output.suffix.lower() != ".svg":
         parser.error("--output must end in .svg")
     if args.cell_size < 1 or args.cell_size > 64:
@@ -422,6 +445,7 @@ def main() -> int:
         indices=indices,
         alphas=alphas,
         palette=args.palette,
+        colorset=args.colorset,
         alpha_threshold=args.alpha_threshold,
         algorithm=args.algorithm,
         matrix_size=args.matrix_size,
@@ -442,6 +466,7 @@ def main() -> int:
             image.width,
             image.height,
             args.alpha_threshold,
+            args.colorset,
         ).save(args.preview_png.resolve())
 
     report = {
@@ -453,6 +478,7 @@ def main() -> int:
         "matrixSize": args.matrix_size if args.algorithm == "ordered" else None,
         "cellSize": args.cell_size,
         "palette": [color_hex(color) for color in args.palette],
+        "colorset": args.colorset,
         "sourceWidth": image.width,
         "sourceHeight": image.height,
         "gridWidth": len(indices[0]),

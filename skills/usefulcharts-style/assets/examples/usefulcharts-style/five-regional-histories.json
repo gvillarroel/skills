@@ -15,34 +15,34 @@
     {
       "id": "g0",
       "label": "Riverlands",
-      "color": "#F56550"
+      "color": "#9e1b32"
     },
     {
       "id": "g1",
       "label": "Highlands",
-      "color": "#77BDDD"
+      "color": "#007298"
     },
     {
       "id": "g2",
       "label": "Coastlands",
-      "color": "#F2C529"
+      "color": "#e77204"
     },
     {
       "id": "g3",
       "label": "Islands",
-      "color": "#98BD92"
+      "color": "#45842a"
     },
     {
       "id": "g4",
       "label": "Northlands",
-      "color": "#B88BC6"
+      "color": "#652f6c"
     }
   ],
   "source_note": "Synthetic history \u00b7 All periods, events and relationships are invented. Contextual art: PSF, Library of Congress, Nordisk familjebok and The New Student's Reference Work; provenance embedded.",
   "annotations": [],
   "pattern_id": "usefulcharts-parallel-history",
   "subtitle": "Divisions, unions, and changing societies in five fictional regions, 1000\u20132000",
-  "frame_color": "#665D48",
+  "frame_color": "#4f4f4f",
   "time": {
     "start": 1000,
     "end": 2000,

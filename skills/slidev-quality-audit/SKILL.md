@@ -1,9 +1,11 @@
 ---
 name: slidev-quality-audit
-description: Audit Slidev decks for visual quality regressions with automated Playwright checks and actionable critiques. Use when Codex needs to verify Slidev presentations for off-screen elements, clipped or hidden information, text overlap, low contrast, tiny text, blank charts or media, broken assets, unchanged click states, unsafe margins, and excessive content density before delivering a deck, screenshot set, or video.
+description: "Audits Slidev decks for visual quality regressions with automated Playwright checks and actionable critiques. Use when Codex needs to verify Slidev presentations for off-screen elements, clipped or hidden information, text overlap, low contrast, tiny text, blank charts or media, broken assets, unchanged click states, unsafe margins, and excessive content density before delivering a deck, screenshot set, or video."
 ---
 
 # Slidev Quality Audit
+
+Read [the colorset output contract](references/colorset-contract.md) before authoring or auditing visual output. Apply one exact bundled palette to every authored output path and inspect rendered paint. Default to colorset1; declare colorset2 when its category distinctions are needed.
 
 ## Core Workflow
 

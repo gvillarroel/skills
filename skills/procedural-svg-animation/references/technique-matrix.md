@@ -1,5 +1,17 @@
 # Programmable SVG Technique Matrix
 
+## Contents
+
+- [Geometry Generators](#geometry-generators)
+- [Population and Layout](#population-and-layout)
+- [Randomness, Noise, and Fields](#randomness-noise-and-fields)
+- [Dynamics and Generative Algorithms](#dynamics-and-generative-algorithms)
+- [Time Signals and Scheduling](#time-signals-and-scheduling)
+- [Animated SVG Channels](#animated-svg-channels)
+- [Compositors and Surface Effects](#compositors-and-surface-effects)
+- [Runtime Drivers](#runtime-drivers)
+- [Combination Grammar](#combination-grammar)
+
 Use this inventory when exploring capabilities or designing a pattern that is not yet in the shipped catalog. Select one entry from each relevant axis; do not treat every combination as automatically useful.
 
 ## Geometry Generators

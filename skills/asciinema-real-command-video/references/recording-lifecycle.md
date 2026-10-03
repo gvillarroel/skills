@@ -1,0 +1,21 @@
+# Recording Lifecycle and Visual Review
+
+Read before recording an interactive TUI, reviewing a completed recording, or diagnosing a preserved attempt. For shared plan fields, use [session-plan.md](session-plan.md); for directory ownership, use [video-bundles.md](video-bundles.md).
+
+## Terminal-control lifecycle
+
+Treat recording as one controlled terminal transaction, not as independent command output plus later animation. Enforce this order:
+
+1. Run preflight and resolve/version the recorder, PTY allocator, TUI multiplexer when needed, real target, renderer, encoder, and media probe.
+2. Start `asciinema rec` and attach the outer PTY before allowing the target to launch. The TUI start gate exists to prevent missing its opening screen.
+3. In TUI mode, wait for a real ready screen and execute the reviewed step contract. For a persistent prompt, type, capture, send Enter, and wait for ready-without-busy. For explicit actions, send each declared text/key/pause in order and gate completion on either ready or the target's real exit. In a multi-TUI plan, record the session boundary, verified executable, ready state, actions, and exit status before opening the next target's start gate. In direct-argv mode, run each real process and gate on its timeout and exit status.
+4. Either request each target's configured normal exit or accept its final action's target-driven exit. Verify every process status; after the final target, detach the inner PTY and let Asciinema stop. Always clean up the isolated tmux server.
+5. Validate the cast and runtime evidence before rendering. Only then render with agg, encode with ffmpeg, probe the MP4, and run the independent artifact gate.
+
+When `render.start_at` is `tui-ready`, emit and verify a hidden ready-screen marker, retain the full cast, and trim only the MP4 lead-in to just before the first stable ready-screen update. Derive the lead from the startup settle window plus a small render margin so the empty editor appears before the first typed character. By default, end the MP4 immediately before tmux restores the controller terminal. When a target-exit action plan ends in a quit or selection key and that key clears the TUI, use `render.end_at: "before-final-key"`: the controller emits a hidden marker immediately before that real key, the MP4 ends at the marker, and ffmpeg freezes that authentic target frame for `last_frame_duration`. The untrimmed cast and runtime report must still prove the key, target exit, and exit status. Never use presentation trims to shorten prompt typing, target work, responses, or any target-owned output that the user asked to see.
+
+If target startup, interaction, shutdown, or cast validation fails, preserve the attempt ledger, failed cast, and runtime report for diagnosis. Stop the requested deliverable. Do not invoke `record` again under the same or a different plan/output name, and do not convert the failure into a successful deliverable. A later recording requires a new user request or explicit authorization, not an agent-authored retry.
+
+## Inspect the real product and presentation boundaries
+
+Replay `session.cast` and inspect `session.mp4` at full resolution inside each video directory. Sample the opening, every typed-text-before-key state, command-key effect, active work, completed response or selection, every multi-TUI handoff, and the final exit. In a multi-TUI video, require visible authentic UI from every declared tool in the planned order; reject a hidden launch, skipped session, duplicated executable, shell substitute, or transition that ends the video after the first alternate-screen restore. For `tui-ready` presentation, require the first frame to belong to the first target and the last frame to belong to the final target, with no controller card, blank startup interval, tmux `[exited]` screen, or restored outer terminal. For `before-final-key`, verify the held last frame is the actual final target screen immediately before the declared key; verify the key effect and exit in the cast/runtime evidence because they are intentionally outside the presentation derivative. If review fails, report and diagnose the preserved failed attempt; do not rerecord the deliverable under any name.

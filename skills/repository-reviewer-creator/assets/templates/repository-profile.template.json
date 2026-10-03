@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "repository": {
+    "name": "{{REPOSITORY_NAME}}",
+    "identity": "{{SANITIZED_REPOSITORY_IDENTITY}}",
+    "revision": "{{REVISION_OR_SNAPSHOT}}",
+    "inspected_at": "{{YYYY_MM_DD}}",
+    "fingerprint_paths": ["{{PROJECT_MANIFEST_PATH}}"]
+  },
+  "sources": [
+    {
+      "id": "source-1",
+      "kind": "{{RESOURCE_CLASS}}",
+      "location": "{{REPOSITORY_RELATIVE_PATH_OR_SANITIZED_URL}}",
+      "status": "read",
+      "note": "{{WHAT_THIS_SOURCE_ESTABLISHES}}"
+    }
+  ],
+  "components": [
+    {
+      "name": "{{COMPONENT_NAME}}",
+      "paths": ["{{COMPONENT_PATH}}"],
+      "purpose": "{{COMPONENT_PURPOSE}}",
+      "evidence": ["source-1"]
+    }
+  ],
+  "rules": [
+    {
+      "id": "{{REPOSITORY_SLUG}}-{{RULE_SLUG}}",
+      "kind": "observed-contract",
+      "paths": ["{{AFFECTED_PATH_OR_GLOB}}"],
+      "when": "{{SEMANTIC_ACTIVATION_CONDITION}}",
+      "invariant": "{{EVIDENCED_CONTRACT_OR_PROPERTY}}",
+      "failure": "{{REACHABLE_TRIGGER_AND_CONSEQUENCE}}",
+      "pass_case": "{{LEGITIMATE_CHANGE_NOT_TO_FLAG}}",
+      "evidence": ["source-1"]
+    }
+  ],
+  "checks": [
+    {
+      "name": "{{CHECK_NAME}}",
+      "command": "{{VERIFIED_COMMAND_OR_STATIC_PROCEDURE}}",
+      "cwd": ".",
+      "execution": "manual-only",
+      "purpose": "{{WHAT_THIS_CHECK_CAN_ESTABLISH}}",
+      "side_effects": "{{WRITES_NETWORK_SETUP_AND_ENVIRONMENT_LIMITS}}",
+      "evidence": ["source-1"]
+    }
+  ],
+  "coverage_gaps": ["{{UNAVAILABLE_OR_UNEXAMINED_EVIDENCE}}"]
+}

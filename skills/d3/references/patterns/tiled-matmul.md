@@ -1,5 +1,10 @@
 # Matmul Tile Accumulation
 
+## Contents
+
+- [Reuse Contract](#reuse-contract)
+- [Source Excerpt](#source-excerpt)
+
 - **Pattern ID:** `d3-tiled-matmul`
 - **Gallery source ID:** `tiled-matmul`
 - **Family:** Matrix

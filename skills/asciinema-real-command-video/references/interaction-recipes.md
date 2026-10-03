@@ -1,5 +1,13 @@
 # Interaction recipes
 
+## Contents
+
+- [Choose the interaction contract](#choose-the-interaction-contract)
+- [One-shot fzf picker](#one-shot-fzf-picker)
+- [Television one-shot picker](#television-one-shot-picker)
+- [lazygit command-key exit](#lazygit-command-key-exit)
+- [Fixed PowerShell pipeline with inert input](#fixed-powershell-pipeline-with-inert-input)
+
 Read this reference when a TUI exits after a selection, uses command keys
 instead of a text prompt, or when a direct command contains shell-like syntax
 that must remain fixed while user text stays inert argv data.

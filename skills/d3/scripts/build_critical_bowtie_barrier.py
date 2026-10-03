@@ -11,6 +11,7 @@ from __future__ import annotations
 import argparse
 import html
 from pathlib import Path
+from colorset_adapter import colorset_output
 
 
 WIDTH = 820
@@ -313,6 +314,7 @@ def build_svg() -> str:
 </svg>"""
 
 
+@colorset_output
 def build_html() -> str:
     return f"""<!doctype html>
 <html lang="en">
@@ -346,9 +348,10 @@ def build_html() -> str:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("output", type=Path, help="Output HTML file")
+    parser.add_argument("--colorset", choices=("colorset1", "colorset2"), default="colorset1")
     args = parser.parse_args()
     args.output.parent.mkdir(parents=True, exist_ok=True)
-    args.output.write_text(build_html(), encoding="utf-8")
+    args.output.write_text(build_html(colorset=args.colorset), encoding="utf-8")
     print(f"Wrote {args.output}")
     return 0
 

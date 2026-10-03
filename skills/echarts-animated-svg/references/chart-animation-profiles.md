@@ -1,5 +1,13 @@
 # ECharts SVG Chart Animation Profiles
 
+## Contents
+
+- [Shared Defaults](#shared-defaults)
+- [Cartesian Charts](#cartesian-charts)
+- [Part-To-Whole Charts](#part-to-whole-charts)
+- [Relationship And Flow Charts](#relationship-and-flow-charts)
+- [Spatial And Multidimensional Charts](#spatial-and-multidimensional-charts)
+
 Use these profiles after ECharts has already rendered a static SVG. Treat the SVG as the source of truth and tune selectors against the actual emitted `path`, `rect`, `circle`, `polygon`, `polyline`, `line`, and `text` elements.
 
 ## Shared Defaults

@@ -1,5 +1,10 @@
 # Token Boxes To Context Window
 
+## Contents
+
+- [Reuse Contract](#reuse-contract)
+- [Source Excerpt](#source-excerpt)
+
 - **Pattern ID:** `d3-context-window-fill`
 - **Gallery source ID:** `context-window-fill`
 - **Family:** Context

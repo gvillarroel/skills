@@ -8,12 +8,15 @@ order, tiling, or source provenance. The machine-readable authority is
 
 | Choice | Use for | Required visual behavior |
 | --- | --- | --- |
-| source palette | Source-relative simplification | Preserve dominant source hue relationships |
+| source image | Immutable input and provenance only | Preserve source bytes; adapt derivative SVG paint to a canonical colorset |
 | `colorset1` | Restrained, editorial, institutional, monochrome-like art | Use red as the primary chromatic cue with dark ink and neutral support |
 | `colorset2` | Expressive abstract art or distinct color roles | Use a small multi-hue hierarchy; avoid assigning every available hue |
 
-Use `--colorset colorset1` or `--colorset colorset2`. Omit the option for the
-source-derived palette.
+Use `colorset1` by default; omitting `--colorset` selects it in both tracing
+backends. Select `colorset2` explicitly when multiple source color roles are
+necessary. Quantized source colors may appear in metadata, mapping records and
+reports as evidence; they must not become visible derivative paint. The SVG
+validator rejects the former unconstrained `source` output contract.
 
 ## Invariants
 

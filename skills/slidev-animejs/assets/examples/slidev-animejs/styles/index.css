@@ -97,7 +97,7 @@
   background: #ffffff;
   border: 1px solid #e7e7e7;
   border-radius: 8px;
-  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.07);
+  box-shadow: 0 14px 30px rgba(28, 28, 28, 0.07);
 }
 
 .hero-stage {
@@ -194,7 +194,7 @@
 }
 
 .anime-stage {
-  background: linear-gradient(135deg, #f7f7f7, #f9ccff);
+  background: #f7f7f7;
   border: 1px solid #cfcfcf;
   border-radius: 8px;
   height: 270px;
@@ -243,7 +243,7 @@
 }
 
 .chart-clicks li {
-  background: #eefdf7;
+  background: #dbffcc;
   border: 1px solid #dbffcc;
   border-radius: 8px;
   color: #294d19;
@@ -285,7 +285,7 @@
   background: #ffffff;
   border: 1px solid #cfcfcf;
   border-radius: 8px;
-  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.14);
+  box-shadow: 0 10px 24px rgba(28, 28, 28, 0.14);
   display: grid;
   gap: 0.2rem;
   height: 112px;
@@ -334,7 +334,7 @@
   background: #cdf3ff;
   border: 1px solid #00ace6;
   border-radius: 8px;
-  box-shadow: inset var(--accent-size) 0 0 rgba(15, 118, 110, 0.28);
+  box-shadow: inset var(--accent-size) 0 0 rgba(0, 114, 152, 0.28);
   display: grid;
   gap: 0.25rem;
   min-height: 112px;
@@ -367,7 +367,7 @@
 }
 
 .key-labels {
-  color: #828282;
+  color: #696969;
   display: flex;
   font-size: 0.75rem;
   justify-content: space-between;
@@ -480,7 +480,7 @@
 }
 
 .value-meter span {
-  background: linear-gradient(90deg, #007298, #45842a, #e77204);
+  background: linear-gradient(90deg, #007298 0% 33.33%, #45842a 33.33% 66.67%, #e77204 66.67% 100%);
   border-radius: inherit;
   display: block;
   height: 100%;
@@ -512,8 +512,8 @@
 
 .live-zone {
   background:
-    linear-gradient(90deg, rgba(148, 163, 184, 0.2) 1px, transparent 1px),
-    linear-gradient(rgba(148, 163, 184, 0.2) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(156, 156, 156, 0.2) 1px, transparent 1px),
+    linear-gradient(rgba(156, 156, 156, 0.2) 1px, transparent 1px),
     #ffffff;
   background-size: 34px 34px;
 }
@@ -653,7 +653,7 @@
   background: #ffffff;
   border: 1px solid #cfcfcf;
   border-radius: 8px;
-  box-shadow: 0 10px 20px rgba(15, 23, 42, 0.08);
+  box-shadow: 0 10px 20px rgba(28, 28, 28, 0.08);
   color: #333e48;
   display: flex;
   font-weight: 800;
@@ -666,8 +666,8 @@
 
 .drag-zone {
   background:
-    linear-gradient(90deg, rgba(148, 163, 184, 0.22) 1px, transparent 1px),
-    linear-gradient(rgba(148, 163, 184, 0.22) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(156, 156, 156, 0.22) 1px, transparent 1px),
+    linear-gradient(rgba(156, 156, 156, 0.22) 1px, transparent 1px),
     #ffffff;
   background-size: 34px 34px;
   border: 1px solid #cfcfcf;
@@ -793,3 +793,6 @@
   line-height: 1.42;
   margin: 0;
 }
+
+/* Keep Slidev's inline-code fallback inside the declared colorset. */
+.slidev-layout code { background-color: #f7f7f7 !important; color: #333e48 !important; }

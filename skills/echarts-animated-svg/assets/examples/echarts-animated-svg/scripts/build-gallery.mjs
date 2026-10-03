@@ -2,6 +2,7 @@ import { writeFile } from 'node:fs/promises'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import * as echarts from 'echarts'
+import { colorsetTheme, normalizeSvgPaints, prepareColorsetOption } from '../../../templates/echarts-colorsets.mjs'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const exampleRoot = resolve(__dirname, '..')
@@ -35,9 +36,9 @@ const brand = {
   white: '#ffffff',
   gray10: '#e7e7e7',
   gray20: '#cfcfcf',
-  gray30: '#b7b7b7',
-  gray40: '#9f9f9f',
-  gray50: '#878787',
+  gray30: '#b5b5b5',
+  gray40: '#9c9c9c',
+  gray50: '#828282',
   gray60: '#696969',
   gray70: '#4f4f4f',
   gray80: '#333e48',
@@ -1443,9 +1444,9 @@ function polishOption(definition, option) {
 }
 
 function renderSvg(definition, patternMetadata) {
-  const chart = echarts.init(null, null, { renderer: 'svg', ssr: true, width, height })
-  chart.setOption(polishOption(definition, definition.option()))
-  const svg = chart.renderToSVGString()
+  const chart = echarts.init(null, colorsetTheme('colorset2'), { renderer: 'svg', ssr: true, width, height })
+  chart.setOption(prepareColorsetOption(polishOption(definition, definition.option()), 'colorset2'))
+  const svg = normalizeSvgPaints(chart.renderToSVGString(), 'colorset2')
   chart.dispose()
   return decorateSvg(svg, definition.profile || definition.type, patternMetadata)
 }

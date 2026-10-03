@@ -1,5 +1,15 @@
 # Circuit Signal Traces
 
+## Contents
+
+- [Reuse Contract](#reuse-contract)
+- [Data Contract](#data-contract)
+- [Geometry Contract](#geometry-contract)
+- [Animation Contract](#animation-contract)
+- [Semantic Color Roles](#semantic-color-roles)
+- [Minimal D3 Renderer Pattern](#minimal-d3-renderer-pattern)
+- [Validation Hooks](#validation-hooks)
+
 - **Pattern ID:** `d3-circuit-signal-traces`
 - **Gallery source ID:** standalone pattern recipe
 - **Family:** Circuit
@@ -92,7 +102,7 @@ const color = {
   purple: "#652f6c",
   orange: "#e77204",
   red: "#9e1b32",
-  gray: "#c9ced3",
+  gray: "#cfcfcf",
   ink: "#333e48"
 };
 

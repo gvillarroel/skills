@@ -142,6 +142,12 @@ def validate_pair(
     if static_labels != animated_labels:
         findings.append("Title, description, or chart labels were not preserved exactly.")
 
+    from palette_paints import require_svg_palette
+    for label, root in (("Static", static_root), ("Animated", animated_root)):
+        try:
+            require_svg_palette(root)
+        except ValueError as error:
+            findings.append(f"{label} SVG palette: {error}")
     root_classes = set(animated_root.attrib.get("class", "").split())
     expected_profile = f"easv-profile-{chart_type.replace('_', '-').lower()}"
     for class_name in {"echarts-animated-svg", expected_profile, "easv-playing"}:

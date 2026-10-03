@@ -1,0 +1,4 @@
+interface:
+  display_name: "HyperFrames Explainer"
+  short_description: "Choose expressive assets and synchronize minimal videos"
+  default_prompt: "Use $hyperframes-explainer to select appropriate available specialist skills and editable assets for each explanatory moment, then create a minimal synchronized video with a recognizable mechanism and colorset1 whenever possible."

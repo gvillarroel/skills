@@ -1,0 +1,616 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-02",
+  "contract": "docs/colorsets.json",
+  "claim": "Supported output-route inventory and authored paint checks; source pixels and renderer-derived tones have explicit scopes. This is not an exhaustive proof of all arbitrary user-authored scenes.",
+  "skills": [
+    {
+      "skill": "ambientcg-material-search",
+      "outputs": [
+        "HTML candidate previews",
+        "JSON search/download receipts",
+        "original ZIP/JPG/PNG material assets"
+      ],
+      "scope": "authored-colorset",
+      "sourceFidelity": "Preserve explicitly identified source media/brand/evidence/exact-RGB pixels; authored frame, chrome and technical marks remain palette-controlled."
+    },
+    {
+      "skill": "animated-svg-to-gif",
+      "outputs": [
+        "authored SVG pulse template",
+        "single/batch browser-captured GIF",
+        "conversion JSON manifests"
+      ],
+      "scope": "authored-colorset",
+      "sourceFidelity": "Preserve explicitly identified source media/brand/evidence/exact-RGB pixels; authored frame, chrome and technical marks remain palette-controlled."
+    },
+    {
+      "skill": "asciinema-real-command-video",
+      "outputs": [
+        "plan/preflight JSON",
+        "original v2/v3 cast evidence",
+        "colorset presentation cast",
+        "agg GIF",
+        "H.264 MP4",
+        "bundle manifests/index"
+      ],
+      "scope": "authored-colorset",
+      "sourceFidelity": "Preserve explicitly identified source media/brand/evidence/exact-RGB pixels; authored frame, chrome and technical marks remain palette-controlled."
+    },
+    {
+      "skill": "compose-synchronized-svg",
+      "outputs": [
+        "scaffold SVG",
+        "compiled synchronized SVG",
+        "multi-module camera SVG",
+        "audit/validation JSON",
+        "published HTML/SVG gallery"
+      ],
+      "scope": "authored-colorset",
+      "sourceFidelity": null
+    },
+    {
+      "skill": "d3",
+      "outputs": [
+        "22 named HTML/SVG/PNG builders",
+        "custom authored charts/networks/maps/simulations",
+        "static/animated self-contained SVG",
+        "logo/texture SVG",
+        "composition SVG",
+        "base/cs1/cs2 galleries"
+      ],
+      "scope": "authored-colorset",
+      "sourceFidelity": null
+    },
+    {
+      "skill": "destockd-video-search",
+      "outputs": [
+        "HTML shot previews",
+        "JSON shot/source receipts",
+        "original selected MP4"
+      ],
+      "scope": "authored-colorset",
+      "sourceFidelity": "Preserve explicitly identified source media/brand/evidence/exact-RGB pixels; authored frame, chrome and technical marks remain palette-controlled."
+    },
+    {
+      "skill": "diagram-composition",
+      "outputs": [
+        "native compound SVG",
+        "HTML/SVG/PNG composition preview",
+        "grid/icon/connection audit JSON"
+      ],
+      "scope": "authored-colorset",
+      "sourceFidelity": null
+    },
+    {
+      "skill": "echarts-animated-svg",
+      "outputs": [
+        "SVGRenderer/SSR static chart SVG",
+        "postprocessed animated SVG",
+        "HTML replay gallery",
+        "chart template SVG"
+      ],
+      "scope": "authored-colorset",
+      "sourceFidelity": null
+    },
+    {
+      "skill": "google-cloud-sku-pricing",
+      "outputs": [
+        "JSON SKU prices",
+        "CSV/TSV price tables",
+        "offline Parquet catalog",
+        "SQL queries",
+        "Markdown comparison tables"
+      ],
+      "scope": "nonvisual",
+      "sourceFidelity": null
+    },
+    {
+      "skill": "harbor-author-evaluation-datasets",
+      "outputs": [
+        "dataset task/config/verifier files",
+        "sanitized JSON/Markdown aggregates",
+        "quality-comparison.svg",
+        "resource-comparison.svg",
+        "efficiency-frontier.svg"
+      ],
+      "scope": "authored-colorset",
+      "sourceFidelity": null
+    },
+    {
+      "skill": "hierarchy-lens",
+      "outputs": [
+        "organic/compact/radial static SVG",
+        "decision replay canvas",
+        "offline interactive HTML",
+        "lens legends and data exports"
+      ],
+      "scope": "authored-colorset",
+      "sourceFidelity": null
+    },
+    {
+      "skill": "hyperframes-explainer",
+      "outputs": [
+        "composition brief/plan JSON",
+        "HTML/SVG mechanism and readouts",
+        "source asset imports",
+        "HyperFrames MP4",
+        "contact sheets and browser audit JSON"
+      ],
+      "scope": "authored-colorset",
+      "sourceFidelity": "Preserve explicitly identified source media/brand/evidence/exact-RGB pixels; authored frame, chrome and technical marks remain palette-controlled."
+    },
+    {
+      "skill": "iconify-icon-search",
+      "outputs": [
+        "HTML candidate previews",
+        "single-color/currentColor SVG",
+        "original multicolor SVG",
+        "JSON receipts/license metadata"
+      ],
+      "scope": "authored-colorset",
+      "sourceFidelity": "Preserve explicitly identified source media/brand/evidence/exact-RGB pixels; authored frame, chrome and technical marks remain palette-controlled."
+    },
+    {
+      "skill": "jev-batch-decisions",
+      "outputs": [
+        "JSON batch/shard/reducer outputs",
+        "CSV decisions",
+        "Markdown provenance summaries"
+      ],
+      "scope": "nonvisual",
+      "sourceFidelity": null
+    },
+    {
+      "skill": "kenney-asset-search",
+      "outputs": [
+        "HTML pack previews",
+        "JSON receipts",
+        "original selected ZIP and extracted sprites/models"
+      ],
+      "scope": "authored-colorset",
+      "sourceFidelity": "Preserve explicitly identified source media/brand/evidence/exact-RGB pixels; authored frame, chrome and technical marks remain palette-controlled."
+    },
+    {
+      "skill": "manim-svg-video",
+      "outputs": [
+        "SVG sequencing/import",
+        "Manim MP4",
+        "authored frame/background/caption",
+        "ffprobe/validation JSON"
+      ],
+      "scope": "authored-colorset",
+      "sourceFidelity": "Preserve explicitly identified source media/brand/evidence/exact-RGB pixels; authored frame, chrome and technical marks remain palette-controlled."
+    },
+    {
+      "skill": "mermaid",
+      "outputs": [
+        "styled Mermaid files/Markdown fences",
+        "31-family static SVG",
+        "31-family animated SVG",
+        "rendered PNG/browser previews",
+        "paired cs1/cs2 HTML galleries"
+      ],
+      "scope": "authored-colorset",
+      "sourceFidelity": null
+    },
+    {
+      "skill": "one-bit-dither-svg",
+      "outputs": [
+        "original/custom/regional rectangle SVG",
+        "PNG preview",
+        "declarative CSS/SMIL SVG to GIF",
+        "GIF/WebP/APNG source to GIF",
+        "contact sheets and JSON reports"
+      ],
+      "scope": "authored-colorset",
+      "sourceFidelity": null
+    },
+    {
+      "skill": "pexels-media-search",
+      "outputs": [
+        "HTML media previews",
+        "JSON receipts",
+        "original selected photo/video rendition"
+      ],
+      "scope": "authored-colorset",
+      "sourceFidelity": "Preserve explicitly identified source media/brand/evidence/exact-RGB pixels; authored frame, chrome and technical marks remain palette-controlled."
+    },
+    {
+      "skill": "pixel-art-image-video",
+      "outputs": [
+        "PNG/lossless WebP",
+        "GIF/MP4/FFV1 MKV",
+        "fixed/adaptive/custom reduced colorset modes",
+        "explicit exact-RGB preserve mode",
+        "contact sheets and JSON reports"
+      ],
+      "scope": "authored-colorset",
+      "sourceFidelity": "Preserve explicitly identified source media/brand/evidence/exact-RGB pixels; authored frame, chrome and technical marks remain palette-controlled."
+    },
+    {
+      "skill": "plantuml-colorset-renderer",
+      "outputs": [
+        "themed PlantUML sources",
+        "SVG/PNG via local/server/Kroki",
+        "ditaa raster-only diagrams",
+        "coverage/render reports",
+        "unified HTML theme gallery"
+      ],
+      "scope": "authored-colorset",
+      "sourceFidelity": null
+    },
+    {
+      "skill": "polyhaven-asset-search",
+      "outputs": [
+        "HTML asset previews",
+        "JSON receipts",
+        "original textures/HDRIs/glTF/models and dependencies"
+      ],
+      "scope": "authored-colorset",
+      "sourceFidelity": "Preserve explicitly identified source media/brand/evidence/exact-RGB pixels; authored frame, chrome and technical marks remain palette-controlled."
+    },
+    {
+      "skill": "procedural-svg-animation",
+      "outputs": [
+        "66 pattern families \u00d7 full/reduced SVG",
+        "standalone custom animated SVG",
+        "HTML catalog/gallery",
+        "audit/verification JSON"
+      ],
+      "scope": "authored-colorset",
+      "sourceFidelity": null
+    },
+    {
+      "skill": "repository-reviewer-creator",
+      "outputs": [
+        "generated reviewer SKILL.md/YAML/references",
+        "repository profile JSON",
+        "Markdown review findings",
+        "structural validation JSON"
+      ],
+      "scope": "nonvisual",
+      "sourceFidelity": null
+    },
+    {
+      "skill": "simulation-data-lab",
+      "outputs": [
+        "model/config/variable review",
+        "simulation CSV/Parquet/JSON tables",
+        "SQL exploration",
+        "Markdown analysis",
+        "integrity reports"
+      ],
+      "scope": "nonvisual",
+      "sourceFidelity": null
+    },
+    {
+      "skill": "slidev-animejs",
+      "outputs": [
+        "Vue animation components",
+        "six SVG runtime asset packs",
+        "Slidev HTML deck",
+        "click-state animations and recording source"
+      ],
+      "scope": "authored-colorset",
+      "sourceFidelity": null
+    },
+    {
+      "skill": "slidev-echarts",
+      "outputs": [
+        "Vue Canvas/SVG chart components",
+        "dedicated chart-type references",
+        "Slidev HTML deck",
+        "static/animated chart exports"
+      ],
+      "scope": "authored-colorset",
+      "sourceFidelity": null
+    },
+    {
+      "skill": "slidev-quality-audit",
+      "outputs": [
+        "read-only DOM/SVG/canvas color audit",
+        "desktop/mobile slide screenshots",
+        "Markdown/JSON audit reports"
+      ],
+      "scope": "authored-colorset",
+      "sourceFidelity": "Preserve explicitly identified source media/brand/evidence/exact-RGB pixels; authored frame, chrome and technical marks remain palette-controlled."
+    },
+    {
+      "skill": "svg-brief-design",
+      "outputs": [
+        "editable illustration/ornament/emblem/diagram SVG",
+        "nested detail/scaffold paints",
+        "preview PNG",
+        "audit JSON"
+      ],
+      "scope": "authored-colorset",
+      "sourceFidelity": null
+    },
+    {
+      "skill": "technical-logo-assets",
+      "outputs": [
+        "exact original-color SVG",
+        "licensed grayscale/black/white/adaptive variants",
+        "baked monochrome colorset SVG",
+        "provenance/license sidecars"
+      ],
+      "scope": "authored-colorset",
+      "sourceFidelity": "Preserve explicitly identified source media/brand/evidence/exact-RGB pixels; authored frame, chrome and technical marks remain palette-controlled."
+    },
+    {
+      "skill": "threejs-animated-3d",
+      "outputs": [
+        "24 WebGL gallery scenes",
+        "custom material/vertex/light scene inputs",
+        "HTML/Vite build",
+        "canvas PNG and motion capture"
+      ],
+      "scope": "authored-colorset",
+      "sourceFidelity": null
+    },
+    {
+      "skill": "usefulcharts-style",
+      "outputs": [
+        "tree/lineage/parallel-history SVG",
+        "panel/editorial/shared-row poster SVG",
+        "HTML poster viewer",
+        "PDF/PNG poster exports",
+        "audit/critique JSON"
+      ],
+      "scope": "authored-colorset",
+      "sourceFidelity": "Preserve explicitly identified source media/brand/evidence/exact-RGB pixels; authored frame, chrome and technical marks remain palette-controlled."
+    },
+    {
+      "skill": "vectorize-art-patterns",
+      "outputs": [
+        "OpenCV segmented/stippled/pattern SVG",
+        "VTracer curve SVG",
+        "geometry-locked cs1/cs2 pairs",
+        "PNG previews",
+        "art/world-map galleries"
+      ],
+      "scope": "authored-colorset",
+      "sourceFidelity": "Preserve explicitly identified source media/brand/evidence/exact-RGB pixels; authored frame, chrome and technical marks remain palette-controlled."
+    },
+    {
+      "skill": "video",
+      "outputs": [
+        "mixed-media composition MP4",
+        "scene preview HTML",
+        "authored SVG/canvas captions/connectors",
+        "transition manifests",
+        "Slidev capture and contact sheets"
+      ],
+      "scope": "authored-colorset",
+      "sourceFidelity": "Preserve explicitly identified source media/brand/evidence/exact-RGB pixels; authored frame, chrome and technical marks remain palette-controlled."
+    }
+  ],
+  "artifactChecks": [
+    {
+      "glob": "skills/animated-svg-to-gif/assets/templates/*.svg",
+      "colorset": "colorset1",
+      "required": true
+    },
+    {
+      "glob": "skills/echarts-animated-svg/assets/templates/static-bar-chart.svg",
+      "colorset": "colorset1",
+      "required": true
+    },
+    {
+      "glob": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/*.svg",
+      "colorset": "colorset1",
+      "required": true
+    },
+    {
+      "glob": "projects/colorset-audit/artifacts/svgs/procedural-colorset1-full/*.svg",
+      "colorset": "colorset1",
+      "required": false
+    },
+    {
+      "glob": "projects/colorset-audit/artifacts/svgs/procedural-colorset1-reduced/*.svg",
+      "colorset": "colorset1",
+      "required": false
+    },
+    {
+      "glob": "projects/colorset-audit/artifacts/html/build_*-colorset1.html",
+      "colorset": "colorset1",
+      "required": false
+    },
+    {
+      "glob": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/*.svg",
+      "colorset": "colorset2",
+      "required": true
+    },
+    {
+      "glob": "projects/colorset-audit/artifacts/svgs/procedural-colorset2-full/*.svg",
+      "colorset": "colorset2",
+      "required": false
+    },
+    {
+      "glob": "projects/colorset-audit/artifacts/svgs/procedural-colorset2-reduced/*.svg",
+      "colorset": "colorset2",
+      "required": false
+    },
+    {
+      "glob": "projects/colorset-audit/artifacts/html/build_*-colorset2.html",
+      "colorset": "colorset2",
+      "required": false
+    },
+    {
+      "glob": "skills/mermaid/assets/examples/mermaid-max-elements/**/*.svg",
+      "colorset": "colorset2",
+      "required": false
+    },
+    {
+      "glob": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer/svg/*.svg",
+      "colorset": "colorset2",
+      "required": true
+    },
+    {
+      "glob": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer-cs1/svg/*.svg",
+      "colorset": "colorset1",
+      "required": true
+    },
+    {
+      "glob": "skills/procedural-svg-animation/assets/examples/procedural-svg-animation/patterns/*.svg",
+      "colorset": "colorset1",
+      "required": true
+    },
+    {
+      "glob": "skills/vectorize-art-patterns/assets/examples/vectorize-art-patterns/**/*.svg",
+      "colorset": "auto",
+      "required": true
+    },
+    {
+      "glob": "skills/vectorize-art-patterns/assets/examples/vectorize-abstract-world-maps/**/*.svg",
+      "colorset": "colorset1",
+      "required": true
+    },
+    {
+      "glob": "skills/usefulcharts-style/assets/examples/usefulcharts-style/**/*.svg",
+      "colorset": "colorset2",
+      "required": true
+    },
+    {
+      "glob": "skills/compose-synchronized-svg/assets/examples/compose-synchronized-svg/**/*.svg",
+      "colorset": "auto",
+      "required": true
+    },
+    {
+      "glob": "skills/slidev-animejs/assets/templates/**/*.svg",
+      "colorset": "colorset2",
+      "required": false
+    },
+    {
+      "glob": "skills/ambientcg-material-search/scripts/asset_io.py",
+      "colorset": "colorset1",
+      "required": true
+    },
+    {
+      "glob": "skills/iconify-icon-search/scripts/asset_io.py",
+      "colorset": "colorset1",
+      "required": true
+    },
+    {
+      "glob": "skills/kenney-asset-search/scripts/asset_io.py",
+      "colorset": "colorset1",
+      "required": true
+    },
+    {
+      "glob": "skills/pexels-media-search/scripts/asset_io.py",
+      "colorset": "colorset1",
+      "required": true
+    },
+    {
+      "glob": "skills/polyhaven-asset-search/scripts/asset_io.py",
+      "colorset": "colorset1",
+      "required": true
+    },
+    {
+      "glob": "skills/destockd-video-search/scripts/destockd.py",
+      "colorset": "colorset1",
+      "required": true
+    },
+    {
+      "glob": "skills/harbor-author-evaluation-datasets/scripts/consolidate_harbor_reports.py",
+      "colorset": "colorset2",
+      "required": true
+    },
+    {
+      "glob": "skills/technical-logo-assets/assets/logo-audit.html",
+      "colorset": "colorset2",
+      "required": true
+    },
+    {
+      "glob": "dist/pages/index.html",
+      "colorset": "colorset2",
+      "required": false
+    },
+    {
+      "glob": "skills/echarts-animated-svg/assets/examples/echarts-animated-svg/index.html",
+      "colorset": "colorset2",
+      "required": true
+    },
+    {
+      "glob": "skills/d3/assets/examples/**/*.html",
+      "colorset": "auto",
+      "required": false
+    },
+    {
+      "glob": "skills/d3/assets/examples/**/*.css",
+      "colorset": "auto",
+      "required": false
+    },
+    {
+      "glob": "skills/hierarchy-lens/assets/examples/**/*.html",
+      "colorset": "auto",
+      "required": false
+    },
+    {
+      "glob": "skills/hierarchy-lens/assets/examples/**/*.css",
+      "colorset": "auto",
+      "required": false
+    },
+    {
+      "glob": "skills/compose-synchronized-svg/assets/examples/**/*.html",
+      "colorset": "auto",
+      "required": false
+    },
+    {
+      "glob": "skills/compose-synchronized-svg/assets/examples/**/*.css",
+      "colorset": "auto",
+      "required": false
+    },
+    {
+      "glob": "skills/usefulcharts-style/assets/examples/**/*.html",
+      "colorset": "auto",
+      "required": false
+    },
+    {
+      "glob": "skills/usefulcharts-style/assets/examples/**/*.css",
+      "colorset": "auto",
+      "required": false
+    },
+    {
+      "glob": "skills/procedural-svg-animation/assets/examples/**/*.html",
+      "colorset": "auto",
+      "required": false
+    },
+    {
+      "glob": "skills/procedural-svg-animation/assets/examples/**/*.css",
+      "colorset": "auto",
+      "required": false
+    },
+    {
+      "glob": "skills/vectorize-art-patterns/assets/examples/**/*.html",
+      "colorset": "auto",
+      "required": false
+    },
+    {
+      "glob": "skills/vectorize-art-patterns/assets/examples/**/*.css",
+      "colorset": "auto",
+      "required": false
+    },
+    {
+      "glob": "skills/mermaid/assets/examples/**/*.html",
+      "colorset": "auto",
+      "required": false
+    },
+    {
+      "glob": "skills/mermaid/assets/examples/**/*.css",
+      "colorset": "auto",
+      "required": false
+    },
+    {
+      "glob": "skills/plantuml-colorset-renderer/assets/examples/**/*.html",
+      "colorset": "auto",
+      "required": false
+    },
+    {
+      "glob": "skills/plantuml-colorset-renderer/assets/examples/**/*.css",
+      "colorset": "auto",
+      "required": false
+    }
+  ]
+}

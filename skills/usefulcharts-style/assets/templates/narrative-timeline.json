@@ -8,33 +8,181 @@
   "source_note": "Original fictional demonstration; all places and events are invented.",
   "reading_note": "One numeric year scale. Stems and full bands show durations; wider stem labels name periods. Bridges show succession or union. Width is compositional.",
   "groups": [
-    {"id": "coast", "label": "Coast", "color": "#77BDDD"},
-    {"id": "hills", "label": "Hills", "color": "#98BD92"},
-    {"id": "plains", "label": "Plains", "color": "#F2C529"}
+    {
+      "id": "coast",
+      "label": "Coast",
+      "color": "#9e1b32"
+    },
+    {
+      "id": "hills",
+      "label": "Hills",
+      "color": "#007298"
+    },
+    {
+      "id": "plains",
+      "label": "Plains",
+      "color": "#e77204"
+    }
   ],
-  "time": {"start": 1800, "end": 2000, "step": 20},
+  "time": {
+    "start": 1800,
+    "end": 2000,
+    "step": 20
+  },
   "lanes": [
-    {"id": "coast", "label": "Coast"},
-    {"id": "hills", "label": "Hills"},
-    {"id": "plains", "label": "Plains"}
+    {
+      "id": "coast",
+      "label": "Coast"
+    },
+    {
+      "id": "hills",
+      "label": "Hills"
+    },
+    {
+      "id": "plains",
+      "label": "Plains"
+    }
   ],
   "periods": [
-    {"id": "harbor", "label": "Harbor council", "group": "coast", "lane": "coast", "start": 1800, "end": 1890, "offset": 20, "bar_width": 32, "size": 16},
-    {"id": "ports", "label": "Port assembly", "group": "coast", "lane": "coast", "start": 1900, "end": 2000, "offset": 75, "bar_width": 36, "size": 16},
-    {"id": "highlands", "label": "Highland council", "group": "hills", "lane": "hills", "start": 1800, "end": 2000, "offset": 20, "bar_width": 32, "size": 16, "treatment": "stem", "stem_width": 5},
-    {"id": "farms", "label": "Farm councils", "group": "plains", "lane": "plains", "start": 1800, "end": 1900, "offset": 20, "bar_width": 28, "size": 16},
-    {"id": "roads", "label": "Road council", "group": "plains", "lane": "plains", "start": 1820, "end": 1900, "offset": 90, "bar_width": 28, "size": 16},
-    {"id": "union", "label": "Land union", "group": "plains", "lane": "plains", "start": 1910, "end": 2000, "offset": 55, "bar_width": 36, "size": 16}
+    {
+      "id": "harbor",
+      "label": "Harbor council",
+      "group": "coast",
+      "lane": "coast",
+      "start": 1800,
+      "end": 1890,
+      "offset": 20,
+      "bar_width": 32,
+      "size": 16
+    },
+    {
+      "id": "ports",
+      "label": "Port assembly",
+      "group": "coast",
+      "lane": "coast",
+      "start": 1900,
+      "end": 2000,
+      "offset": 75,
+      "bar_width": 36,
+      "size": 16
+    },
+    {
+      "id": "highlands",
+      "label": "Highland council",
+      "group": "hills",
+      "lane": "hills",
+      "start": 1800,
+      "end": 2000,
+      "offset": 20,
+      "bar_width": 32,
+      "size": 16,
+      "treatment": "stem",
+      "stem_width": 5
+    },
+    {
+      "id": "farms",
+      "label": "Farm councils",
+      "group": "plains",
+      "lane": "plains",
+      "start": 1800,
+      "end": 1900,
+      "offset": 20,
+      "bar_width": 28,
+      "size": 16
+    },
+    {
+      "id": "roads",
+      "label": "Road council",
+      "group": "plains",
+      "lane": "plains",
+      "start": 1820,
+      "end": 1900,
+      "offset": 90,
+      "bar_width": 28,
+      "size": 16
+    },
+    {
+      "id": "union",
+      "label": "Land union",
+      "group": "plains",
+      "lane": "plains",
+      "start": 1910,
+      "end": 2000,
+      "offset": 55,
+      "bar_width": 36,
+      "size": 16
+    }
   ],
   "transitions": [
-    {"id": "harbor-ports", "source": "harbor", "target": "ports", "kind": "succession", "style": "ribbon"},
-    {"id": "farms-union", "source": "farms", "target": "union", "kind": "union", "style": "ribbon", "target_port": 0.33, "ribbon_width": 8},
-    {"id": "roads-union", "source": "roads", "target": "union", "kind": "union", "style": "ribbon", "target_port": 0.67, "ribbon_width": 8}
+    {
+      "id": "harbor-ports",
+      "source": "harbor",
+      "target": "ports",
+      "kind": "succession",
+      "style": "ribbon"
+    },
+    {
+      "id": "farms-union",
+      "source": "farms",
+      "target": "union",
+      "kind": "union",
+      "style": "ribbon",
+      "target_port": 0.33,
+      "ribbon_width": 8
+    },
+    {
+      "id": "roads-union",
+      "source": "roads",
+      "target": "union",
+      "kind": "union",
+      "style": "ribbon",
+      "target_port": 0.67,
+      "ribbon_width": 8
+    }
   ],
   "events": [
-    {"id": "school", "lane": "coast", "year": 1820, "label": "1820 · Clockmaking school", "detail": "Workshops teach the anchor escapement.", "size": 20, "detail_size": 15, "icon": "illustration-clock-escapement", "art_position": "auto", "art_width": 67, "art_height": 86.71},
-    {"id": "railway", "lane": "hills", "year": 1860, "label": "1860 · The ridge railway", "detail": "Freight crosses the high pass.", "text_layout": "paragraph", "size": 18, "detail_size": 15},
-    {"id": "survey", "lane": "plains", "year": 1840, "label": "1840 · A road survey", "detail": "Engineers record bridges and distances.", "text_layout": "paragraph", "size": 18, "detail_size": 15},
-    {"id": "college", "lane": "hills", "year": 1950, "label": "1950 · A regional college", "detail": "Local schools share a curriculum.", "text_layout": "paragraph", "size": 18, "detail_size": 15}
+    {
+      "id": "school",
+      "lane": "coast",
+      "year": 1820,
+      "label": "1820 \u00b7 Clockmaking school",
+      "detail": "Workshops teach the anchor escapement.",
+      "size": 20,
+      "detail_size": 15,
+      "icon": "illustration-clock-escapement",
+      "art_position": "auto",
+      "art_width": 67,
+      "art_height": 86.71
+    },
+    {
+      "id": "railway",
+      "lane": "hills",
+      "year": 1860,
+      "label": "1860 \u00b7 The ridge railway",
+      "detail": "Freight crosses the high pass.",
+      "text_layout": "paragraph",
+      "size": 18,
+      "detail_size": 15
+    },
+    {
+      "id": "survey",
+      "lane": "plains",
+      "year": 1840,
+      "label": "1840 \u00b7 A road survey",
+      "detail": "Engineers record bridges and distances.",
+      "text_layout": "paragraph",
+      "size": 18,
+      "detail_size": 15
+    },
+    {
+      "id": "college",
+      "lane": "hills",
+      "year": 1950,
+      "label": "1950 \u00b7 A regional college",
+      "detail": "Local schools share a curriculum.",
+      "text_layout": "paragraph",
+      "size": 18,
+      "detail_size": 15
+    }
   ]
 }

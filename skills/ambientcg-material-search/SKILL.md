@@ -1,6 +1,6 @@
 ---
 name: ambientcg-material-search
-description: Search free ambientCG materials, HDRIs and other assets from a natural-language brief, show numbered previews, and download the exact selected resolution and format package. Use for ambientCG texture discovery and follow-up downloads of chosen assets.
+description: "Searches free ambientCG materials, HDRIs and other assets from a natural-language brief, shows numbered previews, and downloads the exact selected resolution and format package. Use for ambientCG texture discovery and follow-up downloads of chosen assets."
 ---
 
 # ambientCG Material Search
@@ -8,6 +8,10 @@ description: Search free ambientCG materials, HDRIs and other assets from a natu
 Find freely released CC0 resources through ambientCG's public v3 API. Use the
 bundled helper with Python 3.11+ and `uv`; no account or API key is required.
 Keep generated files outside the skill and converse in the user's language.
+
+## Presentation colors
+
+Use colorset1 for authored preview chrome: `#f7f7f7` stage, `#ffffff` cards, `#333e48` text, `#cfcfcf` borders and `#9e1b32` links/emphasis. If extended authored categories are requested, use only the bundled [colorset2 tokens](assets/palettes/colorsets.json). Preserve provider image, video, texture and multicolor icon bytes as source material; never claim that their original pixels fit an authored colorset. Render selected monochrome icons with a colorset token.
 
 ## Find suitable resources
 

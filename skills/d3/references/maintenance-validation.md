@@ -1,5 +1,15 @@
 # Maintenance Validation
 
+## Contents
+
+- [Pattern Promotion](#pattern-promotion)
+- [Baseline Validation](#baseline-validation)
+- [Gallery Changes](#gallery-changes)
+- [Composition Sheet Changes](#composition-sheet-changes)
+- [Palette Changes](#palette-changes)
+- [Logo and Texture Changes](#logo-and-texture-changes)
+- [Release](#release)
+
 Read this file before changing this skill, its pattern references, scripts, examples, palettes, logo engine, gallery, or composition sheets.
 
 The unified `d3` bundle owns the former animation, composition-evaluation,
@@ -89,6 +99,16 @@ manifest, engine, templates, and validators. Run `scripts/validate_logo_artifact
 sizes. Inspect the 96 px logo state and text-clearance findings.
 
 ## Release
+
+For changes to the speculative-decoding builder, run
+`uv run --script skills/d3/scripts/test_speculative_decoding.py` from the repository
+and inspect original, changed-token/alternate, zero-prefix and full-prefix
+artifacts in a browser. Check visible token text during motion, settled SVG,
+HTML replay twice, and reduced motion. Keep HTML control assertions separate
+from the portable SVG. Use `scripts/verify_speculative_decoding.py` with `uv`
+for its declared browser dependencies and smoke-test missing Replay,
+viewport mismatch and conflicting output paths. Use fresh strict isolated runtime cohorts and retain
+failed attempts; do not edit the frozen payload between repetitions.
 
 When source paths or published examples change, rebuild Pages. Before marking
 the skill done, run the repository payload check, Pi harness tests, an isolated

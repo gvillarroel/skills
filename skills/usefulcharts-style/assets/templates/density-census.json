@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "family": "timeline",
+  "comparison_basis": "same-full-poster-area",
+  "counting_protocol": "usefulcharts-knowledge-v1",
+  "coverage": "full-body",
+  "image_sha256": null,
+  "ledger": null,
+  "method": "manual-census",
+  "census_review": "pending",
+  "semantic_review": "pending",
+  "legibility_review": "pending",
+  "counts": {
+    "named_records": null,
+    "typed_relations": null,
+    "temporal_anchors": null,
+    "context_statements": null
+  }
+}

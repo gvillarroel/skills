@@ -144,7 +144,11 @@ def validate_artifact(
     allowed = colorsets[colorset]
     extended = colorsets["colorset2"] - colorsets["colorset1"]
 
-    raw_colors = sorted(set(HEX_RE.findall(visible_source)))
+    # Fragment references and hex-looking CSS IDs are not authored paint.
+    paint_surface = re.sub(r"url\([^)]*\)", "", visible_source, flags=re.I)
+    paint_surface = re.sub(r"\b(?:xlink:)?href\s*=\s*([\"'])#[^\"']*\1", "", paint_surface, flags=re.I)
+    paint_surface = re.sub(r"#[0-9a-fA-F]{3,8}(?=\s*\{)", "", paint_surface)
+    raw_colors = sorted(set(HEX_RE.findall(paint_surface)))
     canonical_colors = sorted({value.lower() for value in raw_colors if len(value) == 7})
     malformed_colors = sorted(
         value for value in raw_colors if len(value) != 7 or value != value.lower()

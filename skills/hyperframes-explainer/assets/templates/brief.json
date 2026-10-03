@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "id": "flow-and-storage",
+  "claim": "Changing the inflow rate changes both the tank's filling speed and the slope of its accumulated-volume curve.",
+  "evidence": "Illustrative ideal tank: no outflow, constant cross-section, capacity 80 L. The curve integrates the specified rate; it is not measured data.",
+  "output": {"width": 1920, "height": 1080, "fps": 30, "duration": 16},
+  "palette": {"mode": "colorset1", "decision": "default", "reason": "One fluid, one causal rate; position and direct labels distinguish the representations."},
+  "sources": {"rate": {"value": 2, "domain": [0, 5], "unit": "L/s"}},
+  "derived": {"volume": {"expr": {"integrate": ["rate", "time"]}, "unit": "L"}},
+  "events": [
+    {"id": "open-valve", "at": 4, "duration": 2, "changes": {"rate": 4}, "cause": "The inlet valve opens further."},
+    {"id": "close-valve", "at": 10, "duration": 2, "changes": {"rate": 1}, "cause": "The inlet valve closes partway."}
+  ],
+  "entities": {"water": "primary"},
+  "views": [
+    {"id": "tank", "question": "How fast is the fluid entering, and where is the stored fluid?", "region": [80, 70, 1020, 920], "importance": "main"},
+    {"id": "history", "question": "How does rate determine accumulated volume over time?", "region": [1180, 160, 650, 730], "importance": "support"}
+  ],
+  "marks": [
+    {"id": "inlet", "view": "tank", "kind": "path", "d": "M 80 100 H 510 V 230", "attrs": {}, "fill": "none", "stroke": "ink", "strokeWidth": 14},
+    {"id": "valve", "view": "tank", "kind": "line", "attrs": {"x1": 310, "y1": 100, "x2": {"add": [310, {"mul": [18, "rate"]}]}, "y2": 100}, "fill": "none", "stroke": "primary", "strokeWidth": 22},
+    {"id": "flow", "view": "tank", "kind": "line", "attrs": {"x1": 510, "y1": 235, "x2": 510, "y2": {"add": [265, {"mul": [12, "rate"]}]}}, "fill": "none", "stroke": "primary", "strokeWidth": 8, "arrow": true, "entity": "water"},
+    {"id": "tank-body", "view": "tank", "kind": "rect", "attrs": {"x": 300, "y": 330, "width": 420, "height": 500}, "fill": "surface", "stroke": "ink", "strokeWidth": 5},
+    {"id": "stored", "view": "tank", "kind": "rect", "attrs": {"x": 307, "y": {"sub": [824, {"mul": [6, "volume"]}]}, "width": 406, "height": {"mul": [6, "volume"]}}, "fill": "primary", "entity": "water"},
+    {"id": "surface", "view": "tank", "kind": "line", "attrs": {"x1": 307, "y1": {"sub": [824, {"mul": [6, "volume"]}]}, "x2": 713, "y2": {"sub": [824, {"mul": [6, "volume"]}]}}, "fill": "none", "stroke": "primaryDark", "strokeWidth": 5},
+    {"id": "rate-label", "view": "tank", "kind": "text", "attrs": {"x": 620, "y": 175, "fontSize": 36}, "text": "flow", "value": "rate", "digits": 1, "unit": "L/s", "fill": "ink"},
+    {"id": "volume-label", "view": "tank", "kind": "text", "attrs": {"x": 760, "y": 810, "fontSize": 36}, "text": "stored", "value": "volume", "digits": 1, "unit": "L", "fill": "ink"},
+    {"id": "history-axis", "view": "history", "kind": "path", "d": "M 60 65 V 600 H 600", "attrs": {}, "fill": "none", "stroke": "ink", "strokeWidth": 3},
+    {"id": "volume-curve", "view": "history", "kind": "plot", "attrs": {"x": 60, "y": 80, "width": 520, "height": 520}, "xValue": "time", "yValue": "volume", "xDomain": [0, 16], "yDomain": [0, 80], "samples": 120, "fill": "none", "stroke": "primary", "strokeWidth": 6, "entity": "water"},
+    {"id": "history-unit", "view": "history", "kind": "text", "attrs": {"x": 60, "y": 40, "fontSize": 32}, "text": "stored · L", "fill": "ink"},
+    {"id": "history-time", "view": "history", "kind": "text", "attrs": {"x": 600, "y": 660, "fontSize": 32}, "anchor": "end", "text": "16 s", "fill": "ink"},
+    {"id": "history-zero", "view": "history", "kind": "text", "attrs": {"x": 34, "y": 642, "fontSize": 28}, "text": "0", "fill": "ink"}
+  ],
+  "invariants": [
+    {"id": "accumulation", "lhs": "volume", "rhs": {"integrate": ["rate", "time"]}, "tolerance": 0.000000001}
+  ]
+}

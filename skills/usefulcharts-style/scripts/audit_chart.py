@@ -61,6 +61,7 @@ AUDIT = r"""() => {
   const nodes=[...svg.querySelectorAll('[data-node-id]')].map(el=>{
     const body=el.querySelector('[data-node-box]'),label=el.querySelector('[data-label-box]'),stem=el.querySelector('[data-period-stem]');
     return {id:el.dataset.nodeId,box:bounds(body),label_box:label?bounds(label):null,
+      text_angles:[...el.querySelectorAll(':scope > text')].map(t=>{const m=svg.getScreenCTM().inverse().multiply(t.getScreenCTM());return Math.atan2(m.b,m.a)*180/Math.PI}),
       period_stem:painted(stem),period_label:painted(el.querySelector('[data-period-label]')),
       parts:stem?[bounds(stem),...(label?[bounds(label)]:[])]:[bounds(body)]};
   });
@@ -289,6 +290,9 @@ def check_source(report, data):
             if abs(box["y"]-expected_y)>.1 or abs(box["h"]-expected_h)>.1:
                 report["findings"].append({"type": "numeric-time-mismatch", "id": node["id"]})
             actual=rendered_nodes[node['id']];stem=actual.get('period_stem');label=actual.get('label_box')
+            expected_angle=0 if data.get('layout')=='compact' or node.get('label_orientation')=='horizontal' else -90
+            if not actual.get('text_angles') or any(abs(angle-expected_angle)>.05 for angle in actual['text_angles']):
+                report['findings'].append({'type':'source-period-label-orientation','id':node['id']})
             if data.get('design')=='editorial' and data.get('layout')!='compact':
                 expected_x=lane_origins[node['lane']]+node.get('offset',18)
                 if abs(box['x']-expected_x)>.1 or abs(box['w']-node.get('bar_width',32))>.1:

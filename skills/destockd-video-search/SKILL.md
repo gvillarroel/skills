@@ -1,6 +1,6 @@
 ---
 name: destockd-video-search
-description: Find archival video shots on Destockd from a natural-language description, browse its collections and films, present a numbered preview shortlist, and download the exact selected MP4. Use for Destockd footage discovery, similar-shot searches, source lookup, and follow-up requests to download a previously selected clip.
+description: "Finds archival video shots on Destockd from a natural-language description, browses its collections and films, presents a numbered preview shortlist, and downloads the exact selected MP4. Use for Destockd footage discovery, similar-shot searches, source lookup, and follow-up requests to download a previously selected clip."
 ---
 
 # Destockd Video Search
@@ -10,6 +10,10 @@ download the selected shot without changing its identity. Use the user's languag
 in conversation. The helper requires Python 3.11+ through `uv`; `ffprobe` is
 optional for measuring and validating downloaded media. No account is normally
 needed.
+
+## Presentation colors
+
+Use colorset1 for authored preview chrome: `#f7f7f7` stage, `#ffffff` cards, `#333e48` text, `#cfcfcf` borders and `#9e1b32` links/emphasis. If extended authored categories are requested, use only the bundled [colorset2 tokens](assets/palettes/colorsets.json). Preserve provider image, video, texture and multicolor icon bytes as source material; never claim that their original pixels fit an authored colorset. Render selected monochrome icons with a colorset token.
 
 ## Find footage
 

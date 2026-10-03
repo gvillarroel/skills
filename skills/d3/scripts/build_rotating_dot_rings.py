@@ -11,6 +11,7 @@ from __future__ import annotations
 import argparse
 import math
 from pathlib import Path
+from colorset_adapter import colorset_output
 
 
 WIDTH = 1000
@@ -132,6 +133,7 @@ def ring_markup(ring: dict[str, object]) -> str:
       </g>"""
 
 
+@colorset_output
 def build_html(
     width: int = WIDTH,
     height: int = HEIGHT,
@@ -203,6 +205,7 @@ def build_html(
 """
 
 
+@colorset_output
 def build_d3_renderer(gap_percent: float = GAP_PERCENT, gap_center_degrees: float = GAP_CENTER_DEGREES) -> str:
     return f"""/*
  * D3 renderer for d3-rotating-dot-rings.
@@ -381,6 +384,7 @@ def build_d3_renderer(gap_percent: float = GAP_PERCENT, gap_center_degrees: floa
 def main() -> int:
     parser = argparse.ArgumentParser(description="Build a standalone Rotating Dot Rings SVG/HTML artifact.")
     parser.add_argument("output", type=Path, help="Output HTML path.")
+    parser.add_argument("--colorset", choices=("colorset1", "colorset2"), default="colorset1")
     parser.add_argument("--d3-renderer-output", type=Path, help="Optional D3 renderer JavaScript output path.")
     parser.add_argument("--width", type=int, default=WIDTH, help=f"SVG width. Default: {WIDTH}")
     parser.add_argument("--height", type=int, default=HEIGHT, help=f"SVG height. Default: {HEIGHT}")
@@ -408,7 +412,7 @@ def main() -> int:
 
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(
-        build_html(args.width, args.height, args.rings, args.gap_percent, args.gap_center_degrees),
+        build_html(args.width, args.height, args.rings, args.gap_percent, args.gap_center_degrees, colorset=args.colorset),
         encoding="utf-8",
         newline="\n",
     )
@@ -417,7 +421,7 @@ def main() -> int:
     if args.d3_renderer_output:
         args.d3_renderer_output.parent.mkdir(parents=True, exist_ok=True)
         args.d3_renderer_output.write_text(
-            build_d3_renderer(args.gap_percent, args.gap_center_degrees),
+            build_d3_renderer(args.gap_percent, args.gap_center_degrees, colorset=args.colorset),
             encoding="utf-8",
             newline="\n",
         )

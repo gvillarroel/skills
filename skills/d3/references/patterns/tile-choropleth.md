@@ -21,7 +21,7 @@ The excerpt below is the compact renderer source for this pattern. If it referen
 ```js
 function renderTileChoropleth() {
     const svg = prepareSvg("tile-choropleth", "Tile choropleth", "D3 geoPath renders local region polygons colored by intensity.");
-    const color = d3.scaleQuantize().domain([18, 88]).range(["#d7e8f4", "#9ecae1", "#6baed6", "#3182bd", "#08519c"]);
+    const color = d3.scaleQuantize().domain([18, 88]).range(["#cdf3ff", "#cfcfcf", "#9c9c9c", "#007298", "#007298"]);
     const features = d3.range(12).map(i => {
       const col = i % 4, row = Math.floor(i / 4);
       const x = 86 + col * 92 + (row % 2) * 16;

@@ -1,9 +1,11 @@
 ---
 name: video
-description: Orchestrate, compose, render, and validate mixed-media videos from artifacts produced by specialist skills. Use for storyboard-to-MP4, multi-scene, audio, or heterogeneous composition work that must route D3, ECharts, PlantUML, Mermaid, Three.js, raster images, GIFs, SVGs, Slidev, or other visual producers without reimplementing their tools; define exact dimensions and aspect ratio, place multiple elements in one scene, synchronize them to one master clock, specify semantic interactions between ports and states, capture deterministic frames, encode audio/video, and verify the final artifact. Route standalone SVG-only Manim rendering to `manim-svg-video`.
+description: "Orchestrates, composes, renders, and validates mixed-media videos from artifacts produced by specialist skills. Use for storyboard-to-MP4, multi-scene, audio, or heterogeneous composition work that must route D3, ECharts, PlantUML, Mermaid, Three.js, raster images, GIFs, SVGs, Slidev, or other visual producers without reimplementing their tools; define exact dimensions and aspect ratio, place multiple elements in one scene, synchronize them to one master clock, specify semantic interactions between ports and states, capture deterministic frames, encode audio/video, and verify the final artifact. Route standalone SVG-only Manim rendering to `manim-svg-video`."
 ---
 
 # Video
+
+Read [palette-policy.md](references/palette-policy.md) before authoring or composing visuals. Apply one exact colorset to authored content and report preserved source media separately.
 
 Treat this as the mixed-media video orchestrator. Own the source contract, output format, scene composition, cross-asset interaction, master timeline, final renderer, audio mux, review loop, and delivery gate. Do not recreate diagrams, charts, illustrations, 3D scenes, or standalone SVG-only video rendering that an available specialist skill owns.
 
@@ -80,3 +82,12 @@ For a finished mixed-media video, provide the scene contract, specialist outputs
 ## Maintenance
 
 After changing this skill, run its contract tests plus the repository validators. Use an isolated `pi` run before marking behavior done.
+
+## Additional reference routes
+
+Read only the resource matching the task.
+
+- [Slidev Video Troubleshooting](references/slidev-recording-troubleshooting.md).
+- [Slidev Video Quality](references/slidev-video-quality.md).
+- [Source Preservation](references/source-preservation.md).
+- [Source Preservation](references/transition-source-preservation.md).

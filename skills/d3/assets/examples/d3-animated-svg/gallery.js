@@ -46,16 +46,22 @@
 
   const galleryStyleVersion = window.D3_GALLERY_STYLE_VERSION || document.body?.dataset?.styleVersion || "base";
   const galleryStyleConfig = window.D3_GALLERY_STYLE_CONFIG || {};
+  const canonicalAllowed = {"colorset1":["#000000","#1c1c1c","#333e48","#363636","#4f4f4f","#696969","#6d1222","#828282","#9c9c9c","#9e1b32","#b5b5b5","#cfcfcf","#e7e7e7","#e8002a","#f7f7f7","#ffccd5","#ffffff"],"colorset2":["#000000","#004d66","#007298","#00ace6","#1c1c1c","#294d19","#333e48","#363636","#36b300","#431f47","#45842a","#4f4f4f","#652f6c","#696969","#6d1222","#828282","#98700c","#994a00","#9c9c9c","#9e00b3","#9e1b32","#b5b5b5","#cdf3ff","#cfcfcf","#dbffcc","#e77204","#e7e7e7","#e8002a","#f1c319","#f7f7f7","#f9ccff","#ff9633","#ffccd5","#ffd332","#ffe5cc","#fff4cc","#ffffff"]};
+  const activeColorset = galleryStyleConfig.colorSet || (galleryStyleVersion === "cs1" ? "colorset1" : "colorset2");
+  if (!Object.hasOwn(canonicalAllowed, activeColorset)) throw new Error("Select colorset1 or colorset2");
+  const selectedAllowed = new Set(canonicalAllowed[activeColorset]);
+  if (galleryStyleConfig.allowedColors && galleryStyleConfig.allowedColors.some(value => !selectedAllowed.has(value))) throw new Error("Gallery allowedColors contains off-palette paint");
   if (galleryStyleConfig.paletteOverrides) {
     Object.entries(galleryStyleConfig.paletteOverrides).forEach(([key, value]) => {
       if (Object.hasOwn(palette, key) && typeof value === "string" && /^#[0-9a-fA-F]{6}$/.test(value)) {
+        if (!selectedAllowed.has(value.toLowerCase())) throw new Error(`Off-palette override: ${key}=${value}`);
         palette[key] = value.toLowerCase();
       }
     });
   }
   const isStyledGallery = galleryStyleVersion !== "base";
-  const galleryColorSet = galleryStyleConfig.colorSet || (galleryStyleVersion === "colorset2" ? "colorset2" : "base");
-  const galleryPaletteName = galleryStyleConfig.paletteName || (galleryStyleVersion === "colorset2" ? "full-color-style" : "base");
+  const galleryColorSet = galleryStyleConfig.colorSet || (galleryStyleVersion === "cs1" ? "colorset1" : "colorset2");
+  const galleryPaletteName = galleryStyleConfig.paletteName || (galleryStyleVersion === "cs1" ? "basic-red-neutral-style" : "full-color-style");
   const galleryStyleAlignment = galleryStyleConfig.styleName || (galleryStyleVersion === "colorset2" ? "metro-minimal-tonal-motion" : null);
   const galleryAssetBase = window.D3_GALLERY_ASSET_BASE || "";
   const galleryExampleSetId = {
@@ -63,7 +69,7 @@
     cs1: "d3-animated-svg-cs1",
     colorset2: "d3-animated-svg-colorset2"
   }[galleryStyleVersion] || "d3-animated-svg";
-  const styleAllowedColors = new Set((galleryStyleConfig.allowedColors || Object.values(palette)).map(value => String(value).toLowerCase()));
+  const styleAllowedColors = selectedAllowed;
   const styleAllowedColorList = Array.from(styleAllowedColors);
   const namedColorMap = new Map([
     ["black", palette.black],
@@ -993,12 +999,19 @@
 
     svg.selectAll("*").each(function () {
       const node = d3.select(this);
+      if (this.localName === "animate" && ["fill", "stroke", "color", "stop-color", "flood-color"].includes(node.attr("attributeName"))) {
+        ["from", "to", "by", "values"].forEach(attribute => {
+          const value = node.attr(attribute);
+          if (value) node.attr(attribute, value.split(";").map(color => remapTokenColor(color, true)).join(";"));
+        });
+        node.attr("calcMode", "discrete");
+      }
       ["fill", "stroke", "stop-color", "flood-color"].forEach(attr => {
         const current = node.attr(attr);
-        const next = remapTokenColor(current, isStyledGallery);
+        const next = remapTokenColor(current, true);
         if (next !== current) node.attr(attr, next);
       });
-      if (isStyledGallery) {
+      if (true) {
         const styleText = node.attr("style");
         if (styleText) {
           const nextStyle = styleText.replace(/#[0-9a-fA-F]{3,6}\b|rgba?\([^)]+\)|\b(?:black|white)\b/g, match => remapTokenColor(match, true));
@@ -2434,7 +2447,7 @@
       .attr("y", d => d.y + 36)
       .attr("text-anchor", "end")
       .attr("fill", palette.muted)
-      .text(d => `${d3.format(".0%")(d.ratio)} · ${d.tokens}`);
+      .text(d => `${d3.format(".0%")(d.ratio)} Â· ${d.tokens}`);
     bucketGroups.append("rect")
       .attr("x", d => d.x + 14)
       .attr("y", d => d.y + d.h - 13)
@@ -13267,14 +13280,14 @@
     const sun = projection([subsolar.lon, subsolar.lat]);
     svg.append("circle").attr("cx", sun[0]).attr("cy", sun[1]).attr("r", 10).attr("fill", palette.gold).attr("stroke", palette.yellowHover).attr("stroke-width", 2);
     svg.append("text").attr("class", "mark-label").attr("x", sun[0] + 14).attr("y", sun[1] - 12).text("subsolar point");
-    const longitudeLabel = `${Math.abs(subsolar.lon).toFixed(2)}°${subsolar.lon >= 0 ? "E" : "W"}`;
+    const longitudeLabel = `${Math.abs(subsolar.lon).toFixed(2)}Â°${subsolar.lon >= 0 ? "E" : "W"}`;
     svg.append("text")
       .attr("class", "caption")
       .attr("x", 48)
       .attr("y", 354)
       .attr("font-size", 10.5)
       .attr("font-weight", 760)
-      .text(`2026-06-21 12:00 UTC · subsolar ${longitudeLabel} · declination ${subsolar.lat.toFixed(2)}°N`);
+      .text(`2026-06-21 12:00 UTC Â· subsolar ${longitudeLabel} Â· declination ${subsolar.lat.toFixed(2)}Â°N`);
   }
 
   function renderStarMap() {
@@ -14098,7 +14111,7 @@
       .attr("class", "mark-label")
       .attr("x", frame.x)
       .attr("y", 44)
-      .text("surface coordinates • zoom 1×");
+      .text("surface coordinates â€¢ zoom 1Ã—");
     svg.append("path")
       .attr("d", `M${frame.x + 190},40H${frame.x + frame.w - 82}`)
       .attr("fill", "none")
@@ -14111,7 +14124,7 @@
       .attr("x", frame.x + frame.w)
       .attr("y", 44)
       .attr("text-anchor", "end")
-      .text("2× • next level");
+      .text("2Ã— â€¢ next level");
 
     svg.append("rect")
       .attr("x", frame.x)
@@ -14210,7 +14223,7 @@
 
     const notes = [
       { x: 52, label: "pinned surface IDs", color: palette.red },
-      { x: 216, label: "1 → 4 Bayer layers", color: palette.blue },
+      { x: 216, label: "1 â†’ 4 Bayer layers", color: palette.blue },
       { x: 386, label: "constant screen radius", color: palette.green }
     ];
     const noteGroups = svg.append("g").selectAll("g.fractal-note").data(notes).join("g")

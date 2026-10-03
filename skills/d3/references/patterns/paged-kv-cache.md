@@ -1,5 +1,10 @@
 # Paged KV Cache
 
+## Contents
+
+- [Reuse Contract](#reuse-contract)
+- [Source Excerpt](#source-excerpt)
+
 - **Pattern ID:** `d3-paged-kv-cache`
 - **Gallery source ID:** `paged-kv-cache`
 - **Family:** Inference

@@ -1,0 +1,1616 @@
+{
+  "date": "2026-10-02",
+  "purpose": "Independent visual and computed-paint verification; no skill source mutations",
+  "sourceScope": "Imported preview media and cover image pixels remain source-preserved. HTML authored chrome is checked separately.",
+  "browser": [
+    {
+      "brokenImages": [],
+      "horizontalOverflow": false,
+      "cardContentOverflow": [],
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "scrollWidth": 1440,
+      "title": "Resource options",
+      "articleCount": 1,
+      "linkCount": 1,
+      "artifact": "evaluations/runs/20261002-colorset-ambientcg-material-search-final/workspace/preview.html",
+      "state": "desktop",
+      "palette": "colorset1",
+      "offPalette": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "screenshot": "projects/colorset-audit/artifacts/support-browser/20261002-colorset-ambientcg-material-search-final-desktop.png",
+      "paintTokens": [
+        "#333e48",
+        "#9e1b32",
+        "#cfcfcf",
+        "#f7f7f7",
+        "#ffffff"
+      ]
+    },
+    {
+      "brokenImages": [],
+      "horizontalOverflow": false,
+      "cardContentOverflow": [],
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "scrollWidth": 1440,
+      "title": "Resource options",
+      "articleCount": 1,
+      "linkCount": 1,
+      "artifact": "evaluations/runs/20261002-colorset-ambientcg-material-search-final/workspace/preview.html",
+      "state": "desktop-hover",
+      "palette": "colorset1",
+      "offPalette": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "paintTokens": [
+        "#333e48",
+        "#9e1b32",
+        "#cfcfcf",
+        "#f7f7f7",
+        "#ffffff"
+      ]
+    },
+    {
+      "brokenImages": [],
+      "horizontalOverflow": false,
+      "cardContentOverflow": [],
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "scrollWidth": 1440,
+      "title": "Resource options",
+      "articleCount": 1,
+      "linkCount": 1,
+      "artifact": "evaluations/runs/20261002-colorset-ambientcg-material-search-final/workspace/preview.html",
+      "state": "desktop-focus",
+      "palette": "colorset1",
+      "offPalette": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "paintTokens": [
+        "#333e48",
+        "#9e1b32",
+        "#cfcfcf",
+        "#f7f7f7",
+        "#ffffff"
+      ]
+    },
+    {
+      "brokenImages": [],
+      "horizontalOverflow": false,
+      "cardContentOverflow": [],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scrollWidth": 390,
+      "title": "Resource options",
+      "articleCount": 1,
+      "linkCount": 1,
+      "artifact": "evaluations/runs/20261002-colorset-ambientcg-material-search-final/workspace/preview.html",
+      "state": "mobile",
+      "palette": "colorset1",
+      "offPalette": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "screenshot": "projects/colorset-audit/artifacts/support-browser/20261002-colorset-ambientcg-material-search-final-mobile.png",
+      "paintTokens": [
+        "#333e48",
+        "#9e1b32",
+        "#cfcfcf",
+        "#f7f7f7",
+        "#ffffff"
+      ]
+    },
+    {
+      "brokenImages": [],
+      "horizontalOverflow": false,
+      "cardContentOverflow": [],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scrollWidth": 390,
+      "title": "Resource options",
+      "articleCount": 1,
+      "linkCount": 1,
+      "artifact": "evaluations/runs/20261002-colorset-ambientcg-material-search-final/workspace/preview.html",
+      "state": "mobile-hover",
+      "palette": "colorset1",
+      "offPalette": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "paintTokens": [
+        "#333e48",
+        "#9e1b32",
+        "#cfcfcf",
+        "#f7f7f7",
+        "#ffffff"
+      ]
+    },
+    {
+      "brokenImages": [],
+      "horizontalOverflow": false,
+      "cardContentOverflow": [],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scrollWidth": 390,
+      "title": "Resource options",
+      "articleCount": 1,
+      "linkCount": 1,
+      "artifact": "evaluations/runs/20261002-colorset-ambientcg-material-search-final/workspace/preview.html",
+      "state": "mobile-focus",
+      "palette": "colorset1",
+      "offPalette": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "paintTokens": [
+        "#333e48",
+        "#9e1b32",
+        "#cfcfcf",
+        "#f7f7f7",
+        "#ffffff"
+      ]
+    },
+    {
+      "brokenImages": [],
+      "horizontalOverflow": false,
+      "cardContentOverflow": [],
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "scrollWidth": 1440,
+      "title": "Resource options",
+      "articleCount": 1,
+      "linkCount": 1,
+      "artifact": "evaluations/runs/20261002-colorset-iconify-icon-search-final/workspace/preview.html",
+      "state": "desktop",
+      "palette": "colorset1",
+      "offPalette": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "screenshot": "projects/colorset-audit/artifacts/support-browser/20261002-colorset-iconify-icon-search-final-desktop.png",
+      "paintTokens": [
+        "#333e48",
+        "#9e1b32",
+        "#cfcfcf",
+        "#f7f7f7",
+        "#ffffff"
+      ]
+    },
+    {
+      "brokenImages": [],
+      "horizontalOverflow": false,
+      "cardContentOverflow": [],
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "scrollWidth": 1440,
+      "title": "Resource options",
+      "articleCount": 1,
+      "linkCount": 1,
+      "artifact": "evaluations/runs/20261002-colorset-iconify-icon-search-final/workspace/preview.html",
+      "state": "desktop-hover",
+      "palette": "colorset1",
+      "offPalette": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "paintTokens": [
+        "#333e48",
+        "#9e1b32",
+        "#cfcfcf",
+        "#f7f7f7",
+        "#ffffff"
+      ]
+    },
+    {
+      "brokenImages": [],
+      "horizontalOverflow": false,
+      "cardContentOverflow": [],
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "scrollWidth": 1440,
+      "title": "Resource options",
+      "articleCount": 1,
+      "linkCount": 1,
+      "artifact": "evaluations/runs/20261002-colorset-iconify-icon-search-final/workspace/preview.html",
+      "state": "desktop-focus",
+      "palette": "colorset1",
+      "offPalette": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "paintTokens": [
+        "#333e48",
+        "#9e1b32",
+        "#cfcfcf",
+        "#f7f7f7",
+        "#ffffff"
+      ]
+    },
+    {
+      "brokenImages": [],
+      "horizontalOverflow": false,
+      "cardContentOverflow": [],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scrollWidth": 390,
+      "title": "Resource options",
+      "articleCount": 1,
+      "linkCount": 1,
+      "artifact": "evaluations/runs/20261002-colorset-iconify-icon-search-final/workspace/preview.html",
+      "state": "mobile",
+      "palette": "colorset1",
+      "offPalette": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "screenshot": "projects/colorset-audit/artifacts/support-browser/20261002-colorset-iconify-icon-search-final-mobile.png",
+      "paintTokens": [
+        "#333e48",
+        "#9e1b32",
+        "#cfcfcf",
+        "#f7f7f7",
+        "#ffffff"
+      ]
+    },
+    {
+      "brokenImages": [],
+      "horizontalOverflow": false,
+      "cardContentOverflow": [],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scrollWidth": 390,
+      "title": "Resource options",
+      "articleCount": 1,
+      "linkCount": 1,
+      "artifact": "evaluations/runs/20261002-colorset-iconify-icon-search-final/workspace/preview.html",
+      "state": "mobile-hover",
+      "palette": "colorset1",
+      "offPalette": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "paintTokens": [
+        "#333e48",
+        "#9e1b32",
+        "#cfcfcf",
+        "#f7f7f7",
+        "#ffffff"
+      ]
+    },
+    {
+      "brokenImages": [],
+      "horizontalOverflow": false,
+      "cardContentOverflow": [],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scrollWidth": 390,
+      "title": "Resource options",
+      "articleCount": 1,
+      "linkCount": 1,
+      "artifact": "evaluations/runs/20261002-colorset-iconify-icon-search-final/workspace/preview.html",
+      "state": "mobile-focus",
+      "palette": "colorset1",
+      "offPalette": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "paintTokens": [
+        "#333e48",
+        "#9e1b32",
+        "#cfcfcf",
+        "#f7f7f7",
+        "#ffffff"
+      ]
+    },
+    {
+      "brokenImages": [],
+      "horizontalOverflow": false,
+      "cardContentOverflow": [],
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "scrollWidth": 1440,
+      "title": "Resource options",
+      "articleCount": 1,
+      "linkCount": 1,
+      "artifact": "evaluations/runs/20261002-colorset-kenney-asset-search-final/workspace/preview.html",
+      "state": "desktop",
+      "palette": "colorset1",
+      "offPalette": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "screenshot": "projects/colorset-audit/artifacts/support-browser/20261002-colorset-kenney-asset-search-final-desktop.png",
+      "paintTokens": [
+        "#333e48",
+        "#9e1b32",
+        "#cfcfcf",
+        "#f7f7f7",
+        "#ffffff"
+      ]
+    },
+    {
+      "brokenImages": [],
+      "horizontalOverflow": false,
+      "cardContentOverflow": [],
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "scrollWidth": 1440,
+      "title": "Resource options",
+      "articleCount": 1,
+      "linkCount": 1,
+      "artifact": "evaluations/runs/20261002-colorset-kenney-asset-search-final/workspace/preview.html",
+      "state": "desktop-hover",
+      "palette": "colorset1",
+      "offPalette": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "paintTokens": [
+        "#333e48",
+        "#9e1b32",
+        "#cfcfcf",
+        "#f7f7f7",
+        "#ffffff"
+      ]
+    },
+    {
+      "brokenImages": [],
+      "horizontalOverflow": false,
+      "cardContentOverflow": [],
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "scrollWidth": 1440,
+      "title": "Resource options",
+      "articleCount": 1,
+      "linkCount": 1,
+      "artifact": "evaluations/runs/20261002-colorset-kenney-asset-search-final/workspace/preview.html",
+      "state": "desktop-focus",
+      "palette": "colorset1",
+      "offPalette": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "paintTokens": [
+        "#333e48",
+        "#9e1b32",
+        "#cfcfcf",
+        "#f7f7f7",
+        "#ffffff"
+      ]
+    },
+    {
+      "brokenImages": [],
+      "horizontalOverflow": false,
+      "cardContentOverflow": [],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scrollWidth": 390,
+      "title": "Resource options",
+      "articleCount": 1,
+      "linkCount": 1,
+      "artifact": "evaluations/runs/20261002-colorset-kenney-asset-search-final/workspace/preview.html",
+      "state": "mobile",
+      "palette": "colorset1",
+      "offPalette": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "screenshot": "projects/colorset-audit/artifacts/support-browser/20261002-colorset-kenney-asset-search-final-mobile.png",
+      "paintTokens": [
+        "#333e48",
+        "#9e1b32",
+        "#cfcfcf",
+        "#f7f7f7",
+        "#ffffff"
+      ]
+    },
+    {
+      "brokenImages": [],
+      "horizontalOverflow": false,
+      "cardContentOverflow": [],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scrollWidth": 390,
+      "title": "Resource options",
+      "articleCount": 1,
+      "linkCount": 1,
+      "artifact": "evaluations/runs/20261002-colorset-kenney-asset-search-final/workspace/preview.html",
+      "state": "mobile-hover",
+      "palette": "colorset1",
+      "offPalette": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "paintTokens": [
+        "#333e48",
+        "#9e1b32",
+        "#cfcfcf",
+        "#f7f7f7",
+        "#ffffff"
+      ]
+    },
+    {
+      "brokenImages": [],
+      "horizontalOverflow": false,
+      "cardContentOverflow": [],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scrollWidth": 390,
+      "title": "Resource options",
+      "articleCount": 1,
+      "linkCount": 1,
+      "artifact": "evaluations/runs/20261002-colorset-kenney-asset-search-final/workspace/preview.html",
+      "state": "mobile-focus",
+      "palette": "colorset1",
+      "offPalette": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "paintTokens": [
+        "#333e48",
+        "#9e1b32",
+        "#cfcfcf",
+        "#f7f7f7",
+        "#ffffff"
+      ]
+    },
+    {
+      "brokenImages": [],
+      "horizontalOverflow": false,
+      "cardContentOverflow": [],
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "scrollWidth": 1440,
+      "title": "Resource options",
+      "articleCount": 1,
+      "linkCount": 1,
+      "artifact": "evaluations/runs/20261002-colorset-pexels-media-search-final/workspace/preview.html",
+      "state": "desktop",
+      "palette": "colorset1",
+      "offPalette": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "screenshot": "projects/colorset-audit/artifacts/support-browser/20261002-colorset-pexels-media-search-final-desktop.png",
+      "paintTokens": [
+        "#333e48",
+        "#9e1b32",
+        "#cfcfcf",
+        "#f7f7f7",
+        "#ffffff"
+      ]
+    },
+    {
+      "brokenImages": [],
+      "horizontalOverflow": false,
+      "cardContentOverflow": [],
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "scrollWidth": 1440,
+      "title": "Resource options",
+      "articleCount": 1,
+      "linkCount": 1,
+      "artifact": "evaluations/runs/20261002-colorset-pexels-media-search-final/workspace/preview.html",
+      "state": "desktop-hover",
+      "palette": "colorset1",
+      "offPalette": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "paintTokens": [
+        "#333e48",
+        "#9e1b32",
+        "#cfcfcf",
+        "#f7f7f7",
+        "#ffffff"
+      ]
+    },
+    {
+      "brokenImages": [],
+      "horizontalOverflow": false,
+      "cardContentOverflow": [],
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "scrollWidth": 1440,
+      "title": "Resource options",
+      "articleCount": 1,
+      "linkCount": 1,
+      "artifact": "evaluations/runs/20261002-colorset-pexels-media-search-final/workspace/preview.html",
+      "state": "desktop-focus",
+      "palette": "colorset1",
+      "offPalette": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "paintTokens": [
+        "#333e48",
+        "#9e1b32",
+        "#cfcfcf",
+        "#f7f7f7",
+        "#ffffff"
+      ]
+    },
+    {
+      "brokenImages": [],
+      "horizontalOverflow": false,
+      "cardContentOverflow": [],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scrollWidth": 390,
+      "title": "Resource options",
+      "articleCount": 1,
+      "linkCount": 1,
+      "artifact": "evaluations/runs/20261002-colorset-pexels-media-search-final/workspace/preview.html",
+      "state": "mobile",
+      "palette": "colorset1",
+      "offPalette": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "screenshot": "projects/colorset-audit/artifacts/support-browser/20261002-colorset-pexels-media-search-final-mobile.png",
+      "paintTokens": [
+        "#333e48",
+        "#9e1b32",
+        "#cfcfcf",
+        "#f7f7f7",
+        "#ffffff"
+      ]
+    },
+    {
+      "brokenImages": [],
+      "horizontalOverflow": false,
+      "cardContentOverflow": [],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scrollWidth": 390,
+      "title": "Resource options",
+      "articleCount": 1,
+      "linkCount": 1,
+      "artifact": "evaluations/runs/20261002-colorset-pexels-media-search-final/workspace/preview.html",
+      "state": "mobile-hover",
+      "palette": "colorset1",
+      "offPalette": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "paintTokens": [
+        "#333e48",
+        "#9e1b32",
+        "#cfcfcf",
+        "#f7f7f7",
+        "#ffffff"
+      ]
+    },
+    {
+      "brokenImages": [],
+      "horizontalOverflow": false,
+      "cardContentOverflow": [],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scrollWidth": 390,
+      "title": "Resource options",
+      "articleCount": 1,
+      "linkCount": 1,
+      "artifact": "evaluations/runs/20261002-colorset-pexels-media-search-final/workspace/preview.html",
+      "state": "mobile-focus",
+      "palette": "colorset1",
+      "offPalette": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "paintTokens": [
+        "#333e48",
+        "#9e1b32",
+        "#cfcfcf",
+        "#f7f7f7",
+        "#ffffff"
+      ]
+    },
+    {
+      "brokenImages": [],
+      "horizontalOverflow": false,
+      "cardContentOverflow": [],
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "scrollWidth": 1440,
+      "title": "Resource options",
+      "articleCount": 1,
+      "linkCount": 1,
+      "artifact": "evaluations/runs/20261002-colorset-polyhaven-asset-search-final/workspace/preview.html",
+      "state": "desktop",
+      "palette": "colorset1",
+      "offPalette": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "screenshot": "projects/colorset-audit/artifacts/support-browser/20261002-colorset-polyhaven-asset-search-final-desktop.png",
+      "paintTokens": [
+        "#333e48",
+        "#9e1b32",
+        "#cfcfcf",
+        "#f7f7f7",
+        "#ffffff"
+      ]
+    },
+    {
+      "brokenImages": [],
+      "horizontalOverflow": false,
+      "cardContentOverflow": [],
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "scrollWidth": 1440,
+      "title": "Resource options",
+      "articleCount": 1,
+      "linkCount": 1,
+      "artifact": "evaluations/runs/20261002-colorset-polyhaven-asset-search-final/workspace/preview.html",
+      "state": "desktop-hover",
+      "palette": "colorset1",
+      "offPalette": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "paintTokens": [
+        "#333e48",
+        "#9e1b32",
+        "#cfcfcf",
+        "#f7f7f7",
+        "#ffffff"
+      ]
+    },
+    {
+      "brokenImages": [],
+      "horizontalOverflow": false,
+      "cardContentOverflow": [],
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "scrollWidth": 1440,
+      "title": "Resource options",
+      "articleCount": 1,
+      "linkCount": 1,
+      "artifact": "evaluations/runs/20261002-colorset-polyhaven-asset-search-final/workspace/preview.html",
+      "state": "desktop-focus",
+      "palette": "colorset1",
+      "offPalette": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "paintTokens": [
+        "#333e48",
+        "#9e1b32",
+        "#cfcfcf",
+        "#f7f7f7",
+        "#ffffff"
+      ]
+    },
+    {
+      "brokenImages": [],
+      "horizontalOverflow": false,
+      "cardContentOverflow": [],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scrollWidth": 390,
+      "title": "Resource options",
+      "articleCount": 1,
+      "linkCount": 1,
+      "artifact": "evaluations/runs/20261002-colorset-polyhaven-asset-search-final/workspace/preview.html",
+      "state": "mobile",
+      "palette": "colorset1",
+      "offPalette": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "screenshot": "projects/colorset-audit/artifacts/support-browser/20261002-colorset-polyhaven-asset-search-final-mobile.png",
+      "paintTokens": [
+        "#333e48",
+        "#9e1b32",
+        "#cfcfcf",
+        "#f7f7f7",
+        "#ffffff"
+      ]
+    },
+    {
+      "brokenImages": [],
+      "horizontalOverflow": false,
+      "cardContentOverflow": [],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scrollWidth": 390,
+      "title": "Resource options",
+      "articleCount": 1,
+      "linkCount": 1,
+      "artifact": "evaluations/runs/20261002-colorset-polyhaven-asset-search-final/workspace/preview.html",
+      "state": "mobile-hover",
+      "palette": "colorset1",
+      "offPalette": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "paintTokens": [
+        "#333e48",
+        "#9e1b32",
+        "#cfcfcf",
+        "#f7f7f7",
+        "#ffffff"
+      ]
+    },
+    {
+      "brokenImages": [],
+      "horizontalOverflow": false,
+      "cardContentOverflow": [],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scrollWidth": 390,
+      "title": "Resource options",
+      "articleCount": 1,
+      "linkCount": 1,
+      "artifact": "evaluations/runs/20261002-colorset-polyhaven-asset-search-final/workspace/preview.html",
+      "state": "mobile-focus",
+      "palette": "colorset1",
+      "offPalette": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "paintTokens": [
+        "#333e48",
+        "#9e1b32",
+        "#cfcfcf",
+        "#f7f7f7",
+        "#ffffff"
+      ]
+    },
+    {
+      "brokenImages": [],
+      "horizontalOverflow": false,
+      "cardContentOverflow": [],
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "scrollWidth": 1440,
+      "title": "Destockd video options",
+      "articleCount": 1,
+      "linkCount": 1,
+      "artifact": "evaluations/runs/20261002-colorset-destockd-final2/workspace/preview.html",
+      "state": "desktop",
+      "palette": "colorset1",
+      "offPalette": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "screenshot": "projects/colorset-audit/artifacts/support-browser/20261002-colorset-destockd-final2-desktop.png",
+      "paintTokens": [
+        "#333e48",
+        "#9e1b32",
+        "#cfcfcf",
+        "#e7e7e7",
+        "#f7f7f7",
+        "#ffffff"
+      ]
+    },
+    {
+      "brokenImages": [],
+      "horizontalOverflow": false,
+      "cardContentOverflow": [],
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "scrollWidth": 1440,
+      "title": "Destockd video options",
+      "articleCount": 1,
+      "linkCount": 1,
+      "artifact": "evaluations/runs/20261002-colorset-destockd-final2/workspace/preview.html",
+      "state": "desktop-hover",
+      "palette": "colorset1",
+      "offPalette": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "paintTokens": [
+        "#333e48",
+        "#9e1b32",
+        "#cfcfcf",
+        "#e7e7e7",
+        "#f7f7f7",
+        "#ffffff"
+      ]
+    },
+    {
+      "brokenImages": [],
+      "horizontalOverflow": false,
+      "cardContentOverflow": [],
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "scrollWidth": 1440,
+      "title": "Destockd video options",
+      "articleCount": 1,
+      "linkCount": 1,
+      "artifact": "evaluations/runs/20261002-colorset-destockd-final2/workspace/preview.html",
+      "state": "desktop-focus",
+      "palette": "colorset1",
+      "offPalette": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "paintTokens": [
+        "#333e48",
+        "#9e1b32",
+        "#cfcfcf",
+        "#e7e7e7",
+        "#f7f7f7",
+        "#ffffff"
+      ]
+    },
+    {
+      "brokenImages": [],
+      "horizontalOverflow": false,
+      "cardContentOverflow": [],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scrollWidth": 390,
+      "title": "Destockd video options",
+      "articleCount": 1,
+      "linkCount": 1,
+      "artifact": "evaluations/runs/20261002-colorset-destockd-final2/workspace/preview.html",
+      "state": "mobile",
+      "palette": "colorset1",
+      "offPalette": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "screenshot": "projects/colorset-audit/artifacts/support-browser/20261002-colorset-destockd-final2-mobile.png",
+      "paintTokens": [
+        "#333e48",
+        "#9e1b32",
+        "#cfcfcf",
+        "#e7e7e7",
+        "#f7f7f7",
+        "#ffffff"
+      ]
+    },
+    {
+      "brokenImages": [],
+      "horizontalOverflow": false,
+      "cardContentOverflow": [],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scrollWidth": 390,
+      "title": "Destockd video options",
+      "articleCount": 1,
+      "linkCount": 1,
+      "artifact": "evaluations/runs/20261002-colorset-destockd-final2/workspace/preview.html",
+      "state": "mobile-hover",
+      "palette": "colorset1",
+      "offPalette": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "paintTokens": [
+        "#333e48",
+        "#9e1b32",
+        "#cfcfcf",
+        "#e7e7e7",
+        "#f7f7f7",
+        "#ffffff"
+      ]
+    },
+    {
+      "brokenImages": [],
+      "horizontalOverflow": false,
+      "cardContentOverflow": [],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scrollWidth": 390,
+      "title": "Destockd video options",
+      "articleCount": 1,
+      "linkCount": 1,
+      "artifact": "evaluations/runs/20261002-colorset-destockd-final2/workspace/preview.html",
+      "state": "mobile-focus",
+      "palette": "colorset1",
+      "offPalette": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "paintTokens": [
+        "#333e48",
+        "#9e1b32",
+        "#cfcfcf",
+        "#e7e7e7",
+        "#f7f7f7",
+        "#ffffff"
+      ]
+    },
+    {
+      "brokenImages": [],
+      "horizontalOverflow": false,
+      "cardContentOverflow": [],
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "scrollWidth": 1440,
+      "title": "Synchronized SVG Compositions",
+      "articleCount": 2,
+      "linkCount": 8,
+      "artifact": "skills/compose-synchronized-svg/assets/examples/compose-synchronized-svg/index.html",
+      "state": "desktop",
+      "palette": "colorset2",
+      "offPalette": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "screenshot": "projects/colorset-audit/artifacts/support-browser/compose-published-gallery-desktop.png",
+      "paintTokens": [
+        "#007298",
+        "#1c1c1c",
+        "#333e48",
+        "#696969",
+        "#cfcfcf",
+        "#f7f7f7",
+        "#ffffff"
+      ]
+    },
+    {
+      "brokenImages": [],
+      "horizontalOverflow": false,
+      "cardContentOverflow": [],
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "scrollWidth": 1440,
+      "title": "Synchronized SVG Compositions",
+      "articleCount": 2,
+      "linkCount": 8,
+      "artifact": "skills/compose-synchronized-svg/assets/examples/compose-synchronized-svg/index.html",
+      "state": "desktop-hover",
+      "palette": "colorset2",
+      "offPalette": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "paintTokens": [
+        "#007298",
+        "#1c1c1c",
+        "#333e48",
+        "#696969",
+        "#cfcfcf",
+        "#f7f7f7",
+        "#ffffff"
+      ]
+    },
+    {
+      "brokenImages": [],
+      "horizontalOverflow": false,
+      "cardContentOverflow": [],
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "scrollWidth": 1440,
+      "title": "Synchronized SVG Compositions",
+      "articleCount": 2,
+      "linkCount": 8,
+      "artifact": "skills/compose-synchronized-svg/assets/examples/compose-synchronized-svg/index.html",
+      "state": "desktop-focus",
+      "palette": "colorset2",
+      "offPalette": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "paintTokens": [
+        "#007298",
+        "#1c1c1c",
+        "#333e48",
+        "#696969",
+        "#9e1b32",
+        "#cfcfcf",
+        "#f7f7f7",
+        "#ffffff"
+      ]
+    },
+    {
+      "brokenImages": [],
+      "horizontalOverflow": false,
+      "cardContentOverflow": [],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scrollWidth": 390,
+      "title": "Synchronized SVG Compositions",
+      "articleCount": 2,
+      "linkCount": 8,
+      "artifact": "skills/compose-synchronized-svg/assets/examples/compose-synchronized-svg/index.html",
+      "state": "mobile",
+      "palette": "colorset2",
+      "offPalette": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "screenshot": "projects/colorset-audit/artifacts/support-browser/compose-published-gallery-mobile.png",
+      "paintTokens": [
+        "#007298",
+        "#1c1c1c",
+        "#333e48",
+        "#696969",
+        "#cfcfcf",
+        "#f7f7f7",
+        "#ffffff"
+      ]
+    },
+    {
+      "brokenImages": [],
+      "horizontalOverflow": false,
+      "cardContentOverflow": [],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scrollWidth": 390,
+      "title": "Synchronized SVG Compositions",
+      "articleCount": 2,
+      "linkCount": 8,
+      "artifact": "skills/compose-synchronized-svg/assets/examples/compose-synchronized-svg/index.html",
+      "state": "mobile-hover",
+      "palette": "colorset2",
+      "offPalette": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "paintTokens": [
+        "#007298",
+        "#1c1c1c",
+        "#333e48",
+        "#696969",
+        "#cfcfcf",
+        "#f7f7f7",
+        "#ffffff"
+      ]
+    },
+    {
+      "brokenImages": [],
+      "horizontalOverflow": false,
+      "cardContentOverflow": [],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scrollWidth": 390,
+      "title": "Synchronized SVG Compositions",
+      "articleCount": 2,
+      "linkCount": 8,
+      "artifact": "skills/compose-synchronized-svg/assets/examples/compose-synchronized-svg/index.html",
+      "state": "mobile-focus",
+      "palette": "colorset2",
+      "offPalette": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "paintTokens": [
+        "#007298",
+        "#1c1c1c",
+        "#333e48",
+        "#696969",
+        "#9e1b32",
+        "#cfcfcf",
+        "#f7f7f7",
+        "#ffffff"
+      ]
+    },
+    {
+      "brokenImages": [],
+      "horizontalOverflow": false,
+      "cardContentOverflow": [],
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "scrollWidth": 1440,
+      "title": "Destockd video options",
+      "articleCount": 1,
+      "linkCount": 1,
+      "artifact": "projects/colorset-audit/artifacts/html/destockd-final.html",
+      "state": "desktop",
+      "palette": "colorset1",
+      "offPalette": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "screenshot": "projects/colorset-audit/artifacts/support-browser/destockd-direct-final-desktop.png",
+      "paintTokens": [
+        "#333e48",
+        "#9e1b32",
+        "#cfcfcf",
+        "#e7e7e7",
+        "#f7f7f7",
+        "#ffffff"
+      ]
+    },
+    {
+      "brokenImages": [],
+      "horizontalOverflow": false,
+      "cardContentOverflow": [],
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "scrollWidth": 1440,
+      "title": "Destockd video options",
+      "articleCount": 1,
+      "linkCount": 1,
+      "artifact": "projects/colorset-audit/artifacts/html/destockd-final.html",
+      "state": "desktop-hover",
+      "palette": "colorset1",
+      "offPalette": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "paintTokens": [
+        "#333e48",
+        "#9e1b32",
+        "#cfcfcf",
+        "#e7e7e7",
+        "#f7f7f7",
+        "#ffffff"
+      ]
+    },
+    {
+      "brokenImages": [],
+      "horizontalOverflow": false,
+      "cardContentOverflow": [],
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "scrollWidth": 1440,
+      "title": "Destockd video options",
+      "articleCount": 1,
+      "linkCount": 1,
+      "artifact": "projects/colorset-audit/artifacts/html/destockd-final.html",
+      "state": "desktop-focus",
+      "palette": "colorset1",
+      "offPalette": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "paintTokens": [
+        "#333e48",
+        "#9e1b32",
+        "#cfcfcf",
+        "#e7e7e7",
+        "#f7f7f7",
+        "#ffffff"
+      ]
+    },
+    {
+      "brokenImages": [],
+      "horizontalOverflow": false,
+      "cardContentOverflow": [],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scrollWidth": 390,
+      "title": "Destockd video options",
+      "articleCount": 1,
+      "linkCount": 1,
+      "artifact": "projects/colorset-audit/artifacts/html/destockd-final.html",
+      "state": "mobile",
+      "palette": "colorset1",
+      "offPalette": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "screenshot": "projects/colorset-audit/artifacts/support-browser/destockd-direct-final-mobile.png",
+      "paintTokens": [
+        "#333e48",
+        "#9e1b32",
+        "#cfcfcf",
+        "#e7e7e7",
+        "#f7f7f7",
+        "#ffffff"
+      ]
+    },
+    {
+      "brokenImages": [],
+      "horizontalOverflow": false,
+      "cardContentOverflow": [],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scrollWidth": 390,
+      "title": "Destockd video options",
+      "articleCount": 1,
+      "linkCount": 1,
+      "artifact": "projects/colorset-audit/artifacts/html/destockd-final.html",
+      "state": "mobile-hover",
+      "palette": "colorset1",
+      "offPalette": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "paintTokens": [
+        "#333e48",
+        "#9e1b32",
+        "#cfcfcf",
+        "#e7e7e7",
+        "#f7f7f7",
+        "#ffffff"
+      ]
+    },
+    {
+      "brokenImages": [],
+      "horizontalOverflow": false,
+      "cardContentOverflow": [],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scrollWidth": 390,
+      "title": "Destockd video options",
+      "articleCount": 1,
+      "linkCount": 1,
+      "artifact": "projects/colorset-audit/artifacts/html/destockd-final.html",
+      "state": "mobile-focus",
+      "palette": "colorset1",
+      "offPalette": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "paintTokens": [
+        "#333e48",
+        "#9e1b32",
+        "#cfcfcf",
+        "#e7e7e7",
+        "#f7f7f7",
+        "#ffffff"
+      ]
+    },
+    {
+      "brokenImages": [],
+      "horizontalOverflow": false,
+      "cardContentOverflow": [],
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "scrollWidth": 1440,
+      "title": "Codex Skills Examples",
+      "articleCount": 0,
+      "linkCount": 14,
+      "artifact": "dist/pages/index.html",
+      "state": "desktop",
+      "palette": "colorset2",
+      "offPalette": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "screenshot": "projects/colorset-audit/artifacts/support-browser/pages-index-desktop.png",
+      "paintTokens": [
+        "#004d66",
+        "#333e48",
+        "#4f4f4f",
+        "#9e1b32",
+        "#cdf3ff",
+        "#cfcfcf",
+        "#f7f7f7",
+        "#ffffff"
+      ]
+    },
+    {
+      "brokenImages": [],
+      "horizontalOverflow": false,
+      "cardContentOverflow": [],
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "scrollWidth": 1440,
+      "title": "Codex Skills Examples",
+      "articleCount": 0,
+      "linkCount": 14,
+      "artifact": "dist/pages/index.html",
+      "state": "desktop-hover",
+      "palette": "colorset2",
+      "offPalette": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "paintTokens": [
+        "#004d66",
+        "#007298",
+        "#333e48",
+        "#4f4f4f",
+        "#9e1b32",
+        "#cdf3ff",
+        "#cfcfcf",
+        "#f7f7f7",
+        "#ffffff"
+      ]
+    },
+    {
+      "brokenImages": [],
+      "horizontalOverflow": false,
+      "cardContentOverflow": [],
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "scrollWidth": 1440,
+      "title": "Codex Skills Examples",
+      "articleCount": 0,
+      "linkCount": 14,
+      "artifact": "dist/pages/index.html",
+      "state": "desktop-focus",
+      "palette": "colorset2",
+      "offPalette": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "paintTokens": [
+        "#004d66",
+        "#007298",
+        "#333e48",
+        "#4f4f4f",
+        "#9e1b32",
+        "#cdf3ff",
+        "#cfcfcf",
+        "#f7f7f7",
+        "#ffffff"
+      ]
+    },
+    {
+      "brokenImages": [],
+      "horizontalOverflow": false,
+      "cardContentOverflow": [],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scrollWidth": 390,
+      "title": "Codex Skills Examples",
+      "articleCount": 0,
+      "linkCount": 14,
+      "artifact": "dist/pages/index.html",
+      "state": "mobile",
+      "palette": "colorset2",
+      "offPalette": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "screenshot": "projects/colorset-audit/artifacts/support-browser/pages-index-mobile.png",
+      "paintTokens": [
+        "#004d66",
+        "#333e48",
+        "#4f4f4f",
+        "#9e1b32",
+        "#cdf3ff",
+        "#cfcfcf",
+        "#f7f7f7",
+        "#ffffff"
+      ]
+    },
+    {
+      "brokenImages": [],
+      "horizontalOverflow": false,
+      "cardContentOverflow": [],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scrollWidth": 390,
+      "title": "Codex Skills Examples",
+      "articleCount": 0,
+      "linkCount": 14,
+      "artifact": "dist/pages/index.html",
+      "state": "mobile-hover",
+      "palette": "colorset2",
+      "offPalette": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "paintTokens": [
+        "#004d66",
+        "#007298",
+        "#333e48",
+        "#4f4f4f",
+        "#9e1b32",
+        "#cdf3ff",
+        "#cfcfcf",
+        "#f7f7f7",
+        "#ffffff"
+      ]
+    },
+    {
+      "brokenImages": [],
+      "horizontalOverflow": false,
+      "cardContentOverflow": [],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scrollWidth": 390,
+      "title": "Codex Skills Examples",
+      "articleCount": 0,
+      "linkCount": 14,
+      "artifact": "dist/pages/index.html",
+      "state": "mobile-focus",
+      "palette": "colorset2",
+      "offPalette": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "paintTokens": [
+        "#004d66",
+        "#007298",
+        "#333e48",
+        "#4f4f4f",
+        "#9e1b32",
+        "#cdf3ff",
+        "#cfcfcf",
+        "#f7f7f7",
+        "#ffffff"
+      ]
+    }
+  ],
+  "raster": [
+    {
+      "label": "pixel",
+      "path": "evaluations/runs/20261002-colorset-pixel-1/workspace/pixel.png",
+      "size": [
+        80,
+        48
+      ],
+      "mode": "RGB",
+      "colorCount": 7,
+      "colors": [
+        "#828282",
+        "#9c9c9c",
+        "#cfcfcf",
+        "#e7e7e7",
+        "#e8002a",
+        "#f7f7f7",
+        "#ffffff"
+      ],
+      "fits": [
+        "colorset1",
+        "colorset2"
+      ],
+      "offColorset2": []
+    },
+    {
+      "label": "pixel-extended",
+      "path": "evaluations/runs/20261002-colorset-pixel-1/workspace/extended.webp",
+      "size": [
+        80,
+        48
+      ],
+      "mode": "RGB",
+      "colorCount": 5,
+      "colors": [
+        "#00ace6",
+        "#cdf3ff",
+        "#e8002a",
+        "#f7f7f7",
+        "#ffffff"
+      ],
+      "fits": [
+        "colorset2"
+      ],
+      "offColorset2": []
+    },
+    {
+      "label": "dither-regional",
+      "path": "evaluations/runs/20261002-colorset-dither-1/workspace/regional.png",
+      "size": [
+        80,
+        48
+      ],
+      "mode": "RGBA",
+      "colorCount": 8,
+      "colors": [
+        "#000000",
+        "#333e48",
+        "#696969",
+        "#9c9c9c",
+        "#b5b5b5",
+        "#e7e7e7",
+        "#e8002a",
+        "#ffffff"
+      ],
+      "fits": [
+        "colorset1",
+        "colorset2"
+      ],
+      "offColorset2": []
+    },
+    {
+      "label": "dither-extended",
+      "path": "evaluations/runs/20261002-colorset-dither-1/workspace/extended.png",
+      "size": [
+        80,
+        48
+      ],
+      "mode": "RGBA",
+      "colorCount": 7,
+      "colors": [
+        "#000000",
+        "#007298",
+        "#9c9c9c",
+        "#b5b5b5",
+        "#e7e7e7",
+        "#e8002a",
+        "#ffffff"
+      ],
+      "fits": [
+        "colorset2"
+      ],
+      "offColorset2": []
+    }
+  ],
+  "gif": {
+    "path": "evaluations/runs/20261002-colorset-gif-luna-3/workspace/pulse.gif",
+    "size": [
+      360,
+      240
+    ],
+    "frames": 24,
+    "uniqueFrames": 20,
+    "durationMilliseconds": 2000,
+    "loop": 0,
+    "encodedPixelColorCount": 254,
+    "encodedOffColorset2Count": 251,
+    "pixelInterpretation": "GIF quantization and antialiased edges can introduce encoded colors; exact authored source paints are validated separately.",
+    "contactSheet": "projects/colorset-audit/artifacts/support-browser/pulse-gif-contact.png"
+  },
+  "findings": [],
+  "rasterContactSheet": "projects/colorset-audit/artifacts/support-browser/pixel-dither-contact.png",
+  "passed": true,
+  "sourceChecks": [
+    {
+      "command": "uv run --script scripts/validate-colorsets.py --input evaluations/runs/20261002-colorset-gif-luna-3/workspace/pulse.animated.svg --colorset colorset1",
+      "result": "Passed; 1 artifact and 0 findings",
+      "passed": true
+    },
+    {
+      "command": "ffprobe -v error -select_streams v:0 -show_entries stream=width,height,r_frame_rate,nb_frames:format=duration -of json evaluations/runs/20261002-colorset-gif-luna-3/workspace/pulse.gif",
+      "result": "360x240; 12/1 fps; 24 frames; 2.000000 seconds",
+      "passed": true
+    }
+  ],
+  "visualReview": {
+    "previews": "Five synthetic resource fixtures share the same usable missing-image message and one candidate card. Destockd initially exposed an empty source keyframe image. These fixtures verify rendering and styling contracts, not live provider results.",
+    "raster": "All four 80x48 outputs preserve visible circle/block geometry. Pixel art is crisp; dither patterns remain legible. Extended variants visibly add canonical blue while regional variants use red and neutral tokens.",
+    "gif": "Four decoded moments show a legible Pulse label and a circle changing size/opacity; the sequence has 20 distinct frames. Antialiased/composited encoded colors are distinguished from authored source paint membership.",
+    "pages": "The main index has 14 discoverable example-set cards. Desktop uses four columns; mobile uses a single column with no horizontal overflow. Titles and resource links remain visible at both widths."
+  },
+  "developmentFindingsResolvedByRegeneration": [
+    "Root index badge/code backgrounds, shadow base, hover border and browser-default focus outline initially contained off-palette paints.",
+    "Six source-preview fixtures initially inherited the browser's #101010 focus outline; final canonical builders provide explicit red focus styling.",
+    "Destockd's initial missing-keyframe fixture emitted img src=\"\"; the corrected preview displays the missing-preview message.",
+    "Composition gallery navy shadow was changed to canonical #333e48; explicit keyboard focus uses canonical #9e1b32. This was an acceptance-fixture-only correction.",
+    "Destockd's padded missing-preview box initially extended past the mobile card edge; its final2 output uses border-box and is checked against article boundaries."
+  ],
+  "retainedInitialFailure": "projects/colorset-audit/artifacts/support-browser/support-browser-initial-failure.json"
+}

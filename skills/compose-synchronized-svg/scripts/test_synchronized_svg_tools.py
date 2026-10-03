@@ -685,9 +685,12 @@ class SynchronizedSvgToolTests(unittest.TestCase):
         self.assertEqual(compact.get("snapshotSummary"), {"initial": 1, "scenarios": 1, "timeline": 0})
         self.assertNotIn("large", json.dumps(compact))
 
-    def test_extended_canonical_palette_never_wraps_silently(self) -> None:
+    def test_extended_canonical_palette_repeats_only_exact_tokens(self) -> None:
         colors = [composer.scaffold.color_for_index(index) for index in range(96)]
-        self.assertEqual(len(colors), len(set(colors)))
+        allowed = set(composer.scaffold.color_for_index(index) for index in range(19))
+        self.assertEqual(len(allowed), 19)
+        self.assertEqual(set(colors), allowed)
+        self.assertEqual(colors[0], colors[19])
         self.assertTrue(all(re.fullmatch(r"#[0-9a-f]{6}", color) for color in colors))
 
     def test_literal_formatting_matches_en_us_intl_contract(self) -> None:
@@ -961,8 +964,9 @@ class SynchronizedSvgToolTests(unittest.TestCase):
         self.assertEqual(validated.returncode, 0, msg=validated.stderr or validated.stdout)
         identity_metrics = report.get("metrics", {}).get("identity", {})
         self.assertEqual(identity_metrics.get("canonicalIdentityCount"), 17)
-        self.assertEqual(identity_metrics.get("physicalColorTokenCount"), 17)
-        self.assertEqual(identity_metrics.get("physicalColorCollisions"), {})
+        self.assertEqual(identity_metrics.get("physicalColorTokenCount"), 10)
+        self.assertTrue(identity_metrics.get("physicalColorCollisions"))
+        self.assertTrue(any("non-color cues" in warning for warning in report["warnings"]))
 
     def run_tool(self, script: Path, *arguments: str) -> subprocess.CompletedProcess[str]:
         return subprocess.run(
@@ -1623,7 +1627,8 @@ class SynchronizedSvgToolTests(unittest.TestCase):
         source_label = next(element for element in flow_plots[0] if element.get("data-flow-source-label") == "true")
         source_label_gap = float(source_frame.get("y", "0")) - float(source_label.get("y", "0"))
         self.assertGreaterEqual(source_label_gap, 6)
-        self.assertLessEqual(source_label_gap, 12)
+        # The source caption belongs in the reserved header band, above the ribbons.
+        self.assertLessEqual(float(source_label.get("y", "0")), 24)
 
         waterfall_ratios = []
         for item in waterfall_items:
@@ -1673,7 +1678,9 @@ class SynchronizedSvgToolTests(unittest.TestCase):
             bound = [element for element in elements if element.get("data-bind") == value_id]
             self.assertTrue(bound, msg=f"missing rendered binding for {value_id}")
             self.assertTrue(
-                any(token in " ".join(str(value) for value in element.attrib.values()) for element in bound),
+                any((token in " ".join(str(value) for value in element.attrib.values())) or
+                    (element.tag.endswith("text") and token.replace("--concept-", "--text-value-") in element.get("fill", ""))
+                    for element in bound),
                 msg=f"{value_id} did not retain canonical identity token {token}",
             )
 
@@ -3479,6 +3486,7 @@ class SynchronizedSvgToolTests(unittest.TestCase):
         without_shell = authored[: declaration.end()] + body[opening.end() : closing]
 
         cases = {
+            "off-palette-paint": authored.replace('class="module-content"', 'class="module-content" fill="#123456"', 1),
             "wrong-transform": authored.replace(expected_transform, wrong_transform, 1),
             "missing-transform": authored.replace(f'   transform="{expected_transform}"\n', "", 1),
             "missing-shell": without_shell,
@@ -3504,7 +3512,7 @@ class SynchronizedSvgToolTests(unittest.TestCase):
                 report = self.parse_json_stdout(result)
                 self.assertEqual(result.returncode, 1)
                 self.assertIs(report.get("ok"), False)
-                self.assertIn("shell", str(report.get("error")).lower())
+                self.assertIn("colorset" if name == "off-palette-paint" else "shell", str(report.get("error")).lower())
                 self.assertEqual(source.read_bytes(), original)
 
         source_root = ET.fromstring(original)
@@ -5012,10 +5020,10 @@ class SynchronizedSvgToolTests(unittest.TestCase):
             if "relationship-path" in child.get("class", "").split()
         ]
         self.assertEqual(len(relationship_paths), 18)
-        self.assertTrue(all(path.get("stroke") == "#526176" for path in relationship_paths))
+        self.assertTrue(all(path.get("stroke") == "var(--ink)" for path in relationship_paths))
         relationship_style = next(element for element in root.iter() if element.tag.endswith("style"))
         self.assertIn(".relationship-path { vector-effect: non-scaling-stroke; opacity: 0.86;", relationship_style.text or "")
-        self.assertIn('[data-kind="feedback"] .relationship-path { stroke: #8a4b08; }', relationship_style.text or "")
+        self.assertIn('[data-kind="feedback"] .relationship-path { stroke: var(--warning); }', relationship_style.text or "")
         validation, validation_report = self.validate_json(
             svg,
             "--min-modules",

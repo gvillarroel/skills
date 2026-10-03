@@ -1,0 +1,973 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-02",
+  "scope": [
+    "d3",
+    "procedural-svg-animation",
+    "threejs-animated-3d",
+    "svg-brief-design",
+    "vectorize-art-patterns"
+  ],
+  "canonicalAuditBaseline": "skills/hyperframes-explainer/assets/palettes/colorsets.json",
+  "baselineSha256": "5ff838f9eaa5af5e80edcf3b23d00b0ce0aea92cd47bcda2bf0dad95d1395c26",
+  "skills": [
+    {
+      "skill": "d3",
+      "default": "colorset1",
+      "explicit": "colorset2",
+      "outputs": [
+        {
+          "route": "22 named standalone builders",
+          "producerGlob": "scripts/build*.py containing colorset_output",
+          "formats": [
+            "HTML",
+            "SVG export",
+            "PNG capture"
+          ],
+          "testedCases": 44
+        },
+        {
+          "route": "bar/lollipop/network/flow/logo contract builders",
+          "producer": "scripts/build_contract_artifact.py",
+          "formats": [
+            "HTML",
+            "decision JSON"
+          ],
+          "colorset": "explicit cs1/cs2 role table"
+        },
+        {
+          "route": "five editable starters",
+          "producer": "scripts/create_d3_svg_starter.py",
+          "formats": [
+            "HTML",
+            "CSS",
+            "data JS",
+            "manifest JSON",
+            "notes Markdown"
+          ]
+        },
+        {
+          "route": "parametric logo studio and texture engine",
+          "producers": [
+            "scripts/build_logo_studio.py",
+            "assets/templates/logo-studio.html",
+            "assets/templates/texture-gallery.html",
+            "assets/templates/logo-engine.js"
+          ],
+          "formats": [
+            "HTML",
+            "SVG export"
+          ],
+          "scope": "closed CLI contract choices; both UI palette modes checked"
+        },
+        {
+          "route": "kinetic glyph deconstruction",
+          "producer": "scripts/build_kinetic_type.py",
+          "formats": [
+            "HTML",
+            "SVG export"
+          ]
+        },
+        {
+          "route": "speculative decoding",
+          "producer": "scripts/build_speculative_decoding.py",
+          "formats": [
+            "SVG",
+            "decision JSON"
+          ],
+          "changeOwnership": "pre-existing independent authoring; exact bundled roles confirmed"
+        },
+        {
+          "route": "source-derived recreation",
+          "producer": "scripts/prepare_svg_recreation_templates.py",
+          "formats": [
+            "seed SVG",
+            "candidate SVG",
+            "HTML",
+            "source and derived signature JSON",
+            "inventory Markdown"
+          ],
+          "scope": "adapt derived paint; original source and its signature immutable; unsupported source paint must be normalized"
+        },
+        {
+          "route": "dithered derivative",
+          "producer": "scripts/dither_d3_output.py",
+          "formats": [
+            "SVG",
+            "PNG preview",
+            "JSON report"
+          ],
+          "scope": "custom palette must be exact subset of active cs1/default or cs2/explicit; both SVG and preview APIs enforce it"
+        },
+        {
+          "route": "render/export and evaluation",
+          "producers": [
+            "scripts/render_d3_svg.py",
+            "scripts/build_evaluation_report.py"
+          ],
+          "formats": [
+            "SVG",
+            "PNG",
+            "Markdown",
+            "decision JSON"
+          ],
+          "scope": "render inherits validated source; metadata output contains no authored paint"
+        },
+        {
+          "route": "225-pattern base/cs1/cs2 galleries",
+          "sourceGlob": "assets/examples/d3-animated-svg*/**/*",
+          "colorset": "base cs2 preserves distinct semantic categories; cs1/cs2 variants explicit"
+        },
+        {
+          "route": "seven composition sheets/78 composition previews, hub, logo gallery90 and texture gallery40",
+          "sourceGlobs": [
+            "assets/examples/d3-animated-svg/composition-sheets.*",
+            "assets/examples/d3/*",
+            "assets/examples/d3-logo-design/*",
+            "assets/examples/d3-logo-textures/*"
+          ],
+          "scope": "authored chrome and actual render paint; active controls reject unapproved overrides"
+        },
+        {
+          "route": "cardinality variants",
+          "producer": "scripts/build_cardinality_variants.ts",
+          "scope": "legacy off-contract authored literals replaced with exact canonical inputs"
+        }
+      ],
+      "changes": [
+        "Default named builders adapt actual paint, not only metadata",
+        "Base gallery force-maps paint and validates config overrides",
+        "SMIL paint endpoints use discrete canonical values",
+        "New dither override gate and palette-compliant recreation seeds"
+      ]
+    },
+    {
+      "skill": "procedural-svg-animation",
+      "default": "colorset1",
+      "explicit": "colorset2",
+      "outputs": [
+        {
+          "route": "66 deterministic pattern renderers/11 families",
+          "producer": "scripts/build_procedural_svg.py",
+          "formats": [
+            "standalone SVG",
+            "config and manifest JSON"
+          ],
+          "modes": [
+            "single pattern",
+            "--all",
+            "full motion",
+            "reduced motion",
+            "config template"
+          ],
+          "testedCases": 264
+        },
+        {
+          "route": "acceptance gallery",
+          "producer": "scripts/build_procedural_gallery.py",
+          "formats": [
+            "66 SVG files",
+            "HTML",
+            "CSS",
+            "JS",
+            "manifest JSON"
+          ],
+          "colorset": "colorset1"
+        },
+        {
+          "route": "browser capture",
+          "producer": "scripts/render_procedural_svg.py",
+          "formats": [
+            "PNG",
+            "JSON report"
+          ],
+          "scope": "captures validated standalone source and records first/intermediate/reduced states; no added visual chrome"
+        }
+      ],
+      "changes": [
+        "Corrected cs1 gray token and removed default pink highlight",
+        "Default generator, config and gallery switch to cs1",
+        "Replaced unrelated neon gallery chrome",
+        "Actual paints/gradient stops/SMIL values validated",
+        "Portable local capture avoids forbidden host-temporary reads",
+        "Manual capture found and repaired seven mojibake source locations"
+      ]
+    },
+    {
+      "skill": "threejs-animated-3d",
+      "default": "colorset1",
+      "explicit": "colorset2",
+      "outputs": [
+        {
+          "route": "portable token-orbit scene",
+          "producer": "scripts/build_standalone_threejs.py",
+          "formats": [
+            "HTML",
+            "WebGL",
+            "PNG",
+            "validation JSON"
+          ],
+          "scope": "all material inputs checked against active palette"
+        },
+        {
+          "route": "24-scene gallery",
+          "sourceGlob": "assets/examples/threejs-animated-3d/**",
+          "formats": [
+            "HTML",
+            "WebGL",
+            "Vite build"
+          ],
+          "colorset": "colorset2",
+          "scope": "CSS, materials, emissive colors, lights, vertex input colors, fog and backgrounds are exact tokens"
+        }
+      ],
+      "changes": [
+        "Neutral white lights replace authored blue/yellow light inputs",
+        "Continuous vertex color lerp becomes four exact token bands",
+        "Standalone validator rejects off-contract material inputs",
+        "Fixture verifier screenshot root corrected to authorized workspace"
+      ]
+    },
+    {
+      "skill": "svg-brief-design",
+      "default": "colorset1",
+      "explicit": "colorset2",
+      "outputs": [
+        {
+          "route": "blank/orbit/radial/globe/wave/flow/panel/frond/composition recipes",
+          "producer": "scripts/scaffold.py",
+          "formats": [
+            "recipe JSON",
+            "editable SVG"
+          ],
+          "scope": "main, underlay, nested detail fills/strokes and root metadata checked"
+        },
+        {
+          "route": "hand-authored SVG and preview",
+          "producer": "scripts/render_svg.py",
+          "formats": [
+            "PNG",
+            "validation JSON"
+          ],
+          "scope": "actual paint attributes and CSS including gradients/filters checked before rendering"
+        }
+      ],
+      "changes": [
+        "Added self-contained canonical palette resource",
+        "Scaffold and custom SVG render gate reject arbitrary paints",
+        "uv-first renderer invocation closes isolated missing dependency failure",
+        "15 meaningful scaffold/render contract tests pass"
+      ]
+    },
+    {
+      "skill": "vectorize-art-patterns",
+      "default": "colorset1",
+      "explicit": "colorset2",
+      "outputs": [
+        {
+          "route": "OpenCV organic/ink/stain/collage conversion",
+          "producer": "scripts/vectorize_art.py",
+          "formats": [
+            "SVG",
+            "provenance JSON"
+          ],
+          "scope": "all derivative visible paint mapped to selected contract; source pixels and source palette metadata retained as evidence"
+        },
+        {
+          "route": "VTracer high-fidelity conversion",
+          "producer": "scripts/vectorize_with_vtracer.py",
+          "formats": [
+            "SVG",
+            "provenance JSON"
+          ],
+          "scope": "geometry locked between cs1/cs2 variants; source colors are evidence only"
+        },
+        {
+          "route": "source acquisition",
+          "producer": "scripts/fetch_open_image.py",
+          "formats": [
+            "original image",
+            "rights/provenance JSON"
+          ],
+          "scope": "immutable original acquisition; no authored derivative paint"
+        },
+        {
+          "route": "30 works/60 paired variants and two abstract world maps",
+          "producers": [
+            "scripts/build_example_gallery.py",
+            "assets/examples/vectorize-art-patterns/",
+            "assets/examples/abstract-world-map/"
+          ],
+          "formats": [
+            "SVG",
+            "HTML",
+            "PNG",
+            "manifest JSON"
+          ],
+          "scope": "derivatives already correct; original source image previews retain fidelity and compliant chrome"
+        }
+      ],
+      "changes": [
+        "Removed unconstrained SOURCE derivative route",
+        "Both converters default to cs1; explicit cs2 remains available",
+        "Validator rejects data-colorset=source",
+        "Preserved required artSequence/backgroundCandidates/ink palette fields; common canonical fields exactly equal"
+      ]
+    }
+  ],
+  "touchedCanonicalPaths": [
+    "skills/d3/SKILL.md",
+    "skills/d3/assets/examples/d3-animated-svg/composition-sheets.html",
+    "skills/d3/assets/examples/d3-animated-svg/composition-sheets.js",
+    "skills/d3/assets/examples/d3-animated-svg/gallery.js",
+    "skills/d3/assets/examples/d3/index.html",
+    "skills/d3/references/command-reference.md",
+    "skills/d3/references/palette-contract.md",
+    "skills/d3/references/patterns/alluvial.md",
+    "skills/d3/references/patterns/circuit-signal-traces.md",
+    "skills/d3/references/patterns/critical-path.md",
+    "skills/d3/references/patterns/dorling.md",
+    "skills/d3/references/patterns/focus-context.md",
+    "skills/d3/references/patterns/geo-route.md",
+    "skills/d3/references/patterns/geofence-join.md",
+    "skills/d3/references/patterns/horizon.md",
+    "skills/d3/references/patterns/lasso-selection.md",
+    "skills/d3/references/patterns/radar.md",
+    "skills/d3/references/patterns/scatterplot-tour.md",
+    "skills/d3/references/patterns/statistical-collection.md",
+    "skills/d3/references/patterns/tanglegram.md",
+    "skills/d3/references/patterns/ternary.md",
+    "skills/d3/references/patterns/tile-choropleth.md",
+    "skills/d3/references/patterns/voronoi-stippling.md",
+    "skills/d3/references/patterns/voronoi.md",
+    "skills/d3/references/svg-replication.md",
+    "skills/d3/scripts/build_agent_loop_overlay.py",
+    "skills/d3/scripts/build_attention_arc_decoding.py",
+    "skills/d3/scripts/build_cardinality_variants.ts",
+    "skills/d3/scripts/build_category_burst.py",
+    "skills/d3/scripts/build_circuit_signal_traces.py",
+    "skills/d3/scripts/build_critical_bowtie_barrier.py",
+    "skills/d3/scripts/build_critical_bulkhead_isolation.py",
+    "skills/d3/scripts/build_critical_cache_stampede.py",
+    "skills/d3/scripts/build_critical_chain_buffer.py",
+    "skills/d3/scripts/build_critical_circuit_breaker.py",
+    "skills/d3/scripts/build_critical_dependency_blast_radius.py",
+    "skills/d3/scripts/build_critical_fault_tree.py",
+    "skills/d3/scripts/build_critical_idempotency_replay_guard.py",
+    "skills/d3/scripts/build_critical_incident_escalation.py",
+    "skills/d3/scripts/build_critical_queue_backpressure.py",
+    "skills/d3/scripts/build_critical_rate_limit_token_bucket.py",
+    "skills/d3/scripts/build_critical_replication_failover.py",
+    "skills/d3/scripts/build_critical_slo_burn_rate.py",
+    "skills/d3/scripts/build_natural_math_archetypes.py",
+    "skills/d3/scripts/build_organic_growth_patterns.py",
+    "skills/d3/scripts/build_process_pid_control_loop.py",
+    "skills/d3/scripts/build_rotating_dot_rings.py",
+    "skills/d3/scripts/build_solar_terminator.py",
+    "skills/d3/scripts/check_palette_contract.py",
+    "skills/d3/scripts/colorset_adapter.py",
+    "skills/d3/scripts/dither_d3_output.py",
+    "skills/d3/scripts/prepare_svg_recreation_templates.py",
+    "skills/d3/scripts/test_colorset_adapter.py",
+    "skills/procedural-svg-animation/SKILL.md",
+    "skills/procedural-svg-animation/assets/examples/procedural-svg-animation/gallery.css",
+    "skills/procedural-svg-animation/assets/examples/procedural-svg-animation/index.html",
+    "skills/procedural-svg-animation/assets/examples/procedural-svg-animation/manifest.json",
+    "skills/procedural-svg-animation/assets/examples/procedural-svg-animation/patterns/procedural-svg-alpha-persistence.svg",
+    "skills/procedural-svg-animation/assets/examples/procedural-svg-animation/patterns/procedural-svg-boid-flock.svg",
+    "skills/procedural-svg-animation/assets/examples/procedural-svg-animation/patterns/procedural-svg-cellular-automaton.svg",
+    "skills/procedural-svg-animation/assets/examples/procedural-svg-animation/patterns/procedural-svg-clip-morph.svg",
+    "skills/procedural-svg-animation/assets/examples/procedural-svg-animation/patterns/procedural-svg-counter-rotation.svg",
+    "skills/procedural-svg-animation/assets/examples/procedural-svg-animation/patterns/procedural-svg-curl-streamlines.svg",
+    "skills/procedural-svg-animation/assets/examples/procedural-svg-animation/patterns/procedural-svg-dash-conveyor.svg",
+    "skills/procedural-svg-animation/assets/examples/procedural-svg-animation/patterns/procedural-svg-diffusion-limited.svg",
+    "skills/procedural-svg-animation/assets/examples/procedural-svg-animation/patterns/procedural-svg-distance-contours.svg",
+    "skills/procedural-svg-animation/assets/examples/procedural-svg-animation/patterns/procedural-svg-easing-orchestra.svg",
+    "skills/procedural-svg-animation/assets/examples/procedural-svg-animation/patterns/procedural-svg-fast-marching-front.svg",
+    "skills/procedural-svg-animation/assets/examples/procedural-svg-animation/patterns/procedural-svg-field-glyph-morph.svg",
+    "skills/procedural-svg-animation/assets/examples/procedural-svg-animation/patterns/procedural-svg-fourier-epicycles.svg",
+    "skills/procedural-svg-animation/assets/examples/procedural-svg-animation/patterns/procedural-svg-fractal-lightning.svg",
+    "skills/procedural-svg-animation/assets/examples/procedural-svg-animation/patterns/procedural-svg-gear-train.svg",
+    "skills/procedural-svg-animation/assets/examples/procedural-svg-animation/patterns/procedural-svg-gooey-merge.svg",
+    "skills/procedural-svg-animation/assets/examples/procedural-svg-animation/patterns/procedural-svg-gradient-cycle.svg",
+    "skills/procedural-svg-animation/assets/examples/procedural-svg-animation/patterns/procedural-svg-growth-to-flow.svg",
+    "skills/procedural-svg-animation/assets/examples/procedural-svg-animation/patterns/procedural-svg-handwriting-reveal.svg",
+    "skills/procedural-svg-animation/assets/examples/procedural-svg-animation/patterns/procedural-svg-hex-wave.svg",
+    "skills/procedural-svg-animation/assets/examples/procedural-svg-animation/patterns/procedural-svg-join-tree.svg",
+    "skills/procedural-svg-animation/assets/examples/procedural-svg-animation/patterns/procedural-svg-kaleidoscope.svg",
+    "skills/procedural-svg-animation/assets/examples/procedural-svg-animation/patterns/procedural-svg-kinematic-arm.svg",
+    "skills/procedural-svg-animation/assets/examples/procedural-svg-animation/patterns/procedural-svg-lighting-sweep.svg",
+    "skills/procedural-svg-animation/assets/examples/procedural-svg-animation/patterns/procedural-svg-lissajous-bloom.svg",
+    "skills/procedural-svg-animation/assets/examples/procedural-svg-animation/patterns/procedural-svg-loop-crossfade.svg",
+    "skills/procedural-svg-animation/assets/examples/procedural-svg-animation/patterns/procedural-svg-lsystem-canopy.svg",
+    "skills/procedural-svg-animation/assets/examples/procedural-svg-animation/patterns/procedural-svg-mask-wipe.svg",
+    "skills/procedural-svg-animation/assets/examples/procedural-svg-animation/patterns/procedural-svg-metaball-field.svg",
+    "skills/procedural-svg-animation/assets/examples/procedural-svg-animation/patterns/procedural-svg-moire-rotation.svg",
+    "skills/procedural-svg-animation/assets/examples/procedural-svg-animation/patterns/procedural-svg-motion-follow.svg",
+    "skills/procedural-svg-animation/assets/examples/procedural-svg-animation/patterns/procedural-svg-noise-ribbons.svg",
+    "skills/procedural-svg-animation/assets/examples/procedural-svg-animation/patterns/procedural-svg-optimal-transport.svg",
+    "skills/procedural-svg-animation/assets/examples/procedural-svg-animation/patterns/procedural-svg-orbit-nested.svg",
+    "skills/procedural-svg-animation/assets/examples/procedural-svg-animation/patterns/procedural-svg-orbit-trail-system.svg",
+    "skills/procedural-svg-animation/assets/examples/procedural-svg-animation/patterns/procedural-svg-parallax-layers.svg",
+    "skills/procedural-svg-animation/assets/examples/procedural-svg-animation/patterns/procedural-svg-particle-advection.svg",
+    "skills/procedural-svg-animation/assets/examples/procedural-svg-animation/patterns/procedural-svg-path-morph.svg",
+    "skills/procedural-svg-animation/assets/examples/procedural-svg-animation/patterns/procedural-svg-pendulum-cascade.svg",
+    "skills/procedural-svg-animation/assets/examples/procedural-svg-animation/patterns/procedural-svg-phase-lattice.svg",
+    "skills/procedural-svg-animation/assets/examples/procedural-svg-animation/patterns/procedural-svg-phyllotaxis-bloom.svg",
+    "skills/procedural-svg-animation/assets/examples/procedural-svg-animation/patterns/procedural-svg-physarum-network.svg",
+    "skills/procedural-svg-animation/assets/examples/procedural-svg-animation/patterns/procedural-svg-pulse-network.svg",
+    "skills/procedural-svg-animation/assets/examples/procedural-svg-animation/patterns/procedural-svg-quasicrystal.svg",
+    "skills/procedural-svg-animation/assets/examples/procedural-svg-animation/patterns/procedural-svg-reaction-diffusion.svg",
+    "skills/procedural-svg-animation/assets/examples/procedural-svg-animation/patterns/procedural-svg-recursive-coral.svg",
+    "skills/procedural-svg-animation/assets/examples/procedural-svg-animation/patterns/procedural-svg-rose-curve.svg",
+    "skills/procedural-svg-animation/assets/examples/procedural-svg-animation/patterns/procedural-svg-space-colonization.svg",
+    "skills/procedural-svg-animation/assets/examples/procedural-svg-animation/patterns/procedural-svg-spirograph.svg",
+    "skills/procedural-svg-animation/assets/examples/procedural-svg-animation/patterns/procedural-svg-spring-chain.svg",
+    "skills/procedural-svg-animation/assets/examples/procedural-svg-animation/patterns/procedural-svg-spring-mesh.svg",
+    "skills/procedural-svg-animation/assets/examples/procedural-svg-animation/patterns/procedural-svg-stable-fluid.svg",
+    "skills/procedural-svg-animation/assets/examples/procedural-svg-animation/patterns/procedural-svg-stagger-wave.svg",
+    "skills/procedural-svg-animation/assets/examples/procedural-svg-animation/patterns/procedural-svg-state-sequencer.svg",
+    "skills/procedural-svg-animation/assets/examples/procedural-svg-animation/patterns/procedural-svg-stateful-infographic.svg",
+    "skills/procedural-svg-animation/assets/examples/procedural-svg-animation/patterns/procedural-svg-stroke-draw.svg",
+    "skills/procedural-svg-animation/assets/examples/procedural-svg-animation/patterns/procedural-svg-superformula.svg",
+    "skills/procedural-svg-animation/assets/examples/procedural-svg-animation/patterns/procedural-svg-tiled-wavefront.svg",
+    "skills/procedural-svg-animation/assets/examples/procedural-svg-animation/patterns/procedural-svg-trim-window.svg",
+    "skills/procedural-svg-animation/assets/examples/procedural-svg-animation/patterns/procedural-svg-truchet-flow.svg",
+    "skills/procedural-svg-animation/assets/examples/procedural-svg-animation/patterns/procedural-svg-turbulence-warp.svg",
+    "skills/procedural-svg-animation/assets/examples/procedural-svg-animation/patterns/procedural-svg-vector-field.svg",
+    "skills/procedural-svg-animation/assets/examples/procedural-svg-animation/patterns/procedural-svg-vein-growth.svg",
+    "skills/procedural-svg-animation/assets/examples/procedural-svg-animation/patterns/procedural-svg-verlet-cloth.svg",
+    "skills/procedural-svg-animation/assets/examples/procedural-svg-animation/patterns/procedural-svg-voronoi-pulse.svg",
+    "skills/procedural-svg-animation/assets/examples/procedural-svg-animation/patterns/procedural-svg-wave-interference.svg",
+    "skills/procedural-svg-animation/assets/palettes/colorsets.json",
+    "skills/procedural-svg-animation/assets/templates/pattern-config.json",
+    "skills/procedural-svg-animation/references/runtime-and-validation.md",
+    "skills/procedural-svg-animation/scripts/build_procedural_gallery.py",
+    "skills/procedural-svg-animation/scripts/build_procedural_svg.py",
+    "skills/procedural-svg-animation/scripts/render_procedural_svg.py",
+    "skills/procedural-svg-animation/scripts/validate_procedural_svg.py",
+    "skills/svg-brief-design/SKILL.md",
+    "skills/svg-brief-design/assets/palettes/colorsets.json",
+    "skills/svg-brief-design/scripts/render_svg.py",
+    "skills/svg-brief-design/scripts/scaffold.py",
+    "skills/svg-brief-design/scripts/test_scaffold.py",
+    "skills/threejs-animated-3d/SKILL.md",
+    "skills/threejs-animated-3d/assets/examples/threejs-animated-3d/index.html",
+    "skills/threejs-animated-3d/assets/examples/threejs-animated-3d/scripts/verify-gallery.mjs",
+    "skills/threejs-animated-3d/assets/examples/threejs-animated-3d/src/main.js",
+    "skills/threejs-animated-3d/assets/palettes/colorsets.json",
+    "skills/threejs-animated-3d/references/visual-tokens.md",
+    "skills/threejs-animated-3d/scripts/validate_standalone_threejs.py",
+    "skills/vectorize-art-patterns/SKILL.md",
+    "skills/vectorize-art-patterns/references/collection-generation.md",
+    "skills/vectorize-art-patterns/references/colorset-adaptation.md",
+    "skills/vectorize-art-patterns/scripts/test_vectorize_art.py",
+    "skills/vectorize-art-patterns/scripts/validate_art_svg.py",
+    "skills/vectorize-art-patterns/scripts/vectorize_art.py",
+    "skills/vectorize-art-patterns/scripts/vectorize_with_vtracer.py"
+  ],
+  "newRequiredBundleResources": [
+    "skills/d3/scripts/colorset_adapter.py",
+    "skills/d3/scripts/test_colorset_adapter.py",
+    "skills/procedural-svg-animation/assets/palettes/colorsets.json",
+    "skills/procedural-svg-animation/scripts/render_procedural_svg.py",
+    "skills/svg-brief-design/assets/palettes/colorsets.json",
+    "skills/threejs-animated-3d/assets/palettes/colorsets.json"
+  ],
+  "preExistingPublicationDependencies": [
+    "skills/svg-brief-design/agents/openai.yaml",
+    "skills/svg-brief-design/references/construction-decisions.md",
+    "skills/svg-brief-design/references/detail-editing.md",
+    "skills/svg-brief-design/references/scaffold-recipes.md",
+    "skills/svg-brief-design/references/svg-mechanics.md",
+    "skills/d3/scripts/build_speculative_decoding.py",
+    "skills/d3/scripts/verify_speculative_decoding.py",
+    "skills/d3/scripts/test_speculative_decoding.py",
+    "skills/d3/references/patterns/speculative-decoding.md"
+  ],
+  "sourceFidelityExceptions": [
+    {
+      "skill": "d3",
+      "scope": "immutable original SVG/raster/image bytes and separate source-signature JSON; derived seeds/HTML/SVG chrome remain palette-compliant"
+    },
+    {
+      "skill": "vectorize-art-patterns",
+      "scope": "original source acquisition and gallery originals; sourcePalette/quantized source paints inside provenance metadata only; no derivative visible paint exception"
+    },
+    {
+      "skill": "threejs-animated-3d",
+      "scope": "requested immutable photography/video/texture sources retain source pixels; authored material/light/CSS inputs comply; renderer-derived lighting/interpolation/antialiasing/composited pixels are not exact input tokens"
+    }
+  ],
+  "tests": [
+    {
+      "command": "uv run --script projects/colorset-audit/scripts/check_custom_outputs.py",
+      "result": "PASS",
+      "cases": 309,
+      "evidence": "projects/colorset-audit/artifacts/data/custom-generated-coverage.json"
+    },
+    {
+      "command": "uv run --script projects/colorset-audit/scripts/check_d3_additional_routes.py",
+      "result": "PASS",
+      "cases": 33,
+      "evidence": "projects/colorset-audit/artifacts/data/d3-additional-route-coverage.json"
+    },
+    {
+      "command": "uv run --script projects/colorset-audit/scripts/check_custom_browser.py",
+      "result": "PASS",
+      "pages": 6,
+      "computedSvgCount": 1079,
+      "evidence": "projects/colorset-audit/artifacts/data/custom-browser-coverage.json"
+    },
+    {
+      "command": "uv run --script skills/d3/assets/examples/d3-animated-svg/scripts/verify_d3_gallery.py skills/d3/assets/examples/d3-animated-svg/index.html --expected 225 --replay-all --screenshot projects/colorset-audit/artifacts/images/d3-gallery.png --wait-ms 2200",
+      "result": "PASS",
+      "patterns": 225,
+      "replays": 225
+    },
+    {
+      "command": "uv run --script skills/d3/assets/examples/d3-animated-svg-cs1/scripts/verify_style_gallery.py skills/d3/assets/examples/d3-animated-svg-cs1/index.html",
+      "result": "PASS",
+      "patterns": 225,
+      "badPaintCount": 0,
+      "evidence": "projects/colorset-audit/artifacts/data/d3-cs1.json"
+    },
+    {
+      "command": "uv run --script skills/d3/assets/examples/d3-animated-svg-colorset2/scripts/verify_colorset2_gallery.py skills/d3/assets/examples/d3-animated-svg-colorset2/index.html",
+      "result": "PASS",
+      "patterns": 225,
+      "badPaintCount": 0,
+      "evidence": "projects/colorset-audit/artifacts/data/d3-cs2.json"
+    },
+    {
+      "command": "uv run --script skills/d3/assets/examples/d3-animated-svg/scripts/verify_composition_sheets.py skills/d3/assets/examples/d3-animated-svg/composition-sheets.html",
+      "result": "PASS",
+      "sheets": 7,
+      "variants": 78,
+      "sourcePatterns": 225
+    },
+    {
+      "command": "uv run --script skills/d3/scripts/verify_logo_gallery.py skills/d3/assets/examples/d3-logo-design/index.html",
+      "result": "PASS",
+      "patterns": 90,
+      "compositions": 90,
+      "textures": 40,
+      "evidence": "projects/colorset-audit/artifacts/data/d3-logo-gallery.json"
+    },
+    {
+      "command": "uv run --script skills/d3/scripts/verify_logo_texture_gallery.py skills/d3/assets/examples/d3-logo-textures/index.html",
+      "result": "PASS",
+      "textures": 40,
+      "directHashes": 40,
+      "labels": 80,
+      "evidence": "projects/colorset-audit/artifacts/data/d3-logo-textures.json"
+    },
+    {
+      "command": "uv run --script skills/d3/assets/examples/d3-animated-svg/scripts/extract_gallery_pattern_references.py --check-only --expected 225",
+      "result": "PASS"
+    },
+    {
+      "command": "uv run --script skills/d3/scripts/test_colorset_adapter.py",
+      "result": "PASS",
+      "cases": 4
+    },
+    {
+      "command": "uv run --script skills/procedural-svg-animation/scripts/test_multistrata_contracts.py",
+      "result": "PASS",
+      "scope": "all clean numerical families and adversarial invariant mutations"
+    },
+    {
+      "command": "uv run --script skills/procedural-svg-animation/scripts/build_procedural_gallery.py --check",
+      "result": "PASS",
+      "cases": 66,
+      "catalogHash": "49c622bd3c49a64b"
+    },
+    {
+      "command": "uv run --script projects/colorset-audit/scripts/check_procedural_gallery_chrome.py",
+      "result": "PASS",
+      "states": 16,
+      "familyHoverChecks": 22,
+      "scope": "full document computed chrome at desktop/mobile default,hover,keyboard focus; canonical alpha bases allowed",
+      "evidence": "projects/colorset-audit/artifacts/data/procedural-gallery-chrome.json"
+    },
+    {
+      "command": "uv run --script scripts/validate-colorsets.py --input skills/procedural-svg-animation/assets/examples/procedural-svg-animation/gallery.css --colorset colorset1 --report projects/colorset-audit/artifacts/data/procedural-published-css.json",
+      "result": "PASS",
+      "offPaletteFindings": 0,
+      "scope": "published CSS forced to its declared cs1 gallery contract"
+    },
+    {
+      "command": "uv run --script skills/svg-brief-design/scripts/test_scaffold.py",
+      "result": "PASS",
+      "cases": 15
+    },
+    {
+      "command": "uv run --script skills/vectorize-art-patterns/scripts/test_vectorize_art.py",
+      "result": "PASS",
+      "scope": "four modes, both colorsets, determinism, seed variation, rights and integrity"
+    },
+    {
+      "command": "uv run --script skills/vectorize-art-patterns/scripts/test_vectorize_with_vtracer.py",
+      "result": "PASS",
+      "scope": "geometry-locked pair, nine paths, determinism and rights rejection"
+    },
+    {
+      "command": "uv run --script skills/vectorize-art-patterns/scripts/validate_example_gallery.py",
+      "result": "PASS",
+      "works": 30,
+      "variants": 60,
+      "creators": 28,
+      "geometryLockedPairs": 30
+    },
+    {
+      "command": "uv run --script skills/vectorize-art-patterns/scripts/validate_abstract_world_map_examples.py",
+      "result": "PASS",
+      "variants": 2
+    },
+    {
+      "command": "npm run build; npm run verify",
+      "workingDirectory": "skills/threejs-animated-3d/assets/examples/threejs-animated-3d",
+      "result": "PASS",
+      "scenes": 24,
+      "scope": "desktop/mobile drawing, animation, pointer and replay"
+    },
+    {
+      "command": "uv run --script projects/colorset-audit/scripts/smoke_logo_audit_chrome.py",
+      "result": "PASS",
+      "viewports": [
+        1440,
+        390
+      ],
+      "rows": 12,
+      "choices": 7,
+      "loadedImages": 52,
+      "evidence": "projects/colorset-audit/artifacts/data/logo-audit-chrome-smoke.json"
+    },
+    {
+      "command": "uv run --script projects/colorset-audit/scripts/review_root_color_parser.py",
+      "result": "PASS",
+      "cases": 6,
+      "evidence": "projects/colorset-audit/artifacts/data/root-color-parser-review.json"
+    }
+  ],
+  "browserCoverage": [
+    {
+      "page": "d3-animated-svg/index.html",
+      "colorset": "colorset2",
+      "svgCount": 225,
+      "ok": true
+    },
+    {
+      "page": "d3-animated-svg-cs1/index.html",
+      "colorset": "colorset1",
+      "svgCount": 225,
+      "ok": true
+    },
+    {
+      "page": "d3-animated-svg-colorset2/index.html",
+      "colorset": "colorset2",
+      "svgCount": 225,
+      "ok": true
+    },
+    {
+      "page": "d3-animated-svg/composition-sheets.html",
+      "colorset": "colorset2",
+      "svgCount": 233,
+      "ok": true
+    },
+    {
+      "page": "d3-logo-design/index.html",
+      "colorset": "colorset2",
+      "svgCount": 131,
+      "ok": true
+    },
+    {
+      "page": "d3-logo-textures/index.html",
+      "colorset": "colorset2",
+      "svgCount": 40,
+      "ok": true
+    }
+  ],
+  "acceptedIsolatedRuns": [
+    {
+      "skill": "d3",
+      "runId": "colorset-d3-20261002-final6",
+      "model": "openai-codex/gpt-5.6-luna",
+      "profile": "runtime",
+      "strict": true,
+      "result": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-03T03:05:37.218305+00:00",
+        "finishedAtUtc": "2026-10-03T03:08:09.129674+00:00",
+        "durationSeconds": 151.912,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "commandManifest": "evaluations/runs/colorset-d3-20261002-final6/run-manifest.json",
+      "evidence": "evaluations/runs/colorset-d3-20261002-final6/event-check.json"
+    },
+    {
+      "skill": "procedural-svg-animation",
+      "runId": "colorset-procedural-svg-animation-20261002-final3",
+      "model": "openai-codex/gpt-5.6-luna",
+      "profile": "runtime",
+      "strict": true,
+      "result": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-03T03:15:54.809848+00:00",
+        "finishedAtUtc": "2026-10-03T03:16:41.039559+00:00",
+        "durationSeconds": 46.23,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "commandManifest": "evaluations/runs/colorset-procedural-svg-animation-20261002-final3/run-manifest.json",
+      "evidence": "evaluations/runs/colorset-procedural-svg-animation-20261002-final3/event-check.json"
+    },
+    {
+      "skill": "threejs-animated-3d",
+      "runId": "colorset-threejs-animated-3d-20261002-1",
+      "model": "openai-codex/gpt-5.6-luna",
+      "profile": "runtime",
+      "strict": true,
+      "result": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-03T02:20:05.631642+00:00",
+        "finishedAtUtc": "2026-10-03T02:21:02.687864+00:00",
+        "durationSeconds": 57.057,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "commandManifest": "evaluations/runs/colorset-threejs-animated-3d-20261002-1/run-manifest.json",
+      "evidence": "evaluations/runs/colorset-threejs-animated-3d-20261002-1/event-check.json"
+    },
+    {
+      "skill": "svg-brief-design",
+      "runId": "colorset-svg-brief-design-20261002-5",
+      "model": "openai-codex/gpt-5.6-luna",
+      "profile": "runtime",
+      "strict": true,
+      "result": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-03T02:30:38.139360+00:00",
+        "finishedAtUtc": "2026-10-03T02:31:54.415540+00:00",
+        "durationSeconds": 76.277,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "commandManifest": "evaluations/runs/colorset-svg-brief-design-20261002-5/run-manifest.json",
+      "evidence": "evaluations/runs/colorset-svg-brief-design-20261002-5/event-check.json"
+    },
+    {
+      "skill": "vectorize-art-patterns",
+      "runId": "colorset-vectorize-art-patterns-20261002-2",
+      "model": "openai-codex/gpt-5.6-luna",
+      "profile": "runtime",
+      "strict": true,
+      "result": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-03T02:22:19.223595+00:00",
+        "finishedAtUtc": "2026-10-03T02:23:31.654121+00:00",
+        "durationSeconds": 72.431,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "commandManifest": "evaluations/runs/colorset-vectorize-art-patterns-20261002-2/run-manifest.json",
+      "evidence": "evaluations/runs/colorset-vectorize-art-patterns-20261002-2/event-check.json"
+    }
+  ],
+  "allRetainedAttempts": [
+    {
+      "skill": "d3",
+      "runId": "colorset-d3-20261002-1",
+      "passed": true,
+      "durationSeconds": 92.795,
+      "acceptedCurrentBundle": false
+    },
+    {
+      "skill": "d3",
+      "runId": "colorset-d3-20261002-final",
+      "passed": true,
+      "durationSeconds": 79.066,
+      "acceptedCurrentBundle": false
+    },
+    {
+      "skill": "d3",
+      "runId": "colorset-d3-20261002-final2",
+      "passed": false,
+      "durationSeconds": 321.018,
+      "acceptedCurrentBundle": false
+    },
+    {
+      "skill": "d3",
+      "runId": "colorset-d3-20261002-final3",
+      "passed": false,
+      "durationSeconds": 231.167,
+      "acceptedCurrentBundle": false
+    },
+    {
+      "skill": "d3",
+      "runId": "colorset-d3-20261002-final4",
+      "passed": false,
+      "durationSeconds": 191.162,
+      "acceptedCurrentBundle": false
+    },
+    {
+      "skill": "d3",
+      "runId": "colorset-d3-20261002-final5",
+      "passed": true,
+      "durationSeconds": 199.58,
+      "acceptedCurrentBundle": false
+    },
+    {
+      "skill": "d3",
+      "runId": "colorset-d3-20261002-final6",
+      "passed": true,
+      "durationSeconds": 151.912,
+      "acceptedCurrentBundle": true
+    },
+    {
+      "skill": "procedural-svg-animation",
+      "runId": "colorset-procedural-svg-animation-20261002-1",
+      "passed": false,
+      "durationSeconds": 107.804,
+      "acceptedCurrentBundle": false
+    },
+    {
+      "skill": "procedural-svg-animation",
+      "runId": "colorset-procedural-svg-animation-20261002-2",
+      "passed": true,
+      "durationSeconds": 45.006,
+      "acceptedCurrentBundle": false
+    },
+    {
+      "skill": "procedural-svg-animation",
+      "runId": "colorset-procedural-svg-animation-20261002-final",
+      "passed": true,
+      "durationSeconds": 42.581,
+      "acceptedCurrentBundle": false
+    },
+    {
+      "skill": "procedural-svg-animation",
+      "runId": "colorset-procedural-svg-animation-20261002-final2",
+      "passed": true,
+      "durationSeconds": 45.623,
+      "acceptedCurrentBundle": false
+    },
+    {
+      "skill": "procedural-svg-animation",
+      "runId": "colorset-procedural-svg-animation-20261002-final3",
+      "passed": true,
+      "durationSeconds": 46.23,
+      "acceptedCurrentBundle": true
+    },
+    {
+      "skill": "threejs-animated-3d",
+      "runId": "colorset-threejs-animated-3d-20261002-1",
+      "passed": true,
+      "durationSeconds": 57.057,
+      "acceptedCurrentBundle": true
+    },
+    {
+      "skill": "svg-brief-design",
+      "runId": "colorset-svg-brief-design-20261002-1",
+      "passed": false,
+      "durationSeconds": 5.397,
+      "acceptedCurrentBundle": false
+    },
+    {
+      "skill": "svg-brief-design",
+      "runId": "colorset-svg-brief-design-20261002-2",
+      "passed": false,
+      "durationSeconds": 74.23,
+      "acceptedCurrentBundle": false
+    },
+    {
+      "skill": "svg-brief-design",
+      "runId": "colorset-svg-brief-design-20261002-3",
+      "passed": false,
+      "durationSeconds": 103.828,
+      "acceptedCurrentBundle": false
+    },
+    {
+      "skill": "svg-brief-design",
+      "runId": "colorset-svg-brief-design-20261002-4",
+      "passed": true,
+      "durationSeconds": 61.843,
+      "acceptedCurrentBundle": false
+    },
+    {
+      "skill": "svg-brief-design",
+      "runId": "colorset-svg-brief-design-20261002-5",
+      "passed": true,
+      "durationSeconds": 76.277,
+      "acceptedCurrentBundle": true
+    },
+    {
+      "skill": "vectorize-art-patterns",
+      "runId": "colorset-vectorize-art-patterns-20261002-1",
+      "passed": false,
+      "durationSeconds": 5.546,
+      "acceptedCurrentBundle": false
+    },
+    {
+      "skill": "vectorize-art-patterns",
+      "runId": "colorset-vectorize-art-patterns-20261002-2",
+      "passed": true,
+      "durationSeconds": 72.431,
+      "acceptedCurrentBundle": true
+    }
+  ],
+  "commandCoverageCounts": {
+    "documentedSkillAndProjectValidationGroups": 23,
+    "currentAcceptedStrictForwardCommands": 5,
+    "currentAcceptedEventSummarizerCommands": 5,
+    "retainedForwardAttempts": 20
+  },
+  "publicationRequiresRebuild": [
+    "D3 base/cs1/cs2 shared-gallery JS, composition sheets, and hub",
+    "procedural gallery plus all 66 SVGs",
+    "Three.js 24-scene fixture build"
+  ],
+  "gapsAndLimits": [
+    "Coverage closes every bundled producer and visual route; it cannot prevent a future agent from writing new off-contract code, so the instructions and paint gate must remain part of validation.",
+    "Raster/browser pixels from antialiasing, alpha, gradients and WebGL illumination differ from authored token inputs; the audit validates paints, stops, light/material inputs and derived export behavior rather than enumerating every final pixel.",
+    "SVG brief and vectorize retain any broader pre-existing backlog validation status; one colorset-focused forward case does not replace their larger acceptance portfolio.",
+    "No commit, push, Pages deployment or root documentation/backlog mutation performed by this group; parent owns publication and repository release gates.",
+    "First Three.js fixture verifier used its pre-existing incorrect six-parent root and wrote two captures outside the authorized root. This was disclosed, fixed to five parents, and rerun inside the workspace; outside files were not modified or deleted."
+  ]
+}

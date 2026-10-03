@@ -1,5 +1,11 @@
 # Speculative Decode Verify
 
+## Contents
+
+- [Reuse Contract](#reuse-contract)
+- [Parameterized Builder](#parameterized-builder)
+- [Source Excerpt](#source-excerpt)
+
 - **Pattern ID:** `d3-speculative-decoding`
 - **Gallery source ID:** `speculative-decoding`
 - **Family:** Inference
@@ -13,6 +19,24 @@
 - Preserve the pattern's core geometry and semantic color roles before changing labels or domain data.
 - Use SVG-native animation for standalone output; do not leave runtime D3 or CDN dependencies in a self-contained deliverable.
 - Include an SVG `<title>`, `<desc>`, stable `viewBox`, and final-state geometry.
+- Adapt caption anchors and complete text envelopes with the geometry when changing the source viewport. Keep the resumed-token caption inside the requested width; wrap or reposition it instead of enlarging the canvas. Inspect a settled preview at that size before accepting the illustration.
+
+## Parameterized Builder
+
+For a linear draft proposal, accepted prefix, rejected tail, and target continuation, run `scripts/build_speculative_decoding.py --help` and use the builder. It writes the requested HTML and SVG together, uses the bundled palette, supplies native finite animation and HTML replay, and keeps the moving indicator away from text. Pass the user's literal tokens in order; do not substitute the excerpt's sample data. The optional `--alternate POSITION:LABEL` attaches one alternate to a 1-based draft position.
+
+```powershell
+python <d3-skill>/scripts/build_speculative_decoding.py --output-html out/decode.html --output-svg out/decode.svg --draft-token the --draft-token answer --draft-token is --draft-token 42 --accepted-count 3 --resume-token next --colorset colorset2 --width 720 --height 440
+python <d3-skill>/scripts/check_self_contained_html.py out/decode.html
+python <d3-skill>/scripts/check_palette_contract.py out/decode.html --colorset colorset2 --require-extended
+python <d3-skill>/scripts/check_palette_contract.py out/decode.svg --colorset colorset2 --require-extended
+python <d3-skill>/scripts/check_visual_contract.py out/decode.svg --require-attribute "viewBox=0 0 720 440" --require-text the --require-text answer --require-text is --require-text 42 --require-text next
+uv run --script <d3-skill>/scripts/verify_speculative_decoding.py out/decode.html --svg out/decode.svg --screenshot scratch/preview.png --json-report scratch/browser-check.json
+```
+
+Choose colorset1 unless the user requests colorset2. Use the corresponding palette flag and omit `--require-extended` for colorset1. Create scratch output in the writable workspace. Run the bundled browser verifier with `uv run --script`: it declares Playwright, falls back to installed Edge/Chrome, clicks Replay twice, checks settled/reduced-motion text and matching viewports, and writes the inspection PNG. Inspect that PNG and check that token labels remain readable during motion. Use this verifier rather than constructing an iframe or ad hoc replay harness. The SVG is meaningful even when its finite animation is disabled. Check HTML-specific controls such as Replay against the HTML; the portable SVG intentionally contains only the explanation. `check_visual_contract.py` accepts repeated `--require-text`, not the report builder's `--required-term`.
+
+The builder supports 1–12 tokens and one alternate per draft position, subject to readable fit at the exact requested dimensions. It rejects empty/control-character labels, invalid prefix counts, dense layouts, and output paths inside the skill before writing. For other branch structures, unusually long tokens, or smaller viewports, use the source excerpt and focused helpers to build custom geometry; preserve the literal data, palette, exact viewport, visibility and replay checks. Do not post-edit builder output for supported inputs.
 
 ## Source Excerpt
 

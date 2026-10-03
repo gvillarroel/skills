@@ -1,5 +1,12 @@
 # Composition Brief Contract
 
+## Contents
+
+- [Markdown Brief](#markdown-brief)
+- [JSON Plan](#json-plan)
+- [Required Scene Fields](#required-scene-fields)
+- [Quality Bar](#quality-bar)
+
 Use this contract when writing a scene composition handoff. Keep it renderer-neutral unless the user asks for implementation. The brief may mention a later renderer skill or Anime.js handoff, but it should not contain implementation code, GSAP timelines, library imports, or exact CSS/animation parameters.
 
 ## Markdown Brief
@@ -82,7 +89,7 @@ Use this shape for `composition-plan.json`:
     "edgeCornerPolicy": "",
     "boxInteriorPolicy": "zero internal padding; content flush to declared bounds",
     "grayscaleHierarchyScale": [
-      { "level": 0, "role": "primary", "grayHex": "#333333" },
+      { "level": 0, "role": "primary", "grayHex": "#363636" },
       { "level": 1, "role": "secondary", "grayHex": "#696969" },
       { "level": 2, "role": "tertiary", "grayHex": "#9c9c9c" }
     ],
@@ -123,7 +130,7 @@ Use this shape for `composition-plan.json`:
         "separation": "external gutters only"
       },
       "grayscaleHierarchy": [
-        { "level": 0, "role": "primary", "grayHex": "#333333" },
+        { "level": 0, "role": "primary", "grayHex": "#363636" },
         { "level": 1, "role": "secondary", "grayHex": "#696969" },
         { "level": 2, "role": "tertiary", "grayHex": "#9c9c9c" }
       ],

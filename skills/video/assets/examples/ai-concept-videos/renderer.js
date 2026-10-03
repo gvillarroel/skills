@@ -1,3 +1,13 @@
+// Quantize animated paint changes to the declared colorset2 token set.
+const authoredColorset2 = ["#000000", "#004d66", "#007298", "#00ace6", "#1c1c1c", "#294d19", "#333e48", "#363636", "#36b300", "#431f47", "#45842a", "#4f4f4f", "#652f6c", "#696969", "#6d1222", "#828282", "#98700c", "#994a00", "#9c9c9c", "#9e00b3", "#9e1b32", "#b5b5b5", "#cdf3ff", "#cfcfcf", "#dbffcc", "#e77204", "#e7e7e7", "#e8002a", "#f1c319", "#f7f7f7", "#f9ccff", "#ff9633", "#ffccd5", "#ffd332", "#ffe5cc", "#fff4cc", "#ffffff"];
+globalThis.quantizeColorset2 = (a, b, t) => {
+  const parse = hex => [1, 3, 5].map(i => parseInt(hex.slice(i, i + 2), 16));
+  const left = parse(a), right = parse(b), rgb = left.map((v, i) => v + (right[i] - v) * Math.max(0, Math.min(1, t)));
+  return authoredColorset2.reduce((best, c) => {
+    const distance = paint => parse(paint).reduce((sum, v, i) => sum + (v - rgb[i]) ** 2, 0);
+    return distance(c) < distance(best) ? c : best;
+  });
+};
 import { beats, concepts, palette, researchNotes } from "./concepts.js";
 import { drawEvaluationVisualOnly } from "./scenes/evaluation.js";
 import { drawGenericConceptVisualOnly } from "./scenes/generic-visuals.js";
@@ -838,7 +848,7 @@ function drawLlmHookVisualOnly(g, seconds, sceneProgress, pulse) {
     const visiblePiece = liftReveal > 0.05 ? token.piece : token.piece.slice(0, visibleCount);
     const pieceTypedOpacity = clamp(visibleCount / Math.max(1, token.piece.length), 0, 1);
     drawHookCard(tokenGroup, finalCard.x, finalCard.y, finalCard.w, finalCard.h, token.color, cardOpacity, {
-      fill: d3.interpolateRgb("#ffffff", token.color)(matrixReveal),
+      fill: globalThis.quantizeColorset2("#ffffff", token.color, matrixReveal),
       fillBand: matrixReveal < 0.82,
       rx: lerp(13, 5, matrixReveal),
       strokeWidth: lerp(4, 2.4, matrixReveal),
@@ -856,7 +866,7 @@ function drawLlmHookVisualOnly(g, seconds, sceneProgress, pulse) {
     drawHookText(tokenGroup, token.id, finalCard.x + finalCard.w / 2, finalCard.y + finalCard.h / 2 + lerp(13, 0, idReveal) + 1, {
       size: lerp(idFontSize, 22, matrixReveal),
       weight: 850,
-      fill: d3.interpolateRgb(token.color, "#ffffff")(matrixReveal),
+      fill: globalThis.quantizeColorset2(token.color, "#ffffff", matrixReveal),
       opacity: cardOpacity * clamp((idReveal - 0.16) / 0.84, 0, 1) * clamp(1 - matrixReveal * 1.35, 0, 1)
     });
   });
@@ -1150,7 +1160,7 @@ function drawProbabilityDecision(g, matrix, layout, phaseSeconds, pulse, options
     }
     if (movingOpacity > 0.02) {
       drawHookCard(g, card.x, card.y, card.w, card.h, candidates[selectedIndex].color, movingOpacity, {
-        fill: d3.interpolateRgb("#ffffff", candidates[selectedIndex].color)(travelP),
+        fill: globalThis.quantizeColorset2("#ffffff", candidates[selectedIndex].color, travelP),
         fillBand: travelP < 0.78,
         rx: lerp(12, 4, travelP),
         strokeWidth: lerp(3.4, 2, travelP),
@@ -1159,7 +1169,7 @@ function drawProbabilityDecision(g, matrix, layout, phaseSeconds, pulse, options
       drawHookText(g, candidates[selectedIndex].label, card.x + card.w / 2, card.y + card.h / 2 + 1, {
         size: lerp(24, 7, travelP),
         weight: 870,
-        fill: d3.interpolateRgb(candidates[selectedIndex].color, "#ffffff")(travelP),
+        fill: globalThis.quantizeColorset2(candidates[selectedIndex].color, "#ffffff", travelP),
         opacity: movingOpacity * clamp(1 - travelP * 1.25, 0, 1)
       });
     }

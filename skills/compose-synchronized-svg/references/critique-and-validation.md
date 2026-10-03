@@ -1,5 +1,15 @@
 # Critique and Validation
 
+## Contents
+
+- [Keep evidence](#keep-evidence)
+- [Pass blocking checks first](#pass-blocking-checks-first)
+- [Test propagation and isolation](#test-propagation-and-isolation)
+- [Review every required visual scale](#review-every-required-visual-scale)
+- [Verify static and reduced-motion modes](#verify-static-and-reduced-motion-modes)
+- [Use a reconciled 100-point rubric](#use-a-reconciled-100-point-rubric)
+- [Exit after two clean rounds](#exit-after-two-clean-rounds)
+
 Use this review after generating a synchronized SVG and after every material change. Validate semantics before polish. A high score never compensates for wrong data, false coupling, a blank fallback, or inaccessible controls.
 
 ## Keep evidence
@@ -24,6 +34,8 @@ For feedback specifically, reject a target value that is unrelated to the source
 8. **Evidence honesty:** a concise visible provenance note distinguishes sourced, assumed, simulated, and synthetic values. Never rely on metadata alone or present illustrative precision as observed evidence.
 9. **Fallback behavior:** the literal SVG is meaningful without script, and reduced-motion mode disables autoplay and nonessential transitions without removing information. Playback controls expose their current visible and accessible state; disable or remove them from keyboard order when reduced motion makes playback unavailable.
 10. **Navigable-world behavior, when declared:** every module belongs to exactly one district; every district is reachable from the root through directed non-feedback links; one incoming visual trunk reaches every non-root district; world, district, and module anchors exist at depths 0, 1, and 2; exact anchors retain their declared zoom tier; and the camera route covers every required district and returns to its initial anchor at an exact loop seam. Camera calls must update one independent camera revision and one post-commit `svg-camera-change` event without changing the serialized semantic snapshot. Require a fixed outer camera viewport, working deep links and minimap, camera-aware tab order, instant reduced-motion navigation with camera autoplay disabled, and a script-free fallback with no dead navigation HUD.
+
+Read the local text/background checks described in [color-and-visual-quality.md](color-and-visual-quality.md) when reviewing color or readability. Inspect actual surfaces under letters, including inverse controls, translucent marks, gradients, focus, and camera detail views. The browser audit records failures and incomplete coverage separately; a passing canvas-only palette calculation cannot replace these checks.
 
 Stop at the earliest failing layer, repair it, and rerun all earlier layers before interpreting later results.
 

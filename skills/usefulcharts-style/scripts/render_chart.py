@@ -18,9 +18,10 @@ import math
 import re
 import sys
 from pathlib import Path
+from palette_contract import require_color
 
-INK = "#242720"
-MUTED = "#575B50"
+INK = "#1c1c1c"
+MUTED = "#4f4f4f"
 KINDS = {
     "descent": ("", "Descent"),
     "branch": ("", "Branch / continuation"),
@@ -52,7 +53,7 @@ def ident(value, canonical=False):
 def color(value):
     require(isinstance(value, str) and re.fullmatch(r"#[0-9a-fA-F]{6}", value),
             f"Color must be #RRGGBB: {value!r}")
-    return value.upper()
+    return require_color(value).upper()
 
 
 def luminance(paint):
@@ -320,8 +321,8 @@ class Poster:
         require(1000 <= self.w <= 8000 and minimum_height <= self.h <= 12000, f"Canvas must be 1000–8000 by {minimum_height}–12000 units.")
         self.font = number(data.get("font_size", 18), "font_size")
         require(16 <= self.font <= 40, "font_size must be between 16 and 40.")
-        self.frame = color(data.get("frame_color", "#813B37"))
-        self.paper = color(data.get("paper_color", "#F2EFDF"))
+        self.frame = color(data.get("frame_color", "#9e1b32"))
+        self.paper = color(data.get("paper_color", "#e7e7e7"))
         self.ink = text_color(self.paper)
         self.muted = MUTED if contrast(MUTED, self.paper) >= 4.5 else self.ink
         require(str(data.get("title", "")).strip(), "A title is required.")
@@ -414,11 +415,11 @@ class Poster:
                 if kind in ("influence", "succession"):
                     self.add(f'<path d="M {x+30} {y-9} L {x+39} {y-4} L {x+30} {y+1}" fill="none" stroke="{self.muted}" stroke-width="2"/>')
             self.text(x + 48, y + 2, label, 16, anchor="start")
-        self.line([(65, self.top - 68), (self.w - 65, self.top - 68)], "#BDB9A8", 1)
+        self.line([(65, self.top - 68), (self.w - 65, self.top - 68)], "#b5b5b5", 1)
 
     def footer(self):
         yy = self.h - self.footer_height + 12
-        self.line([(65, yy - 31), (self.w - 65, yy - 31)], "#BDB9A8", 1)
+        self.line([(65, yy - 31), (self.w - 65, yy - 31)], "#b5b5b5", 1)
         self.text(80, yy, "HOW TO READ", 16, self.muted, anchor="start", bold=True)
         for i, line in enumerate(self.note_lines):
             self.text(80, yy + 30 + i * 24, line, 18, anchor="start")
@@ -449,7 +450,7 @@ class Poster:
                 self.rect(box, "none", extra='data-node-box="true"')
                 bar_width = min(54,w*.2)
                 self.rect((x,y,bar_width,h),paint,self.paper,2,3)
-                self.line([(x+bar_width+8,y),(x+w,y)],"#CCC8B7",1)
+                self.line([(x+bar_width+8,y),(x+w,y)],"#cfcfcf",1)
                 label_width = w-bar_width-22
                 names,details,height = self.node_content(node,label_width)
                 label_x = x+bar_width+14+label_width/2
@@ -623,7 +624,7 @@ class Poster:
         for i in range(math.floor((end-start)/step)+1):
             year = start + step*i
             y = scale(year)
-            self.line([(self.left-8, y), (self.right, y)], "#CCC8B7", 1)
+            self.line([(self.left-8, y), (self.right, y)], "#cfcfcf", 1)
             self.text(self.left-20, y+5, self.year_label(year), 15, self.muted, anchor="end")
         track_counts = {}
         for period in d["periods"]:
@@ -681,7 +682,7 @@ class Poster:
         font_data = base64.b64encode(font_path.read_bytes()).decode("ascii")
         font_license = html.escape(font_path.with_name("OFL.txt").read_text(encoding="utf-8"))
         font_style = '<style>@font-face{font-family:PosterTitle;font-style:normal;font-weight:700;src:url(data:font/ttf;base64,'+font_data+') format("truetype")}</style>\n'
-        svg = (f'<svg xmlns="http://www.w3.org/2000/svg" width="{fmt(self.w)}" height="{fmt(self.h)}" viewBox="0 0 {fmt(self.w)} {fmt(self.h)}" role="img" aria-labelledby="chart-title chart-desc" data-example-id="{self.id}"{pattern} font-family="Arial, Liberation Sans, sans-serif">\n'
+        svg = (f'<svg xmlns="http://www.w3.org/2000/svg" data-colorset="colorset2" width="{fmt(self.w)}" height="{fmt(self.h)}" viewBox="0 0 {fmt(self.w)} {fmt(self.h)}" role="img" aria-labelledby="chart-title chart-desc" data-example-id="{self.id}"{pattern} font-family="Arial, Liberation Sans, sans-serif">\n'
                f'<title id="chart-title">{title}</title><desc id="chart-desc">{description}</desc>\n'
                +font_style+
                f'<metadata id="font-license">{font_license}</metadata>\n'
@@ -702,8 +703,8 @@ def viewer(svg, title):
     return f'''<!doctype html>
 <html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{html.escape(title)}</title><style>
-*{{box-sizing:border-box}}body{{margin:0;background:#353833;color:#fff;font:16px Arial,sans-serif}}
-header{{position:sticky;top:0;z-index:1;background:#242720;padding:12px 20px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}}
+*{{box-sizing:border-box}}body{{margin:0;background:#363636;color:#fff;font:16px Arial,sans-serif}}
+header{{position:sticky;top:0;z-index:1;background:#1c1c1c;padding:12px 20px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}}
 header strong{{margin-right:auto}}button{{font:inherit;padding:8px 14px;cursor:pointer}}main{{overflow:auto;padding:24px;height:calc(100vh - 75px)}}
 #paper{{margin:auto;width:min(100%,1000px)}}#paper>svg{{display:block;width:100%;height:auto}}@media print{{header{{display:none}}main{{height:auto;padding:0;overflow:visible}}#paper{{width:100%}}}}
 </style><header><strong>{html.escape(title)}</strong><button id="fit">Fit page</button><button id="full">100% detail</button><button id="minus" aria-label="Zoom out">−</button><button id="plus" aria-label="Zoom in">+</button></header>

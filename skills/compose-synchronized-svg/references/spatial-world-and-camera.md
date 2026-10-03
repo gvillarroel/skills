@@ -1,5 +1,14 @@
 # Spatial World and Camera
 
+## Contents
+
+- [Choose the navigable-world mode](#choose-the-navigable-world-mode)
+- [Author the world graph](#author-the-world-graph)
+- [Use explicit structural diagrams](#use-explicit-structural-diagrams)
+- [Author the camera route](#author-the-camera-route)
+- [Keep camera and semantic state independent](#keep-camera-and-semantic-state-independent)
+- [Validate all three scales](#validate-all-three-scales)
+
 Use this reference only when the requested SVG must be explored in parts: a PoE-style skill tree, giant genealogy, causal world, or atlas whose local regions contain complete diagrams. Keep compact compositions on the normal brief template.
 
 ## Choose the navigable-world mode

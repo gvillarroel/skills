@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "illustrated_review": "illustrated-review.json",
+  "svg": {"path": "poster.svg", "sha256": ""},
+  "reference": {
+    "source_url": "",
+    "whole": {"path": "reference-whole.png", "sha256": ""},
+    "detail": {"path": "reference-detail.png", "sha256": ""},
+    "reviewed_images": false,
+    "comparison_basis": "same-width-whole-and-relative-detail",
+    "comparisons": {
+      "structure": "",
+      "image_ownership": "",
+      "color_continuity": "",
+      "reading_rhythm": ""
+    },
+    "convincing_family_resemblance": false,
+    "remaining_differences": []
+  },
+  "discovery_routes": [],
+  "unresolved_composition_defects": [],
+  "actual_pixel_review": false
+}

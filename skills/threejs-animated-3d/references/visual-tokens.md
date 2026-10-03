@@ -1,7 +1,13 @@
 # Visual Tokens
 
 Use these defaults for Three.js materials, lighting, HTML panels, and controls.
-Preserve explicit user colors, spacing, and an existing scene's semantic roles.
+Preserve explicit spacing and existing semantic roles. Map requested colors to
+exact tokens in `assets/palettes/colorsets.json`; every authored color input must
+belong to one selected colorset, including vertex attributes, emissive paint,
+fog, CSS, texture annotations and exported scene metadata. Use quantized token
+bands for data colors; do not generate arbitrary vertex hues with `lerpColors`
+or `setHSL`. Imported source photography can retain its immutable colors while
+authored scene chrome follows the active contract.
 
 ## Palette selection
 

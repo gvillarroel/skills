@@ -1,5 +1,12 @@
 # Composition Contract
 
+## Contents
+
+- [Required data contract](#required-data-contract)
+- [Text clearance](#text-clearance)
+- [Ninety acceptance compositions](#ninety-acceptance-compositions)
+- [Typography and responsive checks](#typography-and-responsive-checks)
+
 Treat a finished composition as a complete lockup with a primary pattern, one registered texture, one colorset, typography, spacing, and responsive intent. A parameter change is not a new composition.
 
 ## Required data contract

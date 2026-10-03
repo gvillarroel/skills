@@ -15,6 +15,8 @@ import shutil
 import sys
 from pathlib import Path
 from xml.etree import ElementTree as ET
+from colorset_adapter import adapt_artifact
+from check_palette_contract import FUNCTIONAL_COLOR_RE, PAINT_VALUE_RE, ALLOWED_NON_COLOR_VALUES, static_surface
 
 
 WORD_BANK = [
@@ -223,17 +225,19 @@ def write_inventory(path: Path, source: Path, signature: dict, replacements: lis
     path.write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
-def write_html_template(path: Path, svg_text: str, signature_file: str) -> None:
+def write_html_template(path: Path, svg_text: str, signature_file: str, colorset: str) -> None:
+    runtime_path = Path(__file__).resolve().parents[1] / "assets/vendor/d3.v7.9.0.min.js"
+    runtime = runtime_path.read_text(encoding="utf-8").replace("</script", "<\\/script")
     html = f"""<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>SVG recreation template</title>
-  <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+  <script>{runtime}</script>
   <style>body {{ margin: 0; font-family: Open Sans, Arial, sans-serif; }}</style>
 </head>
-<body>
+<body data-colorset="{colorset}" style="background:#f7f7f7;color:#333e48">
   <div id="stage"></div>
   <script type="module">
     // Edit the seeded SVG/data comments, not the rendering structure. Signature: {signature_file}
@@ -247,29 +251,40 @@ def write_html_template(path: Path, svg_text: str, signature_file: str) -> None:
     path.write_text(html, encoding="utf-8")
 
 
-def prepare_one(source: Path, template_dir: Path, expected_dir: Path, compare_module, overwrite_expected: bool) -> dict:
+def prepare_one(source: Path, template_dir: Path, expected_dir: Path, compare_module, overwrite_expected: bool, colorset: str = "colorset1") -> dict:
+    source_signature = compare_module.build_signature(source).to_jsonable()
     root = ET.parse(source).getroot()
     register_default_namespace(root)
+    root.set("font-family", root.get("font-family") or source_signature.get("rootFontFamily") or "Open Sans, Arial, sans-serif")
     replacements = mutate_text_nodes(root)
     seed_text = ET.tostring(root, encoding="unicode")
     if not seed_text.lstrip().startswith("<svg"):
         seed_text = seed_text[seed_text.find("<svg") :]
-
-    signature = compare_module.build_signature(source).to_jsonable()
+    seed_text = adapt_artifact(seed_text, colorset)
+    # Unsupported paint must be normalized explicitly instead of leaking into
+    # an authored reconstruction. The source file itself remains immutable.
+    visible_seed, _ = static_surface(Path("seed.svg"), seed_text)
+    named = {match[1] for match in PAINT_VALUE_RE.finditer(visible_seed)
+             if match[1].lower() not in ALLOWED_NON_COLOR_VALUES}
+    if FUNCTIONAL_COLOR_RE.search(visible_seed) or named:
+        raise ValueError("Normalize source named/functional paint to hex before preparing a colorset reconstruction")
 
     stem = source.stem
     template_dir.mkdir(parents=True, exist_ok=True)
     expected_dir.mkdir(parents=True, exist_ok=True)
     seed_path = template_dir / f"{stem}.seed.svg"
     signature_path = template_dir / f"{stem}.signature.json"
+    source_signature_path = template_dir / f"{stem}.source-signature.json"
     inventory_path = template_dir / f"{stem}.inventory.md"
     html_path = template_dir / f"{stem}.template.html"
     expected_path = expected_dir / source.name
 
     seed_path.write_text(seed_text, encoding="utf-8")
+    signature = compare_module.build_signature(seed_path).to_jsonable()
     signature_path.write_text(json.dumps(signature, indent=2, sort_keys=True), encoding="utf-8")
+    source_signature_path.write_text(json.dumps(source_signature, indent=2, sort_keys=True), encoding="utf-8")
     write_inventory(inventory_path, source, signature, replacements)
-    write_html_template(html_path, seed_text, signature_path.name)
+    write_html_template(html_path, seed_text, signature_path.name, colorset)
     if overwrite_expected or not expected_path.exists():
         shutil.copy2(seed_path, expected_path)
 
@@ -278,6 +293,8 @@ def prepare_one(source: Path, template_dir: Path, expected_dir: Path, compare_mo
         "expected": str(expected_path),
         "seed": str(seed_path),
         "signature": str(signature_path),
+        "sourceSignature": str(source_signature_path),
+        "colorset": colorset,
         "inventory": str(inventory_path),
         "templateHtml": str(html_path),
         "textReplacementCount": len(replacements),
@@ -293,6 +310,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--expected-dir", type=Path, required=True)
     parser.add_argument("--manifest", type=Path)
     parser.add_argument("--no-overwrite-expected", action="store_true")
+    parser.add_argument("--colorset", choices=("colorset1", "colorset2"), default="colorset1")
     return parser
 
 
@@ -306,6 +324,7 @@ def main() -> int:
             args.expected_dir.resolve(),
             compare_module,
             overwrite_expected=not args.no_overwrite_expected,
+            colorset=args.colorset,
         )
         for source in args.sources
     ]

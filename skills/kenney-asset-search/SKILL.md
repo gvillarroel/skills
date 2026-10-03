@@ -1,6 +1,6 @@
 ---
 name: kenney-asset-search
-description: Find free Kenney game asset packs by theme, category and style, show numbered previews, download the exact selected ZIP, and extract chosen files with license notices. Use for Kenney sprites, tiles, 3D props, UI, textures and audio packs.
+description: "Finds free Kenney game asset packs by theme, category and style, shows numbered previews, downloads the exact selected ZIP, and extracts chosen files with license notices. Use for Kenney sprites, tiles, 3D props, UI, textures and audio packs."
 ---
 
 # Kenney Asset Search
@@ -9,6 +9,10 @@ Search the free public Kenney asset catalog and download a chosen CC0 pack.
 Use the bundled helper with Python 3.11+ and `uv`. It has no account, API-key or
 paid subscription dependency. Keep outputs outside the skill and use the user's
 language in conversation.
+
+## Presentation colors
+
+Use colorset1 for authored preview chrome: `#f7f7f7` stage, `#ffffff` cards, `#333e48` text, `#cfcfcf` borders and `#9e1b32` links/emphasis. If extended authored categories are requested, use only the bundled [colorset2 tokens](assets/palettes/colorsets.json). Preserve provider image, video, texture and multicolor icon bytes as source material; never claim that their original pixels fit an authored colorset. Render selected monochrome icons with a colorset token.
 
 ## Find candidate packs
 

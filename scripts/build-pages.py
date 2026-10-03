@@ -402,7 +402,7 @@ def write_plantuml_legacy_redirect() -> None:
     legacy_index = PAGES_ROOT / "examples" / "plantuml-colorset-renderer-cs1" / "index.html"
     legacy_index.write_text(
         """<!doctype html>
-<html lang="en">
+<html lang="en" data-colorset="colorset2">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -448,11 +448,11 @@ def write_index() -> None:
   <style>
     :root {{
       color-scheme: light;
-      --page: #f6f7f9;
+      --page: #f7f7f7;
       --surface: #ffffff;
-      --ink: #28313b;
-      --muted: #66717f;
-      --line: #d7dde5;
+      --ink: #333e48;
+      --muted: #4f4f4f;
+      --line: #cfcfcf;
       --red: #9e1b32;
       --blue: #007298;
       --green: #45842a;
@@ -527,17 +527,18 @@ def write_index() -> None:
       color: inherit;
       padding: 18px;
       text-decoration: none;
-      box-shadow: 0 8px 20px rgba(40, 49, 59, .06);
+      box-shadow: 0 8px 20px rgba(51, 62, 72, .06);
     }}
     .card:hover {{
-      border-color: #93bfdb;
-      box-shadow: 0 12px 28px rgba(40, 49, 59, .10);
+      border-color: #007298;
+      box-shadow: 0 12px 28px rgba(51, 62, 72, .10);
     }}
+    a:focus-visible {{ outline: 2px solid #9e1b32; outline-offset: 3px; }}
     .kind {{
       width: max-content;
       border-radius: 999px;
-      background: #eef7fb;
-      color: #075673;
+      background: #cdf3ff;
+      color: #004d66;
       padding: 4px 9px;
       font-size: 12px;
       font-weight: 700;
@@ -552,7 +553,7 @@ def write_index() -> None:
       width: max-content;
       border: 1px solid var(--line);
       border-radius: 6px;
-      background: #f9fafb;
+      background: #f7f7f7;
       color: var(--muted);
       padding: 3px 6px;
       font: 700 12px/1.2 Consolas, "Liberation Mono", "Courier New", monospace;

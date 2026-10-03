@@ -1,7 +1,7 @@
 #!/usr/bin/env -S uv run --script
 # /// script
 # requires-python = ">=3.11"
-# dependencies = []
+# dependencies = ["pillow>=11.0"]
 # ///
 
 from __future__ import annotations
@@ -12,6 +12,7 @@ import subprocess
 import sys
 import tempfile
 import unittest
+from PIL import Image
 from unittest.mock import patch
 from pathlib import Path
 
@@ -285,7 +286,7 @@ class RenderArtifactValidationTests(unittest.TestCase):
             output_dir = root / "output"
             png_path = output_dir / "png" / "ditaa.png"
             png_path.parent.mkdir(parents=True)
-            png_path.write_bytes(b"\x89PNG\r\n\x1a\nfixture")
+            Image.new("RGB", (2, 2), "#007298").save(png_path)
             report_path = root / "report.json"
             report_path.write_text(
                 json.dumps(
@@ -322,8 +323,12 @@ class RenderArtifactValidationTests(unittest.TestCase):
                 capture_output=True,
                 text=True,
             )
+            Image.new("RGB", (2, 2), "#123456").save(png_path)
+            rogue = subprocess.run(completed.args, check=False, capture_output=True, text=True)
         self.assertEqual(completed.returncode, 0, completed.stdout + completed.stderr)
         self.assertTrue(json.loads(completed.stdout)["ok"])
+        self.assertNotEqual(rogue.returncode, 0)
+        self.assertTrue(any("off-palette RGB" in finding for finding in json.loads(rogue.stdout)["findings"]))
 
 
 class GalleryGateTests(unittest.TestCase):

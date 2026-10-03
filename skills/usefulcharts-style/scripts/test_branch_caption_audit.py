@@ -61,7 +61,7 @@ class BranchCaptionAudit(unittest.TestCase):
             ('label', lambda root: setattr(target(root).find('s:text', NS), 'text', 'Changed claim'), 'source-branch-caption-label'),
             ('type', lambda root: target(root).find('s:text', NS).set('font-size', '8'), 'source-branch-caption-type-or-visibility'),
             ('position', lambda root: target(root).set('transform', 'translate(24 0)'), 'source-branch-caption-anchor'),
-            ('color', lambda root: target(root).find('s:rect', NS).set('stroke', '#F56550'), 'source-branch-caption-color'),
+            ('color', lambda root: target(root).find('s:rect', NS).set('stroke', '#ff9633'), 'source-branch-caption-color'),
         ]
         for name, mutate, expected in mutations:
             with self.subTest(mutation=name):

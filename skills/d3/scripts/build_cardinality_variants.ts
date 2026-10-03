@@ -426,7 +426,7 @@ function renderHtml(spec) {
         stroke-linejoin: round;
       }
       .link {
-        stroke: #78838c;
+        stroke: #828282;
         stroke-width: 1.2;
         opacity: 0;
         animation: fade-in 0.65s ease forwards;

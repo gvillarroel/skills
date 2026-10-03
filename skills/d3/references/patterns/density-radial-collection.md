@@ -1,5 +1,16 @@
 # Density and Radial Pattern Collection
 
+## Contents
+
+- [d3-calendar](#d3-calendar)
+- [d3-contours](#d3-contours)
+- [d3-volcano-contours](#d3-volcano-contours)
+- [d3-polar-clock](#d3-polar-clock)
+- [d3-radial-area](#d3-radial-area)
+- [d3-waffle](#d3-waffle)
+- [d3-parallel-coordinates](#d3-parallel-coordinates)
+- [d3-hexbin](#d3-hexbin)
+
 Use the pattern index to route directly to one section in this compact collection. Read only that section and any reference it explicitly names.
 
 ## d3-calendar

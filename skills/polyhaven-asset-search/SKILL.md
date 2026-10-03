@@ -1,6 +1,6 @@
 ---
 name: polyhaven-asset-search
-description: Find free Poly Haven textures, HDRIs and 3D models from a visual brief, present numbered previews, and download the exact selected resolution, format and dependent files. Use for Poly Haven resource discovery and follow-up downloads of selected assets.
+description: "Finds free Poly Haven textures, HDRIs and 3D models from a visual brief, presents numbered previews, and downloads the exact selected resolution, format and dependent files. Use for Poly Haven resource discovery and follow-up downloads of selected assets."
 ---
 
 # Poly Haven Asset Search
@@ -9,6 +9,10 @@ Use the public Poly Haven API to find CC0 assets and deliver the user's chosen
 files. No account or API key is needed. The bundled Python 3.11+ helper runs with
 `uv` and includes its own local support module. Keep generated files outside the
 skill directory. Respond in the user's language.
+
+## Presentation colors
+
+Use colorset1 for authored preview chrome: `#f7f7f7` stage, `#ffffff` cards, `#333e48` text, `#cfcfcf` borders and `#9e1b32` links/emphasis. If extended authored categories are requested, use only the bundled [colorset2 tokens](assets/palettes/colorsets.json). Preserve provider image, video, texture and multicolor icon bytes as source material; never claim that their original pixels fit an authored colorset. Render selected monochrome icons with a colorset token.
 
 ## Search and shortlist
 

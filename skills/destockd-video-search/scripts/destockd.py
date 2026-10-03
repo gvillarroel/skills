@@ -157,8 +157,10 @@ def gallery(document, path):
         preview = escape(row.get("preview"))
         if preview:
             media = f'<video controls preload="none" poster="{poster}" src="{preview}"></video>'
-        else:
+        elif poster:
             media = f'<img loading="lazy" src="{poster}" alt="Candidate keyframe">'
+        else:
+            media = '<div class="missing-preview">No keyframe preview available.</div>'
         cards.append(f'''<article id="{escape(row['id'])}" data-shot-id="{escape(row['id'])}">
 <h2>Option {row['option']} · {escape(row['shot'])}</h2>{media}
 <h3>{escape(row['film'])}</h3><p>{escape(row.get('color_type') or 'Color unknown')} · Visual match unverified</p>
@@ -166,15 +168,17 @@ def gallery(document, path):
 <a href="{escape(row['page_url'])}" target="_blank" rel="noopener noreferrer">Open shot and download</a>
 </article>''')
     body = "\n".join(cards) or '<p>No candidates in the fetched result window.</p>'
-    output = '''<!doctype html><html lang="en"><meta charset="utf-8">
+    output = '''<!doctype html><html lang="en" data-colorset="colorset1"><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Destockd video options</title><style>
-body{font:16px/1.5 system-ui,sans-serif;background:#101923;color:#eff4f8;margin:0;padding:24px}
+body{font:16px/1.5 system-ui,sans-serif;background:#f7f7f7;color:#333e48;margin:0;padding:24px}
 main{max-width:1200px;margin:auto}header{margin-bottom:28px}h1{font-size:32px;margin:0}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:20px}
-article{background:#1d2a38;border:1px solid #4a6175;padding:18px;border-radius:12px;overflow-wrap:anywhere}
-video,img{display:block;width:100%;aspect-ratio:4/3;object-fit:contain;background:#080c10}
-h2{font-size:19px}h3{font-size:17px}a{color:#8cdaff}code{font-size:13px}p{color:#d3e0eb}
+article{background:#ffffff;border:1px solid #cfcfcf;padding:18px;border-radius:12px;overflow-wrap:anywhere}
+video,img,.missing-preview{display:block;width:100%;aspect-ratio:4/3;object-fit:contain;background:#e7e7e7}
+.missing-preview{display:grid;place-items:center;padding:16px;text-align:center;box-sizing:border-box}
+h2{font-size:19px}h3{font-size:17px}a{color:#9e1b32}code{font-size:13px}p{color:#333e48}
+a:focus-visible{outline:2px solid #9e1b32;outline-offset:3px}
 </style><main><header><h1>Destockd video options</h1>
 <p>Preview candidates, then use the saved option number to request a download.
 Each number identifies one film and shot. Playback loads a preview; the downloader saves the full clip.</p>

@@ -1,5 +1,13 @@
 # Cardinality Generalization
 
+## Contents
+
+- [Non-Negotiable Contract](#non-negotiable-contract)
+- [Force Network Scaling](#force-network-scaling)
+- [Beeswarm Scaling](#beeswarm-scaling)
+- [Generator Path For Supported Patterns](#generator-path-for-supported-patterns)
+- [Validation Before Final Response](#validation-before-final-response)
+
 Read this when the task asks a D3 pattern to work with fewer elements, more elements, explicit small/medium/large variants, exact mark counts, or validation hooks such as `svg#id`, `data-target-count`, `.node`, `.link`, or `.dot`.
 
 ## Non-Negotiable Contract

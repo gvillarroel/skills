@@ -1,13 +1,16 @@
 ---
 name: mermaid
-description: Create, select, style, render, validate, and animate Mermaid diagrams from prose or structured data, including verified accessible title and description metadata for newly authored work. Use when Codex must honor or infer an appropriate Mermaid family; preserve workflows, schedules, schemas, hierarchies, interactions, behavioral contracts, tabular data, or quantitative facts; simplify or audience-adapt an existing diagram with an explicit fidelity ledger; apply colorset1 as the standard palette or colorset2 only when extended/full-color styling is explicitly requested; restyle Mermaid files or Markdown fences; render static SVG; or produce faithful animated SVG.
+description: "Creates, selects, styles, renders, validates, and animates Mermaid diagrams from prose or structured data, including verified accessible title and description metadata for newly authored work. Use when Codex must honor or infer an appropriate Mermaid family; preserve workflows, schedules, schemas, hierarchies, interactions, behavioral contracts, tabular data, or quantitative facts; simplify or audience-adapt an existing diagram with an explicit fidelity ledger; apply colorset1 as the standard palette or colorset2 only when extended/full-color styling is explicitly requested; restyle Mermaid files or Markdown fences; render static SVG; or produce faithful animated SVG."
 ---
 
 # Mermaid
 
+Read [the colorset output contract](references/colorset-contract.md) before authoring or auditing visual output. Apply one exact bundled palette to every authored output path and inspect rendered paint. Default to colorset1; declare colorset2 when its category distinctions are needed.
+
 ## Rules
 
 - Create every requested output at its exact path and keep outputs outside this skill.
+- Pass the exact source file to the styler for a one-diagram task. For a batch, pass only the task source directory; never scan a workspace root that also contains the copied skill, whose Markdown examples are outside the task.
 - Honor an explicit Mermaid family when it represents the facts truthfully. Otherwise choose by the relationship the viewer must understand.
 - Default to `colorset1`. Use `colorset2` only for an explicit request for extended, expanded, full-color, or multicolor styling; ordinary "colored" and an explicit negation of extended styling both mean `colorset1`.
 - In `colorset1`, use white and gray surfaces, dark readable labels, and deliberate red emphasis. Pink is a last-resort extra category after usable red and neutral choices are exhausted; never use it as the default fill or secondary accent. Reuse semantic roles before adding colors.
@@ -42,6 +45,10 @@ description: Create, select, style, render, validate, and animate Mermaid diagra
 ## Commands
 
 ```powershell
+uv run --script skills/mermaid/scripts/style_mermaid_directory.py diagram.mmd --write --report mermaid-style.json
+uv run --script skills/mermaid/scripts/style_mermaid_directory.py diagram.mmd --check --require-accessibility --report mermaid-check.json
+
+# Batch only the task source directory.
 uv run --script skills/mermaid/scripts/style_mermaid_directory.py diagrams --write --report mermaid-style.json
 uv run --script skills/mermaid/scripts/style_mermaid_directory.py diagrams --check --require-accessibility --report mermaid-check.json
 

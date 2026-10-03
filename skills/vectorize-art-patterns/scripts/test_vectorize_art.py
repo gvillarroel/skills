@@ -173,7 +173,7 @@ def run_vectorizer(
             "--expected-tile",
             tile,
             "--expected-colorset",
-            colorset or "source",
+            colorset or "colorset1",
             *(["--require-pattern"] if tile != "none" else []),
         ]
     )

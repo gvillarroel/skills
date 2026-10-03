@@ -12,6 +12,8 @@ Treat `assets/palettes/colorsets.json` as the machine-readable source of truth f
 ## Paint Syntax
 
 - Permit only exact lowercase six-digit hex tokens in the active colorset.
+- Apply the contract to every output route, including named standalone builders, editable starters, SVG exports, logos, textures, composition sheets, controls and reports. Named builders use `scripts/colorset_adapter.py` and default to colorset1; select colorset2 explicitly with their `--colorset` flag.
+- Restrict gallery override values and their declared allowed list to the canonical selected set. For animated discrete semantic colors, map every SMIL `from`, `to`, `by` and `values` endpoint and use `calcMode="discrete"`; checking only the settled `fill` misses future palette leaks. Gradient endpoints and opacity may composite in the renderer, but authored stops remain canonical.
 - Permit `none`, `currentColor`, `url(#...)`, and opacity as non-color SVG values. Resolve `currentColor` to an active token.
 - Reject named colors, three/eight-digit hex, RGB/RGBA, HSL/HSLA, LCH/OKLCH, sampled image colors, and arbitrary user-supplied paint values.
 - Do not interpolate through undeclared colors or use raw `d3-scale-chromatic` ramps. Build ordinal, threshold, or quantized ramps from active tokens.

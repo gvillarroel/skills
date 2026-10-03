@@ -70,7 +70,7 @@ function renderAlluvial() {
         .attr("y", d => yMap.get(d))
         .attr("width", 18)
         .attr("height", d => Math.max(8, scale(totals.get(d))))
-        .attr("fill", (d, i) => si === 0 ? colors[i] : "#6f7b8a");
+        .attr("fill", (d, i) => si === 0 ? colors[i] : "#828282");
       svg.append("g").selectAll("text").data(side).join("text")
         .attr("class", "mark-label")
         .attr("x", x)

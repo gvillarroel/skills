@@ -15,7 +15,7 @@ from render_chart import collinear_overlap, route
 def crossed_brief():
     return dict(id='separate-institutions',title='INDEPENDENT INSTITUTIONAL BRANCHES',
         design='editorial',mode='lineage',width=1400,height=1000,source_note='Synthetic test records.',
-        groups=[dict(id='g',label='Institutions',color='#F56550')],
+        groups=[dict(id='g',label='Institutions',color='#ff9633')],
         nodes=[dict(id=nid,label=nid.upper(),group='g',width=100,x=x,y=y)
                for nid,x,y in [('a',200,250),('b',850,600),('c',500,250),('d',1100,600)]],
         edges=[dict(id='first',source='a',target='b',kind='branch'),dict(id='second',source='c',target='d',kind='branch')])

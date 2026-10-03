@@ -1,6 +1,6 @@
 ---
 name: pexels-media-search
-description: Find free Pexels photos and videos from a natural-language brief, present numbered previews with creator credit, and download the exact chosen original photo or video rendition. Use for Pexels stock media search and follow-up downloads; the API requires a free Pexels key.
+description: "Finds free Pexels photos and videos from a natural-language brief, presents numbered previews with creator credit, and downloads the exact chosen original photo or video rendition. Use for Pexels stock media search and follow-up downloads; the API requires a free Pexels key."
 ---
 
 # Pexels Media Search
@@ -8,6 +8,10 @@ description: Find free Pexels photos and videos from a natural-language brief, p
 Find free Pexels media for the user's project and download their chosen file.
 Run the self-contained helper with Python 3.11+ and `uv`. Keep generated files
 outside the skill directory and use the user's language in conversation.
+
+## Presentation colors
+
+Use colorset1 for authored preview chrome: `#f7f7f7` stage, `#ffffff` cards, `#333e48` text, `#cfcfcf` borders and `#9e1b32` links/emphasis. If extended authored categories are requested, use only the bundled [colorset2 tokens](assets/palettes/colorsets.json). Preserve provider image, video, texture and multicolor icon bytes as source material; never claim that their original pixels fit an authored colorset. Render selected monochrome icons with a colorset token.
 
 ## Access and search
 

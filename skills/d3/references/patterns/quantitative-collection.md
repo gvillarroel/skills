@@ -1,5 +1,16 @@
 # Quantitative Pattern Collection
 
+## Contents
+
+- [d3-bubble-scatter](#d3-bubble-scatter)
+- [d3-ridgeline](#d3-ridgeline)
+- [d3-histogram](#d3-histogram)
+- [d3-connected-scatter](#d3-connected-scatter)
+- [d3-violin](#d3-violin)
+- [d3-slope](#d3-slope)
+- [d3-lollipop](#d3-lollipop)
+- [d3-bump](#d3-bump)
+
 Use the pattern index to route directly to one section in this compact collection. Read only that section and any reference it explicitly names.
 
 ## d3-bubble-scatter

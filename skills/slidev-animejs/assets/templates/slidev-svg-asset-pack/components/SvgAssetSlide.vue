@@ -34,7 +34,7 @@
 
 <script setup>
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
-import { animate, createScope, createTimeline, stagger, svg } from 'animejs'
+import { animate, createScope, createTimeline, stagger, steps, svg } from 'animejs'
 import { svgAssetSpec, svgAssetSvgs } from '../lib/svg-assets.js'
 
 const props = defineProps({
@@ -137,7 +137,7 @@ function runMorphingBadge() {
   const fills = ['#45842a', '#007298', '#9e1b32']
   animate('#badge-source', {
     d: svg.morphTo(targets[activeStep.value], 0.65),
-    fill: fills[activeStep.value],
+    fill: { to: fills[activeStep.value], ease: steps(1) },
     duration: 1500,
     ease: 'inOutExpo',
     loop: true,
@@ -274,7 +274,7 @@ watch(() => [props.asset, activeStep.value], start, { flush: 'post' })
   background: #ffffff;
   border: 1px solid #e7e7e7;
   border-radius: 8px;
-  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.07);
+  box-shadow: 0 14px 30px rgba(28, 28, 28, 0.07);
   box-sizing: border-box;
   padding: 0.95rem;
 }

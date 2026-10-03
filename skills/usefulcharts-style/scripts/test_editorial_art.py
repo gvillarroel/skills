@@ -29,7 +29,7 @@ class SemanticEmblems(unittest.TestCase):
             page = browser.new_page(viewport={'width': 160, 'height': 160}, device_scale_factor=1)
             for size in (29, 37, 50):
                 for kind in KINDS:
-                    mark = symbol(kind, '#77BDDD')
+                    mark = symbol(kind, '#b5b5b5')
                     page.set_content(f'<style>body{{margin:0}}svg{{display:block;background:white}}</style><svg xmlns="http://www.w3.org/2000/svg" width="{size}" height="{size}" viewBox="0 0 100 100"><g>{mark}</g></svg>')
                     png = page.locator('svg').screenshot()
                     raw = Image.open(io.BytesIO(png)).convert('RGB').tobytes()
@@ -61,9 +61,9 @@ class SemanticEmblems(unittest.TestCase):
 
     def test_vector_resources_are_self_contained_and_deterministic(self):
         for kind in KINDS:
-            mark = symbol(kind, '#B58CC9')
+            mark = symbol(kind, '#b5b5b5')
             root = ET.fromstring('<svg>' + mark + '</svg>')
-            self.assertEqual(mark, symbol(kind, '#B58CC9'))
+            self.assertEqual(mark, symbol(kind, '#b5b5b5'))
             self.assertTrue(list(root))
             for node in root.iter():
                 self.assertNotIn(node.tag, ('script', 'image', 'foreignObject'))

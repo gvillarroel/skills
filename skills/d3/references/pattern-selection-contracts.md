@@ -1,5 +1,18 @@
 # Pattern Selection Contracts
 
+## Contents
+
+- [Chart Purpose Gate](#chart-purpose-gate)
+- [Visualization Contract](#visualization-contract)
+- [Distribution Pattern Choice](#distribution-pattern-choice)
+- [Uncertainty And Model Contract](#uncertainty-and-model-contract)
+- [Overplotting Ladder](#overplotting-ladder)
+- [Scale And Summary Semantics](#scale-and-summary-semantics)
+- [Linked View Query Contract](#linked-view-query-contract)
+- [Map Fit Contract](#map-fit-contract)
+- [Publication Data Contract](#publication-data-contract)
+- [Annotation And Finish](#annotation-and-finish)
+
 Read this when choosing D3 chart patterns for dense data, distributions, uncertainty, linked views, maps, or publishable graphics. Use it to make chart choice, data mapping, interaction, and validation explicit before coding.
 
 ## Chart Purpose Gate

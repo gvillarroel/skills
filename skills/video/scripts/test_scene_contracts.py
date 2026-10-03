@@ -68,7 +68,7 @@ def write_html(path: Path) -> None:
     path.write_text(
         '''<!doctype html>
 <html>
-<head><meta charset="utf-8"><style>html,body{margin:0;background:transparent}#clock{color:#b20d30}</style></head>
+<head><meta charset="utf-8"><style>html,body{margin:0;background:transparent}#clock{color:#9e1b32}</style></head>
 <body><output id="clock">0.00</output><script>
 window.setVideoState = async (state) => { document.body.dataset.state = state || ""; };
 window.renderVideoFrame = async (seconds) => { document.querySelector("#clock").textContent = seconds.toFixed(2); };
@@ -133,10 +133,10 @@ def run_tests() -> dict[str, object]:
         gif_a = assets / "result.gif"
         gif_b = assets / "alert.gif"
         html_overlay = assets / "clock-overlay.html"
-        write_svg(plantuml, "PlantUML", "#343434")
-        write_svg(mermaid, "Mermaid", "#b20d30")
-        write_gif(gif_a, "#1d3557", "#457b9d")
-        write_gif(gif_b, "#6a4c93", "#ff595e")
+        write_svg(plantuml, "PlantUML", "#363636")
+        write_svg(mermaid, "Mermaid", "#9e1b32")
+        write_gif(gif_a, "#333e48", "#696969")
+        write_gif(gif_b, "#652f6c", "#ff9633")
         write_html(html_overlay)
         report_paths = {}
         for name in ("plantuml", "mermaid", "gif-a", "gif-b", "html-overlay"):
@@ -153,7 +153,7 @@ def run_tests() -> dict[str, object]:
                 "aspectRatio": "16:9",
                 "fps": 12,
                 "durationSeconds": 7,
-                "background": "#f4f4f4",
+                "background": "#f7f7f7",
                 "safeArea": {"top": 24, "right": 32, "bottom": 24, "left": 32},
             },
             "masterClock": {"mode": "deterministic", "loop": False},
@@ -239,7 +239,7 @@ def run_tests() -> dict[str, object]:
                     "emits": ["job-arrived"],
                     "consumes": [],
                     "meaning": "The architecture service delivers one job into the state machine.",
-                    "connector": {"path": "curve", "color": "#b20d30", "width": 4, "zIndex": 30, "persistAfter": False},
+                    "connector": {"path": "curve", "color": "#9e1b32", "width": 4, "zIndex": 30, "persistAfter": False},
                     "validationChecks": ["Signal starts at service-out and lands at queue-in before processing state."],
                 },
                 {
@@ -253,7 +253,7 @@ def run_tests() -> dict[str, object]:
                     "emits": ["result-ready"],
                     "consumes": ["job-arrived"],
                     "meaning": "The processing state resolves into the first animated result.",
-                    "connector": {"path": "curve", "color": "#1d3557", "width": 4, "zIndex": 31, "persistAfter": False},
+                    "connector": {"path": "curve", "color": "#333e48", "width": 4, "zIndex": 31, "persistAfter": False},
                     "validationChecks": ["Result GIF becomes visible when the handoff reaches its center port."],
                 },
                 {
@@ -267,7 +267,7 @@ def run_tests() -> dict[str, object]:
                     "emits": ["alert-ready"],
                     "consumes": ["result-ready"],
                     "meaning": "The first animated result escalates into the alert animation.",
-                    "connector": {"path": "straight", "color": "#6a4c93", "width": 4, "zIndex": 32, "persistAfter": False},
+                    "connector": {"path": "straight", "color": "#652f6c", "width": 4, "zIndex": 32, "persistAfter": False},
                     "validationChecks": ["Alert GIF appears after the result-to-alert signal completes."],
                 },
             ],

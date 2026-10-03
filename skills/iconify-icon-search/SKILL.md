@@ -1,6 +1,6 @@
 ---
 name: iconify-icon-search
-description: Search free Iconify icon collections, present numbered previews from a consistent family, and download the exact selected SVG with source and license metadata. Use for interface or presentation icons from Iconify and follow-up requests for chosen icons.
+description: "Searches free Iconify icon collections, presents numbered previews from a consistent family, and downloads the exact selected SVG with source and license metadata. Use for interface or presentation icons from Iconify and follow-up requests for chosen icons."
 ---
 
 # Iconify Icon Search
@@ -9,6 +9,10 @@ Find coherent icon choices and export exact SVGs through the public Iconify API.
 No account or key is required. Use Python 3.11+ with `uv`; all helper resources
 are inside this bundle. Keep generated files outside it. Converse in the user's
 language.
+
+## Presentation colors
+
+Use colorset1 for authored preview chrome: `#f7f7f7` stage, `#ffffff` cards, `#333e48` text, `#cfcfcf` borders and `#9e1b32` links/emphasis. If extended authored categories are requested, use only the bundled [colorset2 tokens](assets/palettes/colorsets.json). Preserve provider image, video, texture and multicolor icon bytes as source material; never claim that their original pixels fit an authored colorset. Render selected monochrome icons with a colorset token.
 
 ## Find icons
 

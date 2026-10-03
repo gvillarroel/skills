@@ -341,7 +341,7 @@ function drawChosenToken(g, matrix, llm, layout, activeStep, allTokensBeforeStep
 
   if (opacity <= 0.02) return;
   drawHookCard(g, card.x, card.y, card.w, card.h, activeStep.selected.color, opacity, {
-    fill: globalThis.d3.interpolateRgb("#ffffff", activeStep.selected.color)(travelP),
+    fill: globalThis.quantizeColorset2("#ffffff", activeStep.selected.color, travelP),
     fillBand: travelP < 0.76,
     rx: lerp(12, 4, travelP),
     strokeWidth: lerp(3.3, 2, travelP),
@@ -350,7 +350,7 @@ function drawChosenToken(g, matrix, llm, layout, activeStep, allTokensBeforeStep
   drawHookText(g, activeStep.selected.piece, card.x + card.w / 2, card.y + card.h / 2 + 1, {
     size: lerp(23, 7, travelP),
     weight: 870,
-    fill: globalThis.d3.interpolateRgb(activeStep.selected.color, "#ffffff")(travelP),
+    fill: globalThis.quantizeColorset2(activeStep.selected.color, "#ffffff", travelP),
     opacity: opacity * clamp(1 - travelP * 1.25, 0, 1)
   });
 }

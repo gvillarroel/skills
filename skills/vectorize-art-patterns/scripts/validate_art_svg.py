@@ -127,7 +127,7 @@ def inspect_svg(path: Path) -> dict[str, Any]:
         raise ValidationError(f"Unsupported or missing data-mode: {mode}")
     if tile not in {"none", "repeat", "mirror"}:
         raise ValidationError(f"Unsupported or missing data-tile: {tile}")
-    if colorset not in {"source", "colorset1", "colorset2"}:
+    if colorset not in {"colorset1", "colorset2"}:
         raise ValidationError(f"Unsupported data-colorset: {colorset}")
     if not re.fullmatch(r"\d{1,10}", variation_seed_text):
         raise ValidationError(
@@ -344,7 +344,7 @@ def build_parser() -> argparse.ArgumentParser:
     )
     parser.add_argument(
         "--expected-colorset",
-        choices=("source", "colorset1", "colorset2"),
+        choices=("colorset1", "colorset2"),
     )
     parser.add_argument("--expected-variation-seed", type=int)
     parser.add_argument("--require-pattern", action="store_true")

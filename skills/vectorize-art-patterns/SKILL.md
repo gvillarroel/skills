@@ -1,6 +1,6 @@
 ---
 name: vectorize-art-patterns
-description: Simplify openly licensed or user-owned raster artwork and organic artistic patterns into editable standalone SVGs using deterministic smoothing, palette reduction, seeded composition variation, canonical colorset1/colorset2 adaptation, ink, stain, collage, contour-tracing, and tiling pipelines. Use when Codex needs to vectorize or reinterpret raster art, derive non-geometric abstract or Cubist material patterns, build multi-pattern collections with no reused compositions or paths, generate repeatable SVG pattern tiles, create palette-matched comparison galleries or GitHub Pages examples, preserve licensed base-image assets with provenance, or validate that an SVG is truly vector rather than a raster wrapper.
+description: "Simplifies openly licensed or user-owned raster artwork and organic artistic patterns into editable standalone SVGs using deterministic smoothing, palette reduction, seeded composition variation, canonical colorset1/colorset2 adaptation, ink, stain, collage, contour-tracing, and tiling pipelines. Use when Codex needs to vectorize or reinterpret raster art, derive non-geometric abstract or Cubist material patterns, build multi-pattern collections with no reused compositions or paths, generate repeatable SVG pattern tiles, create palette-matched comparison galleries or GitHub Pages examples, preserve licensed base-image assets with provenance, or validate that an SVG is truly vector rather than a raster wrapper."
 ---
 
 # Vectorize Art Patterns
@@ -23,9 +23,9 @@ Create a rights-traceable vector interpretation, not a pixel-perfect autotrace. 
    - Read `references/vectorizer-selection.md` when choosing between the bundled OpenCV tracer, VTracer, Potrace, or Inkscape.
    - For a multi-pattern collection, also read `references/collection-generation.md` before choosing parameters or counting outputs.
 4. Choose the paint contract:
-   - Omit `--colorset` to retain a simplified source-derived palette.
+   - Omit `--colorset` to use `colorset1`; every authored derivative must select a canonical colorset.
    - Use `--colorset colorset1` for red-neutral work.
-   - Use `--colorset colorset2` for expressive multi-hue work.
+   - Use `--colorset colorset2` for an explicit multi-hue request or meaningful source categories that need distinct hues.
    - Read `references/colorset-adaptation.md` before producing paired variants or a published gallery.
 5. Keep the verified base image immutable. Store ordinary task sources under the task workspace's `assets/base-images/` with `manifest.json`; store outputs under the exact user-requested path. Treat the installed skill directory as read-only.
 6. Validate the image catalog with `scripts/validate_open_assets.py`.
@@ -189,7 +189,7 @@ Browser review must confirm:
 - Emit standalone UTF-8 SVG with a stable `viewBox`, lowercase hyphen-case pattern ID, direct accessibility text, and editable paths.
 - Keep the vector source deterministic: identical bytes, parameters, rights record, and pattern ID must yield identical SVG bytes.
 - Embed the source SHA-256, rights basis, license, source URL, and pipeline parameters in `<metadata>`.
-- Embed `data-colorset`, the colorset name, and the bundled palette-contract SHA-256. Use only exact palette tokens when a colorset is selected.
+- Embed `data-colorset`, the colorset name, and the bundled palette-contract SHA-256. Use only exact palette tokens for every derivative. Source images and source-color provenance remain immutable inputs; they are not authored paint.
 - Keep paired colorset variants geometry-identical; map paint only after tracing.
 - For a unique collection, keep every composition, complete geometry, and
   individual path signature distinct. Forbid `<use>` and do not count recolors,

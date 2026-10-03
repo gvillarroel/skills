@@ -1,5 +1,15 @@
 # Attention Arc Decoding
 
+## Contents
+
+- [Reuse Contract](#reuse-contract)
+- [Data Contract](#data-contract)
+- [Deterministic Builder](#deterministic-builder)
+- [Geometry Contract](#geometry-contract)
+- [Animation Contract](#animation-contract)
+- [Validation Hooks](#validation-hooks)
+- [Source Excerpt](#source-excerpt)
+
 - **Pattern ID:** `d3-attention-arc-decoding`
 - **Gallery source ID:** `attention-arc-decoding`
 - **Family:** LLM

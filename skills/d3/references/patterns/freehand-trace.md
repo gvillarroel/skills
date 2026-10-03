@@ -1,5 +1,10 @@
 # Freehand Trace
 
+## Contents
+
+- [Reuse Contract](#reuse-contract)
+- [Source Excerpt](#source-excerpt)
+
 - **Pattern ID:** `d3-freehand-trace`
 - **Gallery source ID:** `freehand-trace`
 - **Family:** Motion

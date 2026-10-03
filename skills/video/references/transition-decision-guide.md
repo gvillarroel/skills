@@ -1,5 +1,15 @@
 # Transition Decision Guide
 
+## Contents
+
+- [Source Preservation Rules](#source-preservation-rules)
+- [Decision Order](#decision-order)
+- [Transition Families](#transition-families)
+- [Persistent Element Checklist](#persistent-element-checklist)
+- [Alignment And Square-Edge Continuity](#alignment-and-square-edge-continuity)
+- [Cut Quality Checks](#cut-quality-checks)
+- [Renderer Handoff Notes](#renderer-handoff-notes)
+
 Use this guide to make cuts feel intentional, surprising, and coherent across a video.
 
 ## Source Preservation Rules

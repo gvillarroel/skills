@@ -23,7 +23,7 @@ function renderDorlingCartogram() {
     const svg = prepareSvg("dorling", "Dorling cartogram", "D3 force collision places value circles near geographic anchors.");
     const projection = d3.geoNaturalEarth1().fitExtent([[42, 48], [width - 42, height - 56]], { type: "Sphere" });
     const path = d3.geoPath(projection);
-    svg.append("path").datum({ type: "Sphere" }).attr("d", path).attr("fill", "#eef3f7").attr("stroke", "#c1cbd6");
+    svg.append("path").datum({ type: "Sphere" }).attr("d", path).attr("fill", "#f7f7f7").attr("stroke", "#cfcfcf");
     const regions = [
       { name: "NA", lon: -100, lat: 43, value: 42 }, { name: "SA", lon: -60, lat: -15, value: 24 },
       { name: "EU", lon: 12, lat: 50, value: 31 }, { name: "AF", lon: 22, lat: 2, value: 27 },
@@ -45,7 +45,7 @@ function renderDorlingCartogram() {
     svg.append("g").selectAll("line").data(nodes).join("line")
       .attr("x1", d => d.anchorX).attr("y1", d => d.anchorY)
       .attr("x2", d => d.x).attr("y2", d => d.y)
-      .attr("stroke", "#c9d2dc").attr("stroke-dasharray", "3 4");
+      .attr("stroke", "#cfcfcf").attr("stroke-dasharray", "3 4");
     const circles = svg.append("g").selectAll("circle").data(nodes).join("circle")
       .attr("cx", d => d.x).attr("cy", d => d.y)
       .attr("fill", d => colors[d.index % colors.length])

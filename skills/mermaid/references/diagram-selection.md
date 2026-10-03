@@ -1,5 +1,14 @@
 # Mermaid Diagram Selection and Authoring
 
+## Contents
+
+- [Selection Priority](#selection-priority)
+- [Decision Matrix](#decision-matrix)
+- [Ambiguity Rules](#ambiguity-rules)
+- [Palette Contract](#palette-contract)
+- [Authoring Quality](#authoring-quality)
+- [Compact Data Syntax](#compact-data-syntax)
+
 Choose a diagram by the relationship the viewer must decode. File shape is weak evidence: rows can describe a process, event stream, schema, schedule, hierarchy, or quantitative series.
 
 ## Selection Priority

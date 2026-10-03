@@ -1,5 +1,16 @@
 # Overlap Pattern Collection
 
+## Contents
+
+- [d3-overlap-3-chain](#d3-overlap-3-chain)
+- [d3-overlap-5-rosette](#d3-overlap-5-rosette)
+- [d3-overlap-3-rosette](#d3-overlap-3-rosette)
+- [d3-venn-5](#d3-venn-5)
+- [d3-overlap-5-cluster](#d3-overlap-5-cluster)
+- [d3-venn-7](#d3-venn-7)
+- [d3-overlap-7-bridge](#d3-overlap-7-bridge)
+- [d3-venn-3](#d3-venn-3)
+
 Use the pattern index to route directly to one section in this compact collection. Read only that section and any reference it explicitly names.
 
 ## d3-overlap-3-chain

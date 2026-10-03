@@ -1,9 +1,11 @@
 ---
 name: manim-svg-video
-description: Render one or many SVG or animated-SVG source assets into a configurable Manim-authored MP4 with SVG-only sequencing, vector or raster import, exact-duration repair, and a composition manifest. Use for standalone SVG-to-video work, animated-SVG showcases, replacement or mosaic timelines, and Manim SVG render troubleshooting that does not need mixed-media composition, cross-producer interactions, narration, or a broader video production workflow.
+description: "Renders one or many SVG or animated-SVG source assets into a configurable Manim-authored MP4 with SVG-only sequencing, vector or raster import, exact-duration repair, and a composition manifest. Use for standalone SVG-to-video work, animated-SVG showcases, replacement or mosaic timelines, and Manim SVG render troubleshooting that does not need mixed-media composition, cross-producer interactions, narration, or a broader video production workflow."
 ---
 
 # Manim SVG Video
+
+Read [palette-policy.md](references/palette-policy.md) before authoring or composing visuals. Apply one exact colorset to authored content and report preserved source media separately.
 
 Set `$env:MANIM_SVG_VIDEO_SKILL` to this skill directory before invoking bundled commands.
 
@@ -28,7 +30,7 @@ Set `$env:MANIM_SVG_VIDEO_SKILL` to this skill directory before invoking bundled
 
 - `references/composition-config.md`: commands, discovery, timing, layouts, output fields, and validation.
 - `references/manim-svg-import.md`: CSS/SMIL limitations, static companions, vector-versus-raster selection, and fallback behavior.
-- `references/visual-tokens.md`: optional palette and typography tokens when the user asks to restyle the Manim wrapper.
+- `references/visual-tokens.md`: exact colorset tokens and typography when styling the Manim wrapper; the default wrapper uses colorset1.
 - `scripts/compose_svg_video.py`: deterministic discovery, manifest generation, Manim scene generation, rendering, and duration repair.
 
 ## Maintenance

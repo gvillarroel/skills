@@ -22,6 +22,7 @@ from typing import Any
 from xml.etree import ElementTree
 
 import yaml
+from palette_contract import require_color
 
 
 INVOCATION_CWD = Path.cwd()
@@ -54,13 +55,13 @@ DEFAULTS: dict[str, Any] = {
     "import_mode": "svg",
     "render_source": "final",
     "background": "#ffffff",
-    "title_color": "#111827",
-    "tile_fill": "#f8fafc",
-    "tile_stroke": "#cbd5e1",
-    "label_color": "#334155",
-    "placeholder_fill": "#fff1f2",
-    "placeholder_stroke": "#e11d48",
-    "placeholder_text": "#9f1239",
+    "title_color": "#1c1c1c",
+    "tile_fill": "#f7f7f7",
+    "tile_stroke": "#cfcfcf",
+    "label_color": "#333e48",
+    "placeholder_fill": "#f7f7f7",
+    "placeholder_stroke": "#e8002a",
+    "placeholder_text": "#9e1b32",
     "quality": "l",
     "fps": 15.0,
     "resolution": "854,480",
@@ -218,6 +219,8 @@ def normalize_args(args: argparse.Namespace) -> argparse.Namespace:
         raise SystemExit('--resolution must use Manim format "W,H".')
     if args.dry_run:
         args.render = False
+    for field in ("background", "title_color", "tile_fill", "tile_stroke", "label_color", "placeholder_fill", "placeholder_stroke", "placeholder_text"):
+        setattr(args, field, require_color(getattr(args, field)))
     return args
 
 

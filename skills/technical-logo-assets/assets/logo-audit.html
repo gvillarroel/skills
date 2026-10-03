@@ -1,20 +1,20 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-colorset="colorset2">
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'/&gt;">
   <title>Vector logo variant audit</title>
   <style>
-    :root{font:15px/1.45 system-ui,sans-serif;color:#172434;background:#edf1f5}
+    :root{font:15px/1.45 system-ui,sans-serif;color:#333e48;background:#f7f7f7}
     *{box-sizing:border-box}body{margin:0;padding:28px}h1{margin:0 0 8px;font-size:29px}p{margin:6px 0 16px}
     header{max-width:1180px;margin:auto}.controls{display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin:18px 0}
-    button{padding:10px 16px;border:0;border-radius:7px;background:#173b63;color:white;cursor:pointer}
-    input{vertical-align:middle}#progress{font-variant-numeric:tabular-nums}#report{max-height:300px;overflow:auto;white-space:pre-wrap}
+    button{padding:10px 16px;border:0;border-radius:7px;background:#9e1b32;color:white;cursor:pointer}
+    input{vertical-align:middle}select{color:#333e48;background:#ffffff;border:1px solid #cfcfcf;padding:6px;border-radius:4px}button:focus-visible,select:focus-visible{outline:2px solid #9e1b32;outline-offset:3px}#progress{font-variant-numeric:tabular-nums}#report{max-height:300px;overflow:auto;white-space:pre-wrap}
     main{max-width:1180px;margin:auto}.row{display:grid;grid-template-columns:180px repeat(6,minmax(0,1fr));gap:8px;margin:10px 0}
-    .identity{padding:14px 4px;overflow-wrap:anywhere}.identity strong{display:block}.identity small{font-size:11px;color:#526173}
-    .cell{min-width:0;border:1px solid #d9e0e8;border-radius:7px;background:white;padding:8px;text-align:center}
+    .identity{padding:14px 4px;overflow-wrap:anywhere}.identity strong{display:block}.identity small{font-size:11px;color:#4f4f4f}
+    .cell{min-width:0;border:1px solid #cfcfcf;border-radius:7px;background:white;padding:8px;text-align:center}
     .cell img,.cell svg{width:90px;height:90px;max-width:100%;display:block;margin:2px auto}
-    .cell label{display:block;font-size:11px;letter-spacing:.02em}.dark{background:#172434;color:white}.adaptive{color:var(--chosen-color,#007298)}
-    .unavailable{color:#64748b;display:flex;flex-direction:column;justify-content:center;font-size:10px;min-height:123px}
+    .cell label{display:block;font-size:11px;letter-spacing:.02em}.dark{background:#333e48;color:white}.adaptive{color:var(--chosen-color,#9e1b32)}
+    .unavailable{color:#696969;display:flex;flex-direction:column;justify-content:center;font-size:10px;min-height:123px}
     #adaptive-probe{position:fixed;left:-10000px;top:0;width:96px;height:96px}
     @media(max-width:800px){body{padding:14px}.row{grid-template-columns:repeat(3,minmax(0,1fr))}.identity{grid-column:1/-1}.cell img,.cell svg{width:76px;height:76px}}
   </style>
@@ -24,7 +24,7 @@
     <h1>Vector logo variant audit</h1>
     <p>Source-matched SVGs · labeled variants · preserved negative space · explicit license exceptions</p>
     <div class="controls">
-      <label>Adaptive color <input id="chosen-color" type="color" value="#007298"></label>
+      <label>Adaptive color <select id="chosen-color"><option value="#9e1b32">Colorset 1 red</option><option value="#333e48">Colorset 1 ink</option><option value="#6d1222">Colorset 1 dark red</option><option value="#007298">Colorset 2 blue</option><option value="#45842a">Colorset 2 green</option><option value="#652f6c">Colorset 2 purple</option><option value="#e77204">Colorset 2 orange</option></select></label>
       <button id="run-audit">Run full SVG audit</button>
       <button id="save-report" disabled>Download audit report</button>
       <span id="progress" role="status">Ready</span>
@@ -92,7 +92,7 @@
       for (const record of records) {
         probe.innerHTML = decode(record.svg);
         const shapes = [...probe.querySelectorAll('path,rect,circle,ellipse,line,polyline,polygon,use')].filter(node => !node.closest('clipPath'));
-        for (const color of ['rgb(0, 114, 152)','rgb(209, 47, 103)']) {
+        for (const color of ['rgb(0, 114, 152)','rgb(158, 27, 50)']) {
           probe.style.color = color;
           const bad = shapes.some(node => {
             const style = getComputedStyle(node);

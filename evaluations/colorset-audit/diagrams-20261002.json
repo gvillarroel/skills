@@ -1,0 +1,2447 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-02",
+  "executedUtcDate": "2026-10-03",
+  "claim": "Supported output-route audit and actual paint repairs; not an exhaustive proof of arbitrary authored scenes or release cohort validation. No skill marked done.",
+  "canonicalPalette": "skills/hyperframes-explainer/assets/palettes/colorsets.json (read-only baseline copied independently into all six bundles)",
+  "skills": [
+    {
+      "skill": "mermaid",
+      "outputs": [
+        "authored MMD/Markdown fences and style/check JSON",
+        "renderer static SVG",
+        "faithful animated SVG from newly rendered source",
+        "animated SVG from existing SVG (palette gate)",
+        "HTML replay galleries and browser/raster/downstream captures"
+      ],
+      "authoredPaths": [
+        "scripts/style_mermaid_directory.py (generated theme contracts)",
+        "assets/examples/mermaid-max-complexity/gallery.css",
+        "assets/examples/mermaid-max-complexity/svg/colorset1/*.svg",
+        "assets/examples/mermaid-max-complexity/svg/colorset2/*.svg",
+        "assets/examples/mermaid-max-elements/index.html"
+      ],
+      "modes": {
+        "default": "colorset1",
+        "fullColorVariant": "colorset2",
+        "metadata": "colorset directives and data-colorset SVG",
+        "sourceFidelity": "existing source facts and embedded images are immutable; off-palette existing SVG is rejected"
+      },
+      "changes": [
+        "normalize native/default CSS including named colors and drop shadows after rendering",
+        "reject incompatible prerendered SVG before animation",
+        "exact-file styler targeting prevents reading/writing copied skill examples",
+        "normalize all canonical gallery SVG paints and refresh SHA256 pairs",
+        "normalize gallery chrome",
+        "preserve url gradient/filter IDs and reject unsupported paint syntax and off-palette SMIL color values"
+      ],
+      "openGaps": [
+        "No fresh complete62-render layout regeneration; existing124 canonical outputs normalized without geometry changes and full gallery validation passed. Arbitrary unedited external source SVG must be restyled explicitly before import."
+      ],
+      "sourceFidelityPaths": [
+        "imported <image>/data-source-media leaf assets only"
+      ],
+      "changedPaths": [
+        "skills/mermaid/SKILL.md",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/gallery.css",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/gallery.json",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/architecture.animated.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/architecture.static.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/block.animated.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/block.static.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/c4.animated.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/c4.static.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/class.animated.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/class.static.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/cynefin.animated.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/cynefin.static.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/er.animated.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/er.static.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/event-modeling.animated.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/event-modeling.static.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/flowchart.animated.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/flowchart.static.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/gantt.animated.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/gantt.static.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/gitgraph.animated.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/gitgraph.static.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/ishikawa.animated.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/ishikawa.static.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/kanban.animated.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/kanban.static.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/mindmap.animated.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/mindmap.static.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/packet.animated.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/packet.static.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/pie.animated.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/pie.static.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/quadrant.animated.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/quadrant.static.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/radar.animated.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/radar.static.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/railroad.animated.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/railroad.static.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/requirement.animated.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/requirement.static.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/sankey.animated.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/sankey.static.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/sequence.animated.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/sequence.static.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/state.animated.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/state.static.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/swimlane.animated.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/swimlane.static.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/timeline.animated.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/timeline.static.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/treemap.animated.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/treemap.static.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/treeview.animated.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/treeview.static.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/user-journey.animated.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/user-journey.static.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/venn.animated.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/venn.static.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/wardley.animated.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/wardley.static.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/xy-chart.animated.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/xy-chart.static.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/zenuml.animated.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/zenuml.static.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/architecture.animated.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/architecture.static.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/block.animated.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/block.static.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/c4.animated.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/c4.static.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/class.animated.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/class.static.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/cynefin.animated.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/cynefin.static.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/er.animated.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/er.static.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/event-modeling.animated.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/event-modeling.static.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/flowchart.animated.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/flowchart.static.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/gantt.animated.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/gantt.static.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/gitgraph.animated.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/gitgraph.static.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/ishikawa.animated.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/ishikawa.static.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/kanban.animated.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/kanban.static.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/mindmap.animated.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/mindmap.static.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/packet.animated.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/packet.static.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/pie.animated.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/pie.static.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/quadrant.animated.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/quadrant.static.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/radar.animated.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/radar.static.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/railroad.animated.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/railroad.static.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/requirement.animated.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/requirement.static.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/sankey.animated.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/sankey.static.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/sequence.animated.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/sequence.static.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/state.animated.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/state.static.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/swimlane.animated.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/swimlane.static.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/timeline.animated.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/timeline.static.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/treemap.animated.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/treemap.static.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/treeview.animated.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/treeview.static.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/user-journey.animated.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/user-journey.static.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/venn.animated.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/venn.static.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/wardley.animated.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/wardley.static.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/xy-chart.animated.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/xy-chart.static.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/zenuml.animated.svg",
+        "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/zenuml.static.svg",
+        "skills/mermaid/assets/palettes/colorsets.json",
+        "skills/mermaid/assets/palettes/css-named-colors.json",
+        "skills/mermaid/references/colorset-contract.md",
+        "skills/mermaid/scripts/animate_mermaid_svg.py",
+        "skills/mermaid/scripts/palette_paints.py",
+        "skills/mermaid/scripts/style_mermaid_directory.py"
+      ],
+      "testedRuntime": {
+        "runId": "20261002-colorset-mermaid-luna-3",
+        "classification": "contract-smoke",
+        "model": "openai-codex/gpt-5.6-luna",
+        "profile": "runtime",
+        "strict": true,
+        "passed": true,
+        "requiredOutputs": [
+          "flow.mmd",
+          "flow.static.svg",
+          "flow.animated.svg",
+          "style.json",
+          "check.json"
+        ],
+        "command": "C:\\Users\\villa\\AppData\\Roaming\\npm\\pi.CMD --model openai-codex/gpt-5.6-luna --thinking high --mode json --no-context-files --no-extensions --no-skills --no-prompt-templates --no-themes --no-session --skill skills/mermaid --print \"You are running an isolated forward test for `mermaid`. Use the read tool to read `../prompt.md` first, then follow it exactly. The loaded bundle is rooted at `skills/mermaid` from the current workspace; never prefix that path with `../`. Immediately after the prompt, read the bundle entry point at `skills/mermaid/SKILL.md`; do not probe for README.md or other conventional entry-point filenames. The shell tool is bash, not PowerShell; do not run PowerShell commands. Do not list directories or inspect script source before reading the prompt. If the prompt gives an exact command, run it verbatim and verify the required outputs.\"",
+        "result": "evaluations/runs/20261002-colorset-mermaid-luna-3/evaluation-result.json"
+      }
+    },
+    {
+      "skill": "plantuml-colorset-renderer",
+      "outputs": [
+        "authored PlantUML source and optional themed-source",
+        "SVG render via CLI/server/Kroki",
+        "PNG render including Ditaa and standalone math/LaTeX",
+        "batch render report and coverage metadata",
+        "HTML family galleries"
+      ],
+      "authoredPaths": [
+        "assets/themes/*.puml",
+        "assets/examples/plantuml-colorset-renderer*/svg/*.svg",
+        "assets/examples/plantuml-colorset-renderer*/png/*.png",
+        "assets/examples/plantuml-colorset-renderer*/*.css"
+      ],
+      "modes": {
+        "default": "colorset1",
+        "categoryVariant": "colorset2",
+        "metadata": "data-colorset, report.colorset, palette_normalized and source_media_preserved",
+        "sourceFidelity": "quoted and colon-introduced data/labels preserved; original source input unchanged; narrow imported image/sprite PNG boundary"
+      },
+      "changes": [
+        "default renderer and theme now colorset1",
+        "normalize SVG actual paint even after source/custom theme overrides",
+        "quantize non-source-media PNG including theme-incompatible Ditaa/math/LaTeX",
+        "normalize explicit source presentation syntax without rewriting fact-bearing labels",
+        "report validator rejects all undeclared SVG paints and all non-source-media PNG RGB values"
+      ],
+      "openGaps": [
+        "chronology is upstream-unavailable in frozen PlantUML1.2026.6 coverage,29 fixtures/28 available output fixtures",
+        "source-media PNGs preserve source pixels; authored chrome requires matching SVG/editable source inspection, not a blanket raster palette pass"
+      ],
+      "sourceFidelityPaths": [
+        "imported <image>/data-source-media leaf assets only"
+      ],
+      "changedPaths": [
+        "skills/plantuml-colorset-renderer/SKILL.md",
+        "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer-cs1/png/ditaa.png",
+        "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer-cs1/render-report.json",
+        "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer-cs1/svg/archimate.svg",
+        "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer-cs1/svg/files.svg",
+        "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer-cs1/svg/salt.svg",
+        "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer/png/ditaa.png",
+        "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer/render-report.json",
+        "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer/svg/archimate.svg",
+        "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer/svg/files.svg",
+        "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer/svg/salt.svg",
+        "skills/plantuml-colorset-renderer/assets/palettes/colorsets.json",
+        "skills/plantuml-colorset-renderer/assets/palettes/css-named-colors.json",
+        "skills/plantuml-colorset-renderer/references/colorset-contract.md",
+        "skills/plantuml-colorset-renderer/scripts/palette_paints.py",
+        "skills/plantuml-colorset-renderer/scripts/render_plantuml_directory.py",
+        "skills/plantuml-colorset-renderer/scripts/test_plantuml_coverage.py",
+        "skills/plantuml-colorset-renderer/scripts/validate_plantuml_render_report.py"
+      ],
+      "testedRuntime": {
+        "runId": "20261002-colorset-plantuml-luna-7",
+        "classification": "contract-smoke",
+        "model": "openai-codex/gpt-5.6-luna",
+        "profile": "runtime",
+        "strict": true,
+        "passed": true,
+        "requiredOutputs": [
+          "input/diagram.puml",
+          "rendered/svg/diagram.svg",
+          "rendered/png/diagram.png",
+          "render-report.json"
+        ],
+        "command": "C:\\Users\\villa\\AppData\\Roaming\\npm\\pi.CMD --model openai-codex/gpt-5.6-luna --thinking high --mode json --no-context-files --no-extensions --no-skills --no-prompt-templates --no-themes --no-session --skill skills/plantuml-colorset-renderer --print \"You are running an isolated forward test for `plantuml-colorset-renderer`. Use the read tool to read `../prompt.md` first, then follow it exactly. The loaded bundle is rooted at `skills/plantuml-colorset-renderer` from the current workspace; never prefix that path with `../`. Immediately after the prompt, read the bundle entry point at `skills/plantuml-colorset-renderer/SKILL.md`; do not probe for README.md or other conventional entry-point filenames. The shell tool is bash, not PowerShell; do not run PowerShell commands. Do not list directories or inspect script source before reading the prompt. If the prompt gives an exact command, run it verbatim and verify the required outputs.\"",
+        "result": "evaluations/runs/20261002-colorset-plantuml-luna-7/evaluation-result.json"
+      }
+    },
+    {
+      "skill": "echarts-animated-svg",
+      "outputs": [
+        "SVGRenderer/SSR chart SVG",
+        "animated SVG",
+        "HTML replay gallery with focus/hover/replay/expand states",
+        "small static bar SVG runtime template",
+        "JSON animation pair validation",
+        "optional downstream browser raster/GIF/video capture"
+      ],
+      "authoredPaths": [
+        "assets/templates/static-bar-chart.svg",
+        "assets/templates/echarts-colorsets.mjs (exported paints; CSS decoder lookup is input data)",
+        "assets/examples/echarts-animated-svg/index.html",
+        "assets/examples/echarts-animated-svg/scripts/build-gallery.mjs"
+      ],
+      "modes": {
+        "default": "colorset1",
+        "gallery": "colorset2 (43 charts distinguish independent categories)",
+        "metadata": "selected helper argument and gallery rationale",
+        "sourceFidelity": "imported SVG image pixels only; existing off-palette authored chart SVG rejected"
+      },
+      "changes": [
+        "self-contained exact theme/option/SVG/Canvas helper",
+        "discrete visualMap bins and gradient endpoints preserve values/geometry",
+        "normalize defaults, hover CSS and tween base paints",
+        "bar template now red/neutral cs1",
+        "animator and pair validator reject off-palette actual paint",
+        "resolve native chord SVG API sentinel source/target/auto into an exact rendered neutral paint"
+      ],
+      "openGaps": [
+        "Imported input chart must be palette-compliant before animation. Canvas-only arbitrary user color functions/images require source boundary and renderer inspection."
+      ],
+      "sourceFidelityPaths": [
+        "imported <image>/data-source-media leaf assets only"
+      ],
+      "changedPaths": [
+        "skills/echarts-animated-svg/SKILL.md",
+        "skills/echarts-animated-svg/assets/examples/echarts-animated-svg/index.html",
+        "skills/echarts-animated-svg/assets/examples/echarts-animated-svg/scripts/build-gallery.mjs",
+        "skills/echarts-animated-svg/assets/palettes/colorsets.json",
+        "skills/echarts-animated-svg/assets/palettes/css-named-colors.json",
+        "skills/echarts-animated-svg/assets/templates/echarts-colorsets.mjs",
+        "skills/echarts-animated-svg/assets/templates/static-bar-chart.svg",
+        "skills/echarts-animated-svg/references/colorset-contract.md",
+        "skills/echarts-animated-svg/references/visual-tokens.md",
+        "skills/echarts-animated-svg/scripts/animate_echarts_svg.py",
+        "skills/echarts-animated-svg/scripts/palette_paints.py",
+        "skills/echarts-animated-svg/scripts/validate_animated_svg.py"
+      ],
+      "testedRuntime": {
+        "runId": "20261002-colorset-echarts-luna-5",
+        "classification": "contract-smoke",
+        "model": "openai-codex/gpt-5.6-luna",
+        "profile": "runtime",
+        "strict": true,
+        "passed": true,
+        "requiredOutputs": [
+          "bar.static.svg",
+          "bar.animated.svg",
+          "bar-validation.json"
+        ],
+        "command": "C:\\Users\\villa\\AppData\\Roaming\\npm\\pi.CMD --model openai-codex/gpt-5.6-luna --thinking high --mode json --no-context-files --no-extensions --no-skills --no-prompt-templates --no-themes --no-session --skill skills/echarts-animated-svg --print \"You are running an isolated forward test for `echarts-animated-svg`. Use the read tool to read `../prompt.md` first, then follow it exactly. The loaded bundle is rooted at `skills/echarts-animated-svg` from the current workspace; never prefix that path with `../`. Immediately after the prompt, read the bundle entry point at `skills/echarts-animated-svg/SKILL.md`; do not probe for README.md or other conventional entry-point filenames. The shell tool is bash, not PowerShell; do not run PowerShell commands. Do not list directories or inspect script source before reading the prompt. If the prompt gives an exact command, run it verbatim and verify the required outputs.\"",
+        "result": "evaluations/runs/20261002-colorset-echarts-luna-5/evaluation-result.json"
+      }
+    },
+    {
+      "skill": "slidev-echarts",
+      "outputs": [
+        "responsive Vue SVGRenderer/CanvasRenderer chart",
+        "hover/tooltips/legend/emphasis states and click transitions",
+        "custom dashboard/SVG motion",
+        "built HTML deck",
+        "PDF/PNG/video export from deck",
+        "chart options/data JSON"
+      ],
+      "authoredPaths": [
+        "assets/templates/echarts-colorsets.mjs (exported paints; CSS decoder lookup is input data)",
+        "assets/examples/slidev-echarts/components/*.vue",
+        "assets/examples/slidev-echarts/lib/chart-lab.js",
+        "assets/examples/slidev-echarts/styles/*.css",
+        "assets/examples/slidev-echarts/slides.md"
+      ],
+      "modes": {
+        "default": "colorset1",
+        "fixture": "colorset2 (multivariate chart/category demonstration)",
+        "metadata": "helper selected colorset and contract",
+        "sourceFidelity": "only original imported image/logo pixels; wrappers and labels remain checked"
+      },
+      "changes": [
+        "responsive wrapper selects exact theme and attaches palette enforcement before setOption",
+        "normalize options, hover defaults and Canvas/SVG tween paints",
+        "replace off-palette authored CSS/SVG/chart literals",
+        "override default Slidev code background with exact neutral",
+        "resolve serialized SVG API paint sentinels while leaving editable source-role semantics intact"
+      ],
+      "openGaps": [
+        "The full audit inspects DOM/SVG click states; Canvas base paints additionally use setter/option enforcement. No fresh PDF/video encode was generated in this pass.",
+        "Two existing density warnings remain on slide31; zero error/palette findings."
+      ],
+      "sourceFidelityPaths": [
+        "imported <image>/data-source-media leaf assets only"
+      ],
+      "changedPaths": [
+        "skills/slidev-echarts/SKILL.md",
+        "skills/slidev-echarts/assets/examples/slidev-echarts/components/ExecutiveDashboard.vue",
+        "skills/slidev-echarts/assets/examples/slidev-echarts/components/GeneratedSvgMotion.vue",
+        "skills/slidev-echarts/assets/examples/slidev-echarts/components/ResponsiveEChart.vue",
+        "skills/slidev-echarts/assets/examples/slidev-echarts/lib/chart-lab.js",
+        "skills/slidev-echarts/assets/examples/slidev-echarts/styles/index.css",
+        "skills/slidev-echarts/assets/palettes/colorsets.json",
+        "skills/slidev-echarts/assets/templates/echarts-colorsets.mjs",
+        "skills/slidev-echarts/references/colorset-contract.md",
+        "skills/slidev-echarts/references/integration-patterns.md",
+        "skills/slidev-echarts/references/visual-tokens.md"
+      ],
+      "testedRuntime": {
+        "runId": "20261002-colorset-slidev-echarts-luna-4",
+        "classification": "contract-smoke",
+        "model": "openai-codex/gpt-5.6-luna",
+        "profile": "runtime",
+        "strict": true,
+        "passed": true,
+        "requiredOutputs": [
+          "deck/echarts-colorsets.mjs",
+          "deck/chart-option.mjs"
+        ],
+        "command": "C:\\Users\\villa\\AppData\\Roaming\\npm\\pi.CMD --model openai-codex/gpt-5.6-luna --thinking high --mode json --no-context-files --no-extensions --no-skills --no-prompt-templates --no-themes --no-session --skill skills/slidev-echarts --print \"You are running an isolated forward test for `slidev-echarts`. Use the read tool to read `../prompt.md` first, then follow it exactly. The loaded bundle is rooted at `skills/slidev-echarts` from the current workspace; never prefix that path with `../`. Immediately after the prompt, read the bundle entry point at `skills/slidev-echarts/SKILL.md`; do not probe for README.md or other conventional entry-point filenames. The shell tool is bash, not PowerShell; do not run PowerShell commands. Do not list directories or inspect script source before reading the prompt. If the prompt gives an exact command, run it verbatim and verify the required outputs.\"",
+        "result": "evaluations/runs/20261002-colorset-slidev-echarts-luna-4/evaluation-result.json"
+      }
+    },
+    {
+      "skill": "slidev-animejs",
+      "outputs": [
+        "Vue CSS/DOM/SVG animations across30 slides",
+        "six standalone editable SVG assets",
+        "runtime SVG Vue asset pack",
+        "hover/click/timeline/morph/stagger states",
+        "built HTML deck and downstream PDF/PNG/video export"
+      ],
+      "authoredPaths": [
+        "assets/templates/slidev-svg-asset-pack/assets/animated-svg/*.svg",
+        "assets/templates/slidev-svg-asset-pack/components/*.vue",
+        "assets/examples/slidev-animejs/components/*.vue",
+        "assets/examples/slidev-animejs/styles/*.css",
+        "assets/examples/slidev-animejs/slides.md"
+      ],
+      "modes": {
+        "default": "colorset1",
+        "fixtureAndRuntimePack": "colorset2 (separate demonstration mechanisms)",
+        "metadata": "runtime pack declared colorset and palette selection report",
+        "sourceFidelity": "imported original artwork only; authored animation paints and chrome stay exact"
+      },
+      "changes": [
+        "repair authored literals and derived CSS gradient endpoint choices",
+        "step categorical colors with imported Anime.js steps(1), preserving smooth geometry/opacity",
+        "fix six SVG data-allow-hidden attributes to valid XML",
+        "exact code background and stronger neutral label contrast"
+      ],
+      "openGaps": [
+        "No fresh PDF/video encode was generated in this pass; final source/builds and all93 click states were checked."
+      ],
+      "sourceFidelityPaths": [
+        "imported <image>/data-source-media leaf assets only"
+      ],
+      "changedPaths": [
+        "skills/slidev-animejs/SKILL.md",
+        "skills/slidev-animejs/assets/examples/slidev-animejs/components/AnimeFeatureSlide.vue",
+        "skills/slidev-animejs/assets/examples/slidev-animejs/styles/index.css",
+        "skills/slidev-animejs/assets/palettes/colorsets.json",
+        "skills/slidev-animejs/assets/templates/slidev-svg-asset-pack/assets/animated-svg/drawable-circuit.svg",
+        "skills/slidev-animejs/assets/templates/slidev-svg-asset-pack/assets/animated-svg/interactive-hotspots.svg",
+        "skills/slidev-animejs/assets/templates/slidev-svg-asset-pack/assets/animated-svg/morphing-badge.svg",
+        "skills/slidev-animejs/assets/templates/slidev-svg-asset-pack/assets/animated-svg/motion-orbit.svg",
+        "skills/slidev-animejs/assets/templates/slidev-svg-asset-pack/assets/animated-svg/stagger-dashboard.svg",
+        "skills/slidev-animejs/assets/templates/slidev-svg-asset-pack/assets/animated-svg/timeline-machine.svg",
+        "skills/slidev-animejs/assets/templates/slidev-svg-asset-pack/components/SvgAssetSlide.vue",
+        "skills/slidev-animejs/references/animations/css-properties-colors.md",
+        "skills/slidev-animejs/references/colorset-contract.md",
+        "skills/slidev-animejs/references/visual-tokens.md"
+      ],
+      "testedRuntime": {
+        "runId": "20261002-colorset-slidev-animejs-luna-2",
+        "classification": "contract-smoke",
+        "model": "openai-codex/gpt-5.6-luna",
+        "profile": "runtime",
+        "strict": true,
+        "passed": true,
+        "requiredOutputs": [
+          "deck/components/SvgAssetSlide.vue",
+          "deck/lib/svg-assets.js",
+          "deck/assets/animated-svg/drawable-circuit.svg",
+          "deck/assets/animated-svg/interactive-hotspots.svg",
+          "deck/assets/animated-svg/morphing-badge.svg",
+          "deck/assets/animated-svg/motion-orbit.svg",
+          "deck/assets/animated-svg/stagger-dashboard.svg",
+          "deck/assets/animated-svg/timeline-machine.svg",
+          "palette-selection.json"
+        ],
+        "command": "C:\\Users\\villa\\AppData\\Roaming\\npm\\pi.CMD --model openai-codex/gpt-5.6-luna --thinking high --mode json --no-context-files --no-extensions --no-skills --no-prompt-templates --no-themes --no-session --skill skills/slidev-animejs --print \"You are running an isolated forward test for `slidev-animejs`. Use the read tool to read `../prompt.md` first, then follow it exactly. The loaded bundle is rooted at `skills/slidev-animejs` from the current workspace; never prefix that path with `../`. Immediately after the prompt, read the bundle entry point at `skills/slidev-animejs/SKILL.md`; do not probe for README.md or other conventional entry-point filenames. The shell tool is bash, not PowerShell; do not run PowerShell commands. Do not list directories or inspect script source before reading the prompt. If the prompt gives an exact command, run it verbatim and verify the required outputs.\"",
+        "result": "evaluations/runs/20261002-colorset-slidev-animejs-luna-2/evaluation-result.json"
+      }
+    },
+    {
+      "skill": "slidev-quality-audit",
+      "outputs": [
+        "JSON/Markdown quality reports (nonvisual metadata)",
+        "browser screenshots of supplied deck states (source evidence)",
+        "DOM/SVG authored paint audit findings"
+      ],
+      "authoredPaths": [
+        "scripts/audit-slidev-quality.ts (computed palette gate)",
+        "assets/palettes/colorsets.json"
+      ],
+      "modes": {
+        "default": "colorset1",
+        "explicitAudit": "colorset2",
+        "metadata": "--colorset CLI flag",
+        "sourceFidelity": "screenshots are observed evidence; narrow data-source-media marker only"
+      },
+      "changes": [
+        "load exact local allowlist with selected CLI option",
+        "off-palette-paint error gate for visible computed DOM/SVG paint",
+        "document source-media boundary and Canvas/gradient/pseudo-element limits"
+      ],
+      "openGaps": [
+        "Isolated pi case is a planning-only contract case; independent local full deck browser checks verify actual execution. It is not an isolated full deck runtime acceptance case.",
+        "Computed-style gate does not prove arbitrary Canvas pixels, all pseudo-elements or all gradient endpoints; inspect editable paints and rendered exports."
+      ],
+      "sourceFidelityPaths": [
+        "imported <image>/data-source-media leaf assets only"
+      ],
+      "changedPaths": [
+        "skills/slidev-quality-audit/SKILL.md",
+        "skills/slidev-quality-audit/assets/palettes/colorsets.json",
+        "skills/slidev-quality-audit/references/audit-rules.md",
+        "skills/slidev-quality-audit/references/colorset-contract.md",
+        "skills/slidev-quality-audit/scripts/audit-slidev-quality.ts"
+      ],
+      "testedRuntime": {
+        "runId": "20261002-colorset-slidev-quality-luna-2",
+        "classification": "contract-smoke; planning-only",
+        "model": "openai-codex/gpt-5.6-luna",
+        "profile": "runtime",
+        "strict": true,
+        "passed": true,
+        "requiredOutputs": [
+          "audit-plan.json"
+        ],
+        "command": "C:\\Users\\villa\\AppData\\Roaming\\npm\\pi.CMD --model openai-codex/gpt-5.6-luna --thinking high --mode json --no-context-files --no-extensions --no-skills --no-prompt-templates --no-themes --no-session --skill skills/slidev-quality-audit --print \"You are running an isolated forward test for `slidev-quality-audit`. Use the read tool to read `../prompt.md` first, then follow it exactly. The loaded bundle is rooted at `skills/slidev-quality-audit` from the current workspace; never prefix that path with `../`. Immediately after the prompt, read the bundle entry point at `skills/slidev-quality-audit/SKILL.md`; do not probe for README.md or other conventional entry-point filenames. The shell tool is bash, not PowerShell; do not run PowerShell commands. Do not list directories or inspect script source before reading the prompt. If the prompt gives an exact command, run it verbatim and verify the required outputs.\"",
+        "result": "evaluations/runs/20261002-colorset-slidev-quality-luna-2/evaluation-result.json"
+      }
+    }
+  ],
+  "testedCommands": [
+    {
+      "command": "uv run --script projects/colorset-audit/scripts/test-diagram-palettes.py",
+      "result": "pass4 tests: negative gates, source fact preservation, all178 published SVG palette checks"
+    },
+    {
+      "command": "node --experimental-strip-types projects/colorset-audit/scripts/test-chart-colors.ts",
+      "result": "pass both independent templates; named/RGB/RGBA/HSL/alpha, gradient endpoints, discrete scales, data/labels"
+    },
+    {
+      "command": "uv run --script projects/colorset-audit/scripts/check-diagram-preservation.py",
+      "result": "pass178 SVGs retain geometry attributes, IDs, hierarchy, labels and image references; inline style excluded"
+    },
+    {
+      "command": "python skills/mermaid/assets/examples/mermaid-max-elements/scripts/test_max_elements.py",
+      "result": "pass12 tests"
+    },
+    {
+      "command": "python skills/mermaid/assets/examples/mermaid-max-complexity/scripts/test_gallery.py",
+      "result": "pass8 tests"
+    },
+    {
+      "command": "python skills/mermaid/assets/examples/mermaid-max-complexity/scripts/validate_gallery.py",
+      "result": "pass31 families,62 sources/static-animated pairs,124 SVG outputs"
+    },
+    {
+      "command": "uv run --script skills/plantuml-colorset-renderer/scripts/test_plantuml_coverage.py",
+      "result": "pass19 tests"
+    },
+    {
+      "command": "uv run --script skills/plantuml-colorset-renderer/scripts/validate_plantuml_coverage.py --fixtures skills/plantuml-colorset-renderer/assets/examples/base --report skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer/render-report.json --report skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer-cs1/render-report.json --gallery skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer --gallery skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer-cs1",
+      "result": "pass27 canonical+1 release-extra families,29 fixtures,28 published fixtures"
+    },
+    {
+      "command": "uv run --script skills/plantuml-colorset-renderer/scripts/validate_plantuml_render_report.py --report <gallery>/render-report.json --output <gallery> --colorset <colorset1|colorset2> --coverage-manifest skills/plantuml-colorset-renderer/references/diagram-types.json",
+      "result": "pass both galleries; actual SVG and non-source-media PNG paints"
+    },
+    {
+      "command": "uv run --script skills/echarts-animated-svg/scripts/test_validate_animated_svg.py",
+      "result": "pass2 tests"
+    },
+    {
+      "command": "npm run build / npm run verify",
+      "cwd": "skills/echarts-animated-svg/assets/examples/echarts-animated-svg",
+      "result": "pass43 chart cards,43 SVGs, screenshot manually inspected"
+    },
+    {
+      "command": "npx slidev build --base ./ --router-mode hash --out ../../../../../projects/colorset-audit/artifacts/html/<skill>",
+      "cwd": "skills/<slidev-echarts|slidev-animejs>/assets/examples/<skill>",
+      "result": "pass both; transitive Rolldown PURE annotation warnings retained"
+    },
+    {
+      "command": "npx tsx skills/slidev-quality-audit/scripts/audit-slidev-quality.ts --deck skills/slidev-echarts/assets/examples/slidev-echarts --out projects/colorset-audit/artifacts/reviews/slidev-echarts-final --colorset colorset2 --strict --screenshots issues",
+      "result": "pass36 slides/129 states,zero errors,two density warnings"
+    },
+    {
+      "command": "npx tsx skills/slidev-quality-audit/scripts/audit-slidev-quality.ts --deck skills/slidev-animejs/assets/examples/slidev-animejs --out projects/colorset-audit/artifacts/reviews/slidev-animejs-verified --colorset colorset2 --strict --screenshots issues",
+      "result": "pass30 slides/93 states,zero findings"
+    },
+    {
+      "command": "uv run --script scripts/summarize-pi-json-events.py evaluations/runs/<run>/events.jsonl --require-model gpt-5.6-luna --fail-on-invalid-json --fail-on-tool-error --output projects/colorset-audit/artifacts/reviews/<run>-trace.json",
+      "result": "pass final traces; inspect exact isolated expected-output lists above"
+    },
+    {
+      "command": "git -c core.safecrlf=false diff --check -- skills/mermaid skills/plantuml-colorset-renderer skills/echarts-animated-svg skills/slidev-echarts skills/slidev-animejs skills/slidev-quality-audit",
+      "result": "pass"
+    }
+  ],
+  "independentRootChecker": {
+    "report": "projects/colorset-audit/artifacts/reviews/diagram-root-checker.json",
+    "artifactCount": 185,
+    "findings": 0,
+    "scope": "178 published Mermaid/PlantUML SVGs,6 Anime runtime SVGs,43-chart ECharts HTML gallery",
+    "invocation": "uv run --script scripts/validate-colorsets.py --input <each individual svg> --input skills/echarts-animated-svg/assets/examples/echarts-animated-svg/index.html --report projects/colorset-audit/artifacts/reviews/diagram-root-checker.json"
+  },
+  "failures": [
+    {
+      "runs": [
+        "20261002-colorset-slidev-animejs-spark-1",
+        "20261002-colorset-slidev-echarts-spark-1",
+        "20261002-colorset-slidev-quality-spark-1"
+      ],
+      "classification": "infrastructure",
+      "reason": "Spark unsupported for ChatGPT account; provider rejects before any tool. New Luna exception required for the three Slidev skills."
+    },
+    {
+      "runs": [
+        "20261002-colorset-mermaid-luna-1"
+      ],
+      "classification": "skill-design",
+      "reason": "Directory-wide styling scanned copied skill Markdown, modified four references, and caused three tool errors. Repaired by exact source-file support and narrowed task-source guidance; luna2 clean strict pass."
+    },
+    {
+      "runs": [
+        "20261002-colorset-echarts-luna-3",
+        "20261002-colorset-plantuml-luna-3"
+      ],
+      "classification": "evaluator-invocation",
+      "reason": "Harness expected filenames differed from exact prompt paths. Correct artifacts were produced; strict missing-path gate correctly failed. Rerun with exact prompts/expected paths passed."
+    },
+    {
+      "commands": [
+        "First PlantUML validation used nonexistent coverage-manifest.json instead of diagram-types.json",
+        "First ECharts unit invocation used nonexistent test_animate_echarts_svg.py instead of test_validate_animated_svg.py",
+        "First independent ECharts pair validator used stagger60 rather than produced90ms"
+      ],
+      "classification": "evaluator-invocation",
+      "reason": "Corrected commands passed; these initial failures are not hidden or counted as skill passes."
+    },
+    {
+      "classification": "deterministic/browser-development",
+      "reason": "Initial checks exposed unnamed native paints, rgba hover paints, continuous categorical Anime.js hues, code background defaults, SVG boolean XML syntax, and a low-contrast label. All were repaired and rerun; final results above."
+    },
+    {
+      "classification": "deterministic-fixture-maintenance",
+      "reason": "After tightening PNG validation even without palette_normalized metadata, a legacy signature-only fake PNG fixture and missing Pillow test dependency failed. Replaced it with a real exact-palette PNG, added Pillow test metadata, asserted rejection of an off-palette replacement, and made malformed PNG decoding a structured finding. All19 tests pass."
+    }
+  ],
+  "allChangedSkillPaths": [
+    "skills/echarts-animated-svg/SKILL.md",
+    "skills/echarts-animated-svg/assets/examples/echarts-animated-svg/index.html",
+    "skills/echarts-animated-svg/assets/examples/echarts-animated-svg/scripts/build-gallery.mjs",
+    "skills/echarts-animated-svg/assets/palettes/colorsets.json",
+    "skills/echarts-animated-svg/assets/palettes/css-named-colors.json",
+    "skills/echarts-animated-svg/assets/templates/echarts-colorsets.mjs",
+    "skills/echarts-animated-svg/assets/templates/static-bar-chart.svg",
+    "skills/echarts-animated-svg/references/colorset-contract.md",
+    "skills/echarts-animated-svg/references/visual-tokens.md",
+    "skills/echarts-animated-svg/scripts/animate_echarts_svg.py",
+    "skills/echarts-animated-svg/scripts/palette_paints.py",
+    "skills/echarts-animated-svg/scripts/validate_animated_svg.py",
+    "skills/mermaid/SKILL.md",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/gallery.css",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/gallery.json",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/architecture.animated.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/architecture.static.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/block.animated.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/block.static.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/c4.animated.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/c4.static.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/class.animated.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/class.static.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/cynefin.animated.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/cynefin.static.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/er.animated.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/er.static.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/event-modeling.animated.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/event-modeling.static.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/flowchart.animated.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/flowchart.static.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/gantt.animated.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/gantt.static.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/gitgraph.animated.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/gitgraph.static.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/ishikawa.animated.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/ishikawa.static.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/kanban.animated.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/kanban.static.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/mindmap.animated.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/mindmap.static.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/packet.animated.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/packet.static.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/pie.animated.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/pie.static.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/quadrant.animated.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/quadrant.static.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/radar.animated.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/radar.static.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/railroad.animated.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/railroad.static.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/requirement.animated.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/requirement.static.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/sankey.animated.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/sankey.static.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/sequence.animated.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/sequence.static.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/state.animated.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/state.static.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/swimlane.animated.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/swimlane.static.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/timeline.animated.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/timeline.static.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/treemap.animated.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/treemap.static.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/treeview.animated.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/treeview.static.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/user-journey.animated.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/user-journey.static.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/venn.animated.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/venn.static.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/wardley.animated.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/wardley.static.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/xy-chart.animated.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/xy-chart.static.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/zenuml.animated.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/zenuml.static.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/architecture.animated.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/architecture.static.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/block.animated.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/block.static.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/c4.animated.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/c4.static.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/class.animated.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/class.static.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/cynefin.animated.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/cynefin.static.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/er.animated.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/er.static.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/event-modeling.animated.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/event-modeling.static.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/flowchart.animated.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/flowchart.static.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/gantt.animated.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/gantt.static.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/gitgraph.animated.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/gitgraph.static.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/ishikawa.animated.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/ishikawa.static.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/kanban.animated.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/kanban.static.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/mindmap.animated.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/mindmap.static.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/packet.animated.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/packet.static.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/pie.animated.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/pie.static.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/quadrant.animated.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/quadrant.static.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/radar.animated.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/radar.static.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/railroad.animated.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/railroad.static.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/requirement.animated.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/requirement.static.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/sankey.animated.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/sankey.static.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/sequence.animated.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/sequence.static.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/state.animated.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/state.static.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/swimlane.animated.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/swimlane.static.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/timeline.animated.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/timeline.static.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/treemap.animated.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/treemap.static.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/treeview.animated.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/treeview.static.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/user-journey.animated.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/user-journey.static.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/venn.animated.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/venn.static.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/wardley.animated.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/wardley.static.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/xy-chart.animated.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/xy-chart.static.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/zenuml.animated.svg",
+    "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/zenuml.static.svg",
+    "skills/mermaid/assets/palettes/colorsets.json",
+    "skills/mermaid/assets/palettes/css-named-colors.json",
+    "skills/mermaid/references/colorset-contract.md",
+    "skills/mermaid/scripts/animate_mermaid_svg.py",
+    "skills/mermaid/scripts/palette_paints.py",
+    "skills/mermaid/scripts/style_mermaid_directory.py",
+    "skills/plantuml-colorset-renderer/SKILL.md",
+    "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer-cs1/png/ditaa.png",
+    "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer-cs1/render-report.json",
+    "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer-cs1/svg/archimate.svg",
+    "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer-cs1/svg/files.svg",
+    "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer-cs1/svg/salt.svg",
+    "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer/png/ditaa.png",
+    "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer/render-report.json",
+    "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer/svg/archimate.svg",
+    "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer/svg/files.svg",
+    "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer/svg/salt.svg",
+    "skills/plantuml-colorset-renderer/assets/palettes/colorsets.json",
+    "skills/plantuml-colorset-renderer/assets/palettes/css-named-colors.json",
+    "skills/plantuml-colorset-renderer/references/colorset-contract.md",
+    "skills/plantuml-colorset-renderer/scripts/palette_paints.py",
+    "skills/plantuml-colorset-renderer/scripts/render_plantuml_directory.py",
+    "skills/plantuml-colorset-renderer/scripts/test_plantuml_coverage.py",
+    "skills/plantuml-colorset-renderer/scripts/validate_plantuml_render_report.py",
+    "skills/slidev-animejs/SKILL.md",
+    "skills/slidev-animejs/assets/examples/slidev-animejs/components/AnimeFeatureSlide.vue",
+    "skills/slidev-animejs/assets/examples/slidev-animejs/styles/index.css",
+    "skills/slidev-animejs/assets/palettes/colorsets.json",
+    "skills/slidev-animejs/assets/templates/slidev-svg-asset-pack/assets/animated-svg/drawable-circuit.svg",
+    "skills/slidev-animejs/assets/templates/slidev-svg-asset-pack/assets/animated-svg/interactive-hotspots.svg",
+    "skills/slidev-animejs/assets/templates/slidev-svg-asset-pack/assets/animated-svg/morphing-badge.svg",
+    "skills/slidev-animejs/assets/templates/slidev-svg-asset-pack/assets/animated-svg/motion-orbit.svg",
+    "skills/slidev-animejs/assets/templates/slidev-svg-asset-pack/assets/animated-svg/stagger-dashboard.svg",
+    "skills/slidev-animejs/assets/templates/slidev-svg-asset-pack/assets/animated-svg/timeline-machine.svg",
+    "skills/slidev-animejs/assets/templates/slidev-svg-asset-pack/components/SvgAssetSlide.vue",
+    "skills/slidev-animejs/references/animations/css-properties-colors.md",
+    "skills/slidev-animejs/references/colorset-contract.md",
+    "skills/slidev-animejs/references/visual-tokens.md",
+    "skills/slidev-echarts/SKILL.md",
+    "skills/slidev-echarts/assets/examples/slidev-echarts/components/ExecutiveDashboard.vue",
+    "skills/slidev-echarts/assets/examples/slidev-echarts/components/GeneratedSvgMotion.vue",
+    "skills/slidev-echarts/assets/examples/slidev-echarts/components/ResponsiveEChart.vue",
+    "skills/slidev-echarts/assets/examples/slidev-echarts/lib/chart-lab.js",
+    "skills/slidev-echarts/assets/examples/slidev-echarts/styles/index.css",
+    "skills/slidev-echarts/assets/palettes/colorsets.json",
+    "skills/slidev-echarts/assets/templates/echarts-colorsets.mjs",
+    "skills/slidev-echarts/references/colorset-contract.md",
+    "skills/slidev-echarts/references/integration-patterns.md",
+    "skills/slidev-echarts/references/visual-tokens.md",
+    "skills/slidev-quality-audit/SKILL.md",
+    "skills/slidev-quality-audit/assets/palettes/colorsets.json",
+    "skills/slidev-quality-audit/references/audit-rules.md",
+    "skills/slidev-quality-audit/references/colorset-contract.md",
+    "skills/slidev-quality-audit/scripts/audit-slidev-quality.ts"
+  ],
+  "preexistingMixedFilesPreserved": [
+    "skills/mermaid/SKILL.md",
+    "skills/plantuml-colorset-renderer/SKILL.md",
+    "skills/echarts-animated-svg/SKILL.md",
+    "skills/slidev-echarts/SKILL.md",
+    "skills/slidev-animejs/SKILL.md",
+    "skills/slidev-quality-audit/SKILL.md",
+    "skills/mermaid/scripts/animate_mermaid_svg.py",
+    "skills/slidev-echarts/references/integration-patterns.md"
+  ],
+  "untouchedPreexistingFilesExcluded": [
+    "skills/echarts-animated-svg/references/chart-animation-profiles.md",
+    "skills/mermaid/references/diagram-selection.md",
+    "skills/slidev-animejs/references/integration-patterns.md"
+  ],
+  "auditProjectScripts": [
+    "projects/colorset-audit/scripts/audit-diagram-colors.py",
+    "projects/colorset-audit/scripts/repair-diagram-literals.py",
+    "projects/colorset-audit/scripts/document-diagram-contracts.py",
+    "projects/colorset-audit/scripts/normalize-published-diagrams.py",
+    "projects/colorset-audit/scripts/refresh-diagram-reports.py",
+    "projects/colorset-audit/scripts/repair-mermaid-chrome.py",
+    "projects/colorset-audit/scripts/expand-css-colors.py",
+    "projects/colorset-audit/scripts/expand-js-css-colors.py",
+    "projects/colorset-audit/scripts/test-diagram-palettes.py",
+    "projects/colorset-audit/scripts/test-chart-colors.ts",
+    "projects/colorset-audit/scripts/check-diagram-preservation.py",
+    "projects/colorset-audit/scripts/write-diagram-audit.py"
+  ],
+  "publishedSvgHashes": [
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/architecture.animated.svg",
+      "sha256": "d4565975f3bdd5b755c7432ed3896c061c8ecec9a5fbf5ae50a01bba7feb54d0"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/architecture.static.svg",
+      "sha256": "1e64c31e250e38e23f4c4f8383371de93b7b5cb22ca0fe6b164cdd1e6a550bbc"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/block.animated.svg",
+      "sha256": "b38c2d0f4603b434715f4a67092208e24d490d35ff1b15a1203c1e2a9230d0f2"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/block.static.svg",
+      "sha256": "a79303214240e1b105b60279cc2336da68d61a5b3f786b225680d6131530a399"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/c4.animated.svg",
+      "sha256": "e801866025f495919b539f82d96fca5079cfc06512a84868914058a32692b0c8"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/c4.static.svg",
+      "sha256": "cedfe54e92ba1b3552620e9cdc30397721db129b775f795e4386d98237ae988a"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/class.animated.svg",
+      "sha256": "44a36eb3e88b9b43068d92e5d2ca8732f68b341b719fa85599453a9814046693"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/class.static.svg",
+      "sha256": "f5e0d3585a7c241745909d7aab258f152b0122243b0dafce72eb2254238caeb2"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/cynefin.animated.svg",
+      "sha256": "8d98f467289c8ba37d299ee5655dacbeb993d86f6117fd60ff1a4a878d71467d"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/cynefin.static.svg",
+      "sha256": "a4dc090a744f8e624529ef694bda91e976ddea1a9d676ce83a556c405b4b1b36"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/er.animated.svg",
+      "sha256": "c05270aec8363a09efa28eb6a36df1c8509afc2f53ada2b4941bcf3f33e76218"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/er.static.svg",
+      "sha256": "96a1ed059e3db890f9436e03c567bb8b3a46d5c1876c3d6e147bee311cdf4989"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/event-modeling.animated.svg",
+      "sha256": "aa5a99a670ea8071a7b601846955ed4d7104e921a019b080f296a93bfd2104f4"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/event-modeling.static.svg",
+      "sha256": "dd4fd52f46017e3eaeea9a9b98f58e24bd0da817f8452bb1f99247cdf9ffd816"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/flowchart.animated.svg",
+      "sha256": "875adfe38489aae8ee7b3f66e76000a35cacd25eb85747a3d08e0da4ffd56970"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/flowchart.static.svg",
+      "sha256": "24f384c5e8e4e25118d47d1171b13ee5e4dd4b6d13707f0f28a36b02cce3c8ce"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/gantt.animated.svg",
+      "sha256": "c4143c5f24507ff8fa9d5e871a915544f0677916a2cd4b5424e039ec0a0c8858"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/gantt.static.svg",
+      "sha256": "41529e45006a3221902fe54d3cb2c73aa45609078bce9b7825c8e96569562af9"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/gitgraph.animated.svg",
+      "sha256": "c19e08c0dce36bac849af4eef110b8e5e2d54cdaae2903d67d98e140d4275e2e"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/gitgraph.static.svg",
+      "sha256": "3cf2e1e534feadacae941e15c1933da1410e86f2f919ee829946076ab183ea6c"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/ishikawa.animated.svg",
+      "sha256": "3788b75c79cfed8210d938c99fd702fa996d04655db4ac509ea6329f4ec0f4f9"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/ishikawa.static.svg",
+      "sha256": "91f53a09a9e18b3c335ac32f353d48e3c66934194aa6aab6f89ffe82e3d35f7c"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/kanban.animated.svg",
+      "sha256": "29d9d917fea593dac6e7f99b3925e29e3bb9893f6950175fd42dbc5c50d29caf"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/kanban.static.svg",
+      "sha256": "aa8c1910c73bc1dbac7aca3020825b9dac97c9c310bee6e675909cb171fd8bab"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/mindmap.animated.svg",
+      "sha256": "68259c192fc08eb6e3294d145a10e10f302d97e525c08f2eaf4060f7b0c0de48"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/mindmap.static.svg",
+      "sha256": "d10030b6ec8464aa276c8dc33bc629b81ac087acfad53fa1e78916fdd1526db3"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/packet.animated.svg",
+      "sha256": "47a7fb1e51646da5da94a6b4867a1d8233558ea3c1202cd9cdfcf5ce409a5837"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/packet.static.svg",
+      "sha256": "27170047ef1190a6af4d7fde8c9b98573a8d836781446539cf967d430760ef5c"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/pie.animated.svg",
+      "sha256": "c1c8f547ed96d3c630fcb89331da880c7d16f2cc71fadfb332c5e2065699d234"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/pie.static.svg",
+      "sha256": "3ad13cda1300f99a1ec6e4747f3e6d1a34c8a0454454d57be51fc4a42a1a4ceb"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/quadrant.animated.svg",
+      "sha256": "1badad79f00bc26edb1ecf56480c8ba18553aa7e5bd0fd8ac66fa982c60c06a3"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/quadrant.static.svg",
+      "sha256": "5be737d6fdd5746d8ceddc64b5a323457d94c77a2adf39b22146d98475a28eec"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/radar.animated.svg",
+      "sha256": "1ccaae099a8f372a5f7d7c0744cd4587b9a35ccfd6799907840569de0e617727"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/radar.static.svg",
+      "sha256": "e501627befb1e405395bdbceda834e574a90a4f9d8603c53dff42485b2f1eefe"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/railroad.animated.svg",
+      "sha256": "58df346c90087b255622dd9da27761b5de140bc3b6fc2c196acc85ba297d519b"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/railroad.static.svg",
+      "sha256": "4697db568630131a64d1153c6dcc08b5616aa4c8d3307edd29f060bcdc1b50fe"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/requirement.animated.svg",
+      "sha256": "beff89c8cf97c8091aeb9e96dea18bf07de7dbc12950a2469a02a8bd34384f5b"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/requirement.static.svg",
+      "sha256": "2eca90bbe7462e852d7cf6fc555d5aeb22f9aefca1b3c91d547d9b5bad9726dd"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/sankey.animated.svg",
+      "sha256": "e84baca843a9e63ba7bb0cf4771970855571ff2593e1f9b115459df44cc9e8a2"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/sankey.static.svg",
+      "sha256": "950b13caef69467485cfc49b9aabcf6e6369e53105eba5f0049739312c52241d"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/sequence.animated.svg",
+      "sha256": "08b46f07e49804d6edf7cac8a4b4d63eb7564e35901e65b5656c4c368d073097"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/sequence.static.svg",
+      "sha256": "5b9f6ca8d8e4a75171ad379a624d10a9cf351f4a4b1b417ba58b9c298ad09e24"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/state.animated.svg",
+      "sha256": "74efe520d2f4315357ebd79dc2376a24bd11b365efc123eb2544629369d7afa1"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/state.static.svg",
+      "sha256": "46f072db9c7e1343687ccbe68d37f97be266bbc7091ca26116e395a7ce1d3e78"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/swimlane.animated.svg",
+      "sha256": "6c2c10553bee32f986229a453caec61c044aa8b7d4c2e0949e200768c7733400"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/swimlane.static.svg",
+      "sha256": "54cb0325ee6ac8d673f4eedacf2cd4dad2fc0d828197505b00816d4cb1ba4793"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/timeline.animated.svg",
+      "sha256": "142b09f8f9ee95d6248d28bba159ed99784e88120234f5c4444cbd4e5f064c5d"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/timeline.static.svg",
+      "sha256": "10954ddce2e6879313bd14af48d3fea7b825291aab9e7c1eea126b7206d8b33f"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/treemap.animated.svg",
+      "sha256": "07806b6aa064abde412a9eb7b43adc2ece764c59a983da8d9bad4fe11a456911"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/treemap.static.svg",
+      "sha256": "81f46dd402130e682a88518f5fb84487ef40d1634ebfdc08f34f5fbc81bc1388"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/treeview.animated.svg",
+      "sha256": "b1f8f1aa4124fe3481201b84c969734d29f390a2d3821e070b48e589ae5003db"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/treeview.static.svg",
+      "sha256": "28ca1f4665ec06d7f9c752a8699cee7d68879c49867d510600e1a3f771bf7968"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/user-journey.animated.svg",
+      "sha256": "260f82d409aef5225d80c4b272a602d5c8a0ee1f6a7fe10c70cbe2a7e7e6df5b"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/user-journey.static.svg",
+      "sha256": "24a91c80969f25070d9bbf63d2c8d06e1f35c6ef0300e5f6d1442a2c47e0cdf8"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/venn.animated.svg",
+      "sha256": "17bd68167dbc9f592e31d57fe0802a92fef2cc4c9979d5eb4c55d0555b9f4c7f"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/venn.static.svg",
+      "sha256": "78bf3b8b0512faaa06a6a5fcf9fc7edb952716cead3729cca9d41e13fa6ed979"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/wardley.animated.svg",
+      "sha256": "0f22ae73de3bf5b01e364a642243466467d077ab3f66f55383a4b963d031d4c4"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/wardley.static.svg",
+      "sha256": "490c3d7ad75b76be433d10527a24df4d88fcd324e6525b26637b2dee8f7177f3"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/xy-chart.animated.svg",
+      "sha256": "d327df879f5821f90ecb6619dcf5513a684d9c7d8fc8468f3251ab1e7ee9d30a"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/xy-chart.static.svg",
+      "sha256": "2f5754f3afbe01dd538b92c33139270aac8e10b12538d91047bda3f28cac03a2"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/zenuml.animated.svg",
+      "sha256": "4b9176a3def86bc6c1ed581e0529eb12877d2406936478c0355676f3560f374a"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/zenuml.static.svg",
+      "sha256": "f2c33e6768354928ebedf0225a704f26e20040bfe52b5bef3ffb6709aa36ff2b"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/architecture.animated.svg",
+      "sha256": "e685531062186271f83e59faeafa5557d29f5ab863daa2bf9d7508884221e1c4"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/architecture.static.svg",
+      "sha256": "97b5fbd24b0c3274ff0eb32bd5df3d9b22e68043d5ceed4614de33d91bacb127"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/block.animated.svg",
+      "sha256": "0d0123c8becb0457a8596893d4278f68a67c24ec5bf0c2ef747b1d7db355d5a7"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/block.static.svg",
+      "sha256": "35fb8275f5807da4c7c608e013d8ce02031f3a5b80d44ba6049dba67dabcf9c2"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/c4.animated.svg",
+      "sha256": "4a9662b025ffdd2cfcd2c12fc00eb06896feb970346093b71d7355af660c647a"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/c4.static.svg",
+      "sha256": "2f7be0c6446583b40842de599c636d1f8a36ab2a2ba7f7b595932a5676d9df5c"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/class.animated.svg",
+      "sha256": "386e6d67a64f0beb085f4b8915132a8ea6ca262890ff7b0c9bf385df8e1836af"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/class.static.svg",
+      "sha256": "233bffa80d82669557e7ecbdba4338f130f667be910a21ab6618e7bf8f1dfc2f"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/cynefin.animated.svg",
+      "sha256": "aac45c9edb3fedcd5b6eaa05b7bc74256db07e62a0571f8fc6f40c4f48ce44e3"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/cynefin.static.svg",
+      "sha256": "457846e80f4b1d8ca139f63553618ae3387ab1c2f5c378f18ef6dd1e9bd46f24"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/er.animated.svg",
+      "sha256": "3770c2fa55650ebfb921eb3ff4bdb4b4d840db16e925b5d245cc3f33152ebdb9"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/er.static.svg",
+      "sha256": "e8e351e1566b12ec014a29c6851e7004489e7a03ca0977b10640b911e8f9dfef"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/event-modeling.animated.svg",
+      "sha256": "44b41e15060f288736f3337fae8a96c6a38dd914eb0459169754fa679d222699"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/event-modeling.static.svg",
+      "sha256": "e836feae53b18cdc579236aaca979761e337d9f2009e51af20e646139a3f92c8"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/flowchart.animated.svg",
+      "sha256": "b08510bb042ed9b659dbac0ad1a5c9a630f3ce07f7945926280854947c7ffddc"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/flowchart.static.svg",
+      "sha256": "3dd0810dc23ba3c9465b163c3e1f2b0375a87d867da0ea7dfb8ce99db742b0fc"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/gantt.animated.svg",
+      "sha256": "4f8cb87f6548ff6f0f11f97b5f587047ed65d709ef58eac5b88e8887cd1342b8"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/gantt.static.svg",
+      "sha256": "b565165337ca182e90626cb14750c772a414ad840426e0f00fa41e01b7816e98"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/gitgraph.animated.svg",
+      "sha256": "af7def55d911ee7ff1e357d1ebedc37409fabb2b3489688e9fba6eb12269f2d1"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/gitgraph.static.svg",
+      "sha256": "d86d29a7dbcd53d2ccb1a35c102a0b6a036eddab89762680e4573a3b55303e65"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/ishikawa.animated.svg",
+      "sha256": "7e0f7ce18f106abc8392b4dc6a234af7461617373cac5ae71ee6bbb83632bb1e"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/ishikawa.static.svg",
+      "sha256": "20497e82072cb31c49dfe438760149dbbc888b98a2f7e53eb7d9147265487f28"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/kanban.animated.svg",
+      "sha256": "7f17d55a412de0dc4df5dded6ed7051677d6c7896357e2c629a233df49fa9a7e"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/kanban.static.svg",
+      "sha256": "aee1d351eae6942ecdf44004913f326d75a25f9874685a70588acef5bd667bc8"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/mindmap.animated.svg",
+      "sha256": "9bc15a1e779bd646f3913f16c84e97cee1eb9912532a427b7aa317d38c1744f9"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/mindmap.static.svg",
+      "sha256": "cb02fe1e1537a4c943845b96d65ecad7d875abbd4ee4fa649b10c6380a77cec1"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/packet.animated.svg",
+      "sha256": "47a7fb1e51646da5da94a6b4867a1d8233558ea3c1202cd9cdfcf5ce409a5837"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/packet.static.svg",
+      "sha256": "27170047ef1190a6af4d7fde8c9b98573a8d836781446539cf967d430760ef5c"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/pie.animated.svg",
+      "sha256": "53496bdc7574db618d48a52e79654f9c1c69bd5b169b5ce5e3f457be3910405e"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/pie.static.svg",
+      "sha256": "8540708c967819652d2b1d1d550ad7a66a09dff36316c4d74a99d7ce695c3a7d"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/quadrant.animated.svg",
+      "sha256": "7dfa6abf260e7b0b15984a213fbec909b66836294bdd4e0fb253eb31bb5b460f"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/quadrant.static.svg",
+      "sha256": "39f7e05f2175b641e338d676b7089333594e825eff4899dd8f8b1d6500c6f9e6"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/radar.animated.svg",
+      "sha256": "883899dabe0028040c6b7b04e82aa600ff8e661a275f9077dbf541d48ed76433"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/radar.static.svg",
+      "sha256": "704824514edc50aa1b9839bb711be554b3f5acac1d705d4f54d88586779ec5e0"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/railroad.animated.svg",
+      "sha256": "272677f6e06adafafaa6092a37db4f7ad666e0df22519f80219363109272a4ad"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/railroad.static.svg",
+      "sha256": "c013439409094c36890c95864bd2c6bd50475a595bebb00bba1babc99cc6ce26"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/requirement.animated.svg",
+      "sha256": "4648add0e6e439edf231407616f9b7aff98e4edf0f232bfb839f6907ca5d296c"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/requirement.static.svg",
+      "sha256": "9551153099c93f16cc54365ee7480b5306c44248812290981060b22e69b462b0"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/sankey.animated.svg",
+      "sha256": "c69bcca24bc91613faa70a87045a0863b6c2a90776a84114d8145a6befba54e3"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/sankey.static.svg",
+      "sha256": "3c7797fc8688f68b18ff7a68095dba532520c68f3476f5d74e0914d588194c70"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/sequence.animated.svg",
+      "sha256": "f36a2dd123b2aec36f4a267b1a1ca45c6758276c1de012cae1d6509a50341756"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/sequence.static.svg",
+      "sha256": "bc63334a8891c6d108543aebbd8485ce806ceb61a3d72061cea19fa344a8120b"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/state.animated.svg",
+      "sha256": "4b3e222af5806eed4cb8fbbd74a0cbb989a7bc9820cc4c227ad67967f8d26b17"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/state.static.svg",
+      "sha256": "b5f26709714979bd68ecefb3f14f99cb69025e43b60713c172a5cb4e06ae717e"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/swimlane.animated.svg",
+      "sha256": "968f8f3b6718ab029aa7f92668598da2e99f1043e2e69f08c05d36a1aeb66077"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/swimlane.static.svg",
+      "sha256": "c69b6119cfec32c5c00d7320f2ccab9b33155e4bfbfbb968d278e92ed33d9039"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/timeline.animated.svg",
+      "sha256": "6366587dbf78e19428c1153718e50cbbd431a4cfe3ed083388f21017f6666810"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/timeline.static.svg",
+      "sha256": "9ec05a1dbbfbf0eac8cfc1f895b45e0d66345507365f6a74d072245924dbd074"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/treemap.animated.svg",
+      "sha256": "d208fcc187bbe44a1c37fbe200affedb313bd8051254130758343796592cdde1"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/treemap.static.svg",
+      "sha256": "063dc4e3f7c07e61422055fdac2b2c2300151f6bd7b38c55565c1c59ae3306c2"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/treeview.animated.svg",
+      "sha256": "9e5e4b9b4c62aad0a99426bcb3cd275a439055b00d8f43b3d8cb871acd19b352"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/treeview.static.svg",
+      "sha256": "e62c74774a1f1f390b14f320df32a6118f2ee9971dff669beb2906c10365ce82"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/user-journey.animated.svg",
+      "sha256": "634a4665eef0fa17c64e3d3059f86f8b53e6de9def84e8060cc1f6238a77b90d"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/user-journey.static.svg",
+      "sha256": "bf6cd47907a2e0e4a8c124d269cdbe293bf0069ae0dee25f81458147cb6e42d4"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/venn.animated.svg",
+      "sha256": "d2684d3417c9105802e888da6db53e0c17326ce56c656751df92a0dceeba0689"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/venn.static.svg",
+      "sha256": "d4d54bba037c00d9f5b03f4595206b357081fe7ab84a09dc80707c9a7a656589"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/wardley.animated.svg",
+      "sha256": "0f22ae73de3bf5b01e364a642243466467d077ab3f66f55383a4b963d031d4c4"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/wardley.static.svg",
+      "sha256": "490c3d7ad75b76be433d10527a24df4d88fcd324e6525b26637b2dee8f7177f3"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/xy-chart.animated.svg",
+      "sha256": "6f9dec007d0cf1a0b22a62bd564eccf2a26bfca304aa794c34e34f5957dd1c8a"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/xy-chart.static.svg",
+      "sha256": "3297c2d1b8bb323db1dcbf12b5ac62a1f9547fdedea56bbd4bef0fa12eb0e09e"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/zenuml.animated.svg",
+      "sha256": "01095de326b7cf547e93ed02a39217b2c5d4378f8afef6c488155422a6c6f7eb"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/zenuml.static.svg",
+      "sha256": "8a5a1b45de563d904994b0b72a733bcf6fa294e9a2d4c1b9b7a7f93d330971ef"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer-cs1/svg/activity.svg",
+      "sha256": "808173497747a36d907eb46e0afdf5964408d9bb71a5ef14ace68c5c14b4bb78"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer-cs1/svg/archimate.svg",
+      "sha256": "44140c440cd12df2a03308412969d5ac58f55d923068333324319bc5c6136394"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer-cs1/svg/chart.svg",
+      "sha256": "5d122a8ffd31d96c3bd19d795d47d6004d27ae05a504f34bc80c0dba5fe98bd4"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer-cs1/svg/chen.svg",
+      "sha256": "da04a0e17796228055f713457ae360cae5a107567b7373089c3d6326451bc808"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer-cs1/svg/class.svg",
+      "sha256": "fdc1f364682e8d57b81b1552f8be5164a295dfb94790fffcfccf19173486ab21"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer-cs1/svg/component.svg",
+      "sha256": "312291dd9acfbad5aeb04d212c83ff1bd5e149d7d779bc84ba52168511d53d9f"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer-cs1/svg/deployment.svg",
+      "sha256": "f9d8f8edc57e70c7b55bf30c488f09ab8952467c10a53796a57d7270820555fe"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer-cs1/svg/ebnf.svg",
+      "sha256": "89bafcd549cb6f359f505a3abfd584036cfef7c08454b03070ec63bcc47c2d82"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer-cs1/svg/files.svg",
+      "sha256": "08bec6e9872c0053361c21ebf69b715c25fa48d8d3d8766a22f5e23dac263a2a"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer-cs1/svg/gantt.svg",
+      "sha256": "30c45bcded3c9a1a06d276f51f71cd285d0b8931e5e650352452871cd5c1bd31"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer-cs1/svg/ie.svg",
+      "sha256": "828cc80bd0ec696dfde1e52abff2dbdd463e5e11fc0ce9f7c4b4226854dda157"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer-cs1/svg/json.svg",
+      "sha256": "5fb40d9b77d8d5a6cbf7c0a97618d1aff34281f84ce660ede945efd550de2f62"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer-cs1/svg/latex.svg",
+      "sha256": "0d5bf9635fad7e1994f40a0249c8456d1270ee0b64c40f56f5319bd27c234fa8"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer-cs1/svg/math.svg",
+      "sha256": "dd19b38898f556055cee74b42c864db1f7f185f6ed507be5da530301d5781aa4"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer-cs1/svg/mindmap.svg",
+      "sha256": "8529e3a28e403ef110d1074e0d87441fc91294fcea8f654b411ecc9b758d63b3"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer-cs1/svg/nwdiag.svg",
+      "sha256": "58fb859377f5aa2793c5399796f55dbe76c6241357cf99f4ad975aa959da1f64"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer-cs1/svg/object.svg",
+      "sha256": "6a2fdb868f8447f9c6058829d23db9e02a6f1ffca74ccae33fda84b5f17c49a2"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer-cs1/svg/packetdiag.svg",
+      "sha256": "d3e98eb9178496bd8fee53bc72b984355b8388cc85588cbcd55df6c19633aa90"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer-cs1/svg/regex.svg",
+      "sha256": "17766156d1a2b7737c8c6a51ba4c7bba6f3a7be4124f84fe91dcba628b624176"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer-cs1/svg/salt.svg",
+      "sha256": "c9687bec3dc9e5ca0ed6511a9bb3ee954a05eb7f6c66d4bd39b6190822806d1e"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer-cs1/svg/sdl.svg",
+      "sha256": "30318fe5855444115fb77427f642ea219a0587c9ba6a0a23e9455e8bfbcc812c"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer-cs1/svg/sequence.svg",
+      "sha256": "dc0aa4bd6f471ec5373268eed4a79af7a151c46609782c20755f2002864d13da"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer-cs1/svg/state.svg",
+      "sha256": "8cafb4a4b87817d41174962824c0af5e934089546f2133444abee4cfc7d80587"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer-cs1/svg/timing.svg",
+      "sha256": "deabd2487ac1c9d2cc3db258e922b8eac1212944013260664c0260a310775bd3"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer-cs1/svg/usecase.svg",
+      "sha256": "a1ebd5d2a0953b2deddd8ff26e1f708cc289d66ddbbe34abf6bb1160048160f4"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer-cs1/svg/wbs.svg",
+      "sha256": "efaaad0e83af3957fcaad854b531119aeada2efc8500b608f383390832e4b787"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer-cs1/svg/yaml.svg",
+      "sha256": "abc996c45a8b1c37896c8f90d4ae77545fb514086e221dd11bb82246ac717e99"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer/svg/activity.svg",
+      "sha256": "1261efd023bfedacecfaf8983b26c7f222a9a2042cfb605d8f83f5397238d7a2"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer/svg/archimate.svg",
+      "sha256": "bc893e7d4604aa6d18408d4105ff83a1b654d947cb99d7d55877abafdb4fb2cd"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer/svg/chart.svg",
+      "sha256": "df60c6ed7e7f8adf97ed9bf795e5b4426155d19a07298076a3c31c467149eb6b"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer/svg/chen.svg",
+      "sha256": "f83196bcc290087c5389ead5b1a32e1dafa60a0e5381fce86107e5bca3af1e3b"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer/svg/class.svg",
+      "sha256": "7ca2124cfd7058cd605ade989efe7acc3d834e8130425b652fb357d3060680eb"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer/svg/component.svg",
+      "sha256": "6b850858a701074893bc26ecdaecbc7579199c09ba9d28402d39bef3fd9febca"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer/svg/deployment.svg",
+      "sha256": "dc421426248df637a0239ef8553491a1c947b5016a70f3a61bf519818bd8e01f"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer/svg/ebnf.svg",
+      "sha256": "05988e7af466ec3a296d49d229381d3390e9dd3fe95a21161723951c62da29f9"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer/svg/files.svg",
+      "sha256": "f9669e88c70a44efbf0505abd898d5f432155414c1fd7212e99ec4d35e321751"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer/svg/gantt.svg",
+      "sha256": "e7acf3cb9f65668f1d6cb78a338d59a9c971fc8d0cd5c5eef4e48743570509bd"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer/svg/ie.svg",
+      "sha256": "5eced43fafad081d323ea9cc90394a7082da36552844a589dd80c26fd11d6485"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer/svg/json.svg",
+      "sha256": "462655d26a42bab5a8d004a589e637ff980a217e85a13d5c1eef0c2c744830d5"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer/svg/latex.svg",
+      "sha256": "0d5bf9635fad7e1994f40a0249c8456d1270ee0b64c40f56f5319bd27c234fa8"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer/svg/math.svg",
+      "sha256": "dd19b38898f556055cee74b42c864db1f7f185f6ed507be5da530301d5781aa4"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer/svg/mindmap.svg",
+      "sha256": "0f0c0780e0cc85d15cb0d5ef56ead9962296bcdb741ab1b416ec52f700ef84f1"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer/svg/nwdiag.svg",
+      "sha256": "14cb17a732db0bbd34d0587d67bef18200bbd33e519627d8b4ef8ca678d4960d"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer/svg/object.svg",
+      "sha256": "c94bc60a8a62aa27ffa12cb29a6c68eda6ef9ed99f681d9ddad37880267b69f4"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer/svg/packetdiag.svg",
+      "sha256": "a2dc16f0664152758ac5e0d0ab5cec265781945f641a0fa2f7e71e3ad7e03c89"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer/svg/regex.svg",
+      "sha256": "9e5eccc87fbb09cad1b332259e4f6fb03d893c5da8cd5717730bf7bc5562b895"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer/svg/salt.svg",
+      "sha256": "c9687bec3dc9e5ca0ed6511a9bb3ee954a05eb7f6c66d4bd39b6190822806d1e"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer/svg/sdl.svg",
+      "sha256": "fa8dc6aeab12540b11ed707daeb46b3059e6177c206da5fc583a00f27478b169"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer/svg/sequence.svg",
+      "sha256": "2b8a0eeb69711efd1f76f6d5b6634183f64129abe236a4473a4d8ceea75208c6"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer/svg/state.svg",
+      "sha256": "3e4a8d6ae3f8919b03e36c0be9de7272a9af294d1d8934020e25d0190519db64"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer/svg/timing.svg",
+      "sha256": "9f8ea25673ce627e509e8f6081d94ccc3f5e5d68e77fcf01136aa4cf2e140ab3"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer/svg/usecase.svg",
+      "sha256": "aeca896ecc6fff2636f90303fe012f874911bce58bd959459bc03364a0c6171c"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer/svg/wbs.svg",
+      "sha256": "e7ee91439bb25addd1dabf15a7a9f7a23367008a7e4e9cf6f2e5d7bf4c673b2f"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer/svg/yaml.svg",
+      "sha256": "f26e0a3a61c65c9e130daf22b58ca375c0b04579fdcb21c77b5c92f7cabff0ec"
+    }
+  ],
+  "publicationRequired": [
+    "mermaid-max-complexity",
+    "plantuml-colorset-renderer",
+    "plantuml-colorset-renderer-cs1",
+    "echarts-animated-svg",
+    "slidev-echarts",
+    "slidev-animejs"
+  ],
+  "publicationOwner": "root agent; no staging/commit/push performed by this subagent",
+  "publicationReview": "evaluations/colorset-audit/diagram-publication-20261002.md",
+  "prePublicationSvgHashes": [
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/architecture.animated.svg",
+      "sha256": "ee4a6466256a1daaaa394c7f127ce54fc28f11ee1acb9e908f18d1fb20944238"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/architecture.static.svg",
+      "sha256": "0ecc978a3ecb4ba0cd45c6c628f7da295da29e82ef6c94fe75bfcda9d92e8d8a"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/block.animated.svg",
+      "sha256": "00b74ca646d47978bd192c1a39f9f8271947f156e5291b88c25351abd1bf7c9e"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/block.static.svg",
+      "sha256": "775b0fa97026736db5d381c867b76b2e2bcdb52521f1b9bfc96d3513390c88a5"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/c4.animated.svg",
+      "sha256": "b82fe3961e01c8ff35958e466d4f6abf0045a8ff94e7584cb3556ed7badfa485"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/c4.static.svg",
+      "sha256": "41795b4a04e26d048b430e1c3d07196e772ba0210fff94ec5e8b638cdc259445"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/class.animated.svg",
+      "sha256": "32e5d4dc133917ee99c4442becd4cb3bc82e1677fc34a9c0e08085e750deb7a6"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/class.static.svg",
+      "sha256": "281cb7c0e576671f504c6eccb15fb74dc684d538dfe1a997ca1880a4b59c5448"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/cynefin.animated.svg",
+      "sha256": "f1fbf2aa52405d91e41a4e72ee2d5b2a461547cb7520038485e63ec8ced474e2"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/cynefin.static.svg",
+      "sha256": "d3072fd066f24955d0f9843193f21f39dda073c3c56a9167574e36432ac9bbd4"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/er.animated.svg",
+      "sha256": "97199a435b15820f2e36712072fb94eb319508c1de935b2abfa9f051f96fe8cf"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/er.static.svg",
+      "sha256": "ec2f2356ac9f770f2fd9c930d6a75fe005c96016b248d3b243b9bf993f464fab"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/event-modeling.animated.svg",
+      "sha256": "1637dab6fbbe25411c14cc47a56b5187c45da09179738df50af1f33d17bafc13"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/event-modeling.static.svg",
+      "sha256": "9b8f25bed4498ec50b7a51167e3c52f1e68c26cb67e58fa7f4dae52665811f97"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/flowchart.animated.svg",
+      "sha256": "b3d612906fa3ed3598e3448580bfaaffcce2dbf12f706e8adeb7974aece57807"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/flowchart.static.svg",
+      "sha256": "3fd910bd54956a0046f76fc0fd6711c4ca4b8d03d577abe051cb677ffa3d378a"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/gantt.animated.svg",
+      "sha256": "2249c32fa0a6bf563a89ca3e99169b91f8ba3ac3bfe645cea6e738e63abb6661"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/gantt.static.svg",
+      "sha256": "9c767b1021c46b0b0a45f6c53c35b09afddfd3affa32525be9b6534bd3bcb661"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/gitgraph.animated.svg",
+      "sha256": "cdd3bf4c755e23dbb13417af9265fd7b67cda78a6c51aab7b1f6ddfda9b706d9"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/gitgraph.static.svg",
+      "sha256": "ea60fcb9e11e9ed44e9a9feaa563de6a4692cbe818274ddde87ec57de6714530"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/ishikawa.animated.svg",
+      "sha256": "30ce4e27eac5d907ed5d70d661bd75de41991c4cae66d45794d051639b48994e"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/ishikawa.static.svg",
+      "sha256": "fce7f61d6d3e97f2415b5b300f94528ae8e6a72c130d0205c39df40a2b3f65be"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/kanban.animated.svg",
+      "sha256": "52142f231cf5785ff5d406063a2d7ebdac9c7ac1807df44038073be299831a9e"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/kanban.static.svg",
+      "sha256": "8c4767826a02ed67741f9af5d538d0dc6b0dd55dcc2b9617dd51dd4b1797ef07"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/mindmap.animated.svg",
+      "sha256": "9f2625b5dc293f1b4a872ce41b0861aeb8aa2ea9250881c6604e50cce27ddf13"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/mindmap.static.svg",
+      "sha256": "28f531ab574ffafd91ea4889d470c1b8616d13bd8ba0664e05713bbc8b912848"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/packet.animated.svg",
+      "sha256": "34945fa538e3101cb496a61007802f0371db41534583e5e52dabcd1b74adcb7a"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/packet.static.svg",
+      "sha256": "7e904714df0e49df9d5d1095985c22b3a09f79c7640e18a210a2a607837706f5"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/pie.animated.svg",
+      "sha256": "ef5b0a8cae6bfcebe2d56fe292590e1e6e89534b1ea8de2a2a24a18cdb0f8705"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/pie.static.svg",
+      "sha256": "f8dda4df17147124f363c54f40f6d57e47296029b5e1c10d6f4e17fa219e2c09"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/quadrant.animated.svg",
+      "sha256": "160c12a4c4f72549f9f1ce67029e5cd7daab23d7b9465a8ce38e4a9bd73a7cb5"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/quadrant.static.svg",
+      "sha256": "157dc43e9abfc4b2b4557b8bc338b74656f201e76aba7db997b73c5b9979efe2"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/radar.animated.svg",
+      "sha256": "8ec043e0e63b0b2694dc18c3e6be3d4a1299e8a6ce062d21bcd600740b92d020"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/radar.static.svg",
+      "sha256": "b2b27a08623e2a8a421d9f9c1484146e16a51e35690a83feadb911c7a99fc44f"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/railroad.animated.svg",
+      "sha256": "b9162f5e815e10305362ee101b02198b0ba86deda532551baeac26c3dd07efd2"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/railroad.static.svg",
+      "sha256": "f5edc283751773ad77e999dce1f907945ca72868e7b102d88e8174a4cde9856e"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/requirement.animated.svg",
+      "sha256": "a941fc8182260ee8041ba8e91a0ae540e1d914292de188aa1f59a3de0d367380"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/requirement.static.svg",
+      "sha256": "652d5afcc91da9d16b2e8a38e691bc1d9088bbeaff89f3ace03882723fd6d492"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/sankey.animated.svg",
+      "sha256": "4d749937ee4e1075f7e4c94364a38ec675fed2e747fd3aff2155931083cfaee2"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/sankey.static.svg",
+      "sha256": "360c82210655e83a8cf0e902762981b55ee32b14ab831d343ed3342c464a7fad"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/sequence.animated.svg",
+      "sha256": "a3668878ba898845c9ec46b7712090c414efc338d811e5d63cc53d3b06549faa"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/sequence.static.svg",
+      "sha256": "f3164c2ba8c424e571340f5f94f65e666003957a574d6af019517b3655d3c58e"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/state.animated.svg",
+      "sha256": "d9243ac729291f2a4572510d509c1017993607596be7b35396c5a8ad3bd1f90f"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/state.static.svg",
+      "sha256": "05ae2586b85c724a4b49de2432d63d18a1501788d6d161fea05ee4ec02d93b2d"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/swimlane.animated.svg",
+      "sha256": "13f980708b2288d6331f17f491e5025f7f098c86ecb1c712371198ea0f6df1e5"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/swimlane.static.svg",
+      "sha256": "c6a75760c438bbf6fd91f6e33221152daa4ec35e883f20878f4861525adabd65"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/timeline.animated.svg",
+      "sha256": "5fd2195ae406676238822f0a40b87b609a5381a2f052e0f98fc00822e2fe2fad"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/timeline.static.svg",
+      "sha256": "c24b8453efe8cb0dc985f8eecb6e4e7948af68670a2facc97a1629c285c46beb"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/treemap.animated.svg",
+      "sha256": "1b5337c76a3b5b51ed8d0dde6d5baac42fc04378574b48363408980eeace9ef3"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/treemap.static.svg",
+      "sha256": "fda0e5875a6be5a9c0d2217a050e01d5f3c301ad6f7912a6f81de7973e809dab"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/treeview.animated.svg",
+      "sha256": "8871cece618f575dcf10ee25c5e505a1325eb91e464ed517e5ab4117f5cb4887"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/treeview.static.svg",
+      "sha256": "ca9fa9f6a6f89d8a17bbf10b58a8b8e74285bdffa1e0e46e735f93687602bd11"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/user-journey.animated.svg",
+      "sha256": "b84cc00633ed8ebdc3d225254b0f0e2497a782fb25716e79a7d3a1a6498b84aa"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/user-journey.static.svg",
+      "sha256": "20674a5c26e9b1e80237da8c94ad80735fadde929e407ac0a111cb4be0f19f65"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/venn.animated.svg",
+      "sha256": "703cee16e71c49eaad7a91aa5eb7a9434d51cd63cf08039e8707f1eb5b40fa9e"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/venn.static.svg",
+      "sha256": "cf04706e99d1d5db33503679f11aca94bf1063ba1f3fe0282fb7cbf23ca8f255"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/wardley.animated.svg",
+      "sha256": "6fd479d0b3bebb660b186e9420429e972a7277d014f3b7c4cbaa3f1625be3eaf"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/wardley.static.svg",
+      "sha256": "e2ff3365060e5cecf51dcd43bdfdf07592779c4149902f48a733582a66b5d60b"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/xy-chart.animated.svg",
+      "sha256": "fb22b3cd10f3dfb6b1464aa358500200611a20816a2a2cbcfc170c6dd3b34001"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/xy-chart.static.svg",
+      "sha256": "ad0e6586de9b0acf2922c132cbd72b882ba3f35c17a880deb6832da38e7c46d9"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/zenuml.animated.svg",
+      "sha256": "cbc89ffaa18a83d7b02771d7aa040c8d45f7b937b7ad3fcd842351f51873cf21"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/zenuml.static.svg",
+      "sha256": "223f8777bcfbd34441278fe06169a4b88deacb9c0eb62e598e09ec226c437ba3"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/architecture.animated.svg",
+      "sha256": "eb6eb75ef092e6d73bae1b7ca360abde83c86eeba559dcc8a9b2fbf4d1221c35"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/architecture.static.svg",
+      "sha256": "791a64ddedaa200512c3f429562bcc8b6959bca7989a7f806d66c0fab5e7d7ac"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/block.animated.svg",
+      "sha256": "4a10ea32896f4f6a6b9d17b04870fe0cc15bfdc79aa40fd94bba3ac064303b00"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/block.static.svg",
+      "sha256": "64a50d2b837f1819cf62efa5c64297d09b20296cccabbde9eb31b24d567a2999"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/c4.animated.svg",
+      "sha256": "90151525f2ad124d38914f2c3ad1ef11e02a5985c3ca8493f8b60ac89a90d0aa"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/c4.static.svg",
+      "sha256": "886223de23a34e9d4c800c7c35d6118b66da1ded01e4b0e83e9d064178d88ee8"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/class.animated.svg",
+      "sha256": "a19f24f0f784ffb58496a15abf6602312880741ce68e23ce912a5f6645d3d172"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/class.static.svg",
+      "sha256": "f13fa47c7434adc8b9f2483649c1f7719a0a5d905a0846f31a10be30fc0c45e5"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/cynefin.animated.svg",
+      "sha256": "8d4bdb18549899b3ad1f37aeed5f3a0d34877da195e719825b0a694c9e65b833"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/cynefin.static.svg",
+      "sha256": "529217535c64dcaa177825babb0ed3dbb4c0e1555b724f81054a2d3995407fc2"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/er.animated.svg",
+      "sha256": "628ad6b473ff61b364633500f948a75a58602c6394d6feb84e09e45c2ed2f6b6"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/er.static.svg",
+      "sha256": "f300e69c46646d31717ecdda2ad1b51371d1ab56a5d3fb6f60b46fe1ee8d42e9"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/event-modeling.animated.svg",
+      "sha256": "fd3eeff94165e110ae446b934fc338006843ef29723f6f29868d5898c5b06f26"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/event-modeling.static.svg",
+      "sha256": "67de55358283b6de86c683f10366173d3af511a98ea1662a2601aa682a00a85a"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/flowchart.animated.svg",
+      "sha256": "01b39f60d1d0ff080db793285777af27a76331136a144ef499e4441bf33b67c1"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/flowchart.static.svg",
+      "sha256": "eb2e6453243667b335814b148454c88d2e2c75a79cdb093a86209e07573718f1"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/gantt.animated.svg",
+      "sha256": "ecd89b82febb3415e586389b1c48c04630b4760fc09ea3c4aab0d1ea6f57a2fb"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/gantt.static.svg",
+      "sha256": "beb8c77728658cdf623846cf22fc6d1d8174fe851e0f0b9de80603365424dd9e"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/gitgraph.animated.svg",
+      "sha256": "da17eb5e513187944b154df484726bd9901b2d7a02d7841cd3e99bbd6600e07b"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/gitgraph.static.svg",
+      "sha256": "9c0767d3fca66f15566d54391a370952c2169bdbd87a00b0121c99a476990d0e"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/ishikawa.animated.svg",
+      "sha256": "d7d703402662cd25a6b0d798b762ae399954d63cbd5afc76a40a460d708bd883"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/ishikawa.static.svg",
+      "sha256": "c5d78304d44aed8421207ed3da84328e2feb4e2fdc10fee51665cda936ebfb51"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/kanban.animated.svg",
+      "sha256": "54f9a31aada14aa92e924b97cd46f71d95b8077f1805e3f52fcb7bee2b4a3d1d"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/kanban.static.svg",
+      "sha256": "7969a5857df09924a68800f06451e6fc2be19024f9f4c04e06658e23331ce85c"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/mindmap.animated.svg",
+      "sha256": "ec751b3cc078dc61f305e10529d36ea493f1ccdea1c816720aecb0172b0e877f"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/mindmap.static.svg",
+      "sha256": "961314d97f6b6f19caebedbcff8419f4d6715f49b270b4ff3758731735fc751e"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/packet.animated.svg",
+      "sha256": "34945fa538e3101cb496a61007802f0371db41534583e5e52dabcd1b74adcb7a"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/packet.static.svg",
+      "sha256": "7e904714df0e49df9d5d1095985c22b3a09f79c7640e18a210a2a607837706f5"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/pie.animated.svg",
+      "sha256": "d546e1a1809776f1e3aa7e66095ee6b68d6af8b895ff6ec4a261144ed22e9be2"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/pie.static.svg",
+      "sha256": "6f2aa3188788e5b81ecb51827b506b48e5a9189540e7e7684faa0a0660b2d12b"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/quadrant.animated.svg",
+      "sha256": "9a6e7af07e6ada46fc84bc7ddb8741c582188910d3640712069bce00f1398c73"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/quadrant.static.svg",
+      "sha256": "c8f53ecc70906638bfd7b5b84b38c35eedb40178ff8582ca4b0a35a8866316e6"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/radar.animated.svg",
+      "sha256": "a3500c1262ced747a88c87a2c8feb93771812aca91465c60f5397a58e1b09f29"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/radar.static.svg",
+      "sha256": "9758158f0e80a7ad4f88e511a9b4b6ca3de716f419dc01e05ff726bc98f3f414"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/railroad.animated.svg",
+      "sha256": "ec222ccdd04d301d1f7b189c76d5df450b9184c3762ba8c87364aeb6ad7f476e"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/railroad.static.svg",
+      "sha256": "33c9aa2a9392030888d2784813750c15802b622ba5f91834dcbc477e06d11aae"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/requirement.animated.svg",
+      "sha256": "603fc15beb7fb62e062a4506a96c0183f9b804af097729e95db5bc336198dbc0"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/requirement.static.svg",
+      "sha256": "3286b8ae443228bbd8778fc91626847764833b1957f3be83d322f5db3de7533f"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/sankey.animated.svg",
+      "sha256": "2d46573ea9b5762acb0afac7047ff52ecfc0465c5e3513d2cb169a8f932fbb5d"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/sankey.static.svg",
+      "sha256": "7dbdfc20625386bdfd78e47bc0c4dcca6aa4db39112d8f098d2c4dce15e9c455"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/sequence.animated.svg",
+      "sha256": "479a0a2e9e3d29c87106b5330c0a2f1e351b377bfbd8555b47d1410ec6b5d3bf"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/sequence.static.svg",
+      "sha256": "6c2f7482bd0b43dd418b249dd94cb98d04a1eeab106c8a8d0585c555263ae901"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/state.animated.svg",
+      "sha256": "f453e591562cd637e2aa5c5b7add1988fb824619e3b09d8cba9e24c01eb812ad"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/state.static.svg",
+      "sha256": "99f9c1c9cdfbbb7f8f806cd66395e291eda6efcdc4295df3d3d03be013da86c0"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/swimlane.animated.svg",
+      "sha256": "62c3a5b5c4148c924da37cba82df53e1e72d6ad315d8cb5c9dc27b4e9d6c45d3"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/swimlane.static.svg",
+      "sha256": "84fb54d1b76ec0af5867ae37f8a41a4ad906b0699966ee3dd5856568ec5b8108"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/timeline.animated.svg",
+      "sha256": "e8e11b3e5c4aae4c5ef0415c631edba0e67e198868c31e90ce654d13db85961e"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/timeline.static.svg",
+      "sha256": "0ea0d823d75bbbdbe283b9a1f8107825059c9bf236e929cf3236ad0c281813e1"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/treemap.animated.svg",
+      "sha256": "41a49437d5b0c3d6c91fb3d7b2a1800d0dff8da059656f6a39edeac81e49a9a0"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/treemap.static.svg",
+      "sha256": "d69f79cf08d54914b9c9185d18522763ad602291b6c5cba7f27c8fdc45ba4ecf"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/treeview.animated.svg",
+      "sha256": "90203d72071e9a5ff5108f1201103d5d8f0dee900ca355b80be95d6578a4c37d"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/treeview.static.svg",
+      "sha256": "d7695aac32df57b48423caa25e0d721e6193c971b2e0f6c6ce5be116f9e0741d"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/user-journey.animated.svg",
+      "sha256": "2c81c111a1786e8800b944ddc73cc8ed9485050e1c0da52595bb5c363272eb58"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/user-journey.static.svg",
+      "sha256": "35f9f349eb24bd8194115802ac2915c5f015d4d7e64d5c666a7827c564dbb33b"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/venn.animated.svg",
+      "sha256": "d43eb070d4efff1bc278606a8c8b246a51036ecd54f468856cb770e7c357e0ea"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/venn.static.svg",
+      "sha256": "172cd72306bbde0e4792d8003ec3395b6494f96c9685b405734e5b5719fbb784"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/wardley.animated.svg",
+      "sha256": "6fd479d0b3bebb660b186e9420429e972a7277d014f3b7c4cbaa3f1625be3eaf"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/wardley.static.svg",
+      "sha256": "e2ff3365060e5cecf51dcd43bdfdf07592779c4149902f48a733582a66b5d60b"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/xy-chart.animated.svg",
+      "sha256": "1489b60b2d8783656741e82c24af9712f72fb0f37fa696151bab625c9ea2fe9f"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/xy-chart.static.svg",
+      "sha256": "3db7bbd364a3f058a12e0aa23bbf743aee2399331db922e2770528ba6f7e2a8b"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/zenuml.animated.svg",
+      "sha256": "02df294720a4991ce9b14f4ba2798cf62b3756fffe01bb534df7d0a51b8847d6"
+    },
+    {
+      "path": "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/zenuml.static.svg",
+      "sha256": "c96ca8e81db5b0905e38083834870916948f57a2e4688df8f3d9e68320dcb67a"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer-cs1/svg/activity.svg",
+      "sha256": "808173497747a36d907eb46e0afdf5964408d9bb71a5ef14ace68c5c14b4bb78"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer-cs1/svg/archimate.svg",
+      "sha256": "6e871ea03c8c628625d66ef861cf75d5114c3d4a215f68fc68efecadd57d7b73"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer-cs1/svg/chart.svg",
+      "sha256": "5d122a8ffd31d96c3bd19d795d47d6004d27ae05a504f34bc80c0dba5fe98bd4"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer-cs1/svg/chen.svg",
+      "sha256": "da04a0e17796228055f713457ae360cae5a107567b7373089c3d6326451bc808"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer-cs1/svg/class.svg",
+      "sha256": "fdc1f364682e8d57b81b1552f8be5164a295dfb94790fffcfccf19173486ab21"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer-cs1/svg/component.svg",
+      "sha256": "312291dd9acfbad5aeb04d212c83ff1bd5e149d7d779bc84ba52168511d53d9f"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer-cs1/svg/deployment.svg",
+      "sha256": "f9d8f8edc57e70c7b55bf30c488f09ab8952467c10a53796a57d7270820555fe"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer-cs1/svg/ebnf.svg",
+      "sha256": "89bafcd549cb6f359f505a3abfd584036cfef7c08454b03070ec63bcc47c2d82"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer-cs1/svg/files.svg",
+      "sha256": "7f8d3503d82ef4ba6b0ce5607f2a914e8d8da67d669fb0f61fd58f684150c20a"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer-cs1/svg/gantt.svg",
+      "sha256": "30c45bcded3c9a1a06d276f51f71cd285d0b8931e5e650352452871cd5c1bd31"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer-cs1/svg/ie.svg",
+      "sha256": "828cc80bd0ec696dfde1e52abff2dbdd463e5e11fc0ce9f7c4b4226854dda157"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer-cs1/svg/json.svg",
+      "sha256": "5fb40d9b77d8d5a6cbf7c0a97618d1aff34281f84ce660ede945efd550de2f62"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer-cs1/svg/latex.svg",
+      "sha256": "0d5bf9635fad7e1994f40a0249c8456d1270ee0b64c40f56f5319bd27c234fa8"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer-cs1/svg/math.svg",
+      "sha256": "dd19b38898f556055cee74b42c864db1f7f185f6ed507be5da530301d5781aa4"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer-cs1/svg/mindmap.svg",
+      "sha256": "8529e3a28e403ef110d1074e0d87441fc91294fcea8f654b411ecc9b758d63b3"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer-cs1/svg/nwdiag.svg",
+      "sha256": "58fb859377f5aa2793c5399796f55dbe76c6241357cf99f4ad975aa959da1f64"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer-cs1/svg/object.svg",
+      "sha256": "6a2fdb868f8447f9c6058829d23db9e02a6f1ffca74ccae33fda84b5f17c49a2"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer-cs1/svg/packetdiag.svg",
+      "sha256": "d3e98eb9178496bd8fee53bc72b984355b8388cc85588cbcd55df6c19633aa90"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer-cs1/svg/regex.svg",
+      "sha256": "17766156d1a2b7737c8c6a51ba4c7bba6f3a7be4124f84fe91dcba628b624176"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer-cs1/svg/salt.svg",
+      "sha256": "fe37ca3cf6b484817685c4178dd27d38d788db2d4bebaa803b630d6e0ccfc6ef"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer-cs1/svg/sdl.svg",
+      "sha256": "30318fe5855444115fb77427f642ea219a0587c9ba6a0a23e9455e8bfbcc812c"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer-cs1/svg/sequence.svg",
+      "sha256": "dc0aa4bd6f471ec5373268eed4a79af7a151c46609782c20755f2002864d13da"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer-cs1/svg/state.svg",
+      "sha256": "8cafb4a4b87817d41174962824c0af5e934089546f2133444abee4cfc7d80587"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer-cs1/svg/timing.svg",
+      "sha256": "deabd2487ac1c9d2cc3db258e922b8eac1212944013260664c0260a310775bd3"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer-cs1/svg/usecase.svg",
+      "sha256": "a1ebd5d2a0953b2deddd8ff26e1f708cc289d66ddbbe34abf6bb1160048160f4"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer-cs1/svg/wbs.svg",
+      "sha256": "efaaad0e83af3957fcaad854b531119aeada2efc8500b608f383390832e4b787"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer-cs1/svg/yaml.svg",
+      "sha256": "abc996c45a8b1c37896c8f90d4ae77545fb514086e221dd11bb82246ac717e99"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer/svg/activity.svg",
+      "sha256": "1261efd023bfedacecfaf8983b26c7f222a9a2042cfb605d8f83f5397238d7a2"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer/svg/archimate.svg",
+      "sha256": "96d4f62ff52e1aad5d4c4ed68eb28c2eabf0e9d6f2ae9fc33089b251bc1299ae"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer/svg/chart.svg",
+      "sha256": "df60c6ed7e7f8adf97ed9bf795e5b4426155d19a07298076a3c31c467149eb6b"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer/svg/chen.svg",
+      "sha256": "f83196bcc290087c5389ead5b1a32e1dafa60a0e5381fce86107e5bca3af1e3b"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer/svg/class.svg",
+      "sha256": "7ca2124cfd7058cd605ade989efe7acc3d834e8130425b652fb357d3060680eb"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer/svg/component.svg",
+      "sha256": "6b850858a701074893bc26ecdaecbc7579199c09ba9d28402d39bef3fd9febca"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer/svg/deployment.svg",
+      "sha256": "dc421426248df637a0239ef8553491a1c947b5016a70f3a61bf519818bd8e01f"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer/svg/ebnf.svg",
+      "sha256": "05988e7af466ec3a296d49d229381d3390e9dd3fe95a21161723951c62da29f9"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer/svg/files.svg",
+      "sha256": "1eab33af11e25f5680ff9b4265e390e309e25d41ab02dbe8b2ac172f8ea48596"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer/svg/gantt.svg",
+      "sha256": "e7acf3cb9f65668f1d6cb78a338d59a9c971fc8d0cd5c5eef4e48743570509bd"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer/svg/ie.svg",
+      "sha256": "5eced43fafad081d323ea9cc90394a7082da36552844a589dd80c26fd11d6485"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer/svg/json.svg",
+      "sha256": "462655d26a42bab5a8d004a589e637ff980a217e85a13d5c1eef0c2c744830d5"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer/svg/latex.svg",
+      "sha256": "0d5bf9635fad7e1994f40a0249c8456d1270ee0b64c40f56f5319bd27c234fa8"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer/svg/math.svg",
+      "sha256": "dd19b38898f556055cee74b42c864db1f7f185f6ed507be5da530301d5781aa4"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer/svg/mindmap.svg",
+      "sha256": "0f0c0780e0cc85d15cb0d5ef56ead9962296bcdb741ab1b416ec52f700ef84f1"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer/svg/nwdiag.svg",
+      "sha256": "14cb17a732db0bbd34d0587d67bef18200bbd33e519627d8b4ef8ca678d4960d"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer/svg/object.svg",
+      "sha256": "c94bc60a8a62aa27ffa12cb29a6c68eda6ef9ed99f681d9ddad37880267b69f4"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer/svg/packetdiag.svg",
+      "sha256": "a2dc16f0664152758ac5e0d0ab5cec265781945f641a0fa2f7e71e3ad7e03c89"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer/svg/regex.svg",
+      "sha256": "9e5eccc87fbb09cad1b332259e4f6fb03d893c5da8cd5717730bf7bc5562b895"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer/svg/salt.svg",
+      "sha256": "fe37ca3cf6b484817685c4178dd27d38d788db2d4bebaa803b630d6e0ccfc6ef"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer/svg/sdl.svg",
+      "sha256": "fa8dc6aeab12540b11ed707daeb46b3059e6177c206da5fc583a00f27478b169"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer/svg/sequence.svg",
+      "sha256": "2b8a0eeb69711efd1f76f6d5b6634183f64129abe236a4473a4d8ceea75208c6"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer/svg/state.svg",
+      "sha256": "3e4a8d6ae3f8919b03e36c0be9de7272a9af294d1d8934020e25d0190519db64"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer/svg/timing.svg",
+      "sha256": "9f8ea25673ce627e509e8f6081d94ccc3f5e5d68e77fcf01136aa4cf2e140ab3"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer/svg/usecase.svg",
+      "sha256": "aeca896ecc6fff2636f90303fe012f874911bce58bd959459bc03364a0c6171c"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer/svg/wbs.svg",
+      "sha256": "e7ee91439bb25addd1dabf15a7a9f7a23367008a7e4e9cf6f2e5d7bf4c673b2f"
+    },
+    {
+      "path": "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer/svg/yaml.svg",
+      "sha256": "f26e0a3a61c65c9e130daf22b58ca375c0b04579fdcb21c77b5c92f7cabff0ec"
+    }
+  ],
+  "publicationNormalization": {
+    "date": "2026-10-02",
+    "operation": "CRLF to LF only for audited published example SVG bytes; refresh current Mermaid pair hashes.",
+    "normalizedSvgCount": 130,
+    "normalizedSvgPaths": [
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/architecture.animated.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/architecture.static.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/block.animated.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/block.static.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/c4.animated.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/c4.static.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/class.animated.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/class.static.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/cynefin.animated.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/cynefin.static.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/er.animated.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/er.static.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/event-modeling.animated.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/event-modeling.static.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/flowchart.animated.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/flowchart.static.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/gantt.animated.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/gantt.static.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/gitgraph.animated.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/gitgraph.static.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/ishikawa.animated.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/ishikawa.static.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/kanban.animated.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/kanban.static.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/mindmap.animated.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/mindmap.static.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/packet.animated.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/packet.static.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/pie.animated.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/pie.static.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/quadrant.animated.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/quadrant.static.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/radar.animated.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/radar.static.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/railroad.animated.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/railroad.static.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/requirement.animated.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/requirement.static.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/sankey.animated.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/sankey.static.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/sequence.animated.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/sequence.static.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/state.animated.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/state.static.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/swimlane.animated.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/swimlane.static.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/timeline.animated.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/timeline.static.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/treemap.animated.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/treemap.static.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/treeview.animated.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/treeview.static.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/user-journey.animated.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/user-journey.static.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/venn.animated.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/venn.static.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/wardley.animated.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/wardley.static.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/xy-chart.animated.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/xy-chart.static.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/zenuml.animated.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset1/zenuml.static.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/architecture.animated.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/architecture.static.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/block.animated.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/block.static.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/c4.animated.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/c4.static.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/class.animated.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/class.static.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/cynefin.animated.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/cynefin.static.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/er.animated.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/er.static.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/event-modeling.animated.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/event-modeling.static.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/flowchart.animated.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/flowchart.static.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/gantt.animated.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/gantt.static.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/gitgraph.animated.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/gitgraph.static.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/ishikawa.animated.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/ishikawa.static.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/kanban.animated.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/kanban.static.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/mindmap.animated.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/mindmap.static.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/packet.animated.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/packet.static.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/pie.animated.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/pie.static.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/quadrant.animated.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/quadrant.static.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/radar.animated.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/radar.static.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/railroad.animated.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/railroad.static.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/requirement.animated.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/requirement.static.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/sankey.animated.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/sankey.static.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/sequence.animated.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/sequence.static.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/state.animated.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/state.static.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/swimlane.animated.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/swimlane.static.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/timeline.animated.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/timeline.static.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/treemap.animated.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/treemap.static.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/treeview.animated.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/treeview.static.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/user-journey.animated.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/user-journey.static.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/venn.animated.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/venn.static.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/wardley.animated.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/wardley.static.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/xy-chart.animated.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/xy-chart.static.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/zenuml.animated.svg",
+      "skills/mermaid/assets/examples/mermaid-max-complexity/svg/colorset2/zenuml.static.svg",
+      "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer-cs1/svg/archimate.svg",
+      "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer-cs1/svg/files.svg",
+      "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer-cs1/svg/salt.svg",
+      "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer/svg/archimate.svg",
+      "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer/svg/files.svg",
+      "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer/svg/salt.svg"
+    ],
+    "galleryHashPath": "skills/mermaid/assets/examples/mermaid-max-complexity/gallery.json",
+    "refreshedMermaidSvgHashCount": 124,
+    "historicalHashField": "prePublicationSvgHashes",
+    "currentHashField": "publishedSvgHashes",
+    "semanticChanges": false,
+    "runtimeSkillBytesChanged": false,
+    "reason": "Match Git eol=lf publication without stale byte hashes; skill runtime payloads exclude assets/examples."
+  }
+}

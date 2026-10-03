@@ -41,7 +41,7 @@ An external `<img src="icon.adaptive.svg">`, `<image href="...">`, CSS backgroun
 uv run --script <skill-root>/scripts/export_logo_asset.py --id devicon-python --variant adaptive --color "#007298" --output deliverable/python-blue.svg
 ```
 
-This export is labeled `data-logo-variant="custom-color"`, `data-color-mode="fixed-custom-color"`, and `data-color-value="#007298"`; its sidecar retains `requestedVariant: adaptive`. It never modifies the bundled adaptive file. Only literal `#RGB` and `#RRGGBB` values are accepted. There is no forced recolor option for unavailable variants.
+This export is labeled `data-logo-variant="custom-color"`, `data-color-mode="fixed-custom-color"`, and `data-color-value="#007298"`; its sidecar retains `requestedVariant: adaptive`. It never modifies the bundled adaptive file. Only literal `#RGB` and `#RRGGBB` values from the bundled [colorset contract](../assets/palettes/colorsets.json) are accepted. Prefer colorset1 red `#9e1b32` or ink `#333e48` for ordinary diagrams and colorset2 blue `#007298` for an extended semantic category. There is no forced recolor option for unavailable variants.
 
 ## Availability and source constraints
 

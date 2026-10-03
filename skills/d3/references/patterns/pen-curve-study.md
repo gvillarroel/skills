@@ -1,5 +1,10 @@
 # Pen Curve Study
 
+## Contents
+
+- [Reuse Contract](#reuse-contract)
+- [Source Excerpt](#source-excerpt)
+
 - **Pattern ID:** `d3-pen-curve-study`
 - **Gallery source ID:** `pen-curve-study`
 - **Family:** Drawing

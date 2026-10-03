@@ -20,7 +20,7 @@ from space_family_branches import fit_baselines, space_branches
 def family():
     return dict(id='family-baselines',title='A SYNTHETIC FAMILY',design='editorial',
         mode='genealogy',layout='cohorts',source_note='Synthetic test records.',
-        groups=[dict(id='a',label='Alder',color='#F56550'),dict(id='b',label='Birch',color='#77BDDD')],
+        groups=[dict(id='a',label='Alder',color='#ff9633'),dict(id='b',label='Birch',color='#b5b5b5')],
         nodes=[dict(id='p1',label='Anna',detail='1800–1874',birth=1800,death=1874,group='a',row=0),
                dict(id='p2',label='Ben',detail='1802–1877',birth=1802,death=1877,group='b',row=0),
                dict(id='c1',label='Clara',detail='1822–1890',birth=1822,death=1890,group='a',row=1),

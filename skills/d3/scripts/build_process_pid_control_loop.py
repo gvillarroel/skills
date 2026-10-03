@@ -11,6 +11,7 @@ from __future__ import annotations
 import argparse
 import html
 from pathlib import Path
+from colorset_adapter import colorset_output
 
 
 WIDTH = 760
@@ -307,6 +308,7 @@ def svg_markup() -> str:
   </svg>"""
 
 
+@colorset_output
 def html_document() -> str:
     return f"""<!doctype html>
 <html lang="en">
@@ -355,9 +357,10 @@ def html_document() -> str:
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("output", type=Path, help="Output HTML path.")
+    parser.add_argument("--colorset", choices=("colorset1", "colorset2"), default="colorset1")
     args = parser.parse_args()
     args.output.parent.mkdir(parents=True, exist_ok=True)
-    args.output.write_text(html_document(), encoding="utf-8")
+    args.output.write_text(html_document(colorset=args.colorset), encoding="utf-8")
     print(f"Wrote Process P&ID Control Loop HTML to {args.output}")
 
 

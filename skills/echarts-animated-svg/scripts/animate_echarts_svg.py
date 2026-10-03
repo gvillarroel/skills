@@ -198,6 +198,8 @@ def animate_svg(svg_input: Path, output: Path, chart_type: str, duration_ms: int
         raise SystemExit(f"Failed to parse SVG: {error}") from error
 
     root = tree.getroot()
+    from palette_paints import require_svg_palette
+    require_svg_palette(root)
     if local_name(root.tag) != "svg":
         raise SystemExit("Input file root element is not <svg>.")
 

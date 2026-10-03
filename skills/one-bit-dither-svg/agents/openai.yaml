@@ -1,0 +1,4 @@
+interface:
+  display_name: "One-Bit Dither Image and GIF"
+  short_description: "Dither static images and SVG/raster animations"
+  default_prompt: "Use $one-bit-dither-svg to choose an image-appropriate quality profile, transform my local static image into a dithered SVG or my declarative animated SVG/raster into a palette-optimized GIF in the requested mode, preview it, and validate the result."

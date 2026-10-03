@@ -9,7 +9,6 @@
 from __future__ import annotations
 
 import argparse
-import colorsys
 import copy
 from decimal import Decimal, ROUND_HALF_UP, localcontext
 import html
@@ -25,61 +24,34 @@ from typing import Any
 sys.dont_write_bytecode = True
 
 import navigation_contract as navigation  # noqa: E402
+from theme_contract import PALETTE, color_for_index, resolve_theme, derived_theme_colors  # noqa: E402
+from palette_contract import require_color
 
 ID_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 ROLE_SELECTOR_RE = re.compile(r"^\[data-role=(?:'([^']+)'|\"([^\"]+)\")\]$")
 OPS = {"add", "subtract", "multiply", "divide", "min", "max", "clamp", "round"}
 CHANNELS = {"text", "x", "y", "width", "height", "r", "path", "transform", "opacity", "class", "aria-value"}
-PALETTE = [
-    "#1d4ed8",
-    "#0f766e",
-    "#6d28d9",
-    "#b45309",
-    "#15803d",
-    "#be123c",
-    "#4338ca",
-    "#0e7490",
-    "#a21caf",
-    "#92400e",
-    "#3f6212",
-    "#475569",
-    "#9f1239",
-    "#5b21b6",
-    "#166534",
-    "#155e75",
-]
+
+def theme_token_map(plan: dict[str, Any]) -> dict[str, str]:
+    """Resolve each value to the canonical identity token already owned by the plan."""
+    mapping = {item["id"]: item["id"] for item in [*plan["concepts"], *plan.get("derived", [])]}
+    identity = plan.get("identity", {})
+    for alias in plan.get("identityAliases", []):
+        definition = identity.get(alias.get("identity"), {})
+        token = definition.get("colorToken")
+        if token in mapping:
+            for value_id in alias.get("values", []):
+                if value_id in mapping:
+                    mapping[value_id] = token
+    return mapping
 
 
-def color_for_index(index: int) -> str:
-    """Return a deterministic, dark, non-wrapping canonical color."""
+def theme_for_plan(plan: dict[str, Any]) -> dict[str, Any]:
+    """Keep legacy plans usable; newly compiled briefs explicitly select editorial."""
+    mapping = theme_token_map(plan)
+    return resolve_theme(plan.get("theme"), list(mapping), mapping, default_preset="classic")
 
-    if index < 0:
-        raise ValueError("color index must be nonnegative")
-    if index < len(PALETTE):
-        return PALETTE[index]
-    generated_index = index - len(PALETTE) + 1
-    hue = (generated_index * 0.618033988749895) % 1.0
-    saturation = 0.58 + 0.04 * (generated_index % 3)
-    lightness = 0.31
 
-    def channel_luminance(channel: float) -> float:
-        return channel / 12.92 if channel <= 0.04045 else ((channel + 0.055) / 1.055) ** 2.4
-
-    while True:
-        red, green, blue = colorsys.hls_to_rgb(hue, lightness, saturation)
-        luminance = (
-            0.2126 * channel_luminance(red)
-            + 0.7152 * channel_luminance(green)
-            + 0.0722 * channel_luminance(blue)
-        )
-        if 1.05 / (luminance + 0.05) >= 4.5 or lightness <= 0.16:
-            break
-        lightness -= 0.01
-    return "#{:02x}{:02x}{:02x}".format(
-        round(red * 255),
-        round(green * 255),
-        round(blue * 255),
-    )
 LOCAL_MARK_BASE_Y = 24.0
 QUESTION_BASE_Y = 50.0
 QUESTION_LINE_HEIGHT = 14.0
@@ -515,10 +487,22 @@ def validate_plan(plan: dict[str, Any]) -> None:
             else "layout.safeArea must stay inside viewBox"
         )
     for module in modules:
+        if "title" in module and (
+            not isinstance(module["title"], str) or not module["title"].strip()
+        ):
+            raise ValueError(f"module {module['id']!r} title must be a non-empty string")
         mx, my, mw, mh = (float(item) for item in module["region"])
         if mx < sx or my < sy or mx + mw > sx + sw or my + mh > sy + sh:
             raise ValueError(f"module {module['id']!r} region must stay inside layout.safeArea")
 
+    resolved_theme = theme_for_plan(plan)
+    active_colorset = "colorset1" if resolved_theme["preset"] in {"editorial", "colorset1"} else "colorset2"
+    for module in modules:
+        if "districtAccent" in module:
+            require_color(module["districtAccent"], active_colorset)
+    for district in (plan.get("world") or {}).get("districts", []):
+        if "accent" in district:
+            require_color(district["accent"], active_colorset)
     focus_groups = plan.get("focusGroups", [])
     if not isinstance(focus_groups, list):
         raise ValueError("focusGroups must be an array")
@@ -990,7 +974,7 @@ def module_markup(
         mark_markup(module, binding, index, values, locale, LOCAL_MARK_BASE_Y)
         for index, binding in enumerate(module["bindings"])
     ]
-    kicker_label = module["assetType"].replace("-", " ").upper()
+    kicker_label = module.get("title", module["assetType"].replace("-", " ")).upper()
     kicker_display = kicker_label
     focus = " ".join(module.get("focusGroups", []))
     focus_ids = list(module.get("focusGroups", []))
@@ -1049,7 +1033,7 @@ def module_markup(
     focus_control = "".join(focus_controls)
     module_id = esc(module["id"])
     district_id = esc(str(module.get("districtId", "")))
-    district_accent = esc(str(module.get("districtAccent", "#2563eb")))
+    district_accent = esc(str(module.get("districtAccent", "var(--accent)")))
     navigation_anchor = (
         f' data-nav-anchor-id="module-{module_id}"' if module.get("districtId") else ""
     )
@@ -1094,8 +1078,6 @@ def focus_region_markup(plan: dict[str, Any]) -> tuple[str, str]:
 
     modules = {item["id"]: item for item in plan["modules"]}
     all_modules = list(plan["modules"])
-    fills = ("#dbeafe", "#dcfce7", "#fef3c7", "#f3e8ff")
-    strokes = ("#93c5fd", "#86efac", "#fcd34d", "#d8b4fe")
     backgrounds: list[str] = []
     labels: list[str] = []
     seen_geometry: set[tuple[float, float, float, float]] = set()
@@ -1157,8 +1139,8 @@ def focus_region_markup(plan: dict[str, Any]) -> tuple[str, str]:
             f'<rect class="focus-region" data-focus-region="{esc(region_id)}" '
             f'x="{fmt(left - padding)}" y="{fmt(top - padding)}" '
             f'width="{fmt(right - left + 2 * padding)}" '
-            f'height="{fmt(bottom - top + 2 * padding)}" fill="{fills[index % len(fills)]}" '
-            f'fill-opacity="0.34" stroke="{strokes[index % len(strokes)]}" stroke-width="1" rx="12"/>'
+            f'height="{fmt(bottom - top + 2 * padding)}" fill="var(--surface-subtle)" '
+            f'fill-opacity="0.6" stroke="none" rx="12"/>'
         )
         labels.append(
             f'<g class="focus-region-label-group" data-focus-label-for="{esc(region_id)}">'
@@ -1445,10 +1427,10 @@ def relationship_markup(plan: dict[str, Any]) -> str:
             f'aria-label="{esc(relationship["label"])}">'
             f'<title>{esc(relationship["label"])}</title>'
             f'<path id="relationship-{relationship_id}" class="relationship-path" d="{path}" '
-            f'fill="none" stroke="#526176" stroke-width="2"{dash} '
+            f'fill="none" stroke="var(--ink)" stroke-width="2"{dash} '
             f'marker-end="url(#{esc(marker_id)})"/>'
             f'<circle class="relationship-pulse" data-relationship-pulse="true" r="5" '
-            f'fill="#2563eb" opacity="0"/></g>'
+            f'fill="var(--accent)" opacity="0"/></g>'
         )
     columns = key_columns
     rows = key_rows
@@ -1479,7 +1461,7 @@ def relationship_markup(plan: dict[str, Any]) -> str:
             f'data-relationship-key-label="{esc(relationship["label"])}">'
             f'<title>{esc(kind)} relationship: {esc(relationship["label"])}</title>'
             f'<line x1="{fmt(x)}" y1="{fmt(y - 3)}" x2="{fmt(x + 20)}" y2="{fmt(y - 3)}" '
-            f'stroke="{"#8a4b08" if kind == "feedback" else "#526176"}" stroke-width="2"{dash}/>'
+            f'stroke="{"var(--warning)" if kind == "feedback" else "var(--ink)"}" stroke-width="2"{dash}/>'
             f'<text class="relationship-key-label" x="{fmt(x + 26)}" y="{fmt(y)}">'
             f'{esc(kind)} · {esc(label)}</text></g>'
         )
@@ -1501,7 +1483,7 @@ def world_markup(plan: dict[str, Any]) -> str:
         f'data-world-armature="{esc(world["armature"])}" aria-label="Navigable diagram world">',
         '<defs>',
         f'<pattern id="{esc(plan["compositionId"])}--world-grid" width="160" height="160" '
-        'patternUnits="userSpaceOnUse"><circle cx="8" cy="8" r="2.4" fill="#94a3b8" '
+        'patternUnits="userSpaceOnUse"><circle cx="8" cy="8" r="2.4" fill="var(--muted)" '
         'fill-opacity="0.25"/></pattern>',
         f'<marker id="{esc(marker_id)}" viewBox="0 0 10 10" refX="8.5" refY="5" '
         'markerWidth="6" markerHeight="6" orient="auto-start-reverse">'
@@ -3069,110 +3051,115 @@ def build_svg(plan: dict[str, Any]) -> str:
     locale = str(plan.get("locale", "en-US"))
     metadata = json.dumps(plan, ensure_ascii=False, separators=(",", ":")).replace("]]>", "]]\\u003e")
     canonical_values = [*plan["concepts"], *plan.get("derived", [])]
+    theme = theme_for_plan(plan)
+    token_map = theme_token_map(plan)
+    role_tokens = "\n".join(f"      --{role}: {color};" for role, color in theme["colors"].items())
+    paired_tokens = "\n".join(f"      --{role}: {color};" for role, color in derived_theme_colors(theme).items())
     concept_tokens = "\n".join(
-        f"      --concept-{item['id']}: {color_for_index(index)};"
-        for index, item in enumerate(canonical_values)
+        f"      --concept-{item['id']}: {theme['conceptColors'][token_map[item['id']]]};"
+        for item in canonical_values
     )
     style = f"""
     :root {{
-      --canvas: #f5f7fb; --surface: #ffffff; --ink: #172033; --muted: #637087;
-      --line: #d6dce8; --accent: #2563eb; --focus: #f59e0b;
+{role_tokens}
+{paired_tokens}
 {concept_tokens}
+      fill: var(--ink);
     }}
     * {{ box-sizing: border-box; }}
-    text {{ font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink); }}
+    text {{ font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; }}
     .canvas {{ fill: var(--canvas); }}
     .title {{ font-size: 28px; font-weight: 760; letter-spacing: -0.02em; }}
     .subtitle {{ font-size: 13px; fill: var(--muted); }}
     .provenance {{ font-size: 10.5px; fill: var(--muted); letter-spacing: 0.02em; }}
     .focus-region-label-plaque {{ fill: var(--canvas); fill-opacity: 1; }}
-    .focus-region-label {{ font-size: 10px; font-weight: 760; letter-spacing: 0.1em; fill: #475569; }}
-    .module-frame {{ fill: var(--surface); fill-opacity: 0.5; stroke: transparent; stroke-width: 1.5; rx: 8; }}
-    .module-kicker {{ font-size: 10px; font-weight: 760; letter-spacing: 0.12em; fill: var(--accent); }}
-    .module-question {{ font-size: 11px; fill: var(--muted); }}
+    .focus-region-label {{ font-size: 10px; font-weight: 760; letter-spacing: 0.1em; fill: var(--muted); }}
+    .module-frame {{ fill: var(--surface); fill-opacity: 1; stroke: var(--line); stroke-width: 1; rx: 12; }}
+    .module-kicker {{ font-size: 10px; font-weight: 760; letter-spacing: 0.10em; fill: var(--muted); }}
+    .module-question {{ font-size: 12px; fill: var(--muted); }}
     .module-claim {{ font-size: 14px; font-weight: 620; }}
-    .module-content text {{ font-size: 11px; }}
+    .module-content text:not([font-size]) {{ font-size: 12px; }}
     .module-placeholder {{ opacity: 0.78; }}
-    .placeholder-mark {{ fill: color-mix(in srgb, var(--accent) 24%, white); stroke: var(--accent); stroke-width: 1.5; }}
+    .placeholder-mark {{ fill: var(--accent-soft); stroke: var(--accent); stroke-width: 1.5; }}
     .placeholder-value {{ font-size: 12px; fill: var(--muted); }}
     .sync-module .module-frame, .sync-module .module-content :is(path, rect, line, circle, ellipse, polygon, polyline) {{ transition: filter 180ms ease; }}
     .module-focus-control {{ cursor: pointer; outline: none; }}
-    .module-focus-control rect {{ fill: #eef3fb; stroke: #8ba0bf; stroke-width: 1.25; }}
-    .module-focus-control text {{ font-size: 9.5px; font-weight: 720; fill: #334155; pointer-events: none; }}
-    .module-focus-control:focus rect, .module-focus-control[aria-pressed="true"] rect {{ fill: #dbeafe; stroke: var(--accent); stroke-width: 2.5; }}
-    [data-focus-id]:not([data-focus-id=""]) .sync-module[data-focused="false"] .module-frame,
+    .module-focus-control rect {{ fill: var(--accent-soft); stroke: var(--muted); stroke-width: 1.25; }}
+    .module-focus-control text {{ font-size: 10px; font-weight: 720; fill: var(--ink); pointer-events: none; }}
+    .module-focus-control:focus rect, .module-focus-control[aria-pressed="true"] rect {{ fill: var(--accent-soft); stroke: var(--accent); stroke-width: 2.5; }}
     [data-focus-id]:not([data-focus-id=""]) .sync-module[data-focused="false"] .module-content :is(path, rect, line, circle, ellipse, polygon, polyline) {{ filter: opacity(48%) saturate(58%); }}
+    .sync-module .module-content .text-surface {{ filter: none !important; }}
     .control-button {{ cursor: pointer; outline: none; }}
     .control-button rect {{ fill: var(--surface); stroke: var(--line); rx: 8; }}
-    .control-button text {{ font-size: 11px; font-weight: 650; pointer-events: none; }}
+    .control-button text {{ font-size: 12px; font-weight: 650; pointer-events: none; }}
     .control-button[aria-pressed="true"] rect, .control-button:focus rect {{ stroke: var(--accent); stroke-width: 2.5; }}
     .control-button[aria-disabled="true"] {{ cursor: not-allowed; }}
-    .control-button[aria-disabled="true"] rect {{ fill: #eef1f6; stroke: #c9d0dc; }}
+    .control-button[aria-disabled="true"] rect {{ fill: var(--surface-subtle); stroke: var(--line); }}
     .interactive-control {{ display: none; }}
     .svg-sync-ready .interactive-control {{ display: inline; }}
-    .timeline-track {{ fill: #dbe3f0; }}
+    .timeline-track {{ fill: var(--line); }}
     .timeline-progress {{ fill: var(--accent); }}
-    .timeline-label {{ font-size: 10px; font-weight: 650; fill: #475569; }}
+    .timeline-label {{ font-size: 10px; font-weight: 650; fill: var(--muted); }}
     .timeline-scrubber:focus .timeline-track {{ stroke: var(--accent); stroke-width: 2; }}
     .composition-relationships {{ pointer-events: none; }}
     .relationship-path {{ vector-effect: non-scaling-stroke; opacity: 0.86; transition: opacity 180ms ease, stroke 180ms ease, stroke-width 180ms ease; }}
-    .relationship-key-plaque {{ fill: var(--canvas); fill-opacity: 0.96; }}
-    .relationship-key-label {{ font-size: 9.25px; font-weight: 620; fill: #475569; }}
-    [data-relationship-id][data-kind="feedback"] .relationship-path {{ stroke: #8a4b08; }}
+    .relationship-key-plaque {{ fill: var(--canvas); fill-opacity: 1; }}
+    .relationship-key-label {{ font-size: 9.25px; font-weight: 620; fill: var(--muted); }}
+    [data-relationship-id][data-kind="feedback"] .relationship-path {{ stroke: var(--warning); }}
     [data-relationship-id][data-active="true"] .relationship-path {{ stroke: var(--accent); stroke-width: 3.5; opacity: 0.96; }}
-    [data-relationship-id][data-kind="feedback"][data-active="true"] .relationship-path {{ stroke: #b45309; stroke-width: 4; }}
-    .relationship-pulse {{ pointer-events: none; filter: drop-shadow(0 0 4px color-mix(in srgb, var(--accent) 70%, transparent)); }}
+    [data-relationship-id][data-kind="feedback"][data-active="true"] .relationship-path {{ stroke: var(--warning); stroke-width: 4; }}
+    .relationship-pulse {{ pointer-events: none; filter: drop-shadow(0 0 4px var(--accent)); }}
     #composition-world-viewport {{ touch-action: none; cursor: grab; }}
     #composition-world-viewport:active {{ cursor: grabbing; }}
-    .world-field {{ fill: #f2f3fa; }}
+    .world-field {{ fill: var(--canvas); }}
     .world-district-links {{ pointer-events: none; }}
-    .world-link-halo {{ fill: none; stroke: #f8fafc; stroke-width: 16; vector-effect: non-scaling-stroke; opacity: 0.94; }}
-    .world-link-path {{ fill: none; stroke: #53627a; stroke-width: 3; vector-effect: non-scaling-stroke; opacity: 0.52; }}
+    .world-link-halo {{ fill: none; stroke: var(--surface-subtle); stroke-width: 16; vector-effect: non-scaling-stroke; opacity: 0.94; }}
+    .world-link-path {{ fill: none; stroke: var(--muted); stroke-width: 3; vector-effect: non-scaling-stroke; opacity: 0.52; }}
     .world-link-primary .world-link-path {{ stroke-width: 5.5; opacity: 0.92; }}
     .world-link-primary .world-link-halo {{ stroke-width: 15; opacity: 0.98; }}
     .world-link-secondary .world-link-halo {{ stroke-width: 11; opacity: 0.72; }}
-    .world-link[data-kind="feedback"] .world-link-path {{ stroke: #b45309; }}
+    .world-link[data-kind="feedback"] .world-link-path {{ stroke: var(--warning); }}
     .world-link-chevrons {{ pointer-events: none; }}
-    .world-link-chevron {{ fill: none; stroke: #53627a; stroke-width: 8; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; }}
+    .world-link-chevron {{ fill: none; stroke: var(--muted); stroke-width: 8; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; }}
     .world-link[data-route-traveling="true"] .world-link-path {{ stroke: var(--accent); stroke-width: 9; opacity: 1; }}
     .world-link[data-route-traveling="true"] .world-link-halo {{ stroke-width: 22; opacity: 1; }}
     .world-link[data-route-traveling="true"] .world-link-chevron {{ stroke: var(--accent); stroke-width: 11; }}
-    .world-link-label rect {{ fill: #f8fafc; fill-opacity: 0.96; stroke: #cbd5e1; stroke-width: 1.5; vector-effect: non-scaling-stroke; }}
-    .world-link-label text {{ font-size: 72px; font-weight: 760; fill: #334155; }}
+    .world-link-label rect {{ fill: var(--surface-subtle); fill-opacity: 1; stroke: var(--line); stroke-width: 1.5; vector-effect: non-scaling-stroke; }}
+    .world-link-label text {{ font-size: 72px; font-weight: 760; fill: var(--ink); }}
     .world-local-branches {{ pointer-events: none; }}
     .world-local-branch {{ fill: none; stroke: var(--district-accent); stroke-width: 3.5; stroke-opacity: 0.68; vector-effect: non-scaling-stroke; }}
     .world-local-root-branch {{ stroke-width: 5.5; stroke-opacity: 0.9; }}
     .world-local-orbit-ring {{ stroke-dasharray: 18 14; stroke-width: 5; }}
     .world-district[data-local-armature="lanes"] .world-local-branch {{ stroke-linejoin: round; stroke-width: 5; }}
     .world-district[data-local-armature="branch"] .world-local-root-branch {{ stroke-width: 7; }}
-    .world-module-node-halo {{ fill: color-mix(in srgb, var(--district-accent) 14%, transparent); stroke: var(--district-accent); stroke-width: 4; stroke-opacity: 0.64; vector-effect: non-scaling-stroke; }}
-    .world-module-node-core {{ fill: #ffffff; stroke: var(--district-accent); stroke-width: 4; vector-effect: non-scaling-stroke; }}
+    .world-module-node-halo {{ fill: var(--district-accent); fill-opacity: 0.14; stroke: var(--district-accent); stroke-width: 4; stroke-opacity: 0.64; vector-effect: non-scaling-stroke; }}
+    .world-module-node-core {{ fill: var(--surface); stroke: var(--district-accent); stroke-width: 4; vector-effect: non-scaling-stroke; }}
     .world-module-node[data-local-root="true"] .world-module-node-halo {{ stroke-width: 6; }}
-    .world-module-node-index {{ font-size: 40px; font-weight: 840; fill: var(--district-accent); }}
-    .world-module-node-label-plaque {{ fill: #ffffff; fill-opacity: 0.94; stroke: color-mix(in srgb, var(--district-accent) 42%, #cbd5e1); stroke-width: 2; vector-effect: non-scaling-stroke; }}
-    .world-module-node-label {{ font-size: 42px; font-weight: 740; fill: #273449; }}
+    .world-module-node-index {{ font-size: 40px; font-weight: 840; fill: var(--ink); }}
+    .world-module-node-label-plaque {{ fill: var(--surface); fill-opacity: 1; stroke: var(--district-accent); stroke-width: 2; vector-effect: non-scaling-stroke; }}
+    .world-module-node-label {{ font-size: 42px; font-weight: 740; fill: var(--ink); }}
     .district-singleton-preview {{ opacity: 0; pointer-events: none; }}
     .district-singleton-preview-branch {{ stroke: var(--district-accent); stroke-width: 3; stroke-opacity: 0.42; vector-effect: non-scaling-stroke; }}
-    .district-singleton-preview-node {{ fill: #ffffff; stroke: var(--district-accent); stroke-width: 3; vector-effect: non-scaling-stroke; }}
-    .district-singleton-preview-label {{ font-size: 24px; font-weight: 680; fill: #475569; paint-order: stroke; stroke: #ffffff; stroke-width: 6; stroke-linejoin: round; }}
+    .district-singleton-preview-node {{ fill: var(--surface); stroke: var(--district-accent); stroke-width: 3; vector-effect: non-scaling-stroke; }}
+    .district-singleton-preview-label {{ font-size: 24px; font-weight: 680; fill: var(--muted); }}
     .world-module-nav-control {{ outline: none; cursor: pointer; }}
     .world-module-nav-control circle {{ fill: transparent; stroke: transparent; stroke-width: 5; vector-effect: non-scaling-stroke; }}
     .world-module-nav-control:focus circle {{ stroke: var(--district-accent); }}
-    .district-field {{ fill: color-mix(in srgb, var(--district-accent) 8%, white); stroke: color-mix(in srgb, var(--district-accent) 72%, #334155); stroke-width: 3; vector-effect: non-scaling-stroke; }}
-    .district-hub-halo {{ fill: color-mix(in srgb, var(--district-accent) 12%, transparent); stroke: var(--district-accent); stroke-width: 4; vector-effect: non-scaling-stroke; pointer-events: none; }}
-    .district-hub {{ fill: #ffffff; stroke: var(--district-accent); stroke-width: 5; vector-effect: non-scaling-stroke; pointer-events: none; }}
+    .district-field {{ fill: var(--surface-subtle); stroke: var(--district-accent); stroke-width: 3; vector-effect: non-scaling-stroke; }}
+    .district-hub-halo {{ fill: var(--district-accent); fill-opacity: 0.12; stroke: var(--district-accent); stroke-width: 4; vector-effect: non-scaling-stroke; pointer-events: none; }}
+    .district-hub {{ fill: var(--surface); stroke: var(--district-accent); stroke-width: 5; vector-effect: non-scaling-stroke; pointer-events: none; }}
     .world-district[data-world-root="true"] .district-hub-halo {{ stroke-width: 9; }}
     .world-district[data-world-root="true"] .district-hub {{ stroke-width: 8; }}
-    .district-index {{ font-size: 42px; font-weight: 820; fill: var(--district-accent); }}
-    .district-title {{ font-size: 96px; font-weight: 820; letter-spacing: -0.035em; fill: color-mix(in srgb, var(--district-accent) 78%, #172033); }}
-    .district-title-world-plaque {{ opacity: 0; fill: #ffffff; fill-opacity: 0.94; stroke: color-mix(in srgb, var(--district-accent) 58%, #cbd5e1); stroke-width: 3; vector-effect: non-scaling-stroke; }}
-    .district-title-world {{ opacity: 0; font-size: 118px; paint-order: stroke; stroke: #ffffff; stroke-width: 10; stroke-linejoin: round; }}
-    .district-summary {{ font-size: 34px; font-weight: 580; fill: #475569; }}
+    .district-index {{ font-size: 42px; font-weight: 820; fill: var(--ink); }}
+    .district-title {{ font-size: 96px; font-weight: 820; letter-spacing: -0.035em; fill: var(--ink); }}
+    .district-title-world-plaque {{ opacity: 0; fill: var(--surface); fill-opacity: 1; stroke: var(--district-accent); stroke-width: 3; vector-effect: non-scaling-stroke; }}
+    .district-title-world {{ opacity: 0; font-size: 118px; }}
+    .district-summary {{ font-size: 34px; font-weight: 580; fill: var(--muted); }}
     .district-nav-control {{ outline: none; cursor: pointer; }}
     .district-nav-control circle {{ fill: transparent; stroke: transparent; stroke-width: 7; vector-effect: non-scaling-stroke; }}
     .district-nav-control:focus circle {{ stroke: var(--district-accent); }}
-    [data-world-mode="true"] .sync-module .module-frame {{ fill-opacity: 0.86; stroke: var(--district-accent); stroke-width: 2; vector-effect: non-scaling-stroke; rx: 24; }}
-    [data-world-mode="true"] .sync-module {{ filter: drop-shadow(0 10px 18px rgb(15 23 42 / 0.12)); }}
+    [data-world-mode="true"] .sync-module .module-frame {{ fill-opacity: 1; stroke: var(--district-accent); stroke-width: 2; vector-effect: non-scaling-stroke; rx: 24; }}
+    [data-world-mode="true"] .sync-module {{ filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.12)); }}
     .svg-sync-ready[data-world-mode="true"][data-camera-tier="world"] .district-field {{ opacity: 0; }}
     .svg-sync-ready[data-world-mode="true"][data-camera-tier="world"] :is(.district-title-detail, .district-summary, .world-module-node-label, .world-module-node-label-plaque, .district-singleton-preview) {{ opacity: 0; pointer-events: none; }}
     .svg-sync-ready[data-world-mode="true"][data-camera-tier="world"] :is(.district-title-world, .district-title-world-plaque) {{ opacity: 1; }}
@@ -3188,29 +3175,31 @@ def build_svg(plan: dict[str, Any]) -> str:
     .svg-sync-ready[data-world-mode="true"][data-camera-tier="district"] .world-district[data-camera-active="true"] .district-singleton-preview {{ opacity: 1; }}
     .svg-sync-ready[data-world-mode="true"][data-camera-tier="district"] :is(.district-hub, .district-hub-halo, .district-index, .district-nav-control) {{ opacity: 0; pointer-events: none; }}
     .svg-sync-ready[data-world-mode="true"][data-camera-tier="district"] .world-district[data-camera-active="false"] {{ opacity: 0.025; pointer-events: none; }}
+    .svg-sync-ready[data-world-mode="true"][data-camera-tier="district"] .world-district[data-camera-active="false"] text {{ visibility: hidden; }}
     .svg-sync-ready[data-world-mode="true"][data-camera-tier="district"] .sync-module > .module-frame {{ fill-opacity: 0; stroke-opacity: 0; pointer-events: none; }}
     .svg-sync-ready[data-world-mode="true"][data-camera-tier="district"] .sync-module > :is(.module-kicker, .module-question, .module-claim, .module-content, .module-focus-control) {{ opacity: 0; pointer-events: none; }}
     .svg-sync-ready[data-world-mode="true"][data-camera-tier="module"] :is(.world-link, .world-local-branches, .world-local-nodes, .district-summary, .district-title, .district-hub, .district-hub-halo, .district-field, .district-nav-control) {{ opacity: 0; pointer-events: none; }}
     .svg-sync-ready[data-world-mode="true"][data-camera-tier="module"] .sync-module[data-camera-active="false"] > :is(.module-frame, .module-kicker, .module-question, .module-claim, .module-content, .module-focus-control) {{ opacity: 0; pointer-events: none; }}
     .svg-sync-ready[data-world-mode="true"][data-camera-tier="module"] .sync-module[data-camera-active="true"] > :is(.module-frame, .module-kicker, .module-question, .module-claim, .module-content, .module-focus-control) {{ opacity: 1; }}
-    .svg-sync-ready[data-world-mode="true"][data-camera-tier="module"] .sync-module[data-camera-active="true"] {{ filter: drop-shadow(0 18px 32px rgb(15 23 42 / 0.18)); }}
+    .svg-sync-ready[data-world-mode="true"][data-camera-tier="module"] .sync-module[data-camera-active="true"] {{ filter: drop-shadow(0 18px 32px rgba(0, 0, 0, 0.18)); }}
     .svg-sync-ready[data-world-mode="true"]:is([data-camera-tier="world"], [data-camera-tier="district"]) .world-link[data-route-traveling="true"] {{ opacity: 1; }}
     .svg-sync-ready[data-world-mode="true"]:is([data-camera-tier="world"], [data-camera-tier="district"]) .world-link[data-route-traveling="true"] .world-link-label {{ opacity: 1; }}
-    .header-plaque {{ fill: #f8fafc; fill-opacity: 0.94; stroke: #d6dce8; stroke-width: 1; }}
-    .navigation-hud-panel {{ fill: #111827; fill-opacity: 0.94; stroke: #334155; stroke-width: 1.5; }}
-    .navigation-eyebrow {{ font-size: 11px; font-weight: 780; letter-spacing: 0.14em; fill: #93c5fd; }}
-    .navigation-current-label {{ font-size: 14.5px; font-weight: 760; fill: #f8fafc; }}
-    .navigation-current-tier {{ font-size: 11px; font-weight: 640; letter-spacing: 0.08em; fill: #94a3b8; }}
-    .navigation-handoff {{ font-size: 11.5px; font-weight: 650; fill: #cbd5e1; }}
-    .navigation-help {{ font-size: 9.5px; font-weight: 650; letter-spacing: 0.04em; fill: #94a3b8; }}
+    .header-plaque {{ fill: var(--surface-subtle); fill-opacity: 1; stroke: var(--line); stroke-width: 1; }}
+    .navigation-hud-panel {{ fill: var(--ink); fill-opacity: 1; stroke: var(--ink); stroke-width: 1.5; }}
+    .navigation-eyebrow {{ font-size: 11px; font-weight: 780; letter-spacing: 0.14em; fill: var(--on-ink); }}
+    .navigation-current-label {{ font-size: 14.5px; font-weight: 760; fill: var(--on-ink); }}
+    .navigation-current-tier {{ font-size: 11px; font-weight: 640; letter-spacing: 0.08em; fill: var(--on-ink-muted); }}
+    .navigation-handoff {{ font-size: 11.5px; font-weight: 650; fill: var(--on-ink-muted); }}
+    .navigation-help {{ font-size: 9.5px; font-weight: 650; letter-spacing: 0.04em; fill: var(--on-ink-muted); }}
     .navigation-control {{ outline: none; cursor: pointer; }}
-    .navigation-control rect {{ fill: #1e293b; stroke: #64748b; stroke-width: 1.5; }}
-    .navigation-control text {{ font-size: 13px; font-weight: 780; fill: #f8fafc; pointer-events: none; }}
-    .navigation-control:focus rect, .navigation-control[aria-pressed="true"] rect {{ stroke: #60a5fa; stroke-width: 3; }}
-    .navigation-control[aria-disabled="true"] {{ opacity: 0.52; cursor: not-allowed; }}
-    .minimap-field {{ fill: #0f172a; fill-opacity: 0.92; stroke: #64748b; stroke-width: 1.5; }}
+    .navigation-control rect {{ fill: var(--ink); stroke: var(--on-ink-muted); stroke-width: 1.5; }}
+    .navigation-control text {{ font-size: 13px; font-weight: 780; fill: var(--on-ink); pointer-events: none; }}
+    .navigation-control:focus rect, .navigation-control[aria-pressed="true"] rect {{ stroke: var(--on-ink); stroke-width: 3; }}
+    .navigation-control[aria-disabled="true"] {{ cursor: not-allowed; }}
+    .navigation-control[aria-disabled="true"] rect {{ stroke-dasharray: 3 3; }}
+    .minimap-field {{ fill: var(--ink); fill-opacity: 0.92; stroke: var(--muted); stroke-width: 1.5; }}
     .minimap-district {{ fill: var(--district-accent); fill-opacity: 0.38; stroke: var(--district-accent); stroke-width: 1; }}
-    .minimap-viewport {{ fill: #f8fafc; fill-opacity: 0.08; stroke: #f8fafc; stroke-width: 2.5; vector-effect: non-scaling-stroke; }}
+    .minimap-viewport {{ fill: var(--surface-subtle); fill-opacity: 0.08; stroke: var(--surface-subtle); stroke-width: 2.5; vector-effect: non-scaling-stroke; }}
     svg:not(.svg-sync-ready) .navigation-hud {{ display: none; }}
     @media (prefers-reduced-motion: reduce) {{
       *, .sync-module {{ animation: none !important; transition: none !important; scroll-behavior: auto !important; }}
@@ -3317,11 +3306,11 @@ def build_svg(plan: dict[str, Any]) -> str:
         header_plaque = ""
         root_navigation_attributes = ' data-world-mode="false"'
     return f'''<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" id="{esc(plan['compositionId'])}" viewBox="{fmt(float(root_x))} {fmt(float(root_y))} {fmt(float(root_width))} {fmt(float(root_height))}" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" role="group" aria-labelledby="composition-title" aria-describedby="composition-desc" data-composition-id="{esc(plan['compositionId'])}" data-plan-version="1" data-sync-ready="false" data-static-state="{esc(plan['initialScenario'])}" data-state-revision="0"{root_navigation_attributes}>
+<svg xmlns="http://www.w3.org/2000/svg" id="{esc(plan['compositionId'])}" viewBox="{fmt(float(root_x))} {fmt(float(root_y))} {fmt(float(root_width))} {fmt(float(root_height))}" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" role="group" aria-labelledby="composition-title" aria-describedby="composition-desc" data-composition-id="{esc(plan['compositionId'])}" data-plan-version="1" data-colorset="{'colorset1' if theme['preset'] in {'colorset1', 'editorial'} else 'colorset2'}" data-sync-ready="false" data-static-state="{esc(plan['initialScenario'])}" data-state-revision="0"{root_navigation_attributes}>
   <title id="composition-title">{esc(plan['title'])}</title>
   <desc id="composition-desc">{esc(description)}</desc>
   <metadata id="sync-composition-plan"><![CDATA[{metadata}]]></metadata>
-  <defs><style><![CDATA[{style}]]></style></defs>
+  <defs><style id="composition-theme"><![CDATA[{style}]]></style></defs>
   <rect class="canvas" x="{fmt(float(root_x))}" y="{fmt(float(root_y))}" width="{fmt(float(root_width))}" height="{fmt(float(root_height))}"/>
   {composition_body}
   <g id="composition-header" aria-label="Composition header">

@@ -36,7 +36,7 @@ class BranchSourcePreservation(unittest.TestCase):
             lambda data: data['nodes'][0].pop('detail'),
             lambda data: data['edges'][0].update(kind='influence'),
             lambda data: data['annotations'][0].update(label='A different branch'),
-            lambda data: data['groups'][0].update(color='#F56550'),
+            lambda data: data['groups'][0].update(color='#ff9633'),
             lambda data: data['nodes'].append(dict(data['nodes'][0])),
             lambda data: data['nodes'].__setitem__(1, dict(data['nodes'][0])),
         ]

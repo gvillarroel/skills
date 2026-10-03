@@ -15,32 +15,32 @@
     {
       "id": "g0",
       "label": "Astronomy",
-      "color": "#F56550"
+      "color": "#9e1b32"
     },
     {
       "id": "g1",
       "label": "Navigation",
-      "color": "#77BDDD"
+      "color": "#007298"
     },
     {
       "id": "g2",
       "label": "Mechanics",
-      "color": "#F2C529"
+      "color": "#e77204"
     },
     {
       "id": "g3",
       "label": "Optics",
-      "color": "#98BD92"
+      "color": "#45842a"
     },
     {
       "id": "g4",
       "label": "Cartography",
-      "color": "#B88BC6"
+      "color": "#652f6c"
     },
     {
       "id": "g5",
       "label": "Common origins",
-      "color": "#A6A18B"
+      "color": "#9c9c9c"
     }
   ],
   "source_note": "Original synthetic history \u00b7 All institutions, dates and relationships are invented. Source illustrations: Pearson Scott Foresman, Nordisk familjebok and American Type Founders; provenance embedded.",

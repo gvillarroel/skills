@@ -1,15 +1,16 @@
 # Content Budget and Fidelity
 
-Use this reference for diagram-like scenes, source-dense visual explanations, or any adaptation that may merge, omit, or move source content. Preserve exact scene count and required source anchors from the prompt; this contract governs what appears inside each scene, not whether supplied scenes may disappear.
-
 ## Contents
 
-- Choose meaning before geometry
-- Set a scene budget and explicit count basis
-- Reduce in a stable order
-- Account for every source item once
-- Separate audience from detail
-- Apply the review gate
+- [Choose meaning before geometry](#choose-meaning-before-geometry)
+- [Set a scene budget](#set-a-scene-budget)
+- [Reduce in a stable order](#reduce-in-a-stable-order)
+- [Account for every source item once](#account-for-every-source-item-once)
+- [Separate audience from detail](#separate-audience-from-detail)
+- [Review gate](#review-gate)
+- [Source](#source)
+
+Use this reference for diagram-like scenes, source-dense visual explanations, or any adaptation that may merge, omit, or move source content. Preserve exact scene count and required source anchors from the prompt; this contract governs what appears inside each scene, not whether supplied scenes may disappear.
 
 ## Choose meaning before geometry
 

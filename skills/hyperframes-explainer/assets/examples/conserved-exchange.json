@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "id": "conserved-exchange",
+  "claim": "Transferring part of a fixed allocation changes both locations and both histories while their combined amount stays constant.",
+  "evidence": "Illustrative allocation model: two stores, 100 J total, ideal transfer without loss. It does not represent a measured physical apparatus.",
+  "output": {"width": 1920, "height": 1080, "fps": 30, "duration": 12},
+  "palette": {"mode": "colorset2", "decision": "explicit", "reason": "The requested second-palette acceptance example uses red for A and blue for B consistently across stores and their histories."},
+  "sources": {"fraction": {"value": 0.15, "domain": [0, 1], "unit": ""}},
+  "derived": {
+    "a": {"expr": {"mul": [100, {"sub": [1, "fraction"]}]}, "unit": "J"},
+    "b": {"expr": {"mul": [100, "fraction"]}, "unit": "J"},
+    "total": {"expr": {"add": ["a", "b"]}, "unit": "J"}
+  },
+  "events": [
+    {"id": "transfer-to-b", "at": 3, "duration": 3, "changes": {"fraction": 0.8}, "cause": "Move part of the allocation from A to B."},
+    {"id": "transfer-to-a", "at": 8, "duration": 2, "changes": {"fraction": 0.2}, "cause": "Return part of B's allocation to A."}
+  ],
+  "entities": {"store-a": "primary", "store-b": "secondary"},
+  "views": [
+    {"id": "stores", "question": "Where is the amount located, and what stays conserved?", "region": [70, 80, 1030, 920], "importance": "main"},
+    {"id": "history", "question": "How do the amounts change oppositely through the transfer?", "region": [1180, 150, 660, 750], "importance": "support"}
+  ],
+  "marks": [
+    {"id": "container-a", "view": "stores", "kind": "rect", "attrs": {"x": 130, "y": 220, "width": 270, "height": 510}, "fill": "surface", "stroke": "ink", "strokeWidth": 5},
+    {"id": "amount-a", "view": "stores", "kind": "rect", "attrs": {"x": 137, "y": {"sub": [724, {"mul": [5, "a"]}]}, "width": 256, "height": {"mul": [5, "a"]}}, "fill": "primary", "entity": "store-a"},
+    {"id": "container-b", "view": "stores", "kind": "rect", "attrs": {"x": 660, "y": 220, "width": 270, "height": 510}, "fill": "surface", "stroke": "ink", "strokeWidth": 5},
+    {"id": "amount-b", "view": "stores", "kind": "rect", "attrs": {"x": 667, "y": {"sub": [724, {"mul": [5, "b"]}]}, "width": 256, "height": {"mul": [5, "b"]}}, "fill": "secondary", "entity": "store-b"},
+    {"id": "allocation", "view": "stores", "kind": "line", "attrs": {"x1": 430, "y1": 430, "x2": 630, "y2": 430}, "fill": "none", "stroke": "ink", "strokeWidth": 3},
+    {"id": "allocation-position", "view": "stores", "kind": "circle", "attrs": {"cx": {"add": [430, {"mul": [200, "fraction"]}]}, "cy": 430, "r": 12}, "fill": "ink"},
+    {"id": "a-label", "view": "stores", "kind": "text", "attrs": {"x": 265, "y": 805, "fontSize": 38}, "anchor": "middle", "text": "A", "value": "a", "digits": 1, "unit": "J", "fill": "ink"},
+    {"id": "b-label", "view": "stores", "kind": "text", "attrs": {"x": 795, "y": 805, "fontSize": 38}, "anchor": "middle", "text": "B", "value": "b", "digits": 1, "unit": "J", "fill": "ink"},
+    {"id": "total-label", "view": "stores", "kind": "text", "attrs": {"x": 530, "y": 130, "fontSize": 36}, "anchor": "middle", "text": "total", "value": "total", "digits": 0, "unit": "J", "fill": "ink"},
+    {"id": "history-axis", "view": "history", "kind": "path", "d": "M 60 85 V 600 H 600", "attrs": {}, "fill": "none", "stroke": "ink", "strokeWidth": 3},
+    {"id": "a-curve", "view": "history", "kind": "plot", "attrs": {"x": 60, "y": 100, "width": 500, "height": 500}, "xValue": "time", "yValue": "a", "xDomain": [0, 12], "yDomain": [0, 100], "samples": 120, "fill": "none", "stroke": "primary", "strokeWidth": 6, "entity": "store-a"},
+    {"id": "b-curve", "view": "history", "kind": "plot", "attrs": {"x": 60, "y": 100, "width": 500, "height": 500}, "xValue": "time", "yValue": "b", "xDomain": [0, 12], "yDomain": [0, 100], "samples": 120, "fill": "none", "stroke": "secondary", "strokeWidth": 6, "entity": "store-b"},
+    {"id": "a-curve-label", "view": "history", "kind": "text", "attrs": {"x": {"add": [86, {"mul": [41.6666666667, "time"]}]}, "y": {"sub": [590, {"mul": [5, "a"]}]}, "fontSize": 30}, "text": "A", "fill": "ink"},
+    {"id": "b-curve-label", "view": "history", "kind": "text", "attrs": {"x": {"add": [120, {"mul": [41.6666666667, "time"]}]}, "y": {"sub": [630, {"mul": [5, "b"]}]}, "fontSize": 30}, "text": "B", "fill": "ink"},
+    {"id": "history-unit", "view": "history", "kind": "text", "attrs": {"x": 60, "y": 45, "fontSize": 32}, "text": "amount · J", "fill": "ink"},
+    {"id": "history-time", "view": "history", "kind": "text", "attrs": {"x": 600, "y": 665, "fontSize": 32}, "anchor": "end", "text": "12 s", "fill": "ink"},
+    {"id": "history-zero", "view": "history", "kind": "text", "attrs": {"x": 30, "y": 645, "fontSize": 28}, "text": "0", "fill": "ink"},
+    {"id": "history-max", "view": "history", "kind": "text", "attrs": {"x": 0, "y": 110, "fontSize": 28}, "text": "100", "fill": "ink"}
+  ],
+  "invariants": [{"id": "conserved-total", "lhs": "total", "rhs": 100, "tolerance": 0.000000001}]
+}

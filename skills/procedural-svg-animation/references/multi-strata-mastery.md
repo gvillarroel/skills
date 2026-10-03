@@ -1,5 +1,15 @@
 # Multi-strata Solver Mastery
 
+## Contents
+
+- [Shared Contract](#shared-contract)
+- [Alpha Persistence](#alpha-persistence)
+- [Lower-star Join Tree](#lower-star-join-tree)
+- [Optimal Transport](#optimal-transport)
+- [Fast Marching Front](#fast-marching-front)
+- [Physarum Network](#physarum-network)
+- [Stable Fluid](#stable-fluid)
+
 Use this reference for six patterns that expose substrate, state, analysis, geometry, and playback. They are not production solvers. Query a spec with `build_procedural_svg.py --describe <pattern-id>`.
 
 Contents: [Alpha persistence](#alpha-persistence) · [Lower-star join tree](#lower-star-join-tree) · [Optimal transport](#optimal-transport) · [Fast Marching](#fast-marching-front) · [Physarum](#physarum-network) · [Stable fluid](#stable-fluid)

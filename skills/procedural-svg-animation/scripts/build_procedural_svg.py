@@ -47,8 +47,8 @@ PALETTES: dict[str, dict[str, str | list[str]]] = {
         "muted": "#696969",
         "line": "#cfcfcf",
         "soft": "#e7e7e7",
-        "highlight": "#ffccd5",
-        "accents": ["#9e1b32", "#6d1222", "#696969", "#9f9f9f", "#333e48", "#cfcfcf"],
+        "highlight": "#e7e7e7",
+        "accents": ["#9e1b32", "#6d1222", "#696969", "#9c9c9c", "#333e48", "#cfcfcf"],
     },
     "colorset2": {
         "background": "#f7f7f7",
@@ -67,7 +67,7 @@ DEFAULT_BUILD_OPTIONS: dict[str, object] = {
     "width": 960,
     "height": 640,
     "duration_ms": 6000,
-    "palette": "colorset2",
+    "palette": "colorset1",
     "motion": "full",
 }
 CONFIG_KEYS = {
@@ -972,7 +972,7 @@ def render_path(ctx: Context) -> str:
         mask_id = ctx.ident(f"{slug_from_pattern(str(ctx.spec['id']))}-mask")
         handwriting = f"M {fmt(x0 + aw*.14)} {fmt(y0 + ah*.65)} C {fmt(x0+aw*.2)} {fmt(y0+ah*.18)}, {fmt(x0+aw*.25)} {fmt(y0+ah*.88)}, {fmt(x0+aw*.33)} {fmt(y0+ah*.45)} S {fmt(x0+aw*.46)} {fmt(y0+ah*.2)}, {fmt(x0+aw*.5)} {fmt(y0+ah*.62)} S {fmt(x0+aw*.64)} {fmt(y0+ah*.86)}, {fmt(x0+aw*.7)} {fmt(y0+ah*.38)} S {fmt(x0+aw*.82)} {fmt(y0+ah*.2)}, {fmt(x0+aw*.87)} {fmt(y0+ah*.58)}"
         style = css_animation(ctx, "psvg-draw", .9, 0, "ease-out")
-        defs = f'<defs><mask id="{mask_id}"><rect x="0" y="0" width="{ctx.width}" height="{ctx.height}" fill="black"/><path id="{trace_id}" d="{handwriting}" pathLength="1" fill="none" stroke="white" stroke-width="28" stroke-linecap="round" style="{style}"/></mask></defs>'
+        defs = f'<defs><mask id="{mask_id}"><rect x="0" y="0" width="{ctx.width}" height="{ctx.height}" fill="#000000"/><path id="{trace_id}" d="{handwriting}" pathLength="1" fill="none" stroke="#ffffff" stroke-width="28" stroke-linecap="round" style="{style}"/></mask></defs>'
         body.append(defs)
         body.append(f'<path d="{handwriting}" fill="none" stroke="{ctx.palette["line"]}" stroke-width="5" stroke-linecap="round" opacity=".6"/>')
         body.append(f'<path d="{handwriting}" fill="none" stroke="{ctx.color(0)}" stroke-width="20" stroke-linecap="round" mask="url(#{mask_id})"/>')
@@ -2007,7 +2007,7 @@ def render_paint(ctx: Context) -> str:
         animate=smil(ctx,f'<animate attributeName="x" values="{fmt(x0-aw*.7)};{fmt(x0+aw*.9)};{fmt(x0-aw*.7)}" dur="{ctx.duration_s}" repeatCount="indefinite"/>')
         mask_x=x0-aw*.7 if ctx.full_motion else x0
         mask_width=aw*.8 if ctx.full_motion else aw
-        body.append(f'<defs><mask id="{mask_id}"><rect x="{fmt(mask_x)}" y="{fmt(y0)}" width="{fmt(mask_width)}" height="{fmt(ah)}" fill="white">{animate}</rect></mask></defs>')
+        body.append(f'<defs><mask id="{mask_id}"><rect x="{fmt(mask_x)}" y="{fmt(y0)}" width="{fmt(mask_width)}" height="{fmt(ah)}" fill="#ffffff">{animate}</rect></mask></defs>')
         for index in range(14):
             radius=min(aw,ah)*(.07+index*.014)
             body.append(f'<circle cx="{fmt(cx)}" cy="{fmt(cy)}" r="{fmt(radius)}" fill="none" stroke="{ctx.color(index)}" stroke-width="12" mask="url(#{mask_id})"/>')
@@ -2379,8 +2379,8 @@ def render_composition(ctx: Context) -> str:
         body.append(
             f'<defs><mask id="{focus_mask_id}" maskUnits="userSpaceOnUse" '
             f'x="{fmt(x0)}" y="{fmt(y0)}" width="{fmt(aw)}" height="{fmt(ah)}">'
-            f'<rect x="{fmt(x0)}" y="{fmt(y0)}" width="{fmt(aw)}" height="{fmt(ah)}" fill="black"/>'
-            f'<circle cx="{fmt(stages[0][1])}" cy="{fmt(y)}" r="68" fill="white">{spotlight_motion}</circle>'
+            f'<rect x="{fmt(x0)}" y="{fmt(y0)}" width="{fmt(aw)}" height="{fmt(ah)}" fill="#000000"/>'
+            f'<circle cx="{fmt(stages[0][1])}" cy="{fmt(y)}" r="68" fill="#ffffff">{spotlight_motion}</circle>'
             f'</mask></defs>'
         )
 

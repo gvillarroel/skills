@@ -39,7 +39,7 @@ function renderScatterplotTour() {
     const trails = svg.append("g").selectAll("line").data(data).join("line")
       .attr("x1", d => xA(d.a)).attr("y1", d => yA(d.b))
       .attr("x2", d => xB(d.c)).attr("y2", d => yB(d.d))
-      .attr("stroke", "#d5dce5").attr("stroke-width", 1.2);
+      .attr("stroke", "#e7e7e7").attr("stroke-width", 1.2);
     fadeIn(trails, .05, .5);
     const dots = svg.append("g").selectAll("circle").data(data).join("circle")
       .attr("cx", d => xB(d.c))

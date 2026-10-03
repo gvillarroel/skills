@@ -1,9 +1,11 @@
 ---
 name: echarts-animated-svg
-description: Animate already-rendered Apache ECharts SVG output and build replayable SVG galleries. Use when Codex needs to render ECharts charts with SVGRenderer or SSR, post-process the resulting SVG instead of rebuilding chart geometry, choose chart-type-specific SVG animation profiles for ECharts chart types, or create an HTML index with controls to replay or restore chart animations.
+description: "Animates already-rendered Apache ECharts SVG output and builds replayable SVG galleries. Use when Codex needs to render ECharts charts with SVGRenderer or SSR, post-process the resulting SVG instead of rebuilding chart geometry, choose chart-type-specific SVG animation profiles for ECharts chart types, or create an HTML index with controls to replay or restore chart animations."
 ---
 
 # ECharts Animated SVG
+
+Read [the colorset output contract](references/colorset-contract.md) before authoring or auditing visual output. Apply one exact bundled palette to every authored output path and inspect rendered paint. Default to colorset1; declare colorset2 when its category distinctions are needed.
 
 ## Exact Output Contract
 

@@ -11,6 +11,7 @@ from __future__ import annotations
 import argparse
 import html
 from pathlib import Path
+from colorset_adapter import colorset_output
 
 
 WIDTH = 1080
@@ -157,7 +158,7 @@ def producer_markup() -> str:
         <rect x="0" y="0" width="178" height="48" rx="8" fill="{fill}" stroke="{color}" stroke-width="1.4"/>
         <circle cx="18" cy="24" r="6.4" fill="{color}"/>
         <text class="producer-label" x="34" y="20">{esc(producer['label'])}</text>
-        <text class="producer-rate" x="34" y="36">{esc(producer['rate'])} · {esc(producer['priority'])}</text>
+        <text class="producer-rate" x="34" y="36">{esc(producer['rate'])} Â· {esc(producer['priority'])}</text>
       </g>"""
         )
     return "\n".join(parts)
@@ -206,12 +207,12 @@ def queue_markup() -> str:
     <g class="bounded-queue" data-queue-id="orders-bounded-queue" transform="translate({x} {y})">
       <rect x="0" y="0" width="244" height="188" rx="10" fill="#ffffff" stroke="{PALETTE['gray300']}" stroke-width="1.4"/>
       <text class="panel-title" x="18" y="25">Bounded queue</text>
-      <text class="queue-subtitle" x="18" y="43">max depth 10 · current 91%</text>
+      <text class="queue-subtitle" x="18" y="43">max depth 10 Â· current 91%</text>
       <line class="queue-capacity-marker" data-capacity-threshold="70" x1="18" x2="226" y1="74" y2="74" stroke="{PALETTE['orange']}" stroke-width="2" stroke-dasharray="6 6"/>
       <text class="capacity-label" x="226" y="66" text-anchor="end">safe headroom</text>
       <g class="queue-age-guard" data-age-minutes="11" data-ttl-minutes="6" transform="translate(8 203)">
         <rect x="0" y="-13" width="228" height="17" rx="4" fill="{PALETTE['red_highlight']}" stroke="{PALETTE['red']}" stroke-width=".9"/>
-        <text class="age-label" x="9" y="0">oldest 11m > TTL 6m · sideline now</text>
+        <text class="age-label" x="9" y="0">oldest 11m > TTL 6m Â· sideline now</text>
       </g>
 {''.join(parts)}
     </g>"""
@@ -230,7 +231,7 @@ def consumer_markup() -> str:
         <rect x="0" y="0" width="178" height="48" rx="8" fill="{fill}" stroke="{color}" stroke-width="1.4"/>
         <circle cx="18" cy="24" r="6.4" fill="{color}"/>
         <text class="consumer-label" x="34" y="19">{esc(consumer['label'])}</text>
-        <text class="consumer-state" x="34" y="35">{esc(consumer['state'])} · {consumer['capacity']}%</text>
+        <text class="consumer-state" x="34" y="35">{esc(consumer['state'])} Â· {consumer['capacity']}%</text>
         <rect x="92" y="30" width="76" height="7" rx="3.5" fill="#ffffff" stroke="{PALETTE['gray200']}" stroke-width=".8"/>
         <rect x="92" y="30" width="{fmt(width)}" height="7" rx="3.5" fill="{color}"/>
       </g>"""
@@ -374,6 +375,7 @@ def summary_markup() -> str:
     return "\n".join(parts)
 
 
+@colorset_output
 def build_html() -> str:
     return f"""<!doctype html>
 <html lang="en">
@@ -488,9 +490,10 @@ def build_html() -> str:
 def main() -> int:
     parser = argparse.ArgumentParser(description="Build a standalone Critical Queue Backpressure D3/SVG pattern HTML artifact.")
     parser.add_argument("output", type=Path, help="Output HTML path.")
+    parser.add_argument("--colorset", choices=("colorset1", "colorset2"), default="colorset1")
     args = parser.parse_args()
     args.output.parent.mkdir(parents=True, exist_ok=True)
-    args.output.write_text(build_html(), encoding="utf-8")
+    args.output.write_text(build_html(colorset=args.colorset), encoding="utf-8")
     print(f"Wrote {args.output}")
     return 0
 

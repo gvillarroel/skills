@@ -25,6 +25,7 @@ from multistrata_core import compute_multistrata
 
 SKILL_ROOT = Path(__file__).resolve().parents[1]
 CATALOG_PATH = SKILL_ROOT / "assets" / "pattern-specs.json"
+COLORSETS = json.loads((SKILL_ROOT / "assets/palettes/colorsets.json").read_text(encoding="utf-8"))["colorsets"]
 SVG_NS = "http://www.w3.org/2000/svg"
 XML_NS = "http://www.w3.org/XML/1998/namespace"
 
@@ -1484,6 +1485,28 @@ def validate_one(
         errors.append(f"Expected seed {expect_seed}; found {seed_text!r}.")
     if expect_palette is not None and metadata.get("data-palette") != expect_palette:
         errors.append(f"Expected palette {expect_palette!r}; found {metadata.get('data-palette')!r}.")
+    active_palette = metadata.get("data-palette")
+    if active_palette not in COLORSETS:
+        errors.append("data-palette must select a bundled colorset.")
+    else:
+        allowed = set(COLORSETS[active_palette]["allowed"])
+        paint_attributes = {"fill", "stroke", "color", "stop-color", "flood-color", "lighting-color"}
+        for element in root.iter():
+            tag = local_name(element.tag)
+            paints = [value for key, value in element.attrib.items() if key in paint_attributes and not (tag in MOTION_TAGS and key == "fill")]
+            if tag in MOTION_TAGS and element.get("attributeName") in paint_attributes:
+                paints.extend(element.get(key, "") for key in ("values", "from", "to", "by"))
+            if element.get("style"):
+                paints.append(element.get("style", ""))
+            if tag == "style":
+                paints.append(element.text or "")
+            for paint in paints:
+                tokens = re.findall(r"#[0-9a-fA-F]{3,8}\b", paint)
+                unexpected = sorted(set(tokens) - allowed)
+                if unexpected or re.search(r"\b(?:rgba?|hsla?|oklch|lab|color)\s*\(", paint, re.I):
+                    errors.append(f"Paint in <{tag}> violates {active_palette}: {unexpected or paint!r}.")
+                if paint in {"red", "blue", "green", "black", "white"}:
+                    errors.append(f"Named paint in <{tag}> must use an exact palette token.")
     if expect_motion is not None and metadata.get("data-motion") != expect_motion:
         errors.append(f"Expected motion {expect_motion!r}; found {metadata.get('data-motion')!r}.")
 

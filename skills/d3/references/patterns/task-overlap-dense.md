@@ -1,5 +1,10 @@
 # Saturated Task Overlap
 
+## Contents
+
+- [Reuse Contract](#reuse-contract)
+- [Source Excerpt](#source-excerpt)
+
 - **Pattern ID:** `d3-task-overlap-dense`
 - **Gallery source ID:** `task-overlap-dense`
 - **Family:** Set Overlap

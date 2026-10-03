@@ -40,6 +40,15 @@ class DownloadClient:
 
 
 class Tests(unittest.TestCase):
+    def test_missing_preview_does_not_emit_empty_image_request(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "preview.html"
+            d.gallery({"retrieved_at": "Synthetic", "results": [{"id": "fixture", "option": 1, "shot": "Fixture", "film": "Fixture film", "page_url": "https://example.com/shot"}]}, path)
+            body = path.read_text(encoding="utf-8")
+            self.assertIn("No keyframe preview available", body)
+            self.assertNotIn('src=""', body)
+            self.assertIn('data-colorset="colorset1"', body)
+
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
         self.addCleanup(self.temp.cleanup)

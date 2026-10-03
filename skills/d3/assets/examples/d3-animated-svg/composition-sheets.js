@@ -1845,7 +1845,7 @@
       "font-weight": 800,
       fill: palette.muted
     });
-    appendText(group, 250, 23, "8×8 context", {
+    appendText(group, 250, 23, "8Ã—8 context", {
       class: "semantic-flow-label",
       "text-anchor": "start",
       "font-size": 6.2,
@@ -2712,7 +2712,7 @@
   }
 
   function renderTileChoroplethLane(group, variant, labels) {
-    const colors = ["#d7e8f4", "#9ecae1", "#6baed6", "#3182bd", "#08519c"];
+    const colors = ["#cdf3ff", "#cfcfcf", "#9c9c9c", "#007298", "#007298"];
     const regions = Array.from({ length: 12 }, (_, index) => {
       const col = index % 4;
       const row = Math.floor(index / 4);
@@ -3709,7 +3709,7 @@
     const primaryGuide = 'stroke="#9e1b32" stroke-opacity=".9" stroke-width="2.4"';
     const soft = 'stroke="#007298" stroke-opacity=".46" stroke-width="1.5"';
     const mark = 'fill="#ffffff" stroke="#9e1b32" stroke-width="2"';
-    const open = `<svg viewBox="0 0 480 300" role="img" aria-label="${escapeHtml(sheet.title)} armature"><rect x="18" y="18" width="444" height="264" rx="8" fill="#ffffff" stroke="#cfcfcf"/>`;
+    const open = `<svg data-colorset="colorset2" viewBox="0 0 480 300" role="img" aria-label="${escapeHtml(sheet.title)} armature"><rect x="18" y="18" width="444" height="264" rx="8" fill="#ffffff" stroke="#cfcfcf"/>`;
     const close = "</svg>";
     if (sheet.id === "symmetry") {
       return `${open}<line x1="240" y1="18" x2="240" y2="282" ${primaryGuide}/><line x1="18" y1="150" x2="462" y2="150" ${primaryGuide}/><line x1="18" y1="18" x2="462" y2="282" ${line}/><line x1="18" y1="282" x2="462" y2="18" ${line}/><circle cx="240" cy="150" r="34" fill="#cdf3ff" stroke="#007298" stroke-width="2"/><circle cx="136" cy="150" r="18" ${mark}/><circle cx="344" cy="150" r="18" ${mark}/>${close}`;
@@ -3768,7 +3768,7 @@
       return `
         <article class="composition-card" id="${variant.id}" data-composition-id="${variant.compositionId}" data-example-id="${variant.sourceId}" data-pattern-id="${patternId}" data-composition-pattern-id="${variant.id}" data-legacy-composition-pattern-id="${variant.legacyId}" data-kind="${variant.kind}" data-source-family="${escapeHtml(variant.sourceFamily || source.kicker || variant.kind)}" data-armature-lines="${escapeHtml(variant.armatureLines || "")}" data-quadrants="${escapeHtml(variant.quadrants || "")}" data-reviewed="${variant.reviewed ? "true" : "false"}" data-search="${escapeHtml(search)}">
           <div class="preview-frame">
-            <svg id="${variant.id}-svg" class="composition-preview" data-composition-pattern-id="${variant.id}" data-legacy-composition-pattern-id="${variant.legacyId}" data-pattern-id="${patternId}" role="img"></svg>
+            <svg id="${variant.id}-svg" data-colorset="colorset2" class="composition-preview" data-composition-pattern-id="${variant.id}" data-legacy-composition-pattern-id="${variant.legacyId}" data-pattern-id="${patternId}" role="img"></svg>
             <button class="replay-button" type="button" data-replay-composition="${variant.id}" aria-label="Replay animation for ${escapeHtml(title)} ${escapeHtml(variant.variantTitle)}">
               <span class="material-symbols-rounded" aria-hidden="true">replay</span>
               <span>Replay</span>

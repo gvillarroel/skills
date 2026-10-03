@@ -105,7 +105,7 @@
   background: #ffffff;
   border: 1px solid #e7e7e7;
   border-radius: 8px;
-  box-shadow: 0 16px 34px rgba(15, 23, 42, 0.08);
+  box-shadow: 0 16px 34px rgba(28, 28, 28, 0.08);
   max-width: 100%;
   min-width: 0;
   padding: 0.85rem;
@@ -164,7 +164,7 @@
   background: #ffffff;
   border: 1px solid #e7e7e7;
   border-radius: 8px;
-  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.07);
+  box-shadow: 0 14px 30px rgba(28, 28, 28, 0.07);
   max-width: 100%;
   min-width: 0;
 }
@@ -316,7 +316,7 @@
   background: #ffffff;
   border: 1px solid #e7e7e7;
   border-radius: 8px;
-  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.07);
+  box-shadow: 0 14px 30px rgba(28, 28, 28, 0.07);
   max-width: 100%;
   min-height: 0;
   min-width: 0;
@@ -374,7 +374,7 @@
 
 .composition-steps span.active,
 .comparison-notes span.active {
-  background: #ecfdf5;
+  background: #dbffcc;
   border-color: #36b300;
   color: #294d19;
 }
@@ -403,7 +403,7 @@
   background: rgba(255, 255, 255, 0.92);
   border: 1px solid #cfcfcf;
   border-radius: 8px;
-  box-shadow: 0 10px 22px rgba(15, 23, 42, 0.12);
+  box-shadow: 0 10px 22px rgba(28, 28, 28, 0.12);
   padding: 0.48rem 0.58rem;
 }
 
@@ -523,7 +523,7 @@
   background: #ffffff;
   border: 1px solid #e7e7e7;
   border-radius: 8px;
-  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.07);
+  box-shadow: 0 14px 30px rgba(28, 28, 28, 0.07);
   max-width: 100%;
   min-width: 0;
   padding: 0.72rem;
@@ -575,8 +575,8 @@
 
 .renderer-badge {
   background: #f9ccff;
-  border: 1px solid #c7d2fe;
-  color: #3730a3;
+  border: 1px solid #652f6c;
+  color: #431f47;
 }
 
 .chart-type-controls button {
@@ -635,7 +635,7 @@
   background: #ffffff;
   border: 1px solid #e7e7e7;
   border-radius: 8px;
-  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.07);
+  box-shadow: 0 14px 30px rgba(28, 28, 28, 0.07);
   display: grid;
   gap: 0.65rem;
   padding: 0.9rem 1rem;
@@ -778,7 +778,7 @@
 }
 
 .svg-orbit-ring.muted {
-  stroke: #ccfbf1;
+  stroke: #cdf3ff;
 }
 
 .svg-particle-link {
@@ -916,7 +916,7 @@
 }
 
 .chart-clicks li {
-  background: #eefdf7;
+  background: #dbffcc;
   border: 1px solid #dbffcc;
   border-radius: 8px;
   color: #294d19;
@@ -960,3 +960,6 @@
     gap: 0.28rem;
   }
 }
+
+/* Keep Slidev's inline-code fallback inside the declared colorset. */
+.slidev-layout code { background-color: #f7f7f7 !important; color: #333e48 !important; }

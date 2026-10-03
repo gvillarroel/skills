@@ -1,9 +1,11 @@
 ---
 name: hierarchy-lens
-description: Build offline interactive hierarchies with decision-driven pixel composition, compact organic cells, radial heatmaps, or labeled charts. Use for organizational maps, portfolios, or taxonomies needing explicit placement priorities, proximity rules, step-by-step growth, switchable color lenses, and exact record lookup.
+description: "Builds offline interactive hierarchies with decision-driven pixel composition, compact organic cells, radial heatmaps, or labeled charts. Use for organizational maps, portfolios, or taxonomies needing explicit placement priorities, proximity rules, step-by-step growth, switchable color lenses, and exact record lookup."
 ---
 
 # Hierarchy Lens
+
+Read [palette-policy.md](references/palette-policy.md) before authoring or composing visuals. Apply one exact colorset to authored content and report preserved source media separately.
 
 Create one explorable hierarchy image inside a self-contained HTML file. Put the root in the center and organize generations outward. Keep geometry independent of the selected color dimension.
 

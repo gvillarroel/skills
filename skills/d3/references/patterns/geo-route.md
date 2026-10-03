@@ -26,7 +26,7 @@ function renderGeoRoute() {
     const graticule = d3.geoGraticule10();
     svg.append("path").datum({ type: "Sphere" }).attr("d", path).attr("fill", palette.blueHighlight).attr("fill-opacity", .22).attr("stroke", palette.gray300);
     appendSchematicLand(svg, path);
-    svg.append("path").datum(graticule).attr("d", path).attr("fill", "none").attr("stroke", "#d4dbe4").attr("stroke-width", .7);
+    svg.append("path").datum(graticule).attr("d", path).attr("fill", "none").attr("stroke", "#e7e7e7").attr("stroke-width", .7);
     const cities = [
       { name: "SF", lon: -122.4, lat: 37.8, dx: 7, dy: -7, anchor: "start" },
       { name: "NY", lon: -74, lat: 40.7, dx: 7, dy: -7, anchor: "start" },

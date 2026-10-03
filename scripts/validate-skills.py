@@ -9,6 +9,7 @@
 from __future__ import annotations
 
 import argparse
+import runpy
 import importlib.util
 import re
 import sys
@@ -563,6 +564,14 @@ def validate_repo(root: Path) -> list[Finding]:
     validate_example_catalog(root, findings)
     validate_pattern_id_registry(root, findings)
     validate_skill_backlog(root, findings)
+    if (root / "docs/colorsets.json").is_file():
+        try:
+            color_validator = runpy.run_path(str(root / "scripts/validate-colorsets.py"))
+            result = color_validator["validate"](root)
+            for issue in result["findings"]:
+                add(findings, root / issue["path"], f"colorset contract: {issue}")
+        except (OSError, ValueError, KeyError) as error:
+            add(findings, root / "docs/colorsets.json", f"colorset validation could not run: {error}")
 
     for child in root.iterdir():
         if child.is_dir() and (child / "SKILL.md").exists():

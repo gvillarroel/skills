@@ -1,0 +1,13 @@
+# Colorset Output Contract
+
+Select one palette for each authored visual output and record its name in the output or its report. Default to `colorset1`; use `colorset2` for an explicit full-color request or a documented need to distinguish several independent semantic categories. The full-color acceptance galleries deliberately use `colorset2` to demonstrate multiple category and animation mechanisms. A gallery containing both variants must identify each item's selected palette.
+
+Read [the exact local palette contract](../assets/palettes/colorsets.json). Do not invent close grays, alternate blues, renderer defaults, or theme-derived tints. Use the selected allowlist for backgrounds, text, axes, borders, markers, highlights, controls, hover/focus, errors, legends, and exported assets. Colorset1 is red plus neutrals; reserve pink for an explicit need after readable neutral/red roles.
+
+Inspect actual rendered marks, not just a theme configuration. Native renderer defaults, calculated color lightness/saturation, heatmap interpolation, and arbitrary overrides can introduce undeclared colors. Use discrete exact palette bins for numeric color scales while preserving data values and continuous position/size encodings. Use stepped changes between categorical animation colors; animate geometry and opacity smoothly. Tonal gradients may use exact endpoints in one role; do not interpolate categorical hues. Alpha, raster antialiasing, and compression are compositing effects rather than new authored base colors.
+
+Preserve imported logos, photos, footage, and third-party source image pixels and provenance. Keep this source-media boundary narrow and explicit; all authored wrappers and labels still follow the selected palette. Source media is not permission to keep arbitrary authored chart colors. When editing source presentation is out of scope, report incompatible colors instead of claiming a palette pass.
+
+Validate every output format and state the skill supports: source, static vector, animated vector, canvas, raster/export, gallery/deck chrome, controls, alternate states, and any downstream capture. Keep output paths, chart/diagram facts, relationships, stable IDs, labels, geometry, and accessibility metadata intact when repairing paint.
+
+The renderer normalizes actual generated SVG paint declarations to the source's selected colorset and checks the result before animation. Existing static SVG input must already fit one palette; the animator rejects incompatible paint rather than changing a read-only source. Style and check Mermaid source first. Generated static and animated files must match final paint and geometry.

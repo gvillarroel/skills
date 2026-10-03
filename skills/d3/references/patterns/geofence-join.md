@@ -22,9 +22,9 @@ The excerpt below is the compact renderer source for this pattern. If it referen
 function renderGeofenceJoin() {
     const svg = prepareSvg("geofence-join", "Geofenced activity", "Point-in-polygon grouping rolls up local activity totals.");
     const regions = [
-      { id: "North", points: [[96, 66], [236, 48], [258, 158], [132, 182], [96, 66]], color: "#d9e9f7" },
-      { id: "Core", points: [[258, 72], [430, 90], [402, 210], [250, 178], [258, 72]], color: "#d9ebd7" },
-      { id: "South", points: [[112, 198], [250, 182], [394, 224], [366, 334], [142, 324], [112, 198]], color: "#f7dfc6" }
+      { id: "North", points: [[96, 66], [236, 48], [258, 158], [132, 182], [96, 66]], color: "#cdf3ff" },
+      { id: "Core", points: [[258, 72], [430, 90], [402, 210], [250, 178], [258, 72]], color: "#e7e7e7" },
+      { id: "South", points: [[112, 198], [250, 182], [394, 224], [366, 334], [142, 324], [112, 198]], color: "#ffe5cc" }
     ];
     const points = d3.range(42).map(i => ({
       x: 104 + (i * 53) % 310 + Math.sin(i) * 18,
@@ -41,7 +41,7 @@ function renderGeofenceJoin() {
     fadeIn(shapes, .05, .7);
     const dots = svg.append("g").selectAll("circle").data(points).join("circle")
       .attr("cx", d => d.x).attr("cy", d => d.y)
-      .attr("fill", d => d.region === "Outside" ? "#9aa7b5" : palette.blue)
+      .attr("fill", d => d.region === "Outside" ? "#9c9c9c" : palette.blue)
       .attr("fill-opacity", d => d.region === "Outside" ? .35 : .82)
       .attr("stroke", "#fff");
     grow(dots, "r", 1, d => d.region === "Outside" ? 3 : 5, .1, .55);

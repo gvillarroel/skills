@@ -1,5 +1,13 @@
 # Composition Audit
 
+## Contents
+
+- [Dynamic Symmetry Audit](#dynamic-symmetry-audit)
+- [Command](#command)
+- [Interpreting Results](#interpreting-results)
+- [Improvement Loop](#improvement-loop)
+- [Composition Variant Sheets](#composition-variant-sheets)
+
 Use this reference when reviewing the compositional structure of an SVG pattern, especially after a user asks for dynamic symmetry, point verification, balance, or visual improvement beyond collision checks.
 
 ## Dynamic Symmetry Audit

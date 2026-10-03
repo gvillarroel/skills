@@ -10,7 +10,7 @@ def build_timeline(base):
     labels=['Riverlands','Highlands','Coastlands','Islands','Northlands']
     d=base('five-regional-histories','FIVE REGIONS THROUGH TIME','timeline',labels)
     for key in ('nodes','edges','unions','insets'):d.pop(key)
-    d.update(pattern_id='usefulcharts-parallel-history',subtitle='Divisions, unions, and changing societies in five fictional regions, 1000–2000',frame_color='#665D48',height=2400,
+    d.update(pattern_id='usefulcharts-parallel-history',subtitle='Divisions, unions, and changing societies in five fictional regions, 1000–2000',frame_color='#4f4f4f',height=2400,
         time=dict(start=1000,end=2000,step=25),lanes=[dict(id=f'l{i}',label=v) for i,v in enumerate(labels)],periods=[],transitions=[],events=[],map_texture='milner-1850',
         eras=[dict(start=a,end=b,label=label) for a,b,label in [(1000,1200,'Early city states'),(1200,1450,'Maritime kingdoms'),(1450,1650,'Age of exchange'),(1650,1850,'Federations'),(1850,2000,'Modern age')]],
         source_note='Synthetic history · All periods, events and relationships are invented. Contextual art: Pearson Scott Foresman, Library of Congress and Nordisk familjebok; provenance embedded.',

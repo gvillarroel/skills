@@ -1,6 +1,6 @@
 ---
 name: technical-logo-assets
-description: Search, select, validate, and export a verified vector-only catalog of technical brand logos with labeled color, grayscale, black, white, and adaptive variants. Use for exact cloud, company, language, framework, database, AI, and developer-tool logos in diagrams, documents, presentations, websites, videos, or other SVG-capable deliverables; do not use for generating new artwork or general-purpose pictograms.
+description: "Searches, selects, validates, and exports a verified vector-only catalog of technical brand logos with labeled color, grayscale, black, white, and adaptive variants. Use for exact cloud, company, language, framework, database, AI, and developer-tool logos in diagrams, documents, presentations, websites, videos, or other SVG-capable deliverables; do not use for generating new artwork or general-purpose pictograms."
 ---
 
 # Technical Logo Assets
@@ -43,6 +43,8 @@ uv run --script <skill-root>/scripts/export_logo_asset.py --id devicon-python --
 Existing identical exports are idempotent. Existing different files are not overwritten unless `--overwrite` is explicit. A custom color is accepted only for an available adaptive variant; it never recolors the bundled source in place.
 
 ## Variant Choice
+
+For authored diagrams following colorset1/colorset2, prefer an available licensed adaptive, black or white variant. Bake `#333e48` or `#9e1b32` for colorset1, or a semantic colorset2 token such as `#007298` when extended categories are requested. Resolve `currentColor` in the consuming SVG/HTML before checking computed paint. Exact color or source tonal variants remain identified brand artwork: preserve their colors and provenance, and declare that source-fidelity scope separately from authored diagram paint. Do not silently recolor a variant marked non-recolorable.
 
 - Use `color` by default. A genuinely monochrome brand remains monochrome.
 - Use `grayscale` for tonal black-and-white artwork, not as a one-ink silhouette.

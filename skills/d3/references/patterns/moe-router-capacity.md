@@ -1,5 +1,10 @@
 # MoE Router Capacity
 
+## Contents
+
+- [Reuse Contract](#reuse-contract)
+- [Source Excerpt](#source-excerpt)
+
 - **Pattern ID:** `d3-moe-router-capacity`
 - **Gallery source ID:** `moe-router-capacity`
 - **Family:** LLM

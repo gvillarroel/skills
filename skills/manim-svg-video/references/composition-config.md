@@ -52,10 +52,10 @@ Use `--layout mosaic` only when every SVG should keep a final grid cell after it
 The default palette uses a white scene background with light tiles:
 
 - `--background #ffffff`
-- `--title-color #111827`
-- `--tile-fill #f8fafc`
-- `--tile-stroke #cbd5e1`
-- `--label-color #334155`
+- `--title-color #1c1c1c`
+- `--tile-fill #f7f7f7`
+- `--tile-stroke #cfcfcf`
+- `--label-color #333e48`
 
 When changing the background, adjust the title, tile, and placeholder colors together so the title, empty regions, and conversion placeholders stay readable.
 

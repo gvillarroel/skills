@@ -104,7 +104,10 @@ def pack_events(source,max_width=None,clearance=2.5):
     lanes=lane_geometry(data['lanes'],width)
     scale=lambda year:190+(year-start)/(end-start)*(height-302)
     obstacles=obstacles_for(data,scale,lanes);envelopes=[];decisions=[];ids=set();warnings=[]
-    for event in sorted(data.get('events',[]),key=lambda item:item['year']):
+    # A source-selected landmark can reserve its full illustrated footprint
+    # before ordinary prose. The default remains chronological placement.
+    ordered=sorted(data.get('events',[]),key=lambda item:(-number(item.get('placement_priority',0),'event.placement_priority'),item['year']))
+    for event in ordered:
         require(event['id'] not in ids and event['lane'] in lanes,'Events require distinct IDs and known lanes.');ids.add(event['id'])
         require(start<=event['year']<=end,'Event dates must be inside the year scale.')
         size=number(event.get('size',10.5),'event.size');small=number(event.get('detail_size',size*.88),'event.detail_size')

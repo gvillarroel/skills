@@ -39,7 +39,7 @@ function renderTanglegram() {
     const treePaths = svg.append("g").selectAll("path").data(treeLinks).join("path")
       .attr("d", ([source, target]) => link({ source: byId.get(source), target: byId.get(target) }))
       .attr("fill", "none")
-      .attr("stroke", "#aebaca")
+      .attr("stroke", "#b5b5b5")
       .attr("stroke-width", 1.8);
     drawPath(treePaths, .05, .7);
     const matches = [["L3", "R5"], ["L4", "R3"], ["L5", "R6"], ["L6", "R4"]];

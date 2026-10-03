@@ -119,7 +119,7 @@ def audit(path, screenshot=None):
                 values = [n["values"][dim["key"]] for n in nodes if n["values"][dim["key"]] is not None]
                 check("global-domain-"+dim["key"], snapshot()["domain"] == [0, max(values, default=0)])
                 colors = page.evaluate("points=>{const c=document.querySelector('#art').getContext('2d');return points.map(([x,y])=>Array.from(c.getImageData(x,y,1,1).data).slice(0,3));}", [first[i] for i in range(len(nodes))])
-                check("missing-checker-and-zero-"+dim["key"], all(colors[i] in [[114,120,130],[64,70,80]] if n["values"][dim["key"]] is None else colors[i] == [23,29,54] if n["values"][dim["key"]] == 0 else colors[i] not in [[114,120,130],[64,70,80],[23,29,54]] for i,n in enumerate(nodes)))
+                check("missing-checker-and-zero-"+dim["key"], all(colors[i] in [[130,130,130],[207,207,207]] if n["values"][dim["key"]] is None else colors[i] == [28,28,28] if n["values"][dim["key"]] == 0 else colors[i] not in [[130,130,130],[207,207,207],[28,28,28]] for i,n in enumerate(nodes)))
                 positive = sorted(v for v in values if v > 0)
                 expected = [positive[math.floor((i+1)*(len(positive)-1)/7)] if positive else 0 for i in range(6)]
                 check("quantile-thresholds-"+dim["key"], snapshot()["thresholds"] == expected)

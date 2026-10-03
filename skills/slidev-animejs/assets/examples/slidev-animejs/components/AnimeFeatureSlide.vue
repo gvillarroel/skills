@@ -308,7 +308,7 @@ function runCssPropertiesColors() {
   animate('.property-panel', {
     width: ['160px', `${250 + activeStep.value * 30}px`],
     borderRadius: ['8px', '34px'],
-    backgroundColor: ['#cdf3ff', activeStep.value > 1 ? '#ffccd5' : '#dbffcc'],
+    backgroundColor: { from: '#cdf3ff', to: activeStep.value > 1 ? '#ffccd5' : '#dbffcc', ease: steps(1) },
     '--accent-size': ['16px', `${42 + activeStep.value * 8}px`],
     duration: 1400,
     ease: 'inOutQuad',
@@ -329,7 +329,7 @@ function runKeyframesRelativeValues() {
       { to: 18, duration: 280, ease: 'inQuad' },
       { to: 0, duration: 620, ease: 'outBounce' },
     ],
-    backgroundColor: ['#45842a', '#007298', '#9e1b32'],
+    backgroundColor: [{ to: '#45842a', ease: steps(1) }, { to: '#007298', ease: steps(1) }, { to: '#9e1b32', ease: steps(1) }],
     loop: true,
     alternate: true,
   })
@@ -361,7 +361,7 @@ function runStaggerSequences() {
   animate('.stagger-cell', {
     y: [-14, 18],
     scale: [0.82, 1.12],
-    backgroundColor: ['#cdf3ff', '#dbffcc'],
+    backgroundColor: { from: '#cdf3ff', to: '#dbffcc', ease: steps(1) },
     delay: stagger(65, {
       grid: [4, 4],
       from: activeStep.value === 0 ? 'first' : activeStep.value === 1 ? 'center' : 'last',

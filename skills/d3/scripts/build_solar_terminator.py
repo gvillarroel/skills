@@ -13,6 +13,7 @@ from datetime import datetime
 import html
 import math
 from pathlib import Path
+from colorset_adapter import colorset_output
 
 
 DEFAULT_TIMESTAMP = "2026-06-21T12:00:00Z"
@@ -82,6 +83,7 @@ def longitude_label(value: float) -> str:
     return f"{abs(value):.2f}°{'E' if value >= 0 else 'W'}"
 
 
+@colorset_output
 def build_html(timestamp: datetime) -> str:
     equation_of_time, declination, subsolar_longitude = solar_tuple(timestamp)
     night_rects: list[str] = []
@@ -132,26 +134,26 @@ def build_html(timestamp: datetime) -> str:
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Solar Terminator · D3 Pattern</title>
   <style>
-    :root {{ color-scheme: light; font-family: "Open Sans", Arial, sans-serif; background: #f3f4f5; color: #333e48; }}
+    :root {{ color-scheme: light; font-family: "Open Sans", Arial, sans-serif; background: #f7f7f7; color: #333e48; }}
     * {{ box-sizing: border-box; }}
     body {{ margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 24px; }}
-    main {{ width: min(960px, 100%); background: #fff; border: 1px solid #d7dadd; border-radius: 12px; padding: 20px; }}
+    main {{ width: min(960px, 100%); background: #fff; border: 1px solid #cfcfcf; border-radius: 12px; padding: 20px; }}
     header {{ display: flex; justify-content: space-between; gap: 16px; align-items: start; margin-bottom: 12px; }}
     h1 {{ margin: 0 0 4px; font-size: clamp(1.35rem, 3vw, 2rem); }}
-    p {{ margin: 0; color: #606b75; line-height: 1.45; }}
-    button {{ border: 1px solid #b6bcc2; border-radius: 6px; background: #fff; color: #333e48; padding: 8px 12px; font: inherit; font-size: .85rem; font-weight: 700; cursor: pointer; }}
+    p {{ margin: 0; color: #696969; line-height: 1.45; }}
+    button {{ border: 1px solid #b5b5b5; border-radius: 6px; background: #fff; color: #333e48; padding: 8px 12px; font: inherit; font-size: .85rem; font-weight: 700; cursor: pointer; }}
     .frame {{ overflow-x: auto; }}
     svg {{ display: block; width: 100%; min-width: 620px; height: auto; font-family: "Open Sans", Arial, sans-serif; }}
-    .land path {{ fill: #f7f7f7; stroke: #9ba3aa; stroke-width: 1; stroke-linejoin: round; }}
+    .land path {{ fill: #f7f7f7; stroke: #9c9c9c; stroke-width: 1; stroke-linejoin: round; }}
     .night-layer {{ fill: #333e48; opacity: .46; }}
-    .grid line {{ stroke: #9ecae1; stroke-width: .75; opacity: .65; }}
-    .terminator {{ fill: none; stroke: #f05a28; stroke-width: 4; stroke-linecap: round; pathLength: 1; }}
+    .grid line {{ stroke: #cfcfcf; stroke-width: .75; opacity: .65; }}
+    .terminator {{ fill: none; stroke: #e77204; stroke-width: 4; stroke-linecap: round; pathLength: 1; }}
     .replaying .night-layer {{ animation: night-in 1s ease both; }}
     .replaying .terminator {{ stroke-dasharray: 1; animation: trace 1.4s ease both; }}
     .replaying .sun circle {{ transform-box: fill-box; transform-origin: center; animation: pulse 1.4s ease-in-out both; }}
-    .legend {{ display: flex; flex-wrap: wrap; gap: 12px 18px; margin-top: 10px; font-size: .82rem; color: #606b75; }}
+    .legend {{ display: flex; flex-wrap: wrap; gap: 12px 18px; margin-top: 10px; font-size: .82rem; color: #696969; }}
     .key {{ display: inline-flex; align-items: center; gap: 6px; }}
-    .swatch {{ width: 12px; height: 12px; border-radius: 2px; border: 1px solid #9ba3aa; }}
+    .swatch {{ width: 12px; height: 12px; border-radius: 2px; border: 1px solid #9c9c9c; }}
     @keyframes night-in {{ from {{ opacity: 0; }} to {{ opacity: .46; }} }}
     @keyframes trace {{ from {{ stroke-dashoffset: 1; }} to {{ stroke-dashoffset: 0; }} }}
     @keyframes pulse {{ 0% {{ transform: scale(.55); }} 70% {{ transform: scale(1.2); }} 100% {{ transform: scale(1); }} }}
@@ -176,10 +178,10 @@ def build_html(timestamp: datetime) -> str:
       <desc id="solar-desc">Schematic world map with day and night regions, an astronomically derived terminator, and a labeled subsolar point at {longitude_label(subsolar_longitude)}, {hemisphere_declination}.</desc>
       <defs>
         <style>
-          .land path {{ fill: #f7f7f7; stroke: #9ba3aa; stroke-width: 1; stroke-linejoin: round; }}
+          .land path {{ fill: #f7f7f7; stroke: #9c9c9c; stroke-width: 1; stroke-linejoin: round; }}
           .night-layer {{ fill: #333e48; opacity: .46; }}
-          .grid line {{ stroke: #9ecae1; stroke-width: .75; opacity: .65; }}
-          .terminator {{ fill: none; stroke: #f05a28; stroke-width: 4; stroke-linecap: round; }}
+          .grid line {{ stroke: #cfcfcf; stroke-width: .75; opacity: .65; }}
+          .terminator {{ fill: none; stroke: #e77204; stroke-width: 4; stroke-linecap: round; }}
           .replaying .night-layer {{ animation: night-in 1s ease both; }}
           .replaying .terminator {{ stroke-dasharray: 1; animation: trace 1.4s ease both; }}
           .replaying .sun circle {{ transform-box: fill-box; transform-origin: center; animation: pulse 1.4s ease-in-out both; }}
@@ -190,27 +192,27 @@ def build_html(timestamp: datetime) -> str:
         </style>
         <clipPath id="world-clip"><rect x="{WORLD_X}" y="{WORLD_Y}" width="{WORLD_WIDTH}" height="{WORLD_HEIGHT}" rx="8"/></clipPath>
       </defs>
-      <rect x="{WORLD_X}" y="{WORLD_Y}" width="{WORLD_WIDTH}" height="{WORLD_HEIGHT}" rx="8" fill="#d9f3fb" stroke="#9ba3aa"/>
+      <rect x="{WORLD_X}" y="{WORLD_Y}" width="{WORLD_WIDTH}" height="{WORLD_HEIGHT}" rx="8" fill="#cdf3ff" stroke="#9c9c9c"/>
       <g clip-path="url(#world-clip)">
         <g class="land">{land_paths}</g>
         <g class="night-layer">{''.join(night_rects)}</g>
         <g class="grid">{''.join(grid_lines)}</g>
         <path class="terminator" d="{boundary_path}" pathLength="1"/>
         <g class="sun" transform="translate({sun_x:.2f} {sun_y:.2f})">
-          <circle r="10" fill="#ffd166" stroke="#d97706" stroke-width="2"/>
+          <circle r="10" fill="#ffd332" stroke="#e77204" stroke-width="2"/>
           <circle r="3" fill="#fff" opacity=".65"/>
         </g>
       </g>
       <text x="{sun_x + 14:.2f}" y="{sun_y - 12:.2f}" font-size="12" font-weight="800" fill="#333e48" stroke="#fff" stroke-width="4" paint-order="stroke">subsolar point</text>
       <text x="70" y="392" font-size="13" font-weight="800" fill="#333e48">{visible_timestamp}</text>
-      <text x="70" y="414" font-size="12" fill="#606b75">Subsolar {longitude_label(subsolar_longitude)} · declination {hemisphere_declination} · equation of time {equation_of_time:.2f} min</text>
-      <text x="70" y="436" font-size="11" fill="#606b75">Astronomy: NOAA fractional-year approximation · geography: schematic context</text>
+      <text x="70" y="414" font-size="12" fill="#696969">Subsolar {longitude_label(subsolar_longitude)} · declination {hemisphere_declination} · equation of time {equation_of_time:.2f} min</text>
+      <text x="70" y="436" font-size="11" fill="#696969">Astronomy: NOAA fractional-year approximation · geography: schematic context</text>
     </svg>
   </div>
   <div class="legend" aria-label="Visual legend">
-    <span class="key"><span class="swatch" style="background:#d9f3fb"></span>day</span>
-    <span class="key"><span class="swatch" style="background:#7f8992"></span>night</span>
-    <span class="key"><span class="swatch" style="background:#f05a28"></span>terminator</span>
+    <span class="key"><span class="swatch" style="background:#cdf3ff"></span>day</span>
+    <span class="key"><span class="swatch" style="background:#828282"></span>night</span>
+    <span class="key"><span class="swatch" style="background:#e77204"></span>terminator</span>
   </div>
 </main>
 <script>
@@ -232,6 +234,7 @@ def build_html(timestamp: datetime) -> str:
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("output", type=Path, help="Exact HTML output path")
+    parser.add_argument("--colorset", choices=("colorset1", "colorset2"), default="colorset1")
     parser.add_argument("--timestamp", type=parse_utc, default=parse_utc(DEFAULT_TIMESTAMP))
     return parser.parse_args()
 
@@ -240,7 +243,7 @@ def main() -> int:
     args = parse_args()
     output = args.output.resolve()
     output.parent.mkdir(parents=True, exist_ok=True)
-    artifact = build_html(args.timestamp)
+    artifact = build_html(args.timestamp, colorset=args.colorset)
     required = ["<svg", "<title", "<desc", 'data-pattern-id="d3-solar-terminator"', "prefers-reduced-motion"]
     missing = [token for token in required if token not in artifact]
     if missing:

@@ -1,5 +1,10 @@
 # Pocket Monster Stippling
 
+## Contents
+
+- [Reuse Contract](#reuse-contract)
+- [Source Excerpt](#source-excerpt)
+
 - **Pattern ID:** `d3-creature-stippling`
 - **Gallery source ID:** `creature-stippling`
 - **Family:** Sampling

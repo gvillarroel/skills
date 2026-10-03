@@ -23,6 +23,8 @@ import xml.etree.ElementTree as ET
 from decimal import Decimal, InvalidOperation
 from pathlib import Path
 from typing import Any, Iterator
+from palette_contract import SVG_PAINT_ATTRIBUTES, require_svg_paint
+from scaffold_synchronized_svg import theme_for_plan
 
 
 sys.dont_write_bytecode = True
@@ -656,6 +658,15 @@ def replace(args: argparse.Namespace) -> dict[str, Any]:
     contracts = binding_contracts(module, planned_module, root_revision)
 
     fragment_root, fragment_content = validate_fragment(fragment)
+    theme = theme_for_plan(plan)
+    colorset = "colorset1" if theme["preset"] in {"colorset1", "editorial"} else "colorset2"
+    for element in element_nodes(fragment_root):
+        for name, value in element.attrib.items():
+            if local_name(name).lower() in SVG_PAINT_ATTRIBUTES:
+                try:
+                    require_svg_paint(value, colorset)
+                except ValueError as error:
+                    raise ReplacementError(str(error)) from error
     validate_fragment_shell(fragment_root, shell_contract, args.module)
     validate_fragment_bindings(fragment_root, contracts)
 

@@ -36,6 +36,9 @@ jobs:
       - name: Validate skills
         run: uv run --script scripts/validate-skills.py
 
+      - name: Test colorset output contract
+        run: uv run --script scripts/test-colorsets.py
+
       - name: Validate diagram-type coverage
         run: uv run --script scripts/validate-diagram-type-coverage.py --disable-mermaid-browser-sandbox
 

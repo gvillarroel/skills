@@ -179,7 +179,7 @@ earth-data|Earth Information Office|1972|1146,1978,129|card|mapping,geography,~h
 def build_lineage(base):
     labels = ['Astronomy', 'Navigation', 'Mechanics', 'Optics', 'Cartography', 'Common origins']
     data = base('atlas-of-inquiry', 'AN ATLAS OF SHARED INQUIRY', 'lineage', labels)
-    data['groups'][-1]['color'] = '#A6A18B'
+    data['groups'][-1]['color'] = '#9c9c9c'
     data.update(width=1620,height=2430,pattern_id='usefulcharts-branching-lineage',
         subtitle='Individually authored fictional histories of institutions, unions and research traditions',
         reading_note='Solid paths: descent or stated merger. Dotted arrows: influence. Positions are schematic. Dates: founding or reorganisation. Map assignments are fictional.')

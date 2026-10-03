@@ -288,14 +288,14 @@ class ConsolidatorTests(unittest.TestCase):
                 if element.get("height") == "26"
             ]
             token_row_fills = {element.get("fill") for element in token_row_rects}
-            self.assertIn("#1E293B", token_row_fills)
-            self.assertIn("#64748B", token_row_fills)
-            for component_color in ("#38BDF8", "#A78BFA", "#34D399"):
+            self.assertIn("#e7e7e7", token_row_fills)
+            self.assertIn("#828282", token_row_fills)
+            for component_color in ("#007298", "#652f6c", "#45842a"):
                 self.assertNotIn(component_color, token_row_fills)
             gray_bars = [
                 element
                 for element in token_row_rects
-                if element.get("fill") == "#64748B"
+                if element.get("fill") == "#828282"
             ]
             self.assertEqual(len(gray_bars), 1)
             gray_x = float(gray_bars[0].get("x", "nan"))

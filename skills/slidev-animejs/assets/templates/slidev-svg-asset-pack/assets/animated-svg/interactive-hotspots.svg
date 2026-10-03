@@ -1,10 +1,10 @@
 <svg class="anime-svg-asset anime-svg-interactive-hotspots" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-labelledby="interactive-hotspots-title interactive-hotspots-desc">
   <title id="interactive-hotspots-title">Interactive hotspots asset</title>
-  <desc id="interactive-hotspots-desc" data-allow-hidden>A map-like SVG with route, hotspot, and callout hooks for Anime.js stagger, draw, and click-state animations.</desc>
+  <desc id="interactive-hotspots-desc" data-allow-hidden="true">A map-like SVG with route, hotspot, and callout hooks for Anime.js stagger, draw, and click-state animations.</desc>
   <rect class="svg-backdrop" width="960" height="540" rx="42" fill="#f7f7f7"/>
   <path class="map-region region-blue" d="M112 158 C214 78 330 124 366 220 C394 294 328 370 206 358 C122 350 58 244 112 158 Z" fill="#cdf3ff" stroke="#00ace6" stroke-width="5"/>
   <path class="map-region region-green" d="M412 118 C526 72 650 124 676 234 C704 348 604 438 474 394 C376 360 314 184 412 118 Z" fill="#dbffcc" stroke="#36b300" stroke-width="5"/>
-  <path class="map-region region-amber" d="M668 186 C746 116 872 146 898 250 C926 362 826 432 724 398 C634 368 594 252 668 186 Z" fill="#fff4cc" stroke="#fcd34d" stroke-width="5"/>
+  <path class="map-region region-amber" d="M668 186 C746 116 872 146 898 250 C926 362 826 432 724 398 C634 368 594 252 668 186 Z" fill="#fff4cc" stroke="#f1c319" stroke-width="5"/>
   <path class="map-route" d="M184 272 C292 186 366 298 470 246 S650 168 768 292" fill="none" stroke="#4f4f4f" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
   <g class="map-hotspots" data-anime-group="hotspots">
     <g class="map-hotspot" data-region="west" transform="translate(184 272)">

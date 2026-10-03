@@ -1,7 +1,7 @@
 #!/usr/bin/env -S uv run --script
 # /// script
 # requires-python = ">=3.11"
-# dependencies = []
+# dependencies = ["pillow>=11.0"]
 # ///
 
 from __future__ import annotations
@@ -9,12 +9,14 @@ from __future__ import annotations
 import argparse
 import json
 import sys
+import xml.etree.ElementTree as ET
 from pathlib import Path
 
 from plantuml_coverage import load_manifest, validate_report_coverage
+from palette_paints import COLORSETS, svg_paints
 
 
-COLORSET_TOKENS = {
+LEGACY_COLORSET_TOKENS = {
     "colorset1": {
         "#9E1B32",
         "#6D1222",
@@ -44,13 +46,14 @@ COLORSET_TOKENS = {
         "#F9CCFF",
     },
 }
+COLORSET_TOKENS = {name: {color.upper() for color in data["allowed"]} for name, data in COLORSETS.items()}
 STYLE_PROOF_TOKENS = {
     colorset: tokens - {"#FFFFFF", "#000000"}
     for colorset, tokens in COLORSET_TOKENS.items()
 }
 DISTINCTIVE_REPORT_TOKENS = {
     "colorset1": STYLE_PROOF_TOKENS["colorset1"],
-    "colorset2": {"#9E1B32", "#007298", "#E77204", "#45842A", "#00ACE6", "#652F6C", "#FFCCD5", "#CDF3FF", "#FFE5CC", "#DBFFCC", "#F9CCFF"},
+    "colorset2": STYLE_PROOF_TOKENS["colorset2"],
 }
 
 
@@ -64,7 +67,7 @@ def main() -> int:
     parser.add_argument("--output", type=Path, required=True, help="Render output directory used for the report.")
     parser.add_argument("--expected-diagrams", type=int, help="Expected rendered diagram count.")
     parser.add_argument("--expect-format", action="append", choices=["svg", "png"], default=[], help="Required output format. May be repeated.")
-    parser.add_argument("--colorset", choices=sorted(COLORSET_TOKENS), default="colorset2", help="Expected bundled colorset palette.")
+    parser.add_argument("--colorset", choices=sorted(COLORSET_TOKENS), default="colorset1", help="Expected bundled colorset palette.")
     parser.add_argument("--coverage-manifest", type=Path, help="Require exact family and fixture coverage from the frozen manifest.")
     args = parser.parse_args()
 
@@ -134,14 +137,33 @@ def main() -> int:
                 continue
             if fmt == "svg":
                 text = artifact.read_text(encoding="utf-8", errors="replace")
-                if "<svg" not in text:
-                    findings.append(f"{relative_path}: missing <svg")
+                try:
+                    svg_root = ET.fromstring(text)
+                    if svg_root.tag.rsplit("}", 1)[-1] != "svg":
+                        findings.append(f"{relative_path}: root is not SVG")
+                    outside = svg_paints(svg_root, args.colorset)
+                    if outside:
+                        findings.append(f"{relative_path}: off-palette SVG paints {sorted(outside)}")
+                except ET.ParseError:
+                    findings.append(f"{relative_path}: invalid SVG XML")
                 uppercase = text.upper()
                 tokens = {token for token in expected_tokens if token in uppercase}
                 result_svg_tokens.update(tokens)
                 seen_svg_tokens.update(tokens)
             if fmt == "png" and not artifact.read_bytes().startswith(b"\x89PNG\r\n\x1a\n"):
                 findings.append(f"{relative_path}: invalid PNG signature")
+            elif fmt == "png" and output.get("source_media_preserved") is not True:
+                from PIL import Image
+                try:
+                    with Image.open(artifact) as image:
+                        colors = image.convert("RGB").getcolors(image.width * image.height) or []
+                except (OSError, ValueError) as error:
+                    findings.append(f"{relative_path}: invalid PNG image: {error}")
+                    continue
+                actual = {"#" + "".join(f"{channel:02x}" for channel in color) for _, color in colors}
+                outside = actual - set(COLORSETS[args.colorset]["allowed"])
+                if outside:
+                    findings.append(f"{relative_path}: normalized PNG has off-palette RGB colors {sorted(outside)}")
         if result.get("themeApplied") is True and "svg" in required_formats:
             requires_svg_palette = True
         if result.get("themeApplied") is True and "svg" in required_formats and not (result_svg_tokens & style_proof_tokens):

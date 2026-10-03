@@ -1,5 +1,10 @@
 # MLP Internals
 
+## Contents
+
+- [Reuse Contract](#reuse-contract)
+- [Source Excerpt](#source-excerpt)
+
 - **Pattern ID:** `d3-mlp-internals`
 - **Gallery source ID:** `mlp-internals`
 - **Family:** AI

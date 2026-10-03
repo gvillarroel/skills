@@ -30,6 +30,7 @@ __pycache__/
 /output/
 # Keep authored Markdown while ignoring legacy generated Pages files.
 /docs/**
+!/docs/colorsets.json
 !/docs/**/
 !/docs/**/*.md
 /examples/

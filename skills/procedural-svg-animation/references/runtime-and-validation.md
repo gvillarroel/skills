@@ -1,5 +1,18 @@
 # Runtime and Validation
 
+## Contents
+
+- [Embedding Modes](#embedding-modes)
+- [Deterministic Contract](#deterministic-contract)
+- [Typed Configuration](#typed-configuration)
+- [Accessibility](#accessibility)
+- [Performance Budget](#performance-budget)
+- [Multi-strata Diagnostics](#multi-strata-diagnostics)
+- [Canonical Adversarial Test](#canonical-adversarial-test)
+- [Static Validation](#static-validation)
+- [Browser Validation](#browser-validation)
+- [Delivery Checklist](#delivery-checklist)
+
 ## Embedding Modes
 
 For a browsable catalog, keep headers and card padding compact and place a long
@@ -16,6 +29,14 @@ It writes artwork under `patterns/`. Validate the complete catalog by repeating 
 same command and parameters with `--check`. This rebuilds and compares the
 managed outputs; use it instead of guessing filenames or matching every URL
 as an external dependency. The standard SVG/XML namespace URLs do not fetch data.
+
+The catalog and single-pattern builder default to colorset1. Select colorset2
+with `--palette colorset2`. Keep authored HTML/CSS chrome in the active contract
+or its neutral subset. Validate all SVG paint, gradient stops, animation paint
+endpoints and filter colors; valid metadata alone is insufficient. Capture
+native motion with `scripts/render_procedural_svg.py --screenshot <preview.png>
+--report <browser.json>` using `uv run --script`, and inspect workspace-relative
+outputs rather than reading host-temp captures.
 
 | Mode | SVG-native CSS/SMIL | Script and interaction | Use it for |
 | --- | --- | --- | --- |

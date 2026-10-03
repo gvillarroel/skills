@@ -1,6 +1,6 @@
 ---
 name: threejs-animated-3d
-description: "Build, animate, troubleshoot, and validate Three.js/WebGL 3D scenes and galleries. Use when Codex needs browser-rendered 3D visuals, animated camera or object motion, particle fields, 3D data views, material and lighting studies, interactive canvas scenes, or a Three.js example page that should be verified with Playwright canvas-pixel checks."
+description: "Builds, animates, troubleshoots, and validates Three.js/WebGL 3D scenes and galleries. Use when Codex needs browser-rendered 3D visuals, animated camera or object motion, particle fields, 3D data views, material and lighting studies, interactive canvas scenes, or a Three.js example page that should be verified with Playwright canvas-pixel checks."
 ---
 
 # Three.js Animated 3D

@@ -18,7 +18,7 @@ from place_context_landmarks import fit_landmarks
 def brief():
     return dict(id='landmark-contract',title='A REGIONAL HISTORY',design='editorial',mode='lineage',layout='authored',
         width=1200,height=1000,source_note='Fictional test data.',
-        groups=[dict(id='red',label='Alder',color='#F56550')],
+        groups=[dict(id='red',label='Alder',color='#ff9633')],
         nodes=[dict(id='a',label='First archive',realm='The Alder March',group='red',x=450,y=250,width=140),
             dict(id='b',label='Later archive',realm='Bayeux & Coast',group='red',x=700,y=500,width=140)],
         edges=[dict(id='e',source='a',target='b',kind='branch')],

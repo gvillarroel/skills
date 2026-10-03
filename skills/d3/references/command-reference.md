@@ -1,5 +1,14 @@
 # Command Reference
 
+## Contents
+
+- [Capture](#capture)
+- [Dithering](#dithering)
+- [Artifact Checks](#artifact-checks)
+- [Composition Audits](#composition-audits)
+- [Full Gallery Visual Review](#full-gallery-visual-review)
+- [Saturated Task Overlap](#saturated-task-overlap)
+
 Use these commands only when the task needs the matching capture, contract, gallery, or maintenance validation path.
 
 ## Capture
@@ -25,6 +34,11 @@ uv run --script skills/d3/scripts/dither_d3_output.py scene.html -o projects/<pr
 ```
 
 Use `--algorithm floyd-steinberg` or `--algorithm atkinson` only for settled frames. For zoom/scale animation that must keep points attached to surface coordinates, use `assets/templates/surface-stable-fractal-dither.js` and validate its nested boundary:
+
+Dither palette overrides must contain only exact tokens from the active
+`--colorset` contract, which defaults to colorset1. Pass `--colorset colorset2`
+for an extended subset; arbitrary palettes are rejected before capture. The
+SVG and optional PNG preview use the same validated token subset.
 
 ```powershell
 node -e "const d=require('./skills/d3/assets/templates/surface-stable-fractal-dither.js'); const r=d.validateZoomSequence(); console.log(JSON.stringify(r)); if(!r.ok) process.exit(1)"

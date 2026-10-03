@@ -1,0 +1,98 @@
+{
+  "version": 1,
+  "title": "Inputs and constraints shape the system",
+  "thesis": "Two distinct views inform one integrated model.",
+  "note": "Illustrative structure; replace with the brief's actual facts.",
+  "canvas": {
+    "width": 1200,
+    "height": 760,
+    "displayWidth": 1200,
+    "minTextPx": 14,
+    "margin": 28,
+    "gap": 32,
+    "titleHeight": 64,
+    "footerHeight": 36
+  },
+  "grid": {
+    "columns": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "rows": [
+      1,
+      1
+    ]
+  },
+  "concepts": [
+    {
+      "id": "system",
+      "label": "System",
+      "color": "#9e1b32"
+    }
+  ],
+  "panels": [
+    {
+      "id": "inputs",
+      "title": "Shared inputs",
+      "question": "What is connected?",
+      "claim": "Peers share one integration point.",
+      "family": "radial-hub",
+      "reason": "One actual hub and unordered peers.",
+      "alternative": "A flow would invent an order.",
+      "concepts": [
+        "system"
+      ],
+      "source": "panels/inputs.svg",
+      "span": {
+        "row": 1,
+        "column": 1,
+        "rows": 1,
+        "columns": 2
+      },
+      "ports": {}
+    },
+    {
+      "id": "constraints",
+      "title": "Operating constraints",
+      "question": "How do the modes differ?",
+      "claim": "Constraints vary along independent dimensions.",
+      "family": "comparison-matrix",
+      "reason": "Aligned rows support direct comparison.",
+      "alternative": "A network would obscure independent attributes.",
+      "concepts": [
+        "system"
+      ],
+      "source": "panels/constraints.svg",
+      "span": {
+        "row": 2,
+        "column": 1,
+        "rows": 1,
+        "columns": 2
+      },
+      "ports": {}
+    },
+    {
+      "id": "synthesis",
+      "title": "Integrated model",
+      "question": "How do the two views combine?",
+      "claim": "Connections operate within shared constraints.",
+      "family": "layered-architecture",
+      "reason": "Containment separates responsibilities.",
+      "alternative": "A cycle would invent recurrence.",
+      "concepts": [
+        "system"
+      ],
+      "source": "panels/synthesis.svg",
+      "span": {
+        "row": 1,
+        "column": 3,
+        "rows": 2,
+        "columns": 2
+      },
+      "ports": {}
+    }
+  ],
+  "links": []
+}

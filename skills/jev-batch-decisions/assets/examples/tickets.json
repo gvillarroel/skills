@@ -1,0 +1,13 @@
+{
+  "fixture_kind": "Non-published synthetic acceptance data; not a runtime reference.",
+  "cases": [
+    {"id":"refund","text":"I was charged twice for my subscription. Please refund the duplicate payment. Only my own billing is affected; the application works normally.","category":"billing","refund":true,"urgency":2},
+    {"id":"outage","text":"Every customer is unable to access production. The service is completely down with no workaround. Please restore the platform.","category":"technical","refund":false,"urgency":4},
+    {"id":"login","text":"I forgot my password and cannot log in to my own account. Everyone else can work normally. Please help me reset it.","category":"account","refund":false,"urgency":2},
+    {"id":"sales","text":"We are considering buying an enterprise plan next quarter. Could your sales team send a quotation? We have no existing account or current operational problem.","category":"sales","refund":false,"urgency":0},
+    {"id":"minor","text":"The settings icon is visually misaligned. All functionality still works and everyone can continue normal work. Please fix this minor cosmetic bug.","category":"technical","refund":false,"urgency":1},
+    {"id":"ambiguous","text":"Hello. This message has no specific request and reports no current impact. Thank you.","category":"unknown","refund":false,"urgency":0},
+    {"id":"negation-es","text":"La factura está correcta. No quiero un reembolso. Solo necesito actualizar el nombre en mi perfil de usuario; puedo seguir trabajando normalmente.","category":"account","refund":false,"urgency":1},
+    {"id":"refund-es","text":"Me cobraron dos veces la suscripción y solicito la devolución del cargo duplicado. Solo está afectada mi facturación, el servicio funciona para todos.","category":"billing","refund":true,"urgency":2}
+  ]
+}

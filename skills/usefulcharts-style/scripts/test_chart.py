@@ -26,7 +26,7 @@ NS={"s":"http://www.w3.org/2000/svg"}
 
 def graph():
     return {"id":"test-family","title":"A Family Study","mode":"genealogy","width":1400,"height":1600,
-        "groups":[{"id":"a","label":"Alder","color":"#77BEDB"},{"id":"b","label":"Birch","color":"#F4C948"}],
+        "groups":[{"id":"a","label":"Alder","color":"#00ace6"},{"id":"b","label":"Birch","color":"#ffd332"}],
         "columns":5,"rows":["First","Second","Third"],"source_note":"Synthetic data.",
         "nodes":[{"id":"a","label":"Anna","group":"a","col":1,"row":0},{"id":"b","label":"Bram","group":"b","col":3,"row":0},
                  {"id":"c","label":"Cora","group":"a","col":1,"row":1},{"id":"d","label":"Dara","group":"b","col":3,"row":1},
@@ -36,7 +36,7 @@ def graph():
 
 def timeline():
     return {"id":"test-time","title":"A Shared Century","mode":"timeline","width":1400,"height":1600,
-        "groups":[{"id":"a","label":"Alpha","color":"#A6C49B"}],"source_note":"Synthetic data.",
+        "groups":[{"id":"a","label":"Alpha","color":"#45842a"}],"source_note":"Synthetic data.",
         "time":{"start":1900,"end":2000,"step":20},"lanes":[{"id":"west","label":"West"},{"id":"east","label":"East"}],
         "periods":[{"id":"p","label":"First phase","group":"a","lane":"west","start":1900,"end":1950},
                    {"id":"q","label":"Second phase","group":"a","lane":"west","start":1950,"end":2000},
@@ -179,7 +179,7 @@ class ChartTests(unittest.TestCase):
         result(data)
 
     def test_all_default_and_dark_paints_have_readable_text(self):
-        for paint in ["#77BEDB","#F4C948","#A6C49B","#813B37","#666666","#000000","#FFFFFF","#FF0000"]:
+        for paint in ["#00ace6","#ffd332","#45842a","#9e1b32","#696969","#000000","#FFFFFF","#e8002a"]:
             self.assertGreaterEqual(renderer.contrast(paint,renderer.text_color(paint)),4.5)
 
     def test_duplicate_group_colors_rejected(self):

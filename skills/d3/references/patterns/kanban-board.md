@@ -1,5 +1,10 @@
 # D3 Kanban Board
 
+## Contents
+
+- [Reuse Contract](#reuse-contract)
+- [Source Excerpt](#source-excerpt)
+
 - **Pattern ID:** `d3-kanban-board`
 - **Gallery source ID:** `kanban-board`
 - **Family:** Diagram

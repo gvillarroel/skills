@@ -14,6 +14,7 @@
 <script setup>
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, shallowRef, watch } from 'vue'
 import { echarts } from '../lib/echarts-setup.js'
+import { colorsetTheme, enforceColorsetRenderer, prepareColorsetOption } from '../../../templates/echarts-colorsets.mjs'
 
 const props = defineProps({
   option: {
@@ -59,12 +60,13 @@ const chart = shallowRef(null)
 const isReplaying = ref(false)
 const isSvgReplayable = computed(() => props.replayable && props.renderer === 'svg')
 let resizeObserver
+let stopPaletteEnforcement
 
 function applyOption() {
   if (!chart.value)
     return
 
-  chart.value.setOption(props.option, props.updateOptions)
+  chart.value.setOption(prepareColorsetOption(props.option, 'colorset2'), props.updateOptions)
 }
 
 function resizeChart() {
@@ -94,9 +96,10 @@ async function initChart() {
   if (chartElement.value.clientWidth === 0 || chartElement.value.clientHeight === 0)
     return
 
-  chart.value = echarts.init(chartElement.value, props.theme, {
+  chart.value = echarts.init(chartElement.value, props.theme || colorsetTheme('colorset2'), {
     renderer: props.renderer,
   })
+  stopPaletteEnforcement = enforceColorsetRenderer(chartElement.value, 'colorset2')
   applyOption()
   resizeChart()
 }
@@ -113,6 +116,8 @@ function handleWindowResize() {
 }
 
 function disposeChartInstance() {
+  stopPaletteEnforcement?.()
+  stopPaletteEnforcement = undefined
   chart.value?.dispose()
   chart.value = null
 }

@@ -1,5 +1,10 @@
 # Token Roulette Sampler
 
+## Contents
+
+- [Reuse Contract](#reuse-contract)
+- [Source Excerpt](#source-excerpt)
+
 - **Pattern ID:** `d3-token-roulette`
 - **Gallery source ID:** `token-roulette`
 - **Family:** LLM

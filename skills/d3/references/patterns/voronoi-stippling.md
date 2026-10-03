@@ -38,7 +38,7 @@ function renderVoronoiStippling() {
     const cells = svg.append("g").selectAll("path").data(points).join("path")
       .attr("d", (d, i) => voronoi.renderCell(i))
       .attr("fill", d => quantizedRamp([0, 1], ramps.gray)(d.weight))
-      .attr("stroke", "#d6dde6")
+      .attr("stroke", "#e7e7e7")
       .attr("stroke-width", .8);
     fadeIn(cells, .025, .6);
     const dots = svg.append("g").selectAll("circle").data(points).join("circle")

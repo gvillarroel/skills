@@ -1,5 +1,10 @@
 # Sketchy Gemma Compare
 
+## Contents
+
+- [Reuse Contract](#reuse-contract)
+- [Source Excerpt](#source-excerpt)
+
 - **Pattern ID:** `d3-sketchy-gemma-comparison`
 - **Gallery source ID:** `sketchy-gemma-comparison`
 - **Family:** Sketchy AI

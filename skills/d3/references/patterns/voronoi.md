@@ -24,7 +24,7 @@ function renderVoronoi() {
     const points = [[88, 95, "North"], [168, 62, "Edge"], [265, 112, "Core"], [378, 72, "Lab"], [470, 135, "Field"], [128, 204, "Ops"], [240, 232, "Design"], [346, 205, "Data"], [438, 282, "Pilot"], [180, 318, "Scale"], [304, 336, "Learn"]];
     const delaunay = d3.Delaunay.from(points, d => d[0], d => d[1]);
     const voronoi = delaunay.voronoi([34, 34, width - 34, height - 34]);
-    const color = d3.scaleOrdinal(d3.range(points.length), ["#d7e5f7", "#f7dfc6", "#d9ebd7", "#ece1f5", "#dcecef", "#f2d3d0", "#cfddf0", "#f2e4bd", "#d8e7de", "#e4ddf2", "#f0d8c4"]);
+    const color = d3.scaleOrdinal(d3.range(points.length), ["#cdf3ff", "#ffe5cc", "#e7e7e7", "#e7e7e7", "#e7e7e7", "#ffccd5", "#cdf3ff", "#ffe5cc", "#e7e7e7", "#e7e7e7", "#ffe5cc"]);
     const cells = svg.append("g").selectAll("path").data(points).join("path")
       .attr("d", (d, i) => voronoi.renderCell(i)).attr("fill", (d, i) => color(i))
       .attr("stroke", "#ffffff").attr("stroke-width", 2);

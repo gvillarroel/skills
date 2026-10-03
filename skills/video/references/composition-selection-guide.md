@@ -1,5 +1,16 @@
 # Scene Composition Selection Guide
 
+## Contents
+
+- [Selection Order](#selection-order)
+- [Composition Families](#composition-families)
+- [Source-Based Choices](#source-based-choices)
+- [Aspect Ratio Choices](#aspect-ratio-choices)
+- [Motion And Rhythm Choices](#motion-and-rhythm-choices)
+- [Multi-Scene Armature Sets](#multi-scene-armature-sets)
+- [Armature Strength Test](#armature-strength-test)
+- [Validation Questions](#validation-questions)
+
 For a diagram-like scene, dense source list, or authorized simplification, read [content-budget-and-fidelity.md](content-budget-and-fidelity.md) before choosing geometry. Freeze the viewer question, content budget, and source ledger first; this guide then chooses the armature that presents that retained content.
 
 Use this guide to choose composition approaches per scene. The goal is not to pick a pretty layout; it is to match the scene's job, source material, viewer task, timing, and constraints to a frame structure that can be validated.

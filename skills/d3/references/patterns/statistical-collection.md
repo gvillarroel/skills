@@ -1,5 +1,19 @@
 # Statistical and Analytical Pattern Collection
 
+## Contents
+
+- [d3-qq-plot](#d3-qq-plot)
+- [d3-dot-plot](#d3-dot-plot)
+- [d3-boxplot](#d3-boxplot)
+- [d3-ecdf](#d3-ecdf)
+- [d3-bullet](#d3-bullet)
+- [d3-point-range](#d3-point-range)
+- [d3-barcode-plot](#d3-barcode-plot)
+- [d3-facet-sparklines](#d3-facet-sparklines)
+- [d3-normalized-stacked-area](#d3-normalized-stacked-area)
+- [d3-moving-average](#d3-moving-average)
+- [d3-variable-color-line](#d3-variable-color-line)
+
 Use the pattern index to route directly to one section in this compact collection. Read only that section and any reference it explicitly names.
 
 ## d3-qq-plot
@@ -213,7 +227,7 @@ function renderBullet() {
       const g = svg.append("g").attr("transform", `translate(0,${y(row.name)})`);
       row.ranges.slice().reverse().forEach((range, i) => {
         g.append("rect").attr("x", x(0)).attr("y", 0).attr("width", x(range) - x(0)).attr("height", y.bandwidth())
-          .attr("fill", ["#dfe6ee", "#c4ceda", "#aab8c7"][i]).attr("rx", 4);
+          .attr("fill", ["#e7e7e7", "#cfcfcf", "#b5b5b5"][i]).attr("rx", 4);
       });
       const value = g.append("rect").attr("x", x(0)).attr("y", y.bandwidth() * .28)
         .attr("width", x(row.value) - x(0)).attr("height", y.bandwidth() * .44)
@@ -265,7 +279,7 @@ function renderPointRange() {
       .attr("x1", d => x(d.low)).attr("x2", d => x(d.high))
       .attr("y1", d => y(d.name) + y.bandwidth() / 2)
       .attr("y2", d => y(d.name) + y.bandwidth() / 2)
-      .attr("stroke", "#8fa0b3").attr("stroke-width", 4).attr("stroke-linecap", "round");
+      .attr("stroke", "#9c9c9c").attr("stroke-width", 4).attr("stroke-linecap", "round");
     drawPath(ranges, .08, .75);
     const dots = svg.append("g").selectAll("circle").data(data).join("circle")
       .attr("cx", d => x(d.estimate)).attr("cy", d => y(d.name) + y.bandwidth() / 2)
@@ -321,7 +335,7 @@ function renderBarcode() {
     fadeIn(ticks, .035, .55);
     lanes.forEach(lane => {
       svg.append("line").attr("x1", x(0)).attr("x2", x(100)).attr("y1", y(lane) + y.bandwidth() + 7).attr("y2", y(lane) + y.bandwidth() + 7)
-        .attr("stroke", "#e3e8ee");
+        .attr("stroke", "#e7e7e7");
     });
   }
 ```

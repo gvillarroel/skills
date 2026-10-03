@@ -11,6 +11,7 @@ from __future__ import annotations
 import argparse
 import html
 from pathlib import Path
+from colorset_adapter import colorset_output
 
 
 WIDTH = 760
@@ -24,11 +25,11 @@ PALETTE = {
     "red": "#9e1b32",
     "ink": "#333e48",
     "surface": "#ffffff",
-    "board": "#f6f8fa",
+    "board": "#f7f7f7",
     "gray100": "#e7e7e7",
-    "gray200": "#d8dde2",
-    "gray300": "#c9ced3",
-    "gray600": "#6d767e",
+    "gray200": "#e7e7e7",
+    "gray300": "#cfcfcf",
+    "gray600": "#828282",
     "blue_highlight": "#cdf3ff",
     "green_highlight": "#dbffcc",
     "purple_highlight": "#f9ccff",
@@ -250,6 +251,7 @@ def node_markup(node: dict[str, object], index: int) -> str:
       </g>"""
 
 
+@colorset_output
 def build_html() -> str:
     traces = "\n".join(trace_markup(trace, index) for index, trace in enumerate(TRACES))
     trace_underlays = "\n".join(trace_underlay_markup(trace) for trace in TRACES)
@@ -340,9 +342,10 @@ def build_html() -> str:
 def main() -> int:
     parser = argparse.ArgumentParser(description="Build a standalone Circuit Signal Traces D3/SVG pattern HTML artifact.")
     parser.add_argument("output", type=Path, help="Output HTML path.")
+    parser.add_argument("--colorset", choices=("colorset1", "colorset2"), default="colorset1")
     args = parser.parse_args()
     args.output.parent.mkdir(parents=True, exist_ok=True)
-    args.output.write_text(build_html(), encoding="utf-8")
+    args.output.write_text(build_html(colorset=args.colorset), encoding="utf-8")
     print(f"Wrote {args.output}")
     return 0
 

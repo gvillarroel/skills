@@ -1,5 +1,11 @@
 # Transition Pattern Catalog
 
+## Contents
+
+- [Metro Minimal Tonal Motion Transitions](#metro-minimal-tonal-motion-transitions)
+- [Pattern Cards](#pattern-cards)
+- [Sequence Rules](#sequence-rules)
+
 Use this catalog when a video needs several different transition types. Pick patterns by semantic job, not by decoration.
 
 ## Metro Minimal Tonal Motion Transitions

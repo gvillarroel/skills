@@ -21,6 +21,7 @@ Prefer fixing layout structure before suppressing findings. Use exception marker
 | `overlapping-text` | Two visible text blocks intersect significantly. | Adjust grid/flex constraints, add gap, reduce text, or fix absolute positioning. |
 | `covered-content` | The center of every rendered fragment of a visible text/media element is covered by another element. | Move the overlay, lower z-index, add padding, or make the overlay non-covering. |
 | `low-contrast-text` | Computed foreground/background contrast falls below the configured threshold. | Darken the text, lighten the background, or add a solid text backing behind image/gradient areas. |
+| `off-palette-paint` | A visible authored CSS/SVG base paint is outside the selected exact colorset. | Replace it with an exact token from the in-bundle palette; rerun every click state using `--colorset colorset1` or a justified `colorset2`. |
 | `tiny-text` | Visible text is below the configured minimum font size. | Use larger type, fewer words, or split content across slides. |
 | `zero-size-media` | Canvas, SVG, image, video, iframe, object, or embed surfaces render too small. | Give the container stable dimensions and verify hidden Slidev slides resize after activation. |
 | `broken-media` | Images or videos report failed intrinsic loading. | Fix the asset path, bundler import, public directory location, or network dependency. |
@@ -34,6 +35,19 @@ Prefer fixing layout structure before suppressing findings. Use exception marker
 | `page-error` | Playwright observed an uncaught page error. | Fix the exception and rerun the audit. |
 
 ## Threshold Tuning
+
+The default palette is colorset1. Pass `--colorset colorset2` for a deck that
+deliberately assigns full-color categorical roles. The rule checks computed text,
+background, visible borders, outlines, and SVG fill/stroke/stop paints, preserving
+alpha. Mark only the imported source-media element with `data-source-media` when
+source pixels or a verified brand logo must retain their identity; do not mark a
+slide, panel, or chart wrapper containing authored chrome.
+
+The computed-style check cannot prove Canvas drawing colors, every pseudo-element,
+or every gradient endpoint. Inspect editable chart options and Canvas/SVG exports
+alongside the report, and sample animation states when authored color properties
+change between clicks. Anti-aliasing and compression pixels are derived output,
+not additional authored palette tokens. Follow [the colorset contract](colorset-contract.md).
 
 Use threshold flags when a deck has a deliberate house style:
 

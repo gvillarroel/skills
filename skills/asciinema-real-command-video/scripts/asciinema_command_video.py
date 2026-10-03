@@ -8,6 +8,7 @@
 from __future__ import annotations
 
 import argparse
+from terminal_colorsets import agg_theme, write_presentation_cast
 import datetime as dt
 import hashlib
 import json
@@ -729,6 +730,8 @@ def validate_plan_data(plan_path: Path, data: Any) -> LoadedPlan:
         required=RENDER_REQUIRED_FIELDS,
     )
     require_string(render["theme"], label="render.theme", maximum=1000)
+    if render["theme"] not in {"colorset1", "colorset2"}:
+        raise CommandVideoError("render.theme must be colorset1 or colorset2")
     require_number(render["font_size"], label="render.font_size", minimum=8, maximum=40, integer=True)
     require_number(render["line_height"], label="render.line_height", minimum=1.0, maximum=2.5)
     require_number(render["fps"], label="render.fps", minimum=1, maximum=60, integer=True)
@@ -4662,10 +4665,12 @@ def record_session(args: argparse.Namespace) -> dict[str, Any]:
         render_gif = gif_path
     render = plan.data["render"]
     terminal = plan.data["terminal"]
+    presentation_cast = render_gif.with_suffix(".presentation.cast")
+    write_presentation_cast(cast_path, presentation_cast, render["theme"])
     agg_argv = [
         str(agg),
         "--theme",
-        str(render["theme"]),
+        agg_theme(render["theme"]),
         "--font-size",
         str(render["font_size"]),
         "--line-height",
@@ -4686,7 +4691,7 @@ def record_session(args: argparse.Namespace) -> dict[str, Any]:
         "--rows",
         str(terminal["rows"]),
         "--no-loop",
-        str(cast_path),
+        str(presentation_cast),
         str(render_gif),
         ]
     )

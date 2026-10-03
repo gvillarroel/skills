@@ -1,5 +1,10 @@
 # Web Load Timeline
 
+## Contents
+
+- [Reuse Contract](#reuse-contract)
+- [Source Excerpt](#source-excerpt)
+
 - **Pattern ID:** `d3-web-load-timeline`
 - **Gallery source ID:** `web-load-timeline`
 - **Family:** Performance

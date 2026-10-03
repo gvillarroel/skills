@@ -1,5 +1,10 @@
 # AI Line Writing
 
+## Contents
+
+- [Reuse Contract](#reuse-contract)
+- [Source Excerpt](#source-excerpt)
+
 - **Pattern ID:** `d3-ai-line-writing`
 - **Gallery source ID:** `ai-line-writing`
 - **Family:** Motion

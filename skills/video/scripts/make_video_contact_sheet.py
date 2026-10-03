@@ -28,7 +28,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--columns", type=int, default=3)
     parser.add_argument("--thumb-width", type=int, default=426)
     parser.add_argument("--label-times", action="store_true")
-    parser.add_argument("--background", default="#f6f8fb")
+    parser.add_argument("--background", default="#f7f7f7")
     parser.add_argument("--min-tile-color-buckets", type=int, default=0)
     parser.add_argument("--min-tile-nonbackground-ratio", type=float, default=0.0)
     parser.add_argument("--min-consecutive-change-ratio", type=float, default=0.0)

@@ -1,5 +1,17 @@
 # D3/SVG Recomposition Recipes
 
+## Contents
+
+- [ID and Metadata Contract](#id-and-metadata-contract)
+- [Narrative Fit Gate](#narrative-fit-gate)
+- [Balance and Symmetry](#balance-and-symmetry)
+- [Diagonal Armature](#diagonal-armature)
+- [Golden and Root Divisions](#golden-and-root-divisions)
+- [Thirds and Fifths Grid](#thirds-and-fifths-grid)
+- [Radial and Rosette](#radial-and-rosette)
+- [Flow Spine](#flow-spine)
+- [Dense Label Lanes](#dense-label-lanes)
+
 Use these recipes to convert one source pattern into a composition-specific variant.
 
 ## ID and Metadata Contract
