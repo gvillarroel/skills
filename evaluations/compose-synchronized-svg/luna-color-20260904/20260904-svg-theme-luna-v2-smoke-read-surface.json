@@ -1,0 +1,121 @@
+{
+  "passed": true,
+  "session": {
+    "version": 3,
+    "id": "01a06e4d-52bc-70ca-8e86-9eefb5307f0f",
+    "cwd": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\20260904-svg-theme-luna-v2-smoke\\workspace"
+  },
+  "models": {
+    "gpt-5.6-luna": 7
+  },
+  "providers": {
+    "openai-codex": 7
+  },
+  "usageTotals": {
+    "input": 15436,
+    "output": 1002,
+    "cacheRead": 14336,
+    "cacheWrite": 0,
+    "totalTokens": 30774
+  },
+  "invalidJsonLineCount": 0,
+  "invalidJsonLineSamples": [],
+  "invalidEventRecordCount": 0,
+  "invalidEventRecordLineSamples": [],
+  "toolCounts": {
+    "read": 2,
+    "bash": 4
+  },
+  "paths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 1679
+    },
+    {
+      "path": "skills/compose-synchronized-svg/SKILL.md",
+      "calls": 1,
+      "resultBytes": 11703
+    }
+  ],
+  "readPaths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 1679
+    },
+    {
+      "path": "skills/compose-synchronized-svg/SKILL.md",
+      "calls": 1,
+      "resultBytes": 11703
+    }
+  ],
+  "policyReadPaths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1
+    },
+    {
+      "path": "skills/compose-synchronized-svg/SKILL.md",
+      "calls": 1
+    }
+  ],
+  "totalReadResultBytes": 13382,
+  "calls": [
+    {
+      "line": 22,
+      "tool": "read",
+      "path": "../prompt.md",
+      "policyPath": "../prompt.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 1679
+    },
+    {
+      "line": 50,
+      "tool": "read",
+      "path": "skills/compose-synchronized-svg/SKILL.md",
+      "policyPath": "skills/compose-synchronized-svg/SKILL.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 11703
+    },
+    {
+      "line": 145,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "mkdir -p .tmp outputs/smoke && cp skills/compose-synchronized-svg/assets/templates/composition-brief.json outputs/smoke/brief.json && TMPDIR=\"$(pwd)/.tmp\" uv run --script skills/compose-synchronized-svg/scripts/preflight_svg_brief.py --brie",
+      "isError": false,
+      "resultBytes": 345
+    },
+    {
+      "line": 218,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "TMPDIR=\"$(pwd)/.tmp\" uv run --script skills/compose-synchronized-svg/scripts/compile_synchronized_svg_plan.py --brief outputs/smoke/brief.json --output outputs/smoke/plan.json --force --json",
+      "isError": false,
+      "resultBytes": 542
+    },
+    {
+      "line": 288,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "TMPDIR=\"$(pwd)/.tmp\" uv run --script skills/compose-synchronized-svg/scripts/compose_synchronized_svg.py --spec outputs/smoke/plan.json --output outputs/smoke/atlas.svg --force --json",
+      "isError": false,
+      "resultBytes": 1778
+    },
+    {
+      "line": 377,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "TMPDIR=\"$(pwd)/.tmp\" uv run --script skills/compose-synchronized-svg/scripts/validate_synchronized_svg.py outputs/smoke/atlas.svg --output outputs/smoke/static.json --json --min-modules 6 --min-asset-types 6 --min-renderer-families 5",
+      "isError": false,
+      "resultBytes": 4588
+    }
+  ],
+  "findings": []
+}

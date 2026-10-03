@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "study": "svg-brief-design-deadline-20260926",
+  "status": "complete_keep_baseline",
+  "user_deadline_utc": "2026-09-26T10:00:00+00:00",
+  "study_completed_at": "2026-09-26T09:44:39.038473+00:00",
+  "model": "openai-codex/gpt-6-luna",
+  "harbor_version": "0.18.0",
+  "gepa_version": "0.1.2",
+  "reflection_proposals": 1,
+  "native_development_trials": 12,
+  "execution_errors": 0,
+  "artifact_valid_trials": 12,
+  "original_six_case_mean": 0.4994161007565702,
+  "matched_minibatch": {
+    "pair_count": 3,
+    "baseline_sum": 1.6898118751201525,
+    "candidate_sum": 1.4565776455183685,
+    "baseline_mean": 0.5632706250400509,
+    "candidate_mean": 0.48552588183945616,
+    "mean_delta": -0.07774474320059466
+  },
+  "matched_regressions": 3,
+  "candidate_full_set_evaluated": false,
+  "validation_status": "sealed_selected_candidate_unchanged",
+  "holdout_status": "sealed_selected_candidate_unchanged",
+  "promoted": false,
+  "source_changed": false,
+  "all_provenance_model_integrity_audits_passed": true,
+  "guidance_only_payload_passed": true,
+  "native_tokens": 50787,
+  "reflection_tokens": 3975,
+  "cost_usd": null,
+  "semantic_accuracy": null,
+  "separate_baseline_controls": {
+    "routing": {
+      "cases": 4,
+      "passed": 3,
+      "tokens": 5172
+    },
+    "creation-routing": {
+      "cases": 2,
+      "passed": 2,
+      "tokens": 11527
+    },
+    "prompt-contract": {
+      "cases": 3,
+      "passed": 3,
+      "tokens": 13905
+    }
+  },
+  "automatic_campaigns_cumulative": {
+    "campaigns": 3,
+    "proposals": 10,
+    "native_trials": 96,
+    "unique_development_tasks": 14,
+    "pooled_gain": null
+  },
+  "raw_evidence": "evaluations/runs/svg-brief-design-deadline-20260926",
+  "work_timebox_closed_at": "2026-09-26T10:00:12.957772+00:00",
+  "final_decision": "keep_baseline_no_demonstrated_evolution_gain"
+}

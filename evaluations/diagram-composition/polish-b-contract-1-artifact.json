@@ -1,0 +1,18 @@
+{
+  "runId": "diagram-polish-20260928-b-contract-1",
+  "case": "contract",
+  "ok": true,
+  "findings": [],
+  "sourceSha256": "f9511607be8bb2a3af16fbb77f2ba5e8899c8480ac42c18553088fbac977c2ec",
+  "contactCount": 4,
+  "connectorCount": 2,
+  "internalContactCount": 0,
+  "openTerminalCount": 0,
+  "minimumTextPx": 14,
+  "minimumContrast": 5.60926841657814,
+  "verifiedConceptLinks": [
+    "review",
+    "source"
+  ],
+  "manualVisualReviewRequired": true
+}

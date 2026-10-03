@@ -1,0 +1,2232 @@
+{
+  "schemaVersion": 1,
+  "passed": false,
+  "skillCount": 33,
+  "bundleCount": 0,
+  "issueCounts": {
+    "reference-contents": 89,
+    "reference-contents-links": 1,
+    "reference-route": 256,
+    "windows-path": 2
+  },
+  "results": [
+    {
+      "passed": true,
+      "skill": "ambientcg-material-search",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 71,
+        "entryBytes": 3897,
+        "referenceCount": 1,
+        "longReferenceCount": 0,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": true,
+      "skill": "animated-svg-to-gif",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 88,
+        "entryBytes": 6321,
+        "referenceCount": 0,
+        "longReferenceCount": 0,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": false,
+      "skill": "asciinema-real-command-video",
+      "issues": [
+        {
+          "code": "reference-contents",
+          "path": "references/interaction-recipes.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        },
+        {
+          "code": "reference-contents",
+          "path": "references/session-plan.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        },
+        {
+          "code": "reference-contents",
+          "path": "references/tui-plan.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        }
+      ],
+      "metrics": {
+        "bodyLines": 80,
+        "entryBytes": 8950,
+        "referenceCount": 8,
+        "longReferenceCount": 3,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": false,
+      "skill": "compose-synchronized-svg",
+      "issues": [
+        {
+          "code": "reference-contents",
+          "path": "references/asset-selection-and-composition.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        },
+        {
+          "code": "reference-contents",
+          "path": "references/compiled-plan-and-bindings.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        },
+        {
+          "code": "reference-contents",
+          "path": "references/critique-and-validation.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        },
+        {
+          "code": "reference-contents",
+          "path": "references/runtime-api.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        },
+        {
+          "code": "reference-contents",
+          "path": "references/spatial-world-and-camera.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        }
+      ],
+      "metrics": {
+        "bodyLines": 81,
+        "entryBytes": 11646,
+        "referenceCount": 7,
+        "longReferenceCount": 5,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": false,
+      "skill": "d3",
+      "issues": [
+        {
+          "code": "reference-contents",
+          "path": "references/cardinality-generalization.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/command-reference.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-contents",
+          "path": "references/command-reference.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/composition-audit.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-contents",
+          "path": "references/composition-audit.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/composition-contract.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-contents",
+          "path": "references/composition-contract.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/composition-variants.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/example-pattern-recipes.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-contents",
+          "path": "references/example-pattern-recipes.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/gallery-patterns.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-contents",
+          "path": "references/gallery-patterns.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        },
+        {
+          "code": "reference-contents",
+          "path": "references/maintenance-validation.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/overlap-pattern-contracts.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-contents",
+          "path": "references/pattern-index.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        },
+        {
+          "code": "reference-contents",
+          "path": "references/pattern-selection-contracts.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/adjacency-matrix.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/agent-loop-overlay.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-contents",
+          "path": "references/patterns/agent-loop-overlay.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/ai-line-writing.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-contents",
+          "path": "references/patterns/ai-line-writing.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/airport-voronoi.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/alluvial.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/antimeridian-cutting.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/arc-diagram.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/area-missing-data.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/attention-arc-decoding.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-contents",
+          "path": "references/patterns/attention-arc-decoding.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/attention-routing.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/attention-tiles.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-contents",
+          "path": "references/patterns/attention-tiles.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/bar-race.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/beeswarm.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/binary-classifier-labeled.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-contents",
+          "path": "references/patterns/binary-classifier-labeled.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/binary-classifier.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/bivariate-choropleth.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/bollinger-bands.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/bowtie-barriers.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/bubble-map.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/bulkhead-isolation.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/burtin-antibiotics.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/cache-stampede.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/calendar-year.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/candlestick.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/category-burst.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/chord.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/circle-pack.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/circuit-breaker.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/circuit-signal-traces.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-contents",
+          "path": "references/patterns/circuit-signal-traces.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/circular-bar.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/cluster-dendrogram.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/cluster-hulls.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/colorbrewer-splines.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/column-profile.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/context-window-fill.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-contents",
+          "path": "references/patterns/context-window-fill.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/context-window-matrix.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-contents",
+          "path": "references/patterns/context-window-matrix.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/correlogram.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/creature-stippling.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-contents",
+          "path": "references/patterns/creature-stippling.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/critical-chain-buffer.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-contents",
+          "path": "references/patterns/critical-chain-buffer.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/critical-path.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/data-grid.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/delaunay-mesh.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/density-radial-collection.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-contents",
+          "path": "references/patterns/density-radial-collection.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/dependency-blast-radius.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-contents",
+          "path": "references/patterns/dependency-blast-radius.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/difference-chart.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/directed-chord.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/diverging-stack.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/document-token-bins.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-contents",
+          "path": "references/patterns/document-token-bins.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/document-token-errors.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/document-token-quality.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/dorling.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/drag-collisions.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/edge-bundling.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/embedding-neighborhood.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/er-schema.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/event-cascade.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/fault-tree.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/flashattention-blocks.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/flow-tokens.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/flowchart-dag.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/focus-context.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/force-network.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/forecast-fan.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/freehand-trace.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-contents",
+          "path": "references/patterns/freehand-trace.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/gantt-rollout.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/gemma-comparison.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-contents",
+          "path": "references/patterns/gemma-comparison.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/geo-route.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/geofence-join.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/git-graph.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/hexbin-map.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/hierarchical-bars.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/horizon.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/icicle.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/idempotency-guard.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/image-histogram.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/incident-escalation.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-contents",
+          "path": "references/patterns/incident-escalation.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/index-chart.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/inline-bar-table.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/interaction-motion-collection.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-contents",
+          "path": "references/patterns/interaction-motion-collection.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/isoline-terrain.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/kanban-assignees.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/kanban-board.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-contents",
+          "path": "references/patterns/kanban-board.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/kanban-legend-column.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/kanban-legend-footer.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-contents",
+          "path": "references/patterns/kinetic-glyph-mosaic.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/kv-cache-growth.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/lasso-selection.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/line-cursor.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/line-missing-data.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/logit-lens-rank-bump.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/lora-rank-update.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/marey-trains.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/marimekko.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/mirrored-beeswarm.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/mlp-execution.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-contents",
+          "path": "references/patterns/mlp-execution.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/mlp-internals.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-contents",
+          "path": "references/patterns/mlp-internals.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/mlp-simple.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/moe-router-capacity.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-contents",
+          "path": "references/patterns/moe-router-capacity.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/moon-phases.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/multi-head-attention-merge.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/nature-geometry.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/non-contiguous-cartogram.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/nucleus-sampling.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/occlusion-labels.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/organic-growth.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-contents",
+          "path": "references/patterns/organic-growth.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/orthographic-shading.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/overlap-7-flower.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/overlap-collection.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-contents",
+          "path": "references/patterns/overlap-collection.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/paged-kv-cache.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-contents",
+          "path": "references/patterns/paged-kv-cache.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/parallel-sets.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/pen-curve-study.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-contents",
+          "path": "references/patterns/pen-curve-study.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/pen-label-optimizer.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/pie-data-switch.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/pivot-heat-table.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/point-cloud.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-contents",
+          "path": "references/patterns/point-cloud.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/polar-area.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/polygon-clipping.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/population-pyramid.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/process-control-loop.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/projection-comparison.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/projection-switch.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/qkv-projection-flow.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/quadtree-partition.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/quadtree-search.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/quantitative-collection.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-contents",
+          "path": "references/patterns/quantitative-collection.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/queue-backpressure.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/radar.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/radial-hierarchy.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/radial-stacked-bars.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/rank-table.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/rectbin.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/replication-failover.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/residual-rmsnorm-stream.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/rope-rotation.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-contents",
+          "path": "references/patterns/rope-rotation.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/rotating-dot-rings.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/sankey.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/scaled-dot-product-attention.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/scatterplot-matrix.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/scatterplot-tour.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/science-geometry-collection.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-contents",
+          "path": "references/patterns/science-geometry-collection.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/sequence-lifelines.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/sized-donut-multiples.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/sketchy-beeswarm.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/sketchy-gemma-comparison.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-contents",
+          "path": "references/patterns/sketchy-gemma-comparison.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/sketchy-histogram.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/sketchy-line-chart.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/sketchy-streamgraph.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/sketchy-treemap.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/slo-burn-rate.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/smooth-zoom.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/solar-terminator.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-contents",
+          "path": "references/patterns/solar-terminator.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/sparkline-table.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/speculative-decoding.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-contents",
+          "path": "references/patterns/speculative-decoding.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/spike-map.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/spiral-timeline.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/stacked-grouped-bars.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/star-map.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/state-machine.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/statistical-collection.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-contents",
+          "path": "references/patterns/statistical-collection.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/streamgraph.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/sunburst.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/swiglu-feed-forward.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/symbol-glyphs.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/tangled-tree-levels.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-contents",
+          "path": "references/patterns/tangled-tree-levels.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/tangled-tree.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/tanglegram.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/task-overlap-dense.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-contents",
+          "path": "references/patterns/task-overlap-dense.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/task-overlap.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/temperature-softmax.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/temporal-network.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/ternary.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/tidy-tree.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/tile-choropleth.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/tiled-matmul.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-contents",
+          "path": "references/patterns/tiled-matmul.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/token-bucket.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/token-roulette.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-contents",
+          "path": "references/patterns/token-roulette.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/token-sampler.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-contents",
+          "path": "references/patterns/token-sampler.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/treemap.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/user-journey.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/vaccine-impact.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/voronoi-stippling.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/voronoi.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/waterfall.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/web-load-timeline.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-contents",
+          "path": "references/patterns/web-load-timeline.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/word-cloud.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/world-tour.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/patterns/zoom-to-bounds.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-contents",
+          "path": "references/recomposition-recipes.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/research-foundations.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/shared-renderer-helpers.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-contents",
+          "path": "references/shared-renderer-helpers.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        },
+        {
+          "code": "windows-path",
+          "path": "references/svg-replication.md",
+          "message": "Use forward slashes in resource paths, including command examples"
+        },
+        {
+          "code": "reference-contents",
+          "path": "references/svg-replication.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/text-clearance-contract.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-contents",
+          "path": "references/user-artifact-workflow.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/visual-tokens.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/visualizations/distribution-density.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/visualizations/flow-path-choreography.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/visualizations/focus-context-interaction.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/visualizations/force-networks.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/visualizations/geospatial-svg.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/visualizations/packing-proximity.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/visualizations/radial-hierarchies.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/visualizations/temporal-playback.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        }
+      ],
+      "metrics": {
+        "bodyLines": 105,
+        "entryBytes": 11025,
+        "referenceCount": 225,
+        "longReferenceCount": 53,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": true,
+      "skill": "destockd-video-search",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 75,
+        "entryBytes": 4915,
+        "referenceCount": 2,
+        "longReferenceCount": 0,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": false,
+      "skill": "diagram-composition",
+      "issues": [
+        {
+          "code": "reference-contents",
+          "path": "references/connectors-and-surfaces.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        },
+        {
+          "code": "reference-contents",
+          "path": "references/native-panels.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        }
+      ],
+      "metrics": {
+        "bodyLines": 187,
+        "entryBytes": 11702,
+        "referenceCount": 7,
+        "longReferenceCount": 2,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": false,
+      "skill": "echarts-animated-svg",
+      "issues": [
+        {
+          "code": "reference-contents",
+          "path": "references/chart-animation-profiles.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        }
+      ],
+      "metrics": {
+        "bodyLines": 94,
+        "entryBytes": 6620,
+        "referenceCount": 4,
+        "longReferenceCount": 1,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": false,
+      "skill": "google-cloud-sku-pricing",
+      "issues": [
+        {
+          "code": "reference-contents",
+          "path": "references/bigquery-sql.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        },
+        {
+          "code": "reference-contents",
+          "path": "references/parquet-offline.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        }
+      ],
+      "metrics": {
+        "bodyLines": 85,
+        "entryBytes": 4992,
+        "referenceCount": 3,
+        "longReferenceCount": 2,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": true,
+      "skill": "harbor-author-evaluation-datasets",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 220,
+        "entryBytes": 11964,
+        "referenceCount": 1,
+        "longReferenceCount": 1,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": true,
+      "skill": "hierarchy-lens",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 48,
+        "entryBytes": 6448,
+        "referenceCount": 6,
+        "longReferenceCount": 0,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": true,
+      "skill": "iconify-icon-search",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 55,
+        "entryBytes": 3092,
+        "referenceCount": 1,
+        "longReferenceCount": 0,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": true,
+      "skill": "jev-batch-decisions",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 74,
+        "entryBytes": 4942,
+        "referenceCount": 3,
+        "longReferenceCount": 0,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": true,
+      "skill": "kenney-asset-search",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 73,
+        "entryBytes": 3809,
+        "referenceCount": 1,
+        "longReferenceCount": 0,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": true,
+      "skill": "manim-svg-video",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 32,
+        "entryBytes": 3141,
+        "referenceCount": 3,
+        "longReferenceCount": 0,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": false,
+      "skill": "mermaid",
+      "issues": [
+        {
+          "code": "reference-contents",
+          "path": "references/diagram-selection.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        }
+      ],
+      "metrics": {
+        "bodyLines": 64,
+        "entryBytes": 8359,
+        "referenceCount": 6,
+        "longReferenceCount": 1,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": false,
+      "skill": "one-bit-dither-svg",
+      "issues": [
+        {
+          "code": "reference-contents",
+          "path": "references/mode-guide.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        }
+      ],
+      "metrics": {
+        "bodyLines": 95,
+        "entryBytes": 8503,
+        "referenceCount": 2,
+        "longReferenceCount": 1,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": true,
+      "skill": "pexels-media-search",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 70,
+        "entryBytes": 4152,
+        "referenceCount": 1,
+        "longReferenceCount": 0,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": true,
+      "skill": "pixel-art-image-video",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 73,
+        "entryBytes": 7124,
+        "referenceCount": 2,
+        "longReferenceCount": 0,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": true,
+      "skill": "plantuml-colorset-renderer",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 139,
+        "entryBytes": 9475,
+        "referenceCount": 1,
+        "longReferenceCount": 0,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": true,
+      "skill": "polyhaven-asset-search",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 91,
+        "entryBytes": 5067,
+        "referenceCount": 1,
+        "longReferenceCount": 0,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": false,
+      "skill": "procedural-svg-animation",
+      "issues": [
+        {
+          "code": "reference-contents",
+          "path": "references/multi-strata-mastery.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        },
+        {
+          "code": "reference-contents",
+          "path": "references/pattern-families.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        },
+        {
+          "code": "reference-contents",
+          "path": "references/runtime-and-validation.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        },
+        {
+          "code": "reference-contents",
+          "path": "references/technique-matrix.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        }
+      ],
+      "metrics": {
+        "bodyLines": 87,
+        "entryBytes": 8192,
+        "referenceCount": 6,
+        "longReferenceCount": 4,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": true,
+      "skill": "repository-reviewer-creator",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 40,
+        "entryBytes": 4880,
+        "referenceCount": 4,
+        "longReferenceCount": 0,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": false,
+      "skill": "simulation-data-lab",
+      "issues": [
+        {
+          "code": "reference-contents",
+          "path": "references/context-quality-cost.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        },
+        {
+          "code": "reference-contents",
+          "path": "references/data-and-provenance-contract.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        },
+        {
+          "code": "reference-contents",
+          "path": "references/diagnostics-and-inference.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        },
+        {
+          "code": "reference-contents",
+          "path": "references/engine-selection.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        },
+        {
+          "code": "reference-contents",
+          "path": "references/experiment-design.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        },
+        {
+          "code": "reference-contents",
+          "path": "references/model-variable-review.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/retry-economics.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-contents",
+          "path": "references/uncertainty-and-behavior.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        }
+      ],
+      "metrics": {
+        "bodyLines": 232,
+        "entryBytes": 14896,
+        "referenceCount": 9,
+        "longReferenceCount": 7,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": false,
+      "skill": "slidev-animejs",
+      "issues": [
+        {
+          "code": "reference-route",
+          "path": "references/animations/animatable-live-input.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/animations/css-properties-colors.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/animations/css-transforms.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/animations/draggable-interactions.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/animations/easings-springs.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/animations/engine-controls.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/animations/js-object-values.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/animations/keyframes-relative-values.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/animations/layout-transitions.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/animations/playback-controls.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/animations/scope-media-cleanup.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/animations/scroll-observer.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/animations/stagger-sequences.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/animations/svg-drawable.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/animations/svg-morph.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/animations/svg-motion-path.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/animations/text-scramble.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/animations/text-split.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/animations/timeline-sequencing.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/animations/timers.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/animations/waapi-animations.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-contents",
+          "path": "references/integration-patterns.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        }
+      ],
+      "metrics": {
+        "bodyLines": 35,
+        "entryBytes": 4293,
+        "referenceCount": 25,
+        "longReferenceCount": 1,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": false,
+      "skill": "slidev-echarts",
+      "issues": [
+        {
+          "code": "reference-route",
+          "path": "references/charts/bar.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/charts/boxplot.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/charts/candlestick.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/charts/chord.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/charts/custom.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/charts/effect-scatter.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/charts/funnel.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/charts/gauge.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/charts/graph.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/charts/heatmap.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/charts/line.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/charts/lines.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/charts/map.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/charts/parallel.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/charts/pictorial-bar.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/charts/pie.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/charts/radar.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/charts/sankey.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/charts/scatter.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/charts/sunburst.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/charts/theme-river.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/charts/tree.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/charts/treemap.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-contents",
+          "path": "references/integration-patterns.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        }
+      ],
+      "metrics": {
+        "bodyLines": 31,
+        "entryBytes": 3906,
+        "referenceCount": 27,
+        "longReferenceCount": 1,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": true,
+      "skill": "slidev-quality-audit",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 76,
+        "entryBytes": 3746,
+        "referenceCount": 1,
+        "longReferenceCount": 0,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": true,
+      "skill": "svg-brief-design",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 129,
+        "entryBytes": 7027,
+        "referenceCount": 4,
+        "longReferenceCount": 0,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": true,
+      "skill": "technical-logo-assets",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 73,
+        "entryBytes": 5741,
+        "referenceCount": 3,
+        "longReferenceCount": 0,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": true,
+      "skill": "threejs-animated-3d",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 103,
+        "entryBytes": 8475,
+        "referenceCount": 3,
+        "longReferenceCount": 0,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": false,
+      "skill": "usefulcharts-style",
+      "issues": [
+        {
+          "code": "reference-contents",
+          "path": "references/panel-outlines.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        },
+        {
+          "code": "reference-contents",
+          "path": "references/shared-time-rows.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/visible-discovery.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/visual-grammar.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        }
+      ],
+      "metrics": {
+        "bodyLines": 108,
+        "entryBytes": 21195,
+        "referenceCount": 29,
+        "longReferenceCount": 2,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": false,
+      "skill": "vectorize-art-patterns",
+      "issues": [
+        {
+          "code": "reference-contents",
+          "path": "references/collection-generation.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        }
+      ],
+      "metrics": {
+        "bodyLines": 232,
+        "entryBytes": 13230,
+        "referenceCount": 6,
+        "longReferenceCount": 1,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": false,
+      "skill": "video",
+      "issues": [
+        {
+          "code": "reference-contents",
+          "path": "references/composition-brief-contract.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        },
+        {
+          "code": "reference-contents",
+          "path": "references/composition-selection-guide.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        },
+        {
+          "code": "reference-contents-links",
+          "path": "references/content-budget-and-fidelity.md",
+          "message": "Contents must contain working links to the reference's headings"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/slidev-recording-troubleshooting.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "windows-path",
+          "path": "references/slidev-recording-workflow.md",
+          "message": "Use forward slashes in resource paths, including command examples"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/slidev-video-quality.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/source-preservation.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        },
+        {
+          "code": "reference-contents",
+          "path": "references/transition-decision-guide.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        },
+        {
+          "code": "reference-contents",
+          "path": "references/transition-pattern-catalog.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        },
+        {
+          "code": "reference-contents",
+          "path": "references/transition-plan-contract.md",
+          "message": "References longer than 100 lines need a contents section near the top"
+        },
+        {
+          "code": "reference-route",
+          "path": "references/transition-source-preservation.md",
+          "message": "Route directly from SKILL.md, individually or through a named reference collection"
+        }
+      ],
+      "metrics": {
+        "bodyLines": 78,
+        "entryBytes": 8185,
+        "referenceCount": 18,
+        "longReferenceCount": 6,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    }
+  ],
+  "limitations": "Measurable authoring/navigation and copied payloads; no claim of model-wide behavioral certification."
+}

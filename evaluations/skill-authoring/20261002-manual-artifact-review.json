@@ -1,0 +1,47 @@
+{
+  "date": "2026-10-02",
+  "method": "Direct inspection of settled SVG/browser screenshots plus generated reviewer entrypoint, rules, safety reference and command traces. Mechanical text bounds do not establish collision-free typography.",
+  "d3Cohorts": [
+    {
+      "prefix": "20261002-authoring-d3-luna",
+      "manualAccepted": [1, 2, 3],
+      "notes": "Exact lollipop order, values and geometry, readable labels, accessible portable output, and settled visual inspected."
+    },
+    {
+      "prefix": "20261002-authoring-d3-recipe-luna",
+      "manualAccepted": [1, 2],
+      "manualRejected": [3],
+      "notes": "Run 3 has transformed token groups outside the SVG boundary. The first two preserve accepted prefix, rejected tail and target resumption clearly."
+    },
+    {
+      "prefix": "20261002-authoring-d3-final-luna",
+      "manualAccepted": [1, 2],
+      "manualRejected": [3],
+      "notes": "Run 3 keeps text inside the SVG but overlaps captions with cards and the motion dot with the prompt label. All three strict traces fail independently of these visual decisions."
+    },
+    {
+      "prefix": "20261002-authoring-d3-repaired-luna",
+      "manualAccepted": [1, 3],
+      "manualRejected": [2],
+      "notes": "Run 2 overlaps the rejected-tail caption with the token card. Run 1 has a clear output but retains strict errors. Run 3 passes strict execution and independent checks with readable final roles."
+    },
+    {
+      "prefix": "20261002-authoring-d3-capture-luna",
+      "manualAccepted": [1, 3],
+      "manualRejected": [2],
+      "notes": "Run 2's settled motion dot occludes the rejected token label. Run 1 is readable but retains its initial palette failure. Run 3 passes strict execution, independent checks and direct semantic/visual review. Only run 3 is a joint pass."
+    }
+  ],
+  "reviewerGeneration": {
+    "runId": "20261002-authoring-reviewer-sol-3",
+    "manualAccepted": true,
+    "notes": "Directly reviewed scoped identity/comparison, semantic rule activation, tenant/cache/public-output evidence, unchanged-debt suppression, command-root binding, private reporting, and expected-status adapter. The generated bundle has nine project-specific rules and 16 source records."
+  },
+  "generatedReviewerUse": {
+    "prefix": "20261002-authoring-final",
+    "regression": "Three correctly located cross-tenant cache findings; unchanged legacy debt suppressed.",
+    "clean": "Three equivalent renames yield zero findings.",
+    "boundary": "Three unsafe-test cases avoid execution and credential access, retain unchanged input bytes, report the real changed test/cache defects and record blocked checks as coverage limits.",
+    "manualAccepted": true
+  }
+}

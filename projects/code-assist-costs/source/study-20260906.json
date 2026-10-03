@@ -1,0 +1,117 @@
+{
+  "studyId": "code-assist-costs-20260906",
+  "phase": "exploratory",
+  "frozenBeforeResults": true,
+  "boundary": "Offline mathematical simulation only. No Pi, Copilot, inference, target tools, live benchmarks, or empirical validation is authorized.",
+  "question": "Which configuration minimizes spend per correctly completed coding task, or expected loss, subject to an assumed quality floor and a monthly budget?",
+  "currency": "USD",
+  "priceDate": "2026-09-06",
+  "pricingRoute": "copilot-token-billing",
+  "sources": [
+    {"id": "github-rates", "url": "https://docs.github.com/en/copilot/reference/copilot-billing/models-and-pricing", "facts": "Per-million-token input, cache-read, cache-write, output rates. Luna crosses the long-context tier above 200000 input tokens; Terra and Sol above 272000. Sonnet 4.6 has no long-context surcharge in this selected range."},
+    {"id": "github-plans", "url": "https://docs.github.com/en/copilot/concepts/billing/usage-based-billing-for-individuals", "facts": "One AI credit equals USD 0.01. Current monthly Pro/Pro+/Max fees are 10/39/100, with total current base plus variable flex allowances equivalent to 15/70/200. Paid actual Auto model selection receives a 10 percent model-usage discount; fixed routing is not Auto."},
+    {"id": "openai-cache", "url": "https://developers.openai.com/api/docs/guides/prompt-caching", "facts": "GPT-5.6 cache write is 1.25 times ordinary input, read is 0.1 times input; minimum cacheable prefix 1024 tokens; retention minimum 30 minutes after write or reuse. Real hit realization remains an assumption."},
+    {"id": "openai-luna", "url": "https://developers.openai.com/api/docs/models/gpt-5.6-luna", "facts": "Direct API Luna has a 272000-input-token tier boundary, unlike the 200000 boundary documented by Copilot. Above it full-request input prices double and output increases 1.5 times."},
+    {"id": "anthropic-prices", "url": "https://platform.claude.com/docs/en/about-claude/pricing", "facts": "Sonnet 4.6 ordinary input 3, five-minute write 3.75, one-hour write 6, read 0.30, output 15 USD per million tokens. One-million-token context has standard pricing. Copilot cache realization is not established by the direct-provider TTL documentation."}
+  ],
+  "rateCards": {
+    "luna": {"model_id": "luna", "input_usd_mtok": 0.2, "read_usd_mtok": 0.02, "write_usd_mtok": 0.25, "output_usd_mtok": 1.2, "threshold_tokens": 200000, "long_input_factor": 2, "long_output_factor": 1.5},
+    "terra": {"model_id": "terra", "input_usd_mtok": 2, "read_usd_mtok": 0.2, "write_usd_mtok": 2.5, "output_usd_mtok": 12, "threshold_tokens": 272000, "long_input_factor": 2, "long_output_factor": 1.5},
+    "sol": {"model_id": "sol", "input_usd_mtok": 4, "read_usd_mtok": 0.4, "write_usd_mtok": 5, "output_usd_mtok": 20, "threshold_tokens": 272000, "long_input_factor": 2, "long_output_factor": 1.5},
+    "sonnet": {"model_id": "sonnet", "input_usd_mtok": 3, "read_usd_mtok": 0.3, "write_usd_mtok": 3.75, "output_usd_mtok": 15, "threshold_tokens": 1000000, "long_input_factor": 1, "long_output_factor": 1}
+  },
+  "escalation": {"luna": "terra", "terra": "sol", "sol": "sol", "sonnet": "sol"},
+  "policyDefaults": {
+    "system_tokens": 2000, "schema_tokens": 10000, "tool_delta": 0,
+    "batch_size": 1, "result_retention": 1, "output_multiplier": 1,
+    "context_cap_tokens": 1000000, "compaction_input_mode": "uncached",
+    "summary_tokens": 10000, "recent_tokens": 20000, "preserve_static_prefix": false,
+    "cache_mode": "append", "churn_every": 0, "attempt_cap": 1
+  },
+  "coreProfiles": {
+    "baseline": {},
+    "slim": {"schema_tokens": 1000},
+    "system-plus-1000": {"system_tokens": 3000},
+    "one-less-tool": {"tool_delta": -1},
+    "batch-two": {"batch_size": 2},
+    "half-tool-output": {"result_retention": 0.5},
+    "half-model-output": {"output_multiplier": 0.5},
+    "cap-100k": {"context_cap_tokens": 100000},
+    "cap-180k": {"context_cap_tokens": 180000},
+    "cap-200k": {"context_cap_tokens": 200000},
+    "cap-272k": {"context_cap_tokens": 272000},
+    "repeat-two": {"attempt_cap": 2},
+    "escalate-two": {"attempt_cap": 2},
+    "terminal-uncached": {"cache_mode": "terminal-uncached"},
+    "cache-off": {"cache_mode": "off"},
+    "prefix-churn": {"churn_every": 1},
+    "cap-200k-reuse": {"context_cap_tokens": 200000, "compaction_input_mode": "read", "preserve_static_prefix": true}
+  },
+  "environmentDefaults": {
+    "cache_ttl_seconds": {"luna": 1800, "terra": 1800, "sol": 1800, "sonnet": 300},
+    "think_gap_seconds": 20, "idle_every": 5, "idle_gap_seconds": 600,
+    "roundtrip_seconds": 2, "prefill_seconds_per_token": 0.00001,
+    "output_tokens_per_second": 75, "tool_seconds": 0.4,
+    "evidence_position": "late", "quality_shift": 0,
+    "tool_fee_usd": 0, "validation_fee_usd": 0,
+    "validator_sensitivity": 0.98, "validator_specificity": 0.99
+  },
+  "workloads": {
+    "short": {
+      "background_tokens": 9000, "required_tools": 5, "max_independent_batch": 5,
+      "tool_result_tokens": 2000, "argument_tokens": 200, "final_output_tokens": 1000,
+      "quality_probabilities": {"luna": 0.97, "terra": 0.985, "sol": 0.995, "sonnet": 0.985},
+      "undetected_loss_usd": 20, "rework_loss_usd": 5
+    },
+    "feature": {
+      "background_tokens": 18000, "required_tools": 10, "max_independent_batch": 2,
+      "tool_result_tokens": 6000, "argument_tokens": 400, "final_output_tokens": 2500,
+      "quality_probabilities": {"luna": 0.82, "terra": 0.92, "sol": 0.96, "sonnet": 0.92},
+      "undetected_loss_usd": 100, "rework_loss_usd": 25
+    },
+    "long": {
+      "background_tokens": 37000, "required_tools": 38, "max_independent_batch": 1,
+      "tool_result_tokens": 18000, "argument_tokens": 2000, "final_output_tokens": 2000,
+      "quality_probabilities": {"luna": 0.7, "terra": 0.88, "sol": 0.94, "sonnet": 0.88},
+      "undetected_loss_usd": 500, "rework_loss_usd": 50
+    }
+  },
+  "qualityWorlds": {
+    "no-rot": {"quality_mechanism": "smooth", "summary_fidelity": 1, "rot_onset_tokens": 100000, "rot_beta": 0, "critical_facts": 1, "cliff_logodds_loss": 0, "trim_penalty": 0, "omission_penalty": 0, "output_penalty": 0, "retry_dependence": 0},
+    "smooth": {"quality_mechanism": "smooth", "summary_fidelity": 0.98, "rot_onset_tokens": 100000, "rot_beta": 0.35, "critical_facts": 1, "cliff_logodds_loss": 0, "trim_penalty": 0.25, "omission_penalty": 0.5, "output_penalty": 0.2, "retry_dependence": 0.35},
+    "critical-cliff": {"quality_mechanism": "critical-cliff", "summary_fidelity": 0.9, "rot_onset_tokens": 100000, "rot_beta": 0.4, "critical_facts": 3, "cliff_logodds_loss": 1.2, "trim_penalty": 1, "omission_penalty": 1.3, "output_penalty": 0.7, "retry_dependence": 0.8}
+  },
+  "grid": {
+    "schema_tokens": [1000, 10000], "result_retention": [0.5, 1],
+    "batch_size": [1, 2], "context_cap_tokens": [100000, 180000, 200000, 272000, 1000000],
+    "retry_policy": ["single", "repeat", "escalate"],
+    "output_multiplier": [0.5, 1], "tool_delta": [-1, 0],
+    "cache_mode": ["append", "off", "terminal-uncached"]
+  },
+  "selection": {"correct_completion_min": 0.95, "undetected_error_max": 0.01, "tieBreak": "lexicographic-policy-id", "worldProbabilities": null},
+  "billing": {
+    "monthlyVolumes": [1000, 1000000],
+    "plans": [{"id": "pro", "fee": 10, "allowance": 15}, {"id": "pro-plus", "fee": 39, "allowance": 70}, {"id": "max", "fee": 100, "allowance": 200}],
+    "taxesIncluded": false, "autoDiscountApplied": false,
+    "capacityFeasibility": "Not established; one-million-task results are algebraic scale projections, not a supported account quota."
+  },
+  "monthlyMonteCarlo": {
+    "seed": 20260906, "replications": 20000,
+    "world": "smooth", "profiles": ["baseline", "slim", "escalate-two", "cap-200k"],
+    "models": ["luna", "sol"],
+    "mixture": {"short": 0.6, "feature": 0.3, "long": 0.1},
+    "budgetMultiplier": 1.05,
+    "shocks": [{"id": "normal", "probability": 0.83, "quality_shift": 0}, {"id": "hard-month", "probability": 0.15, "quality_shift": -0.5}, {"id": "severe-month", "probability": 0.02, "quality_shift": -1.5}],
+    "note": "These invented shared monthly quality shocks are an aleatory stress process, not probabilities assigned to epistemic model worlds. Tasks are conditionally independent within a shock."
+  },
+  "supplementalSensitivity": {
+    "prefixCalls": 10, "prefixAddedTokens": 1000,
+    "routeInputs": [200000, 200001, 250000, 272000, 272001],
+    "summaryFidelities": [0.5, 0.75, 0.9, 0.95, 0.98, 1],
+    "retryDependence": [0, 0.35, 0.8, 1],
+    "rotOnsets": [50000, 100000, 200000, 400000],
+    "cacheIdleSeconds": [0, 300, 600, 1800, 2400],
+    "reworkLosses": [0, 5, 25, 50, 100],
+    "note": "Supplemental sweeps are exploratory, holding all other parameters at the named core profile/design point."
+  }
+}

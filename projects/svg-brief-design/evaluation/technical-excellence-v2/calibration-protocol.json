@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "typesafe/jev-1.13",
+  "role": "Expert vector designer and technical art director",
+  "candidate_limit": 2,
+  "selection": "Accept the first candidate that passes every predeclared original control. If neither passes, do not activate a semantic reward.",
+  "controls": "17 original fixtures created without purchased references or existing candidate outputs; 14 Jev decisions and 3 deterministic artifact failures.",
+  "expectations": "Stored before inference in calibration/coordinator-only.json; never sent to Jev.",
+  "maximum_calls": {"calibration_per_candidate": 14, "single_item_repeat": 3, "retrospective": 36, "integration": 1},
+  "batching": "One complete drawing per request, concurrency three. No cross-item batching without separate calibration.",
+  "aggregation": "Use native score expectations, weights 35/25/20/20, critical missing-brief cap 0.49. Confidence is separate.",
+  "freeze": "Freeze the selected rubric, job, implementation, fonts, runner, controls and observed model before current-output scoring.",
+  "retrospective_scope": "All 18 baseline b and all 18 current q public svp3 outputs. No private cases, reference SVGs, old scores or treatment names enter Jev state.",
+  "retries": 0,
+  "limitations": "A small synthetic calibration tests concrete failure sensitivity and attainability, not general expert reliability. Text-only source reasoning is not direct visual perception. No skill promotion follows from this public retrospective."
+}

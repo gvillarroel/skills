@@ -1,0 +1,516 @@
+[
+  {
+    "run_id": "20260912-usefulcharts-panel-outlines-1",
+    "model": "openai-codex/gpt-5.3-codex-spark",
+    "runtime": {
+      "name": "usefulcharts-style",
+      "profile": "runtime",
+      "fileCount": 124,
+      "payloadSha256": "b8b697f1f496e2c3ecc07faaf1199e1442f320084388fc4070f6106472b351af"
+    },
+    "strict_pass": false,
+    "artifact_gate": true,
+    "integrity": true,
+    "trace_summary_exit": 1,
+    "independent": {
+      "status": "pass",
+      "records": 32,
+      "contains": 29,
+      "cross_references": 2,
+      "canvas": [
+        1692,
+        1039.8800048828125
+      ],
+      "visual_review": "Evaluator must inspect PNG and prose; this does not certify an agent visual critique."
+    },
+    "image_reads": [
+      "deliverables/poster.png"
+    ],
+    "errors": [
+      {
+        "tool": "write",
+        "path": "source-brief.json",
+        "command_excerpt": ""
+      },
+      {
+        "tool": "read",
+        "path": "source-brief.json",
+        "command_excerpt": ""
+      }
+    ],
+    "read_paths": [
+      "../prompt.md",
+      "skills/usefulcharts-style/SKILL.md",
+      "skills/usefulcharts-style/references/data-contract.md",
+      "skills/usefulcharts-style/references/knowledge-density.md",
+      "skills/usefulcharts-style/references/panel-outlines.md",
+      "source-brief.json",
+      "deliverables/poster.png",
+      "deliverables/browser.json",
+      "deliverables/source.json",
+      "deliverables/source.json"
+    ],
+    "command_count": 11,
+    "scope_sensitive_lines": [
+      "bash -lc \"rm -f deliverables/layout.json deliverables/poster.pdf\"",
+      "bash -lc \"rm -f deliverables/layout.json deliverables/poster.pdf\""
+    ],
+    "commands_sha256": "2aefdb27bddd5c3adae4b3bcaa07f1d8d64ca3aee7984ca533989f87e6563914",
+    "duration_seconds": 338.477,
+    "raw_evidence": "evaluations/runs/20260912-usefulcharts-panel-outlines-1"
+  },
+  {
+    "run_id": "20260912-usefulcharts-panel-outlines-2",
+    "model": "openai-codex/gpt-5.3-codex-spark",
+    "runtime": {
+      "name": "usefulcharts-style",
+      "profile": "runtime",
+      "fileCount": 124,
+      "payloadSha256": "b8b697f1f496e2c3ecc07faaf1199e1442f320084388fc4070f6106472b351af"
+    },
+    "strict_pass": false,
+    "artifact_gate": true,
+    "integrity": true,
+    "trace_summary_exit": 1,
+    "independent": {
+      "status": "pass",
+      "records": 32,
+      "contains": 29,
+      "cross_references": 2,
+      "canvas": [
+        1572,
+        1070.9200439453125
+      ],
+      "visual_review": "Evaluator must inspect PNG and prose; this does not certify an agent visual critique."
+    },
+    "image_reads": [
+      "deliverables/poster.png"
+    ],
+    "errors": [
+      {
+        "tool": "bash",
+        "path": null,
+        "command_excerpt": "uv run --script skills/usefulcharts-style/scripts/create_panel_poster.py deliverables/source.json --output-dir deliverables --columns 3 --panel-width 420"
+      },
+      {
+        "tool": "bash",
+        "path": null,
+        "command_excerpt": "cp deliverables/source.json panel_brief.json && uv run --script skills/usefulcharts-style/scripts/create_panel_poster.py panel_brief.json --output-dir deliverables --columns 3 --panel-width 420 && uv run --script skills/usefulcharts-style/scripts/audit_panel_poster.py deliverables/poster.svg --source deliverables/source.json --report deliverables/b"
+      }
+    ],
+    "read_paths": [
+      "../prompt.md",
+      "skills/usefulcharts-style/SKILL.md",
+      "skills/usefulcharts-style/references/evaluation.md",
+      "skills/usefulcharts-style/references/knowledge-density.md",
+      "skills/usefulcharts-style/references/panel-outlines.md",
+      "skills/usefulcharts-style/references/data-contract.md",
+      "deliverables/source.json",
+      "deliverables/browser.json",
+      "deliverables/browser.json",
+      "deliverables/poster.png",
+      "deliverables/browser.json",
+      "deliverables/review.md"
+    ],
+    "command_count": 15,
+    "scope_sensitive_lines": [
+      "rm -f deliverables/brief.json deliverables/layout.json deliverables/poster.pdf",
+      "cp deliverables/source.json panel_brief.json && uv run --script skills/usefulcharts-style/scripts/create_panel_poster.py panel_brief.json --output-dir deliverables --columns 3 --panel-width 420 && uv run --script skills/usefulcharts-style/scripts/audit_panel_poster.py deliverables/poster.svg --source deliverables/source.json --report deliverables/browser.json --png deliverables/poster.png",
+      "rm -f panel_brief.json",
+      "rm -f deliverables/layout.json deliverables/poster.pdf"
+    ],
+    "commands_sha256": "46640c64f8f86df2dc7658c9d6a7599f0fedfd355d566a2680177e1949ac4bd9",
+    "duration_seconds": 81.473,
+    "raw_evidence": "evaluations/runs/20260912-usefulcharts-panel-outlines-2"
+  },
+  {
+    "run_id": "20260912-usefulcharts-panel-outlines-3",
+    "model": "openai-codex/gpt-5.3-codex-spark",
+    "runtime": {
+      "name": "usefulcharts-style",
+      "profile": "runtime",
+      "fileCount": 124,
+      "payloadSha256": "b8b697f1f496e2c3ecc07faaf1199e1442f320084388fc4070f6106472b351af"
+    },
+    "strict_pass": false,
+    "artifact_gate": true,
+    "integrity": true,
+    "trace_summary_exit": 1,
+    "independent": {
+      "status": "pass",
+      "records": 32,
+      "contains": 29,
+      "cross_references": 2,
+      "canvas": [
+        1148,
+        1299.3199462890625
+      ],
+      "visual_review": "Evaluator must inspect PNG and prose; this does not certify an agent visual critique."
+    },
+    "image_reads": [
+      "deliverables/poster.png"
+    ],
+    "errors": [
+      {
+        "tool": "bash",
+        "path": null,
+        "command_excerpt": "rg -n '\"role\": \"code\"|\"text\": \"A[0-9]{1,2}' deliverables/browser.json"
+      },
+      {
+        "tool": "bash",
+        "path": null,
+        "command_excerpt": "python - <<'PY'\nimport xml.etree.ElementTree as ET\nfrom pathlib import Path\nroot = ET.parse('deliverables/poster.svg').getroot()\nns = {'svg':'http://www.w3.org/2000/svg'}\ntexts = root.findall('.//{http://www.w3.org/2000/svg}text')\nfor t in texts:\n    txt=''.join(t.itertext()).strip()\n    if txt:\n        print(txt)\nPY"
+      }
+    ],
+    "read_paths": [
+      "../prompt.md",
+      "skills/usefulcharts-style/SKILL.md",
+      "skills/usefulcharts-style/references/panel-outlines.md",
+      "skills/usefulcharts-style/references/data-contract.md",
+      "skills/usefulcharts-style/references/evaluation.md",
+      "deliverables/source.json",
+      "deliverables/browser.json",
+      "deliverables/browser.json",
+      "deliverables/browser.json",
+      "deliverables/browser.json",
+      "deliverables/poster.png",
+      "deliverables/poster.svg",
+      "deliverables/poster.svg",
+      "deliverables/source.json",
+      "deliverables/browser.json",
+      "deliverables/browser.json",
+      "deliverables/browser.json",
+      "deliverables/browser.json"
+    ],
+    "command_count": 28,
+    "scope_sensitive_lines": [
+      "path.write_text(json.dumps(obj, indent=2))",
+      "bash -lc 'rm -f deliverables/brief.json deliverables/layout.json deliverables/poster.pdf'"
+    ],
+    "commands_sha256": "4b2d14caf1486a44d366035856f15228b30ecb8844f607fc9059603e31618549",
+    "duration_seconds": 175.936,
+    "raw_evidence": "evaluations/runs/20260912-usefulcharts-panel-outlines-3"
+  },
+  {
+    "run_id": "20260912-usefulcharts-panel-outlines-b1",
+    "model": "openai-codex/gpt-5.3-codex-spark",
+    "runtime": {
+      "name": "usefulcharts-style",
+      "profile": "runtime",
+      "fileCount": 124,
+      "payloadSha256": "9d4c375aa07c4cadee886d632bae639efe7ba0cdb71f00849fa6b74aebcf1bb6"
+    },
+    "strict_pass": false,
+    "artifact_gate": true,
+    "integrity": true,
+    "trace_summary_exit": 1,
+    "independent": {
+      "status": "pass",
+      "records": 32,
+      "contains": 29,
+      "cross_references": 2,
+      "canvas": [
+        1812,
+        1020.0399780273438
+      ],
+      "visual_review": "Evaluator must inspect PNG and prose; this does not certify an agent visual critique."
+    },
+    "image_reads": [],
+    "errors": [
+      {
+        "tool": "bash",
+        "path": null,
+        "command_excerpt": "python - <<'PY'\nfrom PIL import Image\nimg=Image.open('deliverables/poster.png')\nprint('size',img.size,'mode',img.mode)\nPY"
+      }
+    ],
+    "read_paths": [
+      "../prompt.md",
+      "skills/usefulcharts-style/SKILL.md",
+      "skills/usefulcharts-style/references/panel-outlines.md",
+      "skills/usefulcharts-style/references/data-contract.md",
+      "skills/usefulcharts-style/assets/templates/starter.json",
+      "skills/usefulcharts-style/references/evaluation.md",
+      "deliverables/browser.json",
+      "deliverables/browser.json",
+      "deliverables/source.json",
+      "deliverables/source.json",
+      "deliverables/source.json",
+      "deliverables/review.md"
+    ],
+    "command_count": 19,
+    "scope_sensitive_lines": [
+      "rm -f deliverables/brief.json deliverables/layout.json deliverables/poster.pdf"
+    ],
+    "commands_sha256": "bcc7ad694cb1e416972ea4cb45bc94a026de972031fe66a0dfa59852327aa163",
+    "duration_seconds": 81.266,
+    "raw_evidence": "evaluations/runs/20260912-usefulcharts-panel-outlines-b1"
+  },
+  {
+    "run_id": "20260912-usefulcharts-panel-outlines-b2",
+    "model": "openai-codex/gpt-5.3-codex-spark",
+    "runtime": {
+      "name": "usefulcharts-style",
+      "profile": "runtime",
+      "fileCount": 124,
+      "payloadSha256": "9d4c375aa07c4cadee886d632bae639efe7ba0cdb71f00849fa6b74aebcf1bb6"
+    },
+    "strict_pass": false,
+    "artifact_gate": true,
+    "integrity": true,
+    "trace_summary_exit": 1,
+    "independent": {
+      "status": "pass",
+      "records": 32,
+      "contains": 29,
+      "cross_references": 2,
+      "canvas": [
+        1692,
+        1039.8800048828125
+      ],
+      "visual_review": "Evaluator must inspect PNG and prose; this does not certify an agent visual critique."
+    },
+    "image_reads": [
+      "deliverables/poster.png"
+    ],
+    "errors": [
+      {
+        "tool": "read",
+        "path": "deliverables/brief.json",
+        "command_excerpt": ""
+      }
+    ],
+    "read_paths": [
+      "../prompt.md",
+      "skills/usefulcharts-style/SKILL.md",
+      "skills/usefulcharts-style/references/panel-outlines.md",
+      "skills/usefulcharts-style/references/data-contract.md",
+      "skills/usefulcharts-style/references/knowledge-density.md",
+      "deliverables/brief.json",
+      "deliverables/brief.json",
+      "deliverables/brief.json",
+      "deliverables/brief.json",
+      "deliverables/poster.png",
+      "deliverables/browser.json",
+      "deliverables/source.json"
+    ],
+    "command_count": 12,
+    "scope_sensitive_lines": [
+      "rm -f deliverables/brief.json"
+    ],
+    "commands_sha256": "b31d3cf5f2712ec7e6a28ed3f9979480dbe6d1b0e85b175783046a722bb80729",
+    "duration_seconds": 60.843,
+    "raw_evidence": "evaluations/runs/20260912-usefulcharts-panel-outlines-b2"
+  },
+  {
+    "run_id": "20260912-usefulcharts-panel-outlines-b3",
+    "model": "openai-codex/gpt-5.3-codex-spark",
+    "runtime": {
+      "name": "usefulcharts-style",
+      "profile": "runtime",
+      "fileCount": 124,
+      "payloadSha256": "9d4c375aa07c4cadee886d632bae639efe7ba0cdb71f00849fa6b74aebcf1bb6"
+    },
+    "strict_pass": false,
+    "artifact_gate": true,
+    "integrity": true,
+    "trace_summary_exit": 1,
+    "independent": {
+      "status": "pass",
+      "records": 32,
+      "contains": 29,
+      "cross_references": 2,
+      "canvas": [
+        1148,
+        1361.4000244140625
+      ],
+      "visual_review": "Evaluator must inspect PNG and prose; this does not certify an agent visual critique."
+    },
+    "image_reads": [],
+    "errors": [
+      {
+        "tool": "bash",
+        "path": null,
+        "command_excerpt": "python - <<'PY'\nimport struct,zlib\nfrom pathlib import Path\n\ndef parse_png(path):\n    data=Path(path).read_bytes()\n    assert data[:8]==b'\\x89PNG\\r\\n\\x1a\\n'\n    i=8\n    ihdr=None\n    idat=b''\n    while i < len(data):\n        l=struct.unpack('>I',data[i:i+4])[0];i+=4\n        t=data[i:i+4];i+=4\n        chunk=data[i:i+l];i+=l\n        i+=4\n        if t"
+      }
+    ],
+    "read_paths": [
+      "../prompt.md",
+      "skills/usefulcharts-style/SKILL.md",
+      "skills/usefulcharts-style/references/panel-outlines.md",
+      "skills/usefulcharts-style/references/data-contract.md",
+      "skills/usefulcharts-style/assets/templates/starter.json",
+      "skills/usefulcharts-style/scripts/create_panel_poster.py",
+      "skills/usefulcharts-style/references/knowledge-density.md",
+      "deliverables/browser.json",
+      "deliverables/source.json",
+      "deliverables/poster.svg",
+      "deliverables/review.md"
+    ],
+    "command_count": 12,
+    "scope_sensitive_lines": [
+      "rm -f deliverables/brief.json deliverables/layout.json deliverables/poster.pdf"
+    ],
+    "commands_sha256": "c075e6bb658d655159605fb61e5e4bc87b671875f6f9433d34f2ccf21ac90b56",
+    "duration_seconds": 69.981,
+    "raw_evidence": "evaluations/runs/20260912-usefulcharts-panel-outlines-b3"
+  },
+  {
+    "run_id": "20260912-usefulcharts-panel-outlines-luna-1",
+    "model": "openai-codex/gpt-5.6-luna",
+    "runtime": {
+      "name": "usefulcharts-style",
+      "profile": "runtime",
+      "fileCount": 124,
+      "payloadSha256": "9d4c375aa07c4cadee886d632bae639efe7ba0cdb71f00849fa6b74aebcf1bb6"
+    },
+    "strict_pass": true,
+    "artifact_gate": true,
+    "integrity": true,
+    "trace_summary_exit": 0,
+    "independent": {
+      "status": "pass",
+      "records": 32,
+      "contains": 29,
+      "cross_references": 2,
+      "canvas": [
+        1632,
+        1039.8800048828125
+      ],
+      "visual_review": "Evaluator must inspect PNG and prose; this does not certify an agent visual critique."
+    },
+    "image_reads": [
+      "rendered/poster.png",
+      "rendered/poster.png",
+      "deliverables/poster.png"
+    ],
+    "errors": [],
+    "read_paths": [
+      "../prompt.md",
+      "skills/usefulcharts-style/SKILL.md",
+      "skills/usefulcharts-style/references/panel-outlines.md",
+      "skills/usefulcharts-style/references/knowledge-density.md",
+      "skills/usefulcharts-style/references/information-design.md",
+      "skills/usefulcharts-style/references/evaluation.md",
+      "rendered/source.json",
+      "rendered/browser.json",
+      "rendered/poster.png",
+      "rendered/browser.json",
+      "rendered/poster.png",
+      "skills/usefulcharts-style/assets/templates/density-census.json",
+      "deliverables/poster.html",
+      "deliverables/browser.json",
+      "deliverables/poster.png"
+    ],
+    "command_count": 4,
+    "scope_sensitive_lines": [
+      "python build_brief.py && rm -rf rendered && uv run --script skills/usefulcharts-style/scripts/create_panel_poster.py brief.json --output-dir rendered --columns 3 --panel-width 500",
+      "python build_brief.py && rm -rf rendered && uv run --script skills/usefulcharts-style/scripts/create_panel_poster.py brief.json --output-dir rendered --columns 3 --panel-width 500",
+      "mkdir -p deliverables && find deliverables -mindepth 1 -maxdepth 1 -exec rm -rf {} + && cp rendered/poster.svg deliverables/poster.svg && cp rendered/poster.html deliverables/poster.html && cp rendered/poster.png deliverables/poster.png && cp rendered/source.json deliverables/source.json && uv run --script skills/usefulcharts-style/scripts/audit_panel_poster.py deliverables/poster.svg --source deliverables/source.json --report deliverables/browser.json --png deliverables/poster.png"
+    ],
+    "commands_sha256": "793695c7fc62ea5948f780256364b8dc813788c411b7625b1e18a155a42ec6c0",
+    "duration_seconds": 148.128,
+    "raw_evidence": "evaluations/runs/20260912-usefulcharts-panel-outlines-luna-1"
+  },
+  {
+    "run_id": "20260912-usefulcharts-panel-outlines-luna-2",
+    "model": "openai-codex/gpt-5.6-luna",
+    "runtime": {
+      "name": "usefulcharts-style",
+      "profile": "runtime",
+      "fileCount": 124,
+      "payloadSha256": "9d4c375aa07c4cadee886d632bae639efe7ba0cdb71f00849fa6b74aebcf1bb6"
+    },
+    "strict_pass": true,
+    "artifact_gate": true,
+    "integrity": true,
+    "trace_summary_exit": 0,
+    "independent": {
+      "status": "pass",
+      "records": 32,
+      "contains": 29,
+      "cross_references": 2,
+      "canvas": [
+        1148,
+        1361.4000244140625
+      ],
+      "visual_review": "Evaluator must inspect PNG and prose; this does not certify an agent visual critique."
+    },
+    "image_reads": [
+      "panel-result/poster.png",
+      "deliverables/poster.png"
+    ],
+    "errors": [],
+    "read_paths": [
+      "../prompt.md",
+      "skills/usefulcharts-style/SKILL.md",
+      "skills/usefulcharts-style/references/panel-outlines.md",
+      "skills/usefulcharts-style/references/evaluation.md",
+      "skills/usefulcharts-style/references/information-design.md",
+      "skills/usefulcharts-style/references/knowledge-density.md",
+      "panel-result/poster.png",
+      "panel-result/source.json",
+      "panel-result/poster.html",
+      "panel-result/browser.json",
+      "deliverables/poster.png"
+    ],
+    "command_count": 4,
+    "scope_sensitive_lines": [
+      "mkdir -p deliverables && cp panel-result/poster.svg deliverables/poster.svg && cp panel-result/poster.html deliverables/poster.html && cp panel-result/poster.png deliverables/poster.png && cp panel-result/source.json deliverables/source.json && cp panel-result/browser.json deliverables/browser.json"
+    ],
+    "commands_sha256": "a123c4233ad816c1830bb24afaf81c1d641137b96baaaabbeb1c211b1de9ba06",
+    "duration_seconds": 119.76,
+    "raw_evidence": "evaluations/runs/20260912-usefulcharts-panel-outlines-luna-2"
+  },
+  {
+    "run_id": "20260912-usefulcharts-panel-outlines-luna-3",
+    "model": "openai-codex/gpt-5.6-luna",
+    "runtime": {
+      "name": "usefulcharts-style",
+      "profile": "runtime",
+      "fileCount": 124,
+      "payloadSha256": "9d4c375aa07c4cadee886d632bae639efe7ba0cdb71f00849fa6b74aebcf1bb6"
+    },
+    "strict_pass": true,
+    "artifact_gate": true,
+    "integrity": true,
+    "trace_summary_exit": 0,
+    "independent": {
+      "status": "pass",
+      "records": 32,
+      "contains": 29,
+      "cross_references": 2,
+      "canvas": [
+        1392,
+        1079.56005859375
+      ],
+      "visual_review": "Evaluator must inspect PNG and prose; this does not certify an agent visual critique."
+    },
+    "image_reads": [
+      "panel-result/poster.png",
+      "deliverables/poster.png"
+    ],
+    "errors": [],
+    "read_paths": [
+      "../prompt.md",
+      "skills/usefulcharts-style/SKILL.md",
+      "skills/usefulcharts-style/references/knowledge-density.md",
+      "skills/usefulcharts-style/references/editorial-composition.md",
+      "skills/usefulcharts-style/references/evaluation.md",
+      "skills/usefulcharts-style/references/panel-outlines.md",
+      "panel-result/poster.png",
+      "panel-result/source.json",
+      "panel-result/layout.json",
+      "panel-result/browser.json",
+      "deliverables/poster.png",
+      "deliverables/source.json",
+      "deliverables/browser.json"
+    ],
+    "command_count": 3,
+    "scope_sensitive_lines": [
+      "mkdir -p deliverables && cp panel-result/poster.svg deliverables/poster.svg && cp panel-result/poster.html deliverables/poster.html && cp panel-result/poster.png deliverables/poster.png && cp panel-result/source.json deliverables/source.json && uv run --script skills/usefulcharts-style/scripts/audit_panel_poster.py deliverables/poster.svg --source deliverables/source.json --report deliverables/browser.json --png deliverables/poster.png"
+    ],
+    "commands_sha256": "67393a22efc0f091d2bae2de13369d390cda97e0fb78316118d8d0621384a304",
+    "duration_seconds": 151.094,
+    "raw_evidence": "evaluations/runs/20260912-usefulcharts-panel-outlines-luna-3"
+  }
+]

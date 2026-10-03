@@ -1,0 +1,116 @@
+{
+  "status": "no-selected-improvement",
+  "model": "openai-codex/gpt-6-astra",
+  "thinking": "medium",
+  "new_generator_calls": 36,
+  "retries": 0,
+  "evaluator": "Jev 6.3 unchanged",
+  "installed": false,
+  "canonical_and_local_unchanged": true,
+  "private_gate_opened": false,
+  "reserved_cohort_consumed": false,
+  "archive": [],
+  "native_archive_sha256": "4b8de174bb0fca5b909c2b8df349c1f389e292ea8513cdcb672cd9e4d4a47eaf",
+  "selection_sha256": "3a6ebf7b67cd7ccf54119eda33aa230e0280679f66c9ec0115bbe31b0fe55164",
+  "protocol_sha256": "a0d90894962d8c956605951c8147da08065d925ef8d7c7d331329db0611cd850",
+  "summary_sha256": "4902ee84448cf96dfb6ee52c19b9d535b640aac129984067cea1455f533ea3f0",
+  "model_change": {
+    "complete_families": 4,
+    "historical_not_causal": true,
+    "mean_delta_100": 18.09715698653198
+  },
+  "totals": {
+    "luna_b_historical": {
+      "mean_100": null,
+      "errors": 1,
+      "review_flags": 2,
+      "preview_reads": 11,
+      "scaffold_uses": 4
+    },
+    "astra_b": {
+      "mean_100": null,
+      "errors": 1,
+      "review_flags": 7,
+      "preview_reads": 18,
+      "scaffold_uses": 4
+    },
+    "astra_c": {
+      "mean_100": null,
+      "errors": 2,
+      "review_flags": 7,
+      "preview_reads": 18,
+      "scaffold_uses": 3
+    }
+  },
+  "candidate_guide_reads": 18,
+  "candidate_guards": {
+    "c": {
+      "native_mean": 0.679376388888889,
+      "archive_member": false,
+      "native_qualified": false,
+      "baseline_usable": false,
+      "native_mean_gain": -0.07462271324354658,
+      "families": {
+        "vector-011--6b42f7e2789d1bd1": {
+          "baseline": 0.6279916666666666,
+          "candidate": 0.5589749999999999,
+          "delta": -0.06901666666666673
+        },
+        "vector-020--09ee2ae28c7c367a": {
+          "baseline": 0.8836916666666667,
+          "candidate": 0.22468333333333335,
+          "delta": -0.6590083333333333
+        },
+        "vector-019--75606bdb4ee5b4af": {
+          "baseline": 0.8029833333333333,
+          "candidate": 0.8255666666666667,
+          "delta": 0.0225833333333334
+        },
+        "vector-024--652120566170fbf2": {
+          "baseline": 0.6564916666666667,
+          "candidate": 0.6666666666666666,
+          "delta": 0.010174999999999934
+        },
+        "vector-004--eb6eabbcb9ca2ad4": {
+          "baseline": 0.58325,
+          "candidate": 0.83865,
+          "delta": 0.25539999999999996
+        },
+        "vector-030--d3c57e0c21dbede0": {
+          "baseline": 0.9695862794612794,
+          "candidate": 0.9617166666666667,
+          "delta": -0.007869612794612735
+        }
+      },
+      "unaffected_family_visual_guard": {
+        "complete_evaluable": false,
+        "families": {
+          "vector-011--6b42f7e2789d1bd1": {
+            "baseline": 0.6279916666666667,
+            "candidate": 0.558975
+          },
+          "vector-019--75606bdb4ee5b4af": {
+            "baseline": 0.8029833333333334,
+            "candidate": 0.8255666666666667
+          },
+          "vector-020--09ee2ae28c7c367a": {
+            "baseline": 0.8836916666666667,
+            "candidate": null
+          },
+          "vector-024--652120566170fbf2": {
+            "baseline": 0.6564916666666667,
+            "candidate": 0.6666666666666666
+          },
+          "vector-030--d3c57e0c21dbede0": {
+            "baseline": 0.9695862794612794,
+            "candidate": 0.9617166666666667
+          }
+        },
+        "passed": false
+      },
+      "eligible": false
+    }
+  },
+  "cost": null,
+  "cost_note": "No reliable provider invoice supplied by this adapter; no cost estimate presented as measured."
+}

@@ -1,0 +1,120 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-09-26T09:54:45.126536+00:00",
+  "skill": "svg-brief-design",
+  "source_changed_by_evolution": false,
+  "all_passed": true,
+  "basis": "Commands executed in this task; concise outputs summarized here. Native and artifact integrity have independent file-backed receipts.",
+  "checks": {
+    "patterns": {
+      "command": "uv run --script scripts/validate-pattern-ids.py",
+      "exit_code": 0,
+      "output_summary": "1222 canonical IDs; passed"
+    },
+    "skills": {
+      "command": "uv run --script scripts/validate-skills.py",
+      "exit_code": 0,
+      "output_summary": "Validation passed."
+    },
+    "independence": {
+      "command": "uv run --script scripts/test-skill-independence.py",
+      "exit_code": 0,
+      "output_summary": "Skill independence validator tests passed."
+    },
+    "payload": {
+      "command": "uv run --script scripts/check-repo-payload.py",
+      "exit_code": 0,
+      "output_summary": "Payload check passed."
+    },
+    "harness": {
+      "command": "uv run --script scripts/test-pi-eval-harness.py",
+      "exit_code": 0,
+      "output_summary": "14 tests passed."
+    },
+    "quick": {
+      "command": "uv run --with pyyaml python C:/Users/villa/.codex/skills/.system/skill-creator/scripts/quick_validate.py skills/svg-brief-design",
+      "exit_code": 0,
+      "output_summary": "Skill is valid!"
+    },
+    "installed": {
+      "command": "uv run --script scripts/sync-local-skills.py --source skills/svg-brief-design --destination .agents/skills/svg-brief-design --check",
+      "exit_code": 0,
+      "output_summary": "All 3 installed files match canonical source."
+    },
+    "compile": {
+      "command": "uv run python -m compileall -q projects/svg-brief-design/scripts",
+      "exit_code": 0,
+      "output_summary": "Passed; no output."
+    },
+    "diff": {
+      "command": "git diff --check -- SKILLS.md",
+      "exit_code": 0,
+      "output_summary": "Passed; CRLF normalization advisory only."
+    }
+  },
+  "guidance_payload": {
+    "passed": true,
+    "artwork_files": 0,
+    "encoded_artwork_or_path_data": false,
+    "reference_asset_links": 0,
+    "files": {
+      "SKILL.md": "740953f66380e648093af346231429ddf755d0fd564f910241157ea3beb57d04",
+      "agents/openai.yaml": "55c5e6d2f4876a1da9ed7ce790c99829251f37461089e2624690b5045773fc80",
+      "references/svg-mechanics.md": "aee1c0eea25fb09fe9acd4b769b663aca439cb376999f424a462a283130de43f"
+    }
+  },
+  "closeout_integrity": {
+    "schema_version": 1,
+    "checked_at": "2026-09-26T09:53:36.929804+00:00",
+    "all_passed": true,
+    "canonical_and_installed_files_equal": 3,
+    "unchanged_frozen_task_files": 110,
+    "unchanged_prior_studies": 2,
+    "private_evaluation_records": 0,
+    "native_audit_sha256": "71a66d2dea8769788ffdf49c4c5884cb1490af1503e7917b824918bcf7f169d6",
+    "run_sha256": "230a5fb84e38002182d80041293c77bc692bba8bfc15c192c845eb4968f60524",
+    "routing": {
+      "routing": {
+        "summary_sha256": "cdbe5d44982a38a0aad8aa8a0c6ad85e4e2f3ab8e1cc22162fa215905a3ec39a",
+        "protocol_sha256": "0d4e53553e29e89a200384e372500f606d9191652e40f6b5fcf6507c78957dbe",
+        "calls": 4,
+        "passed_cases": 3
+      },
+      "creation-routing": {
+        "summary_sha256": "a5fc02fcfe0082e284c0e7f6ad290e043e372374a2458fe3a25b872968043fda",
+        "protocol_sha256": "0c9a2b408d745f2603fe212c71c9f0e3b051f7139ce30b936cbbc4b715aa8c34",
+        "calls": 2,
+        "passed_cases": 2
+      },
+      "prompt-contract": {
+        "summary_sha256": "4c31d5fd7377d0a97fc6d294775289f9fda4f1cb62909304cf3d0a53f8fa9be5",
+        "protocol_sha256": "98b3070ea512661febba56daa1f1193238a81c58b736e608d4c983e73d48db9a",
+        "calls": 3,
+        "passed_cases": 3
+      }
+    },
+    "resolved_report_links": 65,
+    "report_files": [
+      "README.md",
+      "deadline-20260926.md",
+      "routing-20260926.md",
+      "creation-routing-20260926.md",
+      "prompt-contract-20260926.md",
+      "layout-diagnostics-20260926.md",
+      "next-campaign-20260926.md",
+      "brief-audit-20260926.md"
+    ],
+    "note": "Private task files were byte-hashed only; no private instructions or outcomes were inspected by a model. An earlier link-check attempt did not support angle-bracket Markdown targets; corrected parsing resolves them."
+  },
+  "model": "openai-codex/gpt-6-luna",
+  "native_trials": 12,
+  "promoted": false,
+  "final_document_review": {
+    "markdown_reports": 9,
+    "resolved_local_links": 72,
+    "json_companions_valid": 2,
+    "source": "Post-research link and whitespace verification at 09:57:36 UTC",
+    "research_scope": "Primary-source methodology review only; no judging model, benchmark mutation, or private task access."
+  },
+  "score_component_audit": "evaluations/runs/svg-brief-design-deadline-20260926/review-minibatch/components.json"
+}

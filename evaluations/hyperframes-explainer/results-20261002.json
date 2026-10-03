@@ -1,0 +1,3127 @@
+{
+  "skill": "hyperframes-explainer",
+  "date": "2026-10-02",
+  "releaseCohorts": {
+    "naturalistic": {
+      "payloadSha256": "6cd060d1b2b3293a877426cdf48c78b5d930882687466eb6b3a7520cdc4e4cb6",
+      "model": "openai-codex/gpt-5.6-sol",
+      "runs": [
+        "20261002-hyperframes-explainer-release-naturalistic-sol-6",
+        "20261002-hyperframes-explainer-release-naturalistic-sol-7",
+        "20261002-hyperframes-explainer-release-naturalistic-sol-8"
+      ],
+      "allRecordedAttempts": 12,
+      "complete": 3,
+      "total": 3,
+      "strictAndIndependentPasses": 3,
+      "jointPasses": 3,
+      "thresholdMet": true
+    },
+    "generalization": {
+      "payloadSha256": "6cd060d1b2b3293a877426cdf48c78b5d930882687466eb6b3a7520cdc4e4cb6",
+      "model": "openai-codex/gpt-5.6-sol",
+      "runs": [
+        "20261002-hyperframes-explainer-release-generalization-sol-6",
+        "20261002-hyperframes-explainer-release-generalization-sol-7",
+        "20261002-hyperframes-explainer-release-generalization-sol-8"
+      ],
+      "allRecordedAttempts": 12,
+      "complete": 3,
+      "total": 3,
+      "strictAndIndependentPasses": 2,
+      "jointPasses": 2,
+      "thresholdMet": true
+    }
+  },
+  "runs": [
+    {
+      "run": "20261002-hyperframes-explainer-boundary-luna-1",
+      "passed": true,
+      "failureClassification": null,
+      "createdAtUtc": "2026-10-02T12:43:48.361090+00:00",
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "6318fd29db3a416accff531760bd33520aa7800dcb888ea6372ee590135fb107",
+      "durationSeconds": 108.273,
+      "timedOut": false,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "requiredOutputs": [
+        "out/preflight.json",
+        "out/diagnosis.json"
+      ],
+      "eventFindings": [],
+      "tracePassed": true,
+      "observedModels": {
+        "gpt-5.6-luna": 12
+      },
+      "readPaths": [
+        "skills/hyperframes-explainer/scripts/explainer.py",
+        "out/preflight.json",
+        "../prompt.md",
+        "skills/hyperframes-explainer/SKILL.md",
+        "skills/hyperframes-explainer/assets/templates/brief.json",
+        "skills/hyperframes-explainer/assets/palettes/colorsets.json",
+        "out/diagnosis.json"
+      ],
+      "totalReadResultBytes": 55584,
+      "toolErrors": [],
+      "independent": null,
+      "independentReport": null,
+      "manual": null
+    },
+    {
+      "run": "20261002-hyperframes-explainer-contract-luna-1",
+      "passed": false,
+      "failureClassification": "harness",
+      "createdAtUtc": "2026-10-02T12:37:59.542861+00:00",
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "96c99c31677de2995ec673bb8022683a013b4f340e2b2ee061fd40682cce7146",
+      "durationSeconds": 32.499,
+      "timedOut": false,
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "requiredOutputs": [
+        "out/preflight.json",
+        "out/build.json",
+        "out/project/index.html",
+        "out/project/preview.html",
+        "out/project/manifest.json"
+      ],
+      "eventFindings": [
+        {
+          "code": "no-fenced-command-in-prompt"
+        }
+      ],
+      "tracePassed": true,
+      "observedModels": {
+        "gpt-5.6-luna": 6
+      },
+      "readPaths": [
+        "../prompt.md",
+        "skills/hyperframes-explainer/SKILL.md",
+        "out/build.json",
+        "out/preflight.json"
+      ],
+      "totalReadResultBytes": 18198,
+      "toolErrors": [],
+      "independent": null,
+      "independentReport": null,
+      "manual": null
+    },
+    {
+      "run": "20261002-hyperframes-explainer-contract-luna-2",
+      "passed": true,
+      "failureClassification": null,
+      "createdAtUtc": "2026-10-02T12:41:21.763912+00:00",
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "1f73ae180f17dbf45259490f9a02150f247b7c2fd18080a4f739620a2afc2edc",
+      "durationSeconds": 27.335,
+      "timedOut": false,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "requiredOutputs": [
+        "out/preflight.json",
+        "out/build.json",
+        "out/project/index.html",
+        "out/project/preview.html",
+        "out/project/manifest.json"
+      ],
+      "eventFindings": [],
+      "tracePassed": true,
+      "observedModels": {
+        "gpt-5.6-luna": 6
+      },
+      "readPaths": [
+        "../prompt.md",
+        "skills/hyperframes-explainer/SKILL.md",
+        "out/build.json",
+        "out/preflight.json"
+      ],
+      "totalReadResultBytes": 18538,
+      "toolErrors": [],
+      "independent": null,
+      "independentReport": null,
+      "manual": null
+    },
+    {
+      "run": "20261002-hyperframes-explainer-contract-luna-final",
+      "passed": true,
+      "failureClassification": null,
+      "createdAtUtc": "2026-10-02T12:50:52.663582+00:00",
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "23a8037944456af324f81a396b2a5dfcc582f055dde775439696d68c94551e53",
+      "durationSeconds": 26.067,
+      "timedOut": false,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "requiredOutputs": [
+        "out/preflight.json",
+        "out/build.json",
+        "out/project/index.html",
+        "out/project/preview.html",
+        "out/project/manifest.json"
+      ],
+      "eventFindings": [],
+      "tracePassed": true,
+      "observedModels": {
+        "gpt-5.6-luna": 6
+      },
+      "readPaths": [
+        "../prompt.md",
+        "skills/hyperframes-explainer/SKILL.md",
+        "out/build.json",
+        "out/preflight.json"
+      ],
+      "totalReadResultBytes": 18542,
+      "toolErrors": [],
+      "independent": null,
+      "independentReport": null,
+      "manual": null
+    },
+    {
+      "run": "20261002-hyperframes-explainer-contract-spark-1",
+      "passed": false,
+      "failureClassification": "infrastructure",
+      "createdAtUtc": "2026-10-02T12:37:20.974971+00:00",
+      "model": "openai-codex/gpt-5.3-codex-spark",
+      "payloadSha256": "96c99c31677de2995ec673bb8022683a013b4f340e2b2ee061fd40682cce7146",
+      "durationSeconds": 5.649,
+      "timedOut": false,
+      "gates": {
+        "artifacts": false,
+        "events": false,
+        "jsonFields": false,
+        "skillIntegrity": true
+      },
+      "requiredOutputs": [
+        "out/preflight.json",
+        "out/build.json",
+        "out/project/index.html",
+        "out/project/preview.html",
+        "out/project/manifest.json"
+      ],
+      "eventFindings": [
+        {
+          "code": "prompt-not-read-first",
+          "firstTool": null
+        },
+        {
+          "code": "no-fenced-command-in-prompt"
+        }
+      ],
+      "tracePassed": false,
+      "observedModels": {
+        "gpt-5.3-codex-spark": 1
+      },
+      "readPaths": [],
+      "totalReadResultBytes": 0,
+      "toolErrors": [],
+      "independent": null,
+      "independentReport": null,
+      "manual": null
+    },
+    {
+      "run": "20261002-hyperframes-explainer-generalization-luna-1",
+      "passed": false,
+      "failureClassification": "agent",
+      "createdAtUtc": "2026-10-02T12:42:55.832353+00:00",
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "6318fd29db3a416accff531760bd33520aa7800dcb888ea6372ee590135fb107",
+      "durationSeconds": 342.693,
+      "timedOut": false,
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "requiredOutputs": [
+        "out/video.mp4",
+        "out/project/index.html",
+        "out/project/preview.html",
+        "out/project/manifest.json",
+        "out/project/brief.json",
+        "out/audit.json",
+        "out/media.json",
+        "out/contact.jpg"
+      ],
+      "eventFindings": [
+        {
+          "code": "tool-error",
+          "line": 2990,
+          "tool": "bash"
+        },
+        {
+          "code": "tool-error",
+          "line": 3321,
+          "tool": "bash"
+        },
+        {
+          "code": "tool-error",
+          "line": 3723,
+          "tool": "bash"
+        }
+      ],
+      "tracePassed": false,
+      "observedModels": {
+        "gpt-5.6-luna": 40
+      },
+      "readPaths": [
+        "brief.json",
+        "out/audit.json",
+        "../prompt.md",
+        "skills/hyperframes-explainer/SKILL.md",
+        "skills/hyperframes-explainer/references/validation.md",
+        "skills/hyperframes-explainer/references/scene-contract.md",
+        "skills/hyperframes-explainer/references/palette-policy.md",
+        "skills/hyperframes-explainer/references/explanation-design.md",
+        "skills/hyperframes-explainer/references/hyperframes-runtime.md",
+        "skills/hyperframes-explainer/assets/templates/brief.json",
+        "skills/hyperframes-explainer/assets/palettes/colorsets.json",
+        "out/preflight.json",
+        "audit.json",
+        "out/project/scripts/audit.ts",
+        "out/media.json",
+        "out/preview.png",
+        "out/contact.jpg",
+        "out/project/brief.json",
+        "out/project/manifest.json"
+      ],
+      "totalReadResultBytes": 240769,
+      "toolErrors": [
+        {
+          "line": 2990,
+          "tool": "bash",
+          "path": null,
+          "command": "uv run --script skills/hyperframes-explainer/scripts/explainer.py preflight --brief brief.json --report out/preflight.json",
+          "isError": true
+        },
+        {
+          "line": 3321,
+          "tool": "bash",
+          "path": null,
+          "command": "npm install --no-audit --no-fund",
+          "isError": true
+        },
+        {
+          "line": 3723,
+          "tool": "bash",
+          "path": null,
+          "command": "cd out/project && npm run check",
+          "isError": true
+        }
+      ],
+      "independent": {
+        "ok": true,
+        "case": "generalization",
+        "findings": [],
+        "changedGeometry": [
+          "distance-trail",
+          "vehicle-body",
+          "vehicle-cabin",
+          "wheel-rear",
+          "wheel-front",
+          "speed-arrow",
+          "distance-curve"
+        ],
+        "screenshot": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\20261002-hyperframes-explainer-generalization-luna-1\\generalization-independent.png",
+        "observationCount": 7
+      },
+      "independentReport": "evaluations/runs/20261002-hyperframes-explainer-generalization-luna-1/independent.json",
+      "manual": null
+    },
+    {
+      "run": "20261002-hyperframes-explainer-generalization-luna-2",
+      "passed": false,
+      "failureClassification": "agent",
+      "createdAtUtc": "2026-10-02T12:46:49.391983+00:00",
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "6318fd29db3a416accff531760bd33520aa7800dcb888ea6372ee590135fb107",
+      "durationSeconds": 490.775,
+      "timedOut": false,
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "requiredOutputs": [
+        "out/video.mp4",
+        "out/project/index.html",
+        "out/project/preview.html",
+        "out/project/manifest.json",
+        "out/project/brief.json",
+        "out/audit.json",
+        "out/media.json",
+        "out/contact.jpg"
+      ],
+      "eventFindings": [
+        {
+          "code": "tool-error",
+          "line": 4551,
+          "tool": "edit"
+        },
+        {
+          "code": "tool-error",
+          "line": 7467,
+          "tool": "edit"
+        },
+        {
+          "code": "tool-error",
+          "line": 11118,
+          "tool": "bash"
+        }
+      ],
+      "tracePassed": false,
+      "observedModels": {
+        "gpt-5.6-luna": 37
+      },
+      "readPaths": [
+        "brief.json",
+        "out/audit.json",
+        "out/preview.png",
+        "out/media.json",
+        "../prompt.md",
+        "skills/hyperframes-explainer/SKILL.md",
+        "skills/hyperframes-explainer/references/palette-policy.md",
+        "skills/hyperframes-explainer/references/explanation-design.md",
+        "skills/hyperframes-explainer/references/hyperframes-runtime.md",
+        "skills/hyperframes-explainer/references/scene-contract.md",
+        "skills/hyperframes-explainer/assets/templates/brief.json",
+        "skills/hyperframes-explainer/references/validation.md",
+        "preflight.json",
+        "out/contact.jpg",
+        "out/project/manifest.json",
+        "out/project/brief.json"
+      ],
+      "totalReadResultBytes": 271093,
+      "toolErrors": [
+        {
+          "line": 4551,
+          "tool": "edit",
+          "path": "brief.json",
+          "command": null,
+          "isError": true
+        },
+        {
+          "line": 7467,
+          "tool": "edit",
+          "path": "brief.json",
+          "command": null,
+          "isError": true
+        },
+        {
+          "line": 11118,
+          "tool": "bash",
+          "path": null,
+          "command": "uv run --script skills/hyperframes-explainer/scripts/explainer.py preflight --brief brief.json --report preflight.json && uv run --script skills/hyperframes-explainer/scripts/explainer.py build --brief brief.json --project out/project --report build.json --refresh && cd out/project && npm run check && node scripts/audit.ts --report ../audit.json --screenshot ../preview.png",
+          "isError": true
+        }
+      ],
+      "independent": {
+        "ok": true,
+        "case": "generalization",
+        "findings": [],
+        "changedGeometry": [
+          "distance-trail",
+          "vehicle-body",
+          "vehicle-cabin",
+          "wheel-front",
+          "wheel-rear",
+          "speed-vector",
+          "distance-curve"
+        ],
+        "screenshot": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\20261002-hyperframes-explainer-generalization-luna-2\\generalization-independent.png",
+        "observationCount": 7
+      },
+      "independentReport": "evaluations/runs/20261002-hyperframes-explainer-generalization-luna-2/independent.json",
+      "manual": null
+    },
+    {
+      "run": "20261002-hyperframes-explainer-generalization-luna-3",
+      "passed": false,
+      "failureClassification": "agent",
+      "createdAtUtc": "2026-10-02T12:50:27.120854+00:00",
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "23a8037944456af324f81a396b2a5dfcc582f055dde775439696d68c94551e53",
+      "durationSeconds": 450.964,
+      "timedOut": false,
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "requiredOutputs": [
+        "out/video.mp4",
+        "out/project/index.html",
+        "out/project/preview.html",
+        "out/project/manifest.json",
+        "out/project/brief.json",
+        "out/audit.json",
+        "out/media.json",
+        "out/contact.jpg"
+      ],
+      "eventFindings": [
+        {
+          "code": "tool-error",
+          "line": 3842,
+          "tool": "bash"
+        },
+        {
+          "code": "tool-error",
+          "line": 5557,
+          "tool": "bash"
+        }
+      ],
+      "tracePassed": false,
+      "observedModels": {
+        "gpt-5.6-luna": 38
+      },
+      "readPaths": [
+        "project/audit.json",
+        "project/preview.png",
+        "../prompt.md",
+        "skills/hyperframes-explainer/SKILL.md",
+        "skills/hyperframes-explainer/references/explanation-design.md",
+        "skills/hyperframes-explainer/references/palette-policy.md",
+        "skills/hyperframes-explainer/references/validation.md",
+        "skills/hyperframes-explainer/references/scene-contract.md",
+        "skills/hyperframes-explainer/references/hyperframes-runtime.md",
+        "skills/hyperframes-explainer/assets/templates/brief.json",
+        "skills/hyperframes-explainer/assets/palettes/colorsets.json",
+        "preflight.json",
+        "build.json",
+        "out/media.json",
+        "out/contact.jpg",
+        "project/oracle.json",
+        "out/audit.json",
+        "out/project/manifest.json"
+      ],
+      "totalReadResultBytes": 273740,
+      "toolErrors": [
+        {
+          "line": 3842,
+          "tool": "bash",
+          "path": null,
+          "command": "cd project && npm run check",
+          "isError": true
+        },
+        {
+          "line": 5557,
+          "tool": "bash",
+          "path": null,
+          "command": "cd project && node - <<'NODE'\nconst { chromium } = require('playwright');\n(async () => {\n  const browser = await chromium.launch({headless:true});\n  const page = await browser.newPage({viewport:{width:960,height:540}});\n  await page.goto('file://' + require('path').resolve('index.html'));\n  await page.waitForFunction(() => window.explainer && window.explainer.stateAt);\n  const result = await page.evaluate(() => {\n    const at8 = window.explainer.stateAt(8);\n    const atMid = window.explainer.stateAt(3);\n    window.explainer.seek(8);\n    const forward = window.explainer.snapshot(8).state;\n    window.explainer.seek(1);\n    const reverse = window.explainer.snapshot(1).state;\n    window.explainer.setInputs({speed: 0});\n    const override = window.explainer.stateAt(8);\n    window.explainer.clearInputs();\n    const restored = window.explainer.stateAt(8);\n    return {at8, atMid, forward, reverse, override, restored};\n  });\n  console.log(JSON.stringify(result));\n  await browser.close();\n})();\nNODE",
+          "isError": true
+        }
+      ],
+      "independent": {
+        "ok": false,
+        "findings": [
+          "TypeError: Cannot read properties of undefined (reading 'clearInputs')"
+        ]
+      },
+      "independentReport": "evaluations/runs/20261002-hyperframes-explainer-generalization-luna-3/independent.json",
+      "manual": null
+    },
+    {
+      "run": "20261002-hyperframes-explainer-naturalistic-luna-1",
+      "passed": false,
+      "failureClassification": "agent",
+      "createdAtUtc": "2026-10-02T12:42:55.610066+00:00",
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "6318fd29db3a416accff531760bd33520aa7800dcb888ea6372ee590135fb107",
+      "durationSeconds": 305.251,
+      "timedOut": false,
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "requiredOutputs": [
+        "out/video.mp4",
+        "out/project/index.html",
+        "out/project/preview.html",
+        "out/project/manifest.json",
+        "out/project/brief.json",
+        "out/audit.json",
+        "out/media.json",
+        "out/contact.jpg"
+      ],
+      "eventFindings": [
+        {
+          "code": "tool-error",
+          "line": 4563,
+          "tool": "bash"
+        }
+      ],
+      "tracePassed": false,
+      "observedModels": {
+        "gpt-5.6-luna": 30
+      },
+      "readPaths": [
+        "skills/hyperframes-explainer/scripts/explainer.py",
+        "out/project/audit.json",
+        "../prompt.md",
+        "skills/hyperframes-explainer/SKILL.md",
+        "skills/hyperframes-explainer/references/explanation-design.md",
+        "skills/hyperframes-explainer/references/hyperframes-runtime.md",
+        "skills/hyperframes-explainer/references/palette-policy.md",
+        "skills/hyperframes-explainer/assets/templates/brief.json",
+        "skills/hyperframes-explainer/references/validation.md",
+        "skills/hyperframes-explainer/references/scene-contract.md",
+        "skills/hyperframes-explainer/assets/palettes/colorsets.json",
+        "skills/hyperframes-explainer/assets/templates/kernel.js",
+        "skills/hyperframes-explainer/assets/templates/index.html",
+        "skills/hyperframes-explainer/assets/templates/preview.html",
+        "out/project/manifest.json",
+        "build.json",
+        "out/project/brief.json",
+        "preflight.json",
+        "out/project/preview.png",
+        "out/video.mp4",
+        "out/media.json",
+        "out/contact.jpg",
+        "out/audit.json"
+      ],
+      "totalReadResultBytes": 468868,
+      "toolErrors": [
+        {
+          "line": 4563,
+          "tool": "bash",
+          "path": null,
+          "command": "test -f out/video.mp4 && test -f out/project/index.html && test -f out/project/preview.html && test -f out/project/manifest.json && test -f out/project/brief.json && test -f out/audit.json && test -f out/media.json && test -f out/contact.jpg && cmp -s brief.json out/project/brief.json && echo \"all required artifacts present and brief synced\"",
+          "isError": true
+        }
+      ],
+      "independent": {
+        "ok": true,
+        "case": "naturalistic",
+        "findings": [],
+        "changedGeometry": [
+          "control-knob",
+          "store-a-fill",
+          "store-b-fill",
+          "a-curve",
+          "b-curve"
+        ],
+        "screenshot": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\20261002-hyperframes-explainer-naturalistic-luna-1\\naturalistic-independent.png",
+        "observationCount": 7
+      },
+      "independentReport": "evaluations/runs/20261002-hyperframes-explainer-naturalistic-luna-1/independent.json",
+      "manual": null
+    },
+    {
+      "run": "20261002-hyperframes-explainer-naturalistic-luna-2",
+      "passed": false,
+      "failureClassification": "agent",
+      "createdAtUtc": "2026-10-02T12:46:49.274092+00:00",
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "6318fd29db3a416accff531760bd33520aa7800dcb888ea6372ee590135fb107",
+      "durationSeconds": 490.149,
+      "timedOut": false,
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "requiredOutputs": [
+        "out/video.mp4",
+        "out/project/index.html",
+        "out/project/preview.html",
+        "out/project/manifest.json",
+        "out/project/brief.json",
+        "out/audit.json",
+        "out/media.json",
+        "out/contact.jpg"
+      ],
+      "eventFindings": [
+        {
+          "code": "tool-error",
+          "line": 5019,
+          "tool": "edit"
+        },
+        {
+          "code": "tool-error",
+          "line": 6909,
+          "tool": "bash"
+        }
+      ],
+      "tracePassed": false,
+      "observedModels": {
+        "gpt-5.6-luna": 50
+      },
+      "readPaths": [
+        "out/project/preview.png",
+        "out/project/audit.json",
+        "out/media.json",
+        "out/contact.jpg",
+        "../prompt.md",
+        "skills/hyperframes-explainer/SKILL.md",
+        "skills/hyperframes-explainer/references/scene-contract.md",
+        "skills/hyperframes-explainer/references/explanation-design.md",
+        "skills/hyperframes-explainer/assets/templates/brief.json",
+        "skills/hyperframes-explainer/references/validation.md",
+        "skills/hyperframes-explainer/references/hyperframes-runtime.md",
+        "skills/hyperframes-explainer/references/palette-policy.md",
+        "skills/hyperframes-explainer/scripts/explainer.py",
+        "skills/hyperframes-explainer/assets/templates/kernel.js",
+        "skills/hyperframes-explainer/assets/palettes/colorsets.json",
+        "preflight.json",
+        "build.json",
+        "out/project/scripts/audit.ts",
+        "out/audit.json",
+        "out/project/manifest.json"
+      ],
+      "totalReadResultBytes": 508807,
+      "toolErrors": [
+        {
+          "line": 5019,
+          "tool": "edit",
+          "path": "brief.json",
+          "command": null,
+          "isError": true
+        },
+        {
+          "line": 6909,
+          "tool": "bash",
+          "path": null,
+          "command": "cd out/project && npm run check",
+          "isError": true
+        }
+      ],
+      "independent": {
+        "ok": true,
+        "case": "naturalistic",
+        "findings": [],
+        "changedGeometry": [
+          "control-knob",
+          "store-a-fill",
+          "store-b-fill",
+          "history-a",
+          "history-b"
+        ],
+        "screenshot": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\20261002-hyperframes-explainer-naturalistic-luna-2\\naturalistic-independent.png",
+        "observationCount": 7
+      },
+      "independentReport": "evaluations/runs/20261002-hyperframes-explainer-naturalistic-luna-2/independent.json",
+      "manual": null
+    },
+    {
+      "run": "20261002-hyperframes-explainer-naturalistic-luna-3",
+      "passed": false,
+      "failureClassification": "harness",
+      "createdAtUtc": "2026-10-02T12:50:26.972730+00:00",
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "23a8037944456af324f81a396b2a5dfcc582f055dde775439696d68c94551e53",
+      "durationSeconds": 1290.747,
+      "timedOut": true,
+      "gates": {
+        "skillIntegrity": true
+      },
+      "requiredOutputs": [
+        "out/video.mp4",
+        "out/project/index.html",
+        "out/project/preview.html",
+        "out/project/manifest.json",
+        "out/project/brief.json",
+        "out/audit.json",
+        "out/media.json",
+        "out/contact.jpg"
+      ],
+      "eventFindings": [],
+      "tracePassed": false,
+      "observedModels": {
+        "gpt-5.6-luna": 22
+      },
+      "readPaths": [
+        "out/preflight.json",
+        "skills/hyperframes-explainer/scripts/explainer.py",
+        "../prompt.md",
+        "skills/hyperframes-explainer/SKILL.md",
+        "skills/hyperframes-explainer/references/validation.md",
+        "skills/hyperframes-explainer/references/hyperframes-runtime.md",
+        "skills/hyperframes-explainer/references/explanation-design.md",
+        "skills/hyperframes-explainer/assets/templates/brief.json",
+        "skills/hyperframes-explainer/references/palette-policy.md",
+        "skills/hyperframes-explainer/references/scene-contract.md",
+        "skills/hyperframes-explainer/assets/palettes/colorsets.json",
+        "skills/hyperframes-explainer/assets/templates/kernel.js",
+        "out/build.json"
+      ],
+      "totalReadResultBytes": 78649,
+      "toolErrors": [],
+      "independent": null,
+      "independentReport": null,
+      "manual": null
+    },
+    {
+      "run": "20261002-hyperframes-explainer-release-boundary-luna-1",
+      "passed": true,
+      "failureClassification": null,
+      "createdAtUtc": "2026-10-02T12:59:41.123592+00:00",
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "c153c5b7290db0efd1e11272f112620ffb6afd90f5ee1f5ba24f6891c08fe176",
+      "durationSeconds": 142.764,
+      "timedOut": false,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "requiredOutputs": [
+        "out/preflight.json",
+        "out/diagnosis.json"
+      ],
+      "eventFindings": [],
+      "tracePassed": true,
+      "observedModels": {
+        "gpt-5.6-luna": 13
+      },
+      "readPaths": [
+        "out/preflight.json",
+        "../prompt.md",
+        "skills/hyperframes-explainer/SKILL.md",
+        "skills/hyperframes-explainer/assets/templates/brief.json",
+        "skills/hyperframes-explainer/references/scene-contract.md",
+        "skills/hyperframes-explainer/references/validation.md",
+        "out/diagnosis.json"
+      ],
+      "totalReadResultBytes": 33092,
+      "toolErrors": [],
+      "independent": null,
+      "independentReport": null,
+      "manual": null
+    },
+    {
+      "run": "20261002-hyperframes-explainer-release-boundary-sol-1",
+      "passed": true,
+      "failureClassification": null,
+      "createdAtUtc": "2026-10-02T13:41:39.411280+00:00",
+      "model": "openai-codex/gpt-5.6-sol",
+      "payloadSha256": "32b1db8334e9a45d610c6c65003650356548d1697e7415f201bc289c3b025a37",
+      "durationSeconds": 169.314,
+      "timedOut": false,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "requiredOutputs": [
+        "out/preflight.json",
+        "out/diagnosis.json"
+      ],
+      "eventFindings": [],
+      "tracePassed": true,
+      "observedModels": {
+        "gpt-5.6-sol": 12
+      },
+      "readPaths": [
+        "out/preflight.json",
+        "../prompt.md",
+        "skills/hyperframes-explainer/SKILL.md",
+        "skills/hyperframes-explainer/references/palette-policy.md",
+        "skills/hyperframes-explainer/assets/templates/brief.json",
+        "skills/hyperframes-explainer/references/scene-contract.md",
+        "skills/hyperframes-explainer/references/explanation-design.md"
+      ],
+      "totalReadResultBytes": 39514,
+      "toolErrors": [],
+      "independent": null,
+      "independentReport": null,
+      "manual": null
+    },
+    {
+      "run": "20261002-hyperframes-explainer-release-boundary-sol-2",
+      "passed": true,
+      "failureClassification": null,
+      "createdAtUtc": "2026-10-02T13:45:29.075421+00:00",
+      "model": "openai-codex/gpt-5.6-sol",
+      "payloadSha256": "6cd060d1b2b3293a877426cdf48c78b5d930882687466eb6b3a7520cdc4e4cb6",
+      "durationSeconds": 148.063,
+      "timedOut": false,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "requiredOutputs": [
+        "out/preflight.json",
+        "out/diagnosis.json"
+      ],
+      "eventFindings": [],
+      "tracePassed": true,
+      "observedModels": {
+        "gpt-5.6-sol": 12
+      },
+      "readPaths": [
+        "out/preflight.json",
+        "../prompt.md",
+        "skills/hyperframes-explainer/SKILL.md",
+        "skills/hyperframes-explainer/assets/templates/brief.json",
+        "skills/hyperframes-explainer/references/scene-contract.md",
+        "skills/hyperframes-explainer/references/validation.md"
+      ],
+      "totalReadResultBytes": 35530,
+      "toolErrors": [],
+      "independent": {
+        "ok": true,
+        "case": "boundary",
+        "checks": {
+          "preservedLegalDomain": true,
+          "preservedExactLaw": true,
+          "preservedEvent": true,
+          "rejectedUndefinedDomain": true,
+          "requestedModelDecision": true,
+          "noMisleadingMovie": true
+        }
+      },
+      "independentReport": "evaluations/runs/20261002-hyperframes-explainer-release-boundary-sol-2/independent.json",
+      "manual": null
+    },
+    {
+      "run": "20261002-hyperframes-explainer-release-contract-luna-1",
+      "passed": true,
+      "failureClassification": null,
+      "createdAtUtc": "2026-10-02T12:59:40.737181+00:00",
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "c153c5b7290db0efd1e11272f112620ffb6afd90f5ee1f5ba24f6891c08fe176",
+      "durationSeconds": 33.839,
+      "timedOut": false,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "requiredOutputs": [
+        "out/preflight.json",
+        "out/build.json",
+        "out/project/index.html",
+        "out/project/preview.html",
+        "out/project/manifest.json"
+      ],
+      "eventFindings": [],
+      "tracePassed": true,
+      "observedModels": {
+        "gpt-5.6-luna": 6
+      },
+      "readPaths": [
+        "../prompt.md",
+        "skills/hyperframes-explainer/SKILL.md",
+        "out/build.json",
+        "out/preflight.json"
+      ],
+      "totalReadResultBytes": 19154,
+      "toolErrors": [],
+      "independent": null,
+      "independentReport": null,
+      "manual": null
+    },
+    {
+      "run": "20261002-hyperframes-explainer-release-contract-sol-1",
+      "passed": true,
+      "failureClassification": null,
+      "createdAtUtc": "2026-10-02T13:41:29.078212+00:00",
+      "model": "openai-codex/gpt-5.6-sol",
+      "payloadSha256": "32b1db8334e9a45d610c6c65003650356548d1697e7415f201bc289c3b025a37",
+      "durationSeconds": 36.882,
+      "timedOut": false,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "requiredOutputs": [
+        "out/preflight.json",
+        "out/build.json",
+        "out/project/index.html",
+        "out/project/preview.html",
+        "out/project/manifest.json"
+      ],
+      "eventFindings": [],
+      "tracePassed": true,
+      "observedModels": {
+        "gpt-5.6-sol": 7
+      },
+      "readPaths": [
+        "../prompt.md",
+        "skills/hyperframes-explainer/SKILL.md",
+        "out/preflight.json",
+        "out/project/manifest.json",
+        "out/build.json"
+      ],
+      "totalReadResultBytes": 22278,
+      "toolErrors": [],
+      "independent": null,
+      "independentReport": null,
+      "manual": null
+    },
+    {
+      "run": "20261002-hyperframes-explainer-release-contract-sol-2",
+      "passed": true,
+      "failureClassification": null,
+      "createdAtUtc": "2026-10-02T13:45:28.504519+00:00",
+      "model": "openai-codex/gpt-5.6-sol",
+      "payloadSha256": "6cd060d1b2b3293a877426cdf48c78b5d930882687466eb6b3a7520cdc4e4cb6",
+      "durationSeconds": 37.19,
+      "timedOut": false,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "requiredOutputs": [
+        "out/preflight.json",
+        "out/build.json",
+        "out/project/index.html",
+        "out/project/preview.html",
+        "out/project/manifest.json"
+      ],
+      "eventFindings": [],
+      "tracePassed": true,
+      "observedModels": {
+        "gpt-5.6-sol": 7
+      },
+      "readPaths": [
+        "../prompt.md",
+        "skills/hyperframes-explainer/SKILL.md",
+        "out/preflight.json",
+        "out/build.json"
+      ],
+      "totalReadResultBytes": 19396,
+      "toolErrors": [],
+      "independent": {
+        "ok": true,
+        "case": "contract",
+        "findings": [],
+        "changedGeometry": [
+          "valve",
+          "flow",
+          "stored",
+          "surface",
+          "volume-curve"
+        ],
+        "screenshot": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\20261002-hyperframes-explainer-release-contract-sol-2\\contract-independent.png",
+        "observationCount": 10
+      },
+      "independentReport": "evaluations/runs/20261002-hyperframes-explainer-release-contract-sol-2/independent.json",
+      "manual": {
+        "ok": true,
+        "case": "contract",
+        "reviewer": "Codex evaluator",
+        "date": "2026-10-02",
+        "evidence": [
+          "contract-independent.png",
+          "independent.json"
+        ],
+        "findings": [],
+        "observations": [
+          "Sparse direct labels and units; no headline, title cards, footer or closing slogan in the filmed stage.",
+          "Main mechanism remains dominant, with a readable complementary history view.",
+          "Entity paints, geometry, labels and cause/effect correspond to the independent numerical samples.",
+          "No visible clipping, label collisions or misleading direction in inspected full-resolution frames."
+        ]
+      }
+    },
+    {
+      "run": "20261002-hyperframes-explainer-release-generalization-luna-1",
+      "passed": false,
+      "failureClassification": "agent",
+      "createdAtUtc": "2026-10-02T12:53:40.905471+00:00",
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "c428643cea62768493f9db117fa37e23e80a2d7ac1232dcf4de3c5e7ad0bcd45",
+      "durationSeconds": 330.268,
+      "timedOut": false,
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "requiredOutputs": [
+        "out/video.mp4",
+        "out/project/index.html",
+        "out/project/preview.html",
+        "out/project/manifest.json",
+        "out/project/brief.json",
+        "out/audit.json",
+        "out/media.json",
+        "out/contact.jpg"
+      ],
+      "eventFindings": [
+        {
+          "code": "tool-error",
+          "line": 3868,
+          "tool": "edit"
+        }
+      ],
+      "tracePassed": false,
+      "observedModels": {
+        "gpt-5.6-luna": 35
+      },
+      "readPaths": [
+        "preflight.json",
+        "out/audit.json",
+        "../prompt.md",
+        "skills/hyperframes-explainer/SKILL.md",
+        "skills/hyperframes-explainer/references/palette-policy.md",
+        "skills/hyperframes-explainer/references/hyperframes-runtime.md",
+        "skills/hyperframes-explainer/references/explanation-design.md",
+        "skills/hyperframes-explainer/references/validation.md",
+        "skills/hyperframes-explainer/assets/templates/brief.json",
+        "skills/hyperframes-explainer/references/scene-contract.md",
+        "skills/hyperframes-explainer/assets/palettes/colorsets.json",
+        "brief.json",
+        "out/preview.png",
+        "out/media.json",
+        "out/contact.jpg",
+        "out/project/brief.json",
+        "out/project/manifest.json",
+        "out/final-frame.png"
+      ],
+      "totalReadResultBytes": 391137,
+      "toolErrors": [
+        {
+          "line": 3868,
+          "tool": "edit",
+          "path": "brief.json",
+          "command": null,
+          "isError": true
+        }
+      ],
+      "independent": {
+        "ok": true,
+        "case": "generalization",
+        "findings": [],
+        "changedGeometry": [
+          "distance-trail",
+          "vehicle-body",
+          "vehicle-cabin",
+          "wheel-front",
+          "wheel-back",
+          "speed-arrow",
+          "speed-control",
+          "distance-curve"
+        ],
+        "screenshot": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\20261002-hyperframes-explainer-release-generalization-luna-1\\generalization-independent.png",
+        "observationCount": 7
+      },
+      "independentReport": "evaluations/runs/20261002-hyperframes-explainer-release-generalization-luna-1/independent.json",
+      "manual": null
+    },
+    {
+      "run": "20261002-hyperframes-explainer-release-generalization-luna-2",
+      "passed": false,
+      "failureClassification": "agent",
+      "createdAtUtc": "2026-10-02T12:57:11.411852+00:00",
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "c153c5b7290db0efd1e11272f112620ffb6afd90f5ee1f5ba24f6891c08fe176",
+      "durationSeconds": 388.57,
+      "timedOut": false,
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "requiredOutputs": [
+        "out/video.mp4",
+        "out/project/index.html",
+        "out/project/preview.html",
+        "out/project/manifest.json",
+        "out/project/brief.json",
+        "out/audit.json",
+        "out/media.json",
+        "out/contact.jpg"
+      ],
+      "eventFindings": [
+        {
+          "code": "tool-error",
+          "line": 4226,
+          "tool": "edit"
+        },
+        {
+          "code": "tool-error",
+          "line": 5350,
+          "tool": "edit"
+        },
+        {
+          "code": "tool-error",
+          "line": 7937,
+          "tool": "bash"
+        }
+      ],
+      "tracePassed": false,
+      "observedModels": {
+        "gpt-5.6-luna": 48
+      },
+      "readPaths": [
+        "out/audit.json",
+        "out/project/brief.json",
+        "out/project/oracle.json",
+        "../prompt.md",
+        "skills/hyperframes-explainer/SKILL.md",
+        "skills/hyperframes-explainer/references/validation.md",
+        "skills/hyperframes-explainer/references/hyperframes-runtime.md",
+        "skills/hyperframes-explainer/references/palette-policy.md",
+        "skills/hyperframes-explainer/references/scene-contract.md",
+        "skills/hyperframes-explainer/assets/templates/brief.json",
+        "skills/hyperframes-explainer/references/explanation-design.md",
+        "skills/hyperframes-explainer/assets/palettes/colorsets.json",
+        "out/preflight.json",
+        "out/preview.png",
+        "out/project/package.json",
+        "out/media.json",
+        "out/contact.jpg",
+        "out/project/manifest.json",
+        "out/project/scripts/audit.ts"
+      ],
+      "totalReadResultBytes": 242637,
+      "toolErrors": [
+        {
+          "line": 4226,
+          "tool": "edit",
+          "path": "out/project/brief.json",
+          "command": null,
+          "isError": true
+        },
+        {
+          "line": 5350,
+          "tool": "edit",
+          "path": "out/project/brief.json",
+          "command": null,
+          "isError": true
+        },
+        {
+          "line": 7937,
+          "tool": "bash",
+          "path": null,
+          "command": "printf 'browser=%s\\n' \"$HYPERFRAMES_BROWSER_PATH\"; node -e \"import('puppeteer-core').then(()=>console.log('puppeteer-ok'))\"",
+          "isError": true
+        }
+      ],
+      "independent": {
+        "ok": true,
+        "case": "generalization",
+        "findings": [],
+        "changedGeometry": [
+          "vehicle-body",
+          "vehicle-cabin",
+          "vehicle-wheel-front",
+          "vehicle-wheel-rear",
+          "speed-vector",
+          "distance-curve"
+        ],
+        "screenshot": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\20261002-hyperframes-explainer-release-generalization-luna-2\\generalization-independent.png",
+        "observationCount": 7
+      },
+      "independentReport": "evaluations/runs/20261002-hyperframes-explainer-release-generalization-luna-2/independent.json",
+      "manual": null
+    },
+    {
+      "run": "20261002-hyperframes-explainer-release-generalization-luna-3",
+      "passed": false,
+      "failureClassification": "agent",
+      "createdAtUtc": "2026-10-02T12:59:40.314390+00:00",
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "c153c5b7290db0efd1e11272f112620ffb6afd90f5ee1f5ba24f6891c08fe176",
+      "durationSeconds": 635.733,
+      "timedOut": false,
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "requiredOutputs": [
+        "out/video.mp4",
+        "out/project/index.html",
+        "out/project/preview.html",
+        "out/project/manifest.json",
+        "out/project/brief.json",
+        "out/audit.json",
+        "out/media.json",
+        "out/contact.jpg"
+      ],
+      "eventFindings": [
+        {
+          "code": "tool-error",
+          "line": 3536,
+          "tool": "edit"
+        },
+        {
+          "code": "tool-error",
+          "line": 8009,
+          "tool": "bash"
+        }
+      ],
+      "tracePassed": false,
+      "observedModels": {
+        "gpt-5.6-luna": 64
+      },
+      "readPaths": [
+        "out/audit.json",
+        "out/preview.png",
+        "out/project/brief.json",
+        "preflight.json",
+        "../prompt.md",
+        "skills/hyperframes-explainer/SKILL.md",
+        "skills/hyperframes-explainer/references/validation.md",
+        "skills/hyperframes-explainer/references/explanation-design.md",
+        "skills/hyperframes-explainer/references/palette-policy.md",
+        "skills/hyperframes-explainer/assets/templates/brief.json",
+        "skills/hyperframes-explainer/references/hyperframes-runtime.md",
+        "skills/hyperframes-explainer/references/scene-contract.md",
+        "skills/hyperframes-explainer/assets/palettes/colorsets.json",
+        "out/project/manifest.json",
+        "build-out.json",
+        "out/project/package.json",
+        "out/project/index.html",
+        "out/project/scripts/audit.ts",
+        "out/media.json",
+        "out/contact.jpg"
+      ],
+      "totalReadResultBytes": 409409,
+      "toolErrors": [
+        {
+          "line": 3536,
+          "tool": "edit",
+          "path": "brief.json",
+          "command": null,
+          "isError": true
+        },
+        {
+          "line": 8009,
+          "tool": "bash",
+          "path": null,
+          "command": "cd out/project && node --input-type=module - <<'NODE'\nimport http from 'node:http'; import {readFileSync} from 'node:fs'; import puppeteer from 'puppeteer-core';\nconst server=http.createServer((req,res)=>{res.setHeader('Content-Type','text/html');res.end(readFileSync('index.html'));}); await new Promise(r=>server.listen(0,'127.0.0.1',r));\nconst browser=await puppeteer.launch({executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe',headless:true,args:['--no-sandbox']}); const p=await browser.newPage(); await p.setViewport({width:960,height:540}); await p.goto(`http://127.0.0.1:${server.address().port}/index.html`); await p.evaluate(()=>window.explainer.seek(0)); console.log(await p.evaluate(()=>Object.fromEntries(['history-label','history-top','history-zero'].map(id=>[id,document.querySelector(`[data-mark=\"${id}\"]`).getBoundingClientRect().toJSON()])))); await browser.close(); server.close();\nNODE",
+          "isError": true
+        }
+      ],
+      "independent": {
+        "ok": true,
+        "case": "generalization",
+        "findings": [],
+        "changedGeometry": [
+          "vehicle-body",
+          "vehicle-window",
+          "wheel-front",
+          "wheel-back",
+          "distance-trail",
+          "speed-vector",
+          "distance-curve"
+        ],
+        "screenshot": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\20261002-hyperframes-explainer-release-generalization-luna-3\\generalization-independent.png",
+        "observationCount": 7
+      },
+      "independentReport": "evaluations/runs/20261002-hyperframes-explainer-release-generalization-luna-3/independent.json",
+      "manual": null
+    },
+    {
+      "run": "20261002-hyperframes-explainer-release-generalization-luna-4",
+      "passed": false,
+      "failureClassification": "agent",
+      "createdAtUtc": "2026-10-02T13:09:27.563126+00:00",
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "c153c5b7290db0efd1e11272f112620ffb6afd90f5ee1f5ba24f6891c08fe176",
+      "durationSeconds": 517.823,
+      "timedOut": false,
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "requiredOutputs": [
+        "out/video.mp4",
+        "out/project/index.html",
+        "out/project/preview.html",
+        "out/project/manifest.json",
+        "out/project/brief.json",
+        "out/audit.json",
+        "out/media.json",
+        "out/contact.jpg"
+      ],
+      "eventFindings": [
+        {
+          "code": "tool-error",
+          "line": 6553,
+          "tool": "read"
+        }
+      ],
+      "tracePassed": false,
+      "observedModels": {
+        "gpt-5.6-luna": 41
+      },
+      "readPaths": [
+        "out/audit.json",
+        ".work/preview.png",
+        ".work/preflight.json",
+        "../prompt.md",
+        "skills/hyperframes-explainer/SKILL.md",
+        "skills/hyperframes-explainer/references/palette-policy.md",
+        "skills/hyperframes-explainer/references/scene-contract.md",
+        "skills/hyperframes-explainer/references/validation.md",
+        "skills/hyperframes-explainer/references/hyperframes-runtime.md",
+        "skills/hyperframes-explainer/references/explanation-design.md",
+        "skills/hyperframes-explainer/assets/templates/brief.json",
+        "skills/hyperframes-explainer/assets/palettes/colorsets.json",
+        "brief.json",
+        "out/project/package.json",
+        "out/media.json",
+        "out/contact.jpg",
+        "out/project/brief.json",
+        "out/project/manifest.json"
+      ],
+      "totalReadResultBytes": 275684,
+      "toolErrors": [
+        {
+          "line": 6553,
+          "tool": "read",
+          "path": "out/audit.json",
+          "command": null,
+          "isError": true
+        }
+      ],
+      "independent": {
+        "ok": true,
+        "case": "generalization",
+        "findings": [],
+        "changedGeometry": [
+          "distance-trail",
+          "vehicle-body",
+          "vehicle-window",
+          "wheel-rear",
+          "wheel-front",
+          "speed-vector",
+          "distance-curve"
+        ],
+        "screenshot": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\20261002-hyperframes-explainer-release-generalization-luna-4\\generalization-independent.png",
+        "observationCount": 7
+      },
+      "independentReport": "evaluations/runs/20261002-hyperframes-explainer-release-generalization-luna-4/independent.json",
+      "manual": null
+    },
+    {
+      "run": "20261002-hyperframes-explainer-release-generalization-sol-1",
+      "passed": false,
+      "failureClassification": "agent",
+      "createdAtUtc": "2026-10-02T13:13:35.619939+00:00",
+      "model": "openai-codex/gpt-5.6-sol",
+      "payloadSha256": "c153c5b7290db0efd1e11272f112620ffb6afd90f5ee1f5ba24f6891c08fe176",
+      "durationSeconds": 602.386,
+      "timedOut": false,
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "requiredOutputs": [
+        "out/video.mp4",
+        "out/project/index.html",
+        "out/project/preview.html",
+        "out/project/manifest.json",
+        "out/project/brief.json",
+        "out/audit.json",
+        "out/media.json",
+        "out/contact.jpg"
+      ],
+      "eventFindings": [
+        {
+          "code": "tool-error",
+          "line": 2201,
+          "tool": "edit"
+        },
+        {
+          "code": "tool-error",
+          "line": 3775,
+          "tool": "bash"
+        },
+        {
+          "code": "tool-error",
+          "line": 3952,
+          "tool": "bash"
+        },
+        {
+          "code": "tool-error",
+          "line": 4565,
+          "tool": "bash"
+        }
+      ],
+      "tracePassed": false,
+      "observedModels": {
+        "gpt-5.6-sol": 40
+      },
+      "readPaths": [
+        "../prompt.md",
+        "skills/hyperframes-explainer/SKILL.md",
+        "skills/hyperframes-explainer/references/explanation-design.md",
+        "skills/hyperframes-explainer/references/hyperframes-runtime.md",
+        "skills/hyperframes-explainer/references/palette-policy.md",
+        "skills/hyperframes-explainer/assets/templates/brief.json",
+        "skills/hyperframes-explainer/references/scene-contract.md",
+        "skills/hyperframes-explainer/references/validation.md",
+        "preflight.json",
+        "skills/hyperframes-explainer/assets/palettes/colorsets.json",
+        "out/audit.json",
+        "preview.png",
+        "out/contact.jpg",
+        "out/project/package.json",
+        "out/project/preview.html",
+        "out/project/index.html",
+        "out/media.json",
+        "out/project/manifest.json"
+      ],
+      "totalReadResultBytes": 223836,
+      "toolErrors": [
+        {
+          "line": 2201,
+          "tool": "edit",
+          "path": "brief.json",
+          "command": null,
+          "isError": true
+        },
+        {
+          "line": 3775,
+          "tool": "bash",
+          "path": null,
+          "command": "cd out/project && node --input-type=module -e \"import { chromium } from 'playwright'; import { pathToFileURL } from 'node:url'; const b=await chromium.launch({headless:true}); const p=await b.newPage(); await p.goto(pathToFileURL(process.cwd()+'/index.html').href); await p.waitForFunction(()=>window.explainer); const r=await p.evaluate(()=>{ const states=[0,2,3,4,8].map(t=>window.explainer.stateAt(t)); const a=window.explainer.seek(7); window.explainer.seek(1); const b=window.explainer.seek(7); window.explainer.seek(4); window.explainer.setInputs({speed:6}); const overridden=window.explainer.snapshot(4); window.explainer.clearInputs(); const restored=window.explainer.snapshot(4); const text=[...document.querySelectorAll('text')].map(x=>x.textContent); return {states, reverseStable:JSON.stringify(a)===JSON.stringify(b), overridden:overridden.state, restored:restored.state, text}; }); console.log(JSON.stringify(r,null,2)); await b.close();\"",
+          "isError": true
+        },
+        {
+          "line": 3952,
+          "tool": "bash",
+          "path": null,
+          "command": "for p in chrome google-chrome chromium chromium-browser; do command -v \"$p\" 2>/dev/null && break; done; for p in \"/c/Program Files/Google/Chrome/Application/chrome.exe\" \"/c/Program Files (x86)/Google/Chrome/Application/chrome.exe\" \"/c/Program Files/Microsoft/Edge/Application/msedge.exe\"; do [ -f \"$p\" ] && printf '%s\\n' \"$p\"; done",
+          "isError": true
+        },
+        {
+          "line": 4565,
+          "tool": "bash",
+          "path": null,
+          "command": "cd out/project && node --input-type=module -e \"import puppeteer from 'puppeteer-core'; import { pathToFileURL } from 'node:url'; const b=await puppeteer.launch({headless:true,executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe'}); const p=await b.newPage(); await p.goto(pathToFileURL(process.cwd()+'/preview.html').href); await p.waitForFunction(()=>document.querySelector('iframe')?.contentWindow?.explainer); const r=await p.evaluate(()=>{ const e=document.querySelector('iframe').contentWindow.explainer; e.seek(3); const scripted=e.snapshot(3); e.setInputs({speed:6}); const changed=e.snapshot(3); e.clearInputs(); const restored=e.snapshot(3); const ids=['distance-track','car-body','speed-arrow','speed-label','distance-label','distance-curve']; const pick=s=>Object.fromEntries(s.marks.filter(m=>ids.includes(m.id)).map(m=>[m.id,m.attrs])); return {scripted:scripted.state,changed:changed.state,restored:restored.state,marksChanged:JSON.stringify(pick(scripted))!==JSON.stringify(pick(changed)),restoredExactly:JSON.stringify(scripted)===JSON.stringify(restored)}; }); console.log(JSON.stringify(r,null,2)); await b.close();\"",
+          "isError": true
+        }
+      ],
+      "independent": {
+        "ok": true,
+        "case": "generalization",
+        "findings": [],
+        "changedGeometry": [
+          "distance-track",
+          "car-body",
+          "car-cabin",
+          "rear-wheel",
+          "front-wheel",
+          "speed-arrow",
+          "distance-curve"
+        ],
+        "screenshot": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\20261002-hyperframes-explainer-release-generalization-sol-1\\generalization-independent.png",
+        "observationCount": 7
+      },
+      "independentReport": "evaluations/runs/20261002-hyperframes-explainer-release-generalization-sol-1/independent.json",
+      "manual": null
+    },
+    {
+      "run": "20261002-hyperframes-explainer-release-generalization-sol-2",
+      "passed": true,
+      "failureClassification": null,
+      "createdAtUtc": "2026-10-02T13:16:13.122608+00:00",
+      "model": "openai-codex/gpt-5.6-sol",
+      "payloadSha256": "c153c5b7290db0efd1e11272f112620ffb6afd90f5ee1f5ba24f6891c08fe176",
+      "durationSeconds": 470.914,
+      "timedOut": false,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "requiredOutputs": [
+        "out/video.mp4",
+        "out/project/index.html",
+        "out/project/preview.html",
+        "out/project/manifest.json",
+        "out/project/brief.json",
+        "out/audit.json",
+        "out/media.json",
+        "out/contact.jpg"
+      ],
+      "eventFindings": [],
+      "tracePassed": true,
+      "observedModels": {
+        "gpt-5.6-sol": 26
+      },
+      "readPaths": [
+        "out/audit.json",
+        "preview.png",
+        "../prompt.md",
+        "skills/hyperframes-explainer/SKILL.md",
+        "skills/hyperframes-explainer/references/explanation-design.md",
+        "skills/hyperframes-explainer/references/palette-policy.md",
+        "skills/hyperframes-explainer/references/validation.md",
+        "skills/hyperframes-explainer/assets/templates/brief.json",
+        "skills/hyperframes-explainer/references/scene-contract.md",
+        "skills/hyperframes-explainer/references/hyperframes-runtime.md",
+        "preflight.json",
+        "skills/hyperframes-explainer/assets/palettes/colorsets.json",
+        "out/project/brief.json",
+        "out/project/manifest.json",
+        "out/media.json",
+        "out/contact.jpg",
+        "out/project/package.json"
+      ],
+      "totalReadResultBytes": 243084,
+      "toolErrors": [],
+      "independent": {
+        "ok": true,
+        "case": "generalization",
+        "findings": [],
+        "changedGeometry": [
+          "car-body",
+          "car-cabin",
+          "rear-wheel",
+          "front-wheel",
+          "speed-arrow",
+          "distance-curve"
+        ],
+        "screenshot": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\20261002-hyperframes-explainer-release-generalization-sol-2\\generalization-independent.png",
+        "observationCount": 7
+      },
+      "independentReport": "evaluations/runs/20261002-hyperframes-explainer-release-generalization-sol-2/independent.json",
+      "manual": null
+    },
+    {
+      "run": "20261002-hyperframes-explainer-release-generalization-sol-3",
+      "passed": false,
+      "failureClassification": "agent",
+      "createdAtUtc": "2026-10-02T13:30:17.894285+00:00",
+      "model": "openai-codex/gpt-5.6-sol",
+      "payloadSha256": "32b1db8334e9a45d610c6c65003650356548d1697e7415f201bc289c3b025a37",
+      "durationSeconds": 329.407,
+      "timedOut": false,
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "requiredOutputs": [
+        "out/video.mp4",
+        "out/project/index.html",
+        "out/project/preview.html",
+        "out/project/manifest.json",
+        "out/project/brief.json",
+        "out/audit.json",
+        "out/media.json",
+        "out/contact.jpg"
+      ],
+      "eventFindings": [
+        {
+          "code": "tool-error",
+          "line": 2886,
+          "tool": "edit"
+        }
+      ],
+      "tracePassed": false,
+      "observedModels": {
+        "gpt-5.6-sol": 31
+      },
+      "readPaths": [
+        "out/audit.json",
+        "audit-preview.png",
+        "../prompt.md",
+        "skills/hyperframes-explainer/SKILL.md",
+        "skills/hyperframes-explainer/references/validation.md",
+        "skills/hyperframes-explainer/references/scene-contract.md",
+        "skills/hyperframes-explainer/assets/templates/brief.json",
+        "skills/hyperframes-explainer/references/explanation-design.md",
+        "skills/hyperframes-explainer/references/hyperframes-runtime.md",
+        "skills/hyperframes-explainer/references/palette-policy.md",
+        "preflight.json",
+        "skills/hyperframes-explainer/assets/palettes/colorsets.json",
+        "out/media.json",
+        "out/project/manifest.json",
+        "out/contact.jpg",
+        "out/project/oracle.json"
+      ],
+      "totalReadResultBytes": 272062,
+      "toolErrors": [
+        {
+          "line": 2886,
+          "tool": "edit",
+          "path": "brief.json",
+          "command": null,
+          "isError": true
+        }
+      ],
+      "independent": {
+        "ok": true,
+        "case": "generalization",
+        "findings": [],
+        "changedGeometry": [
+          "control-level",
+          "control-knob",
+          "car-body",
+          "car-cabin",
+          "front-wheel",
+          "rear-wheel",
+          "speed-arrow",
+          "distance-span",
+          "distance-curve"
+        ],
+        "screenshot": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\20261002-hyperframes-explainer-release-generalization-sol-3\\generalization-independent.png",
+        "observationCount": 7
+      },
+      "independentReport": "evaluations/runs/20261002-hyperframes-explainer-release-generalization-sol-3/independent.json",
+      "manual": null
+    },
+    {
+      "run": "20261002-hyperframes-explainer-release-generalization-sol-4",
+      "passed": false,
+      "failureClassification": "agent",
+      "createdAtUtc": "2026-10-02T13:36:29.321724+00:00",
+      "model": "openai-codex/gpt-5.6-sol",
+      "payloadSha256": "32b1db8334e9a45d610c6c65003650356548d1697e7415f201bc289c3b025a37",
+      "durationSeconds": 341.946,
+      "timedOut": false,
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "requiredOutputs": [
+        "out/video.mp4",
+        "out/project/index.html",
+        "out/project/preview.html",
+        "out/project/manifest.json",
+        "out/project/brief.json",
+        "out/audit.json",
+        "out/media.json",
+        "out/contact.jpg"
+      ],
+      "eventFindings": [
+        {
+          "code": "tool-error",
+          "line": 2363,
+          "tool": "edit"
+        }
+      ],
+      "tracePassed": false,
+      "observedModels": {
+        "gpt-5.6-sol": 30
+      },
+      "readPaths": [
+        "out/audit.json",
+        "preview.png",
+        "../prompt.md",
+        "skills/hyperframes-explainer/SKILL.md",
+        "skills/hyperframes-explainer/references/validation.md",
+        "skills/hyperframes-explainer/references/hyperframes-runtime.md",
+        "skills/hyperframes-explainer/references/palette-policy.md",
+        "skills/hyperframes-explainer/references/scene-contract.md",
+        "skills/hyperframes-explainer/references/explanation-design.md",
+        "skills/hyperframes-explainer/assets/templates/brief.json",
+        "preflight.json",
+        "skills/hyperframes-explainer/assets/palettes/colorsets.json",
+        "out/project/manifest.json",
+        "out/media.json",
+        "out/contact.jpg"
+      ],
+      "totalReadResultBytes": 240810,
+      "toolErrors": [
+        {
+          "line": 2363,
+          "tool": "edit",
+          "path": "brief.json",
+          "command": null,
+          "isError": true
+        }
+      ],
+      "independent": {
+        "ok": true,
+        "case": "generalization",
+        "findings": [],
+        "changedGeometry": [
+          "distance-span",
+          "car-body",
+          "car-cabin",
+          "rear-wheel",
+          "front-wheel",
+          "speed-arrow",
+          "distance-curve"
+        ],
+        "screenshot": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\20261002-hyperframes-explainer-release-generalization-sol-4\\generalization-independent.png",
+        "observationCount": 7
+      },
+      "independentReport": "evaluations/runs/20261002-hyperframes-explainer-release-generalization-sol-4/independent.json",
+      "manual": null
+    },
+    {
+      "run": "20261002-hyperframes-explainer-release-generalization-sol-5",
+      "passed": false,
+      "failureClassification": "agent",
+      "createdAtUtc": "2026-10-02T13:41:18.622076+00:00",
+      "model": "openai-codex/gpt-5.6-sol",
+      "payloadSha256": "32b1db8334e9a45d610c6c65003650356548d1697e7415f201bc289c3b025a37",
+      "durationSeconds": 367.316,
+      "timedOut": false,
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "requiredOutputs": [
+        "out/video.mp4",
+        "out/project/index.html",
+        "out/project/preview.html",
+        "out/project/manifest.json",
+        "out/project/brief.json",
+        "out/audit.json",
+        "out/media.json",
+        "out/contact.jpg"
+      ],
+      "eventFindings": [
+        {
+          "code": "tool-error",
+          "line": 2764,
+          "tool": "edit"
+        }
+      ],
+      "tracePassed": false,
+      "observedModels": {
+        "gpt-5.6-sol": 30
+      },
+      "readPaths": [
+        "out/audit.json",
+        "preview.png",
+        "../prompt.md",
+        "skills/hyperframes-explainer/SKILL.md",
+        "skills/hyperframes-explainer/references/explanation-design.md",
+        "skills/hyperframes-explainer/references/palette-policy.md",
+        "skills/hyperframes-explainer/assets/templates/brief.json",
+        "skills/hyperframes-explainer/references/hyperframes-runtime.md",
+        "skills/hyperframes-explainer/references/scene-contract.md",
+        "skills/hyperframes-explainer/references/validation.md",
+        "preflight.json",
+        "skills/hyperframes-explainer/assets/palettes/colorsets.json",
+        "out/media.json",
+        "out/project/manifest.json",
+        "out/contact.jpg"
+      ],
+      "totalReadResultBytes": 247590,
+      "toolErrors": [
+        {
+          "line": 2764,
+          "tool": "edit",
+          "path": "brief.json",
+          "command": null,
+          "isError": true
+        }
+      ],
+      "independent": {
+        "ok": true,
+        "case": "generalization",
+        "findings": [],
+        "changedGeometry": [
+          "speed-arrow",
+          "distance-line",
+          "car-body",
+          "car-cabin",
+          "rear-wheel",
+          "front-wheel",
+          "distance-curve"
+        ],
+        "screenshot": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\20261002-hyperframes-explainer-release-generalization-sol-5\\generalization-independent.png",
+        "observationCount": 7
+      },
+      "independentReport": "evaluations/runs/20261002-hyperframes-explainer-release-generalization-sol-5/independent.json",
+      "manual": null
+    },
+    {
+      "run": "20261002-hyperframes-explainer-release-generalization-sol-6",
+      "passed": false,
+      "failureClassification": "agent",
+      "createdAtUtc": "2026-10-02T13:44:51.554145+00:00",
+      "model": "openai-codex/gpt-5.6-sol",
+      "payloadSha256": "6cd060d1b2b3293a877426cdf48c78b5d930882687466eb6b3a7520cdc4e4cb6",
+      "durationSeconds": 522.099,
+      "timedOut": false,
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "requiredOutputs": [
+        "out/video.mp4",
+        "out/project/index.html",
+        "out/project/preview.html",
+        "out/project/manifest.json",
+        "out/project/brief.json",
+        "out/audit.json",
+        "out/media.json",
+        "out/contact.jpg"
+      ],
+      "eventFindings": [
+        {
+          "code": "tool-error",
+          "line": 3448,
+          "tool": "bash"
+        },
+        {
+          "code": "tool-error",
+          "line": 3895,
+          "tool": "bash"
+        },
+        {
+          "code": "tool-error",
+          "line": 4432,
+          "tool": "bash"
+        },
+        {
+          "code": "tool-error",
+          "line": 4843,
+          "tool": "bash"
+        }
+      ],
+      "tracePassed": false,
+      "observedModels": {
+        "gpt-5.6-sol": 34
+      },
+      "readPaths": [
+        "out/audit.json",
+        "out/preview.png",
+        "../prompt.md",
+        "skills/hyperframes-explainer/SKILL.md",
+        "skills/hyperframes-explainer/references/palette-policy.md",
+        "skills/hyperframes-explainer/references/explanation-design.md",
+        "skills/hyperframes-explainer/references/validation.md",
+        "skills/hyperframes-explainer/references/scene-contract.md",
+        "skills/hyperframes-explainer/assets/templates/brief.json",
+        "out/contact.jpg",
+        "out/project/package.json",
+        "out/project/scripts/audit.ts",
+        "out/project/oracle.json",
+        "out/media.json",
+        "out/project/manifest.json"
+      ],
+      "totalReadResultBytes": 256550,
+      "toolErrors": [
+        {
+          "line": 3448,
+          "tool": "bash",
+          "path": null,
+          "command": "for c in chrome chromium chromium-browser google-chrome; do command -v \"$c\" 2>/dev/null && break; done; for p in \"/c/Program Files/Google/Chrome/Application/chrome.exe\" \"/c/Program Files (x86)/Google/Chrome/Application/chrome.exe\" \"/c/Program Files/Microsoft/Edge/Application/msedge.exe\"; do [ -f \"$p\" ] && printf '%s\\n' \"$p\"; done",
+          "isError": true
+        },
+        {
+          "line": 3895,
+          "tool": "bash",
+          "path": null,
+          "command": "cd out/project && node --input-type=module - <<'NODE'\nimport puppeteer from 'puppeteer-core';\nimport { pathToFileURL } from 'node:url';\nimport path from 'node:path';\nconst browser = await puppeteer.launch({headless:true, executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe', args:['--allow-file-access-from-files']});\ntry {\n  const page = await browser.newPage();\n  await page.goto(pathToFileURL(path.resolve('preview.html')).href, {waitUntil:'load'});\n  await page.waitForFunction(() => window.explainer && typeof window.explainer.seek === 'function');\n  const result = await page.evaluate(() => {\n    const snap = (t) => {\n      const s = window.explainer.seek(t);\n      return {time:s.state.time, speed:s.state.speed, distance:s.state.distance};\n    };\n    const forwardFinal = snap(8);\n    const reverseMid = snap(3);\n    const reverseStart = snap(0);\n    const forwardRampEnd = snap(4);\n    window.explainer.setInputs({speed:6});\n    const override = snap(4);\n    window.explainer.clearInputs();\n    const restored = snap(4);\n    const slider = document.querySelector('input[type=\"range\"]');\n    const units = [...document.querySelectorAll('#stage text')].map(n => n.textContent).filter(t => /m\\/s|\\bm\\b|s$/.test(t));\n    return {forwardFinal, reverseMid, reverseStart, forwardRampEnd, override, restored, slider: slider && {min:slider.min,max:slider.max,value:slider.value}, units};\n  });\n  console.log(JSON.stringify(result, null, 2));\n} finally { await browser.close(); }\nNODE",
+          "isError": true
+        },
+        {
+          "line": 4432,
+          "tool": "bash",
+          "path": null,
+          "command": "cd out/project && node --input-type=module - <<'NODE'\nimport puppeteer from 'puppeteer-core';\nconst browser = await puppeteer.launch({headless:true, executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe'});\ntry {\n  const page = await browser.newPage();\n  await page.goto('http://localhost:3002/project/preview.html', {waitUntil:'networkidle0'});\n  await page.waitForFunction(() => window.explainer && typeof window.explainer.seek === 'function');\n  const result = await page.evaluate(() => {\n    const snap = (t) => {\n      const s = window.explainer.seek(t);\n      return {time:s.state.time, speed:s.state.speed, distance:s.state.distance};\n    };\n    const forwardFinal = snap(8);\n    const reverseMid = snap(3);\n    const reverseStart = snap(0);\n    const forwardRampEnd = snap(4);\n    window.explainer.setInputs({speed:6});\n    const override = snap(4);\n    window.explainer.clearInputs();\n    const restored = snap(4);\n    const slider = document.querySelector('input[type=\"range\"]');\n    const stageText = [...document.querySelectorAll('svg text')].map(n => n.textContent);\n    return {forwardFinal, reverseMid, reverseStart, forwardRampEnd, override, restored, slider: slider && {min:slider.min,max:slider.max,value:slider.value}, stageText};\n  });\n  console.log(JSON.stringify(result, null, 2));\n} finally { await browser.close(); }\nNODE",
+          "isError": true
+        },
+        {
+          "line": 4843,
+          "tool": "bash",
+          "path": null,
+          "command": "cd out/project && node --input-type=module - <<'NODE'\nimport puppeteer from 'puppeteer-core';\nconst browser = await puppeteer.launch({headless:true, executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe'});\ntry {\n  const page = await browser.newPage();\n  await page.goto('http://localhost:3002/project/preview.html', {waitUntil:'domcontentloaded', timeout:60000});\n  await page.waitForFunction(() => window.explainer && typeof window.explainer.seek === 'function', {timeout:60000});\n  const result = await page.evaluate(() => {\n    const snap = (t) => {\n      const s = window.explainer.seek(t);\n      return {time:s.state.time, speed:s.state.speed, distance:s.state.distance};\n    };\n    const forwardFinal = snap(8);\n    const reverseMid = snap(3);\n    const reverseStart = snap(0);\n    const forwardRampEnd = snap(4);\n    window.explainer.setInputs({speed:6});\n    const override = snap(4);\n    window.explainer.clearInputs();\n    const restored = snap(4);\n    const sliders = [...document.querySelectorAll('input[type=\"range\"]')].map(n => ({min:n.min,max:n.max,value:n.value}));\n    const stageText = [...document.querySelectorAll('svg text')].map(n => n.textContent);\n    return {forwardFinal, reverseMid, reverseStart, forwardRampEnd, override, restored, sliders, stageText};\n  });\n  console.log(JSON.stringify(result, null, 2));\n} finally { await browser.close(); }\nNODE",
+          "isError": true
+        }
+      ],
+      "independent": {
+        "ok": true,
+        "case": "generalization",
+        "findings": [],
+        "changedGeometry": [
+          "speed-arrow",
+          "distance-span",
+          "distance-end",
+          "car-body",
+          "car-cabin",
+          "rear-wheel",
+          "front-wheel",
+          "distance-curve"
+        ],
+        "screenshot": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\20261002-hyperframes-explainer-release-generalization-sol-6\\generalization-independent.png",
+        "observationCount": 7
+      },
+      "independentReport": "evaluations/runs/20261002-hyperframes-explainer-release-generalization-sol-6/independent.json",
+      "manual": null
+    },
+    {
+      "run": "20261002-hyperframes-explainer-release-generalization-sol-7",
+      "passed": true,
+      "failureClassification": null,
+      "createdAtUtc": "2026-10-02T13:44:51.806012+00:00",
+      "model": "openai-codex/gpt-5.6-sol",
+      "payloadSha256": "6cd060d1b2b3293a877426cdf48c78b5d930882687466eb6b3a7520cdc4e4cb6",
+      "durationSeconds": 331.921,
+      "timedOut": false,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "requiredOutputs": [
+        "out/video.mp4",
+        "out/project/index.html",
+        "out/project/preview.html",
+        "out/project/manifest.json",
+        "out/project/brief.json",
+        "out/audit.json",
+        "out/media.json",
+        "out/contact.jpg"
+      ],
+      "eventFindings": [],
+      "tracePassed": true,
+      "observedModels": {
+        "gpt-5.6-sol": 25
+      },
+      "readPaths": [
+        "out/audit.json",
+        "preview.png",
+        "../prompt.md",
+        "skills/hyperframes-explainer/SKILL.md",
+        "skills/hyperframes-explainer/references/explanation-design.md",
+        "skills/hyperframes-explainer/references/palette-policy.md",
+        "skills/hyperframes-explainer/references/scene-contract.md",
+        "skills/hyperframes-explainer/references/hyperframes-runtime.md",
+        "skills/hyperframes-explainer/assets/templates/brief.json",
+        "skills/hyperframes-explainer/references/validation.md",
+        "preflight.json",
+        "out/project/manifest.json",
+        "out/project/brief.json",
+        "out/media.json",
+        "out/contact.jpg"
+      ],
+      "totalReadResultBytes": 257709,
+      "toolErrors": [],
+      "independent": {
+        "ok": true,
+        "case": "generalization",
+        "findings": [],
+        "changedGeometry": [
+          "speed-arrow",
+          "distance-traveled",
+          "car-body",
+          "car-cabin",
+          "rear-wheel",
+          "front-wheel",
+          "distance-curve"
+        ],
+        "screenshot": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\20261002-hyperframes-explainer-release-generalization-sol-7\\generalization-independent.png",
+        "observationCount": 7
+      },
+      "independentReport": "evaluations/runs/20261002-hyperframes-explainer-release-generalization-sol-7/independent.json",
+      "manual": {
+        "ok": true,
+        "case": "generalization",
+        "reviewer": "Codex evaluator",
+        "date": "2026-10-02",
+        "evidence": [
+          "generalization-independent.png",
+          "independent.json",
+          "workspace/out/contact.jpg"
+        ],
+        "findings": [],
+        "observations": [
+          "Sparse direct labels and units; no headline, title cards, footer or closing slogan in the filmed stage.",
+          "Main mechanism remains dominant, with a readable complementary history view.",
+          "Entity paints, geometry, labels and cause/effect correspond to the independent numerical samples.",
+          "No visible clipping, label collisions or misleading direction in inspected full-resolution frames.",
+          "Movie-derived event and held-state frames retain synchronized representations and readable labels."
+        ]
+      }
+    },
+    {
+      "run": "20261002-hyperframes-explainer-release-generalization-sol-8",
+      "passed": true,
+      "failureClassification": null,
+      "createdAtUtc": "2026-10-02T13:44:52.584220+00:00",
+      "model": "openai-codex/gpt-5.6-sol",
+      "payloadSha256": "6cd060d1b2b3293a877426cdf48c78b5d930882687466eb6b3a7520cdc4e4cb6",
+      "durationSeconds": 317.226,
+      "timedOut": false,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "requiredOutputs": [
+        "out/video.mp4",
+        "out/project/index.html",
+        "out/project/preview.html",
+        "out/project/manifest.json",
+        "out/project/brief.json",
+        "out/audit.json",
+        "out/media.json",
+        "out/contact.jpg"
+      ],
+      "eventFindings": [],
+      "tracePassed": true,
+      "observedModels": {
+        "gpt-5.6-sol": 26
+      },
+      "readPaths": [
+        "out/audit.json",
+        "preview.png",
+        "../prompt.md",
+        "skills/hyperframes-explainer/SKILL.md",
+        "skills/hyperframes-explainer/references/scene-contract.md",
+        "skills/hyperframes-explainer/assets/templates/brief.json",
+        "skills/hyperframes-explainer/references/palette-policy.md",
+        "skills/hyperframes-explainer/references/explanation-design.md",
+        "skills/hyperframes-explainer/references/validation.md",
+        "build.json",
+        "out/project/manifest.json",
+        "out/media.json",
+        "out/contact.jpg",
+        "out/project/oracle.json"
+      ],
+      "totalReadResultBytes": 236519,
+      "toolErrors": [],
+      "independent": {
+        "ok": true,
+        "case": "generalization",
+        "findings": [],
+        "changedGeometry": [
+          "distance-line",
+          "distance-end",
+          "car-body",
+          "car-cabin",
+          "rear-wheel",
+          "front-wheel",
+          "speed-arrow",
+          "distance-curve"
+        ],
+        "screenshot": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\20261002-hyperframes-explainer-release-generalization-sol-8\\generalization-independent.png",
+        "observationCount": 7
+      },
+      "independentReport": "evaluations/runs/20261002-hyperframes-explainer-release-generalization-sol-8/independent.json",
+      "manual": {
+        "ok": true,
+        "case": "generalization",
+        "reviewer": "Codex evaluator",
+        "date": "2026-10-02",
+        "evidence": [
+          "generalization-independent.png",
+          "independent.json",
+          "workspace/out/contact.jpg"
+        ],
+        "findings": [],
+        "observations": [
+          "Sparse direct labels and units; no headline, title cards, footer or closing slogan in the filmed stage.",
+          "Main mechanism remains dominant, with a readable complementary history view.",
+          "Entity paints, geometry, labels and cause/effect correspond to the independent numerical samples.",
+          "No visible clipping, label collisions or misleading direction in inspected full-resolution frames.",
+          "Movie-derived event and held-state frames retain synchronized representations and readable labels."
+        ]
+      }
+    },
+    {
+      "run": "20261002-hyperframes-explainer-release-naturalistic-luna-1",
+      "passed": false,
+      "failureClassification": "agent",
+      "createdAtUtc": "2026-10-02T12:53:40.602280+00:00",
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "c428643cea62768493f9db117fa37e23e80a2d7ac1232dcf4de3c5e7ad0bcd45",
+      "durationSeconds": 435.575,
+      "timedOut": false,
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "requiredOutputs": [
+        "out/video.mp4",
+        "out/project/index.html",
+        "out/project/preview.html",
+        "out/project/manifest.json",
+        "out/project/brief.json",
+        "out/audit.json",
+        "out/media.json",
+        "out/contact.jpg"
+      ],
+      "eventFindings": [
+        {
+          "code": "tool-error",
+          "line": 4496,
+          "tool": "edit"
+        }
+      ],
+      "tracePassed": false,
+      "observedModels": {
+        "gpt-5.6-luna": 45
+      },
+      "readPaths": [
+        "out/project/brief.json",
+        "out/audit.json",
+        "out/preview.png",
+        "out/media.json",
+        "out/contact.jpg",
+        "../prompt.md",
+        "skills/hyperframes-explainer/SKILL.md",
+        "skills/hyperframes-explainer/references/explanation-design.md",
+        "skills/hyperframes-explainer/references/validation.md",
+        "skills/hyperframes-explainer/assets/templates/brief.json",
+        "skills/hyperframes-explainer/references/palette-policy.md",
+        "skills/hyperframes-explainer/references/scene-contract.md",
+        "skills/hyperframes-explainer/assets/palettes/colorsets.json",
+        "out/preflight.json",
+        "out/build.json",
+        "out/project/manifest.json"
+      ],
+      "totalReadResultBytes": 450886,
+      "toolErrors": [
+        {
+          "line": 4496,
+          "tool": "edit",
+          "path": "out/project/brief.json",
+          "command": null,
+          "isError": true
+        }
+      ],
+      "independent": {
+        "ok": true,
+        "case": "naturalistic",
+        "findings": [],
+        "changedGeometry": [
+          "control-handle",
+          "fill-a",
+          "fill-b",
+          "a-history",
+          "b-history"
+        ],
+        "screenshot": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\20261002-hyperframes-explainer-release-naturalistic-luna-1\\naturalistic-independent.png",
+        "observationCount": 7
+      },
+      "independentReport": "evaluations/runs/20261002-hyperframes-explainer-release-naturalistic-luna-1/independent.json",
+      "manual": null
+    },
+    {
+      "run": "20261002-hyperframes-explainer-release-naturalistic-luna-2",
+      "passed": true,
+      "failureClassification": null,
+      "createdAtUtc": "2026-10-02T12:57:11.065098+00:00",
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "c153c5b7290db0efd1e11272f112620ffb6afd90f5ee1f5ba24f6891c08fe176",
+      "durationSeconds": 298.649,
+      "timedOut": false,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "requiredOutputs": [
+        "out/video.mp4",
+        "out/project/index.html",
+        "out/project/preview.html",
+        "out/project/manifest.json",
+        "out/project/brief.json",
+        "out/audit.json",
+        "out/media.json",
+        "out/contact.jpg"
+      ],
+      "eventFindings": [],
+      "tracePassed": true,
+      "observedModels": {
+        "gpt-5.6-luna": 29
+      },
+      "readPaths": [
+        "out/audit.json",
+        "../prompt.md",
+        "skills/hyperframes-explainer/SKILL.md",
+        "skills/hyperframes-explainer/references/validation.md",
+        "skills/hyperframes-explainer/references/palette-policy.md",
+        "skills/hyperframes-explainer/references/hyperframes-runtime.md",
+        "skills/hyperframes-explainer/references/explanation-design.md",
+        "skills/hyperframes-explainer/assets/templates/brief.json",
+        "skills/hyperframes-explainer/references/scene-contract.md",
+        "skills/hyperframes-explainer/assets/palettes/colorsets.json",
+        "skills/hyperframes-explainer/assets/templates/index.html",
+        "skills/hyperframes-explainer/assets/templates/audit.ts",
+        "skills/hyperframes-explainer/assets/templates/preview.html",
+        "skills/hyperframes-explainer/scripts/explainer.py",
+        "skills/hyperframes-explainer/assets/templates/kernel.js",
+        "out/preflight.json",
+        "out/preview.png",
+        "out/media.json",
+        "out/contact.jpg",
+        "out/project/manifest.json",
+        "out/project/brief.json"
+      ],
+      "totalReadResultBytes": 302116,
+      "toolErrors": [],
+      "independent": {
+        "ok": true,
+        "case": "naturalistic",
+        "findings": [],
+        "changedGeometry": [
+          "control-knob",
+          "store-a",
+          "store-b",
+          "partition-edge",
+          "history-a",
+          "history-b"
+        ],
+        "screenshot": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\20261002-hyperframes-explainer-release-naturalistic-luna-2\\naturalistic-independent.png",
+        "observationCount": 7
+      },
+      "independentReport": "evaluations/runs/20261002-hyperframes-explainer-release-naturalistic-luna-2/independent.json",
+      "manual": null
+    },
+    {
+      "run": "20261002-hyperframes-explainer-release-naturalistic-luna-3",
+      "passed": true,
+      "failureClassification": null,
+      "createdAtUtc": "2026-10-02T12:59:40.142598+00:00",
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "c153c5b7290db0efd1e11272f112620ffb6afd90f5ee1f5ba24f6891c08fe176",
+      "durationSeconds": 349.764,
+      "timedOut": false,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "requiredOutputs": [
+        "out/video.mp4",
+        "out/project/index.html",
+        "out/project/preview.html",
+        "out/project/manifest.json",
+        "out/project/brief.json",
+        "out/audit.json",
+        "out/media.json",
+        "out/contact.jpg"
+      ],
+      "eventFindings": [],
+      "tracePassed": true,
+      "observedModels": {
+        "gpt-5.6-luna": 28
+      },
+      "readPaths": [
+        "out/audit.json",
+        "skills/hyperframes-explainer/scripts/explainer.py",
+        "../prompt.md",
+        "skills/hyperframes-explainer/SKILL.md",
+        "skills/hyperframes-explainer/references/explanation-design.md",
+        "skills/hyperframes-explainer/references/hyperframes-runtime.md",
+        "skills/hyperframes-explainer/references/palette-policy.md",
+        "skills/hyperframes-explainer/references/scene-contract.md",
+        "skills/hyperframes-explainer/references/validation.md",
+        "skills/hyperframes-explainer/assets/templates/brief.json",
+        "skills/hyperframes-explainer/assets/templates/kernel.js",
+        "skills/hyperframes-explainer/assets/templates/index.html",
+        "skills/hyperframes-explainer/assets/palettes/colorsets.json",
+        "skills/hyperframes-explainer/assets/templates/preview.html",
+        "out/preview.png",
+        "out/project/brief.json",
+        "out/project/manifest.json",
+        "out/media.json",
+        "out/contact.jpg"
+      ],
+      "totalReadResultBytes": 311510,
+      "toolErrors": [],
+      "independent": {
+        "ok": true,
+        "case": "naturalistic",
+        "findings": [],
+        "changedGeometry": [
+          "control-stem",
+          "control-knob",
+          "stored-a",
+          "stored-b",
+          "level-a",
+          "level-b",
+          "history-a",
+          "history-b"
+        ],
+        "screenshot": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\20261002-hyperframes-explainer-release-naturalistic-luna-3\\naturalistic-independent.png",
+        "observationCount": 7
+      },
+      "independentReport": "evaluations/runs/20261002-hyperframes-explainer-release-naturalistic-luna-3/independent.json",
+      "manual": null
+    },
+    {
+      "run": "20261002-hyperframes-explainer-release-naturalistic-luna-4",
+      "passed": false,
+      "failureClassification": "agent",
+      "createdAtUtc": "2026-10-02T13:09:27.285586+00:00",
+      "model": "openai-codex/gpt-5.6-luna",
+      "payloadSha256": "c153c5b7290db0efd1e11272f112620ffb6afd90f5ee1f5ba24f6891c08fe176",
+      "durationSeconds": 566.387,
+      "timedOut": false,
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "requiredOutputs": [
+        "out/video.mp4",
+        "out/project/index.html",
+        "out/project/preview.html",
+        "out/project/manifest.json",
+        "out/project/brief.json",
+        "out/audit.json",
+        "out/media.json",
+        "out/contact.jpg"
+      ],
+      "eventFindings": [
+        {
+          "code": "tool-error",
+          "line": 4814,
+          "tool": "read"
+        },
+        {
+          "code": "tool-error",
+          "line": 5254,
+          "tool": "edit"
+        }
+      ],
+      "tracePassed": false,
+      "observedModels": {
+        "gpt-5.6-luna": 43
+      },
+      "readPaths": [
+        "out/audit.json",
+        "out/audit-preview.png",
+        "../prompt.md",
+        "skills/hyperframes-explainer/SKILL.md",
+        "skills/hyperframes-explainer/references/hyperframes-runtime.md",
+        "skills/hyperframes-explainer/references/palette-policy.md",
+        "skills/hyperframes-explainer/references/explanation-design.md",
+        "skills/hyperframes-explainer/assets/templates/brief.json",
+        "skills/hyperframes-explainer/references/validation.md",
+        "skills/hyperframes-explainer/references/scene-contract.md",
+        "skills/hyperframes-explainer/assets/palettes/colorsets.json",
+        "out/preflight.json",
+        "out/build.json",
+        "audit.json",
+        "audit-preview.png",
+        "out/brief.json",
+        "out/media.json",
+        "out/contact.jpg",
+        "out/project/brief.json",
+        "out/project/manifest.json",
+        "out/inspect-02.jpg",
+        "out/inspect-04.jpg",
+        "out/inspect-01.jpg",
+        "out/inspect-03.jpg"
+      ],
+      "totalReadResultBytes": 533980,
+      "toolErrors": [
+        {
+          "line": 4814,
+          "tool": "read",
+          "path": "out/audit.json",
+          "command": null,
+          "isError": true
+        },
+        {
+          "line": 5254,
+          "tool": "edit",
+          "path": "out/brief.json",
+          "command": null,
+          "isError": true
+        }
+      ],
+      "independent": {
+        "ok": true,
+        "case": "naturalistic",
+        "findings": [],
+        "changedGeometry": [
+          "control-knob",
+          "control-link",
+          "store-a-fill",
+          "store-b-fill",
+          "history-a-plot",
+          "history-b-plot"
+        ],
+        "screenshot": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\20261002-hyperframes-explainer-release-naturalistic-luna-4\\naturalistic-independent.png",
+        "observationCount": 7
+      },
+      "independentReport": "evaluations/runs/20261002-hyperframes-explainer-release-naturalistic-luna-4/independent.json",
+      "manual": null
+    },
+    {
+      "run": "20261002-hyperframes-explainer-release-naturalistic-sol-1",
+      "passed": false,
+      "failureClassification": "agent",
+      "createdAtUtc": "2026-10-02T13:13:35.535426+00:00",
+      "model": "openai-codex/gpt-5.6-sol",
+      "payloadSha256": "c153c5b7290db0efd1e11272f112620ffb6afd90f5ee1f5ba24f6891c08fe176",
+      "durationSeconds": 344.224,
+      "timedOut": false,
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "requiredOutputs": [
+        "out/video.mp4",
+        "out/project/index.html",
+        "out/project/preview.html",
+        "out/project/manifest.json",
+        "out/project/brief.json",
+        "out/audit.json",
+        "out/media.json",
+        "out/contact.jpg"
+      ],
+      "eventFindings": [
+        {
+          "code": "tool-error",
+          "line": 2863,
+          "tool": "edit"
+        }
+      ],
+      "tracePassed": false,
+      "observedModels": {
+        "gpt-5.6-sol": 23
+      },
+      "readPaths": [
+        "out/audit.json",
+        "../prompt.md",
+        "skills/hyperframes-explainer/SKILL.md",
+        "skills/hyperframes-explainer/references/palette-policy.md",
+        "skills/hyperframes-explainer/references/explanation-design.md",
+        "skills/hyperframes-explainer/references/validation.md",
+        "skills/hyperframes-explainer/references/scene-contract.md",
+        "skills/hyperframes-explainer/assets/templates/brief.json",
+        "skills/hyperframes-explainer/assets/palettes/colorsets.json",
+        "preflight.json",
+        "build.json",
+        "out/project/manifest.json",
+        "out/project/brief.json",
+        "audit-preview.png",
+        "out/media.json",
+        "out/contact.jpg"
+      ],
+      "totalReadResultBytes": 254640,
+      "toolErrors": [
+        {
+          "line": 2863,
+          "tool": "edit",
+          "path": "brief.json",
+          "command": null,
+          "isError": true
+        }
+      ],
+      "independent": {
+        "ok": true,
+        "case": "naturalistic",
+        "findings": [],
+        "changedGeometry": [
+          "control-active",
+          "control-knob",
+          "store-a-fill",
+          "store-b-fill",
+          "history-a",
+          "history-b"
+        ],
+        "screenshot": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\20261002-hyperframes-explainer-release-naturalistic-sol-1\\naturalistic-independent.png",
+        "observationCount": 7
+      },
+      "independentReport": "evaluations/runs/20261002-hyperframes-explainer-release-naturalistic-sol-1/independent.json",
+      "manual": null
+    },
+    {
+      "run": "20261002-hyperframes-explainer-release-naturalistic-sol-2",
+      "passed": true,
+      "failureClassification": null,
+      "createdAtUtc": "2026-10-02T13:16:13.122053+00:00",
+      "model": "openai-codex/gpt-5.6-sol",
+      "payloadSha256": "c153c5b7290db0efd1e11272f112620ffb6afd90f5ee1f5ba24f6891c08fe176",
+      "durationSeconds": 326.055,
+      "timedOut": false,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "requiredOutputs": [
+        "out/video.mp4",
+        "out/project/index.html",
+        "out/project/preview.html",
+        "out/project/manifest.json",
+        "out/project/brief.json",
+        "out/audit.json",
+        "out/media.json",
+        "out/contact.jpg"
+      ],
+      "eventFindings": [],
+      "tracePassed": true,
+      "observedModels": {
+        "gpt-5.6-sol": 25
+      },
+      "readPaths": [
+        "out/audit.json",
+        "audit-preview.png",
+        "../prompt.md",
+        "skills/hyperframes-explainer/SKILL.md",
+        "skills/hyperframes-explainer/references/scene-contract.md",
+        "skills/hyperframes-explainer/references/palette-policy.md",
+        "skills/hyperframes-explainer/references/validation.md",
+        "skills/hyperframes-explainer/assets/templates/brief.json",
+        "skills/hyperframes-explainer/references/explanation-design.md",
+        "skills/hyperframes-explainer/assets/palettes/colorsets.json",
+        "preflight.json",
+        "out/project/package.json",
+        "out/project/brief.json",
+        "build.json",
+        "out/project/manifest.json",
+        "out/media.json",
+        "out/contact.jpg"
+      ],
+      "totalReadResultBytes": 277245,
+      "toolErrors": [],
+      "independent": {
+        "ok": true,
+        "case": "naturalistic",
+        "findings": [],
+        "changedGeometry": [
+          "control-progress",
+          "control-knob",
+          "a-amount",
+          "a-surface",
+          "b-amount",
+          "b-surface",
+          "a-history",
+          "b-history"
+        ],
+        "screenshot": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\20261002-hyperframes-explainer-release-naturalistic-sol-2\\naturalistic-independent.png",
+        "observationCount": 7
+      },
+      "independentReport": "evaluations/runs/20261002-hyperframes-explainer-release-naturalistic-sol-2/independent.json",
+      "manual": null
+    },
+    {
+      "run": "20261002-hyperframes-explainer-release-naturalistic-sol-3",
+      "passed": true,
+      "failureClassification": null,
+      "createdAtUtc": "2026-10-02T13:30:17.890858+00:00",
+      "model": "openai-codex/gpt-5.6-sol",
+      "payloadSha256": "32b1db8334e9a45d610c6c65003650356548d1697e7415f201bc289c3b025a37",
+      "durationSeconds": 244.034,
+      "timedOut": false,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "requiredOutputs": [
+        "out/video.mp4",
+        "out/project/index.html",
+        "out/project/preview.html",
+        "out/project/manifest.json",
+        "out/project/brief.json",
+        "out/audit.json",
+        "out/media.json",
+        "out/contact.jpg"
+      ],
+      "eventFindings": [],
+      "tracePassed": true,
+      "observedModels": {
+        "gpt-5.6-sol": 25
+      },
+      "readPaths": [
+        "out/audit.json",
+        "preview.png",
+        "../prompt.md",
+        "skills/hyperframes-explainer/SKILL.md",
+        "skills/hyperframes-explainer/references/palette-policy.md",
+        "skills/hyperframes-explainer/references/validation.md",
+        "skills/hyperframes-explainer/references/explanation-design.md",
+        "skills/hyperframes-explainer/assets/templates/brief.json",
+        "skills/hyperframes-explainer/references/scene-contract.md",
+        "skills/hyperframes-explainer/assets/palettes/colorsets.json",
+        "preflight.json",
+        "build.json",
+        "out/project/manifest.json",
+        "out/project/brief.json",
+        "patch-report.json",
+        "build-refresh.json",
+        "out/media.json",
+        "out/contact.jpg"
+      ],
+      "totalReadResultBytes": 285099,
+      "toolErrors": [],
+      "independent": {
+        "ok": true,
+        "case": "naturalistic",
+        "findings": [],
+        "changedGeometry": [
+          "control-knob",
+          "fill-a",
+          "level-a",
+          "fill-b",
+          "level-b",
+          "history-a",
+          "history-b"
+        ],
+        "screenshot": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\20261002-hyperframes-explainer-release-naturalistic-sol-3\\naturalistic-independent.png",
+        "observationCount": 7
+      },
+      "independentReport": "evaluations/runs/20261002-hyperframes-explainer-release-naturalistic-sol-3/independent.json",
+      "manual": null
+    },
+    {
+      "run": "20261002-hyperframes-explainer-release-naturalistic-sol-4",
+      "passed": true,
+      "failureClassification": null,
+      "createdAtUtc": "2026-10-02T13:36:29.149963+00:00",
+      "model": "openai-codex/gpt-5.6-sol",
+      "payloadSha256": "32b1db8334e9a45d610c6c65003650356548d1697e7415f201bc289c3b025a37",
+      "durationSeconds": 284.753,
+      "timedOut": false,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "requiredOutputs": [
+        "out/video.mp4",
+        "out/project/index.html",
+        "out/project/preview.html",
+        "out/project/manifest.json",
+        "out/project/brief.json",
+        "out/audit.json",
+        "out/media.json",
+        "out/contact.jpg"
+      ],
+      "eventFindings": [],
+      "tracePassed": true,
+      "observedModels": {
+        "gpt-5.6-sol": 25
+      },
+      "readPaths": [
+        "out/audit.json",
+        "../prompt.md",
+        "skills/hyperframes-explainer/SKILL.md",
+        "skills/hyperframes-explainer/references/palette-policy.md",
+        "skills/hyperframes-explainer/references/validation.md",
+        "skills/hyperframes-explainer/assets/templates/brief.json",
+        "skills/hyperframes-explainer/references/scene-contract.md",
+        "skills/hyperframes-explainer/references/explanation-design.md",
+        "skills/hyperframes-explainer/assets/palettes/colorsets.json",
+        "out/project/manifest.json",
+        "build.json",
+        "preflight.json",
+        "out/project/brief.json",
+        "patch-report.json",
+        "build-refresh.json",
+        "out/preview.png",
+        "out/media.json",
+        "out/contact.jpg"
+      ],
+      "totalReadResultBytes": 266602,
+      "toolErrors": [],
+      "independent": {
+        "ok": true,
+        "case": "naturalistic",
+        "findings": [],
+        "changedGeometry": [
+          "store-a-fill",
+          "store-b-fill",
+          "control-progress",
+          "control-thumb",
+          "a-history",
+          "b-history"
+        ],
+        "screenshot": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\20261002-hyperframes-explainer-release-naturalistic-sol-4\\naturalistic-independent.png",
+        "observationCount": 7
+      },
+      "independentReport": "evaluations/runs/20261002-hyperframes-explainer-release-naturalistic-sol-4/independent.json",
+      "manual": null
+    },
+    {
+      "run": "20261002-hyperframes-explainer-release-naturalistic-sol-5",
+      "passed": true,
+      "failureClassification": null,
+      "createdAtUtc": "2026-10-02T13:41:08.741092+00:00",
+      "model": "openai-codex/gpt-5.6-sol",
+      "payloadSha256": "32b1db8334e9a45d610c6c65003650356548d1697e7415f201bc289c3b025a37",
+      "durationSeconds": 303.183,
+      "timedOut": false,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "requiredOutputs": [
+        "out/video.mp4",
+        "out/project/index.html",
+        "out/project/preview.html",
+        "out/project/manifest.json",
+        "out/project/brief.json",
+        "out/audit.json",
+        "out/media.json",
+        "out/contact.jpg"
+      ],
+      "eventFindings": [],
+      "tracePassed": true,
+      "observedModels": {
+        "gpt-5.6-sol": 26
+      },
+      "readPaths": [
+        "out/audit.json",
+        "out/preview.png",
+        "../prompt.md",
+        "skills/hyperframes-explainer/SKILL.md",
+        "skills/hyperframes-explainer/references/validation.md",
+        "skills/hyperframes-explainer/references/explanation-design.md",
+        "skills/hyperframes-explainer/references/palette-policy.md",
+        "skills/hyperframes-explainer/assets/templates/brief.json",
+        "skills/hyperframes-explainer/references/hyperframes-runtime.md",
+        "skills/hyperframes-explainer/references/scene-contract.md",
+        "skills/hyperframes-explainer/assets/palettes/colorsets.json",
+        "preflight.json",
+        "out/project/manifest.json",
+        "out/project/brief.json",
+        "build.json",
+        "out/project/package.json",
+        "patch-report.json",
+        "build-refresh.json",
+        "out/media.json",
+        "out/contact.jpg"
+      ],
+      "totalReadResultBytes": 310428,
+      "toolErrors": [],
+      "independent": {
+        "ok": true,
+        "case": "naturalistic",
+        "findings": [],
+        "changedGeometry": [
+          "allocation-knob",
+          "a-fill",
+          "b-fill",
+          "a-history",
+          "b-history"
+        ],
+        "screenshot": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\20261002-hyperframes-explainer-release-naturalistic-sol-5\\naturalistic-independent.png",
+        "observationCount": 7
+      },
+      "independentReport": "evaluations/runs/20261002-hyperframes-explainer-release-naturalistic-sol-5/independent.json",
+      "manual": null
+    },
+    {
+      "run": "20261002-hyperframes-explainer-release-naturalistic-sol-6",
+      "passed": true,
+      "failureClassification": null,
+      "createdAtUtc": "2026-10-02T13:44:50.371893+00:00",
+      "model": "openai-codex/gpt-5.6-sol",
+      "payloadSha256": "6cd060d1b2b3293a877426cdf48c78b5d930882687466eb6b3a7520cdc4e4cb6",
+      "durationSeconds": 207.085,
+      "timedOut": false,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "requiredOutputs": [
+        "out/video.mp4",
+        "out/project/index.html",
+        "out/project/preview.html",
+        "out/project/manifest.json",
+        "out/project/brief.json",
+        "out/audit.json",
+        "out/media.json",
+        "out/contact.jpg"
+      ],
+      "eventFindings": [],
+      "tracePassed": true,
+      "observedModels": {
+        "gpt-5.6-sol": 17
+      },
+      "readPaths": [
+        "../prompt.md",
+        "skills/hyperframes-explainer/SKILL.md",
+        "skills/hyperframes-explainer/references/palette-policy.md",
+        "skills/hyperframes-explainer/references/scene-contract.md",
+        "skills/hyperframes-explainer/assets/templates/brief.json",
+        "skills/hyperframes-explainer/references/explanation-design.md",
+        "skills/hyperframes-explainer/references/hyperframes-runtime.md",
+        "skills/hyperframes-explainer/references/validation.md",
+        "work/preflight.json",
+        "out/project/manifest.json",
+        "out/project/preview.html",
+        "work/build.json",
+        "out/audit.json",
+        "work/preview.png",
+        "out/media.json",
+        "out/contact.jpg"
+      ],
+      "totalReadResultBytes": 238099,
+      "toolErrors": [],
+      "independent": {
+        "ok": true,
+        "case": "naturalistic",
+        "findings": [],
+        "changedGeometry": [
+          "control-active",
+          "control-knob",
+          "fill-a",
+          "level-a",
+          "fill-b",
+          "level-b",
+          "curve-a",
+          "curve-b"
+        ],
+        "screenshot": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\20261002-hyperframes-explainer-release-naturalistic-sol-6\\naturalistic-independent.png",
+        "observationCount": 7
+      },
+      "independentReport": "evaluations/runs/20261002-hyperframes-explainer-release-naturalistic-sol-6/independent.json",
+      "manual": {
+        "ok": true,
+        "case": "naturalistic",
+        "reviewer": "Codex evaluator",
+        "date": "2026-10-02",
+        "evidence": [
+          "naturalistic-independent.png",
+          "independent.json",
+          "workspace/out/contact.jpg"
+        ],
+        "findings": [],
+        "observations": [
+          "Sparse direct labels and units; no headline, title cards, footer or closing slogan in the filmed stage.",
+          "Main mechanism remains dominant, with a readable complementary history view.",
+          "Entity paints, geometry, labels and cause/effect correspond to the independent numerical samples.",
+          "No visible clipping, label collisions or misleading direction in inspected full-resolution frames.",
+          "Movie-derived event and held-state frames retain synchronized representations and readable labels."
+        ]
+      }
+    },
+    {
+      "run": "20261002-hyperframes-explainer-release-naturalistic-sol-7",
+      "passed": true,
+      "failureClassification": null,
+      "createdAtUtc": "2026-10-02T13:44:50.461309+00:00",
+      "model": "openai-codex/gpt-5.6-sol",
+      "payloadSha256": "6cd060d1b2b3293a877426cdf48c78b5d930882687466eb6b3a7520cdc4e4cb6",
+      "durationSeconds": 276.652,
+      "timedOut": false,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "requiredOutputs": [
+        "out/video.mp4",
+        "out/project/index.html",
+        "out/project/preview.html",
+        "out/project/manifest.json",
+        "out/project/brief.json",
+        "out/audit.json",
+        "out/media.json",
+        "out/contact.jpg"
+      ],
+      "eventFindings": [],
+      "tracePassed": true,
+      "observedModels": {
+        "gpt-5.6-sol": 24
+      },
+      "readPaths": [
+        "out/audit.json",
+        "work/preview.png",
+        "../prompt.md",
+        "skills/hyperframes-explainer/SKILL.md",
+        "skills/hyperframes-explainer/references/palette-policy.md",
+        "skills/hyperframes-explainer/references/explanation-design.md",
+        "skills/hyperframes-explainer/assets/templates/brief.json",
+        "skills/hyperframes-explainer/references/validation.md",
+        "skills/hyperframes-explainer/references/hyperframes-runtime.md",
+        "skills/hyperframes-explainer/references/scene-contract.md",
+        "work/preflight.json",
+        "work/build.json",
+        "out/project/brief.json",
+        "out/project/package.json",
+        "out/project/preview.html",
+        "out/project/manifest.json",
+        "work/patch.json",
+        "out/media.json",
+        "out/contact.jpg"
+      ],
+      "totalReadResultBytes": 275337,
+      "toolErrors": [],
+      "independent": {
+        "ok": true,
+        "case": "naturalistic",
+        "findings": [],
+        "changedGeometry": [
+          "tank-a-fill",
+          "tank-b-fill",
+          "allocation-progress",
+          "allocation-knob",
+          "history-a",
+          "history-b"
+        ],
+        "screenshot": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\20261002-hyperframes-explainer-release-naturalistic-sol-7\\naturalistic-independent.png",
+        "observationCount": 7
+      },
+      "independentReport": "evaluations/runs/20261002-hyperframes-explainer-release-naturalistic-sol-7/independent.json",
+      "manual": {
+        "ok": true,
+        "case": "naturalistic",
+        "reviewer": "Codex evaluator",
+        "date": "2026-10-02",
+        "evidence": [
+          "naturalistic-independent.png",
+          "independent.json",
+          "workspace/out/contact.jpg"
+        ],
+        "findings": [],
+        "observations": [
+          "Sparse direct labels and units; no headline, title cards, footer or closing slogan in the filmed stage.",
+          "Main mechanism remains dominant, with a readable complementary history view.",
+          "Entity paints, geometry, labels and cause/effect correspond to the independent numerical samples.",
+          "No visible clipping, label collisions or misleading direction in inspected full-resolution frames.",
+          "Movie-derived event and held-state frames retain synchronized representations and readable labels."
+        ]
+      }
+    },
+    {
+      "run": "20261002-hyperframes-explainer-release-naturalistic-sol-8",
+      "passed": true,
+      "failureClassification": null,
+      "createdAtUtc": "2026-10-02T13:44:51.015400+00:00",
+      "model": "openai-codex/gpt-5.6-sol",
+      "payloadSha256": "6cd060d1b2b3293a877426cdf48c78b5d930882687466eb6b3a7520cdc4e4cb6",
+      "durationSeconds": 315.176,
+      "timedOut": false,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "requiredOutputs": [
+        "out/video.mp4",
+        "out/project/index.html",
+        "out/project/preview.html",
+        "out/project/manifest.json",
+        "out/project/brief.json",
+        "out/audit.json",
+        "out/media.json",
+        "out/contact.jpg"
+      ],
+      "eventFindings": [],
+      "tracePassed": true,
+      "observedModels": {
+        "gpt-5.6-sol": 25
+      },
+      "readPaths": [
+        "out/audit.json",
+        "out/preview.png",
+        "../prompt.md",
+        "skills/hyperframes-explainer/SKILL.md",
+        "skills/hyperframes-explainer/references/explanation-design.md",
+        "skills/hyperframes-explainer/assets/templates/brief.json",
+        "skills/hyperframes-explainer/references/palette-policy.md",
+        "skills/hyperframes-explainer/references/validation.md",
+        "skills/hyperframes-explainer/references/scene-contract.md",
+        "out/project/brief.json",
+        "out/project/manifest.json",
+        "out/media.json",
+        "out/contact.jpg"
+      ],
+      "totalReadResultBytes": 261331,
+      "toolErrors": [],
+      "independent": {
+        "ok": true,
+        "case": "naturalistic",
+        "findings": [],
+        "changedGeometry": [
+          "control-a-share",
+          "control-b-share",
+          "control-handle",
+          "store-a-fill",
+          "store-b-fill",
+          "history-a",
+          "history-b"
+        ],
+        "screenshot": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\20261002-hyperframes-explainer-release-naturalistic-sol-8\\naturalistic-independent.png",
+        "observationCount": 7
+      },
+      "independentReport": "evaluations/runs/20261002-hyperframes-explainer-release-naturalistic-sol-8/independent.json",
+      "manual": {
+        "ok": true,
+        "case": "naturalistic",
+        "reviewer": "Codex evaluator",
+        "date": "2026-10-02",
+        "evidence": [
+          "naturalistic-independent.png",
+          "independent.json",
+          "workspace/out/contact.jpg"
+        ],
+        "findings": [],
+        "observations": [
+          "Sparse direct labels and units; no headline, title cards, footer or closing slogan in the filmed stage.",
+          "Main mechanism remains dominant, with a readable complementary history view.",
+          "Entity paints, geometry, labels and cause/effect correspond to the independent numerical samples.",
+          "No visible clipping, label collisions or misleading direction in inspected full-resolution frames.",
+          "Movie-derived event and held-state frames retain synchronized representations and readable labels."
+        ]
+      }
+    },
+    {
+      "run": "20261002-hyperframes-explainer-routing-luna-1",
+      "kind": "routing",
+      "passed": true,
+      "checks": "12/12"
+    },
+    {
+      "run": "20261002-hyperframes-explainer-routing-luna-2",
+      "kind": "routing",
+      "passed": true,
+      "checks": "12/12"
+    }
+  ]
+}

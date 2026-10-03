@@ -1,0 +1,9 @@
+{
+  "parent": "visual-extension-protocol.json",
+  "candidate_v3": "15/17 controls; failed because a visual observer missed a black square and vaguely mislocated a centered HUD. Raw observations and scores retained.",
+  "candidate_v4": "Add complete source crosscheck below 12 KB for all inputs and precedence of exact render measurements over observer impressions. Same rubric, thresholds and observer prompt.",
+  "calibration_call_extension": 14,
+  "maximum_total_jev_calibration_calls_in_visual_extension": 28,
+  "new_observer_calibration_calls": 0,
+  "registered_before_v4_calls": true
+}

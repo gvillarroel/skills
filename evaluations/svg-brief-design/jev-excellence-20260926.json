@@ -1,0 +1,598 @@
+{
+  "version": "3.0.0",
+  "date": "2026-09-26",
+  "judge": "typesafe/jev-1.13-20260917",
+  "observer": "openai-codex/gpt-6-luna",
+  "weights": {
+    "brief_adherence": 35,
+    "geometric_finish": 25,
+    "composition": 20,
+    "legibility": 20
+  },
+  "arms": {
+    "b": {
+      "total": 18,
+      "scored": 18,
+      "needs_review_unscored": 0,
+      "mean_scored": 92.08333333333333,
+      "whole_cohort_mean_bounds": [
+        92.08333333333333,
+        92.08333333333333
+      ],
+      "full_marks": 10
+    },
+    "q": {
+      "total": 18,
+      "scored": 18,
+      "needs_review_unscored": 0,
+      "mean_scored": 94.16666666666667,
+      "whole_cohort_mean_bounds": [
+        94.16666666666667,
+        94.16666666666667
+      ],
+      "full_marks": 12
+    }
+  },
+  "mean_difference_points": 2.083333333333343,
+  "per_task": [
+    {
+      "task": "vector-004--eb6eabbcb9ca2ad4",
+      "b": 100.0,
+      "q": 100.0,
+      "difference": 0.0
+    },
+    {
+      "task": "vector-011--6b42f7e2789d1bd1",
+      "b": 74.16666666666667,
+      "q": 78.33333333333333,
+      "difference": 4.166666666666657
+    },
+    {
+      "task": "vector-019--75606bdb4ee5b4af",
+      "b": 92.5,
+      "q": 97.91666666666667,
+      "difference": 5.416666666666671
+    },
+    {
+      "task": "vector-020--09ee2ae28c7c367a",
+      "b": 93.33333333333333,
+      "q": 94.58333333333333,
+      "difference": 1.25
+    },
+    {
+      "task": "vector-024--652120566170fbf2",
+      "b": 92.5,
+      "q": 94.16666666666667,
+      "difference": 1.6666666666666714
+    },
+    {
+      "task": "vector-030--d3c57e0c21dbede0",
+      "b": 100.0,
+      "q": 100.0,
+      "difference": 0.0
+    }
+  ],
+  "review_flags": [
+    {
+      "candidate": "b",
+      "task": "vector-011--6b42f7e2789d1bd1",
+      "name": "vector-011--6b42f7e2789d1bd1__SczcPdE",
+      "score_100": 70.0
+    },
+    {
+      "candidate": "b",
+      "task": "vector-019--75606bdb4ee5b4af",
+      "name": "vector-019--75606bdb4ee5b4af__Jv4vMDR",
+      "score_100": 82.5
+    },
+    {
+      "candidate": "b",
+      "task": "vector-020--09ee2ae28c7c367a",
+      "name": "vector-020--09ee2ae28c7c367a__Sb77v3t",
+      "score_100": 80.0
+    },
+    {
+      "candidate": "q",
+      "task": "vector-024--652120566170fbf2",
+      "name": "vector-024--652120566170fbf2__hmgfCWr",
+      "score_100": 82.5
+    }
+  ],
+  "calibration_controls_passed": 17,
+  "calibration_controls_total": 17,
+  "deterministic_tests": 16,
+  "native_integration": {
+    "job": "evaluations/runs/svgq2/jobs/probe-lf",
+    "trials": 1,
+    "errors": 0,
+    "technical_excellence": 1.0
+  },
+  "accounting": {
+    "jev_calls": 131,
+    "jev_reported_cost_usd": 0.020802348,
+    "jev_input_tokens": 495294,
+    "jev_output_tokens": 41974,
+    "visual_observer_calls": 51,
+    "observer_reported_total_tokens": 84135,
+    "observer_dollar_cost": null
+  },
+  "lineage_audit": {
+    "historical_results_unchanged": 36,
+    "historical_svgs_unchanged": 36,
+    "observer_image_inputs_verified": 51,
+    "frozen_bundle_unchanged": true
+  },
+  "new_svg_generation_calls": 0,
+  "private_tasks_opened": 0,
+  "scope": "Public descriptive retrospective; not an independent promotion claim.",
+  "records": [
+    {
+      "trial": "vector-004--eb6eabbcb9ca2ad4__TfS8g3W",
+      "candidate": "b",
+      "task": "vector-004--eb6eabbcb9ca2ad4",
+      "score_100": 100.0,
+      "dimensions": {
+        "brief_adherence": 4,
+        "geometric_finish": 4,
+        "composition": 4,
+        "legibility": 4
+      },
+      "review_recommended": false
+    },
+    {
+      "trial": "vector-004--eb6eabbcb9ca2ad4__bCvkPQt",
+      "candidate": "b",
+      "task": "vector-004--eb6eabbcb9ca2ad4",
+      "score_100": 100.0,
+      "dimensions": {
+        "brief_adherence": 4,
+        "geometric_finish": 4,
+        "composition": 4,
+        "legibility": 4
+      },
+      "review_recommended": false
+    },
+    {
+      "trial": "vector-004--eb6eabbcb9ca2ad4__vGzwSg7",
+      "candidate": "b",
+      "task": "vector-004--eb6eabbcb9ca2ad4",
+      "score_100": 100.0,
+      "dimensions": {
+        "brief_adherence": 4,
+        "geometric_finish": 4,
+        "composition": 4,
+        "legibility": 4
+      },
+      "review_recommended": false
+    },
+    {
+      "trial": "vector-011--6b42f7e2789d1bd1__2npCZSc",
+      "candidate": "b",
+      "task": "vector-011--6b42f7e2789d1bd1",
+      "score_100": 82.5,
+      "dimensions": {
+        "brief_adherence": 2,
+        "geometric_finish": 4,
+        "composition": 4,
+        "legibility": 4
+      },
+      "review_recommended": false
+    },
+    {
+      "trial": "vector-011--6b42f7e2789d1bd1__SczcPdE",
+      "candidate": "b",
+      "task": "vector-011--6b42f7e2789d1bd1",
+      "score_100": 70.0,
+      "dimensions": {
+        "brief_adherence": 2,
+        "geometric_finish": 2,
+        "composition": 4,
+        "legibility": 4
+      },
+      "review_recommended": true
+    },
+    {
+      "trial": "vector-011--6b42f7e2789d1bd1__ZywscGr",
+      "candidate": "b",
+      "task": "vector-011--6b42f7e2789d1bd1",
+      "score_100": 70.0,
+      "dimensions": {
+        "brief_adherence": 2,
+        "geometric_finish": 2,
+        "composition": 4,
+        "legibility": 4
+      },
+      "review_recommended": false
+    },
+    {
+      "trial": "vector-019--75606bdb4ee5b4af__BYwosen",
+      "candidate": "b",
+      "task": "vector-019--75606bdb4ee5b4af",
+      "score_100": 100.0,
+      "dimensions": {
+        "brief_adherence": 4,
+        "geometric_finish": 4,
+        "composition": 4,
+        "legibility": 4
+      },
+      "review_recommended": false
+    },
+    {
+      "trial": "vector-019--75606bdb4ee5b4af__Jv4vMDR",
+      "candidate": "b",
+      "task": "vector-019--75606bdb4ee5b4af",
+      "score_100": 82.5,
+      "dimensions": {
+        "brief_adherence": 4,
+        "geometric_finish": 2,
+        "composition": 4,
+        "legibility": 3
+      },
+      "review_recommended": true
+    },
+    {
+      "trial": "vector-019--75606bdb4ee5b4af__rA2sEdd",
+      "candidate": "b",
+      "task": "vector-019--75606bdb4ee5b4af",
+      "score_100": 95.0,
+      "dimensions": {
+        "brief_adherence": 4,
+        "geometric_finish": 4,
+        "composition": 3,
+        "legibility": 4
+      },
+      "review_recommended": false
+    },
+    {
+      "trial": "vector-020--09ee2ae28c7c367a__Pu2HQsW",
+      "candidate": "b",
+      "task": "vector-020--09ee2ae28c7c367a",
+      "score_100": 100.0,
+      "dimensions": {
+        "brief_adherence": 4,
+        "geometric_finish": 4,
+        "composition": 4,
+        "legibility": 4
+      },
+      "review_recommended": false
+    },
+    {
+      "trial": "vector-020--09ee2ae28c7c367a__Sb77v3t",
+      "candidate": "b",
+      "task": "vector-020--09ee2ae28c7c367a",
+      "score_100": 80.0,
+      "dimensions": {
+        "brief_adherence": 4,
+        "geometric_finish": 4,
+        "composition": 1,
+        "legibility": 3
+      },
+      "review_recommended": true
+    },
+    {
+      "trial": "vector-020--09ee2ae28c7c367a__hMNKvBg",
+      "candidate": "b",
+      "task": "vector-020--09ee2ae28c7c367a",
+      "score_100": 100.0,
+      "dimensions": {
+        "brief_adherence": 4,
+        "geometric_finish": 4,
+        "composition": 4,
+        "legibility": 4
+      },
+      "review_recommended": false
+    },
+    {
+      "trial": "vector-024--652120566170fbf2__XdpjeXM",
+      "candidate": "b",
+      "task": "vector-024--652120566170fbf2",
+      "score_100": 100.0,
+      "dimensions": {
+        "brief_adherence": 4,
+        "geometric_finish": 4,
+        "composition": 4,
+        "legibility": 4
+      },
+      "review_recommended": false
+    },
+    {
+      "trial": "vector-024--652120566170fbf2__a2W9tF4",
+      "candidate": "b",
+      "task": "vector-024--652120566170fbf2",
+      "score_100": 95.0,
+      "dimensions": {
+        "brief_adherence": 4,
+        "geometric_finish": 4,
+        "composition": 4,
+        "legibility": 3
+      },
+      "review_recommended": false
+    },
+    {
+      "trial": "vector-024--652120566170fbf2__nDzBwTv",
+      "candidate": "b",
+      "task": "vector-024--652120566170fbf2",
+      "score_100": 82.5,
+      "dimensions": {
+        "brief_adherence": 2,
+        "geometric_finish": 4,
+        "composition": 4,
+        "legibility": 4
+      },
+      "review_recommended": false
+    },
+    {
+      "trial": "vector-030--d3c57e0c21dbede0__425b5Qu",
+      "candidate": "b",
+      "task": "vector-030--d3c57e0c21dbede0",
+      "score_100": 100.0,
+      "dimensions": {
+        "brief_adherence": 4,
+        "geometric_finish": 4,
+        "composition": 4,
+        "legibility": 4
+      },
+      "review_recommended": false
+    },
+    {
+      "trial": "vector-030--d3c57e0c21dbede0__GTkpSke",
+      "candidate": "b",
+      "task": "vector-030--d3c57e0c21dbede0",
+      "score_100": 100.0,
+      "dimensions": {
+        "brief_adherence": 4,
+        "geometric_finish": 4,
+        "composition": 4,
+        "legibility": 4
+      },
+      "review_recommended": false
+    },
+    {
+      "trial": "vector-030--d3c57e0c21dbede0__K8TzTcg",
+      "candidate": "b",
+      "task": "vector-030--d3c57e0c21dbede0",
+      "score_100": 100.0,
+      "dimensions": {
+        "brief_adherence": 4,
+        "geometric_finish": 4,
+        "composition": 4,
+        "legibility": 4
+      },
+      "review_recommended": false
+    },
+    {
+      "trial": "vector-004--eb6eabbcb9ca2ad4__erJksJ4",
+      "candidate": "q",
+      "task": "vector-004--eb6eabbcb9ca2ad4",
+      "score_100": 100.0,
+      "dimensions": {
+        "brief_adherence": 4,
+        "geometric_finish": 4,
+        "composition": 4,
+        "legibility": 4
+      },
+      "review_recommended": false
+    },
+    {
+      "trial": "vector-004--eb6eabbcb9ca2ad4__kJVadkU",
+      "candidate": "q",
+      "task": "vector-004--eb6eabbcb9ca2ad4",
+      "score_100": 100.0,
+      "dimensions": {
+        "brief_adherence": 4,
+        "geometric_finish": 4,
+        "composition": 4,
+        "legibility": 4
+      },
+      "review_recommended": false
+    },
+    {
+      "trial": "vector-004--eb6eabbcb9ca2ad4__v6ByY55",
+      "candidate": "q",
+      "task": "vector-004--eb6eabbcb9ca2ad4",
+      "score_100": 100.0,
+      "dimensions": {
+        "brief_adherence": 4,
+        "geometric_finish": 4,
+        "composition": 4,
+        "legibility": 4
+      },
+      "review_recommended": false
+    },
+    {
+      "trial": "vector-011--6b42f7e2789d1bd1__Dbb4FwV",
+      "candidate": "q",
+      "task": "vector-011--6b42f7e2789d1bd1",
+      "score_100": 82.5,
+      "dimensions": {
+        "brief_adherence": 2,
+        "geometric_finish": 4,
+        "composition": 4,
+        "legibility": 4
+      },
+      "review_recommended": false
+    },
+    {
+      "trial": "vector-011--6b42f7e2789d1bd1__HPxpo8U",
+      "candidate": "q",
+      "task": "vector-011--6b42f7e2789d1bd1",
+      "score_100": 82.5,
+      "dimensions": {
+        "brief_adherence": 2,
+        "geometric_finish": 4,
+        "composition": 4,
+        "legibility": 4
+      },
+      "review_recommended": false
+    },
+    {
+      "trial": "vector-011--6b42f7e2789d1bd1__SDPAF9u",
+      "candidate": "q",
+      "task": "vector-011--6b42f7e2789d1bd1",
+      "score_100": 70.0,
+      "dimensions": {
+        "brief_adherence": 2,
+        "geometric_finish": 2,
+        "composition": 4,
+        "legibility": 4
+      },
+      "review_recommended": false
+    },
+    {
+      "trial": "vector-019--75606bdb4ee5b4af__D2BpCzx",
+      "candidate": "q",
+      "task": "vector-019--75606bdb4ee5b4af",
+      "score_100": 100.0,
+      "dimensions": {
+        "brief_adherence": 4,
+        "geometric_finish": 4,
+        "composition": 4,
+        "legibility": 4
+      },
+      "review_recommended": false
+    },
+    {
+      "trial": "vector-019--75606bdb4ee5b4af__RRqfxQ5",
+      "candidate": "q",
+      "task": "vector-019--75606bdb4ee5b4af",
+      "score_100": 100.0,
+      "dimensions": {
+        "brief_adherence": 4,
+        "geometric_finish": 4,
+        "composition": 4,
+        "legibility": 4
+      },
+      "review_recommended": false
+    },
+    {
+      "trial": "vector-019--75606bdb4ee5b4af__uVoTfBb",
+      "candidate": "q",
+      "task": "vector-019--75606bdb4ee5b4af",
+      "score_100": 93.75,
+      "dimensions": {
+        "brief_adherence": 4,
+        "geometric_finish": 3,
+        "composition": 4,
+        "legibility": 4
+      },
+      "review_recommended": false
+    },
+    {
+      "trial": "vector-020--09ee2ae28c7c367a__8kn647n",
+      "candidate": "q",
+      "task": "vector-020--09ee2ae28c7c367a",
+      "score_100": 100.0,
+      "dimensions": {
+        "brief_adherence": 4,
+        "geometric_finish": 4,
+        "composition": 4,
+        "legibility": 4
+      },
+      "review_recommended": false
+    },
+    {
+      "trial": "vector-020--09ee2ae28c7c367a__DaSAkt4",
+      "candidate": "q",
+      "task": "vector-020--09ee2ae28c7c367a",
+      "score_100": 100.0,
+      "dimensions": {
+        "brief_adherence": 4,
+        "geometric_finish": 4,
+        "composition": 4,
+        "legibility": 4
+      },
+      "review_recommended": false
+    },
+    {
+      "trial": "vector-020--09ee2ae28c7c367a__tPtgfyH",
+      "candidate": "q",
+      "task": "vector-020--09ee2ae28c7c367a",
+      "score_100": 83.75,
+      "dimensions": {
+        "brief_adherence": 4,
+        "geometric_finish": 3,
+        "composition": 3,
+        "legibility": 3
+      },
+      "review_recommended": false
+    },
+    {
+      "trial": "vector-024--652120566170fbf2__6Rsua8R",
+      "candidate": "q",
+      "task": "vector-024--652120566170fbf2",
+      "score_100": 100.0,
+      "dimensions": {
+        "brief_adherence": 4,
+        "geometric_finish": 4,
+        "composition": 4,
+        "legibility": 4
+      },
+      "review_recommended": false
+    },
+    {
+      "trial": "vector-024--652120566170fbf2__hmgfCWr",
+      "candidate": "q",
+      "task": "vector-024--652120566170fbf2",
+      "score_100": 82.5,
+      "dimensions": {
+        "brief_adherence": 2,
+        "geometric_finish": 4,
+        "composition": 4,
+        "legibility": 4
+      },
+      "review_recommended": true
+    },
+    {
+      "trial": "vector-024--652120566170fbf2__jPiPpxf",
+      "candidate": "q",
+      "task": "vector-024--652120566170fbf2",
+      "score_100": 100.0,
+      "dimensions": {
+        "brief_adherence": 4,
+        "geometric_finish": 4,
+        "composition": 4,
+        "legibility": 4
+      },
+      "review_recommended": false
+    },
+    {
+      "trial": "vector-030--d3c57e0c21dbede0__cMn4PUz",
+      "candidate": "q",
+      "task": "vector-030--d3c57e0c21dbede0",
+      "score_100": 100.0,
+      "dimensions": {
+        "brief_adherence": 4,
+        "geometric_finish": 4,
+        "composition": 4,
+        "legibility": 4
+      },
+      "review_recommended": false
+    },
+    {
+      "trial": "vector-030--d3c57e0c21dbede0__iGj9NFT",
+      "candidate": "q",
+      "task": "vector-030--d3c57e0c21dbede0",
+      "score_100": 100.0,
+      "dimensions": {
+        "brief_adherence": 4,
+        "geometric_finish": 4,
+        "composition": 4,
+        "legibility": 4
+      },
+      "review_recommended": false
+    },
+    {
+      "trial": "vector-030--d3c57e0c21dbede0__iZfrKPH",
+      "candidate": "q",
+      "task": "vector-030--d3c57e0c21dbede0",
+      "score_100": 100.0,
+      "dimensions": {
+        "brief_adherence": 4,
+        "geometric_finish": 4,
+        "composition": 4,
+        "legibility": 4
+      },
+      "review_recommended": false
+    }
+  ]
+}

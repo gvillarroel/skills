@@ -1,0 +1,48 @@
+{
+  "runId": "diagram-polish-20260928-d-boundary-1",
+  "case": "boundary",
+  "commandExitCodes": [
+    0,
+    0,
+    0
+  ],
+  "payload": {
+    "name": "diagram-composition",
+    "profile": "runtime",
+    "fileCount": 21,
+    "payloadSha256": "2e15b9a80f7492be2c4e1d37ff558404f3acc740b165e25ed014088b3274508f"
+  },
+  "runtime": {
+    "passed": true,
+    "returnCode": 0,
+    "piExitCode": 0,
+    "timedOut": false,
+    "startedAtUtc": "2026-09-29T01:43:36.253014+00:00",
+    "finishedAtUtc": "2026-09-29T01:46:29.728921+00:00",
+    "durationSeconds": 173.477,
+    "gates": {
+      "artifacts": true,
+      "events": true,
+      "jsonFields": true,
+      "skillIntegrity": true
+    }
+  },
+  "artifact": {
+    "runId": "diagram-polish-20260928-d-boundary-1",
+    "case": "boundary",
+    "ok": true,
+    "findings": [],
+    "sourceSha256": "df3393608e1bf94c4adbd6bdcd1b559e4f23132ad9f719fb99d9c3e65d5d0d21",
+    "contactCount": 2,
+    "connectorCount": 2,
+    "internalContactCount": 1,
+    "openTerminalCount": 1,
+    "minimumTextPx": 14,
+    "minimumContrast": 5.60926841657814,
+    "verifiedConceptLinks": [
+      "source"
+    ],
+    "manualVisualReviewRequired": true
+  },
+  "tracePassed": true
+}

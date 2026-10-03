@@ -1,0 +1,235 @@
+{
+  "passed": true,
+  "session": {
+    "version": 3,
+    "id": "01a0fce2-7d1d-7333-b828-84a5b7ad77fc",
+    "cwd": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\20261002-authoring-d3-builder-contract-luna-1\\workspace"
+  },
+  "models": {
+    "gpt-5.6-luna": 11
+  },
+  "providers": {
+    "openai-codex": 11
+  },
+  "usageTotals": {
+    "input": 23177,
+    "output": 2700,
+    "cacheRead": 88704,
+    "cacheWrite": 0,
+    "totalTokens": 114581
+  },
+  "invalidJsonLineCount": 0,
+  "invalidJsonLineSamples": [],
+  "invalidEventRecordCount": 0,
+  "invalidEventRecordLineSamples": [],
+  "toolCounts": {
+    "read": 5,
+    "bash": 9
+  },
+  "paths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 804
+    },
+    {
+      "path": "skills/d3/SKILL.md",
+      "calls": 1,
+      "resultBytes": 25411
+    },
+    {
+      "path": "skills/d3/references/patterns/speculative-decoding.md",
+      "calls": 1,
+      "resultBytes": 10828
+    },
+    {
+      "path": "scratch/preview.png",
+      "calls": 1,
+      "resultBytes": 35298
+    },
+    {
+      "path": "out/contract.html",
+      "calls": 1,
+      "resultBytes": 7111
+    }
+  ],
+  "readPaths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 804
+    },
+    {
+      "path": "skills/d3/SKILL.md",
+      "calls": 1,
+      "resultBytes": 25411
+    },
+    {
+      "path": "skills/d3/references/patterns/speculative-decoding.md",
+      "calls": 1,
+      "resultBytes": 10828
+    },
+    {
+      "path": "scratch/preview.png",
+      "calls": 1,
+      "resultBytes": 35298
+    },
+    {
+      "path": "out/contract.html",
+      "calls": 1,
+      "resultBytes": 7111
+    }
+  ],
+  "policyReadPaths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1
+    },
+    {
+      "path": "skills/d3/SKILL.md",
+      "calls": 1
+    },
+    {
+      "path": "skills/d3/references/patterns/speculative-decoding.md",
+      "calls": 1
+    },
+    {
+      "path": "scratch/preview.png",
+      "calls": 1
+    },
+    {
+      "path": "out/contract.html",
+      "calls": 1
+    }
+  ],
+  "totalReadResultBytes": 79452,
+  "calls": [
+    {
+      "line": 22,
+      "tool": "read",
+      "path": "../prompt.md",
+      "policyPath": "../prompt.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 804
+    },
+    {
+      "line": 43,
+      "tool": "read",
+      "path": "skills/d3/SKILL.md",
+      "policyPath": "skills/d3/SKILL.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 25411
+    },
+    {
+      "line": 74,
+      "tool": "read",
+      "path": "skills/d3/references/patterns/speculative-decoding.md",
+      "policyPath": "skills/d3/references/patterns/speculative-decoding.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 10828
+    },
+    {
+      "line": 113,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python \"skills/d3/scripts/build_speculative_decoding.py\" --help",
+      "isError": false,
+      "resultBytes": 1251
+    },
+    {
+      "line": 199,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python \"skills/d3/scripts/build_speculative_decoding.py\" --output-html out/contract.html --output-svg out/contract.svg --draft-token A --draft-token tiny --draft-token test --accepted-count 2 --resume-token works --colorset colorset1 --widt",
+      "isError": false,
+      "resultBytes": 227
+    },
+    {
+      "line": 233,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python \"skills/d3/scripts/check_self_contained_html.py\" out/contract.html",
+      "isError": false,
+      "resultBytes": 80
+    },
+    {
+      "line": 237,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python \"skills/d3/scripts/check_palette_contract.py\" out/contract.html --colorset colorset1",
+      "isError": false,
+      "resultBytes": 836
+    },
+    {
+      "line": 238,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python \"skills/d3/scripts/check_visual_contract.py\" out/contract.svg --require-attribute \"viewBox=0 0 800 480\" --require-text A --require-text tiny --require-text test --require-text works",
+      "isError": false,
+      "resultBytes": 942
+    },
+    {
+      "line": 239,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python \"skills/d3/scripts/check_palette_contract.py\" out/contract.svg --colorset colorset1",
+      "isError": false,
+      "resultBytes": 835
+    },
+    {
+      "line": 313,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "uv run --script \"skills/d3/scripts/render_d3_svg.py\" out/contract.html --output scratch/settled.svg --screenshot scratch/preview.png --wait-ms 3200 --viewport 800x480",
+      "isError": false,
+      "resultBytes": 461
+    },
+    {
+      "line": 335,
+      "tool": "read",
+      "path": "scratch/preview.png",
+      "policyPath": "scratch/preview.png",
+      "command": null,
+      "isError": false,
+      "resultBytes": 35298
+    },
+    {
+      "line": 365,
+      "tool": "read",
+      "path": "out/contract.html",
+      "policyPath": "out/contract.html",
+      "command": null,
+      "isError": false,
+      "resultBytes": 7111
+    },
+    {
+      "line": 399,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python - <<'PY'\nfrom pathlib import Path\np = Path('out/contract.html').read_text(encoding='utf-8')\nchecks = {\n    'Replay button': '<button id=\"replay\" type=\"button\" aria-controls=\"decode\">Replay</button>' in p,\n    'Replay listener': 'addE",
+      "isError": false,
+      "resultBytes": 115
+    },
+    {
+      "line": 401,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python \"skills/d3/scripts/check_visual_contract.py\" scratch/settled.svg --require-attribute \"viewBox=0 0 800 480\" --require-text A --require-text tiny --require-text test --require-text works",
+      "isError": false,
+      "resultBytes": 945
+    }
+  ],
+  "findings": []
+}

@@ -1,0 +1,43 @@
+{
+  "version": "6.3.0",
+  "purpose": "Learn the user's explicit criteria for economy, material line character, integrated figure-ground construction and compact identification.",
+  "scope": "Public post-feedback task-contract repair under the stated editorial interpretation. Not independent validation or proof that a mathematically irregular wave is an accurate periodic plot.",
+  "visual_evidence": "Five fresh same-image observations with the corrected brief. Inherit 27 unchanged image records plus four unchanged textual controls and their first accepted native Jev results. Never retry accepted semantics.",
+  "new_jev_calls": 5,
+  "new_visual_calls": 5,
+  "native_probe_calls": {
+    "observer": 1,
+    "jev": 1
+  },
+  "retries": 0,
+  "external_recovery": "At most one predeclared replacement among the five new observations, solely for a terminated stream with incomplete JSON and no accepted comparison. Zero Jev retries. Maximum six new visual attempts and five new Jev calls. Preserve originals and exact-input provenance.",
+  "scoring": "Six native ordered Score questions; probability-weighted category utilities [50,75,90,95,100], plus a signed directional margin. Normalize only native probability rounding. Same six weights. Subject caps retained; insufficient evidence produces no numeric reward. Categorical overall preference is separate. Confidence is separate.",
+  "acceptance": {
+    "focus_original_preferences_min": 7,
+    "focus_generated_preferences_max": 0,
+    "family_negative_margin_min": 5,
+    "mean_expected_gap_min": 15,
+    "crop_expected_below_80_min": 5,
+    "order_score_distance_max": 10,
+    "order_cases_passing_min": 5,
+    "textual_context_switch_controls_required": 4,
+    "wrong_subject_zero": true,
+    "rough_below_75": true,
+    "complete_coverage": 36
+  },
+  "human_feedback": "The user identified stronger technique in the purchased vintage diagrams, space insignia, circles and labels. These are development preference labels, unavailable to the judge; no claim of blinded independent preference discovery.",
+  "boundaries": "Originals remain evaluator-only. User-facing technique introductions describe purpose and medium without reproducing shapes or adding reference SVGs to the skill.",
+  "reason_for_revision": "The user describes an editorial vintage artifact. Dataset authors introduced 'periodic', but the source has visibly unequal cycle widths. Remove only that unsupported requirement from the five instances of this family; retain oscillation, axes, reference letters, print character, all SVGs, all other tasks and the exact v6.1 Jev questions. This is a changed task contract, not rescoring a failed answer under the same prompt. Retain the scientific precision mismatch in v6.2.",
+  "documentation": [
+    "https://docs.typesafe.ai/primitives/score",
+    "https://docs.typesafe.ai/primitives/choice"
+  ],
+  "retained_jev_cases": 31,
+  "brief_repair": {
+    "family": "vintage-print-diagram",
+    "old": "oscilación periódica",
+    "new": "oscilación",
+    "reason": "The brief should request the actual editorial subject without inventing constant-period data fidelity.",
+    "generator_instruction_replacement_required": true
+  }
+}

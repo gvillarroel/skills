@@ -1,0 +1,67 @@
+{
+  "reviewer": "Luna",
+  "scope": {
+    "cases": ["world-light", "near-threshold", "compact-dark", "light-mark"],
+    "screenshots": [
+      "world-light/before.png",
+      "world-light/after.png",
+      "world-light/hud-before.png",
+      "world-light/hud-after.png",
+      "near-threshold/before.png",
+      "near-threshold/after.png",
+      "compact-dark/before.png",
+      "compact-dark/after.png",
+      "light-mark/before.png",
+      "light-mark/after.png"
+    ],
+    "limits": "Static screenshots and supplied after reports only; no accessibility or interactive behavior claim."
+  },
+  "validation_context": {
+    "browser_after": {
+      "world-light": {"ok": true, "passed": 144, "failed": 0},
+      "near-threshold": {"ok": true, "passed": 117, "failed": 0},
+      "compact-dark": {"ok": true, "passed": 117, "failed": 0},
+      "light-mark": {"ok": true, "passed": 117, "failed": 0}
+    },
+    "local_glyph_background": {
+      "world-light": {"ok": true, "failed": 0, "checked": 33, "skipped": 141},
+      "near-threshold": {"ok": true, "failed": 0, "checked": 79, "skipped": 3, "lowest_ratio": 4.5037},
+      "compact-dark": {"ok": true, "failed": 0, "checked": 79, "skipped": 3, "lowest_ratio": 5.5107},
+      "light-mark": {"ok": true, "failed": 0, "checked": 79, "skipped": 3, "lowest_ratio": 5.2625}
+    }
+  },
+  "findings": [
+    {
+      "id": "world-hud-secondary-copy",
+      "severity": "resolved",
+      "status": "visible_improvement",
+      "evidence": "hud-before.png loses WORLD · topology and both help lines into the dark panel; hud-after.png makes all three readable without a visible text collision."
+    },
+    {
+      "id": "semantic-value-text",
+      "severity": "resolved_for_sampled_states",
+      "status": "visible_improvement",
+      "evidence": "compact-dark/after.png and light-mark/after.png keep semantic value text readable while allowing subdued or colored marks."
+    },
+    {
+      "id": "world-overview-sparse-framing",
+      "severity": "medium",
+      "status": "layout_issue",
+      "evidence": "world-light/after.png has broad pale empty field around a relatively small node and route cluster; labels are legible but visually underweighted."
+    },
+    {
+      "id": "compact-footer-density",
+      "severity": "low",
+      "status": "layout_watch",
+      "evidence": "Lower chart labels and footer relationship key remain small and close to the lower edge in compact after screenshots, although they are visible and not visibly clipped."
+    },
+    {
+      "id": "near-threshold-headroom",
+      "severity": "low",
+      "status": "watch",
+      "evidence": "The local report’s lowest nominal ratio is approximately 4.5037:1; the screenshot is readable, but the margin is narrow."
+    }
+  ],
+  "confirmed_remaining_text_background_failures": 0,
+  "recommendation": "Contrast improvements are effective in the supplied latest renders. Keep near-threshold gray text and overview-scale density under regression review, and tighten world framing or provide a detail state for the sparse overview."
+}

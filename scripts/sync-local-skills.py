@@ -69,6 +69,20 @@ def pending_files(source: Path, destination: Path) -> list[tuple[Path, Path]]:
     return pending
 
 
+def validate_bundles(skills: list[Path]) -> bool:
+    if not skills:
+        print("No skill bundles found to validate.", file=sys.stderr)
+        return False
+    command = ["uv", "run", "--script", str(ROOT / "scripts/validate-skills.py")]
+    for skill in skills:
+        command.extend(["--skill", str(skill)])
+    result = subprocess.run(command, capture_output=True, text=True, encoding="utf-8")
+    if result.returncode:
+        print(result.stdout + result.stderr, file=sys.stderr)
+        return False
+    return True
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="Copy canonical skills/ sources into the ignored .agents/skills installation."
@@ -92,6 +106,9 @@ def main() -> int:
         print(f"Canonical skill source does not exist: {source}", file=sys.stderr)
         return 2
 
+    skill_sources = sorted(path for path in source.iterdir() if path.is_dir() and not path.name.startswith("."))
+    if not validate_bundles(skill_sources):
+        return 1
     pending = pending_files(source, destination)
     if args.check:
         if pending:
@@ -101,13 +118,17 @@ def main() -> int:
             if len(pending) > 20:
                 print(f"- ... and {len(pending) - 20} more")
             return 1
-        print(f"Local skill installation matches all {len(source_files(source))} canonical source files.")
+        if not validate_bundles([destination / skill.name for skill in skill_sources]):
+            return 1
+        print(f"Local skill installation matches all {len(source_files(source))} canonical source files and passes bundle validation.")
         return 0
 
     for source_path, destination_path in pending:
         destination_path.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(source_path, destination_path)
 
+    if not validate_bundles([destination / skill.name for skill in skill_sources]):
+        return 1
     print(
         f"Synchronized {len(pending)} changed file(s) from {source} to {destination}; "
         "additional local files were preserved."

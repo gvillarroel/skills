@@ -1,0 +1,14 @@
+{
+  "runId": "diagram-colors-20260928-naturalistic-2",
+  "case": "naturalistic",
+  "ok": true,
+  "findings": [],
+  "panelCount": 3,
+  "palette": {
+    "grains": "#276bc8",
+    "legumes": "#9e1b32"
+  },
+  "colorOccurrences": 6,
+  "sourceSha256": "c28ebe12fb78f562ed35bb7103de2c861a6081287a6f1a4243dc8b84e16e7dc9",
+  "manualSemanticReviewRequired": true
+}

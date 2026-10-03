@@ -1,0 +1,497 @@
+{
+  "passed": true,
+  "session": {
+    "version": 3,
+    "id": "01a06e91-d35e-75e4-b364-61c720e4a998",
+    "cwd": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\20260904-svg-text-pair-luna-dark-3\\workspace"
+  },
+  "models": {
+    "gpt-5.6-luna": 26
+  },
+  "providers": {
+    "openai-codex": 26
+  },
+  "usageTotals": {
+    "input": 60705,
+    "output": 11006,
+    "cacheRead": 679424,
+    "cacheWrite": 0,
+    "totalTokens": 751135
+  },
+  "invalidJsonLineCount": 0,
+  "invalidJsonLineSamples": [],
+  "invalidEventRecordCount": 0,
+  "invalidEventRecordLineSamples": [],
+  "toolCounts": {
+    "read": 12,
+    "write": 2,
+    "bash": 15,
+    "edit": 4
+  },
+  "paths": [
+    {
+      "path": "outputs/dark/brief.json",
+      "calls": 6,
+      "resultBytes": 11191
+    },
+    {
+      "path": "outputs/dark/overview.png",
+      "calls": 2,
+      "resultBytes": 399200
+    },
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 2360
+    },
+    {
+      "path": "skills/compose-synchronized-svg/SKILL.md",
+      "calls": 1,
+      "resultBytes": 11853
+    },
+    {
+      "path": "skills/compose-synchronized-svg/references/asset-selection-and-composition.md",
+      "calls": 1,
+      "resultBytes": 24724
+    },
+    {
+      "path": "skills/compose-synchronized-svg/references/critique-and-validation.md",
+      "calls": 1,
+      "resultBytes": 21399
+    },
+    {
+      "path": "skills/compose-synchronized-svg/assets/templates/composition-brief.json",
+      "calls": 1,
+      "resultBytes": 10412
+    },
+    {
+      "path": "skills/compose-synchronized-svg/references/semantic-state-contract.md",
+      "calls": 1,
+      "resultBytes": 11471
+    },
+    {
+      "path": "skills/compose-synchronized-svg/references/color-and-visual-quality.md",
+      "calls": 1,
+      "resultBytes": 9529
+    },
+    {
+      "path": "outputs/dark/static.json",
+      "calls": 1,
+      "resultBytes": 4469
+    },
+    {
+      "path": "outputs/dark/browser.json",
+      "calls": 1,
+      "resultBytes": 8137
+    },
+    {
+      "path": "outputs/dark/color-editing.md",
+      "calls": 1,
+      "resultBytes": 105
+    }
+  ],
+  "readPaths": [
+    {
+      "path": "outputs/dark/overview.png",
+      "calls": 2,
+      "resultBytes": 399200
+    },
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 2360
+    },
+    {
+      "path": "skills/compose-synchronized-svg/SKILL.md",
+      "calls": 1,
+      "resultBytes": 11853
+    },
+    {
+      "path": "skills/compose-synchronized-svg/references/asset-selection-and-composition.md",
+      "calls": 1,
+      "resultBytes": 24724
+    },
+    {
+      "path": "skills/compose-synchronized-svg/references/critique-and-validation.md",
+      "calls": 1,
+      "resultBytes": 21399
+    },
+    {
+      "path": "skills/compose-synchronized-svg/assets/templates/composition-brief.json",
+      "calls": 1,
+      "resultBytes": 10412
+    },
+    {
+      "path": "skills/compose-synchronized-svg/references/semantic-state-contract.md",
+      "calls": 1,
+      "resultBytes": 11471
+    },
+    {
+      "path": "skills/compose-synchronized-svg/references/color-and-visual-quality.md",
+      "calls": 1,
+      "resultBytes": 9529
+    },
+    {
+      "path": "outputs/dark/brief.json",
+      "calls": 1,
+      "resultBytes": 2911
+    },
+    {
+      "path": "outputs/dark/static.json",
+      "calls": 1,
+      "resultBytes": 4469
+    },
+    {
+      "path": "outputs/dark/browser.json",
+      "calls": 1,
+      "resultBytes": 8137
+    }
+  ],
+  "policyReadPaths": [
+    {
+      "path": "outputs/dark/overview.png",
+      "calls": 2
+    },
+    {
+      "path": "../prompt.md",
+      "calls": 1
+    },
+    {
+      "path": "skills/compose-synchronized-svg/SKILL.md",
+      "calls": 1
+    },
+    {
+      "path": "skills/compose-synchronized-svg/references/asset-selection-and-composition.md",
+      "calls": 1
+    },
+    {
+      "path": "skills/compose-synchronized-svg/references/critique-and-validation.md",
+      "calls": 1
+    },
+    {
+      "path": "skills/compose-synchronized-svg/assets/templates/composition-brief.json",
+      "calls": 1
+    },
+    {
+      "path": "skills/compose-synchronized-svg/references/semantic-state-contract.md",
+      "calls": 1
+    },
+    {
+      "path": "skills/compose-synchronized-svg/references/color-and-visual-quality.md",
+      "calls": 1
+    },
+    {
+      "path": "outputs/dark/brief.json",
+      "calls": 1
+    },
+    {
+      "path": "outputs/dark/static.json",
+      "calls": 1
+    },
+    {
+      "path": "outputs/dark/browser.json",
+      "calls": 1
+    }
+  ],
+  "totalReadResultBytes": 506465,
+  "calls": [
+    {
+      "line": 22,
+      "tool": "read",
+      "path": "../prompt.md",
+      "policyPath": "../prompt.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 2360
+    },
+    {
+      "line": 50,
+      "tool": "read",
+      "path": "skills/compose-synchronized-svg/SKILL.md",
+      "policyPath": "skills/compose-synchronized-svg/SKILL.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 11853
+    },
+    {
+      "line": 81,
+      "tool": "read",
+      "path": "skills/compose-synchronized-svg/references/asset-selection-and-composition.md",
+      "policyPath": "skills/compose-synchronized-svg/references/asset-selection-and-composition.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 24724
+    },
+    {
+      "line": 82,
+      "tool": "read",
+      "path": "skills/compose-synchronized-svg/references/critique-and-validation.md",
+      "policyPath": "skills/compose-synchronized-svg/references/critique-and-validation.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 21399
+    },
+    {
+      "line": 83,
+      "tool": "read",
+      "path": "skills/compose-synchronized-svg/assets/templates/composition-brief.json",
+      "policyPath": "skills/compose-synchronized-svg/assets/templates/composition-brief.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 10412
+    },
+    {
+      "line": 84,
+      "tool": "read",
+      "path": "skills/compose-synchronized-svg/references/semantic-state-contract.md",
+      "policyPath": "skills/compose-synchronized-svg/references/semantic-state-contract.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 11471
+    },
+    {
+      "line": 85,
+      "tool": "read",
+      "path": "skills/compose-synchronized-svg/references/color-and-visual-quality.md",
+      "policyPath": "skills/compose-synchronized-svg/references/color-and-visual-quality.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 9529
+    },
+    {
+      "line": 2979,
+      "tool": "write",
+      "path": "outputs/dark/brief.json",
+      "policyPath": "outputs/dark/brief.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 99
+    },
+    {
+      "line": 3041,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "TMPDIR=\"$(pwd)/.tmp\" uv run --script skills/compose-synchronized-svg/scripts/preflight_svg_brief.py --brief outputs/dark/brief.json --json",
+      "isError": false,
+      "resultBytes": 615
+    },
+    {
+      "line": 3451,
+      "tool": "edit",
+      "path": "outputs/dark/brief.json",
+      "policyPath": "outputs/dark/brief.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 3587
+    },
+    {
+      "line": 3511,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "TMPDIR=\"$(pwd)/.tmp\" uv run --script skills/compose-synchronized-svg/scripts/preflight_svg_brief.py --brief outputs/dark/brief.json --json",
+      "isError": false,
+      "resultBytes": 468
+    },
+    {
+      "line": 3543,
+      "tool": "read",
+      "path": "outputs/dark/brief.json",
+      "policyPath": "outputs/dark/brief.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 2911
+    },
+    {
+      "line": 3682,
+      "tool": "edit",
+      "path": "outputs/dark/brief.json",
+      "policyPath": "outputs/dark/brief.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 1445
+    },
+    {
+      "line": 3738,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "TMPDIR=\"$(pwd)/.tmp\" uv run --script skills/compose-synchronized-svg/scripts/preflight_svg_brief.py --brief outputs/dark/brief.json --json",
+      "isError": false,
+      "resultBytes": 436
+    },
+    {
+      "line": 3969,
+      "tool": "edit",
+      "path": "outputs/dark/brief.json",
+      "policyPath": "outputs/dark/brief.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 1266
+    },
+    {
+      "line": 4025,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "TMPDIR=\"$(pwd)/.tmp\" uv run --script skills/compose-synchronized-svg/scripts/preflight_svg_brief.py --brief outputs/dark/brief.json --json",
+      "isError": false,
+      "resultBytes": 357
+    },
+    {
+      "line": 4096,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "TMPDIR=\"$(pwd)/.tmp\" uv run --script skills/compose-synchronized-svg/scripts/compile_synchronized_svg_plan.py --brief outputs/dark/brief.json --output outputs/dark/plan.json --force --json",
+      "isError": false,
+      "resultBytes": 544
+    },
+    {
+      "line": 4172,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "TMPDIR=\"$(pwd)/.tmp\" uv run --script skills/compose-synchronized-svg/scripts/compose_synchronized_svg.py --spec outputs/dark/plan.json --output outputs/dark/dashboard.svg --report outputs/dark/compose-report.json --force --json",
+      "isError": false,
+      "resultBytes": 1949
+    },
+    {
+      "line": 4195,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "TMPDIR=\"$(pwd)/.tmp\" uv run --script skills/compose-synchronized-svg/scripts/validate_synchronized_svg.py outputs/dark/dashboard.svg --output outputs/dark/static.json --json --min-modules 6 --min-asset-types 6 --min-renderer-families 5 --mi",
+      "isError": false,
+      "resultBytes": 4795
+    },
+    {
+      "line": 4197,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "TMPDIR=\"$(pwd)/.tmp\" uv run --script skills/compose-synchronized-svg/scripts/audit_synchronized_svg.py outputs/dark/dashboard.svg --report outputs/dark/browser.json --screenshot outputs/dark/overview.png --compact-report",
+      "isError": false,
+      "resultBytes": 529
+    },
+    {
+      "line": 4223,
+      "tool": "read",
+      "path": "outputs/dark/overview.png",
+      "policyPath": "outputs/dark/overview.png",
+      "command": null,
+      "isError": false,
+      "resultBytes": 200098
+    },
+    {
+      "line": 4246,
+      "tool": "read",
+      "path": "outputs/dark/static.json",
+      "policyPath": "outputs/dark/static.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 4469
+    },
+    {
+      "line": 4247,
+      "tool": "read",
+      "path": "outputs/dark/browser.json",
+      "policyPath": "outputs/dark/browser.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 8137
+    },
+    {
+      "line": 4346,
+      "tool": "edit",
+      "path": "outputs/dark/brief.json",
+      "policyPath": "outputs/dark/brief.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 1883
+    },
+    {
+      "line": 4406,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "TMPDIR=\"$(pwd)/.tmp\" uv run --script skills/compose-synchronized-svg/scripts/preflight_svg_brief.py --brief outputs/dark/brief.json --json",
+      "isError": false,
+      "resultBytes": 357
+    },
+    {
+      "line": 4427,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "true",
+      "isError": false,
+      "resultBytes": 54
+    },
+    {
+      "line": 4429,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "TMPDIR=\"$(pwd)/.tmp\" uv run --script skills/compose-synchronized-svg/scripts/compile_synchronized_svg_plan.py --brief outputs/dark/brief.json --output outputs/dark/plan.json --force --json",
+      "isError": false,
+      "resultBytes": 544
+    },
+    {
+      "line": 4507,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "TMPDIR=\"$(pwd)/.tmp\" uv run --script skills/compose-synchronized-svg/scripts/compose_synchronized_svg.py --spec outputs/dark/plan.json --output outputs/dark/dashboard.svg --report outputs/dark/compose-report.json --force --json",
+      "isError": false,
+      "resultBytes": 1949
+    },
+    {
+      "line": 4529,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "TMPDIR=\"$(pwd)/.tmp\" uv run --script skills/compose-synchronized-svg/scripts/validate_synchronized_svg.py outputs/dark/dashboard.svg --output outputs/dark/static.json --json --min-modules 6 --min-asset-types 6 --min-renderer-families 5 --mi",
+      "isError": false,
+      "resultBytes": 4795
+    },
+    {
+      "line": 4531,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "TMPDIR=\"$(pwd)/.tmp\" uv run --script skills/compose-synchronized-svg/scripts/audit_synchronized_svg.py outputs/dark/dashboard.svg --report outputs/dark/browser.json --screenshot outputs/dark/overview.png --compact-report",
+      "isError": false,
+      "resultBytes": 498
+    },
+    {
+      "line": 4557,
+      "tool": "read",
+      "path": "outputs/dark/overview.png",
+      "policyPath": "outputs/dark/overview.png",
+      "command": null,
+      "isError": false,
+      "resultBytes": 199102
+    },
+    {
+      "line": 5110,
+      "tool": "write",
+      "path": "outputs/dark/color-editing.md",
+      "policyPath": "outputs/dark/color-editing.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 105
+    },
+    {
+      "line": 5219,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "for f in outputs/dark/brief.json outputs/dark/plan.json outputs/dark/dashboard.svg outputs/dark/static.json outputs/dark/browser.json outputs/dark/overview.png outputs/dark/color-editing.md; do test -f \"$f\" && printf 'OK %s\\n' \"$f\" || { pri",
+      "isError": false,
+      "resultBytes": 252
+    }
+  ],
+  "findings": []
+}

@@ -1,0 +1,31 @@
+{
+  "version": "5.1.0",
+  "previous": "v5 preserved as failed. Clarify unknown versus parity and absent subject versus incomplete subject, uniformly for all records. No weights, score mapping, quality target or acceptance checks change.",
+  "art_context": "The intended use is a curated monochrome graphic-asset pack for expressive science-fiction, experimental editorial composition and vintage scientific collage. Judge visual authorship, expressive silhouette, designed black/white relationships, shape tension and integration of details. This is a graphic artwork review, not a generic app-icon, dashboard usability or engineering-diagram review. A restrained geometric design can be excellent, and an organic or distressed one can be excellent. Literal recognizability, mechanical smoothness, symmetry, regularity or readable labels alone are not the target. Do not prescribe the same motif, path, texture or number of details. The supplied brief still controls subject and content.",
+  "generator_introduction": "Busco un recurso gráfico editorial con carácter propio y acabado de un pack curado: silueta expresiva, masas y vacíos bien trabajados y detalles integrados en el conjunto.",
+  "method": "Reference-anchored artistic merit, judged with anonymous direct pair comparison; not geometric resemblance.",
+  "reference_scale_convention": 90,
+  "comparison_points": {
+    "clearly_below": 50,
+    "slightly_below": 75,
+    "comparable": 90,
+    "slightly_above": 95,
+    "clearly_above": 100
+  },
+  "new_visual_calls": 0,
+  "maximum_jev_calls": 32,
+  "retries": 0,
+  "checks": {
+    "generated_task_mean_below_anchor_min": 5,
+    "mean_gap_min": 15,
+    "crop_score_below_80_min": 5,
+    "order_absolute_score_delta_max": 10,
+    "order_cases_passing_min": 5,
+    "synthetic_rough_below_75": true,
+    "wrong_subject_zero": true
+  },
+  "blinding": "Both sides anonymous with deterministic balanced position. Origin and candidate binding remain coordinator-only. Runtime generator never receives the anchor.",
+  "scope": "Development calibration against user-preferred art direction. No independent generalization or skill promotion.",
+  "visual_evidence_root": "evaluations/runs/svg-art-v5",
+  "input_records_sha256": "f2dde2cabfe94850467be7c5966bef4a3108cca1b59212380914f4c63bae6f19"
+}

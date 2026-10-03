@@ -1,0 +1,238 @@
+{
+  "passed": true,
+  "session": {
+    "version": 3,
+    "id": "01a06e4d-5373-71de-b044-7b1a213df95b",
+    "cwd": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\20260904-svg-theme-luna-v2-boundary\\workspace"
+  },
+  "models": {
+    "gpt-5.6-luna": 8
+  },
+  "providers": {
+    "openai-codex": 8
+  },
+  "usageTotals": {
+    "input": 26302,
+    "output": 3968,
+    "cacheRead": 70144,
+    "cacheWrite": 0,
+    "totalTokens": 100414
+  },
+  "invalidJsonLineCount": 0,
+  "invalidJsonLineSamples": [],
+  "invalidEventRecordCount": 0,
+  "invalidEventRecordLineSamples": [],
+  "toolCounts": {
+    "read": 7,
+    "write": 2,
+    "bash": 1
+  },
+  "paths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 1247
+    },
+    {
+      "path": "skills/compose-synchronized-svg/SKILL.md",
+      "calls": 1,
+      "resultBytes": 11703
+    },
+    {
+      "path": "skills/compose-synchronized-svg/assets/templates/composition-brief.json",
+      "calls": 1,
+      "resultBytes": 10412
+    },
+    {
+      "path": "skills/compose-synchronized-svg/references/semantic-state-contract.md",
+      "calls": 1,
+      "resultBytes": 11471
+    },
+    {
+      "path": "skills/compose-synchronized-svg/references/color-and-visual-quality.md",
+      "calls": 1,
+      "resultBytes": 6639
+    },
+    {
+      "path": "skills/compose-synchronized-svg/references/asset-selection-and-composition.md",
+      "calls": 1,
+      "resultBytes": 24724
+    },
+    {
+      "path": "outputs/boundary/brief.json",
+      "calls": 1,
+      "resultBytes": 103
+    },
+    {
+      "path": "outputs/boundary/preflight.json",
+      "calls": 1,
+      "resultBytes": 424
+    },
+    {
+      "path": "outputs/boundary/explanation.md",
+      "calls": 1,
+      "resultBytes": 106
+    }
+  ],
+  "readPaths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 1247
+    },
+    {
+      "path": "skills/compose-synchronized-svg/SKILL.md",
+      "calls": 1,
+      "resultBytes": 11703
+    },
+    {
+      "path": "skills/compose-synchronized-svg/assets/templates/composition-brief.json",
+      "calls": 1,
+      "resultBytes": 10412
+    },
+    {
+      "path": "skills/compose-synchronized-svg/references/semantic-state-contract.md",
+      "calls": 1,
+      "resultBytes": 11471
+    },
+    {
+      "path": "skills/compose-synchronized-svg/references/color-and-visual-quality.md",
+      "calls": 1,
+      "resultBytes": 6639
+    },
+    {
+      "path": "skills/compose-synchronized-svg/references/asset-selection-and-composition.md",
+      "calls": 1,
+      "resultBytes": 24724
+    },
+    {
+      "path": "outputs/boundary/preflight.json",
+      "calls": 1,
+      "resultBytes": 424
+    }
+  ],
+  "policyReadPaths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1
+    },
+    {
+      "path": "skills/compose-synchronized-svg/SKILL.md",
+      "calls": 1
+    },
+    {
+      "path": "skills/compose-synchronized-svg/assets/templates/composition-brief.json",
+      "calls": 1
+    },
+    {
+      "path": "skills/compose-synchronized-svg/references/semantic-state-contract.md",
+      "calls": 1
+    },
+    {
+      "path": "skills/compose-synchronized-svg/references/color-and-visual-quality.md",
+      "calls": 1
+    },
+    {
+      "path": "skills/compose-synchronized-svg/references/asset-selection-and-composition.md",
+      "calls": 1
+    },
+    {
+      "path": "outputs/boundary/preflight.json",
+      "calls": 1
+    }
+  ],
+  "totalReadResultBytes": 66620,
+  "calls": [
+    {
+      "line": 22,
+      "tool": "read",
+      "path": "../prompt.md",
+      "policyPath": "../prompt.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 1247
+    },
+    {
+      "line": 50,
+      "tool": "read",
+      "path": "skills/compose-synchronized-svg/SKILL.md",
+      "policyPath": "skills/compose-synchronized-svg/SKILL.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 11703
+    },
+    {
+      "line": 77,
+      "tool": "read",
+      "path": "skills/compose-synchronized-svg/assets/templates/composition-brief.json",
+      "policyPath": "skills/compose-synchronized-svg/assets/templates/composition-brief.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 10412
+    },
+    {
+      "line": 78,
+      "tool": "read",
+      "path": "skills/compose-synchronized-svg/references/semantic-state-contract.md",
+      "policyPath": "skills/compose-synchronized-svg/references/semantic-state-contract.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 11471
+    },
+    {
+      "line": 79,
+      "tool": "read",
+      "path": "skills/compose-synchronized-svg/references/color-and-visual-quality.md",
+      "policyPath": "skills/compose-synchronized-svg/references/color-and-visual-quality.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 6639
+    },
+    {
+      "line": 80,
+      "tool": "read",
+      "path": "skills/compose-synchronized-svg/references/asset-selection-and-composition.md",
+      "policyPath": "skills/compose-synchronized-svg/references/asset-selection-and-composition.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 24724
+    },
+    {
+      "line": 2829,
+      "tool": "write",
+      "path": "outputs/boundary/brief.json",
+      "policyPath": "outputs/boundary/brief.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 103
+    },
+    {
+      "line": 2905,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "mkdir -p .tmp && TMPDIR=\"$(pwd)/.tmp\" uv run --script skills/compose-synchronized-svg/scripts/preflight_svg_brief.py --brief outputs/boundary/brief.json --json > outputs/boundary/preflight.json",
+      "isError": false,
+      "resultBytes": 54
+    },
+    {
+      "line": 2930,
+      "tool": "read",
+      "path": "outputs/boundary/preflight.json",
+      "policyPath": "outputs/boundary/preflight.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 424
+    },
+    {
+      "line": 3035,
+      "tool": "write",
+      "path": "outputs/boundary/explanation.md",
+      "policyPath": "outputs/boundary/explanation.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 106
+    }
+  ],
+  "findings": []
+}

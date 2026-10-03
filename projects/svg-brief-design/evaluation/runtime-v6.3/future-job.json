@@ -1,0 +1,50 @@
+{
+  "job_name": "future-technique-v6.3",
+  "jobs_dir": "/mnt/c/Users/villa/dev/skills/evaluations/runs/svt-future/jobs",
+  "n_attempts": 3,
+  "n_concurrent_trials": 3,
+  "retry": {
+    "max_retries": 0
+  },
+  "environment": {
+    "import_path": "procedural_environment:ProceduralEnvironment",
+    "delete": true,
+    "kwargs": {
+      "agent_image": "sha256:1c1ac1dfdc903a9f3a64f4a3a75be7ab883a94647edac0045105d89674b4cbf8",
+      "source_agent_image": "sha256:1c1ac1dfdc903a9f3a64f4a3a75be7ab883a94647edac0045105d89674b4cbf8"
+    }
+  },
+  "agents": [
+    {
+      "name": "pi-svg-procedural",
+      "import_path": "pi_svg_procedural:PiSvgProcedural",
+      "model_name": "openai-codex/gpt-6-luna",
+      "skills": [
+        "/mnt/c/Users/villa/dev/skills/evaluations/runs/svt1/inputs/d/svg-brief-design"
+      ],
+      "kwargs": {
+        "version": "0.84.2"
+      }
+    }
+  ],
+  "verifier": {
+    "import_path": "harbor_svg_technique:SvgTechniqueVerifier",
+    "kwargs": {
+      "evaluator_bundle": "/mnt/c/Users/villa/dev/skills/evaluations/runs/svg-technique-v6.3/frozen/evaluator",
+      "evaluator_lock_sha256": "45633cf2c3383fea1767d3bb05b532f2f21ecc2c67c1f340855efb965d56a143"
+    }
+  },
+  "datasets": [
+    {
+      "path": "/mnt/c/Users/villa/dev/skills/evaluations/runs/svg-technique-v6.3/ds",
+      "task_names": [
+        "vector-004--eb6eabbcb9ca2ad4",
+        "vector-011--6b42f7e2789d1bd1",
+        "vector-019--75606bdb4ee5b4af",
+        "vector-020--09ee2ae28c7c367a",
+        "vector-024--652120566170fbf2",
+        "vector-030--d3c57e0c21dbede0"
+      ]
+    }
+  ]
+}

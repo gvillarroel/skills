@@ -1,0 +1,42 @@
+[
+  {
+    "sourceRun": "diagram-composition-20260928-native-contract-1",
+    "inputPlanSha256": "d1a77a0d460e150a4dd787ce3a41d132535e2f9f8dcd29372a950c104eac5929",
+    "sourceSvgSha256": "5c9962708496abf4a55e06baa045677a9435a74f9518238c23c6a952248c13ea",
+    "originalSvgSha256": "5c9962708496abf4a55e06baa045677a9435a74f9518238c23c6a952248c13ea",
+    "byteIdentical": true,
+    "ok": true,
+    "minimumObservedPx": 14,
+    "issues": []
+  },
+  {
+    "sourceRun": "diagram-composition-20260928-color-transfer-1",
+    "inputPlanSha256": "bf542465d5e0d4d460bfbf8135e097b2ba47a5895f6ab225d4c84ae61185e232",
+    "sourceSvgSha256": "cba19daff533c8ffc2172927f0d5fbbe601ba55a1cb67ad917634f1b6b287456",
+    "originalSvgSha256": "cba19daff533c8ffc2172927f0d5fbbe601ba55a1cb67ad917634f1b6b287456",
+    "byteIdentical": true,
+    "ok": true,
+    "minimumObservedPx": 15,
+    "issues": []
+  },
+  {
+    "sourceRun": "diagram-composition-20260928-color-transfer-3",
+    "inputPlanSha256": "00fceaf28a1e5ab02274de79f7a25f09ae4afeb5a7663db9526b00220af5f29d",
+    "sourceSvgSha256": "2bea8644c325374f76633ba4b3a19748778b1e3618971a4f5b0457e92bab61da",
+    "originalSvgSha256": "2bea8644c325374f76633ba4b3a19748778b1e3618971a4f5b0457e92bab61da",
+    "byteIdentical": true,
+    "ok": true,
+    "minimumObservedPx": 15,
+    "issues": []
+  },
+  {
+    "sourceRun": "diagram-composition-20260928-json-naturalistic-1",
+    "inputPlanSha256": "624da37096731ae64ecd2023564fdcb39c91b274a658d9535b55694b2ac03927",
+    "sourceSvgSha256": "c683bc2c9cb483892f25cf8bd0789b3cb42b93ac4c4d19a141ae89d2dd3172e3",
+    "originalSvgSha256": "c683bc2c9cb483892f25cf8bd0789b3cb42b93ac4c4d19a141ae89d2dd3172e3",
+    "byteIdentical": true,
+    "ok": true,
+    "minimumObservedPx": 14.000000000000002,
+    "issues": []
+  }
+]

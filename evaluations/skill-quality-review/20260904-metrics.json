@@ -1,0 +1,171 @@
+{
+  "date": "2026-09-04",
+  "baselineRevision": "35163ae11b0420644144d7697539028c520baa0a",
+  "normalization": "UTF-8 bytes after normalizing CRLF to LF; entry point only, not total tokens",
+  "inventory": [
+    {
+      "skill": "animated-svg-to-gif",
+      "entryBytesBefore": 6321,
+      "entryBytesAfter": 6321,
+      "entryLinesBefore": 92,
+      "entryLinesAfter": 92
+    },
+    {
+      "skill": "asciinema-real-command-video",
+      "entryBytesBefore": 16164,
+      "entryBytesAfter": 8866,
+      "entryLinesBefore": 106,
+      "entryLinesAfter": 84
+    },
+    {
+      "skill": "compose-synchronized-svg",
+      "entryBytesBefore": 35889,
+      "entryBytesAfter": 10594,
+      "entryLinesBefore": 249,
+      "entryLinesAfter": 81
+    },
+    {
+      "skill": "d3",
+      "entryBytesBefore": 8451,
+      "entryBytesAfter": 8451,
+      "entryLinesBefore": 87,
+      "entryLinesAfter": 87
+    },
+    {
+      "skill": "echarts-animated-svg",
+      "entryBytesBefore": 6620,
+      "entryBytesAfter": 6620,
+      "entryLinesBefore": 98,
+      "entryLinesAfter": 98
+    },
+    {
+      "skill": "google-cloud-sku-pricing",
+      "entryBytesBefore": 4992,
+      "entryBytesAfter": 4992,
+      "entryLinesBefore": 89,
+      "entryLinesAfter": 89
+    },
+    {
+      "skill": "harbor-author-evaluation-datasets",
+      "entryBytesBefore": 11964,
+      "entryBytesAfter": 11964,
+      "entryLinesBefore": 224,
+      "entryLinesAfter": 224
+    },
+    {
+      "skill": "manim-svg-video",
+      "entryBytesBefore": 3141,
+      "entryBytesAfter": 3141,
+      "entryLinesBefore": 36,
+      "entryLinesAfter": 36
+    },
+    {
+      "skill": "mermaid",
+      "entryBytesBefore": 7621,
+      "entryBytesAfter": 7621,
+      "entryLinesBefore": 66,
+      "entryLinesAfter": 66
+    },
+    {
+      "skill": "plantuml-colorset-renderer",
+      "entryBytesBefore": 7910,
+      "entryBytesAfter": 7910,
+      "entryLinesBefore": 120,
+      "entryLinesAfter": 120
+    },
+    {
+      "skill": "procedural-svg-animation",
+      "entryBytesBefore": 7536,
+      "entryBytesAfter": 7536,
+      "entryLinesBefore": 81,
+      "entryLinesAfter": 81
+    },
+    {
+      "skill": "simulation-data-lab",
+      "entryBytesBefore": 9422,
+      "entryBytesAfter": 9422,
+      "entryLinesBefore": 164,
+      "entryLinesAfter": 164
+    },
+    {
+      "skill": "slidev-animejs",
+      "entryBytesBefore": 4293,
+      "entryBytesAfter": 4293,
+      "entryLinesBefore": 39,
+      "entryLinesAfter": 39
+    },
+    {
+      "skill": "slidev-echarts",
+      "entryBytesBefore": 3906,
+      "entryBytesAfter": 3906,
+      "entryLinesBefore": 35,
+      "entryLinesAfter": 35
+    },
+    {
+      "skill": "slidev-quality-audit",
+      "entryBytesBefore": 3746,
+      "entryBytesAfter": 3746,
+      "entryLinesBefore": 80,
+      "entryLinesAfter": 80
+    },
+    {
+      "skill": "technical-logo-assets",
+      "entryBytesBefore": 5741,
+      "entryBytesAfter": 5741,
+      "entryLinesBefore": 77,
+      "entryLinesAfter": 77
+    },
+    {
+      "skill": "threejs-animated-3d",
+      "entryBytesBefore": 7372,
+      "entryBytesAfter": 7372,
+      "entryLinesBefore": 98,
+      "entryLinesAfter": 98
+    },
+    {
+      "skill": "vectorize-art-patterns",
+      "entryBytesBefore": 13230,
+      "entryBytesAfter": 13230,
+      "entryLinesBefore": 236,
+      "entryLinesAfter": 236
+    },
+    {
+      "skill": "video",
+      "entryBytesBefore": 8185,
+      "entryBytesAfter": 8185,
+      "entryLinesBefore": 82,
+      "entryLinesAfter": 82
+    }
+  ],
+  "movedContractChecks": {
+    "compiledContractPreserved": true,
+    "runtimeContractPreserved": true,
+    "interactivePlanPreserved": true,
+    "lifecyclePreserved": true,
+    "visualReviewPreserved": true
+  },
+  "staticGuidanceRoutes": [
+    {
+      "route": "compose-compact-generation-guidance",
+      "files": [
+        "skills/compose-synchronized-svg/SKILL.md",
+        "skills/compose-synchronized-svg/references/asset-selection-and-composition.md",
+        "skills/compose-synchronized-svg/references/semantic-state-contract.md",
+        "skills/compose-synchronized-svg/references/critique-and-validation.md"
+      ],
+      "beforeBytes": 109341,
+      "afterBytes": 66886,
+      "limitation": "Static document footprint; no observed runtime token savings or quality claim."
+    },
+    {
+      "route": "asciinema-direct-argv-plan-guidance",
+      "files": [
+        "skills/asciinema-real-command-video/SKILL.md",
+        "skills/asciinema-real-command-video/references/session-plan.md"
+      ],
+      "beforeBytes": 29176,
+      "afterBytes": 15624,
+      "limitation": "Static document footprint; no observed runtime token savings or quality claim."
+    }
+  ]
+}

@@ -1,0 +1,209 @@
+{
+  "passed": true,
+  "checks": {
+    "complete_coverage": true,
+    "focus_original_preferences": true,
+    "no_focus_generated_preference": true,
+    "five_families_negative_margin": true,
+    "mean_expected_gap": true,
+    "crop_sensitivity": true,
+    "order_stability": true,
+    "context_switch_controls": true,
+    "wrong_subject": true,
+    "rough": true
+  },
+  "accepted_cases": 36,
+  "failed_cases": [],
+  "generated_scored": 18,
+  "mean_expected_points_available_cases": 64.46513888888889,
+  "reference_preferred_of_available": 18,
+  "focus_reference_preferred": 8,
+  "focus_available": 8,
+  "families": [
+    {
+      "task": "vector-004--eb6eabbcb9ca2ad4",
+      "n": 3,
+      "mean_expected_points": 60.3325,
+      "mean_signed_margin": -0.74275
+    },
+    {
+      "task": "vector-011--6b42f7e2789d1bd1",
+      "n": 3,
+      "mean_expected_points": 67.865,
+      "mean_signed_margin": -0.642
+    },
+    {
+      "task": "vector-019--75606bdb4ee5b4af",
+      "n": 3,
+      "mean_expected_points": 67.0125,
+      "mean_signed_margin": -0.64975
+    },
+    {
+      "task": "vector-020--09ee2ae28c7c367a",
+      "n": 3,
+      "mean_expected_points": 66.20666666666666,
+      "mean_signed_margin": -0.5781666666666667
+    },
+    {
+      "task": "vector-024--652120566170fbf2",
+      "n": 3,
+      "mean_expected_points": 57.848333333333336,
+      "mean_signed_margin": -0.8203333333333334
+    },
+    {
+      "task": "vector-030--d3c57e0c21dbede0",
+      "n": 3,
+      "mean_expected_points": 67.52583333333334,
+      "mean_signed_margin": -0.56925
+    }
+  ],
+  "stability": [
+    {
+      "task": "vector-004--eb6eabbcb9ca2ad4",
+      "distance": 0.21249999999999858
+    },
+    {
+      "task": "vector-011--6b42f7e2789d1bd1",
+      "distance": 0.024999999999991473
+    },
+    {
+      "task": "vector-019--75606bdb4ee5b4af",
+      "distance": 8.915
+    },
+    {
+      "task": "vector-020--09ee2ae28c7c367a",
+      "distance": 1.0700000000000003
+    },
+    {
+      "task": "vector-024--652120566170fbf2",
+      "distance": 2.424999999999997
+    },
+    {
+      "task": "vector-030--d3c57e0c21dbede0",
+      "distance": 1.9749999999999943
+    }
+  ],
+  "textual_controls": [
+    {
+      "id": "acd29d49fb37a737f90a",
+      "name": "sparse-print",
+      "profile": "vintage-print-diagram",
+      "expected_side": "A",
+      "kind": "textual_context_control",
+      "choice": "A",
+      "passed": true
+    },
+    {
+      "id": "9f928484d7a3fb7394f6",
+      "name": "measured-plot",
+      "profile": "modern-measured-plot",
+      "expected_side": "B",
+      "kind": "textual_context_control",
+      "choice": "B",
+      "passed": true
+    },
+    {
+      "id": "acbc8bacdcab0fa6b321",
+      "name": "small-label",
+      "profile": "compact-label",
+      "expected_side": "A",
+      "kind": "textual_context_control",
+      "choice": "A",
+      "passed": true
+    },
+    {
+      "id": "3c5c6857739b00e0af28",
+      "name": "complete-record",
+      "profile": "technical-record",
+      "expected_side": "B",
+      "kind": "textual_context_control",
+      "choice": "B",
+      "passed": true
+    }
+  ],
+  "synthetic_scores": {
+    "minimal-rough": 65.6375,
+    "wrong-subject": 0.0
+  },
+  "observed_models": [
+    "typesafe/jev-1.13-20260917"
+  ],
+  "evaluator_version": "6.3.0",
+  "scoring_schema_version": "6.1.0",
+  "status": "active-development-calibration",
+  "accounting": {
+    "http_attempts": 94,
+    "accepted_calls": 92,
+    "reported_input_tokens": 405445,
+    "reported_output_tokens": 36543,
+    "reported_cost_usd": 0.01702869,
+    "visual_attempts": 39,
+    "visual_complete": 38,
+    "visual_reported_tokens": 156513,
+    "visual_cost_usd": null,
+    "cost_note": "Jev provider-reported cost. Observer monetary cost unavailable; terminated stream token receipt incomplete.",
+    "deduplication": "Count v6 effective attempts once; retain v6.3 inherited cases without counting their calls twice."
+  },
+  "review_recommended_of_18": 5,
+  "native_visible_identity": {
+    "technique_quality": 0.8808750000000001,
+    "score_100": 88.0875,
+    "dimension_expected_points": {
+      "silhouette_intent": 88.2,
+      "composition_space": 88.0,
+      "shape_rhythm": 87.55000000000001,
+      "craft_finish": 88.05,
+      "information_hierarchy": 88.9,
+      "style_coherence": 88.1
+    },
+    "signed_technique_margin": -0.014750000000000001,
+    "choices": {
+      "brief_A": "fulfilled",
+      "brief_B": "fulfilled",
+      "evidence": "sufficient",
+      "overall": "parity"
+    },
+    "confidence": {
+      "brief_A": 0.96,
+      "brief_B": 0.98,
+      "composition_space": 0.75,
+      "craft_finish": 0.77,
+      "evidence": 0.48,
+      "information_hierarchy": 0.81,
+      "overall": 0.54,
+      "shape_rhythm": 0.63,
+      "silhouette_intent": 0.75,
+      "style_coherence": 0.74
+    },
+    "overall_preference_unresolved": false,
+    "review_recommended": false,
+    "score_meaning": "Expected anchor-relative coded utility, not an absolute aesthetic grade or confidence interval. Probability mass is normalized for provider rounding. Pure parity=90 by convention; uncertainty across categories can lower it. Signed margin separately measures direction (-1 worse, 0 parity, +1 better). Confidence never multiplies quality. Not numerically interchangeable with v5.2's conservative category bounds.",
+    "candidate_side": "A",
+    "use_profile": "compact-hud",
+    "evaluator_lock_sha256": "45633cf2c3383fea1767d3bb05b532f2f21ecc2c67c1f340855efb965d56a143",
+    "verifier_version": "6.3.0",
+    "pixel_similarity_used": false,
+    "anchor_used_only_by_host_verifier": true
+  },
+  "activation": {
+    "active_config_sha256": "bea12702d7e88882fe9f7ea9f6fe9c28a4ac3d7344cb5d6aa745ed0b307a0cbe",
+    "previous_config_sha256": "e754cddcd608cab2c3b3243c7ebf54725d6ce6b3a6e67179942b21a20a555716",
+    "evaluator_lock_sha256": "45633cf2c3383fea1767d3bb05b532f2f21ecc2c67c1f340855efb965d56a143",
+    "native_result_sha256": "83e871e66c47e41f500cddca8ef21164d47b42f0cd2238675bb93c9d6eca5f54",
+    "unchanged_skill_files": {
+      "SKILL.md": "601132e67ff94f8dff616b13e220ee7fb981ca607e850a2fcfa64edbbc3d630a",
+      "agents/openai.yaml": "c87229efa0cc39a1f3dcc827781c9f79c174cc5b5069efb4b8c10fe1b07ca2f1",
+      "references/detail-editing.md": "b531cdeb34cad9dabb5ba4d4764fa99e11060dc4b08bcfd9a8f5cb7828e32c5f",
+      "references/scaffold-recipes.md": "51be0beda93c8408f702a4f580106e2df36cdeb22a371a85cb0911e831bd79c2",
+      "references/svg-mechanics.md": "aee1c0eea25fb09fe9acd4b769b663aca439cb376999f424a462a283130de43f",
+      "scripts/render_svg.py": "90613f9aa241a27bd5035bb9404de2be2d7874970c14913271f5f05812c240e5",
+      "scripts/scaffold.py": "90fd48a698926208c176100534973fdc83be8c2e29b57013efdd12bc7f55a0fd",
+      "scripts/test_scaffold.py": "be464de848524dee51b1b5333f5221c1e2be7659ded492fab0a378f780086c44"
+    },
+    "native_score": 88.0875,
+    "native_margin": -0.014750000000000001
+  },
+  "skill_changed": false,
+  "new_generation_runs": 0,
+  "private_cohort_opened": false
+}

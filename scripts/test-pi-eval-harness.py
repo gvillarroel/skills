@@ -231,6 +231,16 @@ class RunnerUnitTests(unittest.TestCase):
 
 
 class RunnerIntegrationTests(unittest.TestCase):
+    def test_invalid_bundle_is_rejected_before_pi_or_workspace_creation(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            fake_pi = self.make_repo(root)
+            (root / "skills/demo-skill/SKILL.md").write_text("No frontmatter", encoding="utf-8")
+            with mock.patch.object(RUNNER, "pi_command_prefix") as launch, contextlib.redirect_stderr(io.StringIO()):
+                self.assertEqual(self.run_fixture(root, fake_pi, "bad-bundle"), 2)
+                launch.assert_not_called()
+            self.assertFalse((root / "evaluations/runs/bad-bundle").exists())
+
     def make_repo(self, root: Path) -> Path:
         skill = root / "skills/demo-skill"
         skill.mkdir(parents=True)

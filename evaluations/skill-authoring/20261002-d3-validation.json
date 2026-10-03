@@ -1,0 +1,2022 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-02",
+  "skill": "d3",
+  "model": "openai-codex/gpt-5.6-luna",
+  "modelException": "The existing backlog records Spark provider unavailability; the same Luna model and strict gates were retained.",
+  "passed": true,
+  "frozenPayloadSha256": [
+    "163ac42cc33cc9142ffde1969cdc8c4bf2e59b0ce3ec4a210f7b0918c4c1f540"
+  ],
+  "candidateMatchesFinalRuntimeBundle": true,
+  "runtimeFiles": 285,
+  "authoringBundleAudit": "evaluations/skill-authoring/20261002-bundles-validated.json",
+  "cases": [
+    {
+      "case": "contract",
+      "runs": 1,
+      "jointPasses": 1,
+      "requiredPasses": 1,
+      "passed": true
+    },
+    {
+      "case": "naturalistic",
+      "runs": 3,
+      "jointPasses": 3,
+      "requiredPasses": 2,
+      "passed": true
+    },
+    {
+      "case": "generalization",
+      "runs": 3,
+      "jointPasses": 3,
+      "requiredPasses": 2,
+      "passed": true
+    },
+    {
+      "case": "boundary",
+      "runs": 1,
+      "jointPasses": 1,
+      "requiredPasses": 1,
+      "passed": true
+    }
+  ],
+  "records": [
+    {
+      "runId": "20261002-authoring-d3-verified-contract-luna-1",
+      "case": "contract",
+      "manifest": {
+        "schemaVersion": 1,
+        "runId": "20261002-authoring-d3-verified-contract-luna-1",
+        "createdAtUtc": "2026-10-02T14:01:07.627313+00:00",
+        "skill": {
+          "name": "d3",
+          "profile": "runtime",
+          "fileCount": 285,
+          "payloadSha256": "163ac42cc33cc9142ffde1969cdc8c4bf2e59b0ce3ec4a210f7b0918c4c1f540"
+        },
+        "prompt": {
+          "source": "C:/Users/villa/dev/skills/evaluations/pi-prompts/d3-authoring-builder-contract.md",
+          "sizeBytes": 744,
+          "sha256": "5cb80832a59bf72eb3e70d9e2a5fcf3fa4410a00e1510abafaf421799ed9ed59"
+        },
+        "pi": {
+          "model": "openai-codex/gpt-5.6-luna",
+          "thinking": "high",
+          "mode": "json",
+          "timeoutSeconds": 480
+        },
+        "environment": {
+          "piVersion": "0.84.2",
+          "uvVersion": "uv 0.10.12 (00d72dac7 2026-03-19 x86_64-pc-windows-msvc)",
+          "pythonVersion": "3.13.12",
+          "platform": "Windows-11-10.0.26200-SP0",
+          "git": {
+            "commit": "58edc00c93023929ef788a1730d1b21dc981d251",
+            "dirty": true
+          }
+        },
+        "expectedOutputs": [
+          "out/contract.html",
+          "out/contract.svg"
+        ],
+        "expectedJsonFields": [],
+        "eventPolicy": {
+          "strict": true,
+          "requirePromptReadFirst": true,
+          "requireExactCommandFromPrompt": false,
+          "requireObservedModel": true,
+          "failOnInvalidEventJson": true,
+          "failOnToolError": true,
+          "forbidReadRegex": [
+            "(?i)(?:^|[\\\\/])assets[\\\\/]examples(?:[\\\\/]|$)",
+            "(?i)^\\.\\.(?![\\\\/]prompt\\.md$)",
+            "(?i)^(?:[A-Za-z]:[\\\\/]|/|\\\\\\\\)",
+            "(?i)^skills[\\\\/](?!d3(?:[\\\\/]|$))"
+          ],
+          "forbidCommandRegex": []
+        },
+        "command": [
+          "C:\\Users\\villa\\AppData\\Roaming\\npm\\pi.CMD",
+          "--model",
+          "openai-codex/gpt-5.6-luna",
+          "--thinking",
+          "high",
+          "--mode",
+          "json",
+          "--no-context-files",
+          "--no-extensions",
+          "--no-skills",
+          "--no-prompt-templates",
+          "--no-themes",
+          "--no-session",
+          "--skill",
+          "skills/d3",
+          "--print",
+          "You are running an isolated forward test for `d3`. Use the read tool to read `../prompt.md` first, then follow it exactly. The loaded bundle is rooted at `skills/d3` from the current workspace; never prefix that path with `../`. Immediately after the prompt, read the bundle entry point at `skills/d3/SKILL.md`; do not probe for README.md or other conventional entry-point filenames. The shell tool is bash, not PowerShell; do not run PowerShell commands. Do not list directories or inspect script source before reading the prompt. If the prompt gives an exact command, run it verbatim and verify the required outputs."
+        ]
+      },
+      "harness": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-02T14:01:09.779248+00:00",
+        "finishedAtUtc": "2026-10-02T14:01:51.382874+00:00",
+        "durationSeconds": 41.604,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "integrity": {
+        "passed": true,
+        "beforeDigest": "163ac42cc33cc9142ffde1969cdc8c4bf2e59b0ce3ec4a210f7b0918c4c1f540",
+        "afterDigest": "163ac42cc33cc9142ffde1969cdc8c4bf2e59b0ce3ec4a210f7b0918c4c1f540",
+        "added": [],
+        "removed": [],
+        "modified": []
+      },
+      "artifacts": [
+        {
+          "path": "out/contract.html",
+          "bytes": 6388,
+          "sha256": "ee839486584666a49a83c9c6411d218a03a82f2113cebc30bab0bc9971602a6a"
+        },
+        {
+          "path": "out/contract.svg",
+          "bytes": 5543,
+          "sha256": "e72a0d3a61b08562c759ce2490eb34c3d6acfe33f4677c7eb5fff00df675cb9f"
+        }
+      ],
+      "tracePassed": true,
+      "observedModels": {
+        "gpt-5.6-luna": 9
+      },
+      "readPaths": [
+        {
+          "path": "../prompt.md",
+          "calls": 1
+        },
+        {
+          "path": "skills/d3/SKILL.md",
+          "calls": 1
+        },
+        {
+          "path": "skills/d3/references/patterns/speculative-decoding.md",
+          "calls": 1
+        },
+        {
+          "path": "scratch/preview.png",
+          "calls": 1
+        }
+      ],
+      "toolCounts": {
+        "read": 4,
+        "bash": 8
+      },
+      "toolErrors": [],
+      "piCommand": [
+        "C:\\Users\\villa\\AppData\\Roaming\\npm\\pi.CMD",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--thinking",
+        "high",
+        "--mode",
+        "json",
+        "--no-context-files",
+        "--no-extensions",
+        "--no-skills",
+        "--no-prompt-templates",
+        "--no-themes",
+        "--no-session",
+        "--skill",
+        "skills/d3",
+        "--print",
+        "You are running an isolated forward test for `d3`. Use the read tool to read `../prompt.md` first, then follow it exactly. The loaded bundle is rooted at `skills/d3` from the current workspace; never prefix that path with `../`. Immediately after the prompt, read the bundle entry point at `skills/d3/SKILL.md`; do not probe for README.md or other conventional entry-point filenames. The shell tool is bash, not PowerShell; do not run PowerShell commands. Do not list directories or inspect script source before reading the prompt. If the prompt gives an exact command, run it verbatim and verify the required outputs."
+      ],
+      "independentCommand": [
+        "uv",
+        "run",
+        "--script",
+        "evaluations/contracts/check-d3-decoding.py",
+        "--run-id",
+        "20261002-authoring-d3-verified-contract-luna-1",
+        "--case",
+        "contract",
+        "--report",
+        "projects/skill-authoring-audit/artifacts/reviews/d3-verified-contract-independent.json"
+      ],
+      "independentChecks": {
+        "strictHarness": true,
+        "contract:exactOutputs": true,
+        "contract:dimensions": true,
+        "contract:accessible": true,
+        "contract:portableSvg": true,
+        "contract:.htmlPalette": true,
+        "contract:.svgPalette": true,
+        "contract:html@0Unobstructed": true,
+        "contract:html@0Bounds": true,
+        "contract:html@0.45Unobstructed": true,
+        "contract:html@0.45Bounds": true,
+        "contract:html@1.25Unobstructed": true,
+        "contract:html@1.25Bounds": true,
+        "contract:html@2.25Unobstructed": true,
+        "contract:html@2.25Bounds": true,
+        "contract:html@3.4Unobstructed": true,
+        "contract:html@3.4Bounds": true,
+        "contract:html@3.4ExactTokens": true,
+        "contract:html@3.4Alternates": true,
+        "contract:html@3.4VisibleText": true,
+        "contract:html@20Unobstructed": true,
+        "contract:html@20Bounds": true,
+        "contract:html@20ExactTokens": true,
+        "contract:html@20Alternates": true,
+        "contract:html@20VisibleText": true,
+        "contract:VisibleMotion": true,
+        "contract:Replay": true,
+        "contract:Replay1": true,
+        "contract:Replay2": true,
+        "contract:htmlReducedMotionInitial": true,
+        "contract:htmlReducedMotion": true,
+        "contract:svg@0Unobstructed": true,
+        "contract:svg@0Bounds": true,
+        "contract:svg@0.45Unobstructed": true,
+        "contract:svg@0.45Bounds": true,
+        "contract:svg@1.25Unobstructed": true,
+        "contract:svg@1.25Bounds": true,
+        "contract:svg@2.25Unobstructed": true,
+        "contract:svg@2.25Bounds": true,
+        "contract:svg@3.4Unobstructed": true,
+        "contract:svg@3.4Bounds": true,
+        "contract:svg@3.4ExactTokens": true,
+        "contract:svg@3.4Alternates": true,
+        "contract:svg@3.4VisibleText": true,
+        "contract:svg@20Unobstructed": true,
+        "contract:svg@20Bounds": true,
+        "contract:svg@20ExactTokens": true,
+        "contract:svg@20Alternates": true,
+        "contract:svg@20VisibleText": true,
+        "contract:svgReducedMotionInitial": true,
+        "contract:svgReducedMotion": true,
+        "offline": true,
+        "noBrowserErrors": true
+      },
+      "screenshots": [
+        "projects/skill-authoring-audit/artifacts/screenshots/20261002-authoring-d3-verified-contract-luna-1-contract-motion-0.45.png",
+        "projects/skill-authoring-audit/artifacts/screenshots/20261002-authoring-d3-verified-contract-luna-1-contract-motion-1.25.png",
+        "projects/skill-authoring-audit/artifacts/screenshots/20261002-authoring-d3-verified-contract-luna-1-contract-html.png",
+        "projects/skill-authoring-audit/artifacts/screenshots/20261002-authoring-d3-verified-contract-luna-1-contract-svg.png"
+      ],
+      "manualReview": {
+        "passed": true,
+        "finding": "The literal A/tiny/test proposal, two accepted tokens, rejected final token and target works are clear. The default neutral/red palette, 800x480 layout and resume route preserve readable labels."
+      },
+      "passed": true
+    },
+    {
+      "runId": "20261002-authoring-d3-verified-natural-luna-1",
+      "case": "naturalistic",
+      "manifest": {
+        "schemaVersion": 1,
+        "runId": "20261002-authoring-d3-verified-natural-luna-1",
+        "createdAtUtc": "2026-10-02T14:01:33.645906+00:00",
+        "skill": {
+          "name": "d3",
+          "profile": "runtime",
+          "fileCount": 285,
+          "payloadSha256": "163ac42cc33cc9142ffde1969cdc8c4bf2e59b0ce3ec4a210f7b0918c4c1f540"
+        },
+        "prompt": {
+          "source": "C:/Users/villa/dev/skills/evaluations/pi-prompts/d3-authoring-direct-recipe.md",
+          "sizeBytes": 912,
+          "sha256": "92d382d12ca211055331480362c898b419e95a21c8df9e2f41de80d9fab2507a"
+        },
+        "pi": {
+          "model": "openai-codex/gpt-5.6-luna",
+          "thinking": "high",
+          "mode": "json",
+          "timeoutSeconds": 480
+        },
+        "environment": {
+          "piVersion": "0.84.2",
+          "uvVersion": "uv 0.10.12 (00d72dac7 2026-03-19 x86_64-pc-windows-msvc)",
+          "pythonVersion": "3.13.12",
+          "platform": "Windows-11-10.0.26200-SP0",
+          "git": {
+            "commit": "58edc00c93023929ef788a1730d1b21dc981d251",
+            "dirty": true
+          }
+        },
+        "expectedOutputs": [
+          "out/decode.html",
+          "out/decode.svg"
+        ],
+        "expectedJsonFields": [],
+        "eventPolicy": {
+          "strict": true,
+          "requirePromptReadFirst": true,
+          "requireExactCommandFromPrompt": false,
+          "requireObservedModel": true,
+          "failOnInvalidEventJson": true,
+          "failOnToolError": true,
+          "forbidReadRegex": [
+            "(?i)(?:^|[\\\\/])assets[\\\\/]examples(?:[\\\\/]|$)",
+            "(?i)^\\.\\.(?![\\\\/]prompt\\.md$)",
+            "(?i)^(?:[A-Za-z]:[\\\\/]|/|\\\\\\\\)",
+            "(?i)^skills[\\\\/](?!d3(?:[\\\\/]|$))"
+          ],
+          "forbidCommandRegex": []
+        },
+        "command": [
+          "C:\\Users\\villa\\AppData\\Roaming\\npm\\pi.CMD",
+          "--model",
+          "openai-codex/gpt-5.6-luna",
+          "--thinking",
+          "high",
+          "--mode",
+          "json",
+          "--no-context-files",
+          "--no-extensions",
+          "--no-skills",
+          "--no-prompt-templates",
+          "--no-themes",
+          "--no-session",
+          "--skill",
+          "skills/d3",
+          "--print",
+          "You are running an isolated forward test for `d3`. Use the read tool to read `../prompt.md` first, then follow it exactly. The loaded bundle is rooted at `skills/d3` from the current workspace; never prefix that path with `../`. Immediately after the prompt, read the bundle entry point at `skills/d3/SKILL.md`; do not probe for README.md or other conventional entry-point filenames. The shell tool is bash, not PowerShell; do not run PowerShell commands. Do not list directories or inspect script source before reading the prompt. If the prompt gives an exact command, run it verbatim and verify the required outputs."
+        ]
+      },
+      "harness": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-02T14:01:36.002799+00:00",
+        "finishedAtUtc": "2026-10-02T14:02:20.802955+00:00",
+        "durationSeconds": 44.8,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "integrity": {
+        "passed": true,
+        "beforeDigest": "163ac42cc33cc9142ffde1969cdc8c4bf2e59b0ce3ec4a210f7b0918c4c1f540",
+        "afterDigest": "163ac42cc33cc9142ffde1969cdc8c4bf2e59b0ce3ec4a210f7b0918c4c1f540",
+        "added": [],
+        "removed": [],
+        "modified": []
+      },
+      "artifacts": [
+        {
+          "path": "out/decode.html",
+          "bytes": 7066,
+          "sha256": "549c3084d102d7bc1f038882baf9922b251720550df37d9b94e6122d5c718d65"
+        },
+        {
+          "path": "out/decode.svg",
+          "bytes": 6221,
+          "sha256": "d3f2b8032bfcd2cd667c634eb451cc66f5138b4eb1d6b8c7c7b68ed3c9caa83a"
+        }
+      ],
+      "tracePassed": true,
+      "observedModels": {
+        "gpt-5.6-luna": 9
+      },
+      "readPaths": [
+        {
+          "path": "../prompt.md",
+          "calls": 1
+        },
+        {
+          "path": "skills/d3/SKILL.md",
+          "calls": 1
+        },
+        {
+          "path": "skills/d3/references/patterns/speculative-decoding.md",
+          "calls": 1
+        },
+        {
+          "path": "out/decode.svg",
+          "calls": 1
+        },
+        {
+          "path": "out/decode.html",
+          "calls": 1
+        },
+        {
+          "path": "scratch/preview.png",
+          "calls": 1
+        }
+      ],
+      "toolCounts": {
+        "read": 6,
+        "bash": 4
+      },
+      "toolErrors": [],
+      "piCommand": [
+        "C:\\Users\\villa\\AppData\\Roaming\\npm\\pi.CMD",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--thinking",
+        "high",
+        "--mode",
+        "json",
+        "--no-context-files",
+        "--no-extensions",
+        "--no-skills",
+        "--no-prompt-templates",
+        "--no-themes",
+        "--no-session",
+        "--skill",
+        "skills/d3",
+        "--print",
+        "You are running an isolated forward test for `d3`. Use the read tool to read `../prompt.md` first, then follow it exactly. The loaded bundle is rooted at `skills/d3` from the current workspace; never prefix that path with `../`. Immediately after the prompt, read the bundle entry point at `skills/d3/SKILL.md`; do not probe for README.md or other conventional entry-point filenames. The shell tool is bash, not PowerShell; do not run PowerShell commands. Do not list directories or inspect script source before reading the prompt. If the prompt gives an exact command, run it verbatim and verify the required outputs."
+      ],
+      "independentCommand": [
+        "uv",
+        "run",
+        "--script",
+        "evaluations/contracts/check-d3-decoding.py",
+        "--run-id",
+        "20261002-authoring-d3-verified-natural-luna-1",
+        "--case",
+        "naturalistic",
+        "--report",
+        "projects/skill-authoring-audit/artifacts/reviews/d3-verified-natural-independent.json"
+      ],
+      "independentChecks": {
+        "strictHarness": true,
+        "decode:exactOutputs": true,
+        "decode:dimensions": true,
+        "decode:accessible": true,
+        "decode:portableSvg": true,
+        "decode:.htmlPalette": true,
+        "decode:.svgPalette": true,
+        "decode:html@0Unobstructed": true,
+        "decode:html@0Bounds": true,
+        "decode:html@0.45Unobstructed": true,
+        "decode:html@0.45Bounds": true,
+        "decode:html@1.25Unobstructed": true,
+        "decode:html@1.25Bounds": true,
+        "decode:html@2.25Unobstructed": true,
+        "decode:html@2.25Bounds": true,
+        "decode:html@3.4Unobstructed": true,
+        "decode:html@3.4Bounds": true,
+        "decode:html@3.4ExactTokens": true,
+        "decode:html@3.4Alternates": true,
+        "decode:html@3.4VisibleText": true,
+        "decode:html@20Unobstructed": true,
+        "decode:html@20Bounds": true,
+        "decode:html@20ExactTokens": true,
+        "decode:html@20Alternates": true,
+        "decode:html@20VisibleText": true,
+        "decode:VisibleMotion": true,
+        "decode:Replay": true,
+        "decode:Replay1": true,
+        "decode:Replay2": true,
+        "decode:htmlReducedMotionInitial": true,
+        "decode:htmlReducedMotion": true,
+        "decode:svg@0Unobstructed": true,
+        "decode:svg@0Bounds": true,
+        "decode:svg@0.45Unobstructed": true,
+        "decode:svg@0.45Bounds": true,
+        "decode:svg@1.25Unobstructed": true,
+        "decode:svg@1.25Bounds": true,
+        "decode:svg@2.25Unobstructed": true,
+        "decode:svg@2.25Bounds": true,
+        "decode:svg@3.4Unobstructed": true,
+        "decode:svg@3.4Bounds": true,
+        "decode:svg@3.4ExactTokens": true,
+        "decode:svg@3.4Alternates": true,
+        "decode:svg@3.4VisibleText": true,
+        "decode:svg@20Unobstructed": true,
+        "decode:svg@20Bounds": true,
+        "decode:svg@20ExactTokens": true,
+        "decode:svg@20Alternates": true,
+        "decode:svg@20VisibleText": true,
+        "decode:svgReducedMotionInitial": true,
+        "decode:svgReducedMotion": true,
+        "offline": true,
+        "noBrowserErrors": true
+      },
+      "screenshots": [
+        "projects/skill-authoring-audit/artifacts/screenshots/20261002-authoring-d3-verified-natural-luna-1-decode-motion-0.45.png",
+        "projects/skill-authoring-audit/artifacts/screenshots/20261002-authoring-d3-verified-natural-luna-1-decode-motion-1.25.png",
+        "projects/skill-authoring-audit/artifacts/screenshots/20261002-authoring-d3-verified-natural-luna-1-decode-html.png",
+        "projects/skill-authoring-audit/artifacts/screenshots/20261002-authoring-d3-verified-natural-luna-1-decode-svg.png"
+      ],
+      "manualReview": {
+        "passed": true,
+        "finding": "All requested tokens and the 3/1 prefix/tail division are legible. The progress marker occupies its own rail and disappears; the settled target route avoids status labels."
+      },
+      "passed": true
+    },
+    {
+      "runId": "20261002-authoring-d3-verified-natural-luna-2",
+      "case": "naturalistic",
+      "manifest": {
+        "schemaVersion": 1,
+        "runId": "20261002-authoring-d3-verified-natural-luna-2",
+        "createdAtUtc": "2026-10-02T14:01:33.655649+00:00",
+        "skill": {
+          "name": "d3",
+          "profile": "runtime",
+          "fileCount": 285,
+          "payloadSha256": "163ac42cc33cc9142ffde1969cdc8c4bf2e59b0ce3ec4a210f7b0918c4c1f540"
+        },
+        "prompt": {
+          "source": "C:/Users/villa/dev/skills/evaluations/pi-prompts/d3-authoring-direct-recipe.md",
+          "sizeBytes": 912,
+          "sha256": "92d382d12ca211055331480362c898b419e95a21c8df9e2f41de80d9fab2507a"
+        },
+        "pi": {
+          "model": "openai-codex/gpt-5.6-luna",
+          "thinking": "high",
+          "mode": "json",
+          "timeoutSeconds": 480
+        },
+        "environment": {
+          "piVersion": "0.84.2",
+          "uvVersion": "uv 0.10.12 (00d72dac7 2026-03-19 x86_64-pc-windows-msvc)",
+          "pythonVersion": "3.13.12",
+          "platform": "Windows-11-10.0.26200-SP0",
+          "git": {
+            "commit": "58edc00c93023929ef788a1730d1b21dc981d251",
+            "dirty": true
+          }
+        },
+        "expectedOutputs": [
+          "out/decode.html",
+          "out/decode.svg"
+        ],
+        "expectedJsonFields": [],
+        "eventPolicy": {
+          "strict": true,
+          "requirePromptReadFirst": true,
+          "requireExactCommandFromPrompt": false,
+          "requireObservedModel": true,
+          "failOnInvalidEventJson": true,
+          "failOnToolError": true,
+          "forbidReadRegex": [
+            "(?i)(?:^|[\\\\/])assets[\\\\/]examples(?:[\\\\/]|$)",
+            "(?i)^\\.\\.(?![\\\\/]prompt\\.md$)",
+            "(?i)^(?:[A-Za-z]:[\\\\/]|/|\\\\\\\\)",
+            "(?i)^skills[\\\\/](?!d3(?:[\\\\/]|$))"
+          ],
+          "forbidCommandRegex": []
+        },
+        "command": [
+          "C:\\Users\\villa\\AppData\\Roaming\\npm\\pi.CMD",
+          "--model",
+          "openai-codex/gpt-5.6-luna",
+          "--thinking",
+          "high",
+          "--mode",
+          "json",
+          "--no-context-files",
+          "--no-extensions",
+          "--no-skills",
+          "--no-prompt-templates",
+          "--no-themes",
+          "--no-session",
+          "--skill",
+          "skills/d3",
+          "--print",
+          "You are running an isolated forward test for `d3`. Use the read tool to read `../prompt.md` first, then follow it exactly. The loaded bundle is rooted at `skills/d3` from the current workspace; never prefix that path with `../`. Immediately after the prompt, read the bundle entry point at `skills/d3/SKILL.md`; do not probe for README.md or other conventional entry-point filenames. The shell tool is bash, not PowerShell; do not run PowerShell commands. Do not list directories or inspect script source before reading the prompt. If the prompt gives an exact command, run it verbatim and verify the required outputs."
+        ]
+      },
+      "harness": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-02T14:01:35.982003+00:00",
+        "finishedAtUtc": "2026-10-02T14:02:31.681153+00:00",
+        "durationSeconds": 55.7,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "integrity": {
+        "passed": true,
+        "beforeDigest": "163ac42cc33cc9142ffde1969cdc8c4bf2e59b0ce3ec4a210f7b0918c4c1f540",
+        "afterDigest": "163ac42cc33cc9142ffde1969cdc8c4bf2e59b0ce3ec4a210f7b0918c4c1f540",
+        "added": [],
+        "removed": [],
+        "modified": []
+      },
+      "artifacts": [
+        {
+          "path": "out/decode.html",
+          "bytes": 7066,
+          "sha256": "549c3084d102d7bc1f038882baf9922b251720550df37d9b94e6122d5c718d65"
+        },
+        {
+          "path": "out/decode.svg",
+          "bytes": 6221,
+          "sha256": "d3f2b8032bfcd2cd667c634eb451cc66f5138b4eb1d6b8c7c7b68ed3c9caa83a"
+        }
+      ],
+      "tracePassed": true,
+      "observedModels": {
+        "gpt-5.6-luna": 9
+      },
+      "readPaths": [
+        {
+          "path": "../prompt.md",
+          "calls": 1
+        },
+        {
+          "path": "skills/d3/SKILL.md",
+          "calls": 1
+        },
+        {
+          "path": "skills/d3/references/patterns/speculative-decoding.md",
+          "calls": 1
+        },
+        {
+          "path": "out/decode.html",
+          "calls": 1
+        },
+        {
+          "path": "out/decode.svg",
+          "calls": 1
+        },
+        {
+          "path": "scratch/preview.png",
+          "calls": 1
+        }
+      ],
+      "toolCounts": {
+        "read": 6,
+        "bash": 8
+      },
+      "toolErrors": [],
+      "piCommand": [
+        "C:\\Users\\villa\\AppData\\Roaming\\npm\\pi.CMD",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--thinking",
+        "high",
+        "--mode",
+        "json",
+        "--no-context-files",
+        "--no-extensions",
+        "--no-skills",
+        "--no-prompt-templates",
+        "--no-themes",
+        "--no-session",
+        "--skill",
+        "skills/d3",
+        "--print",
+        "You are running an isolated forward test for `d3`. Use the read tool to read `../prompt.md` first, then follow it exactly. The loaded bundle is rooted at `skills/d3` from the current workspace; never prefix that path with `../`. Immediately after the prompt, read the bundle entry point at `skills/d3/SKILL.md`; do not probe for README.md or other conventional entry-point filenames. The shell tool is bash, not PowerShell; do not run PowerShell commands. Do not list directories or inspect script source before reading the prompt. If the prompt gives an exact command, run it verbatim and verify the required outputs."
+      ],
+      "independentCommand": [
+        "uv",
+        "run",
+        "--script",
+        "evaluations/contracts/check-d3-decoding.py",
+        "--run-id",
+        "20261002-authoring-d3-verified-natural-luna-2",
+        "--case",
+        "naturalistic",
+        "--report",
+        "projects/skill-authoring-audit/artifacts/reviews/d3-verified-natural-independent.json"
+      ],
+      "independentChecks": {
+        "strictHarness": true,
+        "decode:exactOutputs": true,
+        "decode:dimensions": true,
+        "decode:accessible": true,
+        "decode:portableSvg": true,
+        "decode:.htmlPalette": true,
+        "decode:.svgPalette": true,
+        "decode:html@0Unobstructed": true,
+        "decode:html@0Bounds": true,
+        "decode:html@0.45Unobstructed": true,
+        "decode:html@0.45Bounds": true,
+        "decode:html@1.25Unobstructed": true,
+        "decode:html@1.25Bounds": true,
+        "decode:html@2.25Unobstructed": true,
+        "decode:html@2.25Bounds": true,
+        "decode:html@3.4Unobstructed": true,
+        "decode:html@3.4Bounds": true,
+        "decode:html@3.4ExactTokens": true,
+        "decode:html@3.4Alternates": true,
+        "decode:html@3.4VisibleText": true,
+        "decode:html@20Unobstructed": true,
+        "decode:html@20Bounds": true,
+        "decode:html@20ExactTokens": true,
+        "decode:html@20Alternates": true,
+        "decode:html@20VisibleText": true,
+        "decode:VisibleMotion": true,
+        "decode:Replay": true,
+        "decode:Replay1": true,
+        "decode:Replay2": true,
+        "decode:htmlReducedMotionInitial": true,
+        "decode:htmlReducedMotion": true,
+        "decode:svg@0Unobstructed": true,
+        "decode:svg@0Bounds": true,
+        "decode:svg@0.45Unobstructed": true,
+        "decode:svg@0.45Bounds": true,
+        "decode:svg@1.25Unobstructed": true,
+        "decode:svg@1.25Bounds": true,
+        "decode:svg@2.25Unobstructed": true,
+        "decode:svg@2.25Bounds": true,
+        "decode:svg@3.4Unobstructed": true,
+        "decode:svg@3.4Bounds": true,
+        "decode:svg@3.4ExactTokens": true,
+        "decode:svg@3.4Alternates": true,
+        "decode:svg@3.4VisibleText": true,
+        "decode:svg@20Unobstructed": true,
+        "decode:svg@20Bounds": true,
+        "decode:svg@20ExactTokens": true,
+        "decode:svg@20Alternates": true,
+        "decode:svg@20VisibleText": true,
+        "decode:svgReducedMotionInitial": true,
+        "decode:svgReducedMotion": true,
+        "offline": true,
+        "noBrowserErrors": true
+      },
+      "screenshots": [
+        "projects/skill-authoring-audit/artifacts/screenshots/20261002-authoring-d3-verified-natural-luna-2-decode-motion-0.45.png",
+        "projects/skill-authoring-audit/artifacts/screenshots/20261002-authoring-d3-verified-natural-luna-2-decode-motion-1.25.png",
+        "projects/skill-authoring-audit/artifacts/screenshots/20261002-authoring-d3-verified-natural-luna-2-decode-html.png",
+        "projects/skill-authoring-audit/artifacts/screenshots/20261002-authoring-d3-verified-natural-luna-2-decode-svg.png"
+      ],
+      "manualReview": {
+        "passed": true,
+        "finding": "Artifacts are byte-identical to repetition 1; independent HTML/SVG motion, replay and visibility checks pass."
+      },
+      "passed": true
+    },
+    {
+      "runId": "20261002-authoring-d3-verified-natural-luna-3",
+      "case": "naturalistic",
+      "manifest": {
+        "schemaVersion": 1,
+        "runId": "20261002-authoring-d3-verified-natural-luna-3",
+        "createdAtUtc": "2026-10-02T14:01:33.953310+00:00",
+        "skill": {
+          "name": "d3",
+          "profile": "runtime",
+          "fileCount": 285,
+          "payloadSha256": "163ac42cc33cc9142ffde1969cdc8c4bf2e59b0ce3ec4a210f7b0918c4c1f540"
+        },
+        "prompt": {
+          "source": "C:/Users/villa/dev/skills/evaluations/pi-prompts/d3-authoring-direct-recipe.md",
+          "sizeBytes": 912,
+          "sha256": "92d382d12ca211055331480362c898b419e95a21c8df9e2f41de80d9fab2507a"
+        },
+        "pi": {
+          "model": "openai-codex/gpt-5.6-luna",
+          "thinking": "high",
+          "mode": "json",
+          "timeoutSeconds": 480
+        },
+        "environment": {
+          "piVersion": "0.84.2",
+          "uvVersion": "uv 0.10.12 (00d72dac7 2026-03-19 x86_64-pc-windows-msvc)",
+          "pythonVersion": "3.13.12",
+          "platform": "Windows-11-10.0.26200-SP0",
+          "git": {
+            "commit": "58edc00c93023929ef788a1730d1b21dc981d251",
+            "dirty": true
+          }
+        },
+        "expectedOutputs": [
+          "out/decode.html",
+          "out/decode.svg"
+        ],
+        "expectedJsonFields": [],
+        "eventPolicy": {
+          "strict": true,
+          "requirePromptReadFirst": true,
+          "requireExactCommandFromPrompt": false,
+          "requireObservedModel": true,
+          "failOnInvalidEventJson": true,
+          "failOnToolError": true,
+          "forbidReadRegex": [
+            "(?i)(?:^|[\\\\/])assets[\\\\/]examples(?:[\\\\/]|$)",
+            "(?i)^\\.\\.(?![\\\\/]prompt\\.md$)",
+            "(?i)^(?:[A-Za-z]:[\\\\/]|/|\\\\\\\\)",
+            "(?i)^skills[\\\\/](?!d3(?:[\\\\/]|$))"
+          ],
+          "forbidCommandRegex": []
+        },
+        "command": [
+          "C:\\Users\\villa\\AppData\\Roaming\\npm\\pi.CMD",
+          "--model",
+          "openai-codex/gpt-5.6-luna",
+          "--thinking",
+          "high",
+          "--mode",
+          "json",
+          "--no-context-files",
+          "--no-extensions",
+          "--no-skills",
+          "--no-prompt-templates",
+          "--no-themes",
+          "--no-session",
+          "--skill",
+          "skills/d3",
+          "--print",
+          "You are running an isolated forward test for `d3`. Use the read tool to read `../prompt.md` first, then follow it exactly. The loaded bundle is rooted at `skills/d3` from the current workspace; never prefix that path with `../`. Immediately after the prompt, read the bundle entry point at `skills/d3/SKILL.md`; do not probe for README.md or other conventional entry-point filenames. The shell tool is bash, not PowerShell; do not run PowerShell commands. Do not list directories or inspect script source before reading the prompt. If the prompt gives an exact command, run it verbatim and verify the required outputs."
+        ]
+      },
+      "harness": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-02T14:01:36.265911+00:00",
+        "finishedAtUtc": "2026-10-02T14:02:29.530664+00:00",
+        "durationSeconds": 53.265,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "integrity": {
+        "passed": true,
+        "beforeDigest": "163ac42cc33cc9142ffde1969cdc8c4bf2e59b0ce3ec4a210f7b0918c4c1f540",
+        "afterDigest": "163ac42cc33cc9142ffde1969cdc8c4bf2e59b0ce3ec4a210f7b0918c4c1f540",
+        "added": [],
+        "removed": [],
+        "modified": []
+      },
+      "artifacts": [
+        {
+          "path": "out/decode.html",
+          "bytes": 7066,
+          "sha256": "549c3084d102d7bc1f038882baf9922b251720550df37d9b94e6122d5c718d65"
+        },
+        {
+          "path": "out/decode.svg",
+          "bytes": 6221,
+          "sha256": "d3f2b8032bfcd2cd667c634eb451cc66f5138b4eb1d6b8c7c7b68ed3c9caa83a"
+        }
+      ],
+      "tracePassed": true,
+      "observedModels": {
+        "gpt-5.6-luna": 10
+      },
+      "readPaths": [
+        {
+          "path": "../prompt.md",
+          "calls": 1
+        },
+        {
+          "path": "skills/d3/SKILL.md",
+          "calls": 1
+        },
+        {
+          "path": "skills/d3/references/patterns/speculative-decoding.md",
+          "calls": 1
+        },
+        {
+          "path": "scratch/preview.png",
+          "calls": 1
+        },
+        {
+          "path": "out/decode.html",
+          "calls": 1
+        },
+        {
+          "path": "out/decode.svg",
+          "calls": 1
+        }
+      ],
+      "toolCounts": {
+        "read": 6,
+        "bash": 8
+      },
+      "toolErrors": [],
+      "piCommand": [
+        "C:\\Users\\villa\\AppData\\Roaming\\npm\\pi.CMD",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--thinking",
+        "high",
+        "--mode",
+        "json",
+        "--no-context-files",
+        "--no-extensions",
+        "--no-skills",
+        "--no-prompt-templates",
+        "--no-themes",
+        "--no-session",
+        "--skill",
+        "skills/d3",
+        "--print",
+        "You are running an isolated forward test for `d3`. Use the read tool to read `../prompt.md` first, then follow it exactly. The loaded bundle is rooted at `skills/d3` from the current workspace; never prefix that path with `../`. Immediately after the prompt, read the bundle entry point at `skills/d3/SKILL.md`; do not probe for README.md or other conventional entry-point filenames. The shell tool is bash, not PowerShell; do not run PowerShell commands. Do not list directories or inspect script source before reading the prompt. If the prompt gives an exact command, run it verbatim and verify the required outputs."
+      ],
+      "independentCommand": [
+        "uv",
+        "run",
+        "--script",
+        "evaluations/contracts/check-d3-decoding.py",
+        "--run-id",
+        "20261002-authoring-d3-verified-natural-luna-3",
+        "--case",
+        "naturalistic",
+        "--report",
+        "projects/skill-authoring-audit/artifacts/reviews/d3-verified-natural-independent.json"
+      ],
+      "independentChecks": {
+        "strictHarness": true,
+        "decode:exactOutputs": true,
+        "decode:dimensions": true,
+        "decode:accessible": true,
+        "decode:portableSvg": true,
+        "decode:.htmlPalette": true,
+        "decode:.svgPalette": true,
+        "decode:html@0Unobstructed": true,
+        "decode:html@0Bounds": true,
+        "decode:html@0.45Unobstructed": true,
+        "decode:html@0.45Bounds": true,
+        "decode:html@1.25Unobstructed": true,
+        "decode:html@1.25Bounds": true,
+        "decode:html@2.25Unobstructed": true,
+        "decode:html@2.25Bounds": true,
+        "decode:html@3.4Unobstructed": true,
+        "decode:html@3.4Bounds": true,
+        "decode:html@3.4ExactTokens": true,
+        "decode:html@3.4Alternates": true,
+        "decode:html@3.4VisibleText": true,
+        "decode:html@20Unobstructed": true,
+        "decode:html@20Bounds": true,
+        "decode:html@20ExactTokens": true,
+        "decode:html@20Alternates": true,
+        "decode:html@20VisibleText": true,
+        "decode:VisibleMotion": true,
+        "decode:Replay": true,
+        "decode:Replay1": true,
+        "decode:Replay2": true,
+        "decode:htmlReducedMotionInitial": true,
+        "decode:htmlReducedMotion": true,
+        "decode:svg@0Unobstructed": true,
+        "decode:svg@0Bounds": true,
+        "decode:svg@0.45Unobstructed": true,
+        "decode:svg@0.45Bounds": true,
+        "decode:svg@1.25Unobstructed": true,
+        "decode:svg@1.25Bounds": true,
+        "decode:svg@2.25Unobstructed": true,
+        "decode:svg@2.25Bounds": true,
+        "decode:svg@3.4Unobstructed": true,
+        "decode:svg@3.4Bounds": true,
+        "decode:svg@3.4ExactTokens": true,
+        "decode:svg@3.4Alternates": true,
+        "decode:svg@3.4VisibleText": true,
+        "decode:svg@20Unobstructed": true,
+        "decode:svg@20Bounds": true,
+        "decode:svg@20ExactTokens": true,
+        "decode:svg@20Alternates": true,
+        "decode:svg@20VisibleText": true,
+        "decode:svgReducedMotionInitial": true,
+        "decode:svgReducedMotion": true,
+        "offline": true,
+        "noBrowserErrors": true
+      },
+      "screenshots": [
+        "projects/skill-authoring-audit/artifacts/screenshots/20261002-authoring-d3-verified-natural-luna-3-decode-motion-0.45.png",
+        "projects/skill-authoring-audit/artifacts/screenshots/20261002-authoring-d3-verified-natural-luna-3-decode-motion-1.25.png",
+        "projects/skill-authoring-audit/artifacts/screenshots/20261002-authoring-d3-verified-natural-luna-3-decode-html.png",
+        "projects/skill-authoring-audit/artifacts/screenshots/20261002-authoring-d3-verified-natural-luna-3-decode-svg.png"
+      ],
+      "manualReview": {
+        "passed": true,
+        "finding": "Artifacts are byte-identical to repetition 1; opened the intermediate motion screenshot and confirmed the indicator is clear of every token and caption."
+      },
+      "passed": true
+    },
+    {
+      "runId": "20261002-authoring-d3-verified-transfer-luna-1",
+      "case": "generalization",
+      "manifest": {
+        "schemaVersion": 1,
+        "runId": "20261002-authoring-d3-verified-transfer-luna-1",
+        "createdAtUtc": "2026-10-02T14:01:44.745624+00:00",
+        "skill": {
+          "name": "d3",
+          "profile": "runtime",
+          "fileCount": 285,
+          "payloadSha256": "163ac42cc33cc9142ffde1969cdc8c4bf2e59b0ce3ec4a210f7b0918c4c1f540"
+        },
+        "prompt": {
+          "source": "C:/Users/villa/dev/skills/evaluations/pi-prompts/d3-authoring-builder-generalization.md",
+          "sizeBytes": 1131,
+          "sha256": "10fa6ed8739cdbaa6fc700938ffa66e6abfc44f56c4a1d66cad4bb0f731a36da"
+        },
+        "pi": {
+          "model": "openai-codex/gpt-5.6-luna",
+          "thinking": "high",
+          "mode": "json",
+          "timeoutSeconds": 480
+        },
+        "environment": {
+          "piVersion": "0.84.2",
+          "uvVersion": "uv 0.10.12 (00d72dac7 2026-03-19 x86_64-pc-windows-msvc)",
+          "pythonVersion": "3.13.12",
+          "platform": "Windows-11-10.0.26200-SP0",
+          "git": {
+            "commit": "58edc00c93023929ef788a1730d1b21dc981d251",
+            "dirty": true
+          }
+        },
+        "expectedOutputs": [
+          "out/transfer.html",
+          "out/transfer.svg"
+        ],
+        "expectedJsonFields": [],
+        "eventPolicy": {
+          "strict": true,
+          "requirePromptReadFirst": true,
+          "requireExactCommandFromPrompt": false,
+          "requireObservedModel": true,
+          "failOnInvalidEventJson": true,
+          "failOnToolError": true,
+          "forbidReadRegex": [
+            "(?i)(?:^|[\\\\/])assets[\\\\/]examples(?:[\\\\/]|$)",
+            "(?i)^\\.\\.(?![\\\\/]prompt\\.md$)",
+            "(?i)^(?:[A-Za-z]:[\\\\/]|/|\\\\\\\\)",
+            "(?i)^skills[\\\\/](?!d3(?:[\\\\/]|$))"
+          ],
+          "forbidCommandRegex": []
+        },
+        "command": [
+          "C:\\Users\\villa\\AppData\\Roaming\\npm\\pi.CMD",
+          "--model",
+          "openai-codex/gpt-5.6-luna",
+          "--thinking",
+          "high",
+          "--mode",
+          "json",
+          "--no-context-files",
+          "--no-extensions",
+          "--no-skills",
+          "--no-prompt-templates",
+          "--no-themes",
+          "--no-session",
+          "--skill",
+          "skills/d3",
+          "--print",
+          "You are running an isolated forward test for `d3`. Use the read tool to read `../prompt.md` first, then follow it exactly. The loaded bundle is rooted at `skills/d3` from the current workspace; never prefix that path with `../`. Immediately after the prompt, read the bundle entry point at `skills/d3/SKILL.md`; do not probe for README.md or other conventional entry-point filenames. The shell tool is bash, not PowerShell; do not run PowerShell commands. Do not list directories or inspect script source before reading the prompt. If the prompt gives an exact command, run it verbatim and verify the required outputs."
+        ]
+      },
+      "harness": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-02T14:01:47.591651+00:00",
+        "finishedAtUtc": "2026-10-02T14:02:31.320572+00:00",
+        "durationSeconds": 43.729,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "integrity": {
+        "passed": true,
+        "beforeDigest": "163ac42cc33cc9142ffde1969cdc8c4bf2e59b0ce3ec4a210f7b0918c4c1f540",
+        "afterDigest": "163ac42cc33cc9142ffde1969cdc8c4bf2e59b0ce3ec4a210f7b0918c4c1f540",
+        "added": [],
+        "removed": [],
+        "modified": []
+      },
+      "artifacts": [
+        {
+          "path": "out/transfer.html",
+          "bytes": 8664,
+          "sha256": "77d013edb8f8cb7006970dd9e6a41f498695cee32b946fe31852c471decd0648"
+        },
+        {
+          "path": "out/transfer.svg",
+          "bytes": 7819,
+          "sha256": "bf213c409eb3bcdf179eb11d109abbd7b013d0c0ff68f7098547f4e73cc52959"
+        }
+      ],
+      "tracePassed": true,
+      "observedModels": {
+        "gpt-5.6-luna": 10
+      },
+      "readPaths": [
+        {
+          "path": "../prompt.md",
+          "calls": 1
+        },
+        {
+          "path": "skills/d3/SKILL.md",
+          "calls": 1
+        },
+        {
+          "path": "skills/d3/references/animation-patterns.md",
+          "calls": 1
+        },
+        {
+          "path": "skills/d3/references/self-contained-output.md",
+          "calls": 1
+        },
+        {
+          "path": "skills/d3/references/patterns/speculative-decoding.md",
+          "calls": 1
+        },
+        {
+          "path": "scratch/transfer-preview.png",
+          "calls": 1
+        }
+      ],
+      "toolCounts": {
+        "read": 6,
+        "bash": 7
+      },
+      "toolErrors": [],
+      "piCommand": [
+        "C:\\Users\\villa\\AppData\\Roaming\\npm\\pi.CMD",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--thinking",
+        "high",
+        "--mode",
+        "json",
+        "--no-context-files",
+        "--no-extensions",
+        "--no-skills",
+        "--no-prompt-templates",
+        "--no-themes",
+        "--no-session",
+        "--skill",
+        "skills/d3",
+        "--print",
+        "You are running an isolated forward test for `d3`. Use the read tool to read `../prompt.md` first, then follow it exactly. The loaded bundle is rooted at `skills/d3` from the current workspace; never prefix that path with `../`. Immediately after the prompt, read the bundle entry point at `skills/d3/SKILL.md`; do not probe for README.md or other conventional entry-point filenames. The shell tool is bash, not PowerShell; do not run PowerShell commands. Do not list directories or inspect script source before reading the prompt. If the prompt gives an exact command, run it verbatim and verify the required outputs."
+      ],
+      "independentCommand": [
+        "uv",
+        "run",
+        "--script",
+        "evaluations/contracts/check-d3-decoding.py",
+        "--run-id",
+        "20261002-authoring-d3-verified-transfer-luna-1",
+        "--case",
+        "generalization",
+        "--report",
+        "projects/skill-authoring-audit/artifacts/reviews/d3-verified-transfer-independent.json"
+      ],
+      "independentChecks": {
+        "strictHarness": true,
+        "transfer:exactOutputs": true,
+        "transfer:dimensions": true,
+        "transfer:accessible": true,
+        "transfer:portableSvg": true,
+        "transfer:.htmlPalette": true,
+        "transfer:.svgPalette": true,
+        "transfer:html@0Unobstructed": true,
+        "transfer:html@0Bounds": true,
+        "transfer:html@0.45Unobstructed": true,
+        "transfer:html@0.45Bounds": true,
+        "transfer:html@1.25Unobstructed": true,
+        "transfer:html@1.25Bounds": true,
+        "transfer:html@2.25Unobstructed": true,
+        "transfer:html@2.25Bounds": true,
+        "transfer:html@3.4Unobstructed": true,
+        "transfer:html@3.4Bounds": true,
+        "transfer:html@3.4ExactTokens": true,
+        "transfer:html@3.4Alternates": true,
+        "transfer:html@3.4VisibleText": true,
+        "transfer:html@20Unobstructed": true,
+        "transfer:html@20Bounds": true,
+        "transfer:html@20ExactTokens": true,
+        "transfer:html@20Alternates": true,
+        "transfer:html@20VisibleText": true,
+        "transfer:VisibleMotion": true,
+        "transfer:Replay": true,
+        "transfer:Replay1": true,
+        "transfer:Replay2": true,
+        "transfer:htmlReducedMotionInitial": true,
+        "transfer:htmlReducedMotion": true,
+        "transfer:svg@0Unobstructed": true,
+        "transfer:svg@0Bounds": true,
+        "transfer:svg@0.45Unobstructed": true,
+        "transfer:svg@0.45Bounds": true,
+        "transfer:svg@1.25Unobstructed": true,
+        "transfer:svg@1.25Bounds": true,
+        "transfer:svg@2.25Unobstructed": true,
+        "transfer:svg@2.25Bounds": true,
+        "transfer:svg@3.4Unobstructed": true,
+        "transfer:svg@3.4Bounds": true,
+        "transfer:svg@3.4ExactTokens": true,
+        "transfer:svg@3.4Alternates": true,
+        "transfer:svg@3.4VisibleText": true,
+        "transfer:svg@20Unobstructed": true,
+        "transfer:svg@20Bounds": true,
+        "transfer:svg@20ExactTokens": true,
+        "transfer:svg@20Alternates": true,
+        "transfer:svg@20VisibleText": true,
+        "transfer:svgReducedMotionInitial": true,
+        "transfer:svgReducedMotion": true,
+        "offline": true,
+        "noBrowserErrors": true
+      },
+      "screenshots": [
+        "projects/skill-authoring-audit/artifacts/screenshots/20261002-authoring-d3-verified-transfer-luna-1-transfer-motion-0.45.png",
+        "projects/skill-authoring-audit/artifacts/screenshots/20261002-authoring-d3-verified-transfer-luna-1-transfer-motion-1.25.png",
+        "projects/skill-authoring-audit/artifacts/screenshots/20261002-authoring-d3-verified-transfer-luna-1-transfer-html.png",
+        "projects/skill-authoring-audit/artifacts/screenshots/20261002-authoring-d3-verified-transfer-luna-1-transfer-svg.png"
+      ],
+      "manualReview": {
+        "passed": true,
+        "finding": "The six changed draft tokens, four accepted/two rejected, continuation today and both gray alternate branches are clear. Branch connectors avoid Draft 2/Draft 5 labels within the exact 960x520 viewport."
+      },
+      "passed": true
+    },
+    {
+      "runId": "20261002-authoring-d3-verified-transfer-luna-2",
+      "case": "generalization",
+      "manifest": {
+        "schemaVersion": 1,
+        "runId": "20261002-authoring-d3-verified-transfer-luna-2",
+        "createdAtUtc": "2026-10-02T14:01:45.175648+00:00",
+        "skill": {
+          "name": "d3",
+          "profile": "runtime",
+          "fileCount": 285,
+          "payloadSha256": "163ac42cc33cc9142ffde1969cdc8c4bf2e59b0ce3ec4a210f7b0918c4c1f540"
+        },
+        "prompt": {
+          "source": "C:/Users/villa/dev/skills/evaluations/pi-prompts/d3-authoring-builder-generalization.md",
+          "sizeBytes": 1131,
+          "sha256": "10fa6ed8739cdbaa6fc700938ffa66e6abfc44f56c4a1d66cad4bb0f731a36da"
+        },
+        "pi": {
+          "model": "openai-codex/gpt-5.6-luna",
+          "thinking": "high",
+          "mode": "json",
+          "timeoutSeconds": 480
+        },
+        "environment": {
+          "piVersion": "0.84.2",
+          "uvVersion": "uv 0.10.12 (00d72dac7 2026-03-19 x86_64-pc-windows-msvc)",
+          "pythonVersion": "3.13.12",
+          "platform": "Windows-11-10.0.26200-SP0",
+          "git": {
+            "commit": "58edc00c93023929ef788a1730d1b21dc981d251",
+            "dirty": true
+          }
+        },
+        "expectedOutputs": [
+          "out/transfer.html",
+          "out/transfer.svg"
+        ],
+        "expectedJsonFields": [],
+        "eventPolicy": {
+          "strict": true,
+          "requirePromptReadFirst": true,
+          "requireExactCommandFromPrompt": false,
+          "requireObservedModel": true,
+          "failOnInvalidEventJson": true,
+          "failOnToolError": true,
+          "forbidReadRegex": [
+            "(?i)(?:^|[\\\\/])assets[\\\\/]examples(?:[\\\\/]|$)",
+            "(?i)^\\.\\.(?![\\\\/]prompt\\.md$)",
+            "(?i)^(?:[A-Za-z]:[\\\\/]|/|\\\\\\\\)",
+            "(?i)^skills[\\\\/](?!d3(?:[\\\\/]|$))"
+          ],
+          "forbidCommandRegex": []
+        },
+        "command": [
+          "C:\\Users\\villa\\AppData\\Roaming\\npm\\pi.CMD",
+          "--model",
+          "openai-codex/gpt-5.6-luna",
+          "--thinking",
+          "high",
+          "--mode",
+          "json",
+          "--no-context-files",
+          "--no-extensions",
+          "--no-skills",
+          "--no-prompt-templates",
+          "--no-themes",
+          "--no-session",
+          "--skill",
+          "skills/d3",
+          "--print",
+          "You are running an isolated forward test for `d3`. Use the read tool to read `../prompt.md` first, then follow it exactly. The loaded bundle is rooted at `skills/d3` from the current workspace; never prefix that path with `../`. Immediately after the prompt, read the bundle entry point at `skills/d3/SKILL.md`; do not probe for README.md or other conventional entry-point filenames. The shell tool is bash, not PowerShell; do not run PowerShell commands. Do not list directories or inspect script source before reading the prompt. If the prompt gives an exact command, run it verbatim and verify the required outputs."
+        ]
+      },
+      "harness": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-02T14:01:47.883826+00:00",
+        "finishedAtUtc": "2026-10-02T14:02:42.501418+00:00",
+        "durationSeconds": 54.618,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "integrity": {
+        "passed": true,
+        "beforeDigest": "163ac42cc33cc9142ffde1969cdc8c4bf2e59b0ce3ec4a210f7b0918c4c1f540",
+        "afterDigest": "163ac42cc33cc9142ffde1969cdc8c4bf2e59b0ce3ec4a210f7b0918c4c1f540",
+        "added": [],
+        "removed": [],
+        "modified": []
+      },
+      "artifacts": [
+        {
+          "path": "out/transfer.html",
+          "bytes": 8664,
+          "sha256": "77d013edb8f8cb7006970dd9e6a41f498695cee32b946fe31852c471decd0648"
+        },
+        {
+          "path": "out/transfer.svg",
+          "bytes": 7819,
+          "sha256": "bf213c409eb3bcdf179eb11d109abbd7b013d0c0ff68f7098547f4e73cc52959"
+        }
+      ],
+      "tracePassed": true,
+      "observedModels": {
+        "gpt-5.6-luna": 9
+      },
+      "readPaths": [
+        {
+          "path": "../prompt.md",
+          "calls": 1
+        },
+        {
+          "path": "skills/d3/SKILL.md",
+          "calls": 1
+        },
+        {
+          "path": "skills/d3/references/patterns/speculative-decoding.md",
+          "calls": 1
+        },
+        {
+          "path": "scratch/preview.png",
+          "calls": 1
+        }
+      ],
+      "toolCounts": {
+        "read": 4,
+        "bash": 7
+      },
+      "toolErrors": [],
+      "piCommand": [
+        "C:\\Users\\villa\\AppData\\Roaming\\npm\\pi.CMD",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--thinking",
+        "high",
+        "--mode",
+        "json",
+        "--no-context-files",
+        "--no-extensions",
+        "--no-skills",
+        "--no-prompt-templates",
+        "--no-themes",
+        "--no-session",
+        "--skill",
+        "skills/d3",
+        "--print",
+        "You are running an isolated forward test for `d3`. Use the read tool to read `../prompt.md` first, then follow it exactly. The loaded bundle is rooted at `skills/d3` from the current workspace; never prefix that path with `../`. Immediately after the prompt, read the bundle entry point at `skills/d3/SKILL.md`; do not probe for README.md or other conventional entry-point filenames. The shell tool is bash, not PowerShell; do not run PowerShell commands. Do not list directories or inspect script source before reading the prompt. If the prompt gives an exact command, run it verbatim and verify the required outputs."
+      ],
+      "independentCommand": [
+        "uv",
+        "run",
+        "--script",
+        "evaluations/contracts/check-d3-decoding.py",
+        "--run-id",
+        "20261002-authoring-d3-verified-transfer-luna-2",
+        "--case",
+        "generalization",
+        "--report",
+        "projects/skill-authoring-audit/artifacts/reviews/d3-verified-transfer-independent.json"
+      ],
+      "independentChecks": {
+        "strictHarness": true,
+        "transfer:exactOutputs": true,
+        "transfer:dimensions": true,
+        "transfer:accessible": true,
+        "transfer:portableSvg": true,
+        "transfer:.htmlPalette": true,
+        "transfer:.svgPalette": true,
+        "transfer:html@0Unobstructed": true,
+        "transfer:html@0Bounds": true,
+        "transfer:html@0.45Unobstructed": true,
+        "transfer:html@0.45Bounds": true,
+        "transfer:html@1.25Unobstructed": true,
+        "transfer:html@1.25Bounds": true,
+        "transfer:html@2.25Unobstructed": true,
+        "transfer:html@2.25Bounds": true,
+        "transfer:html@3.4Unobstructed": true,
+        "transfer:html@3.4Bounds": true,
+        "transfer:html@3.4ExactTokens": true,
+        "transfer:html@3.4Alternates": true,
+        "transfer:html@3.4VisibleText": true,
+        "transfer:html@20Unobstructed": true,
+        "transfer:html@20Bounds": true,
+        "transfer:html@20ExactTokens": true,
+        "transfer:html@20Alternates": true,
+        "transfer:html@20VisibleText": true,
+        "transfer:VisibleMotion": true,
+        "transfer:Replay": true,
+        "transfer:Replay1": true,
+        "transfer:Replay2": true,
+        "transfer:htmlReducedMotionInitial": true,
+        "transfer:htmlReducedMotion": true,
+        "transfer:svg@0Unobstructed": true,
+        "transfer:svg@0Bounds": true,
+        "transfer:svg@0.45Unobstructed": true,
+        "transfer:svg@0.45Bounds": true,
+        "transfer:svg@1.25Unobstructed": true,
+        "transfer:svg@1.25Bounds": true,
+        "transfer:svg@2.25Unobstructed": true,
+        "transfer:svg@2.25Bounds": true,
+        "transfer:svg@3.4Unobstructed": true,
+        "transfer:svg@3.4Bounds": true,
+        "transfer:svg@3.4ExactTokens": true,
+        "transfer:svg@3.4Alternates": true,
+        "transfer:svg@3.4VisibleText": true,
+        "transfer:svg@20Unobstructed": true,
+        "transfer:svg@20Bounds": true,
+        "transfer:svg@20ExactTokens": true,
+        "transfer:svg@20Alternates": true,
+        "transfer:svg@20VisibleText": true,
+        "transfer:svgReducedMotionInitial": true,
+        "transfer:svgReducedMotion": true,
+        "offline": true,
+        "noBrowserErrors": true
+      },
+      "screenshots": [
+        "projects/skill-authoring-audit/artifacts/screenshots/20261002-authoring-d3-verified-transfer-luna-2-transfer-motion-0.45.png",
+        "projects/skill-authoring-audit/artifacts/screenshots/20261002-authoring-d3-verified-transfer-luna-2-transfer-motion-1.25.png",
+        "projects/skill-authoring-audit/artifacts/screenshots/20261002-authoring-d3-verified-transfer-luna-2-transfer-html.png",
+        "projects/skill-authoring-audit/artifacts/screenshots/20261002-authoring-d3-verified-transfer-luna-2-transfer-svg.png"
+      ],
+      "manualReview": {
+        "passed": true,
+        "finding": "Artifacts are byte-identical to repetition 1; opened the portable SVG screenshot and confirmed full labels, literal order, prefix/tail roles and caption bounds."
+      },
+      "passed": true
+    },
+    {
+      "runId": "20261002-authoring-d3-verified-transfer-luna-3",
+      "case": "generalization",
+      "manifest": {
+        "schemaVersion": 1,
+        "runId": "20261002-authoring-d3-verified-transfer-luna-3",
+        "createdAtUtc": "2026-10-02T14:01:44.942544+00:00",
+        "skill": {
+          "name": "d3",
+          "profile": "runtime",
+          "fileCount": 285,
+          "payloadSha256": "163ac42cc33cc9142ffde1969cdc8c4bf2e59b0ce3ec4a210f7b0918c4c1f540"
+        },
+        "prompt": {
+          "source": "C:/Users/villa/dev/skills/evaluations/pi-prompts/d3-authoring-builder-generalization.md",
+          "sizeBytes": 1131,
+          "sha256": "10fa6ed8739cdbaa6fc700938ffa66e6abfc44f56c4a1d66cad4bb0f731a36da"
+        },
+        "pi": {
+          "model": "openai-codex/gpt-5.6-luna",
+          "thinking": "high",
+          "mode": "json",
+          "timeoutSeconds": 480
+        },
+        "environment": {
+          "piVersion": "0.84.2",
+          "uvVersion": "uv 0.10.12 (00d72dac7 2026-03-19 x86_64-pc-windows-msvc)",
+          "pythonVersion": "3.13.12",
+          "platform": "Windows-11-10.0.26200-SP0",
+          "git": {
+            "commit": "58edc00c93023929ef788a1730d1b21dc981d251",
+            "dirty": true
+          }
+        },
+        "expectedOutputs": [
+          "out/transfer.html",
+          "out/transfer.svg"
+        ],
+        "expectedJsonFields": [],
+        "eventPolicy": {
+          "strict": true,
+          "requirePromptReadFirst": true,
+          "requireExactCommandFromPrompt": false,
+          "requireObservedModel": true,
+          "failOnInvalidEventJson": true,
+          "failOnToolError": true,
+          "forbidReadRegex": [
+            "(?i)(?:^|[\\\\/])assets[\\\\/]examples(?:[\\\\/]|$)",
+            "(?i)^\\.\\.(?![\\\\/]prompt\\.md$)",
+            "(?i)^(?:[A-Za-z]:[\\\\/]|/|\\\\\\\\)",
+            "(?i)^skills[\\\\/](?!d3(?:[\\\\/]|$))"
+          ],
+          "forbidCommandRegex": []
+        },
+        "command": [
+          "C:\\Users\\villa\\AppData\\Roaming\\npm\\pi.CMD",
+          "--model",
+          "openai-codex/gpt-5.6-luna",
+          "--thinking",
+          "high",
+          "--mode",
+          "json",
+          "--no-context-files",
+          "--no-extensions",
+          "--no-skills",
+          "--no-prompt-templates",
+          "--no-themes",
+          "--no-session",
+          "--skill",
+          "skills/d3",
+          "--print",
+          "You are running an isolated forward test for `d3`. Use the read tool to read `../prompt.md` first, then follow it exactly. The loaded bundle is rooted at `skills/d3` from the current workspace; never prefix that path with `../`. Immediately after the prompt, read the bundle entry point at `skills/d3/SKILL.md`; do not probe for README.md or other conventional entry-point filenames. The shell tool is bash, not PowerShell; do not run PowerShell commands. Do not list directories or inspect script source before reading the prompt. If the prompt gives an exact command, run it verbatim and verify the required outputs."
+        ]
+      },
+      "harness": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-02T14:01:47.689190+00:00",
+        "finishedAtUtc": "2026-10-02T14:02:46.208766+00:00",
+        "durationSeconds": 58.52,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "integrity": {
+        "passed": true,
+        "beforeDigest": "163ac42cc33cc9142ffde1969cdc8c4bf2e59b0ce3ec4a210f7b0918c4c1f540",
+        "afterDigest": "163ac42cc33cc9142ffde1969cdc8c4bf2e59b0ce3ec4a210f7b0918c4c1f540",
+        "added": [],
+        "removed": [],
+        "modified": []
+      },
+      "artifacts": [
+        {
+          "path": "out/transfer.html",
+          "bytes": 8664,
+          "sha256": "77d013edb8f8cb7006970dd9e6a41f498695cee32b946fe31852c471decd0648"
+        },
+        {
+          "path": "out/transfer.svg",
+          "bytes": 7819,
+          "sha256": "bf213c409eb3bcdf179eb11d109abbd7b013d0c0ff68f7098547f4e73cc52959"
+        }
+      ],
+      "tracePassed": true,
+      "observedModels": {
+        "gpt-5.6-luna": 9
+      },
+      "readPaths": [
+        {
+          "path": "../prompt.md",
+          "calls": 1
+        },
+        {
+          "path": "skills/d3/SKILL.md",
+          "calls": 1
+        },
+        {
+          "path": "skills/d3/references/patterns/speculative-decoding.md",
+          "calls": 1
+        },
+        {
+          "path": "scratch/transfer-preview.png",
+          "calls": 1
+        }
+      ],
+      "toolCounts": {
+        "read": 4,
+        "bash": 6
+      },
+      "toolErrors": [],
+      "piCommand": [
+        "C:\\Users\\villa\\AppData\\Roaming\\npm\\pi.CMD",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--thinking",
+        "high",
+        "--mode",
+        "json",
+        "--no-context-files",
+        "--no-extensions",
+        "--no-skills",
+        "--no-prompt-templates",
+        "--no-themes",
+        "--no-session",
+        "--skill",
+        "skills/d3",
+        "--print",
+        "You are running an isolated forward test for `d3`. Use the read tool to read `../prompt.md` first, then follow it exactly. The loaded bundle is rooted at `skills/d3` from the current workspace; never prefix that path with `../`. Immediately after the prompt, read the bundle entry point at `skills/d3/SKILL.md`; do not probe for README.md or other conventional entry-point filenames. The shell tool is bash, not PowerShell; do not run PowerShell commands. Do not list directories or inspect script source before reading the prompt. If the prompt gives an exact command, run it verbatim and verify the required outputs."
+      ],
+      "independentCommand": [
+        "uv",
+        "run",
+        "--script",
+        "evaluations/contracts/check-d3-decoding.py",
+        "--run-id",
+        "20261002-authoring-d3-verified-transfer-luna-3",
+        "--case",
+        "generalization",
+        "--report",
+        "projects/skill-authoring-audit/artifacts/reviews/d3-verified-transfer-independent.json"
+      ],
+      "independentChecks": {
+        "strictHarness": true,
+        "transfer:exactOutputs": true,
+        "transfer:dimensions": true,
+        "transfer:accessible": true,
+        "transfer:portableSvg": true,
+        "transfer:.htmlPalette": true,
+        "transfer:.svgPalette": true,
+        "transfer:html@0Unobstructed": true,
+        "transfer:html@0Bounds": true,
+        "transfer:html@0.45Unobstructed": true,
+        "transfer:html@0.45Bounds": true,
+        "transfer:html@1.25Unobstructed": true,
+        "transfer:html@1.25Bounds": true,
+        "transfer:html@2.25Unobstructed": true,
+        "transfer:html@2.25Bounds": true,
+        "transfer:html@3.4Unobstructed": true,
+        "transfer:html@3.4Bounds": true,
+        "transfer:html@3.4ExactTokens": true,
+        "transfer:html@3.4Alternates": true,
+        "transfer:html@3.4VisibleText": true,
+        "transfer:html@20Unobstructed": true,
+        "transfer:html@20Bounds": true,
+        "transfer:html@20ExactTokens": true,
+        "transfer:html@20Alternates": true,
+        "transfer:html@20VisibleText": true,
+        "transfer:VisibleMotion": true,
+        "transfer:Replay": true,
+        "transfer:Replay1": true,
+        "transfer:Replay2": true,
+        "transfer:htmlReducedMotionInitial": true,
+        "transfer:htmlReducedMotion": true,
+        "transfer:svg@0Unobstructed": true,
+        "transfer:svg@0Bounds": true,
+        "transfer:svg@0.45Unobstructed": true,
+        "transfer:svg@0.45Bounds": true,
+        "transfer:svg@1.25Unobstructed": true,
+        "transfer:svg@1.25Bounds": true,
+        "transfer:svg@2.25Unobstructed": true,
+        "transfer:svg@2.25Bounds": true,
+        "transfer:svg@3.4Unobstructed": true,
+        "transfer:svg@3.4Bounds": true,
+        "transfer:svg@3.4ExactTokens": true,
+        "transfer:svg@3.4Alternates": true,
+        "transfer:svg@3.4VisibleText": true,
+        "transfer:svg@20Unobstructed": true,
+        "transfer:svg@20Bounds": true,
+        "transfer:svg@20ExactTokens": true,
+        "transfer:svg@20Alternates": true,
+        "transfer:svg@20VisibleText": true,
+        "transfer:svgReducedMotionInitial": true,
+        "transfer:svgReducedMotion": true,
+        "offline": true,
+        "noBrowserErrors": true
+      },
+      "screenshots": [
+        "projects/skill-authoring-audit/artifacts/screenshots/20261002-authoring-d3-verified-transfer-luna-3-transfer-motion-0.45.png",
+        "projects/skill-authoring-audit/artifacts/screenshots/20261002-authoring-d3-verified-transfer-luna-3-transfer-motion-1.25.png",
+        "projects/skill-authoring-audit/artifacts/screenshots/20261002-authoring-d3-verified-transfer-luna-3-transfer-html.png",
+        "projects/skill-authoring-audit/artifacts/screenshots/20261002-authoring-d3-verified-transfer-luna-3-transfer-svg.png"
+      ],
+      "manualReview": {
+        "passed": true,
+        "finding": "Artifacts are byte-identical to repetition 1; opened the motion screenshot and confirmed separate marker rail, unobstructed branches and readable verification text."
+      },
+      "passed": true
+    },
+    {
+      "runId": "20261002-authoring-d3-verified-boundary-luna-1",
+      "case": "boundary",
+      "manifest": {
+        "schemaVersion": 1,
+        "runId": "20261002-authoring-d3-verified-boundary-luna-1",
+        "createdAtUtc": "2026-10-02T14:01:07.618585+00:00",
+        "skill": {
+          "name": "d3",
+          "profile": "runtime",
+          "fileCount": 285,
+          "payloadSha256": "163ac42cc33cc9142ffde1969cdc8c4bf2e59b0ce3ec4a210f7b0918c4c1f540"
+        },
+        "prompt": {
+          "source": "C:/Users/villa/dev/skills/evaluations/pi-prompts/d3-authoring-builder-boundary.md",
+          "sizeBytes": 934,
+          "sha256": "b5e32d8215c2b7593e4b73085650e600c60135e48c8ef2a0d29b99f93e0429f1"
+        },
+        "pi": {
+          "model": "openai-codex/gpt-5.6-luna",
+          "thinking": "high",
+          "mode": "json",
+          "timeoutSeconds": 480
+        },
+        "environment": {
+          "piVersion": "0.84.2",
+          "uvVersion": "uv 0.10.12 (00d72dac7 2026-03-19 x86_64-pc-windows-msvc)",
+          "pythonVersion": "3.13.12",
+          "platform": "Windows-11-10.0.26200-SP0",
+          "git": {
+            "commit": "58edc00c93023929ef788a1730d1b21dc981d251",
+            "dirty": true
+          }
+        },
+        "expectedOutputs": [
+          "out/zero.html",
+          "out/zero.svg",
+          "out/all.html",
+          "out/all.svg"
+        ],
+        "expectedJsonFields": [],
+        "eventPolicy": {
+          "strict": true,
+          "requirePromptReadFirst": true,
+          "requireExactCommandFromPrompt": false,
+          "requireObservedModel": true,
+          "failOnInvalidEventJson": true,
+          "failOnToolError": true,
+          "forbidReadRegex": [
+            "(?i)(?:^|[\\\\/])assets[\\\\/]examples(?:[\\\\/]|$)",
+            "(?i)^\\.\\.(?![\\\\/]prompt\\.md$)",
+            "(?i)^(?:[A-Za-z]:[\\\\/]|/|\\\\\\\\)",
+            "(?i)^skills[\\\\/](?!d3(?:[\\\\/]|$))"
+          ],
+          "forbidCommandRegex": []
+        },
+        "command": [
+          "C:\\Users\\villa\\AppData\\Roaming\\npm\\pi.CMD",
+          "--model",
+          "openai-codex/gpt-5.6-luna",
+          "--thinking",
+          "high",
+          "--mode",
+          "json",
+          "--no-context-files",
+          "--no-extensions",
+          "--no-skills",
+          "--no-prompt-templates",
+          "--no-themes",
+          "--no-session",
+          "--skill",
+          "skills/d3",
+          "--print",
+          "You are running an isolated forward test for `d3`. Use the read tool to read `../prompt.md` first, then follow it exactly. The loaded bundle is rooted at `skills/d3` from the current workspace; never prefix that path with `../`. Immediately after the prompt, read the bundle entry point at `skills/d3/SKILL.md`; do not probe for README.md or other conventional entry-point filenames. The shell tool is bash, not PowerShell; do not run PowerShell commands. Do not list directories or inspect script source before reading the prompt. If the prompt gives an exact command, run it verbatim and verify the required outputs."
+        ]
+      },
+      "harness": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-02T14:01:09.779175+00:00",
+        "finishedAtUtc": "2026-10-02T14:01:56.284768+00:00",
+        "durationSeconds": 46.506,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "integrity": {
+        "passed": true,
+        "beforeDigest": "163ac42cc33cc9142ffde1969cdc8c4bf2e59b0ce3ec4a210f7b0918c4c1f540",
+        "afterDigest": "163ac42cc33cc9142ffde1969cdc8c4bf2e59b0ce3ec4a210f7b0918c4c1f540",
+        "added": [],
+        "removed": [],
+        "modified": []
+      },
+      "artifacts": [
+        {
+          "path": "out/zero.html",
+          "bytes": 6389,
+          "sha256": "40d44a06dd93e1cf717778114e43ba87bcdd75927999e77e38d2a5ea0a73eb26"
+        },
+        {
+          "path": "out/zero.svg",
+          "bytes": 5544,
+          "sha256": "c6ff8b0047806dca67c125ac9289382d88660fec6be52254028cbbd3efec71ce"
+        },
+        {
+          "path": "out/all.html",
+          "bytes": 6387,
+          "sha256": "38c846401536a5e8279b4651c4b8cb6e830b93384a9b48ef41167fbb530d16d1"
+        },
+        {
+          "path": "out/all.svg",
+          "bytes": 5542,
+          "sha256": "7d5f60bea81b14bc4acc617234194ad8b70ff5f930f1767866302a1b5863fa19"
+        }
+      ],
+      "tracePassed": true,
+      "observedModels": {
+        "gpt-5.6-luna": 10
+      },
+      "readPaths": [
+        {
+          "path": "../prompt.md",
+          "calls": 1
+        },
+        {
+          "path": "skills/d3/SKILL.md",
+          "calls": 1
+        },
+        {
+          "path": "skills/d3/references/patterns/speculative-decoding.md",
+          "calls": 1
+        },
+        {
+          "path": "scratch/all-preview.png",
+          "calls": 1
+        },
+        {
+          "path": "scratch/zero-preview.png",
+          "calls": 1
+        }
+      ],
+      "toolCounts": {
+        "read": 5,
+        "bash": 13
+      },
+      "toolErrors": [],
+      "piCommand": [
+        "C:\\Users\\villa\\AppData\\Roaming\\npm\\pi.CMD",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--thinking",
+        "high",
+        "--mode",
+        "json",
+        "--no-context-files",
+        "--no-extensions",
+        "--no-skills",
+        "--no-prompt-templates",
+        "--no-themes",
+        "--no-session",
+        "--skill",
+        "skills/d3",
+        "--print",
+        "You are running an isolated forward test for `d3`. Use the read tool to read `../prompt.md` first, then follow it exactly. The loaded bundle is rooted at `skills/d3` from the current workspace; never prefix that path with `../`. Immediately after the prompt, read the bundle entry point at `skills/d3/SKILL.md`; do not probe for README.md or other conventional entry-point filenames. The shell tool is bash, not PowerShell; do not run PowerShell commands. Do not list directories or inspect script source before reading the prompt. If the prompt gives an exact command, run it verbatim and verify the required outputs."
+      ],
+      "independentCommand": [
+        "uv",
+        "run",
+        "--script",
+        "evaluations/contracts/check-d3-decoding.py",
+        "--run-id",
+        "20261002-authoring-d3-verified-boundary-luna-1",
+        "--case",
+        "boundary",
+        "--report",
+        "projects/skill-authoring-audit/artifacts/reviews/d3-verified-boundary-independent.json"
+      ],
+      "independentChecks": {
+        "strictHarness": true,
+        "zero:exactOutputs": true,
+        "zero:dimensions": true,
+        "zero:accessible": true,
+        "zero:portableSvg": true,
+        "zero:.htmlPalette": true,
+        "zero:.svgPalette": true,
+        "zero:html@0Unobstructed": true,
+        "zero:html@0Bounds": true,
+        "zero:html@0.45Unobstructed": true,
+        "zero:html@0.45Bounds": true,
+        "zero:html@1.25Unobstructed": true,
+        "zero:html@1.25Bounds": true,
+        "zero:html@2.25Unobstructed": true,
+        "zero:html@2.25Bounds": true,
+        "zero:html@3.4Unobstructed": true,
+        "zero:html@3.4Bounds": true,
+        "zero:html@3.4ExactTokens": true,
+        "zero:html@3.4Alternates": true,
+        "zero:html@3.4VisibleText": true,
+        "zero:html@20Unobstructed": true,
+        "zero:html@20Bounds": true,
+        "zero:html@20ExactTokens": true,
+        "zero:html@20Alternates": true,
+        "zero:html@20VisibleText": true,
+        "zero:VisibleMotion": true,
+        "zero:Replay": true,
+        "zero:Replay1": true,
+        "zero:Replay2": true,
+        "zero:htmlReducedMotionInitial": true,
+        "zero:htmlReducedMotion": true,
+        "zero:svg@0Unobstructed": true,
+        "zero:svg@0Bounds": true,
+        "zero:svg@0.45Unobstructed": true,
+        "zero:svg@0.45Bounds": true,
+        "zero:svg@1.25Unobstructed": true,
+        "zero:svg@1.25Bounds": true,
+        "zero:svg@2.25Unobstructed": true,
+        "zero:svg@2.25Bounds": true,
+        "zero:svg@3.4Unobstructed": true,
+        "zero:svg@3.4Bounds": true,
+        "zero:svg@3.4ExactTokens": true,
+        "zero:svg@3.4Alternates": true,
+        "zero:svg@3.4VisibleText": true,
+        "zero:svg@20Unobstructed": true,
+        "zero:svg@20Bounds": true,
+        "zero:svg@20ExactTokens": true,
+        "zero:svg@20Alternates": true,
+        "zero:svg@20VisibleText": true,
+        "zero:svgReducedMotionInitial": true,
+        "zero:svgReducedMotion": true,
+        "all:exactOutputs": true,
+        "all:dimensions": true,
+        "all:accessible": true,
+        "all:portableSvg": true,
+        "all:.htmlPalette": true,
+        "all:.svgPalette": true,
+        "all:html@0Unobstructed": true,
+        "all:html@0Bounds": true,
+        "all:html@0.45Unobstructed": true,
+        "all:html@0.45Bounds": true,
+        "all:html@1.25Unobstructed": true,
+        "all:html@1.25Bounds": true,
+        "all:html@2.25Unobstructed": true,
+        "all:html@2.25Bounds": true,
+        "all:html@3.4Unobstructed": true,
+        "all:html@3.4Bounds": true,
+        "all:html@3.4ExactTokens": true,
+        "all:html@3.4Alternates": true,
+        "all:html@3.4VisibleText": true,
+        "all:html@20Unobstructed": true,
+        "all:html@20Bounds": true,
+        "all:html@20ExactTokens": true,
+        "all:html@20Alternates": true,
+        "all:html@20VisibleText": true,
+        "all:VisibleMotion": true,
+        "all:Replay": true,
+        "all:Replay1": true,
+        "all:Replay2": true,
+        "all:htmlReducedMotionInitial": true,
+        "all:htmlReducedMotion": true,
+        "all:svg@0Unobstructed": true,
+        "all:svg@0Bounds": true,
+        "all:svg@0.45Unobstructed": true,
+        "all:svg@0.45Bounds": true,
+        "all:svg@1.25Unobstructed": true,
+        "all:svg@1.25Bounds": true,
+        "all:svg@2.25Unobstructed": true,
+        "all:svg@2.25Bounds": true,
+        "all:svg@3.4Unobstructed": true,
+        "all:svg@3.4Bounds": true,
+        "all:svg@3.4ExactTokens": true,
+        "all:svg@3.4Alternates": true,
+        "all:svg@3.4VisibleText": true,
+        "all:svg@20Unobstructed": true,
+        "all:svg@20Bounds": true,
+        "all:svg@20ExactTokens": true,
+        "all:svg@20Alternates": true,
+        "all:svg@20VisibleText": true,
+        "all:svgReducedMotionInitial": true,
+        "all:svgReducedMotion": true,
+        "offline": true,
+        "noBrowserErrors": true
+      },
+      "screenshots": [
+        "projects/skill-authoring-audit/artifacts/screenshots/20261002-authoring-d3-verified-boundary-luna-1-zero-motion-0.45.png",
+        "projects/skill-authoring-audit/artifacts/screenshots/20261002-authoring-d3-verified-boundary-luna-1-zero-motion-1.25.png",
+        "projects/skill-authoring-audit/artifacts/screenshots/20261002-authoring-d3-verified-boundary-luna-1-zero-html.png",
+        "projects/skill-authoring-audit/artifacts/screenshots/20261002-authoring-d3-verified-boundary-luna-1-zero-svg.png",
+        "projects/skill-authoring-audit/artifacts/screenshots/20261002-authoring-d3-verified-boundary-luna-1-all-motion-0.45.png",
+        "projects/skill-authoring-audit/artifacts/screenshots/20261002-authoring-d3-verified-boundary-luna-1-all-motion-1.25.png",
+        "projects/skill-authoring-audit/artifacts/screenshots/20261002-authoring-d3-verified-boundary-luna-1-all-html.png",
+        "projects/skill-authoring-audit/artifacts/screenshots/20261002-authoring-d3-verified-boundary-luna-1-all-svg.png"
+      ],
+      "manualReview": {
+        "passed": true,
+        "finding": "Zero acceptance routes from the prompt, marks all draft tokens rejected and resumes Start. Full acceptance keeps every proposal and resumes now after ready. Both remain clear without motion and with no rejected tail."
+      },
+      "passed": true
+    }
+  ],
+  "retainedHistory": "20261002-forward-evidence.json",
+  "scope": "Focused authoring/navigation and named decoding recipe validation. Prior D3 releases remain recorded; no new Harbor study or Claude model certification is claimed."
+}

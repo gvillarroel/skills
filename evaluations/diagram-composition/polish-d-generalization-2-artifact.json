@@ -1,0 +1,18 @@
+{
+  "runId": "diagram-polish-20260928-d-generalization-2",
+  "case": "generalization",
+  "ok": true,
+  "findings": [],
+  "sourceSha256": "2540c34c59ca83b567b3f4773566ffb2f3298ee33e273d87ff452b874feab9f8",
+  "contactCount": 4,
+  "connectorCount": 6,
+  "internalContactCount": 8,
+  "openTerminalCount": 0,
+  "minimumTextPx": 15,
+  "minimumContrast": 11.375097725170955,
+  "verifiedConceptLinks": [
+    "optical",
+    "radio"
+  ],
+  "manualVisualReviewRequired": true
+}

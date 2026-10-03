@@ -1,5 +1,12 @@
 # BigQuery pricing SQL
 
+## Contents
+
+- [Latest complete snapshot](#latest-complete-snapshot)
+- [Flatten without losing dimensions](#flatten-without-losing-dimensions)
+- [Compare regional list prices at a usage amount](#compare-regional-list-prices-at-a-usage-amount)
+- [Comparison contract](#comparison-contract)
+
 Read this reference when the user has enabled the Cloud Billing pricing export
 or asks for reusable SQL. The account-specific table is normally named
 `cloud_pricing_export`.

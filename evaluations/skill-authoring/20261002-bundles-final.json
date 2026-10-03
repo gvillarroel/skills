@@ -1,0 +1,1540 @@
+{
+  "schemaVersion": 1,
+  "passed": true,
+  "skillCount": 34,
+  "bundleCount": 68,
+  "issueCounts": {},
+  "results": [
+    {
+      "passed": true,
+      "skill": "ambientcg-material-search",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 71,
+        "entryBytes": 3903,
+        "referenceCount": 1,
+        "longReferenceCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source",
+      "fileCount": 7,
+      "payloadSha256": "d6052f2828ec649e35ed5c7775019255607d7275a876320439e2075933a15403"
+    },
+    {
+      "passed": true,
+      "skill": "ambientcg-material-search",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 71,
+        "entryBytes": 3903,
+        "referenceCount": 1,
+        "longReferenceCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "runtime",
+      "fileCount": 7,
+      "payloadSha256": "d6052f2828ec649e35ed5c7775019255607d7275a876320439e2075933a15403"
+    },
+    {
+      "passed": true,
+      "skill": "ambientcg-material-search",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 71,
+        "entryBytes": 3903,
+        "referenceCount": 1,
+        "longReferenceCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "full",
+      "fileCount": 7,
+      "payloadSha256": "d6052f2828ec649e35ed5c7775019255607d7275a876320439e2075933a15403"
+    },
+    {
+      "passed": true,
+      "skill": "animated-svg-to-gif",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 88,
+        "entryBytes": 6324,
+        "referenceCount": 0,
+        "longReferenceCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source",
+      "fileCount": 5,
+      "payloadSha256": "2fd019ee38ac48ce2d4fd53a2e4139b5b71bf7b523da241d0dc334d4a4da59db"
+    },
+    {
+      "passed": true,
+      "skill": "animated-svg-to-gif",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 88,
+        "entryBytes": 6324,
+        "referenceCount": 0,
+        "longReferenceCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "runtime",
+      "fileCount": 5,
+      "payloadSha256": "2fd019ee38ac48ce2d4fd53a2e4139b5b71bf7b523da241d0dc334d4a4da59db"
+    },
+    {
+      "passed": true,
+      "skill": "animated-svg-to-gif",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 88,
+        "entryBytes": 6324,
+        "referenceCount": 0,
+        "longReferenceCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "full",
+      "fileCount": 5,
+      "payloadSha256": "2fd019ee38ac48ce2d4fd53a2e4139b5b71bf7b523da241d0dc334d4a4da59db"
+    },
+    {
+      "passed": true,
+      "skill": "asciinema-real-command-video",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 80,
+        "entryBytes": 8869,
+        "referenceCount": 8,
+        "longReferenceCount": 3
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source",
+      "fileCount": 17,
+      "payloadSha256": "e334277fd1f190f67d8cfd35fae88a10075114070d5b2dba58561d7fac1ba3c5"
+    },
+    {
+      "passed": true,
+      "skill": "asciinema-real-command-video",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 80,
+        "entryBytes": 8869,
+        "referenceCount": 8,
+        "longReferenceCount": 3
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "runtime",
+      "fileCount": 17,
+      "payloadSha256": "e334277fd1f190f67d8cfd35fae88a10075114070d5b2dba58561d7fac1ba3c5"
+    },
+    {
+      "passed": true,
+      "skill": "asciinema-real-command-video",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 80,
+        "entryBytes": 8869,
+        "referenceCount": 8,
+        "longReferenceCount": 3
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "full",
+      "fileCount": 17,
+      "payloadSha256": "e334277fd1f190f67d8cfd35fae88a10075114070d5b2dba58561d7fac1ba3c5"
+    },
+    {
+      "passed": true,
+      "skill": "compose-synchronized-svg",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 81,
+        "entryBytes": 11575,
+        "referenceCount": 7,
+        "longReferenceCount": 5
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source",
+      "fileCount": 36,
+      "payloadSha256": "8edc8b2955ec59150b4946aa74ea6c6d2a5472e5ccc6b10bf9170cc3e6bf5aed"
+    },
+    {
+      "passed": true,
+      "skill": "compose-synchronized-svg",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 81,
+        "entryBytes": 11575,
+        "referenceCount": 7,
+        "longReferenceCount": 5
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "runtime",
+      "fileCount": 31,
+      "payloadSha256": "e45345b12eebe6af419b9ff59ff6f96a3adb4cf52c95eefdd99ad3f82c725667"
+    },
+    {
+      "passed": true,
+      "skill": "compose-synchronized-svg",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 81,
+        "entryBytes": 11575,
+        "referenceCount": 7,
+        "longReferenceCount": 5
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "full",
+      "fileCount": 36,
+      "payloadSha256": "8edc8b2955ec59150b4946aa74ea6c6d2a5472e5ccc6b10bf9170cc3e6bf5aed"
+    },
+    {
+      "passed": true,
+      "skill": "d3",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 320,
+        "entryBytes": 24609,
+        "referenceCount": 225,
+        "longReferenceCount": 53
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source",
+      "fileCount": 317,
+      "payloadSha256": "ee6e418b6dfb1a5876fd75529dd8509b26ad067edd6eb0602c03135878ec107c"
+    },
+    {
+      "passed": true,
+      "skill": "d3",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 320,
+        "entryBytes": 24609,
+        "referenceCount": 225,
+        "longReferenceCount": 53
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "runtime",
+      "fileCount": 282,
+      "payloadSha256": "0b631f01e671553385beb9f08900e88cee10432c55fcca85467268c987350bbb"
+    },
+    {
+      "passed": true,
+      "skill": "d3",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 320,
+        "entryBytes": 24609,
+        "referenceCount": 225,
+        "longReferenceCount": 53
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "full",
+      "fileCount": 317,
+      "payloadSha256": "ee6e418b6dfb1a5876fd75529dd8509b26ad067edd6eb0602c03135878ec107c"
+    },
+    {
+      "passed": true,
+      "skill": "destockd-video-search",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 75,
+        "entryBytes": 4921,
+        "referenceCount": 2,
+        "longReferenceCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source",
+      "fileCount": 6,
+      "payloadSha256": "2194949886eef96a8831b5a6e71d10641dc6aac661beaf45c1047f9d380667b2"
+    },
+    {
+      "passed": true,
+      "skill": "destockd-video-search",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 75,
+        "entryBytes": 4921,
+        "referenceCount": 2,
+        "longReferenceCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "runtime",
+      "fileCount": 6,
+      "payloadSha256": "2194949886eef96a8831b5a6e71d10641dc6aac661beaf45c1047f9d380667b2"
+    },
+    {
+      "passed": true,
+      "skill": "destockd-video-search",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 75,
+        "entryBytes": 4921,
+        "referenceCount": 2,
+        "longReferenceCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "full",
+      "fileCount": 6,
+      "payloadSha256": "2194949886eef96a8831b5a6e71d10641dc6aac661beaf45c1047f9d380667b2"
+    },
+    {
+      "passed": true,
+      "skill": "diagram-composition",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 187,
+        "entryBytes": 11707,
+        "referenceCount": 7,
+        "longReferenceCount": 2
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source",
+      "fileCount": 21,
+      "payloadSha256": "47609943eee7e4927d2e432e36c8fa655519389b270ac8a054bb761b2d05cd18"
+    },
+    {
+      "passed": true,
+      "skill": "diagram-composition",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 187,
+        "entryBytes": 11707,
+        "referenceCount": 7,
+        "longReferenceCount": 2
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "runtime",
+      "fileCount": 21,
+      "payloadSha256": "47609943eee7e4927d2e432e36c8fa655519389b270ac8a054bb761b2d05cd18"
+    },
+    {
+      "passed": true,
+      "skill": "diagram-composition",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 187,
+        "entryBytes": 11707,
+        "referenceCount": 7,
+        "longReferenceCount": 2
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "full",
+      "fileCount": 21,
+      "payloadSha256": "47609943eee7e4927d2e432e36c8fa655519389b270ac8a054bb761b2d05cd18"
+    },
+    {
+      "passed": true,
+      "skill": "echarts-animated-svg",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 94,
+        "entryBytes": 6624,
+        "referenceCount": 4,
+        "longReferenceCount": 1
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source",
+      "fileCount": 15,
+      "payloadSha256": "3a1c587dc4e093378d7316d962445bfb78ae2cf786dccd68f6f16cd7d5f5d692"
+    },
+    {
+      "passed": true,
+      "skill": "echarts-animated-svg",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 94,
+        "entryBytes": 6624,
+        "referenceCount": 4,
+        "longReferenceCount": 1
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "runtime",
+      "fileCount": 10,
+      "payloadSha256": "bb228b2039298e3406397b19093aa5f25f69a133624ea3569ec9b24351c8a5a0"
+    },
+    {
+      "passed": true,
+      "skill": "echarts-animated-svg",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 94,
+        "entryBytes": 6624,
+        "referenceCount": 4,
+        "longReferenceCount": 1
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "full",
+      "fileCount": 15,
+      "payloadSha256": "3a1c587dc4e093378d7316d962445bfb78ae2cf786dccd68f6f16cd7d5f5d692"
+    },
+    {
+      "passed": true,
+      "skill": "google-cloud-sku-pricing",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 85,
+        "entryBytes": 4998,
+        "referenceCount": 3,
+        "longReferenceCount": 2
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source",
+      "fileCount": 9,
+      "payloadSha256": "c288209abecede02a52a6f6a8a530aa8b3ee22f2612a4b46e15a70ed3734ef72"
+    },
+    {
+      "passed": true,
+      "skill": "google-cloud-sku-pricing",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 85,
+        "entryBytes": 4998,
+        "referenceCount": 3,
+        "longReferenceCount": 2
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "runtime",
+      "fileCount": 9,
+      "payloadSha256": "c288209abecede02a52a6f6a8a530aa8b3ee22f2612a4b46e15a70ed3734ef72"
+    },
+    {
+      "passed": true,
+      "skill": "google-cloud-sku-pricing",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 85,
+        "entryBytes": 4998,
+        "referenceCount": 3,
+        "longReferenceCount": 2
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "full",
+      "fileCount": 9,
+      "payloadSha256": "c288209abecede02a52a6f6a8a530aa8b3ee22f2612a4b46e15a70ed3734ef72"
+    },
+    {
+      "passed": true,
+      "skill": "harbor-author-evaluation-datasets",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 220,
+        "entryBytes": 11969,
+        "referenceCount": 1,
+        "longReferenceCount": 1
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source",
+      "fileCount": 9,
+      "payloadSha256": "d0393a2a3cae2b757292277fab7c988edf33cff76768c34949b80a93ac69a3ac"
+    },
+    {
+      "passed": true,
+      "skill": "harbor-author-evaluation-datasets",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 220,
+        "entryBytes": 11969,
+        "referenceCount": 1,
+        "longReferenceCount": 1
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "runtime",
+      "fileCount": 9,
+      "payloadSha256": "d0393a2a3cae2b757292277fab7c988edf33cff76768c34949b80a93ac69a3ac"
+    },
+    {
+      "passed": true,
+      "skill": "harbor-author-evaluation-datasets",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 220,
+        "entryBytes": 11969,
+        "referenceCount": 1,
+        "longReferenceCount": 1
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "full",
+      "fileCount": 9,
+      "payloadSha256": "d0393a2a3cae2b757292277fab7c988edf33cff76768c34949b80a93ac69a3ac"
+    },
+    {
+      "passed": true,
+      "skill": "hierarchy-lens",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 48,
+        "entryBytes": 6399,
+        "referenceCount": 6,
+        "longReferenceCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source",
+      "fileCount": 26,
+      "payloadSha256": "932700ed7f8ece37364bbd1c75504f43dcf7e1f1bee3a9405cc9424978109334"
+    },
+    {
+      "passed": true,
+      "skill": "hierarchy-lens",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 48,
+        "entryBytes": 6399,
+        "referenceCount": 6,
+        "longReferenceCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "runtime",
+      "fileCount": 20,
+      "payloadSha256": "b0a54bc9e820ff4b9150ddb0fe74d9d7693e7a1a106b81311df04a8adf5572fa"
+    },
+    {
+      "passed": true,
+      "skill": "hierarchy-lens",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 48,
+        "entryBytes": 6399,
+        "referenceCount": 6,
+        "longReferenceCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "full",
+      "fileCount": 26,
+      "payloadSha256": "932700ed7f8ece37364bbd1c75504f43dcf7e1f1bee3a9405cc9424978109334"
+    },
+    {
+      "passed": true,
+      "skill": "hyperframes-explainer",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 94,
+        "entryBytes": 6241,
+        "referenceCount": 5,
+        "longReferenceCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source",
+      "fileCount": 22,
+      "payloadSha256": "4fa0663e125cb0557d3f265dcaf02c7dc614d1706b30b0e37e800ecf698f1c68"
+    },
+    {
+      "passed": true,
+      "skill": "hyperframes-explainer",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 94,
+        "entryBytes": 6241,
+        "referenceCount": 5,
+        "longReferenceCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "runtime",
+      "fileCount": 21,
+      "payloadSha256": "c153c5b7290db0efd1e11272f112620ffb6afd90f5ee1f5ba24f6891c08fe176"
+    },
+    {
+      "passed": true,
+      "skill": "hyperframes-explainer",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 94,
+        "entryBytes": 6241,
+        "referenceCount": 5,
+        "longReferenceCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "full",
+      "fileCount": 22,
+      "payloadSha256": "4fa0663e125cb0557d3f265dcaf02c7dc614d1706b30b0e37e800ecf698f1c68"
+    },
+    {
+      "passed": true,
+      "skill": "iconify-icon-search",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 55,
+        "entryBytes": 3098,
+        "referenceCount": 1,
+        "longReferenceCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source",
+      "fileCount": 7,
+      "payloadSha256": "34eff261c23258531462bb4658755d3abbcd77632fe526c0b405cffba5fd908a"
+    },
+    {
+      "passed": true,
+      "skill": "iconify-icon-search",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 55,
+        "entryBytes": 3098,
+        "referenceCount": 1,
+        "longReferenceCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "runtime",
+      "fileCount": 7,
+      "payloadSha256": "34eff261c23258531462bb4658755d3abbcd77632fe526c0b405cffba5fd908a"
+    },
+    {
+      "passed": true,
+      "skill": "iconify-icon-search",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 55,
+        "entryBytes": 3098,
+        "referenceCount": 1,
+        "longReferenceCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "full",
+      "fileCount": 7,
+      "payloadSha256": "34eff261c23258531462bb4658755d3abbcd77632fe526c0b405cffba5fd908a"
+    },
+    {
+      "passed": true,
+      "skill": "jev-batch-decisions",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 74,
+        "entryBytes": 4947,
+        "referenceCount": 3,
+        "longReferenceCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source",
+      "fileCount": 13,
+      "payloadSha256": "537b9477b85b85f1101dd6b776c2509674ec4d19b82117a049654fa37a487f5f"
+    },
+    {
+      "passed": true,
+      "skill": "jev-batch-decisions",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 74,
+        "entryBytes": 4947,
+        "referenceCount": 3,
+        "longReferenceCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "runtime",
+      "fileCount": 12,
+      "payloadSha256": "066c6a49103b332820d48a856036cb99b5a5a8ed5305c36f5524d758b2855204"
+    },
+    {
+      "passed": true,
+      "skill": "jev-batch-decisions",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 74,
+        "entryBytes": 4947,
+        "referenceCount": 3,
+        "longReferenceCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "full",
+      "fileCount": 13,
+      "payloadSha256": "537b9477b85b85f1101dd6b776c2509674ec4d19b82117a049654fa37a487f5f"
+    },
+    {
+      "passed": true,
+      "skill": "kenney-asset-search",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 73,
+        "entryBytes": 3815,
+        "referenceCount": 1,
+        "longReferenceCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source",
+      "fileCount": 7,
+      "payloadSha256": "3c9752f2d914eea849f1c694cee15c41d089cd3038159755b06498e7a5d78174"
+    },
+    {
+      "passed": true,
+      "skill": "kenney-asset-search",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 73,
+        "entryBytes": 3815,
+        "referenceCount": 1,
+        "longReferenceCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "runtime",
+      "fileCount": 7,
+      "payloadSha256": "3c9752f2d914eea849f1c694cee15c41d089cd3038159755b06498e7a5d78174"
+    },
+    {
+      "passed": true,
+      "skill": "kenney-asset-search",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 73,
+        "entryBytes": 3815,
+        "referenceCount": 1,
+        "longReferenceCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "full",
+      "fileCount": 7,
+      "payloadSha256": "3c9752f2d914eea849f1c694cee15c41d089cd3038159755b06498e7a5d78174"
+    },
+    {
+      "passed": true,
+      "skill": "manim-svg-video",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 32,
+        "entryBytes": 3144,
+        "referenceCount": 3,
+        "longReferenceCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source",
+      "fileCount": 6,
+      "payloadSha256": "b57569176a7816c909d479c84494eb095ba72171f1134a2dc04fdda62aff7e89"
+    },
+    {
+      "passed": true,
+      "skill": "manim-svg-video",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 32,
+        "entryBytes": 3144,
+        "referenceCount": 3,
+        "longReferenceCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "runtime",
+      "fileCount": 6,
+      "payloadSha256": "b57569176a7816c909d479c84494eb095ba72171f1134a2dc04fdda62aff7e89"
+    },
+    {
+      "passed": true,
+      "skill": "manim-svg-video",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 32,
+        "entryBytes": 3144,
+        "referenceCount": 3,
+        "longReferenceCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "full",
+      "fileCount": 6,
+      "payloadSha256": "b57569176a7816c909d479c84494eb095ba72171f1134a2dc04fdda62aff7e89"
+    },
+    {
+      "passed": true,
+      "skill": "mermaid",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 64,
+        "entryBytes": 8367,
+        "referenceCount": 6,
+        "longReferenceCount": 1
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source",
+      "fileCount": 229,
+      "payloadSha256": "3e473ef44d6af4ef3d45ea1cfa9b2f3d377b287746035210538d78b596d11f3e"
+    },
+    {
+      "passed": true,
+      "skill": "mermaid",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 64,
+        "entryBytes": 8367,
+        "referenceCount": 6,
+        "longReferenceCount": 1
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "runtime",
+      "fileCount": 18,
+      "payloadSha256": "66bde90bd296ca660cda55dff66a47317c7ea0baefd1a6f1159ac741909ffa76"
+    },
+    {
+      "passed": true,
+      "skill": "mermaid",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 64,
+        "entryBytes": 8367,
+        "referenceCount": 6,
+        "longReferenceCount": 1
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "full",
+      "fileCount": 229,
+      "payloadSha256": "3e473ef44d6af4ef3d45ea1cfa9b2f3d377b287746035210538d78b596d11f3e"
+    },
+    {
+      "passed": true,
+      "skill": "one-bit-dither-svg",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 95,
+        "entryBytes": 8507,
+        "referenceCount": 2,
+        "longReferenceCount": 1
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source",
+      "fileCount": 10,
+      "payloadSha256": "4e738f90dcde391855f34351755ddf6c6f59481480752f6bf8d298998ca80e70"
+    },
+    {
+      "passed": true,
+      "skill": "one-bit-dither-svg",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 95,
+        "entryBytes": 8507,
+        "referenceCount": 2,
+        "longReferenceCount": 1
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "runtime",
+      "fileCount": 10,
+      "payloadSha256": "4e738f90dcde391855f34351755ddf6c6f59481480752f6bf8d298998ca80e70"
+    },
+    {
+      "passed": true,
+      "skill": "one-bit-dither-svg",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 95,
+        "entryBytes": 8507,
+        "referenceCount": 2,
+        "longReferenceCount": 1
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "full",
+      "fileCount": 10,
+      "payloadSha256": "4e738f90dcde391855f34351755ddf6c6f59481480752f6bf8d298998ca80e70"
+    },
+    {
+      "passed": true,
+      "skill": "pexels-media-search",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 70,
+        "entryBytes": 4157,
+        "referenceCount": 1,
+        "longReferenceCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source",
+      "fileCount": 7,
+      "payloadSha256": "d764a6a8edecf8f88975487a9bf236f18daf08812f98a250d59176e91a69e522"
+    },
+    {
+      "passed": true,
+      "skill": "pexels-media-search",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 70,
+        "entryBytes": 4157,
+        "referenceCount": 1,
+        "longReferenceCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "runtime",
+      "fileCount": 7,
+      "payloadSha256": "d764a6a8edecf8f88975487a9bf236f18daf08812f98a250d59176e91a69e522"
+    },
+    {
+      "passed": true,
+      "skill": "pexels-media-search",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 70,
+        "entryBytes": 4157,
+        "referenceCount": 1,
+        "longReferenceCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "full",
+      "fileCount": 7,
+      "payloadSha256": "d764a6a8edecf8f88975487a9bf236f18daf08812f98a250d59176e91a69e522"
+    },
+    {
+      "passed": true,
+      "skill": "pixel-art-image-video",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 73,
+        "entryBytes": 7127,
+        "referenceCount": 2,
+        "longReferenceCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source",
+      "fileCount": 7,
+      "payloadSha256": "d84ec35a7e48e804bcba418a1462cf70c755639295ff328d0eacc39ced6ad300"
+    },
+    {
+      "passed": true,
+      "skill": "pixel-art-image-video",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 73,
+        "entryBytes": 7127,
+        "referenceCount": 2,
+        "longReferenceCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "runtime",
+      "fileCount": 7,
+      "payloadSha256": "d84ec35a7e48e804bcba418a1462cf70c755639295ff328d0eacc39ced6ad300"
+    },
+    {
+      "passed": true,
+      "skill": "pixel-art-image-video",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 73,
+        "entryBytes": 7127,
+        "referenceCount": 2,
+        "longReferenceCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "full",
+      "fileCount": 7,
+      "payloadSha256": "d84ec35a7e48e804bcba418a1462cf70c755639295ff328d0eacc39ced6ad300"
+    },
+    {
+      "passed": true,
+      "skill": "plantuml-colorset-renderer",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 139,
+        "entryBytes": 9479,
+        "referenceCount": 1,
+        "longReferenceCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source",
+      "fileCount": 107,
+      "payloadSha256": "9acc355e516db44d677cb8c606bee092a9f4e467b08715f6f107bbf7acb408fd"
+    },
+    {
+      "passed": true,
+      "skill": "plantuml-colorset-renderer",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 139,
+        "entryBytes": 9479,
+        "referenceCount": 1,
+        "longReferenceCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "runtime",
+      "fileCount": 12,
+      "payloadSha256": "ef4f1ae66ecfb90dbb4aa71431b005d043d5f180b5aeacddcb9691e2d8b8ce46"
+    },
+    {
+      "passed": true,
+      "skill": "plantuml-colorset-renderer",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 139,
+        "entryBytes": 9479,
+        "referenceCount": 1,
+        "longReferenceCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "full",
+      "fileCount": 107,
+      "payloadSha256": "9acc355e516db44d677cb8c606bee092a9f4e467b08715f6f107bbf7acb408fd"
+    },
+    {
+      "passed": true,
+      "skill": "polyhaven-asset-search",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 91,
+        "entryBytes": 5072,
+        "referenceCount": 1,
+        "longReferenceCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source",
+      "fileCount": 7,
+      "payloadSha256": "515ae1fb753ca53e9ff03c2fbabf837025a9e586e3a7c8f44e7ccaf232599ab9"
+    },
+    {
+      "passed": true,
+      "skill": "polyhaven-asset-search",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 91,
+        "entryBytes": 5072,
+        "referenceCount": 1,
+        "longReferenceCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "runtime",
+      "fileCount": 7,
+      "payloadSha256": "515ae1fb753ca53e9ff03c2fbabf837025a9e586e3a7c8f44e7ccaf232599ab9"
+    },
+    {
+      "passed": true,
+      "skill": "polyhaven-asset-search",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 91,
+        "entryBytes": 5072,
+        "referenceCount": 1,
+        "longReferenceCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "full",
+      "fileCount": 7,
+      "payloadSha256": "515ae1fb753ca53e9ff03c2fbabf837025a9e586e3a7c8f44e7ccaf232599ab9"
+    },
+    {
+      "passed": true,
+      "skill": "procedural-svg-animation",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 87,
+        "entryBytes": 8196,
+        "referenceCount": 6,
+        "longReferenceCount": 4
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source",
+      "fileCount": 85,
+      "payloadSha256": "8e324890cbf016df5124b682dd6c7b8e63589d74d3f23acda59c983a6b12a8f9"
+    },
+    {
+      "passed": true,
+      "skill": "procedural-svg-animation",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 87,
+        "entryBytes": 8196,
+        "referenceCount": 6,
+        "longReferenceCount": 4
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "runtime",
+      "fileCount": 15,
+      "payloadSha256": "efa056afafb0de5680b8a227108c8bbefe045cde615ca8383a380afaf48e6f4a"
+    },
+    {
+      "passed": true,
+      "skill": "procedural-svg-animation",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 87,
+        "entryBytes": 8196,
+        "referenceCount": 6,
+        "longReferenceCount": 4
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "full",
+      "fileCount": 85,
+      "payloadSha256": "8e324890cbf016df5124b682dd6c7b8e63589d74d3f23acda59c983a6b12a8f9"
+    },
+    {
+      "passed": true,
+      "skill": "repository-reviewer-creator",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 40,
+        "entryBytes": 4884,
+        "referenceCount": 4,
+        "longReferenceCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source",
+      "fileCount": 12,
+      "payloadSha256": "06202e7a5b252a1fd80a52a93944e1f4936dd984bf6cffa75c85b18023dd462c"
+    },
+    {
+      "passed": true,
+      "skill": "repository-reviewer-creator",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 40,
+        "entryBytes": 4884,
+        "referenceCount": 4,
+        "longReferenceCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "runtime",
+      "fileCount": 11,
+      "payloadSha256": "b1d9a64557482588cb7eb7f3d165e0b1c8edd34de308c6dd7632d4fbeb3e9988"
+    },
+    {
+      "passed": true,
+      "skill": "repository-reviewer-creator",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 40,
+        "entryBytes": 4884,
+        "referenceCount": 4,
+        "longReferenceCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "full",
+      "fileCount": 12,
+      "payloadSha256": "06202e7a5b252a1fd80a52a93944e1f4936dd984bf6cffa75c85b18023dd462c"
+    },
+    {
+      "passed": true,
+      "skill": "simulation-data-lab",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 238,
+        "entryBytes": 15043,
+        "referenceCount": 9,
+        "longReferenceCount": 7
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source",
+      "fileCount": 23,
+      "payloadSha256": "62c105645b64dc2b47b114480f411c8f7998245c8e3db223f7b0e4ed624de4e6"
+    },
+    {
+      "passed": true,
+      "skill": "simulation-data-lab",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 238,
+        "entryBytes": 15043,
+        "referenceCount": 9,
+        "longReferenceCount": 7
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "runtime",
+      "fileCount": 23,
+      "payloadSha256": "62c105645b64dc2b47b114480f411c8f7998245c8e3db223f7b0e4ed624de4e6"
+    },
+    {
+      "passed": true,
+      "skill": "simulation-data-lab",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 238,
+        "entryBytes": 15043,
+        "referenceCount": 9,
+        "longReferenceCount": 7
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "full",
+      "fileCount": 23,
+      "payloadSha256": "62c105645b64dc2b47b114480f411c8f7998245c8e3db223f7b0e4ed624de4e6"
+    },
+    {
+      "passed": true,
+      "skill": "slidev-animejs",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 65,
+        "entryBytes": 5781,
+        "referenceCount": 25,
+        "longReferenceCount": 1
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source",
+      "fileCount": 45,
+      "payloadSha256": "8f2f2439880e8261f5729c3297f97402ee811df22e2caa6cb4f9077063f967a7"
+    },
+    {
+      "passed": true,
+      "skill": "slidev-animejs",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 65,
+        "entryBytes": 5781,
+        "referenceCount": 25,
+        "longReferenceCount": 1
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "runtime",
+      "fileCount": 35,
+      "payloadSha256": "34d100e7ac505bb9eaa1d8e73e719d838665089265641c99a7cf711ba0eba415"
+    },
+    {
+      "passed": true,
+      "skill": "slidev-animejs",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 65,
+        "entryBytes": 5781,
+        "referenceCount": 25,
+        "longReferenceCount": 1
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "full",
+      "fileCount": 45,
+      "payloadSha256": "8f2f2439880e8261f5729c3297f97402ee811df22e2caa6cb4f9077063f967a7"
+    },
+    {
+      "passed": true,
+      "skill": "slidev-echarts",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 63,
+        "entryBytes": 4991,
+        "referenceCount": 27,
+        "longReferenceCount": 1
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source",
+      "fileCount": 53,
+      "payloadSha256": "f69d057699125f5aa2a902c3702d815fa7beb7a7f139a5a1433bf3a2fdd54cd3"
+    },
+    {
+      "passed": true,
+      "skill": "slidev-echarts",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 63,
+        "entryBytes": 4991,
+        "referenceCount": 27,
+        "longReferenceCount": 1
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "runtime",
+      "fileCount": 29,
+      "payloadSha256": "01f65dd19c22d7e5879249ccad80a091c4735d4e2fceeb68a4a9322afbf73e50"
+    },
+    {
+      "passed": true,
+      "skill": "slidev-echarts",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 63,
+        "entryBytes": 4991,
+        "referenceCount": 27,
+        "longReferenceCount": 1
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "full",
+      "fileCount": 53,
+      "payloadSha256": "f69d057699125f5aa2a902c3702d815fa7beb7a7f139a5a1433bf3a2fdd54cd3"
+    },
+    {
+      "passed": true,
+      "skill": "slidev-quality-audit",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 76,
+        "entryBytes": 3749,
+        "referenceCount": 1,
+        "longReferenceCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source",
+      "fileCount": 4,
+      "payloadSha256": "f75bfbf95d90aba62659ca398ca54fd77b7c80254ae9afebee41b6424d47efb5"
+    },
+    {
+      "passed": true,
+      "skill": "slidev-quality-audit",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 76,
+        "entryBytes": 3749,
+        "referenceCount": 1,
+        "longReferenceCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "runtime",
+      "fileCount": 4,
+      "payloadSha256": "f75bfbf95d90aba62659ca398ca54fd77b7c80254ae9afebee41b6424d47efb5"
+    },
+    {
+      "passed": true,
+      "skill": "slidev-quality-audit",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 76,
+        "entryBytes": 3749,
+        "referenceCount": 1,
+        "longReferenceCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "full",
+      "fileCount": 4,
+      "payloadSha256": "f75bfbf95d90aba62659ca398ca54fd77b7c80254ae9afebee41b6424d47efb5"
+    },
+    {
+      "passed": true,
+      "skill": "svg-brief-design",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 129,
+        "entryBytes": 7030,
+        "referenceCount": 4,
+        "longReferenceCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source",
+      "fileCount": 9,
+      "payloadSha256": "08bdc83ab745ad5e673967a7793322b652da5727dbaff84bd4a2613d10e1ac2b"
+    },
+    {
+      "passed": true,
+      "skill": "svg-brief-design",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 129,
+        "entryBytes": 7030,
+        "referenceCount": 4,
+        "longReferenceCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "runtime",
+      "fileCount": 9,
+      "payloadSha256": "08bdc83ab745ad5e673967a7793322b652da5727dbaff84bd4a2613d10e1ac2b"
+    },
+    {
+      "passed": true,
+      "skill": "svg-brief-design",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 129,
+        "entryBytes": 7030,
+        "referenceCount": 4,
+        "longReferenceCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "full",
+      "fileCount": 9,
+      "payloadSha256": "08bdc83ab745ad5e673967a7793322b652da5727dbaff84bd4a2613d10e1ac2b"
+    },
+    {
+      "passed": true,
+      "skill": "technical-logo-assets",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 73,
+        "entryBytes": 5748,
+        "referenceCount": 3,
+        "longReferenceCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source",
+      "fileCount": 8571,
+      "payloadSha256": "1757ad5dac30563debb3fee072a42c4f3a2e99b7928c4fb9952a4d672dba42aa"
+    },
+    {
+      "passed": true,
+      "skill": "technical-logo-assets",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 73,
+        "entryBytes": 5748,
+        "referenceCount": 3,
+        "longReferenceCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "runtime",
+      "fileCount": 8571,
+      "payloadSha256": "1757ad5dac30563debb3fee072a42c4f3a2e99b7928c4fb9952a4d672dba42aa"
+    },
+    {
+      "passed": true,
+      "skill": "technical-logo-assets",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 73,
+        "entryBytes": 5748,
+        "referenceCount": 3,
+        "longReferenceCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "full",
+      "fileCount": 8571,
+      "payloadSha256": "1757ad5dac30563debb3fee072a42c4f3a2e99b7928c4fb9952a4d672dba42aa"
+    },
+    {
+      "passed": true,
+      "skill": "threejs-animated-3d",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 103,
+        "entryBytes": 8479,
+        "referenceCount": 3,
+        "longReferenceCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source",
+      "fileCount": 17,
+      "payloadSha256": "2996a41ef1a8d59edceb3c39741996f6c0e8bc68ff26b89158d434f10c504bd5"
+    },
+    {
+      "passed": true,
+      "skill": "threejs-animated-3d",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 103,
+        "entryBytes": 8479,
+        "referenceCount": 3,
+        "longReferenceCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "runtime",
+      "fileCount": 10,
+      "payloadSha256": "2639ab2a2e5a915fced6cecf9d689a9983fa97872b219f35409c0010096f938f"
+    },
+    {
+      "passed": true,
+      "skill": "threejs-animated-3d",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 103,
+        "entryBytes": 8479,
+        "referenceCount": 3,
+        "longReferenceCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "full",
+      "fileCount": 17,
+      "payloadSha256": "2996a41ef1a8d59edceb3c39741996f6c0e8bc68ff26b89158d434f10c504bd5"
+    },
+    {
+      "passed": true,
+      "skill": "usefulcharts-style",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 115,
+        "entryBytes": 21379,
+        "referenceCount": 29,
+        "longReferenceCount": 2
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source",
+      "fileCount": 149,
+      "payloadSha256": "f95b497134947eb670b2a5f5939624b081ddb26c129da1be40efbf94ad59c911"
+    },
+    {
+      "passed": true,
+      "skill": "usefulcharts-style",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 115,
+        "entryBytes": 21379,
+        "referenceCount": 29,
+        "longReferenceCount": 2
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "runtime",
+      "fileCount": 132,
+      "payloadSha256": "33de5a8f8be5369255151275b7c90973c2932ffa139e08684769eed125f859a3"
+    },
+    {
+      "passed": true,
+      "skill": "usefulcharts-style",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 115,
+        "entryBytes": 21379,
+        "referenceCount": 29,
+        "longReferenceCount": 2
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "full",
+      "fileCount": 149,
+      "payloadSha256": "f95b497134947eb670b2a5f5939624b081ddb26c129da1be40efbf94ad59c911"
+    },
+    {
+      "passed": true,
+      "skill": "vectorize-art-patterns",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 232,
+        "entryBytes": 13234,
+        "referenceCount": 6,
+        "longReferenceCount": 1
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source",
+      "fileCount": 184,
+      "payloadSha256": "9f48a156939ad3679f50662ae5dd507cb895f3e70c3e0644e63f37f8ea1ca6f4"
+    },
+    {
+      "passed": true,
+      "skill": "vectorize-art-patterns",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 232,
+        "entryBytes": 13234,
+        "referenceCount": 6,
+        "longReferenceCount": 1
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "runtime",
+      "fileCount": 55,
+      "payloadSha256": "4babb2999527903005c58e9b91eedfe85112147d350df0616f86aa89858c52c6"
+    },
+    {
+      "passed": true,
+      "skill": "vectorize-art-patterns",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 232,
+        "entryBytes": 13234,
+        "referenceCount": 6,
+        "longReferenceCount": 1
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "full",
+      "fileCount": 184,
+      "payloadSha256": "9f48a156939ad3679f50662ae5dd507cb895f3e70c3e0644e63f37f8ea1ca6f4"
+    },
+    {
+      "passed": true,
+      "skill": "video",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 87,
+        "entryBytes": 8542,
+        "referenceCount": 18,
+        "longReferenceCount": 6
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source",
+      "fileCount": 73,
+      "payloadSha256": "49e8531249d6bd2c302cbf12950c988e445c6eff875832dc82adf9ae03b66711"
+    },
+    {
+      "passed": true,
+      "skill": "video",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 87,
+        "entryBytes": 8542,
+        "referenceCount": 18,
+        "longReferenceCount": 6
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "runtime",
+      "fileCount": 46,
+      "payloadSha256": "c6bde7a844677d8c72661d1796ff4a393ff0137102138acbee7ba10558320fa6"
+    },
+    {
+      "passed": true,
+      "skill": "video",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 87,
+        "entryBytes": 8542,
+        "referenceCount": 18,
+        "longReferenceCount": 6
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "full",
+      "fileCount": 73,
+      "payloadSha256": "49e8531249d6bd2c302cbf12950c988e445c6eff875832dc82adf9ae03b66711"
+    }
+  ],
+  "limitations": "Measurable authoring/navigation and copied payloads; no claim of model-wide behavioral certification."
+}

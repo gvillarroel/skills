@@ -1,0 +1,8 @@
+{
+  "version": "3.0.0",
+  "reason": "A confidently identified wrong deliverable is a decisive contract failure; uncertainty about unrelated aesthetics cannot rescue or erase that failure.",
+  "change": "Add zero gate only for non-unknown brief level_0; preserve all other weights and calibration thresholds.",
+  "model_reruns": 0,
+  "control_result_before_gate": "16/17, one unknown aggregate with brief level_0",
+  "current_visual_grading_started": false
+}

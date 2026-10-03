@@ -1,0 +1,176 @@
+{
+  "date": "2026-10-02",
+  "sourceGuide": "https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices",
+  "authoringAndDistribution": {
+    "passed": true,
+    "canonicalSkills": 34,
+    "actualRuntimeCopies": 34,
+    "actualFullCopies": 34,
+    "findings": 0,
+    "runtimeMarkdownReferences": 425,
+    "largestEntrypointBodyLines": 324,
+    "frozenSourceHashesRechecked": true,
+    "finalD3AndCreatorHashesMatchModelCohorts": true,
+    "localInstallationFiles": 10118,
+    "archivedNoncanonicalReferences": 39,
+    "finalAudit": "20261002-bundles-validated.json"
+  },
+  "regressions": [
+    {
+      "command": "uv run --script skills/repository-reviewer-creator/scripts/test_skill_authoring.py",
+      "passed": true,
+      "tests": 30
+    },
+    {
+      "command": "uv run --script skills/repository-reviewer-creator/scripts/test_validate_reviewer.py",
+      "passed": true,
+      "tests": 32
+    },
+    {
+      "command": "uv run --script scripts/test-bundle-validation.py",
+      "passed": true,
+      "tests": 11
+    },
+    {
+      "command": "uv run --script scripts/test-pi-eval-harness.py",
+      "passed": true,
+      "tests": 15
+    },
+    {
+      "command": "uv run --script skills/d3/scripts/test_speculative_decoding.py",
+      "passed": true,
+      "tests": 12
+    },
+    {
+      "command": "uv run --script skills/d3/assets/examples/skill-tests/test_palette_contract.py",
+      "passed": true,
+      "tests": 7
+    }
+  ],
+  "repositoryGates": [
+    {
+      "command": "uv run --script scripts/validate-pattern-ids.py",
+      "passed": true,
+      "canonicalIds": 1222
+    },
+    {
+      "command": "uv run --script scripts/validate-skills.py",
+      "passed": true
+    },
+    {
+      "command": "uv run --script scripts/test-skill-independence.py",
+      "passed": true
+    },
+    {
+      "command": "uv run --script scripts/check-repo-payload.py",
+      "passed": true
+    },
+    {
+      "command": "uv run --script scripts/sync-local-skills.py --check",
+      "passed": true
+    },
+    {
+      "command": "git diff --check",
+      "passed": true
+    }
+  ],
+  "pages": {
+    "localOnly": true,
+    "boundaryTests": 3,
+    "builtFiles": 646,
+    "builtMiB": 45.61,
+    "validatedPublishedEntries": 14,
+    "commands": [
+      "uv run --script scripts/test-pages-output.py",
+      "uv run --script scripts/build-pages.py",
+      "uv run --script scripts/validate-pages-pattern-format.py"
+    ]
+  },
+  "freshModelCases": {
+    "unforcedRouting": {
+      "model": "openai-codex/gpt-5.6-luna",
+      "passes": 114,
+      "cases": 114,
+      "repetitions": 3
+    },
+    "reviewerGeneration": {
+      "model": "openai-codex/gpt-5.6-sol",
+      "contractPasses": 1,
+      "requiredOutputs": 5,
+      "sourceRecords": 16,
+      "rules": 9
+    },
+    "generatedReviewerUse": {
+      "model": "openai-codex/gpt-5.6-sol",
+      "regressionPasses": 3,
+      "cleanPasses": 3,
+      "boundaryPasses": 3,
+      "cases": 9
+    },
+    "d3NamedRecipeFinal": {
+      "model": "openai-codex/gpt-5.6-luna",
+      "strictPasses": 8,
+      "independentPasses": 8,
+      "manualPasses": 8,
+      "jointPasses": 8,
+      "cases": 8,
+      "requiredOutputs": 18,
+      "releaseThresholdMet": true,
+      "backlogStatus": "done",
+      "caseResults": [
+        {
+          "case": "contract",
+          "runs": 1,
+          "jointPasses": 1,
+          "requiredPasses": 1,
+          "passed": true
+        },
+        {
+          "case": "naturalistic",
+          "runs": 3,
+          "jointPasses": 3,
+          "requiredPasses": 2,
+          "passed": true
+        },
+        {
+          "case": "generalization",
+          "runs": 3,
+          "jointPasses": 3,
+          "requiredPasses": 2,
+          "passed": true
+        },
+        {
+          "case": "boundary",
+          "runs": 1,
+          "jointPasses": 1,
+          "requiredPasses": 1,
+          "passed": true
+        }
+      ],
+      "payloadSha256": "163ac42cc33cc9142ffde1969cdc8c4bf2e59b0ce3ec4a210f7b0918c4c1f540",
+      "evidence": "20261002-d3-validation.json"
+    },
+    "d3NamedRecipeCapturePreliminary": {
+      "model": "openai-codex/gpt-5.6-luna",
+      "mechanicalArtifactPasses": 3,
+      "strictPasses": 1,
+      "manualPasses": 2,
+      "jointPasses": 1,
+      "cases": 3,
+      "releaseThresholdMet": false,
+      "backlogStatus": "validating"
+    }
+  },
+  "releaseStatuses": {
+    "done": 22,
+    "validating": 12
+  },
+  "limits": [
+    "This is the complete authoring and bundle audit, with enumerated fresh behavior evidence; it does not certify every workflow or model.",
+    "Spark was provider-rejected before tools; recorded Luna/Sol exceptions were used.",
+    "Claude model families were not tested.",
+    "simulation-data-lab retains its user-imposed prohibition on live workflow forward tests.",
+    "All attempts, including failed strict traces and corrected evaluators, remain recorded."
+  ],
+  "retainedModelAttempts": 60
+}

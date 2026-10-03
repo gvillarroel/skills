@@ -1,0 +1,1147 @@
+{
+  "id": "instruments-by-sound",
+  "title": "HOW INSTRUMENTS MAKE SOUND",
+  "design": "editorial",
+  "mode": "lineage",
+  "layout": "branches",
+  "branch_order": "causal",
+  "groups": [
+    {
+      "id": "1",
+      "label": "Idiophones",
+      "color": "#8C5533"
+    },
+    {
+      "id": "2",
+      "label": "Membranophones",
+      "color": "#9A4A52"
+    },
+    {
+      "id": "3",
+      "label": "Chordophones",
+      "color": "#426C56"
+    },
+    {
+      "id": "4",
+      "label": "Aerophones",
+      "color": "#386E86"
+    },
+    {
+      "id": "5",
+      "label": "Electrophones",
+      "color": "#715487"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "1",
+      "label": "Idiophones",
+      "date_label": "1",
+      "group": "1",
+      "detail": "The body vibrates",
+      "detail_position": "outside",
+      "source_url": "https://biblio.ugent.be/publication/01HN30DTX2BZYYEVXRG7Q7M06Q",
+      "emphasis": true
+    },
+    {
+      "id": "11",
+      "label": "Struck bodies",
+      "date_label": "11",
+      "group": "1",
+      "detail": "",
+      "detail_position": "outside",
+      "source_url": "https://biblio.ugent.be/publication/01HN30DTX2BZYYEVXRG7Q7M06Q",
+      "emphasis": false
+    },
+    {
+      "id": "111",
+      "label": "Direct blows",
+      "date_label": "111",
+      "group": "1",
+      "detail": "",
+      "detail_position": "outside",
+      "source_url": "https://biblio.ugent.be/publication/01HN30DTX2BZYYEVXRG7Q7M06Q",
+      "emphasis": false
+    },
+    {
+      "id": "112",
+      "label": "Indirect blows",
+      "date_label": "112",
+      "group": "1",
+      "detail": "",
+      "detail_position": "outside",
+      "source_url": "https://biblio.ugent.be/publication/01HN30DTX2BZYYEVXRG7Q7M06Q",
+      "emphasis": false
+    },
+    {
+      "id": "12",
+      "label": "Plucked tongues",
+      "date_label": "12",
+      "group": "1",
+      "detail": "",
+      "detail_position": "outside",
+      "source_url": "https://biblio.ugent.be/publication/01HN30DTX2BZYYEVXRG7Q7M06Q",
+      "emphasis": false
+    },
+    {
+      "id": "121",
+      "label": "In a frame",
+      "date_label": "121",
+      "group": "1",
+      "detail": "",
+      "detail_position": "outside",
+      "source_url": "https://biblio.ugent.be/publication/01HN30DTX2BZYYEVXRG7Q7M06Q",
+      "emphasis": false
+    },
+    {
+      "id": "122",
+      "label": "On a board or comb",
+      "date_label": "122",
+      "group": "1",
+      "detail": "",
+      "detail_position": "outside",
+      "source_url": "https://biblio.ugent.be/publication/01HN30DTX2BZYYEVXRG7Q7M06Q",
+      "emphasis": false
+    },
+    {
+      "id": "13",
+      "label": "Friction bodies",
+      "date_label": "13",
+      "group": "1",
+      "detail": "",
+      "detail_position": "outside",
+      "source_url": "https://biblio.ugent.be/publication/01HN30DTX2BZYYEVXRG7Q7M06Q",
+      "emphasis": false
+    },
+    {
+      "id": "131",
+      "label": "Friction sticks",
+      "date_label": "131",
+      "group": "1",
+      "detail": "",
+      "detail_position": "outside",
+      "source_url": "https://biblio.ugent.be/publication/01HN30DTX2BZYYEVXRG7Q7M06Q",
+      "emphasis": false
+    },
+    {
+      "id": "132",
+      "label": "Friction plaques",
+      "date_label": "132",
+      "group": "1",
+      "detail": "",
+      "detail_position": "outside",
+      "source_url": "https://biblio.ugent.be/publication/01HN30DTX2BZYYEVXRG7Q7M06Q",
+      "emphasis": false
+    },
+    {
+      "id": "133",
+      "label": "Friction vessels",
+      "date_label": "133",
+      "group": "1",
+      "detail": "",
+      "detail_position": "outside",
+      "source_url": "https://biblio.ugent.be/publication/01HN30DTX2BZYYEVXRG7Q7M06Q",
+      "emphasis": false
+    },
+    {
+      "id": "14",
+      "label": "Blown bodies",
+      "date_label": "14",
+      "group": "1",
+      "detail": "",
+      "detail_position": "outside",
+      "source_url": "https://biblio.ugent.be/publication/01HN30DTX2BZYYEVXRG7Q7M06Q",
+      "emphasis": false
+    },
+    {
+      "id": "141",
+      "label": "Blown sticks",
+      "date_label": "141",
+      "group": "1",
+      "detail": "",
+      "detail_position": "outside",
+      "source_url": "https://biblio.ugent.be/publication/01HN30DTX2BZYYEVXRG7Q7M06Q",
+      "emphasis": false
+    },
+    {
+      "id": "142",
+      "label": "Blown plaques",
+      "date_label": "142",
+      "group": "1",
+      "detail": "",
+      "detail_position": "outside",
+      "source_url": "https://biblio.ugent.be/publication/01HN30DTX2BZYYEVXRG7Q7M06Q",
+      "emphasis": false
+    },
+    {
+      "id": "15",
+      "label": "Metal sheets",
+      "date_label": "15",
+      "group": "1",
+      "detail": "",
+      "detail_position": "outside",
+      "source_url": "https://biblio.ugent.be/publication/01HN30DTX2BZYYEVXRG7Q7M06Q",
+      "emphasis": false
+    },
+    {
+      "id": "16",
+      "label": "Flexed diaphragms",
+      "date_label": "16",
+      "group": "1",
+      "detail": "",
+      "detail_position": "outside",
+      "source_url": "https://biblio.ugent.be/publication/01HN30DTX2BZYYEVXRG7Q7M06Q",
+      "emphasis": false
+    },
+    {
+      "id": "2",
+      "label": "Membranophones",
+      "date_label": "2",
+      "group": "2",
+      "detail": "A stretched skin vibrates",
+      "detail_position": "outside",
+      "source_url": "https://biblio.ugent.be/publication/01HN30DTX2BZYYEVXRG7Q7M06Q",
+      "emphasis": true
+    },
+    {
+      "id": "21",
+      "label": "Struck drums",
+      "date_label": "21",
+      "group": "2",
+      "detail": "",
+      "detail_position": "outside",
+      "source_url": "https://biblio.ugent.be/publication/01HN30DTX2BZYYEVXRG7Q7M06Q",
+      "emphasis": false
+    },
+    {
+      "id": "211",
+      "label": "Directly struck",
+      "date_label": "211",
+      "group": "2",
+      "detail": "",
+      "detail_position": "outside",
+      "source_url": "https://biblio.ugent.be/publication/01HN30DTX2BZYYEVXRG7Q7M06Q",
+      "emphasis": false
+    },
+    {
+      "id": "212",
+      "label": "Rattle drums",
+      "date_label": "212",
+      "group": "2",
+      "detail": "",
+      "detail_position": "outside",
+      "source_url": "https://biblio.ugent.be/publication/01HN30DTX2BZYYEVXRG7Q7M06Q",
+      "emphasis": false
+    },
+    {
+      "id": "23",
+      "label": "Friction drums",
+      "date_label": "23",
+      "group": "2",
+      "detail": "",
+      "detail_position": "outside",
+      "source_url": "https://biblio.ugent.be/publication/01HN30DTX2BZYYEVXRG7Q7M06Q",
+      "emphasis": false
+    },
+    {
+      "id": "231",
+      "label": "With a stick",
+      "date_label": "231",
+      "group": "2",
+      "detail": "",
+      "detail_position": "outside",
+      "source_url": "https://biblio.ugent.be/publication/01HN30DTX2BZYYEVXRG7Q7M06Q",
+      "emphasis": false
+    },
+    {
+      "id": "232",
+      "label": "With a cord",
+      "date_label": "232",
+      "group": "2",
+      "detail": "",
+      "detail_position": "outside",
+      "source_url": "https://biblio.ugent.be/publication/01HN30DTX2BZYYEVXRG7Q7M06Q",
+      "emphasis": false
+    },
+    {
+      "id": "233",
+      "label": "By hand",
+      "date_label": "233",
+      "group": "2",
+      "detail": "",
+      "detail_position": "outside",
+      "source_url": "https://biblio.ugent.be/publication/01HN30DTX2BZYYEVXRG7Q7M06Q",
+      "emphasis": false
+    },
+    {
+      "id": "24",
+      "label": "Singing membranes",
+      "date_label": "24",
+      "group": "2",
+      "detail": "",
+      "detail_position": "outside",
+      "source_url": "https://biblio.ugent.be/publication/01HN30DTX2BZYYEVXRG7Q7M06Q",
+      "emphasis": false
+    },
+    {
+      "id": "241",
+      "label": "Free kazoos",
+      "date_label": "241",
+      "group": "2",
+      "detail": "",
+      "detail_position": "outside",
+      "source_url": "https://biblio.ugent.be/publication/01HN30DTX2BZYYEVXRG7Q7M06Q",
+      "emphasis": false
+    },
+    {
+      "id": "242",
+      "label": "Tube or vessel kazoos",
+      "date_label": "242",
+      "group": "2",
+      "detail": "",
+      "detail_position": "outside",
+      "source_url": "https://biblio.ugent.be/publication/01HN30DTX2BZYYEVXRG7Q7M06Q",
+      "emphasis": false
+    },
+    {
+      "id": "3",
+      "label": "Chordophones",
+      "date_label": "3",
+      "group": "3",
+      "detail": "Tensioned strings vibrate",
+      "detail_position": "outside",
+      "source_url": "https://biblio.ugent.be/publication/01HN30DTX2BZYYEVXRG7Q7M06Q",
+      "emphasis": true
+    },
+    {
+      "id": "31",
+      "label": "Simple / zithers",
+      "date_label": "31",
+      "group": "3",
+      "detail": "",
+      "detail_position": "outside",
+      "source_url": "https://biblio.ugent.be/publication/01HN30DTX2BZYYEVXRG7Q7M06Q",
+      "emphasis": false
+    },
+    {
+      "id": "311",
+      "label": "Bar zithers",
+      "date_label": "311",
+      "group": "3",
+      "detail": "",
+      "detail_position": "outside",
+      "source_url": "https://biblio.ugent.be/publication/01HN30DTX2BZYYEVXRG7Q7M06Q",
+      "emphasis": false
+    },
+    {
+      "id": "312",
+      "label": "Tube zithers",
+      "date_label": "312",
+      "group": "3",
+      "detail": "",
+      "detail_position": "outside",
+      "source_url": "https://biblio.ugent.be/publication/01HN30DTX2BZYYEVXRG7Q7M06Q",
+      "emphasis": false
+    },
+    {
+      "id": "313",
+      "label": "Raft zithers",
+      "date_label": "313",
+      "group": "3",
+      "detail": "",
+      "detail_position": "outside",
+      "source_url": "https://biblio.ugent.be/publication/01HN30DTX2BZYYEVXRG7Q7M06Q",
+      "emphasis": false
+    },
+    {
+      "id": "314",
+      "label": "Board zithers",
+      "date_label": "314",
+      "group": "3",
+      "detail": "",
+      "detail_position": "outside",
+      "source_url": "https://biblio.ugent.be/publication/01HN30DTX2BZYYEVXRG7Q7M06Q",
+      "emphasis": false
+    },
+    {
+      "id": "315",
+      "label": "Trough zithers",
+      "date_label": "315",
+      "group": "3",
+      "detail": "",
+      "detail_position": "outside",
+      "source_url": "https://biblio.ugent.be/publication/01HN30DTX2BZYYEVXRG7Q7M06Q",
+      "emphasis": false
+    },
+    {
+      "id": "316",
+      "label": "Frame zithers",
+      "date_label": "316",
+      "group": "3",
+      "detail": "",
+      "detail_position": "outside",
+      "source_url": "https://biblio.ugent.be/publication/01HN30DTX2BZYYEVXRG7Q7M06Q",
+      "emphasis": false
+    },
+    {
+      "id": "32",
+      "label": "Composite",
+      "date_label": "32",
+      "group": "3",
+      "detail": "",
+      "detail_position": "outside",
+      "source_url": "https://biblio.ugent.be/publication/01HN30DTX2BZYYEVXRG7Q7M06Q",
+      "emphasis": false
+    },
+    {
+      "id": "321",
+      "label": "Lutes",
+      "date_label": "321",
+      "group": "3",
+      "detail": "",
+      "detail_position": "outside",
+      "source_url": "https://biblio.ugent.be/publication/01HN30DTX2BZYYEVXRG7Q7M06Q",
+      "emphasis": false
+    },
+    {
+      "id": "322",
+      "label": "Harps",
+      "date_label": "322",
+      "group": "3",
+      "detail": "",
+      "detail_position": "outside",
+      "source_url": "https://biblio.ugent.be/publication/01HN30DTX2BZYYEVXRG7Q7M06Q",
+      "emphasis": false
+    },
+    {
+      "id": "323",
+      "label": "Spike harps",
+      "date_label": "323",
+      "group": "3",
+      "detail": "",
+      "detail_position": "outside",
+      "source_url": "https://biblio.ugent.be/publication/01HN30DTX2BZYYEVXRG7Q7M06Q",
+      "emphasis": false
+    },
+    {
+      "id": "324",
+      "label": "Tanged harps",
+      "date_label": "324",
+      "group": "3",
+      "detail": "",
+      "detail_position": "outside",
+      "source_url": "https://biblio.ugent.be/publication/01HN30DTX2BZYYEVXRG7Q7M06Q",
+      "emphasis": false
+    },
+    {
+      "id": "33",
+      "label": "Variable tension",
+      "date_label": "33",
+      "group": "3",
+      "detail": "",
+      "detail_position": "outside",
+      "source_url": "https://biblio.ugent.be/publication/01HN30DTX2BZYYEVXRG7Q7M06Q",
+      "emphasis": false
+    },
+    {
+      "id": "331",
+      "label": "Loose string to drumhead",
+      "date_label": "331",
+      "group": "3",
+      "detail": "",
+      "detail_position": "outside",
+      "source_url": "https://biblio.ugent.be/publication/01HN30DTX2BZYYEVXRG7Q7M06Q",
+      "emphasis": false
+    },
+    {
+      "id": "332",
+      "label": "String from neck to head",
+      "date_label": "332",
+      "group": "3",
+      "detail": "",
+      "detail_position": "outside",
+      "source_url": "https://biblio.ugent.be/publication/01HN30DTX2BZYYEVXRG7Q7M06Q",
+      "emphasis": false
+    },
+    {
+      "id": "4",
+      "label": "Aerophones",
+      "date_label": "4",
+      "group": "4",
+      "detail": "Air produces the sound",
+      "detail_position": "outside",
+      "source_url": "https://biblio.ugent.be/publication/01HN30DTX2BZYYEVXRG7Q7M06Q",
+      "emphasis": true
+    },
+    {
+      "id": "41",
+      "label": "Free air",
+      "date_label": "41",
+      "group": "4",
+      "detail": "",
+      "detail_position": "outside",
+      "source_url": "https://biblio.ugent.be/publication/01HN30DTX2BZYYEVXRG7Q7M06Q",
+      "emphasis": false
+    },
+    {
+      "id": "411",
+      "label": "Displacement",
+      "date_label": "411",
+      "group": "4",
+      "detail": "",
+      "detail_position": "outside",
+      "source_url": "https://biblio.ugent.be/publication/01HN30DTX2BZYYEVXRG7Q7M06Q",
+      "emphasis": false
+    },
+    {
+      "id": "412",
+      "label": "Interrupted flow",
+      "date_label": "412",
+      "group": "4",
+      "detail": "",
+      "detail_position": "outside",
+      "source_url": "https://biblio.ugent.be/publication/01HN30DTX2BZYYEVXRG7Q7M06Q",
+      "emphasis": false
+    },
+    {
+      "id": "413",
+      "label": "Plosive",
+      "date_label": "413",
+      "group": "4",
+      "detail": "",
+      "detail_position": "outside",
+      "source_url": "https://biblio.ugent.be/publication/01HN30DTX2BZYYEVXRG7Q7M06Q",
+      "emphasis": false
+    },
+    {
+      "id": "42",
+      "label": "Wind instruments",
+      "date_label": "42",
+      "group": "4",
+      "detail": "",
+      "detail_position": "outside",
+      "source_url": "https://biblio.ugent.be/publication/01HN30DTX2BZYYEVXRG7Q7M06Q",
+      "emphasis": false
+    },
+    {
+      "id": "420",
+      "label": "Non-flute edge tones",
+      "date_label": "420",
+      "group": "4",
+      "detail": "",
+      "detail_position": "outside",
+      "source_url": "https://biblio.ugent.be/publication/01HN30DTX2BZYYEVXRG7Q7M06Q",
+      "emphasis": false
+    },
+    {
+      "id": "421",
+      "label": "Flutes",
+      "date_label": "421",
+      "group": "4",
+      "detail": "",
+      "detail_position": "outside",
+      "source_url": "https://biblio.ugent.be/publication/01HN30DTX2BZYYEVXRG7Q7M06Q",
+      "emphasis": false
+    },
+    {
+      "id": "422",
+      "label": "Reed pipes",
+      "date_label": "422",
+      "group": "4",
+      "detail": "",
+      "detail_position": "outside",
+      "source_url": "https://biblio.ugent.be/publication/01HN30DTX2BZYYEVXRG7Q7M06Q",
+      "emphasis": false
+    },
+    {
+      "id": "423",
+      "label": "Lip reeds",
+      "date_label": "423",
+      "group": "4",
+      "detail": "",
+      "detail_position": "outside",
+      "source_url": "https://biblio.ugent.be/publication/01HN30DTX2BZYYEVXRG7Q7M06Q",
+      "emphasis": false
+    },
+    {
+      "id": "424",
+      "label": "Membranopipes",
+      "date_label": "424",
+      "group": "4",
+      "detail": "",
+      "detail_position": "outside",
+      "source_url": "https://biblio.ugent.be/publication/01HN30DTX2BZYYEVXRG7Q7M06Q",
+      "emphasis": false
+    },
+    {
+      "id": "5",
+      "label": "Electrophones",
+      "date_label": "5",
+      "group": "5",
+      "detail": "Signals feed a loudspeaker",
+      "detail_position": "outside",
+      "source_url": "https://biblio.ugent.be/publication/01HN30DTX2BZYYEVXRG7Q7M06Q",
+      "emphasis": true
+    },
+    {
+      "id": "51",
+      "label": "Electro-acoustic",
+      "date_label": "51",
+      "group": "5",
+      "detail": "",
+      "detail_position": "outside",
+      "source_url": "https://biblio.ugent.be/publication/01HN30DTX2BZYYEVXRG7Q7M06Q",
+      "emphasis": false
+    },
+    {
+      "id": "511",
+      "label": "Vibrating bodies",
+      "date_label": "511",
+      "group": "5",
+      "detail": "",
+      "detail_position": "outside",
+      "source_url": "https://biblio.ugent.be/publication/01HN30DTX2BZYYEVXRG7Q7M06Q",
+      "emphasis": false
+    },
+    {
+      "id": "512",
+      "label": "Membranes",
+      "date_label": "512",
+      "group": "5",
+      "detail": "",
+      "detail_position": "outside",
+      "source_url": "https://biblio.ugent.be/publication/01HN30DTX2BZYYEVXRG7Q7M06Q",
+      "emphasis": false
+    },
+    {
+      "id": "513",
+      "label": "Strings",
+      "date_label": "513",
+      "group": "5",
+      "detail": "",
+      "detail_position": "outside",
+      "source_url": "https://biblio.ugent.be/publication/01HN30DTX2BZYYEVXRG7Q7M06Q",
+      "emphasis": false
+    },
+    {
+      "id": "514",
+      "label": "Air mechanisms",
+      "date_label": "514",
+      "group": "5",
+      "detail": "",
+      "detail_position": "outside",
+      "source_url": "https://biblio.ugent.be/publication/01HN30DTX2BZYYEVXRG7Q7M06Q",
+      "emphasis": false
+    },
+    {
+      "id": "515",
+      "label": "Transducers",
+      "date_label": "515",
+      "group": "5",
+      "detail": "",
+      "detail_position": "outside",
+      "source_url": "https://biblio.ugent.be/publication/01HN30DTX2BZYYEVXRG7Q7M06Q",
+      "emphasis": false
+    },
+    {
+      "id": "52",
+      "label": "Electromechanical",
+      "date_label": "52",
+      "group": "5",
+      "detail": "",
+      "detail_position": "outside",
+      "source_url": "https://biblio.ugent.be/publication/01HN30DTX2BZYYEVXRG7Q7M06Q",
+      "emphasis": false
+    },
+    {
+      "id": "521",
+      "label": "Tone wheels",
+      "date_label": "521",
+      "group": "5",
+      "detail": "",
+      "detail_position": "outside",
+      "source_url": "https://biblio.ugent.be/publication/01HN30DTX2BZYYEVXRG7Q7M06Q",
+      "emphasis": false
+    },
+    {
+      "id": "522",
+      "label": "Photoelectric",
+      "date_label": "522",
+      "group": "5",
+      "detail": "",
+      "detail_position": "outside",
+      "source_url": "https://biblio.ugent.be/publication/01HN30DTX2BZYYEVXRG7Q7M06Q",
+      "emphasis": false
+    },
+    {
+      "id": "523",
+      "label": "Record / playback",
+      "date_label": "523",
+      "group": "5",
+      "detail": "",
+      "detail_position": "outside",
+      "source_url": "https://biblio.ugent.be/publication/01HN30DTX2BZYYEVXRG7Q7M06Q",
+      "emphasis": false
+    },
+    {
+      "id": "524",
+      "label": "Mechanical samplers",
+      "date_label": "524",
+      "group": "5",
+      "detail": "",
+      "detail_position": "outside",
+      "source_url": "https://biblio.ugent.be/publication/01HN30DTX2BZYYEVXRG7Q7M06Q",
+      "emphasis": false
+    },
+    {
+      "id": "525",
+      "label": "Sound processing",
+      "date_label": "525",
+      "group": "5",
+      "detail": "",
+      "detail_position": "outside",
+      "source_url": "https://biblio.ugent.be/publication/01HN30DTX2BZYYEVXRG7Q7M06Q",
+      "emphasis": false
+    },
+    {
+      "id": "53",
+      "label": "Analogue electronics",
+      "date_label": "53",
+      "group": "5",
+      "detail": "",
+      "detail_position": "outside",
+      "source_url": "https://biblio.ugent.be/publication/01HN30DTX2BZYYEVXRG7Q7M06Q",
+      "emphasis": false
+    },
+    {
+      "id": "54",
+      "label": "Digital electronics",
+      "date_label": "54",
+      "group": "5",
+      "detail": "",
+      "detail_position": "outside",
+      "source_url": "https://biblio.ugent.be/publication/01HN30DTX2BZYYEVXRG7Q7M06Q",
+      "emphasis": false
+    },
+    {
+      "id": "55",
+      "label": "Analogue / digital hybrids",
+      "date_label": "55",
+      "group": "5",
+      "detail": "",
+      "detail_position": "outside",
+      "source_url": "https://biblio.ugent.be/publication/01HN30DTX2BZYYEVXRG7Q7M06Q",
+      "emphasis": false
+    },
+    {
+      "id": "56",
+      "label": "Software",
+      "date_label": "56",
+      "group": "5",
+      "detail": "",
+      "detail_position": "outside",
+      "source_url": "https://biblio.ugent.be/publication/01HN30DTX2BZYYEVXRG7Q7M06Q",
+      "emphasis": false
+    }
+  ],
+  "edges": [
+    {
+      "id": "1-11",
+      "source": "1",
+      "target": "11",
+      "kind": "branch"
+    },
+    {
+      "id": "11-111",
+      "source": "11",
+      "target": "111",
+      "kind": "branch"
+    },
+    {
+      "id": "11-112",
+      "source": "11",
+      "target": "112",
+      "kind": "branch"
+    },
+    {
+      "id": "1-12",
+      "source": "1",
+      "target": "12",
+      "kind": "branch"
+    },
+    {
+      "id": "12-121",
+      "source": "12",
+      "target": "121",
+      "kind": "branch"
+    },
+    {
+      "id": "12-122",
+      "source": "12",
+      "target": "122",
+      "kind": "branch"
+    },
+    {
+      "id": "1-13",
+      "source": "1",
+      "target": "13",
+      "kind": "branch"
+    },
+    {
+      "id": "13-131",
+      "source": "13",
+      "target": "131",
+      "kind": "branch"
+    },
+    {
+      "id": "13-132",
+      "source": "13",
+      "target": "132",
+      "kind": "branch"
+    },
+    {
+      "id": "13-133",
+      "source": "13",
+      "target": "133",
+      "kind": "branch"
+    },
+    {
+      "id": "1-14",
+      "source": "1",
+      "target": "14",
+      "kind": "branch"
+    },
+    {
+      "id": "14-141",
+      "source": "14",
+      "target": "141",
+      "kind": "branch"
+    },
+    {
+      "id": "14-142",
+      "source": "14",
+      "target": "142",
+      "kind": "branch"
+    },
+    {
+      "id": "1-15",
+      "source": "1",
+      "target": "15",
+      "kind": "branch"
+    },
+    {
+      "id": "1-16",
+      "source": "1",
+      "target": "16",
+      "kind": "branch"
+    },
+    {
+      "id": "2-21",
+      "source": "2",
+      "target": "21",
+      "kind": "branch"
+    },
+    {
+      "id": "21-211",
+      "source": "21",
+      "target": "211",
+      "kind": "branch"
+    },
+    {
+      "id": "21-212",
+      "source": "21",
+      "target": "212",
+      "kind": "branch"
+    },
+    {
+      "id": "2-23",
+      "source": "2",
+      "target": "23",
+      "kind": "branch"
+    },
+    {
+      "id": "23-231",
+      "source": "23",
+      "target": "231",
+      "kind": "branch"
+    },
+    {
+      "id": "23-232",
+      "source": "23",
+      "target": "232",
+      "kind": "branch"
+    },
+    {
+      "id": "23-233",
+      "source": "23",
+      "target": "233",
+      "kind": "branch"
+    },
+    {
+      "id": "2-24",
+      "source": "2",
+      "target": "24",
+      "kind": "branch"
+    },
+    {
+      "id": "24-241",
+      "source": "24",
+      "target": "241",
+      "kind": "branch"
+    },
+    {
+      "id": "24-242",
+      "source": "24",
+      "target": "242",
+      "kind": "branch"
+    },
+    {
+      "id": "3-31",
+      "source": "3",
+      "target": "31",
+      "kind": "branch"
+    },
+    {
+      "id": "31-311",
+      "source": "31",
+      "target": "311",
+      "kind": "branch"
+    },
+    {
+      "id": "31-312",
+      "source": "31",
+      "target": "312",
+      "kind": "branch"
+    },
+    {
+      "id": "31-313",
+      "source": "31",
+      "target": "313",
+      "kind": "branch"
+    },
+    {
+      "id": "31-314",
+      "source": "31",
+      "target": "314",
+      "kind": "branch"
+    },
+    {
+      "id": "31-315",
+      "source": "31",
+      "target": "315",
+      "kind": "branch"
+    },
+    {
+      "id": "31-316",
+      "source": "31",
+      "target": "316",
+      "kind": "branch"
+    },
+    {
+      "id": "3-32",
+      "source": "3",
+      "target": "32",
+      "kind": "branch"
+    },
+    {
+      "id": "32-321",
+      "source": "32",
+      "target": "321",
+      "kind": "branch"
+    },
+    {
+      "id": "32-322",
+      "source": "32",
+      "target": "322",
+      "kind": "branch"
+    },
+    {
+      "id": "32-323",
+      "source": "32",
+      "target": "323",
+      "kind": "branch"
+    },
+    {
+      "id": "32-324",
+      "source": "32",
+      "target": "324",
+      "kind": "branch"
+    },
+    {
+      "id": "3-33",
+      "source": "3",
+      "target": "33",
+      "kind": "branch"
+    },
+    {
+      "id": "33-331",
+      "source": "33",
+      "target": "331",
+      "kind": "branch"
+    },
+    {
+      "id": "33-332",
+      "source": "33",
+      "target": "332",
+      "kind": "branch"
+    },
+    {
+      "id": "4-41",
+      "source": "4",
+      "target": "41",
+      "kind": "branch"
+    },
+    {
+      "id": "41-411",
+      "source": "41",
+      "target": "411",
+      "kind": "branch"
+    },
+    {
+      "id": "41-412",
+      "source": "41",
+      "target": "412",
+      "kind": "branch"
+    },
+    {
+      "id": "41-413",
+      "source": "41",
+      "target": "413",
+      "kind": "branch"
+    },
+    {
+      "id": "4-42",
+      "source": "4",
+      "target": "42",
+      "kind": "branch"
+    },
+    {
+      "id": "42-420",
+      "source": "42",
+      "target": "420",
+      "kind": "branch"
+    },
+    {
+      "id": "42-421",
+      "source": "42",
+      "target": "421",
+      "kind": "branch"
+    },
+    {
+      "id": "42-422",
+      "source": "42",
+      "target": "422",
+      "kind": "branch"
+    },
+    {
+      "id": "42-423",
+      "source": "42",
+      "target": "423",
+      "kind": "branch"
+    },
+    {
+      "id": "42-424",
+      "source": "42",
+      "target": "424",
+      "kind": "branch"
+    },
+    {
+      "id": "5-51",
+      "source": "5",
+      "target": "51",
+      "kind": "branch"
+    },
+    {
+      "id": "51-511",
+      "source": "51",
+      "target": "511",
+      "kind": "branch"
+    },
+    {
+      "id": "51-512",
+      "source": "51",
+      "target": "512",
+      "kind": "branch"
+    },
+    {
+      "id": "51-513",
+      "source": "51",
+      "target": "513",
+      "kind": "branch"
+    },
+    {
+      "id": "51-514",
+      "source": "51",
+      "target": "514",
+      "kind": "branch"
+    },
+    {
+      "id": "51-515",
+      "source": "51",
+      "target": "515",
+      "kind": "branch"
+    },
+    {
+      "id": "5-52",
+      "source": "5",
+      "target": "52",
+      "kind": "branch"
+    },
+    {
+      "id": "52-521",
+      "source": "52",
+      "target": "521",
+      "kind": "branch"
+    },
+    {
+      "id": "52-522",
+      "source": "52",
+      "target": "522",
+      "kind": "branch"
+    },
+    {
+      "id": "52-523",
+      "source": "52",
+      "target": "523",
+      "kind": "branch"
+    },
+    {
+      "id": "52-524",
+      "source": "52",
+      "target": "524",
+      "kind": "branch"
+    },
+    {
+      "id": "52-525",
+      "source": "52",
+      "target": "525",
+      "kind": "branch"
+    },
+    {
+      "id": "5-53",
+      "source": "5",
+      "target": "53",
+      "kind": "branch"
+    },
+    {
+      "id": "5-54",
+      "source": "5",
+      "target": "54",
+      "kind": "branch"
+    },
+    {
+      "id": "5-55",
+      "source": "5",
+      "target": "55",
+      "kind": "branch"
+    },
+    {
+      "id": "5-56",
+      "source": "5",
+      "target": "56",
+      "kind": "branch"
+    }
+  ],
+  "source_note": "Source: MIMO Consortium, revised Hornbostel–Sachs classification (2011). Selected categories; deeper subdivisions omitted. Labels abbreviated.",
+  "reading_note": "Codes identify classes, not dates or rank. Links mean contains. Unmodified acoustic instruments with added microphones or pickups remain in families 1–4."
+}

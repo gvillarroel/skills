@@ -1,0 +1,488 @@
+{
+  "id": "mars-launches-1960-1999",
+  "title": "THE LONG ROAD TO MARS",
+  "nodes": [
+    {
+      "id": "marsnik1",
+      "label": "Marsnik 1",
+      "group": "ussr",
+      "launch": 1960,
+      "arrival": null,
+      "role": "Flyby",
+      "detail": "Failed to reach Earth orbit",
+      "date_label": "1960 \u00b7 USSR \u00b7 Flyby",
+      "source_url": "https://mars.nasa.gov/system/downloadable_items/45585_mars_2020_landing_press_kit.pdf#page=69",
+      "spans": [],
+      "outcome": null
+    },
+    {
+      "id": "marsnik2",
+      "label": "Marsnik 2",
+      "group": "ussr",
+      "launch": 1960,
+      "arrival": null,
+      "role": "Flyby",
+      "detail": "Failed to reach Earth orbit",
+      "date_label": "1960 \u00b7 USSR \u00b7 Flyby",
+      "source_url": "https://mars.nasa.gov/system/downloadable_items/45585_mars_2020_landing_press_kit.pdf#page=69",
+      "spans": [],
+      "outcome": null
+    },
+    {
+      "id": "sputnik22",
+      "label": "Sputnik 22",
+      "group": "ussr",
+      "launch": 1962,
+      "arrival": null,
+      "role": "Flyby",
+      "detail": "Reached Earth orbit only",
+      "date_label": "1962 \u00b7 USSR \u00b7 Flyby",
+      "source_url": "https://mars.nasa.gov/system/downloadable_items/45585_mars_2020_landing_press_kit.pdf#page=69",
+      "spans": [],
+      "outcome": null
+    },
+    {
+      "id": "mars1",
+      "label": "Mars 1",
+      "group": "ussr",
+      "launch": 1962,
+      "arrival": null,
+      "role": "Flyby",
+      "detail": "Radio failed en route; end year not plotted",
+      "date_label": "1962 \u00b7 USSR \u00b7 Flyby",
+      "source_url": "https://mars.nasa.gov/system/downloadable_items/45585_mars_2020_landing_press_kit.pdf#page=69",
+      "spans": [],
+      "outcome": null
+    },
+    {
+      "id": "sputnik24",
+      "label": "Sputnik 24",
+      "group": "ussr",
+      "launch": 1962,
+      "arrival": null,
+      "role": "Flyby",
+      "detail": "Reached Earth orbit only",
+      "date_label": "1962 \u00b7 USSR \u00b7 Flyby",
+      "source_url": "https://mars.nasa.gov/system/downloadable_items/45585_mars_2020_landing_press_kit.pdf#page=69",
+      "spans": [],
+      "outcome": null
+    },
+    {
+      "id": "mariner3",
+      "label": "Mariner 3",
+      "group": "us",
+      "launch": 1964,
+      "arrival": null,
+      "role": "Flyby",
+      "detail": "Launch shroud failed to separate",
+      "date_label": "1964 \u00b7 USA \u00b7 Flyby",
+      "source_url": "https://mars.nasa.gov/system/downloadable_items/45585_mars_2020_landing_press_kit.pdf#page=69",
+      "spans": [],
+      "outcome": null
+    },
+    {
+      "id": "mariner4",
+      "label": "Mariner 4",
+      "group": "us",
+      "launch": 1964,
+      "arrival": 1965,
+      "role": "Flyby",
+      "detail": "1965: first successful Mars flyby; 21 photos",
+      "date_label": "1964 \u00b7 USA \u00b7 Flyby",
+      "source_url": "https://mars.nasa.gov/system/downloadable_items/45585_mars_2020_landing_press_kit.pdf#page=69",
+      "spans": [],
+      "outcome": null
+    },
+    {
+      "id": "zond2",
+      "label": "Zond 2",
+      "group": "ussr",
+      "launch": 1964,
+      "arrival": null,
+      "role": "Flyby",
+      "detail": "Radio failed; end year not plotted",
+      "date_label": "1964 \u00b7 USSR \u00b7 Flyby",
+      "source_url": "https://mars.nasa.gov/system/downloadable_items/45585_mars_2020_landing_press_kit.pdf#page=69",
+      "spans": [],
+      "outcome": null
+    },
+    {
+      "id": "mariner6",
+      "label": "Mariner 6",
+      "group": "us",
+      "launch": 1969,
+      "arrival": 1969,
+      "role": "Flyby",
+      "detail": "1969: Mars flyby; 75 photos",
+      "date_label": "1969 \u00b7 USA \u00b7 Flyby",
+      "source_url": "https://mars.nasa.gov/system/downloadable_items/45585_mars_2020_landing_press_kit.pdf#page=69",
+      "spans": [],
+      "outcome": null
+    },
+    {
+      "id": "mariner7",
+      "label": "Mariner 7",
+      "group": "us",
+      "launch": 1969,
+      "arrival": 1969,
+      "role": "Flyby",
+      "detail": "1969: Mars flyby; 126 photos",
+      "date_label": "1969 \u00b7 USA \u00b7 Flyby",
+      "source_url": "https://mars.nasa.gov/system/downloadable_items/45585_mars_2020_landing_press_kit.pdf#page=69",
+      "spans": [],
+      "outcome": null
+    },
+    {
+      "id": "mars69a",
+      "label": "Mars 1969A",
+      "group": "ussr",
+      "launch": 1969,
+      "arrival": null,
+      "role": "Orbiter",
+      "detail": "Failed to reach Earth orbit",
+      "date_label": "1969 \u00b7 USSR \u00b7 Orbiter",
+      "source_url": "https://mars.nasa.gov/system/downloadable_items/45585_mars_2020_landing_press_kit.pdf#page=69",
+      "spans": [],
+      "outcome": null
+    },
+    {
+      "id": "mars69b",
+      "label": "Mars 1969B",
+      "group": "ussr",
+      "launch": 1969,
+      "arrival": null,
+      "role": "Orbiter",
+      "detail": "Launch failed",
+      "date_label": "1969 \u00b7 USSR \u00b7 Orbiter",
+      "source_url": "https://mars.nasa.gov/system/downloadable_items/45585_mars_2020_landing_press_kit.pdf#page=69",
+      "spans": [],
+      "outcome": null
+    },
+    {
+      "id": "mariner8",
+      "label": "Mariner 8",
+      "group": "us",
+      "launch": 1971,
+      "arrival": null,
+      "role": "Orbiter",
+      "detail": "Launch failed",
+      "date_label": "1971 \u00b7 USA \u00b7 Orbiter",
+      "source_url": "https://mars.nasa.gov/system/downloadable_items/45585_mars_2020_landing_press_kit.pdf#page=69",
+      "spans": [],
+      "outcome": null
+    },
+    {
+      "id": "kosmos419",
+      "label": "Kosmos 419",
+      "group": "ussr",
+      "launch": 1971,
+      "arrival": null,
+      "role": "Mars mission",
+      "detail": "Reached Earth orbit only",
+      "date_label": "1971 \u00b7 USSR \u00b7 Mars mission",
+      "source_url": "https://mars.nasa.gov/system/downloadable_items/45585_mars_2020_landing_press_kit.pdf#page=69",
+      "spans": [],
+      "outcome": null
+    },
+    {
+      "id": "mars2",
+      "label": "Mars 2",
+      "group": "ussr",
+      "launch": 1971,
+      "arrival": 1971,
+      "role": "Orbiter + lander",
+      "detail": "1971: reached Mars; lander crashed",
+      "date_label": "1971 \u00b7 USSR \u00b7 Orbiter + lander",
+      "source_url": "https://mars.nasa.gov/system/downloadable_items/45585_mars_2020_landing_press_kit.pdf#page=69",
+      "spans": [],
+      "outcome": null
+    },
+    {
+      "id": "mars3",
+      "label": "Mars 3",
+      "group": "ussr",
+      "launch": 1971,
+      "arrival": 1971,
+      "role": "Orbiter + lander",
+      "detail": "1971: landed; signal ceased after seconds",
+      "date_label": "1971 \u00b7 USSR \u00b7 Orbiter + lander",
+      "source_url": "https://mars.nasa.gov/system/downloadable_items/45585_mars_2020_landing_press_kit.pdf#page=70",
+      "spans": [],
+      "outcome": null
+    },
+    {
+      "id": "mariner9",
+      "label": "Mariner 9",
+      "group": "us",
+      "launch": 1971,
+      "arrival": 1971,
+      "role": "Orbiter",
+      "detail": "1971\u201372: orbital operations; 7,329 photos",
+      "date_label": "1971 \u00b7 USA \u00b7 Orbiter",
+      "source_url": "https://mars.nasa.gov/system/downloadable_items/45585_mars_2020_landing_press_kit.pdf#page=70",
+      "spans": [
+        {
+          "label": "Orbit",
+          "start": 1971,
+          "end": 1972
+        }
+      ],
+      "outcome": null
+    },
+    {
+      "id": "mars4",
+      "label": "Mars 4",
+      "group": "ussr",
+      "launch": 1973,
+      "arrival": 1974,
+      "role": "Orbiter",
+      "detail": "1974: flew past Mars; orbit insertion failed",
+      "date_label": "1973 \u00b7 USSR \u00b7 Orbiter",
+      "source_url": "https://mars.nasa.gov/system/downloadable_items/45585_mars_2020_landing_press_kit.pdf#page=70",
+      "spans": [],
+      "outcome": null
+    },
+    {
+      "id": "mars5",
+      "label": "Mars 5",
+      "group": "ussr",
+      "launch": 1973,
+      "arrival": 1974,
+      "role": "Orbiter",
+      "detail": "1974: reached orbit; operated briefly",
+      "date_label": "1973 \u00b7 USSR \u00b7 Orbiter",
+      "source_url": "https://mars.nasa.gov/system/downloadable_items/45585_mars_2020_landing_press_kit.pdf#page=70",
+      "spans": [],
+      "outcome": null
+    },
+    {
+      "id": "mars6",
+      "label": "Mars 6",
+      "group": "ussr",
+      "launch": 1973,
+      "arrival": 1974,
+      "role": "Flyby + lander",
+      "detail": "1974: lander crashed on arrival",
+      "date_label": "1973 \u00b7 USSR \u00b7 Flyby + lander",
+      "source_url": "https://mars.nasa.gov/system/downloadable_items/45585_mars_2020_landing_press_kit.pdf#page=70",
+      "spans": [],
+      "outcome": null
+    },
+    {
+      "id": "mars7",
+      "label": "Mars 7",
+      "group": "ussr",
+      "launch": 1973,
+      "arrival": 1974,
+      "role": "Flyby + lander",
+      "detail": "1974: lander missed Mars",
+      "date_label": "1973 \u00b7 USSR \u00b7 Flyby + lander",
+      "source_url": "https://mars.nasa.gov/system/downloadable_items/45585_mars_2020_landing_press_kit.pdf#page=70",
+      "spans": [],
+      "outcome": null
+    },
+    {
+      "id": "viking1",
+      "label": "Viking 1",
+      "group": "us",
+      "launch": 1975,
+      "arrival": 1976,
+      "role": "Orbiter + lander",
+      "detail": "1976: orbit insertion and landing",
+      "date_label": "1975 \u00b7 USA \u00b7 Orbiter + lander",
+      "source_url": "https://mars.nasa.gov/system/downloadable_items/45585_mars_2020_landing_press_kit.pdf#page=70",
+      "spans": [
+        {
+          "label": "Orbiter",
+          "start": 1976,
+          "end": 1980
+        },
+        {
+          "label": "Lander",
+          "start": 1976,
+          "end": 1982
+        }
+      ],
+      "outcome": null
+    },
+    {
+      "id": "viking2",
+      "label": "Viking 2",
+      "group": "us",
+      "launch": 1975,
+      "arrival": 1976,
+      "role": "Orbiter + lander",
+      "detail": "1976: orbit insertion and landing",
+      "date_label": "1975 \u00b7 USA \u00b7 Orbiter + lander",
+      "source_url": "https://mars.nasa.gov/system/downloadable_items/45585_mars_2020_landing_press_kit.pdf#page=70",
+      "spans": [
+        {
+          "label": "Orbiter",
+          "start": 1976,
+          "end": 1978
+        },
+        {
+          "label": "Lander",
+          "start": 1976,
+          "end": 1980
+        }
+      ],
+      "outcome": null
+    },
+    {
+      "id": "phobos1",
+      "label": "Phobos 1",
+      "group": "ussr",
+      "launch": 1988,
+      "arrival": null,
+      "role": "Orbiter + Phobos lander",
+      "detail": "1988: lost en route to Mars",
+      "date_label": "1988 \u00b7 USSR \u00b7 Orbiter + Phobos lander",
+      "source_url": "https://mars.nasa.gov/system/downloadable_items/45585_mars_2020_landing_press_kit.pdf#page=70",
+      "spans": [],
+      "outcome": 1988
+    },
+    {
+      "id": "phobos2",
+      "label": "Phobos 2",
+      "group": "ussr",
+      "launch": 1988,
+      "arrival": 1989,
+      "role": "Orbiter + Phobos lander",
+      "detail": "1989: contact lost near Phobos",
+      "date_label": "1988 \u00b7 USSR \u00b7 Orbiter + Phobos lander",
+      "source_url": "https://mars.nasa.gov/system/downloadable_items/45585_mars_2020_landing_press_kit.pdf#page=70",
+      "spans": [],
+      "outcome": null
+    },
+    {
+      "id": "observer",
+      "label": "Mars Observer",
+      "group": "us",
+      "launch": 1992,
+      "arrival": null,
+      "role": "Orbiter",
+      "detail": "1993: contact lost before orbit insertion",
+      "date_label": "1992 \u00b7 USA \u00b7 Orbiter",
+      "source_url": "https://mars.nasa.gov/system/downloadable_items/45585_mars_2020_landing_press_kit.pdf#page=70",
+      "spans": [],
+      "outcome": 1993
+    },
+    {
+      "id": "mgs",
+      "label": "Mars Global Surveyor",
+      "group": "us",
+      "launch": 1996,
+      "arrival": 1997,
+      "role": "Orbiter",
+      "detail": "1997: arrived; last contact in 2006",
+      "date_label": "1996 \u00b7 USA \u00b7 Orbiter",
+      "source_url": "https://mars.nasa.gov/system/downloadable_items/45585_mars_2020_landing_press_kit.pdf#page=70",
+      "spans": [
+        {
+          "label": "Operations",
+          "start": 1997,
+          "end": 2006
+        }
+      ],
+      "outcome": null
+    },
+    {
+      "id": "mars96",
+      "label": "Mars 96",
+      "group": "russia",
+      "launch": 1996,
+      "arrival": null,
+      "role": "Orbiter + surface probes",
+      "detail": "Launch failed; one campaign, five probes",
+      "date_label": "1996 \u00b7 RUSSIA \u00b7 Orbiter + surface probes",
+      "source_url": "https://mars.nasa.gov/system/downloadable_items/45585_mars_2020_landing_press_kit.pdf#page=70",
+      "spans": [],
+      "outcome": null
+    },
+    {
+      "id": "pathfinder",
+      "label": "Mars Pathfinder",
+      "group": "us",
+      "launch": 1996,
+      "arrival": 1997,
+      "role": "Lander + Sojourner rover",
+      "detail": "1997: landed; last contact that year",
+      "date_label": "1996 \u00b7 USA \u00b7 Lander + Sojourner rover",
+      "source_url": "https://mars.nasa.gov/system/downloadable_items/45585_mars_2020_landing_press_kit.pdf#page=70",
+      "spans": [],
+      "outcome": null
+    },
+    {
+      "id": "nozomi",
+      "label": "Nozomi",
+      "group": "japan",
+      "launch": 1998,
+      "arrival": null,
+      "role": "Orbiter",
+      "detail": "2003: failed to enter Mars orbit",
+      "date_label": "1998 \u00b7 JAPAN \u00b7 Orbiter",
+      "source_url": "https://mars.nasa.gov/system/downloadable_items/45585_mars_2020_landing_press_kit.pdf#page=70",
+      "spans": [],
+      "outcome": 2003
+    },
+    {
+      "id": "climate",
+      "label": "Mars Climate Orbiter",
+      "group": "us",
+      "launch": 1998,
+      "arrival": null,
+      "role": "Orbiter",
+      "detail": "1999: lost on arrival",
+      "date_label": "1998 \u00b7 USA \u00b7 Orbiter",
+      "source_url": "https://mars.nasa.gov/system/downloadable_items/45585_mars_2020_landing_press_kit.pdf#page=70",
+      "spans": [],
+      "outcome": 1999
+    },
+    {
+      "id": "polar",
+      "label": "Mars Polar Lander / DS2",
+      "group": "us",
+      "launch": 1999,
+      "arrival": null,
+      "role": "Lander + two penetrators",
+      "detail": "1999: all three lost on arrival",
+      "date_label": "1999 \u00b7 USA \u00b7 Lander + two penetrators",
+      "source_url": "https://mars.nasa.gov/system/downloadable_items/45585_mars_2020_landing_press_kit.pdf#page=70",
+      "spans": [],
+      "outcome": 1999
+    }
+  ],
+  "edges": [],
+  "groups": [
+    {
+      "id": "us",
+      "label": "USA",
+      "color": "#7AD7EE"
+    },
+    {
+      "id": "ussr",
+      "label": "USSR",
+      "color": "#FFA893"
+    },
+    {
+      "id": "russia",
+      "label": "Russia",
+      "color": "#D7BCFA"
+    },
+    {
+      "id": "japan",
+      "label": "Japan",
+      "color": "#F8D381"
+    }
+  ],
+  "source_note": "NASA, Mars 2020 Landing Press Kit (2021), pp. 69\u201370. Years are used because some day-level entries conflict with mission histories. This is a selected historical launch-campaign view, not a current mission-status catalog.",
+  "reading_note": "One record is one launch campaign, which may carry several spacecraft. Circles mark launches, diamonds Mars encounters and crosses dated final losses on a uniform year scale. Dashed lines join dated events; only labeled solid bars indicate supported operations. Missing end dates remain unplotted.",
+  "scale": {
+    "start": 1960,
+    "end": 2007,
+    "left": 105,
+    "pixels_per_year": 58
+  },
+  "width": 2990
+}

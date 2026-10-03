@@ -1,5 +1,14 @@
 # Data and provenance contract
 
+## Contents
+
+- [Bundle layout](#bundle-layout)
+- [Adapter interface](#adapter-interface)
+- [Table grains](#table-grains)
+- [Machine-readable hypothesis analysis](#machine-readable-hypothesis-analysis)
+- [Scaling to Parquet](#scaling-to-parquet)
+- [Provenance and safety](#provenance-and-safety)
+
 The bundled helpers provide a dependency-free core contract for Python adapters.
 They produce tidy CSV data that opens everywhere and starter DuckDB SQL. For
 large observations or events, add Parquet while retaining the core run, outcome,

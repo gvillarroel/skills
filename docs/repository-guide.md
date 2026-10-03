@@ -38,9 +38,14 @@ uv run --script scripts/validate-pattern-ids.py
 uv run --script scripts/validate-skills.py
 uv run --script scripts/test-skill-independence.py
 uv run --script scripts/check-repo-payload.py
+uv run --script scripts/audit-skill-authoring.py --check-bundles --output evaluations/runs/skill-authoring-audit.json
 ```
 
 When published examples or the Pages pipeline change, also run `uv run --script scripts/build-pages.py` and `uv run --script scripts/validate-pages-pattern-format.py`. Skill behavior changes additionally require the isolated forward tests defined in AGENTS.md.
+
+Use [the authoring and bundle guide](skill-authoring.md) for policy details,
+standalone generated-skill validation, copied-payload checks, and the limits of
+static compliance.
 
 ## Data and operating boundaries
 

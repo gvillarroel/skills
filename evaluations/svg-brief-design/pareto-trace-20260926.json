@@ -1,0 +1,142 @@
+{
+  "status": "no-qualified-pareto-candidate-and-incomplete-control",
+  "installed": false,
+  "methods": [
+    "harbor-reflective-pareto-search",
+    "harbor-trace-distillation"
+  ],
+  "trace_role": "Native schema-1 diagnostic materialization; not Trace promotion",
+  "generator": "openai-codex/gpt-6-luna",
+  "thinking": "medium",
+  "evaluator": "Jev 6.3 unchanged",
+  "generation": 0,
+  "new_generator_calls": 54,
+  "retries": 0,
+  "candidate_rows": [
+    {
+      "candidate": "b",
+      "files": 9,
+      "trials": 18,
+      "errors": 4,
+      "critic_provider_failures": 1,
+      "quality_mean": null,
+      "native_diagnostic_mean": 0.4870701599326599,
+      "qualified": false,
+      "archive_member": false,
+      "harbor_digest": "sha256:935e7cee66c23f17341affd953c16b336dedaff12e4f438236247db774b68a95",
+      "model_aliases": [
+        "gpt-6-luna"
+      ]
+    },
+    {
+      "candidate": "i",
+      "files": 12,
+      "trials": 18,
+      "errors": 2,
+      "critic_provider_failures": 0,
+      "quality_mean": 0.6209656705948372,
+      "native_diagnostic_mean": 0.6209656705948372,
+      "qualified": false,
+      "archive_member": false,
+      "harbor_digest": "sha256:5a799676ad587312f7f5cc5844013f9f8aabf7ed90559a0fccc3936753159ffc",
+      "model_aliases": [
+        "gpt-6-luna"
+      ]
+    },
+    {
+      "candidate": "t",
+      "files": 9,
+      "trials": 18,
+      "errors": 1,
+      "critic_provider_failures": 0,
+      "quality_mean": 0.6211817620650953,
+      "native_diagnostic_mean": 0.6211817620650953,
+      "qualified": false,
+      "archive_member": false,
+      "harbor_digest": "sha256:3b6c8c7b05281c186b9a455f0f87f3bf08f7eb6e0793d241dda655cd840b82dd",
+      "model_aliases": [
+        "gpt-6-luna"
+      ]
+    }
+  ],
+  "native_archive_sha256": "3d5e8b57276d27bd992604c58e48e488200322f9b35e7b6433ceb17da98b06da",
+  "selection_sha256": "039e6d9f1be9eb30da8b63a9c5f1cd4a56640064f7aa29b895dd5cbfb3b5afa6",
+  "unaffected_family_guards": {
+    "i": {
+      "complete_evaluable": true,
+      "families": {
+        "vector-004--eb6eabbcb9ca2ad4": {
+          "baseline": 0.6269,
+          "candidate": 0.6273071548821549,
+          "delta": 0.00040715488215492535
+        },
+        "vector-019--75606bdb4ee5b4af": {
+          "baseline": 0.5923583333333333,
+          "candidate": 0.7935535353535353,
+          "delta": 0.20119520202020202
+        },
+        "vector-024--652120566170fbf2": {
+          "baseline": 0.6645583333333334,
+          "candidate": 0.6669833333333334,
+          "delta": 0.0024250000000000105
+        }
+      },
+      "baseline_mean": 0.6279388888888889,
+      "candidate_mean": 0.6959480078563413,
+      "mean_gain": 0.06800911896745232,
+      "family_delta_range": [
+        0.00040715488215492535,
+        0.20119520202020202
+      ],
+      "descriptive_family_bootstrap_95_percentile": [
+        0.00040715488215492535,
+        0.20119520202020202
+      ],
+      "bootstrap_limitation": "Few independent groups; descriptive uncertainty, not proof of population-wide gain.",
+      "passed": true
+    },
+    "t": {
+      "complete_evaluable": true,
+      "families": {
+        "vector-004--eb6eabbcb9ca2ad4": {
+          "baseline": 0.6269,
+          "candidate": 0.6337166666666667,
+          "delta": 0.006816666666666693
+        },
+        "vector-019--75606bdb4ee5b4af": {
+          "baseline": 0.5923583333333333,
+          "candidate": 0.6661405723905723,
+          "delta": 0.07378223905723902
+        },
+        "vector-024--652120566170fbf2": {
+          "baseline": 0.6645583333333334,
+          "candidate": 0.6400833333333333,
+          "delta": -0.024475000000000025
+        }
+      },
+      "baseline_mean": 0.6279388888888889,
+      "candidate_mean": 0.6466468574635241,
+      "mean_gain": 0.01870796857463523,
+      "family_delta_range": [
+        -0.024475000000000025,
+        0.07378223905723902
+      ],
+      "descriptive_family_bootstrap_95_percentile": [
+        -0.024475000000000025,
+        0.07378223905723902
+      ],
+      "bootstrap_limitation": "Few independent groups; descriptive uncertainty, not proof of population-wide gain.",
+      "passed": false
+    }
+  },
+  "protocol_sha256": "bc225f026627ca809708847275a797d32ee6af876751efeb9e52c22c0fbfd424",
+  "private_gate_opened": false,
+  "reserved_family_count": 2,
+  "reserved_cohort_consumed": false,
+  "canonical_and_local_unchanged": true,
+  "canonical_realizer_digest": "sha256:2ab3beca48e69f2c12c482a15a09821ff1794e2b1c44bbdbdd9f2388668e0318",
+  "scope": "Six public semantic families with three fixed attempts. Every arm has a preserved execution error, so the native qualified Pareto frontier is empty and no descendant can be selected under the declared method. A missing provider-backed baseline review additionally prevents a complete paired claim. Error-derived native zeros are diagnostic bookkeeping, not Jev judgments.",
+  "stopping_reason": "No qualified native archive member exists; the predeclared workflow stops before generation one and leaves independent validation unopened.",
+  "generator_and_observer_cost": null,
+  "cost_limitation": "Pi does not supply a reliable billed USD total; zero reported tokens/cost in the failed observer is not a price estimate for the experiment."
+}

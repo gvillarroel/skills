@@ -1,5 +1,15 @@
 # Experiment design
 
+## Contents
+
+- [Operationalize the claim](#operationalize-the-claim)
+- [Separate experimental axes](#separate-experimental-axes)
+- [Choose a design](#choose-a-design)
+- [Define time and observation](#define-time-and-observation)
+- [Manage seeds and parallelism](#manage-seeds-and-parallelism)
+- [Set a stopping rule and budget](#set-a-stopping-rule-and-budget)
+- [Validate the design before inference](#validate-the-design-before-inference)
+
 Use an ADEMP+R structure: aim, data-generating mechanism, estimand, methods or
 scenarios, performance outcomes, and replication/robustness/refutation. The
 specification freezes what will be learned before repeated simulation makes

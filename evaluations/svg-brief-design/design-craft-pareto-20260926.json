@@ -1,0 +1,116 @@
+{
+  "status": "no-qualified-pareto-candidate",
+  "installed": false,
+  "method": "harbor-reflective-pareto-search",
+  "new_generator_calls": 54,
+  "model": "openai-codex/gpt-6-luna",
+  "thinking": "medium",
+  "evaluator": "Jev 6.3 unchanged",
+  "retries": 0,
+  "candidates": [
+    {
+      "candidate": "b",
+      "trials": 18,
+      "jev_scored": 17,
+      "errors": 1,
+      "provider_failures": 0,
+      "observed_model": [
+        "gpt-6-luna"
+      ],
+      "native_diagnostic_mean": 0.5990861111111111,
+      "qualified": false,
+      "harbor_digest": "sha256:935e7cee66c23f17341affd953c16b336dedaff12e4f438236247db774b68a95"
+    },
+    {
+      "candidate": "c",
+      "trials": 18,
+      "jev_scored": 17,
+      "errors": 1,
+      "provider_failures": 0,
+      "observed_model": [
+        "gpt-6-luna"
+      ],
+      "native_diagnostic_mean": 0.5859875,
+      "qualified": false,
+      "harbor_digest": "sha256:5f1c1e1405f5ba8a04b5d77b17d671c7b4e5b14900cf31d0634bd799975f3c50"
+    },
+    {
+      "candidate": "d",
+      "trials": 18,
+      "jev_scored": 15,
+      "errors": 3,
+      "provider_failures": 0,
+      "observed_model": [
+        "gpt-6-luna"
+      ],
+      "native_diagnostic_mean": 0.5602093013468014,
+      "qualified": false,
+      "harbor_digest": "sha256:2efe7cae94469351a4a9890f1c764b48b5612a5dc206d3c32528810a06292c9d"
+    }
+  ],
+  "generation": 0,
+  "native_archive_sha256": "5b837ae1ee1d4dbe6233799e1f19483c33f6a61eb9328c6f9ea1b969a6a2ee37",
+  "selection_sha256": "18634d4bc13131c8da85cc543813a7bd9517d906eca3e021eb2d00fc491eef17",
+  "protocol_sha256": "bc489530c27bcb6a15cc7a15ea3e991421d24d3401b91edd7dfa36b3b4d7cc09",
+  "research_sha256": "57a76f39733b35aa1f150cefde93bc03826a6790b095c419a8054c4313c3e6ac",
+  "private_gate_opened": false,
+  "reserved_cohort_consumed": false,
+  "reserved_family_count": 2,
+  "canonical_and_local_unchanged": true,
+  "unaffected_family_guards": {
+    "c": {
+      "complete_evaluable": false,
+      "families": {
+        "vector-004--eb6eabbcb9ca2ad4": {
+          "baseline": 0.5731,
+          "candidate": 0.584575
+        },
+        "vector-019--75606bdb4ee5b4af": {
+          "baseline": 0.6829000000000001,
+          "candidate": 0.6393416666666667
+        },
+        "vector-020--09ee2ae28c7c367a": {
+          "baseline": 0.6434666666666666,
+          "candidate": 0.6351
+        },
+        "vector-024--652120566170fbf2": {
+          "baseline": 0.6692583333333334,
+          "candidate": 0.5985166666666667
+        },
+        "vector-030--d3c57e0c21dbede0": {
+          "baseline": 0.5932416666666667,
+          "candidate": null
+        }
+      },
+      "passed": false
+    },
+    "d": {
+      "complete_evaluable": false,
+      "families": {
+        "vector-004--eb6eabbcb9ca2ad4": {
+          "baseline": 0.5731,
+          "candidate": null
+        },
+        "vector-019--75606bdb4ee5b4af": {
+          "baseline": 0.6829000000000001,
+          "candidate": 0.6900416666666667
+        },
+        "vector-020--09ee2ae28c7c367a": {
+          "baseline": 0.6434666666666666,
+          "candidate": null
+        },
+        "vector-024--652120566170fbf2": {
+          "baseline": 0.6692583333333334,
+          "candidate": 0.6626678451178452
+        },
+        "vector-030--d3c57e0c21dbede0": {
+          "baseline": 0.5932416666666667,
+          "candidate": 0.7287462962962963
+        }
+      },
+      "passed": false
+    }
+  },
+  "limitation": "Native means include preserved execution-failure zeros. They are not pure visual grades. No qualified parent exists for a further generation. Private reserve remains unopened.",
+  "cost": null
+}

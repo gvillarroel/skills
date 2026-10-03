@@ -1,6 +1,6 @@
 ---
 name: google-cloud-sku-pricing
-description: Retrieve, compare, calculate, and export Google Cloud SKU prices across regions using the Cloud Billing Pricing API, a highly compressed offline Parquet catalog, a normalized SQLite snapshot, or the BigQuery pricing export. Use for current public or billing-account prices, regional SKU comparisons, tier selection, usage estimates, portable catalogs, and SQL over cloud_pricing_export.
+description: "Retrieves, compares, calculates, and exports Google Cloud SKU prices across regions using the Cloud Billing Pricing API, a highly compressed offline Parquet catalog, a normalized SQLite snapshot, or the BigQuery pricing export. Use for current public or billing-account prices, regional SKU comparisons, tier selection, usage estimates, portable catalogs, and SQL over cloud_pricing_export."
 ---
 
 # Google Cloud SKU Pricing

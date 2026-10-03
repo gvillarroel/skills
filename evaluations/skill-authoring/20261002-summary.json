@@ -1,0 +1,1743 @@
+{
+  "date": "2026-10-02",
+  "source": "https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices",
+  "skillCount": 34,
+  "authoringAndBundlesPassed": true,
+  "skills": [
+    {
+      "skill": "ambientcg-material-search",
+      "backlogStatus": "done",
+      "entrySha256": "1ccffd7859ffa4f0a4482a788b7fa649ac0313372dd1e72623e3c654235e8872",
+      "description": "Searches free ambientCG materials, HDRIs and other assets from a natural-language brief, shows numbered previews, and downloads the exact selected resolution and format package. Use for ambientCG texture discovery and follow-up downloads of chosen assets.",
+      "manualGuidanceReview": "Bounded API helper; exact variant inspection, atomic download receipt, visual shortlist review, and same-ID browser recovery.",
+      "profileResults": [
+        {
+          "passed": true,
+          "skill": "ambientcg-material-search",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 71,
+            "entryBytes": 3903,
+            "referenceCount": 1,
+            "longReferenceCount": 0
+          },
+          "profile": "source",
+          "fileCount": 7,
+          "payloadSha256": "d6052f2828ec649e35ed5c7775019255607d7275a876320439e2075933a15403"
+        },
+        {
+          "passed": true,
+          "skill": "ambientcg-material-search",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 71,
+            "entryBytes": 3903,
+            "referenceCount": 1,
+            "longReferenceCount": 0
+          },
+          "profile": "runtime",
+          "fileCount": 7,
+          "payloadSha256": "d6052f2828ec649e35ed5c7775019255607d7275a876320439e2075933a15403"
+        },
+        {
+          "passed": true,
+          "skill": "ambientcg-material-search",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 71,
+            "entryBytes": 3903,
+            "referenceCount": 1,
+            "longReferenceCount": 0
+          },
+          "profile": "full",
+          "fileCount": 7,
+          "payloadSha256": "d6052f2828ec649e35ed5c7775019255607d7275a876320439e2075933a15403"
+        }
+      ]
+    },
+    {
+      "skill": "animated-svg-to-gif",
+      "backlogStatus": "done",
+      "entrySha256": "f3e4eb53d80b670a1075435df4d3d87d395ffe6662110b6e95ccf12688c74a4f",
+      "description": "Converts animated SVG files into high-quality GIFs by rendering browser-accurate frames and encoding them with an optimized ffmpeg palette. Use when Codex needs to turn CSS, SMIL, Mermaid, D3, ECharts, Slidev, or other animated SVG assets into shareable GIF files, batch-convert SVG folders, tune GIF dimensions, frame rate, duration, loop behavior, or verify conversion quality.",
+      "manualGuidanceReview": "Parameterized browser capture and FFmpeg defaults; exact paths, width/scaling checks, timing override, ffprobe and preview feedback.",
+      "profileResults": [
+        {
+          "passed": true,
+          "skill": "animated-svg-to-gif",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 88,
+            "entryBytes": 6324,
+            "referenceCount": 0,
+            "longReferenceCount": 0
+          },
+          "profile": "source",
+          "fileCount": 5,
+          "payloadSha256": "2fd019ee38ac48ce2d4fd53a2e4139b5b71bf7b523da241d0dc334d4a4da59db"
+        },
+        {
+          "passed": true,
+          "skill": "animated-svg-to-gif",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 88,
+            "entryBytes": 6324,
+            "referenceCount": 0,
+            "longReferenceCount": 0
+          },
+          "profile": "runtime",
+          "fileCount": 5,
+          "payloadSha256": "2fd019ee38ac48ce2d4fd53a2e4139b5b71bf7b523da241d0dc334d4a4da59db"
+        },
+        {
+          "passed": true,
+          "skill": "animated-svg-to-gif",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 88,
+            "entryBytes": 6324,
+            "referenceCount": 0,
+            "longReferenceCount": 0
+          },
+          "profile": "full",
+          "fileCount": 5,
+          "payloadSha256": "2fd019ee38ac48ce2d4fd53a2e4139b5b71bf7b523da241d0dc334d4a4da59db"
+        }
+      ]
+    },
+    {
+      "skill": "asciinema-real-command-video",
+      "backlogStatus": "validating",
+      "entrySha256": "907afc2a2e4b6deb107b4a1f9e528dd92b58d0c94ca65d0900f0b98917326cb0",
+      "description": "Records authentic persistent, one-shot, command-key, or sequential multi-tool TUI executions and direct-argv runs of installed terminal programs as isolated per-video Asciinema artifact bundles with H.264 MP4 derivatives and executable, action, process, single-attempt, and media provenance. Use when one or several demos must visibly interact with real CLIs, including GitHub Copilot, pickers, or several TUIs in one continuous video, instead of showing a simulated terminal.",
+      "manualGuidanceReview": "Low-freedom recording lifecycle; real executable/PTY ownership, immutable attempts, plan-only boundary, cast/media verification, and preserved failures.",
+      "profileResults": [
+        {
+          "passed": true,
+          "skill": "asciinema-real-command-video",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 80,
+            "entryBytes": 8869,
+            "referenceCount": 8,
+            "longReferenceCount": 3
+          },
+          "profile": "source",
+          "fileCount": 17,
+          "payloadSha256": "e334277fd1f190f67d8cfd35fae88a10075114070d5b2dba58561d7fac1ba3c5"
+        },
+        {
+          "passed": true,
+          "skill": "asciinema-real-command-video",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 80,
+            "entryBytes": 8869,
+            "referenceCount": 8,
+            "longReferenceCount": 3
+          },
+          "profile": "runtime",
+          "fileCount": 17,
+          "payloadSha256": "e334277fd1f190f67d8cfd35fae88a10075114070d5b2dba58561d7fac1ba3c5"
+        },
+        {
+          "passed": true,
+          "skill": "asciinema-real-command-video",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 80,
+            "entryBytes": 8869,
+            "referenceCount": 8,
+            "longReferenceCount": 3
+          },
+          "profile": "full",
+          "fileCount": 17,
+          "payloadSha256": "e334277fd1f190f67d8cfd35fae88a10075114070d5b2dba58561d7fac1ba3c5"
+        }
+      ]
+    },
+    {
+      "skill": "compose-synchronized-svg",
+      "backlogStatus": "validating",
+      "entrySha256": "2b074f852226cf6a990e90567b3fa96132862f532e3eb7165128c07e7737324b",
+      "description": "Designs, builds, synchronizes, and validates giant standalone SVG compositions made from many related diagrams, charts, maps, schematics, illustrations, and explanatory assets. Use when Codex must turn one idea into a coherent 6\u201316-module megacanvas or a 12\u201348-module navigable world such as a Path of Exile-style skill tree, giant genealogy, causal atlas, or linked-diagram map; keep recurring concepts visually consistent; propagate canonical values through every relevant view; coordinate focus, time, world-to-district-to-module semantic zoom, or a deterministic camera route for video; and deliver one self-contained interactive SVG with meaningful static and reduced-motion fallbacks.",
+      "manualGuidanceReview": "Brief/compiler/composer route; typed canonical state, deterministic preflight, propagation/static/browser feedback, and explicit runtime-defect reporting.",
+      "profileResults": [
+        {
+          "passed": true,
+          "skill": "compose-synchronized-svg",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 81,
+            "entryBytes": 11575,
+            "referenceCount": 7,
+            "longReferenceCount": 5
+          },
+          "profile": "source",
+          "fileCount": 36,
+          "payloadSha256": "8edc8b2955ec59150b4946aa74ea6c6d2a5472e5ccc6b10bf9170cc3e6bf5aed"
+        },
+        {
+          "passed": true,
+          "skill": "compose-synchronized-svg",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 81,
+            "entryBytes": 11575,
+            "referenceCount": 7,
+            "longReferenceCount": 5
+          },
+          "profile": "runtime",
+          "fileCount": 31,
+          "payloadSha256": "e45345b12eebe6af419b9ff59ff6f96a3adb4cf52c95eefdd99ad3f82c725667"
+        },
+        {
+          "passed": true,
+          "skill": "compose-synchronized-svg",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 81,
+            "entryBytes": 11575,
+            "referenceCount": 7,
+            "longReferenceCount": 5
+          },
+          "profile": "full",
+          "fileCount": 36,
+          "payloadSha256": "8edc8b2955ec59150b4946aa74ea6c6d2a5472e5ccc6b10bf9170cc3e6bf5aed"
+        }
+      ]
+    },
+    {
+      "skill": "d3",
+      "backlogStatus": "done",
+      "entrySha256": "e109a2d605c68431011c5f450942997a7ba2a3c283808a85e5ec20ba85a0fccb",
+      "description": "Creates, animates, inspects, recomposes, and validates D3-powered HTML and SVG visuals. Use for custom charts, simulations, linked views, visual audits, parametric logos, textures, and portable SVG that need data-driven geometry, joins, layouts, or transitions.",
+      "manualGuidanceReview": "Deterministic supported-form builders with selective recipes; offline geometry, palette/accessibility contracts and settled browser inspection; custom geometry remains available for unsupported forms.",
+      "profileResults": [
+        {
+          "passed": true,
+          "skill": "d3",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 324,
+            "entryBytes": 25361,
+            "referenceCount": 225,
+            "longReferenceCount": 53
+          },
+          "profile": "source",
+          "fileCount": 320,
+          "payloadSha256": "07a8cf073096afea2ef41c6b8a63bdd944d2bc7ff337c38c50652dbad5e8fd42"
+        },
+        {
+          "passed": true,
+          "skill": "d3",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 324,
+            "entryBytes": 25361,
+            "referenceCount": 225,
+            "longReferenceCount": 53
+          },
+          "profile": "runtime",
+          "fileCount": 285,
+          "payloadSha256": "163ac42cc33cc9142ffde1969cdc8c4bf2e59b0ce3ec4a210f7b0918c4c1f540"
+        },
+        {
+          "passed": true,
+          "skill": "d3",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 324,
+            "entryBytes": 25361,
+            "referenceCount": 225,
+            "longReferenceCount": 53
+          },
+          "profile": "full",
+          "fileCount": 320,
+          "payloadSha256": "07a8cf073096afea2ef41c6b8a63bdd944d2bc7ff337c38c50652dbad5e8fd42"
+        }
+      ]
+    },
+    {
+      "skill": "destockd-video-search",
+      "backlogStatus": "done",
+      "entrySha256": "e4811cb677b34cb0fdd521455a2448831c5f023c13b45328a3e923063c0a128a",
+      "description": "Finds archival video shots on Destockd from a natural-language description, browses its collections and films, presents a numbered preview shortlist, and downloads the exact selected MP4. Use for Destockd footage discovery, similar-shot searches, source lookup, and follow-up requests to download a previously selected clip.",
+      "manualGuidanceReview": "Bounded shot search and immutable choice identity; observed previews, exact clip receipts, source-rights limits, and concrete browser fallback.",
+      "profileResults": [
+        {
+          "passed": true,
+          "skill": "destockd-video-search",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 75,
+            "entryBytes": 4921,
+            "referenceCount": 2,
+            "longReferenceCount": 0
+          },
+          "profile": "source",
+          "fileCount": 6,
+          "payloadSha256": "2194949886eef96a8831b5a6e71d10641dc6aac661beaf45c1047f9d380667b2"
+        },
+        {
+          "passed": true,
+          "skill": "destockd-video-search",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 75,
+            "entryBytes": 4921,
+            "referenceCount": 2,
+            "longReferenceCount": 0
+          },
+          "profile": "runtime",
+          "fileCount": 6,
+          "payloadSha256": "2194949886eef96a8831b5a6e71d10641dc6aac661beaf45c1047f9d380667b2"
+        },
+        {
+          "passed": true,
+          "skill": "destockd-video-search",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 75,
+            "entryBytes": 4921,
+            "referenceCount": 2,
+            "longReferenceCount": 0
+          },
+          "profile": "full",
+          "fileCount": 6,
+          "payloadSha256": "2194949886eef96a8831b5a6e71d10641dc6aac661beaf45c1047f9d380667b2"
+        }
+      ]
+    },
+    {
+      "skill": "diagram-composition",
+      "backlogStatus": "done",
+      "entrySha256": "22ca1dbb37095207393e513f5222ea9f5b81caf33960f7be713ab815c9a40018",
+      "description": "Decomposes a complex idea into related subdiagrams, chooses suitable visual forms, and composes a compact page with explicit grid spans, consistent semantic colors, readable text, shared SVG icons, and meaningful cross-panel connections. Use for dense explanatory figures, architecture plates, visual comparisons, and multi-panel diagrams that need semantic planning before layout; coordinate available diagram and icon skills without requiring them.",
+      "manualGuidanceReview": "Semantic planning plus parameterized native panels; source-bound ports and colors, draft/final audit loop, missing-specialist fallback, and visual judgment.",
+      "profileResults": [
+        {
+          "passed": true,
+          "skill": "diagram-composition",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 187,
+            "entryBytes": 11707,
+            "referenceCount": 7,
+            "longReferenceCount": 2
+          },
+          "profile": "source",
+          "fileCount": 21,
+          "payloadSha256": "47609943eee7e4927d2e432e36c8fa655519389b270ac8a054bb761b2d05cd18"
+        },
+        {
+          "passed": true,
+          "skill": "diagram-composition",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 187,
+            "entryBytes": 11707,
+            "referenceCount": 7,
+            "longReferenceCount": 2
+          },
+          "profile": "runtime",
+          "fileCount": 21,
+          "payloadSha256": "47609943eee7e4927d2e432e36c8fa655519389b270ac8a054bb761b2d05cd18"
+        },
+        {
+          "passed": true,
+          "skill": "diagram-composition",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 187,
+            "entryBytes": 11707,
+            "referenceCount": 7,
+            "longReferenceCount": 2
+          },
+          "profile": "full",
+          "fileCount": 21,
+          "payloadSha256": "47609943eee7e4927d2e432e36c8fa655519389b270ac8a054bb761b2d05cd18"
+        }
+      ]
+    },
+    {
+      "skill": "echarts-animated-svg",
+      "backlogStatus": "done",
+      "entrySha256": "2326721e8898d8de5f4437a83ab0c8892d20c927e9974be2705e152d58d9f521",
+      "description": "Animates already-rendered Apache ECharts SVG output and builds replayable SVG galleries. Use when Codex needs to render ECharts charts with SVGRenderer or SSR, post-process the resulting SVG instead of rebuilding chart geometry, choose chart-type-specific SVG animation profiles for ECharts chart types, or create an HTML index with controls to replay or restore chart animations.",
+      "manualGuidanceReview": "Rendered geometry preserved; chart-specific reveal recipes, deterministic timing, final-frame/replay validation, and a bundled small input template.",
+      "profileResults": [
+        {
+          "passed": true,
+          "skill": "echarts-animated-svg",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 94,
+            "entryBytes": 6624,
+            "referenceCount": 4,
+            "longReferenceCount": 1
+          },
+          "profile": "source",
+          "fileCount": 15,
+          "payloadSha256": "3a1c587dc4e093378d7316d962445bfb78ae2cf786dccd68f6f16cd7d5f5d692"
+        },
+        {
+          "passed": true,
+          "skill": "echarts-animated-svg",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 94,
+            "entryBytes": 6624,
+            "referenceCount": 4,
+            "longReferenceCount": 1
+          },
+          "profile": "runtime",
+          "fileCount": 10,
+          "payloadSha256": "bb228b2039298e3406397b19093aa5f25f69a133624ea3569ec9b24351c8a5a0"
+        },
+        {
+          "passed": true,
+          "skill": "echarts-animated-svg",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 94,
+            "entryBytes": 6624,
+            "referenceCount": 4,
+            "longReferenceCount": 1
+          },
+          "profile": "full",
+          "fileCount": 15,
+          "payloadSha256": "3a1c587dc4e093378d7316d962445bfb78ae2cf786dccd68f6f16cd7d5f5d692"
+        }
+      ]
+    },
+    {
+      "skill": "google-cloud-sku-pricing",
+      "backlogStatus": "done",
+      "entrySha256": "9e66f818b010ed263c1745f02ab9aed0f05978d43e52c6c97c10ef18a64b8dba",
+      "description": "Retrieves, compares, calculates, and exports Google Cloud SKU prices across regions using the Cloud Billing Pricing API, a highly compressed offline Parquet catalog, a normalized SQLite snapshot, or the BigQuery pricing export. Use for current public or billing-account prices, regional SKU comparisons, tier selection, usage estimates, portable catalogs, and SQL over cloud_pricing_export.",
+      "manualGuidanceReview": "Source selection precedes calculation; decimal units/tiers/model contracts, exact identifiers, snapshot provenance, and incomplete-access reporting.",
+      "profileResults": [
+        {
+          "passed": true,
+          "skill": "google-cloud-sku-pricing",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 85,
+            "entryBytes": 4998,
+            "referenceCount": 3,
+            "longReferenceCount": 2
+          },
+          "profile": "source",
+          "fileCount": 9,
+          "payloadSha256": "c288209abecede02a52a6f6a8a530aa8b3ee22f2612a4b46e15a70ed3734ef72"
+        },
+        {
+          "passed": true,
+          "skill": "google-cloud-sku-pricing",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 85,
+            "entryBytes": 4998,
+            "referenceCount": 3,
+            "longReferenceCount": 2
+          },
+          "profile": "runtime",
+          "fileCount": 9,
+          "payloadSha256": "c288209abecede02a52a6f6a8a530aa8b3ee22f2612a4b46e15a70ed3734ef72"
+        },
+        {
+          "passed": true,
+          "skill": "google-cloud-sku-pricing",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 85,
+            "entryBytes": 4998,
+            "referenceCount": 3,
+            "longReferenceCount": 2
+          },
+          "profile": "full",
+          "fileCount": 9,
+          "payloadSha256": "c288209abecede02a52a6f6a8a530aa8b3ee22f2612a4b46e15a70ed3734ef72"
+        }
+      ]
+    },
+    {
+      "skill": "harbor-author-evaluation-datasets",
+      "backlogStatus": "validating",
+      "entrySha256": "4128ff1097f568f9ba8b77997945292058528e1eb4286b371025856561f60baf",
+      "description": "Authors and audits leakage-resistant native Harbor task datasets before study registration, or consolidates finalized schema-v1 native Harbor reports into privacy-safe aggregate comparisons. Use when Codex needs to define semantic task families, partition discovery, development, sealed validation, and holdout cohorts, generate deterministic seeded response-surface variants, diversify artifact contracts, test adapters and verifiers against shortcuts, compare completed report artifacts without exposing task-level details, or hand completed dataset roots to harbor-organize-evaluations. Do not use to run or score Harbor jobs or to manage study releases.",
+      "manualGuidanceReview": "Ordered predeclared family/split workflow; deterministic materialization, adversarial verifier controls, privacy boundaries, and aggregate-only report contracts.",
+      "profileResults": [
+        {
+          "passed": true,
+          "skill": "harbor-author-evaluation-datasets",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 220,
+            "entryBytes": 11969,
+            "referenceCount": 1,
+            "longReferenceCount": 1
+          },
+          "profile": "source",
+          "fileCount": 9,
+          "payloadSha256": "d0393a2a3cae2b757292277fab7c988edf33cff76768c34949b80a93ac69a3ac"
+        },
+        {
+          "passed": true,
+          "skill": "harbor-author-evaluation-datasets",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 220,
+            "entryBytes": 11969,
+            "referenceCount": 1,
+            "longReferenceCount": 1
+          },
+          "profile": "runtime",
+          "fileCount": 9,
+          "payloadSha256": "d0393a2a3cae2b757292277fab7c988edf33cff76768c34949b80a93ac69a3ac"
+        },
+        {
+          "passed": true,
+          "skill": "harbor-author-evaluation-datasets",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 220,
+            "entryBytes": 11969,
+            "referenceCount": 1,
+            "longReferenceCount": 1
+          },
+          "profile": "full",
+          "fileCount": 9,
+          "payloadSha256": "d0393a2a3cae2b757292277fab7c988edf33cff76768c34949b80a93ac69a3ac"
+        }
+      ]
+    },
+    {
+      "skill": "hierarchy-lens",
+      "backlogStatus": "done",
+      "entrySha256": "2f3541840ddedb38382035dac889b247d462d16eac17781e9bc121a5466c4a4a",
+      "description": "Builds offline interactive hierarchies with decision-driven pixel composition, compact organic cells, radial heatmaps, or labeled charts. Use for organizational maps, portfolios, or taxonomies needing explicit placement priorities, proximity rules, step-by-step growth, switchable color lenses, and exact record lookup.",
+      "manualGuidanceReview": "Explicit visualization routes and flat-tree contract; bounded deterministic builder, browser/policy checks, numeric/missing-data semantics, and scale limitations.",
+      "profileResults": [
+        {
+          "passed": true,
+          "skill": "hierarchy-lens",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 48,
+            "entryBytes": 6399,
+            "referenceCount": 6,
+            "longReferenceCount": 0
+          },
+          "profile": "source",
+          "fileCount": 26,
+          "payloadSha256": "932700ed7f8ece37364bbd1c75504f43dcf7e1f1bee3a9405cc9424978109334"
+        },
+        {
+          "passed": true,
+          "skill": "hierarchy-lens",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 48,
+            "entryBytes": 6399,
+            "referenceCount": 6,
+            "longReferenceCount": 0
+          },
+          "profile": "runtime",
+          "fileCount": 20,
+          "payloadSha256": "b0a54bc9e820ff4b9150ddb0fe74d9d7693e7a1a106b81311df04a8adf5572fa"
+        },
+        {
+          "passed": true,
+          "skill": "hierarchy-lens",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 48,
+            "entryBytes": 6399,
+            "referenceCount": 6,
+            "longReferenceCount": 0
+          },
+          "profile": "full",
+          "fileCount": 26,
+          "payloadSha256": "932700ed7f8ece37364bbd1c75504f43dcf7e1f1bee3a9405cc9424978109334"
+        }
+      ]
+    },
+    {
+      "skill": "hyperframes-explainer",
+      "backlogStatus": "done",
+      "entrySha256": "8602e207f3b66e4da749cb38f28e04e9ce3b2c1be7db0fa379a8640c184af880",
+      "description": "Creates minimal, synchronized explanatory videos with HyperFrames: one causal event changes a mechanism and related measurements or representations together. Use for code-authored educational animations and interactive explanatory previews with sparse direct labels, colorset1 by default and justified colorset2. Use when the explanation should come from linked motion rather than title cards, narration-heavy slides, promotional typography, or unrelated dashboard panels.",
+      "manualGuidanceReview": "Minimal causal explanation, one shared state and seekable clock, explicit palette policy, pure-state extension contract, and native render/media feedback; concurrent creation tracked separately.",
+      "profileResults": [
+        {
+          "passed": true,
+          "skill": "hyperframes-explainer",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 97,
+            "entryBytes": 6481,
+            "referenceCount": 5,
+            "longReferenceCount": 1
+          },
+          "profile": "source",
+          "fileCount": 22,
+          "payloadSha256": "37c19240953747b9f9f106befda3995f4b2e0a8cac302cadbb200d7569355c7d"
+        },
+        {
+          "passed": true,
+          "skill": "hyperframes-explainer",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 97,
+            "entryBytes": 6481,
+            "referenceCount": 5,
+            "longReferenceCount": 1
+          },
+          "profile": "runtime",
+          "fileCount": 21,
+          "payloadSha256": "6cd060d1b2b3293a877426cdf48c78b5d930882687466eb6b3a7520cdc4e4cb6"
+        },
+        {
+          "passed": true,
+          "skill": "hyperframes-explainer",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 97,
+            "entryBytes": 6481,
+            "referenceCount": 5,
+            "longReferenceCount": 1
+          },
+          "profile": "full",
+          "fileCount": 22,
+          "payloadSha256": "37c19240953747b9f9f106befda3995f4b2e0a8cac302cadbb200d7569355c7d"
+        }
+      ]
+    },
+    {
+      "skill": "iconify-icon-search",
+      "backlogStatus": "done",
+      "entrySha256": "490aa5b96c8456a901abbd51a99e1afc0be48c5255d1788c99293bff44c1deeb",
+      "description": "Searches free Iconify icon collections, presents numbered previews from a consistent family, and downloads the exact selected SVG with source and license metadata. Use for interface or presentation icons from Iconify and follow-up requests for chosen icons.",
+      "manualGuidanceReview": "One consistent family and stable exact ID; bounded previews, verified vector exports, license receipts, and same-identity browser recovery.",
+      "profileResults": [
+        {
+          "passed": true,
+          "skill": "iconify-icon-search",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 55,
+            "entryBytes": 3098,
+            "referenceCount": 1,
+            "longReferenceCount": 0
+          },
+          "profile": "source",
+          "fileCount": 7,
+          "payloadSha256": "34eff261c23258531462bb4658755d3abbcd77632fe526c0b405cffba5fd908a"
+        },
+        {
+          "passed": true,
+          "skill": "iconify-icon-search",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 55,
+            "entryBytes": 3098,
+            "referenceCount": 1,
+            "longReferenceCount": 0
+          },
+          "profile": "runtime",
+          "fileCount": 7,
+          "payloadSha256": "34eff261c23258531462bb4658755d3abbcd77632fe526c0b405cffba5fd908a"
+        },
+        {
+          "passed": true,
+          "skill": "iconify-icon-search",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 55,
+            "entryBytes": 3098,
+            "referenceCount": 1,
+            "longReferenceCount": 0
+          },
+          "profile": "full",
+          "fileCount": 7,
+          "payloadSha256": "34eff261c23258531462bb4658755d3abbcd77632fe526c0b405cffba5fd908a"
+        }
+      ]
+    },
+    {
+      "skill": "jev-batch-decisions",
+      "backlogStatus": "validating",
+      "entrySha256": "0ec6a3192e5ba84b83b1f0f46e9067f6c6decdba51765144c81a944b4993c6be",
+      "description": "Splits large text documents and record collections into bounded batches, evaluates typed decisions with TypeSafe Jev through OpenRouter, and aggregates the results with deterministic reducers or a recursive Jev decision tree. Use for bulk classification, evidence screening, rubric scoring, and document-wide decision questions.",
+      "manualGuidanceReview": "Typed rubrics and bounded map/reduce planning; declared dependencies/credentials, resumable input hashes, complete coverage gate, and sanitized partial-failure reports.",
+      "profileResults": [
+        {
+          "passed": true,
+          "skill": "jev-batch-decisions",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 74,
+            "entryBytes": 4947,
+            "referenceCount": 3,
+            "longReferenceCount": 0
+          },
+          "profile": "source",
+          "fileCount": 13,
+          "payloadSha256": "537b9477b85b85f1101dd6b776c2509674ec4d19b82117a049654fa37a487f5f"
+        },
+        {
+          "passed": true,
+          "skill": "jev-batch-decisions",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 74,
+            "entryBytes": 4947,
+            "referenceCount": 3,
+            "longReferenceCount": 0
+          },
+          "profile": "runtime",
+          "fileCount": 12,
+          "payloadSha256": "066c6a49103b332820d48a856036cb99b5a5a8ed5305c36f5524d758b2855204"
+        },
+        {
+          "passed": true,
+          "skill": "jev-batch-decisions",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 74,
+            "entryBytes": 4947,
+            "referenceCount": 3,
+            "longReferenceCount": 0
+          },
+          "profile": "full",
+          "fileCount": 13,
+          "payloadSha256": "537b9477b85b85f1101dd6b776c2509674ec4d19b82117a049654fa37a487f5f"
+        }
+      ]
+    },
+    {
+      "skill": "kenney-asset-search",
+      "backlogStatus": "done",
+      "entrySha256": "f7b4529ad2674bb8123f0c65fb2b04d9b121e5db37ac072c5e47d213e167fb58",
+      "description": "Finds free Kenney game asset packs by theme, category and style, shows numbered previews, downloads the exact selected ZIP, and extracts chosen files with license notices. Use for Kenney sprites, tiles, 3D props, UI, textures and audio packs.",
+      "manualGuidanceReview": "Free-pack selection and exact member inventory; CRC/license-preserving extraction, immutable choices, and concrete free-download browser recovery.",
+      "profileResults": [
+        {
+          "passed": true,
+          "skill": "kenney-asset-search",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 73,
+            "entryBytes": 3815,
+            "referenceCount": 1,
+            "longReferenceCount": 0
+          },
+          "profile": "source",
+          "fileCount": 7,
+          "payloadSha256": "3c9752f2d914eea849f1c694cee15c41d089cd3038159755b06498e7a5d78174"
+        },
+        {
+          "passed": true,
+          "skill": "kenney-asset-search",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 73,
+            "entryBytes": 3815,
+            "referenceCount": 1,
+            "longReferenceCount": 0
+          },
+          "profile": "runtime",
+          "fileCount": 7,
+          "payloadSha256": "3c9752f2d914eea849f1c694cee15c41d089cd3038159755b06498e7a5d78174"
+        },
+        {
+          "passed": true,
+          "skill": "kenney-asset-search",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 73,
+            "entryBytes": 3815,
+            "referenceCount": 1,
+            "longReferenceCount": 0
+          },
+          "profile": "full",
+          "fileCount": 7,
+          "payloadSha256": "3c9752f2d914eea849f1c694cee15c41d089cd3038159755b06498e7a5d78174"
+        }
+      ]
+    },
+    {
+      "skill": "manim-svg-video",
+      "backlogStatus": "done",
+      "entrySha256": "7669346844300f69316bee5802cef5c8598dd66dae76461582d3786f5193c51a",
+      "description": "Renders one or many SVG or animated-SVG source assets into a configurable Manim-authored MP4 with SVG-only sequencing, vector or raster import, exact-duration repair, and a composition manifest. Use for standalone SVG-to-video work, animated-SVG showcases, replacement or mosaic timelines, and Manim SVG render troubleshooting that does not need mixed-media composition, cross-producer interactions, narration, or a broader video production workflow.",
+      "manualGuidanceReview": "SVG-only ownership with explicit static/animated import limitations; configurable dry run, short render, exact-duration repair, and media/manifest checks.",
+      "profileResults": [
+        {
+          "passed": true,
+          "skill": "manim-svg-video",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 32,
+            "entryBytes": 3144,
+            "referenceCount": 3,
+            "longReferenceCount": 0
+          },
+          "profile": "source",
+          "fileCount": 6,
+          "payloadSha256": "b57569176a7816c909d479c84494eb095ba72171f1134a2dc04fdda62aff7e89"
+        },
+        {
+          "passed": true,
+          "skill": "manim-svg-video",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 32,
+            "entryBytes": 3144,
+            "referenceCount": 3,
+            "longReferenceCount": 0
+          },
+          "profile": "runtime",
+          "fileCount": 6,
+          "payloadSha256": "b57569176a7816c909d479c84494eb095ba72171f1134a2dc04fdda62aff7e89"
+        },
+        {
+          "passed": true,
+          "skill": "manim-svg-video",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 32,
+            "entryBytes": 3144,
+            "referenceCount": 3,
+            "longReferenceCount": 0
+          },
+          "profile": "full",
+          "fileCount": 6,
+          "payloadSha256": "b57569176a7816c909d479c84494eb095ba72171f1134a2dc04fdda62aff7e89"
+        }
+      ]
+    },
+    {
+      "skill": "mermaid",
+      "backlogStatus": "done",
+      "entrySha256": "4b78cd398875a5303963b3fc0c3ef463fdbeb0613fc0d543226eaf803935d1c1",
+      "description": "Creates, selects, styles, renders, validates, and animates Mermaid diagrams from prose or structured data, including verified accessible title and description metadata for newly authored work. Use when Codex must honor or infer an appropriate Mermaid family; preserve workflows, schedules, schemas, hierarchies, interactions, behavioral contracts, tabular data, or quantitative facts; simplify or audience-adapt an existing diagram with an explicit fidelity ledger; apply colorset1 as the standard palette or colorset2 only when extended/full-color styling is explicitly requested; restyle Mermaid files or Markdown fences; render static SVG; or produce faithful animated SVG.",
+      "manualGuidanceReview": "Notation/fidelity-first workflow; selective family/animation references, write-then-check styling, accessible SVG rendering, and geometry/meaning review.",
+      "profileResults": [
+        {
+          "passed": true,
+          "skill": "mermaid",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 64,
+            "entryBytes": 8367,
+            "referenceCount": 6,
+            "longReferenceCount": 1
+          },
+          "profile": "source",
+          "fileCount": 229,
+          "payloadSha256": "3e473ef44d6af4ef3d45ea1cfa9b2f3d377b287746035210538d78b596d11f3e"
+        },
+        {
+          "passed": true,
+          "skill": "mermaid",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 64,
+            "entryBytes": 8367,
+            "referenceCount": 6,
+            "longReferenceCount": 1
+          },
+          "profile": "runtime",
+          "fileCount": 18,
+          "payloadSha256": "66bde90bd296ca660cda55dff66a47317c7ea0baefd1a6f1159ac741909ffa76"
+        },
+        {
+          "passed": true,
+          "skill": "mermaid",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 64,
+            "entryBytes": 8367,
+            "referenceCount": 6,
+            "longReferenceCount": 1
+          },
+          "profile": "full",
+          "fileCount": 229,
+          "payloadSha256": "3e473ef44d6af4ef3d45ea1cfa9b2f3d377b287746035210538d78b596d11f3e"
+        }
+      ]
+    },
+    {
+      "skill": "one-bit-dither-svg",
+      "backlogStatus": "done",
+      "entrySha256": "a4d8e8c59e625345ed7f451e50526a7d413553e5c6ee08c0981490e416078694",
+      "description": "Transforms local SVGs and raster images into self-contained pixel SVGs, or restyles declarative animated SVGs and animated raster images as palette-optimized GIFs, with a one-bit dithered engraving aesthetic. Includes Obra Dinn-inspired black-and-white, custom-color-and-white, and region-aware source-color modes. Use for retro 1-bit, stippled, or high-contrast treatment of illustrations, photos, screenshots, logos, diagrams, SVG/CSS/SMIL animation, and animated GIF/WebP/APNG files; not when source editability, JavaScript-driven motion, or interaction must remain intact.",
+      "manualGuidanceReview": "Explicit mode and quality defaults; deterministic grid and stable animation palette, source flattening limits, native preview, and independent SVG/GIF validation.",
+      "profileResults": [
+        {
+          "passed": true,
+          "skill": "one-bit-dither-svg",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 95,
+            "entryBytes": 8507,
+            "referenceCount": 2,
+            "longReferenceCount": 1
+          },
+          "profile": "source",
+          "fileCount": 10,
+          "payloadSha256": "4e738f90dcde391855f34351755ddf6c6f59481480752f6bf8d298998ca80e70"
+        },
+        {
+          "passed": true,
+          "skill": "one-bit-dither-svg",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 95,
+            "entryBytes": 8507,
+            "referenceCount": 2,
+            "longReferenceCount": 1
+          },
+          "profile": "runtime",
+          "fileCount": 10,
+          "payloadSha256": "4e738f90dcde391855f34351755ddf6c6f59481480752f6bf8d298998ca80e70"
+        },
+        {
+          "passed": true,
+          "skill": "one-bit-dither-svg",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 95,
+            "entryBytes": 8507,
+            "referenceCount": 2,
+            "longReferenceCount": 1
+          },
+          "profile": "full",
+          "fileCount": 10,
+          "payloadSha256": "4e738f90dcde391855f34351755ddf6c6f59481480752f6bf8d298998ca80e70"
+        }
+      ]
+    },
+    {
+      "skill": "pexels-media-search",
+      "backlogStatus": "validating",
+      "entrySha256": "816bfb4cf1546c2f1a73cd1bf4c3cfa11611c346ca65ad55f2dd67b8d234318c",
+      "description": "Finds free Pexels photos and videos from a natural-language brief, presents numbered previews with creator credit, and downloads the exact chosen original photo or video rendition. Use for Pexels stock media search and follow-up downloads; the API requires a free Pexels key.",
+      "manualGuidanceReview": "Credential status without disclosure; exact photo/video variants, reviewed shortlist, provenance receipts, and a documented no-key browser route.",
+      "profileResults": [
+        {
+          "passed": true,
+          "skill": "pexels-media-search",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 70,
+            "entryBytes": 4157,
+            "referenceCount": 1,
+            "longReferenceCount": 0
+          },
+          "profile": "source",
+          "fileCount": 7,
+          "payloadSha256": "d764a6a8edecf8f88975487a9bf236f18daf08812f98a250d59176e91a69e522"
+        },
+        {
+          "passed": true,
+          "skill": "pexels-media-search",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 70,
+            "entryBytes": 4157,
+            "referenceCount": 1,
+            "longReferenceCount": 0
+          },
+          "profile": "runtime",
+          "fileCount": 7,
+          "payloadSha256": "d764a6a8edecf8f88975487a9bf236f18daf08812f98a250d59176e91a69e522"
+        },
+        {
+          "passed": true,
+          "skill": "pexels-media-search",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 70,
+            "entryBytes": 4157,
+            "referenceCount": 1,
+            "longReferenceCount": 0
+          },
+          "profile": "full",
+          "fileCount": 7,
+          "payloadSha256": "d764a6a8edecf8f88975487a9bf236f18daf08812f98a250d59176e91a69e522"
+        }
+      ]
+    },
+    {
+      "skill": "pixel-art-image-video",
+      "backlogStatus": "done",
+      "entrySha256": "a730b9d8d8823e7ab51b85ff6358baba27547f616a190bbd3872645bb1e8a8f7",
+      "description": "Converts local raster or SVG images and local videos or animated rasters into crisp pixel art with adaptive, custom, or exact source colors. Use for retro game-style PNG/WebP stills, MP4/GIF motion, lossless MKV video, and image-dependent pixel-density tuning; do not use when the source must remain editable vector art or JavaScript-driven SVG motion needs direct capture.",
+      "manualGuidanceReview": "Feature-driven profile selection and explicit overrides; exact-color/alpha/audio constraints, bounded conversion, source/RGB/media validation and visual repair.",
+      "profileResults": [
+        {
+          "passed": true,
+          "skill": "pixel-art-image-video",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 73,
+            "entryBytes": 7127,
+            "referenceCount": 2,
+            "longReferenceCount": 0
+          },
+          "profile": "source",
+          "fileCount": 7,
+          "payloadSha256": "d84ec35a7e48e804bcba418a1462cf70c755639295ff328d0eacc39ced6ad300"
+        },
+        {
+          "passed": true,
+          "skill": "pixel-art-image-video",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 73,
+            "entryBytes": 7127,
+            "referenceCount": 2,
+            "longReferenceCount": 0
+          },
+          "profile": "runtime",
+          "fileCount": 7,
+          "payloadSha256": "d84ec35a7e48e804bcba418a1462cf70c755639295ff328d0eacc39ced6ad300"
+        },
+        {
+          "passed": true,
+          "skill": "pixel-art-image-video",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 73,
+            "entryBytes": 7127,
+            "referenceCount": 2,
+            "longReferenceCount": 0
+          },
+          "profile": "full",
+          "fileCount": 7,
+          "payloadSha256": "d84ec35a7e48e804bcba418a1462cf70c755639295ff328d0eacc39ced6ad300"
+        }
+      ]
+    },
+    {
+      "skill": "plantuml-colorset-renderer",
+      "backlogStatus": "done",
+      "entrySha256": "8db7bcb5156c2eac290905f5318504be4eaf07449e40431c6df4fed4a9bb3299",
+      "description": "Renders and validates PlantUML diagrams with bundled colorset themes across UML and non-UML families. Use for PlantUML creation, styling, cloud architecture diagrams, SVG or PNG batch rendering, deterministic reports, private local rendering, and diagram-family coverage; do not use for standalone logo search or export.",
+      "manualGuidanceReview": "Exact output-root mapping and palette/engine selection; local-private default, semantic preservation, report validation, and labeled expected-unavailable coverage.",
+      "profileResults": [
+        {
+          "passed": true,
+          "skill": "plantuml-colorset-renderer",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 139,
+            "entryBytes": 9479,
+            "referenceCount": 1,
+            "longReferenceCount": 0
+          },
+          "profile": "source",
+          "fileCount": 107,
+          "payloadSha256": "9acc355e516db44d677cb8c606bee092a9f4e467b08715f6f107bbf7acb408fd"
+        },
+        {
+          "passed": true,
+          "skill": "plantuml-colorset-renderer",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 139,
+            "entryBytes": 9479,
+            "referenceCount": 1,
+            "longReferenceCount": 0
+          },
+          "profile": "runtime",
+          "fileCount": 12,
+          "payloadSha256": "ef4f1ae66ecfb90dbb4aa71431b005d043d5f180b5aeacddcb9691e2d8b8ce46"
+        },
+        {
+          "passed": true,
+          "skill": "plantuml-colorset-renderer",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 139,
+            "entryBytes": 9479,
+            "referenceCount": 1,
+            "longReferenceCount": 0
+          },
+          "profile": "full",
+          "fileCount": 107,
+          "payloadSha256": "9acc355e516db44d677cb8c606bee092a9f4e467b08715f6f107bbf7acb408fd"
+        }
+      ]
+    },
+    {
+      "skill": "polyhaven-asset-search",
+      "backlogStatus": "done",
+      "entrySha256": "c220768cad395fc8708abec3160e954ebe1336e44809adb7b1a18e734f8a25a4",
+      "description": "Finds free Poly Haven textures, HDRIs and 3D models from a visual brief, presents numbered previews, and downloads the exact selected resolution, format and dependent files. Use for Poly Haven resource discovery and follow-up downloads of selected assets.",
+      "manualGuidanceReview": "Type-aware bounded search and exact dependency-preserving variants; verified receipts, visual uncertainty, and same-ID browser recovery.",
+      "profileResults": [
+        {
+          "passed": true,
+          "skill": "polyhaven-asset-search",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 91,
+            "entryBytes": 5072,
+            "referenceCount": 1,
+            "longReferenceCount": 0
+          },
+          "profile": "source",
+          "fileCount": 7,
+          "payloadSha256": "515ae1fb753ca53e9ff03c2fbabf837025a9e586e3a7c8f44e7ccaf232599ab9"
+        },
+        {
+          "passed": true,
+          "skill": "polyhaven-asset-search",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 91,
+            "entryBytes": 5072,
+            "referenceCount": 1,
+            "longReferenceCount": 0
+          },
+          "profile": "runtime",
+          "fileCount": 7,
+          "payloadSha256": "515ae1fb753ca53e9ff03c2fbabf837025a9e586e3a7c8f44e7ccaf232599ab9"
+        },
+        {
+          "passed": true,
+          "skill": "polyhaven-asset-search",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 91,
+            "entryBytes": 5072,
+            "referenceCount": 1,
+            "longReferenceCount": 0
+          },
+          "profile": "full",
+          "fileCount": 7,
+          "payloadSha256": "515ae1fb753ca53e9ff03c2fbabf837025a9e586e3a7c8f44e7ccaf232599ab9"
+        }
+      ]
+    },
+    {
+      "skill": "procedural-svg-animation",
+      "backlogStatus": "done",
+      "entrySha256": "175943cd414d1ffaed3de41545dccf0f4ac22664d2e64393743945050625bfa3",
+      "description": "Generates, combines, animates, and validates deterministic standalone SVG systems from programmatic geometry, oscillators, paths, particles, fields, simulations, topology, transport, recursive growth, tilings, masks, gradients, and filter graphs. Use for procedural motion studies, generative SVG art, mathematical animation, multi-strata numerical solvers, seeded visual systems, technique exploration, seamless loops, or self-contained animated SVG/HTML where a chart, Mermaid diagram, or manually authored timeline is not the primary abstraction.",
+      "manualGuidanceReview": "Time/seed/parameter contract with describe/list interfaces; deterministic solver invariants, readable fallback/reduced motion, static/browser feedback, and bounded performance guidance.",
+      "profileResults": [
+        {
+          "passed": true,
+          "skill": "procedural-svg-animation",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 87,
+            "entryBytes": 8196,
+            "referenceCount": 6,
+            "longReferenceCount": 4
+          },
+          "profile": "source",
+          "fileCount": 85,
+          "payloadSha256": "8e324890cbf016df5124b682dd6c7b8e63589d74d3f23acda59c983a6b12a8f9"
+        },
+        {
+          "passed": true,
+          "skill": "procedural-svg-animation",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 87,
+            "entryBytes": 8196,
+            "referenceCount": 6,
+            "longReferenceCount": 4
+          },
+          "profile": "runtime",
+          "fileCount": 15,
+          "payloadSha256": "efa056afafb0de5680b8a227108c8bbefe045cde615ca8383a380afaf48e6f4a"
+        },
+        {
+          "passed": true,
+          "skill": "procedural-svg-animation",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 87,
+            "entryBytes": 8196,
+            "referenceCount": 6,
+            "longReferenceCount": 4
+          },
+          "profile": "full",
+          "fileCount": 85,
+          "payloadSha256": "8e324890cbf016df5124b682dd6c7b8e63589d74d3f23acda59c983a6b12a8f9"
+        }
+      ]
+    },
+    {
+      "skill": "repository-reviewer-creator",
+      "backlogStatus": "validating",
+      "entrySha256": "759208eb5d11c168ede1b3803cbdbb8862cc47e9018513672b49f52275a02131",
+      "description": "Creates or updates a standalone reviewer skill tailored to a particular repository, using project evidence to define change-specific review rules, security boundaries, safe validation, and actionable findings. Use when asked to generate a reviewer for a repository or calibrate its review skill.",
+      "manualGuidanceReview": "Evidence-first specialization, current identity/scope, semantic rule routing, actionable-finding gate, safe command locations, structural repair, and generated-reviewer use checks.",
+      "profileResults": [
+        {
+          "passed": true,
+          "skill": "repository-reviewer-creator",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 40,
+            "entryBytes": 4884,
+            "referenceCount": 4,
+            "longReferenceCount": 0
+          },
+          "profile": "source",
+          "fileCount": 12,
+          "payloadSha256": "06202e7a5b252a1fd80a52a93944e1f4936dd984bf6cffa75c85b18023dd462c"
+        },
+        {
+          "passed": true,
+          "skill": "repository-reviewer-creator",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 40,
+            "entryBytes": 4884,
+            "referenceCount": 4,
+            "longReferenceCount": 0
+          },
+          "profile": "runtime",
+          "fileCount": 11,
+          "payloadSha256": "b1d9a64557482588cb7eb7f3d165e0b1c8edd34de308c6dd7632d4fbeb3e9988"
+        },
+        {
+          "passed": true,
+          "skill": "repository-reviewer-creator",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 40,
+            "entryBytes": 4884,
+            "referenceCount": 4,
+            "longReferenceCount": 0
+          },
+          "profile": "full",
+          "fileCount": 12,
+          "payloadSha256": "06202e7a5b252a1fd80a52a93944e1f4936dd984bf6cffa75c85b18023dd462c"
+        }
+      ]
+    },
+    {
+      "skill": "simulation-data-lab",
+      "backlogStatus": "validating",
+      "entrySha256": "f261e07a8e28bbf134992fbeaf503d133fdc5294ebb12cbf383b43118129657e",
+      "description": "Builds and executes mathematical models, never the systems being modeled, to generate explorable simulated data, expected behavior, risk estimates, and explicitly conditional uncertainty. Use for stochastic, deterministic, discrete-event, agent-based, dynamical-system, sensitivity, or counterfactual simulations; not for live benchmarks, target-program execution, real agent/model calls, or empirical causal proof.",
+      "manualGuidanceReview": "Mathematical-only boundary; predeclared variables and estimands, model activation/invariants, explicit uncertainty, immutable data/provenance and independent result recomputation.",
+      "profileResults": [
+        {
+          "passed": true,
+          "skill": "simulation-data-lab",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 238,
+            "entryBytes": 15043,
+            "referenceCount": 9,
+            "longReferenceCount": 7
+          },
+          "profile": "source",
+          "fileCount": 23,
+          "payloadSha256": "62c105645b64dc2b47b114480f411c8f7998245c8e3db223f7b0e4ed624de4e6"
+        },
+        {
+          "passed": true,
+          "skill": "simulation-data-lab",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 238,
+            "entryBytes": 15043,
+            "referenceCount": 9,
+            "longReferenceCount": 7
+          },
+          "profile": "runtime",
+          "fileCount": 23,
+          "payloadSha256": "62c105645b64dc2b47b114480f411c8f7998245c8e3db223f7b0e4ed624de4e6"
+        },
+        {
+          "passed": true,
+          "skill": "simulation-data-lab",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 238,
+            "entryBytes": 15043,
+            "referenceCount": 9,
+            "longReferenceCount": 7
+          },
+          "profile": "full",
+          "fileCount": 23,
+          "payloadSha256": "62c105645b64dc2b47b114480f411c8f7998245c8e3db223f7b0e4ed624de4e6"
+        }
+      ]
+    },
+    {
+      "skill": "slidev-animejs",
+      "backlogStatus": "done",
+      "entrySha256": "a8eb57f2379ba576d1fa6d16e5d27bc2502481032b74338e4031b77301604739",
+      "description": "Builds, choreographs, troubleshoots, and validates Anime.js animations inside Slidev presentations. Use when Codex needs to add reusable Vue animation components to a Slidev deck, wire Anime.js lifecycle cleanup with Slidev clicks and slide mounts, create CSS, keyframe, JavaScript object, stagger, timeline, playback, timer, animatable, easing, SVG, text, layout, draggable, scroll, scope, WAAPI, or engine-control demos, or verify animated Slidev decks in browser and export workflows.",
+      "manualGuidanceReview": "Component-scoped Vue lifecycle and cleanup; deterministic click/seek behavior, task-specific recipes, copy-ready runtime assets, and build/browser feedback.",
+      "profileResults": [
+        {
+          "passed": true,
+          "skill": "slidev-animejs",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 65,
+            "entryBytes": 5781,
+            "referenceCount": 25,
+            "longReferenceCount": 1
+          },
+          "profile": "source",
+          "fileCount": 45,
+          "payloadSha256": "8f2f2439880e8261f5729c3297f97402ee811df22e2caa6cb4f9077063f967a7"
+        },
+        {
+          "passed": true,
+          "skill": "slidev-animejs",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 65,
+            "entryBytes": 5781,
+            "referenceCount": 25,
+            "longReferenceCount": 1
+          },
+          "profile": "runtime",
+          "fileCount": 35,
+          "payloadSha256": "34d100e7ac505bb9eaa1d8e73e719d838665089265641c99a7cf711ba0eba415"
+        },
+        {
+          "passed": true,
+          "skill": "slidev-animejs",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 65,
+            "entryBytes": 5781,
+            "referenceCount": 25,
+            "longReferenceCount": 1
+          },
+          "profile": "full",
+          "fileCount": 45,
+          "payloadSha256": "8f2f2439880e8261f5729c3297f97402ee811df22e2caa6cb4f9077063f967a7"
+        }
+      ]
+    },
+    {
+      "skill": "slidev-echarts",
+      "backlogStatus": "done",
+      "entrySha256": "e87319f76d6e3da7c3a686a2bd03c7827eecd38eed39bf12f3965ffa696d8ae2",
+      "description": "Builds and troubleshoots Apache ECharts visualizations inside Slidev presentations. Use when Codex needs to add reusable ECharts Vue components to a Slidev deck, wire responsive chart containers, create click-driven data stories, tune chart modules and renderers, expose deterministic chart states for downstream capture, or validate charts in the browser; hand video composition and recording to the video skill.",
+      "manualGuidanceReview": "Modular chart registration and renderer/container requirements; deterministic click state, resize/dispose lifecycle, selective chart recipes, and build/browser checks.",
+      "profileResults": [
+        {
+          "passed": true,
+          "skill": "slidev-echarts",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 63,
+            "entryBytes": 4991,
+            "referenceCount": 27,
+            "longReferenceCount": 1
+          },
+          "profile": "source",
+          "fileCount": 53,
+          "payloadSha256": "f69d057699125f5aa2a902c3702d815fa7beb7a7f139a5a1433bf3a2fdd54cd3"
+        },
+        {
+          "passed": true,
+          "skill": "slidev-echarts",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 63,
+            "entryBytes": 4991,
+            "referenceCount": 27,
+            "longReferenceCount": 1
+          },
+          "profile": "runtime",
+          "fileCount": 29,
+          "payloadSha256": "01f65dd19c22d7e5879249ccad80a091c4735d4e2fceeb68a4a9322afbf73e50"
+        },
+        {
+          "passed": true,
+          "skill": "slidev-echarts",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 63,
+            "entryBytes": 4991,
+            "referenceCount": 27,
+            "longReferenceCount": 1
+          },
+          "profile": "full",
+          "fileCount": 53,
+          "payloadSha256": "f69d057699125f5aa2a902c3702d815fa7beb7a7f139a5a1433bf3a2fdd54cd3"
+        }
+      ]
+    },
+    {
+      "skill": "slidev-quality-audit",
+      "backlogStatus": "validating",
+      "entrySha256": "5da62c0d58b1a10234a4d043ae408fec4b92599608f15c22580bd7c2064a963b",
+      "description": "Audits Slidev decks for visual quality regressions with automated Playwright checks and actionable critiques. Use when Codex needs to verify Slidev presentations for off-screen elements, clipped or hidden information, text overlap, low contrast, tiny text, blank charts or media, broken assets, unchanged click states, unsafe margins, and excessive content density before delivering a deck, screenshot set, or video.",
+      "manualGuidanceReview": "Parameterized Playwright audit with local exception markers; report/selector-driven repairs, reruns, strict findings mode, and explicit rule interpretation.",
+      "profileResults": [
+        {
+          "passed": true,
+          "skill": "slidev-quality-audit",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 76,
+            "entryBytes": 3749,
+            "referenceCount": 1,
+            "longReferenceCount": 0
+          },
+          "profile": "source",
+          "fileCount": 4,
+          "payloadSha256": "f75bfbf95d90aba62659ca398ca54fd77b7c80254ae9afebee41b6424d47efb5"
+        },
+        {
+          "passed": true,
+          "skill": "slidev-quality-audit",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 76,
+            "entryBytes": 3749,
+            "referenceCount": 1,
+            "longReferenceCount": 0
+          },
+          "profile": "runtime",
+          "fileCount": 4,
+          "payloadSha256": "f75bfbf95d90aba62659ca398ca54fd77b7c80254ae9afebee41b6424d47efb5"
+        },
+        {
+          "passed": true,
+          "skill": "slidev-quality-audit",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 76,
+            "entryBytes": 3749,
+            "referenceCount": 1,
+            "longReferenceCount": 0
+          },
+          "profile": "full",
+          "fileCount": 4,
+          "payloadSha256": "f75bfbf95d90aba62659ca398ca54fd77b7c80254ae9afebee41b6424d47efb5"
+        }
+      ]
+    },
+    {
+      "skill": "svg-brief-design",
+      "backlogStatus": "validating",
+      "entrySha256": "bef26f5671e0c273e71b013b742841a058c30551f0585d00b759fe0add0d4e47",
+      "description": "Creates original editable SVG illustrations, ornaments, emblems, and decorative diagrams from short text briefs, with deliberate composition, line hierarchy, and negative space. Use for designing new vector artwork; not for tracing images, converting raster assets, or building interactive visualizations.",
+      "manualGuidanceReview": "High freedom for original geometry, parameterized scaffolds when suitable; subject/negative-space preservation, documented renderer/dependency fallback, and native/thumbnail visual repair.",
+      "profileResults": [
+        {
+          "passed": true,
+          "skill": "svg-brief-design",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 129,
+            "entryBytes": 7030,
+            "referenceCount": 4,
+            "longReferenceCount": 0
+          },
+          "profile": "source",
+          "fileCount": 9,
+          "payloadSha256": "08bdc83ab745ad5e673967a7793322b652da5727dbaff84bd4a2613d10e1ac2b"
+        },
+        {
+          "passed": true,
+          "skill": "svg-brief-design",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 129,
+            "entryBytes": 7030,
+            "referenceCount": 4,
+            "longReferenceCount": 0
+          },
+          "profile": "runtime",
+          "fileCount": 9,
+          "payloadSha256": "08bdc83ab745ad5e673967a7793322b652da5727dbaff84bd4a2613d10e1ac2b"
+        },
+        {
+          "passed": true,
+          "skill": "svg-brief-design",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 129,
+            "entryBytes": 7030,
+            "referenceCount": 4,
+            "longReferenceCount": 0
+          },
+          "profile": "full",
+          "fileCount": 9,
+          "payloadSha256": "08bdc83ab745ad5e673967a7793322b652da5727dbaff84bd4a2613d10e1ac2b"
+        }
+      ]
+    },
+    {
+      "skill": "technical-logo-assets",
+      "backlogStatus": "validating",
+      "entrySha256": "77bdd6fcde51263d0fc241d4d37c563a78202d3117a1131e1d1064808f82b6e3",
+      "description": "Searches, selects, validates, and exports a verified vector-only catalog of technical brand logos with labeled color, grayscale, black, white, and adaptive variants. Use for exact cloud, company, language, framework, database, AI, and developer-tool logos in diagrams, documents, presentations, websites, videos, or other SVG-capable deliverables; do not use for generating new artwork or general-purpose pictograms.",
+      "manualGuidanceReview": "Compact manifest search and exact identity/variant export; vector/license/provenance checks, protected sources, and unavailable-variant reporting.",
+      "profileResults": [
+        {
+          "passed": true,
+          "skill": "technical-logo-assets",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 73,
+            "entryBytes": 5748,
+            "referenceCount": 3,
+            "longReferenceCount": 0
+          },
+          "profile": "source",
+          "fileCount": 8571,
+          "payloadSha256": "1757ad5dac30563debb3fee072a42c4f3a2e99b7928c4fb9952a4d672dba42aa"
+        },
+        {
+          "passed": true,
+          "skill": "technical-logo-assets",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 73,
+            "entryBytes": 5748,
+            "referenceCount": 3,
+            "longReferenceCount": 0
+          },
+          "profile": "runtime",
+          "fileCount": 8571,
+          "payloadSha256": "1757ad5dac30563debb3fee072a42c4f3a2e99b7928c4fb9952a4d672dba42aa"
+        },
+        {
+          "passed": true,
+          "skill": "technical-logo-assets",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 73,
+            "entryBytes": 5748,
+            "referenceCount": 3,
+            "longReferenceCount": 0
+          },
+          "profile": "full",
+          "fileCount": 8571,
+          "payloadSha256": "1757ad5dac30563debb3fee072a42c4f3a2e99b7928c4fb9952a4d672dba42aa"
+        }
+      ]
+    },
+    {
+      "skill": "threejs-animated-3d",
+      "backlogStatus": "done",
+      "entrySha256": "95e5a2a47197efd71aa518b60b367234adeddbf96a8ca1d7df0661104d314027",
+      "description": "Builds, animates, troubleshoots, and validates Three.js/WebGL 3D scenes and galleries. Use when Codex needs browser-rendered 3D visuals, animated camera or object motion, particle fields, 3D data views, material and lighting studies, interactive canvas scenes, or a Three.js example page that should be verified with Playwright canvas-pixel checks.",
+      "manualGuidanceReview": "Meaningful 3D routing and explicit lifecycle; portable offline builder, deterministic capture, responsive canvas/motion/replay checks, and local-browser fallback.",
+      "profileResults": [
+        {
+          "passed": true,
+          "skill": "threejs-animated-3d",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 103,
+            "entryBytes": 8479,
+            "referenceCount": 3,
+            "longReferenceCount": 0
+          },
+          "profile": "source",
+          "fileCount": 17,
+          "payloadSha256": "2996a41ef1a8d59edceb3c39741996f6c0e8bc68ff26b89158d434f10c504bd5"
+        },
+        {
+          "passed": true,
+          "skill": "threejs-animated-3d",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 103,
+            "entryBytes": 8479,
+            "referenceCount": 3,
+            "longReferenceCount": 0
+          },
+          "profile": "runtime",
+          "fileCount": 10,
+          "payloadSha256": "2639ab2a2e5a915fced6cecf9d689a9983fa97872b219f35409c0010096f938f"
+        },
+        {
+          "passed": true,
+          "skill": "threejs-animated-3d",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 103,
+            "entryBytes": 8479,
+            "referenceCount": 3,
+            "longReferenceCount": 0
+          },
+          "profile": "full",
+          "fileCount": 17,
+          "payloadSha256": "2996a41ef1a8d59edceb3c39741996f6c0e8bc68ff26b89158d434f10c504bd5"
+        }
+      ]
+    },
+    {
+      "skill": "usefulcharts-style",
+      "backlogStatus": "validating",
+      "entrySha256": "d7b2c92a05e3118cfedc47bd3d2700700b9ea01c9ff49787ad2296bb1664a9a1",
+      "description": "Creates editable educational posters inspired by UsefulCharts, with compact family trees, classifications, branching histories, and parallel timelines. Use for genealogy, taxonomies, institutional or idea lineages, and chronological wall charts where spatial hierarchy, relationship routing, semantic color, and print readability matter.",
+      "manualGuidanceReview": "Data/knowledge-density and editorial decisions before geometry; selective construction routes, measured layouts, independent browser audit, rendered critique, and unsupported-structure fallback.",
+      "profileResults": [
+        {
+          "passed": true,
+          "skill": "usefulcharts-style",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 115,
+            "entryBytes": 21379,
+            "referenceCount": 29,
+            "longReferenceCount": 2
+          },
+          "profile": "source",
+          "fileCount": 149,
+          "payloadSha256": "f95b497134947eb670b2a5f5939624b081ddb26c129da1be40efbf94ad59c911"
+        },
+        {
+          "passed": true,
+          "skill": "usefulcharts-style",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 115,
+            "entryBytes": 21379,
+            "referenceCount": 29,
+            "longReferenceCount": 2
+          },
+          "profile": "runtime",
+          "fileCount": 132,
+          "payloadSha256": "33de5a8f8be5369255151275b7c90973c2932ffa139e08684769eed125f859a3"
+        },
+        {
+          "passed": true,
+          "skill": "usefulcharts-style",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 115,
+            "entryBytes": 21379,
+            "referenceCount": 29,
+            "longReferenceCount": 2
+          },
+          "profile": "full",
+          "fileCount": 149,
+          "payloadSha256": "f95b497134947eb670b2a5f5939624b081ddb26c129da1be40efbf94ad59c911"
+        }
+      ]
+    },
+    {
+      "skill": "vectorize-art-patterns",
+      "backlogStatus": "validating",
+      "entrySha256": "427231d71579da2ac0a830d6ac78d09cf3228bbbd98463908b4801b6ea09eab1",
+      "description": "Simplifies openly licensed or user-owned raster artwork and organic artistic patterns into editable standalone SVGs using deterministic smoothing, palette reduction, seeded composition variation, canonical colorset1/colorset2 adaptation, ink, stain, collage, contour-tracing, and tiling pipelines. Use when Codex needs to vectorize or reinterpret raster art, derive non-geometric abstract or Cubist material patterns, build multi-pattern collections with no reused compositions or paths, generate repeatable SVG pattern tiles, create palette-matched comparison galleries or GitHub Pages examples, preserve licensed base-image assets with provenance, or validate that an SVG is truly vector rather than a raster wrapper.",
+      "manualGuidanceReview": "Rights/source verification and explicit pipeline choice; deterministic tracing/palette contracts, no-reuse geometry, independent structural checks, and source/tile visual repair.",
+      "profileResults": [
+        {
+          "passed": true,
+          "skill": "vectorize-art-patterns",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 232,
+            "entryBytes": 13234,
+            "referenceCount": 6,
+            "longReferenceCount": 1
+          },
+          "profile": "source",
+          "fileCount": 184,
+          "payloadSha256": "9f48a156939ad3679f50662ae5dd507cb895f3e70c3e0644e63f37f8ea1ca6f4"
+        },
+        {
+          "passed": true,
+          "skill": "vectorize-art-patterns",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 232,
+            "entryBytes": 13234,
+            "referenceCount": 6,
+            "longReferenceCount": 1
+          },
+          "profile": "runtime",
+          "fileCount": 55,
+          "payloadSha256": "4babb2999527903005c58e9b91eedfe85112147d350df0616f86aa89858c52c6"
+        },
+        {
+          "passed": true,
+          "skill": "vectorize-art-patterns",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 232,
+            "entryBytes": 13234,
+            "referenceCount": 6,
+            "longReferenceCount": 1
+          },
+          "profile": "full",
+          "fileCount": 184,
+          "payloadSha256": "9f48a156939ad3679f50662ae5dd507cb895f3e70c3e0644e63f37f8ea1ca6f4"
+        }
+      ]
+    },
+    {
+      "skill": "video",
+      "backlogStatus": "done",
+      "entrySha256": "39a25f1ff508dea0d372b7d990338e08d75633f7e19be0b824afebe7c6ef164a",
+      "description": "Orchestrates, composes, renders, and validates mixed-media videos from artifacts produced by specialist skills. Use for storyboard-to-MP4, multi-scene, audio, or heterogeneous composition work that must route D3, ECharts, PlantUML, Mermaid, Three.js, raster images, GIFs, SVGs, Slidev, or other visual producers without reimplementing their tools; define exact dimensions and aspect ratio, place multiple elements in one scene, synchronize them to one master clock, specify semantic interactions between ports and states, capture deterministic frames, encode audio/video, and verify the final artifact. Route standalone SVG-only Manim rendering to `manim-svg-video`.",
+      "manualGuidanceReview": "Producer artifacts plus one master clock; explicit dimensions/ports/state contracts, deterministic composition/rendering, source fidelity, media/contact-sheet feedback, and documented fallback routing.",
+      "profileResults": [
+        {
+          "passed": true,
+          "skill": "video",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 87,
+            "entryBytes": 8542,
+            "referenceCount": 18,
+            "longReferenceCount": 6
+          },
+          "profile": "source",
+          "fileCount": 73,
+          "payloadSha256": "49e8531249d6bd2c302cbf12950c988e445c6eff875832dc82adf9ae03b66711"
+        },
+        {
+          "passed": true,
+          "skill": "video",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 87,
+            "entryBytes": 8542,
+            "referenceCount": 18,
+            "longReferenceCount": 6
+          },
+          "profile": "runtime",
+          "fileCount": 46,
+          "payloadSha256": "c6bde7a844677d8c72661d1796ff4a393ff0137102138acbee7ba10558320fa6"
+        },
+        {
+          "passed": true,
+          "skill": "video",
+          "issues": [],
+          "metrics": {
+            "bodyLines": 87,
+            "entryBytes": 8542,
+            "referenceCount": 18,
+            "longReferenceCount": 6
+          },
+          "profile": "full",
+          "fileCount": 73,
+          "payloadSha256": "49e8531249d6bd2c302cbf12950c988e445c6eff875832dc82adf9ae03b66711"
+        }
+      ]
+    }
+  ],
+  "behavioralScope": "Use prior per-skill backlog evidence and explicitly enumerated fresh routing/D3/reviewer tests. No claim of universal model compatibility or a new behavioral release of every skill."
+}

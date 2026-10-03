@@ -1,0 +1,83 @@
+[
+  {
+    "runId": "20260904-compose-guidance-baseline",
+    "model": "openai-codex/gpt-5.3-codex-spark",
+    "profile": "runtime",
+    "payloadSha256": "070a4b0a0ac93c8bb484b5114754a6233dc76ae010f5c8a7464011871b5cfd34",
+    "classification": "infrastructure",
+    "errors": [
+      "Codex error: The usage limit has been reached"
+    ],
+    "toolCallCount": 0,
+    "skillPayloadUnchanged": true,
+    "evaluationResult": {
+      "passed": false,
+      "returnCode": 3,
+      "piExitCode": 0,
+      "timedOut": false,
+      "startedAtUtc": "2026-09-04T19:51:05.163132+00:00",
+      "finishedAtUtc": "2026-09-04T19:51:14.130987+00:00",
+      "durationSeconds": 8.969,
+      "gates": {
+        "artifacts": false,
+        "events": false,
+        "jsonFields": false,
+        "skillIntegrity": true
+      }
+    }
+  },
+  {
+    "runId": "20260904-compose-guidance-candidate",
+    "model": "openai-codex/gpt-5.3-codex-spark",
+    "profile": "runtime",
+    "payloadSha256": "3153bdbde6f2a7145ee807da00b2818542ea5ccb98461640ef11683aa0d040bb",
+    "classification": "infrastructure",
+    "errors": [
+      "Codex error: The usage limit has been reached"
+    ],
+    "toolCallCount": 0,
+    "skillPayloadUnchanged": true,
+    "evaluationResult": {
+      "passed": false,
+      "returnCode": 3,
+      "piExitCode": 0,
+      "timedOut": false,
+      "startedAtUtc": "2026-09-04T19:54:41.775193+00:00",
+      "finishedAtUtc": "2026-09-04T19:54:47.957974+00:00",
+      "durationSeconds": 6.172,
+      "gates": {
+        "artifacts": false,
+        "events": false,
+        "jsonFields": false,
+        "skillIntegrity": true
+      }
+    }
+  },
+  {
+    "runId": "20260904-asciinema-guidance-candidate",
+    "model": "openai-codex/gpt-5.3-codex-spark",
+    "profile": "runtime",
+    "payloadSha256": "e6037f4b700c7fd18fbaec071cf87d0ab82723849400d17693d080a93fbcf3c0",
+    "classification": "infrastructure",
+    "errors": [
+      "Codex error: The usage limit has been reached"
+    ],
+    "toolCallCount": 0,
+    "skillPayloadUnchanged": true,
+    "evaluationResult": {
+      "passed": false,
+      "returnCode": 3,
+      "piExitCode": 0,
+      "timedOut": false,
+      "startedAtUtc": "2026-09-04T19:54:41.772200+00:00",
+      "finishedAtUtc": "2026-09-04T19:54:48.180846+00:00",
+      "durationSeconds": 6.406,
+      "gates": {
+        "artifacts": false,
+        "events": false,
+        "jsonFields": null,
+        "skillIntegrity": true
+      }
+    }
+  }
+]

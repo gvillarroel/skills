@@ -1,5 +1,14 @@
 # Mathematical behavior and uncertainty
 
+## Contents
+
+- [Specify the mathematical object](#specify-the-mathematical-object)
+- [Model realistic disturbances](#model-realistic-disturbances)
+- [Keep four uncertainty layers separate](#keep-four-uncertainty-layers-separate)
+- [State exactly what “confidence” means](#state-exactly-what-confidence-means)
+- [Scale the modeled system, not just the mean](#scale-the-modeled-system-not-just-the-mean)
+- [Required handoff](#required-handoff)
+
 Use this contract when a user asks what a system should do, what can go wrong,
 or how much confidence to place in simulated behavior. Execute the mathematical
 representation only. No disturbance below authorizes touching a real target.

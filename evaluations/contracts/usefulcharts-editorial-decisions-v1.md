@@ -1,0 +1,15 @@
+# UsefulCharts editorial decisions: development contract
+
+Date: 2026-09-12. This disclosed naturalistic planning case checks the newly explicit information and editorial stages. It does not evaluate a rendered poster, visual parity, or a model ranking. The grader is evaluator-owned and is not copied into the isolated workspace.
+
+Run three fresh strict runtime-profile attempts using the default `openai-codex/gpt-5.3-codex-spark` at high thinking. Require `result/editorial-plan.md` in each. Freeze the payload for all three attempts. Require at least two complete passes; retain every attempt and independently read each delivered plan. There is no baseline comparison in this study.
+
+## Observable acceptance
+
+- A recognizes that supported relationships allow a schematic genealogy despite Ada's unknown birth date. It keeps all five identities and the four relationship records, including both parents of Cora and Dale. It neither invents Ada's birth nor supplies an identity for Evan's undocumented parent. It does not treat missing category assignments as permission to invent historical families.
+- B does not claim readiness for the requested numeric succession chart. It identifies both missing operational dates and unsupported relationship types/endpoints, and requests evidence needed to establish those claims. Any provisional inventory is explicitly limited and does not masquerade as the requested chronology. No dates or succession links are guessed.
+- C retains c1 and c6 and the c2–c5 intermediate institutions needed to explain the two actual traditions. It keeps the branch through c3, both successions and both merger inputs rather than constructing a false direct origin-to-centre edge. It accounts for c7–c11 with reasons and distinguishes optional context from irrelevant material; c10/c11 may be retained or omitted with defensible scope. It preserves the source category of c6 and does not turn the merger into a fabricated third category. The original research pool remains available.
+- Encoding follows evidence: schematic generations for A; no unsupported numeric B; meaningful ordering and explicit time semantics for C; category color is separate from importance. A compact subject is not padded with invented records or forced into a large dense mural.
+- Review covers content fidelity and reading outcome, technical readability/routing, and direct visual inspection of both overall composition and busy details. The plan calls for repair and inspection of the revised render. Neither a geometry pass nor a self-score is described as proof of adequate aesthetics or indistinguishability.
+
+Assess meaning, not exact phrases, headings, color hex values or a prescribed plan schema. The output may propose a narrowly justified source question but must continue the other commissions. Planning passes do not demonstrate that the actual critique loop was executed; that requires a separate rendered artifact test.

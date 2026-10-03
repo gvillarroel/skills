@@ -1,5 +1,17 @@
 # Context-quality-cost simulations
 
+## Contents
+
+- [Keep four layers separate](#keep-four-layers-separate)
+- [Review candidate variables and their relationships](#review-candidate-variables-and-their-relationships)
+- [Build an evidence table before a curve](#build-an-evidence-table-before-a-curve)
+- [Define the operational quality mechanism](#define-the-operational-quality-mechanism)
+- [Price each attempt independently of quality](#price-each-attempt-independently-of-quality)
+- [Calculate retry economics exactly](#calculate-retry-economics-exactly)
+- [Compare strategies and locate break-even points](#compare-strategies-and-locate-break-even-points)
+- [Use Monte Carlo as a verification layer](#use-monte-carlo-as-a-verification-layer)
+- [Required challenge cases](#required-challenge-cases)
+
 Use this workflow when a longer context, retrieval policy, or compaction policy
 changes both provider cost and the probability that a task completes correctly.
 The result is a conditional decision model, not an empirical evaluation of a

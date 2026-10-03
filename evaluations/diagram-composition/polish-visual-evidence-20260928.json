@@ -1,0 +1,277 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-28",
+  "skill": "diagram-composition",
+  "candidate": "d",
+  "runtimePayloadSha256": "2e15b9a80f7492be2c4e1d37ff558404f3acc740b165e25ed014088b3274508f",
+  "negativeControls": {
+    "baseline": [
+      {
+        "case": "line-inside-card",
+        "auditPassed": true,
+        "issues": []
+      },
+      {
+        "case": "conflicting-fill",
+        "auditPassed": true,
+        "issues": []
+      },
+      {
+        "case": "covered-accent",
+        "auditPassed": true,
+        "issues": []
+      },
+      {
+        "case": "low-contrast-label",
+        "auditPassed": true,
+        "issues": []
+      },
+      {
+        "case": "floating-terminal",
+        "auditPassed": true,
+        "issues": []
+      }
+    ],
+    "candidate": [
+      {
+        "case": "line-inside-card",
+        "auditPassed": false,
+        "issues": [
+          {
+            "kind": "connector-object-intrusion",
+            "relation": "intrusion",
+            "object": "view.source"
+          },
+          {
+            "kind": "connector-floating-endpoint",
+            "relation": "intrusion",
+            "end": 0,
+            "expected": null,
+            "nearestError": 33.833332443237296
+          },
+          {
+            "kind": "connector-floating-endpoint",
+            "relation": "intrusion",
+            "end": 1,
+            "expected": null,
+            "nearestError": 24.16666603088379
+          }
+        ]
+      },
+      {
+        "case": "conflicting-fill",
+        "auditPassed": false,
+        "issues": [
+          {
+            "kind": "semantic-color-conflicting-fill",
+            "object": "view.source",
+            "concept": "source",
+            "fill": "rgb(233, 154, 136)",
+            "expected": "#276bc8"
+          }
+        ]
+      },
+      {
+        "case": "covered-accent",
+        "auditPassed": false,
+        "issues": [
+          {
+            "kind": "semantic-color-occluded",
+            "concept": "source",
+            "panel": "view"
+          }
+        ]
+      },
+      {
+        "case": "low-contrast-label",
+        "auditPassed": false,
+        "issues": [
+          {
+            "kind": "text-low-contrast",
+            "label": "Shared source",
+            "ratio": 1.4099177114845396,
+            "threshold": 4.5
+          }
+        ]
+      },
+      {
+        "case": "floating-terminal",
+        "auditPassed": false,
+        "issues": [
+          {
+            "kind": "connector-floating-endpoint",
+            "relation": "view:wire-0",
+            "end": 1,
+            "expected": "source",
+            "nearestError": 5.799999847412096
+          }
+        ]
+      }
+    ]
+  },
+  "directComparison": {
+    "ok": true,
+    "method": "Same browser audit with evaluator annotations on the existing topology icon frames and wires; original inputs preserved.",
+    "results": [
+      {
+        "version": "before",
+        "sourceSha256": "983d41e6272b7b630c27be97aba558bd65aa07b29bcd68b0ec68d2b13c1de790",
+        "visibleIconFrameIntrusions": 3,
+        "intrusions": [
+          {
+            "kind": "connector-object-intrusion",
+            "relation": "topology:wire-0",
+            "object": "topology.reviewed-frame-copilot"
+          },
+          {
+            "kind": "connector-object-intrusion",
+            "relation": "topology:wire-1",
+            "object": "topology.reviewed-frame-claude"
+          },
+          {
+            "kind": "connector-object-intrusion",
+            "relation": "topology:wire-2",
+            "object": "topology.reviewed-frame-cloud"
+          }
+        ],
+        "secondaryLabelContrast": 4.228099373389539,
+        "verifiedContacts": 0,
+        "issues": [
+          {
+            "kind": "connector-object-intrusion",
+            "relation": "topology:wire-0",
+            "object": "topology.reviewed-frame-copilot"
+          },
+          {
+            "kind": "connector-floating-endpoint",
+            "relation": "topology:wire-0",
+            "end": 0,
+            "expected": null,
+            "nearestError": 7.1652679443359375
+          },
+          {
+            "kind": "connector-floating-endpoint",
+            "relation": "topology:wire-0",
+            "end": 1,
+            "expected": null,
+            "nearestError": 102.4829521736802
+          },
+          {
+            "kind": "connector-object-intrusion",
+            "relation": "topology:wire-1",
+            "object": "topology.reviewed-frame-claude"
+          },
+          {
+            "kind": "connector-floating-endpoint",
+            "relation": "topology:wire-1",
+            "end": 0,
+            "expected": null,
+            "nearestError": 9
+          },
+          {
+            "kind": "connector-floating-endpoint",
+            "relation": "topology:wire-1",
+            "end": 1,
+            "expected": null,
+            "nearestError": 100.15795777557669
+          },
+          {
+            "kind": "connector-object-intrusion",
+            "relation": "topology:wire-2",
+            "object": "topology.reviewed-frame-cloud"
+          },
+          {
+            "kind": "connector-floating-endpoint",
+            "relation": "topology:wire-2",
+            "end": 0,
+            "expected": null,
+            "nearestError": 16
+          },
+          {
+            "kind": "connector-floating-endpoint",
+            "relation": "topology:wire-2",
+            "end": 1,
+            "expected": null,
+            "nearestError": 102.61112884770372
+          },
+          {
+            "kind": "connector-floating-endpoint",
+            "relation": "context-bridge",
+            "end": 0,
+            "expected": null,
+            "nearestError": null
+          },
+          {
+            "kind": "connector-floating-endpoint",
+            "relation": "context-bridge",
+            "end": 1,
+            "expected": null,
+            "nearestError": null
+          },
+          {
+            "kind": "connector-floating-endpoint",
+            "relation": "policy-bridge",
+            "end": 0,
+            "expected": null,
+            "nearestError": null
+          },
+          {
+            "kind": "connector-floating-endpoint",
+            "relation": "policy-bridge",
+            "end": 1,
+            "expected": null,
+            "nearestError": null
+          },
+          {
+            "kind": "text-low-contrast",
+            "label": "Source + instructions",
+            "ratio": 4.228099373389539,
+            "threshold": 4.5
+          }
+        ]
+      },
+      {
+        "version": "after",
+        "sourceSha256": "beab16850f332d0203506a6398ccdb60d044b4716e1532dcb2451c2c6f120880",
+        "visibleIconFrameIntrusions": 0,
+        "intrusions": [],
+        "secondaryLabelContrast": 5.266322465980655,
+        "verifiedContacts": 4,
+        "issues": []
+      }
+    ]
+  },
+  "reviewBrowser": {
+    "ok": true,
+    "views": [
+      {
+        "width": 1440,
+        "uniqueIds": true,
+        "svgCount": 2,
+        "documentOverflow": false,
+        "textCount": 32,
+        "errors": [],
+        "togglePassed": true
+      },
+      {
+        "width": 500,
+        "uniqueIds": true,
+        "svgCount": 2,
+        "documentOverflow": false,
+        "textCount": 32,
+        "errors": [],
+        "togglePassed": true
+      }
+    ]
+  },
+  "handoff": {
+    "ok": true,
+    "sourceSha256": "beab16850f332d0203506a6398ccdb60d044b4716e1532dcb2451c2c6f120880",
+    "textCount": 32,
+    "minimumObservedPx": 15,
+    "semanticColorOccurrences": 13,
+    "crossViewContacts": 4,
+    "internalContacts": 10,
+    "issues": []
+  }
+}

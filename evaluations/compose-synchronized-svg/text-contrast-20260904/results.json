@@ -1,0 +1,2021 @@
+{
+  "date": "2026-09-04",
+  "model": "openai-codex/gpt-5.6-luna",
+  "runs": [
+    {
+      "runId": "20260904-svg-text-pair-luna-contract",
+      "case": "contract",
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/run-pi-skill-eval.py",
+        "compose-synchronized-svg",
+        "--prompt-file",
+        "evaluations/pi-prompts/compose-svg-text-pair-contract.md",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--thinking",
+        "high",
+        "--mode",
+        "json",
+        "--strict",
+        "--run-id",
+        "20260904-svg-text-pair-luna-contract",
+        "--expect-output",
+        "outputs/pairs/brief.json",
+        "--expect-output",
+        "outputs/pairs/preflight.json",
+        "--expect-output",
+        "outputs/pairs/plan.json",
+        "--expect-output",
+        "outputs/pairs/atlas.svg",
+        "--expect-output",
+        "outputs/pairs/static.json",
+        "--expect-output",
+        "outputs/pairs/browser.json",
+        "--expect-output",
+        "outputs/pairs/overview.png",
+        "--expect-output-json-field",
+        "outputs/pairs/static.json::ok=true",
+        "--expect-output-json-field",
+        "outputs/pairs/browser.json::ok=true",
+        "--expect-output-json-field",
+        "outputs/pairs/browser.json::metrics.textContrastIssueCount=0",
+        "--expect-output-json-field",
+        "outputs/pairs/preflight.json::ok=true"
+      ],
+      "exitCode": 0,
+      "result": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-04T22:35:29.599747+00:00",
+        "finishedAtUtc": "2026-09-04T22:37:21.082961+00:00",
+        "durationSeconds": 111.485,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": true,
+          "skillIntegrity": true
+        }
+      },
+      "skillIntegrity": {
+        "passed": true,
+        "beforeDigest": "d15c415dfaf980eed6705b20534cb56e7e11b33f3d5bb09c5d20403f58c44c61",
+        "afterDigest": "d15c415dfaf980eed6705b20534cb56e7e11b33f3d5bb09c5d20403f58c44c61",
+        "added": [],
+        "removed": [],
+        "modified": []
+      },
+      "expectedAuthoringFindings": [],
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/pi-prompts/compose-svg-text-pair-contract.md",
+        "sizeBytes": 1233,
+        "sha256": "012458e95aeeb86d97bae9fcfcf9041ff8b4b64178ed28d011dcfb7cd4a099d2"
+      },
+      "reports": {
+        "pairs/browser.json": {
+          "ok": true,
+          "finding": null,
+          "textContrast": {
+            "textContrastCheckCount": 7,
+            "textContrastLabelCount": 544,
+            "textContrastIssueCount": 0
+          }
+        },
+        "pairs/preflight.json": {
+          "ok": true,
+          "finding": null,
+          "textContrast": {}
+        },
+        "pairs/static.json": {
+          "ok": true,
+          "finding": null,
+          "textContrast": {}
+        }
+      },
+      "traceExitCode": 0,
+      "traceUsage": {
+        "input": 41045,
+        "output": 2804,
+        "cacheRead": 269568,
+        "cacheWrite": 0,
+        "totalTokens": 313417
+      },
+      "artifactHashes": {
+        "pairs/atlas.svg": "3e3da6c017243136f5563801b2b1b1d476290551853deb15563bf8860d91156e",
+        "pairs/brief.json": "1a3cdcb16eab2f36c5cc26791cb34abaa2ea13cfad86805fce7a9e999545e1e1",
+        "pairs/browser.json": "80d61d99cfa0e49514504a56f077d8850f286163ed5a7284bb8e6e944e8a6820",
+        "pairs/compose.json": "0c7b9e0fd3aec2ac83c404f602cbcae44308f1ef41a299d2339fe7fb15955b9b",
+        "pairs/overview.png": "37da957f0ee9079992c5dbd498a26a761cca3da0be2b4c48df4ce13276f3e184",
+        "pairs/plan.json": "1f409ffd397bf9e25acbff709bfd1f5b1b59b2d793bb4ab5177349751e17825a",
+        "pairs/preflight.json": "6be72b425e2ea657141b51ed57cb6bacaf6aaa6a2ffeec1f53606032ae409614",
+        "pairs/static.json": "77d7c057d5b745bb872cd9c7c4c0f66430852411feeaf8560563bafdb675b336"
+      }
+    },
+    {
+      "runId": "20260904-svg-text-pair-luna-boundary",
+      "case": "boundary",
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/run-pi-skill-eval.py",
+        "compose-synchronized-svg",
+        "--prompt-file",
+        "evaluations/pi-prompts/compose-svg-text-pair-boundary.md",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--thinking",
+        "high",
+        "--mode",
+        "json",
+        "--strict",
+        "--run-id",
+        "20260904-svg-text-pair-luna-boundary",
+        "--expect-output",
+        "outputs/boundary/brief.json",
+        "--expect-output",
+        "outputs/boundary/preflight.json",
+        "--expect-output",
+        "outputs/boundary/result.md",
+        "--expect-output-json-field",
+        "outputs/boundary/preflight.json::ok=false"
+      ],
+      "exitCode": 0,
+      "result": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-04T22:35:29.599747+00:00",
+        "finishedAtUtc": "2026-09-04T22:36:21.046240+00:00",
+        "durationSeconds": 51.438,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": true,
+          "skillIntegrity": true
+        }
+      },
+      "skillIntegrity": {
+        "passed": true,
+        "beforeDigest": "d15c415dfaf980eed6705b20534cb56e7e11b33f3d5bb09c5d20403f58c44c61",
+        "afterDigest": "d15c415dfaf980eed6705b20534cb56e7e11b33f3d5bb09c5d20403f58c44c61",
+        "added": [],
+        "removed": [],
+        "modified": []
+      },
+      "expectedAuthoringFindings": [
+        "compiled plan failed v1 validation: theme validation failure: colors.ink has insufficient contrast against canvas and surface"
+      ],
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/pi-prompts/compose-svg-text-pair-boundary.md",
+        "sizeBytes": 898,
+        "sha256": "eb5d9406d56061bd37c3f17dde4f484e9d00fa9e4e346deff4c837be54d31050"
+      },
+      "reports": {
+        "boundary/preflight.json": {
+          "ok": false,
+          "finding": "compiled plan failed v1 validation: theme validation failure: colors.ink has insufficient contrast against canvas and surface",
+          "textContrast": {}
+        }
+      },
+      "traceExitCode": 0,
+      "traceUsage": {
+        "input": 8929,
+        "output": 1316,
+        "cacheRead": 18944,
+        "cacheWrite": 0,
+        "totalTokens": 29189
+      },
+      "artifactHashes": {
+        "boundary/brief.json": "46f2ecd7d6c1f4fc4f6294a4c1afc8038a267f83b0f14640812323853206e9df",
+        "boundary/preflight.json": "a307c443e70ff6ead101649609106a53b0a29cca82643b5ea81e01743b868a6f",
+        "boundary/result.md": "f2bdb371587074776fb27b77b3813efaad73d8521ea6dd37216329783694a41f"
+      }
+    },
+    {
+      "runId": "20260904-svg-text-pair-luna-dark-1",
+      "case": "dark-1",
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/run-pi-skill-eval.py",
+        "compose-synchronized-svg",
+        "--prompt-file",
+        "evaluations/pi-prompts/compose-svg-text-pair-dark.md",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--thinking",
+        "high",
+        "--mode",
+        "json",
+        "--strict",
+        "--run-id",
+        "20260904-svg-text-pair-luna-dark-1",
+        "--expect-output",
+        "outputs/dark/brief.json",
+        "--expect-output",
+        "outputs/dark/plan.json",
+        "--expect-output",
+        "outputs/dark/dashboard.svg",
+        "--expect-output",
+        "outputs/dark/static.json",
+        "--expect-output",
+        "outputs/dark/browser.json",
+        "--expect-output",
+        "outputs/dark/overview.png",
+        "--expect-output",
+        "outputs/dark/color-editing.md",
+        "--expect-output-json-field",
+        "outputs/dark/static.json::ok=true",
+        "--expect-output-json-field",
+        "outputs/dark/browser.json::ok=true",
+        "--expect-output-json-field",
+        "outputs/dark/browser.json::metrics.textContrastIssueCount=0"
+      ],
+      "exitCode": 0,
+      "result": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-04T22:35:29.600746+00:00",
+        "finishedAtUtc": "2026-09-04T22:38:48.023131+00:00",
+        "durationSeconds": 198.422,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": true,
+          "skillIntegrity": true
+        }
+      },
+      "skillIntegrity": {
+        "passed": true,
+        "beforeDigest": "d15c415dfaf980eed6705b20534cb56e7e11b33f3d5bb09c5d20403f58c44c61",
+        "afterDigest": "d15c415dfaf980eed6705b20534cb56e7e11b33f3d5bb09c5d20403f58c44c61",
+        "added": [],
+        "removed": [],
+        "modified": []
+      },
+      "expectedAuthoringFindings": [
+        "module 'water-allocation' flow does not conserve 'ML/day' in defaults: source 'processed-water'=120 but branches ['daily-demand', 'delivery', 'leakage', 'unmet-demand'] sum to 240. Put the conserved total first and include only mutually exclusive branches, or use a table/network for nonconserving comparisons"
+      ],
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/pi-prompts/compose-svg-text-pair-dark.md",
+        "sizeBytes": 2200,
+        "sha256": "b7422930b6ff3cb2d744ff2746a649c7995ac0cf639bab7cd10317db4f09558b"
+      },
+      "reports": {
+        "dark/browser.json": {
+          "ok": true,
+          "finding": null,
+          "textContrast": {
+            "textContrastCheckCount": 8,
+            "textContrastLabelCount": 662,
+            "textContrastIssueCount": 0
+          }
+        },
+        "dark/static.json": {
+          "ok": true,
+          "finding": null,
+          "textContrast": {}
+        }
+      },
+      "traceExitCode": 0,
+      "traceUsage": {
+        "input": 44099,
+        "output": 7937,
+        "cacheRead": 268032,
+        "cacheWrite": 0,
+        "totalTokens": 320068
+      },
+      "artifactHashes": {
+        "dark/brief.json": "9de544106e0c9e7e0b184ee56dc2f7b1eec01f79d29d0352408a133cfcbbfc08",
+        "dark/browser.json": "0c538bc5f551f2aecc6f026598c820276cc5ca7fc0f86525805da563a6e3043b",
+        "dark/color-editing.md": "43f212451eeadd35461f5bf689413cd9d5cb95952c1c7d6199c746e3c97fe0f6",
+        "dark/compose-report.json": "4c5bf23426621c0d6b6ecd31ae152c38302fd3b432bac7bed5521e9238584c1e",
+        "dark/dashboard.svg": "07655d7f5ec082606461888b5ea5a8f3d988607e886a2b78c41f3be9c0638c71",
+        "dark/overview.png": "0c635debc5157f78eab0687bca84d76bc612656e2fa3f2cd749b598dad76dcf1",
+        "dark/plan.json": "579c99470b42f279ef139a56593e61d9fe2c7e71948fd4c88e71f3443f019eef",
+        "dark/static.json": "8c06b2dd04fb499acb397ea6088c654ae388b7f04e660072666aa524a168d4bc"
+      }
+    },
+    {
+      "runId": "20260904-svg-text-pair-luna-dark-2",
+      "case": "dark-2",
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/run-pi-skill-eval.py",
+        "compose-synchronized-svg",
+        "--prompt-file",
+        "evaluations/pi-prompts/compose-svg-text-pair-dark.md",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--thinking",
+        "high",
+        "--mode",
+        "json",
+        "--strict",
+        "--run-id",
+        "20260904-svg-text-pair-luna-dark-2",
+        "--expect-output",
+        "outputs/dark/brief.json",
+        "--expect-output",
+        "outputs/dark/plan.json",
+        "--expect-output",
+        "outputs/dark/dashboard.svg",
+        "--expect-output",
+        "outputs/dark/static.json",
+        "--expect-output",
+        "outputs/dark/browser.json",
+        "--expect-output",
+        "outputs/dark/overview.png",
+        "--expect-output",
+        "outputs/dark/color-editing.md",
+        "--expect-output-json-field",
+        "outputs/dark/static.json::ok=true",
+        "--expect-output-json-field",
+        "outputs/dark/browser.json::ok=true",
+        "--expect-output-json-field",
+        "outputs/dark/browser.json::metrics.textContrastIssueCount=0"
+      ],
+      "exitCode": 0,
+      "result": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-04T22:36:23.848125+00:00",
+        "finishedAtUtc": "2026-09-04T22:40:14.693181+00:00",
+        "durationSeconds": 230.844,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": true,
+          "skillIntegrity": true
+        }
+      },
+      "skillIntegrity": {
+        "passed": true,
+        "beforeDigest": "d15c415dfaf980eed6705b20534cb56e7e11b33f3d5bb09c5d20403f58c44c61",
+        "afterDigest": "d15c415dfaf980eed6705b20534cb56e7e11b33f3d5bb09c5d20403f58c44c61",
+        "added": [],
+        "removed": [],
+        "modified": []
+      },
+      "expectedAuthoringFindings": [
+        "module 'water-allocation' flow does not conserve 'ML/day' in defaults: source 'processed-water'=120 but branches ['daily-demand', 'delivered-water', 'leakage-volume', 'unmet-demand'] sum to 240. Put the conserved total first and include only mutually exclusive branches, or use a table/network for nonconserving comparisons",
+        "module 'water-allocation' flow does not conserve 'ML/day' in defaults: source 'processed-water'=120 but branches ['daily-demand', 'delivered-water', 'leakage-volume', 'unmet-demand'] sum to 240. Put the conserved total first and include only mutually exclusive branches, or use a table/network for nonconserving comparisons",
+        "compiled plan failed v1 validation: theme validation failure: conceptColors.processed-water has insufficient contrast against canvas and surface",
+        "compiled plan failed v1 validation: theme validation failure: concept color key 'leakage-volume' is not a root token; 'leakage-volume' is an alias owned by root 'leakage-fraction'"
+      ],
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/pi-prompts/compose-svg-text-pair-dark.md",
+        "sizeBytes": 2200,
+        "sha256": "b7422930b6ff3cb2d744ff2746a649c7995ac0cf639bab7cd10317db4f09558b"
+      },
+      "reports": {
+        "dark/browser.json": {
+          "ok": true,
+          "finding": null,
+          "textContrast": {
+            "textContrastCheckCount": 8,
+            "textContrastLabelCount": 654,
+            "textContrastIssueCount": 0
+          }
+        },
+        "dark/static.json": {
+          "ok": true,
+          "finding": null,
+          "textContrast": {}
+        }
+      },
+      "traceExitCode": 0,
+      "traceUsage": {
+        "input": 50056,
+        "output": 8365,
+        "cacheRead": 468736,
+        "cacheWrite": 0,
+        "totalTokens": 527157
+      },
+      "artifactHashes": {
+        "dark/brief.json": "5f52e9e0a2e25b55ee4f9290e86038d5c4b6fb46159f1f8f05c9e01ad7eee21a",
+        "dark/browser.json": "99fd95a8ff92735f18c075eb6ff70b4932478634258918ae7ad091ad30df5c3e",
+        "dark/color-editing.md": "46095e2ba8408c1b1ee5b61953c64e643c7702d098e4f9224599eca0c6ab9c19",
+        "dark/compose-report.json": "70b836a4defc4b6d7f993877b5a347f6962afd41a65f69e18e4cd755161892f9",
+        "dark/dashboard.svg": "7b2e778bf8a67cd074311229a9948e83f2e31f516d43921d2d3ded2ee2b0e396",
+        "dark/overview.png": "0b44cd331dae116eacbb00b974ed9c962c4331480e02f4a4222367e7ed420cc6",
+        "dark/plan.json": "505a49fc475948042004ba023502f74c2f7ed793091ab123608311587ad436ef",
+        "dark/static.json": "371275688336636c8dda72f74be5d436626d071fa72f0fb8ccab33a0e42e6c00"
+      }
+    },
+    {
+      "runId": "20260904-svg-text-pair-luna-dark-3",
+      "case": "dark-3",
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/run-pi-skill-eval.py",
+        "compose-synchronized-svg",
+        "--prompt-file",
+        "evaluations/pi-prompts/compose-svg-text-pair-dark.md",
+        "--model",
+        "openai-codex/gpt-5.6-luna",
+        "--thinking",
+        "high",
+        "--mode",
+        "json",
+        "--strict",
+        "--run-id",
+        "20260904-svg-text-pair-luna-dark-3",
+        "--expect-output",
+        "outputs/dark/brief.json",
+        "--expect-output",
+        "outputs/dark/plan.json",
+        "--expect-output",
+        "outputs/dark/dashboard.svg",
+        "--expect-output",
+        "outputs/dark/static.json",
+        "--expect-output",
+        "outputs/dark/browser.json",
+        "--expect-output",
+        "outputs/dark/overview.png",
+        "--expect-output",
+        "outputs/dark/color-editing.md",
+        "--expect-output-json-field",
+        "outputs/dark/static.json::ok=true",
+        "--expect-output-json-field",
+        "outputs/dark/browser.json::ok=true",
+        "--expect-output-json-field",
+        "outputs/dark/browser.json::metrics.textContrastIssueCount=0"
+      ],
+      "exitCode": 0,
+      "result": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-04T22:37:23.818060+00:00",
+        "finishedAtUtc": "2026-09-04T22:42:21.971032+00:00",
+        "durationSeconds": 298.156,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": true,
+          "skillIntegrity": true
+        }
+      },
+      "skillIntegrity": {
+        "passed": true,
+        "beforeDigest": "d15c415dfaf980eed6705b20534cb56e7e11b33f3d5bb09c5d20403f58c44c61",
+        "afterDigest": "d15c415dfaf980eed6705b20534cb56e7e11b33f3d5bb09c5d20403f58c44c61",
+        "added": [],
+        "removed": [],
+        "modified": []
+      },
+      "expectedAuthoringFindings": [
+        "module 'water-allocation' flow does not conserve 'ML/day' in defaults: source 'processed-water'=120 but branches ['daily-demand', 'delivered-water', 'leakage-volume', 'unmet-demand'] sum to 240. Put the conserved total first and include only mutually exclusive branches, or use a table/network for nonconserving comparisons",
+        "brief is not valid JSON: Expecting ',' delimiter: line 171 column 5 (char 4779)",
+        "compiled plan failed v1 validation: theme validation failure: conceptColors.processed-water has insufficient contrast against canvas and surface"
+      ],
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/pi-prompts/compose-svg-text-pair-dark.md",
+        "sizeBytes": 2200,
+        "sha256": "b7422930b6ff3cb2d744ff2746a649c7995ac0cf639bab7cd10317db4f09558b"
+      },
+      "reports": {
+        "dark/browser.json": {
+          "ok": true,
+          "finding": null,
+          "textContrast": {
+            "textContrastCheckCount": 8,
+            "textContrastLabelCount": 678,
+            "textContrastIssueCount": 0
+          }
+        },
+        "dark/static.json": {
+          "ok": true,
+          "finding": null,
+          "textContrast": {}
+        }
+      },
+      "traceExitCode": 0,
+      "traceUsage": {
+        "input": 60705,
+        "output": 11006,
+        "cacheRead": 679424,
+        "cacheWrite": 0,
+        "totalTokens": 751135
+      },
+      "artifactHashes": {
+        "dark/brief.json": "3d49acb1726cfd231dfdaa2318a6b97260afa63f7434b818a5660eb851b71096",
+        "dark/browser.json": "971e3b00d707aa913b7ee233fbc8e5373e97c93660a4fa02c32288a094a454b2",
+        "dark/color-editing.md": "7eb09ee3c236a901c74bd30391d502fae4eb78ddda37379d4e5142ac560c6838",
+        "dark/compose-report.json": "8ccec74dc6076fb2c0edb6c2d4d5a35a3a8664cf40aef08d1726f42e013af873",
+        "dark/dashboard.svg": "b5c6c3e6b205d1efd68c377f0492e852b93ac92de360f0707062fc151e4fc186",
+        "dark/overview.png": "2476118f5ae1ac2c62031c0c834861dcda5d2f177c2c6f15284601e1f5ad78e9",
+        "dark/plan.json": "f7aafd398e10d06df24ffed7ccbdcd77a46efb212b3e86a4ff11ede2d169afbf",
+        "dark/static.json": "eb931406e2a725758376d695fae5e619f05b55bc04be8f10cbda3fb9a4382611"
+      }
+    }
+  ],
+  "independentLunaChecks": [
+    {
+      "runId": "20260904-svg-text-pair-luna-contract",
+      "errors": [],
+      "textStates": [
+        {
+          "scenario": "steady-shift",
+          "ok": true,
+          "threshold": 4.5,
+          "checked": 79,
+          "skipped": 3,
+          "incomplete": 0,
+          "failed": 0,
+          "skippedReasons": {
+            "empty": 3
+          }
+        },
+        {
+          "scenario": "rush-window",
+          "ok": true,
+          "threshold": 4.5,
+          "checked": 79,
+          "skipped": 3,
+          "incomplete": 0,
+          "failed": 0,
+          "skippedReasons": {
+            "empty": 3
+          }
+        }
+      ],
+      "ok": true
+    },
+    {
+      "runId": "20260904-svg-text-pair-luna-boundary",
+      "errors": [],
+      "textStates": [],
+      "rejectedWithoutChangingColorsOrPublishingSvg": true,
+      "ok": true
+    },
+    {
+      "runId": "20260904-svg-text-pair-luna-dark-1",
+      "errors": [],
+      "textStates": [
+        {
+          "scenario": "normal",
+          "ok": true,
+          "threshold": 4.5,
+          "checked": 84,
+          "skipped": 2,
+          "incomplete": 0,
+          "failed": 0,
+          "skippedReasons": {
+            "empty": 2
+          }
+        },
+        {
+          "scenario": "peak",
+          "ok": true,
+          "threshold": 4.5,
+          "checked": 84,
+          "skipped": 2,
+          "incomplete": 0,
+          "failed": 0,
+          "skippedReasons": {
+            "empty": 2
+          }
+        },
+        {
+          "scenario": "repair",
+          "ok": true,
+          "threshold": 4.5,
+          "checked": 84,
+          "skipped": 2,
+          "incomplete": 0,
+          "failed": 0,
+          "skippedReasons": {
+            "empty": 2
+          }
+        },
+        {
+          "scenario": "zero",
+          "ok": true,
+          "threshold": 4.5,
+          "checked": 84,
+          "skipped": 2,
+          "incomplete": 0,
+          "failed": 0,
+          "skippedReasons": {
+            "empty": 2
+          }
+        }
+      ],
+      "arithmetic": {
+        "ok": true,
+        "topic": "water",
+        "svg": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\20260904-svg-text-pair-luna-dark-1\\workspace\\outputs\\dark\\dashboard.svg",
+        "sha256": "07655d7f5ec082606461888b5ea5a8f3d988607e886a2b78c41f3be9c0638c71",
+        "states": [
+          {
+            "name": "normal",
+            "sourceValues": {
+              "daily-demand": 120,
+              "leakage-fraction": 0.15,
+              "treatment-capacity": 150
+            },
+            "expected": {
+              "processed": 120,
+              "leakage": 18.0,
+              "delivered": 102.0,
+              "unmet": 0,
+              "load": 0.8
+            },
+            "actual": {
+              "processed": 120,
+              "delivered": 102,
+              "leakage": 18,
+              "unmet": 0,
+              "load": 0.8
+            },
+            "boundMarkCount": 25,
+            "errors": []
+          },
+          {
+            "name": "peak",
+            "sourceValues": {
+              "daily-demand": 180,
+              "leakage-fraction": 0.2,
+              "treatment-capacity": 150
+            },
+            "expected": {
+              "processed": 150,
+              "leakage": 30.0,
+              "delivered": 120.0,
+              "unmet": 30,
+              "load": 1.2
+            },
+            "actual": {
+              "processed": 150,
+              "delivered": 120,
+              "leakage": 30,
+              "unmet": 30,
+              "load": 1.2
+            },
+            "boundMarkCount": 25,
+            "errors": []
+          },
+          {
+            "name": "repair",
+            "sourceValues": {
+              "daily-demand": 180,
+              "leakage-fraction": 0.08,
+              "treatment-capacity": 150
+            },
+            "expected": {
+              "processed": 150,
+              "leakage": 12.0,
+              "delivered": 138.0,
+              "unmet": 30,
+              "load": 1.2
+            },
+            "actual": {
+              "processed": 150,
+              "delivered": 138,
+              "leakage": 12,
+              "unmet": 30,
+              "load": 1.2
+            },
+            "boundMarkCount": 25,
+            "errors": []
+          },
+          {
+            "name": "zero",
+            "sourceValues": {
+              "daily-demand": 0,
+              "leakage-fraction": 0.15,
+              "treatment-capacity": 150
+            },
+            "expected": {
+              "processed": 0,
+              "leakage": 0.0,
+              "delivered": 0.0,
+              "unmet": 0,
+              "load": 0.0
+            },
+            "actual": {
+              "processed": 0,
+              "delivered": 0,
+              "leakage": 0,
+              "unmet": 0,
+              "load": 0
+            },
+            "boundMarkCount": 25,
+            "errors": []
+          }
+        ],
+        "errors": [],
+        "inputMapping": {
+          "demand": "daily-demand",
+          "capacity": "treatment-capacity",
+          "fraction": "leakage-fraction"
+        },
+        "outputMapping": {
+          "processed": "processed-water",
+          "delivered": "delivery",
+          "leakage": "leakage",
+          "unmet": "unmet-demand",
+          "load": "load-ratio"
+        },
+        "theme": {
+          "preset": "classic",
+          "colors": {
+            "canvas": "#101820",
+            "surface": "#18242f",
+            "ink": "#f4f7f8",
+            "muted": "#b7c5cb",
+            "line": "#496170",
+            "accent": "#55d6be",
+            "focus": "#f2c14e",
+            "warning": "#f2c14e",
+            "danger": "#ff7a90"
+          },
+          "conceptColors": {
+            "daily-demand": "#62b6ff",
+            "treatment-capacity": "#ffb86b",
+            "leakage-fraction": "#d7a7ff",
+            "processed-water": "#b9a7ff",
+            "leakage": "#ff7a90",
+            "delivery": "#55d6be",
+            "unmet-demand": "#f2c14e",
+            "load-ratio": "#e6edf0"
+          }
+        },
+        "typography": [
+          {
+            "selector": ".title",
+            "fontSize": "28px",
+            "fill": "rgb(244, 247, 248)"
+          },
+          {
+            "selector": ".module-kicker",
+            "fontSize": "10px",
+            "fill": "rgb(183, 197, 203)"
+          },
+          {
+            "selector": ".module-question",
+            "fontSize": "12px",
+            "fill": "rgb(183, 197, 203)"
+          },
+          {
+            "selector": ".module-claim",
+            "fontSize": "14px",
+            "fill": "rgb(244, 247, 248)"
+          },
+          {
+            "selector": ".module-content text",
+            "fontSize": "10px",
+            "fill": "rgb(183, 197, 203)"
+          },
+          {
+            "selector": ".relationship-key-label",
+            "fontSize": "9.25px",
+            "fill": "rgb(183, 197, 203)"
+          }
+        ]
+      },
+      "ok": true
+    },
+    {
+      "runId": "20260904-svg-text-pair-luna-dark-2",
+      "errors": [],
+      "textStates": [
+        {
+          "scenario": "normal",
+          "ok": true,
+          "threshold": 4.5,
+          "checked": 83,
+          "skipped": 0,
+          "incomplete": 0,
+          "failed": 0,
+          "skippedReasons": {}
+        },
+        {
+          "scenario": "peak",
+          "ok": true,
+          "threshold": 4.5,
+          "checked": 83,
+          "skipped": 0,
+          "incomplete": 0,
+          "failed": 0,
+          "skippedReasons": {}
+        },
+        {
+          "scenario": "repair",
+          "ok": true,
+          "threshold": 4.5,
+          "checked": 83,
+          "skipped": 0,
+          "incomplete": 0,
+          "failed": 0,
+          "skippedReasons": {}
+        },
+        {
+          "scenario": "zero",
+          "ok": true,
+          "threshold": 4.5,
+          "checked": 83,
+          "skipped": 0,
+          "incomplete": 0,
+          "failed": 0,
+          "skippedReasons": {}
+        }
+      ],
+      "arithmetic": {
+        "ok": true,
+        "topic": "water",
+        "svg": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\20260904-svg-text-pair-luna-dark-2\\workspace\\outputs\\dark\\dashboard.svg",
+        "sha256": "7b2e778bf8a67cd074311229a9948e83f2e31f516d43921d2d3ded2ee2b0e396",
+        "states": [
+          {
+            "name": "normal",
+            "sourceValues": {
+              "daily-demand": 120,
+              "leakage-fraction": 0.15,
+              "treatment-capacity": 150
+            },
+            "expected": {
+              "processed": 120,
+              "leakage": 18.0,
+              "delivered": 102.0,
+              "unmet": 0,
+              "load": 0.8
+            },
+            "actual": {
+              "processed": 120,
+              "delivered": 102,
+              "leakage": 18,
+              "unmet": 0,
+              "load": 0.8
+            },
+            "boundMarkCount": 27,
+            "errors": []
+          },
+          {
+            "name": "peak",
+            "sourceValues": {
+              "daily-demand": 180,
+              "leakage-fraction": 0.2,
+              "treatment-capacity": 150
+            },
+            "expected": {
+              "processed": 150,
+              "leakage": 30.0,
+              "delivered": 120.0,
+              "unmet": 30,
+              "load": 1.2
+            },
+            "actual": {
+              "processed": 150,
+              "delivered": 120,
+              "leakage": 30,
+              "unmet": 30,
+              "load": 1.2
+            },
+            "boundMarkCount": 27,
+            "errors": []
+          },
+          {
+            "name": "repair",
+            "sourceValues": {
+              "daily-demand": 180,
+              "leakage-fraction": 0.08,
+              "treatment-capacity": 150
+            },
+            "expected": {
+              "processed": 150,
+              "leakage": 12.0,
+              "delivered": 138.0,
+              "unmet": 30,
+              "load": 1.2
+            },
+            "actual": {
+              "processed": 150,
+              "delivered": 138,
+              "leakage": 12,
+              "unmet": 30,
+              "load": 1.2
+            },
+            "boundMarkCount": 27,
+            "errors": []
+          },
+          {
+            "name": "zero",
+            "sourceValues": {
+              "daily-demand": 0,
+              "leakage-fraction": 0.15,
+              "treatment-capacity": 150
+            },
+            "expected": {
+              "processed": 0,
+              "leakage": 0.0,
+              "delivered": 0.0,
+              "unmet": 0,
+              "load": 0.0
+            },
+            "actual": {
+              "processed": 0,
+              "delivered": 0,
+              "leakage": 0,
+              "unmet": 0,
+              "load": 0
+            },
+            "boundMarkCount": 27,
+            "errors": []
+          }
+        ],
+        "errors": [],
+        "inputMapping": {
+          "demand": "daily-demand",
+          "capacity": "treatment-capacity",
+          "fraction": "leakage-fraction"
+        },
+        "outputMapping": {
+          "processed": "processed-water",
+          "delivered": "delivered-water",
+          "leakage": "leakage-volume",
+          "unmet": "unmet-demand",
+          "load": "demand-load"
+        },
+        "theme": {
+          "preset": "editorial",
+          "colors": {
+            "canvas": "#101820",
+            "surface": "#18242f",
+            "ink": "#f3f7fa",
+            "muted": "#b7c5d1",
+            "line": "#496071",
+            "accent": "#54c7dd",
+            "focus": "#f6cf5e",
+            "warning": "#f6b73c",
+            "danger": "#ff7070"
+          },
+          "conceptColors": {
+            "daily-demand": "#58c7e8",
+            "treatment-capacity": "#f0b45b",
+            "leakage-fraction": "#ff8a65",
+            "processed-water": "#8be9fd",
+            "delivered-water": "#70e1a1",
+            "unmet-demand": "#ff7070",
+            "demand-load": "#c6a0f6",
+            "allocation-check": "#d6e7f2"
+          }
+        },
+        "typography": [
+          {
+            "selector": ".title",
+            "fontSize": "28px",
+            "fill": "rgb(243, 247, 250)"
+          },
+          {
+            "selector": ".module-kicker",
+            "fontSize": "10px",
+            "fill": "rgb(183, 197, 209)"
+          },
+          {
+            "selector": ".module-question",
+            "fontSize": "12px",
+            "fill": "rgb(183, 197, 209)"
+          },
+          {
+            "selector": ".module-claim",
+            "fontSize": "14px",
+            "fill": "rgb(243, 247, 250)"
+          },
+          {
+            "selector": ".module-content text",
+            "fontSize": "10px",
+            "fill": "rgb(183, 197, 209)"
+          },
+          {
+            "selector": ".relationship-key-label",
+            "fontSize": "9.25px",
+            "fill": "rgb(183, 197, 209)"
+          }
+        ]
+      },
+      "ok": true
+    },
+    {
+      "runId": "20260904-svg-text-pair-luna-dark-3",
+      "errors": [],
+      "textStates": [
+        {
+          "scenario": "normal",
+          "ok": true,
+          "threshold": 4.5,
+          "checked": 86,
+          "skipped": 2,
+          "incomplete": 0,
+          "failed": 0,
+          "skippedReasons": {
+            "empty": 2
+          }
+        },
+        {
+          "scenario": "peak",
+          "ok": true,
+          "threshold": 4.5,
+          "checked": 86,
+          "skipped": 2,
+          "incomplete": 0,
+          "failed": 0,
+          "skippedReasons": {
+            "empty": 2
+          }
+        },
+        {
+          "scenario": "repair",
+          "ok": true,
+          "threshold": 4.5,
+          "checked": 86,
+          "skipped": 2,
+          "incomplete": 0,
+          "failed": 0,
+          "skippedReasons": {
+            "empty": 2
+          }
+        },
+        {
+          "scenario": "zero",
+          "ok": true,
+          "threshold": 4.5,
+          "checked": 86,
+          "skipped": 2,
+          "incomplete": 0,
+          "failed": 0,
+          "skippedReasons": {
+            "empty": 2
+          }
+        }
+      ],
+      "arithmetic": {
+        "ok": true,
+        "topic": "water",
+        "svg": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\20260904-svg-text-pair-luna-dark-3\\workspace\\outputs\\dark\\dashboard.svg",
+        "sha256": "b5c6c3e6b205d1efd68c377f0492e852b93ac92de360f0707062fc151e4fc186",
+        "states": [
+          {
+            "name": "normal",
+            "sourceValues": {
+              "daily-demand": 120,
+              "leakage-fraction": 0.15,
+              "treatment-capacity": 150
+            },
+            "expected": {
+              "processed": 120,
+              "leakage": 18.0,
+              "delivered": 102.0,
+              "unmet": 0,
+              "load": 0.8
+            },
+            "actual": {
+              "processed": 120,
+              "delivered": 102,
+              "leakage": 18,
+              "unmet": 0,
+              "load": 0.8
+            },
+            "boundMarkCount": 25,
+            "errors": []
+          },
+          {
+            "name": "peak",
+            "sourceValues": {
+              "daily-demand": 180,
+              "leakage-fraction": 0.2,
+              "treatment-capacity": 150
+            },
+            "expected": {
+              "processed": 150,
+              "leakage": 30.0,
+              "delivered": 120.0,
+              "unmet": 30,
+              "load": 1.2
+            },
+            "actual": {
+              "processed": 150,
+              "delivered": 120,
+              "leakage": 30,
+              "unmet": 30,
+              "load": 1.2
+            },
+            "boundMarkCount": 25,
+            "errors": []
+          },
+          {
+            "name": "repair",
+            "sourceValues": {
+              "daily-demand": 180,
+              "leakage-fraction": 0.08,
+              "treatment-capacity": 150
+            },
+            "expected": {
+              "processed": 150,
+              "leakage": 12.0,
+              "delivered": 138.0,
+              "unmet": 30,
+              "load": 1.2
+            },
+            "actual": {
+              "processed": 150,
+              "delivered": 138,
+              "leakage": 12,
+              "unmet": 30,
+              "load": 1.2
+            },
+            "boundMarkCount": 25,
+            "errors": []
+          },
+          {
+            "name": "zero",
+            "sourceValues": {
+              "daily-demand": 0,
+              "leakage-fraction": 0.15,
+              "treatment-capacity": 150
+            },
+            "expected": {
+              "processed": 0,
+              "leakage": 0.0,
+              "delivered": 0.0,
+              "unmet": 0,
+              "load": 0.0
+            },
+            "actual": {
+              "processed": 0,
+              "delivered": 0,
+              "leakage": 0,
+              "unmet": 0,
+              "load": 0
+            },
+            "boundMarkCount": 25,
+            "errors": []
+          }
+        ],
+        "errors": [],
+        "inputMapping": {
+          "demand": "daily-demand",
+          "capacity": "treatment-capacity",
+          "fraction": "leakage-fraction"
+        },
+        "outputMapping": {
+          "processed": "processed-water",
+          "delivered": "delivered-water",
+          "leakage": "leakage-volume",
+          "unmet": "unmet-demand",
+          "load": "demand-capacity-load"
+        },
+        "theme": {
+          "preset": "editorial",
+          "colors": {
+            "canvas": "#101820",
+            "surface": "#18242f",
+            "ink": "#f2f7f8",
+            "muted": "#b8c7cf",
+            "line": "#536674",
+            "accent": "#73b9ff",
+            "focus": "#ffe08a",
+            "warning": "#ffc46b",
+            "danger": "#ff7d87"
+          },
+          "conceptColors": {
+            "daily-demand": "#66d9cf",
+            "treatment-capacity": "#82b8ff",
+            "leakage-fraction": "#ffd166",
+            "processed-water": "#c4a7ff",
+            "leakage-volume": "#ff9f68",
+            "delivered-water": "#72e6a6",
+            "unmet-demand": "#ff7d87",
+            "demand-capacity-load": "#f29cff",
+            "allocation-check": "#d2e3e8"
+          }
+        },
+        "typography": [
+          {
+            "selector": ".title",
+            "fontSize": "28px",
+            "fill": "rgb(242, 247, 248)"
+          },
+          {
+            "selector": ".module-kicker",
+            "fontSize": "10px",
+            "fill": "rgb(184, 199, 207)"
+          },
+          {
+            "selector": ".module-question",
+            "fontSize": "12px",
+            "fill": "rgb(184, 199, 207)"
+          },
+          {
+            "selector": ".module-claim",
+            "fontSize": "14px",
+            "fill": "rgb(242, 247, 248)"
+          },
+          {
+            "selector": ".module-content text",
+            "fontSize": "10px",
+            "fill": "rgb(184, 199, 207)"
+          },
+          {
+            "selector": ".relationship-key-label",
+            "fontSize": "9.25px",
+            "fill": "rgb(184, 199, 207)"
+          }
+        ]
+      },
+      "ok": true
+    }
+  ],
+  "controlledInitialViews": [
+    {
+      "case": "world-light",
+      "variant": "before",
+      "ok": false,
+      "threshold": 4.5,
+      "checked": 29,
+      "skipped": 141,
+      "incomplete": 4,
+      "failed": 11,
+      "skippedReasons": {
+        "zero-opacity": 136,
+        "empty": 2,
+        "disabled-control": 1,
+        "not-painted-at-this-view": 4
+      }
+    },
+    {
+      "case": "world-light",
+      "variant": "after",
+      "ok": true,
+      "threshold": 4.5,
+      "checked": 33,
+      "skipped": 141,
+      "incomplete": 0,
+      "failed": 0,
+      "skippedReasons": {
+        "zero-opacity": 136,
+        "empty": 2,
+        "disabled-control": 1,
+        "not-painted-at-this-view": 4
+      }
+    },
+    {
+      "case": "near-threshold",
+      "variant": "before",
+      "ok": false,
+      "threshold": 4.5,
+      "checked": 79,
+      "skipped": 3,
+      "incomplete": 0,
+      "failed": 25,
+      "skippedReasons": {
+        "empty": 3
+      }
+    },
+    {
+      "case": "near-threshold",
+      "variant": "after",
+      "ok": true,
+      "threshold": 4.5,
+      "checked": 79,
+      "skipped": 3,
+      "incomplete": 0,
+      "failed": 0,
+      "skippedReasons": {
+        "empty": 3
+      }
+    },
+    {
+      "case": "compact-dark",
+      "variant": "before",
+      "ok": true,
+      "threshold": 4.5,
+      "checked": 79,
+      "skipped": 3,
+      "incomplete": 0,
+      "failed": 0,
+      "skippedReasons": {
+        "empty": 3
+      }
+    },
+    {
+      "case": "compact-dark",
+      "variant": "after",
+      "ok": true,
+      "threshold": 4.5,
+      "checked": 79,
+      "skipped": 3,
+      "incomplete": 0,
+      "failed": 0,
+      "skippedReasons": {
+        "empty": 3
+      }
+    },
+    {
+      "case": "light-mark",
+      "variant": "before",
+      "ok": true,
+      "threshold": 4.5,
+      "checked": 79,
+      "skipped": 3,
+      "incomplete": 0,
+      "failed": 0,
+      "skippedReasons": {
+        "empty": 3
+      }
+    },
+    {
+      "case": "light-mark",
+      "variant": "after",
+      "ok": true,
+      "threshold": 4.5,
+      "checked": 79,
+      "skipped": 3,
+      "incomplete": 0,
+      "failed": 0,
+      "skippedReasons": {
+        "empty": 3
+      }
+    }
+  ],
+  "controlledFullAudits": [
+    {
+      "case": "world-light",
+      "ok": true,
+      "checkSummary": {
+        "total": 144,
+        "passed": 144,
+        "failed": 0,
+        "passedIds": [
+          "runtime-api",
+          "visual-geometry",
+          "initial-text-contrast",
+          "initial-quantitative-semantics",
+          "initial-accessibility-tree",
+          "initial-relationship-contrast",
+          "initial-relationship-clearance",
+          "initial-relationship-state",
+          "initial-snapshot",
+          "initial-snapshot-stability",
+          "navigation-anchor-contract",
+          "navigation-route-determinism",
+          "navigation-route-direction-cues",
+          "navigation-state-isolation",
+          "navigation-minimap",
+          "navigation-input-controls",
+          "navigation-deep-link",
+          "navigation-module-accessibility-tree",
+          "text-view-world-contrast",
+          "text-view-district-intake-core-contrast",
+          "text-view-district-capacity-branch-contrast",
+          "text-view-district-quality-branch-contrast",
+          "text-view-district-outcome-branch-contrast",
+          "text-view-module-operating-core-contrast",
+          "text-view-module-intake-ledger-contrast",
+          "text-view-module-demand-capacity-bars-contrast",
+          "text-view-module-load-threshold-contrast",
+          "text-view-module-capacity-gap-ledger-contrast",
+          "text-view-module-bottleneck-network-contrast",
+          "text-view-module-first-pass-gauge-contrast",
+          "text-view-module-work-disposition-flow-contrast",
+          "text-view-module-quality-outcome-bars-contrast",
+          "text-view-module-fulfilled-demand-gauge-contrast",
+          "text-view-module-demand-reconciliation-contrast",
+          "text-view-module-outcome-mix-bars-contrast",
+          "real-input-controls",
+          "scenario-balanced-day-transaction",
+          "scenario-balanced-day-state",
+          "scenario-balanced-day-propagation",
+          "scenario-balanced-day-repeat-transaction",
+          "scenario-balanced-day-idempotence",
+          "scenario-balanced-day-visual-geometry",
+          "scenario-balanced-day-text-contrast",
+          "scenario-balanced-day-quantitative-semantics",
+          "scenario-balanced-day-accessibility-tree",
+          "scenario-surge-day-transaction",
+          "scenario-surge-day-state",
+          "scenario-surge-day-propagation",
+          "scenario-surge-day-repeat-transaction",
+          "scenario-surge-day-idempotence",
+          "scenario-surge-day-visual-geometry",
+          "scenario-surge-day-text-contrast",
+          "scenario-surge-day-quantitative-semantics",
+          "scenario-surge-day-accessibility-tree",
+          "source-demand-rate-reset",
+          "source-demand-rate-baseline",
+          "source-demand-rate-transaction",
+          "source-demand-rate-state",
+          "source-demand-rate-propagation",
+          "source-demand-rate-repeat-transaction",
+          "source-demand-rate-idempotence",
+          "source-demand-rate-visual-geometry",
+          "source-demand-rate-quantitative-semantics",
+          "source-demand-rate-accessibility-tree",
+          "source-capacity-reset",
+          "source-capacity-baseline",
+          "source-capacity-transaction",
+          "source-capacity-state",
+          "source-capacity-propagation",
+          "source-capacity-repeat-transaction",
+          "source-capacity-idempotence",
+          "source-capacity-visual-geometry",
+          "source-capacity-quantitative-semantics",
+          "source-capacity-accessibility-tree",
+          "source-first-pass-yield-reset",
+          "source-first-pass-yield-baseline",
+          "source-first-pass-yield-transaction",
+          "source-first-pass-yield-state",
+          "source-first-pass-yield-propagation",
+          "source-first-pass-yield-repeat-transaction",
+          "source-first-pass-yield-idempotence",
+          "source-first-pass-yield-visual-geometry",
+          "source-first-pass-yield-quantitative-semantics",
+          "source-first-pass-yield-accessibility-tree",
+          "zero-flow-coverage",
+          "focus-intake-story-prepare",
+          "focus-intake-story-transaction",
+          "focus-intake-story-state",
+          "focus-intake-story-semantic-isolation",
+          "focus-intake-story-relationships",
+          "focus-intake-story-accessibility-tree",
+          "focus-intake-story-repeat-transaction",
+          "focus-intake-story-idempotence",
+          "focus-intake-story-readability",
+          "focus-intake-story-reset-transaction",
+          "focus-intake-story-reset-state",
+          "focus-capacity-story-prepare",
+          "focus-capacity-story-transaction",
+          "focus-capacity-story-state",
+          "focus-capacity-story-semantic-isolation",
+          "focus-capacity-story-relationships",
+          "focus-capacity-story-accessibility-tree",
+          "focus-capacity-story-repeat-transaction",
+          "focus-capacity-story-idempotence",
+          "focus-capacity-story-readability",
+          "focus-capacity-story-reset-transaction",
+          "focus-capacity-story-reset-state",
+          "focus-quality-story-prepare",
+          "focus-quality-story-transaction",
+          "focus-quality-story-state",
+          "focus-quality-story-semantic-isolation",
+          "focus-quality-story-relationships",
+          "focus-quality-story-accessibility-tree",
+          "focus-quality-story-repeat-transaction",
+          "focus-quality-story-idempotence",
+          "focus-quality-story-readability",
+          "focus-quality-story-reset-transaction",
+          "focus-quality-story-reset-state",
+          "focus-outcome-story-prepare",
+          "focus-outcome-story-transaction",
+          "focus-outcome-story-state",
+          "focus-outcome-story-semantic-isolation",
+          "focus-outcome-story-relationships",
+          "focus-outcome-story-accessibility-tree",
+          "focus-outcome-story-repeat-transaction",
+          "focus-outcome-story-idempotence",
+          "focus-outcome-story-readability",
+          "focus-outcome-story-reset-transaction",
+          "focus-outcome-story-reset-state",
+          "timeline-absent-noops",
+          "reduced-motion-text-contrast",
+          "reduced-motion-initial",
+          "reduced-motion-play-transaction",
+          "reduced-motion-no-autoplay",
+          "reduced-motion-playback-control",
+          "reduced-motion-navigation",
+          "reduced-motion-css",
+          "reduced-motion-scenario-transaction",
+          "reduced-motion-scenario",
+          "reduced-motion-focus-transaction",
+          "reduced-motion-focus",
+          "reduced-motion-relationships",
+          "script-free-text-contrast",
+          "script-free-fallback"
+        ],
+        "failedIds": []
+      },
+      "textContrast": {
+        "textContrastCheckCount": 26,
+        "textContrastLabelCount": 718,
+        "textContrastIssueCount": 0
+      },
+      "hashes": {
+        "brief.json": "377e85899f8e4d85ae6017f1e2261a3322911b85ee969b08c1f8f743b5f8fd77",
+        "plan.json": "e7e373bb2dad3311745914cb9be422698bfde2c4593f75aad24a21027b902498",
+        "before.svg": "b97afbdd16128980ac5920933e1cadbf0e182c7bd79cb05816b80ec7056bc1e2",
+        "after.svg": "d27cafac221d6e689133d65ccaa51f1e7d80c9d5dc797f2a8d24f15539a06b4a"
+      }
+    },
+    {
+      "case": "near-threshold",
+      "ok": true,
+      "checkSummary": {
+        "total": 117,
+        "passed": 117,
+        "failed": 0,
+        "passedIds": [
+          "runtime-api",
+          "visual-geometry",
+          "initial-text-contrast",
+          "initial-quantitative-semantics",
+          "initial-accessibility-tree",
+          "initial-relationship-contrast",
+          "initial-relationship-clearance",
+          "initial-relationship-state",
+          "initial-snapshot",
+          "initial-snapshot-stability",
+          "real-input-controls",
+          "scenario-steady-shift-transaction",
+          "scenario-steady-shift-state",
+          "scenario-steady-shift-propagation",
+          "scenario-steady-shift-repeat-transaction",
+          "scenario-steady-shift-idempotence",
+          "scenario-steady-shift-visual-geometry",
+          "scenario-steady-shift-text-contrast",
+          "scenario-steady-shift-quantitative-semantics",
+          "scenario-steady-shift-accessibility-tree",
+          "scenario-rush-window-transaction",
+          "scenario-rush-window-state",
+          "scenario-rush-window-propagation",
+          "scenario-rush-window-repeat-transaction",
+          "scenario-rush-window-idempotence",
+          "scenario-rush-window-visual-geometry",
+          "scenario-rush-window-text-contrast",
+          "scenario-rush-window-quantitative-semantics",
+          "scenario-rush-window-accessibility-tree",
+          "source-input-rate-reset",
+          "source-input-rate-baseline",
+          "source-input-rate-transaction",
+          "source-input-rate-state",
+          "source-input-rate-propagation",
+          "source-input-rate-repeat-transaction",
+          "source-input-rate-idempotence",
+          "source-input-rate-visual-geometry",
+          "source-input-rate-quantitative-semantics",
+          "source-input-rate-accessibility-tree",
+          "source-capacity-reset",
+          "source-capacity-baseline",
+          "source-capacity-transaction",
+          "source-capacity-state",
+          "source-capacity-propagation",
+          "source-capacity-repeat-transaction",
+          "source-capacity-idempotence",
+          "source-capacity-visual-geometry",
+          "source-capacity-quantitative-semantics",
+          "source-capacity-accessibility-tree",
+          "source-success-rate-reset",
+          "source-success-rate-baseline",
+          "source-success-rate-transaction",
+          "source-success-rate-state",
+          "source-success-rate-propagation",
+          "source-success-rate-repeat-transaction",
+          "source-success-rate-idempotence",
+          "source-success-rate-visual-geometry",
+          "source-success-rate-quantitative-semantics",
+          "source-success-rate-accessibility-tree",
+          "zero-flow-completed-rate-reset",
+          "zero-flow-completed-rate-transaction",
+          "zero-flow-completed-rate-state",
+          "zero-flow-completed-rate-boundary",
+          "zero-flow-completed-rate-visual-geometry",
+          "zero-flow-completed-rate-quantitative-semantics",
+          "zero-flow-completed-rate-accessibility-tree",
+          "zero-flow-first-pass-failure-rate-reset",
+          "zero-flow-first-pass-failure-rate-transaction",
+          "zero-flow-first-pass-failure-rate-state",
+          "zero-flow-first-pass-failure-rate-boundary",
+          "zero-flow-first-pass-failure-rate-visual-geometry",
+          "zero-flow-first-pass-failure-rate-quantitative-semantics",
+          "zero-flow-first-pass-failure-rate-accessibility-tree",
+          "zero-flow-unserved-rate-reset",
+          "zero-flow-unserved-rate-transaction",
+          "zero-flow-unserved-rate-state",
+          "zero-flow-unserved-rate-boundary",
+          "zero-flow-unserved-rate-visual-geometry",
+          "zero-flow-unserved-rate-quantitative-semantics",
+          "zero-flow-unserved-rate-accessibility-tree",
+          "zero-flow-coverage",
+          "focus-drivers-story-prepare",
+          "focus-drivers-story-transaction",
+          "focus-drivers-story-state",
+          "focus-drivers-story-semantic-isolation",
+          "focus-drivers-story-relationships",
+          "focus-drivers-story-accessibility-tree",
+          "focus-drivers-story-repeat-transaction",
+          "focus-drivers-story-idempotence",
+          "focus-drivers-story-readability",
+          "focus-drivers-story-reset-transaction",
+          "focus-drivers-story-reset-state",
+          "focus-outcomes-story-prepare",
+          "focus-outcomes-story-transaction",
+          "focus-outcomes-story-state",
+          "focus-outcomes-story-semantic-isolation",
+          "focus-outcomes-story-relationships",
+          "focus-outcomes-story-accessibility-tree",
+          "focus-outcomes-story-repeat-transaction",
+          "focus-outcomes-story-idempotence",
+          "focus-outcomes-story-readability",
+          "focus-outcomes-story-reset-transaction",
+          "focus-outcomes-story-reset-state",
+          "timeline-absent-noops",
+          "reduced-motion-text-contrast",
+          "reduced-motion-initial",
+          "reduced-motion-play-transaction",
+          "reduced-motion-no-autoplay",
+          "reduced-motion-playback-control",
+          "reduced-motion-css",
+          "reduced-motion-scenario-transaction",
+          "reduced-motion-scenario",
+          "reduced-motion-focus-transaction",
+          "reduced-motion-focus",
+          "reduced-motion-relationships",
+          "script-free-text-contrast",
+          "script-free-fallback"
+        ],
+        "failedIds": []
+      },
+      "textContrast": {
+        "textContrastCheckCount": 7,
+        "textContrastLabelCount": 544,
+        "textContrastIssueCount": 0
+      },
+      "hashes": {
+        "brief.json": "95116a892674088cace9827525df292a6080870c173b1743e1b66dbbc95987aa",
+        "plan.json": "74482d421c8fa8acbd5bb817faef72fb097c024c0a7739196ddbb09cd6b22872",
+        "before.svg": "e169076053d6cfb7eb4f5a5d4a00ac777fccfd3d258ed1b4a73b8ed1341c662e",
+        "after.svg": "92c6c47baf777ce035fdc318c2f3ae2040797d31311869c63221f5b8a87fce1a"
+      }
+    },
+    {
+      "case": "compact-dark",
+      "ok": true,
+      "checkSummary": {
+        "total": 117,
+        "passed": 117,
+        "failed": 0,
+        "passedIds": [
+          "runtime-api",
+          "visual-geometry",
+          "initial-text-contrast",
+          "initial-quantitative-semantics",
+          "initial-accessibility-tree",
+          "initial-relationship-contrast",
+          "initial-relationship-clearance",
+          "initial-relationship-state",
+          "initial-snapshot",
+          "initial-snapshot-stability",
+          "real-input-controls",
+          "scenario-steady-shift-transaction",
+          "scenario-steady-shift-state",
+          "scenario-steady-shift-propagation",
+          "scenario-steady-shift-repeat-transaction",
+          "scenario-steady-shift-idempotence",
+          "scenario-steady-shift-visual-geometry",
+          "scenario-steady-shift-text-contrast",
+          "scenario-steady-shift-quantitative-semantics",
+          "scenario-steady-shift-accessibility-tree",
+          "scenario-rush-window-transaction",
+          "scenario-rush-window-state",
+          "scenario-rush-window-propagation",
+          "scenario-rush-window-repeat-transaction",
+          "scenario-rush-window-idempotence",
+          "scenario-rush-window-visual-geometry",
+          "scenario-rush-window-text-contrast",
+          "scenario-rush-window-quantitative-semantics",
+          "scenario-rush-window-accessibility-tree",
+          "source-input-rate-reset",
+          "source-input-rate-baseline",
+          "source-input-rate-transaction",
+          "source-input-rate-state",
+          "source-input-rate-propagation",
+          "source-input-rate-repeat-transaction",
+          "source-input-rate-idempotence",
+          "source-input-rate-visual-geometry",
+          "source-input-rate-quantitative-semantics",
+          "source-input-rate-accessibility-tree",
+          "source-capacity-reset",
+          "source-capacity-baseline",
+          "source-capacity-transaction",
+          "source-capacity-state",
+          "source-capacity-propagation",
+          "source-capacity-repeat-transaction",
+          "source-capacity-idempotence",
+          "source-capacity-visual-geometry",
+          "source-capacity-quantitative-semantics",
+          "source-capacity-accessibility-tree",
+          "source-success-rate-reset",
+          "source-success-rate-baseline",
+          "source-success-rate-transaction",
+          "source-success-rate-state",
+          "source-success-rate-propagation",
+          "source-success-rate-repeat-transaction",
+          "source-success-rate-idempotence",
+          "source-success-rate-visual-geometry",
+          "source-success-rate-quantitative-semantics",
+          "source-success-rate-accessibility-tree",
+          "zero-flow-completed-rate-reset",
+          "zero-flow-completed-rate-transaction",
+          "zero-flow-completed-rate-state",
+          "zero-flow-completed-rate-boundary",
+          "zero-flow-completed-rate-visual-geometry",
+          "zero-flow-completed-rate-quantitative-semantics",
+          "zero-flow-completed-rate-accessibility-tree",
+          "zero-flow-first-pass-failure-rate-reset",
+          "zero-flow-first-pass-failure-rate-transaction",
+          "zero-flow-first-pass-failure-rate-state",
+          "zero-flow-first-pass-failure-rate-boundary",
+          "zero-flow-first-pass-failure-rate-visual-geometry",
+          "zero-flow-first-pass-failure-rate-quantitative-semantics",
+          "zero-flow-first-pass-failure-rate-accessibility-tree",
+          "zero-flow-unserved-rate-reset",
+          "zero-flow-unserved-rate-transaction",
+          "zero-flow-unserved-rate-state",
+          "zero-flow-unserved-rate-boundary",
+          "zero-flow-unserved-rate-visual-geometry",
+          "zero-flow-unserved-rate-quantitative-semantics",
+          "zero-flow-unserved-rate-accessibility-tree",
+          "zero-flow-coverage",
+          "focus-drivers-story-prepare",
+          "focus-drivers-story-transaction",
+          "focus-drivers-story-state",
+          "focus-drivers-story-semantic-isolation",
+          "focus-drivers-story-relationships",
+          "focus-drivers-story-accessibility-tree",
+          "focus-drivers-story-repeat-transaction",
+          "focus-drivers-story-idempotence",
+          "focus-drivers-story-readability",
+          "focus-drivers-story-reset-transaction",
+          "focus-drivers-story-reset-state",
+          "focus-outcomes-story-prepare",
+          "focus-outcomes-story-transaction",
+          "focus-outcomes-story-state",
+          "focus-outcomes-story-semantic-isolation",
+          "focus-outcomes-story-relationships",
+          "focus-outcomes-story-accessibility-tree",
+          "focus-outcomes-story-repeat-transaction",
+          "focus-outcomes-story-idempotence",
+          "focus-outcomes-story-readability",
+          "focus-outcomes-story-reset-transaction",
+          "focus-outcomes-story-reset-state",
+          "timeline-absent-noops",
+          "reduced-motion-text-contrast",
+          "reduced-motion-initial",
+          "reduced-motion-play-transaction",
+          "reduced-motion-no-autoplay",
+          "reduced-motion-playback-control",
+          "reduced-motion-css",
+          "reduced-motion-scenario-transaction",
+          "reduced-motion-scenario",
+          "reduced-motion-focus-transaction",
+          "reduced-motion-focus",
+          "reduced-motion-relationships",
+          "script-free-text-contrast",
+          "script-free-fallback"
+        ],
+        "failedIds": []
+      },
+      "textContrast": {
+        "textContrastCheckCount": 7,
+        "textContrastLabelCount": 544,
+        "textContrastIssueCount": 0
+      },
+      "hashes": {
+        "brief.json": "688fdd5bf82c2b7b991c063a60af2037e4503b6d6aa006cc8fc9ce09420852de",
+        "plan.json": "4ed386acb738a24ae3d5023273ee84f9f3a4cb40017c27051916ef9c0b11b802",
+        "before.svg": "533b9c02b69fa79b8a46debafab4c02be8aba4b03536e5ff106fc1cb281a3789",
+        "after.svg": "11f64b62bb3c9aa56efe1d81e1f66e719713c1ebaffb99e0401f8cf644b6ddce"
+      }
+    },
+    {
+      "case": "light-mark",
+      "ok": true,
+      "checkSummary": {
+        "total": 117,
+        "passed": 117,
+        "failed": 0,
+        "passedIds": [
+          "runtime-api",
+          "visual-geometry",
+          "initial-text-contrast",
+          "initial-quantitative-semantics",
+          "initial-accessibility-tree",
+          "initial-relationship-contrast",
+          "initial-relationship-clearance",
+          "initial-relationship-state",
+          "initial-snapshot",
+          "initial-snapshot-stability",
+          "real-input-controls",
+          "scenario-steady-shift-transaction",
+          "scenario-steady-shift-state",
+          "scenario-steady-shift-propagation",
+          "scenario-steady-shift-repeat-transaction",
+          "scenario-steady-shift-idempotence",
+          "scenario-steady-shift-visual-geometry",
+          "scenario-steady-shift-text-contrast",
+          "scenario-steady-shift-quantitative-semantics",
+          "scenario-steady-shift-accessibility-tree",
+          "scenario-rush-window-transaction",
+          "scenario-rush-window-state",
+          "scenario-rush-window-propagation",
+          "scenario-rush-window-repeat-transaction",
+          "scenario-rush-window-idempotence",
+          "scenario-rush-window-visual-geometry",
+          "scenario-rush-window-text-contrast",
+          "scenario-rush-window-quantitative-semantics",
+          "scenario-rush-window-accessibility-tree",
+          "source-input-rate-reset",
+          "source-input-rate-baseline",
+          "source-input-rate-transaction",
+          "source-input-rate-state",
+          "source-input-rate-propagation",
+          "source-input-rate-repeat-transaction",
+          "source-input-rate-idempotence",
+          "source-input-rate-visual-geometry",
+          "source-input-rate-quantitative-semantics",
+          "source-input-rate-accessibility-tree",
+          "source-capacity-reset",
+          "source-capacity-baseline",
+          "source-capacity-transaction",
+          "source-capacity-state",
+          "source-capacity-propagation",
+          "source-capacity-repeat-transaction",
+          "source-capacity-idempotence",
+          "source-capacity-visual-geometry",
+          "source-capacity-quantitative-semantics",
+          "source-capacity-accessibility-tree",
+          "source-success-rate-reset",
+          "source-success-rate-baseline",
+          "source-success-rate-transaction",
+          "source-success-rate-state",
+          "source-success-rate-propagation",
+          "source-success-rate-repeat-transaction",
+          "source-success-rate-idempotence",
+          "source-success-rate-visual-geometry",
+          "source-success-rate-quantitative-semantics",
+          "source-success-rate-accessibility-tree",
+          "zero-flow-completed-rate-reset",
+          "zero-flow-completed-rate-transaction",
+          "zero-flow-completed-rate-state",
+          "zero-flow-completed-rate-boundary",
+          "zero-flow-completed-rate-visual-geometry",
+          "zero-flow-completed-rate-quantitative-semantics",
+          "zero-flow-completed-rate-accessibility-tree",
+          "zero-flow-first-pass-failure-rate-reset",
+          "zero-flow-first-pass-failure-rate-transaction",
+          "zero-flow-first-pass-failure-rate-state",
+          "zero-flow-first-pass-failure-rate-boundary",
+          "zero-flow-first-pass-failure-rate-visual-geometry",
+          "zero-flow-first-pass-failure-rate-quantitative-semantics",
+          "zero-flow-first-pass-failure-rate-accessibility-tree",
+          "zero-flow-unserved-rate-reset",
+          "zero-flow-unserved-rate-transaction",
+          "zero-flow-unserved-rate-state",
+          "zero-flow-unserved-rate-boundary",
+          "zero-flow-unserved-rate-visual-geometry",
+          "zero-flow-unserved-rate-quantitative-semantics",
+          "zero-flow-unserved-rate-accessibility-tree",
+          "zero-flow-coverage",
+          "focus-drivers-story-prepare",
+          "focus-drivers-story-transaction",
+          "focus-drivers-story-state",
+          "focus-drivers-story-semantic-isolation",
+          "focus-drivers-story-relationships",
+          "focus-drivers-story-accessibility-tree",
+          "focus-drivers-story-repeat-transaction",
+          "focus-drivers-story-idempotence",
+          "focus-drivers-story-readability",
+          "focus-drivers-story-reset-transaction",
+          "focus-drivers-story-reset-state",
+          "focus-outcomes-story-prepare",
+          "focus-outcomes-story-transaction",
+          "focus-outcomes-story-state",
+          "focus-outcomes-story-semantic-isolation",
+          "focus-outcomes-story-relationships",
+          "focus-outcomes-story-accessibility-tree",
+          "focus-outcomes-story-repeat-transaction",
+          "focus-outcomes-story-idempotence",
+          "focus-outcomes-story-readability",
+          "focus-outcomes-story-reset-transaction",
+          "focus-outcomes-story-reset-state",
+          "timeline-absent-noops",
+          "reduced-motion-text-contrast",
+          "reduced-motion-initial",
+          "reduced-motion-play-transaction",
+          "reduced-motion-no-autoplay",
+          "reduced-motion-playback-control",
+          "reduced-motion-css",
+          "reduced-motion-scenario-transaction",
+          "reduced-motion-scenario",
+          "reduced-motion-focus-transaction",
+          "reduced-motion-focus",
+          "reduced-motion-relationships",
+          "script-free-text-contrast",
+          "script-free-fallback"
+        ],
+        "failedIds": []
+      },
+      "textContrast": {
+        "textContrastCheckCount": 7,
+        "textContrastLabelCount": 544,
+        "textContrastIssueCount": 0
+      },
+      "hashes": {
+        "brief.json": "d834f548d54c355d1365f8dde22b65886ceb026b3bfad7b7939fc7cadd91c177",
+        "plan.json": "9184ef0fce8d05f8124c127bba09b3aea73e7266862fe03953c18c33d8c7616e",
+        "before.svg": "df3b85258ef7359b70b87c5b4c92afbbd05c9296048cdd6f0bddf8ffc58fa902",
+        "after.svg": "e7378a608ea0bc7944adf7543e9abba6e6aafa532a3f19fdd50259d5064795b0"
+      }
+    }
+  ],
+  "baselineSources": {
+    "audit_synchronized_svg.py": "bdb49a8106c6645f6879b0ebc23cfbc3698f2daf920881d82cebc855af3cb314",
+    "compose_synchronized_svg.py": "79185f9e7372bff0d3911d6bc9ac0b24fe032439a297d6d4e5ec6e7ac7b62102",
+    "scaffold_synchronized_svg.py": "ee3de49771328034b891a5acde3b3f37b389a24d82d2ab11b619d68ed2306d34",
+    "theme_contract.py": "cd4264262234c7acadcb76fd9a49d1f32f308ecbf5ec9471980c0672adee9580",
+    "validate_synchronized_svg.py": "af24ea2b7f878adc6d008ddbc0409f33b22496d17e57f5cc8cf8bb12acbeeb2c"
+  },
+  "comparisonBrowser": [
+    {
+      "images": [
+        {
+          "loaded": true
+        },
+        {
+          "loaded": true
+        },
+        {
+          "loaded": true
+        },
+        {
+          "loaded": true
+        },
+        {
+          "loaded": true
+        },
+        {
+          "loaded": true
+        },
+        {
+          "loaded": true
+        },
+        {
+          "loaded": true
+        }
+      ],
+      "overflow": false,
+      "sections": 4,
+      "viewport": "desktop",
+      "errors": []
+    },
+    {
+      "images": [
+        {
+          "loaded": true
+        },
+        {
+          "loaded": true
+        },
+        {
+          "loaded": true
+        },
+        {
+          "loaded": true
+        },
+        {
+          "loaded": true
+        },
+        {
+          "loaded": true
+        },
+        {
+          "loaded": true
+        },
+        {
+          "loaded": true
+        }
+      ],
+      "overflow": false,
+      "sections": 4,
+      "viewport": "mobile",
+      "errors": []
+    }
+  ]
+}

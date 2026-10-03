@@ -1,0 +1,139 @@
+{
+  "tool": "built-in image_gen",
+  "as_of": "2026-09-12",
+  "background": {
+    "prompt": "Use case: illustration-story. Asset type: background artwork for a large educational astronomy and spacecraft timeline poster. Create a magnificent but restrained deep-space background, portrait orientation approximately 2:3, highest practical resolution. Very dark navy-black space, a graceful translucent violet-blue nebula concentrated along the extreme right edge and faint cyan dust at the upper left. The broad center and left-middle must stay quiet, nearly black and low contrast for many readable labels and luminous data lines. Sparse crisp distant stars at varying tiny sizes; a handful of elegant subtle blue-white star glints near the edges. Smooth rich gradients, photographic astrophotography texture, refined modern museum-poster aesthetic with youthful cinematic energy. No spacecraft, no planets, no people, no text, no symbols, no logos, no bright central object, no grid, no framing. This is purely a background layer; leave all timelines and factual objects out.",
+    "path": "artifacts/images/space-edition/nebula-background.png",
+    "package_path": "images/assets/nebula-background.png"
+  },
+  "accepted": [
+    {
+      "id": "enterprise-nx",
+      "path": "artifacts/images/space-edition/enterprise-nx.png",
+      "prompt": "Generate a photorealistic cutout illustration of Star Trek's Enterprise NX-01 using these two physical/design reference images. Preserve the recognizable NX-class design: compact circular saucer, paired catamaran aft booms and exactly two long slim nacelles; no separate underslung secondary hull. Full ship seen from above at an elevated three-quarter angle, bow pointing RIGHT, stern at LEFT, roughly horizontal long axis. Silvery cool-gray metallic plating, soft cool-white studio light from upper left, restrained cyan engine glow and red nacelle caps. Match the proportions in the references, all structural supports connected. Genuine transparent alpha background, no checkerboard, no display stand, no labels or diagram arrows, no stars, no long trails. Entire ship in frame with a comfortable margin. Coherent polished miniature photography for an educational starship chronology.",
+      "generated_source": "C:\\Users\\villa\\.codex\\generated_images\\01a09216-1537-7030-8969-55469c252834\\exec-6cda81b1-d718-4986-a3a0-60132ecc72c8.png",
+      "references": [
+        {
+          "path": "artifacts/images/reference/nx-model.jpg",
+          "page": "https://www.monstersinmotion.com/cart/one-of-a-kind-item-list-pt-c-15_263/star-trek-enterprise-nx01-fx-company-1350-scale-museum-quality-replica-p-31669.html",
+          "kind": "Photograph of a physical model"
+        },
+        {
+          "path": "artifacts/images/reference/nx-top.jpg",
+          "page": null,
+          "kind": "Previously downloaded annotated dorsal design reference",
+          "provenance_status": "Original URL was not retained; supplementary geometry only."
+        }
+      ],
+      "package_path": "images/assets/enterprise-nx.png",
+      "reference_review": "Reference images were opened and visually checked before generation.",
+      "background_mode": "RGBA with actual alpha"
+    },
+    {
+      "id": "voyager",
+      "path": "artifacts/images/space-edition/voyager.png",
+      "prompt": "Create a clean photorealistic spacecraft cutout using the supplied photograph of the physical USS Voyager model as an identity and proportions reference. Preserve this Intrepid-class design: elongated spade-shaped forward hull blending into its engineering section and exactly two short aft nacelles on side pylons. Recompose to a consistent elevated three-quarter dorsal view, about 35 degrees above, bow facing RIGHT and rear at LEFT, long axis horizontal. Full vessel entirely inside the image with clean margin. Pale cool-gray miniature surface with fine plating, tiny windows, soft upper-left cool-white key light, restrained cyan-blue engine illumination and warm red details. Genuinely transparent background, no display stand, no base, no stars, no nebula, no trails, no added labels. The reference is not a background: use only the vessel. Polished cinema miniature quality for a science-fiction educational timeline poster.",
+      "generated_source": "C:\\Users\\villa\\.codex\\generated_images\\01a09216-1537-7030-8969-55469c252834\\exec-5d555a84-7ca5-47fd-8a3d-554fd04da312.png",
+      "references": [
+        {
+          "path": "artifacts/images/reference/voyager-model.jpg",
+          "page": "https://www.startrek.com/news/star-trek-explorer-7-bill-krause-model-interview",
+          "kind": "Official StarTrek.com photograph of Bill Krause's physical model"
+        }
+      ],
+      "package_path": "images/assets/voyager.png",
+      "reference_review": "Reference images were opened and visually checked before generation.",
+      "background_mode": "RGBA with actual alpha"
+    },
+    {
+      "id": "defiant",
+      "path": "artifacts/images/space-edition/defiant.png",
+      "prompt": "Use the supplied photograph of a physical model as a visual identity reference. Generate one photorealistic isolated spacecraft illustration of USS Defiant NX-74205, a Defiant-class compact escort from Star Trek: Deep Space Nine. Preserve its compact broad armored body, short integrated nacelles at the sides, small forward nose and distinctive recessed bridge. Do not turn it into a saucer-and-neck cruiser. Show the whole craft in an elevated three-quarter dorsal perspective, about 35 degrees from above. Bow faces RIGHT, aft faces LEFT, long axis mostly horizontal. Fine miniature detailing, consistent soft cool-white key from upper left, subtle cyan-blue engine lights, restrained warm accents, natural materials from the reference. Remove the display stand. Genuinely transparent background; no stars, backdrop, base, smoke, long trails, captions or added typography. Wide composition, full ship with margin around every extremity. Intended for an educational starship timeline against midnight space. Match the recognizable geometry carefully.",
+      "generated_source": "C:\\Users\\villa\\.codex\\generated_images\\01a09216-1537-7030-8969-55469c252834\\exec-3160d7c7-e4e1-41b2-ba02-89a6ef1de714.png",
+      "references": [
+        {
+          "path": "artifacts/images/reference/defiant-model.jpg",
+          "page": "https://www.brightontoymuseum.co.uk/index/USS_Defiant_NX-74205_%28Eaglemoss_STOSC-9%29",
+          "kind": "Museum photograph of an Eaglemoss physical model"
+        }
+      ],
+      "package_path": "images/assets/defiant.png",
+      "reference_review": "Reference images were opened and visually checked before generation.",
+      "background_mode": "RGBA with actual alpha"
+    },
+    {
+      "id": "discovery-final",
+      "path": "artifacts/images/space-edition/discovery.png",
+      "prompt": "Edit this illustration: replace every gray checkerboard pixel outside the spacecraft and inside the circular saucer gap with a perfectly uniform pure BLACK background (#000000). There must be no checkerboard, texture, stars, halo, smoky gray area or gray backdrop anywhere. Keep the spacecraft itself, the right-facing perspective, its bronze metallic colors and all ship detail unchanged. Keep the complete ship. Output a clean studio-style spacecraft photograph on solid black; do NOT simulate transparency.",
+      "generated_source": "C:\\Users\\villa\\.codex\\generated_images\\01a09216-1537-7030-8969-55469c252834\\exec-f8636825-aa72-44ae-8a7e-70bab3641786.png",
+      "references": [
+        {
+          "path": "artifacts/images/reference/discovery-model.jpg",
+          "page": "https://real-merch.com/products/eaglemoss-star-trek-u-s-s-discovery-ncc-1031-starship-die-cast-model-ssduk002",
+          "kind": "Retail photograph of a licensed physical model"
+        }
+      ],
+      "package_path": "images/assets/discovery.png",
+      "reference_review": "Reference images were opened and visually checked before generation.",
+      "background_mode": "RGB with uniform dark/black backdrop; not transparent",
+      "prompt_sequence": [
+        "Use the supplied photograph of a physical model as a visual identity reference. Generate one photorealistic isolated spacecraft illustration of USS Discovery NCC-1031, the original 23rd-century Crossfield-class ship from Star Trek: Discovery. Preserve its bronze circular segmented ring saucer, the open circular gap, wide triangular engineering hull and exactly two extremely long parallel aft nacelles. All pylons remain physically connected, not the later detached future refit. Show the whole craft in an elevated three-quarter dorsal perspective, about 35 degrees from above. Bow faces RIGHT, aft faces LEFT, long axis mostly horizontal. Fine miniature detailing, consistent soft cool-white key from upper left, subtle cyan-blue engine lights, restrained warm accents, natural materials from the reference. Remove the display stand. Genuinely transparent background; no stars, backdrop, base, smoke, long trails, captions or added typography. Wide composition, full ship with margin around every extremity. Intended for an educational starship timeline against midnight space. Match the recognizable geometry carefully.",
+        "Edit this spacecraft illustration. Keep the ship's current right-facing pose, brown metal color, geometry and details unchanged. Remove the gray checkerboard completely and output a real transparent alpha background, including the open ring gap. Do not paint any checkerboard. Also remove the two clear plastic display-support clips sitting on top of the triangular secondary hull; restore the continuous metal paneling where they were. No background or shadows outside the object, no new text, no frame. Keep the complete ship and clean finely antialiased edges. This is a cutout extraction and removal of display supports only.",
+        "Edit this illustration: replace every gray checkerboard pixel outside the spacecraft and inside the circular saucer gap with a perfectly uniform pure BLACK background (#000000). There must be no checkerboard, texture, stars, halo, smoky gray area or gray backdrop anywhere. Keep the spacecraft itself, the right-facing perspective, its bronze metallic colors and all ship detail unchanged. Keep the complete ship. Output a clean studio-style spacecraft photograph on solid black; do NOT simulate transparency."
+      ]
+    },
+    {
+      "id": "protostar",
+      "path": "artifacts/images/space-edition/protostar.png",
+      "prompt": "Create a photorealistic full-ship illustration of the USS Protostar NX-76884 from Star Trek: Prodigy, using the supplied production screencap as the design reference. Keep the slim scalloped forward saucer, integrated streamlined secondary hull and exactly two very long slim aft nacelles; complete any parts beyond the reference crop faithfully. Use a coherent elevated three-quarter dorsal perspective, bow RIGHT, stern LEFT, mostly horizontal long axis. Polished cool-gray materials, fine hull panels, cool white upper-left key light, cyan-blue engine illumination and subtle violet deflector. Entire spacecraft in frame with clear margin. Isolated on perfectly uniform pure black (#000000), no stand, stars, haze, gradient, checkerboard, trail, title or added text. This is an individual subject illustration for an educational spacecraft timeline, not a battle scene.",
+      "generated_source": "C:\\Users\\villa\\.codex\\generated_images\\01a09216-1537-7030-8969-55469c252834\\exec-d4988946-efed-4cd3-be07-8e3dad6d3628.png",
+      "references": [
+        {
+          "path": "artifacts/images/reference/protostar-screen.jpg",
+          "page": "https://prodigy.trekcore.com/gallery/thumbnails.php?album=28",
+          "image": "https://prodigy.trekcore.com/gallery/albums/screencaps/bonus/s1/ships/bonus-uss-protostar-03.jpg",
+          "kind": "Production bonus screencap"
+        }
+      ],
+      "package_path": "images/assets/protostar.png",
+      "reference_review": "Reference images were opened and visually checked before generation.",
+      "background_mode": "RGB with uniform dark/black backdrop; not transparent"
+    },
+    {
+      "id": "klingon-bird",
+      "path": "artifacts/images/space-edition/klingon-bird.png",
+      "prompt": "Create one complete photorealistic Klingon Bird-of-Prey spacecraft using this photograph of the studio model as the visual design reference. Preserve the recognizable green bird-like configuration: small command pod on a long narrow neck, two large swept articulated wings, aft hull with radiator details. Complete the cropped wing tips. Elevated three-quarter dorsal perspective about 35 degrees above, command pod/bow pointing RIGHT, aft hull and swept wings to the LEFT, ship axis horizontal. Wings spread at a shallow flight angle, not vertical. Weathered sage-green metal and red wing panels, finely detailed miniature surfaces, soft cool white key light upper left. Whole vessel with comfortable margin. Pure BLACK uniform background, no stars, stand, smoke, gradient, checkerboard, captions, added text or long engine trails. The image will be placed in a dark educational timeline.",
+      "generated_source": "C:\\Users\\villa\\.codex\\generated_images\\01a09216-1537-7030-8969-55469c252834\\exec-2ffa2f16-ee9d-4034-b6af-8be6b52f4bab.png",
+      "references": [
+        {
+          "path": "artifacts/images/reference/bird-model.jpg",
+          "page": "https://www.ex-astris-scientia.org/articles/bop-size.htm",
+          "image": "https://www.ex-astris-scientia.org/scans/other/bop-studio-close.jpg",
+          "kind": "Photograph of the studio model"
+        }
+      ],
+      "package_path": "images/assets/klingon-bird.png",
+      "reference_review": "Reference images were opened and visually checked before generation.",
+      "background_mode": "RGB with uniform dark/black backdrop; not transparent"
+    }
+  ],
+  "rejected": [
+    {
+      "subject": "Enterprise-D",
+      "reason": "Output moderation block; no asset produced."
+    },
+    {
+      "subject": "Enterprise NCC-1701",
+      "reason": "Output moderation block; no asset produced."
+    },
+    {
+      "subject": "Discovery v1/v2",
+      "reason": "Baked checkerboard and display-support artifacts; superseded by solid-black final."
+    },
+    {
+      "subject": "Initial purported Protostar photographic reference",
+      "reason": "Visual inspection identified Voyager-A instead; excluded before generation."
+    }
+  ],
+  "compositing": "Original generated image pixels are embedded in SVG symbols and composited with screen blending. Dates and wakes are separate editable vector geometry. Subject dimensions are illustrative, not physical scale."
+}

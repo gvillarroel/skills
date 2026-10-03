@@ -1,0 +1,49 @@
+{
+  "runId": "diagram-polish-20260928-d-generalization-2",
+  "case": "generalization",
+  "commandExitCodes": [
+    0,
+    0,
+    0
+  ],
+  "payload": {
+    "name": "diagram-composition",
+    "profile": "runtime",
+    "fileCount": 21,
+    "payloadSha256": "2e15b9a80f7492be2c4e1d37ff558404f3acc740b165e25ed014088b3274508f"
+  },
+  "runtime": {
+    "passed": true,
+    "returnCode": 0,
+    "piExitCode": 0,
+    "timedOut": false,
+    "startedAtUtc": "2026-09-29T01:47:06.588168+00:00",
+    "finishedAtUtc": "2026-09-29T01:54:32.740268+00:00",
+    "durationSeconds": 446.155,
+    "gates": {
+      "artifacts": true,
+      "events": true,
+      "jsonFields": true,
+      "skillIntegrity": true
+    }
+  },
+  "artifact": {
+    "runId": "diagram-polish-20260928-d-generalization-2",
+    "case": "generalization",
+    "ok": true,
+    "findings": [],
+    "sourceSha256": "2540c34c59ca83b567b3f4773566ffb2f3298ee33e273d87ff452b874feab9f8",
+    "contactCount": 4,
+    "connectorCount": 6,
+    "internalContactCount": 8,
+    "openTerminalCount": 0,
+    "minimumTextPx": 15,
+    "minimumContrast": 11.375097725170955,
+    "verifiedConceptLinks": [
+      "optical",
+      "radio"
+    ],
+    "manualVisualReviewRequired": true
+  },
+  "tracePassed": true
+}

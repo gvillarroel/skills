@@ -1,0 +1,80 @@
+{
+  "ok": true,
+  "passed": 12,
+  "total": 12,
+  "checks": [
+    {
+      "id": "compact",
+      "expected": "diagram-composition",
+      "actual": "diagram-composition",
+      "ok": true
+    },
+    {
+      "id": "portrait",
+      "expected": "diagram-composition",
+      "actual": "diagram-composition",
+      "ok": true
+    },
+    {
+      "id": "sequence",
+      "expected": "mermaid",
+      "actual": "mermaid",
+      "ok": true
+    },
+    {
+      "id": "brand",
+      "expected": "technical-logo-assets",
+      "actual": "technical-logo-assets",
+      "ok": true
+    },
+    {
+      "id": "pictograms",
+      "expected": "iconify-icon-search",
+      "actual": "iconify-icon-search",
+      "ok": true
+    },
+    {
+      "id": "world",
+      "expected": "compose-synchronized-svg",
+      "actual": "compose-synchronized-svg",
+      "ok": true
+    },
+    {
+      "id": "ornament",
+      "expected": "svg-brief-design",
+      "actual": "svg-brief-design",
+      "ok": true
+    },
+    {
+      "id": "bug",
+      "expected": "none",
+      "actual": "none",
+      "ok": true
+    },
+    {
+      "id": "spans",
+      "expected": "diagram-composition",
+      "actual": "diagram-composition",
+      "ok": true
+    },
+    {
+      "id": "bar",
+      "expected": "d3",
+      "actual": "d3",
+      "ok": true
+    },
+    {
+      "id": "prose",
+      "expected": "none",
+      "actual": "none",
+      "ok": true
+    },
+    {
+      "id": "er",
+      "expected": "mermaid",
+      "actual": "mermaid",
+      "ok": true
+    }
+  ],
+  "scope": "Metadata-only unforced selection; not native app discovery."
+}

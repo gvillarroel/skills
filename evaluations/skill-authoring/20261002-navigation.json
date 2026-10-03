@@ -1,0 +1,472 @@
+{
+  "schemaVersion": 1,
+  "passed": true,
+  "skillCount": 33,
+  "bundleCount": 0,
+  "issueCounts": {},
+  "results": [
+    {
+      "passed": true,
+      "skill": "ambientcg-material-search",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 71,
+        "entryBytes": 3897,
+        "referenceCount": 1,
+        "longReferenceCount": 0,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": true,
+      "skill": "animated-svg-to-gif",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 88,
+        "entryBytes": 6321,
+        "referenceCount": 0,
+        "longReferenceCount": 0,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": true,
+      "skill": "asciinema-real-command-video",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 80,
+        "entryBytes": 8950,
+        "referenceCount": 8,
+        "longReferenceCount": 3,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": true,
+      "skill": "compose-synchronized-svg",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 81,
+        "entryBytes": 11646,
+        "referenceCount": 7,
+        "longReferenceCount": 5,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": true,
+      "skill": "d3",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 130,
+        "entryBytes": 12590,
+        "referenceCount": 225,
+        "longReferenceCount": 53,
+        "directCollectionCount": 1
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": true,
+      "skill": "destockd-video-search",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 75,
+        "entryBytes": 4915,
+        "referenceCount": 2,
+        "longReferenceCount": 0,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": true,
+      "skill": "diagram-composition",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 187,
+        "entryBytes": 11702,
+        "referenceCount": 7,
+        "longReferenceCount": 2,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": true,
+      "skill": "echarts-animated-svg",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 94,
+        "entryBytes": 6620,
+        "referenceCount": 4,
+        "longReferenceCount": 1,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": true,
+      "skill": "google-cloud-sku-pricing",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 85,
+        "entryBytes": 4992,
+        "referenceCount": 3,
+        "longReferenceCount": 2,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": true,
+      "skill": "harbor-author-evaluation-datasets",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 220,
+        "entryBytes": 11964,
+        "referenceCount": 1,
+        "longReferenceCount": 1,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": true,
+      "skill": "hierarchy-lens",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 48,
+        "entryBytes": 6448,
+        "referenceCount": 6,
+        "longReferenceCount": 0,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": true,
+      "skill": "iconify-icon-search",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 55,
+        "entryBytes": 3092,
+        "referenceCount": 1,
+        "longReferenceCount": 0,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": true,
+      "skill": "jev-batch-decisions",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 74,
+        "entryBytes": 4942,
+        "referenceCount": 3,
+        "longReferenceCount": 0,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": true,
+      "skill": "kenney-asset-search",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 73,
+        "entryBytes": 3809,
+        "referenceCount": 1,
+        "longReferenceCount": 0,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": true,
+      "skill": "manim-svg-video",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 32,
+        "entryBytes": 3141,
+        "referenceCount": 3,
+        "longReferenceCount": 0,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": true,
+      "skill": "mermaid",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 64,
+        "entryBytes": 8359,
+        "referenceCount": 6,
+        "longReferenceCount": 1,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": true,
+      "skill": "one-bit-dither-svg",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 95,
+        "entryBytes": 8503,
+        "referenceCount": 2,
+        "longReferenceCount": 1,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": true,
+      "skill": "pexels-media-search",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 70,
+        "entryBytes": 4152,
+        "referenceCount": 1,
+        "longReferenceCount": 0,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": true,
+      "skill": "pixel-art-image-video",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 73,
+        "entryBytes": 7124,
+        "referenceCount": 2,
+        "longReferenceCount": 0,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": true,
+      "skill": "plantuml-colorset-renderer",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 139,
+        "entryBytes": 9475,
+        "referenceCount": 1,
+        "longReferenceCount": 0,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": true,
+      "skill": "polyhaven-asset-search",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 91,
+        "entryBytes": 5067,
+        "referenceCount": 1,
+        "longReferenceCount": 0,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": true,
+      "skill": "procedural-svg-animation",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 87,
+        "entryBytes": 8192,
+        "referenceCount": 6,
+        "longReferenceCount": 4,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": true,
+      "skill": "repository-reviewer-creator",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 40,
+        "entryBytes": 4880,
+        "referenceCount": 4,
+        "longReferenceCount": 0,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": true,
+      "skill": "simulation-data-lab",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 238,
+        "entryBytes": 15039,
+        "referenceCount": 9,
+        "longReferenceCount": 7,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": true,
+      "skill": "slidev-animejs",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 41,
+        "entryBytes": 4559,
+        "referenceCount": 25,
+        "longReferenceCount": 1,
+        "directCollectionCount": 1
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": true,
+      "skill": "slidev-echarts",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 37,
+        "entryBytes": 4166,
+        "referenceCount": 27,
+        "longReferenceCount": 1,
+        "directCollectionCount": 1
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": true,
+      "skill": "slidev-quality-audit",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 76,
+        "entryBytes": 3746,
+        "referenceCount": 1,
+        "longReferenceCount": 0,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": true,
+      "skill": "svg-brief-design",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 129,
+        "entryBytes": 7027,
+        "referenceCount": 4,
+        "longReferenceCount": 0,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": true,
+      "skill": "technical-logo-assets",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 73,
+        "entryBytes": 5741,
+        "referenceCount": 3,
+        "longReferenceCount": 0,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": true,
+      "skill": "threejs-animated-3d",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 103,
+        "entryBytes": 8475,
+        "referenceCount": 3,
+        "longReferenceCount": 0,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": true,
+      "skill": "usefulcharts-style",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 115,
+        "entryBytes": 21376,
+        "referenceCount": 29,
+        "longReferenceCount": 2,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": true,
+      "skill": "vectorize-art-patterns",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 232,
+        "entryBytes": 13230,
+        "referenceCount": 6,
+        "longReferenceCount": 1,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": true,
+      "skill": "video",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 87,
+        "entryBytes": 8536,
+        "referenceCount": 18,
+        "longReferenceCount": 6,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    }
+  ],
+  "limitations": "Measurable authoring/navigation and copied payloads; no claim of model-wide behavioral certification."
+}

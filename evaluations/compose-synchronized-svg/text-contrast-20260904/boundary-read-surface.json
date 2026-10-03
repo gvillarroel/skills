@@ -1,0 +1,141 @@
+{
+  "passed": true,
+  "session": {
+    "version": 3,
+    "id": "01a06e90-16eb-7bcb-a82b-c4eacc28a325",
+    "cwd": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\20260904-svg-text-pair-luna-boundary\\workspace"
+  },
+  "models": {
+    "gpt-5.6-luna": 7
+  },
+  "providers": {
+    "openai-codex": 7
+  },
+  "usageTotals": {
+    "input": 8929,
+    "output": 1316,
+    "cacheRead": 18944,
+    "cacheWrite": 0,
+    "totalTokens": 29189
+  },
+  "invalidJsonLineCount": 0,
+  "invalidJsonLineSamples": [],
+  "invalidEventRecordCount": 0,
+  "invalidEventRecordLineSamples": [],
+  "toolCounts": {
+    "read": 3,
+    "bash": 2,
+    "write": 1
+  },
+  "paths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 970
+    },
+    {
+      "path": "skills/compose-synchronized-svg/SKILL.md",
+      "calls": 1,
+      "resultBytes": 11853
+    },
+    {
+      "path": "outputs/boundary/preflight.json",
+      "calls": 1,
+      "resultBytes": 423
+    },
+    {
+      "path": "outputs/boundary/result.md",
+      "calls": 1,
+      "resultBytes": 101
+    }
+  ],
+  "readPaths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 970
+    },
+    {
+      "path": "skills/compose-synchronized-svg/SKILL.md",
+      "calls": 1,
+      "resultBytes": 11853
+    },
+    {
+      "path": "outputs/boundary/preflight.json",
+      "calls": 1,
+      "resultBytes": 423
+    }
+  ],
+  "policyReadPaths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1
+    },
+    {
+      "path": "skills/compose-synchronized-svg/SKILL.md",
+      "calls": 1
+    },
+    {
+      "path": "outputs/boundary/preflight.json",
+      "calls": 1
+    }
+  ],
+  "totalReadResultBytes": 13246,
+  "calls": [
+    {
+      "line": 22,
+      "tool": "read",
+      "path": "../prompt.md",
+      "policyPath": "../prompt.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 970
+    },
+    {
+      "line": 50,
+      "tool": "read",
+      "path": "skills/compose-synchronized-svg/SKILL.md",
+      "policyPath": "skills/compose-synchronized-svg/SKILL.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 11853
+    },
+    {
+      "line": 193,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "mkdir -p outputs/boundary && python -c 'import json; from pathlib import Path; src=Path(\"skills/compose-synchronized-svg/assets/templates/composition-brief.json\"); dst=Path(\"outputs/boundary/brief.json\"); data=json.loads(src.read_text(encod",
+      "isError": false,
+      "resultBytes": 54
+    },
+    {
+      "line": 269,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "mkdir -p .tmp && TMPDIR=\"$(pwd)/.tmp\" uv run --script skills/compose-synchronized-svg/scripts/preflight_svg_brief.py --brief outputs/boundary/brief.json --json > outputs/boundary/preflight.json",
+      "isError": false,
+      "resultBytes": 54
+    },
+    {
+      "line": 294,
+      "tool": "read",
+      "path": "outputs/boundary/preflight.json",
+      "policyPath": "outputs/boundary/preflight.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 423
+    },
+    {
+      "line": 409,
+      "tool": "write",
+      "path": "outputs/boundary/result.md",
+      "policyPath": "outputs/boundary/result.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 101
+    }
+  ],
+  "findings": []
+}

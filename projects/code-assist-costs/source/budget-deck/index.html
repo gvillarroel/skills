@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Explore how prompt length, tools, output, caching and model quality change the work a hypothetical $200 monthly token budget can buy.">
+<title>What $200 a month buys — Code Assist</title>
+<link rel="icon" href="data:,">
+<style>__STYLE__</style>
+</head>
+<body>
+<header class="mast"><a href="#parameters" id="home">CODE ASSIST / YOUR MONTHLY BUDGET</a><span>$200 in token charges · hypothetical scenarios</span><button id="notes" type="button">How is this calculated?</button></header>
+<main id="stage" aria-label="Interactive budget presentation">
+  <aside class="claim">
+    <p id="eyebrow">YOUR $200 MONTH</p>
+    <h1 id="heading">What $200 buys</h1>
+    <p id="essential">Change one setting. See how much more or less work fits in the same month.</p>
+    <div id="result" aria-live="polite"></div>
+    <p id="caveat">An illustrative token budget, not a subscription quota.</p>
+  </aside>
+  <section class="visual" aria-label="Scenario visualization">
+    <div class="account-strip"><span>Monthly token budget <b>$200</b></span><span id="account-context">Short tasks</span></div>
+    <div id="plot-title"></div>
+    <div id="legend"></div>
+    <div id="chart">
+      <svg id="static-preview" viewBox="0 0 800 420" role="img" font-family="Arial, sans-serif" data-colorset="colorset1" aria-labelledby="preview-title preview-desc">
+        <title id="preview-title">A $200 budget buys about 5,449 short task runs</title>
+        <desc id="preview-desc">At the fixed illustrative cost of 0.03670342696629214 dollars per task, spending grows linearly. These are attempts, not guaranteed successes or subscription quotas.</desc>
+        <path d="M80 30V360H760" fill="none" stroke="#333e48"/>
+        <path d="M80 360L740 40" fill="none" stroke="#9e1b32" stroke-width="4"/>
+        <text x="100" y="40" fill="#333e48">$200 / month ≈ 5,449 short task runs</text>
+        <text x="340" y="400" fill="#333e48">Task runs in the month</text>
+      </svg>
+    </div>
+    <div id="control-row"><label for="parameter" id="parameter-label">Parameter</label><output id="parameter-value" for="parameter"></output><input id="parameter" type="range"></div>
+    <div id="account-impact" aria-live="polite"></div>
+    <p id="frozen"></p>
+  </section>
+</main>
+<footer class="toolbar">
+  <div class="navigation"><button id="previous" type="button" aria-label="Previous scene">←</button><span id="counter"></span><button id="next" type="button" aria-label="Next scene">→</button><button id="replay" type="button">Play change</button></div>
+  <label class="volume">Scene <select id="scene-picker" aria-label="Choose a scene"></select></label>
+  <div class="actions"><button id="export" type="button">Export chart</button><button id="fullscreen" type="button">Full screen</button></div>
+  <div id="progress"></div>
+</footer>
+<dialog id="detail"><div class="dialog-head"><h2>Budget, assumptions & sources</h2><button id="close-notes" type="button">Close</button></div><div id="detail-body"></div></dialog>
+<noscript><p>Enable JavaScript for the parameter controls. At the illustrative fixed short-task cost, $200 buys approximately 5,449 task attempts.</p></noscript>
+<script id="d3-runtime">__D3__</script>
+<script id="simulation-data" type="application/json">__DATA__</script>
+<script>__MATH__</script>
+<script>__APP__</script>
+</body></html>

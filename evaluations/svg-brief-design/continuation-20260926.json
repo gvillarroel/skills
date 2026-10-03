@@ -1,0 +1,598 @@
+{
+  "status": "plateau-baseline-retained",
+  "finished_at": "2026-09-26T18:12:18.711748+00:00",
+  "failure_streak": 3,
+  "accepted_improvements": 0,
+  "installed_changed": false,
+  "installed_tree": "sha256:2ab3beca48e69f2c12c482a15a09821ff1794e2b1c44bbdbdd9f2388668e0318",
+  "events": [
+    {
+      "sequence": 1,
+      "phase": "svt3",
+      "candidate": "c",
+      "accepted": false,
+      "failure_streak": 1,
+      "accepted_improvements": 0,
+      "evidence": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\svt3\\decision-c.json",
+      "evidence_sha256": "e4ad6f2cea65c8cecaf862d9e521872d3bbc89c2f745509958208e59a204ea6a",
+      "previous_event_sha256": null
+    },
+    {
+      "sequence": 2,
+      "phase": "svt3",
+      "candidate": "d",
+      "accepted": false,
+      "failure_streak": 2,
+      "accepted_improvements": 0,
+      "evidence": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\svt3\\decision-d.json",
+      "evidence_sha256": "081327cecfbf3828f694bcb423c8c87fdb87613dc18d737471c636c1997908af",
+      "previous_event_sha256": "8126af0712d579525f69a8b1b59a3253ad839ebf4525d29f1cfb20af32c02555"
+    },
+    {
+      "sequence": 3,
+      "phase": "svt3",
+      "candidate": "e",
+      "accepted": false,
+      "failure_streak": 3,
+      "accepted_improvements": 0,
+      "evidence": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\svt3\\decision-e.json",
+      "evidence_sha256": "c66db15e65e65e2f1b04a3ebacb29700ab295bd7a375b5f3e280bdb2bca89ffe",
+      "previous_event_sha256": "fd733dbe5fe6212b5767ce89292354790b7ca50584c5befa129873adc62ee943"
+    }
+  ],
+  "summaries": {
+    "b": {
+      "trials": 12,
+      "agent_errors": 2,
+      "valid_scored_artifacts": 10,
+      "reported_quality_mean": 0.59436,
+      "strict_90_screen": 0,
+      "preview_reads": 10,
+      "scaffold_calls": 3
+    },
+    "c": {
+      "trials": 12,
+      "agent_errors": 1,
+      "valid_scored_artifacts": 11,
+      "reported_quality_mean": 0.634581611570248,
+      "strict_90_screen": 0,
+      "preview_reads": 6,
+      "scaffold_calls": 2
+    },
+    "d": {
+      "trials": 12,
+      "agent_errors": 2,
+      "valid_scored_artifacts": 10,
+      "reported_quality_mean": 0.6668760101010102,
+      "strict_90_screen": 0,
+      "preview_reads": 6,
+      "scaffold_calls": 5
+    },
+    "e": {
+      "trials": 12,
+      "agent_errors": 2,
+      "valid_scored_artifacts": 10,
+      "reported_quality_mean": 0.6311325,
+      "strict_90_screen": 0,
+      "preview_reads": 10,
+      "scaffold_calls": 2
+    }
+  },
+  "comparisons": {
+    "c": {
+      "complete_evaluable": true,
+      "families": {
+        "vector-004--eb6eabbcb9ca2ad4": {
+          "baseline": 0.5696375,
+          "candidate": 0.6439375,
+          "delta": 0.07430000000000003
+        },
+        "vector-011--6b42f7e2789d1bd1": {
+          "baseline": 0.49,
+          "candidate": 0.36460000000000004,
+          "delta": -0.12539999999999996
+        },
+        "vector-019--75606bdb4ee5b4af": {
+          "baseline": 0.6432374999999999,
+          "candidate": 0.5734250000000001,
+          "delta": -0.06981249999999983
+        },
+        "vector-020--09ee2ae28c7c367a": {
+          "baseline": 0.6713875,
+          "candidate": 0.6213625,
+          "delta": -0.050024999999999986
+        },
+        "vector-024--652120566170fbf2": {
+          "baseline": 0.0,
+          "candidate": 0.642075,
+          "delta": 0.642075
+        },
+        "vector-030--d3c57e0c21dbede0": {
+          "baseline": 0.5975375,
+          "candidate": 0.6447988636363637,
+          "delta": 0.047261363636363685
+        }
+      },
+      "baseline_mean": 0.4953,
+      "candidate_mean": 0.5816998106060607,
+      "mean_gain": 0.08639981060606065,
+      "family_delta_range": [
+        -0.12539999999999996,
+        0.642075
+      ],
+      "descriptive_family_bootstrap_95_percentile": [
+        -0.06882935606060596,
+        0.31674583333333334
+      ],
+      "bootstrap_limitation": "Few independent groups; descriptive uncertainty, not proof of population-wide gain.",
+      "passed": false,
+      "candidate_attributable_failures": [
+        {
+          "trial": "vector-011--6b42f7e2789d1bd1__auAgsnc",
+          "native_effective_reward": 0,
+          "reason": "Agent assumed an undeclared command, attribute or filename; failure retained."
+        }
+      ],
+      "baseline_attributable_failures": [
+        {
+          "trial": "vector-024--652120566170fbf2__mAcZura",
+          "native_effective_reward": 0,
+          "reason": "Audited unsupported attribute or invented reference filename requested by the agent; original failure retained."
+        },
+        {
+          "trial": "vector-024--652120566170fbf2__qv5KnmE",
+          "native_effective_reward": 0,
+          "reason": "Audited unsupported attribute or invented reference filename requested by the agent; original failure retained."
+        }
+      ],
+      "unaffected_family_visual_guard": {
+        "complete_evaluable": true,
+        "families": {
+          "vector-004--eb6eabbcb9ca2ad4": {
+            "baseline": 0.5696375,
+            "candidate": 0.6439375,
+            "delta": 0.07430000000000003
+          },
+          "vector-011--6b42f7e2789d1bd1": {
+            "baseline": 0.49,
+            "candidate": 0.36460000000000004,
+            "delta": -0.12539999999999996
+          },
+          "vector-019--75606bdb4ee5b4af": {
+            "baseline": 0.6432374999999999,
+            "candidate": 0.5734250000000001,
+            "delta": -0.06981249999999983
+          },
+          "vector-020--09ee2ae28c7c367a": {
+            "baseline": 0.6713875,
+            "candidate": 0.6213625,
+            "delta": -0.050024999999999986
+          },
+          "vector-030--d3c57e0c21dbede0": {
+            "baseline": 0.5975375,
+            "candidate": 0.6447988636363637,
+            "delta": 0.047261363636363685
+          }
+        },
+        "baseline_mean": 0.59436,
+        "candidate_mean": 0.5696247727272727,
+        "mean_gain": -0.02473522727272721,
+        "family_delta_range": [
+          -0.12539999999999996,
+          0.07430000000000003
+        ],
+        "descriptive_family_bootstrap_95_percentile": [
+          -0.08808999999999992,
+          0.04006977272727279
+        ],
+        "bootstrap_limitation": "Few independent groups; descriptive uncertainty, not proof of population-wide gain.",
+        "passed": false
+      },
+      "guard_note": "Additional conservative requirement: two-point gain and bounded family loss also on all unaffected families. Failure-derived gains alone cannot pass. Raw baseline errors remain disqualifying for baseline selection; private gates still require both arms error-free.",
+      "native_selected_winner": null
+    },
+    "d": {
+      "complete_evaluable": true,
+      "families": {
+        "vector-004--eb6eabbcb9ca2ad4": {
+          "baseline": 0.5696375,
+          "candidate": 0.328125,
+          "delta": -0.24151250000000002
+        },
+        "vector-011--6b42f7e2789d1bd1": {
+          "baseline": 0.49,
+          "candidate": 0.5764125,
+          "delta": 0.0864125
+        },
+        "vector-019--75606bdb4ee5b4af": {
+          "baseline": 0.6432374999999999,
+          "candidate": 0.696725,
+          "delta": 0.05348750000000013
+        },
+        "vector-020--09ee2ae28c7c367a": {
+          "baseline": 0.6713875,
+          "candidate": 0.6269375,
+          "delta": -0.04444999999999999
+        },
+        "vector-024--652120566170fbf2": {
+          "baseline": 0.0,
+          "candidate": 0.32533005050505054,
+          "delta": 0.32533005050505054
+        },
+        "vector-030--d3c57e0c21dbede0": {
+          "baseline": 0.5975375,
+          "candidate": 0.78085,
+          "delta": 0.1833125
+        }
+      },
+      "baseline_mean": 0.4953,
+      "candidate_mean": 0.5557300084175084,
+      "mean_gain": 0.060430008417508445,
+      "family_delta_range": [
+        -0.24151250000000002,
+        0.32533005050505054
+      ],
+      "descriptive_family_bootstrap_95_percentile": [
+        -0.08832708333333333,
+        0.1983516835016835
+      ],
+      "bootstrap_limitation": "Few independent groups; descriptive uncertainty, not proof of population-wide gain.",
+      "passed": false,
+      "candidate_attributable_failures": [
+        {
+          "trial": "vector-004--eb6eabbcb9ca2ad4__hfjXYSD",
+          "native_effective_reward": 0,
+          "reason": "Agent assumed an undeclared command, attribute or filename; failure retained."
+        },
+        {
+          "trial": "vector-024--652120566170fbf2__LbD2QK8",
+          "native_effective_reward": 0,
+          "reason": "Agent assumed an undeclared command, attribute or filename; failure retained."
+        }
+      ],
+      "baseline_attributable_failures": [
+        {
+          "trial": "vector-024--652120566170fbf2__mAcZura",
+          "native_effective_reward": 0,
+          "reason": "Audited unsupported attribute or invented reference filename requested by the agent; original failure retained."
+        },
+        {
+          "trial": "vector-024--652120566170fbf2__qv5KnmE",
+          "native_effective_reward": 0,
+          "reason": "Audited unsupported attribute or invented reference filename requested by the agent; original failure retained."
+        }
+      ],
+      "unaffected_family_visual_guard": {
+        "complete_evaluable": true,
+        "families": {
+          "vector-004--eb6eabbcb9ca2ad4": {
+            "baseline": 0.5696375,
+            "candidate": 0.328125,
+            "delta": -0.24151250000000002
+          },
+          "vector-011--6b42f7e2789d1bd1": {
+            "baseline": 0.49,
+            "candidate": 0.5764125,
+            "delta": 0.0864125
+          },
+          "vector-019--75606bdb4ee5b4af": {
+            "baseline": 0.6432374999999999,
+            "candidate": 0.696725,
+            "delta": 0.05348750000000013
+          },
+          "vector-020--09ee2ae28c7c367a": {
+            "baseline": 0.6713875,
+            "candidate": 0.6269375,
+            "delta": -0.04444999999999999
+          },
+          "vector-030--d3c57e0c21dbede0": {
+            "baseline": 0.5975375,
+            "candidate": 0.78085,
+            "delta": 0.1833125
+          }
+        },
+        "baseline_mean": 0.59436,
+        "candidate_mean": 0.6018100000000001,
+        "mean_gain": 0.0074500000000000234,
+        "family_delta_range": [
+          -0.24151250000000002,
+          0.1833125
+        ],
+        "descriptive_family_bootstrap_95_percentile": [
+          -0.123275,
+          0.11858750000000003
+        ],
+        "bootstrap_limitation": "Few independent groups; descriptive uncertainty, not proof of population-wide gain.",
+        "passed": false
+      },
+      "guard_note": "Additional conservative requirement: two-point gain and bounded family loss also on all unaffected families. Failure-derived gains alone cannot pass. Raw baseline errors remain disqualifying for baseline selection; private gates still require both arms error-free.",
+      "native_selected_winner": null
+    },
+    "e": {
+      "complete_evaluable": true,
+      "families": {
+        "vector-004--eb6eabbcb9ca2ad4": {
+          "baseline": 0.5696375,
+          "candidate": 0.245,
+          "delta": -0.3246375
+        },
+        "vector-011--6b42f7e2789d1bd1": {
+          "baseline": 0.49,
+          "candidate": 0.49,
+          "delta": 0.0
+        },
+        "vector-019--75606bdb4ee5b4af": {
+          "baseline": 0.6432374999999999,
+          "candidate": 0.7563,
+          "delta": 0.11306250000000007
+        },
+        "vector-020--09ee2ae28c7c367a": {
+          "baseline": 0.6713875,
+          "candidate": 0.6247375,
+          "delta": -0.04665000000000008
+        },
+        "vector-024--652120566170fbf2": {
+          "baseline": 0.0,
+          "candidate": 0.6923874999999999,
+          "delta": 0.6923874999999999
+        },
+        "vector-030--d3c57e0c21dbede0": {
+          "baseline": 0.5975375,
+          "candidate": 0.34723750000000003,
+          "delta": -0.2503
+        }
+      },
+      "baseline_mean": 0.4953,
+      "candidate_mean": 0.5259437499999999,
+      "mean_gain": 0.03064374999999998,
+      "family_delta_range": [
+        -0.3246375,
+        0.6923874999999999
+      ],
+      "descriptive_family_bootstrap_95_percentile": [
+        -0.19942083333333335,
+        0.3233208333333333
+      ],
+      "bootstrap_limitation": "Few independent groups; descriptive uncertainty, not proof of population-wide gain.",
+      "passed": false,
+      "candidate_attributable_failures": [
+        {
+          "trial": "vector-004--eb6eabbcb9ca2ad4__UNWvoXZ",
+          "native_effective_reward": 0,
+          "reason": "Audited agent-side command, tool argument, filename or empty-artifact failure; original record retained."
+        },
+        {
+          "trial": "vector-030--d3c57e0c21dbede0__tKFsUhX",
+          "native_effective_reward": 0,
+          "reason": "Audited agent-side command, tool argument, filename or empty-artifact failure; original record retained."
+        }
+      ],
+      "baseline_attributable_failures": [
+        {
+          "trial": "vector-024--652120566170fbf2__mAcZura",
+          "native_effective_reward": 0,
+          "reason": "Audited unsupported attribute or invented reference filename requested by the agent; original failure retained."
+        },
+        {
+          "trial": "vector-024--652120566170fbf2__qv5KnmE",
+          "native_effective_reward": 0,
+          "reason": "Audited unsupported attribute or invented reference filename requested by the agent; original failure retained."
+        }
+      ],
+      "unaffected_family_visual_guard": {
+        "complete_evaluable": true,
+        "families": {
+          "vector-004--eb6eabbcb9ca2ad4": {
+            "baseline": 0.5696375,
+            "candidate": 0.245,
+            "delta": -0.3246375
+          },
+          "vector-011--6b42f7e2789d1bd1": {
+            "baseline": 0.49,
+            "candidate": 0.49,
+            "delta": 0.0
+          },
+          "vector-019--75606bdb4ee5b4af": {
+            "baseline": 0.6432374999999999,
+            "candidate": 0.7563,
+            "delta": 0.11306250000000007
+          },
+          "vector-020--09ee2ae28c7c367a": {
+            "baseline": 0.6713875,
+            "candidate": 0.6247375,
+            "delta": -0.04665000000000008
+          },
+          "vector-030--d3c57e0c21dbede0": {
+            "baseline": 0.5975375,
+            "candidate": 0.34723750000000003,
+            "delta": -0.2503
+          }
+        },
+        "baseline_mean": 0.59436,
+        "candidate_mean": 0.492655,
+        "mean_gain": -0.10170500000000002,
+        "family_delta_range": [
+          -0.3246375,
+          0.11306250000000007
+        ],
+        "descriptive_family_bootstrap_95_percentile": [
+          -0.24484250000000002,
+          0.03589500000000001
+        ],
+        "bootstrap_limitation": "Few independent groups; descriptive uncertainty, not proof of population-wide gain.",
+        "passed": false
+      },
+      "guard_note": "Additional conservative requirement: two-point gain and bounded family loss also on all unaffected families. Failure-derived gains alone cannot pass. Attributable errors, when present, remain disqualifying for candidate selection; private gates still require both arms error-free.",
+      "native_selected_winner": null
+    }
+  },
+  "native_ranking": [
+    {
+      "candidateId": "b",
+      "skillDigest": "sha256:935e7cee66c23f17341affd953c16b336dedaff12e4f438236247db774b68a95",
+      "sameAsBaseline": true,
+      "fitness": 0.0,
+      "qualified": false,
+      "meanReward": 0.59436,
+      "passRate": 0.8333333333333334,
+      "minimumDevelopmentPassRate": 1.0,
+      "winnerEligible": false,
+      "winnerIneligibilityReasons": [
+        "qualification-gates-failed",
+        "development-pass-rate-below-minimum"
+      ],
+      "provenanceVerified": true,
+      "provenanceStatus": "verified",
+      "promotionProvenanceEligible": true,
+      "provenanceReasons": [],
+      "passedRequiredRewards": [],
+      "requiredRewardPassCount": 0,
+      "erroredTrials": 2,
+      "providerFailureTrials": 0,
+      "infrastructureFailureTrials": 0,
+      "rank": 1
+    },
+    {
+      "candidateId": "c",
+      "skillDigest": "sha256:6aac9e0385e557f85e7e74eaaf69ac78dce49fde24a817ca41cbe8407aff5b5a",
+      "sameAsBaseline": false,
+      "fitness": 0.0,
+      "qualified": false,
+      "meanReward": 0.634581611570248,
+      "passRate": 0.9166666666666666,
+      "minimumDevelopmentPassRate": 1.0,
+      "winnerEligible": false,
+      "winnerIneligibilityReasons": [
+        "qualification-gates-failed",
+        "development-pass-rate-below-minimum"
+      ],
+      "provenanceVerified": true,
+      "provenanceStatus": "verified",
+      "promotionProvenanceEligible": true,
+      "provenanceReasons": [],
+      "passedRequiredRewards": [],
+      "requiredRewardPassCount": 0,
+      "erroredTrials": 1,
+      "providerFailureTrials": 0,
+      "infrastructureFailureTrials": 0,
+      "rank": 2
+    },
+    {
+      "candidateId": "d",
+      "skillDigest": "sha256:3deeb6c51f70f67da3981b5a68a6bb979a0476b56b1d1e5e8d33720af174b077",
+      "sameAsBaseline": false,
+      "fitness": 0.0,
+      "qualified": false,
+      "meanReward": 0.6668760101010102,
+      "passRate": 0.8333333333333334,
+      "minimumDevelopmentPassRate": 1.0,
+      "winnerEligible": false,
+      "winnerIneligibilityReasons": [
+        "qualification-gates-failed",
+        "development-pass-rate-below-minimum"
+      ],
+      "provenanceVerified": true,
+      "provenanceStatus": "verified",
+      "promotionProvenanceEligible": true,
+      "provenanceReasons": [],
+      "passedRequiredRewards": [],
+      "requiredRewardPassCount": 0,
+      "erroredTrials": 2,
+      "providerFailureTrials": 0,
+      "infrastructureFailureTrials": 0,
+      "rank": 3
+    },
+    {
+      "candidateId": "e",
+      "skillDigest": "sha256:16ada5a1698cbf31e041bfa6b7f3c3bbbc18d6f19c4cf34b2fa33674bc9f7525",
+      "sameAsBaseline": false,
+      "fitness": 0.0,
+      "qualified": false,
+      "meanReward": 0.6311325,
+      "passRate": 0.8333333333333334,
+      "minimumDevelopmentPassRate": 1.0,
+      "winnerEligible": false,
+      "winnerIneligibilityReasons": [
+        "qualification-gates-failed",
+        "development-pass-rate-below-minimum"
+      ],
+      "provenanceVerified": true,
+      "provenanceStatus": "verified",
+      "promotionProvenanceEligible": true,
+      "provenanceReasons": [],
+      "passedRequiredRewards": [],
+      "requiredRewardPassCount": 0,
+      "erroredTrials": 2,
+      "providerFailureTrials": 0,
+      "infrastructureFailureTrials": 0,
+      "rank": 4
+    }
+  ],
+  "calls": {
+    "generation": 48,
+    "visual_observer": 41,
+    "jev": 41,
+    "curator": 2,
+    "semantic_retries": 0,
+    "private_gate": 0
+  },
+  "usage": {
+    "generator_assistant_messages": 288,
+    "generator_reported_input_tokens": 482446,
+    "generator_reported_cache_read_tokens": 961280,
+    "generator_reported_cache_write_tokens": 0,
+    "generator_reported_output_tokens": 59651,
+    "generator_reported_total_tokens": 1503377,
+    "generator_cost_usd": null,
+    "observer_cost_usd": null,
+    "observer_reported_total_tokens": 168961,
+    "jev_cost_usd": 0.007696164,
+    "jev_input_tokens": 183242,
+    "jev_output_tokens": 13964
+  },
+  "validation": {
+    "released": false,
+    "unused_cases": 3,
+    "curator_passed": true
+  },
+  "local_tests": {
+    "c": 13,
+    "d": 14,
+    "e": 15
+  },
+  "source_audit": {
+    "b": {
+      "passed": true,
+      "artwork_files": 0,
+      "public_sources": 6,
+      "long_paths_compared": 52
+    },
+    "c": {
+      "passed": true,
+      "artwork_files": 0,
+      "public_sources": 6,
+      "long_paths_compared": 52
+    },
+    "d": {
+      "passed": true,
+      "artwork_files": 0,
+      "public_sources": 6,
+      "long_paths_compared": 52
+    },
+    "e": {
+      "passed": true,
+      "artwork_files": 0,
+      "public_sources": 6,
+      "long_paths_compared": 52
+    }
+  },
+  "method_notes": {
+    "unchanged_sealed_protocol": true,
+    "candidate_budget_interpretation": "The sealed max_candidates=3 and explicit stopping rule implement the user instruction. The inherited selection prose contains a stale one-revision sentence. No budget was enlarged after inference; exactly three candidates are authorized by the sealed numeric budget. The helper is corrected for future studies only.",
+    "baseline_semantic_failures": "Native Harbor assigns attributable agent failures an effective zero. Original exception records, missing rewards and artifact validity remain untouched. Supplementary statistics use those native zeros, not invented Jev scores. All candidates still require error-free qualification.",
+    "additional_conservative_guard": "After baseline command misuse was audited, an extra two-point visual-gain and eight-point regression guard was added on unaffected families. This only restricts acceptance, and stops a candidate winning solely from baseline command failures. It is disclosed as an added sensitivity guard, not a preregistered scoring change.",
+    "private_gate": "Still sealed; both arms must satisfy the originally declared full error-free gate."
+  },
+  "protocol_sha256": "b64a39aeb0761bfe4849530c76c12a339f08441980962c216254014d71af7609",
+  "native_run_sha256": "799d2df31cb694fc0702df17b3ab9ec6781a95012c950e2521a56508cd3b6b1d"
+}

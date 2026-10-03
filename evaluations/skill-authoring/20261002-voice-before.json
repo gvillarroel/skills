@@ -1,0 +1,666 @@
+{
+  "schemaVersion": 1,
+  "passed": false,
+  "skillCount": 33,
+  "bundleCount": 0,
+  "issueCounts": {
+    "description-voice": 32
+  },
+  "results": [
+    {
+      "passed": false,
+      "skill": "ambientcg-material-search",
+      "issues": [
+        {
+          "code": "description-voice",
+          "path": "SKILL.md",
+          "message": "Use a descriptive third-person opening, such as 'Reviews changes', rather than an imperative"
+        }
+      ],
+      "metrics": {
+        "bodyLines": 71,
+        "entryBytes": 3897,
+        "referenceCount": 1,
+        "longReferenceCount": 0,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": false,
+      "skill": "animated-svg-to-gif",
+      "issues": [
+        {
+          "code": "description-voice",
+          "path": "SKILL.md",
+          "message": "Use a descriptive third-person opening, such as 'Reviews changes', rather than an imperative"
+        }
+      ],
+      "metrics": {
+        "bodyLines": 88,
+        "entryBytes": 6321,
+        "referenceCount": 0,
+        "longReferenceCount": 0,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": false,
+      "skill": "asciinema-real-command-video",
+      "issues": [
+        {
+          "code": "description-voice",
+          "path": "SKILL.md",
+          "message": "Use a descriptive third-person opening, such as 'Reviews changes', rather than an imperative"
+        }
+      ],
+      "metrics": {
+        "bodyLines": 80,
+        "entryBytes": 8950,
+        "referenceCount": 8,
+        "longReferenceCount": 3,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": false,
+      "skill": "compose-synchronized-svg",
+      "issues": [
+        {
+          "code": "description-voice",
+          "path": "SKILL.md",
+          "message": "Use a descriptive third-person opening, such as 'Reviews changes', rather than an imperative"
+        }
+      ],
+      "metrics": {
+        "bodyLines": 81,
+        "entryBytes": 11646,
+        "referenceCount": 7,
+        "longReferenceCount": 5,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": false,
+      "skill": "d3",
+      "issues": [
+        {
+          "code": "description-voice",
+          "path": "SKILL.md",
+          "message": "Use a descriptive third-person opening, such as 'Reviews changes', rather than an imperative"
+        }
+      ],
+      "metrics": {
+        "bodyLines": 130,
+        "entryBytes": 12516,
+        "referenceCount": 225,
+        "longReferenceCount": 53,
+        "directCollectionCount": 1
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": false,
+      "skill": "destockd-video-search",
+      "issues": [
+        {
+          "code": "description-voice",
+          "path": "SKILL.md",
+          "message": "Use a descriptive third-person opening, such as 'Reviews changes', rather than an imperative"
+        }
+      ],
+      "metrics": {
+        "bodyLines": 75,
+        "entryBytes": 4915,
+        "referenceCount": 2,
+        "longReferenceCount": 0,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": false,
+      "skill": "diagram-composition",
+      "issues": [
+        {
+          "code": "description-voice",
+          "path": "SKILL.md",
+          "message": "Use a descriptive third-person opening, such as 'Reviews changes', rather than an imperative"
+        }
+      ],
+      "metrics": {
+        "bodyLines": 187,
+        "entryBytes": 11702,
+        "referenceCount": 7,
+        "longReferenceCount": 2,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": false,
+      "skill": "echarts-animated-svg",
+      "issues": [
+        {
+          "code": "description-voice",
+          "path": "SKILL.md",
+          "message": "Use a descriptive third-person opening, such as 'Reviews changes', rather than an imperative"
+        }
+      ],
+      "metrics": {
+        "bodyLines": 94,
+        "entryBytes": 6620,
+        "referenceCount": 4,
+        "longReferenceCount": 1,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": false,
+      "skill": "google-cloud-sku-pricing",
+      "issues": [
+        {
+          "code": "description-voice",
+          "path": "SKILL.md",
+          "message": "Use a descriptive third-person opening, such as 'Reviews changes', rather than an imperative"
+        }
+      ],
+      "metrics": {
+        "bodyLines": 85,
+        "entryBytes": 4992,
+        "referenceCount": 3,
+        "longReferenceCount": 2,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": false,
+      "skill": "harbor-author-evaluation-datasets",
+      "issues": [
+        {
+          "code": "description-voice",
+          "path": "SKILL.md",
+          "message": "Use a descriptive third-person opening, such as 'Reviews changes', rather than an imperative"
+        }
+      ],
+      "metrics": {
+        "bodyLines": 220,
+        "entryBytes": 11964,
+        "referenceCount": 1,
+        "longReferenceCount": 1,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": false,
+      "skill": "hierarchy-lens",
+      "issues": [
+        {
+          "code": "description-voice",
+          "path": "SKILL.md",
+          "message": "Use a descriptive third-person opening, such as 'Reviews changes', rather than an imperative"
+        }
+      ],
+      "metrics": {
+        "bodyLines": 48,
+        "entryBytes": 6448,
+        "referenceCount": 6,
+        "longReferenceCount": 0,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": false,
+      "skill": "iconify-icon-search",
+      "issues": [
+        {
+          "code": "description-voice",
+          "path": "SKILL.md",
+          "message": "Use a descriptive third-person opening, such as 'Reviews changes', rather than an imperative"
+        }
+      ],
+      "metrics": {
+        "bodyLines": 55,
+        "entryBytes": 3092,
+        "referenceCount": 1,
+        "longReferenceCount": 0,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": false,
+      "skill": "jev-batch-decisions",
+      "issues": [
+        {
+          "code": "description-voice",
+          "path": "SKILL.md",
+          "message": "Use a descriptive third-person opening, such as 'Reviews changes', rather than an imperative"
+        }
+      ],
+      "metrics": {
+        "bodyLines": 74,
+        "entryBytes": 4942,
+        "referenceCount": 3,
+        "longReferenceCount": 0,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": false,
+      "skill": "kenney-asset-search",
+      "issues": [
+        {
+          "code": "description-voice",
+          "path": "SKILL.md",
+          "message": "Use a descriptive third-person opening, such as 'Reviews changes', rather than an imperative"
+        }
+      ],
+      "metrics": {
+        "bodyLines": 73,
+        "entryBytes": 3809,
+        "referenceCount": 1,
+        "longReferenceCount": 0,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": false,
+      "skill": "manim-svg-video",
+      "issues": [
+        {
+          "code": "description-voice",
+          "path": "SKILL.md",
+          "message": "Use a descriptive third-person opening, such as 'Reviews changes', rather than an imperative"
+        }
+      ],
+      "metrics": {
+        "bodyLines": 32,
+        "entryBytes": 3141,
+        "referenceCount": 3,
+        "longReferenceCount": 0,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": false,
+      "skill": "mermaid",
+      "issues": [
+        {
+          "code": "description-voice",
+          "path": "SKILL.md",
+          "message": "Use a descriptive third-person opening, such as 'Reviews changes', rather than an imperative"
+        }
+      ],
+      "metrics": {
+        "bodyLines": 64,
+        "entryBytes": 8359,
+        "referenceCount": 6,
+        "longReferenceCount": 1,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": true,
+      "skill": "one-bit-dither-svg",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 95,
+        "entryBytes": 8503,
+        "referenceCount": 2,
+        "longReferenceCount": 1,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": false,
+      "skill": "pexels-media-search",
+      "issues": [
+        {
+          "code": "description-voice",
+          "path": "SKILL.md",
+          "message": "Use a descriptive third-person opening, such as 'Reviews changes', rather than an imperative"
+        }
+      ],
+      "metrics": {
+        "bodyLines": 70,
+        "entryBytes": 4152,
+        "referenceCount": 1,
+        "longReferenceCount": 0,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": false,
+      "skill": "pixel-art-image-video",
+      "issues": [
+        {
+          "code": "description-voice",
+          "path": "SKILL.md",
+          "message": "Use a descriptive third-person opening, such as 'Reviews changes', rather than an imperative"
+        }
+      ],
+      "metrics": {
+        "bodyLines": 73,
+        "entryBytes": 7124,
+        "referenceCount": 2,
+        "longReferenceCount": 0,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": false,
+      "skill": "plantuml-colorset-renderer",
+      "issues": [
+        {
+          "code": "description-voice",
+          "path": "SKILL.md",
+          "message": "Use a descriptive third-person opening, such as 'Reviews changes', rather than an imperative"
+        }
+      ],
+      "metrics": {
+        "bodyLines": 139,
+        "entryBytes": 9475,
+        "referenceCount": 1,
+        "longReferenceCount": 0,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": false,
+      "skill": "polyhaven-asset-search",
+      "issues": [
+        {
+          "code": "description-voice",
+          "path": "SKILL.md",
+          "message": "Use a descriptive third-person opening, such as 'Reviews changes', rather than an imperative"
+        }
+      ],
+      "metrics": {
+        "bodyLines": 91,
+        "entryBytes": 5067,
+        "referenceCount": 1,
+        "longReferenceCount": 0,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": false,
+      "skill": "procedural-svg-animation",
+      "issues": [
+        {
+          "code": "description-voice",
+          "path": "SKILL.md",
+          "message": "Use a descriptive third-person opening, such as 'Reviews changes', rather than an imperative"
+        }
+      ],
+      "metrics": {
+        "bodyLines": 87,
+        "entryBytes": 8192,
+        "referenceCount": 6,
+        "longReferenceCount": 4,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": false,
+      "skill": "repository-reviewer-creator",
+      "issues": [
+        {
+          "code": "description-voice",
+          "path": "SKILL.md",
+          "message": "Use a descriptive third-person opening, such as 'Reviews changes', rather than an imperative"
+        }
+      ],
+      "metrics": {
+        "bodyLines": 40,
+        "entryBytes": 4880,
+        "referenceCount": 4,
+        "longReferenceCount": 0,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": false,
+      "skill": "simulation-data-lab",
+      "issues": [
+        {
+          "code": "description-voice",
+          "path": "SKILL.md",
+          "message": "Use a descriptive third-person opening, such as 'Reviews changes', rather than an imperative"
+        }
+      ],
+      "metrics": {
+        "bodyLines": 238,
+        "entryBytes": 15039,
+        "referenceCount": 9,
+        "longReferenceCount": 7,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": false,
+      "skill": "slidev-animejs",
+      "issues": [
+        {
+          "code": "description-voice",
+          "path": "SKILL.md",
+          "message": "Use a descriptive third-person opening, such as 'Reviews changes', rather than an imperative"
+        }
+      ],
+      "metrics": {
+        "bodyLines": 41,
+        "entryBytes": 4559,
+        "referenceCount": 25,
+        "longReferenceCount": 1,
+        "directCollectionCount": 1
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": false,
+      "skill": "slidev-echarts",
+      "issues": [
+        {
+          "code": "description-voice",
+          "path": "SKILL.md",
+          "message": "Use a descriptive third-person opening, such as 'Reviews changes', rather than an imperative"
+        }
+      ],
+      "metrics": {
+        "bodyLines": 37,
+        "entryBytes": 4166,
+        "referenceCount": 27,
+        "longReferenceCount": 1,
+        "directCollectionCount": 1
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": false,
+      "skill": "slidev-quality-audit",
+      "issues": [
+        {
+          "code": "description-voice",
+          "path": "SKILL.md",
+          "message": "Use a descriptive third-person opening, such as 'Reviews changes', rather than an imperative"
+        }
+      ],
+      "metrics": {
+        "bodyLines": 76,
+        "entryBytes": 3746,
+        "referenceCount": 1,
+        "longReferenceCount": 0,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": false,
+      "skill": "svg-brief-design",
+      "issues": [
+        {
+          "code": "description-voice",
+          "path": "SKILL.md",
+          "message": "Use a descriptive third-person opening, such as 'Reviews changes', rather than an imperative"
+        }
+      ],
+      "metrics": {
+        "bodyLines": 129,
+        "entryBytes": 7027,
+        "referenceCount": 4,
+        "longReferenceCount": 0,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": false,
+      "skill": "technical-logo-assets",
+      "issues": [
+        {
+          "code": "description-voice",
+          "path": "SKILL.md",
+          "message": "Use a descriptive third-person opening, such as 'Reviews changes', rather than an imperative"
+        }
+      ],
+      "metrics": {
+        "bodyLines": 73,
+        "entryBytes": 5741,
+        "referenceCount": 3,
+        "longReferenceCount": 0,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": false,
+      "skill": "threejs-animated-3d",
+      "issues": [
+        {
+          "code": "description-voice",
+          "path": "SKILL.md",
+          "message": "Use a descriptive third-person opening, such as 'Reviews changes', rather than an imperative"
+        }
+      ],
+      "metrics": {
+        "bodyLines": 103,
+        "entryBytes": 8475,
+        "referenceCount": 3,
+        "longReferenceCount": 0,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": false,
+      "skill": "usefulcharts-style",
+      "issues": [
+        {
+          "code": "description-voice",
+          "path": "SKILL.md",
+          "message": "Use a descriptive third-person opening, such as 'Reviews changes', rather than an imperative"
+        }
+      ],
+      "metrics": {
+        "bodyLines": 115,
+        "entryBytes": 21376,
+        "referenceCount": 29,
+        "longReferenceCount": 2,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": false,
+      "skill": "vectorize-art-patterns",
+      "issues": [
+        {
+          "code": "description-voice",
+          "path": "SKILL.md",
+          "message": "Use a descriptive third-person opening, such as 'Reviews changes', rather than an imperative"
+        }
+      ],
+      "metrics": {
+        "bodyLines": 232,
+        "entryBytes": 13230,
+        "referenceCount": 6,
+        "longReferenceCount": 1,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": false,
+      "skill": "video",
+      "issues": [
+        {
+          "code": "description-voice",
+          "path": "SKILL.md",
+          "message": "Use a descriptive third-person opening, such as 'Reviews changes', rather than an imperative"
+        }
+      ],
+      "metrics": {
+        "bodyLines": 87,
+        "entryBytes": 8536,
+        "referenceCount": 18,
+        "longReferenceCount": 6,
+        "directCollectionCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    }
+  ],
+  "limitations": "Measurable authoring/navigation and copied payloads; no claim of model-wide behavioral certification."
+}

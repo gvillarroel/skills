@@ -1,0 +1,596 @@
+{
+  "date": "2026-09-04",
+  "skill": "compose-synchronized-svg",
+  "rows": [
+    {
+      "runId": "20260904-svg-color-microgrid-luna-candidate-1",
+      "model": "openai-codex/gpt-5.6-luna",
+      "thinking": "high",
+      "payloadSha256": "42e09e73e200ec5c148268a53793e97c409d3a503b4d3bad77a51c8844c31ca3",
+      "promptSha256": "3d3bd90ca990c4d459dea8f13428d396a356c2af8e421b1540610ee79ab0024a",
+      "passed": true,
+      "durationSeconds": 277.922,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.6-luna"
+        }
+      ],
+      "toolErrorCount": 0,
+      "readPaths": [
+        "outputs/microgrid/overview.png",
+        "../prompt.md",
+        "skills/compose-synchronized-svg/SKILL.md",
+        "skills/compose-synchronized-svg/references/semantic-state-contract.md",
+        "skills/compose-synchronized-svg/references/critique-and-validation.md",
+        "skills/compose-synchronized-svg/references/asset-selection-and-composition.md",
+        "skills/compose-synchronized-svg/references/color-and-visual-quality.md",
+        "skills/compose-synchronized-svg/assets/templates/composition-brief.json",
+        "outputs/microgrid/static-validation.json",
+        "outputs/microgrid/composition-report.json",
+        "outputs/microgrid/browser-audit.json"
+      ],
+      "requiredOutputs": [
+        "outputs/microgrid/composition-brief.json",
+        "outputs/microgrid/composition-plan.json",
+        "outputs/microgrid/composition-report.json",
+        "outputs/microgrid/microgrid.svg",
+        "outputs/microgrid/static-validation.json",
+        "outputs/microgrid/browser-audit.json",
+        "outputs/microgrid/overview.png",
+        "outputs/microgrid/color-editing.md"
+      ],
+      "usageTotals": {
+        "input": 53728,
+        "output": 9860,
+        "cacheRead": 609536,
+        "cacheWrite": 0,
+        "totalTokens": 673124
+      }
+    },
+    {
+      "runId": "20260904-svg-color-microgrid-luna-v2-1",
+      "model": "openai-codex/gpt-5.6-luna",
+      "thinking": "high",
+      "payloadSha256": "fb3c585664f88bf97a3f173e6b8c0ea5de81a588542ed460dba9b006d3fd71f6",
+      "promptSha256": "3d3bd90ca990c4d459dea8f13428d396a356c2af8e421b1540610ee79ab0024a",
+      "passed": true,
+      "durationSeconds": 201.047,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.6-luna"
+        }
+      ],
+      "toolErrorCount": 0,
+      "readPaths": [
+        "../prompt.md",
+        "skills/compose-synchronized-svg/SKILL.md",
+        "skills/compose-synchronized-svg/references/asset-selection-and-composition.md",
+        "skills/compose-synchronized-svg/references/color-and-visual-quality.md",
+        "skills/compose-synchronized-svg/assets/templates/composition-brief.json",
+        "skills/compose-synchronized-svg/references/semantic-state-contract.md",
+        "skills/compose-synchronized-svg/references/critique-and-validation.md",
+        "outputs/microgrid/overview.png",
+        "outputs/microgrid/browser-audit.json",
+        "outputs/microgrid/composition-report.json",
+        "outputs/microgrid/static-validation.json"
+      ],
+      "requiredOutputs": [
+        "outputs/microgrid/composition-brief.json",
+        "outputs/microgrid/composition-plan.json",
+        "outputs/microgrid/composition-report.json",
+        "outputs/microgrid/microgrid.svg",
+        "outputs/microgrid/static-validation.json",
+        "outputs/microgrid/browser-audit.json",
+        "outputs/microgrid/overview.png",
+        "outputs/microgrid/color-editing.md"
+      ],
+      "usageTotals": {
+        "input": 47333,
+        "output": 7796,
+        "cacheRead": 323200,
+        "cacheWrite": 0,
+        "totalTokens": 378329
+      }
+    },
+    {
+      "runId": "20260904-svg-color-microgrid-luna-v2-2",
+      "model": "openai-codex/gpt-5.6-luna",
+      "thinking": "high",
+      "payloadSha256": "fb3c585664f88bf97a3f173e6b8c0ea5de81a588542ed460dba9b006d3fd71f6",
+      "promptSha256": "3d3bd90ca990c4d459dea8f13428d396a356c2af8e421b1540610ee79ab0024a",
+      "passed": true,
+      "durationSeconds": 266.687,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.6-luna"
+        }
+      ],
+      "toolErrorCount": 0,
+      "readPaths": [
+        "outputs/microgrid/overview.png",
+        "../prompt.md",
+        "skills/compose-synchronized-svg/SKILL.md",
+        "skills/compose-synchronized-svg/references/critique-and-validation.md",
+        "skills/compose-synchronized-svg/references/color-and-visual-quality.md",
+        "skills/compose-synchronized-svg/references/semantic-state-contract.md",
+        "skills/compose-synchronized-svg/assets/templates/composition-brief.json",
+        "skills/compose-synchronized-svg/references/asset-selection-and-composition.md"
+      ],
+      "requiredOutputs": [
+        "outputs/microgrid/composition-brief.json",
+        "outputs/microgrid/composition-plan.json",
+        "outputs/microgrid/composition-report.json",
+        "outputs/microgrid/microgrid.svg",
+        "outputs/microgrid/static-validation.json",
+        "outputs/microgrid/browser-audit.json",
+        "outputs/microgrid/overview.png",
+        "outputs/microgrid/color-editing.md"
+      ],
+      "usageTotals": {
+        "input": 48411,
+        "output": 10471,
+        "cacheRead": 471808,
+        "cacheWrite": 0,
+        "totalTokens": 530690
+      }
+    },
+    {
+      "runId": "20260904-svg-color-microgrid-luna-v2-3",
+      "model": "openai-codex/gpt-5.6-luna",
+      "thinking": "high",
+      "payloadSha256": "fb3c585664f88bf97a3f173e6b8c0ea5de81a588542ed460dba9b006d3fd71f6",
+      "promptSha256": "3d3bd90ca990c4d459dea8f13428d396a356c2af8e421b1540610ee79ab0024a",
+      "passed": true,
+      "durationSeconds": 264.609,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.6-luna"
+        }
+      ],
+      "toolErrorCount": 0,
+      "readPaths": [
+        "outputs/microgrid/overview.png",
+        "../prompt.md",
+        "skills/compose-synchronized-svg/SKILL.md",
+        "skills/compose-synchronized-svg/references/semantic-state-contract.md",
+        "skills/compose-synchronized-svg/assets/templates/composition-brief.json",
+        "skills/compose-synchronized-svg/references/color-and-visual-quality.md",
+        "skills/compose-synchronized-svg/references/asset-selection-and-composition.md",
+        "skills/compose-synchronized-svg/references/critique-and-validation.md"
+      ],
+      "requiredOutputs": [
+        "outputs/microgrid/composition-brief.json",
+        "outputs/microgrid/composition-plan.json",
+        "outputs/microgrid/composition-report.json",
+        "outputs/microgrid/microgrid.svg",
+        "outputs/microgrid/static-validation.json",
+        "outputs/microgrid/browser-audit.json",
+        "outputs/microgrid/overview.png",
+        "outputs/microgrid/color-editing.md"
+      ],
+      "usageTotals": {
+        "input": 52270,
+        "output": 10365,
+        "cacheRead": 493184,
+        "cacheWrite": 0,
+        "totalTokens": 555819
+      }
+    },
+    {
+      "runId": "20260904-svg-color-water-luna-baseline",
+      "model": "openai-codex/gpt-5.6-luna",
+      "thinking": "high",
+      "payloadSha256": "3153bdbde6f2a7145ee807da00b2818542ea5ccb98461640ef11683aa0d040bb",
+      "promptSha256": "231cb85bab25f28c9e6ca999ae57c24c162717bf71c179883a3e0599fb7370aa",
+      "passed": false,
+      "durationSeconds": 676.485,
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": false,
+        "skillIntegrity": true
+      },
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.6-luna"
+        }
+      ],
+      "toolErrorCount": 8,
+      "readPaths": [
+        "outputs/water/composition-plan.json",
+        "outputs/water/overview.png",
+        "../prompt.md",
+        "skills/compose-synchronized-svg/SKILL.md",
+        "skills/compose-synchronized-svg/references/asset-selection-and-composition.md",
+        "skills/compose-synchronized-svg/assets/templates/composition-brief.json",
+        "skills/compose-synchronized-svg/references/critique-and-validation.md",
+        "skills/compose-synchronized-svg/references/semantic-state-contract.md",
+        "outputs/water/browser-audit.json",
+        "outputs/water/water.svg",
+        "outputs/water/composition-report.json",
+        "outputs/water/static-validation.json"
+      ],
+      "requiredOutputs": [
+        "outputs/water/composition-brief.json",
+        "outputs/water/composition-plan.json",
+        "outputs/water/composition-report.json",
+        "outputs/water/water.svg",
+        "outputs/water/static-validation.json",
+        "outputs/water/browser-audit.json",
+        "outputs/water/overview.png",
+        "outputs/water/color-editing.md"
+      ],
+      "usageTotals": {
+        "input": 87425,
+        "output": 19403,
+        "cacheRead": 1679360,
+        "cacheWrite": 0,
+        "totalTokens": 1786188
+      }
+    },
+    {
+      "runId": "20260904-svg-color-water-luna-candidate-1",
+      "model": "openai-codex/gpt-5.6-luna",
+      "thinking": "high",
+      "payloadSha256": "42e09e73e200ec5c148268a53793e97c409d3a503b4d3bad77a51c8844c31ca3",
+      "promptSha256": "231cb85bab25f28c9e6ca999ae57c24c162717bf71c179883a3e0599fb7370aa",
+      "passed": true,
+      "durationSeconds": 226.156,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.6-luna"
+        }
+      ],
+      "toolErrorCount": 0,
+      "readPaths": [
+        "../prompt.md",
+        "skills/compose-synchronized-svg/SKILL.md",
+        "skills/compose-synchronized-svg/references/semantic-state-contract.md",
+        "skills/compose-synchronized-svg/references/critique-and-validation.md",
+        "skills/compose-synchronized-svg/references/asset-selection-and-composition.md",
+        "skills/compose-synchronized-svg/references/color-and-visual-quality.md",
+        "skills/compose-synchronized-svg/assets/templates/composition-brief.json",
+        "outputs/water/overview.png"
+      ],
+      "requiredOutputs": [
+        "outputs/water/composition-brief.json",
+        "outputs/water/composition-plan.json",
+        "outputs/water/composition-report.json",
+        "outputs/water/water.svg",
+        "outputs/water/static-validation.json",
+        "outputs/water/browser-audit.json",
+        "outputs/water/overview.png",
+        "outputs/water/color-editing.md"
+      ],
+      "usageTotals": {
+        "input": 40005,
+        "output": 8395,
+        "cacheRead": 289664,
+        "cacheWrite": 0,
+        "totalTokens": 338064
+      }
+    },
+    {
+      "runId": "20260904-svg-color-water-luna-candidate-2",
+      "model": "openai-codex/gpt-5.6-luna",
+      "thinking": "high",
+      "payloadSha256": "42e09e73e200ec5c148268a53793e97c409d3a503b4d3bad77a51c8844c31ca3",
+      "promptSha256": "231cb85bab25f28c9e6ca999ae57c24c162717bf71c179883a3e0599fb7370aa",
+      "passed": true,
+      "durationSeconds": 227.656,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.6-luna"
+        }
+      ],
+      "toolErrorCount": 0,
+      "readPaths": [
+        "outputs/water/overview.png",
+        "../prompt.md",
+        "skills/compose-synchronized-svg/SKILL.md",
+        "skills/compose-synchronized-svg/references/asset-selection-and-composition.md",
+        "skills/compose-synchronized-svg/references/semantic-state-contract.md",
+        "skills/compose-synchronized-svg/references/color-and-visual-quality.md",
+        "skills/compose-synchronized-svg/references/critique-and-validation.md",
+        "skills/compose-synchronized-svg/assets/templates/composition-brief.json",
+        "outputs/water/composition-report.json",
+        "outputs/water/browser-audit.json"
+      ],
+      "requiredOutputs": [
+        "outputs/water/composition-brief.json",
+        "outputs/water/composition-plan.json",
+        "outputs/water/composition-report.json",
+        "outputs/water/water.svg",
+        "outputs/water/static-validation.json",
+        "outputs/water/browser-audit.json",
+        "outputs/water/overview.png",
+        "outputs/water/color-editing.md"
+      ],
+      "usageTotals": {
+        "input": 67726,
+        "output": 8722,
+        "cacheRead": 387584,
+        "cacheWrite": 0,
+        "totalTokens": 464032
+      }
+    },
+    {
+      "runId": "20260904-svg-color-water-luna-v2-1",
+      "model": "openai-codex/gpt-5.6-luna",
+      "thinking": "high",
+      "payloadSha256": "fb3c585664f88bf97a3f173e6b8c0ea5de81a588542ed460dba9b006d3fd71f6",
+      "promptSha256": "231cb85bab25f28c9e6ca999ae57c24c162717bf71c179883a3e0599fb7370aa",
+      "passed": true,
+      "durationSeconds": 209.812,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.6-luna"
+        }
+      ],
+      "toolErrorCount": 0,
+      "readPaths": [
+        "../prompt.md",
+        "skills/compose-synchronized-svg/SKILL.md",
+        "skills/compose-synchronized-svg/references/semantic-state-contract.md",
+        "skills/compose-synchronized-svg/references/critique-and-validation.md",
+        "skills/compose-synchronized-svg/references/color-and-visual-quality.md",
+        "skills/compose-synchronized-svg/references/asset-selection-and-composition.md",
+        "skills/compose-synchronized-svg/assets/templates/composition-brief.json",
+        "outputs/water/overview.png",
+        "outputs/water/browser-audit.json",
+        "outputs/water/static-validation.json",
+        "outputs/water/composition-report.json"
+      ],
+      "requiredOutputs": [
+        "outputs/water/composition-brief.json",
+        "outputs/water/composition-plan.json",
+        "outputs/water/composition-report.json",
+        "outputs/water/water.svg",
+        "outputs/water/static-validation.json",
+        "outputs/water/browser-audit.json",
+        "outputs/water/overview.png",
+        "outputs/water/color-editing.md"
+      ],
+      "usageTotals": {
+        "input": 47814,
+        "output": 8437,
+        "cacheRead": 339712,
+        "cacheWrite": 0,
+        "totalTokens": 395963
+      }
+    },
+    {
+      "runId": "20260904-svg-color-water-luna-v2-2",
+      "model": "openai-codex/gpt-5.6-luna",
+      "thinking": "high",
+      "payloadSha256": "fb3c585664f88bf97a3f173e6b8c0ea5de81a588542ed460dba9b006d3fd71f6",
+      "promptSha256": "231cb85bab25f28c9e6ca999ae57c24c162717bf71c179883a3e0599fb7370aa",
+      "passed": true,
+      "durationSeconds": 245.89,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.6-luna"
+        }
+      ],
+      "toolErrorCount": 0,
+      "readPaths": [
+        "outputs/water/overview.png",
+        "../prompt.md",
+        "skills/compose-synchronized-svg/SKILL.md",
+        "skills/compose-synchronized-svg/references/semantic-state-contract.md",
+        "skills/compose-synchronized-svg/references/color-and-visual-quality.md",
+        "skills/compose-synchronized-svg/references/critique-and-validation.md",
+        "skills/compose-synchronized-svg/references/asset-selection-and-composition.md",
+        "skills/compose-synchronized-svg/assets/templates/composition-brief.json",
+        "outputs/water/browser-audit.json",
+        "outputs/water/composition-report.json"
+      ],
+      "requiredOutputs": [
+        "outputs/water/composition-brief.json",
+        "outputs/water/composition-plan.json",
+        "outputs/water/composition-report.json",
+        "outputs/water/water.svg",
+        "outputs/water/static-validation.json",
+        "outputs/water/browser-audit.json",
+        "outputs/water/overview.png",
+        "outputs/water/color-editing.md"
+      ],
+      "usageTotals": {
+        "input": 53784,
+        "output": 9561,
+        "cacheRead": 490496,
+        "cacheWrite": 0,
+        "totalTokens": 553841
+      }
+    },
+    {
+      "runId": "20260904-svg-color-water-luna-v2-3",
+      "model": "openai-codex/gpt-5.6-luna",
+      "thinking": "high",
+      "payloadSha256": "fb3c585664f88bf97a3f173e6b8c0ea5de81a588542ed460dba9b006d3fd71f6",
+      "promptSha256": "231cb85bab25f28c9e6ca999ae57c24c162717bf71c179883a3e0599fb7370aa",
+      "passed": true,
+      "durationSeconds": 254.719,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.6-luna"
+        }
+      ],
+      "toolErrorCount": 0,
+      "readPaths": [
+        "../prompt.md",
+        "skills/compose-synchronized-svg/SKILL.md",
+        "skills/compose-synchronized-svg/references/asset-selection-and-composition.md",
+        "skills/compose-synchronized-svg/references/semantic-state-contract.md",
+        "skills/compose-synchronized-svg/references/color-and-visual-quality.md",
+        "skills/compose-synchronized-svg/references/critique-and-validation.md",
+        "skills/compose-synchronized-svg/assets/templates/composition-brief.json",
+        "outputs/water/composition-brief.json",
+        "outputs/water/overview.png"
+      ],
+      "requiredOutputs": [
+        "outputs/water/composition-brief.json",
+        "outputs/water/composition-plan.json",
+        "outputs/water/composition-report.json",
+        "outputs/water/water.svg",
+        "outputs/water/static-validation.json",
+        "outputs/water/browser-audit.json",
+        "outputs/water/overview.png",
+        "outputs/water/color-editing.md"
+      ],
+      "usageTotals": {
+        "input": 47802,
+        "output": 10557,
+        "cacheRead": 435072,
+        "cacheWrite": 0,
+        "totalTokens": 493431
+      }
+    },
+    {
+      "runId": "20260904-svg-theme-luna-v2-boundary",
+      "model": "openai-codex/gpt-5.6-luna",
+      "thinking": "high",
+      "payloadSha256": "fb3c585664f88bf97a3f173e6b8c0ea5de81a588542ed460dba9b006d3fd71f6",
+      "promptSha256": "b834fed4c58d550fe10fe6759a5588155c6674d43b6b4c3960665292e31a073a",
+      "passed": true,
+      "durationSeconds": 101.469,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.6-luna"
+        }
+      ],
+      "toolErrorCount": 0,
+      "readPaths": [
+        "../prompt.md",
+        "skills/compose-synchronized-svg/SKILL.md",
+        "skills/compose-synchronized-svg/assets/templates/composition-brief.json",
+        "skills/compose-synchronized-svg/references/semantic-state-contract.md",
+        "skills/compose-synchronized-svg/references/color-and-visual-quality.md",
+        "skills/compose-synchronized-svg/references/asset-selection-and-composition.md",
+        "outputs/boundary/preflight.json"
+      ],
+      "requiredOutputs": [
+        "outputs/boundary/brief.json",
+        "outputs/boundary/preflight.json",
+        "outputs/boundary/explanation.md"
+      ],
+      "usageTotals": {
+        "input": 26302,
+        "output": 3968,
+        "cacheRead": 70144,
+        "cacheWrite": 0,
+        "totalTokens": 100414
+      }
+    },
+    {
+      "runId": "20260904-svg-theme-luna-v2-smoke",
+      "model": "openai-codex/gpt-5.6-luna",
+      "thinking": "high",
+      "payloadSha256": "fb3c585664f88bf97a3f173e6b8c0ea5de81a588542ed460dba9b006d3fd71f6",
+      "promptSha256": "6faeeee5fd28ecad5c298d637d04c416586972331da3ec5743c65697667f2bcb",
+      "passed": true,
+      "durationSeconds": 46.765,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.6-luna"
+        }
+      ],
+      "toolErrorCount": 0,
+      "readPaths": [
+        "../prompt.md",
+        "skills/compose-synchronized-svg/SKILL.md"
+      ],
+      "requiredOutputs": [
+        "outputs/smoke/brief.json",
+        "outputs/smoke/plan.json",
+        "outputs/smoke/atlas.svg",
+        "outputs/smoke/static.json"
+      ],
+      "usageTotals": {
+        "input": 15436,
+        "output": 1002,
+        "cacheRead": 14336,
+        "cacheWrite": 0,
+        "totalTokens": 30774
+      }
+    }
+  ]
+}

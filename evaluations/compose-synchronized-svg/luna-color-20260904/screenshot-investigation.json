@@ -1,0 +1,43 @@
+{
+  "conclusion": "No clipping defect confirmed in the PNG files. All four suspect text regions are pixel-identical to the independent capture. Experimental capture change reverted.",
+  "original": "evaluations\\runs\\20260904-svg-color-microgrid-luna-v2-3\\workspace\\outputs\\microgrid\\overview.png",
+  "independent": "projects\\svg-quality-luna\\artifacts\\reviews\\microgrid-v2-3\\morning.png",
+  "regions": [
+    {
+      "bounds": [
+        65,
+        140,
+        240,
+        180
+      ],
+      "exactPixelMatch": true
+    },
+    {
+      "bounds": [
+        65,
+        185,
+        240,
+        225
+      ],
+      "exactPixelMatch": true
+    },
+    {
+      "bounds": [
+        495,
+        588,
+        620,
+        650
+      ],
+      "exactPixelMatch": true
+    },
+    {
+      "bounds": [
+        1015,
+        166,
+        1180,
+        186
+      ],
+      "exactPixelMatch": true
+    }
+  ]
+}

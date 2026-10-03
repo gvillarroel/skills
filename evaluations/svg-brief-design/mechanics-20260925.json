@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "study": "svg-brief-design-mechanics-20260925",
+  "status": "complete_keep_baseline",
+  "model": "openai-codex/gpt-6-luna",
+  "harbor_version": "0.18.0",
+  "gepa_version": "0.1.2",
+  "reflection_proposals": 3,
+  "native_development_trials": 30,
+  "execution_errors": 0,
+  "artifact_valid_trials": 30,
+  "complete_evolution_set_scores": [
+    {"candidate": "original-guide", "mean": 0.6346078812491897},
+    {"candidate": "proposal-2", "mean": 0.5953355586668424}
+  ],
+  "proposed_complete_set_regressions": 5,
+  "validation_status": "sealed_selected_candidate_unchanged",
+  "holdout_status": "sealed_selected_candidate_unchanged",
+  "promoted": false,
+  "source_changed": false,
+  "all_provenance_model_integrity_audits_passed": true,
+  "native_tokens": 127253,
+  "reflection_tokens": 11493,
+  "cost_usd": null,
+  "semantic_accuracy": null,
+  "raw_evidence": "evaluations/runs/svg-brief-design-mechanics-20260925"
+}

@@ -1,0 +1,5 @@
+I need a small offline animated illustration of draft-token verification for a technical explanation. The proposed sequence is "We", "can", "ship", "this", "small", "change". The verifier keeps the first four tokens and rejects the final two. The target continues with "today" from the accepted context. Show a gray alternate "may" at the second draft position and "large" at the fifth. Make the draft proposal, batch verification, accepted prefix, rejected tail, and target continuation understandable with animation disabled.
+
+Use colorset2 and an exact 960 by 520 SVG viewBox. Save out/transfer.html and out/transfer.svg. Keep the files offline and accessible; HTML must replay, and the SVG must retain a meaningful final explanation without JavaScript. Validate and inspect the actual result before reporting completion. This is an educational illustration, not a request to run inference or collect external data.
+
+The skill directory skills/d3/ is read-only. Write generated files only inside the workspace. Do not install packages, access the network, or read acceptance examples, repository documentation, or other skills.

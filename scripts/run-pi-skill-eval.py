@@ -27,6 +27,12 @@ COPY_IGNORE = {
     "node_modules",
     ".git",
     ".cache",
+    ".venv",
+    "venv",
+    ".pytest_cache",
+    ".ruff_cache",
+    ".mypy_cache",
+    ".tox",
     ".vite",
     "dist",
     "output",
@@ -221,6 +227,20 @@ def copy_skill_only(source: Path, target: Path, profile: str) -> None:
         return ignored
 
     shutil.copytree(source, target, ignore=ignore)
+
+
+def validate_bundle(skill: Path, profile: str = "source") -> None:
+    """Reject malformed payloads before an agent is launched."""
+    validator = Path(__file__).with_name("validate-skills.py")
+    result = subprocess.run(
+        ["uv", "run", "--script", str(validator), "--skill", str(skill), "--profile", profile],
+        capture_output=True,
+        text=True,
+        encoding="utf-8",
+        timeout=60,
+    )
+    if result.returncode:
+        raise ValueError(f"Skill bundle validation failed ({profile}):\n{result.stdout}{result.stderr}")
 
 
 def pi_command_prefix() -> list[str]:
@@ -702,6 +722,11 @@ def main() -> int:
         )
         return 2
     try:
+        validate_bundle(source_skill)
+    except (ValueError, OSError, subprocess.TimeoutExpired) as error:
+        print(str(error), file=sys.stderr)
+        return 2
+    try:
         pi_prefix = pi_command_prefix()
     except FileNotFoundError as error:
         print(str(error), file=sys.stderr)
@@ -718,6 +743,11 @@ def main() -> int:
         print(f"Could not create run workspace {workspace}: {error}", file=sys.stderr)
         return 2
     copy_skill_only(source_skill, skill_target, args.profile)
+    try:
+        validate_bundle(skill_target, args.profile)
+    except (ValueError, OSError, subprocess.TimeoutExpired) as error:
+        print(str(error), file=sys.stderr)
+        return 2
 
     prompt_path = run_dir / "prompt.md"
     stdout_path = run_dir / ("events.jsonl" if args.mode == "json" else "stdout.md")

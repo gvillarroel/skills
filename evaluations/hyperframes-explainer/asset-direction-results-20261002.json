@@ -1,0 +1,1818 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-02",
+  "skill": "hyperframes-explainer",
+  "modelPolicy": "Develop with gpt-6.1-sol; validate with gpt-6-luna. No Sol substitution for a failed Luna gate.",
+  "attempts": 33,
+  "cohorts": [
+    {
+      "case": "inlet",
+      "payloadSha256": "2f36876cc3044ac08f21a3de09616a214d5351186f8d67b7d62067654c19e145",
+      "runs": [
+        "20261002-hyperframes-assets-luna6-1"
+      ],
+      "strictPasses": 0,
+      "independentPasses": 1,
+      "manualPasses": 0,
+      "jointPasses": 0
+    },
+    {
+      "case": "inlet",
+      "payloadSha256": "0fce8a5a4ef0a9a6b961b90dc973f6108c0854ff2b784c62307ede49951b0e65",
+      "runs": [
+        "20261002-hyperframes-assets-luna6-10",
+        "20261002-hyperframes-assets-luna6-11",
+        "20261002-hyperframes-assets-luna6-12"
+      ],
+      "strictPasses": 2,
+      "independentPasses": 2,
+      "manualPasses": 1,
+      "jointPasses": 1
+    },
+    {
+      "case": "inlet",
+      "payloadSha256": "a0ba933f45ba62d27476049837dc1627063dd68217852c8370993883a48ed358",
+      "runs": [
+        "20261002-hyperframes-assets-luna6-13"
+      ],
+      "strictPasses": 0,
+      "independentPasses": 1,
+      "manualPasses": 1,
+      "jointPasses": 0
+    },
+    {
+      "case": "inlet",
+      "payloadSha256": "695c39fa35209ab4639208bb7842dc06ed152b665e99c8f54f3d5ff90adaddb7",
+      "runs": [
+        "20261002-hyperframes-assets-luna6-14",
+        "20261002-hyperframes-assets-luna6-15",
+        "20261002-hyperframes-assets-luna6-16"
+      ],
+      "strictPasses": 1,
+      "independentPasses": 2,
+      "manualPasses": 0,
+      "jointPasses": 0
+    },
+    {
+      "case": "inlet",
+      "payloadSha256": "5b62f993339e198bc03e26cb771f77d06eef34b4e73df3474d94578596bc8997",
+      "runs": [
+        "20261002-hyperframes-assets-luna6-17",
+        "20261002-hyperframes-assets-luna6-18",
+        "20261002-hyperframes-assets-luna6-19"
+      ],
+      "strictPasses": 1,
+      "independentPasses": 3,
+      "manualPasses": 3,
+      "jointPasses": 1
+    },
+    {
+      "case": "inlet",
+      "payloadSha256": "2dcee4b0412e5fa298b6195183e1fcfea3d1dd055d5dcb9cd574592458ea08cc",
+      "runs": [
+        "20261002-hyperframes-assets-luna6-2",
+        "20261002-hyperframes-assets-luna6-3",
+        "20261002-hyperframes-assets-luna6-4"
+      ],
+      "strictPasses": 0,
+      "independentPasses": 2,
+      "manualPasses": 0,
+      "jointPasses": 0
+    },
+    {
+      "case": "inlet",
+      "payloadSha256": "af87df4d3a9fd783e86ac2ae6e4aa2dd000863158b74997c42066c7b49ab4e32",
+      "runs": [
+        "20261002-hyperframes-assets-luna6-5",
+        "20261002-hyperframes-assets-luna6-6"
+      ],
+      "strictPasses": 0,
+      "independentPasses": 0,
+      "manualPasses": 0,
+      "jointPasses": 0
+    },
+    {
+      "case": "inlet",
+      "payloadSha256": "95760af968d1807725589c47b936075f32ffda384b3f83e112cb5a6ea889171a",
+      "runs": [
+        "20261002-hyperframes-assets-luna6-7",
+        "20261002-hyperframes-assets-luna6-8",
+        "20261002-hyperframes-assets-luna6-9"
+      ],
+      "strictPasses": 2,
+      "independentPasses": 2,
+      "manualPasses": 1,
+      "jointPasses": 1
+    },
+    {
+      "case": "vehicle",
+      "payloadSha256": "af87df4d3a9fd783e86ac2ae6e4aa2dd000863158b74997c42066c7b49ab4e32",
+      "runs": [
+        "20261002-hyperframes-vehicle-assets-luna6-1"
+      ],
+      "strictPasses": 0,
+      "independentPasses": 1,
+      "manualPasses": 0,
+      "jointPasses": 0
+    },
+    {
+      "case": "vehicle",
+      "payloadSha256": "695c39fa35209ab4639208bb7842dc06ed152b665e99c8f54f3d5ff90adaddb7",
+      "runs": [
+        "20261002-hyperframes-vehicle-assets-luna6-10",
+        "20261002-hyperframes-vehicle-assets-luna6-11",
+        "20261002-hyperframes-vehicle-assets-luna6-12"
+      ],
+      "strictPasses": 0,
+      "independentPasses": 2,
+      "manualPasses": 1,
+      "jointPasses": 0
+    },
+    {
+      "case": "vehicle",
+      "payloadSha256": "5b62f993339e198bc03e26cb771f77d06eef34b4e73df3474d94578596bc8997",
+      "runs": [
+        "20261002-hyperframes-vehicle-assets-luna6-13",
+        "20261002-hyperframes-vehicle-assets-luna6-14",
+        "20261002-hyperframes-vehicle-assets-luna6-15"
+      ],
+      "strictPasses": 1,
+      "independentPasses": 2,
+      "manualPasses": 2,
+      "jointPasses": 1
+    },
+    {
+      "case": "vehicle",
+      "payloadSha256": "95760af968d1807725589c47b936075f32ffda384b3f83e112cb5a6ea889171a",
+      "runs": [
+        "20261002-hyperframes-vehicle-assets-luna6-2",
+        "20261002-hyperframes-vehicle-assets-luna6-3",
+        "20261002-hyperframes-vehicle-assets-luna6-4"
+      ],
+      "strictPasses": 0,
+      "independentPasses": 0,
+      "manualPasses": 0,
+      "jointPasses": 0
+    },
+    {
+      "case": "vehicle",
+      "payloadSha256": "0fce8a5a4ef0a9a6b961b90dc973f6108c0854ff2b784c62307ede49951b0e65",
+      "runs": [
+        "20261002-hyperframes-vehicle-assets-luna6-5",
+        "20261002-hyperframes-vehicle-assets-luna6-6"
+      ],
+      "strictPasses": 0,
+      "independentPasses": 0,
+      "manualPasses": 0,
+      "jointPasses": 0
+    },
+    {
+      "case": "vehicle",
+      "payloadSha256": "a0ba933f45ba62d27476049837dc1627063dd68217852c8370993883a48ed358",
+      "runs": [
+        "20261002-hyperframes-vehicle-assets-luna6-8",
+        "20261002-hyperframes-vehicle-assets-luna6-9"
+      ],
+      "strictPasses": 0,
+      "independentPasses": 1,
+      "manualPasses": 0,
+      "jointPasses": 0
+    }
+  ],
+  "runs": [
+    {
+      "id": "20261002-hyperframes-assets-luna6-1",
+      "payload": {
+        "name": "hyperframes-explainer",
+        "profile": "runtime",
+        "fileCount": 25,
+        "payloadSha256": "2f36876cc3044ac08f21a3de09616a214d5351186f8d67b7d62067654c19e145"
+      },
+      "requestedModel": "openai-codex/gpt-6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-6-luna"
+        }
+      ],
+      "thinking": "medium",
+      "strict": {
+        "passed": false,
+        "returnCode": 4,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-02T15:47:05.523093+00:00",
+        "finishedAtUtc": "2026-10-02T15:50:25.009814+00:00",
+        "durationSeconds": 199.488,
+        "gates": {
+          "artifacts": true,
+          "events": false,
+          "jsonFields": true,
+          "skillIntegrity": true
+        }
+      },
+      "failureClassification": "agent-workflow",
+      "toolFindings": [
+        {
+          "code": "tool-error",
+          "line": 2167,
+          "tool": "bash"
+        }
+      ],
+      "independent": {
+        "ok": true,
+        "findings": []
+      },
+      "manual": null,
+      "jointPass": false,
+      "evidenceDirectory": "evaluations/runs/20261002-hyperframes-assets-luna6-1"
+    },
+    {
+      "id": "20261002-hyperframes-assets-luna6-10",
+      "payload": {
+        "name": "hyperframes-explainer",
+        "profile": "runtime",
+        "fileCount": 25,
+        "payloadSha256": "0fce8a5a4ef0a9a6b961b90dc973f6108c0854ff2b784c62307ede49951b0e65"
+      },
+      "requestedModel": "openai-codex/gpt-6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-6-luna"
+        }
+      ],
+      "thinking": "medium",
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-02T16:37:54.632684+00:00",
+        "finishedAtUtc": "2026-10-02T16:41:34.285904+00:00",
+        "durationSeconds": 219.655,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": true,
+          "skillIntegrity": true
+        }
+      },
+      "failureClassification": "pass",
+      "toolFindings": [],
+      "independent": {
+        "ok": true,
+        "findings": []
+      },
+      "manual": {
+        "ok": true,
+        "notes": [
+          "Original recognizable actuator, inlet and tall reservoir with connected ports.",
+          "The final 31 L level occupies approximately 77.5 percent of the usable 40 L tank height.",
+          "Sparse readable labels; the contact sheet shows coherent input and accumulated history changes."
+        ],
+        "date": "2026-10-02",
+        "reviewer": "gpt-6.1-sol",
+        "method": "Direct inspection of composed final still and final-movie event contact sheet."
+      },
+      "jointPass": true,
+      "evidenceDirectory": "evaluations/runs/20261002-hyperframes-assets-luna6-10"
+    },
+    {
+      "id": "20261002-hyperframes-assets-luna6-11",
+      "payload": {
+        "name": "hyperframes-explainer",
+        "profile": "runtime",
+        "fileCount": 25,
+        "payloadSha256": "0fce8a5a4ef0a9a6b961b90dc973f6108c0854ff2b784c62307ede49951b0e65"
+      },
+      "requestedModel": "openai-codex/gpt-6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-6-luna"
+        }
+      ],
+      "thinking": "medium",
+      "strict": {
+        "passed": false,
+        "returnCode": 4,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-02T16:37:54.632646+00:00",
+        "finishedAtUtc": "2026-10-02T16:48:51.642573+00:00",
+        "durationSeconds": 657.014,
+        "gates": {
+          "artifacts": true,
+          "events": false,
+          "jsonFields": true,
+          "skillIntegrity": true
+        }
+      },
+      "failureClassification": "agent-workflow",
+      "toolFindings": [
+        {
+          "code": "tool-error",
+          "line": 1924,
+          "tool": "bash"
+        },
+        {
+          "code": "tool-error",
+          "line": 4147,
+          "tool": "bash"
+        }
+      ],
+      "independent": null,
+      "manual": null,
+      "jointPass": false,
+      "evidenceDirectory": "evaluations/runs/20261002-hyperframes-assets-luna6-11"
+    },
+    {
+      "id": "20261002-hyperframes-assets-luna6-12",
+      "payload": {
+        "name": "hyperframes-explainer",
+        "profile": "runtime",
+        "fileCount": 25,
+        "payloadSha256": "0fce8a5a4ef0a9a6b961b90dc973f6108c0854ff2b784c62307ede49951b0e65"
+      },
+      "requestedModel": "openai-codex/gpt-6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-6-luna"
+        }
+      ],
+      "thinking": "medium",
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-02T16:43:12.527131+00:00",
+        "finishedAtUtc": "2026-10-02T16:47:25.718838+00:00",
+        "durationSeconds": 253.193,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": true,
+          "skillIntegrity": true
+        }
+      },
+      "failureClassification": "visual-semantic",
+      "toolFindings": [],
+      "independent": {
+        "ok": true,
+        "findings": []
+      },
+      "manual": {
+        "ok": false,
+        "notes": [
+          "The final tank appears almost full at 31 L despite a declared 40 L capacity.",
+          "The capacity label/ruler is incorrectly anchored near the empty baseline; the visual calibration is misleading.",
+          "Independent numerical state and encoded-media passes do not prove calibrated geometry."
+        ],
+        "date": "2026-10-02",
+        "reviewer": "gpt-6.1-sol",
+        "method": "Direct inspection of composed final still and final-movie event contact sheet."
+      },
+      "jointPass": false,
+      "evidenceDirectory": "evaluations/runs/20261002-hyperframes-assets-luna6-12"
+    },
+    {
+      "id": "20261002-hyperframes-assets-luna6-13",
+      "payload": {
+        "name": "hyperframes-explainer",
+        "profile": "runtime",
+        "fileCount": 25,
+        "payloadSha256": "a0ba933f45ba62d27476049837dc1627063dd68217852c8370993883a48ed358"
+      },
+      "requestedModel": "openai-codex/gpt-6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-6-luna"
+        }
+      ],
+      "thinking": "medium",
+      "strict": {
+        "passed": false,
+        "returnCode": 4,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-02T16:58:27.532010+00:00",
+        "finishedAtUtc": "2026-10-02T17:02:43.157896+00:00",
+        "durationSeconds": 255.628,
+        "gates": {
+          "artifacts": true,
+          "events": false,
+          "jsonFields": true,
+          "skillIntegrity": true
+        }
+      },
+      "failureClassification": "agent-workflow",
+      "toolFindings": [
+        {
+          "code": "tool-error",
+          "line": 2710,
+          "tool": "bash"
+        }
+      ],
+      "independent": {
+        "ok": true,
+        "findings": []
+      },
+      "manual": {
+        "ok": true,
+        "notes": [
+          "Recognizable valve and reservoir with actual inlet contact.",
+          "The final 31 L level agrees with the 0/40 L ruler and the curve develops the correct rising slope.",
+          "Strict trace still fails a raw JSON-parser command; this manual pass does not erase it."
+        ],
+        "date": "2026-10-02",
+        "reviewer": "gpt-6.1-sol",
+        "method": "Direct inspection of composed final still and final-movie event contact sheet."
+      },
+      "jointPass": false,
+      "evidenceDirectory": "evaluations/runs/20261002-hyperframes-assets-luna6-13"
+    },
+    {
+      "id": "20261002-hyperframes-assets-luna6-14",
+      "payload": {
+        "name": "hyperframes-explainer",
+        "profile": "runtime",
+        "fileCount": 25,
+        "payloadSha256": "695c39fa35209ab4639208bb7842dc06ed152b665e99c8f54f3d5ff90adaddb7"
+      },
+      "requestedModel": "openai-codex/gpt-6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-6-luna"
+        }
+      ],
+      "thinking": "medium",
+      "strict": {
+        "passed": false,
+        "returnCode": 4,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-02T17:13:00.099980+00:00",
+        "finishedAtUtc": "2026-10-02T17:16:57.468752+00:00",
+        "durationSeconds": 237.37,
+        "gates": {
+          "artifacts": true,
+          "events": false,
+          "jsonFields": true,
+          "skillIntegrity": true
+        }
+      },
+      "failureClassification": "agent-workflow",
+      "toolFindings": [
+        {
+          "code": "tool-error",
+          "line": 182,
+          "tool": "bash"
+        }
+      ],
+      "independent": {
+        "ok": true,
+        "findings": []
+      },
+      "manual": {
+        "ok": false,
+        "notes": [
+          "Connected valve, pipe and reservoir; the history curve follows the analytic accumulation.",
+          "A redundant floating 40 L label remains near the pipe while a second capacity label sits on the reservoir. The planned minimal label placement is unresolved."
+        ],
+        "date": "2026-10-02",
+        "reviewer": "gpt-6.1-sol",
+        "method": "Direct inspection of composed final still and final-movie event contact sheet, with numeric binding review."
+      },
+      "jointPass": false,
+      "evidenceDirectory": "evaluations/runs/20261002-hyperframes-assets-luna6-14"
+    },
+    {
+      "id": "20261002-hyperframes-assets-luna6-15",
+      "payload": {
+        "name": "hyperframes-explainer",
+        "profile": "runtime",
+        "fileCount": 25,
+        "payloadSha256": "695c39fa35209ab4639208bb7842dc06ed152b665e99c8f54f3d5ff90adaddb7"
+      },
+      "requestedModel": "openai-codex/gpt-6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-6-luna"
+        }
+      ],
+      "thinking": "medium",
+      "strict": {
+        "passed": false,
+        "returnCode": 3,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-02T17:13:10.475297+00:00",
+        "finishedAtUtc": "2026-10-02T17:14:20.119776+00:00",
+        "durationSeconds": 69.645,
+        "gates": {
+          "artifacts": false,
+          "events": false,
+          "jsonFields": false,
+          "skillIntegrity": true
+        }
+      },
+      "failureClassification": "agent-workflow",
+      "toolFindings": [
+        {
+          "code": "tool-error",
+          "line": 171,
+          "tool": "bash"
+        },
+        {
+          "code": "tool-error",
+          "line": 1418,
+          "tool": "bash"
+        },
+        {
+          "code": "tool-error",
+          "line": 1705,
+          "tool": "bash"
+        }
+      ],
+      "independent": null,
+      "manual": null,
+      "jointPass": false,
+      "evidenceDirectory": "evaluations/runs/20261002-hyperframes-assets-luna6-15"
+    },
+    {
+      "id": "20261002-hyperframes-assets-luna6-16",
+      "payload": {
+        "name": "hyperframes-explainer",
+        "profile": "runtime",
+        "fileCount": 25,
+        "payloadSha256": "695c39fa35209ab4639208bb7842dc06ed152b665e99c8f54f3d5ff90adaddb7"
+      },
+      "requestedModel": "openai-codex/gpt-6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-6-luna"
+        }
+      ],
+      "thinking": "medium",
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-02T17:15:58.875201+00:00",
+        "finishedAtUtc": "2026-10-02T17:18:18.325138+00:00",
+        "durationSeconds": 139.451,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": true,
+          "skillIntegrity": true
+        }
+      },
+      "failureClassification": "visual-semantic",
+      "toolFindings": [],
+      "independent": {
+        "ok": true,
+        "findings": []
+      },
+      "manual": {
+        "ok": false,
+        "notes": [
+          "The fill ratio and history slope are consistent with the numerical model.",
+          "The required volume ruler is represented only by a capacity text mark named ruler, with no calibrated ruler geometry or graduation. This misses a requested representation."
+        ],
+        "date": "2026-10-02",
+        "reviewer": "gpt-6.1-sol",
+        "method": "Direct inspection of composed final still and final-movie event contact sheet, with numeric binding review."
+      },
+      "jointPass": false,
+      "evidenceDirectory": "evaluations/runs/20261002-hyperframes-assets-luna6-16"
+    },
+    {
+      "id": "20261002-hyperframes-assets-luna6-17",
+      "payload": {
+        "name": "hyperframes-explainer",
+        "profile": "runtime",
+        "fileCount": 25,
+        "payloadSha256": "5b62f993339e198bc03e26cb771f77d06eef34b4e73df3474d94578596bc8997"
+      },
+      "requestedModel": "openai-codex/gpt-6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-6-luna"
+        }
+      ],
+      "thinking": "medium",
+      "strict": {
+        "passed": false,
+        "returnCode": 4,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-02T17:30:47.074547+00:00",
+        "finishedAtUtc": "2026-10-02T17:34:21.762626+00:00",
+        "durationSeconds": 214.69,
+        "gates": {
+          "artifacts": true,
+          "events": false,
+          "jsonFields": true,
+          "skillIntegrity": true
+        }
+      },
+      "failureClassification": "agent-workflow",
+      "toolFindings": [
+        {
+          "code": "tool-error",
+          "line": 3013,
+          "tool": "bash"
+        }
+      ],
+      "independent": {
+        "ok": true,
+        "findings": []
+      },
+      "manual": {
+        "ok": true,
+        "notes": [
+          "Recognizable valve housing, hand control, inlet and calibrated reservoir.",
+          "The final fill agrees with the 0/40 L ruler; the composed still and movie contact sheet show coherent event slopes.",
+          "Native contrast was repaired, but the earlier failed check remains a strict trace failure."
+        ],
+        "date": "2026-10-02",
+        "reviewer": "gpt-6.1-sol",
+        "method": "Direct inspection of composed final still and final-movie event contact sheet, with numeric binding review."
+      },
+      "jointPass": false,
+      "evidenceDirectory": "evaluations/runs/20261002-hyperframes-assets-luna6-17"
+    },
+    {
+      "id": "20261002-hyperframes-assets-luna6-18",
+      "payload": {
+        "name": "hyperframes-explainer",
+        "profile": "runtime",
+        "fileCount": 25,
+        "payloadSha256": "5b62f993339e198bc03e26cb771f77d06eef34b4e73df3474d94578596bc8997"
+      },
+      "requestedModel": "openai-codex/gpt-6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-6-luna"
+        }
+      ],
+      "thinking": "medium",
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-02T17:30:57.245431+00:00",
+        "finishedAtUtc": "2026-10-02T17:33:57.710075+00:00",
+        "durationSeconds": 180.466,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": true,
+          "skillIntegrity": true
+        }
+      },
+      "failureClassification": "pass",
+      "toolFindings": [],
+      "independent": {
+        "ok": true,
+        "findings": []
+      },
+      "manual": {
+        "ok": true,
+        "notes": [
+          "Recognizable actuator, connected inlet and reservoir with an actual graduated 0/40 L ruler.",
+          "The final 31 L surface aligns between the 30 and 40 L graduations and the history displays the correct changing slope.",
+          "Sparse readable labels, consistent color identity, no headline or cards, and actual subject/state bindings."
+        ],
+        "date": "2026-10-02",
+        "reviewer": "gpt-6.1-sol",
+        "method": "Direct inspection of composed final still and final-movie event contact sheet, with numeric binding review."
+      },
+      "jointPass": true,
+      "evidenceDirectory": "evaluations/runs/20261002-hyperframes-assets-luna6-18"
+    },
+    {
+      "id": "20261002-hyperframes-assets-luna6-19",
+      "payload": {
+        "name": "hyperframes-explainer",
+        "profile": "runtime",
+        "fileCount": 25,
+        "payloadSha256": "5b62f993339e198bc03e26cb771f77d06eef34b4e73df3474d94578596bc8997"
+      },
+      "requestedModel": "openai-codex/gpt-6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-6-luna"
+        }
+      ],
+      "thinking": "high",
+      "strict": {
+        "passed": false,
+        "returnCode": 4,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-02T17:34:25.852583+00:00",
+        "finishedAtUtc": "2026-10-02T17:40:01.212010+00:00",
+        "durationSeconds": 335.362,
+        "gates": {
+          "artifacts": true,
+          "events": false,
+          "jsonFields": true,
+          "skillIntegrity": true
+        }
+      },
+      "failureClassification": "agent-workflow",
+      "toolFindings": [
+        {
+          "code": "tool-error",
+          "line": 2094,
+          "tool": "edit"
+        },
+        {
+          "code": "tool-error",
+          "line": 3093,
+          "tool": "bash"
+        }
+      ],
+      "independent": {
+        "ok": true,
+        "findings": []
+      },
+      "manual": {
+        "ok": true,
+        "notes": [
+          "Original mechanical valve, connected pipe, calibrated fill and explicit 0/40 L ruler.",
+          "Final amount, fill ratio and history curve agree. The final labels are readable.",
+          "An ambiguous SVG edit and an earlier native contrast failure remain strict failures despite a successfully repaired movie."
+        ],
+        "date": "2026-10-02",
+        "reviewer": "gpt-6.1-sol",
+        "method": "Direct inspection of composed final still and final-movie event contact sheet, with numeric binding review."
+      },
+      "jointPass": false,
+      "evidenceDirectory": "evaluations/runs/20261002-hyperframes-assets-luna6-19"
+    },
+    {
+      "id": "20261002-hyperframes-assets-luna6-2",
+      "payload": {
+        "name": "hyperframes-explainer",
+        "profile": "runtime",
+        "fileCount": 25,
+        "payloadSha256": "2dcee4b0412e5fa298b6195183e1fcfea3d1dd055d5dcb9cd574592458ea08cc"
+      },
+      "requestedModel": "openai-codex/gpt-6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-6-luna"
+        }
+      ],
+      "thinking": "medium",
+      "strict": {
+        "passed": false,
+        "returnCode": 4,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-02T15:55:43.347336+00:00",
+        "finishedAtUtc": "2026-10-02T15:59:32.855451+00:00",
+        "durationSeconds": 229.51,
+        "gates": {
+          "artifacts": true,
+          "events": false,
+          "jsonFields": true,
+          "skillIntegrity": true
+        }
+      },
+      "failureClassification": "agent-workflow",
+      "toolFindings": [
+        {
+          "code": "tool-error",
+          "line": 4384,
+          "tool": "bash"
+        }
+      ],
+      "independent": {
+        "ok": true,
+        "findings": []
+      },
+      "manual": null,
+      "jointPass": false,
+      "evidenceDirectory": "evaluations/runs/20261002-hyperframes-assets-luna6-2"
+    },
+    {
+      "id": "20261002-hyperframes-assets-luna6-3",
+      "payload": {
+        "name": "hyperframes-explainer",
+        "profile": "runtime",
+        "fileCount": 25,
+        "payloadSha256": "2dcee4b0412e5fa298b6195183e1fcfea3d1dd055d5dcb9cd574592458ea08cc"
+      },
+      "requestedModel": "openai-codex/gpt-6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-6-luna"
+        }
+      ],
+      "thinking": "medium",
+      "strict": {
+        "passed": false,
+        "returnCode": 4,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-02T15:55:53.277493+00:00",
+        "finishedAtUtc": "2026-10-02T16:01:05.403422+00:00",
+        "durationSeconds": 312.128,
+        "gates": {
+          "artifacts": true,
+          "events": false,
+          "jsonFields": true,
+          "skillIntegrity": true
+        }
+      },
+      "failureClassification": "agent-workflow",
+      "toolFindings": [
+        {
+          "code": "tool-error",
+          "line": 2742,
+          "tool": "bash"
+        }
+      ],
+      "independent": {
+        "ok": true,
+        "findings": []
+      },
+      "manual": null,
+      "jointPass": false,
+      "evidenceDirectory": "evaluations/runs/20261002-hyperframes-assets-luna6-3"
+    },
+    {
+      "id": "20261002-hyperframes-assets-luna6-4",
+      "payload": {
+        "name": "hyperframes-explainer",
+        "profile": "runtime",
+        "fileCount": 25,
+        "payloadSha256": "2dcee4b0412e5fa298b6195183e1fcfea3d1dd055d5dcb9cd574592458ea08cc"
+      },
+      "requestedModel": "openai-codex/gpt-6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-6-luna"
+        }
+      ],
+      "thinking": "medium",
+      "strict": {
+        "passed": false,
+        "returnCode": 3,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-02T15:56:03.802205+00:00",
+        "finishedAtUtc": "2026-10-02T15:58:14.224390+00:00",
+        "durationSeconds": 130.423,
+        "gates": {
+          "artifacts": false,
+          "events": false,
+          "jsonFields": false,
+          "skillIntegrity": true
+        }
+      },
+      "failureClassification": "agent-workflow",
+      "toolFindings": [
+        {
+          "code": "tool-error",
+          "line": 2328,
+          "tool": "bash"
+        }
+      ],
+      "independent": null,
+      "manual": null,
+      "jointPass": false,
+      "evidenceDirectory": "evaluations/runs/20261002-hyperframes-assets-luna6-4"
+    },
+    {
+      "id": "20261002-hyperframes-assets-luna6-5",
+      "payload": {
+        "name": "hyperframes-explainer",
+        "profile": "runtime",
+        "fileCount": 25,
+        "payloadSha256": "af87df4d3a9fd783e86ac2ae6e4aa2dd000863158b74997c42066c7b49ab4e32"
+      },
+      "requestedModel": "openai-codex/gpt-6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-6-luna"
+        }
+      ],
+      "thinking": "medium",
+      "strict": {
+        "passed": false,
+        "returnCode": 3,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-02T16:07:33.106076+00:00",
+        "finishedAtUtc": "2026-10-02T16:09:24.728833+00:00",
+        "durationSeconds": 111.623,
+        "gates": {
+          "artifacts": false,
+          "events": true,
+          "jsonFields": false,
+          "skillIntegrity": true
+        }
+      },
+      "failureClassification": "agent-output",
+      "toolFindings": [],
+      "independent": null,
+      "manual": null,
+      "jointPass": false,
+      "evidenceDirectory": "evaluations/runs/20261002-hyperframes-assets-luna6-5"
+    },
+    {
+      "id": "20261002-hyperframes-assets-luna6-6",
+      "payload": {
+        "name": "hyperframes-explainer",
+        "profile": "runtime",
+        "fileCount": 25,
+        "payloadSha256": "af87df4d3a9fd783e86ac2ae6e4aa2dd000863158b74997c42066c7b49ab4e32"
+      },
+      "requestedModel": "openai-codex/gpt-6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-6-luna"
+        }
+      ],
+      "thinking": "medium",
+      "strict": {
+        "passed": false,
+        "returnCode": 3,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-02T16:07:43.373835+00:00",
+        "finishedAtUtc": "2026-10-02T16:10:17.546674+00:00",
+        "durationSeconds": 154.174,
+        "gates": {
+          "artifacts": false,
+          "events": true,
+          "jsonFields": false,
+          "skillIntegrity": true
+        }
+      },
+      "failureClassification": "agent-output",
+      "toolFindings": [],
+      "independent": null,
+      "manual": null,
+      "jointPass": false,
+      "evidenceDirectory": "evaluations/runs/20261002-hyperframes-assets-luna6-6"
+    },
+    {
+      "id": "20261002-hyperframes-assets-luna6-7",
+      "payload": {
+        "name": "hyperframes-explainer",
+        "profile": "runtime",
+        "fileCount": 25,
+        "payloadSha256": "95760af968d1807725589c47b936075f32ffda384b3f83e112cb5a6ea889171a"
+      },
+      "requestedModel": "openai-codex/gpt-6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-6-luna"
+        }
+      ],
+      "thinking": "medium",
+      "strict": {
+        "passed": false,
+        "returnCode": 3,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-02T16:18:19.869841+00:00",
+        "finishedAtUtc": "2026-10-02T16:20:23.482595+00:00",
+        "durationSeconds": 123.614,
+        "gates": {
+          "artifacts": false,
+          "events": false,
+          "jsonFields": false,
+          "skillIntegrity": true
+        }
+      },
+      "failureClassification": "agent-workflow",
+      "toolFindings": [
+        {
+          "code": "tool-error",
+          "line": 353,
+          "tool": "bash"
+        }
+      ],
+      "independent": null,
+      "manual": null,
+      "jointPass": false,
+      "evidenceDirectory": "evaluations/runs/20261002-hyperframes-assets-luna6-7"
+    },
+    {
+      "id": "20261002-hyperframes-assets-luna6-8",
+      "payload": {
+        "name": "hyperframes-explainer",
+        "profile": "runtime",
+        "fileCount": 25,
+        "payloadSha256": "95760af968d1807725589c47b936075f32ffda384b3f83e112cb5a6ea889171a"
+      },
+      "requestedModel": "openai-codex/gpt-6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-6-luna"
+        }
+      ],
+      "thinking": "medium",
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-02T16:18:30.138045+00:00",
+        "finishedAtUtc": "2026-10-02T16:21:43.065445+00:00",
+        "durationSeconds": 192.929,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": true,
+          "skillIntegrity": true
+        }
+      },
+      "failureClassification": "pass",
+      "toolFindings": [],
+      "independent": {
+        "ok": true,
+        "findings": []
+      },
+      "manual": {
+        "ok": true,
+        "notes": [
+          "Recognizable valve, connected pipe and reservoir.",
+          "The calibrated 0/40 L ruler spans the usable fill interval; final 31 L corresponds to 77.5 percent.",
+          "Readable labels and event contact sheet; the rising history slope agrees with the input change."
+        ],
+        "date": "2026-10-02",
+        "reviewer": "gpt-6.1-sol",
+        "method": "Direct inspection of composed final still and final-movie event contact sheet."
+      },
+      "jointPass": true,
+      "evidenceDirectory": "evaluations/runs/20261002-hyperframes-assets-luna6-8"
+    },
+    {
+      "id": "20261002-hyperframes-assets-luna6-9",
+      "payload": {
+        "name": "hyperframes-explainer",
+        "profile": "runtime",
+        "fileCount": 25,
+        "payloadSha256": "95760af968d1807725589c47b936075f32ffda384b3f83e112cb5a6ea889171a"
+      },
+      "requestedModel": "openai-codex/gpt-6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-6-luna"
+        }
+      ],
+      "thinking": "medium",
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-02T16:18:40.580084+00:00",
+        "finishedAtUtc": "2026-10-02T16:22:16.604350+00:00",
+        "durationSeconds": 216.026,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": true,
+          "skillIntegrity": true
+        }
+      },
+      "failureClassification": "visual-semantic",
+      "toolFindings": [],
+      "independent": {
+        "ok": true,
+        "findings": []
+      },
+      "manual": {
+        "ok": false,
+        "notes": [
+          "The film visibly contains a mangled unit separator in the stored-volume history label.",
+          "Technical and independent passes do not override this visual text-encoding failure."
+        ],
+        "date": "2026-10-02",
+        "reviewer": "gpt-6.1-sol",
+        "method": "Direct inspection of composed final still and final-movie event contact sheet."
+      },
+      "jointPass": false,
+      "evidenceDirectory": "evaluations/runs/20261002-hyperframes-assets-luna6-9"
+    },
+    {
+      "id": "20261002-hyperframes-vehicle-assets-luna6-1",
+      "payload": {
+        "name": "hyperframes-explainer",
+        "profile": "runtime",
+        "fileCount": 25,
+        "payloadSha256": "af87df4d3a9fd783e86ac2ae6e4aa2dd000863158b74997c42066c7b49ab4e32"
+      },
+      "requestedModel": "openai-codex/gpt-6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-6-luna"
+        }
+      ],
+      "thinking": "medium",
+      "strict": {
+        "passed": false,
+        "returnCode": 4,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-02T16:07:53.922739+00:00",
+        "finishedAtUtc": "2026-10-02T16:11:55.369157+00:00",
+        "durationSeconds": 241.448,
+        "gates": {
+          "artifacts": true,
+          "events": false,
+          "jsonFields": true,
+          "skillIntegrity": true
+        }
+      },
+      "failureClassification": "agent-workflow",
+      "toolFindings": [
+        {
+          "code": "tool-error",
+          "line": 1566,
+          "tool": "read"
+        },
+        {
+          "code": "tool-error",
+          "line": 2342,
+          "tool": "edit"
+        },
+        {
+          "code": "tool-error",
+          "line": 4116,
+          "tool": "edit"
+        }
+      ],
+      "independent": {
+        "ok": true,
+        "findings": []
+      },
+      "manual": null,
+      "jointPass": false,
+      "evidenceDirectory": "evaluations/runs/20261002-hyperframes-vehicle-assets-luna6-1"
+    },
+    {
+      "id": "20261002-hyperframes-vehicle-assets-luna6-10",
+      "payload": {
+        "name": "hyperframes-explainer",
+        "profile": "runtime",
+        "fileCount": 25,
+        "payloadSha256": "695c39fa35209ab4639208bb7842dc06ed152b665e99c8f54f3d5ff90adaddb7"
+      },
+      "requestedModel": "openai-codex/gpt-6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-6-luna"
+        }
+      ],
+      "thinking": "medium",
+      "strict": {
+        "passed": false,
+        "returnCode": 4,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-02T17:13:20.997438+00:00",
+        "finishedAtUtc": "2026-10-02T17:17:51.965472+00:00",
+        "durationSeconds": 270.97,
+        "gates": {
+          "artifacts": true,
+          "events": false,
+          "jsonFields": true,
+          "skillIntegrity": true
+        }
+      },
+      "failureClassification": "agent-workflow",
+      "toolFindings": [
+        {
+          "code": "tool-error",
+          "line": 200,
+          "tool": "bash"
+        }
+      ],
+      "independent": {
+        "ok": true,
+        "findings": []
+      },
+      "manual": {
+        "ok": true,
+        "notes": [
+          "Recognizable original vehicle, contacting road, distance ruler, input arrow and synchronized history.",
+          "The front-wheel measurement anchor agrees with the ruler: 26 m moves 312 pixels at 12 pixels per metre.",
+          "Wheel rotation uses positive SVG-screen rotation at 12/20 radians per metre, agreeing with clockwise rightward rolling.",
+          "Small lamp colors identify front/back; a quieter neutral treatment would better fit the minimal style.",
+          "Strict trace fails a scaffold call before the brief exists; this manual pass does not erase that failure."
+        ],
+        "date": "2026-10-02",
+        "reviewer": "gpt-6.1-sol",
+        "method": "Direct inspection of composed final still and final-movie event contact sheet, with numeric binding review."
+      },
+      "jointPass": false,
+      "evidenceDirectory": "evaluations/runs/20261002-hyperframes-vehicle-assets-luna6-10"
+    },
+    {
+      "id": "20261002-hyperframes-vehicle-assets-luna6-11",
+      "payload": {
+        "name": "hyperframes-explainer",
+        "profile": "runtime",
+        "fileCount": 25,
+        "payloadSha256": "695c39fa35209ab4639208bb7842dc06ed152b665e99c8f54f3d5ff90adaddb7"
+      },
+      "requestedModel": "openai-codex/gpt-6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-6-luna"
+        }
+      ],
+      "thinking": "medium",
+      "strict": {
+        "passed": false,
+        "returnCode": 3,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-02T17:16:09.517450+00:00",
+        "finishedAtUtc": "2026-10-02T17:17:48.860633+00:00",
+        "durationSeconds": 99.344,
+        "gates": {
+          "artifacts": false,
+          "events": true,
+          "jsonFields": false,
+          "skillIntegrity": true
+        }
+      },
+      "failureClassification": "agent-output",
+      "toolFindings": [],
+      "independent": null,
+      "manual": null,
+      "jointPass": false,
+      "evidenceDirectory": "evaluations/runs/20261002-hyperframes-vehicle-assets-luna6-11"
+    },
+    {
+      "id": "20261002-hyperframes-vehicle-assets-luna6-12",
+      "payload": {
+        "name": "hyperframes-explainer",
+        "profile": "runtime",
+        "fileCount": 25,
+        "payloadSha256": "695c39fa35209ab4639208bb7842dc06ed152b665e99c8f54f3d5ff90adaddb7"
+      },
+      "requestedModel": "openai-codex/gpt-6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-6-luna"
+        }
+      ],
+      "thinking": "medium",
+      "strict": {
+        "passed": false,
+        "returnCode": 4,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-02T17:16:20.055585+00:00",
+        "finishedAtUtc": "2026-10-02T17:20:12.722877+00:00",
+        "durationSeconds": 232.669,
+        "gates": {
+          "artifacts": true,
+          "events": false,
+          "jsonFields": true,
+          "skillIntegrity": true
+        }
+      },
+      "failureClassification": "agent-workflow",
+      "toolFindings": [
+        {
+          "code": "tool-error",
+          "line": 226,
+          "tool": "bash"
+        }
+      ],
+      "independent": {
+        "ok": true,
+        "findings": []
+      },
+      "manual": {
+        "ok": false,
+        "notes": [
+          "The motion, integral, editable art and fixed distance tick spacing are mechanically coherent.",
+          "The red vehicle body conflicts with the requested neutral mechanical context and blue position/distance identity.",
+          "Road contact is slightly detached, and the extra forward label repeats the input arrow. Technical passes do not override these visual/semantic failures."
+        ],
+        "date": "2026-10-02",
+        "reviewer": "gpt-6.1-sol",
+        "method": "Direct inspection of composed final still and final-movie event contact sheet, with numeric binding review."
+      },
+      "jointPass": false,
+      "evidenceDirectory": "evaluations/runs/20261002-hyperframes-vehicle-assets-luna6-12"
+    },
+    {
+      "id": "20261002-hyperframes-vehicle-assets-luna6-13",
+      "payload": {
+        "name": "hyperframes-explainer",
+        "profile": "runtime",
+        "fileCount": 25,
+        "payloadSha256": "5b62f993339e198bc03e26cb771f77d06eef34b4e73df3474d94578596bc8997"
+      },
+      "requestedModel": "openai-codex/gpt-6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-6-luna"
+        }
+      ],
+      "thinking": "medium",
+      "strict": {
+        "passed": false,
+        "returnCode": 3,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-02T17:31:07.806567+00:00",
+        "finishedAtUtc": "2026-10-02T17:32:31.856551+00:00",
+        "durationSeconds": 84.051,
+        "gates": {
+          "artifacts": false,
+          "events": true,
+          "jsonFields": false,
+          "skillIntegrity": true
+        }
+      },
+      "failureClassification": "agent-output",
+      "toolFindings": [],
+      "independent": null,
+      "manual": null,
+      "jointPass": false,
+      "evidenceDirectory": "evaluations/runs/20261002-hyperframes-vehicle-assets-luna6-13"
+    },
+    {
+      "id": "20261002-hyperframes-vehicle-assets-luna6-14",
+      "payload": {
+        "name": "hyperframes-explainer",
+        "profile": "runtime",
+        "fileCount": 25,
+        "payloadSha256": "5b62f993339e198bc03e26cb771f77d06eef34b4e73df3474d94578596bc8997"
+      },
+      "requestedModel": "openai-codex/gpt-6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-6-luna"
+        }
+      ],
+      "thinking": "high",
+      "strict": {
+        "passed": false,
+        "returnCode": 4,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-02T17:34:36.314513+00:00",
+        "finishedAtUtc": "2026-10-02T17:43:22.265153+00:00",
+        "durationSeconds": 525.954,
+        "gates": {
+          "artifacts": true,
+          "events": false,
+          "jsonFields": true,
+          "skillIntegrity": true
+        }
+      },
+      "failureClassification": "agent-workflow",
+      "toolFindings": [
+        {
+          "code": "tool-error",
+          "line": 2655,
+          "tool": "edit"
+        }
+      ],
+      "independent": {
+        "ok": true,
+        "findings": []
+      },
+      "manual": {
+        "ok": true,
+        "notes": [
+          "Recognizable neutral vehicle, clockwise distance-driven wheels, contacting road and a linked distance marker.",
+          "The ruler and marker use 5 pixels per metre; wheel rotation matches a 16 pixel radius. The analytic history is coherent.",
+          "The duplicated speed readout is unnecessary but readable and does not obscure the explanation.",
+          "An ambiguous SVG text edit remains a strict trace failure."
+        ],
+        "date": "2026-10-02",
+        "reviewer": "gpt-6.1-sol",
+        "method": "Direct inspection of composed final still and final-movie event contact sheet, with numeric binding review."
+      },
+      "jointPass": false,
+      "evidenceDirectory": "evaluations/runs/20261002-hyperframes-vehicle-assets-luna6-14"
+    },
+    {
+      "id": "20261002-hyperframes-vehicle-assets-luna6-15",
+      "payload": {
+        "name": "hyperframes-explainer",
+        "profile": "runtime",
+        "fileCount": 25,
+        "payloadSha256": "5b62f993339e198bc03e26cb771f77d06eef34b4e73df3474d94578596bc8997"
+      },
+      "requestedModel": "openai-codex/gpt-6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-6-luna"
+        }
+      ],
+      "thinking": "high",
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-02T17:34:46.856101+00:00",
+        "finishedAtUtc": "2026-10-02T17:45:05.082012+00:00",
+        "durationSeconds": 618.23,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": true,
+          "skillIntegrity": true
+        }
+      },
+      "failureClassification": "pass",
+      "toolFindings": [],
+      "independent": {
+        "ok": true,
+        "findings": []
+      },
+      "manual": {
+        "ok": true,
+        "notes": [
+          "Original neutral vehicle with readable speed and distance labels, clockwise distance-driven wheel spokes and actual road contact.",
+          "The vehicle measurement anchor and ruler share approximately 8.333 pixels per metre; the final marker agrees with 26 m.",
+          "Fixed 0/48 m history, consistent red input/blue distance identity and no title cards.",
+          "Composed final still, movie contact sheet and numeric motion bindings inspected."
+        ],
+        "date": "2026-10-02",
+        "reviewer": "gpt-6.1-sol",
+        "method": "Direct inspection of composed final still and final-movie event contact sheet, with numeric binding review."
+      },
+      "jointPass": true,
+      "evidenceDirectory": "evaluations/runs/20261002-hyperframes-vehicle-assets-luna6-15"
+    },
+    {
+      "id": "20261002-hyperframes-vehicle-assets-luna6-2",
+      "payload": {
+        "name": "hyperframes-explainer",
+        "profile": "runtime",
+        "fileCount": 25,
+        "payloadSha256": "95760af968d1807725589c47b936075f32ffda384b3f83e112cb5a6ea889171a"
+      },
+      "requestedModel": "openai-codex/gpt-6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-6-luna"
+        }
+      ],
+      "thinking": "medium",
+      "strict": {
+        "passed": false,
+        "returnCode": 3,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-02T16:22:38.365656+00:00",
+        "finishedAtUtc": "2026-10-02T16:24:53.380239+00:00",
+        "durationSeconds": 135.015,
+        "gates": {
+          "artifacts": false,
+          "events": false,
+          "jsonFields": false,
+          "skillIntegrity": true
+        }
+      },
+      "failureClassification": "agent-workflow",
+      "toolFindings": [
+        {
+          "code": "tool-error",
+          "line": 1364,
+          "tool": "bash"
+        }
+      ],
+      "independent": null,
+      "manual": null,
+      "jointPass": false,
+      "evidenceDirectory": "evaluations/runs/20261002-hyperframes-vehicle-assets-luna6-2"
+    },
+    {
+      "id": "20261002-hyperframes-vehicle-assets-luna6-3",
+      "payload": {
+        "name": "hyperframes-explainer",
+        "profile": "runtime",
+        "fileCount": 25,
+        "payloadSha256": "95760af968d1807725589c47b936075f32ffda384b3f83e112cb5a6ea889171a"
+      },
+      "requestedModel": "openai-codex/gpt-6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-6-luna"
+        }
+      ],
+      "thinking": "medium",
+      "strict": {
+        "passed": false,
+        "returnCode": 4,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-02T16:22:48.734375+00:00",
+        "finishedAtUtc": "2026-10-02T16:27:20.266005+00:00",
+        "durationSeconds": 271.533,
+        "gates": {
+          "artifacts": true,
+          "events": false,
+          "jsonFields": false,
+          "skillIntegrity": true
+        }
+      },
+      "failureClassification": "agent-workflow",
+      "toolFindings": [
+        {
+          "code": "tool-error",
+          "line": 257,
+          "tool": "bash"
+        }
+      ],
+      "independent": null,
+      "manual": null,
+      "jointPass": false,
+      "evidenceDirectory": "evaluations/runs/20261002-hyperframes-vehicle-assets-luna6-3"
+    },
+    {
+      "id": "20261002-hyperframes-vehicle-assets-luna6-4",
+      "payload": {
+        "name": "hyperframes-explainer",
+        "profile": "runtime",
+        "fileCount": 25,
+        "payloadSha256": "95760af968d1807725589c47b936075f32ffda384b3f83e112cb5a6ea889171a"
+      },
+      "requestedModel": "openai-codex/gpt-6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-6-luna"
+        }
+      ],
+      "thinking": "medium",
+      "strict": {
+        "passed": false,
+        "returnCode": 3,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-02T16:22:59.281565+00:00",
+        "finishedAtUtc": "2026-10-02T16:25:19.135601+00:00",
+        "durationSeconds": 139.855,
+        "gates": {
+          "artifacts": false,
+          "events": false,
+          "jsonFields": false,
+          "skillIntegrity": true
+        }
+      },
+      "failureClassification": "agent-workflow",
+      "toolFindings": [
+        {
+          "code": "tool-error",
+          "line": 3145,
+          "tool": "edit"
+        },
+        {
+          "code": "tool-error",
+          "line": 3219,
+          "tool": "edit"
+        }
+      ],
+      "independent": null,
+      "manual": null,
+      "jointPass": false,
+      "evidenceDirectory": "evaluations/runs/20261002-hyperframes-vehicle-assets-luna6-4"
+    },
+    {
+      "id": "20261002-hyperframes-vehicle-assets-luna6-5",
+      "payload": {
+        "name": "hyperframes-explainer",
+        "profile": "runtime",
+        "fileCount": 25,
+        "payloadSha256": "0fce8a5a4ef0a9a6b961b90dc973f6108c0854ff2b784c62307ede49951b0e65"
+      },
+      "requestedModel": "openai-codex/gpt-6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-6-luna"
+        }
+      ],
+      "thinking": "medium",
+      "strict": {
+        "passed": false,
+        "returnCode": 3,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-02T16:37:54.632667+00:00",
+        "finishedAtUtc": "2026-10-02T16:41:47.781088+00:00",
+        "durationSeconds": 233.15,
+        "gates": {
+          "artifacts": false,
+          "events": false,
+          "jsonFields": false,
+          "skillIntegrity": true
+        }
+      },
+      "failureClassification": "agent-workflow",
+      "toolFindings": [
+        {
+          "code": "tool-error",
+          "line": 221,
+          "tool": "write"
+        }
+      ],
+      "independent": null,
+      "manual": null,
+      "jointPass": false,
+      "evidenceDirectory": "evaluations/runs/20261002-hyperframes-vehicle-assets-luna6-5"
+    },
+    {
+      "id": "20261002-hyperframes-vehicle-assets-luna6-6",
+      "payload": {
+        "name": "hyperframes-explainer",
+        "profile": "runtime",
+        "fileCount": 25,
+        "payloadSha256": "0fce8a5a4ef0a9a6b961b90dc973f6108c0854ff2b784c62307ede49951b0e65"
+      },
+      "requestedModel": "openai-codex/gpt-6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-6-luna"
+        }
+      ],
+      "thinking": "medium",
+      "strict": {
+        "passed": false,
+        "returnCode": 3,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-02T16:43:22.952317+00:00",
+        "finishedAtUtc": "2026-10-02T16:46:01.834618+00:00",
+        "durationSeconds": 158.883,
+        "gates": {
+          "artifacts": false,
+          "events": true,
+          "jsonFields": false,
+          "skillIntegrity": true
+        }
+      },
+      "failureClassification": "agent-output",
+      "toolFindings": [],
+      "independent": null,
+      "manual": null,
+      "jointPass": false,
+      "evidenceDirectory": "evaluations/runs/20261002-hyperframes-vehicle-assets-luna6-6"
+    },
+    {
+      "id": "20261002-hyperframes-vehicle-assets-luna6-8",
+      "payload": {
+        "name": "hyperframes-explainer",
+        "profile": "runtime",
+        "fileCount": 25,
+        "payloadSha256": "a0ba933f45ba62d27476049837dc1627063dd68217852c8370993883a48ed358"
+      },
+      "requestedModel": "openai-codex/gpt-6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-6-luna"
+        }
+      ],
+      "thinking": "medium",
+      "strict": {
+        "passed": false,
+        "returnCode": 4,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-02T16:58:37.679009+00:00",
+        "finishedAtUtc": "2026-10-02T17:03:20.066943+00:00",
+        "durationSeconds": 282.39,
+        "gates": {
+          "artifacts": true,
+          "events": false,
+          "jsonFields": true,
+          "skillIntegrity": true
+        }
+      },
+      "failureClassification": "agent-workflow",
+      "toolFindings": [
+        {
+          "code": "tool-error",
+          "line": 1402,
+          "tool": "read"
+        }
+      ],
+      "independent": {
+        "ok": true,
+        "findings": []
+      },
+      "manual": {
+        "ok": false,
+        "notes": [
+          "Recognizable original vehicle and sparse input/distance/history labels.",
+          "The vehicle translates right while wheel bindings rotate counterclockwise in SVG screen coordinates.",
+          "The wheels remain detached from the road/ruler baseline. Rolling/contact semantics fail although the distance state is correct."
+        ],
+        "date": "2026-10-02",
+        "reviewer": "gpt-6.1-sol",
+        "method": "Direct inspection of composed final still and final-movie event contact sheet."
+      },
+      "jointPass": false,
+      "evidenceDirectory": "evaluations/runs/20261002-hyperframes-vehicle-assets-luna6-8"
+    },
+    {
+      "id": "20261002-hyperframes-vehicle-assets-luna6-9",
+      "payload": {
+        "name": "hyperframes-explainer",
+        "profile": "runtime",
+        "fileCount": 25,
+        "payloadSha256": "a0ba933f45ba62d27476049837dc1627063dd68217852c8370993883a48ed358"
+      },
+      "requestedModel": "openai-codex/gpt-6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-6-luna"
+        }
+      ],
+      "thinking": "medium",
+      "strict": {
+        "passed": false,
+        "returnCode": 4,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-02T16:58:48.192961+00:00",
+        "finishedAtUtc": "2026-10-02T17:03:30.849545+00:00",
+        "durationSeconds": 282.659,
+        "gates": {
+          "artifacts": true,
+          "events": false,
+          "jsonFields": false,
+          "skillIntegrity": true
+        }
+      },
+      "failureClassification": "agent-workflow",
+      "toolFindings": [
+        {
+          "code": "tool-error",
+          "line": 305,
+          "tool": "bash"
+        },
+        {
+          "code": "tool-error",
+          "line": 4386,
+          "tool": "edit"
+        },
+        {
+          "code": "tool-error",
+          "line": 4713,
+          "tool": "bash"
+        }
+      ],
+      "independent": null,
+      "manual": null,
+      "jointPass": false,
+      "evidenceDirectory": "evaluations/runs/20261002-hyperframes-vehicle-assets-luna6-9"
+    }
+  ],
+  "evidencePolicy": "Retain failed attempts. Strict, independent and manual checks must pass jointly on the same frozen payload."
+}

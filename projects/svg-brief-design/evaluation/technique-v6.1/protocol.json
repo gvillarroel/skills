@@ -1,0 +1,35 @@
+{
+  "version": "6.1.0",
+  "purpose": "Learn the user's explicit criteria for economy, material line character, integrated figure-ground construction and compact identification.",
+  "scope": "Public development recalibration on unchanged visual evidence; not independent validation or skill improvement.",
+  "visual_evidence": "Reuse all 32 completed anonymous A/B critiques, including order/crop controls. Strip prior global recommendations and contrast summaries; keep located side observations. No historical image or score changed.",
+  "new_jev_calls": 36,
+  "new_visual_calls": 0,
+  "native_probe_calls": {
+    "observer": 1,
+    "jev": 1
+  },
+  "retries": 0,
+  "external_recovery": "No retries in this version. Each of the 36 cases has a separate native job so an invalid envelope cannot prevent other first attempts. Report missing cases explicitly; no complete score or promotion unless all required cases are accepted.",
+  "scoring": "Six native ordered Score questions; probability-weighted category utilities [50,75,90,95,100], plus a signed directional margin. Normalize only native probability rounding. Same six weights. Subject caps retained; insufficient evidence produces no numeric reward. Categorical overall preference is separate. Confidence is separate.",
+  "acceptance": {
+    "focus_original_preferences_min": 7,
+    "focus_generated_preferences_max": 0,
+    "family_negative_margin_min": 5,
+    "mean_expected_gap_min": 15,
+    "crop_expected_below_80_min": 5,
+    "order_score_distance_max": 10,
+    "order_cases_passing_min": 5,
+    "textual_context_switch_controls_required": 4,
+    "wrong_subject_zero": true,
+    "rough_below_75": true,
+    "complete_coverage": 36
+  },
+  "human_feedback": "The user identified stronger technique in the purchased vintage diagrams, space insignia, circles and labels. These are development preference labels, unavailable to the judge; no claim of blinded independent preference discovery.",
+  "boundaries": "Originals remain evaluator-only. User-facing technique introductions describe purpose and medium without reproducing shapes or adding reference SVGs to the skill.",
+  "reason_for_revision": "The six-way Choice version encountered two provider contract violations (selected option below maximum probability). Preserve it as incomplete. TypeSafe documents Score for ordered spectra. Use concrete five-level dimensional descriptions and simpler unordered overall categories, not a relaxed response validator.",
+  "documentation": [
+    "https://docs.typesafe.ai/primitives/score",
+    "https://docs.typesafe.ai/primitives/choice"
+  ]
+}

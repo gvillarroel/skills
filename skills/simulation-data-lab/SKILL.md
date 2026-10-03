@@ -1,6 +1,6 @@
 ---
 name: simulation-data-lab
-description: Build and execute mathematical models, never the systems being modeled, to generate explorable simulated data, expected behavior, risk estimates, and explicitly conditional uncertainty. Use for stochastic, deterministic, discrete-event, agent-based, dynamical-system, sensitivity, or counterfactual simulations; not for live benchmarks, target-program execution, real agent/model calls, or empirical causal proof.
+description: "Builds and executes mathematical models, never the systems being modeled, to generate explorable simulated data, expected behavior, risk estimates, and explicitly conditional uncertainty. Use for stochastic, deterministic, discrete-event, agent-based, dynamical-system, sensitivity, or counterfactual simulations; not for live benchmarks, target-program execution, real agent/model calls, or empirical causal proof."
 ---
 
 # Simulation Data Lab
@@ -234,3 +234,9 @@ follow-up: teach which additional factors could matter, why they were treated
 that way, and which existing evidence or mathematical comparison would reduce
 the most consequential uncertainty. State explicitly that unrecognized factors
 can remain even after this review.
+
+## Additional reference routes
+
+Read only the resource matching the task.
+
+- [Retry economics and dependence](references/retry-economics.md).

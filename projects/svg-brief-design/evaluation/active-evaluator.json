@@ -1,0 +1,47 @@
+{
+  "version": "6.3.0",
+  "status": "active-development-calibration",
+  "primary_reward": "technique_quality",
+  "reward_range": [
+    0,
+    1
+  ],
+  "display_range": [
+    0,
+    100
+  ],
+  "pass_threshold": 0.9,
+  "pass_meaning": "Expected utility at least 90 under the declared purpose profile; parity=90 only for pure parity probability. This is a development threshold, not an absolute aesthetic grade.",
+  "anchor_level": 90,
+  "anchor_level_is_scale_convention": true,
+  "evaluator_bundle": "evaluations/runs/svg-technique-v6.3/frozen/evaluator",
+  "lock_sha256": "45633cf2c3383fea1767d3bb05b532f2f21ecc2c67c1f340855efb965d56a143",
+  "judge_model": "typesafe/jev-1.13",
+  "observed_judge_model": "typesafe/jev-1.13-20260917",
+  "visual_observer_model": "openai-codex/gpt-6-astra",
+  "visual_observer_thinking": "high",
+  "reference_similarity_used": false,
+  "quality_anchor_used": true,
+  "anchor_access": "Host verifier only. Purchased SVGs never enter skill payload or generator environment.",
+  "harbor": {
+    "import_path": "harbor_svg_technique:SvgTechniqueVerifier",
+    "future_job": "projects/svg-brief-design/evaluation/runtime-v6.3/future-job.json",
+    "future_baseline_job": "projects/svg-brief-design/evaluation/runtime-v6.3/future-baseline-job.json",
+    "rewardKey": "technique_quality",
+    "requiredRewards": {
+      "artifact_valid": 1.0
+    },
+    "passThreshold": 0.9
+  },
+  "uncertainty": "Expected coded utility over native Score levels, with normalized rounded probabilities and separate confidence. Insufficient evidence or unknown subject gives no reward. Overall preference and signed margin remain separate.",
+  "promotion_gate": "Do not automatically promote from this development score. Review any selected candidate with unresolved dimensions or global preference; require a disjoint untouched evaluation under the same task contract.",
+  "scope": "Purpose-specific calibration on 18 unchanged public outputs plus controls; editorial oscillation brief repaired to remove unsupported constant-period requirement. No private validation, new generation or skill improvement claimed.",
+  "report": "evaluations/svg-brief-design/technique-20260926.md",
+  "generation_contract": "Same short purpose-specific introduction for baseline and skill; descriptions, source SVGs, quality scores and quality anchors stay outside the generator.",
+  "runtime_configuration_patch": {
+    "date": "2026-09-26",
+    "change": "Existing ProceduralEnvironment supplies required source/effective image attributes; both immutable image IDs are identical. Scoring bundle and 6.3 quality rules unchanged.",
+    "verified_native_trials": 48,
+    "evolution_report": "evaluations/svg-brief-design/construction-20260926.md"
+  }
+}

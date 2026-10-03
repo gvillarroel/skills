@@ -1,0 +1,40 @@
+{
+  "version": "5.2.0",
+  "status": "active-development-calibration",
+  "primary_reward": "curated_design_quality",
+  "reward_range": [
+    0,
+    1
+  ],
+  "display_range": [
+    0,
+    100
+  ],
+  "pass_threshold": 0.9,
+  "pass_meaning": "Conservative weighted artistic merit reaches the curated anchor's quality level. This is not a universal quality measurement or independent skill promotion.",
+  "anchor_level": 90,
+  "anchor_level_is_scale_convention": true,
+  "evaluator_bundle": "evaluations/runs/svg-art-v5/frozen/evaluator",
+  "lock_sha256": "96c738df42d976370833840d92b2de77705c3672317e238187863782ad292286",
+  "judge_model": "typesafe/jev-1.13",
+  "observed_judge_model": "typesafe/jev-1.13-20260917",
+  "visual_observer_model": "openai-codex/gpt-6-astra",
+  "visual_observer_thinking": "high",
+  "reference_similarity_used": false,
+  "quality_anchor_used": true,
+  "anchor_access": "Host verifier only. Purchased SVGs never enter skill payload or generator environment.",
+  "harbor": {
+    "import_path": "harbor_svg_curated:SvgCuratedVerifier",
+    "future_job": "evaluations/runs/svg-art-v5/future-job.json",
+    "future_baseline_job": "evaluations/runs/svg-art-v5/future-baseline-job.json",
+    "rewardKey": "curated_design_quality",
+    "requiredRewards": {
+      "artifact_valid": 1.0
+    },
+    "passThreshold": 0.9
+  },
+  "uncertainty": "Unknown artistic dimensions retain the full 50–100 point interval; reward is the lower bound, not an imputed grade. Unknown candidate subject yields no reward. Overall preference and confidence remain separate diagnostics.",
+  "promotion_gate": "Do not automatically promote from this development score. Review any selected candidate with unresolved dimensions or global preference; require a disjoint untouched evaluation under the same task contract.",
+  "scope": "Six public development families, 18 current outputs, curated anchors and controls; no baseline comparison under this new metric, no private cohort opened.",
+  "report": "evaluations/svg-brief-design/art-direction-20260926.md"
+}

@@ -1,0 +1,17 @@
+{
+  "runId": "diagram-polish-20260928-b-boundary-2",
+  "case": "boundary",
+  "ok": true,
+  "findings": [],
+  "sourceSha256": "c305d228b5241d9503845619911b0c82d3b0e052f6bf7365283d4ab8e98b7696",
+  "contactCount": 2,
+  "connectorCount": 2,
+  "internalContactCount": 1,
+  "openTerminalCount": 1,
+  "minimumTextPx": 14,
+  "minimumContrast": 5.60926841657814,
+  "verifiedConceptLinks": [
+    "source"
+  ],
+  "manualVisualReviewRequired": true
+}

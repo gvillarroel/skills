@@ -1,0 +1,111 @@
+{
+  "date": "2026-09-13",
+  "generated_assets": [
+    {
+      "id": "instruments-sheet",
+      "path": "artifacts\\images\\instruments-sheet.png",
+      "sha256": "0b96b0efa693a13ad920af3b1881d2e744c9bb16a052763a63f7cb98bd9fd011",
+      "method": "Built-in image generation",
+      "prompt": "Use case: scientific-educational. Asset: one high-resolution illustrated specimen sheet for a playful but sophisticated museum infographic about HOW MUSICAL INSTRUMENTS MAKE SOUND. Create a precise regular grid of 3 columns by 5 rows, exactly 15 separate objects, with generous empty gutters. Every object fully inside its own equal square cell, no overlaps between cells. Rows top to bottom: row 1 = a brass handbell, a wooden kalimba with metal tines, two bronze cymbals; row 2 = a snare drum showing its taut skin, a tall wooden conga drum, a small classic metal kazoo; row 3 = a violin, a small triangular concert harp with visible strings, a flat wooden plucked zither; row 4 = a silver transverse flute, a black clarinet with reed mouthpiece, a brass trumpet; row 5 = a vintage analog synthesizer keyboard with colorful knobs and visible patch leads, an electromechanical tonewheel organ keyboard/cabinet, a modern laptop displaying only an abstract audio waveform with no words. These are illustrative examples, not brands. Style: inviting tactile miniature product illustrations, polished hand-painted gouache mixed with crisp 3D editorial realism, beautiful material detail, coherent soft upper-left lighting, cream highlights, saturated coral/teal/gold accents while keeping natural wood/brass colors. Slight three-quarter views, very clear distinct silhouettes legible when small. Background is perfectly flat uniform warm ivory #F7F2E8 everywhere; no checkerboard, no scenery, no paper texture, no cell borders. No text, no labels, no numbers, no music notes, no watermark, no invented instruments. Tall 3:5 sheet, highest practical resolution. All 15 cells equal size and all objects centered with at least 10 percent clear margin per cell. This is artwork only: factual codes, captions and relationships will be added separately as editable vector text.",
+      "kind": "Illustrative real-world instrument specimens",
+      "reference_ids": []
+    },
+    {
+      "id": "bsd-sheet",
+      "path": "artifacts\\images\\bsd-sheet.png",
+      "sha256": "23219bd56f66b04289a6de54332fa966cfb5b9cbde301049800f48389acd5654",
+      "method": "Built-in image generation",
+      "prompt": "Use case: historical-scene. Asset: illustrated specimen sheet for a playful educational wall chart about UNIX and the BSD software families. One regular 3-column by 2-row grid with exactly six distinct, complete, isolated miniature scenes, one per equal square cell. Cell 1 top left: a 1970s beige teletype terminal with a curling paper roll and punched paper tape. Cell 2 top center: a compact 1970s minicomputer rack with colorful orange and blue front-panel switches, cabinet doors and two big reel tape drives. Cell 3 top right: a 1990s beige 386 desktop personal computer, CRT screen, keyboard and small mouse. Cell 4 bottom left: a carefully arranged set of red and coral floppy disks, a little open source-code booklet with only abstract code strokes and a small beige computer motherboard. Cell 5 bottom center: three charming different 1980s/1990s computer terminals linked by thin teal cables around a little terrestrial globe, suggesting portable networked software. Cell 6 bottom right: a stylish dark blue-gray 1990s engineering workstation and CRT with a cyan abstract terminal cursor, sitting beside a slim software box with no lettering. These are period-inspired archetypes, not exact museum replicas or commercial logos. Style: sophisticated playful collectible miniatures, polished gouache and tactile 3D editorial illustration, fine beautiful materials, crisp recognizable silhouettes, soft upper-left studio lighting. Rich navy, warm cream, teal, coral and amber accents. Uniform flat warm ivory #F7F2E8 background in every cell, ample clear gutters, no cast shadow beyond a small soft contact shadow, no labels, words, numbers, trademark logos, border, watermark or checkerboard. Each object fully inside its own cell with generous margin. Wide 3:2 sheet, highest practical resolution. Designed to be integrated as contextual images within a dense factual chart, with all text and data added separately.",
+      "kind": "Period-inspired hardware archetypes, not exact machines",
+      "reference_ids": []
+    },
+    {
+      "id": "species-sheet",
+      "path": "artifacts\\images\\species-sheet.png",
+      "sha256": "c83c88292a5721662783d1cbb2e38492160c1becd2e07ac7065e1e190409e870",
+      "method": "Built-in image generation",
+      "prompt": "Use case: illustration-story. Asset: one illustrated species field-guide sheet for a playful but sophisticated educational Star Trek history poster. Create a regular grid of 3 columns by 2 rows with six separate waist-up character illustrations, exactly one centered in each equal square cell. These are generic fictional representatives, NOT portraits of named actors or named characters. Top row, left to right: (1) a friendly human Starfleet officer with dark brown skin, short curly hair and a burgundy-and-black future uniform; (2) a composed Vulcan woman with clearly pointed ears, straight dark hair and an angular eyebrow, wearing elegant blue robes; (3) a dignified Klingon man with a distinctly ridged forehead, long black hair and bronze-gray warrior armor. Bottom row left to right: (4) a Cardassian man with pale gray skin, ridged spoon-shaped forehead and the characteristic ridged neck, wearing structured dark gray clothing; (5) a Borg drone with pale skin and asymmetrical dark mechanical implants, a single green ocular light, no gore, calm pose; (6) a jovial Ferengi trader with very large rounded ears, a ridged broad nose and an elaborate gold and violet jacket. Coherent full-color editorial illustration style, tactile painted miniature realism, charismatic expressions, clear readable silhouettes, crisp detail, soft upper-left light, subtle cyan rim lighting. No weapons, no combat, no text, no labels, no numbers, no logos, no name badges, no watermark. Perfectly flat very dark navy background #08121F throughout with no scenery, no texture, no stars, no grid lines and no checkerboard. Every head, ear, shoulder and torso entirely inside its cell with generous gutters, no overlap between cells. Wide 3:2 sheet, highest practical resolution. The six independent images will be inserted beside the corresponding civilization records as illustrative representatives, with editable captions added separately.",
+      "kind": "Generic fictional species representatives, not named portraits",
+      "reference_ids": []
+    },
+    {
+      "id": "mars-sheet",
+      "path": "artifacts\\images\\mars-sheet.png",
+      "sha256": "dffdbcef62b53710f278e40d40353509c2f1af02aed96e056ed22cf4e5332f5e",
+      "method": "Built-in image generation",
+      "prompt": "Use case: scientific-educational. Create a coherent illustrated specimen sheet for a playful educational history of Mars spacecraft. The four attached NASA images are identity and structural references, not backgrounds. A regular 2-column by 2-row grid with exactly four separate complete spacecraft, each centered inside its own equal square cell. Top left: the Mariner 9 / Mariner 1971 orbiter from reference 1, keeping the compact polygonal bus, four broad solar-panel wings arranged as a cross, large circular high-gain antenna and thin antenna mast. Top right: the Viking combined orbiter/lander cruise spacecraft from reference 2, keeping the large white upper aeroshell, slender extended solar panels and central gold antenna. Bottom left: the Viking lander from reference 3, showing the complete squat three-legged platform, recognizable white cylindrical housings, sample arm and high-gain dish, removing the museum sand and scenery. Bottom right: the Pathfinder lander from reference 4, a low tetrahedral lander with three deployed triangular solar-panel petals and partly deflated pale airbags; preserve its architecture without inventing a large modern rover. Style: richly detailed tactile editorial miniatures, slightly playful but scientifically recognizable, metallic gold foil, cream housings and deep blue solar cells, clean three-quarter perspective, coherent upper-left soft light and restrained cyan rim light. All spacecraft are complete and isolated with margins; do not add or remove solar panel wings. Uniform very dark navy #0B1C2A background throughout; no Mars landscape, stars, trails, shadows extending outside the cells, text, labels, arrows, grid, border, logo, watermark or checkerboard. High-resolution square sheet. It is artwork only: factual dates, names and mission intervals are added separately in SVG.",
+      "kind": "Interpretive reference-guided spacecraft illustrations",
+      "reference_ids": [
+        "mariner-38",
+        "viking-38",
+        "viking-41",
+        "pathfinder-41"
+      ]
+    }
+  ],
+  "primary_reference_assets": [
+    {
+      "id": "mariner-38",
+      "page": "https://science.nasa.gov/mission/mariner-9/",
+      "alt": "Illustrated diagram of the Mariner 1971 series of spacecraft. The instruments are labeled.",
+      "url": "https://science.nasa.gov/wp-content/uploads/2017/12/mariner-1971.jpg?w=985",
+      "path": "artifacts/references/mariner-38.jpg",
+      "sha256": "935ae39891b485c3a98b55356d637b7103ff9ebb0964a60f612f3d95f49cbfb9"
+    },
+    {
+      "id": "viking-38",
+      "page": "https://science.nasa.gov/mission/viking/spacecraft-and-science/",
+      "alt": "Viking 1 spacecraft",
+      "url": "https://science.nasa.gov/wp-content/uploads/2024/03/261003main-02-viking1-full.jpg?w=1041",
+      "path": "artifacts/references/viking-38.jpg",
+      "sha256": "b667e464750a51b7ab10956ca5837b9700dbf96605616ab3609bb4baa41f072d"
+    },
+    {
+      "id": "viking-41",
+      "page": "https://science.nasa.gov/mission/viking/spacecraft-and-science/",
+      "alt": "Viking lander spacecraft",
+      "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/mars/resources/detail_files/3/3355_mep20100903_PIA097031-full2.jpg?w=1650&h=1021&fit=clip&crop=faces%2Cfocalpoint",
+      "path": "artifacts/references/viking-41.jpg",
+      "sha256": "035b85596d3f59163d2e7d7a4518cd66560b2a06ce59aa7201745763b8a39f9e"
+    },
+    {
+      "id": "pathfinder-41",
+      "page": "https://science.nasa.gov/mission/mars-pathfinder/",
+      "alt": "",
+      "url": "https://science.nasa.gov/wp-content/uploads/2017/12/pia00621-pathfinder-and-sojourner-with-airbags-deflated.jpg?w=2048",
+      "path": "artifacts/references/pathfinder-41.jpg",
+      "sha256": "cb029c8c01c0784d5c063f9e2e20b344f4296f8f96e78be535b9e233c3857183"
+    },
+    {
+      "id": "nozomi-39",
+      "page": "https://science.nasa.gov/mission/nozomi/",
+      "alt": "Spacecraft above Mars.",
+      "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/2023/07/nozomi_768.jpg?w=768&h=570&fit=clip&crop=faces%2Cfocalpoint",
+      "path": "artifacts/references/nozomi-39.jpg",
+      "sha256": "601d982b4cb0b3e9bf2c33a7b9736bed4e5a5bc9b0a971b407e6b6036266252f"
+    },
+    {
+      "id": "soviet-43",
+      "page": "https://www.nasa.gov/history/50-years-ago-mariner-9-launches-to-orbit-mars/",
+      "alt": "mariner_9_6_mars_3",
+      "url": "https://www.nasa.gov/wp-content/uploads/2021/05/mariner_9_6_mars_3.jpg",
+      "path": "artifacts/references/soviet-43.jpg",
+      "sha256": "c942fde69fe43bdc273c34fff5ed9eb01aec7b99f3de1016aff7f5a6c0f7f7b6"
+    },
+    {
+      "id": "mars96-dlr",
+      "page": "https://www.planetary.org/space-images/mars-96-orbiter",
+      "url": "https://planetary.s3.amazonaws.com/web/assets/pictures/Mars96_Model.jpg",
+      "path": "artifacts/references/mars96-dlr.jpg",
+      "credit": "DLR Institute of Planetary Exploration via The Planetary Society",
+      "kind": "computer model",
+      "sha256": "8607b1a2be33fd47977d520dd6a54b229389d7cfde6bd3fd416186f887c859de"
+    }
+  ],
+  "reused_starship_art": {
+    "manifest": "projects/star-trek-starships/design/image-generation.json",
+    "manifest_sha256": "405d422e2984785c36a51cbc3cebf447d0e9ceafebf1216257fc85fc23c4cf33",
+    "note": "Existing accepted reference-guided ship artwork and the original Enterprise reference photograph are reused. No blocked Enterprise-D generation was retried."
+  },
+  "placement_note": "SVG viewports and blend modes compose intact original bitmaps. Instrument object bounds were manually measured. The Mariner viewport excludes a neighboring antenna fragment while retaining its complete wingtip. Illustrations do not establish construction dates or operational success."
+}

@@ -1,0 +1,470 @@
+{
+  "schemaVersion": 1,
+  "passed": false,
+  "skillCount": 34,
+  "bundleCount": 0,
+  "issueCounts": {
+    "bundle-structure": 3
+  },
+  "results": [
+    {
+      "passed": true,
+      "skill": "ambientcg-material-search",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 71,
+        "entryBytes": 3903,
+        "referenceCount": 1,
+        "longReferenceCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": true,
+      "skill": "animated-svg-to-gif",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 88,
+        "entryBytes": 6324,
+        "referenceCount": 0,
+        "longReferenceCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": true,
+      "skill": "asciinema-real-command-video",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 80,
+        "entryBytes": 8869,
+        "referenceCount": 8,
+        "longReferenceCount": 3
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": true,
+      "skill": "compose-synchronized-svg",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 81,
+        "entryBytes": 11575,
+        "referenceCount": 7,
+        "longReferenceCount": 5
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": true,
+      "skill": "d3",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 320,
+        "entryBytes": 23897,
+        "referenceCount": 225,
+        "longReferenceCount": 53
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": true,
+      "skill": "destockd-video-search",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 75,
+        "entryBytes": 4921,
+        "referenceCount": 2,
+        "longReferenceCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": true,
+      "skill": "diagram-composition",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 187,
+        "entryBytes": 11707,
+        "referenceCount": 7,
+        "longReferenceCount": 2
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": true,
+      "skill": "echarts-animated-svg",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 94,
+        "entryBytes": 6624,
+        "referenceCount": 4,
+        "longReferenceCount": 1
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": true,
+      "skill": "google-cloud-sku-pricing",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 85,
+        "entryBytes": 4998,
+        "referenceCount": 3,
+        "longReferenceCount": 2
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": true,
+      "skill": "harbor-author-evaluation-datasets",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 220,
+        "entryBytes": 11969,
+        "referenceCount": 1,
+        "longReferenceCount": 1
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": true,
+      "skill": "hierarchy-lens",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 48,
+        "entryBytes": 6399,
+        "referenceCount": 6,
+        "longReferenceCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": false,
+      "skill": "hyperframes-explainer",
+      "issues": [
+        {
+          "code": "bundle-structure",
+          "path": "references/hyperframes-runtime.md",
+          "message": "referenced local resource does not exist inside the skill bundle: scripts/hf.ts"
+        },
+        {
+          "code": "bundle-structure",
+          "path": "references/scene-contract.md",
+          "message": "referenced local resource does not exist inside the skill bundle: assets/templates/brief.json"
+        },
+        {
+          "code": "bundle-structure",
+          "path": "SKILL.md",
+          "message": "Markdown link target does not exist inside the skill bundle: assets/templates/brief.json"
+        }
+      ],
+      "metrics": {
+        "bodyLines": 81,
+        "entryBytes": 5302,
+        "referenceCount": 5,
+        "longReferenceCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": true,
+      "skill": "iconify-icon-search",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 55,
+        "entryBytes": 3098,
+        "referenceCount": 1,
+        "longReferenceCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": true,
+      "skill": "jev-batch-decisions",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 74,
+        "entryBytes": 4947,
+        "referenceCount": 3,
+        "longReferenceCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": true,
+      "skill": "kenney-asset-search",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 73,
+        "entryBytes": 3815,
+        "referenceCount": 1,
+        "longReferenceCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": true,
+      "skill": "manim-svg-video",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 32,
+        "entryBytes": 3144,
+        "referenceCount": 3,
+        "longReferenceCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": true,
+      "skill": "mermaid",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 64,
+        "entryBytes": 8367,
+        "referenceCount": 6,
+        "longReferenceCount": 1
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": true,
+      "skill": "one-bit-dither-svg",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 95,
+        "entryBytes": 8507,
+        "referenceCount": 2,
+        "longReferenceCount": 1
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": true,
+      "skill": "pexels-media-search",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 70,
+        "entryBytes": 4157,
+        "referenceCount": 1,
+        "longReferenceCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": true,
+      "skill": "pixel-art-image-video",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 73,
+        "entryBytes": 7127,
+        "referenceCount": 2,
+        "longReferenceCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": true,
+      "skill": "plantuml-colorset-renderer",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 139,
+        "entryBytes": 9479,
+        "referenceCount": 1,
+        "longReferenceCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": true,
+      "skill": "polyhaven-asset-search",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 91,
+        "entryBytes": 5072,
+        "referenceCount": 1,
+        "longReferenceCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": true,
+      "skill": "procedural-svg-animation",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 87,
+        "entryBytes": 8196,
+        "referenceCount": 6,
+        "longReferenceCount": 4
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": true,
+      "skill": "repository-reviewer-creator",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 40,
+        "entryBytes": 4884,
+        "referenceCount": 4,
+        "longReferenceCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": true,
+      "skill": "simulation-data-lab",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 238,
+        "entryBytes": 15043,
+        "referenceCount": 9,
+        "longReferenceCount": 7
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": true,
+      "skill": "slidev-animejs",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 65,
+        "entryBytes": 5781,
+        "referenceCount": 25,
+        "longReferenceCount": 1
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": true,
+      "skill": "slidev-echarts",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 63,
+        "entryBytes": 4991,
+        "referenceCount": 27,
+        "longReferenceCount": 1
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": true,
+      "skill": "slidev-quality-audit",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 76,
+        "entryBytes": 3749,
+        "referenceCount": 1,
+        "longReferenceCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": true,
+      "skill": "svg-brief-design",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 129,
+        "entryBytes": 7030,
+        "referenceCount": 4,
+        "longReferenceCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": true,
+      "skill": "technical-logo-assets",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 73,
+        "entryBytes": 5748,
+        "referenceCount": 3,
+        "longReferenceCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": true,
+      "skill": "threejs-animated-3d",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 103,
+        "entryBytes": 8479,
+        "referenceCount": 3,
+        "longReferenceCount": 0
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": true,
+      "skill": "usefulcharts-style",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 115,
+        "entryBytes": 21379,
+        "referenceCount": 29,
+        "longReferenceCount": 2
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": true,
+      "skill": "vectorize-art-patterns",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 232,
+        "entryBytes": 13234,
+        "referenceCount": 6,
+        "longReferenceCount": 1
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    },
+    {
+      "passed": true,
+      "skill": "video",
+      "issues": [],
+      "metrics": {
+        "bodyLines": 87,
+        "entryBytes": 8542,
+        "referenceCount": 18,
+        "longReferenceCount": 6
+      },
+      "limitations": "Static authoring checks only; review semantics, script execution, routing, and isolated agent outcomes separately.",
+      "profile": "source"
+    }
+  ],
+  "limitations": "Measurable authoring/navigation and copied payloads; no claim of model-wide behavioral certification."
+}

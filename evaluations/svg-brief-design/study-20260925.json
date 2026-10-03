@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "created_at": "2026-09-25T22:51:37.719204+00:00",
+  "study_id": "svg-brief-design-20260925-r2",
+  "status": "closed-without-promotion",
+  "model": "openai-codex/gpt-6-luna",
+  "pi_version": "0.84.2",
+  "harbor_version": "0.18.0",
+  "canonical_candidate": "visual-grammar",
+  "canonical_status": "experimental; validating",
+  "promoted": false,
+  "private_gate_opened": false,
+  "selected_finalist": null,
+  "development_native_trials": 24,
+  "development_provider_error_trials": 11,
+  "preliminary_separate_native_trials": 6,
+  "private_native_trials": 0,
+  "mean_gain": 0.009336267122939335,
+  "relative_gain": 0.017376524462131823,
+  "required_mean_gain": 0.015,
+  "improved_cases": 2,
+  "regressed_cases": 4,
+  "semantic_correctness": null,
+  "cost_usd": null,
+  "source_files": {
+    "agents/openai.yaml": "55c5e6d2f4876a1da9ed7ce790c99829251f37461089e2624690b5045773fc80",
+    "references/svg-mechanics.md": "aee1c0eea25fb09fe9acd4b769b663aca439cb376999f424a462a283130de43f",
+    "SKILL.md": "740953f66380e648093af346231429ddf755d0fd564f910241157ea3beb57d04"
+  },
+  "decision": "No evaluable candidate meets the preregistered development gain. Preserve the baseline and unopened private gate. The user-authorized local skill is an experimental copy of the fully measured first guide, not a promoted winner.",
+  "recovery": "Eleven native trials end with message-only WebSocket closed 1011. The stock recovery contract does not accept this as an allowlisted external retry. No trials were retried and no failures were converted to numeric zero fitness.",
+  "next_study": "First diagnose the transport on a task-free provider probe and record a repaired execution profile. Register a fresh bounded study before any new inference; preserve every previous job. Reserve independent validation before development and require repeated naturalistic/generalization and unforced routing checks before release.",
+  "candidates": [
+    {
+      "candidate": "baseline",
+      "job": "search/development/generation-000/harbor-jobs/svg-brief-luna-r2-g000-development-baseline",
+      "planned_trials": 6,
+      "evaluable_trials": 6,
+      "provider_error_trials": 0,
+      "mean_visual_similarity": 0.5372919736213995,
+      "mean_style_similarity": 0.6659445130462782,
+      "technical_valid_trials": 6,
+      "input_boundary_and_integrity_checks": "passed"
+    },
+    {
+      "candidate": "visual-grammar",
+      "job": "search/development/generation-000/harbor-jobs/svg-brief-luna-r2-g000-development-visual-grammar",
+      "planned_trials": 6,
+      "evaluable_trials": 6,
+      "provider_error_trials": 0,
+      "mean_visual_similarity": 0.5466282407443388,
+      "mean_style_similarity": 0.6935477537106313,
+      "technical_valid_trials": 6,
+      "input_boundary_and_integrity_checks": "passed"
+    },
+    {
+      "candidate": "graphic-economy",
+      "job": "search/development/generation-001/harbor-jobs/svg-brief-luna-r2-g001-development-graphic-economy",
+      "planned_trials": 6,
+      "evaluable_trials": 0,
+      "provider_error_trials": 6,
+      "mean_visual_similarity": null,
+      "mean_style_similarity": null,
+      "technical_valid_trials": 0,
+      "input_boundary_and_integrity_checks": "passed"
+    },
+    {
+      "candidate": "semantic-structure",
+      "job": "search/development/generation-001/harbor-jobs/svg-brief-luna-r2-g001-development-semantic-structure",
+      "planned_trials": 6,
+      "evaluable_trials": 1,
+      "provider_error_trials": 5,
+      "mean_visual_similarity": null,
+      "mean_style_similarity": null,
+      "technical_valid_trials": 1,
+      "input_boundary_and_integrity_checks": "passed"
+    }
+  ]
+}

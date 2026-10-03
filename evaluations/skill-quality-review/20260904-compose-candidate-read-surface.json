@@ -1,0 +1,36 @@
+{
+  "passed": false,
+  "session": {
+    "version": 3,
+    "id": "01a06dfc-df71-74f7-a6f8-4a799818b3bc",
+    "cwd": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\20260904-compose-guidance-candidate\\workspace"
+  },
+  "models": {
+    "gpt-5.3-codex-spark": 1
+  },
+  "providers": {
+    "openai-codex": 1
+  },
+  "usageTotals": {
+    "input": 0,
+    "output": 0,
+    "cacheRead": 0,
+    "cacheWrite": 0,
+    "totalTokens": 0
+  },
+  "invalidJsonLineCount": 0,
+  "invalidJsonLineSamples": [],
+  "invalidEventRecordCount": 0,
+  "invalidEventRecordLineSamples": [],
+  "toolCounts": {},
+  "paths": [],
+  "readPaths": [],
+  "policyReadPaths": [],
+  "totalReadResultBytes": 0,
+  "calls": [],
+  "findings": [
+    {
+      "code": "missing-tool-call"
+    }
+  ]
+}

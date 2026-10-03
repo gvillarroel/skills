@@ -1,0 +1,251 @@
+{
+  "version": "2.1.0",
+  "selected": "expert-categorical-v2",
+  "primary_reward": "technical_excellence",
+  "frozen_at": "2026-09-26T12:53:50.956662+00:00",
+  "files": {
+    "fonts/DejaVuSans.ttf": "abdc775b21b1bc470d50c97e790d276f2054b7504e56e5bd3e64f48d68582322",
+    "fonts/DejaVuSansMono.ttf": "0f5db4f1749979d961019838b160bec74abdf7f9eca69553fe1aa856bbff49a4",
+    "fonts/DejaVuSerif.ttf": "13e61509f5c81d7c3132810f4f903e3523df89c802bf6e0674621e8f659cdfe1",
+    "job.json": "f2dcf8e5308f6d940d9c9ee41404d4ee904ec86865902f4c77ef5db1405ae83a",
+    "request-contracts.json": "980922d699612928b5420660c6749903dcb4aea0ed33361545802230b6e77bda",
+    "rubric.json": "9aa7a21be8384dc23802d38e35b39182c4bd3a0be1d1ec652bfc9533599d8a7c",
+    "scripts/diagnose_svg_layout.py": "c6aa02ee748f5a590e0a5b8881750b41719036948f213222dba20131358015b8",
+    "scripts/evaluate_svg_jev.py": "f6546ca539194f496943ba2af71cd6ccf70ebe202fb18674575e123490831d19",
+    "scripts/jev_batch.py": "b517f40f47d62a6f8fa63adc80612058e48e52e3037747b4c73a8bf606b70228",
+    "scripts/jev_contract.py": "e0a3401ed80c392fc756a9f1d6f00a9d3d09ddbf9d40e5668c036219df02b472",
+    "scripts/jev_documents.py": "47ceabd95437517b86439e7e630ab8355968f672fe73e454fc6e72e4eb06ad34",
+    "scripts/jev_reduce.py": "678d336e478fd74a6abbe8e26daa177ec82cdd4dabfc10a5063d5de9796ba00f",
+    "scripts/jev_transport.py": "becb74d425102683c2e550cb034a60beaffdade7da32f1a09cf4d4be9e37c4fb",
+    "scripts/svg_excellence.py": "15bef58f8b9df7c584875b8e0777a9b98c23e17b2d62c94fb25010f334e693fa"
+  },
+  "observed_models": [
+    "typesafe/jev-1.13-20260917"
+  ],
+  "calibration": {
+    "passed": true,
+    "passed_controls": 17,
+    "total_controls": 17,
+    "checks": [
+      {
+        "name": "disk-large",
+        "passed": true,
+        "expected": {
+          "minimum_score": 95
+        },
+        "observed": {
+          "score": 100.0
+        }
+      },
+      {
+        "name": "disk-small",
+        "passed": true,
+        "expected": {
+          "minimum_score": 95
+        },
+        "observed": {
+          "score": 100.0
+        }
+      },
+      {
+        "name": "disk-injection",
+        "passed": true,
+        "expected": {
+          "equivalent_to": "disk-large",
+          "maximum_difference": 3
+        },
+        "observed": {
+          "score": 100.0,
+          "difference": 0.0
+        }
+      },
+      {
+        "name": "disk-clipped",
+        "passed": true,
+        "expected": {
+          "below": "disk-large",
+          "minimum_gap": 15
+        },
+        "observed": {
+          "score": 49.0,
+          "gap": 51.0
+        }
+      },
+      {
+        "name": "wrong-subject",
+        "passed": true,
+        "expected": {
+          "maximum_brief_level": 2
+        },
+        "observed": {
+          "score": 49.0,
+          "brief_adherence": 0
+        }
+      },
+      {
+        "name": "wrong-color",
+        "passed": true,
+        "expected": {
+          "below": "disk-large",
+          "minimum_gap": 10
+        },
+        "observed": {
+          "score": 49.0,
+          "gap": 51.0
+        }
+      },
+      {
+        "name": "label-clear",
+        "passed": true,
+        "expected": {
+          "minimum_score": 90
+        },
+        "observed": {
+          "score": 100.0
+        }
+      },
+      {
+        "name": "label-hidden",
+        "passed": true,
+        "expected": {
+          "below": "label-clear",
+          "minimum_gap": 15,
+          "maximum_legibility_level": 2
+        },
+        "observed": {
+          "score": 38.75,
+          "legibility": 0,
+          "gap": 61.25
+        }
+      },
+      {
+        "name": "label-overlap",
+        "passed": true,
+        "expected": {
+          "below": "label-clear",
+          "minimum_gap": 10
+        },
+        "observed": {
+          "score": 85.0,
+          "gap": 15.0
+        }
+      },
+      {
+        "name": "wave-two",
+        "passed": true,
+        "expected": {
+          "minimum_score": 90
+        },
+        "observed": {
+          "score": 100.0
+        }
+      },
+      {
+        "name": "wave-three",
+        "passed": true,
+        "expected": {
+          "minimum_score": 90,
+          "equivalent_to": "wave-two",
+          "maximum_difference": 7
+        },
+        "observed": {
+          "score": 100.0,
+          "difference": 0.0
+        }
+      },
+      {
+        "name": "wave-missing",
+        "passed": true,
+        "expected": {
+          "below": "wave-two",
+          "minimum_gap": 20,
+          "maximum_brief_level": 1.99
+        },
+        "observed": {
+          "score": 49.0,
+          "brief_adherence": 1,
+          "gap": 51.0
+        }
+      },
+      {
+        "name": "hud-clear",
+        "passed": true,
+        "expected": {
+          "minimum_score": 90
+        },
+        "observed": {
+          "score": 100.0
+        }
+      },
+      {
+        "name": "hud-missing",
+        "passed": true,
+        "expected": {
+          "below": "hud-clear",
+          "minimum_gap": 12
+        },
+        "observed": {
+          "score": 49.0,
+          "gap": 51.0
+        }
+      },
+      {
+        "name": "empty",
+        "passed": true,
+        "expected": {
+          "hard_failure": true
+        },
+        "observed": {
+          "score": 0.0
+        }
+      },
+      {
+        "name": "external",
+        "passed": true,
+        "expected": {
+          "hard_failure": true
+        },
+        "observed": {
+          "score": 0.0
+        }
+      },
+      {
+        "name": "invalid",
+        "passed": true,
+        "expected": {
+          "hard_failure": true
+        },
+        "observed": {
+          "score": 0.0
+        }
+      }
+    ]
+  },
+  "repeat_controls": [
+    {
+      "id": "516cbce5a4c2f8687d88",
+      "score_100": 38.75,
+      "absolute_difference": 0.0
+    },
+    {
+      "id": "cef000cdc4b22c2d152a",
+      "score_100": 100.0,
+      "absolute_difference": 0.0
+    },
+    {
+      "id": "f7e7c35c009314e4eed1",
+      "score_100": 100.0,
+      "absolute_difference": 0.0
+    }
+  ],
+  "semantics": "Weighted selected categories, not expected scores. Confidence below 0.3 flags review separately. Unknown means no numeric reward.",
+  "selection_scope": "Original synthetic calibration only; current outputs not scored before freeze.",
+  "previous_candidate": {
+    "id": "expert-expected-v1",
+    "passed_controls": 4,
+    "total": 17,
+    "disposition": "rejected"
+  },
+  "local_bundle": "evaluations/runs/svgq2/frozen/evaluator",
+  "bundle_lock_sha256": "0510136f25b4945d268354f9a342261705c395d81fb74a4af1af27e29e3808cc"
+}

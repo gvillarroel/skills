@@ -1,0 +1,190 @@
+{
+  "ok": true,
+  "topic": "microgrid",
+  "svg": "evaluations\\runs\\20260904-svg-color-microgrid-luna-candidate-1\\workspace\\outputs\\microgrid\\microgrid.svg",
+  "sha256": "f35040ac2a38530f2f9df6c0e70b4343ed662cc55a3b7bc6be0495d2a0b504b8",
+  "states": [
+    {
+      "name": "morning",
+      "sourceValues": {
+        "connection-capacity": 120,
+        "demand": 90,
+        "solar-generation": 35,
+        "wind-generation": 25
+      },
+      "expected": {
+        "renewables": 60,
+        "used": 60,
+        "imports": 30,
+        "curtailed": 0,
+        "load": 0.75,
+        "share": 0.6666666666666666
+      },
+      "actual": {
+        "renewables": 60,
+        "used": 60,
+        "imports": 30,
+        "curtailed": 0,
+        "load": 0.75,
+        "share": 0.6666666666666666
+      },
+      "boundMarkCount": 29,
+      "errors": []
+    },
+    {
+      "name": "midday",
+      "sourceValues": {
+        "connection-capacity": 120,
+        "demand": 110,
+        "solar-generation": 100,
+        "wind-generation": 45
+      },
+      "expected": {
+        "renewables": 145,
+        "used": 110,
+        "imports": 0,
+        "curtailed": 35,
+        "load": 0.9166666666666666,
+        "share": 1.0
+      },
+      "actual": {
+        "renewables": 145,
+        "used": 110,
+        "imports": 0,
+        "curtailed": 35,
+        "load": 0.9166666666666666,
+        "share": 1
+      },
+      "boundMarkCount": 29,
+      "errors": []
+    },
+    {
+      "name": "evening",
+      "sourceValues": {
+        "connection-capacity": 120,
+        "demand": 145,
+        "solar-generation": 10,
+        "wind-generation": 30
+      },
+      "expected": {
+        "renewables": 40,
+        "used": 40,
+        "imports": 105,
+        "curtailed": 0,
+        "load": 1.2083333333333333,
+        "share": 0.27586206896551724
+      },
+      "actual": {
+        "renewables": 40,
+        "used": 40,
+        "imports": 105,
+        "curtailed": 0,
+        "load": 1.2083333333333333,
+        "share": 0.27586206896551724
+      },
+      "boundMarkCount": 29,
+      "errors": []
+    },
+    {
+      "name": "zero",
+      "sourceValues": {
+        "connection-capacity": 120,
+        "demand": 0,
+        "solar-generation": 10,
+        "wind-generation": 30
+      },
+      "expected": {
+        "renewables": 40,
+        "used": 0,
+        "imports": 0,
+        "curtailed": 40,
+        "load": 0.0,
+        "share": 0.0
+      },
+      "actual": {
+        "renewables": 40,
+        "used": 0,
+        "imports": 0,
+        "curtailed": 40,
+        "load": 0,
+        "share": 0
+      },
+      "boundMarkCount": 29,
+      "errors": []
+    }
+  ],
+  "errors": [],
+  "inputMapping": {
+    "demand": "demand",
+    "solar": "solar-generation",
+    "wind": "wind-generation",
+    "capacity": "connection-capacity"
+  },
+  "outputMapping": {
+    "renewables": "renewable-output",
+    "used": "renewable-used",
+    "imports": "grid-imports",
+    "curtailed": "curtailed-energy",
+    "load": "load-ratio",
+    "share": "renewable-share"
+  },
+  "theme": {
+    "preset": "editorial",
+    "colors": {
+      "canvas": "#f8faf9",
+      "surface": "#ffffff",
+      "ink": "#172d2a",
+      "muted": "#526663",
+      "line": "#d5dfdc",
+      "accent": "#087f78",
+      "focus": "#94591c",
+      "warning": "#8c5b24",
+      "danger": "#a33f45"
+    },
+    "conceptColors": {
+      "demand": "#315c63",
+      "solar-generation": "#a15c20",
+      "wind-generation": "#466b9c",
+      "connection-capacity": "#75533f",
+      "renewable-output": "#87495a",
+      "renewable-used": "#53627a",
+      "grid-imports": "#79612f",
+      "curtailed-energy": "#3f6e73",
+      "load-ratio": "#432a6f",
+      "renewable-share": "#28712d",
+      "demand-reconciliation": "#6d2c3a"
+    }
+  },
+  "typography": [
+    {
+      "selector": ".title",
+      "fontSize": "28px",
+      "fill": "rgb(23, 45, 42)"
+    },
+    {
+      "selector": ".module-kicker",
+      "fontSize": "10px",
+      "fill": "rgb(82, 102, 99)"
+    },
+    {
+      "selector": ".module-question",
+      "fontSize": "12px",
+      "fill": "rgb(82, 102, 99)"
+    },
+    {
+      "selector": ".module-claim",
+      "fontSize": "14px",
+      "fill": "rgb(23, 45, 42)"
+    },
+    {
+      "selector": ".module-content text",
+      "fontSize": "12px",
+      "fill": "rgb(23, 45, 42)"
+    },
+    {
+      "selector": ".relationship-key-label",
+      "fontSize": "9.25px",
+      "fill": "rgb(82, 102, 99)"
+    }
+  ]
+}

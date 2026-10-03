@@ -1,0 +1,17 @@
+{
+  "runId": "diagram-polish-20260928-a-naturalistic-2",
+  "case": "naturalistic",
+  "ok": true,
+  "findings": [],
+  "sourceSha256": "ff9812177531c756c2dca109877f48eec409ce603c65051a0ab96013e697a6de",
+  "contactCount": 6,
+  "connectorCount": 6,
+  "minimumTextPx": 13.999781250000002,
+  "minimumContrast": 5.60926841657814,
+  "verifiedConceptLinks": [
+    "audio",
+    "photos",
+    "video"
+  ],
+  "manualVisualReviewRequired": true
+}

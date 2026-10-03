@@ -1,0 +1,108 @@
+{
+  "title": "Independent visual review: Municipal Water Operations v2",
+  "reviewed_assets": [
+    "C:/Users/villa/dev/skills/projects/svg-quality-luna/artifacts/after-v2/overview.png",
+    "C:/Users/villa/dev/skills/projects/svg-quality-luna/artifacts/reviews/controlled-v2/module-1.png",
+    "C:/Users/villa/dev/skills/svg-quality-luna/artifacts/reviews/controlled-v2/module-3.png",
+    "C:/Users/villa/dev/skills/svg-quality-luna/artifacts/reviews/controlled-v2/peak.png",
+    "C:/Users/villa/dev/skills/svg-quality-luna/artifacts/after/overview.png"
+  ],
+  "scope": "Screenshot-only assessment; no inference about arithmetic, interactivity, accessibility compliance, or implementation details.",
+  "criteria": [
+    {
+      "criterion": "routing structure",
+      "status": "improved_unresolved",
+      "evidence": "The v2 network uses mostly orthogonal runs and separated vertical lanes, with fewer broad curves and less apparent crossing than the prior after render. Central lanes still crowd the processed/load-ratio area, and top rectangular junctions remain difficult to parse."
+    },
+    {
+      "criterion": "endpoint direction",
+      "status": "slightly_improved_unresolved",
+      "evidence": "Arrowheads are darker and more visible, but several sit immediately beside box edges or narrow vertical segments. The supplied network crop still requires effort to identify which branch terminates at each intermediate or delivered node."
+    },
+    {
+      "criterion": "line contrast",
+      "status": "improved",
+      "evidence": "Charcoal flow lines and dotted dependencies stand out more clearly against white cards than the gray-green lines in the prior after render. The thinnest arrowheads remain easy to miss at overview scale."
+    },
+    {
+      "criterion": "typography and hierarchy",
+      "status": "unchanged",
+      "evidence": "Headline, question, section-label, and value treatments appear materially unchanged. Footer legend text, axis endpoints, and supporting annotations remain small and secondary."
+    },
+    {
+      "criterion": "color restraint",
+      "status": "maintained",
+      "evidence": "The muted teal, slate, brown, purple, burgundy, and ochre system is retained. Peak introduces no visibly noisy saturation and its changed marks remain within the same visual language."
+    },
+    {
+      "criterion": "changed-state utility",
+      "status": "improved",
+      "evidence": "Peak preserves card positions while visibly updating network marks and values, making the unmet-demand bar visible, extending the demand bar, and moving the bullet chart to a 120% current state."
+    },
+    {
+      "criterion": "spacing and density",
+      "status": "unchanged_unresolved",
+      "evidence": "Card gaps and internal placement are effectively unchanged. The network remains crowded while lower cards retain large blank areas above their visualizations."
+    }
+  ],
+  "previous_findings": [
+    {
+      "finding": "network connector collisions and ambiguous routing",
+      "status": "reduced_but_remains",
+      "evidence": "Orthogonal lanes and darker strokes reduce the broad visual tangle, but tight ports, adjacent arrowheads, and unclear junctions remain."
+    },
+    {
+      "finding": "cross-row dependency seam",
+      "status": "remains",
+      "evidence": "Long dotted paths still span the boundary below the cards without making source and destination obvious. Darker lines improve visibility only."
+    },
+    {
+      "finding": "supporting typography is small",
+      "status": "remains",
+      "evidence": "The v2 type scale is not visibly larger; small labels still require deliberate reading."
+    },
+    {
+      "finding": "uneven vertical fill",
+      "status": "remains",
+      "evidence": "Lower cards remain under-filled relative to the crowded network card."
+    },
+    {
+      "finding": "close or unstable semantic color mapping",
+      "status": "no_new_regression_visible_prior_claim_unconfirmed",
+      "evidence": "The screenshots do not establish that capacity changed color in the earlier comparison. That interpretation is excluded from evidence of a fix or regression."
+    },
+    {
+      "finding": "A connector contrast regression",
+      "status": "resolved_or_reduced",
+      "evidence": "v2 visibly darkens flow and dependency strokes compared with the prior after render, although endpoint ambiguity persists."
+    }
+  ],
+  "remaining_issues": [
+    {
+      "severity": "high",
+      "issue": "Endpoint direction remains ambiguous in the network because arrowheads are small and often touch node borders or narrow lane turns.",
+      "recommendation": "Use explicit ports, consistent arrowhead placement in open space, and a clear gap before each destination box."
+    },
+    {
+      "severity": "high",
+      "issue": "Cross-row dependency routes still read as a page-wide seam with weak source-to-target correspondence.",
+      "recommendation": "Shorten each dependency or route it to a named card with a clear endpoint."
+    },
+    {
+      "severity": "medium",
+      "issue": "The network remains denser than the rest of the page despite orthogonal routing.",
+      "recommendation": "Use a fixed lane order and increase inter-lane spacing around the central junctions."
+    },
+    {
+      "severity": "medium",
+      "issue": "Supporting questions, axes, footer legend, and compact annotations remain small.",
+      "recommendation": "Increase the readable explanatory tier and reserve the smallest type for low-value metadata."
+    },
+    {
+      "severity": "medium",
+      "issue": "Lower cards retain large unused vertical areas above their visualizations.",
+      "recommendation": "Enlarge or vertically rebalance the lower visualizations to even out page weight."
+    }
+  ],
+  "recommendation": "Keep the v2 routing approach: it improves line contrast and reduces the broad network tangle, and Peak is easier to compare with a stable layout. Do not give a clean pass yet; make endpoint direction and cross-row dependency correspondence explicit, then rebalance lower-card whitespace. Treat the prior capacity-color discrepancy as unconfirmed."
+}

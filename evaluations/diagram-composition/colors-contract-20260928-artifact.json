@@ -1,0 +1,14 @@
+{
+  "runId": "diagram-colors-20260928-contract-1",
+  "case": "contract",
+  "ok": true,
+  "findings": [],
+  "panelCount": 2,
+  "palette": {
+    "grains": "#276bc8",
+    "legumes": "#9e1b32"
+  },
+  "colorOccurrences": 4,
+  "sourceSha256": "c3141fc133a7854fe9f26e8819948b0a5e79815d6d04c50ad8db194d87ee07da",
+  "manualSemanticReviewRequired": true
+}

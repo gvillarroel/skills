@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import re
 import sys
 from dataclasses import dataclass
@@ -49,14 +50,15 @@ def iter_active_sources(root: Path):
     for source_root in source_roots:
         if not source_root.exists():
             continue
-        for path in source_root.rglob("*"):
-            if any(part in SKIP_PARTS for part in path.parts):
-                continue
-            if source_root.name == "evaluations" and "runs" in path.relative_to(source_root).parts:
-                continue
-            if not path.is_file() or path.suffix.lower() not in TEXT_SUFFIXES:
-                continue
-            yield path
+        # Prune before descent: ignored model runs and dependency trees can be
+        # much larger than the sources and must not be enumerated first.
+        ignored_dirs = SKIP_PARTS | ({"runs"} if source_root.name == "evaluations" else set())
+        for directory, dirnames, filenames in os.walk(source_root, followlinks=False):
+            dirnames[:] = sorted(name for name in dirnames if name not in ignored_dirs)
+            for name in sorted(filenames):
+                path = Path(directory) / name
+                if path.suffix.lower() in TEXT_SUFFIXES and path.is_file():
+                    yield path
 
 
 def validate_id(pattern_id: str, path: Path, findings: list[Finding]) -> None:

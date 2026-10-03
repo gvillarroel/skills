@@ -1,0 +1,246 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-09-26T12:09:16.457419+00:00",
+  "study": "svp3",
+  "model": "openai-codex/gpt-6-luna",
+  "thinking": "medium",
+  "transport": "sse",
+  "condition": "Matched read/write/bash access and pinned renderer dependencies in both arms",
+  "selected_candidate": "q",
+  "ranking": [
+    {
+      "candidateId": "q",
+      "skillDigest": "sha256:7f26bb6799162ff1117b43e4fd372766bca32e2443d8293b0434b80c18226df4",
+      "sameAsBaseline": false,
+      "fitness": 0.5311021165725092,
+      "qualified": true,
+      "meanReward": 0.5311021165725092,
+      "passRate": 1.0,
+      "minimumDevelopmentPassRate": 1.0,
+      "winnerEligible": true,
+      "winnerIneligibilityReasons": [],
+      "provenanceVerified": true,
+      "provenanceStatus": "verified",
+      "promotionProvenanceEligible": true,
+      "provenanceReasons": [],
+      "passedRequiredRewards": [
+        "artifact_valid"
+      ],
+      "requiredRewardPassCount": 1,
+      "erroredTrials": 0,
+      "providerFailureTrials": 0,
+      "infrastructureFailureTrials": 0,
+      "rank": 1
+    },
+    {
+      "candidateId": "b",
+      "skillDigest": "sha256:74dc3758c751cfac160622064c0e483230b2d444085b14905f5b516cadf0f1b1",
+      "sameAsBaseline": true,
+      "fitness": 0.5084279836099939,
+      "qualified": true,
+      "meanReward": 0.5084279836099939,
+      "passRate": 1.0,
+      "minimumDevelopmentPassRate": 1.0,
+      "winnerEligible": true,
+      "winnerIneligibilityReasons": [],
+      "provenanceVerified": true,
+      "provenanceStatus": "verified",
+      "promotionProvenanceEligible": true,
+      "provenanceReasons": [],
+      "passedRequiredRewards": [
+        "artifact_valid"
+      ],
+      "requiredRewardPassCount": 1,
+      "erroredTrials": 0,
+      "providerFailureTrials": 0,
+      "infrastructureFailureTrials": 0,
+      "rank": 2
+    },
+    {
+      "candidateId": "p",
+      "skillDigest": "sha256:3d3109b73f39c0be6447e883f5d61b15f59bec8de3126af87f1debf265453905",
+      "sameAsBaseline": false,
+      "fitness": 0.0,
+      "qualified": false,
+      "meanReward": 0.48815851111649416,
+      "passRate": 0.9444444444444444,
+      "minimumDevelopmentPassRate": 1.0,
+      "winnerEligible": false,
+      "winnerIneligibilityReasons": [
+        "qualification-gates-failed",
+        "development-pass-rate-below-minimum"
+      ],
+      "provenanceVerified": true,
+      "provenanceStatus": "verified",
+      "promotionProvenanceEligible": true,
+      "provenanceReasons": [],
+      "passedRequiredRewards": [],
+      "requiredRewardPassCount": 0,
+      "erroredTrials": 1,
+      "providerFailureTrials": 0,
+      "infrastructureFailureTrials": 0,
+      "rank": 3
+    }
+  ],
+  "development": {
+    "arms": {
+      "b": {
+        "trials": 18,
+        "runtime_passes": 18,
+        "mean_visual_similarity": 0.5084279836099939,
+        "mean_shape_similarity": 0.4253299392878026,
+        "mean_style_similarity": 0.6330750500932807,
+        "renderer_used": 0,
+        "preview_opened": 0,
+        "scaffold_used": 0,
+        "mean_reported_trace_tokens": 9126.222222222223
+      },
+      "q": {
+        "trials": 18,
+        "runtime_passes": 18,
+        "mean_visual_similarity": 0.5311021165725092,
+        "mean_shape_similarity": 0.450265428269997,
+        "mean_style_similarity": 0.6523571490262773,
+        "renderer_used": 12,
+        "preview_opened": 12,
+        "scaffold_used": 0,
+        "mean_reported_trace_tokens": 23511.055555555555
+      }
+    },
+    "absolute_gain": 0.022674132962515303,
+    "relative_gain": 0.044596547974252006,
+    "task_means": {
+      "vector-004--eb6eabbcb9ca2ad4": {
+        "b": 0.5735428538164018,
+        "q": 0.5814814065075508,
+        "gain": 0.007938552691148959
+      },
+      "vector-011--6b42f7e2789d1bd1": {
+        "b": 0.6172061529250561,
+        "q": 0.6179996330187891,
+        "gain": 0.0007934800937330344
+      },
+      "vector-019--75606bdb4ee5b4af": {
+        "b": 0.531693369461674,
+        "q": 0.548447631830902,
+        "gain": 0.016754262369227946
+      },
+      "vector-020--09ee2ae28c7c367a": {
+        "b": 0.5294712934226101,
+        "q": 0.5585162309836673,
+        "gain": 0.029044937561057194
+      },
+      "vector-024--652120566170fbf2": {
+        "b": 0.4386861579853184,
+        "q": 0.45707790634729134,
+        "gain": 0.018391748361972937
+      },
+      "vector-030--d3c57e0c21dbede0": {
+        "b": 0.35996807404890263,
+        "q": 0.42308989074685427,
+        "gain": 0.06312181669795164
+      }
+    }
+  },
+  "independent_gate": {
+    "closed_at": "2026-09-26T12:07:56.970935+00:00",
+    "status": "inconclusive-infrastructure-failure",
+    "promoted": false,
+    "selected_candidate": "q",
+    "candidate_mutated_after_gate": false,
+    "native_population_gate_state": "staged; not overwritten or fabricated",
+    "cause": "The compatibility resolver normalized task paths but left metric source resolution under the Windows-spelled dataset name. Harbor's progress-metric lookup raised IndexError and cancelled the incomplete job.",
+    "expected_validation_trials": 18,
+    "observed_validation_agent_executions": 3,
+    "completed_baseline_measurements": 2,
+    "winner_agent_executions": 0,
+    "prelaunch_path_failure_agent_executions": 0,
+    "semantic_retries": 0,
+    "private_cohort_consumed": true,
+    "additional_organic_reserve_unopened": true,
+    "recovery": "Not eligible: the installed recovery skill denies incomplete/cancelled roots except an exact pre-agent SIGTERM contract, which this completed-agent/progress-hook failure does not satisfy.",
+    "decision": "Keep the native partial root intact. Do not compute a private gain, run the winner, replay completed trials, mutate the candidate or claim independent promotion. Ship the requested new capabilities as an experimental development winner, with the original baseline preserved.",
+    "future_preflight": "Normalize dataset paths before freezing any new study. Check that every resolved task source has a populated native metric registry before any model call. A new unbiased claim needs a fresh private cohort.",
+    "stage_manifest_sha256": "80b43e1eeb4e02eb388b1b696d881dcabf956f304256268799014c7112a9d3e2",
+    "path_runner_sha256": "a1fabf5b9e75e7f50539a50e6cfcd73795806feb54fe2e0be02ba2ed26660d25"
+  },
+  "native_population_gate": {
+    "status": "staged",
+    "promoted": false,
+    "skillChanged": true,
+    "provenanceVerified": true,
+    "exploratory": false,
+    "promotionBlockers": [],
+    "nextStep": "Run /mnt/c/Users/villa/dev/skills/evaluations/runs/svp3/holdout/generation-001/attempt-000/baseline/harbor-job.yaml and /mnt/c/Users/villa/dev/skills/evaluations/runs/svp3/holdout/generation-001/attempt-000/winner/harbor-job.yaml with Harbor, then rerun --analyze-only with --holdout-job baseline=JOB_DIR and --holdout-job winner=JOB_DIR.",
+    "candidateSkills": {
+      "baseline": "/mnt/c/Users/villa/dev/skills/evaluations/runs/svp3/holdout/generation-001/attempt-000/baseline/skills/svg-brief-design",
+      "winner": "/mnt/c/Users/villa/dev/skills/evaluations/runs/svp3/holdout/generation-001/attempt-000/winner/skills/svg-brief-design"
+    },
+    "attempt": {
+      "generation": 1,
+      "attempt": 0,
+      "directory": "/mnt/c/Users/villa/dev/skills/evaluations/runs/svp3/holdout/generation-001/attempt-000",
+      "manifest": "/mnt/c/Users/villa/dev/skills/evaluations/runs/svp3/holdout/generation-001/attempt-000/attempt.json",
+      "result": "/mnt/c/Users/villa/dev/skills/evaluations/runs/svp3/holdout/generation-001/attempt-000/result.json",
+      "winnerCandidate": "q",
+      "winnerDigest": "sha256:7f26bb6799162ff1117b43e4fd372766bca32e2443d8293b0434b80c18226df4",
+      "baselineDigest": "sha256:74dc3758c751cfac160622064c0e483230b2d444085b14905f5b516cadf0f1b1"
+    }
+  },
+  "forward": {
+    "calls": 7,
+    "automatic_passes": 7,
+    "manual_positive_passes": 6,
+    "negative_routing_pass": true
+  },
+  "budget": {
+    "predecessor_development_calls": 3,
+    "successor_development_calls": 54,
+    "validation_calls": 3,
+    "validation_planned_cap": 18,
+    "forward_calls": 7,
+    "semantic_retries": 0,
+    "earlier_independent_pilot_excluded": true,
+    "private_prelaunch_failure_model_calls": 0
+  },
+  "bundle": {
+    "files": {
+      "agents/openai.yaml": "c87229efa0cc39a1f3dcc827781c9f79c174cc5b5069efb4b8c10fe1b07ca2f1",
+      "references/detail-editing.md": "b531cdeb34cad9dabb5ba4d4764fa99e11060dc4b08bcfd9a8f5cb7828e32c5f",
+      "references/scaffold-recipes.md": "51be0beda93c8408f702a4f580106e2df36cdeb22a371a85cb0911e831bd79c2",
+      "references/svg-mechanics.md": "aee1c0eea25fb09fe9acd4b769b663aca439cb376999f424a462a283130de43f",
+      "scripts/render_svg.py": "90613f9aa241a27bd5035bb9404de2be2d7874970c14913271f5f05812c240e5",
+      "scripts/scaffold.py": "90fd48a698926208c176100534973fdc83be8c2e29b57013efdd12bc7f55a0fd",
+      "scripts/test_scaffold.py": "be464de848524dee51b1b5333f5221c1e2be7659ded492fab0a378f780086c44",
+      "SKILL.md": "601132e67ff94f8dff616b13e220ee7fb981ca607e850a2fcfa64edbbc3d630a"
+    },
+    "file_count": 8,
+    "canonical_equals_selected": true,
+    "local_install_equals_selected": true,
+    "stored_artwork_files": 0,
+    "development_references_audited": 24,
+    "long_paths_compared": 196
+  },
+  "source_artifacts": {
+    "protocol.json": "a1192ca45f20a88774a2bf42f888196d332bb9dc37b420539f90037a8e5d829b",
+    "run.json": "f9b0ef6516cd24dd4ad0055ba0931523e9ac39a48fc4930a131f7b3905cd225d",
+    "q-mutation.json": "011942fc5a26de56d88656f913aef0e8aafa19d8c447cc5cacce93efd753962c",
+    "q-payload-audit.json": "3153feb6d7f981683178527677a361f8764c22261685e831120faa78621c15c5",
+    "revision-review/audit.json": "a7898c5e4504bcbbf4553395a3791590454f3bbc82b2bf1158c8432c0b5cff0d",
+    "public-visual-review.json": "7b9b45e3c3886943ff0d07051bb55ad29f76d0e7ebf0de4196fb15a0c1500a9c",
+    "forward/protocol.json": "db636958e95ed5f3269ee24f950f35ca011280edce99196f3eb472ccc0323445",
+    "forward/summary.json": "7245118aeae2fb462e21dc203c148c412fdacb7d3a632bbb86255f8fdeab5dbb",
+    "private-gate-started.json": "94e284ad205781cac033040642ecbebb5e04cb1213e02cee172b99daa8efcfc6",
+    "private-path-gate-started.json": "a05ea3cb817a7c0213fcec5ff2dc26ba6b9c6cc7d2aef5614b85824de890696e",
+    "independent-gate-disposition.json": "ff6d78a2482655fa138f3762ef1f9435e642cb3f36a40e719f6223e9fe2fc413"
+  },
+  "limitations": [
+    "Visual similarity is a shape/style proxy, not semantic correctness or a confidence estimate.",
+    "Neither development arm was blinded to the guide; no pooled historical writing-only scores.",
+    "Scaffold availability was tested as part of the bundle, but none of the measured development trials called it.",
+    "Render-and-open adherence was 12/18 for the selected development arm, not universal.",
+    "Trace token totals are not billed-token or price estimates.",
+    "Exact path-string checks cannot exclude every transformed copy; source geometry was manually reviewed as original.",
+    "No candidate mutation followed the private gate; the additional organic reserve remains unopened."
+  ]
+}

@@ -1,0 +1,343 @@
+{
+  "date": "2026-09-13",
+  "visual_task": "Three fixed museum candidates; text-only, header-only and body-integrated images",
+  "image_model_exception": "Preregistered Luna high because direct image reading is required",
+  "runs": [
+    {
+      "run_id": "20260913-usefulcharts-illustrated-luna-1",
+      "strict_pass": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "runtime_sha256": "2d413d2deb87d916e37bf0f6d4b3e5a481cf4b30da2e964793b7f833b95293db",
+      "runtime_files": 128,
+      "runtime_unchanged": true,
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "input/candidate-q-detail.png",
+        "input/candidate-p-detail.png",
+        "input/candidate-r-detail.png",
+        "input/candidate-p.png",
+        "input/candidate-q.png",
+        "input/candidate-r.png",
+        "deliverables/review.md",
+        "deliverables/verdicts.json"
+      ],
+      "tool_errors": 0,
+      "duration_seconds": 106.239,
+      "raw_inputs_unchanged": true,
+      "image_reads_verified": true,
+      "verdicts": {
+        "p": false,
+        "q": false,
+        "r": true
+      },
+      "discrimination_pass": true,
+      "dimensions": {
+        "p": {
+          "composition": {
+            "score": 4,
+            "observation": "Five balanced family panels form a clear, consistent classification grid with a useful reading-connections box."
+          },
+          "image_usefulness": {
+            "score": 0,
+            "observation": "No explanatory or recognizable images are present in the poster body."
+          },
+          "image_integration": {
+            "score": 0,
+            "observation": "There are no images to connect to branches, codes, or explanations."
+          },
+          "playful_discovery": {
+            "score": 1,
+            "observation": "The clean color system supports scanning, but the only invitation is a generic reading note and there are no specific prompts."
+          },
+          "legibility": {
+            "score": 4,
+            "observation": "Names, codes, indentation, connectors, and family descriptions are visibly crisp and easy to follow."
+          }
+        },
+        "q": {
+          "composition": {
+            "score": 4,
+            "observation": "The same stable five-panel classification layout remains orderly and easy to scan."
+          },
+          "image_usefulness": {
+            "score": 1,
+            "observation": "The header kalimba is recognizable, but it does not visibly explain a category or mechanism."
+          },
+          "image_integration": {
+            "score": 1,
+            "observation": "The single image is isolated in the masthead with no label, branch connection, or code reference."
+          },
+          "playful_discovery": {
+            "score": 1,
+            "observation": "The small header image adds slight character, but there are no family-specific questions or comparison activities."
+          },
+          "legibility": {
+            "score": 4,
+            "observation": "The taxonomy, labels, connectors, and explanatory note remain visibly clear."
+          }
+        },
+        "r": {
+          "composition": {
+            "score": 4,
+            "observation": "Each family gets a coherent taxonomy area plus a reserved example column, with a compact, energetic overall page."
+          },
+          "image_usefulness": {
+            "score": 4,
+            "observation": "Recognizable instruments visibly exemplify categories across all five families, including bell, kalimba, drums, winds, strings, electronics, and software."
+          },
+          "image_integration": {
+            "score": 4,
+            "observation": "Images sit inside their family panels and use readable `Example \u2192 code` labels to connect back to the classification."
+          },
+          "playful_discovery": {
+            "score": 4,
+            "observation": "Color-coded questions such as \u201cSTRIKE OR PLUCK?\u201d and \u201cWHY IS A KAZOO HERE?\u201d provide concrete paths for comparison and discovery."
+          },
+          "legibility": {
+            "score": 4,
+            "observation": "The branch lines, codes, names, image captions, and explanatory note remain readable despite the added illustration columns."
+          }
+        }
+      }
+    },
+    {
+      "run_id": "20260913-usefulcharts-illustrated-luna-2",
+      "strict_pass": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "runtime_sha256": "2d413d2deb87d916e37bf0f6d4b3e5a481cf4b30da2e964793b7f833b95293db",
+      "runtime_files": 128,
+      "runtime_unchanged": true,
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "input/candidate-p-detail.png",
+        "input/candidate-q-detail.png",
+        "input/candidate-r-detail.png",
+        "input/candidate-q.png",
+        "input/candidate-p.png",
+        "input/candidate-r.png",
+        "input/candidate-r.png",
+        "input/candidate-r-detail.png",
+        "deliverables/review.md",
+        "deliverables/verdicts.json"
+      ],
+      "tool_errors": 0,
+      "duration_seconds": 108.425,
+      "raw_inputs_unchanged": true,
+      "image_reads_verified": true,
+      "verdicts": {
+        "p": false,
+        "q": false,
+        "r": true
+      },
+      "discrimination_pass": true,
+      "dimensions": {
+        "p": {
+          "composition": {
+            "score": 4,
+            "observation": "Five clearly bounded family panels form a stable two-column classification composition with consistent branch routing."
+          },
+          "image_usefulness": {
+            "score": 0,
+            "observation": "No recognizable explanatory images appear anywhere in the poster body."
+          },
+          "image_integration": {
+            "score": 0,
+            "observation": "There is no artwork to connect to a category, branch, or mechanism."
+          },
+          "playful_discovery": {
+            "score": 1,
+            "observation": "The connection-reading box orients the reader, but offers no specific visual or question-led invitation to explore."
+          },
+          "legibility": {
+            "score": 4,
+            "observation": "Large dark labels, restrained colors, indentation, and generous panel spacing make the hierarchy easy to scan."
+          }
+        },
+        "q": {
+          "composition": {
+            "score": 3,
+            "observation": "The underlying two-column panel structure is orderly, but the isolated header photograph reads as an orphaned visual accent."
+          },
+          "image_usefulness": {
+            "score": 1,
+            "observation": "A single small kalimba photograph identifies the subject but does not explain any visible family or branch."
+          },
+          "image_integration": {
+            "score": 1,
+            "observation": "The header image has no caption, code, connector, or panel ownership."
+          },
+          "playful_discovery": {
+            "score": 1,
+            "observation": "The poster remains a text reference sheet; the lone image does not create a path for comparison or discovery."
+          },
+          "legibility": {
+            "score": 4,
+            "observation": "The classification labels and branch lines retain strong contrast and comfortable spacing."
+          }
+        },
+        "r": {
+          "composition": {
+            "score": 4,
+            "observation": "Family panels retain the clear tree structure while integrated right-hand image rails create a balanced second reading path."
+          },
+          "image_usefulness": {
+            "score": 3,
+            "observation": "Recognizable instruments are visibly paired with family content and example codes; they are useful exemplars, though not literal mechanism cutaways."
+          },
+          "image_integration": {
+            "score": 4,
+            "observation": "Each rail sits inside its panel, uses a divider, and pairs every pictured object with a name and explicit Example-to-code caption."
+          },
+          "playful_discovery": {
+            "score": 4,
+            "observation": "Specific prompts such as STRIKE OR PLUCK?, WHY IS A KAZOO HERE?, and WHERE IS THE SIGNAL? invite comparison and tracing."
+          },
+          "legibility": {
+            "score": 4,
+            "observation": "The full view and detail crops show readable labels, codes, captions, and branch lines with clear separation from the artwork."
+          }
+        }
+      }
+    },
+    {
+      "run_id": "20260913-usefulcharts-illustrated-luna-3",
+      "strict_pass": true,
+      "model": "openai-codex/gpt-5.6-luna",
+      "runtime_sha256": "2d413d2deb87d916e37bf0f6d4b3e5a481cf4b30da2e964793b7f833b95293db",
+      "runtime_files": 128,
+      "runtime_unchanged": true,
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "input/candidate-r-detail.png",
+        "input/candidate-p-detail.png",
+        "input/candidate-q-detail.png",
+        "input/candidate-p.png",
+        "input/candidate-q.png",
+        "input/candidate-r.png",
+        "input/source.json",
+        "deliverables/review.md",
+        "deliverables/verdicts.json"
+      ],
+      "tool_errors": 0,
+      "duration_seconds": 105.868,
+      "raw_inputs_unchanged": true,
+      "image_reads_verified": true,
+      "verdicts": {
+        "p": false,
+        "q": false,
+        "r": true
+      },
+      "discrimination_pass": true,
+      "dimensions": {
+        "p": {
+          "composition": {
+            "score": 4,
+            "observation": "Five color-coded panels form a balanced two-column composition with a clear footer explanation and orderly indented branches."
+          },
+          "image_usefulness": {
+            "score": 0,
+            "observation": "No recognizable explanatory images appear in the poster or diagram."
+          },
+          "image_integration": {
+            "score": 0,
+            "observation": "There is no image layer to connect to a family, branch, code, or explanatory claim."
+          },
+          "playful_discovery": {
+            "score": 1,
+            "observation": "The title and connection note orient the reader, but there is no visitor prompt, challenge, or visual discovery hook."
+          },
+          "legibility": {
+            "score": 4,
+            "observation": "High-contrast type, generous spacing, and consistent routing make the family names, codes, and labels easy to scan."
+          }
+        },
+        "q": {
+          "composition": {
+            "score": 4,
+            "observation": "The underlying five-panel composition remains balanced and readable; the small header image does not disrupt the hierarchy."
+          },
+          "image_usefulness": {
+            "score": 1,
+            "observation": "A single small kalimba is recognizable, but it supplies no useful comparison across families and does not teach a branch relationship."
+          },
+          "image_integration": {
+            "score": 1,
+            "observation": "The kalimba floats in the header rather than sitting by its relevant category or code, so its connection to the diagram is unresolved."
+          },
+          "playful_discovery": {
+            "score": 1,
+            "observation": "The image adds a small decorative hook, but the poster still has no specific question, invitation, or visual exploration route."
+          },
+          "legibility": {
+            "score": 4,
+            "observation": "The tree labels, codes, and explanatory note remain as clear as in p, with strong contrast and consistent spacing."
+          }
+        },
+        "r": {
+          "composition": {
+            "score": 4,
+            "observation": "Each family panel has a repeatable tree-plus-image-gutter structure, while the header, reading note, and footer maintain a coherent page hierarchy."
+          },
+          "image_usefulness": {
+            "score": 4,
+            "observation": "Multiple recognizable instruments and sound tools show concrete examples for the branches, including mapped examples for idiophones, chordophones, membranophones, aerophones, and electrophones."
+          },
+          "image_integration": {
+            "score": 4,
+            "observation": "Images are placed inside the corresponding family panels and paired with visible names and `Example \u2192 code` captions rather than being isolated decoration."
+          },
+          "playful_discovery": {
+            "score": 4,
+            "observation": "The subtitle gives a route through the chart and each panel\u2019s question prompt encourages visitors to compare how sound is produced."
+          },
+          "legibility": {
+            "score": 3,
+            "observation": "The main tree remains readable and high-contrast, though the smaller example captions and denser image gutters require more careful viewing than p or q."
+          }
+        }
+      }
+    },
+    {
+      "run_id": "20260913-usefulcharts-illustrated-spark-command",
+      "strict_pass": true,
+      "model": "openai-codex/gpt-5.3-codex-spark",
+      "runtime_sha256": "2d413d2deb87d916e37bf0f6d4b3e5a481cf4b30da2e964793b7f833b95293db",
+      "runtime_files": 128,
+      "runtime_unchanged": true,
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/scripts/test_illustrated_review.py",
+        "deliverables/result.json",
+        "deliverables/review.md"
+      ],
+      "tool_errors": 0,
+      "duration_seconds": 20.625
+    },
+    {
+      "run_id": "20260913-usefulcharts-illustrated-spark-final",
+      "strict_pass": true,
+      "model": "openai-codex/gpt-5.3-codex-spark",
+      "runtime_sha256": "bfa0c902472cb4aeff1ea75829ce797a3a32c92d2f6361fd8950954991dcd765",
+      "runtime_files": 128,
+      "runtime_unchanged": true,
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "deliverables/result.json",
+        "deliverables/review.md"
+      ],
+      "tool_errors": 0,
+      "duration_seconds": 22.002
+    }
+  ],
+  "limits": [
+    "One development discrimination task repeated three times, not a held-out broad-domain production benchmark.",
+    "The three visual runs use the earlier runtime; a later viewport-auditor fix is covered by the final Spark control.",
+    "Final instrument captions incorporate optional visual criticism after the input freeze.",
+    "No reference-density or UsefulCharts stylistic-parity claim is supported."
+  ]
+}

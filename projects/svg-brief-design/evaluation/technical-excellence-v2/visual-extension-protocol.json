@@ -1,0 +1,12 @@
+{
+  "version": "3.0.0",
+  "reason": "The initial calibrated text-only judge saturated all 35 eligible public outputs at 100 and missed concrete visual distinctions. Preserve those outcomes as a failed discriminative screen; do not present them as demonstrated excellence.",
+  "judge": "typesafe/jev-1.13",
+  "observer": "openai-codex/gpt-6-luna",
+  "observer_role": "Inspect the complete render and supply concrete facts, not scores. Tool-free Pi 0.84.2, medium, SSE. No source artwork, skill, generation trace or prior score.",
+  "input_change": "Replace path-code inference with complete-render visual observations plus deterministic SVG/render measurements. Apply this to every artifact, including the 83 KB drawing; do not treat that case specially.",
+  "calibration": "Reapply the same 17 original controls and unchanged acceptance inequalities to the new pipeline. Freeze observer prompt and Jev job before current visual observation and scoring.",
+  "maximum_calls": {"observer_calibration": 14, "observer_current": 36, "jev_calibration": 14, "jev_current": 36, "native_integration": 1},
+  "retries": 0,
+  "limitations": "The public outputs have been inspected during evaluator development. This is a descriptive retrospective, not an independent holdout validation. The observer can make mistakes; retain its text and render for audit."
+}

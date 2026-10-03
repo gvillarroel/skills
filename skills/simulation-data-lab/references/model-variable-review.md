@@ -1,5 +1,14 @@
 # Model coverage and variable review
 
+## Contents
+
+- [Discover candidates before choosing the model](#discover-candidates-before-choosing-the-model)
+- [Freeze an inspectable declaration](#freeze-an-inspectable-declaration)
+- [Inspect the generated review with the human](#inspect-the-generated-review-with-the-human)
+- [Convert the review into mathematical challenges](#convert-the-review-into-mathematical-challenges)
+- [Revisit after results without rewriting history](#revisit-after-results-without-rewriting-history)
+- [Methodological basis](#methodological-basis)
+
 Use this review before every new simulation and revisit it after results. It is
 an auditable explanation of modeling choices for the human, not private internal
 deliberation and not a promise that every possible variable has been discovered.

@@ -1,0 +1,16 @@
+{
+  "version": "2.1.1",
+  "primary_reward": "technical_excellence",
+  "reward_range": [
+    0,
+    1
+  ],
+  "pass_threshold": 1.0,
+  "pass_meaning": "Full categorical credit in every dimension; descriptive threshold, not independently validated excellence.",
+  "evaluator_bundle": "evaluations/runs/svgq2/frozen-collector-fix/evaluator",
+  "lock_sha256": "40f44be66f126bb282f19ad12fb621d4c894dca2c6ea5a8be24189e53e6db698",
+  "model": "typesafe/jev-1.13",
+  "observed_model": "typesafe/jev-1.13-20260917",
+  "reference_similarity_used": false,
+  "large_artifact_policy": "No truncation. Cases exceeding the frozen complete-record budget are explicitly needs_review and excluded from numeric averages, with coverage and score bounds reported."
+}

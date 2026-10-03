@@ -1,0 +1,38 @@
+[
+  {
+    "severity": "high",
+    "finding": "Cross-row connectors read as an accidental seam",
+    "evidence": "At approximately y=535, blue dotted and orange dashed paths run horizontally across the boundary between the two section containers, with short vertical segments and arrowheads that do not have an obvious source or destination.",
+    "remedy": "Route dependencies as short, explicit connectors between named cards, keep paths clear of section labels and container edges, and add a small labeled bridge when a relationship must span rows."
+  },
+  {
+    "severity": "high",
+    "finding": "Network diagram connectors collide and create ambiguous routing",
+    "evidence": "In the upper-left network card, several paths converge around x=260–280 and arrowheads overlap or sit on node edges; the route into Completed work is also tight.",
+    "remedy": "Use orthogonal lanes, fixed vertical ordering, separated connector ports, and arrowheads placed in open space immediately before destination nodes."
+  },
+  {
+    "severity": "medium",
+    "finding": "The lower row is vertically under-filled relative to the upper row",
+    "evidence": "The Sankey, comparison table, and waterfall occupy mainly the lower portion of their cards, leaving large pale areas above the visual content.",
+    "remedy": "Move visualizations closer to their explanatory copy or use the available height for larger marks, annotations, or a compact takeaway row; keep internal card rhythm consistent."
+  },
+  {
+    "severity": "medium",
+    "finding": "Supporting typography is small and low-contrast in several places",
+    "evidence": "Section subtitles, chart questions, footer legend text, axis labels, and small radial/waterfall annotations use fine blue-gray text that is much less prominent than the headline values.",
+    "remedy": "Create readable explanatory and smaller metadata tiers, increase line height for the first tier, and reserve micro-label styling for short high-value tags."
+  },
+  {
+    "severity": "medium",
+    "finding": "Purple and magenta outcome encodings are too similar",
+    "evidence": "First pass success uses purple while Excess arrivals uses magenta in the upper row; the lower Sankey shifts related states to pink and pale purple, making the semantic mapping less immediate.",
+    "remedy": "Use one stable, clearly separated color token per semantic state across outlines, marks, swatches, and annotations, with repeated labels or shapes as reinforcement."
+  },
+  {
+    "severity": "low",
+    "finding": "Waterfall annotations and baseline labels are cramped",
+    "evidence": "The lower-right chart packs step values above narrow bars and places compact x-axis labels plus a down-arrow directly along the baseline.",
+    "remedy": "Add horizontal and vertical breathing room, reserve an annotation band, simplify the axis wording, and align step labels to one baseline."
+  }
+]

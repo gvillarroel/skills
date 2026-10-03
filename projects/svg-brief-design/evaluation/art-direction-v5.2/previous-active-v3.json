@@ -1,0 +1,31 @@
+{
+  "version": "3.0.0",
+  "primary_reward": "technical_excellence",
+  "reward_range": [
+    0,
+    1
+  ],
+  "display_range": [
+    0,
+    100
+  ],
+  "pass_threshold": 1.0,
+  "pass_meaning": "Full credit under the declared categorical rubric; not proof of universal design perfection.",
+  "evaluator_bundle": "evaluations/runs/svgq2/frozen-v3/evaluator",
+  "lock_sha256": "c9ebc515c9d9b1ce4d0e93d0f9484470385779c0ac81b6a914ba3ac0c5515af5",
+  "judge_model": "typesafe/jev-1.13",
+  "observed_judge_model": "typesafe/jev-1.13-20260917",
+  "visual_observer_model": "openai-codex/gpt-6-luna",
+  "reference_similarity_used": false,
+  "harbor": {
+    "import_path": "harbor_svg_excellence:SvgExcellenceVerifier",
+    "future_job": "evaluations/runs/svgq2/future-job.json",
+    "rewardKey": "technical_excellence",
+    "requiredRewards": {
+      "artifact_valid": 1.0
+    },
+    "passThreshold": 1.0
+  },
+  "uncertainty": "Unknown yields no reward except an explicit fundamental-brief failure. Confidence is a separate review signal.",
+  "large_artifact_policy": "Full render is observed. Original SVG supplies all measurements; compact complete source is additionally supplied only below the fixed 12 KB crosscheck limit."
+}

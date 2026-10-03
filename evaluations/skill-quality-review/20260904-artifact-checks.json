@@ -1,0 +1,95 @@
+{
+  "date": "2026-09-04",
+  "kind": "evaluator-run deterministic checks; not an isolated agent pass",
+  "passed": true,
+  "asciinemaPlan": {
+    "status": "passed",
+    "mode": "argv",
+    "onlyPlanInDirectory": true,
+    "targetLaunched": false
+  },
+  "svg": {
+    "staticOk": true,
+    "browserOk": true,
+    "uniqueIdCount": 82,
+    "browserMetrics": {
+      "scenarioCount": 2,
+      "sourcePerturbationCount": 3,
+      "zeroFlowBoundaryCount": 3,
+      "focusGroupCount": 2,
+      "focusReadabilityCheckCount": 2,
+      "focusReadabilityIssueCount": 0,
+      "timelineSampleCount": 12,
+      "bindingCount": 22,
+      "negativeControlComparisons": 256,
+      "sharedRevisionCases": 9,
+      "geometryCheckCount": 9,
+      "quantitativeSemanticsCheckCount": 21,
+      "quantitativeSemanticsIssueCount": 0,
+      "accessibilityTreeCheckCount": 11,
+      "accessibilityTreeIssueCount": 0,
+      "relationshipContrastCheckCount": 1,
+      "relationshipContrastIssueCount": 0,
+      "relationshipStateCheckCount": 16,
+      "relationshipStateIssueCount": 0,
+      "relationshipClearanceCheckCount": 1,
+      "relationshipClearanceIssueCount": 0,
+      "realInputCheckCount": 1,
+      "navigationAnchorCount": 0,
+      "navigationDistrictCount": 0,
+      "navigationModuleCropCount": 0,
+      "navigationRouteSampleCount": 0,
+      "navigationIssueCount": 0,
+      "accessibleBindingCount": 22,
+      "visibleModuleCount": 6,
+      "visibleTextCount": 41,
+      "visibleBoundMarkCount": 22,
+      "geometryEscapeCount": 0,
+      "textOverlapCount": 0,
+      "headerBodyOverlapCount": 0,
+      "invalidTextCount": 0,
+      "moduleFootprintWidthRatio": 0.94,
+      "moduleFootprintHeightRatio": 0.824,
+      "moduleFootprintAreaRatio": 0.728
+    },
+    "visualReview": "Overview inspected at 1600x1000: six visible labeled modules, coherent two-row reading order, explicit synthetic-data provenance, readable values, and no visible clipping. No claim of two release review rounds."
+  },
+  "artifacts": {
+    "artifacts/composition-brief.json": {
+      "bytes": 8091,
+      "sha256": "ae3ff5f67341fb171e1b021241674eb12ff559101bed253130dbe3be829cb18c"
+    },
+    "artifacts/composition-plan.json": {
+      "bytes": 23299,
+      "sha256": "819958d57c78f83e4178b235f7808f31dec4c11c704f66b11085c6dcf2f232c3"
+    },
+    "artifacts/composition-report.json": {
+      "bytes": 1515,
+      "sha256": "7351a46d2df9c1c199c3462eec8764a705971a55dc286c1761c099311b6f1623"
+    },
+    "artifacts/composed.svg": {
+      "bytes": 136014,
+      "sha256": "f4b39cfa85c817dcf107957be708a6097d5c9a0069af35c8d691aa5af6677378"
+    },
+    "artifacts/static-validation.json": {
+      "bytes": 3678,
+      "sha256": "f3a45d83c97fc35a1aefafc32d65bdde40cff005fcac8798caf832a48645548a"
+    },
+    "artifacts/browser-audit.json": {
+      "bytes": 12541,
+      "sha256": "498f75deabd8c4cc161e12341f73293948c228502ae36968e39fe8693804fc4f"
+    },
+    "artifacts/overview.png": {
+      "bytes": 137797,
+      "sha256": "93cbe41620b0a7e33aa5ce5d91d47d9a48603968a049f12a596031187be29622"
+    },
+    "planned-demo/session-plan.json": {
+      "bytes": 870,
+      "sha256": "fdc840b0ee349f71110465c2f37c44485dd3966e89bc08fcd70bf895ad4154ff"
+    },
+    "plan-validation.json": {
+      "bytes": 1685,
+      "sha256": "721b4085b303ac7abd4f76011a34469c99d27013b76e74b2192d37b96d657404"
+    }
+  }
+}

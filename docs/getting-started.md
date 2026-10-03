@@ -46,14 +46,15 @@ This table highlights current skill status; `SKILLS.md` is authoritative.
 | Skill | Status | Use When |
 | --- | --- | --- |
 | [mermaid](../skills/mermaid/SKILL.md) | `done` | Select, create, style, render, and animate Mermaid diagrams with colorset1 by default or extended colorset2 on request. |
-| [d3](../skills/d3/SKILL.md) | `validating` | Create, animate, inspect, recompose, and validate D3 visuals and parametric SVG logos with colorset1 by default. |
+| [d3](../skills/d3/SKILL.md) | `done` | Create, animate, inspect, recompose, and validate D3 visuals and parametric SVG logos with colorset1 by default. |
 | [procedural-svg-animation](../skills/procedural-svg-animation/SKILL.md) | `done` | Build deterministic standalone SVG motion systems from reusable procedural techniques. |
 | [echarts-animated-svg](../skills/echarts-animated-svg/SKILL.md) | `done` | Animate already-rendered Apache ECharts SVG output. |
 | [animated-svg-to-gif](../skills/animated-svg-to-gif/SKILL.md) | `done` | Convert animated SVG assets into browser-rendered GIFs. |
 | [slidev-animejs](../skills/slidev-animejs/SKILL.md) | `done` | Build and validate Anime.js animation patterns inside Slidev decks. |
 | [slidev-echarts](../skills/slidev-echarts/SKILL.md) | `done` | Build and validate ECharts chart labs inside Slidev decks. |
-| [slidev-quality-audit](../skills/slidev-quality-audit/SKILL.md) | `done` | Audit Slidev decks for visual quality regressions. |
+| [slidev-quality-audit](../skills/slidev-quality-audit/SKILL.md) | `validating` | Audit Slidev decks for visual quality regressions. |
 | [video](../skills/video/SKILL.md) | `done` | Orchestrate specialist visuals, compose mixed-media interactions, and render validated video at exact dimensions. |
+| [hyperframes-explainer](../skills/hyperframes-explainer/SKILL.md) | `done` | Select expressive assets and create minimal HyperFrames explanations with calibrated editable mechanisms, a shared seekable state, synchronized measurements, and colorset1 before justified colorset2. |
 | [manim-svg-video](../skills/manim-svg-video/SKILL.md) | `done` | Render standalone SVG-only sequences as manifest-backed Manim MP4s. |
 | [threejs-animated-3d](../skills/threejs-animated-3d/SKILL.md) | `done` | Build and verify browser-rendered Three.js/WebGL scenes. |
 

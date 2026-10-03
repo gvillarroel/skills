@@ -1,0 +1,86 @@
+{
+  "title": "Independent visual comparison: Municipal Water Operations",
+  "images": {
+    "A": "C:/Users/villa/dev/skills/svg-quality-luna/artifacts/after/overview.png",
+    "B": "C:/Users/villa/dev/skills/svg-quality-luna/artifacts/before/overview.png"
+  },
+  "scope": "Rendered screenshots only; no inference about arithmetic, interaction, or accessibility compliance.",
+  "criteria": [
+    {
+      "criterion": "palette restraint",
+      "better": "A",
+      "evidence": "A uses a muted teal, slate, brown, purple, and burgundy palette on warm white cards. B uses multiple highly saturated blue, green, purple, pink, and teal accents that compete more strongly with the content."
+    },
+    {
+      "criterion": "meaning of recurring colors",
+      "better": "A",
+      "evidence": "A visibly reuses related tokens for demand, capacity, leakage, delivered water, and leakage fraction across panels. B visibly shifts capacity from green in the network to teal in the lower bar and separates leakage fraction purple from leakage outcome green."
+    },
+    {
+      "criterion": "text hierarchy and readability",
+      "better": "A",
+      "confidence": "slight",
+      "evidence": "The type scale and line breaks appear the same, but A's dark neutral body copy and clearer card outlines provide calmer separation between headings, explanatory copy, and values. Supporting labels remain small in both."
+    },
+    {
+      "criterion": "connector clarity",
+      "better": "B",
+      "evidence": "B's network paths, arrowheads, and row-boundary dependency lines have stronger contrast. A's gray-green connectors recede into the white cards, especially near central convergence and along the long dotted lines."
+    },
+    {
+      "criterion": "spacing and grouping",
+      "better": "neither",
+      "evidence": "Card geometry, gaps, chart placement, and large unused areas are effectively the same. A's borders improve perceived grouping slightly, but neither changes the dense network or under-filled lower cards."
+    },
+    {
+      "criterion": "overall utility",
+      "better": "A",
+      "evidence": "A has the calmer palette, more coherent semantic reuse, and stronger grouping. Its lower connector contrast is a visible regression that should be repaired."
+    }
+  ],
+  "regressions": [
+    {
+      "severity": "medium",
+      "version": "A",
+      "issue": "Flow and dependency connectors have lower contrast than in B and are harder to trace against the cards."
+    },
+    {
+      "severity": "medium",
+      "version": "B",
+      "issue": "The saturated accent palette creates more visual noise and has less consistent color meaning across panels."
+    },
+    {
+      "severity": "high",
+      "version": "both",
+      "issue": "Network path crossings and the long cross-row dependency routes remain ambiguous despite the palette change."
+    }
+  ],
+  "remaining_issues": [
+    {
+      "severity": "high",
+      "issue": "Network routes converge tightly around the processed/load-ratio area; arrowheads sit close to node edges and do not clearly establish causality.",
+      "recommendation": "Use separated lanes or ports and leave open space before destination nodes."
+    },
+    {
+      "severity": "high",
+      "issue": "Long dotted cross-row dependencies do not provide a clear source-to-target correspondence.",
+      "recommendation": "Shorten or explicitly route the dependencies between named cards, with clear endpoints."
+    },
+    {
+      "severity": "medium",
+      "issue": "Supporting questions, axes, footer legend, radial endpoints, and compact annotations are small for comfortable scanning.",
+      "recommendation": "Increase the explanatory text tier and reserve the smallest type for low-value metadata."
+    },
+    {
+      "severity": "medium",
+      "issue": "The upper-left network is crowded while lower cards retain large blank areas above their visualizations.",
+      "recommendation": "Rebalance internal card rhythm or use the spare lower-card space for larger marks and annotations."
+    },
+    {
+      "severity": "low",
+      "issue": "A has closely related teal encodings for processed water, load ratio, and the bullet current bar.",
+      "recommendation": "Add a stable secondary mark treatment or more distinct token while keeping the labels."
+    }
+  ],
+  "recommendation": "Use A as the base, restore some of B's connector contrast, and re-route the network and cross-row dependencies before release. Neither screenshot earns a forced pass in its current form."
+}

@@ -1,0 +1,50 @@
+{
+  "runId": "diagram-polish-20260928-d-naturalistic-1",
+  "case": "naturalistic",
+  "commandExitCodes": [
+    0,
+    0,
+    0
+  ],
+  "payload": {
+    "name": "diagram-composition",
+    "profile": "runtime",
+    "fileCount": 21,
+    "payloadSha256": "2e15b9a80f7492be2c4e1d37ff558404f3acc740b165e25ed014088b3274508f"
+  },
+  "runtime": {
+    "passed": true,
+    "returnCode": 0,
+    "piExitCode": 0,
+    "timedOut": false,
+    "startedAtUtc": "2026-09-29T01:43:35.827845+00:00",
+    "finishedAtUtc": "2026-09-29T01:45:31.665585+00:00",
+    "durationSeconds": 115.839,
+    "gates": {
+      "artifacts": true,
+      "events": true,
+      "jsonFields": true,
+      "skillIntegrity": true
+    }
+  },
+  "artifact": {
+    "runId": "diagram-polish-20260928-d-naturalistic-1",
+    "case": "naturalistic",
+    "ok": true,
+    "findings": [],
+    "sourceSha256": "3548224850753b117077c9f4f9ff95374eecc0e2284d190f36756616db1dd7fd",
+    "contactCount": 6,
+    "connectorCount": 6,
+    "internalContactCount": 6,
+    "openTerminalCount": 0,
+    "minimumTextPx": 13.999781250000002,
+    "minimumContrast": 11.375097725170955,
+    "verifiedConceptLinks": [
+      "audio",
+      "photos",
+      "video"
+    ],
+    "manualVisualReviewRequired": true
+  },
+  "tracePassed": true
+}

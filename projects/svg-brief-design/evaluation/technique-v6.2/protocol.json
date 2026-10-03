@@ -1,0 +1,35 @@
+{
+  "version": "6.2.0",
+  "purpose": "Learn the user's explicit criteria for economy, material line character, integrated figure-ground construction and compact identification.",
+  "scope": "Public development recalibration on unchanged visual evidence; not independent validation or skill improvement.",
+  "visual_evidence": "32 fresh tool-free Astra image observations, including six fresh reversed-order observations. Use actual archived rasters. No source provenance, grades or expected winner reaches either model. No successful response retries or semantic resampling. Four textual context controls are authored fixtures, not additional visual observations.",
+  "new_jev_calls": 36,
+  "new_visual_calls": 32,
+  "native_probe_calls": {
+    "observer": 1,
+    "jev": 1
+  },
+  "retries": 0,
+  "external_recovery": "Zero retries. Per-case first attempts preserve complete or failed receipts; failure prevents acceptance.",
+  "scoring": "Six native ordered Score questions; probability-weighted category utilities [50,75,90,95,100], plus a signed directional margin. Normalize only native probability rounding. Same six weights. Subject caps retained; insufficient evidence produces no numeric reward. Categorical overall preference is separate. Confidence is separate.",
+  "acceptance": {
+    "focus_original_preferences_min": 7,
+    "focus_generated_preferences_max": 0,
+    "family_negative_margin_min": 5,
+    "mean_expected_gap_min": 15,
+    "crop_expected_below_80_min": 5,
+    "order_score_distance_max": 10,
+    "order_cases_passing_min": 5,
+    "textual_context_switch_controls_required": 4,
+    "wrong_subject_zero": true,
+    "rough_below_75": true,
+    "complete_coverage": 36
+  },
+  "human_feedback": "The user identified stronger technique in the purchased vintage diagrams, space insignia, circles and labels. These are development preference labels, unavailable to the judge; no claim of blinded independent preference discovery.",
+  "boundaries": "Originals remain evaluator-only. User-facing technique introductions describe purpose and medium without reproducing shapes or adding reference SVGs to the skill.",
+  "reason_for_revision": "Version 6.1 passed purpose-switch text controls but failed six of eight disputed visual cases and two order controls. Old visual descriptions already praised construction without sufficiently located junction/void evidence. Reobserve every preserved pair with an anonymous purpose-specific prompt; retain the v6.1 Jev job and math unchanged. The brief is now explicitly prefixed with the same short client clarification reserved for future generation.",
+  "documentation": [
+    "https://docs.typesafe.ai/primitives/score",
+    "https://docs.typesafe.ai/primitives/choice"
+  ]
+}

@@ -1,0 +1,65 @@
+---
+config:
+  htmlLabels: false
+  sequence:
+    actorMargin: 48
+    messageMargin: 38
+    mirrorActors: false
+    # mermaid: config begin
+    height: 36
+    boxMargin: 6
+    noteMargin: 8
+    # mermaid: config end
+  # mermaid: config begin
+  theme: "base"
+  themeVariables:
+    background: "#ffffff"
+    primaryColor: "#ffffff"
+    primaryTextColor: "#333e48"
+    primaryBorderColor: "#9e1b32"
+    secondaryColor: "#e7e7e7"
+    secondaryTextColor: "#333e48"
+    secondaryBorderColor: "#4f4f4f"
+    tertiaryColor: "#e7e7e7"
+    tertiaryTextColor: "#333e48"
+    tertiaryBorderColor: "#9c9c9c"
+    lineColor: "#696969"
+    textColor: "#333e48"
+    mainBkg: "#ffffff"
+    nodeBkg: "#ffffff"
+    nodeBorder: "#9e1b32"
+    clusterBkg: "#e7e7e7"
+    clusterBorder: "#9c9c9c"
+    defaultLinkColor: "#696969"
+    edgeLabelBackground: "#ffffff"
+    noteBkgColor: "#e7e7e7"
+    noteTextColor: "#333e48"
+    noteBorderColor: "#9c9c9c"
+    actorBkg: "#ffffff"
+    actorBorder: "#9e1b32"
+    actorTextColor: "#333e48"
+    actorLineColor: "#9e1b32"
+    signalColor: "#696969"
+    signalTextColor: "#333e48"
+    activationBorderColor: "#9e1b32"
+    activationBkgColor: "#cfcfcf"
+    labelColor: "#333e48"
+    titleColor: "#333e48"
+  # mermaid: config end
+
+# mermaid: metadata begin
+mermaid:
+  colorset: "colorset1"
+  mode: "standard"
+  palette: "basic-red-neutral-style"
+# mermaid: metadata end
+---
+sequenceDiagram
+  accTitle: Review before source changes
+  accDescr: The assistant proposes a change to a reviewer. The reviewer approves the change before the workspace applies it.
+  participant A as Assistant
+  participant R as Reviewer
+  participant W as Workspace
+  A->>R: Propose change
+  R->>W: Approve change
+  W-->>R: Applied

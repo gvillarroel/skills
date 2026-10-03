@@ -1,0 +1,20 @@
+:root{color:#e7f3ff;background:#040916;color-scheme:dark}
+header{background:#071326;border-bottom:1px solid #223a56;color:#eef7ff}
+header strong{color:#72dcff;letter-spacing:.04em}
+aside{background:#091526;border-color:#263c56}
+button,select,input,.download{background:#10233a;color:#edf7ff;border-color:#315270}
+button:hover,.download:hover{background:#1b3c59}
+input,select{background:#10233a;border-color:#315270}
+#stage{background:#040916}
+#sizer{background:#050b17;box-shadow:0 6px 35px #0008}
+.muted,#status,#count,.help{color:#adc4dc}
+#results small{color:#a7c5dc}
+#results button{color:#e6f3ff;border-bottom-color:#29445f}
+#results button:hover{background:#183951}
+#detail{border-top-color:#5ccbf5}
+#detail .tag{background:#174761;color:#ddf5ff}
+a{color:#75dfff}
+.help{border-left-color:#4c7496}
+.record.dim{opacity:.19}
+.record.selected .hit-area{fill:#235b8733;stroke:#74dcff;stroke-width:3}
+.record:focus .hit-area{stroke:#74dcff;stroke-width:3}

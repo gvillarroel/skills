@@ -46,7 +46,7 @@ DISALLOWED_SKILL_DOCS = {
 }
 SKILL_NAME_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 EXAMPLE_ID_RE = SKILL_NAME_RE
-MAX_SKILL_NAME_LENGTH = 64
+MAX_SKILL_NAME_LENGTH = 63
 BACKLOG_STATUSES = {
     "candidate",
     "planned",
@@ -81,6 +81,22 @@ class Finding:
     message: str
 
 
+_AUTHORING_MODULE = None
+
+
+def load_authoring_checks():
+    global _AUTHORING_MODULE
+    if _AUTHORING_MODULE is None:
+        script = repo_root() / "skills/repository-reviewer-creator/scripts/check_skill_authoring.py"
+        spec = importlib.util.spec_from_file_location("skills_authoring_checks", script)
+        if spec is None or spec.loader is None:
+            raise RuntimeError(f"Could not load authoring checks: {script}")
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        _AUTHORING_MODULE = module
+    return _AUTHORING_MODULE
+
+
 def repo_root() -> Path:
     return Path(__file__).resolve().parents[1]
 
@@ -97,7 +113,10 @@ def add(findings: list[Finding], path: Path, message: str) -> None:
 
 
 def parse_frontmatter(skill_md: Path) -> tuple[dict[str, object] | None, str | None]:
-    content = skill_md.read_text(encoding="utf-8")
+    try:
+        content = skill_md.read_text(encoding="utf-8")
+    except (OSError, UnicodeError) as error:
+        return None, f"SKILL.md must be readable UTF-8: {error}"
     if not content.startswith("---\n"):
         return None, "SKILL.md must start with YAML frontmatter"
 
@@ -116,7 +135,7 @@ def parse_frontmatter(skill_md: Path) -> tuple[dict[str, object] | None, str | N
     return parsed, None
 
 
-def validate_skill_dir(skill_dir: Path, root: Path, findings: list[Finding]) -> None:
+def validate_skill_dir(skill_dir: Path, root: Path, findings: list[Finding], *, profile: str = "source") -> None:
     skill_name = skill_dir.name
     skill_md = skill_dir / "SKILL.md"
 
@@ -158,9 +177,13 @@ def validate_skill_dir(skill_dir: Path, root: Path, findings: list[Finding]) -> 
         if child.is_file() and child.name in DISALLOWED_SKILL_DOCS:
             add(findings, child, "auxiliary documentation is not allowed inside skill directories")
 
+    authoring = load_authoring_checks().check_skill(skill_dir, profile=profile)
+    for issue in authoring["issues"]:
+        add(findings, skill_dir / issue["path"], f"authoring/{issue['code']}: {issue['message']}")
+
     validate_agents_metadata(skill_dir, root, findings)
     validate_script_tree(skill_dir / "scripts", root, findings, dependency_root=skill_dir)
-    validate_skill_independence(skill_dir, root, findings)
+    validate_skill_independence(skill_dir, root, findings, profile=profile)
 
 
 def validate_agents_metadata(skill_dir: Path, root: Path, findings: list[Finding]) -> None:
@@ -295,15 +318,19 @@ def validate_markdown_links(path: Path, skill_dir: Path, content: str, findings:
             add(findings, path, f"Markdown link target does not exist inside the skill bundle: {target}")
 
 
-def validate_local_resource_paths(path: Path, skill_dir: Path, content: str, findings: list[Finding]) -> None:
+def validate_local_resource_paths(path: Path, skill_dir: Path, content: str, findings: list[Finding], *, profile: str = "source") -> None:
     for match in LOCAL_RESOURCE_PATH_RE.finditer(content):
         target = match.group("target")
+        if profile == "runtime" and target.startswith("assets/examples/"):
+            # Maintenance references describe acceptance fixtures deliberately
+            # excluded from runtime. Such tasks use the full profile.
+            continue
         candidate = skill_dir / target
         if not candidate.exists():
             add(findings, path, f"referenced local resource does not exist inside the skill bundle: {target}")
 
 
-def validate_skill_independence(skill_dir: Path, root: Path, findings: list[Finding]) -> None:
+def validate_skill_independence(skill_dir: Path, root: Path, findings: list[Finding], *, profile: str = "source") -> None:
     skill_name = skill_dir.name
     known_skill_names = {path.name for path in skill_dir.parent.iterdir() if path.is_dir()}
     for path in sorted(skill_dir.rglob("*")):
@@ -353,7 +380,7 @@ def validate_skill_independence(skill_dir: Path, root: Path, findings: list[Find
 
         if path.suffix.lower() == ".md":
             validate_markdown_links(path, skill_dir, content, findings)
-            validate_local_resource_paths(path, skill_dir, content, findings)
+            validate_local_resource_paths(path, skill_dir, content, findings, profile=profile)
 
 
 def load_build_pages_module(root: Path):
@@ -586,10 +613,17 @@ def validate_repo(root: Path) -> list[Finding]:
 def main() -> int:
     parser = argparse.ArgumentParser(description="Validate this skills repository.")
     parser.add_argument("--root", type=Path, default=repo_root(), help="Repository root to validate.")
+    parser.add_argument("--skill", type=Path, action="append", help="Validate an arbitrary standalone bundle; repeat for multiple bundles.")
+    parser.add_argument("--profile", choices=("source", "runtime", "full"), default="source", help="Standalone bundle profile; runtime excludes maintenance-only acceptance fixtures.")
     args = parser.parse_args()
 
     root = args.root.resolve()
-    findings = validate_repo(root)
+    if args.skill:
+        findings = []
+        for skill in args.skill:
+            validate_skill_dir(skill.resolve(), root, findings, profile=args.profile)
+    else:
+        findings = validate_repo(root)
 
     if findings:
         print(f"Validation failed with {len(findings)} finding(s):")

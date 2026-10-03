@@ -1,0 +1,411 @@
+{
+  "date": "2026-09-12",
+  "case": "Naturalistic planning-only theme and image-prompt preparation",
+  "model": "gpt-5.3-codex-spark",
+  "runtime_payloads_unchanged": true,
+  "execution_passes": 5,
+  "complete_passes": 0,
+  "total_runs": 6,
+  "runs": [
+    {
+      "run_id": "usefulcharts-theme-spark-1-20260912",
+      "cohort": "A",
+      "model": {
+        "model": "openai-codex/gpt-5.3-codex-spark",
+        "thinking": "high",
+        "mode": "json",
+        "timeoutSeconds": 240
+      },
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 117,
+        "payloadSha256": "b3cf32a812489b7cca483004856fafbc4940b9bb389f5acdefcdc063269ebcd8"
+      },
+      "execution_pass": false,
+      "artifact_paths_pass": true,
+      "outputs": [
+        {
+          "path": "design/art-direction.md",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 4612,
+          "sha256": "e2902b202dfabb5b81837024b45c359f583ea24b2d8dd8e74f4132acce026cfa",
+          "error": null
+        },
+        {
+          "path": "design/art-prompts.json",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 8567,
+          "sha256": "2cc7c0a6f0962fb25585806c31677f20272050f845a5484ad584ffc6de4be4a8",
+          "error": null
+        }
+      ],
+      "payload_unchanged": true,
+      "observed_models": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.3-codex-spark"
+        }
+      ],
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/thematic-art-direction.md",
+        "skills/usefulcharts-style/references/information-design.md",
+        "skills/usefulcharts-style/references/knowledge-density.md",
+        "skills/usefulcharts-style/references/compact-chronology.md",
+        "skills/usefulcharts-style/references/note-hierarchy.md",
+        "skills/usefulcharts-style/references/semantic-emblems.md",
+        "design/art-direction.md",
+        "design/art-prompts.json",
+        "design/art-prompts.json",
+        "design/art-direction.md",
+        "design/art-prompts.json",
+        "design/art-prompts.json",
+        "design/art-prompts.json"
+      ],
+      "tool_errors": [
+        {
+          "line": 75,
+          "tool": "bash",
+          "path": null,
+          "command": "Get-ChildItem",
+          "isError": true
+        },
+        {
+          "line": 224,
+          "tool": "bash",
+          "path": null,
+          "command": "python - <<'PY'\nimport json\nfrom pathlib import Path\np=Path('design/art-prompts.json')\nwith p.open() as f:\n    data=json.load(f)\nprint('loaded', len(data.get('subject_prompts', [])), 'subjects')\nPY",
+          "isError": true
+        }
+      ],
+      "artifact_review": {
+        "status": "fail",
+        "classification": "agent",
+        "critique": "Two real Bash tool errors, including a PowerShell command and a failed JSON check; Argo prompt bakes rightward engine streaks into the raster asset. Camera and lighting vary across subjects."
+      },
+      "complete_pass": false
+    },
+    {
+      "run_id": "usefulcharts-theme-spark-2-20260912",
+      "cohort": "A",
+      "model": {
+        "model": "openai-codex/gpt-5.3-codex-spark",
+        "thinking": "high",
+        "mode": "json",
+        "timeoutSeconds": 240
+      },
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 117,
+        "payloadSha256": "b3cf32a812489b7cca483004856fafbc4940b9bb389f5acdefcdc063269ebcd8"
+      },
+      "execution_pass": true,
+      "artifact_paths_pass": true,
+      "outputs": [
+        {
+          "path": "design/art-direction.md",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 4463,
+          "sha256": "d6398c73d5fa9bb28d7b032746d079e4e6a855b32afbd03df214fa1e7f515e28",
+          "error": null
+        },
+        {
+          "path": "design/art-prompts.json",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 6124,
+          "sha256": "b935ff5f8990f914bafaf940066a517a09d7365aeebd6236f26b042e8944f0dc",
+          "error": null
+        }
+      ],
+      "payload_unchanged": true,
+      "observed_models": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.3-codex-spark"
+        }
+      ],
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/thematic-art-direction.md",
+        "skills/usefulcharts-style/references/information-design.md",
+        "skills/usefulcharts-style/references/knowledge-density.md",
+        "skills/usefulcharts-style/references/compact-chronology.md",
+        "design/art-direction.md",
+        "design/art-prompts.json",
+        "design/art-direction.md",
+        "design/art-prompts.json",
+        "design/art-direction.md",
+        "design/art-direction.md"
+      ],
+      "tool_errors": [],
+      "artifact_review": {
+        "status": "fail",
+        "classification": "agent",
+        "critique": "Portrait page conflicts with an ultra-wide background prompt; only Argo has a specific camera angle; Argo II prompt assumes modernized surfaces and changed geometry without photographs."
+      },
+      "complete_pass": false
+    },
+    {
+      "run_id": "usefulcharts-theme-spark-3-20260912",
+      "cohort": "A",
+      "model": {
+        "model": "openai-codex/gpt-5.3-codex-spark",
+        "thinking": "high",
+        "mode": "json",
+        "timeoutSeconds": 240
+      },
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 117,
+        "payloadSha256": "b3cf32a812489b7cca483004856fafbc4940b9bb389f5acdefcdc063269ebcd8"
+      },
+      "execution_pass": true,
+      "artifact_paths_pass": true,
+      "outputs": [
+        {
+          "path": "design/art-direction.md",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 5392,
+          "sha256": "4ef677b37d972a7bfd0176240cf19c880db0acd76f21d60575f30c5d89309c1b",
+          "error": null
+        },
+        {
+          "path": "design/art-prompts.json",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 8072,
+          "sha256": "e6a0c330b8098fa5a398f4b22fd3d28125efd5a4424babeae041c5b5b94728f5",
+          "error": null
+        }
+      ],
+      "payload_unchanged": true,
+      "observed_models": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.3-codex-spark"
+        }
+      ],
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/thematic-art-direction.md",
+        "skills/usefulcharts-style/references/information-design.md",
+        "skills/usefulcharts-style/references/knowledge-density.md",
+        "design/art-direction.md",
+        "design/art-prompts.json",
+        "design/art-direction.md",
+        "design/art-prompts.json"
+      ],
+      "tool_errors": [],
+      "artifact_review": {
+        "status": "fail",
+        "classification": "agent",
+        "critique": "Argo includes a forward wake inside the image prompt. Argo II fallback requires silhouette variation before source photographs establish any design difference."
+      },
+      "complete_pass": false
+    },
+    {
+      "run_id": "usefulcharts-theme-b-spark-1-20260912",
+      "cohort": "B",
+      "model": {
+        "model": "openai-codex/gpt-5.3-codex-spark",
+        "thinking": "high",
+        "mode": "json",
+        "timeoutSeconds": 240
+      },
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 117,
+        "payloadSha256": "fd03bcbd84d079770f69f5c862e1ff2d7787660b32c7d3e8154e58f22a255e8d"
+      },
+      "execution_pass": true,
+      "artifact_paths_pass": true,
+      "outputs": [
+        {
+          "path": "design/art-direction.md",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 4893,
+          "sha256": "0bf70f0dbc03e4860101a246899308368d4d33c976d23b4263eb757e157fa7d8",
+          "error": null
+        },
+        {
+          "path": "design/art-prompts.json",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 8300,
+          "sha256": "369f3c3d7ab149f9ed3bdc46ba548ed8bc8c5b3dac4dada43fd5db85450a1d3d",
+          "error": null
+        }
+      ],
+      "payload_unchanged": true,
+      "observed_models": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.3-codex-spark"
+        }
+      ],
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/information-design.md",
+        "skills/usefulcharts-style/references/thematic-art-direction.md",
+        "skills/usefulcharts-style/references/knowledge-density.md",
+        "design/art-direction.md",
+        "design/art-prompts.json",
+        "design/art-prompts.json",
+        "design/art-direction.md"
+      ],
+      "tool_errors": [],
+      "artifact_review": {
+        "status": "fail",
+        "classification": "agent",
+        "critique": "Raster trails are now excluded, but no shared camera is defined for all five assets and Argo II is assumed to belong to a sibling design lineage. Expansion count is inconsistent (95 additional versus 90 later)."
+      },
+      "complete_pass": false
+    },
+    {
+      "run_id": "usefulcharts-theme-b-spark-2-20260912",
+      "cohort": "B",
+      "model": {
+        "model": "openai-codex/gpt-5.3-codex-spark",
+        "thinking": "high",
+        "mode": "json",
+        "timeoutSeconds": 240
+      },
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 117,
+        "payloadSha256": "fd03bcbd84d079770f69f5c862e1ff2d7787660b32c7d3e8154e58f22a255e8d"
+      },
+      "execution_pass": true,
+      "artifact_paths_pass": true,
+      "outputs": [
+        {
+          "path": "design/art-direction.md",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 4950,
+          "sha256": "a76130d56fc9b4d77fc72660ac7226fd77a66778c2a050698a9303da6b544168",
+          "error": null
+        },
+        {
+          "path": "design/art-prompts.json",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 7910,
+          "sha256": "8edd568cdbdc2eb7f635400fadd24b9b47c5e6c93a4a43e556f9e140a7373757",
+          "error": null
+        }
+      ],
+      "payload_unchanged": true,
+      "observed_models": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.3-codex-spark"
+        }
+      ],
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "design/art-direction.md",
+        "design/art-prompts.json",
+        "design/art-direction.md",
+        "design/art-prompts.json"
+      ],
+      "tool_errors": [],
+      "artifact_review": {
+        "status": "fail",
+        "classification": "agent",
+        "critique": "The runtime skips the required thematic guide. Kestrel is prompted as faster than explorers and with motion blur; Argo II is forced to have structural variation; background/context enters individual asset prompts."
+      },
+      "complete_pass": false
+    },
+    {
+      "run_id": "usefulcharts-theme-b-spark-3-20260912",
+      "cohort": "B",
+      "model": {
+        "model": "openai-codex/gpt-5.3-codex-spark",
+        "thinking": "high",
+        "mode": "json",
+        "timeoutSeconds": 240
+      },
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 117,
+        "payloadSha256": "fd03bcbd84d079770f69f5c862e1ff2d7787660b32c7d3e8154e58f22a255e8d"
+      },
+      "execution_pass": true,
+      "artifact_paths_pass": true,
+      "outputs": [
+        {
+          "path": "design/art-direction.md",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 5515,
+          "sha256": "246ab117a6726b13b125304e21b12d4c074894097dc53d380af1892c4c8c2fff",
+          "error": null
+        },
+        {
+          "path": "design/art-prompts.json",
+          "containedInWorkspace": true,
+          "exists": true,
+          "isFile": true,
+          "sizeBytes": 8627,
+          "sha256": "8e2e52c42a1e18974a24af331ffb8056fb7914fe15db52c2e4523c1ca5a86026",
+          "error": null
+        }
+      ],
+      "payload_unchanged": true,
+      "observed_models": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.3-codex-spark"
+        }
+      ],
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/thematic-art-direction.md",
+        "skills/usefulcharts-style/references/knowledge-density.md",
+        "skills/usefulcharts-style/references/information-design.md",
+        "design/art-direction.md",
+        "design/art-prompts.json",
+        "design/art-direction.md",
+        "design/art-prompts.json"
+      ],
+      "tool_errors": [],
+      "artifact_review": {
+        "status": "fail",
+        "classification": "agent",
+        "critique": "Shared camera/lighting and no-trail instructions improve. Argo II is still called next-generation and required to be a different design in a precondition; distinct hull identity does not establish either fact."
+      },
+      "complete_pass": false
+    }
+  ],
+  "limitation": "No images are generated by these tests; no final-art quality or model ranking is inferred."
+}

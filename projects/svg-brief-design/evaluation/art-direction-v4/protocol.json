@@ -1,0 +1,43 @@
+{
+  "version": "4.0.0",
+  "scope": "Public evaluator development; no private cohort or skill promotion. Retrospective quality standard is broader than the original generation brief.",
+  "hypothesis": "Explicit positive art-direction evidence distinguishes curated refinement from merely functional output without provenance or resemblance rewards.",
+  "population": {
+    "current_outputs": 18,
+    "public_reference_artworks": 6,
+    "reference_crop_controls": 6,
+    "synthetic_controls": 4
+  },
+  "judges": {
+    "visual_critic": "openai-codex/gpt-6-astra",
+    "thinking": "high",
+    "decision_maker": "typesafe/jev-1.13"
+  },
+  "retries": 0,
+  "max_visual_calls": 34,
+  "max_jev_calls": 60,
+  "configuration_candidates": 1,
+  "blinding": "Anonymous single-artifact critiques and judgments. Source labels, paths, file size, source path count, prior scores and target identities withheld. No artwork in the skill.",
+  "primary_checks": {
+    "reference_above_task_generated_mean_minimum": 5,
+    "reference_mean_gap_minimum": 15,
+    "generated_full_credit_maximum": 1,
+    "crop_gap_minimum": 10,
+    "crop_controls_passing_minimum": 5,
+    "paired_order_agreement_minimum": 5
+  },
+  "synthetic_checks": {
+    "refined_above_rough_minimum": 15,
+    "minimal_refined_minimum": 75,
+    "wrong_subject_maximum": 0,
+    "invalid_svg_maximum": 0
+  },
+  "pairwise": "One fixed middle-by-trial-name generated output per task against its reference; both A/B orders, using the independently collected critiques, 12 calls. Diagnostic crosscheck, not independent human truth.",
+  "frozen_input_report_sha256": "35c2aa0f15ce4a900296b3148a545be8187120d53cb83e03bebffcc28bd00c18",
+  "quality_context": "Review as a finished, art-directed monochrome vector asset for professional editorial or design use. Assess deliberate proportions, optical balance, coherent shape language, purposeful detail and refinement. A recognizable subject and valid SVG alone do not establish professional quality. Minimal, technical and organic styles can all be excellent.",
+  "known_limitations": [
+    "Six previously visible task families; calibration is not a held-out generalization test.",
+    "User supplied corpus-level preference; no per-artifact human labels or inter-rater reliability.",
+    "Jev reads visual critique text, not pixels; changing critic and rubric is a combined intervention."
+  ]
+}

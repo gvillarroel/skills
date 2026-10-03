@@ -1,0 +1,2760 @@
+{
+  "title": "Star Trek · Starships Through Time",
+  "version": "1.0",
+  "as_of": "2026-09-12",
+  "continuity": "Prime",
+  "scope": "Selected individual spacecraft, not complete fleet inventories or class production runs.",
+  "date_policy": "Earth calendar chronology, interpreted from screen dates, stardates and relative dialogue. Unknown construction/launch dates are null. Selected attested years are not exhaustive service endpoints.",
+  "ships": [
+    {
+      "id": "phoenix",
+      "name": "Phoenix",
+      "design": "Warp prototype",
+      "registry": "Prototype",
+      "operator": "Earth",
+      "chapter": "early",
+      "construction": [
+        2063
+      ],
+      "launch": 2063,
+      "launch_kind": "launch",
+      "shipyard": "Bozeman, Montana",
+      "observations": [
+        2063
+      ],
+      "service": null,
+      "endpoint": null,
+      "special": [],
+      "note": "Cochrane's first human warp flight: 5 April. A converted missile, built in Montana.",
+      "credit": "First Contact",
+      "source": "phoenix",
+      "qualifier": null,
+      "shape": "phoenix",
+      "important": true
+    },
+    {
+      "id": "t-plana-hath",
+      "name": "T'Plana-Hath",
+      "design": "Vulcan survey ship",
+      "registry": "Registry not stated",
+      "operator": "Vulcan",
+      "chapter": "early",
+      "construction": null,
+      "launch": null,
+      "launch_kind": "launch",
+      "shipyard": null,
+      "observations": [
+        2063
+      ],
+      "service": null,
+      "endpoint": null,
+      "special": [],
+      "note": "Detects Phoenix's warp signature; its landing initiates public human–Vulcan contact.",
+      "credit": "First Contact",
+      "source": "t-plana-hath",
+      "qualifier": null,
+      "shape": "vulcan-lander",
+      "important": false
+    },
+    {
+      "id": "friendship-1",
+      "name": "Friendship 1",
+      "design": "Warp probe",
+      "registry": "UESPA-1",
+      "operator": "Earth",
+      "chapter": "early",
+      "construction": null,
+      "launch": 2067,
+      "launch_kind": "launch",
+      "shipyard": null,
+      "observations": [
+        2067
+      ],
+      "service": null,
+      "endpoint": null,
+      "special": [
+        {
+          "year": 2378,
+          "kind": "recovered",
+          "label": "Recovered 2378"
+        }
+      ],
+      "note": "Launched to share human knowledge. Voyager recovers its wreckage in 2378.",
+      "credit": "VOY · Friendship One",
+      "source": "friendship-1",
+      "qualifier": null,
+      "shape": "probe",
+      "important": false
+    },
+    {
+      "id": "conestoga",
+      "name": "SS Conestoga",
+      "design": "Colony transport",
+      "registry": "Conestoga type",
+      "operator": "Earth",
+      "chapter": "early",
+      "construction": null,
+      "launch": 2069,
+      "launch_kind": "launch",
+      "shipyard": null,
+      "observations": [
+        2069,
+        2078
+      ],
+      "service": [
+        2069,
+        2078
+      ],
+      "endpoint": "dismantled",
+      "special": [],
+      "note": "Nine-year voyage to Terra Nova; dismantled into buildings on arrival in 2078.",
+      "credit": "ENT · Terra Nova",
+      "source": "conestoga",
+      "qualifier": null,
+      "shape": "freighter",
+      "important": false
+    },
+    {
+      "id": "horizon",
+      "name": "ECS Horizon",
+      "design": "J-class freighter",
+      "registry": "ECS Horizon",
+      "operator": "Earth",
+      "chapter": "early",
+      "construction": null,
+      "launch": 2102,
+      "launch_kind": "commission",
+      "shipyard": null,
+      "observations": [
+        2126,
+        2153
+      ],
+      "service": null,
+      "endpoint": null,
+      "special": [],
+      "note": "Travis Mayweather's family cargo ship. His birth aboard in 2126 anchors its earlier use.",
+      "credit": "ENT · Horizon; Fortunate Son",
+      "source": "horizon",
+      "qualifier": "Commissioning in 2102 follows the ship and class histories; 2126 and 2153 are selected later attested years.",
+      "shape": "freighter",
+      "important": false
+    },
+    {
+      "id": "kumari",
+      "name": "Kumari",
+      "design": "Andorian battle cruiser",
+      "registry": "Imperial Guard",
+      "operator": "Andorian",
+      "chapter": "early",
+      "construction": null,
+      "launch": null,
+      "launch_kind": "launch",
+      "shipyard": null,
+      "observations": [
+        2142,
+        2153,
+        2154
+      ],
+      "service": null,
+      "endpoint": "destroyed",
+      "special": [],
+      "note": "Shran's command from 2142. A Romulan drone destroys the ship in 2154.",
+      "credit": "ENT · Babel One; United",
+      "source": "kumari",
+      "qualifier": null,
+      "shape": "andorian",
+      "important": false
+    },
+    {
+      "id": "nx-alpha",
+      "name": "NX-Alpha",
+      "design": "NX test vehicle",
+      "registry": "NX Project",
+      "operator": "Earth",
+      "chapter": "early",
+      "construction": null,
+      "launch": null,
+      "launch_kind": "launch",
+      "shipyard": null,
+      "observations": [
+        2143
+      ],
+      "service": null,
+      "endpoint": "destroyed",
+      "special": [],
+      "note": "A. G. Robinson exceeds warp 2; loss of the prototype exposes engine instability.",
+      "credit": "ENT · First Flight",
+      "source": "nx-alpha",
+      "qualifier": null,
+      "shape": "nx-test",
+      "important": false
+    },
+    {
+      "id": "nx-beta",
+      "name": "NX-Beta",
+      "design": "NX test vehicle",
+      "registry": "NX Project",
+      "operator": "Earth",
+      "chapter": "early",
+      "construction": null,
+      "launch": null,
+      "launch_kind": "launch",
+      "shipyard": null,
+      "observations": [
+        2143
+      ],
+      "service": null,
+      "endpoint": null,
+      "special": [],
+      "note": "Archer and Robinson reach warp 2.5 on an unauthorized test and return safely.",
+      "credit": "ENT · First Flight",
+      "source": "nx-beta",
+      "qualifier": null,
+      "shape": "nx-test",
+      "important": false
+    },
+    {
+      "id": "nx-delta",
+      "name": "NX-Delta",
+      "design": "NX test vehicle",
+      "registry": "NX Project",
+      "operator": "Earth",
+      "chapter": "early",
+      "construction": null,
+      "launch": null,
+      "launch_kind": "launch",
+      "shipyard": null,
+      "observations": [
+        2145
+      ],
+      "service": null,
+      "endpoint": null,
+      "special": [],
+      "note": "Duvall's warp 3 trial continues the engine program that leads to the NX-class.",
+      "credit": "ENT · First Flight",
+      "source": "nx-delta",
+      "qualifier": "Relative dating is approximately 2144–2145: reference pages differ by one year. The craft is mentioned, not depicted.",
+      "shape": null,
+      "important": false,
+      "uncertain_range": [
+        2144,
+        2145
+      ]
+    },
+    {
+      "id": "enterprise-nx",
+      "name": "Enterprise NX-01",
+      "design": "NX-class explorer",
+      "registry": "NX-01",
+      "operator": "Earth",
+      "chapter": "early",
+      "construction": null,
+      "launch": 2151,
+      "launch_kind": "launch",
+      "shipyard": "Earth orbital drydock",
+      "observations": [
+        2151,
+        2153,
+        2154,
+        2161
+      ],
+      "service": [
+        2151,
+        2161
+      ],
+      "endpoint": "retired",
+      "special": [],
+      "note": "Archer's warp 5 explorer fights the Xindi crisis; retired in 2161, later preserved.",
+      "credit": "ENT · Broken Bow; These Are the Voyages…",
+      "source": "enterprise-nx",
+      "qualifier": null,
+      "shape": "nx",
+      "important": true
+    },
+    {
+      "id": "fortunate",
+      "name": "ECS Fortunate",
+      "design": "Y-class freighter",
+      "registry": "ECS-2801",
+      "operator": "Earth",
+      "chapter": "early",
+      "construction": null,
+      "launch": null,
+      "launch_kind": "launch",
+      "shipyard": null,
+      "observations": [
+        2151
+      ],
+      "service": null,
+      "endpoint": null,
+      "special": [],
+      "note": "A family-operated cargo ship targeted by Nausicaan raiders. Construction year unstated.",
+      "credit": "ENT · Fortunate Son",
+      "source": "fortunate",
+      "qualifier": null,
+      "shape": "freighter",
+      "important": false
+    },
+    {
+      "id": "vahklas",
+      "name": "Vahklas",
+      "design": "Vulcan civilian ship",
+      "registry": "Vahklas type",
+      "operator": "Vulcan",
+      "chapter": "early",
+      "construction": null,
+      "launch": null,
+      "launch_kind": "launch",
+      "shipyard": null,
+      "observations": [
+        2151
+      ],
+      "service": null,
+      "endpoint": null,
+      "special": [],
+      "note": "Transports the V'tosh ka'tur. Enterprise assists with repairs during its journey.",
+      "credit": "ENT · Fusion",
+      "source": "vahklas",
+      "qualifier": null,
+      "shape": "vulcan-ring",
+      "important": false
+    },
+    {
+      "id": "d-kyr",
+      "name": "D'kyr",
+      "design": "Vulcan combat cruiser",
+      "registry": "High Command",
+      "operator": "Vulcan",
+      "chapter": "early",
+      "construction": null,
+      "launch": null,
+      "launch_kind": "launch",
+      "shipyard": null,
+      "observations": [
+        2152
+      ],
+      "service": null,
+      "endpoint": null,
+      "special": [],
+      "note": "Rendezvous ship for Enterprise's canceled mission; its crew monitors the Suliban confrontation.",
+      "credit": "ENT · Shockwave I–II",
+      "source": "d-kyr",
+      "qualifier": null,
+      "shape": "vulcan-ring",
+      "important": false
+    },
+    {
+      "id": "columbia",
+      "name": "Columbia NX-02",
+      "design": "NX-class explorer",
+      "registry": "NX-02",
+      "operator": "Earth",
+      "chapter": "early",
+      "construction": [
+        2153
+      ],
+      "launch": 2154,
+      "launch_kind": "launch",
+      "shipyard": "Earth orbital drydock",
+      "observations": [
+        2154
+      ],
+      "service": null,
+      "endpoint": null,
+      "special": [],
+      "note": "Under construction in 2153. Engine trouble delays launch; Hernandez takes command.",
+      "credit": "ENT · The Expanse; Affliction; Divergence",
+      "source": "columbia",
+      "qualifier": null,
+      "shape": "nx",
+      "important": false
+    },
+    {
+      "id": "enterprise-1701",
+      "name": "USS Enterprise",
+      "design": "Constitution → refit",
+      "registry": "NCC-1701",
+      "operator": "Federation",
+      "chapter": "classic",
+      "construction": null,
+      "launch": 2245,
+      "launch_kind": "launch",
+      "shipyard": "San Francisco Fleet Yards",
+      "observations": [
+        2245,
+        2254,
+        2259,
+        2266,
+        2270,
+        2285
+      ],
+      "service": [
+        2245,
+        2285
+      ],
+      "endpoint": "destroyed",
+      "special": [],
+      "note": "April, Pike and Kirk's ship; extensively refit in the 2270s. Scuttled above Genesis in 2285.",
+      "credit": "DIS · Brother; TOS/TAS; films I–III",
+      "source": "enterprise-1701",
+      "qualifier": null,
+      "shape": "constitution",
+      "important": true
+    },
+    {
+      "id": "shenzhou",
+      "name": "USS Shenzhou",
+      "design": "Walker-class",
+      "registry": "NCC-1227",
+      "operator": "Federation",
+      "chapter": "classic",
+      "construction": null,
+      "launch": null,
+      "launch_kind": "launch",
+      "shipyard": "San Francisco Fleet Yards",
+      "observations": [
+        2249,
+        2256
+      ],
+      "service": null,
+      "endpoint": "abandoned",
+      "special": [],
+      "note": "Georgiou's veteran vessel. Abandoned after the Battle at the Binary Stars in 2256.",
+      "credit": "DIS · The Vulcan Hello; Battle at the Binary Stars",
+      "source": "shenzhou",
+      "qualifier": "In service by 2249; construction and launch years are not established here.",
+      "shape": "walker",
+      "important": false
+    },
+    {
+      "id": "discovery",
+      "name": "USS Discovery",
+      "design": "Crossfield-class",
+      "registry": "NCC-1031 → 1031-A",
+      "operator": "Federation",
+      "chapter": "classic",
+      "construction": null,
+      "launch": 2256,
+      "launch_kind": "launch",
+      "shipyard": "San Francisco Fleet Yards",
+      "observations": [
+        2256,
+        2257,
+        2258
+      ],
+      "service": null,
+      "endpoint": "time-jump",
+      "special": [
+        {
+          "year": 3189,
+          "kind": "time-arrival",
+          "label": "3189 arrival / refit"
+        },
+        {
+          "year": 3191,
+          "kind": "active",
+          "label": "Active 3191"
+        }
+      ],
+      "note": "Spore-drive research ship. Leaves 2258 for 3189; the gap is time travel, not service.",
+      "credit": "DIS · Context Is for Kings; Such Sweet Sorrow II",
+      "source": "discovery",
+      "qualifier": "Active again in 3189–3191 and in the 33rd-century coda; the exact coda year is not used.",
+      "shape": "crossfield",
+      "important": true
+    },
+    {
+      "id": "glenn",
+      "name": "USS Glenn",
+      "design": "Crossfield-class",
+      "registry": "NCC-1030",
+      "operator": "Federation",
+      "chapter": "classic",
+      "construction": null,
+      "launch": null,
+      "launch_kind": "launch",
+      "shipyard": null,
+      "observations": [
+        2256
+      ],
+      "service": null,
+      "endpoint": "destroyed",
+      "special": [],
+      "note": "Sister ship in the spore-drive program. A failed jump kills the crew; Discovery scuttles it.",
+      "credit": "DIS · Context Is for Kings",
+      "source": "glenn",
+      "qualifier": null,
+      "shape": "crossfield",
+      "important": false
+    },
+    {
+      "id": "farragut",
+      "name": "USS Farragut",
+      "design": "Farragut type",
+      "registry": "NCC-1647",
+      "operator": "Federation",
+      "chapter": "classic",
+      "construction": null,
+      "launch": null,
+      "launch_kind": "launch",
+      "shipyard": null,
+      "observations": [
+        2257,
+        2259
+      ],
+      "service": null,
+      "endpoint": null,
+      "special": [],
+      "note": "Kirk's early posting. The 2257 cloud-creature attack kills crew, not the ship itself.",
+      "credit": "TOS · Obsession; SNW · Lost in Translation",
+      "source": "farragut",
+      "qualifier": "The 2243 launch plaque is shown in an alternate-future episode; it is not adopted as a Prime launch date here.",
+      "shape": "miranda",
+      "important": false
+    },
+    {
+      "id": "archer",
+      "name": "USS Archer",
+      "design": "Scout ship",
+      "registry": "NCC-627",
+      "operator": "Federation",
+      "chapter": "classic",
+      "construction": null,
+      "launch": null,
+      "launch_kind": "launch",
+      "shipyard": null,
+      "observations": [
+        2259
+      ],
+      "service": null,
+      "endpoint": null,
+      "special": [],
+      "note": "A three-person first-contact mission to Kiley 279 requires Enterprise's intervention.",
+      "credit": "SNW · Strange New Worlds",
+      "source": "archer",
+      "qualifier": "Often catalogued as Gral-class; a screen-neutral scout descriptor avoids implying a spoken class name.",
+      "shape": null,
+      "important": false
+    },
+    {
+      "id": "romulan-bop",
+      "name": "Romulan Bird-of-Prey",
+      "design": "23rd-century warbird",
+      "registry": "Neutral Zone attacker",
+      "operator": "Romulan",
+      "chapter": "classic",
+      "construction": null,
+      "launch": null,
+      "launch_kind": "launch",
+      "shipyard": null,
+      "observations": [
+        2266
+      ],
+      "service": null,
+      "endpoint": "destroyed",
+      "special": [],
+      "note": "Cloaked ship attacks Federation outposts; its commander destroys it after defeat.",
+      "credit": "TOS · Balance of Terror",
+      "source": "romulan-bop",
+      "qualifier": null,
+      "shape": "romulan-bop",
+      "important": false
+    },
+    {
+      "id": "constellation",
+      "name": "USS Constellation",
+      "design": "Constitution-class",
+      "registry": "NCC-1017",
+      "operator": "Federation",
+      "chapter": "classic",
+      "construction": null,
+      "launch": 2245,
+      "launch_kind": "launch",
+      "shipyard": null,
+      "observations": [
+        2261,
+        2267
+      ],
+      "service": null,
+      "endpoint": "destroyed",
+      "special": [],
+      "note": "Decker's disabled cruiser is sent inside the planet killer, destroying both vessels.",
+      "credit": "PIC · The Star Gazer plaque; SNW · Terrarium; TOS · The Doomsday Machine",
+      "source": "constellation",
+      "qualifier": "The 2245 launch is recorded on the screen commemorative plaque. Later years are selected mission attestations.",
+      "shape": "constitution",
+      "important": false
+    },
+    {
+      "id": "groth",
+      "name": "IKS Gr'oth",
+      "design": "D7 battle cruiser",
+      "registry": "Koloth's command",
+      "operator": "Klingon",
+      "chapter": "classic",
+      "construction": null,
+      "launch": null,
+      "launch_kind": "launch",
+      "shipyard": null,
+      "observations": [
+        2268
+      ],
+      "service": null,
+      "endpoint": null,
+      "special": [],
+      "note": "Confronts Enterprise at Deep Space K-7 during the tribble incident.",
+      "credit": "TOS · The Trouble with Tribbles; DS9 · Trials…",
+      "source": "groth",
+      "qualifier": null,
+      "shape": "d7",
+      "important": false
+    },
+    {
+      "id": "intrepid",
+      "name": "USS Intrepid",
+      "design": "Constitution-class",
+      "registry": "NCC-1631",
+      "operator": "Federation",
+      "chapter": "classic",
+      "construction": null,
+      "launch": null,
+      "launch_kind": "launch",
+      "shipyard": null,
+      "observations": [
+        2267,
+        2268
+      ],
+      "service": null,
+      "endpoint": "destroyed",
+      "special": [],
+      "note": "Crewed by Vulcans. Destroyed by the giant space organism in 2268.",
+      "credit": "TOS · Court Martial; The Immunity Syndrome",
+      "source": "intrepid",
+      "qualifier": null,
+      "shape": "constitution",
+      "important": false
+    },
+    {
+      "id": "defiant-1764",
+      "name": "USS Defiant",
+      "design": "Constitution-class",
+      "registry": "NCC-1764",
+      "operator": "Federation",
+      "chapter": "classic",
+      "construction": null,
+      "launch": null,
+      "launch_kind": "launch",
+      "shipyard": null,
+      "observations": [
+        2268
+      ],
+      "service": null,
+      "endpoint": "time-jump",
+      "special": [
+        {
+          "year": 2155,
+          "kind": "mirror-arrival",
+          "label": "Mirror arrival 2155"
+        }
+      ],
+      "note": "Vanishes into spatial interphase; emerges in the Mirror Universe in 2155.",
+      "credit": "TOS · The Tholian Web; ENT · In a Mirror, Darkly",
+      "source": "defiant-1764",
+      "qualifier": null,
+      "shape": "constitution",
+      "important": false
+    },
+    {
+      "id": "bozeman",
+      "name": "USS Bozeman",
+      "design": "Soyuz-class",
+      "registry": "NCC-1941",
+      "operator": "Federation",
+      "chapter": "classic",
+      "construction": null,
+      "launch": null,
+      "launch_kind": "launch",
+      "shipyard": null,
+      "observations": [
+        2278
+      ],
+      "service": null,
+      "endpoint": "time-jump",
+      "special": [
+        {
+          "year": 2368,
+          "kind": "time-arrival",
+          "label": "Reappears 2368"
+        },
+        {
+          "year": 2373,
+          "kind": "active",
+          "label": "Active 2373"
+        }
+      ],
+      "note": "Time displacement carries Bateson's ship to 2368; it later fights at Sector 001 in 2373.",
+      "credit": "TNG · Cause and Effect; First Contact",
+      "source": "bozeman",
+      "qualifier": null,
+      "shape": "soyuz",
+      "important": false
+    },
+    {
+      "id": "reliant",
+      "name": "USS Reliant",
+      "design": "Miranda-class",
+      "registry": "NCC-1864",
+      "operator": "Federation",
+      "chapter": "classic",
+      "construction": null,
+      "launch": null,
+      "launch_kind": "launch",
+      "shipyard": null,
+      "observations": [
+        2285
+      ],
+      "service": null,
+      "endpoint": "destroyed",
+      "special": [],
+      "note": "Genesis survey ship seized by Khan. Destroyed in the Mutara Nebula confrontation.",
+      "credit": "The Wrath of Khan",
+      "source": "reliant",
+      "qualifier": null,
+      "shape": "miranda",
+      "important": false
+    },
+    {
+      "id": "grissom",
+      "name": "USS Grissom",
+      "design": "Oberth-class",
+      "registry": "NCC-638",
+      "operator": "Federation",
+      "chapter": "classic",
+      "construction": null,
+      "launch": null,
+      "launch_kind": "launch",
+      "shipyard": null,
+      "observations": [
+        2285
+      ],
+      "service": null,
+      "endpoint": "destroyed",
+      "special": [],
+      "note": "Science vessel studying Genesis. Destroyed by Kruge's Bird-of-Prey.",
+      "credit": "The Search for Spock",
+      "source": "grissom",
+      "qualifier": null,
+      "shape": "oberth",
+      "important": false
+    },
+    {
+      "id": "excelsior",
+      "name": "USS Excelsior",
+      "design": "Excelsior-class",
+      "registry": "NX-2000 → NCC-2000",
+      "operator": "Federation",
+      "chapter": "classic",
+      "construction": null,
+      "launch": 2285,
+      "launch_kind": "launch",
+      "shipyard": "San Francisco Fleet Yards",
+      "observations": [
+        2285,
+        2286,
+        2293
+      ],
+      "service": null,
+      "endpoint": null,
+      "special": [
+        {
+          "year": 2401,
+          "kind": "museum",
+          "label": "Museum by 2401"
+        }
+      ],
+      "note": "Transwarp prototype becomes Sulu's command. Preserved at the Fleet Museum by 2401.",
+      "credit": "Films III, IV, VI; PIC · The Bounty",
+      "source": "excelsior",
+      "qualifier": "Launch in 2285 follows the dedication plaque; construction start and final retirement are not established here. Later dots are selected sightings.",
+      "shape": "excelsior",
+      "important": true
+    },
+    {
+      "id": "bounty",
+      "name": "Kruge's ship / HMS Bounty",
+      "design": "Klingon Bird-of-Prey",
+      "registry": "Captured by Kirk",
+      "operator": "Klingon",
+      "chapter": "classic",
+      "construction": null,
+      "launch": null,
+      "launch_kind": "launch",
+      "shipyard": null,
+      "observations": [
+        2285,
+        2286
+      ],
+      "service": null,
+      "endpoint": "abandoned",
+      "special": [
+        {
+          "year": 2401,
+          "kind": "museum",
+          "label": "Museum by 2401"
+        }
+      ],
+      "note": "Captured in 2285; transports whales from 1986 in 2286. Later recovered for the museum.",
+      "credit": "Films III–IV; PIC · The Bounty",
+      "source": "bounty",
+      "qualifier": null,
+      "shape": "bird-of-prey",
+      "important": false
+    },
+    {
+      "id": "enterprise-a",
+      "name": "USS Enterprise-A",
+      "design": "Constitution II-class",
+      "registry": "NCC-1701-A",
+      "operator": "Federation",
+      "chapter": "classic",
+      "construction": null,
+      "launch": 2286,
+      "launch_kind": "commission",
+      "shipyard": "San Francisco Fleet Yards",
+      "observations": [
+        2286,
+        2287,
+        2293
+      ],
+      "service": [
+        2286,
+        2293
+      ],
+      "endpoint": "retired",
+      "special": [],
+      "note": "Commissioned for Kirk's crew. The Khitomer mission precedes retirement in 2293.",
+      "credit": "The Voyage Home; The Undiscovered Country",
+      "source": "enterprise-a",
+      "qualifier": null,
+      "shape": "constitution-refit",
+      "important": true
+    },
+    {
+      "id": "kronos-one",
+      "name": "Kronos One",
+      "design": "K't'inga-class",
+      "registry": "Chancellor's flagship",
+      "operator": "Klingon",
+      "chapter": "classic",
+      "construction": null,
+      "launch": null,
+      "launch_kind": "launch",
+      "shipyard": null,
+      "observations": [
+        2293
+      ],
+      "service": null,
+      "endpoint": null,
+      "special": [],
+      "note": "Carries Gorkon to peace talks; the attack on the ship triggers the Khitomer conspiracy.",
+      "credit": "The Undiscovered Country",
+      "source": "kronos-one",
+      "qualifier": null,
+      "shape": "d7",
+      "important": false
+    },
+    {
+      "id": "enterprise-b",
+      "name": "USS Enterprise-B",
+      "design": "Excelsior-class refit",
+      "registry": "NCC-1701-B",
+      "operator": "Federation",
+      "chapter": "classic",
+      "construction": null,
+      "launch": 2293,
+      "launch_kind": "launch",
+      "shipyard": "Earth Spacedock",
+      "observations": [
+        2293
+      ],
+      "service": null,
+      "endpoint": null,
+      "special": [],
+      "note": "Harriman's maiden voyage rescues El-Aurian refugees from the Nexus. Final fate unstated.",
+      "credit": "Generations",
+      "source": "enterprise-b",
+      "qualifier": null,
+      "shape": "excelsior",
+      "important": true
+    },
+    {
+      "id": "stargazer-old",
+      "name": "USS Stargazer",
+      "design": "Constellation-class",
+      "registry": "NCC-2893",
+      "operator": "Federation",
+      "chapter": "modern",
+      "construction": null,
+      "launch": 2326,
+      "launch_kind": "commission",
+      "shipyard": null,
+      "observations": [
+        2333,
+        2355
+      ],
+      "service": null,
+      "endpoint": "abandoned",
+      "special": [
+        {
+          "year": 2364,
+          "kind": "recovered",
+          "label": "Recovered 2364"
+        },
+        {
+          "year": 2401,
+          "kind": "museum",
+          "label": "Museum by 2401"
+        }
+      ],
+      "note": "Picard commands from 2333; abandoned at Maxia in 2355, recovered in 2364, later a museum ship.",
+      "credit": "TNG · The Battle; PIC · The Bounty",
+      "source": "stargazer-old",
+      "qualifier": null,
+      "shape": "constellation",
+      "important": false
+    },
+    {
+      "id": "enterprise-c",
+      "name": "USS Enterprise-C",
+      "design": "Ambassador-class",
+      "registry": "NCC-1701-C",
+      "operator": "Federation",
+      "chapter": "modern",
+      "construction": null,
+      "launch": null,
+      "launch_kind": "launch",
+      "shipyard": null,
+      "observations": [
+        2344
+      ],
+      "service": null,
+      "endpoint": "destroyed",
+      "special": [],
+      "note": "Garrett's ship returns from an altered 2366 to defend Narendra III; destroyed in 2344.",
+      "credit": "TNG · Yesterday's Enterprise",
+      "source": "enterprise-c",
+      "qualifier": null,
+      "shape": "ambassador",
+      "important": true
+    },
+    {
+      "id": "enterprise-d",
+      "name": "USS Enterprise-D",
+      "design": "Galaxy-class",
+      "registry": "NCC-1701-D",
+      "operator": "Federation",
+      "chapter": "modern",
+      "construction": null,
+      "launch": 2363,
+      "launch_kind": "launch",
+      "shipyard": "Utopia Planitia, Mars",
+      "observations": [
+        2363,
+        2371
+      ],
+      "service": [
+        2363,
+        2371
+      ],
+      "endpoint": "wrecked",
+      "special": [
+        {
+          "year": 2401,
+          "kind": "reactivated",
+          "label": "Reactivated 2401"
+        },
+        {
+          "year": 2402,
+          "kind": "museum",
+          "label": "Museum 2402"
+        }
+      ],
+      "note": "Lost at Veridian III in 2371. Saucer rebuilt with Syracuse parts; back in action in 2401.",
+      "credit": "TNG; Generations; PIC · Võx; The Last Generation",
+      "source": "enterprise-d",
+      "qualifier": "2363 follows the dedication plaque and commissioning chronology. The conflicting 2362 promotional-log date is not used. Restoration is not active service.",
+      "shape": "galaxy",
+      "important": true
+    },
+    {
+      "id": "phoenix-nebula",
+      "name": "USS Phoenix",
+      "design": "Nebula-class",
+      "registry": "NCC-65420",
+      "operator": "Federation",
+      "chapter": "modern",
+      "construction": null,
+      "launch": 2363,
+      "launch_kind": "commission",
+      "shipyard": "40 Eridani A",
+      "observations": [
+        2363,
+        2367
+      ],
+      "service": null,
+      "endpoint": null,
+      "special": [],
+      "note": "Built by Yoyodyne at 40 Eridani A; Maxwell's unauthorized Cardassian attacks occur in 2367.",
+      "credit": "TNG · The Wounded (including dedication plaque)",
+      "source": "phoenix-nebula",
+      "qualifier": null,
+      "shape": "nebula",
+      "important": false
+    },
+    {
+      "id": "yamato",
+      "name": "USS Yamato",
+      "design": "Galaxy-class",
+      "registry": "NCC-71807",
+      "operator": "Federation",
+      "chapter": "modern",
+      "construction": null,
+      "launch": null,
+      "launch_kind": "launch",
+      "shipyard": null,
+      "observations": [
+        2365
+      ],
+      "service": null,
+      "endpoint": "destroyed",
+      "special": [],
+      "note": "Iconian software disables safeguards and destroys the ship. Other hull graphics use different registries.",
+      "credit": "TNG · Contagion",
+      "source": "yamato",
+      "qualifier": null,
+      "shape": "galaxy",
+      "important": false
+    },
+    {
+      "id": "saratoga",
+      "name": "USS Saratoga",
+      "design": "Miranda-class",
+      "registry": "NCC-31911",
+      "operator": "Federation",
+      "chapter": "modern",
+      "construction": null,
+      "launch": null,
+      "launch_kind": "launch",
+      "shipyard": null,
+      "observations": [
+        2367
+      ],
+      "service": null,
+      "endpoint": "destroyed",
+      "special": [],
+      "note": "Destroyed at Wolf 359. Benjamin and Jake Sisko escape; Jennifer Sisko dies aboard.",
+      "credit": "DS9 · Emissary",
+      "source": "saratoga",
+      "qualifier": null,
+      "shape": "miranda",
+      "important": false
+    },
+    {
+      "id": "rio-grande",
+      "name": "USS Rio Grande",
+      "design": "Danube-class runabout",
+      "registry": "NCC-72452",
+      "operator": "Federation",
+      "chapter": "modern",
+      "construction": null,
+      "launch": null,
+      "launch_kind": "launch",
+      "shipyard": null,
+      "observations": [
+        2369,
+        2373,
+        2375
+      ],
+      "service": null,
+      "endpoint": null,
+      "special": [],
+      "note": "Sisko and Dax discover the Bajoran wormhole aboard this DS9 support craft in 2369.",
+      "credit": "DS9 · Emissary; series service record",
+      "source": "rio-grande",
+      "qualifier": null,
+      "shape": "runabout",
+      "important": false
+    },
+    {
+      "id": "odyssey",
+      "name": "USS Odyssey",
+      "design": "Galaxy-class",
+      "registry": "NCC-71832",
+      "operator": "Federation",
+      "chapter": "modern",
+      "construction": null,
+      "launch": null,
+      "launch_kind": "launch",
+      "shipyard": null,
+      "observations": [
+        2370
+      ],
+      "service": null,
+      "endpoint": "destroyed",
+      "special": [],
+      "note": "A Jem'Hadar suicide attack destroys the ship during a Gamma Quadrant rescue mission.",
+      "credit": "DS9 · The Jem'Hadar",
+      "source": "odyssey",
+      "qualifier": null,
+      "shape": "galaxy",
+      "important": false
+    },
+    {
+      "id": "defiant-first",
+      "name": "USS Defiant · prototype",
+      "design": "Defiant-class escort",
+      "registry": "NX-74205",
+      "operator": "Federation",
+      "chapter": "modern",
+      "construction": null,
+      "launch": 2370,
+      "launch_kind": "launch",
+      "shipyard": "Antares Ship Yards",
+      "observations": [
+        2370,
+        2371,
+        2375
+      ],
+      "service": null,
+      "endpoint": "destroyed",
+      "special": [],
+      "note": "Launched in 2370; assigned to DS9 in 2371. Destroyed at the second Battle of Chin'toka.",
+      "credit": "DS9 · The Search; The Changing Face of Evil",
+      "source": "defiant-first",
+      "qualifier": "Trials and storage precede DS9 service. Development began in 2366; this is not a 2366 launch.",
+      "shape": "defiant",
+      "important": true
+    },
+    {
+      "id": "equinox",
+      "name": "USS Equinox",
+      "design": "Nova-class",
+      "registry": "NCC-72381",
+      "operator": "Federation",
+      "chapter": "modern",
+      "construction": null,
+      "launch": 2370,
+      "launch_kind": "launch",
+      "shipyard": "Utopia Planitia, Mars",
+      "observations": [
+        2370,
+        2371,
+        2376
+      ],
+      "service": null,
+      "endpoint": "destroyed",
+      "special": [],
+      "note": "Science ship pulled into the Delta Quadrant. Destroyed after exploiting nucleogenic lifeforms.",
+      "credit": "VOY · Equinox I–II",
+      "source": "equinox",
+      "qualifier": null,
+      "shape": "nova",
+      "important": false
+    },
+    {
+      "id": "voyager",
+      "name": "USS Voyager",
+      "design": "Intrepid-class",
+      "registry": "NCC-74656",
+      "operator": "Federation",
+      "chapter": "modern",
+      "construction": null,
+      "launch": 2371,
+      "launch_kind": "launch",
+      "shipyard": "Utopia Planitia → McKinley",
+      "observations": [
+        2371,
+        2378
+      ],
+      "service": [
+        2371,
+        2378
+      ],
+      "endpoint": null,
+      "special": [
+        {
+          "year": 2381,
+          "kind": "museum",
+          "label": "Preserved by 2381"
+        }
+      ],
+      "note": "Seven-year Delta Quadrant journey ends in 2378. Preserved by 2381; no 2404 Prime return.",
+      "credit": "VOY · Relativity; Endgame; LD · Twovix",
+      "source": "voyager",
+      "qualifier": null,
+      "shape": "intrepid",
+      "important": true
+    },
+    {
+      "id": "enterprise-e",
+      "name": "USS Enterprise-E",
+      "design": "Sovereign-class",
+      "registry": "NCC-1701-E",
+      "operator": "Federation",
+      "chapter": "modern",
+      "construction": null,
+      "launch": 2372,
+      "launch_kind": "launch",
+      "shipyard": "San Francisco Fleet Yards",
+      "observations": [
+        2372,
+        2373,
+        2379
+      ],
+      "service": null,
+      "endpoint": null,
+      "special": [],
+      "note": "Fights the Borg and Shinzon. Its later loss of availability is mentioned; exact fate is unstated.",
+      "credit": "First Contact; Nemesis; PIC · Võx",
+      "source": "enterprise-e",
+      "qualifier": "Selected screen-attested active years only. No 2385/2386 retirement or destruction date is inferred from promotional logs.",
+      "shape": "sovereign",
+      "important": true
+    },
+    {
+      "id": "valiant",
+      "name": "USS Valiant",
+      "design": "Defiant-class",
+      "registry": "NCC-74210",
+      "operator": "Federation",
+      "chapter": "modern",
+      "construction": null,
+      "launch": 2372,
+      "launch_kind": "launch",
+      "shipyard": "Antares Ship Yards",
+      "observations": [
+        2373,
+        2374
+      ],
+      "service": null,
+      "endpoint": "destroyed",
+      "special": [],
+      "note": "A cadet training cruise becomes a wartime command; a Dominion battleship destroys it.",
+      "credit": "DS9 · Valiant",
+      "source": "valiant",
+      "qualifier": null,
+      "shape": "defiant",
+      "important": false
+    },
+    {
+      "id": "prometheus",
+      "name": "USS Prometheus",
+      "design": "Prometheus-class",
+      "registry": "NX-59650 / NX-74913",
+      "operator": "Federation",
+      "chapter": "modern",
+      "construction": null,
+      "launch": 2374,
+      "launch_kind": "launch",
+      "shipyard": "Beta Antares Ship Yards",
+      "observations": [
+        2374,
+        2378
+      ],
+      "service": null,
+      "endpoint": null,
+      "special": [],
+      "note": "Experimental vessel with multi-vector assault mode; recovered from Romulan hijackers.",
+      "credit": "VOY · Message in a Bottle; Endgame",
+      "source": "prometheus",
+      "qualifier": null,
+      "shape": "prometheus",
+      "important": false
+    },
+    {
+      "id": "delta-flyer-1",
+      "name": "Delta Flyer · first hull",
+      "design": "Delta Flyer type",
+      "registry": "Built aboard Voyager",
+      "operator": "Federation",
+      "chapter": "modern",
+      "construction": [
+        2375
+      ],
+      "launch": 2375,
+      "launch_kind": "built",
+      "shipyard": "USS Voyager",
+      "observations": [
+        2375,
+        2377
+      ],
+      "service": [
+        2375,
+        2377
+      ],
+      "endpoint": "destroyed",
+      "special": [],
+      "note": "Paris's custom craft is built in the Delta Quadrant. Destroyed during the Borg infiltration.",
+      "credit": "VOY · Extreme Risk; Unimatrix Zero",
+      "source": "delta-flyer-1",
+      "qualifier": null,
+      "shape": "flyer",
+      "important": false
+    },
+    {
+      "id": "defiant-second",
+      "name": "USS Sao Paulo → Defiant",
+      "design": "Defiant-class",
+      "registry": "NCC-75633 → NX-74205",
+      "operator": "Federation",
+      "chapter": "modern",
+      "construction": null,
+      "launch": 2375,
+      "launch_kind": "launch",
+      "shipyard": null,
+      "observations": [
+        2375,
+        2384
+      ],
+      "service": null,
+      "endpoint": null,
+      "special": [
+        {
+          "year": 2401,
+          "kind": "museum",
+          "label": "Museum by 2401"
+        }
+      ],
+      "note": "New hull replaces the lost Defiant in 2375. Still active in 2384; museum ship by 2401.",
+      "credit": "DS9 · The Dogs of War; PRO · Supernova I; PIC",
+      "source": "defiant-second",
+      "qualifier": null,
+      "shape": "defiant",
+      "important": true
+    },
+    {
+      "id": "delta-flyer-2",
+      "name": "Delta Flyer · second hull",
+      "design": "Delta Flyer type",
+      "registry": "Built aboard Voyager",
+      "operator": "Federation",
+      "chapter": "modern",
+      "construction": [
+        2377
+      ],
+      "launch": 2377,
+      "launch_kind": "built",
+      "shipyard": "USS Voyager",
+      "observations": [
+        2377,
+        2378
+      ],
+      "service": null,
+      "endpoint": null,
+      "special": [],
+      "note": "Replacement built after the first Flyer's loss; Paris and Torres race it in Drive.",
+      "credit": "VOY · Drive; Endgame",
+      "source": "delta-flyer-2",
+      "qualifier": null,
+      "shape": "flyer",
+      "important": false
+    },
+    {
+      "id": "titan",
+      "name": "USS Titan",
+      "design": "Luna-class",
+      "registry": "NCC-80102",
+      "operator": "Federation",
+      "chapter": "modern",
+      "construction": null,
+      "launch": null,
+      "launch_kind": "launch",
+      "shipyard": null,
+      "observations": [
+        2379,
+        2380,
+        2382
+      ],
+      "service": null,
+      "endpoint": null,
+      "special": [],
+      "note": "Riker's command after Nemesis. Helps Cerritos against the Pakleds; a different hull from Titan-A.",
+      "credit": "Nemesis; LD · No Small Parts; The New Next Generation",
+      "source": "titan",
+      "qualifier": "2379 is Riker's command appointment, not a documented launch. Conflicting promotional retirement dates are excluded.",
+      "shape": "luna",
+      "important": false
+    },
+    {
+      "id": "cerritos",
+      "name": "USS Cerritos",
+      "design": "California-class",
+      "registry": "NCC-75567",
+      "operator": "Federation",
+      "chapter": "modern",
+      "construction": null,
+      "launch": null,
+      "launch_kind": "launch",
+      "shipyard": null,
+      "observations": [
+        2380,
+        2381,
+        2382
+      ],
+      "service": null,
+      "endpoint": null,
+      "special": [],
+      "note": "Second-contact workhorse under Freeman, then Ransom. Active through the Lower Decks finale.",
+      "credit": "LD · Second Contact; The New Next Generation",
+      "source": "cerritos",
+      "qualifier": "The 2371 launch given in a licensed crew handbook is not a screen-canon launch anchor.",
+      "shape": "california",
+      "important": true
+    },
+    {
+      "id": "solvang",
+      "name": "USS Solvang",
+      "design": "California-class",
+      "registry": "NCC-12101",
+      "operator": "Federation",
+      "chapter": "modern",
+      "construction": null,
+      "launch": 2380,
+      "launch_kind": "launch",
+      "shipyard": null,
+      "observations": [
+        2380
+      ],
+      "service": null,
+      "endpoint": "destroyed",
+      "special": [],
+      "note": "A brand-new California-class vessel; destroyed with all hands by a Pakled clumpship.",
+      "credit": "LD · No Small Parts",
+      "source": "solvang",
+      "qualifier": null,
+      "shape": "california",
+      "important": false
+    },
+    {
+      "id": "aledo",
+      "name": "USS Aledo",
+      "design": "Texas-class",
+      "registry": "NA-01",
+      "operator": "Federation",
+      "chapter": "modern",
+      "construction": null,
+      "launch": 2381,
+      "launch_kind": "launch",
+      "shipyard": null,
+      "observations": [
+        2381
+      ],
+      "service": null,
+      "endpoint": "destroyed",
+      "special": [],
+      "note": "Autonomous prototype attacks its creator; the California-class fleet destroys it.",
+      "credit": "LD · The Stars at Night",
+      "source": "aledo",
+      "qualifier": null,
+      "shape": "texas",
+      "important": false
+    },
+    {
+      "id": "protostar",
+      "name": "USS Protostar",
+      "design": "Protostar-class prototype",
+      "registry": "NX-76884",
+      "operator": "Federation",
+      "chapter": "modern",
+      "construction": null,
+      "launch": 2382,
+      "launch_kind": "launch",
+      "shipyard": "San Francisco Fleet Yards",
+      "observations": [
+        2382,
+        2383,
+        2384
+      ],
+      "service": null,
+      "endpoint": "destroyed",
+      "special": [],
+      "note": "Launched for Chakotay; recovered by Dal's crew. Self-destructs in 2384 to stop the living construct.",
+      "credit": "PRO · Kobayashi; Supernova II; season 2",
+      "source": "protostar",
+      "qualifier": "Time travel also places this same hull before launch and after its destruction, including the repaired 2384–2385 loop. Those visits are not a continuous production/service interval.",
+      "shape": "protostar",
+      "important": true
+    },
+    {
+      "id": "dauntless",
+      "name": "USS Dauntless",
+      "design": "Dauntless-class",
+      "registry": "NCC-80816",
+      "operator": "Federation",
+      "chapter": "modern",
+      "construction": null,
+      "launch": null,
+      "launch_kind": "launch",
+      "shipyard": null,
+      "observations": [
+        2384
+      ],
+      "service": null,
+      "endpoint": null,
+      "special": [],
+      "note": "Janeway's quantum-slipstream ship searches for Protostar. Distinct from Arturis's false Starfleet vessel.",
+      "credit": "PRO · A Moral Star II; Supernova I–II",
+      "source": "dauntless",
+      "qualifier": null,
+      "shape": "dauntless",
+      "important": false
+    },
+    {
+      "id": "voyager-a",
+      "name": "USS Voyager-A",
+      "design": "Lamarr-class",
+      "registry": "NCC-74656-A",
+      "operator": "Federation",
+      "chapter": "modern",
+      "construction": null,
+      "launch": 2384,
+      "launch_kind": "commission",
+      "shipyard": null,
+      "observations": [
+        2384,
+        2385
+      ],
+      "service": null,
+      "endpoint": null,
+      "special": [],
+      "note": "New Voyager launched six years after the original returns. Janeway's command passes to Chakotay.",
+      "credit": "PRO · Into the Breach; Ouroboros II",
+      "source": "voyager-a",
+      "qualifier": null,
+      "shape": "lamarr",
+      "important": true
+    },
+    {
+      "id": "prodigy",
+      "name": "USS Prodigy",
+      "design": "Protostar-class",
+      "registry": "NCC-81084",
+      "operator": "Federation",
+      "chapter": "modern",
+      "construction": null,
+      "launch": 2385,
+      "launch_kind": "launch",
+      "shipyard": null,
+      "observations": [
+        2385
+      ],
+      "service": null,
+      "endpoint": null,
+      "special": [],
+      "note": "A new production-class ship for the young crew's exploration mission after the prototype's loss.",
+      "credit": "PRO · Ouroboros II",
+      "source": "prodigy",
+      "qualifier": null,
+      "shape": "protostar",
+      "important": false
+    },
+    {
+      "id": "titan-a-g",
+      "name": "USS Titan-A → Enterprise-G",
+      "design": "Constitution III-class",
+      "registry": "NCC-80102-A → 1701-G",
+      "operator": "Federation",
+      "chapter": "modern",
+      "construction": null,
+      "launch": null,
+      "launch_kind": "launch",
+      "shipyard": null,
+      "observations": [
+        2396,
+        2401,
+        2402
+      ],
+      "service": null,
+      "endpoint": null,
+      "special": [],
+      "note": "Shaw commands from 2396. Renamed Enterprise-G in 2402, with Seven of Nine in command.",
+      "credit": "PIC · The Next Generation; The Last Generation",
+      "source": "titan-a-g",
+      "qualifier": "2396 is anchored by Shaw's five years in command, not a directly stated construction date. The 2402 change is a rename of the same hull.",
+      "shape": "constitution-iii",
+      "important": true
+    },
+    {
+      "id": "stargazer-new",
+      "name": "USS Stargazer",
+      "design": "Sagan-class",
+      "registry": "NCC-82893",
+      "operator": "Federation",
+      "chapter": "modern",
+      "construction": null,
+      "launch": null,
+      "launch_kind": "launch",
+      "shipyard": null,
+      "observations": [
+        2401
+      ],
+      "service": null,
+      "endpoint": null,
+      "special": [],
+      "note": "Rios's four-nacelle command investigates the anomaly and encounters Jurati's Borg faction.",
+      "credit": "PIC · The Star Gazer; Farewell",
+      "source": "stargazer-new",
+      "qualifier": null,
+      "shape": "sagan",
+      "important": false
+    },
+    {
+      "id": "enterprise-f",
+      "name": "USS Enterprise-F",
+      "design": "Odyssey-class",
+      "registry": "NCC-1701-F",
+      "operator": "Federation",
+      "chapter": "modern",
+      "construction": null,
+      "launch": null,
+      "launch_kind": "launch",
+      "shipyard": null,
+      "observations": [
+        2401
+      ],
+      "service": null,
+      "endpoint": null,
+      "special": [],
+      "note": "Shelby's Frontier Day flagship. Scheduled for early decommissioning; shown in action in 2401.",
+      "credit": "PIC · The Next Generation; Võx",
+      "source": "enterprise-f",
+      "qualifier": "2386 launch comes from promotional Picard Logs, not the screened story; no 2386–2401 bar is asserted.",
+      "shape": "odyssey",
+      "important": true
+    },
+    {
+      "id": "krayton",
+      "name": "Krayton",
+      "design": "D'Kora-class marauder",
+      "registry": "DaiMon Tog",
+      "operator": "Ferengi",
+      "chapter": "neighbors",
+      "construction": null,
+      "launch": null,
+      "launch_kind": "launch",
+      "shipyard": null,
+      "observations": [
+        2366
+      ],
+      "service": null,
+      "endpoint": null,
+      "special": [],
+      "note": "Tog's ship abducts Lwaxana and Deanna Troi and Commander Riker at Betazed.",
+      "credit": "TNG · Ménage à Troi",
+      "source": "krayton",
+      "qualifier": null,
+      "shape": "ferengi",
+      "important": false
+    },
+    {
+      "id": "bortas",
+      "name": "IKS Bortas",
+      "design": "Vor'cha-class",
+      "registry": "Gowron's flagship",
+      "operator": "Klingon",
+      "chapter": "neighbors",
+      "construction": null,
+      "launch": null,
+      "launch_kind": "launch",
+      "shipyard": null,
+      "observations": [
+        2366,
+        2367,
+        2369
+      ],
+      "service": null,
+      "endpoint": null,
+      "special": [],
+      "note": "Gowron's command during the succession crisis. Not the 22nd-century D5 with the same name.",
+      "credit": "TNG · The Defector; Redemption; Rightful Heir",
+      "source": "bortas",
+      "qualifier": null,
+      "shape": "vorcha",
+      "important": false
+    },
+    {
+      "id": "trager",
+      "name": "Trager",
+      "design": "Galor-class",
+      "registry": "Gul Macet",
+      "operator": "Cardassian",
+      "chapter": "neighbors",
+      "construction": null,
+      "launch": null,
+      "launch_kind": "launch",
+      "shipyard": null,
+      "observations": [
+        2367
+      ],
+      "service": null,
+      "endpoint": null,
+      "special": [],
+      "note": "Macet's cruiser participates in the pursuit of Maxwell's rogue USS Phoenix.",
+      "credit": "TNG · The Wounded",
+      "source": "trager",
+      "qualifier": null,
+      "shape": "galor",
+      "important": false
+    },
+    {
+      "id": "wolf-cube",
+      "name": "Borg cube · Wolf 359",
+      "design": "Cube",
+      "registry": "Locutus's vessel",
+      "operator": "Borg",
+      "chapter": "neighbors",
+      "construction": null,
+      "launch": null,
+      "launch_kind": "launch",
+      "shipyard": null,
+      "observations": [
+        2366,
+        2367
+      ],
+      "service": null,
+      "endpoint": "destroyed",
+      "special": [],
+      "note": "Abducts Picard and destroys 39 ships at Wolf 359; destroyed near Earth in 2367.",
+      "credit": "TNG · The Best of Both Worlds I–II",
+      "source": "wolf-cube",
+      "qualifier": null,
+      "shape": "cube",
+      "important": false
+    },
+    {
+      "id": "khazara",
+      "name": "IRW Khazara",
+      "design": "D'deridex-class",
+      "registry": "Commander Toreth",
+      "operator": "Romulan",
+      "chapter": "neighbors",
+      "construction": null,
+      "launch": null,
+      "launch_kind": "launch",
+      "shipyard": null,
+      "observations": [
+        2369
+      ],
+      "service": null,
+      "endpoint": null,
+      "special": [],
+      "note": "Warbird used to smuggle Romulan dissidents while Troi impersonates a Tal Shiar officer.",
+      "credit": "TNG · Face of the Enemy",
+      "source": "khazara",
+      "qualifier": null,
+      "shape": "dderidex",
+      "important": false
+    },
+    {
+      "id": "koranak",
+      "name": "Koranak",
+      "design": "Keldon-class",
+      "registry": "Obsidian Order",
+      "operator": "Cardassian",
+      "chapter": "neighbors",
+      "construction": null,
+      "launch": null,
+      "launch_kind": "launch",
+      "shipyard": null,
+      "observations": [
+        2371
+      ],
+      "service": null,
+      "endpoint": "destroyed",
+      "special": [],
+      "note": "Part of the secret strike fleet; destroyed in the Dominion ambush at the Omarion Nebula.",
+      "credit": "DS9 · The Die Is Cast",
+      "source": "koranak",
+      "qualifier": null,
+      "shape": "keldon",
+      "important": false
+    },
+    {
+      "id": "negh-var",
+      "name": "IKS Negh'Var",
+      "design": "Negh'Var-class",
+      "registry": "Klingon flagship",
+      "operator": "Klingon",
+      "chapter": "neighbors",
+      "construction": null,
+      "launch": null,
+      "launch_kind": "launch",
+      "shipyard": null,
+      "observations": [
+        2372,
+        2373
+      ],
+      "service": null,
+      "endpoint": null,
+      "special": [],
+      "note": "Introduced as the new flagship for the invasion of Cardassia; later attacks Deep Space 9.",
+      "credit": "DS9 · The Way of the Warrior; By Inferno's Light",
+      "source": "negh-var",
+      "qualifier": null,
+      "shape": "neghvar",
+      "important": false
+    },
+    {
+      "id": "rotarran",
+      "name": "IKS Rotarran",
+      "design": "Klingon Bird-of-Prey",
+      "registry": "Martok's command",
+      "operator": "Klingon",
+      "chapter": "neighbors",
+      "construction": null,
+      "launch": null,
+      "launch_kind": "launch",
+      "shipyard": null,
+      "observations": [
+        2373,
+        2374,
+        2375
+      ],
+      "service": null,
+      "endpoint": null,
+      "special": [],
+      "note": "Martok restores its demoralized crew in 2373 and retains it as his wartime flagship.",
+      "credit": "DS9 · Soldiers of the Empire; Inter Arma…",
+      "source": "rotarran",
+      "qualifier": null,
+      "shape": "bird-of-prey",
+      "important": false
+    },
+    {
+      "id": "captured-jemhadar",
+      "name": "Captured Jem'Hadar ship",
+      "design": "Jem'Hadar attack ship",
+      "registry": "Sisko's captured vessel",
+      "operator": "Dominion",
+      "chapter": "neighbors",
+      "construction": null,
+      "launch": null,
+      "launch_kind": "launch",
+      "shipyard": null,
+      "observations": [
+        2373,
+        2374
+      ],
+      "service": null,
+      "endpoint": "wrecked",
+      "special": [],
+      "note": "Salvaged by Starfleet in 2373; used against a ketracel-white depot, then crashes in 2374.",
+      "credit": "DS9 · The Ship; A Time to Stand; Rocks and Shoals",
+      "source": "captured-jemhadar",
+      "qualifier": null,
+      "shape": "jemhadar",
+      "important": false
+    },
+    {
+      "id": "sector-cube",
+      "name": "Borg cube · Sector 001",
+      "design": "Cube",
+      "registry": "Queen's assault vessel",
+      "operator": "Borg",
+      "chapter": "neighbors",
+      "construction": null,
+      "launch": null,
+      "launch_kind": "launch",
+      "shipyard": null,
+      "observations": [
+        2373
+      ],
+      "service": null,
+      "endpoint": "destroyed",
+      "special": [],
+      "note": "Destroyed by the fleet at Earth. Its escaping sphere travels back to 2063.",
+      "credit": "First Contact",
+      "source": "sector-cube",
+      "qualifier": null,
+      "shape": "cube",
+      "important": false
+    },
+    {
+      "id": "valdore",
+      "name": "Valdore",
+      "design": "Valdore-type warbird",
+      "registry": "Commander Donatra",
+      "operator": "Romulan",
+      "chapter": "neighbors",
+      "construction": null,
+      "launch": null,
+      "launch_kind": "launch",
+      "shipyard": null,
+      "observations": [
+        2379
+      ],
+      "service": null,
+      "endpoint": null,
+      "special": [],
+      "note": "Supports Enterprise-E against Scimitar in the Bassen Rift; damaged but survives.",
+      "credit": "Nemesis",
+      "source": "valdore",
+      "qualifier": null,
+      "shape": "valdore",
+      "important": false
+    },
+    {
+      "id": "scimitar",
+      "name": "Scimitar",
+      "design": "Reman warbird",
+      "registry": "Shinzon's flagship",
+      "operator": "Reman",
+      "chapter": "neighbors",
+      "construction": null,
+      "launch": null,
+      "launch_kind": "launch",
+      "shipyard": "Remus · year unstated",
+      "observations": [
+        2379
+      ],
+      "service": null,
+      "endpoint": "destroyed",
+      "special": [],
+      "note": "Built in secret at Remus. Its thalaron weapon is destroyed by Data, taking the ship with it.",
+      "credit": "Nemesis",
+      "source": "scimitar",
+      "qualifier": null,
+      "shape": "scimitar",
+      "important": false
+    },
+    {
+      "id": "artifact",
+      "name": "The Artifact",
+      "design": "Disconnected Borg cube",
+      "registry": "Borg → Romulan control",
+      "operator": "Borg",
+      "chapter": "neighbors",
+      "construction": null,
+      "launch": null,
+      "launch_kind": "launch",
+      "shipyard": null,
+      "observations": [
+        2399
+      ],
+      "service": null,
+      "endpoint": "wrecked",
+      "special": [],
+      "note": "A reclamation site rather than an active Collective warship; flies to Coppelius and crashes.",
+      "credit": "PIC · The Impossible Box; Et in Arcadia Ego",
+      "source": "artifact",
+      "qualifier": "2399 covers Romulan reclamation and brief reactivation. Its manufacture and disconnection years are not specified here.",
+      "shape": "cube",
+      "important": false
+    },
+    {
+      "id": "voyager-j",
+      "name": "USS Voyager-J",
+      "design": "32nd-century Intrepid",
+      "registry": "NCC-74656-J",
+      "operator": "Federation",
+      "chapter": "future",
+      "construction": null,
+      "launch": null,
+      "launch_kind": "launch",
+      "shipyard": null,
+      "observations": [
+        3189,
+        3190,
+        3191
+      ],
+      "service": null,
+      "endpoint": null,
+      "special": [],
+      "note": "A later bearer of Voyager's name with detached nacelles; distinct from Janeway's hull.",
+      "credit": "DIS · Die Trying; season 4; Red Directive",
+      "source": "voyager-j",
+      "qualifier": "Selected dated observations; later appearances do not imply a 3191 retirement.",
+      "shape": "future-intrepid",
+      "important": false
+    },
+    {
+      "id": "nog",
+      "name": "USS Nog",
+      "design": "Eisenberg-class",
+      "registry": "NCC-325070",
+      "operator": "Federation",
+      "chapter": "future",
+      "construction": null,
+      "launch": null,
+      "launch_kind": "launch",
+      "shipyard": null,
+      "observations": [
+        3189
+      ],
+      "service": null,
+      "endpoint": null,
+      "special": [],
+      "note": "Part of the fleet around concealed Federation Headquarters when Discovery arrives.",
+      "credit": "DIS · Die Trying",
+      "source": "nog",
+      "qualifier": null,
+      "shape": "future-oval",
+      "important": false
+    },
+    {
+      "id": "tikhov",
+      "name": "USS Tikhov",
+      "design": "Seed-archive vessel",
+      "registry": "NCC-1067-M",
+      "operator": "Federation",
+      "chapter": "future",
+      "construction": null,
+      "launch": null,
+      "launch_kind": "launch",
+      "shipyard": null,
+      "observations": [
+        3189
+      ],
+      "service": null,
+      "endpoint": null,
+      "special": [],
+      "note": "Preserves the Federation's seed collection. A Barzan family tends the archive.",
+      "credit": "DIS · Die Trying",
+      "source": "tikhov",
+      "qualifier": null,
+      "shape": "future-oval",
+      "important": false
+    },
+    {
+      "id": "credence",
+      "name": "USS Credence",
+      "design": "Credence type",
+      "registry": "NCC-2604",
+      "operator": "Federation",
+      "chapter": "future",
+      "construction": null,
+      "launch": null,
+      "launch_kind": "launch",
+      "shipyard": null,
+      "observations": [
+        3190,
+        3191
+      ],
+      "service": null,
+      "endpoint": null,
+      "special": [],
+      "note": "Distributes dilithium as the Federation reconnects worlds after the Burn.",
+      "credit": "DIS · Choose to Live; Erigah",
+      "source": "credence",
+      "qualifier": null,
+      "shape": "future-oval",
+      "important": false
+    },
+    {
+      "id": "athena",
+      "name": "USS Athena",
+      "design": "Academy-class",
+      "registry": "NCC-392023",
+      "operator": "Federation",
+      "chapter": "future",
+      "construction": null,
+      "launch": null,
+      "launch_kind": "launch",
+      "shipyard": null,
+      "observations": [
+        3195,
+        3196
+      ],
+      "service": null,
+      "endpoint": null,
+      "special": [],
+      "note": "Spaceborne home of the reopened Starfleet Academy; serves as both campus and starship.",
+      "credit": "SA · Kids These Days; Rubincon",
+      "source": "athena",
+      "qualifier": "Academy calendar dating is disputed (3192 versus 3195–3196 in indexed references). The poster shows the 3190s as an uncertain range, not an exact launch or service interval.",
+      "shape": "academy",
+      "important": false,
+      "uncertain_range": [
+        3190,
+        3199
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "source": "enterprise-nx",
+      "target": "enterprise-1701",
+      "kind": "name-succession"
+    },
+    {
+      "source": "enterprise-1701",
+      "target": "enterprise-a",
+      "kind": "name-succession"
+    },
+    {
+      "source": "enterprise-a",
+      "target": "enterprise-b",
+      "kind": "name-succession"
+    },
+    {
+      "source": "enterprise-b",
+      "target": "enterprise-c",
+      "kind": "name-succession"
+    },
+    {
+      "source": "enterprise-c",
+      "target": "enterprise-d",
+      "kind": "name-succession"
+    },
+    {
+      "source": "enterprise-d",
+      "target": "enterprise-e",
+      "kind": "name-succession"
+    },
+    {
+      "source": "enterprise-e",
+      "target": "enterprise-f",
+      "kind": "name-succession"
+    },
+    {
+      "source": "enterprise-f",
+      "target": "titan-a-g",
+      "kind": "name-succession"
+    },
+    {
+      "source": "nx-alpha",
+      "target": "nx-beta",
+      "kind": "test-program"
+    },
+    {
+      "source": "nx-beta",
+      "target": "nx-delta",
+      "kind": "test-program"
+    },
+    {
+      "source": "nx-delta",
+      "target": "enterprise-nx",
+      "kind": "development"
+    },
+    {
+      "source": "enterprise-nx",
+      "target": "columbia",
+      "kind": "sister-ship"
+    },
+    {
+      "source": "discovery",
+      "target": "glenn",
+      "kind": "sister-ship"
+    },
+    {
+      "source": "defiant-first",
+      "target": "defiant-second",
+      "kind": "replacement-hull"
+    },
+    {
+      "source": "delta-flyer-1",
+      "target": "delta-flyer-2",
+      "kind": "replacement-hull"
+    },
+    {
+      "source": "voyager",
+      "target": "voyager-a",
+      "kind": "name-succession"
+    },
+    {
+      "source": "voyager-a",
+      "target": "voyager-j",
+      "kind": "later-name-bearer"
+    },
+    {
+      "source": "protostar",
+      "target": "prodigy",
+      "kind": "prototype-to-production"
+    },
+    {
+      "source": "titan",
+      "target": "titan-a-g",
+      "kind": "name-succession"
+    },
+    {
+      "source": "stargazer-old",
+      "target": "stargazer-new",
+      "kind": "name-succession"
+    },
+    {
+      "source": "titan-a-g",
+      "target": "titan-a-g",
+      "kind": "rename",
+      "year": 2402
+    }
+  ],
+  "sources": {
+    "phoenix": {
+      "title": "Phoenix",
+      "publisher": "Memory Alpha",
+      "url": "https://memory-alpha.fandom.com/wiki/Phoenix",
+      "evidence": "First Contact",
+      "accessed": "2026-09-12"
+    },
+    "t-plana-hath": {
+      "title": "T'Plana-Hath (starship)",
+      "publisher": "Memory Alpha",
+      "url": "https://memory-alpha.fandom.com/wiki/T%27Plana-Hath_%28starship%29",
+      "evidence": "First Contact",
+      "accessed": "2026-09-12"
+    },
+    "friendship-1": {
+      "title": "Friendship 1",
+      "publisher": "Memory Alpha",
+      "url": "https://memory-alpha.fandom.com/wiki/Friendship_1",
+      "evidence": "VOY · Friendship One",
+      "accessed": "2026-09-12"
+    },
+    "conestoga": {
+      "title": "SS Conestoga",
+      "publisher": "Memory Alpha",
+      "url": "https://memory-alpha.fandom.com/wiki/SS_Conestoga",
+      "evidence": "ENT · Terra Nova",
+      "accessed": "2026-09-12"
+    },
+    "horizon": {
+      "title": "ECS Horizon",
+      "publisher": "Memory Alpha",
+      "url": "https://memory-alpha.fandom.com/wiki/ECS_Horizon",
+      "evidence": "ENT · Horizon; Fortunate Son",
+      "accessed": "2026-09-12"
+    },
+    "kumari": {
+      "title": "Kumari",
+      "publisher": "Memory Alpha",
+      "url": "https://memory-alpha.fandom.com/wiki/Kumari",
+      "evidence": "ENT · Babel One; United",
+      "accessed": "2026-09-12"
+    },
+    "nx-alpha": {
+      "title": "NX-Alpha",
+      "publisher": "Memory Alpha",
+      "url": "https://memory-alpha.fandom.com/wiki/NX-Alpha",
+      "evidence": "ENT · First Flight",
+      "accessed": "2026-09-12"
+    },
+    "nx-beta": {
+      "title": "NX-Beta",
+      "publisher": "Memory Alpha",
+      "url": "https://memory-alpha.fandom.com/wiki/NX-Beta",
+      "evidence": "ENT · First Flight",
+      "accessed": "2026-09-12"
+    },
+    "nx-delta": {
+      "title": "NX-Delta",
+      "publisher": "Memory Alpha",
+      "url": "https://memory-alpha.fandom.com/wiki/NX-Delta",
+      "evidence": "ENT · First Flight",
+      "accessed": "2026-09-12"
+    },
+    "enterprise-nx": {
+      "title": "Enterprise (NX-01)",
+      "publisher": "Memory Alpha",
+      "url": "https://memory-alpha.fandom.com/wiki/Enterprise_%28NX-01%29",
+      "evidence": "ENT · Broken Bow; These Are the Voyages…",
+      "accessed": "2026-09-12"
+    },
+    "fortunate": {
+      "title": "ECS Fortunate",
+      "publisher": "Memory Alpha",
+      "url": "https://memory-alpha.fandom.com/wiki/ECS_Fortunate",
+      "evidence": "ENT · Fortunate Son",
+      "accessed": "2026-09-12"
+    },
+    "vahklas": {
+      "title": "Vahklas",
+      "publisher": "Memory Alpha",
+      "url": "https://memory-alpha.fandom.com/wiki/Vahklas",
+      "evidence": "ENT · Fusion",
+      "accessed": "2026-09-12"
+    },
+    "d-kyr": {
+      "title": "D'kyr",
+      "publisher": "Memory Alpha",
+      "url": "https://memory-alpha.fandom.com/wiki/D%27kyr",
+      "evidence": "ENT · Shockwave I–II",
+      "accessed": "2026-09-12"
+    },
+    "columbia": {
+      "title": "Columbia",
+      "publisher": "Memory Alpha",
+      "url": "https://memory-alpha.fandom.com/wiki/Columbia",
+      "evidence": "ENT · The Expanse; Affliction; Divergence",
+      "accessed": "2026-09-12"
+    },
+    "enterprise-1701": {
+      "title": "USS Enterprise (NCC-1701)",
+      "publisher": "Memory Alpha",
+      "url": "https://memory-alpha.fandom.com/wiki/USS_Enterprise_%28NCC-1701%29",
+      "evidence": "DIS · Brother; TOS/TAS; films I–III",
+      "accessed": "2026-09-12"
+    },
+    "shenzhou": {
+      "title": "USS Shenzhou",
+      "publisher": "Memory Alpha",
+      "url": "https://memory-alpha.fandom.com/wiki/USS_Shenzhou",
+      "evidence": "DIS · The Vulcan Hello; Battle at the Binary Stars",
+      "accessed": "2026-09-12"
+    },
+    "discovery": {
+      "title": "USS Discovery",
+      "publisher": "Memory Alpha",
+      "url": "https://memory-alpha.fandom.com/wiki/USS_Discovery",
+      "evidence": "DIS · Context Is for Kings; Such Sweet Sorrow II",
+      "accessed": "2026-09-12"
+    },
+    "glenn": {
+      "title": "USS Glenn",
+      "publisher": "Memory Alpha",
+      "url": "https://memory-alpha.fandom.com/wiki/USS_Glenn",
+      "evidence": "DIS · Context Is for Kings",
+      "accessed": "2026-09-12"
+    },
+    "farragut": {
+      "title": "USS Farragut (NCC-1647)",
+      "publisher": "Memory Alpha",
+      "url": "https://memory-alpha.fandom.com/wiki/USS_Farragut_%28NCC-1647%29",
+      "evidence": "TOS · Obsession; SNW · Lost in Translation",
+      "accessed": "2026-09-12"
+    },
+    "archer": {
+      "title": "USS Archer (NCC-627)",
+      "publisher": "Memory Alpha",
+      "url": "https://memory-alpha.fandom.com/wiki/USS_Archer_%28NCC-627%29",
+      "evidence": "SNW · Strange New Worlds",
+      "accessed": "2026-09-12"
+    },
+    "romulan-bop": {
+      "title": "Unnamed Romulan Birds-of-Prey",
+      "publisher": "Memory Alpha",
+      "url": "https://memory-alpha.fandom.com/wiki/Unnamed_Romulan_Birds-of-Prey",
+      "evidence": "TOS · Balance of Terror",
+      "accessed": "2026-09-12"
+    },
+    "constellation": {
+      "title": "USS Constellation (NCC-1017)",
+      "publisher": "Memory Alpha",
+      "url": "https://memory-alpha.fandom.com/wiki/USS_Constellation_%28NCC-1017%29",
+      "evidence": "PIC · The Star Gazer plaque; SNW · Terrarium; TOS · The Doomsday Machine",
+      "accessed": "2026-09-12"
+    },
+    "groth": {
+      "title": "IKS Gr'oth",
+      "publisher": "Memory Alpha",
+      "url": "https://memory-alpha.fandom.com/wiki/IKS_Gr%27oth",
+      "evidence": "TOS · The Trouble with Tribbles; DS9 · Trials…",
+      "accessed": "2026-09-12"
+    },
+    "intrepid": {
+      "title": "USS Intrepid (NCC-1631)",
+      "publisher": "Memory Alpha",
+      "url": "https://memory-alpha.fandom.com/wiki/NCC-1831",
+      "evidence": "TOS · Court Martial; The Immunity Syndrome",
+      "accessed": "2026-09-12"
+    },
+    "defiant-1764": {
+      "title": "USS Defiant (NCC-1764)",
+      "publisher": "Memory Alpha",
+      "url": "https://memory-alpha.fandom.com/wiki/USS_Defiant_%28NCC-1764%29",
+      "evidence": "TOS · The Tholian Web; ENT · In a Mirror, Darkly",
+      "accessed": "2026-09-12"
+    },
+    "bozeman": {
+      "title": "USS Bozeman",
+      "publisher": "Memory Alpha",
+      "url": "https://memory-alpha.fandom.com/wiki/USS_Bozeman",
+      "evidence": "TNG · Cause and Effect; First Contact",
+      "accessed": "2026-09-12"
+    },
+    "reliant": {
+      "title": "USS Reliant (NCC-1864)",
+      "publisher": "Memory Alpha",
+      "url": "https://memory-alpha.fandom.com/wiki/USS_Reliant_%28NCC-1864%29",
+      "evidence": "The Wrath of Khan",
+      "accessed": "2026-09-12"
+    },
+    "grissom": {
+      "title": "USS Grissom (NCC-638)",
+      "publisher": "Memory Alpha",
+      "url": "https://memory-alpha.fandom.com/wiki/USS_Grissom_%28NCC-638%29",
+      "evidence": "The Search for Spock",
+      "accessed": "2026-09-12"
+    },
+    "excelsior": {
+      "title": "USS Excelsior (NCC-2000)",
+      "publisher": "Memory Alpha",
+      "url": "https://memory-alpha.fandom.com/wiki/USS_Excelsior_%28NCC-2000%29",
+      "evidence": "Films III, IV, VI; PIC · The Bounty",
+      "accessed": "2026-09-12"
+    },
+    "bounty": {
+      "title": "HMS Bounty",
+      "publisher": "Memory Alpha",
+      "url": "https://memory-alpha.fandom.com/wiki/HMS_Bounty",
+      "evidence": "Films III–IV; PIC · The Bounty",
+      "accessed": "2026-09-12"
+    },
+    "enterprise-a": {
+      "title": "USS Enterprise (NCC-1701-A)",
+      "publisher": "Memory Alpha",
+      "url": "https://memory-alpha.fandom.com/wiki/USS_Enterprise_%28NCC-1701-A%29",
+      "evidence": "The Voyage Home; The Undiscovered Country",
+      "accessed": "2026-09-12"
+    },
+    "kronos-one": {
+      "title": "Kronos One",
+      "publisher": "Memory Alpha",
+      "url": "https://memory-alpha.fandom.com/wiki/Kronos_One",
+      "evidence": "The Undiscovered Country",
+      "accessed": "2026-09-12"
+    },
+    "enterprise-b": {
+      "title": "USS Enterprise (NCC-1701-B)",
+      "publisher": "Memory Alpha",
+      "url": "https://memory-alpha.fandom.com/wiki/USS_Enterprise_%28NCC-1701-B%29",
+      "evidence": "Generations",
+      "accessed": "2026-09-12"
+    },
+    "stargazer-old": {
+      "title": "USS Stargazer (NCC-2893)",
+      "publisher": "Memory Alpha",
+      "url": "https://memory-alpha.fandom.com/wiki/USS_Stargazer_%28NCC-2893%29",
+      "evidence": "TNG · The Battle; PIC · The Bounty",
+      "accessed": "2026-09-12"
+    },
+    "enterprise-c": {
+      "title": "USS Enterprise (NCC-1701-C)",
+      "publisher": "Memory Alpha",
+      "url": "https://memory-alpha.fandom.com/wiki/USS_Enterprise_%28NCC-1701-C%29",
+      "evidence": "TNG · Yesterday's Enterprise",
+      "accessed": "2026-09-12"
+    },
+    "enterprise-d": {
+      "title": "USS Enterprise (NCC-1701-D)",
+      "publisher": "Memory Alpha",
+      "url": "https://memory-alpha.fandom.com/wiki/USS_Enterprise_%28NCC-1701-D%29",
+      "evidence": "TNG; Generations; PIC · Võx; The Last Generation",
+      "accessed": "2026-09-12"
+    },
+    "phoenix-nebula": {
+      "title": "USS Phoenix",
+      "publisher": "Memory Alpha",
+      "url": "https://memory-alpha.fandom.com/wiki/USS_Phoenix",
+      "evidence": "TNG · The Wounded (including dedication plaque)",
+      "accessed": "2026-09-12"
+    },
+    "yamato": {
+      "title": "USS Yamato",
+      "publisher": "Memory Alpha",
+      "url": "https://memory-alpha.fandom.com/wiki/USS_Yamato",
+      "evidence": "TNG · Contagion",
+      "accessed": "2026-09-12"
+    },
+    "saratoga": {
+      "title": "USS Saratoga (NCC-31911)",
+      "publisher": "Memory Alpha",
+      "url": "https://memory-alpha.fandom.com/wiki/USS_Saratoga_%28NCC-31911%29",
+      "evidence": "DS9 · Emissary",
+      "accessed": "2026-09-12"
+    },
+    "rio-grande": {
+      "title": "USS Rio Grande",
+      "publisher": "Memory Alpha",
+      "url": "https://memory-alpha.fandom.com/wiki/USS_Rio_Grande",
+      "evidence": "DS9 · Emissary; series service record",
+      "accessed": "2026-09-12"
+    },
+    "odyssey": {
+      "title": "USS Odyssey",
+      "publisher": "Memory Alpha",
+      "url": "https://memory-alpha.fandom.com/wiki/USS_Odyssey",
+      "evidence": "DS9 · The Jem'Hadar",
+      "accessed": "2026-09-12"
+    },
+    "defiant-first": {
+      "title": "USS Defiant (2370)",
+      "publisher": "Memory Alpha",
+      "url": "https://memory-alpha.fandom.com/wiki/USS_Defiant_%282370%29",
+      "evidence": "DS9 · The Search; The Changing Face of Evil",
+      "accessed": "2026-09-12"
+    },
+    "equinox": {
+      "title": "USS Equinox",
+      "publisher": "Memory Alpha",
+      "url": "https://memory-alpha.fandom.com/wiki/USS_Equinox",
+      "evidence": "VOY · Equinox I–II",
+      "accessed": "2026-09-12"
+    },
+    "voyager": {
+      "title": "USS Voyager",
+      "publisher": "Memory Alpha",
+      "url": "https://memory-alpha.fandom.com/wiki/USS_Voyager",
+      "evidence": "VOY · Relativity; Endgame; LD · Twovix",
+      "accessed": "2026-09-12"
+    },
+    "enterprise-e": {
+      "title": "USS Enterprise (NCC-1701-E)",
+      "publisher": "Memory Alpha",
+      "url": "https://memory-alpha.fandom.com/wiki/USS_Enterprise_%28NCC-1701-E%29",
+      "evidence": "First Contact; Nemesis; PIC · Võx",
+      "accessed": "2026-09-12"
+    },
+    "valiant": {
+      "title": "USS Valiant (NCC-74210)",
+      "publisher": "Memory Alpha",
+      "url": "https://memory-alpha.fandom.com/wiki/USS_Valiant_%28NCC-74210%29",
+      "evidence": "DS9 · Valiant",
+      "accessed": "2026-09-12"
+    },
+    "prometheus": {
+      "title": "USS Prometheus (Prometheus class)",
+      "publisher": "Memory Alpha",
+      "url": "https://memory-alpha.fandom.com/wiki/USS_Prometheus_%28Prometheus_class%29",
+      "evidence": "VOY · Message in a Bottle; Endgame",
+      "accessed": "2026-09-12"
+    },
+    "delta-flyer-1": {
+      "title": "Delta Flyer (2375)",
+      "publisher": "Memory Alpha",
+      "url": "https://memory-alpha.fandom.com/wiki/Delta_Flyer_%282375%29",
+      "evidence": "VOY · Extreme Risk; Unimatrix Zero",
+      "accessed": "2026-09-12"
+    },
+    "defiant-second": {
+      "title": "USS Defiant (2375)",
+      "publisher": "Memory Alpha",
+      "url": "https://memory-alpha.fandom.com/wiki/USS_Defiant_%282375%29",
+      "evidence": "DS9 · The Dogs of War; PRO · Supernova I; PIC",
+      "accessed": "2026-09-12"
+    },
+    "delta-flyer-2": {
+      "title": "Delta Flyer (2377)",
+      "publisher": "Memory Alpha",
+      "url": "https://memory-alpha.fandom.com/wiki/Delta_Flyer_%282377%29",
+      "evidence": "VOY · Drive; Endgame",
+      "accessed": "2026-09-12"
+    },
+    "titan": {
+      "title": "USS Titan (NCC-80102)",
+      "publisher": "Memory Alpha",
+      "url": "https://memory-alpha.fandom.com/wiki/USS_Titan_%28NCC-80102%29",
+      "evidence": "Nemesis; LD · No Small Parts; The New Next Generation",
+      "accessed": "2026-09-12"
+    },
+    "cerritos": {
+      "title": "USS Cerritos",
+      "publisher": "Memory Alpha",
+      "url": "https://memory-alpha.fandom.com/wiki/USS_Cerritos",
+      "evidence": "LD · Second Contact; The New Next Generation",
+      "accessed": "2026-09-12"
+    },
+    "solvang": {
+      "title": "USS Solvang",
+      "publisher": "Memory Alpha",
+      "url": "https://memory-alpha.fandom.com/wiki/USS_Solvang",
+      "evidence": "LD · No Small Parts",
+      "accessed": "2026-09-12"
+    },
+    "aledo": {
+      "title": "USS Aledo",
+      "publisher": "Memory Alpha",
+      "url": "https://memory-alpha.fandom.com/wiki/USS_Aledo",
+      "evidence": "LD · The Stars at Night",
+      "accessed": "2026-09-12"
+    },
+    "protostar": {
+      "title": "USS Protostar",
+      "publisher": "Memory Alpha",
+      "url": "https://memory-alpha.fandom.com/wiki/USS_Protostar",
+      "evidence": "PRO · Kobayashi; Supernova II; season 2",
+      "accessed": "2026-09-12"
+    },
+    "dauntless": {
+      "title": "USS Dauntless (NCC-80816)",
+      "publisher": "Memory Alpha",
+      "url": "https://memory-alpha.fandom.com/wiki/USS_Dauntless_%28NCC-80816%29",
+      "evidence": "PRO · A Moral Star II; Supernova I–II",
+      "accessed": "2026-09-12"
+    },
+    "voyager-a": {
+      "title": "USS Voyager (NCC-74656-A)",
+      "publisher": "Memory Alpha",
+      "url": "https://memory-alpha.fandom.com/wiki/USS_Voyager_%28NCC-74656-A%29",
+      "evidence": "PRO · Into the Breach; Ouroboros II",
+      "accessed": "2026-09-12"
+    },
+    "prodigy": {
+      "title": "USS Prodigy",
+      "publisher": "Memory Alpha",
+      "url": "https://memory-alpha.fandom.com/wiki/USS_Prodigy",
+      "evidence": "PRO · Ouroboros II",
+      "accessed": "2026-09-12"
+    },
+    "titan-a-g": {
+      "title": "USS Enterprise (NCC-1701-G)",
+      "publisher": "Memory Alpha",
+      "url": "https://memory-alpha.fandom.com/wiki/USS_Enterprise_%28NCC-1701-G%29",
+      "evidence": "PIC · The Next Generation; The Last Generation",
+      "accessed": "2026-09-12"
+    },
+    "stargazer-new": {
+      "title": "USS Stargazer (NCC-82893)",
+      "publisher": "Memory Alpha",
+      "url": "https://memory-alpha.fandom.com/wiki/USS_Stargazer_%28NCC-82893%29",
+      "evidence": "PIC · The Star Gazer; Farewell",
+      "accessed": "2026-09-12"
+    },
+    "enterprise-f": {
+      "title": "USS Enterprise (NCC-1701-F)",
+      "publisher": "Memory Alpha",
+      "url": "https://memory-alpha.fandom.com/wiki/USS_Enterprise_%28NCC-1701-F%29",
+      "evidence": "PIC · The Next Generation; Võx",
+      "accessed": "2026-09-12"
+    },
+    "krayton": {
+      "title": "Krayton",
+      "publisher": "Memory Alpha",
+      "url": "https://memory-alpha.fandom.com/wiki/Krayton",
+      "evidence": "TNG · Ménage à Troi",
+      "accessed": "2026-09-12"
+    },
+    "bortas": {
+      "title": "IKS Bortas (Vor'cha class)",
+      "publisher": "Memory Alpha",
+      "url": "https://memory-alpha.fandom.com/wiki/IKS_Bortas_%28Vor%27cha_class%29",
+      "evidence": "TNG · The Defector; Redemption; Rightful Heir",
+      "accessed": "2026-09-12"
+    },
+    "trager": {
+      "title": "Trager",
+      "publisher": "Memory Alpha",
+      "url": "https://memory-alpha.fandom.com/wiki/Trager",
+      "evidence": "TNG · The Wounded",
+      "accessed": "2026-09-12"
+    },
+    "wolf-cube": {
+      "title": "Battle of Wolf 359",
+      "publisher": "Memory Alpha",
+      "url": "https://memory-alpha.fandom.com/wiki/Battle_of_Wolf_359",
+      "evidence": "TNG · The Best of Both Worlds I–II",
+      "accessed": "2026-09-12"
+    },
+    "khazara": {
+      "title": "IRW Khazara",
+      "publisher": "Memory Alpha",
+      "url": "https://memory-alpha.fandom.com/wiki/IRW_Khazara",
+      "evidence": "TNG · Face of the Enemy",
+      "accessed": "2026-09-12"
+    },
+    "koranak": {
+      "title": "Koranak",
+      "publisher": "Memory Alpha",
+      "url": "https://memory-alpha.fandom.com/wiki/Koranak",
+      "evidence": "DS9 · The Die Is Cast",
+      "accessed": "2026-09-12"
+    },
+    "negh-var": {
+      "title": "IKS Negh'Var",
+      "publisher": "Memory Alpha",
+      "url": "https://memory-alpha.fandom.com/wiki/IKS_Negh%27var",
+      "evidence": "DS9 · The Way of the Warrior; By Inferno's Light",
+      "accessed": "2026-09-12"
+    },
+    "rotarran": {
+      "title": "IKS Rotarran",
+      "publisher": "Memory Alpha",
+      "url": "https://memory-alpha.fandom.com/wiki/IKS_Rotarran",
+      "evidence": "DS9 · Soldiers of the Empire; Inter Arma…",
+      "accessed": "2026-09-12"
+    },
+    "captured-jemhadar": {
+      "title": "Sisko's attack ship",
+      "publisher": "Memory Alpha",
+      "url": "https://memory-alpha.fandom.com/wiki/Sisko%27s_attack_ship",
+      "evidence": "DS9 · The Ship; A Time to Stand; Rocks and Shoals",
+      "accessed": "2026-09-12"
+    },
+    "sector-cube": {
+      "title": "Unnamed Borg cubes",
+      "publisher": "Memory Alpha",
+      "url": "https://memory-alpha.fandom.com/wiki/Unnamed_Borg_cubes",
+      "evidence": "First Contact",
+      "accessed": "2026-09-12"
+    },
+    "valdore": {
+      "title": "Valdore (starship)",
+      "publisher": "Memory Alpha",
+      "url": "https://memory-alpha.fandom.com/wiki/Valdore_%28starship%29",
+      "evidence": "Nemesis",
+      "accessed": "2026-09-12"
+    },
+    "scimitar": {
+      "title": "Scimitar",
+      "publisher": "Memory Alpha",
+      "url": "https://memory-alpha.fandom.com/wiki/Scimitar",
+      "evidence": "Nemesis",
+      "accessed": "2026-09-12"
+    },
+    "artifact": {
+      "title": "Artifact (Borg cube)",
+      "publisher": "Memory Alpha",
+      "url": "https://memory-alpha.fandom.com/wiki/Artifact_%28Borg_cube%29",
+      "evidence": "PIC · The Impossible Box; Et in Arcadia Ego",
+      "accessed": "2026-09-12"
+    },
+    "voyager-j": {
+      "title": "USS Voyager (NCC-74656-J)",
+      "publisher": "Memory Alpha",
+      "url": "https://memory-alpha.fandom.com/wiki/USS_Voyager_%28NCC-74656-J%29",
+      "evidence": "DIS · Die Trying; season 4; Red Directive",
+      "accessed": "2026-09-12"
+    },
+    "nog": {
+      "title": "USS Nog",
+      "publisher": "Memory Alpha",
+      "url": "https://memory-alpha.fandom.com/wiki/USS_Nog",
+      "evidence": "DIS · Die Trying",
+      "accessed": "2026-09-12"
+    },
+    "tikhov": {
+      "title": "USS Tikhov",
+      "publisher": "Memory Alpha",
+      "url": "https://memory-alpha.fandom.com/wiki/USS_Tikhov",
+      "evidence": "DIS · Die Trying",
+      "accessed": "2026-09-12"
+    },
+    "credence": {
+      "title": "USS Credence",
+      "publisher": "Memory Alpha",
+      "url": "https://memory-alpha.fandom.com/wiki/USS_Credence",
+      "evidence": "DIS · Choose to Live; Erigah",
+      "accessed": "2026-09-12"
+    },
+    "athena": {
+      "title": "USS Athena",
+      "publisher": "Memory Alpha",
+      "url": "https://memory-alpha.fandom.com/wiki/USS_Athena",
+      "evidence": "SA · Kids These Days; Rubincon",
+      "accessed": "2026-09-12"
+    },
+    "official-enterprises": {
+      "title": "It's the Enterprise! Starfleet's Finest Flagships",
+      "publisher": "StarTrek.com",
+      "url": "https://www.startrek.com/news/enterprise-starfleets-finest-flagships",
+      "evidence": "Editorial cross-check of Enterprise identities and succession",
+      "accessed": "2026-09-12"
+    },
+    "official-first-contact": {
+      "title": "Sector 001: Federation Starships of First Contact",
+      "publisher": "StarTrek.com",
+      "url": "https://www.startrek.com/news/sector-001-federation-starships-of-first-contact",
+      "evidence": "Sovereign-class introduction and 2373 battle",
+      "accessed": "2026-09-12"
+    }
+  }
+}

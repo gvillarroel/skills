@@ -1,0 +1,29 @@
+{
+  "version": "6.0.0",
+  "purpose": "Learn the user's explicit criteria for economy, material line character, integrated figure-ground construction and compact identification.",
+  "scope": "Public development recalibration on unchanged visual evidence; not independent validation or skill improvement.",
+  "visual_evidence": "Reuse all 32 completed anonymous A/B critiques, including order/crop controls. Strip prior global recommendations and contrast summaries; keep located side observations. No historical image or score changed.",
+  "new_jev_calls": 36,
+  "new_visual_calls": 0,
+  "native_probe_calls": {
+    "observer": 1,
+    "jev": 1
+  },
+  "retries": 0,
+  "external_recovery": "At most one replacement for an independently documented provider/transport contract failure; never repeat an accepted semantic result. Preserve exact inputs, failed attempt and first evaluable result.",
+  "scoring": "Keep the six weights and v5.2 category intervals unchanged; Jev decisions use purpose-specific technique profiles.",
+  "acceptance": {
+    "focus_original_preferences_min": 7,
+    "focus_generated_preferences_max": 0,
+    "family_upper_means_below_90_min": 5,
+    "mean_upper_gap_min": 15,
+    "crop_upper_below_80_min": 5,
+    "order_worst_interval_distance_max": 10,
+    "order_cases_passing_min": 5,
+    "textual_context_switch_controls_required": 4,
+    "wrong_subject_zero": true,
+    "rough_below_75": true
+  },
+  "human_feedback": "The user identified stronger technique in the purchased vintage diagrams, space insignia, circles and labels. These are development preference labels, unavailable to the judge; no claim of blinded independent preference discovery.",
+  "boundaries": "Originals remain evaluator-only. User-facing technique introductions describe purpose and medium without reproducing shapes or adding reference SVGs to the skill."
+}

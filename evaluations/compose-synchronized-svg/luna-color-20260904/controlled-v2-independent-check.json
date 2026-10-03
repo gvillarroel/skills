@@ -1,0 +1,174 @@
+{
+  "ok": true,
+  "topic": "water",
+  "svg": "projects\\svg-quality-luna\\artifacts\\after-v2\\water.svg",
+  "sha256": "503b16effeb1041e7a778fbf41bdc6a783c537eb92903cf8dbb79c91232b6e79",
+  "states": [
+    {
+      "name": "normal",
+      "sourceValues": {
+        "daily-demand": 120,
+        "leakage-fraction": 0.15,
+        "treatment-capacity": 150
+      },
+      "expected": {
+        "processed": 120,
+        "leakage": 18.0,
+        "delivered": 102.0,
+        "unmet": 0,
+        "load": 0.8
+      },
+      "actual": {
+        "processed": 120,
+        "delivered": 102,
+        "leakage": 18,
+        "unmet": 0,
+        "load": 0.8
+      },
+      "boundMarkCount": 26,
+      "errors": []
+    },
+    {
+      "name": "peak",
+      "sourceValues": {
+        "daily-demand": 180,
+        "leakage-fraction": 0.2,
+        "treatment-capacity": 150
+      },
+      "expected": {
+        "processed": 150,
+        "leakage": 30.0,
+        "delivered": 120.0,
+        "unmet": 30,
+        "load": 1.2
+      },
+      "actual": {
+        "processed": 150,
+        "delivered": 120,
+        "leakage": 30,
+        "unmet": 30,
+        "load": 1.2
+      },
+      "boundMarkCount": 26,
+      "errors": []
+    },
+    {
+      "name": "repair",
+      "sourceValues": {
+        "daily-demand": 180,
+        "leakage-fraction": 0.08,
+        "treatment-capacity": 150
+      },
+      "expected": {
+        "processed": 150,
+        "leakage": 12.0,
+        "delivered": 138.0,
+        "unmet": 30,
+        "load": 1.2
+      },
+      "actual": {
+        "processed": 150,
+        "delivered": 138,
+        "leakage": 12,
+        "unmet": 30,
+        "load": 1.2
+      },
+      "boundMarkCount": 26,
+      "errors": []
+    },
+    {
+      "name": "zero",
+      "sourceValues": {
+        "daily-demand": 0,
+        "leakage-fraction": 0.15,
+        "treatment-capacity": 150
+      },
+      "expected": {
+        "processed": 0,
+        "leakage": 0.0,
+        "delivered": 0.0,
+        "unmet": 0,
+        "load": 0.0
+      },
+      "actual": {
+        "processed": 0,
+        "delivered": 0,
+        "leakage": 0,
+        "unmet": 0,
+        "load": 0
+      },
+      "boundMarkCount": 26,
+      "errors": []
+    }
+  ],
+  "errors": [],
+  "inputMapping": {
+    "demand": "daily-demand",
+    "capacity": "treatment-capacity",
+    "fraction": "leakage-fraction"
+  },
+  "outputMapping": {
+    "processed": "processed-water",
+    "delivered": "delivered-water",
+    "leakage": "leakage",
+    "unmet": "unmet-demand",
+    "load": "demand-load-ratio"
+  },
+  "theme": {
+    "preset": "editorial",
+    "colors": {
+      "canvas": "#f4f6f5",
+      "surface": "#ffffff",
+      "ink": "#203332",
+      "muted": "#586a68",
+      "line": "#d5dfdc",
+      "accent": "#156f65",
+      "focus": "#94591c",
+      "warning": "#8c5b24",
+      "danger": "#a33f45"
+    },
+    "conceptColors": {
+      "daily-demand": "#315c63",
+      "treatment-capacity": "#75533f",
+      "leakage-fraction": "#58456d",
+      "processed-water": "#376b58",
+      "leakage": "#87495a",
+      "delivered-water": "#53627a",
+      "unmet-demand": "#79612f",
+      "demand-load-ratio": "#3f6e73",
+      "allocation-total": "#432a6f"
+    }
+  },
+  "typography": [
+    {
+      "selector": ".title",
+      "fontSize": "28px",
+      "fill": "rgb(32, 51, 50)"
+    },
+    {
+      "selector": ".module-kicker",
+      "fontSize": "10px",
+      "fill": "rgb(88, 106, 104)"
+    },
+    {
+      "selector": ".module-question",
+      "fontSize": "12px",
+      "fill": "rgb(88, 106, 104)"
+    },
+    {
+      "selector": ".module-claim",
+      "fontSize": "14px",
+      "fill": "rgb(32, 51, 50)"
+    },
+    {
+      "selector": ".module-content text",
+      "fontSize": "12px",
+      "fill": "rgb(32, 51, 50)"
+    },
+    {
+      "selector": ".relationship-key-label",
+      "fontSize": "9.25px",
+      "fill": "rgb(88, 106, 104)"
+    }
+  ]
+}

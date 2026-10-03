@@ -1,5 +1,12 @@
 # Engine selection
 
+## Contents
+
+- [Default routing](#default-routing)
+- [Why the default is Python-first](#why-the-default-is-python-first)
+- [Criteria-based specialized choices](#criteria-based-specialized-choices)
+- [Selection checks](#selection-checks)
+
 Choose the simplest paradigm that represents the mechanism capable of changing
 the requested outcome. The common experiment and data contract is more
 important than forcing every model into one library.

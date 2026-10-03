@@ -1,5 +1,12 @@
 # Offline Parquet pricing catalog
 
+## Contents
+
+- [Build a complete snapshot](#build-a-complete-snapshot)
+- [Storage contract](#storage-contract)
+- [Query with the bundled helper](#query-with-the-bundled-helper)
+- [Query directly with DuckDB](#query-directly-with-duckdb)
+
 Read this reference when BigQuery is unavailable, the prompt asks for a
 portable catalog, or a reproducible frozen snapshot is preferable to live
 calls. This path contains public list prices. It does not substitute for

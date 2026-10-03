@@ -1,0 +1,223 @@
+[
+  {
+    "run": "20260912-usefulcharts-shared-time-contract",
+    "strict": false,
+    "reads": [
+      "../prompt.md",
+      "skills/usefulcharts-style/SKILL.md",
+      "measured.json",
+      "measured.json",
+      "measured.json",
+      "deliverables/layout.json",
+      "deliverables/review.md"
+    ],
+    "reference_read": false,
+    "helper_executed": true,
+    "event_findings": [
+      {
+        "code": "no-fenced-command-in-prompt"
+      }
+    ],
+    "fragments": 4,
+    "owners": 3,
+    "groups": 2,
+    "artifact_pass": true,
+    "outside_workspace_writes": [],
+    "complete_measured_layout_pass": false
+  },
+  {
+    "run": "20260912-usefulcharts-shared-time-contract-b",
+    "strict": true,
+    "reads": [
+      "../prompt.md",
+      "skills/usefulcharts-style/SKILL.md",
+      "deliverables/layout.json"
+    ],
+    "reference_read": false,
+    "helper_executed": true,
+    "event_findings": [],
+    "fragments": 4,
+    "owners": 3,
+    "groups": 2,
+    "artifact_pass": true,
+    "outside_workspace_writes": [],
+    "complete_measured_layout_pass": true
+  },
+  {
+    "run": "20260912-usefulcharts-shared-time-contract-c",
+    "strict": true,
+    "reads": [
+      "../prompt.md",
+      "skills/usefulcharts-style/SKILL.md",
+      "deliverables/layout.json",
+      "deliverables/review.md"
+    ],
+    "reference_read": false,
+    "helper_executed": true,
+    "event_findings": [],
+    "artifact_pass": false,
+    "error": "",
+    "outside_workspace_writes": [],
+    "complete_measured_layout_pass": false
+  },
+  {
+    "run": "20260912-usefulcharts-shared-time-contract-d",
+    "strict": true,
+    "reads": [
+      "../prompt.md",
+      "skills/usefulcharts-style/SKILL.md",
+      "deliverables/layout.json"
+    ],
+    "reference_read": false,
+    "helper_executed": true,
+    "event_findings": [],
+    "fragments": 4,
+    "owners": 3,
+    "groups": 2,
+    "artifact_pass": true,
+    "outside_workspace_writes": [],
+    "complete_measured_layout_pass": true
+  },
+  {
+    "run": "20260912-usefulcharts-shared-time-forward-1",
+    "strict": false,
+    "reads": [
+      "../prompt.md",
+      "skills/usefulcharts-style/SKILL.md",
+      "skills/usefulcharts-style/references/shared-time-rows.md",
+      "skills/usefulcharts-style/scripts/test_shared_rows.py",
+      "skills/usefulcharts-style/scripts/pack_shared_rows.py",
+      "deliverables/packed.json",
+      "skills/usefulcharts-style/scripts/pack_shared_rows.py",
+      "deliverables/layout.json",
+      "deliverables/review.md"
+    ],
+    "reference_read": true,
+    "helper_executed": true,
+    "event_findings": [
+      {
+        "code": "tool-error",
+        "line": 127,
+        "tool": "bash"
+      },
+      {
+        "code": "tool-error",
+        "line": 144,
+        "tool": "bash"
+      },
+      {
+        "code": "tool-error",
+        "line": 187,
+        "tool": "bash"
+      }
+    ],
+    "fragments": 5,
+    "owners": 4,
+    "groups": 2,
+    "artifact_pass": true,
+    "outside_workspace_writes": [],
+    "complete_measured_layout_pass": false
+  },
+  {
+    "run": "20260912-usefulcharts-shared-time-forward-2",
+    "strict": true,
+    "reads": [
+      "../prompt.md",
+      "skills/usefulcharts-style/SKILL.md",
+      "deliverables/layout.json",
+      "deliverables/review.md"
+    ],
+    "reference_read": false,
+    "helper_executed": false,
+    "event_findings": [],
+    "fragments": 5,
+    "owners": 4,
+    "groups": 2,
+    "artifact_pass": true,
+    "outside_workspace_writes": [],
+    "complete_measured_layout_pass": false
+  },
+  {
+    "run": "20260912-usefulcharts-shared-time-forward-3",
+    "strict": true,
+    "reads": [
+      "../prompt.md",
+      "skills/usefulcharts-style/SKILL.md",
+      "deliverables/layout.json",
+      "deliverables/review.md"
+    ],
+    "reference_read": false,
+    "helper_executed": false,
+    "event_findings": [],
+    "artifact_pass": false,
+    "error": "'owner'",
+    "outside_workspace_writes": [],
+    "complete_measured_layout_pass": false
+  },
+  {
+    "run": "20260912-usefulcharts-shared-time-forward-b-1",
+    "strict": true,
+    "reads": [
+      "../prompt.md",
+      "skills/usefulcharts-style/SKILL.md",
+      "skills/usefulcharts-style/references/shared-time-rows.md",
+      "deliverables/packed.json",
+      "deliverables/layout.json",
+      "deliverables/review.md"
+    ],
+    "reference_read": true,
+    "helper_executed": true,
+    "event_findings": [],
+    "fragments": 5,
+    "owners": 4,
+    "groups": 2,
+    "artifact_pass": true,
+    "outside_workspace_writes": [],
+    "complete_measured_layout_pass": true
+  },
+  {
+    "run": "20260912-usefulcharts-shared-time-forward-b-2",
+    "strict": true,
+    "reads": [
+      "../prompt.md",
+      "skills/usefulcharts-style/SKILL.md",
+      "skills/usefulcharts-style/references/shared-time-rows.md",
+      "deliverables/packed.json",
+      "deliverables/layout.json",
+      "deliverables/layout.json",
+      "deliverables/review.md"
+    ],
+    "reference_read": true,
+    "helper_executed": true,
+    "event_findings": [],
+    "fragments": 5,
+    "owners": 4,
+    "groups": 2,
+    "artifact_pass": true,
+    "outside_workspace_writes": [
+      "bash -lc \"python -m json.tool deliverables/layout.json >/tmp/layout_check.out && echo OK && python -m json.tool deliverables/packed.json >/tmp/packed_check.out && echo OK\""
+    ],
+    "complete_measured_layout_pass": false
+  },
+  {
+    "run": "20260912-usefulcharts-shared-time-forward-b-3",
+    "strict": true,
+    "reads": [
+      "../prompt.md",
+      "skills/usefulcharts-style/SKILL.md",
+      "skills/usefulcharts-style/references/shared-time-rows.md",
+      "deliverables/pack_output.json",
+      "deliverables/layout.json",
+      "deliverables/review.md"
+    ],
+    "reference_read": true,
+    "helper_executed": true,
+    "event_findings": [],
+    "fragments": 5,
+    "owners": 4,
+    "groups": 2,
+    "artifact_pass": true,
+    "outside_workspace_writes": [],
+    "complete_measured_layout_pass": true
+  }
+]

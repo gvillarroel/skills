@@ -1,0 +1,331 @@
+{
+  "status": "development-gain-not-validated",
+  "finished_at": "2026-09-26T18:56:33.736497+00:00",
+  "installed_changed": false,
+  "installed_tree": "sha256:2ab3beca48e69f2c12c482a15a09821ff1794e2b1c44bbdbdd9f2388668e0318",
+  "candidate_tree": "sha256:a6e1a7a0c40119bf50fe08fff4e25c7f6065d34fe506cfb454d7c1c357195160",
+  "development": {
+    "complete_evaluable": true,
+    "families": {
+      "vector-004--eb6eabbcb9ca2ad4": {
+        "baseline": 0.6320125000000001,
+        "candidate": 0.6026750000000001,
+        "delta": -0.029337500000000016
+      },
+      "vector-011--6b42f7e2789d1bd1": {
+        "baseline": 0.0,
+        "candidate": 0.6184000000000001,
+        "delta": 0.6184000000000001
+      },
+      "vector-019--75606bdb4ee5b4af": {
+        "baseline": 0.6899375,
+        "candidate": 0.786175,
+        "delta": 0.09623749999999998
+      },
+      "vector-020--09ee2ae28c7c367a": {
+        "baseline": 0.73675,
+        "candidate": 0.8021135101010102,
+        "delta": 0.06536351010101016
+      },
+      "vector-024--652120566170fbf2": {
+        "baseline": 0.5567500000000001,
+        "candidate": 0.645775,
+        "delta": 0.08902499999999991
+      },
+      "vector-030--d3c57e0c21dbede0": {
+        "baseline": 0.33215000000000006,
+        "candidate": 0.6610625,
+        "delta": 0.32891249999999994
+      }
+    },
+    "baseline_mean": 0.4912666666666667,
+    "candidate_mean": 0.6860335016835017,
+    "mean_gain": 0.194766835016835,
+    "family_delta_range": [
+      -0.029337500000000016,
+      0.6184000000000001
+    ],
+    "descriptive_family_bootstrap_95_percentile": [
+      0.046154335016835,
+      0.38975016835016835
+    ],
+    "bootstrap_limitation": "Few independent groups; descriptive uncertainty, not proof of population-wide gain.",
+    "passed": true,
+    "candidate_attributable_failures": [],
+    "baseline_attributable_failures": [
+      {
+        "trial": "vector-011--6b42f7e2789d1bd1__BtV6bYv",
+        "native_effective_reward": 0,
+        "reason": "Audited agent-side argument or absent-path command misuse; original failure retained."
+      },
+      {
+        "trial": "vector-011--6b42f7e2789d1bd1__FoDyzSc",
+        "native_effective_reward": 0,
+        "reason": "Audited agent-side argument or absent-path command misuse; original failure retained."
+      },
+      {
+        "trial": "vector-030--d3c57e0c21dbede0__iej7JJE",
+        "native_effective_reward": 0,
+        "reason": "Audited agent-side argument or absent-path command misuse; original failure retained."
+      }
+    ],
+    "unaffected_family_visual_guard": {
+      "complete_evaluable": true,
+      "families": {
+        "vector-004--eb6eabbcb9ca2ad4": {
+          "baseline": 0.6320125000000001,
+          "candidate": 0.6026750000000001,
+          "delta": -0.029337500000000016
+        },
+        "vector-019--75606bdb4ee5b4af": {
+          "baseline": 0.6899375,
+          "candidate": 0.786175,
+          "delta": 0.09623749999999998
+        },
+        "vector-020--09ee2ae28c7c367a": {
+          "baseline": 0.73675,
+          "candidate": 0.8021135101010102,
+          "delta": 0.06536351010101016
+        },
+        "vector-024--652120566170fbf2": {
+          "baseline": 0.5567500000000001,
+          "candidate": 0.645775,
+          "delta": 0.08902499999999991
+        }
+      },
+      "baseline_mean": 0.6538625,
+      "candidate_mean": 0.7091846275252526,
+      "mean_gain": 0.05532212752525251,
+      "family_delta_range": [
+        -0.029337500000000016,
+        0.09623749999999998
+      ],
+      "descriptive_family_bootstrap_95_percentile": [
+        0.0002531249999999652,
+        0.09263124999999994
+      ],
+      "bootstrap_limitation": "Few independent groups; descriptive uncertainty, not proof of population-wide gain.",
+      "passed": true
+    },
+    "guard_note": "Additional conservative requirement: two-point gain and bounded family loss also on all unaffected families. Failure-derived gains alone cannot pass. Attributable errors, when present, remain disqualifying for candidate selection; private gates still require both arms error-free.",
+    "native_selected_winner": "c"
+  },
+  "validation": {
+    "complete_evaluable": false,
+    "families": {
+      "case-1": {
+        "baseline": 0.6874875,
+        "candidate": 0.7303999999999999
+      },
+      "case-2": {
+        "baseline": 0.616125,
+        "candidate": 0.6525450757575757
+      },
+      "case-3": {
+        "baseline": null,
+        "candidate": 0.8673125
+      }
+    },
+    "passed": false,
+    "execution_counts": {
+      "baseline": {
+        "attempts": 6,
+        "errors": 1,
+        "valid_scored_artifacts": 5
+      },
+      "candidate": {
+        "attempts": 6,
+        "errors": 0,
+        "valid_scored_artifacts": 6
+      }
+    }
+  },
+  "validation_released": true,
+  "native_validation_gate": {
+    "status": "complete",
+    "evaluable": true,
+    "nextStep": null,
+    "baselineMeanReward": 0.6980700000000001,
+    "winnerMeanReward": 0.7500858585858586,
+    "gain": 0.052015858585858554,
+    "minimumGain": 0.02,
+    "errorFree": false,
+    "infrastructureFree": true,
+    "requiredRewardsComplete": false,
+    "primaryRewardsComplete": true,
+    "winnerQualified": true,
+    "baselineQualified": false,
+    "developmentPassRate": 1.0,
+    "minimumDevelopmentPassRate": 1.0,
+    "developmentPassRateEligible": true,
+    "allowTaskRegressions": true,
+    "taskComparisons": [
+      {
+        "taskName": "case-1",
+        "taskChecksum": "d5215449d0f34ba2a8e19347fd20ea889a38f4df5de43a83833eae7888ef85d8",
+        "agent": "pi-svg-procedural",
+        "model": "gpt-6-luna",
+        "baselineMeanReward": 0.6874875,
+        "winnerMeanReward": 0.7303999999999999,
+        "gain": 0.04291249999999991,
+        "regressed": false
+      },
+      {
+        "taskName": "case-2",
+        "taskChecksum": "d392136dcaed7ac05c521785e2e852c9635009f589ff767a8b4b36df225e043d",
+        "agent": "pi-svg-procedural",
+        "model": "gpt-6-luna",
+        "baselineMeanReward": 0.616125,
+        "winnerMeanReward": 0.6525450757575757,
+        "gain": 0.036420075757575665,
+        "regressed": false
+      },
+      {
+        "taskName": "case-3",
+        "taskChecksum": "8a1eca003f696bedc5e2acbb1e3ff1d069d1f4700471a2af609e398bdcecd864",
+        "agent": "pi-svg-procedural",
+        "model": "gpt-6-luna",
+        "baselineMeanReward": null,
+        "winnerMeanReward": 0.8673125,
+        "gain": null,
+        "regressed": false
+      }
+    ],
+    "regressedTasks": [],
+    "taskRegressionCount": 0,
+    "taskRegressionFree": true,
+    "taskRegressionEligible": true,
+    "provenanceVerified": true,
+    "exploratory": false,
+    "skillChanged": true,
+    "promotionBlockers": [
+      "execution-errors",
+      "missing-required-reward"
+    ],
+    "promoted": false,
+    "baselineJobDirectory": "/mnt/c/Users/villa/dev/skills/evaluations/runs/svt4/private-jobs/b",
+    "winnerJobDirectory": "/mnt/c/Users/villa/dev/skills/evaluations/runs/svt4/private-jobs/w",
+    "candidateSkills": {
+      "baseline": "/mnt/c/Users/villa/dev/skills/evaluations/runs/svt4/holdout/generation-000/attempt-001/baseline/skills/svg-brief-design",
+      "winner": "/mnt/c/Users/villa/dev/skills/evaluations/runs/svt4/holdout/generation-000/attempt-001/winner/skills/svg-brief-design"
+    },
+    "attempt": {
+      "generation": 0,
+      "attempt": 1,
+      "directory": "/mnt/c/Users/villa/dev/skills/evaluations/runs/svt4/holdout/generation-000/attempt-001",
+      "manifest": "/mnt/c/Users/villa/dev/skills/evaluations/runs/svt4/holdout/generation-000/attempt-001/attempt.json",
+      "result": "/mnt/c/Users/villa/dev/skills/evaluations/runs/svt4/holdout/generation-000/attempt-001/result.json",
+      "winnerCandidate": "c",
+      "winnerDigest": "sha256:5a799676ad587312f7f5cc5844013f9f8aabf7ed90559a0fccc3936753159ffc",
+      "baselineDigest": "sha256:935e7cee66c23f17341affd953c16b336dedaff12e4f438236247db774b68a95"
+    }
+  },
+  "summaries": {
+    "b": {
+      "attempts": 12,
+      "scored_artifacts": 9,
+      "agent_errors": 3,
+      "native_effective_mean": 0.4912666666666667,
+      "scored_only_mean": 0.6550222222222223,
+      "strict_90_count": 0,
+      "guide_read_trials": 0,
+      "proof_used_trials": 0,
+      "proof_read_trials": 0
+    },
+    "c": {
+      "attempts": 12,
+      "scored_artifacts": 12,
+      "agent_errors": 0,
+      "native_effective_mean": 0.6860335016835016,
+      "scored_only_mean": 0.6860335016835017,
+      "strict_90_count": 1,
+      "guide_read_trials": 11,
+      "proof_used_trials": 0,
+      "proof_read_trials": 0
+    }
+  },
+  "native_ranking": [
+    {
+      "candidateId": "c",
+      "skillDigest": "sha256:5a799676ad587312f7f5cc5844013f9f8aabf7ed90559a0fccc3936753159ffc",
+      "sameAsBaseline": false,
+      "fitness": 0.6860335016835016,
+      "qualified": true,
+      "meanReward": 0.6860335016835016,
+      "passRate": 1.0,
+      "minimumDevelopmentPassRate": 1.0,
+      "winnerEligible": true,
+      "winnerIneligibilityReasons": [],
+      "provenanceVerified": true,
+      "provenanceStatus": "verified",
+      "promotionProvenanceEligible": true,
+      "provenanceReasons": [],
+      "passedRequiredRewards": [
+        "artifact_valid"
+      ],
+      "requiredRewardPassCount": 1,
+      "erroredTrials": 0,
+      "providerFailureTrials": 0,
+      "infrastructureFailureTrials": 0,
+      "rank": 1
+    },
+    {
+      "candidateId": "b",
+      "skillDigest": "sha256:935e7cee66c23f17341affd953c16b336dedaff12e4f438236247db774b68a95",
+      "sameAsBaseline": true,
+      "fitness": 0.0,
+      "qualified": false,
+      "meanReward": 0.6550222222222222,
+      "passRate": 0.75,
+      "minimumDevelopmentPassRate": 1.0,
+      "winnerEligible": false,
+      "winnerIneligibilityReasons": [
+        "qualification-gates-failed",
+        "development-pass-rate-below-minimum"
+      ],
+      "provenanceVerified": true,
+      "provenanceStatus": "verified",
+      "promotionProvenanceEligible": true,
+      "provenanceReasons": [],
+      "passedRequiredRewards": [],
+      "requiredRewardPassCount": 0,
+      "erroredTrials": 3,
+      "providerFailureTrials": 0,
+      "infrastructureFailureTrials": 0,
+      "rank": 2
+    }
+  ],
+  "calls": {
+    "generation": 36,
+    "jev": 32,
+    "visual_observer": 32,
+    "new_curator": 0,
+    "semantic_retries": 0
+  },
+  "cost": {
+    "jev_usd": 0.006022002,
+    "generator_usd": null,
+    "observer_usd": null
+  },
+  "local_tests": {
+    "scaffold": 13,
+    "proof": 4,
+    "passed": true
+  },
+  "source_audit": {
+    "passed": true,
+    "public_sources": 6,
+    "long_paths_compared": 52,
+    "scope": "Exact long-path text only; no proof against arbitrary transformed copying. No private source inspected."
+  },
+  "protocol_sha256": "e521644a3549b6ca34dff95187a7db1ae611e06f00fd8940f480a45d140f841b",
+  "native_run_sha256": "70c922e13acb9167465605cc8f674fd3f7e5a902253861cef56958620ca3096b",
+  "model_audit_sha256": "f7fdc313a325f489cbe139f5c3f7b817b2674f063f3f663df6d9afc661784783",
+  "limitations": [
+    "Six public families and two repeats; descriptive pilot, not professional parity.",
+    "Expected coded relative utility is not an absolute grade or pixel similarity.",
+    "Instruction routing and proof helper are one treatment; no isolated causal attribution.",
+    "Native explicit skill loading; unforced discovery not tested.",
+    "Provider alias gpt-6-luna observed; immutable checkpoint unavailable."
+  ]
+}

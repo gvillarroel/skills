@@ -1,0 +1,55 @@
+{
+  "version": "4.0.0",
+  "dimensions": {
+    "silhouette_intent": {
+      "weight": 20,
+      "label": "Silhouette and design intent",
+      "definition": "Distinctive, resolved proportions and a purposeful silhouette suited to the requested subject and mood. Character and visual specificity come from relationships of forms, not merely naming or adding details."
+    },
+    "composition_space": {
+      "weight": 20,
+      "label": "Optical balance and negative space",
+      "definition": "Optical mass distribution, proportion, breathing room, figure-ground relationships and designed internal openings. Centering and mathematical symmetry alone do not establish refinement; deliberate asymmetry and empty space are valid."
+    },
+    "shape_rhythm": {
+      "weight": 15,
+      "label": "Shape language and rhythm",
+      "definition": "Coherent angles, curvature, weight and spacing; intentional repetition with controlled variation, transitions and visual flow. Distinguish lively organic marks from arbitrary wobble, mechanical repetition or busy intersections."
+    },
+    "craft_finish": {
+      "weight": 20,
+      "label": "Contour and junction finish",
+      "definition": "Refined contour transitions, tangencies, joins, terminations, cutouts and attachments at viewing scale. No heavy patches, mismatched joints, unintended kinks or accidental merges. Intentional distress and crossings may be fully professional."
+    },
+    "information_hierarchy": {
+      "weight": 10,
+      "label": "Hierarchy and scale",
+      "definition": "Primary, secondary and tertiary information is ordered. Details earn their space; defining forms survive the smaller preview. Typography is judged if present, but absent unrequested text is not a defect. Tiny secondary lettering need not remain readable at thumbnail size."
+    },
+    "style_coherence": {
+      "weight": 15,
+      "label": "Art direction and restraint",
+      "definition": "The whole belongs to one visual language appropriate to the stated mood, with deliberate detail density and an edited result. Generic primitive assembly, unrelated motifs, childish cues in severe sci-fi, or decorative clutter can limit readiness. Simplicity can be excellent when positively resolved."
+    }
+  },
+  "bands": {
+    "unusable": 0,
+    "rough": 25,
+    "functional": 50,
+    "competent": 70,
+    "professional": 85,
+    "excellent": 95,
+    "exemplary": 100
+  },
+  "brief_caps": {
+    "wrong": 0,
+    "major_missing": 49,
+    "minor_gap": 79,
+    "fulfilled": 100
+  },
+  "overall_cap": "overall readiness band + 5, maximum 100",
+  "pass_threshold": 0.8,
+  "excellent_threshold": 0.9,
+  "quality_context": "Review as a finished, art-directed monochrome vector asset for professional editorial or design use. Assess deliberate proportions, optical balance, coherent shape language, purposeful detail and refinement. A recognizable subject and valid SVG alone do not establish professional quality. Minimal, technical and organic styles can all be excellent.",
+  "generator_introduction": "Busco una pieza vectorial con acabado profesional: proporciones cuidadas, equilibrio visual, un lenguaje de formas coherente y detalles bien resueltos, lista para incorporarla a un diseño."
+}

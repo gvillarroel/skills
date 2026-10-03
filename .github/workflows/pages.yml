@@ -39,6 +39,16 @@ jobs:
       - name: Test colorset output contract
         run: uv run --script scripts/test-colorsets.py
 
+      - name: Test standalone authoring and generated-reviewer validation
+        run: |
+          uv run --script skills/repository-reviewer-creator/scripts/test_skill_authoring.py
+          uv run --script skills/repository-reviewer-creator/scripts/test_validate_reviewer.py
+          uv run --script scripts/test-pi-eval-harness.py
+          uv run --script scripts/test-bundle-validation.py
+
+      - name: Audit runtime and full skill bundles
+        run: uv run --script scripts/audit-skill-authoring.py --check-bundles --output dist/skill-authoring-audit.json
+
       - name: Validate diagram-type coverage
         run: uv run --script scripts/validate-diagram-type-coverage.py --disable-mermaid-browser-sandbox
 

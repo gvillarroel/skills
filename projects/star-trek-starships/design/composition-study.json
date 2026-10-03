@@ -1,0 +1,27 @@
+{
+  "purpose": "Non-factual visual art-direction study; never a source of spacecraft names, dates, hull geometry or canonical facts.",
+  "date": "2026-09-12",
+  "tool": "Built-in image generation",
+  "output": "artifacts/images/composition-studies/fleet-histories-study.png",
+  "references": [
+    "../usefulcharts-style/artifacts/images/reference-history.png",
+    "artifacts/flow-edition/reviews/v2/full.png"
+  ],
+  "prompt": "Use case: infographic-diagram. Asset type: visual art-direction study, NOT a factual reference chart. Create one exceptionally polished, dense, editorial science-fiction spacecraft chronology poster. Image 1 is a composition reference: learn its hierarchy, compact multi-layer annotations, visibly routed relationships, and strong color rhythm, without copying its words, logo, map, or artwork. Image 2 is our current dark-space prototype: retain the broad subject and dark space atmosphere, but substantially improve its composition. Design a landscape museum-quality wall chart with TIME RUNNING LEFT TO RIGHT on a clearly visible top X axis, from early spaceflight at the left to later eras at the right. Stack roughly 8 richly structured family lines vertically. Several ships of different epochs must share each line; ended branches release their later horizontal space to other lines, with clear local family labels and distinct connectors. Build an integrated chronological tapestry, not a grid of cards or disconnected panels. Interweave small right-facing spacecraft illustrations, short factual-looking annotation blocks, colored compact name capsules, and thin precise routes. Craft around 60-80 labeled ship entries with genuinely varied compositions at three scales. Warm amber, cyan, sage, coral and pale violet accents on near-black navy space; quiet subtle star texture. Most horizontal space should carry readable-looking information, with several meaningful crosslinks, branching and replacements. The title is 'FLEET HISTORIES'. Add a small clearly readable subtitle 'COMPOSITION STUDY'. Illustrations should be modest integrated accents; no giant hero ship, no central decorative nebula, no huge empty corridors. Typography strong condensed title, clear compact body, rigorous spacing. One cohesive printable poster, no UI chrome or surrounding room. This is a non-factual style exploration; placeholder vessel names may be invented and must not be used as canonical data. Prioritize convincing information-design composition and readable hierarchy.",
+  "critique": {
+    "useful": [
+      "Distinct family colors, integrated ship illustrations and confident condensed typography improve the hierarchy.",
+      "Relationships and short captions form a more coherent field than uniformly isolated cards."
+    ],
+    "rejected_as_final": [
+      "Names and dates are invented and do not form a trustworthy numeric calendar.",
+      "Persistent full-width family lanes do not demonstrate the requested reuse of terminated branches.",
+      "Generated ship silhouettes are fictional placeholders, not verified Star Trek assets."
+    ],
+    "applied": [
+      "Semantic family colors and selective weighted nameplates.",
+      "Actual source-typed relationships routed around measured foreground pieces.",
+      "Full source prose and independently fixed calendar coordinates remain authored SVG text and geometry."
+    ]
+  }
+}

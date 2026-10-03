@@ -1,0 +1,121 @@
+{
+  "status": "accepted-pilot",
+  "installed": true,
+  "development": {
+    "baseline": 0.6352987373737373,
+    "candidate": 0.7052962121212121,
+    "gain": 0.06999747474747477,
+    "families": {
+      "vector-004--eb6eabbcb9ca2ad4": {
+        "baseline": 0.6655,
+        "candidate": 0.6500625,
+        "delta": -0.015437499999999993
+      },
+      "vector-011--6b42f7e2789d1bd1": {
+        "baseline": 0.57645,
+        "candidate": 0.621775,
+        "delta": 0.04532499999999995
+      },
+      "vector-019--75606bdb4ee5b4af": {
+        "baseline": 0.654403409090909,
+        "candidate": 0.71925,
+        "delta": 0.06484659090909095
+      },
+      "vector-020--09ee2ae28c7c367a": {
+        "baseline": 0.6386499999999999,
+        "candidate": 0.8385750000000001,
+        "delta": 0.19992500000000013
+      },
+      "vector-024--652120566170fbf2": {
+        "baseline": 0.5828125,
+        "candidate": 0.65655,
+        "delta": 0.07373750000000001
+      },
+      "vector-030--d3c57e0c21dbede0": {
+        "baseline": 0.6939765151515151,
+        "candidate": 0.7455647727272727,
+        "delta": 0.05158825757575758
+      }
+    },
+    "bootstrap": [
+      0.022932765151515155,
+      0.12736041666666673
+    ],
+    "candidate_trials": 12
+  },
+  "validation": {
+    "complete_evaluable": true,
+    "baseline_mean": 0.6357166666666667,
+    "candidate_mean": 0.7288791666666666,
+    "mean_gain": 0.0931625,
+    "family_delta_range": [
+      -0.02475000000000005,
+      0.26107500000000006
+    ],
+    "descriptive_family_bootstrap_95_percentile": [
+      -0.02475000000000005,
+      0.26107500000000006
+    ],
+    "passed": true
+  },
+  "calls": {
+    "generation": 48,
+    "visual_observer": 48,
+    "jev": 48,
+    "independent_curator": 1,
+    "semantic_retries": 0
+  },
+  "usage": {
+    "generator_input_tokens": 1310787,
+    "generator_cached_input_tokens": 860160,
+    "generator_output_tokens": 54647,
+    "generator_coverage": 48,
+    "generator_cost_usd": null,
+    "jev_cost_usd": 0.009012486,
+    "jev_input_tokens": 214583,
+    "jev_output_tokens": 16357,
+    "observer_cost_usd": null,
+    "observer_reported_total_tokens": 198747,
+    "generator_total_tokens": 1365434,
+    "curator_reported_total_tokens": 6865
+  },
+  "quality_screen": {
+    "threshold": 0.9,
+    "development_baseline_passes": 0,
+    "development_candidate_passes": 1,
+    "validation_baseline_passes": 0,
+    "validation_candidate_passes": 2
+  },
+  "candidate_files": {
+    "SKILL.md": "7d557298ddc94f0d56ab0276649e5fcbe46ec9baa43593c67561fe2de3ebd6d1",
+    "agents/openai.yaml": "c87229efa0cc39a1f3dcc827781c9f79c174cc5b5069efb4b8c10fe1b07ca2f1",
+    "references/construction-decisions.md": "60644b0713d944de57c62db5bba4fa97c660c6822ee9534ea7bed69637f7b052",
+    "references/detail-editing.md": "b531cdeb34cad9dabb5ba4d4764fa99e11060dc4b08bcfd9a8f5cb7828e32c5f",
+    "references/scaffold-recipes.md": "0d97c241c20510dbab0af9e4ed494d3af99865625865708922b7eb5cc7030f7f",
+    "references/svg-mechanics.md": "aee1c0eea25fb09fe9acd4b769b663aca439cb376999f424a462a283130de43f",
+    "scripts/render_svg.py": "90613f9aa241a27bd5035bb9404de2be2d7874970c14913271f5f05812c240e5",
+    "scripts/scaffold.py": "0bd3127d27e746e5ac25229262e9bef4da04b15cfb1a986a59668f9fa16a6c7d",
+    "scripts/test_scaffold.py": "b046e8afd46b3f5d4ed6b7801e32fc695795e6d8297830852211c83fe71a118e"
+  },
+  "constraints": {
+    "purchased_artwork_in_skill": false,
+    "pixel_similarity_reward": false,
+    "same_frozen_quality_rules": true,
+    "validation_families": 3,
+    "unforced_skill_discovery_tested": false
+  },
+  "evidence": {
+    "protocol_sha256": "fcfccd42d034e36d05f441cffb23c40fc3ad278a02db47c348b0711b297125da",
+    "validation_decision_sha256": "ac6e85a16eb33ecc531b2ee31be98c8fbc588d34b385b77ee0d2a682f6a56848",
+    "installation_sha256": "ad45f30af7c54271a1601684fe4e795e432d722b1fc517659957b910a401f36b"
+  },
+  "bundle_tree_sha256": "sha256:2ab3beca48e69f2c12c482a15a09821ff1794e2b1c44bbdbdd9f2388668e0318",
+  "source_path_audit": {
+    "passed": true,
+    "source_count": 10,
+    "long_paths_compared": 293,
+    "stored_svg_files": 0,
+    "limitation": "Exact long-path reuse audit only; does not prove absence of every transformed reconstruction. New geometry is independently specified polar mathematics."
+  },
+  "mechanism_caution": "The complete bundle improved; the scaffold was invoked in two development trials, but its independent causal effect was not isolated. Guide read in 11/12 selected development trials; preview opened in 9/12."
+}

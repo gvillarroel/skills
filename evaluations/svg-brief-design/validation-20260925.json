@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-09-26T01:12:16.408Z",
+  "skill": "svg-brief-design",
+  "source_changed_by_evolution": false,
+  "all_passed": true,
+  "checks": {
+    "patterns": {
+      "exit_code": 0,
+      "output": "Pattern ID validation passed: 1222 canonical item IDs across families, maximum length 46, 519 explicit canonical IDs, 833 source declarations, 0 IDs above the 48-character review threshold."
+    },
+    "skills": {
+      "exit_code": 0,
+      "output": "Validation passed."
+    },
+    "independence": {
+      "exit_code": 0,
+      "output": "Skill independence validator tests passed."
+    },
+    "payload": {
+      "exit_code": 0,
+      "output": "Payload check passed."
+    },
+    "harness": {
+      "exit_code": 0,
+      "output": "..............\r\n----------------------------------------------------------------------\r\nRan 14 tests in 0.863s\r\n\r\nOK"
+    },
+    "compile": {
+      "exit_code": 0,
+      "output": ""
+    },
+    "quick": {
+      "exit_code": 0,
+      "output": "Skill is valid!"
+    },
+    "installed": {
+      "exit_code": 0,
+      "output": "Local skill installation matches all 3 canonical source files."
+    },
+    "guidance": {
+      "exit_code": 0,
+      "output": "{\r\n  \"passed\": true,\r\n  \"artwork_files\": 0,\r\n  \"encoded_artwork_or_path_data\": false,\r\n  \"reference_asset_links\": 0,\r\n  \"files\": {\r\n    \"SKILL.md\": \"740953f66380e648093af346231429ddf755d0fd564f910241157ea3beb57d04\",\r\n    \"agents/openai.yaml\": \"55c5e6d2f4876a1da9ed7ce790c99829251f37461089e2624690b5045773fc80\",\r\n    \"references/svg-mechanics.md\": \"aee1c0eea25fb09fe9acd4b769b663aca439cb376999f424a462a283130de43f\"\r\n  }\r\n}"
+    },
+    "diff": {
+      "exit_code": 0,
+      "output": "warning: in the working copy of 'SKILLS.md', CRLF will be replaced by LF the next time Git touches it"
+    }
+  },
+  "model": "openai-codex/gpt-6-luna",
+  "native_trials": 84,
+  "valid_svg_trials": 84,
+  "execution_errors": 0,
+  "reflection_proposals": 9,
+  "private_gates_opened": false,
+  "promoted": false
+}

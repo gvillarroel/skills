@@ -1,0 +1,2234 @@
+{
+  "schema_version": 1,
+  "date": "2026-09-13",
+  "skill": "usefulcharts-style",
+  "status": "validating",
+  "pattern_id": "usefulcharts-visible-discovery",
+  "final_runtime": {
+    "name": "usefulcharts-style",
+    "profile": "runtime",
+    "fileCount": 132,
+    "payloadSha256": "4079682d4246761491aaf3a209bbeb55b6a2c87d6bb87d7477186ea82e043a3b"
+  },
+  "deterministic_tests": {
+    "exploration": 14,
+    "illustrated": 12
+  },
+  "controls": [
+    {
+      "run_id": "20260913-usefulcharts-exploration-control",
+      "cohort": null,
+      "command": "C:\\Users\\villa\\AppData\\Roaming\\npm\\pi.CMD --model openai-codex/gpt-5.3-codex-spark --thinking high --mode json --no-context-files --no-extensions --no-skills --no-prompt-templates --no-themes --no-session --skill skills/usefulcharts-style --print \"You are running an isolated forward test for `usefulcharts-style`. Use the read tool to read `../prompt.md` first, then follow it exactly. The loaded bundle is rooted at `skills/usefulcharts-style` from the current workspace; never prefix that path with `../`. Immediately after the prompt, read the bundle entry point at `skills/usefulcharts-style/SKILL.md`; do not probe for README.md or other conventional entry-point filenames. The shell tool is bash, not PowerShell; do not run PowerShell commands. Do not list directories or inspect script source before reading the prompt. If the prompt gives an exact command, run it verbatim and verify the required outputs.\"",
+      "model": "openai-codex/gpt-5.3-codex-spark",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 132,
+        "payloadSha256": "591c1db70af2b56fa7e09b12edc7716c8d5acea215ec00be138caecdc4c46777"
+      },
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/pi-prompts/usefulcharts-exploration-command.md",
+        "sizeBytes": 618,
+        "sha256": "b789411cb7361dfb2b0dbfaefd2d4820b4586e4e6eb8be8738887287c8be60d3"
+      },
+      "expected_outputs": [
+        "control.json"
+      ],
+      "strict_pass": false,
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "findings": [
+        {
+          "code": "tool-error",
+          "line": 42,
+          "tool": "bash"
+        }
+      ],
+      "payload_unchanged": true,
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/illustrated-discovery.md",
+        "skills/usefulcharts-style/references/visible-discovery.md"
+      ],
+      "model_errors": [],
+      "failure_classification": "strict-process-error"
+    },
+    {
+      "run_id": "20260913-usefulcharts-exploration-control-b",
+      "cohort": null,
+      "command": "C:\\Users\\villa\\AppData\\Roaming\\npm\\pi.CMD --model openai-codex/gpt-5.3-codex-spark --thinking high --mode json --no-context-files --no-extensions --no-skills --no-prompt-templates --no-themes --no-session --skill skills/usefulcharts-style --print \"You are running an isolated forward test for `usefulcharts-style`. Use the read tool to read `../prompt.md` first, then follow it exactly. The loaded bundle is rooted at `skills/usefulcharts-style` from the current workspace; never prefix that path with `../`. Immediately after the prompt, read the bundle entry point at `skills/usefulcharts-style/SKILL.md`; do not probe for README.md or other conventional entry-point filenames. The shell tool is bash, not PowerShell; do not run PowerShell commands. Do not list directories or inspect script source before reading the prompt. If the prompt gives an exact command, run it verbatim and verify the required outputs.\"",
+      "model": "openai-codex/gpt-5.3-codex-spark",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 132,
+        "payloadSha256": "591c1db70af2b56fa7e09b12edc7716c8d5acea215ec00be138caecdc4c46777"
+      },
+      "prompt": {
+        "source": "inline",
+        "sizeBytes": 684,
+        "sha256": "4c454a41e0b4a960bfe826d2558b8ec330790630d6aed5e3eb4579de99b71919"
+      },
+      "expected_outputs": [
+        "control.json"
+      ],
+      "strict_pass": false,
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "findings": [
+        {
+          "code": "tool-error",
+          "line": 43,
+          "tool": "bash"
+        },
+        {
+          "code": "tool-error",
+          "line": 59,
+          "tool": "bash"
+        }
+      ],
+      "payload_unchanged": true,
+      "read_paths": [
+        "../prompt.md",
+        "control.json",
+        "skills/usefulcharts-style/SKILL.md"
+      ],
+      "model_errors": [],
+      "failure_classification": "strict-process-error"
+    },
+    {
+      "run_id": "20260913-usefulcharts-exploration-control-final",
+      "cohort": null,
+      "command": "C:\\Users\\villa\\AppData\\Roaming\\npm\\pi.CMD --model openai-codex/gpt-5.3-codex-spark --thinking high --mode json --no-context-files --no-extensions --no-skills --no-prompt-templates --no-themes --no-session --skill skills/usefulcharts-style --print \"You are running an isolated forward test for `usefulcharts-style`. Use the read tool to read `../prompt.md` first, then follow it exactly. The loaded bundle is rooted at `skills/usefulcharts-style` from the current workspace; never prefix that path with `../`. Immediately after the prompt, read the bundle entry point at `skills/usefulcharts-style/SKILL.md`; do not probe for README.md or other conventional entry-point filenames. The shell tool is bash, not PowerShell; do not run PowerShell commands. Do not list directories or inspect script source before reading the prompt. If the prompt gives an exact command, run it verbatim and verify the required outputs.\"",
+      "model": "openai-codex/gpt-5.3-codex-spark",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 132,
+        "payloadSha256": "489f60a0de5ed6c11a873c6612bffe955af3cb8d0fe6e9e1b5d4baaeb557ad53"
+      },
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/pi-prompts/usefulcharts-exploration-final-command.md",
+        "sizeBytes": 744,
+        "sha256": "9683936388b7ab7bcd03793a2ca0319ca71dd0874db2f0d72203e9accca058bc"
+      },
+      "expected_outputs": [
+        "control.json"
+      ],
+      "strict_pass": true,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "findings": [],
+      "payload_unchanged": true,
+      "read_paths": [
+        "../prompt.md",
+        "control.json",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/visible-discovery.md"
+      ],
+      "model_errors": [],
+      "failure_classification": null
+    },
+    {
+      "run_id": "20260913-usefulcharts-exploration-control-identity-final",
+      "cohort": null,
+      "command": "C:\\Users\\villa\\AppData\\Roaming\\npm\\pi.CMD --model openai-codex/gpt-5.3-codex-spark --thinking high --mode json --no-context-files --no-extensions --no-skills --no-prompt-templates --no-themes --no-session --skill skills/usefulcharts-style --print \"You are running an isolated forward test for `usefulcharts-style`. Use the read tool to read `../prompt.md` first, then follow it exactly. The loaded bundle is rooted at `skills/usefulcharts-style` from the current workspace; never prefix that path with `../`. Immediately after the prompt, read the bundle entry point at `skills/usefulcharts-style/SKILL.md`; do not probe for README.md or other conventional entry-point filenames. The shell tool is bash, not PowerShell; do not run PowerShell commands. Do not list directories or inspect script source before reading the prompt. If the prompt gives an exact command, run it verbatim and verify the required outputs.\"",
+      "model": "openai-codex/gpt-5.3-codex-spark",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 132,
+        "payloadSha256": "4079682d4246761491aaf3a209bbeb55b6a2c87d6bb87d7477186ea82e043a3b"
+      },
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/pi-prompts/usefulcharts-exploration-final-command.md",
+        "sizeBytes": 744,
+        "sha256": "9683936388b7ab7bcd03793a2ca0319ca71dd0874db2f0d72203e9accca058bc"
+      },
+      "expected_outputs": [
+        "control.json"
+      ],
+      "strict_pass": false,
+      "gates": {
+        "artifacts": false,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "findings": [],
+      "payload_unchanged": true,
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/visible-discovery.md"
+      ],
+      "model_errors": [
+        "Codex error: The usage limit has been reached"
+      ],
+      "failure_classification": "external-provider-usage-limit"
+    }
+  ],
+  "review_trials": [
+    {
+      "run_id": "20260913-usefulcharts-exploration-luna-1",
+      "cohort": "A",
+      "command": "C:\\Users\\villa\\AppData\\Roaming\\npm\\pi.CMD --model openai-codex/gpt-5.6-luna --thinking high --mode json --no-context-files --no-extensions --no-skills --no-prompt-templates --no-themes --no-session --skill skills/usefulcharts-style --print \"You are running an isolated forward test for `usefulcharts-style`. Use the read tool to read `../prompt.md` first, then follow it exactly. The loaded bundle is rooted at `skills/usefulcharts-style` from the current workspace; never prefix that path with `../`. Immediately after the prompt, read the bundle entry point at `skills/usefulcharts-style/SKILL.md`; do not probe for README.md or other conventional entry-point filenames. The shell tool is bash, not PowerShell; do not run PowerShell commands. Do not list directories or inspect script source before reading the prompt. If the prompt gives an exact command, run it verbatim and verify the required outputs.\"",
+      "model": "openai-codex/gpt-5.6-luna",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 132,
+        "payloadSha256": "591c1db70af2b56fa7e09b12edc7716c8d5acea215ec00be138caecdc4c46777"
+      },
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/pi-prompts/usefulcharts-exploration-criticism.md",
+        "sizeBytes": 2034,
+        "sha256": "3c69a6d344ef31a094796f44f777faa12814dae333cbc53bc8c6caffa5a29f19"
+      },
+      "expected_outputs": [
+        "review.json",
+        "review.md"
+      ],
+      "strict_pass": true,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "findings": [],
+      "payload_unchanged": true,
+      "read_paths": [
+        "../prompt.md",
+        "input/bsd-A-detail.png",
+        "input/bsd-A-whole.png",
+        "input/bsd-B-detail.png",
+        "input/bsd-B-whole.png",
+        "input/bsd-reference-detail.png",
+        "input/bsd-reference-whole.png",
+        "input/bsd-source.json",
+        "input/instruments-A-detail.png",
+        "input/instruments-A-whole.png",
+        "input/instruments-B-detail.png",
+        "input/instruments-B-whole.png",
+        "input/instruments-reference-detail.png",
+        "input/instruments-reference-whole.png",
+        "input/instruments-source.json",
+        "input/manifest.json",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/evaluation.md",
+        "skills/usefulcharts-style/references/illustrated-discovery.md",
+        "skills/usefulcharts-style/references/knowledge-density.md"
+      ],
+      "model_errors": [],
+      "failure_classification": null,
+      "raw_verdicts": {
+        "subjects": [
+          {
+            "subject": "instruments",
+            "preferred": "B",
+            "observations": {
+              "image_ownership": "B places recognizable specimens in bounded art wells inside each family panel and prints an explicit owner such as ‘Example → 111’ for Handbell, ‘Example → 314’ for Zither, and ‘Example → 242’ for Kazoo. A has attractive, recognizable images and nearby captions, but the captions do not consistently expose the classification code, so ownership is inferred from proximity to the branch rather than confirmed at the image.",
+              "paths": "B gives each family a visible vertical containment spine and a question-like header, so the reader can move from a family to a subfamily and then to the example code. The local paths are clear, although a comparison across families still requires jumping between separate panels. A has long, clean vertical branch spines across five columns, but its images and labels behave more like adjacent specimens than endpoints of an exploratory route; it offers no equally explicit cross-panel prompt or example arrow.",
+              "color": "Both candidates carry the five source groups consistently through colored rules, branch lines, headings, and labels. B makes the semantic grouping more legible by pairing each color with a bounded panel and a dark, high-contrast header; A's restrained colored lines and headings preserve classification but read more like an index than a set of distinct explanatory neighborhoods.",
+              "rhythm": "B creates a readable page rhythm with a title band, alternating panel sizes, repeated branch-to-specimen pairings, and a final connections note. The rhythm supports short explorations at detail scale, though the panel grid is still orderly and somewhat catalog-like. A's five equal vertical columns give a steady scan but little change of pace; the electrophone column is especially tall while the lower page remains comparatively quiet."
+            },
+            "routes": [
+              {
+                "question": "Where does a handbell belong, and what mechanism does it exemplify?",
+                "answer": "It belongs to Idiophones, specifically Struck bodies → Direct blows (111); its body is what vibrates.",
+                "steps": [
+                  "Start at the Idiophones panel heading (1) and read ‘The body vibrates.’",
+                  "Follow the visible branch to Struck bodies (11), then Direct blows (111).",
+                  "Move to the adjacent specimen well and read ‘Handbell’ with ‘Example → 111’ and ‘Strike the body.’"
+                ],
+                "operation": "trace"
+              },
+              {
+                "question": "How does the pictured zither differ from the pictured violin in this classification?",
+                "answer": "The zither exemplifies Board zithers (314) under Simple / zithers, while the violin exemplifies Lutes (321) under Composite; both are Chordophones because tensioned strings vibrate.",
+                "steps": [
+                  "Enter Chordophones (3) and read ‘Tensioned strings vibrate.’",
+                  "Read the Zither specimen caption ‘Example → 314,’ then locate Board zithers (314) under Simple / zithers (31).",
+                  "Read the Violin caption ‘Example → 321,’ then locate Lutes (321) under Composite (32)."
+                ],
+                "operation": "compare"
+              },
+              {
+                "question": "Why is the pictured kazoo classified with membranes rather than with aerophones?",
+                "answer": "It is placed in Membranophones as a Tube or vessel kazoo (242), because the singing membrane is the stated sound-making element; Aerophones are defined separately as air-producing the sound.",
+                "steps": [
+                  "Read the Membranophones heading (2) and its explanation ‘A stretched skin vibrates.’",
+                  "Follow 2 → Singing membranes (24) → Tube or vessel kazoos (242).",
+                  "Read the nearby Kazoo caption ‘Example → 242’ and ‘A singing membrane,’ then contrast the Aerophones heading (4), ‘Air produces the sound.’"
+                ],
+                "operation": "compare"
+              }
+            ],
+            "remaining_weaknesses": {
+              "A": [
+                "The five-family row is a clean classification index but not a strongly exploratory composition; all branches run as similar vertical lists with few focal turns.",
+                "Handbell, Cymbals, Kalimba, Kazoo, and the other specimens have nearby captions, but the image-to-leaf relationship is not made as explicit as B's ‘Example → code’ treatment.",
+                "The wide landscape leaves the reader to compare distant columns without a visible corridor or question that connects them, and the lower page has uneven use of space."
+              ],
+              "B": [
+                "The panel grid remains much sparser and more modular than the supplied Christian-denominations reference, so it reads as five related cards rather than a dense, continuous field of branching knowledge.",
+                "Specimen wells are separated from the branch spine by dividers; the explicit example codes help, but a reader still has to jump from a leaf to the art well for several comparisons.",
+                "Cross-family questions are not given a single visible route across panel boundaries, and the repeated panel template limits the variation in reading rhythm."
+              ]
+            },
+            "next_repair": "Keep B's explicit specimen ownership and panel legibility, then add a small number of routed, color-matched comparison corridors between named leaves in different panels (for example Direct blows 111, Board zithers 314, and Tube or vessel kazoos 242). Let each corridor terminate at its specimen caption, and use released panel space rather than shrinking the branch text.",
+            "reference_target": "fail",
+            "reference_density": "pending"
+          },
+          {
+            "subject": "bsd",
+            "preferred": "A",
+            "observations": {
+              "image_ownership": "A keeps each illustrative hardware image inside the art column of a named history panel: terminal hardware with Research UNIX, a minicomputer with Berkeley / CSRG, and separate personal-computer, software, connected-family, and workstation-era images with the BSD branches. The captions also say the hardware is illustrative period context. B places images near the appropriate branch rows, but several float between rows without a release-specific caption or connector, so ownership is more dependent on proximity.",
+              "paths": "A makes the important nonlocal relationships readable as labeled endpoints: ‘02 → 1BSD · lineage,’ ‘05 → FreeBSD 2.0 · lineage,’ ‘10 → NetBSD 1.0 · contribution,’ and ‘11 → BSD/OS 2.0 · contribution.’ Its ‘ONE SOURCE, THREE PATHS’ inset turns the 4.4BSD Lite split into a visible small route map. B has stronger whole-canvas arrows and a useful solid-versus-dashed legend, but the reversals in the Berkeley rows and the long contribution corridors around NET/2, FreeBSD, and NetBSD make some endpoints harder to disambiguate.",
+              "color": "A preserves the six source group colors as stable panel rules, headings, link text, and release spines, while keeping the record names dark and readable. B also has a coherent family palette and more visibly colored release ribbons, but the many long colored lines compete with one another at whole-page scale. A's panel-local color is the clearer ownership signal; B's line color is the stronger global lineage signal.",
+              "rhythm": "A gives a calm, readable cadence: two larger source histories on the left, then compact descendant panels on the right, with the three-path inset as an intentional pause. This supports exploration at detail scale but fragments the one-history story into cards. B more closely resembles the reference's continuous branching mural, with a strong top-to-bottom narrative, yet its horizontal runs, reversals, and crossings create an uneven rhythm and make the reading direction less stable."
+            },
+            "routes": [
+              {
+                "question": "How does UNIX V6 reach the Berkeley line shown here?",
+                "answer": "The visible source lineage goes from UNIX V6 to 1BSD, then through 2BSD to 3BSD; 3BSD also shows an incoming UNIX/32V lineage link.",
+                "steps": [
+                  "In Research UNIX, find UNIX V6 (1975) and read the visible note ‘02 → 1BSD · lineage.’",
+                  "In Berkeley / CSRG, follow the vertical release sequence 1BSD → 2BSD → 3BSD.",
+                  "At 3BSD, read the separate visible note ‘01 ← UNIX/32V · lineage’ to identify the other named input."
+                ],
+                "operation": "trace"
+              },
+              {
+                "question": "What happens to 4.4BSD Lite's code across the named BSD families?",
+                "answer": "4.4BSD Lite feeds FreeBSD 2.0 by lineage and contributes to NetBSD 1.0 and BSD/OS 2.0.",
+                "steps": [
+                  "Find 4.4BSD Lite (1994) in the Berkeley / CSRG panel and read ‘Source for several BSD systems.’",
+                  "Read its three visible endpoint notes: ‘05 → FreeBSD 2.0 · lineage,’ ‘10 → NetBSD 1.0 · contribution,’ and ‘11 → BSD/OS 2.0 · contribution.’",
+                  "Confirm the same three destinations in the nearby ‘ONE SOURCE, THREE PATHS’ inset and locate FreeBSD 2.0, NetBSD 1.0, and BSD/OS 2.0 in their right-hand panels."
+                ],
+                "operation": "compare"
+              },
+              {
+                "question": "Which dated release sequence is visible inside FreeBSD, and where does the shown sequence end?",
+                "answer": "The shown FreeBSD sequence runs from FreeBSD 1.0 (1993) through 1.1, 1.1.5, 1.1.5.1, 2.0, 2.0.5, and 2.1 (1995); FreeBSD 2.1 is marked as the last release shown.",
+                "steps": [
+                  "Start at FreeBSD 1.0 (1993), labeled ‘First release.’",
+                  "Follow the vertical spine through FreeBSD 1.1, 1.1.5, and 1.1.5.1, all visibly dated 1994.",
+                  "Continue through FreeBSD 2.0 and 2.0.5 to FreeBSD 2.1 (1995), whose detail reads ‘Last FreeBSD release shown.’"
+                ],
+                "operation": "time"
+              }
+            ],
+            "remaining_weaknesses": {
+              "A": [
+                "The panel layout makes the global UNIX-to-BSD descent discontinuous; numbered endpoint notes often require a lookup between panels instead of a single drawn route.",
+                "The three-path inset clarifies 4.4BSD Lite, but it duplicates link text rather than replacing it with one unambiguous, routed set of connectors to the actual destination records.",
+                "The hardware images explain eras and families, not exact releases, and the large art wells consume space without adding a denser visible relationship field like the reference."
+              ],
+              "B": [
+                "The continuous mural is visually closer to the supplied royal-family reference, but the left-to-right and right-to-left Berkeley rows make the reading direction easy to lose.",
+                "Long solid and dashed corridors around 4.4BSD Lite, FreeBSD, NetBSD, and BSDI approach or cross other routes; contribution endpoints are not always immediately distinguishable from nearby lineage paths.",
+                "Images are recognizable but relatively detached from exact release labels, while the small whole-page type and broad empty corridors weaken the detail-to-overview rhythm."
+              ]
+            },
+            "next_repair": "Retain A's readable panels and three-path explanation, but draw one continuous, typed master corridor from UNIX V6 through 1BSD, 3BSD, NET/2, and 4.4BSD Lite, then route three short, non-crossing branches to FreeBSD 2.0, NetBSD 1.0, and BSD/OS 2.0. Anchor each hardware caption to its named family or release neighborhood and reserve the corridor before placing the art.",
+            "reference_target": "fail",
+            "reference_density": "pending"
+          }
+        ],
+        "evidence_boundary": "This is a visible comparison of all manifest-listed candidate whole/detail images and both supplied reference whole/detail images, checked against the two supplied source inventories. No external material was browsed. No artifact/browser audit or formal reference-and-candidate census was supplied or run, so measured reference-density status remains pending; visual appearance also does not establish blinded indistinguishability."
+      },
+      "input_hashes": {
+        "bsd-A-detail.png": "f67a365c100f5f841fd3d03d77e68ac353d28be78a9da3b8a76b68db8563bea7",
+        "bsd-A-whole.png": "350b9d9277777ebd237cd9946dcaa52cc4f9fb1076db2fc365c1a70319498f89",
+        "bsd-B-detail.png": "b220b80f74d9cc424286f1f630fdde056cc4a6cbe460501c4db75424593ba6a1",
+        "bsd-B-whole.png": "eaf06b2513440eb407ec8335a9f0c04943f3de824731ce8fdb38e7fab3bf49d6",
+        "bsd-reference-detail.png": "5ff14ac37c82fd7262a4bf4ae7d7a86b8d67630659caa976ea23a3f1eb74b213",
+        "bsd-reference-whole.png": "9521e8272f4f141d79c080cb4794cc1a1b7adffe3eb56e717e070cab5ce37681",
+        "bsd-source.json": "acf14628cc9f5c54100cd8dd27d0c0924f3b98b53bf1f0a195d78094a9e79c7d",
+        "instruments-A-detail.png": "e2d71e7b968c4128215673f61a9ba6b6b284e4ab0b425bde184e650b4e83eaa3",
+        "instruments-A-whole.png": "f87fbfd9c71d12ecbb15eb42a5cee769dafc8354006ddc8e1dde2b1b06523c88",
+        "instruments-B-detail.png": "dd83cc12d9281a8e2c0d7fffdc4a0ea6e12187b2bbf17f078a64c813a1cc160d",
+        "instruments-B-whole.png": "caf6abc8775531f6fc1eb70372e6da6018a9939284bee18976391febf7aa6602",
+        "instruments-reference-detail.png": "fc95b72f692160c0092bcfbc76c047e583b966c24bb2f6b738bfb4ed6285bfa1",
+        "instruments-reference-whole.png": "05db9954eb790dfcba475daa2c178ee8fed815b5bb504abaa58b970043ed331d",
+        "instruments-source.json": "e0f5f52f1f4b70cd3956cc919519b091653e92495cb3d174df35b0586c081177"
+      },
+      "all_input_hashes_match": true,
+      "image_read_count": 12,
+      "expected_image_count": 12,
+      "reviewer_outputs": {
+        "review.json": "0017de942b8a4e05462c44a38bc1f3370edd69ccfc957e761b18e73aebbb896d",
+        "review.md": "b5329546527b728b6b2fd4bea9b7714b848ba4bf55ea11f9b50b02e78fad542c"
+      },
+      "mapping": {
+        "instruments": {
+          "A": "first-recomposition",
+          "B": "previous-illustrated"
+        },
+        "bsd": {
+          "A": "previous-illustrated",
+          "B": "first-recomposition"
+        }
+      },
+      "independent_review_findings": []
+    },
+    {
+      "run_id": "20260913-usefulcharts-exploration-luna-2",
+      "cohort": "A",
+      "command": "C:\\Users\\villa\\AppData\\Roaming\\npm\\pi.CMD --model openai-codex/gpt-5.6-luna --thinking high --mode json --no-context-files --no-extensions --no-skills --no-prompt-templates --no-themes --no-session --skill skills/usefulcharts-style --print \"You are running an isolated forward test for `usefulcharts-style`. Use the read tool to read `../prompt.md` first, then follow it exactly. The loaded bundle is rooted at `skills/usefulcharts-style` from the current workspace; never prefix that path with `../`. Immediately after the prompt, read the bundle entry point at `skills/usefulcharts-style/SKILL.md`; do not probe for README.md or other conventional entry-point filenames. The shell tool is bash, not PowerShell; do not run PowerShell commands. Do not list directories or inspect script source before reading the prompt. If the prompt gives an exact command, run it verbatim and verify the required outputs.\"",
+      "model": "openai-codex/gpt-5.6-luna",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 132,
+        "payloadSha256": "591c1db70af2b56fa7e09b12edc7716c8d5acea215ec00be138caecdc4c46777"
+      },
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/pi-prompts/usefulcharts-exploration-criticism.md",
+        "sizeBytes": 2034,
+        "sha256": "3c69a6d344ef31a094796f44f777faa12814dae333cbc53bc8c6caffa5a29f19"
+      },
+      "expected_outputs": [
+        "review.json",
+        "review.md"
+      ],
+      "strict_pass": true,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "findings": [],
+      "payload_unchanged": true,
+      "read_paths": [
+        "../prompt.md",
+        "input/bsd-A-detail.png",
+        "input/bsd-A-whole.png",
+        "input/bsd-B-detail.png",
+        "input/bsd-B-whole.png",
+        "input/bsd-reference-detail.png",
+        "input/bsd-reference-whole.png",
+        "input/bsd-source.json",
+        "input/instruments-A-detail.png",
+        "input/instruments-A-whole.png",
+        "input/instruments-B-detail.png",
+        "input/instruments-B-whole.png",
+        "input/instruments-reference-detail.png",
+        "input/instruments-reference-whole.png",
+        "input/instruments-source.json",
+        "input/manifest.json",
+        "review.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/editorial-composition.md",
+        "skills/usefulcharts-style/references/evaluation.md",
+        "skills/usefulcharts-style/references/illustrated-discovery.md",
+        "skills/usefulcharts-style/references/knowledge-density.md",
+        "skills/usefulcharts-style/references/note-hierarchy.md"
+      ],
+      "model_errors": [],
+      "failure_classification": null,
+      "raw_verdicts": {
+        "subjects": [
+          {
+            "subject": "instruments",
+            "preferred": "B",
+            "observations": {
+              "image_ownership": "B places each recognizable specimen in a dedicated right-hand image zone inside its family panel, with explicit labels and code captions such as Handbell / Example → 111, Kazoo / Example → 242, and Zither / Example → 314. A has the same useful objects, but they float beside the long columns without a panel boundary or leader, so ownership is less immediate.",
+              "paths": "B exposes indented family spines and short branches: Membranophones → Singing membranes → Tube or vessel kazoos is directly readable, and the specimen captions point back to codes. A's tall columns are orderly but behave more like five parallel lists; the top bracket does not create useful paths between the specimen and its exact branch.",
+              "color": "B carries distinct family colors through panel rules, headings, branch spines, codes, and specimen captions: brown Idiophones, coral Membranophones, green Chordophones, blue Aerophones, and purple Electrophones. A mostly confines color to thin spines and headings while most labels share the same dark text, so semantic grouping is weaker at a glance.",
+              "rhythm": "B has a strong dark-header entrance and alternating text/art inside five varied-height panels, giving the eye several local discoveries. It is still a regular panel grid with large quiet margins and less varied density than the reference. A is a flatter five-column matrix with conspicuous empty lower areas and a repetitive vertical scan."
+            },
+            "routes": [
+              {
+                "question": "Why does the kazoo belong with membranes rather than aerophones?",
+                "answer": "It is a Membranophone, specifically Tube or vessel kazoos (242), because a singing membrane vibrates; the fact that a player blows into it does not move it to Aerophones.",
+                "steps": [
+                  "Start at the coral Membranophones heading and its visible subtitle, A stretched skin vibrates.",
+                  "Follow the coral spine to 24 Singing membranes and then 242 Tube or vessel kazoos.",
+                  "Read the adjacent Kazoo caption: Example → 242 and A singing membrane; the footer repeats the membrane-versus-blowing distinction."
+                ],
+                "operation": "trace"
+              },
+              {
+                "question": "What vibrates in the pictured handbell, snare drum, and zither examples?",
+                "answer": "The handbell uses a vibrating body, the snare drum a stretched skin, and the zither tensioned strings.",
+                "steps": [
+                  "Read Handbell in the Idiophones image zone: Strike the body.",
+                  "Compare it with Snare drum in Membranophones: A stretched skin.",
+                  "Compare both with Zither in Chordophones: Strings across a board."
+                ],
+                "operation": "compare"
+              },
+              {
+                "question": "Which classification path contains the analog synthesizer?",
+                "answer": "The pictured Analog synthesizer is an example of 53 Analogue electronics, within Electrophones, rather than the neighboring Electromechanical branch.",
+                "steps": [
+                  "Enter the purple Electrophones panel and its top-level statement, Signals feed a loudspeaker.",
+                  "Scan the visible branches from 51 and 52 to the sibling 53 Analogue electronics.",
+                  "Match the nearby image caption, Analog synthesizer / Example → 53 / Electronic oscillations."
+                ],
+                "operation": "trace"
+              }
+            ],
+            "remaining_weaknesses": {
+              "A": [
+                "The five equal vertical columns make the chart read as a catalog, while the large open lower field is not used for a second explanatory layer. Repair by giving each family an uneven bounded panel sized to its branch depth and using the released space for source-backed mechanism callouts.",
+                "Specimen ownership is inferred from proximity: Handbell and Cymbals sit near 111, and Zither, Violin, and Harp sit beside their family lists without exact visual anchors. Add short leaders or small white specimen cards tied to the displayed codes.",
+                "Color marks the family rails but not enough of the reading units; black labels across the columns flatten category versus subclass. Carry the family accent into code capsules or selected branch labels while retaining dark readable text."
+              ],
+              "B": [
+                "The five rounded panels are cleaner but mechanically repeated, with a sparse lower Aerophones panel and broad unused margins compared with the reference's compact, varied field. Repack the panels around branch complexity and use the recovered pockets for additional source-supported context, not decorative fill.",
+                "The image columns use captions such as Example → 314, but no leader reaches the exact branch endpoint, so a reader still performs a small detached lookup. Add a restrained leader from each specimen caption to its code node and keep the corridor clear.",
+                "The overall hierarchy is strong locally but lacks a more varied global route: each family starts over again inside a box. Introduce a small, explicit cross-family comparison rail or shared mechanism question without implying that the five families are one lineage."
+              ]
+            },
+            "next_repair": "Keep B's panel structure, but reserve a narrow corridor between each branch spine and its image zone and draw explicit, color-matched leaders from Handbell 111, Kazoo 242, Zither 314, Flute 421, and Analog synthesizer 53 to their captions; then rebalance panel heights around the remaining source-backed labels.",
+            "reference_target": "fail",
+            "reference_density": "pending"
+          },
+          {
+            "subject": "bsd",
+            "preferred": "A",
+            "observations": {
+              "image_ownership": "A gives each family its own image-and-caption zone: AT THE TERMINAL for Research UNIX, THE MINICOMPUTER ERA for Berkeley / CSRG, THE PERSONAL COMPUTER for 386BSD, and corresponding contextual images for FreeBSD, NetBSD, and BSDI. It explicitly calls the hardware illustrative, so ownership is honest even when it is period context rather than a particular release. B places recognizable hardware near branches, but the images have little or no captioned binding and ownership is mostly inferred from proximity.",
+              "paths": "B has the most immediately drawable arrows, including the Research UNIX to Berkeley route and dashed contribution corridors. A has clearer local vertical release spines and readable paired endpoint references such as 02 → 1BSD / 02 ← UNIX V6, plus the ONE SOURCE, THREE PATHS inset. However, A's cross-panel relationships are lookups rather than continuous lines, so a long trace is interrupted.",
+              "color": "A uses stable family accents for panel rules, headings, release spines, and reference text, while keeping release names dark and readable. B also preserves family colors in its strips and arrows, but its repeated horizontal cards make color feel more like lane decoration than a hierarchy of principal releases, branches, and contributions.",
+              "rhythm": "A has a clearer entrance, unequal local content, alternating release lists and explanatory image zones, and a dense middle/lower reading field that is closer to the reference family. B is easy to scan as a flowchart, but its long equal strips, broad empty spaces, and sparse branch endings create a flat rhythm unlike the reference's irregular woven genealogy."
+            },
+            "routes": [
+              {
+                "question": "How does Research UNIX lead to 3BSD in the supplied history?",
+                "answer": "UNIX V6 leads to 1BSD, then the Berkeley sequence continues through 2BSD to 3BSD; 3BSD is dated 1979–80 and is described as adding virtual memory on the VAX.",
+                "steps": [
+                  "Start in Research UNIX at UNIX V6, 1975, with the visible note Basis of the first BSD and paired reference 02 → 1BSD · lineage.",
+                  "Move to Berkeley / CSRG and match 02 ← UNIX V6 · lineage beside 1BSD, 1977–78.",
+                  "Follow the Berkeley spine through 2BSD to the emphasized 3BSD, 1979–80, Virtual memory on the VAX."
+                ],
+                "operation": "trace"
+              },
+              {
+                "question": "Which three named branches receive code from 4.4BSD Lite?",
+                "answer": "The displayed source 4.4BSD Lite feeds FreeBSD 2.0 by lineage and contributes to NetBSD 1.0 and BSD/OS 2.0.",
+                "steps": [
+                  "Locate 4.4BSD Lite, 1994, in the Berkeley / CSRG panel and read its visible references 05 → FreeBSD 2.0, 10 → NetBSD 1.0, and 11 → BSD/OS 2.0.",
+                  "Use the adjacent ONE SOURCE, THREE PATHS inset, which repeats the three named endpoints.",
+                  "Compare those endpoints with the FreeBSD, NetBSD, and BSDI panel headings and their matching release rows."
+                ],
+                "operation": "compare"
+              },
+              {
+                "question": "Which shown terminal releases reach 1995, and what date remains unresolved?",
+                "answer": "The selected FreeBSD, NetBSD, BSDI, and Berkeley branches each show a 1995 endpoint; 4.1bBSD remains Undated.",
+                "steps": [
+                  "Read the printed terminal dates FreeBSD 2.1 1995, NetBSD 1.1 1995, BSD/OS 2.0.1 1995, and 4.4BSD Lite2 1995.",
+                  "Compare those labels across the separate family panels rather than using vertical distance as elapsed time.",
+                  "Return to Berkeley / CSRG and identify 4.1bBSD, whose date label is explicitly Undated."
+                ],
+                "operation": "time"
+              }
+            ],
+            "remaining_weaknesses": {
+              "A": [
+                "The important cross-panel edges are rendered as numbered text references, so the reader must shuttle between 4.4BSD Lite and several target panels instead of following a visible corridor. Route direct solid lineage and dotted contribution connectors through a reserved middle corridor, with both endpoints named.",
+                "The panel stack preserves local clarity but leaves large unused pockets beside the image insets and repeats a similar list treatment. Reclaim terminated-branch space and vary panel width or node treatment around NET/2 and 4.4BSD Lite, where the history actually fans out.",
+                "The hardware illustrations are legible context, but their captions describe eras rather than binding them to a release such as UNIX V6 or 3BSD. Add a short explicit 'illustrative period hardware' relationship to the nearby anchor, without claiming an exact artifact provenance."
+              ],
+              "B": [
+                "The direct arrows improve tracing, but the top and Berkeley rows are long equal-width strips; the result reads as several timelines rather than a branching history. Compress the straight runs and widen the NET/2, 4.4BSD Lite, and daughter neighborhoods where the supplied edges split.",
+                "Dashed contribution routes cross or run alongside solid lineage routes near FreeBSD and NetBSD, making the endpoint semantics easy to miss at whole-page scale. Use distinct endpoint markers and a short local legend at the first major split.",
+                "The printer, minicomputer, floppy, connected-computer, and workstation images lack the explanatory caption treatment present in A. Add named image cards with the relevant branch or period context and keep them inside the branch's visual ownership zone."
+              ]
+            },
+            "next_repair": "Preserve A's family panels and image captions, then add explicitly routed cross-panel connectors for the NET/2 and 4.4BSD Lite relationships—solid for lineage and dotted for contribution—with named endpoints; this removes the detached ID lookups without sacrificing local release readability.",
+            "reference_target": "fail",
+            "reference_density": "pending"
+          }
+        ],
+        "evidence_boundary": "I inspected every manifest-listed candidate and reference whole image and detail crop: instruments-A-whole.png, instruments-A-detail.png, instruments-B-whole.png, instruments-B-detail.png, instruments-reference-whole.png, instruments-reference-detail.png, bsd-A-whole.png, bsd-A-detail.png, bsd-B-whole.png, bsd-B-detail.png, bsd-reference-whole.png, and bsd-reference-detail.png. The source-answerable claims were checked against instruments-source.json and bsd-source.json. The manifest SHA-256 values are the retained artifact identities. This is a visual and source-backed critique, not a browser geometry audit or a measured density census; reference_density therefore remains pending. No blinded indistinguishability test, measured reference-density pass, or quality score is claimed."
+      },
+      "input_hashes": {
+        "bsd-A-detail.png": "f67a365c100f5f841fd3d03d77e68ac353d28be78a9da3b8a76b68db8563bea7",
+        "bsd-A-whole.png": "350b9d9277777ebd237cd9946dcaa52cc4f9fb1076db2fc365c1a70319498f89",
+        "bsd-B-detail.png": "b220b80f74d9cc424286f1f630fdde056cc4a6cbe460501c4db75424593ba6a1",
+        "bsd-B-whole.png": "eaf06b2513440eb407ec8335a9f0c04943f3de824731ce8fdb38e7fab3bf49d6",
+        "bsd-reference-detail.png": "5ff14ac37c82fd7262a4bf4ae7d7a86b8d67630659caa976ea23a3f1eb74b213",
+        "bsd-reference-whole.png": "9521e8272f4f141d79c080cb4794cc1a1b7adffe3eb56e717e070cab5ce37681",
+        "bsd-source.json": "acf14628cc9f5c54100cd8dd27d0c0924f3b98b53bf1f0a195d78094a9e79c7d",
+        "instruments-A-detail.png": "e2d71e7b968c4128215673f61a9ba6b6b284e4ab0b425bde184e650b4e83eaa3",
+        "instruments-A-whole.png": "f87fbfd9c71d12ecbb15eb42a5cee769dafc8354006ddc8e1dde2b1b06523c88",
+        "instruments-B-detail.png": "dd83cc12d9281a8e2c0d7fffdc4a0ea6e12187b2bbf17f078a64c813a1cc160d",
+        "instruments-B-whole.png": "caf6abc8775531f6fc1eb70372e6da6018a9939284bee18976391febf7aa6602",
+        "instruments-reference-detail.png": "fc95b72f692160c0092bcfbc76c047e583b966c24bb2f6b738bfb4ed6285bfa1",
+        "instruments-reference-whole.png": "05db9954eb790dfcba475daa2c178ee8fed815b5bb504abaa58b970043ed331d",
+        "instruments-source.json": "e0f5f52f1f4b70cd3956cc919519b091653e92495cb3d174df35b0586c081177"
+      },
+      "all_input_hashes_match": true,
+      "image_read_count": 12,
+      "expected_image_count": 12,
+      "reviewer_outputs": {
+        "review.json": "9981d7528427dc8f5c1278f23ecbebbf22a53244d1f1f8bf86a7f52f46e800fa",
+        "review.md": "4f9759def2bbc3b75fe7ba125d430b0f105c0ac6f3ec9bcef01575e005f0bda3"
+      },
+      "mapping": {
+        "instruments": {
+          "A": "first-recomposition",
+          "B": "previous-illustrated"
+        },
+        "bsd": {
+          "A": "previous-illustrated",
+          "B": "first-recomposition"
+        }
+      },
+      "independent_review_findings": []
+    },
+    {
+      "run_id": "20260913-usefulcharts-exploration-luna-3",
+      "cohort": "A",
+      "command": "C:\\Users\\villa\\AppData\\Roaming\\npm\\pi.CMD --model openai-codex/gpt-5.6-luna --thinking high --mode json --no-context-files --no-extensions --no-skills --no-prompt-templates --no-themes --no-session --skill skills/usefulcharts-style --print \"You are running an isolated forward test for `usefulcharts-style`. Use the read tool to read `../prompt.md` first, then follow it exactly. The loaded bundle is rooted at `skills/usefulcharts-style` from the current workspace; never prefix that path with `../`. Immediately after the prompt, read the bundle entry point at `skills/usefulcharts-style/SKILL.md`; do not probe for README.md or other conventional entry-point filenames. The shell tool is bash, not PowerShell; do not run PowerShell commands. Do not list directories or inspect script source before reading the prompt. If the prompt gives an exact command, run it verbatim and verify the required outputs.\"",
+      "model": "openai-codex/gpt-5.6-luna",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 132,
+        "payloadSha256": "591c1db70af2b56fa7e09b12edc7716c8d5acea215ec00be138caecdc4c46777"
+      },
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/pi-prompts/usefulcharts-exploration-criticism.md",
+        "sizeBytes": 2034,
+        "sha256": "3c69a6d344ef31a094796f44f777faa12814dae333cbc53bc8c6caffa5a29f19"
+      },
+      "expected_outputs": [
+        "review.json",
+        "review.md"
+      ],
+      "strict_pass": true,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "findings": [],
+      "payload_unchanged": true,
+      "read_paths": [
+        "../prompt.md",
+        "input/bsd-A-detail.png",
+        "input/bsd-A-whole.png",
+        "input/bsd-B-detail.png",
+        "input/bsd-B-whole.png",
+        "input/bsd-reference-detail.png",
+        "input/bsd-reference-whole.png",
+        "input/bsd-source.json",
+        "input/instruments-A-detail.png",
+        "input/instruments-A-whole.png",
+        "input/instruments-B-detail.png",
+        "input/instruments-B-whole.png",
+        "input/instruments-reference-detail.png",
+        "input/instruments-reference-whole.png",
+        "input/instruments-source.json",
+        "input/manifest.json",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/editorial-composition.md",
+        "skills/usefulcharts-style/references/evaluation.md",
+        "skills/usefulcharts-style/references/illustrated-discovery.md",
+        "skills/usefulcharts-style/references/knowledge-density.md",
+        "skills/usefulcharts-style/references/note-hierarchy.md"
+      ],
+      "model_errors": [],
+      "failure_classification": null,
+      "raw_verdicts": {
+        "subjects": [
+          {
+            "subject": "instruments",
+            "preferred": "B",
+            "observations": {
+              "image_ownership": "B makes ownership explicit: each specimen sits in a family panel beside a caption such as Handbell, Example → 111, or Kazoo, Example → 242. A has recognizable images beside their family columns, but the labels are visually adjacent examples rather than explicit image-to-node bindings, so the reader can need a small lookup from the picture to the code.",
+              "paths": "B's local vertical trees and panel prompts make routes visible: the Membranophones panel asks WHY IS A KAZOO HERE? and places the Kazoo caption beside the 242 branch, while the Chordophones panel keeps 314, 321 and 322 close to their examples. A has a very clear top-level bar and indented branches, but its five columns mostly behave as separate lists and the pictures do not participate in the connector network.",
+              "color": "Both carry stable family colors through headings, branch strokes and captions. B adds restrained colored panel rules and uses color as a family locator without turning the page into a rainbow; A's stronger continuous top bar is useful, but the repeated column treatment makes color feel more like section marking than a discovery system.",
+              "rhythm": "B creates a deliberate page-scale rhythm with a dark title band, alternating large panels, question prompts and image/caption pauses, then a reading-connections box. A is compact and easy to scan left-to-right, but the equal vertical columns produce a repetitive catalog rhythm, with particularly unused space around the sparse Electrophones branch."
+            },
+            "routes": [
+              {
+                "question": "Which family should a reader choose for different vibrating causes?",
+                "answer": "The five visible family definitions distinguish body, stretched skin, strings, air and electronic signal: Idiophones, Membranophones, Chordophones, Aerophones and Electrophones.",
+                "steps": [
+                  "Start at the title instruction, Find the family by what vibrates.",
+                  "Compare the colored panel headings and subtitles: Idiophones — The body vibrates; Membranophones — A stretched skin vibrates; Chordophones — Tensioned strings vibrate; Aerophones — Air produces the sound; Electrophones — Signals feed a loudspeaker.",
+                  "Use the matching family panel as the destination for the instrument or mechanism being investigated."
+                ],
+                "operation": "compare"
+              },
+              {
+                "question": "Why is the pictured Kazoo in Membranophones rather than in Aerophones?",
+                "answer": "It is classified as Tube or vessel kazoos, code 242, under Singing membranes because the caption identifies the singing membrane as the sound-making mechanism.",
+                "steps": [
+                  "Follow the visible question WHY IS A KAZOO HERE? to the Membranophones panel.",
+                  "Read the image caption Kazoo and its explicit Example → 242 marker.",
+                  "Trace the red branch from Singing membranes to Tube or vessel kazoos, where the same 242 code appears."
+                ],
+                "operation": "trace"
+              },
+              {
+                "question": "How do the illustrated violin, harp and zither occupy different Chordophones branches?",
+                "answer": "The zither exemplifies Board zithers (314), the violin exemplifies Lutes (321), and the harp exemplifies Harps (322).",
+                "steps": [
+                  "Enter the green Chordophones panel and read its branch spine.",
+                  "Follow Simple / zithers to Board zithers 314 and match that code to the Zither caption.",
+                  "Follow Composite to Lutes 321 and Harps 322, matching those codes to Violin and Harp respectively."
+                ],
+                "operation": "compare"
+              }
+            ],
+            "remaining_weaknesses": {
+              "A": [
+                "The five equally weighted columns make a clean classification catalog but do not provide question-led local exploration.",
+                "Handbell, Cymbals, Kalimba and the other pictures are not connected by a visible endpoint to their example codes, so image ownership is weaker than the surrounding tree grammar.",
+                "The long shared top connector and small family columns flatten the distinction between a global cause and each family’s internal route."
+              ],
+              "B": [
+                "Panel borders and repeated vertical spines still fragment the classification into cards; there is no single visible route joining the five top-level causes.",
+                "Some lower branches, especially the sparse tail of Electrophones, leave large quiet areas and do not match the reference’s continuous dense field.",
+                "The specimen captions clarify example ownership but do not show a connector from the image itself to the exact branch endpoint; the reader still uses the printed code as the final join."
+              ]
+            },
+            "next_repair": "Keep B’s question-led panels and explicit Example → code captions, then add short, non-crossing image-to-endpoint ticks for the selected specimens and use the released lower space to expand the most informative subbranches without shrinking type. Add a compact cross-panel cause key so the five top-level families read as one comparison rather than five isolated cards.",
+            "reference_target": "fail",
+            "reference_density": "pending"
+          },
+          {
+            "subject": "bsd",
+            "preferred": "B",
+            "observations": {
+              "image_ownership": "A gives the strongest local image captions—AT THE TERMINAL, THE MINICOMPUTER ERA, SOFTWARE THAT TRAVELS and A CONNECTED FAMILY—inside the relevant family panels. B places recognizable hardware near the relevant rows, but most images are floating accents without a nearby subject caption or an explicit node binding, so ownership is less certain at detail scale.",
+              "paths": "B is the better exploration diagram because the Research UNIX and Berkeley sequences are physically connected, the Berkeley row turns into a visible reverse-running continuation, and colored/dashed corridors lead from 4.4BSD Lite to FreeBSD, NetBSD and BSD/OS. A has very legible local vertical sequences and numbered relation notes, but following a cross-family contribution requires leaving one panel, remembering a code such as 10 or 11, and finding it elsewhere.",
+              "color": "Both preserve stable group colors for Research UNIX, Berkeley / CSRG, 386BSD, FreeBSD, NetBSD and BSDI. B carries those colors into the long connectors and branch rows, making family identity persist through the whole route. A uses color very clearly inside panels, but the panel boundaries interrupt the sense of one shared lineage.",
+              "rhythm": "B has a strong exploratory rhythm: one horizontal Research UNIX entrance, a long Berkeley spine, a turn into later branches, and compact release lanes below. The reverse direction of the second Berkeley row and several long orthogonal/dashed corridors create backtracking and crossings. A has calmer, more readable panel rhythm and better quiet space for notes, but its repeated stacked lists make the page feel like six inventories rather than one branching history."
+            },
+            "routes": [
+              {
+                "question": "What is the visible Berkeley succession from 3BSD to the final CSRG release shown?",
+                "answer": "It runs from 3BSD through the 4.x and NET releases to 4.4BSD Lite2 in the displayed selection.",
+                "steps": [
+                  "Start at 3BSD in the Berkeley / CSRG row and follow the solid arrows through 4.0BSD, 4.1BSD, 4.1aBSD, 4.1bBSD, 4.1cBSD and 4.2BSD.",
+                  "Take the visible turn down to 4.3BSD (1986), then follow the lower row’s left-pointing sequence through 4.3BSD Tahoe, NET/1, 4.3BSD Reno, NET/2, 4.4BSD Alpha and 4.4BSD.",
+                  "Continue left to 4.4BSD Lite and 4.4BSD Lite2, whose labels identify the source and final CSRG distribution."
+                ],
+                "operation": "trace"
+              },
+              {
+                "question": "Which later branches receive 4.4BSD Lite, and with what visible relationship distinction?",
+                "answer": "4.4BSD Lite leads by lineage to FreeBSD 2.0 and contributes code to NetBSD 1.0 and BSD/OS 2.0.",
+                "steps": [
+                  "Locate 4.4BSD Lite on the Berkeley continuation row.",
+                  "Follow the solid route to FreeBSD 2.0 in the red FreeBSD lane.",
+                  "Follow the separate dashed contribution corridors to NetBSD 1.0 and BSD/OS 2.0, using the footer’s SOLID = lineage and DASHED = code contribution key."
+                ],
+                "operation": "trace"
+              },
+              {
+                "question": "How do the shown FreeBSD and NetBSD release branches compare after their first releases?",
+                "answer": "FreeBSD has the longer displayed release sequence, while NetBSD shows four releases ending at NetBSD 1.1 in 1995.",
+                "steps": [
+                  "Read the red FreeBSD lane from FreeBSD 1.0 to 1.1, 1.1.5, 1.1.5.1, 2.0, 2.0.5 and 2.1.",
+                  "Read the adjacent ochre NetBSD lane from NetBSD 0.8 to 0.9, 1.0 and 1.1.",
+                  "Compare the printed release labels and years at the same lower-page scale rather than treating the vertical spacing as elapsed time."
+                ],
+                "operation": "compare"
+              }
+            ],
+            "remaining_weaknesses": {
+              "A": [
+                "The six boxed panels separate the history; numbered cross-links such as 03, 06, 10 and 11 are readable but require a detached lookup instead of a continuous visual route.",
+                "The panel-side hardware illustrations have clear captions but are contextual rather than visibly attached to exact release nodes, and their repeated placement adds a gallery-like rhythm.",
+                "Equalized panel stacks underrepresent the shared trunk and make the large Berkeley history compete with much shorter branches for the same structural treatment."
+              ],
+              "B": [
+                "Several long corridors and the reverse Berkeley row force the eye to backtrack; the dashed contribution routes near FreeBSD, NetBSD and BSDI can be mistaken for competing lineage unless the footer is read first.",
+                "The terminal, minicomputer and later hardware images lack explicit captions or endpoint markers, so their explanatory value is weaker than their recognizability.",
+                "The horizontal release cards and repeated lanes are much sparser than the royal-family reference, with substantial unused paper around the short branches."
+              ]
+            },
+            "next_repair": "Keep B’s continuous trunk, but reroute the 4.4BSD Lite contribution corridors into a reserved side corridor with labeled source and target endpoints, add compact captions that bind each hardware image to its release or family, and reclaim the open pockets for source-backed intermediate context rather than enlarging the repeated cards.",
+            "reference_target": "fail",
+            "reference_density": "pending"
+          }
+        ],
+        "evidence_boundary": "I viewed every listed candidate and reference whole image and detail crop, and read both supplied source inventories. The preferred choices are visual judgments about image ownership, connection paths, semantic color and reading rhythm. No density census or measured reference-density comparison was completed, and no blinded indistinguishability test was run; therefore reference_density remains pending and no visual similarity claim is made."
+      },
+      "input_hashes": {
+        "bsd-A-detail.png": "f67a365c100f5f841fd3d03d77e68ac353d28be78a9da3b8a76b68db8563bea7",
+        "bsd-A-whole.png": "350b9d9277777ebd237cd9946dcaa52cc4f9fb1076db2fc365c1a70319498f89",
+        "bsd-B-detail.png": "b220b80f74d9cc424286f1f630fdde056cc4a6cbe460501c4db75424593ba6a1",
+        "bsd-B-whole.png": "eaf06b2513440eb407ec8335a9f0c04943f3de824731ce8fdb38e7fab3bf49d6",
+        "bsd-reference-detail.png": "5ff14ac37c82fd7262a4bf4ae7d7a86b8d67630659caa976ea23a3f1eb74b213",
+        "bsd-reference-whole.png": "9521e8272f4f141d79c080cb4794cc1a1b7adffe3eb56e717e070cab5ce37681",
+        "bsd-source.json": "acf14628cc9f5c54100cd8dd27d0c0924f3b98b53bf1f0a195d78094a9e79c7d",
+        "instruments-A-detail.png": "e2d71e7b968c4128215673f61a9ba6b6b284e4ab0b425bde184e650b4e83eaa3",
+        "instruments-A-whole.png": "f87fbfd9c71d12ecbb15eb42a5cee769dafc8354006ddc8e1dde2b1b06523c88",
+        "instruments-B-detail.png": "dd83cc12d9281a8e2c0d7fffdc4a0ea6e12187b2bbf17f078a64c813a1cc160d",
+        "instruments-B-whole.png": "caf6abc8775531f6fc1eb70372e6da6018a9939284bee18976391febf7aa6602",
+        "instruments-reference-detail.png": "fc95b72f692160c0092bcfbc76c047e583b966c24bb2f6b738bfb4ed6285bfa1",
+        "instruments-reference-whole.png": "05db9954eb790dfcba475daa2c178ee8fed815b5bb504abaa58b970043ed331d",
+        "instruments-source.json": "e0f5f52f1f4b70cd3956cc919519b091653e92495cb3d174df35b0586c081177"
+      },
+      "all_input_hashes_match": true,
+      "image_read_count": 12,
+      "expected_image_count": 12,
+      "reviewer_outputs": {
+        "review.json": "32f89216d3478553af9227148003ff8ede19c996bf369e4e2aeb1e2eeb6014e5",
+        "review.md": "466243c1bf8b6300114ac7e937b20f227bd5f24eaa31a4dc8323d68130acb48a"
+      },
+      "mapping": {
+        "instruments": {
+          "A": "first-recomposition",
+          "B": "previous-illustrated"
+        },
+        "bsd": {
+          "A": "previous-illustrated",
+          "B": "first-recomposition"
+        }
+      },
+      "independent_review_findings": []
+    },
+    {
+      "run_id": "20260913-usefulcharts-exploration-b-luna-1",
+      "cohort": "B",
+      "command": "C:\\Users\\villa\\AppData\\Roaming\\npm\\pi.CMD --model openai-codex/gpt-5.6-luna --thinking high --mode json --no-context-files --no-extensions --no-skills --no-prompt-templates --no-themes --no-session --skill skills/usefulcharts-style --print \"You are running an isolated forward test for `usefulcharts-style`. Use the read tool to read `../prompt.md` first, then follow it exactly. The loaded bundle is rooted at `skills/usefulcharts-style` from the current workspace; never prefix that path with `../`. Immediately after the prompt, read the bundle entry point at `skills/usefulcharts-style/SKILL.md`; do not probe for README.md or other conventional entry-point filenames. The shell tool is bash, not PowerShell; do not run PowerShell commands. Do not list directories or inspect script source before reading the prompt. If the prompt gives an exact command, run it verbatim and verify the required outputs.\"",
+      "model": "openai-codex/gpt-5.6-luna",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 132,
+        "payloadSha256": "489f60a0de5ed6c11a873c6612bffe955af3cb8d0fe6e9e1b5d4baaeb557ad53"
+      },
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/pi-prompts/usefulcharts-exploration-criticism.md",
+        "sizeBytes": 2034,
+        "sha256": "3c69a6d344ef31a094796f44f777faa12814dae333cbc53bc8c6caffa5a29f19"
+      },
+      "expected_outputs": [
+        "review.json",
+        "review.md"
+      ],
+      "strict_pass": false,
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "findings": [
+        {
+          "code": "tool-error",
+          "line": 4307,
+          "tool": "bash"
+        },
+        {
+          "code": "tool-error",
+          "line": 4478,
+          "tool": "edit"
+        }
+      ],
+      "payload_unchanged": true,
+      "read_paths": [
+        "../prompt.md",
+        "input/bsd-A-detail.png",
+        "input/bsd-A-whole.png",
+        "input/bsd-B-detail.png",
+        "input/bsd-B-whole.png",
+        "input/bsd-reference-detail.png",
+        "input/bsd-reference-whole.png",
+        "input/bsd-source.json",
+        "input/instruments-A-detail.png",
+        "input/instruments-A-whole.png",
+        "input/instruments-B-detail.png",
+        "input/instruments-B-whole.png",
+        "input/instruments-reference-detail.png",
+        "input/instruments-reference-whole.png",
+        "input/instruments-source.json",
+        "input/manifest.json",
+        "review.json",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/editorial-composition.md",
+        "skills/usefulcharts-style/references/evaluation.md",
+        "skills/usefulcharts-style/references/illustrated-discovery.md",
+        "skills/usefulcharts-style/references/knowledge-density.md"
+      ],
+      "model_errors": [],
+      "failure_classification": "strict-process-error",
+      "raw_verdicts": {
+        "subjects": [
+          {
+            "subject": "instruments",
+            "preferred": "B",
+            "observations": {
+              "image_ownership": "Candidate A keeps recognizable instruments in a right-hand gallery inside each family panel. The captions and `Example → code` labels make the intended owner recoverable, but the reader must look back to the code. Candidate B places each image and caption at the relevant branch endpoint: Handbell and Cymbals at 111, Kalimba at 122, Zither at 314, Flute at 421 and so on. That local attachment makes B's examples part of the explanation rather than a parallel gallery.",
+              "paths": "A has clear indented trees, but its image relationships are mostly textual lookups. B provides a visible entrance through the top `WHAT VIBRATES?` bracket, then colored branch trunks and short image brackets that physically terminate at the selected examples. The paths are more exploratory, although the five narrow columns make the longer branches feel somewhat list-like.",
+              "color": "Both alternatives preserve stable family colors and carry them through the branch lines, headings and captions. B's brown, red, green, blue and purple columns make cross-family comparison immediate without confusing the categories; its light fills also keep the dark labels readable.",
+              "rhythm": "A has more breathing room and comfortable large text, but its stacked panel masonry and repeated side galleries interrupt a continuous route. B establishes a strong top-to-bottom sweep from the shared question into five families, with image stops creating useful pauses. The equal-width column rhythm is orderly but less varied than the reference."
+            },
+            "routes": [
+              {
+                "question": "Which class contains the Kalimba?",
+                "answer": "The Kalimba is an Idiophone in `Plucked tongues` → `On a board or comb` (122).",
+                "steps": [
+                  "Start at the top `WHAT VIBRATES?` bracket and enter the brown `Idiophones` column.",
+                  "Follow the brown trunk to `Plucked tongues` (12), then to `On a board or comb` (122).",
+                  "Follow the short bracket from 122 to the labeled `Kalimba · 122` image and caption."
+                ],
+                "operation": "trace"
+              },
+              {
+                "question": "Why is a kazoo placed with Membranophones rather than Aerophones?",
+                "answer": "The selected classification puts it under `Singing membranes` → `Tube or vessel kazoos` (242): the membrane is the classified sound-making element, even though the player blows into it.",
+                "steps": [
+                  "Enter the red `Membranophones` column from the shared top bracket.",
+                  "Follow the red branch past `Singing membranes` (24) to `Tube or vessel kazoos` (242).",
+                  "Follow the endpoint bracket to `Kazoo · 242`; the footer supplies the explicit explanation about the player's blowing."
+                ],
+                "operation": "trace"
+              },
+              {
+                "question": "How are a flute and clarinet distinguished in the chart?",
+                "answer": "Both are Aerophones under `Wind instruments`, but Flute is `Flutes` (421) while Clarinet is `Reed pipes` (422).",
+                "steps": [
+                  "Enter the blue `Aerophones` column and locate the shared `Wind instruments` (42) branch.",
+                  "Trace the blue branch to `Flutes` (421) and its `Flute · 421` image.",
+                  "Compare the neighboring `Reed pipes` (422) branch and its `Clarinet · 422` image."
+                ],
+                "operation": "compare"
+              }
+            ],
+            "remaining_weaknesses": {
+              "A": [
+                "The right-side specimen galleries are visually detached from their source rows; `Example → 111` and similar captions require a code lookup instead of a visible connector.",
+                "The panel masonry creates a catalog rhythm and the prompts at panel tops are not consistently connected to a concrete route or comparison.",
+                "The large, readable treatment is visibly less continuous and less varied than the supplied reference's branching field."
+              ],
+              "B": [
+                "Five equal-width columns constrain long labels and make the lower portions of the Chordophones and Electrophones branches read like narrow lists.",
+                "Several image brackets interrupt the branch corridors; ownership is much clearer than in A, but the exact endpoint can still require careful inspection where a shared branch serves two examples.",
+                "The orderly top-level grid has less irregular branch release and focal emphasis than the reference."
+              ]
+            },
+            "next_repair": "Keep B's endpoint-attached examples, then widen the Chordophones and Electrophones pockets by reclaiming unused space from the shorter columns, reserve each image caption as part of its branch corridor, and add one explicit cross-column comparison guide for Flute versus Clarinet.",
+            "reference_target": "not-established",
+            "reference_density": "pending"
+          },
+          {
+            "subject": "bsd",
+            "preferred": "B",
+            "observations": {
+              "image_ownership": "Candidate A gives each family a large contextual image in a side rail, such as `THE PERSONAL COMPUTER` beside 386BSD and `SOFTWARE THAT TRAVELS` beside FreeBSD. These are legible, but most are family-level illustrations rather than visibly owned by a particular release. Candidate B places the terminal, VAX-era hardware, PC and distribution-media images beside the relevant parts of the release graph, so the context is easier to associate with a record or branch.",
+              "paths": "A's panel lists are easy to scan but cross-panel relationships rely heavily on numbered notes such as `03 → 386BSD 0.0` and the detached `ONE SOURCE, THREE PATHS` inset. B makes the solid lineage and dashed code-contribution distinction visible in the graph itself. The NET/2 split and the three contributions from `4.4BSD Lite` are therefore followable without repeatedly consulting a key.",
+              "color": "Both keep a stable semantic color per family. B's blue Research UNIX, rust Berkeley, purple 386BSD, red FreeBSD, ochre NetBSD and green BSDI paths persist through nodes and connectors, while the solid/dashed treatment adds relationship meaning without introducing extra family colors.",
+              "rhythm": "A offers a calm two-column panel scan with generous reading space, but it breaks the story into independent lists. B gives a stronger entrance from Research UNIX through Berkeley and then into the lower BSD branches; its rhythm follows splits and contributions. The long lower corridors and several close crossings are a real cost in the busiest region."
+            },
+            "routes": [
+              {
+                "question": "What is the visible Research UNIX sequence from UNIX V3 to UNIX V6?",
+                "answer": "The top Research UNIX line proceeds `UNIX V3` → `UNIX V4` → `UNIX V5` → `UNIX V6`, with the displayed years 1973, 1973, 1974 and 1975.",
+                "steps": [
+                  "Begin on the top `Research UNIX` row at `UNIX V3` (1973).",
+                  "Follow the continuous arrow through `UNIX V4` (1973) and `UNIX V5` (1974).",
+                  "Continue to `UNIX V6` (1975), whose caption says it is the basis of the first BSD."
+                ],
+                "operation": "time"
+              },
+              {
+                "question": "Which three branches receive the visible NET/2 split?",
+                "answer": "`NET/2` feeds `386BSD 0.0`, `NetBSD 0.8` and `BSD/386 Alpha` through the three outgoing lineage paths shown below the Berkeley row.",
+                "steps": [
+                  "Locate `NET/2` (1991) in the Berkeley / CSRG sequence.",
+                  "Follow its downward branch to `386BSD 0.0` and the separate branch to `NetBSD 0.8`.",
+                  "Follow the third branch to `BSD/386 Alpha`; the three destinations are visibly separated by their purple, ochre and green family treatments."
+                ],
+                "operation": "trace"
+              },
+              {
+                "question": "How does 4.4BSD Lite contribute to the later BSD families?",
+                "answer": "The chart shows `4.4BSD Lite` contributing to `FreeBSD 2.0`, `NetBSD 1.0` and `BSD/OS 2.0`.",
+                "steps": [
+                  "Find `4.4BSD Lite` (1994) in the later Berkeley releases row.",
+                  "Trace the dashed contribution corridor to `FreeBSD 2.0` in the red branch.",
+                  "Compare the other dashed destinations, `NetBSD 1.0` in the ochre branch and `BSD/OS 2.0` in the green BSDI branch."
+                ],
+                "operation": "compare"
+              }
+            ],
+            "remaining_weaknesses": {
+              "A": [
+                "The numbered cross-references and the `ONE SOURCE, THREE PATHS` inset make important lineage and contribution routes detached lookups rather than continuous paths.",
+                "The large side-rail illustrations are readable but mostly generic family context; their exact release ownership is not visually anchored to an endpoint.",
+                "The panel structure leaves the lower history less like one branching field than the supplied reference."
+              ],
+              "B": [
+                "The long dashed contribution routes around `4.4BSD Lite` and the lower branches approach other corridors closely, so arrow ownership needs careful tracing at detail scale.",
+                "The horizontal Berkeley chain and repeated vertical release stacks can still suggest persistent lanes rather than released space after a branch ends.",
+                "Some hardware callouts are clearly marked illustrative, but their stems could terminate at exact release records more decisively."
+              ]
+            },
+            "next_repair": "Use B as the base: reserve a dedicated contribution corridor beneath `4.4BSD Lite`, separate the dashed routes to FreeBSD, NetBSD and BSDI with distinct arrowheads and endpoint ports, and anchor each illustrative hardware callout to its named release without reducing the release labels.",
+            "reference_target": "not-established",
+            "reference_density": "pending"
+          }
+        ],
+        "evidence_boundary": "I read input/manifest.json and both source inventories, and viewed every listed candidate and corresponding reference at whole and detail scale. The comparison is an aesthetic and navigational review of the supplied raster images; no browser geometry audit or measured density census was supplied or run. The manifest and image hashes remain the artifact boundary, so reference-level density and blinded indistinguishability are unverified rather than claimed."
+      },
+      "input_hashes": {
+        "bsd-A-detail.png": "66a4179a08432c26549cbdb17b81548c4c43aee882d8c8d548b22440a73ae290",
+        "bsd-A-whole.png": "702588aa21af4a553b36de6a7ce104438d1d6e93fdc005be028e811d0b038543",
+        "bsd-B-detail.png": "f67a365c100f5f841fd3d03d77e68ac353d28be78a9da3b8a76b68db8563bea7",
+        "bsd-B-whole.png": "350b9d9277777ebd237cd9946dcaa52cc4f9fb1076db2fc365c1a70319498f89",
+        "bsd-reference-detail.png": "5ff14ac37c82fd7262a4bf4ae7d7a86b8d67630659caa976ea23a3f1eb74b213",
+        "bsd-reference-whole.png": "9521e8272f4f141d79c080cb4794cc1a1b7adffe3eb56e717e070cab5ce37681",
+        "bsd-source.json": "acf14628cc9f5c54100cd8dd27d0c0924f3b98b53bf1f0a195d78094a9e79c7d",
+        "instruments-A-detail.png": "dd83cc12d9281a8e2c0d7fffdc4a0ea6e12187b2bbf17f078a64c813a1cc160d",
+        "instruments-A-whole.png": "caf6abc8775531f6fc1eb70372e6da6018a9939284bee18976391febf7aa6602",
+        "instruments-B-detail.png": "77bb827153b1a37a282497045716b245116b21c565e5a3df9be15b397f25c73a",
+        "instruments-B-whole.png": "cd3bca7ae781be4d6969805ff29ca521fed3bef0ea866095d0cac50d7a8e81ca",
+        "instruments-reference-detail.png": "fc95b72f692160c0092bcfbc76c047e583b966c24bb2f6b738bfb4ed6285bfa1",
+        "instruments-reference-whole.png": "05db9954eb790dfcba475daa2c178ee8fed815b5bb504abaa58b970043ed331d",
+        "instruments-source.json": "e0f5f52f1f4b70cd3956cc919519b091653e92495cb3d174df35b0586c081177"
+      },
+      "all_input_hashes_match": true,
+      "image_read_count": 12,
+      "expected_image_count": 12,
+      "reviewer_outputs": {
+        "review.json": "73bfd4a2f2edba0f354b58ca81d5785a43f10055d3b13c9250750050f575ba2b",
+        "review.md": "c1d2cf4b9b131b8811f4e5b14371948cb46c5b423bf78902ce5d12a8d6c0cd68"
+      },
+      "mapping": {
+        "instruments": {
+          "A": "previous-illustrated",
+          "B": "repaired-recomposition"
+        },
+        "bsd": {
+          "A": "repaired-recomposition",
+          "B": "previous-illustrated"
+        }
+      },
+      "independent_review_findings": [
+        {
+          "code": "candidate-identity-mismatch",
+          "subject": "bsd",
+          "detail": "The JSON selects B, but describes the continuous connected graph, which is candidate A. Do not silently relabel or count this as a valid preference."
+        },
+        {
+          "code": "relationship-type-misread",
+          "subject": "bsd",
+          "detail": "The review describes the FreeBSD 2.0 connection from 4.4BSD Lite as dashed; the source and rendered lineage route are solid."
+        }
+      ]
+    },
+    {
+      "run_id": "20260913-usefulcharts-exploration-b-luna-2",
+      "cohort": "B",
+      "command": "C:\\Users\\villa\\AppData\\Roaming\\npm\\pi.CMD --model openai-codex/gpt-5.6-luna --thinking high --mode json --no-context-files --no-extensions --no-skills --no-prompt-templates --no-themes --no-session --skill skills/usefulcharts-style --print \"You are running an isolated forward test for `usefulcharts-style`. Use the read tool to read `../prompt.md` first, then follow it exactly. The loaded bundle is rooted at `skills/usefulcharts-style` from the current workspace; never prefix that path with `../`. Immediately after the prompt, read the bundle entry point at `skills/usefulcharts-style/SKILL.md`; do not probe for README.md or other conventional entry-point filenames. The shell tool is bash, not PowerShell; do not run PowerShell commands. Do not list directories or inspect script source before reading the prompt. If the prompt gives an exact command, run it verbatim and verify the required outputs.\"",
+      "model": "openai-codex/gpt-5.6-luna",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 132,
+        "payloadSha256": "489f60a0de5ed6c11a873c6612bffe955af3cb8d0fe6e9e1b5d4baaeb557ad53"
+      },
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/pi-prompts/usefulcharts-exploration-criticism.md",
+        "sizeBytes": 2034,
+        "sha256": "3c69a6d344ef31a094796f44f777faa12814dae333cbc53bc8c6caffa5a29f19"
+      },
+      "expected_outputs": [
+        "review.json",
+        "review.md"
+      ],
+      "strict_pass": true,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "findings": [],
+      "payload_unchanged": true,
+      "read_paths": [
+        "../prompt.md",
+        "input/bsd-A-detail.png",
+        "input/bsd-A-whole.png",
+        "input/bsd-B-detail.png",
+        "input/bsd-B-whole.png",
+        "input/bsd-reference-detail.png",
+        "input/bsd-reference-whole.png",
+        "input/bsd-source.json",
+        "input/instruments-A-detail.png",
+        "input/instruments-A-whole.png",
+        "input/instruments-B-detail.png",
+        "input/instruments-B-whole.png",
+        "input/instruments-reference-detail.png",
+        "input/instruments-reference-whole.png",
+        "input/instruments-source.json",
+        "input/manifest.json",
+        "skills/usefulcharts-style/SKILL.md"
+      ],
+      "model_errors": [],
+      "failure_classification": null,
+      "raw_verdicts": {
+        "subjects": [
+          {
+            "subject": "instruments",
+            "preferred": "B",
+            "observations": {
+              "image_ownership": "B gives each specimen a nearby category endpoint and visible elbow or stem: Kalimba sits at 122, Zither at 314, Violin at 321, and so on. A's specimen sidebar is attractive and captions name the example code, but the vertical divider makes the images feel more like a lookup column than destinations on the tree.",
+              "paths": "B's top WHAT VIBRATES? spine establishes a route into all five colored families, and the indented branches remain traceable to the numbered leaves. A has very clean local branches, but each panel is isolated; moving between families or from a code to its picture relies on the caption's 'Example →' text rather than a continuous visual path.",
+              "color": "Both preserve the five source family colors with good semantic consistency. B uses color on the shared spine, headings, branch lines and specimen labels, so family comparison is immediate. A's panel colors are calmer and highly legible, but the stronger panel boundaries also make color feel like enclosure instead of a connected classification system.",
+              "rhythm": "B creates a useful overview-to-detail rhythm: shared question, family heading, indented sublevels, then specimen. Its narrow columns make some leaves and captions small, and the short Membranophones panel leaves an uneven lower edge. A reads more comfortably at whole view, but its large repeated panels and separated picture strips produce a slower, lookup-heavy rhythm."
+            },
+            "routes": [
+              {
+                "question": "How does the classification get from a vibrating body to the Kalimba?",
+                "answer": "The Kalimba is the example attached to On a board or comb (122) in Idiophones.",
+                "steps": [
+                  "Start at the shared WHAT VIBRATES? spine and enter Idiophones (1), whose subtitle says The body vibrates.",
+                  "Follow the brown branch to Plucked tongues (12), then to On a board or comb (122).",
+                  "Read the connected specimen caption Kalimba · 122 and its note Pluck a metal tongue."
+                ],
+                "operation": "trace"
+              },
+              {
+                "question": "What is the visible distinction between the drum and body families?",
+                "answer": "Idiophones classify a vibrating body, while Membranophones classify a stretched skin; the pictured examples show struck bodies versus struck drums.",
+                "steps": [
+                  "Read Idiophones (1) and its subtitle The body vibrates, then inspect Struck bodies (11).",
+                  "Compare it with Membranophones (2) and its subtitle A stretched skin vibrates, then inspect Struck drums (21).",
+                  "Follow the nearby endpoints to Handbell/Cymbals at 111 and Snare drum/Conga at 211 to compare the pictured specimens."
+                ],
+                "operation": "compare"
+              },
+              {
+                "question": "Which chordophone examples distinguish a board zither from lute and harp branches?",
+                "answer": "Zither exemplifies Board zithers (314), Violin exemplifies Lutes (321), and Harp exemplifies Harps (322).",
+                "steps": [
+                  "Enter Chordophones (3), then follow Simple / zithers (31) to Board zithers (314) and its Zither · 314 image.",
+                  "Return to the Chordophones branch and follow Composite (32) to Lutes (321), ending at Violin · 321.",
+                  "Follow the adjacent Harps (322) leaf to Harp · 322, whose caption says A frame of strings."
+                ],
+                "operation": "compare"
+              }
+            ],
+            "remaining_weaknesses": {
+              "A": [
+                "The five family panels have no shared parent route, so a reader must restart at each panel rather than explore across the classification.",
+                "The specimen images sit in separated sidebars; captions identify their codes, but there is no direct line from leaf to image ownership.",
+                "Repeated large panels and uneven unused space make the page feel like five reference sheets instead of one connected poster."
+              ],
+              "B": [
+                "The narrow five-column body makes lower-level labels and specimen captions smaller than A, especially in Electophones and the longer Chordophones list.",
+                "The short Membranophones panel leaves a conspicuous lower gap and interrupts the otherwise continuous vertical cadence.",
+                "The top spine improves overview, but the individual image elbows are still visually lighter than the branch lines and could be missed at whole view."
+              ]
+            },
+            "next_repair": "Keep B's shared spine and five-family comparison, but reflow the columns or use the released Membranophones space to enlarge leaf/caption type. Strengthen the short leaf-to-image elbows and add a small, explicit endpoint treatment without adding unsupported categories.",
+            "reference_target": "not-established",
+            "reference_density": "pending"
+          },
+          {
+            "subject": "bsd",
+            "preferred": "B",
+            "observations": {
+              "image_ownership": "B places hardware/context pictures beside the relevant release path: the terminal near UNIX V3, VAX-era hardware near 3BSD, and branch-specific images below 386BSD, FreeBSD, NetBSD and BSDI. A's larger images and captions are readable, but each is inside a panel sidebar and is not consistently anchored to a release node, so ownership can feel detached.",
+              "paths": "B exposes the main causal route as continuous solid arrows from Research UNIX through Berkeley and then branches, while dashed routes visibly signal code contributions. A's local vertical lines are clear, but cross-family edges are mostly numbered notes such as 02 → 1BSD and 05 → FreeBSD 2.0; following the history requires a detached lookup between panels.",
+              "color": "B preserves distinct Research UNIX, Berkeley, 386BSD, FreeBSD, NetBSD and BSDI colors across paths and release boxes, making lineage versus contribution easier to compare. A also has stable family colors, but the large neutral panel cards dominate and weaken the color-coded cross-family flow.",
+              "rhythm": "B reads as one history: horizontal release runs establish continuity, then lower branch columns create a branch-and-compare beat. Its long reversals in the later Berkeley row and crowded NET/2/4.4BSD Lite junction create backtracking. A has a comfortable large-type vertical rhythm, but repeated isolated panels turn important mergers into pauses for lookup."
+            },
+            "routes": [
+              {
+                "question": "How does Research UNIX reach the FreeBSD branch in the visible history?",
+                "answer": "The displayed route runs from UNIX V6 through 1BSD, 2BSD and 3BSD to NET/2, then through 386BSD 0.1 to FreeBSD 1.0.",
+                "steps": [
+                  "Trace the Research UNIX row from UNIX V1 through UNIX V6 (1975), then follow the downward branch to 1BSD (1977–78).",
+                  "Continue the Berkeley / CSRG run through 2BSD and 3BSD, then follow the later Berkeley path to NET/2 (1991).",
+                  "At NET/2, follow the branch to 386BSD 0.0 and 386BSD 0.1, then the visible lineage connector to FreeBSD 1.0 (1993)."
+                ],
+                "operation": "trace"
+              },
+              {
+                "question": "Which later families receive the 4.4BSD Lite code contribution?",
+                "answer": "The visible contribution routes from 4.4BSD Lite reach FreeBSD 2.0, NetBSD 1.0 and BSD/OS 2.0; the first is also shown as the FreeBSD lineage base.",
+                "steps": [
+                  "Find 4.4BSD Lite (1994) in the later Berkeley releases row.",
+                  "Follow its routed lines into the lower branch area and read the three named endpoints FreeBSD 2.0, NetBSD 1.0 and BSD/OS 2.0.",
+                  "Use the legend and line treatment to compare the solid FreeBSD lineage with the dashed contribution paths to NetBSD and BSD/OS."
+                ],
+                "operation": "compare"
+              },
+              {
+                "question": "How do the displayed branch endpoints compare by year and release family?",
+                "answer": "386BSD ends at 386BSD 1.0 in 1994, while FreeBSD, NetBSD and BSDI continue to endpoints dated 1995: FreeBSD 2.1, NetBSD 1.1 and BSD/OS 2.0.1.",
+                "steps": [
+                  "Read the 386BSD column down to 386BSD 1.0 and its 1994 date.",
+                  "Read the FreeBSD and NetBSD columns down to FreeBSD 2.1 and NetBSD 1.1, both dated 1995.",
+                  "Read the BSDI column through BSD/386 1.1 to BSD/OS 2.0 and BSD/OS 2.0.1, both dated 1995, and compare those endpoints."
+                ],
+                "operation": "compare"
+              }
+            ],
+            "remaining_weaknesses": {
+              "A": [
+                "The panel grid separates Research UNIX, Berkeley, 386BSD, FreeBSD, NetBSD and BSDI into lookup blocks, so the central history is not one continuous visual exploration.",
+                "Cross-family lineage and contribution relationships are printed as numbered references inside records rather than routed across reserved corridors.",
+                "The context images have clear prose but weak node anchoring; the reader cannot always tell which exact release owns a picture without reading the caption."
+              ],
+              "B": [
+                "The later Berkeley row reverses direction relative to the opening run, and small arrowheads make that reading change easy to miss at whole view.",
+                "The NET/2 and 4.4BSD Lite merger/contribution corridor is crowded: long dashed and solid routes compete with nearby labels and can be mistaken for one trunk.",
+                "Several branch labels and notes are small at whole-view scale, and some illustrative images are separated from their release boxes by vertical whitespace rather than a strong ownership stem."
+              ]
+            },
+            "next_repair": "Retain B's continuous causal composition, but reserve a quiet merger corridor around NET/2 and 4.4BSD Lite, make direction changes explicit with larger arrowheads and short route labels, and strengthen each image's release stem while increasing local type in the busiest branch columns.",
+            "reference_target": "not-established",
+            "reference_density": "pending"
+          }
+        ],
+        "evidence_boundary": "All listed candidate and reference whole/detail images were viewed, and the supplied source inventories were used for the route facts. The decisions are visual comparisons, not a measured density census or browser legibility audit. No lower/upper density bounds, blinded indistinguishability test, or independent verification of the reference products was supplied, so reference density remains pending and neither preferred candidate is claimed to have reached the reference target."
+      },
+      "input_hashes": {
+        "bsd-A-detail.png": "66a4179a08432c26549cbdb17b81548c4c43aee882d8c8d548b22440a73ae290",
+        "bsd-A-whole.png": "702588aa21af4a553b36de6a7ce104438d1d6e93fdc005be028e811d0b038543",
+        "bsd-B-detail.png": "f67a365c100f5f841fd3d03d77e68ac353d28be78a9da3b8a76b68db8563bea7",
+        "bsd-B-whole.png": "350b9d9277777ebd237cd9946dcaa52cc4f9fb1076db2fc365c1a70319498f89",
+        "bsd-reference-detail.png": "5ff14ac37c82fd7262a4bf4ae7d7a86b8d67630659caa976ea23a3f1eb74b213",
+        "bsd-reference-whole.png": "9521e8272f4f141d79c080cb4794cc1a1b7adffe3eb56e717e070cab5ce37681",
+        "bsd-source.json": "acf14628cc9f5c54100cd8dd27d0c0924f3b98b53bf1f0a195d78094a9e79c7d",
+        "instruments-A-detail.png": "dd83cc12d9281a8e2c0d7fffdc4a0ea6e12187b2bbf17f078a64c813a1cc160d",
+        "instruments-A-whole.png": "caf6abc8775531f6fc1eb70372e6da6018a9939284bee18976391febf7aa6602",
+        "instruments-B-detail.png": "77bb827153b1a37a282497045716b245116b21c565e5a3df9be15b397f25c73a",
+        "instruments-B-whole.png": "cd3bca7ae781be4d6969805ff29ca521fed3bef0ea866095d0cac50d7a8e81ca",
+        "instruments-reference-detail.png": "fc95b72f692160c0092bcfbc76c047e583b966c24bb2f6b738bfb4ed6285bfa1",
+        "instruments-reference-whole.png": "05db9954eb790dfcba475daa2c178ee8fed815b5bb504abaa58b970043ed331d",
+        "instruments-source.json": "e0f5f52f1f4b70cd3956cc919519b091653e92495cb3d174df35b0586c081177"
+      },
+      "all_input_hashes_match": true,
+      "image_read_count": 12,
+      "expected_image_count": 12,
+      "reviewer_outputs": {
+        "review.json": "c219a770eb820844f36879ae56f2624a5a55e9c36203cf0a7c1e188f9e45a587",
+        "review.md": "ff624e90bbd769c2053920a8195b1faccc4a88c4ca50dc69c59c6578b4183d0d"
+      },
+      "mapping": {
+        "instruments": {
+          "A": "previous-illustrated",
+          "B": "repaired-recomposition"
+        },
+        "bsd": {
+          "A": "repaired-recomposition",
+          "B": "previous-illustrated"
+        }
+      },
+      "independent_review_findings": [
+        {
+          "code": "candidate-identity-mismatch",
+          "subject": "bsd",
+          "detail": "The JSON selects B, but describes the continuous connected graph, which is candidate A. Do not silently relabel or count this as a valid preference."
+        }
+      ]
+    },
+    {
+      "run_id": "20260913-usefulcharts-exploration-b-luna-3",
+      "cohort": "B",
+      "command": "C:\\Users\\villa\\AppData\\Roaming\\npm\\pi.CMD --model openai-codex/gpt-5.6-luna --thinking high --mode json --no-context-files --no-extensions --no-skills --no-prompt-templates --no-themes --no-session --skill skills/usefulcharts-style --print \"You are running an isolated forward test for `usefulcharts-style`. Use the read tool to read `../prompt.md` first, then follow it exactly. The loaded bundle is rooted at `skills/usefulcharts-style` from the current workspace; never prefix that path with `../`. Immediately after the prompt, read the bundle entry point at `skills/usefulcharts-style/SKILL.md`; do not probe for README.md or other conventional entry-point filenames. The shell tool is bash, not PowerShell; do not run PowerShell commands. Do not list directories or inspect script source before reading the prompt. If the prompt gives an exact command, run it verbatim and verify the required outputs.\"",
+      "model": "openai-codex/gpt-5.6-luna",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 132,
+        "payloadSha256": "489f60a0de5ed6c11a873c6612bffe955af3cb8d0fe6e9e1b5d4baaeb557ad53"
+      },
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/pi-prompts/usefulcharts-exploration-criticism.md",
+        "sizeBytes": 2034,
+        "sha256": "3c69a6d344ef31a094796f44f777faa12814dae333cbc53bc8c6caffa5a29f19"
+      },
+      "expected_outputs": [
+        "review.json",
+        "review.md"
+      ],
+      "strict_pass": true,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "findings": [],
+      "payload_unchanged": true,
+      "read_paths": [
+        "../prompt.md",
+        "input/bsd-A-detail.png",
+        "input/bsd-A-whole.png",
+        "input/bsd-B-detail.png",
+        "input/bsd-B-whole.png",
+        "input/bsd-reference-detail.png",
+        "input/bsd-reference-whole.png",
+        "input/bsd-source.json",
+        "input/instruments-A-detail.png",
+        "input/instruments-A-whole.png",
+        "input/instruments-B-detail.png",
+        "input/instruments-B-whole.png",
+        "input/instruments-reference-detail.png",
+        "input/instruments-reference-whole.png",
+        "input/instruments-source.json",
+        "input/manifest.json",
+        "skills/usefulcharts-style/SKILL.md"
+      ],
+      "model_errors": [],
+      "failure_classification": null,
+      "raw_verdicts": {
+        "subjects": [
+          {
+            "subject": "instruments",
+            "preferred": "B",
+            "observations": {
+              "image_ownership": "B places each specimen beside the branch that names it: Handbell and Cymbals sit at 111, Kalimba at 122, the Zither at 314, and so on. Their captions repeat the code, but the short elbow/bracket relationships make ownership visible before lookup. A instead collects examples in a detached right-hand rail; captions such as 'Example → 111' are accurate but make the reader shuttle between the tree and image column.",
+              "paths": "B has a clear top-level 'WHAT VIBRATES?' route into five colored family panels, then compact indented containment paths. The example brackets terminate near the relevant branch. A's internal trees are orderly, but the tree-to-example connection is mostly textual and the repeated side rails interrupt tracing.",
+              "color": "B keeps one hue for each family in the header, rail, connectors, and example captions, with pale panel fills separating families. A also has stable family colors and good contrast, but its detached example treatment weakens the semantic link between color and ownership.",
+              "rhythm": "B creates a useful scan rhythm of family heading, nested code levels, then an image landmark, with varied panel heights that reflect content. The long Electrophones column is still heavy and some leaves are crowded. A is calmer and more evenly repeated, but the identical two-column panel rhythm is less exploratory and leaves the images as side references."
+            },
+            "routes": [
+              {
+                "question": "Which pictured examples share the 111 class, and where does that class sit?",
+                "answer": "Handbell and Cymbals both exemplify 111 Direct blows, within 11 Struck bodies in 1 Idiophones.",
+                "steps": [
+                  "Start at 1 Idiophones and follow its rail to 11 Struck bodies.",
+                  "Follow the 11 branch to 111 Direct blows.",
+                  "Compare the two nearby captions, 'Handbell · 111' and 'Cymbals · 111', and their pictures."
+                ],
+                "operation": "compare"
+              },
+              {
+                "question": "Why is a kazoo classified with membranes?",
+                "answer": "It is shown under 2 Membranophones → 24 Singing membranes → 242 Tube or vessel kazoos; the caption calls it a singing membrane.",
+                "steps": [
+                  "Trace 2 Membranophones to 24 Singing membranes.",
+                  "Continue to 242 Tube or vessel kazoos.",
+                  "Read the adjacent 'Kazoo · 242' image caption and the visible 'A singing membrane' explanation."
+                ],
+                "operation": "trace"
+              },
+              {
+                "question": "How do the pictured string examples occupy different chordophone subclasses?",
+                "answer": "Zither is 314 Board zithers, Violin is 321 Lutes, and Harp is 322 Harps.",
+                "steps": [
+                  "Trace 3 Chordophones → 31 Simple / zithers → 314 Board zithers → 'Zither · 314'.",
+                  "Return to 3 Chordophones and follow 32 Composite → 321 Lutes → 'Violin · 321'.",
+                  "Follow the neighboring 322 Harps branch to 'Harp · 322' and compare the three image-caption pairs."
+                ],
+                "operation": "compare"
+              }
+            ],
+            "remaining_weaknesses": {
+              "A": [
+                "The example rail is physically detached from the category endpoints, so ownership depends on reading code captions rather than following a visible path.",
+                "The repeated panel-and-side-rail structure gives little change in reading rhythm and makes the visual specimens feel like an index.",
+                "Next repair: route short family-colored elbows from each exact code endpoint into its specimen caption, while keeping the rail clear of the main tree."
+              ],
+              "B": [
+                "The Electrophones panel is much longer and denser than the membrane panel, so the lower leaf run is less comfortable to scan.",
+                "Only selected categories have specimens; the empty stretches are legible but do not offer the same exploratory reward as the illustrated branches.",
+                "Next repair: widen or split the Electrophones pocket and reserve a consistent image-callout corridor so its long branch keeps the same spacing and exposed connector endpoints."
+              ]
+            },
+            "next_repair": "Retain B's integrated specimens, then rebalance the Electrophones panel and standardize the short branch-to-image elbows without shrinking the category text.",
+            "reference_target": "not-established",
+            "reference_density": "pending"
+          },
+          {
+            "subject": "bsd",
+            "preferred": "B",
+            "observations": {
+              "image_ownership": "B gives Research UNIX, Berkeley / CSRG, 386BSD, FreeBSD, NetBSD, and BSDI their own clearly labeled panels, each with a matching period-hardware image and explanatory caption. A also pairs images with sections, but its horizontal rows and lower branch corridor make some image-to-history relationships feel more like annotations on a wide route than owned panel content.",
+              "paths": "B's vertical local rails make V1→V2→V3 and the Berkeley release sequence easy to trace, and the 4.4BSD Lite inset names the three destination branches. Its weakness is that cross-family links are numbered text annotations such as '05 → FreeBSD 2.0' rather than continuous bridges, so a reader must pair labels. A shows more continuous solid and dashed bridges, but its reversed later-Berkeley row, long corridors, and crossings around NET/2 and 4.4BSD Lite make direction and contribution type harder to hold.",
+              "color": "B maintains stable family colors across panel bars, rails, release names, and link annotations, so branch identity survives the panel split. A has strong family colors and a useful solid/dashed distinction, but crossing colored paths compete at the shared junctions.",
+              "rhythm": "B has a dependable panel rhythm: heading, dated release rail, short detail, then a period image. This makes the dense selected record set approachable, although the story is fragmented into six lists. A has a more dramatic sweeping tree rhythm, but its mixed left-to-right and right-to-left rows and long empty corridors create pauses precisely where the cross-family story is most important."
+            },
+            "routes": [
+              {
+                "question": "How does Research UNIX reach the early Berkeley branch?",
+                "answer": "UNIX V6 leads to 1BSD, then 2BSD and 3BSD.",
+                "steps": [
+                  "Trace the Research UNIX rail through UNIX V1, V2, V3, V4, V5, and UNIX V6.",
+                  "Use the visible paired annotation '02 → 1BSD · lineage' at UNIX V6 / 1BSD.",
+                  "Continue down the Berkeley / CSRG rail from 1BSD to 2BSD to 3BSD."
+                ],
+                "operation": "trace"
+              },
+              {
+                "question": "Which three later families receive the 4.4BSD Lite story?",
+                "answer": "FreeBSD 2.0 by lineage, and NetBSD 1.0 plus BSD/OS 2.0 by contribution.",
+                "steps": [
+                  "Trace the Berkeley / CSRG list through 4.4BSD to 4.4BSD Lite.",
+                  "Read the three named links beneath 4.4BSD Lite: '05 → FreeBSD 2.0', '10 → NetBSD 1.0', and '11 → BSD/OS 2.0'.",
+                  "Compare those labels with the adjacent 'ONE SOURCE, THREE PATHS' inset and the corresponding family panels."
+                ],
+                "operation": "compare"
+              },
+              {
+                "question": "What dated endpoints are shown for the FreeBSD and NetBSD release runs in 1995?",
+                "answer": "FreeBSD ends at FreeBSD 2.1 and NetBSD ends at NetBSD 1.1; both are labeled 1995.",
+                "steps": [
+                  "Follow the FreeBSD rail from FreeBSD 2.0.5 (1995) to FreeBSD 2.1 (1995).",
+                  "Follow the NetBSD rail from NetBSD 1.0 (1994) to NetBSD 1.1 (1995).",
+                  "Compare the two terminal labels and their dates in the two adjacent panels."
+                ],
+                "operation": "time"
+              }
+            ],
+            "remaining_weaknesses": {
+              "A": [
+                "The later Berkeley row reverses horizontal direction, and the long shared corridors around NET/2 and 4.4BSD Lite create ambiguous junctions.",
+                "Solid lineage and dashed contribution are legended, but several crossing paths require careful backtracking at whole-page scale.",
+                "Next repair: keep one direction per local release rail and route every cross-family contribution through a dedicated, labeled corridor with visible source and target endpoints."
+              ],
+              "B": [
+                "The most important cross-family paths are not drawn continuously; numbered annotations and the inset require paired-label lookup.",
+                "Six self-contained panels make ownership clear but fragment the single UNIX-to-BSD narrative and reduce the sense of a connected family tree.",
+                "Next repair: add restrained solid/dashed bridges from 4.4BSD Lite to FreeBSD 2.0, NetBSD 1.0, and BSD/OS 2.0, with endpoint labels, while preserving the panel rails."
+              ]
+            },
+            "next_repair": "Keep B's readable family panels and period-image ownership, but add a single dedicated cross-panel bridge corridor for the numbered lineage and contribution links.",
+            "reference_target": "not-established",
+            "reference_density": "pending"
+          }
+        ],
+        "evidence_boundary": "All listed candidate and reference whole/detail images were viewed, and both supplied source inventories were read. The comparisons are visual judgments, not a measured density census or a blinded indistinguishability test. Reference-density status therefore remains pending; the references are visibly much denser and broader, but no measured pass or parity claim is made."
+      },
+      "input_hashes": {
+        "bsd-A-detail.png": "66a4179a08432c26549cbdb17b81548c4c43aee882d8c8d548b22440a73ae290",
+        "bsd-A-whole.png": "702588aa21af4a553b36de6a7ce104438d1d6e93fdc005be028e811d0b038543",
+        "bsd-B-detail.png": "f67a365c100f5f841fd3d03d77e68ac353d28be78a9da3b8a76b68db8563bea7",
+        "bsd-B-whole.png": "350b9d9277777ebd237cd9946dcaa52cc4f9fb1076db2fc365c1a70319498f89",
+        "bsd-reference-detail.png": "5ff14ac37c82fd7262a4bf4ae7d7a86b8d67630659caa976ea23a3f1eb74b213",
+        "bsd-reference-whole.png": "9521e8272f4f141d79c080cb4794cc1a1b7adffe3eb56e717e070cab5ce37681",
+        "bsd-source.json": "acf14628cc9f5c54100cd8dd27d0c0924f3b98b53bf1f0a195d78094a9e79c7d",
+        "instruments-A-detail.png": "dd83cc12d9281a8e2c0d7fffdc4a0ea6e12187b2bbf17f078a64c813a1cc160d",
+        "instruments-A-whole.png": "caf6abc8775531f6fc1eb70372e6da6018a9939284bee18976391febf7aa6602",
+        "instruments-B-detail.png": "77bb827153b1a37a282497045716b245116b21c565e5a3df9be15b397f25c73a",
+        "instruments-B-whole.png": "cd3bca7ae781be4d6969805ff29ca521fed3bef0ea866095d0cac50d7a8e81ca",
+        "instruments-reference-detail.png": "fc95b72f692160c0092bcfbc76c047e583b966c24bb2f6b738bfb4ed6285bfa1",
+        "instruments-reference-whole.png": "05db9954eb790dfcba475daa2c178ee8fed815b5bb504abaa58b970043ed331d",
+        "instruments-source.json": "e0f5f52f1f4b70cd3956cc919519b091653e92495cb3d174df35b0586c081177"
+      },
+      "all_input_hashes_match": true,
+      "image_read_count": 12,
+      "expected_image_count": 12,
+      "reviewer_outputs": {
+        "review.json": "37a623fe869c58398c77e38189b723527f5ad55fe55df81a17e9b7da4b692469",
+        "review.md": "2625db395adc6361e7e5304487857629f280d146777bad4c8dd81cd64eadf163"
+      },
+      "mapping": {
+        "instruments": {
+          "A": "previous-illustrated",
+          "B": "repaired-recomposition"
+        },
+        "bsd": {
+          "A": "repaired-recomposition",
+          "B": "previous-illustrated"
+        }
+      },
+      "independent_review_findings": []
+    }
+  ],
+  "identity_review_trials": [
+    {
+      "run_id": "20260913-usefulcharts-exploration-c-luna-1",
+      "cohort": "C",
+      "command": "C:\\Users\\villa\\AppData\\Roaming\\npm\\pi.CMD --model openai-codex/gpt-5.6-luna --thinking high --mode json --no-context-files --no-extensions --no-skills --no-prompt-templates --no-themes --no-session --skill skills/usefulcharts-style --print \"You are running an isolated forward test for `usefulcharts-style`. Use the read tool to read `../prompt.md` first, then follow it exactly. The loaded bundle is rooted at `skills/usefulcharts-style` from the current workspace; never prefix that path with `../`. Immediately after the prompt, read the bundle entry point at `skills/usefulcharts-style/SKILL.md`; do not probe for README.md or other conventional entry-point filenames. The shell tool is bash, not PowerShell; do not run PowerShell commands. Do not list directories or inspect script source before reading the prompt. If the prompt gives an exact command, run it verbatim and verify the required outputs.\"",
+      "model": "openai-codex/gpt-5.6-luna",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 132,
+        "payloadSha256": "4079682d4246761491aaf3a209bbeb55b6a2c87d6bb87d7477186ea82e043a3b"
+      },
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/pi-prompts/usefulcharts-exploration-identity.md",
+        "sizeBytes": 2384,
+        "sha256": "6406a57b025ee0eb426372da93f54a1ffb753801826a2712956333520f777248"
+      },
+      "expected_outputs": [
+        "review.json",
+        "review.md"
+      ],
+      "strict_pass": true,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "findings": [],
+      "payload_unchanged": true,
+      "read_paths": [
+        "../prompt.md",
+        "input/bsd-cedar-detail.png",
+        "input/bsd-cedar-whole.png",
+        "input/bsd-maple-detail.png",
+        "input/bsd-maple-whole.png",
+        "input/bsd-reference-detail.png",
+        "input/bsd-reference-whole.png",
+        "input/bsd-source.json",
+        "input/manifest.json",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/visible-discovery.md"
+      ],
+      "model_errors": [],
+      "failure_classification": null,
+      "raw_verdicts": {
+        "candidate_inventory": [
+          {
+            "id": "CEDAR",
+            "visible_id": "CEDAR",
+            "whole_path": "input/bsd-cedar-whole.png",
+            "detail_path": "input/bsd-cedar-detail.png",
+            "main_title": "UNIX AND THE BSD FAMILY",
+            "layout_fingerprint": "Tall cream poster with a dark blue header; Research UNIX and Berkeley/CSRG occupy two large left panels, while 386BSD, FreeBSD, NetBSD and BSDI are stacked as separate right-hand panels with local vertical spines and inset hardware."
+          },
+          {
+            "id": "MAPLE",
+            "visible_id": "MAPLE",
+            "whole_path": "input/bsd-maple-whole.png",
+            "detail_path": "input/bsd-maple-detail.png",
+            "main_title": "UNIX & BSD • ONE HISTORY, MANY BRANCHES",
+            "layout_fingerprint": "Wide cream field organized as a horizontal Research UNIX row, a left-to-right Berkeley/CSRG sequence, and four lower family lanes; solid and dashed cross-lane connectors make the later branches readable as one network, with small owned context images beside named releases."
+          }
+        ],
+        "preferred_id": "MAPLE",
+        "comparison": {
+          "image_ownership": "MAPLE is stronger: each illustration sits beside a printed owner such as ‘UNIX V3 · period terminal’, ‘3BSD · VAX-era hardware’, or ‘NetBSD 0.8 · networked systems’. CEDAR embeds recognizable hardware in family panels, but its broad captions such as ‘THE MINICOMPUTER ERA’ and ‘Illustrative period hardware’ make ownership more contextual than node-specific.",
+          "paths": "MAPLE provides a continuous top-to-middle route and explicit lower branch corridors, so NET/2, 4.4BSD Lite, and the daughter families can be traced without repeatedly consulting numbered endpoint notes. CEDAR has clear local vertical sequences, but its panels partition the history and its numbered relationship annotations require more detached lookup across panels.",
+          "color": "Both preserve semantic family colors and keep them stable through the branches. MAPLE makes the distinction especially immediate through tinted release bars plus matching solid/dashed route colors; CEDAR has a calmer, more restrained family palette but its cross-panel links are less visually integrated.",
+          "rhythm": "CEDAR has a polished editorial rhythm of large rounded panels, generous whitespace, and repeated side insets, but the fixed two-column structure interrupts the network. MAPLE has a more UsefulCharts-like continuous branching rhythm and stronger horizontal scanning, though the long dashed lower routes and some arrow junctions become busy."
+        },
+        "routes": [
+          {
+            "question": "Which early BSD line begins at UNIX V6 and reaches the VAX-era 3BSD release?",
+            "answer": "The visible lineage runs from UNIX V6 to 1BSD, then to 2BSD and 3BSD; 3BSD is labeled ‘Virtual memory on the VAX’.",
+            "steps": [
+              "Start at UNIX V6 in the Research UNIX row (1975).",
+              "Follow its blue branch down and left to 1BSD (1977–78).",
+              "Trace the Berkeley arrows through 2BSD (1978–79) to 3BSD (1979–80).",
+              "Read the 3BSD detail, ‘Virtual memory on the VAX’; detached lookup: none, because the node labels, dates and relation are printed."
+            ],
+            "operation": "trace"
+          },
+          {
+            "question": "What is the relationship pattern from 4.4BSD Lite into the later families?",
+            "answer": "4.4BSD Lite continues by lineage to FreeBSD 2.0, while it contributes code to NetBSD 1.0 and BSD/OS 2.0; those are distinct from the solid lineage path.",
+            "steps": [
+              "Locate 4.4BSD Lite (1994) at the end of the Berkeley/CSRG row.",
+              "Follow the solid branch to FreeBSD 2.0 (1994).",
+              "Compare the dashed contribution paths from the same source to NetBSD 1.0 and BSD/OS 2.0.",
+              "Read the printed operation key ‘SOLID = lineage DASHED = code contribution’; detached lookup: none."
+            ],
+            "operation": "compare"
+          },
+          {
+            "question": "What are the terminal releases shown for the four later BSD families?",
+            "answer": "The shown endpoints are 386BSD 1.0 (1994), FreeBSD 2.1 (1995), NetBSD 1.1 (1995), and BSD/OS 2.0.1 (1995).",
+            "steps": [
+              "Scan the four lower family lanes rather than treating their vertical spacing as elapsed time.",
+              "Trace the 386BSD lane to 386BSD 1.0, the FreeBSD lane to FreeBSD 2.1, the NetBSD lane to NetBSD 1.1, and the BSDI lane to BSD/OS 2.0.1.",
+              "Compare the dates printed inside those endpoint bars: 1994 for 386BSD and 1995 for the other three.",
+              "Use the footer note that spacing expresses inheritance, not elapsed time; detached lookup: none."
+            ],
+            "operation": "compare"
+          }
+        ],
+        "remaining_weaknesses": {
+          "CEDAR": [
+            "The family panels make cross-panel exploration discontinuous; numbered arrows and endpoint references require a reader to shuttle between panels.",
+            "Hardware is visually useful but usually owned by a broad period or family inset rather than by an exact named release, weakening the image-to-fact binding.",
+            "Its spacious panel treatment is less close to the reference's dense, continuous network and leaves less room for comparative branch reading."
+          ],
+          "MAPLE": [
+            "The long dashed contribution corridors in the lower half cross or approach several lanes, so contribution versus lineage can momentarily require re-reading the key.",
+            "Some upper and central whitespace contrasts with compressed lower release stacks; the visual rhythm is not fully balanced.",
+            "The chart remains schematic rather than numeric: dates travel with releases, but the horizontal and vertical spacing must not be read as elapsed time."
+          ]
+        },
+        "next_repair": "Keep MAPLE's continuous row structure and explicit image ownership, then reroute the three longest lower contribution corridors into dedicated edge gutters, strengthen junction markers and local labels, and rebalance the empty upper field against the crowded lower stacks without shrinking the release text.",
+        "reference_target": "not-established",
+        "reference_density": "pending",
+        "evidence_boundary": "I viewed both whole/detail pairs, the supplied European royal-family reference whole/detail pair, and bsd-source.json. The candidate identity mapping is explicit in the visible review-sheet headers and is consistent with the chosen MAPLE image. Source labels, dates and the 47-release/51-relationship framing were checked against the supplied inventory. This establishes a comparative visual judgment and source-grounded routes, but not indistinguishability, a measured density pass, or a verified same-subject reference target; no density census or legibility measurement was supplied."
+      },
+      "input_hashes": {
+        "bsd-cedar-whole.png": "7b6f94d55484443796aa0a9ee1b7b96579f983b1f424a4996ae3cc3cb73172b7",
+        "bsd-cedar-detail.png": "86f5333d6db031a7d858e0c6b67825e8cdfaf728847ecf069dad2ceea1deb110",
+        "bsd-maple-whole.png": "40501fce60e2f12208459cc5a4028d300d8b591b726556b671e0102eb22eb13c",
+        "bsd-maple-detail.png": "792a5b574dc35cba329d31bf75f6fdd3c837f17b2db8d071c5956c9619f1ff5f",
+        "bsd-reference-whole.png": "cd6ec5225b4ef7996f9a7835f9782311dd169c37fd0deac0a8f70556d628d679",
+        "bsd-reference-detail.png": "3f7db169e83cd6aee7e70a86c2e45eb3e64eee2736067b063cd2711a222a1e6d",
+        "bsd-source.json": "acf14628cc9f5c54100cd8dd27d0c0924f3b98b53bf1f0a195d78094a9e79c7d"
+      },
+      "all_input_hashes_match": true,
+      "image_read_count": 6,
+      "expected_image_count": 6,
+      "reviewer_outputs": {
+        "review.json": "e8d9067c3a2ecb00c86c88308160e1deacf61c9f054527cbe83c8c4c7693082a",
+        "review.md": "884b236ad1d7b0340597a96b176b21aead2ae43710a1970bcb3dbfd928cebf56"
+      },
+      "mapping": {
+        "CEDAR": "previous-illustrated",
+        "MAPLE": "repaired-recomposition"
+      },
+      "identity_fields_pass": true,
+      "identity_prose_manually_checked": true,
+      "raw_source_hashes": {
+        "raw/bsd-B-whole.png": "350b9d9277777ebd237cd9946dcaa52cc4f9fb1076db2fc365c1a70319498f89",
+        "raw/bsd-B-detail.png": "f67a365c100f5f841fd3d03d77e68ac353d28be78a9da3b8a76b68db8563bea7",
+        "raw/bsd-A-whole.png": "702588aa21af4a553b36de6a7ce104438d1d6e93fdc005be028e811d0b038543",
+        "raw/bsd-A-detail.png": "66a4179a08432c26549cbdb17b81548c4c43aee882d8c8d548b22440a73ae290",
+        "raw/bsd-reference-whole.png": "9521e8272f4f141d79c080cb4794cc1a1b7adffe3eb56e717e070cab5ce37681",
+        "raw/bsd-reference-detail.png": "5ff14ac37c82fd7262a4bf4ae7d7a86b8d67630659caa976ea23a3f1eb74b213"
+      },
+      "raw_sources_unchanged": true,
+      "independent_review_findings": []
+    },
+    {
+      "run_id": "20260913-usefulcharts-exploration-c-luna-2",
+      "cohort": "C",
+      "command": "C:\\Users\\villa\\AppData\\Roaming\\npm\\pi.CMD --model openai-codex/gpt-5.6-luna --thinking high --mode json --no-context-files --no-extensions --no-skills --no-prompt-templates --no-themes --no-session --skill skills/usefulcharts-style --print \"You are running an isolated forward test for `usefulcharts-style`. Use the read tool to read `../prompt.md` first, then follow it exactly. The loaded bundle is rooted at `skills/usefulcharts-style` from the current workspace; never prefix that path with `../`. Immediately after the prompt, read the bundle entry point at `skills/usefulcharts-style/SKILL.md`; do not probe for README.md or other conventional entry-point filenames. The shell tool is bash, not PowerShell; do not run PowerShell commands. Do not list directories or inspect script source before reading the prompt. If the prompt gives an exact command, run it verbatim and verify the required outputs.\"",
+      "model": "openai-codex/gpt-5.6-luna",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 132,
+        "payloadSha256": "4079682d4246761491aaf3a209bbeb55b6a2c87d6bb87d7477186ea82e043a3b"
+      },
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/pi-prompts/usefulcharts-exploration-identity.md",
+        "sizeBytes": 2384,
+        "sha256": "6406a57b025ee0eb426372da93f54a1ffb753801826a2712956333520f777248"
+      },
+      "expected_outputs": [
+        "review.json",
+        "review.md"
+      ],
+      "strict_pass": true,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "findings": [],
+      "payload_unchanged": true,
+      "read_paths": [
+        "../prompt.md",
+        "input/bsd-cedar-detail.png",
+        "input/bsd-cedar-whole.png",
+        "input/bsd-maple-detail.png",
+        "input/bsd-maple-whole.png",
+        "input/bsd-reference-detail.png",
+        "input/bsd-reference-whole.png",
+        "input/bsd-source.json",
+        "input/manifest.json",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/visible-discovery.md"
+      ],
+      "model_errors": [],
+      "failure_classification": null,
+      "raw_verdicts": {
+        "candidate_inventory": [
+          {
+            "id": "CEDAR",
+            "visible_id": "CEDAR",
+            "whole_path": "input/bsd-cedar-whole.png",
+            "detail_path": "input/bsd-cedar-detail.png",
+            "main_title": "UNIX AND THE BSD FAMILY",
+            "layout_fingerprint": "A two-column set of rounded panels: vertical Research UNIX and Berkeley / CSRG stacks at left, with separate vertical 386BSD, FreeBSD, NetBSD and BSDI panels at right and era-hardware insets."
+          },
+          {
+            "id": "MAPLE",
+            "visible_id": "MAPLE",
+            "whole_path": "input/bsd-maple-whole.png",
+            "detail_path": "input/bsd-maple-detail.png",
+            "main_title": "UNIX & BSD · ONE HISTORY, MANY BRANCHES",
+            "layout_fingerprint": "A wide horizontal reading field with Research UNIX across the top, Berkeley releases beneath it, a reversed later-release row, and four lower colored branch lanes joined by solid and dashed corridors."
+          }
+        ],
+        "preferred_id": "MAPLE",
+        "comparison": {
+          "image_ownership": "MAPLE more clearly owns each small illustration through a nearby exact release/context caption (UNIX V3, 3BSD, 386BSD 0.0, FreeBSD 1.0, NetBSD 0.8 and BSD/386 Alpha). CEDAR's larger pictures are attractive and panel-contained, but their captions mostly assign them to a broad era or family rather than an exact record.",
+          "paths": "MAPLE provides continuous arrows and visible solid-versus-dashed routes across the shared UNIX, Berkeley and BSD lanes. CEDAR is easier to scan locally, but its cross-panel relationships are mostly tiny numbered endpoint references, so important paths require jumping between panels.",
+          "color": "Both use stable family colors. MAPLE carries those colors through the node lanes and adds a useful line-style distinction for lineage versus code contribution; CEDAR uses restrained colored panel rules and connectors, with less continuity across the whole network.",
+          "rhythm": "CEDAR has a calm modular rhythm but spends substantial space on repeated side compartments and leaves the cross-family network fragmented. MAPLE has the stronger exploratory rhythm and denser connected field, though row reversals, long corridors and crossings around the later releases make some joins mechanically busy."
+        },
+        "routes": [
+          {
+            "question": "Which three daughter families are visibly fed by NET/2?",
+            "answer": "386BSD, NetBSD and BSDI (shown as BSD/386).",
+            "steps": [
+              "Trace the Berkeley / CSRG row to NET/2.",
+              "Follow its three visible solid branch drops/arrows to 386BSD 0.0, NetBSD 0.8 and BSD/386 Alpha.",
+              "Compare the three colored lanes below: 386BSD continues on the purple lane, NetBSD on the ochre lane, and BSDI on the green lane.",
+              "Detached lookup needed: none for this source-supported relation."
+            ],
+            "operation": "trace"
+          },
+          {
+            "question": "Which later systems receive a code contribution from 4.4BSD Lite, rather than the solid FreeBSD lineage?",
+            "answer": "NetBSD 1.0 and BSD/OS 2.0 receive the dotted code contributions; FreeBSD 2.0 is the solid lineage continuation.",
+            "steps": [
+              "Locate 4.4BSD Lite in the later Berkeley releases row.",
+              "Trace the solid route down to FreeBSD 2.0 and compare it with the dotted corridors heading to NetBSD 1.0 and BSD/OS 2.0.",
+              "Read the destination labels beside those three endpoints to separate lineage from contribution.",
+              "Detached lookup needed: none; the legend and endpoint labels are printed on the chart."
+            ],
+            "operation": "compare"
+          },
+          {
+            "question": "How do the displayed FreeBSD and NetBSD release sequences differ after their first releases?",
+            "answer": "FreeBSD runs from 1.0 through 1.1, 1.1.5, 1.1.5.1, 2.0, 2.0.5 and 2.1, while NetBSD runs from 0.8 through 0.9, 1.0 and 1.1.",
+            "steps": [
+              "Trace the FreeBSD lane downward from FreeBSD 1.0 and read each successive release card.",
+              "Trace the neighboring NetBSD lane from NetBSD 0.8 through NetBSD 1.1.",
+              "Compare the terminal labels and dates: the FreeBSD lane shows more intermediate releases and extends to 2.1, while NetBSD ends at 1.1.",
+              "Detached lookup needed: none for the displayed records; the chart remains schematic rather than an elapsed-time axis."
+            ],
+            "operation": "compare"
+          }
+        ],
+        "remaining_weaknesses": {
+          "CEDAR": [
+            "Cross-family links are encoded as small numbered notes instead of continuously traceable connectors, weakening exploration of the shared ancestry.",
+            "The hardware illustrations are assigned mainly to broad panel eras, so image ownership is less explicit than the exact-node captions in MAPLE.",
+            "The repeated two-column panel structure creates large side compartments and a fragmented reading rhythm compared with the connected reference-like field."
+          ],
+          "MAPLE": [
+            "The reversed later-release row and long solid/dashed corridors around 4.4BSD Lite create crossing and join ambiguity at the busiest branch area.",
+            "The whole poster's compact type and many equal release cards make detailed comparison dependent on the supplied detail view or zoom.",
+            "The contextual hardware images are clearly labelled but small and sparse relative to the reference's integrated, image-rich knowledge field."
+          ]
+        },
+        "next_repair": "Repair MAPLE around NET/2 and 4.4BSD Lite by reserving dedicated, non-crossing connector corridors, repeating named source and target labels at the two major joins, and enlarging the three most useful contextual image units before rechecking whole and detail views.",
+        "reference_target": "not-established",
+        "reference_density": "pending",
+        "evidence_boundary": "I viewed both whole/detail PNG pairs for CEDAR and MAPLE, both whole/detail reference PNGs, and the supplied source inventory; the listed PNG and source hashes match the manifest. The route facts are answerable from that supplied inventory and printed chart, but no external source verification or formal reference-density census was performed. The reference target and its knowledge-density minimum therefore remain unverified."
+      },
+      "input_hashes": {
+        "bsd-cedar-whole.png": "7b6f94d55484443796aa0a9ee1b7b96579f983b1f424a4996ae3cc3cb73172b7",
+        "bsd-cedar-detail.png": "86f5333d6db031a7d858e0c6b67825e8cdfaf728847ecf069dad2ceea1deb110",
+        "bsd-maple-whole.png": "40501fce60e2f12208459cc5a4028d300d8b591b726556b671e0102eb22eb13c",
+        "bsd-maple-detail.png": "792a5b574dc35cba329d31bf75f6fdd3c837f17b2db8d071c5956c9619f1ff5f",
+        "bsd-reference-whole.png": "cd6ec5225b4ef7996f9a7835f9782311dd169c37fd0deac0a8f70556d628d679",
+        "bsd-reference-detail.png": "3f7db169e83cd6aee7e70a86c2e45eb3e64eee2736067b063cd2711a222a1e6d",
+        "bsd-source.json": "acf14628cc9f5c54100cd8dd27d0c0924f3b98b53bf1f0a195d78094a9e79c7d"
+      },
+      "all_input_hashes_match": true,
+      "image_read_count": 6,
+      "expected_image_count": 6,
+      "reviewer_outputs": {
+        "review.json": "4b936add5e7925f6af21ee57aefb87f58668aff697165d351b3cb2381ba2b4dd",
+        "review.md": "9f638176f05252866c2a8681bfea8e31b28f181dd41a074adb1405453f02aa70"
+      },
+      "mapping": {
+        "CEDAR": "previous-illustrated",
+        "MAPLE": "repaired-recomposition"
+      },
+      "identity_fields_pass": true,
+      "identity_prose_manually_checked": true,
+      "raw_source_hashes": {
+        "raw/bsd-B-whole.png": "350b9d9277777ebd237cd9946dcaa52cc4f9fb1076db2fc365c1a70319498f89",
+        "raw/bsd-B-detail.png": "f67a365c100f5f841fd3d03d77e68ac353d28be78a9da3b8a76b68db8563bea7",
+        "raw/bsd-A-whole.png": "702588aa21af4a553b36de6a7ce104438d1d6e93fdc005be028e811d0b038543",
+        "raw/bsd-A-detail.png": "66a4179a08432c26549cbdb17b81548c4c43aee882d8c8d548b22440a73ae290",
+        "raw/bsd-reference-whole.png": "9521e8272f4f141d79c080cb4794cc1a1b7adffe3eb56e717e070cab5ce37681",
+        "raw/bsd-reference-detail.png": "5ff14ac37c82fd7262a4bf4ae7d7a86b8d67630659caa976ea23a3f1eb74b213"
+      },
+      "raw_sources_unchanged": true,
+      "independent_review_findings": []
+    },
+    {
+      "run_id": "20260913-usefulcharts-exploration-c-luna-3",
+      "cohort": "C",
+      "command": "C:\\Users\\villa\\AppData\\Roaming\\npm\\pi.CMD --model openai-codex/gpt-5.6-luna --thinking high --mode json --no-context-files --no-extensions --no-skills --no-prompt-templates --no-themes --no-session --skill skills/usefulcharts-style --print \"You are running an isolated forward test for `usefulcharts-style`. Use the read tool to read `../prompt.md` first, then follow it exactly. The loaded bundle is rooted at `skills/usefulcharts-style` from the current workspace; never prefix that path with `../`. Immediately after the prompt, read the bundle entry point at `skills/usefulcharts-style/SKILL.md`; do not probe for README.md or other conventional entry-point filenames. The shell tool is bash, not PowerShell; do not run PowerShell commands. Do not list directories or inspect script source before reading the prompt. If the prompt gives an exact command, run it verbatim and verify the required outputs.\"",
+      "model": "openai-codex/gpt-5.6-luna",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 132,
+        "payloadSha256": "4079682d4246761491aaf3a209bbeb55b6a2c87d6bb87d7477186ea82e043a3b"
+      },
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/pi-prompts/usefulcharts-exploration-identity.md",
+        "sizeBytes": 2384,
+        "sha256": "6406a57b025ee0eb426372da93f54a1ffb753801826a2712956333520f777248"
+      },
+      "expected_outputs": [
+        "review.json",
+        "review.md"
+      ],
+      "strict_pass": true,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "findings": [],
+      "payload_unchanged": true,
+      "read_paths": [
+        "../prompt.md",
+        "input/bsd-cedar-detail.png",
+        "input/bsd-cedar-whole.png",
+        "input/bsd-maple-detail.png",
+        "input/bsd-maple-whole.png",
+        "input/bsd-reference-detail.png",
+        "input/bsd-reference-whole.png",
+        "input/bsd-source.json",
+        "input/manifest.json",
+        "review.json",
+        "review.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/visible-discovery.md"
+      ],
+      "model_errors": [],
+      "failure_classification": null,
+      "raw_verdicts": {
+        "candidate_inventory": [
+          {
+            "id": "CEDAR",
+            "visible_id": "CEDAR",
+            "whole_path": "input/bsd-cedar-whole.png",
+            "detail_path": "input/bsd-cedar-detail.png",
+            "main_title": "UNIX AND THE BSD FAMILY",
+            "layout_fingerprint": "Two-column cream poster: tall Research UNIX and Berkeley/CSRG lineage panels on the left, stacked 386BSD, FreeBSD, NetBSD and BSDI panels on the right, with side hardware insets."
+          },
+          {
+            "id": "MAPLE",
+            "visible_id": "MAPLE",
+            "whole_path": "input/bsd-maple-whole.png",
+            "detail_path": "input/bsd-maple-detail.png",
+            "main_title": "UNIX & BSD • ONE HISTORY, MANY BRANCHES",
+            "layout_fingerprint": "Single wide cream field with a left-to-right Research UNIX row, a return Berkeley release row, and lower colored family lanes joined by solid lineage and dashed contribution routes."
+          }
+        ],
+        "preferred_id": "MAPLE",
+        "comparison": {
+          "image_ownership": "MAPLE attaches each inset to a named release or family (such as UNIX V3, 3BSD, 386BSD 0.0, FreeBSD 1.0, NetBSD 0.8 and BSD/386 Alpha). CEDAR places recognizable hardware inside panel side columns and labels it as illustrative period hardware, but its ownership is less node-specific. Neither approaches the reference's dense portrait-to-node attachment pattern.",
+          "paths": "MAPLE provides a continuous page-wide route with arrows and a solid-versus-dashed legend; NET/2 and the later branches can be followed without translating numbered references. CEDAR has clear local vertical paths, but most cross-panel relations are tiny numbered endpoint notes, so longer readings require lookup between panels.",
+          "color": "Both preserve stable family accents. CEDAR uses colored panel rules and headings with mostly neutral records; MAPLE carries muted family tints through the release cards and matching connectors, making branch ownership more persistent. MAPLE's pale colors and crossing lower routes still need careful reading, while the reference has stronger saturated color continuity across a much denser network.",
+          "rhythm": "CEDAR repeats spacious, regular panel-and-inset modules, which is calm but leaves disconnected reading pockets. MAPLE varies the top chronology, Berkeley return row and lower branch lanes to create a stronger exploratory rhythm, though its long lower return routes become cramped and visually busy."
+        },
+        "routes": [
+          {
+            "question": "How does NET/2 reach FreeBSD 1.0?",
+            "answer": "NET/2 leads through 386BSD 0.0 and 386BSD 0.1 to FreeBSD 1.0.",
+            "steps": [
+              "Locate NET/2 in the later Berkeley releases row.",
+              "Trace the solid branch into 386BSD 0.0, then down to 386BSD 0.1.",
+              "Follow the next solid arrow into FreeBSD 1.0 in the lower FreeBSD lane."
+            ],
+            "operation": "trace"
+          },
+          {
+            "question": "Which later systems receive the 4.4BSD Lite source, and which relation type is each?",
+            "answer": "FreeBSD 2.0 is the lineage branch; NetBSD 1.0 and BSD/OS 2.0 are shown as code contributions.",
+            "steps": [
+              "Find 4.4BSD Lite at the end of the Berkeley row.",
+              "Follow the solid route to FreeBSD 2.0.",
+              "Compare the dashed routes from the same source to NetBSD 1.0 and BSD/OS 2.0, using the printed SOLID/lineage and DASHED/code contribution key."
+            ],
+            "operation": "compare"
+          },
+          {
+            "question": "Which endpoints are dated 1995 in the later family lanes?",
+            "answer": "The shown endpoints are FreeBSD 2.1, NetBSD 1.1 and BSD/OS 2.0.1; their printed dates are 1995.",
+            "steps": [
+              "Read the date printed beside the terminal release in the FreeBSD lane.",
+              "Read the terminal date in the NetBSD lane and compare the label.",
+              "Read the terminal date in the BSD/OS lane; use the dates on the cards rather than horizontal spacing, which the poster says expresses inheritance, not elapsed time."
+            ],
+            "operation": "time"
+          }
+        ],
+        "remaining_weaknesses": {
+          "CEDAR": [
+            "The page is divided into isolated panels, so the main UNIX-to-BSD story is not continuously traceable; numbered cross-panel notes force detached lookup.",
+            "Hardware is visibly separated into side columns and often owned only by a period or panel rather than a precise record, weakening image-to-fact exploration.",
+            "Regular panel shells and large gaps create a calmer but less information-rich rhythm than the reference, and semantic color is strongest at panel headings rather than along every relation."
+          ],
+          "MAPLE": [
+            "The lower NET/2, 386BSD, FreeBSD, NetBSD and BSD/OS routes occupy a tight crossing corridor; dashed contribution paths and solid lineage paths can be confused near shared endpoints.",
+            "Some long arrows span family lanes and pass close to small cards, so the exact source and target require slower inspection than the local vertical branches.",
+            "The poster is far less knowledge-dense than the reference: it presents a focused 47-release BSD history rather than the reference's broad, densely populated royal genealogy, and its sparse illustrative set cannot match the reference's node-level portrait coverage."
+          ]
+        },
+        "next_repair": "Retain MAPLE's continuous backbone, then recompose the lower branch area with reserved horizontal corridors: route every dashed contribution outside the release cards, give each cross-family endpoint a short named portal, enlarge the small arrowheads and relation labels, and keep the image caption adjacent to its owning record.",
+        "reference_target": "not-established",
+        "reference_density": "pending",
+        "evidence_boundary": "All six supplied PNGs and bsd-source.json were visually/readably reviewed, and the candidate identities were bound to the visible sheet headers. The comparison supports a MAPLE preference and source-answerable routes, but no formal density census, independent legibility study, or proof of visual parity with the reference was performed. The candidates visibly have a much smaller knowledge body than the reference, so a reference pass is not claimed; exact density distribution and small-label legibility remain unverified."
+      },
+      "input_hashes": {
+        "bsd-cedar-whole.png": "7b6f94d55484443796aa0a9ee1b7b96579f983b1f424a4996ae3cc3cb73172b7",
+        "bsd-cedar-detail.png": "86f5333d6db031a7d858e0c6b67825e8cdfaf728847ecf069dad2ceea1deb110",
+        "bsd-maple-whole.png": "40501fce60e2f12208459cc5a4028d300d8b591b726556b671e0102eb22eb13c",
+        "bsd-maple-detail.png": "792a5b574dc35cba329d31bf75f6fdd3c837f17b2db8d071c5956c9619f1ff5f",
+        "bsd-reference-whole.png": "cd6ec5225b4ef7996f9a7835f9782311dd169c37fd0deac0a8f70556d628d679",
+        "bsd-reference-detail.png": "3f7db169e83cd6aee7e70a86c2e45eb3e64eee2736067b063cd2711a222a1e6d",
+        "bsd-source.json": "acf14628cc9f5c54100cd8dd27d0c0924f3b98b53bf1f0a195d78094a9e79c7d"
+      },
+      "all_input_hashes_match": true,
+      "image_read_count": 6,
+      "expected_image_count": 6,
+      "reviewer_outputs": {
+        "review.json": "2f6af99f14ca2c253d87c58ff3285f13b4b9b99a5c45b7346b89973adc51dfaf",
+        "review.md": "1f307afff68fa2cd5c2e2bec86543312e693e62bda68acd4bac094a46f21cf94"
+      },
+      "mapping": {
+        "CEDAR": "previous-illustrated",
+        "MAPLE": "repaired-recomposition"
+      },
+      "identity_fields_pass": true,
+      "identity_prose_manually_checked": true,
+      "raw_source_hashes": {
+        "raw/bsd-B-whole.png": "350b9d9277777ebd237cd9946dcaa52cc4f9fb1076db2fc365c1a70319498f89",
+        "raw/bsd-B-detail.png": "f67a365c100f5f841fd3d03d77e68ac353d28be78a9da3b8a76b68db8563bea7",
+        "raw/bsd-A-whole.png": "702588aa21af4a553b36de6a7ce104438d1d6e93fdc005be028e811d0b038543",
+        "raw/bsd-A-detail.png": "66a4179a08432c26549cbdb17b81548c4c43aee882d8c8d548b22440a73ae290",
+        "raw/bsd-reference-whole.png": "9521e8272f4f141d79c080cb4794cc1a1b7adffe3eb56e717e070cab5ce37681",
+        "raw/bsd-reference-detail.png": "5ff14ac37c82fd7262a4bf4ae7d7a86b8d67630659caa976ea23a3f1eb74b213"
+      },
+      "raw_sources_unchanged": true,
+      "independent_review_findings": [
+        {
+          "code": "unsupported-comparative-density-wording",
+          "detail": "The prose says the focused selection cannot match the reference knowledge density, although no matched semantic census exists. Its explicit density status remains pending; the categorical prose is not adopted."
+        }
+      ]
+    }
+  ],
+  "application_checks": [
+    {
+      "case": "instruments",
+      "status": "pass",
+      "records": 71,
+      "canvas": [
+        2200.0,
+        1535.0
+      ],
+      "area_change_percent": -1.25,
+      "record_density_change_percent": 1.26,
+      "dates": 0,
+      "operation_spans": 0,
+      "pdf_source_links": 71,
+      "illustrations": 15,
+      "findings": [],
+      "reference_density_status": "pending",
+      "hashes": {
+        "poster.svg": "c87a08de0969014a9e4dd56676ce7e9701bb9f98d561625bdac4bc47318a85bb",
+        "poster.pdf": "67b30e4495d653f8719f87ceb75db278e847d638ba030e1d066822ad991491e5",
+        "poster.png": "001786370afc438b215798f0b24bcfca86f7044efa2081573c9fec86149d4552",
+        "preview.png": "7a706f1a807e54c9cb8a6bb64d3ed739b0007be5e8a1e4ef0c12be550cb03c28",
+        "detail.png": "17bb05c7501314e857940d4c2576c124f180a9839d253c98c5a20aac4171c61c",
+        "source.json": "e0f5f52f1f4b70cd3956cc919519b091653e92495cb3d174df35b0586c081177"
+      }
+    },
+    {
+      "case": "bsd",
+      "status": "pass",
+      "records": 47,
+      "canvas": [
+        2100.0,
+        1853.0
+      ],
+      "area_change_percent": 2.65,
+      "record_density_change_percent": -2.58,
+      "dates": 0,
+      "operation_spans": 0,
+      "pdf_source_links": 47,
+      "illustrations": 6,
+      "findings": [],
+      "reference_density_status": "pending",
+      "hashes": {
+        "poster.svg": "df21a0ccabf230656056835391c56e80a2d4a915210a8f16ecd7597ba1028fa6",
+        "poster.pdf": "c9097eb480f3a6fe15fc37dc4b164c03b11177951ca3d63229deb9673962c584",
+        "poster.png": "987d75cf63b947da181812057f3aaca1ef8499167126663ebc49c84c65c4062b",
+        "preview.png": "702588aa21af4a553b36de6a7ce104438d1d6e93fdc005be028e811d0b038543",
+        "detail.png": "5e10804b2424a4963cb4201c8b6e21bb67f2b12df55a480d7bd19a16d85165ed",
+        "source.json": "acf14628cc9f5c54100cd8dd27d0c0924f3b98b53bf1f0a195d78094a9e79c7d"
+      }
+    },
+    {
+      "case": "mars",
+      "status": "pass",
+      "records": 32,
+      "canvas": [
+        4285.0,
+        2211.0
+      ],
+      "area_change_percent": 8.52,
+      "record_density_change_percent": -7.85,
+      "dates": 52,
+      "operation_spans": 6,
+      "pdf_source_links": 32,
+      "illustrations": 7,
+      "findings": [],
+      "reference_density_status": "pending",
+      "hashes": {
+        "poster.svg": "f4d71a52cf5489efa93882940eb4d8bb06a89ca8bbc315b64dec14b99d4df2ed",
+        "poster.pdf": "c0c3a665d4895c82812bafd83d6526336fcb35c559e32e2266ebf1c16277bfb4",
+        "poster.png": "0844dc07059ffaf695cd42560dc4002f7f6d5b5f372771e20fcc6ab77d30a3db",
+        "preview.png": "4e149d3f997a4569109629f77fa13c5f5d3e295291e8ed4421eade11be12711d",
+        "detail.png": "8d9dd699a8408538efd67be9f3291b99997f00b79d7ff4fd0c94ca056f677e3d",
+        "source.json": "4916796e91fbac89af803fda3d13782cfc9243e92f6b3f66eaba2cdfe0197625"
+      }
+    },
+    {
+      "case": "starships",
+      "status": "pass",
+      "records": 79,
+      "canvas": [
+        6400.0,
+        5257.0
+      ],
+      "area_change_percent": -6.16,
+      "record_density_change_percent": 6.56,
+      "dates": 157,
+      "operation_spans": 0,
+      "pdf_source_links": 79,
+      "illustrations": 13,
+      "findings": [],
+      "reference_density_status": "pending",
+      "hashes": {
+        "poster.svg": "3bacf239b6c93e6d1d21c703848fc5fd15563a17d9f72d79d88a4aa76aa11378",
+        "poster.pdf": "f3e3d21498c013cddb8f914be07d22dd017a3ce81fbcbef85133c069b16fd43c",
+        "poster.png": "23784546d90b6dd10badfbdadd321bb83fe53b68511b5a2f32f20e4bc1f1e6bd",
+        "preview.png": "9810b024c922fbd648c8e0414eee22bce649fe4468bacee3c1bc7e031c9bf1f5",
+        "detail.png": "4ec5d7cb74ae7dff8fafb3bc89c6066c1b00c0cebdf26cffbe914b59e8a25776",
+        "source.json": "6a71ba662c7e9c3f1da59f37ff6d99baf738eaeb4d643911f3ef89f058cbdef8"
+      }
+    },
+    {
+      "case": "civilizations",
+      "status": "pass",
+      "records": 155,
+      "canvas": [
+        4800.0,
+        5094.0
+      ],
+      "area_change_percent": 6.22,
+      "record_density_change_percent": -5.86,
+      "dates": 123,
+      "operation_spans": 0,
+      "pdf_source_links": 155,
+      "illustrations": 10,
+      "findings": [],
+      "reference_density_status": "pending",
+      "hashes": {
+        "poster.svg": "979575d670959b752041340d35e410a9ed7234555267aef0104bae4efae09495",
+        "poster.pdf": "661773330f5e29c1a2a0767da0e0405f0aa5db35dda6ed87e5b1200a18267c99",
+        "poster.png": "06bda7653368f57f315f917bd9ac0d2d89397b4040b588ef98b97255cc94c5fb",
+        "preview.png": "0daf3434110d5750d804e1b537c458b7eebc2345c9ff4debbfe53b5193ab09c2",
+        "detail.png": "b26cd2b38346fd9e8e862804f5d46d988b86c0dc64a8a29e86196446908b2b10",
+        "source.json": "44a5286fbf908b911fb6e52cf885bf2264e8685c7abf929ea533b1240af72740"
+      }
+    }
+  ],
+  "authored_exploration_assessments": [
+    {
+      "case": "instruments",
+      "schema_version": 1,
+      "illustrated_coverage_pass": true,
+      "declared_exploratory_composition_pass": true,
+      "declared_reference_target_pass": false,
+      "failures": [],
+      "reference_density_status": "pending",
+      "remaining_reference_differences": [
+        "Five classification trunks remain more regular and sparse than the interleaved denomination tree.",
+        "A complete matched semantic reference-density census has not been performed."
+      ],
+      "evidence_boundary": "Hashes and printed IDs validate evidence completeness. Pixel review and declarations are not objective aesthetic scores or a blind authorship experiment."
+    },
+    {
+      "case": "bsd",
+      "schema_version": 1,
+      "illustrated_coverage_pass": true,
+      "declared_exploratory_composition_pass": true,
+      "declared_reference_target_pass": false,
+      "failures": [],
+      "reference_density_status": "pending",
+      "remaining_reference_differences": [
+        "The Berkeley return row and long contribution corridors remain more mechanical than an irregular royal genealogy.",
+        "A complete matched semantic reference-density census has not been performed."
+      ],
+      "evidence_boundary": "Hashes and printed IDs validate evidence completeness. Pixel review and declarations are not objective aesthetic scores or a blind authorship experiment."
+    },
+    {
+      "case": "mars",
+      "schema_version": 1,
+      "illustrated_coverage_pass": false,
+      "declared_exploratory_composition_pass": false,
+      "declared_reference_target_pass": false,
+      "failures": [
+        "illustrated-coverage",
+        "unresolved-composition"
+      ],
+      "reference_density_status": "pending",
+      "remaining_reference_differences": [
+        "The uniform mission calendar has large quiet decades and less interleaved contextual explanation than the reference.",
+        "A complete matched semantic reference-density census has not been performed."
+      ],
+      "evidence_boundary": "Hashes and printed IDs validate evidence completeness. Pixel review and declarations are not objective aesthetic scores or a blind authorship experiment."
+    },
+    {
+      "case": "starships",
+      "schema_version": 1,
+      "illustrated_coverage_pass": true,
+      "declared_exploratory_composition_pass": true,
+      "declared_reference_target_pass": false,
+      "failures": [],
+      "reference_density_status": "pending",
+      "remaining_reference_differences": [
+        "Large prose nameplates and uneven late-row occupancy still distinguish this space atlas from the reference chronology.",
+        "A complete matched semantic reference-density census has not been performed."
+      ],
+      "evidence_boundary": "Hashes and printed IDs validate evidence completeness. Pixel review and declarations are not objective aesthetic scores or a blind authorship experiment."
+    },
+    {
+      "case": "civilizations",
+      "schema_version": 1,
+      "illustrated_coverage_pass": false,
+      "declared_exploratory_composition_pass": false,
+      "declared_reference_target_pass": false,
+      "failures": [
+        "illustrated-coverage",
+        "unresolved-composition"
+      ],
+      "reference_density_status": "pending",
+      "remaining_reference_differences": [
+        "The regular story bands still read more like an annotated catalog than the reference’s interwoven civilizations; the new coalition inset improves one previously unused region.",
+        "A complete matched semantic reference-density census has not been performed."
+      ],
+      "evidence_boundary": "Hashes and printed IDs validate evidence completeness. Pixel review and declarations are not objective aesthetic scores or a blind authorship experiment."
+    }
+  ],
+  "totals": {
+    "records": 384,
+    "illustrations": 51,
+    "pdf_source_links": 384,
+    "technical_passes": 5
+  },
+  "evidence_limits": [
+    "All visual reviews are development feedback, not a sealed holdout or blinded authorship experiment.",
+    "Cohort B has two BSD candidate-identity errors; do not count those as valid preferences or silently repair the raw reviews.",
+    "Cohort C resolves identifier binding for this pair in three development runs; it is not a general reliability benchmark. C3 retains overconfident comparative-density prose.",
+    "The last default Spark command control stops at the provider usage limit after running fourteen exploration tests; its required output is missing. The prior Spark control passes on the preceding digest.",
+    "Cohort B instruments images precede one small root-spine collision repair; they do not hash-match the final instrument PDF.",
+    "Only the two supplied subject pairs were independently compared; all five final posters received authored pixel/PDF review.",
+    "Record area is compared only to the previous project revision; it is not a matched semantic UsefulCharts density census.",
+    "The Mars calendar and civilization matrix still fail the authored exploratory composition gate.",
+    "Reference target, sufficient semantic density and indistinguishability are not established."
+  ],
+  "gallery_checks": {
+    "status": "pass",
+    "cases": [
+      {
+        "case": "instruments",
+        "status": "pass",
+        "body_images": 15,
+        "focus_record": "Tube or vessel kazoos",
+        "search": true,
+        "source_link": true,
+        "zoom": true,
+        "before_after": true,
+        "mobile": true,
+        "offline": true
+      },
+      {
+        "case": "starships",
+        "status": "pass",
+        "body_images": 13,
+        "focus_record": "Enterprise NX-01",
+        "search": true,
+        "source_link": true,
+        "zoom": true,
+        "before_after": true,
+        "mobile": true,
+        "offline": true
+      },
+      {
+        "case": "mars",
+        "status": "pass",
+        "body_images": 7,
+        "focus_record": "Viking 1",
+        "search": true,
+        "source_link": true,
+        "zoom": true,
+        "before_after": true,
+        "mobile": true,
+        "offline": true
+      },
+      {
+        "case": "bsd",
+        "status": "pass",
+        "body_images": 6,
+        "focus_record": "UNIX V3",
+        "search": true,
+        "source_link": true,
+        "zoom": true,
+        "before_after": true,
+        "mobile": true,
+        "offline": true
+      },
+      {
+        "case": "civilizations",
+        "status": "pass",
+        "body_images": 10,
+        "focus_record": "FIRST CONTACT",
+        "search": true,
+        "source_link": true,
+        "zoom": true,
+        "before_after": true,
+        "mobile": true,
+        "offline": true
+      }
+    ],
+    "errors": []
+  },
+  "package_checks": [
+    {
+      "name": "exploratory-diagrams.zip",
+      "status": "pass",
+      "files": 78,
+      "pdfs": 5,
+      "bytes": 109249954,
+      "sha256": "775802af700e5ff47328ba788b2c821e44fe073dcad6cc78398a9d3906826e0e"
+    },
+    {
+      "name": "exploratory-posters-pdf.zip",
+      "status": "pass",
+      "files": 5,
+      "pdfs": 5,
+      "bytes": 29670521,
+      "sha256": "f3f363a244e5d7ebd121e244dd9e782d9e775ff3ff188dc66f28aa87415a0e40"
+    }
+  ]
+}

@@ -9,7 +9,12 @@ A maintained collection of reusable skills, compact references, deterministic he
 - [Agent instructions](../AGENTS.md)
 - [Skill backlog and validation status](../SKILLS.md)
 - [Evaluation methodology](../evaluations/README.md)
+- [Skill authoring and generated bundle validation](skill-authoring.md)
 - [Colorset contract and skill output coverage](colorsets.md)
+
+## Feedback from real projects
+
+- [SVG, Mermaid, and D3: Harness presentation retrospective](feedback-svg-mermaid-d3-2026-09-04.md)
 
 ## Build output boundary
 

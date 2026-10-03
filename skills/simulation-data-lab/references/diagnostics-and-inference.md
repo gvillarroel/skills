@@ -1,5 +1,15 @@
 # Diagnostics and inference
 
+## Contents
+
+- [Verification gates](#verification-gates)
+- [Monte Carlo precision](#monte-carlo-precision)
+- [Decision language](#decision-language)
+- [Challenge the hypothesis](#challenge-the-hypothesis)
+- [Sensitivity analysis](#sensitivity-analysis)
+- [External validation](#external-validation)
+- [Final audit](#final-audit)
+
 Separate three questions:
 
 1. **Verification:** was the intended model implemented and solved correctly?

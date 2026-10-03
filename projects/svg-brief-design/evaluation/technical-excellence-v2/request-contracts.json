@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "authority": "Derived only from the six public user requests; not from reference artwork or candidate scores.",
+  "contracts": {
+    "vector-004--eb6eabbcb9ca2ad4": {
+      "required": ["An android head seen from the front", "Slender overall head treatment", "Large round eyes", "A visible neck", "A somewhat unsettling science-fiction character", "Monochrome vector illustration"],
+      "unspecified": ["Exact contours or facial proportions", "Specific technology, species or franchise", "Number of decorative panels", "Matching a source silhouette"],
+      "full_marks": "An original, clearly recognizable slender front-facing android with large round eyes and visible neck, a coherent unsettling science-fiction treatment, intentional geometry and readable internal divisions."
+    },
+    "vector-011--6b42f7e2789d1bd1": {
+      "required": ["An abstract circular frame", "Several interlaced black curves", "An empty central opening", "A sense of smooth movement"],
+      "unspecified": ["Exact curve count", "Fixed line thickness", "Exact rotational symmetry", "A filled rather than outlined contour", "The source artwork's curve path"],
+      "full_marks": "A coherent original circular frame whose interlaced curves create controlled smooth rhythm around a clear empty center. Both fine-line braids and heavier curves may earn full marks when technically finished."
+    },
+    "vector-019--75606bdb4ee5b4af": {
+      "required": ["A decorative HUD bar", "An elongated opening", "Several diagonal strokes at one end", "Black, compact, technological appearance"],
+      "unspecified": ["Which end contains the diagonals", "Exact number of strokes", "Particular chamfer angles", "Matching an existing HUD contour"],
+      "full_marks": "An original compact technological bar with a clearly readable elongated opening, a coherent group of diagonal accents at one end and clean spacing, joins and margins."
+    },
+    "vector-020--09ee2ae28c7c367a": {
+      "required": ["A horizontal industrial label", "A black header", "Brief readable information text", "A small barcode", "A compact monochrome technical composition"],
+      "unspecified": ["Exact information wording", "Specific identification data", "Barcode payload or symbology", "Matching the source text or exact proportions"],
+      "full_marks": "An original horizontal label with a black header, a clear information hierarchy and an appropriately separated small barcode. Text must remain visible. Do not invent a hidden barcode payload or require decoding without a specified payload or functional use; do not claim unverified functionality."
+    },
+    "vector-024--652120566170fbf2": {
+      "required": ["A simple graph of a periodic oscillation", "Axes", "Small reference letters", "A vintage scientific illustration character", "Somewhat organic black lines"],
+      "unspecified": ["Number of cycles", "Exact amplitude or phase", "Particular letters", "The reference graph's frequency", "Additional numerical claims"],
+      "full_marks": "An original readable periodic curve, coherent axes and subordinate reference lettering, with a restrained vintage scientific treatment. Different cycle counts may receive full marks. Any extra mathematical assertion must be internally consistent."
+    },
+    "vector-030--d3c57e0c21dbede0": {
+      "required": ["An angled space insignia", "An elongated pointed feature", "A mechanical body with fins", "A futuristic ship or lance impression", "Black shapes and strong contrast"],
+      "unspecified": ["Which diagonal it follows", "Exact fin count", "Matching an existing ship silhouette", "Specific machinery or fictional lore"],
+      "full_marks": "An original angled silhouette with a clear elongated point, mechanical body and fins, readable as a futuristic ship or lance, with deliberate high-contrast masses and openings. Either diagonal is valid."
+    }
+  },
+  "shared_artifact_contract": {
+    "self_contained_svg": true,
+    "editable_vector_elements": true,
+    "valid_viewBox": true,
+    "maximum_bytes": 2000000,
+    "embedded_images": false,
+    "scripts": false,
+    "external_resources": false,
+    "palette_and_background": "Black on transparent as requested; distinguish intentional negative space from white paint.",
+    "output_path": "Use the exact path in each original instruction. Retrospective evidence must link to that artifact, not to an arbitrary SVG found in the trial."
+  }
+}

@@ -1,0 +1,78 @@
+--- a/SKILL.md
++++ b/SKILL.md
+@@ -18,6 +18,10 @@
+ For flowing frames, open mechanical forms, printed diagrams or compact labels,
+ read [purpose and construction](references/construction-decisions.md) before
+ choosing geometry. Use its original orbit base when an annular construction fits.
++
++For vintage or printed artwork, compact labels and line diagrams, read
++[print character and optical finishing](references/print-optical-finish.md)
++before choosing marks or laying out content.
+ 
+ ## Build a useful base
+ 
+--- /dev/null
++++ b/references/print-optical-finish.md
+@@ -0,0 +1,62 @@
++# Print character and optical finishing
++
++Use the historic section only for a requested print or vintage idiom. Use the
++optical finishing pass for compact text and line art of any period. Preserve
++required labels, factual relationships and the requested palette/background.
++
++## Choose a mark-making method
++
++Old printed images do not share one stroke style. Choose the relevant method
++before adding effects. Relief-like work can use sturdy material shapes and
++deliberate white cuts. Engraved work can use controlled swelling lines and spaced
++hatching that follows a plane. A sparse printed technical figure may need only
++an explanatory trace, axes and a few purposeful annotations, with no shading.
++Do not mix these methods just to make a drawing look busier or more antique.
++
++Give related marks a shared construction. Use a restrained family of weights;
++vary a line through a continuous gesture or taper when that fits the medium.
++If width variation matters, construct a filled outline rather than stacking
++duplicate strokes. Coordinate arrowheads, terminal cuts and joins with the line
++they belong to. Preserve a clean, confident contour before considering texture.
++
++Do not jitter all points, pepper the canvas with damage, or distress type to
++manufacture age. A historic idiom comes primarily from proportions, mark shape,
++notation and spacing. Fine engraving remains a legitimate historic treatment;
++thickening every element is not a universal improvement.
++
++## Edit explanatory marks by their function
++
++For a decorative diagram, start with the relationship the drawing explains.
++Add a tick, letter, leader or symbol only if it identifies an otherwise ambiguous
++part or was requested. Do not inherit a plotting program's grid, tick sequence,
++legend and title by default. Keep the curve distinguishable where it approaches
++an axis. If it genuinely touches or crosses, make that event intentional.
++
++For quantitative work, preserve the actual data, scale, ticks and labels needed
++to interpret it. Never move extrema, alter a function or remove an essential
++measurement to improve an antique appearance. A restrained style is not an
++excuse to omit the meaning of the diagram.
++
++## Fit the content, then adjust it optically
++
++For an identifier or small label, lay out the actual required strings first.
++Let their hierarchy determine a compact occupied footprint and add the container
++around it. Avoid starting with a large panel and inventing fields to fill it.
++Related information shares an alignment and treatment; a rule should separate
++real groups, not decorate every available edge.
++
++Then judge visible glyph edges and nearby black masses, not only text boxes.
++Adjust a small inset, tracking or baseline when the result looks crowded or
++off-center. Preserve readable glyph proportions; do not squash text to fit.
++Keep optical corrections small and inspect them at the intended size.
++
++Render the final SVG and check the darkest junction, smallest essential opening,
++longest label and most important curve. If ink-like marks merge at small size,
++increase meaningful separation or simplify a subordinate mark. Do not add a
++global blur: the deliverable remains a crisp, editable vector.
++
++Background: [The Met on woodcut](https://www.metmuseum.org/perspectives/materials-and-techniques-printmaking-woodcut),
++[The Met on engraving](https://www.metmuseum.org/perspectives/materials-and-techniques-printmaking-engraving),
++and [Butterick on layout](https://practicaltypography.com/maxims-of-page-layout.html).
++The SVG recommendations are a practical adaptation, not a claim that all historic
++printing follows one visual formula.

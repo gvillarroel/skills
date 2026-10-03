@@ -1,0 +1,779 @@
+{
+  "id": "unix-bsd-1971-1995",
+  "title": "UNIX AND THE BSD FAMILY",
+  "design": "editorial",
+  "mode": "lineage",
+  "layout": "branches",
+  "branch_order": "causal",
+  "groups": [
+    {
+      "id": "research",
+      "label": "Research UNIX",
+      "color": "#385E75"
+    },
+    {
+      "id": "berkeley",
+      "label": "Berkeley / CSRG",
+      "color": "#8A4935"
+    },
+    {
+      "id": "386bsd",
+      "label": "386BSD",
+      "color": "#735C85"
+    },
+    {
+      "id": "freebsd",
+      "label": "FreeBSD",
+      "color": "#994851"
+    },
+    {
+      "id": "netbsd",
+      "label": "NetBSD",
+      "color": "#776329"
+    },
+    {
+      "id": "bsdi",
+      "label": "BSDI",
+      "color": "#397465"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "v1",
+      "label": "UNIX V1",
+      "date_label": "1971",
+      "group": "research",
+      "detail": "First Edition",
+      "detail_position": "outside",
+      "source_url": "https://cgit.freebsd.org/src/tree/share/misc/bsd-family-tree"
+    },
+    {
+      "id": "v2",
+      "label": "UNIX V2",
+      "date_label": "1972",
+      "group": "research",
+      "detail": "Second Edition",
+      "detail_position": "outside",
+      "source_url": "https://cgit.freebsd.org/src/tree/share/misc/bsd-family-tree"
+    },
+    {
+      "id": "v3",
+      "label": "UNIX V3",
+      "date_label": "1973",
+      "group": "research",
+      "detail": "Pipes enter Research UNIX",
+      "detail_position": "outside",
+      "source_url": "https://cgit.freebsd.org/src/tree/share/misc/bsd-family-tree"
+    },
+    {
+      "id": "v4",
+      "label": "UNIX V4",
+      "date_label": "1973",
+      "group": "research",
+      "detail": "Rewritten in C",
+      "detail_position": "outside",
+      "source_url": "https://cgit.freebsd.org/src/tree/share/misc/bsd-family-tree"
+    },
+    {
+      "id": "v5",
+      "label": "UNIX V5",
+      "date_label": "1974",
+      "group": "research",
+      "detail": "Fifth Edition",
+      "detail_position": "outside",
+      "source_url": "https://cgit.freebsd.org/src/tree/share/misc/bsd-family-tree"
+    },
+    {
+      "id": "v6",
+      "label": "UNIX V6",
+      "date_label": "1975",
+      "group": "research",
+      "detail": "Basis of the first BSD",
+      "detail_position": "outside",
+      "source_url": "https://cgit.freebsd.org/src/tree/share/misc/bsd-family-tree",
+      "emphasis": true
+    },
+    {
+      "id": "v7",
+      "label": "UNIX V7",
+      "date_label": "1979",
+      "group": "research",
+      "detail": "Seventh Edition",
+      "detail_position": "outside",
+      "source_url": "https://cgit.freebsd.org/src/tree/share/misc/bsd-family-tree"
+    },
+    {
+      "id": "b1",
+      "label": "1BSD",
+      "date_label": "1977–78",
+      "group": "berkeley",
+      "detail": "Tools for PDP-11 UNIX",
+      "detail_position": "outside",
+      "source_url": "https://cgit.freebsd.org/src/tree/share/misc/bsd-family-tree"
+    },
+    {
+      "id": "b2",
+      "label": "2BSD",
+      "date_label": "1978–79",
+      "group": "berkeley",
+      "detail": "Second Berkeley distribution",
+      "detail_position": "outside",
+      "source_url": "https://cgit.freebsd.org/src/tree/share/misc/bsd-family-tree"
+    },
+    {
+      "id": "32v",
+      "label": "UNIX/32V",
+      "date_label": "1978–79",
+      "group": "research",
+      "detail": "Research UNIX for the VAX",
+      "detail_position": "outside",
+      "source_url": "https://cgit.freebsd.org/src/tree/share/misc/bsd-family-tree"
+    },
+    {
+      "id": "b3",
+      "label": "3BSD",
+      "date_label": "1979–80",
+      "group": "berkeley",
+      "detail": "Virtual memory on the VAX",
+      "detail_position": "outside",
+      "source_url": "https://cgit.freebsd.org/src/tree/share/misc/bsd-family-tree",
+      "emphasis": true
+    },
+    {
+      "id": "b40",
+      "label": "4.0BSD",
+      "date_label": "1980",
+      "group": "berkeley",
+      "detail": "VAX distribution",
+      "detail_position": "outside",
+      "source_url": "https://cgit.freebsd.org/src/tree/share/misc/bsd-family-tree"
+    },
+    {
+      "id": "b41",
+      "label": "4.1BSD",
+      "date_label": "1981",
+      "group": "berkeley",
+      "detail": "VAX distribution",
+      "detail_position": "outside",
+      "source_url": "https://cgit.freebsd.org/src/tree/share/misc/bsd-family-tree"
+    },
+    {
+      "id": "b41a",
+      "label": "4.1aBSD",
+      "date_label": "1982",
+      "group": "berkeley",
+      "detail": "Networking alpha",
+      "detail_position": "outside",
+      "source_url": "https://cgit.freebsd.org/src/tree/share/misc/bsd-family-tree"
+    },
+    {
+      "id": "b41b",
+      "label": "4.1bBSD",
+      "date_label": "Undated",
+      "group": "berkeley",
+      "detail": "Internal filesystem version",
+      "detail_position": "outside",
+      "source_url": "https://cgit.freebsd.org/src/tree/share/misc/bsd-family-tree"
+    },
+    {
+      "id": "b41c",
+      "label": "4.1cBSD",
+      "date_label": "1982",
+      "group": "berkeley",
+      "detail": "IPC beta",
+      "detail_position": "outside",
+      "source_url": "https://cgit.freebsd.org/src/tree/share/misc/bsd-family-tree"
+    },
+    {
+      "id": "b42",
+      "label": "4.2BSD",
+      "date_label": "1983",
+      "group": "berkeley",
+      "detail": "Berkeley release",
+      "detail_position": "outside",
+      "source_url": "https://cgit.freebsd.org/src/tree/share/misc/bsd-family-tree"
+    },
+    {
+      "id": "b43",
+      "label": "4.3BSD",
+      "date_label": "1986",
+      "group": "berkeley",
+      "detail": "Berkeley release",
+      "detail_position": "outside",
+      "source_url": "https://cgit.freebsd.org/src/tree/share/misc/bsd-family-tree"
+    },
+    {
+      "id": "tahoe",
+      "label": "4.3BSD Tahoe",
+      "date_label": "1988",
+      "group": "berkeley",
+      "detail": "Tahoe release",
+      "detail_position": "outside",
+      "source_url": "https://cgit.freebsd.org/src/tree/share/misc/bsd-family-tree"
+    },
+    {
+      "id": "net1",
+      "label": "NET/1",
+      "date_label": "1988–89",
+      "group": "berkeley",
+      "detail": "Networking distribution",
+      "detail_position": "outside",
+      "source_url": "https://cgit.freebsd.org/src/tree/share/misc/bsd-family-tree"
+    },
+    {
+      "id": "reno",
+      "label": "4.3BSD Reno",
+      "date_label": "1990",
+      "group": "berkeley",
+      "detail": "Reno release",
+      "detail_position": "outside",
+      "source_url": "https://cgit.freebsd.org/src/tree/share/misc/bsd-family-tree"
+    },
+    {
+      "id": "net2",
+      "label": "NET/2",
+      "date_label": "1991",
+      "group": "berkeley",
+      "detail": "Networking distribution",
+      "detail_position": "outside",
+      "source_url": "https://cgit.freebsd.org/src/tree/share/misc/bsd-family-tree",
+      "emphasis": true
+    },
+    {
+      "id": "b44a",
+      "label": "4.4BSD Alpha",
+      "date_label": "1992",
+      "group": "berkeley",
+      "detail": "Development release",
+      "detail_position": "outside",
+      "source_url": "https://cgit.freebsd.org/src/tree/share/misc/bsd-family-tree"
+    },
+    {
+      "id": "b44",
+      "label": "4.4BSD",
+      "date_label": "1993",
+      "group": "berkeley",
+      "detail": "Berkeley release",
+      "detail_position": "outside",
+      "source_url": "https://cgit.freebsd.org/src/tree/share/misc/bsd-family-tree"
+    },
+    {
+      "id": "lite",
+      "label": "4.4BSD Lite",
+      "date_label": "1994",
+      "group": "berkeley",
+      "detail": "Source for several BSD systems",
+      "detail_position": "outside",
+      "source_url": "https://cgit.freebsd.org/src/tree/share/misc/bsd-family-tree",
+      "emphasis": true
+    },
+    {
+      "id": "lite2",
+      "label": "4.4BSD Lite2",
+      "date_label": "1995",
+      "group": "berkeley",
+      "detail": "Final CSRG distribution",
+      "detail_position": "outside",
+      "source_url": "https://cgit.freebsd.org/src/tree/share/misc/bsd-family-tree"
+    },
+    {
+      "id": "386a",
+      "label": "386BSD 0.0",
+      "date_label": "1992",
+      "group": "386bsd",
+      "detail": "Early PC release",
+      "detail_position": "outside",
+      "source_url": "https://cgit.freebsd.org/src/tree/share/misc/bsd-family-tree"
+    },
+    {
+      "id": "386b",
+      "label": "386BSD 0.1",
+      "date_label": "1992",
+      "group": "386bsd",
+      "detail": "PC release",
+      "detail_position": "outside",
+      "source_url": "https://cgit.freebsd.org/src/tree/share/misc/bsd-family-tree"
+    },
+    {
+      "id": "386c",
+      "label": "386BSD 1.0",
+      "date_label": "1994",
+      "group": "386bsd",
+      "detail": "Later release",
+      "detail_position": "outside",
+      "source_url": "https://cgit.freebsd.org/src/tree/share/misc/bsd-family-tree"
+    },
+    {
+      "id": "f1",
+      "label": "FreeBSD 1.0",
+      "date_label": "1993",
+      "group": "freebsd",
+      "detail": "First release",
+      "detail_position": "outside",
+      "source_url": "https://cgit.freebsd.org/src/tree/share/misc/bsd-family-tree"
+    },
+    {
+      "id": "f11",
+      "label": "FreeBSD 1.1",
+      "date_label": "1994",
+      "group": "freebsd",
+      "detail": "Release series",
+      "detail_position": "outside",
+      "source_url": "https://cgit.freebsd.org/src/tree/share/misc/bsd-family-tree"
+    },
+    {
+      "id": "f115",
+      "label": "FreeBSD 1.1.5",
+      "date_label": "1994",
+      "group": "freebsd",
+      "detail": "Release series",
+      "detail_position": "outside",
+      "source_url": "https://cgit.freebsd.org/src/tree/share/misc/bsd-family-tree"
+    },
+    {
+      "id": "f1151",
+      "label": "FreeBSD 1.1.5.1",
+      "date_label": "1994",
+      "group": "freebsd",
+      "detail": "Final 1.x release shown",
+      "detail_position": "outside",
+      "source_url": "https://cgit.freebsd.org/src/tree/share/misc/bsd-family-tree"
+    },
+    {
+      "id": "f2",
+      "label": "FreeBSD 2.0",
+      "date_label": "1994",
+      "group": "freebsd",
+      "detail": "4.4BSD Lite base",
+      "detail_position": "outside",
+      "source_url": "https://cgit.freebsd.org/src/tree/share/misc/bsd-family-tree"
+    },
+    {
+      "id": "f205",
+      "label": "FreeBSD 2.0.5",
+      "date_label": "1995",
+      "group": "freebsd",
+      "detail": "Release series",
+      "detail_position": "outside",
+      "source_url": "https://cgit.freebsd.org/src/tree/share/misc/bsd-family-tree"
+    },
+    {
+      "id": "f21",
+      "label": "FreeBSD 2.1",
+      "date_label": "1995",
+      "group": "freebsd",
+      "detail": "Last FreeBSD release shown",
+      "detail_position": "outside",
+      "source_url": "https://cgit.freebsd.org/src/tree/share/misc/bsd-family-tree"
+    },
+    {
+      "id": "n08",
+      "label": "NetBSD 0.8",
+      "date_label": "1993",
+      "group": "netbsd",
+      "detail": "First release",
+      "detail_position": "outside",
+      "source_url": "https://cgit.freebsd.org/src/tree/share/misc/bsd-family-tree"
+    },
+    {
+      "id": "n09",
+      "label": "NetBSD 0.9",
+      "date_label": "1993",
+      "group": "netbsd",
+      "detail": "Release series",
+      "detail_position": "outside",
+      "source_url": "https://cgit.freebsd.org/src/tree/share/misc/bsd-family-tree"
+    },
+    {
+      "id": "n1",
+      "label": "NetBSD 1.0",
+      "date_label": "1994",
+      "group": "netbsd",
+      "detail": "4.4BSD Lite contribution",
+      "detail_position": "outside",
+      "source_url": "https://cgit.freebsd.org/src/tree/share/misc/bsd-family-tree"
+    },
+    {
+      "id": "n11",
+      "label": "NetBSD 1.1",
+      "date_label": "1995",
+      "group": "netbsd",
+      "detail": "Last NetBSD release shown",
+      "detail_position": "outside",
+      "source_url": "https://cgit.freebsd.org/src/tree/share/misc/bsd-family-tree"
+    },
+    {
+      "id": "osalpha",
+      "label": "BSD/386 Alpha",
+      "date_label": "1991",
+      "group": "bsdi",
+      "detail": "Commercial BSD branch",
+      "detail_position": "outside",
+      "source_url": "https://cgit.freebsd.org/src/tree/share/misc/bsd-family-tree"
+    },
+    {
+      "id": "os033",
+      "label": "BSD/386 0.3.3",
+      "date_label": "1992",
+      "group": "bsdi",
+      "detail": "Selected alpha release",
+      "detail_position": "outside",
+      "source_url": "https://cgit.freebsd.org/src/tree/share/misc/bsd-family-tree"
+    },
+    {
+      "id": "os094",
+      "label": "BSD/386 0.9.4",
+      "date_label": "1992",
+      "group": "bsdi",
+      "detail": "Selected prerelease",
+      "detail_position": "outside",
+      "source_url": "https://cgit.freebsd.org/src/tree/share/misc/bsd-family-tree"
+    },
+    {
+      "id": "os1",
+      "label": "BSD/386 1.0",
+      "date_label": "1993",
+      "group": "bsdi",
+      "detail": "Commercial release",
+      "detail_position": "outside",
+      "source_url": "https://cgit.freebsd.org/src/tree/share/misc/bsd-family-tree"
+    },
+    {
+      "id": "os11",
+      "label": "BSD/386 1.1",
+      "date_label": "1994",
+      "group": "bsdi",
+      "detail": "Commercial release",
+      "detail_position": "outside",
+      "source_url": "https://cgit.freebsd.org/src/tree/share/misc/bsd-family-tree"
+    },
+    {
+      "id": "os2",
+      "label": "BSD/OS 2.0",
+      "date_label": "1995",
+      "group": "bsdi",
+      "detail": "4.4BSD Lite contribution",
+      "detail_position": "outside",
+      "source_url": "https://cgit.freebsd.org/src/tree/share/misc/bsd-family-tree"
+    },
+    {
+      "id": "os201",
+      "label": "BSD/OS 2.0.1",
+      "date_label": "1995",
+      "group": "bsdi",
+      "detail": "Last BSD/OS release shown",
+      "detail_position": "outside",
+      "source_url": "https://cgit.freebsd.org/src/tree/share/misc/bsd-family-tree"
+    }
+  ],
+  "edges": [
+    {
+      "id": "v1-v2",
+      "source": "v1",
+      "target": "v2",
+      "kind": "branch"
+    },
+    {
+      "id": "v2-v3",
+      "source": "v2",
+      "target": "v3",
+      "kind": "branch"
+    },
+    {
+      "id": "v3-v4",
+      "source": "v3",
+      "target": "v4",
+      "kind": "branch"
+    },
+    {
+      "id": "v4-v5",
+      "source": "v4",
+      "target": "v5",
+      "kind": "branch"
+    },
+    {
+      "id": "v5-v6",
+      "source": "v5",
+      "target": "v6",
+      "kind": "branch"
+    },
+    {
+      "id": "v6-v7",
+      "source": "v6",
+      "target": "v7",
+      "kind": "branch"
+    },
+    {
+      "id": "v7-32v",
+      "source": "v7",
+      "target": "32v",
+      "kind": "branch"
+    },
+    {
+      "id": "32v-b3",
+      "source": "32v",
+      "target": "b3",
+      "kind": "branch"
+    },
+    {
+      "id": "b3-b40",
+      "source": "b3",
+      "target": "b40",
+      "kind": "branch"
+    },
+    {
+      "id": "b40-b41",
+      "source": "b40",
+      "target": "b41",
+      "kind": "branch"
+    },
+    {
+      "id": "b41-b41a",
+      "source": "b41",
+      "target": "b41a",
+      "kind": "branch"
+    },
+    {
+      "id": "b41a-b41b",
+      "source": "b41a",
+      "target": "b41b",
+      "kind": "branch"
+    },
+    {
+      "id": "b41b-b41c",
+      "source": "b41b",
+      "target": "b41c",
+      "kind": "branch"
+    },
+    {
+      "id": "b41c-b42",
+      "source": "b41c",
+      "target": "b42",
+      "kind": "branch"
+    },
+    {
+      "id": "b42-b43",
+      "source": "b42",
+      "target": "b43",
+      "kind": "branch"
+    },
+    {
+      "id": "b43-tahoe",
+      "source": "b43",
+      "target": "tahoe",
+      "kind": "branch"
+    },
+    {
+      "id": "tahoe-net1",
+      "source": "tahoe",
+      "target": "net1",
+      "kind": "branch"
+    },
+    {
+      "id": "net1-reno",
+      "source": "net1",
+      "target": "reno",
+      "kind": "branch"
+    },
+    {
+      "id": "reno-net2",
+      "source": "reno",
+      "target": "net2",
+      "kind": "branch"
+    },
+    {
+      "id": "net2-b44a",
+      "source": "net2",
+      "target": "b44a",
+      "kind": "branch"
+    },
+    {
+      "id": "b44a-b44",
+      "source": "b44a",
+      "target": "b44",
+      "kind": "branch"
+    },
+    {
+      "id": "b44-lite",
+      "source": "b44",
+      "target": "lite",
+      "kind": "branch"
+    },
+    {
+      "id": "lite-lite2",
+      "source": "lite",
+      "target": "lite2",
+      "kind": "branch"
+    },
+    {
+      "id": "v6-b1",
+      "source": "v6",
+      "target": "b1",
+      "kind": "branch"
+    },
+    {
+      "id": "b1-b2",
+      "source": "b1",
+      "target": "b2",
+      "kind": "branch"
+    },
+    {
+      "id": "b2-b3",
+      "source": "b2",
+      "target": "b3",
+      "kind": "branch"
+    },
+    {
+      "id": "net2-386a",
+      "source": "net2",
+      "target": "386a",
+      "kind": "branch"
+    },
+    {
+      "id": "386a-386b",
+      "source": "386a",
+      "target": "386b",
+      "kind": "branch"
+    },
+    {
+      "id": "386b-386c",
+      "source": "386b",
+      "target": "386c",
+      "kind": "branch"
+    },
+    {
+      "id": "386b-f1",
+      "source": "386b",
+      "target": "f1",
+      "kind": "branch"
+    },
+    {
+      "id": "f1-f11",
+      "source": "f1",
+      "target": "f11",
+      "kind": "branch"
+    },
+    {
+      "id": "f11-f115",
+      "source": "f11",
+      "target": "f115",
+      "kind": "branch"
+    },
+    {
+      "id": "f115-f1151",
+      "source": "f115",
+      "target": "f1151",
+      "kind": "branch"
+    },
+    {
+      "id": "lite-f2",
+      "source": "lite",
+      "target": "f2",
+      "kind": "branch"
+    },
+    {
+      "id": "f2-f205",
+      "source": "f2",
+      "target": "f205",
+      "kind": "branch"
+    },
+    {
+      "id": "f205-f21",
+      "source": "f205",
+      "target": "f21",
+      "kind": "branch"
+    },
+    {
+      "id": "net2-n08",
+      "source": "net2",
+      "target": "n08",
+      "kind": "branch"
+    },
+    {
+      "id": "n08-n09",
+      "source": "n08",
+      "target": "n09",
+      "kind": "branch"
+    },
+    {
+      "id": "n08-n1",
+      "source": "n08",
+      "target": "n1",
+      "kind": "branch"
+    },
+    {
+      "id": "n1-n11",
+      "source": "n1",
+      "target": "n11",
+      "kind": "branch"
+    },
+    {
+      "id": "net2-osalpha",
+      "source": "net2",
+      "target": "osalpha",
+      "kind": "branch"
+    },
+    {
+      "id": "osalpha-os033",
+      "source": "osalpha",
+      "target": "os033",
+      "kind": "branch"
+    },
+    {
+      "id": "os033-os094",
+      "source": "os033",
+      "target": "os094",
+      "kind": "branch"
+    },
+    {
+      "id": "os094-os1",
+      "source": "os094",
+      "target": "os1",
+      "kind": "branch"
+    },
+    {
+      "id": "os1-os11",
+      "source": "os1",
+      "target": "os11",
+      "kind": "branch"
+    },
+    {
+      "id": "os11-os2",
+      "source": "os11",
+      "target": "os2",
+      "kind": "branch"
+    },
+    {
+      "id": "os2-os201",
+      "source": "os2",
+      "target": "os201",
+      "kind": "branch"
+    },
+    {
+      "id": "386b-n08",
+      "source": "386b",
+      "target": "n08",
+      "kind": "influence"
+    },
+    {
+      "id": "n08-f1",
+      "source": "n08",
+      "target": "f1",
+      "kind": "influence"
+    },
+    {
+      "id": "lite-n1",
+      "source": "lite",
+      "target": "n1",
+      "kind": "influence"
+    },
+    {
+      "id": "lite-os2",
+      "source": "lite",
+      "target": "os2",
+      "kind": "influence"
+    }
+  ],
+  "source_note": "Source: FreeBSD, The UNIX system family tree. Selected Research UNIX and BSD releases through 1995; later histories omitted.",
+  "reading_note": "Schematic descent, not elapsed time. Solid: source lineage; dotted: code contribution. Year ranges retain disputed dates. No date is inferred for 4.1bBSD."
+}

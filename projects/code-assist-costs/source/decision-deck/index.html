@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Code assistance, one decision at a time</title>
+<link rel="icon" href="data:,">
+<style>__STYLE__</style>
+</head>
+<body>
+<header class="mast"><a href="#parameters" id="home">CODE ASSISTANCE / DECISION CURVES</a><span>Mathematical scenarios · 06 Sep 2026</span><button id="notes" type="button">Assumptions & sources</button></header>
+<main id="stage" aria-label="Interactive presentation">
+  <aside class="claim">
+    <p id="eyebrow">THE PARAMETERS</p>
+    <h1 id="heading">One variable at a time</h1>
+    <p id="essential">Each scene freezes its workload and changes one decision input.</p>
+    <div id="result" aria-live="polite"></div>
+    <p id="caveat">Model and quality scenarios remain conditional.</p>
+  </aside>
+  <section class="visual" aria-label="Scenario visualization">
+    <div id="plot-title"></div>
+    <div id="legend"></div>
+    <div id="chart">
+      <svg id="static-preview" viewBox="0 0 800 420" role="img" font-family="Arial, sans-serif" data-colorset="colorset1" aria-labelledby="preview-title preview-desc">
+        <title id="preview-title">Additional system tokens and monthly cost</title>
+        <desc id="preview-desc">Under the short workload, one thousand added stable system tokens cost 350 dollars per million tasks. One write and five cached reads.</desc>
+        <path d="M80 30V360H760" fill="none" stroke="#333e48"/>
+        <path d="M80 360L760 60" fill="none" stroke="#9e1b32" stroke-width="4"/>
+        <text x="100" y="45" fill="#333e48">+$350 per 1,000 additional system tokens / million tasks</text>
+        <text x="360" y="400" fill="#333e48">Additional stable tokens</text>
+      </svg>
+    </div>
+    <div id="control-row"><label for="parameter" id="parameter-label">Parameter</label><output id="parameter-value" for="parameter"></output><input id="parameter" type="range"></div>
+    <p id="frozen"></p>
+  </section>
+</main>
+<footer class="toolbar">
+  <div class="navigation"><button id="previous" type="button" aria-label="Previous scene">←</button><span id="counter"></span><button id="next" type="button" aria-label="Next scene">→</button><button id="replay" type="button">Play sweep</button></div>
+  <label class="volume">Monthly tasks <select id="volume"><option value="1000">1,000</option><option value="1000000" selected>1,000,000</option></select></label>
+  <div class="actions"><button id="export" type="button">Export chart</button><button id="fullscreen" type="button">Full screen</button></div>
+  <div id="progress"></div>
+</footer>
+<dialog id="detail"><div class="dialog-head"><h2>Scope, assumptions & evidence</h2><button id="close-notes" type="button">Close</button></div><div id="detail-body"></div></dialog>
+<noscript><p>JavaScript enables parameter controls and the presentation. The preview above shows the exact short-workload system-token calculation.</p></noscript>
+<script id="d3-runtime">__D3__</script>
+<script id="simulation-data" type="application/json">__DATA__</script>
+<script>__APP__</script>
+</body></html>

@@ -1,0 +1,3 @@
+Create an offline educational explanation of speculative decoding. The draft tokens are "A", "tiny", and "test", in that order. Accept the first two, reject the last, and resume with "works". Use the bundled speculative-decoding builder with its default colorset1, an 800 by 480 viewBox, and exact files out/contract.html and out/contract.svg. Give both artifacts accessible SVG title/description and a meaningful final state. The HTML needs Replay. Validate both outputs and inspect a rendered preview before reporting completion.
+
+The skill directory skills/d3/ is read-only. Write generated files only inside the workspace. Do not install packages, access the network, or read acceptance examples, repository documentation, or other skills.

@@ -1,0 +1,1689 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-02",
+  "skill": "hyperframes-explainer",
+  "modelPolicy": "Develop with observed gpt-6.1-sol; forward-test with observed gpt-6-luna.",
+  "attempts": 20,
+  "releaseQualified": true,
+  "cohorts": [
+    {
+      "cohort": "development-v2",
+      "case": "inlet",
+      "payloadSha256": "c169b3f921b8a2690872257477f10aa961a3b93f06b6d774a8f385f7df03f4d9",
+      "runs": [
+        "20261002-hyperframes-composer-inlet-luna6-01",
+        "20261002-hyperframes-composer-inlet-luna6-02",
+        "20261002-hyperframes-composer-inlet-luna6-03"
+      ],
+      "strictPasses": 3,
+      "independentPasses": 2,
+      "manualPasses": 1,
+      "jointPasses": 1,
+      "thresholdPassed": false
+    },
+    {
+      "cohort": "development-v2",
+      "case": "reference",
+      "payloadSha256": "c169b3f921b8a2690872257477f10aa961a3b93f06b6d774a8f385f7df03f4d9",
+      "runs": [
+        "20261002-hyperframes-composer-reference-luna6-01",
+        "20261002-hyperframes-composer-reference-luna6-02",
+        "20261002-hyperframes-composer-reference-luna6-03"
+      ],
+      "strictPasses": 2,
+      "independentPasses": 3,
+      "manualPasses": 3,
+      "jointPasses": 2,
+      "thresholdPassed": true
+    },
+    {
+      "cohort": "release-v3",
+      "case": "boundary",
+      "payloadSha256": "5eb61d48fe048614c924de2559ca43dbe17b70e0cb12d899462a8f406afb3a9a",
+      "runs": [
+        "20261002-hyperframes-composer-v3-boundary-luna6-01"
+      ],
+      "strictPasses": 1,
+      "independentPasses": 1,
+      "manualPasses": 1,
+      "jointPasses": 1,
+      "thresholdPassed": true
+    },
+    {
+      "cohort": "release-v3",
+      "case": "contract",
+      "payloadSha256": "5eb61d48fe048614c924de2559ca43dbe17b70e0cb12d899462a8f406afb3a9a",
+      "runs": [
+        "20261002-hyperframes-composer-v3-contract-luna6-01"
+      ],
+      "strictPasses": 1,
+      "independentPasses": 1,
+      "manualPasses": 1,
+      "jointPasses": 1,
+      "thresholdPassed": true
+    },
+    {
+      "cohort": "release-v3",
+      "case": "inlet",
+      "payloadSha256": "5eb61d48fe048614c924de2559ca43dbe17b70e0cb12d899462a8f406afb3a9a",
+      "runs": [
+        "20261002-hyperframes-composer-v3-inlet-luna6-01",
+        "20261002-hyperframes-composer-v3-inlet-luna6-02",
+        "20261002-hyperframes-composer-v3-inlet-luna6-03"
+      ],
+      "strictPasses": 2,
+      "independentPasses": 3,
+      "manualPasses": 3,
+      "jointPasses": 2,
+      "thresholdPassed": true
+    },
+    {
+      "cohort": "release-v3",
+      "case": "reference",
+      "payloadSha256": "5eb61d48fe048614c924de2559ca43dbe17b70e0cb12d899462a8f406afb3a9a",
+      "runs": [
+        "20261002-hyperframes-composer-v3-reference-luna6-01",
+        "20261002-hyperframes-composer-v3-reference-luna6-02",
+        "20261002-hyperframes-composer-v3-reference-luna6-03"
+      ],
+      "strictPasses": 2,
+      "independentPasses": 3,
+      "manualPasses": 3,
+      "jointPasses": 2,
+      "thresholdPassed": true
+    },
+    {
+      "cohort": "release-v3",
+      "case": "vehicle",
+      "payloadSha256": "5eb61d48fe048614c924de2559ca43dbe17b70e0cb12d899462a8f406afb3a9a",
+      "runs": [
+        "20261002-hyperframes-composer-v3-vehicle-luna6-01",
+        "20261002-hyperframes-composer-v3-vehicle-luna6-02",
+        "20261002-hyperframes-composer-v3-vehicle-luna6-03"
+      ],
+      "strictPasses": 3,
+      "independentPasses": 3,
+      "manualPasses": 3,
+      "jointPasses": 3,
+      "thresholdPassed": true
+    },
+    {
+      "cohort": "development-v2",
+      "case": "vehicle",
+      "payloadSha256": "c169b3f921b8a2690872257477f10aa961a3b93f06b6d774a8f385f7df03f4d9",
+      "runs": [
+        "20261002-hyperframes-composer-vehicle-luna6-01",
+        "20261002-hyperframes-composer-vehicle-luna6-02",
+        "20261002-hyperframes-composer-vehicle-luna6-03"
+      ],
+      "strictPasses": 2,
+      "independentPasses": 3,
+      "manualPasses": 3,
+      "jointPasses": 2,
+      "thresholdPassed": true
+    }
+  ],
+  "runs": [
+    {
+      "id": "20261002-hyperframes-composer-inlet-luna6-01",
+      "cohort": "development-v2",
+      "case": "inlet",
+      "payload": {
+        "name": "hyperframes-explainer",
+        "profile": "runtime",
+        "fileCount": 30,
+        "payloadSha256": "c169b3f921b8a2690872257477f10aa961a3b93f06b6d774a8f385f7df03f4d9"
+      },
+      "requestedModel": "openai-codex/gpt-6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-6-luna"
+        }
+      ],
+      "thinking": "high",
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-02T18:50:16.186515+00:00",
+        "finishedAtUtc": "2026-10-02T18:54:07.466049+00:00",
+        "durationSeconds": 231.281,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": true,
+          "skillIntegrity": true
+        }
+      },
+      "failureClassification": "pass",
+      "toolFindings": [],
+      "readPaths": [
+        "../prompt.md",
+        "deliverables/asset-plan.json",
+        "deliverables/assets/mechanism.svg",
+        "deliverables/audit.json",
+        "deliverables/build.json",
+        "deliverables/contact.jpg",
+        "deliverables/import.json",
+        "deliverables/init.json",
+        "deliverables/media.json",
+        "deliverables/preview.png",
+        "deliverables/project/manifest.json",
+        "deliverables/scaffold.json",
+        "deliverables/scene.json",
+        "skills/hyperframes-explainer/SKILL.md",
+        "skills/hyperframes-explainer/assets/palettes/colorsets.json",
+        "skills/hyperframes-explainer/references/asset-contract.md",
+        "skills/hyperframes-explainer/references/asset-direction.md",
+        "skills/hyperframes-explainer/references/calibrated-mechanisms.md",
+        "skills/hyperframes-explainer/references/explanation-design.md",
+        "skills/hyperframes-explainer/references/hyperframes-runtime.md",
+        "skills/hyperframes-explainer/references/palette-policy.md",
+        "skills/hyperframes-explainer/references/scene-contract.md",
+        "skills/hyperframes-explainer/references/validation.md"
+      ],
+      "independent": {
+        "ok": true,
+        "findings": []
+      },
+      "manual": {
+        "ok": true,
+        "reviewedBy": "Root Codex, observed gpt-6.1-sol",
+        "date": "2026-10-02",
+        "method": "Direct inspection of original full-size preview and decoded MP4 contact sheet, plus independent consecutive-frame geometry.",
+        "notes": [
+          "The decoded movie shows a recognizable connected handwheel valve, reservoir cutaway and correctly calibrated capacity ruler.",
+          "The actuator and fill respond to the shared rate and accumulated volume; the volume history follows the same ramp.",
+          "Direct labels are readable and sparse. This is a simpler custom fallback, not the Full HD Sol-quality composition."
+        ],
+        "parentModifiedAgentDeliverables": false
+      },
+      "jointPass": true,
+      "evidenceDirectory": "evaluations/runs/20261002-hyperframes-composer-inlet-luna6-01"
+    },
+    {
+      "id": "20261002-hyperframes-composer-inlet-luna6-02",
+      "cohort": "development-v2",
+      "case": "inlet",
+      "payload": {
+        "name": "hyperframes-explainer",
+        "profile": "runtime",
+        "fileCount": 30,
+        "payloadSha256": "c169b3f921b8a2690872257477f10aa961a3b93f06b6d774a8f385f7df03f4d9"
+      },
+      "requestedModel": "openai-codex/gpt-6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-6-luna"
+        }
+      ],
+      "thinking": "high",
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-02T18:50:16.184983+00:00",
+        "finishedAtUtc": "2026-10-02T18:55:14.200137+00:00",
+        "durationSeconds": 298.017,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": true,
+          "skillIntegrity": true
+        }
+      },
+      "failureClassification": "visual-semantic",
+      "toolFindings": [],
+      "readPaths": [
+        "../prompt.md",
+        "deliverables/assembled.json",
+        "deliverables/asset-plan.json",
+        "deliverables/assets/mechanism.svg",
+        "deliverables/audit.json",
+        "deliverables/build.json",
+        "deliverables/contact.jpg",
+        "deliverables/import.json",
+        "deliverables/init.json",
+        "deliverables/media.json",
+        "deliverables/preview.png",
+        "deliverables/project/manifest.json",
+        "deliverables/scaffold.json",
+        "deliverables/scene.json",
+        "skills/hyperframes-explainer/SKILL.md",
+        "skills/hyperframes-explainer/references/asset-contract.md",
+        "skills/hyperframes-explainer/references/asset-direction.md",
+        "skills/hyperframes-explainer/references/explanation-design.md",
+        "skills/hyperframes-explainer/references/hyperframes-runtime.md",
+        "skills/hyperframes-explainer/references/palette-policy.md",
+        "skills/hyperframes-explainer/references/scene-contract.md",
+        "skills/hyperframes-explainer/references/validation.md"
+      ],
+      "independent": {
+        "ok": true,
+        "findings": []
+      },
+      "manual": {
+        "ok": false,
+        "reviewedBy": "Root Codex, observed gpt-6.1-sol",
+        "date": "2026-10-02",
+        "method": "Direct inspection of original full-size preview and decoded MP4 contact sheet, plus independent consecutive-frame geometry.",
+        "notes": [
+          "The original full-size preview and decoded event contact sheet show the inlet-rate value overlapping the handwheel at several control states.",
+          "The reservoir, ruler and history are recognizable, but the value/actuator collision fails the legibility requirement.",
+          "The artifact was reviewed as authored; no evaluator edit repaired the scene."
+        ],
+        "parentModifiedAgentDeliverables": false
+      },
+      "jointPass": false,
+      "evidenceDirectory": "evaluations/runs/20261002-hyperframes-composer-inlet-luna6-02"
+    },
+    {
+      "id": "20261002-hyperframes-composer-inlet-luna6-03",
+      "cohort": "development-v2",
+      "case": "inlet",
+      "payload": {
+        "name": "hyperframes-explainer",
+        "profile": "runtime",
+        "fileCount": 30,
+        "payloadSha256": "c169b3f921b8a2690872257477f10aa961a3b93f06b6d774a8f385f7df03f4d9"
+      },
+      "requestedModel": "openai-codex/gpt-6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-6-luna"
+        }
+      ],
+      "thinking": "high",
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-02T18:50:16.438021+00:00",
+        "finishedAtUtc": "2026-10-02T18:52:24.684685+00:00",
+        "durationSeconds": 128.248,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": true,
+          "skillIntegrity": true
+        }
+      },
+      "failureClassification": "visual-semantic",
+      "toolFindings": [],
+      "readPaths": [
+        "../prompt.md",
+        "deliverables/asset-plan.json",
+        "deliverables/assets/mechanism.svg",
+        "deliverables/audit.json",
+        "deliverables/composition.json",
+        "deliverables/contact.jpg",
+        "deliverables/import.json",
+        "deliverables/media.json",
+        "deliverables/preview.png",
+        "deliverables/project/manifest.json",
+        "deliverables/scene.json",
+        "skills/hyperframes-explainer/SKILL.md",
+        "skills/hyperframes-explainer/references/asset-contract.md",
+        "skills/hyperframes-explainer/references/asset-direction.md",
+        "skills/hyperframes-explainer/references/calibrated-mechanisms.md",
+        "skills/hyperframes-explainer/references/explanation-design.md",
+        "skills/hyperframes-explainer/references/palette-policy.md",
+        "skills/hyperframes-explainer/references/scene-contract.md",
+        "skills/hyperframes-explainer/references/validation.md"
+      ],
+      "independent": {
+        "ok": false,
+        "findings": [
+          "Repeated transport markers alias or lose direction at the requested frame rate."
+        ]
+      },
+      "manual": {
+        "ok": false,
+        "reviewedBy": "Root Codex, observed gpt-6.1-sol",
+        "date": "2026-10-02",
+        "method": "Direct inspection of original full-size preview and decoded MP4 contact sheet, plus independent consecutive-frame geometry.",
+        "notes": [
+          "The original still and decoded contact sheet show the richer recognizable valve, reservoir, ruler and both histories.",
+          "At the requested 12 fps and maximum input, repeated tracers advance 16.5624 px per frame with only 29.4444 px spacing, above the half-spacing directional limit.",
+          "This motion ambiguity fails semantic review despite correct accumulated values and otherwise readable composition."
+        ],
+        "parentModifiedAgentDeliverables": false
+      },
+      "jointPass": false,
+      "evidenceDirectory": "evaluations/runs/20261002-hyperframes-composer-inlet-luna6-03"
+    },
+    {
+      "id": "20261002-hyperframes-composer-reference-luna6-01",
+      "cohort": "development-v2",
+      "case": "reference",
+      "payload": {
+        "name": "hyperframes-explainer",
+        "profile": "runtime",
+        "fileCount": 30,
+        "payloadSha256": "c169b3f921b8a2690872257477f10aa961a3b93f06b6d774a8f385f7df03f4d9"
+      },
+      "requestedModel": "openai-codex/gpt-6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-6-luna"
+        }
+      ],
+      "thinking": "high",
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-02T18:39:03.458446+00:00",
+        "finishedAtUtc": "2026-10-02T18:41:42.195313+00:00",
+        "durationSeconds": 158.738,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": true,
+          "skillIntegrity": true
+        }
+      },
+      "failureClassification": "pass",
+      "toolFindings": [],
+      "readPaths": [
+        "../prompt.md",
+        "build.json",
+        "composition.json",
+        "deliverables/asset-plan.json",
+        "deliverables/audit.json",
+        "deliverables/contact.jpg",
+        "deliverables/import.json",
+        "deliverables/media.json",
+        "deliverables/preview.png",
+        "deliverables/project/manifest.json",
+        "deliverables/project/preview.html",
+        "deliverables/scene.json",
+        "model.json",
+        "skills/hyperframes-explainer/SKILL.md",
+        "skills/hyperframes-explainer/references/asset-contract.md",
+        "skills/hyperframes-explainer/references/asset-direction.md",
+        "skills/hyperframes-explainer/references/calibrated-mechanisms.md",
+        "skills/hyperframes-explainer/references/explanation-design.md",
+        "skills/hyperframes-explainer/references/hyperframes-runtime.md",
+        "skills/hyperframes-explainer/references/palette-policy.md",
+        "skills/hyperframes-explainer/references/scene-contract.md",
+        "skills/hyperframes-explainer/references/validation.md"
+      ],
+      "independent": {
+        "ok": true,
+        "findings": []
+      },
+      "manual": {
+        "ok": true,
+        "date": "2026-10-02",
+        "reviewer": "gpt-6.1-sol",
+        "method": "Direct inspection of the contact sheet from the actual MP4, compared with the Sol reference and independent numerical/browser/media checks.",
+        "notes": [
+          "Recognizable valve housing, asymmetric actuator, changing gate, connected inlet and rate-dependent transport tracers.",
+          "The calibrated cutaway and actual graduated 0/20/40/60/80 L ruler agree with volume and the fixed-scale histories throughout both ramps and the final hold.",
+          "Same useful mechanical detail, sparse direct units, neutral structure and colorset1 identity as the Sol reference at Full HD and 30 fps."
+        ],
+        "authorship": "The isolated gpt-6-luna run authored and rendered the deliverables without parent edits or access to Sol artifacts."
+      },
+      "jointPass": true,
+      "evidenceDirectory": "evaluations/runs/20261002-hyperframes-composer-reference-luna6-01"
+    },
+    {
+      "id": "20261002-hyperframes-composer-reference-luna6-02",
+      "cohort": "development-v2",
+      "case": "reference",
+      "payload": {
+        "name": "hyperframes-explainer",
+        "profile": "runtime",
+        "fileCount": 30,
+        "payloadSha256": "c169b3f921b8a2690872257477f10aa961a3b93f06b6d774a8f385f7df03f4d9"
+      },
+      "requestedModel": "openai-codex/gpt-6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-6-luna"
+        }
+      ],
+      "thinking": "high",
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-02T18:39:03.458305+00:00",
+        "finishedAtUtc": "2026-10-02T18:41:54.819222+00:00",
+        "durationSeconds": 171.362,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": true,
+          "skillIntegrity": true
+        }
+      },
+      "failureClassification": "pass",
+      "toolFindings": [],
+      "readPaths": [
+        "../prompt.md",
+        "deliverables/audit.json",
+        "deliverables/composition.json",
+        "deliverables/contact.jpg",
+        "deliverables/import.json",
+        "deliverables/init.json",
+        "deliverables/media.json",
+        "deliverables/model.json",
+        "deliverables/preview.png",
+        "deliverables/project/manifest.json",
+        "deliverables/project/preview.html",
+        "skills/hyperframes-explainer/SKILL.md",
+        "skills/hyperframes-explainer/references/asset-contract.md",
+        "skills/hyperframes-explainer/references/asset-direction.md",
+        "skills/hyperframes-explainer/references/calibrated-mechanisms.md",
+        "skills/hyperframes-explainer/references/explanation-design.md",
+        "skills/hyperframes-explainer/references/hyperframes-runtime.md",
+        "skills/hyperframes-explainer/references/palette-policy.md",
+        "skills/hyperframes-explainer/references/scene-contract.md",
+        "skills/hyperframes-explainer/references/validation.md"
+      ],
+      "independent": {
+        "ok": true,
+        "findings": []
+      },
+      "manual": {
+        "ok": true,
+        "date": "2026-10-02",
+        "reviewer": "gpt-6.1-sol",
+        "method": "Direct inspection of the contact sheet from the actual MP4, compared with the Sol reference and independent numerical/browser/media checks.",
+        "notes": [
+          "Recognizable valve housing, asymmetric actuator, changing gate, connected inlet and rate-dependent transport tracers.",
+          "The calibrated cutaway and actual graduated 0/20/40/60/80 L ruler agree with volume and the fixed-scale histories throughout both ramps and the final hold.",
+          "Same useful mechanical detail, sparse direct units, neutral structure and colorset1 identity as the Sol reference at Full HD and 30 fps."
+        ],
+        "authorship": "The isolated gpt-6-luna run authored and rendered the deliverables without parent edits or access to Sol artifacts."
+      },
+      "jointPass": true,
+      "evidenceDirectory": "evaluations/runs/20261002-hyperframes-composer-reference-luna6-02"
+    },
+    {
+      "id": "20261002-hyperframes-composer-reference-luna6-03",
+      "cohort": "development-v2",
+      "case": "reference",
+      "payload": {
+        "name": "hyperframes-explainer",
+        "profile": "runtime",
+        "fileCount": 30,
+        "payloadSha256": "c169b3f921b8a2690872257477f10aa961a3b93f06b6d774a8f385f7df03f4d9"
+      },
+      "requestedModel": "openai-codex/gpt-6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-6-luna"
+        }
+      ],
+      "thinking": "high",
+      "strict": {
+        "passed": false,
+        "returnCode": 4,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-02T18:39:03.783665+00:00",
+        "finishedAtUtc": "2026-10-02T18:41:54.627297+00:00",
+        "durationSeconds": 170.845,
+        "gates": {
+          "artifacts": true,
+          "events": false,
+          "jsonFields": true,
+          "skillIntegrity": true
+        }
+      },
+      "failureClassification": "agent-workflow",
+      "toolFindings": [
+        {
+          "code": "tool-error",
+          "line": 760,
+          "tool": "bash"
+        }
+      ],
+      "readPaths": [
+        "../prompt.md",
+        "deliverables/asset-plan.json",
+        "deliverables/audit.json",
+        "deliverables/composition.json",
+        "deliverables/contact.jpg",
+        "deliverables/import.json",
+        "deliverables/init.json",
+        "deliverables/media.json",
+        "deliverables/model.json",
+        "deliverables/preview.png",
+        "deliverables/project/manifest.json",
+        "deliverables/project/preview.html",
+        "skills/hyperframes-explainer/SKILL.md",
+        "skills/hyperframes-explainer/references/asset-contract.md",
+        "skills/hyperframes-explainer/references/asset-direction.md",
+        "skills/hyperframes-explainer/references/calibrated-mechanisms.md",
+        "skills/hyperframes-explainer/references/explanation-design.md",
+        "skills/hyperframes-explainer/references/hyperframes-runtime.md",
+        "skills/hyperframes-explainer/references/palette-policy.md",
+        "skills/hyperframes-explainer/references/scene-contract.md",
+        "skills/hyperframes-explainer/references/validation.md"
+      ],
+      "independent": {
+        "ok": true,
+        "findings": []
+      },
+      "manual": {
+        "ok": true,
+        "date": "2026-10-02",
+        "reviewer": "gpt-6.1-sol",
+        "method": "Direct inspection of the contact sheet from the actual MP4, compared with the Sol reference and independent numerical/browser/media checks.",
+        "notes": [
+          "Recognizable valve housing, asymmetric actuator, changing gate, connected inlet and rate-dependent transport tracers.",
+          "The calibrated cutaway and actual graduated 0/20/40/60/80 L ruler agree with volume and the fixed-scale histories throughout both ramps and the final hold.",
+          "Same useful mechanical detail, sparse direct units, neutral structure and colorset1 identity as the Sol reference at Full HD and 30 fps."
+        ],
+        "authorship": "The isolated gpt-6-luna run authored and rendered the deliverables without parent edits or access to Sol artifacts."
+      },
+      "jointPass": false,
+      "evidenceDirectory": "evaluations/runs/20261002-hyperframes-composer-reference-luna6-03"
+    },
+    {
+      "id": "20261002-hyperframes-composer-v3-boundary-luna6-01",
+      "cohort": "release-v3",
+      "case": "boundary",
+      "payload": {
+        "name": "hyperframes-explainer",
+        "profile": "runtime",
+        "fileCount": 30,
+        "payloadSha256": "5eb61d48fe048614c924de2559ca43dbe17b70e0cb12d899462a8f406afb3a9a"
+      },
+      "requestedModel": "openai-codex/gpt-6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-6-luna"
+        }
+      ],
+      "thinking": "high",
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-02T19:06:05.193180+00:00",
+        "finishedAtUtc": "2026-10-02T19:08:52.004382+00:00",
+        "durationSeconds": 166.812,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": true,
+          "skillIntegrity": true
+        }
+      },
+      "failureClassification": "pass",
+      "toolFindings": [],
+      "readPaths": [
+        "../prompt.md",
+        "deliverables/model.json",
+        "deliverables/rejected.json",
+        "skills/hyperframes-explainer/SKILL.md",
+        "skills/hyperframes-explainer/references/calibrated-mechanisms.md"
+      ],
+      "independent": {
+        "ok": true,
+        "findings": []
+      },
+      "manual": {
+        "ok": true,
+        "reviewedBy": "Root Codex, observed gpt-6.1-sol",
+        "date": "2026-10-02",
+        "method": "Direct inspection of exact command trace, numerical JSON, SVG/plan for smoke and absence/rejection evidence for boundary.",
+        "notes": [
+          "The report correctly refuses a 20 L capacity against a legal 40 L maximum; the nominal imposed events also exceed 20 L.",
+          "The original source domain, capacity request, events and integral were preserved. No refused scene, mechanism SVG, plan or movie was created.",
+          "The refusal is an expected authoring outcome and exits normally without a tool error."
+        ],
+        "parentModifiedAgentDeliverables": false
+      },
+      "jointPass": true,
+      "evidenceDirectory": "evaluations/runs/20261002-hyperframes-composer-v3-boundary-luna6-01"
+    },
+    {
+      "id": "20261002-hyperframes-composer-v3-contract-luna6-01",
+      "cohort": "release-v3",
+      "case": "contract",
+      "payload": {
+        "name": "hyperframes-explainer",
+        "profile": "runtime",
+        "fileCount": 30,
+        "payloadSha256": "5eb61d48fe048614c924de2559ca43dbe17b70e0cb12d899462a8f406afb3a9a"
+      },
+      "requestedModel": "openai-codex/gpt-6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-6-luna"
+        }
+      ],
+      "thinking": "high",
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-02T19:06:04.848817+00:00",
+        "finishedAtUtc": "2026-10-02T19:07:07.684729+00:00",
+        "durationSeconds": 62.836,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": true,
+          "skillIntegrity": true
+        }
+      },
+      "failureClassification": "pass",
+      "toolFindings": [],
+      "readPaths": [
+        "../prompt.md",
+        "deliverables/composition.json",
+        "deliverables/import.json",
+        "deliverables/init.json",
+        "skills/hyperframes-explainer/SKILL.md",
+        "skills/hyperframes-explainer/references/asset-contract.md",
+        "skills/hyperframes-explainer/references/asset-direction.md",
+        "skills/hyperframes-explainer/references/calibrated-mechanisms.md",
+        "skills/hyperframes-explainer/references/explanation-design.md",
+        "skills/hyperframes-explainer/references/palette-policy.md",
+        "skills/hyperframes-explainer/references/scene-contract.md"
+      ],
+      "independent": {
+        "ok": true,
+        "findings": []
+      },
+      "manual": {
+        "ok": true,
+        "reviewedBy": "Root Codex, observed gpt-6.1-sol",
+        "date": "2026-10-02",
+        "method": "Direct inspection of exact command trace, numerical JSON, SVG/plan for smoke and absence/rejection evidence for boundary.",
+        "notes": [
+          "The exact model, composed scene and imported scene preserve all requested numerical facts at 1280 by 720.",
+          "The actual SVG has a graduated 24 L ruler, consistent native viewBox, recognizable valve/reservoir and three complementary views.",
+          "The trace executes the three supplied commands separately, identifies the bundled producer and leaves the copied payload unchanged."
+        ],
+        "parentModifiedAgentDeliverables": false
+      },
+      "jointPass": true,
+      "evidenceDirectory": "evaluations/runs/20261002-hyperframes-composer-v3-contract-luna6-01"
+    },
+    {
+      "id": "20261002-hyperframes-composer-v3-inlet-luna6-01",
+      "cohort": "release-v3",
+      "case": "inlet",
+      "payload": {
+        "name": "hyperframes-explainer",
+        "profile": "runtime",
+        "fileCount": 30,
+        "payloadSha256": "5eb61d48fe048614c924de2559ca43dbe17b70e0cb12d899462a8f406afb3a9a"
+      },
+      "requestedModel": "openai-codex/gpt-6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-6-luna"
+        }
+      ],
+      "thinking": "high",
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-02T19:10:55.825448+00:00",
+        "finishedAtUtc": "2026-10-02T19:13:17.208137+00:00",
+        "durationSeconds": 141.384,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": true,
+          "skillIntegrity": true
+        }
+      },
+      "failureClassification": "pass",
+      "toolFindings": [],
+      "readPaths": [
+        "../prompt.md",
+        "deliverables/asset-plan.json",
+        "deliverables/assets/mechanism.svg",
+        "deliverables/audit.json",
+        "deliverables/build.json",
+        "deliverables/composition.json",
+        "deliverables/contact.jpg",
+        "deliverables/import.json",
+        "deliverables/init.json",
+        "deliverables/media.json",
+        "deliverables/model.json",
+        "deliverables/preview.png",
+        "deliverables/project/manifest.json",
+        "deliverables/scene.json",
+        "skills/hyperframes-explainer/SKILL.md",
+        "skills/hyperframes-explainer/references/asset-contract.md",
+        "skills/hyperframes-explainer/references/asset-direction.md",
+        "skills/hyperframes-explainer/references/calibrated-mechanisms.md",
+        "skills/hyperframes-explainer/references/explanation-design.md",
+        "skills/hyperframes-explainer/references/hyperframes-runtime.md",
+        "skills/hyperframes-explainer/references/palette-policy.md",
+        "skills/hyperframes-explainer/references/scene-contract.md",
+        "skills/hyperframes-explainer/references/validation.md"
+      ],
+      "independent": {
+        "ok": true,
+        "findings": []
+      },
+      "manual": {
+        "ok": true,
+        "reviewedBy": "Root Codex, observed gpt-6.1-sol",
+        "date": "2026-10-02",
+        "method": "Direct inspection of original full-size preview and decoded MP4 contact sheet, plus independent state/control/geometry/media checks.",
+        "notes": [
+          "The original decoded movie has recognizable valve housing, actuator, visible gate, connected transport, reservoir and calibrated 40 L ruler.",
+          "Flow and accumulated volume histories agree with the shared event and final 31 L analytic state. The final encoded frame precedes t=8 by 1/12 s, as expected.",
+          "Consecutive maximum-input frames advance tracers 7.3611 px against 29.4444 px spacing, below the half-spacing directional limit. Direct labels remain readable."
+        ],
+        "parentModifiedAgentDeliverables": false
+      },
+      "jointPass": true,
+      "evidenceDirectory": "evaluations/runs/20261002-hyperframes-composer-v3-inlet-luna6-01"
+    },
+    {
+      "id": "20261002-hyperframes-composer-v3-inlet-luna6-02",
+      "cohort": "release-v3",
+      "case": "inlet",
+      "payload": {
+        "name": "hyperframes-explainer",
+        "profile": "runtime",
+        "fileCount": 30,
+        "payloadSha256": "5eb61d48fe048614c924de2559ca43dbe17b70e0cb12d899462a8f406afb3a9a"
+      },
+      "requestedModel": "openai-codex/gpt-6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-6-luna"
+        }
+      ],
+      "thinking": "high",
+      "strict": {
+        "passed": false,
+        "returnCode": 4,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-02T19:10:56.010922+00:00",
+        "finishedAtUtc": "2026-10-02T19:16:23.846140+00:00",
+        "durationSeconds": 327.837,
+        "gates": {
+          "artifacts": true,
+          "events": false,
+          "jsonFields": true,
+          "skillIntegrity": true
+        }
+      },
+      "failureClassification": "agent-workflow",
+      "toolFindings": [
+        {
+          "code": "tool-error",
+          "line": 2606,
+          "tool": "read"
+        }
+      ],
+      "readPaths": [
+        "../prompt.md",
+        "deliverables/assembled.json",
+        "deliverables/asset-plan.json",
+        "deliverables/assets/mechanism.svg",
+        "deliverables/audit.json",
+        "deliverables/build.json",
+        "deliverables/contact.jpg",
+        "deliverables/import.json",
+        "deliverables/media.json",
+        "deliverables/preview.png",
+        "deliverables/project/manifest.json",
+        "deliverables/scaffold.json",
+        "deliverables/scene.json",
+        "skills/hyperframes-explainer/SKILL.md",
+        "skills/hyperframes-explainer/assets/palettes/colorsets.json",
+        "skills/hyperframes-explainer/references/asset-contract.md",
+        "skills/hyperframes-explainer/references/asset-direction.md",
+        "skills/hyperframes-explainer/references/calibrated-mechanisms.md",
+        "skills/hyperframes-explainer/references/explanation-design.md",
+        "skills/hyperframes-explainer/references/palette-policy.md",
+        "skills/hyperframes-explainer/references/scene-contract.md",
+        "skills/hyperframes-explainer/references/validation.md",
+        "skills/hyperframes-explainer/scripts/explainer.py",
+        "skills/hyperframes-explainer/scripts/import_assets.py"
+      ],
+      "independent": {
+        "ok": true,
+        "findings": []
+      },
+      "manual": {
+        "ok": true,
+        "reviewedBy": "Root Codex, observed gpt-6.1-sol",
+        "date": "2026-10-02",
+        "method": "Direct inspection of original full-size preview and decoded MP4 contact sheet, plus independent state/control/geometry/media checks.",
+        "notes": [
+          "The custom fallback shows a recognizable handwheel valve and bent connected inlet feeding a reservoir, with sparse legible direct labels.",
+          "Actual fill uses the same zero/capacity edges as the graduated ruler; the accumulated-volume history and actuator respond to the shared source.",
+          "This permitted custom fallback is a simpler schematic than the Full HD quality case and includes no transport tracers. Its own smaller task requirements are satisfied."
+        ],
+        "parentModifiedAgentDeliverables": false
+      },
+      "jointPass": false,
+      "evidenceDirectory": "evaluations/runs/20261002-hyperframes-composer-v3-inlet-luna6-02"
+    },
+    {
+      "id": "20261002-hyperframes-composer-v3-inlet-luna6-03",
+      "cohort": "release-v3",
+      "case": "inlet",
+      "payload": {
+        "name": "hyperframes-explainer",
+        "profile": "runtime",
+        "fileCount": 30,
+        "payloadSha256": "5eb61d48fe048614c924de2559ca43dbe17b70e0cb12d899462a8f406afb3a9a"
+      },
+      "requestedModel": "openai-codex/gpt-6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-6-luna"
+        }
+      ],
+      "thinking": "high",
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-02T19:10:56.320676+00:00",
+        "finishedAtUtc": "2026-10-02T19:15:39.578652+00:00",
+        "durationSeconds": 283.26,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": true,
+          "skillIntegrity": true
+        }
+      },
+      "failureClassification": "pass",
+      "toolFindings": [],
+      "readPaths": [
+        "../prompt.md",
+        "deliverables/asset-plan.json",
+        "deliverables/assets/mechanism.svg",
+        "deliverables/audit.json",
+        "deliverables/build.json",
+        "deliverables/contact.jpg",
+        "deliverables/import.json",
+        "deliverables/media.json",
+        "deliverables/preview.png",
+        "deliverables/project/manifest.json",
+        "deliverables/scaffold.json",
+        "deliverables/scene.json",
+        "skills/hyperframes-explainer/SKILL.md",
+        "skills/hyperframes-explainer/references/asset-contract.md",
+        "skills/hyperframes-explainer/references/asset-direction.md",
+        "skills/hyperframes-explainer/references/calibrated-mechanisms.md",
+        "skills/hyperframes-explainer/references/explanation-design.md",
+        "skills/hyperframes-explainer/references/hyperframes-runtime.md",
+        "skills/hyperframes-explainer/references/palette-policy.md",
+        "skills/hyperframes-explainer/references/scene-contract.md",
+        "skills/hyperframes-explainer/references/validation.md"
+      ],
+      "independent": {
+        "ok": true,
+        "findings": []
+      },
+      "manual": {
+        "ok": true,
+        "reviewedBy": "Root Codex, observed gpt-6.1-sol",
+        "date": "2026-10-02",
+        "method": "Direct inspection of original full-size preview and decoded MP4 contact sheet, plus independent state/control/geometry/media checks.",
+        "notes": [
+          "The custom fallback shows the valve actuator, connected pipe, reservoir cutaway and actual graduated 40 L ruler.",
+          "The level, exact readout and stored-volume history follow the shared integral; the rate change moves the actuator and does not clip its view.",
+          "This permitted custom fallback repeats some direct values and is simpler than the Full HD quality case. Labels remain readable and sparse enough for its stated smaller task; it contains no headline/cards or transport tracers."
+        ],
+        "parentModifiedAgentDeliverables": false
+      },
+      "jointPass": true,
+      "evidenceDirectory": "evaluations/runs/20261002-hyperframes-composer-v3-inlet-luna6-03"
+    },
+    {
+      "id": "20261002-hyperframes-composer-v3-reference-luna6-01",
+      "cohort": "release-v3",
+      "case": "reference",
+      "payload": {
+        "name": "hyperframes-explainer",
+        "profile": "runtime",
+        "fileCount": 30,
+        "payloadSha256": "5eb61d48fe048614c924de2559ca43dbe17b70e0cb12d899462a8f406afb3a9a"
+      },
+      "requestedModel": "openai-codex/gpt-6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-6-luna"
+        }
+      ],
+      "thinking": "high",
+      "strict": {
+        "passed": false,
+        "returnCode": 4,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-02T19:04:49.818668+00:00",
+        "finishedAtUtc": "2026-10-02T19:07:51.339623+00:00",
+        "durationSeconds": 181.522,
+        "gates": {
+          "artifacts": true,
+          "events": false,
+          "jsonFields": true,
+          "skillIntegrity": true
+        }
+      },
+      "failureClassification": "agent-workflow",
+      "toolFindings": [
+        {
+          "code": "tool-error",
+          "line": 1162,
+          "tool": "bash"
+        }
+      ],
+      "readPaths": [
+        "../prompt.md",
+        "deliverables/asset-plan.json",
+        "deliverables/assets/mechanism.svg",
+        "deliverables/audit.json",
+        "deliverables/build.json",
+        "deliverables/composition.json",
+        "deliverables/contact.jpg",
+        "deliverables/import.json",
+        "deliverables/media.json",
+        "deliverables/model.json",
+        "deliverables/preview.png",
+        "deliverables/project/manifest.json",
+        "deliverables/project/preview.html",
+        "deliverables/scene.json",
+        "skills/hyperframes-explainer/SKILL.md",
+        "skills/hyperframes-explainer/references/asset-contract.md",
+        "skills/hyperframes-explainer/references/asset-direction.md",
+        "skills/hyperframes-explainer/references/calibrated-mechanisms.md",
+        "skills/hyperframes-explainer/references/explanation-design.md",
+        "skills/hyperframes-explainer/references/hyperframes-runtime.md",
+        "skills/hyperframes-explainer/references/palette-policy.md",
+        "skills/hyperframes-explainer/references/scene-contract.md",
+        "skills/hyperframes-explainer/references/validation.md"
+      ],
+      "independent": {
+        "ok": true,
+        "findings": []
+      },
+      "manual": {
+        "ok": true,
+        "reviewedBy": "Root Codex, observed gpt-6.1-sol",
+        "date": "2026-10-02",
+        "method": "Direct inspection of original decoded MP4 event contact sheet and independent browser geometry/media report.",
+        "notes": [
+          "The recognizable housing, actuator, visible gate, connected pipe and graduated 80 L reservoir communicate the causal chain without a headline.",
+          "Both fixed-scale histories distinguish imposed flow from accumulated volume; the two ramps and final 45 L state match the supplied facts.",
+          "Direct units and values remain legible; the mechanism is dominant, supporting histories are separated, and no on-stage controls or decorative cards appear.",
+          "Actual consecutive-frame transport at maximum input remains within the directional sampling limit. Original agent deliverables were not repaired by the evaluator."
+        ],
+        "parentModifiedAgentDeliverables": false
+      },
+      "jointPass": false,
+      "evidenceDirectory": "evaluations/runs/20261002-hyperframes-composer-v3-reference-luna6-01"
+    },
+    {
+      "id": "20261002-hyperframes-composer-v3-reference-luna6-02",
+      "cohort": "release-v3",
+      "case": "reference",
+      "payload": {
+        "name": "hyperframes-explainer",
+        "profile": "runtime",
+        "fileCount": 30,
+        "payloadSha256": "5eb61d48fe048614c924de2559ca43dbe17b70e0cb12d899462a8f406afb3a9a"
+      },
+      "requestedModel": "openai-codex/gpt-6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-6-luna"
+        }
+      ],
+      "thinking": "high",
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-02T19:04:49.880991+00:00",
+        "finishedAtUtc": "2026-10-02T19:07:59.941833+00:00",
+        "durationSeconds": 190.062,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": true,
+          "skillIntegrity": true
+        }
+      },
+      "failureClassification": "pass",
+      "toolFindings": [],
+      "readPaths": [
+        "../prompt.md",
+        "deliverables/asset-plan.json",
+        "deliverables/audit.json",
+        "deliverables/build.json",
+        "deliverables/composition.json",
+        "deliverables/contact.jpg",
+        "deliverables/import.json",
+        "deliverables/media.json",
+        "deliverables/model.json",
+        "deliverables/preview.png",
+        "deliverables/project/manifest.json",
+        "deliverables/project/preview.html",
+        "deliverables/scene.json",
+        "skills/hyperframes-explainer/SKILL.md",
+        "skills/hyperframes-explainer/references/asset-contract.md",
+        "skills/hyperframes-explainer/references/asset-direction.md",
+        "skills/hyperframes-explainer/references/calibrated-mechanisms.md",
+        "skills/hyperframes-explainer/references/explanation-design.md",
+        "skills/hyperframes-explainer/references/hyperframes-runtime.md",
+        "skills/hyperframes-explainer/references/palette-policy.md",
+        "skills/hyperframes-explainer/references/scene-contract.md",
+        "skills/hyperframes-explainer/references/validation.md"
+      ],
+      "independent": {
+        "ok": true,
+        "findings": []
+      },
+      "manual": {
+        "ok": true,
+        "reviewedBy": "Root Codex, observed gpt-6.1-sol",
+        "date": "2026-10-02",
+        "method": "Direct inspection of original decoded MP4 event contact sheet and independent browser geometry/media report.",
+        "notes": [
+          "The recognizable housing, actuator, visible gate, connected pipe and graduated 80 L reservoir communicate the causal chain without a headline.",
+          "Both fixed-scale histories distinguish imposed flow from accumulated volume; the two ramps and final 45 L state match the supplied facts.",
+          "Direct units and values remain legible; the mechanism is dominant, supporting histories are separated, and no on-stage controls or decorative cards appear.",
+          "Actual consecutive-frame transport at maximum input remains within the directional sampling limit. Original agent deliverables were not repaired by the evaluator."
+        ],
+        "parentModifiedAgentDeliverables": false
+      },
+      "jointPass": true,
+      "evidenceDirectory": "evaluations/runs/20261002-hyperframes-composer-v3-reference-luna6-02"
+    },
+    {
+      "id": "20261002-hyperframes-composer-v3-reference-luna6-03",
+      "cohort": "release-v3",
+      "case": "reference",
+      "payload": {
+        "name": "hyperframes-explainer",
+        "profile": "runtime",
+        "fileCount": 30,
+        "payloadSha256": "5eb61d48fe048614c924de2559ca43dbe17b70e0cb12d899462a8f406afb3a9a"
+      },
+      "requestedModel": "openai-codex/gpt-6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-6-luna"
+        }
+      ],
+      "thinking": "high",
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-02T19:04:50.140347+00:00",
+        "finishedAtUtc": "2026-10-02T19:07:55.083935+00:00",
+        "durationSeconds": 184.945,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": true,
+          "skillIntegrity": true
+        }
+      },
+      "failureClassification": "pass",
+      "toolFindings": [],
+      "readPaths": [
+        "../prompt.md",
+        "deliverables/asset-plan.json",
+        "deliverables/audit.json",
+        "deliverables/build.json",
+        "deliverables/composition.json",
+        "deliverables/contact.jpg",
+        "deliverables/import.json",
+        "deliverables/media.json",
+        "deliverables/model.json",
+        "deliverables/preview.png",
+        "deliverables/project/manifest.json",
+        "deliverables/scene.json",
+        "skills/hyperframes-explainer/SKILL.md",
+        "skills/hyperframes-explainer/references/asset-contract.md",
+        "skills/hyperframes-explainer/references/asset-direction.md",
+        "skills/hyperframes-explainer/references/calibrated-mechanisms.md",
+        "skills/hyperframes-explainer/references/explanation-design.md",
+        "skills/hyperframes-explainer/references/hyperframes-runtime.md",
+        "skills/hyperframes-explainer/references/palette-policy.md",
+        "skills/hyperframes-explainer/references/scene-contract.md",
+        "skills/hyperframes-explainer/references/validation.md"
+      ],
+      "independent": {
+        "ok": true,
+        "findings": []
+      },
+      "manual": {
+        "ok": true,
+        "reviewedBy": "Root Codex, observed gpt-6.1-sol",
+        "date": "2026-10-02",
+        "method": "Direct inspection of original decoded MP4 event contact sheet and independent browser geometry/media report.",
+        "notes": [
+          "The recognizable housing, actuator, visible gate, connected pipe and graduated 80 L reservoir communicate the causal chain without a headline.",
+          "Both fixed-scale histories distinguish imposed flow from accumulated volume; the two ramps and final 45 L state match the supplied facts.",
+          "Direct units and values remain legible; the mechanism is dominant, supporting histories are separated, and no on-stage controls or decorative cards appear.",
+          "Actual consecutive-frame transport at maximum input remains within the directional sampling limit. Original agent deliverables were not repaired by the evaluator."
+        ],
+        "parentModifiedAgentDeliverables": false
+      },
+      "jointPass": true,
+      "evidenceDirectory": "evaluations/runs/20261002-hyperframes-composer-v3-reference-luna6-03"
+    },
+    {
+      "id": "20261002-hyperframes-composer-v3-vehicle-luna6-01",
+      "cohort": "release-v3",
+      "case": "vehicle",
+      "payload": {
+        "name": "hyperframes-explainer",
+        "profile": "runtime",
+        "fileCount": 30,
+        "payloadSha256": "5eb61d48fe048614c924de2559ca43dbe17b70e0cb12d899462a8f406afb3a9a"
+      },
+      "requestedModel": "openai-codex/gpt-6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-6-luna"
+        }
+      ],
+      "thinking": "high",
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-02T19:08:26.817680+00:00",
+        "finishedAtUtc": "2026-10-02T19:10:39.031101+00:00",
+        "durationSeconds": 132.214,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": true,
+          "skillIntegrity": true
+        }
+      },
+      "failureClassification": "pass",
+      "toolFindings": [],
+      "readPaths": [
+        "../prompt.md",
+        "deliverables/asset-plan.json",
+        "deliverables/assets/mechanism.svg",
+        "deliverables/audit.json",
+        "deliverables/build.json",
+        "deliverables/composition.json",
+        "deliverables/contact.jpg",
+        "deliverables/import.json",
+        "deliverables/media.json",
+        "deliverables/preview.png",
+        "deliverables/project/manifest.json",
+        "deliverables/scene.json",
+        "skills/hyperframes-explainer/SKILL.md",
+        "skills/hyperframes-explainer/references/asset-contract.md",
+        "skills/hyperframes-explainer/references/asset-direction.md",
+        "skills/hyperframes-explainer/references/calibrated-mechanisms.md",
+        "skills/hyperframes-explainer/references/explanation-design.md",
+        "skills/hyperframes-explainer/references/hyperframes-runtime.md",
+        "skills/hyperframes-explainer/references/palette-policy.md",
+        "skills/hyperframes-explainer/references/scene-contract.md",
+        "skills/hyperframes-explainer/references/validation.md"
+      ],
+      "independent": {
+        "ok": true,
+        "findings": []
+      },
+      "manual": {
+        "ok": true,
+        "reviewedBy": "Root Codex, observed gpt-6.1-sol",
+        "date": "2026-10-02",
+        "method": "Direct inspection of original decoded MP4 contact sheet with independent vehicle position/rolling/contact/control checks.",
+        "notes": [
+          "The original neutral car has a recognizable silhouette, wheels, windows and actual road contact; the full silhouette stays inside its view.",
+          "Distance moves the rear-wheel anchor and aligned blue ruler pointer together. Wheel rolling has the correct clockwise direction in SVG coordinates.",
+          "The red speed indication and speed history remain distinct from blue distance and its history, matching the explicitly requested colorset2.",
+          "Sparse direct values and units remain readable without headlines, decorative cards or on-stage controls; backward seeks and actual controls pass independently."
+        ],
+        "parentModifiedAgentDeliverables": false
+      },
+      "jointPass": true,
+      "evidenceDirectory": "evaluations/runs/20261002-hyperframes-composer-v3-vehicle-luna6-01"
+    },
+    {
+      "id": "20261002-hyperframes-composer-v3-vehicle-luna6-02",
+      "cohort": "release-v3",
+      "case": "vehicle",
+      "payload": {
+        "name": "hyperframes-explainer",
+        "profile": "runtime",
+        "fileCount": 30,
+        "payloadSha256": "5eb61d48fe048614c924de2559ca43dbe17b70e0cb12d899462a8f406afb3a9a"
+      },
+      "requestedModel": "openai-codex/gpt-6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-6-luna"
+        }
+      ],
+      "thinking": "high",
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-02T19:08:26.929917+00:00",
+        "finishedAtUtc": "2026-10-02T19:11:01.575716+00:00",
+        "durationSeconds": 154.647,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": true,
+          "skillIntegrity": true
+        }
+      },
+      "failureClassification": "pass",
+      "toolFindings": [],
+      "readPaths": [
+        "../prompt.md",
+        "deliverables/asset-plan.json",
+        "deliverables/assets/mechanism.svg",
+        "deliverables/audit.json",
+        "deliverables/build.json",
+        "deliverables/composition.json",
+        "deliverables/contact.jpg",
+        "deliverables/import.json",
+        "deliverables/init.json",
+        "deliverables/media.json",
+        "deliverables/model.json",
+        "deliverables/preview.png",
+        "deliverables/project/manifest.json",
+        "deliverables/project/preview.html",
+        "skills/hyperframes-explainer/SKILL.md",
+        "skills/hyperframes-explainer/references/asset-contract.md",
+        "skills/hyperframes-explainer/references/asset-direction.md",
+        "skills/hyperframes-explainer/references/calibrated-mechanisms.md",
+        "skills/hyperframes-explainer/references/explanation-design.md",
+        "skills/hyperframes-explainer/references/hyperframes-runtime.md",
+        "skills/hyperframes-explainer/references/palette-policy.md",
+        "skills/hyperframes-explainer/references/scene-contract.md",
+        "skills/hyperframes-explainer/references/validation.md"
+      ],
+      "independent": {
+        "ok": true,
+        "findings": []
+      },
+      "manual": {
+        "ok": true,
+        "reviewedBy": "Root Codex, observed gpt-6.1-sol",
+        "date": "2026-10-02",
+        "method": "Direct inspection of original decoded MP4 contact sheet with independent vehicle position/rolling/contact/control checks.",
+        "notes": [
+          "The original neutral car has a recognizable silhouette, wheels, windows and actual road contact; the full silhouette stays inside its view.",
+          "Distance moves the rear-wheel anchor and aligned blue ruler pointer together. Wheel rolling has the correct clockwise direction in SVG coordinates.",
+          "The red speed indication and speed history remain distinct from blue distance and its history, matching the explicitly requested colorset2.",
+          "Sparse direct values and units remain readable without headlines, decorative cards or on-stage controls; backward seeks and actual controls pass independently."
+        ],
+        "parentModifiedAgentDeliverables": false
+      },
+      "jointPass": true,
+      "evidenceDirectory": "evaluations/runs/20261002-hyperframes-composer-v3-vehicle-luna6-02"
+    },
+    {
+      "id": "20261002-hyperframes-composer-v3-vehicle-luna6-03",
+      "cohort": "release-v3",
+      "case": "vehicle",
+      "payload": {
+        "name": "hyperframes-explainer",
+        "profile": "runtime",
+        "fileCount": 30,
+        "payloadSha256": "5eb61d48fe048614c924de2559ca43dbe17b70e0cb12d899462a8f406afb3a9a"
+      },
+      "requestedModel": "openai-codex/gpt-6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-6-luna"
+        }
+      ],
+      "thinking": "high",
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-02T19:08:27.227749+00:00",
+        "finishedAtUtc": "2026-10-02T19:11:11.048732+00:00",
+        "durationSeconds": 163.822,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": true,
+          "skillIntegrity": true
+        }
+      },
+      "failureClassification": "pass",
+      "toolFindings": [],
+      "readPaths": [
+        "../prompt.md",
+        "deliverables/asset-plan.json",
+        "deliverables/assets/mechanism.svg",
+        "deliverables/audit.json",
+        "deliverables/build.json",
+        "deliverables/composition.json",
+        "deliverables/contact.jpg",
+        "deliverables/import.json",
+        "deliverables/media.json",
+        "deliverables/model.json",
+        "deliverables/preview.png",
+        "deliverables/project/manifest.json",
+        "deliverables/project/preview.html",
+        "skills/hyperframes-explainer/SKILL.md",
+        "skills/hyperframes-explainer/references/asset-contract.md",
+        "skills/hyperframes-explainer/references/asset-direction.md",
+        "skills/hyperframes-explainer/references/calibrated-mechanisms.md",
+        "skills/hyperframes-explainer/references/explanation-design.md",
+        "skills/hyperframes-explainer/references/hyperframes-runtime.md",
+        "skills/hyperframes-explainer/references/palette-policy.md",
+        "skills/hyperframes-explainer/references/scene-contract.md",
+        "skills/hyperframes-explainer/references/validation.md"
+      ],
+      "independent": {
+        "ok": true,
+        "findings": []
+      },
+      "manual": {
+        "ok": true,
+        "reviewedBy": "Root Codex, observed gpt-6.1-sol",
+        "date": "2026-10-02",
+        "method": "Direct inspection of original decoded MP4 contact sheet with independent vehicle position/rolling/contact/control checks.",
+        "notes": [
+          "The original neutral car has a recognizable silhouette, wheels, windows and actual road contact; the full silhouette stays inside its view.",
+          "Distance moves the rear-wheel anchor and aligned blue ruler pointer together. Wheel rolling has the correct clockwise direction in SVG coordinates.",
+          "The red speed indication and speed history remain distinct from blue distance and its history, matching the explicitly requested colorset2.",
+          "Sparse direct values and units remain readable without headlines, decorative cards or on-stage controls; backward seeks and actual controls pass independently."
+        ],
+        "parentModifiedAgentDeliverables": false
+      },
+      "jointPass": true,
+      "evidenceDirectory": "evaluations/runs/20261002-hyperframes-composer-v3-vehicle-luna6-03"
+    },
+    {
+      "id": "20261002-hyperframes-composer-vehicle-luna6-01",
+      "cohort": "development-v2",
+      "case": "vehicle",
+      "payload": {
+        "name": "hyperframes-explainer",
+        "profile": "runtime",
+        "fileCount": 30,
+        "payloadSha256": "c169b3f921b8a2690872257477f10aa961a3b93f06b6d774a8f385f7df03f4d9"
+      },
+      "requestedModel": "openai-codex/gpt-6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-6-luna"
+        }
+      ],
+      "thinking": "high",
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-02T18:44:00.596380+00:00",
+        "finishedAtUtc": "2026-10-02T18:46:30.461721+00:00",
+        "durationSeconds": 149.866,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": true,
+          "skillIntegrity": true
+        }
+      },
+      "failureClassification": "pass",
+      "toolFindings": [],
+      "readPaths": [
+        "../prompt.md",
+        "deliverables/asset-plan.json",
+        "deliverables/audit.json",
+        "deliverables/composition.json",
+        "deliverables/contact.jpg",
+        "deliverables/import.json",
+        "deliverables/media.json",
+        "deliverables/model.json",
+        "deliverables/preview.png",
+        "deliverables/project/manifest.json",
+        "deliverables/project/preview.html",
+        "skills/hyperframes-explainer/SKILL.md",
+        "skills/hyperframes-explainer/references/asset-contract.md",
+        "skills/hyperframes-explainer/references/asset-direction.md",
+        "skills/hyperframes-explainer/references/calibrated-mechanisms.md",
+        "skills/hyperframes-explainer/references/explanation-design.md",
+        "skills/hyperframes-explainer/references/hyperframes-runtime.md",
+        "skills/hyperframes-explainer/references/palette-policy.md",
+        "skills/hyperframes-explainer/references/scene-contract.md",
+        "skills/hyperframes-explainer/references/validation.md"
+      ],
+      "independent": {
+        "ok": true,
+        "findings": []
+      },
+      "manual": {
+        "ok": true,
+        "date": "2026-10-02",
+        "reviewer": "gpt-6.1-sol",
+        "method": "Direct inspection of the actual movie contact sheet plus the independent numerical, DOM, preview and media evaluation.",
+        "notes": [
+          "Recognizable neutral vehicle with roof, windows, door, headlamp and wheels touching its road.",
+          "Rear wheel and blue position pointer share the zero and pixels-per-unit scale of the 0/12/24/36/48 m ruler. Final model distance is 26 m and the last encoded frame shows the corresponding 25.7 m sample.",
+          "Wheel phase changes clockwise with accumulated travel; red speed/velocity and blue position/distance histories respond to the same event. Labels stay sparse and readable."
+        ],
+        "authorship": "The isolated Luna run generated the original editable SVG and rendered its own video; parent review did not edit the deliverables."
+      },
+      "jointPass": true,
+      "evidenceDirectory": "evaluations/runs/20261002-hyperframes-composer-vehicle-luna6-01"
+    },
+    {
+      "id": "20261002-hyperframes-composer-vehicle-luna6-02",
+      "cohort": "development-v2",
+      "case": "vehicle",
+      "payload": {
+        "name": "hyperframes-explainer",
+        "profile": "runtime",
+        "fileCount": 30,
+        "payloadSha256": "c169b3f921b8a2690872257477f10aa961a3b93f06b6d774a8f385f7df03f4d9"
+      },
+      "requestedModel": "openai-codex/gpt-6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-6-luna"
+        }
+      ],
+      "thinking": "high",
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-02T18:44:00.765905+00:00",
+        "finishedAtUtc": "2026-10-02T18:46:27.829135+00:00",
+        "durationSeconds": 147.064,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": true,
+          "skillIntegrity": true
+        }
+      },
+      "failureClassification": "pass",
+      "toolFindings": [],
+      "readPaths": [
+        "../prompt.md",
+        "deliverables/asset-plan.json",
+        "deliverables/assets/mechanism.svg",
+        "deliverables/audit.json",
+        "deliverables/build.json",
+        "deliverables/composition.json",
+        "deliverables/contact.jpg",
+        "deliverables/import.json",
+        "deliverables/init.json",
+        "deliverables/media.json",
+        "deliverables/model.json",
+        "deliverables/preview.png",
+        "deliverables/project/manifest.json",
+        "deliverables/scene.json",
+        "skills/hyperframes-explainer/SKILL.md",
+        "skills/hyperframes-explainer/references/asset-contract.md",
+        "skills/hyperframes-explainer/references/asset-direction.md",
+        "skills/hyperframes-explainer/references/calibrated-mechanisms.md",
+        "skills/hyperframes-explainer/references/explanation-design.md",
+        "skills/hyperframes-explainer/references/hyperframes-runtime.md",
+        "skills/hyperframes-explainer/references/palette-policy.md",
+        "skills/hyperframes-explainer/references/scene-contract.md",
+        "skills/hyperframes-explainer/references/validation.md"
+      ],
+      "independent": {
+        "ok": true,
+        "findings": []
+      },
+      "manual": {
+        "ok": true,
+        "date": "2026-10-02",
+        "reviewer": "gpt-6.1-sol",
+        "method": "Direct inspection of the actual movie contact sheet plus the independent numerical, DOM, preview and media evaluation.",
+        "notes": [
+          "Recognizable neutral vehicle with roof, windows, door, headlamp and wheels touching its road.",
+          "Rear wheel and blue position pointer share the zero and pixels-per-unit scale of the 0/12/24/36/48 m ruler. Final model distance is 26 m and the last encoded frame shows the corresponding 25.7 m sample.",
+          "Wheel phase changes clockwise with accumulated travel; red speed/velocity and blue position/distance histories respond to the same event. Labels stay sparse and readable."
+        ],
+        "authorship": "The isolated Luna run generated the original editable SVG and rendered its own video; parent review did not edit the deliverables."
+      },
+      "jointPass": true,
+      "evidenceDirectory": "evaluations/runs/20261002-hyperframes-composer-vehicle-luna6-02"
+    },
+    {
+      "id": "20261002-hyperframes-composer-vehicle-luna6-03",
+      "cohort": "development-v2",
+      "case": "vehicle",
+      "payload": {
+        "name": "hyperframes-explainer",
+        "profile": "runtime",
+        "fileCount": 30,
+        "payloadSha256": "c169b3f921b8a2690872257477f10aa961a3b93f06b6d774a8f385f7df03f4d9"
+      },
+      "requestedModel": "openai-codex/gpt-6-luna",
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-6-luna"
+        }
+      ],
+      "thinking": "high",
+      "strict": {
+        "passed": false,
+        "returnCode": 4,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-02T18:44:01.031798+00:00",
+        "finishedAtUtc": "2026-10-02T18:47:19.755770+00:00",
+        "durationSeconds": 198.725,
+        "gates": {
+          "artifacts": true,
+          "events": false,
+          "jsonFields": true,
+          "skillIntegrity": true
+        }
+      },
+      "failureClassification": "agent-workflow",
+      "toolFindings": [
+        {
+          "code": "tool-error",
+          "line": 331,
+          "tool": "bash"
+        }
+      ],
+      "readPaths": [
+        "../prompt.md",
+        "deliverables/asset-plan.json",
+        "deliverables/audit.json",
+        "deliverables/build.json",
+        "deliverables/composition.json",
+        "deliverables/contact.jpg",
+        "deliverables/import.json",
+        "deliverables/media.json",
+        "deliverables/model.json",
+        "deliverables/preview.png",
+        "deliverables/project/manifest.json",
+        "deliverables/project/preview.html",
+        "deliverables/scene.json",
+        "skills/hyperframes-explainer/SKILL.md",
+        "skills/hyperframes-explainer/references/asset-contract.md",
+        "skills/hyperframes-explainer/references/asset-direction.md",
+        "skills/hyperframes-explainer/references/calibrated-mechanisms.md",
+        "skills/hyperframes-explainer/references/explanation-design.md",
+        "skills/hyperframes-explainer/references/hyperframes-runtime.md",
+        "skills/hyperframes-explainer/references/palette-policy.md",
+        "skills/hyperframes-explainer/references/scene-contract.md",
+        "skills/hyperframes-explainer/references/validation.md"
+      ],
+      "independent": {
+        "ok": true,
+        "findings": []
+      },
+      "manual": {
+        "ok": true,
+        "date": "2026-10-02",
+        "reviewer": "gpt-6.1-sol",
+        "method": "Direct inspection of the actual movie contact sheet plus the independent numerical, DOM, preview and media evaluation.",
+        "notes": [
+          "Recognizable neutral vehicle with roof, windows, door, headlamp and wheels touching its road.",
+          "Rear wheel and blue position pointer share the zero and pixels-per-unit scale of the 0/12/24/36/48 m ruler. Final model distance is 26 m and the last encoded frame shows the corresponding 25.7 m sample.",
+          "Wheel phase changes clockwise with accumulated travel; red speed/velocity and blue position/distance histories respond to the same event. Labels stay sparse and readable."
+        ],
+        "authorship": "The isolated Luna run generated the original editable SVG and rendered its own video; parent review did not edit the deliverables."
+      },
+      "jointPass": false,
+      "evidenceDirectory": "evaluations/runs/20261002-hyperframes-composer-vehicle-luna6-03"
+    }
+  ],
+  "evidencePolicy": "Keep failures; require joint strict, independent and manual success on one frozen runtime bundle."
+}

@@ -1,0 +1,49 @@
+{
+  "runId": "diagram-polish-20260928-c-contract-1",
+  "case": "contract",
+  "commandExitCodes": [
+    0,
+    0,
+    0
+  ],
+  "payload": {
+    "name": "diagram-composition",
+    "profile": "runtime",
+    "fileCount": 20,
+    "payloadSha256": "ae4ce58040d8a73e52d137076b1e06689fc3edfdffdb0e9e2196aff09414a18a"
+  },
+  "runtime": {
+    "passed": true,
+    "returnCode": 0,
+    "piExitCode": 0,
+    "timedOut": false,
+    "startedAtUtc": "2026-09-29T01:29:22.833365+00:00",
+    "finishedAtUtc": "2026-09-29T01:30:58.503308+00:00",
+    "durationSeconds": 95.671,
+    "gates": {
+      "artifacts": true,
+      "events": true,
+      "jsonFields": true,
+      "skillIntegrity": true
+    }
+  },
+  "artifact": {
+    "runId": "diagram-polish-20260928-c-contract-1",
+    "case": "contract",
+    "ok": true,
+    "findings": [],
+    "sourceSha256": "1082ed1476de776ed2e42a0763bad5a1fccd3b219738a16e5668a4d6270f8c2d",
+    "contactCount": 4,
+    "connectorCount": 2,
+    "internalContactCount": 0,
+    "openTerminalCount": 0,
+    "minimumTextPx": 14,
+    "minimumContrast": 5.60926841657814,
+    "verifiedConceptLinks": [
+      "review",
+      "source"
+    ],
+    "manualVisualReviewRequired": true
+  },
+  "tracePassed": true
+}

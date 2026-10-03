@@ -1,0 +1,175 @@
+{
+  "ok": true,
+  "topic": "water",
+  "svg": "evaluations\\runs\\20260904-svg-color-water-luna-v2-1\\workspace\\outputs\\water\\water.svg",
+  "sha256": "623d73b21e70ed7337b78c3ce65edd788e6e8343d366281ab6a12806d30decb1",
+  "states": [
+    {
+      "name": "normal",
+      "sourceValues": {
+        "daily-demand": 120,
+        "leakage-fraction": 0.15,
+        "treatment-capacity": 150
+      },
+      "expected": {
+        "processed": 120,
+        "leakage": 18.0,
+        "delivered": 102.0,
+        "unmet": 0,
+        "load": 0.8
+      },
+      "actual": {
+        "processed": 120,
+        "delivered": 102,
+        "leakage": 18,
+        "unmet": 0,
+        "load": 0.8
+      },
+      "boundMarkCount": 25,
+      "errors": []
+    },
+    {
+      "name": "peak",
+      "sourceValues": {
+        "daily-demand": 180,
+        "leakage-fraction": 0.2,
+        "treatment-capacity": 150
+      },
+      "expected": {
+        "processed": 150,
+        "leakage": 30.0,
+        "delivered": 120.0,
+        "unmet": 30,
+        "load": 1.2
+      },
+      "actual": {
+        "processed": 150,
+        "delivered": 120,
+        "leakage": 30,
+        "unmet": 30,
+        "load": 1.2
+      },
+      "boundMarkCount": 25,
+      "errors": []
+    },
+    {
+      "name": "repair",
+      "sourceValues": {
+        "daily-demand": 180,
+        "leakage-fraction": 0.08,
+        "treatment-capacity": 150
+      },
+      "expected": {
+        "processed": 150,
+        "leakage": 12.0,
+        "delivered": 138.0,
+        "unmet": 30,
+        "load": 1.2
+      },
+      "actual": {
+        "processed": 150,
+        "delivered": 138,
+        "leakage": 12,
+        "unmet": 30,
+        "load": 1.2
+      },
+      "boundMarkCount": 25,
+      "errors": []
+    },
+    {
+      "name": "zero",
+      "sourceValues": {
+        "daily-demand": 0,
+        "leakage-fraction": 0.15,
+        "treatment-capacity": 150
+      },
+      "expected": {
+        "processed": 0,
+        "leakage": 0.0,
+        "delivered": 0.0,
+        "unmet": 0,
+        "load": 0.0
+      },
+      "actual": {
+        "processed": 0,
+        "delivered": 0,
+        "leakage": 0,
+        "unmet": 0,
+        "load": 0
+      },
+      "boundMarkCount": 25,
+      "errors": []
+    }
+  ],
+  "errors": [],
+  "inputMapping": {
+    "demand": "daily-demand",
+    "capacity": "treatment-capacity",
+    "fraction": "leakage-fraction"
+  },
+  "outputMapping": {
+    "processed": "processed-water",
+    "delivered": "delivered-water",
+    "leakage": "leakage",
+    "unmet": "unmet-demand",
+    "load": "load-ratio"
+  },
+  "theme": {
+    "preset": "editorial",
+    "colors": {
+      "canvas": "#f4f7f6",
+      "surface": "#ffffff",
+      "ink": "#173b38",
+      "muted": "#4b6460",
+      "line": "#b7c8c4",
+      "accent": "#0b7770",
+      "focus": "#0d5c57",
+      "warning": "#9a5a13",
+      "danger": "#a13f3f"
+    },
+    "conceptColors": {
+      "daily-demand": "#1f5b66",
+      "treatment-capacity": "#8a5a3b",
+      "leakage-fraction": "#6b4a8d",
+      "processed-water": "#147a6e",
+      "leakage": "#a56b2a",
+      "delivered-water": "#247b52",
+      "unmet-demand": "#b14444",
+      "load-ratio": "#0b7770",
+      "allocation-sum": "#3b6f8f",
+      "allocation-gap": "#5a6a68"
+    }
+  },
+  "typography": [
+    {
+      "selector": ".title",
+      "fontSize": "28px",
+      "fill": "rgb(23, 59, 56)"
+    },
+    {
+      "selector": ".module-kicker",
+      "fontSize": "10px",
+      "fill": "rgb(75, 100, 96)"
+    },
+    {
+      "selector": ".module-question",
+      "fontSize": "12px",
+      "fill": "rgb(75, 100, 96)"
+    },
+    {
+      "selector": ".module-claim",
+      "fontSize": "14px",
+      "fill": "rgb(23, 59, 56)"
+    },
+    {
+      "selector": ".module-content text",
+      "fontSize": "12px",
+      "fill": "rgb(23, 59, 56)"
+    },
+    {
+      "selector": ".relationship-key-label",
+      "fontSize": "9.25px",
+      "fill": "rgb(75, 100, 96)"
+    }
+  ]
+}
