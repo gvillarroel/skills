@@ -356,3 +356,15 @@
 .example-header-top { flex-wrap: wrap; }
 .viz-frame.is-expanded { min-width: 0; aspect-ratio: auto; max-height: 70vh; overflow: auto; }
 .viz-frame.is-expanded svg { max-width: none; }
+
+/* Keep the dense CS1 overview inside its card; Expand retains readable detail. */
+body[data-style-version="cs1"] article[data-example-id="task-overlap-dense"] .viz-frame:not(.is-expanded) {
+  min-width: 0;
+  aspect-ratio: 880 / 489.85;
+}
+
+body[data-style-version="cs1"] article[data-example-id="task-overlap-dense"] .viz-frame.is-expanded svg {
+  width: 2200px !important;
+  height: auto !important;
+  aspect-ratio: 880 / 489.85;
+}

@@ -220,7 +220,69 @@ uv run --script skills/slidev-echarts/scripts/test_graph_arrow_geometry.py
 uv run --script skills/slidev-echarts/scripts/test_boxplot_medians.py
 ```
 
-Commit identity, public artifact hashes and the exact
-Pages workflow will be recorded after publication. Only the reviewed
-baseline-plus-native-mark ECharts gallery blobs are staged; unrelated
-working gallery edits remain preserved.
+The first source release is
+[`8b829ad8816f7736b0916b916b642e5328d9ab2d`](https://github.com/gvillarroel/skills/commit/8b829ad8816f7736b0916b916b642e5328d9ab2d).
+Its [exact-commit Pages workflow](https://github.com/gvillarroel/skills/actions/runs/37226186062)
+completed successfully. All nine runtime bindings also pass against that
+commit, with unchanged identities and complete file inventories.
+
+The public resource verifier initially compared raw Git HTML with published
+HTML after whitespace normalization alone. Five of 222 resources differed
+because the committed builder adds catalog metadata/favicon links and
+rewrites local D3 dependency URLs. Those source-only oracle failures are
+retained in `projects/colorset-priority/artifacts/manifests/publication-source-only-v1.json`
+and ECharts' `report-source-only-v1.json`. The corrected project-only oracle
+loads the exact committed builder, replays its literal CDN patches and
+metadata/normalization functions, and compares every resulting byte. All
+222 resources pass. The builder SHA-256 is
+`40e8c100cba494ee5dca472bb640821cb3d64135b5ac48bc552ca391f28a11f7`.
+The ECharts published HTML SHA-256 is
+`69799ea4cee42620b1530c2267669c958b30e4e4ab2d21d1ecb440d819f89c3e`;
+it exactly matches the committed builder transformation of the selectively
+reviewed source. No working gallery draft supplies expected bytes.
+
+The first public Mermaid review covers all 62 static surfaces with zero
+inside-text, actor-caption or unexplained-rim findings. The PlantUML review
+passes 60 exact resources, 108 desktop/mobile SVG paint parity checks,
+56 native assets, and all 16 measurement controls, with zero findings.
+Its independent report SHA-256 is
+`94526ec278ec1f984af32241eaba4181004f39827614d3e3b89b4072dab1ae82`.
+Public ECharts passes 43 cards at both viewports, 24 normal median paint
+samples, eight hover bodies, and native undirected graph node/label checks.
+Its corrected report SHA-256 is
+`55e0cafc5dbf0803beb169c08bf1169a7428f0c9fd037f673cc0a80e52339bdc`.
+Directed arrow clearance remains covered by the separate native contracts.
+
+The public D3 paint/data audit passed 25 patterns at desktop and mobile.
+Manual inspection then found a mobile presentation failure that its old
+gate omitted: a shared 880 px minimum width clips the dense-overlap scene
+inside a 370 px card. That report remains retained. The fixture correction
+now provides a fitted overview and readable, keyboard-accessible expansion
+without changing source geometry, tasks, memberships, alpha or paints.
+Local desktop and mobile audits pass all 25 patterns with the revised
+SVG/card/viewport containment gate. Expanded detail independently reaches
+all 100 task labels at approximately 16.5 px, plus all 13 caption/legend
+texts and 109 actual glyphs at approximately 26.25 px. Right/bottom panning
+reaches its limits and Fit restores identical resting data/geometry/paint
+states. The revised gate rejects the still deployed first version with
+exactly the dense containment failure. Final local report SHA-256 values
+are `e690a5d6f437644e6f73f632e194e43ebd3bcda8220828d7698c07b31fa31e97`
+(desktop) and
+`c9bab1b1c2b8a510aa1d3e20d6a1e6a183ab78c4ad195ffcffbaac195fba550d`
+(mobile). The CSS correction is scoped to the dense CS1 fixture.
+The runtime payloads remain frozen; this correction changes only the
+acceptance fixture and project verification tools.
+
+Only the reviewed baseline-plus-native-mark ECharts gallery blobs were
+committed; unrelated working gallery edits remain preserved. The revision
+remains under publication validation until the mobile correction is deployed
+and the final public checks pass.
+
+```powershell
+uv run --script projects/colorset-priority/scripts/audit_d3_gallery.py --viewport desktop --artifacts projects/colorset-priority/artifacts/d3-gallery-fit-local/desktop
+uv run --script projects/colorset-priority/scripts/audit_d3_gallery.py --viewport mobile --artifacts projects/colorset-priority/artifacts/d3-gallery-fit-local/mobile
+uv run --script projects/colorset-priority/scripts/verify_publication.py --expected-ref <exact-release-commit>
+node --experimental-strip-types projects/colorset-priority/scripts/review_mermaid.ts --published
+node --experimental-strip-types projects/colorset-priority/scripts/audit_public_echarts.ts --expected-ref <exact-release-commit>
+node --experimental-strip-types projects/plantuml-style-repair/scripts/audit_native_gallery.ts --phase <release-phase> --published --expected-ref <exact-release-commit> --require-clean
+```

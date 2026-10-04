@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "date": "2026-10-04",
-  "gitReference": "INDEX",
+  "gitReference": "8b829ad8816f7736b0916b916b642e5328d9ab2d",
   "passed": true,
   "bindingCount": 9,
   "bindings": [
@@ -28,7 +28,7 @@
         "scripts/test_synchronized_svg_tools.py",
         "scripts/theme_contract.py"
       ],
-      "gitReference": "INDEX"
+      "gitReference": "8b829ad8816f7736b0916b916b642e5328d9ab2d"
     },
     {
       "skill": "d3",
@@ -111,7 +111,7 @@
         "references/patterns/world-tour.md",
         "references/patterns/zoom-to-bounds.md"
       ],
-      "gitReference": "INDEX"
+      "gitReference": "8b829ad8816f7736b0916b916b642e5328d9ab2d"
     },
     {
       "skill": "echarts-animated-svg",
@@ -125,7 +125,7 @@
         "SKILL.md",
         "scripts/palette_paints.py"
       ],
-      "gitReference": "INDEX"
+      "gitReference": "8b829ad8816f7736b0916b916b642e5328d9ab2d"
     },
     {
       "skill": "mermaid",
@@ -142,7 +142,7 @@
         "scripts/palette_paints.py",
         "scripts/style_mermaid_directory.py"
       ],
-      "gitReference": "INDEX"
+      "gitReference": "8b829ad8816f7736b0916b916b642e5328d9ab2d"
     },
     {
       "skill": "plantuml-colorset-renderer",
@@ -159,7 +159,7 @@
         "references/colorset-contract.md",
         "scripts/palette_paints.py"
       ],
-      "gitReference": "INDEX"
+      "gitReference": "8b829ad8816f7736b0916b916b642e5328d9ab2d"
     },
     {
       "skill": "procedural-svg-animation",
@@ -170,7 +170,7 @@
       "gitFileCount": 18,
       "gitInventoryFileCount": 18,
       "lfNormalizationOnlyPaths": [],
-      "gitReference": "INDEX"
+      "gitReference": "8b829ad8816f7736b0916b916b642e5328d9ab2d"
     },
     {
       "skill": "slidev-echarts",
@@ -184,7 +184,7 @@
         "SKILL.md",
         "references/visual-tokens.md"
       ],
-      "gitReference": "INDEX"
+      "gitReference": "8b829ad8816f7736b0916b916b642e5328d9ab2d"
     },
     {
       "skill": "threejs-animated-3d",
@@ -195,7 +195,7 @@
       "gitFileCount": 11,
       "gitInventoryFileCount": 11,
       "lfNormalizationOnlyPaths": [],
-      "gitReference": "INDEX"
+      "gitReference": "8b829ad8816f7736b0916b916b642e5328d9ab2d"
     },
     {
       "skill": "vectorize-art-patterns",
@@ -206,7 +206,7 @@
       "gitFileCount": 55,
       "gitInventoryFileCount": 55,
       "lfNormalizationOnlyPaths": [],
-      "gitReference": "INDEX"
+      "gitReference": "8b829ad8816f7736b0916b916b642e5328d9ab2d"
     }
   ],
   "findings": []

@@ -49,6 +49,9 @@ VENN = {
 
 INSPECT = r'''options => {
 const findings=[], states={};
+const bounds=node=>{const r=node.getBoundingClientRect();return {x:r.x,y:r.y,width:r.width,height:r.height,right:r.right,bottom:r.bottom};};
+const containment=[];
+if(document.documentElement.scrollWidth>innerWidth+1)findings.push('gallery: horizontal viewport overflow');
 const hex=v=>{const m=v.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);return m?'#'+m.slice(1).map(n=>(+n).toString(16).padStart(2,'0')).join(''):v;};
 const luminance=paint=>[1,3,5].map(i=>parseInt(paint.slice(i,i+2),16)/255).map(n=>n<=.04045?n/12.92:((n+.055)/1.055)**2.4).reduce((sum,n,i)=>sum+n*[.2126,.7152,.0722][i],0);
 const bw=paint=>(luminance(paint)+.05)/.05>=1.05/(luminance(paint)+.05)?'#000000':'#ffffff';
@@ -57,6 +60,10 @@ const near=(a,b)=>Math.abs(a-b)<.0001;
 for(const id of options.ids){
   const svg=document.getElementById(id);
   if(!svg){findings.push(`${id}: missing SVG`);continue;}
+  const card=svg.closest('article'),frame=svg.closest('.viz-frame');
+  const mounted={id,svg:bounds(svg),card:bounds(card),frame:bounds(frame),viewportWidth:innerWidth};
+  containment.push(mounted);
+  if(mounted.card.x<-.5||mounted.card.right>innerWidth+.5||mounted.svg.x<mounted.card.x-.5||mounted.svg.right>mounted.card.right+.5||mounted.svg.x<mounted.frame.x-.5||mounted.svg.right>mounted.frame.right+.5||mounted.svg.y<mounted.frame.y-.5||mounted.svg.bottom>mounted.frame.bottom+.5)findings.push(`${id}: resting SVG/card/viewport containment`);
   svg.pauseAnimations?.();svg.setCurrentTime?.(10);window.D3SolidStyle?.normalize(svg);
   if(svg.dataset.patternId!==`d3-${id}-cs1`)findings.push(`${id}: pattern ID changed (${svg.dataset.patternId})`);
   if(!(svg.dataset.colorset==='colorset1'||svg.dataset.colorSet==='colorset1'))findings.push(`${id}: missing CS1 metadata`);
@@ -139,7 +146,7 @@ states['task-overlap-dense'].regions=regions.map(node=>({fill:hex(getComputedSty
 states['task-overlap-dense'].dataCounts={regions:regions.length,tasks:dots.length,labels:labels.length,leaders:leaders.length};
 states['task-overlap-dense'].captionCollisions=collisions;
 states['task-overlap-dense'].captionRail=+svg.dataset.captionRailY;
-return {findings,states};
+return {findings,states,containment};
 }'''
 
 
@@ -148,6 +155,7 @@ def main() -> int:
     parser.add_argument("--published", nargs="?", const=DEFAULT_SITE, help="Audit the deployed Pages base URL; omit to audit canonical local sources")
     parser.add_argument("--source-root", type=Path, help="Audit a built Pages root such as dist/pages")
     parser.add_argument("--artifacts", type=Path, default=ROOT / "projects/colorset-priority/artifacts/d3-gallery")
+    parser.add_argument("--viewport", choices=["desktop", "mobile"], default="desktop", help="Use desktop 1440x1100 or mobile 390x844; run both for publication")
     args = parser.parse_args()
     artifacts = args.artifacts.resolve()
     if not artifacts.is_relative_to(ROOT) or artifacts.is_relative_to(ROOT / "skills"):
@@ -166,12 +174,15 @@ def main() -> int:
     solids = [paint for paint in EXPECTED if paint != "#ffffff"]
     with sync_playwright() as playwright:
         browser = playwright.chromium.launch(**({} if Path(playwright.chromium.executable_path).exists() else {"channel": "msedge"}))
-        page = browser.new_page(viewport={"width": 1440, "height": 1100}, reduced_motion="reduce")
+        viewport = {"width": 390, "height": 844} if args.viewport == "mobile" else {"width": 1440, "height": 1100}
+        page = browser.new_page(viewport=viewport, reduced_motion="reduce")
         errors = []
         page.on("pageerror", lambda error: errors.append(str(error)))
         page.goto(url, wait_until="load", timeout=120000)
         page.wait_for_timeout(650)
         result = page.evaluate(INSPECT, {"ids": IDS, "layout": layout, "solids": solids, "venn": VENN})
+        resting_states = json.loads(json.dumps(result["states"]))
+        (artifacts / "resting-inspection.json").write_text(json.dumps({"url": url, "viewport": viewport, **result}, indent=2) + "\n", encoding="utf-8")
         states = result["states"]
         assert states["treemap"]["headers"] == solids[:3], states["treemap"]
         assert [family["fill"] for family in states["circle-pack"]["families"]] == solids[:3], states["circle-pack"]
@@ -218,8 +229,60 @@ def main() -> int:
             assert len({tuple(sample["actualRGB"]) for sample in state["intersectionSamples"]}) >= 2
         for identity in ["treemap", "circle-pack", "task-overlap-dense", "mirrored-beeswarm", "streamgraph", "flowchart-dag"]:
             page.locator(f"svg#{identity}").screenshot(path=str(artifacts / f"{identity}-cs1.png"))
+        dense_card = page.locator('article[data-example-id="task-overlap-dense"]')
+        expand = dense_card.locator("[data-expand]")
+        expand.click()
+        detail = dense_card.evaluate(r'''card=>{
+          const frame=card.querySelector('.viz-frame'),svg=frame.querySelector('svg');
+          const labelSizes=[...svg.querySelectorAll('.task-label')].map(t=>parseFloat(getComputedStyle(t).fontSize)*svg.getScreenCTM().a);
+          return {expanded:frame.classList.contains('is-expanded'),focusable:frame.tabIndex===0,accessibleName:frame.getAttribute('aria-label'),frameWidth:frame.clientWidth,frameHeight:frame.clientHeight,scrollWidth:frame.scrollWidth,scrollHeight:frame.scrollHeight,minimumLabelPixels:Math.min(...labelSizes),labelCount:labelSizes.length,buttonPressed:card.querySelector('[data-expand]').getAttribute('aria-pressed')};
+        }''')
+        assert detail["expanded"] and detail["focusable"] and detail["buttonPressed"] == "true", detail
+        assert detail["labelCount"] == 100 and detail["minimumLabelPixels"] >= 14, detail
+        assert detail["scrollWidth"] > detail["frameWidth"] and detail["scrollHeight"] > detail["frameHeight"], detail
+        frame = dense_card.locator(".viz-frame")
+        detail["labelReachability"] = frame.evaluate(r'''frame=>{
+          const labels=[...frame.querySelectorAll('.task-label')],unreachable=[];
+          for(const label of labels){
+            const box=frame.getBoundingClientRect(),r=label.getBoundingClientRect();
+            frame.scrollLeft+=r.x+r.width/2-box.x-frame.clientWidth/2;
+            frame.scrollTop+=r.y+r.height/2-box.y-frame.clientHeight/2;
+            const shown=label.getBoundingClientRect(),visible=frame.getBoundingClientRect();
+            if(shown.x<visible.x-.5||shown.right>visible.x+frame.clientWidth+.5||shown.y<visible.y-.5||shown.bottom>visible.y+frame.clientHeight+.5)unreachable.push(label.dataset.taskId||label.textContent);
+          }
+          return {checked:labels.length,unreachable};
+        }''')
+        assert detail["labelReachability"] == {"checked": 100, "unreachable": []}, detail
+        detail["captionReachability"] = frame.evaluate(r'''frame=>{
+          const captions=[...frame.querySelectorAll('.caption')],unreachable=[];let checked=0,minimumPixels=Infinity;
+          for(const text of captions){
+            minimumPixels=Math.min(minimumPixels,parseFloat(getComputedStyle(text).fontSize)*text.getScreenCTM().a);
+            for(let i=0;i<text.getNumberOfChars();i++){
+              const extent=text.getExtentOfChar(i),center=new DOMPoint(extent.x+extent.width/2,extent.y+extent.height/2).matrixTransform(text.getScreenCTM()),box=frame.getBoundingClientRect();
+              frame.scrollLeft+=center.x-box.x-frame.clientWidth/2;
+              frame.scrollTop+=center.y-box.y-frame.clientHeight/2;
+              const matrix=text.getScreenCTM(),a=new DOMPoint(extent.x,extent.y).matrixTransform(matrix),b=new DOMPoint(extent.x+extent.width,extent.y+extent.height).matrixTransform(matrix),visible=frame.getBoundingClientRect();
+              if(a.x<visible.x-.5||b.x>visible.x+frame.clientWidth+.5||a.y<visible.y-.5||b.y>visible.y+frame.clientHeight+.5)unreachable.push({text:text.textContent,index:i});
+              checked++;
+            }
+          }
+          return {captions:captions.length,checkedGlyphs:checked,minimumPixels,unreachable};
+        }''')
+        assert detail["captionReachability"]["checkedGlyphs"] > 0 and detail["captionReachability"]["unreachable"] == [] and detail["captionReachability"]["minimumPixels"] >= 14, detail
+        frame.evaluate("frame=>{frame.scrollLeft=frame.scrollWidth;frame.scrollTop=frame.scrollHeight;}")
+        detail["pan"] = frame.evaluate(r'''frame=>{
+          const svg=frame.querySelector('svg'),box=frame.getBoundingClientRect(),captions=[...svg.querySelectorAll('.caption')].map(t=>({text:t.textContent,box:t.getBoundingClientRect()}));
+          return {scrollLeft:frame.scrollLeft,scrollTop:frame.scrollTop,rightReachable:Math.abs(frame.scrollWidth-frame.clientWidth-frame.scrollLeft)<=1,bottomReachable:Math.abs(frame.scrollHeight-frame.clientHeight-frame.scrollTop)<=1,captionVisible:captions.some(t=>t.box.x>=box.x-.5&&t.box.right<=box.right+.5&&t.box.y>=box.y-.5&&t.box.bottom<=box.bottom+.5)};
+        }''')
+        assert detail["pan"]["rightReachable"] and detail["pan"]["bottomReachable"], detail
+        frame.screenshot(path=str(artifacts / "dense-readable-detail-cs1.png"))
+        expand.click()
+        fit = dense_card.evaluate("card=>({expanded:card.querySelector('.viz-frame').classList.contains('is-expanded'),pressed:card.querySelector('[data-expand]').getAttribute('aria-pressed')})")
+        assert not fit["expanded"] and fit["pressed"] == "false", fit
+        fitted = page.evaluate(INSPECT, {"ids": IDS, "layout": layout, "solids": solids, "venn": VENN})
+        assert fitted["findings"] == [] and fitted["states"] == resting_states, fitted["findings"]
         browser.close()
-    report = {"passed": True, "url": url, "expectedPriority": EXPECTED, "states": states, "browserErrors": errors}
+    report = {"passed": True, "url": url, "viewport": viewport, "expectedPriority": EXPECTED, "states": states, "containment": result["containment"], "denseDetail": detail, "browserErrors": errors}
     (artifacts / "report.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
     print(json.dumps({"passed": True, "ids": IDS, "report": str(artifacts / "report.json")}))
     return 0
