@@ -1,7 +1,8 @@
 # PlantUML style delivery repair — 2026-10-04
 
-Status: validating. All five strict isolated runtime outcomes pass; exact-head
-publication and public resource verification are pending.
+Status: validating. All five strict isolated runtime outcomes pass. The first
+exact-head deployment and public visual gates pass. Canonical source packaging
+is repaired; a new exact-head public resource binding remains pending.
 
 ## Problem and delivered configuration
 
@@ -155,3 +156,32 @@ The exact new NWDIAG/Gantt reference examples render successfully in SVG and
 PNG with exact display names/addresses, 2/3/4-day spans and forward dependencies.
 All eight fresh previews received direct review. No rejected evaluation
 workspace was edited. The final 27-file candidate is frozen for `final-r3`.
+
+## Publication verification
+
+Source [`014fece01384f5e72bf00ce40f7c0d1d3ed80565`](https://github.com/gvillarroel/skills/commit/014fece01384f5e72bf00ce40f7c0d1d3ed80565)
+is pushed to `main` and deployed by successful exact-head
+[Pages run 37213408650](https://github.com/gvillarroel/skills/actions/runs/37213408650).
+All Linux workflow steps pass. The first public audit finds no native visual
+findings, passes 108/108 committed/native-to-live SVG paint comparisons,
+224/224 combined local/public desktop/mobile aspect checks, and all 16 controls.
+The owner directly reviews published Activity, WBS, Ditaa and ArchiMate cards
+in both selected viewport/palette combinations.
+
+Its exact public-byte gate is correctly rejected: 54 SVGs and two render
+reports lack a final LF in the committed source; the established Pages builder
+adds that LF. All 60 actual public resources match the local build exactly,
+and every one of the 56 differences is precisely one added terminal LF.
+The four already-canonical resources match Git bytes directly. This is a source
+packaging mismatch, with no stale response or paint/geometry difference.
+The bounded correction aligns only those gallery source assets with the
+existing builder policy. The frozen 27-file runtime payload, themes, source
+semantics, visual criteria and exact public equality remain unchanged.
+Retain the rejected public audit and its byte diagnosis; rerun the unchanged
+public gate against the corrected deployed commit before release completion.
+
+The repaired 56 sources pass exact pre-repair-blob-plus-terminal-LF verification,
+both native report validators and frozen fixture/family coverage. The local
+packaged audit exits 0, with zero findings, 54/54 paint parity, 112/112 aspect
+checks and all 16 controls. Repository gates and the 10,241-file canonical
+local installation check also pass.
