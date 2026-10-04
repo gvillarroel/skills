@@ -1,7 +1,7 @@
 # Colorset 1 Category Priority — 2026-10-04
 
 The user's category priority is primary red, grays, black, white, then the
-remaining colors. This revision passes local release validation. It corrects the shared
+remaining colors. This revision passes local and public release validation. It corrects the shared
 contract, renderer-specific defaults, and published fixtures that bypassed
 the category sequence.
 
@@ -274,9 +274,7 @@ The runtime payloads remain frozen; this correction changes only the
 acceptance fixture and project verification tools.
 
 Only the reviewed baseline-plus-native-mark ECharts gallery blobs were
-committed; unrelated working gallery edits remain preserved. The revision
-remains under publication validation until the mobile correction is deployed
-and the final public checks pass.
+committed; unrelated working gallery edits remain preserved.
 
 ```powershell
 uv run --script projects/colorset-priority/scripts/audit_d3_gallery.py --viewport desktop --artifacts projects/colorset-priority/artifacts/d3-gallery-fit-local/desktop
@@ -286,3 +284,46 @@ node --experimental-strip-types projects/colorset-priority/scripts/review_mermai
 node --experimental-strip-types projects/colorset-priority/scripts/audit_public_echarts.ts --expected-ref <exact-release-commit>
 node --experimental-strip-types projects/plantuml-style-repair/scripts/audit_native_gallery.ts --phase <release-phase> --published --expected-ref <exact-release-commit> --require-clean
 ```
+
+The final visual source release is
+[`d9140f7eb985fc8114a9330344f2ab88239e432a`](https://github.com/gvillarroel/skills/commit/d9140f7eb985fc8114a9330344f2ab88239e432a),
+deployed successfully by
+[Pages workflow 37227216666](https://github.com/gvillarroel/skills/actions/runs/37227216666).
+Its nine exact Git runtime bindings pass all 526 files with zero findings;
+only commit-reference fields differ from the first binding report. Both
+source commits preserve identical accepted runtime identities.
+
+Final public checks pass:
+
+- All 223 changed published resources match the exact committed builder's
+  expected output bytes, including the mobile CSS correction. The builder
+  identity and ECharts HTML identity remain unchanged.
+- D3 passes all 25 patterns at both 1440 px and 390 px, including actual
+  overview containment, 100 task labels, 109 caption/legend glyphs, expansion,
+  panning and Fit restoration. All 18 arrow records per viewport have
+  contrast of at least 3.072:1; 26 native intersection pixel samples retain
+  distinguishable alpha blends. Public desktop report SHA-256:
+  `75d76b014db41f558f40b603144c7b201743c5d1228bf29805f1cef990d605b9`.
+  Mobile report SHA-256:
+  `fa57346248ecbfcbb7cc798fecc25ef48d470808d006d955407f851ae54d73f2`.
+- Mermaid's repeated public review accepts all 62 static surfaces with zero
+  inside-text, actor-caption or unexplained-rim findings.
+- ECharts repeats 43 cards at desktop/mobile, 24 median paint samples and
+  eight hover bodies, with zero findings and exact committed-builder bytes.
+  Report SHA-256:
+  `d2541cd5fc764abb22b0ecafd459317a289ff84aa23f3c9363bbf63ab5ed43b8`.
+- PlantUML repeats 54 SVGs and two PNGs, 60 exact public resource bindings,
+  108 desktop/mobile SVG paint-parity checks, 224 local/public aspect checks,
+  and all 16 controls, with zero findings. Report SHA-256:
+  `1d8e98962e36056daa4f323d188546c98ee57bb056c60cf3fad4dd77e99800f7`.
+  Eight byte-bound public mobile key-card captures also pass direct review,
+  including timing, JSON/YAML ports, ArchiMate and Ditaa. Capture proof
+  SHA-256: `eab0093de341ea69ae135aa9a2f9822ba1576e9aa9474f87c696f983c6345939`.
+
+The final fixture rebuild, pattern IDs, skill validator, standalone
+independence tests, payload checks, Pages metadata validator and local
+installation check pass after the mobile fix. All 10,253 canonical local
+files match. The release keeps the isolated 18/18 accepted runs and all 53
+retained attempts unchanged. External native chart annotations retain the
+previously documented scope limitation; no broader annotation-contrast pass
+is claimed.
