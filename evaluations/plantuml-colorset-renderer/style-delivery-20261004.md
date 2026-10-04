@@ -1,8 +1,8 @@
 # PlantUML style delivery repair — 2026-10-04
 
-Status: validating. All five strict isolated runtime outcomes pass. The first
-exact-head deployment and public visual gates pass. Canonical source packaging
-is repaired; a new exact-head public resource binding remains pending.
+Status: done. All five strict isolated runtime outcomes pass. The corrected
+exact-head deployment, exact public resource binding and public visual gates
+pass. The canonical local installation is synchronized and validated.
 
 ## Problem and delivered configuration
 
@@ -131,8 +131,8 @@ The 27-file payload SHA-256 is unchanged in every manifest/before/after proof:
 `5f0988c9c6b6a035c5a75c82791b1cf1ed5cad703a808c4a0bc0dc94a27d3e5f`.
 Generalization succeeds on its first renderer call in all three runs and
 preserves the requested network names, hierarchy facts, dates, durations and
-dependencies. All earlier failures remain retained. Publication still requires
-exact-head Pages deployment and public resource verification.
+dependencies. All earlier failures remain retained. The corrected exact-head
+Pages deployment and public resource verification also pass, as recorded below.
 
 The repaired `corrected-r4` gallery is now independently clean: all 548 visible
 SVG labels use maximum-contrast black/white, with minimum ratio 4.58698.
@@ -185,3 +185,15 @@ both native report validators and frozen fixture/family coverage. The local
 packaged audit exits 0, with zero findings, 54/54 paint parity, 112/112 aspect
 checks and all 16 controls. Repository gates and the 10,241-file canonical
 local installation check also pass.
+
+Corrected source [`35f07038c6d30a1b08e820e4f5337d55c882b3fe`](https://github.com/gvillarroel/skills/commit/35f07038c6d30a1b08e820e4f5337d55c882b3fe)
+is pushed and deployed by successful exact-head
+[Pages run 37214189948](https://github.com/gvillarroel/skills/actions/runs/37214189948).
+The unchanged strict public gate exits 0: all 60 resources exactly match their
+committed Git blobs, all 108 live desktop/mobile paint comparisons pass,
+all 224 local/public aspect/frame checks pass, and all 16 controls pass.
+There are zero style, gallery or publication findings. Working-tree resource
+bytes also match the committed bytes exactly, without line-ending exceptions.
+The first failed public audit remains retained; none of its criteria changed.
+The [publication record](style-publication-20261004.md) preserves both attempts,
+exact commands, source/workflow identities and compact proof hashes.
