@@ -13,6 +13,7 @@
 - Preserve the pattern's core geometry and semantic color roles before changing labels or domain data.
 - Use SVG-native animation for standalone output; do not leave runtime D3 or CDN dependencies in a self-contained deliverable.
 - Include an SVG `<title>`, `<desc>`, stable `viewBox`, and final-state geometry.
+- Read [the shared overlap contract](../overlap-pattern-contracts.md): colorset1 assigns the core first to primary red and the six outer set identities to the next grays, while preserving opacity, multiply blending, IDs, labels and geometry. The named hues in the excerpt describe the colorset2 variant.
 
 ## Source Excerpt
 

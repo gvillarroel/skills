@@ -75,7 +75,23 @@ def parse_attribute(value: str) -> tuple[str, str]:
     return name.casefold(), expected
 
 
-def parse_args() -> argparse.Namespace:
+class OrderedTextAction(argparse.Action):
+    """Collect literal tokens or explicit pipe sequences in command-line order."""
+
+    def __init__(self, *args: object, split_sequence: bool = False, **kwargs: object) -> None:
+        super().__init__(*args, **kwargs)
+        self.split_sequence = split_sequence
+
+    def __call__(self, parser: argparse.ArgumentParser, namespace: argparse.Namespace,
+                 value: str, option_string: str | None = None) -> None:
+        tokens = [token.strip() for token in value.split("|")] if self.split_sequence else [value]
+        if self.split_sequence and any(not token for token in tokens):
+            parser.error(f"{option_string} requires non-empty tokens; use TOKEN or 'FIRST|SECOND'")
+        current = list(getattr(namespace, self.dest, []) or [])
+        setattr(namespace, self.dest, current + tokens)
+
+
+def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("artifact", type=Path)
     parser.add_argument("--require-id", action="append", default=[])
@@ -85,13 +101,20 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--require-text", action="append", default=[])
     parser.add_argument(
         "--ordered-text",
-        action="append",
+        action=OrderedTextAction,
         default=[],
-        help="Visible text token; repeat flags in the required reading order.",
+        help="Literal visible token; repeat in reading order. A pipe is literal and is not split.",
+    )
+    parser.add_argument(
+        "--require-ordered-text",
+        dest="ordered_text",
+        action=OrderedTextAction,
+        split_sequence=True,
+        help="Ordered visible tokens: repeat flags or quote an explicit pipe-separated sequence 'FIRST|SECOND'. Use --ordered-text for a literal pipe token.",
     )
     parser.add_argument("--no-require-svg-contract", action="store_true")
     parser.add_argument("--json-report", type=Path)
-    return parser.parse_args()
+    return parser.parse_args(argv)
 
 
 def check(args: argparse.Namespace) -> dict[str, object]:

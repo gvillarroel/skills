@@ -88,8 +88,10 @@ Use these tokens for D3 animated examples, replayable galleries, generated SVG a
   requested outline or a declared category overflow after all usable solids.
 - For SVG output, set text `font-family` explicitly because extracted SVGs may not inherit page CSS.
 - Use the primary palette for categorical charts before using derived colors.
-- Use opaque borderless base/saturated category fills first and choose black or
+- Use opaque borderless category fills in the bundled order and choose black or
   white labels by their actual contrast. Use highlight colors late in the solid
   sequence, and introduce border variants only after every usable solid is used.
+  Colorset1 prioritizes primary red, grays, black, white, then the remaining
+  colors; omit only the actual canvas token. Keep colorset2 in its bundled order.
 - Use interaction colors for hover, active, and pressed states.
 - Preserve source-rendered geometry, but remap editable example palettes to these tokens when the example is not demonstrating a third-party source theme.

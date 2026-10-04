@@ -24,7 +24,7 @@ function renderSunburst() {
     const root = d3.hierarchy(hierarchyData()).sum(d => d.value || 0);
     d3.partition().size([2 * Math.PI, 170])(root);
     const arc = d3.arc().startAngle(d => d.x0).endAngle(d => d.x1).innerRadius(d => d.y0).outerRadius(d => d.y1 - 2);
-    const color = d3.scaleOrdinal(["Create", "Serve", "Learn"], [palette.blue, palette.orange, palette.green]);
+    const color = d3.scaleOrdinal(["Create", "Serve", "Learn"], activeColorset === "colorset1" ? colors : [palette.blue, palette.orange, palette.green]);
     const g = svg.append("g").attr("transform", `translate(${width / 2},${height / 2 + 10})`);
     const paths = g.selectAll("path").data(root.descendants().filter(d => d.depth)).join("path")
       .attr("d", arc).attr("fill", d => color((d.depth === 1 ? d : d.parent).data.name))

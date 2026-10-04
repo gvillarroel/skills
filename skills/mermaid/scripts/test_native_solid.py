@@ -11,6 +11,7 @@ import xml.etree.ElementTree as ET
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from palette_paints import readable_text, solid_colors
 from mermaid_animation.solid import native_solid_presentation
+from style_mermaid_directory import theme_variables
 
 
 def paint(element, key):
@@ -37,6 +38,25 @@ def text(group, content='Label', **attributes):
 
 
 class NativeFamilies(unittest.TestCase):
+    def test_cs1_primary_theme_bodies_and_secondary_status_priority(self):
+        for family, key in [('flowchart', 'primaryColor'), ('classDiagram', 'mainBkg'),
+                            ('sequenceDiagram', 'actorBkg'), ('stateDiagram', 'stateBkg'),
+                            ('gantt', 'taskBkgColor')]:
+            self.assertEqual(theme_variables('colorset1', family)[key], '#9e1b32')
+        variables = theme_variables('colorset1', 'gantt')
+        self.assertEqual(variables['activeTaskBkgColor'], '#333e48')
+        self.assertEqual(variables['doneTaskBkgColor'], '#4f4f4f')
+        root = svg('gantt')
+        for index, status in enumerate(['task0', 'active0', 'done0']):
+            body = box(root, f'task {status}', id=f'task-{index}')
+            caption = text(root, status, id=f'task-{index}-text', **{'class': 'taskText'})
+        native_solid_presentation(root, 'colorset1')
+        for index in range(3):
+            body, caption = list(root)[index*2:index*2+2]
+            self.assertEqual(paint(body, 'fill'), ['#9e1b32', '#333e48', '#4f4f4f'][index])
+            self.assertEqual(paint(caption, 'fill'), '#ffffff')
+            self.assertEqual(paint(body, 'stroke'), 'none')
+
     def assert_solid(self, shape, label=None):
         fill=paint(shape,'fill')
         self.assertIn(fill, solid_colors('colorset2'))

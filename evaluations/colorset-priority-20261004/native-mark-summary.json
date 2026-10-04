@@ -1,0 +1,38 @@
+{
+  "date": "2026-10-04",
+  "source": "independent actual DOM paint and native geometry observations",
+  "owners": [
+    {
+      "skill": "echarts-animated-svg",
+      "runId": "20261004-cs1-priority-echarts-animated-svg-contract-median-ink-r6-1",
+      "payloadSha256": "2cb718ed898218d8edd8304d92827feee613373131ee11dc7041ee0a3d7221d8",
+      "browserPassed": true,
+      "surfaceCount": 8,
+      "completeHeadObservations": 4,
+      "minimumCompleteHeadClearancePx": 3.25,
+      "minimumArrowContrast": 3.8252658228054326,
+      "restingBoxObservations": 16,
+      "restingMedianSamples": 48,
+      "minimumRestingMedianContrast": 7.9046884551695875,
+      "hoverBoxObservations": 16,
+      "hoverMedianSamples": 48,
+      "minimumHoverMedianContrast": 7.9046884551695875
+    },
+    {
+      "skill": "slidev-echarts",
+      "runId": "20261004-cs1-priority-slidev-echarts-contract-median-ink-r6-1",
+      "payloadSha256": "d03f3a283cf7b020c65f8ee0642afff42a3e3ff2232d3e0a61b1b6ecab67c8ce",
+      "browserPassed": true,
+      "surfaceCount": 8,
+      "completeHeadObservations": 4,
+      "minimumCompleteHeadClearancePx": 3.25,
+      "minimumArrowContrast": 3.8252658228054326,
+      "restingBoxObservations": 16,
+      "restingMedianSamples": 48,
+      "minimumRestingMedianContrast": 7.9046884551695875,
+      "hoverBoxObservations": 16,
+      "hoverMedianSamples": 48,
+      "minimumHoverMedianContrast": 7.9046884551695875
+    }
+  ]
+}

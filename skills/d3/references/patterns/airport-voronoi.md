@@ -27,7 +27,7 @@ function renderAirportsVoronoi() {
     const delaunay = d3.Delaunay.from(airports, d => d[0], d => d[1]);
     const voronoi = delaunay.voronoi([48, 58, width - 48, 336]);
     const cells = svg.append("g").selectAll("path").data(airports).join("path")
-      .attr("d", (d, i) => voronoi.renderCell(i)).attr("fill", (d, i) => ["#cdf3ff", "#dbffcc", "#ffe5cc", "#fff4cc", "#ffccd5", "#f9ccff", "#e7e7e7"][i])
+      .attr("d", (d, i) => voronoi.renderCell(i)).attr("fill", (d, i) => (activeColorset === "colorset1" ? colors : ["#cdf3ff", "#dbffcc", "#ffe5cc", "#fff4cc", "#ffccd5", "#f9ccff", "#e7e7e7"])[i])
       .attr("stroke", "#fff").attr("stroke-width", 2);
     fadeIn(cells, .08, .6);
     svg.append("path").attr("d", "M64,96 C140,54 218,72 280,86 C364,100 456,82 506,142 L480,312 C386,348 248,338 108,318 L64,96Z")

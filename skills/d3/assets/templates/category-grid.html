@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" href="data:,"><title>__TITLE__</title><style>
+*{box-sizing:border-box}body{margin:0;background:__CANVAS__;color:__TEXT__;font-family:Arial,Helvetica,sans-serif}
+main{max-width:__WIDTH__px;margin:auto;padding:12px}h1{font-size:20px;margin:0 0 8px;overflow-wrap:anywhere}
+svg{display:block;width:100%;height:auto}#category-frame{width:100%}
+</style></head><body data-colorset="__COLORSET__"><main><h1>__TITLE__</h1><div id="category-frame">
+<svg id="__SVG_ID__" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="__SVG_ID__-title __SVG_ID__-description"
+data-pattern-id="__PATTERN_ID__" data-colorset="__COLORSET__" data-canvas="__CANVAS__">
+<title id="__SVG_ID__-title">__TITLE__</title><desc id="__SVG_ID__-description">__DESC__</desc></svg>
+</div></main><script id="d3-runtime">__D3__</script><script>window.D3_SOLID_PALETTES=__PALETTES__;</script>
+<script id="d3-solid-runtime">__SOLID__</script><script>
+const config=__CONFIG__,svg=d3.select('#'+config.svgId),frame=document.getElementById('category-frame');
+let lastWidth=0;
+function render(){
+  const width=Math.max(48,Math.floor(frame.clientWidth));if(width===lastWidth)return;lastWidth=width;
+  const pad=12,gap=8,columns=Math.max(1,Math.min(config.columns,config.data.length,Math.floor((width-2*pad+gap)/168)));
+  const tileWidth=(width-2*pad-gap*(columns-1))/columns,font=14,lineHeight=18;
+  const records=config.data.map((record,index)=>({...record,index,style:window.D3SolidStyle.categoryStyle(index,config.colorset,config.canvas)}));
+  svg.selectAll('*').remove();svg.attr('viewBox',`0 0 ${width} 100`).attr('width',width)
+    .attr('data-category-count',records.length).attr('data-columns',columns).attr('data-d3-version',d3.version);
+  svg.append('title').attr('id',config.svgId+'-title').text(config.title);
+  svg.append('desc').attr('id',config.svgId+'-description').text(config.description);
+  const background=svg.append('rect').attr('class','category-background').attr('width',width).attr('fill',config.canvas).attr('stroke','none');
+  const groups=svg.append('g').selectAll('g.category').data(records,record=>record.id).join('g').attr('class','category')
+    .attr('data-outline-tier',record=>record.style.tier).attr('data-text-backing','rect');
+  const bodies=groups.append('rect').attr('class',config.tileClass).attr('data-category-index',record=>record.index)
+    .attr('data-category-id',record=>record.id).attr('width',tileWidth).attr('rx',4)
+    .attr('fill',record=>record.style.fill).attr('fill-opacity',1).attr('opacity',1)
+    .attr('stroke',record=>record.style.stroke).attr('stroke-width',record=>record.style.strokeWidth)
+    .attr('stroke-dasharray',record=>record.style.strokeDasharray).attr('role','img').attr('aria-label',record=>record.label);
+  const texts=groups.append('text').attr('class','category-label').attr('x',tileWidth/2).attr('text-anchor','middle')
+    .attr('font-family','Arial,Helvetica,sans-serif').attr('font-size',font).attr('font-weight',700)
+    .attr('fill',record=>record.style.text).attr('stroke','none');
+  // Measure real glyphs and keep every character; all tiles share the tallest label's height.
+  texts.each(function(record){
+    const text=d3.select(this),available=Math.max(1,tileWidth-24),lines=[];let line='';
+    for(const part of record.label.match(/\S+\s*|\s+/g)||[record.label]){
+      text.text(line+part);
+      if(line&&this.getComputedTextLength()>available){lines.push(line);line=part;}else line+=part;
+      text.text(line);
+      while(this.getComputedTextLength()>available&&Array.from(line).length>1){
+        const characters=Array.from(line);let cut=1;text.text(characters.slice(0,2).join(''));
+        while(cut<characters.length-1&&this.getComputedTextLength()<=available){cut++;text.text(characters.slice(0,cut+1).join(''));}
+        lines.push(characters.slice(0,cut).join(''));line=characters.slice(cut).join('');text.text(line);
+      }
+    }
+    lines.push(line);record.lines=lines;text.text('');
+  });
+  const tileHeight=Math.max(56,d3.max(records,record=>record.lines.length)*lineHeight+24),rows=Math.ceil(records.length/columns),height=2*pad+rows*tileHeight+(rows-1)*gap;
+  svg.attr('viewBox',`0 0 ${width} ${height}`).attr('height',height);background.attr('height',height);
+  groups.attr('transform',record=>`translate(${pad+(record.index%columns)*(tileWidth+gap)},${pad+Math.floor(record.index/columns)*(tileHeight+gap)})`);
+  bodies.attr('height',tileHeight);
+  texts.each(function(record){d3.select(this).selectAll('tspan').data(record.lines).join('tspan').attr('x',tileWidth/2)
+    .attr('y',(_,index)=>tileHeight/2-(record.lines.length-1)*lineHeight/2+font*.35+index*lineHeight).text(line=>line);});
+  window.D3SolidStyle.normalize(svg.node());window.categoryGridReady=true;
+}
+new ResizeObserver(render).observe(frame);render();
+</script></body></html>

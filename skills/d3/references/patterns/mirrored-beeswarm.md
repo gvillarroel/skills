@@ -33,10 +33,10 @@ function renderMirroredBeeswarm() {
     axisBottom(svg, x, y0, 6);
     svg.append("line").attr("x1", 64).attr("x2", width - 56).attr("y1", y0).attr("y2", y0).attr("stroke", palette.line).attr("stroke-width", 1.4);
     const dots = svg.append("g").selectAll("circle").data(nodes).join("circle")
-      .attr("cx", d => d.x).attr("cy", d => d.y).attr("fill", d => d.side === "Current" ? palette.red : palette.blue).attr("fill-opacity", 1);
+      .attr("cx", d => d.x).attr("cy", d => d.y).attr("fill", d => activeColorset === "colorset1" ? colors[d.side === "Current" ? 0 : 1] : d.side === "Current" ? palette.red : palette.blue).attr("fill-opacity", 1);
     grow(dots, "r", 2, 6.5, .06, .55);
-    svg.append("rect").attr("x", 62).attr("y", y0 - 78).attr("width", width - 124).attr("height", 48).attr("fill", palette.redHighlight).attr("fill-opacity", 1).lower();
-    svg.append("rect").attr("x", 62).attr("y", y0 + 30).attr("width", width - 124).attr("height", 64).attr("fill", palette.blueHighlight).attr("fill-opacity", 1).lower();
+    svg.append("rect").attr("x", 62).attr("y", y0 - 78).attr("width", width - 124).attr("height", 48).attr("fill", activeColorset === "colorset1" ? palette.gray100 : palette.redHighlight).attr("fill-opacity", 1).lower();
+    svg.append("rect").attr("x", 62).attr("y", y0 + 30).attr("width", width - 124).attr("height", 64).attr("fill", activeColorset === "colorset1" ? palette.gray50 : palette.blueHighlight).attr("fill-opacity", 1).lower();
     svg.append("text").attr("class", "mark-label").attr("fill", palette.red).attr("x", 72).attr("y", y0 - 72).text("Current");
     svg.append("text").attr("class", "mark-label").attr("fill", palette.blue).attr("x", 72).attr("y", y0 + 88).text("Prior");
   }

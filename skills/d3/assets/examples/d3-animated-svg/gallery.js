@@ -78,7 +78,9 @@
 
   const width = 560;
   const height = 420;
-  const colors = [palette.blue, palette.orange, palette.green, palette.purple, palette.red];
+  const colors = activeColorset === "colorset1"
+    ? window.D3_SOLID_PALETTES.colorset1.solidSequence.filter(paint => paint !== palette.surface)
+    : [palette.blue, palette.orange, palette.green, palette.purple, palette.red];
   const ramps = {
     blue: [palette.blueHighlight, palette.cyan, palette.blue, palette.blueHover],
     heat: [palette.yellowHighlight, palette.orangeHighlight, palette.orange, palette.red],
@@ -1314,7 +1316,8 @@
     const nodes = center.append("g").selectAll("g").data(root.descendants()).join("g")
       .attr("transform", d => `translate(${radialPoint(d)})`);
     nodes.append("circle").attr("r", d => d.depth === 0 ? 18 : d.children ? 12 : 7)
-      .attr("fill", d => d.depth === 0 ? palette.purple : d.children ? palette.blue : palette.green)
+      .attr("fill", d => activeColorset === "colorset1" ? colors[d.depth === 0 ? 0 : d.children ? 1 : 2]
+        : d.depth === 0 ? palette.purple : d.children ? palette.blue : palette.green)
       .attr("stroke", "#fff").attr("stroke-width", 2);
     nodes.append("text").attr("class", "label").attr("dy", d => d.depth === 0 ? 34 : 4)
       .attr("x", d => d.depth === 0 ? 0 : (d.x < Math.PI ? 12 : -12))
@@ -1355,7 +1358,7 @@
   function renderStreamgraph() {
     const svg = prepareSvg("streamgraph", "Streamgraph", "D3 stacked areas with wiggle offset over time.");
     const keys = ["Search", "Assist", "Automate", "Review"];
-    const color = d3.scaleOrdinal(keys, [palette.blue, palette.green, palette.orange, palette.purple]);
+    const color = d3.scaleOrdinal(keys, activeColorset === "colorset1" ? colors : [palette.blue, palette.green, palette.orange, palette.purple]);
     const data = d3.range(12).map(i => ({
       month: i,
       Search: 20 + Math.sin(i / 1.6) * 8 + i * 1.2,
@@ -1385,7 +1388,7 @@
     const points = [[88, 95, "North"], [168, 62, "Edge"], [265, 112, "Core"], [378, 72, "Lab"], [470, 135, "Field"], [128, 204, "Ops"], [240, 232, "Design"], [346, 205, "Data"], [438, 282, "Pilot"], [180, 318, "Scale"], [304, 336, "Learn"]];
     const delaunay = d3.Delaunay.from(points, d => d[0], d => d[1]);
     const voronoi = delaunay.voronoi([34, 34, width - 34, height - 34]);
-    const color = d3.scaleOrdinal(d3.range(points.length), ["#d7e5f7", "#f7dfc6", "#d9ebd7", "#ece1f5", "#dcecef", "#f2d3d0", "#cfddf0", "#f2e4bd", "#d8e7de", "#e4ddf2", "#f0d8c4"]);
+    const color = d3.scaleOrdinal(d3.range(points.length), activeColorset === "colorset1" ? colors : ["#d7e5f7", "#f7dfc6", "#d9ebd7", "#ece1f5", "#dcecef", "#f2d3d0", "#cfddf0", "#f2e4bd", "#d8e7de", "#e4ddf2", "#f0d8c4"]);
     const cells = svg.append("g").selectAll("path").data(points).join("path")
       .attr("d", (d, i) => voronoi.renderCell(i)).attr("fill", (d, i) => color(i))
       .attr("stroke", "#ffffff").attr("stroke-width", 2);
@@ -1400,7 +1403,7 @@
     const svg = prepareSvg("chord", "Chord ribbons", "D3 chord layout showing reciprocal category flow.");
     const names = ["Research", "Build", "Ship", "Support"];
     const matrix = [[0, 18, 7, 4], [9, 0, 21, 8], [5, 11, 0, 17], [8, 5, 13, 0]];
-    const color = d3.scaleOrdinal(names, [palette.blue, palette.orange, palette.green, palette.purple]);
+    const color = d3.scaleOrdinal(names, activeColorset === "colorset1" ? colors : [palette.blue, palette.orange, palette.green, palette.purple]);
     const outerRadius = 142;
     const innerRadius = outerRadius - 18;
     const groupArc = d3.arc().innerRadius(innerRadius).outerRadius(outerRadius);
@@ -1430,9 +1433,9 @@
     const color = d3.scaleOrdinal(root.children.map(d => d.data.name), colors);
     const branchName = d => d.ancestors().find(node => node.depth === 1).data.name;
     const familyTones = new Map(activeColorset === "colorset1" ? [
-      [palette.blue, [palette.redHover, palette.red, palette.error]],
-      [palette.orange, [palette.gray700, palette.gray500, palette.gray300]],
-      [palette.green, [palette.gray800, palette.gray600, palette.gray400]]
+      [colors[0], [palette.redHover, palette.red, palette.error]],
+      [colors[1], [palette.gray700, palette.gray500, palette.gray300]],
+      [colors[2], [palette.gray800, palette.gray600, palette.gray400]]
     ] : [
       [palette.blue, [palette.blueHover, palette.blue, palette.cyan]],
       [palette.orange, [palette.orangeHover, palette.orange, palette.warning]],
@@ -1493,13 +1496,26 @@
     const parentFill = new Map([["Create", palette.blueHighlight], ["Serve", palette.orangeHighlight], ["Learn", palette.greenHighlight]]);
     const leafFill = new Map([["Create", palette.blue], ["Serve", palette.orange], ["Learn", palette.green]]);
     const branchName = d => d.depth === 1 ? d.data.name : d.parent?.data.name;
+    const familyFill = new Map(root.children.map((branch, index) => [branch.data.name, colors[index]]));
+    const familyTones = new Map([
+      [colors[0], [palette.redHover, palette.error, palette.redHighlight]],
+      [colors[1], [palette.gray700, palette.gray500, palette.gray300]],
+      [colors[2], [palette.gray800, palette.gray600, palette.gray400]]
+    ]);
     nodes.append("circle").attr("fill", d => {
       if (d.depth === 0) return palette.gray50;
+      if (activeColorset === "colorset1") {
+        const base = familyFill.get(branchName(d));
+        if (d.children) return base;
+        const siblings = d.parent.children;
+        const tone = Math.min(2, Math.floor(siblings.indexOf(d) * 3 / siblings.length));
+        return (familyTones.get(base) || [palette.gray800, palette.gray500, palette.gray200])[tone];
+      }
       if (d.children) return parentFill.get(d.data.name) || palette.blueHighlight;
       return leafFill.get(branchName(d)) || palette.blue;
     })
       .attr("fill-opacity", 1)
-      .attr("stroke", d => d.depth === 0 ? palette.blueHighlight : "#fff").attr("stroke-width", d => d.depth === 0 ? 2 : 2.4);
+      .attr("stroke", d => activeColorset === "colorset1" ? "none" : d.depth === 0 ? palette.blueHighlight : "#fff").attr("stroke-width", d => activeColorset === "colorset1" ? 0 : d.depth === 0 ? 2 : 2.4);
     grow(nodes.selectAll("circle"), "r", 1, d => d.r, .05, .75);
     nodes.filter(d => d.depth === 1).append("text").attr("class", "mark-label")
       .attr("text-anchor", "middle").attr("y", d => -d.r - 8).text(d => d.data.name);
@@ -1514,7 +1530,7 @@
     const root = d3.hierarchy(hierarchyData()).sum(d => d.value || 0);
     d3.partition().size([2 * Math.PI, 170])(root);
     const arc = d3.arc().startAngle(d => d.x0).endAngle(d => d.x1).innerRadius(d => d.y0).outerRadius(d => d.y1 - 2);
-    const color = d3.scaleOrdinal(["Create", "Serve", "Learn"], [palette.blue, palette.orange, palette.green]);
+    const color = d3.scaleOrdinal(["Create", "Serve", "Learn"], activeColorset === "colorset1" ? colors : [palette.blue, palette.orange, palette.green]);
     const g = svg.append("g").attr("transform", `translate(${width / 2},${height / 2 + 10})`);
     const paths = g.selectAll("path").data(root.descendants().filter(d => d.depth)).join("path")
       .attr("d", arc).attr("fill", d => color((d.depth === 1 ? d : d.parent).data.name))
@@ -1531,7 +1547,7 @@
     const svg = prepareSvg("icicle", "Icicle", "D3 partition laid out as horizontal nested bands.");
     const root = d3.hierarchy(hierarchyData()).sum(d => d.value || 0);
     d3.partition().size([width - 48, height - 58]).padding(2)(root);
-    const color = d3.scaleOrdinal(["Platform", "Create", "Serve", "Learn"], [palette.purple, palette.blue, palette.orange, palette.green]);
+    const color = d3.scaleOrdinal(["Platform", "Create", "Serve", "Learn"], activeColorset === "colorset1" ? colors : [palette.purple, palette.blue, palette.orange, palette.green]);
     const g = svg.append("g").attr("transform", "translate(24,30)");
     const nodes = g.selectAll("g").data(root.descendants()).join("g").attr("transform", d => `translate(${d.x0},${d.y0})`);
     nodes.append("rect").attr("width", d => d.x1 - d.x0).attr("height", d => Math.max(0, d.y1 - d.y0))
@@ -2747,7 +2763,7 @@
       { id: "qa", label: "QA", cx: 344, cy: 228, r: 74, fill: palette.blueHighlight, stroke: palette.blueHover, lx: 378, ly: 214 },
       { id: "release", label: "Release", cx: 160, cy: 280, r: 68, fill: palette.greenHighlight, stroke: palette.greenHover, lx: 102, ly: 346 },
       { id: "ops", label: "Ops", cx: 420, cy: 290, r: 60, fill: palette.orangeHighlight, stroke: palette.orangeHover, lx: 444, ly: 356 }
-    ];
+    ].map((circle, index) => activeColorset === "colorset1" ? { ...circle, fill: colors[index], stroke: colors[index] } : circle);
     const tasks = [
       { id: "T01", label: "T01 Intake", x: 132, y: 124, lx: 54, ly: 96, memberships: ["backlog"] },
       { id: "T02", label: "T02 Copy", x: 226, y: 77, lx: 196, ly: 58, memberships: ["ux"] },
@@ -2771,7 +2787,8 @@
       { id: "T20", label: "T20 Drill", x: 360, y: 286, lx: 356, ly: 344, memberships: ["data", "qa", "ops"] }
     ];
     const labelWidth = d => taskLabelBoxWidth(d.label, 8.8, 16, 50);
-    const dotColor = d => d.memberships.length === 1 ? palette.blue : d.memberships.length === 2 ? palette.orange : palette.red;
+    const dotColor = d => activeColorset === "colorset1" ? colors[Math.min(d.memberships?.length ?? d.membershipCount, 3) - 1]
+      : (d.memberships?.length ?? d.membershipCount) === 1 ? palette.blue : (d.memberships?.length ?? d.membershipCount) === 2 ? palette.orange : palette.red;
     const labelEdgeX = d => d.lx < d.x ? d.lx + labelWidth(d) : d.lx;
 
     svg.append("rect")
@@ -2875,9 +2892,9 @@
     grow(dots, "r", 1.2, 4.2, .62, .48);
 
     const legend = [
-      { label: "1 scope", fill: palette.blue },
-      { label: "2 scopes", fill: palette.orange },
-      { label: "3+ scopes", fill: palette.red }
+      { label: "1 scope", fill: dotColor({ membershipCount: 1 }) },
+      { label: "2 scopes", fill: dotColor({ membershipCount: 2 }) },
+      { label: "3+ scopes", fill: dotColor({ membershipCount: 3 }) }
     ];
     const legendGroup = svg.append("g").attr("transform", "translate(330,366)");
     const legendItems = legendGroup.selectAll("g").data(legend).join("g").attr("transform", (_, i) => `translate(${i * 66},0)`);
@@ -2933,13 +2950,14 @@
       .attr("data-label-font-range", layout.labelFontRange ? `${layout.labelFontRange.min}-${layout.labelFontRange.max}` : layout.labelFontSize)
       .attr("data-longest-label", layout.longestLabel || "");
 
-    const circles = layout.circles.map(circle => ({
+    const circles = layout.circles.map((circle, index) => ({
       ...circle,
       fillColor: palette[circle.fill] || circle.fill,
-      strokeColor: palette[circle.stroke] || circle.stroke
+      strokeColor: activeColorset === "colorset1" ? colors[index] : palette[circle.stroke] || circle.stroke
     }));
     const tasks = layout.tasks;
-    const dotColor = d => d.membershipCount === 1 ? palette.blue : d.membershipCount === 2 ? palette.orange : palette.red;
+    const dotColor = d => activeColorset === "colorset1" ? colors[Math.min(d.membershipCount, 3) - 1]
+      : d.membershipCount === 1 ? palette.blue : d.membershipCount === 2 ? palette.orange : palette.red;
     const leaderColor = d => palette[d.leaderColorKey] || dotColor(d);
     const labelEdgeX = d => d.labelEdgeX ?? (d.labelX < d.x ? d.labelX + d.labelWidth : d.labelX);
     const labelEdgeY = d => d.labelEdgeY ?? (d.labelY + d.labelHeight / 2);
@@ -3076,9 +3094,9 @@
     fadeIn(labels, .56, .42);
 
     const legend = [
-      { label: "1 scope", fill: palette.blue },
-      { label: "2 scopes", fill: palette.orange },
-      { label: "3+ scopes", fill: palette.red }
+      { label: "1 scope", fill: dotColor({ membershipCount: 1 }) },
+      { label: "2 scopes", fill: dotColor({ membershipCount: 2 }) },
+      { label: "3+ scopes", fill: dotColor({ membershipCount: 3 }) }
     ];
     const legendGroup = svg.append("g").attr("transform", `translate(${svgWidth - 438},${svgHeight - 22})`);
     const legendItems = legendGroup.selectAll("g").data(legend).join("g").attr("transform", (_, i) => `translate(${i * 66},0)`);
@@ -3093,6 +3111,23 @@
       .attr("text-anchor", "end")
       .attr("font-weight", 800)
       .text("100 tasks, direct leaders, 0 label collisions");
+
+    if (activeColorset === "colorset1") {
+      // Reserve a caption rail after the unchanged task layout, matching the
+      // standalone builder's readable delivery geometry.
+      const bottom = Math.max(...tasks.map(task => task.labelY + task.labelHeight));
+      const railTop = Math.max(svgHeight, bottom + 16);
+      const baseline = railTop + 18;
+      const canvasHeight = baseline + 20;
+      svg.attr("viewBox", `0 0 ${svgWidth} ${canvasHeight}`)
+        .attr("data-source-height", svgHeight).attr("data-caption-rail-y", railTop);
+      svg.select("rect").attr("height", canvasHeight - 28);
+      svg.selectAll(":scope > text.caption").attr("class", "caption overlap-footer")
+        .attr("y", baseline).attr("font-size", 10.5).style("font-size", "10.5px");
+      legendGroup.attr("class", "overlap-legend")
+        .attr("transform", `translate(${svgWidth - 438},${baseline - 3.5})`)
+        .selectAll("text").attr("font-size", 10.5).style("font-size", "10.5px");
+    }
   }
 
   function vennCircleReveal(selection, delay = .08, opacity = .38) {
@@ -3180,8 +3215,10 @@
   }
 
   function renderVennPattern(id, title, desc, options) {
-    const svg = prepareSvg(id, title, desc);
-    const circles = options.circles;
+    const svg = prepareSvg(id, title, desc + (activeColorset === "colorset1" ? " Semantic transparency and multiply blending reveal shared set membership." : ""));
+    const circles = activeColorset === "colorset1"
+      ? options.circles.map((circle, index) => ({ ...circle, color: colors[index], stroke: colors[index] }))
+      : options.circles;
     svg
       .attr("data-pattern-family", "venn-overlap")
       .attr("data-layout", options.layout)
@@ -3218,6 +3255,7 @@
       .attr("class", "venn-circle")
       .attr("data-set-id", d => d.id)
       .attr("data-set-code", d => d.code)
+      .attr("data-opacity-role", activeColorset === "colorset1" ? "semantic" : null)
       .attr("cx", d => d.x)
       .attr("cy", d => d.y)
       .attr("fill", d => d.color)
@@ -4732,7 +4770,7 @@
   function renderSketchyStreamgraph() {
     const svg = prepareSvg("sketchy-streamgraph", "Sketchy streamgraph", "Stacked areas keep their data shape while rendered as rough filled bands.");
     const keys = ["Search", "Assist", "Automate", "Review"];
-    const color = d3.scaleOrdinal(keys, [palette.blue, palette.green, palette.orange, palette.purple]);
+    const color = d3.scaleOrdinal(keys, activeColorset === "colorset1" ? colors : [palette.blue, palette.green, palette.orange, palette.purple]);
     const data = d3.range(12).map(i => ({
       month: i,
       Search: 20 + Math.sin(i / 1.6) * 8 + i * 1.2,
@@ -7112,11 +7150,11 @@
 
     const a = svg.append("g").attr("transform", "translate(224,104)");
     a.append("text").attr("class", "mark-label").attr("x", 22).attr("y", -18).attr("text-anchor", "middle").text("A");
-    drawMatrix(a, 7, 2, 16, d => [palette.blue, palette.green][d.col], .34);
+    drawMatrix(a, 7, 2, 16, d => (activeColorset === "colorset1" ? colors : [palette.blue, palette.green])[d.col], .34);
 
     const b = svg.append("g").attr("transform", "translate(302,126)");
     b.append("text").attr("class", "mark-label").attr("x", 63).attr("y", -18).attr("text-anchor", "middle").text("B");
-    drawMatrix(b, 2, 7, 16, d => [palette.orange, palette.purple][d.row], .52);
+    drawMatrix(b, 2, 7, 16, d => (activeColorset === "colorset1" ? colors : [palette.orange, palette.purple])[d.row], .52);
 
     const delta = svg.append("g").attr("transform", "translate(410,112)");
     delta.append("text").attr("class", "mark-label").attr("x", 62).attr("y", -18).attr("text-anchor", "middle").text("Delta W");
@@ -7211,7 +7249,7 @@
       .attr("stroke-linecap", "round");
     drawPath(route, .55, 1.2);
     d3.range(4).forEach(i => {
-      const dot = svg.append("circle").attr("r", 6).attr("fill", [palette.blue, palette.green, palette.orange, palette.red][i]);
+      const dot = svg.append("circle").attr("r", 6).attr("fill", (activeColorset === "colorset1" ? colors : [palette.blue, palette.green, palette.orange, palette.red])[i]);
       dot.append("animateMotion")
         .attr("dur", "1.25s")
         .attr("begin", `${.65 + i * .16}s`)
@@ -7719,7 +7757,7 @@
     const out = svg.append("g").attr("transform", "translate(226,296)");
     out.append("rect").attr("x", -12).attr("y", -28).attr("width", 124).attr("height", 56).attr("rx", 10).attr("fill", palette.yellowHighlight).attr("stroke", palette.gold).attr("stroke-width", 2);
     [34, 58, 82].forEach((x, i) => {
-      out.append("rect").attr("x", x).attr("y", -16).attr("width", 14).attr("height", 32).attr("rx", 4).attr("fill", [palette.blue, palette.green, palette.orange][i]).attr("fill-opacity", 1)
+      out.append("rect").attr("x", x).attr("y", -16).attr("width", 14).attr("height", 32).attr("rx", 4).attr("fill", (activeColorset === "colorset1" ? colors : [palette.blue, palette.green, palette.orange])[i]).attr("fill-opacity", 1)
         .append("animate").attr("attributeName", "height").attr("from", 4).attr("to", 32).attr("dur", ".35s").attr("begin", `${1.45 + i * .12}s`).attr("fill", "freeze");
     });
     out.append("text").attr("class", "mark-label").attr("x", 50).attr("y", 47).attr("text-anchor", "middle").text("weighted output");
@@ -8717,7 +8755,7 @@
       .attr("data-divergence-degrees", (goldenAngle * 180 / Math.PI).toFixed(6))
       .attr("cx", d => d.x)
       .attr("cy", d => d.y)
-      .attr("fill", d => [palette.blue, palette.green, palette.orange, palette.purple][Math.floor(d.i / 10) % 4])
+      .attr("fill", d => (activeColorset === "colorset1" ? colors : [palette.blue, palette.green, palette.orange, palette.purple])[Math.floor(d.i / 10) % 4])
       .attr("stroke", palette.surface)
       .attr("stroke-width", .38);
     grow(seedMarks, "r", 0, d => d.radius, .04, .34);
@@ -8845,7 +8883,7 @@
       .attr("class", "voronoi-leaf-cell")
       .attr("data-cell-index", (_, i) => i)
       .attr("d", (_, i) => voronoi.renderCell(i))
-      .attr("fill", (_, i) => [palette.blueHighlight, palette.greenHighlight, palette.orangeHighlight, palette.purpleHighlight][i % 4])
+      .attr("fill", (_, i) => (activeColorset === "colorset1" ? colors : [palette.blueHighlight, palette.greenHighlight, palette.orangeHighlight, palette.purpleHighlight])[i % 4])
       .attr("stroke", palette.green)
       .attr("stroke-width", .8)
       .attr("opacity", .92);
@@ -11655,8 +11693,8 @@
       .attr("transform", d => `translate(${d.x},${d.y})`);
     const circles = groups.append("circle")
       .attr("r", d => d.r)
-      .attr("fill", d => [palette.blueHighlight, palette.orangeHighlight, palette.greenHighlight, palette.purpleHighlight][d.layer])
-      .attr("stroke", d => [palette.blue, palette.orange, palette.green, palette.purple][d.layer])
+      .attr("fill", d => (activeColorset === "colorset1" ? colors : [palette.blueHighlight, palette.orangeHighlight, palette.greenHighlight, palette.purpleHighlight])[d.layer])
+      .attr("stroke", d => (activeColorset === "colorset1" ? colors : [palette.blue, palette.orange, palette.green, palette.purple])[d.layer])
       .attr("stroke-width", 1.4);
     pulseMlpNodes(circles, delayForLayer);
     ["input", "hidden 1", "hidden 2", "output"].forEach((label, index) => {
@@ -11913,8 +11951,8 @@
       .attr("transform", d => `translate(${d.x},${d.y})`);
     const circles = groups.append("circle")
       .attr("r", d => d.r)
-      .attr("fill", d => [palette.blueHighlight, palette.orangeHighlight, palette.greenHighlight][d.layer])
-      .attr("stroke", d => [palette.blue, palette.orange, palette.green][d.layer])
+      .attr("fill", d => (activeColorset === "colorset1" ? colors : [palette.blueHighlight, palette.orangeHighlight, palette.greenHighlight])[d.layer])
+      .attr("stroke", d => (activeColorset === "colorset1" ? colors : [palette.blue, palette.orange, palette.green])[d.layer])
       .attr("stroke-width", 1.4);
     pulseMlpNodes(circles.filter(d => d.active), delayForLayer);
   }
@@ -12056,7 +12094,7 @@
     const x = d3.scalePoint().domain([0, 1, 2, 3, 4]).range([72, width - 70]);
     const y = d3.scaleLinear().domain([0, 3]).range([78, 310]);
     const link = d3.linkHorizontal().x(d => d.x).y(d => d.y);
-    const linkColors = [palette.blue, palette.orange, palette.green, palette.purple, palette.red];
+    const linkColors = activeColorset === "colorset1" ? colors : [palette.blue, palette.orange, palette.green, palette.purple, palette.red];
     const paths = svg.append("g").selectAll("path").data(links).join("path")
       .attr("d", ([source, target], i) => {
         const a = byId.get(source);
@@ -12075,7 +12113,7 @@
       .attr("transform", d => `translate(${x(d.layer)},${y(d.row)})`);
     groups.append("rect")
       .attr("x", -39).attr("y", -16).attr("width", 78).attr("height", 32).attr("rx", 6)
-      .attr("fill", d => d.layer === 0 ? palette.blueHover : d.layer === 4 ? palette.ink : palette.gray50)
+      .attr("fill", d => activeColorset === "colorset1" ? colors[d.layer] : d.layer === 0 ? palette.blueHover : d.layer === 4 ? palette.ink : palette.gray50)
       .attr("stroke", d => d.layer === 0 || d.layer === 4 ? palette.ink : palette.gray300)
       .attr("stroke-width", d => d.layer === 0 || d.layer === 4 ? 1.6 : 1.2);
     groups.append("text")
@@ -12127,7 +12165,7 @@
     const xPositions = [34, 122, 212, 316, 430, 518];
     const generationStartY = [60, 118, 178, 222, 292, 342];
     const rowGap = [0, 34, 20, 18, 18, 22];
-    const bundleColors = [palette.blue, palette.orange, palette.purple, palette.green, palette.red, palette.gray700, palette.gold, palette.blueHover];
+    const bundleColors = activeColorset === "colorset1" ? colors : [palette.blue, palette.orange, palette.purple, palette.green, palette.red, palette.gray700, palette.gold, palette.blueHover];
     const nodeRadius = 4.2;
     const nodes = generations.flatMap((generation, layer) => generation.map((node, index) => ({
       ...node,
@@ -12364,7 +12402,7 @@
       ["data", 27], ["brush", 25], ["ticks", 23], ["ribbon", 21], ["cells", 19], ["labels", 18]
     ].map(([text, value], i) => ({ text, value, i }));
     const size = d3.scaleSqrt().domain(d3.extent(terms, d => d.value)).range([10, 24]);
-    const color = d3.scaleOrdinal(terms.map(d => d.text), [palette.ink, palette.blue, palette.red, palette.orange, palette.green, palette.purple, palette.gray700]);
+    const color = d3.scaleOrdinal(terms.map(d => d.text), activeColorset === "colorset1" ? colors : [palette.ink, palette.blue, palette.red, palette.orange, palette.green, palette.purple, palette.gray700]);
     const boxes = [];
     const placed = terms.map((d, i) => {
       const fontSize = size(d.value);
@@ -12717,7 +12755,7 @@
       .attr("stroke-opacity", .72);
     drawPath(matchPaths, .25, .9);
     const nodes = svg.append("g").selectAll("g").data([...left, ...right]).join("g").attr("transform", d => `translate(${d.x},${d.y})`);
-    nodes.append("circle").attr("fill", d => d.parent ? "#fff" : palette.ink).attr("stroke", palette.blue).attr("stroke-width", 2);
+    nodes.append("circle").attr("fill", d => activeColorset === "colorset1" ? colors[d.parent ? 1 : 0] : d.parent ? "#fff" : palette.ink).attr("stroke", palette.blue).attr("stroke-width", 2);
     grow(nodes.selectAll("circle"), "r", 3, d => d.parent ? 8 : 12, .15, .55);
     nodes.append("text").attr("class", "mark-label").attr("text-anchor", "middle").attr("dy", d => d.parent ? -13 : 25).text(d => d.label);
   }
@@ -13656,10 +13694,10 @@
     axisBottom(svg, x, y0, 6);
     svg.append("line").attr("x1", 64).attr("x2", width - 56).attr("y1", y0).attr("y2", y0).attr("stroke", palette.line).attr("stroke-width", 1.4);
     const dots = svg.append("g").selectAll("circle").data(nodes).join("circle")
-      .attr("cx", d => d.x).attr("cy", d => d.y).attr("fill", d => d.side === "Current" ? palette.red : palette.blue).attr("fill-opacity", 1);
+      .attr("cx", d => d.x).attr("cy", d => d.y).attr("fill", d => activeColorset === "colorset1" ? colors[d.side === "Current" ? 0 : 1] : d.side === "Current" ? palette.red : palette.blue).attr("fill-opacity", 1);
     grow(dots, "r", 2, 6.5, .06, .55);
-    svg.append("rect").attr("x", 62).attr("y", y0 - 78).attr("width", width - 124).attr("height", 48).attr("fill", palette.redHighlight).attr("fill-opacity", 1).lower();
-    svg.append("rect").attr("x", 62).attr("y", y0 + 30).attr("width", width - 124).attr("height", 64).attr("fill", palette.blueHighlight).attr("fill-opacity", 1).lower();
+    svg.append("rect").attr("x", 62).attr("y", y0 - 78).attr("width", width - 124).attr("height", 48).attr("fill", activeColorset === "colorset1" ? palette.gray100 : palette.redHighlight).attr("fill-opacity", 1).lower();
+    svg.append("rect").attr("x", 62).attr("y", y0 + 30).attr("width", width - 124).attr("height", 64).attr("fill", activeColorset === "colorset1" ? palette.gray50 : palette.blueHighlight).attr("fill-opacity", 1).lower();
     svg.append("text").attr("class", "mark-label").attr("fill", palette.red).attr("x", 72).attr("y", y0 - 72).text("Current");
     svg.append("text").attr("class", "mark-label").attr("fill", palette.blue).attr("x", 72).attr("y", y0 + 88).text("Prior");
   }
@@ -14379,7 +14417,7 @@
     const delaunay = d3.Delaunay.from(airports, d => d[0], d => d[1]);
     const voronoi = delaunay.voronoi([48, 58, width - 48, 336]);
     const cells = svg.append("g").selectAll("path").data(airports).join("path")
-      .attr("d", (d, i) => voronoi.renderCell(i)).attr("fill", (d, i) => ["#cdf3ff", "#dbffcc", "#ffe5cc", "#fff4cc", "#ffccd5", "#f9ccff", "#e7e7e7"][i])
+      .attr("d", (d, i) => voronoi.renderCell(i)).attr("fill", (d, i) => (activeColorset === "colorset1" ? colors : ["#cdf3ff", "#dbffcc", "#ffe5cc", "#fff4cc", "#ffccd5", "#f9ccff", "#e7e7e7"])[i])
       .attr("stroke", "#fff").attr("stroke-width", 2);
     fadeIn(cells, .08, .6);
     svg.append("path").attr("d", "M64,96 C140,54 218,72 280,86 C364,100 456,82 506,142 L480,312 C386,348 248,338 108,318 L64,96Z")
@@ -14692,7 +14730,7 @@
     systems.forEach((system, si) => {
       const cy = height / 2 + 10;
       svg.append("circle").attr("cx", system.x).attr("cy", cy).attr("r", 8).attr("fill", palette.gold).attr("stroke", "#fff").attr("stroke-width", 2);
-      const systemColor = [palette.blue, palette.purple, palette.green][si];
+      const systemColor = (activeColorset === "colorset1" ? colors : [palette.blue, palette.purple, palette.green])[si];
       const orbits = svg.append("g").selectAll("circle.orbit").data(system.planets).join("circle")
         .attr("class", "orbit").attr("cx", system.x).attr("cy", cy).attr("fill", "none").attr("stroke", palette.gray300).attr("stroke-opacity", .72).attr("stroke-width", 1.2);
       grow(orbits, "r", 4, d => d, .06 + si * .04, .5);

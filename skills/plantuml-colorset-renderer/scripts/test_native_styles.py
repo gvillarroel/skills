@@ -6,6 +6,7 @@
 """Regression tests for actual native paint, semantic geometry, and theme refresh."""
 import unittest
 import xml.etree.ElementTree as ET
+from pathlib import Path
 from native_styles import finish_native_styles, style_findings, source_has_style, STYLE_RULES
 from arrow_contrast import property_value
 from render_plantuml_directory import inject_theme
@@ -130,6 +131,85 @@ class NativeStyleTests(unittest.TestCase):
             self.assertEqual(len({node.get('fill') for node in root}), 7)
             self.assertTrue(all(property_value(node, 'stroke') == 'none' for node in root))
             self.assertEqual(style_findings(root), [])
+
+    def test_cs1_archimate_compresses_absent_layers_before_other_colors(self):
+        for native, expected in [
+            (['#c9ffc9'], ['#9e1b32']),
+            (['#c2f0ff'], ['#9e1b32']),
+            (['#ccccff', '#97ff97'], ['#9e1b32', '#333e48']),
+            (['#c9ffc9', '#c2f0ff'], ['#333e48', '#9e1b32']),
+        ]:
+            root = svg(''.join(f'<rect fill="{paint}"/>' for paint in native))
+            report = finish_native_styles(root, 'colorset1')
+            self.assertEqual([node.get('fill') for node in root], expected)
+            self.assertEqual(set(report['archimateLayers'].values()), set(expected))
+            self.assertTrue(all(node.get('data-native-layer') for node in root))
+        root = svg('<rect fill="#4f4f4f"/>')
+        finish_native_styles(root, 'colorset1', 'rectangle "Explicit category" #4f4f4f')
+        self.assertEqual(root[0].get('fill'), '#4f4f4f')
+        self.assertIsNone(root.get('data-native-layer-map'))
+
+    def test_cs1_default_family_bodies_start_with_primary_red(self):
+        theme = (Path(__file__).resolve().parent.parent/'assets/themes/cs1.puml').read_text(encoding='utf-8')
+        for family in ['SequenceParticipant', 'Usecase', 'Class', 'Object', 'Activity', 'Component', 'Node', 'State']:
+            self.assertIn(f'skinparam {family}BackgroundColor #9e1b32\n', theme)
+        self.assertNotIn('#6d1222', theme)
+        self.assertNotIn('#e8002a', theme)
+        self.assertIn('skinparam ActivityDiamondBackgroundColor #333e48\n', theme)
+        self.assertIn('skinparam DatabaseBackgroundColor #333e48\n', theme)
+
+    def test_timing_terminal_label_surface_preserves_native_event_geometry(self):
+        trace = '<line x1="10" y1="20" x2="60" y2="20" stroke="#9e1b32"/>'
+        state = '<polygon points="60,40 90,40 90,65 60,65 50,52" fill="#9e1b32"/>'
+        root = svg(trace+state+label('Terminal', '#ffffff', x=65, y=57), 'TIMING')
+        root.set('viewBox', '0 0 120 80')
+        native_geometry = [ET.tostring(root[0]), ET.tostring(root[1])]
+        report = finish_native_styles(root, 'colorset1')
+        self.assertEqual([ET.tostring(root[0]), ET.tostring(root[1])], native_geometry)
+        self.assertEqual(report['labelSurfaceCount'], 1)
+        self.assertEqual(root.find('text').get('x'), '65')
+        self.assertEqual(root.find('text').get('y'), '57')
+        self.assertEqual(root.find('text').get('fill'), '#ffffff')
+        surface = root.find('rect')
+        self.assertEqual(surface.get('data-style-role'), 'label-surface')
+        self.assertEqual(surface.get('fill'), '#9e1b32')
+        self.assertEqual(style_findings(root), [])
+        surface.set('stroke', '#000000')
+        surface.set('stroke-width', '2')
+        self.assertIn('solid body has a decorative outline', style_findings(root))
+
+    def test_timing_label_padding_changes_only_outer_display_frame(self):
+        root = svg('<line x1="90" y1="20" x2="90" y2="70" stroke="#696969" stroke-width="1"/>'
+                   '<line x1="10" y1="20" x2="90" y2="20" stroke="#696969" stroke-width="1"/>'
+                   '<line x1="50" y1="75" x2="90" y2="75" stroke="#696969" stroke-width="1.5"/>'
+                   '<polygon points="60,40 90,40 90,65 60,65 50,52" fill="#9e1b32"/>'
+                   +label('Terminal', '#ffffff', x=65, y=57), 'TIMING')
+        root.set('viewBox', '0 0 120 80')
+        axis, state = ET.tostring(root[2]), ET.tostring(root[3])
+        finish_native_styles(root, 'colorset1')
+        self.assertEqual(root[0].get('x1'), '101')
+        self.assertEqual(root[1].get('x2'), '101')
+        self.assertEqual(ET.tostring(root[2]), axis)
+        self.assertEqual(ET.tostring(root[3]), state)
+
+    def test_cs1_chart_compresses_active_mark_kinds_without_changing_data(self):
+        for source, expected in [('line "Target" [50, 70]', '#9e1b32'),
+                                 ('bar "Actual" [40, 60]\nline "Target" [50, 70]', '#333e48')]:
+            root = svg('<line x1="10" y1="50" x2="70" y2="30" stroke="#333e48" stroke-width="2"/>'
+                       '<line x1="10" y1="70" x2="70" y2="70" stroke="#696969"/>', 'CHART')
+            finish_native_styles(root, 'colorset1', source)
+            self.assertEqual(property_value(root[0], 'stroke'), expected)
+            self.assertEqual(root[0].get('x1'), '10')
+            self.assertEqual(root[0].get('y2'), '30')
+            self.assertEqual(root[1].get('stroke'), '#696969')
+        root = svg('<ellipse cx="25" cy="50" rx="4" ry="4" fill="#4f4f4f" stroke="#4f4f4f"/>', 'CHART')
+        finish_native_styles(root, 'colorset1', 'scatter "Sample" [50]')
+        self.assertEqual(root[0].get('fill'), '#9e1b32')
+        self.assertEqual(property_value(root[0], 'stroke'), 'none')
+        root = svg('<line x1="10" y1="50" x2="70" y2="30" stroke="#333e48"/>', 'CHART')
+        finish_native_styles(root, 'colorset1', 'line "Target" [50, 70]\nskinparam LineColor #333e48')
+        self.assertEqual(property_value(root[0], 'stroke'), '#333e48')
+        self.assertIsNone(root.get('data-native-mark-map'))
 
 
 if __name__ == "__main__":

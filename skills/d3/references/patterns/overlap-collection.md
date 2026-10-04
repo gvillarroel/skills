@@ -13,6 +13,12 @@
 
 Use the pattern index to route directly to one section in this compact collection. Read only that section and any reference it explicitly names.
 
+For colorset1, allocate set identities in each section's declared order from
+the bundled solid sequence: primary red, then grays, black, white, and the
+remaining colors, excluding the actual canvas. Keep its semantic overlap
+opacity and multiply blending. Blue/orange/green or other named hues below
+describe the preserved colorset2 variant, not colorset1 category order.
+
 ## d3-overlap-3-chain
 
 ### Asymmetric Three Circle Chain
@@ -39,7 +45,7 @@ Validate 3 equal circles, overlap only along the chain, and the note `A overlaps
 
 Read `references/overlap-pattern-contracts.md`. Place Product, Research, Infra, Design, and Risk on a ring of radius `66` around `(280,210)`; every circle has radius `96`. Keep center `shared / strategy`, guide radius `68`, and `data-layout="symmetric-5-rosette"`.
 
-Validate equal radii, five 72-degree slots, 5 labels, and risk as the only red semantic set.
+Validate equal radii, five 72-degree slots and 5 labels. In colorset2, preserve risk as the only red semantic set.
 
 ## d3-overlap-3-rosette
 

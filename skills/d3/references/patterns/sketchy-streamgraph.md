@@ -22,7 +22,7 @@ The excerpt below is the compact renderer source for this pattern. If it referen
 function renderSketchyStreamgraph() {
     const svg = prepareSvg("sketchy-streamgraph", "Sketchy streamgraph", "Stacked areas keep their data shape while rendered as rough filled bands.");
     const keys = ["Search", "Assist", "Automate", "Review"];
-    const color = d3.scaleOrdinal(keys, [palette.blue, palette.green, palette.orange, palette.purple]);
+    const color = d3.scaleOrdinal(keys, activeColorset === "colorset1" ? colors : [palette.blue, palette.green, palette.orange, palette.purple]);
     const data = d3.range(12).map(i => ({
       month: i,
       Search: 20 + Math.sin(i / 1.6) * 8 + i * 1.2,

@@ -148,6 +148,9 @@ class TreemapBuilderTests(unittest.TestCase):
                                 self.assertEqual(result["colorset"], colorset)
                                 self.assertEqual(set(result["colors"]) - set(allowed), set())
                                 leaves = [item for item in result["nodes"] if item["leaf"]]
+                                if colorset == "colorset1":
+                                    headers = [item for item in result["nodes"] if not item["leaf"]]
+                                    self.assertEqual([item["fill"] for item in headers], ["#9e1b32", "#333e48", "#4f4f4f"])
                                 expected = {(leaf["name"], leaf["value"]) for branch in data["children"] for leaf in branch["children"]}
                                 self.assertEqual({(item["name"], item["value"]) for item in leaves}, expected)
                                 if name in {"changed", "boundary"}:

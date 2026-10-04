@@ -66,7 +66,7 @@ function renderTangledTreeLevels() {
     const xPositions = [34, 122, 212, 316, 430, 518];
     const generationStartY = [60, 118, 178, 222, 292, 342];
     const rowGap = [0, 34, 20, 18, 18, 22];
-    const bundleColors = [palette.blue, palette.orange, palette.purple, palette.green, palette.red, palette.gray700, palette.gold, palette.blueHover];
+    const bundleColors = activeColorset === "colorset1" ? colors : [palette.blue, palette.orange, palette.purple, palette.green, palette.red, palette.gray700, palette.gold, palette.blueHover];
     const nodeRadius = 4.2;
     const nodes = generations.flatMap((generation, layer) => generation.map((node, index) => ({
       ...node,

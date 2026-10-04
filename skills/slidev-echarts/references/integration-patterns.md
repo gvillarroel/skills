@@ -153,11 +153,22 @@ Prepare options with the bundled colorset helper before `setOption`. For a
 continuous two-point Cartesian route ending in a radius-4 scatter mark, lay
 out the original option, then call `insetCartesianArrowRoutes(option, chart, 7)`
 and apply its result. Keep the original option for semantic endpoints and
-recompute the pixel inset after resize and click changes. The example wrapper
-exposes `arrowTerminalClearance`, and its route slide sets 7 px; other chart
-families retain their native endpoint geometry. Inspect actual heads, local
+recompute the pixel inset after resize and click changes. For directed fixed
+`layout: 'none'` graphs, call `insetGraphArrowRoutes(chart, 3)` after the
+original option has settled and repeat after resize/click changes. This
+native graph step keeps source coordinates and nodes fixed while trimming
+display terminals so the whole head stays outside the node. The example
+wrapper exposes `arrowTerminalClearance`, and its Cartesian route slide sets
+7 px. Inspect actual heads, local
 backings and settled focus states rather than treating the option helper as
 a complete rendered-arrow audit.
+
+For native boxplots, follow [median contrast](boxplot-median-contrast.md).
+Pin ECharts 6.1.0, pass its full namespace to
+`qualifyBoxplotMedians(chart, echarts, selected)` after `setOption`, and
+repeat after native resize or click updates before capture. The adapter
+retains native data and box/whisker geometry and tracks median state ink.
+Normalize SVG paint before delivering exported SVG.
 
 ## Accessibility And Export
 

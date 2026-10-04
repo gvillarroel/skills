@@ -112,6 +112,9 @@ def main() -> int:
             locator.wait_for(state="attached", timeout=args.timeout_ms)
             info = locator.evaluate(
                 """svg => {
+                    // Capture the final paint contract even when its deferred
+                    // animation-frame normalization has not run in this tab.
+                    window.D3SolidStyle?.normalize(svg);
                     const box = svg.getBoundingClientRect();
                     const clone = svg.cloneNode(true);
                     const originals = [svg, ...svg.querySelectorAll('*')];

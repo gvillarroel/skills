@@ -27,7 +27,7 @@ function renderWordCloud() {
       ["data", 27], ["brush", 25], ["ticks", 23], ["ribbon", 21], ["cells", 19], ["labels", 18]
     ].map(([text, value], i) => ({ text, value, i }));
     const size = d3.scaleSqrt().domain(d3.extent(terms, d => d.value)).range([14, 54]);
-    const color = d3.scaleOrdinal(terms.map(d => d.text), [palette.ink, palette.blue, palette.red, palette.orange, palette.green, palette.purple, palette.gray700]);
+    const color = d3.scaleOrdinal(terms.map(d => d.text), activeColorset === "colorset1" ? colors : [palette.ink, palette.blue, palette.red, palette.orange, palette.green, palette.purple, palette.gray700]);
     const boxes = [];
     const placed = terms.map((d, i) => {
       const fontSize = size(d.value);

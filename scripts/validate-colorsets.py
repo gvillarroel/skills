@@ -15,6 +15,14 @@ from html.parser import HTMLParser
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+CS1_CATEGORY_ORDER = [
+    "#9e1b32",
+    "#333e48", "#4f4f4f", "#696969", "#828282", "#9c9c9c",
+    "#b5b5b5", "#cfcfcf", "#e7e7e7", "#363636", "#f7f7f7",
+    "#1c1c1c", "#000000", "#ffffff",
+    "#6d1222", "#e8002a", "#ffccd5",
+]
+CS1_CATEGORY_PRIORITY = ["primary-red", "grays", "black", "white", "remaining-colors"]
 HEX = re.compile(r"(?<![\w-])#([0-9a-fA-F]{8}|[0-9a-fA-F]{6}|[0-9a-fA-F]{4}|[0-9a-fA-F]{3})(?![\w-])")
 RGB = re.compile(r"rgba?\(\s*([\d.+-]+%?)\s*[, ]\s*([\d.+-]+%?)\s*[, ]\s*([\d.+-]+%?)(?:\s*[,/]\s*([\d.]+%?))?\s*\)", re.I)
 PAINT_ATTRS = {"fill", "stroke", "color", "stop-color", "flood-color", "lighting-color"}
@@ -184,6 +192,12 @@ def validate(root: Path, inputs: list[Path] | None = None, mode: str = "auto") -
     for name, row in contract["colorsets"].items():
         sequence = row.get("solidSequence", [])
         text_map = row.get("textOnFill", {})
+        if name == "colorset1":
+            for field in ("sequence", "solidSequence"):
+                if row.get(field) != CS1_CATEGORY_ORDER:
+                    findings.append({"path": "docs/colorsets.json", "colorset": name, "field": field, "error": "CS1 categories must follow primary red, grays, black, white, then remaining colors", "expected": CS1_CATEGORY_ORDER})
+            if row.get("categoryPriority") != CS1_CATEGORY_PRIORITY:
+                findings.append({"path": "docs/colorsets.json", "colorset": name, "error": "CS1 category priority declaration differs from the user preference"})
         if len(sequence) != len(set(sequence)) or set(sequence) != allowed[name]:
             findings.append({"path": "docs/colorsets.json", "colorset": name, "error": "Solid sequence must contain every allowed token exactly once"})
         if set(text_map) != allowed[name]:

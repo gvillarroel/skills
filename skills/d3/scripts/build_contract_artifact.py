@@ -306,21 +306,27 @@ rects.transition().duration(360).delay((d,i)=>80+i*55).ease(d3.easeCubicOut).att
 def logo_script(args: argparse.Namespace, palette: dict[str, str]) -> str:
     if not args.brand or not args.tagline:
         raise ValueError("Logo artifacts require --brand and --tagline")
+    paint_contract = json.loads((Path(__file__).resolve().parents[1] / "assets/palettes/colorsets.json").read_text(encoding="utf-8"))["colorsets"][args.colorset]
     spec = {
         "svgId": args.svg_id, "brand": args.brand, "tagline": args.tagline,
         "width": args.width, "height": args.height, "colorset": args.colorset,
         "palette": palette, "mode": args.logo_mode, "wedgeCount": args.wedge_count,
         "markClass": args.logo_mark_class, "wedgeClass": args.wedge_class,
         "brandClass": args.brand_class, "taglineClass": args.tagline_class,
+        "wedgeStyles": [category_style(index, paint_contract, palette["surface"]) for index in range(args.wedge_count)] if args.colorset == "colorset1" else None,
     }
     return """
 (()=>{const spec=__SPEC__,svg=d3.select(`#${CSS.escape(spec.svgId)}`),cx=spec.width*.28,cy=spec.height*.46;
 const mark=svg.append("g").attr("class",spec.markClass);
 if(spec.mode==="wedges"){
-const colors=spec.colorset==="colorset2"?[spec.palette.accent,spec.palette.orange,spec.palette.green,spec.palette.purple,spec.palette.blue,spec.palette.yellow,spec.palette.primary]:[spec.palette.primary,spec.palette.accent,spec.palette.primary_dark];
+const colors=spec.colorset==="colorset2"?[spec.palette.accent,spec.palette.orange,spec.palette.green,spec.palette.purple,spec.palette.blue,spec.palette.yellow,spec.palette.primary]:spec.wedgeStyles.map(style=>style.fill);
 const arcs=d3.pie().sort(null).value(1)(d3.range(spec.wedgeCount)),arc=d3.arc().innerRadius(24).outerRadius(Math.min(spec.width,spec.height)*.23).padAngle(.035);
 mark.attr("transform",`translate(${cx},${cy})`).selectAll("path").data(arcs).join("path").attr("class",spec.wedgeClass)
-.attr("d",arc).attr("fill",(d,i)=>colors[i%colors.length]).attr("stroke",spec.palette.surface).attr("stroke-width",2).attr("opacity",0).attr("transform","scale(.2)")
+.attr("d",arc).attr("fill",(d,i)=>colors[i%colors.length])
+.attr("data-outline-tier",(d,i)=>spec.wedgeStyles?.[i].tier??null)
+.attr("stroke",(d,i)=>spec.wedgeStyles?.[i].stroke??spec.palette.surface)
+.attr("stroke-width",(d,i)=>spec.wedgeStyles?.[i].strokeWidth??2)
+.attr("stroke-dasharray",(d,i)=>spec.wedgeStyles?.[i].strokeDasharray??null).attr("opacity",0).attr("transform","scale(.2)")
 .transition().duration(460).delay((d,i)=>i*28).ease(d3.easeCubicOut).attr("opacity",1).attr("transform","scale(1)");
 }else{
 mark.append("circle").attr("class","orbit").attr("cx",cx).attr("cy",cy).attr("r",Math.min(spec.width,spec.height)*.22)

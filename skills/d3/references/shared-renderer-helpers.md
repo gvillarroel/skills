@@ -65,7 +65,10 @@ const palette = {
   surface: "#ffffff",
   line: "#cfcfcf"
 };
-const colors = [palette.blue, palette.orange, palette.green, palette.purple, palette.red];
+// Read activePalette from the chosen bundled colorsets.json entry.
+const colors = activeColorset === "colorset1"
+  ? activePalette.solidSequence.filter(paint => paint !== palette.surface)
+  : [palette.blue, palette.orange, palette.green, palette.purple, palette.red];
 const ramps = {
   blue: [palette.blueHighlight, palette.cyan, palette.blue, palette.blueHover],
   heat: [palette.yellowHighlight, palette.orangeHighlight, palette.orange, palette.red],

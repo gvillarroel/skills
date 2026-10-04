@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-04",
+  "originalReviewer": "review_browser_v1.py",
+  "originalReviewerSha256": "dfb49ea724bb7184dcf9328af2eac33fcb577eaadfab62fdd078a2ef9aa795f9",
+  "protocolSha256": "4341c090bb5debd55716c4be3046103f6ffdc44147f36eddb19e4eb4bfd19ae4",
+  "amendmentStatus": "post-sampling evaluator repair; original evidence retained",
+  "findings": [
+    "The naturalistic Mermaid chain prompt did not declare every process node a distinct category; an exact category index per node is unsupported by that prompt.",
+    "All eighteen process nodes reuse the primary semantic role. A native same-fill one-pixel stroke has no contrasting decorative rim.",
+    "A screen-area cutoff incorrectly rejected scaled mobile bodies. Containing-body qualification must use native geometry area.",
+    "Original strict workflow errors remain failures; supplemental semantic review does not change the original literal-slot criterion's recorded result."
+  ],
+  "applicationPolicy": "Apply the amended supplemental review to every retained Mermaid naturalistic output; preserve every original report and sampled failure. Keep all explicit indexed-slot/overflow contracts unchanged."
+}

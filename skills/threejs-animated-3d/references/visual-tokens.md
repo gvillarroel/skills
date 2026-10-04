@@ -21,9 +21,11 @@ expanded, multicolor, or full-color request; record it in `data-colorset`.
 | Main emphasis / active emphasis / critical | `#9e1b32` / `#6d1222` / `#e8002a` |
 | Gray structure, dark to light | `#363636`, `#4f4f4f`, `#696969`, `#828282`, `#9c9c9c`, `#b5b5b5`, `#cfcfcf`, `#e7e7e7` |
 
-Start with neutral materials and use red for a declared focal object, selection,
-change, or risk. Reuse colors for objects with the same role. Use geometry,
-position, texture, and direct labels before adding another hue. Keep filled
+Allocate distinct category materials from the bundled `solidSequence`: start
+with primary red `#9e1b32`, then grays, black, white, and the remaining colors.
+Exclude only the actual canvas token. Reuse colors for objects with the same
+semantic role; preserve explicit status meanings and ordered-value scales. Use
+geometry, position, texture, and direct labels alongside color. Keep filled
 meshes free of decorative `EdgesGeometry`, wireframes, or silhouette overlays.
 
 Pink `#ffccd5` is a **last-resort category**, after usable reds, grays, black,

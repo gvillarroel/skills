@@ -435,7 +435,7 @@ function renderExoplanetOrbits() {
     systems.forEach((system, si) => {
       const cy = height / 2 + 10;
       svg.append("circle").attr("cx", system.x).attr("cy", cy).attr("r", 8).attr("fill", palette.gold).attr("stroke", "#fff").attr("stroke-width", 2);
-      const systemColor = [palette.blue, palette.purple, palette.green][si];
+      const systemColor = (activeColorset === "colorset1" ? colors : [palette.blue, palette.purple, palette.green])[si];
       const orbits = svg.append("g").selectAll("circle.orbit").data(system.planets).join("circle")
         .attr("class", "orbit").attr("cx", system.x).attr("cy", cy).attr("fill", "none").attr("stroke", palette.gray300).attr("stroke-opacity", .72).attr("stroke-width", 1.2);
       grow(orbits, "r", 4, d => d, .06 + si * .04, .5);

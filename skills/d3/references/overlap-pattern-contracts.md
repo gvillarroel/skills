@@ -16,7 +16,7 @@ Read this reference after a `references/patterns/*overlap*.md`, `*rosette*.md`, 
 - Use base token fills without circle outlines. Preserve explicit opacity only
   to reveal shared set regions. Keep the white semantic-center disk above
   overlapping fills and use opaque borderless marks for ordinary categories.
-- External labels use a 15-unit colored code circle, a white two-letter code, and a dark or matching-color label below it.
+- External labels use a 15-unit colored code circle and exact black or white text selected by maximum contrast on the actual fill. Keep a readable label below it.
 - Put the semantic center on the stated center coordinate. Keep the note inside `y=382` so it cannot collide with lower labels.
 - When a set is already named by the semantic center, mark it `hideExternalLabel: true` instead of duplicating a label over a peer.
 
@@ -27,11 +27,12 @@ Read this reference after a `references/patterns/*overlap*.md`, `*rosette*.md`, 
 - A center pulse may repeat, but it must not move, resize, or obscure any source set.
 - Replay must rebuild only the requested SVG and leave circle, label, and animation counts stable.
 
-## Semantic Colors
+## Set Colors
 
-- Use blue, orange, green, purple, and red for peer sets, then blue-hover, orange-hover, or yellow only when more peers are required.
-- Red denotes risk, policy, decoding, or another explicit semantic role; do not use red merely to complete rotational symmetry.
-- Use neutral gray only for scaffolding and the repository surface token for the center disk.
+- Default to colorset1. Allocate set identities in their declared data order from the bundled `solidSequence`, excluding only the actual canvas: primary red, then grays, black, white, and the remaining colors. A name such as Safety or Eval is a set identity here, not an interaction or status color.
+- In `renderVennPattern`, replace only each colorset1 circle's `color` and `stroke` with `colors[index]` before drawing circles and labels. Keep every ID, code, label, center, radius, external-label coordinate and array order unchanged. Use the same allocated fill for its external code circle.
+- Keep colorset2's declared blue/orange/green/purple/red and extended tokens unchanged.
+- Preserve semantic overlap opacity and `mix-blend-mode:multiply`; mark the set circles `data-opacity-role="semantic"` and explain that meaning in the description. The surface-colored center disk and neutral scaffolding do not consume set categories.
 
 ## Validation
 

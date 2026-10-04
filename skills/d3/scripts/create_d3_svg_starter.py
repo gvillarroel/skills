@@ -12,6 +12,7 @@ import json
 import re
 import shutil
 from pathlib import Path
+from colorset_adapter import category_style
 
 
 PALETTE = {
@@ -514,6 +515,45 @@ function renderStarter(svg, data, palette, width, height) {
 }
 
 
+def pattern_code_for(pattern: str, colorset: str) -> str:
+    """Allocate default categories by first use; keep named status meanings."""
+    code = PATTERN_CODE[pattern].strip()
+    if colorset != "colorset1":
+        return code
+    helper = "const starterStyle = index => window.D3SolidStyle.categoryStyle(index, 'colorset1', palette.surface);\n"
+    if pattern == "animated-network":
+        code = code.replace(
+            "const color = { source: palette.blue, process: palette.purple, review: palette.orange, result: palette.green };",
+            "const groupStyles = new Map([...new Set(data.nodes.map(node => node.group))].map((group, index) => [group, starterStyle(index)]));",
+        ).replace(
+            '.attr("fill", d => color[d.group] || palette.blue)\n    .attr("fill-opacity", 0.86)\n    .attr("stroke", palette.surface)\n    .attr("stroke-width", 4)',
+            '.attr("fill", d => groupStyles.get(d.group).fill)\n'
+            '    .attr("data-outline-tier", d => groupStyles.get(d.group).tier)\n'
+            '    .attr("fill-opacity", 1)\n'
+            '    .attr("stroke", d => groupStyles.get(d.group).stroke)\n'
+            '    .attr("stroke-width", d => groupStyles.get(d.group).strokeWidth)\n'
+            '    .attr("stroke-dasharray", d => groupStyles.get(d.group).strokeDasharray)',
+        )
+    elif pattern == "blank":
+        # Points and the joining line represent the same quantitative series.
+        code = code.replace("palette.blue", "starterStyle(0).fill").replace("palette.orange", "starterStyle(0).fill")
+    elif pattern == "inline-bar-table":
+        # Preserve risk meaning: behind is red, supporting states are neutral.
+        code = code.replace(
+            'const statusColor = { "on track": palette.green, "watch": palette.orange, "behind": palette.red };',
+            'const statusColor = { "on track": starterStyle(2).fill, "watch": starterStyle(1).fill, "behind": starterStyle(0).fill };',
+        )
+    elif pattern == "operational-dashboard":
+        for token, index in (("palette.red", 0), ("palette.orange", 1), ("palette.blue", 2), ("palette.green", 3)):
+            # Only the tone table allocates these status bodies. Thresholds,
+            # trends, deltas and other explicitly meaningful paint stay scoped.
+            tone_start, tone_end = code.index("  const tone = {"), code.index("  function colorFor")
+            code = code[:tone_start] + code[tone_start:tone_end].replace("fill: " + token, f"fill: starterStyle({index}).fill") + code[tone_end:]
+        code = code.replace('fill: palette.green },\n    { label: "50-69 watch", fill: palette.blue },\n    { label: "70+ escalated", fill: palette.red }',
+                            'fill: colorFor("healthy").fill },\n    { label: "50-69 watch", fill: colorFor("stable").fill },\n    { label: "70+ escalated", fill: colorFor("critical").fill }')
+    return helper + code
+
+
 HTML_TEMPLATE = r"""<!doctype html>
 <html lang="en">
 <head>
@@ -750,6 +790,10 @@ def write_starter(out_dir: Path, pattern: str, title: str, force: bool, allow_sk
     for name, source_color in PALETTE.items():
         serialized = serialized.replace(json.dumps(source_color), json.dumps(palette[name]))
     data = json.loads(serialized)
+    if colorset == "colorset1" and pattern == "context-window-matrix":
+        contract = json.loads((skill_root() / "assets/palettes/colorsets.json").read_text(encoding="utf-8"))["colorsets"][colorset]
+        for index, segment in enumerate(item for item in data["segments"] if not item.get("unused")):
+            segment["color"] = category_style(index, contract, palette["surface"])["fill"]
     desc = f"Editable D3 starter using the {pattern} pattern."
     script_tag = d3_script_tag(resolved_out)
     html = (
@@ -759,8 +803,11 @@ def write_starter(out_dir: Path, pattern: str, title: str, force: bool, allow_sk
         .replace("__PALETTE_JSON__", json.dumps(palette, indent=2))
         .replace("__COLORSET__", colorset)
         .replace("__D3_SCRIPT__", script_tag)
-        .replace("__PATTERN_CODE__", PATTERN_CODE[pattern].strip())
+        .replace("__PATTERN_CODE__", pattern_code_for(pattern, colorset))
     )
+    if colorset == "colorset1":
+        # The deferred shared finalizer exposes the allocator before rendering.
+        html = html.replace("    main();", "    document.addEventListener('DOMContentLoaded', main, { once: true });")
 
     solid_root = Path(__file__).resolve().parents[1]
     html = html.replace("__SOLID_PALETTES__", json.dumps(json.loads((solid_root / "assets/palettes/colorsets.json").read_text(encoding="utf-8"))["colorsets"]))

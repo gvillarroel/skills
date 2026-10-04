@@ -57,7 +57,7 @@ def adapt_artifact(source, colorset="colorset1"):
         return script
 
     source = re.sub(r"<script\b[^>]*>[\s\S]*?</script\s*>", protect_vendor, source, flags=re.I)
-    # Distinct extended semantic roles become stable red/neutral roles in cs1.
+    # Cross-palette extended semantic roles become stable red/neutral roles in cs1.
     fallback = {"#007298": "#333e48", "#004d66": "#1c1c1c", "#00ace6": "#828282",
                 "#e77204": "#9e1b32", "#994a00": "#6d1222", "#ff9633": "#e8002a",
                 "#45842a": "#4f4f4f", "#294d19": "#363636", "#36b300": "#696969",
@@ -76,10 +76,12 @@ def adapt_artifact(source, colorset="colorset1"):
             return match.group(0)
         value = match.group(1).lower()
         value = "#" + ("".join(ch * 2 for ch in value) if len(value) == 3 else value)
-        if colorset == "colorset1" and value in fallback:
-            return fallback[value]
+        # An allocated or explicitly authored allowed token is already valid.
+        # Preserve it before applying fallback mappings for foreign hues.
         if value in allowed:
             return value
+        if colorset == "colorset1" and value in fallback:
+            return fallback[value]
         rgb = tuple(int(value[i:i + 2], 16) for i in (1, 3, 5))
         return min(allowed, key=lambda candidate: sum((rgb[i] - int(candidate[1 + i * 2:3 + i * 2], 16)) ** 2 for i in range(3)))
 

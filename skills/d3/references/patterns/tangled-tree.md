@@ -36,7 +36,7 @@ function renderTangledTree() {
     const x = d3.scalePoint().domain([0, 1, 2, 3, 4]).range([72, width - 70]);
     const y = d3.scaleLinear().domain([0, 3]).range([78, 310]);
     const link = d3.linkHorizontal().x(d => d.x).y(d => d.y);
-    const linkColors = [palette.blue, palette.orange, palette.green, palette.purple, palette.red];
+    const linkColors = activeColorset === "colorset1" ? colors : [palette.blue, palette.orange, palette.green, palette.purple, palette.red];
     const paths = svg.append("g").selectAll("path").data(links).join("path")
       .attr("d", ([source, target], i) => {
         const a = byId.get(source);
@@ -55,7 +55,7 @@ function renderTangledTree() {
       .attr("transform", d => `translate(${x(d.layer)},${y(d.row)})`);
     groups.append("rect")
       .attr("x", -39).attr("y", -16).attr("width", 78).attr("height", 32).attr("rx", 6)
-      .attr("fill", d => d.layer === 0 ? palette.blueHover : d.layer === 4 ? palette.ink : palette.gray50)
+      .attr("fill", d => activeColorset === "colorset1" ? colors[d.layer] : d.layer === 0 ? palette.blueHover : d.layer === 4 ? palette.ink : palette.gray50)
       .attr("stroke", d => d.layer === 0 || d.layer === 4 ? palette.ink : palette.gray300)
       .attr("stroke-width", d => d.layer === 0 || d.layer === 4 ? 1.6 : 1.2);
     groups.append("text")

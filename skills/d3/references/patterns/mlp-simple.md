@@ -36,8 +36,8 @@ function renderMlpSimple() {
       .attr("transform", d => `translate(${d.x},${d.y})`);
     const circles = groups.append("circle")
       .attr("r", d => d.r)
-      .attr("fill", d => [palette.blueHighlight, palette.orangeHighlight, palette.greenHighlight, palette.purpleHighlight][d.layer])
-      .attr("stroke", d => [palette.blue, palette.orange, palette.green, palette.purple][d.layer])
+      .attr("fill", d => (activeColorset === "colorset1" ? colors : [palette.blueHighlight, palette.orangeHighlight, palette.greenHighlight, palette.purpleHighlight])[d.layer])
+      .attr("stroke", d => (activeColorset === "colorset1" ? colors : [palette.blue, palette.orange, palette.green, palette.purple])[d.layer])
       .attr("stroke-width", 1.4);
     pulseMlpNodes(circles, delayForLayer);
     ["input", "hidden 1", "hidden 2", "output"].forEach((label, index) => {

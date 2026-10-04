@@ -38,6 +38,22 @@ class ColorAuditTests(unittest.TestCase):
         self.assertFalse(self.contract_with(drop)["ok"])
         self.assertFalse(self.contract_with(duplicate)["ok"])
 
+    def test_cs1_rejects_out_of_order_categories_even_with_complete_membership(self):
+        for early, later in (("#333e48", "#9e1b32"), ("#6d1222", "#4f4f4f"),
+                             ("#000000", "#e7e7e7"), ("#ffffff", "#000000"),
+                             ("#ffccd5", "#ffffff")):
+            for field in ("sequence", "solidSequence"):
+                def change(contract):
+                    colors = contract["colorsets"]["colorset1"][field]
+                    colors.remove(early)
+                    colors.insert(colors.index(later), early)
+                result = self.contract_with(change)
+                self.assertFalse(result["ok"], (field, early, later))
+                self.assertTrue(any(row.get("field") == field for row in result["findings"]))
+
+    def test_cs1_priority_change_keeps_text_and_complete_solid_contract(self):
+        self.assertTrue(self.contract_with(lambda contract: None)["ok"])
+
     def test_text_decision_rejects_weak_contrast_and_non_black_white(self):
         for fill, text in (("#9e1b32", "#000000"), ("#f1c319", "#ffffff"), ("#007298", "#333e48")):
             def change(contract):

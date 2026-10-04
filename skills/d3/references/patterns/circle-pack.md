@@ -16,6 +16,13 @@
 
 ## Source Excerpt
 
+For colorset1, allocate family bases from the bundled solid sequence in the
+rendered branch order: primary red, then grays. Parent circles use those bases;
+children use bounded dark/bright/light red or stepped gray tokens to distinguish
+the within-family hierarchy. Those tones encode hierarchy and sibling position,
+not additional categorical priority. Keep them opaque and borderless, preserve
+the D3 pack geometry, and choose exact black/white labels against actual paint.
+
 The excerpt below is the compact renderer source for this pattern. If it references helpers such as `prepareSvg`, `fadeIn`, `grow`, `drawPath`, `palette`, `ramps`, `axisBottom`, or `axisLeft`, read `references/shared-renderer-helpers.md` and recreate only the needed helper behavior in the final artifact.
 
 ```js
@@ -28,13 +35,26 @@ function renderCirclePack() {
     const parentFill = new Map([["Create", palette.blueHighlight], ["Serve", palette.orangeHighlight], ["Learn", palette.greenHighlight]]);
     const leafFill = new Map([["Create", palette.blue], ["Serve", palette.orange], ["Learn", palette.green]]);
     const branchName = d => d.depth === 1 ? d.data.name : d.parent?.data.name;
+    const familyFill = new Map(root.children.map((branch, index) => [branch.data.name, colors[index]]));
+    const familyTones = new Map([
+      [colors[0], [palette.redHover, palette.error, palette.redHighlight]],
+      [colors[1], [palette.gray700, palette.gray500, palette.gray300]],
+      [colors[2], [palette.gray800, palette.gray600, palette.gray400]]
+    ]);
     nodes.append("circle").attr("fill", d => {
       if (d.depth === 0) return palette.gray50;
+      if (activeColorset === "colorset1") {
+        const base = familyFill.get(branchName(d));
+        if (d.children) return base;
+        const siblings = d.parent.children;
+        const tone = Math.min(2, Math.floor(siblings.indexOf(d) * 3 / siblings.length));
+        return (familyTones.get(base) || [palette.gray800, palette.gray500, palette.gray200])[tone];
+      }
       if (d.children) return parentFill.get(d.data.name) || palette.blueHighlight;
       return leafFill.get(branchName(d)) || palette.blue;
     })
       .attr("fill-opacity", 1)
-      .attr("stroke", d => d.depth === 0 ? palette.blueHighlight : "#fff").attr("stroke-width", d => d.depth === 0 ? 2 : 2.4);
+      .attr("stroke", d => activeColorset === "colorset1" ? "none" : d.depth === 0 ? palette.blueHighlight : "#fff").attr("stroke-width", d => activeColorset === "colorset1" ? 0 : d.depth === 0 ? 2 : 2.4);
     grow(nodes.selectAll("circle"), "r", 1, d => d.r, .05, .75);
     nodes.filter(d => d.depth === 1).append("text").attr("class", "mark-label")
       .attr("text-anchor", "middle").attr("y", d => -d.r - 8).text(d => d.data.name);

@@ -14,8 +14,14 @@ The PlantUML finisher clips shallow grouped shaft contacts and moves filled
 tips into their existing local gutter with 3 px clearance plus half the stroke
 width. It retains native curve controls and body geometry. Test very small
 insets as well as visible overlaps; a point containment tolerance must not
-hide a short low-contrast stroke inside a body. Native port connections and
-semantic cardinality contacts retain their intentional attachment.
+hide a short low-contrast stroke inside a body. JSON/YAML source ports require
+special care: primary red and white cannot share one 3:1 connector paint. Move
+the whole source dot and its straight initial shaft prefix into the existing
+source gutter, leaving at least 3 px beyond the complete painted dot envelope.
+Keep the native curve controls, target head, source labels and relationship
+unchanged. Safe original source-port attachments remain in place. Unsupported
+port prefixes fail explicitly. Semantic cardinality contacts retain their
+intentional attachment.
 Activity and state paths also clear hollow final-marker strokes. Short WBS
 tree stems use the same visible contrast requirement and local body clearance;
 their lack of an arrowhead is not a contrast exemption.

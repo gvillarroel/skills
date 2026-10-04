@@ -7,7 +7,9 @@ description: "Builds and troubleshoots Apache ECharts visualizations inside Slid
 
 Read [the colorset output contract](references/colorset-contract.md) before authoring or auditing visual output. Apply one exact bundled palette to every authored output path and inspect rendered paint. Default to colorset1; declare colorset2 when its category distinctions are needed. Start category marks with opaque solid fills and no decorative borders; exhaust the selected palette's usable unique solids before outlined overflow variants. Choose black or white inside text by actual fill contrast.
 
-For directed graph/route/mark-line output, read [arrow contrast and placement](references/arrow-contrast.md). Apply the bundled option helper before rendering, then inspect actual shafts and heads at 3:1 against local backings, outside node silhouettes and clear of labels. Check settled click/focus states and the final export scale.
+For directed graph/route/mark-line output, read [arrow contrast and placement](references/arrow-contrast.md). Apply the bundled option helper before rendering. For fixed native graph arrows, call `insetGraphArrowRoutes(chart, 3)` after `setOption` and after resize or click updates once native layout has settled. It preserves source endpoints and node geometry while trimming the native display route. Inspect actual shafts and complete heads at 3:1 against local backings, outside node silhouettes and clear of labels. Check settled click/focus states and the final export scale.
+
+For native boxplots, read [median contrast](references/boxplot-median-contrast.md). With pinned ECharts 6.1.0, call `qualifyBoxplotMedians(chart, echarts, selected)` after `setOption` and before capture/export. Repeat after resize or click options, and normalize delivered SVG paint. Preserve opaque category bodies and native data; qualify the median independently rather than adding a contrasting box rim.
 
 ## Core Workflow
 

@@ -33,7 +33,8 @@ function renderRadialHierarchy() {
     const nodes = center.append("g").selectAll("g").data(root.descendants()).join("g")
       .attr("transform", d => `translate(${radialPoint(d)})`);
     nodes.append("circle").attr("r", d => d.depth === 0 ? 18 : d.children ? 12 : 7)
-      .attr("fill", d => d.depth === 0 ? palette.purple : d.children ? palette.blue : palette.green)
+      .attr("fill", d => activeColorset === "colorset1" ? colors[d.depth === 0 ? 0 : d.children ? 1 : 2]
+        : d.depth === 0 ? palette.purple : d.children ? palette.blue : palette.green)
       .attr("stroke", "#fff").attr("stroke-width", 2);
     nodes.append("text").attr("class", "label").attr("dy", d => d.depth === 0 ? 34 : 4)
       .attr("x", d => d.depth === 0 ? 0 : (d.x < Math.PI ? 12 : -12))

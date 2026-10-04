@@ -2,7 +2,7 @@ import { writeFile } from 'node:fs/promises'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import * as echarts from 'echarts'
-import { colorsetTheme, normalizeSvgPaints, prepareColorsetOption } from '../../../templates/echarts-colorsets.mjs'
+import { colorsetTheme, insetGraphArrowRoutes, normalizeSvgPaints, prepareColorsetOption, qualifyBoxplotMedians } from '../../../templates/echarts-colorsets.mjs'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const exampleRoot = resolve(__dirname, '..')
@@ -1446,6 +1446,8 @@ function polishOption(definition, option) {
 function renderSvg(definition, patternMetadata) {
   const chart = echarts.init(null, colorsetTheme('colorset2'), { renderer: 'svg', ssr: true, width, height })
   chart.setOption(prepareColorsetOption(polishOption(definition, definition.option()), 'colorset2'))
+  insetGraphArrowRoutes(chart, 3)
+  qualifyBoxplotMedians(chart, echarts, 'colorset2')
   const svg = normalizeSvgPaints(chart.renderToSVGString(), 'colorset2')
   chart.dispose()
   return decorateSvg(svg, definition.profile || definition.type, patternMetadata)

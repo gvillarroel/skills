@@ -25,7 +25,7 @@
 
 Use stepped solid family tones when sibling cells disappear into their parent's fill. Keep the existing D3 area layout, values, ordering and branch mapping. Paint each parent's body with the neutral canvas and reserve its original category fill for a header inside `paddingTop`; keep real empty gutters between leaves. Do not paint a continuous colored parent behind identically colored children or replace gutters with strokes.
 
-Set `activeColorset` from the requested palette, defaulting to `colorset1`. Recreate only the needed `palette` keys from the bundled contract. For the excerpt's three branch families, colorset1 maps `blue` to `#9e1b32`, `orange` to `#696969`, and `green` to `#4f4f4f`. Its sibling ramps are dark-to-bright red (`#6d1222`, `#9e1b32`, `#e8002a`) and two stepped gray families (`#4f4f4f`, `#828282`, `#b5b5b5`; `#363636`, `#696969`, `#9c9c9c`). Colorset2 uses the corresponding dark/base/bright blue, orange and green tokens. Keep all fills opaque and borderless; each cell uses one token, with no gradients or interpolated colors.
+Set `activeColorset` from the requested palette, defaulting to `colorset1`. Recreate only the needed `palette` keys from the bundled contract. Allocate family bases from the bundled solid sequence, excluding the actual canvas: the first three colorset1 branch headers use `#9e1b32`, `#333e48`, and `#4f4f4f`. Their sibling ramps remain dark-to-bright red (`#6d1222`, `#9e1b32`, `#e8002a`) and two stepped gray families (`#4f4f4f`, `#828282`, `#b5b5b5`; `#363636`, `#696969`, `#9c9c9c`). Those within-family tones encode sibling position, not additional categorical priority. Colorset2 uses the corresponding dark/base/bright blue, orange and green tokens. Keep all fills opaque and borderless; each cell uses one token, with no gradients or interpolated colors.
 
 Choose a tone from the sibling's stable sorted position. A single child uses the middle tone; two use the endpoints; three use all steps. More siblings quantize to the finite ramp and remain individually separated by neutral gutters and direct labels; do not claim that every additional sibling has a unique color. Tone distinguishes cells within a family, while area alone communicates value. Keep tone assignments unchanged across Replay, resizing and export. Choose exact black or white by maximum luminance contrast for the actual header or leaf fill, and show requested values inside the available cell space.
 
@@ -63,9 +63,9 @@ function renderTreemap() {
     const color = d3.scaleOrdinal(root.children.map(d => d.data.name), colors);
     const branchName = d => d.ancestors().find(node => node.depth === 1).data.name;
     const familyTones = new Map(activeColorset === "colorset1" ? [
-      [palette.blue, [palette.redHover, palette.red, palette.error]],
-      [palette.orange, [palette.gray700, palette.gray500, palette.gray300]],
-      [palette.green, [palette.gray800, palette.gray600, palette.gray400]]
+      [colors[0], [palette.redHover, palette.red, palette.error]],
+      [colors[1], [palette.gray700, palette.gray500, palette.gray300]],
+      [colors[2], [palette.gray800, palette.gray600, palette.gray400]]
     ] : [
       [palette.blue, [palette.blueHover, palette.blue, palette.cyan]],
       [palette.orange, [palette.orangeHover, palette.orange, palette.warning]],

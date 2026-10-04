@@ -4,14 +4,23 @@
     "colorset1": {
       "canvas": "#ffffff",
       "saltButton": "#9e1b32",
+      "archimateRoleOrder": [
+        "business",
+        "application",
+        "technology",
+        "motivation",
+        "strategy",
+        "physical",
+        "implementation"
+      ],
       "archimate": {
         "technology": "#4f4f4f",
         "application": "#333e48",
         "business": "#9e1b32",
-        "motivation": "#6d1222",
+        "motivation": "#696969",
         "strategy": "#828282",
-        "physical": "#1c1c1c",
-        "implementation": "#e8002a"
+        "physical": "#9c9c9c",
+        "implementation": "#b5b5b5"
       }
     },
     "colorset2": {

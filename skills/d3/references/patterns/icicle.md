@@ -23,7 +23,7 @@ function renderIcicle() {
     const svg = prepareSvg("icicle", "Icicle", "D3 partition laid out as horizontal nested bands.");
     const root = d3.hierarchy(hierarchyData()).sum(d => d.value || 0);
     d3.partition().size([width - 48, height - 58]).padding(2)(root);
-    const color = d3.scaleOrdinal(["Platform", "Create", "Serve", "Learn"], [palette.purple, palette.blue, palette.orange, palette.green]);
+    const color = d3.scaleOrdinal(["Platform", "Create", "Serve", "Learn"], activeColorset === "colorset1" ? colors : [palette.purple, palette.blue, palette.orange, palette.green]);
     const g = svg.append("g").attr("transform", "translate(24,30)");
     const nodes = g.selectAll("g").data(root.descendants()).join("g").attr("transform", d => `translate(${d.x0},${d.y0})`);
     nodes.append("rect").attr("width", d => d.x1 - d.x0).attr("height", d => Math.max(0, d.y1 - d.y0))

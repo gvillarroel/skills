@@ -50,11 +50,11 @@ function renderLoraRankUpdate() {
 
     const a = svg.append("g").attr("transform", "translate(224,104)");
     a.append("text").attr("class", "mark-label").attr("x", 22).attr("y", -18).attr("text-anchor", "middle").text("A");
-    drawMatrix(a, 7, 2, 16, d => [palette.blue, palette.green][d.col], .34);
+    drawMatrix(a, 7, 2, 16, d => (activeColorset === "colorset1" ? colors : [palette.blue, palette.green])[d.col], .34);
 
     const b = svg.append("g").attr("transform", "translate(302,126)");
     b.append("text").attr("class", "mark-label").attr("x", 63).attr("y", -18).attr("text-anchor", "middle").text("B");
-    drawMatrix(b, 2, 7, 16, d => [palette.orange, palette.purple][d.row], .52);
+    drawMatrix(b, 2, 7, 16, d => (activeColorset === "colorset1" ? colors : [palette.orange, palette.purple])[d.row], .52);
 
     const delta = svg.append("g").attr("transform", "translate(410,112)");
     delta.append("text").attr("class", "mark-label").attr("x", 62).attr("y", -18).attr("text-anchor", "middle").text("Delta W");

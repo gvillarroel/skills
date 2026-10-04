@@ -130,11 +130,10 @@ Use `assets/themes/cs2.puml` for the full colorset2 palette. It maps the reposit
 
 Use `assets/themes/cs1.puml` for the colorset1 red-neutral palette:
 
-- Primary red: `#9e1b32`
-- Red hover/emphasis: `#6d1222`
-- Critical red: `#e8002a`
-- Neutral surface highlight: `#e7e7e7`; reserve pink for an explicit request or a last-resort category after red and neutrals.
-- Neutral ink and grays: `#333e48`, `#696969`, `#9c9c9c`, `#cfcfcf`, `#e7e7e7`
+- Start the primary category or family body with primary red: `#9e1b32`.
+- Allocate all bundled grays next, then near-black and black, then white when it differs from the actual canvas.
+- Use `#6d1222`, `#e8002a`, and `#ffccd5` only after that preceding categorical capacity is used, unless the user explicitly authors an override.
+- Read the exact ordered tokens from `assets/palettes/colorsets.json` and `solid_style`; repeated categories retain their fill. Containers, text, axes and semantic glyphs are not additional categories.
 
 Do not add semantic classes or labels to user diagrams unless the user asks. The renderer injects the theme in memory after compatible `@start...` lines and leaves the original files unchanged unless `--write-themed` is passed. It never injects theme text into `@startditaa`, `@startmath`, or `@startlatex`. Kroki Ditaa requests use the `ditaa` route.
 
@@ -143,8 +142,9 @@ Do not add semantic classes or labels to user diagrams unless the user asks. The
 Validate ordinary render batches with
 `uv run --script <skill-root>/scripts/validate_plantuml_render_report.py --report <report.json> --output <render-directory> --colorset <requested-colorset>`.
 Use the actual output paths. This handles SVG token capitalization and allows
-neutral-only colorset1 diagrams; do not add red or pink solely to satisfy a
-color-presence check. Add `--coverage-manifest` only for frozen coverage fixtures.
+neutral-only colorset1 line art, mathematical notation, and explicit source
+presentation. Default categorical bodies start primary red. Add
+`--coverage-manifest` only for frozen coverage fixtures.
 The bundled validator checks artifact paths, formats, SVG/PNG validity,
 palette evidence, current native-style delivery, and recomputed tagged body,
 label, and connector contrast. Inspect the rendered semantic glyphs and actual

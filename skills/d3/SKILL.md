@@ -18,6 +18,15 @@ static source cannot satisfy `--require-extended`. Do not assemble the studio by
 substituting its large engine or catalogs. A single standalone logo follows
 the contract-builder route below.
 
+For a non-logo catalogue or grid of equal-size directly labeled category tiles,
+first run `uv run --script "<d3-skill>/scripts/build_category_grid.py" --help`,
+then read `references/category-grid.md` and `references/palette-contract.md`.
+Pass the caller's ordered labels or category records as JSON. Use `--output`,
+`--svg-output`, and optional `--allocation-output` for the exact requested paths.
+This builder supplies genuine bundled D3, title/desc, responsive columns, complete
+solid and overflow styles, and export from the actual rendered SVG. Correct data
+or flags and rerun for supported grids; keep the skill directory read-only.
+
 For a bar chart, horizontal lollipop, node-link network, flow spine, orbit logo, or radial-wedge logo, your first command after reading this file MUST be:
 
 ```text
@@ -44,7 +53,7 @@ Use the dependency-free Python first commands above for their named routes.
 - Treat every requested path, ID, class, attribute, label, value, unit, order, count, relationship, route, colorset, and pattern ID as immutable API data.
 - Use `colorset1` by default. Use `colorset2` only for an explicit extended, expanded, multicolor, or full-color request.
 - Prefer compact boxes and neutral surfaces: 6 px vertical / 10 px horizontal node padding, 12 px panel padding, and 8 px UI gaps. Read `references/compact-composition.md` when sizing nodes, panels, or controls; preserve readable text and data geometry.
-- In colorset1, use grays, black, white, and deliberate red emphasis first. Pink is a last-resort category after usable red/neutral distinctions are exhausted, never an automatic secondary color, selection fill, or focus ring.
+- In colorset1, allocate distinct category fills in this order: primary red `#9e1b32`, grays, black, white, then the remaining colors. Exclude only the actual canvas token. Pink is a last-resort category after the preceding usable colors are exhausted, never an automatic secondary color, selection fill, or focus ring.
 - Read visible paint from `assets/palettes/colorsets.json`; use exact lowercase six-digit tokens and opacity, never arbitrary colors, functional color syntax, or raw D3 chromatic scales.
 - Named standalone builders accept `--colorset` and default to colorset1 through the bundled `colorset_adapter.py`; use the flag for colorset2. Validate their generated HTML and settled SVG against the selected contract. Immutable source image bytes may retain source colors; every authored overlay and control must follow the active contract.
 - Preserve supplied data and deterministic geometry. Seed layouts, pre-tick simulations, and make the settled frame truthful.
@@ -55,7 +64,7 @@ Use the dependency-free Python first commands above for their named routes.
 
 Map every public acceptance literal to a flag. Use `--kind flow` with `--svg-pattern-id` when the decision variant differs from SVG pattern metadata, and repeat `--attribute`, `--flow-node`, `--link`, and `--link-value` in contract order. Keep titles generic or include only a leading prefix of ordered data labels; never mention a later label before intervening labels. Use `--kind logo --logo-mode wedges` for radial wedges; its colorset2 sequence already covers visible accent, warning/orange, success/green, and special/purple groups.
 
-For `check_visual_contract.py`, express exact cardinality as `--require-class CLASS:COUNT` and repeat `--ordered-text` only for the data tokens whose rendered occurrences must follow that order. Quote every complete CLI value that contains whitespace, such as `--require-attribute "viewBox=0 0 960 540"`; never issue a known-invalid command as a probe. For logos emitted by `build_contract_artifact.py`, use the self-contained, palette, render, and visual-contract checks; `validate_logo_artifact.py` is only for full logo-studio outputs.
+For `check_visual_contract.py`, express exact cardinality as `--require-class CLASS:COUNT`. For ordered data labels, repeat `--ordered-text TOKEN` or `--require-ordered-text TOKEN`; the latter also accepts a quoted sequence such as `--require-ordered-text "First|Second|Third"`. A literal label containing `|` uses `--ordered-text` so that character stays part of the token. Both forms apply the same ordered-content gate. Quote every complete CLI value that contains whitespace, such as `--require-attribute "viewBox=0 0 960 540"`; never issue a known-invalid command as a probe. For logos emitted by `build_contract_artifact.py`, use the self-contained, palette, render, and visual-contract checks; `validate_logo_artifact.py` is only for full logo-studio outputs.
 
 Use `--require-id ID` without a count suffix. `--require-class` takes a class name, never a CSS selector: for a default four-node flow use `--require-class flow-node:4 --require-class node:4 --require-class link:3`. Only use another class when you supplied its builder flag; do not guess a `flow-link` alias.
 
@@ -89,7 +98,7 @@ For `build_evaluation_report.py`, pass each `requiredTerms` value unchanged with
 
 - `colorset1` standard roles: background `#f7f7f7`, surface `#ffffff`, ink `#333e48`, dark ink `#1c1c1c`, primary `#9e1b32`, dark primary `#6d1222`, accent `#e8002a`, muted `#828282`, line `#cfcfcf`, quiet `#e7e7e7`. The legacy `accentSoft` token `#ffccd5` is available only for a justified last-resort category or an explicit pink request; use `quiet` for subtle fills.
 - `colorset2` extended adds blue `#007298`, dark blue `#004d66`, orange `#e77204`, green `#45842a`, purple `#652f6c`, and yellow `#f1c319`. Use additions for meaningful categories or states.
-- Embed an unchanged offline runtime inside `<script id="d3-runtime">` only when hand-authoring an unsupported form. Never reveal an author-CSS-hidden mark solely through a presentation attribute.
+- For an unsupported custom HTML form, embed the unchanged `assets/vendor/d3.v7.9.0.min.js` inside `<script id="d3-runtime">` and use its real D3 joins. Follow `references/palette-contract.md` for the complete category allocator, including overflow styles and metadata. Create each SVG's title and desc before running the first self-contained check. Never substitute a partial D3-compatible stub or reveal an author-CSS-hidden mark solely through a presentation attribute.
 
 ## Mandatory validation
 

@@ -14,7 +14,7 @@
 <script setup>
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, shallowRef, watch } from 'vue'
 import { echarts } from '../lib/echarts-setup.js'
-import { colorsetTheme, enforceColorsetRenderer, insetCartesianArrowRoutes, prepareColorsetOption } from '../../../templates/echarts-colorsets.mjs'
+import { colorsetTheme, enforceColorsetRenderer, insetCartesianArrowRoutes, insetGraphArrowRoutes, prepareColorsetOption, qualifyBoxplotMedians } from '../../../templates/echarts-colorsets.mjs'
 
 const props = defineProps({
   option: {
@@ -65,6 +65,20 @@ const isReplaying = ref(false)
 const isSvgReplayable = computed(() => props.replayable && props.renderer === 'svg')
 let resizeObserver
 let stopPaletteEnforcement
+let qualifyingGraphArrows = false
+
+function qualifyGraphArrows() {
+  if (!chart.value || qualifyingGraphArrows)
+    return
+
+  qualifyingGraphArrows = true
+  try {
+    insetGraphArrowRoutes(chart.value, 3)
+  }
+  finally {
+    qualifyingGraphArrows = false
+  }
+}
 
 function applyOption() {
   if (!chart.value)
@@ -74,6 +88,9 @@ function applyOption() {
   chart.value.setOption(option, props.updateOptions)
   if (props.arrowTerminalClearance > 0)
     chart.value.setOption(insetCartesianArrowRoutes(option, chart.value, props.arrowTerminalClearance), props.updateOptions)
+  qualifyBoxplotMedians(chart.value, echarts, 'colorset2')
+  if (chart.value.getZr().animation.isFinished())
+    qualifyGraphArrows()
 }
 
 function resizeChart() {
@@ -84,6 +101,8 @@ function resizeChart() {
     chart.value?.resize()
     if (props.arrowTerminalClearance > 0)
       applyOption()
+    else if (chart.value)
+      qualifyBoxplotMedians(chart.value, echarts, 'colorset2')
   })
 }
 
@@ -108,6 +127,7 @@ async function initChart() {
   chart.value = echarts.init(chartElement.value, props.theme || colorsetTheme('colorset2'), {
     renderer: props.renderer,
   })
+  chart.value.on('finished', qualifyGraphArrows)
   stopPaletteEnforcement = enforceColorsetRenderer(chartElement.value, 'colorset2')
   applyOption()
   resizeChart()
@@ -127,6 +147,7 @@ function handleWindowResize() {
 function disposeChartInstance() {
   stopPaletteEnforcement?.()
   stopPaletteEnforcement = undefined
+  chart.value?.off('finished', qualifyGraphArrows)
   chart.value?.dispose()
   chart.value = null
 }

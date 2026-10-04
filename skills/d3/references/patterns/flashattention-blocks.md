@@ -86,7 +86,7 @@ function renderFlashAttentionBlocks() {
       .attr("stroke-linecap", "round");
     drawPath(route, .55, 1.2);
     d3.range(4).forEach(i => {
-      const dot = svg.append("circle").attr("r", 6).attr("fill", [palette.blue, palette.green, palette.orange, palette.red][i]);
+      const dot = svg.append("circle").attr("r", 6).attr("fill", (activeColorset === "colorset1" ? colors : [palette.blue, palette.green, palette.orange, palette.red])[i]);
       dot.append("animateMotion")
         .attr("dur", "1.25s")
         .attr("begin", `${.65 + i * .16}s`)

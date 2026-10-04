@@ -133,13 +133,14 @@ function renderAsymmetricTaskOverlapSaturated() {
       .attr("data-label-font-range", layout.labelFontRange ? `${layout.labelFontRange.min}-${layout.labelFontRange.max}` : layout.labelFontSize)
       .attr("data-longest-label", layout.longestLabel || "");
 
-    const circles = layout.circles.map(circle => ({
+    const circles = layout.circles.map((circle, index) => ({
       ...circle,
       fillColor: palette[circle.fill] || circle.fill,
-      strokeColor: palette[circle.stroke] || circle.stroke
+      strokeColor: activeColorset === "colorset1" ? colors[index] : palette[circle.stroke] || circle.stroke
     }));
     const tasks = layout.tasks;
-    const dotColor = d => d.membershipCount === 1 ? palette.blue : d.membershipCount === 2 ? palette.orange : palette.red;
+    const dotColor = d => activeColorset === "colorset1" ? colors[Math.min(d.membershipCount, 3) - 1]
+      : d.membershipCount === 1 ? palette.blue : d.membershipCount === 2 ? palette.orange : palette.red;
     const leaderColor = d => palette[d.leaderColorKey] || dotColor(d);
     const labelEdgeX = d => d.labelEdgeX ?? (d.labelX < d.x ? d.labelX + d.labelWidth : d.labelX);
     const labelEdgeY = d => d.labelEdgeY ?? (d.labelY + d.labelHeight / 2);
@@ -276,9 +277,9 @@ function renderAsymmetricTaskOverlapSaturated() {
     fadeIn(labels, .56, .42);
 
     const legend = [
-      { label: "1 scope", fill: palette.blue },
-      { label: "2 scopes", fill: palette.orange },
-      { label: "3+ scopes", fill: palette.red }
+      { label: "1 scope", fill: dotColor({ membershipCount: 1 }) },
+      { label: "2 scopes", fill: dotColor({ membershipCount: 2 }) },
+      { label: "3+ scopes", fill: dotColor({ membershipCount: 3 }) }
     ];
     const legendGroup = svg.append("g").attr("transform", `translate(${svgWidth - 438},${svgHeight - 22})`);
     const legendItems = legendGroup.selectAll("g").data(legend).join("g").attr("transform", (_, i) => `translate(${i * 66},0)`);

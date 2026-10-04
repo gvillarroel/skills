@@ -363,6 +363,65 @@ def plantuml_shaft_clearance(edges, backgrounds, minimum_length=20):
             shaft.set('data-arrow-clearance', 'native-body-gutter-3px')
 
 
+def plantuml_source_port_clearance(edges, backgrounds, root, colorset):
+    """Keep native JSON/YAML relation ports beside their source in its gutter.
+
+    Native port dots occupy a value cell inside the source body. Move that dot
+    and only the straight initial shaft prefix when its fill and the canvas
+    cannot share a 3:1 connector paint. Preserve every curve, target, and head.
+    """
+    canvas = canonical(property_value(root, 'background', '#ffffff'))
+    shafts = [edge for edge in edges if edge.tag.rsplit('}', 1)[-1] == 'path'
+              and property_value(edge, 'fill', 'none') == 'none']
+    for port in edges:
+        if port.tag.rsplit('}', 1)[-1] not in {'circle', 'ellipse'}:
+            continue
+        center = (float(port.get('cx', 0)), float(port.get('cy', 0)))
+        body = next((shape for shape in reversed(backgrounds) if contains(shape, center)), None)
+        if body is None:
+            continue
+        backing = canonical(property_value(body, 'fill'))
+        if any(contrast(paint, canvas) >= 3 and contrast(paint, backing) >= 3
+               for paint in COLORSETS[colorset]['allowed']):
+            continue
+        matches = [shaft for shaft in shafts if (points := path_points(shaft))
+                   and math.dist(points[0], center) < .5]
+        if len(matches) != 1:
+            raise ValueError('Native source port requires one matching outgoing shaft before gutter repair.')
+        shaft = matches[0]
+        prefix = re.match(r'^\s*M\s*('+NUMBER+r')[ ,]+('+NUMBER+r')\s*L\s*('+NUMBER+r')[ ,]+('+NUMBER+r')', shaft.get('d', ''))
+        if not prefix:
+            raise ValueError('Native source port requires an absolute straight initial shaft prefix for gutter repair.')
+        first = (float(prefix[3]), float(prefix[4]))
+        length = math.dist(center, first)
+        if not length:
+            raise ValueError('Native source port has no outgoing direction for gutter repair.')
+        direction = ((first[0]-center[0])/length, (first[1]-center[1])/length)
+        bounds = rect_bounds(body)
+        limit = math.ceil(max(bounds[2]-bounds[0], bounds[3]-bounds[1])*10)+10
+        distance = next((step/10 for step in range(1, limit)
+                         if not contains(body, (center[0]+direction[0]*step/10,
+                                                center[1]+direction[1]*step/10))), None)
+        if distance is None:
+            raise ValueError('Native source port cannot reach a clear source-body gutter.')
+        rx = float(port.get('rx', port.get('r', 0)))
+        ry = float(port.get('ry', port.get('r', 0)))
+        radius = math.hypot(rx*direction[0], ry*direction[1])
+        body_width = float(property_value(body, 'stroke-width', '1')) if property_value(body, 'stroke', 'none') != 'none' else 0
+        # Account for containment's 0.1 px interior tolerance and ray sampling;
+        # the complete painted port envelope still needs a full 3 px gutter.
+        shift = distance+.2+3+radius+(float(property_value(port, 'stroke-width', '1'))+body_width)/2
+        relocated = (center[0]+direction[0]*shift, center[1]+direction[1]*shift)
+        port.set('cx', f'{relocated[0]:g}')
+        port.set('cy', f'{relocated[1]:g}')
+        if length < shift:
+            first = relocated
+        suffix = shaft.get('d', '')[prefix.end():]
+        shaft.set('d', f'M{relocated[0]:g},{relocated[1]:g} L{first[0]:g},{first[1]:g}'+suffix)
+        for node in (port, shaft):
+            node.set('data-arrow-clearance', 'native-source-port-gutter-3px')
+
+
 def finish_native_arrows(root, colorset, renderer='mermaid'):
     """Preserve direction; repair resting paints and native marker clearance."""
     family = root.get('aria-roledescription', '').lower()
@@ -414,6 +473,8 @@ def finish_native_arrows(root, colorset, renderer='mermaid'):
                  and property_value(node, 'stroke', 'none') != 'none'
                  and (bounds := rect_bounds(node)) and max(bounds[2]-bounds[0], bounds[3]-bounds[1]) <= 30]
         clearances = backgrounds+rings
+        if native_family in {'JSON', 'YAML'}:
+            plantuml_source_port_clearance(edges, backgrounds, root, colorset)
         plantuml_shaft_clearance([edge for edge in edges if in_group(edge, 'link')], clearances)
         if native_family in {'MINDMAP', 'WBS', 'ACTIVITY', 'STATE'}:
             plantuml_shaft_clearance([edge for edge in edges if not in_group(edge, 'link')], clearances, minimum_length=1)

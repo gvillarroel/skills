@@ -68,13 +68,14 @@ const tasks = [
   meaningful geometry here rather than an extra category style. Keep ordinary
   categorical dots opaque and borderless. Use the bundled `solidSequence` for
   additional distinct scopes before considering any border overflow treatment.
+- In Colorset 1, bind scope identities in declared order to the full solid sequence, excluding only the actual canvas token: primary red first, then successive grays. A scope name such as QA or Security does not imply a hover or status color. Preserve Colorset 2's existing scope colors.
 - Mark the shared-region circles with `data-opacity-role="semantic"`; their
   alpha exposes set intersections. Keep task dots and label backplates opaque.
 - Use compact white label backplates for task labels so labels remain readable across overlaps.
 - Estimate label backplate width conservatively; the white background must be wider than the rendered text for every `.task-label`.
 - If `.task-label` also uses the shared `.mark-label` class, set the intended label `font-size` with inline style or a more-specific CSS rule so the global gallery label size does not outgrow the backplate calculation.
 - Route thin neutral leader lines from dots to labels when labels are offset from dense intersections.
-- Encode task membership count with dot color: one scope in blue, two scopes in orange, and three-or-more scopes in red.
+- Encode task membership count with dot color: Colorset 1 uses primary red, first gray, and second gray for one, two, and three-or-more scopes respectively. Preserve Colorset 2's blue, orange, and red membership-count roles.
 - Use `d3-task-overlap-dense` when the same visual language needs 100 task dots and audited non-overlapping direct labels.
 
 ## Validation Hooks

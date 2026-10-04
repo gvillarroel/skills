@@ -178,6 +178,8 @@ def native_family_details(root: ET.Element, colorset: str) -> None:
             if tag(element) == 'rect' and 'task' in classes:
                 status = ' '.join(classes).lower()
                 index = 3 if 'done' in status else 2 if 'active' in status else 0
+                if colorset == 'colorset1' and index:
+                    index -= 1
                 fill = colors[index]
                 if 'crit' in status:
                     # Critical is a semantic status boundary, not a category rim.

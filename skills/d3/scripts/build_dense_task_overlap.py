@@ -110,7 +110,9 @@ def build_document(payload: dict, *, colorset: str = "colorset1", title: str = "
     match = re.search(r"```js\s*\n(function renderAsymmetricTaskOverlapSaturated\(\)[\s\S]*?)\n```", PATTERN.read_text(encoding="utf-8"))
     if not match: raise ValueError("The bundled dense-overlap renderer excerpt is missing")
     palette = dict(PALETTES[colorset], surface="#ffffff", ink="#333e48", gray700="#4f4f4f", gray200="#cfcfcf")
+    contract = json.loads((SKILL_ROOT / "assets/palettes/colorsets.json").read_text(encoding="utf-8"))["colorsets"][colorset]
     config = dict(title=title, colorset=colorset, palette=palette,
+                  categoryColors=[paint for paint in contract["solidSequence"] if paint != palette["surface"]],
                   patternId="d3-task-overlap-dense-cs1" if colorset == "colorset1" else "d3-task-overlap-dense-cs2")
     template = r'''<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
@@ -126,7 +128,7 @@ svg text{font-family:Arial,Helvetica,sans-serif}.caption:not([font-size]){font-s
 aria-labelledby="overlap-title overlap-description" data-pattern-id="__PATTERN_ID__"><title id="overlap-title">__TITLE__</title>
 <desc id="overlap-description">Nine regions use semantic transparency to reveal shared membership; 100 task dots and labels stay opaque.</desc></svg></div></main>
 <script id="d3-runtime">__D3__</script><script>
-const config=__CONFIG__, palette=config.palette;
+const config=__CONFIG__, palette=config.palette, activeColorset=config.colorset, colors=config.categoryColors;
 window.D3_TASK_OVERLAP_LAYOUTS=JSON.parse(__LAYOUT_JSON__);
 const layout=window.D3_TASK_OVERLAP_LAYOUTS.saturated, width=layout.width, height=layout.height;
 const motion=matchMedia('(prefers-reduced-motion: reduce)');

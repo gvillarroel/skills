@@ -729,17 +729,17 @@ def theme_variables(colorset: str, family: str | None = None) -> dict[str, objec
         },
     }
     # Native diagram containers retain their layout semantics; filled category
-    # nodes use saturated solids and never require a contrasting rim.
+    # nodes use the selected category priority and never require a contrasting rim.
     for fill_key, border_key, text_key, color in (
         ("primaryColor", "primaryBorderColor", "primaryTextColor", scale_colors[0]),
         ("secondaryColor", "secondaryBorderColor", "secondaryTextColor", scale_colors[1]),
         ("tertiaryColor", "tertiaryBorderColor", "tertiaryTextColor", scale_colors[2]),
-        ("noteBkgColor", "noteBorderColor", "noteTextColor", scale_colors[3]),
+        ("noteBkgColor", "noteBorderColor", "noteTextColor", scale_colors[3] if extended else scale_colors[1]),
         ("actorBkg", "actorBorder", "actorTextColor", scale_colors[0]),
-        ("taskBkgColor", "taskBorderColor", "taskTextColor", scale_colors[1]),
-        ("activeTaskBkgColor", "activeTaskBorderColor", None, scale_colors[2]),
-        ("doneTaskBkgColor", "doneTaskBorderColor", None, scale_colors[3]),
-        ("stateBkg", "compositeBorder", "stateLabelColor", scale_colors[1]),
+        ("taskBkgColor", "taskBorderColor", "taskTextColor", scale_colors[1] if extended else scale_colors[0]),
+        ("activeTaskBkgColor", "activeTaskBorderColor", None, scale_colors[2] if extended else scale_colors[1]),
+        ("doneTaskBkgColor", "doneTaskBorderColor", None, scale_colors[3] if extended else scale_colors[2]),
+        ("stateBkg", "compositeBorder", "stateLabelColor", scale_colors[1] if extended else scale_colors[0]),
     ):
         variables[fill_key] = color
         variables[border_key] = color

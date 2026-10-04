@@ -19,8 +19,30 @@ Edit `assets/themes/cs1.puml` or `assets/themes/cs2.puml` for native defaults.
 Edit `assets/themes/native-style-rules.json` for the exact fallback paints of
 ArchiMate layers and Salt buttons, the grammar canvas, and semantic detail
 thickness. The finisher validates those paints against the selected palette.
+For Colorset1, start each family's primary body with `#9e1b32`. Allocate
+secondary kinds from the gray group before near-black, black, white, and the
+remaining red hues or pink. Read the exact priority in `solidSequence` rather
+than selecting a dark red as the second category. A white canvas excludes only
+that exact token from categorical capacity; text and semantic strokes use their
+actual contrast instead of consuming category slots.
+
 The seven ArchiMate layers (Technology, Application, Business, Motivation,
-Strategy, Physical, Implementation) each have a distinct editable solid role.
+Strategy, Physical, Implementation) retain their native semantic names. Colorset1
+uses `archimateRoleOrder` to rank Business, Application, Technology, Motivation,
+Strategy, Physical, and Implementation. Read the editable `archimate` colors in
+that rank as an ordered pool and compress absent layers: the first active layer
+uses primary red, the second gray1, and so on. A one-layer Technology or
+Application diagram therefore starts red. The finished report records
+`archimateLayers`; SVG records `data-native-layer-map` and each body's native
+layer. Colorset2 keeps its fixed layer map. Explicit authored presentation
+remains authoritative.
+
+Native Colorset1 charts likewise compress active bar, line, and scatter mark
+kinds onto primary red, gray1, and gray2 in that rank. A line-only or
+scatter-only chart starts primary red. The report records `chartMarks` and SVG
+records `data-native-mark-map`; preserve coordinates, values, axes and explicit
+source paint. Repeated series of the same native mark kind share its default
+role; distinct independent categories use explicit `solid_style` allocation.
 These editable files form one delivery configuration; do not duplicate their
 values in an ad hoc gallery stylesheet.
 Keep family selectors scoped: `objectDiagram object`, `componentDiagram
@@ -56,6 +78,16 @@ default Gantt task contours. It restores missing internal geometry separately
 from body contours and selects black or white from the actual painted backing
 of each native text label. Exterior participant labels use the canvas; they do
 not inherit the dark cylinder's text color.
+
+A native timing state label can extend beyond its filled terminal shape.
+When its text crosses incompatible backings, add a small opaque surface in the
+same assigned body color immediately behind that whole label, with no outline.
+Tag it `label-surface` and report `labelSurfaceCount`. Keep the label coordinates,
+state polygon, trace, event times, and timeline endpoints unchanged. This is
+label backing, not an extension of a measured duration. Pad only the outer
+display frame if it ends before that label surface; keep the measured time axis
+and every event/state endpoint unchanged. Fail if it cannot fit the existing
+viewport; preserve explicit source styling.
 
 The finisher keeps geometry, native labels, source relationships, and explicit
 authored presentation. Source styling is recorded as `explicit-source`; its

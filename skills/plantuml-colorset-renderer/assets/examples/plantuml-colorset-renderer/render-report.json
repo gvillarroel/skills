@@ -69,7 +69,7 @@
           "source_media_preserved": false,
           "svg_derived": false,
           "native_style": {
-            "version": "scoped-solid-v2",
+            "version": "scoped-solid-v3",
             "mode": "bundled-solid",
             "textCount": 8,
             "bodyCount": 0
@@ -112,7 +112,7 @@
           "source_media_preserved": false,
           "svg_derived": false,
           "native_style": {
-            "version": "scoped-solid-v2",
+            "version": "scoped-solid-v3",
             "mode": "bundled-solid",
             "textCount": 6,
             "bodyCount": 3
@@ -155,7 +155,7 @@
           "source_media_preserved": false,
           "svg_derived": false,
           "native_style": {
-            "version": "scoped-solid-v2",
+            "version": "scoped-solid-v3",
             "mode": "bundled-solid",
             "textCount": 13,
             "bodyCount": 0
@@ -198,7 +198,7 @@
           "source_media_preserved": false,
           "svg_derived": false,
           "native_style": {
-            "version": "scoped-solid-v2",
+            "version": "scoped-solid-v3",
             "mode": "bundled-solid",
             "textCount": 10,
             "bodyCount": 0
@@ -267,7 +267,7 @@
           "source_media_preserved": false,
           "svg_derived": false,
           "native_style": {
-            "version": "scoped-solid-v2",
+            "version": "scoped-solid-v3",
             "mode": "bundled-solid",
             "textCount": 9,
             "bodyCount": 2
@@ -310,7 +310,7 @@
           "source_media_preserved": false,
           "svg_derived": false,
           "native_style": {
-            "version": "scoped-solid-v2",
+            "version": "scoped-solid-v3",
             "mode": "bundled-solid",
             "textCount": 8,
             "bodyCount": 4
@@ -353,7 +353,7 @@
           "source_media_preserved": false,
           "svg_derived": false,
           "native_style": {
-            "version": "scoped-solid-v2",
+            "version": "scoped-solid-v3",
             "mode": "bundled-solid",
             "textCount": 6,
             "bodyCount": 4
@@ -396,7 +396,7 @@
           "source_media_preserved": false,
           "svg_derived": false,
           "native_style": {
-            "version": "scoped-solid-v2",
+            "version": "scoped-solid-v3",
             "mode": "ditaa-source-backed",
             "textCount": 3,
             "bodyCount": 3,
@@ -444,7 +444,7 @@
           "source_media_preserved": false,
           "svg_derived": false,
           "native_style": {
-            "version": "scoped-solid-v2",
+            "version": "scoped-solid-v3",
             "mode": "bundled-solid",
             "textCount": 11,
             "bodyCount": 4
@@ -487,7 +487,7 @@
           "source_media_preserved": false,
           "svg_derived": false,
           "native_style": {
-            "version": "scoped-solid-v2",
+            "version": "scoped-solid-v3",
             "mode": "bundled-solid",
             "textCount": 9,
             "bodyCount": 0
@@ -530,7 +530,7 @@
           "source_media_preserved": false,
           "svg_derived": false,
           "native_style": {
-            "version": "scoped-solid-v2",
+            "version": "scoped-solid-v3",
             "mode": "bundled-solid",
             "textCount": 42,
             "bodyCount": 3
@@ -573,7 +573,7 @@
           "source_media_preserved": false,
           "svg_derived": false,
           "native_style": {
-            "version": "scoped-solid-v2",
+            "version": "scoped-solid-v3",
             "mode": "bundled-solid",
             "textCount": 8,
             "bodyCount": 2
@@ -616,7 +616,7 @@
           "source_media_preserved": false,
           "svg_derived": false,
           "native_style": {
-            "version": "scoped-solid-v2",
+            "version": "scoped-solid-v3",
             "mode": "bundled-solid",
             "textCount": 8,
             "bodyCount": 0
@@ -659,7 +659,7 @@
           "source_media_preserved": false,
           "svg_derived": false,
           "native_style": {
-            "version": "scoped-solid-v2",
+            "version": "scoped-solid-v3",
             "mode": "native-notation",
             "textCount": 0,
             "bodyCount": 0
@@ -702,7 +702,7 @@
           "source_media_preserved": false,
           "svg_derived": false,
           "native_style": {
-            "version": "scoped-solid-v2",
+            "version": "scoped-solid-v3",
             "mode": "native-notation",
             "textCount": 0,
             "bodyCount": 0
@@ -745,7 +745,7 @@
           "source_media_preserved": false,
           "svg_derived": false,
           "native_style": {
-            "version": "scoped-solid-v2",
+            "version": "scoped-solid-v3",
             "mode": "bundled-solid",
             "textCount": 9,
             "bodyCount": 0
@@ -788,7 +788,7 @@
           "source_media_preserved": false,
           "svg_derived": false,
           "native_style": {
-            "version": "scoped-solid-v2",
+            "version": "scoped-solid-v3",
             "mode": "bundled-solid",
             "textCount": 12,
             "bodyCount": 0
@@ -831,7 +831,7 @@
           "source_media_preserved": false,
           "svg_derived": false,
           "native_style": {
-            "version": "scoped-solid-v2",
+            "version": "scoped-solid-v3",
             "mode": "bundled-solid",
             "textCount": 7,
             "bodyCount": 3
@@ -874,7 +874,7 @@
           "source_media_preserved": false,
           "svg_derived": false,
           "native_style": {
-            "version": "scoped-solid-v2",
+            "version": "scoped-solid-v3",
             "mode": "bundled-solid",
             "textCount": 12,
             "bodyCount": 0
@@ -917,7 +917,7 @@
           "source_media_preserved": false,
           "svg_derived": false,
           "native_style": {
-            "version": "scoped-solid-v2",
+            "version": "scoped-solid-v3",
             "mode": "bundled-solid",
             "textCount": 8,
             "bodyCount": 3
@@ -960,7 +960,7 @@
           "source_media_preserved": false,
           "svg_derived": false,
           "native_style": {
-            "version": "scoped-solid-v2",
+            "version": "scoped-solid-v3",
             "mode": "bundled-solid",
             "textCount": 10,
             "bodyCount": 2
@@ -1003,7 +1003,7 @@
           "source_media_preserved": false,
           "svg_derived": false,
           "native_style": {
-            "version": "scoped-solid-v2",
+            "version": "scoped-solid-v3",
             "mode": "bundled-solid",
             "textCount": 5,
             "bodyCount": 0
@@ -1046,7 +1046,7 @@
           "source_media_preserved": false,
           "svg_derived": false,
           "native_style": {
-            "version": "scoped-solid-v2",
+            "version": "scoped-solid-v3",
             "mode": "bundled-solid",
             "textCount": 15,
             "bodyCount": 6
@@ -1089,7 +1089,7 @@
           "source_media_preserved": false,
           "svg_derived": false,
           "native_style": {
-            "version": "scoped-solid-v2",
+            "version": "scoped-solid-v3",
             "mode": "bundled-solid",
             "textCount": 7,
             "bodyCount": 3
@@ -1132,7 +1132,7 @@
           "source_media_preserved": false,
           "svg_derived": false,
           "native_style": {
-            "version": "scoped-solid-v2",
+            "version": "scoped-solid-v3",
             "mode": "bundled-solid",
             "textCount": 11,
             "bodyCount": 0
@@ -1175,7 +1175,7 @@
           "source_media_preserved": false,
           "svg_derived": false,
           "native_style": {
-            "version": "scoped-solid-v2",
+            "version": "scoped-solid-v3",
             "mode": "bundled-solid",
             "textCount": 7,
             "bodyCount": 2
@@ -1218,7 +1218,7 @@
           "source_media_preserved": false,
           "svg_derived": false,
           "native_style": {
-            "version": "scoped-solid-v2",
+            "version": "scoped-solid-v3",
             "mode": "bundled-solid",
             "textCount": 10,
             "bodyCount": 0
@@ -1261,7 +1261,7 @@
           "source_media_preserved": false,
           "svg_derived": false,
           "native_style": {
-            "version": "scoped-solid-v2",
+            "version": "scoped-solid-v3",
             "mode": "bundled-solid",
             "textCount": 15,
             "bodyCount": 0

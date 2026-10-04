@@ -53,12 +53,17 @@ Use these defaults for ordinary user deliverables when the user or target projec
 - Page background: `#f7f7f7`
 - Surface: `#ffffff`
 - Risk/emphasis red: `#9e1b32`
-- Supporting states: dark red `#6d1222`, ink `#333e48`, and gray `#4f4f4f`
+- Supporting states: ink `#333e48`, gray `#4f4f4f`, and gray `#696969`
 - Quiet fills: white `#ffffff`, `#f7f7f7`, and `#e7e7e7`
 - Extended orange, yellow, green, and blue are colorset2-only; read `palette-contract.md`.
 - Pink `#ffccd5` is reserved for a justified last-resort category after red/neutrals, or an explicit request.
 
-Keep output palettes compact and semantic. Use red only for risk, errors, negative deltas, or explicit emphasis. Use white label halos when labels sit on marks or dense backgrounds.
+Allocate ordinary category fills from primary red, then the bundled grays,
+black, white, and remaining colors. The context matrix assigns used segments
+in their data order; the network assigns groups in first-use order. A single
+line and its point marks share primary red. Keep fixed status meanings such
+as critical or behind in primary red and use neutral supporting states.
+The shared finalizer computes black or white labels against actual fills.
 Follow `compact-composition.md` for measured box padding and responsive controls;
 preserve explicit sizes, readable labels, and quantitative spacing.
 

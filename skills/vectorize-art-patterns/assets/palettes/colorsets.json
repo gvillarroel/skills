@@ -38,29 +38,40 @@
       "sequence": [
         "#9e1b32",
         "#333e48",
-        "#6d1222",
+        "#4f4f4f",
+        "#696969",
         "#828282",
+        "#9c9c9c",
+        "#b5b5b5",
+        "#cfcfcf",
+        "#e7e7e7",
+        "#363636",
+        "#f7f7f7",
+        "#1c1c1c",
+        "#000000",
+        "#ffffff",
+        "#6d1222",
         "#e8002a",
-        "#cfcfcf"
+        "#ffccd5"
       ],
       "solidSequence": [
         "#9e1b32",
         "#333e48",
-        "#6d1222",
-        "#828282",
-        "#e8002a",
         "#4f4f4f",
         "#696969",
+        "#828282",
         "#9c9c9c",
         "#b5b5b5",
-        "#1c1c1c",
-        "#363636",
-        "#000000",
         "#cfcfcf",
         "#e7e7e7",
-        "#ffccd5",
+        "#363636",
+        "#f7f7f7",
+        "#1c1c1c",
+        "#000000",
         "#ffffff",
-        "#f7f7f7"
+        "#6d1222",
+        "#e8002a",
+        "#ffccd5"
       ],
       "textOnFill": {
         "#000000": "#ffffff",
@@ -99,7 +110,14 @@
         "#f7f7f7",
         "#ffffff"
       ],
-      "ink": "#9e1b32"
+      "ink": "#9e1b32",
+      "categoryPriority": [
+        "primary-red",
+        "grays",
+        "black",
+        "white",
+        "remaining-colors"
+      ]
     },
     "colorset2": {
       "name": "full-color-style",

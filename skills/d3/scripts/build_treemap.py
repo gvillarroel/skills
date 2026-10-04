@@ -23,7 +23,7 @@ CONTRACT = SKILL_ROOT / "assets/palettes/colorsets.json"
 FAMILIES = {
     "colorset1": [
         ["#9e1b32", ["#6d1222", "#9e1b32", "#e8002a"]],
-        ["#696969", ["#4f4f4f", "#828282", "#b5b5b5"]],
+        ["#333e48", ["#4f4f4f", "#828282", "#b5b5b5"]],
         ["#4f4f4f", ["#363636", "#696969", "#9c9c9c"]],
     ],
     "colorset2": [

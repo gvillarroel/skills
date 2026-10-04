@@ -13,6 +13,7 @@
 - Preserve the pattern's core geometry and semantic color roles before changing labels or domain data.
 - Use SVG-native animation for standalone output; do not leave runtime D3 or CDN dependencies in a self-contained deliverable.
 - Include an SVG `<title>`, `<desc>`, stable `viewBox`, and final-state geometry.
+- In Colorset 1, assign both comparable roots the primary red and supporting nodes the first gray. Preserve the matching-path category order, tree topology, positions, and labels. Keep Colorset 2's existing roles.
 
 ## Source Excerpt
 
@@ -51,7 +52,7 @@ function renderTanglegram() {
       .attr("stroke-opacity", .72);
     drawPath(matchPaths, .25, .9);
     const nodes = svg.append("g").selectAll("g").data([...left, ...right]).join("g").attr("transform", d => `translate(${d.x},${d.y})`);
-    nodes.append("circle").attr("fill", d => d.parent ? "#fff" : palette.ink).attr("stroke", palette.blue).attr("stroke-width", 2);
+    nodes.append("circle").attr("fill", d => activeColorset === "colorset1" ? colors[d.parent ? 1 : 0] : d.parent ? "#fff" : palette.ink).attr("stroke", palette.blue).attr("stroke-width", 2);
     grow(nodes.selectAll("circle"), "r", 3, d => d.parent ? 8 : 12, .15, .55);
     nodes.append("text").attr("class", "mark-label").attr("text-anchor", "middle").attr("dy", d => d.parent ? -13 : 25).text(d => d.label);
   }

@@ -7,7 +7,9 @@ description: "Animates already-rendered Apache ECharts SVG output and builds rep
 
 Read [the colorset output contract](references/colorset-contract.md) before authoring or auditing visual output. Apply one exact bundled palette to every authored output path and inspect rendered paint. Default to colorset1; declare colorset2 when its category distinctions are needed. Start category marks with opaque solid fills and no decorative borders; exhaust the selected palette's usable unique solids before outlined overflow variants. Choose black or white inside text by actual fill contrast.
 
-For directed edges, read [arrow contrast and placement](references/arrow-contrast.md). Qualify actual shafts and heads at 3:1 against their local backings, preserve native endpoint geometry, and keep heads visible outside nodes. Use the bundled option helper before rendering authored arrow charts; inspect filled crossings and final exports separately.
+For directed edges, read [arrow contrast and placement](references/arrow-contrast.md). Qualify actual shafts and heads at 3:1 against their local backings and keep complete heads outside nodes. Use the bundled option helper before rendering authored arrow charts. For fixed native graph arrows, call `insetGraphArrowRoutes(chart, 3)` after `setOption` and before SVG export, then repeat after resize or option changes. It preserves source endpoints and node geometry while trimming the native display route. Inspect filled crossings and final exports separately.
+
+For native boxplots, read [median contrast](references/boxplot-median-contrast.md). With pinned ECharts 6.1.0, call `qualifyBoxplotMedians(chart, echarts, selected)` after `setOption` and before capture/export, then normalize delivered SVG paint. Repeat after source option or resize changes. Preserve opaque category bodies and native data; use independent median ink rather than a contrasting box rim.
 
 ## Exact Output Contract
 
@@ -23,7 +25,7 @@ Replace the example values with the exact requested paths. Do not substitute des
 ## Core Workflow
 
 1. Capture any user-provided input and output filenames before running commands. Use those paths exactly in the static SVG, animated SVG, and validation checks; do not rename them.
-2. Render the ECharts chart to SVG first. Prefer `SVGRenderer` in the browser or `echarts.init(null, null, { renderer: "svg", ssr: true, width, height })` plus `renderToSVGString()` in Node.
+2. Render the ECharts chart to SVG first. Prefer `SVGRenderer` in the browser or `echarts.init(null, null, { renderer: "svg", ssr: true, width, height })` plus `renderToSVGString()` in Node. Apply the required native graph arrow clearance step between `setOption` and export; follow its supported layout contract in the arrow reference.
 3. Preserve ECharts geometry. Do not redraw chart marks by hand unless the source chart is unavailable.
 4. Choose a chart-type profile from `references/chart-animation-profiles.md` and animate the rendered marks with CSS or `scripts/animate_echarts_svg.py`.
 5. Keep chart context visible enough to orient the viewer: axes, legends, labels, map outlines, and hierarchy labels should fade or settle after data marks instead of disappearing.

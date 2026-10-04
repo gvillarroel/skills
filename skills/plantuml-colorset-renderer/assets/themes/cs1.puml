@@ -1,4 +1,5 @@
 ' plantuml-colorset-renderer: cs1 custom theme
+' CS1 category priority: primary red, grays, black, white, then remaining hues.
 skinparam backgroundColor #ffffff
 skinparam shadowing false
 skinparam DefaultFontName Arial
@@ -10,59 +11,59 @@ skinparam NoteBackgroundColor #9e1b32
 skinparam NoteBorderColor #9e1b32
 skinparam NoteBorderThickness 0
 skinparam NoteFontColor #ffffff
-skinparam SequenceParticipantBackgroundColor #333e48
-skinparam SequenceParticipantBorderColor #333e48
+skinparam SequenceParticipantBackgroundColor #9e1b32
+skinparam SequenceParticipantBorderColor #9e1b32
 skinparam SequenceParticipantBorderThickness 0
 skinparam SequenceParticipantFontColor #ffffff
-skinparam UsecaseBackgroundColor #6d1222
-skinparam UsecaseBorderColor #6d1222
+skinparam UsecaseBackgroundColor #9e1b32
+skinparam UsecaseBorderColor #9e1b32
 skinparam UsecaseBorderThickness 0
 skinparam UsecaseFontColor #ffffff
-skinparam ClassBackgroundColor #828282
-skinparam ClassBorderColor #828282
+skinparam ClassBackgroundColor #9e1b32
+skinparam ClassBorderColor #9e1b32
 skinparam ClassBorderThickness 0
-skinparam ClassFontColor #000000
-skinparam ObjectBackgroundColor #e8002a
-skinparam ObjectBorderColor #e8002a
+skinparam ClassFontColor #ffffff
+skinparam ObjectBackgroundColor #9e1b32
+skinparam ObjectBorderColor #9e1b32
 skinparam ObjectBorderThickness 0
 skinparam ObjectFontColor #ffffff
-skinparam ActivityBackgroundColor #4f4f4f
-skinparam ActivityBorderColor #4f4f4f
+skinparam ActivityBackgroundColor #9e1b32
+skinparam ActivityBorderColor #9e1b32
 skinparam ActivityBorderThickness 0
 skinparam ActivityFontColor #ffffff
-skinparam ActivityDiamondBackgroundColor #696969
-skinparam ActivityDiamondBorderColor #696969
+skinparam ActivityDiamondBackgroundColor #333e48
+skinparam ActivityDiamondBorderColor #333e48
 skinparam ActivityDiamondBorderThickness 0
 skinparam ActivityDiamondFontColor #ffffff
-skinparam ComponentBackgroundColor #9c9c9c
-skinparam ComponentBorderColor #9c9c9c
+skinparam ComponentBackgroundColor #9e1b32
+skinparam ComponentBorderColor #9e1b32
 skinparam ComponentBorderThickness 0
-skinparam ComponentFontColor #000000
-skinparam InterfaceBackgroundColor #b5b5b5
-skinparam InterfaceBorderColor #b5b5b5
+skinparam ComponentFontColor #ffffff
+skinparam InterfaceBackgroundColor #333e48
+skinparam InterfaceBorderColor #333e48
 skinparam InterfaceBorderThickness 0
-skinparam InterfaceFontColor #000000
-skinparam NodeBackgroundColor #1c1c1c
-skinparam NodeBorderColor #1c1c1c
+skinparam InterfaceFontColor #ffffff
+skinparam NodeBackgroundColor #9e1b32
+skinparam NodeBorderColor #9e1b32
 skinparam NodeBorderThickness 0
 skinparam NodeFontColor #ffffff
-skinparam DatabaseBackgroundColor #363636
-skinparam DatabaseBorderColor #363636
+skinparam DatabaseBackgroundColor #333e48
+skinparam DatabaseBorderColor #333e48
 skinparam DatabaseBorderThickness 0
 skinparam DatabaseFontColor #ffffff
-skinparam CloudBackgroundColor #000000
-skinparam CloudBorderColor #000000
+skinparam CloudBackgroundColor #4f4f4f
+skinparam CloudBorderColor #4f4f4f
 skinparam CloudBorderThickness 0
 skinparam CloudFontColor #ffffff
-skinparam QueueBackgroundColor #cfcfcf
-skinparam QueueBorderColor #cfcfcf
+skinparam QueueBackgroundColor #696969
+skinparam QueueBorderColor #696969
 skinparam QueueBorderThickness 0
-skinparam QueueFontColor #000000
-skinparam StateBackgroundColor #e7e7e7
-skinparam StateBorderColor #e7e7e7
+skinparam QueueFontColor #ffffff
+skinparam StateBackgroundColor #9e1b32
+skinparam StateBorderColor #9e1b32
 skinparam StateBorderThickness 0
-skinparam StateFontColor #000000
-skinparam ClassHeaderBackgroundColor #828282
+skinparam StateFontColor #ffffff
+skinparam ClassHeaderBackgroundColor #9e1b32
 skinparam SequenceActorBackgroundColor #ffffff
 skinparam SequenceActorBorderColor #333e48
 skinparam SequenceActorFontColor #000000
@@ -72,9 +73,9 @@ skinparam ActorBackgroundColor #ffffff
 skinparam ActorBorderColor #333e48
 skinparam ActorFontColor #000000
 skinparam ActivityStartColor #333e48
-skinparam ActivityEndColor #e8002a
+skinparam ActivityEndColor #9e1b32
 skinparam StateStartColor #333e48
-skinparam StateEndColor #e8002a
+skinparam StateEndColor #9e1b32
 skinparam TimingBackgroundColor #ffffff
 skinparam TimingFontColor #000000
 skinparam TimingLineColor #696969
@@ -123,63 +124,63 @@ actor, boundary, control {
   LineThickness 1.5
 }
 node, artifact, folder, frame, rectangle, card {
-  BackGroundColor #1c1c1c
+  BackGroundColor #9e1b32
   FontColor #ffffff
-  LineColor #1c1c1c
+  LineColor #9e1b32
   LineThickness 0
 }
 component {
-  BackGroundColor #9c9c9c
-  FontColor #000000
-  LineColor #9c9c9c
+  BackGroundColor #9e1b32
+  FontColor #ffffff
+  LineColor #9e1b32
   LineThickness 0
 }
 interface {
-  BackGroundColor #b5b5b5
-  FontColor #000000
-  LineColor #b5b5b5
-  LineThickness 0
-}
-database, storage, collections {
-  BackGroundColor #363636
-  FontColor #ffffff
-  LineColor #363636
-  LineThickness 0
-}
-cloud {
-  BackGroundColor #000000
-  FontColor #ffffff
-  LineColor #000000
-  LineThickness 0
-}
-queue {
-  BackGroundColor #cfcfcf
-  FontColor #000000
-  LineColor #cfcfcf
-  LineThickness 0
-}
-agent, participant {
   BackGroundColor #333e48
   FontColor #ffffff
   LineColor #333e48
   LineThickness 0
 }
+database, storage, collections {
+  BackGroundColor #333e48
+  FontColor #ffffff
+  LineColor #333e48
+  LineThickness 0
+}
+cloud {
+  BackGroundColor #4f4f4f
+  FontColor #ffffff
+  LineColor #4f4f4f
+  LineThickness 0
+}
+queue {
+  BackGroundColor #696969
+  FontColor #ffffff
+  LineColor #696969
+  LineThickness 0
+}
+agent, participant {
+  BackGroundColor #9e1b32
+  FontColor #ffffff
+  LineColor #9e1b32
+  LineThickness 0
+}
 class {
-  BackGroundColor #828282
-  FontColor #000000
-  LineColor #828282
+  BackGroundColor #9e1b32
+  FontColor #ffffff
+  LineColor #9e1b32
   LineThickness 0
 }
 object {
-  BackGroundColor #e8002a
+  BackGroundColor #9e1b32
   FontColor #ffffff
-  LineColor #e8002a
+  LineColor #9e1b32
   LineThickness 0
 }
 usecase {
-  BackGroundColor #6d1222
+  BackGroundColor #9e1b32
   FontColor #ffffff
-  LineColor #6d1222
+  LineColor #9e1b32
   LineThickness 0
 }
 note {
@@ -189,15 +190,15 @@ note {
   LineThickness 0
 }
 activity {
-  BackGroundColor #4f4f4f
+  BackGroundColor #9e1b32
   FontColor #ffffff
-  LineColor #4f4f4f
+  LineColor #9e1b32
   LineThickness 0
 }
 state {
-  BackGroundColor #e7e7e7
-  FontColor #000000
-  LineColor #e7e7e7
+  BackGroundColor #9e1b32
+  FontColor #ffffff
+  LineColor #9e1b32
   LineThickness 0
 }
 classDiagram, componentDiagram, objectDiagram {
@@ -211,25 +212,25 @@ classDiagram, componentDiagram, objectDiagram {
 }
 objectDiagram {
   object {
-    BackGroundColor #e8002a
+    BackGroundColor #9e1b32
     FontColor #ffffff
-    LineColor #e8002a
+    LineColor #9e1b32
     LineThickness 0
   }
 }
 componentDiagram {
   usecase {
-    BackGroundColor #6d1222
+    BackGroundColor #9e1b32
     FontColor #ffffff
-    LineColor #6d1222
+    LineColor #9e1b32
     LineThickness 0
   }
 }
 sequenceDiagram {
   participant {
-    BackGroundColor #333e48
+    BackGroundColor #9e1b32
     FontColor #ffffff
-    LineColor #333e48
+    LineColor #9e1b32
     LineThickness 0
   }
   actor, boundary, control, entity {
@@ -242,15 +243,15 @@ sequenceDiagram {
     FontColor #000000
   }
   queue {
-    BackGroundColor #cfcfcf
-    FontColor #000000
-    LineColor #cfcfcf
+    BackGroundColor #696969
+    FontColor #ffffff
+    LineColor #696969
     LineThickness 0
   }
   collections {
-    BackGroundColor #363636
+    BackGroundColor #333e48
     FontColor #ffffff
-    LineColor #363636
+    LineColor #333e48
     LineThickness 0
   }
   lifeLine {
@@ -272,15 +273,15 @@ sequenceDiagram {
 }
 activityDiagram {
   activity {
-    BackGroundColor #4f4f4f
+    BackGroundColor #9e1b32
     FontColor #ffffff
-    LineColor #4f4f4f
+    LineColor #9e1b32
     LineThickness 0
   }
   diamond {
-    BackGroundColor #696969
+    BackGroundColor #333e48
     FontColor #ffffff
-    LineColor #696969
+    LineColor #333e48
     LineThickness 0
   }
   composite, partition, swimlane {
@@ -297,9 +298,9 @@ activityDiagram {
       LineThickness 1
     }
     stop, end {
-      BackGroundColor #e8002a
+      BackGroundColor #9e1b32
       FontColor #ffffff
-      LineColor #e8002a
+      LineColor #9e1b32
       LineThickness 1.5
     }
   }
@@ -317,9 +318,9 @@ activityDiagram {
 }
 stateDiagram {
   state {
-    BackGroundColor #e7e7e7
-    FontColor #000000
-    LineColor #e7e7e7
+    BackGroundColor #9e1b32
+    FontColor #ffffff
+    LineColor #9e1b32
     LineThickness 0
   }
   group {
@@ -336,9 +337,9 @@ stateDiagram {
       LineThickness 1
     }
     stop, end {
-      BackGroundColor #e8002a
+      BackGroundColor #9e1b32
       FontColor #ffffff
-      LineColor #e8002a
+      LineColor #9e1b32
       LineThickness 1.5
     }
   }
@@ -358,9 +359,9 @@ mindmapDiagram, wbsDiagram {
 }
 jsonDiagram, yamlDiagram {
   node {
-    BackGroundColor #1c1c1c
+    BackGroundColor #9e1b32
     FontColor #ffffff
-    LineColor #1c1c1c
+    LineColor #9e1b32
     LineThickness 0
     separator {
       LineColor #ffffff
@@ -409,9 +410,9 @@ chenEerDiagram {
     }
   }
   chenRelationship {
-    BackGroundColor #6d1222
+    BackGroundColor #4f4f4f
     FontColor #ffffff
-    LineColor #6d1222
+    LineColor #4f4f4f
     LineThickness 0
     .identifying {
       LineColor #ffffff
@@ -421,9 +422,9 @@ chenEerDiagram {
 }
 nwdiagDiagram {
   server {
-    BackGroundColor #333e48
+    BackGroundColor #9e1b32
     FontColor #ffffff
-    LineColor #333e48
+    LineColor #9e1b32
     LineThickness 0
   }
   network {
@@ -446,21 +447,21 @@ nwdiagDiagram {
 }
 ' Railroad strokes encode grammar: native token outline widths are hard-coded.
 ebnf {
-  BackGroundColor #828282
-  FontColor #000000
+  BackGroundColor #9e1b32
+  FontColor #ffffff
   LineColor #696969
   LineThickness 1.5
 }
 ganttDiagram {
   task {
-    BackGroundColor #828282
-    FontColor #000000
-    LineColor #828282
+    BackGroundColor #9e1b32
+    FontColor #ffffff
+    LineColor #9e1b32
     LineThickness 0
     unstarted {
-      BackGroundColor #828282
-      FontColor #000000
-      LineColor #828282
+      BackGroundColor #9e1b32
+      FontColor #ffffff
+      LineColor #9e1b32
       LineThickness 0
     }
   }
@@ -506,9 +507,9 @@ timingDiagram {
     LineThickness 2
   }
   concise {
-    BackGroundColor #828282
-    FontColor #000000
-    LineColor #828282
+    BackGroundColor #9e1b32
+    FontColor #ffffff
+    LineColor #9e1b32
     LineThickness 1.5
   }
   binary, clock {
@@ -551,7 +552,7 @@ chartDiagram {
     LineThickness 1.5
   }
   scatter {
-    MarkerColor #6d1222
+    MarkerColor #4f4f4f
   }
 }
 filesDiagram, saltDiagram {

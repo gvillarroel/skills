@@ -169,4 +169,33 @@ class ArrowTests(unittest.TestCase):
         self.assertGreater(path_points(root[0])[-1][0], 20)
         self.assertEqual(root[0].get('data-arrow-clearance'), 'native-body-gutter-3px')
 
+    def test_primary_red_json_port_moves_whole_glyph_and_straight_prefix(self):
+        body = '<rect x="10" y="10" width="67.4551" height="40" fill="#9e1b32"/>'
+        curve = ' C87.2561,30 97.0221,30 106.6238,30'
+        root = document(body+'<path d="M65,30 L78,30'+curve+'" fill="none" stroke="#696969" stroke-width="1.5"/>'
+                        '<path d="M102,27 L110,30 L102,33Z" fill="#696969"/>'
+                        '<ellipse cx="65" cy="30" rx="3" ry="3" fill="#696969" stroke="#696969" stroke-width="1"/>')
+        root.set('data-diagram-type', 'JSON')
+        before_body = ET.tostring(root[0])
+        finish_native_arrows(root, 'colorset1', 'plantuml')
+        shaft, head, port = root[1:]
+        self.assertGreaterEqual(float(port.get('cx'))-3-.5, 80.4551)
+        self.assertTrue(shaft.get('d').endswith(curve))
+        self.assertEqual(path_points(shaft)[0], (float(port.get('cx')), 30))
+        self.assertEqual(ET.tostring(root[0]), before_body)
+        for edge in [shaft, head, port]:
+            self.assertFalse(any(contains(root[0], point) for point in path_points(edge)))
+            self.assertGreaterEqual(contrast(property_value(edge, 'stroke'), '#ffffff'), 3)
+        before = ET.tostring(root)
+        finish_native_arrows(root, 'colorset1', 'plantuml')
+        self.assertEqual(ET.tostring(root), before)
+
+    def test_unsupported_primary_red_source_port_cannot_silently_pass(self):
+        root = document('<rect x="0" y="0" width="40" height="40" fill="#9e1b32"/>'
+                        '<path d="M20 20 C30 20 50 20 70 20" fill="none" stroke="#696969"/>'
+                        '<circle cx="20" cy="20" r="3" fill="#696969"/>')
+        root.set('data-diagram-type', 'YAML')
+        with self.assertRaisesRegex(ValueError, 'straight initial shaft prefix'):
+            finish_native_arrows(root, 'colorset1', 'plantuml')
+
 if __name__=='__main__':unittest.main()

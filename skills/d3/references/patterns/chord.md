@@ -23,7 +23,7 @@ function renderChord() {
     const svg = prepareSvg("chord", "Chord ribbons", "D3 chord layout showing reciprocal category flow.");
     const names = ["Research", "Build", "Ship", "Support"];
     const matrix = [[0, 18, 7, 4], [9, 0, 21, 8], [5, 11, 0, 17], [8, 5, 13, 0]];
-    const color = d3.scaleOrdinal(names, [palette.blue, palette.orange, palette.green, palette.purple]);
+    const color = d3.scaleOrdinal(names, activeColorset === "colorset1" ? colors : [palette.blue, palette.orange, palette.green, palette.purple]);
     const outerRadius = 142;
     const innerRadius = outerRadius - 18;
     const groupArc = d3.arc().innerRadius(innerRadius).outerRadius(outerRadius);

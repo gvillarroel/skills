@@ -9,10 +9,11 @@ from __future__ import annotations
 import re
 import json
 from pathlib import Path
+import xml.etree.ElementTree as ET
 from arrow_contrast import contains, contrast, path_points, property_value, rect_bounds, set_style
 from palette_paints import COLORSETS, canonical, readable_text
 
-STYLE_VERSION = "scoped-solid-v2"
+STYLE_VERSION = "scoped-solid-v3"
 SHAPES = {"rect", "circle", "ellipse", "polygon", "path"}
 STYLE_RULES = json.loads((Path(__file__).resolve().parent.parent / "assets/themes/native-style-rules.json").read_text(encoding="utf-8"))
 
@@ -72,6 +73,57 @@ def text_points(node):
     return [(x + width * fraction, baseline - size * .4) for fraction in (.15, .5, .85)]
 
 
+def timing_label_surface(root, node, backgrounds, canvas):
+    """Back a terminal state label without extending its measured timing span."""
+    fills = backgrounds-{canvas}
+    if len(fills) != 1:
+        return None
+    fill = next(iter(fills))
+    width, size = float(node.get('textLength', 0)), float(node.get('font-size', 14))
+    x, baseline = float(node.get('x', 0)), float(node.get('y', 0))
+    if node.get('text-anchor') == 'middle':
+        x -= width/2
+    elif node.get('text-anchor') == 'end':
+        x -= width
+    bounds = (x-2, baseline-size-2, x+width+2, baseline+2)
+    viewbox = [float(value) for value in root.get('viewBox', '').split()]
+    if len(viewbox) != 4 or bounds[0] < viewbox[0] or bounds[1] < viewbox[1] or bounds[2] > viewbox[0]+viewbox[2] or bounds[3] > viewbox[1]+viewbox[3]:
+        raise ValueError('Native timing label surface cannot fit the viewport; increase native display spacing without changing events.')
+    parents, _, _, _ = context(root)
+    parent = parents[node]
+    namespace = node.tag.rsplit('}', 1)[0]+'}' if '}' in node.tag else ''
+    surface = ET.Element(namespace+'rect', {
+        'x': f'{bounds[0]:g}', 'y': f'{bounds[1]:g}',
+        'width': f'{bounds[2]-bounds[0]:g}', 'height': f'{bounds[3]-bounds[1]:g}',
+        'fill': fill, 'stroke': 'none', 'stroke-width': '0',
+        'data-style-role': 'label-surface',
+    })
+    parent.insert(list(parent).index(node), surface)
+    # The native outer display frame can end before its terminal state label.
+    # Pad that container only; measurement ticks, traces and state spans keep
+    # their original coordinates. Do not widen an actual data axis.
+    verticals = [line for line in root.iter() if local(line) == 'line'
+                 and float(property_value(line, 'stroke-width', '1')) == 1
+                 and float(line.get('x1', 0)) == float(line.get('x2', 0))
+                 and float(line.get('y1', 0)) <= bounds[1]
+                 and float(line.get('y2', 0)) >= bounds[3]]
+    if verticals:
+        frame = max(verticals, key=lambda line: float(line.get('x1', 0)))
+        old_right = float(frame.get('x1', 0))
+        if old_right < bounds[2]:
+            new_right = bounds[2]+4
+            if new_right > viewbox[0]+viewbox[2]:
+                raise ValueError('Native timing label needs more outer display padding inside the viewport.')
+            frame.set('x1', f'{new_right:g}')
+            frame.set('x2', f'{new_right:g}')
+            frame.set('data-style-role', 'display-frame')
+            for line in root.iter():
+                if local(line) == 'line' and float(line.get('y1', 0)) == float(line.get('y2', 0)) and abs(float(line.get('x2', 0))-old_right) < .01 and float(property_value(line, 'stroke-width', '1')) == 1:
+                    line.set('x2', f'{new_right:g}')
+                    line.set('data-style-role', 'display-frame')
+    return surface
+
+
 def presentation_source(source):
     """Remove comments and quoted facts before inspecting authored properties."""
     source = re.sub(r"(?s)/'.*?'/", "", source)
@@ -106,7 +158,7 @@ def source_has_style(source):
             continue
         if re.search(r"\[[^\]]*#[0-9a-f]{3,8}\b|\bis\s+colored\b|\b(?:line\.dotted|line\.dashed)\b", head, re.I):
             return True
-        if re.match(r"(?i)\s*(?:class|object|component|rectangle|actor|participant|database|queue|node|cloud|storage|package|folder|artifact|interface|entity|boundary|control|collections|card|agent|usecase|state|archimate)\b", head) and re.search(r"#[0-9a-f]{3,8}\b|#(?:red|blue|green|white|black|orange|purple|yellow|gray|grey)\b", head, re.I):
+        if re.match(r"(?i)\s*(?:class|object|component|rectangle|actor|participant|database|queue|node|cloud|storage|package|folder|artifact|interface|entity|boundary|control|collections|card|agent|usecase|state|archimate|bar|line|scatter)\b", head) and re.search(r"#[0-9a-f]{3,8}\b|#(?:red|blue|green|white|black|orange|purple|yellow|gray|grey)\b", head, re.I):
             return True
     return False
 
@@ -122,6 +174,30 @@ def finish_native_styles(root, colorset, source="", enabled=True):
     _, _, ancestors, definition = context(root)
     family = root.get("data-diagram-type", "")
     body_count = 0
+    chart_map = {}
+    if family == 'CHART' and colorset == 'colorset1' and not explicit:
+        # Native chart defaults are scoped by mark kind. Compress absent kinds
+        # so a line-only or scatter-only chart does not start with gray.
+        native_marks = {'bar': '#9e1b32', 'line': '#333e48', 'scatter': '#4f4f4f'}
+        active = set(re.findall(r'(?im)^\s*(bar|line|scatter)\s+', presentation_source(source)))
+        rank = [kind for kind in native_marks if kind in active]
+        chart_map = dict(zip(rank, native_marks.values()))
+        for node in root.iter():
+            tag, fill = local(node), opaque_fill(node)
+            kind = 'bar' if tag == 'rect' and fill == native_marks['bar'] else 'scatter' if tag in {'circle', 'ellipse', 'polygon'} and fill == native_marks['scatter'] else 'line' if tag in {'line', 'path'} and canonical(property_value(node, 'stroke', '#000000')) == native_marks['line'] else None
+            if kind not in chart_map:
+                continue
+            paint = chart_map[kind]
+            node.set('data-native-mark', kind)
+            if kind == 'line':
+                set_style(node, stroke=paint)
+            else:
+                node.set('fill', paint)
+                set_style(node, fill=paint, stroke='none', **{'stroke-width': '0'})
+                node.set('data-style-role', 'solid-body')
+                body_count += 1
+        if chart_map:
+            root.set('data-native-mark-map', json.dumps(chart_map, separators=(',', ':')))
     # The native grammar BackGroundColor is shared by tokens and the viewport.
     # Deliver a white default canvas so solid tokens retain their silhouettes.
     if family in {"EBNF", "REGEX"} and not source_has_property(source, "BackGroundColor"):
@@ -135,21 +211,35 @@ def finish_native_styles(root, colorset, source="", enabled=True):
                     node.set("data-style-role", "canvas")
     # ArchiMate's named native layers bypass themes. Map exact layer tokens before
     # generic nearest-palette normalization loses their categorical identity.
-    layers = {"#c9ffc9": rules["archimate"]["technology"],
-              "#c2f0ff": rules["archimate"]["application"],
-              "#ffffcc": rules["archimate"]["business"],
-              "#ccccff": rules["archimate"]["motivation"],
-              "#f8e7c0": rules["archimate"]["strategy"],
-              "#97ff97": rules["archimate"]["physical"],
-              "#ffe0e0": rules["archimate"]["implementation"]}
+    layer_names = {"#c9ffc9": "technology", "#c2f0ff": "application",
+                   "#ffffcc": "business", "#ccccff": "motivation",
+                   "#f8e7c0": "strategy", "#97ff97": "physical",
+                   "#ffe0e0": "implementation"}
+    layer_map = dict(rules['archimate'])
+    active_layer_map = {}
+    if colorset == 'colorset1' and not explicit:
+        active = {layer_names[paint] for node in root.iter()
+                  if local(node) in SHAPES and (paint := opaque_fill(node)) in layer_names}
+        rank = rules['archimateRoleOrder']
+        if len(rank) != len(layer_names) or set(rank) != set(layer_names.values()):
+            raise ValueError('CS1 ArchiMate role order must name every native layer exactly once.')
+        pool = [rules['archimate'][name] for name in rank]
+        active_layer_map = dict(zip((name for name in rank if name in active), pool))
+        layer_map.update(active_layer_map)
+    layers = {paint: layer_map[name] for paint, name in layer_names.items()}
     if not explicit:
         for node in root.iter():
             if local(node) in SHAPES and opaque_fill(node) in layers:
-                paint = layers[opaque_fill(node)]
+                native = opaque_fill(node)
+                paint = layers[native]
                 node.set("fill", paint)
                 set_style(node, fill=paint, stroke="none", **{"stroke-width": "0"})
                 node.set("data-style-role", "solid-body")
+                if colorset == 'colorset1':
+                    node.set('data-native-layer', layer_names[native])
                 body_count += 1
+    if active_layer_map:
+        root.set('data-native-layer-map', json.dumps(active_layer_map, separators=(',', ':')))
     # Salt's button geometry has a hardcoded native bevel/outline, unlike its
     # wireframe field and grid lines. Match that primitive, not every rectangle.
     if family == "SALT" and not explicit:
@@ -213,6 +303,7 @@ def finish_native_styles(root, colorset, source="", enabled=True):
                     set_style(node, stroke=readable_text(backing), **{"stroke-width": str(STYLE_RULES["semanticDetailWidth"])})
                     node.set("data-style-role", "semantic-detail")
     text_count = 0
+    label_surface_count = 0
     # An explicit FontColor remains a source-style exception; otherwise labels
     # follow their actual painted backing, including exterior participant labels.
     explicit_text = source_has_property(source, r"\w*FontColor")
@@ -226,6 +317,13 @@ def finish_native_styles(root, colorset, source="", enabled=True):
         choices = {readable_text(fill) for fill in backgrounds}
         if len(choices) != 1:
             choices = {paint for paint in ("#000000", "#ffffff") if all(contrast(paint, fill) >= 4.5 for fill in backgrounds)}
+        if len(choices) != 1 and family == 'TIMING' and not explicit:
+            surface = timing_label_surface(root, node, backgrounds, rules['canvas'])
+            if surface is not None:
+                shapes = painted_shapes(root)
+                backgrounds = {background_at(root, point, node, shapes) for point in points}
+                choices = {readable_text(fill) for fill in backgrounds}
+                label_surface_count += 1
         if len(choices) != 1:
             raise ValueError("A native label crosses incompatible fills; move it to a single surface in the source.")
         paint = next(iter(choices))
@@ -236,7 +334,14 @@ def finish_native_styles(root, colorset, source="", enabled=True):
         text_count += 1
     root.set("data-native-style", STYLE_VERSION)
     root.set("data-source-style", "explicit" if explicit else "bundled")
-    return {"version": STYLE_VERSION, "mode": "explicit-source" if explicit else "bundled-solid", "textCount": text_count, "bodyCount": body_count}
+    result = {"version": STYLE_VERSION, "mode": "explicit-source" if explicit else "bundled-solid", "textCount": text_count, "bodyCount": body_count}
+    if label_surface_count:
+        result['labelSurfaceCount'] = label_surface_count
+    if active_layer_map:
+        result['archimateLayers'] = active_layer_map
+    if chart_map:
+        result['chartMarks'] = chart_map
+    return result
 
 
 def style_findings(root):
@@ -245,7 +350,7 @@ def style_findings(root):
     shapes = painted_shapes(root)
     for node in root.iter():
         role = node.get("data-style-role")
-        if role == "solid-body":
+        if role in {"solid-body", "label-surface"}:
             if not opaque_fill(node):
                 findings.append("solid body must have an opaque fill")
             stroke = property_value(node, "stroke", "none")

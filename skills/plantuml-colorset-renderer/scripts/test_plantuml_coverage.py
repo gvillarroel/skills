@@ -37,6 +37,7 @@ from render_plantuml_directory import (  # noqa: E402
     render_with_cli,
     source_for_kroki,
 )
+from native_styles import STYLE_VERSION  # noqa: E402
 
 
 class LocalCommandTests(unittest.TestCase):
@@ -214,11 +215,11 @@ class ExactReportGateTests(unittest.TestCase):
 
 
 class RenderArtifactValidationTests(unittest.TestCase):
-    def test_neutral_colorset1_activity_does_not_require_red_or_pink(self) -> None:
+    def test_explicit_neutral_colorset1_activity_does_not_require_red_or_pink(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)
             svg = root / "activity.svg"
-            svg.write_text('<svg xmlns="http://www.w3.org/2000/svg" data-native-style="scoped-solid-v2"><rect x="0" y="0" width="100" height="40" fill="#333E48" data-style-role="solid-body"/><text x="10" y="25" textLength="50" font-size="14" fill="#FFFFFF" data-style-role="contrast-label">Observe</text><line stroke="#696969" x1="50" y1="40" x2="50" y2="60"/></svg>', encoding="utf-8")
+            svg.write_text(f'<svg xmlns="http://www.w3.org/2000/svg" data-native-style="{STYLE_VERSION}" data-source-style="explicit"><rect x="0" y="0" width="100" height="40" fill="#333E48" data-style-role="solid-body"/><text x="10" y="25" textLength="50" font-size="14" fill="#FFFFFF" data-style-role="contrast-label">Observe</text><line stroke="#696969" x1="50" y1="40" x2="50" y2="60"/></svg>', encoding="utf-8")
             report = root / "report.json"
             report.write_text(json.dumps({
                 "ok": True, "colorset": "colorset1", "formats": ["svg"],

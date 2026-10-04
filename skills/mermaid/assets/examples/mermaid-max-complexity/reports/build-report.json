@@ -7,6 +7,5 @@
   "animatedSvgCount": 62,
   "finiteCapacityCaseCount": 25,
   "finiteCapacitySlots": 200,
-  "manifestSha256": "8e6369677754ff3148a80aab007ad325eace22cfec495311d9733b0599275722",
-  "recovery": "Native renderer sources/styles regenerated; failed Windows file-open pairs finished from native static SVG; scoped solid-native finish applied to static and animated pairs."
+  "manifestSha256": "0f48c2066cfc974ab219fff3557f3b11e43baf03d653643561a79691a7a8bee3"
 }

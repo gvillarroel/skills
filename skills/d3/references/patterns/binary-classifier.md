@@ -64,8 +64,8 @@ function renderBinaryClassifier() {
       .attr("transform", d => `translate(${d.x},${d.y})`);
     const circles = groups.append("circle")
       .attr("r", d => d.r)
-      .attr("fill", d => [palette.blueHighlight, palette.orangeHighlight, palette.greenHighlight][d.layer])
-      .attr("stroke", d => [palette.blue, palette.orange, palette.green][d.layer])
+      .attr("fill", d => (activeColorset === "colorset1" ? colors : [palette.blueHighlight, palette.orangeHighlight, palette.greenHighlight])[d.layer])
+      .attr("stroke", d => (activeColorset === "colorset1" ? colors : [palette.blue, palette.orange, palette.green])[d.layer])
       .attr("stroke-width", 1.4);
     pulseMlpNodes(circles.filter(d => d.active), delayForLayer);
   }

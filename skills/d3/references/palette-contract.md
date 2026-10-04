@@ -2,6 +2,17 @@
 
 Treat `assets/palettes/colorsets.json` as the machine-readable source of truth for every repository-owned D3 artifact. Use one active colorset per render.
 
+## Contents
+
+- [Selection](#selection)
+- [Paint syntax](#paint-syntax)
+- [Colorset1 standard](#colorset1--standard)
+- [Colorset2 extended](#colorset2--extended)
+- [Bind categories without cycling early](#bind-categories-without-cycling-early)
+- [Contrast and small-size gate](#contrast-and-small-size-gate)
+- [Logo-specific restrictions](#logo-specific-restrictions)
+- [Validation](#validation)
+
 ## Selection
 
 - Use `colorset1` for every request unless the user explicitly asks for an extended, expanded, full-color, or multicolor palette.
@@ -22,7 +33,10 @@ Treat `assets/palettes/colorsets.json` as the machine-readable source of truth f
 
 ## Colorset1 — Standard
 
-Colorset1 contains 17 red-neutral tokens. Use these roles first:
+Colorset1 contains 17 red-neutral tokens. Allocate indexed category fills from
+the bundled `solidSequence`: primary red `#9e1b32`, grays, black, white, then
+the remaining colors. Exclude only the actual canvas token. These named roles
+describe semantic paint and page structure separately from category order:
 
 - background `#f7f7f7`
 - surface `#ffffff`
@@ -36,14 +50,19 @@ Colorset1 contains 17 red-neutral tokens. Use these roles first:
 - line `#cfcfcf`
 - quiet surface `#e7e7e7`
 
-Use grayscale value, stroke weight, texture, shape, position, and direct labels before adding more hue. Reserve red for the primary series, selection, change, risk, or another declared semantic role.
+Use primary red for the first indexed category and continue through the bundled
+order for distinct categories. Reuse a fill for the same semantic role; retain
+explicit status meanings and ordered-value scales. Use shape, position, and
+direct labels alongside color.
 
-Use white or `#e7e7e7` for secondary surfaces and subtle selection fills, with a
-red stroke or opaque mark when emphasis is needed. Do not automatically select
+Use white or `#e7e7e7` for page surfaces, with an opaque red mark when emphasis
+is needed. Keep initial category faces borderless. Do not automatically select
 pink for the second series, highlights, focus, replay, or additional nodes.
-Only introduce pink for an additional meaningful category after usable reds,
-grays, black, and white are exhausted, or when explicitly requested; record the
-reason. Reuse role colors before allocating a new token.
+Only introduce pink for an additional meaningful category after all preceding
+usable tokens in the complete sequence are exhausted: primary red, grays,
+black, white, then the remaining colors in their listed order. An explicit pink
+request may select it directly; retain justified status, brand and tonal meanings.
+Reuse role colors before allocating a new token.
 
 ## Colorset2 — Extended
 
@@ -53,10 +72,63 @@ Colorset2 contains every colorset1 token plus blue, orange, green, yellow, purpl
 
 Assign hues by meaning and keep the mapping stable across frames and linked views. Prefer one dominant hue plus neutrals when the data does not require six categories.
 
+## Bind Categories Without Cycling Early
+
+For a directly labeled grid or category catalogue, use
+`scripts/build_category_grid.py` with `references/category-grid.md`.
+It handles the entire ordinal/overflow contract, mobile geometry and actual
+HTML-to-SVG export without manually rebuilding the allocator.
+
+For an unsupported form, embed the chosen contract from
+`assets/palettes/colorsets.json` as `window.D3_SOLID_PALETTES`, then inline
+`assets/templates/solid-style.js` before the rendering script. The standalone
+builders and `colorset_adapter.py` already bundle both resources. When using
+the adapter, run the authored renderer on `DOMContentLoaded` so its appended
+runtime is available. Inline the genuine unchanged
+`assets/vendor/d3.v7.9.0.min.js` and use actual D3 joins; do not create a
+lookalike API stub. Copy resources into the output; keep the skill bundle
+read-only and do not add a fetch dependency on its installed path. Include
+SVG title and desc in the authored HTML before its first validation command.
+
+Pass the original category index directly to `categoryStyle`; do not reduce it
+with modulo or force all strokes to `none`. On a white colorset1 canvas, indices
+0–15 use distinct borderless fills, index 15 keeps `#ffccd5`, and index 16 starts
+the contrasting overflow tier. Carry that allocation into every mark and legend:
+
+```js
+const activeColorset = "colorset1";
+const actualCanvas = "#ffffff";
+const categories = data.map((item, index) => ({
+  ...item,
+  style: window.D3SolidStyle.categoryStyle(index, activeColorset, actualCanvas)
+}));
+const marks = svg.selectAll("g.category").data(categories).join("g")
+  .attr("class", "category")
+  .attr("data-outline-tier", d => d.style.tier);
+marks.append("rect")
+  .attr("x", d => d.x).attr("y", d => d.y)
+  .attr("width", d => d.width).attr("height", d => d.height)
+  .attr("fill", d => d.style.fill)
+  .attr("stroke", d => d.style.stroke)
+  .attr("stroke-width", d => d.style.strokeWidth)
+  .attr("stroke-dasharray", d => d.style.strokeDasharray);
+marks.append("text")
+  .attr("x", d => d.x + 8).attr("y", d => d.y + 20)
+  .attr("fill", d => d.style.text)
+  .text(d => d.label);
+```
+
+When a category index is part of the public contract, put
+`data-category-index` on exactly one filled body per category; its label and
+group inherit their association without duplicating that indexed body field.
+The `data-outline-tier="overflow"` ancestor keeps valid overflow rims through
+normalization. Preserve this metadata in exported SVG. Inspect computed styles
+after Replay and export; source JSON or a manually cycled palette is insufficient.
+
 ## Contrast and Small-Size Gate
 
-- Use `#1c1c1c` or `#333e48` on light surfaces and `#ffffff` on dark or saturated surfaces.
-- Add a white or light halo behind labels placed over marks.
+- Use exactly `#000000` or `#ffffff` for inside text, choosing the larger relative-luminance contrast against the actual fill or composited background.
+- Place labels on readable containing faces or clear canvas space; use an opaque label face when mixed underlays prevent readable placement.
 - Do not encode a state by hue alone; pair color with position, shape, texture, label, or stroke pattern.
 - Inspect the intended desktop/mobile size. For logos, also inspect a 96 px-wide preview and simplify geometry or texture until the brand name remains recognizable.
 

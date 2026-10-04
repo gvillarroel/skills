@@ -1,0 +1,155 @@
+{
+  "d3": {
+    "model": "openai-codex/gpt-5.6-luna",
+    "thinking": "medium",
+    "contract": {
+      "prompt": "prompts/d3-contract.md",
+      "outputs": [
+        "contract.json",
+        "contract.html"
+      ],
+      "repetitions": 1
+    },
+    "naturalistic": {
+      "prompt": "prompts/d3-naturalistic.md",
+      "outputs": [
+        "priority.html",
+        "priority.svg",
+        "allocation.json"
+      ],
+      "repetitions": 3
+    }
+  },
+  "mermaid": {
+    "model": "openai-codex/gpt-5.6-luna",
+    "thinking": "medium",
+    "contract": {
+      "prompt": "prompts/mermaid-contract.md",
+      "outputs": [
+        "contract.json",
+        "priority.mmd",
+        "priority.svg",
+        "priority.animated.svg",
+        "style-report.json"
+      ],
+      "repetitions": 1
+    },
+    "naturalistic": {
+      "prompt": "prompts/mermaid-naturalistic.md",
+      "outputs": [
+        "source/priority.mmd",
+        "styled/priority.mmd",
+        "priority.svg"
+      ],
+      "repetitions": 3
+    }
+  },
+  "plantuml-colorset-renderer": {
+    "model": "openai-codex/gpt-5.6-luna",
+    "thinking": "medium",
+    "contract": {
+      "prompt": "prompts/plantuml-colorset-renderer-contract.md",
+      "outputs": [
+        "contract.json",
+        "source/priority.puml",
+        "renders/svg/priority.svg",
+        "renders/png/priority.png",
+        "render-report.json"
+      ],
+      "repetitions": 1
+    },
+    "naturalistic": {
+      "prompt": "prompts/plantuml-naturalistic.md",
+      "outputs": [
+        "source/priority.puml",
+        "source/layers.puml",
+        "renders/svg/priority.svg",
+        "renders/png/priority.png",
+        "renders/svg/layers.svg",
+        "renders/png/layers.png",
+        "render-report.json"
+      ],
+      "repetitions": 3
+    }
+  },
+  "compose-synchronized-svg": {
+    "model": "openai-codex/gpt-5.6-luna",
+    "thinking": "medium",
+    "contract": {
+      "prompt": "prompts/compose-synchronized-svg-contract.md",
+      "outputs": [
+        "contract.json",
+        "composition-plan.json",
+        "priority.svg",
+        "priority-report.json"
+      ],
+      "repetitions": 1
+    }
+  },
+  "procedural-svg-animation": {
+    "model": "openai-codex/gpt-5.6-luna",
+    "thinking": "medium",
+    "contract": {
+      "prompt": "prompts/procedural-svg-animation-contract.md",
+      "outputs": [
+        "contract.json",
+        "priority.svg",
+        "priority-report.json"
+      ],
+      "repetitions": 1
+    }
+  },
+  "threejs-animated-3d": {
+    "model": "openai-codex/gpt-5.6-luna",
+    "thinking": "medium",
+    "contract": {
+      "prompt": "prompts/threejs-animated-3d-contract.md",
+      "outputs": [
+        "priority.html"
+      ],
+      "repetitions": 1
+    }
+  },
+  "vectorize-art-patterns": {
+    "model": "openai-codex/gpt-5.6-luna",
+    "thinking": "medium",
+    "contract": {
+      "prompt": "prompts/vectorize-art-patterns-contract.md",
+      "outputs": [
+        "bailly.svg",
+        "bailly.json"
+      ],
+      "repetitions": 1
+    }
+  },
+  "echarts-animated-svg": {
+    "model": "openai-codex/gpt-5.6-luna",
+    "thinking": "medium",
+    "contract": {
+      "prompt": "prompts/echarts-animated-svg-contract.md",
+      "outputs": [
+        "contract.json",
+        "priority.white.static.svg",
+        "priority.dark.static.svg",
+        "boxplot.white.static.svg",
+        "boxplot.dark.static.svg"
+      ],
+      "repetitions": 1
+    }
+  },
+  "slidev-echarts": {
+    "model": "openai-codex/gpt-5.6-luna",
+    "thinking": "medium",
+    "contract": {
+      "prompt": "prompts/slidev-echarts-contract.md",
+      "outputs": [
+        "contract.json",
+        "priority.white.static.svg",
+        "priority.dark.static.svg",
+        "boxplot.white.static.svg",
+        "boxplot.dark.static.svg"
+      ],
+      "repetitions": 1
+    }
+  }
+}
