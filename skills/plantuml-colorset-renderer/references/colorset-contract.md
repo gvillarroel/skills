@@ -10,7 +10,7 @@ Preserve imported logos, photos, footage, and third-party source image pixels an
 
 Validate every output format and state the skill supports: source, static vector, animated vector, canvas, raster/export, gallery/deck chrome, controls, alternate states, and any downstream capture. Keep output paths, chart/diagram facts, relationships, stable IDs, labels, geometry, and accessibility metadata intact when repairing paint.
 
-The renderer defaults to colorset1 and normalizes native SVG paint after all theme/source overrides. PNG-only Ditaa and standalone math bypass theme syntax but their raster output is quantized to the selected palette. Source-media PNGs retain their original pixels and report a preservation boundary; inspect their authored chrome through the matching normalized SVG. The report validator rejects undeclared SVG paints. A custom theme must also fit the selected colorset.
+The renderer defaults to colorset1 and normalizes native SVG paint after all theme/source overrides. PNG-only Ditaa uses the supported source-backed native raster adapter; standalone math retains native notation and palette quantization. Source-media PNGs retain their original pixels and report a preservation boundary; inspect their authored chrome through the matching normalized SVG. The report validator rejects undeclared SVG paints and missing current native style delivery. A custom theme must also fit the selected colorset.
 
 ## Solid-first category style
 
@@ -18,7 +18,7 @@ Use one opaque solid fill and no decorative outline for initial category choices
 
 For text inside a filled shape, choose exactly `#000000` or `#ffffff` by the greater WCAG relative-luminance contrast against the actual fill. Do not assume every saturated color needs white text: orange, yellow, cyan and medium green often need black. Labels outside shapes use the canvas contrast. Use spacing and silhouette for grouping before borders. Preserve connectors, chart lines, class compartments, actor line art, meaningful data boundaries, source artwork and explicit user style. Containers are layout surfaces, not new categories.
 
-The bundled themes make native object surfaces solid and set their decorative border width to zero. Each object kind reuses its assigned fill; a repeated kind is not a new category. When additional distinct categories are needed, allocate the full `scripts/palette_paints.py` `solid_style` capacity using stable IDs and explicit scoped PlantUML style rules. The native SVG finish restores open internal class/cylinder/queue details and activity connector lines separately. Source media, line art, mathematical notation and semantic chart measurement strokes retain their meanings.
+The bundled themes use explicit family scopes for native object surfaces. Each object kind reuses its assigned fill; a repeated kind is not a new category. When additional distinct categories are needed, allocate the full `scripts/palette_paints.py` `solid_style` capacity using stable IDs and explicit scoped PlantUML style rules. Follow [native style delivery](native-styling.md): the native SVG finish handles hardcoded token/button/task borders, restores class/cylinder/queue/component details, and selects text paint against actual backings. Source media, line art, mathematical notation and semantic chart measurement strokes retain their meanings.
 
 The allocator `solid_style(index, colorset, canvas)` uses all usable solid colors
 first. Its overflow borders select only allowed colors with at least 3:1 contrast

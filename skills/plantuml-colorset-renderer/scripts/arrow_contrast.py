@@ -64,6 +64,10 @@ def path_points(node, steps=40):
     if tag in {'polygon', 'polyline'}:
         values = list(map(float, re.findall(NUMBER, node.get('points', ''))))
         return list(zip(values[::2], values[1::2]))
+    if tag in {'circle', 'ellipse'}:
+        cx, cy = float(node.get('cx', 0)), float(node.get('cy', 0))
+        rx, ry = float(node.get('rx', node.get('r', 0))), float(node.get('ry', node.get('r', 0)))
+        return [(cx+rx*math.cos(i*2*math.pi/steps), cy+ry*math.sin(i*2*math.pi/steps)) for i in range(steps+1)]
     tokens = re.findall(r'[a-zA-Z]|'+NUMBER, node.get('d', ''))
     points, current, first, previous, command = [], (0., 0.), (0., 0.), None, None
     index = 0
@@ -250,6 +254,115 @@ def marker_copy(root, edge, key, paint, index, parents):
         set_style(edge, **{animation_key:'url(#'+clone.get('id')+')'})
 
 
+def plantuml_head_clearance(edges, backgrounds):
+    """Move a native filled tip into its existing gutter, retaining the route."""
+    shafts = [edge for edge in edges if edge.tag.rsplit('}', 1)[-1] in {'line', 'path', 'polyline'} and property_value(edge, 'fill', 'none') == 'none']
+    for head in edges:
+        tag = head.tag.rsplit('}', 1)[-1]
+        if tag not in {'polygon', 'path'} or property_value(head, 'fill', 'none') in {'none', '#ffffff', '#FFFFFF', 'white'}:
+            continue
+        points = path_points(head)
+        if not points:
+            continue
+        center = tuple(sum(point[i] for point in points)/len(points) for i in (0, 1))
+        candidates = []
+        for shaft in shafts:
+            track = path_points(shaft)
+            if len(track) < 2:
+                continue
+            for at_end, endpoint in ((True, track[-1]), (False, track[0])):
+                candidates.append((math.dist(center, endpoint), shaft, track, at_end))
+        if not candidates:
+            continue
+        distance, shaft, track, at_end = min(candidates, key=lambda item: item[0])
+        if distance > 16:
+            continue
+        a, b = (track[-2], track[-1]) if at_end else (track[1], track[0])
+        length = math.dist(a, b)
+        if not length:
+            continue
+        direction = ((b[0]-a[0])/length, (b[1]-a[1])/length)
+        tip = max(points, key=lambda point: point[0]*direction[0]+point[1]*direction[1])
+        margin = 3 + float(property_value(head, 'stroke-width', '1')) / 2
+        shift = 0
+        for shape in backgrounds:
+            shape_margin = margin + (float(property_value(shape, 'stroke-width', '1')) / 2 if property_value(shape, 'stroke', 'none') != 'none' else 0)
+            # Ignore an enclosing region whose boundary is nowhere near this
+            # contact. Measure the complete head stroke, not just its tip point.
+            if contains(shape, tip):
+                for step in range(1, 81):
+                    distance = step / 10
+                    if not contains(shape, (tip[0]-direction[0]*distance, tip[1]-direction[1]*distance)):
+                        shift = max(shift, shape_margin+distance)
+                        break
+            else:
+                for step in range(1, 46):
+                    distance = step / 10
+                    if contains(shape, (tip[0]+direction[0]*distance, tip[1]+direction[1]*distance)):
+                        shift = max(shift, shape_margin-distance+.2)
+                        break
+        if shift <= 0:
+            continue
+        dx, dy = -shift*direction[0], -shift*direction[1]
+        if tag == 'polygon':
+            head.set('points', ' '.join(f'{x+dx:g},{y+dy:g}' for x,y in points))
+        else:
+            # Explicit native head paths use absolute M/L pairs; retain their
+            # contour rather than flattening a shaft or adding a halo.
+            if re.search(r'[a-zA-KN-Y]', head.get('d', '')):
+                continue
+            head.set('d', re.sub(r'([ML])\s*('+NUMBER+r')[ ,]+('+NUMBER+r')', lambda match: f'{match[1]}{float(match[2])+dx:g},{float(match[3])+dy:g}', head.get('d', '')))
+        head.set('data-arrow-clearance', 'native-tip-gutter-3px')
+        # Activity shafts terminate at the tip. Other native shafts already end
+        # behind the head and keep their complete curve unchanged.
+        if math.dist(b, tip) < 1 and shaft.tag.rsplit('}', 1)[-1] == 'line':
+            shaft.set('x2' if at_end else 'x1', str(b[0]+dx))
+            shaft.set('y2' if at_end else 'y1', str(b[1]+dy))
+
+
+def plantuml_shaft_clearance(edges, backgrounds, minimum_length=20):
+    """Trim native grouped body contacts through their existing short gutter."""
+    for shaft in edges:
+        tag = shaft.tag.rsplit('}', 1)[-1]
+        if tag not in {'line', 'path'} or property_value(shaft, 'fill', 'none') != 'none':
+            continue
+        points = path_points(shaft)
+        if len(points) < 2 or sum(math.dist(a,b) for a,b in zip(points,points[1:])) < minimum_length:
+            continue
+        for at_end in (False, True):
+            tip, other = (points[-1], points[-2]) if at_end else (points[0], points[1])
+            length = math.dist(tip, other)
+            if not length:
+                continue
+            direction = ((other[0]-tip[0])/length, (other[1]-tip[1])/length)
+            shift = 0
+            for shape in backgrounds:
+                # Native endpoints can sit less than the containment tolerance
+                # inside a body. Probe toward that body before clipping into the
+                # gutter, so the complete stroke clears even a shallow contact.
+                backed = (tip[0]-direction[0]*.2, tip[1]-direction[1]*.2)
+                if not contains(shape, tip) and not contains(shape, backed):
+                    continue
+                for step in range(1, 121):
+                    distance = step / 10
+                    point = (tip[0]+direction[0]*distance, tip[1]+direction[1]*distance)
+                    if not contains(shape, point):
+                        target_width = float(property_value(shape,'stroke-width','1')) if property_value(shape,'stroke','none') != 'none' else 0
+                        shift = max(shift, distance+3+(float(property_value(shaft,'stroke-width','1'))+target_width)/2)
+                        break
+            if not shift:
+                continue
+            x, y = tip[0]+direction[0]*shift, tip[1]+direction[1]*shift
+            if tag == 'line':
+                shaft.set('x2' if at_end else 'x1', str(x))
+                shaft.set('y2' if at_end else 'y1', str(y))
+            elif at_end:
+                shaft.set('d', re.sub(r'('+NUMBER+r')[ ,]+('+NUMBER+r')\s*$', f'{x:g},{y:g}', shaft.get('d','')))
+            else:
+                shaft.set('d', re.sub(r'^\s*M\s*('+NUMBER+r')[ ,]+('+NUMBER+r')', f'M{x:g},{y:g}', shaft.get('d','')))
+            shaft.set('data-arrow-clearance', 'native-body-gutter-3px')
+
+
 def finish_native_arrows(root, colorset, renderer='mermaid'):
     """Preserve direction; repair resting paints and native marker clearance."""
     family = root.get('aria-roledescription', '').lower()
@@ -268,16 +381,43 @@ def finish_native_arrows(root, colorset, renderer='mermaid'):
         return False
     edges = []
     for node in root.iter():
+        if node.get('data-style-role') == 'semantic-detail': continue
         tag = node.tag.rsplit('}', 1)[-1]
         classes = ' '.join(c for c in node.get('class', '').split() if not c.startswith('am-'))
         marker = any(node.get(k) for k in ['marker-start', 'marker-end']) and 'sequencenumber' not in ''.join(node.get(k, '') for k in ['marker-start', 'marker-end'])
-        native = renderer == 'plantuml' and in_group(node, 'link')
+        diagram = root.get('data-diagram-type', '')
+        native = renderer == 'plantuml' and (in_group(node, 'link') or in_group(node, 'message'))
         fill = property_value(node, 'fill', 'none')
+        if renderer == 'plantuml' and diagram in {'ACTIVITY', 'EBNF', 'REGEX'}:
+            bounds = rect_bounds(node)
+            small_head = bounds and bounds[2]-bounds[0] <= 12 and bounds[3]-bounds[1] <= 12
+            native = native or tag == 'line' or tag == 'path' and (fill == 'none' or small_head) or tag == 'polygon' and small_head
+        if renderer == 'plantuml' and diagram in {'JSON', 'YAML', 'MINDMAP', 'WBS'}:
+            bounds = rect_bounds(node)
+            small_head = bounds and bounds[2]-bounds[0] <= 12 and bounds[3]-bounds[1] <= 12
+            native = native or tag == 'path' and (fill == 'none' or small_head) or tag in {'polygon', 'ellipse', 'circle'} and small_head
+            if diagram == 'WBS' and tag == 'line' and property_value(node, 'stroke-width', '') == '1.5': native = True
+        if renderer == 'plantuml' and diagram == 'GANTT':
+            native = native or tag == 'path' and fill == 'none' or tag == 'polygon'
         if fill != 'none' and not marker and not native and 'arrow' not in classes.lower(): continue
-        if tag in {'line', 'path', 'polyline', 'polygon'} and not in_definition(node) and (marker or native or re.search(r'arrow|relation|edge|link|message-line|messageLine', classes)):
+        if tag in {'line', 'path', 'polyline', 'polygon', 'ellipse', 'circle'} and not in_definition(node) and (marker or native or re.search(r'arrow|relation|edge|link|message-line|messageLine', classes)):
             if in_group(node, 'node'): continue
             edges.append(node)
-    backgrounds = [e for e in root.iter() if e.tag.rsplit('}', 1)[-1] in {'rect', 'circle', 'ellipse','polygon'} and not in_definition(e) and property_value(e, 'fill', 'none') not in {'none', 'transparent'} and e not in edges]
+    backgrounds = [e for e in root.iter() if e.tag.rsplit('}', 1)[-1] in {'rect', 'circle', 'ellipse','polygon', 'path'} and not in_definition(e) and property_value(e, 'fill', 'none') not in {'none', 'transparent'} and float(property_value(e, 'fill-opacity', '1')) > .999 and e not in edges]
+    if renderer == 'plantuml':
+        native_family = root.get('data-diagram-type')
+        # Hollow final-state rings are painted targets even though their center
+        # is transparent. Their outer contour also needs complete-head clearance.
+        rings = [node for node in root.iter() if native_family in {'ACTIVITY', 'STATE'}
+                 and node.tag.rsplit('}', 1)[-1] in {'circle', 'ellipse'}
+                 and property_value(node, 'fill', 'none') == 'none'
+                 and property_value(node, 'stroke', 'none') != 'none'
+                 and (bounds := rect_bounds(node)) and max(bounds[2]-bounds[0], bounds[3]-bounds[1]) <= 30]
+        clearances = backgrounds+rings
+        plantuml_shaft_clearance([edge for edge in edges if in_group(edge, 'link')], clearances)
+        if native_family in {'MINDMAP', 'WBS', 'ACTIVITY', 'STATE'}:
+            plantuml_shaft_clearance([edge for edge in edges if not in_group(edge, 'link')], clearances, minimum_length=1)
+        plantuml_head_clearance(edges, clearances)
     order = {e: i for i, e in enumerate(root.iter())}
     for index, edge in enumerate(edges):
         points = path_points(edge)
@@ -300,8 +440,9 @@ def finish_native_arrows(root, colorset, renderer='mermaid'):
         if family == 'cynefin': paints = [COLORSETS[colorset]['solidSequence'][0], COLORSETS[colorset]['solidSequence'][1]]
         elif renderer == 'plantuml':
             paints = []
-            for point in points[1:-1:4]:
-                backing = '#ffffff'
+            samples = points + [((a[0]+b[0])/2, (a[1]+b[1])/2) for a, b in zip(points, points[1:]+points[:1])] if edge.tag.rsplit('}', 1)[-1] == 'polygon' else points
+            for point in samples:
+                backing = canonical(property_value(root, 'background', '#ffffff'))
                 for shape in backgrounds:
                     if order[shape] < order[edge] and contains(shape, point): backing = canonical(property_value(shape, 'fill'))
                 paints.append(backing)
@@ -312,7 +453,8 @@ def finish_native_arrows(root, colorset, renderer='mermaid'):
         filled_head = 'arrow' in edge.get('class', '').lower() and property_value(edge, 'fill', 'none') != 'none' and not any(edge.get(k) for k in ['marker-start','marker-end'])
         set_style(edge, stroke='none' if filled_head else paint, **{'stroke-opacity': '1'})
         if filled_head: set_style(edge, fill=paint)
-        if renderer == 'plantuml' and edge.tag.rsplit('}', 1)[-1] == 'polygon': set_style(edge, fill=paint)
+        if renderer == 'plantuml' and edge.tag.rsplit('}', 1)[-1] in {'polygon', 'path', 'ellipse', 'circle'} and property_value(edge, 'fill', 'none') not in {'none', '#FFFFFF', '#ffffff', 'white'}:
+            set_style(edge, fill=paint)
         edge.set('data-arrow-id', edge.get('id', family+'-arrow-'+str(index)))
         for key in ['marker-start', 'marker-end']: marker_copy(root, edge, key, paint, index, parents)
     if edges: root.set('data-arrow-contrast', 'native-resting-3to1')

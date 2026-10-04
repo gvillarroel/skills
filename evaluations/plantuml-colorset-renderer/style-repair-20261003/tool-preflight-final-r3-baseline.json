@@ -1,0 +1,29 @@
+{
+  "version": "PlantUML version 1.2026.6 / 6287b33 [2026-06-08 16:02:56 UTC]",
+  "jarSha256": "89948f14c93756c7a3fb7b69078ff37e8489fd79dd430c582b931e2f65358690",
+  "cmdSha256": "3cf5983cf51af509be536bda081b75b7b1d09c9eae366c415f3145771d70f0f5",
+  "bashShimSha256": "0de88b1728d843dd1a33fdc183a3916c30c4db93a8d59750d465a07108070317",
+  "checks": [
+    {
+      "name": "pythonCliLookup",
+      "command": [
+        "C:\\Users\\villa\\dev\\skills\\projects\\visual-asset-composition\\artifacts\\tools\\plantuml.CMD",
+        "-version"
+      ],
+      "exitCode": 0,
+      "stdout": "PlantUML version 1.2026.6 / 6287b33 [2026-06-08 16:02:56 UTC]\n(GPL source distribution)\n\nBuild Version: 1.2026.6\nGit Commit: 6287b33\nCompile Time: 2026-06-08 16:02:56 UTC\n\nJava Runtime: OpenJDK Runtime Environment\nJVM: OpenJDK 64-Bit Server VM\nDefault Encoding: Cp1252\nLanguage: en\nCountry: US\n \nPLANTUML_LIMIT_SIZE: 4096\n\nGraphViz: dot - graphviz version 2.44.1 (20200629.0846)\nInstallation seems OK. File generation OK\n",
+      "stderr": ""
+    },
+    {
+      "name": "bareBashCommand",
+      "command": [
+        "C:\\Program Files\\Git\\bin\\bash.exe",
+        "-c",
+        "plantuml -version"
+      ],
+      "exitCode": 0,
+      "stdout": "PlantUML version 1.2026.6 / 6287b33 [2026-06-08 16:02:56 UTC]\n(GPL source distribution)\n\nBuild Version: 1.2026.6\nGit Commit: 6287b33\nCompile Time: 2026-06-08 16:02:56 UTC\n\nJava Runtime: OpenJDK Runtime Environment\nJVM: OpenJDK 64-Bit Server VM\nDefault Encoding: Cp1252\nLanguage: en\nCountry: US\n \nPLANTUML_LIMIT_SIZE: 4096\n\nGraphViz: dot - graphviz version 2.44.1 (20200629.0846)\nInstallation seems OK. File generation OK\n",
+      "stderr": ""
+    }
+  ]
+}

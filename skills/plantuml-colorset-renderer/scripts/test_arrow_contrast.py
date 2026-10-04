@@ -94,4 +94,79 @@ class ArrowTests(unittest.TestCase):
         self.assertGreaterEqual(contrast(paint,'#ffffff'),3)
         self.assertGreaterEqual(contrast(property_value(root[1][1],'fill'),'#ffffff'),3)
 
+    def test_plantuml_json_port_and_ungrouped_shaft(self):
+        root = document('<rect x="0" y="0" width="40" height="40" fill="#007298"/><path d="M20 20 L70 20" fill="none" stroke="#696969"/><path d="M70 17 L77 20 L70 23Z" fill="#696969"/><ellipse cx="20" cy="20" rx="3" ry="3" fill="#696969" stroke="#696969"/>')
+        root.set('data-diagram-type', 'JSON')
+        finish_native_arrows(root, 'colorset2', 'plantuml')
+        for edge in (root[1], root[3]):
+            paint = property_value(edge, 'stroke')
+            self.assertGreaterEqual(contrast(paint, '#007298'), 3)
+        self.assertGreaterEqual(contrast(property_value(root[1], 'stroke'), '#ffffff'), 3)
+        self.assertEqual(root[0].get('fill'), '#007298')
+
+    def test_plantuml_sequence_message_and_railroad_head(self):
+        root = document('<g class="message"><line x1="0" y1="20" x2="70" y2="20" stroke="#cfcfcf"/><polygon points="70,17 77,20 70,23" fill="#cfcfcf"/></g>')
+        finish_native_arrows(root, 'colorset1', 'plantuml')
+        for edge in root[0]:
+            self.assertGreaterEqual(contrast(property_value(edge, 'stroke'), '#ffffff'), 3)
+        rails = document('<path d="M0 10 L30 10" fill="none" stroke="#cfcfcf"/><path d="M30 7 L37 10 L30 13Z" fill="#cfcfcf"/>')
+        rails.set('data-diagram-type', 'REGEX')
+        finish_native_arrows(rails, 'colorset1', 'plantuml')
+        self.assertGreaterEqual(contrast(property_value(rails[1], 'fill'), '#ffffff'), 3)
+
+    def test_plantuml_hollow_native_diamond_retains_void(self):
+        root = document('<g class="link"><polygon points="0,5 5,0 10,5 5,10" fill="#ffffff" stroke="#696969"/></g>')
+        finish_native_arrows(root, 'colorset1', 'plantuml')
+        self.assertEqual(property_value(root[0][0], 'fill'), '#ffffff')
+
+    def test_plantuml_grouped_shaft_contact_moves_out_of_body(self):
+        root = document('<polygon points="40,20 80,20 80,60 40,60" fill="#333e48"/><g class="link"><path d="M40,30 L0,30" fill="none" stroke="#696969"/></g>')
+        finish_native_arrows(root, 'colorset1', 'plantuml')
+        shaft = root[1][0]
+        self.assertLess(path_points(shaft)[0][0], 37)
+        self.assertEqual(shaft.get('data-arrow-clearance'), 'native-body-gutter-3px')
+        self.assertEqual(root[0].get('points'), '40,20 80,20 80,60 40,60')
+
+    def test_complete_head_stroke_has_gutter_when_tip_starts_outside(self):
+        root = document('<rect x="70" y="0" width="40" height="40" fill="#007298"/><g class="link"><path d="M20 20L60 20" fill="none" stroke="#696969"/><polygon points="60,16 69.65,20 60,24" fill="#696969" style="stroke-width:1.5"/></g>')
+        finish_native_arrows(root, 'colorset2', 'plantuml')
+        head = root[1][1]
+        self.assertLessEqual(max(x for x,y in path_points(head))+.75, 67)
+        self.assertEqual(head.get('data-arrow-clearance'), 'native-tip-gutter-3px')
+
+    def test_native_shaft_shallow_inset_clears_complete_stroke(self):
+        root = document('<rect x="20" y="40" width="60" height="52.1972" fill="#333e48"/><g class="link"><path d="M50,92.1086 L50,140" fill="none" stroke="#696969" style="stroke-width:1.5"/></g>')
+        before = ET.tostring(root[0])
+        finish_native_arrows(root, 'colorset1', 'plantuml')
+        shaft = root[1][0]
+        self.assertGreaterEqual(path_points(shaft)[0][1]-.75, 95.1972)
+        self.assertEqual(shaft.get('data-arrow-clearance'), 'native-body-gutter-3px')
+        self.assertEqual(ET.tostring(root[0]), before)
+
+    def test_mindmap_branch_rounding_contact_clears_body(self):
+        root = document('<rect x="190.2754" y="0" width="73.4893" height="40" fill="#9e1b32"/><path d="M263.7646,20 L310,20" fill="none" stroke="#696969"/>')
+        root.set('data-diagram-type', 'MINDMAP')
+        finish_native_arrows(root, 'colorset1', 'plantuml')
+        self.assertGreater(path_points(root[1])[0][0]-.5, 266.7647)
+        self.assertEqual(root[1].get('data-arrow-clearance'), 'native-body-gutter-3px')
+
+    def test_activity_source_and_hollow_stop_receive_full_gutter(self):
+        root = document('<rect x="30" y="30" width="60" height="40" fill="#4f4f4f"/><ellipse cx="60" cy="101" rx="11" ry="11" fill="none" stroke="#e8002a" stroke-width="1.5"/><line x1="60" y1="70" x2="60" y2="90" fill="none" stroke="#696969" stroke-width="1.5"/><polygon points="56,80 60,90 64,80 60,84" fill="#696969" stroke-width="1"/>')
+        root.set('data-diagram-type', 'ACTIVITY')
+        ring = ET.tostring(root[1])
+        finish_native_arrows(root, 'colorset1', 'plantuml')
+        shaft, head = root[2], root[3]
+        self.assertGreaterEqual(path_points(shaft)[0][1]-.75, 73)
+        self.assertLessEqual(path_points(shaft)[-1][1]+.75, 87)
+        self.assertLessEqual(max(y for x,y in path_points(head))+.5, 87)
+        self.assertEqual(ET.tostring(root[1]), ring)
+
+    def test_short_wbs_stem_clears_later_painted_child(self):
+        root = document('<line x1="20" y1="20" x2="30" y2="20" stroke="#696969" stroke-width="1.5"/><rect x="30" y="0" width="40" height="40" fill="#9e1b32"/>')
+        root.set('data-diagram-type', 'WBS')
+        finish_native_arrows(root, 'colorset2', 'plantuml')
+        self.assertLessEqual(path_points(root[0])[-1][0]+.75, 27)
+        self.assertGreater(path_points(root[0])[-1][0], 20)
+        self.assertEqual(root[0].get('data-arrow-clearance'), 'native-body-gutter-3px')
+
 if __name__=='__main__':unittest.main()

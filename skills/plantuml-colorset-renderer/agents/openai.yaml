@@ -1,4 +1,4 @@
 interface:
   display_name: "PlantUML Colorset Renderer"
-  short_description: "Render and validate themed PlantUML diagrams"
-  default_prompt: "Use $plantuml-colorset-renderer to render and validate these PlantUML sources with the requested bundled colorset and output formats."
+  short_description: "Render solid PlantUML styles with contrast checks"
+  default_prompt: "Use $plantuml-colorset-renderer to render and validate these PlantUML sources with the requested colorset and formats. Start with opaque borderless category fills, black or white labels against their actual backing, and visible complete arrows; preserve native semantic strokes."

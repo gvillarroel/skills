@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "colorsets": {
+    "colorset1": {
+      "canvas": "#ffffff",
+      "saltButton": "#9e1b32",
+      "archimate": {
+        "technology": "#4f4f4f",
+        "application": "#333e48",
+        "business": "#9e1b32",
+        "motivation": "#6d1222",
+        "strategy": "#828282",
+        "physical": "#1c1c1c",
+        "implementation": "#e8002a"
+      }
+    },
+    "colorset2": {
+      "canvas": "#ffffff",
+      "saltButton": "#9e1b32",
+      "archimate": {
+        "technology": "#45842a",
+        "application": "#007298",
+        "business": "#e77204",
+        "motivation": "#652f6c",
+        "strategy": "#f1c319",
+        "physical": "#00ace6",
+        "implementation": "#e8002a"
+      }
+    }
+  },
+  "semanticDetailWidth": 1
+}

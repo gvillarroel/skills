@@ -218,7 +218,7 @@ class RenderArtifactValidationTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)
             svg = root / "activity.svg"
-            svg.write_text('<svg xmlns="http://www.w3.org/2000/svg"><rect fill="#FFFFFF" stroke="#696969"/><text fill="#333E48">Observe</text></svg>', encoding="utf-8")
+            svg.write_text('<svg xmlns="http://www.w3.org/2000/svg" data-native-style="scoped-solid-v2"><rect x="0" y="0" width="100" height="40" fill="#333E48" data-style-role="solid-body"/><text x="10" y="25" textLength="50" font-size="14" fill="#FFFFFF" data-style-role="contrast-label">Observe</text><line stroke="#696969" x1="50" y1="40" x2="50" y2="60"/></svg>', encoding="utf-8")
             report = root / "report.json"
             report.write_text(json.dumps({
                 "ok": True, "colorset": "colorset1", "formats": ["svg"],

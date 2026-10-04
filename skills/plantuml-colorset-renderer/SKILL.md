@@ -21,7 +21,16 @@ Prefer local rendering for private diagrams. Use a remote fallback such as Kroki
 
 ## Workflow
 
+Read [native style delivery](references/native-styling.md) when styling diagrams
+or repairing a theme. Use the bundled renderer so family-scoped theme rules and
+the native SVG finisher both apply; a direct theme-only render misses upstream
+hardcoded primitives.
+
 Read [native arrow contrast and clearance](references/arrow-contrast.md) when authoring directional links, rendering compound regions, or checking head position. Inspect shaft and complete head against actual painted backings; require at least 3:1 at delivery.
+
+Read [native network and schedule authoring](references/native-authoring.md)
+before generating NWDIAG or Gantt source. Keep bare network aliases separate
+from exact displayed names, and use native predecessor-end dependency syntax.
 
 1. Read `references/diagram-types.md` and its machine-readable source `references/diagram-types.json` when the task asks which PlantUML diagram types are covered or when maintaining examples.
 2. Run `scripts/render_plantuml_directory.py` against the requested directory with `--colorset colorset2` or `--colorset colorset1`, `--format svg --format png`, and a JSON report.
@@ -31,6 +40,11 @@ Read [native arrow contrast and clearance](references/arrow-contrast.md) when au
 When maintaining the published examples, keep `assets/examples/plantuml-colorset-renderer/` as the only canonical GitHub Pages gallery. Treat `assets/examples/plantuml-colorset-renderer-cs1/` as a Colorset 1 render-asset source loaded by the canonical page's theme selector; do not add a second Pages catalog card or pattern page for it. Preserve the former CS1 URL as a redirect to `?theme=colorset1`.
 
 Normal user rendering does not load the coverage manifest. Ditaa, standalone AsciiMath, and standalone LaTeX still bypass theme injection because adding theme text would corrupt or be ignored by those syntaxes.
+
+Ditaa uses the separate source-backed raster style adapter described in
+[native style delivery](references/native-styling.md). Use its supported box
+contract and PNG format; unsupported geometry fails with a source repair
+instruction instead of a misleading style pass.
 
 ## Commands
 
@@ -81,7 +95,7 @@ uv run --script skills/plantuml-colorset-renderer/scripts/render_plantuml_direct
 Write themed source copies for debugging or handoff:
 
 ```powershell
-uv run --script skills/plantuml-colorset-renderer/scripts/render_plantuml_directory.py path/to/plantuml --output path/to/renders --format svg --format png --write-themed
+uv run --script skills/plantuml-colorset-renderer/scripts/render_plantuml_directory.py path/to/plantuml --output path/to/renders --format svg --format png --write-themed --report path/to/plantuml-render-report.json
 ```
 
 ## Optional Logo Integration
@@ -131,8 +145,10 @@ Validate ordinary render batches with
 Use the actual output paths. This handles SVG token capitalization and allows
 neutral-only colorset1 diagrams; do not add red or pink solely to satisfy a
 color-presence check. Add `--coverage-manifest` only for frozen coverage fixtures.
-The bundled validator checks artifact paths, formats, SVG/PNG validity and
-palette evidence. After it passes, do not add grep or raw regex checks for
+The bundled validator checks artifact paths, formats, SVG/PNG validity,
+palette evidence, current native-style delivery, and recomputed tagged body,
+label, and connector contrast. Inspect the rendered semantic glyphs and actual
+body silhouettes as well. After it passes, do not add grep or raw regex checks for
 those same properties; the SVG serializer can uppercase hex tokens. Preserve
 the exact output paths instead of moving results to fix an incorrect root.
 

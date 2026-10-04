@@ -10,6 +10,16 @@ For SVG-capable authored diagrams, PNG derives from this same finished SVG using
 
 Prefer clear gutters and heads outside target silhouettes, with a small explicit clearance. Preserve native open arrows, diamonds, circles, bars, and other meaningful glyphs. A hollow symbol communicates through its visible stroke, not its white void. If one paint cannot contrast with every crossed backing, change the source route or layout and rerender. Do not add decorative node borders, broad halos, or off-palette head colors.
 
+The PlantUML finisher clips shallow grouped shaft contacts and moves filled
+tips into their existing local gutter with 3 px clearance plus half the stroke
+width. It retains native curve controls and body geometry. Test very small
+insets as well as visible overlaps; a point containment tolerance must not
+hide a short low-contrast stroke inside a body. Native port connections and
+semantic cardinality contacts retain their intentional attachment.
+Activity and state paths also clear hollow final-marker strokes. Short WBS
+tree stems use the same visible contrast requirement and local body clearance;
+their lack of an arrowhead is not a contrast exemption.
+
 For SVG markers, inspect actual referenced instances, including `markerUnits`, `viewBox`, `refX`, `refY`, orientation, transforms, and every visible part of the head. A prototype in `<defs>` and an endpoint-only sample cannot establish arrow quality. Check any animated or exported counterpart again at its delivery state.
 
 The bundled helper supports sampled native straight, quadratic, cubic, and elliptical-arc paths, rectangle/ellipse backings, and actual polygon contours. It is not a universal router for arbitrary transforms, gradients, filters, masks, or imported source artwork. Use browser measurements and a manual source-layout correction for unsupported geometry. Source-only, faithful imported media, and explicit user styling remain distinct contracts.

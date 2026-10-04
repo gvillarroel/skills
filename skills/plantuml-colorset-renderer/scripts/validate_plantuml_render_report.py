@@ -14,6 +14,7 @@ from pathlib import Path
 
 from plantuml_coverage import load_manifest, validate_report_coverage
 from palette_paints import COLORSETS, svg_paints
+from native_styles import STYLE_VERSION, style_findings
 
 
 LEGACY_COLORSET_TOKENS = {
@@ -144,6 +145,10 @@ def main() -> int:
                     outside = svg_paints(svg_root, args.colorset)
                     if outside:
                         findings.append(f"{relative_path}: off-palette SVG paints {sorted(outside)}")
+                    if result.get("themeMode") == "inject":
+                        if svg_root.get("data-native-style") != STYLE_VERSION:
+                            findings.append(f"{relative_path}: missing current native style delivery")
+                        findings.extend(f"{relative_path}: {finding}" for finding in style_findings(svg_root))
                 except ET.ParseError:
                     findings.append(f"{relative_path}: invalid SVG XML")
                 uppercase = text.upper()
@@ -153,6 +158,10 @@ def main() -> int:
             if fmt == "png" and not artifact.read_bytes().startswith(b"\x89PNG\r\n\x1a\n"):
                 findings.append(f"{relative_path}: invalid PNG signature")
             elif fmt == "png" and output.get("source_media_preserved") is not True:
+                if str(result.get("startDirective", "")).lower().startswith("@startditaa"):
+                    proof = output.get("native_style") or {}
+                    if proof.get("version") != STYLE_VERSION or proof.get("mode") != "ditaa-source-backed" or proof.get("sourceBacked") is not True or proof.get("shadowsDisabled") is not True or not proof.get("styledBoxes"):
+                        findings.append(f"{relative_path}: missing source-backed Ditaa style delivery")
                 from PIL import Image
                 try:
                     with Image.open(artifact) as image:

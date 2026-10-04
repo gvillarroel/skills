@@ -59,6 +59,11 @@ function renderCards() {
 function prepareSvg(svg, example) {
   svg.removeAttribute("width");
   svg.removeAttribute("height");
+  // Fit native geometry into the preview without stretching labels or glyphs.
+  // Keep the native background and every paint declaration intact.
+  svg.style.removeProperty("width");
+  svg.style.removeProperty("height");
+  svg.setAttribute("preserveAspectRatio", "xMidYMid meet");
   svg.setAttribute("role", "img");
   svg.setAttribute("aria-labelledby", `${example.id}-svg-title`);
   svg.setAttribute("data-pattern-id", patternIdFor(example));

@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "skill": "plantuml-colorset-renderer",
+  "date": "2026-10-03",
+  "model": "openai-codex/gpt-5.6-luna",
+  "thinking": "medium",
+  "profile": "runtime",
+  "cases": {
+    "baseline": {
+      "taxonomy": "contract-smoke",
+      "repetitions": 1,
+      "colorset": "colorset1",
+      "requireExactCommand": true,
+      "fixtures": {
+        "activity": {"type": "ACTIVITY", "labels": ["Specimen routing", "Receive specimen", "Complete record?", "Validate specimen", "Request missing data", "Archive specimen", "yes", "no"]},
+        "chen": {"type": "CHEN_EER", "labels": ["Collection", "collection code", "Specimen", "specimen number", "contains", "1", "N"]},
+        "deployment": {"type": "DESCRIPTION", "labels": ["Regional telemetry", "Operator", "Telemetry region", "Gateway", "Collector", "Archive", "submit", "dispatch", "persist"]}
+      }
+    },
+    "boundary": {
+      "taxonomy": "boundary-recovery",
+      "repetitions": 1,
+      "colorset": "colorset2",
+      "requireExactCommand": false,
+      "fixtures": {
+        "authored-style": {"type": "DESCRIPTION", "labels": ["Author approval", "Approval desk", "Release package", "approve"]},
+        "sequence-database": {"type": "SEQUENCE", "labels": ["Ledger query", "Audit service", "Ledger", "read entries", "entries"]}
+      }
+    },
+    "generalization": {
+      "taxonomy": "generalization",
+      "repetitions": 3,
+      "colorset": "colorset2",
+      "requireExactCommand": false,
+      "fixtures": {
+        "expedition-map": {"type": "MINDMAP", "labels": ["Expedition", "Preparation", "Permits", "Instrument calibration", "Fieldwork", "Sampling", "Weather", "Delivery", "Analysis", "Archive"]},
+        "work-breakdown": {"type": "WBS", "labels": ["Survey", "Preparation", "Permit", "Calibration", "Execution", "Transect", "Samples", "Delivery", "Analysis", "Deposit"]},
+        "survey-schedule": {"type": "GANTT", "labels": ["Intake", "Calibrate", "Survey"]},
+        "lab-network": {"type": "NWDIAG", "labels": ["Lab network", "192.0.2.0/24", "Workstation", "192.0.2.10", "Sample server", "192.0.2.20"]}
+      }
+    }
+  }
+}

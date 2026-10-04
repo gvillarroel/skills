@@ -2,9 +2,9 @@
   "ok": true,
   "colorset": "colorset2",
   "theme": "assets/themes/cs2.puml",
-  "engine": "kroki",
+  "engine": "cli",
   "serverUrl": null,
-  "krokiUrl": "https://kroki.io",
+  "krokiUrl": null,
   "formats": [
     "svg",
     "png"
@@ -56,17 +56,24 @@
       "skippedFormats": [
         "png"
       ],
-      "krokiDiagramType": "plantuml",
+      "krokiDiagramType": null,
       "ok": true,
       "error": null,
       "outputs": [
         {
           "format": "svg",
           "path": "svg/activity.svg",
-          "size_bytes": 5465,
-          "engine": "kroki",
+          "size_bytes": 8246,
+          "engine": "cli",
           "palette_normalized": true,
-          "source_media_preserved": false
+          "source_media_preserved": false,
+          "svg_derived": false,
+          "native_style": {
+            "version": "scoped-solid-v2",
+            "mode": "bundled-solid",
+            "textCount": 8,
+            "bodyCount": 0
+          }
         }
       ]
     },
@@ -92,17 +99,24 @@
       "skippedFormats": [
         "png"
       ],
-      "krokiDiagramType": "plantuml",
+      "krokiDiagramType": null,
       "ok": true,
       "error": null,
       "outputs": [
         {
           "format": "svg",
           "path": "svg/archimate.svg",
-          "size_bytes": 3248,
-          "engine": "kroki",
+          "size_bytes": 3948,
+          "engine": "cli",
           "palette_normalized": true,
-          "source_media_preserved": false
+          "source_media_preserved": false,
+          "svg_derived": false,
+          "native_style": {
+            "version": "scoped-solid-v2",
+            "mode": "bundled-solid",
+            "textCount": 6,
+            "bodyCount": 3
+          }
         }
       ]
     },
@@ -128,17 +142,24 @@
       "skippedFormats": [
         "png"
       ],
-      "krokiDiagramType": "plantuml",
+      "krokiDiagramType": null,
       "ok": true,
       "error": null,
       "outputs": [
         {
           "format": "svg",
           "path": "svg/chart.svg",
-          "size_bytes": 5031,
-          "engine": "kroki",
+          "size_bytes": 5494,
+          "engine": "cli",
           "palette_normalized": true,
-          "source_media_preserved": false
+          "source_media_preserved": false,
+          "svg_derived": false,
+          "native_style": {
+            "version": "scoped-solid-v2",
+            "mode": "bundled-solid",
+            "textCount": 13,
+            "bodyCount": 0
+          }
         }
       ]
     },
@@ -164,17 +185,24 @@
       "skippedFormats": [
         "png"
       ],
-      "krokiDiagramType": "plantuml",
+      "krokiDiagramType": null,
       "ok": true,
       "error": null,
       "outputs": [
         {
           "format": "svg",
           "path": "svg/chen.svg",
-          "size_bytes": 5275,
-          "engine": "kroki",
+          "size_bytes": 5316,
+          "engine": "cli",
           "palette_normalized": true,
-          "source_media_preserved": false
+          "source_media_preserved": false,
+          "svg_derived": false,
+          "native_style": {
+            "version": "scoped-solid-v2",
+            "mode": "bundled-solid",
+            "textCount": 10,
+            "bodyCount": 0
+          }
         }
       ]
     },
@@ -199,7 +227,7 @@
         "svg",
         "png"
       ],
-      "krokiDiagramType": "plantuml",
+      "krokiDiagramType": null,
       "ok": true,
       "error": null,
       "outputs": []
@@ -226,17 +254,24 @@
       "skippedFormats": [
         "png"
       ],
-      "krokiDiagramType": "plantuml",
+      "krokiDiagramType": null,
       "ok": true,
       "error": null,
       "outputs": [
         {
           "format": "svg",
           "path": "svg/class.svg",
-          "size_bytes": 4880,
-          "engine": "kroki",
+          "size_bytes": 6740,
+          "engine": "cli",
           "palette_normalized": true,
-          "source_media_preserved": false
+          "source_media_preserved": false,
+          "svg_derived": false,
+          "native_style": {
+            "version": "scoped-solid-v2",
+            "mode": "bundled-solid",
+            "textCount": 9,
+            "bodyCount": 2
+          }
         }
       ]
     },
@@ -262,17 +297,24 @@
       "skippedFormats": [
         "png"
       ],
-      "krokiDiagramType": "plantuml",
+      "krokiDiagramType": null,
       "ok": true,
       "error": null,
       "outputs": [
         {
           "format": "svg",
           "path": "svg/component.svg",
-          "size_bytes": 5523,
-          "engine": "kroki",
+          "size_bytes": 6894,
+          "engine": "cli",
           "palette_normalized": true,
-          "source_media_preserved": false
+          "source_media_preserved": false,
+          "svg_derived": false,
+          "native_style": {
+            "version": "scoped-solid-v2",
+            "mode": "bundled-solid",
+            "textCount": 8,
+            "bodyCount": 4
+          }
         }
       ]
     },
@@ -298,17 +340,24 @@
       "skippedFormats": [
         "png"
       ],
-      "krokiDiagramType": "plantuml",
+      "krokiDiagramType": null,
       "ok": true,
       "error": null,
       "outputs": [
         {
           "format": "svg",
           "path": "svg/deployment.svg",
-          "size_bytes": 6286,
-          "engine": "kroki",
+          "size_bytes": 6887,
+          "engine": "cli",
           "palette_normalized": true,
-          "source_media_preserved": false
+          "source_media_preserved": false,
+          "svg_derived": false,
+          "native_style": {
+            "version": "scoped-solid-v2",
+            "mode": "bundled-solid",
+            "textCount": 6,
+            "bodyCount": 4
+          }
         }
       ]
     },
@@ -334,17 +383,29 @@
       "skippedFormats": [
         "svg"
       ],
-      "krokiDiagramType": "ditaa",
+      "krokiDiagramType": null,
       "ok": true,
       "error": null,
       "outputs": [
         {
           "format": "png",
           "path": "png/ditaa.png",
-          "size_bytes": 4610,
-          "engine": "kroki",
+          "size_bytes": 3242,
+          "engine": "cli",
           "palette_normalized": true,
-          "source_media_preserved": false
+          "source_media_preserved": false,
+          "svg_derived": false,
+          "native_style": {
+            "version": "scoped-solid-v2",
+            "mode": "ditaa-source-backed",
+            "textCount": 3,
+            "bodyCount": 3,
+            "styledBoxes": 3,
+            "paintedFillPixels": 14440,
+            "removedContourPixels": 1294,
+            "sourceBacked": true,
+            "shadowsDisabled": true
+          }
         }
       ]
     },
@@ -370,17 +431,24 @@
       "skippedFormats": [
         "png"
       ],
-      "krokiDiagramType": "plantuml",
+      "krokiDiagramType": null,
       "ok": true,
       "error": null,
       "outputs": [
         {
           "format": "svg",
           "path": "svg/ebnf.svg",
-          "size_bytes": 7088,
-          "engine": "kroki",
+          "size_bytes": 9976,
+          "engine": "cli",
           "palette_normalized": true,
-          "source_media_preserved": false
+          "source_media_preserved": false,
+          "svg_derived": false,
+          "native_style": {
+            "version": "scoped-solid-v2",
+            "mode": "bundled-solid",
+            "textCount": 11,
+            "bodyCount": 4
+          }
         }
       ]
     },
@@ -406,17 +474,24 @@
       "skippedFormats": [
         "png"
       ],
-      "krokiDiagramType": "plantuml",
+      "krokiDiagramType": null,
       "ok": true,
       "error": null,
       "outputs": [
         {
           "format": "svg",
           "path": "svg/files.svg",
-          "size_bytes": 18959,
-          "engine": "kroki",
+          "size_bytes": 19320,
+          "engine": "cli",
           "palette_normalized": true,
-          "source_media_preserved": false
+          "source_media_preserved": false,
+          "svg_derived": false,
+          "native_style": {
+            "version": "scoped-solid-v2",
+            "mode": "bundled-solid",
+            "textCount": 9,
+            "bodyCount": 0
+          }
         }
       ]
     },
@@ -442,17 +517,24 @@
       "skippedFormats": [
         "png"
       ],
-      "krokiDiagramType": "plantuml",
+      "krokiDiagramType": null,
       "ok": true,
       "error": null,
       "outputs": [
         {
           "format": "svg",
           "path": "svg/gantt.svg",
-          "size_bytes": 8676,
-          "engine": "kroki",
+          "size_bytes": 10700,
+          "engine": "cli",
           "palette_normalized": true,
-          "source_media_preserved": false
+          "source_media_preserved": false,
+          "svg_derived": false,
+          "native_style": {
+            "version": "scoped-solid-v2",
+            "mode": "bundled-solid",
+            "textCount": 42,
+            "bodyCount": 3
+          }
         }
       ]
     },
@@ -478,17 +560,24 @@
       "skippedFormats": [
         "png"
       ],
-      "krokiDiagramType": "plantuml",
+      "krokiDiagramType": null,
       "ok": true,
       "error": null,
       "outputs": [
         {
           "format": "svg",
           "path": "svg/ie.svg",
-          "size_bytes": 5262,
-          "engine": "kroki",
+          "size_bytes": 7558,
+          "engine": "cli",
           "palette_normalized": true,
-          "source_media_preserved": false
+          "source_media_preserved": false,
+          "svg_derived": false,
+          "native_style": {
+            "version": "scoped-solid-v2",
+            "mode": "bundled-solid",
+            "textCount": 8,
+            "bodyCount": 2
+          }
         }
       ]
     },
@@ -514,17 +603,24 @@
       "skippedFormats": [
         "png"
       ],
-      "krokiDiagramType": "plantuml",
+      "krokiDiagramType": null,
       "ok": true,
       "error": null,
       "outputs": [
         {
           "format": "svg",
           "path": "svg/json.svg",
-          "size_bytes": 2963,
-          "engine": "kroki",
+          "size_bytes": 3864,
+          "engine": "cli",
           "palette_normalized": true,
-          "source_media_preserved": false
+          "source_media_preserved": false,
+          "svg_derived": false,
+          "native_style": {
+            "version": "scoped-solid-v2",
+            "mode": "bundled-solid",
+            "textCount": 8,
+            "bodyCount": 0
+          }
         }
       ]
     },
@@ -550,7 +646,7 @@
       "skippedFormats": [
         "png"
       ],
-      "krokiDiagramType": "plantuml",
+      "krokiDiagramType": null,
       "ok": true,
       "error": null,
       "outputs": [
@@ -558,9 +654,16 @@
           "format": "svg",
           "path": "svg/latex.svg",
           "size_bytes": 524,
-          "engine": "kroki",
+          "engine": "cli",
           "palette_normalized": true,
-          "source_media_preserved": false
+          "source_media_preserved": false,
+          "svg_derived": false,
+          "native_style": {
+            "version": "scoped-solid-v2",
+            "mode": "native-notation",
+            "textCount": 0,
+            "bodyCount": 0
+          }
         }
       ]
     },
@@ -586,7 +689,7 @@
       "skippedFormats": [
         "png"
       ],
-      "krokiDiagramType": "plantuml",
+      "krokiDiagramType": null,
       "ok": true,
       "error": null,
       "outputs": [
@@ -594,9 +697,16 @@
           "format": "svg",
           "path": "svg/math.svg",
           "size_bytes": 533,
-          "engine": "kroki",
+          "engine": "cli",
           "palette_normalized": true,
-          "source_media_preserved": false
+          "source_media_preserved": false,
+          "svg_derived": false,
+          "native_style": {
+            "version": "scoped-solid-v2",
+            "mode": "native-notation",
+            "textCount": 0,
+            "bodyCount": 0
+          }
         }
       ]
     },
@@ -622,17 +732,24 @@
       "skippedFormats": [
         "png"
       ],
-      "krokiDiagramType": "plantuml",
+      "krokiDiagramType": null,
       "ok": true,
       "error": null,
       "outputs": [
         {
           "format": "svg",
           "path": "svg/mindmap.svg",
-          "size_bytes": 3828,
-          "engine": "kroki",
+          "size_bytes": 4978,
+          "engine": "cli",
           "palette_normalized": true,
-          "source_media_preserved": false
+          "source_media_preserved": false,
+          "svg_derived": false,
+          "native_style": {
+            "version": "scoped-solid-v2",
+            "mode": "bundled-solid",
+            "textCount": 9,
+            "bodyCount": 0
+          }
         }
       ]
     },
@@ -658,17 +775,24 @@
       "skippedFormats": [
         "png"
       ],
-      "krokiDiagramType": "plantuml",
+      "krokiDiagramType": null,
       "ok": true,
       "error": null,
       "outputs": [
         {
           "format": "svg",
           "path": "svg/nwdiag.svg",
-          "size_bytes": 3260,
-          "engine": "kroki",
+          "size_bytes": 3606,
+          "engine": "cli",
           "palette_normalized": true,
-          "source_media_preserved": false
+          "source_media_preserved": false,
+          "svg_derived": false,
+          "native_style": {
+            "version": "scoped-solid-v2",
+            "mode": "bundled-solid",
+            "textCount": 12,
+            "bodyCount": 0
+          }
         }
       ]
     },
@@ -694,17 +818,24 @@
       "skippedFormats": [
         "png"
       ],
-      "krokiDiagramType": "plantuml",
+      "krokiDiagramType": null,
       "ok": true,
       "error": null,
       "outputs": [
         {
           "format": "svg",
           "path": "svg/object.svg",
-          "size_bytes": 3772,
-          "engine": "kroki",
+          "size_bytes": 4482,
+          "engine": "cli",
           "palette_normalized": true,
-          "source_media_preserved": false
+          "source_media_preserved": false,
+          "svg_derived": false,
+          "native_style": {
+            "version": "scoped-solid-v2",
+            "mode": "bundled-solid",
+            "textCount": 7,
+            "bodyCount": 3
+          }
         }
       ]
     },
@@ -730,17 +861,24 @@
       "skippedFormats": [
         "png"
       ],
-      "krokiDiagramType": "plantuml",
+      "krokiDiagramType": null,
       "ok": true,
       "error": null,
       "outputs": [
         {
           "format": "svg",
           "path": "svg/packetdiag.svg",
-          "size_bytes": 4606,
-          "engine": "kroki",
+          "size_bytes": 5411,
+          "engine": "cli",
           "palette_normalized": true,
-          "source_media_preserved": false
+          "source_media_preserved": false,
+          "svg_derived": false,
+          "native_style": {
+            "version": "scoped-solid-v2",
+            "mode": "bundled-solid",
+            "textCount": 12,
+            "bodyCount": 0
+          }
         }
       ]
     },
@@ -766,17 +904,24 @@
       "skippedFormats": [
         "png"
       ],
-      "krokiDiagramType": "plantuml",
+      "krokiDiagramType": null,
       "ok": true,
       "error": null,
       "outputs": [
         {
           "format": "svg",
           "path": "svg/regex.svg",
-          "size_bytes": 6660,
-          "engine": "kroki",
+          "size_bytes": 9677,
+          "engine": "cli",
           "palette_normalized": true,
-          "source_media_preserved": false
+          "source_media_preserved": false,
+          "svg_derived": false,
+          "native_style": {
+            "version": "scoped-solid-v2",
+            "mode": "bundled-solid",
+            "textCount": 8,
+            "bodyCount": 3
+          }
         }
       ]
     },
@@ -802,17 +947,24 @@
       "skippedFormats": [
         "png"
       ],
-      "krokiDiagramType": "plantuml",
+      "krokiDiagramType": null,
       "ok": true,
       "error": null,
       "outputs": [
         {
           "format": "svg",
           "path": "svg/salt.svg",
-          "size_bytes": 2210,
-          "engine": "kroki",
+          "size_bytes": 2747,
+          "engine": "cli",
           "palette_normalized": true,
-          "source_media_preserved": false
+          "source_media_preserved": false,
+          "svg_derived": false,
+          "native_style": {
+            "version": "scoped-solid-v2",
+            "mode": "bundled-solid",
+            "textCount": 10,
+            "bodyCount": 2
+          }
         }
       ]
     },
@@ -838,17 +990,24 @@
       "skippedFormats": [
         "png"
       ],
-      "krokiDiagramType": "plantuml",
+      "krokiDiagramType": null,
       "ok": true,
       "error": null,
       "outputs": [
         {
           "format": "svg",
           "path": "svg/sdl.svg",
-          "size_bytes": 3627,
-          "engine": "kroki",
+          "size_bytes": 5232,
+          "engine": "cli",
           "palette_normalized": true,
-          "source_media_preserved": false
+          "source_media_preserved": false,
+          "svg_derived": false,
+          "native_style": {
+            "version": "scoped-solid-v2",
+            "mode": "bundled-solid",
+            "textCount": 5,
+            "bodyCount": 0
+          }
         }
       ]
     },
@@ -874,17 +1033,24 @@
       "skippedFormats": [
         "png"
       ],
-      "krokiDiagramType": "plantuml",
+      "krokiDiagramType": null,
       "ok": true,
       "error": null,
       "outputs": [
         {
           "format": "svg",
           "path": "svg/sequence.svg",
-          "size_bytes": 9884,
-          "engine": "kroki",
+          "size_bytes": 11750,
+          "engine": "cli",
           "palette_normalized": true,
-          "source_media_preserved": false
+          "source_media_preserved": false,
+          "svg_derived": false,
+          "native_style": {
+            "version": "scoped-solid-v2",
+            "mode": "bundled-solid",
+            "textCount": 15,
+            "bodyCount": 6
+          }
         }
       ]
     },
@@ -910,17 +1076,24 @@
       "skippedFormats": [
         "png"
       ],
-      "krokiDiagramType": "plantuml",
+      "krokiDiagramType": null,
       "ok": true,
       "error": null,
       "outputs": [
         {
           "format": "svg",
           "path": "svg/state.svg",
-          "size_bytes": 6234,
-          "engine": "kroki",
+          "size_bytes": 7045,
+          "engine": "cli",
           "palette_normalized": true,
-          "source_media_preserved": false
+          "source_media_preserved": false,
+          "svg_derived": false,
+          "native_style": {
+            "version": "scoped-solid-v2",
+            "mode": "bundled-solid",
+            "textCount": 7,
+            "bodyCount": 3
+          }
         }
       ]
     },
@@ -946,17 +1119,24 @@
       "skippedFormats": [
         "png"
       ],
-      "krokiDiagramType": "plantuml",
+      "krokiDiagramType": null,
       "ok": true,
       "error": null,
       "outputs": [
         {
           "format": "svg",
           "path": "svg/timing.svg",
-          "size_bytes": 5339,
-          "engine": "kroki",
+          "size_bytes": 5720,
+          "engine": "cli",
           "palette_normalized": true,
-          "source_media_preserved": false
+          "source_media_preserved": false,
+          "svg_derived": false,
+          "native_style": {
+            "version": "scoped-solid-v2",
+            "mode": "bundled-solid",
+            "textCount": 11,
+            "bodyCount": 0
+          }
         }
       ]
     },
@@ -982,17 +1162,24 @@
       "skippedFormats": [
         "png"
       ],
-      "krokiDiagramType": "plantuml",
+      "krokiDiagramType": null,
       "ok": true,
       "error": null,
       "outputs": [
         {
           "format": "svg",
           "path": "svg/usecase.svg",
-          "size_bytes": 4845,
-          "engine": "kroki",
+          "size_bytes": 5495,
+          "engine": "cli",
           "palette_normalized": true,
-          "source_media_preserved": false
+          "source_media_preserved": false,
+          "svg_derived": false,
+          "native_style": {
+            "version": "scoped-solid-v2",
+            "mode": "bundled-solid",
+            "textCount": 7,
+            "bodyCount": 2
+          }
         }
       ]
     },
@@ -1018,17 +1205,24 @@
       "skippedFormats": [
         "png"
       ],
-      "krokiDiagramType": "plantuml",
+      "krokiDiagramType": null,
       "ok": true,
       "error": null,
       "outputs": [
         {
           "format": "svg",
           "path": "svg/wbs.svg",
-          "size_bytes": 4200,
-          "engine": "kroki",
+          "size_bytes": 6039,
+          "engine": "cli",
           "palette_normalized": true,
-          "source_media_preserved": false
+          "source_media_preserved": false,
+          "svg_derived": false,
+          "native_style": {
+            "version": "scoped-solid-v2",
+            "mode": "bundled-solid",
+            "textCount": 10,
+            "bodyCount": 0
+          }
         }
       ]
     },
@@ -1054,17 +1248,24 @@
       "skippedFormats": [
         "png"
       ],
-      "krokiDiagramType": "plantuml",
+      "krokiDiagramType": null,
       "ok": true,
       "error": null,
       "outputs": [
         {
           "format": "svg",
           "path": "svg/yaml.svg",
-          "size_bytes": 6700,
-          "engine": "kroki",
+          "size_bytes": 9018,
+          "engine": "cli",
           "palette_normalized": true,
-          "source_media_preserved": false
+          "source_media_preserved": false,
+          "svg_derived": false,
+          "native_style": {
+            "version": "scoped-solid-v2",
+            "mode": "bundled-solid",
+            "textCount": 15,
+            "bodyCount": 0
+          }
         }
       ]
     }

@@ -1,0 +1,846 @@
+{
+  "schemaVersion": 1,
+  "skill": "plantuml-colorset-renderer",
+  "cohort": "final-r3",
+  "runCount": 5,
+  "diagramCount": 17,
+  "consistentPayload": true,
+  "payloadSha256": [
+    "5f0988c9c6b6a035c5a75c82791b1cf1ed5cad703a808c4a0bc0dc94a27d3e5f"
+  ],
+  "runs": [
+    {
+      "runId": "20261003-plantuml-style-baseline-final-r3-1",
+      "case": "baseline",
+      "repetition": 1,
+      "model": {
+        "model": "openai-codex/gpt-5.6-luna",
+        "thinking": "medium",
+        "mode": "json",
+        "timeoutSeconds": 900
+      },
+      "startedAtUtc": "2026-10-04T15:16:44.338006+00:00",
+      "finishedAtUtc": "2026-10-04T15:17:24.825647+00:00",
+      "durationSeconds": 40.488,
+      "payload": {
+        "name": "plantuml-colorset-renderer",
+        "profile": "runtime",
+        "fileCount": 27,
+        "payloadSha256": "5f0988c9c6b6a035c5a75c82791b1cf1ed5cad703a808c4a0bc0dc94a27d3e5f"
+      },
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/plantuml-colorset-renderer/style-repair-20261003/baseline.md",
+        "sizeBytes": 2842,
+        "sha256": "20e0ad5c79e91a81895b14e811e8e027efee40f819a8ab910cb479613176c5c6"
+      },
+      "localRenderer": {
+        "version": "PlantUML version 1.2026.6 / 6287b33 [2026-06-08 16:02:56 UTC]",
+        "jarSha256": "89948f14c93756c7a3fb7b69078ff37e8489fd79dd430c582b931e2f65358690",
+        "cmdSha256": "3cf5983cf51af509be536bda081b75b7b1d09c9eae366c415f3145771d70f0f5",
+        "bashShimSha256": "0de88b1728d843dd1a33fdc183a3916c30c4db93a8d59750d465a07108070317",
+        "checks": [
+          {
+            "name": "pythonCliLookup",
+            "command": [
+              "C:\\Users\\villa\\dev\\skills\\projects\\visual-asset-composition\\artifacts\\tools\\plantuml.CMD",
+              "-version"
+            ],
+            "exitCode": 0,
+            "stdout": "PlantUML version 1.2026.6 / 6287b33 [2026-06-08 16:02:56 UTC]\n(GPL source distribution)\n\nBuild Version: 1.2026.6\nGit Commit: 6287b33\nCompile Time: 2026-06-08 16:02:56 UTC\n\nJava Runtime: OpenJDK Runtime Environment\nJVM: OpenJDK 64-Bit Server VM\nDefault Encoding: Cp1252\nLanguage: en\nCountry: US\n \nPLANTUML_LIMIT_SIZE: 4096\n\nGraphViz: dot - graphviz version 2.44.1 (20200629.0846)\nInstallation seems OK. File generation OK\n",
+            "stderr": ""
+          },
+          {
+            "name": "bareBashCommand",
+            "command": [
+              "C:\\Program Files\\Git\\bin\\bash.exe",
+              "-c",
+              "plantuml -version"
+            ],
+            "exitCode": 0,
+            "stdout": "PlantUML version 1.2026.6 / 6287b33 [2026-06-08 16:02:56 UTC]\n(GPL source distribution)\n\nBuild Version: 1.2026.6\nGit Commit: 6287b33\nCompile Time: 2026-06-08 16:02:56 UTC\n\nJava Runtime: OpenJDK Runtime Environment\nJVM: OpenJDK 64-Bit Server VM\nDefault Encoding: Cp1252\nLanguage: en\nCountry: US\n \nPLANTUML_LIMIT_SIZE: 4096\n\nGraphViz: dot - graphviz version 2.44.1 (20200629.0846)\nInstallation seems OK. File generation OK\n",
+            "stderr": ""
+          }
+        ]
+      },
+      "runtimePassed": true,
+      "runtimeGates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.6-luna"
+        }
+      ],
+      "eventFindings": [],
+      "payloadIntegrity": {
+        "passed": true,
+        "beforeDigest": "5f0988c9c6b6a035c5a75c82791b1cf1ed5cad703a808c4a0bc0dc94a27d3e5f",
+        "afterDigest": "5f0988c9c6b6a035c5a75c82791b1cf1ed5cad703a808c4a0bc0dc94a27d3e5f",
+        "added": [],
+        "removed": [],
+        "modified": []
+      },
+      "readPaths": [
+        "../prompt.md",
+        "skills/plantuml-colorset-renderer/SKILL.md",
+        "skills/plantuml-colorset-renderer/references/colorset-contract.md",
+        "skills/plantuml-colorset-renderer/references/native-styling.md",
+        "skills/plantuml-colorset-renderer/references/arrow-contrast.md",
+        "render-report.json",
+        "validation.json",
+        "rendered/svg/activity.svg",
+        "rendered/svg/deployment.svg",
+        "rendered/svg/chen.svg",
+        "review.md",
+        "rendered/png/deployment.png",
+        "rendered/png/activity.png",
+        "rendered/png/chen.png"
+      ],
+      "traceSummarySha256": "a8e664b4a3fef777ff98f3850e97ac3213d6d0e433bfb10a65007c01a7796e6c",
+      "commandAudit": {
+        "path": "evaluations/runs/20261003-plantuml-style-baseline-final-r3-1/command-audit.json",
+        "sha256": "5da3ac116ded655d4e1426c777cb12284664f8cb821b26716f144ce021243e36",
+        "passed": true,
+        "isolationPassed": true,
+        "strictRuntimePassed": true,
+        "sourceAssessment": {
+          "generatedSourceCount": 3,
+          "taskSourcesWrittenOnce": true,
+          "recoveryEdits": 0,
+          "externalIncludes": false
+        },
+        "observations": [],
+        "findings": []
+      },
+      "independentPassed": true,
+      "independentFindings": [],
+      "directReview": {
+        "path": "evaluations/runs/20261003-plantuml-style-baseline-final-r3-1/direct-visual-review.md",
+        "sha256": "42e521e8f5d06c9c8a9b30bbdda06e87f0881c1ac35c798cd4de23421786a649"
+      },
+      "diagrams": [
+        {
+          "diagram": "activity",
+          "nativeFamily": "ACTIVITY",
+          "dimensions": [
+            293,
+            337
+          ],
+          "sourceSha256": "adead82c0a4d75d3b6570bac094955b10e58a6dbe8c09074ec16a221a6f137be",
+          "svgSha256": "8ce6c3eb7ba2693e831a71e93d08fbdbbff2ab19da063561aacbd296ec4aaee4",
+          "pngSha256": "7fee281ca7ddc91d9aad322069dc4bad25aaeb544091a040571ba6582ea30bb9",
+          "svgScreenshotSha256": "9fc0378dbfea87f31adc8c236537a881abaa193d16aa66c22c22a805111e829e",
+          "minimumTextContrast": 5.489814557409947,
+          "minimumConnectorContrast": 5.489814557409947
+        },
+        {
+          "diagram": "chen",
+          "nativeFamily": "CHEN_EER",
+          "dimensions": [
+            484,
+            288
+          ],
+          "sourceSha256": "761adf87fa0f7fc3b5768fff9ebd3b4b24f7bf5184c5d70bc8bce811f9e962fc",
+          "svgSha256": "564e39bfbbd6f9e01d231dbd5aa1addcc63b7509e3e33420e47c90d8696ec045",
+          "pngSha256": "5d6f32bf8a3a22eb4d75ceb7464f600a2731022291a723ac625a264134272ccb",
+          "svgScreenshotSha256": "f189c8c755278e9529dd44e83b1e161f576c943c7042dc08f6c3c8929338b19b",
+          "minimumTextContrast": 7.9046884551695875,
+          "minimumConnectorContrast": 5.489814557409947
+        },
+        {
+          "diagram": "deployment",
+          "nativeFamily": "DESCRIPTION",
+          "dimensions": [
+            164,
+            534
+          ],
+          "sourceSha256": "82a4e36f6d278720667d8d6897302f3c14a213e5f1eebb4ea76ed0c196c203f3",
+          "svgSha256": "cbc4c86cca81a323efd4e5e30424c120420c0e7b454b11f7912f0b187c82d78b",
+          "pngSha256": "0220d2097968ee96ec99d02822c89cc146b51d27b83707739f5f9af3752fdadc",
+          "svgScreenshotSha256": "f0344c4ed4b33c8c370ff9a1fcca082ac00e2cc53805fd10bcfb9ee54e00ef07",
+          "minimumTextContrast": 7.649030726923587,
+          "minimumConnectorContrast": 4.439444354179186
+        }
+      ]
+    },
+    {
+      "runId": "20261003-plantuml-style-boundary-final-r3-1",
+      "case": "boundary",
+      "repetition": 1,
+      "model": {
+        "model": "openai-codex/gpt-5.6-luna",
+        "thinking": "medium",
+        "mode": "json",
+        "timeoutSeconds": 900
+      },
+      "startedAtUtc": "2026-10-04T15:16:44.338527+00:00",
+      "finishedAtUtc": "2026-10-04T15:17:35.406645+00:00",
+      "durationSeconds": 51.068,
+      "payload": {
+        "name": "plantuml-colorset-renderer",
+        "profile": "runtime",
+        "fileCount": 27,
+        "payloadSha256": "5f0988c9c6b6a035c5a75c82791b1cf1ed5cad703a808c4a0bc0dc94a27d3e5f"
+      },
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/plantuml-colorset-renderer/style-repair-20261003/boundary.md",
+        "sizeBytes": 2242,
+        "sha256": "46ff3c4476058cbcd7e83a7b8392043ea6c058d192eecd3726e1a6e2f61355e0"
+      },
+      "localRenderer": {
+        "version": "PlantUML version 1.2026.6 / 6287b33 [2026-06-08 16:02:56 UTC]",
+        "jarSha256": "89948f14c93756c7a3fb7b69078ff37e8489fd79dd430c582b931e2f65358690",
+        "cmdSha256": "3cf5983cf51af509be536bda081b75b7b1d09c9eae366c415f3145771d70f0f5",
+        "bashShimSha256": "0de88b1728d843dd1a33fdc183a3916c30c4db93a8d59750d465a07108070317",
+        "checks": [
+          {
+            "name": "pythonCliLookup",
+            "command": [
+              "C:\\Users\\villa\\dev\\skills\\projects\\visual-asset-composition\\artifacts\\tools\\plantuml.CMD",
+              "-version"
+            ],
+            "exitCode": 0,
+            "stdout": "PlantUML version 1.2026.6 / 6287b33 [2026-06-08 16:02:56 UTC]\n(GPL source distribution)\n\nBuild Version: 1.2026.6\nGit Commit: 6287b33\nCompile Time: 2026-06-08 16:02:56 UTC\n\nJava Runtime: OpenJDK Runtime Environment\nJVM: OpenJDK 64-Bit Server VM\nDefault Encoding: Cp1252\nLanguage: en\nCountry: US\n \nPLANTUML_LIMIT_SIZE: 4096\n\nGraphViz: dot - graphviz version 2.44.1 (20200629.0846)\nInstallation seems OK. File generation OK\n",
+            "stderr": ""
+          },
+          {
+            "name": "bareBashCommand",
+            "command": [
+              "C:\\Program Files\\Git\\bin\\bash.exe",
+              "-c",
+              "plantuml -version"
+            ],
+            "exitCode": 0,
+            "stdout": "PlantUML version 1.2026.6 / 6287b33 [2026-06-08 16:02:56 UTC]\n(GPL source distribution)\n\nBuild Version: 1.2026.6\nGit Commit: 6287b33\nCompile Time: 2026-06-08 16:02:56 UTC\n\nJava Runtime: OpenJDK Runtime Environment\nJVM: OpenJDK 64-Bit Server VM\nDefault Encoding: Cp1252\nLanguage: en\nCountry: US\n \nPLANTUML_LIMIT_SIZE: 4096\n\nGraphViz: dot - graphviz version 2.44.1 (20200629.0846)\nInstallation seems OK. File generation OK\n",
+            "stderr": ""
+          }
+        ]
+      },
+      "runtimePassed": true,
+      "runtimeGates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.6-luna"
+        }
+      ],
+      "eventFindings": [],
+      "payloadIntegrity": {
+        "passed": true,
+        "beforeDigest": "5f0988c9c6b6a035c5a75c82791b1cf1ed5cad703a808c4a0bc0dc94a27d3e5f",
+        "afterDigest": "5f0988c9c6b6a035c5a75c82791b1cf1ed5cad703a808c4a0bc0dc94a27d3e5f",
+        "added": [],
+        "removed": [],
+        "modified": []
+      },
+      "readPaths": [
+        "../prompt.md",
+        "skills/plantuml-colorset-renderer/SKILL.md",
+        "skills/plantuml-colorset-renderer/references/colorset-contract.md",
+        "skills/plantuml-colorset-renderer/references/arrow-contrast.md",
+        "skills/plantuml-colorset-renderer/references/native-styling.md",
+        "rendered/svg/authored-style.svg",
+        "validation.json",
+        "rendered/svg/sequence-database.svg",
+        "render-report.json",
+        "rendered/png/authored-style.png",
+        "rendered/png/sequence-database.png"
+      ],
+      "traceSummarySha256": "1cda23834afa126650241050a669433bee756edd2b1a2e9f6ce226df81ca4a06",
+      "commandAudit": {
+        "path": "evaluations/runs/20261003-plantuml-style-boundary-final-r3-1/command-audit.json",
+        "sha256": "aee45135d116e9d9e844a6a5b7c9177513f73916c466434d20a7677c3a9797b7",
+        "passed": true,
+        "isolationPassed": true,
+        "strictRuntimePassed": true,
+        "sourceAssessment": {
+          "generatedSourceCount": 2,
+          "taskSourcesWrittenOnce": true,
+          "recoveryEdits": 0,
+          "externalIncludes": false
+        },
+        "observations": [],
+        "findings": []
+      },
+      "independentPassed": true,
+      "independentFindings": [],
+      "directReview": {
+        "path": "evaluations/runs/20261003-plantuml-style-boundary-final-r3-1/direct-visual-review.md",
+        "sha256": "cda36e7d0e0fb1788e94b35b0ee181848b80e4cdd3809c637ae3c29716356be4"
+      },
+      "diagrams": [
+        {
+          "diagram": "authored-style",
+          "nativeFamily": "DESCRIPTION",
+          "dimensions": [
+            161,
+            232
+          ],
+          "sourceSha256": "f579ec3b4c15e9e41f1370bc4788cb4392e60e6248e8e5c6646b351cba6bbe67",
+          "svgSha256": "0eb9e627a73b0f75c8f55acf4a11e04937183379b6857ee677c30a7cf27759a4",
+          "pngSha256": "9c1ec194e6dd2dfa7fdc0b5da8bf9c6f849146c40f77f3d99a87d5d730144f37",
+          "svgScreenshotSha256": "2065d2890d4d0efa9a797d27fba2c10715fb4de4c42879d7b2b9242cbbde4354",
+          "minimumTextContrast": 17.860063997740546,
+          "minimumConnectorContrast": 5.489814557409947
+        },
+        {
+          "diagram": "sequence-database",
+          "nativeFamily": "SEQUENCE",
+          "dimensions": [
+            179,
+            252
+          ],
+          "sourceSha256": "e858e591279921414291548757bd363f0362a7fa26c17386c662326d159215bc",
+          "svgSha256": "f86a68103393e7021327d4b03e1abdb4ff7dab2905da97f93068258aaa6de336",
+          "pngSha256": "dbe7c5a14fb83524b617d4a8f54462fcd58f9005ff3391f4d8ac93bfcc40216d",
+          "svgScreenshotSha256": "25c083e3a856bb57defb826233b1271a053b7c69dca5198680a705c295d529f3",
+          "minimumTextContrast": 5.4399561950875235,
+          "minimumConnectorContrast": 5.489814557409947
+        }
+      ]
+    },
+    {
+      "runId": "20261003-plantuml-style-generalization-final-r3-1",
+      "case": "generalization",
+      "repetition": 1,
+      "model": {
+        "model": "openai-codex/gpt-5.6-luna",
+        "thinking": "medium",
+        "mode": "json",
+        "timeoutSeconds": 900
+      },
+      "startedAtUtc": "2026-10-04T15:16:44.337668+00:00",
+      "finishedAtUtc": "2026-10-04T15:17:53.444014+00:00",
+      "durationSeconds": 69.107,
+      "payload": {
+        "name": "plantuml-colorset-renderer",
+        "profile": "runtime",
+        "fileCount": 27,
+        "payloadSha256": "5f0988c9c6b6a035c5a75c82791b1cf1ed5cad703a808c4a0bc0dc94a27d3e5f"
+      },
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/plantuml-colorset-renderer/style-repair-20261003/generalization.md",
+        "sizeBytes": 2583,
+        "sha256": "520b737b699ef11e2825a175a8dcd7dcef540b7881e40e4e2bc5c7f51f895bcc"
+      },
+      "localRenderer": {
+        "version": "PlantUML version 1.2026.6 / 6287b33 [2026-06-08 16:02:56 UTC]",
+        "jarSha256": "89948f14c93756c7a3fb7b69078ff37e8489fd79dd430c582b931e2f65358690",
+        "cmdSha256": "3cf5983cf51af509be536bda081b75b7b1d09c9eae366c415f3145771d70f0f5",
+        "bashShimSha256": "0de88b1728d843dd1a33fdc183a3916c30c4db93a8d59750d465a07108070317",
+        "checks": [
+          {
+            "name": "pythonCliLookup",
+            "command": [
+              "C:\\Users\\villa\\dev\\skills\\projects\\visual-asset-composition\\artifacts\\tools\\plantuml.CMD",
+              "-version"
+            ],
+            "exitCode": 0,
+            "stdout": "PlantUML version 1.2026.6 / 6287b33 [2026-06-08 16:02:56 UTC]\n(GPL source distribution)\n\nBuild Version: 1.2026.6\nGit Commit: 6287b33\nCompile Time: 2026-06-08 16:02:56 UTC\n\nJava Runtime: OpenJDK Runtime Environment\nJVM: OpenJDK 64-Bit Server VM\nDefault Encoding: Cp1252\nLanguage: en\nCountry: US\n \nPLANTUML_LIMIT_SIZE: 4096\n\nGraphViz: dot - graphviz version 2.44.1 (20200629.0846)\nInstallation seems OK. File generation OK\n",
+            "stderr": ""
+          },
+          {
+            "name": "bareBashCommand",
+            "command": [
+              "C:\\Program Files\\Git\\bin\\bash.exe",
+              "-c",
+              "plantuml -version"
+            ],
+            "exitCode": 0,
+            "stdout": "PlantUML version 1.2026.6 / 6287b33 [2026-06-08 16:02:56 UTC]\n(GPL source distribution)\n\nBuild Version: 1.2026.6\nGit Commit: 6287b33\nCompile Time: 2026-06-08 16:02:56 UTC\n\nJava Runtime: OpenJDK Runtime Environment\nJVM: OpenJDK 64-Bit Server VM\nDefault Encoding: Cp1252\nLanguage: en\nCountry: US\n \nPLANTUML_LIMIT_SIZE: 4096\n\nGraphViz: dot - graphviz version 2.44.1 (20200629.0846)\nInstallation seems OK. File generation OK\n",
+            "stderr": ""
+          }
+        ]
+      },
+      "runtimePassed": true,
+      "runtimeGates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.6-luna"
+        }
+      ],
+      "eventFindings": [],
+      "payloadIntegrity": {
+        "passed": true,
+        "beforeDigest": "5f0988c9c6b6a035c5a75c82791b1cf1ed5cad703a808c4a0bc0dc94a27d3e5f",
+        "afterDigest": "5f0988c9c6b6a035c5a75c82791b1cf1ed5cad703a808c4a0bc0dc94a27d3e5f",
+        "added": [],
+        "removed": [],
+        "modified": []
+      },
+      "readPaths": [
+        "../prompt.md",
+        "skills/plantuml-colorset-renderer/SKILL.md",
+        "skills/plantuml-colorset-renderer/references/colorset-contract.md",
+        "skills/plantuml-colorset-renderer/references/native-styling.md",
+        "skills/plantuml-colorset-renderer/references/arrow-contrast.md",
+        "skills/plantuml-colorset-renderer/references/native-authoring.md",
+        "render-report.json",
+        "validation.json",
+        "rendered/svg/survey-schedule.svg",
+        "rendered/svg/lab-network.svg",
+        "rendered/svg/work-breakdown.svg",
+        "rendered/svg/expedition-map.svg",
+        "rendered/png/survey-schedule.png",
+        "rendered/png/lab-network.png",
+        "rendered/png/work-breakdown.png",
+        "rendered/png/expedition-map.png"
+      ],
+      "traceSummarySha256": "aee9c60d1d1874c9ad1948ee1530771bbe0a246619bb390b1a081d94ff22ca86",
+      "commandAudit": {
+        "path": "evaluations/runs/20261003-plantuml-style-generalization-final-r3-1/command-audit.json",
+        "sha256": "da600420b59b134294afe781e3e101b912ff4c86b6dbb2bfc6b3dd7ea965ee80",
+        "passed": true,
+        "isolationPassed": true,
+        "strictRuntimePassed": true,
+        "sourceAssessment": {
+          "generatedSourceCount": 4,
+          "taskSourcesWrittenOnce": true,
+          "recoveryEdits": 0,
+          "externalIncludes": false
+        },
+        "observations": [],
+        "findings": []
+      },
+      "independentPassed": true,
+      "independentFindings": [],
+      "directReview": {
+        "path": "evaluations/runs/20261003-plantuml-style-generalization-final-r3-1/direct-visual-review.md",
+        "sha256": "aaff14b51803bae16ba6b8db13a5e5694e0092bfd3c855053c0fe3d0f0f10c86"
+      },
+      "diagrams": [
+        {
+          "diagram": "expedition-map",
+          "nativeFamily": "MINDMAP",
+          "dimensions": [
+            438,
+            309
+          ],
+          "sourceSha256": "1ccb9eee788d19bccee576ffaeebb4358c76c390f76ccf972e0b016a650535b4",
+          "svgSha256": "a0c6090328259366951653718a14970989bd876065318b4d1dfae548538d927a",
+          "pngSha256": "210381260194ed530cf306b5f8d6b94cbbec201187430b269382e0caac16a190",
+          "svgScreenshotSha256": "2b2629abaac4c0978f93cf1ece0a51892d512cc25d25b80c251da0f4ca315650",
+          "minimumTextContrast": 7.9046884551695875,
+          "minimumConnectorContrast": 5.489814557409947
+        },
+        {
+          "diagram": "work-breakdown",
+          "nativeFamily": "WBS",
+          "dimensions": [
+            392,
+            214
+          ],
+          "sourceSha256": "8ff6a1b98ca0c59a73d26fe81852de41557b219f786b9dd8c5570f16ea31f2ef",
+          "svgSha256": "7f8f3e4426e40a849661d3932c134103758086ab7e819c2e9cf87e32fa33aa91",
+          "pngSha256": "12279dc0343d63d46e2eb64174b2f76d00df3be8d137b82c8432700693c6a55b",
+          "svgScreenshotSha256": "68132e1c018631f6764f3a8b6166fe2850482626caf5b5a177d4bc803f648a1d",
+          "minimumTextContrast": 7.9046884551695875,
+          "minimumConnectorContrast": 5.489814557409947
+        },
+        {
+          "diagram": "survey-schedule",
+          "nativeFamily": "GANTT",
+          "dimensions": [
+            165,
+            165
+          ],
+          "sourceSha256": "817023072440692cc46a135ad9e59b02a7f33c8d7a1bed011e59f9e356b72312",
+          "svgSha256": "cfadd9684cce5e3594df15796138442e3095e8d14a9bf4e3b61fa89b118b88f3",
+          "pngSha256": "252507d9f7d31e5c4e3b2ea862eaa8214a6e4aadaf63990a3f7a06f9f51ff3a0",
+          "svgScreenshotSha256": "04b6ec2acd36770321ede67443f9d9fd7940d3c087f64e2cf05ce86f31445f42",
+          "minimumTextContrast": 12.560234564816632,
+          "minimumConnectorContrast": 3.2834932646863777
+        },
+        {
+          "diagram": "lab-network",
+          "nativeFamily": "NWDIAG",
+          "dimensions": [
+            324,
+            139
+          ],
+          "sourceSha256": "8a28de9e22d639403ff2d930cf53adafdb2a7b53de73872a02556a7ffad84cb1",
+          "svgSha256": "4c72d4343fca10017c7d7777ab2096cf47e6c7ed2aef75d20f64186e440ea81b",
+          "pngSha256": "36ddb1959fc9b65993ad568933c640cacfd3a79bf88bdaf27cab5d2dce124f78",
+          "svgScreenshotSha256": "79571c9c887fc8ea2bc622095d8a3cbfd7d7fb9379f4c5edc3fd1913d297f310",
+          "minimumTextContrast": 5.4399561950875235,
+          "minimumConnectorContrast": null
+        }
+      ]
+    },
+    {
+      "runId": "20261003-plantuml-style-generalization-final-r3-2",
+      "case": "generalization",
+      "repetition": 2,
+      "model": {
+        "model": "openai-codex/gpt-5.6-luna",
+        "thinking": "medium",
+        "mode": "json",
+        "timeoutSeconds": 900
+      },
+      "startedAtUtc": "2026-10-04T15:17:55.400210+00:00",
+      "finishedAtUtc": "2026-10-04T15:19:02.758649+00:00",
+      "durationSeconds": 67.359,
+      "payload": {
+        "name": "plantuml-colorset-renderer",
+        "profile": "runtime",
+        "fileCount": 27,
+        "payloadSha256": "5f0988c9c6b6a035c5a75c82791b1cf1ed5cad703a808c4a0bc0dc94a27d3e5f"
+      },
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/plantuml-colorset-renderer/style-repair-20261003/generalization.md",
+        "sizeBytes": 2583,
+        "sha256": "520b737b699ef11e2825a175a8dcd7dcef540b7881e40e4e2bc5c7f51f895bcc"
+      },
+      "localRenderer": {
+        "version": "PlantUML version 1.2026.6 / 6287b33 [2026-06-08 16:02:56 UTC]",
+        "jarSha256": "89948f14c93756c7a3fb7b69078ff37e8489fd79dd430c582b931e2f65358690",
+        "cmdSha256": "3cf5983cf51af509be536bda081b75b7b1d09c9eae366c415f3145771d70f0f5",
+        "bashShimSha256": "0de88b1728d843dd1a33fdc183a3916c30c4db93a8d59750d465a07108070317",
+        "checks": [
+          {
+            "name": "pythonCliLookup",
+            "command": [
+              "C:\\Users\\villa\\dev\\skills\\projects\\visual-asset-composition\\artifacts\\tools\\plantuml.CMD",
+              "-version"
+            ],
+            "exitCode": 0,
+            "stdout": "PlantUML version 1.2026.6 / 6287b33 [2026-06-08 16:02:56 UTC]\n(GPL source distribution)\n\nBuild Version: 1.2026.6\nGit Commit: 6287b33\nCompile Time: 2026-06-08 16:02:56 UTC\n\nJava Runtime: OpenJDK Runtime Environment\nJVM: OpenJDK 64-Bit Server VM\nDefault Encoding: Cp1252\nLanguage: en\nCountry: US\n \nPLANTUML_LIMIT_SIZE: 4096\n\nGraphViz: dot - graphviz version 2.44.1 (20200629.0846)\nInstallation seems OK. File generation OK\n",
+            "stderr": ""
+          },
+          {
+            "name": "bareBashCommand",
+            "command": [
+              "C:\\Program Files\\Git\\bin\\bash.exe",
+              "-c",
+              "plantuml -version"
+            ],
+            "exitCode": 0,
+            "stdout": "PlantUML version 1.2026.6 / 6287b33 [2026-06-08 16:02:56 UTC]\n(GPL source distribution)\n\nBuild Version: 1.2026.6\nGit Commit: 6287b33\nCompile Time: 2026-06-08 16:02:56 UTC\n\nJava Runtime: OpenJDK Runtime Environment\nJVM: OpenJDK 64-Bit Server VM\nDefault Encoding: Cp1252\nLanguage: en\nCountry: US\n \nPLANTUML_LIMIT_SIZE: 4096\n\nGraphViz: dot - graphviz version 2.44.1 (20200629.0846)\nInstallation seems OK. File generation OK\n",
+            "stderr": ""
+          }
+        ]
+      },
+      "runtimePassed": true,
+      "runtimeGates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.6-luna"
+        }
+      ],
+      "eventFindings": [],
+      "payloadIntegrity": {
+        "passed": true,
+        "beforeDigest": "5f0988c9c6b6a035c5a75c82791b1cf1ed5cad703a808c4a0bc0dc94a27d3e5f",
+        "afterDigest": "5f0988c9c6b6a035c5a75c82791b1cf1ed5cad703a808c4a0bc0dc94a27d3e5f",
+        "added": [],
+        "removed": [],
+        "modified": []
+      },
+      "readPaths": [
+        "../prompt.md",
+        "skills/plantuml-colorset-renderer/SKILL.md",
+        "skills/plantuml-colorset-renderer/references/native-styling.md",
+        "skills/plantuml-colorset-renderer/references/colorset-contract.md",
+        "skills/plantuml-colorset-renderer/references/arrow-contrast.md",
+        "skills/plantuml-colorset-renderer/references/native-authoring.md",
+        "render-report.json",
+        "validation.json",
+        "rendered/svg/work-breakdown.svg",
+        "rendered/svg/survey-schedule.svg",
+        "rendered/svg/expedition-map.svg",
+        "rendered/svg/lab-network.svg",
+        "rendered/png/survey-schedule.png",
+        "rendered/png/lab-network.png",
+        "rendered/png/work-breakdown.png",
+        "rendered/png/expedition-map.png"
+      ],
+      "traceSummarySha256": "a5417d095894b9bb5d2dcc2f28af91b94f7301994f485739396995eb25f7198e",
+      "commandAudit": {
+        "path": "evaluations/runs/20261003-plantuml-style-generalization-final-r3-2/command-audit.json",
+        "sha256": "1ee71a89e9bb4bdf1edc9370281c851282fb2836cf3a05bdbe66d4e2c3a5a57d",
+        "passed": true,
+        "isolationPassed": true,
+        "strictRuntimePassed": true,
+        "sourceAssessment": {
+          "generatedSourceCount": 4,
+          "preRenderTaskSourceCorrectionCount": 0,
+          "postRenderRecoveryEdits": 0,
+          "externalIncludes": false
+        },
+        "observations": [],
+        "findings": []
+      },
+      "independentPassed": true,
+      "independentFindings": [],
+      "directReview": {
+        "path": "evaluations/runs/20261003-plantuml-style-generalization-final-r3-2/direct-visual-review.md",
+        "sha256": "e0d073b964f3e69159921881ad67ac82ce5ae2a086495033bb82e7735be6ad9a"
+      },
+      "diagrams": [
+        {
+          "diagram": "expedition-map",
+          "nativeFamily": "MINDMAP",
+          "dimensions": [
+            438,
+            309
+          ],
+          "sourceSha256": "1ccb9eee788d19bccee576ffaeebb4358c76c390f76ccf972e0b016a650535b4",
+          "svgSha256": "a0c6090328259366951653718a14970989bd876065318b4d1dfae548538d927a",
+          "pngSha256": "210381260194ed530cf306b5f8d6b94cbbec201187430b269382e0caac16a190",
+          "svgScreenshotSha256": "2b2629abaac4c0978f93cf1ece0a51892d512cc25d25b80c251da0f4ca315650",
+          "minimumTextContrast": 7.9046884551695875,
+          "minimumConnectorContrast": 5.489814557409947
+        },
+        {
+          "diagram": "work-breakdown",
+          "nativeFamily": "WBS",
+          "dimensions": [
+            392,
+            214
+          ],
+          "sourceSha256": "8ff6a1b98ca0c59a73d26fe81852de41557b219f786b9dd8c5570f16ea31f2ef",
+          "svgSha256": "7f8f3e4426e40a849661d3932c134103758086ab7e819c2e9cf87e32fa33aa91",
+          "pngSha256": "12279dc0343d63d46e2eb64174b2f76d00df3be8d137b82c8432700693c6a55b",
+          "svgScreenshotSha256": "68132e1c018631f6764f3a8b6166fe2850482626caf5b5a177d4bc803f648a1d",
+          "minimumTextContrast": 7.9046884551695875,
+          "minimumConnectorContrast": 5.489814557409947
+        },
+        {
+          "diagram": "survey-schedule",
+          "nativeFamily": "GANTT",
+          "dimensions": [
+            165,
+            165
+          ],
+          "sourceSha256": "817023072440692cc46a135ad9e59b02a7f33c8d7a1bed011e59f9e356b72312",
+          "svgSha256": "cfadd9684cce5e3594df15796138442e3095e8d14a9bf4e3b61fa89b118b88f3",
+          "pngSha256": "252507d9f7d31e5c4e3b2ea862eaa8214a6e4aadaf63990a3f7a06f9f51ff3a0",
+          "svgScreenshotSha256": "04b6ec2acd36770321ede67443f9d9fd7940d3c087f64e2cf05ce86f31445f42",
+          "minimumTextContrast": 12.560234564816632,
+          "minimumConnectorContrast": 3.2834932646863777
+        },
+        {
+          "diagram": "lab-network",
+          "nativeFamily": "NWDIAG",
+          "dimensions": [
+            324,
+            139
+          ],
+          "sourceSha256": "8a28de9e22d639403ff2d930cf53adafdb2a7b53de73872a02556a7ffad84cb1",
+          "svgSha256": "4c72d4343fca10017c7d7777ab2096cf47e6c7ed2aef75d20f64186e440ea81b",
+          "pngSha256": "36ddb1959fc9b65993ad568933c640cacfd3a79bf88bdaf27cab5d2dce124f78",
+          "svgScreenshotSha256": "79571c9c887fc8ea2bc622095d8a3cbfd7d7fb9379f4c5edc3fd1913d297f310",
+          "minimumTextContrast": 5.4399561950875235,
+          "minimumConnectorContrast": null
+        }
+      ]
+    },
+    {
+      "runId": "20261003-plantuml-style-generalization-final-r3-3",
+      "case": "generalization",
+      "repetition": 3,
+      "model": {
+        "model": "openai-codex/gpt-5.6-luna",
+        "thinking": "medium",
+        "mode": "json",
+        "timeoutSeconds": 900
+      },
+      "startedAtUtc": "2026-10-04T15:19:04.745510+00:00",
+      "finishedAtUtc": "2026-10-04T15:20:05.620775+00:00",
+      "durationSeconds": 60.876,
+      "payload": {
+        "name": "plantuml-colorset-renderer",
+        "profile": "runtime",
+        "fileCount": 27,
+        "payloadSha256": "5f0988c9c6b6a035c5a75c82791b1cf1ed5cad703a808c4a0bc0dc94a27d3e5f"
+      },
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/plantuml-colorset-renderer/style-repair-20261003/generalization.md",
+        "sizeBytes": 2583,
+        "sha256": "520b737b699ef11e2825a175a8dcd7dcef540b7881e40e4e2bc5c7f51f895bcc"
+      },
+      "localRenderer": {
+        "version": "PlantUML version 1.2026.6 / 6287b33 [2026-06-08 16:02:56 UTC]",
+        "jarSha256": "89948f14c93756c7a3fb7b69078ff37e8489fd79dd430c582b931e2f65358690",
+        "cmdSha256": "3cf5983cf51af509be536bda081b75b7b1d09c9eae366c415f3145771d70f0f5",
+        "bashShimSha256": "0de88b1728d843dd1a33fdc183a3916c30c4db93a8d59750d465a07108070317",
+        "checks": [
+          {
+            "name": "pythonCliLookup",
+            "command": [
+              "C:\\Users\\villa\\dev\\skills\\projects\\visual-asset-composition\\artifacts\\tools\\plantuml.CMD",
+              "-version"
+            ],
+            "exitCode": 0,
+            "stdout": "PlantUML version 1.2026.6 / 6287b33 [2026-06-08 16:02:56 UTC]\n(GPL source distribution)\n\nBuild Version: 1.2026.6\nGit Commit: 6287b33\nCompile Time: 2026-06-08 16:02:56 UTC\n\nJava Runtime: OpenJDK Runtime Environment\nJVM: OpenJDK 64-Bit Server VM\nDefault Encoding: Cp1252\nLanguage: en\nCountry: US\n \nPLANTUML_LIMIT_SIZE: 4096\n\nGraphViz: dot - graphviz version 2.44.1 (20200629.0846)\nInstallation seems OK. File generation OK\n",
+            "stderr": ""
+          },
+          {
+            "name": "bareBashCommand",
+            "command": [
+              "C:\\Program Files\\Git\\bin\\bash.exe",
+              "-c",
+              "plantuml -version"
+            ],
+            "exitCode": 0,
+            "stdout": "PlantUML version 1.2026.6 / 6287b33 [2026-06-08 16:02:56 UTC]\n(GPL source distribution)\n\nBuild Version: 1.2026.6\nGit Commit: 6287b33\nCompile Time: 2026-06-08 16:02:56 UTC\n\nJava Runtime: OpenJDK Runtime Environment\nJVM: OpenJDK 64-Bit Server VM\nDefault Encoding: Cp1252\nLanguage: en\nCountry: US\n \nPLANTUML_LIMIT_SIZE: 4096\n\nGraphViz: dot - graphviz version 2.44.1 (20200629.0846)\nInstallation seems OK. File generation OK\n",
+            "stderr": ""
+          }
+        ]
+      },
+      "runtimePassed": true,
+      "runtimeGates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "observedModels": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.6-luna"
+        }
+      ],
+      "eventFindings": [],
+      "payloadIntegrity": {
+        "passed": true,
+        "beforeDigest": "5f0988c9c6b6a035c5a75c82791b1cf1ed5cad703a808c4a0bc0dc94a27d3e5f",
+        "afterDigest": "5f0988c9c6b6a035c5a75c82791b1cf1ed5cad703a808c4a0bc0dc94a27d3e5f",
+        "added": [],
+        "removed": [],
+        "modified": []
+      },
+      "readPaths": [
+        "../prompt.md",
+        "skills/plantuml-colorset-renderer/SKILL.md",
+        "skills/plantuml-colorset-renderer/references/native-authoring.md",
+        "skills/plantuml-colorset-renderer/references/native-styling.md",
+        "skills/plantuml-colorset-renderer/references/colorset-contract.md",
+        "skills/plantuml-colorset-renderer/references/arrow-contrast.md",
+        "input/survey-schedule.puml",
+        "validation.json",
+        "render-report.json",
+        "rendered/svg/expedition-map.svg",
+        "rendered/svg/survey-schedule.svg",
+        "rendered/svg/lab-network.svg",
+        "rendered/svg/work-breakdown.svg",
+        "rendered/png/survey-schedule.png",
+        "rendered/png/lab-network.png",
+        "rendered/png/work-breakdown.png",
+        "rendered/png/expedition-map.png"
+      ],
+      "traceSummarySha256": "e5cfbcfcf0584222113d402fc9786e5a60119120127bb34fab13dbd5795261c3",
+      "commandAudit": {
+        "path": "evaluations/runs/20261003-plantuml-style-generalization-final-r3-3/command-audit.json",
+        "sha256": "c5fd4d979da9f02a744548056d0103a2f650839116ca8ae63bf277f7a03ef4f3",
+        "passed": true,
+        "isolationPassed": true,
+        "strictRuntimePassed": true,
+        "sourceAssessment": {
+          "generatedSourceCount": 4,
+          "preRenderTaskSourceCorrectionCount": 1,
+          "postRenderRecoveryEdits": 0,
+          "externalIncludes": false
+        },
+        "observations": [
+          {
+            "code": "pre-render-task-source-correction",
+            "sourceWriteLine": 440,
+            "readResultLine": 467,
+            "correctionLine": 563,
+            "path": "input/survey-schedule.puml",
+            "detail": "Shell-created dependency expressions contained U+001B instead of apostrophes; the agent read the source and rewrote correct [Intake]'s end/[Calibrate]'s end expressions before the first render at628.",
+            "strictFailure": false,
+            "payloadAffected": false
+          }
+        ],
+        "findings": []
+      },
+      "independentPassed": true,
+      "independentFindings": [],
+      "directReview": {
+        "path": "evaluations/runs/20261003-plantuml-style-generalization-final-r3-3/direct-visual-review.md",
+        "sha256": "72d7645f83ee0691edd7bf5b2a93e8d480d97e8c529fd564053ea0bc6a224d83"
+      },
+      "diagrams": [
+        {
+          "diagram": "expedition-map",
+          "nativeFamily": "MINDMAP",
+          "dimensions": [
+            438,
+            309
+          ],
+          "sourceSha256": "1ccb9eee788d19bccee576ffaeebb4358c76c390f76ccf972e0b016a650535b4",
+          "svgSha256": "a0c6090328259366951653718a14970989bd876065318b4d1dfae548538d927a",
+          "pngSha256": "210381260194ed530cf306b5f8d6b94cbbec201187430b269382e0caac16a190",
+          "svgScreenshotSha256": "2b2629abaac4c0978f93cf1ece0a51892d512cc25d25b80c251da0f4ca315650",
+          "minimumTextContrast": 7.9046884551695875,
+          "minimumConnectorContrast": 5.489814557409947
+        },
+        {
+          "diagram": "work-breakdown",
+          "nativeFamily": "WBS",
+          "dimensions": [
+            392,
+            214
+          ],
+          "sourceSha256": "8ff6a1b98ca0c59a73d26fe81852de41557b219f786b9dd8c5570f16ea31f2ef",
+          "svgSha256": "7f8f3e4426e40a849661d3932c134103758086ab7e819c2e9cf87e32fa33aa91",
+          "pngSha256": "12279dc0343d63d46e2eb64174b2f76d00df3be8d137b82c8432700693c6a55b",
+          "svgScreenshotSha256": "68132e1c018631f6764f3a8b6166fe2850482626caf5b5a177d4bc803f648a1d",
+          "minimumTextContrast": 7.9046884551695875,
+          "minimumConnectorContrast": 5.489814557409947
+        },
+        {
+          "diagram": "survey-schedule",
+          "nativeFamily": "GANTT",
+          "dimensions": [
+            165,
+            165
+          ],
+          "sourceSha256": "817023072440692cc46a135ad9e59b02a7f33c8d7a1bed011e59f9e356b72312",
+          "svgSha256": "cfadd9684cce5e3594df15796138442e3095e8d14a9bf4e3b61fa89b118b88f3",
+          "pngSha256": "252507d9f7d31e5c4e3b2ea862eaa8214a6e4aadaf63990a3f7a06f9f51ff3a0",
+          "svgScreenshotSha256": "04b6ec2acd36770321ede67443f9d9fd7940d3c087f64e2cf05ce86f31445f42",
+          "minimumTextContrast": 12.560234564816632,
+          "minimumConnectorContrast": 3.2834932646863777
+        },
+        {
+          "diagram": "lab-network",
+          "nativeFamily": "NWDIAG",
+          "dimensions": [
+            324,
+            139
+          ],
+          "sourceSha256": "8a28de9e22d639403ff2d930cf53adafdb2a7b53de73872a02556a7ffad84cb1",
+          "svgSha256": "4c72d4343fca10017c7d7777ab2096cf47e6c7ed2aef75d20f64186e440ea81b",
+          "pngSha256": "36ddb1959fc9b65993ad568933c640cacfd3a79bf88bdaf27cab5d2dce124f78",
+          "svgScreenshotSha256": "79571c9c887fc8ea2bc622095d8a3cbfd7d7fb9379f4c5edc3fd1913d297f310",
+          "minimumTextContrast": 5.4399561950875235,
+          "minimumConnectorContrast": null
+        }
+      ]
+    }
+  ]
+}

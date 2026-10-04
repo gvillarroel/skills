@@ -17,6 +17,7 @@ import time
 import tempfile
 import urllib.error
 import urllib.request
+import urllib.parse
 import zlib
 import xml.etree.ElementTree as ET
 from dataclasses import dataclass
@@ -25,6 +26,8 @@ from pathlib import Path
 from plantuml_coverage import fixture_index, load_manifest
 from palette_paints import COLORSETS, NAMES, canonical, nearest, readable_text, require_svg_palette, svg_paints
 from arrow_contrast import finish_native_arrows
+from native_styles import STYLE_VERSION, finish_native_styles, style_findings
+from ditaa_styles import prepare_ditaa_source, finish_ditaa_png
 
 
 SCRIPT_DIR = Path(__file__).resolve().parent
@@ -51,6 +54,7 @@ class RenderOutput:
     palette_normalized: bool = False
     source_media_preserved: bool = False
     svg_derived: bool = False
+    native_style: dict | None = None
 
 
 @dataclass
@@ -81,38 +85,19 @@ def relative(path: Path, root: Path) -> str:
         return path.as_posix()
 
 
-def preserve_native_details(root: ET.Element) -> None:
-    """Keep structural open lines visible when native shape outline width is zero.
-
-    This applies only to newly rendered native SVG, never supplied source artwork.
-    Class compartments and cylinder/queue details are open geometry inside entity
-    groups; connector lines remain separate native groups or activity primitives.
-    """
-    for group in root.iter():
-        if "entity" not in group.get("class", "").split():
-            continue
-        fill = next((node.get("fill") for node in group.iter() if node.get("fill", "").startswith("#") and node.tag.rsplit("}", 1)[-1] not in {"text"}), None)
-        if not fill:
-            continue
-        detail_color = readable_text(fill)
-        for node in group.iter():
-            local = node.tag.rsplit("}", 1)[-1]
-            if local == "line" or local == "path" and node.get("fill") == "none":
-                style = node.get("style", "")
-                if "stroke:" not in style:
-                    node.set("style", f"{style}stroke:{detail_color};stroke-width:1;")
-    if root.get("data-diagram-type") == "ACTIVITY":
-        for node in root.iter():
-            if node.tag.rsplit("}", 1)[-1] == "line" and "stroke:" not in node.get("style", ""):
-                node.set("style", "stroke:#696969;stroke-width:1.5;")
-
-
 def discover_sources(input_dir: Path) -> list[Path]:
     return sorted(
         path
         for path in input_dir.rglob("*")
         if path.is_file() and path.suffix.lower() in PLANTUML_SUFFIXES
     )
+
+
+def contains_source_media(source: str) -> bool:
+    """Detect actual media syntax without classifying words in titles as media."""
+    source = re.sub(r"(?s)/'.*?'/", "", source)
+    source = "\n".join(line for line in source.splitlines() if not line.lstrip().startswith("'"))
+    return bool(re.search(r"<img:|<\$[\w-]+(?:\{[^>]*\})?>|(?m:^\s*(?:sprite\s+\$?[\w-]+|!include(?:url|once|many)?\s+[^\n]*(?:aws|azure|gcp)))", source, re.I))
 
 
 def first_start_directive(source: str) -> str:
@@ -155,19 +140,25 @@ def source_for_kroki(source: str, diagram_type: str) -> str:
     return "\n".join(filtered).rstrip() + "\n"
 
 
+def strip_bundled_theme(source: str) -> str:
+    """Replace only renderer-owned theme blocks; keep later authored overrides."""
+    source = re.sub(r"(?ms)^' plantuml-colorset-renderer: theme-begin\r?\n.*?^' plantuml-colorset-renderer: theme-end\r?\n?", "", source)
+    return re.sub(r"(?ms)^' plantuml-colorset-renderer: cs[12] custom theme\r?\n.*?^</style>\r?\n?", "", source)
+
+
 def inject_theme(source: str, theme: str, theme_mode: str | None = None) -> str:
-    if "plantuml-colorset-renderer:" in source:
-        return source
     start_directive = first_start_directive(source)
     effective_mode = theme_mode or theme_mode_for_directive(start_directive)
     if effective_mode == "none":
         return source
     if effective_mode != "inject":
         raise ValueError(f"Unsupported theme mode: {effective_mode}")
+    source = strip_bundled_theme(source)
     lines = source.splitlines()
     for index, line in enumerate(lines):
         if line.strip().lower().startswith("@start"):
-            return "\n".join(lines[: index + 1] + [theme.rstrip()] + lines[index + 1 :]) + "\n"
+            block = ["' plantuml-colorset-renderer: theme-begin", theme.rstrip(), "' plantuml-colorset-renderer: theme-end"]
+            return "\n".join(lines[: index + 1] + block + lines[index + 1 :]) + "\n"
     raise ValueError("PlantUML source is missing an @start... directive")
 
 
@@ -282,6 +273,12 @@ def render_with_kroki(
 ) -> None:
     kroki_source = source_for_kroki(source, diagram_type)
     url = f"{kroki_url.rstrip('/')}/{diagram_type}/{fmt}/{kroki_encode(kroki_source)}"
+    if diagram_type == "ditaa":
+        options = {"no-shadows": "true"}
+        scale = re.search(r"\bscale=([\d.]+)", first_start_directive(source))
+        if scale:
+            options["scale"] = scale[1]
+        url += "?" + urllib.parse.urlencode(options)
     payload = fetch_url(url, timeout, retries=3)
     validate_payload(payload, fmt)
     output_path.parent.mkdir(parents=True, exist_ok=True)
@@ -290,7 +287,7 @@ def render_with_kroki(
 
 def render_with_cli(source: str, fmt: str, output_path: Path, command: str, timeout: int) -> None:
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    executable = shutil.which(command) or command
+    executable = shutil.which(command) or (str(Path(command).resolve()) if Path(command).is_file() else command)
     result = subprocess.run(
         [executable, f"-t{fmt}", "-pipe"],
         input=source.encode("utf-8"),
@@ -366,7 +363,14 @@ def render_source(
     skipped_formats = [fmt for fmt in requested_formats if fmt not in expected_formats]
 
     themed_source_text = inject_theme(raw_source, theme, theme_mode)
-    theme_applied = theme_mode == "inject" and themed_source_text != raw_source
+    theme_applied = theme_mode == "inject"
+    ditaa_plan = None
+    presentation_error = None
+    if directive_token(start_directive) == "@startditaa":
+        try:
+            themed_source_text, ditaa_plan = prepare_ditaa_source(raw_source, colorset)
+        except ValueError as error:
+            presentation_error = str(error)
     if theme_mode == "inject":
         themed_source_text = normalize_source_paints(themed_source_text, colorset)
     themed_source_path: Path | None = None
@@ -401,6 +405,8 @@ def render_source(
         )
 
     try:
+        if presentation_error:
+            raise ValueError(presentation_error)
         if not expected_formats:
             raise RuntimeError("No requested output format is supported for this coverage fixture")
         kroki_diagram_type = kroki_diagram_type_for(start_directive)
@@ -422,34 +428,45 @@ def render_source(
                 raise ValueError(f"Unsupported engine: {engine}")
         def finish_svg(target):
             tree = ET.parse(target)
+            style_report = finish_native_styles(tree.getroot(), colorset, strip_bundled_theme(raw_source), theme_mode == "inject")
             svg_paints(tree.getroot(), colorset, normalize=True)
-            preserve_native_details(tree.getroot())
             finish_native_arrows(tree.getroot(), colorset, 'plantuml')
+            findings = style_findings(tree.getroot())
+            if findings:
+                raise ValueError("Native style validation failed: " + "; ".join(findings))
             tree.getroot().set("data-colorset", colorset)
             tree.write(target, encoding="utf-8", xml_declaration=True)
             require_svg_palette(tree.getroot(), colorset)
-        contains_source_media = bool(re.search(r"<img:|!include.*(?:aws|azure|gcp)|sprite", raw_source, re.I))
+            return style_report
+        source_media = contains_source_media(raw_source)
         finished_svg = None
+        finished_style = None
         for fmt in sorted(expected_formats,key=lambda value:value != 'svg'):
             target = output_path_for(source_path, input_dir, output_dir, fmt)
             target.parent.mkdir(parents=True,exist_ok=True)
             svg_derived = False
-            svg_capable = start_directive not in NO_THEME_START_DIRECTIVES and (coverage_fixture is None or 'svg' in coverage_fixture.get('formats',[]))
-            if fmt == 'png' and svg_capable and not contains_source_media:
+            svg_capable = directive_token(start_directive) not in NO_THEME_START_DIRECTIVES and (coverage_fixture is None or 'svg' in coverage_fixture.get('formats',[]))
+            if fmt == 'png' and svg_capable and not source_media:
                 # Use one finished geometry/paint source for both delivery formats,
                 # including PNG-only requests. Temporary sources stay under output.
                 import resvg_py
                 with tempfile.TemporaryDirectory(prefix='.native-svg-',dir=output_dir) as temporary:
                     source_svg = finished_svg or Path(temporary)/'diagram.svg'
                     if finished_svg is None:
-                        render_native('svg',source_svg);finish_svg(source_svg)
+                        render_native('svg',source_svg)
+                        finished_style = finish_svg(source_svg)
                     target.write_bytes(resvg_py.svg_to_bytes(svg_path=str(source_svg),background='#ffffff',font_family='Arial'))
                 svg_derived = True
             else:
                 render_native(fmt,target)
                 if fmt == 'svg':
-                    finish_svg(target);finished_svg=target
-            if fmt == "png" and not contains_source_media:
+                    finished_style = finish_svg(target)
+                    finished_svg = target
+            if fmt == "png" and not source_media:
+                if ditaa_plan is not None:
+                    raster_style = finish_ditaa_png(target, ditaa_plan)
+                    finished_style = {"version": STYLE_VERSION, "mode": "ditaa-source-backed",
+                                      "textCount": len(ditaa_plan["boxes"]), "bodyCount": len(ditaa_plan["boxes"]), **raster_style}
                 # Raster-only Ditaa and standalone math use renderer-native syntax.
                 # Map their output, rather than corrupting the input with theme text.
                 from PIL import Image
@@ -469,9 +486,10 @@ def render_source(
                     path=relative(target, output_dir),
                     size_bytes=target.stat().st_size,
                     engine=engine,
-                    palette_normalized=fmt == "svg" or not contains_source_media,
-                    source_media_preserved=contains_source_media,
+                    palette_normalized=fmt == "svg" or not source_media,
+                    source_media_preserved=source_media,
                     svg_derived=svg_derived,
+                    native_style=finished_style if fmt == 'svg' or svg_derived or ditaa_plan is not None else None,
                 )
             )
         return DiagramResult(

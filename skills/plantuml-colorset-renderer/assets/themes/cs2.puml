@@ -38,10 +38,10 @@ skinparam ComponentBackgroundColor #004d66
 skinparam ComponentBorderColor #004d66
 skinparam ComponentBorderThickness 0
 skinparam ComponentFontColor #ffffff
-skinparam InterfaceBackgroundColor #994a00
-skinparam InterfaceBorderColor #994a00
+skinparam InterfaceBackgroundColor #ff9633
+skinparam InterfaceBorderColor #ff9633
 skinparam InterfaceBorderThickness 0
-skinparam InterfaceFontColor #ffffff
+skinparam InterfaceFontColor #000000
 skinparam NodeBackgroundColor #294d19
 skinparam NodeBorderColor #294d19
 skinparam NodeBorderThickness 0
@@ -81,119 +81,482 @@ skinparam TimingLineColor #696969
 skinparam LegendBackgroundColor #ffffff
 skinparam LegendBorderColor #ffffff
 skinparam LegendBorderThickness 0
+' Native family scopes prevent generic styles from overriding unrelated roles.
 <style>
-title {
-  LineThickness 0
-  BackgroundColor transparent
-}
 root {
-  Padding 6
+  BackGroundColor #ffffff
   FontColor #000000
   LineColor #696969
-  BackgroundColor #ffffff
+  Padding 6
+}
+document {
+  BackGroundColor #ffffff
+  FontColor #000000
+  LineColor #ffffff
+  title {
+    BackGroundColor transparent
+    LineColor transparent
+    FontColor #000000
+    LineThickness 0
+  }
+  header, footer, caption {
+    FontColor #000000
+    BackGroundColor transparent
+  }
+  legend {
+    BackGroundColor #ffffff
+    FontColor #000000
+    LineColor transparent
+    LineThickness 0
+  }
 }
 arrow {
-  LineThickness 1.5
+  BackGroundColor #696969
+  FontColor #000000
   LineColor #696969
-  FontColor #000000
+  LineThickness 1.5
 }
-actor {
-  LineColor #333e48
-  FontColor #000000
+actor, boundary, control {
   BackGroundColor #ffffff
+  FontColor #000000
+  LineColor #333e48
+  LineThickness 1.5
 }
 node, artifact, folder, frame, rectangle, card {
+  BackGroundColor #294d19
   FontColor #ffffff
   LineColor #294d19
   LineThickness 0
-  BackGroundColor #294d19
 }
-component, interface {
+component {
+  BackGroundColor #004d66
   FontColor #ffffff
   LineColor #004d66
   LineThickness 0
-  BackGroundColor #004d66
+}
+interface {
+  BackGroundColor #ff9633
+  FontColor #000000
+  LineColor #ff9633
+  LineThickness 0
 }
 database, storage, collections {
+  BackGroundColor #431f47
   FontColor #ffffff
   LineColor #431f47
   LineThickness 0
-  BackGroundColor #431f47
 }
 cloud {
+  BackGroundColor #98700c
   FontColor #000000
   LineColor #98700c
   LineThickness 0
-  BackGroundColor #98700c
 }
 queue {
+  BackGroundColor #e8002a
   FontColor #ffffff
   LineColor #e8002a
   LineThickness 0
-  BackGroundColor #e8002a
 }
 agent, participant {
+  BackGroundColor #007298
   FontColor #ffffff
   LineColor #007298
   LineThickness 0
-  BackGroundColor #007298
 }
 class {
+  BackGroundColor #45842a
   FontColor #000000
   LineColor #45842a
   LineThickness 0
-  BackGroundColor #45842a
 }
-diamond {
+object {
+  BackGroundColor #652f6c
   FontColor #ffffff
-  LineColor #6d1222
+  LineColor #652f6c
   LineThickness 0
-  BackGroundColor #6d1222
+}
+usecase {
+  BackGroundColor #e77204
+  FontColor #000000
+  LineColor #e77204
+  LineThickness 0
 }
 note {
+  BackGroundColor #9e1b32
   FontColor #ffffff
   LineColor #9e1b32
   LineThickness 0
-  BackGroundColor #9e1b32
 }
 activity {
+  BackGroundColor #f1c319
   FontColor #000000
   LineColor #f1c319
   LineThickness 0
-  BackGroundColor #f1c319
 }
 state {
+  BackGroundColor #00ace6
   FontColor #000000
   LineColor #00ace6
   LineThickness 0
-  BackGroundColor #00ace6
+}
+classDiagram, componentDiagram, objectDiagram {
+  group, composite {
+    BackGroundColor #e7e7e7
+    FontColor #000000
+    LineColor #e7e7e7
+    LineThickness 0
+    title { FontColor #000000 }
+  }
+}
+objectDiagram {
+  object {
+    BackGroundColor #652f6c
+    FontColor #ffffff
+    LineColor #652f6c
+    LineThickness 0
+  }
+}
+componentDiagram {
+  usecase {
+    BackGroundColor #e77204
+    FontColor #000000
+    LineColor #e77204
+    LineThickness 0
+  }
+}
+sequenceDiagram {
+  participant {
+    BackGroundColor #007298
+    FontColor #ffffff
+    LineColor #007298
+    LineThickness 0
+  }
+  actor, boundary, control, entity {
+    BackGroundColor #ffffff
+    FontColor #000000
+    LineColor #333e48
+    LineThickness 1.5
+  }
+  database {
+    FontColor #000000
+  }
+  queue {
+    BackGroundColor #e8002a
+    FontColor #ffffff
+    LineColor #e8002a
+    LineThickness 0
+  }
+  collections {
+    BackGroundColor #431f47
+    FontColor #ffffff
+    LineColor #431f47
+    LineThickness 0
+  }
+  lifeLine {
+    LineColor #696969
+    LineThickness 1
+  }
+  activationBox {
+    BackGroundColor #e7e7e7
+    FontColor #000000
+    LineColor #696969
+    LineThickness 1
+  }
+  group, groupHeader, reference, referenceHeader, box, separator {
+    BackGroundColor #e7e7e7
+    FontColor #000000
+    LineColor #696969
+    LineThickness 1
+  }
+}
+activityDiagram {
+  activity {
+    BackGroundColor #f1c319
+    FontColor #000000
+    LineColor #f1c319
+    LineThickness 0
+  }
+  diamond {
+    BackGroundColor #6d1222
+    FontColor #ffffff
+    LineColor #6d1222
+    LineThickness 0
+  }
+  composite, partition, swimlane {
+    BackGroundColor #e7e7e7
+    FontColor #000000
+    LineColor #696969
+    LineThickness 1
+  }
+  circle {
+    start {
+      BackGroundColor #333e48
+      FontColor #ffffff
+      LineColor #333e48
+      LineThickness 1
+    }
+    stop, end {
+      BackGroundColor #e8002a
+      FontColor #ffffff
+      LineColor #e8002a
+      LineThickness 1.5
+    }
+  }
+  activityBar {
+    BackGroundColor #333e48
+    FontColor #ffffff
+    LineColor #333e48
+    LineThickness 1.5
+  }
+  arrow {
+    FontColor #000000
+    LineColor #696969
+    LineThickness 1.5
+  }
+}
+stateDiagram {
+  state {
+    BackGroundColor #00ace6
+    FontColor #000000
+    LineColor #00ace6
+    LineThickness 0
+  }
+  group {
+    BackGroundColor #e7e7e7
+    FontColor #000000
+    LineColor #696969
+    LineThickness 1
+  }
+  circle {
+    start {
+      BackGroundColor #333e48
+      FontColor #ffffff
+      LineColor #333e48
+      LineThickness 1
+    }
+    stop, end {
+      BackGroundColor #e8002a
+      FontColor #ffffff
+      LineColor #e8002a
+      LineThickness 1.5
+    }
+  }
+}
+mindmapDiagram, wbsDiagram {
+  node {
+    BackGroundColor #9e1b32
+    FontColor #ffffff
+    LineColor #9e1b32
+    LineThickness 0
+  }
+  arrow {
+    FontColor #000000
+    LineColor #696969
+    LineThickness 1.5
+  }
+}
+jsonDiagram, yamlDiagram {
+  node {
+    BackGroundColor #007298
+    FontColor #ffffff
+    LineColor #007298
+    LineThickness 0
+    separator {
+      LineColor #ffffff
+      LineThickness 1
+    }
+    highlight {
+      BackGroundColor #00ace6
+      FontColor #000000
+      LineColor #00ace6
+      LineThickness 0
+    }
+  }
+  arrow {
+    FontColor #000000
+    LineColor #696969
+    LineThickness 1.5
+  }
+}
+packetdiagDiagram {
+  rectangle {
+    BackGroundColor #9e1b32
+    FontColor #ffffff
+    LineColor #ffffff
+    LineThickness 1
+  }
+}
+chenEerDiagram {
+  chenEntity {
+    BackGroundColor #9e1b32
+    FontColor #ffffff
+    LineColor #9e1b32
+    LineThickness 0
+    .weak {
+      LineColor #ffffff
+      LineThickness 1.5
+    }
+  }
+  chenAttribute {
+    BackGroundColor #007298
+    FontColor #ffffff
+    LineColor #007298
+    LineThickness 0
+    .multi, .derived {
+      LineColor #ffffff
+      LineThickness 1.5
+    }
+  }
+  chenRelationship {
+    BackGroundColor #e77204
+    FontColor #000000
+    LineColor #e77204
+    LineThickness 0
+    .identifying {
+      LineColor #000000
+      LineThickness 1.5
+    }
+  }
+}
+nwdiagDiagram {
+  server {
+    BackGroundColor #007298
+    FontColor #ffffff
+    LineColor #007298
+    LineThickness 0
+  }
+  network {
+    BackGroundColor #cfcfcf
+    FontColor #000000
+    LineColor #696969
+    LineThickness 1
+  }
+  group {
+    BackGroundColor #e7e7e7
+    FontColor #000000
+    LineColor #e7e7e7
+    LineThickness 0
+  }
+  arrow {
+    FontColor #000000
+    LineColor #696969
+    LineThickness 1.5
+  }
+}
+' Railroad strokes encode grammar: native token outline widths are hard-coded.
+ebnf {
+  BackGroundColor #e77204
+  FontColor #000000
+  LineColor #696969
+  LineThickness 1.5
+}
+ganttDiagram {
+  task {
+    BackGroundColor #f1c319
+    FontColor #000000
+    LineColor #f1c319
+    LineThickness 0
+    unstarted {
+      BackGroundColor #f1c319
+      FontColor #000000
+      LineColor #f1c319
+      LineThickness 0
+    }
+  }
+  undone {
+    BackGroundColor #e7e7e7
+    FontColor #000000
+    LineColor #e7e7e7
+    LineThickness 0
+  }
+  timeline {
+    BackGroundColor #ffffff
+    FontColor #000000
+    LineColor #696969
+    LineThickness 1
+  }
+  closed {
+    BackGroundColor #e7e7e7
+    FontColor #000000
+    LineColor #e7e7e7
+    LineThickness 0
+  }
+  milestone {
+    BackGroundColor #333e48
+    FontColor #000000
+    LineColor #333e48
+    LineThickness 1
+  }
+  separator {
+    BackGroundColor transparent
+    FontColor #000000
+    LineColor #696969
+    LineThickness 1
+  }
+}
+timingDiagram {
+  FontColor #000000
+  LineColor #696969
+  LineThickness 1
+  robust {
+    BackGroundColor #9e1b32
+    FontColor #000000
+    LineColor #9e1b32
+    LineThickness 2
+  }
+  concise {
+    BackGroundColor #00ace6
+    FontColor #000000
+    LineColor #00ace6
+    LineThickness 1.5
+  }
+  binary, clock {
+    FontColor #000000
+    LineColor #9e1b32
+    LineThickness 1.5
+  }
+  arrow, constraintArrow {
+    FontColor #000000
+    LineColor #696969
+    LineThickness 1.5
+  }
+  timeline {
+    FontColor #000000
+    LineColor #696969
+    LineThickness 1.5
+  }
 }
 chartDiagram {
   BackGroundColor #ffffff
   FontColor #000000
+  LineColor #ffffff
   axis {
-    LineColor #696969
     FontColor #000000
+    LineColor #696969
+    LineThickness 1
   }
   grid {
     LineColor #e7e7e7
+    LineThickness 1
   }
   bar {
-    LineColor #9e1b32
     BackGroundColor #9e1b32
+    FontColor #ffffff
+    LineColor #9e1b32
     LineThickness 0
   }
   line {
     LineColor #007298
+    LineThickness 1.5
   }
   scatter {
     MarkerColor #e77204
   }
 }
-activityDiagram {
-  arrow {
-    LineColor #696969
-    LineThickness 1.5
-  }
+filesDiagram, saltDiagram {
+  FontColor #000000
+  LineColor #696969
+  LineThickness 1
 }
 </style>
