@@ -1,6 +1,6 @@
 # Slidev HyperFrames integration validation — 2026-10-05
 
-Status: validating. This scoped update adds reusable HyperFrames support to `slidev-animejs` and `slidev-echarts`. The independent explainer CLI is unchanged.
+Status: done. This scoped update adds reusable HyperFrames support to `slidev-animejs` and `slidev-echarts`. The independent explainer CLI is unchanged.
 
 ## User-visible scope
 
@@ -26,13 +26,21 @@ Each release cohort has one contract and three fresh naturalistic repetitions pe
 
 - Epoch 1 retains six attempts: four strict passes, two genuine edit-tool failures, and an Anime contract native failure where transformed screen measurements became logical CSS height and the player intercepted Play. The final two repetitions were not launched after the native failure.
 - Epoch 2 retains eight attempts and 368 native cases. ECharts passes all four strict cases and its contract plus two joint naturalistic cases under the original grader. Anime has three genuine ambiguous edit-tool failures including the contract, so the cohort fails despite complete visually correct outputs. A third ECharts width result is a separately retained evaluator boundary defect.
-- Epoch 3 adds reusable preview ownership and a deterministic starter to reduce repeated mutable adapter work. The final exact-byte generator golden passes clean install, both builds, 46 native cases and manual review. The reusable starter diagnostic passes 26 cases, including both Mermaid palettes and explicit overrides; all 13 generator regression groups pass. [The sealed final cohort](cohort-epoch-3-summary.json) passes all eight strict, native, data and manual gates jointly. Each owner passes one contract and 3/3 naturalistic repetitions; the eight decks pass 368 native cases and 24 clean install/build/build:html commands, with zero errors, remote requests or source changes. All 160 frozen source entries match. Publication remains pending.
+- Epoch 3 adds reusable preview ownership and a deterministic starter to reduce repeated mutable adapter work. The final exact-byte generator golden passes clean install, both builds, 46 native cases and manual review. The reusable starter diagnostic passes 26 cases, including both Mermaid palettes and explicit overrides; all 13 generator regression groups pass. [The sealed final cohort](cohort-epoch-3-summary.json) passes all eight strict, native, data and manual gates jointly. Each owner passes one contract and 3/3 naturalistic repetitions; the eight decks pass 368 native cases and 24 clean install/build/build:html commands, with zero errors, remote requests or source changes. All 160 frozen source entries match. Source publication and the complete remote HyperFrames suite pass.
 
 Evaluator corrections are independently qualified against collection, CSS-grid and direct-engine positives and a fixed 800-pixel negative that must reject the actual 680-pixel boundary. Earlier evaluators/matrices remain retained. An auto-height nested article whose glyphs remain inside the real card is distinguished from descendants that actually clip. A disposable dependency-tree retention mistake exhausted disk; all author traces are audited and contain no ENOSPC errors. Only verified completed project dependency trees were removed after retaining source, locks, reports and builds. No correction waives a strict or native failure.
 
 ## Fixtures and publication
 
-Stable routes remain ECharts 42/43/44 and Anime.js 36/37/38 for live, cells and export. The original local frozen fixture passes 41 states and both catalog cards; existing layouts pass 188 states and 120 ordered traversals. Root manually reviews the retained screenshots. The final Preview fixture passes 45 states (42 HTTP plus three local-file cases), two catalog cards and six route captures. All eight retained final captures match the preliminary accepted PNG bytes exactly. Final remote checks remain pending.
+Stable routes remain ECharts 42/43/44 and Anime.js 36/37/38 for live, cells and export. The original local frozen fixture passes 41 states and both catalog cards; existing layouts pass 188 states and 120 ordered traversals. Root manually reviews the retained screenshots. The final Preview fixture passes 45 states (42 HTTP plus three local-file cases), two catalog cards and six route captures. All eight retained final captures match the preliminary accepted PNG bytes exactly. The final remote suite passes, as detailed below.
+
+Pages publication succeeded for source commit `21242fb1c88fd931f4aff164ad813baf8fa2b2a7` in [run 37362428891](https://github.com/gvillarroel/skills/actions/runs/37362428891). The unchanged project verifier `951318fd9706ac1c504ea6369f1103c534700c122e5ecbf25fd70ed00b254342` passed all **42 remote HTTP states**, both canonical index cards and the six stable routes on 2026-10-05 at 19:22 UTC. It verified actual official-player readiness, loaded local fonts, cue times 0/3/6/9 and native backward seeks, actual valve/tank/parcel geometry, real Play/Pause, inactive pause and paused return, opaque black/white text, exact palette paint/contrast, complete column/masonry pages, static 0/9 snapshots and logical sizing at 1280/980 viewports. No unexpected console errors or external scene requests occurred; 10 expected headless Wake Lock denials were retained. The three direct-file cases are a separate accepted local proof and are not counted as remote states.
+
+The public index, six logical routes and 14 local scene/vendor/font/palette assets returned HTTP 200. All 14 assets matched canonical bytes, including colorsets `b557cb50…`, Open Sans `d8e4fe04…`, HyperFrames core `767f9ae1…` and GSAP `c174bfce…`. Response headers, ETags, last-modified values and cache evidence are retained; observed cache-control was `max-age=600` with ages 0–7 seconds. All six public PNGs are byte identical to the accepted final local captures, so the existing exact-pixel manual reviews carry forward with no visual differences.
+
+Public routes remain [ECharts live](https://gvillarroel.github.io/skills/examples/slidev-echarts/#/42), [cells](https://gvillarroel.github.io/skills/examples/slidev-echarts/#/43) and [export](https://gvillarroel.github.io/skills/examples/slidev-echarts/#/44), plus [Anime.js live](https://gvillarroel.github.io/skills/examples/slidev-animejs/#/36), [cells](https://gvillarroel.github.io/skills/examples/slidev-animejs/#/37) and [export](https://gvillarroel.github.io/skills/examples/slidev-animejs/#/38). Both owning sets are discoverable from the [main examples index](https://gvillarroel.github.io/skills/). Bulky proof, exact native states, HTTP/resource hashes and six captures are retained under `projects/slidev-hyperframes/artifacts/published-remote/`; the sealed public summary is `publication-proof.json`.
+
+`node --experimental-strip-types projects/slidev-hyperframes/scripts/verify-hyperframes-examples.ts --base-url https://gvillarroel.github.io/skills/ --output projects/slidev-hyperframes/artifacts/published-remote`
 
 ## Reproduction and evidence
 
@@ -48,7 +56,7 @@ uv run --script scripts/check-repo-payload.py
 
 Project verifiers declare confined dependencies and output locations in their headers. Frozen manifests record the strict Pi commands and exact artifact gates; recheck events with `summarize-pi-json-events.py --require-model gpt-5.6-sol --fail-on-invalid-json --fail-on-tool-error`.
 
-Durable summaries, prompts, rejections and read-surface audits are retained beside this record. Bulky events are ignored under `evaluations/runs/`; native matrices, screenshots, locks, builds, evaluator snapshots and source seals are ignored under `projects/slidev-hyperframes/artifacts/`. Repository gates and local sync/check pass. Successful Pages publication and remote native verification are required before marking either owner done.
+Durable summaries, prompts, rejections and read-surface audits are retained beside this record. Bulky events are ignored under `evaluations/runs/`; native matrices, screenshots, locks, builds, evaluator snapshots and source seals are ignored under `projects/slidev-hyperframes/artifacts/`. Repository gates and local sync/check pass. Successful Pages publication and remote native verification also pass. Both owning backlog rows are done.
 
 ## Final source seal
 
@@ -65,3 +73,9 @@ uv run --script scripts\run-pi-skill-eval.py slidev-animejs --prompt-file evalua
 Repeat with the owning naturalistic prompt for three fresh run IDs; the recorded cohort plan and summaries retain every attempted case. Use a new run ID rather than overwriting retained runs.
 
 The final Preview public-ref diagnostic also confirms controls=false playback advances the real clock, Pause retains its time, and seek(9) produces the actual 70% state with zero errors. Root independently verifies all 66 staged integration resource entries against the exact final source manifest, so checkout/deployment will use the tested bytes.
+
+## Public diagram continuity regression
+
+After actual live scene/font readiness, same-document navigation ECharts 42 to Mermaid 37 and Anime.js 36 to Mermaid 31 preserves default colorset1 red bodies, white node text, black edge captions and loaded Open Sans. Each diagram passes all five labels and 68 individual nonspace glyph bounds with no clipping. Persistent host font registration remains connected. There are no unexpected console/page/network errors; two known headless Wake Lock denials remain separately recorded. The existing native Mermaid rounding tolerance is 1.5 px. Both captures are manually reviewed; root separately reviewed the exact public HyperFrames cell capture and six-capture parity. Compact proof and its confined replay script remain under `projects/slidev-hyperframes/artifacts/public-diagram-regression/`.
+
+The documentation closeout changes only this record and SKILLS.md. Runtime resources, examples, prompts and evaluation outcomes remain identical to the validated and publicly verified source commit. All unrelated user gallery/project edits remain unstaged.
