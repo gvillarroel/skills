@@ -129,6 +129,10 @@ its qualified Colorset2 baseline is retained. Historical evaluations remain
 unchanged. Source publication uses explicit owned paths, the Pages build,
 exact-commit deployment workflow, and committed-builder byte verification.
 
+The [publication record](publication.md) binds the successful source deployment
+to its exact commit, workflow artifact and served resources. The documentation
+follow-up preserves the same accepted skill payloads.
+
 Required repository gates passed: `validate-pattern-ids.py`,
 `validate-skills.py`, `test-skill-independence.py`, `check-repo-payload.py`,
 `validate-colorsets.py` (34 skills, 30 copies, 672 artifacts, no findings),

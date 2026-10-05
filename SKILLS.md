@@ -52,6 +52,8 @@ Use this file as the canonical list of skills to create, improve, or validate in
 
 ## Recent Validation Notes
 
+- Colorset1 grayscale publication, 2026-10-05: the source deployment succeeds at the exact release commit; 679 public resources, including 31 exact-commit canonical palette definitions, pass byte/provenance checks with no findings. All 30 committed runtime inventories match their accepted isolated payloads under the recorded newline profile. [Publication evidence and command](evaluations/grayscale-interleave/publication.md).
+
 - Colorset1 grayscale interleave, 2026-10-05: primary red, twelve dark/middle neutral alternations, white, then remaining colors. Thirty isolated runtime owners pass scoped current-source contracts and whole natural cohorts; native allocators preserve both palette boundaries and ordered scalar mappings. Complete attempted evidence, model exception, source binding, readable fixture decisions and publication checks are in [the validation record](evaluations/grayscale-interleave/validation.md).
 
 
