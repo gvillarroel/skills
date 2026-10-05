@@ -1,5 +1,5 @@
 #!/usr/bin/env -S npx tsx
-// Run: npx tsx ./skills/slidev-quality-audit/scripts/audit-slidev-quality.ts --deck ./examples/slidev-echarts --out ./projects/slidev-quality-audits/artifacts/reports/slidev-echarts
+// Run: npx --prefix /path/to/deck tsx <skill-root>/scripts/audit-slidev-quality.ts --deck /path/to/deck --out /path/to/reports
 // Dependencies: tsx, playwright in the target Slidev project, @slidev/cli in the target Slidev project.
 
 import { spawn, spawnSync, type ChildProcess } from 'node:child_process'
@@ -436,7 +436,7 @@ function normalizeOptions(parsed: Record<string, string | boolean>): Options {
   const name = sanitizeName(String(parsed.name ?? (basename(deckDir) || 'slidev-deck')))
   const outDir = resolve(invocationCwd, String(parsed.out ?? resolve('projects', 'slidev-quality-audits', 'artifacts', 'reports', name)))
   const waitUntil = String(parsed.waitUntil ?? 'networkidle') as WaitUntil
-  const screenshots = String(parsed.screenshots ?? 'issues') as Options['screenshots']
+  const screenshots = String(parsed.screenshots ?? 'all') as Options['screenshots']
 
   if (!existsSync(deckDir))
     throw new Error(`Deck directory does not exist: ${deckDir}`)
@@ -507,7 +507,7 @@ Common options:
   --slides <file>                       Slidev markdown entry file
   --range <spec>                        Slides to audit, for example 1,4-6
   --max-clicks <n>                      Cap detected click states per slide
-  --screenshots <issues|all|none>       Screenshot capture mode, default issues
+  --screenshots <issues|all|none>       Screenshot capture mode, default all
   --strict                              Exit nonzero on error-level findings
   --colorset <colorset1|colorset2>       Exact authored paint palette, default colorset1
   --min-font-size <px>                  Minimum visible text size, default 12
@@ -1115,7 +1115,7 @@ async function inspectState(page: any, options: Options): Promise<StateInspectio
 
     function hasMeaningfulText(node: Element) {
       const tag = node.tagName.toLowerCase()
-      if (['script', 'style', 'title', 'meta', 'link'].includes(tag))
+      if (['script', 'style', 'title', 'desc', 'metadata', 'meta', 'link'].includes(tag))
         return false
       return normalizeText((node as HTMLElement).innerText || node.textContent || '').length >= 2
     }

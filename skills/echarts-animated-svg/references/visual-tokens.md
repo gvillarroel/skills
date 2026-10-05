@@ -82,6 +82,7 @@ Use these exact tokens for this skill’s authored visuals. Read [the colorset o
 
 - Prefer CSS custom properties named from these tokens in galleries and standalone HTML artifacts.
 - For SVG output, set text `font-family` explicitly because extracted SVGs may not inherit page CSS.
+- For native ECharts graphic text, prefer structured `fontFamily`, `fontSize` and `fontWeight` over a quoted `font` shorthand. Keep emitted SVG XML valid; raw quotation marks inside a serialized style attribute can break the animator's XML parser.
 - Use the primary palette for categorical charts before using derived colors.
 - Use highlight colors for subtle fills, selection states, and replay-running states.
 - Use interaction colors for hover, active, and pressed states.

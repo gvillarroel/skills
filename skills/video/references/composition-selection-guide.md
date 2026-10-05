@@ -10,10 +10,42 @@
 - [Multi-Scene Armature Sets](#multi-scene-armature-sets)
 - [Armature Strength Test](#armature-strength-test)
 - [Validation Questions](#validation-questions)
+- [Diagram Compaction](#diagram-compaction)
 
 For a diagram-like scene, dense source list, or authorized simplification, read [content-budget-and-fidelity.md](content-budget-and-fidelity.md) before choosing geometry. Freeze the viewer question, content budget, and source ledger first; this guide then chooses the armature that presents that retained content.
 
 Use this guide to choose composition approaches per scene. The goal is not to pick a pretty layout; it is to match the scene's job, source material, viewer task, timing, and constraints to a frame structure that can be validated.
+
+## Diagram Compaction
+
+Apply this pass to connected concepts and mechanisms, including diagram assets
+placed together in a scene. Preserve the source ledger, reading order, output
+dimensions and delivery-size text/stroke/head minima. The target is the smallest
+readable occupied footprint and shortest unambiguous connections, not the
+smallest file or a fixed percentage of filled frame area.
+
+1. Measure each asset's visible bounds, labels, ports and full motion envelope.
+   Remove surplus wrappers or transparent margins where authorized; retain the
+   producer source and map ports through any crop or placement transform.
+2. Bring related assets closer, choose another arrangement when useful, and
+   shorten cross-asset routes through clear gutters. Distinct edges need distinct
+   lanes; share a trunk only when it represents a real common relationship.
+   Preserve complete arrowheads outside endpoint silhouettes and keep each
+   route attributable to its source and target. A crossing is not a junction.
+3. Compare the initial layout with a tighter placement or routing candidate at
+   the same delivery scale. Reject any label overlap/clipping, obscured head,
+   ambiguous endpoint, merged unrelated routes, contrast regression or loss of
+   movement space. Restore only the local gap that failed.
+4. Keep the best passing candidate. Stop when the remaining gaps protect
+   reading, routing, motion or safe areas, or the next local reduction fails.
+   Record the accepted change and protected clearance in production notes;
+   do not pursue a global optimum indefinitely.
+
+Inspect held states, the closest motion approaches, transition midpoints and
+the exported movie. Request internal re-layout from the producer when needed;
+do not flatten or redraw its geometry to fit. Keep quantitative chart scales,
+axes, marks and legends intact; their improvement target is useful information
+density. Never remove facts or shrink type to count compaction as a success.
 
 ## Selection Order
 

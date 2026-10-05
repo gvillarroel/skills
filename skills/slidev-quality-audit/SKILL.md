@@ -9,22 +9,24 @@ Read [the colorset output contract](references/colorset-contract.md) before auth
 
 ## Core Workflow
 
-1. Locate the Slidev deck root, usually the directory containing `package.json` and `slides.md`.
-2. Install missing deck-local dependencies before auditing:
+1. Locate the Slidev deck root, usually the directory containing `package.json` and `slides.md`. For a NEW scratch deck, run the preparation helper from the task workspace before writing the supplied slide:
 
    ```powershell
-   npm install --save-dev playwright
+   uv run --script <skill-root>/scripts/prepare-audit-deck.py --deck ./deck
    ```
 
-3. Run the bundled quality audit. Keep generated artifacts outside skill directories:
+   It creates [the tested dependency package](assets/templates/package.json) only when absent, validates the actual package, and installs with the resolved deck prefix. It preserves an existing package and uses `npm ci` when a lock exists. Keep supplied decks on their existing setup workflow and dependencies unless a reproduced runtime failure requires repair.
+2. Create or verify the deck's actual `package.json` before installing anything. Always pass its directory explicitly. For an existing unlocked deck, install declared dependencies with `npm install --prefix /path/to/deck`; retain its lock with `npm ci --prefix /path/to/deck` when present. Add a missing Playwright dependency only when needed with `npm install --prefix /path/to/deck --save-dev playwright`. After writing a new scratch slide, warm its build with `npm --prefix /path/to/deck run build` before the first native audit.
+
+3. Run a diagnostic audit without `--strict`, capturing every native browser state. Preserve its output in a separate before directory; expected presentation findings are report data during diagnosis. Keep generated artifacts outside skill directories:
 
    ```powershell
-   npx tsx <skill-root>/scripts/audit-slidev-quality.ts --deck /path/to/deck --out /path/to/projects/<project-id>/artifacts/reports/deck-quality
+   npx --prefix /path/to/deck tsx <skill-root>/scripts/audit-slidev-quality.ts --deck /path/to/deck --out /path/to/projects/<project-id>/artifacts/reports/deck-quality-before --screenshots all
    ```
 
-4. Read `quality-report.md` first, then inspect `quality-report.json` for exact selectors, bounding boxes, and thresholds.
-5. Fix findings that are real presentation problems. Mark intentional exceptions in the deck with attributes or classes instead of weakening global thresholds.
-6. Re-run the audit after every fix and compare the finding counts, screenshots, and affected slide states.
+4. Read `quality-report.md` first, then inspect `quality-report.json` for exact selectors, bounding boxes, thresholds and each `states[].screenshot` path. Open those recorded paths directly. The auditor launches real Chromium; its retained native screenshots are the browser verification surface for manual review. Capture clean states too, because an automated pass does not prove visual quality; DOM bounds can miss painted SVG text failures. Native image inspection and source geometry suffice for this review; do not add an ad hoc pixel probe or assume image-analysis dependencies are installed. Keep captures inside the task workspace; avoid Windows `/tmp` paths.
+5. Fix findings that are real presentation problems. Mark intentional exceptions in the deck with attributes or classes instead of weakening global thresholds. For a connected explanatory diagram, perform [the actual readable compactness trial](references/audit-rules.md#readable-compactness-trial) before accepting the result: create and natively render at least one tighter geometry candidate with the same full labels and readable type/head/stroke dimensions. A hypothetical spacing change is not a trial.
+6. Re-run the audit after fixes into a separate after directory with `--screenshots all`. Once findings are resolved, run the final gate with `--strict --screenshots all` at the requested report path. Preserve before and after screenshots, compare them at the same viewport, and retain the files referenced by delivered reports.
 
 ## Script
 
@@ -33,18 +35,32 @@ Use `scripts/audit-slidev-quality.ts` for the automated pass. It starts a local 
 Common options:
 
 ```powershell
-npx tsx <skill-root>/scripts/audit-slidev-quality.ts `
+npx --prefix /path/to/deck tsx <skill-root>/scripts/audit-slidev-quality.ts `
   --deck /path/to/deck `
   --out /path/to/projects/<project-id>/artifacts/reports/deck-quality `
   --range 1,4-8 `
-  --max-clicks 3
+  --max-clicks 3 --screenshots all
 ```
 
-Use `--strict` when the audit should exit nonzero on error-level findings. Use `--allow-overflow-selector`, `--allow-hidden-selector`, and `--ignore-selector` for explicitly intentional exceptions.
+Reserve `--strict` for a final audit that must exit nonzero on error-level findings; use normal reporting while diagnosing a supplied imperfect deck. `--screenshots all` is the default; `issues` and `none` are explicit alternatives for tasks that do not require complete visual evidence. Use `--allow-overflow-selector`, `--allow-hidden-selector`, and `--ignore-selector` for explicitly intentional exceptions.
 
 ## Quality Rules
 
 Read [the marked SVG arrow audit](references/arrow-audit.md) for authored diagram connections. Use stable arrow attributes and inspect both shaft and referenced head at 3:1 against their actual local backing, including opacity and filled paths.
+
+For connected explanatory diagrams, also review whether surplus padding,
+rank gaps, empty wrappers or connector detours can be removed while retaining
+the same facts and readable text/head/stroke sizes. Create and natively render at least one tighter local
+candidate at the same slide scale and type/head/stroke dimensions; reject overlap, clipped labels, obscured
+heads, ambiguous source/target attachment, merged unrelated routes or lost
+motion clearance. Support every rejection with an observed defect in its native
+capture or geometry; vague breathing room, occupancy or unchanged comprehension
+is insufficient. Keep distinct lanes and inspect settled click states,
+closest motion approaches and final exports. Stop when remaining space
+protects reading or routing. Record this as a manual compactness review;
+the automated audit does not prove shortest routes or optimal packing.
+Preserve chart scales, axes, legends and useful data dimensions. Low whitespace
+alone is neither a pass criterion nor a reason to report a defect.
 
 The script currently checks these issue families:
 

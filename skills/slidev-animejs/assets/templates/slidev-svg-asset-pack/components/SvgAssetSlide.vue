@@ -60,6 +60,9 @@ function cleanup() {
     scope.revert()
     scope = null
   }
+  if (root.value) {
+    queryAll('.machine-cable-base').forEach((path) => path.remove())
+  }
 }
 
 function query(selector) {
@@ -195,6 +198,19 @@ function runStaggerDashboard() {
 }
 
 function runTimelineMachine() {
+  // Keep the complete connection visible while draw-on provides emphasis.
+  // These copies preserve the source path geometry and are removed on rerun.
+  queryAll('.machine-cable').forEach((path) => {
+    const base = path.cloneNode(false)
+    base.setAttribute('class', 'machine-cable-base')
+    base.removeAttribute('id')
+    base.removeAttribute('style')
+    base.setAttribute('stroke-dasharray', 'none')
+    base.setAttribute('stroke-dashoffset', '0')
+    base.setAttribute('opacity', '0.8')
+    base.setAttribute('aria-hidden', 'true')
+    path.parentNode.insertBefore(base, path)
+  })
   animate(drawables('.machine-cable'), {
     draw: ['0 0', '0 1'],
     delay: stagger(160),
@@ -365,5 +381,13 @@ watch(() => [props.asset, activeStep.value], start, { flush: 'post' })
 
 .svg-asset-stage :deep(.anime-svg-asset text) {
   paint-order: stroke;
+}
+
+/* Center each SVG mark on its own painted box; an animation option alone
+   does not set the SVG CSS pivot and can send scale/rotation outside the stage. */
+.svg-asset-stage :deep(.machine-gear),
+.svg-asset-stage :deep(.machine-signal) {
+  transform-box: fill-box;
+  transform-origin: center;
 }
 </style>

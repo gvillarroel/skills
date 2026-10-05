@@ -207,6 +207,17 @@ values.transition().duration(420).delay((d,i)=>i*55).ease(d3.easeCubicOut).attr(
 """.replace("__SPEC__", json_script(spec))
 
 
+def diagram_fit_script() -> str:
+    return """
+const bounds=content.node().getBBox(),padding=18;
+const width=spec.autoWidth?Math.ceil(bounds.width+padding*2):spec.width;
+const height=spec.autoHeight?Math.ceil(bounds.height+padding*2):spec.height;
+if(width<bounds.width+padding*2||height<bounds.height+padding*2)throw new Error("Fixed diagram canvas cannot contain readable nodes, routes and arrows; enlarge the constrained dimension");
+content.attr("transform",`translate(${(width-bounds.width)/2-bounds.x},${(height-bounds.height)/2-bounds.y})`);
+svg.attr("viewBox",`0 0 ${width} ${height}`).attr("data-compact-width",width).attr("data-compact-height",height).style("width",`${width}px`).style("min-width",`${width}px`);
+"""
+
+
 def network_script(args: argparse.Namespace, palette: dict[str, str]) -> str:
     if not args.node or not args.link:
         raise ValueError("Network artifacts require --node and --link values")
@@ -226,25 +237,38 @@ def network_script(args: argparse.Namespace, palette: dict[str, str]) -> str:
         "svgId": args.svg_id, "nodes": nodes, "links": links,
         "nodeClass": args.node_class, "linkClass": args.link_class,
         "width": args.width, "height": args.height, "palette": palette,
+        "autoWidth": getattr(args, "auto_width", False), "autoHeight": getattr(args, "auto_height", False),
+        "textOnFill": json.loads((Path(__file__).resolve().parents[1] / "assets/palettes/colorsets.json").read_text(encoding="utf-8"))["colorsets"][args.colorset]["textOnFill"],
     }
     return """
 (()=>{const spec=__SPEC__,svg=d3.select(`#${CSS.escape(spec.svgId)}`),defs=svg.append("defs");
 defs.append("marker").attr("id",`${spec.svgId}-arrow`).attr("viewBox","0 0 10 10").attr("refX",9).attr("refY",5)
-.attr("markerWidth",7).attr("markerHeight",7).attr("orient","auto").append("path").attr("d","M0,0 L10,5 L0,10 Z").attr("fill",spec.palette.ink);
-const r=Math.min(spec.width,spec.height)*.34,cx=spec.width/2,cy=spec.height/2+12;
-spec.nodes.forEach((n,i)=>{const a=-Math.PI/2+i/spec.nodes.length*Math.PI*2;n.x=cx+Math.cos(a)*r;n.y=cy+Math.sin(a)*r});
-const byId=new Map(spec.nodes.map(n=>[n.id,n]));
-const lines=svg.append("g").selectAll("line").data(spec.links).join("line").attr("class",spec.linkClass)
-.attr("x1",d=>byId.get(d.source).x).attr("y1",d=>byId.get(d.source).y).attr("x2",d=>byId.get(d.target).x).attr("y2",d=>byId.get(d.target).y)
-.attr("stroke",spec.palette.ink).attr("stroke-width",2).attr("marker-end",`url(#${spec.svgId}-arrow)`).attr("opacity",0);
-const groups=svg.append("g").selectAll("g").data(spec.nodes).join("g").attr("class",spec.nodeClass).attr("tabindex",0)
-.attr("transform",d=>`translate(${d.x},${d.y})`).attr("opacity",0);
-groups.append("circle").attr("r",34).attr("fill",d=>d.color).attr("stroke",spec.palette.surface).attr("stroke-width",3);
-groups.append("text").attr("text-anchor","middle").attr("dy",5).attr("fill",spec.palette.surface).attr("font-weight",700).text(d=>d.id);
+.attr("markerUnits","userSpaceOnUse").attr("markerWidth",10).attr("markerHeight",10).attr("orient","auto").append("path").attr("d","M0,0 L10,5 L0,10 Z").attr("fill",spec.palette.ink);
+const content=svg.append("g").attr("class","diagram-content");
+const groups=content.append("g").selectAll("g").data(spec.nodes).join("g").attr("class",spec.nodeClass).attr("tabindex",0).attr("opacity",0);
+groups.append("text").attr("text-anchor","middle").attr("dy",".35em").attr("font-size",16).style("fill",d=>spec.textOnFill[d.color]).attr("font-weight",700).text(d=>d.id)
+.each(function(d){const box=this.getBBox();d.r=Math.max(24,Math.hypot(box.width/2+10,box.height/2+6))});
+const n=spec.nodes.length,r=n===1?0:(d3.max(spec.nodes,d=>d.r)+16)/Math.sin(Math.PI/n);
+spec.nodes.forEach((node,i)=>{const a=-Math.PI/2+i/n*Math.PI*2;node.x=Math.cos(a)*r;node.y=Math.sin(a)*r});
+groups.attr("transform",d=>`translate(${d.x},${d.y})`);
+groups.insert("circle","text").attr("r",d=>d.r).attr("fill",d=>d.color);
+const byId=new Map(spec.nodes.map(node=>[node.id,node])),seen=new Map();
+spec.links.forEach(d=>{const key=JSON.stringify([d.source,d.target]),repeat=seen.get(key)||0;seen.set(key,repeat+1);d.repeat=repeat;
+const a=byId.get(d.source),b=byId.get(d.target);if(a===b){const rr=a.r+24+repeat*20,uy=Math.sqrt(1-.65*.65),norm=Math.hypot(a.x,a.y)||1,ox=n===1?0:a.x/norm,oy=n===1?-1:a.y/norm,tx=-oy,ty=ox;
+d.path=`M${a.x+(a.r+4)*(ox*uy-tx*.65)},${a.y+(a.r+4)*(oy*uy-ty*.65)}C${a.x+ox*rr*2.2-tx*rr*1.7},${a.y+oy*rr*2.2-ty*rr*1.7} ${a.x+ox*rr*2.2+tx*rr*1.7},${a.y+oy*rr*2.2+ty*rr*1.7} ${a.x+(a.r+7)*(ox*uy+tx*.65)},${a.y+(a.r+7)*(oy*uy+ty*.65)}`;return}
+const dx=b.x-a.x,dy=b.y-a.y,len=Math.hypot(dx,dy),reciprocal=spec.links.some(e=>e.source===d.target&&e.target===d.source),bend=(reciprocal?30:0)+repeat*22;
+const mx=(a.x+b.x)/2-dy/len*bend,my=(a.y+b.y)/2+dx/len*bend;
+const la=Math.hypot(mx-a.x,my-a.y),lb=Math.hypot(b.x-mx,b.y-my);
+const x1=a.x+(mx-a.x)/la*(a.r+4),y1=a.y+(my-a.y)/la*(a.r+4),x2=b.x-(b.x-mx)/lb*(b.r+7),y2=b.y-(b.y-my)/lb*(b.r+7);
+d.path=`M${x1},${y1}Q${mx},${my} ${x2},${y2}`});
+const lines=content.insert("g",":first-child").selectAll("path").data(spec.links).join("path").attr("class",spec.linkClass).attr("data-source",d=>d.source).attr("data-target",d=>d.target)
+.attr("d",d=>d.path).attr("fill","none").attr("stroke",spec.palette.ink).attr("stroke-width",2).attr("marker-end",`url(#${spec.svgId}-arrow)`).attr("opacity",0);
+lines.each(function(d){const length=this.getTotalLength();for(let along=0;along<=length;along+=Math.min(4,length)){const point=this.getPointAtLength(along);for(const node of spec.nodes){if(node.id!==d.source&&node.id!==d.target&&Math.hypot(point.x-node.x,point.y-node.y)<node.r+3)throw new Error("Network route crosses an unrelated node; choose a different layout or split the graph")}}});
 groups.on("focus",function(){d3.select(this).classed("is-focus",true)}).on("blur",function(){d3.select(this).classed("is-focus",false)});
+__FIT__
 lines.transition().duration(360).delay((d,i)=>i*45).attr("opacity",1);
 groups.transition().duration(360).delay((d,i)=>120+i*55).attr("opacity",1);})();
-""".replace("__SPEC__", json_script(spec))
+""".replace("__SPEC__", json_script(spec)).replace("__FIT__", diagram_fit_script())
 
 
 def flow_script(args: argparse.Namespace, palette: dict[str, str]) -> str:
@@ -277,30 +301,46 @@ def flow_script(args: argparse.Namespace, palette: dict[str, str]) -> str:
         "width": args.width, "height": args.height, "palette": palette,
         "paddingX": getattr(args, "node_padding_x", 10), "paddingY": getattr(args, "node_padding_y", 6),
         "title": args.title,
+        "autoWidth": getattr(args, "auto_width", False), "autoHeight": getattr(args, "auto_height", False),
     }
     return """
 (()=>{const spec=__SPEC__,svg=d3.select(`#${CSS.escape(spec.svgId)}`),defs=svg.append("defs"),m={left:92,right:92};
 defs.append("marker").attr("id",`${spec.svgId}-arrow`).attr("viewBox","0 0 10 10").attr("refX",9).attr("refY",5)
 .attr("markerUnits","userSpaceOnUse").attr("markerWidth",10).attr("markerHeight",10).attr("orient","auto").append("path").attr("d","M0,0 L10,5 L0,10 Z").attr("fill",spec.palette.ink);
-const x=d3.scalePoint().domain(spec.nodes.map(d=>d.id)).range([m.left,spec.width-m.right]).padding(.25),cy=spec.height*.52;
-spec.nodes.forEach(node=>{node.x=x(node.id);node.y=cy});const byId=new Map(spec.nodes.map(node=>[node.id,node]));
-const groups=svg.append("g").selectAll("g.flow-node").data(spec.nodes).join("g").attr("class","flow-node").attr("data-outline-tier",d=>d.tier).attr("transform",d=>`translate(${d.x},${d.y})`);
+const content=svg.append("g").attr("class","diagram-content"),cy=0;
+const groups=content.append("g").selectAll("g.flow-node").data(spec.nodes).join("g").attr("class","flow-node").attr("data-outline-tier",d=>d.tier);
 groups.append("text").attr("class","flow-node-label").style("fill",d=>spec.textOnFill[d.color]).attr("text-anchor","middle").attr("dy",".35em").attr("font-weight",700).text(d=>d.id)
-.each(function(d){const box=this.getBBox();d.w=Math.max(80,box.width+2*spec.paddingX);d.h=Math.max(32,box.height+2*spec.paddingY)});
-svg.append("text").attr("class","contract-title").attr("x",m.left).attr("y",42).text(spec.title);
-const links=svg.append("g").selectAll("path").data(spec.links).join("path").attr("class",spec.linkClass)
-.attr("d",d=>{const a=byId.get(d.source),b=byId.get(d.target),bend=(a.x+b.x)/2;return `M${a.x+a.w/2+2},${a.y}C${bend},${a.y} ${bend},${b.y} ${b.x-b.w/2-4},${b.y}`})
+.each(function(d){const box=this.getBBox();d.w=Math.max(32,box.width+2*spec.paddingX);d.h=Math.max(32,box.height+2*spec.paddingY)});
+const valueLabels=content.append("g").selectAll("text.link-value").data(spec.links).join("text").attr("class","link-value").attr("text-anchor","middle").attr("font-weight",700).text(d=>d.display)
+.each(function(d){d.labelWidth=this.getBBox().width});
+spec.nodes.forEach((node,i)=>{node.index=i});const byId=new Map(spec.nodes.map(node=>[node.id,node])),seen=new Map(),portCounts=new Map(),portUses=new Map();
+const portKey=(node,side)=>JSON.stringify([node.id,side]);
+spec.links.forEach(d=>{const a=byId.get(d.source),b=byId.get(d.target),key=JSON.stringify([d.source,d.target]),repeat=seen.get(key)||0;seen.set(key,repeat+1);d.direct=b.index===a.index+1&&!repeat;d.side=b.index>=a.index?-1:1;
+if(!d.direct)for(const node of [a,b]){const key=portKey(node,d.side);portCounts.set(key,(portCounts.get(key)||0)+1)}});
+spec.nodes.forEach(node=>{const count=Math.max(portCounts.get(portKey(node,-1))||0,portCounts.get(portKey(node,1))||0);node.w=Math.max(node.w,(count+1)*14+16)});
+const gap=Math.max(36,d3.max(spec.links,d=>d.labelWidth)+12),maxH=d3.max(spec.nodes,d=>d.h);let cursor=0;
+spec.nodes.forEach(node=>{node.x=cursor+node.w/2;node.y=cy;cursor+=node.w+gap});groups.attr("transform",d=>`translate(${d.x},${d.y})`);
+const port=(node,side)=>{const key=portKey(node,side),use=portUses.get(key)||0,count=portCounts.get(key);portUses.set(key,use+1);return node.x-node.w/2+8+(node.w-16)*(use+1)/(count+1)};
+let upper=0,lower=0;
+spec.links.forEach(d=>{const a=byId.get(d.source),b=byId.get(d.target);
+if(d.direct){d.path=`M${a.x+a.w/2+3},${cy}H${b.x-b.w/2-5}`;d.labelX=(a.x+a.w/2+b.x-b.w/2)/2;d.labelY=cy-maxH/2-10;return}
+const side=d.side,lane=side<0?upper++:lower++,laneY=side*(maxH/2+34+lane*32);
+const startX=port(a,side),endX=port(b,side),startY=cy+side*(a.h/2+3),endY=cy+side*(b.h/2+5);
+d.path=`M${startX},${startY}V${laneY}H${endX}V${endY}`;d.labelX=(startX+endX)/2;d.labelY=laneY-8});
+content.append("text").attr("class","contract-title").attr("x",0).attr("y",-maxH/2-44-upper*32).text(spec.title);
+const links=content.insert("g",":first-child").selectAll("path").data(spec.links).join("path").attr("class",spec.linkClass).attr("data-source",d=>d.source).attr("data-target",d=>d.target)
+.attr("d",d=>d.path)
 .attr("fill","none").attr("stroke",spec.palette.ink).attr("stroke-width",d=>Math.max(3,Math.min(9,3+d.value*.35)))
 .attr("marker-end",`url(#${spec.svgId}-arrow)`).attr("opacity",.2);
-svg.append("g").selectAll("text.link-value").data(spec.links).join("text").attr("class","link-value")
-.attr("x",d=>(byId.get(d.source).x+byId.get(d.target).x)/2).attr("y",cy-24).attr("text-anchor","middle").attr("font-weight",700).text(d=>d.display);
+valueLabels.attr("x",d=>d.labelX).attr("y",d=>d.labelY);
 const rects=groups.insert("rect","text").attr("class",spec.nodeClass).attr("tabindex",0).attr("role","img").attr("aria-label",d=>d.id)
 .attr("x",d=>-d.w/2).attr("y",d=>-d.h/2).attr("width",d=>d.w).attr("height",d=>d.h).attr("rx",6)
 .attr("fill",d=>d.color).attr("stroke",d=>d.stroke).attr("stroke-width",d=>d.strokeWidth).attr("stroke-dasharray",d=>d.strokeDasharray).attr("opacity",.2);
 rects.on("focus",function(){d3.select(this).classed("is-focus",true)}).on("blur",function(){d3.select(this).classed("is-focus",false)});
+__FIT__
 links.transition().duration(360).delay((d,i)=>i*45).ease(d3.easeCubicOut).attr("opacity",1);
 rects.transition().duration(360).delay((d,i)=>80+i*55).ease(d3.easeCubicOut).attr("opacity",1);})();
-""".replace("__SPEC__", json_script(spec))
+""".replace("__SPEC__", json_script(spec)).replace("__FIT__", diagram_fit_script())
 
 
 def logo_script(args: argparse.Namespace, palette: dict[str, str]) -> str:
@@ -342,7 +382,11 @@ svg.append("text").attr("class",spec.taglineClass).attr("x",spec.width*.48).attr
 
 
 def build(args: argparse.Namespace) -> tuple[str, dict[str, str]]:
+    if args.width is None:
+        args.auto_width = True
+        args.width = 900
     if args.height is None:
+        args.auto_height = True
         args.height = 180 if args.kind == "flow" else 520
     palette = palette_for(args.colorset)
     attributes = checked_attributes(args.attribute)
@@ -418,8 +462,8 @@ All forms also require --output, --decision-output, --title, --description,
     parser.add_argument("--svg-pattern-id", help="Optional data-pattern-id when it differs from the decision/global pattern ID.")
     parser.add_argument("--svg-id", required=True)
     parser.add_argument("--reason", required=True)
-    parser.add_argument("--width", type=int, default=900)
-    parser.add_argument("--height", type=int, help="Canvas height; defaults to 180 for flow, 520 for other forms.")
+    parser.add_argument("--width", type=int, help="Fixed canvas width; omitted diagram dimensions fit measured content, other forms use 900.")
+    parser.add_argument("--height", type=int, help="Fixed canvas height; omitted diagram dimensions fit measured content, other forms use 520.")
     parser.add_argument("--node-padding-y", type=int, default=6, help="Vertical flow-node padding in pixels.")
     parser.add_argument("--node-padding-x", type=int, default=10, help="Horizontal flow-node padding in pixels.")
     parser.add_argument("--attribute", action="append", type=parse_pair, default=[], metavar="DATA-NAME=VALUE")
@@ -449,6 +493,10 @@ All forms also require --output, --decision-output, --title, --description,
 
 def parse_args() -> argparse.Namespace:
     args = make_parser().parse_args()
+    args.auto_width = args.width is None
+    args.auto_height = args.height is None
+    if args.width is None:
+        args.width = 900
     if args.height is None:
         args.height = 180 if args.kind == "flow" else 520
     return args

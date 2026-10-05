@@ -18,6 +18,25 @@ the subject needs. A common flat canvas, shared baselines and open whitespace ar
 usually clearer than equal-size framed cards. Stable positions let the viewer
 compare states without relearning the scene.
 
+## Compact connected mechanisms
+
+For conceptual node/link diagrams, size nodes to their labels and group related
+objects closely. Remove surplus outer padding and shorten routes through the
+nearest clear corridor. Keep arrowheads and a direction-bearing shaft visible,
+attach endpoints to their intended objects and reserve distinct lanes and space
+for relation labels. Crossings must not imply an extra junction; do not merge
+unrelated paths or move an endpoint away from its object to save room.
+
+After a readable composed still, try up to two focused compaction revisions and
+retain the tightest passing result. Check delivery-size stills at stable states,
+event midpoints, arrivals and full-motion extrema, including changing-value labels.
+Revert reductions that introduce text overlap, clipping, hidden heads, ambiguous
+routes or lost mechanism recognition. Preserve stable anchors and the complete
+travel/rotation envelope; compact unused gaps rather than the space an object
+actually needs to move. Physical distance, magnitude, timing and conservation
+remain faithful. Supporting charts retain readable axes and useful data dimensions
+instead of being squeezed to meet a diagram packing target.
+
 ## Give the event a visible consequence
 
 1. Establish the initial state briefly.

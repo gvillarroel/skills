@@ -1,0 +1,3 @@
+Make an editable SVG explaining a five-stage document review: Receive -> Assess -> Prepare -> Verify -> Release. Use real text for every stage and clear directional arrows attached to the corresponding stages. Keep the drawing focused and easy to read, with no decorative title. Use colorset1. The canvas is 680 by 160 pixels. Preserve these dimensions and the exact labels.
+
+Deliver artifacts/review.svg and a rendered artifacts/preview.png. Keep the copied skills/svg-brief-design directory read-only and generated files in this workspace outside skills/. Validate and inspect the preview. Do not browse the network or discover other skills.

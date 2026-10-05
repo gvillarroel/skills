@@ -184,6 +184,8 @@
         overlay.setAttribute("viewBox", `0 0 ${canvas.width} ${canvas.height}`);
         overlay.setAttribute("aria-hidden", "true");
         overlay.dataset.interactionId = interaction.id;
+        overlay.dataset.relationshipId = interaction.id;
+        overlay.dataset.arrowId = interaction.id;
         overlay.style.zIndex = String(interaction.connector?.zIndex ?? 1000);
         const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
         path.setAttribute("fill", "none");
@@ -191,12 +193,17 @@
         path.setAttribute("stroke-width", String(interaction.connector?.width ?? 3));
         path.setAttribute("stroke-linecap", "round");
         path.setAttribute("stroke-linejoin", "round");
+        path.dataset.arrowShaft = "true";
+        const head = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        head.setAttribute("fill", interaction.connector?.color ?? "#e8002a");
+        head.dataset.arrowHead = "true";
         const signal = document.createElementNS("http://www.w3.org/2000/svg", "circle");
         signal.setAttribute("r", String(Math.max(3, Number(interaction.connector?.width ?? 3) * 1.75)));
         signal.setAttribute("fill", interaction.connector?.color ?? "#e8002a");
-        overlay.append(path, signal);
+        signal.dataset.relationshipPulse = "true";
+        overlay.append(path, head, signal);
         stage.appendChild(overlay);
-        runtimeInteractions.set(interaction.id, { interaction, overlay, path, signal, progress: 0 });
+        runtimeInteractions.set(interaction.id, { interaction, overlay, path, head, signal, progress: 0 });
       };
 
       const ready = (async () => {
@@ -340,13 +347,18 @@
       };
 
       const interactionPath = (interaction, source, target) => {
+        if (interaction.connector?.waypoints?.length) {
+          const points = [source, ...interaction.connector.waypoints.map(p => ({x: p.x * canvas.width, y: p.y * canvas.height})), target];
+          return points.map((p, i) => `${i ? 'L' : 'M'} ${p.x} ${p.y}`).join(' ');
+        }
         if (interaction.connector?.path === "straight") return `M ${source.x} ${source.y} L ${target.x} ${target.y}`;
         const offset = Math.max(40, Math.abs(target.x - source.x) * 0.45);
-        return `M ${source.x} ${source.y} C ${source.x + offset} ${source.y}, ${target.x - offset} ${target.y}, ${target.x} ${target.y}`;
+        const direction = target.x < source.x ? -1 : 1;
+        return `M ${source.x} ${source.y} C ${source.x + direction * offset} ${source.y}, ${target.x - direction * offset} ${target.y}, ${target.x} ${target.y}`;
       };
 
       const applyInteractionFrame = (runtime, seconds) => {
-        const { interaction, overlay, path, signal } = runtime;
+        const { interaction, overlay, path, head, signal } = runtime;
         const raw = (seconds - interaction.start) / Math.max(0.000001, interaction.end - interaction.start);
         const progress = clamp01(raw);
         const active = seconds >= interaction.start && seconds <= interaction.end;
@@ -355,16 +367,44 @@
         const source = portPosition(interaction.source);
         const target = portPosition(interaction.target);
         path.setAttribute("d", interactionPath(interaction, source, target));
+        const rawLength = path.getTotalLength();
+        const radius = Number(signal.getAttribute("r"));
+        const stroke = Number(path.getAttribute("stroke-width"));
+        const headLength = Math.max(12, stroke * 3);
+        const headHalfWidth = Math.max(5, stroke * 1.6);
+        const startInset = Math.max(6, radius + 3), endInset = 6;
+        const waypoints = interaction.connector?.waypoints ?? [];
+        if (waypoints.length) {
+          const first = {x: waypoints[0].x * canvas.width, y: waypoints[0].y * canvas.height};
+          const last = {x: waypoints.at(-1).x * canvas.width, y: waypoints.at(-1).y * canvas.height};
+          if (Math.hypot(first.x - source.x, first.y - source.y) < startInset + radius + 3 ||
+              Math.hypot(target.x - last.x, target.y - last.y) < endInset + headLength + 3) {
+            path.dataset.arrowIssue = "Polyline terminal runs cannot fit the signal/head envelope; move the nearest waypoint.";
+            throw new Error(`Interaction ${interaction.id}: ${path.dataset.arrowIssue}`);
+          }
+        }
+        if (rawLength < startInset + endInset + headLength + radius + 15) {
+          path.dataset.arrowIssue = "Route lacks space for a complete head and moving signal; increase the local gap.";
+          throw new Error(`Interaction ${interaction.id}: ${path.dataset.arrowIssue}`);
+        }
+        const start = path.getPointAtLength(startInset);
+        const tip = path.getPointAtLength(rawLength - endInset);
+        path.setAttribute("d", interactionPath(interaction, start, tip));
         const length = Math.max(0.001, path.getTotalLength());
+        const end = path.getPointAtLength(length), before = path.getPointAtLength(Math.max(0, length - .2));
+        const angle = Math.atan2(end.y - before.y, end.x - before.x);
+        const ux = Math.cos(angle), uy = Math.sin(angle), bx = end.x - headLength * ux, by = end.y - headLength * uy;
+        head.setAttribute("d", `M ${end.x} ${end.y} L ${bx - headHalfWidth * uy} ${by + headHalfWidth * ux} L ${bx + headHalfWidth * uy} ${by - headHalfWidth * ux} Z`);
+        head.style.opacity = progress >= .999 || persisted ? "1" : "0";
         path.style.strokeDasharray = String(length);
         path.style.strokeDashoffset = String(length * (1 - progress));
         overlay.style.opacity = visible ? "1" : "0";
-        const point = path.getPointAtLength(length * progress);
+        const point = path.getPointAtLength(Math.max(0, length - headLength - radius - 3) * progress);
         signal.setAttribute("cx", String(point.x));
         signal.setAttribute("cy", String(point.y));
-        signal.style.opacity = active ? "1" : "0";
+        signal.style.opacity = active && progress < .999 ? "1" : "0";
         runtime.progress = progress;
-        return { active, progress, source, target };
+        return { active, progress, source, target, arrowTip: {x: end.x, y: end.y}, headLength, headClearancePx: endInset };
       };
 
       window.renderConceptFrame = async (videoId, seconds, options = {}) => {

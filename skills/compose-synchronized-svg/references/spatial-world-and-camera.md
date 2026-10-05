@@ -141,6 +141,13 @@ Keep tab order camera-aware:
 
 ## Validate all three scales
 
+Compact graph structure within each tier before reviewing camera framing. Shorten
+trunks/crosslinks by grouping related districts and modules, preserving recognizable
+district separation and distinct paths. Review projected label, node and arrow
+bounds at world, district and module scale; a compact world is not readable detail
+by itself. Preserve the complete motion/state envelope and required camera-target
+coverage rather than reducing camera margins until marks clip.
+
 Run the normal static validator plus world gates:
 
 ```powershell

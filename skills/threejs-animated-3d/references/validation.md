@@ -17,6 +17,11 @@ Use browser verification for Three.js because static DOM checks cannot prove Web
 8. Perform a pointer drag on at least one canvas and confirm interaction state changes.
 9. Capture desktop and mobile screenshots and inspect them for framing, overlap, and text fit.
 10. Inspect actual material and light colors through `window.__threeRuntimeScene.inspect()` for builder output. Default materials must be red/neutral, lights white, and pink absent. Validate colorset2 only when selected. Inspect multiple animation phases and camera angles for clipped objects, and preserve 44 px touch targets while reducing visible panel padding.
+11. For connected diagrams, inspect projected label/node/head bounds, both edge
+    endpoints and nearby parallel routes at delivery scale. Compare a compacted
+    revision with its previous readable version across supported camera positions
+    and motion extrema. Nonblank pixels and changing hashes do not establish that
+    a concept label, directional arrow or crowded connection remains readable.
 
 Do not probe undocumented Playwright properties to discover launch APIs. Do not
 run an expected-negative `grep` as a bare command: a correct no-match result has

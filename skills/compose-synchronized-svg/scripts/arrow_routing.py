@@ -12,7 +12,7 @@ def orthogonal_route(start,end,obstacles,bounds,preferred=(),clearance=4,occupie
     """Find a clear rectilinear visibility route through actual backing gutters."""
     left,top,width,height=bounds;right,bottom=left+width,top+height
     boxes=[(x-clearance,y-clearance,w+2*clearance,h+2*clearance) for x,y,w,h in obstacles]
-    preferred=[*preferred,*[(p[0]+dx,p[1]+dy) for segment in occupied for p in segment for dx,dy in [(0,0),(-3,-3),(3,3)]]]
+    preferred=[*preferred,*[(p[0]+dx,p[1]+dy) for segment in occupied for p in segment for dx,dy in [(0,0),(-8,-8),(8,8)]]]
     xs=sorted({start[0],end[0],left+4,right-4,*(p[0] for p in preferred),*(v for x,y,w,h in boxes for v in (x,x+w))})
     ys=sorted({start[1],end[1],top+4,bottom-4,*(p[1] for p in preferred),*(v for x,y,w,h in boxes for v in (y,y+h))})
     xs=[v for v in xs if left<=v<=right];ys=[v for v in ys if top<=v<=bottom]
@@ -112,7 +112,8 @@ def clear_path(path, plaques, modules, bounds, occupied=()):
             break
         choice=min(safe,key=lambda p:sum(abs(u[0]-v[0])+abs(u[1]-v[1]) for u,v in zip(p,p[1:])))
         points[i:i+2]=choice
-    if any(overlaps(a,b,c,d) for a,b in zip(points,points[1:]) for c,d in occupied):points=replan(points)
+    terminal_short = min(math.dist(points[0],points[1]),math.dist(points[-2],points[-1])) < 10
+    if terminal_short or any(overlaps(a,b,c,d) for a,b in zip(points,points[1:]) for c,d in occupied):points=replan(points)
     if any(hits(a,b,box) for a,b in zip(points,points[1:]) for box in plaques):
         raise ValueError('Arrow routing still intersects an opaque focus label')
     number=lambda n:f'{n:.6f}'.rstrip('0').rstrip('.') or '0'
@@ -122,11 +123,11 @@ def clear_path(path, plaques, modules, bounds, occupied=()):
     return output
 
 
-def overlaps(a,b,c,d):
-    """Reject coincident route spans while permitting perpendicular crossings."""
-    if a[1]==b[1] and c[1]==d[1] and abs(a[1]-c[1])<1e-5:
+def overlaps(a,b,c,d,clearance=6):
+    """Reject coincident or visually merged parallel spans, allowing crossings."""
+    if a[1]==b[1] and c[1]==d[1] and abs(a[1]-c[1])<clearance:
         return min(max(a[0],b[0]),max(c[0],d[0]))-max(min(a[0],b[0]),min(c[0],d[0]))>1
-    if a[0]==b[0] and c[0]==d[0] and abs(a[0]-c[0])<1e-5:
+    if a[0]==b[0] and c[0]==d[0] and abs(a[0]-c[0])<clearance:
         return min(max(a[1],b[1]),max(c[1],d[1]))-max(min(a[1],b[1]),min(c[1],d[1]))>1
     return False
 

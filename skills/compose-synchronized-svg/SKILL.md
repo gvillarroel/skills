@@ -10,6 +10,12 @@ Read [solid-surfaces.md](references/solid-surfaces.md) for solid-first category 
 
 Build one explanatory SVG whose recurring values come from one canonical state. Give each module a distinct viewer question. Semantic propagation is required; animation is optional.
 
+Default connected diagrams to the smallest readable footprint and shortest clear
+routes. Preserve labels, visible shafts/heads, distinct lanes and attached
+endpoints at every relevant state and zoom tier. Apply the compaction pass in
+[asset-selection-and-composition.md](references/asset-selection-and-composition.md#compact-connected-diagrams);
+preserve quantitative chart reading space.
+
 Read [arrow-visibility.md](references/arrow-visibility.md) when producing, importing or reviewing directional arrows. Audit actual shafts/heads at delivery scale.
 
 ## Read for the current task
@@ -84,6 +90,11 @@ Use the compact report and rendered screenshot as the normal evidence surface. I
 Review hierarchy, claim/asset fit, connectors, readability, literal fallback, and reduced-motion behavior against the reference rubric. A fitted overview proves structure, not readable module detail. Release-grade work also needs readable module crops and materially different states; worlds need district views plus route arrivals/midpoints. Require two consecutive clean reviews with fresh evidence. Use direct browser interactions only when requested acceptance goes beyond the bundled audit.
 
 For visual improvement work, freeze one brief, generate and critique its actual screenshots, fix the responsible input or reusable generator, and compare a regenerated version using the same data. Then check a fresh topic. Follow the color reference's generation–critique loop and retain failures; structural validation alone cannot establish visual quality.
+
+For compact-plan detail inspection, create module crops at the overview's actual
+pixel scale with the command in [critique-and-validation.md](references/critique-and-validation.md#module-crops).
+It declares Pillow through `uv`; do not assume a bare Python environment inherits
+the auditor's dependencies. World detail uses the browser audit's anchor crops.
 
 For actionable semantic, quantitative, geometry, accessibility, relationship, or navigation findings, revise the brief, preflight, and rerun compiler → composer → validator → audit. For `runtime-api`, `real-input-controls`, `navigation-input-controls`, worker, timeout, or playback-timing failures, or an identical repeated check, preserve the exact check ID/message and report a generator/auditor defect. Do not weaken semantics, tune timing to evade a mechanical check, inspect implementation internals during normal generation, or hide the failure.
 

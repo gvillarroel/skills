@@ -34,6 +34,12 @@ flows, text panels or pinnate foliage. Generate a small JSON recipe and SVG:
 python <skill-root>/scripts/scaffold.py init <kind> --recipe design.json --output artwork.svg
 ```
 
+For a simple ordered stage flow with consecutive arrows, use `init flow` as
+the first construction step. Edit its recipe with the exact labels, direction
+and requested canvas, then `build` again; its content-sized nodes and attached
+arrows prevent spacious default cards or hidden tips. Use custom geometry for
+branching or other relationships the ordered scaffold does not represent.
+
 Edit the recipe for the actual brief before treating the base as a deliverable.
 Replace example labels, choose appropriate counts and proportions, and remove
 unrequested content. For several bases, use `composition` with separate boxes
@@ -100,6 +106,16 @@ For decorative diagrams, make the intended relationships readable: connected
 axes, coherent curves, distinct annotations, and unambiguous endpoints. Keep
 letters and symbols subordinate to the drawing. Do not invent numerical claims
 or label decorative codes as machine-readable without implementing them.
+
+For connected explanatory diagrams, use the smallest readable occupied layout
+by default. Size nodes from their labels, shorten routes and remove unused
+canvas space while preserving visible arrowheads, identifiable source/target
+ports, separated edges and text clearance. Start with 6 px vertical and 10 px
+horizontal inset around final measured text; do not stretch nodes to fill a
+fixed canvas. Read the connected-diagram procedure
+in [purpose and construction](references/construction-decisions.md). Preserve
+an explicit canvas and the negative space that describes an illustration;
+do not compress quantitative graphs or shrink labels to make a layout fit.
 
 ## Check the artifact
 

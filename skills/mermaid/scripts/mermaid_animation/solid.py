@@ -59,18 +59,22 @@ def paint_property(element: ET.Element, key: str, fallback: str) -> str:
     return match.group(1).strip() if match else element.get(key, fallback)
 
 
-def native_css_fill(root: ET.Element, selector: str, fallback: str) -> str:
-    """Read a native renderer's precise class/marker selector before overriding it."""
-    fill = fallback
+def native_css_paint(root: ET.Element, selector: str, key: str, fallback: str) -> str:
+    """Read a native renderer's precise selector and paint property."""
+    paint = fallback
     for sheet in root.iter():
         if sheet.tag.rsplit('}', 1)[-1] != 'style':
             continue
         for selectors, declarations in re.findall(r'([^{}]+)\{([^}]+)\}', sheet.text or ''):
             if re.search(re.escape(selector) + (r'(?![\w-])' if selector.startswith('.') else ''), selectors):
-                match = re.search(r'(?:^|;)\s*fill\s*:\s*([^;!]+)', declarations)
+                match = re.search(r'(?:^|;)\s*' + re.escape(key) + r'\s*:\s*([^;!]+)', declarations)
                 if match:
-                    fill = canonical(match.group(1).strip())
-    return fill
+                    paint = match.group(1).strip()
+    return paint
+
+
+def native_css_fill(root: ET.Element, selector: str, fallback: str) -> str:
+    return canonical(native_css_paint(root, selector, 'fill', fallback))
 
 
 def effective_fill(element: ET.Element, canvas: str = '#ffffff') -> str:
@@ -94,6 +98,18 @@ def native_family_details(root: ET.Element, colorset: str) -> None:
     tag = lambda element: element.tag.rsplit('}', 1)[-1]
     groups = [element for element in root.iter() if tag(element) == 'g']
     roles = ['csPrimary', 'csAccent', 'csMuted', 'csCritical', 'csWarning', 'csSuccess', 'csInfo', 'csSpecial', 'csNeutral']
+    # Native flow/state/class relationship labels can inherit white node text
+    # while their own backing stays white. Finish both HTML and SVG text against
+    # the edge-label surface, independently of category-body label paint.
+    edge_background = native_css_paint(root, '.edgeLabel', 'background-color', '#ffffff')
+    if edge_background in {'none', 'transparent', 'inherit'}:
+        edge_background = '#ffffff'
+    for group in groups:
+        if 'edgeLabel' not in group.get('class', '').split():
+            continue
+        backing = next((child for child in group.iter() if tag(child) == 'rect' and paint_property(child, 'fill', 'none') not in {'none', 'transparent', 'inherit'}), None)
+        fill = effective_fill(backing) if backing is not None else effective_fill(ET.Element('rect', {'fill': edge_background}))
+        label(group, fill)
     # Class-authored node labels can contain a separate native SVG text backing.
     # Keep that backing with its actual node paint, including Block SVG text.
     for group in groups:

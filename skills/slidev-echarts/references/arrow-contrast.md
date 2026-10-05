@@ -1,5 +1,12 @@
 # Readable directed edges
 
+For graph-only Node SVG SSR with the full registered `echarts` package,
+initialize with a `null` theme and apply `prepareColorsetOption` before
+`setOption`, followed by native arrow clearance and SVG paint normalization.
+This retains qualified graph paint without materializing unused calendar
+defaults that require a range. Use the normal colorset theme for the modular
+Slidev component; do not copy graph-only SSR setup to unrelated chart families.
+
 ## Contents
 
 - [Paint qualification](#paint-qualification)

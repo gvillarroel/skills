@@ -1,0 +1,1207 @@
+{
+  "skill": "slidev-echarts",
+  "revision": "sol-literal-final",
+  "rows": [
+    {
+      "run": "compact-slidev-echarts-20261004-sol-literal-final-contract",
+      "case": "contract",
+      "payloadSha256": "d64d82feb67e1d978ff760465dc55a82622b8acb5a5ca4446843502442b59b17",
+      "model": "openai-codex/gpt-5.6-sol",
+      "strict": {
+        "passed": false,
+        "returnCode": 4,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-05T01:51:04.452424+00:00",
+        "finishedAtUtc": "2026-10-05T01:55:42.395544+00:00",
+        "durationSeconds": 277.945,
+        "gates": {
+          "artifacts": true,
+          "events": false,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "eventSummaryExitCode": 1,
+      "observedModels": {
+        "gpt-5.6-sol": 26
+      },
+      "eventFindings": [
+        {
+          "code": "tool-error",
+          "line": 364,
+          "tool": "bash",
+          "path": null
+        },
+        {
+          "code": "tool-error",
+          "line": 922,
+          "tool": "bash",
+          "path": null
+        },
+        {
+          "code": "tool-error",
+          "line": 1516,
+          "tool": "bash",
+          "path": null
+        }
+      ],
+      "runtimeReadPaths": [
+        {
+          "path": "../prompt.md",
+          "calls": 1,
+          "resultBytes": 1111
+        },
+        {
+          "path": "skills/slidev-echarts/SKILL.md",
+          "calls": 1,
+          "resultBytes": 8389
+        },
+        {
+          "path": "skills/slidev-echarts/references/charts/graph.md",
+          "calls": 1,
+          "resultBytes": 1625
+        },
+        {
+          "path": "skills/slidev-echarts/references/arrow-contrast.md",
+          "calls": 1,
+          "resultBytes": 6898
+        },
+        {
+          "path": "skills/slidev-echarts/references/colorset-contract.md",
+          "calls": 1,
+          "resultBytes": 7240
+        },
+        {
+          "path": "skills/slidev-echarts/assets/palettes/colorsets.json",
+          "calls": 1,
+          "resultBytes": 7011
+        },
+        {
+          "path": "skills/slidev-echarts/assets/templates/echarts-colorsets.mjs",
+          "calls": 1,
+          "resultBytes": 46998
+        },
+        {
+          "path": "node_modules/echarts/lib/chart/graph/simpleLayout.js",
+          "calls": 1,
+          "resultBytes": 3357
+        },
+        {
+          "path": "node_modules/echarts/lib/chart/graph/createView.js",
+          "calls": 1,
+          "resultBytes": 3990
+        },
+        {
+          "path": "node_modules/echarts/lib/coord/View.js",
+          "calls": 1,
+          "resultBytes": 11496
+        },
+        {
+          "path": "node_modules/echarts/lib/chart/graph/GraphSeries.js",
+          "calls": 1,
+          "resultBytes": 2572
+        },
+        {
+          "path": "deliverables/graph.svg",
+          "calls": 1,
+          "resultBytes": 1845
+        }
+      ],
+      "independentBrowser": {
+        "ok": true,
+        "pageErrors": [],
+        "findings": [],
+        "states": [
+          {
+            "state": "settled",
+            "kind": "static",
+            "viewport": null,
+            "graphs": [
+              {
+                "width": 640,
+                "height": 360,
+                "nodeCount": 3,
+                "headCount": 2,
+                "minimumHeadGap": 3.25,
+                "labels": [
+                  "Alpha",
+                  "Beta",
+                  "Gamma"
+                ],
+                "fontSizes": [
+                  16
+                ],
+                "textOverlaps": []
+              }
+            ]
+          },
+          {
+            "state": "replay-1",
+            "kind": "static",
+            "viewport": null,
+            "graphs": [
+              {
+                "width": 640,
+                "height": 360,
+                "nodeCount": 3,
+                "headCount": 2,
+                "minimumHeadGap": 3.25,
+                "labels": [
+                  "Alpha",
+                  "Beta",
+                  "Gamma"
+                ],
+                "fontSizes": [
+                  16
+                ],
+                "textOverlaps": []
+              }
+            ]
+          },
+          {
+            "state": "replay-2",
+            "kind": "static",
+            "viewport": null,
+            "graphs": [
+              {
+                "width": 640,
+                "height": 360,
+                "nodeCount": 3,
+                "headCount": 2,
+                "minimumHeadGap": 3.25,
+                "labels": [
+                  "Alpha",
+                  "Beta",
+                  "Gamma"
+                ],
+                "fontSizes": [
+                  16
+                ],
+                "textOverlaps": []
+              }
+            ]
+          },
+          {
+            "state": "resized",
+            "kind": "static",
+            "viewport": null,
+            "graphs": [
+              {
+                "width": 640,
+                "height": 360,
+                "nodeCount": 3,
+                "headCount": 2,
+                "minimumHeadGap": 3.25,
+                "labels": [
+                  "Alpha",
+                  "Beta",
+                  "Gamma"
+                ],
+                "fontSizes": [
+                  16
+                ],
+                "textOverlaps": []
+              }
+            ]
+          },
+          {
+            "state": "reduced-motion",
+            "kind": "static",
+            "viewport": null,
+            "graphs": [
+              {
+                "width": 640,
+                "height": 360,
+                "nodeCount": 3,
+                "headCount": 2,
+                "minimumHeadGap": 3.25,
+                "labels": [
+                  "Alpha",
+                  "Beta",
+                  "Gamma"
+                ],
+                "fontSizes": [
+                  16
+                ],
+                "textOverlaps": []
+              }
+            ]
+          }
+        ]
+      },
+      "independentBrowserPath": "projects/diagram-compactness/artifacts/reviews/compact-slidev-echarts-20261004-sol-literal-final-contract/independent-native/browser.json"
+    },
+    {
+      "run": "compact-slidev-echarts-20261004-sol-literal-final-natural-1",
+      "case": "natural-1",
+      "payloadSha256": "d64d82feb67e1d978ff760465dc55a82622b8acb5a5ca4446843502442b59b17",
+      "model": "openai-codex/gpt-5.6-sol",
+      "strict": {
+        "passed": false,
+        "returnCode": 4,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-05T01:55:46.789174+00:00",
+        "finishedAtUtc": "2026-10-05T02:00:17.219601+00:00",
+        "durationSeconds": 270.432,
+        "gates": {
+          "artifacts": true,
+          "events": false,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "eventSummaryExitCode": 1,
+      "observedModels": {
+        "gpt-5.6-sol": 29
+      },
+      "eventFindings": [
+        {
+          "code": "tool-error",
+          "line": 3893,
+          "tool": "bash",
+          "path": null
+        },
+        {
+          "code": "tool-error",
+          "line": 6292,
+          "tool": "bash",
+          "path": null
+        },
+        {
+          "code": "tool-error",
+          "line": 6356,
+          "tool": "bash",
+          "path": null
+        },
+        {
+          "code": "tool-error",
+          "line": 6465,
+          "tool": "bash",
+          "path": null
+        }
+      ],
+      "runtimeReadPaths": [
+        {
+          "path": "../prompt.md",
+          "calls": 1,
+          "resultBytes": 1113
+        },
+        {
+          "path": "skills/slidev-echarts/SKILL.md",
+          "calls": 1,
+          "resultBytes": 8389
+        },
+        {
+          "path": "skills/slidev-echarts/references/arrow-contrast.md",
+          "calls": 1,
+          "resultBytes": 6898
+        },
+        {
+          "path": "skills/slidev-echarts/references/colorset-contract.md",
+          "calls": 1,
+          "resultBytes": 7240
+        },
+        {
+          "path": "skills/slidev-echarts/references/visual-tokens.md",
+          "calls": 1,
+          "resultBytes": 3546
+        },
+        {
+          "path": "skills/slidev-echarts/references/compact-diagrams.md",
+          "calls": 1,
+          "resultBytes": 6238
+        },
+        {
+          "path": "skills/slidev-echarts/references/integration-patterns.md",
+          "calls": 1,
+          "resultBytes": 8694
+        },
+        {
+          "path": "skills/slidev-echarts/references/charts/graph.md",
+          "calls": 1,
+          "resultBytes": 1625
+        },
+        {
+          "path": "skills/slidev-echarts/assets/templates/concept-graph-labels.mjs",
+          "calls": 1,
+          "resultBytes": 1329
+        },
+        {
+          "path": "skills/slidev-echarts/assets/templates/echarts-colorsets.mjs",
+          "calls": 1,
+          "resultBytes": 46998
+        },
+        {
+          "path": "skills/slidev-echarts/assets/palettes/colorsets.json",
+          "calls": 1,
+          "resultBytes": 7011
+        },
+        {
+          "path": "workflow-option-temp.json",
+          "calls": 1,
+          "resultBytes": 15585
+        },
+        {
+          "path": "workflow-review-temp.json",
+          "calls": 1,
+          "resultBytes": 6609
+        },
+        {
+          "path": "workflow-state-0.png",
+          "calls": 1,
+          "resultBytes": 95298
+        },
+        {
+          "path": "workflow-state-2.png",
+          "calls": 1,
+          "resultBytes": 101298
+        },
+        {
+          "path": "workflow-state-1.png",
+          "calls": 1,
+          "resultBytes": 100722
+        },
+        {
+          "path": "workflow-tight-review-temp.json",
+          "calls": 1,
+          "resultBytes": 267
+        }
+      ],
+      "independentBrowser": {
+        "ok": true,
+        "pageErrors": [],
+        "findings": [],
+        "states": [
+          {
+            "state": "initial",
+            "kind": null,
+            "viewport": {
+              "width": 1280,
+              "height": 800
+            },
+            "graphs": [
+              {
+                "width": 1099.755126953125,
+                "height": 376.1632995605469,
+                "nodeCount": 6,
+                "headCount": 6,
+                "minimumHeadGap": 4.244873046875,
+                "labels": [
+                  "Receive",
+                  "Barcode",
+                  "Analyze",
+                  "Review",
+                  "Archive",
+                  "Quarantine",
+                  "Retest",
+                  "Failed sample"
+                ],
+                "fontSizes": [
+                  14,
+                  18
+                ],
+                "textOverlaps": []
+              }
+            ]
+          },
+          {
+            "state": "click-1",
+            "kind": null,
+            "viewport": {
+              "width": 1280,
+              "height": 800
+            },
+            "graphs": [
+              {
+                "width": 1099.755126953125,
+                "height": 376.1632995605469,
+                "nodeCount": 6,
+                "headCount": 6,
+                "minimumHeadGap": 4.244873046875,
+                "labels": [
+                  "Receive",
+                  "Barcode",
+                  "Analyze",
+                  "Review",
+                  "Archive",
+                  "Quarantine",
+                  "Retest",
+                  "Failed sample"
+                ],
+                "fontSizes": [
+                  14,
+                  18
+                ],
+                "textOverlaps": []
+              }
+            ]
+          },
+          {
+            "state": "click-2",
+            "kind": null,
+            "viewport": {
+              "width": 1280,
+              "height": 800
+            },
+            "graphs": [
+              {
+                "width": 1099.755126953125,
+                "height": 376.1632995605469,
+                "nodeCount": 6,
+                "headCount": 6,
+                "minimumHeadGap": 4.244873046875,
+                "labels": [
+                  "Receive",
+                  "Barcode",
+                  "Analyze",
+                  "Review",
+                  "Archive",
+                  "Quarantine",
+                  "Retest",
+                  "Failed sample"
+                ],
+                "fontSizes": [
+                  14,
+                  18
+                ],
+                "textOverlaps": []
+              }
+            ]
+          },
+          {
+            "state": "replay",
+            "kind": null,
+            "viewport": {
+              "width": 1280,
+              "height": 800
+            },
+            "graphs": [
+              {
+                "width": 1099.755126953125,
+                "height": 376.1632995605469,
+                "nodeCount": 6,
+                "headCount": 6,
+                "minimumHeadGap": 4.244873046875,
+                "labels": [
+                  "Receive",
+                  "Barcode",
+                  "Analyze",
+                  "Review",
+                  "Archive",
+                  "Quarantine",
+                  "Retest",
+                  "Failed sample"
+                ],
+                "fontSizes": [
+                  14,
+                  18
+                ],
+                "textOverlaps": []
+              }
+            ]
+          },
+          {
+            "state": "resized",
+            "kind": null,
+            "viewport": {
+              "width": 1024,
+              "height": 768
+            },
+            "graphs": [
+              {
+                "width": 879.8040161132812,
+                "height": 300.93060302734375,
+                "nodeCount": 6,
+                "headCount": 6,
+                "minimumHeadGap": 3.3958740234375,
+                "labels": [
+                  "Receive",
+                  "Barcode",
+                  "Analyze",
+                  "Review",
+                  "Archive",
+                  "Quarantine",
+                  "Retest",
+                  "Failed sample"
+                ],
+                "fontSizes": [
+                  14,
+                  18
+                ],
+                "textOverlaps": []
+              }
+            ]
+          },
+          {
+            "state": "reduced-motion",
+            "kind": null,
+            "viewport": {
+              "width": 1024,
+              "height": 768
+            },
+            "graphs": [
+              {
+                "width": 879.8040161132812,
+                "height": 300.93060302734375,
+                "nodeCount": 6,
+                "headCount": 6,
+                "minimumHeadGap": 3.3958740234375,
+                "labels": [
+                  "Receive",
+                  "Barcode",
+                  "Analyze",
+                  "Review",
+                  "Archive",
+                  "Quarantine",
+                  "Retest",
+                  "Failed sample"
+                ],
+                "fontSizes": [
+                  14,
+                  18
+                ],
+                "textOverlaps": []
+              }
+            ]
+          }
+        ]
+      },
+      "independentBrowserPath": "projects/diagram-compactness/artifacts/reviews/compact-slidev-echarts-20261004-sol-literal-final-natural-1/independent-deck/browser.json"
+    },
+    {
+      "run": "compact-slidev-echarts-20261004-sol-literal-final-natural-2",
+      "case": "natural-2",
+      "payloadSha256": "d64d82feb67e1d978ff760465dc55a82622b8acb5a5ca4446843502442b59b17",
+      "model": "openai-codex/gpt-5.6-sol",
+      "strict": {
+        "passed": false,
+        "returnCode": 4,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-05T02:00:31.370683+00:00",
+        "finishedAtUtc": "2026-10-05T02:08:53.178973+00:00",
+        "durationSeconds": 501.812,
+        "gates": {
+          "artifacts": true,
+          "events": false,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "eventSummaryExitCode": 1,
+      "observedModels": {
+        "gpt-5.6-sol": 36
+      },
+      "eventFindings": [
+        {
+          "code": "tool-error",
+          "line": 1391,
+          "tool": "bash",
+          "path": null
+        },
+        {
+          "code": "tool-error",
+          "line": 2058,
+          "tool": "bash",
+          "path": null
+        }
+      ],
+      "runtimeReadPaths": [
+        {
+          "path": ".workflow-tmp/normal.png",
+          "calls": 2,
+          "resultBytes": 206204
+        },
+        {
+          "path": "../prompt.md",
+          "calls": 1,
+          "resultBytes": 1113
+        },
+        {
+          "path": "skills/slidev-echarts/SKILL.md",
+          "calls": 1,
+          "resultBytes": 8389
+        },
+        {
+          "path": "skills/slidev-echarts/references/colorset-contract.md",
+          "calls": 1,
+          "resultBytes": 7240
+        },
+        {
+          "path": "skills/slidev-echarts/references/arrow-contrast.md",
+          "calls": 1,
+          "resultBytes": 6898
+        },
+        {
+          "path": "skills/slidev-echarts/references/integration-patterns.md",
+          "calls": 1,
+          "resultBytes": 8694
+        },
+        {
+          "path": "skills/slidev-echarts/references/visual-tokens.md",
+          "calls": 1,
+          "resultBytes": 3546
+        },
+        {
+          "path": "skills/slidev-echarts/references/compact-diagrams.md",
+          "calls": 1,
+          "resultBytes": 6238
+        },
+        {
+          "path": "skills/slidev-echarts/references/charts/graph.md",
+          "calls": 1,
+          "resultBytes": 1625
+        },
+        {
+          "path": "skills/slidev-echarts/assets/templates/echarts-colorsets.mjs",
+          "calls": 1,
+          "resultBytes": 46998
+        },
+        {
+          "path": "skills/slidev-echarts/assets/palettes/colorsets.json",
+          "calls": 1,
+          "resultBytes": 7011
+        },
+        {
+          "path": "skills/slidev-echarts/assets/templates/concept-graph-labels.mjs",
+          "calls": 1,
+          "resultBytes": 1329
+        },
+        {
+          "path": ".workflow-tmp/graph-option.json",
+          "calls": 1,
+          "resultBytes": 15585
+        },
+        {
+          "path": ".workflow-tmp/graph-geometry.json",
+          "calls": 1,
+          "resultBytes": 6609
+        },
+        {
+          "path": ".workflow-tmp/graph-preview.png",
+          "calls": 1,
+          "resultBytes": 26934
+        },
+        {
+          "path": ".workflow-tmp/server.log",
+          "calls": 1,
+          "resultBytes": 127
+        },
+        {
+          "path": ".workflow-tmp/retest.png",
+          "calls": 1,
+          "resultBytes": 96258
+        },
+        {
+          "path": ".workflow-tmp/tighter-review.json",
+          "calls": 1,
+          "resultBytes": 6463
+        },
+        {
+          "path": ".workflow-tmp/final-normal.png",
+          "calls": 1,
+          "resultBytes": 95718
+        },
+        {
+          "path": ".workflow-tmp/final-retest.png",
+          "calls": 1,
+          "resultBytes": 96290
+        }
+      ],
+      "independentBrowser": {
+        "ok": true,
+        "pageErrors": [],
+        "findings": [],
+        "states": [
+          {
+            "state": "initial",
+            "kind": null,
+            "viewport": {
+              "width": 1280,
+              "height": 800
+            },
+            "graphs": [
+              {
+                "width": 1043.591796875,
+                "height": 370.93878173828125,
+                "nodeCount": 6,
+                "headCount": 6,
+                "minimumHeadGap": 4.243408203125,
+                "labels": [
+                  "Receive",
+                  "Barcode",
+                  "Analyze",
+                  "Review",
+                  "Archive",
+                  "Quarantine",
+                  "Retest",
+                  "Failed sample"
+                ],
+                "fontSizes": [
+                  14,
+                  18
+                ],
+                "textOverlaps": []
+              }
+            ]
+          },
+          {
+            "state": "click-1",
+            "kind": null,
+            "viewport": {
+              "width": 1280,
+              "height": 800
+            },
+            "graphs": [
+              {
+                "width": 1043.591796875,
+                "height": 370.93878173828125,
+                "nodeCount": 6,
+                "headCount": 6,
+                "minimumHeadGap": 4.243408203125,
+                "labels": [
+                  "Receive",
+                  "Barcode",
+                  "Analyze",
+                  "Review",
+                  "Archive",
+                  "Quarantine",
+                  "Retest",
+                  "Failed sample"
+                ],
+                "fontSizes": [
+                  14,
+                  18
+                ],
+                "textOverlaps": []
+              }
+            ]
+          },
+          {
+            "state": "replay",
+            "kind": null,
+            "viewport": {
+              "width": 1280,
+              "height": 800
+            },
+            "graphs": [
+              {
+                "width": 1043.591796875,
+                "height": 370.93878173828125,
+                "nodeCount": 6,
+                "headCount": 6,
+                "minimumHeadGap": 4.243408203125,
+                "labels": [
+                  "Receive",
+                  "Barcode",
+                  "Analyze",
+                  "Review",
+                  "Archive",
+                  "Quarantine",
+                  "Retest",
+                  "Failed sample"
+                ],
+                "fontSizes": [
+                  14,
+                  18
+                ],
+                "textOverlaps": []
+              }
+            ]
+          },
+          {
+            "state": "resized",
+            "kind": null,
+            "viewport": {
+              "width": 1024,
+              "height": 768
+            },
+            "graphs": [
+              {
+                "width": 834.8734741210938,
+                "height": 296.75103759765625,
+                "nodeCount": 6,
+                "headCount": 6,
+                "minimumHeadGap": 3.394775390625,
+                "labels": [
+                  "Receive",
+                  "Barcode",
+                  "Analyze",
+                  "Review",
+                  "Archive",
+                  "Quarantine",
+                  "Retest",
+                  "Failed sample"
+                ],
+                "fontSizes": [
+                  14,
+                  18
+                ],
+                "textOverlaps": []
+              }
+            ]
+          },
+          {
+            "state": "reduced-motion",
+            "kind": null,
+            "viewport": {
+              "width": 1024,
+              "height": 768
+            },
+            "graphs": [
+              {
+                "width": 834.8734741210938,
+                "height": 296.75103759765625,
+                "nodeCount": 6,
+                "headCount": 6,
+                "minimumHeadGap": 3.394775390625,
+                "labels": [
+                  "Receive",
+                  "Barcode",
+                  "Analyze",
+                  "Review",
+                  "Archive",
+                  "Quarantine",
+                  "Retest",
+                  "Failed sample"
+                ],
+                "fontSizes": [
+                  14,
+                  18
+                ],
+                "textOverlaps": []
+              }
+            ]
+          }
+        ]
+      },
+      "independentBrowserPath": "projects/diagram-compactness/artifacts/reviews/compact-slidev-echarts-20261004-sol-literal-final-natural-2/independent-deck/browser.json"
+    },
+    {
+      "run": "compact-slidev-echarts-20261004-sol-literal-final-natural-3",
+      "case": "natural-3",
+      "payloadSha256": "d64d82feb67e1d978ff760465dc55a82622b8acb5a5ca4446843502442b59b17",
+      "model": "openai-codex/gpt-5.6-sol",
+      "strict": {
+        "passed": false,
+        "returnCode": 4,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-05T02:08:57.158865+00:00",
+        "finishedAtUtc": "2026-10-05T02:19:09.991692+00:00",
+        "durationSeconds": 612.837,
+        "gates": {
+          "artifacts": true,
+          "events": false,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "eventSummaryExitCode": 1,
+      "observedModels": {
+        "gpt-5.6-sol": 37
+      },
+      "eventFindings": [
+        {
+          "code": "tool-error",
+          "line": 3444,
+          "tool": "bash",
+          "path": null
+        },
+        {
+          "code": "tool-error",
+          "line": 9051,
+          "tool": "bash",
+          "path": null
+        }
+      ],
+      "runtimeReadPaths": [
+        {
+          "path": "../prompt.md",
+          "calls": 1,
+          "resultBytes": 1113
+        },
+        {
+          "path": "skills/slidev-echarts/SKILL.md",
+          "calls": 1,
+          "resultBytes": 8389
+        },
+        {
+          "path": "skills/slidev-echarts/references/arrow-contrast.md",
+          "calls": 1,
+          "resultBytes": 6898
+        },
+        {
+          "path": "skills/slidev-echarts/references/colorset-contract.md",
+          "calls": 1,
+          "resultBytes": 7240
+        },
+        {
+          "path": "skills/slidev-echarts/references/integration-patterns.md",
+          "calls": 1,
+          "resultBytes": 8694
+        },
+        {
+          "path": "skills/slidev-echarts/references/compact-diagrams.md",
+          "calls": 1,
+          "resultBytes": 6238
+        },
+        {
+          "path": "skills/slidev-echarts/references/visual-tokens.md",
+          "calls": 1,
+          "resultBytes": 3546
+        },
+        {
+          "path": "skills/slidev-echarts/references/charts/graph.md",
+          "calls": 1,
+          "resultBytes": 1625
+        },
+        {
+          "path": "skills/slidev-echarts/assets/templates/echarts-colorsets.mjs",
+          "calls": 1,
+          "resultBytes": 9117
+        },
+        {
+          "path": "skills/slidev-echarts/assets/palettes/colorsets.json",
+          "calls": 1,
+          "resultBytes": 7011
+        },
+        {
+          "path": "skills/slidev-echarts/assets/templates/concept-graph-labels.mjs",
+          "calls": 1,
+          "resultBytes": 1329
+        },
+        {
+          "path": ".workflow-tmp/workflow-review.json",
+          "calls": 1,
+          "resultBytes": 6609
+        },
+        {
+          "path": ".workflow-tmp/workflow-option.json",
+          "calls": 1,
+          "resultBytes": 15585
+        },
+        {
+          "path": ".workflow-tmp/workflow-preview.png",
+          "calls": 1,
+          "resultBytes": 26934
+        },
+        {
+          "path": "deck/node_modules/@slidev/cli/package.json",
+          "calls": 1,
+          "resultBytes": 4000
+        },
+        {
+          "path": ".workflow-tmp/server.log",
+          "calls": 1,
+          "resultBytes": 127
+        },
+        {
+          "path": ".workflow-tmp/normal.png",
+          "calls": 1,
+          "resultBytes": 112190
+        },
+        {
+          "path": ".workflow-tmp/retest.png",
+          "calls": 1,
+          "resultBytes": 116334
+        },
+        {
+          "path": ".workflow-tmp/tighter-review.json",
+          "calls": 1,
+          "resultBytes": 6456
+        },
+        {
+          "path": ".workflow-tmp/tighter-final.png",
+          "calls": 1,
+          "resultBytes": 26090
+        },
+        {
+          "path": ".workflow-tmp/tighter-final-option.json",
+          "calls": 1,
+          "resultBytes": 1870
+        },
+        {
+          "path": ".workflow-tmp/final-retest.png",
+          "calls": 1,
+          "resultBytes": 115094
+        },
+        {
+          "path": ".workflow-tmp/final-normal.png",
+          "calls": 1,
+          "resultBytes": 111774
+        }
+      ],
+      "independentBrowser": {
+        "ok": true,
+        "pageErrors": [],
+        "findings": [],
+        "states": [
+          {
+            "state": "initial",
+            "kind": null,
+            "viewport": {
+              "width": 1280,
+              "height": 800
+            },
+            "graphs": [
+              {
+                "width": 1008.3264770507812,
+                "height": 363.1020812988281,
+                "nodeCount": 6,
+                "headCount": 6,
+                "minimumHeadGap": 4.24212646484375,
+                "labels": [
+                  "Receive",
+                  "Barcode",
+                  "Analyze",
+                  "Review",
+                  "Archive",
+                  "Quarantine",
+                  "Retest",
+                  "Failed sample"
+                ],
+                "fontSizes": [
+                  14,
+                  18
+                ],
+                "textOverlaps": []
+              }
+            ]
+          },
+          {
+            "state": "click-1",
+            "kind": null,
+            "viewport": {
+              "width": 1280,
+              "height": 800
+            },
+            "graphs": [
+              {
+                "width": 1008.3264770507812,
+                "height": 363.1020812988281,
+                "nodeCount": 6,
+                "headCount": 6,
+                "minimumHeadGap": 4.24212646484375,
+                "labels": [
+                  "Receive",
+                  "Barcode",
+                  "Analyze",
+                  "Review",
+                  "Archive",
+                  "Quarantine",
+                  "Retest",
+                  "Failed sample"
+                ],
+                "fontSizes": [
+                  14,
+                  18
+                ],
+                "textOverlaps": []
+              }
+            ]
+          },
+          {
+            "state": "replay",
+            "kind": null,
+            "viewport": {
+              "width": 1280,
+              "height": 800
+            },
+            "graphs": [
+              {
+                "width": 1008.3264770507812,
+                "height": 363.1020812988281,
+                "nodeCount": 6,
+                "headCount": 6,
+                "minimumHeadGap": 4.24212646484375,
+                "labels": [
+                  "Receive",
+                  "Barcode",
+                  "Analyze",
+                  "Review",
+                  "Archive",
+                  "Quarantine",
+                  "Retest",
+                  "Failed sample"
+                ],
+                "fontSizes": [
+                  14,
+                  18
+                ],
+                "textOverlaps": []
+              }
+            ]
+          },
+          {
+            "state": "resized",
+            "kind": null,
+            "viewport": {
+              "width": 1024,
+              "height": 768
+            },
+            "graphs": [
+              {
+                "width": 806.6611328125,
+                "height": 290.4815979003906,
+                "nodeCount": 6,
+                "headCount": 6,
+                "minimumHeadGap": 3.393707275390625,
+                "labels": [
+                  "Receive",
+                  "Barcode",
+                  "Analyze",
+                  "Review",
+                  "Archive",
+                  "Quarantine",
+                  "Retest",
+                  "Failed sample"
+                ],
+                "fontSizes": [
+                  14,
+                  18
+                ],
+                "textOverlaps": []
+              }
+            ]
+          },
+          {
+            "state": "reduced-motion",
+            "kind": null,
+            "viewport": {
+              "width": 1024,
+              "height": 768
+            },
+            "graphs": [
+              {
+                "width": 806.6611328125,
+                "height": 290.4815979003906,
+                "nodeCount": 6,
+                "headCount": 6,
+                "minimumHeadGap": 3.393707275390625,
+                "labels": [
+                  "Receive",
+                  "Barcode",
+                  "Analyze",
+                  "Review",
+                  "Archive",
+                  "Quarantine",
+                  "Retest",
+                  "Failed sample"
+                ],
+                "fontSizes": [
+                  14,
+                  18
+                ],
+                "textOverlaps": []
+              }
+            ]
+          }
+        ]
+      },
+      "independentBrowserPath": "projects/diagram-compactness/artifacts/reviews/compact-slidev-echarts-20261004-sol-literal-final-natural-3/independent-deck/browser.json"
+    }
+  ]
+}

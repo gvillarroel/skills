@@ -1,0 +1,1630 @@
+{
+  "skill": "echarts-animated-svg",
+  "revision": "sol-literal-final",
+  "rows": [
+    {
+      "run": "compact-echarts-animated-svg-20261004-sol-literal-final-contract",
+      "case": "contract",
+      "payloadSha256": "b51f5e3e971863ccc196b8d13cf70f6b67ccddf593019d390c87293125eaa8e4",
+      "model": "openai-codex/gpt-5.6-sol",
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-05T01:44:51.097417+00:00",
+        "finishedAtUtc": "2026-10-05T01:45:52.023654+00:00",
+        "durationSeconds": 60.927,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "eventSummaryExitCode": 0,
+      "observedModels": {
+        "gpt-5.6-sol": 10
+      },
+      "eventFindings": [],
+      "runtimeReadPaths": [
+        {
+          "path": "../prompt.md",
+          "calls": 1,
+          "resultBytes": 734
+        },
+        {
+          "path": "skills/echarts-animated-svg/SKILL.md",
+          "calls": 1,
+          "resultBytes": 10229
+        },
+        {
+          "path": "skills/echarts-animated-svg/assets/templates/static-bar-chart.svg",
+          "calls": 1,
+          "resultBytes": 2013
+        },
+        {
+          "path": "skills/echarts-animated-svg/references/colorset-contract.md",
+          "calls": 1,
+          "resultBytes": 6955
+        },
+        {
+          "path": "skills/echarts-animated-svg/references/chart-animation-profiles.md",
+          "calls": 1,
+          "resultBytes": 10532
+        },
+        {
+          "path": "deliverables/chart-validation.json",
+          "calls": 1,
+          "resultBytes": 1505
+        },
+        {
+          "path": "chart-animated-preview.png",
+          "calls": 1,
+          "resultBytes": 12706
+        },
+        {
+          "path": "chart-static-preview.png",
+          "calls": 1,
+          "resultBytes": 11362
+        }
+      ],
+      "independentBrowser": {
+        "ok": true,
+        "pageErrors": [],
+        "findings": [],
+        "states": [
+          {
+            "state": "settled",
+            "kind": "static",
+            "viewport": null,
+            "graphs": [
+              {
+                "width": 640,
+                "height": 420,
+                "nodeCount": 0,
+                "headCount": 0,
+                "minimumHeadGap": null,
+                "labels": [
+                  "Quarterly Tickets",
+                  "Alpha",
+                  "Beta",
+                  "Gamma",
+                  "0",
+                  "40",
+                  "80",
+                  "120",
+                  "60",
+                  "100",
+                  "80"
+                ],
+                "fontSizes": [
+                  13,
+                  14,
+                  24
+                ],
+                "textOverlaps": []
+              }
+            ]
+          },
+          {
+            "state": "replay-1",
+            "kind": "static",
+            "viewport": null,
+            "graphs": [
+              {
+                "width": 640,
+                "height": 420,
+                "nodeCount": 0,
+                "headCount": 0,
+                "minimumHeadGap": null,
+                "labels": [
+                  "Quarterly Tickets",
+                  "Alpha",
+                  "Beta",
+                  "Gamma",
+                  "0",
+                  "40",
+                  "80",
+                  "120",
+                  "60",
+                  "100",
+                  "80"
+                ],
+                "fontSizes": [
+                  13,
+                  14,
+                  24
+                ],
+                "textOverlaps": []
+              }
+            ]
+          },
+          {
+            "state": "replay-2",
+            "kind": "static",
+            "viewport": null,
+            "graphs": [
+              {
+                "width": 640,
+                "height": 420,
+                "nodeCount": 0,
+                "headCount": 0,
+                "minimumHeadGap": null,
+                "labels": [
+                  "Quarterly Tickets",
+                  "Alpha",
+                  "Beta",
+                  "Gamma",
+                  "0",
+                  "40",
+                  "80",
+                  "120",
+                  "60",
+                  "100",
+                  "80"
+                ],
+                "fontSizes": [
+                  13,
+                  14,
+                  24
+                ],
+                "textOverlaps": []
+              }
+            ]
+          },
+          {
+            "state": "resized",
+            "kind": "static",
+            "viewport": null,
+            "graphs": [
+              {
+                "width": 640,
+                "height": 420,
+                "nodeCount": 0,
+                "headCount": 0,
+                "minimumHeadGap": null,
+                "labels": [
+                  "Quarterly Tickets",
+                  "Alpha",
+                  "Beta",
+                  "Gamma",
+                  "0",
+                  "40",
+                  "80",
+                  "120",
+                  "60",
+                  "100",
+                  "80"
+                ],
+                "fontSizes": [
+                  13,
+                  14,
+                  24
+                ],
+                "textOverlaps": []
+              }
+            ]
+          },
+          {
+            "state": "reduced-motion",
+            "kind": "static",
+            "viewport": null,
+            "graphs": [
+              {
+                "width": 640,
+                "height": 420,
+                "nodeCount": 0,
+                "headCount": 0,
+                "minimumHeadGap": null,
+                "labels": [
+                  "Quarterly Tickets",
+                  "Alpha",
+                  "Beta",
+                  "Gamma",
+                  "0",
+                  "40",
+                  "80",
+                  "120",
+                  "60",
+                  "100",
+                  "80"
+                ],
+                "fontSizes": [
+                  13,
+                  14,
+                  24
+                ],
+                "textOverlaps": []
+              }
+            ]
+          },
+          {
+            "state": "settled",
+            "kind": "animated",
+            "viewport": null,
+            "graphs": [
+              {
+                "width": 640,
+                "height": 420,
+                "nodeCount": 0,
+                "headCount": 0,
+                "minimumHeadGap": null,
+                "labels": [
+                  "Quarterly Tickets",
+                  "Alpha",
+                  "Beta",
+                  "Gamma",
+                  "0",
+                  "40",
+                  "80",
+                  "120",
+                  "60",
+                  "100",
+                  "80"
+                ],
+                "fontSizes": [
+                  13,
+                  14,
+                  24
+                ],
+                "textOverlaps": []
+              }
+            ]
+          },
+          {
+            "state": "replay-1",
+            "kind": "animated",
+            "viewport": null,
+            "graphs": [
+              {
+                "width": 640,
+                "height": 420,
+                "nodeCount": 0,
+                "headCount": 0,
+                "minimumHeadGap": null,
+                "labels": [
+                  "Quarterly Tickets",
+                  "Alpha",
+                  "Beta",
+                  "Gamma",
+                  "0",
+                  "40",
+                  "80",
+                  "120",
+                  "60",
+                  "100",
+                  "80"
+                ],
+                "fontSizes": [
+                  13,
+                  14,
+                  24
+                ],
+                "textOverlaps": []
+              }
+            ]
+          },
+          {
+            "state": "replay-2",
+            "kind": "animated",
+            "viewport": null,
+            "graphs": [
+              {
+                "width": 640,
+                "height": 420,
+                "nodeCount": 0,
+                "headCount": 0,
+                "minimumHeadGap": null,
+                "labels": [
+                  "Quarterly Tickets",
+                  "Alpha",
+                  "Beta",
+                  "Gamma",
+                  "0",
+                  "40",
+                  "80",
+                  "120",
+                  "60",
+                  "100",
+                  "80"
+                ],
+                "fontSizes": [
+                  13,
+                  14,
+                  24
+                ],
+                "textOverlaps": []
+              }
+            ]
+          },
+          {
+            "state": "resized",
+            "kind": "animated",
+            "viewport": null,
+            "graphs": [
+              {
+                "width": 640,
+                "height": 420,
+                "nodeCount": 0,
+                "headCount": 0,
+                "minimumHeadGap": null,
+                "labels": [
+                  "Quarterly Tickets",
+                  "Alpha",
+                  "Beta",
+                  "Gamma",
+                  "0",
+                  "40",
+                  "80",
+                  "120",
+                  "60",
+                  "100",
+                  "80"
+                ],
+                "fontSizes": [
+                  13,
+                  14,
+                  24
+                ],
+                "textOverlaps": []
+              }
+            ]
+          },
+          {
+            "state": "reduced-motion",
+            "kind": "animated",
+            "viewport": null,
+            "graphs": [
+              {
+                "width": 640,
+                "height": 420,
+                "nodeCount": 0,
+                "headCount": 0,
+                "minimumHeadGap": null,
+                "labels": [
+                  "Quarterly Tickets",
+                  "Alpha",
+                  "Beta",
+                  "Gamma",
+                  "0",
+                  "40",
+                  "80",
+                  "120",
+                  "60",
+                  "100",
+                  "80"
+                ],
+                "fontSizes": [
+                  13,
+                  14,
+                  24
+                ],
+                "textOverlaps": []
+              }
+            ]
+          }
+        ]
+      },
+      "independentBrowserPath": "projects/diagram-compactness/artifacts/reviews/compact-echarts-animated-svg-20261004-sol-literal-final-contract/independent-native/browser.json"
+    },
+    {
+      "run": "compact-echarts-animated-svg-20261004-sol-literal-final-natural-1",
+      "case": "natural-1",
+      "payloadSha256": "b51f5e3e971863ccc196b8d13cf70f6b67ccddf593019d390c87293125eaa8e4",
+      "model": "openai-codex/gpt-5.6-sol",
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-05T01:45:54.050486+00:00",
+        "finishedAtUtc": "2026-10-05T01:47:17.896866+00:00",
+        "durationSeconds": 83.847,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "eventSummaryExitCode": 0,
+      "observedModels": {
+        "gpt-5.6-sol": 17
+      },
+      "eventFindings": [],
+      "runtimeReadPaths": [
+        {
+          "path": "../prompt.md",
+          "calls": 1,
+          "resultBytes": 1175
+        },
+        {
+          "path": "skills/echarts-animated-svg/SKILL.md",
+          "calls": 1,
+          "resultBytes": 10229
+        },
+        {
+          "path": "skills/echarts-animated-svg/references/compact-diagrams.md",
+          "calls": 1,
+          "resultBytes": 6750
+        },
+        {
+          "path": "skills/echarts-animated-svg/references/arrow-contrast.md",
+          "calls": 1,
+          "resultBytes": 9082
+        },
+        {
+          "path": "skills/echarts-animated-svg/references/colorset-contract.md",
+          "calls": 1,
+          "resultBytes": 6955
+        },
+        {
+          "path": "skills/echarts-animated-svg/references/visual-tokens.md",
+          "calls": 1,
+          "resultBytes": 2893
+        },
+        {
+          "path": "skills/echarts-animated-svg/references/chart-animation-profiles.md",
+          "calls": 1,
+          "resultBytes": 10532
+        },
+        {
+          "path": "skills/echarts-animated-svg/assets/palettes/colorsets.json",
+          "calls": 1,
+          "resultBytes": 7011
+        },
+        {
+          "path": "work/workflow-option.json",
+          "calls": 1,
+          "resultBytes": 15596
+        },
+        {
+          "path": "work/workflow-geometry.json",
+          "calls": 1,
+          "resultBytes": 6609
+        },
+        {
+          "path": "work/workflow-preview.png",
+          "calls": 1,
+          "resultBytes": 28594
+        },
+        {
+          "path": "work/workflow-tighter-review.json",
+          "calls": 1,
+          "resultBytes": 269
+        },
+        {
+          "path": "work/workflow-animated-preview.png",
+          "calls": 1,
+          "resultBytes": 32310
+        }
+      ],
+      "independentBrowser": {
+        "ok": true,
+        "pageErrors": [],
+        "findings": [],
+        "states": [
+          {
+            "state": "settled",
+            "kind": "static",
+            "viewport": null,
+            "graphs": [
+              {
+                "width": 842,
+                "height": 288,
+                "nodeCount": 6,
+                "headCount": 6,
+                "minimumHeadGap": 3.25,
+                "labels": [
+                  "Laboratory sample workflow",
+                  "Receive",
+                  "Barcode",
+                  "Analyze",
+                  "Review",
+                  "Archive",
+                  "Quarantine",
+                  "Retest",
+                  "Failed sample"
+                ],
+                "fontSizes": [
+                  14,
+                  18,
+                  24
+                ],
+                "textOverlaps": []
+              }
+            ]
+          },
+          {
+            "state": "replay-1",
+            "kind": "static",
+            "viewport": null,
+            "graphs": [
+              {
+                "width": 842,
+                "height": 288,
+                "nodeCount": 6,
+                "headCount": 6,
+                "minimumHeadGap": 3.25,
+                "labels": [
+                  "Laboratory sample workflow",
+                  "Receive",
+                  "Barcode",
+                  "Analyze",
+                  "Review",
+                  "Archive",
+                  "Quarantine",
+                  "Retest",
+                  "Failed sample"
+                ],
+                "fontSizes": [
+                  14,
+                  18,
+                  24
+                ],
+                "textOverlaps": []
+              }
+            ]
+          },
+          {
+            "state": "replay-2",
+            "kind": "static",
+            "viewport": null,
+            "graphs": [
+              {
+                "width": 842,
+                "height": 288,
+                "nodeCount": 6,
+                "headCount": 6,
+                "minimumHeadGap": 3.25,
+                "labels": [
+                  "Laboratory sample workflow",
+                  "Receive",
+                  "Barcode",
+                  "Analyze",
+                  "Review",
+                  "Archive",
+                  "Quarantine",
+                  "Retest",
+                  "Failed sample"
+                ],
+                "fontSizes": [
+                  14,
+                  18,
+                  24
+                ],
+                "textOverlaps": []
+              }
+            ]
+          },
+          {
+            "state": "resized",
+            "kind": "static",
+            "viewport": null,
+            "graphs": [
+              {
+                "width": 842,
+                "height": 288,
+                "nodeCount": 6,
+                "headCount": 6,
+                "minimumHeadGap": 3.25,
+                "labels": [
+                  "Laboratory sample workflow",
+                  "Receive",
+                  "Barcode",
+                  "Analyze",
+                  "Review",
+                  "Archive",
+                  "Quarantine",
+                  "Retest",
+                  "Failed sample"
+                ],
+                "fontSizes": [
+                  14,
+                  18,
+                  24
+                ],
+                "textOverlaps": []
+              }
+            ]
+          },
+          {
+            "state": "reduced-motion",
+            "kind": "static",
+            "viewport": null,
+            "graphs": [
+              {
+                "width": 842,
+                "height": 288,
+                "nodeCount": 6,
+                "headCount": 6,
+                "minimumHeadGap": 3.25,
+                "labels": [
+                  "Laboratory sample workflow",
+                  "Receive",
+                  "Barcode",
+                  "Analyze",
+                  "Review",
+                  "Archive",
+                  "Quarantine",
+                  "Retest",
+                  "Failed sample"
+                ],
+                "fontSizes": [
+                  14,
+                  18,
+                  24
+                ],
+                "textOverlaps": []
+              }
+            ]
+          },
+          {
+            "state": "settled",
+            "kind": "animated",
+            "viewport": null,
+            "graphs": [
+              {
+                "width": 842,
+                "height": 288,
+                "nodeCount": 6,
+                "headCount": 6,
+                "minimumHeadGap": 3.25,
+                "labels": [
+                  "Laboratory sample workflow",
+                  "Receive",
+                  "Barcode",
+                  "Analyze",
+                  "Review",
+                  "Archive",
+                  "Quarantine",
+                  "Retest",
+                  "Failed sample"
+                ],
+                "fontSizes": [
+                  14,
+                  18,
+                  24
+                ],
+                "textOverlaps": []
+              }
+            ]
+          },
+          {
+            "state": "replay-1",
+            "kind": "animated",
+            "viewport": null,
+            "graphs": [
+              {
+                "width": 842,
+                "height": 288,
+                "nodeCount": 6,
+                "headCount": 6,
+                "minimumHeadGap": 3.25,
+                "labels": [
+                  "Laboratory sample workflow",
+                  "Receive",
+                  "Barcode",
+                  "Analyze",
+                  "Review",
+                  "Archive",
+                  "Quarantine",
+                  "Retest",
+                  "Failed sample"
+                ],
+                "fontSizes": [
+                  14,
+                  18,
+                  24
+                ],
+                "textOverlaps": []
+              }
+            ]
+          },
+          {
+            "state": "replay-2",
+            "kind": "animated",
+            "viewport": null,
+            "graphs": [
+              {
+                "width": 842,
+                "height": 288,
+                "nodeCount": 6,
+                "headCount": 6,
+                "minimumHeadGap": 3.25,
+                "labels": [
+                  "Laboratory sample workflow",
+                  "Receive",
+                  "Barcode",
+                  "Analyze",
+                  "Review",
+                  "Archive",
+                  "Quarantine",
+                  "Retest",
+                  "Failed sample"
+                ],
+                "fontSizes": [
+                  14,
+                  18,
+                  24
+                ],
+                "textOverlaps": []
+              }
+            ]
+          },
+          {
+            "state": "resized",
+            "kind": "animated",
+            "viewport": null,
+            "graphs": [
+              {
+                "width": 842,
+                "height": 288,
+                "nodeCount": 6,
+                "headCount": 6,
+                "minimumHeadGap": 3.25,
+                "labels": [
+                  "Laboratory sample workflow",
+                  "Receive",
+                  "Barcode",
+                  "Analyze",
+                  "Review",
+                  "Archive",
+                  "Quarantine",
+                  "Retest",
+                  "Failed sample"
+                ],
+                "fontSizes": [
+                  14,
+                  18,
+                  24
+                ],
+                "textOverlaps": []
+              }
+            ]
+          },
+          {
+            "state": "reduced-motion",
+            "kind": "animated",
+            "viewport": null,
+            "graphs": [
+              {
+                "width": 842,
+                "height": 288,
+                "nodeCount": 6,
+                "headCount": 6,
+                "minimumHeadGap": 3.25,
+                "labels": [
+                  "Laboratory sample workflow",
+                  "Receive",
+                  "Barcode",
+                  "Analyze",
+                  "Review",
+                  "Archive",
+                  "Quarantine",
+                  "Retest",
+                  "Failed sample"
+                ],
+                "fontSizes": [
+                  14,
+                  18,
+                  24
+                ],
+                "textOverlaps": []
+              }
+            ]
+          }
+        ]
+      },
+      "independentBrowserPath": "projects/diagram-compactness/artifacts/reviews/compact-echarts-animated-svg-20261004-sol-literal-final-natural-1/independent-native/browser.json"
+    },
+    {
+      "run": "compact-echarts-animated-svg-20261004-sol-literal-final-natural-2",
+      "case": "natural-2",
+      "payloadSha256": "b51f5e3e971863ccc196b8d13cf70f6b67ccddf593019d390c87293125eaa8e4",
+      "model": "openai-codex/gpt-5.6-sol",
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-05T01:47:20.247031+00:00",
+        "finishedAtUtc": "2026-10-05T01:48:51.054474+00:00",
+        "durationSeconds": 90.808,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "eventSummaryExitCode": 0,
+      "observedModels": {
+        "gpt-5.6-sol": 17
+      },
+      "eventFindings": [],
+      "runtimeReadPaths": [
+        {
+          "path": "../prompt.md",
+          "calls": 1,
+          "resultBytes": 1175
+        },
+        {
+          "path": "skills/echarts-animated-svg/SKILL.md",
+          "calls": 1,
+          "resultBytes": 10229
+        },
+        {
+          "path": "skills/echarts-animated-svg/references/chart-animation-profiles.md",
+          "calls": 1,
+          "resultBytes": 10532
+        },
+        {
+          "path": "skills/echarts-animated-svg/references/compact-diagrams.md",
+          "calls": 1,
+          "resultBytes": 6750
+        },
+        {
+          "path": "skills/echarts-animated-svg/references/colorset-contract.md",
+          "calls": 1,
+          "resultBytes": 6955
+        },
+        {
+          "path": "skills/echarts-animated-svg/references/arrow-contrast.md",
+          "calls": 1,
+          "resultBytes": 9082
+        },
+        {
+          "path": "skills/echarts-animated-svg/references/visual-tokens.md",
+          "calls": 1,
+          "resultBytes": 2893
+        },
+        {
+          "path": ".workflow-tmp/workflow-preview.png",
+          "calls": 1,
+          "resultBytes": 28594
+        },
+        {
+          "path": ".workflow-tmp/tighter-review.json",
+          "calls": 1,
+          "resultBytes": 269
+        },
+        {
+          "path": ".workflow-tmp/workflow-geometry.json",
+          "calls": 1,
+          "resultBytes": 6609
+        },
+        {
+          "path": "deliverables/workflow-validation.json",
+          "calls": 1,
+          "resultBytes": 1947
+        },
+        {
+          "path": ".workflow-tmp/workflow-animated-preview.png",
+          "calls": 1,
+          "resultBytes": 32310
+        }
+      ],
+      "independentBrowser": {
+        "ok": true,
+        "pageErrors": [],
+        "findings": [],
+        "states": [
+          {
+            "state": "settled",
+            "kind": "static",
+            "viewport": null,
+            "graphs": [
+              {
+                "width": 842,
+                "height": 288,
+                "nodeCount": 6,
+                "headCount": 6,
+                "minimumHeadGap": 3.25,
+                "labels": [
+                  "Laboratory sample workflow",
+                  "Receive",
+                  "Barcode",
+                  "Analyze",
+                  "Review",
+                  "Archive",
+                  "Quarantine",
+                  "Retest",
+                  "Failed sample"
+                ],
+                "fontSizes": [
+                  14,
+                  18,
+                  24
+                ],
+                "textOverlaps": []
+              }
+            ]
+          },
+          {
+            "state": "replay-1",
+            "kind": "static",
+            "viewport": null,
+            "graphs": [
+              {
+                "width": 842,
+                "height": 288,
+                "nodeCount": 6,
+                "headCount": 6,
+                "minimumHeadGap": 3.25,
+                "labels": [
+                  "Laboratory sample workflow",
+                  "Receive",
+                  "Barcode",
+                  "Analyze",
+                  "Review",
+                  "Archive",
+                  "Quarantine",
+                  "Retest",
+                  "Failed sample"
+                ],
+                "fontSizes": [
+                  14,
+                  18,
+                  24
+                ],
+                "textOverlaps": []
+              }
+            ]
+          },
+          {
+            "state": "replay-2",
+            "kind": "static",
+            "viewport": null,
+            "graphs": [
+              {
+                "width": 842,
+                "height": 288,
+                "nodeCount": 6,
+                "headCount": 6,
+                "minimumHeadGap": 3.25,
+                "labels": [
+                  "Laboratory sample workflow",
+                  "Receive",
+                  "Barcode",
+                  "Analyze",
+                  "Review",
+                  "Archive",
+                  "Quarantine",
+                  "Retest",
+                  "Failed sample"
+                ],
+                "fontSizes": [
+                  14,
+                  18,
+                  24
+                ],
+                "textOverlaps": []
+              }
+            ]
+          },
+          {
+            "state": "resized",
+            "kind": "static",
+            "viewport": null,
+            "graphs": [
+              {
+                "width": 842,
+                "height": 288,
+                "nodeCount": 6,
+                "headCount": 6,
+                "minimumHeadGap": 3.25,
+                "labels": [
+                  "Laboratory sample workflow",
+                  "Receive",
+                  "Barcode",
+                  "Analyze",
+                  "Review",
+                  "Archive",
+                  "Quarantine",
+                  "Retest",
+                  "Failed sample"
+                ],
+                "fontSizes": [
+                  14,
+                  18,
+                  24
+                ],
+                "textOverlaps": []
+              }
+            ]
+          },
+          {
+            "state": "reduced-motion",
+            "kind": "static",
+            "viewport": null,
+            "graphs": [
+              {
+                "width": 842,
+                "height": 288,
+                "nodeCount": 6,
+                "headCount": 6,
+                "minimumHeadGap": 3.25,
+                "labels": [
+                  "Laboratory sample workflow",
+                  "Receive",
+                  "Barcode",
+                  "Analyze",
+                  "Review",
+                  "Archive",
+                  "Quarantine",
+                  "Retest",
+                  "Failed sample"
+                ],
+                "fontSizes": [
+                  14,
+                  18,
+                  24
+                ],
+                "textOverlaps": []
+              }
+            ]
+          },
+          {
+            "state": "settled",
+            "kind": "animated",
+            "viewport": null,
+            "graphs": [
+              {
+                "width": 842,
+                "height": 288,
+                "nodeCount": 6,
+                "headCount": 6,
+                "minimumHeadGap": 3.25,
+                "labels": [
+                  "Laboratory sample workflow",
+                  "Receive",
+                  "Barcode",
+                  "Analyze",
+                  "Review",
+                  "Archive",
+                  "Quarantine",
+                  "Retest",
+                  "Failed sample"
+                ],
+                "fontSizes": [
+                  14,
+                  18,
+                  24
+                ],
+                "textOverlaps": []
+              }
+            ]
+          },
+          {
+            "state": "replay-1",
+            "kind": "animated",
+            "viewport": null,
+            "graphs": [
+              {
+                "width": 842,
+                "height": 288,
+                "nodeCount": 6,
+                "headCount": 6,
+                "minimumHeadGap": 3.25,
+                "labels": [
+                  "Laboratory sample workflow",
+                  "Receive",
+                  "Barcode",
+                  "Analyze",
+                  "Review",
+                  "Archive",
+                  "Quarantine",
+                  "Retest",
+                  "Failed sample"
+                ],
+                "fontSizes": [
+                  14,
+                  18,
+                  24
+                ],
+                "textOverlaps": []
+              }
+            ]
+          },
+          {
+            "state": "replay-2",
+            "kind": "animated",
+            "viewport": null,
+            "graphs": [
+              {
+                "width": 842,
+                "height": 288,
+                "nodeCount": 6,
+                "headCount": 6,
+                "minimumHeadGap": 3.25,
+                "labels": [
+                  "Laboratory sample workflow",
+                  "Receive",
+                  "Barcode",
+                  "Analyze",
+                  "Review",
+                  "Archive",
+                  "Quarantine",
+                  "Retest",
+                  "Failed sample"
+                ],
+                "fontSizes": [
+                  14,
+                  18,
+                  24
+                ],
+                "textOverlaps": []
+              }
+            ]
+          },
+          {
+            "state": "resized",
+            "kind": "animated",
+            "viewport": null,
+            "graphs": [
+              {
+                "width": 842,
+                "height": 288,
+                "nodeCount": 6,
+                "headCount": 6,
+                "minimumHeadGap": 3.25,
+                "labels": [
+                  "Laboratory sample workflow",
+                  "Receive",
+                  "Barcode",
+                  "Analyze",
+                  "Review",
+                  "Archive",
+                  "Quarantine",
+                  "Retest",
+                  "Failed sample"
+                ],
+                "fontSizes": [
+                  14,
+                  18,
+                  24
+                ],
+                "textOverlaps": []
+              }
+            ]
+          },
+          {
+            "state": "reduced-motion",
+            "kind": "animated",
+            "viewport": null,
+            "graphs": [
+              {
+                "width": 842,
+                "height": 288,
+                "nodeCount": 6,
+                "headCount": 6,
+                "minimumHeadGap": 3.25,
+                "labels": [
+                  "Laboratory sample workflow",
+                  "Receive",
+                  "Barcode",
+                  "Analyze",
+                  "Review",
+                  "Archive",
+                  "Quarantine",
+                  "Retest",
+                  "Failed sample"
+                ],
+                "fontSizes": [
+                  14,
+                  18,
+                  24
+                ],
+                "textOverlaps": []
+              }
+            ]
+          }
+        ]
+      },
+      "independentBrowserPath": "projects/diagram-compactness/artifacts/reviews/compact-echarts-animated-svg-20261004-sol-literal-final-natural-2/independent-native/browser.json"
+    },
+    {
+      "run": "compact-echarts-animated-svg-20261004-sol-literal-final-natural-3",
+      "case": "natural-3",
+      "payloadSha256": "b51f5e3e971863ccc196b8d13cf70f6b67ccddf593019d390c87293125eaa8e4",
+      "model": "openai-codex/gpt-5.6-sol",
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-05T01:48:53.106464+00:00",
+        "finishedAtUtc": "2026-10-05T01:50:51.766474+00:00",
+        "durationSeconds": 118.661,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "eventSummaryExitCode": 0,
+      "observedModels": {
+        "gpt-5.6-sol": 16
+      },
+      "eventFindings": [],
+      "runtimeReadPaths": [
+        {
+          "path": "../prompt.md",
+          "calls": 1,
+          "resultBytes": 1175
+        },
+        {
+          "path": "skills/echarts-animated-svg/SKILL.md",
+          "calls": 1,
+          "resultBytes": 10229
+        },
+        {
+          "path": "skills/echarts-animated-svg/references/colorset-contract.md",
+          "calls": 1,
+          "resultBytes": 6955
+        },
+        {
+          "path": "skills/echarts-animated-svg/references/chart-animation-profiles.md",
+          "calls": 1,
+          "resultBytes": 10532
+        },
+        {
+          "path": "skills/echarts-animated-svg/references/visual-tokens.md",
+          "calls": 1,
+          "resultBytes": 2893
+        },
+        {
+          "path": "skills/echarts-animated-svg/references/compact-diagrams.md",
+          "calls": 1,
+          "resultBytes": 6750
+        },
+        {
+          "path": "skills/echarts-animated-svg/references/arrow-contrast.md",
+          "calls": 1,
+          "resultBytes": 9082
+        },
+        {
+          "path": "source/workflow-preview.png",
+          "calls": 1,
+          "resultBytes": 28594
+        },
+        {
+          "path": "source/workflow-animated-preview.png",
+          "calls": 1,
+          "resultBytes": 32310
+        },
+        {
+          "path": "source/workflow-tighter-review.json",
+          "calls": 1,
+          "resultBytes": 269
+        },
+        {
+          "path": "source/workflow-geometry.json",
+          "calls": 1,
+          "resultBytes": 6609
+        }
+      ],
+      "independentBrowser": {
+        "ok": true,
+        "pageErrors": [],
+        "findings": [],
+        "states": [
+          {
+            "state": "settled",
+            "kind": "static",
+            "viewport": null,
+            "graphs": [
+              {
+                "width": 842,
+                "height": 288,
+                "nodeCount": 6,
+                "headCount": 6,
+                "minimumHeadGap": 3.25,
+                "labels": [
+                  "Laboratory sample workflow",
+                  "Receive",
+                  "Barcode",
+                  "Analyze",
+                  "Review",
+                  "Archive",
+                  "Quarantine",
+                  "Retest",
+                  "Failed sample"
+                ],
+                "fontSizes": [
+                  14,
+                  18,
+                  24
+                ],
+                "textOverlaps": []
+              }
+            ]
+          },
+          {
+            "state": "replay-1",
+            "kind": "static",
+            "viewport": null,
+            "graphs": [
+              {
+                "width": 842,
+                "height": 288,
+                "nodeCount": 6,
+                "headCount": 6,
+                "minimumHeadGap": 3.25,
+                "labels": [
+                  "Laboratory sample workflow",
+                  "Receive",
+                  "Barcode",
+                  "Analyze",
+                  "Review",
+                  "Archive",
+                  "Quarantine",
+                  "Retest",
+                  "Failed sample"
+                ],
+                "fontSizes": [
+                  14,
+                  18,
+                  24
+                ],
+                "textOverlaps": []
+              }
+            ]
+          },
+          {
+            "state": "replay-2",
+            "kind": "static",
+            "viewport": null,
+            "graphs": [
+              {
+                "width": 842,
+                "height": 288,
+                "nodeCount": 6,
+                "headCount": 6,
+                "minimumHeadGap": 3.25,
+                "labels": [
+                  "Laboratory sample workflow",
+                  "Receive",
+                  "Barcode",
+                  "Analyze",
+                  "Review",
+                  "Archive",
+                  "Quarantine",
+                  "Retest",
+                  "Failed sample"
+                ],
+                "fontSizes": [
+                  14,
+                  18,
+                  24
+                ],
+                "textOverlaps": []
+              }
+            ]
+          },
+          {
+            "state": "resized",
+            "kind": "static",
+            "viewport": null,
+            "graphs": [
+              {
+                "width": 842,
+                "height": 288,
+                "nodeCount": 6,
+                "headCount": 6,
+                "minimumHeadGap": 3.25,
+                "labels": [
+                  "Laboratory sample workflow",
+                  "Receive",
+                  "Barcode",
+                  "Analyze",
+                  "Review",
+                  "Archive",
+                  "Quarantine",
+                  "Retest",
+                  "Failed sample"
+                ],
+                "fontSizes": [
+                  14,
+                  18,
+                  24
+                ],
+                "textOverlaps": []
+              }
+            ]
+          },
+          {
+            "state": "reduced-motion",
+            "kind": "static",
+            "viewport": null,
+            "graphs": [
+              {
+                "width": 842,
+                "height": 288,
+                "nodeCount": 6,
+                "headCount": 6,
+                "minimumHeadGap": 3.25,
+                "labels": [
+                  "Laboratory sample workflow",
+                  "Receive",
+                  "Barcode",
+                  "Analyze",
+                  "Review",
+                  "Archive",
+                  "Quarantine",
+                  "Retest",
+                  "Failed sample"
+                ],
+                "fontSizes": [
+                  14,
+                  18,
+                  24
+                ],
+                "textOverlaps": []
+              }
+            ]
+          },
+          {
+            "state": "settled",
+            "kind": "animated",
+            "viewport": null,
+            "graphs": [
+              {
+                "width": 842,
+                "height": 288,
+                "nodeCount": 6,
+                "headCount": 6,
+                "minimumHeadGap": 3.25,
+                "labels": [
+                  "Laboratory sample workflow",
+                  "Receive",
+                  "Barcode",
+                  "Analyze",
+                  "Review",
+                  "Archive",
+                  "Quarantine",
+                  "Retest",
+                  "Failed sample"
+                ],
+                "fontSizes": [
+                  14,
+                  18,
+                  24
+                ],
+                "textOverlaps": []
+              }
+            ]
+          },
+          {
+            "state": "replay-1",
+            "kind": "animated",
+            "viewport": null,
+            "graphs": [
+              {
+                "width": 842,
+                "height": 288,
+                "nodeCount": 6,
+                "headCount": 6,
+                "minimumHeadGap": 3.25,
+                "labels": [
+                  "Laboratory sample workflow",
+                  "Receive",
+                  "Barcode",
+                  "Analyze",
+                  "Review",
+                  "Archive",
+                  "Quarantine",
+                  "Retest",
+                  "Failed sample"
+                ],
+                "fontSizes": [
+                  14,
+                  18,
+                  24
+                ],
+                "textOverlaps": []
+              }
+            ]
+          },
+          {
+            "state": "replay-2",
+            "kind": "animated",
+            "viewport": null,
+            "graphs": [
+              {
+                "width": 842,
+                "height": 288,
+                "nodeCount": 6,
+                "headCount": 6,
+                "minimumHeadGap": 3.25,
+                "labels": [
+                  "Laboratory sample workflow",
+                  "Receive",
+                  "Barcode",
+                  "Analyze",
+                  "Review",
+                  "Archive",
+                  "Quarantine",
+                  "Retest",
+                  "Failed sample"
+                ],
+                "fontSizes": [
+                  14,
+                  18,
+                  24
+                ],
+                "textOverlaps": []
+              }
+            ]
+          },
+          {
+            "state": "resized",
+            "kind": "animated",
+            "viewport": null,
+            "graphs": [
+              {
+                "width": 842,
+                "height": 288,
+                "nodeCount": 6,
+                "headCount": 6,
+                "minimumHeadGap": 3.25,
+                "labels": [
+                  "Laboratory sample workflow",
+                  "Receive",
+                  "Barcode",
+                  "Analyze",
+                  "Review",
+                  "Archive",
+                  "Quarantine",
+                  "Retest",
+                  "Failed sample"
+                ],
+                "fontSizes": [
+                  14,
+                  18,
+                  24
+                ],
+                "textOverlaps": []
+              }
+            ]
+          },
+          {
+            "state": "reduced-motion",
+            "kind": "animated",
+            "viewport": null,
+            "graphs": [
+              {
+                "width": 842,
+                "height": 288,
+                "nodeCount": 6,
+                "headCount": 6,
+                "minimumHeadGap": 3.25,
+                "labels": [
+                  "Laboratory sample workflow",
+                  "Receive",
+                  "Barcode",
+                  "Analyze",
+                  "Review",
+                  "Archive",
+                  "Quarantine",
+                  "Retest",
+                  "Failed sample"
+                ],
+                "fontSizes": [
+                  14,
+                  18,
+                  24
+                ],
+                "textOverlaps": []
+              }
+            ]
+          }
+        ]
+      },
+      "independentBrowserPath": "projects/diagram-compactness/artifacts/reviews/compact-echarts-animated-svg-20261004-sol-literal-final-natural-3/independent-native/browser.json"
+    }
+  ]
+}

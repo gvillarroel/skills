@@ -37,9 +37,12 @@ ARROW_AUDIT = r"""(options = {}) => {
   return channel==='fill'?e.isPointInFill(q):e.isPointInStroke(q);
  }
  const blend=(base,c,a)=>base.map((v,i)=>v*(1-a)+c[i]*a);
+ const cssLayers=[];
+ for(let e=root;e;e=e.parentElement){const c=rgba(getComputedStyle(e).backgroundColor);if(c&&c[3]>0)cssLayers.unshift(c);}
+ const baseCanvas=options.canvas?rgba(options.canvas):cssLayers.reduce((b,c)=>blend(b,c,c[3]),[255,255,255]);
  function surface(p,arrow,parts,arrowKind) {
-  let bg=rgba(options.canvas||getComputedStyle(document.body||document.documentElement).backgroundColor)||[255,255,255,1];
-  bg=blend([255,255,255],bg,bg[3]);let cover=0,coverElement=null;
+  let bg=options.canvas?blend([255,255,255],baseCanvas,baseCanvas[3]):[...baseCanvas];
+  let cover=0,coverElement=null;
   for(const e of geometry){
    if(parts.has(e)||e.closest('[data-arrow-id]')===arrow.closest('[data-arrow-id]')&&arrow.closest('[data-arrow-id]'))continue;
    const s=getComputedStyle(e);
@@ -148,6 +151,9 @@ def main() -> int:
     parser.add_argument('--width',type=int,default=1600)
     parser.add_argument('--height',type=int)
     parser.add_argument('--selector',default='svg')
+    parser.add_argument('--canvas',help='Explicit actual uniform canvas paint; normally infer CSS ancestor backings.')
+    parser.add_argument('--time',type=float,help='Deterministic compositor timestamp in seconds.')
+    parser.add_argument('--video-id',help='Optional compositor scene ID when sampling --time.')
     args=parser.parse_args()
     with sync_playwright() as pw:
         browser=pw.chromium.launch(headless=True)
@@ -158,7 +164,9 @@ def main() -> int:
             page.set_viewport_size({'width':args.width,'height':height})
         if page.evaluate('typeof window.svgSync === "object"'):
             page.evaluate('() => {svgSync.pause();svgSync.pauseCamera();}')
-        report=page.evaluate(ARROW_AUDIT,{'selector':args.selector})
+        if args.time is not None:
+            page.evaluate('async ([id,t]) => {if(typeof renderConceptFrame!=="function")throw new Error("--time requires renderConceptFrame");await renderConceptFrame(id,t);}',[args.video_id,args.time])
+        report=page.evaluate(ARROW_AUDIT,{'selector':args.selector,'canvas':args.canvas})
         report['source']=str(args.source);report['browser']=browser.version
         args.report.parent.mkdir(parents=True,exist_ok=True)
         args.report.write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')

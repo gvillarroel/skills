@@ -9,6 +9,16 @@ Build SVG as a reproducible system where visual state is a function of time, see
 
 ## Core Workflow
 
+For an ordered explanation with caller-supplied stage labels, reveal-then-follow
+motion and optional final-to-first return, first run
+`uv run --script <skill-root>/scripts/build_connected_scene.py --help` and read
+`references/connected-scenes.md`. Use this content-sized scene helper and its
+`validate` subcommand; it accepts custom labels without pretending to be a
+catalog pattern. Keep the catalog validator for catalog outputs. Other
+relationships require custom geometry and an explicit geometry/browser audit.
+Finish supported ordered scenes with that route's validator and browser
+capture. Follow the workflow below for catalog patterns and other mechanisms.
+
 1. Lock the output contract. Preserve every requested path, dimension, duration, ID, seed, palette, loop rule, and accessibility requirement exactly.
 2. Choose the smallest sufficient pattern:
    - From the task workspace root, run `uv run --script skills/procedural-svg-animation/scripts/build_procedural_svg.py --list` to inspect the shipped catalog.
@@ -63,6 +73,7 @@ Treat each result as a pipeline:
 - Repeat the first computed state at the loop endpoint. Do not hide a discontinuity with a fade unless crossfade is the intended recipe.
 - Keep text and semantic labels outside moving, clipped, blurred, or displaced groups.
 - Encode a complete readable base state in SVG attributes. Animation must enhance that state rather than create the only visible content.
+- For semantic scenes that explain connected concepts, minimize unused canvas and route length while retaining measured label bounds, visible arrowheads, distinct routes and the complete motion envelope. Read the compact-scene procedure in `references/composition-recipes.md`. Preserve quantitative solver geometry, fields and deliberate artistic negative space.
 
 ## Output Rules
 

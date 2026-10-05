@@ -93,8 +93,8 @@ def defaults(kind):
         "composition": {"items": []},
     }
     wide = kind in {"wave", "flow", "panel"}
-    return {"version": 1, "kind": kind, "canvas": {"width": 720 if wide else 480,
-            "height": 300 if wide else 480, "margin": 28},
+    return {"version": 1, "kind": kind, "canvas": {"width": 400 if kind == "flow" else 720 if wide else 480,
+            "height": 100 if kind == "flow" else 300 if wide else 480, "margin": 20 if kind == "flow" else 28},
             "style": {"stroke": 2, "color": "#000000", "colorset": "colorset1"}, "parameters": settings[kind], "underlay": [], "details": []}
 
 
@@ -199,28 +199,32 @@ def flow(group, p, box, weight):
     horizontal = direction == "horizontal"
     n = len(labels)
     along = w if horizontal else h
-    gap = min(48, along / (n * 3))
-    length = (along - (n - 1) * gap) / n
-    bw, bh = (length, min(h, 70)) if horizontal else (min(w, 280), length)
-    if min(bw, bh) < 24:
-        raise ValueError("Canvas too small for this flow; enlarge it or reduce the node count")
-    rounding = bounded(p, "rounding", 5, 0, min(bw, bh) / 2)
+    size = bounded(p, "font_size", 18, 14, 36)
+    # Conservative final-font estimate; rendering remains the text-fit gate.
+    widths = [max(32, len(text) * size * .72 + 20) for text in labels]
+    heights = [max(32, size * 1.3 + 12)] * n
+    gap = max(28, weight * 7 + 8)
+    lengths = widths if horizontal else heights
+    occupied = sum(lengths) + (n - 1) * gap
+    if occupied > along or max(heights if horizontal else widths) > (h if horizontal else w):
+        raise ValueError("Canvas too small for readable flow labels and arrows; change direction or enlarge it")
+    offset = (along - occupied) / 2
+    rounding = bounded(p, "rounding", 5, 0, min(min(widths), min(heights)) / 2)
     for i, text in enumerate(labels):
-        nx = x + i * (length + gap) if horizontal else x + (w - bw) / 2
-        ny = y + (h - bh) / 2 if horizontal else y + i * (length + gap)
-        size = min(18, (bw - 20) / max(1, len(text) * .65), bh * .32)
-        if size < 9:
-            raise ValueError("Flow labels would be too small; widen the canvas or shorten labels")
+        bw, bh = widths[i], heights[i]
+        nx = x + offset if horizontal else x + (w - bw) / 2
+        ny = y + (h - bh) / 2 if horizontal else y + offset
         node(group, "rect", id=f"node-{i}", x=nx, y=ny, width=bw, height=bh, rx=rounding,
              fill="currentColor", stroke="none", data_fill_style="solid")
         node(group, "text", text, id=f"label-{i}", x=nx + bw / 2, y=ny + bh / 2,
              font_size=size, font_family="DejaVu Sans, sans-serif", text_anchor="middle",
              dominant_baseline="middle", fill=PALETTES[group.get("data-colorset")]["textOnFill"][group.get("color")], stroke="none")
         if i < n - 1:
-            clearance = min(4, gap / 8)
+            clearance = 4
             start = (nx + bw + clearance, ny + bh / 2) if horizontal else (nx + bw / 2, ny + bh + clearance)
             end = (nx + bw + gap - clearance, start[1]) if horizontal else (start[0], ny + bh + gap - clearance)
             arrow(group, start, end, weight, f"edge-{i}-{i+1}")
+        offset += lengths[i] + gap
 
 
 def panel(group, p, box, weight):

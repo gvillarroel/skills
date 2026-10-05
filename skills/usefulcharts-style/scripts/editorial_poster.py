@@ -135,10 +135,20 @@ class EditorialPoster(Poster):
                     n.setdefault('icon_width',50 if n.get('icon') else 0)
                 n.setdefault('width',width+(35 if major else 0)+(n.get('icon_width',30) if n.get('icon') else 0))
             column_width=max(n['width'] for n in adjusted['nodes'])
-            adjusted['width']=original.get('width',max(1000 if compact else 1200,130+adjusted['columns']*(column_width+26)))
+            natural_width=130+adjusted['columns']*(column_width+26)
+            if compact:
+                # Pack sparse lineages without a wall-poster floor. Header and
+                # footer remain measurable constraints, not reasons to stretch
+                # every branch. Body type and the routing gap stay unchanged.
+                natural_width=max(600,natural_width,301+30*text_width(adjusted['title'].upper(),1,True)*.74)
+                note=adjusted['source_note']+' '+adjusted.get('reading_note','Read top to bottom. Vertical spacing represents schematic generations or stages, not elapsed time.')
+                while len(wrap(note,natural_width-155,10))>2:
+                    natural_width+=20
+                adjusted['_compact_lineage']=True
+            adjusted['width']=original.get('width',max(1200,natural_width) if not compact else natural_width)
             row_heights=[max((measured_content(n,n['width'],font)[2] for n in adjusted['nodes'] if n['row']==r),default=0) for r in range(len(adjusted['rows']))]
             natural_height=290+sum(row_heights)+52*(len(row_heights)-1)
-            adjusted['height']=original.get('height',max(720 if compact else 1200,natural_height))
+            adjusted['height']=original.get('height',max(420 if compact else 1200,natural_height))
             # Measure the records first. Uniformly stretching a sparse graph over
             # a wall-poster canvas creates long empty connectors and tiny labels.
             spare=max(0,adjusted['height']-natural_height)

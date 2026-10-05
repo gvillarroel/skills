@@ -9,7 +9,32 @@ Read [the colorset output contract](references/colorset-contract.md) before auth
 
 For directed edges, read [arrow contrast and placement](references/arrow-contrast.md). Qualify actual shafts and heads at 3:1 against their local backings and keep complete heads outside nodes. Use the bundled option helper before rendering authored arrow charts. For fixed native graph arrows, call `insetGraphArrowRoutes(chart, 3)` after `setOption` and before SVG export, then repeat after resize or option changes. It preserves source endpoints and node geometry while trimming the native display route. Inspect filled crossings and final exports separately.
 
+When authoring conceptual graph/tree diagrams, read [compact diagrams](references/compact-diagrams.md)
+and default to the smallest readable
+layout before SVG export: use content-sized nodes, reduce surplus rank gaps
+and route detours, and keep separate lanes and explicit endpoints. Compare
+a tighter candidate at the same display scale; reject label overlap/clipping,
+obscured heads, ambiguous crossings or reduced readability, then restore the
+local clearance. Stop at the smallest passing candidate and reapply native
+arrow clearance after layout changes. Animation-only tasks preserve the
+supplied static geometry. Quantitative charts retain axes, scales, legends,
+mark separation and useful data dimensions rather than spatial squeezing.
+
+For a small workflow or ranked conceptual graph, use the compact reference's
+JSON contract and `scripts/render_concept_graph.py`. It delivers native SVG,
+an editable native ECharts option and geometry review without handwritten
+view fitting or replacement marks. Inspect its Chromium preview before
+animation. Use `--probe` and read its structured acceptance result when
+testing a tighter comparison; render final deliverables without that flag.
+Preserve the normal quantitative chart workflow.
+
 For native boxplots, read [median contrast](references/boxplot-median-contrast.md). With pinned ECharts 6.1.0, call `qualifyBoxplotMedians(chart, echarts, selected)` after `setOption` and before capture/export, then normalize delivered SVG paint. Repeat after source option or resize changes. Preserve opaque category bodies and native data; use independent median ink rather than a contrasting box rim.
+
+For browser-accurate preview, run `scripts/render_svg_preview.py <svg> --output <workspace-preview.png>`
+through `uv run --script`, then open that PNG. Add `--width` for the delivery
+size. Use task-owned paths; on Windows, `convert` may be a system utility
+rather than an SVG renderer. The preview is an inspection aid, not a layout
+or contrast certificate.
 
 ## Exact Output Contract
 

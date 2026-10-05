@@ -1475,9 +1475,10 @@ def row_regions(
     asymmetric: bool,
     safe_area: list[int],
     weights: list[float] | None = None,
+    gap: float = GAP,
 ) -> list[list[int | float]]:
     _, _, safe_width, _ = safe_area
-    available = safe_width - GAP * (count - 1)
+    available = safe_width - gap * (count - 1)
     effective_weights = list(weights) if weights is not None else [1.0] * count
     if len(effective_weights) != count or any(weight <= 0 for weight in effective_weights):
         raise BriefError("layout row weights must be positive and match the row size")
@@ -1494,11 +1495,11 @@ def row_regions(
         regions.append(
             [clean_number(x_value), clean_number(round(y, 6)), clean_number(width), clean_number(round(height, 6))]
         )
-        cursor = x_value + width + GAP
+        cursor = x_value + width + gap
     return regions
 
 
-def assign_layout(modules: list[dict[str, Any]], safe_area: list[int]) -> list[str]:
+def assign_layout(modules: list[dict[str, Any]], safe_area: list[int], gap: float = GAP) -> list[str]:
     count = len(modules)
     if count <= 6:
         row_counts = [3, count - 3]
@@ -1513,7 +1514,7 @@ def assign_layout(modules: list[dict[str, Any]], safe_area: list[int]) -> list[s
         base, remainder = divmod(count, 4)
         row_counts = [base + (1 if index < remainder else 0) for index in range(4)]
     row_count = len(row_counts)
-    row_height = (safe_area[3] - GAP * (row_count - 1)) / row_count
+    row_height = (safe_area[3] - gap * (row_count - 1)) / row_count
     slots: list[list[int | float]] = []
     y = float(safe_area[1])
     module_offset = 0
@@ -1533,15 +1534,38 @@ def assign_layout(modules: list[dict[str, Any]], safe_area: list[int]) -> list[s
                 asymmetric=False,
                 safe_area=safe_area,
                 weights=row_weights,
+                gap=gap,
             )
         )
-        y += row_height + GAP
+        y += row_height + gap
         module_offset += item_count
 
     for module, region in zip(modules, slots, strict=True):
         module.pop("_heavy")
         module["region"] = region
     return [module["id"] for module in modules]
+
+
+def relationship_gutter(modules: list[dict[str, Any]], relationships: list[dict[str, Any]], safe_area: list[int]) -> float:
+    """Reserve readable lanes only where routes actually compete for a gutter."""
+    draft = copy.deepcopy(modules)
+    assign_layout(draft, safe_area)
+    regions = {module["id"]: module["region"] for module in draft}
+    traffic: dict[tuple[str, float], int] = {}
+    for relationship in relationships:
+        source, target = regions[relationship["source"]], regions[relationship["target"]]
+        if source[1] != target[1]:
+            band = ("row", float(max(source[1], target[1])))
+        elif relationship["kind"] == "feedback":
+            continue  # Feedback above its row has a separate exterior corridor.
+        else:
+            left, right = sorted((source[0], target[0]))
+            blocked = any(left < region[0] < right and region[1] == source[1] for region in regions.values())
+            band = ("row" if blocked else "column", float(source[1] if blocked else min(source[0] + source[2], target[0] + target[2])))
+        traffic[band] = traffic.get(band, 0) + 1
+    # Eight-pixel lane pitch protects an eight-pixel head and the active 4px
+    # shaft; terminal runs and module clearance need another sixteen pixels.
+    return max(float(GAP), 16.0 + 8.0 * max(traffic.values(), default=0))
 
 
 def bounds_for_regions(regions: list[list[float]], padding: float = 0.0) -> list[float]:
@@ -2486,6 +2510,7 @@ def compile_brief(brief: dict[str, Any]) -> tuple[dict[str, Any], list[dict[str,
         module["focusGroups"] = expected_focus
     world_plan: dict[str, Any] | None = None
     navigation_plan: dict[str, Any] | None = None
+    layout_gap = float(GAP)
     if world_mode:
         (
             world_plan,
@@ -2498,7 +2523,8 @@ def compile_brief(brief: dict[str, Any]) -> tuple[dict[str, Any], list[dict[str,
         megacanvas = len(modules) > 12
         view_box = MEGACANVAS_VIEW_BOX if megacanvas else VIEW_BOX
         safe_area = MEGACANVAS_SAFE_AREA if megacanvas else SAFE_AREA
-        reading_order = assign_layout(modules, safe_area)
+        layout_gap = relationship_gutter(modules, relationships, safe_area)
+        reading_order = assign_layout(modules, safe_area, gap=layout_gap)
     source_domains = {
         item["id"]: (float(item["domain"][0]), float(item["domain"][1]))
         for item in concepts
@@ -2561,7 +2587,7 @@ def compile_brief(brief: dict[str, Any]) -> tuple[dict[str, Any], list[dict[str,
         "layout": {
             "armature": require_text(brief.get("armature"), "armature"),
             "safeArea": safe_area,
-            "gap": GAP,
+            "gap": clean_number(layout_gap),
             "readingOrder": reading_order,
         },
         "concepts": concepts,

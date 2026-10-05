@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-04",
+  "skill": "slidev-quality-audit",
+  "model": "openai-codex/gpt-5.6-sol",
+  "thinking": "medium",
+  "payloadSha256": "60927e2f7678067388aa0f91442d060aa5faeed20b6ea57b65c8af5daeadb898",
+  "runtimeFileCount": 10,
+  "promptSha256": {
+    "contract": "4b21c026fed02838dc951de403caa2a39a75c5491ee7d4ca9382592fff24b54c",
+    "natural": "a3a713a6682793a84c61bb407567b6477933e28932212149cdc7711c41a455ad"
+  },
+  "report": "evaluations/diagram-compactness/slidev-quality-20261004.md",
+  "finalCohortComplete": true,
+  "contract": {
+    "runId": "compact-slidev-quality-audit-20261004-trial-release-contract",
+    "strictPass": true,
+    "nativePass": true,
+    "jointPass": true,
+    "compactnessApplicable": false
+  },
+  "naturals": [
+    {
+      "runId": "compact-slidev-quality-audit-20261004-trial-release-natural-1",
+      "strictPass": false,
+      "nativeReadabilityPass": true,
+      "actualCompactnessTrialPass": true,
+      "jointPass": false,
+      "sourceBoundsBefore": [
+        850,
+        115
+      ],
+      "sourceBoundsAfter": [
+        700,
+        106
+      ],
+      "retainedFailure": "Setup tool 120-second timeout followed by a build with incomplete dependencies; cause of slow install unverified. No retry substitutes for this repetition."
+    },
+    {
+      "runId": "compact-slidev-quality-audit-20261004-trial-release-natural-2",
+      "strictPass": true,
+      "nativeReadabilityPass": true,
+      "actualCompactnessTrialPass": true,
+      "jointPass": true,
+      "sourceBoundsBefore": [
+        850,
+        115
+      ],
+      "sourceBoundsAfter": [
+        730,
+        90
+      ],
+      "nodeSize": [
+        130,
+        44
+      ],
+      "labelPx": 18,
+      "headPx": 10,
+      "shaftPx": 2,
+      "rankGapBefore": 110,
+      "rankGapAfter": 70,
+      "toolCalls": 41,
+      "toolErrors": 0
+    },
+    {
+      "runId": "compact-slidev-quality-audit-20261004-trial-release-natural-3",
+      "strictPass": true,
+      "nativeReadabilityPass": true,
+      "actualCompactnessTrialPass": true,
+      "jointPass": true,
+      "sourceBoundsBefore": [
+        850,
+        115
+      ],
+      "sourceBoundsAfter": [
+        670,
+        115
+      ],
+      "nodeSize": [
+        130,
+        44
+      ],
+      "labelPx": 18,
+      "headPx": 10,
+      "shaftPx": 2,
+      "rankGapBefore": 110,
+      "rankGapAfter": 50,
+      "toolCalls": 28,
+      "toolErrors": 0,
+      "nativeProvenance": "projects/diagram-compactness/artifacts/slidev-quality-recovery/retained-events/trial-release-natural-3/provenance.json"
+    }
+  ],
+  "naturalJointPassCount": 2,
+  "requiredNaturalJointPassCount": 2,
+  "accepted": true,
+  "chartFixture": false,
+  "measurementScope": "Source node/route bounds exclude text paint and marker extents; independent native images verify painted full-label/head readability."
+}

@@ -1,5 +1,15 @@
 # Slidev Quality Audit Rules
 
+## Contents
+
+- [Default Interpretation](#default-interpretation)
+- [Rules and Recommended Fixes](#rules-and-recommended-fixes)
+- [Threshold Tuning](#threshold-tuning)
+- [Validation Pattern](#validation-pattern)
+- [Readable Compactness Trial](#readable-compactness-trial)
+- [Native SVG Typography and Metadata](#native-svg-typography-and-metadata)
+- [Solid Category Treatment](#solid-category-treatment)
+
 Use this reference when interpreting `scripts/audit-slidev-quality.ts` reports or tuning thresholds.
 
 ## Default Interpretation
@@ -69,11 +79,69 @@ ancestor. Do not suppress a whole code block to work around this geometry case.
 
 ## Validation Pattern
 
-1. Run the audit on the current deck and save the report under `projects/<project-id>/artifacts/reports/`.
+1. Run a diagnostic audit without `--strict` and with `--screenshots all`, saving the report and native captures in a before directory under `projects/<project-id>/artifacts/reports/`.
 2. Fix the highest-severity real issues first.
-3. Re-run the same command.
+3. Re-run with the same viewport and thresholds in a separate after directory; use `--strict --screenshots all` for the final resolved-state gate.
 4. Confirm that the affected rule counts dropped and no new findings appeared on nearby slides.
-5. Keep the before/after reports only under `projects/<project-id>/artifacts/reports/` when they are useful validation artifacts.
-# Solid category treatment
+5. Open the exact `states[].screenshot` paths recorded in JSON and preserve both before/after reports and captures. The auditor's native Chromium screenshots satisfy ordinary browser review; preserve any capture referenced by a delivered report.
+## Readable compactness trial
+
+For connected explanatory diagrams, perform this trial before final acceptance.
+After restoring a readable baseline, create and natively render at least one
+actual tighter geometry candidate at the same viewport with the same full labels
+and readable type/head/stroke dimensions. Reduce surplus padding, rank gaps or
+route detours first. Preserve the baseline and candidate source/native captures;
+a hypothetical gap change or a written rejection alone is not a trial.
+
+Compare occupied node/route bounds or repeated gap/run measurements, then inspect
+all full labels, visible heads/shafts, source/target attachment, separate unrelated
+lanes and applicable click/motion envelopes. Accept the smaller candidate when
+these checks pass. Reject it only for a specific observed overlap, clipping,
+obscured head, ambiguous attachment/route or lost motion/readability clearance.
+Vague breathing room, occupancy or unchanged comprehension is insufficient.
+Optionally try one further local refinement, then keep the tightest inspected
+passing candidate. Record actual native image paths, dimensions and acceptance
+or concrete rejection evidence; do not claim globally optimal packing. Preserve
+quantitative chart scales, axes, legends and useful information dimensions.
+
+## Native SVG typography and metadata
+
+Automated DOM bounds can miss painted SVG text failures even with zero findings.
+Inspect the actual native text/arrow image before accepting an audit.
+Inline SVG presentation attributes can lose to a Slidev theme's CSS. If the
+browser capture shows oversized or displaced text despite a declared `font-size`,
+set an explicit local text style or a scoped SVG text rule at the intended size;
+retain full labels and compare the next native capture. Use a `foreignObject`
+label only when the deck actually needs HTML layout, rather than lowering type
+or accepting clipping.
+
+SVG `title`, `desc`, and `metadata` are nonvisual accessibility/authoring content.
+They do not count as hidden presentation text. An ordinary hidden paragraph,
+label, or click-state explanation remains subject to `hidden-final-text`.
+
+For a NEW scratch fixture, run from its task workspace:
+
+```powershell
+uv run --script <skill-root>/scripts/prepare-audit-deck.py --deck ./deck
+```
+
+The helper validates the package before any install, creates the tested package
+only when absent, and passes the resolved deck prefix to npm. It retains existing
+packages and uses an existing lock with npm ci. Write the supplied slides next,
+then run npm --prefix /path/to/deck run build before the first native audit.
+Preserve supplied projects' existing setup workflow, locks and dependency choices.
+The bundled template records a dependency set exercised by native browser validation. A FloatingVue/twoslash console error
+is a runtime problem, not a reason to suppress browser-console findings; use a
+compatible dependency override and rerun the audit.
+
+## Solid category treatment
 
 Mark authored category shapes with `data-category-id` so the browser audit can distinguish decoration from axes, class compartments, chart whiskers and connectors. The audit reports `premature-category-outline` when a visible marked shape has a border before the selected palette's usable unique solid colors are exhausted. An overflow outline requires `data-colorset-overflow`; an explicit meaningful data boundary or user-requested outline uses the narrow `data-allow-category-outline` exception. This gate sees the current visible state; independently check a category allocation manifest when categories are paginated, hidden, or distributed across scenes. The existing contrast rule remains required for black/white inside labels, and Canvas category boundaries require source/option inspection.
+
+When maintaining this bundle, validate native capture defaults and metadata classification with
+`uv run --script <skill-root>/scripts/test_audit_capture.py --work-dir <work-dir>`
+after installing the scratch template dependencies in `<work-dir>/deck`. The
+regression retains a clean-state screenshot, reports actual hidden paragraph
+copy, preserves explicit issues-only capture, and verifies scratch setup ownership
+and existing-package preservation. Native captures and source geometry are the
+ordinary review surface; do not add ad hoc pixel analysis or undeclared Pillow use.

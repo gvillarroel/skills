@@ -49,6 +49,20 @@ Use it in `slides.md` with a clamped click state:
 <SvgAssetSlide asset="motion-orbit" :step="$clicks" />
 ```
 
+Build from the deck directory, then use the declared-dependency capture helper:
+
+```bash
+npm --prefix <deck-root> run build
+uv run --script <skill-root>/scripts/capture_deck.py --deck <deck-root> --output-dir <workspace-captures>
+```
+
+Inspect moving and settled frames in `capture.json` and the screenshots.
+Timeline-machine keeps two stationary source-geometry cable copies under its
+draw-on accents, so replay and every click preserve the complete connection.
+Cleanup removes those copies before a rerun; repeated clicks must retain
+exactly two base cables. Gear/signal transforms use their own SVG fill-box
+centers, keeping the full painted motion envelope inside the original stage.
+
 ## Maintenance Fixture
 
 The full-payload acceptance deck under `assets/examples/slidev-animejs/` is maintenance-only. Its local `components/SvgAssetSlide.vue` wrapper imports the runtime component above, so builds test the shipped runtime pack without making the runtime pack depend on fixture files.

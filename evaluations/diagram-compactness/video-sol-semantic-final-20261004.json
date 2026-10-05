@@ -1,0 +1,617 @@
+{
+  "skill": "video",
+  "revision": "sol-semantic-final",
+  "rows": [
+    {
+      "run": "compact-video-20261004-sol-semantic-final-contract",
+      "case": "contract",
+      "model": "openai-codex/gpt-5.6-sol",
+      "payloadSha256": "74a94bfb9cfd346fe4b1fe977e91e560b21846e4b54ac59c1585afa69e7f1be1",
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-05T02:13:15.296913+00:00",
+        "finishedAtUtc": "2026-10-05T02:14:28.681580+00:00",
+        "durationSeconds": 73.385,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "summaryExitCode": 0,
+      "observedModels": {
+        "gpt-5.6-sol": 13
+      },
+      "eventFindings": [],
+      "runtimeReadPaths": [
+        {
+          "path": "../prompt.md",
+          "calls": 1,
+          "resultBytes": 1128
+        },
+        {
+          "path": "skills/video/SKILL.md",
+          "calls": 1,
+          "resultBytes": 11300
+        },
+        {
+          "path": "skills/video/references/solid-surfaces.md",
+          "calls": 1,
+          "resultBytes": 3246
+        },
+        {
+          "path": "skills/video/references/arrow-visibility.md",
+          "calls": 1,
+          "resultBytes": 4715
+        },
+        {
+          "path": "skills/video/references/scene-interaction-contract.md",
+          "calls": 1,
+          "resultBytes": 5850
+        },
+        {
+          "path": "skills/video/references/palette-policy.md",
+          "calls": 1,
+          "resultBytes": 1760
+        },
+        {
+          "path": "skills/video/references/composition-selection-guide.md",
+          "calls": 1,
+          "resultBytes": 16226
+        },
+        {
+          "path": "skills/video/references/browser-rendering.md",
+          "calls": 1,
+          "resultBytes": 3190
+        },
+        {
+          "path": "skills/video/references/compact-fallback-assets.md",
+          "calls": 1,
+          "resultBytes": 3774
+        },
+        {
+          "path": "skills/video/assets/templates/scene-contract.json",
+          "calls": 1,
+          "resultBytes": 4612
+        },
+        {
+          "path": "skills/video/assets/palettes/colorsets.json",
+          "calls": 1,
+          "resultBytes": 7011
+        },
+        {
+          "path": "deliverables/layout-review.md",
+          "calls": 1,
+          "resultBytes": 387
+        },
+        {
+          "path": "source/scene-contract.json",
+          "calls": 1,
+          "resultBytes": 4163
+        },
+        {
+          "path": "source/compact-scene-assets/input.svg",
+          "calls": 1,
+          "resultBytes": 616
+        },
+        {
+          "path": "source/compact-scene-assets/result.svg",
+          "calls": 1,
+          "resultBytes": 616
+        },
+        {
+          "path": ".review-temp/states/renderer-04-003900ms.png",
+          "calls": 1,
+          "resultBytes": 4814
+        },
+        {
+          "path": ".review-temp/states/renderer-00-000000ms.png",
+          "calls": 1,
+          "resultBytes": 4810
+        },
+        {
+          "path": ".review-temp/states/renderer-01-001600ms.png",
+          "calls": 1,
+          "resultBytes": 4910
+        }
+      ],
+      "independent": {
+        "passed": true,
+        "labels": [
+          "Input",
+          "Result"
+        ],
+        "fullLabels": true,
+        "sampleCount": 5,
+        "labelGeometryPass": true,
+        "motionGeometryPass": true,
+        "heldHeadCount": 1,
+        "heldShaftCount": 1,
+        "minimumArrowContrast": 7.378543797130064,
+        "minimumTokenClearance": 3,
+        "pageErrors": [],
+        "evidence": "projects/diagram-compactness/artifacts/reviews/video/compact-video-20261004-sol-semantic-final-contract/independent-scene.json"
+      }
+    },
+    {
+      "run": "compact-video-20261004-sol-semantic-final-natural-1",
+      "case": "natural-1",
+      "model": "openai-codex/gpt-5.6-sol",
+      "payloadSha256": "74a94bfb9cfd346fe4b1fe977e91e560b21846e4b54ac59c1585afa69e7f1be1",
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-05T02:14:30.758357+00:00",
+        "finishedAtUtc": "2026-10-05T02:16:25.121007+00:00",
+        "durationSeconds": 114.363,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "summaryExitCode": 0,
+      "observedModels": {
+        "gpt-5.6-sol": 13
+      },
+      "eventFindings": [],
+      "runtimeReadPaths": [
+        {
+          "path": "../prompt.md",
+          "calls": 1,
+          "resultBytes": 1177
+        },
+        {
+          "path": "skills/video/SKILL.md",
+          "calls": 1,
+          "resultBytes": 11300
+        },
+        {
+          "path": "skills/video/references/solid-surfaces.md",
+          "calls": 1,
+          "resultBytes": 3246
+        },
+        {
+          "path": "skills/video/references/palette-policy.md",
+          "calls": 1,
+          "resultBytes": 1760
+        },
+        {
+          "path": "skills/video/references/arrow-visibility.md",
+          "calls": 1,
+          "resultBytes": 4715
+        },
+        {
+          "path": "skills/video/references/compact-fallback-assets.md",
+          "calls": 1,
+          "resultBytes": 3774
+        },
+        {
+          "path": "skills/video/references/composition-brief-contract.md",
+          "calls": 1,
+          "resultBytes": 14045
+        },
+        {
+          "path": "skills/video/references/tool-routing.md",
+          "calls": 1,
+          "resultBytes": 3685
+        },
+        {
+          "path": "skills/video/references/scene-interaction-contract.md",
+          "calls": 1,
+          "resultBytes": 5850
+        },
+        {
+          "path": "skills/video/references/composition-selection-guide.md",
+          "calls": 1,
+          "resultBytes": 16226
+        },
+        {
+          "path": "skills/video/references/output-format-contract.md",
+          "calls": 1,
+          "resultBytes": 1624
+        },
+        {
+          "path": "skills/video/references/content-budget-and-fidelity.md",
+          "calls": 1,
+          "resultBytes": 11783
+        },
+        {
+          "path": "skills/video/references/browser-rendering.md",
+          "calls": 1,
+          "resultBytes": 3190
+        },
+        {
+          "path": "skills/video/assets/palettes/colorsets.json",
+          "calls": 1,
+          "resultBytes": 7011
+        },
+        {
+          "path": "deliverables/geometry.json",
+          "calls": 1,
+          "resultBytes": 388
+        },
+        {
+          "path": "source/scene-contract.json",
+          "calls": 1,
+          "resultBytes": 10106
+        },
+        {
+          "path": "deliverables/renderer-review.json",
+          "calls": 1,
+          "resultBytes": 2238
+        },
+        {
+          "path": "deliverables/states/renderer-13-007800ms.png",
+          "calls": 1,
+          "resultBytes": 10530
+        },
+        {
+          "path": "deliverables/states/renderer-04-002400ms.png",
+          "calls": 1,
+          "resultBytes": 9842
+        },
+        {
+          "path": "deliverables/states/renderer-01-000800ms.png",
+          "calls": 1,
+          "resultBytes": 9502
+        },
+        {
+          "path": "deliverables/states/renderer-10-005600ms.png",
+          "calls": 1,
+          "resultBytes": 10634
+        },
+        {
+          "path": "deliverables/states/renderer-07-004000ms.png",
+          "calls": 1,
+          "resultBytes": 10198
+        },
+        {
+          "path": "deliverables/arrow-review.json",
+          "calls": 1,
+          "resultBytes": 4522
+        }
+      ],
+      "independent": {
+        "passed": true,
+        "labels": [
+          "Alarm",
+          "Controller",
+          "Motor",
+          "Sensor"
+        ],
+        "fullLabels": true,
+        "sampleCount": 17,
+        "labelGeometryPass": true,
+        "motionGeometryPass": true,
+        "heldHeadCount": 4,
+        "heldShaftCount": 4,
+        "minimumArrowContrast": 5.124406531604723,
+        "minimumTokenClearance": 3,
+        "pageErrors": [],
+        "evidence": "projects/diagram-compactness/artifacts/reviews/video/compact-video-20261004-sol-semantic-final-natural-1/independent-scene.json"
+      }
+    },
+    {
+      "run": "compact-video-20261004-sol-semantic-final-natural-2",
+      "case": "natural-2",
+      "model": "openai-codex/gpt-5.6-sol",
+      "payloadSha256": "74a94bfb9cfd346fe4b1fe977e91e560b21846e4b54ac59c1585afa69e7f1be1",
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-05T02:16:27.149977+00:00",
+        "finishedAtUtc": "2026-10-05T02:18:05.312308+00:00",
+        "durationSeconds": 98.163,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "summaryExitCode": 0,
+      "observedModels": {
+        "gpt-5.6-sol": 17
+      },
+      "eventFindings": [],
+      "runtimeReadPaths": [
+        {
+          "path": "../prompt.md",
+          "calls": 1,
+          "resultBytes": 1177
+        },
+        {
+          "path": "skills/video/SKILL.md",
+          "calls": 1,
+          "resultBytes": 11300
+        },
+        {
+          "path": "skills/video/references/composition-selection-guide.md",
+          "calls": 1,
+          "resultBytes": 16226
+        },
+        {
+          "path": "skills/video/references/tool-routing.md",
+          "calls": 1,
+          "resultBytes": 3685
+        },
+        {
+          "path": "skills/video/references/compact-fallback-assets.md",
+          "calls": 1,
+          "resultBytes": 3774
+        },
+        {
+          "path": "skills/video/references/palette-policy.md",
+          "calls": 1,
+          "resultBytes": 1760
+        },
+        {
+          "path": "skills/video/references/output-format-contract.md",
+          "calls": 1,
+          "resultBytes": 1624
+        },
+        {
+          "path": "skills/video/references/browser-rendering.md",
+          "calls": 1,
+          "resultBytes": 3190
+        },
+        {
+          "path": "skills/video/references/solid-surfaces.md",
+          "calls": 1,
+          "resultBytes": 3246
+        },
+        {
+          "path": "skills/video/references/scene-interaction-contract.md",
+          "calls": 1,
+          "resultBytes": 5850
+        },
+        {
+          "path": "skills/video/references/arrow-visibility.md",
+          "calls": 1,
+          "resultBytes": 4715
+        },
+        {
+          "path": "skills/video/assets/palettes/colorsets.json",
+          "calls": 1,
+          "resultBytes": 7011
+        },
+        {
+          "path": "skills/video/references/content-budget-and-fidelity.md",
+          "calls": 1,
+          "resultBytes": 11783
+        },
+        {
+          "path": "deliverables/geometry.json",
+          "calls": 1,
+          "resultBytes": 388
+        },
+        {
+          "path": "source/scene-contract.json",
+          "calls": 1,
+          "resultBytes": 10113
+        },
+        {
+          "path": "deliverables/states/renderer-04-002400ms.png",
+          "calls": 1,
+          "resultBytes": 9842
+        },
+        {
+          "path": "deliverables/states/renderer-10-005600ms.png",
+          "calls": 1,
+          "resultBytes": 10634
+        },
+        {
+          "path": "deliverables/states/renderer-01-000800ms.png",
+          "calls": 1,
+          "resultBytes": 9502
+        },
+        {
+          "path": "deliverables/states/renderer-07-004000ms.png",
+          "calls": 1,
+          "resultBytes": 10198
+        },
+        {
+          "path": "deliverables/states/renderer-13-007800ms.png",
+          "calls": 1,
+          "resultBytes": 10530
+        },
+        {
+          "path": "source/compact-scene-assets/motor.json",
+          "calls": 1,
+          "resultBytes": 850
+        },
+        {
+          "path": "source/compact-scene-assets/controller.json",
+          "calls": 1,
+          "resultBytes": 855
+        },
+        {
+          "path": "source/compact-scene-assets/sensor.json",
+          "calls": 1,
+          "resultBytes": 852
+        },
+        {
+          "path": "source/compact-scene-assets/controller-branch.json",
+          "calls": 1,
+          "resultBytes": 845
+        }
+      ],
+      "independent": {
+        "passed": true,
+        "labels": [
+          "Alarm",
+          "Controller",
+          "Motor",
+          "Sensor"
+        ],
+        "fullLabels": true,
+        "sampleCount": 17,
+        "labelGeometryPass": true,
+        "motionGeometryPass": true,
+        "heldHeadCount": 4,
+        "heldShaftCount": 4,
+        "minimumArrowContrast": 5.124406531604723,
+        "minimumTokenClearance": 3,
+        "pageErrors": [],
+        "evidence": "projects/diagram-compactness/artifacts/reviews/video/compact-video-20261004-sol-semantic-final-natural-2/independent-scene.json"
+      }
+    },
+    {
+      "run": "compact-video-20261004-sol-semantic-final-natural-3",
+      "case": "natural-3",
+      "model": "openai-codex/gpt-5.6-sol",
+      "payloadSha256": "74a94bfb9cfd346fe4b1fe977e91e560b21846e4b54ac59c1585afa69e7f1be1",
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-05T02:18:07.303887+00:00",
+        "finishedAtUtc": "2026-10-05T02:20:08.753971+00:00",
+        "durationSeconds": 121.451,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "summaryExitCode": 0,
+      "observedModels": {
+        "gpt-5.6-sol": 12
+      },
+      "eventFindings": [],
+      "runtimeReadPaths": [
+        {
+          "path": "../prompt.md",
+          "calls": 1,
+          "resultBytes": 1177
+        },
+        {
+          "path": "skills/video/SKILL.md",
+          "calls": 1,
+          "resultBytes": 11300
+        },
+        {
+          "path": "skills/video/references/palette-policy.md",
+          "calls": 1,
+          "resultBytes": 1760
+        },
+        {
+          "path": "skills/video/references/solid-surfaces.md",
+          "calls": 1,
+          "resultBytes": 3246
+        },
+        {
+          "path": "skills/video/references/scene-interaction-contract.md",
+          "calls": 1,
+          "resultBytes": 5850
+        },
+        {
+          "path": "skills/video/references/tool-routing.md",
+          "calls": 1,
+          "resultBytes": 3685
+        },
+        {
+          "path": "skills/video/references/composition-selection-guide.md",
+          "calls": 1,
+          "resultBytes": 16226
+        },
+        {
+          "path": "skills/video/references/browser-rendering.md",
+          "calls": 1,
+          "resultBytes": 3190
+        },
+        {
+          "path": "skills/video/references/compact-fallback-assets.md",
+          "calls": 1,
+          "resultBytes": 3774
+        },
+        {
+          "path": "skills/video/references/output-format-contract.md",
+          "calls": 1,
+          "resultBytes": 1624
+        },
+        {
+          "path": "skills/video/references/arrow-visibility.md",
+          "calls": 1,
+          "resultBytes": 4715
+        },
+        {
+          "path": "deliverables/geometry.json",
+          "calls": 1,
+          "resultBytes": 388
+        },
+        {
+          "path": "source/scene-contract.json",
+          "calls": 1,
+          "resultBytes": 10110
+        },
+        {
+          "path": "deliverables/states/renderer-07-004000ms.png",
+          "calls": 1,
+          "resultBytes": 10198
+        },
+        {
+          "path": "deliverables/states/renderer-01-000800ms.png",
+          "calls": 1,
+          "resultBytes": 9502
+        },
+        {
+          "path": "deliverables/states/renderer-13-007800ms.png",
+          "calls": 1,
+          "resultBytes": 10530
+        },
+        {
+          "path": "deliverables/states/renderer-10-005600ms.png",
+          "calls": 1,
+          "resultBytes": 10634
+        },
+        {
+          "path": "deliverables/states/renderer-04-002400ms.png",
+          "calls": 1,
+          "resultBytes": 9842
+        },
+        {
+          "path": "deliverables/arrow-review.json",
+          "calls": 1,
+          "resultBytes": 4522
+        },
+        {
+          "path": "deliverables/renderer-review.json",
+          "calls": 1,
+          "resultBytes": 3287
+        }
+      ],
+      "independent": {
+        "passed": true,
+        "labels": [
+          "Alarm",
+          "Controller",
+          "Motor",
+          "Sensor"
+        ],
+        "fullLabels": true,
+        "sampleCount": 17,
+        "labelGeometryPass": true,
+        "motionGeometryPass": true,
+        "heldHeadCount": 4,
+        "heldShaftCount": 4,
+        "minimumArrowContrast": 5.124406531604723,
+        "minimumTokenClearance": 3,
+        "pageErrors": [],
+        "evidence": "projects/diagram-compactness/artifacts/reviews/video/compact-video-20261004-sol-semantic-final-natural-3/independent-scene.json"
+      }
+    }
+  ]
+}

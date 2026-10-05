@@ -27,6 +27,25 @@ Read this when combining techniques. Give every composition one normalized clock
 | Field glyph morph | field sample → glyph orientation → compatible glyph states → opacity scale | direction and confidence fields | orientation and state share one sample |
 | Semantic state scene | finite-state machine → masks → routes → annotations → reset | compact explainers | each transition has a named cause |
 
+## Compact semantic scenes
+
+For connected explainers and operational route scenes, use the smallest readable
+occupied layout by default. Size nodes from final labels, pack related concepts,
+shorten detours and crop unused outside space. Reserve arrowheads and their
+shafts, visible source/target ports, independent lanes for distinct edges,
+annotation bounds and every moving token's swept bounds. Do not shorten a path
+until its moving tokens hide a tip, collide with a label or suggest a different
+relationship. Keep static labels outside moving groups.
+
+Compare the current render with one tighter arrangement at intended size, then
+check initial, intermediate, final and reduced-motion states. Keep the smaller
+layout only if every label and route remains equally traceable. Restore the last
+passing spacing after a collision or ambiguous endpoint; stop when local reflow
+alternatives no longer save space safely. Reflow or enlarge the canvas instead
+of reducing text, arrowheads or explanatory strokes. Preserve explicit dimensions,
+physical/numerical coordinates and negative space that defines generative art;
+this procedure applies to explanation layout, not solver or field compression.
+
 ## Phase Patterns
 
 - **Context → mechanism → consequence:** reveal stable context, run the procedural mechanism, then hold the meaningful result.

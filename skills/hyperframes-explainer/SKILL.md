@@ -19,6 +19,9 @@ Build one canonical state and one seekable clock for the whole composition.
    question. Repeating a number in several boxes is not a multi-view explanation.
 3. Keep the mechanism dominant and the representations close to the objects they
    explain. Prefer one continuous scene; keep anchors and entity identities stable.
+   Default conceptual diagrams and their connections to the smallest readable
+   footprint, retaining clear arrowheads, endpoints and separated routes through
+   the full motion envelope. Preserve quantitative chart reading space.
    Read [explanation-design.md](references/explanation-design.md) before laying out
    a scene, especially for multiple simultaneous effects.
 4. Start with **colorset1**. Read [palette-policy.md](references/palette-policy.md).

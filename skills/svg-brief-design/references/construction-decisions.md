@@ -25,6 +25,27 @@ and shape the gaps before adding details. Do not add a second rim merely to hide
 awkward junctions. For a noncircular subject, make different geometry rather than
 forcing an orbit into it. Other exact geometry belongs in the scaffold guide.
 
+## Compact connected explanations
+
+Size each labeled node from its final text and a 6-unit vertical/10-unit
+horizontal inset as the starting point. Pack related
+concepts together, shorten connector detours and crop unused outside space.
+Reserve every label, full arrowhead, identifiable source/target port and
+separate parallel/return route before reducing a gap. Keep a visible shaft
+between endpoints; a tip touching another line or hidden behind a node fails.
+Do not route through a label or silently share an unrelated edge's segment.
+
+Render at intended size, try one tighter gap or branch arrangement, and compare
+the occupied bounds and every relationship. Keep the smaller version only
+when labels, endpoints and route tracing remain equally clear; undo the first
+readability loss. Stop when local alternatives cannot save more space safely.
+Reflow or enlarge a constrained canvas instead of reducing the font. Keep the
+negative space that defines artwork and the scales of quantitative graphs.
+
+The flow scaffold uses readable content-sized nodes centered in the allotted
+box. Its canvas remains the declared size; for an unconstrained diagram, choose
+canvas dimensions around the occupied nodes/routes plus their clearance.
+
 ## Let white describe the form
 
 For an open mechanical form, draw its principal rails, plates or facets around

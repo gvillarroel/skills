@@ -1,0 +1,1352 @@
+{
+  "skill": "slidev-echarts",
+  "revision": "sol-caption-placement-final",
+  "rows": [
+    {
+      "run": "compact-slidev-echarts-20261004-sol-caption-placement-final-contract",
+      "case": "contract",
+      "payloadSha256": "c5f20fbe78097acd533a6825fac55a1c4e74c4361f696e236d2e96168f789806",
+      "model": "openai-codex/gpt-5.6-sol",
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-05T04:37:40.604840+00:00",
+        "finishedAtUtc": "2026-10-05T04:39:04.024226+00:00",
+        "durationSeconds": 83.42,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "eventSummaryExitCode": 0,
+      "observedModels": {
+        "gpt-5.6-sol": 17
+      },
+      "eventFindings": [],
+      "runtimeReadPaths": [
+        {
+          "path": "../prompt.md",
+          "calls": 1,
+          "resultBytes": 1111
+        },
+        {
+          "path": "skills/slidev-echarts/SKILL.md",
+          "calls": 1,
+          "resultBytes": 9760
+        },
+        {
+          "path": "skills/slidev-echarts/references/charts/graph.md",
+          "calls": 1,
+          "resultBytes": 1625
+        },
+        {
+          "path": "skills/slidev-echarts/references/arrow-contrast.md",
+          "calls": 1,
+          "resultBytes": 6898
+        },
+        {
+          "path": "skills/slidev-echarts/references/colorset-contract.md",
+          "calls": 1,
+          "resultBytes": 7240
+        },
+        {
+          "path": "skills/slidev-echarts/assets/palettes/colorsets.json",
+          "calls": 1,
+          "resultBytes": 7011
+        },
+        {
+          "path": "skills/slidev-echarts/references/compact-diagrams.md",
+          "calls": 1,
+          "resultBytes": 10502
+        },
+        {
+          "path": "candidates/fixed-review.json",
+          "calls": 1,
+          "resultBytes": 3154
+        },
+        {
+          "path": "candidates/fixed-native.json",
+          "calls": 1,
+          "resultBytes": 22499
+        },
+        {
+          "path": "candidates/fixed-preview.png",
+          "calls": 1,
+          "resultBytes": 5154
+        },
+        {
+          "path": "deliverables/graph.svg",
+          "calls": 1,
+          "resultBytes": 3431
+        },
+        {
+          "path": "candidates/final-native.json",
+          "calls": 1,
+          "resultBytes": 3478
+        },
+        {
+          "path": "deliverables/graph-option.json",
+          "calls": 1,
+          "resultBytes": 7566
+        },
+        {
+          "path": "candidates/final-preview.png",
+          "calls": 1,
+          "resultBytes": 5154
+        }
+      ],
+      "independentBrowser": {
+        "ok": true,
+        "pageErrors": [],
+        "findings": [],
+        "states": [
+          {
+            "state": "settled",
+            "kind": "static",
+            "viewport": null,
+            "graphs": [
+              {
+                "width": 640,
+                "height": 360,
+                "nodeCount": 3,
+                "headCount": 2,
+                "minimumHeadGap": 3.25,
+                "labels": [
+                  "Alpha",
+                  "Beta",
+                  "Gamma"
+                ],
+                "fontSizes": [
+                  18
+                ],
+                "textOverlaps": []
+              }
+            ]
+          },
+          {
+            "state": "replay-1",
+            "kind": "static",
+            "viewport": null,
+            "graphs": [
+              {
+                "width": 640,
+                "height": 360,
+                "nodeCount": 3,
+                "headCount": 2,
+                "minimumHeadGap": 3.25,
+                "labels": [
+                  "Alpha",
+                  "Beta",
+                  "Gamma"
+                ],
+                "fontSizes": [
+                  18
+                ],
+                "textOverlaps": []
+              }
+            ]
+          },
+          {
+            "state": "replay-2",
+            "kind": "static",
+            "viewport": null,
+            "graphs": [
+              {
+                "width": 640,
+                "height": 360,
+                "nodeCount": 3,
+                "headCount": 2,
+                "minimumHeadGap": 3.25,
+                "labels": [
+                  "Alpha",
+                  "Beta",
+                  "Gamma"
+                ],
+                "fontSizes": [
+                  18
+                ],
+                "textOverlaps": []
+              }
+            ]
+          },
+          {
+            "state": "resized",
+            "kind": "static",
+            "viewport": null,
+            "graphs": [
+              {
+                "width": 640,
+                "height": 360,
+                "nodeCount": 3,
+                "headCount": 2,
+                "minimumHeadGap": 3.25,
+                "labels": [
+                  "Alpha",
+                  "Beta",
+                  "Gamma"
+                ],
+                "fontSizes": [
+                  18
+                ],
+                "textOverlaps": []
+              }
+            ]
+          },
+          {
+            "state": "reduced-motion",
+            "kind": "static",
+            "viewport": null,
+            "graphs": [
+              {
+                "width": 640,
+                "height": 360,
+                "nodeCount": 3,
+                "headCount": 2,
+                "minimumHeadGap": 3.25,
+                "labels": [
+                  "Alpha",
+                  "Beta",
+                  "Gamma"
+                ],
+                "fontSizes": [
+                  18
+                ],
+                "textOverlaps": []
+              }
+            ]
+          }
+        ]
+      },
+      "independentBrowserPath": "projects/diagram-compactness/artifacts/reviews/compact-slidev-echarts-20261004-sol-caption-placement-final-contract/independent-native/browser.json",
+      "independentLiveOption": {
+        "ok": true,
+        "pageErrors": [],
+        "findings": [],
+        "states": [
+          {
+            "state": "delivery",
+            "helper": {
+              "checkedEdges": 2,
+              "adjustedEdges": 2,
+              "clearancePx": 3
+            },
+            "repeat": {
+              "checkedEdges": 2,
+              "adjustedEdges": 0,
+              "clearancePx": 3
+            },
+            "graphs": [
+              {
+                "nodeCount": 3,
+                "headCount": 2,
+                "labels": [
+                  "Alpha",
+                  "Beta",
+                  "Gamma"
+                ],
+                "minimumHeadGap": 3.25,
+                "textOverlaps": []
+              }
+            ]
+          },
+          {
+            "state": "resized",
+            "helper": {
+              "checkedEdges": 2,
+              "adjustedEdges": 2,
+              "clearancePx": 3
+            },
+            "repeat": {
+              "checkedEdges": 2,
+              "adjustedEdges": 0,
+              "clearancePx": 3
+            },
+            "graphs": [
+              {
+                "nodeCount": 3,
+                "headCount": 2,
+                "labels": [
+                  "Alpha",
+                  "Beta",
+                  "Gamma"
+                ],
+                "minimumHeadGap": 3.25,
+                "textOverlaps": []
+              }
+            ]
+          },
+          {
+            "state": "restored",
+            "helper": {
+              "checkedEdges": 2,
+              "adjustedEdges": 2,
+              "clearancePx": 3
+            },
+            "repeat": {
+              "checkedEdges": 2,
+              "adjustedEdges": 0,
+              "clearancePx": 3
+            },
+            "graphs": [
+              {
+                "nodeCount": 3,
+                "headCount": 2,
+                "labels": [
+                  "Alpha",
+                  "Beta",
+                  "Gamma"
+                ],
+                "minimumHeadGap": 3.25,
+                "textOverlaps": []
+              }
+            ]
+          }
+        ]
+      },
+      "independentManualVisualReview": {
+        "passed": true,
+        "reviewer": "audit_renderers",
+        "actualNativeImagesReviewed": [
+          "static-settled.png",
+          "static-replay-1.png",
+          "static-replay-2.png",
+          "static-resized.png",
+          "static-reduced-motion.png",
+          "live-option-delivery.png",
+          "live-option-resized.png",
+          "live-option-restored.png"
+        ],
+        "findings": [],
+        "observations": [
+          "All three complete Alpha/Beta/Gamma labels are readable at 18 px inside the exact native 90\u00d740 rectangles.",
+          "The delivered native SVG is exactly 640\u00d7360, with all three symbols on the same y coordinate and complete horizontal directed shafts.",
+          "Both full arrowheads are visible, attributable to their source and target, and separated from native bodies by 3.25 px.",
+          "Actual live ECharts 640\u2192800\u2192640 resize preserves native labels, symbol dimensions, complete heads and zero changes on repeated insetting."
+        ]
+      },
+      "jointPass": true
+    },
+    {
+      "run": "compact-slidev-echarts-20261004-sol-caption-placement-final-natural-1",
+      "case": "natural-1",
+      "payloadSha256": "c5f20fbe78097acd533a6825fac55a1c4e74c4361f696e236d2e96168f789806",
+      "model": "openai-codex/gpt-5.6-sol",
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-05T04:39:07.677622+00:00",
+        "finishedAtUtc": "2026-10-05T04:42:59.477530+00:00",
+        "durationSeconds": 231.802,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "eventSummaryExitCode": 0,
+      "observedModels": {
+        "gpt-5.6-sol": 23
+      },
+      "eventFindings": [],
+      "runtimeReadPaths": [
+        {
+          "path": "../prompt.md",
+          "calls": 1,
+          "resultBytes": 1113
+        },
+        {
+          "path": "skills/slidev-echarts/SKILL.md",
+          "calls": 1,
+          "resultBytes": 9760
+        },
+        {
+          "path": "skills/slidev-echarts/references/colorset-contract.md",
+          "calls": 1,
+          "resultBytes": 7240
+        },
+        {
+          "path": "skills/slidev-echarts/references/compact-diagrams.md",
+          "calls": 1,
+          "resultBytes": 10502
+        },
+        {
+          "path": "skills/slidev-echarts/references/charts/graph.md",
+          "calls": 1,
+          "resultBytes": 1625
+        },
+        {
+          "path": "skills/slidev-echarts/references/integration-patterns.md",
+          "calls": 1,
+          "resultBytes": 8694
+        },
+        {
+          "path": "skills/slidev-echarts/references/visual-tokens.md",
+          "calls": 1,
+          "resultBytes": 3546
+        },
+        {
+          "path": "skills/slidev-echarts/references/arrow-contrast.md",
+          "calls": 1,
+          "resultBytes": 6898
+        },
+        {
+          "path": "skills/slidev-echarts/assets/palettes/colorsets.json",
+          "calls": 1,
+          "resultBytes": 7011
+        },
+        {
+          "path": "workflow-candidate-review.json",
+          "calls": 1,
+          "resultBytes": 7739
+        },
+        {
+          "path": "workflow-candidate-preview.png",
+          "calls": 1,
+          "resultBytes": 26858
+        },
+        {
+          "path": "skills/slidev-echarts/assets/templates/concept-graph-labels.mjs",
+          "calls": 1,
+          "resultBytes": 7429
+        },
+        {
+          "path": "workflow-final-option.json",
+          "calls": 1,
+          "resultBytes": 15585
+        },
+        {
+          "path": "skills/slidev-echarts/assets/templates/echarts-colorsets.mjs",
+          "calls": 1,
+          "resultBytes": 5973
+        },
+        {
+          "path": "deliverables/deck-capture/capture.json",
+          "calls": 1,
+          "resultBytes": 47213
+        },
+        {
+          "path": "deliverables/deck-capture/reduced.png",
+          "calls": 1,
+          "resultBytes": 83958
+        },
+        {
+          "path": "deliverables/deck-capture/resized.png",
+          "calls": 1,
+          "resultBytes": 80166
+        },
+        {
+          "path": "deliverables/deck-capture/state-1.png",
+          "calls": 1,
+          "resultBytes": 92994
+        },
+        {
+          "path": "deliverables/deck-capture/state-0.png",
+          "calls": 1,
+          "resultBytes": 92986
+        }
+      ],
+      "independentBrowser": {
+        "ok": true,
+        "pageErrors": [],
+        "findings": [],
+        "states": [
+          {
+            "state": "initial",
+            "kind": null,
+            "viewport": {
+              "width": 1280,
+              "height": 800
+            },
+            "graphs": [
+              {
+                "width": 1099.755126953125,
+                "height": 376.1632080078125,
+                "nodeCount": 6,
+                "headCount": 6,
+                "minimumHeadGap": 4.244873046875,
+                "labels": [
+                  "Receive",
+                  "Barcode",
+                  "Analyze",
+                  "Review",
+                  "Archive",
+                  "Quarantine",
+                  "Retest",
+                  "Failed sample"
+                ],
+                "fontSizes": [
+                  14,
+                  18
+                ],
+                "textOverlaps": []
+              }
+            ]
+          },
+          {
+            "state": "click-1",
+            "kind": null,
+            "viewport": {
+              "width": 1280,
+              "height": 800
+            },
+            "graphs": [
+              {
+                "width": 1099.755126953125,
+                "height": 376.1632080078125,
+                "nodeCount": 6,
+                "headCount": 6,
+                "minimumHeadGap": 4.244873046875,
+                "labels": [
+                  "Receive",
+                  "Barcode",
+                  "Analyze",
+                  "Review",
+                  "Archive",
+                  "Quarantine",
+                  "Retest",
+                  "Failed sample"
+                ],
+                "fontSizes": [
+                  14,
+                  18
+                ],
+                "textOverlaps": []
+              }
+            ]
+          },
+          {
+            "state": "click-2",
+            "kind": null,
+            "viewport": {
+              "width": 1280,
+              "height": 800
+            },
+            "graphs": [
+              {
+                "width": 1099.755126953125,
+                "height": 376.1632080078125,
+                "nodeCount": 6,
+                "headCount": 6,
+                "minimumHeadGap": 4.244873046875,
+                "labels": [
+                  "Receive",
+                  "Barcode",
+                  "Analyze",
+                  "Review",
+                  "Archive",
+                  "Quarantine",
+                  "Retest",
+                  "Failed sample"
+                ],
+                "fontSizes": [
+                  14,
+                  18
+                ],
+                "textOverlaps": []
+              }
+            ]
+          },
+          {
+            "state": "replay",
+            "kind": null,
+            "viewport": {
+              "width": 1280,
+              "height": 800
+            },
+            "graphs": [
+              {
+                "width": 1099.755126953125,
+                "height": 376.1632080078125,
+                "nodeCount": 6,
+                "headCount": 6,
+                "minimumHeadGap": 4.244873046875,
+                "labels": [
+                  "Receive",
+                  "Barcode",
+                  "Analyze",
+                  "Review",
+                  "Archive",
+                  "Quarantine",
+                  "Retest",
+                  "Failed sample"
+                ],
+                "fontSizes": [
+                  14,
+                  18
+                ],
+                "textOverlaps": []
+              }
+            ]
+          },
+          {
+            "state": "resized",
+            "kind": null,
+            "viewport": {
+              "width": 1024,
+              "height": 768
+            },
+            "graphs": [
+              {
+                "width": 879.8040161132812,
+                "height": 300.9306335449219,
+                "nodeCount": 6,
+                "headCount": 6,
+                "minimumHeadGap": 3.3958740234375,
+                "labels": [
+                  "Receive",
+                  "Barcode",
+                  "Analyze",
+                  "Review",
+                  "Archive",
+                  "Quarantine",
+                  "Retest",
+                  "Failed sample"
+                ],
+                "fontSizes": [
+                  14,
+                  18
+                ],
+                "textOverlaps": []
+              }
+            ]
+          },
+          {
+            "state": "reduced-motion",
+            "kind": null,
+            "viewport": {
+              "width": 1024,
+              "height": 768
+            },
+            "graphs": [
+              {
+                "width": 879.8040161132812,
+                "height": 300.9306335449219,
+                "nodeCount": 6,
+                "headCount": 6,
+                "minimumHeadGap": 3.3958740234375,
+                "labels": [
+                  "Receive",
+                  "Barcode",
+                  "Analyze",
+                  "Review",
+                  "Archive",
+                  "Quarantine",
+                  "Retest",
+                  "Failed sample"
+                ],
+                "fontSizes": [
+                  14,
+                  18
+                ],
+                "textOverlaps": []
+              }
+            ]
+          }
+        ]
+      },
+      "independentBrowserPath": "projects/diagram-compactness/artifacts/reviews/compact-slidev-echarts-20261004-sol-caption-placement-final-natural-1/independent-deck/browser.json",
+      "independentLiveOption": null,
+      "independentManualVisualReview": {
+        "passed": true,
+        "reviewer": "audit_renderers",
+        "actualNativeImagesReviewed": [
+          "initial.png",
+          "click-1.png",
+          "click-2.png",
+          "replay.png",
+          "resized.png",
+          "reduced-motion.png",
+          "resized-caption-4x.png",
+          "reduced-motion-caption-4x.png"
+        ],
+        "findings": [],
+        "authoredCapturesRetained": false,
+        "independentCaptureSource": "Evaluator-owned byte-identical retained deck and retained read-only skill rebuild, recorded in independent-retained-build/build-proof.json; original trial sources and deliverables unchanged.",
+        "observations": [
+          "Both authored states (initial normal flow and one-click retest) preserve all six complete concept labels and both required relationship captions; an extra click remains in the settled final state.",
+          "Retest is attributable to the Review\u2192Analyze return and Failed sample to the Analyze\u2192Quarantine branch, with readable native captions and complete heads.",
+          "Default native replay, 1024\u00d7768 resize and reduced-motion images retain clear glyphs; nearest raw-pixel crops confirm no shaft enters any Failed sample glyph.",
+          "Independent actual DOM glyph-to-shaft paint gaps remain at least 4.4298 px for Retest and 5.4114 px for Failed sample. Both full captions remain font14 or larger and opaque.",
+          "No canvas clipping, ambiguous endpoint, label overlap or hidden head was observed. Root independently approved the reduced-motion native full image."
+        ]
+      },
+      "jointPass": true
+    },
+    {
+      "run": "compact-slidev-echarts-20261004-sol-caption-placement-final-natural-2",
+      "case": "natural-2",
+      "payloadSha256": "c5f20fbe78097acd533a6825fac55a1c4e74c4361f696e236d2e96168f789806",
+      "model": "openai-codex/gpt-5.6-sol",
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-05T04:43:03.228756+00:00",
+        "finishedAtUtc": "2026-10-05T04:47:09.464913+00:00",
+        "durationSeconds": 246.238,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "eventSummaryExitCode": 0,
+      "observedModels": {
+        "gpt-5.6-sol": 24
+      },
+      "eventFindings": [],
+      "runtimeReadPaths": [
+        {
+          "path": "../prompt.md",
+          "calls": 1,
+          "resultBytes": 1113
+        },
+        {
+          "path": "skills/slidev-echarts/SKILL.md",
+          "calls": 1,
+          "resultBytes": 9760
+        },
+        {
+          "path": "skills/slidev-echarts/references/charts/graph.md",
+          "calls": 1,
+          "resultBytes": 1625
+        },
+        {
+          "path": "skills/slidev-echarts/references/integration-patterns.md",
+          "calls": 1,
+          "resultBytes": 8694
+        },
+        {
+          "path": "skills/slidev-echarts/references/visual-tokens.md",
+          "calls": 1,
+          "resultBytes": 3546
+        },
+        {
+          "path": "skills/slidev-echarts/references/arrow-contrast.md",
+          "calls": 1,
+          "resultBytes": 6898
+        },
+        {
+          "path": "skills/slidev-echarts/references/colorset-contract.md",
+          "calls": 1,
+          "resultBytes": 7240
+        },
+        {
+          "path": "skills/slidev-echarts/references/compact-diagrams.md",
+          "calls": 1,
+          "resultBytes": 10502
+        },
+        {
+          "path": "skills/slidev-echarts/assets/palettes/colorsets.json",
+          "calls": 1,
+          "resultBytes": 7011
+        },
+        {
+          "path": ".work/initial-review.json",
+          "calls": 1,
+          "resultBytes": 7739
+        },
+        {
+          "path": ".work/initial-preview.png",
+          "calls": 1,
+          "resultBytes": 26858
+        },
+        {
+          "path": ".work/final-option.json",
+          "calls": 1,
+          "resultBytes": 15585
+        },
+        {
+          "path": ".work/native-review.json",
+          "calls": 1,
+          "resultBytes": 106755
+        },
+        {
+          "path": ".work/native-preview.png",
+          "calls": 1,
+          "resultBytes": 26798
+        },
+        {
+          "path": "deliverables/deck-capture/capture.json",
+          "calls": 1,
+          "resultBytes": 46943
+        },
+        {
+          "path": "deliverables/deck-capture/reduced.png",
+          "calls": 1,
+          "resultBytes": 69590
+        },
+        {
+          "path": "deliverables/deck-capture/state-1.png",
+          "calls": 1,
+          "resultBytes": 72610
+        },
+        {
+          "path": "deliverables/deck-capture/replay.png",
+          "calls": 1,
+          "resultBytes": 74306
+        },
+        {
+          "path": "deliverables/deck-capture/resized.png",
+          "calls": 1,
+          "resultBytes": 68770
+        },
+        {
+          "path": "deliverables/deck-capture/state-0.png",
+          "calls": 1,
+          "resultBytes": 72066
+        },
+        {
+          "path": "package-lock.json",
+          "calls": 1,
+          "resultBytes": 697
+        },
+        {
+          "path": "package.json",
+          "calls": 1,
+          "resultBytes": 106
+        }
+      ],
+      "independentBrowser": {
+        "ok": true,
+        "pageErrors": [],
+        "findings": [],
+        "states": [
+          {
+            "state": "initial",
+            "kind": null,
+            "viewport": {
+              "width": 1280,
+              "height": 800
+            },
+            "graphs": [
+              {
+                "width": 916.4625244140625,
+                "height": 313.46942138671875,
+                "nodeCount": 6,
+                "headCount": 6,
+                "minimumHeadGap": 3.53741455078125,
+                "labels": [
+                  "Receive",
+                  "Barcode",
+                  "Analyze",
+                  "Review",
+                  "Archive",
+                  "Quarantine",
+                  "Retest",
+                  "Failed sample"
+                ],
+                "fontSizes": [
+                  14,
+                  18
+                ],
+                "textOverlaps": []
+              }
+            ]
+          },
+          {
+            "state": "click-1",
+            "kind": null,
+            "viewport": {
+              "width": 1280,
+              "height": 800
+            },
+            "graphs": [
+              {
+                "width": 916.4625244140625,
+                "height": 313.46942138671875,
+                "nodeCount": 6,
+                "headCount": 6,
+                "minimumHeadGap": 3.53741455078125,
+                "labels": [
+                  "Receive",
+                  "Barcode",
+                  "Analyze",
+                  "Review",
+                  "Archive",
+                  "Quarantine",
+                  "Retest",
+                  "Failed sample"
+                ],
+                "fontSizes": [
+                  14,
+                  18
+                ],
+                "textOverlaps": []
+              }
+            ]
+          },
+          {
+            "state": "replay",
+            "kind": null,
+            "viewport": {
+              "width": 1280,
+              "height": 800
+            },
+            "graphs": [
+              {
+                "width": 916.4625244140625,
+                "height": 313.46942138671875,
+                "nodeCount": 6,
+                "headCount": 6,
+                "minimumHeadGap": 3.53741455078125,
+                "labels": [
+                  "Receive",
+                  "Barcode",
+                  "Analyze",
+                  "Review",
+                  "Archive",
+                  "Quarantine",
+                  "Retest",
+                  "Failed sample"
+                ],
+                "fontSizes": [
+                  14,
+                  18
+                ],
+                "textOverlaps": []
+              }
+            ]
+          },
+          {
+            "state": "resized",
+            "kind": null,
+            "viewport": {
+              "width": 1024,
+              "height": 768
+            },
+            "graphs": [
+              {
+                "width": 879.8040161132812,
+                "height": 300.93060302734375,
+                "nodeCount": 6,
+                "headCount": 6,
+                "minimumHeadGap": 3.3958740234375,
+                "labels": [
+                  "Receive",
+                  "Barcode",
+                  "Analyze",
+                  "Review",
+                  "Archive",
+                  "Quarantine",
+                  "Retest",
+                  "Failed sample"
+                ],
+                "fontSizes": [
+                  14,
+                  18
+                ],
+                "textOverlaps": []
+              }
+            ]
+          },
+          {
+            "state": "reduced-motion",
+            "kind": null,
+            "viewport": {
+              "width": 1024,
+              "height": 768
+            },
+            "graphs": [
+              {
+                "width": 879.8040161132812,
+                "height": 300.93060302734375,
+                "nodeCount": 6,
+                "headCount": 6,
+                "minimumHeadGap": 3.3958740234375,
+                "labels": [
+                  "Receive",
+                  "Barcode",
+                  "Analyze",
+                  "Review",
+                  "Archive",
+                  "Quarantine",
+                  "Retest",
+                  "Failed sample"
+                ],
+                "fontSizes": [
+                  14,
+                  18
+                ],
+                "textOverlaps": []
+              }
+            ]
+          }
+        ]
+      },
+      "independentBrowserPath": "projects/diagram-compactness/artifacts/reviews/compact-slidev-echarts-20261004-sol-caption-placement-final-natural-2/independent-deck/browser.json",
+      "independentLiveOption": null,
+      "independentManualVisualReview": {
+        "passed": true,
+        "reviewer": "audit_renderers",
+        "actualNativeImagesReviewed": [
+          "initial.png",
+          "click-1.png",
+          "replay.png",
+          "resized.png",
+          "reduced-motion.png",
+          "resized-caption-4x.png",
+          "reduced-motion-caption-4x.png"
+        ],
+        "findings": [],
+        "authoredCapturesRetained": false,
+        "independentCaptureSource": "Evaluator-owned source-identical retained deck and retained read-only skill rebuild, with original source/deliverable hashes checked in independent-retained-build/build-proof.json.",
+        "observations": [
+          "The complete six-node normal-flow map and one-click retest state retain all labels, full directed shafts and six visible heads.",
+          "Both relationship captions remain readable and opaque at font14 or larger. Retest belongs to Review\u2192Analyze; Failed sample belongs to Analyze\u2192Quarantine.",
+          "Native default resized and reduced images plus nearest raw-pixel crops show Failed sample clearly below its own diagonal shaft and separate from the unrelated horizontal shaft.",
+          "Independent actual glyph paint gaps are at least 5.3126 px for Retest and 5.7942 px for Failed sample; complete-head gaps from captions remain positive.",
+          "Replay, actual laptop resize and reduced-motion states preserve caption attribution and complete heads without clipping, text overlap or unreadable crossings."
+        ]
+      },
+      "jointPass": true
+    },
+    {
+      "run": "compact-slidev-echarts-20261004-sol-caption-placement-final-natural-3",
+      "case": "natural-3",
+      "payloadSha256": "c5f20fbe78097acd533a6825fac55a1c4e74c4361f696e236d2e96168f789806",
+      "model": "openai-codex/gpt-5.6-sol",
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-05T04:47:13.226047+00:00",
+        "finishedAtUtc": "2026-10-05T04:51:29.658759+00:00",
+        "durationSeconds": 256.435,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "eventSummaryExitCode": 0,
+      "observedModels": {
+        "gpt-5.6-sol": 27
+      },
+      "eventFindings": [],
+      "runtimeReadPaths": [
+        {
+          "path": "../prompt.md",
+          "calls": 1,
+          "resultBytes": 1113
+        },
+        {
+          "path": "skills/slidev-echarts/SKILL.md",
+          "calls": 1,
+          "resultBytes": 9760
+        },
+        {
+          "path": "skills/slidev-echarts/references/integration-patterns.md",
+          "calls": 1,
+          "resultBytes": 8694
+        },
+        {
+          "path": "skills/slidev-echarts/references/charts/graph.md",
+          "calls": 1,
+          "resultBytes": 1625
+        },
+        {
+          "path": "skills/slidev-echarts/references/colorset-contract.md",
+          "calls": 1,
+          "resultBytes": 7240
+        },
+        {
+          "path": "skills/slidev-echarts/references/visual-tokens.md",
+          "calls": 1,
+          "resultBytes": 3546
+        },
+        {
+          "path": "skills/slidev-echarts/references/compact-diagrams.md",
+          "calls": 1,
+          "resultBytes": 10502
+        },
+        {
+          "path": "skills/slidev-echarts/references/arrow-contrast.md",
+          "calls": 1,
+          "resultBytes": 6898
+        },
+        {
+          "path": "skills/slidev-echarts/assets/palettes/colorsets.json",
+          "calls": 1,
+          "resultBytes": 7011
+        },
+        {
+          "path": "skills/slidev-echarts/assets/templates/echarts-colorsets.mjs",
+          "calls": 1,
+          "resultBytes": 46998
+        },
+        {
+          "path": "skills/slidev-echarts/assets/templates/concept-graph-labels.mjs",
+          "calls": 1,
+          "resultBytes": 7429
+        },
+        {
+          "path": ".work/initial-review.json",
+          "calls": 1,
+          "resultBytes": 7739
+        },
+        {
+          "path": ".work/initial-preview.png",
+          "calls": 1,
+          "resultBytes": 26858
+        },
+        {
+          "path": ".work/initial-option.json",
+          "calls": 1,
+          "resultBytes": 15585
+        },
+        {
+          "path": ".work/final-native.json",
+          "calls": 1,
+          "resultBytes": 106755
+        },
+        {
+          "path": ".work/final-native.png",
+          "calls": 1,
+          "resultBytes": 26798
+        },
+        {
+          "path": "deliverables/deck-capture/capture.json",
+          "calls": 1,
+          "resultBytes": 47283
+        },
+        {
+          "path": "deliverables/deck-capture/reduced.png",
+          "calls": 1,
+          "resultBytes": 64966
+        },
+        {
+          "path": "deliverables/deck-capture/resized.png",
+          "calls": 1,
+          "resultBytes": 58254
+        },
+        {
+          "path": "deliverables/deck-capture/state-1.png",
+          "calls": 1,
+          "resultBytes": 65082
+        },
+        {
+          "path": "deliverables/deck-capture/state-0.png",
+          "calls": 1,
+          "resultBytes": 64758
+        },
+        {
+          "path": ".work/tighter-review.json",
+          "calls": 1,
+          "resultBytes": 269
+        }
+      ],
+      "independentBrowser": {
+        "ok": true,
+        "pageErrors": [],
+        "findings": [],
+        "states": [
+          {
+            "state": "initial",
+            "kind": null,
+            "viewport": {
+              "width": 1280,
+              "height": 800
+            },
+            "graphs": [
+              {
+                "width": 1099.755126953125,
+                "height": 376.1632995605469,
+                "nodeCount": 6,
+                "headCount": 6,
+                "minimumHeadGap": 4.244873046875,
+                "labels": [
+                  "Receive",
+                  "Barcode",
+                  "Analyze",
+                  "Review",
+                  "Archive",
+                  "Quarantine",
+                  "Retest",
+                  "Failed sample"
+                ],
+                "fontSizes": [
+                  14,
+                  18
+                ],
+                "textOverlaps": []
+              }
+            ]
+          },
+          {
+            "state": "click-1",
+            "kind": null,
+            "viewport": {
+              "width": 1280,
+              "height": 800
+            },
+            "graphs": [
+              {
+                "width": 1099.755126953125,
+                "height": 376.1632995605469,
+                "nodeCount": 6,
+                "headCount": 6,
+                "minimumHeadGap": 4.244873046875,
+                "labels": [
+                  "Receive",
+                  "Barcode",
+                  "Analyze",
+                  "Review",
+                  "Archive",
+                  "Quarantine",
+                  "Retest",
+                  "Failed sample"
+                ],
+                "fontSizes": [
+                  14,
+                  18
+                ],
+                "textOverlaps": []
+              }
+            ]
+          },
+          {
+            "state": "replay",
+            "kind": null,
+            "viewport": {
+              "width": 1280,
+              "height": 800
+            },
+            "graphs": [
+              {
+                "width": 1099.755126953125,
+                "height": 376.1632995605469,
+                "nodeCount": 6,
+                "headCount": 6,
+                "minimumHeadGap": 4.244873046875,
+                "labels": [
+                  "Receive",
+                  "Barcode",
+                  "Analyze",
+                  "Review",
+                  "Archive",
+                  "Quarantine",
+                  "Retest",
+                  "Failed sample"
+                ],
+                "fontSizes": [
+                  14,
+                  18
+                ],
+                "textOverlaps": []
+              }
+            ]
+          },
+          {
+            "state": "resized",
+            "kind": null,
+            "viewport": {
+              "width": 1024,
+              "height": 768
+            },
+            "graphs": [
+              {
+                "width": 879.8040161132812,
+                "height": 300.9305725097656,
+                "nodeCount": 6,
+                "headCount": 6,
+                "minimumHeadGap": 3.3958740234375,
+                "labels": [
+                  "Receive",
+                  "Barcode",
+                  "Analyze",
+                  "Review",
+                  "Archive",
+                  "Quarantine",
+                  "Retest",
+                  "Failed sample"
+                ],
+                "fontSizes": [
+                  14,
+                  18
+                ],
+                "textOverlaps": []
+              }
+            ]
+          },
+          {
+            "state": "reduced-motion",
+            "kind": null,
+            "viewport": {
+              "width": 1024,
+              "height": 768
+            },
+            "graphs": [
+              {
+                "width": 879.8040161132812,
+                "height": 300.9305725097656,
+                "nodeCount": 6,
+                "headCount": 6,
+                "minimumHeadGap": 3.3958740234375,
+                "labels": [
+                  "Receive",
+                  "Barcode",
+                  "Analyze",
+                  "Review",
+                  "Archive",
+                  "Quarantine",
+                  "Retest",
+                  "Failed sample"
+                ],
+                "fontSizes": [
+                  14,
+                  18
+                ],
+                "textOverlaps": []
+              }
+            ]
+          }
+        ]
+      },
+      "independentBrowserPath": "projects/diagram-compactness/artifacts/reviews/compact-slidev-echarts-20261004-sol-caption-placement-final-natural-3/independent-deck/browser.json",
+      "independentLiveOption": null,
+      "independentManualVisualReview": {
+        "passed": true,
+        "reviewer": "audit_renderers",
+        "actualNativeImagesReviewed": [
+          "initial.png",
+          "click-1.png",
+          "replay.png",
+          "resized.png",
+          "reduced-motion.png",
+          "resized-caption-4x.png",
+          "reduced-motion-caption-4x.png"
+        ],
+        "authoredNativeImagesAlsoReviewed": [
+          "deliverables/deck-capture/state-0.png",
+          "deliverables/deck-capture/state-1.png",
+          "deliverables/deck-capture/replay.png",
+          "deliverables/deck-capture/resized.png",
+          "deliverables/deck-capture/reduced.png"
+        ],
+        "findings": [],
+        "authoredCapturesRetained": true,
+        "independentCaptureSource": "Evaluator-owned source-identical retained deck and retained read-only c5f20 skill rebuild; source and original deliverable hashes remain unchanged.",
+        "observations": [
+          "All six concepts and six complete directed arrows remain visible in normal-flow and one-click retest states.",
+          "Retest is a native caption on Review\u2192Analyze and Failed sample is a native caption on Analyze\u2192Quarantine; full words remain readable and opaque at font14 or larger.",
+          "Both authored and independent default native replay/resized/reduced images retain full labels and clear heads. Nearest raw-pixel crops confirm no glyph/shaft collision.",
+          "Independent native glyph paint gaps are at least 6.4611 px for Retest and 6.4431 px for Failed sample across all states; captions remain separate from all complete heads.",
+          "No label clipping, ambiguous attachment, unreadable crossing or lost head was observed. Root independently approved the retained authored reduced-motion full native image."
+        ]
+      },
+      "jointPass": true
+    }
+  ]
+}

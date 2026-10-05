@@ -7,6 +7,17 @@ description: "Builds, choreographs, troubleshoots, and validates Anime.js animat
 
 Read [the colorset output contract](references/colorset-contract.md) before authoring or auditing visual output. Apply one exact bundled palette to every authored output path and inspect rendered paint. Default to colorset1; declare colorset2 when its category distinctions are needed. Start category marks with opaque solid fills and no decorative borders; exhaust the selected palette's usable unique solids before outlined overflow variants. Choose black or white inside text by actual fill contrast.
 
+For connected explanatory diagrams, use the smallest readable layout by
+default. Follow [diagram compaction](references/integration-patterns.md#diagram-compaction)
+to reduce idle gaps and route length while protecting labels, full arrowheads,
+endpoint identity and motion clearance. Keep chart scales and useful data
+dimensions intact; do not apply packing to unrelated animation studies.
+
+For an ordered main row with an optional reciprocal check branch and backward
+return, start with [the measured connected-flow scaffold](references/connected-flows.md)
+instead of hand-sizing the diagram. It creates a native readable Vue stage,
+separated ports, visible base routes and a parcel following the actual paths.
+
 ## Core Workflow
 
 1. Put animation behavior in Vue components under the Slidev `components/` directory. Keep `slides.md` focused on slide composition and small props such as `$clicks`.
@@ -16,7 +27,7 @@ Read [the colorset output contract](references/colorset-contract.md) before auth
 5. Drive deterministic demo states from `$clicks`. Clamp click counts, keep target names and DOM structure stable, and restart, seek, or update animations intentionally when the slide step changes.
 6. Give animated stages fixed slide-relative dimensions. Avoid animation that changes the outer slide layout unless testing Anime.js layout animation itself.
 7. Prefer transform and opacity for frequent motion. Use SVG and text helpers when they express the story better than manual DOM mutation.
-8. Validate with `npm run build`, then open the deck in a browser and inspect every animation slide. Confirm that each stage is nonblank, animations run, interactions work, and console errors are absent.
+8. Validate with `npm --prefix <deck-root> run build`, then capture the built deck using `uv run --script <skill-root>/scripts/capture_deck.py --deck <deck-root> --output-dir <workspace-captures>`. Run bundled Python helpers through `uv run --script` so their declared dependencies are available. Inspect every animation slide, the screenshots and `capture.json`; the helper records native click, replay and reduced motion states and owns server cleanup. Confirm visible motion, complete labels/heads and actual click transitions; a captured image alone is not a quality pass.
 
 ## Reference
 

@@ -1,8 +1,17 @@
 # Semantic layout and density
 
-Start with the delivery width, not an arbitrarily huge canvas. Default to a
-landscape 1200 x 760 viewBox displayed at 1200 CSS pixels for an unspecified
-screen figure. Use at least 14 displayed pixels for essential labels as a
+## Contents
+
+- [Plan the page](#plan-the-page)
+- [Fit without distortion](#fit-without-distortion)
+- [Compact connected diagrams by default](#compact-connected-diagrams-by-default)
+- [Cross-panel connections](#cross-panel-connections)
+- [Review decisions](#review-decisions)
+
+Start with the delivery width, not an arbitrarily huge canvas. For an unspecified
+screen figure, use a landscape 1200 x 760 viewBox at 1200 CSS pixels as an initial
+budget, then reduce avoidable height or reflow to a smaller readable footprint.
+Preserve explicit output dimensions. Use at least 14 displayed pixels for essential labels as a
 starting point, then adapt to audience/destination. Physical print sizes need
 an explicit viewing assumption; screen pixels are not a universal print rule.
 
@@ -50,6 +59,35 @@ and negation are often more important than decorative subtitles.
 Reserve icon clear space. Test recognition at actual size; a detailed product
 logo may require more space than a 24px generic pictogram. Equalize optical size,
 not only bounding-box dimensions. Preserve brand artwork and meaningful colors.
+
+## Compact connected diagrams by default
+
+Minimize the occupied footprint and unnecessary connector length subject to
+legibility. First size nodes to their measured labels, icons and internal padding;
+then group related nodes, place linked panels beside one another and tighten
+outer margins, track gaps and unused source viewBox space. Keep group boundaries
+and reading order recognizable. Do not stretch short labels into oversized cards
+or distribute a small graph across its full allocation by habit.
+
+Route through the nearest clear corridor with few bends. Reserve enough terminal
+run for a visible shaft and head, enough space for any relation label, and separate
+parallel lanes so a reader can follow one edge from its actual source to target.
+Distinct edges must not share a segment that suggests an undeclared junction.
+Use an offset/bridge for unavoidable crossings; prefer a local reroute or a node
+reordering over a long exterior detour. Derive clearance from final stroke, head
+and label bounds rather than one universal gap or occupancy target.
+
+After a readable draft, make up to two focused compaction revisions. Compare
+delivery-size previews and the densest crop with the previous passing draft.
+Accept a smaller canvas/group footprint or shorter routes only if typography,
+arrow visibility, port ownership, lane separation and label clearance still pass.
+Revert a failed reduction and retain the tightest passing version; stop when the
+next reduction consumes required reading or routing space. With fixed dimensions,
+use the recovered room for requested explanatory detail or clear grouping.
+
+For quantitative chart panels, improve information density through useful marks,
+dimensions or aligned comparisons. Preserve axes, domains, tick labels, aspect
+ratios and comparison space; do not apply diagram node/edge squeezing to them.
 
 ## Cross-panel connections
 

@@ -34,6 +34,26 @@ Use a shared renderer harness for canvas setup, resizing, camera aspect updates,
 - Keep fixed-format scene frames stable with `aspect-ratio`; default to a 200 px minimum stage height and compact spacing from `visual-tokens.md`. An explicit requested size takes precedence.
 - Fit camera distance to the complete animation envelope and the current horizontal/vertical field of view. Refit after aspect changes or orbit input. `overflow: hidden` is not evidence that moving objects fit; inspect their projected bounds through the cycle. The bundled orbit template samples a cylindrical motion envelope with a 12% projection margin, leaving decorative floor rings free to extend beyond the frame.
 
+## Compact Connected Diagrams
+
+When the scene explains concepts connected by lines, minimize its readable
+projected footprint. Size nodes to labels, place linked concepts close together
+and route through clear local corridors with few bends. Protect visible shafts,
+complete cone/head silhouettes, source/target contact and distinct parallel lanes.
+Do not allow unrelated links to share a segment or an occluded crossing to look
+like a junction. Check projected pixel bounds; separation in world coordinates
+does not guarantee separation on screen.
+
+After a readable draft, try up to two focused spacing/routing reductions and retain
+the tightest passing result. Inspect desktop/mobile, camera extrema, pointer
+rotation and representative animation phases. Revert any reduction that causes
+label overlap, foreshortened/hidden heads, detached endpoints or ambiguous depth.
+Fit the complete motion envelope while preserving intended depth cues and readable
+fonts; camera zoom, clipping or smaller arrows cannot substitute for a good layout.
+If free orbit cannot keep a diagram readable, constrain the supported camera range
+or provide a clear settled view. Keep quantitative chart encodings and physical
+geometry faithful; this rule targets conceptual diagram spacing.
+
 ## Materials And Color
 
 - Follow `visual-tokens.md`: colorset1 uses red `#9e1b32`, black, white, and grays first. Pink is a last resort; colorset2's extended hues require an explicit request.

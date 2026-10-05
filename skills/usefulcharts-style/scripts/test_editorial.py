@@ -10,7 +10,7 @@ import json
 import unittest
 import xml.etree.ElementTree as ET
 
-from editorial_poster import EditorialPoster
+from editorial_poster import EditorialPoster, wrap
 from render_chart import segment_hits
 
 NS={'s':'http://www.w3.org/2000/svg'}
@@ -262,10 +262,31 @@ class EditorialTests(unittest.TestCase):
         data['edges']=[dict(id='a',source='root',target='left',kind='branch'),dict(id='b',source='root',target='right',kind='branch'),
             dict(id='c',source='left',target='merged',kind='branch'),dict(id='d',source='right',target='merged',kind='branch')]
         before=copy.deepcopy(data);poster=EditorialPoster(data);svg,report=poster.render();root=ET.fromstring(svg)
-        self.assertEqual(data,before);self.assertLess(poster.h,1200);self.assertEqual(poster.font,18)
+        self.assertEqual(data,before);self.assertLess(poster.h,720);self.assertLess(poster.w,1000);self.assertEqual(poster.font,18)
+        self.assertGreaterEqual(poster.title_size,30)
+        self.assertEqual((report['node_collisions'],report['connector_node_collisions']),(0,0))
         merged=root.find('.//s:g[@data-node-id="merged"]',NS)
         self.assertEqual(merged.attrib['data-group'],'red');self.assertEqual(merged.attrib['data-treatment'],'hero')
         self.assertEqual((report['node_count'],report['edge_count']),(4,4))
+
+    def test_compact_auto_preserves_explicit_canvas(self):
+        data=graph();data.update(layout='auto',width=1400,height=1500)
+        for n in data['nodes']:
+            for key in ('x','y','width','style','icon'):n.pop(key,None)
+        poster=EditorialPoster(data);poster.render()
+        self.assertEqual((poster.w,poster.h),(1400,1500))
+        self.assertEqual(poster.font,18)
+
+    def test_compact_auto_sizes_header_and_two_line_footer(self):
+        data=graph();data.update(layout='auto',title='A HISTORY OF REGIONAL PRESERVATION AND THE PUBLIC ARCHIVE NETWORK')
+        data.pop('width');data.pop('height')
+        data['source_note']='Synthetic source records retained for this standalone layout verification. '*3
+        for n in data['nodes']:
+            for key in ('x','y','width','style','icon'):n.pop(key,None)
+        poster=EditorialPoster(data);poster.render()
+        self.assertGreaterEqual(poster.title_size,30)
+        self.assertLessEqual(len(wrap(poster.data['source_note']+' '+poster.default_note(),poster.w-155,10)),2)
+        self.assertEqual(poster.font,18)
 
     def test_major_era_rules_leave_the_year_gutter_clear(self):
         data=timeline();data['eras']=[dict(start=1200,end=1600,label='Middle era')]

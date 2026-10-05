@@ -133,6 +133,18 @@ class ScaffoldTests(unittest.TestCase):
         root = ET.fromstring(scaffold.build(recipe))
         self.assertTrue(all(e.get('stroke') == '#ffffff' for e in root.iter() if e.get('data-direction-role')))
 
+    def test_flow_packs_content_without_shrinking_text(self):
+        recipe = scaffold.defaults("flow")
+        recipe["parameters"]["labels"] = ["A", "Longer stage", "B"]
+        root = ET.fromstring(scaffold.build(recipe))
+        ids = {e.get("id"): e for e in root.iter() if e.get("id")}
+        self.assertGreater(float(ids["node-1"].get("width")), float(ids["node-0"].get("width")))
+        self.assertEqual(float(ids["label-0"].get("font-size")), 18)
+        self.assertLess(float(ids["node-2"].get("x")) + float(ids["node-2"].get("width")) - float(ids["node-0"].get("x")), 400)
+        recipe["canvas"].update(width=120, height=120)
+        with self.assertRaisesRegex(ValueError, "readable"):
+            scaffold.build(recipe)
+
     def test_panel_retains_requested_strings(self):
         recipe = scaffold.defaults("panel")
         recipe["parameters"].update(title="MUESTRA 07", rows=["LAB-A"], header="")

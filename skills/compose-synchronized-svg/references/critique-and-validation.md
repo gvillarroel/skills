@@ -3,6 +3,7 @@
 ## Contents
 
 - [Keep evidence](#keep-evidence)
+- [Module crops](#module-crops)
 - [Pass blocking checks first](#pass-blocking-checks-first)
 - [Test propagation and isolation](#test-propagation-and-isolation)
 - [Review every required visual scale](#review-every-required-visual-scale)
@@ -17,6 +18,20 @@ Use this review after generating a synchronized SVG and after every material cha
 Keep review artifacts outside the read-only skill bundle. Preserve the selected brief, compiler result, compiled plan, SVG, validation report, serialized state checkpoints, overview screenshots, readable module crops, and a contact sheet covering representative states, reduced motion, and the script-free fallback. In world mode also preserve every district capture plus route arrivals and travel midpoints for narration or video review. Pause playback and use deterministic calls after `window.svgSync.ready`; never grade a wall-clock animation at an arbitrary instant.
 
 Use the bundled auditor as one supervised command. It runs the browser worker in an isolated process group with kill-on-close containment where supported, sweeps surviving descendants after exit, handles cancellation and POSIX terminal closure, and retries one timeout internally. It preserves real failure codes and emits retained timeout diagnostics only when both attempts time out. Do not wrap it in a second shell retry, because the strict trace must distinguish a recovered transient startup hang from a repeated timeout or real semantic failure.
+
+## Module crops
+
+For a compact plan, preserve module detail at the actual overview pixel scale:
+
+```text
+uv run --script <skill-root>/scripts/crop_modules.py --plan composition-plan.json --screenshot overview.png --output-dir module-crops --report module-crops.json
+```
+
+Use exact project-owned plan/screenshot paths. The helper declares Pillow, maps
+the plan's module regions to screenshot pixels and never upscales. Inspect the
+crops to check label and arrow readability; magnifying them does not prove
+delivery-size legibility. World overview crops cannot substitute for module
+detail: use the browser audit's camera-anchor captures there.
 
 ## Pass blocking checks first
 

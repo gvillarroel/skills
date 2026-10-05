@@ -1,0 +1,1239 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-04",
+  "completedAtUtc": "2026-10-05T04:55:01.678961+00:00",
+  "reviewedInventoryCount": 34,
+  "changedBundleCount": 15,
+  "passed": true,
+  "skills": [
+    {
+      "skill": "mermaid",
+      "model": "openai-codex/gpt-5.6-luna",
+      "sourcePayloadSha256": "9d684070671a6916ae13fa68bc9ea9995fb5fc639f2049d253fb0ea6534d20e4",
+      "independentReport": "evaluations/diagram-compactness/renderers-20261004.md",
+      "contract": {
+        "run": "20261004-compaction-mermaid-contract-luna-2",
+        "strictPass": true,
+        "independentPass": true,
+        "jointPass": true,
+        "payloadSha256": "9d684070671a6916ae13fa68bc9ea9995fb5fc639f2049d253fb0ea6534d20e4",
+        "model": "openai-codex/gpt-5.6-luna",
+        "expectedOutputs": [
+          "approval.mmd",
+          "approval.svg",
+          "style.json",
+          "check.json",
+          "review.md"
+        ],
+        "strictResult": "evaluations/runs/20261004-compaction-mermaid-contract-luna-2/evaluation-result.json"
+      },
+      "naturals": [
+        {
+          "run": "20261004-compaction-mermaid-natural-luna-4",
+          "strictPass": true,
+          "independentPass": true,
+          "jointPass": true,
+          "payloadSha256": "9d684070671a6916ae13fa68bc9ea9995fb5fc639f2049d253fb0ea6534d20e4",
+          "model": "openai-codex/gpt-5.6-luna",
+          "expectedOutputs": [
+            "diagram/request.mmd",
+            "diagram/request.svg",
+            "diagram/style.json",
+            "diagram/check.json",
+            "diagram/review.md"
+          ],
+          "strictResult": "evaluations/runs/20261004-compaction-mermaid-natural-luna-4/evaluation-result.json"
+        },
+        {
+          "run": "20261004-compaction-mermaid-natural-luna-5",
+          "strictPass": true,
+          "independentPass": true,
+          "jointPass": true,
+          "payloadSha256": "9d684070671a6916ae13fa68bc9ea9995fb5fc639f2049d253fb0ea6534d20e4",
+          "model": "openai-codex/gpt-5.6-luna",
+          "expectedOutputs": [
+            "diagram/request.mmd",
+            "diagram/request.svg",
+            "diagram/style.json",
+            "diagram/check.json",
+            "diagram/review.md"
+          ],
+          "strictResult": "evaluations/runs/20261004-compaction-mermaid-natural-luna-5/evaluation-result.json"
+        },
+        {
+          "run": "20261004-compaction-mermaid-natural-luna-6",
+          "strictPass": true,
+          "independentPass": true,
+          "jointPass": true,
+          "payloadSha256": "9d684070671a6916ae13fa68bc9ea9995fb5fc639f2049d253fb0ea6534d20e4",
+          "model": "openai-codex/gpt-5.6-luna",
+          "expectedOutputs": [
+            "diagram/request.mmd",
+            "diagram/request.svg",
+            "diagram/style.json",
+            "diagram/check.json",
+            "diagram/review.md"
+          ],
+          "strictResult": "evaluations/runs/20261004-compaction-mermaid-natural-luna-6/evaluation-result.json"
+        }
+      ],
+      "additionalContracts": [
+        {
+          "run": "20261004-compaction-mermaid-boundary-luna-1",
+          "strictPass": true,
+          "independentPass": true,
+          "jointPass": true,
+          "payloadSha256": "9d684070671a6916ae13fa68bc9ea9995fb5fc639f2049d253fb0ea6534d20e4",
+          "model": "openai-codex/gpt-5.6-luna",
+          "expectedOutputs": [
+            "override.mmd",
+            "override.svg",
+            "style.json",
+            "check.json",
+            "review.md"
+          ],
+          "strictResult": "evaluations/runs/20261004-compaction-mermaid-boundary-luna-1/evaluation-result.json"
+        }
+      ],
+      "narrowRepair": null
+    },
+    {
+      "skill": "plantuml-colorset-renderer",
+      "model": "openai-codex/gpt-5.6-luna",
+      "sourcePayloadSha256": "eb99915c267e0dc90fe9a01dab20d12d1189107e2e119031db39c905d07e2f2e",
+      "independentReport": "evaluations/diagram-compactness/renderers-20261004.md",
+      "contract": {
+        "run": "20261004-compaction-plantuml-contract-luna-2",
+        "strictPass": true,
+        "independentPass": true,
+        "jointPass": true,
+        "payloadSha256": "eb99915c267e0dc90fe9a01dab20d12d1189107e2e119031db39c905d07e2f2e",
+        "model": "openai-codex/gpt-5.6-luna",
+        "expectedOutputs": [
+          "source/approval.puml",
+          "rendered/svg/approval.svg",
+          "rendered/png/approval.png",
+          "render-report.json",
+          "review.md"
+        ],
+        "strictResult": "evaluations/runs/20261004-compaction-plantuml-contract-luna-2/evaluation-result.json"
+      },
+      "naturals": [
+        {
+          "run": "20261004-compaction-plantuml-natural-luna-3",
+          "strictPass": true,
+          "independentPass": true,
+          "jointPass": true,
+          "payloadSha256": "eb99915c267e0dc90fe9a01dab20d12d1189107e2e119031db39c905d07e2f2e",
+          "model": "openai-codex/gpt-5.6-luna",
+          "expectedOutputs": [
+            "source/documents.puml",
+            "rendered/svg/documents.svg",
+            "rendered/png/documents.png",
+            "render-report.json",
+            "review.md"
+          ],
+          "strictResult": "evaluations/runs/20261004-compaction-plantuml-natural-luna-3/evaluation-result.json"
+        },
+        {
+          "run": "20261004-compaction-plantuml-natural-luna-4",
+          "strictPass": true,
+          "independentPass": true,
+          "jointPass": true,
+          "payloadSha256": "eb99915c267e0dc90fe9a01dab20d12d1189107e2e119031db39c905d07e2f2e",
+          "model": "openai-codex/gpt-5.6-luna",
+          "expectedOutputs": [
+            "source/documents.puml",
+            "rendered/svg/documents.svg",
+            "rendered/png/documents.png",
+            "render-report.json",
+            "review.md"
+          ],
+          "strictResult": "evaluations/runs/20261004-compaction-plantuml-natural-luna-4/evaluation-result.json"
+        },
+        {
+          "run": "20261004-compaction-plantuml-natural-luna-5",
+          "strictPass": true,
+          "independentPass": true,
+          "jointPass": true,
+          "payloadSha256": "eb99915c267e0dc90fe9a01dab20d12d1189107e2e119031db39c905d07e2f2e",
+          "model": "openai-codex/gpt-5.6-luna",
+          "expectedOutputs": [
+            "source/documents.puml",
+            "rendered/svg/documents.svg",
+            "rendered/png/documents.png",
+            "render-report.json",
+            "review.md"
+          ],
+          "strictResult": "evaluations/runs/20261004-compaction-plantuml-natural-luna-5/evaluation-result.json"
+        }
+      ],
+      "additionalContracts": [],
+      "narrowRepair": null
+    },
+    {
+      "skill": "usefulcharts-style",
+      "model": "openai-codex/gpt-5.6-luna",
+      "sourcePayloadSha256": "dcdd82e66c85a1d775f273644d2b87438aa555eab6539e9085f1de4631f2fa27",
+      "independentReport": "evaluations/diagram-compactness/renderers-20261004.md",
+      "contract": {
+        "run": "20261004-compaction-usefulcharts-contract-luna-2",
+        "strictPass": true,
+        "independentPass": true,
+        "jointPass": true,
+        "payloadSha256": "dcdd82e66c85a1d775f273644d2b87438aa555eab6539e9085f1de4631f2fa27",
+        "model": "openai-codex/gpt-5.6-luna",
+        "expectedOutputs": [
+          "brief.json",
+          "archive.svg",
+          "archive.html",
+          "layout.json",
+          "browser.json",
+          "archive.png",
+          "review.md"
+        ],
+        "strictResult": "evaluations/runs/20261004-compaction-usefulcharts-contract-luna-2/evaluation-result.json"
+      },
+      "naturals": [
+        {
+          "run": "20261004-compaction-usefulcharts-natural-luna-3",
+          "strictPass": true,
+          "independentPass": true,
+          "jointPass": true,
+          "payloadSha256": "dcdd82e66c85a1d775f273644d2b87438aa555eab6539e9085f1de4631f2fa27",
+          "model": "openai-codex/gpt-5.6-luna",
+          "expectedOutputs": [
+            "archive/brief.json",
+            "archive/lineage.svg",
+            "archive/lineage.html",
+            "archive/layout.json",
+            "archive/browser.json",
+            "archive/lineage.png",
+            "archive/review.md"
+          ],
+          "strictResult": "evaluations/runs/20261004-compaction-usefulcharts-natural-luna-3/evaluation-result.json"
+        },
+        {
+          "run": "20261004-compaction-usefulcharts-natural-luna-4",
+          "strictPass": false,
+          "independentPass": false,
+          "jointPass": false,
+          "payloadSha256": "dcdd82e66c85a1d775f273644d2b87438aa555eab6539e9085f1de4631f2fa27",
+          "model": "openai-codex/gpt-5.6-luna",
+          "expectedOutputs": [
+            "archive/brief.json",
+            "archive/lineage.svg",
+            "archive/lineage.html",
+            "archive/layout.json",
+            "archive/browser.json",
+            "archive/lineage.png",
+            "archive/review.md"
+          ],
+          "strictResult": "evaluations/runs/20261004-compaction-usefulcharts-natural-luna-4/evaluation-result.json"
+        },
+        {
+          "run": "20261004-compaction-usefulcharts-natural-luna-5",
+          "strictPass": true,
+          "independentPass": true,
+          "jointPass": true,
+          "payloadSha256": "dcdd82e66c85a1d775f273644d2b87438aa555eab6539e9085f1de4631f2fa27",
+          "model": "openai-codex/gpt-5.6-luna",
+          "expectedOutputs": [
+            "archive/brief.json",
+            "archive/lineage.svg",
+            "archive/lineage.html",
+            "archive/layout.json",
+            "archive/browser.json",
+            "archive/lineage.png",
+            "archive/review.md"
+          ],
+          "strictResult": "evaluations/runs/20261004-compaction-usefulcharts-natural-luna-5/evaluation-result.json"
+        }
+      ],
+      "additionalContracts": [
+        {
+          "run": "20261004-compaction-usefulcharts-boundary-luna-1",
+          "strictPass": true,
+          "independentPass": true,
+          "jointPass": true,
+          "payloadSha256": "dcdd82e66c85a1d775f273644d2b87438aa555eab6539e9085f1de4631f2fa27",
+          "model": "openai-codex/gpt-5.6-luna",
+          "expectedOutputs": [
+            "brief.json",
+            "poster.svg",
+            "poster.html",
+            "layout.json",
+            "browser.json",
+            "poster.png",
+            "review.md"
+          ],
+          "strictResult": "evaluations/runs/20261004-compaction-usefulcharts-boundary-luna-1/evaluation-result.json"
+        }
+      ],
+      "narrowRepair": null
+    },
+    {
+      "skill": "d3",
+      "model": "openai-codex/gpt-5.6-luna",
+      "sourcePayloadSha256": "b217b9b1c9606f7cf5c18f94a10e4f71f5981c226f82bdabb648c6f64c5b7641",
+      "independentReport": "evaluations/diagram-compactness/svg-runtime-20261004.md",
+      "contract": {
+        "run": "20261004-diagram-compact-d3-contract-luna-2",
+        "strictPass": true,
+        "independentPass": true,
+        "jointPass": true,
+        "payloadSha256": "b217b9b1c9606f7cf5c18f94a10e4f71f5981c226f82bdabb648c6f64c5b7641",
+        "model": "openai-codex/gpt-5.6-luna",
+        "expectedOutputs": [
+          "artifacts/workflow.html",
+          "artifacts/decision.json",
+          "artifacts/workflow.svg",
+          "artifacts/preview.png"
+        ],
+        "strictResult": "evaluations/runs/20261004-diagram-compact-d3-contract-luna-2/evaluation-result.json"
+      },
+      "naturals": [
+        {
+          "run": "20261004-diagram-compact-d3-natural-luna-1",
+          "strictPass": true,
+          "independentPass": true,
+          "jointPass": true,
+          "payloadSha256": "b217b9b1c9606f7cf5c18f94a10e4f71f5981c226f82bdabb648c6f64c5b7641",
+          "model": "openai-codex/gpt-5.6-luna",
+          "expectedOutputs": [
+            "artifacts/consent.html",
+            "artifacts/decision.json",
+            "artifacts/consent.svg",
+            "artifacts/preview.png"
+          ],
+          "strictResult": "evaluations/runs/20261004-diagram-compact-d3-natural-luna-1/evaluation-result.json"
+        },
+        {
+          "run": "20261004-diagram-compact-d3-natural-luna-2",
+          "strictPass": true,
+          "independentPass": true,
+          "jointPass": true,
+          "payloadSha256": "b217b9b1c9606f7cf5c18f94a10e4f71f5981c226f82bdabb648c6f64c5b7641",
+          "model": "openai-codex/gpt-5.6-luna",
+          "expectedOutputs": [
+            "artifacts/consent.html",
+            "artifacts/decision.json",
+            "artifacts/consent.svg",
+            "artifacts/preview.png"
+          ],
+          "strictResult": "evaluations/runs/20261004-diagram-compact-d3-natural-luna-2/evaluation-result.json"
+        },
+        {
+          "run": "20261004-diagram-compact-d3-natural-luna-3",
+          "strictPass": true,
+          "independentPass": true,
+          "jointPass": true,
+          "payloadSha256": "b217b9b1c9606f7cf5c18f94a10e4f71f5981c226f82bdabb648c6f64c5b7641",
+          "model": "openai-codex/gpt-5.6-luna",
+          "expectedOutputs": [
+            "artifacts/consent.html",
+            "artifacts/decision.json",
+            "artifacts/consent.svg",
+            "artifacts/preview.png"
+          ],
+          "strictResult": "evaluations/runs/20261004-diagram-compact-d3-natural-luna-3/evaluation-result.json"
+        }
+      ],
+      "additionalContracts": [
+        {
+          "run": "20261004-diagram-compact-d3-network-contract-luna-1",
+          "strictPass": true,
+          "independentPass": true,
+          "jointPass": true,
+          "payloadSha256": "b217b9b1c9606f7cf5c18f94a10e4f71f5981c226f82bdabb648c6f64c5b7641",
+          "model": "openai-codex/gpt-5.6-luna",
+          "expectedOutputs": [
+            "artifacts/network.html",
+            "artifacts/decision.json",
+            "artifacts/network.svg",
+            "artifacts/preview.png"
+          ],
+          "strictResult": "evaluations/runs/20261004-diagram-compact-d3-network-contract-luna-1/evaluation-result.json"
+        }
+      ],
+      "narrowRepair": null
+    },
+    {
+      "skill": "svg-brief-design",
+      "model": "openai-codex/gpt-5.6-luna",
+      "sourcePayloadSha256": "81130adfdeee1c2a4c6d8ed2656faf94ba767ae81968527e6ac7fa6fa3c18112",
+      "independentReport": "evaluations/diagram-compactness/svg-runtime-20261004.md",
+      "contract": {
+        "run": "20261004-diagram-compact-svg-contract-luna-3",
+        "strictPass": true,
+        "independentPass": true,
+        "jointPass": true,
+        "payloadSha256": "81130adfdeee1c2a4c6d8ed2656faf94ba767ae81968527e6ac7fa6fa3c18112",
+        "model": "openai-codex/gpt-5.6-luna",
+        "expectedOutputs": [
+          "artifacts/design.json",
+          "artifacts/process.svg",
+          "artifacts/preview.png"
+        ],
+        "strictResult": "evaluations/runs/20261004-diagram-compact-svg-contract-luna-3/evaluation-result.json"
+      },
+      "naturals": [
+        {
+          "run": "20261004-diagram-compact-svg-natural-luna-4",
+          "strictPass": true,
+          "independentPass": true,
+          "jointPass": true,
+          "payloadSha256": "81130adfdeee1c2a4c6d8ed2656faf94ba767ae81968527e6ac7fa6fa3c18112",
+          "model": "openai-codex/gpt-5.6-luna",
+          "expectedOutputs": [
+            "artifacts/review.svg",
+            "artifacts/preview.png"
+          ],
+          "strictResult": "evaluations/runs/20261004-diagram-compact-svg-natural-luna-4/evaluation-result.json"
+        },
+        {
+          "run": "20261004-diagram-compact-svg-natural-luna-5",
+          "strictPass": true,
+          "independentPass": true,
+          "jointPass": true,
+          "payloadSha256": "81130adfdeee1c2a4c6d8ed2656faf94ba767ae81968527e6ac7fa6fa3c18112",
+          "model": "openai-codex/gpt-5.6-luna",
+          "expectedOutputs": [
+            "artifacts/review.svg",
+            "artifacts/preview.png"
+          ],
+          "strictResult": "evaluations/runs/20261004-diagram-compact-svg-natural-luna-5/evaluation-result.json"
+        },
+        {
+          "run": "20261004-diagram-compact-svg-natural-luna-6",
+          "strictPass": true,
+          "independentPass": true,
+          "jointPass": true,
+          "payloadSha256": "81130adfdeee1c2a4c6d8ed2656faf94ba767ae81968527e6ac7fa6fa3c18112",
+          "model": "openai-codex/gpt-5.6-luna",
+          "expectedOutputs": [
+            "artifacts/review.svg",
+            "artifacts/preview.png"
+          ],
+          "strictResult": "evaluations/runs/20261004-diagram-compact-svg-natural-luna-6/evaluation-result.json"
+        }
+      ],
+      "additionalContracts": [],
+      "narrowRepair": null
+    },
+    {
+      "skill": "procedural-svg-animation",
+      "model": "openai-codex/gpt-5.6-luna",
+      "sourcePayloadSha256": "cf8211540382faed79d9104fd19bb3975c3e6d8ab18b5f20165512fc2741a7b5",
+      "independentReport": "evaluations/diagram-compactness/svg-runtime-20261004.md",
+      "contract": {
+        "run": "20261004-diagram-compact-procedural-connected-contract-luna-1",
+        "strictPass": true,
+        "independentPass": true,
+        "jointPass": true,
+        "payloadSha256": "cf8211540382faed79d9104fd19bb3975c3e6d8ab18b5f20165512fc2741a7b5",
+        "model": "openai-codex/gpt-5.6-luna",
+        "expectedOutputs": [
+          "artifacts/route.svg",
+          "artifacts/preview.png",
+          "artifacts/browser.json"
+        ],
+        "strictResult": "evaluations/runs/20261004-diagram-compact-procedural-connected-contract-luna-1/evaluation-result.json"
+      },
+      "naturals": [
+        {
+          "run": "20261004-diagram-compact-procedural-natural-luna-4",
+          "strictPass": true,
+          "independentPass": true,
+          "jointPass": true,
+          "payloadSha256": "cf8211540382faed79d9104fd19bb3975c3e6d8ab18b5f20165512fc2741a7b5",
+          "model": "openai-codex/gpt-5.6-luna",
+          "expectedOutputs": [
+            "artifacts/message.svg",
+            "artifacts/preview.png",
+            "artifacts/browser.json"
+          ],
+          "strictResult": "evaluations/runs/20261004-diagram-compact-procedural-natural-luna-4/evaluation-result.json"
+        },
+        {
+          "run": "20261004-diagram-compact-procedural-natural-luna-5",
+          "strictPass": true,
+          "independentPass": true,
+          "jointPass": true,
+          "payloadSha256": "cf8211540382faed79d9104fd19bb3975c3e6d8ab18b5f20165512fc2741a7b5",
+          "model": "openai-codex/gpt-5.6-luna",
+          "expectedOutputs": [
+            "artifacts/message.svg",
+            "artifacts/preview.png",
+            "artifacts/browser.json"
+          ],
+          "strictResult": "evaluations/runs/20261004-diagram-compact-procedural-natural-luna-5/evaluation-result.json"
+        },
+        {
+          "run": "20261004-diagram-compact-procedural-natural-luna-6",
+          "strictPass": true,
+          "independentPass": true,
+          "jointPass": true,
+          "payloadSha256": "cf8211540382faed79d9104fd19bb3975c3e6d8ab18b5f20165512fc2741a7b5",
+          "model": "openai-codex/gpt-5.6-luna",
+          "expectedOutputs": [
+            "artifacts/message.svg",
+            "artifacts/preview.png",
+            "artifacts/browser.json"
+          ],
+          "strictResult": "evaluations/runs/20261004-diagram-compact-procedural-natural-luna-6/evaluation-result.json"
+        }
+      ],
+      "additionalContracts": [
+        {
+          "run": "20261004-diagram-compact-procedural-contract-luna-3",
+          "strictPass": true,
+          "independentPass": true,
+          "jointPass": true,
+          "payloadSha256": "cf8211540382faed79d9104fd19bb3975c3e6d8ab18b5f20165512fc2741a7b5",
+          "model": "openai-codex/gpt-5.6-luna",
+          "expectedOutputs": [
+            "artifacts/route.svg",
+            "artifacts/preview.png",
+            "artifacts/browser.json"
+          ],
+          "strictResult": "evaluations/runs/20261004-diagram-compact-procedural-contract-luna-3/evaluation-result.json"
+        }
+      ],
+      "narrowRepair": null
+    },
+    {
+      "skill": "diagram-composition",
+      "model": "openai-codex/gpt-5.6-luna",
+      "sourcePayloadSha256": "31323f522f383e52b8a044361ca66bc4bec53c7d3495c95514b271c81bbe1abe",
+      "independentReport": "evaluations/diagram-compactness/composition-20261004.md",
+      "contract": {
+        "run": "20261004-composition-compactness-diagram-contract-luna-1",
+        "strictPass": true,
+        "independentPass": true,
+        "jointPass": true,
+        "payloadSha256": "31323f522f383e52b8a044361ca66bc4bec53c7d3495c95514b271c81bbe1abe",
+        "model": "openai-codex/gpt-5.6-luna",
+        "expectedOutputs": [
+          "out/brief.json",
+          "out/plan.json",
+          "out/figure.svg",
+          "out/audit.json",
+          "out/preview.png",
+          "out/review.md"
+        ],
+        "strictResult": "evaluations/runs/20261004-composition-compactness-diagram-contract-luna-1/evaluation-result.json"
+      },
+      "naturals": [
+        {
+          "run": "20261004-composition-compactness-diagram-natural-luna-1",
+          "strictPass": true,
+          "independentPass": true,
+          "jointPass": true,
+          "payloadSha256": "31323f522f383e52b8a044361ca66bc4bec53c7d3495c95514b271c81bbe1abe",
+          "model": "openai-codex/gpt-5.6-luna",
+          "expectedOutputs": [
+            "out/brief.json",
+            "out/plan.json",
+            "out/figure.svg",
+            "out/audit.json",
+            "out/preview.png",
+            "out/review.md"
+          ],
+          "strictResult": "evaluations/runs/20261004-composition-compactness-diagram-natural-luna-1/evaluation-result.json"
+        },
+        {
+          "run": "20261004-composition-compactness-diagram-natural-luna-2",
+          "strictPass": true,
+          "independentPass": true,
+          "jointPass": true,
+          "payloadSha256": "31323f522f383e52b8a044361ca66bc4bec53c7d3495c95514b271c81bbe1abe",
+          "model": "openai-codex/gpt-5.6-luna",
+          "expectedOutputs": [
+            "out/brief.json",
+            "out/plan.json",
+            "out/figure.svg",
+            "out/audit.json",
+            "out/preview.png",
+            "out/review.md"
+          ],
+          "strictResult": "evaluations/runs/20261004-composition-compactness-diagram-natural-luna-2/evaluation-result.json"
+        },
+        {
+          "run": "20261004-composition-compactness-diagram-natural-luna-3",
+          "strictPass": true,
+          "independentPass": true,
+          "jointPass": true,
+          "payloadSha256": "31323f522f383e52b8a044361ca66bc4bec53c7d3495c95514b271c81bbe1abe",
+          "model": "openai-codex/gpt-5.6-luna",
+          "expectedOutputs": [
+            "out/brief.json",
+            "out/plan.json",
+            "out/figure.svg",
+            "out/audit.json",
+            "out/preview.png",
+            "out/review.md"
+          ],
+          "strictResult": "evaluations/runs/20261004-composition-compactness-diagram-natural-luna-3/evaluation-result.json"
+        }
+      ],
+      "additionalContracts": [],
+      "narrowRepair": null
+    },
+    {
+      "skill": "compose-synchronized-svg",
+      "model": "openai-codex/gpt-5.6-luna",
+      "sourcePayloadSha256": "0a9a2569788d25a6e883130fddc2092b24c3b2603b89f03a880f721f7c3ce532",
+      "independentReport": "evaluations/diagram-compactness/composition-20261004.md",
+      "contract": {
+        "run": "20261004-composition-compactness-compose-complete-label-contract-1",
+        "strictPass": true,
+        "independentPass": true,
+        "jointPass": true,
+        "payloadSha256": "0a9a2569788d25a6e883130fddc2092b24c3b2603b89f03a880f721f7c3ce532",
+        "model": "openai-codex/gpt-5.6-luna",
+        "expectedOutputs": [
+          "out/brief.json",
+          "out/plan.json",
+          "out/atlas.svg",
+          "out/static.json",
+          "out/audit.json",
+          "out/preview.png",
+          "out/review.md"
+        ],
+        "strictResult": "evaluations/runs/20261004-composition-compactness-compose-complete-label-contract-1/evaluation-result.json"
+      },
+      "naturals": [
+        {
+          "run": "20261004-composition-compactness-compose-complete-label-natural-1",
+          "strictPass": false,
+          "independentPass": true,
+          "jointPass": false,
+          "payloadSha256": "0a9a2569788d25a6e883130fddc2092b24c3b2603b89f03a880f721f7c3ce532",
+          "model": "openai-codex/gpt-5.6-luna",
+          "expectedOutputs": [
+            "out/brief.json",
+            "out/plan.json",
+            "out/atlas.svg",
+            "out/static.json",
+            "out/audit.json",
+            "out/preview.png",
+            "out/review.md"
+          ],
+          "strictResult": "evaluations/runs/20261004-composition-compactness-compose-complete-label-natural-1/evaluation-result.json"
+        },
+        {
+          "run": "20261004-composition-compactness-compose-complete-label-natural-2",
+          "strictPass": true,
+          "independentPass": true,
+          "jointPass": true,
+          "payloadSha256": "0a9a2569788d25a6e883130fddc2092b24c3b2603b89f03a880f721f7c3ce532",
+          "model": "openai-codex/gpt-5.6-luna",
+          "expectedOutputs": [
+            "out/brief.json",
+            "out/plan.json",
+            "out/atlas.svg",
+            "out/static.json",
+            "out/audit.json",
+            "out/preview.png",
+            "out/review.md"
+          ],
+          "strictResult": "evaluations/runs/20261004-composition-compactness-compose-complete-label-natural-2/evaluation-result.json"
+        },
+        {
+          "run": "20261004-composition-compactness-compose-complete-label-natural-3",
+          "strictPass": true,
+          "independentPass": true,
+          "jointPass": true,
+          "payloadSha256": "0a9a2569788d25a6e883130fddc2092b24c3b2603b89f03a880f721f7c3ce532",
+          "model": "openai-codex/gpt-5.6-luna",
+          "expectedOutputs": [
+            "out/brief.json",
+            "out/plan.json",
+            "out/atlas.svg",
+            "out/static.json",
+            "out/audit.json",
+            "out/preview.png",
+            "out/review.md"
+          ],
+          "strictResult": "evaluations/runs/20261004-composition-compactness-compose-complete-label-natural-3/evaluation-result.json"
+        }
+      ],
+      "additionalContracts": [
+        {
+          "run": "20261004-composition-compactness-compose-complete-label-boundary-1",
+          "strictPass": true,
+          "independentPass": true,
+          "jointPass": true,
+          "payloadSha256": "0a9a2569788d25a6e883130fddc2092b24c3b2603b89f03a880f721f7c3ce532",
+          "model": "openai-codex/gpt-5.6-luna",
+          "expectedOutputs": [
+            "out/crowded-plan.json",
+            "out/rejection.json",
+            "out/brief.json",
+            "out/plan.json",
+            "out/atlas.svg",
+            "out/static.json",
+            "out/audit.json",
+            "out/preview.png",
+            "out/review.md"
+          ],
+          "strictResult": "evaluations/runs/20261004-composition-compactness-compose-complete-label-boundary-1/evaluation-result.json"
+        }
+      ],
+      "narrowRepair": null
+    },
+    {
+      "skill": "threejs-animated-3d",
+      "model": "openai-codex/gpt-5.6-luna",
+      "sourcePayloadSha256": "5eb72758f96c4a7c3421f14b2ef3001ced4b236e2e030ab03f473c82d030cbc4",
+      "independentReport": "evaluations/diagram-compactness/composition-20261004.md",
+      "contract": {
+        "run": "20261004-composition-compactness-threejs-contract-luna-1",
+        "strictPass": true,
+        "independentPass": true,
+        "jointPass": true,
+        "payloadSha256": "5eb72758f96c4a7c3421f14b2ef3001ced4b236e2e030ab03f473c82d030cbc4",
+        "model": "openai-codex/gpt-5.6-luna",
+        "expectedOutputs": [
+          "out/field.html",
+          "out/audit.json",
+          "out/preview.png",
+          "out/review.md"
+        ],
+        "strictResult": "evaluations/runs/20261004-composition-compactness-threejs-contract-luna-1/evaluation-result.json"
+      },
+      "naturals": [
+        {
+          "run": "20261004-composition-compactness-threejs-natural-luna-1",
+          "strictPass": true,
+          "independentPass": true,
+          "jointPass": true,
+          "payloadSha256": "5eb72758f96c4a7c3421f14b2ef3001ced4b236e2e030ab03f473c82d030cbc4",
+          "model": "openai-codex/gpt-5.6-luna",
+          "expectedOutputs": [
+            "out/field.html",
+            "out/audit.json",
+            "out/preview.png",
+            "out/review.md"
+          ],
+          "strictResult": "evaluations/runs/20261004-composition-compactness-threejs-natural-luna-1/evaluation-result.json"
+        },
+        {
+          "run": "20261004-composition-compactness-threejs-natural-luna-2",
+          "strictPass": true,
+          "independentPass": true,
+          "jointPass": true,
+          "payloadSha256": "5eb72758f96c4a7c3421f14b2ef3001ced4b236e2e030ab03f473c82d030cbc4",
+          "model": "openai-codex/gpt-5.6-luna",
+          "expectedOutputs": [
+            "out/field.html",
+            "out/audit.json",
+            "out/preview.png",
+            "out/review.md"
+          ],
+          "strictResult": "evaluations/runs/20261004-composition-compactness-threejs-natural-luna-2/evaluation-result.json"
+        },
+        {
+          "run": "20261004-composition-compactness-threejs-natural-luna-3",
+          "strictPass": true,
+          "independentPass": true,
+          "jointPass": true,
+          "payloadSha256": "5eb72758f96c4a7c3421f14b2ef3001ced4b236e2e030ab03f473c82d030cbc4",
+          "model": "openai-codex/gpt-5.6-luna",
+          "expectedOutputs": [
+            "out/field.html",
+            "out/audit.json",
+            "out/preview.png",
+            "out/review.md"
+          ],
+          "strictResult": "evaluations/runs/20261004-composition-compactness-threejs-natural-luna-3/evaluation-result.json"
+        }
+      ],
+      "additionalContracts": [],
+      "narrowRepair": null
+    },
+    {
+      "skill": "hyperframes-explainer",
+      "model": "openai-codex/gpt-5.6-luna",
+      "sourcePayloadSha256": "c049fe584ba57efbf312cdab2f50843c13b7069db32cca1fe1352cc78388b9eb",
+      "independentReport": "evaluations/diagram-compactness/composition-20261004.md",
+      "contract": {
+        "run": "20261004-composition-compactness-hyperframes-contract-luna-1",
+        "strictPass": true,
+        "independentPass": true,
+        "jointPass": true,
+        "payloadSha256": "c049fe584ba57efbf312cdab2f50843c13b7069db32cca1fe1352cc78388b9eb",
+        "model": "openai-codex/gpt-5.6-luna",
+        "expectedOutputs": [
+          "out/model.json",
+          "out/scene.json",
+          "out/mechanism.svg",
+          "out/assets.json",
+          "out/project/index.html",
+          "out/audit.json",
+          "out/preview.png",
+          "out/review.md"
+        ],
+        "strictResult": "evaluations/runs/20261004-composition-compactness-hyperframes-contract-luna-1/evaluation-result.json"
+      },
+      "naturals": [
+        {
+          "run": "20261004-composition-compactness-hyperframes-natural-luna-1",
+          "strictPass": false,
+          "independentPass": true,
+          "jointPass": false,
+          "payloadSha256": "c049fe584ba57efbf312cdab2f50843c13b7069db32cca1fe1352cc78388b9eb",
+          "model": "openai-codex/gpt-5.6-luna",
+          "expectedOutputs": [
+            "out/model.json",
+            "out/scene.json",
+            "out/mechanism.svg",
+            "out/assets.json",
+            "out/project/index.html",
+            "out/audit.json",
+            "out/preview.png",
+            "out/review.md"
+          ],
+          "strictResult": "evaluations/runs/20261004-composition-compactness-hyperframes-natural-luna-1/evaluation-result.json"
+        },
+        {
+          "run": "20261004-composition-compactness-hyperframes-natural-luna-2",
+          "strictPass": true,
+          "independentPass": true,
+          "jointPass": true,
+          "payloadSha256": "c049fe584ba57efbf312cdab2f50843c13b7069db32cca1fe1352cc78388b9eb",
+          "model": "openai-codex/gpt-5.6-luna",
+          "expectedOutputs": [
+            "out/model.json",
+            "out/scene.json",
+            "out/mechanism.svg",
+            "out/assets.json",
+            "out/project/index.html",
+            "out/audit.json",
+            "out/preview.png",
+            "out/review.md"
+          ],
+          "strictResult": "evaluations/runs/20261004-composition-compactness-hyperframes-natural-luna-2/evaluation-result.json"
+        },
+        {
+          "run": "20261004-composition-compactness-hyperframes-natural-luna-3",
+          "strictPass": true,
+          "independentPass": true,
+          "jointPass": true,
+          "payloadSha256": "c049fe584ba57efbf312cdab2f50843c13b7069db32cca1fe1352cc78388b9eb",
+          "model": "openai-codex/gpt-5.6-luna",
+          "expectedOutputs": [
+            "out/model.json",
+            "out/scene.json",
+            "out/mechanism.svg",
+            "out/assets.json",
+            "out/project/index.html",
+            "out/audit.json",
+            "out/preview.png",
+            "out/review.md"
+          ],
+          "strictResult": "evaluations/runs/20261004-composition-compactness-hyperframes-natural-luna-3/evaluation-result.json"
+        }
+      ],
+      "additionalContracts": [],
+      "narrowRepair": null
+    },
+    {
+      "skill": "echarts-animated-svg",
+      "model": "openai-codex/gpt-5.6-sol",
+      "sourcePayloadSha256": "b51f5e3e971863ccc196b8d13cf70f6b67ccddf593019d390c87293125eaa8e4",
+      "independentReport": "evaluations/diagram-compactness/consumer-audit-20261004.md",
+      "contract": {
+        "run": "compact-echarts-animated-svg-20261004-sol-literal-final-contract",
+        "strictPass": true,
+        "independentPass": true,
+        "jointPass": true,
+        "payloadSha256": "b51f5e3e971863ccc196b8d13cf70f6b67ccddf593019d390c87293125eaa8e4",
+        "model": "openai-codex/gpt-5.6-sol",
+        "expectedOutputs": [
+          "deliverables/chart.static.svg",
+          "deliverables/chart.animated.svg",
+          "deliverables/chart-validation.json",
+          "deliverables/layout-review.md"
+        ],
+        "strictResult": "evaluations/runs/compact-echarts-animated-svg-20261004-sol-literal-final-contract/evaluation-result.json"
+      },
+      "naturals": [
+        {
+          "run": "compact-echarts-animated-svg-20261004-sol-literal-final-natural-1",
+          "strictPass": true,
+          "independentPass": true,
+          "jointPass": true,
+          "payloadSha256": "b51f5e3e971863ccc196b8d13cf70f6b67ccddf593019d390c87293125eaa8e4",
+          "model": "openai-codex/gpt-5.6-sol",
+          "expectedOutputs": [
+            "deliverables/workflow.static.svg",
+            "deliverables/workflow.animated.svg",
+            "deliverables/workflow-validation.json",
+            "deliverables/layout-review.md"
+          ],
+          "strictResult": "evaluations/runs/compact-echarts-animated-svg-20261004-sol-literal-final-natural-1/evaluation-result.json"
+        },
+        {
+          "run": "compact-echarts-animated-svg-20261004-sol-literal-final-natural-2",
+          "strictPass": true,
+          "independentPass": true,
+          "jointPass": true,
+          "payloadSha256": "b51f5e3e971863ccc196b8d13cf70f6b67ccddf593019d390c87293125eaa8e4",
+          "model": "openai-codex/gpt-5.6-sol",
+          "expectedOutputs": [
+            "deliverables/workflow.static.svg",
+            "deliverables/workflow.animated.svg",
+            "deliverables/workflow-validation.json",
+            "deliverables/layout-review.md"
+          ],
+          "strictResult": "evaluations/runs/compact-echarts-animated-svg-20261004-sol-literal-final-natural-2/evaluation-result.json"
+        },
+        {
+          "run": "compact-echarts-animated-svg-20261004-sol-literal-final-natural-3",
+          "strictPass": true,
+          "independentPass": true,
+          "jointPass": true,
+          "payloadSha256": "b51f5e3e971863ccc196b8d13cf70f6b67ccddf593019d390c87293125eaa8e4",
+          "model": "openai-codex/gpt-5.6-sol",
+          "expectedOutputs": [
+            "deliverables/workflow.static.svg",
+            "deliverables/workflow.animated.svg",
+            "deliverables/workflow-validation.json",
+            "deliverables/layout-review.md"
+          ],
+          "strictResult": "evaluations/runs/compact-echarts-animated-svg-20261004-sol-literal-final-natural-3/evaluation-result.json"
+        }
+      ],
+      "additionalContracts": [],
+      "narrowRepair": null
+    },
+    {
+      "skill": "video",
+      "model": "openai-codex/gpt-5.6-sol",
+      "sourcePayloadSha256": "74a94bfb9cfd346fe4b1fe977e91e560b21846e4b54ac59c1585afa69e7f1be1",
+      "independentReport": "evaluations/diagram-compactness/video-runtime-20261004.md",
+      "contract": {
+        "run": "compact-video-20261004-sol-semantic-final-contract",
+        "strictPass": true,
+        "independentPass": true,
+        "jointPass": true,
+        "payloadSha256": "74a94bfb9cfd346fe4b1fe977e91e560b21846e4b54ac59c1585afa69e7f1be1",
+        "model": "openai-codex/gpt-5.6-sol",
+        "expectedOutputs": [
+          "source/scene-contract.json",
+          "src/index.html",
+          "deliverables/layout-review.md"
+        ],
+        "strictResult": "evaluations/runs/compact-video-20261004-sol-semantic-final-contract/evaluation-result.json"
+      },
+      "naturals": [
+        {
+          "run": "compact-video-20261004-sol-semantic-final-natural-1",
+          "strictPass": true,
+          "independentPass": true,
+          "jointPass": true,
+          "payloadSha256": "74a94bfb9cfd346fe4b1fe977e91e560b21846e4b54ac59c1585afa69e7f1be1",
+          "model": "openai-codex/gpt-5.6-sol",
+          "expectedOutputs": [
+            "source/scene-contract.json",
+            "src/index.html",
+            "deliverables/layout-review.md"
+          ],
+          "strictResult": "evaluations/runs/compact-video-20261004-sol-semantic-final-natural-1/evaluation-result.json"
+        },
+        {
+          "run": "compact-video-20261004-sol-semantic-final-natural-2",
+          "strictPass": true,
+          "independentPass": true,
+          "jointPass": true,
+          "payloadSha256": "74a94bfb9cfd346fe4b1fe977e91e560b21846e4b54ac59c1585afa69e7f1be1",
+          "model": "openai-codex/gpt-5.6-sol",
+          "expectedOutputs": [
+            "source/scene-contract.json",
+            "src/index.html",
+            "deliverables/layout-review.md"
+          ],
+          "strictResult": "evaluations/runs/compact-video-20261004-sol-semantic-final-natural-2/evaluation-result.json"
+        },
+        {
+          "run": "compact-video-20261004-sol-semantic-final-natural-3",
+          "strictPass": true,
+          "independentPass": true,
+          "jointPass": true,
+          "payloadSha256": "74a94bfb9cfd346fe4b1fe977e91e560b21846e4b54ac59c1585afa69e7f1be1",
+          "model": "openai-codex/gpt-5.6-sol",
+          "expectedOutputs": [
+            "source/scene-contract.json",
+            "src/index.html",
+            "deliverables/layout-review.md"
+          ],
+          "strictResult": "evaluations/runs/compact-video-20261004-sol-semantic-final-natural-3/evaluation-result.json"
+        }
+      ],
+      "additionalContracts": [],
+      "narrowRepair": null
+    },
+    {
+      "skill": "slidev-animejs",
+      "model": "openai-codex/gpt-5.6-sol",
+      "sourcePayloadSha256": "7ffa86e88c07c8d6e9bea387aecb9867103ea9407edd9e7adf6cdafaf7ee1b90",
+      "independentReport": "evaluations/diagram-compactness/slidev-animejs-runtime-20261004.md",
+      "contract": {
+        "run": "compact-slidev-animejs-20261004-painted-contract",
+        "strictPass": true,
+        "independentPass": true,
+        "jointPass": true,
+        "payloadSha256": "7ffa86e88c07c8d6e9bea387aecb9867103ea9407edd9e7adf6cdafaf7ee1b90",
+        "model": "openai-codex/gpt-5.6-sol",
+        "expectedOutputs": [
+          "flow.json",
+          "deck/slides.md",
+          "deck/components/OrderHandoff.vue",
+          "deck/package.json",
+          "captures/capture.json",
+          "captures/state-0.png",
+          "deliverables/layout-review.md"
+        ],
+        "strictResult": "evaluations/runs/compact-slidev-animejs-20261004-painted-contract/evaluation-result.json"
+      },
+      "naturals": [
+        {
+          "run": "compact-slidev-animejs-20261004-sol-release2-natural-1",
+          "strictPass": true,
+          "independentPass": true,
+          "jointPass": true,
+          "payloadSha256": "31549d0117b2947f118c90de2427198e8d74ad4b1eb691701b0f81c29c3b0f0d",
+          "model": "openai-codex/gpt-5.6-sol",
+          "expectedOutputs": [
+            "deck/slides.md",
+            "deck/components/OrderHandoff.vue",
+            "deck/package.json",
+            "deliverables/layout-review.md"
+          ],
+          "strictResult": "evaluations/runs/compact-slidev-animejs-20261004-sol-release2-natural-1/evaluation-result.json"
+        },
+        {
+          "run": "compact-slidev-animejs-20261004-sol-release2-natural-2",
+          "strictPass": false,
+          "independentPass": true,
+          "jointPass": false,
+          "payloadSha256": "31549d0117b2947f118c90de2427198e8d74ad4b1eb691701b0f81c29c3b0f0d",
+          "model": "openai-codex/gpt-5.6-sol",
+          "expectedOutputs": [
+            "deck/slides.md",
+            "deck/components/OrderHandoff.vue",
+            "deck/package.json",
+            "deliverables/layout-review.md"
+          ],
+          "strictResult": "evaluations/runs/compact-slidev-animejs-20261004-sol-release2-natural-2/evaluation-result.json"
+        },
+        {
+          "run": "compact-slidev-animejs-20261004-sol-release2-natural-3",
+          "strictPass": true,
+          "independentPass": true,
+          "jointPass": true,
+          "payloadSha256": "31549d0117b2947f118c90de2427198e8d74ad4b1eb691701b0f81c29c3b0f0d",
+          "model": "openai-codex/gpt-5.6-sol",
+          "expectedOutputs": [
+            "deck/slides.md",
+            "deck/components/OrderHandoff.vue",
+            "deck/package.json",
+            "deliverables/layout-review.md"
+          ],
+          "strictResult": "evaluations/runs/compact-slidev-animejs-20261004-sol-release2-natural-3/evaluation-result.json"
+        }
+      ],
+      "additionalContracts": [
+        {
+          "run": "compact-slidev-animejs-20261004-boundary-contract",
+          "strictPass": true,
+          "independentPass": true,
+          "jointPass": true,
+          "payloadSha256": "7ffa86e88c07c8d6e9bea387aecb9867103ea9407edd9e7adf6cdafaf7ee1b90",
+          "model": "openai-codex/gpt-5.6-sol",
+          "expectedOutputs": [
+            "flow.json",
+            "deck/slides.md",
+            "deck/components/AccessRouting.vue",
+            "deck/package.json",
+            "captures/capture.json",
+            "captures/state-0.png",
+            "deliverables/layout-review.md"
+          ],
+          "strictResult": "evaluations/runs/compact-slidev-animejs-20261004-boundary-contract/evaluation-result.json"
+        }
+      ],
+      "narrowRepair": {
+        "passed": true,
+        "beforePayloadSha256": "31549d0117b2947f118c90de2427198e8d74ad4b1eb691701b0f81c29c3b0f0d",
+        "afterPayloadSha256": "7ffa86e88c07c8d6e9bea387aecb9867103ea9407edd9e7adf6cdafaf7ee1b90",
+        "changedRuntimeFiles": [
+          "scripts/scaffold_connected_flow.py",
+          "scripts/test_connected_flow.py"
+        ],
+        "unchangedTemplateSha256": "a9579bf0bde9540bbab5d673ff777c843040b0afe2be43c008d4b5a60d42c7d7",
+        "geometrySourceByteIdentical": true,
+        "generatedContractTemplateUnchanged": true,
+        "generatedBoundaryTemplateUnchanged": true,
+        "semanticGeometryChecksEqual": true,
+        "fontMeasuredDimensions": {
+          "before": [
+            "454",
+            "241"
+          ],
+          "after": [
+            "457",
+            "240"
+          ]
+        },
+        "parcelFill": "rgb(158, 27, 50)"
+      }
+    },
+    {
+      "skill": "slidev-echarts",
+      "model": "openai-codex/gpt-5.6-sol",
+      "sourcePayloadSha256": "c5f20fbe78097acd533a6825fac55a1c4e74c4361f696e236d2e96168f789806",
+      "independentReport": "evaluations/diagram-compactness/consumer-audit-20261004.md",
+      "contract": {
+        "run": "compact-slidev-echarts-20261004-sol-caption-placement-final-contract",
+        "strictPass": true,
+        "independentPass": true,
+        "jointPass": true,
+        "payloadSha256": "c5f20fbe78097acd533a6825fac55a1c4e74c4361f696e236d2e96168f789806",
+        "model": "openai-codex/gpt-5.6-sol",
+        "expectedOutputs": [
+          "deliverables/graph.svg",
+          "deliverables/graph-option.json",
+          "deliverables/layout-review.md"
+        ],
+        "strictResult": "evaluations/runs/compact-slidev-echarts-20261004-sol-caption-placement-final-contract/evaluation-result.json"
+      },
+      "naturals": [
+        {
+          "run": "compact-slidev-echarts-20261004-sol-caption-placement-final-natural-1",
+          "strictPass": true,
+          "independentPass": true,
+          "jointPass": true,
+          "payloadSha256": "c5f20fbe78097acd533a6825fac55a1c4e74c4361f696e236d2e96168f789806",
+          "model": "openai-codex/gpt-5.6-sol",
+          "expectedOutputs": [
+            "deck/slides.md",
+            "deck/components/SampleWorkflow.vue",
+            "deck/package.json",
+            "deliverables/layout-review.md"
+          ],
+          "strictResult": "evaluations/runs/compact-slidev-echarts-20261004-sol-caption-placement-final-natural-1/evaluation-result.json"
+        },
+        {
+          "run": "compact-slidev-echarts-20261004-sol-caption-placement-final-natural-2",
+          "strictPass": true,
+          "independentPass": true,
+          "jointPass": true,
+          "payloadSha256": "c5f20fbe78097acd533a6825fac55a1c4e74c4361f696e236d2e96168f789806",
+          "model": "openai-codex/gpt-5.6-sol",
+          "expectedOutputs": [
+            "deck/slides.md",
+            "deck/components/SampleWorkflow.vue",
+            "deck/package.json",
+            "deliverables/layout-review.md"
+          ],
+          "strictResult": "evaluations/runs/compact-slidev-echarts-20261004-sol-caption-placement-final-natural-2/evaluation-result.json"
+        },
+        {
+          "run": "compact-slidev-echarts-20261004-sol-caption-placement-final-natural-3",
+          "strictPass": true,
+          "independentPass": true,
+          "jointPass": true,
+          "payloadSha256": "c5f20fbe78097acd533a6825fac55a1c4e74c4361f696e236d2e96168f789806",
+          "model": "openai-codex/gpt-5.6-sol",
+          "expectedOutputs": [
+            "deck/slides.md",
+            "deck/components/SampleWorkflow.vue",
+            "deck/package.json",
+            "deliverables/layout-review.md"
+          ],
+          "strictResult": "evaluations/runs/compact-slidev-echarts-20261004-sol-caption-placement-final-natural-3/evaluation-result.json"
+        }
+      ],
+      "additionalContracts": [],
+      "narrowRepair": null
+    },
+    {
+      "skill": "slidev-quality-audit",
+      "model": "openai-codex/gpt-5.6-sol",
+      "sourcePayloadSha256": "60927e2f7678067388aa0f91442d060aa5faeed20b6ea57b65c8af5daeadb898",
+      "independentReport": "evaluations/diagram-compactness/slidev-quality-20261004.md",
+      "contract": {
+        "run": "compact-slidev-quality-audit-20261004-trial-release-contract",
+        "strictPass": true,
+        "independentPass": true,
+        "jointPass": true,
+        "payloadSha256": "60927e2f7678067388aa0f91442d060aa5faeed20b6ea57b65c8af5daeadb898",
+        "model": "openai-codex/gpt-5.6-sol",
+        "expectedOutputs": [
+          "deck/slides.md",
+          "deck/package.json",
+          "deliverables/audit/quality-report.md",
+          "deliverables/audit/quality-report.json",
+          "deliverables/layout-review.md"
+        ],
+        "strictResult": "evaluations/runs/compact-slidev-quality-audit-20261004-trial-release-contract/evaluation-result.json"
+      },
+      "naturals": [
+        {
+          "run": "compact-slidev-quality-audit-20261004-trial-release-natural-1",
+          "strictPass": false,
+          "independentPass": true,
+          "jointPass": false,
+          "payloadSha256": "60927e2f7678067388aa0f91442d060aa5faeed20b6ea57b65c8af5daeadb898",
+          "model": "openai-codex/gpt-5.6-sol",
+          "expectedOutputs": [
+            "deck/slides.md",
+            "deck/package.json",
+            "deliverables/audit/quality-report.md",
+            "deliverables/audit/quality-report.json",
+            "deliverables/layout-review.md"
+          ],
+          "strictResult": "evaluations/runs/compact-slidev-quality-audit-20261004-trial-release-natural-1/evaluation-result.json"
+        },
+        {
+          "run": "compact-slidev-quality-audit-20261004-trial-release-natural-2",
+          "strictPass": true,
+          "independentPass": true,
+          "jointPass": true,
+          "payloadSha256": "60927e2f7678067388aa0f91442d060aa5faeed20b6ea57b65c8af5daeadb898",
+          "model": "openai-codex/gpt-5.6-sol",
+          "expectedOutputs": [
+            "deck/slides.md",
+            "deck/package.json",
+            "deliverables/audit/quality-report.md",
+            "deliverables/audit/quality-report.json",
+            "deliverables/layout-review.md"
+          ],
+          "strictResult": "evaluations/runs/compact-slidev-quality-audit-20261004-trial-release-natural-2/evaluation-result.json"
+        },
+        {
+          "run": "compact-slidev-quality-audit-20261004-trial-release-natural-3",
+          "strictPass": true,
+          "independentPass": true,
+          "jointPass": true,
+          "payloadSha256": "60927e2f7678067388aa0f91442d060aa5faeed20b6ea57b65c8af5daeadb898",
+          "model": "openai-codex/gpt-5.6-sol",
+          "expectedOutputs": [
+            "deck/slides.md",
+            "deck/package.json",
+            "deliverables/audit/quality-report.md",
+            "deliverables/audit/quality-report.json",
+            "deliverables/layout-review.md"
+          ],
+          "strictResult": "evaluations/runs/compact-slidev-quality-audit-20261004-trial-release-natural-3/evaluation-result.json"
+        }
+      ],
+      "additionalContracts": [],
+      "narrowRepair": null
+    }
+  ],
+  "limits": "Representative topology contracts and native delivery-size review; no global packing optimum or arbitrary-output certification."
+}

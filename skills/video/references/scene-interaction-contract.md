@@ -1,5 +1,21 @@
 # Mixed-Media Scene Interaction Contract
 
+For `signal`/`handoff` connectors, place ports on the intended opaque node
+boundary, facing the route. The compositor leaves a six-pixel target gap and
+draws a complete 12-pixel-or-larger head in the completed/persisted state.
+It keeps the moving token outside the head envelope and refuses a route too
+short for its token/head clearances. Inspect actual heads and source/target
+attachment; a state JSON alone is not a paint certificate.
+
+For feedback or branch routes needing a clear gutter, keep `path: "straight"`
+and add optional `waypoints: [{"x": 0.4, "y": 0.3}, ...]`. Points use normalized
+canvas coordinates, at most 16, and create a polyline between live endpoint
+ports. Reserve a full terminal head run and independent lanes; do not use a
+point inside another concept. A direct `curve` has horizontal end tangents
+and does not automatically avoid unrelated nodes. Keep completed concept
+connections visible with `persistAfter: true` when the scene needs a held
+read of all relationships.
+
 ## Model
 
 Use four layers:
@@ -31,6 +47,9 @@ Use normalized ports for opaque raster/GIF assets. Use selectors only inside inl
 
 A track targets an element and one supported property: `opacity`, `translateX`, `translateY`, `scale`, `rotate`, or `state`. Keyframes carry `at`, `value`, and optional easing. Numeric properties interpolate; state properties step at the keyframe.
 
+For translation tracks, declare `unit: "normalized"` or `unit: "pixels"`;
+the compositor does not infer coordinate units from their values.
+
 Keep geometry tracks separate from semantic state tracks. This makes a handoff auditable: the connector can move while the target diagram independently enters a named state.
 
 ## Interactions
@@ -46,6 +65,11 @@ An interaction declares:
 - a plain-language `meaning` and at least one validation check.
 
 Require both source and target ports to exist. Require interaction windows to fit the scene duration. Reject direct references to another producer's implementation functions.
+
+Visible `signal`/`handoff` interactions require a `connector` object with
+`path: "straight"` or `path: "curve"`, a palette `color`, positive `width`,
+`zIndex` and `persistAfter`. `path` selects the supported routing mode; it
+does not accept an SVG path string or a port ID. Use named endpoint ports.
 
 ## GIF behavior
 

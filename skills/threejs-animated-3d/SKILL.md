@@ -25,6 +25,10 @@ Replace the example value with the exact requested path. Do not substitute descr
 3. Build each scene with a stable renderer lifecycle: fixed container aspect ratio, device-pixel-ratio cap, resize handling, camera update on resize, animation cleanup, and explicit disposal when scenes are removed.
 4. Read `references/visual-tokens.md` before styling. Default to colorset1: allocate distinct category materials from primary red `#9e1b32`, then grays, black, white, and the remaining colors, excluding only the actual canvas token. Pink is a last-resort category after the preceding usable colors, never an automatic secondary color. Use colorset2 only for explicit extended color. Use white lights so objects retain their hue.
 5. Default to compact panels: 12 px padding, 8 px gaps, 4 px vertical button padding, and a 200 px stage minimum. Preserve readable fonts and touch targets; fit the full animation envelope after resizing rather than shrinking meaningful scene geometry.
+   For connected explanatory diagrams, also compact projected nodes and routes
+   using [scene-patterns.md](references/scene-patterns.md#compact-connected-diagrams).
+   Protect text, arrow silhouettes, distinct endpoints and lanes at all delivery
+   views; quantitative charts and physical scenes retain their meaningful scales.
 6. Prefer simple, inspectable geometry for examples. Use generated primitives, instanced meshes, buffer geometry, and local data before adding heavy external model assets.
 7. Verify the result in a browser. Check desktop and mobile viewports, canvas nonblank pixels, tonal variation, material/light palette, animation movement, pointer interaction, replay controls, text fit, and console/page errors. Grayscale shading counts as variation; do not add hues to satisfy a diversity check.
 

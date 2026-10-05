@@ -1,0 +1,1234 @@
+{
+  "date": "2026-10-04",
+  "modelException": "Spark unsupported with this ChatGPT account before first tool call; explicit per-skill Luna exception recorded in SKILLS.md.",
+  "runs": [
+    {
+      "id": "20261004-compaction-mermaid-boundary-luna-1",
+      "skill": {
+        "name": "mermaid",
+        "profile": "runtime",
+        "fileCount": 27,
+        "payloadSha256": "9d684070671a6916ae13fa68bc9ea9995fb5fc639f2049d253fb0ea6534d20e4"
+      },
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/pi-prompts/diagram-compaction-mermaid-boundary.md",
+        "sizeBytes": 1134,
+        "sha256": "741ba8d89f828204eca52df4a41905e80ca7dc56c33eba1c8b3408cc86633c37"
+      },
+      "model": "openai-codex/gpt-5.6-luna",
+      "result": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-05T00:45:10.680315+00:00",
+        "finishedAtUtc": "2026-10-05T00:46:15.750461+00:00",
+        "durationSeconds": 65.071,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "expectedOutputs": [
+        "override.mmd",
+        "override.svg",
+        "style.json",
+        "check.json",
+        "review.md"
+      ],
+      "finalCohort": true,
+      "readPaths": [
+        "../prompt.md",
+        "skills/mermaid/SKILL.md",
+        "skills/mermaid/references/compact-composition.md",
+        "skills/mermaid/references/accessible-svg-metadata.md",
+        "skills/mermaid/references/colorset-contract.md",
+        "override.mmd",
+        "style.json",
+        "override.svg",
+        "check.json"
+      ],
+      "readSurfacePassed": true
+    },
+    {
+      "id": "20261004-compaction-mermaid-contract-luna-1",
+      "skill": {
+        "name": "mermaid",
+        "profile": "runtime",
+        "fileCount": 27,
+        "payloadSha256": "9ba8bb7f91deba6498242b696b8f7badeeb454421fb8b2bf065bcb9b96d89b74"
+      },
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/pi-prompts/diagram-compaction-mermaid-contract.md",
+        "sizeBytes": 1357,
+        "sha256": "090d72ec67821dbac497f4f322f7bf95bfb1a9d7e13d3e63c27d998ae363f2fc"
+      },
+      "model": "openai-codex/gpt-5.6-luna",
+      "result": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-05T00:37:09.845756+00:00",
+        "finishedAtUtc": "2026-10-05T00:37:54.897574+00:00",
+        "durationSeconds": 45.052,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "expectedOutputs": [
+        "approval.mmd",
+        "approval.svg",
+        "style.json",
+        "check.json",
+        "review.md"
+      ],
+      "finalCohort": false
+    },
+    {
+      "id": "20261004-compaction-mermaid-contract-luna-2",
+      "skill": {
+        "name": "mermaid",
+        "profile": "runtime",
+        "fileCount": 27,
+        "payloadSha256": "9d684070671a6916ae13fa68bc9ea9995fb5fc639f2049d253fb0ea6534d20e4"
+      },
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/pi-prompts/diagram-compaction-mermaid-contract.md",
+        "sizeBytes": 1357,
+        "sha256": "090d72ec67821dbac497f4f322f7bf95bfb1a9d7e13d3e63c27d998ae363f2fc"
+      },
+      "model": "openai-codex/gpt-5.6-luna",
+      "result": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-05T00:45:10.672101+00:00",
+        "finishedAtUtc": "2026-10-05T00:45:45.594109+00:00",
+        "durationSeconds": 34.922,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "expectedOutputs": [
+        "approval.mmd",
+        "approval.svg",
+        "style.json",
+        "check.json",
+        "review.md"
+      ],
+      "finalCohort": true,
+      "readPaths": [
+        "../prompt.md",
+        "skills/mermaid/SKILL.md",
+        "skills/mermaid/references/compact-composition.md",
+        "skills/mermaid/references/colorset-contract.md",
+        "skills/mermaid/references/accessible-svg-metadata.md",
+        "style.json",
+        "approval.svg",
+        "check.json",
+        "approval.mmd"
+      ],
+      "readSurfacePassed": true
+    },
+    {
+      "id": "20261004-compaction-mermaid-natural-luna-1",
+      "skill": {
+        "name": "mermaid",
+        "profile": "runtime",
+        "fileCount": 27,
+        "payloadSha256": "0557ba0c3431f1766bfd7f756c9ed8b6c383b5c990adefa856c95695b58c54e5"
+      },
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/pi-prompts/diagram-compaction-mermaid-naturalistic.md",
+        "sizeBytes": 1885,
+        "sha256": "12c4240293ce62ff29a13a88f87efdd72bedbf34024a533604c2b63feaa7d8fb"
+      },
+      "model": "openai-codex/gpt-5.6-luna",
+      "result": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-05T00:28:53.624926+00:00",
+        "finishedAtUtc": "2026-10-05T00:30:14.309116+00:00",
+        "durationSeconds": 80.685,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "expectedOutputs": [
+        "diagram/request.mmd",
+        "diagram/request.svg",
+        "diagram/style.json",
+        "diagram/check.json",
+        "diagram/review.md"
+      ],
+      "finalCohort": false
+    },
+    {
+      "id": "20261004-compaction-mermaid-natural-luna-2",
+      "skill": {
+        "name": "mermaid",
+        "profile": "runtime",
+        "fileCount": 27,
+        "payloadSha256": "0557ba0c3431f1766bfd7f756c9ed8b6c383b5c990adefa856c95695b58c54e5"
+      },
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/pi-prompts/diagram-compaction-mermaid-naturalistic.md",
+        "sizeBytes": 1885,
+        "sha256": "12c4240293ce62ff29a13a88f87efdd72bedbf34024a533604c2b63feaa7d8fb"
+      },
+      "model": "openai-codex/gpt-5.6-luna",
+      "result": {
+        "passed": false,
+        "returnCode": 4,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-05T00:33:32.862263+00:00",
+        "finishedAtUtc": "2026-10-05T00:35:29.247083+00:00",
+        "durationSeconds": 116.386,
+        "gates": {
+          "artifacts": true,
+          "events": false,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "expectedOutputs": [
+        "diagram/request.mmd",
+        "diagram/request.svg",
+        "diagram/style.json",
+        "diagram/check.json",
+        "diagram/review.md"
+      ],
+      "finalCohort": false
+    },
+    {
+      "id": "20261004-compaction-mermaid-natural-luna-3",
+      "skill": {
+        "name": "mermaid",
+        "profile": "runtime",
+        "fileCount": 27,
+        "payloadSha256": "3c180e132cc1e4c5d25bcd42718c8aba2d28bdcb95b022f1eaf4a945f7f027a7"
+      },
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/pi-prompts/diagram-compaction-mermaid-naturalistic.md",
+        "sizeBytes": 1885,
+        "sha256": "12c4240293ce62ff29a13a88f87efdd72bedbf34024a533604c2b63feaa7d8fb"
+      },
+      "model": "openai-codex/gpt-5.6-luna",
+      "result": {
+        "passed": false,
+        "returnCode": 4,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-05T00:38:29.552608+00:00",
+        "finishedAtUtc": "2026-10-05T00:39:24.612059+00:00",
+        "durationSeconds": 55.06,
+        "gates": {
+          "artifacts": true,
+          "events": false,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "expectedOutputs": [
+        "diagram/request.mmd",
+        "diagram/request.svg",
+        "diagram/style.json",
+        "diagram/check.json",
+        "diagram/review.md"
+      ],
+      "finalCohort": false
+    },
+    {
+      "id": "20261004-compaction-mermaid-natural-luna-4",
+      "skill": {
+        "name": "mermaid",
+        "profile": "runtime",
+        "fileCount": 27,
+        "payloadSha256": "9d684070671a6916ae13fa68bc9ea9995fb5fc639f2049d253fb0ea6534d20e4"
+      },
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/pi-prompts/diagram-compaction-mermaid-naturalistic.md",
+        "sizeBytes": 1885,
+        "sha256": "12c4240293ce62ff29a13a88f87efdd72bedbf34024a533604c2b63feaa7d8fb"
+      },
+      "model": "openai-codex/gpt-5.6-luna",
+      "result": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-05T00:43:43.564043+00:00",
+        "finishedAtUtc": "2026-10-05T00:45:16.884670+00:00",
+        "durationSeconds": 93.321,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "expectedOutputs": [
+        "diagram/request.mmd",
+        "diagram/request.svg",
+        "diagram/style.json",
+        "diagram/check.json",
+        "diagram/review.md"
+      ],
+      "finalCohort": true,
+      "readPaths": [
+        "../prompt.md",
+        "skills/mermaid/SKILL.md",
+        "skills/mermaid/references/compact-composition.md",
+        "skills/mermaid/references/colorset-contract.md",
+        "skills/mermaid/references/diagram-selection.md",
+        "skills/mermaid/references/accessible-svg-metadata.md",
+        "skills/mermaid/references/editorial-diagram-contracts.md",
+        "skills/mermaid/assets/palettes/colorsets.json",
+        "diagram/request.mmd",
+        "diagram/style.json",
+        "comparison/request-tight.mmd",
+        "diagram/request.svg",
+        "comparison/request-tight.svg",
+        "diagram/check.json"
+      ],
+      "readSurfacePassed": true
+    },
+    {
+      "id": "20261004-compaction-mermaid-natural-luna-5",
+      "skill": {
+        "name": "mermaid",
+        "profile": "runtime",
+        "fileCount": 27,
+        "payloadSha256": "9d684070671a6916ae13fa68bc9ea9995fb5fc639f2049d253fb0ea6534d20e4"
+      },
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/pi-prompts/diagram-compaction-mermaid-naturalistic.md",
+        "sizeBytes": 1885,
+        "sha256": "12c4240293ce62ff29a13a88f87efdd72bedbf34024a533604c2b63feaa7d8fb"
+      },
+      "model": "openai-codex/gpt-5.6-luna",
+      "result": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-05T00:43:43.579591+00:00",
+        "finishedAtUtc": "2026-10-05T00:45:19.838470+00:00",
+        "durationSeconds": 96.26,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "expectedOutputs": [
+        "diagram/request.mmd",
+        "diagram/request.svg",
+        "diagram/style.json",
+        "diagram/check.json",
+        "diagram/review.md"
+      ],
+      "finalCohort": true,
+      "readPaths": [
+        "../prompt.md",
+        "skills/mermaid/SKILL.md",
+        "skills/mermaid/references/compact-composition.md",
+        "skills/mermaid/references/colorset-contract.md",
+        "skills/mermaid/references/arrow-contrast.md",
+        "skills/mermaid/references/diagram-types.json",
+        "skills/mermaid/references/diagram-selection.md",
+        "skills/mermaid/references/accessible-svg-metadata.md",
+        "diagram/style.json",
+        "diagram/request.mmd",
+        "diagram/check.json",
+        "diagram/request.svg",
+        "comparison/candidate.svg"
+      ],
+      "readSurfacePassed": true
+    },
+    {
+      "id": "20261004-compaction-mermaid-natural-luna-6",
+      "skill": {
+        "name": "mermaid",
+        "profile": "runtime",
+        "fileCount": 27,
+        "payloadSha256": "9d684070671a6916ae13fa68bc9ea9995fb5fc639f2049d253fb0ea6534d20e4"
+      },
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/pi-prompts/diagram-compaction-mermaid-naturalistic.md",
+        "sizeBytes": 1885,
+        "sha256": "12c4240293ce62ff29a13a88f87efdd72bedbf34024a533604c2b63feaa7d8fb"
+      },
+      "model": "openai-codex/gpt-5.6-luna",
+      "result": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-05T00:43:43.640542+00:00",
+        "finishedAtUtc": "2026-10-05T00:45:35.547239+00:00",
+        "durationSeconds": 111.907,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "expectedOutputs": [
+        "diagram/request.mmd",
+        "diagram/request.svg",
+        "diagram/style.json",
+        "diagram/check.json",
+        "diagram/review.md"
+      ],
+      "finalCohort": true,
+      "readPaths": [
+        "../prompt.md",
+        "skills/mermaid/SKILL.md",
+        "skills/mermaid/references/colorset-contract.md",
+        "skills/mermaid/references/compact-composition.md",
+        "skills/mermaid/references/accessible-svg-metadata.md",
+        "skills/mermaid/references/diagram-types.json",
+        "skills/mermaid/references/diagram-selection.md",
+        "skills/mermaid/assets/palettes/colorsets.json",
+        "diagram/request.mmd",
+        "diagram/style.json",
+        "diagram/request.svg",
+        "diagram/check.json"
+      ],
+      "readSurfacePassed": true
+    },
+    {
+      "id": "20261004-compaction-mermaid-natural-spark-1",
+      "skill": {
+        "name": "mermaid",
+        "profile": "runtime",
+        "fileCount": 27,
+        "payloadSha256": "0557ba0c3431f1766bfd7f756c9ed8b6c383b5c990adefa856c95695b58c54e5"
+      },
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/pi-prompts/diagram-compaction-mermaid-naturalistic.md",
+        "sizeBytes": 1885,
+        "sha256": "12c4240293ce62ff29a13a88f87efdd72bedbf34024a533604c2b63feaa7d8fb"
+      },
+      "model": "openai-codex/gpt-5.3-codex-spark",
+      "result": {
+        "passed": false,
+        "returnCode": 3,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-05T00:28:00.260083+00:00",
+        "finishedAtUtc": "2026-10-05T00:28:05.902936+00:00",
+        "durationSeconds": 5.643,
+        "gates": {
+          "artifacts": false,
+          "events": false,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "expectedOutputs": [
+        "diagram/request.mmd",
+        "diagram/request.svg",
+        "diagram/style.json",
+        "diagram/check.json",
+        "diagram/review.md"
+      ],
+      "finalCohort": false
+    },
+    {
+      "id": "20261004-compaction-plantuml-contract-luna-1",
+      "skill": {
+        "name": "plantuml-colorset-renderer",
+        "profile": "runtime",
+        "fileCount": 28,
+        "payloadSha256": "6bd99dfb7b9cf047885b71300bf1fd1be96d049e36aabb7e814d10dab2f356fe"
+      },
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/pi-prompts/diagram-compaction-plantuml-contract.md",
+        "sizeBytes": 1291,
+        "sha256": "39639c0c2028e1ae0a2ada526d0b2c2d472eaeba0c245970b7764dcb834a8f7f"
+      },
+      "model": "openai-codex/gpt-5.6-luna",
+      "result": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-05T00:37:09.854427+00:00",
+        "finishedAtUtc": "2026-10-05T00:37:50.894498+00:00",
+        "durationSeconds": 41.04,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "expectedOutputs": [
+        "source/approval.puml",
+        "rendered/svg/approval.svg",
+        "rendered/png/approval.png",
+        "render-report.json",
+        "review.md"
+      ],
+      "finalCohort": false,
+      "readPaths": [
+        "../prompt.md",
+        "skills/plantuml-colorset-renderer/SKILL.md",
+        "skills/plantuml-colorset-renderer/references/colorset-contract.md",
+        "skills/plantuml-colorset-renderer/references/compact-composition.md",
+        "skills/plantuml-colorset-renderer/references/arrow-contrast.md",
+        "render-report.json",
+        "rendered/png/approval.png"
+      ],
+      "readSurfacePassed": true,
+      "lineageQualification": "Only agents/openai.yaml added the compact-layout default-prompt sentence; all runtime guidance/resources are byte-identical. Superseded by current-byte contract-luna-2."
+    },
+    {
+      "id": "20261004-compaction-plantuml-contract-luna-2",
+      "skill": {
+        "name": "plantuml-colorset-renderer",
+        "profile": "runtime",
+        "fileCount": 28,
+        "payloadSha256": "eb99915c267e0dc90fe9a01dab20d12d1189107e2e119031db39c905d07e2f2e"
+      },
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/pi-prompts/diagram-compaction-plantuml-contract.md",
+        "sizeBytes": 1291,
+        "sha256": "39639c0c2028e1ae0a2ada526d0b2c2d472eaeba0c245970b7764dcb834a8f7f"
+      },
+      "model": "openai-codex/gpt-5.6-luna",
+      "result": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-05T02:47:47.781194+00:00",
+        "finishedAtUtc": "2026-10-05T02:48:18.444910+00:00",
+        "durationSeconds": 30.664,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "expectedOutputs": [
+        "source/approval.puml",
+        "rendered/svg/approval.svg",
+        "rendered/png/approval.png",
+        "render-report.json",
+        "review.md"
+      ],
+      "finalCohort": true,
+      "readPaths": [
+        "../prompt.md",
+        "skills/plantuml-colorset-renderer/SKILL.md",
+        "skills/plantuml-colorset-renderer/references/colorset-contract.md",
+        "skills/plantuml-colorset-renderer/references/compact-composition.md",
+        "render-report.json",
+        "skills/plantuml-colorset-renderer/references/arrow-contrast.md",
+        "rendered/png/approval.png"
+      ],
+      "readSurfacePassed": true,
+      "independentArtifactPassed": true,
+      "independentArtifactPath": "projects/diagram-compactness/artifacts/reviews/20261004-compaction-plantuml-contract-luna-2-native/browser.json",
+      "exactCommandsIndependentlyMatched": true,
+      "exactCommandHarnessOption": false
+    },
+    {
+      "id": "20261004-compaction-plantuml-natural-luna-1",
+      "skill": {
+        "name": "plantuml-colorset-renderer",
+        "profile": "runtime",
+        "fileCount": 28,
+        "payloadSha256": "b6aac3efc4e519c7382eb1ebec73f3e7b6f81a7da20e447323f9666c0925c7f0"
+      },
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/pi-prompts/diagram-compaction-plantuml-naturalistic.md",
+        "sizeBytes": 1789,
+        "sha256": "762df0375355c0f6a0b8c0b50552f5f6ea269a12262b4d61052aa9361deaee9d"
+      },
+      "model": "openai-codex/gpt-5.6-luna",
+      "result": {
+        "passed": false,
+        "returnCode": 4,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-05T00:28:53.616843+00:00",
+        "finishedAtUtc": "2026-10-05T00:30:20.102917+00:00",
+        "durationSeconds": 86.487,
+        "gates": {
+          "artifacts": true,
+          "events": false,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "expectedOutputs": [
+        "source/documents.puml",
+        "rendered/svg/documents.svg",
+        "rendered/png/documents.png",
+        "render-report.json",
+        "review.md"
+      ],
+      "finalCohort": false
+    },
+    {
+      "id": "20261004-compaction-plantuml-natural-luna-2",
+      "skill": {
+        "name": "plantuml-colorset-renderer",
+        "profile": "runtime",
+        "fileCount": 28,
+        "payloadSha256": "6bd99dfb7b9cf047885b71300bf1fd1be96d049e36aabb7e814d10dab2f356fe"
+      },
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/pi-prompts/diagram-compaction-plantuml-naturalistic.md",
+        "sizeBytes": 1789,
+        "sha256": "762df0375355c0f6a0b8c0b50552f5f6ea269a12262b4d61052aa9361deaee9d"
+      },
+      "model": "openai-codex/gpt-5.6-luna",
+      "result": {
+        "passed": false,
+        "returnCode": 4,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-05T00:33:43.677312+00:00",
+        "finishedAtUtc": "2026-10-05T00:34:52.231681+00:00",
+        "durationSeconds": 68.555,
+        "gates": {
+          "artifacts": true,
+          "events": false,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "expectedOutputs": [
+        "source/documents.puml",
+        "rendered/svg/documents.svg",
+        "rendered/png/documents.png",
+        "render-report.json",
+        "review.md"
+      ],
+      "finalCohort": false
+    },
+    {
+      "id": "20261004-compaction-plantuml-natural-luna-3",
+      "skill": {
+        "name": "plantuml-colorset-renderer",
+        "profile": "runtime",
+        "fileCount": 28,
+        "payloadSha256": "eb99915c267e0dc90fe9a01dab20d12d1189107e2e119031db39c905d07e2f2e"
+      },
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/pi-prompts/diagram-compaction-plantuml-naturalistic.md",
+        "sizeBytes": 1789,
+        "sha256": "762df0375355c0f6a0b8c0b50552f5f6ea269a12262b4d61052aa9361deaee9d"
+      },
+      "model": "openai-codex/gpt-5.6-luna",
+      "result": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-05T00:38:29.552540+00:00",
+        "finishedAtUtc": "2026-10-05T00:39:23.482029+00:00",
+        "durationSeconds": 53.93,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "expectedOutputs": [
+        "source/documents.puml",
+        "rendered/svg/documents.svg",
+        "rendered/png/documents.png",
+        "render-report.json",
+        "review.md"
+      ],
+      "finalCohort": true,
+      "readPaths": [
+        "../prompt.md",
+        "skills/plantuml-colorset-renderer/SKILL.md",
+        "skills/plantuml-colorset-renderer/references/colorset-contract.md",
+        "skills/plantuml-colorset-renderer/references/compact-composition.md",
+        "skills/plantuml-colorset-renderer/references/native-styling.md",
+        "skills/plantuml-colorset-renderer/references/arrow-contrast.md",
+        "rendered/svg/documents.svg",
+        "render-report.json",
+        "rendered/png/documents.png"
+      ],
+      "readSurfacePassed": true
+    },
+    {
+      "id": "20261004-compaction-plantuml-natural-luna-4",
+      "skill": {
+        "name": "plantuml-colorset-renderer",
+        "profile": "runtime",
+        "fileCount": 28,
+        "payloadSha256": "eb99915c267e0dc90fe9a01dab20d12d1189107e2e119031db39c905d07e2f2e"
+      },
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/pi-prompts/diagram-compaction-plantuml-naturalistic.md",
+        "sizeBytes": 1789,
+        "sha256": "762df0375355c0f6a0b8c0b50552f5f6ea269a12262b4d61052aa9361deaee9d"
+      },
+      "model": "openai-codex/gpt-5.6-luna",
+      "result": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-05T00:43:43.588708+00:00",
+        "finishedAtUtc": "2026-10-05T00:45:18.287858+00:00",
+        "durationSeconds": 94.7,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "expectedOutputs": [
+        "source/documents.puml",
+        "rendered/svg/documents.svg",
+        "rendered/png/documents.png",
+        "render-report.json",
+        "review.md"
+      ],
+      "finalCohort": true,
+      "readPaths": [
+        "../prompt.md",
+        "skills/plantuml-colorset-renderer/SKILL.md",
+        "skills/plantuml-colorset-renderer/references/colorset-contract.md",
+        "skills/plantuml-colorset-renderer/references/native-styling.md",
+        "skills/plantuml-colorset-renderer/references/compact-composition.md",
+        "skills/plantuml-colorset-renderer/references/arrow-contrast.md",
+        "skills/plantuml-colorset-renderer/assets/palettes/colorsets.json",
+        "render-report.json",
+        "rendered/svg/documents.svg",
+        "rendered/png/documents.png"
+      ],
+      "readSurfacePassed": true
+    },
+    {
+      "id": "20261004-compaction-plantuml-natural-luna-5",
+      "skill": {
+        "name": "plantuml-colorset-renderer",
+        "profile": "runtime",
+        "fileCount": 28,
+        "payloadSha256": "eb99915c267e0dc90fe9a01dab20d12d1189107e2e119031db39c905d07e2f2e"
+      },
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/pi-prompts/diagram-compaction-plantuml-naturalistic.md",
+        "sizeBytes": 1789,
+        "sha256": "762df0375355c0f6a0b8c0b50552f5f6ea269a12262b4d61052aa9361deaee9d"
+      },
+      "model": "openai-codex/gpt-5.6-luna",
+      "result": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-05T00:43:43.561190+00:00",
+        "finishedAtUtc": "2026-10-05T00:44:58.848046+00:00",
+        "durationSeconds": 75.287,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "expectedOutputs": [
+        "source/documents.puml",
+        "rendered/svg/documents.svg",
+        "rendered/png/documents.png",
+        "render-report.json",
+        "review.md"
+      ],
+      "finalCohort": true,
+      "readPaths": [
+        "../prompt.md",
+        "skills/plantuml-colorset-renderer/SKILL.md",
+        "skills/plantuml-colorset-renderer/references/colorset-contract.md",
+        "skills/plantuml-colorset-renderer/references/native-styling.md",
+        "skills/plantuml-colorset-renderer/references/compact-composition.md",
+        "skills/plantuml-colorset-renderer/references/arrow-contrast.md",
+        "render-report.json",
+        "rendered/svg/documents.svg",
+        "rendered/png/documents.png",
+        "comparison-render/svg/documents-topdown.svg"
+      ],
+      "readSurfacePassed": true
+    },
+    {
+      "id": "20261004-compaction-plantuml-natural-spark-1",
+      "skill": {
+        "name": "plantuml-colorset-renderer",
+        "profile": "runtime",
+        "fileCount": 28,
+        "payloadSha256": "b6aac3efc4e519c7382eb1ebec73f3e7b6f81a7da20e447323f9666c0925c7f0"
+      },
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/pi-prompts/diagram-compaction-plantuml-naturalistic.md",
+        "sizeBytes": 1789,
+        "sha256": "762df0375355c0f6a0b8c0b50552f5f6ea269a12262b4d61052aa9361deaee9d"
+      },
+      "model": "openai-codex/gpt-5.3-codex-spark",
+      "result": {
+        "passed": false,
+        "returnCode": 3,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-05T00:28:18.857407+00:00",
+        "finishedAtUtc": "2026-10-05T00:28:23.791451+00:00",
+        "durationSeconds": 4.934,
+        "gates": {
+          "artifacts": false,
+          "events": false,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "expectedOutputs": [
+        "source/documents.puml",
+        "rendered/svg/documents.svg",
+        "rendered/png/documents.png",
+        "render-report.json",
+        "review.md"
+      ],
+      "finalCohort": false
+    },
+    {
+      "id": "20261004-compaction-usefulcharts-boundary-luna-1",
+      "skill": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 139,
+        "payloadSha256": "dcdd82e66c85a1d775f273644d2b87438aa555eab6539e9085f1de4631f2fa27"
+      },
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/pi-prompts/diagram-compaction-usefulcharts-boundary.md",
+        "sizeBytes": 1418,
+        "sha256": "aee46912ae17813d25e7f113eb4c8385167457acc0758845315e3a4e9be3e32f"
+      },
+      "model": "openai-codex/gpt-5.6-luna",
+      "result": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-05T00:45:11.005036+00:00",
+        "finishedAtUtc": "2026-10-05T00:46:26.079993+00:00",
+        "durationSeconds": 75.075,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "expectedOutputs": [
+        "brief.json",
+        "poster.svg",
+        "poster.html",
+        "layout.json",
+        "browser.json",
+        "poster.png",
+        "review.md"
+      ],
+      "finalCohort": true,
+      "readPaths": [
+        "poster.png",
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/solid-surfaces.md",
+        "skills/usefulcharts-style/assets/templates/lineage.json",
+        "skills/usefulcharts-style/references/palette-policy.md",
+        "skills/usefulcharts-style/references/compact-lineage.md",
+        "skills/usefulcharts-style/references/arrow-visibility.md",
+        "skills/usefulcharts-style/references/knowledge-density.md",
+        "browser.json",
+        "layout.json"
+      ],
+      "readSurfacePassed": true
+    },
+    {
+      "id": "20261004-compaction-usefulcharts-contract-luna-1",
+      "skill": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 139,
+        "payloadSha256": "255e86cbb8bbf89c70c69cf85049d85b8b8b75f5c61e5d0ab9060e3a6c5368da"
+      },
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/pi-prompts/diagram-compaction-usefulcharts-contract.md",
+        "sizeBytes": 2040,
+        "sha256": "f98cedfbb0e382eabedaacfb1263d3d012f53758346ffe6ed48c54223fc9962c"
+      },
+      "model": "openai-codex/gpt-5.6-luna",
+      "result": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-05T00:37:09.998227+00:00",
+        "finishedAtUtc": "2026-10-05T00:37:50.577939+00:00",
+        "durationSeconds": 40.58,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "expectedOutputs": [
+        "brief.json",
+        "archive.svg",
+        "archive.html",
+        "layout.json",
+        "browser.json",
+        "archive.png",
+        "review.md"
+      ],
+      "finalCohort": false
+    },
+    {
+      "id": "20261004-compaction-usefulcharts-contract-luna-2",
+      "skill": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 139,
+        "payloadSha256": "dcdd82e66c85a1d775f273644d2b87438aa555eab6539e9085f1de4631f2fa27"
+      },
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/pi-prompts/diagram-compaction-usefulcharts-contract.md",
+        "sizeBytes": 2040,
+        "sha256": "f98cedfbb0e382eabedaacfb1263d3d012f53758346ffe6ed48c54223fc9962c"
+      },
+      "model": "openai-codex/gpt-5.6-luna",
+      "result": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-05T00:45:11.032165+00:00",
+        "finishedAtUtc": "2026-10-05T00:45:55.201113+00:00",
+        "durationSeconds": 44.169,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "expectedOutputs": [
+        "brief.json",
+        "archive.svg",
+        "archive.html",
+        "layout.json",
+        "browser.json",
+        "archive.png",
+        "review.md"
+      ],
+      "finalCohort": true,
+      "readPaths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/compact-lineage.md",
+        "skills/usefulcharts-style/references/compact-composition.md",
+        "archive.png"
+      ],
+      "readSurfacePassed": true
+    },
+    {
+      "id": "20261004-compaction-usefulcharts-natural-luna-1",
+      "skill": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 139,
+        "payloadSha256": "255e86cbb8bbf89c70c69cf85049d85b8b8b75f5c61e5d0ab9060e3a6c5368da"
+      },
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/pi-prompts/diagram-compaction-usefulcharts-naturalistic.md",
+        "sizeBytes": 2244,
+        "sha256": "2a480c41a1f3f8ec4f6516fcd586d3ceb5d46b5cf91e32b92231acef393c5b50"
+      },
+      "model": "openai-codex/gpt-5.6-luna",
+      "result": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-05T00:31:09.492450+00:00",
+        "finishedAtUtc": "2026-10-05T00:32:17.087179+00:00",
+        "durationSeconds": 67.595,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "expectedOutputs": [
+        "archive/brief.json",
+        "archive/lineage.svg",
+        "archive/lineage.html",
+        "archive/layout.json",
+        "archive/browser.json",
+        "archive/lineage.png",
+        "archive/review.md"
+      ],
+      "finalCohort": false
+    },
+    {
+      "id": "20261004-compaction-usefulcharts-natural-luna-2",
+      "skill": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 139,
+        "payloadSha256": "242672adb45b722c66a4e9a0bb01d78fa2009390650962efbec64ec3e8fd9936"
+      },
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/pi-prompts/diagram-compaction-usefulcharts-naturalistic.md",
+        "sizeBytes": 2244,
+        "sha256": "2a480c41a1f3f8ec4f6516fcd586d3ceb5d46b5cf91e32b92231acef393c5b50"
+      },
+      "model": "openai-codex/gpt-5.6-luna",
+      "result": {
+        "passed": false,
+        "returnCode": 4,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-05T00:38:29.711998+00:00",
+        "finishedAtUtc": "2026-10-05T00:39:59.760925+00:00",
+        "durationSeconds": 90.05,
+        "gates": {
+          "artifacts": true,
+          "events": false,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "expectedOutputs": [
+        "archive/brief.json",
+        "archive/lineage.svg",
+        "archive/lineage.html",
+        "archive/layout.json",
+        "archive/browser.json",
+        "archive/lineage.png",
+        "archive/review.md"
+      ],
+      "finalCohort": false
+    },
+    {
+      "id": "20261004-compaction-usefulcharts-natural-luna-3",
+      "skill": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 139,
+        "payloadSha256": "dcdd82e66c85a1d775f273644d2b87438aa555eab6539e9085f1de4631f2fa27"
+      },
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/pi-prompts/diagram-compaction-usefulcharts-naturalistic.md",
+        "sizeBytes": 2244,
+        "sha256": "2a480c41a1f3f8ec4f6516fcd586d3ceb5d46b5cf91e32b92231acef393c5b50"
+      },
+      "model": "openai-codex/gpt-5.6-luna",
+      "result": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-05T00:43:43.821904+00:00",
+        "finishedAtUtc": "2026-10-05T00:45:08.436347+00:00",
+        "durationSeconds": 84.615,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "expectedOutputs": [
+        "archive/brief.json",
+        "archive/lineage.svg",
+        "archive/lineage.html",
+        "archive/layout.json",
+        "archive/browser.json",
+        "archive/lineage.png",
+        "archive/review.md"
+      ],
+      "finalCohort": true,
+      "readPaths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/palette-policy.md",
+        "skills/usefulcharts-style/references/solid-surfaces.md",
+        "skills/usefulcharts-style/references/arrow-visibility.md",
+        "skills/usefulcharts-style/references/evaluation.md",
+        "skills/usefulcharts-style/references/knowledge-density.md",
+        "skills/usefulcharts-style/references/compact-lineage.md",
+        "skills/usefulcharts-style/assets/templates/lineage.json",
+        "skills/usefulcharts-style/references/compact-composition.md",
+        "skills/usefulcharts-style/assets/palettes/colorsets.json",
+        "archive/lineage.png"
+      ],
+      "readSurfacePassed": true
+    },
+    {
+      "id": "20261004-compaction-usefulcharts-natural-luna-4",
+      "skill": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 139,
+        "payloadSha256": "dcdd82e66c85a1d775f273644d2b87438aa555eab6539e9085f1de4631f2fa27"
+      },
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/pi-prompts/diagram-compaction-usefulcharts-naturalistic.md",
+        "sizeBytes": 2244,
+        "sha256": "2a480c41a1f3f8ec4f6516fcd586d3ceb5d46b5cf91e32b92231acef393c5b50"
+      },
+      "model": "openai-codex/gpt-5.6-luna",
+      "result": {
+        "passed": false,
+        "returnCode": 4,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-05T00:43:43.845077+00:00",
+        "finishedAtUtc": "2026-10-05T00:46:56.216389+00:00",
+        "durationSeconds": 192.373,
+        "gates": {
+          "artifacts": true,
+          "events": false,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "expectedOutputs": [
+        "archive/brief.json",
+        "archive/lineage.svg",
+        "archive/lineage.html",
+        "archive/layout.json",
+        "archive/browser.json",
+        "archive/lineage.png",
+        "archive/review.md"
+      ],
+      "finalCohort": true
+    },
+    {
+      "id": "20261004-compaction-usefulcharts-natural-luna-5",
+      "skill": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 139,
+        "payloadSha256": "dcdd82e66c85a1d775f273644d2b87438aa555eab6539e9085f1de4631f2fa27"
+      },
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/pi-prompts/diagram-compaction-usefulcharts-naturalistic.md",
+        "sizeBytes": 2244,
+        "sha256": "2a480c41a1f3f8ec4f6516fcd586d3ceb5d46b5cf91e32b92231acef393c5b50"
+      },
+      "model": "openai-codex/gpt-5.6-luna",
+      "result": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-05T00:43:43.854784+00:00",
+        "finishedAtUtc": "2026-10-05T00:44:53.018124+00:00",
+        "durationSeconds": 69.164,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "expectedOutputs": [
+        "archive/brief.json",
+        "archive/lineage.svg",
+        "archive/lineage.html",
+        "archive/layout.json",
+        "archive/browser.json",
+        "archive/lineage.png",
+        "archive/review.md"
+      ],
+      "finalCohort": true,
+      "readPaths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/compact-lineage.md",
+        "skills/usefulcharts-style/assets/templates/lineage.json",
+        "skills/usefulcharts-style/references/palette-policy.md",
+        "skills/usefulcharts-style/references/arrow-visibility.md",
+        "skills/usefulcharts-style/references/knowledge-density.md",
+        "skills/usefulcharts-style/references/solid-surfaces.md",
+        "archive/lineage.png"
+      ],
+      "readSurfacePassed": true
+    },
+    {
+      "id": "20261004-compaction-usefulcharts-natural-spark-1",
+      "skill": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 139,
+        "payloadSha256": "255e86cbb8bbf89c70c69cf85049d85b8b8b75f5c61e5d0ab9060e3a6c5368da"
+      },
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/pi-prompts/diagram-compaction-usefulcharts-naturalistic.md",
+        "sizeBytes": 2244,
+        "sha256": "2a480c41a1f3f8ec4f6516fcd586d3ceb5d46b5cf91e32b92231acef393c5b50"
+      },
+      "model": "openai-codex/gpt-5.3-codex-spark",
+      "result": {
+        "passed": false,
+        "returnCode": 3,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-05T00:28:25.893437+00:00",
+        "finishedAtUtc": "2026-10-05T00:28:31.102617+00:00",
+        "durationSeconds": 5.209,
+        "gates": {
+          "artifacts": false,
+          "events": false,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "expectedOutputs": [
+        "archive/brief.json",
+        "archive/lineage.svg",
+        "archive/lineage.html",
+        "archive/layout.json",
+        "archive/browser.json",
+        "archive/lineage.png",
+        "archive/review.md"
+      ],
+      "finalCohort": false
+    }
+  ]
+}

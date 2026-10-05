@@ -1,0 +1,322 @@
+{
+  "skill": "slidev-echarts",
+  "revision": "sol-capture-contract-retry",
+  "rows": [
+    {
+      "run": "compact-slidev-echarts-20261004-sol-capture-contract-retry-contract",
+      "case": "contract",
+      "payloadSha256": "aa0aa5a30c6708d13ec9b65fce33b818ce77bc4f6b1fd021243fea03561e7c55",
+      "model": "openai-codex/gpt-5.6-sol",
+      "strict": {
+        "passed": false,
+        "returnCode": 4,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-05T02:57:46.647577+00:00",
+        "finishedAtUtc": "2026-10-05T03:03:06.112148+00:00",
+        "durationSeconds": 319.467,
+        "gates": {
+          "artifacts": true,
+          "events": false,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "eventSummaryExitCode": 1,
+      "observedModels": {
+        "gpt-5.6-sol": 32
+      },
+      "eventFindings": [
+        {
+          "code": "tool-error",
+          "line": 2378,
+          "tool": "bash",
+          "path": null
+        },
+        {
+          "code": "tool-error",
+          "line": 2549,
+          "tool": "bash",
+          "path": null
+        },
+        {
+          "code": "tool-error",
+          "line": 2634,
+          "tool": "bash",
+          "path": null
+        },
+        {
+          "code": "tool-error",
+          "line": 2938,
+          "tool": "bash",
+          "path": null
+        }
+      ],
+      "runtimeReadPaths": [
+        {
+          "path": "../prompt.md",
+          "calls": 1,
+          "resultBytes": 1111
+        },
+        {
+          "path": "skills/slidev-echarts/SKILL.md",
+          "calls": 1,
+          "resultBytes": 8793
+        },
+        {
+          "path": "skills/slidev-echarts/references/charts/graph.md",
+          "calls": 1,
+          "resultBytes": 1625
+        },
+        {
+          "path": "skills/slidev-echarts/references/arrow-contrast.md",
+          "calls": 1,
+          "resultBytes": 6898
+        },
+        {
+          "path": "skills/slidev-echarts/references/colorset-contract.md",
+          "calls": 1,
+          "resultBytes": 7240
+        },
+        {
+          "path": "skills/slidev-echarts/assets/palettes/colorsets.json",
+          "calls": 1,
+          "resultBytes": 7011
+        },
+        {
+          "path": "skills/slidev-echarts/assets/templates/echarts-colorsets.mjs",
+          "calls": 1,
+          "resultBytes": 46998
+        },
+        {
+          "path": "node_modules/echarts/lib/coord/View.js",
+          "calls": 1,
+          "resultBytes": 29429
+        },
+        {
+          "path": "node_modules/echarts/lib/chart/graph/createView.js",
+          "calls": 1,
+          "resultBytes": 3990
+        },
+        {
+          "path": ".work/result.json",
+          "calls": 1,
+          "resultBytes": 8418
+        },
+        {
+          "path": ".work/graph.png",
+          "calls": 1,
+          "resultBytes": 4954
+        }
+      ],
+      "independentBrowser": {
+        "ok": true,
+        "pageErrors": [],
+        "findings": [],
+        "states": [
+          {
+            "state": "settled",
+            "kind": "static",
+            "viewport": null,
+            "graphs": [
+              {
+                "width": 640,
+                "height": 360,
+                "nodeCount": 3,
+                "headCount": 2,
+                "minimumHeadGap": 3.25,
+                "labels": [
+                  "Alpha",
+                  "Beta",
+                  "Gamma"
+                ],
+                "fontSizes": [
+                  16
+                ],
+                "textOverlaps": []
+              }
+            ]
+          },
+          {
+            "state": "replay-1",
+            "kind": "static",
+            "viewport": null,
+            "graphs": [
+              {
+                "width": 640,
+                "height": 360,
+                "nodeCount": 3,
+                "headCount": 2,
+                "minimumHeadGap": 3.25,
+                "labels": [
+                  "Alpha",
+                  "Beta",
+                  "Gamma"
+                ],
+                "fontSizes": [
+                  16
+                ],
+                "textOverlaps": []
+              }
+            ]
+          },
+          {
+            "state": "replay-2",
+            "kind": "static",
+            "viewport": null,
+            "graphs": [
+              {
+                "width": 640,
+                "height": 360,
+                "nodeCount": 3,
+                "headCount": 2,
+                "minimumHeadGap": 3.25,
+                "labels": [
+                  "Alpha",
+                  "Beta",
+                  "Gamma"
+                ],
+                "fontSizes": [
+                  16
+                ],
+                "textOverlaps": []
+              }
+            ]
+          },
+          {
+            "state": "resized",
+            "kind": "static",
+            "viewport": null,
+            "graphs": [
+              {
+                "width": 640,
+                "height": 360,
+                "nodeCount": 3,
+                "headCount": 2,
+                "minimumHeadGap": 3.25,
+                "labels": [
+                  "Alpha",
+                  "Beta",
+                  "Gamma"
+                ],
+                "fontSizes": [
+                  16
+                ],
+                "textOverlaps": []
+              }
+            ]
+          },
+          {
+            "state": "reduced-motion",
+            "kind": "static",
+            "viewport": null,
+            "graphs": [
+              {
+                "width": 640,
+                "height": 360,
+                "nodeCount": 3,
+                "headCount": 2,
+                "minimumHeadGap": 3.25,
+                "labels": [
+                  "Alpha",
+                  "Beta",
+                  "Gamma"
+                ],
+                "fontSizes": [
+                  16
+                ],
+                "textOverlaps": []
+              }
+            ]
+          }
+        ]
+      },
+      "independentBrowserPath": "projects/diagram-compactness/artifacts/reviews/compact-slidev-echarts-20261004-sol-capture-contract-retry-contract/independent-native/browser.json",
+      "independentLiveOption": {
+        "ok": true,
+        "pageErrors": [],
+        "findings": [],
+        "states": [
+          {
+            "state": "delivery",
+            "helper": {
+              "checkedEdges": 2,
+              "adjustedEdges": 2,
+              "clearancePx": 3
+            },
+            "repeat": {
+              "checkedEdges": 2,
+              "adjustedEdges": 0,
+              "clearancePx": 3
+            },
+            "graphs": [
+              {
+                "nodeCount": 3,
+                "headCount": 2,
+                "labels": [
+                  "Alpha",
+                  "Beta",
+                  "Gamma"
+                ],
+                "minimumHeadGap": 3.25,
+                "textOverlaps": []
+              }
+            ]
+          },
+          {
+            "state": "resized",
+            "helper": {
+              "checkedEdges": 2,
+              "adjustedEdges": 2,
+              "clearancePx": 3
+            },
+            "repeat": {
+              "checkedEdges": 2,
+              "adjustedEdges": 0,
+              "clearancePx": 3
+            },
+            "graphs": [
+              {
+                "nodeCount": 3,
+                "headCount": 2,
+                "labels": [
+                  "Alpha",
+                  "Beta",
+                  "Gamma"
+                ],
+                "minimumHeadGap": 3.25,
+                "textOverlaps": []
+              }
+            ]
+          },
+          {
+            "state": "restored",
+            "helper": {
+              "checkedEdges": 2,
+              "adjustedEdges": 2,
+              "clearancePx": 3
+            },
+            "repeat": {
+              "checkedEdges": 2,
+              "adjustedEdges": 0,
+              "clearancePx": 3
+            },
+            "graphs": [
+              {
+                "nodeCount": 3,
+                "headCount": 2,
+                "labels": [
+                  "Alpha",
+                  "Beta",
+                  "Gamma"
+                ],
+                "minimumHeadGap": 3.25,
+                "textOverlaps": []
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1554,7 +1554,7 @@ class SynchronizedSvgToolTests(unittest.TestCase):
             provenance.text,
             "Illustrative values supplied in this brief; all outputs are synthetic planning estimates.",
         )
-        visible_text = {" ".join((element.text or "").split()) for element in elements if element.tag.endswith("text")}
+        visible_text = {" ".join(" ".join(element.itertext()).split()) for element in elements if element.tag.endswith("text")}
         for expected in (
             "Incoming work",
             "Processing capacity",
@@ -2192,6 +2192,21 @@ class SynchronizedSvgToolTests(unittest.TestCase):
             str(output),
             "--json",
         )
+        self.assertNotEqual(composed.returncode, 0)
+        self.assertIn("without losing readability", composed.stdout)
+        # The crowded source row must gain real room, not truncated labels.
+        # Preserve all chart scale contracts while enlarging only this row.
+        row_y = compiled_modules["traffic-topology"]["region"][1]
+        extra_height = 120
+        for module in compiled_plan["modules"]:
+            if module["region"][1] == row_y:
+                module["region"][3] += extra_height
+            elif module["region"][1] > row_y:
+                module["region"][1] += extra_height
+        compiled_plan["viewBox"][3] += extra_height
+        compiled_plan["layout"]["safeArea"][3] += extra_height
+        plan_path.write_text(json.dumps(compiled_plan, indent=2), encoding="utf-8")
+        composed = self.run_tool(COMPOSER, "--spec", str(plan_path), "--output", str(output), "--json")
         self.assertEqual(composed.returncode, 0, msg=composed.stderr or composed.stdout)
         report_path = self.workspace / "dense-waterfall-browser.json"
         screenshot_path = self.workspace / "dense-waterfall.png"
@@ -2945,6 +2960,10 @@ class SynchronizedSvgToolTests(unittest.TestCase):
             }
             for index, (source, target) in enumerate(endpoints)
         ]
+        brief = json.loads(BRIEF_TEMPLATE.read_text(encoding="utf-8"))
+        brief["relationships"] = plan["relationships"]
+        plan, _ = compiler.compile_brief(brief)
+        self.assertGreaterEqual(plan["layout"]["gap"], 72)
         plan_path = self.write_plan("dense-route-plan.json", plan)
         output = self.workspace / "dense-route.svg"
         composed = self.run_tool(

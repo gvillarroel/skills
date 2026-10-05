@@ -263,6 +263,8 @@ drawings:
 <SvgAssetSlide asset="stagger-dashboard" :step="$clicks" />
 
 ---
+clicks: 2
+---
 
 # Generated SVG: Timeline Machine
 

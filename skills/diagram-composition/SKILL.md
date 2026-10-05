@@ -10,6 +10,11 @@ Read [solid-surfaces.md](references/solid-surfaces.md) for solid-first category 
 
 Design the explanation before packing the page. Deliver one coherent figure whose
 subdiagrams answer different questions and whose relationships explain the whole.
+Default to the smallest readable diagram footprint: compact nodes, panels and
+connector routes while preserving visible arrowheads, unambiguous endpoints,
+separated lines and every required label. Use the bounded compaction pass in
+[layout-and-density.md](references/layout-and-density.md); chart bodies retain
+their quantitative reading space.
 Keep generated files outside this read-only bundle.
 
 Read [arrow-visibility.md](references/arrow-visibility.md) when producing, importing or reviewing directional arrows. Audit actual shafts/heads at delivery scale.

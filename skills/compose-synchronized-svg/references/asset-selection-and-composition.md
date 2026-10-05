@@ -8,6 +8,7 @@
 - [Check Coverage And Nonredundancy](#check-coverage-and-nonredundancy)
 - [Build a Navigable World When One Screen Is Not Enough](#build-a-navigable-world-when-one-screen-is-not-enough)
 - [Choose One Global Armature](#choose-one-global-armature)
+- [Compact Connected Diagrams](#compact-connected-diagrams)
 - [Declare Honest Cross-Module Relationships](#declare-honest-cross-module-relationships)
 - [Preserve Shared Identity](#preserve-shared-identity)
 - [Import SVG Assets Safely](#import-svg-assets-safely)
@@ -142,6 +143,44 @@ Choose from the dominant story, not from the module count.
 These armatures describe compact page composition. In navigable-world mode, use the separate `world.armature` enum above and let each district declare a local `radial`, `branch`, `lanes`, or `orbit` armature.
 
 Order compact-brief modules by intended reading preference and choose asset families before drawing marks. Above twelve modules the compiler preserves that order across the four-row megacanvas; for smaller briefs it may move heavy flow, network, spatial, or dense-table modules into wider slots while recording the resulting `layout.readingOrder`. The compiler assigns the root `viewBox`, safe module regions, baselines, and gutters. Record the intended armature in the brief. The current compact compiler preserves that intent as metadata while applying its validated asymmetric layout; use the advanced full-plan surface only when the task truly requires another geometry. Never hand-patch generated regions.
+
+## Compact Connected Diagrams
+
+Prefer the smallest readable graph/module footprint and short clear connections.
+Size conceptual nodes from complete labels and bound-value envelopes, keep related
+modules adjacent, and choose the armature/district partition that reduces long
+routes and wasted space. Use the nearest clear gutter, few bends and outward
+ports on actual objects. Keep sufficient visible shaft for direction, complete
+arrowheads, relation-label clearance and distinct parallel lanes. Sharing a path
+or letting a crossing resemble a junction invents a relationship.
+
+Make up to two focused compaction revisions after a readable draft. Regenerate
+from the brief and compare the previous passing overview plus dense module/detail
+views at their actual display scales. Inspect extreme legal values, changing text,
+focus states and camera arrivals/midpoints. Accept a smaller footprint or shorter
+route only while labels, endpoints, arrow silhouettes, topology and state envelopes
+remain readable; revert reductions that fail. Do not zoom out or hide required
+detail to claim density. Keep explicit dimensions, stable anchors and interaction
+targets. In a world, compact each semantic tier independently while keeping its
+navigation hierarchy recognizable.
+
+Treat footprint findings as prompts to remove unused allocation or choose a better
+arrangement, never to stretch nodes/edges or inflate a sparse diagram to fill a
+percentage. The normal compiler owns geometry: revise supported armature, module
+membership and brief inputs; report an unresolved generator limitation instead of
+patching its monolithic SVG. Quantitative charts keep honest domains, axis/tick
+space and useful comparison area; increase useful information per view rather
+than squeezing their plotting geometry.
+
+The compiler keeps sparse gutters at 24 units and expands only for competing
+route lanes. Implicit dependency networks preserve complete concept labels by
+wrapping into spare card height; if labels cannot fit at the existing font size,
+enlarge the affected module or split its question instead of accepting ellipsis.
+They reserve arrowhead-long terminal runs,
+separate fan lanes and local crossing gaps. Retain these geometric reserves when
+maintaining the generator; large cards must not consume connector space. Recheck
+with `uv run --script <skill-root>/scripts/test_network_ports.py` and the browser
+audit after changing layout or routing.
 
 ## Declare Honest Cross-Module Relationships
 

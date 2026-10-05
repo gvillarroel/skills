@@ -19,6 +19,8 @@ Preserve the user's PlantUML source semantics. Apply the requested bundled color
 
 Prefer local rendering for private diagrams. Use a remote fallback such as Kroki or PlantUML Server only when the user permits external rendering or the task is validation/example work with non-sensitive sources.
 
+Default connected diagrams to the smallest readable composition. Read [compact connected layouts](references/compact-composition.md) before authoring or reviewing their layout. Reduce unused margins, excessive spacing and connector detours while retaining complete labels, visible semantic heads and independently traceable routes. Preserve explicit user geometry and proportional chart or schedule scales.
+
 ## Workflow
 
 Read [native style delivery](references/native-styling.md) when styling diagrams
@@ -34,7 +36,7 @@ from exact displayed names, and use native predecessor-end dependency syntax.
 
 1. Read `references/diagram-types.md` and its machine-readable source `references/diagram-types.json` when the task asks which PlantUML diagram types are covered or when maintaining examples.
 2. Run `scripts/render_plantuml_directory.py` against the requested directory with `--colorset colorset2` or `--colorset colorset1`, `--format svg --format png`, and a JSON report.
-3. Inspect the report. Confirm `ok` is `true`, failures are zero, and each result has the requested or capability-declared formats.
+3. Inspect the report. Confirm `ok` is `true`, failures are zero, and each result has the requested or capability-declared formats. Open the rendered diagram at its intended display size and inspect dense detail. Compare a tighter grouping or shorter source route when visible empty space or a detour can be reclaimed; keep only revisions that satisfy the compact-layout readability gates, then rerender and validate final artifacts.
 4. If maintaining this skill, supply `--coverage-manifest references/diagram-types.json`. Validate exact family and fixture sets instead of relying on a count.
 
 When maintaining the published examples, keep `assets/examples/plantuml-colorset-renderer/` as the only canonical GitHub Pages gallery. Treat `assets/examples/plantuml-colorset-renderer-cs1/` as a Colorset 1 render-asset source loaded by the canonical page's theme selector; do not add a second Pages catalog card or pattern page for it. Preserve the former CS1 URL as a redirect to `?theme=colorset1`.
@@ -115,7 +117,8 @@ Both themes set native root padding to 6 without shrinking fonts. This reduces
 whitespace in supported activities, participants, and mind-map nodes; other
 families retain their native geometry. Later authored style rules override the
 theme. Inspect labels and connectors before reducing inter-node spacing; the
-theme does not impose a universal rank gap. Prefer compact preview containers
+theme does not impose a universal rank gap. Its padding is an initial safe
+default, not proof that the connected layout is compact. Prefer compact preview containers
 with access to the full-size SVG for dense diagrams.
 
 Use `assets/themes/cs2.puml` for the full colorset2 palette. It maps the repository colorset2 palette to PlantUML `skinparam` and CSS-like `<style>` rules:
@@ -160,4 +163,5 @@ After rendering, verify:
 - Coverage reports contain all 28 family IDs and all 29 fixture IDs exactly once, with Chronology recorded as `expected-unavailable` and no artifact.
 - The bundled report validator passes with the requested colorset; a diagram may use only a subset of that palette.
 - PNG outputs are non-empty binary files.
+- Connected-diagram review has reclaimed avoidable empty bands and detours without label collisions, hidden heads, ambiguous crossings or unrelated shared strokes. Every relation can be followed from its named source to its target; smaller bounds cannot override this gate.
 - For private source, the report uses a local endpoint or local PlantUML command rather than a public remote service.

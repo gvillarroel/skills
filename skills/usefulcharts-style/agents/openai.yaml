@@ -1,4 +1,4 @@
 interface:
   display_name: "UsefulCharts-style Posters"
   short_description: "Editable genealogy, taxonomy, and timeline posters"
-  default_prompt: "Use $usefulcharts-style to check and compose my information into a poster with at least the reference's useful knowledge density, then critique and refine its meaning, layout and readability."
+  default_prompt: "Use $usefulcharts-style to check and compose my information into a poster with at least the reference's useful knowledge density, then critique and refine its meaning, layout and readability. Pack connected groups and shorten routes as far as complete labels, visible heads and unambiguous relationships allow; preserve proportional timeline coordinates."

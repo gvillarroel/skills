@@ -165,13 +165,17 @@ def role_label(role: str, limit: int = 24) -> str:
     return label[: max(1, limit - 1)].rstrip() + "…"
 
 
-def binding_label(info: BindingInfo, limit: int = 24) -> str:
-    """Return project-facing copy without exposing selector or channel tokens."""
+def binding_label(info: BindingInfo, limit: int | None = 24) -> str:
+    """Return project-facing copy; None preserves the complete concept name."""
 
     declared = info.binding.get("label")
     if isinstance(declared, str) and declared.strip():
-        return short_label(declared.strip(), limit)
-    return role_label(info.role, limit)
+        label = declared.strip().replace("-", " ")
+    else:
+        label = scaffold.humanize_role(info.role)
+        if label == "Flexible":
+            label = "Flexible Cash"
+    return label if limit is None else short_label(label, limit)
 
 
 def table_binding_label(info: BindingInfo, limit: int = 24) -> str:
@@ -1964,7 +1968,11 @@ def render_network_family(
         available_width = right_edge - left_edge
         available_height = bottom_edge - top_edge
         column_count = len(level_ids)
-        horizontal_gap = min(22.0, max(8.0, available_width * 0.03))
+        gap_traffic = max((sum(depth(source) == level or depth(target) - 1 == level for source, target in edges)
+                           for level in level_ids), default=1)
+        # Preserve at least an arrowhead-long final approach and six-pixel
+        # independent lanes; filling the panel with cards must not consume them.
+        horizontal_gap = max(24.0, 24.0 + 6.0 * gap_traffic)
         card_width = min(
             188.0,
             max(1.0, (available_width - horizontal_gap * (column_count - 1)) / column_count),
@@ -2041,9 +2049,19 @@ def render_network_family(
 
         column_gap = column_centers[1] - column_centers[0] - card_width
         gap_edges = {
-            level: [edge for edge in edge_order if depth(edge[0]) == level and depth(edge[1]) == level + 1]
+            level: [edge for edge in edge_order if depth(edge[0]) == level or depth(edge[1]) - 1 == level]
             for level in level_ids
         }
+
+        def gap_x(level: int, edge: tuple[str, str]) -> float:
+            peers = gap_edges[level]
+            column = level_ids.index(level)
+            start = column_centers[column] + card_width / 2 + 3.0
+            end = column_centers[column + 1] - card_width / 2 - 3.0
+            return start + 7.0 + (end - start - 14.0) * (peers.index(edge) + 0.5) / len(peers)
+
+        from arrow_routing import path_points
+        drawn_segments: list[tuple[tuple[float, float], tuple[float, float]]] = []
         for source_id, target_id in sorted(edges, key=lambda edge: (order[edge[1]], order[edge[0]])):
             source_x, source_y = positions[source_id]
             target_x, target_y = positions[target_id]
@@ -2056,16 +2074,32 @@ def render_network_family(
             if edge in skipped_edges:
                 # Reserve one horizontal lane per long edge above every node.
                 route_y = 4.0 + routing_height * (skipped_edges.index(edge) + 1) / (len(skipped_edges) + 1)
-                out_rank = outgoing[source_id].index(edge)
-                in_rank = incoming[target_id].index(edge)
-                out_x = source_x + card_width + column_gap * (0.35 + 0.3 * (out_rank + 1) / (len(outgoing[source_id]) + 1))
-                in_x = target_x - column_gap * (0.35 + 0.3 * (in_rank + 1) / (len(incoming[target_id]) + 1))
+                out_x = gap_x(depth(source_id), edge)
+                in_x = gap_x(depth(target_id) - 1, edge)
                 path = f"M{fmt(x1)} {fmt(y1)} H{fmt(out_x)} V{fmt(route_y)} H{fmt(in_x)} V{fmt(y2)} H{fmt(x2)}"
             else:
-                peers = gap_edges[depth(source_id)]
-                lane = peers.index(edge)
-                bend_x = x1 + (x2 - x1) * (lane + 1) / (len(peers) + 1)
+                bend_x = gap_x(depth(source_id), edge)
                 path = f"M{fmt(x1)} {fmt(y1)} H{fmt(bend_x)} V{fmt(y2)} H{fmt(x2)}"
+            points = path_points(path)
+            # Clear a small gap in the earlier wire at a true perpendicular
+            # crossing. The current wire stays continuous, so no junction is
+            # invented; keep masks local rather than erasing whole route spans.
+            for a, b in zip(points, points[1:]):
+                for c, d in drawn_segments:
+                    if a[0] == b[0] and c[1] == d[1]:
+                        px, py = a[0], c[1]
+                        crosses = min(a[1], b[1]) < py < max(a[1], b[1]) and min(c[0], d[0]) < px < max(c[0], d[0])
+                        ax, ay, bx, by = px, py - 3, px, py + 3
+                    elif a[1] == b[1] and c[0] == d[0]:
+                        px, py = c[0], a[1]
+                        crosses = min(a[0], b[0]) < px < max(a[0], b[0]) and min(c[1], d[1]) < py < max(c[1], d[1])
+                        ax, ay, bx, by = px - 3, py, px + 3, py
+                    else:
+                        continue
+                    if crosses:
+                        parts.append(f'<line data-crossing-bridge="true" x1="{fmt(ax)}" y1="{fmt(ay)}" '
+                                     f'x2="{fmt(bx)}" y2="{fmt(by)}" stroke="var(--surface)" stroke-width="5"/>')
+            drawn_segments.extend(zip(points, points[1:]))
             parts.append(
                 f'<path d="{path}" fill="none" '
                 'stroke="var(--ink)" stroke-width="1.5" vector-effect="non-scaling-stroke" stroke-linejoin="round" marker-end="url(#'
@@ -2076,19 +2110,32 @@ def render_network_family(
             info = solid_binding(plan, info)
             x, y = positions[info.value_id]
             dense = card_height < 42.0
-            label_y = y + min(16.0, max(8.0, card_height * 0.34))
-            value_y = y + min(card_height - 4.0, max(18.0, card_height * 0.76))
-            label_limit = max(8, min(24, int(card_width / 6.0)))
+            label_font = 8.0 if dense else 12.0 if card_width >= 140 else 10.0
+            label_y = y + label_font + 4.0
+            value_y = y + card_height - 6.0
+            # Keep the complete concept name. Wrapping uses spare node height;
+            # insufficient room is a layout failure, never an ellipsis/font cut.
+            label = binding_label(info, None)
+            label_columns = max(1, int((card_width - 12.0) / (label_font * 0.56)))
+            label_lines = textwrap.wrap(label, width=label_columns, break_long_words=False,
+                                        break_on_hyphens=False) or [label]
+            if (max(len(line) for line in label_lines) > label_columns or
+                    label_y + (len(label_lines) - 1) * (label_font + 1.0) > value_y - 14.0):
+                raise ValueError(f"Network label {label!r} cannot fit without losing readability; "
+                                 "enlarge this network module or provide a complete shorter display label")
             parts.append(
                 f'<rect x="{fmt(x)}" y="{fmt(y)}" width="{fmt(card_width)}" '
                 f'height="{fmt(card_height)}" class="text-surface" data-dependency-node="{esc(info.value_id)}" fill="{esc(info.color)}" '
                 f'{category_outline(plan, info)} rx="8"/>'
             )
             parts.append(
-                f'<text x="{fmt(x + card_width / 2)}" y="{fmt(label_y)}" '
-                f'text-anchor="middle" font-size="{8 if dense else 10}" fill="{esc(info.text_color)}" aria-hidden="true">'
-                f'{esc(binding_label(info, label_limit))}</text>'
+                f'<text data-dependency-label="{esc(info.value_id)}" x="{fmt(x + card_width / 2)}" y="{fmt(label_y)}" '
+                f'text-anchor="middle" font-size="{fmt(label_font)}" fill="{esc(info.text_color)}" aria-hidden="true">'
             )
+            for line_index, line in enumerate(label_lines):
+                parts.append(f'<tspan x="{fmt(x + card_width / 2)}" dy="{0 if line_index == 0 else fmt(label_font + 1.0)}">'
+                             f'{esc(line)}</tspan>')
+            parts.append('</text>')
             parts.append(
                 render_text_binding(
                     module_id,

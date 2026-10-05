@@ -28,6 +28,9 @@ Set `design: editorial`, `mode: lineage`, and `layout: auto`. Supply:
 
 Omit page `width`/`height`, node `x`/`y`, grid rows/columns and `font_size` initially.
 The renderer measures content, packs ranks and uses larger type for a small brief.
+Small lineages size the canvas from measured columns, a readable header and a
+two-line footer instead of stretching branches to a 1000-by-720 floor. Body type
+and the 52-unit routing gap stay intact; explicit dimensions still win.
 It does not impose an 1800-by-2700 wall canvas on fourteen records. Honor dimensions
 explicitly requested by the user, then review the resulting spacing.
 

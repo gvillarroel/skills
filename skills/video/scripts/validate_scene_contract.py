@@ -425,6 +425,15 @@ def validate_contract(
                     failures.append(f"{label}.connector.width must be positive")
                 if not isinstance(connector.get("zIndex"), int):
                     failures.append(f"{label}.connector.zIndex must be an integer")
+                waypoints = connector.get("waypoints", [])
+                if not isinstance(waypoints, list) or len(waypoints) > 16:
+                    failures.append(f"{label}.connector.waypoints must contain at most 16 normalized points")
+                elif waypoints and connector.get("path") != "straight":
+                    failures.append(f"{label}.connector.waypoints requires path=straight for a polyline")
+                else:
+                    for point_index, point in enumerate(waypoints):
+                        if not isinstance(point, dict) or any(not number(point.get(axis)) or not 0 <= float(point[axis]) <= 1 for axis in ("x", "y")):
+                            failures.append(f"{label}.connector.waypoints[{point_index}] needs finite normalized x/y in [0,1]")
                 if not nonempty(connector.get("color")):
                     failures.append(f"{label}.connector.color is missing")
                 else:

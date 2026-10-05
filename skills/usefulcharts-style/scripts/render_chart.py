@@ -316,8 +316,10 @@ class Poster:
         require(self.mode in ("genealogy", "lineage", "timeline"), "Unknown poster mode.")
         self.w = number(data.get("width", 1600), "width")
         self.h = number(data.get("height", 2400), "height")
-        minimum_height=600 if data.get('design')=='editorial' else 1200
-        require(1000 <= self.w <= 8000 and minimum_height <= self.h <= 12000, f"Canvas must be 1000–8000 by {minimum_height}–12000 units.")
+        compact_lineage=data.get('design')=='editorial' and data.get('mode')=='lineage' and data.get('_compact_lineage',False)
+        minimum_width=600 if compact_lineage else 1000
+        minimum_height=420 if compact_lineage else 600 if data.get('design')=='editorial' else 1200
+        require(minimum_width <= self.w <= 8000 and minimum_height <= self.h <= 12000, f"Canvas must be {minimum_width}–8000 by {minimum_height}–12000 units.")
         self.font = number(data.get("font_size", 18), "font_size")
         require(16 <= self.font <= 40, "font_size must be between 16 and 40.")
         self.frame = color(data.get("frame_color", "#9e1b32"))

@@ -1,5 +1,12 @@
 # Readable directed edges
 
+For graph-only Node SVG SSR with the full registered `echarts` package,
+initialize with a `null` theme and apply `prepareColorsetOption` before
+`setOption`, followed by native arrow clearance and SVG paint normalization.
+This retains qualified graph paint without materializing unused calendar
+defaults that require a range. Keep the standard colorset theme for other
+registered chart configurations; this exception applies to graph-only SSR.
+
 ## Contents
 
 - [Paint qualification](#paint-qualification)
@@ -109,6 +116,12 @@ not exports of `echarts/components`. Set the original prepared option on
 `echarts.init(null, null, {renderer: 'svg', ssr: true, width, height})`,
 apply the native graph clearance step or required Cartesian inset, call
 `renderToSVGString()`, then dispose.
+
+Install authoring dependencies in the task workspace and keep the render
+script beside its local `package.json` so Node resolves `echarts` normally.
+Check package availability without an intentionally failing shell command,
+or install the pinned package directly. Do not mix bash `/tmp` paths with
+native Windows Node imports or write task files outside the workspace.
 Animate with `scripts/animate_echarts_svg.py <static> --chart-type graph|lines
 -o <animated>` and validate using `scripts/validate_animated_svg.py <static>
 <animated> --chart-type graph|lines --report <report>`, replacing `graph|lines`

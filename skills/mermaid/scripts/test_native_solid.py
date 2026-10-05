@@ -38,6 +38,32 @@ def text(group, content='Label', **attributes):
 
 
 class NativeFamilies(unittest.TestCase):
+    def test_relationship_labels_use_own_backing_not_node_text(self):
+        for family in ['flowchart', 'stateDiagram', 'classDiagram', 'swimlane']:
+            for surface, expected in [('#ffffff', '#000000'), ('#333e48', '#ffffff')]:
+                root = svg(family)
+                ET.SubElement(root, 'style').text = '.label{color:#ffffff;}.edgeLabel{background-color:' + surface + ';}'
+                group = ET.SubElement(root, 'g', {'class': 'edgeLabel', 'transform': 'translate(30,40)'})
+                caption = text(group, 'Approved', **{'class': 'label', 'x': '4', 'y': '5'})
+                foreign = ET.SubElement(group, 'foreignObject', {'width': '80', 'height': '24'})
+                span = ET.SubElement(foreign, '{http://www.w3.org/1999/xhtml}span', {'class': 'edgeLabel'})
+                span.text = 'Rejected'
+                before = dict(group.attrib), dict(foreign.attrib), caption.get('x'), caption.get('y')
+                native_solid_presentation(root, 'colorset1')
+                self.assertEqual(paint(caption, 'fill'), expected)
+                self.assertEqual(paint(span, 'color'), expected)
+                self.assertEqual((dict(group.attrib), dict(foreign.attrib), caption.get('x'), caption.get('y')), before)
+
+    def test_relationship_svg_label_uses_explicit_surface(self):
+        root = svg('stateDiagram')
+        group = ET.SubElement(root, 'g', {'class': 'edgeLabel'})
+        backing = box(group, fill='#333e48', **{'fill-opacity': '1'})
+        caption = text(group, 'Continue')
+        before = dict(backing.attrib)
+        native_solid_presentation(root, 'colorset1')
+        self.assertEqual(paint(caption, 'fill'), '#ffffff')
+        self.assertEqual(backing.attrib, before)
+
     def test_cs1_primary_theme_bodies_and_secondary_status_priority(self):
         for family, key in [('flowchart', 'primaryColor'), ('classDiagram', 'mainBkg'),
                             ('sequenceDiagram', 'actorBkg'), ('stateDiagram', 'stateBkg'),

@@ -14,6 +14,19 @@ Set `$env:VIDEO_SKILL` to this skill directory before copying bundled commands.
 
 Read [arrow-visibility.md](references/arrow-visibility.md) when producing, importing or reviewing directional arrows. Audit actual shafts/heads at delivery scale.
 
+For connected explanatory scenes, default to the smallest readable arrangement
+of the retained concepts. Read [diagram compaction](references/composition-selection-guide.md#diagram-compaction)
+before placement: reduce unused bounds and connector detours while preserving
+producer geometry, legible text, complete heads, endpoint identity and motion
+clearance. Keep the declared video dimensions and safe areas. Optimize charts
+for useful information and comparable scales rather than spatial squeezing.
+
+When a specialist is unavailable and a simple label-box fallback is needed,
+read [compact fallback assets](references/compact-fallback-assets.md) and use
+the bundled measured scene scaffold for its supported spine/feedback/branch
+topology, or the single-asset scaffold before defining other placements.
+Keep the fallback at native size while comparing scene placement.
+
 ## Ownership boundary
 
 - Route each source visual to one producer. The producer owns its internal semantics, geometry, styling, animation hooks, and validation report.
@@ -27,7 +40,7 @@ Read [arrow-visibility.md](references/arrow-visibility.md) when producing, impor
 2. Declare the output before laying out a scene: exact pixel width and height, derived aspect ratio, fps, duration, background, safe areas, and resize policy. Do not substitute a nearby social or broadcast preset.
 3. Read `references/tool-routing.md`, select only the required producers, and request one validated artifact per visual role. Require stable asset IDs, output paths, hashes, intrinsic dimensions or `viewBox`, transparency/background behavior, semantic ports, controllable states, provenance, and a producer report.
 4. Plan composition after producer contracts exist. Read `references/composition-selection-guide.md`, `references/content-budget-and-fidelity.md`, and `references/composition-brief-contract.md` when the scene is dense, diagram-like, or source-bound.
-5. For a mixed scene, read `references/scene-interaction-contract.md`, start from the complete `assets/templates/scene-contract.json` example, and create `source/scene-contract.json`. Use one normalized stage, explicit element bounds, layer order, named ports, shared events, property tracks, and interactions. Keep producer internals isolated. Do not inspect validator source to infer the schema; write the complete contract, run the validator, and use only its report for corrections.
+5. For the supported measured fallback spine, use the generated contract and `--meaning` descriptions; read actual asset paths from it. Keep machine-generated JSON intact or customize it through a JSON parser/serializer. For other mixed scenes, read `references/scene-interaction-contract.md`, start from the complete `assets/templates/scene-contract.json` example, and create `source/scene-contract.json`. Use one normalized stage, explicit element bounds, layer order, named ports, shared events, property tracks, and interactions. Keep producer internals isolated. Do not inspect validator source to infer the schema; write the complete contract, run the validator, and use only its report for corrections.
 6. Validate the scene contract before renderer work:
 
    ```powershell
@@ -41,9 +54,16 @@ Read [arrow-visibility.md](references/arrow-visibility.md) when producing, impor
    ```
 
    The compositor exposes `window.renderConceptFrame(videoId, seconds, options)` and returns active element, interaction, and state IDs. It embeds SVGs without redrawing them and decodes GIF frames against the master clock.
+   Completed/persisted routes include a full visible head. Use validated
+   normalized waypoints for separate feedback/branch gutters and inspect full
+   head and token clearance; source/target ports must sit on the intended node
+   boundary. The runtime refuses insufficient endpoint space.
 8. Use the bundled browser renderer for heterogeneous scenes and the bundled Slidev recorder only for a deck-first source. Route a standalone SVG/Manim-native sequence to `manim-svg-video`; if broader composition follows, consume its MP4 and manifest as producer outputs.
+   For planning-only scenes, follow the native capture command in
+   [browser rendering](references/browser-rendering.md#planning-only-scene-review)
+   and inspect its reported screenshot paths without encoding an MP4.
 9. Read `references/transition-decision-guide.md` and `references/transition-plan-contract.md` for multi-scene work. Plan attention handoff and persistent semantic state before choosing an effect.
-10. Render exact timestamps, inspect full-resolution frames and transition midpoints, create a contact sheet, review muted playback, correct failed scenes, rerender, and validate the MP4 dimensions, fps, duration, motion, and audio.
+10. Render exact timestamps, inspect full-resolution frames and transition midpoints, create a contact sheet, review muted playback, correct failed scenes, rerender, and validate the MP4 dimensions, fps, duration, motion, and audio. Keep screenshots and temporary authoring files in the task workspace; avoid Windows `/tmp` paths. Rebuilding an existing compositor output requires `--force`. Set state/beat assertions from the actual scene contract rather than imposing a multi-scene count on a single-scene mechanism.
 
 ## Cross-element interaction rules
 
