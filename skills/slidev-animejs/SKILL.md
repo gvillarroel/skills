@@ -18,6 +18,10 @@ return, start with [the measured connected-flow scaffold](references/connected-f
 instead of hand-sizing the diagram. It creates a native readable Vue stage,
 separated ports, visible base routes and a parcel following the actual paths.
 
+For native Mermaid fences, install [the bundled diagram defaults](references/mermaid-defaults.md) once in the deck. Plain Mermaid source then inherits colorset1 automatically, with the same red/neutral palette and solid body treatment used by the Mermaid and PlantUML skills. Preserve existing setup hooks and explicit user styling.
+
+Use [the static deck checker](scripts/check_mermaid_deck.py) before building: `uv run --script <skill-root>/scripts/check_mermaid_deck.py --deck deck --plain-mermaid --expect-blocks 3` for a requested three-block deck. It checks Mermaid fences and runtime inputs without modifying files. Slidev headmatter such as `theme: default` is separate from diagram source and is legal. Use native build/capture metadata for slide count and rendered geometry; do not count global `---` separators or opening/closing fence lines as slides or Mermaid blocks.
+
 ## Core Workflow
 
 1. Put animation behavior in Vue components under the Slidev `components/` directory. Keep `slides.md` focused on slide composition and small props such as `$clicks`.

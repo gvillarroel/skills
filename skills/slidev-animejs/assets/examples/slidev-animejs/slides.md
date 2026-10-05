@@ -409,3 +409,17 @@ clicks: 2
     <p>The reference files document use cases, Anime.js APIs, Slidev patterns, fixture coverage, generated SVG hooks, and pitfalls.</p>
   </div>
 </div>
+
+---
+
+# From Draft to Publication
+
+<div id="slidev-animejs-mermaid-defaults" data-example-id="mermaid-defaults" data-pattern-id="slidev-animejs-mermaid-defaults" data-colorset="colorset1"></div>
+
+```mermaid
+flowchart LR
+  accTitle: Report publication workflow
+  accDescr: A draft report is reviewed before the approved report is published.
+  Draft["Draft report"] -->|Ready for review| Review["Review report"]
+  Review -->|Approved for release| Publish["Publish report"]
+```

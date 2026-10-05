@@ -12,6 +12,10 @@ Validate every output format and state the skill supports: source, static vector
 
 The six runtime SVG templates deliberately use colorset2 to distinguish independent asset mechanisms. For a new red/neutral deck, replace every authored paint with the colorset1 roles before animating. Give categorical fill/background changes per-property `ease: steps(1)`; retain smooth motion/opacity. Check all 21 feature paths, six generated SVG assets, controls, drag/scroll/click states, and exported HTML.
 
+## Native Mermaid defaults
+
+Use [the copy-ready deck setup](mermaid-defaults.md) for native Mermaid fences. Install the runtime pack under `assets/templates/slidev-diagram-style/` into the target deck; its `setup/mermaid.ts` selects colorset1 and applies exact palette roles to all plain Mermaid fences. Select colorset2 explicitly in that setup only when extended color is requested. Inspect rendered bodies, inside labels, relationship captions and arrowheads; a configuration object alone is not evidence that native renderer output follows the palette. Existing imported PlantUML SVGs keep their source paint and semantics.
+
 ## Solid-first category style
 
 Use one opaque solid fill and no decorative outline for initial category choices. Keep the exact finite palette. Allocate every distinct usable palette color before recycling a fill with an outline; exclude the actual canvas color. For colorset1, follow the bundled `solidSequence`: primary red `#9e1b32`, then interleaved black/grays (darkest, middle, next darkest, next middle), white, and the remaining colors. Apply this order to categorical identities; keep quantitative and ordered grayscale ramps monotonic. For colorset2, retain its bundled base/saturated, dark/bright/neutral, then soft order. Keep each category's fill, text and any overflow outline stable across panels, series, legends and motion states. Declare overflow explicitly and cycle border color, dash and width only after that solid capacity is exhausted.

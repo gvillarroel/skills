@@ -11,6 +11,8 @@ import subprocess
 import sys
 import time
 import re
+from html import escape
+from html.parser import HTMLParser
 from pathlib import Path
 
 
@@ -349,40 +351,79 @@ def patch_file(path: Path, replacements: dict[str, str]) -> None:
     path.write_text(content, encoding="utf-8", newline="\n")
 
 
+class PageMarkupParser(HTMLParser):
+    def __init__(self, content: str) -> None:
+        super().__init__(convert_charrefs=False)
+        self.line_offsets = [0, *(match.end() for match in re.finditer("\n", content))]
+        self.body: tuple[int, str, list[tuple[str, str | None]]] | None = None
+        self.head_end: int | None = None
+        self.in_head = False
+        self.meta_names: set[str] = set()
+        self.has_favicon = False
+
+    def source_offset(self) -> int:
+        line, column = self.getpos()
+        return self.line_offsets[line - 1] + column
+
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        if tag == "body" and self.body is None:
+            raw_tag = self.get_starttag_text()
+            assert raw_tag is not None
+            self.body = (self.source_offset(), raw_tag, attrs)
+        if tag == "head" and self.head_end is None:
+            self.in_head = True
+        if self.in_head:
+            attributes = {name: value or "" for name, value in attrs}
+            if tag == "meta":
+                self.meta_names.add(attributes.get("name", "").lower())
+            if tag == "link" and "icon" in attributes.get("rel", "").lower().split():
+                self.has_favicon = True
+
+    def handle_endtag(self, tag: str) -> None:
+        if tag == "head" and self.in_head:
+            if self.head_end is None:
+                self.head_end = self.source_offset()
+            self.in_head = False
+
+
+def parse_page_markup(content: str) -> PageMarkupParser:
+    parser = PageMarkupParser(content)
+    parser.feed(content)
+    return parser
+
+
 def ensure_html_head_meta(content: str, example_id: str) -> str:
-    meta = (
-        f'  <meta name="example-id" content="{example_id}">\n'
-        f'  <meta name="pattern-id" content="{example_id}">\n'
-        '  <meta name="pattern-page" content="true">\n'
+    parser = parse_page_markup(content)
+    if parser.head_end is None:
+        return content
+    metadata = {"example-id": example_id, "pattern-id": example_id, "pattern-page": "true"}
+    missing = "".join(
+        f'  <meta name="{name}" content="{escape(value, quote=True)}">\n'
+        for name, value in metadata.items()
+        if name not in parser.meta_names
     )
-    if 'name="pattern-id"' in content:
-        return content
-    if "</head>" not in content:
-        return content
-    return content.replace("</head>", f"{meta}</head>", 1)
+    return content[:parser.head_end] + missing + content[parser.head_end:]
 
 
 def ensure_html_favicon(content: str) -> str:
-    if re.search(r'''<link\b[^>]*\brel=["'][^"']*\bicon\b''', content, flags=re.IGNORECASE):
+    parser = parse_page_markup(content)
+    if parser.has_favicon or parser.head_end is None:
         return content
-    if "</head>" not in content:
-        return content
-    return content.replace(
-        "</head>",
-        '  <link rel="icon" href="../../favicon.ico">\n</head>',
-        1,
-    )
+    favicon = '  <link rel="icon" href="../../favicon.ico">\n'
+    return content[:parser.head_end] + favicon + content[parser.head_end:]
 
 
 def ensure_body_attribute(content: str, name: str, value: str) -> str:
-    match = re.search(r"<body\b([^>]*)>", content)
-    if not match:
+    parser = parse_page_markup(content)
+    if parser.body is None:
         return content
-    body_attributes = match.group(1)
-    if re.search(rf"\b{name}=", body_attributes):
+    offset, raw_tag, attributes = parser.body
+    if any(attribute == name.lower() for attribute, _ in attributes):
         return content
-    updated = f"<body{body_attributes} {name}=\"{value}\">"
-    return content[: match.start()] + updated + content[match.end() :]
+    # Keep script literals, comments, existing quoting and every other byte intact.
+    closing = len(raw_tag) - (2 if raw_tag.endswith("/>") else 1)
+    insertion = offset + closing
+    return content[:insertion] + f' {name}="{escape(value, quote=True)}"' + content[insertion:]
 
 
 def patch_page_metadata(example_id: str, index_path: Path) -> None:
@@ -628,6 +669,9 @@ def normalize_text_file(path: Path) -> None:
     try:
         content = path.read_text(encoding="utf-8")
     except UnicodeDecodeError:
+        return
+    # Whitespace and Unicode line separators can carry meaning inside web literals.
+    if path.suffix.lower() in {".css", ".html", ".js", ".mjs", ".svg", ".ts", ".vue"}:
         return
     lines = [line.rstrip(" \t") for line in content.splitlines()]
     while lines and lines[-1] == "":
