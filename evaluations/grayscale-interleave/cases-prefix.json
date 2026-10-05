@@ -1,0 +1,692 @@
+{
+  "ambientcg-material-search": {
+    "model": "openai-codex/gpt-5.6-luna",
+    "contract": {
+      "prompt": "prompts/ambientcg-material-search-contract.md",
+      "outputs": [
+        "contract.json"
+      ],
+      "repetitions": 1,
+      "caseFamily": "complete-contract"
+    },
+    "naturalistic": {
+      "prompt": "prompts-prefix/ambientcg-material-search.md",
+      "outputs": [
+        "key.svg",
+        "allocation.json"
+      ],
+      "repetitions": 3,
+      "caseFamily": "gray-prefix",
+      "categoryCount": 13,
+      "promptSha256": "e4297e4b6b5e39569454251c970aaad261737de2e97fd7ce44aa750f024bf01a"
+    },
+    "frozenNormalizedPayloadSha256": "f64f11b22205ff0d6eb13e6f6ca01ec63c4d2cdf052b206b1639bed25a2e5eed"
+  },
+  "animated-svg-to-gif": {
+    "model": "openai-codex/gpt-5.6-luna",
+    "contract": {
+      "prompt": "prompts/animated-svg-to-gif-contract.md",
+      "outputs": [
+        "contract.json"
+      ],
+      "repetitions": 1,
+      "caseFamily": "complete-contract"
+    },
+    "naturalistic": {
+      "prompt": "prompts-prefix/animated-svg-to-gif.md",
+      "outputs": [
+        "key.svg",
+        "allocation.json"
+      ],
+      "repetitions": 3,
+      "caseFamily": "gray-prefix",
+      "categoryCount": 13,
+      "promptSha256": "ddb3be471e24790345a81b42a8425dd27b79a213973dd3bf67bdb44a50c3272e"
+    },
+    "frozenNormalizedPayloadSha256": "eaf23598775c95ecbbc071ea55a9c97884171dbd74e66bb2830cb8a6df20616f"
+  },
+  "asciinema-real-command-video": {
+    "model": "openai-codex/gpt-5.6-luna",
+    "contract": {
+      "prompt": "prompts/asciinema-real-command-video-contract.md",
+      "outputs": [
+        "contract.json"
+      ],
+      "repetitions": 1,
+      "caseFamily": "complete-contract"
+    },
+    "naturalistic": {
+      "prompt": "prompts-prefix/asciinema-real-command-video.md",
+      "outputs": [
+        "key.svg",
+        "allocation.json"
+      ],
+      "repetitions": 3,
+      "caseFamily": "gray-prefix",
+      "categoryCount": 13,
+      "promptSha256": "8ad90b356936d3a32300c356fab327704fae31508802925b01600ae55bc9294f"
+    },
+    "frozenNormalizedPayloadSha256": "cf1cedf02dfd34b2966cfed4d2fd0553c512dc3994501285e36fbcbc6061b4d9"
+  },
+  "compose-synchronized-svg": {
+    "model": "openai-codex/gpt-5.6-luna",
+    "contract": {
+      "prompt": "prompts/compose-synchronized-svg-contract.md",
+      "outputs": [
+        "contract.json"
+      ],
+      "repetitions": 1,
+      "caseFamily": "complete-contract"
+    },
+    "naturalistic": {
+      "prompt": "prompts-prefix/compose-synchronized-svg.md",
+      "outputs": [
+        "key.svg",
+        "allocation.json"
+      ],
+      "repetitions": 3,
+      "caseFamily": "gray-prefix",
+      "categoryCount": 13,
+      "promptSha256": "73c5f3495429daf4c6eca412cc57dc45106536fc1e8fc3c64622e6139137d928"
+    },
+    "frozenNormalizedPayloadSha256": "81aa151c9d3a4ec31b0d1ff7b21526456036a18e708bc4027d54c7c5f6f77a6a"
+  },
+  "d3": {
+    "model": "openai-codex/gpt-5.6-luna",
+    "contract": {
+      "prompt": "prompts/d3-contract.md",
+      "outputs": [
+        "contract.json"
+      ],
+      "repetitions": 1,
+      "caseFamily": "complete-contract"
+    },
+    "naturalistic": {
+      "prompt": "prompts-prefix/d3.md",
+      "outputs": [
+        "key.svg",
+        "allocation.json"
+      ],
+      "repetitions": 3,
+      "caseFamily": "gray-prefix",
+      "categoryCount": 13,
+      "promptSha256": "76ba100249edb13dc4b4e096a980b2d6783404fa5153aff1f66220e9b87fc84e"
+    },
+    "frozenNormalizedPayloadSha256": "fcda782e17888101f4f5d7ba8dcbad2f74c0e50cb80e5e4c53f87746659783a4"
+  },
+  "destockd-video-search": {
+    "model": "openai-codex/gpt-5.6-luna",
+    "contract": {
+      "prompt": "prompts/destockd-video-search-contract.md",
+      "outputs": [
+        "contract.json"
+      ],
+      "repetitions": 1,
+      "caseFamily": "complete-contract"
+    },
+    "naturalistic": {
+      "prompt": "prompts-prefix/destockd-video-search.md",
+      "outputs": [
+        "key.svg",
+        "allocation.json"
+      ],
+      "repetitions": 3,
+      "caseFamily": "gray-prefix",
+      "categoryCount": 13,
+      "promptSha256": "385f744b5a32886410d2888fb14bb851066b5deb3ff937168fd715d81e33afa1"
+    },
+    "frozenNormalizedPayloadSha256": "06550ba57ff36ab655c41d54cda0c61d4b32c0afb28bea03d88ca4d857f8a705"
+  },
+  "diagram-composition": {
+    "model": "openai-codex/gpt-5.6-luna",
+    "contract": {
+      "prompt": "prompts/diagram-composition-contract.md",
+      "outputs": [
+        "contract.json"
+      ],
+      "repetitions": 1,
+      "caseFamily": "complete-contract"
+    },
+    "naturalistic": {
+      "prompt": "prompts-prefix/diagram-composition.md",
+      "outputs": [
+        "key.svg",
+        "allocation.json"
+      ],
+      "repetitions": 3,
+      "caseFamily": "gray-prefix",
+      "categoryCount": 13,
+      "promptSha256": "4b0e756f21a6ac438e47045af947095de9f9cadef74d3840f9a05aeec9384983"
+    },
+    "frozenNormalizedPayloadSha256": "dc1147c95b4611331247619c4895d08f79d7c9025c46b1450a69fadfeea66109"
+  },
+  "echarts-animated-svg": {
+    "model": "openai-codex/gpt-5.6-luna",
+    "contract": {
+      "prompt": "prompts/echarts-animated-svg-contract.md",
+      "outputs": [
+        "contract.json"
+      ],
+      "repetitions": 1,
+      "caseFamily": "complete-contract"
+    },
+    "naturalistic": {
+      "prompt": "prompts-prefix/echarts-animated-svg.md",
+      "outputs": [
+        "key.svg",
+        "allocation.json"
+      ],
+      "repetitions": 3,
+      "caseFamily": "gray-prefix",
+      "categoryCount": 13,
+      "promptSha256": "2e8cce69bfe86351ad0d25e3b0cb68c8fb426a48af862b740cf9aa63092f5562"
+    },
+    "frozenNormalizedPayloadSha256": "14b58e14e22d97f405541f73719f689fce020267bb99274253ce2ffc0150749e"
+  },
+  "harbor-author-evaluation-datasets": {
+    "model": "openai-codex/gpt-5.6-luna",
+    "contract": {
+      "prompt": "prompts/harbor-author-evaluation-datasets-contract.md",
+      "outputs": [
+        "contract.json"
+      ],
+      "repetitions": 1,
+      "caseFamily": "complete-contract"
+    },
+    "naturalistic": {
+      "prompt": "prompts-prefix/harbor-author-evaluation-datasets.md",
+      "outputs": [
+        "key.svg",
+        "allocation.json"
+      ],
+      "repetitions": 3,
+      "caseFamily": "gray-prefix",
+      "categoryCount": 13,
+      "promptSha256": "a1c0503c0ba7b68ce448ca895a04daccc4486b72617656a0eb0f584d2128cd56"
+    },
+    "frozenNormalizedPayloadSha256": "1187823b28295478e01bfbe485525838f58950ce8f76db74b18be3883b003747"
+  },
+  "hierarchy-lens": {
+    "model": "openai-codex/gpt-5.6-luna",
+    "contract": {
+      "prompt": "prompts/hierarchy-lens-contract.md",
+      "outputs": [
+        "contract.json"
+      ],
+      "repetitions": 1,
+      "caseFamily": "complete-contract"
+    },
+    "naturalistic": {
+      "prompt": "prompts-prefix/hierarchy-lens.md",
+      "outputs": [
+        "key.svg",
+        "allocation.json"
+      ],
+      "repetitions": 3,
+      "caseFamily": "gray-prefix",
+      "categoryCount": 13,
+      "promptSha256": "0e04d3245c22c39f2716162838e3effd8af5b070de46f1bd49d162540de48a5c"
+    },
+    "frozenNormalizedPayloadSha256": "05bcf291cd7fdfb25f0263c778c297a27bba9356446405f3442d718160eddbb4"
+  },
+  "hyperframes-explainer": {
+    "model": "openai-codex/gpt-5.6-luna",
+    "contract": {
+      "prompt": "prompts/hyperframes-explainer-contract.md",
+      "outputs": [
+        "contract.json"
+      ],
+      "repetitions": 1,
+      "caseFamily": "complete-contract"
+    },
+    "naturalistic": {
+      "prompt": "prompts-prefix/hyperframes-explainer.md",
+      "outputs": [
+        "key.svg",
+        "allocation.json"
+      ],
+      "repetitions": 3,
+      "caseFamily": "gray-prefix",
+      "categoryCount": 13,
+      "promptSha256": "418baac22cfba52d7fd7bf31db947829fd78576f4ceaf01402de0d15b85751f7"
+    },
+    "frozenNormalizedPayloadSha256": "949096ac70bcfcaf000fe6688298493985425bd5147ead3859ca19b799f2a325"
+  },
+  "iconify-icon-search": {
+    "model": "openai-codex/gpt-5.6-luna",
+    "contract": {
+      "prompt": "prompts/iconify-icon-search-contract.md",
+      "outputs": [
+        "contract.json"
+      ],
+      "repetitions": 1,
+      "caseFamily": "complete-contract"
+    },
+    "naturalistic": {
+      "prompt": "prompts-prefix/iconify-icon-search.md",
+      "outputs": [
+        "key.svg",
+        "allocation.json"
+      ],
+      "repetitions": 3,
+      "caseFamily": "gray-prefix",
+      "categoryCount": 13,
+      "promptSha256": "19efa021acf9d687d9cc89d1ff884383a83942187bf60421b57374acbebb83cd"
+    },
+    "frozenNormalizedPayloadSha256": "b6d2b8b8acbb7e68ccbc41d0658b91370576caceb97377d8d70c3f91c7cef70e"
+  },
+  "kenney-asset-search": {
+    "model": "openai-codex/gpt-5.6-luna",
+    "contract": {
+      "prompt": "prompts/kenney-asset-search-contract.md",
+      "outputs": [
+        "contract.json"
+      ],
+      "repetitions": 1,
+      "caseFamily": "complete-contract"
+    },
+    "naturalistic": {
+      "prompt": "prompts-prefix/kenney-asset-search.md",
+      "outputs": [
+        "key.svg",
+        "allocation.json"
+      ],
+      "repetitions": 3,
+      "caseFamily": "gray-prefix",
+      "categoryCount": 13,
+      "promptSha256": "c7e17083c73d96ef9a47a5354272be99e9526303d6ed7b3478b3320b70c1a15d"
+    },
+    "frozenNormalizedPayloadSha256": "b30c5c1dadbc6d014149b5a59633184cf56862f5b3dd2714f4fb1c1c5597762f"
+  },
+  "manim-svg-video": {
+    "model": "openai-codex/gpt-5.6-luna",
+    "contract": {
+      "prompt": "prompts/manim-svg-video-contract.md",
+      "outputs": [
+        "contract.json"
+      ],
+      "repetitions": 1,
+      "caseFamily": "complete-contract"
+    },
+    "naturalistic": {
+      "prompt": "prompts-prefix/manim-svg-video.md",
+      "outputs": [
+        "key.svg",
+        "allocation.json"
+      ],
+      "repetitions": 3,
+      "caseFamily": "gray-prefix",
+      "categoryCount": 13,
+      "promptSha256": "f0731d4139eb242e443380920281a2e999620c28bf0b9bf261afd73dca26fbd0"
+    },
+    "frozenNormalizedPayloadSha256": "e29027d937f5a84d01fcafaa8f41815c32854504c5a4b858c680c499f61f3ed1"
+  },
+  "mermaid": {
+    "model": "openai-codex/gpt-5.6-luna",
+    "contract": {
+      "prompt": "prompts/mermaid-contract.md",
+      "outputs": [
+        "contract.json"
+      ],
+      "repetitions": 1,
+      "caseFamily": "complete-contract"
+    },
+    "naturalistic": {
+      "prompt": "prompts-prefix/mermaid.md",
+      "outputs": [
+        "key.svg",
+        "allocation.json"
+      ],
+      "repetitions": 3,
+      "caseFamily": "gray-prefix",
+      "categoryCount": 13,
+      "promptSha256": "3e294c3567ea86cdf3ab304e4628b79a3995460d5436a8d8f51644b091635e41"
+    },
+    "frozenNormalizedPayloadSha256": "ce25cb594ca0218f548b4b89364e16165d9fbc252e1f6b9ddc55bcea000cdd7c"
+  },
+  "one-bit-dither-svg": {
+    "model": "openai-codex/gpt-5.6-luna",
+    "contract": {
+      "prompt": "prompts/one-bit-dither-svg-contract.md",
+      "outputs": [
+        "contract.json"
+      ],
+      "repetitions": 1,
+      "caseFamily": "complete-contract"
+    },
+    "naturalistic": {
+      "prompt": "prompts-prefix/one-bit-dither-svg.md",
+      "outputs": [
+        "key.svg",
+        "allocation.json"
+      ],
+      "repetitions": 3,
+      "caseFamily": "gray-prefix",
+      "categoryCount": 13,
+      "promptSha256": "42dcdc60255f2a8abd78a6f3797137d710f63f9dbe887341bc6ed8d7308abe6a"
+    },
+    "frozenNormalizedPayloadSha256": "b2f5fae557e6d777d4149355e5e5088af92a42caf2c6edc4b37ef206f8824161"
+  },
+  "pexels-media-search": {
+    "model": "openai-codex/gpt-5.6-luna",
+    "contract": {
+      "prompt": "prompts/pexels-media-search-contract.md",
+      "outputs": [
+        "contract.json"
+      ],
+      "repetitions": 1,
+      "caseFamily": "complete-contract"
+    },
+    "naturalistic": {
+      "prompt": "prompts-prefix/pexels-media-search.md",
+      "outputs": [
+        "key.svg",
+        "allocation.json"
+      ],
+      "repetitions": 3,
+      "caseFamily": "gray-prefix",
+      "categoryCount": 13,
+      "promptSha256": "71cf1594a87b378cfab59f41f8bbe6d98fa118c07b07e27063beacb44f211a60"
+    },
+    "frozenNormalizedPayloadSha256": "4cef89b365b9b0e08ea35f76f44c3bde8e33f4bc80a0e33d658dd4031c9d0077"
+  },
+  "pixel-art-image-video": {
+    "model": "openai-codex/gpt-5.6-luna",
+    "contract": {
+      "prompt": "prompts/pixel-art-image-video-contract.md",
+      "outputs": [
+        "contract.json"
+      ],
+      "repetitions": 1,
+      "caseFamily": "complete-contract"
+    },
+    "naturalistic": {
+      "prompt": "prompts-prefix/pixel-art-image-video.md",
+      "outputs": [
+        "key.svg",
+        "allocation.json"
+      ],
+      "repetitions": 3,
+      "caseFamily": "gray-prefix",
+      "categoryCount": 13,
+      "promptSha256": "84b9c0f53b9573a9f8f0b9b015f6d320f5ccce9e28e4107e04b2edd9da0c4d95"
+    },
+    "frozenNormalizedPayloadSha256": "9171046798f2f7f93efd35b1a8af6aba7a45912d2722f5b1b3df58bc19dacebf"
+  },
+  "plantuml-colorset-renderer": {
+    "model": "openai-codex/gpt-5.6-luna",
+    "contract": {
+      "prompt": "prompts/plantuml-colorset-renderer-contract.md",
+      "outputs": [
+        "contract.json"
+      ],
+      "repetitions": 1,
+      "caseFamily": "complete-contract"
+    },
+    "naturalistic": {
+      "prompt": "prompts-prefix/plantuml-colorset-renderer.md",
+      "outputs": [
+        "key.svg",
+        "allocation.json"
+      ],
+      "repetitions": 3,
+      "caseFamily": "gray-prefix",
+      "categoryCount": 13,
+      "promptSha256": "2bbcf0c6e3db07b76e2385e45c7ba6e37c3f237a31d33918e3c7af84c50e4aaf"
+    },
+    "frozenNormalizedPayloadSha256": "649851e91b8484a304f96fa7569b35f0efc54d1a1ef518a55ca000670ed2409f"
+  },
+  "polyhaven-asset-search": {
+    "model": "openai-codex/gpt-5.6-luna",
+    "contract": {
+      "prompt": "prompts/polyhaven-asset-search-contract.md",
+      "outputs": [
+        "contract.json"
+      ],
+      "repetitions": 1,
+      "caseFamily": "complete-contract"
+    },
+    "naturalistic": {
+      "prompt": "prompts-prefix/polyhaven-asset-search.md",
+      "outputs": [
+        "key.svg",
+        "allocation.json"
+      ],
+      "repetitions": 3,
+      "caseFamily": "gray-prefix",
+      "categoryCount": 13,
+      "promptSha256": "a0757c127e4f9f676367e74b37f6f58a8c0c904b61d8707719172240c7184c5e"
+    },
+    "frozenNormalizedPayloadSha256": "95c8711d512014578e485279369132560e2e0d9285d89d0d4be1368428f039e7"
+  },
+  "procedural-svg-animation": {
+    "model": "openai-codex/gpt-5.6-luna",
+    "contract": {
+      "prompt": "prompts/procedural-svg-animation-contract.md",
+      "outputs": [
+        "contract.json"
+      ],
+      "repetitions": 1,
+      "caseFamily": "complete-contract"
+    },
+    "naturalistic": {
+      "prompt": "prompts-prefix/procedural-svg-animation.md",
+      "outputs": [
+        "key.svg",
+        "allocation.json"
+      ],
+      "repetitions": 3,
+      "caseFamily": "gray-prefix",
+      "categoryCount": 13,
+      "promptSha256": "468a9bedf619ec00b83e47069084ba4842e4b43bd589e46f3372794ed49dde54"
+    },
+    "frozenNormalizedPayloadSha256": "76bcd5b3a95e0b69462bbc34d739679b0484d99017aa48140822529dc8e22a5b"
+  },
+  "slidev-animejs": {
+    "model": "openai-codex/gpt-5.6-luna",
+    "contract": {
+      "prompt": "prompts/slidev-animejs-contract.md",
+      "outputs": [
+        "contract.json"
+      ],
+      "repetitions": 1,
+      "caseFamily": "complete-contract"
+    },
+    "naturalistic": {
+      "prompt": "prompts-prefix/slidev-animejs.md",
+      "outputs": [
+        "key.svg",
+        "allocation.json"
+      ],
+      "repetitions": 3,
+      "caseFamily": "gray-prefix",
+      "categoryCount": 13,
+      "promptSha256": "94dcbc2a03ef3ded08565aaaa8b6263a95a7cffa46c24a4a50b482833e8b828f"
+    },
+    "frozenNormalizedPayloadSha256": "ff5d6bd3d94550a31ae8413264cd7a4734fb0bd6efd8613e99b058f0f0cbd7dc"
+  },
+  "slidev-echarts": {
+    "model": "openai-codex/gpt-5.6-luna",
+    "contract": {
+      "prompt": "prompts/slidev-echarts-contract.md",
+      "outputs": [
+        "contract.json"
+      ],
+      "repetitions": 1,
+      "caseFamily": "complete-contract"
+    },
+    "naturalistic": {
+      "prompt": "prompts-prefix/slidev-echarts.md",
+      "outputs": [
+        "key.svg",
+        "allocation.json"
+      ],
+      "repetitions": 3,
+      "caseFamily": "gray-prefix",
+      "categoryCount": 13,
+      "promptSha256": "0181943a44245a4156a6c94fb55273ddf1e47b652138e51e2516e4059d8f1228"
+    },
+    "frozenNormalizedPayloadSha256": "4a39db7e4160a48fb887e3401b2fb072f87360fe750b1094805fb5921cd419a9"
+  },
+  "slidev-quality-audit": {
+    "model": "openai-codex/gpt-5.6-luna",
+    "contract": {
+      "prompt": "prompts/slidev-quality-audit-contract.md",
+      "outputs": [
+        "contract.json"
+      ],
+      "repetitions": 1,
+      "caseFamily": "complete-contract"
+    },
+    "naturalistic": {
+      "prompt": "prompts-prefix/slidev-quality-audit.md",
+      "outputs": [
+        "key.svg",
+        "allocation.json"
+      ],
+      "repetitions": 3,
+      "caseFamily": "gray-prefix",
+      "categoryCount": 13,
+      "promptSha256": "8ba833b74ede0060f43259f45a8536e9abe9ce1d9b3ffb7cc796768c6c6ee6a2"
+    },
+    "frozenNormalizedPayloadSha256": "d0ee69f5d6ba86e5388c6205dece51ca2040ed15f7e51dc42df6e41ea7ee781d"
+  },
+  "svg-brief-design": {
+    "model": "openai-codex/gpt-5.6-luna",
+    "contract": {
+      "prompt": "prompts/svg-brief-design-contract.md",
+      "outputs": [
+        "contract.json"
+      ],
+      "repetitions": 1,
+      "caseFamily": "complete-contract"
+    },
+    "naturalistic": {
+      "prompt": "prompts-prefix/svg-brief-design.md",
+      "outputs": [
+        "key.svg",
+        "allocation.json"
+      ],
+      "repetitions": 3,
+      "caseFamily": "gray-prefix",
+      "categoryCount": 13,
+      "promptSha256": "b45541804f30edf9fc1bf0a53ca0a83ae2e7862e4081b4549923e572ea947eb1"
+    },
+    "frozenNormalizedPayloadSha256": "a04e291efc7dbd318170c8dee17692b2f7523de73ddd1fa451116b04a840a49d"
+  },
+  "technical-logo-assets": {
+    "model": "openai-codex/gpt-5.6-luna",
+    "contract": {
+      "prompt": "prompts/technical-logo-assets-contract.md",
+      "outputs": [
+        "contract.json"
+      ],
+      "repetitions": 1,
+      "caseFamily": "complete-contract"
+    },
+    "naturalistic": {
+      "prompt": "prompts-prefix/technical-logo-assets.md",
+      "outputs": [
+        "key.svg",
+        "allocation.json"
+      ],
+      "repetitions": 3,
+      "caseFamily": "gray-prefix",
+      "categoryCount": 13,
+      "promptSha256": "e6be0c7000012ce28d0e80f5ddfdb4824a7355ccf7da84e43a99a4baad16f101"
+    },
+    "frozenNormalizedPayloadSha256": "79012535bf1f68fb798991b37cfe5471f95535a9f6ea546505ba15bdf760c1e6"
+  },
+  "threejs-animated-3d": {
+    "model": "openai-codex/gpt-5.6-luna",
+    "contract": {
+      "prompt": "prompts/threejs-animated-3d-contract.md",
+      "outputs": [
+        "contract.json"
+      ],
+      "repetitions": 1,
+      "caseFamily": "complete-contract"
+    },
+    "naturalistic": {
+      "prompt": "prompts-prefix/threejs-animated-3d.md",
+      "outputs": [
+        "key.svg",
+        "allocation.json"
+      ],
+      "repetitions": 3,
+      "caseFamily": "gray-prefix",
+      "categoryCount": 13,
+      "promptSha256": "c465fe3542d7c8a554ef66c1d9abc085b2cfc22e03e16809587b5377cbcbe0cb"
+    },
+    "frozenNormalizedPayloadSha256": "37f2264f2c7b67baf5e774e912473654a3042a94fc7bcc7cf6e5451ad0997faa"
+  },
+  "usefulcharts-style": {
+    "model": "openai-codex/gpt-5.6-luna",
+    "contract": {
+      "prompt": "prompts/usefulcharts-style-contract.md",
+      "outputs": [
+        "contract.json"
+      ],
+      "repetitions": 1,
+      "caseFamily": "complete-contract"
+    },
+    "naturalistic": {
+      "prompt": "prompts-prefix/usefulcharts-style.md",
+      "outputs": [
+        "key.svg",
+        "allocation.json"
+      ],
+      "repetitions": 3,
+      "caseFamily": "gray-prefix",
+      "categoryCount": 13,
+      "promptSha256": "f66efe65a0527833aa1e207c2ec34590dc505873b5bafbaf8cb4b9383069d6e8"
+    },
+    "frozenNormalizedPayloadSha256": "ec071cc2ea7bc4071c49564387b949c65228b85811d2cc974acdc5e2dd22bcf8"
+  },
+  "vectorize-art-patterns": {
+    "model": "openai-codex/gpt-5.6-luna",
+    "contract": {
+      "prompt": "prompts/vectorize-art-patterns-contract.md",
+      "outputs": [
+        "contract.json"
+      ],
+      "repetitions": 1,
+      "caseFamily": "complete-contract"
+    },
+    "naturalistic": {
+      "prompt": "prompts-prefix/vectorize-art-patterns.md",
+      "outputs": [
+        "key.svg",
+        "allocation.json"
+      ],
+      "repetitions": 3,
+      "caseFamily": "gray-prefix",
+      "categoryCount": 13,
+      "promptSha256": "5d916471f8b17d769393c3badae1b0787b408149d78efc3f2f4ef2d3b5c1941c"
+    },
+    "frozenNormalizedPayloadSha256": "e5d294acced11c2aae21353669121fe622f7d708874b3fcc949cadff18912bff"
+  },
+  "video": {
+    "model": "openai-codex/gpt-5.6-luna",
+    "contract": {
+      "prompt": "prompts/video-contract.md",
+      "outputs": [
+        "contract.json"
+      ],
+      "repetitions": 1,
+      "caseFamily": "complete-contract"
+    },
+    "naturalistic": {
+      "prompt": "prompts-prefix/video.md",
+      "outputs": [
+        "key.svg",
+        "allocation.json"
+      ],
+      "repetitions": 3,
+      "caseFamily": "gray-prefix",
+      "categoryCount": 13,
+      "promptSha256": "b4d2d80af1a0752bf80ab57af99963b5c7bc2b8920792d30257a398e9ef53c5b"
+    },
+    "frozenNormalizedPayloadSha256": "8851821a56c0a8b4f592ec7e94ba3976f8853da6ce316392aee6033702af984a"
+  }
+}

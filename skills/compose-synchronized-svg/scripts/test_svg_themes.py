@@ -83,6 +83,36 @@ class SvgThemeTests(unittest.TestCase):
         self.assertEqual(theme["preset"], "classic")
         self.assertEqual(theme["conceptColors"]["input-rate"], "#9e1b32")
 
+    def test_world_districts_follow_selected_category_order_without_changing_geometry(self) -> None:
+        brief = json.loads((TEMPLATE.parent / "navigable-world-brief.json").read_text(encoding="utf-8"))
+        baseline, _ = compiler.compile_brief(brief)
+        dark = {"canvas": "#000000", "surface": "#333e48", "ink": "#f7f7f7",
+                "muted": "#cfcfcf", "line": "#696969", "accent": "#ffccd5",
+                "focus": "#ffffff", "warning": "#e7e7e7", "danger": "#ffccd5"}
+        cases = [
+            ({"preset": "colorset1", "colors": {"canvas": "#ffffff"}},
+             ["#9e1b32", "#000000", "#828282", "#1c1c1c"]),
+            ({"preset": "colorset1", "colors": dark},
+             ["#9e1b32", "#828282", "#1c1c1c", "#9c9c9c"]),
+            ({"preset": "colorset2"}, ["#9e1b32", "#333e48", "#6d1222", "#828282"]),
+        ]
+        for raw_theme, expected in cases:
+            with self.subTest(theme=raw_theme):
+                changed = copy.deepcopy(brief)
+                changed["theme"] = raw_theme
+                plan, svg = self.compose(changed, f"district-{len(expected)}-{raw_theme['preset']}")
+                self.assertEqual([d["accent"] for d in plan["world"]["districts"]], expected)
+                self.assertEqual(plan["navigation"], baseline["navigation"])
+                self.assertEqual([m["region"] for m in plan["modules"]],
+                                 [m["region"] for m in baseline["modules"]])
+                for key in ("concepts", "derived", "scenarios", "timeline"):
+                    self.assertEqual(plan[key], baseline[key])
+                code, report = self.validate(svg)
+                self.assertEqual(code, 0, report)
+                text = svg.read_text(encoding="utf-8")
+                for paint in expected:
+                    self.assertIn(f"--district-accent: {paint};", text)
+
     def test_subject_title_is_visible_and_renderer_metadata_is_preserved(self) -> None:
         self.brief["modules"][0]["title"] = "Operating inputs"
         plan, svg = self.compose(self.brief)

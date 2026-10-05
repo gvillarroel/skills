@@ -22,9 +22,9 @@ import colorset_adapter
 from test_build_contract_artifact import common
 import build_contract_artifact
 
-SOLIDS = ["#9e1b32", "#333e48", "#4f4f4f", "#696969", "#828282", "#9c9c9c",
-          "#b5b5b5", "#cfcfcf", "#e7e7e7", "#363636", "#f7f7f7", "#1c1c1c",
-          "#000000", "#6d1222", "#e8002a", "#ffccd5"]
+SOLIDS = ["#9e1b32", "#000000", "#828282", "#1c1c1c", "#9c9c9c", "#363636",
+          "#b5b5b5", "#333e48", "#cfcfcf", "#4f4f4f", "#e7e7e7", "#696969",
+          "#f7f7f7", "#6d1222", "#e8002a", "#ffccd5"]
 ARTIFACTS: Path
 
 INSPECT = r'''selector => {

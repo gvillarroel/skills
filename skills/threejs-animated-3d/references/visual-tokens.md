@@ -22,14 +22,17 @@ expanded, multicolor, or full-color request; record it in `data-colorset`.
 | Gray structure, dark to light | `#363636`, `#4f4f4f`, `#696969`, `#828282`, `#9c9c9c`, `#b5b5b5`, `#cfcfcf`, `#e7e7e7` |
 
 Allocate distinct category materials from the bundled `solidSequence`: start
-with primary red `#9e1b32`, then grays, black, white, and the remaining colors.
+with primary red `#9e1b32`, then the bundled dark/middle interleave of grays
+including black, white, and the remaining colors. This is categorical order;
+the structural gray table above and ordered-value scales retain their order.
 Exclude only the actual canvas token. Reuse colors for objects with the same
 semantic role; preserve explicit status meanings and ordered-value scales. Use
 geometry, position, texture, and direct labels alongside color. Keep filled
 meshes free of decorative `EdgesGeometry`, wireframes, or silhouette overlays.
 
-Pink `#ffccd5` is a **last-resort category**, after usable reds, grays, black,
-and white cannot distinguish an additional meaningful category. It is also
+Pink `#ffccd5` is a **last-resort category**, after the preceding usable red,
+interleaved gray (including black), white, and remaining red tokens cannot
+distinguish an additional meaningful category. It is also
 available for an explicit pink request. Record the reason; do not automatically
 use pink as the second material, a soft background, replay fill, or focus color.
 Use a solid red material, position, motion or a direct label for selection.

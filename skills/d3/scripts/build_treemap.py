@@ -15,16 +15,16 @@ from pathlib import Path
 import re
 import sys
 
-from colorset_adapter import adapt_artifact
+from colorset_adapter import adapt_artifact, category_style
 
 SKILL_ROOT = Path(__file__).resolve().parents[1]
 D3_RUNTIME = SKILL_ROOT / "assets/vendor/d3.v7.9.0.min.js"
 CONTRACT = SKILL_ROOT / "assets/palettes/colorsets.json"
 FAMILIES = {
     "colorset1": [
-        ["#9e1b32", ["#6d1222", "#9e1b32", "#e8002a"]],
-        ["#333e48", ["#4f4f4f", "#828282", "#b5b5b5"]],
-        ["#4f4f4f", ["#363636", "#696969", "#9c9c9c"]],
+        [0, ["#6d1222", "#9e1b32", "#e8002a"]],
+        [1, ["#4f4f4f", "#828282", "#b5b5b5"]],
+        [2, ["#363636", "#696969", "#9c9c9c"]],
     ],
     "colorset2": [
         ["#007298", ["#004d66", "#007298", "#00ace6"]],
@@ -88,8 +88,10 @@ def build_document(data: dict, *, title: str = "Treemap", colorset: str = "color
     if width < 320 or height < 320 or width > 4096 or height > 4096:
         raise ValueError("Width and height must be between 320 and 4096 pixels")
     palette = json.loads(CONTRACT.read_text(encoding="utf-8"))["colorsets"][colorset]
+    families = [[category_style(base, palette, palette["roles"]["surface"])["fill"] if isinstance(base, int) else base, tones]
+                for base, tones in FAMILIES[colorset]]
     configuration = dict(data=data, title=title, colorset=colorset, width=width, height=height,
-                         families=FAMILIES[colorset], textOnFill=palette["textOnFill"])
+                         families=families, textOnFill=palette["textOnFill"])
     safe_title = escape(title).replace("#", "&#35;")
     template = r'''<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">

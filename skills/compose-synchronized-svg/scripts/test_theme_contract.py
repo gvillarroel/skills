@@ -14,6 +14,31 @@ from palette_contract import COLORSETS, solid_colors, category_style, text_on_fi
 
 
 class ThemeContractTests(unittest.TestCase):
+    def test_colorset1_interleave_is_stable_before_canvas_filter_and_overflow(self) -> None:
+        expected = [
+            "#9e1b32", "#000000", "#828282", "#1c1c1c", "#9c9c9c", "#363636",
+            "#b5b5b5", "#333e48", "#cfcfcf", "#4f4f4f", "#e7e7e7", "#696969",
+            "#f7f7f7", "#ffffff", "#6d1222", "#e8002a", "#ffccd5",
+        ]
+        for canvas in ("#ffffff", "#000000", "#828282", "#f7f7f7"):
+            with self.subTest(canvas=canvas):
+                usable = [paint for paint in expected if paint != canvas]
+                self.assertEqual(solid_colors("colorset1", canvas), usable)
+                styles = [category_style(i, "colorset1", canvas) for i in range(len(usable))]
+                self.assertEqual([style["fill"] for style in styles], usable)
+                self.assertTrue(all(style["strokeWidth"] == 0 and not style["overflow"] for style in styles))
+                first_repeat = category_style(len(usable), "colorset1", canvas)
+                self.assertEqual(first_repeat["fill"], usable[0])
+                self.assertTrue(first_repeat["overflow"])
+        ids = [f"concept-{i}" for i in range(17)]
+        theme = resolve_theme(None, ids)
+        self.assertEqual(list(theme["conceptColors"].values()), expected[:12] + expected[13:] + expected[:1])
+        aliased = resolve_theme({"conceptColors": {"concept-0": "#6d1222"}}, ids,
+                                {value: "concept-0" if value == "concept-1" else value for value in ids})
+        self.assertEqual(aliased["conceptColors"]["concept-0"], "#6d1222")
+        self.assertNotIn("concept-1", aliased["conceptColors"])
+        self.assertEqual(aliased["conceptColors"]["concept-2"], "#000000")
+
     def test_automatic_foreground_handles_light_dark_and_saturated_surfaces(self) -> None:
         for red in range(0, 256, 17):
             for green in range(0, 256, 17):

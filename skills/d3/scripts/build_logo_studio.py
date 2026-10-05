@@ -137,18 +137,28 @@ def main() -> int:
         "__D3_LOGO_TEXTURE_GALLERY_URL__": html.escape(args.texture_gallery_url, quote=True),
     }
     output_html = template
+    # A switchable studio retains both authoritative registries. Palette
+    # adaptation applies to its surrounding UI, never to catalog or engine data.
+    protected = {marker: value for marker, value in replacements.items()
+                 if marker.endswith("_JSON__") or marker.endswith("_JS__")}
     for marker, value in replacements.items():
         marker_count = output_html.count(marker)
         if marker_count != 1:
             raise SystemExit(f"Template marker {marker} occurred {marker_count} times; expected exactly once.")
-        output_html = output_html.replace(marker, value)
-    leftovers = [marker for marker in replacements if marker in output_html]
+        if marker not in protected:
+            output_html = output_html.replace(marker, value)
+    leftovers = [marker for marker in replacements if marker in output_html and marker not in protected]
     if leftovers:
         raise SystemExit(f"Unreplaced template markers: {', '.join(leftovers)}")
 
     output = args.output.expanduser().resolve()
     output.parent.mkdir(parents=True, exist_ok=True)
     output_html = adapt_artifact(output_html, args.colorset)
+    active_contract = json.dumps({args.colorset: palettes["colorsets"][args.colorset]}, separators=(",", ":"))
+    output_html = output_html.replace("window.D3_SOLID_PALETTES=" + active_contract,
+                                      "window.D3_SOLID_PALETTES=" + json.dumps(palettes["colorsets"], separators=(",", ":")), 1)
+    for marker, value in protected.items():
+        output_html = output_html.replace(marker, value)
     output.write_text(output_html, encoding="utf-8", newline="\n")
 
     result = {

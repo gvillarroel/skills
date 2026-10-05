@@ -134,7 +134,7 @@ Use `assets/themes/cs2.puml` for the full colorset2 palette. It maps the reposit
 Use `assets/themes/cs1.puml` for the colorset1 red-neutral palette:
 
 - Start the primary category or family body with primary red: `#9e1b32`.
-- Allocate all bundled grays next, then near-black and black, then white when it differs from the actual canvas.
+- Allocate the exact bundled interleaved grayscale sequence next, including black and near-black, then white when it differs from the actual canvas. Alternate the darker and lighter luminance-ranked halves rather than an ascending gray ramp.
 - Use `#6d1222`, `#e8002a`, and `#ffccd5` only after that preceding categorical capacity is used, unless the user explicitly authors an override.
 - Read the exact ordered tokens from `assets/palettes/colorsets.json` and `solid_style`; repeated categories retain their fill. Containers, text, axes and semantic glyphs are not additional categories.
 

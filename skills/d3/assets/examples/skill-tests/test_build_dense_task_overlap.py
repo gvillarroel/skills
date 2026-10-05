@@ -32,7 +32,7 @@ ARTIFACTS: Path
 PAYLOAD: dict
 STATES = []
 REGION_PAINT = {
-    "colorset1": ["#9e1b32", "#333e48", "#4f4f4f", "#696969", "#828282", "#9c9c9c", "#b5b5b5", "#cfcfcf", "#e7e7e7"],
+    "colorset1": ["#9e1b32", "#000000", "#828282", "#1c1c1c", "#9c9c9c", "#363636", "#b5b5b5", "#333e48", "#cfcfcf"],
     "colorset2": ["#007298", "#e77204", "#45842a", "#9e1b32", "#652f6c", "#98700c", "#004d66", "#294d19", "#994a00"],
 }
 

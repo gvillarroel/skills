@@ -67,6 +67,13 @@ _PAINT_CONTRACT = json.loads((SKILL_ROOT / 'assets/palettes/colorsets.json').rea
 for _colorset, _paint in PALETTES.items():
     _paint['accents'] = [value for value in _PAINT_CONTRACT[_colorset]['solidSequence'] if value != _paint['surface']]
 
+# Numeric concentration/value bands retain their existing mapping independently
+# of category priority. Reordering categories must not change an ordered scale.
+ORDERED_VALUE_COLORS = {
+    "colorset1": ("#9e1b32", "#333e48", "#4f4f4f", "#696969", "#828282", "#9c9c9c"),
+    "colorset2": ("#9e1b32", "#007298", "#e77204", "#45842a", "#652f6c", "#f1c319"),
+}
+
 DEFAULT_BUILD_OPTIONS: dict[str, object] = {
     "seed": 20260720,
     "width": 960,
@@ -141,6 +148,10 @@ class Context:
     def color(self, index: int) -> str:
         colors = self.accents
         return colors[index % len(colors)]
+
+    def value_color(self, index: int) -> str:
+        colors = ORDERED_VALUE_COLORS[self.palette_name]
+        return colors[max(0, min(len(colors) - 1, index))]
 
     def rng(self, label: str = "geometry") -> random.Random:
         raw = f"{self.seed}|{self.spec['id']}|{label}".encode("utf-8")
@@ -1816,7 +1827,7 @@ def render_simulation(ctx: Context) -> str:
         def concentration_color(value: float) -> str:
             if value < .025:
                 return str(ctx.palette["soft"])
-            return ctx.color(min(5, max(0, int((value - .025) * 24))))
+            return ctx.value_color(min(5, max(0, int((value - .025) * 24))))
 
         for row in range(rows):
             for column in range(columns):
@@ -2765,7 +2776,7 @@ def render_join_tree_mastery(ctx: Context, state: dict[str, object]) -> dict[str
     cell_radius = max(1.4, min(plot[2] / int(geometry["columns"]), plot[3] / int(geometry["rows"])) * .42)
     field = "".join(
         f'<circle cx="{fmt(sample_points[int(value["id"])][0])}" cy="{fmt(sample_points[int(value["id"])][1])}" r="{fmt(cell_radius)}" '
-        f'fill="{ctx.color(min(5, int(6 * (float(value["value"]) - minimum) / max(maximum - minimum, 1e-9))))}" opacity=".46"/>'
+        f'fill="{ctx.value_color(min(5, int(6 * (float(value["value"]) - minimum) / max(maximum - minimum, 1e-9))))}" opacity=".46"/>'
         for value in samples
     )
     triangle_path: list[str] = []

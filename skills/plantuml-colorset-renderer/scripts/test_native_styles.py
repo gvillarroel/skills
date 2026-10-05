@@ -10,6 +10,7 @@ from pathlib import Path
 from native_styles import finish_native_styles, style_findings, source_has_style, STYLE_RULES
 from arrow_contrast import property_value
 from render_plantuml_directory import inject_theme
+from palette_paints import solid_colors, solid_style, readable_text
 
 
 def svg(content, family="DESCRIPTION"):
@@ -21,11 +22,50 @@ def label(text="Label", fill="#ffffff", x=15, y=25):
 
 
 class NativeStyleTests(unittest.TestCase):
+    def test_exact_cs1_interleaved_capacity_and_canvas_exclusion(self):
+        expected = ['#9e1b32', '#000000', '#828282', '#1c1c1c', '#9c9c9c',
+                    '#363636', '#b5b5b5', '#333e48', '#cfcfcf', '#4f4f4f',
+                    '#e7e7e7', '#696969', '#f7f7f7', '#ffffff', '#6d1222',
+                    '#e8002a', '#ffccd5']
+        for canvas in ['#ffffff', '#f7f7f7', '#000000', '#9e1b32']:
+            usable = [paint for paint in expected if paint != canvas]
+            self.assertEqual(solid_colors('colorset1', canvas), usable)
+            for index, fill in enumerate(usable):
+                style = solid_style(index, 'colorset1', canvas)
+                self.assertEqual(style['fill'], fill)
+                self.assertEqual(style['text'], readable_text(fill))
+                self.assertEqual(style['strokeWidth'], 0)
+                self.assertFalse(style['overflow'])
+            self.assertTrue(solid_style(len(usable), 'colorset1', canvas)['overflow'])
+
     def test_external_participant_label_and_internal_curve(self):
         root = svg('<g class="participant">'+label(y=20)+'<path d="M10 35 L60 35 L60 70 L10 70 Z" fill="#431f47"/><path d="M10 40 Q35 55 60 40" fill="none"/></g>', "SEQUENCE")
         finish_native_styles(root, "colorset2")
         self.assertEqual(root.find(".//text").get("fill"), "#000000")
         self.assertEqual(property_value(root.findall(".//path")[1], "stroke"), "#ffffff")
+
+    def test_native_category_pools_exclude_actual_canvas_and_keep_semantic_roles(self):
+        native = ['#c9ffc9', '#c2f0ff', '#ffffcc', '#ccccff', '#f8e7c0', '#97ff97', '#ffe0e0']
+        roles = ['technology', 'application', 'business', 'motivation', 'strategy', 'physical', 'implementation']
+        ranked = ['business', 'application', 'technology', 'motivation', 'strategy', 'physical', 'implementation']
+        literal = ['#9e1b32', '#000000', '#828282', '#1c1c1c', '#9c9c9c',
+                   '#363636', '#b5b5b5', '#333e48', '#cfcfcf', '#4f4f4f',
+                   '#e7e7e7', '#696969', '#f7f7f7', '#ffffff', '#6d1222',
+                   '#e8002a', '#ffccd5']
+        for canvas in ['#ffffff', '#f7f7f7', '#000000', '#9e1b32']:
+            root = svg(''.join(f'<rect fill="{paint}"/>' for paint in native))
+            root.set('style', f'background:{canvas}')
+            geometry = [dict(node.attrib) for node in root]
+            finish_native_styles(root, 'colorset1')
+            expected = dict(zip(ranked, [fill for fill in literal if fill != canvas]))
+            self.assertEqual([node.get('fill') for node in root], [expected[role] for role in roles])
+            self.assertTrue(all(node.get('data-native-layer') == role for node, role in zip(root, roles)))
+            self.assertEqual([set(node.attrib) - set(old) for node, old in zip(root, geometry)],
+                             [{'style', 'data-style-role', 'data-native-layer'}] * 7)
+        self.assertEqual(STYLE_RULES['colorsets']['colorset1']['archimate'],
+                         {'technology': '#4f4f4f', 'application': '#333e48', 'business': '#9e1b32',
+                          'motivation': '#696969', 'strategy': '#828282', 'physical': '#9c9c9c',
+                          'implementation': '#b5b5b5'})
 
     def test_label_uses_actual_nested_backing(self):
         root = svg('<rect x="0" y="0" width="100" height="100" fill="#333e48"/><rect x="10" y="10" width="60" height="40" fill="#f1c319"/>'+label())
@@ -127,7 +167,9 @@ class NativeStyleTests(unittest.TestCase):
         for colorset in ['colorset1', 'colorset2']:
             root = svg(''.join(f'<rect fill="{paint}" stroke="#696969" stroke-width=".5"/>' for paint in native))
             finish_native_styles(root, colorset)
-            self.assertEqual([node.get('fill') for node in root], list(STYLE_RULES['colorsets'][colorset]['archimate'].values()))
+            expected = (['#828282', '#000000', '#9e1b32', '#1c1c1c', '#9c9c9c', '#363636', '#b5b5b5']
+                        if colorset == 'colorset1' else ['#45842a', '#007298', '#e77204', '#652f6c', '#f1c319', '#00ace6', '#e8002a'])
+            self.assertEqual([node.get('fill') for node in root], expected)
             self.assertEqual(len({node.get('fill') for node in root}), 7)
             self.assertTrue(all(property_value(node, 'stroke') == 'none' for node in root))
             self.assertEqual(style_findings(root), [])
@@ -136,8 +178,8 @@ class NativeStyleTests(unittest.TestCase):
         for native, expected in [
             (['#c9ffc9'], ['#9e1b32']),
             (['#c2f0ff'], ['#9e1b32']),
-            (['#ccccff', '#97ff97'], ['#9e1b32', '#333e48']),
-            (['#c9ffc9', '#c2f0ff'], ['#333e48', '#9e1b32']),
+            (['#ccccff', '#97ff97'], ['#9e1b32', '#000000']),
+            (['#c9ffc9', '#c2f0ff'], ['#000000', '#9e1b32']),
         ]:
             root = svg(''.join(f'<rect fill="{paint}"/>' for paint in native))
             report = finish_native_styles(root, 'colorset1')
@@ -194,7 +236,7 @@ class NativeStyleTests(unittest.TestCase):
 
     def test_cs1_chart_compresses_active_mark_kinds_without_changing_data(self):
         for source, expected in [('line "Target" [50, 70]', '#9e1b32'),
-                                 ('bar "Actual" [40, 60]\nline "Target" [50, 70]', '#333e48')]:
+                                 ('bar "Actual" [40, 60]\nline "Target" [50, 70]', '#000000')]:
             root = svg('<line x1="10" y1="50" x2="70" y2="30" stroke="#333e48" stroke-width="2"/>'
                        '<line x1="10" y1="70" x2="70" y2="70" stroke="#696969"/>', 'CHART')
             finish_native_styles(root, 'colorset1', source)

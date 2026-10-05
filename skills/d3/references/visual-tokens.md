@@ -14,7 +14,7 @@ Use `assets/palettes/colorsets.json` and `references/palette-contract.md` as the
 - Use colorset2 only after an explicit extended/full-color request and only for meaningful categorical or state separation.
 - Do not use raw D3 interpolator palettes. Build discrete ramps from the active colorset.
 - Use opacity rather than generating RGBA colors.
-- Allocate categorical fills from the active palette's complete `solidSequence`, excluding only the actual canvas. For colorset1, use primary red `#9e1b32`, then grays, black, white, and only then the remaining colors. For colorset2, retain its bundled base/saturated, dark/bright/neutral, then soft order. Keep each filled mark borderless until all usable unique solid colors are exhausted, then add explicit overflow outline variants. Keep an opaque red keyboard focus outline for interaction visibility.
+- Allocate categorical fills from the active palette's complete `solidSequence`, excluding only the actual canvas. For colorset1, use primary red `#9e1b32`, then the bundled dark/middle gray interleave including black, white, and only then the remaining colors. Keep sequential numeric ramps and semantic ink/status roles independent of category order. For colorset2, retain its bundled base/saturated, dark/bright/neutral, then soft order. Keep each filled mark borderless until all usable unique solid colors are exhausted, then add explicit overflow outline variants. Keep an opaque red keyboard focus outline for interaction visibility.
 
 ## Density
 

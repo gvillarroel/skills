@@ -40,7 +40,7 @@ class ColorAuditTests(unittest.TestCase):
 
     def test_cs1_rejects_out_of_order_categories_even_with_complete_membership(self):
         for early, later in (("#333e48", "#9e1b32"), ("#6d1222", "#4f4f4f"),
-                             ("#000000", "#e7e7e7"), ("#ffffff", "#000000"),
+                             ("#e7e7e7", "#000000"), ("#ffffff", "#000000"),
                              ("#ffccd5", "#ffffff")):
             for field in ("sequence", "solidSequence"):
                 def change(contract):
@@ -53,6 +53,33 @@ class ColorAuditTests(unittest.TestCase):
 
     def test_cs1_priority_change_keeps_text_and_complete_solid_contract(self):
         self.assertTrue(self.contract_with(lambda contract: None)["ok"])
+
+    def test_cs1_rejects_progressive_grays_with_identical_membership(self):
+        linear = ["#9e1b32", "#000000", "#1c1c1c", "#363636", "#333e48",
+                  "#4f4f4f", "#696969", "#828282", "#9c9c9c", "#b5b5b5",
+                  "#cfcfcf", "#e7e7e7", "#f7f7f7", "#ffffff", "#6d1222",
+                  "#e8002a", "#ffccd5"]
+        for field in ("sequence", "solidSequence"):
+            def change(contract):
+                contract["colorsets"]["colorset1"][field] = linear.copy()
+            result = self.contract_with(change)
+            self.assertFalse(result["ok"], field)
+            self.assertTrue(any(row.get("field") == field for row in result["findings"]))
+
+    def test_cs1_gray_neighbors_have_larger_lightness_separation(self):
+        contract = json.loads((MODULE.ROOT / "docs/colorsets.json").read_text(encoding="utf-8"))
+        neutrals = contract["colorsets"]["colorset1"]["solidSequence"][1:13]
+        self.assertEqual(neutrals, ["#000000", "#828282", "#1c1c1c", "#9c9c9c",
+                                   "#363636", "#b5b5b5", "#333e48", "#cfcfcf",
+                                   "#4f4f4f", "#e7e7e7", "#696969", "#f7f7f7"])
+        def lightness(token):
+            channels = [int(token[i:i + 2], 16) / 255 for i in (1, 3, 5)]
+            linear = [c / 12.92 if c <= .04045 else ((c + .055) / 1.055) ** 2.4 for c in channels]
+            y = sum(c * w for c, w in zip(linear, (.2126, .7152, .0722)))
+            return 116 * y ** (1 / 3) - 16 if y > 216 / 24389 else (24389 / 27) * y
+        gaps = [abs(lightness(a) - lightness(b)) for a, b in zip(neutrals, neutrals[1:])]
+        self.assertGreater(min(gaps), 40)
+        self.assertLess(max(gaps), 60)
 
     def test_text_decision_rejects_weak_contrast_and_non_black_white(self):
         for fill, text in (("#9e1b32", "#000000"), ("#f1c319", "#ffffff"), ("#007298", "#333e48")):

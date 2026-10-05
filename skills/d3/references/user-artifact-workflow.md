@@ -58,11 +58,11 @@ Use these defaults for ordinary user deliverables when the user or target projec
 - Extended orange, yellow, green, and blue are colorset2-only; read `palette-contract.md`.
 - Pink `#ffccd5` is reserved for a justified last-resort category after red/neutrals, or an explicit request.
 
-Allocate ordinary category fills from primary red, then the bundled grays,
-black, white, and remaining colors. The context matrix assigns used segments
+Allocate ordinary category fills from primary red, then the bundled dark/middle
+gray interleave including black, white, and remaining colors. The context matrix assigns used segments
 in their data order; the network assigns groups in first-use order. A single
 line and its point marks share primary red. Keep fixed status meanings such
-as critical or behind in primary red and use neutral supporting states.
+as critical or behind in primary red and preserve their neutral supporting states.
 The shared finalizer computes black or white labels against actual fills.
 Follow `compact-composition.md` for measured box padding and responsive controls;
 preserve explicit sizes, readable labels, and quantitative spacing.

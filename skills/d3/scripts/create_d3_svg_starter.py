@@ -541,14 +541,14 @@ def pattern_code_for(pattern: str, colorset: str) -> str:
         # Preserve risk meaning: behind is red, supporting states are neutral.
         code = code.replace(
             'const statusColor = { "on track": palette.green, "watch": palette.orange, "behind": palette.red };',
-            'const statusColor = { "on track": starterStyle(2).fill, "watch": starterStyle(1).fill, "behind": starterStyle(0).fill };',
+            'const statusColor = { "on track": "#4f4f4f", "watch": "#333e48", "behind": "#9e1b32" };',
         )
     elif pattern == "operational-dashboard":
-        for token, index in (("palette.red", 0), ("palette.orange", 1), ("palette.blue", 2), ("palette.green", 3)):
-            # Only the tone table allocates these status bodies. Thresholds,
-            # trends, deltas and other explicitly meaningful paint stay scoped.
+        for token, paint in (("palette.red", "#9e1b32"), ("palette.orange", "#333e48"), ("palette.blue", "#4f4f4f"), ("palette.green", "#696969")):
+            # Status meanings keep their previous paints independently of the
+            # category order. Thresholds, trends and deltas remain scoped.
             tone_start, tone_end = code.index("  const tone = {"), code.index("  function colorFor")
-            code = code[:tone_start] + code[tone_start:tone_end].replace("fill: " + token, f"fill: starterStyle({index}).fill") + code[tone_end:]
+            code = code[:tone_start] + code[tone_start:tone_end].replace("fill: " + token, f'fill: "{paint}"') + code[tone_end:]
         code = code.replace('fill: palette.green },\n    { label: "50-69 watch", fill: palette.blue },\n    { label: "70+ escalated", fill: palette.red }',
                             'fill: colorFor("healthy").fill },\n    { label: "50-69 watch", fill: colorFor("stable").fill },\n    { label: "70+ escalated", fill: colorFor("critical").fill }')
     return helper + code

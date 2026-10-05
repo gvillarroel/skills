@@ -19,8 +19,12 @@ const ratio=(a,b)=>(Math.max(L(a),L(b))+.05)/(Math.min(L(a),L(b))+.05);
 let cases=0;
 // Category ordering must agree with the standalone contract and survive native options.
 const contract=CONTRACT;
+const expectedCS1=['#9e1b32','#000000','#828282','#1c1c1c','#9c9c9c','#363636','#b5b5b5','#333e48','#cfcfcf','#4f4f4f','#e7e7e7','#696969','#f7f7f7','#ffffff','#6d1222','#e8002a','#ffccd5'];
+assert.deepEqual(contract.colorset1.solidSequence,expectedCS1);
+assert.deepEqual(contract.colorset1.sequence,expectedCS1);
+assert.deepEqual(colorsetTheme('colorset1').color,expectedCS1);
 for(const set of ['colorset1','colorset2'])for(const canvas of ['#ffffff','#f7f7f7','#000000','#9e1b32']){
- const expected=contract[set].solidSequence.filter(fill=>fill!==canvas);
+ const expected=(set==='colorset1'?expectedCS1:contract[set].solidSequence).filter(fill=>fill!==canvas);
  assert.deepEqual(solidColors(set,canvas),expected);
  const data=expected.map((_,index)=>({id:`node-${String(index).padStart(2,'0')}`,name:`node-${String(index).padStart(2,'0')}`}));
  const rendered=prepare({backgroundColor:canvas,series:[{type:'graph',data}]},set,data.map(node=>node.id)).series[0].data;
@@ -33,9 +37,15 @@ for(const set of ['colorset1','colorset2'])for(const canvas of ['#ffffff','#f7f7
 assert.equal(solidCategoryStyle(expected.length,set,canvas).overflow,true);
 }
 const boxes=prepare({series:[{type:'boxplot',data:[[1,2,3,4,5]]},{type:'boxplot',data:[[2,3,4,5,6]]}]},'colorset1').series;
-assert.equal(boxes[0].itemStyle.color,'#9e1b32');assert.equal(boxes[1].itemStyle.color,'#333e48');
+assert.equal(boxes[0].itemStyle.color,'#9e1b32');assert.equal(boxes[1].itemStyle.color,'#000000');
 assert.equal(prepare({series:[{type:'boxplot',data:[[1,2,3,4,5]]}]},'colorset2').series[0].itemStyle.color,'#007298');
 assert.equal(prepare({series:[{type:'boxplot',itemStyle:{color:'#4f4f4f'},data:[[1,2,3,4,5]]}]},'colorset1').series[0].itemStyle.color,'#4f4f4f');
+// A quantitative ramp keeps its caller-declared monotonic order and data values.
+const numericData=[[0,0,12],[1,0,47],[2,0,91]],numericRamp=['#1c1c1c','#696969','#cfcfcf','#f7f7f7'];
+const numeric=prepare({visualMap:{min:0,max:100,inRange:{color:[...numericRamp]}},series:[{type:'heatmap',data:structuredClone(numericData)}]},'colorset1');
+assert.deepEqual(numeric.visualMap.pieces.map(piece=>piece.color),numericRamp);
+assert.deepEqual(numeric.series[0].data,numericData);
+assert.deepEqual(numeric.visualMap.pieces.map(piece=>piece.gte??piece.min),[-Infinity,25,50,75]);
 for(const set of ['colorset1','colorset2'])for(const bg of colorsets[set])for(const color of ['#cfcfcf','#9e1b32','#ffffff','#000000']){
  const style=safe({color,opacity:.25,width:.2},set,bg),raw=rgb(style.color),back=rgb(bg),paint=raw.map((v,i)=>v*style.opacity+back[i]*(1-style.opacity));
  assert(ratio(paint,back)>=3);assert(colorsets[set].includes(style.color));assert(style.width>=1.5);cases++;

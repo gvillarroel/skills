@@ -21,7 +21,9 @@ sys.path.insert(0, str(SKILL_ROOT / "scripts"))
 import create_d3_svg_starter as starter
 
 ARTIFACTS: Path
+# Existing status roles remain independent of the category allocator.
 SOLIDS = ["#9e1b32", "#333e48", "#4f4f4f", "#696969", "#828282", "#9c9c9c"]
+CATEGORIES = ["#9e1b32", "#000000", "#828282", "#1c1c1c", "#9c9c9c", "#363636"]
 SELECTORS = {
     "animated-network": "circle",
     "blank": "circle",
@@ -77,7 +79,7 @@ class StarterPriorityTests(unittest.TestCase):
                         self.assertTrue(nodes)
                         self.assertTrue(all(node["stroke"] == "none" and node["opacity"] == 1 and node["fillOpacity"] == 1 for node in nodes))
                         if pattern == "animated-network":
-                            expected = [SOLIDS[0], SOLIDS[1], SOLIDS[1], SOLIDS[2], SOLIDS[3]] if colorset == "colorset1" else ["#007298", "#652f6c", "#652f6c", "#e77204", "#45842a"]
+                            expected = [CATEGORIES[0], CATEGORIES[1], CATEGORIES[1], CATEGORIES[2], CATEGORIES[3]] if colorset == "colorset1" else ["#007298", "#652f6c", "#652f6c", "#e77204", "#45842a"]
                             self.assertEqual([node["fill"] for node in nodes], expected)
                             self.assertEqual([node["text"] for node in nodes], [node["id"] for node in data["nodes"]])
                             self.assertTrue(all(node["textFill"] in {"#000000", "#ffffff"} for node in nodes))
@@ -87,7 +89,7 @@ class StarterPriorityTests(unittest.TestCase):
                             used = [node for node in nodes if not node["data"].get("unused") and node["fill"] == node["data"].get("color")]
                             self.assertEqual(len(used), sum(segment["units"] for segment in data["segments"] if not segment.get("unused")) + 6)
                             distinct = list(dict.fromkeys(node["fill"] for node in used))
-                            self.assertEqual(distinct, SOLIDS if colorset == "colorset1" else ["#007298", "#45842a", "#e77204", "#652f6c", "#00ace6", "#f1c319"])
+                            self.assertEqual(distinct, CATEGORIES if colorset == "colorset1" else ["#007298", "#45842a", "#e77204", "#652f6c", "#00ace6", "#f1c319"])
                         elif pattern == "inline-bar-table":
                             body = [node for node in nodes if node["fill"] != "#e7e7e7"]
                             mapping = {"on track": SOLIDS[2], "watch": SOLIDS[1], "behind": SOLIDS[0]} if colorset == "colorset1" else {"on track": "#45842a", "watch": "#e77204", "behind": "#9e1b32"}

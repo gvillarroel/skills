@@ -14,7 +14,8 @@
 Use the pattern index to route directly to one section in this compact collection. Read only that section and any reference it explicitly names.
 
 For colorset1, allocate set identities in each section's declared order from
-the bundled solid sequence: primary red, then grays, black, white, and the
+the bundled solid sequence: primary red, then interleaved dark/middle grays
+including black, white, and the
 remaining colors, excluding the actual canvas. Keep its semantic overlap
 opacity and multiply blending. Blue/orange/green or other named hues below
 describe the preserved colorset2 variant, not colorset1 category order.

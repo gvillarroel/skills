@@ -1,0 +1,170 @@
+{
+  "date": "2026-10-05",
+  "scope": [
+    "mermaid",
+    "plantuml-colorset-renderer",
+    "usefulcharts-style",
+    "echarts-animated-svg",
+    "slidev-echarts"
+  ],
+  "runtimeFreeze": {
+    "mermaid": {
+      "profile": "runtime",
+      "fileCount": 27,
+      "sha256": "41df6ce186a032fdfa3cdc36d3248d328a5d2d685a61f756e25c5b5792ff02d0",
+      "snapshot": "projects/grayscale-interleave/artifacts/runtime-freeze-r2/mermaid"
+    },
+    "plantuml-colorset-renderer": {
+      "profile": "runtime",
+      "fileCount": 28,
+      "sha256": "83568a94f9dd015ba198601e6e9cf16bb6d89f6d9fb8a1fd34109efa9b86d1f3",
+      "snapshot": "projects/grayscale-interleave/artifacts/runtime-freeze-r2/plantuml-colorset-renderer"
+    },
+    "usefulcharts-style": {
+      "profile": "runtime",
+      "fileCount": 140,
+      "sha256": "0764023afe12531bf1c34b490f98000d646b9858aa0c4df774632a9efdb41d4c",
+      "snapshot": "projects/grayscale-interleave/artifacts/runtime-freeze-r2/usefulcharts-style"
+    },
+    "echarts-animated-svg": {
+      "profile": "runtime",
+      "fileCount": 26,
+      "sha256": "693eff70b4c02656f601c22df2f1297b3b318c0f9f93e049e1a3e33879fad35b",
+      "snapshot": "projects/grayscale-interleave/artifacts/runtime-freeze-r2/echarts-animated-svg"
+    },
+    "slidev-echarts": {
+      "profile": "runtime",
+      "fileCount": 46,
+      "sha256": "ddf028fe8678e5085c3579a9342a55e4a3cea0eb4682c027ac578cc45dfbff5a",
+      "snapshot": "projects/grayscale-interleave/artifacts/runtime-freeze-r2/slidev-echarts"
+    }
+  },
+  "categoryPriority": [
+    "primary-red",
+    "grays",
+    "white",
+    "remaining-colors"
+  ],
+  "colorset1SolidSequence": [
+    "#9e1b32",
+    "#000000",
+    "#828282",
+    "#1c1c1c",
+    "#9c9c9c",
+    "#363636",
+    "#b5b5b5",
+    "#333e48",
+    "#cfcfcf",
+    "#4f4f4f",
+    "#e7e7e7",
+    "#696969",
+    "#f7f7f7",
+    "#ffffff",
+    "#6d1222",
+    "#e8002a",
+    "#ffccd5"
+  ],
+  "mechanism": "Sort twelve grayscale members by relative luminance, split into six darker and six lighter members, zip halves in ascending rank; keep red first, white after grays, remaining colors last; filter the fixed sequence for the actual canvas before allocating categories.",
+  "boundaries": [
+    "All 17 colorset1 members, named role values and text-on-fill mappings are preserved.",
+    "Colorset2 membership and categorical allocation are unchanged, including PlantUML's existing seven-role native pool.",
+    "Explicit quantitative continuous ramps, visualMap range order/bounds and chart data are preserved.",
+    "New allocation changes category pools; named PlantUML/C4 semantic fills remain stable."
+  ],
+  "focusedChecks": [
+    {
+      "command": "uv run --script skills/mermaid/scripts/test_native_solid.py",
+      "result": "PASS 21 tests"
+    },
+    {
+      "command": "uv run --script skills/plantuml-colorset-renderer/scripts/test_native_styles.py",
+      "result": "PASS 21 tests"
+    },
+    {
+      "command": "uv run --script skills/plantuml-colorset-renderer/scripts/test_ditaa_styles.py",
+      "result": "PASS 12 tests"
+    },
+    {
+      "command": "uv run --script skills/usefulcharts-style/scripts/test_palette_contract.py",
+      "result": "PASS independent literal/canvas/contrast/overflow matrix"
+    },
+    {
+      "command": "uv run --script skills/usefulcharts-style/scripts/test_chart.py",
+      "result": "PASS 27 tests"
+    },
+    {
+      "command": "uv run --script skills/echarts-animated-svg/scripts/test_arrow_options.py",
+      "result": "PASS independent order/canvas tests, 216 contrast-backing cases, supplied quantitative ramp preservation"
+    },
+    {
+      "command": "uv run --script skills/slidev-echarts/scripts/test_arrow_options.py",
+      "result": "PASS independent order/canvas tests, 216 contrast-backing cases, supplied quantitative ramp preservation"
+    }
+  ],
+  "nativeConceptChecks": {
+    "echarts-animated-svg": {
+      "report": "projects/grayscale-interleave/artifacts/reviews/renderer-native/echarts-animated-svg-test-report.json",
+      "originalReport": "projects/colorset-gray-interleave/artifacts/reviews/echarts-native/test-report.json",
+      "ok": true,
+      "caseCount": 8,
+      "result": "PASS: original focused native test completed successfully; detailed assertions retained in report."
+    },
+    "slidev-echarts": {
+      "report": "projects/grayscale-interleave/artifacts/reviews/renderer-native/slidev-echarts-test-report.json",
+      "originalReport": "projects/colorset-gray-interleave/artifacts/reviews/slidev-echarts-native/test-report.json",
+      "ok": true,
+      "caseCount": 10,
+      "result": "PASS: original focused native test completed successfully; detailed assertions retained in report."
+    }
+  },
+  "fixtureEvidence": {
+    "nativeFrames": "projects/grayscale-interleave/artifacts/reviews/renderer-fixtures-final/review.json",
+    "mermaidGalleryValidation": "projects/grayscale-interleave/artifacts/reviews/mermaid-gallery-validation.json",
+    "mermaidRebuild": "projects/grayscale-interleave/artifacts/reviews/renderer-native/mermaid-rebuild-proof.json",
+    "plantumlRebuild": "projects/grayscale-interleave/artifacts/reviews/renderer-native/plantuml-rebuild-proof.json",
+    "mermaidCS2Preservation": "95 resources preserved byte-for-byte by narrow build.",
+    "plantumlCS2Preservation": "33 resources preserved byte-for-byte by narrow build.",
+    "mermaidGeometry": {
+      "exactCount": 27,
+      "total": 31,
+      "qualifiedChanges": {
+        "block": "Existing current compact defaults differ from old HEAD geometry.",
+        "class": "Stochastic hand-drawn separator control points; labels/shapes/endpoints unchanged.",
+        "requirement": "Stochastic hand-drawn separator control points; labels/shapes/endpoints unchanged.",
+        "gantt": "Dynamic today marker changed with date; chart axis/data/task spans unchanged."
+      }
+    },
+    "c4": "projects/grayscale-interleave/artifacts/reviews/c4-preserved/preservation-proof.json",
+    "manualReview": {
+      "newCategoricalPaintAndContrast": "PASS for the reviewed changed native frames.",
+      "newNodeLabelsAndDirectedHeads": "PASS for the reviewed changed native frames.",
+      "scope": "Original native viewport captures; no blanket certification of all gallery layouts.",
+      "preservedC4": "Named semantic roles and source-bound source/static/animated bytes are unchanged from HEAD. The preserved bottom Serves gallery assets caption touches the Documentation Browser body; this preexisting limitation is retained. The unreadable new native C4 rebuild was rejected, not counted as an accepted result.",
+      "ditaa": "The native PNG was separately inspected: red Request, black API, middle-gray Document; complete labels and directed heads remain readable."
+    }
+  },
+  "echartsHeadBaseline": {
+    "headRef": "daaee75353c63ed6dde204d57cfdbae6b9936586",
+    "builderSha256": "fbcb66452c3ecc2329eb2b0534324f30eea15b0a707128977a04c8b0c893b49d",
+    "indexBlob": "projects/grayscale-interleave/artifacts/staged-blobs/echarts-head-native/assets/examples/echarts-animated-svg/index.html",
+    "indexSha256": "8d105d5603f270a0fe26564ec108b37f37ef7cd688007122181ba0a26546c752",
+    "stagingProof": "projects/grayscale-interleave/artifacts/staged-blobs/echarts-head-native/staging-proof.json",
+    "nativeReview": "projects/grayscale-interleave/artifacts/reviews/echarts-head-native-final/review.json",
+    "headNativeComparison": "projects/grayscale-interleave/artifacts/reviews/echarts-head-native-final/head-native-comparison.json",
+    "nativeGeometryPaintTextComparison": "All 43 cards exactly preserve native paths/transforms/paints/fonts/text versus HEAD, after qualified non-rendering instance identifiers and generated animation CSS; raw structural attributes differ only by the generated boxplot chart-instance timestamp.",
+    "result": "PASS exact baseline builder and verifier, 43 cards in delivery/replay/reduced states; all authored base paints in unchanged colorset2.",
+    "dirtyWorkingFilesPreserved": {
+      "index.html": "4a14dd301f49060991a38f99953347e3922411e4b05ca3405ad890084f7c2dc7",
+      "scripts/build-gallery.mjs": "bf7c68a9a14ccb62ffbe007cb8c9c44dbd16deba8cba62af884186a303d451f8"
+    },
+    "indexAndBuilderCommitDecision": "Preserve the qualified committed baseline. Exclude both user's working drafts and the ignored staged candidate from the commit.",
+    "manualReview": {
+      "paletteAndContrast": "PASS for seven original native representative captures; all 43 cards are explicitly colorset2, not colorset1.",
+      "captionReview": "Pie leaders/captions, funnel text, Sankey backing labels, boxplot axes and heatmap numeric labels remain readable. The baseline tree places some labels across their own connection shafts; this is a retained baseline geometry limitation, not an accepted new palette geometry change.",
+      "headReview": "The network graph is authored as undirected; arrowhead presence is not claimed for it.",
+      "scope": "Exact HEAD baseline builder with current canonical palette/template, default delivery/replay/reduced native states; quantitative data and authored order are unchanged."
+    }
+  },
+  "isolatedPi": "Root owns release forward cohorts. This report does not relabel development or old compactness runs as accepted; Mermaid, PlantUML and Slidev ECharts require root's fresh r2 contract plus three naturals after late prose-only corrections.",
+  "publication": "Root owns final validators, sync, Pages build, staging and deployment. Preserve the committed ECharts gallery index and baseline builder; exclude both user's uncommitted working drafts from the commit. The isolated staged index differs only by a non-rendering timestamp and remains ignored evidence, with no committed index/builder change required. Future CS1 outputs use the updated canonical module and palette, as covered by the literal and native tests."
+}

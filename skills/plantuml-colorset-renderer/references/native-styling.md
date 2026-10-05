@@ -20,8 +20,9 @@ Edit `assets/themes/native-style-rules.json` for the exact fallback paints of
 ArchiMate layers and Salt buttons, the grammar canvas, and semantic detail
 thickness. The finisher validates those paints against the selected palette.
 For Colorset1, start each family's primary body with `#9e1b32`. Allocate
-secondary kinds from the gray group before near-black, black, white, and the
-remaining red hues or pink. Read the exact priority in `solidSequence` rather
+secondary categories from the interleaved grayscale group, including black and
+near-black, before white and the remaining red hues or pink. Alternate the
+darker and lighter halves ranked by relative luminance. Read the exact priority in `solidSequence` rather
 than selecting a dark red as the second category. A white canvas excludes only
 that exact token from categorical capacity; text and semantic strokes use their
 actual contrast instead of consuming category slots.
@@ -29,9 +30,9 @@ actual contrast instead of consuming category slots.
 The seven ArchiMate layers (Technology, Application, Business, Motivation,
 Strategy, Physical, Implementation) retain their native semantic names. Colorset1
 uses `archimateRoleOrder` to rank Business, Application, Technology, Motivation,
-Strategy, Physical, and Implementation. Read the editable `archimate` colors in
-that rank as an ordered pool and compress absent layers: the first active layer
-uses primary red, the second gray1, and so on. A one-layer Technology or
+Strategy, Physical, and Implementation. Allocate that active rank from the exact
+`solidSequence`, excluding the actual canvas: the first active layer uses primary
+red, the second black, the third middle gray, and so on. A one-layer Technology or
 Application diagram therefore starts red. The finished report records
 `archimateLayers`; SVG records `data-native-layer-map` and each body's native
 layer. Colorset2 keeps its fixed layer map. Explicit authored presentation

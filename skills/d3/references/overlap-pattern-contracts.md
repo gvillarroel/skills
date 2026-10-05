@@ -29,7 +29,7 @@ Read this reference after a `references/patterns/*overlap*.md`, `*rosette*.md`, 
 
 ## Set Colors
 
-- Default to colorset1. Allocate set identities in their declared data order from the bundled `solidSequence`, excluding only the actual canvas: primary red, then grays, black, white, and the remaining colors. A name such as Safety or Eval is a set identity here, not an interaction or status color.
+- Default to colorset1. Allocate set identities in their declared data order from the bundled `solidSequence`, excluding only the actual canvas: primary red, then interleaved dark/middle grays including black, white, and the remaining colors. A name such as Safety or Eval is a set identity here, not an interaction or status color. Keep ordered-value ramps separate.
 - In `renderVennPattern`, replace only each colorset1 circle's `color` and `stroke` with `colors[index]` before drawing circles and labels. Keep every ID, code, label, center, radius, external-label coordinate and array order unchanged. Use the same allocated fill for its external code circle.
 - Keep colorset2's declared blue/orange/green/purple/red and extended tokens unchanged.
 - Preserve semantic overlap opacity and `mix-blend-mode:multiply`; mark the set circles `data-opacity-role="semantic"` and explain that meaning in the description. The surface-colored center disk and neutral scaffolding do not consume set categories.

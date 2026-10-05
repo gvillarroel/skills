@@ -11,7 +11,7 @@ import json
 from pathlib import Path
 import xml.etree.ElementTree as ET
 from arrow_contrast import contains, contrast, path_points, property_value, rect_bounds, set_style
-from palette_paints import COLORSETS, canonical, readable_text
+from palette_paints import COLORSETS, canonical, readable_text, solid_colors
 
 STYLE_VERSION = "scoped-solid-v3"
 SHAPES = {"rect", "circle", "ellipse", "polygon", "path"}
@@ -173,15 +173,18 @@ def finish_native_styles(root, colorset, source="", enabled=True):
         raise ValueError("Native style rules must use exact selected palette paints.")
     _, _, ancestors, definition = context(root)
     family = root.get("data-diagram-type", "")
+    canvas = (canonical(property_value(root, "background", property_value(root, "background-color", rules["canvas"])))
+              if colorset == 'colorset1' else rules['canvas'])
     body_count = 0
     chart_map = {}
     if family == 'CHART' and colorset == 'colorset1' and not explicit:
         # Native chart defaults are scoped by mark kind. Compress absent kinds
         # so a line-only or scatter-only chart does not start with gray.
         native_marks = {'bar': '#9e1b32', 'line': '#333e48', 'scatter': '#4f4f4f'}
+        # These identify renderer-owned native primitives, not allocation targets.
         active = set(re.findall(r'(?im)^\s*(bar|line|scatter)\s+', presentation_source(source)))
         rank = [kind for kind in native_marks if kind in active]
-        chart_map = dict(zip(rank, native_marks.values()))
+        chart_map = dict(zip(rank, solid_colors(colorset, canvas)))
         for node in root.iter():
             tag, fill = local(node), opaque_fill(node)
             kind = 'bar' if tag == 'rect' and fill == native_marks['bar'] else 'scatter' if tag in {'circle', 'ellipse', 'polygon'} and fill == native_marks['scatter'] else 'line' if tag in {'line', 'path'} and canonical(property_value(node, 'stroke', '#000000')) == native_marks['line'] else None
@@ -223,7 +226,7 @@ def finish_native_styles(root, colorset, source="", enabled=True):
         rank = rules['archimateRoleOrder']
         if len(rank) != len(layer_names) or set(rank) != set(layer_names.values()):
             raise ValueError('CS1 ArchiMate role order must name every native layer exactly once.')
-        pool = [rules['archimate'][name] for name in rank]
+        pool = solid_colors(colorset, canvas)
         active_layer_map = dict(zip((name for name in rank if name in active), pool))
         layer_map.update(active_layer_map)
     layers = {paint: layer_map[name] for paint, name in layer_names.items()}

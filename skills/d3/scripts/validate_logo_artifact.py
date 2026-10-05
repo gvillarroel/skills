@@ -297,6 +297,10 @@ def main() -> int:
         text,
         flags=re.IGNORECASE | re.DOTALL,
     )
+    # Its exact bundled paint normalizer contains JavaScript rgb(value) helpers,
+    # not authored CSS functional colors. Unknown runtime bytes remain scanned.
+    normalizer = (Path(__file__).resolve().parents[1] / "assets/templates/solid-style.js").read_text(encoding="utf-8")
+    application_text = application_text.replace(normalizer, "")
     manifest = load_script_json(collector, "d3-logo-manifest", findings)
     palette_data = load_script_json(collector, "d3-logo-palettes", findings)
     initial_config = load_script_json(collector, "d3-logo-initial-config", findings)
@@ -459,7 +463,10 @@ def main() -> int:
                         "patterns": manifest.get("patterns"),
                         "textures": manifest.get("textures"),
                         "compositions": manifest.get("compositions"),
-                        "palettes": palette_data.get("colorsets"),
+                        # The engine registry consumes these four fields;
+                        # allocator metadata remains in the complete JSON.
+                        "palettes": {name: {key: palette[key] for key in ("name", "allowed", "roles", "sequence")}
+                                     for name, palette in palette_data.get("colorsets", {}).items()},
                     }
                     engine_registry_parity = runtime == expected_runtime
                     if not engine_registry_parity:

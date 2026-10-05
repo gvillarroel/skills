@@ -34,7 +34,8 @@ Treat `assets/palettes/colorsets.json` as the machine-readable source of truth f
 ## Colorset1 — Standard
 
 Colorset1 contains 17 red-neutral tokens. Allocate indexed category fills from
-the bundled `solidSequence`: primary red `#9e1b32`, grays, black, white, then
+the bundled `solidSequence`: primary red `#9e1b32`, interleaved dark/middle grays
+including black, white, then
 the remaining colors. Exclude only the actual canvas token. These named roles
 describe semantic paint and page structure separately from category order:
 
@@ -59,8 +60,9 @@ Use white or `#e7e7e7` for page surfaces, with an opaque red mark when emphasis
 is needed. Keep initial category faces borderless. Do not automatically select
 pink for the second series, highlights, focus, replay, or additional nodes.
 Only introduce pink for an additional meaningful category after all preceding
-usable tokens in the complete sequence are exhausted: primary red, grays,
-black, white, then the remaining colors in their listed order. An explicit pink
+usable tokens in the complete sequence are exhausted: primary red, the
+dark/middle gray interleave including black, white, then the remaining colors
+in their listed order. An explicit pink
 request may select it directly; retain justified status, brand and tonal meanings.
 Reuse role colors before allocating a new token.
 

@@ -25,6 +25,7 @@ sys.dont_write_bytecode = True
 
 import scaffold_synchronized_svg as scaffold  # noqa: E402
 import navigation_contract as navigation  # noqa: E402
+from palette_contract import solid_colors  # noqa: E402
 
 
 VIEW_BOX = [0, 0, 1600, 1000]
@@ -46,16 +47,9 @@ WORLD_MODULE_WIDTH = 680
 WORLD_HEAVY_MODULE_WIDTH = 780
 WORLD_MODULE_HEIGHT = 500
 WORLD_HEAVY_MODULE_HEIGHT = 540
-WORLD_DISTRICT_PALETTE = (
-    "#9e1b32",
-    "#333e48",
-    "#6d1222",
-    "#828282",
-    "#e8002a",
-    "#696969",
-    "#4f4f4f",
-    "#363636",
-    "#1c1c1c",
+EXTENDED_DISTRICT_PALETTE = (
+    "#9e1b32", "#333e48", "#6d1222", "#828282", "#e8002a",
+    "#696969", "#4f4f4f", "#363636", "#1c1c1c",
 )
 
 
@@ -2076,6 +2070,7 @@ def compile_world_layout(
     raw: Any,
     modules: list[dict[str, Any]],
     focus_ids: set[str],
+    district_palette: list[str],
 ) -> tuple[
     dict[str, Any],
     dict[str, Any],
@@ -2145,7 +2140,7 @@ def compile_world_layout(
                 "localArmature": local_armature,
                 "moduleIds": list(assigned),
                 "requiredForTour": bool(item.get("requiredForTour", True)),
-                "accent": WORLD_DISTRICT_PALETTE[index % len(WORLD_DISTRICT_PALETTE)],
+                "accent": district_palette[index % len(district_palette)],
                 "_localRegions": local_regions,
                 "_localBounds": local_bounds,
             }
@@ -2508,17 +2503,27 @@ def compile_brief(brief: dict[str, Any]) -> tuple[dict[str, Any], list[dict[str,
             if module["id"] in focus["moduleIds"]
         ]
         module["focusGroups"] = expected_focus
+    color_tokens = identity_color_tokens(concepts, derived)
+    try:
+        theme = scaffold.resolve_theme(brief.get("theme"), value_ids, color_tokens)
+    except ValueError as exc:
+        raise BriefError(f"compiled plan failed v1 validation: {exc}") from exc
+    colorset = "colorset1" if theme["preset"] in {"editorial", "colorset1"} else "colorset2"
     world_plan: dict[str, Any] | None = None
     navigation_plan: dict[str, Any] | None = None
     layout_gap = float(GAP)
     if world_mode:
+        # Preserve the existing Colorset2 district family mapping. This revision
+        # changes only Colorset1 categorical allocation and its canvas filter.
+        district_palette = (solid_colors(colorset, theme["colors"]["canvas"])
+                            if colorset == "colorset1" else list(EXTENDED_DISTRICT_PALETTE))
         (
             world_plan,
             navigation_plan,
             view_box,
             safe_area,
             reading_order,
-        ) = compile_world_layout(world_raw, modules, focus_ids)
+        ) = compile_world_layout(world_raw, modules, focus_ids, district_palette)
     else:
         megacanvas = len(modules) > 12
         view_box = MEGACANVAS_VIEW_BOX if megacanvas else VIEW_BOX
@@ -2535,7 +2540,6 @@ def compile_brief(brief: dict[str, Any]) -> tuple[dict[str, Any], list[dict[str,
         source_domains,
         {item["id"] for item in scenarios},
     )
-    color_tokens = identity_color_tokens(concepts, derived)
     values_by_token: dict[str, list[str]] = {}
     for value_id in value_ids:
         values_by_token.setdefault(color_tokens[value_id], []).append(value_id)
@@ -2604,7 +2608,7 @@ def compile_brief(brief: dict[str, Any]) -> tuple[dict[str, Any], list[dict[str,
     if "subtitle" in brief:
         plan["subtitle"] = require_text(brief["subtitle"], "subtitle")
     try:
-        plan["theme"] = scaffold.resolve_theme(brief.get("theme"), value_ids, color_tokens)
+        plan["theme"] = theme
         scaffold.validate_plan(plan)
     except ValueError as exc:
         raise BriefError(f"compiled plan failed v1 validation: {exc}") from exc

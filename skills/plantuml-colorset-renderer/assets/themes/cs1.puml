@@ -1,5 +1,5 @@
 ' plantuml-colorset-renderer: cs1 custom theme
-' CS1 category priority: primary red, grays, black, white, then remaining hues.
+' CS1 category priority: primary red, interleaved grayscale including black, white, then remaining hues; preserve named semantic paints.
 skinparam backgroundColor #ffffff
 skinparam shadowing false
 skinparam DefaultFontName Arial

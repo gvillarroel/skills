@@ -442,16 +442,16 @@ body[data-reduced-motion="true"] .motion-note { display: inline; }
 }
 
 [data-family-id="timing"], [data-family-filter="timing"] { --family-accent: #9e1b32; --family-text: #ffffff; }
-[data-family-id="transform"], [data-family-filter="transform"] { --family-accent: #333e48; --family-text: #ffffff; }
-[data-family-id="path"], [data-family-filter="path"] { --family-accent: #4f4f4f; --family-text: #ffffff; }
-[data-family-id="parametric"], [data-family-filter="parametric"] { --family-accent: #696969; --family-text: #ffffff; }
-[data-family-id="field"], [data-family-filter="field"] { --family-accent: #828282; --family-text: #000000; }
-[data-family-id="simulation"], [data-family-filter="simulation"] { --family-accent: #9c9c9c; --family-text: #000000; }
-[data-family-id="growth"], [data-family-filter="growth"] { --family-accent: #b5b5b5; --family-text: #000000; }
+[data-family-id="transform"], [data-family-filter="transform"] { --family-accent: #000000; --family-text: #ffffff; }
+[data-family-id="path"], [data-family-filter="path"] { --family-accent: #828282; --family-text: #000000; }
+[data-family-id="parametric"], [data-family-filter="parametric"] { --family-accent: #9c9c9c; --family-text: #000000; }
+[data-family-id="field"], [data-family-filter="field"] { --family-accent: #363636; --family-text: #ffffff; }
+[data-family-id="simulation"], [data-family-filter="simulation"] { --family-accent: #b5b5b5; --family-text: #000000; }
+[data-family-id="growth"], [data-family-filter="growth"] { --family-accent: #333e48; --family-text: #ffffff; }
 [data-family-id="tiling"], [data-family-filter="tiling"] { --family-accent: #cfcfcf; --family-text: #000000; }
-[data-family-id="paint"], [data-family-filter="paint"] { --family-accent: #e7e7e7; --family-text: #000000; }
-[data-family-id="composition"], [data-family-filter="composition"] { --family-accent: #363636; --family-text: #ffffff; }
-[data-family-id="multistrata"], [data-family-filter="multistrata"] { --family-accent: #f7f7f7; --family-text: #000000; }
+[data-family-id="paint"], [data-family-filter="paint"] { --family-accent: #4f4f4f; --family-text: #ffffff; }
+[data-family-id="composition"], [data-family-filter="composition"] { --family-accent: #e7e7e7; --family-text: #000000; }
+[data-family-id="multistrata"], [data-family-filter="multistrata"] { --family-accent: #696969; --family-text: #ffffff; }
 
 @media (max-width: 1180px) {
   .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }

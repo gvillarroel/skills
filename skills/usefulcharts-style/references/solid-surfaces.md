@@ -9,8 +9,12 @@ geometry; a dark outline around an otherwise filled card is decoration.
 1. Assign a semantic identity once and reuse it across views. Read the selected
    `assets/palettes/colorsets.json` entry's `solidSequence`. Filter only the actual
    canvas color. Use every remaining distinct solid before repeating a fill.
-   For colorset1, begin with primary red `#9e1b32`, then grays, black, white,
-   and the remaining colors. Keep colorset2 in its bundled order. Do not
+   For colorset1, begin with primary red `#9e1b32`, then the exact interleaved
+   grayscale sequence (including black and near-black), white, and the remaining
+   colors. Grays alternate the darker and lighter halves ranked by relative
+   luminance; filter the canvas from that fixed order without reordering the
+   others. Apply this sequence to categories, preserving numeric ramps and named
+   semantic paints. Keep colorset2 in its bundled order. Do not
    restrict capacity to the six base hues, skip neutral colors, or begin with pale fills carrying dark outlines.
 2. Paint each category surface with one opaque fill and `stroke="none"` / zero
    border width. Put gaps between adjoining objects where separation helps.

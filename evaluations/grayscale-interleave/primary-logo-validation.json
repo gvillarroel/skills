@@ -1,0 +1,409 @@
+{
+  "scope": "D3 primary logo builder and Type Orbit native compact check",
+  "runtimeSha256": "1c61ccd9693630dc686eb408cba1736fe83fbf0ff70449a44e2894b779ef2450",
+  "runtimeFileCount": 296,
+  "currentRuntimeSha256": "1c61ccd9693630dc686eb408cba1736fe83fbf0ff70449a44e2894b779ef2450",
+  "currentRuntimeMatches": true,
+  "model": "openai-codex/gpt-5.6-luna",
+  "accepted": true,
+  "contractJointPassed": true,
+  "naturalisticJointPassed": 2,
+  "naturalisticRepetitions": 3,
+  "runs": [
+    {
+      "runId": "gray-20261005-logo-r2-d3-contract-1",
+      "family": "contract",
+      "durationSeconds": 56.05,
+      "strictPassed": true,
+      "frozenRuntimeMatches": true,
+      "promptMatches": true,
+      "promptTextSha256": "13da5ca6cc529d0e00c1ff505b6da9ae027a89d74cb40263517d861008500c0e",
+      "copiedRuntimeSha256": "1c61ccd9693630dc686eb408cba1736fe83fbf0ff70449a44e2894b779ef2450",
+      "rawFileSha256": {
+        "events.jsonl": "b82ae41126ce61bfe13ce15b5be2f7bb60188f9077c512a86f7bb2564547a050",
+        "run-manifest.json": "4e1c0222922b7c66664b4a940d4d140d275c61a3609f115501ffa190e7ecce84",
+        "evaluation-result.json": "78367f52ee06483166015901d7f358c79841a5030b3d69268157d56e9ea9bee6",
+        "event-check.json": "28ee268fb6112d0ea30e4add34dc50efddf2fccdc1bff11e7d18d09772347850",
+        "artifact-check.json": "b92c8d721d3e7ad885ccafda197cd971d1ea9b72e711e4b9df1018757c400389",
+        "skill-integrity-check.json": "2406c1dc5975c79540152e3ea02e1f71c04a3ff3aa4b33925c9e9c2c784b9ca3",
+        "prompt.md": "4692688cc0f12b3a793921ea9c460859ad0a74304726a3de1f6f4b151f1cd4d7"
+      },
+      "readPaths": [
+        "../prompt.md",
+        "deliverables/native.json",
+        "deliverables/small-logo.png",
+        "deliverables/validation.json",
+        "skills/d3/SKILL.md"
+      ],
+      "readSurfacePassed": true,
+      "outputs": [
+        {
+          "path": "deliverables/logo.html",
+          "sha256": "09bf2b6e36cc00420d22be610b35b21221416d23a4c7980d1f9a7f32a1ec5bac",
+          "sizeBytes": 714695,
+          "matchesHarness": true
+        },
+        {
+          "path": "deliverables/validation.json",
+          "sha256": "35b522357f0e2e5ca50967afe74a1762476790a3a299cee3aa69faf1b897f3fb",
+          "sizeBytes": 2102,
+          "matchesHarness": true
+        },
+        {
+          "path": "deliverables/native.json",
+          "sha256": "ec480a61049061f0d332fa259ca2c3783251faf740a159b302392ee0498c960f",
+          "sizeBytes": 505875,
+          "matchesHarness": true
+        },
+        {
+          "path": "deliverables/small-logo.png",
+          "sha256": "0ae2904d6816a045385205061577a177c54c6f0d67dd40686a0d377eee8a371b",
+          "sizeBytes": 2032,
+          "matchesHarness": true
+        }
+      ],
+      "artifactsMatch": true,
+      "authoredReportsPassed": true,
+      "independentNativePassed": true,
+      "independentEvidence": {
+        "commands.json": {
+          "path": "projects/grayscale-interleave/artifacts/reviews/primary-logo/gray-20261005-logo-r2-d3-contract-1/commands.json",
+          "sha256": "1d5ad888ca7198a1fc6ebe33aa954a5741bb647609bc7553e92cfcddf9c5aa47"
+        },
+        "independent-static.json": {
+          "path": "projects/grayscale-interleave/artifacts/reviews/primary-logo/gray-20261005-logo-r2-d3-contract-1/independent-static.json",
+          "sha256": "35b522357f0e2e5ca50967afe74a1762476790a3a299cee3aa69faf1b897f3fb"
+        },
+        "independent-native.json": {
+          "path": "projects/grayscale-interleave/artifacts/reviews/primary-logo/gray-20261005-logo-r2-d3-contract-1/independent-native.json",
+          "sha256": "fd1e1c767b555c95370c4912d127604e9a97173245fc15ff3e0f8e608103f878"
+        },
+        "independent-small.png": {
+          "path": "projects/grayscale-interleave/artifacts/reviews/primary-logo/gray-20261005-logo-r2-d3-contract-1/independent-small.png",
+          "sha256": "0ae2904d6816a045385205061577a177c54c6f0d67dd40686a0d377eee8a371b"
+        }
+      },
+      "manualPngReview": {
+        "passed": true,
+        "authoredPngSha256": "0ae2904d6816a045385205061577a177c54c6f0d67dd40686a0d377eee8a371b",
+        "independentPngSha256": "0ae2904d6816a045385205061577a177c54c6f0d67dd40686a0d377eee8a371b",
+        "reason": "Opened authored and independently recaptured original 96 x 64 PNGs. ATLAS is complete and legible; the red mark and white initials are visible, with no clipping or glyph overlap. Small-size tagline omission preserves accessible text."
+      },
+      "manualPngReviewPassed": true,
+      "eventFindings": [],
+      "jointPassed": true,
+      "verifiedInitialConfiguration": {
+        "selectedColorset": "colorset1",
+        "initialPattern": "d3-logo-type-orbit",
+        "initialBrand": "ATLAS",
+        "initialTagline": "Signals in motion",
+        "standalone": true
+      }
+    },
+    {
+      "runId": "gray-20261005-logo-r2-d3-naturalistic-1",
+      "family": "naturalistic",
+      "durationSeconds": 62.297,
+      "strictPassed": false,
+      "frozenRuntimeMatches": true,
+      "promptMatches": true,
+      "promptTextSha256": "a67b3a77dd32031cd2e13010b7c4f6070fd476dc654d9e8958e58a5e2ba218bd",
+      "copiedRuntimeSha256": "1c61ccd9693630dc686eb408cba1736fe83fbf0ff70449a44e2894b779ef2450",
+      "rawFileSha256": {
+        "events.jsonl": "42e1570f3c0bd6e367802a770dc9e83c8351575782cf6ddbd70276a81008d165",
+        "run-manifest.json": "9e17625008bdf7ee73ab0333d7833d5b2d6c5e205bd17423f67396fa1fa757e8",
+        "evaluation-result.json": "c5c4d5f018dd93e0641eebb597cc9f1812fbb23bf67206dff96151c9900e8a04",
+        "event-check.json": "c082f44f71afef6c9a14a87cf3e55e466a7dde506a8de69f7f0067aea9419a01",
+        "artifact-check.json": "10c9b79bbdd0e43b07901f71eee80cd85cb985af3b36303e171be932ca8a39c6",
+        "skill-integrity-check.json": "2406c1dc5975c79540152e3ea02e1f71c04a3ff3aa4b33925c9e9c2c784b9ca3",
+        "prompt.md": "c7ae91ef08a09cfb192bab63ee3fa27ebd478da271ca1572afeda85dce33d066"
+      },
+      "readPaths": [
+        "../prompt.md",
+        "deliverables/small-logo.png",
+        "skills/d3/SKILL.md",
+        "skills/d3/references/logo-studio.md"
+      ],
+      "readSurfacePassed": true,
+      "outputs": [
+        {
+          "path": "deliverables/logo.html",
+          "sha256": "09bf2b6e36cc00420d22be610b35b21221416d23a4c7980d1f9a7f32a1ec5bac",
+          "sizeBytes": 714695,
+          "matchesHarness": true
+        },
+        {
+          "path": "deliverables/validation.json",
+          "sha256": "800ae3e68dee201864ed44a747b0655a8a0da55316954c9c30b15e9e5f3dac0a",
+          "sizeBytes": 2106,
+          "matchesHarness": true
+        },
+        {
+          "path": "deliverables/native.json",
+          "sha256": "68c1a0698a4781ca83c343b3dbbfcb594efcdf554d66bb6305c500b3a8e079a3",
+          "sizeBytes": 505883,
+          "matchesHarness": true
+        },
+        {
+          "path": "deliverables/small-logo.png",
+          "sha256": "0ae2904d6816a045385205061577a177c54c6f0d67dd40686a0d377eee8a371b",
+          "sizeBytes": 2032,
+          "matchesHarness": true
+        }
+      ],
+      "artifactsMatch": true,
+      "authoredReportsPassed": true,
+      "independentNativePassed": true,
+      "independentEvidence": {
+        "commands.json": {
+          "path": "projects/grayscale-interleave/artifacts/reviews/primary-logo/gray-20261005-logo-r2-d3-naturalistic-1/commands.json",
+          "sha256": "170a19f51f8fedb927788b2f554ecec9094797b249c5703513fd514a95b4fcd9"
+        },
+        "independent-static.json": {
+          "path": "projects/grayscale-interleave/artifacts/reviews/primary-logo/gray-20261005-logo-r2-d3-naturalistic-1/independent-static.json",
+          "sha256": "800ae3e68dee201864ed44a747b0655a8a0da55316954c9c30b15e9e5f3dac0a"
+        },
+        "independent-native.json": {
+          "path": "projects/grayscale-interleave/artifacts/reviews/primary-logo/gray-20261005-logo-r2-d3-naturalistic-1/independent-native.json",
+          "sha256": "9edc0b19e41b4a02564133915ef1d3742d8292d6dbed9e4ff5fbbc2e2787def1"
+        },
+        "independent-small.png": {
+          "path": "projects/grayscale-interleave/artifacts/reviews/primary-logo/gray-20261005-logo-r2-d3-naturalistic-1/independent-small.png",
+          "sha256": "0ae2904d6816a045385205061577a177c54c6f0d67dd40686a0d377eee8a371b"
+        }
+      },
+      "manualPngReview": {
+        "passed": true,
+        "authoredPngSha256": "0ae2904d6816a045385205061577a177c54c6f0d67dd40686a0d377eee8a371b",
+        "independentPngSha256": "0ae2904d6816a045385205061577a177c54c6f0d67dd40686a0d377eee8a371b",
+        "reason": "Opened authored and independently recaptured original 96 x 64 PNGs. ATLAS is complete and legible; the red mark and white initials are visible, with no clipping or glyph overlap. This image pass does not override the strict tool-error failure."
+      },
+      "manualPngReviewPassed": true,
+      "eventFindings": [
+        {
+          "code": "tool-error",
+          "line": 527,
+          "tool": "bash"
+        }
+      ],
+      "jointPassed": false,
+      "verifiedInitialConfiguration": {
+        "selectedColorset": "colorset1",
+        "initialPattern": "d3-logo-type-orbit",
+        "initialBrand": "ATLAS",
+        "initialTagline": "Signals in motion",
+        "standalone": true
+      }
+    },
+    {
+      "runId": "gray-20261005-logo-r2-d3-naturalistic-2",
+      "family": "naturalistic",
+      "durationSeconds": 67.451,
+      "strictPassed": true,
+      "frozenRuntimeMatches": true,
+      "promptMatches": true,
+      "promptTextSha256": "a67b3a77dd32031cd2e13010b7c4f6070fd476dc654d9e8958e58a5e2ba218bd",
+      "copiedRuntimeSha256": "1c61ccd9693630dc686eb408cba1736fe83fbf0ff70449a44e2894b779ef2450",
+      "rawFileSha256": {
+        "events.jsonl": "2d388c5d7d47a56e82869f917258ade05d8624aac53fb941703dea2e92044a0e",
+        "run-manifest.json": "be6c0065a7248e8c58c147abee7d2903dc76758d879c46154c25afc883e20fbf",
+        "evaluation-result.json": "63fd41f27b0867ef4a6acc9f496bdcd9f1cca3375cb24fb7772a8c8965acc13f",
+        "event-check.json": "06b0781ffc695926ad79d0ea57107191e7cb5f801bb70fafc9e3a8cd55c2e2ef",
+        "artifact-check.json": "d1afffad230d24b6d67cb822654fcecd042761c28ec8ff250611d3b0258ce5cb",
+        "skill-integrity-check.json": "2406c1dc5975c79540152e3ea02e1f71c04a3ff3aa4b33925c9e9c2c784b9ca3",
+        "prompt.md": "c7ae91ef08a09cfb192bab63ee3fa27ebd478da271ca1572afeda85dce33d066"
+      },
+      "readPaths": [
+        "../prompt.md",
+        "deliverables/small-logo.png",
+        "skills/d3/SKILL.md",
+        "skills/d3/references/logo-studio.md"
+      ],
+      "readSurfacePassed": true,
+      "outputs": [
+        {
+          "path": "deliverables/logo.html",
+          "sha256": "09bf2b6e36cc00420d22be610b35b21221416d23a4c7980d1f9a7f32a1ec5bac",
+          "sizeBytes": 714695,
+          "matchesHarness": true
+        },
+        {
+          "path": "deliverables/validation.json",
+          "sha256": "2442f8c5e33fa7baf19005ba5c35dcefc6d26f8ab6877d509bb339f1f25b90c6",
+          "sizeBytes": 2106,
+          "matchesHarness": true
+        },
+        {
+          "path": "deliverables/native.json",
+          "sha256": "5978578284561a09d26f57651becac8d049394ba800dd5502ac51b4a61cb63f3",
+          "sizeBytes": 505883,
+          "matchesHarness": true
+        },
+        {
+          "path": "deliverables/small-logo.png",
+          "sha256": "0ae2904d6816a045385205061577a177c54c6f0d67dd40686a0d377eee8a371b",
+          "sizeBytes": 2032,
+          "matchesHarness": true
+        }
+      ],
+      "artifactsMatch": true,
+      "authoredReportsPassed": true,
+      "independentNativePassed": true,
+      "independentEvidence": {
+        "commands.json": {
+          "path": "projects/grayscale-interleave/artifacts/reviews/primary-logo/gray-20261005-logo-r2-d3-naturalistic-2/commands.json",
+          "sha256": "253e5e2293cf3e2d81871d5becabd7183a8812809768bde06bd1441a70221976"
+        },
+        "independent-static.json": {
+          "path": "projects/grayscale-interleave/artifacts/reviews/primary-logo/gray-20261005-logo-r2-d3-naturalistic-2/independent-static.json",
+          "sha256": "2442f8c5e33fa7baf19005ba5c35dcefc6d26f8ab6877d509bb339f1f25b90c6"
+        },
+        "independent-native.json": {
+          "path": "projects/grayscale-interleave/artifacts/reviews/primary-logo/gray-20261005-logo-r2-d3-naturalistic-2/independent-native.json",
+          "sha256": "77e7395102e5b57ca9d627243626673d338b82e2896ef0dc2a7776bdbe772540"
+        },
+        "independent-small.png": {
+          "path": "projects/grayscale-interleave/artifacts/reviews/primary-logo/gray-20261005-logo-r2-d3-naturalistic-2/independent-small.png",
+          "sha256": "0ae2904d6816a045385205061577a177c54c6f0d67dd40686a0d377eee8a371b"
+        }
+      },
+      "manualPngReview": {
+        "passed": true,
+        "authoredPngSha256": "0ae2904d6816a045385205061577a177c54c6f0d67dd40686a0d377eee8a371b",
+        "independentPngSha256": "0ae2904d6816a045385205061577a177c54c6f0d67dd40686a0d377eee8a371b",
+        "reason": "Opened authored and independently recaptured original 96 x 64 PNGs. ATLAS is complete and legible; the red mark and white initials are visible, with no clipping or glyph overlap. Small-size tagline omission preserves accessible text."
+      },
+      "manualPngReviewPassed": true,
+      "eventFindings": [],
+      "jointPassed": true,
+      "verifiedInitialConfiguration": {
+        "selectedColorset": "colorset1",
+        "initialPattern": "d3-logo-type-orbit",
+        "initialBrand": "ATLAS",
+        "initialTagline": "Signals in motion",
+        "standalone": true
+      }
+    },
+    {
+      "runId": "gray-20261005-logo-r2-d3-naturalistic-3",
+      "family": "naturalistic",
+      "durationSeconds": 61.404,
+      "strictPassed": true,
+      "frozenRuntimeMatches": true,
+      "promptMatches": true,
+      "promptTextSha256": "a67b3a77dd32031cd2e13010b7c4f6070fd476dc654d9e8958e58a5e2ba218bd",
+      "copiedRuntimeSha256": "1c61ccd9693630dc686eb408cba1736fe83fbf0ff70449a44e2894b779ef2450",
+      "rawFileSha256": {
+        "events.jsonl": "dabe44922836fac5512dbdec8567cda16de8ee2de5defb9e23ecb78cd094bf13",
+        "run-manifest.json": "37d8b25d9bb4cccb9d6b0884f628ae29001f402f5bc4d6439c32955b1ad6d805",
+        "evaluation-result.json": "8dd24ae50fbaddfe039a6bbe4c21afbe51862ec06a7fbf0533f629ccb23e9dc0",
+        "event-check.json": "e013227c8798681f1fe4ed135bd9eca412b61b4bfda6d1e9b2f3deb399a76aab",
+        "artifact-check.json": "43c2c993b035f299cbb772c5f112a37f8095c1dbae98709cb9d4e3f9693ad853",
+        "skill-integrity-check.json": "2406c1dc5975c79540152e3ea02e1f71c04a3ff3aa4b33925c9e9c2c784b9ca3",
+        "prompt.md": "c7ae91ef08a09cfb192bab63ee3fa27ebd478da271ca1572afeda85dce33d066"
+      },
+      "readPaths": [
+        "../prompt.md",
+        "deliverables/small-logo.png",
+        "skills/d3/SKILL.md",
+        "skills/d3/references/logo-studio.md"
+      ],
+      "readSurfacePassed": true,
+      "outputs": [
+        {
+          "path": "deliverables/logo.html",
+          "sha256": "09bf2b6e36cc00420d22be610b35b21221416d23a4c7980d1f9a7f32a1ec5bac",
+          "sizeBytes": 714695,
+          "matchesHarness": true
+        },
+        {
+          "path": "deliverables/validation.json",
+          "sha256": "4d103f66342a29ac5d9d45fc9862e905fc742939df5c6f0948e5ed96137a982d",
+          "sizeBytes": 2106,
+          "matchesHarness": true
+        },
+        {
+          "path": "deliverables/native.json",
+          "sha256": "cba0bca39af4af4e36bd5fb94a88fbea486e4a654eb3455e23e80249976c7b47",
+          "sizeBytes": 505883,
+          "matchesHarness": true
+        },
+        {
+          "path": "deliverables/small-logo.png",
+          "sha256": "0ae2904d6816a045385205061577a177c54c6f0d67dd40686a0d377eee8a371b",
+          "sizeBytes": 2032,
+          "matchesHarness": true
+        }
+      ],
+      "artifactsMatch": true,
+      "authoredReportsPassed": true,
+      "independentNativePassed": true,
+      "independentEvidence": {
+        "commands.json": {
+          "path": "projects/grayscale-interleave/artifacts/reviews/primary-logo/gray-20261005-logo-r2-d3-naturalistic-3/commands.json",
+          "sha256": "f9912aa92d575133f59e4adb0e8daa7903e0fd787fd7727f6f400c3b9d97f76a"
+        },
+        "independent-static.json": {
+          "path": "projects/grayscale-interleave/artifacts/reviews/primary-logo/gray-20261005-logo-r2-d3-naturalistic-3/independent-static.json",
+          "sha256": "4d103f66342a29ac5d9d45fc9862e905fc742939df5c6f0948e5ed96137a982d"
+        },
+        "independent-native.json": {
+          "path": "projects/grayscale-interleave/artifacts/reviews/primary-logo/gray-20261005-logo-r2-d3-naturalistic-3/independent-native.json",
+          "sha256": "af6d0728c2552ca8b3cae0a1f21b3d7b2729064447cb390290585b69be8d222a"
+        },
+        "independent-small.png": {
+          "path": "projects/grayscale-interleave/artifacts/reviews/primary-logo/gray-20261005-logo-r2-d3-naturalistic-3/independent-small.png",
+          "sha256": "0ae2904d6816a045385205061577a177c54c6f0d67dd40686a0d377eee8a371b"
+        }
+      },
+      "manualPngReview": {
+        "passed": true,
+        "authoredPngSha256": "0ae2904d6816a045385205061577a177c54c6f0d67dd40686a0d377eee8a371b",
+        "independentPngSha256": "0ae2904d6816a045385205061577a177c54c6f0d67dd40686a0d377eee8a371b",
+        "reason": "Opened authored and independently recaptured original 96 x 64 PNGs. ATLAS is complete and legible; the red mark and white initials are visible, with no clipping or glyph overlap. Small-size tagline omission preserves accessible text."
+      },
+      "manualPngReviewPassed": true,
+      "eventFindings": [],
+      "jointPassed": true,
+      "verifiedInitialConfiguration": {
+        "selectedColorset": "colorset1",
+        "initialPattern": "d3-logo-type-orbit",
+        "initialBrand": "ATLAS",
+        "initialTagline": "Signals in motion",
+        "standalone": true
+      }
+    }
+  ],
+  "manualReviewFile": "projects\\grayscale-interleave\\artifacts\\reviews\\primary-logo\\manual-png-review.json",
+  "preservedDevelopmentFailures": [
+    {
+      "runId": "gray-20261005-logo-r1-d3-naturalistic-2",
+      "accepted": false,
+      "returnCode": 124,
+      "piExitCode": null,
+      "timedOut": true,
+      "durationSeconds": 307.523,
+      "rawFileSha256": {
+        "events.jsonl": "ce440911016f380f2b0ba7997ee80c4a1623e5755b9822755e31df9def32ae2f",
+        "evaluation-result.json": "ed136b0734df735c7b381a2dfc343a78fb464b4a13aa8c382c0182d88f1cf75c",
+        "run-manifest.json": "568f6a8da3ce90a6872a3092c2caa44957fbe459afb143e3cf3d94d5a3397efe",
+        "prompt.md": "c7ae91ef08a09cfb192bab63ee3fa27ebd478da271ca1572afeda85dce33d066"
+      }
+    },
+    {
+      "runId": "gray-20261005-logo-r1-d3-naturalistic-3",
+      "accepted": false,
+      "returnCode": 4,
+      "piExitCode": 0,
+      "timedOut": false,
+      "durationSeconds": 74.758,
+      "rawFileSha256": {
+        "events.jsonl": "83be7e16b3cae9c725e563d79ee52202b8f1e5578e0dd9b6448afb34a9715af3",
+        "evaluation-result.json": "28987ec5cc190327492f3956b75c21e26e4fe1ea666bed0ec40e4974d7e0f03f",
+        "run-manifest.json": "d02cd11c9a4403846e3a965bc1d71ddcfe13800f7250a8db8edbb21397ee8672",
+        "prompt.md": "c7ae91ef08a09cfb192bab63ee3fa27ebd478da271ca1572afeda85dce33d066"
+      }
+    }
+  ],
+  "failureDisposition": "R2 naturalistic-1 remains strict FAIL after an unnecessary plain-Python Pillow import; later recovery and native success do not count as acceptance."
+}

@@ -56,7 +56,7 @@ geometry faithful; this rule targets conceptual diagram spacing.
 
 ## Materials And Color
 
-- Follow `visual-tokens.md`: colorset1 uses red `#9e1b32`, black, white, and grays first. Pink is a last resort; colorset2's extended hues require an explicit request.
+- Follow `visual-tokens.md`: colorset1 uses red `#9e1b32`, the bundled dark/middle gray interleave including black, then white and the remaining colors. Preserve numeric ramps and semantic materials. Pink is a last resort; colorset2's extended hues require an explicit request.
 - Use `MeshStandardMaterial` with ambient and directional lights for most scenes.
 - Keep filled meshes free of decorative edge geometry and default wireframes.
   Relationship lines, trajectories and scientific line geometry remain visible.

@@ -113,7 +113,11 @@ Keep gallery fixtures under `assets/examples/procedural-svg-animation/`; normal 
 ## Solid fill priority
 
 Use opaque, single-token filled marks without decorative borders first. Read
-`solidSequence` and `textOnFill` from `assets/palettes/colorsets.json`. Reuse a
+`solidSequence` and `textOnFill` from `assets/palettes/colorsets.json`.
+For colorset1 categories, follow primary red, the dark/middle gray interleave
+including black, white, then remaining colors. Preserve numeric ramps and
+named semantic ink. The generator keeps concentration/value bands separate
+from its category accents. Reuse a
 fill for the same semantic role; when roles must be distinct, exhaust every
 usable distinct token in the preferred sequence, excluding the actual canvas,
 before creating outline or tint combinations. Soft tokens occur late. For text

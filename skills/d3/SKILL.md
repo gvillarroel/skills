@@ -10,7 +10,13 @@ description: "Creates, animates, inspects, recomposes, and validates D3-powered 
 For a complete interactive logo studio or a browsable logo catalog, first run
 `python "<d3-skill>/scripts/build_logo_studio.py" --help`. Build with that script,
 passing the requested output, brand, tagline, colorset, and optional pattern
-flags. Read `references/compact-composition.md` for page sizing. Validate the
+flags. Read [logo-studio.md](references/logo-studio.md) for the complete build,
+static validation and native compact-preview commands, and
+`references/compact-composition.md` for page sizing. Run the browser verifier as
+`uv run --script "<d3-skill>/scripts/verify_logo_gallery.py"`, including its
+`--help` call. For the requested 96×64 Type Orbit check, pass `--small-only`,
+`--json-report <report.json>` and `--small-logo-screenshot <image.png>`.
+Validate the
 HTML with `validate_logo_artifact.py` and `check_self_contained_html.py`; inspect
 the live preview in a browser. Check extended colors against an exported
 settled SVG: the studio HTML creates its colored marks at runtime, so its
@@ -43,8 +49,9 @@ For a standalone two-level treemap, first run `python "<d3-skill>/scripts/build_
 
 For dense task overlap with nine scope regions and 100 tasks, first run `python "<d3-skill>/scripts/build_dense_task_overlap.py" --help`, then read `references/patterns/task-overlap-dense.md`. Generate the layout with its documented command and pass that file to the builder. It sets portable final geometry, semantic region transparency, compact captions and palette finalization automatically. Correct flags and rerun the builder for supported output; export its SVG with `render_d3_svg.py`.
 
-Run dependency-declaring helpers such as `render_d3_svg.py` and
-`dither_d3_output.py` with `uv run --script`, including their `--help` calls.
+Run dependency-declaring helpers such as `verify_logo_gallery.py`,
+`verify_logo_texture_gallery.py`, `render_d3_svg.py` and `dither_d3_output.py`
+with `uv run --script`, including their `--help` calls.
 Their uv metadata provides Pillow and Playwright in a clean isolated workspace.
 Use the dependency-free Python first commands above for their named routes.
 
@@ -54,7 +61,7 @@ Use the dependency-free Python first commands above for their named routes.
 - Use `colorset1` by default. Use `colorset2` only for an explicit extended, expanded, multicolor, or full-color request.
 - Prefer compact boxes and neutral surfaces: 6 px vertical / 10 px horizontal node padding, 12 px panel padding, and 8 px UI gaps. Read `references/compact-composition.md` when sizing nodes, panels, or controls; preserve readable text and data geometry.
 - For connected explanatory diagrams, minimize unused canvas, node padding and route length after measuring labels. Keep visible arrowheads, distinguishable routes, clear source/target attachment and any motion envelope; restore the last readable layout when tighter spacing fails. Apply this to relationship diagrams, not quantitative chart geometry or a requested fixed size.
-- In colorset1, allocate distinct category fills in this order: primary red `#9e1b32`, grays, black, white, then the remaining colors. Exclude only the actual canvas token. Pink is a last-resort category after the preceding usable colors are exhausted, never an automatic secondary color, selection fill, or focus ring.
+- In colorset1, allocate distinct category fills in this order: primary red `#9e1b32`, the bundled dark/middle interleave of grays including black, white, then the remaining colors. Exclude only the actual canvas token. Keep sequential value ramps and named semantic ink/status roles separate. Pink is a last-resort category after the preceding usable colors are exhausted, never an automatic secondary color, selection fill, or focus ring.
 - Read visible paint from `assets/palettes/colorsets.json`; use exact lowercase six-digit tokens and opacity, never arbitrary colors, functional color syntax, or raw D3 chromatic scales.
 - Named standalone builders accept `--colorset` and default to colorset1 through the bundled `colorset_adapter.py`; use the flag for colorset2. Validate their generated HTML and settled SVG against the selected contract. Immutable source image bytes may retain source colors; every authored overlay and control must follow the active contract.
 - Preserve supplied data and deterministic geometry. Seed layouts, pre-tick simulations, and make the settled frame truthful.

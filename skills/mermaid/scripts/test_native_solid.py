@@ -9,7 +9,7 @@ import unittest
 from pathlib import Path
 import xml.etree.ElementTree as ET
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from palette_paints import readable_text, solid_colors
+from palette_paints import readable_text, solid_colors, solid_style
 from mermaid_animation.solid import native_solid_presentation
 from style_mermaid_directory import theme_variables
 
@@ -38,6 +38,22 @@ def text(group, content='Label', **attributes):
 
 
 class NativeFamilies(unittest.TestCase):
+    def test_exact_cs1_interleaved_capacity_and_canvas_exclusion(self):
+        expected = ['#9e1b32', '#000000', '#828282', '#1c1c1c', '#9c9c9c',
+                    '#363636', '#b5b5b5', '#333e48', '#cfcfcf', '#4f4f4f',
+                    '#e7e7e7', '#696969', '#f7f7f7', '#ffffff', '#6d1222',
+                    '#e8002a', '#ffccd5']
+        for canvas in ['#ffffff', '#f7f7f7', '#000000', '#9e1b32']:
+            usable = [fill for fill in expected if fill != canvas]
+            self.assertEqual(solid_colors('colorset1', canvas), usable)
+            for index, fill in enumerate(usable):
+                style = solid_style(index, 'colorset1', canvas)
+                self.assertEqual(style['fill'], fill)
+                self.assertEqual(style['text'], readable_text(fill))
+                self.assertEqual(style['strokeWidth'], 0)
+                self.assertFalse(style['overflow'])
+            self.assertTrue(solid_style(len(usable), 'colorset1', canvas)['overflow'])
+
     def test_relationship_labels_use_own_backing_not_node_text(self):
         for family in ['flowchart', 'stateDiagram', 'classDiagram', 'swimlane']:
             for surface, expected in [('#ffffff', '#000000'), ('#333e48', '#ffffff')]:
@@ -70,8 +86,8 @@ class NativeFamilies(unittest.TestCase):
                             ('gantt', 'taskBkgColor')]:
             self.assertEqual(theme_variables('colorset1', family)[key], '#9e1b32')
         variables = theme_variables('colorset1', 'gantt')
-        self.assertEqual(variables['activeTaskBkgColor'], '#333e48')
-        self.assertEqual(variables['doneTaskBkgColor'], '#4f4f4f')
+        self.assertEqual(variables['activeTaskBkgColor'], '#000000')
+        self.assertEqual(variables['doneTaskBkgColor'], '#828282')
         root = svg('gantt')
         for index, status in enumerate(['task0', 'active0', 'done0']):
             body = box(root, f'task {status}', id=f'task-{index}')
@@ -79,8 +95,8 @@ class NativeFamilies(unittest.TestCase):
         native_solid_presentation(root, 'colorset1')
         for index in range(3):
             body, caption = list(root)[index*2:index*2+2]
-            self.assertEqual(paint(body, 'fill'), ['#9e1b32', '#333e48', '#4f4f4f'][index])
-            self.assertEqual(paint(caption, 'fill'), '#ffffff')
+            self.assertEqual(paint(body, 'fill'), ['#9e1b32', '#000000', '#828282'][index])
+            self.assertEqual(paint(caption, 'fill'), ['#ffffff', '#ffffff', '#000000'][index])
             self.assertEqual(paint(body, 'stroke'), 'none')
 
     def assert_solid(self, shape, label=None):

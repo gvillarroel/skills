@@ -261,7 +261,7 @@
       name: "basic-red-neutral-style",
       allowed: ["#000000", "#1c1c1c", "#333e48", "#363636", "#4f4f4f", "#696969", "#6d1222", "#828282", "#9c9c9c", "#9e1b32", "#b5b5b5", "#cfcfcf", "#e7e7e7", "#e8002a", "#f7f7f7", "#ffccd5", "#ffffff"],
       roles: { background: "#f7f7f7", surface: "#ffffff", ink: "#333e48", inkDark: "#1c1c1c", primary: "#9e1b32", primaryDark: "#6d1222", accent: "#e8002a", accentSoft: "#ffccd5", muted: "#828282", line: "#cfcfcf", quiet: "#e7e7e7" },
-      sequence: ["#9e1b32", "#333e48", "#4f4f4f", "#696969", "#828282", "#9c9c9c", "#b5b5b5", "#cfcfcf", "#e7e7e7", "#363636", "#f7f7f7", "#1c1c1c", "#000000", "#ffffff", "#6d1222", "#e8002a", "#ffccd5"]
+      sequence: ["#9e1b32", "#000000", "#828282", "#1c1c1c", "#9c9c9c", "#363636", "#b5b5b5", "#333e48", "#cfcfcf", "#4f4f4f", "#e7e7e7", "#696969", "#f7f7f7", "#ffffff", "#6d1222", "#e8002a", "#ffccd5"]
     },
     colorset2: {
       name: "full-color-style",

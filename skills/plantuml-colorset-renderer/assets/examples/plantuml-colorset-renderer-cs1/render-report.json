@@ -118,8 +118,8 @@
             "bodyCount": 3,
             "archimateLayers": {
               "business": "#9e1b32",
-              "application": "#333e48",
-              "technology": "#4f4f4f"
+              "application": "#000000",
+              "technology": "#828282"
             }
           }
         }
@@ -166,7 +166,7 @@
             "bodyCount": 5,
             "chartMarks": {
               "bar": "#9e1b32",
-              "line": "#333e48"
+              "line": "#000000"
             }
           }
         }
@@ -399,7 +399,7 @@
         {
           "format": "png",
           "path": "png/ditaa.png",
-          "size_bytes": 3335,
+          "size_bytes": 2878,
           "engine": "cli",
           "palette_normalized": true,
           "source_media_preserved": false,
@@ -410,8 +410,8 @@
             "textCount": 3,
             "bodyCount": 3,
             "styledBoxes": 3,
-            "paintedFillPixels": 14455,
-            "removedContourPixels": 1279,
+            "paintedFillPixels": 14883,
+            "removedContourPixels": 1111,
             "sourceBacked": true,
             "shadowsDisabled": true
           }
@@ -1279,5 +1279,14 @@
         }
       ]
     }
-  ]
+  ],
+  "categoryOrderRefresh": {
+    "scope": [
+      "archimate",
+      "chart",
+      "ditaa"
+    ],
+    "nativeGeometryUnchanged": true,
+    "otherResultsRetained": true
+  }
 }
