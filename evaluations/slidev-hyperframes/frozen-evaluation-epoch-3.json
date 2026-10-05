@@ -1,0 +1,72 @@
+{
+  "scope": "slidev-hyperframes",
+  "epoch": 3,
+  "status": "frozen-before-fresh-preview-scaffold-cohort",
+  "frozenAtUtc": "2026-10-05T18:59:50.493Z",
+  "runtimeManifest": "projects/slidev-hyperframes/artifacts/frozen-runtime-candidate-epoch3.json",
+  "runtimeManifestSha256": "0ba413da35fb923c2bb64d1929c5d89bbe0829d4da77ddbef15e70b083d6fc91",
+  "fullSourcePayload": "projects/slidev-hyperframes/artifacts/evaluator-epochs/source-payload-epoch-3.json",
+  "fullSourcePayloadSha256": "a4e55faebc319dc42307bbab37490b60653a84a73039dabe83d4eda689a88d81",
+  "sourceCounts": {
+    "slidev-echarts": 82,
+    "slidev-animejs": 78
+  },
+  "evaluator": {
+    "path": "projects/slidev-hyperframes/artifacts/evaluator-epochs/epoch-3.ts",
+    "sha256": "dbda186e9e9ff69421c7482b8d02795a34753a52e48fe8f3ba7494a1cec10f29"
+  },
+  "resources": [
+    {
+      "path": "evaluations/slidev-hyperframes/acceptance-contract.md",
+      "sha256": "0c8f0e73c99f1f163c047121abd4846c650ca11896accaca8ca267a10c903e23"
+    },
+    {
+      "path": "evaluations/slidev-hyperframes/cohort-plan.json",
+      "sha256": "0c6a4bcfe417a1e5378e264fe96aff24d6024269638a434871374f1fb0995d4c"
+    },
+    {
+      "path": "evaluations/slidev-hyperframes/prompts/echarts-contract-v3.md",
+      "sha256": "3c81c6f0ce280d394fa80dfe4cf9e8bdf65521a3698cde215427e6785bff643f"
+    },
+    {
+      "path": "evaluations/slidev-hyperframes/prompts/echarts-naturalistic.md",
+      "sha256": "5c1ddc953adab4a8259f4811bbbd7099bebe620fb2ee12ab2a4a8064cefa42dc"
+    },
+    {
+      "path": "evaluations/slidev-hyperframes/prompts/animejs-contract-v3.md",
+      "sha256": "4743336295cd6aec136a86917d17090770b2fc4318d45c791c9d295f0fb070b7"
+    },
+    {
+      "path": "evaluations/slidev-hyperframes/prompts/animejs-naturalistic.md",
+      "sha256": "e9ceee4def675fb2393328ffab06e55f54ffd028bc6227fb888531581c5837c0"
+    }
+  ],
+  "frozenCohortPlan": "projects/slidev-hyperframes/artifacts/evaluator-epochs/cohort-plan-epoch-3.json",
+  "sourceRepair": "Reusable HyperframePreview and deterministic editable starter scaffolder; JSON-backed headings and one shared scene factory. Original14 integration core resources/checker unchanged.",
+  "promptChange": "Contract-smoke only adds exact bundled scaffold initialization. Naturalistic prompts, nine expected paths, JSON fields and observable acceptance contract unchanged.",
+  "evaluatorCorrection": "evaluations/slidev-hyperframes/evaluator-correction-epoch-3.json",
+  "preflight": {
+    "report": "projects/slidev-hyperframes/artifacts/generator-golden/final-preview/verification/verification.json",
+    "passed": true,
+    "cases": 46,
+    "cleanInstall": true,
+    "productionBuild": true,
+    "singlefileBuild": true,
+    "manualPassed": true,
+    "sourceUnchanged": true,
+    "previewSha256": "be59982edd2dce2e1d7d89beeb09f7649351f50cb81501c27ed380f2c8865c40",
+    "boundaryPositiveAndNegative": "projects/slidev-hyperframes/artifacts/evaluator-epochs/epoch-3-qualified-boundary-probes/selection-verification.json"
+  },
+  "priorFailedCohorts": [
+    "evaluations/slidev-hyperframes/cohort-epoch-1-summary.json",
+    "evaluations/slidev-hyperframes/cohort-epoch-2-summary.json"
+  ],
+  "commands": "projects/slidev-hyperframes/artifacts/commands/sol-release-v3.json",
+  "nativeCommands": "projects/slidev-hyperframes/artifacts/commands/native-release-v3.json",
+  "modelException": "Fresh own-skill Spark account rejections retained; scoped openai-codex/gpt-5.6-sol exception explicitly recorded in both backlog rows.",
+  "concurrency": {
+    "authors": 4,
+    "nativeGraders": 2
+  },
+  "authorOutputRepairs": false
+}

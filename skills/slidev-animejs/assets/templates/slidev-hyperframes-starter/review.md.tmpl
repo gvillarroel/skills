@@ -1,0 +1,23 @@
+# HyperFrames deck review
+
+The generator copied the complete standalone HyperFrames, dynamic-layout and diagram-style packs. Core composition, local font, palette and vendor resources remain unchanged. `HyperframeStory.vue` and `data/hyperframes-story.json` are editable deck inputs; change titles, cues, palette and compact layout settings in JSON first. The generated Mermaid setup reads that same colorset, so plain fences inherit shared colors and Open Sans through the unchanged renderer hook; explicit source styles remain supported.
+
+The pinned player is `@hyperframes/player` 0.8.134 with local core 0.8.134 and GSAP 3.14.2. Vue/Slidev/theme and compatible build overrides are declared in package.json. No CDN recovery is needed. Local Open Sans is registered in the host and inside the composition.
+
+Native `$clicks` selects explicit JSON cue seconds on both live slides; backward clicks restore the same state. Editing seconds needs only JSON; changing the number of entries also requires both frontmatter click counts to equal length minus one. HyperframePreview provides accessible Play animation/Pause animation controls, separate scene/control rows, reduced-motion handling and paused reentry through slide-leave cleanup. A cell uses CSS logical `ResizeObserverEntry.contentRect` dimensions and the collection's inner content budget, reserving 48 px for controls. Narrow widths paginate the two stable component IDs without shrinking fonts.
+
+Static export seeks the explicit export time. The single-file direct-open HTML uses the supported deterministic SVG fallback with inline local Open Sans and omits live controls. Custom composition offline posters require separate qualification.
+
+The generator ran the bundled HyperFrames and layout static checkers successfully. It did not install dependencies, build, run browser checks or publish.
+
+Reproduce static checks and perform the pending build/native qualification:
+
+```text
+uv run --script <skill-root>/scripts/check_hyperframes_deck.py --deck <deck-root> --require-bundled-runtime --direct-open
+uv run --script <skill-root>/scripts/check_layout_deck.py --deck <deck-root> --require-bundled-runtime
+npm --prefix <deck-root> install
+npm --prefix <deck-root> run build
+npm --prefix <deck-root> run build:html
+```
+
+Serve the production build over HTTP and inspect every configured cue, backward replay, real preview advancement, inactive pause/return, full labels, readable inner cells at 680 CSS px, every page, loaded fonts, reduced motion, and zero errors/remote requests. Open dist/slidev.html directly and inspect the same-model deterministic state and loaded font. Browser/build outcomes remain unverified until those checks occur.

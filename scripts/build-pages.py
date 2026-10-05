@@ -214,7 +214,7 @@ PUBLISHED_EXAMPLE_SETS = [
         "title": "Slidev ECharts Chart-Type Lab",
         "href": "examples/slidev-echarts/",
         "kind": "Slidev",
-        "description": "A single-file validation deck for ECharts chart coverage inside Slidev.",
+        "description": "ECharts charts, dynamic layouts and an editable HyperFrames starter inside Slidev, with reusable preview controls and deterministic export states.",
     },
     {
         "id": "slidev-animejs",
@@ -222,7 +222,7 @@ PUBLISHED_EXAMPLE_SETS = [
         "title": "Slidev Anime.js Animation Lab",
         "href": "examples/slidev-animejs/",
         "kind": "Slidev",
-        "description": "A built Slidev deck covering Anime.js animation patterns and SVG assets.",
+        "description": "Anime.js patterns, SVG assets, dynamic layouts and an editable HyperFrames starter inside Slidev, with reusable preview controls and deterministic export states.",
     },
     {
         "id": "ai-concept-videos",

@@ -1,0 +1,1446 @@
+{
+  "epoch": 2,
+  "status": "Complete independent audit of all eight epoch-two author traces",
+  "sourceSeal": "evaluations/slidev-hyperframes/frozen-evaluation-epoch-2.json",
+  "sourceProfiles": {
+    "slidev-echarts": {
+      "fileCount": 72,
+      "sha256": "057eedad232a9991fd0a5c998a5146c56866d38c212d0ac5fa6417352b3a6c0b"
+    },
+    "slidev-animejs": {
+      "fileCount": 68,
+      "sha256": "73043c6789d227ad467a8085d008b032f6d10f29a00a037d2d88b12a0b0d126a"
+    }
+  },
+  "summarizer": "scripts/summarize-pi-json-events.py",
+  "requiredFlags": [
+    "--require-model gpt-5.6-sol",
+    "--require-tool-call",
+    "--fail-on-invalid-json",
+    "--fail-on-tool-error",
+    "--require-read ../prompt.md"
+  ],
+  "readBoundary": "Prompt plus owning standalone skill and generated deck only; no fixtures, sibling bundles, repository documents or external file paths",
+  "commandsReviewed": "Full bash strings from tool_execution_start events, not truncated summarizer previews; checks use separate calls, set -e, && or explicit nonzero failure paths. No masked failed check, npm install, package build or publish command observed.",
+  "largeRuntimeReads": "HyperframeSlide.vue and, for actual collection authors, SlidevCollection.vue are directly required lifecycle/native measurement runtime sources; minified vendor core was copied/hashed, never read as source text.",
+  "runs": [
+    {
+      "run": "20261005-slidev-hyperframes-echarts-sol-v2-contract",
+      "owner": "slidev-echarts",
+      "strict": true,
+      "readPolicy": true,
+      "independentPayload": {
+        "fileCount": 72,
+        "sha256": "057eedad232a9991fd0a5c998a5146c56866d38c212d0ac5fa6417352b3a6c0b",
+        "manifestSha256": "057eedad232a9991fd0a5c998a5146c56866d38c212d0ac5fa6417352b3a6c0b",
+        "matchesManifest": true,
+        "matchesCanonicalEpoch2": true,
+        "canonicalDifferences": []
+      },
+      "copiedRuntime": {
+        "filesChecked": 14,
+        "differences": []
+      },
+      "outputs": {
+        "required": 9,
+        "exactPaths": [
+          "deck/slides.md",
+          "deck/package.json",
+          "deck/components/HyperframeStory.vue",
+          "deck/data/hyperframes-story.json",
+          "deck/components/HyperframeSlide.vue",
+          "deck/lib/hyperframes.js",
+          "deck/public/hyperframes/starter.html",
+          "deck/public/hyperframes/scene.js",
+          "deliverables/hyperframes-review.md"
+        ],
+        "unchanged": true,
+        "differences": []
+      },
+      "commands": [
+        {
+          "line": 101,
+          "command": "find skills/slidev-echarts/assets/templates/slidev-hyperframes -type f -printf '%P\\n' | sort",
+          "classification": "owning runtime inventory or generated output assertion",
+          "policyPassed": true
+        },
+        {
+          "line": 102,
+          "command": "find skills/slidev-echarts/assets/templates/slidev-layouts -type f -printf '%P\\n' | sort",
+          "classification": "owning runtime inventory or generated output assertion",
+          "policyPassed": true
+        },
+        {
+          "line": 182,
+          "command": "mkdir -p deck deliverables && cp -R skills/slidev-echarts/assets/templates/slidev-hyperframes/. deck/ && cp -R skills/slidev-echarts/assets/templates/slidev-layouts/. deck/",
+          "classification": "owning runtime or generated resource copy/integrity check",
+          "policyPassed": true
+        },
+        {
+          "line": 324,
+          "command": "uv run --script skills/slidev-echarts/scripts/check_hyperframes_deck.py --deck deck --require-bundled-runtime --direct-open",
+          "classification": "owning bundled static checker",
+          "policyPassed": true
+        },
+        {
+          "line": 325,
+          "command": "uv run --script skills/slidev-echarts/scripts/check_layout_deck.py --deck deck --require-bundled-runtime",
+          "classification": "owning bundled static checker",
+          "policyPassed": true
+        }
+      ],
+      "errors": [],
+      "native": {
+        "passed": true,
+        "caseCount": 46,
+        "report": "C:/Users/villa/dev/skills/projects/slidev-hyperframes/artifacts/pi-v2-final/20261005-slidev-hyperframes-echarts-sol-v2-contract/verification.json",
+        "evaluatorSha256": "e16c24f84c54f074ee65e542370ae5aa0c727acb3127a78c00dbaae47eec8bed"
+      },
+      "dependencyPolicy": {
+        "passed": true,
+        "authorInstallOrBuildObserved": false,
+        "declaredPlayer": "0.8.134",
+        "declaredBuild": "slidev build --base ./",
+        "declaredHtmlBuild": "node --experimental-strip-types scripts/build-hyperframes-html.ts",
+        "compatibilityOverrides": {
+          "vite": "8.0.16",
+          "unocss": "66.7.2",
+          "lightningcss": "1.32.0"
+        }
+      },
+      "readMetrics": {
+        "calls": 13,
+        "uniquePaths": 13,
+        "totalSerializedResultBytes": 98210,
+        "largest": {
+          "path": "deck/components/SlidevCollection.vue",
+          "calls": 1,
+          "resultBytes": 13768
+        },
+        "paths": [
+          {
+            "path": "../prompt.md",
+            "calls": 1,
+            "resultBytes": 3796
+          },
+          {
+            "path": "skills/slidev-echarts/SKILL.md",
+            "calls": 1,
+            "resultBytes": 12303
+          },
+          {
+            "path": "skills/slidev-echarts/references/dynamic-layouts.md",
+            "calls": 1,
+            "resultBytes": 10075
+          },
+          {
+            "path": "skills/slidev-echarts/references/colorset-contract.md",
+            "calls": 1,
+            "resultBytes": 8020
+          },
+          {
+            "path": "skills/slidev-echarts/references/visual-tokens.md",
+            "calls": 1,
+            "resultBytes": 3859
+          },
+          {
+            "path": "skills/slidev-echarts/references/hyperframes-integration.md",
+            "calls": 1,
+            "resultBytes": 10278
+          },
+          {
+            "path": "skills/slidev-echarts/assets/palettes/colorsets.json",
+            "calls": 1,
+            "resultBytes": 6991
+          },
+          {
+            "path": "skills/slidev-echarts/scripts/check_hyperframes_deck.py",
+            "calls": 1,
+            "resultBytes": 4610
+          },
+          {
+            "path": "deck/components/SlidevLayout.vue",
+            "calls": 1,
+            "resultBytes": 9238
+          },
+          {
+            "path": "deck/components/HyperframeSlide.vue",
+            "calls": 1,
+            "resultBytes": 12914
+          },
+          {
+            "path": "deck/lib/hyperframes-vite.ts",
+            "calls": 1,
+            "resultBytes": 859
+          },
+          {
+            "path": "deck/scripts/build-hyperframes-html.ts",
+            "calls": 1,
+            "resultBytes": 1499
+          },
+          {
+            "path": "deck/components/SlidevCollection.vue",
+            "calls": 1,
+            "resultBytes": 13768
+          }
+        ]
+      },
+      "summaryPath": "evaluations/runs/20261005-slidev-hyperframes-echarts-sol-v2-contract/read-surface-summary.json"
+    },
+    {
+      "run": "20261005-slidev-hyperframes-echarts-sol-v2-natural-1",
+      "owner": "slidev-echarts",
+      "strict": true,
+      "readPolicy": true,
+      "independentPayload": {
+        "fileCount": 72,
+        "sha256": "057eedad232a9991fd0a5c998a5146c56866d38c212d0ac5fa6417352b3a6c0b",
+        "manifestSha256": "057eedad232a9991fd0a5c998a5146c56866d38c212d0ac5fa6417352b3a6c0b",
+        "matchesManifest": true,
+        "matchesCanonicalEpoch2": true,
+        "canonicalDifferences": []
+      },
+      "copiedRuntime": {
+        "filesChecked": 14,
+        "differences": []
+      },
+      "outputs": {
+        "required": 9,
+        "exactPaths": [
+          "deck/slides.md",
+          "deck/package.json",
+          "deck/components/HyperframeStory.vue",
+          "deck/data/hyperframes-story.json",
+          "deck/components/HyperframeSlide.vue",
+          "deck/lib/hyperframes.js",
+          "deck/public/hyperframes/starter.html",
+          "deck/public/hyperframes/scene.js",
+          "deliverables/hyperframes-review.md"
+        ],
+        "unchanged": true,
+        "differences": []
+      },
+      "commands": [
+        {
+          "line": 102,
+          "command": "find skills/slidev-echarts/assets/templates/slidev-hyperframes -type f -print",
+          "classification": "owning runtime inventory or generated output assertion",
+          "policyPassed": true
+        },
+        {
+          "line": 103,
+          "command": "find skills/slidev-echarts/assets/templates/slidev-layouts -type f -print",
+          "classification": "owning runtime inventory or generated output assertion",
+          "policyPassed": true
+        },
+        {
+          "line": 246,
+          "command": "mkdir -p deck deliverables && cp -R skills/slidev-echarts/assets/templates/slidev-hyperframes/. deck/",
+          "classification": "owning runtime or generated resource copy/integrity check",
+          "policyPassed": true
+        },
+        {
+          "line": 349,
+          "command": "uv run --script skills/slidev-echarts/scripts/check_hyperframes_deck.py --deck deck --require-bundled-runtime --direct-open",
+          "classification": "owning bundled static checker",
+          "policyPassed": true
+        },
+        {
+          "line": 436,
+          "command": "set -e\nwhile IFS= read -r src; do rel=\"${src#skills/slidev-echarts/assets/templates/slidev-hyperframes/}\"; cmp -s \"$src\" \"deck/$rel\"; done < <(find skills/slidev-echarts/assets/templates/slidev-hyperframes -type f -print)\necho \"Copied HyperFrames template files are byte-identical.\"",
+          "classification": "owning runtime or generated resource copy/integrity check",
+          "policyPassed": true
+        },
+        {
+          "line": 437,
+          "command": "python - <<'PY'\nimport json\nfrom pathlib import Path\ncfg=json.loads(Path('deck/data/hyperframes-story.json').read_text())\nassert cfg['cueTimes']==[0,4,9]\nassert cfg['exportTime']==9\nassert cfg['colorset']=='colorset1'\nslides=Path('deck/slides.md').read_text()\nfor title in ['How the level changes','A reusable live cell','Exported handoff']:\n    assert slides.count(title)==1\nassert slides.count('clicks: 2')==2\nprint('Story data and three requested slide titles checked.')\nPY",
+          "classification": "owning runtime inventory or generated output assertion",
+          "policyPassed": true
+        },
+        {
+          "line": 496,
+          "command": "uv run --script skills/slidev-echarts/scripts/check_hyperframes_deck.py --deck deck --require-bundled-runtime --direct-open",
+          "classification": "owning bundled static checker",
+          "policyPassed": true
+        }
+      ],
+      "errors": [],
+      "native": {
+        "passed": true,
+        "caseCount": 46,
+        "report": "C:/Users/villa/dev/skills/projects/slidev-hyperframes/artifacts/pi-v2-final/20261005-slidev-hyperframes-echarts-sol-v2-natural-1/verification.json",
+        "evaluatorSha256": "e16c24f84c54f074ee65e542370ae5aa0c727acb3127a78c00dbaae47eec8bed"
+      },
+      "dependencyPolicy": {
+        "passed": true,
+        "authorInstallOrBuildObserved": false,
+        "declaredPlayer": "0.8.134",
+        "declaredBuild": "slidev build --base ./",
+        "declaredHtmlBuild": "node --experimental-strip-types scripts/build-hyperframes-html.ts",
+        "compatibilityOverrides": {
+          "lightningcss": "1.32.0",
+          "unocss": "66.7.2",
+          "vite": "8.0.16"
+        }
+      },
+      "readMetrics": {
+        "calls": 14,
+        "uniquePaths": 14,
+        "totalSerializedResultBytes": 78439,
+        "largest": {
+          "path": "skills/slidev-echarts/assets/templates/slidev-hyperframes/components/HyperframeSlide.vue",
+          "calls": 1,
+          "resultBytes": 12914
+        },
+        "paths": [
+          {
+            "path": "../prompt.md",
+            "calls": 1,
+            "resultBytes": 2885
+          },
+          {
+            "path": "skills/slidev-echarts/SKILL.md",
+            "calls": 1,
+            "resultBytes": 12303
+          },
+          {
+            "path": "skills/slidev-echarts/references/colorset-contract.md",
+            "calls": 1,
+            "resultBytes": 8020
+          },
+          {
+            "path": "skills/slidev-echarts/references/visual-tokens.md",
+            "calls": 1,
+            "resultBytes": 3859
+          },
+          {
+            "path": "skills/slidev-echarts/references/dynamic-layouts.md",
+            "calls": 1,
+            "resultBytes": 10075
+          },
+          {
+            "path": "skills/slidev-echarts/references/hyperframes-integration.md",
+            "calls": 1,
+            "resultBytes": 10278
+          },
+          {
+            "path": "skills/slidev-echarts/assets/palettes/colorsets.json",
+            "calls": 1,
+            "resultBytes": 6991
+          },
+          {
+            "path": "skills/slidev-echarts/assets/templates/slidev-hyperframes/scripts/build-hyperframes-html.ts",
+            "calls": 1,
+            "resultBytes": 1499
+          },
+          {
+            "path": "skills/slidev-echarts/assets/templates/slidev-hyperframes/public/hyperframes/scene-model.js",
+            "calls": 1,
+            "resultBytes": 3656
+          },
+          {
+            "path": "skills/slidev-echarts/assets/templates/slidev-hyperframes/lib/hyperframes-vite.ts",
+            "calls": 1,
+            "resultBytes": 859
+          },
+          {
+            "path": "skills/slidev-echarts/assets/templates/slidev-hyperframes/public/hyperframes/scene.js",
+            "calls": 1,
+            "resultBytes": 1542
+          },
+          {
+            "path": "skills/slidev-echarts/assets/templates/slidev-hyperframes/lib/hyperframes.js",
+            "calls": 1,
+            "resultBytes": 2446
+          },
+          {
+            "path": "skills/slidev-echarts/assets/templates/slidev-hyperframes/public/hyperframes/starter.html",
+            "calls": 1,
+            "resultBytes": 1112
+          },
+          {
+            "path": "skills/slidev-echarts/assets/templates/slidev-hyperframes/components/HyperframeSlide.vue",
+            "calls": 1,
+            "resultBytes": 12914
+          }
+        ]
+      },
+      "summaryPath": "evaluations/runs/20261005-slidev-hyperframes-echarts-sol-v2-natural-1/read-surface-summary.json"
+    },
+    {
+      "run": "20261005-slidev-hyperframes-echarts-sol-v2-natural-2",
+      "owner": "slidev-echarts",
+      "strict": true,
+      "readPolicy": true,
+      "independentPayload": {
+        "fileCount": 72,
+        "sha256": "057eedad232a9991fd0a5c998a5146c56866d38c212d0ac5fa6417352b3a6c0b",
+        "manifestSha256": "057eedad232a9991fd0a5c998a5146c56866d38c212d0ac5fa6417352b3a6c0b",
+        "matchesManifest": true,
+        "matchesCanonicalEpoch2": true,
+        "canonicalDifferences": []
+      },
+      "copiedRuntime": {
+        "filesChecked": 14,
+        "differences": []
+      },
+      "outputs": {
+        "required": 9,
+        "exactPaths": [
+          "deck/slides.md",
+          "deck/package.json",
+          "deck/components/HyperframeStory.vue",
+          "deck/data/hyperframes-story.json",
+          "deck/components/HyperframeSlide.vue",
+          "deck/lib/hyperframes.js",
+          "deck/public/hyperframes/starter.html",
+          "deck/public/hyperframes/scene.js",
+          "deliverables/hyperframes-review.md"
+        ],
+        "unchanged": true,
+        "differences": []
+      },
+      "commands": [
+        {
+          "line": 106,
+          "command": "find skills/slidev-echarts/assets/templates/slidev-hyperframes -type f -print",
+          "classification": "owning runtime inventory or generated output assertion",
+          "policyPassed": true
+        },
+        {
+          "line": 107,
+          "command": "find skills/slidev-echarts/assets/templates/slidev-layouts -type f -print",
+          "classification": "owning runtime inventory or generated output assertion",
+          "policyPassed": true
+        },
+        {
+          "line": 266,
+          "command": "mkdir -p deck deliverables && cp -R skills/slidev-echarts/assets/templates/slidev-hyperframes/. deck/ && cp -R skills/slidev-echarts/assets/templates/slidev-layouts/. deck/",
+          "classification": "owning runtime or generated resource copy/integrity check",
+          "policyPassed": true
+        },
+        {
+          "line": 357,
+          "command": "mkdir -p deck/assets/fonts && cp deck/public/hyperframes/fonts/open-sans-latin-wght-normal.woff2 deck/assets/fonts/ && cp deck/public/hyperframes/fonts/OFL.txt deck/assets/fonts/",
+          "classification": "owning runtime or generated resource copy/integrity check",
+          "policyPassed": true
+        },
+        {
+          "line": 2346,
+          "command": "uv run --script skills/slidev-echarts/scripts/check_hyperframes_deck.py --deck deck --require-bundled-runtime --direct-open",
+          "classification": "owning bundled static checker",
+          "policyPassed": true
+        },
+        {
+          "line": 2347,
+          "command": "uv run --script skills/slidev-echarts/scripts/check_layout_deck.py --deck deck --require-bundled-runtime",
+          "classification": "owning bundled static checker",
+          "policyPassed": true
+        },
+        {
+          "line": 2595,
+          "command": "node --input-type=module -e \"import fs from 'node:fs'; import { planSlideLayout } from './deck/lib/slidev-layouts.mjs'; const c=JSON.parse(fs.readFileSync('./deck/data/hyperframes-story.json','utf8')); const p=planSlideLayout({items:c.layoutItems,mode:'grid',columns:c.compact.columns,rows:1,width:680,height:c.compact.height,gap:c.compact.gap,minItemWidth:c.compact.minItemWidth,minItemHeight:c.compact.minItemHeight,pageSize:2,colorset:c.colorset,categoryOrder:c.layoutItems.map(x=>x.category)}); const live=p.items[0]; if(!p.fits || live.contentWidth < 245 || c.compact.playerHeight < 152) process.exit(1); console.log(JSON.stringify({fits:p.fits,cardWidth:live.width,contentWidth:live.contentWidth,contentHeight:live.contentHeight,playerHeight:c.compact.playerHeight,occupiedColumns:p.occupiedColumns},null,2));\"",
+          "classification": "owning runtime inventory or generated output assertion",
+          "policyPassed": true
+        }
+      ],
+      "errors": [],
+      "native": {
+        "passed": true,
+        "caseCount": 46,
+        "report": "C:/Users/villa/dev/skills/projects/slidev-hyperframes/artifacts/pi-v2-final/20261005-slidev-hyperframes-echarts-sol-v2-natural-2/verification.json",
+        "evaluatorSha256": "e16c24f84c54f074ee65e542370ae5aa0c727acb3127a78c00dbaae47eec8bed"
+      },
+      "dependencyPolicy": {
+        "passed": true,
+        "authorInstallOrBuildObserved": false,
+        "declaredPlayer": "0.8.134",
+        "declaredBuild": "slidev build --base ./",
+        "declaredHtmlBuild": "node --experimental-strip-types scripts/build-hyperframes-html.ts",
+        "compatibilityOverrides": {
+          "vite": "8.0.16",
+          "unocss": "66.7.2",
+          "lightningcss": "1.32.0"
+        }
+      },
+      "readMetrics": {
+        "calls": 14,
+        "uniquePaths": 14,
+        "totalSerializedResultBytes": 105206,
+        "largest": {
+          "path": "skills/slidev-echarts/assets/templates/slidev-layouts/components/SlidevCollection.vue",
+          "calls": 1,
+          "resultBytes": 13768
+        },
+        "paths": [
+          {
+            "path": "../prompt.md",
+            "calls": 1,
+            "resultBytes": 2885
+          },
+          {
+            "path": "skills/slidev-echarts/SKILL.md",
+            "calls": 1,
+            "resultBytes": 12303
+          },
+          {
+            "path": "skills/slidev-echarts/references/visual-tokens.md",
+            "calls": 1,
+            "resultBytes": 3859
+          },
+          {
+            "path": "skills/slidev-echarts/references/colorset-contract.md",
+            "calls": 1,
+            "resultBytes": 8020
+          },
+          {
+            "path": "skills/slidev-echarts/references/hyperframes-integration.md",
+            "calls": 1,
+            "resultBytes": 10278
+          },
+          {
+            "path": "skills/slidev-echarts/references/dynamic-layouts.md",
+            "calls": 1,
+            "resultBytes": 10075
+          },
+          {
+            "path": "skills/slidev-echarts/assets/palettes/colorsets.json",
+            "calls": 1,
+            "resultBytes": 6991
+          },
+          {
+            "path": "skills/slidev-echarts/assets/templates/slidev-hyperframes/scripts/build-hyperframes-html.ts",
+            "calls": 1,
+            "resultBytes": 1499
+          },
+          {
+            "path": "skills/slidev-echarts/assets/templates/slidev-hyperframes/lib/hyperframes.js",
+            "calls": 1,
+            "resultBytes": 2446
+          },
+          {
+            "path": "skills/slidev-echarts/assets/templates/slidev-hyperframes/components/HyperframeSlide.vue",
+            "calls": 1,
+            "resultBytes": 12914
+          },
+          {
+            "path": "skills/slidev-echarts/assets/templates/slidev-hyperframes/lib/hyperframes-vite.ts",
+            "calls": 1,
+            "resultBytes": 859
+          },
+          {
+            "path": "skills/slidev-echarts/assets/templates/slidev-layouts/components/SlidevLayout.vue",
+            "calls": 1,
+            "resultBytes": 9238
+          },
+          {
+            "path": "skills/slidev-echarts/assets/templates/slidev-layouts/lib/slidev-layouts.mjs",
+            "calls": 1,
+            "resultBytes": 10071
+          },
+          {
+            "path": "skills/slidev-echarts/assets/templates/slidev-layouts/components/SlidevCollection.vue",
+            "calls": 1,
+            "resultBytes": 13768
+          }
+        ]
+      },
+      "summaryPath": "evaluations/runs/20261005-slidev-hyperframes-echarts-sol-v2-natural-2/read-surface-summary.json"
+    },
+    {
+      "run": "20261005-slidev-hyperframes-echarts-sol-v2-natural-3",
+      "owner": "slidev-echarts",
+      "strict": true,
+      "readPolicy": true,
+      "independentPayload": {
+        "fileCount": 72,
+        "sha256": "057eedad232a9991fd0a5c998a5146c56866d38c212d0ac5fa6417352b3a6c0b",
+        "manifestSha256": "057eedad232a9991fd0a5c998a5146c56866d38c212d0ac5fa6417352b3a6c0b",
+        "matchesManifest": true,
+        "matchesCanonicalEpoch2": true,
+        "canonicalDifferences": []
+      },
+      "copiedRuntime": {
+        "filesChecked": 14,
+        "differences": []
+      },
+      "outputs": {
+        "required": 9,
+        "exactPaths": [
+          "deck/slides.md",
+          "deck/package.json",
+          "deck/components/HyperframeStory.vue",
+          "deck/data/hyperframes-story.json",
+          "deck/components/HyperframeSlide.vue",
+          "deck/lib/hyperframes.js",
+          "deck/public/hyperframes/starter.html",
+          "deck/public/hyperframes/scene.js",
+          "deliverables/hyperframes-review.md"
+        ],
+        "unchanged": true,
+        "differences": []
+      },
+      "commands": [
+        {
+          "line": 98,
+          "command": "find skills/slidev-echarts/assets/templates/slidev-hyperframes -type f -print",
+          "classification": "owning runtime inventory or generated output assertion",
+          "policyPassed": true
+        },
+        {
+          "line": 99,
+          "command": "find skills/slidev-echarts/assets/templates/slidev-layouts -type f -print",
+          "classification": "owning runtime inventory or generated output assertion",
+          "policyPassed": true
+        },
+        {
+          "line": 185,
+          "command": "mkdir -p deck deliverables && cp -R skills/slidev-echarts/assets/templates/slidev-hyperframes/. deck/ && cp -R skills/slidev-echarts/assets/templates/slidev-layouts/. deck/ && find deck -type f -print",
+          "classification": "owning runtime or generated resource copy/integrity check",
+          "policyPassed": true
+        },
+        {
+          "line": 3102,
+          "command": "uv run --script skills/slidev-echarts/scripts/check_hyperframes_deck.py --deck deck --require-bundled-runtime --direct-open",
+          "classification": "owning bundled static checker",
+          "policyPassed": true
+        },
+        {
+          "line": 3103,
+          "command": "uv run --script skills/slidev-echarts/scripts/check_layout_deck.py --deck deck --require-bundled-runtime",
+          "classification": "owning bundled static checker",
+          "policyPassed": true
+        },
+        {
+          "line": 3104,
+          "command": "diff -qr skills/slidev-echarts/assets/templates/slidev-hyperframes/components/HyperframeSlide.vue deck/components/HyperframeSlide.vue && diff -qr skills/slidev-echarts/assets/templates/slidev-hyperframes/lib/hyperframes.js deck/lib/hyperframes.js && diff -qr skills/slidev-echarts/assets/templates/slidev-hyperframes/public deck/public && diff -qr skills/slidev-echarts/assets/templates/slidev-layouts/components/SlidevLayout.vue deck/components/SlidevLayout.vue && diff -qr skills/slidev-echarts/assets/templates/slidev-layouts/components/SlidevCollection.vue deck/components/SlidevCollection.vue && diff -qr skills/slidev-echarts/assets/templates/slidev-layouts/lib/slidev-layouts.mjs deck/lib/slidev-layouts.mjs",
+          "classification": "owning runtime or generated resource copy/integrity check",
+          "policyPassed": true
+        },
+        {
+          "line": 3881,
+          "command": "uv run --script skills/slidev-echarts/scripts/check_hyperframes_deck.py --deck deck --require-bundled-runtime --direct-open",
+          "classification": "owning bundled static checker",
+          "policyPassed": true
+        },
+        {
+          "line": 3882,
+          "command": "uv run --script skills/slidev-echarts/scripts/check_layout_deck.py --deck deck --require-bundled-runtime",
+          "classification": "owning bundled static checker",
+          "policyPassed": true
+        },
+        {
+          "line": 3883,
+          "command": "set -e; for root in slidev-hyperframes slidev-layouts; do while IFS= read -r src; do rel=\"${src#skills/slidev-echarts/assets/templates/$root/}\"; cmp -s \"$src\" \"deck/$rel\" || { echo \"DIFF $rel\"; exit 1; }; done < <(find \"skills/slidev-echarts/assets/templates/$root\" -type f -print); done; echo 'All copied template files are byte-identical.'",
+          "classification": "owning runtime or generated resource copy/integrity check",
+          "policyPassed": true
+        },
+        {
+          "line": 4956,
+          "command": "uv run --script skills/slidev-echarts/scripts/check_hyperframes_deck.py --deck deck --require-bundled-runtime --direct-open",
+          "classification": "owning bundled static checker",
+          "policyPassed": true
+        },
+        {
+          "line": 4957,
+          "command": "uv run --script skills/slidev-echarts/scripts/check_layout_deck.py --deck deck --require-bundled-runtime",
+          "classification": "owning bundled static checker",
+          "policyPassed": true
+        },
+        {
+          "line": 4958,
+          "command": "python -m json.tool deck/package.json >/dev/null && python -m json.tool deck/data/hyperframes-story.json >/dev/null && echo 'JSON files are valid.'",
+          "classification": "owning runtime inventory or generated output assertion",
+          "policyPassed": true
+        },
+        {
+          "line": 4959,
+          "command": "set -e; for root in slidev-hyperframes slidev-layouts; do while IFS= read -r src; do rel=\"${src#skills/slidev-echarts/assets/templates/$root/}\"; cmp -s \"$src\" \"deck/$rel\" || { echo \"DIFF $rel\"; exit 1; }; done < <(find \"skills/slidev-echarts/assets/templates/$root\" -type f -print); done; echo 'All copied template files are byte-identical.'",
+          "classification": "owning runtime or generated resource copy/integrity check",
+          "policyPassed": true
+        }
+      ],
+      "errors": [],
+      "native": {
+        "passed": false,
+        "caseCount": 46,
+        "report": "C:/Users/villa/dev/skills/projects/slidev-hyperframes/artifacts/pi-v2-final/20261005-slidev-hyperframes-echarts-sol-v2-natural-3/verification.json",
+        "evaluatorSha256": "e16c24f84c54f074ee65e542370ae5aa0c727acb3127a78c00dbaae47eec8bed"
+      },
+      "dependencyPolicy": {
+        "passed": true,
+        "authorInstallOrBuildObserved": false,
+        "declaredPlayer": "0.8.134",
+        "declaredBuild": "slidev build --base ./",
+        "declaredHtmlBuild": "node --experimental-strip-types scripts/build-hyperframes-html.ts",
+        "compatibilityOverrides": {
+          "lightningcss": "1.32.0",
+          "unocss": "66.7.2",
+          "vite": "8.0.16"
+        }
+      },
+      "readMetrics": {
+        "calls": 11,
+        "uniquePaths": 11,
+        "totalSerializedResultBytes": 78921,
+        "largest": {
+          "path": "deck/components/HyperframeSlide.vue",
+          "calls": 1,
+          "resultBytes": 12914
+        },
+        "paths": [
+          {
+            "path": "../prompt.md",
+            "calls": 1,
+            "resultBytes": 2885
+          },
+          {
+            "path": "skills/slidev-echarts/SKILL.md",
+            "calls": 1,
+            "resultBytes": 12303
+          },
+          {
+            "path": "skills/slidev-echarts/references/hyperframes-integration.md",
+            "calls": 1,
+            "resultBytes": 10278
+          },
+          {
+            "path": "skills/slidev-echarts/references/dynamic-layouts.md",
+            "calls": 1,
+            "resultBytes": 10075
+          },
+          {
+            "path": "skills/slidev-echarts/references/visual-tokens.md",
+            "calls": 1,
+            "resultBytes": 3859
+          },
+          {
+            "path": "skills/slidev-echarts/references/colorset-contract.md",
+            "calls": 1,
+            "resultBytes": 8020
+          },
+          {
+            "path": "skills/slidev-echarts/assets/palettes/colorsets.json",
+            "calls": 1,
+            "resultBytes": 6991
+          },
+          {
+            "path": "deck/components/HyperframeSlide.vue",
+            "calls": 1,
+            "resultBytes": 12914
+          },
+          {
+            "path": "deck/scripts/build-hyperframes-html.ts",
+            "calls": 1,
+            "resultBytes": 1499
+          },
+          {
+            "path": "deck/lib/hyperframes-vite.ts",
+            "calls": 1,
+            "resultBytes": 859
+          },
+          {
+            "path": "deck/components/SlidevLayout.vue",
+            "calls": 1,
+            "resultBytes": 9238
+          }
+        ]
+      },
+      "summaryPath": "evaluations/runs/20261005-slidev-hyperframes-echarts-sol-v2-natural-3/read-surface-summary.json"
+    },
+    {
+      "run": "20261005-slidev-hyperframes-animejs-sol-v2-contract",
+      "owner": "slidev-animejs",
+      "strict": false,
+      "readPolicy": true,
+      "independentPayload": {
+        "fileCount": 68,
+        "sha256": "73043c6789d227ad467a8085d008b032f6d10f29a00a037d2d88b12a0b0d126a",
+        "manifestSha256": "73043c6789d227ad467a8085d008b032f6d10f29a00a037d2d88b12a0b0d126a",
+        "matchesManifest": true,
+        "matchesCanonicalEpoch2": true,
+        "canonicalDifferences": []
+      },
+      "copiedRuntime": {
+        "filesChecked": 14,
+        "differences": []
+      },
+      "outputs": {
+        "required": 9,
+        "exactPaths": [
+          "deck/slides.md",
+          "deck/package.json",
+          "deck/components/HyperframeStory.vue",
+          "deck/data/hyperframes-story.json",
+          "deck/components/HyperframeSlide.vue",
+          "deck/lib/hyperframes.js",
+          "deck/public/hyperframes/starter.html",
+          "deck/public/hyperframes/scene.js",
+          "deliverables/hyperframes-review.md"
+        ],
+        "unchanged": true,
+        "differences": []
+      },
+      "commands": [
+        {
+          "line": 139,
+          "command": "mkdir -p deck && cp -R skills/slidev-animejs/assets/templates/slidev-hyperframes/. deck/",
+          "classification": "owning runtime or generated resource copy/integrity check",
+          "policyPassed": true
+        },
+        {
+          "line": 167,
+          "command": "find deck -type f -print | sort",
+          "classification": "owning runtime inventory or generated output assertion",
+          "policyPassed": true
+        },
+        {
+          "line": 3448,
+          "command": "uv run --script skills/slidev-animejs/scripts/check_hyperframes_deck.py --deck deck --require-bundled-runtime --direct-open",
+          "classification": "owning bundled static checker",
+          "policyPassed": true
+        },
+        {
+          "line": 4913,
+          "command": "uv run --script skills/slidev-animejs/scripts/check_hyperframes_deck.py --deck deck --require-bundled-runtime --direct-open",
+          "classification": "owning bundled static checker",
+          "policyPassed": true
+        },
+        {
+          "line": 5269,
+          "command": "uv run --script skills/slidev-animejs/scripts/check_hyperframes_deck.py --deck deck --require-bundled-runtime --direct-open",
+          "classification": "owning bundled static checker",
+          "policyPassed": true
+        }
+      ],
+      "errors": [
+        {
+          "line": 5007,
+          "tool": "edit",
+          "text": "Found 2 occurrences of the text in deck/components/HyperframeStory.vue. The text must be unique. Please provide more context to make it unique.",
+          "classification": "Author edit uniqueness failure; required text was not unique in the generated adapter. Retained strict failure despite later successful correction.",
+          "waived": false
+        }
+      ],
+      "native": {
+        "passed": true,
+        "caseCount": 46,
+        "report": "C:/Users/villa/dev/skills/projects/slidev-hyperframes/artifacts/pi-v2-final/20261005-slidev-hyperframes-animejs-sol-v2-contract/verification.json",
+        "evaluatorSha256": "e16c24f84c54f074ee65e542370ae5aa0c727acb3127a78c00dbaae47eec8bed"
+      },
+      "dependencyPolicy": {
+        "passed": true,
+        "authorInstallOrBuildObserved": false,
+        "declaredPlayer": "0.8.134",
+        "declaredBuild": "slidev build --base ./",
+        "declaredHtmlBuild": "node --experimental-strip-types scripts/build-hyperframes-html.ts",
+        "compatibilityOverrides": {
+          "vite": "8.0.16",
+          "unocss": "66.7.2",
+          "lightningcss": "1.32.0"
+        }
+      },
+      "readMetrics": {
+        "calls": 14,
+        "uniquePaths": 14,
+        "totalSerializedResultBytes": 73490,
+        "largest": {
+          "path": "deck/components/HyperframeSlide.vue",
+          "calls": 1,
+          "resultBytes": 12914
+        },
+        "paths": [
+          {
+            "path": "../prompt.md",
+            "calls": 1,
+            "resultBytes": 3796
+          },
+          {
+            "path": "skills/slidev-animejs/SKILL.md",
+            "calls": 1,
+            "resultBytes": 9778
+          },
+          {
+            "path": "skills/slidev-animejs/references/colorset-contract.md",
+            "calls": 1,
+            "resultBytes": 4819
+          },
+          {
+            "path": "skills/slidev-animejs/references/hyperframes-integration.md",
+            "calls": 1,
+            "resultBytes": 10278
+          },
+          {
+            "path": "skills/slidev-animejs/references/dynamic-layouts.md",
+            "calls": 1,
+            "resultBytes": 10075
+          },
+          {
+            "path": "skills/slidev-animejs/references/visual-tokens.md",
+            "calls": 1,
+            "resultBytes": 3725
+          },
+          {
+            "path": "skills/slidev-animejs/assets/palettes/colorsets.json",
+            "calls": 1,
+            "resultBytes": 6991
+          },
+          {
+            "path": "deck/lib/hyperframes.js",
+            "calls": 1,
+            "resultBytes": 2446
+          },
+          {
+            "path": "deck/public/hyperframes/scene-model.js",
+            "calls": 1,
+            "resultBytes": 3656
+          },
+          {
+            "path": "deck/scripts/build-hyperframes-html.ts",
+            "calls": 1,
+            "resultBytes": 1499
+          },
+          {
+            "path": "deck/lib/hyperframes-vite.ts",
+            "calls": 1,
+            "resultBytes": 859
+          },
+          {
+            "path": "deck/components/HyperframeSlide.vue",
+            "calls": 1,
+            "resultBytes": 12914
+          },
+          {
+            "path": "deck/public/hyperframes/starter.html",
+            "calls": 1,
+            "resultBytes": 1112
+          },
+          {
+            "path": "deck/public/hyperframes/scene.js",
+            "calls": 1,
+            "resultBytes": 1542
+          }
+        ]
+      },
+      "summaryPath": "evaluations/runs/20261005-slidev-hyperframes-animejs-sol-v2-contract/read-surface-summary.json"
+    },
+    {
+      "run": "20261005-slidev-hyperframes-animejs-sol-v2-natural-1",
+      "owner": "slidev-animejs",
+      "strict": true,
+      "readPolicy": true,
+      "independentPayload": {
+        "fileCount": 68,
+        "sha256": "73043c6789d227ad467a8085d008b032f6d10f29a00a037d2d88b12a0b0d126a",
+        "manifestSha256": "73043c6789d227ad467a8085d008b032f6d10f29a00a037d2d88b12a0b0d126a",
+        "matchesManifest": true,
+        "matchesCanonicalEpoch2": true,
+        "canonicalDifferences": []
+      },
+      "copiedRuntime": {
+        "filesChecked": 14,
+        "differences": []
+      },
+      "outputs": {
+        "required": 9,
+        "exactPaths": [
+          "deck/slides.md",
+          "deck/package.json",
+          "deck/components/HyperframeStory.vue",
+          "deck/data/hyperframes-story.json",
+          "deck/components/HyperframeSlide.vue",
+          "deck/lib/hyperframes.js",
+          "deck/public/hyperframes/starter.html",
+          "deck/public/hyperframes/scene.js",
+          "deliverables/hyperframes-review.md"
+        ],
+        "unchanged": true,
+        "differences": []
+      },
+      "commands": [
+        {
+          "line": 136,
+          "command": "mkdir -p deck && cp -R skills/slidev-animejs/assets/templates/slidev-hyperframes/. deck/ && find deck -maxdepth 4 -type f -print | sort",
+          "classification": "owning runtime or generated resource copy/integrity check",
+          "policyPassed": true
+        },
+        {
+          "line": 2675,
+          "command": "uv run --script skills/slidev-animejs/scripts/check_hyperframes_deck.py --deck deck --require-bundled-runtime --direct-open",
+          "classification": "owning bundled static checker",
+          "policyPassed": true
+        },
+        {
+          "line": 2908,
+          "command": "set -e\nsrc='skills/slidev-animejs/assets/templates/slidev-hyperframes'\nwhile IFS= read -r file; do cmp -s \"$src/$file\" \"deck/$file\" || { echo \"MISMATCH $file\"; exit 1; }; done < <(cd \"$src\" && find . -type f -print | sort)\npython - <<'PY'\nimport json\nfrom pathlib import Path\ncfg=json.loads(Path('deck/data/hyperframes-story.json').read_text())\nassert cfg['cueTimes'] == [0,4,9]\nassert cfg['exportTime'] == 9\nassert cfg['colorset'] == 'colorset1'\nassert cfg['compactLayout']['columns']\nprint('Template integrity: all copied files match the bundle.')\nprint('Story data: cues [0, 4, 9], export 9, colorset1, compact columns configured.')\nPY",
+          "classification": "owning runtime or generated resource copy/integrity check",
+          "policyPassed": true
+        }
+      ],
+      "errors": [],
+      "native": {
+        "passed": true,
+        "caseCount": 46,
+        "report": "C:/Users/villa/dev/skills/projects/slidev-hyperframes/artifacts/pi-v2-final/20261005-slidev-hyperframes-animejs-sol-v2-natural-1/verification.json",
+        "evaluatorSha256": "e16c24f84c54f074ee65e542370ae5aa0c727acb3127a78c00dbaae47eec8bed"
+      },
+      "dependencyPolicy": {
+        "passed": true,
+        "authorInstallOrBuildObserved": false,
+        "declaredPlayer": "0.8.134",
+        "declaredBuild": "slidev build --base ./",
+        "declaredHtmlBuild": "node --experimental-strip-types scripts/build-hyperframes-html.ts",
+        "compatibilityOverrides": {
+          "vite": "8.0.16",
+          "unocss": "66.7.2",
+          "lightningcss": "1.32.0"
+        }
+      },
+      "readMetrics": {
+        "calls": 14,
+        "uniquePaths": 14,
+        "totalSerializedResultBytes": 69804,
+        "largest": {
+          "path": "deck/components/HyperframeSlide.vue",
+          "calls": 1,
+          "resultBytes": 12914
+        },
+        "paths": [
+          {
+            "path": "../prompt.md",
+            "calls": 1,
+            "resultBytes": 2885
+          },
+          {
+            "path": "skills/slidev-animejs/SKILL.md",
+            "calls": 1,
+            "resultBytes": 9778
+          },
+          {
+            "path": "skills/slidev-animejs/references/colorset-contract.md",
+            "calls": 1,
+            "resultBytes": 4819
+          },
+          {
+            "path": "skills/slidev-animejs/references/hyperframes-integration.md",
+            "calls": 1,
+            "resultBytes": 10278
+          },
+          {
+            "path": "skills/slidev-animejs/references/visual-tokens.md",
+            "calls": 1,
+            "resultBytes": 3725
+          },
+          {
+            "path": "deck/public/hyperframes/starter.html",
+            "calls": 1,
+            "resultBytes": 1112
+          },
+          {
+            "path": "deck/lib/hyperframes-vite.ts",
+            "calls": 1,
+            "resultBytes": 859
+          },
+          {
+            "path": "deck/public/hyperframes/colorsets.json",
+            "calls": 1,
+            "resultBytes": 6991
+          },
+          {
+            "path": "deck/scripts/build-hyperframes-html.ts",
+            "calls": 1,
+            "resultBytes": 1499
+          },
+          {
+            "path": "deck/lib/hyperframes.js",
+            "calls": 1,
+            "resultBytes": 2446
+          },
+          {
+            "path": "deck/components/HyperframeSlide.vue",
+            "calls": 1,
+            "resultBytes": 12914
+          },
+          {
+            "path": "deck/public/hyperframes/scene-model.js",
+            "calls": 1,
+            "resultBytes": 3656
+          },
+          {
+            "path": "deck/public/hyperframes/scene.js",
+            "calls": 1,
+            "resultBytes": 1542
+          },
+          {
+            "path": "skills/slidev-animejs/references/integration-patterns.md",
+            "calls": 1,
+            "resultBytes": 7300
+          }
+        ]
+      },
+      "summaryPath": "evaluations/runs/20261005-slidev-hyperframes-animejs-sol-v2-natural-1/read-surface-summary.json"
+    },
+    {
+      "run": "20261005-slidev-hyperframes-animejs-sol-v2-natural-2",
+      "owner": "slidev-animejs",
+      "strict": false,
+      "readPolicy": true,
+      "independentPayload": {
+        "fileCount": 68,
+        "sha256": "73043c6789d227ad467a8085d008b032f6d10f29a00a037d2d88b12a0b0d126a",
+        "manifestSha256": "73043c6789d227ad467a8085d008b032f6d10f29a00a037d2d88b12a0b0d126a",
+        "matchesManifest": true,
+        "matchesCanonicalEpoch2": true,
+        "canonicalDifferences": []
+      },
+      "copiedRuntime": {
+        "filesChecked": 14,
+        "differences": []
+      },
+      "outputs": {
+        "required": 9,
+        "exactPaths": [
+          "deck/slides.md",
+          "deck/package.json",
+          "deck/components/HyperframeStory.vue",
+          "deck/data/hyperframes-story.json",
+          "deck/components/HyperframeSlide.vue",
+          "deck/lib/hyperframes.js",
+          "deck/public/hyperframes/starter.html",
+          "deck/public/hyperframes/scene.js",
+          "deliverables/hyperframes-review.md"
+        ],
+        "unchanged": true,
+        "differences": []
+      },
+      "commands": [
+        {
+          "line": 126,
+          "command": "mkdir -p deck && cp -R skills/slidev-animejs/assets/templates/slidev-hyperframes/. deck/",
+          "classification": "owning runtime or generated resource copy/integrity check",
+          "policyPassed": true
+        },
+        {
+          "line": 158,
+          "command": "find deck -type f -print | sort",
+          "classification": "owning runtime inventory or generated output assertion",
+          "policyPassed": true
+        },
+        {
+          "line": 3395,
+          "command": "uv run --script skills/slidev-animejs/scripts/check_hyperframes_deck.py --deck deck --require-bundled-runtime --direct-open",
+          "classification": "owning bundled static checker",
+          "policyPassed": true
+        },
+        {
+          "line": 4589,
+          "command": "node -e \"const fs=require('fs'); const p=JSON.parse(fs.readFileSync('deck/package.json','utf8')); const d=JSON.parse(fs.readFileSync('deck/data/hyperframes-story.json','utf8')); if (JSON.stringify(d.cueTimes)!=='[0,4,9]' || d.exportTime!==9 || d.colorset!=='colorset1') throw Error('story config mismatch'); for (const s of ['build','build:html']) if (!p.scripts[s]) throw Error('missing script '+s); for (const f of ['deck/slides.md','deck/components/HyperframeStory.vue','deck/components/HyperframeSlide.vue','deck/lib/hyperframes.js','deck/public/hyperframes/starter.html','deck/public/hyperframes/scene.js','deck/public/hyperframes/fonts/open-sans-latin-wght-normal.woff2','deliverables/hyperframes-review.md']) if (!fs.existsSync(f)) throw Error('missing '+f); console.log('Validated story config, package scripts, and required deliverable paths.')\"",
+          "classification": "owning runtime inventory or generated output assertion",
+          "policyPassed": true
+        },
+        {
+          "line": 4877,
+          "command": "mkdir -p deck/assets && cp deck/public/hyperframes/fonts/open-sans-latin-wght-normal.woff2 deck/assets/open-sans-latin-wght-normal.woff2",
+          "classification": "owning runtime or generated resource copy/integrity check",
+          "policyPassed": true
+        },
+        {
+          "line": 5009,
+          "command": "uv run --script skills/slidev-animejs/scripts/check_hyperframes_deck.py --deck deck --require-bundled-runtime --direct-open",
+          "classification": "owning bundled static checker",
+          "policyPassed": true
+        }
+      ],
+      "errors": [
+        {
+          "line": 3503,
+          "tool": "edit",
+          "text": "Found 3 occurrences of edits[1] in deck/components/HyperframeStory.vue. Each oldText must be unique. Please provide more context to make it unique.",
+          "classification": "Author edit uniqueness failure; required text was not unique in the generated adapter. Retained strict failure despite later successful correction.",
+          "waived": false
+        }
+      ],
+      "native": {
+        "passed": true,
+        "caseCount": 46,
+        "report": "C:/Users/villa/dev/skills/projects/slidev-hyperframes/artifacts/pi-v2-final/20261005-slidev-hyperframes-animejs-sol-v2-natural-2/verification.json",
+        "evaluatorSha256": "e16c24f84c54f074ee65e542370ae5aa0c727acb3127a78c00dbaae47eec8bed"
+      },
+      "dependencyPolicy": {
+        "passed": true,
+        "authorInstallOrBuildObserved": false,
+        "declaredPlayer": "0.8.134",
+        "declaredBuild": "slidev build --base ./",
+        "declaredHtmlBuild": "node --experimental-strip-types scripts/build-hyperframes-html.ts",
+        "compatibilityOverrides": {
+          "vite": "8.0.16",
+          "unocss": "66.7.2",
+          "lightningcss": "1.32.0"
+        }
+      },
+      "readMetrics": {
+        "calls": 16,
+        "uniquePaths": 16,
+        "totalSerializedResultBytes": 74707,
+        "largest": {
+          "path": "deck/components/HyperframeSlide.vue",
+          "calls": 1,
+          "resultBytes": 12914
+        },
+        "paths": [
+          {
+            "path": "../prompt.md",
+            "calls": 1,
+            "resultBytes": 2885
+          },
+          {
+            "path": "skills/slidev-animejs/SKILL.md",
+            "calls": 1,
+            "resultBytes": 9778
+          },
+          {
+            "path": "skills/slidev-animejs/references/integration-patterns.md",
+            "calls": 1,
+            "resultBytes": 7300
+          },
+          {
+            "path": "skills/slidev-animejs/references/colorset-contract.md",
+            "calls": 1,
+            "resultBytes": 4819
+          },
+          {
+            "path": "skills/slidev-animejs/references/visual-tokens.md",
+            "calls": 1,
+            "resultBytes": 3725
+          },
+          {
+            "path": "skills/slidev-animejs/references/hyperframes-integration.md",
+            "calls": 1,
+            "resultBytes": 10278
+          },
+          {
+            "path": "deck/scripts/build-hyperframes-html.ts",
+            "calls": 1,
+            "resultBytes": 1499
+          },
+          {
+            "path": "deck/lib/hyperframes-vite.ts",
+            "calls": 1,
+            "resultBytes": 859
+          },
+          {
+            "path": "deck/public/hyperframes/colorsets.json",
+            "calls": 1,
+            "resultBytes": 6991
+          },
+          {
+            "path": "deck/components/HyperframeSlide.vue",
+            "calls": 1,
+            "resultBytes": 12914
+          },
+          {
+            "path": "deck/public/hyperframes/starter.html",
+            "calls": 1,
+            "resultBytes": 1112
+          },
+          {
+            "path": "deck/lib/hyperframes.js",
+            "calls": 1,
+            "resultBytes": 2446
+          },
+          {
+            "path": "deck/package.json",
+            "calls": 1,
+            "resultBytes": 669
+          },
+          {
+            "path": "deliverables/hyperframes-review.md",
+            "calls": 1,
+            "resultBytes": 2674
+          },
+          {
+            "path": "deck/slides.md",
+            "calls": 1,
+            "resultBytes": 497
+          },
+          {
+            "path": "deck/components/HyperframeStory.vue",
+            "calls": 1,
+            "resultBytes": 6261
+          }
+        ]
+      },
+      "summaryPath": "evaluations/runs/20261005-slidev-hyperframes-animejs-sol-v2-natural-2/read-surface-summary.json"
+    },
+    {
+      "run": "20261005-slidev-hyperframes-animejs-sol-v2-natural-3",
+      "owner": "slidev-animejs",
+      "strict": false,
+      "readPolicy": true,
+      "independentPayload": {
+        "fileCount": 68,
+        "sha256": "73043c6789d227ad467a8085d008b032f6d10f29a00a037d2d88b12a0b0d126a",
+        "manifestSha256": "73043c6789d227ad467a8085d008b032f6d10f29a00a037d2d88b12a0b0d126a",
+        "matchesManifest": true,
+        "matchesCanonicalEpoch2": true,
+        "canonicalDifferences": []
+      },
+      "copiedRuntime": {
+        "filesChecked": 14,
+        "differences": []
+      },
+      "outputs": {
+        "required": 9,
+        "exactPaths": [
+          "deck/slides.md",
+          "deck/package.json",
+          "deck/components/HyperframeStory.vue",
+          "deck/data/hyperframes-story.json",
+          "deck/components/HyperframeSlide.vue",
+          "deck/lib/hyperframes.js",
+          "deck/public/hyperframes/starter.html",
+          "deck/public/hyperframes/scene.js",
+          "deliverables/hyperframes-review.md"
+        ],
+        "unchanged": true,
+        "differences": []
+      },
+      "commands": [
+        {
+          "line": 122,
+          "command": "mkdir -p deck deliverables && cp -R skills/slidev-animejs/assets/templates/slidev-hyperframes/. deck/",
+          "policyPassed": true,
+          "classification": "owning runtime copy/inventory"
+        },
+        {
+          "line": 154,
+          "command": "find deck -type f -print | sort",
+          "policyPassed": true,
+          "classification": "owning runtime copy/inventory"
+        },
+        {
+          "line": 356,
+          "command": "uv run --script skills/slidev-animejs/scripts/check_hyperframes_deck.py --deck deck --require-bundled-runtime --direct-open",
+          "policyPassed": true,
+          "classification": "owning bundled static checker"
+        },
+        {
+          "line": 1319,
+          "command": "uv run --script skills/slidev-animejs/scripts/check_hyperframes_deck.py --deck deck --require-bundled-runtime --direct-open",
+          "policyPassed": true,
+          "classification": "owning bundled static checker"
+        }
+      ],
+      "errors": [
+        {
+          "line": 1144,
+          "tool": "edit",
+          "text": "Found 2 occurrences of the text in deck/slides.md. The text must be unique. Please provide more context to make it unique.",
+          "classification": "Author edit uniqueness failure in generated slides; retained despite later correction.",
+          "waived": false
+        }
+      ],
+      "dependencyPolicy": {
+        "passed": true,
+        "authorInstallOrBuildObserved": false,
+        "declaredPlayer": "0.8.134",
+        "declaredBuild": "slidev build --base ./",
+        "declaredHtmlBuild": "node --experimental-strip-types scripts/build-hyperframes-html.ts"
+      },
+      "readMetrics": {
+        "calls": 12,
+        "uniquePaths": 12,
+        "totalSerializedResultBytes": 58848,
+        "largest": {
+          "path": "deck/components/HyperframeSlide.vue",
+          "calls": 1,
+          "resultBytes": 12914
+        },
+        "paths": [
+          {
+            "path": "../prompt.md",
+            "calls": 1,
+            "resultBytes": 2885
+          },
+          {
+            "path": "skills/slidev-animejs/SKILL.md",
+            "calls": 1,
+            "resultBytes": 9778
+          },
+          {
+            "path": "skills/slidev-animejs/references/hyperframes-integration.md",
+            "calls": 1,
+            "resultBytes": 10278
+          },
+          {
+            "path": "skills/slidev-animejs/references/colorset-contract.md",
+            "calls": 1,
+            "resultBytes": 4819
+          },
+          {
+            "path": "deck/public/hyperframes/starter.html",
+            "calls": 1,
+            "resultBytes": 1112
+          },
+          {
+            "path": "deck/components/HyperframeSlide.vue",
+            "calls": 1,
+            "resultBytes": 12914
+          },
+          {
+            "path": "deck/scripts/build-hyperframes-html.ts",
+            "calls": 1,
+            "resultBytes": 1499
+          },
+          {
+            "path": "deck/public/hyperframes/scene.js",
+            "calls": 1,
+            "resultBytes": 1542
+          },
+          {
+            "path": "deck/lib/hyperframes.js",
+            "calls": 1,
+            "resultBytes": 2446
+          },
+          {
+            "path": "deck/public/hyperframes/colorsets.json",
+            "calls": 1,
+            "resultBytes": 6991
+          },
+          {
+            "path": "deck/lib/hyperframes-vite.ts",
+            "calls": 1,
+            "resultBytes": 859
+          },
+          {
+            "path": "skills/slidev-animejs/references/visual-tokens.md",
+            "calls": 1,
+            "resultBytes": 3725
+          }
+        ]
+      },
+      "summaryPath": "evaluations/runs/20261005-slidev-hyperframes-animejs-sol-v2-natural-3/read-surface-summary.json",
+      "native": {
+        "passed": true,
+        "caseCount": 46,
+        "report": "C:/Users/villa/dev/skills/projects/slidev-hyperframes/artifacts/pi-v2-final/20261005-slidev-hyperframes-animejs-sol-v2-natural-3/verification.json",
+        "evaluatorSha256": "e16c24f84c54f074ee65e542370ae5aa0c727acb3127a78c00dbaae47eec8bed"
+      }
+    }
+  ],
+  "totals": {
+    "completed": 8,
+    "strictPass": 5,
+    "strictFail": 3,
+    "independencePass": 8,
+    "exactOutputPass": 8,
+    "immutableRuntimePass": 8,
+    "retainedToolErrors": 3,
+    "nativeReportsAvailable": 8,
+    "originalNativePass": 7,
+    "originalNativeFail": 1,
+    "originalNativeCases": 368
+  },
+  "uncompleted": [],
+  "nativeCorrectionNote": "Original e16c24 native reports remain unchanged. Validation owner separately confirmed the ECharts natural-3 canvas-width target as an evaluator boundary error; this audit does not rewrite that report or waive author/tool errors."
+}

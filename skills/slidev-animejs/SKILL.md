@@ -1,6 +1,6 @@
 ---
 name: slidev-animejs
-description: "Builds, choreographs, troubleshoots, and validates Anime.js animations inside Slidev presentations. Use when Codex needs to add reusable Vue animation components to a Slidev deck, wire Anime.js lifecycle cleanup with Slidev clicks and slide mounts, create CSS, keyframe, JavaScript object, stagger, timeline, playback, timer, animatable, easing, SVG, text, layout, draggable, scroll, scope, WAAPI, or engine-control demos, or verify animated Slidev decks in browser and export workflows."
+description: "Builds, choreographs, troubleshoots, and validates Anime.js animations and embedded HyperFrames scenes inside Slidev presentations. Use when Codex needs to add reusable Vue animation components to a Slidev deck, wire Anime.js lifecycle cleanup with Slidev clicks and slide mounts, create CSS, keyframe, JavaScript object, stagger, timeline, playback, timer, animatable, easing, SVG, text, layout, draggable, scroll, scope, WAAPI, or engine-control demos, or verify animated Slidev decks in browser and export workflows."
 ---
 
 # Slidev Anime.js
@@ -19,6 +19,8 @@ instead of hand-sizing the diagram. It creates a native readable Vue stage,
 separated ports, visible base routes and a parcel following the actual paths.
 
 For configurable column counts, regular grids, or masonry collections, read [dynamic composition templates](references/dynamic-layouts.md) and copy `assets/templates/slidev-layouts/` into the deck. Keep the three copied runtime files unchanged; customize wrapper data/props and use its display-title prefix for visible order. Prefer the copy-ready collection parent for fixed readable cards, actual-width column limits and capacity-driven pagination; use the engine directly for custom control. Declare CLI/theme/Vue dependencies, retain complete category identities, and run the bundled static checker before native build/capture. Inspect capacity, all pages and real inner-width changes; preserve readable fixed typography and every component. Keep literal three-row masonry distinct from vertical column masonry.
+
+For HyperFrames scenes inside a slide or a dynamic collection cell, read [HyperFrames integration](references/hyperframes-integration.md). Generate new starter decks with the bundled scaffold; merge its player resources manually into existing decks. Use the reusable preview component for Play/Pause controls, map Slidev clicks to explicit seek times, and pause inactive scenes. Use colorset1 and local Open Sans inside authored starter scenes because iframe styles are isolated; preserve explicit styling in supplied custom compositions. Validate backward seeks, slide reentry, actual cell dimensions and a deterministic static-export state.
 
 For native Mermaid fences, install [the bundled diagram defaults](references/mermaid-defaults.md) once in the deck. Plain Mermaid source then inherits colorset1 automatically, with the same red/neutral palette and solid body treatment used by the Mermaid and PlantUML skills. Preserve existing setup hooks and explicit user styling.
 

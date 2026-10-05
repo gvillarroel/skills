@@ -1,0 +1,52 @@
+{
+  "attempts": [
+    {
+      "runId": "20261005-slidev-hyperframes-echarts-spark-contract",
+      "model": "openai-codex/gpt-5.3-codex-spark",
+      "classification": "external-service-provider-account-model-unsupported",
+      "toolCalls": 0,
+      "providerError": "Codex error: The 'gpt-5.3-codex-spark' model is not supported when using Codex with a ChatGPT account.",
+      "harness": {
+        "passed": false,
+        "returnCode": 3,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-05T17:39:29.779174+00:00",
+        "finishedAtUtc": "2026-10-05T17:39:36.331354+00:00",
+        "durationSeconds": 6.552,
+        "gates": {
+          "artifacts": false,
+          "events": false,
+          "jsonFields": false,
+          "skillIntegrity": true
+        }
+      },
+      "nativeApplicable": false
+    },
+    {
+      "runId": "20261005-slidev-hyperframes-animejs-spark-contract",
+      "model": "openai-codex/gpt-5.3-codex-spark",
+      "classification": "external-service-provider-account-model-unsupported",
+      "toolCalls": 0,
+      "providerError": "Codex error: The 'gpt-5.3-codex-spark' model is not supported when using Codex with a ChatGPT account.",
+      "harness": {
+        "passed": false,
+        "returnCode": 3,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-10-05T17:39:29.779042+00:00",
+        "finishedAtUtc": "2026-10-05T17:39:36.099596+00:00",
+        "durationSeconds": 6.321,
+        "gates": {
+          "artifacts": false,
+          "events": false,
+          "jsonFields": false,
+          "skillIntegrity": true
+        }
+      },
+      "nativeApplicable": false
+    }
+  ],
+  "recordedException": "openai-codex/gpt-5.6-sol",
+  "unchangedStrictGates": true
+}

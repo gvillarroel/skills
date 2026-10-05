@@ -1,0 +1,576 @@
+{
+  "scope": "slidev-hyperframes",
+  "epoch": 3,
+  "status": "evaluated-passed-cohort",
+  "date": "2026-10-05",
+  "sealedAtUtc": "2026-10-05T19:14:13.194Z",
+  "candidate": "projects/slidev-hyperframes/artifacts/frozen-runtime-candidate-epoch3.json",
+  "candidateSha256": "0ba413da35fb923c2bb64d1929c5d89bbe0829d4da77ddbef15e70b083d6fc91",
+  "freeze": "evaluations/slidev-hyperframes/frozen-evaluation-epoch-3.json",
+  "evaluatorSha256": "dbda186e9e9ff69421c7482b8d02795a34753a52e48fe8f3ba7494a1cec10f29",
+  "fullRuntimeSourceSeal": "projects/slidev-hyperframes/artifacts/evaluator-epochs/source-payload-epoch-3.json",
+  "fullRuntimeSourceSha256": "a4e55faebc319dc42307bbab37490b60653a84a73039dabe83d4eda689a88d81",
+  "sourceEntriesChecked": 160,
+  "sourceChanges": 0,
+  "authorAttempts": 8,
+  "strictPasses": 8,
+  "strictFailures": 0,
+  "nativeMatrices": 8,
+  "nativeCases": 368,
+  "nativePasses": 8,
+  "nativeFailures": 0,
+  "successfulBuildCommands": 24,
+  "manualPasses": 8,
+  "dataPasses": 8,
+  "unexpectedBrowserErrors": 0,
+  "nonlocalRequests": 0,
+  "enospcAffectedAuthors": 0,
+  "allExactOutputsAndSkillPayloadsIntact": true,
+  "jointPasses": 8,
+  "thresholdPerOwner": {
+    "slidev-echarts": {
+      "contractJointPasses": 1,
+      "naturalisticJointPasses": 3,
+      "naturalisticAttempts": 3,
+      "thresholdPassed": true
+    },
+    "slidev-animejs": {
+      "contractJointPasses": 1,
+      "naturalisticJointPasses": 3,
+      "naturalisticAttempts": 3,
+      "thresholdPassed": true
+    }
+  },
+  "wholeCohortPassed": true,
+  "commands": "projects/slidev-hyperframes/artifacts/commands/sol-release-v3.json",
+  "nativeCommands": "projects/slidev-hyperframes/artifacts/commands/native-release-v3.json",
+  "independentReadAudit": "evaluations/slidev-hyperframes/read-surface-epoch-3.json",
+  "retainedPriorFailedCohorts": [
+    "evaluations/slidev-hyperframes/cohort-epoch-1-summary.json",
+    "evaluations/slidev-hyperframes/cohort-epoch-2-summary.json"
+  ],
+  "separateValidatorCorrections": [
+    "evaluations/slidev-hyperframes/evaluator-correction.json",
+    "evaluations/slidev-hyperframes/evaluator-correction-epoch-3.json",
+    "evaluations/slidev-hyperframes/cohort-epoch-2-validator-recovery.json"
+  ],
+  "providerRejections": "evaluations/slidev-hyperframes/provider-rejections.json",
+  "modelException": "Scoped backlog-recorded openai-codex/gpt-5.6-sol after fresh own-skill Spark account rejection before tools; all strict/native gates preserved.",
+  "authorOutputRepairs": false,
+  "rerolls": false,
+  "runs": [
+    {
+      "id": "20261005-slidev-hyperframes-animejs-sol-v3-contract",
+      "skill": "slidev-animejs",
+      "case": "contract",
+      "model": "openai-codex/gpt-5.6-sol",
+      "strictPassed": true,
+      "durationSeconds": 57.594,
+      "strictGates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "nativePassed": true,
+      "nativeCases": 46,
+      "browserErrors": [],
+      "nonlocalRequests": [],
+      "allBuildCommandsPassed": true,
+      "manualPassed": true,
+      "dataWiringReviewed": true,
+      "bodyWordCount": 16,
+      "sourceUnchanged": true,
+      "nativeReport": "projects/slidev-hyperframes/artifacts/pi-v3-final/20261005-slidev-hyperframes-animejs-sol-v3-contract/verification.json",
+      "manualReport": "projects/slidev-hyperframes/artifacts/pi-v3-final/20261005-slidev-hyperframes-animejs-sol-v3-contract/manual-review.json",
+      "readSummary": "projects/slidev-hyperframes/artifacts/pi-v3-final/20261005-slidev-hyperframes-animejs-sol-v3-contract/read-summary.json",
+      "toolErrorCount": 0,
+      "invalidJsonLines": 0,
+      "enospc": false,
+      "actualFonts": [
+        {
+          "id": "slide-1-cue-9",
+          "minEffectiveFontCssPx": 18.149998081926924,
+          "computedSizes": [
+            "22px"
+          ]
+        },
+        {
+          "id": "slide-2-live-cell-inner-680",
+          "minEffectiveFontCssPx": 17.48571395192827,
+          "computedSizes": [
+            "24px"
+          ]
+        },
+        {
+          "id": "slide-3-http-static-9",
+          "minEffectiveFontCssPx": 18.149998344832255,
+          "computedSizes": [
+            "22px"
+          ]
+        }
+      ],
+      "raster": {
+        "meanAbsoluteChannelDifference": 0.00002431945238549012,
+        "fractionChannelsDifferingByMoreThan20": 0
+      },
+      "jointPassed": true,
+      "observedOutsideHttpHostRequests": [
+        {
+          "url": "file:///C:/Users/villa/dev/skills/projects/slidev-hyperframes/artifacts/pi-v3-final/20261005-slidev-hyperframes-animejs-sol-v3-contract/build-source/dist/slidev.html",
+          "method": "GET"
+        }
+      ],
+      "localFileNavigations": 1
+    },
+    {
+      "id": "20261005-slidev-hyperframes-echarts-sol-v3-contract",
+      "skill": "slidev-echarts",
+      "case": "contract",
+      "model": "openai-codex/gpt-5.6-sol",
+      "strictPassed": true,
+      "durationSeconds": 55.819,
+      "strictGates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "nativePassed": true,
+      "nativeCases": 46,
+      "browserErrors": [],
+      "nonlocalRequests": [],
+      "allBuildCommandsPassed": true,
+      "manualPassed": true,
+      "dataWiringReviewed": true,
+      "bodyWordCount": 16,
+      "sourceUnchanged": true,
+      "nativeReport": "projects/slidev-hyperframes/artifacts/pi-v3-final/20261005-slidev-hyperframes-echarts-sol-v3-contract/verification.json",
+      "manualReport": "projects/slidev-hyperframes/artifacts/pi-v3-final/20261005-slidev-hyperframes-echarts-sol-v3-contract/manual-review.json",
+      "readSummary": "projects/slidev-hyperframes/artifacts/pi-v3-final/20261005-slidev-hyperframes-echarts-sol-v3-contract/read-summary.json",
+      "toolErrorCount": 0,
+      "invalidJsonLines": 0,
+      "enospc": false,
+      "actualFonts": [
+        {
+          "id": "slide-1-cue-9",
+          "minEffectiveFontCssPx": 18.149998081926924,
+          "computedSizes": [
+            "22px"
+          ]
+        },
+        {
+          "id": "slide-2-live-cell-inner-680",
+          "minEffectiveFontCssPx": 17.48571395192827,
+          "computedSizes": [
+            "24px"
+          ]
+        },
+        {
+          "id": "slide-3-http-static-9",
+          "minEffectiveFontCssPx": 18.149998344832255,
+          "computedSizes": [
+            "22px"
+          ]
+        }
+      ],
+      "raster": {
+        "meanAbsoluteChannelDifference": 0.00002431945238549012,
+        "fractionChannelsDifferingByMoreThan20": 0
+      },
+      "jointPassed": true,
+      "observedOutsideHttpHostRequests": [
+        {
+          "url": "file:///C:/Users/villa/dev/skills/projects/slidev-hyperframes/artifacts/pi-v3-final/20261005-slidev-hyperframes-echarts-sol-v3-contract/build-source/dist/slidev.html",
+          "method": "GET"
+        }
+      ],
+      "localFileNavigations": 1
+    },
+    {
+      "id": "20261005-slidev-hyperframes-animejs-sol-v3-natural-1",
+      "skill": "slidev-animejs",
+      "case": "natural-1",
+      "model": "openai-codex/gpt-5.6-sol",
+      "strictPassed": true,
+      "durationSeconds": 60.57,
+      "strictGates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "nativePassed": true,
+      "nativeCases": 46,
+      "browserErrors": [],
+      "nonlocalRequests": [],
+      "allBuildCommandsPassed": true,
+      "manualPassed": true,
+      "dataWiringReviewed": true,
+      "bodyWordCount": 16,
+      "sourceUnchanged": true,
+      "nativeReport": "projects/slidev-hyperframes/artifacts/pi-v3-final/20261005-slidev-hyperframes-animejs-sol-v3-natural-1/verification.json",
+      "manualReport": "projects/slidev-hyperframes/artifacts/pi-v3-final/20261005-slidev-hyperframes-animejs-sol-v3-natural-1/manual-review.json",
+      "readSummary": "projects/slidev-hyperframes/artifacts/pi-v3-final/20261005-slidev-hyperframes-animejs-sol-v3-natural-1/read-summary.json",
+      "toolErrorCount": 0,
+      "invalidJsonLines": 0,
+      "enospc": false,
+      "actualFonts": [
+        {
+          "id": "slide-1-cue-9",
+          "minEffectiveFontCssPx": 18.149998081926924,
+          "computedSizes": [
+            "22px"
+          ]
+        },
+        {
+          "id": "slide-2-live-cell-inner-680",
+          "minEffectiveFontCssPx": 17.48571395192827,
+          "computedSizes": [
+            "24px"
+          ]
+        },
+        {
+          "id": "slide-3-http-static-9",
+          "minEffectiveFontCssPx": 18.149998344832255,
+          "computedSizes": [
+            "22px"
+          ]
+        }
+      ],
+      "raster": {
+        "meanAbsoluteChannelDifference": 0.00002431945238549012,
+        "fractionChannelsDifferingByMoreThan20": 0
+      },
+      "jointPassed": true,
+      "observedOutsideHttpHostRequests": [
+        {
+          "url": "file:///C:/Users/villa/dev/skills/projects/slidev-hyperframes/artifacts/pi-v3-final/20261005-slidev-hyperframes-animejs-sol-v3-natural-1/build-source/dist/slidev.html",
+          "method": "GET"
+        }
+      ],
+      "localFileNavigations": 1
+    },
+    {
+      "id": "20261005-slidev-hyperframes-echarts-sol-v3-natural-1",
+      "skill": "slidev-echarts",
+      "case": "natural-1",
+      "model": "openai-codex/gpt-5.6-sol",
+      "strictPassed": true,
+      "durationSeconds": 42.306,
+      "strictGates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "nativePassed": true,
+      "nativeCases": 46,
+      "browserErrors": [],
+      "nonlocalRequests": [],
+      "allBuildCommandsPassed": true,
+      "manualPassed": true,
+      "dataWiringReviewed": true,
+      "bodyWordCount": 16,
+      "sourceUnchanged": true,
+      "nativeReport": "projects/slidev-hyperframes/artifacts/pi-v3-final/20261005-slidev-hyperframes-echarts-sol-v3-natural-1/verification.json",
+      "manualReport": "projects/slidev-hyperframes/artifacts/pi-v3-final/20261005-slidev-hyperframes-echarts-sol-v3-natural-1/manual-review.json",
+      "readSummary": "projects/slidev-hyperframes/artifacts/pi-v3-final/20261005-slidev-hyperframes-echarts-sol-v3-natural-1/read-summary.json",
+      "toolErrorCount": 0,
+      "invalidJsonLines": 0,
+      "enospc": false,
+      "actualFonts": [
+        {
+          "id": "slide-1-cue-9",
+          "minEffectiveFontCssPx": 18.149998081926924,
+          "computedSizes": [
+            "22px"
+          ]
+        },
+        {
+          "id": "slide-2-live-cell-inner-680",
+          "minEffectiveFontCssPx": 17.48571395192827,
+          "computedSizes": [
+            "24px"
+          ]
+        },
+        {
+          "id": "slide-3-http-static-9",
+          "minEffectiveFontCssPx": 18.149998344832255,
+          "computedSizes": [
+            "22px"
+          ]
+        }
+      ],
+      "raster": {
+        "meanAbsoluteChannelDifference": 0.00002431945238549012,
+        "fractionChannelsDifferingByMoreThan20": 0
+      },
+      "jointPassed": true,
+      "observedOutsideHttpHostRequests": [
+        {
+          "url": "file:///C:/Users/villa/dev/skills/projects/slidev-hyperframes/artifacts/pi-v3-final/20261005-slidev-hyperframes-echarts-sol-v3-natural-1/build-source/dist/slidev.html",
+          "method": "GET"
+        }
+      ],
+      "localFileNavigations": 1
+    },
+    {
+      "id": "20261005-slidev-hyperframes-animejs-sol-v3-natural-2",
+      "skill": "slidev-animejs",
+      "case": "natural-2",
+      "model": "openai-codex/gpt-5.6-sol",
+      "strictPassed": true,
+      "durationSeconds": 40.217,
+      "strictGates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "nativePassed": true,
+      "nativeCases": 46,
+      "browserErrors": [],
+      "nonlocalRequests": [],
+      "allBuildCommandsPassed": true,
+      "manualPassed": true,
+      "dataWiringReviewed": true,
+      "bodyWordCount": 16,
+      "sourceUnchanged": true,
+      "nativeReport": "projects/slidev-hyperframes/artifacts/pi-v3-final/20261005-slidev-hyperframes-animejs-sol-v3-natural-2/verification.json",
+      "manualReport": "projects/slidev-hyperframes/artifacts/pi-v3-final/20261005-slidev-hyperframes-animejs-sol-v3-natural-2/manual-review.json",
+      "readSummary": "projects/slidev-hyperframes/artifacts/pi-v3-final/20261005-slidev-hyperframes-animejs-sol-v3-natural-2/read-summary.json",
+      "toolErrorCount": 0,
+      "invalidJsonLines": 0,
+      "enospc": false,
+      "actualFonts": [
+        {
+          "id": "slide-1-cue-9",
+          "minEffectiveFontCssPx": 18.149998081926924,
+          "computedSizes": [
+            "22px"
+          ]
+        },
+        {
+          "id": "slide-2-live-cell-inner-680",
+          "minEffectiveFontCssPx": 17.48571395192827,
+          "computedSizes": [
+            "24px"
+          ]
+        },
+        {
+          "id": "slide-3-http-static-9",
+          "minEffectiveFontCssPx": 18.149998344832255,
+          "computedSizes": [
+            "22px"
+          ]
+        }
+      ],
+      "raster": {
+        "meanAbsoluteChannelDifference": 0.00002431945238549012,
+        "fractionChannelsDifferingByMoreThan20": 0
+      },
+      "jointPassed": true,
+      "observedOutsideHttpHostRequests": [
+        {
+          "url": "file:///C:/Users/villa/dev/skills/projects/slidev-hyperframes/artifacts/pi-v3-final/20261005-slidev-hyperframes-animejs-sol-v3-natural-2/build-source/dist/slidev.html",
+          "method": "GET"
+        }
+      ],
+      "localFileNavigations": 1
+    },
+    {
+      "id": "20261005-slidev-hyperframes-echarts-sol-v3-natural-2",
+      "skill": "slidev-echarts",
+      "case": "natural-2",
+      "model": "openai-codex/gpt-5.6-sol",
+      "strictPassed": true,
+      "durationSeconds": 59.678,
+      "strictGates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "nativePassed": true,
+      "nativeCases": 46,
+      "browserErrors": [],
+      "nonlocalRequests": [],
+      "allBuildCommandsPassed": true,
+      "manualPassed": true,
+      "dataWiringReviewed": true,
+      "bodyWordCount": 16,
+      "sourceUnchanged": true,
+      "nativeReport": "projects/slidev-hyperframes/artifacts/pi-v3-final/20261005-slidev-hyperframes-echarts-sol-v3-natural-2/verification.json",
+      "manualReport": "projects/slidev-hyperframes/artifacts/pi-v3-final/20261005-slidev-hyperframes-echarts-sol-v3-natural-2/manual-review.json",
+      "readSummary": "projects/slidev-hyperframes/artifacts/pi-v3-final/20261005-slidev-hyperframes-echarts-sol-v3-natural-2/read-summary.json",
+      "toolErrorCount": 0,
+      "invalidJsonLines": 0,
+      "enospc": false,
+      "actualFonts": [
+        {
+          "id": "slide-1-cue-9",
+          "minEffectiveFontCssPx": 18.149998081926924,
+          "computedSizes": [
+            "22px"
+          ]
+        },
+        {
+          "id": "slide-2-live-cell-inner-680",
+          "minEffectiveFontCssPx": 17.48571395192827,
+          "computedSizes": [
+            "24px"
+          ]
+        },
+        {
+          "id": "slide-3-http-static-9",
+          "minEffectiveFontCssPx": 18.149998344832255,
+          "computedSizes": [
+            "22px"
+          ]
+        }
+      ],
+      "raster": {
+        "meanAbsoluteChannelDifference": 0.00002431945238549012,
+        "fractionChannelsDifferingByMoreThan20": 0
+      },
+      "jointPassed": true,
+      "observedOutsideHttpHostRequests": [
+        {
+          "url": "file:///C:/Users/villa/dev/skills/projects/slidev-hyperframes/artifacts/pi-v3-final/20261005-slidev-hyperframes-echarts-sol-v3-natural-2/build-source/dist/slidev.html",
+          "method": "GET"
+        }
+      ],
+      "localFileNavigations": 1
+    },
+    {
+      "id": "20261005-slidev-hyperframes-animejs-sol-v3-natural-3",
+      "skill": "slidev-animejs",
+      "case": "natural-3",
+      "model": "openai-codex/gpt-5.6-sol",
+      "strictPassed": true,
+      "durationSeconds": 40.448,
+      "strictGates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "nativePassed": true,
+      "nativeCases": 46,
+      "browserErrors": [],
+      "nonlocalRequests": [],
+      "allBuildCommandsPassed": true,
+      "manualPassed": true,
+      "dataWiringReviewed": true,
+      "bodyWordCount": 16,
+      "sourceUnchanged": true,
+      "nativeReport": "projects/slidev-hyperframes/artifacts/pi-v3-final/20261005-slidev-hyperframes-animejs-sol-v3-natural-3/verification.json",
+      "manualReport": "projects/slidev-hyperframes/artifacts/pi-v3-final/20261005-slidev-hyperframes-animejs-sol-v3-natural-3/manual-review.json",
+      "readSummary": "projects/slidev-hyperframes/artifacts/pi-v3-final/20261005-slidev-hyperframes-animejs-sol-v3-natural-3/read-summary.json",
+      "toolErrorCount": 0,
+      "invalidJsonLines": 0,
+      "enospc": false,
+      "actualFonts": [
+        {
+          "id": "slide-1-cue-9",
+          "minEffectiveFontCssPx": 18.149998081926924,
+          "computedSizes": [
+            "22px"
+          ]
+        },
+        {
+          "id": "slide-2-live-cell-inner-680",
+          "minEffectiveFontCssPx": 17.48571395192827,
+          "computedSizes": [
+            "24px"
+          ]
+        },
+        {
+          "id": "slide-3-http-static-9",
+          "minEffectiveFontCssPx": 18.149998344832255,
+          "computedSizes": [
+            "22px"
+          ]
+        }
+      ],
+      "raster": {
+        "meanAbsoluteChannelDifference": 0.00002431945238549012,
+        "fractionChannelsDifferingByMoreThan20": 0
+      },
+      "jointPassed": true,
+      "observedOutsideHttpHostRequests": [
+        {
+          "url": "file:///C:/Users/villa/dev/skills/projects/slidev-hyperframes/artifacts/pi-v3-final/20261005-slidev-hyperframes-animejs-sol-v3-natural-3/build-source/dist/slidev.html",
+          "method": "GET"
+        }
+      ],
+      "localFileNavigations": 1
+    },
+    {
+      "id": "20261005-slidev-hyperframes-echarts-sol-v3-natural-3",
+      "skill": "slidev-echarts",
+      "case": "natural-3",
+      "model": "openai-codex/gpt-5.6-sol",
+      "strictPassed": true,
+      "durationSeconds": 50.439,
+      "strictGates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "nativePassed": true,
+      "nativeCases": 46,
+      "browserErrors": [],
+      "nonlocalRequests": [],
+      "allBuildCommandsPassed": true,
+      "manualPassed": true,
+      "dataWiringReviewed": true,
+      "bodyWordCount": 16,
+      "sourceUnchanged": true,
+      "nativeReport": "projects/slidev-hyperframes/artifacts/pi-v3-final/20261005-slidev-hyperframes-echarts-sol-v3-natural-3/verification.json",
+      "manualReport": "projects/slidev-hyperframes/artifacts/pi-v3-final/20261005-slidev-hyperframes-echarts-sol-v3-natural-3/manual-review.json",
+      "readSummary": "projects/slidev-hyperframes/artifacts/pi-v3-final/20261005-slidev-hyperframes-echarts-sol-v3-natural-3/read-summary.json",
+      "toolErrorCount": 0,
+      "invalidJsonLines": 0,
+      "enospc": false,
+      "actualFonts": [
+        {
+          "id": "slide-1-cue-9",
+          "minEffectiveFontCssPx": 18.149998081926924,
+          "computedSizes": [
+            "22px"
+          ]
+        },
+        {
+          "id": "slide-2-live-cell-inner-680",
+          "minEffectiveFontCssPx": 17.48571395192827,
+          "computedSizes": [
+            "24px"
+          ]
+        },
+        {
+          "id": "slide-3-http-static-9",
+          "minEffectiveFontCssPx": 18.149998344832255,
+          "computedSizes": [
+            "22px"
+          ]
+        }
+      ],
+      "raster": {
+        "meanAbsoluteChannelDifference": 0.00002431945238549012,
+        "fractionChannelsDifferingByMoreThan20": 0
+      },
+      "jointPassed": true,
+      "observedOutsideHttpHostRequests": [
+        {
+          "url": "file:///C:/Users/villa/dev/skills/projects/slidev-hyperframes/artifacts/pi-v3-final/20261005-slidev-hyperframes-echarts-sol-v3-natural-3/build-source/dist/slidev.html",
+          "method": "GET"
+        }
+      ],
+      "localFileNavigations": 1
+    }
+  ],
+  "localFileNavigations": 8
+}

@@ -12,6 +12,7 @@
     "verify:video": "node scripts/record-video.mjs --skip-video"
   },
   "dependencies": {
+    "@hyperframes/player": "0.8.134",
     "@slidev/cli": "52.16.0",
     "@slidev/theme-default": "0.25.0",
     "echarts": "6.1.0",

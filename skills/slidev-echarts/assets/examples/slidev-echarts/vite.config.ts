@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite'
 import { viteSingleFile } from 'vite-plugin-singlefile'
+import { fileURLToPath } from 'node:url'
 
 const singleFileBuild = process.env.SLIDEV_SINGLE_FILE === '1'
 
@@ -19,6 +20,10 @@ function dropManualChunksForSingleFile() {
 }
 
 export default defineConfig({
+  publicDir: fileURLToPath(new URL('../../templates/slidev-hyperframes/public', import.meta.url)),
+  resolve: {
+    dedupe: ['vue', '@hyperframes/player'],
+  },
   plugins: singleFileBuild
     ? [
         viteSingleFile({

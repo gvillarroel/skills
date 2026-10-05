@@ -1,0 +1,68 @@
+{
+  "scope": "slidev-hyperframes",
+  "date": "2026-10-05",
+  "status": "evaluated-passed-epoch-3",
+  "defaultModel": "openai-codex/gpt-5.3-codex-spark",
+  "conditionalRecordedModelException": "openai-codex/gpt-5.6-sol",
+  "modelExceptionCondition": "Retain a fresh own-skill Spark provider rejection before tools and record the scoped exception before running Sol.",
+  "thinking": "high",
+  "profile": "runtime",
+  "mode": "json",
+  "strict": true,
+  "skills": [
+    "slidev-echarts",
+    "slidev-animejs"
+  ],
+  "casesPerSkill": {
+    "contractSmoke": 1,
+    "naturalisticFreshRepetitions": 3
+  },
+  "thresholdPerSkill": {
+    "contractJointPasses": 1,
+    "naturalisticJointPasses": 2
+  },
+  "expectedOutputs": [
+    "deck/slides.md",
+    "deck/package.json",
+    "deck/components/HyperframeStory.vue",
+    "deck/data/hyperframes-story.json",
+    "deck/components/HyperframeSlide.vue",
+    "deck/lib/hyperframes.js",
+    "deck/public/hyperframes/starter.html",
+    "deck/public/hyperframes/scene.js",
+    "deliverables/hyperframes-review.md"
+  ],
+  "expectedJsonFields": {
+    "deck/data/hyperframes-story.json::cueTimes": [
+      0,
+      4,
+      9
+    ],
+    "deck/data/hyperframes-story.json::exportTime": 9,
+    "deck/data/hyperframes-story.json::colorset": "colorset1"
+  },
+  "authorBuildPolicy": "Do not install or build during isolated authoring. The evaluator installs only submitted dependencies and runs submitted build/build:html scripts in a disposable deck copy.",
+  "directOpenExport": "deck/dist/slidev.html",
+  "authoredSourceRepair": false,
+  "nativeGates": [
+    "production-build",
+    "self-contained-html-build",
+    "actual-iframe-cue-numbers-and-geometry",
+    "native-forward-back-clicks",
+    "preview-and-inactive-pause-or-disposal",
+    "repeated-entry-no-duplicates",
+    "live-cell-actual-inner-width-680-and-restore",
+    "local-font-loaded-and-computed-open-sans",
+    "iframe-and-static-exact-palette-and-text-contrast",
+    "http-static-nine-second-state",
+    "file-protocol-accessible-nine-second-fallback",
+    "reduced-motion-state-continuity",
+    "no-unexpected-browser-errors",
+    "manual-readability-and-composition-review"
+  ],
+  "retentionPolicy": "Retain all runs, strict tool errors, native failures, provider rejections and declared verifier corrections. No author-output repair, rerolls or acceptance relaxation.",
+  "currentEpoch": 3,
+  "priorFailedEpoch": "evaluations/slidev-hyperframes/cohort-epoch-2-summary.json",
+  "currentFreeze": "evaluations/slidev-hyperframes/frozen-evaluation-epoch-3.json",
+  "finalSummary": "evaluations/slidev-hyperframes/cohort-epoch-3-summary.json"
+}

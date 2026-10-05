@@ -1,0 +1,314 @@
+{
+  "epoch": 2,
+  "status": "evaluated-failed-cohort-retained",
+  "candidate": "projects/slidev-hyperframes/artifacts/frozen-runtime-candidate-epoch2.json",
+  "candidateSeal": "evaluations/slidev-hyperframes/frozen-evaluation-epoch-2.json",
+  "evaluatorSha256": "e16c24f84c54f074ee65e542370ae5aa0c727acb3127a78c00dbaae47eec8bed",
+  "authorAttempts": 8,
+  "strictPasses": 5,
+  "strictFailures": 3,
+  "nativeCases": 368,
+  "nativeReportPasses": 7,
+  "nativeValidatorFailures": 1,
+  "unexpectedBrowserErrors": 0,
+  "enospcAffectedAuthors": 0,
+  "allOutputsAndPayloadsIntact": true,
+  "retention": "Three genuine edit-tool uniqueness failures remain strict failures. The standalone-engine available-width failure is a retained evaluator boundary defect; no author output is changed. All eight attempted runs remain retained.",
+  "thresholdPerOwner": {
+    "slidev-echarts": {
+      "contractJointPasses": 1,
+      "naturalisticJointPasses": 2,
+      "thresholdPassedUnderRetainedGates": true,
+      "thirdNativeBoundaryPending": true
+    },
+    "slidev-animejs": {
+      "contractJointPasses": 0,
+      "naturalisticJointPasses": 1,
+      "thresholdPassed": false
+    }
+  },
+  "wholeCohortPassed": false,
+  "runs": [
+    {
+      "id": "20261005-slidev-hyperframes-echarts-sol-v2-contract",
+      "skill": "slidev-echarts",
+      "case": "contract",
+      "strictPassed": true,
+      "durationSeconds": 185.43,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "model": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.6-sol"
+        }
+      ],
+      "toolCalls": 25,
+      "findings": [],
+      "enospc": false,
+      "nativeReport": "projects/slidev-hyperframes/artifacts/pi-v2-final/20261005-slidev-hyperframes-echarts-sol-v2-contract/verification.json",
+      "nativePassed": true,
+      "nativeCases": 46,
+      "nativeErrors": [],
+      "failedNative": [],
+      "validatorBoundaryFailure": false,
+      "manualPassed": true,
+      "manualReport": "projects/slidev-hyperframes/artifacts/pi-v2-final/20261005-slidev-hyperframes-echarts-sol-v2-contract/manual-review.json",
+      "authoredSourceUnchanged": true,
+      "jointPassed": true
+    },
+    {
+      "id": "20261005-slidev-hyperframes-echarts-sol-v2-natural-1",
+      "skill": "slidev-echarts",
+      "case": "natural-1",
+      "strictPassed": true,
+      "durationSeconds": 188.072,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "model": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.6-sol"
+        }
+      ],
+      "toolCalls": 28,
+      "findings": [],
+      "enospc": false,
+      "nativeReport": "projects/slidev-hyperframes/artifacts/pi-v2-final/20261005-slidev-hyperframes-echarts-sol-v2-natural-1/verification.json",
+      "nativePassed": true,
+      "nativeCases": 46,
+      "nativeErrors": [],
+      "failedNative": [],
+      "validatorBoundaryFailure": false,
+      "manualPassed": true,
+      "manualReport": "projects/slidev-hyperframes/artifacts/pi-v2-final/20261005-slidev-hyperframes-echarts-sol-v2-natural-1/manual-review.json",
+      "authoredSourceUnchanged": true,
+      "jointPassed": true
+    },
+    {
+      "id": "20261005-slidev-hyperframes-echarts-sol-v2-natural-2",
+      "skill": "slidev-echarts",
+      "case": "natural-2",
+      "strictPassed": true,
+      "durationSeconds": 260.378,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "model": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.6-sol"
+        }
+      ],
+      "toolCalls": 30,
+      "findings": [],
+      "enospc": false,
+      "nativeReport": "projects/slidev-hyperframes/artifacts/pi-v2-final/20261005-slidev-hyperframes-echarts-sol-v2-natural-2/verification.json",
+      "nativePassed": true,
+      "nativeCases": 46,
+      "nativeErrors": [],
+      "failedNative": [],
+      "validatorBoundaryFailure": false,
+      "manualPassed": true,
+      "manualReport": "projects/slidev-hyperframes/artifacts/pi-v2-final/20261005-slidev-hyperframes-echarts-sol-v2-natural-2/manual-review.json",
+      "authoredSourceUnchanged": true,
+      "jointPassed": true
+    },
+    {
+      "id": "20261005-slidev-hyperframes-echarts-sol-v2-natural-3",
+      "skill": "slidev-echarts",
+      "case": "natural-3",
+      "strictPassed": true,
+      "durationSeconds": 312.2,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "model": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.6-sol"
+        }
+      ],
+      "toolCalls": 36,
+      "findings": [],
+      "enospc": false,
+      "nativeReport": "projects/slidev-hyperframes/artifacts/pi-v2-final/20261005-slidev-hyperframes-echarts-sol-v2-natural-3/verification.json",
+      "nativePassed": false,
+      "nativeCases": 46,
+      "nativeErrors": [],
+      "failedNative": [
+        {
+          "id": "slide-2-live-cell-inner-680",
+          "failures": [
+            "Live cell layout reports fits=false."
+          ]
+        }
+      ],
+      "validatorBoundaryFailure": true,
+      "manualPassed": true,
+      "manualReport": "projects/slidev-hyperframes/artifacts/pi-v2-final/20261005-slidev-hyperframes-echarts-sol-v2-natural-3/manual-review.json",
+      "authoredSourceUnchanged": true,
+      "jointPassed": false
+    },
+    {
+      "id": "20261005-slidev-hyperframes-animejs-sol-v2-contract",
+      "skill": "slidev-animejs",
+      "case": "contract",
+      "strictPassed": false,
+      "durationSeconds": 243.891,
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "model": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.6-sol"
+        }
+      ],
+      "toolCalls": 28,
+      "findings": [
+        {
+          "code": "tool-error",
+          "line": 5007,
+          "tool": "edit"
+        }
+      ],
+      "enospc": false,
+      "nativeReport": "projects/slidev-hyperframes/artifacts/pi-v2-final/20261005-slidev-hyperframes-animejs-sol-v2-contract/verification.json",
+      "nativePassed": true,
+      "nativeCases": 46,
+      "nativeErrors": [],
+      "failedNative": [],
+      "validatorBoundaryFailure": false,
+      "manualPassed": true,
+      "manualReport": "projects/slidev-hyperframes/artifacts/pi-v2-final/20261005-slidev-hyperframes-animejs-sol-v2-contract/manual-review.json",
+      "authoredSourceUnchanged": true,
+      "jointPassed": false
+    },
+    {
+      "id": "20261005-slidev-hyperframes-animejs-sol-v2-natural-1",
+      "skill": "slidev-animejs",
+      "case": "natural-1",
+      "strictPassed": true,
+      "durationSeconds": 149.708,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "model": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.6-sol"
+        }
+      ],
+      "toolCalls": 23,
+      "findings": [],
+      "enospc": false,
+      "nativeReport": "projects/slidev-hyperframes/artifacts/pi-v2-final/20261005-slidev-hyperframes-animejs-sol-v2-natural-1/verification.json",
+      "nativePassed": true,
+      "nativeCases": 46,
+      "nativeErrors": [],
+      "failedNative": [],
+      "validatorBoundaryFailure": false,
+      "manualPassed": true,
+      "manualReport": "projects/slidev-hyperframes/artifacts/pi-v2-final/20261005-slidev-hyperframes-animejs-sol-v2-natural-1/manual-review.json",
+      "authoredSourceUnchanged": true,
+      "jointPassed": true
+    },
+    {
+      "id": "20261005-slidev-hyperframes-animejs-sol-v2-natural-2",
+      "skill": "slidev-animejs",
+      "case": "natural-2",
+      "strictPassed": false,
+      "durationSeconds": 260.655,
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "model": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.6-sol"
+        }
+      ],
+      "toolCalls": 34,
+      "findings": [
+        {
+          "code": "tool-error",
+          "line": 3503,
+          "tool": "edit"
+        }
+      ],
+      "enospc": false,
+      "nativeReport": "projects/slidev-hyperframes/artifacts/pi-v2-final/20261005-slidev-hyperframes-animejs-sol-v2-natural-2/verification.json",
+      "nativePassed": true,
+      "nativeCases": 46,
+      "nativeErrors": [],
+      "failedNative": [],
+      "validatorBoundaryFailure": false,
+      "manualPassed": true,
+      "manualReport": "projects/slidev-hyperframes/artifacts/pi-v2-final/20261005-slidev-hyperframes-animejs-sol-v2-natural-2/manual-review.json",
+      "authoredSourceUnchanged": true,
+      "jointPassed": false
+    },
+    {
+      "id": "20261005-slidev-hyperframes-animejs-sol-v2-natural-3",
+      "skill": "slidev-animejs",
+      "case": "natural-3",
+      "strictPassed": false,
+      "durationSeconds": 195.45,
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "model": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.6-sol"
+        }
+      ],
+      "toolCalls": 25,
+      "findings": [
+        {
+          "code": "tool-error",
+          "line": 1144,
+          "tool": "edit"
+        }
+      ],
+      "enospc": false,
+      "nativeReport": "projects/slidev-hyperframes/artifacts/pi-v2-final/20261005-slidev-hyperframes-animejs-sol-v2-natural-3/verification.json",
+      "nativePassed": true,
+      "nativeCases": 46,
+      "nativeErrors": [],
+      "failedNative": [],
+      "validatorBoundaryFailure": false,
+      "manualPassed": true,
+      "manualReport": "projects/slidev-hyperframes/artifacts/pi-v2-final/20261005-slidev-hyperframes-animejs-sol-v2-natural-3/manual-review.json",
+      "authoredSourceUnchanged": true,
+      "jointPassed": false
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "scope": "slidev-hyperframes",
+  "frozenAtUtc": "2026-10-05T17:38:49.053Z",
+  "status": "frozen-before-release-cohort",
+  "runtimeManifest": "projects/slidev-hyperframes/artifacts/frozen-runtime-candidate-epoch1.json",
+  "runtimeManifestSha256": "3ab4c83d99ee5bd00a82104528d2f9de051f3a8fc9b6bd4d0cc7f5a57db13810",
+  "evaluator": {
+    "path": "projects/slidev-hyperframes/scripts/verify-generated-hyperframes-deck.ts",
+    "sha256": "778290b4d35ecaba323ae05d54863aa3fa924cd83fd1bc6435fbfc9e9e074df4"
+  },
+  "resources": [
+    {
+      "path": "evaluations/slidev-hyperframes/acceptance-contract.md",
+      "sha256": "0c8f0e73c99f1f163c047121abd4846c650ca11896accaca8ca267a10c903e23"
+    },
+    {
+      "path": "evaluations/slidev-hyperframes/cohort-plan.json",
+      "sha256": "1ad75ec209eca6156bfc8e58fb918149e779642cd72a9ffa264731591663983a"
+    },
+    {
+      "path": "evaluations/slidev-hyperframes/prompts/echarts-contract.md",
+      "sha256": "657b4bb351dbb1e7a92c417e10b584bd81fbf5c69be3886b6ae6a1d314479a70"
+    },
+    {
+      "path": "evaluations/slidev-hyperframes/prompts/echarts-naturalistic.md",
+      "sha256": "5c1ddc953adab4a8259f4811bbbd7099bebe620fb2ee12ab2a4a8064cefa42dc"
+    },
+    {
+      "path": "evaluations/slidev-hyperframes/prompts/animejs-contract.md",
+      "sha256": "744959a9b79fe4926dff9ef2da09dd2bcf610798ba00109b8258c509ca98b2c5"
+    },
+    {
+      "path": "evaluations/slidev-hyperframes/prompts/animejs-naturalistic.md",
+      "sha256": "e9ceee4def675fb2393328ffab06e55f54ffd028bc6227fb888531581c5837c0"
+    }
+  ],
+  "preflight": {
+    "report": "projects/slidev-hyperframes/artifacts/grader-golden/helper-recipe/verification/verification.json",
+    "passed": true,
+    "cases": 46,
+    "commands": [
+      {
+        "id": "install",
+        "exitCode": 0
+      },
+      {
+        "id": "production-build",
+        "exitCode": 0
+      },
+      {
+        "id": "singlefile-build",
+        "exitCode": 0
+      }
+    ],
+    "rasterMeanDifference": 0,
+    "manualPassed": true,
+    "manualNotes": "Hero, actual680px cell, HTTP static9s and direct-open static9s are readable, unclipped and palette-consistent. Cropped HTTP/file stills are pixel-identical. Actual effective composition fonts are18.15px hero/export,17.486px narrowed cell."
+  },
+  "retainedPreflightFailures": [
+    "projects/slidev-hyperframes/artifacts/grader-golden/preliminary/verification/verification.json",
+    "projects/slidev-hyperframes/artifacts/grader-golden/compatible/verification/verification.json"
+  ],
+  "retainedDiagnostics": "projects/slidev-hyperframes/artifacts/build-diagnostics/summary.json",
+  "retentionNote": "Original manifest moved to a distinct epoch-one path after guide-only repair; recorded SHA and frozen acceptance resources are unchanged."
+}

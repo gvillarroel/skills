@@ -10,6 +10,7 @@
     "export": "slidev export"
   },
   "dependencies": {
+    "@hyperframes/player": "0.8.134",
     "@slidev/cli": "52.16.0",
     "@slidev/theme-default": "0.25.0",
     "animejs": "4.4.1",

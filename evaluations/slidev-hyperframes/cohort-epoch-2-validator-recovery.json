@@ -1,0 +1,14 @@
+{
+  "epoch": 2,
+  "status": "separate-validator-recovery-original-cohort-retained",
+  "runId": "20261005-slidev-hyperframes-echarts-sol-v2-natural-3",
+  "strictOriginalPassed": true,
+  "originalSummary": "evaluations/slidev-hyperframes/cohort-epoch-2-summary.json",
+  "evaluatorSha256": "dbda186e9e9ff69421c7482b8d02795a34753a52e48fe8f3ba7494a1cec10f29",
+  "report": "projects/slidev-hyperframes/artifacts/pi-v2-boundary-regrade/20261005-slidev-hyperframes-echarts-sol-v2-natural-3/verification.json",
+  "nativeCases": 45,
+  "nativePassed": true,
+  "sourceUnchanged": true,
+  "reason": "The original selector narrowed the Slidev canvas; corrected ordinary layout width is actual680 CSS px. Original matrix retained.",
+  "wholeCohortStillFailsStrict": true
+}

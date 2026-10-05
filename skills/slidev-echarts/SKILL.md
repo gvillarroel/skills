@@ -1,6 +1,6 @@
 ---
 name: slidev-echarts
-description: "Builds and troubleshoots Apache ECharts visualizations inside Slidev presentations. Use when Codex needs to add reusable ECharts Vue components to a Slidev deck, wire responsive chart containers, create click-driven data stories, tune chart modules and renderers, expose deterministic chart states for downstream capture, or validate charts in the browser; hand video composition and recording to the video skill."
+description: "Builds and troubleshoots Apache ECharts visualizations inside Slidev presentations. Use when Codex needs to add reusable ECharts Vue components to a Slidev deck, wire responsive chart containers, embed synchronized HyperFrames scenes, create click-driven data stories, tune chart modules and renderers, expose deterministic chart states for downstream capture, or validate charts in the browser; hand video composition and recording to the video skill."
 ---
 
 # Slidev ECharts
@@ -8,6 +8,8 @@ description: "Builds and troubleshoots Apache ECharts visualizations inside Slid
 Read [the colorset output contract](references/colorset-contract.md) before authoring or auditing visual output. Apply one exact bundled palette to every authored output path and inspect rendered paint. Default to colorset1; declare colorset2 when its category distinctions are needed. Start category marks with opaque solid fills and no decorative borders; exhaust the selected palette's usable unique solids before outlined overflow variants. Choose black or white inside text by actual fill contrast.
 
 For configurable column counts, regular grids, or masonry collections, read [dynamic composition templates](references/dynamic-layouts.md) and copy `assets/templates/slidev-layouts/` into the deck. Keep the three copied runtime files unchanged; customize wrapper data/props and use its display-title prefix for visible order. Prefer the copy-ready collection parent for fixed readable cards, actual-width column limits and capacity-driven pagination; use the engine directly for custom control. Declare CLI/theme/Vue dependencies, retain complete category identities, and run the bundled static checker before native build/capture. Inspect capacity, all pages and real inner-width changes; preserve readable fixed typography and every component. Keep literal three-row masonry distinct from vertical column masonry.
+
+For HyperFrames scenes inside a slide or a dynamic collection cell, read [HyperFrames integration](references/hyperframes-integration.md). Generate new starter decks with the bundled scaffold; merge its player resources manually into existing decks. Use the reusable preview component for Play/Pause controls, map Slidev clicks to explicit seek times, and pause inactive scenes. Use colorset1 and local Open Sans inside authored starter scenes because iframe styles are isolated; preserve explicit styling in supplied custom compositions. Validate backward seeks, slide reentry, actual cell dimensions and a deterministic static-export state.
 
 For native Mermaid fences in a Slidev deck, read [automatic Mermaid defaults](references/mermaid-defaults.md) and copy the bundled `assets/templates/slidev-diagram-style/` files into the deck root. Install the deck-wide setup before authoring diagrams so plain Mermaid syntax inherits colorset1, Open Sans, compact layout, solid category bodies, and readable captions without per-fence theme boilerplate. Select colorset2 once in `setup/mermaid.ts` when requested. Keep Mermaid and embedded PlantUML paint aligned with the selected deck palette, and inspect native shadow-root SVGs in light and dark UI states.
 
@@ -71,7 +73,7 @@ two story states.
 6. For Slidev click stories, pass `$clicks` into a chart component and compute the ECharts option from a clamped step. Keep series `id` or data `name` stable so ECharts can animate diffs.
 7. Use deterministic data for decks that will be exported, screenshotted, or reviewed. Avoid random data and uncached network fetches unless the user explicitly wants a live demo.
 8. Validate with `npm run build`, then open the deck in a browser and inspect representative chart slides. Confirm charts are nonblank, sized correctly, text is legible, and click-driven updates animate without leaving stale series.
-9. When the user needs an HTML artifact that opens directly from disk, prefer a documented single-file build path like the example deck's `npm run build:html`; normal Slidev SPA builds should be served over HTTP.
+9. When the user needs an HTML artifact that opens directly from disk, prefer a documented single-file build path like the example deck's `npm run build:html`; normal Slidev SPA builds should be served over HTTP. Live HyperFrames scenes require the documented HTTP path; supply a deterministic fallback for direct-open HTML.
 10. When the deliverable is video, finish the ECharts component and expose deterministic slide/click states, then hand the built deck and state contract to `video`. Do not own recording, MP4/WebM conversion, audio, or final video validation here.
 
 ## Reference

@@ -447,3 +447,25 @@ flowchart LR
 # Masonry Down Columns
 
 <DynamicLayoutExample mode="masonry-columns" namespace="slidev-animejs" colorset="colorset1" data-example-id="masonry-columns" data-pattern-id="slidev-animejs-masonry-columns" />
+
+---
+clicks: 3
+---
+
+# Live HyperFrames Inlet
+
+<HyperframesExample variant="live" namespace="slidev-animejs" :step="$clicks" data-example-id="hyperframes" data-pattern-id="slidev-animejs-hyperframes" />
+
+---
+clicks: 3
+---
+
+# HyperFrames in Dynamic Layouts
+
+<HyperframesExample variant="cells" namespace="slidev-animejs" :step="$clicks" data-example-id="hyperframes-cells" data-pattern-id="slidev-animejs-hyperframes-cells" />
+
+---
+
+# HyperFrames Static Export
+
+<HyperframesExample variant="export" namespace="slidev-animejs" data-example-id="hyperframes-export" data-pattern-id="slidev-animejs-hyperframes-export" />

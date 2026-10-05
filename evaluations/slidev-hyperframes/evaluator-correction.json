@@ -1,0 +1,19 @@
+{
+  "status": "qualified-evaluator-correction",
+  "frozenAtUtc": "2026-10-05T18:04:58.704Z",
+  "oldSha256": "778290b4d35ecaba323ae05d54863aa3fa924cd83fd1bc6435fbfc9e9e074df4",
+  "sha256": "e16c24f84c54f074ee65e542370ae5aa0c727acb3127a78c00dbaae47eec8bed",
+  "reason": "The declared 680 CSS px available-width gate previously selected an immediate player parent for generic CSS layouts. The correction chooses the nearest genuinely horizontal two-cell grid/flex ancestor, or the canonical collection/layout-engine parent, and logs settled actual cell geometry after ResizeObserver/Vue updates. Actual card, containing-box and label bounds are inspected. Prompts, contract, runtime and authored outputs are unchanged.",
+  "oldGrader": "projects/slidev-hyperframes/artifacts/evaluator-epochs/epoch-1.ts",
+  "retainedTimingQualificationFailure": "projects/slidev-hyperframes/artifacts/evaluator-epochs/candidate-before-settle/canonical-verification.json",
+  "preflightReports": [
+    "projects/slidev-hyperframes/artifacts/grader-golden/corrected-canonical/verification/verification.json",
+    "projects/slidev-hyperframes/artifacts/grader-golden/corrected-css/verification/verification.json"
+  ],
+  "preflightCases": 90,
+  "cleanBuildProof": "projects/slidev-hyperframes/artifacts/evaluator-epochs/candidate-before-settle",
+  "submittedForms": "projects/slidev-hyperframes/artifacts/evaluator-epochs/submitted-selector-probes/selection-verification.json",
+  "submittedSelectionPasses": 2,
+  "manualPassed": true,
+  "manualNotes": "Both actual 680 CSS px two-cell captures are readable and unclipped; players remain inside their cards and preview controls are visible. The canonical collection and generic CSS .story-grid each span both cells. The existing Anime hero preview occlusion remains a genuine separately retained author artifact failure."
+}

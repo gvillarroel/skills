@@ -104,6 +104,8 @@ scope.add(() => {
 
 When a helper mutates the DOM outside normal animation instances, add explicit cleanup. `splitText()` should be reverted before recreating the animation, `createDraggable()` observers should be reverted, and WAAPI animations created outside scope should be cancelled.
 
+For HyperFrames-owned scene clocks, use [the dedicated player wrapper](hyperframes-integration.md) rather than a second Anime.js playback loop. The wrapper handles seek, slide activation and iframe resource isolation.
+
 ## Slide And Export Constraints
 
 - Keep animated stages inside fixed grid tracks or fixed-height containers.

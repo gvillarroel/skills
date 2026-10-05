@@ -1,0 +1,9 @@
+GSAP 3.14.2
+Copyright 2026 GreenSock / Webflow.
+Distributed under the GSAP Standard License:
+https://gsap.com/standard-license/
+
+The unmodified distribution file retains its original copyright and license
+notice. This bundle uses GSAP as the runtime dependency of generated explanatory
+compositions; it does not provide a substitute license for GSAP.
+Source distribution: https://www.npmjs.com/package/gsap/v/3.14.2

@@ -593,3 +593,25 @@ flowchart LR
 # Masonry Down Columns
 
 <DynamicLayoutExample mode="masonry-columns" namespace="slidev-echarts" colorset="colorset1" data-example-id="masonry-columns" data-pattern-id="slidev-echarts-masonry-columns" />
+
+---
+clicks: 3
+---
+
+# Live HyperFrames Inlet
+
+<HyperframesExample variant="live" namespace="slidev-echarts" :step="$clicks" data-example-id="hyperframes" data-pattern-id="slidev-echarts-hyperframes" />
+
+---
+clicks: 3
+---
+
+# HyperFrames in Dynamic Layouts
+
+<HyperframesExample variant="cells" namespace="slidev-echarts" :step="$clicks" data-example-id="hyperframes-cells" data-pattern-id="slidev-echarts-hyperframes-cells" />
+
+---
+
+# HyperFrames Static Export
+
+<HyperframesExample variant="export" namespace="slidev-echarts" data-example-id="hyperframes-export" data-pattern-id="slidev-echarts-hyperframes-export" />

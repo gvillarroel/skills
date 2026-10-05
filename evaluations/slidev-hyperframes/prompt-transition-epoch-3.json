@@ -1,0 +1,14 @@
+{
+  "status": "frozen-and-evaluated-epoch-3",
+  "reason": "Only deterministic contract-smoke prompts add the bundled scaffold initialization command after a meaningful source simplification. Three naturalistic repetitions per owner retain their exact original prompts. Observable outputs and acceptance contract remain unchanged.",
+  "hashes": {
+    "evaluations/slidev-hyperframes/prompts/echarts-contract.md": "657b4bb351dbb1e7a92c417e10b584bd81fbf5c69be3886b6ae6a1d314479a70",
+    "evaluations/slidev-hyperframes/prompts/echarts-contract-v3.md": "3c81c6f0ce280d394fa80dfe4cf9e8bdf65521a3698cde215427e6785bff643f",
+    "evaluations/slidev-hyperframes/prompts/echarts-naturalistic.md": "5c1ddc953adab4a8259f4811bbbd7099bebe620fb2ee12ab2a4a8064cefa42dc",
+    "evaluations/slidev-hyperframes/prompts/animejs-contract.md": "744959a9b79fe4926dff9ef2da09dd2bcf610798ba00109b8258c509ca98b2c5",
+    "evaluations/slidev-hyperframes/prompts/animejs-contract-v3.md": "4743336295cd6aec136a86917d17090770b2fc4318d45c791c9d295f0fb070b7",
+    "evaluations/slidev-hyperframes/prompts/animejs-naturalistic.md": "e9ceee4def675fb2393328ffab06e55f54ffd028bc6227fb888531581c5837c0"
+  },
+  "freeze": "evaluations/slidev-hyperframes/frozen-evaluation-epoch-3.json",
+  "finalSummary": "evaluations/slidev-hyperframes/cohort-epoch-3-summary.json"
+}

@@ -1,0 +1,57 @@
+{
+  "status": "frozen-qualified-evaluator-epoch-3",
+  "candidateSha256": "dbda186e9e9ff69421c7482b8d02795a34753a52e48fe8f3ba7494a1cec10f29",
+  "oldFrozenSha256": "e16c24f84c54f074ee65e542370ae5aa0c727acb3127a78c00dbaae47eec8bed",
+  "intermediateRetainedSha256": "27a7eff31411e381c1a3a97de9e7a3fed0f291178c8b56e201d9184ecb3d1c82",
+  "reason": "Select the actual available 680 CSS px layout, excluding Slidev canvas and padded ancestors. Audit actual outer card bounds rather than automatic overflow-visible nested content-group line boxes; additionally reject glyphs crossing explicit clipping descendants. No prompt, contract, source geometry, font, palette, preview, lifecycle or export acceptance change.",
+  "evidence": {
+    "boundaryPositiveAndNegative": "projects/slidev-hyperframes/artifacts/evaluator-epochs/epoch-3-qualified-boundary-probes/selection-verification.json",
+    "originalNestedGroupGlyphs": "projects/slidev-hyperframes/artifacts/evaluator-epochs/epoch-3-content-group-probe-all-bounds/selection-verification.json",
+    "retainedPrototypeFailure": "projects/slidev-hyperframes/artifacts/generator-golden/prototype/verification/verification.json",
+    "positiveReports": [
+      "projects/slidev-hyperframes/artifacts/generator-golden/prototype/verification-corrected/verification.json",
+      "projects/slidev-hyperframes/artifacts/grader-golden/epoch-3-css/verification-corrected/verification.json",
+      "projects/slidev-hyperframes/artifacts/grader-golden/epoch-3-direct-repaired/verification-corrected/verification.json"
+    ],
+    "untouchedSubmittedOutputRegrade": "projects/slidev-hyperframes/artifacts/pi-v2-boundary-regrade/20261005-slidev-hyperframes-echarts-sol-v2-natural-3/verification.json",
+    "pathError": "projects/slidev-hyperframes/artifacts/evaluator-epochs/epoch-3-direct-bad-path.json"
+  },
+  "negativeGates": {
+    "nestedOverflowHiddenRejected": true,
+    "actualFixedCardOverflowRejected": true,
+    "authoredInlineWidth800PreservedAndRejectedAs680": true
+  },
+  "nativeOnlyReplays": {
+    "matrices": 4,
+    "cases": 180,
+    "passed": true,
+    "errors": 0
+  },
+  "cleanBuildProofRetained": true,
+  "manualPositiveAndClippedNegativePassed": true,
+  "finalHeadingRefreshedGolden": {
+    "report": "projects/slidev-hyperframes/artifacts/generator-golden/heading-refreshed/verification/verification.json",
+    "passed": true,
+    "cleanInstall": true,
+    "productionBuild": true,
+    "singlefileBuild": true,
+    "cases": 46,
+    "browserErrors": 0,
+    "sourceUnchanged": true,
+    "manualPassed": true,
+    "loadedHostAndFrameFont": true,
+    "status": "preliminary-retained-before-preview-public-api-repair"
+  },
+  "finalPreviewGolden": {
+    "report": "projects/slidev-hyperframes/artifacts/generator-golden/final-preview/verification/verification.json",
+    "passed": true,
+    "cases": 46,
+    "cleanInstall": true,
+    "productionBuild": true,
+    "singlefileBuild": true,
+    "manualPassed": true,
+    "sourceUnchanged": true,
+    "previewSha256": "be59982edd2dce2e1d7d89beeb09f7649351f50cb81501c27ed380f2c8865c40",
+    "boundaryPositiveAndNegative": "projects/slidev-hyperframes/artifacts/evaluator-epochs/epoch-3-qualified-boundary-probes/selection-verification.json"
+  }
+}

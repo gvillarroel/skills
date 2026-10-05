@@ -1,0 +1,26 @@
+{
+  "titles": {
+    "hero": "How the level changes",
+    "cell": "A reusable live cell",
+    "export": "Exported handoff"
+  },
+  "cueTimes": [0, 4, 9],
+  "exportTime": 9,
+  "colorset": "colorset1",
+  "composition": "hyperframes/starter.html",
+  "compactComposition": "hyperframes/starter.html?compact=1",
+  "heroHeight": 330,
+  "compactLayout": {
+    "mode": "columns",
+    "columns": 2,
+    "height": 330,
+    "gap": 12,
+    "minItemWidth": 300,
+    "minItemHeight": 288,
+    "playerHeight": 210
+  },
+  "explanation": {
+    "title": "One mechanism, reusable state",
+    "body": "The valve opens before the parcel travels. The tank retains the transported amount at each cue."
+  }
+}

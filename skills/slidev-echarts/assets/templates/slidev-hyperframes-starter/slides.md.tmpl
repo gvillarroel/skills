@@ -1,0 +1,28 @@
+---
+theme: default
+layout: default
+wakeLock: false
+fonts:
+  sans: Open Sans
+  provider: none
+clicks: @CLICKS@
+---
+
+<HyperframeStory :clicks="$clicks" />
+
+---
+layout: default
+clicks: @CLICKS@
+---
+
+<HyperframeStory variant="cell" :clicks="$clicks" />
+
+---
+layout: default
+---
+
+<HyperframeStory variant="export" />
+
+<style>
+.slidev-layout { padding:30px 44px; background:#ffffff; color:#000000; font-family:'Open Sans',sans-serif; }
+</style>

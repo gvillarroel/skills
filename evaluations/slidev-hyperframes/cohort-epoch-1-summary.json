@@ -1,0 +1,192 @@
+{
+  "epoch": 1,
+  "status": "failed-partial-cohort-retained",
+  "reason": "Anime.js contract preview control is occluded by oversized player due to transformed screen-pixel measurements used as logical CSS dimensions. Both natural-1 runs additionally retain edit-tool errors. Stop after earliest genuine native failure; no natural-3 launches or rerolls.",
+  "candidate": "projects/slidev-hyperframes/artifacts/frozen-runtime-candidate-epoch1.json",
+  "evaluatorSha256": "778290b4d35ecaba323ae05d54863aa3fa924cd83fd1bc6435fbfc9e9e074df4",
+  "sparkRejections": "evaluations/slidev-hyperframes/provider-rejections.json",
+  "modelException": "openai-codex/gpt-5.6-sol",
+  "strictPasses": 4,
+  "strictFailures": 2,
+  "runs": [
+    {
+      "id": "20261005-slidev-hyperframes-echarts-sol-contract",
+      "strictPassed": true,
+      "durationSeconds": 171.337,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "model": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.6-sol"
+        }
+      ],
+      "toolCalls": 33,
+      "findings": [],
+      "outputsAndPayloadIntact": true,
+      "infrastructureIncident": false,
+      "native": {
+        "passed": true,
+        "cases": 46,
+        "evaluatorSha256": "778290b4d35ecaba323ae05d54863aa3fa924cd83fd1bc6435fbfc9e9e074df4",
+        "report": "projects/slidev-hyperframes/artifacts/pi-epoch1/20261005-slidev-hyperframes-echarts-sol-contract/verification.json",
+        "failed": []
+      }
+    },
+    {
+      "id": "20261005-slidev-hyperframes-echarts-sol-natural-1",
+      "strictPassed": false,
+      "durationSeconds": 625.414,
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "model": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.6-sol"
+        }
+      ],
+      "toolCalls": 36,
+      "findings": [
+        {
+          "code": "tool-error",
+          "line": 4287,
+          "tool": "edit"
+        }
+      ],
+      "outputsAndPayloadIntact": true,
+      "infrastructureIncident": false,
+      "native": {
+        "status": "not-run-after-earliest-genuine-native-failure"
+      }
+    },
+    {
+      "id": "20261005-slidev-hyperframes-echarts-sol-natural-2",
+      "strictPassed": true,
+      "durationSeconds": 186.603,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "model": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.6-sol"
+        }
+      ],
+      "toolCalls": 28,
+      "findings": [],
+      "outputsAndPayloadIntact": true,
+      "infrastructureIncident": false,
+      "native": {
+        "status": "not-run-after-earliest-genuine-native-failure"
+      }
+    },
+    {
+      "id": "20261005-slidev-hyperframes-animejs-sol-contract",
+      "strictPassed": true,
+      "durationSeconds": 184.675,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "model": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.6-sol"
+        }
+      ],
+      "toolCalls": 25,
+      "findings": [],
+      "outputsAndPayloadIntact": true,
+      "infrastructureIncident": false,
+      "native": {
+        "passed": false,
+        "cases": 17,
+        "evaluatorSha256": "778290b4d35ecaba323ae05d54863aa3fa924cd83fd1bc6435fbfc9e9e074df4",
+        "report": "projects/slidev-hyperframes/artifacts/pi-epoch1/20261005-slidev-hyperframes-animejs-sol-contract/verification.json",
+        "failed": [
+          {
+            "id": "native-execution",
+            "failures": [
+              "TimeoutError: locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: /^Play animation$/i }).first()\u001b[22m\n\u001b[2m    - locator resolved to <button type=\"button\" data-v-0c58d210=\"\" class=\"preview-control\" aria-label=\"Play animation\">Play animation</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <hyperframes-player muted=\"\" audio-locked=\"\" shader-loading=\"none\" assets-loading-ui=\"none\" runtime-src=\"http://127.0.0.1:30210/hyperframes/vendor/hyperframe.runtime.iife.js\" srcdoc=\"<!doctype html>↵<html lang=\"en\">↵<head><base href=\"http://127.0.0.1:30210/hyperframes/starter.html?colorset=colorset1\">↵  <meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">↵  <title>Valve-controlled transport</title>↵  <style>↵    @font-face{font-family:'Open Sans';font-style:normal;font-weight…></hyperframes-player> from <div data-v-0c58d210=\"\" class=\"player-measure\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <hyperframes-player muted=\"\" audio-locked=\"\" shader-loading=\"none\" assets-loading-ui=\"none\" runtime-src=\"http://127.0.0.1:30210/hyperframes/vendor/hyperframe.runtime.iife.js\" srcdoc=\"<!doctype html>↵<html lang=\"en\">↵<head><base href=\"http://127.0.0.1:30210/hyperframes/starter.html?colorset=colorset1\">↵  <meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">↵  <title>Valve-controlled transport</title>↵  <style>↵    @font-face{font-family:'Open Sans';font-style:normal;font-weight…></hyperframes-player> from <div data-v-0c58d210=\"\" class=\"player-measure\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    57 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is visible, enabled and stable\u001b[22m\n\u001b[2m       - scrolling into view if needed\u001b[22m\n\u001b[2m       - done scrolling\u001b[22m\n\u001b[2m       - <hyperframes-player muted=\"\" audio-locked=\"\" shader-loading=\"none\" assets-loading-ui=\"none\" runtime-src=\"http://127.0.0.1:30210/hyperframes/vendor/hyperframe.runtime.iife.js\" srcdoc=\"<!doctype html>↵<html lang=\"en\">↵<head><base href=\"http://127.0.0.1:30210/hyperframes/starter.html?colorset=colorset1\">↵  <meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">↵  <title>Valve-controlled transport</title>↵  <style>↵    @font-face{font-family:'Open Sans';font-style:normal;font-weight…></hyperframes-player> from <div data-v-0c58d210=\"\" class=\"player-measure\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "20261005-slidev-hyperframes-animejs-sol-natural-1",
+      "strictPassed": false,
+      "durationSeconds": 583.476,
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "model": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.6-sol"
+        }
+      ],
+      "toolCalls": 29,
+      "findings": [
+        {
+          "code": "tool-error",
+          "line": 3078,
+          "tool": "edit"
+        }
+      ],
+      "outputsAndPayloadIntact": true,
+      "infrastructureIncident": false,
+      "native": {
+        "status": "not-run-after-earliest-genuine-native-failure"
+      }
+    },
+    {
+      "id": "20261005-slidev-hyperframes-animejs-sol-natural-2",
+      "strictPassed": true,
+      "durationSeconds": 462.128,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "model": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.6-sol"
+        }
+      ],
+      "toolCalls": 28,
+      "findings": [],
+      "outputsAndPayloadIntact": true,
+      "infrastructureIncident": false,
+      "native": {
+        "status": "not-run-after-earliest-genuine-native-failure"
+      }
+    }
+  ],
+  "unlaunched": [
+    "20261005-slidev-hyperframes-echarts-sol-natural-3",
+    "20261005-slidev-hyperframes-animejs-sol-natural-3"
+  ],
+  "nativeExecutionStopped": true,
+  "spaceAudit": "projects/slidev-hyperframes/artifacts/infrastructure/author-space-audit.json",
+  "dependencyCleanup": "projects/slidev-hyperframes/artifacts/infrastructure/dependency-cleanup.json",
+  "guideRepairRequired": true
+}
