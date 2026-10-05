@@ -423,3 +423,27 @@ flowchart LR
   Draft["Draft report"] -->|Ready for review| Review["Review report"]
   Review -->|Approved for release| Publish["Publish report"]
 ```
+
+---
+
+# Dynamic Columns
+
+<DynamicLayoutExample mode="columns" namespace="slidev-animejs" colorset="colorset1" data-example-id="dynamic-columns" data-pattern-id="slidev-animejs-dynamic-columns" />
+
+---
+
+# Dynamic Component Grid
+
+<DynamicLayoutExample mode="grid" namespace="slidev-animejs" colorset="colorset2" data-example-id="dynamic-grid" data-pattern-id="slidev-animejs-dynamic-grid" />
+
+---
+
+# Masonry Across Three Rows
+
+<DynamicLayoutExample mode="masonry-rows" namespace="slidev-animejs" colorset="colorset1" data-example-id="masonry-rows" data-pattern-id="slidev-animejs-masonry-rows" />
+
+---
+
+# Masonry Down Columns
+
+<DynamicLayoutExample mode="masonry-columns" namespace="slidev-animejs" colorset="colorset1" data-example-id="masonry-columns" data-pattern-id="slidev-animejs-masonry-columns" />
