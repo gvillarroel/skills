@@ -1,0 +1,285 @@
+{
+  "schema_version": 1,
+  "benchmark_id": "lucidchart-svg-v1",
+  "visibility": "public-development",
+  "created_at_utc": "2026-10-07T19:52:15.308852+00:00",
+  "subject": {
+    "skill": "lucidchart-svg",
+    "profile": "runtime",
+    "revision": "cf7e8bd5478c2a34bba0e890510e99c7e498ca2c",
+    "file_count": 21,
+    "sha256": "0e4d5c69add73792b268cb0890edbb48d39c573e1fdb9a908ba017ad50679f93",
+    "files": {
+      "agents/openai.yaml": {
+        "sizeBytes": 243,
+        "sha256": "a388f7191ec59f2cfaefec149964562c21697c9fea0179ee3f9a9d86d278bf6f"
+      },
+      "references/diagram-families.md": {
+        "sizeBytes": 9815,
+        "sha256": "f4b7606df89cd78f0c7200443d6b97338a755dda71b4587f286f22cd459f9346"
+      },
+      "references/editor-workflows.md": {
+        "sizeBytes": 5117,
+        "sha256": "e1507854c9bfe0bb887bc5da5b6b496537b0bc7063d4a389cca4f69422010567"
+      },
+      "references/fidelity.md": {
+        "sizeBytes": 10120,
+        "sha256": "f95257e51ef535f90d5220dab03804e1d136c028949c515f3d664432e8e5e17c"
+      },
+      "references/generated-layouts.md": {
+        "sizeBytes": 4865,
+        "sha256": "b5f5c5568507e453e862742a9908ba3616a49adf6f8b9c361f0e42d3ae9f8a97"
+      },
+      "references/native-reconstruction.md": {
+        "sizeBytes": 9163,
+        "sha256": "c96598f0563f7bcb5b449c4c0f53045b5cadbd7ed74f59137b8aca872220083a"
+      },
+      "references/native-shapes.json": {
+        "sizeBytes": 45553,
+        "sha256": "c1e1baed99198b0112d490e5b7a7be973c05e013645ec23122ee884577c4eec6"
+      },
+      "references/shape-selection.md": {
+        "sizeBytes": 7571,
+        "sha256": "d4093eb3574f112e4253ea33f6c424ae0703108747c39e60b7a88a22af3bfc23"
+      },
+      "references/standard-import.md": {
+        "sizeBytes": 3689,
+        "sha256": "184bc31b3320f30ea6311b8f600eebd1af2fee74655a1582d95148775983dbde"
+      },
+      "references/svg-mapping.md": {
+        "sizeBytes": 8301,
+        "sha256": "83fd8490ac97bc9d80cf82a2016d090152afe0a5efa9b73b548a0e8a04f47f05"
+      },
+      "scripts/build_generated.py": {
+        "sizeBytes": 14006,
+        "sha256": "82815ca5afc617bc45da1b4d45be34df55031ae720eea1c91ccdc908f6a463b7"
+      },
+      "scripts/build_native.py": {
+        "sizeBytes": 42887,
+        "sha256": "dbb3a8c76424d8453330dda2e8a815d0b1e24b3aabd2d1dd7d9215a54469bb44"
+      },
+      "scripts/extract_native.py": {
+        "sizeBytes": 57223,
+        "sha256": "4af41b4d96d09098bb2ed5c959b1619e980c30732fbe27591b20776f156e391f"
+      },
+      "scripts/inspect_svg.py": {
+        "sizeBytes": 15557,
+        "sha256": "e720563416dc77c7a7c4f99aa697eb1672c13620d00f808b6cde6042bf1f0ff1"
+      },
+      "scripts/native_catalog.py": {
+        "sizeBytes": 15892,
+        "sha256": "2e05932a3dacb61edfa0b61a571bd1ce3ee078acbb00cdf7444a2f8eada10364"
+      },
+      "scripts/test_catalog.py": {
+        "sizeBytes": 12869,
+        "sha256": "19187a1759457c1e98978219f079f042ed1419850c5624bf1d0c8ee36b95fd6c"
+      },
+      "scripts/test_extract.py": {
+        "sizeBytes": 28143,
+        "sha256": "88f8ddd1674c993b1b15c0d2d37c328664e95c449d7b05be021d80c6451b8a57"
+      },
+      "scripts/test_generated.py": {
+        "sizeBytes": 10352,
+        "sha256": "493c6ed1fa1f19dc677dfb76f406203e7823cb478f96f195d669a0f48bdbac97"
+      },
+      "scripts/test_native.py": {
+        "sizeBytes": 34869,
+        "sha256": "5dc4d9f699f38094ed48c78f8bcce6188ab42acc5606b2eaee5310968b38bb81"
+      },
+      "scripts/test_svg.py": {
+        "sizeBytes": 11760,
+        "sha256": "41bc4cbc812976c52f38db61179baa9f9c01cf5fb6c4d3e346ed66484df88177"
+      },
+      "SKILL.md": {
+        "sizeBytes": 7138,
+        "sha256": "0dd26ac53bf64510e6960a7d4920e6d3c28b2e926b76d1a27f144cfe1977c104"
+      }
+    }
+  },
+  "model": "openai-codex/gpt-5.6-luna",
+  "thinking": "high",
+  "model_exception": "Existing backlog exception after Spark account/provider rejection before tools; no gate is waived.",
+  "controls": {
+    "evaluations/lucidchart-svg/benchmarks/v1/run_benchmark.py": {
+      "sha256": "8c8dbba3653509d2833927e8c1f7df98744d29b2b1a3ebc57b865572f8d92176",
+      "bytes": 16446
+    },
+    "evaluations/lucidchart-svg/benchmarks/v1/protocol.md": {
+      "sha256": "767c9d68df029ae20474c15fc2df0a3512cdb25b7b1966b01a2d99f9e5dc2222",
+      "bytes": 8061
+    },
+    "evaluations/lucidchart-svg/benchmarks/v1/run_performance.py": {
+      "sha256": "eb662c3f50a7921f90fbd8a7e67adc0f78390d0e01ff4a064aee3b4bef34bbef",
+      "bytes": 7941
+    },
+    "evaluations/lucidchart-svg/benchmarks/v1/validate_boundaries.py": {
+      "sha256": "b82f07da1a5381701f7dce52360e10337c7c4f3ddaeb32224ee7db5a806cfb93",
+      "bytes": 7081
+    },
+    "evaluations/lucidchart-svg/benchmarks/v1/validate_native_cases.py": {
+      "sha256": "5a9918457731a80e24af98b3c0e963725e138c69dfe4a16ad1d762aaefa7174b",
+      "bytes": 41237
+    },
+    "evaluations/lucidchart-svg/benchmarks/v1/validate_svg_cases.py": {
+      "sha256": "442fedf58814b322df9946606f42fb862943815d9c8df6978a977bf95ead4e18",
+      "bytes": 29560
+    },
+    "evaluations/pi-prompts/lucidchart-svg-benchmark-v1-contract.md": {
+      "sha256": "f963f35b826832cad65a63cf95fc6f0200feb6beaf55570e03256ae8c4863a13",
+      "bytes": 4967
+    },
+    "evaluations/pi-prompts/lucidchart-svg-benchmark-v1-geometry.md": {
+      "sha256": "e3212faf21020b349d49292d17cf58820c0e8ec74092358d8bbc7d195736ac1a",
+      "bytes": 2306
+    },
+    "evaluations/pi-prompts/lucidchart-svg-benchmark-v1-relations.md": {
+      "sha256": "fc78f95b3b480062e56904564eae99fccaf4b6a12d4668a31def78f1b9a565fc",
+      "bytes": 3386
+    },
+    "evaluations/pi-prompts/lucidchart-svg-benchmark-v1-asset.md": {
+      "sha256": "7324e601e486a606e15bda00a3e5a0bb90547364f6fa58d2f1cc6cf388fa43c0",
+      "bytes": 2678
+    },
+    "evaluations/pi-prompts/lucidchart-svg-benchmark-v1-boundary.md": {
+      "sha256": "f4c8ebc2a55a9f07e21ce5bf731ec37e329ff85274963ee96f48798ba34bb7d1",
+      "bytes": 1682
+    },
+    "evaluations/pi-prompts/lucidchart-svg-benchmark-v1-ambiguity.md": {
+      "sha256": "5f375216c1735fdb7a8109445a4ce9a54a2e12886c7574ad45933de5fb4c25ba",
+      "bytes": 1810
+    },
+    "evaluations/pi-prompts/lucidchart-svg-benchmark-v1-semantic.md": {
+      "sha256": "2d5d934c2e638a70c609a854f4eb5b31d56bdfd0273305ad954f984d6df34cb5",
+      "bytes": 4178
+    },
+    "evaluations/pi-prompts/lucidchart-svg-benchmark-v1-generated.md": {
+      "sha256": "cb5e99c4103b4fe2680beb8403503e082003305c89d93d0e21fce6f4356aa308",
+      "bytes": 5244
+    }
+  },
+  "cases": {
+    "contract": {
+      "repetitions": 1,
+      "required_joint_passes": 1,
+      "taxonomy": "contract-smoke",
+      "validator": "validate_native_cases.py",
+      "expected_outputs": [
+        "input/contract.json",
+        "out/contract/diagram.lucid",
+        "out/contract/document.json",
+        "out/contract/native-report.json",
+        "out/contract/notes.md"
+      ],
+      "prompt": "evaluations/pi-prompts/lucidchart-svg-benchmark-v1-contract.md",
+      "exact_command": true
+    },
+    "geometry": {
+      "repetitions": 3,
+      "required_joint_passes": 2,
+      "taxonomy": "naturalistic-forward",
+      "validator": "validate_svg_cases.py",
+      "expected_outputs": [
+        "inputs/dispatch.svg",
+        "outputs/dispatch/inspection.json",
+        "outputs/dispatch/graph.json",
+        "outputs/dispatch/mapping.json",
+        "outputs/dispatch/diagram.lucid",
+        "outputs/dispatch/document.json",
+        "outputs/dispatch/fidelity.md"
+      ],
+      "prompt": "evaluations/pi-prompts/lucidchart-svg-benchmark-v1-geometry.md",
+      "exact_command": false
+    },
+    "relations": {
+      "repetitions": 3,
+      "required_joint_passes": 2,
+      "taxonomy": "generalization",
+      "validator": "validate_svg_cases.py",
+      "expected_outputs": [
+        "source/release-route.svg",
+        "deliver/release/inspection.json",
+        "deliver/release/graph.json",
+        "deliver/release/mapping.json",
+        "deliver/release/native.lucid",
+        "deliver/release/document.json",
+        "deliver/release/changes.md"
+      ],
+      "prompt": "evaluations/pi-prompts/lucidchart-svg-benchmark-v1-relations.md",
+      "exact_command": false
+    },
+    "asset": {
+      "repetitions": 3,
+      "required_joint_passes": 2,
+      "taxonomy": "naturalistic-forward",
+      "validator": "validate_svg_cases.py",
+      "expected_outputs": [
+        "source/night-shift.svg",
+        "ready/night-shift.svg",
+        "review/inspection.json",
+        "review/fidelity.md"
+      ],
+      "prompt": "evaluations/pi-prompts/lucidchart-svg-benchmark-v1-asset.md",
+      "exact_command": false
+    },
+    "boundary": {
+      "repetitions": 1,
+      "required_joint_passes": 1,
+      "taxonomy": "boundary-recovery",
+      "validator": "validate_boundaries.py",
+      "expected_outputs": [
+        "input/received.svg",
+        "out/boundary/inspection.json",
+        "out/boundary/notes.md"
+      ],
+      "prompt": "evaluations/pi-prompts/lucidchart-svg-benchmark-v1-boundary.md",
+      "exact_command": false
+    },
+    "ambiguity": {
+      "repetitions": 1,
+      "required_joint_passes": 1,
+      "taxonomy": "boundary-recovery",
+      "validator": "validate_boundaries.py",
+      "expected_outputs": [
+        "source/sketch.svg",
+        "out/ambiguity/inspection.json",
+        "out/ambiguity/visual.svg",
+        "out/ambiguity/notes.md"
+      ],
+      "prompt": "evaluations/pi-prompts/lucidchart-svg-benchmark-v1-ambiguity.md",
+      "exact_command": false
+    },
+    "semantic": {
+      "repetitions": 3,
+      "required_joint_passes": 2,
+      "taxonomy": "generalization",
+      "validator": "validate_native_cases.py",
+      "expected_outputs": [
+        "out/semantic/graph.json",
+        "out/semantic/diagram.lucid",
+        "out/semantic/document.json",
+        "out/semantic/native-report.json",
+        "out/semantic/notes.md"
+      ],
+      "prompt": "evaluations/pi-prompts/lucidchart-svg-benchmark-v1-semantic.md",
+      "exact_command": false
+    },
+    "generated": {
+      "repetitions": 3,
+      "required_joint_passes": 2,
+      "taxonomy": "generalization",
+      "validator": "validate_native_cases.py",
+      "expected_outputs": [
+        "out/generated/layout.json",
+        "out/generated/diagram.lucid",
+        "out/generated/document.json",
+        "out/generated/layout-report.json",
+        "out/generated/notes.md"
+      ],
+      "prompt": "evaluations/pi-prompts/lucidchart-svg-benchmark-v1-generated.md",
+      "exact_command": false
+    }
+  },
+  "required_trials": 18,
+  "live_service_coverage": "unverified",
+  "is_holdout": false
+}

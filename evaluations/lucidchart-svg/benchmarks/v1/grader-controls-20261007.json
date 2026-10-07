@@ -1,0 +1,907 @@
+{
+  "date": "2026-10-07",
+  "scope": "Evaluator design and evidence checks; not model trial scores",
+  "original_harmful_mutations_rejected": 67,
+  "replay_boundary": "Saved local fixture workspaces and browser files remain under ignored evaluations/runs. The versioned prompts and graders can evaluate fresh trials; historical control replay additionally needs the retained local evidence.",
+  "records": {
+    "svg": {
+      "path": "evaluations/runs/benchmark-design-svg/smoke-results.json",
+      "sha256": "2aea54534184682d8557f2933de5c180db680517c8afad1be35135aefe58b174",
+      "bytes": 4288,
+      "record": {
+        "positive_cases": 3,
+        "mutation_results": [
+          {
+            "mutation": "crlf-source",
+            "expected_rejection": true,
+            "error": "Source bytes differ from the supplied UTF-8/LF fixture"
+          },
+          {
+            "mutation": "transposed-geometry",
+            "expected_rejection": true,
+            "error": "Receive & classify: actual native geometry differs"
+          },
+          {
+            "mutation": "wrong-scaled-font",
+            "expected_rejection": true,
+            "error": "Font size differs: Receive & classify"
+          },
+          {
+            "mutation": "wrong-fill",
+            "expected_rejection": true,
+            "error": "Archive <Q4>: fill differs"
+          },
+          {
+            "mutation": "infinite-page",
+            "expected_rejection": true,
+            "error": "Native finite viewport settings differ"
+          },
+          {
+            "mutation": "unrequested-rotation",
+            "expected_rejection": true,
+            "error": "Receive & classify: unrequested rotation"
+          },
+          {
+            "mutation": "wrong-object-opacity",
+            "expected_rejection": true,
+            "error": "Receive & classify: object opacity differs"
+          },
+          {
+            "mutation": "unrequested-decoration",
+            "expected_rejection": true,
+            "error": "Unrequested text decoration: Receive & classify"
+          },
+          {
+            "mutation": "extra-native-content",
+            "expected_rejection": true,
+            "error": "Undeclared generated layouts or collections were introduced"
+          },
+          {
+            "mutation": "zip-disagrees",
+            "expected_rejection": true,
+            "error": "ZIP document and separate JSON differ byte-for-byte"
+          },
+          {
+            "mutation": "stale-inspection",
+            "expected_rejection": true,
+            "error": "Inspection is not tied to actual source bytes"
+          },
+          {
+            "mutation": "equivalent-css-emphasis",
+            "equivalent_representation_passed": true
+          },
+          {
+            "mutation": "equivalent-organizing-metadata",
+            "equivalent_representation_passed": true
+          },
+          {
+            "mutation": "wrong-target",
+            "expected_rejection": true,
+            "error": "native-screen-flow: actual topology, port, or marker differs"
+          },
+          {
+            "mutation": "missing-route-turn",
+            "expected_rejection": true,
+            "error": "native-screen-flow: route-point count differs"
+          },
+          {
+            "mutation": "wrong-port",
+            "expected_rejection": true,
+            "error": "native-screen-flow: actual topology, port, or marker differs"
+          },
+          {
+            "mutation": "lost-arrow",
+            "expected_rejection": true,
+            "error": "native-release-flow: actual topology, port, or marker differs"
+          },
+          {
+            "mutation": "lost-edge-label",
+            "expected_rejection": true,
+            "error": "native-release-flow: edge label differs"
+          },
+          {
+            "mutation": "equivalent-elbow-route",
+            "equivalent_representation_passed": true
+          },
+          {
+            "mutation": "equivalent-nested-groups-layers",
+            "equivalent_representation_passed": true
+          },
+          {
+            "mutation": "dangling-group-member",
+            "expected_rejection": true,
+            "error": "Organizing membership has a dangling or ineligible reference"
+          },
+          {
+            "mutation": "cyclic-group-membership",
+            "expected_rejection": true,
+            "error": "Organizing membership contains a cycle"
+          },
+          {
+            "mutation": "multiple-group-parents",
+            "expected_rejection": true,
+            "error": "Organizing membership has multiple direct parents"
+          },
+          {
+            "mutation": "incoherent-group-membership",
+            "expected_rejection": true,
+            "error": "Graph and native organizing memberships disagree"
+          },
+          {
+            "mutation": "visible-group-style",
+            "expected_rejection": true,
+            "error": "Organizing metadata contains unsupported or visible fields"
+          },
+          {
+            "mutation": "top-level-collections",
+            "expected_rejection": true,
+            "error": "Undeclared generated layouts or collections were introduced"
+          },
+          {
+            "mutation": "modified-upload",
+            "expected_rejection": true,
+            "error": "Visual asset is not byte-preserving"
+          },
+          {
+            "mutation": "fabricated-native",
+            "expected_rejection": true,
+            "error": "Fabricated graph/document in visual-asset case"
+          },
+          {
+            "mutation": "stale-asset-inspection",
+            "expected_rejection": true,
+            "error": "Inspection is not tied to actual source bytes"
+          }
+        ]
+      }
+    },
+    "native": {
+      "path": "evaluations/runs/benchmark-design-native/smoke-summary.json",
+      "sha256": "eb813eebfda7c39507662b104a1be775d765071ad77dbdba07dab9c9335eaca4",
+      "bytes": 7663,
+      "record": {
+        "positive_cases": 3,
+        "deliberate_corruptions_rejected": 26,
+        "equivalent_paint_accepted": true,
+        "in_workspace_report_blocked": true,
+        "results": [
+          {
+            "case": "contract",
+            "mutation": "table-merge",
+            "rejected": true,
+            "violations": [
+              "Register cell (0, 0) horizontal merge changed"
+            ]
+          },
+          {
+            "case": "contract",
+            "mutation": "literal-label",
+            "rejected": true,
+            "violations": [
+              "Scan label contains unsupported or unescaped text markup",
+              "Scan label literal text changed",
+              "Scan label font-family declaration changed",
+              "Scan label font-size declaration changed",
+              "Scan label color declaration changed",
+              "Scan label text-align declaration changed",
+              "Scan label vertical-align declaration changed",
+              "Scan label lost i formatting",
+              "Scan label lost b formatting",
+              "Graph/package label: scan contains unsupported or unescaped text markup",
+              "Graph/package label: scan literal text changed",
+              "Graph/package text style: scan contains unsupported or unescaped text markup",
+              "Graph/package text style: scan literal text changed",
+              "Graph/package text style: scan font-size declaration changed",
+              "Graph/package text style: scan font-family declaration changed",
+              "Graph/package text style: scan color declaration changed",
+              "Graph/package text style: scan text-align declaration changed",
+              "Graph/package text style: scan vertical-align declaration changed",
+              "Graph/package bold mismatch: scan",
+              "Graph/package italic mismatch: scan"
+            ]
+          },
+          {
+            "case": "contract",
+            "mutation": "style-width",
+            "rejected": true,
+            "violations": [
+              "Scan outline changed",
+              "Graph/package stroke_width mismatch: scan"
+            ]
+          },
+          {
+            "case": "contract",
+            "mutation": "lane-order",
+            "rejected": true,
+            "violations": [
+              "Lane literal title literal text changed",
+              "Lane widths/colors/order changed",
+              "Lane literal title literal text changed",
+              "Lane widths/colors/order changed"
+            ]
+          },
+          {
+            "case": "contract",
+            "mutation": "position-endpoint",
+            "rejected": true,
+            "violations": [
+              "Absolute callout endpoint changed",
+              "Graph/package explicit endpoint position mismatch: callout-link"
+            ]
+          },
+          {
+            "case": "contract",
+            "mutation": "multi-label-position",
+            "rejected": true,
+            "violations": [
+              "Multi-label position/side changed",
+              "Graph/package annotation placement mismatch: register-link"
+            ]
+          },
+          {
+            "case": "contract",
+            "mutation": "routing",
+            "rejected": true,
+            "violations": [
+              "Elbow control points changed",
+              "Graph/package route mismatch: register-link"
+            ]
+          },
+          {
+            "case": "contract",
+            "mutation": "group",
+            "rejected": true,
+            "violations": [
+              "Group membership/stack changed"
+            ]
+          },
+          {
+            "case": "contract",
+            "mutation": "page",
+            "rejected": true,
+            "violations": [
+              "Finite page/tiling/background or infinite-canvas settings changed"
+            ]
+          },
+          {
+            "case": "semantic",
+            "mutation": "gateway",
+            "rejected": true,
+            "violations": [
+              "Exclusive branch semantics changed",
+              "Graph/package native property gatewayType mismatch: outcome"
+            ]
+          },
+          {
+            "case": "semantic",
+            "mutation": "task-subtype",
+            "rejected": true,
+            "violations": [
+              "repeat formal task role/subtype changed",
+              "Graph/package native property taskType mismatch: repeat"
+            ]
+          },
+          {
+            "case": "semantic",
+            "mutation": "event-role",
+            "rejected": true,
+            "violations": [
+              "closed event group changed",
+              "Graph/package native property eventGroup mismatch: closed"
+            ]
+          },
+          {
+            "case": "semantic",
+            "mutation": "topology",
+            "rejected": true,
+            "violations": [
+              "unacceptable endpoint direction/topology changed",
+              "Graph/package attachment mismatch: unacceptable"
+            ]
+          },
+          {
+            "case": "semantic",
+            "mutation": "cardinality",
+            "rejected": true,
+            "violations": [
+              "ER cardinality is wrong at its respective entity",
+              "Graph/package marker mismatch: batch-measurement"
+            ]
+          },
+          {
+            "case": "semantic",
+            "mutation": "table-field",
+            "rejected": true,
+            "violations": [
+              "Batch entity cell (0, 2) literal text changed"
+            ]
+          },
+          {
+            "case": "semantic",
+            "mutation": "table-merge",
+            "rejected": true,
+            "violations": [
+              "Measurement entity cell (0, 0) horizontal merge changed"
+            ]
+          },
+          {
+            "case": "semantic",
+            "mutation": "font",
+            "rejected": true,
+            "violations": [
+              "review font-family declaration changed",
+              "Graph/package text style: review font-family declaration changed"
+            ]
+          },
+          {
+            "case": "generated",
+            "mutation": "parent",
+            "rejected": true,
+            "violations": [
+              "staff-roster literal records/row order/scalar types changed",
+              "Preparation/package collection data differ"
+            ]
+          },
+          {
+            "case": "generated",
+            "mutation": "root-null",
+            "rejected": true,
+            "violations": [
+              "staff-roster literal records/row order/scalar types changed",
+              "Preparation/package collection data differ"
+            ]
+          },
+          {
+            "case": "generated",
+            "mutation": "scalar-bool",
+            "rejected": true,
+            "violations": [
+              "staff-roster literal records/row order/scalar types changed",
+              "Preparation/package collection data differ"
+            ]
+          },
+          {
+            "case": "generated",
+            "mutation": "collection-separation",
+            "rejected": true,
+            "violations": [
+              "topics-panel family/origin/field mapping/markup changed",
+              "Preparation/package layout definitions differ"
+            ]
+          },
+          {
+            "case": "generated",
+            "mutation": "sequence",
+            "rejected": true,
+            "violations": [
+              "sequence-panel family/origin/field mapping/markup changed",
+              "Preparation/package layout definitions differ"
+            ]
+          },
+          {
+            "case": "generated",
+            "mutation": "assisted-selection",
+            "rejected": true,
+            "violations": [
+              "Assisted selection changed or included archive",
+              "Assisted selection duplicates an ID",
+              "Preparation/package layout definitions differ"
+            ]
+          },
+          {
+            "case": "generated",
+            "mutation": "origin",
+            "rejected": true,
+            "violations": [
+              "org-panel family/origin/field mapping/markup changed",
+              "Preparation/package layout definitions differ"
+            ]
+          },
+          {
+            "case": "generated",
+            "mutation": "infinite-canvas",
+            "rejected": true,
+            "violations": [
+              "Finite page/tiling/background or infinite-canvas settings changed"
+            ]
+          },
+          {
+            "case": "semantic",
+            "mutation": "equivalent-color-casing",
+            "rejected": false,
+            "violations": []
+          },
+          {
+            "case": "semantic",
+            "mutation": "source-marker",
+            "rejected": true,
+            "violations": [
+              "Graph/package marker mismatch: arrive-review"
+            ]
+          }
+        ]
+      }
+    },
+    "boundary": {
+      "path": "evaluations/runs/benchmark-design-boundaries/negative-controls.json",
+      "sha256": "dab06abfc0724e73c9debbbd84e9f8ebf52d9f3c41911fea94716e46fb7f833c",
+      "bytes": 1722,
+      "record": {
+        "positive_cases": 2,
+        "rejected_mutations": [
+          {
+            "case": "boundary",
+            "mutation": "source-crlf",
+            "rejected": true
+          },
+          {
+            "case": "boundary",
+            "mutation": "wrong-hash",
+            "rejected": true
+          },
+          {
+            "case": "boundary",
+            "mutation": "wrong-labels",
+            "rejected": true
+          },
+          {
+            "case": "boundary",
+            "mutation": "wrong-readiness",
+            "rejected": true
+          },
+          {
+            "case": "boundary",
+            "mutation": "partial-native-nodes",
+            "rejected": true
+          },
+          {
+            "case": "boundary",
+            "mutation": "missing-blocker",
+            "rejected": true
+          },
+          {
+            "case": "boundary",
+            "mutation": "wrong-dependency",
+            "rejected": true
+          },
+          {
+            "case": "boundary",
+            "mutation": "prepared-blocked-svg",
+            "rejected": true
+          },
+          {
+            "case": "ambiguity",
+            "mutation": "source-crlf",
+            "rejected": true
+          },
+          {
+            "case": "ambiguity",
+            "mutation": "wrong-hash",
+            "rejected": true
+          },
+          {
+            "case": "ambiguity",
+            "mutation": "wrong-labels",
+            "rejected": true
+          },
+          {
+            "case": "ambiguity",
+            "mutation": "wrong-readiness",
+            "rejected": true
+          },
+          {
+            "case": "ambiguity",
+            "mutation": "partial-native-nodes",
+            "rejected": true
+          },
+          {
+            "case": "ambiguity",
+            "mutation": "changed-visual",
+            "rejected": true
+          },
+          {
+            "case": "ambiguity",
+            "mutation": "wrong-vector-count",
+            "rejected": true
+          },
+          {
+            "case": "ambiguity",
+            "mutation": "empty-note",
+            "rejected": true
+          }
+        ]
+      }
+    },
+    "verifier_r1": {
+      "path": "evaluations/runs/benchmark-verifier-r1/test-results.json",
+      "sha256": "a331614e86e8b9cafe91b0d21a5038f9f74703bf4c27d2a3aaf4cbd56412d16c",
+      "bytes": 4244,
+      "record": {
+        "passed": true,
+        "exact_single_comparison_change": true,
+        "tests": 40,
+        "accepted": 13,
+        "rejected": 27,
+        "results": [
+          {
+            "test": "original-positive-geometry",
+            "passed": true
+          },
+          {
+            "test": "original-positive-relations",
+            "passed": true
+          },
+          {
+            "test": "original-positive-asset",
+            "passed": true
+          },
+          {
+            "test": "crlf-source",
+            "passed": true,
+            "expected_rejection": true
+          },
+          {
+            "test": "transposed-geometry",
+            "passed": true,
+            "expected_rejection": true
+          },
+          {
+            "test": "wrong-scaled-font",
+            "passed": true,
+            "expected_rejection": true
+          },
+          {
+            "test": "wrong-fill",
+            "passed": true,
+            "expected_rejection": true
+          },
+          {
+            "test": "infinite-page",
+            "passed": true,
+            "expected_rejection": true
+          },
+          {
+            "test": "unrequested-rotation",
+            "passed": true,
+            "expected_rejection": true
+          },
+          {
+            "test": "wrong-object-opacity",
+            "passed": true,
+            "expected_rejection": true
+          },
+          {
+            "test": "unrequested-decoration",
+            "passed": true,
+            "expected_rejection": true
+          },
+          {
+            "test": "extra-native-content",
+            "passed": true,
+            "expected_rejection": true
+          },
+          {
+            "test": "zip-disagrees",
+            "passed": true,
+            "expected_rejection": true
+          },
+          {
+            "test": "stale-inspection",
+            "passed": true,
+            "expected_rejection": true
+          },
+          {
+            "test": "equivalent-css-emphasis",
+            "passed": true,
+            "expected_rejection": false
+          },
+          {
+            "test": "equivalent-organizing-metadata",
+            "passed": true,
+            "expected_rejection": false
+          },
+          {
+            "test": "wrong-target",
+            "passed": true,
+            "expected_rejection": true
+          },
+          {
+            "test": "missing-route-turn",
+            "passed": true,
+            "expected_rejection": true
+          },
+          {
+            "test": "wrong-port",
+            "passed": true,
+            "expected_rejection": true
+          },
+          {
+            "test": "lost-arrow",
+            "passed": true,
+            "expected_rejection": true
+          },
+          {
+            "test": "lost-edge-label",
+            "passed": true,
+            "expected_rejection": true
+          },
+          {
+            "test": "equivalent-elbow-route",
+            "passed": true,
+            "expected_rejection": false
+          },
+          {
+            "test": "equivalent-nested-groups-layers",
+            "passed": true,
+            "expected_rejection": false
+          },
+          {
+            "test": "dangling-group-member",
+            "passed": true,
+            "expected_rejection": true
+          },
+          {
+            "test": "cyclic-group-membership",
+            "passed": true,
+            "expected_rejection": true
+          },
+          {
+            "test": "multiple-group-parents",
+            "passed": true,
+            "expected_rejection": true
+          },
+          {
+            "test": "incoherent-group-membership",
+            "passed": true,
+            "expected_rejection": true
+          },
+          {
+            "test": "visible-group-style",
+            "passed": true,
+            "expected_rejection": true
+          },
+          {
+            "test": "top-level-collections",
+            "passed": true,
+            "expected_rejection": true
+          },
+          {
+            "test": "modified-upload",
+            "passed": true,
+            "expected_rejection": true
+          },
+          {
+            "test": "fabricated-native",
+            "passed": true,
+            "expected_rejection": true
+          },
+          {
+            "test": "stale-asset-inspection",
+            "passed": true,
+            "expected_rejection": true
+          },
+          {
+            "test": "geometry-uppercase",
+            "passed": true,
+            "expected_rejection": false
+          },
+          {
+            "test": "geometry-lowercase",
+            "passed": true,
+            "expected_rejection": false
+          },
+          {
+            "test": "geometry-mixedcase",
+            "passed": true,
+            "expected_rejection": false
+          },
+          {
+            "test": "geometry-wrong-rgb",
+            "passed": true,
+            "expected_rejection": true
+          },
+          {
+            "test": "relations-uppercase",
+            "passed": true,
+            "expected_rejection": false
+          },
+          {
+            "test": "relations-lowercase",
+            "passed": true,
+            "expected_rejection": false
+          },
+          {
+            "test": "relations-mixedcase",
+            "passed": true,
+            "expected_rejection": false
+          },
+          {
+            "test": "relations-wrong-rgb",
+            "passed": true,
+            "expected_rejection": true
+          }
+        ]
+      }
+    },
+    "verifier_r1_postwrite_identity": {
+      "path": "evaluations/runs/20261007-lucid-benchmark-v1/regrade-r1-postwrite-identity.json",
+      "sha256": "e7acff42bb9e561128840eb8f4bd9011deeede4ebb3f7a845055f4ed4dea1f4a",
+      "bytes": 2041,
+      "record": {
+        "passed": true,
+        "revision_manifest_sha256": "a9057642b93152effe6fe98c7a4b31aa3908ce028fb797fd7614b0d5b27e6047",
+        "aggregate_sha256": "4c6e5fe42029afb197a96d06ec3b2979c098dc54d6a2506ca91862083305fdb1",
+        "frozen_inputs_original_reports_and_gate_evidence_unchanged": true,
+        "results": [
+          {
+            "run_id": "20261007-lucid-benchmark-v1-geometry-luna-1",
+            "aggregate_outside_workspace": true,
+            "post_aggregate_workspace_sha256": "d8defa8dd9385b3b9f2613af5b5f9e233f4ba7db52d02d11f1da16b088685fe2",
+            "file_count": 29,
+            "output_hashes_unchanged": true
+          },
+          {
+            "run_id": "20261007-lucid-benchmark-v1-geometry-luna-2",
+            "aggregate_outside_workspace": true,
+            "post_aggregate_workspace_sha256": "d6ecdae3169e0c44908b5803d9b132e0c84dd1068a371cca2a1353a652346afe",
+            "file_count": 29,
+            "output_hashes_unchanged": true
+          },
+          {
+            "run_id": "20261007-lucid-benchmark-v1-geometry-luna-3",
+            "aggregate_outside_workspace": true,
+            "post_aggregate_workspace_sha256": "0cae7af0d2196087c0ea3770e3afc232fba53afac2e72b738bc2f5e88844984a",
+            "file_count": 29,
+            "output_hashes_unchanged": true
+          },
+          {
+            "run_id": "20261007-lucid-benchmark-v1-relations-luna-1",
+            "aggregate_outside_workspace": true,
+            "post_aggregate_workspace_sha256": "7c02363aac981bd88d6772c8f9392e7bac145354f0eb4bfcb8c6691faa6083b5",
+            "file_count": 29,
+            "output_hashes_unchanged": true
+          },
+          {
+            "run_id": "20261007-lucid-benchmark-v1-relations-luna-2",
+            "aggregate_outside_workspace": true,
+            "post_aggregate_workspace_sha256": "620e5b9fdd79bb2f847c3c9f0ee7c0c2306bdb7100a8186f0ef49d6406ca2ac9",
+            "file_count": 29,
+            "output_hashes_unchanged": true
+          },
+          {
+            "run_id": "20261007-lucid-benchmark-v1-relations-luna-3",
+            "aggregate_outside_workspace": true,
+            "post_aggregate_workspace_sha256": "1795a3d3c4095ac12e6d7cd2b339a556cb11748ac1ba429a38ef287daa5147b8",
+            "file_count": 29,
+            "output_hashes_unchanged": true
+          }
+        ]
+      }
+    },
+    "source_browser": {
+      "path": "evaluations/runs/benchmark-browser/browser-evidence.json",
+      "sha256": "73b39921267ecebe9f7da0ffbf7cac5fe35bc38e2387de1a610de4428511f1e2",
+      "bytes": 5493,
+      "record": {
+        "schema_version": 1,
+        "captured_at": "2026-10-07T19:44:25.035233+00:00",
+        "browser": "Chrome via globally installed playwright-cli",
+        "session": "lucid-benchmark-svg-20261007",
+        "scope": "Local source and byte-identical visual-copy rendering only; no simulated or live Lucid rendering.",
+        "source_wrappers": "HTML bodies containing copied original SVG markup; only the asset XML declaration is omitted from its rendering wrapper. SVG copies remain byte-identical.",
+        "active_boundary_rendered": false,
+        "tool_setup_notes": [
+          "Direct file navigation was blocked by CLI protocol policy; an ephemeral loopback HTTP server was used.",
+          "Standalone SVG accessibility snapshot timed out; HTML wrappers provided successful snapshots and direct SVG-element screenshots."
+        ],
+        "cases": [
+          {
+            "case": "geometry",
+            "source": "evaluations/runs/benchmark-design-svg/geometry/inputs/dispatch.svg",
+            "local_browser_copy": "evaluations/runs/benchmark-browser/geometry.svg",
+            "bytes": 957,
+            "sha256": "0f65fb1797b95ab4ca6359b1a5c350ae43ab3de39b2f617d7d99207427440841",
+            "screenshot": "evaluations/runs/benchmark-browser/geometry.png",
+            "screenshot_sha256": "1cdef89bcf2373e616408bc92647f2a84df6af79b8ce0349844a43bba321dc47",
+            "screenshot_pixels": [
+              800,
+              360
+            ],
+            "snapshot": "evaluations/runs/benchmark-browser/geometry-snapshot.md",
+            "rendered_dom": "evaluations/runs/benchmark-browser/geometry-dom.json",
+            "labels": [
+              "Receive & classify",
+              "Archive <Q4>"
+            ],
+            "visual_review_passed": true,
+            "findings": [
+              "Two full labels fit their shapes without page clipping.",
+              "Solid rounded blue rectangle and thicker dashed ochre rectangle render distinctly.",
+              "Actual browser boxes match (40,50,220,80) and (390,155,270,108); positive effective transforms are scale 2 and scale 3."
+            ]
+          },
+          {
+            "case": "relations",
+            "source": "evaluations/runs/benchmark-design-svg/relations/source/release-route.svg",
+            "local_browser_copy": "evaluations/runs/benchmark-browser/relations.svg",
+            "bytes": 1940,
+            "sha256": "9e2f855d71412e98995b37962a30a4aecef9eeffc7bba381f1d6a736c09997a1",
+            "screenshot": "evaluations/runs/benchmark-browser/relations.png",
+            "screenshot_sha256": "927fc861bb9b4ce7d58f86a48648f2fbe19841acd542a591bcb5d21c14ada860",
+            "screenshot_pixels": [
+              720,
+              300
+            ],
+            "snapshot": "evaluations/runs/benchmark-browser/relations-snapshot.md",
+            "rendered_dom": "evaluations/runs/benchmark-browser/relations-dom.json",
+            "labels": [
+              "Receive batch",
+              "QA gate",
+              "Release <R7>",
+              "screened",
+              "approved & queued"
+            ],
+            "visual_review_passed": true,
+            "findings": [
+              "All three node labels and both edge labels are readable and unclipped.",
+              "Both orthogonal routes retain their two interior turns.",
+              "Gold arrow meets the circle left contour; blue arrow meets the final rounded rectangle left contour.",
+              "Gold and blue source arrowhead sizes differ visibly; this does not establish native marker equivalence."
+            ]
+          },
+          {
+            "case": "asset",
+            "source": "evaluations/runs/benchmark-design-svg/asset/eligibility-upload.svg",
+            "local_browser_copy": "evaluations/runs/benchmark-browser/asset.svg",
+            "bytes": 1321,
+            "sha256": "bf0e83a5b4cf3845f48888064843b03e7d9bf0270dfd59e3cf340a3b3943bb07",
+            "screenshot": "evaluations/runs/benchmark-browser/asset.png",
+            "screenshot_sha256": "e553ac2b678f467f771b07f6842670b4d048811655188ee102cbfcd4233c2a3a",
+            "screenshot_pixels": [
+              480,
+              240
+            ],
+            "snapshot": "evaluations/runs/benchmark-browser/asset-snapshot.md",
+            "rendered_dom": "evaluations/runs/benchmark-browser/asset-dom.json",
+            "labels": [
+              "Night shift — queue 7",
+              "Ready & monitored",
+              "Window: 22:00–06:00"
+            ],
+            "visual_review_passed": true,
+            "findings": [
+              "All three full English labels, the em dash and time-range en dash render correctly.",
+              "The dusk gradient is visible across the rounded panel.",
+              "The moon layers are clipped to a clean circular window, with no illustration spill outside the circle.",
+              "Decorative curved stroke and bottom text remain within the panel and viewport."
+            ]
+          },
+          {
+            "case": "ambiguity",
+            "source": "evaluations/runs/benchmark-design-boundaries/ambiguity/out/ambiguity/visual.svg",
+            "local_browser_copy": "evaluations/runs/benchmark-browser/ambiguity.svg",
+            "bytes": 615,
+            "sha256": "b084997300815042a23d0eaa61c71cd074d653597c7913cc858030dce5a9f282",
+            "screenshot": "evaluations/runs/benchmark-browser/ambiguity.png",
+            "screenshot_sha256": "9639c6e8dc23029b3a8c129dd593a058362c52fa8ddd571358f67b181212e3eb",
+            "screenshot_pixels": [
+              360,
+              180
+            ],
+            "snapshot": "evaluations/runs/benchmark-browser/ambiguity-snapshot.md",
+            "rendered_dom": "evaluations/runs/benchmark-browser/ambiguity-dom.json",
+            "labels": [
+              "Queue & sort",
+              "Release"
+            ],
+            "visual_review_passed": true,
+            "findings": [
+              "Both labels, fills, borders and crossing strokes render without clipping.",
+              "The crossing has no junction marker or arrowhead; visual inspection cannot establish relationship semantics."
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

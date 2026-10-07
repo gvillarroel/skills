@@ -1,0 +1,462 @@
+{
+  "schema_version": 1,
+  "revision_id": "lucidchart-svg-v1-verifier-r1",
+  "status": "frozen",
+  "frozen_at_utc": "2026-10-07T20:10:26.773588+00:00",
+  "correction": {
+    "failure_class": "validator",
+    "exact_scope": "Recovered graph node text_color comparison only: hexadecimal lettercase is semantically irrelevant.",
+    "method": "Copy the digest-frozen parent grader and replace exactly one generic equality branch with the existing case-insensitive color() comparison for text_color. All other source bytes remain identical.",
+    "old_expression": "numeric(observed, target) if field == \"font_size\" else observed == target",
+    "new_expression": "numeric(observed, target) if field == \"font_size\" else color(observed, target) if field == \"text_color\" else observed == target"
+  },
+  "parent_manifest": {
+    "path": "evaluations/lucidchart-svg/benchmarks/v1/manifest.json",
+    "sha256": "a9232b4f49cc41c43f0b06e9902ef705227a3eac453579ee44dd4d5fc36ee63b",
+    "bytes": 10605
+  },
+  "parent_grader": {
+    "path": "evaluations/lucidchart-svg/benchmarks/v1/validate_svg_cases.py",
+    "sha256": "442fedf58814b322df9946606f42fb862943815d9c8df6978a977bf95ead4e18",
+    "bytes": 29560
+  },
+  "original_cohort": {
+    "path": "evaluations/runs/20261007-lucid-benchmark-v1/cohort.json",
+    "sha256": "367464c1dcaa78b5e931ebd449d76d711fa77790bc45e0d9737ba26383d15874",
+    "bytes": 225926
+  },
+  "subject": {
+    "skill": "lucidchart-svg",
+    "profile": "runtime",
+    "revision": "cf7e8bd5478c2a34bba0e890510e99c7e498ca2c",
+    "file_count": 21,
+    "sha256": "0e4d5c69add73792b268cb0890edbb48d39c573e1fdb9a908ba017ad50679f93",
+    "files": {
+      "agents/openai.yaml": {
+        "sizeBytes": 243,
+        "sha256": "a388f7191ec59f2cfaefec149964562c21697c9fea0179ee3f9a9d86d278bf6f"
+      },
+      "references/diagram-families.md": {
+        "sizeBytes": 9815,
+        "sha256": "f4b7606df89cd78f0c7200443d6b97338a755dda71b4587f286f22cd459f9346"
+      },
+      "references/editor-workflows.md": {
+        "sizeBytes": 5117,
+        "sha256": "e1507854c9bfe0bb887bc5da5b6b496537b0bc7063d4a389cca4f69422010567"
+      },
+      "references/fidelity.md": {
+        "sizeBytes": 10120,
+        "sha256": "f95257e51ef535f90d5220dab03804e1d136c028949c515f3d664432e8e5e17c"
+      },
+      "references/generated-layouts.md": {
+        "sizeBytes": 4865,
+        "sha256": "b5f5c5568507e453e862742a9908ba3616a49adf6f8b9c361f0e42d3ae9f8a97"
+      },
+      "references/native-reconstruction.md": {
+        "sizeBytes": 9163,
+        "sha256": "c96598f0563f7bcb5b449c4c0f53045b5cadbd7ed74f59137b8aca872220083a"
+      },
+      "references/native-shapes.json": {
+        "sizeBytes": 45553,
+        "sha256": "c1e1baed99198b0112d490e5b7a7be973c05e013645ec23122ee884577c4eec6"
+      },
+      "references/shape-selection.md": {
+        "sizeBytes": 7571,
+        "sha256": "d4093eb3574f112e4253ea33f6c424ae0703108747c39e60b7a88a22af3bfc23"
+      },
+      "references/standard-import.md": {
+        "sizeBytes": 3689,
+        "sha256": "184bc31b3320f30ea6311b8f600eebd1af2fee74655a1582d95148775983dbde"
+      },
+      "references/svg-mapping.md": {
+        "sizeBytes": 8301,
+        "sha256": "83fd8490ac97bc9d80cf82a2016d090152afe0a5efa9b73b548a0e8a04f47f05"
+      },
+      "scripts/build_generated.py": {
+        "sizeBytes": 14006,
+        "sha256": "82815ca5afc617bc45da1b4d45be34df55031ae720eea1c91ccdc908f6a463b7"
+      },
+      "scripts/build_native.py": {
+        "sizeBytes": 42887,
+        "sha256": "dbb3a8c76424d8453330dda2e8a815d0b1e24b3aabd2d1dd7d9215a54469bb44"
+      },
+      "scripts/extract_native.py": {
+        "sizeBytes": 57223,
+        "sha256": "4af41b4d96d09098bb2ed5c959b1619e980c30732fbe27591b20776f156e391f"
+      },
+      "scripts/inspect_svg.py": {
+        "sizeBytes": 15557,
+        "sha256": "e720563416dc77c7a7c4f99aa697eb1672c13620d00f808b6cde6042bf1f0ff1"
+      },
+      "scripts/native_catalog.py": {
+        "sizeBytes": 15892,
+        "sha256": "2e05932a3dacb61edfa0b61a571bd1ce3ee078acbb00cdf7444a2f8eada10364"
+      },
+      "scripts/test_catalog.py": {
+        "sizeBytes": 12869,
+        "sha256": "19187a1759457c1e98978219f079f042ed1419850c5624bf1d0c8ee36b95fd6c"
+      },
+      "scripts/test_extract.py": {
+        "sizeBytes": 28143,
+        "sha256": "88f8ddd1674c993b1b15c0d2d37c328664e95c449d7b05be021d80c6451b8a57"
+      },
+      "scripts/test_generated.py": {
+        "sizeBytes": 10352,
+        "sha256": "493c6ed1fa1f19dc677dfb76f406203e7823cb478f96f195d669a0f48bdbac97"
+      },
+      "scripts/test_native.py": {
+        "sizeBytes": 34869,
+        "sha256": "5dc4d9f699f38094ed48c78f8bcce6188ab42acc5606b2eaee5310968b38bb81"
+      },
+      "scripts/test_svg.py": {
+        "sizeBytes": 11760,
+        "sha256": "41bc4cbc812976c52f38db61179baa9f9c01cf5fb6c4d3e346ed66484df88177"
+      },
+      "SKILL.md": {
+        "sizeBytes": 7138,
+        "sha256": "0dd26ac53bf64510e6960a7d4920e6d3c28b2e926b76d1a27f144cfe1977c104"
+      }
+    }
+  },
+  "model": "openai-codex/gpt-5.6-luna",
+  "thinking": "high",
+  "revision_controls": {
+    "validate_svg_cases.py": {
+      "path": "evaluations/lucidchart-svg/benchmarks/v1/verifier-revisions/r1/validate_svg_cases.py",
+      "sha256": "f3321d565d238b084eacf1dfa154931928334b6697eb739fb92d8038146ea95f",
+      "bytes": 29614
+    },
+    "test_revision.py": {
+      "path": "evaluations/lucidchart-svg/benchmarks/v1/verifier-revisions/r1/test_revision.py",
+      "sha256": "b2d6e4e39a3ec8a3fc71ded6a2f2d6b59d3de986c930fd32fa02dd7e87634209",
+      "bytes": 3818
+    },
+    "regrade_cohort.py": {
+      "path": "evaluations/lucidchart-svg/benchmarks/v1/verifier-revisions/r1/regrade_cohort.py",
+      "sha256": "2a4c932fd3ad35b8b4006cc01e7138b6f600fd0b01167a651bd6c20db19498bd",
+      "bytes": 4746
+    }
+  },
+  "resampling": false,
+  "unchanged_gates": [
+    "Exact prompt/source/output paths and bytes",
+    "All remaining independent artifact assertions",
+    "Original model and strict harness/event/read-surface/payload-integrity gates",
+    "Manual prose and visual review, repetitions and case thresholds",
+    "No live-service acceptance claim"
+  ],
+  "deterministic_tests": {
+    "report": {
+      "path": "evaluations/runs/benchmark-verifier-r1/test-results.json",
+      "sha256": "a331614e86e8b9cafe91b0d21a5038f9f74703bf4c27d2a3aaf4cbd56412d16c",
+      "bytes": 4244
+    },
+    "passed": true,
+    "exact_single_comparison_change": true,
+    "tests": 40,
+    "accepted": 13,
+    "rejected": 27
+  },
+  "subjects": [
+    {
+      "case": "geometry",
+      "run_id": "20261007-lucid-benchmark-v1-geometry-luna-1",
+      "workspace": "evaluations/runs/20261007-lucid-benchmark-v1-geometry-luna-1/workspace",
+      "workspace_before_sha256": "d8defa8dd9385b3b9f2613af5b5f9e233f4ba7db52d02d11f1da16b088685fe2",
+      "workspace_file_count": 29,
+      "original_report": {
+        "path": "evaluations/runs/20261007-lucid-benchmark-v1-geometry-luna-1/independent-benchmark.json",
+        "sha256": "b1976e6ed2ee7611d67f580883149ce0a1d128f3941ec4300acece887e9915b7",
+        "bytes": 242
+      },
+      "revision_report": "evaluations/runs/20261007-lucid-benchmark-v1-geometry-luna-1/independent-benchmark-r1.json",
+      "unchanged_gate_files": [
+        {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-geometry-luna-1/run-manifest.json",
+          "sha256": "6389355802e46f71522da0fdb68be1a973ca20da83c1f12e4751160338db4cdf",
+          "bytes": 2888
+        },
+        {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-geometry-luna-1/evaluation-result.json",
+          "sha256": "a63f2c17d463ce98ca17c8ca3d2ef5195f3b6c136abd38ed8cc80f294118a067",
+          "bytes": 345
+        },
+        {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-geometry-luna-1/artifact-check.json",
+          "sha256": "efdc8932685820d0ecf3404ec33647853cc8c53cb098fa42ca2a3cf8521aae46",
+          "bytes": 2036
+        },
+        {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-geometry-luna-1/event-check.json",
+          "sha256": "5153d0a722becbe9f342eece17f1b01ddb48e4d1c577ffa41839c5dc03e19e78",
+          "bytes": 4454
+        },
+        {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-geometry-luna-1/skill-integrity-check.json",
+          "sha256": "6d79f1848a7009eefee7b324273e524182b12fa367e6775a0bb85384428cb290",
+          "bytes": 250
+        },
+        {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-geometry-luna-1/benchmark-read-surface.json",
+          "sha256": "dd70aa57ac57ac5859a249bb5b9975c0610cdbc06badb61ef7354ec47f6cf518",
+          "bytes": 9744
+        },
+        {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-geometry-luna-1/events.jsonl",
+          "sha256": "3998cd310b428b92759bab8014112932f71573b6c48d07c518ff7e464ed93d46",
+          "bytes": 927901
+        }
+      ]
+    },
+    {
+      "case": "geometry",
+      "run_id": "20261007-lucid-benchmark-v1-geometry-luna-2",
+      "workspace": "evaluations/runs/20261007-lucid-benchmark-v1-geometry-luna-2/workspace",
+      "workspace_before_sha256": "d6ecdae3169e0c44908b5803d9b132e0c84dd1068a371cca2a1353a652346afe",
+      "workspace_file_count": 29,
+      "original_report": {
+        "path": "evaluations/runs/20261007-lucid-benchmark-v1-geometry-luna-2/independent-benchmark.json",
+        "sha256": "4c2e720344b0ea94d143ed7309034539c7985d87d870933442f7b1df29280788",
+        "bytes": 242
+      },
+      "revision_report": "evaluations/runs/20261007-lucid-benchmark-v1-geometry-luna-2/independent-benchmark-r1.json",
+      "unchanged_gate_files": [
+        {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-geometry-luna-2/run-manifest.json",
+          "sha256": "70d22594eb031b3ba2528af142c08ec563b7631938bc286906f4cc0a046ca153",
+          "bytes": 2888
+        },
+        {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-geometry-luna-2/evaluation-result.json",
+          "sha256": "7d24e11b639bc4754089cc18bc8046bb171401415f30ea60392360b00b6d66f9",
+          "bytes": 345
+        },
+        {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-geometry-luna-2/artifact-check.json",
+          "sha256": "863765358a8d1f9c6b8e3bbd8fc6f03df75334babf6513507aafdc981e0aef29",
+          "bytes": 2036
+        },
+        {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-geometry-luna-2/event-check.json",
+          "sha256": "f4c8f5ac93f7490ba7b79bcbfd888c3768fd7fafc50723b0e57ea17277d47b86",
+          "bytes": 6498
+        },
+        {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-geometry-luna-2/skill-integrity-check.json",
+          "sha256": "6d79f1848a7009eefee7b324273e524182b12fa367e6775a0bb85384428cb290",
+          "bytes": 250
+        },
+        {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-geometry-luna-2/benchmark-read-surface.json",
+          "sha256": "caf17ea139813e03f84ee7ecb83e0c6d65239a7d50f73eb2a4b768fb6c46fc54",
+          "bytes": 11541
+        },
+        {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-geometry-luna-2/events.jsonl",
+          "sha256": "781d950db4a1f2d8cf46863598d16f90cd11c3ab79317c8bbe6f35ce2ef55bda",
+          "bytes": 1250651
+        }
+      ]
+    },
+    {
+      "case": "geometry",
+      "run_id": "20261007-lucid-benchmark-v1-geometry-luna-3",
+      "workspace": "evaluations/runs/20261007-lucid-benchmark-v1-geometry-luna-3/workspace",
+      "workspace_before_sha256": "0cae7af0d2196087c0ea3770e3afc232fba53afac2e72b738bc2f5e88844984a",
+      "workspace_file_count": 29,
+      "original_report": {
+        "path": "evaluations/runs/20261007-lucid-benchmark-v1-geometry-luna-3/independent-benchmark.json",
+        "sha256": "4a6d927794047f1cf9ae842ca8e328d49847111751cf972e8052f13294be8b6e",
+        "bytes": 242
+      },
+      "revision_report": "evaluations/runs/20261007-lucid-benchmark-v1-geometry-luna-3/independent-benchmark-r1.json",
+      "unchanged_gate_files": [
+        {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-geometry-luna-3/run-manifest.json",
+          "sha256": "7b670aed7f44ef9cd0f2c75a884d17d29f94db37675e4a6b090a8d8b677e3956",
+          "bytes": 2888
+        },
+        {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-geometry-luna-3/evaluation-result.json",
+          "sha256": "47ee3c54f97999e98e95eee6851772a885e32e67100202f8ca7645329140fdc5",
+          "bytes": 345
+        },
+        {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-geometry-luna-3/artifact-check.json",
+          "sha256": "7cbede390afce1996e75a15df34dfcc92fdab4f3f1cc8a5a6833f76a984b5e72",
+          "bytes": 2036
+        },
+        {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-geometry-luna-3/event-check.json",
+          "sha256": "2f38a0b04e5117bdafd2b325133d7eba0e8234fe1c7e81df79c4767d397efeb0",
+          "bytes": 4773
+        },
+        {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-geometry-luna-3/skill-integrity-check.json",
+          "sha256": "6d79f1848a7009eefee7b324273e524182b12fa367e6775a0bb85384428cb290",
+          "bytes": 250
+        },
+        {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-geometry-luna-3/benchmark-read-surface.json",
+          "sha256": "b5a49e939c56d5407620d122311c666a64bec61926ebdaa2d761acea3d1c819c",
+          "bytes": 9709
+        },
+        {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-geometry-luna-3/events.jsonl",
+          "sha256": "8978de02fd53a1193a437452b10490d830bc84aab23f889be67b1ec7c1fcc7b3",
+          "bytes": 961648
+        }
+      ]
+    },
+    {
+      "case": "relations",
+      "run_id": "20261007-lucid-benchmark-v1-relations-luna-1",
+      "workspace": "evaluations/runs/20261007-lucid-benchmark-v1-relations-luna-1/workspace",
+      "workspace_before_sha256": "7c02363aac981bd88d6772c8f9392e7bac145354f0eb4bfcb8c6691faa6083b5",
+      "workspace_file_count": 29,
+      "original_report": {
+        "path": "evaluations/runs/20261007-lucid-benchmark-v1-relations-luna-1/independent-benchmark.json",
+        "sha256": "94f266e62d5ce84a365415f6934bd47535cbe13457bdcd9facbd9b92b85bae77",
+        "bytes": 239
+      },
+      "revision_report": "evaluations/runs/20261007-lucid-benchmark-v1-relations-luna-1/independent-benchmark-r1.json",
+      "unchanged_gate_files": [
+        {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-relations-luna-1/run-manifest.json",
+          "sha256": "84273b18f3ac295870192853221fabc8f036947aefeaab497dd3b4f5218822a2",
+          "bytes": 2891
+        },
+        {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-relations-luna-1/evaluation-result.json",
+          "sha256": "b12d6b556b4ade80cfcc54035286bb5676cb3a59c88bb5f1ea1fa18caa0eee22",
+          "bytes": 346
+        },
+        {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-relations-luna-1/artifact-check.json",
+          "sha256": "cda725500213c345c732a1bc989eac0b5dad54ba8d2f6a933e085c61aa214d4d",
+          "bytes": 2035
+        },
+        {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-relations-luna-1/event-check.json",
+          "sha256": "0868c7ae62857133a46ae35d512efdd3531edfbe5744f58bd10da4dde46c28de",
+          "bytes": 4841
+        },
+        {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-relations-luna-1/skill-integrity-check.json",
+          "sha256": "6d79f1848a7009eefee7b324273e524182b12fa367e6775a0bb85384428cb290",
+          "bytes": 250
+        },
+        {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-relations-luna-1/benchmark-read-surface.json",
+          "sha256": "db974f3e5e359da6a1e0d9d999dca7d712fc8a51490b30b71229a0585f7a3b2e",
+          "bytes": 9215
+        },
+        {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-relations-luna-1/events.jsonl",
+          "sha256": "df77a6f20363f7b4931537bacfaa3235911ad48ff3440bf2baed93f0a87fa588",
+          "bytes": 1267543
+        }
+      ]
+    },
+    {
+      "case": "relations",
+      "run_id": "20261007-lucid-benchmark-v1-relations-luna-2",
+      "workspace": "evaluations/runs/20261007-lucid-benchmark-v1-relations-luna-2/workspace",
+      "workspace_before_sha256": "620e5b9fdd79bb2f847c3c9f0ee7c0c2306bdb7100a8186f0ef49d6406ca2ac9",
+      "workspace_file_count": 29,
+      "original_report": {
+        "path": "evaluations/runs/20261007-lucid-benchmark-v1-relations-luna-2/independent-benchmark.json",
+        "sha256": "f3a2192cbf81be29c5f500eeef16c1554f87ce2c8221d14c00834cd7b4753176",
+        "bytes": 239
+      },
+      "revision_report": "evaluations/runs/20261007-lucid-benchmark-v1-relations-luna-2/independent-benchmark-r1.json",
+      "unchanged_gate_files": [
+        {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-relations-luna-2/run-manifest.json",
+          "sha256": "6f9d94cac5753444059d7b34eed4e2b61f896c56f754ad9ba1b6e93999caa992",
+          "bytes": 2891
+        },
+        {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-relations-luna-2/evaluation-result.json",
+          "sha256": "2cb4e3174f65f6dd7ea7d01659c78137e8cd5f97e9bf5a052aff801a051f316e",
+          "bytes": 345
+        },
+        {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-relations-luna-2/artifact-check.json",
+          "sha256": "fc0255b924a3e202b317dee621478416c9e8ebc8c2c38367bffd622e9a01d480",
+          "bytes": 2035
+        },
+        {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-relations-luna-2/event-check.json",
+          "sha256": "4ba26a530b550d9513190f02812ad09c48ecba73ef621d4800e2335d2c8fb0ee",
+          "bytes": 4612
+        },
+        {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-relations-luna-2/skill-integrity-check.json",
+          "sha256": "6d79f1848a7009eefee7b324273e524182b12fa367e6775a0bb85384428cb290",
+          "bytes": 250
+        },
+        {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-relations-luna-2/benchmark-read-surface.json",
+          "sha256": "06727e069fd8001bd0e765489a3b4bd2e28ef6d0420856d363878325bd0d3478",
+          "bytes": 9430
+        },
+        {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-relations-luna-2/events.jsonl",
+          "sha256": "f2aa19641f97d5b39ea9d6ed7916952a041f26fc5577ab4979cab3b3933d4224",
+          "bytes": 1227502
+        }
+      ]
+    },
+    {
+      "case": "relations",
+      "run_id": "20261007-lucid-benchmark-v1-relations-luna-3",
+      "workspace": "evaluations/runs/20261007-lucid-benchmark-v1-relations-luna-3/workspace",
+      "workspace_before_sha256": "1795a3d3c4095ac12e6d7cd2b339a556cb11748ac1ba429a38ef287daa5147b8",
+      "workspace_file_count": 29,
+      "original_report": {
+        "path": "evaluations/runs/20261007-lucid-benchmark-v1-relations-luna-3/independent-benchmark.json",
+        "sha256": "67af8742e38dd2515be316a6a914f2a2064fc1439ac86ccb12d15888f12bb7b0",
+        "bytes": 239
+      },
+      "revision_report": "evaluations/runs/20261007-lucid-benchmark-v1-relations-luna-3/independent-benchmark-r1.json",
+      "unchanged_gate_files": [
+        {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-relations-luna-3/run-manifest.json",
+          "sha256": "a64b16bef126c10444f504b4a5c7c04e52b418d755c370907a3cbdac491dcc95",
+          "bytes": 2891
+        },
+        {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-relations-luna-3/evaluation-result.json",
+          "sha256": "f3c7c019f54d02d3e6fbfeee9b9682024adc647732bff260e2041d0b8c17730b",
+          "bytes": 344
+        },
+        {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-relations-luna-3/artifact-check.json",
+          "sha256": "112ff2c70c2a55d61b703f39a16c88296e1ca8eef0836694865f8cbe40a35800",
+          "bytes": 2035
+        },
+        {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-relations-luna-3/event-check.json",
+          "sha256": "e85ec21a0eebf0b1c27ddd3ebc59b234047cd0aa6a65afa4f711433735be49dc",
+          "bytes": 4465
+        },
+        {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-relations-luna-3/skill-integrity-check.json",
+          "sha256": "6d79f1848a7009eefee7b324273e524182b12fa367e6775a0bb85384428cb290",
+          "bytes": 250
+        },
+        {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-relations-luna-3/benchmark-read-surface.json",
+          "sha256": "fb3bada973a2fb449c7cc879058aac222fc22056db46df31731c2f0c8bf9206e",
+          "bytes": 9590
+        },
+        {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-relations-luna-3/events.jsonl",
+          "sha256": "31173ffa5e2265006bad5b6b5c3988bfe75c22f671aed3e05aaf5bc29029aef3",
+          "bytes": 1269656
+        }
+      ]
+    }
+  ]
+}

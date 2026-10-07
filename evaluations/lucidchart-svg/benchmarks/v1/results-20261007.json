@@ -1,0 +1,2451 @@
+{
+  "schema_version": 1,
+  "benchmark_id": "lucidchart-svg-v1",
+  "date": "2026-10-07",
+  "visibility": "public-development",
+  "is_holdout": false,
+  "subject": {
+    "skill": "lucidchart-svg",
+    "profile": "runtime",
+    "revision": "cf7e8bd5478c2a34bba0e890510e99c7e498ca2c",
+    "file_count": 21,
+    "sha256": "0e4d5c69add73792b268cb0890edbb48d39c573e1fdb9a908ba017ad50679f93",
+    "files": {
+      "agents/openai.yaml": {
+        "sizeBytes": 243,
+        "sha256": "a388f7191ec59f2cfaefec149964562c21697c9fea0179ee3f9a9d86d278bf6f"
+      },
+      "references/diagram-families.md": {
+        "sizeBytes": 9815,
+        "sha256": "f4b7606df89cd78f0c7200443d6b97338a755dda71b4587f286f22cd459f9346"
+      },
+      "references/editor-workflows.md": {
+        "sizeBytes": 5117,
+        "sha256": "e1507854c9bfe0bb887bc5da5b6b496537b0bc7063d4a389cca4f69422010567"
+      },
+      "references/fidelity.md": {
+        "sizeBytes": 10120,
+        "sha256": "f95257e51ef535f90d5220dab03804e1d136c028949c515f3d664432e8e5e17c"
+      },
+      "references/generated-layouts.md": {
+        "sizeBytes": 4865,
+        "sha256": "b5f5c5568507e453e862742a9908ba3616a49adf6f8b9c361f0e42d3ae9f8a97"
+      },
+      "references/native-reconstruction.md": {
+        "sizeBytes": 9163,
+        "sha256": "c96598f0563f7bcb5b449c4c0f53045b5cadbd7ed74f59137b8aca872220083a"
+      },
+      "references/native-shapes.json": {
+        "sizeBytes": 45553,
+        "sha256": "c1e1baed99198b0112d490e5b7a7be973c05e013645ec23122ee884577c4eec6"
+      },
+      "references/shape-selection.md": {
+        "sizeBytes": 7571,
+        "sha256": "d4093eb3574f112e4253ea33f6c424ae0703108747c39e60b7a88a22af3bfc23"
+      },
+      "references/standard-import.md": {
+        "sizeBytes": 3689,
+        "sha256": "184bc31b3320f30ea6311b8f600eebd1af2fee74655a1582d95148775983dbde"
+      },
+      "references/svg-mapping.md": {
+        "sizeBytes": 8301,
+        "sha256": "83fd8490ac97bc9d80cf82a2016d090152afe0a5efa9b73b548a0e8a04f47f05"
+      },
+      "scripts/build_generated.py": {
+        "sizeBytes": 14006,
+        "sha256": "82815ca5afc617bc45da1b4d45be34df55031ae720eea1c91ccdc908f6a463b7"
+      },
+      "scripts/build_native.py": {
+        "sizeBytes": 42887,
+        "sha256": "dbb3a8c76424d8453330dda2e8a815d0b1e24b3aabd2d1dd7d9215a54469bb44"
+      },
+      "scripts/extract_native.py": {
+        "sizeBytes": 57223,
+        "sha256": "4af41b4d96d09098bb2ed5c959b1619e980c30732fbe27591b20776f156e391f"
+      },
+      "scripts/inspect_svg.py": {
+        "sizeBytes": 15557,
+        "sha256": "e720563416dc77c7a7c4f99aa697eb1672c13620d00f808b6cde6042bf1f0ff1"
+      },
+      "scripts/native_catalog.py": {
+        "sizeBytes": 15892,
+        "sha256": "2e05932a3dacb61edfa0b61a571bd1ce3ee078acbb00cdf7444a2f8eada10364"
+      },
+      "scripts/test_catalog.py": {
+        "sizeBytes": 12869,
+        "sha256": "19187a1759457c1e98978219f079f042ed1419850c5624bf1d0c8ee36b95fd6c"
+      },
+      "scripts/test_extract.py": {
+        "sizeBytes": 28143,
+        "sha256": "88f8ddd1674c993b1b15c0d2d37c328664e95c449d7b05be021d80c6451b8a57"
+      },
+      "scripts/test_generated.py": {
+        "sizeBytes": 10352,
+        "sha256": "493c6ed1fa1f19dc677dfb76f406203e7823cb478f96f195d669a0f48bdbac97"
+      },
+      "scripts/test_native.py": {
+        "sizeBytes": 34869,
+        "sha256": "5dc4d9f699f38094ed48c78f8bcce6188ab42acc5606b2eaee5310968b38bb81"
+      },
+      "scripts/test_svg.py": {
+        "sizeBytes": 11760,
+        "sha256": "41bc4cbc812976c52f38db61179baa9f9c01cf5fb6c4d3e346ed66484df88177"
+      },
+      "SKILL.md": {
+        "sizeBytes": 7138,
+        "sha256": "0dd26ac53bf64510e6960a7d4920e6d3c28b2e926b76d1a27f144cfe1977c104"
+      }
+    }
+  },
+  "model": "openai-codex/gpt-5.6-luna",
+  "thinking": "high",
+  "planned_trials": 18,
+  "completed_trials": 18,
+  "original_artifact_passes": 12,
+  "corrected_artifact_passes": 18,
+  "original_machine_passes": 8,
+  "corrected_machine_passes": 14,
+  "original_joint_passes": 8,
+  "corrected_joint_passes": 11,
+  "original_case_thresholds_met": 5,
+  "corrected_case_thresholds_met": 6,
+  "cases": {
+    "contract": {
+      "planned_trials": 1,
+      "completed_trials": 1,
+      "required_joint_passes": 1,
+      "original_joint_passes": 1,
+      "corrected_joint_passes": 1,
+      "original_threshold_met": true,
+      "corrected_threshold_met": true
+    },
+    "geometry": {
+      "planned_trials": 3,
+      "completed_trials": 3,
+      "required_joint_passes": 2,
+      "original_joint_passes": 0,
+      "corrected_joint_passes": 3,
+      "original_threshold_met": false,
+      "corrected_threshold_met": true
+    },
+    "relations": {
+      "planned_trials": 3,
+      "completed_trials": 3,
+      "required_joint_passes": 2,
+      "original_joint_passes": 0,
+      "corrected_joint_passes": 0,
+      "original_threshold_met": false,
+      "corrected_threshold_met": false
+    },
+    "asset": {
+      "planned_trials": 3,
+      "completed_trials": 3,
+      "required_joint_passes": 2,
+      "original_joint_passes": 3,
+      "corrected_joint_passes": 3,
+      "original_threshold_met": true,
+      "corrected_threshold_met": true
+    },
+    "boundary": {
+      "planned_trials": 1,
+      "completed_trials": 1,
+      "required_joint_passes": 1,
+      "original_joint_passes": 1,
+      "corrected_joint_passes": 1,
+      "original_threshold_met": true,
+      "corrected_threshold_met": true
+    },
+    "ambiguity": {
+      "planned_trials": 1,
+      "completed_trials": 1,
+      "required_joint_passes": 1,
+      "original_joint_passes": 1,
+      "corrected_joint_passes": 1,
+      "original_threshold_met": true,
+      "corrected_threshold_met": true
+    },
+    "semantic": {
+      "planned_trials": 3,
+      "completed_trials": 3,
+      "required_joint_passes": 2,
+      "original_joint_passes": 0,
+      "corrected_joint_passes": 0,
+      "original_threshold_met": false,
+      "corrected_threshold_met": false
+    },
+    "generated": {
+      "planned_trials": 3,
+      "completed_trials": 3,
+      "required_joint_passes": 2,
+      "original_joint_passes": 2,
+      "corrected_joint_passes": 2,
+      "original_threshold_met": true,
+      "corrected_threshold_met": true
+    }
+  },
+  "resources": {
+    "duration_observed_trials": 18,
+    "duration_median_seconds": 85.47149999999999,
+    "duration_min_seconds": 24.62,
+    "duration_max_seconds": 191.967,
+    "token_observed_trials": 18,
+    "reported_token_totals": {
+      "input": 567727,
+      "output": 78691,
+      "cacheRead": 1833984,
+      "cacheWrite": 0,
+      "totalTokens": 2480402
+    },
+    "token_field_observed_trials": {
+      "input": 18,
+      "output": 18,
+      "cacheRead": 18,
+      "cacheWrite": 18,
+      "totalTokens": 18
+    },
+    "reported_cost_usd": null,
+    "timing_note": "Pi wall times with up to four concurrent local trials; observational, no no-skill baseline or isolated-latency claim."
+  },
+  "performance": {
+    "scope": "Local helper CLI, including uv/process startup; one warm-up and three fresh measured runs. No live Lucid performance claim.",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python_version": "3.13.12",
+    "workloads": [
+      {
+        "family": "inspect",
+        "items": 100,
+        "passed": true,
+        "measured_repetitions": 3,
+        "median_seconds": 0.125885,
+        "minimum_seconds": 0.124211,
+        "maximum_seconds": 0.137066,
+        "source_sha256": "55b6b54586e177364d678b50fcc7fd264604129596f5434b8136ac0ef1da566e",
+        "source_bytes": 14138,
+        "package_sha256": null
+      },
+      {
+        "family": "inspect",
+        "items": 1000,
+        "passed": true,
+        "measured_repetitions": 3,
+        "median_seconds": 0.143138,
+        "minimum_seconds": 0.142313,
+        "maximum_seconds": 0.149177,
+        "source_sha256": "88cedff91dc5db136c7afff74d0b8c1e4425f56362dcfc12be5d346979d2af1f",
+        "source_bytes": 144828,
+        "package_sha256": null
+      },
+      {
+        "family": "inspect",
+        "items": 5000,
+        "passed": true,
+        "measured_repetitions": 3,
+        "median_seconds": 0.23664,
+        "minimum_seconds": 0.234981,
+        "maximum_seconds": 0.247985,
+        "source_sha256": "ea9e621ac85c7028566ac4ca59f7dc8f7031b86a16af875889ab0c7fddca241f",
+        "source_bytes": 739228,
+        "package_sha256": null
+      },
+      {
+        "family": "native",
+        "items": 10,
+        "passed": true,
+        "measured_repetitions": 3,
+        "median_seconds": 0.133527,
+        "minimum_seconds": 0.131973,
+        "maximum_seconds": 0.136122,
+        "source_sha256": "f3372ada9551c308ee42050e480e6bcb726d8274c5a358ba6aab64195f523885",
+        "source_bytes": 2254,
+        "package_sha256": "6f03918ab5b96fd564c451e0f6f2a886def6be41cf2acb8eed305b081269fddb"
+      },
+      {
+        "family": "native",
+        "items": 100,
+        "passed": true,
+        "measured_repetitions": 3,
+        "median_seconds": 0.135292,
+        "minimum_seconds": 0.133363,
+        "maximum_seconds": 0.139073,
+        "source_sha256": "b38f68e58d5a806d390b231f1c64bb54deaf2e0779aad8538c5632c63a810a7c",
+        "source_bytes": 23195,
+        "package_sha256": "e2461cccbfa41183c0ab54127584da8b50ad3c9cc61c0c668371b827892aef5d"
+      },
+      {
+        "family": "native",
+        "items": 1000,
+        "passed": true,
+        "measured_repetitions": 3,
+        "median_seconds": 0.182382,
+        "minimum_seconds": 0.18094,
+        "maximum_seconds": 0.18345,
+        "source_sha256": "6882d00102c92674d4e376b9668f1cc5834ae4cbad0c69262577f1c01763fd96",
+        "source_bytes": 238576,
+        "package_sha256": "47eb25f478222a107888c4f8593b423a07c06e45db22394a6157d08bcbb3bcdd"
+      },
+      {
+        "family": "generated",
+        "items": 100,
+        "passed": true,
+        "measured_repetitions": 3,
+        "median_seconds": 0.134923,
+        "minimum_seconds": 0.133109,
+        "maximum_seconds": 0.135481,
+        "source_sha256": "221b945eaabf31d86192bbcb6c5d12b518892b4d9ebb5cb253b92bc246c7c915",
+        "source_bytes": 11608,
+        "package_sha256": "0db54c8c3cb196bf66b1f9aac9802820b78e67d31615907225afe18823809176"
+      },
+      {
+        "family": "generated",
+        "items": 1000,
+        "passed": true,
+        "measured_repetitions": 3,
+        "median_seconds": 0.136096,
+        "minimum_seconds": 0.135249,
+        "maximum_seconds": 0.137259,
+        "source_sha256": "c0b5717670b4fa6c9edf9ecd6e6f71e295b1b0571eff89fdfa131ef8087ab64c",
+        "source_bytes": 114209,
+        "package_sha256": "2c78623dd21f19ee80dd0abe876263bdec818a0dfb6ac288a02040e93618e75b"
+      },
+      {
+        "family": "generated",
+        "items": 4000,
+        "passed": true,
+        "measured_repetitions": 3,
+        "median_seconds": 0.163268,
+        "minimum_seconds": 0.152211,
+        "maximum_seconds": 0.170426,
+        "source_sha256": "b2e0a2cf41265ab871ed3e185e06ee2aa3219da3b96c6dbf6fc471e643aa16bf",
+        "source_bytes": 462209,
+        "package_sha256": "70c80f85dcd582ab2de06795a9ce5402dc97d461d1df2d4d2b756fd9f63a14e7"
+      }
+    ]
+  },
+  "evidence": {
+    "original_manifest": {
+      "path": "evaluations/lucidchart-svg/benchmarks/v1/manifest.json",
+      "sha256": "a9232b4f49cc41c43f0b06e9902ef705227a3eac453579ee44dd4d5fc36ee63b",
+      "bytes": 10605
+    },
+    "original_cohort": {
+      "path": "evaluations/runs/20261007-lucid-benchmark-v1/cohort.json",
+      "sha256": "367464c1dcaa78b5e931ebd449d76d711fa77790bc45e0d9737ba26383d15874",
+      "bytes": 225926
+    },
+    "original_summary": {
+      "path": "evaluations/runs/20261007-lucid-benchmark-v1/original-summary.json",
+      "sha256": "99262db7d88c05645dec0a9f5f914217ab8df8391a3724f21b50a63f27888593",
+      "bytes": 34177
+    },
+    "regrade": {
+      "path": "evaluations/runs/20261007-lucid-benchmark-v1/regrade-r1.json",
+      "sha256": "4c6e5fe42029afb197a96d06ec3b2979c098dc54d6a2506ca91862083305fdb1",
+      "bytes": 4437
+    },
+    "revision_manifest": {
+      "path": "evaluations/lucidchart-svg/benchmarks/v1/verifier-revisions/r1/correction-manifest.json",
+      "sha256": "a9057642b93152effe6fe98c7a4b31aa3908ce028fb797fd7614b0d5b27e6047",
+      "bytes": 20894
+    },
+    "performance": {
+      "path": "evaluations/runs/20261007-lucid-benchmark-v1/performance.json",
+      "sha256": "66f3435433238ddba40819423e89b69d85b54a4ed1fd3fbeff106666cfebe577",
+      "bytes": 37732
+    },
+    "archiver": {
+      "path": "evaluations/lucidchart-svg/benchmarks/v1/archive_results.py",
+      "sha256": "dd5fd682d665194783ce04ea1072b6a180db39ad8051a85f1e020a52d023b814",
+      "bytes": 13725
+    }
+  },
+  "resampling": false,
+  "artifacts_repaired": false,
+  "skill_changed": false,
+  "live_lucid_acceptance": "unverified",
+  "trials": [
+    {
+      "case": "ambiguity",
+      "repetition": 1,
+      "run_id": "20261007-lucid-benchmark-v1-ambiguity-luna-1",
+      "original_artifact_passed": true,
+      "corrected_artifact_passed": true,
+      "strict_harness_passed": true,
+      "read_surface_machine_passed": true,
+      "payload_matches": true,
+      "outputs_match_original_harness_hashes": true,
+      "original_machine_passed": true,
+      "corrected_machine_passed": true,
+      "original_joint_passed": true,
+      "corrected_joint_passed": true,
+      "manual_components": {
+        "passed": true,
+        "read_surface_passed": true,
+        "commands_passed": true,
+        "artifact_review_passed": true,
+        "narrative_review_passed": true
+      },
+      "failure_classifications": [],
+      "manual_findings": [
+        "Source and visual fallback are byte-identical 615-byte SVGs; direct content/browser inspection confirms two rectangles, two crossing strokes and both labels without a junction glyph. Only requested artifacts exist.",
+        "The prompt/SKILL read surface and local inspect/prepare/cmp/hash commands are appropriate; zero tool errors and no external service operation.",
+        "Notes preserve topology uncertainty, distinguish artwork from native editable shapes and connectors, request explicit graph metadata for reconstruction, and do not claim a live Lucid document or completed import."
+      ],
+      "pi_duration_seconds": 24.62,
+      "reported_token_usage": {
+        "input": 16341,
+        "output": 1440,
+        "cacheRead": 16384,
+        "cacheWrite": 0,
+        "totalTokens": 34165
+      },
+      "tool_error_findings": [],
+      "artifacts": [
+        {
+          "path": "source/sketch.svg",
+          "sha256": "b084997300815042a23d0eaa61c71cd074d653597c7913cc858030dce5a9f282",
+          "bytes": 615
+        },
+        {
+          "path": "out/ambiguity/inspection.json",
+          "sha256": "e78da70f83275f17646bc5bd257bc7cf5ef2d2d44a40b9049aa58d31fb0215fd",
+          "bytes": 2332
+        },
+        {
+          "path": "out/ambiguity/visual.svg",
+          "sha256": "b084997300815042a23d0eaa61c71cd074d653597c7913cc858030dce5a9f282",
+          "bytes": 615
+        },
+        {
+          "path": "out/ambiguity/notes.md",
+          "sha256": "e2d5988ece1b8822fa2c7f8b7c79105b47a5cddc229a2d8c1a8ffb73b3a41aef",
+          "bytes": 1287
+        }
+      ],
+      "evidence": {
+        "run-manifest.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-ambiguity-luna-1/run-manifest.json",
+          "sha256": "fb5075113465614ad7cab463f5cb3aefdc3e5d70205a389e30d27721fcb1b57a",
+          "bytes": 2764
+        },
+        "evaluation-result.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-ambiguity-luna-1/evaluation-result.json",
+          "sha256": "66311c789bb95ef3bebc6cd8c4187339ba09774f3e5f52a2adfd2cfe3fec72cc",
+          "bytes": 344
+        },
+        "events.jsonl": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-ambiguity-luna-1/events.jsonl",
+          "sha256": "d576b96ad2609181912007d0fb4fe6daf1de251e44c976f88c10a6c8c6741363",
+          "bytes": 395395
+        },
+        "artifact-check.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-ambiguity-luna-1/artifact-check.json",
+          "sha256": "53b4448a3831040fbbd9bb5f0771555e361c62a2850a499da86b676a2ad02006",
+          "bytes": 1185
+        },
+        "independent-benchmark.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-ambiguity-luna-1/independent-benchmark.json",
+          "sha256": "940bd2d36c28ade29bd454e0daaec5a35f5bbb59fbc028270edbc2b3c51780ab",
+          "bytes": 463
+        },
+        "benchmark-read-surface.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-ambiguity-luna-1/benchmark-read-surface.json",
+          "sha256": "2bc57ab652e2d1645be825992576c7c14a9f6510d329cdb80ceb3625c7373762",
+          "bytes": 3458
+        },
+        "skill-integrity-check.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-ambiguity-luna-1/skill-integrity-check.json",
+          "sha256": "6d79f1848a7009eefee7b324273e524182b12fa367e6775a0bb85384428cb290",
+          "bytes": 250
+        },
+        "manual-benchmark-review.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-ambiguity-luna-1/manual-benchmark-review.json",
+          "sha256": "50a417910ac6997d8b190ccf71abd05f521c116ae2da4150b51d23ff76b7c22d",
+          "bytes": 880
+        }
+      }
+    },
+    {
+      "case": "asset",
+      "repetition": 1,
+      "run_id": "20261007-lucid-benchmark-v1-asset-luna-1",
+      "original_artifact_passed": true,
+      "corrected_artifact_passed": true,
+      "strict_harness_passed": true,
+      "read_surface_machine_passed": true,
+      "payload_matches": true,
+      "outputs_match_original_harness_hashes": true,
+      "original_machine_passed": true,
+      "corrected_machine_passed": true,
+      "original_joint_passed": true,
+      "corrected_joint_passed": true,
+      "manual_components": {
+        "passed": true,
+        "read_surface_passed": true,
+        "commands_passed": true,
+        "artifact_review_passed": true,
+        "narrative_review_passed": true
+      },
+      "failure_classifications": [],
+      "manual_findings": [
+        "Direct source/candidate comparison confirms exact UTF-8/LF 1321-byte source, preserved gradient, clipping, path geometry, framing and literal Unicode labels; report hash and inventory match actual bytes.",
+        "Read surface is limited to prompt, SKILL.md and fidelity reference. Commands inspect/prepare the local SVG, check exact copies and probe renderer availability; no repository discovery, network or live service operation.",
+        "Notes correctly separate XML/resource preflight and byte preservation from rendered appearance, live SVG import and independent native editability. The trace supports the reported lack of a usable local renderer. Evaluator source browser evidence confirms the unchanged source view only."
+      ],
+      "pi_duration_seconds": 82.562,
+      "reported_token_usage": {
+        "input": 18866,
+        "output": 3159,
+        "cacheRead": 55808,
+        "cacheWrite": 0,
+        "totalTokens": 77833
+      },
+      "tool_error_findings": [],
+      "artifacts": [
+        {
+          "path": "source/night-shift.svg",
+          "sha256": "bf0e83a5b4cf3845f48888064843b03e7d9bf0270dfd59e3cf340a3b3943bb07",
+          "bytes": 1321
+        },
+        {
+          "path": "ready/night-shift.svg",
+          "sha256": "bf0e83a5b4cf3845f48888064843b03e7d9bf0270dfd59e3cf340a3b3943bb07",
+          "bytes": 1321
+        },
+        {
+          "path": "review/inspection.json",
+          "sha256": "a40afc754c645913d061b630d55af16c7b30d548f7f96113260ae2afc5c8558d",
+          "bytes": 3801
+        },
+        {
+          "path": "review/fidelity.md",
+          "sha256": "55a7c9de17a8f21557f931f3a8cd19be67453df7e4e039a3c67185aabaa97610",
+          "bytes": 3253
+        }
+      ],
+      "evidence": {
+        "run-manifest.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-asset-luna-1/run-manifest.json",
+          "sha256": "7e179739b3fb46b5b3d0b4c00f856dfa29628649583dfea139559a0cf07b549e",
+          "bytes": 2747
+        },
+        "evaluation-result.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-asset-luna-1/evaluation-result.json",
+          "sha256": "7de43f70328c795fd1b4c9427bb8adf4a6e48f0c28cd45a05b25915f4b33026f",
+          "bytes": 345
+        },
+        "events.jsonl": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-asset-luna-1/events.jsonl",
+          "sha256": "392a01038635fe99259caf175c9127235dc9e39558ff57c6423ee7d18395b9f0",
+          "bytes": 834684
+        },
+        "artifact-check.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-asset-luna-1/artifact-check.json",
+          "sha256": "4e4fd75339e27e77b125b0b114da9effd3ae0a84fe8de545bea84a956fdcd678",
+          "bytes": 1178
+        },
+        "independent-benchmark.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-asset-luna-1/independent-benchmark.json",
+          "sha256": "e64156c5765b9ef269113c5469561f9ca99d73b5991745b2b53d0e8606aadb43",
+          "bytes": 4534
+        },
+        "benchmark-read-surface.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-asset-luna-1/benchmark-read-surface.json",
+          "sha256": "c6c083d3eb57f4174c563569632ef545f5188eb0fa08809e4d399fb87a43e301",
+          "bytes": 4935
+        },
+        "skill-integrity-check.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-asset-luna-1/skill-integrity-check.json",
+          "sha256": "6d79f1848a7009eefee7b324273e524182b12fa367e6775a0bb85384428cb290",
+          "bytes": 250
+        },
+        "manual-benchmark-review.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-asset-luna-1/manual-benchmark-review.json",
+          "sha256": "7925d52ebe13b2df17daea2510085fe4a643cf3577cd7d7bffd94f9d5b522c1e",
+          "bytes": 1013
+        }
+      }
+    },
+    {
+      "case": "asset",
+      "repetition": 2,
+      "run_id": "20261007-lucid-benchmark-v1-asset-luna-2",
+      "original_artifact_passed": true,
+      "corrected_artifact_passed": true,
+      "strict_harness_passed": true,
+      "read_surface_machine_passed": true,
+      "payload_matches": true,
+      "outputs_match_original_harness_hashes": true,
+      "original_machine_passed": true,
+      "corrected_machine_passed": true,
+      "original_joint_passed": true,
+      "corrected_joint_passed": true,
+      "manual_components": {
+        "passed": true,
+        "read_surface_passed": true,
+        "commands_passed": true,
+        "artifact_review_passed": true,
+        "narrative_review_passed": true
+      },
+      "failure_classifications": [],
+      "manual_findings": [
+        "Direct source/candidate comparison confirms exact UTF-8/LF 1321-byte source, preserved gradient, clipping, path geometry, framing and literal Unicode labels; report hash and inventory match actual bytes.",
+        "Read surface is limited to prompt, SKILL.md and fidelity reference. Commands inspect/prepare the local SVG, check exact copies and probe renderer availability; no repository discovery, network or live service operation.",
+        "Notes correctly separate XML/resource preflight and byte preservation from rendered appearance, live SVG import and independent native editability. The trace supports the reported lack of a usable local renderer. Evaluator source browser evidence confirms the unchanged source view only.",
+        "Nonblocking wording defect: notes call the clipped rectangle plus two moon paths three moon/sky paths. The actual bytes and JSON inventory are correct, and no fidelity or completion claim depends on that count."
+      ],
+      "pi_duration_seconds": 72.131,
+      "reported_token_usage": {
+        "input": 16163,
+        "output": 2697,
+        "cacheRead": 50176,
+        "cacheWrite": 0,
+        "totalTokens": 69036
+      },
+      "tool_error_findings": [],
+      "artifacts": [
+        {
+          "path": "source/night-shift.svg",
+          "sha256": "bf0e83a5b4cf3845f48888064843b03e7d9bf0270dfd59e3cf340a3b3943bb07",
+          "bytes": 1321
+        },
+        {
+          "path": "ready/night-shift.svg",
+          "sha256": "bf0e83a5b4cf3845f48888064843b03e7d9bf0270dfd59e3cf340a3b3943bb07",
+          "bytes": 1321
+        },
+        {
+          "path": "review/inspection.json",
+          "sha256": "a40afc754c645913d061b630d55af16c7b30d548f7f96113260ae2afc5c8558d",
+          "bytes": 3801
+        },
+        {
+          "path": "review/fidelity.md",
+          "sha256": "ae89ee8e475bd41268118b154ed52aee0d73e856567779eea70c9360dd436a8f",
+          "bytes": 2473
+        }
+      ],
+      "evidence": {
+        "run-manifest.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-asset-luna-2/run-manifest.json",
+          "sha256": "c55366eaed81d53a55a15093f306605cedca0aae3ac73f61d2df19f091bf46fa",
+          "bytes": 2747
+        },
+        "evaluation-result.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-asset-luna-2/evaluation-result.json",
+          "sha256": "78136707cbc27c08d5d5b4b4ceee8f6a779a4f0d43ed770f5881346f3cfc4cde",
+          "bytes": 345
+        },
+        "events.jsonl": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-asset-luna-2/events.jsonl",
+          "sha256": "46c5f969aa1ee3853a8616e7a01fcdc970330ead0ded163a0a93a6b2a933399c",
+          "bytes": 714104
+        },
+        "artifact-check.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-asset-luna-2/artifact-check.json",
+          "sha256": "a9d6b68ef23f6057654302d05d4cda1ab2c018fc0a0db49c3619e429f90258bd",
+          "bytes": 1178
+        },
+        "independent-benchmark.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-asset-luna-2/independent-benchmark.json",
+          "sha256": "bc823b25c61988ab5eb5bd48f45a2f5049d6db585f81de389a94994fc5b4578d",
+          "bytes": 3756
+        },
+        "benchmark-read-surface.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-asset-luna-2/benchmark-read-surface.json",
+          "sha256": "ccf190dca0ecac2f443874e1cf467a5df4e14fd650c01737c17d499bca40bc39",
+          "bytes": 4713
+        },
+        "skill-integrity-check.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-asset-luna-2/skill-integrity-check.json",
+          "sha256": "6d79f1848a7009eefee7b324273e524182b12fa367e6775a0bb85384428cb290",
+          "bytes": 250
+        },
+        "manual-benchmark-review.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-asset-luna-2/manual-benchmark-review.json",
+          "sha256": "0a247cab73d82a9038fceb3e8b2709ff74235ac0e82400f094c1b9202591c355",
+          "bytes": 1231
+        }
+      }
+    },
+    {
+      "case": "asset",
+      "repetition": 3,
+      "run_id": "20261007-lucid-benchmark-v1-asset-luna-3",
+      "original_artifact_passed": true,
+      "corrected_artifact_passed": true,
+      "strict_harness_passed": true,
+      "read_surface_machine_passed": true,
+      "payload_matches": true,
+      "outputs_match_original_harness_hashes": true,
+      "original_machine_passed": true,
+      "corrected_machine_passed": true,
+      "original_joint_passed": true,
+      "corrected_joint_passed": true,
+      "manual_components": {
+        "passed": true,
+        "read_surface_passed": true,
+        "commands_passed": true,
+        "artifact_review_passed": true,
+        "narrative_review_passed": true
+      },
+      "failure_classifications": [],
+      "manual_findings": [
+        "Direct source/candidate comparison confirms exact UTF-8/LF 1321-byte source, preserved gradient, clipping, path geometry, framing and literal Unicode labels; report hash and inventory match actual bytes.",
+        "Read surface is limited to prompt, SKILL.md and fidelity reference. Commands inspect/prepare the local SVG, check exact copies and probe renderer availability; no repository discovery, network or live service operation.",
+        "Notes correctly separate XML/resource preflight and byte preservation from rendered appearance, live SVG import and independent native editability. The trace supports the reported lack of a usable local renderer. Evaluator source browser evidence confirms the unchanged source view only."
+      ],
+      "pi_duration_seconds": 69.373,
+      "reported_token_usage": {
+        "input": 28309,
+        "output": 2792,
+        "cacheRead": 54784,
+        "cacheWrite": 0,
+        "totalTokens": 85885
+      },
+      "tool_error_findings": [],
+      "artifacts": [
+        {
+          "path": "source/night-shift.svg",
+          "sha256": "bf0e83a5b4cf3845f48888064843b03e7d9bf0270dfd59e3cf340a3b3943bb07",
+          "bytes": 1321
+        },
+        {
+          "path": "ready/night-shift.svg",
+          "sha256": "bf0e83a5b4cf3845f48888064843b03e7d9bf0270dfd59e3cf340a3b3943bb07",
+          "bytes": 1321
+        },
+        {
+          "path": "review/inspection.json",
+          "sha256": "a40afc754c645913d061b630d55af16c7b30d548f7f96113260ae2afc5c8558d",
+          "bytes": 3801
+        },
+        {
+          "path": "review/fidelity.md",
+          "sha256": "5b9ba40fc7152d89ed892ff86550192e8fac7ccf92d8025b110f44ca03b4306d",
+          "bytes": 3435
+        }
+      ],
+      "evidence": {
+        "run-manifest.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-asset-luna-3/run-manifest.json",
+          "sha256": "5918abea447b8dde6e4dfc2d25fe95c46e10fe5ba2b101fe8c6515e87cafd5ea",
+          "bytes": 2747
+        },
+        "evaluation-result.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-asset-luna-3/evaluation-result.json",
+          "sha256": "f0209ea22f39ef777d8aa3d8d1b665dc70707bfbdb277c12c8843a5aac913768",
+          "bytes": 345
+        },
+        "events.jsonl": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-asset-luna-3/events.jsonl",
+          "sha256": "45b26ca478533b848cc85f10b1234290c3e5dae7d6c3cc358928fab68c34031c",
+          "bytes": 805145
+        },
+        "artifact-check.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-asset-luna-3/artifact-check.json",
+          "sha256": "eb343eb346202c3a4527bde4d4a39ca410eaea286cf2030ae94ed300bfbac8e9",
+          "bytes": 1178
+        },
+        "independent-benchmark.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-asset-luna-3/independent-benchmark.json",
+          "sha256": "149614356b612f1f7a56f1098ce32a59fab6e34775b248b365b124df210895ab",
+          "bytes": 4728
+        },
+        "benchmark-read-surface.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-asset-luna-3/benchmark-read-surface.json",
+          "sha256": "274363d451def8655ab5bc747b6f96f8e130d89ca7a0f5ae2db07159428562a0",
+          "bytes": 5230
+        },
+        "skill-integrity-check.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-asset-luna-3/skill-integrity-check.json",
+          "sha256": "6d79f1848a7009eefee7b324273e524182b12fa367e6775a0bb85384428cb290",
+          "bytes": 250
+        },
+        "manual-benchmark-review.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-asset-luna-3/manual-benchmark-review.json",
+          "sha256": "ad22fe4b09982deca1f66c1fa95497e48b17a0cad425bc26c5000643e621baaa",
+          "bytes": 1013
+        }
+      }
+    },
+    {
+      "case": "boundary",
+      "repetition": 1,
+      "run_id": "20261007-lucid-benchmark-v1-boundary-luna-1",
+      "original_artifact_passed": true,
+      "corrected_artifact_passed": true,
+      "strict_harness_passed": true,
+      "read_surface_machine_passed": true,
+      "payload_matches": true,
+      "outputs_match_original_harness_hashes": true,
+      "original_machine_passed": true,
+      "corrected_machine_passed": true,
+      "original_joint_passed": true,
+      "corrected_joint_passed": true,
+      "manual_components": {
+        "passed": true,
+        "read_surface_passed": true,
+        "commands_passed": true,
+        "artifact_review_passed": true,
+        "narrative_review_passed": true
+      },
+      "failure_classifications": [],
+      "manual_findings": [
+        "Direct inspection confirms exact original 509-byte source and a source-bound diagnostic recording onload/script, external image and XHTML foreignObject blockers; only the three requested files exist.",
+        "Trace reads prompt, SKILL.md and task deliverables, and runs only local static inspection. It never prepares, renders, executes or fetches the blocked SVG and never fabricates a graph, package, upload or remote export.",
+        "Notes identify both preparation/import and export as incomplete, give separate missing prerequisites and evidence for success, and correctly explain that an empty SVG text inventory does not remove the XHTML label."
+      ],
+      "pi_duration_seconds": 38.928,
+      "reported_token_usage": {
+        "input": 18365,
+        "output": 1721,
+        "cacheRead": 8704,
+        "cacheWrite": 0,
+        "totalTokens": 28790
+      },
+      "tool_error_findings": [],
+      "artifacts": [
+        {
+          "path": "input/received.svg",
+          "sha256": "38e1e8859e0e55e93e45daac833f01f6e3d497d0440ab4071cffd60e44e667ff",
+          "bytes": 509
+        },
+        {
+          "path": "out/boundary/inspection.json",
+          "sha256": "efdffc6248a9cda2c561fd9ed9680f26c993881963b370fd2e45e89d66226d0b",
+          "bytes": 2164
+        },
+        {
+          "path": "out/boundary/notes.md",
+          "sha256": "1749877fedb617497c4c483d95bdba442de90c7ad5c856dc0210836b1e0b301f",
+          "bytes": 2562
+        }
+      ],
+      "evidence": {
+        "run-manifest.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-boundary-luna-1/run-manifest.json",
+          "sha256": "24c837497d51c68ede8e63f273dc0cd19d99af6e2684681da8b5fbda652ff45f",
+          "bytes": 2728
+        },
+        "evaluation-result.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-boundary-luna-1/evaluation-result.json",
+          "sha256": "66e233458be253575418e98ea053cec0d166df34577de24f37eafe68b38c01b9",
+          "bytes": 345
+        },
+        "events.jsonl": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-boundary-luna-1/events.jsonl",
+          "sha256": "f866f535b1a98fe08e0bd4e89eb2282cd06f879145ad9ff127f6f19170737b03",
+          "bytes": 421123
+        },
+        "artifact-check.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-boundary-luna-1/artifact-check.json",
+          "sha256": "81aa9619cd64c5a47e66898ff15d931d243e1dcb727e9fb4419ad215852394cc",
+          "bytes": 912
+        },
+        "independent-benchmark.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-boundary-luna-1/independent-benchmark.json",
+          "sha256": "f81d54619737c37b29a994822d4c255ec53778fac25825052ae194dd7baafa94",
+          "bytes": 463
+        },
+        "benchmark-read-surface.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-boundary-luna-1/benchmark-read-surface.json",
+          "sha256": "d9b78bb83c8d1f5236226d005e7853e85215209e71f14629468a69c5e62b34f6",
+          "bytes": 4045
+        },
+        "skill-integrity-check.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-boundary-luna-1/skill-integrity-check.json",
+          "sha256": "6d79f1848a7009eefee7b324273e524182b12fa367e6775a0bb85384428cb290",
+          "bytes": 250
+        },
+        "manual-benchmark-review.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-boundary-luna-1/manual-benchmark-review.json",
+          "sha256": "aa496cc0307fde4ac659d32574e3bcab533b5b8fbbc1ec0a5ac9e820cbb36edf",
+          "bytes": 941
+        }
+      }
+    },
+    {
+      "case": "contract",
+      "repetition": 1,
+      "run_id": "20261007-lucid-benchmark-v1-contract-luna-1",
+      "original_artifact_passed": true,
+      "corrected_artifact_passed": true,
+      "strict_harness_passed": true,
+      "read_surface_machine_passed": true,
+      "payload_matches": true,
+      "outputs_match_original_harness_hashes": true,
+      "original_machine_passed": true,
+      "corrected_machine_passed": true,
+      "original_joint_passed": true,
+      "corrected_joint_passed": true,
+      "manual_components": {
+        "passed": true,
+        "read_surface_passed": true,
+        "commands_passed": true,
+        "artifact_review_passed": true,
+        "narrative_review_passed": true
+      },
+      "failure_classifications": [],
+      "manual_findings": [
+        "Direct review confirms four supplied shapes, two connectors, one group, two layers, finite 1200 by 600 pixel page, exact literal text, lane widths/colors, table grid/header merge, explicit routes/markers and all annotation positions.",
+        "Independently opened the ZIP: one root document.json, valid CRC, and byte-identical separately delivered document JSON. Frozen artifact oracle also passes 269 checks.",
+        "Full shell commands are the exact requested compiler command, ZIP listing, local task-output assertions and existence checks. No network, external state, ambient repository discovery or indirect source-code reading appears.",
+        "Read surface contains the prompt, entry point and delivered document/report only; observed model and strict immutable-payload gates pass.",
+        "Notes accurately describe intended native structures, no compiler approximations and the font/rotation live checks. They explicitly leave rendering, parser acceptance and live edit behavior unverified. No visual-equivalence percentage or completed remote operation is claimed."
+      ],
+      "pi_duration_seconds": 87.015,
+      "reported_token_usage": {
+        "input": 19650,
+        "output": 3549,
+        "cacheRead": 55808,
+        "cacheWrite": 0,
+        "totalTokens": 79007
+      },
+      "tool_error_findings": [],
+      "artifacts": [
+        {
+          "path": "input/contract.json",
+          "sha256": "7f620618f801f8d17b681e049a03a47b87a2972840ef7feaac063ed581f07937",
+          "bytes": 3373
+        },
+        {
+          "path": "out/contract/diagram.lucid",
+          "sha256": "49321f8a11ce046b11a452275d4e731c73007adf2f1d63115da142f1b74e398d",
+          "bytes": 8925
+        },
+        {
+          "path": "out/contract/document.json",
+          "sha256": "1395f10c4fa5fd0aeef960b63e6253cf9c2a3f59bc14c29ab9f37d03606d71d7",
+          "bytes": 8801
+        },
+        {
+          "path": "out/contract/native-report.json",
+          "sha256": "d3312c1c3feb37a919062d2f36ba5bd439313335c676749d8b5ed08330efc164",
+          "bytes": 16159
+        },
+        {
+          "path": "out/contract/notes.md",
+          "sha256": "37c3d9ec5330914bb61cbada93fcf5c372a1f46fdca0b1cbaf5996ee43614c83",
+          "bytes": 1239
+        }
+      ],
+      "evidence": {
+        "run-manifest.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-contract-luna-1/run-manifest.json",
+          "sha256": "2dc1fbc07afcafa25720cf91397ab6c7c1a05021cff3318973c411dd302cf982",
+          "bytes": 2797
+        },
+        "evaluation-result.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-contract-luna-1/evaluation-result.json",
+          "sha256": "343bc25f7df664840a2ba30721fec90f57e7d3f8f85b2fa5b52a31759b24e6c1",
+          "bytes": 345
+        },
+        "events.jsonl": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-contract-luna-1/events.jsonl",
+          "sha256": "a919025c57e2fc1033f6e92401ded94a7a0fa3af4347fc9b309946c54f4cc26d",
+          "bytes": 1015703
+        },
+        "artifact-check.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-contract-luna-1/artifact-check.json",
+          "sha256": "6b927d2a38072796eef78ea4953880e8b9e6868ef623ccaf19132dd68ce49f2f",
+          "bytes": 1468
+        },
+        "independent-benchmark.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-contract-luna-1/independent-benchmark.json",
+          "sha256": "b5c473e72debf15b525514a511199589f4451d93e1b5fc35b1b4520f5c760fcf",
+          "bytes": 1391
+        },
+        "benchmark-read-surface.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-contract-luna-1/benchmark-read-surface.json",
+          "sha256": "1cbe5a0427c1fd37dbcefd08005497a4fd4f310db0482043fb8c7b6726415f67",
+          "bytes": 4929
+        },
+        "skill-integrity-check.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-contract-luna-1/skill-integrity-check.json",
+          "sha256": "6d79f1848a7009eefee7b324273e524182b12fa367e6775a0bb85384428cb290",
+          "bytes": 250
+        },
+        "manual-benchmark-review.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-contract-luna-1/manual-benchmark-review.json",
+          "sha256": "c5fc7e73b2f211bb5dbba4f6ec00b8add203c9f9d8e4fb076100f8ba746ff603",
+          "bytes": 1361
+        }
+      }
+    },
+    {
+      "case": "generated",
+      "repetition": 1,
+      "run_id": "20261007-lucid-benchmark-v1-generated-luna-1",
+      "original_artifact_passed": true,
+      "corrected_artifact_passed": true,
+      "strict_harness_passed": true,
+      "read_surface_machine_passed": true,
+      "payload_matches": true,
+      "outputs_match_original_harness_hashes": true,
+      "original_machine_passed": true,
+      "corrected_machine_passed": true,
+      "original_joint_passed": true,
+      "corrected_joint_passed": true,
+      "manual_components": {
+        "passed": true,
+        "read_surface_passed": true,
+        "commands_passed": true,
+        "artifact_review_passed": true,
+        "narrative_review_passed": true
+      },
+      "failure_classifications": [],
+      "manual_findings": [
+        "Direct comparison against the prompt confirms both separate collections preserve exact record order, field names, values, JSON scalar types and parent links (six staff/two roots/four links; seven topics/one root/six links). Input and document preserve literal sequence markup with LF line breaks and no surrounding whitespace.",
+        "Direct emitted-document review confirms one infinite pixel canvas with the requested title/background, four correct layout IDs/bindings/origins, three initial native card bounds/styles/labels and the single attached directed eligible-link. Assisted selection includes only inspect-card and release-card; archive and other views/collections remain excluded.",
+        "ZIP passes CRC and contains only document.json, byte-identical to the standalone document. All five requested deliverables are present and no extra task artifacts appear.",
+        "Read surface is limited to prompt, SKILL.md, generated-layouts/standard-import/native-reconstruction references and actual task outputs; commands compile/check only local inputs, reports and package.",
+        "Notes distinguish preserved data/markup and input card bounds from geometry computed by Lucid, disclose accepted reflow and exclude live parser/render/edit verification.",
+        "The concise note describes the editing/layout tradeoff through native cards versus Lucid-generated geometry and accepted adaptive routing; it could additionally explain the sequence ungrouping tradeoff, but no inaccurate editability or final geometry claim is made."
+      ],
+      "pi_duration_seconds": 44.081,
+      "reported_token_usage": {
+        "input": 31834,
+        "output": 4717,
+        "cacheRead": 111104,
+        "cacheWrite": 0,
+        "totalTokens": 147655
+      },
+      "tool_error_findings": [],
+      "artifacts": [
+        {
+          "path": "out/generated/layout.json",
+          "sha256": "39f16374aae065bbf94741d83e962368e1c5b6165e472d3177ad44dafc29aa55",
+          "bytes": 6363
+        },
+        {
+          "path": "out/generated/diagram.lucid",
+          "sha256": "b91f39b3558b261b97765e44efe234812d38943b99f4e6745667d5151a634a69",
+          "bytes": 7541
+        },
+        {
+          "path": "out/generated/document.json",
+          "sha256": "e3b6b705f38fe9a1257f12fca4c036d5218d685d3fbd013aa8f72cec6a12ec7c",
+          "bytes": 7417
+        },
+        {
+          "path": "out/generated/layout-report.json",
+          "sha256": "77c43e91e5ebab2da243ab82fa32c2b5f068f63099cc6633e08e84965179b754",
+          "bytes": 13953
+        },
+        {
+          "path": "out/generated/notes.md",
+          "sha256": "9a3940b1588701a98d18a7f4b554eb849ec2e1cb0af91e532ecbacc8c10d7001",
+          "bytes": 1655
+        }
+      ],
+      "evidence": {
+        "run-manifest.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-generated-luna-1/run-manifest.json",
+          "sha256": "93ab6944ccef67802c2b0519a4e8658871fbb2266975dbcfdc97767425633d1e",
+          "bytes": 2814
+        },
+        "evaluation-result.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-generated-luna-1/evaluation-result.json",
+          "sha256": "7102f5258aeeeda8cb9cc50f2e36117412f71fcdd354c66fec33e5b32e140538",
+          "bytes": 345
+        },
+        "events.jsonl": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-generated-luna-1/events.jsonl",
+          "sha256": "9caad3f755767cf684e3614a7faf2875753dc65e5e414473bee77a5cac175b04",
+          "bytes": 1363299
+        },
+        "artifact-check.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-generated-luna-1/artifact-check.json",
+          "sha256": "26f7158c3a99e10760edab5a4927350d00ca8a088fd420dcb264bdff9ca9aae4",
+          "bytes": 1478
+        },
+        "independent-benchmark.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-generated-luna-1/independent-benchmark.json",
+          "sha256": "9d334a19bcd509be3c5e0529e800a71325de32a8225345b43b92c5a0e9ee6740",
+          "bytes": 1402
+        },
+        "benchmark-read-surface.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-generated-luna-1/benchmark-read-surface.json",
+          "sha256": "3d49eab2340a0d7a0101a5007e11d44e900847866ca1f5b2414ffdfc8d001c42",
+          "bytes": 7014
+        },
+        "skill-integrity-check.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-generated-luna-1/skill-integrity-check.json",
+          "sha256": "6d79f1848a7009eefee7b324273e524182b12fa367e6775a0bb85384428cb290",
+          "bytes": 250
+        },
+        "manual-benchmark-review.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-generated-luna-1/manual-benchmark-review.json",
+          "sha256": "7568ca00d0e0796fd78f0653c6dd7eb383cb5af28184f451dc182a378137acef",
+          "bytes": 1821
+        }
+      }
+    },
+    {
+      "case": "generated",
+      "repetition": 2,
+      "run_id": "20261007-lucid-benchmark-v1-generated-luna-2",
+      "original_artifact_passed": true,
+      "corrected_artifact_passed": true,
+      "strict_harness_passed": true,
+      "read_surface_machine_passed": true,
+      "payload_matches": true,
+      "outputs_match_original_harness_hashes": true,
+      "original_machine_passed": true,
+      "corrected_machine_passed": true,
+      "original_joint_passed": true,
+      "corrected_joint_passed": true,
+      "manual_components": {
+        "passed": true,
+        "read_surface_passed": true,
+        "commands_passed": true,
+        "artifact_review_passed": true,
+        "narrative_review_passed": true
+      },
+      "failure_classifications": [],
+      "manual_findings": [
+        "Direct comparison against the prompt confirms both separate collections preserve exact record order, field names, values, JSON scalar types and parent links (six staff/two roots/four links; seven topics/one root/six links). Input and document preserve literal sequence markup with LF line breaks and no surrounding whitespace.",
+        "Direct emitted-document review confirms one infinite pixel canvas with the requested title/background, four correct layout IDs/bindings/origins, three initial native card bounds/styles/labels and the single attached directed eligible-link. Assisted selection includes only inspect-card and release-card; archive and other views/collections remain excluded.",
+        "ZIP passes CRC and contains only document.json, byte-identical to the standalone document. All five requested deliverables are present and no extra task artifacts appear.",
+        "Read surface is limited to prompt, SKILL.md, generated-layouts/standard-import/native-reconstruction references and actual task outputs; commands compile/check only local inputs, reports and package.",
+        "Notes distinguish preserved data/markup and input card bounds from geometry computed by Lucid, disclose accepted reflow and exclude live parser/render/edit verification."
+      ],
+      "pi_duration_seconds": 114.172,
+      "reported_token_usage": {
+        "input": 29913,
+        "output": 5027,
+        "cacheRead": 90624,
+        "cacheWrite": 0,
+        "totalTokens": 125564
+      },
+      "tool_error_findings": [],
+      "artifacts": [
+        {
+          "path": "out/generated/layout.json",
+          "sha256": "1b8dde27568e955406e2e64edb2850ce802dea849dd0ea1683ae33970e27e83f",
+          "bytes": 6238
+        },
+        {
+          "path": "out/generated/diagram.lucid",
+          "sha256": "b91f39b3558b261b97765e44efe234812d38943b99f4e6745667d5151a634a69",
+          "bytes": 7541
+        },
+        {
+          "path": "out/generated/document.json",
+          "sha256": "e3b6b705f38fe9a1257f12fca4c036d5218d685d3fbd013aa8f72cec6a12ec7c",
+          "bytes": 7417
+        },
+        {
+          "path": "out/generated/layout-report.json",
+          "sha256": "e66cb396137b0b43da9f81d8e98084c606abaa797f39555179fe0c0f9c30dcc3",
+          "bytes": 13848
+        },
+        {
+          "path": "out/generated/notes.md",
+          "sha256": "8dd50a76698d98d41cec4197bba9678b2c4aa3c1057ef2276b81df4c3882216b",
+          "bytes": 2246
+        }
+      ],
+      "evidence": {
+        "run-manifest.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-generated-luna-2/run-manifest.json",
+          "sha256": "b2d987045b1f9f909c6acd3bfd02d9f0c975008b93c1ad0b3846684e53c592ae",
+          "bytes": 2814
+        },
+        "evaluation-result.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-generated-luna-2/evaluation-result.json",
+          "sha256": "aee2399c5c7e53b904c5c3b124b8a164b3ab6d976dfca932aef8a4d7c07a6b32",
+          "bytes": 346
+        },
+        "events.jsonl": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-generated-luna-2/events.jsonl",
+          "sha256": "1a985ab6ee281bed9d45f38a1dcbb9b0d18ac1b1b624ee42b8d2258075ae9bcd",
+          "bytes": 1367373
+        },
+        "artifact-check.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-generated-luna-2/artifact-check.json",
+          "sha256": "6f9b65aba0b6a2c9b19c1de4fc842994a24eb97b04272fe4ca27cd85fcb60fbe",
+          "bytes": 1478
+        },
+        "independent-benchmark.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-generated-luna-2/independent-benchmark.json",
+          "sha256": "9c9dec00f41809c9bc9c48ef9be566c5d1bd0f640903d3cb85253077d27fbcdf",
+          "bytes": 1402
+        },
+        "benchmark-read-surface.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-generated-luna-2/benchmark-read-surface.json",
+          "sha256": "5af07cec917b7577cb11f78fdd8e53e345d87a5d2b46d0493542a534eea1d5b5",
+          "bytes": 6795
+        },
+        "skill-integrity-check.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-generated-luna-2/skill-integrity-check.json",
+          "sha256": "6d79f1848a7009eefee7b324273e524182b12fa367e6775a0bb85384428cb290",
+          "bytes": 250
+        },
+        "manual-benchmark-review.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-generated-luna-2/manual-benchmark-review.json",
+          "sha256": "10c1b176a630562d9cc2361df507bdafbbdf2aa8ebbdb6688682d079df46d1ea",
+          "bytes": 1548
+        }
+      }
+    },
+    {
+      "case": "generated",
+      "repetition": 3,
+      "run_id": "20261007-lucid-benchmark-v1-generated-luna-3",
+      "original_artifact_passed": true,
+      "corrected_artifact_passed": true,
+      "strict_harness_passed": false,
+      "read_surface_machine_passed": false,
+      "payload_matches": true,
+      "outputs_match_original_harness_hashes": true,
+      "original_machine_passed": false,
+      "corrected_machine_passed": false,
+      "original_joint_passed": false,
+      "corrected_joint_passed": false,
+      "manual_components": {
+        "passed": false,
+        "read_surface_passed": true,
+        "commands_passed": false,
+        "artifact_review_passed": true,
+        "narrative_review_passed": true
+      },
+      "failure_classifications": [
+        "agent: retained tool error"
+      ],
+      "manual_findings": [
+        "Direct comparison against the prompt confirms both separate collections preserve exact record order, field names, values, JSON scalar types and parent links (six staff/two roots/four links; seven topics/one root/six links). Input and document preserve literal sequence markup with LF line breaks and no surrounding whitespace.",
+        "Direct emitted-document review confirms one infinite pixel canvas with the requested title/background, four correct layout IDs/bindings/origins, three initial native card bounds/styles/labels and the single attached directed eligible-link. Assisted selection includes only inspect-card and release-card; archive and other views/collections remain excluded.",
+        "ZIP passes CRC and contains only document.json, byte-identical to the standalone document. All five requested deliverables are present and no extra task artifacts appear.",
+        "Read surface is limited to prompt, SKILL.md, generated-layouts/standard-import/native-reconstruction references and actual task outputs; commands compile/check only local inputs, reports and package.",
+        "Notes distinguish preserved data/markup and input card bounds from geometry computed by Lucid, disclose accepted reflow and exclude live parser/render/edit verification.",
+        "Agent failure: the first model-authored inline verification reads report['local_validation'], which does not exist, and raises KeyError with exit 1. A later corrected check succeeds using report['native_graph']['local_validation']; the original tool error remains a strict command failure."
+      ],
+      "pi_duration_seconds": 56.83,
+      "reported_token_usage": {
+        "input": 34130,
+        "output": 6005,
+        "cacheRead": 86016,
+        "cacheWrite": 0,
+        "totalTokens": 126151
+      },
+      "tool_error_findings": [
+        {
+          "code": "tool-error",
+          "line": 3197,
+          "tool": "bash",
+          "path": null
+        }
+      ],
+      "artifacts": [
+        {
+          "path": "out/generated/layout.json",
+          "sha256": "1a3c52cfc236f9363d4cae50696bf328c87df1f261e0840b6bac108140a48660",
+          "bytes": 5931
+        },
+        {
+          "path": "out/generated/diagram.lucid",
+          "sha256": "a7b6e6d3db16b03bf5e611ba113cc5bc21ade0fcb75f14246771f21b901cf4bd",
+          "bytes": 7485
+        },
+        {
+          "path": "out/generated/document.json",
+          "sha256": "2fda6be3790d1305045f181c6421e33fdc4863ad259648fcab37a34659178f93",
+          "bytes": 7361
+        },
+        {
+          "path": "out/generated/layout-report.json",
+          "sha256": "e0f9d2fde3f17314d12f82263acaeca88501c67826244e2889be17eb191b563a",
+          "bytes": 13367
+        },
+        {
+          "path": "out/generated/notes.md",
+          "sha256": "052abd82a8b03f0d1fd005d0417e62f2b13ab95011fa9f62c60f6b363d3b1920",
+          "bytes": 1687
+        }
+      ],
+      "evidence": {
+        "run-manifest.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-generated-luna-3/run-manifest.json",
+          "sha256": "6441a82765c35f281fec6c9d8cc7df506cfd32175de13d067e2583899ec7670a",
+          "bytes": 2814
+        },
+        "evaluation-result.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-generated-luna-3/evaluation-result.json",
+          "sha256": "70d7f48fd7e3a91a7cb941644cc4fdc34ed47aaa27de863a3a0d99a45c00169e",
+          "bytes": 346
+        },
+        "events.jsonl": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-generated-luna-3/events.jsonl",
+          "sha256": "4007877ab7340213a445bc28d1d253838496a533d8efdd2549af539cdfca87fa",
+          "bytes": 1501346
+        },
+        "artifact-check.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-generated-luna-3/artifact-check.json",
+          "sha256": "e8fb988354aedf30c1ec418f965e0568d63ed4756ca90e6e7fd50c30ee465d57",
+          "bytes": 1478
+        },
+        "independent-benchmark.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-generated-luna-3/independent-benchmark.json",
+          "sha256": "dc3f4e22bfa808c1720f9544463ef955bfbdf8afc59a75966104858586075654",
+          "bytes": 1402
+        },
+        "benchmark-read-surface.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-generated-luna-3/benchmark-read-surface.json",
+          "sha256": "803eedb9723a2b9a371be98febeaa89d60a18c30b618d7b9227157f1d6032d1f",
+          "bytes": 7090
+        },
+        "skill-integrity-check.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-generated-luna-3/skill-integrity-check.json",
+          "sha256": "6d79f1848a7009eefee7b324273e524182b12fa367e6775a0bb85384428cb290",
+          "bytes": 250
+        },
+        "manual-benchmark-review.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-generated-luna-3/manual-benchmark-review.json",
+          "sha256": "514fecf70de0e391f11402949d140a3428d8aa8e818a83205c8a5f2c05220f16",
+          "bytes": 1847
+        }
+      }
+    },
+    {
+      "case": "geometry",
+      "repetition": 1,
+      "run_id": "20261007-lucid-benchmark-v1-geometry-luna-1",
+      "original_artifact_passed": false,
+      "corrected_artifact_passed": true,
+      "strict_harness_passed": true,
+      "read_surface_machine_passed": true,
+      "payload_matches": true,
+      "outputs_match_original_harness_hashes": true,
+      "original_machine_passed": false,
+      "corrected_machine_passed": true,
+      "original_joint_passed": false,
+      "corrected_joint_passed": true,
+      "manual_components": {
+        "passed": true,
+        "read_surface_passed": true,
+        "commands_passed": true,
+        "artifact_review_passed": true,
+        "narrative_review_passed": true
+      },
+      "failure_classifications": [
+        "validator-design: equivalent RGB hex lettercase"
+      ],
+      "manual_findings": [
+        "Direct artifact review confirms 957 source UTF-8/LF bytes with SHA-256 0f65fb1797b95ab4ca6359b1a5c350ae43ab3de39b2f617d7d99207427440841; two rectangles, zero invented edges and a finite 800 by 360 pixel page are preserved.",
+        "Hand-derived receive (40, 50, 220, 80) and archive (390, 155, 270, 108) boxes match graph and native JSON. Source fonts, scaled sizes 22/30, strokes 2/6, colors, bold/italic roles, receive rounding 16 and archive-only dashed enum match actual emitted fields.",
+        "Opened the native ZIP independently: one root document.json, valid CRC and byte-identical separate JSON.",
+        "Original frozen oracle failure is a validator defect: source #17334D and emitted #17334d encode identical RGB, but its graph text_color loop compares case-sensitively. Original verdict and artifacts remain untouched; this manual task review does not change that machine verdict.",
+        "Full commands inspect, extract, compile and validate local task artifacts or run bundled tests. Tool results confirm BOM=False, CRLF=False and finalLF=True. No network, external state, unrelated context or script-source text read appears.",
+        "Read surface includes the prompt, entry point, four relevant compact references and generated artifacts. Model, zero-error and immutable-payload strict gates pass.",
+        "All concrete narrative claims match the source/output. Notes correctly distinguish literal/style/box preservation from text baseline/padding/font metrics, exact dash lengths, group flattening and white-page adaptation; local preparation, live parser/editing/rendering and visual checks are separated. No overall fidelity percentage or completed live operation is claimed."
+      ],
+      "pi_duration_seconds": 83.928,
+      "reported_token_usage": {
+        "input": 27953,
+        "output": 3325,
+        "cacheRead": 110592,
+        "cacheWrite": 0,
+        "totalTokens": 141870
+      },
+      "tool_error_findings": [],
+      "artifacts": [
+        {
+          "path": "inputs/dispatch.svg",
+          "sha256": "0f65fb1797b95ab4ca6359b1a5c350ae43ab3de39b2f617d7d99207427440841",
+          "bytes": 957
+        },
+        {
+          "path": "outputs/dispatch/inspection.json",
+          "sha256": "03cbd2b7aaa14cc0d0774380a02e6be45189363e05e5df08b373f5ec2673ded3",
+          "bytes": 3503
+        },
+        {
+          "path": "outputs/dispatch/graph.json",
+          "sha256": "c8564908618592a015405955ab419aacb8188340b29f232e5273face8057f01b",
+          "bytes": 1279
+        },
+        {
+          "path": "outputs/dispatch/mapping.json",
+          "sha256": "90761e1f034dcc30e43238cb0708b0069f28643e2b2d32c575e9368679b29366",
+          "bytes": 5174
+        },
+        {
+          "path": "outputs/dispatch/diagram.lucid",
+          "sha256": "076ad04419e38a4d3611ec322368ef2a487c2872fbb1df3f408485c06f2ca283",
+          "bytes": 1984
+        },
+        {
+          "path": "outputs/dispatch/document.json",
+          "sha256": "40556805577a62fa6a0ad422d31e666f1d2bf1b3a435c4b1c10b5d91ca6d97b1",
+          "bytes": 1860
+        },
+        {
+          "path": "outputs/dispatch/fidelity.md",
+          "sha256": "9a9551bbc76f67f95d801ca9b97087ea295464a7e0ebab5a508ed4e8fc5e7024",
+          "bytes": 2589
+        }
+      ],
+      "evidence": {
+        "run-manifest.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-geometry-luna-1/run-manifest.json",
+          "sha256": "6389355802e46f71522da0fdb68be1a973ca20da83c1f12e4751160338db4cdf",
+          "bytes": 2888
+        },
+        "evaluation-result.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-geometry-luna-1/evaluation-result.json",
+          "sha256": "a63f2c17d463ce98ca17c8ca3d2ef5195f3b6c136abd38ed8cc80f294118a067",
+          "bytes": 345
+        },
+        "events.jsonl": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-geometry-luna-1/events.jsonl",
+          "sha256": "3998cd310b428b92759bab8014112932f71573b6c48d07c518ff7e464ed93d46",
+          "bytes": 927901
+        },
+        "artifact-check.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-geometry-luna-1/artifact-check.json",
+          "sha256": "efdc8932685820d0ecf3404ec33647853cc8c53cb098fa42ca2a3cf8521aae46",
+          "bytes": 2036
+        },
+        "independent-benchmark.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-geometry-luna-1/independent-benchmark.json",
+          "sha256": "b1976e6ed2ee7611d67f580883149ce0a1d128f3941ec4300acece887e9915b7",
+          "bytes": 242
+        },
+        "benchmark-read-surface.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-geometry-luna-1/benchmark-read-surface.json",
+          "sha256": "dd70aa57ac57ac5859a249bb5b9975c0610cdbc06badb61ef7354ec47f6cf518",
+          "bytes": 9744
+        },
+        "skill-integrity-check.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-geometry-luna-1/skill-integrity-check.json",
+          "sha256": "6d79f1848a7009eefee7b324273e524182b12fa367e6775a0bb85384428cb290",
+          "bytes": 250
+        },
+        "manual-benchmark-review.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-geometry-luna-1/manual-benchmark-review.json",
+          "sha256": "ad1821df1c499d87b687d9a66fdee63c378bf07ea126fc18bbe1a4ee5a81fe1b",
+          "bytes": 1976
+        }
+      },
+      "verifier_revision": {
+        "revision_id": "lucidchart-svg-v1-verifier-r1",
+        "workspace_sha256": "d8defa8dd9385b3b9f2613af5b5f9e233f4ba7db52d02d11f1da16b088685fe2",
+        "workspace_file_count": 29,
+        "report": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-geometry-luna-1/independent-benchmark-r1.json",
+          "sha256": "bac08e6f1b8cf378d5f1138e68c90c9ee44cd473496b8edcaea970d4452304e2",
+          "bytes": 14905
+        }
+      }
+    },
+    {
+      "case": "geometry",
+      "repetition": 2,
+      "run_id": "20261007-lucid-benchmark-v1-geometry-luna-2",
+      "original_artifact_passed": false,
+      "corrected_artifact_passed": true,
+      "strict_harness_passed": true,
+      "read_surface_machine_passed": true,
+      "payload_matches": true,
+      "outputs_match_original_harness_hashes": true,
+      "original_machine_passed": false,
+      "corrected_machine_passed": true,
+      "original_joint_passed": false,
+      "corrected_joint_passed": true,
+      "manual_components": {
+        "passed": true,
+        "read_surface_passed": true,
+        "commands_passed": true,
+        "artifact_review_passed": true,
+        "narrative_review_passed": true
+      },
+      "failure_classifications": [
+        "validator-design: equivalent RGB hex lettercase"
+      ],
+      "manual_findings": [
+        "Direct artifact review confirms 957 source UTF-8/LF bytes with SHA-256 0f65fb1797b95ab4ca6359b1a5c350ae43ab3de39b2f617d7d99207427440841; two rectangles, zero invented edges and a finite 800 by 360 pixel page are preserved.",
+        "Hand-derived receive (40, 50, 220, 80) and archive (390, 155, 270, 108) boxes match graph and native JSON. Source fonts, scaled sizes 22/30, strokes 2/6, colors, bold/italic roles, receive rounding 16 and archive-only dashed enum match actual emitted fields.",
+        "Opened the native ZIP independently: one root document.json, valid CRC and byte-identical separate JSON.",
+        "Original frozen oracle failure is a validator defect: source #17334D and emitted #17334d encode identical RGB, but its graph text_color loop compares case-sensitively. Original verdict and artifacts remain untouched; this manual task review does not change that machine verdict.",
+        "Full commands inspect, extract, compile and validate local task artifacts or run bundled tests. Tool results confirm BOM=False, CRLF=False and finalLF=True. No network, external state, unrelated context or script-source text read appears.",
+        "Read surface includes the prompt, entry point, six relevant compact references and generated artifacts; it is broad but isolated. Model, zero-error and immutable-payload strict gates pass.",
+        "All concrete narrative claims match the source/output. Notes correctly distinguish literal/style/box preservation from text baseline/padding/font metrics, exact dash lengths, group flattening and white-page adaptation; local preparation, live parser/editing/rendering and visual checks are separated. No overall fidelity percentage or completed live operation is claimed."
+      ],
+      "pi_duration_seconds": 54.343,
+      "reported_token_usage": {
+        "input": 37766,
+        "output": 4315,
+        "cacheRead": 202752,
+        "cacheWrite": 0,
+        "totalTokens": 244833
+      },
+      "tool_error_findings": [],
+      "artifacts": [
+        {
+          "path": "inputs/dispatch.svg",
+          "sha256": "0f65fb1797b95ab4ca6359b1a5c350ae43ab3de39b2f617d7d99207427440841",
+          "bytes": 957
+        },
+        {
+          "path": "outputs/dispatch/inspection.json",
+          "sha256": "03cbd2b7aaa14cc0d0774380a02e6be45189363e05e5df08b373f5ec2673ded3",
+          "bytes": 3503
+        },
+        {
+          "path": "outputs/dispatch/graph.json",
+          "sha256": "c8564908618592a015405955ab419aacb8188340b29f232e5273face8057f01b",
+          "bytes": 1279
+        },
+        {
+          "path": "outputs/dispatch/mapping.json",
+          "sha256": "90761e1f034dcc30e43238cb0708b0069f28643e2b2d32c575e9368679b29366",
+          "bytes": 5174
+        },
+        {
+          "path": "outputs/dispatch/diagram.lucid",
+          "sha256": "076ad04419e38a4d3611ec322368ef2a487c2872fbb1df3f408485c06f2ca283",
+          "bytes": 1984
+        },
+        {
+          "path": "outputs/dispatch/document.json",
+          "sha256": "40556805577a62fa6a0ad422d31e666f1d2bf1b3a435c4b1c10b5d91ca6d97b1",
+          "bytes": 1860
+        },
+        {
+          "path": "outputs/dispatch/fidelity.md",
+          "sha256": "78fe7af98101110e695c778f98d2b72846e80ec850f1851c74f42966b793598c",
+          "bytes": 2952
+        }
+      ],
+      "evidence": {
+        "run-manifest.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-geometry-luna-2/run-manifest.json",
+          "sha256": "70d22594eb031b3ba2528af142c08ec563b7631938bc286906f4cc0a046ca153",
+          "bytes": 2888
+        },
+        "evaluation-result.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-geometry-luna-2/evaluation-result.json",
+          "sha256": "7d24e11b639bc4754089cc18bc8046bb171401415f30ea60392360b00b6d66f9",
+          "bytes": 345
+        },
+        "events.jsonl": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-geometry-luna-2/events.jsonl",
+          "sha256": "781d950db4a1f2d8cf46863598d16f90cd11c3ab79317c8bbe6f35ce2ef55bda",
+          "bytes": 1250651
+        },
+        "artifact-check.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-geometry-luna-2/artifact-check.json",
+          "sha256": "863765358a8d1f9c6b8e3bbd8fc6f03df75334babf6513507aafdc981e0aef29",
+          "bytes": 2036
+        },
+        "independent-benchmark.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-geometry-luna-2/independent-benchmark.json",
+          "sha256": "4c2e720344b0ea94d143ed7309034539c7985d87d870933442f7b1df29280788",
+          "bytes": 242
+        },
+        "benchmark-read-surface.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-geometry-luna-2/benchmark-read-surface.json",
+          "sha256": "caf17ea139813e03f84ee7ecb83e0c6d65239a7d50f73eb2a4b768fb6c46fc54",
+          "bytes": 11541
+        },
+        "skill-integrity-check.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-geometry-luna-2/skill-integrity-check.json",
+          "sha256": "6d79f1848a7009eefee7b324273e524182b12fa367e6775a0bb85384428cb290",
+          "bytes": 250
+        },
+        "manual-benchmark-review.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-geometry-luna-2/manual-benchmark-review.json",
+          "sha256": "7ad0a0ff0a28a3c3f736868b59bff0cf9c9c32f03f3cb8cb940b02f1079cda8c",
+          "bytes": 2001
+        }
+      },
+      "verifier_revision": {
+        "revision_id": "lucidchart-svg-v1-verifier-r1",
+        "workspace_sha256": "d6ecdae3169e0c44908b5803d9b132e0c84dd1068a371cca2a1353a652346afe",
+        "workspace_file_count": 29,
+        "report": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-geometry-luna-2/independent-benchmark-r1.json",
+          "sha256": "212c2369649e23fa5cc11228559032f5ff1824bca47b936745134ab6844d838f",
+          "bytes": 15270
+        }
+      }
+    },
+    {
+      "case": "geometry",
+      "repetition": 3,
+      "run_id": "20261007-lucid-benchmark-v1-geometry-luna-3",
+      "original_artifact_passed": false,
+      "corrected_artifact_passed": true,
+      "strict_harness_passed": true,
+      "read_surface_machine_passed": true,
+      "payload_matches": true,
+      "outputs_match_original_harness_hashes": true,
+      "original_machine_passed": false,
+      "corrected_machine_passed": true,
+      "original_joint_passed": false,
+      "corrected_joint_passed": true,
+      "manual_components": {
+        "passed": true,
+        "read_surface_passed": true,
+        "commands_passed": true,
+        "artifact_review_passed": true,
+        "narrative_review_passed": true
+      },
+      "failure_classifications": [
+        "validator-design: equivalent RGB hex lettercase"
+      ],
+      "manual_findings": [
+        "Direct artifact review confirms 957 source UTF-8/LF bytes with SHA-256 0f65fb1797b95ab4ca6359b1a5c350ae43ab3de39b2f617d7d99207427440841; two rectangles, zero invented edges and a finite 800 by 360 pixel page are preserved.",
+        "Hand-derived receive (40, 50, 220, 80) and archive (390, 155, 270, 108) boxes match graph and native JSON. Source fonts, scaled sizes 22/30, strokes 2/6, colors, bold/italic roles, receive rounding 16 and archive-only dashed enum match actual emitted fields.",
+        "Opened the native ZIP independently: one root document.json, valid CRC and byte-identical separate JSON.",
+        "Original frozen oracle failure is a validator defect: source #17334D and emitted #17334d encode identical RGB, but its graph text_color loop compares case-sensitively. Original verdict and artifacts remain untouched; this manual task review does not change that machine verdict.",
+        "Full commands inspect, extract, compile and validate local task artifacts or run bundled tests. Tool results confirm BOM=False, CRLF=False and finalLF=True. No network, external state, unrelated context or script-source text read appears.",
+        "Read surface includes the prompt, entry point, four relevant compact references and generated artifacts. Model, zero-error and immutable-payload strict gates pass.",
+        "All concrete narrative claims match the source/output. Notes correctly distinguish literal/style/box preservation from text baseline/padding/font metrics, exact dash lengths, group flattening and white-page adaptation; local preparation, live parser/editing/rendering and visual checks are separated. No overall fidelity percentage or completed live operation is claimed."
+      ],
+      "pi_duration_seconds": 89.795,
+      "reported_token_usage": {
+        "input": 29832,
+        "output": 3388,
+        "cacheRead": 97792,
+        "cacheWrite": 0,
+        "totalTokens": 131012
+      },
+      "tool_error_findings": [],
+      "artifacts": [
+        {
+          "path": "inputs/dispatch.svg",
+          "sha256": "0f65fb1797b95ab4ca6359b1a5c350ae43ab3de39b2f617d7d99207427440841",
+          "bytes": 957
+        },
+        {
+          "path": "outputs/dispatch/inspection.json",
+          "sha256": "03cbd2b7aaa14cc0d0774380a02e6be45189363e05e5df08b373f5ec2673ded3",
+          "bytes": 3503
+        },
+        {
+          "path": "outputs/dispatch/graph.json",
+          "sha256": "c8564908618592a015405955ab419aacb8188340b29f232e5273face8057f01b",
+          "bytes": 1279
+        },
+        {
+          "path": "outputs/dispatch/mapping.json",
+          "sha256": "90761e1f034dcc30e43238cb0708b0069f28643e2b2d32c575e9368679b29366",
+          "bytes": 5174
+        },
+        {
+          "path": "outputs/dispatch/diagram.lucid",
+          "sha256": "076ad04419e38a4d3611ec322368ef2a487c2872fbb1df3f408485c06f2ca283",
+          "bytes": 1984
+        },
+        {
+          "path": "outputs/dispatch/document.json",
+          "sha256": "40556805577a62fa6a0ad422d31e666f1d2bf1b3a435c4b1c10b5d91ca6d97b1",
+          "bytes": 1860
+        },
+        {
+          "path": "outputs/dispatch/fidelity.md",
+          "sha256": "93903d14777b51a6d062d106b5894df88b10ae7176b5fe0957e5e5c2e6be420f",
+          "bytes": 2713
+        }
+      ],
+      "evidence": {
+        "run-manifest.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-geometry-luna-3/run-manifest.json",
+          "sha256": "7b670aed7f44ef9cd0f2c75a884d17d29f94db37675e4a6b090a8d8b677e3956",
+          "bytes": 2888
+        },
+        "evaluation-result.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-geometry-luna-3/evaluation-result.json",
+          "sha256": "47ee3c54f97999e98e95eee6851772a885e32e67100202f8ca7645329140fdc5",
+          "bytes": 345
+        },
+        "events.jsonl": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-geometry-luna-3/events.jsonl",
+          "sha256": "8978de02fd53a1193a437452b10490d830bc84aab23f889be67b1ec7c1fcc7b3",
+          "bytes": 961648
+        },
+        "artifact-check.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-geometry-luna-3/artifact-check.json",
+          "sha256": "7cbede390afce1996e75a15df34dfcc92fdab4f3f1cc8a5a6833f76a984b5e72",
+          "bytes": 2036
+        },
+        "independent-benchmark.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-geometry-luna-3/independent-benchmark.json",
+          "sha256": "4a6d927794047f1cf9ae842ca8e328d49847111751cf972e8052f13294be8b6e",
+          "bytes": 242
+        },
+        "benchmark-read-surface.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-geometry-luna-3/benchmark-read-surface.json",
+          "sha256": "b5a49e939c56d5407620d122311c666a64bec61926ebdaa2d761acea3d1c819c",
+          "bytes": 9709
+        },
+        "skill-integrity-check.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-geometry-luna-3/skill-integrity-check.json",
+          "sha256": "6d79f1848a7009eefee7b324273e524182b12fa367e6775a0bb85384428cb290",
+          "bytes": 250
+        },
+        "manual-benchmark-review.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-geometry-luna-3/manual-benchmark-review.json",
+          "sha256": "a257e8281cce51390dd6abe4130585c3a8c4d1ab695765272a3a0ae3ec80a85d",
+          "bytes": 1976
+        }
+      },
+      "verifier_revision": {
+        "revision_id": "lucidchart-svg-v1-verifier-r1",
+        "workspace_sha256": "0cae7af0d2196087c0ea3770e3afc232fba53afac2e72b738bc2f5e88844984a",
+        "workspace_file_count": 29,
+        "report": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-geometry-luna-3/independent-benchmark-r1.json",
+          "sha256": "9722e903ef2e13ebf136a3b371dd25ecc4b8e5478b3ec5ebed6706e7aaefae97",
+          "bytes": 15034
+        }
+      }
+    },
+    {
+      "case": "relations",
+      "repetition": 1,
+      "run_id": "20261007-lucid-benchmark-v1-relations-luna-1",
+      "original_artifact_passed": false,
+      "corrected_artifact_passed": true,
+      "strict_harness_passed": true,
+      "read_surface_machine_passed": true,
+      "payload_matches": true,
+      "outputs_match_original_harness_hashes": true,
+      "original_machine_passed": false,
+      "corrected_machine_passed": true,
+      "original_joint_passed": false,
+      "corrected_joint_passed": false,
+      "manual_components": {
+        "passed": false,
+        "read_surface_passed": true,
+        "commands_passed": true,
+        "artifact_review_passed": true,
+        "narrative_review_passed": false
+      },
+      "failure_classifications": [
+        "validator-design: equivalent RGB hex lettercase",
+        "agent: incomplete required rendered-marker review"
+      ],
+      "manual_findings": [
+        "Direct graph/document/package review preserves three generic shapes, two source-directed attached connectors, exact bounds, interior route turns, ports, strokes, dashed/solid distinction and all literal labels/styles. ZIP contains one document.json byte-identical to the standalone document and passes CRC.",
+        "The original frozen SVG validator rejects equivalent uppercase/lowercase RGB hex spelling in graph text_color. This is a validator-design failure; preserve the original machine verdict and grade any correction under a separately frozen verifier identity.",
+        "Read surface contains only prompt, focused in-bundle references and generated task evidence. Local inspection/extraction/compilation, bounded tests and package/byte checks are appropriate and error-free.",
+        "Required fidelity review is incomplete: notes list raw gold-head markerWidth/Height=8/8 and blue-head=10/6 without accounting for default markerUnits=strokeWidth and source strokes 2/3. The corresponding source marker viewports are 16×16 and 30×18 in source pixels. The prompt explicitly requires rendered source arrow size to matter; generic disclosure of native arrow loss does not supply this missing source interpretation.",
+        "Notes otherwise disclose native glyph/marker geometry loss, changed label placement, font/rendering uncertainty and absent live import, without inventing formal semantics or visual equivalence."
+      ],
+      "pi_duration_seconds": 101.138,
+      "reported_token_usage": {
+        "input": 48379,
+        "output": 3946,
+        "cacheRead": 145408,
+        "cacheWrite": 0,
+        "totalTokens": 197733
+      },
+      "tool_error_findings": [],
+      "artifacts": [
+        {
+          "path": "source/release-route.svg",
+          "sha256": "9e2f855d71412e98995b37962a30a4aecef9eeffc7bba381f1d6a736c09997a1",
+          "bytes": 1940
+        },
+        {
+          "path": "deliver/release/inspection.json",
+          "sha256": "e3a6d508710639d81928be0e7afa1ca33e045532c922d1f3f9ce1de6377e4a4b",
+          "bytes": 5886
+        },
+        {
+          "path": "deliver/release/graph.json",
+          "sha256": "46160c920289f10402559ccd9c0af2090fccb941cd18dc10b5747161ed00cd36",
+          "bytes": 3710
+        },
+        {
+          "path": "deliver/release/mapping.json",
+          "sha256": "9d01b8dedb4acab8b79184b8ca0299c0c5ed295133aeb77e5b9af898c0e71e7d",
+          "bytes": 12403
+        },
+        {
+          "path": "deliver/release/native.lucid",
+          "sha256": "9ee2467aa7acdc132f5822726992d3db1ed3fedb8099b043c271548197c34144",
+          "bytes": 4866
+        },
+        {
+          "path": "deliver/release/document.json",
+          "sha256": "ccfcb82f91afe09c58b5ccda70dd034e5df2fbf238ab74ef3b69ecc62afa30fe",
+          "bytes": 4742
+        },
+        {
+          "path": "deliver/release/changes.md",
+          "sha256": "91d6aaf1cbd0aa6e87030a8b4a06baa7679913109ea634628d22f584c403e305",
+          "bytes": 2826
+        }
+      ],
+      "evidence": {
+        "run-manifest.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-relations-luna-1/run-manifest.json",
+          "sha256": "84273b18f3ac295870192853221fabc8f036947aefeaab497dd3b4f5218822a2",
+          "bytes": 2891
+        },
+        "evaluation-result.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-relations-luna-1/evaluation-result.json",
+          "sha256": "b12d6b556b4ade80cfcc54035286bb5676cb3a59c88bb5f1ea1fa18caa0eee22",
+          "bytes": 346
+        },
+        "events.jsonl": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-relations-luna-1/events.jsonl",
+          "sha256": "df77a6f20363f7b4931537bacfaa3235911ad48ff3440bf2baed93f0a87fa588",
+          "bytes": 1267543
+        },
+        "artifact-check.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-relations-luna-1/artifact-check.json",
+          "sha256": "cda725500213c345c732a1bc989eac0b5dad54ba8d2f6a933e085c61aa214d4d",
+          "bytes": 2035
+        },
+        "independent-benchmark.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-relations-luna-1/independent-benchmark.json",
+          "sha256": "94f266e62d5ce84a365415f6934bd47535cbe13457bdcd9facbd9b92b85bae77",
+          "bytes": 239
+        },
+        "benchmark-read-surface.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-relations-luna-1/benchmark-read-surface.json",
+          "sha256": "db974f3e5e359da6a1e0d9d999dca7d712fc8a51490b30b71229a0585f7a3b2e",
+          "bytes": 9215
+        },
+        "skill-integrity-check.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-relations-luna-1/skill-integrity-check.json",
+          "sha256": "6d79f1848a7009eefee7b324273e524182b12fa367e6775a0bb85384428cb290",
+          "bytes": 250
+        },
+        "manual-benchmark-review.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-relations-luna-1/manual-benchmark-review.json",
+          "sha256": "55b688046460536d271309ffefdbc9e21ef939d94744dcb0f154a02aac1d18af",
+          "bytes": 1714
+        }
+      },
+      "verifier_revision": {
+        "revision_id": "lucidchart-svg-v1-verifier-r1",
+        "workspace_sha256": "7c02363aac981bd88d6772c8f9392e7bac145354f0eb4bfcb8c6691faa6083b5",
+        "workspace_file_count": 29,
+        "report": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-relations-luna-1/independent-benchmark-r1.json",
+          "sha256": "f6e222a11355301a0a56fea83ee02840de33518c133b183495f2f64d10a8c84a",
+          "bytes": 15119
+        }
+      }
+    },
+    {
+      "case": "relations",
+      "repetition": 2,
+      "run_id": "20261007-lucid-benchmark-v1-relations-luna-2",
+      "original_artifact_passed": false,
+      "corrected_artifact_passed": true,
+      "strict_harness_passed": true,
+      "read_surface_machine_passed": true,
+      "payload_matches": true,
+      "outputs_match_original_harness_hashes": true,
+      "original_machine_passed": false,
+      "corrected_machine_passed": true,
+      "original_joint_passed": false,
+      "corrected_joint_passed": false,
+      "manual_components": {
+        "passed": false,
+        "read_surface_passed": true,
+        "commands_passed": true,
+        "artifact_review_passed": true,
+        "narrative_review_passed": false
+      },
+      "failure_classifications": [
+        "validator-design: equivalent RGB hex lettercase",
+        "agent: incomplete required rendered-marker review"
+      ],
+      "manual_findings": [
+        "Direct graph/document/package review preserves three generic shapes, two source-directed attached connectors, exact bounds, interior route turns, ports, strokes, dashed/solid distinction and all literal labels/styles. ZIP contains one document.json byte-identical to the standalone document and passes CRC.",
+        "The original frozen SVG validator rejects equivalent uppercase/lowercase RGB hex spelling in graph text_color. This is a validator-design failure; preserve the original machine verdict and grade any correction under a separately frozen verifier identity.",
+        "Read surface contains only prompt, focused in-bundle references and generated task evidence. Local inspection/extraction/compilation, bounded tests and package/byte checks are appropriate and error-free.",
+        "Required fidelity review is incomplete: notes list raw gold-head markerWidth/Height=8/8 and blue-head=10/6 without accounting for default markerUnits=strokeWidth and source strokes 2/3. The corresponding source marker viewports are 16×16 and 30×18 in source pixels. The prompt explicitly requires rendered source arrow size to matter; generic disclosure of native arrow loss does not supply this missing source interpretation.",
+        "Notes otherwise disclose native glyph/marker geometry loss, changed label placement, font/rendering uncertainty and absent live import, without inventing formal semantics or visual equivalence."
+      ],
+      "pi_duration_seconds": 94.434,
+      "reported_token_usage": {
+        "input": 39677,
+        "output": 3436,
+        "cacheRead": 153088,
+        "cacheWrite": 0,
+        "totalTokens": 196201
+      },
+      "tool_error_findings": [],
+      "artifacts": [
+        {
+          "path": "source/release-route.svg",
+          "sha256": "9e2f855d71412e98995b37962a30a4aecef9eeffc7bba381f1d6a736c09997a1",
+          "bytes": 1940
+        },
+        {
+          "path": "deliver/release/inspection.json",
+          "sha256": "e3a6d508710639d81928be0e7afa1ca33e045532c922d1f3f9ce1de6377e4a4b",
+          "bytes": 5886
+        },
+        {
+          "path": "deliver/release/graph.json",
+          "sha256": "46160c920289f10402559ccd9c0af2090fccb941cd18dc10b5747161ed00cd36",
+          "bytes": 3710
+        },
+        {
+          "path": "deliver/release/mapping.json",
+          "sha256": "9d01b8dedb4acab8b79184b8ca0299c0c5ed295133aeb77e5b9af898c0e71e7d",
+          "bytes": 12403
+        },
+        {
+          "path": "deliver/release/native.lucid",
+          "sha256": "9ee2467aa7acdc132f5822726992d3db1ed3fedb8099b043c271548197c34144",
+          "bytes": 4866
+        },
+        {
+          "path": "deliver/release/document.json",
+          "sha256": "ccfcb82f91afe09c58b5ccda70dd034e5df2fbf238ab74ef3b69ecc62afa30fe",
+          "bytes": 4742
+        },
+        {
+          "path": "deliver/release/changes.md",
+          "sha256": "e21d96362fee0ea7407bbe0403dabdb0769e67a10823ee0fbcf52041fa261bcc",
+          "bytes": 2832
+        }
+      ],
+      "evidence": {
+        "run-manifest.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-relations-luna-2/run-manifest.json",
+          "sha256": "6f9d94cac5753444059d7b34eed4e2b61f896c56f754ad9ba1b6e93999caa992",
+          "bytes": 2891
+        },
+        "evaluation-result.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-relations-luna-2/evaluation-result.json",
+          "sha256": "2cb4e3174f65f6dd7ea7d01659c78137e8cd5f97e9bf5a052aff801a051f316e",
+          "bytes": 345
+        },
+        "events.jsonl": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-relations-luna-2/events.jsonl",
+          "sha256": "f2aa19641f97d5b39ea9d6ed7916952a041f26fc5577ab4979cab3b3933d4224",
+          "bytes": 1227502
+        },
+        "artifact-check.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-relations-luna-2/artifact-check.json",
+          "sha256": "fc0255b924a3e202b317dee621478416c9e8ebc8c2c38367bffd622e9a01d480",
+          "bytes": 2035
+        },
+        "independent-benchmark.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-relations-luna-2/independent-benchmark.json",
+          "sha256": "f3a2192cbf81be29c5f500eeef16c1554f87ce2c8221d14c00834cd7b4753176",
+          "bytes": 239
+        },
+        "benchmark-read-surface.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-relations-luna-2/benchmark-read-surface.json",
+          "sha256": "06727e069fd8001bd0e765489a3b4bd2e28ef6d0420856d363878325bd0d3478",
+          "bytes": 9430
+        },
+        "skill-integrity-check.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-relations-luna-2/skill-integrity-check.json",
+          "sha256": "6d79f1848a7009eefee7b324273e524182b12fa367e6775a0bb85384428cb290",
+          "bytes": 250
+        },
+        "manual-benchmark-review.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-relations-luna-2/manual-benchmark-review.json",
+          "sha256": "91668b0a590d9bea975800ad8fa887cba5d32a00ca6b66eb7328e3ea706d5ffe",
+          "bytes": 1714
+        }
+      },
+      "verifier_revision": {
+        "revision_id": "lucidchart-svg-v1-verifier-r1",
+        "workspace_sha256": "620e5b9fdd79bb2f847c3c9f0ee7c0c2306bdb7100a8186f0ef49d6406ca2ac9",
+        "workspace_file_count": 29,
+        "report": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-relations-luna-2/independent-benchmark-r1.json",
+          "sha256": "9217eaed70cb11cc1480bea080cfd81df3b53a913b62b3d4d665f55c678804c8",
+          "bytes": 15128
+        }
+      }
+    },
+    {
+      "case": "relations",
+      "repetition": 3,
+      "run_id": "20261007-lucid-benchmark-v1-relations-luna-3",
+      "original_artifact_passed": false,
+      "corrected_artifact_passed": true,
+      "strict_harness_passed": true,
+      "read_surface_machine_passed": true,
+      "payload_matches": true,
+      "outputs_match_original_harness_hashes": true,
+      "original_machine_passed": false,
+      "corrected_machine_passed": true,
+      "original_joint_passed": false,
+      "corrected_joint_passed": false,
+      "manual_components": {
+        "passed": false,
+        "read_surface_passed": true,
+        "commands_passed": true,
+        "artifact_review_passed": true,
+        "narrative_review_passed": false
+      },
+      "failure_classifications": [
+        "validator-design: equivalent RGB hex lettercase",
+        "agent: incomplete required rendered-marker review"
+      ],
+      "manual_findings": [
+        "Direct graph/document/package review preserves three generic shapes, two source-directed attached connectors, exact bounds, interior route turns, ports, strokes, dashed/solid distinction and all literal labels/styles. ZIP contains one document.json byte-identical to the standalone document and passes CRC.",
+        "The original frozen SVG validator rejects equivalent uppercase/lowercase RGB hex spelling in graph text_color. This is a validator-design failure; preserve the original machine verdict and grade any correction under a separately frozen verifier identity.",
+        "Read surface contains only prompt, focused in-bundle references and generated task evidence. Local inspection/extraction/compilation, bounded tests and package/byte checks are appropriate and error-free.",
+        "Required fidelity review is incomplete: notes list raw gold-head markerWidth/Height=8/8 and blue-head=10/6 without accounting for default markerUnits=strokeWidth and source strokes 2/3. The corresponding source marker viewports are 16×16 and 30×18 in source pixels. The prompt explicitly requires rendered source arrow size to matter; generic disclosure of native arrow loss does not supply this missing source interpretation.",
+        "Notes otherwise disclose native glyph/marker geometry loss, changed label placement, font/rendering uncertainty and absent live import, without inventing formal semantics or visual equivalence."
+      ],
+      "pi_duration_seconds": 90.88,
+      "reported_token_usage": {
+        "input": 35319,
+        "output": 3428,
+        "cacheRead": 142848,
+        "cacheWrite": 0,
+        "totalTokens": 181595
+      },
+      "tool_error_findings": [],
+      "artifacts": [
+        {
+          "path": "source/release-route.svg",
+          "sha256": "9e2f855d71412e98995b37962a30a4aecef9eeffc7bba381f1d6a736c09997a1",
+          "bytes": 1940
+        },
+        {
+          "path": "deliver/release/inspection.json",
+          "sha256": "e3a6d508710639d81928be0e7afa1ca33e045532c922d1f3f9ce1de6377e4a4b",
+          "bytes": 5886
+        },
+        {
+          "path": "deliver/release/graph.json",
+          "sha256": "46160c920289f10402559ccd9c0af2090fccb941cd18dc10b5747161ed00cd36",
+          "bytes": 3710
+        },
+        {
+          "path": "deliver/release/mapping.json",
+          "sha256": "9d01b8dedb4acab8b79184b8ca0299c0c5ed295133aeb77e5b9af898c0e71e7d",
+          "bytes": 12403
+        },
+        {
+          "path": "deliver/release/native.lucid",
+          "sha256": "9ee2467aa7acdc132f5822726992d3db1ed3fedb8099b043c271548197c34144",
+          "bytes": 4866
+        },
+        {
+          "path": "deliver/release/document.json",
+          "sha256": "ccfcb82f91afe09c58b5ccda70dd034e5df2fbf238ab74ef3b69ecc62afa30fe",
+          "bytes": 4742
+        },
+        {
+          "path": "deliver/release/changes.md",
+          "sha256": "cea9adab823b66e1f726a6bb9f12ce8ec017b9de0b1e30c3dfb900c47bce0959",
+          "bytes": 3141
+        }
+      ],
+      "evidence": {
+        "run-manifest.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-relations-luna-3/run-manifest.json",
+          "sha256": "a64b16bef126c10444f504b4a5c7c04e52b418d755c370907a3cbdac491dcc95",
+          "bytes": 2891
+        },
+        "evaluation-result.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-relations-luna-3/evaluation-result.json",
+          "sha256": "f3c7c019f54d02d3e6fbfeee9b9682024adc647732bff260e2041d0b8c17730b",
+          "bytes": 344
+        },
+        "events.jsonl": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-relations-luna-3/events.jsonl",
+          "sha256": "31173ffa5e2265006bad5b6b5c3988bfe75c22f671aed3e05aaf5bc29029aef3",
+          "bytes": 1269656
+        },
+        "artifact-check.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-relations-luna-3/artifact-check.json",
+          "sha256": "112ff2c70c2a55d61b703f39a16c88296e1ca8eef0836694865f8cbe40a35800",
+          "bytes": 2035
+        },
+        "independent-benchmark.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-relations-luna-3/independent-benchmark.json",
+          "sha256": "67af8742e38dd2515be316a6a914f2a2064fc1439ac86ccb12d15888f12bb7b0",
+          "bytes": 239
+        },
+        "benchmark-read-surface.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-relations-luna-3/benchmark-read-surface.json",
+          "sha256": "fb3bada973a2fb449c7cc879058aac222fc22056db46df31731c2f0c8bf9206e",
+          "bytes": 9590
+        },
+        "skill-integrity-check.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-relations-luna-3/skill-integrity-check.json",
+          "sha256": "6d79f1848a7009eefee7b324273e524182b12fa367e6775a0bb85384428cb290",
+          "bytes": 250
+        },
+        "manual-benchmark-review.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-relations-luna-3/manual-benchmark-review.json",
+          "sha256": "1291469c6bf5006e09d1f0eb1a30848086336c8d5f9e893f8e8b65e7cd787eb1",
+          "bytes": 1714
+        }
+      },
+      "verifier_revision": {
+        "revision_id": "lucidchart-svg-v1-verifier-r1",
+        "workspace_sha256": "1795a3d3c4095ac12e6d7cd2b339a556cb11748ac1ba429a38ef287daa5147b8",
+        "workspace_file_count": 29,
+        "report": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-relations-luna-3/independent-benchmark-r1.json",
+          "sha256": "97954dda0cca44788806b9567d4bfc2af8783cfd6028d1fdee149b844bcce8fc",
+          "bytes": 15440
+        }
+      }
+    },
+    {
+      "case": "semantic",
+      "repetition": 1,
+      "run_id": "20261007-lucid-benchmark-v1-semantic-luna-1",
+      "original_artifact_passed": true,
+      "corrected_artifact_passed": true,
+      "strict_harness_passed": false,
+      "read_surface_machine_passed": false,
+      "payload_matches": true,
+      "outputs_match_original_harness_hashes": true,
+      "original_machine_passed": false,
+      "corrected_machine_passed": false,
+      "original_joint_passed": false,
+      "corrected_joint_passed": false,
+      "manual_components": {
+        "passed": false,
+        "read_surface_passed": true,
+        "commands_passed": false,
+        "artifact_review_passed": true,
+        "narrative_review_passed": true
+      },
+      "failure_classifications": [
+        "agent: retained tool error"
+      ],
+      "manual_findings": [
+        "Direct graph and emitted-document inspection confirms the supplied eight objects, fixed finite pixel page and seven attached relationships. Formal event groups, no-trigger subtypes, user/service/manual ordinary tasks and exclusive gateway are correct; the two ER tables retain merged headers, ordered literal cells and correct exactlyOne/zeroOrMore endpoint markers and labels. No cross-region relationship is added.",
+        "ZIP passes CRC and contains only document.json, byte-identical to the standalone document. Paint and declared Arial 14 text contract match source intent; actual table-font inheritance and live rendering remain unverified.",
+        "The read surface is prompt, SKILL.md, four focused in-bundle references, task outputs and compact catalog/help queries. Semantic 1 additionally reads at most 80 directly relevant marker-related script lines via rg after the invalid catalog query; no ambient repository/example/sibling material is accessed.",
+        "Agent failure: native_catalog.py --type line exits 2 because line is not a supported native shape type. This is a real tool error in all three traces, retained even though later compilation and artifact checks pass. The command component and final strict/joint gate fail.",
+        "Notes accurately explain selected BPMN notation, ER table adaptation, local package evidence, native-object intent and unverified service import/render/edit probes. Their successful local artifact-check statements do not erase the earlier tool error."
+      ],
+      "pi_duration_seconds": 181.647,
+      "reported_token_usage": {
+        "input": 50426,
+        "output": 9008,
+        "cacheRead": 137216,
+        "cacheWrite": 0,
+        "totalTokens": 196650
+      },
+      "tool_error_findings": [
+        {
+          "code": "tool-error",
+          "line": 135,
+          "tool": "bash",
+          "path": null
+        }
+      ],
+      "artifacts": [
+        {
+          "path": "out/semantic/graph.json",
+          "sha256": "f32890f6231677e03c18c9a075405cfa05e2ea9bf97fcf7d3bd8046a7ca4d846",
+          "bytes": 9225
+        },
+        {
+          "path": "out/semantic/diagram.lucid",
+          "sha256": "36e57e2b18132f1c2f27a04cc2477946941b442b0d7ae9062cc85ed6d174d231",
+          "bytes": 17358
+        },
+        {
+          "path": "out/semantic/document.json",
+          "sha256": "0cbacf2ed58ee22e0e85f22c380a7281f226fb05d7cefd30f586a70c658949d1",
+          "bytes": 17234
+        },
+        {
+          "path": "out/semantic/native-report.json",
+          "sha256": "3df4869b42643c6995c6ea416ad41b60f6481d06ce7e523355fe5ad750360dd3",
+          "bytes": 28931
+        },
+        {
+          "path": "out/semantic/notes.md",
+          "sha256": "6070d5787ebbfca3853a8895db6556fc894c45d243346ebf4eb3e28270d7b625",
+          "bytes": 1571
+        }
+      ],
+      "evidence": {
+        "run-manifest.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-semantic-luna-1/run-manifest.json",
+          "sha256": "cd9e17afe5effd8abd49bc04b0d24bd6c1783090e23c7fcb38cc86bb288841d4",
+          "bytes": 2806
+        },
+        "evaluation-result.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-semantic-luna-1/evaluation-result.json",
+          "sha256": "f94651bc246db528785a7720040d6c357810aaa106c35abde837cbf8d050f190",
+          "bytes": 348
+        },
+        "events.jsonl": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-semantic-luna-1/events.jsonl",
+          "sha256": "7c81b6206decb3546ebc95d9d52e90d61bd018b9d97e59cf6a7c8df826f6c5a1",
+          "bytes": 2210507
+        },
+        "artifact-check.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-semantic-luna-1/artifact-check.json",
+          "sha256": "87eaa08dd438ede083f4ab89c9487d6e348f3ef5d160e8c621f4b322b00e1b3d",
+          "bytes": 1474
+        },
+        "independent-benchmark.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-semantic-luna-1/independent-benchmark.json",
+          "sha256": "7135c18eeb6bb84578dbc2ee6b41af8b559140ffb9438c57b90f0dc98cf66442",
+          "bytes": 1397
+        },
+        "benchmark-read-surface.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-semantic-luna-1/benchmark-read-surface.json",
+          "sha256": "b2fc4f89093fe5061dedd3b9806902717d2b0090b69571e6ae05025b4209bfdb",
+          "bytes": 9152
+        },
+        "skill-integrity-check.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-semantic-luna-1/skill-integrity-check.json",
+          "sha256": "6d79f1848a7009eefee7b324273e524182b12fa367e6775a0bb85384428cb290",
+          "bytes": 250
+        },
+        "manual-benchmark-review.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-semantic-luna-1/manual-benchmark-review.json",
+          "sha256": "4e9803d26d9eb2297f119fcb0593f61e50d84156c0349b140df4415b02c2b572",
+          "bytes": 1792
+        }
+      }
+    },
+    {
+      "case": "semantic",
+      "repetition": 2,
+      "run_id": "20261007-lucid-benchmark-v1-semantic-luna-2",
+      "original_artifact_passed": true,
+      "corrected_artifact_passed": true,
+      "strict_harness_passed": false,
+      "read_surface_machine_passed": false,
+      "payload_matches": true,
+      "outputs_match_original_harness_hashes": true,
+      "original_machine_passed": false,
+      "corrected_machine_passed": false,
+      "original_joint_passed": false,
+      "corrected_joint_passed": false,
+      "manual_components": {
+        "passed": false,
+        "read_surface_passed": true,
+        "commands_passed": false,
+        "artifact_review_passed": true,
+        "narrative_review_passed": true
+      },
+      "failure_classifications": [
+        "agent: retained tool error"
+      ],
+      "manual_findings": [
+        "Direct graph and emitted-document inspection confirms the supplied eight objects, fixed finite pixel page and seven attached relationships. Formal event groups, no-trigger subtypes, user/service/manual ordinary tasks and exclusive gateway are correct; the two ER tables retain merged headers, ordered literal cells and correct exactlyOne/zeroOrMore endpoint markers and labels. No cross-region relationship is added.",
+        "ZIP passes CRC and contains only document.json, byte-identical to the standalone document. Paint and declared Arial 14 text contract match source intent; actual table-font inheritance and live rendering remain unverified.",
+        "The read surface is prompt, SKILL.md, four focused in-bundle references, task outputs and compact catalog/help queries. Semantic 1 additionally reads at most 80 directly relevant marker-related script lines via rg after the invalid catalog query; no ambient repository/example/sibling material is accessed.",
+        "Agent failure: native_catalog.py --type line exits 2 because line is not a supported native shape type. This is a real tool error in all three traces, retained even though later compilation and artifact checks pass. The command component and final strict/joint gate fail.",
+        "Notes accurately explain selected BPMN notation, ER table adaptation, local package evidence, native-object intent and unverified service import/render/edit probes. Their successful local artifact-check statements do not erase the earlier tool error."
+      ],
+      "pi_duration_seconds": 191.967,
+      "reported_token_usage": {
+        "input": 42313,
+        "output": 8745,
+        "cacheRead": 183808,
+        "cacheWrite": 0,
+        "totalTokens": 234866
+      },
+      "tool_error_findings": [
+        {
+          "code": "tool-error",
+          "line": 158,
+          "tool": "bash",
+          "path": null
+        }
+      ],
+      "artifacts": [
+        {
+          "path": "out/semantic/graph.json",
+          "sha256": "d70fc191eb0cc9987c810ba595dc39b93e231b76d548ddae3b138dae2d235bbd",
+          "bytes": 9262
+        },
+        {
+          "path": "out/semantic/diagram.lucid",
+          "sha256": "45c5b3aadd77da6b7c1165a887e0535e345f1e1aecb4878a7eea3a2ce1a9ded4",
+          "bytes": 17541
+        },
+        {
+          "path": "out/semantic/document.json",
+          "sha256": "2d13b6dd2752c8ba5d7a61756ad0a8c82b61f8287ffb68906c9854015dea00ca",
+          "bytes": 17417
+        },
+        {
+          "path": "out/semantic/native-report.json",
+          "sha256": "84e498aafc31b371867678800e056ac8c0f9bb8d3918a0867e0aa85c33af1720",
+          "bytes": 28988
+        },
+        {
+          "path": "out/semantic/notes.md",
+          "sha256": "368df0b796801cc21c446acf8efc9e3ac91e39b95cccae4591548390038b475a",
+          "bytes": 1588
+        }
+      ],
+      "evidence": {
+        "run-manifest.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-semantic-luna-2/run-manifest.json",
+          "sha256": "f6944888ef4dfed5502153e442341e9ebfdb1676525e22da4883e22d14143063",
+          "bytes": 2806
+        },
+        "evaluation-result.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-semantic-luna-2/evaluation-result.json",
+          "sha256": "6130503d51d724d9b9bae80c58028ca4ffe991bcf472c2096244353f335e4c24",
+          "bytes": 348
+        },
+        "events.jsonl": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-semantic-luna-2/events.jsonl",
+          "sha256": "e0b224aaf655ea05acc5cb493ca8feb357194c10961d2dd45ee434b0c750c42d",
+          "bytes": 2247475
+        },
+        "artifact-check.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-semantic-luna-2/artifact-check.json",
+          "sha256": "650e9424c59a26b1e6fb71b99eaae7490d804c45b65a5816b45f75823f97067f",
+          "bytes": 1474
+        },
+        "independent-benchmark.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-semantic-luna-2/independent-benchmark.json",
+          "sha256": "838ff4fdfc46444968ef01fa6f5b36be18100a8c7b0fa6a44ed5cb6f98f6f27d",
+          "bytes": 1397
+        },
+        "benchmark-read-surface.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-semantic-luna-2/benchmark-read-surface.json",
+          "sha256": "7d698f3887be7d6e9215647316777b5a0a041a2929ac20fa7f107f187d24969a",
+          "bytes": 9760
+        },
+        "skill-integrity-check.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-semantic-luna-2/skill-integrity-check.json",
+          "sha256": "6d79f1848a7009eefee7b324273e524182b12fa367e6775a0bb85384428cb290",
+          "bytes": 250
+        },
+        "manual-benchmark-review.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-semantic-luna-2/manual-benchmark-review.json",
+          "sha256": "d7092156334bcf2294ba22712b97a56d804f3b4c289854467baacc0e4ef71828",
+          "bytes": 1792
+        }
+      }
+    },
+    {
+      "case": "semantic",
+      "repetition": 3,
+      "run_id": "20261007-lucid-benchmark-v1-semantic-luna-3",
+      "original_artifact_passed": true,
+      "corrected_artifact_passed": true,
+      "strict_harness_passed": false,
+      "read_surface_machine_passed": false,
+      "payload_matches": true,
+      "outputs_match_original_harness_hashes": true,
+      "original_machine_passed": false,
+      "corrected_machine_passed": false,
+      "original_joint_passed": false,
+      "corrected_joint_passed": false,
+      "manual_components": {
+        "passed": false,
+        "read_surface_passed": true,
+        "commands_passed": false,
+        "artifact_review_passed": true,
+        "narrative_review_passed": true
+      },
+      "failure_classifications": [
+        "agent: retained tool error"
+      ],
+      "manual_findings": [
+        "Direct graph and emitted-document inspection confirms the supplied eight objects, fixed finite pixel page and seven attached relationships. Formal event groups, no-trigger subtypes, user/service/manual ordinary tasks and exclusive gateway are correct; the two ER tables retain merged headers, ordered literal cells and correct exactlyOne/zeroOrMore endpoint markers and labels. No cross-region relationship is added.",
+        "ZIP passes CRC and contains only document.json, byte-identical to the standalone document. Paint and declared Arial 14 text contract match source intent; actual table-font inheritance and live rendering remain unverified.",
+        "The read surface is prompt, SKILL.md, four focused in-bundle references, task outputs and compact catalog/help queries. Semantic 1 additionally reads at most 80 directly relevant marker-related script lines via rg after the invalid catalog query; no ambient repository/example/sibling material is accessed.",
+        "Agent failure: native_catalog.py --type line exits 2 because line is not a supported native shape type. This is a real tool error in all three traces, retained even though later compilation and artifact checks pass. The command component and final strict/joint gate fail.",
+        "Notes accurately explain selected BPMN notation, ER table adaptation, local package evidence, native-object intent and unverified service import/render/edit probes. Their successful local artifact-check statements do not erase the earlier tool error."
+      ],
+      "pi_duration_seconds": 173.215,
+      "reported_token_usage": {
+        "input": 42491,
+        "output": 7993,
+        "cacheRead": 131072,
+        "cacheWrite": 0,
+        "totalTokens": 181556
+      },
+      "tool_error_findings": [
+        {
+          "code": "tool-error",
+          "line": 130,
+          "tool": "bash",
+          "path": null
+        }
+      ],
+      "artifacts": [
+        {
+          "path": "out/semantic/graph.json",
+          "sha256": "fd3f692fddd7759b91de0b0ae6c526ab0d9113e19f7b5fe205d709449cf2c9b6",
+          "bytes": 8335
+        },
+        {
+          "path": "out/semantic/diagram.lucid",
+          "sha256": "9ac5ac310ab71d452834a6028a0030fa1bb75714caa80fbc53261015b23e76f6",
+          "bytes": 15058
+        },
+        {
+          "path": "out/semantic/document.json",
+          "sha256": "bd68dbbdb5450b214c1df95f7509b2107adff24f7da00ef70c5d102db5d9e1be",
+          "bytes": 14934
+        },
+        {
+          "path": "out/semantic/native-report.json",
+          "sha256": "42385c8477d40c0cfb18b852109d27abe116f0e1ea6402646c2e2eeac4da1678",
+          "bytes": 26689
+        },
+        {
+          "path": "out/semantic/notes.md",
+          "sha256": "120d1deee76f14b7d3fea849f88dcd36387394b26e07b0fbfc802ab242dc9a24",
+          "bytes": 1889
+        }
+      ],
+      "evidence": {
+        "run-manifest.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-semantic-luna-3/run-manifest.json",
+          "sha256": "39b2cd52a4e1cc5d89dca3852d5250e28c97ef7f5a6ca96f433428e08be13ebe",
+          "bytes": 2806
+        },
+        "evaluation-result.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-semantic-luna-3/evaluation-result.json",
+          "sha256": "1821518756d270b1fc91020f1e69764df0ec60f5910a2ddfd845691122332fb5",
+          "bytes": 348
+        },
+        "events.jsonl": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-semantic-luna-3/events.jsonl",
+          "sha256": "a8bbb902f06094c006072385d183826f9f736bd59e6844a29ae3105ebb040c3c",
+          "bytes": 2095016
+        },
+        "artifact-check.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-semantic-luna-3/artifact-check.json",
+          "sha256": "13b0d6e65354e0c6ce8f7733fb1ce1eb0314202e71c52a9bda6ebf49b8e5f172",
+          "bytes": 1474
+        },
+        "independent-benchmark.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-semantic-luna-3/independent-benchmark.json",
+          "sha256": "791eed556a9db1e0248ea17f5836c24c3d696304647957db5528a54b5cacbdde",
+          "bytes": 1397
+        },
+        "benchmark-read-surface.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-semantic-luna-3/benchmark-read-surface.json",
+          "sha256": "47860400fd43ac1f06e2183a07b4b589f800c32aae7e538db1e5f1f2f470f4dd",
+          "bytes": 8602
+        },
+        "skill-integrity-check.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-semantic-luna-3/skill-integrity-check.json",
+          "sha256": "6d79f1848a7009eefee7b324273e524182b12fa367e6775a0bb85384428cb290",
+          "bytes": 250
+        },
+        "manual-benchmark-review.json": {
+          "path": "evaluations/runs/20261007-lucid-benchmark-v1-semantic-luna-3/manual-benchmark-review.json",
+          "sha256": "ebbf5cde0c9bb2b0cb0958eb92267259f3c88ce4a03bd5b74fd6154297fcb846",
+          "bytes": 1792
+        }
+      }
+    }
+  ]
+}

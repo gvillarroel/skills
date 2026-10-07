@@ -26,3 +26,7 @@ skills/technical-logo-assets/assets/logos/**/*.svg binary
 
 # Generated browser bundles are checked by browser smoke tests, not text diffs.
 docs/examples/threejs-animated-3d/assets/*.js binary
+
+# Retain exact bytes of frozen public benchmark controls and evidence.
+/evaluations/lucidchart-svg/benchmarks/v1/** -text
+/evaluations/pi-prompts/lucidchart-svg-benchmark-v1-*.md -text
