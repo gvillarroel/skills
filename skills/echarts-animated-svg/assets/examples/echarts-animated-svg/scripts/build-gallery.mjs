@@ -2,7 +2,7 @@ import { writeFile } from 'node:fs/promises'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import * as echarts from 'echarts'
-import { colorsetTheme, insetGraphArrowRoutes, normalizeSvgPaints, prepareColorsetOption, qualifyBoxplotMedians } from '../../../templates/echarts-colorsets.mjs'
+import { colorsetTheme, insetGraphArrowRoutes, normalizeSvgPaints, prepareColorsetOption, qualifyBoxplotMedians, readableText } from '../../../templates/echarts-colorsets.mjs'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const exampleRoot = resolve(__dirname, '..')
@@ -1172,7 +1172,7 @@ function polishOption(definition, option) {
         { name: 'Target', value: [88, 82, 84, 80, 86], lineStyle: { color: brand.blue, width: 3 }, itemStyle: { color: brand.blue }, areaStyle: { color: brand.highlightBlue, opacity: 0.3 } },
       ]
       break
-    case 'map':
+    case 'map': {
       series[0].top = 50
       series[0].bottom = 28
       option.visualMap.show = false
@@ -1184,10 +1184,24 @@ function polishOption(definition, option) {
       option.visualMap.textGap = 8
       option.visualMap.inRange = { color: [brand.highlightBlue, brand.blue, brand.purple] }
       option.visualMap.textStyle = labelBackplate({ backgroundColor: 'rgba(255,255,255,0.82)', borderWidth: 0, padding: [1, 3] })
-      series[0].label = { show: true, color: brand.white, fontWeight: 800, fontSize: 10, textBorderColor: brand.gray90, textBorderWidth: 2.4 }
-      series[0].emphasis = { label: { show: true, color: brand.white, fontWeight: 800, textBorderColor: brand.gray90, textBorderWidth: 2.4 }, itemStyle: { areaColor: brand.red } }
+      const plainLabel = { show: true, fontWeight: 800, fontSize: 10, textBorderColor: 'none', textBorderWidth: 0, textShadowBlur: 0, borderWidth: 0 }
+      const regionColors = option.visualMap.inRange.color
+      const { min, max } = option.visualMap
+      series[0].label = { ...plainLabel, color: brand.black }
+      series[0].emphasis = { label: { ...plainLabel, color: readableText(brand.red) }, itemStyle: { areaColor: brand.red } }
+      series[0].select = { label: { ...plainLabel, color: brand.black } }
+      series[0].blur = { label: { ...plainLabel } }
+      series[0].data = series[0].data.map((region) => {
+        const bin = Math.max(0, Math.min(regionColors.length - 1, Math.floor((region.value - min) / (max - min) * regionColors.length)))
+        const fill = regionColors[bin]
+        const color = readableText(fill)
+        // SSR hover changes polygon paint without updating its separate label.
+        const hoverFill = color === brand.black ? brand.highlightBlue : brand.red
+        return { ...region, label: { ...plainLabel, color }, emphasis: { itemStyle: { areaColor: hoverFill }, label: { ...plainLabel, color: readableText(hoverFill) } } }
+      })
       series[0].itemStyle = { borderColor: brand.gray20, borderWidth: 2 }
       break
+    }
     case 'tree':
       series[0].itemStyle = { color: brand.green, borderColor: brand.highlightGreen, borderWidth: 2 }
       series[0].lineStyle = { color: brand.gray50, width: 2 }
