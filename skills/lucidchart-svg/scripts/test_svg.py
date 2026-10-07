@@ -140,6 +140,69 @@ class SvgTests(unittest.TestCase):
         self.assertFalse(output.exists())
         self.assertEqual(json.loads(report.read_text())["blocking_flags"], ["script"])
 
+    def test_foreign_namespace_is_not_svg_geometry_or_label(self):
+        self.write('<other:rect xmlns:other="urn:other" width="20" height="30"/><other:text xmlns:other="urn:other">Foreign</other:text><rect width="10" height="10"/>')
+        _, result = module.inspect(self.source)
+        self.assertEqual(result["vector_element_count"], 1)
+        self.assertEqual(result["element_counts"].get("rect"), 1)
+        self.assertEqual(result["foreign_element_counts"]["{urn:other}rect"], 1)
+        self.assertEqual(result["labels"], [])
+        self.assertTrue(result["ready_for_upload"])
+
+    def test_text_inventory_preserves_space_and_marks_nonvisible_context(self):
+        self.write('<defs><text id="template">Template</text></defs><g display="none"><text id="ghost">Ghost</text></g><g xml:space="preserve"><text id="spaced">  First<tspan x="0" dy="20">Second</tspan>  </text></g>')
+        _, result = module.inspect(self.source)
+        self.assertEqual(result["labels"], ["Template", "Ghost", "  FirstSecond  "])
+        inventory = {item["id"]: item for item in result["label_inventory"]}
+        self.assertTrue(inventory["template"]["inside_definition"])
+        self.assertTrue(inventory["ghost"]["hidden_declaration_in_ancestry"])
+        self.assertEqual(inventory["spaced"]["xml_space"], "preserve")
+        self.assertEqual(inventory["spaced"]["raw_text"], "  FirstSecond  ")
+        self.assertEqual(inventory["spaced"]["rendered_visibility"], "not evaluated")
+        self.assertIn("not visible-label verification", result["labels_scope"])
+
+    def test_rich_asset_features_are_reported_without_native_eligibility_claim(self):
+        self.write('<defs><linearGradient id="g"><stop offset="0" stop-color="#fff"/></linearGradient><marker id="head"/></defs><g transform="translate(10 20)"><rect data-node-id="a" width="20" height="30" rx="4" fill="url(#g)" opacity=".5" style="stroke-width:2;stroke-dasharray:4 2;marker-end:url(#head)"/></g>')
+        _, result = module.inspect(self.source)
+        for feature in ("linearGradient", "marker", "transform", "semantic-metadata", "rounded-corners", "paint-server-reference", "opacity", "stroke-width", "stroke-dasharray", "marker-reference"):
+            self.assertIn(feature, result["feature_counts"])
+        self.assertTrue(result["ready_for_upload"])
+        self.assertIn("not evaluated", result["native_mapping_eligibility"])
+        self.assertIn("path grammar", result["validation_scope"])
+
+    def test_css_animation_and_nested_viewport_need_visual_review(self):
+        self.write('<style>@keyframes shift{to{transform:translateX(10px)}}.a{animation:shift 1s infinite}</style><svg width="100" height="50" viewBox="0 0 20 10"><rect class="a" width="20" height="10"/></svg>')
+        _, result = module.inspect(self.source)
+        self.assertTrue(result["ready_for_upload"])
+        self.assertIn("css-animation-review", result["portability_warnings"])
+        self.assertIn("stylesheet-cascade-not-computed", result["portability_warnings"])
+        self.assertIn("nested-viewport-review", result["portability_warnings"])
+        self.assertEqual(result["feature_counts"]["nested-viewport"], 1)
+
+    def test_nonpositive_primitive_geometry_is_a_reported_render_limit(self):
+        self.write('<rect width="-20" height="30"/><circle r="0"/><path d="this is not path data"/>')
+        _, result = module.inspect(self.source)
+        self.assertTrue(result["ready_for_upload"])
+        self.assertEqual(result["feature_counts"]["nonpositive-geometry"], 2)
+        self.assertIn("nonpositive-geometry-review", result["portability_warnings"])
+        self.assertIn("path grammar", result["validation_scope"])
+
+    def test_feature_samples_are_bounded_but_counts_are_complete(self):
+        self.write("".join(f'<rect id="r{i}" width="10" height="10" rx="2"/>' for i in range(20)))
+        _, result = module.inspect(self.source)
+        self.assertEqual(result["feature_counts"]["rounded-corners"], 20)
+        self.assertEqual(len(result["feature_samples"]["rounded-corners"]), 10)
+
+    def test_hardlink_report_alias_is_rejected_even_with_overwrite(self):
+        self.write('<text>Original source</text>')
+        original = self.source.read_bytes()
+        report = self.root / "hardlink.json"
+        os.link(self.source, report)
+        result = subprocess.run([sys.executable, str(SCRIPT), "inspect", str(self.source), "--report", str(report), "--overwrite"], capture_output=True)
+        self.assertEqual(result.returncode, 2)
+        self.assertIn(b"alias", result.stderr)
+        self.assertEqual(self.source.read_bytes(), original)
+
 
 if __name__ == "__main__":
     unittest.main()

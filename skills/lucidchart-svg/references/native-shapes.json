@@ -1,0 +1,1770 @@
+{
+ "schema_version": 1,
+ "observed_date": "2026-10-07",
+ "scope": "Conservative offline Standard Import shape-property profile; no semantic inference or service fidelity guarantee.",
+ "source_urls": [
+  "https://developer.lucid.co/docs/shapes-si",
+  "https://developer.lucid.co/docs/reference-si",
+  "https://developer.lucid.co/docs/lines-si"
+ ],
+ "types": {
+  "rectangle": {
+   "actual_type": "rectangle",
+   "library": "standard-library",
+   "properties": {},
+   "required_properties": [],
+   "forbidden_common": [],
+   "rotation_supported": true,
+   "source_urls": [
+    "https://developer.lucid.co/docs/standard-library-si"
+   ]
+  },
+  "text": {
+   "actual_type": "text",
+   "library": "standard-library",
+   "properties": {},
+   "required_properties": [],
+   "forbidden_common": [
+    "style"
+   ],
+   "rotation_supported": true,
+   "source_urls": [
+    "https://developer.lucid.co/docs/standard-library-si"
+   ]
+  },
+  "hotspot": {
+   "actual_type": "hotspot",
+   "library": "standard-library",
+   "properties": {},
+   "required_properties": [],
+   "forbidden_common": [
+    "text"
+   ],
+   "rotation_supported": true,
+   "source_urls": [
+    "https://developer.lucid.co/docs/standard-library-si"
+   ]
+  },
+  "stickyNote": {
+   "actual_type": "stickyNote",
+   "library": "standard-library",
+   "properties": {},
+   "required_properties": [],
+   "forbidden_common": [],
+   "rotation_supported": true,
+   "source_urls": [
+    "https://developer.lucid.co/docs/standard-library-si"
+   ]
+  },
+  "circle": {
+   "actual_type": "circle",
+   "library": "shape-library",
+   "properties": {},
+   "required_properties": [],
+   "forbidden_common": [],
+   "rotation_supported": true,
+   "source_urls": [
+    "https://developer.lucid.co/docs/shape-library-si"
+   ]
+  },
+  "cloud": {
+   "actual_type": "cloud",
+   "library": "shape-library",
+   "properties": {},
+   "required_properties": [],
+   "forbidden_common": [],
+   "rotation_supported": true,
+   "source_urls": [
+    "https://developer.lucid.co/docs/shape-library-si"
+   ]
+  },
+  "diamond": {
+   "actual_type": "diamond",
+   "library": "shape-library",
+   "properties": {},
+   "required_properties": [],
+   "forbidden_common": [],
+   "rotation_supported": true,
+   "source_urls": [
+    "https://developer.lucid.co/docs/shape-library-si"
+   ]
+  },
+  "doubleArrow": {
+   "actual_type": "doubleArrow",
+   "library": "shape-library",
+   "properties": {},
+   "required_properties": [],
+   "forbidden_common": [],
+   "rotation_supported": true,
+   "source_urls": [
+    "https://developer.lucid.co/docs/shape-library-si"
+   ]
+  },
+  "hexagon": {
+   "actual_type": "hexagon",
+   "library": "shape-library",
+   "properties": {},
+   "required_properties": [],
+   "forbidden_common": [],
+   "rotation_supported": true,
+   "source_urls": [
+    "https://developer.lucid.co/docs/shape-library-si"
+   ]
+  },
+  "isoscelesTriangle": {
+   "actual_type": "isoscelesTriangle",
+   "library": "shape-library",
+   "properties": {},
+   "required_properties": [],
+   "forbidden_common": [],
+   "rotation_supported": true,
+   "source_urls": [
+    "https://developer.lucid.co/docs/shape-library-si"
+   ]
+  },
+  "octagon": {
+   "actual_type": "octagon",
+   "library": "shape-library",
+   "properties": {},
+   "required_properties": [],
+   "forbidden_common": [],
+   "rotation_supported": true,
+   "source_urls": [
+    "https://developer.lucid.co/docs/shape-library-si"
+   ]
+  },
+  "pentagon": {
+   "actual_type": "pentagon",
+   "library": "shape-library",
+   "properties": {},
+   "required_properties": [],
+   "forbidden_common": [],
+   "rotation_supported": true,
+   "source_urls": [
+    "https://developer.lucid.co/docs/shape-library-si"
+   ]
+  },
+  "rightTriangle": {
+   "actual_type": "rightTriangle",
+   "library": "shape-library",
+   "properties": {},
+   "required_properties": [],
+   "forbidden_common": [],
+   "rotation_supported": true,
+   "source_urls": [
+    "https://developer.lucid.co/docs/shape-library-si"
+   ]
+  },
+  "cross": {
+   "actual_type": "cross",
+   "library": "shape-library",
+   "properties": {
+    "indent": {
+     "kind": "object",
+     "properties": {
+      "x": {
+       "kind": "number",
+       "minimum": 0,
+       "maximum": 0.5
+      },
+      "y": {
+       "kind": "number",
+       "minimum": 0,
+       "maximum": 0.5
+      }
+     },
+     "required": [
+      "x",
+      "y"
+     ]
+    }
+   },
+   "required_properties": [],
+   "forbidden_common": [],
+   "rotation_supported": true,
+   "source_urls": [
+    "https://developer.lucid.co/docs/shape-library-si"
+   ]
+  },
+  "singleArrow": {
+   "actual_type": "singleArrow",
+   "library": "shape-library",
+   "properties": {
+    "orientation": {
+     "kind": "string",
+     "enum": [
+      "right",
+      "left",
+      "up",
+      "down"
+     ],
+     "default": "right"
+    }
+   },
+   "required_properties": [],
+   "forbidden_common": [],
+   "rotation_supported": true,
+   "source_urls": [
+    "https://developer.lucid.co/docs/shape-library-si"
+   ]
+  },
+  "flexiblePolygon": {
+   "actual_type": "flexiblePolygon",
+   "library": "shape-library",
+   "properties": {
+    "vertices": {
+     "kind": "array",
+     "items": {
+      "kind": "object",
+      "properties": {
+       "x": {
+        "kind": "number",
+        "minimum": 0,
+        "maximum": 1
+       },
+       "y": {
+        "kind": "number",
+        "minimum": 0,
+        "maximum": 1
+       }
+      },
+      "required": [
+       "x",
+       "y"
+      ]
+     },
+     "min_items": 3,
+     "max_items": 100
+    }
+   },
+   "required_properties": [
+    "vertices"
+   ],
+   "forbidden_common": [],
+   "rotation_supported": true,
+   "source_urls": [
+    "https://developer.lucid.co/docs/shape-library-si"
+   ]
+  },
+  "polyStar": {
+   "actual_type": "polyStar",
+   "library": "shape-library",
+   "properties": {
+    "shape": {
+     "kind": "object",
+     "properties": {
+      "numPoints": {
+       "kind": "number",
+       "minimum": 3,
+       "maximum": 25,
+       "integer": true
+      },
+      "innerRadius": {
+       "kind": "number",
+       "minimum": 0,
+       "maximum": 1
+      }
+     },
+     "required": [
+      "numPoints",
+      "innerRadius"
+     ]
+    }
+   },
+   "required_properties": [
+    "shape"
+   ],
+   "forbidden_common": [],
+   "rotation_supported": true,
+   "source_urls": [
+    "https://developer.lucid.co/docs/shape-library-si"
+   ]
+  },
+  "braceNote": {
+   "actual_type": "braceNote",
+   "library": "flowchart-library",
+   "properties": {
+    "rightFacing": {
+     "kind": "boolean"
+    },
+    "braceWidth": {
+     "kind": "number",
+     "exclusive_minimum": 0
+    }
+   },
+   "required_properties": [
+    "rightFacing",
+    "braceWidth"
+   ],
+   "forbidden_common": [],
+   "rotation_supported": true,
+   "source_urls": [
+    "https://developer.lucid.co/docs/flowchart-library-si"
+   ]
+  },
+  "connector": {
+   "actual_type": "connector",
+   "library": "flowchart-library",
+   "properties": {},
+   "required_properties": [],
+   "forbidden_common": [],
+   "rotation_supported": true,
+   "source_urls": [
+    "https://developer.lucid.co/docs/flowchart-library-si"
+   ]
+  },
+  "database": {
+   "actual_type": "database",
+   "library": "flowchart-library",
+   "properties": {},
+   "required_properties": [],
+   "forbidden_common": [],
+   "rotation_supported": true,
+   "source_urls": [
+    "https://developer.lucid.co/docs/flowchart-library-si"
+   ]
+  },
+  "data": {
+   "actual_type": "data",
+   "library": "flowchart-library",
+   "properties": {},
+   "required_properties": [],
+   "forbidden_common": [],
+   "rotation_supported": true,
+   "source_urls": [
+    "https://developer.lucid.co/docs/flowchart-library-si"
+   ]
+  },
+  "decision": {
+   "actual_type": "decision",
+   "library": "flowchart-library",
+   "properties": {},
+   "required_properties": [],
+   "forbidden_common": [],
+   "rotation_supported": true,
+   "source_urls": [
+    "https://developer.lucid.co/docs/flowchart-library-si"
+   ]
+  },
+  "delay": {
+   "actual_type": "delay",
+   "library": "flowchart-library",
+   "properties": {},
+   "required_properties": [],
+   "forbidden_common": [],
+   "rotation_supported": true,
+   "source_urls": [
+    "https://developer.lucid.co/docs/flowchart-library-si"
+   ]
+  },
+  "directAccessStorage": {
+   "actual_type": "directAccessStorage",
+   "library": "flowchart-library",
+   "properties": {},
+   "required_properties": [],
+   "forbidden_common": [],
+   "rotation_supported": true,
+   "source_urls": [
+    "https://developer.lucid.co/docs/flowchart-library-si"
+   ]
+  },
+  "display": {
+   "actual_type": "display",
+   "library": "flowchart-library",
+   "properties": {},
+   "required_properties": [],
+   "forbidden_common": [],
+   "rotation_supported": true,
+   "source_urls": [
+    "https://developer.lucid.co/docs/flowchart-library-si"
+   ]
+  },
+  "document": {
+   "actual_type": "document",
+   "library": "flowchart-library",
+   "properties": {},
+   "required_properties": [],
+   "forbidden_common": [],
+   "rotation_supported": true,
+   "source_urls": [
+    "https://developer.lucid.co/docs/flowchart-library-si"
+   ]
+  },
+  "internalStorage": {
+   "actual_type": "internalStorage",
+   "library": "flowchart-library",
+   "properties": {},
+   "required_properties": [],
+   "forbidden_common": [],
+   "rotation_supported": true,
+   "source_urls": [
+    "https://developer.lucid.co/docs/flowchart-library-si"
+   ]
+  },
+  "manualInput": {
+   "actual_type": "manualInput",
+   "library": "flowchart-library",
+   "properties": {},
+   "required_properties": [],
+   "forbidden_common": [],
+   "rotation_supported": true,
+   "source_urls": [
+    "https://developer.lucid.co/docs/flowchart-library-si"
+   ]
+  },
+  "manualOperation": {
+   "actual_type": "manualOperation",
+   "library": "flowchart-library",
+   "properties": {},
+   "required_properties": [],
+   "forbidden_common": [],
+   "rotation_supported": true,
+   "source_urls": [
+    "https://developer.lucid.co/docs/flowchart-library-si"
+   ]
+  },
+  "merge": {
+   "actual_type": "merge",
+   "library": "flowchart-library",
+   "properties": {},
+   "required_properties": [],
+   "forbidden_common": [],
+   "rotation_supported": true,
+   "source_urls": [
+    "https://developer.lucid.co/docs/flowchart-library-si"
+   ]
+  },
+  "multipleDocuments": {
+   "actual_type": "multipleDocuments",
+   "library": "flowchart-library",
+   "properties": {},
+   "required_properties": [],
+   "forbidden_common": [],
+   "rotation_supported": true,
+   "source_urls": [
+    "https://developer.lucid.co/docs/flowchart-library-si"
+   ]
+  },
+  "note": {
+   "actual_type": "note",
+   "library": "flowchart-library",
+   "properties": {},
+   "required_properties": [],
+   "forbidden_common": [],
+   "rotation_supported": true,
+   "source_urls": [
+    "https://developer.lucid.co/docs/flowchart-library-si"
+   ]
+  },
+  "offPageLink": {
+   "actual_type": "offPageLink",
+   "library": "flowchart-library",
+   "properties": {},
+   "required_properties": [],
+   "forbidden_common": [],
+   "rotation_supported": true,
+   "source_urls": [
+    "https://developer.lucid.co/docs/flowchart-library-si"
+   ]
+  },
+  "paperTape": {
+   "actual_type": "paperTape",
+   "library": "flowchart-library",
+   "properties": {},
+   "required_properties": [],
+   "forbidden_common": [],
+   "rotation_supported": true,
+   "source_urls": [
+    "https://developer.lucid.co/docs/flowchart-library-si"
+   ]
+  },
+  "preparation": {
+   "actual_type": "preparation",
+   "library": "flowchart-library",
+   "properties": {},
+   "required_properties": [],
+   "forbidden_common": [],
+   "rotation_supported": true,
+   "source_urls": [
+    "https://developer.lucid.co/docs/flowchart-library-si"
+   ]
+  },
+  "process": {
+   "actual_type": "process",
+   "library": "flowchart-library",
+   "properties": {},
+   "required_properties": [],
+   "forbidden_common": [],
+   "rotation_supported": true,
+   "source_urls": [
+    "https://developer.lucid.co/docs/flowchart-library-si"
+   ]
+  },
+  "storedData": {
+   "actual_type": "storedData",
+   "library": "flowchart-library",
+   "properties": {},
+   "required_properties": [],
+   "forbidden_common": [],
+   "rotation_supported": true,
+   "source_urls": [
+    "https://developer.lucid.co/docs/flowchart-library-si"
+   ]
+  },
+  "terminator": {
+   "actual_type": "terminator",
+   "library": "flowchart-library",
+   "properties": {},
+   "required_properties": [],
+   "forbidden_common": [],
+   "rotation_supported": true,
+   "source_urls": [
+    "https://developer.lucid.co/docs/flowchart-library-si"
+   ]
+  },
+  "or": {
+   "actual_type": "or",
+   "library": "flowchart-library",
+   "properties": {},
+   "required_properties": [],
+   "forbidden_common": [
+    "text"
+   ],
+   "rotation_supported": true,
+   "source_urls": [
+    "https://developer.lucid.co/docs/flowchart-library-si"
+   ]
+  },
+  "summingJunction": {
+   "actual_type": "summingJunction",
+   "library": "flowchart-library",
+   "properties": {},
+   "required_properties": [],
+   "forbidden_common": [
+    "text"
+   ],
+   "rotation_supported": true,
+   "source_urls": [
+    "https://developer.lucid.co/docs/flowchart-library-si"
+   ]
+  },
+  "predefinedProcess": {
+   "actual_type": "predefinedProcess",
+   "library": "flowchart-library",
+   "properties": {
+    "sideWidth": {
+     "kind": "number",
+     "minimum": 0,
+     "maximum": 0.33
+    }
+   },
+   "required_properties": [
+    "sideWidth"
+   ],
+   "forbidden_common": [],
+   "rotation_supported": true,
+   "source_urls": [
+    "https://developer.lucid.co/docs/flowchart-library-si"
+   ]
+  },
+  "bpmnActivity": {
+   "actual_type": "bpmnActivity",
+   "library": "bpmn-20-library",
+   "properties": {
+    "activityType": {
+     "kind": "string",
+     "enum": [
+      "task",
+      "transaction",
+      "eventSubProcess",
+      "callActivity"
+     ]
+    },
+    "taskType": {
+     "kind": "string",
+     "enum": [
+      "none",
+      "send",
+      "receive",
+      "user",
+      "manual",
+      "businessRule",
+      "service",
+      "script"
+     ],
+     "default": "none"
+    },
+    "activityMarker1": {
+     "kind": "string",
+     "enum": [
+      "none",
+      "subProcess",
+      "loop",
+      "parallelMI",
+      "sequentialMI",
+      "adHoc",
+      "compensation"
+     ],
+     "default": "none"
+    },
+    "activityMarker2": {
+     "kind": "string",
+     "enum": [
+      "none",
+      "subProcess",
+      "loop",
+      "parallelMI",
+      "sequentialMI",
+      "adHoc",
+      "compensation"
+     ],
+     "default": "none"
+    }
+   },
+   "required_properties": [
+    "activityType"
+   ],
+   "forbidden_common": [],
+   "rotation_supported": true,
+   "source_urls": [
+    "https://developer.lucid.co/docs/bpmn-20-library-si"
+   ]
+  },
+  "bpmnBlackBoxPool": {
+   "actual_type": "bpmnBlackBoxPool",
+   "library": "bpmn-20-library",
+   "properties": {},
+   "required_properties": [],
+   "forbidden_common": [],
+   "rotation_supported": true,
+   "source_urls": [
+    "https://developer.lucid.co/docs/bpmn-20-library-si"
+   ]
+  },
+  "bpmnDataStore": {
+   "actual_type": "bpmnDataStore",
+   "library": "bpmn-20-library",
+   "properties": {},
+   "required_properties": [],
+   "forbidden_common": [],
+   "rotation_supported": true,
+   "source_urls": [
+    "https://developer.lucid.co/docs/bpmn-20-library-si"
+   ]
+  },
+  "bpmnTextAnnotation": {
+   "actual_type": "bpmnTextAnnotation",
+   "library": "bpmn-20-library",
+   "properties": {},
+   "required_properties": [],
+   "forbidden_common": [],
+   "rotation_supported": true,
+   "source_urls": [
+    "https://developer.lucid.co/docs/bpmn-20-library-si"
+   ]
+  },
+  "bpmnChoreography": {
+   "actual_type": "bpmnChoreography",
+   "library": "bpmn-20-library",
+   "properties": {
+    "choreographyType": {
+     "kind": "string",
+     "enum": [
+      "task",
+      "subchoreography",
+      "call"
+     ]
+    },
+    "participants": {
+     "kind": "array",
+     "items": {
+      "kind": "object",
+      "properties": {
+       "text": {
+        "kind": "string",
+        "text": true
+       },
+       "multipleParticipants": {
+        "kind": "boolean"
+       }
+      },
+      "required": [
+       "text",
+       "multipleParticipants"
+      ]
+     },
+     "min_items": 1,
+     "max_items": 100
+    },
+    "name": {
+     "kind": "string",
+     "text": true
+    },
+    "taskName": {
+     "kind": "string",
+     "text": true
+    },
+    "initiatingMessage": {
+     "kind": "boolean",
+     "default": false
+    },
+    "responseMessage": {
+     "kind": "boolean",
+     "default": false
+    }
+   },
+   "required_properties": [
+    "choreographyType",
+    "participants"
+   ],
+   "forbidden_common": [],
+   "rotation_supported": true,
+   "source_urls": [
+    "https://developer.lucid.co/docs/bpmn-20-library-si"
+   ]
+  },
+  "bpmnConversation": {
+   "actual_type": "bpmnConversation",
+   "library": "bpmn-20-library",
+   "properties": {
+    "isCall": {
+     "kind": "boolean",
+     "default": false
+    },
+    "isSubConversation": {
+     "kind": "boolean",
+     "default": false
+    }
+   },
+   "required_properties": [],
+   "forbidden_common": [],
+   "rotation_supported": true,
+   "source_urls": [
+    "https://developer.lucid.co/docs/bpmn-20-library-si"
+   ]
+  },
+  "bpmnDataObject": {
+   "actual_type": "bpmnDataObject",
+   "library": "bpmn-20-library",
+   "properties": {
+    "dataType": {
+     "kind": "string",
+     "enum": [
+      "none",
+      "collection",
+      "input",
+      "output"
+     ],
+     "default": "none"
+    }
+   },
+   "required_properties": [],
+   "forbidden_common": [],
+   "rotation_supported": true,
+   "source_urls": [
+    "https://developer.lucid.co/docs/bpmn-20-library-si"
+   ]
+  },
+  "bpmnEvent": {
+   "actual_type": "bpmnEvent",
+   "library": "bpmn-20-library",
+   "properties": {
+    "eventGroup": {
+     "kind": "string",
+     "enum": [
+      "start",
+      "intermediate",
+      "end"
+     ]
+    },
+    "eventType": {
+     "kind": "string",
+     "enum": [
+      "none",
+      "message",
+      "timer",
+      "escalation",
+      "conditional",
+      "link",
+      "error",
+      "cancel",
+      "compensation",
+      "signal",
+      "multiple",
+      "parallelMultiple",
+      "terminate"
+     ],
+     "default": "none"
+    },
+    "nonInterrupting": {
+     "kind": "boolean",
+     "default": false
+    },
+    "throwing": {
+     "kind": "boolean",
+     "default": false
+    }
+   },
+   "required_properties": [
+    "eventGroup"
+   ],
+   "forbidden_common": [],
+   "rotation_supported": true,
+   "source_urls": [
+    "https://developer.lucid.co/docs/bpmn-20-library-si"
+   ]
+  },
+  "bpmnGateway": {
+   "actual_type": "bpmnGateway",
+   "library": "bpmn-20-library",
+   "properties": {
+    "gatewayType": {
+     "kind": "string",
+     "enum": [
+      "none",
+      "exclusive",
+      "eventBased",
+      "parallel",
+      "inclusive",
+      "exclusiveEventBased",
+      "complex",
+      "parallelEventBased"
+     ],
+     "default": "none"
+    }
+   },
+   "required_properties": [],
+   "forbidden_common": [],
+   "rotation_supported": true,
+   "source_urls": [
+    "https://developer.lucid.co/docs/bpmn-20-library-si"
+   ]
+  },
+  "bpmnGroup": {
+   "actual_type": "bpmnGroup",
+   "library": "bpmn-20-library",
+   "properties": {
+    "magnetize": {
+     "kind": "boolean",
+     "default": true
+    }
+   },
+   "required_properties": [],
+   "forbidden_common": [],
+   "rotation_supported": false,
+   "source_urls": [
+    "https://developer.lucid.co/docs/bpmn-20-library-si"
+   ]
+  },
+  "bpmnPool": {
+   "actual_type": "bpmnPool",
+   "library": "bpmn-20-library",
+   "properties": {
+    "title": {
+     "kind": "string",
+     "text": true
+    },
+    "lanes": {
+     "kind": "array",
+     "items": {
+      "kind": "object",
+      "properties": {
+       "title": {
+        "kind": "string",
+        "text": true
+       },
+       "width": {
+        "kind": "number",
+        "exclusive_minimum": 0
+       },
+       "laneFill": {
+        "kind": "color"
+       }
+      },
+      "required": [
+       "title",
+       "width",
+       "laneFill"
+      ]
+     },
+     "min_items": 1,
+     "max_items": 50
+    },
+    "vertical": {
+     "kind": "boolean",
+     "default": true
+    },
+    "verticalLaneText": {
+     "kind": "boolean",
+     "default": false
+    },
+    "magnetize": {
+     "kind": "boolean",
+     "default": true
+    }
+   },
+   "required_properties": [
+    "title",
+    "lanes"
+   ],
+   "forbidden_common": [],
+   "rotation_supported": false,
+   "source_urls": [
+    "https://developer.lucid.co/docs/bpmn-20-library-si"
+   ],
+   "documentation_issues": [
+    "Lane width is mislabeled Boolean in its table; numeric examples and dimension explanation establish the bounded numeric profile."
+   ]
+  },
+  "braceContainer": {
+   "actual_type": "braceContainer",
+   "library": "container-library",
+   "properties": {
+    "magnetize": {
+     "kind": "boolean",
+     "default": true
+    }
+   },
+   "required_properties": [],
+   "forbidden_common": [],
+   "rotation_supported": false,
+   "source_urls": [
+    "https://developer.lucid.co/docs/container-library-si"
+   ]
+  },
+  "bracketContainer": {
+   "actual_type": "bracketContainer",
+   "library": "container-library",
+   "properties": {
+    "magnetize": {
+     "kind": "boolean",
+     "default": true
+    }
+   },
+   "required_properties": [],
+   "forbidden_common": [],
+   "rotation_supported": false,
+   "source_urls": [
+    "https://developer.lucid.co/docs/container-library-si"
+   ]
+  },
+  "circleContainer": {
+   "actual_type": "circleContainer",
+   "library": "container-library",
+   "properties": {
+    "magnetize": {
+     "kind": "boolean",
+     "default": true
+    },
+    "containerTitle": {
+     "kind": "object",
+     "properties": {
+      "text": {
+       "kind": "string",
+       "text": true
+      }
+     },
+     "required": [
+      "text"
+     ]
+    },
+    "assistedLayout": {
+     "kind": "boolean"
+    }
+   },
+   "required_properties": [],
+   "forbidden_common": [],
+   "rotation_supported": false,
+   "source_urls": [
+    "https://developer.lucid.co/docs/container-library-si"
+   ]
+  },
+  "pillContainer": {
+   "actual_type": "pillContainer",
+   "library": "container-library",
+   "properties": {
+    "magnetize": {
+     "kind": "boolean",
+     "default": true
+    },
+    "containerTitle": {
+     "kind": "object",
+     "properties": {
+      "text": {
+       "kind": "string",
+       "text": true
+      }
+     },
+     "required": [
+      "text"
+     ]
+    },
+    "assistedLayout": {
+     "kind": "boolean"
+    }
+   },
+   "required_properties": [],
+   "forbidden_common": [],
+   "rotation_supported": false,
+   "source_urls": [
+    "https://developer.lucid.co/docs/container-library-si"
+   ]
+  },
+  "rectangleContainer": {
+   "actual_type": "rectangleContainer",
+   "library": "container-library",
+   "properties": {
+    "magnetize": {
+     "kind": "boolean",
+     "default": true
+    },
+    "containerTitle": {
+     "kind": "object",
+     "properties": {
+      "text": {
+       "kind": "string",
+       "text": true
+      }
+     },
+     "required": [
+      "text"
+     ]
+    },
+    "assistedLayout": {
+     "kind": "boolean"
+    }
+   },
+   "required_properties": [],
+   "forbidden_common": [],
+   "rotation_supported": false,
+   "source_urls": [
+    "https://developer.lucid.co/docs/container-library-si"
+   ]
+  },
+  "roundedRectangleContainer": {
+   "actual_type": "roundedRectangleContainer",
+   "library": "container-library",
+   "properties": {
+    "magnetize": {
+     "kind": "boolean",
+     "default": true
+    },
+    "containerTitle": {
+     "kind": "object",
+     "properties": {
+      "text": {
+       "kind": "string",
+       "text": true
+      }
+     },
+     "required": [
+      "text"
+     ]
+    },
+    "assistedLayout": {
+     "kind": "boolean"
+    }
+   },
+   "required_properties": [],
+   "forbidden_common": [],
+   "rotation_supported": false,
+   "source_urls": [
+    "https://developer.lucid.co/docs/container-library-si"
+   ]
+  },
+  "diamondContainer": {
+   "actual_type": "diamondContainer",
+   "library": "container-library",
+   "properties": {
+    "magnetize": {
+     "kind": "boolean",
+     "default": true
+    },
+    "assistedLayout": {
+     "kind": "boolean"
+    }
+   },
+   "required_properties": [],
+   "forbidden_common": [],
+   "rotation_supported": false,
+   "source_urls": [
+    "https://developer.lucid.co/docs/container-library-si"
+   ]
+  },
+  "swimLanes": {
+   "actual_type": "swimLanes",
+   "library": "container-library",
+   "properties": {
+    "vertical": {
+     "kind": "boolean"
+    },
+    "titleBar": {
+     "kind": "object",
+     "properties": {
+      "height": {
+       "kind": "number",
+       "exclusive_minimum": 0
+      },
+      "verticalText": {
+       "kind": "boolean"
+      }
+     },
+     "required": [
+      "height",
+      "verticalText"
+     ]
+    },
+    "lanes": {
+     "kind": "array",
+     "items": {
+      "kind": "object",
+      "properties": {
+       "title": {
+        "kind": "string",
+        "text": true
+       },
+       "width": {
+        "kind": "number",
+        "exclusive_minimum": 0
+       },
+       "headerFill": {
+        "kind": "color"
+       },
+       "laneFill": {
+        "kind": "color"
+       }
+      },
+      "required": [
+       "title",
+       "width",
+       "headerFill",
+       "laneFill"
+      ]
+     },
+     "min_items": 1
+    },
+    "magnetize": {
+     "kind": "boolean",
+     "default": true
+    }
+   },
+   "required_properties": [
+    "vertical",
+    "titleBar",
+    "lanes"
+   ],
+   "forbidden_common": [],
+   "rotation_supported": false,
+   "source_urls": [
+    "https://developer.lucid.co/docs/container-library-si",
+    "https://github.com/lucidsoftware/sample-lucid-rest-applications/blob/main/standard-import/generic-diagrams/implementations/swimlane.py"
+   ],
+   "documentation_issues": [
+    "Official sample emits assistedLayout but the type-specific reference does not list it; this profile rejects it."
+   ]
+  },
+  "table": {
+   "actual_type": "table",
+   "library": "table-library",
+   "properties": {
+    "rowCount": {
+     "kind": "number",
+     "exclusive_minimum": 0,
+     "integer": true
+    },
+    "colCount": {
+     "kind": "number",
+     "exclusive_minimum": 0,
+     "integer": true
+    },
+    "cells": {
+     "kind": "array",
+     "items": {
+      "kind": "object",
+      "properties": {
+       "xPosition": {
+        "kind": "number",
+        "minimum": 0,
+        "integer": true
+       },
+       "yPosition": {
+        "kind": "number",
+        "minimum": 0,
+        "integer": true
+       },
+       "mergeCellsRight": {
+        "kind": "number",
+        "minimum": 0,
+        "integer": true,
+        "default": 0
+       },
+       "mergeCellsDown": {
+        "kind": "number",
+        "minimum": 0,
+        "integer": true,
+        "default": 0
+       },
+       "style": {
+        "kind": "object",
+        "properties": {
+         "fill": {
+          "kind": "object",
+          "properties": {
+           "type": {
+            "kind": "string",
+            "enum": [
+             "color"
+            ]
+           },
+           "color": {
+            "kind": "color"
+           }
+          },
+          "required": [
+           "type",
+           "color"
+          ]
+         }
+        },
+        "required": [
+         "fill"
+        ]
+       },
+       "text": {
+        "kind": "string",
+        "text": true
+       }
+      },
+      "required": [
+       "xPosition",
+       "yPosition"
+      ]
+     }
+    },
+    "userSpecifiedRows": {
+     "kind": "array",
+     "items": {
+      "kind": "object",
+      "properties": {
+       "index": {
+        "kind": "number",
+        "minimum": 0,
+        "integer": true
+       },
+       "size": {
+        "kind": "number",
+        "exclusive_minimum": 0
+       }
+      },
+      "required": [
+       "index",
+       "size"
+      ]
+     }
+    },
+    "userSpecifiedCols": {
+     "kind": "array",
+     "items": {
+      "kind": "object",
+      "properties": {
+       "index": {
+        "kind": "number",
+        "minimum": 0,
+        "integer": true
+       },
+       "size": {
+        "kind": "number",
+        "exclusive_minimum": 0
+       }
+      },
+      "required": [
+       "index",
+       "size"
+      ]
+     }
+    },
+    "verticalBorder": {
+     "kind": "boolean",
+     "default": true
+    },
+    "horizontalBorder": {
+     "kind": "boolean",
+     "default": true
+    }
+   },
+   "required_properties": [
+    "rowCount",
+    "colCount",
+    "cells"
+   ],
+   "forbidden_common": [],
+   "rotation_supported": false,
+   "source_urls": [
+    "https://developer.lucid.co/docs/table-library-si"
+   ]
+  },
+  "namedShape": {
+   "actual_type": "namedShape",
+   "library": "shapes",
+   "properties": {
+    "className": {
+     "kind": "cloud_class"
+    }
+   },
+   "required_properties": [
+    "className"
+   ],
+   "forbidden_common": [],
+   "rotation_supported": true,
+   "source_urls": [
+    "https://developer.lucid.co/docs/aws-2024-library",
+    "https://developer.lucid.co/docs/azure-2021-library",
+    "https://developer.lucid.co/docs/azure-2024-library",
+    "https://developer.lucid.co/docs/gcp-2021-library"
+   ]
+  },
+  "namedContainer": {
+   "actual_type": "namedContainer",
+   "library": "shapes",
+   "properties": {
+    "className": {
+     "kind": "cloud_class"
+    }
+   },
+   "required_properties": [
+    "className"
+   ],
+   "forbidden_common": [],
+   "rotation_supported": false,
+   "source_urls": [
+    "https://developer.lucid.co/docs/aws-2024-library",
+    "https://developer.lucid.co/docs/azure-2021-library",
+    "https://developer.lucid.co/docs/azure-2024-library",
+    "https://developer.lucid.co/docs/gcp-2021-library"
+   ],
+   "policy_notes": [
+    "Rotation is rejected conservatively for enclosure preservation; no full cloud-container rotation behavior was verified."
+   ]
+  }
+ },
+ "aliases": {
+  "ellipse": {
+   "actual_type": "circle",
+   "fidelity": "approximation",
+   "note": "The documented type is circle; ellipse-shaped rendering from non-square bounds requires live verification."
+  }
+ },
+ "cloud_libraries": {
+  "aws2024": {
+   "provider": "aws",
+   "revision": "2024",
+   "source_urls": [
+    "https://developer.lucid.co/docs/aws-2024-library"
+   ],
+   "shape_classes": [
+    "ArchAmazonAPIGatewayAWS2024",
+    "ArchAmazonAppStream2AWS2024",
+    "ArchAmazonAuroraAWS2024",
+    "ArchAmazonBedrockAWS2024",
+    "ArchAmazonBraketAWS2024",
+    "ArchAmazonCloudFrontAWS2024",
+    "ArchAmazonCloudWatchAWS2024",
+    "ArchAmazonDynamoDBAWS2024",
+    "ArchAmazonEC2AWS2024",
+    "ArchAmazonECSAnywhereAWS2024",
+    "ArchAmazonEFSAWS2024",
+    "ArchAmazonElastiCacheAWS2024",
+    "ArchAmazonEventBridgeAWS2024",
+    "ArchAmazonGameLiftAWS2024",
+    "ArchAmazonManagedBlockchainAWS2024",
+    "ArchAmazonQuantumLedgerDatabaseAWS2024",
+    "ArchAmazonRDSAWS2024",
+    "ArchAmazonRoute53AWS2024",
+    "ArchAmazonSageMakerAWS2024",
+    "ArchAmazonSimpleNotificationServiceAWS2024",
+    "ArchAmazonSimpleQueueServiceAWS2024",
+    "ArchAmazonSimpleStorageServiceAWS2024",
+    "ArchAmazonVirtualPrivateCloudAWS2024",
+    "ArchAmazonWorkSpacesFamilyAWS2024",
+    "ArchAWSActivateAWS2024",
+    "ArchAWSAmplifyAWS2024",
+    "ArchAWSAppConfigAWS2024",
+    "ArchAWSAppFabricAWS2024",
+    "ArchAWSApplicationAutoScalingAWS2024",
+    "ArchAWSApplicationComposerAWS2024",
+    "ArchAWSApplicationCostProfilerAWS2024",
+    "ArchAWSApplicationDiscoveryServiceAWS2024",
+    "ArchAWSApplicationMigrationServiceAWS2024",
+    "ArchAWSAppMeshAWS2024",
+    "ArchAWSAppRunnerAWS2024",
+    "ArchAWSAppSyncAWS2024",
+    "ArchAWSArtifactAWS2024",
+    "ArchAWSAuditManagerAWS2024",
+    "ArchAWSB2BDataInterchangeAWS2024",
+    "ArchAWSBackupAWS2024",
+    "ArchAWSBatchAWS2024",
+    "ArchAWSBillingConductorAWS2024",
+    "ArchAWSCertificateManagerAWS2024",
+    "ArchAWSCleanRoomsAWS2024",
+    "ArchAWSClientVPNAWS2024",
+    "ArchAWSCloudControlAPIAWS2024",
+    "ArchAWSCloudFormationAWS2024",
+    "ArchAWSCloudTrailAWS2024",
+    "ArchAWSDatabaseMigrationServiceAWS2024",
+    "ArchAWSDataExchangeAWS2024",
+    "ArchAWSDeadlineCloudAWS2024",
+    "ArchAWSDeepLearningAMIsAWS2024",
+    "ArchAWSDeepLearningContainersAWS2024",
+    "ArchAWSDeviceFarmAWS2024",
+    "ArchAWSElasticDisasterRecoveryAWS2024",
+    "ArchAWSElementalAppliancesSoftwareAWS2024",
+    "ArchAWSFargateAWS2024",
+    "ArchAWSGameKitAWS2024",
+    "ArchAWSGroundStationAWS2024",
+    "ArchAWSIdentityandAccessManagementAWS2024",
+    "ArchAWSIoT1ClickAWS2024",
+    "ArchAWSIoTAnalyticsAWS2024",
+    "ArchAWSIQAWS2024",
+    "ArchAWSLambdaAWS2024",
+    "ArchAWSRoboMakerAWS2024",
+    "ArchAWSSupplyChainAWS2024",
+    "ArchAWSWAFAWS2024",
+    "ArchCategoryContactCenterAWS2024",
+    "ArchCategoryServerlessAWS2024",
+    "ResAmazonVPCInternetGatewayAWS2024",
+    "ResAmazonVPCNATGatewayAWS2024",
+    "ResElasticLoadBalancingApplicationLoadBalancerAWS2024",
+    "ResElasticLoadBalancingNetworkLoadBalancerAWS2024"
+   ],
+   "container_classes": [
+    "AutoScalingGroupAWS2024",
+    "AvailabilityZoneAWS2024",
+    "AWSAccountAWS2024",
+    "AWSCloudAltAWS2024",
+    "AWSCloudAltDarkAWS2024",
+    "AWSCloudAWS2024",
+    "AWSCloudDarkAWS2024",
+    "AWSIoTGreengrassAWS2024",
+    "AWSIoTGreengrassDeploymentAWS2024",
+    "AWSStepFunctionsWorkflowAWS2024",
+    "CorporateDataCenterAWS2024",
+    "EC2InstanceContentsAWS2024",
+    "EcsClusterContainerAWS2024",
+    "EcsEc2ContainerAWS2024",
+    "EcsFargateContainerAWS2024",
+    "ElasticBeanstalkContainerAWS2024",
+    "GenericGroupAWS2024",
+    "PrivateSubnetAWS2024",
+    "PublicSubnetAWS2024",
+    "RegionAWS2024",
+    "SecurityGroupAWS2024",
+    "ServerContentsAWS2024",
+    "SpotFleetAWS2024",
+    "VirtualPrivateCloudVPCAWS2024"
+   ]
+  },
+  "azure2021": {
+   "provider": "azure",
+   "revision": "2021",
+   "source_urls": [
+    "https://developer.lucid.co/docs/azure-2021-library"
+   ],
+   "shape_classes": [
+    "ABSMemberAzure2021",
+    "ActiveDirectoryConnectHealthAzure2021",
+    "ActivityLogAzure2021",
+    "AdvisorAzure2021",
+    "AllResourcesAzure2021",
+    "AnalysisServicesAzure2021",
+    "APIManagementServicesAzure2021",
+    "ApplicationGatewaysAzure2021",
+    "ApplicationInsightsAzure2021",
+    "ApplicationSecurityGroupsAzure2021",
+    "AppRegistrationsAzure2021",
+    "AppServiceCertificatesAzure2021",
+    "AppServicesAzure2021",
+    "AutomanagedVMAzure2021",
+    "AvailabilitySetsAzure2021",
+    "AVSAzure2021",
+    "AzureActiveDirectoryAzure2021",
+    "AzureADRolesAndAdministratorsAzure2021",
+    "AzureAPIforFHIRAzure2021",
+    "AzureBackupCenterAzure2021",
+    "AzureBlockchainServiceAzure2021",
+    "AzureCloudShellAzure2021",
+    "AzureCosmosDBAzure2021",
+    "AzureDatabasePostgreSQLServerAzure2021",
+    "AzureDatabricksAzure2021",
+    "AzureDataCatalogAzure2021",
+    "AzureDataExplorerClustersAzure2021",
+    "AzureDefenderAzure2021",
+    "AzureDevOpsAzure2021",
+    "AzureFirewallManagerAzure2021",
+    "AzureHCPCacheAzure2021",
+    "AzureMapsAccountsAzure2021",
+    "AzureMediaServiceAzure2021",
+    "AzureMigrateAzure2021",
+    "AzureNetAppFilesAzure2021",
+    "AzureSentinelAzure2021",
+    "AzureSphereAzure2021",
+    "AzureSQLAzure2021",
+    "AzureStackAzure2021",
+    "BacklogAzure2021",
+    "BotServicesAzure2021",
+    "CacheRedisAzure2021",
+    "CapacityAzure2021",
+    "CDNProfilesAzure2021",
+    "CognitiveServicesAzure2021",
+    "ContainerInstancesAzure2021",
+    "ContainerRegistriesAzure2021",
+    "DataBoxAzure2021",
+    "DetonationAzure2021",
+    "DeviceProvisioningServicesAzure2021",
+    "DeviceSecurityAppleAzure2021",
+    "DNSZonesAzure2021",
+    "EventGridTopicsAzure2021",
+    "ExpressRouteCircuitsAzure2021",
+    "FileSharesAzure2021",
+    "FirewallsAzure2021",
+    "FrontDoorsAzure2021",
+    "FunctionAppsAzure2021",
+    "KeyVaultsAzure2021",
+    "KubernetesServicesAzure2021",
+    "LoadBalancersAzure2021",
+    "LogicAppsAzure2021",
+    "MonitorAzure2021",
+    "NotificationHubNamespacesAzure2021",
+    "PolicyAzure2021",
+    "RemoteRenderingAzure2021",
+    "SAPAzureMonitorAzure2021",
+    "ServiceBusAzure2021",
+    "SQLDatabaseAzure2021",
+    "StorageAccountsAzure2021",
+    "VirtualNetworksAzure2021",
+    "VMScaleSetsAzure2021"
+   ],
+   "container_classes": [
+    "AppServicePlanAzure2021",
+    "LogoContainerAzure2021",
+    "ResourceGroupAzure2021",
+    "SubnetAzure2021",
+    "SubnetWithNetworkSecurityGroupAzure2021",
+    "SubscriptionAzure2021",
+    "VirtualNetworkAzure2021"
+   ]
+  },
+  "azure2024": {
+   "provider": "azure",
+   "revision": "2024",
+   "source_urls": [
+    "https://developer.lucid.co/docs/azure-2024-library"
+   ],
+   "shape_classes": [
+    "ABSMemberAzure2024",
+    "ActivityLogAzure2024",
+    "AdvisorAzure2024",
+    "AIStudioAzure2024",
+    "AllResourcesAzure2024",
+    "AnalysisServicesAzure2024",
+    "AnomalyDetectorAzure2024",
+    "APIManagementServicesAzure2024",
+    "ApplicationGatewaysAzure2024",
+    "ApplicationInsightsAzure2024",
+    "ApplicationSecurityGroupsAzure2024",
+    "AppRegistrationsAzure2024",
+    "AppServiceCertificatesAzure2024",
+    "AppServicesAzure2024",
+    "AutomanagedVMAzure2024",
+    "AvailabilitySetsAzure2024",
+    "AzureAPIForFHIRAzure2024",
+    "AzureBackupCenterAzure2024",
+    "AzureBlockchainServiceAzure2024",
+    "AzureCloudShellAzure2024",
+    "AzureCosmosDBAzure2024",
+    "AzureDatabasePostgreSQLServerAzure2024",
+    "AzureDatabricksAzure2024",
+    "AzureDataCatalogAzure2024",
+    "AzureDataExplorerClustersAzure2024",
+    "AzureDevOpsAzure2024",
+    "AzureFilesharesAzure2024",
+    "AzureFirewallManagerAzure2024",
+    "AzureHCPCacheAzure2024",
+    "AzureMapsAccountsAzure2024",
+    "AzureMediaServiceAzure2024",
+    "AzureMigrateAzure2024",
+    "AzureMonitorDashboardAzure2024",
+    "AzureNetAppFilesAzure2024",
+    "AzureOpenAIAzure2024",
+    "AzureSentinelAzure2024",
+    "AzureServiceBusAzure2024",
+    "AzureSphereAzure2024",
+    "AzureSQLAzure2024",
+    "AzureStackAzure2024",
+    "AzureStackEdgeAzure2024",
+    "AzureVMwareSolutionAzure2024",
+    "BacklogAzure2024",
+    "CacheRedisAzure2024",
+    "CDNProfilesAzure2024",
+    "ContainerInstancesAzure2024",
+    "ContainerRegistriesAzure2024",
+    "DataBoxAzure2024",
+    "DetonationAzure2024",
+    "DeviceProvisioningServicesAzure2024",
+    "DeviceSecurityAppleAzure2024",
+    "DNSZonesAzure2024",
+    "EntraIDProtectionAzure2024",
+    "EventGridTopicsAzure2024",
+    "ExpressRouteCircuitsAzure2024",
+    "FirewallsAzure2024",
+    "FrontDoorAndCDNProfilesAzure2024",
+    "FunctionAppsAzure2024",
+    "IntuneAzure2024",
+    "KeyVaultsAzure2024",
+    "KubernetesServicesAzure2024",
+    "LoadBalancersAzure2024",
+    "LogicAppsAzure2024",
+    "MicrosoftDefenderForCloudAzure2024",
+    "MonitorAzure2024",
+    "NotificationHubNamespacesAzure2024",
+    "PolicyAzure2024",
+    "RemoteRenderingAzure2024",
+    "SpatialAnchorAccountsAzure2024",
+    "SQLDatabaseAzure2024",
+    "StorageAccountsAzure2024",
+    "VirtualMachineAzure2024",
+    "VirtualNetworksAzure2024",
+    "VMScaleSetsAzure2024"
+   ],
+   "container_classes": [
+    "ApplicationSecurityGroupContainerAzure2024",
+    "AppServicePlanContainerAzure2024",
+    "EventHubNamespaceContainerAzure2024",
+    "NetworkSecurityGroupContainerAzure2024",
+    "ResourceGroupContainerAzure2024",
+    "SubnetContainerAzure2024",
+    "SubnetWithNsgContainerAzure2024",
+    "SubscriptionContainerAzure2024",
+    "VirtualNetworkContainerAzure2024"
+   ]
+  },
+  "gcp2021": {
+   "provider": "gcp",
+   "revision": "2021",
+   "source_urls": [
+    "https://developer.lucid.co/docs/gcp-2021-library"
+   ],
+   "shape_classes": [
+    "GCP2021AccessContextManagerIcon",
+    "GCP2021AdministrationIcon",
+    "GCP2021AdvancedAgentModelingIcon",
+    "GCP2021AdvancedSolutionsLabIcon",
+    "GCP2021AgentAssistIcon",
+    "GCP2021AIHubIcon",
+    "GCP2021APIAnalyticsIcon",
+    "GCP2021APIIcon",
+    "GCP2021AppEngineIcon",
+    "GCP2021ArtifactRegistryIcon",
+    "GCP2021AssuredWorkloadsIcon",
+    "GCP2021BatchIcon",
+    "GCP2021BeyondcorpIcon",
+    "GCP2021BigqueryIcon",
+    "GCP2021BigtableIcon",
+    "GCP2021CloudArmorIcon",
+    "GCP2021CloudBuildIcon",
+    "GCP2021CloudDNSIcon",
+    "GCP2021CloudFunctionsIcon",
+    "GCP2021CloudInterconnectIcon",
+    "GCP2021CloudLoadBalancingIcon",
+    "GCP2021CloudLoggingIcon",
+    "GCP2021CloudMonitoringIcon",
+    "GCP2021CloudNATIcon",
+    "GCP2021CloudRunIcon",
+    "GCP2021CloudSpannerIcon",
+    "GCP2021CloudSQLIcon",
+    "GCP2021CloudStorageIcon",
+    "GCP2021CloudVPNIcon",
+    "GCP2021ComputeEngineIcon",
+    "GCP2021DatabaseMigrationServiceIcon",
+    "GCP2021DataflowIcon",
+    "GCP2021DataprocIcon",
+    "GCP2021DatastoreIcon",
+    "GCP2021FilestoreIcon",
+    "GCP2021FirestoreIcon",
+    "GCP2021GoogleKubernetesEngineIcon",
+    "GCP2021IdentityAndAccessManagementIcon",
+    "GCP2021IOTCoreIcon",
+    "GCP2021IOTEdgeIcon",
+    "GCP2021KeyManagementServiceIcon",
+    "GCP2021MemorystoreIcon",
+    "GCP2021MigrateForAnthosIcon",
+    "GCP2021PersistentDiskIcon",
+    "GCP2021PubsubIcon",
+    "GCP2021VertexaiIcon",
+    "GCP2021VirtualPrivateCloudIcon"
+   ],
+   "container_classes": [
+    "GCP2021ContainerAccount",
+    "GCP2021ContainerColoDCOnPremises",
+    "GCP2021ContainerExternalDataSources",
+    "GCP2021ContainerExternalInfrastructure1stParty",
+    "GCP2021ContainerExternalInfrastructure3rdParty",
+    "GCP2021ContainerExternalSaaSProviders",
+    "GCP2021ContainerFirewall",
+    "GCP2021ContainerInfrastructureSystem2",
+    "GCP2021ContainerInstanceGroup",
+    "GCP2021ContainerKubernetesCluster",
+    "GCP2021ContainerLogicalGroupingOfServicesInstances",
+    "GCP2021ContainerOptionalComponent",
+    "GCP2021ContainerPod",
+    "GCP2021ContainerProjectZoneCloudServiceProvider",
+    "GCP2021ContainerRegion",
+    "GCP2021ContainerReplicaPool",
+    "GCP2021ContainerSubNetwork",
+    "GCP2021ContainerSystem1",
+    "GCP2021ContainerUser1",
+    "GCP2021ContainerZone",
+    "GCP2021GoogleCloudLogoContainer"
+   ]
+  }
+ },
+ "cloud_conflicts": {
+  "VirtualMachineAzure2021": {
+   "source_url": "https://developer.lucid.co/docs/azure-2021-library",
+   "reason": "Common Shapes table is singular while the sample is plural; live verification required."
+  },
+  "VirtualMachinesAzure2021": {
+   "source_url": "https://developer.lucid.co/docs/azure-2021-library",
+   "reason": "Sample conflicts with Common Shapes table; live verification required."
+  },
+  "PrivateEndpointAzure2021": {
+   "source_url": "https://developer.lucid.co/docs/azure-2021-library",
+   "reason": "Category says Container Shapes but it is absent from the explicit namedContainer list; shape/container kind unverified."
+  }
+ },
+ "unsupported_types": {
+  "image": {
+   "route": "Prepare SVG artwork and use the in-skill editor workflow, or author a verified resource-bearing SI image package; packaged SVG images rasterize to PNG."
+  },
+  "orgChart": {
+   "route": "Use build_generated.py with explicit inline person/supervisor records; see generated-layouts.md. Geometry is Lucid-generated."
+  },
+  "mindMap": {
+   "route": "Use build_generated.py with an explicit inline hierarchy; see generated-layouts.md. Geometry is Lucid-generated."
+  },
+  "umlSequence": {
+   "route": "Use build_generated.py with supported PlantUML-style sequence markup; see generated-layouts.md. UI UML Sequence Use Markup is another verified route."
+  },
+  "assistedLayout": {
+   "route": "Use build_generated.py to reflow explicit native graph shapes; see generated-layouts.md. Reflow changes geometry."
+  }
+ },
+ "policy_notes": [
+  "Finite numeric values reject booleans; dimensions, table counts, lane widths and title-bar heights must be positive.",
+  "Table indices, merges and counts are integral; grids, merge overlap, and specified-size totals are checked locally.",
+  "Common fields belong to build_native.py; this catalog validates only unique properties.",
+  "Nested textual properties are literal labels and escaped only by format_properties.",
+  "Named cloud containers reject rotation conservatively; service rotation behavior is unverified.",
+  "Flexible polygons require nonzero area and a simple non-self-intersecting outline in this conservative profile.",
+  "Brace width, lane widths and title-bar height use a positive local profile; star point and table counts use an integral local profile."
+ ]
+}

@@ -20,6 +20,7 @@ import xml.etree.ElementTree as ET
 SVG_NS = "http://www.w3.org/2000/svg"
 MAX_BYTES = 50 * 1024 * 1024
 VECTOR_TAGS = {"path", "rect", "circle", "ellipse", "line", "polyline", "polygon", "text", "use"}
+DEFINITION_TAGS = {"defs", "symbol", "marker", "clipPath", "mask", "pattern"}
 UNITS = {"": 1, "px": 1, "pt": 96 / 72, "pc": 16, "in": 96, "cm": 96 / 2.54, "mm": 96 / 25.4, "q": 96 / 101.6}
 URL_RE = re.compile(r"url\(\s*(['\"]?)(.*?)\1\s*\)", re.I | re.S)
 
@@ -74,8 +75,35 @@ def inspect(path: Path) -> tuple[bytes, dict]:
         flags.add("external-stylesheet-instruction")
     ids: list[str] = []
     labels: list[str] = []
+    label_inventory: list[dict] = []
     tags: Counter[str] = Counter()
+    foreign_tags: Counter[str] = Counter()
+    features: Counter[str] = Counter()
+    feature_samples: dict[str, list[dict]] = {}
+    parents = {child: parent for parent in root.iter() for child in parent}
     embedded_raster = 0
+
+    def feature(name: str, node: ET.Element, index: int, attribute: str | None = None) -> None:
+        features[name] += 1
+        samples = feature_samples.setdefault(name, [])
+        if len(samples) < 10:
+            samples.append({"element_index": index, "id": node.get("id"), "tag": local_name(node.tag), "attribute": attribute})
+
+    def ancestry(node: ET.Element) -> list[ET.Element]:
+        chain = [node]
+        while chain[-1] in parents:
+            chain.append(parents[chain[-1]])
+        return chain
+
+    def declaration(node: ET.Element, key: str) -> str | None:
+        # This is an attribute/inline declaration inventory, not a CSS cascade.
+        value = node.get(key)
+        for part in node.get("style", "").split(";"):
+            if ":" in part:
+                name, candidate = part.split(":", 1)
+                if name.strip().lower() == key:
+                    value = candidate.strip()
+        return value
 
     def check_resource(value: str) -> None:
         nonlocal embedded_raster
@@ -94,17 +122,73 @@ def inspect(path: Path) -> tuple[bytes, dict]:
             dependencies.add(value)
             flags.add("external-resource")
 
-    for node in root.iter():
+    for index, node in enumerate(root.iter()):
         tag = local_name(node.tag)
-        tags[tag] += 1
+        is_svg = node.tag.startswith(f"{{{SVG_NS}}}")
+        if is_svg:
+            tags[tag] += 1
+        else:
+            foreign_tags[node.tag] += 1
+            feature("foreign-namespace-content", node, index)
         if node.get("id"):
             ids.append(node.get("id", ""))
-        if tag == "text":
-            labels.append("".join(node.itertext()).strip())
+        if is_svg and tag == "text":
+            chain = ancestry(node)
+            raw_text = "".join(node.itertext())
+            space = next((part.get("{http://www.w3.org/XML/1998/namespace}space") for part in chain if part.get("{http://www.w3.org/XML/1998/namespace}space") is not None), "default")
+            value = raw_text if space == "preserve" else raw_text.strip()
+            labels.append(value)
+            defined_only = any(part.tag == f"{{{SVG_NS}}}{name}" for part in chain[1:] for name in DEFINITION_TAGS)
+            hidden = any((declaration(part, "display") or "").lower() == "none" or (declaration(part, "visibility") or "").lower() in {"hidden", "collapse"} for part in chain)
+            label_inventory.append({"element_index": index, "id": node.get("id"), "text": value,
+                                    "raw_text": raw_text, "xml_space": space, "inside_definition": defined_only,
+                                    "hidden_declaration_in_ancestry": hidden, "rendered_visibility": "not evaluated"})
+            if defined_only:
+                feature("definition-text", node, index)
+            if hidden:
+                feature("hidden-text-declaration", node, index)
+            if space == "preserve":
+                feature("preserved-text-whitespace", node, index)
+        if is_svg and tag in {"linearGradient", "radialGradient", "pattern", "marker", "tspan", "textPath", "use"}:
+            feature(tag, node, index)
+        if is_svg and tag == "svg" and node is not root:
+            feature("nested-viewport", node, index)
+            warnings.add("nested-viewport-review")
+        if node.get("transform"):
+            feature("transform", node, index, "transform")
+        if any(key in node.attrib for key in ("data-node-id", "data-source", "data-target", "data-box")):
+            feature("semantic-metadata", node, index)
+        if tag == "style":
+            feature("stylesheet", node, index)
+            warnings.add("stylesheet-cascade-not-computed")
+        if node.get("style"):
+            feature("inline-style", node, index, "style")
+        for key, name in (("opacity", "opacity"), ("fill-opacity", "fill-opacity"), ("stroke-opacity", "stroke-opacity"),
+                          ("stroke-width", "stroke-width"), ("stroke-dasharray", "stroke-dasharray"),
+                          ("marker-start", "marker-reference"), ("marker-mid", "marker-reference"), ("marker-end", "marker-reference"),
+                          ("clip-path", "clipping"), ("filter", "filter"), ("mask", "mask")):
+            if declaration(node, key) is not None:
+                feature(name, node, index, key)
+        for key in ("fill", "stroke"):
+            paint = declaration(node, key)
+            if paint is not None and paint.strip().lower() == "none":
+                feature(f"{key}-none", node, index, key)
+            if paint is not None and "url(" in paint.lower():
+                feature("paint-server-reference", node, index, key)
+        if is_svg and tag == "rect" and (node.get("rx") is not None or node.get("ry") is not None):
+            feature("rounded-corners", node, index)
+        if is_svg and tag in {"rect", "circle", "ellipse", "image"}:
+            for key in ({"rect": ("width", "height"), "circle": ("r",), "ellipse": ("rx", "ry"), "image": ("width", "height")}[tag]):
+                value = node.get(key)
+                if value is not None and re.fullmatch(r"\s*[+-]?(?:\d+(?:\.\d*)?|\.\d+)(?:e[+-]?\d+)?\s*", value, re.I):
+                    if not math.isfinite(float(value)) or float(value) <= 0:
+                        feature("nonpositive-geometry", node, index, key)
+                        warnings.add("nonpositive-geometry-review")
         if tag == "script":
             flags.add("script")
         if tag in {"foreignObject", "filter", "mask", "clipPath", "animate", "animateTransform", "animateMotion", "set"}:
             warnings.add(tag)
+            feature(tag, node, index)
         if tag == "foreignObject":
             flags.add("foreignObject-needs-review")
         # Animation can mutate a harmless href into a remote/active URL after inspection.
@@ -133,6 +217,9 @@ def inspect(path: Path) -> tuple[bytes, dict]:
                 check_resource(match[2])
             if re.search(r"@font-face\b|font-family\s*:", css, re.I):
                 warnings.add("font-dependency-review")
+            if re.search(r"@keyframes\b|(?:^|[;{])\s*(?:animation|transition)(?:-[a-z]+)?\s*:", css, re.I):
+                feature("css-animation", node, index)
+                warnings.add("css-animation-review")
         if node.get("font-family"):
             warnings.add("font-dependency-review")
     duplicates = sorted(item for item, count in Counter(ids).items() if count > 1)
@@ -145,16 +232,23 @@ def inspect(path: Path) -> tuple[bytes, dict]:
     if not has_geometry:
         flags.add("missing-usable-dimensions")
     report = {
-        "schema_version": 1, "source": str(path), "sha256": hashlib.sha256(data).hexdigest(),
+        "schema_version": 2, "source": str(path), "sha256": hashlib.sha256(data).hexdigest(),
         "bytes": len(data), "valid_svg": True, "view_box": view_box,
         "width_px": width, "height_px": height, "element_counts": dict(sorted(tags.items())),
         "vector_element_count": sum(tags[tag] for tag in VECTOR_TAGS),
+        "element_count_scope": "SVG-namespace XML inventory; not rendered or native object counts",
+        "foreign_element_counts": dict(sorted(foreign_tags.items())),
+        "feature_counts": dict(sorted(features.items())), "feature_samples": feature_samples,
         "embedded_raster_resource_count": embedded_raster,
-        "labels": labels, "ids": ids, "duplicate_ids": duplicates,
+        "labels": labels, "label_inventory": label_inventory,
+        "labels_scope": "literal SVG text inventory, including definitions and hidden declarations; not visible-label verification",
+        "ids": ids, "duplicate_ids": duplicates,
         "unresolved_fragment_references": missing_fragments,
         "external_resources": sorted(dependencies), "blocking_flags": sorted(flags),
         "portability_warnings": sorted(warnings), "ready_for_upload": not flags,
         "safe_to_render_offline": not flags,
+        "validation_scope": "XML/resource preflight only; SVG path grammar, computed CSS, rendered visibility, and Lucid parser acceptance are not validated",
+        "native_mapping_eligibility": "not evaluated; use extract_native.py with an explicit coordinate mode and inspect its ledger",
         "native_editability": "unknown; SVG geometry is not a native graph contract",
     }
     return data, report
@@ -185,6 +279,10 @@ def main() -> int:
         paths = [path.resolve() for path in [args.input, args.report, getattr(args, "output", None)] if path is not None]
         if len(paths) != len(set(paths)):
             raise SvgError("Source, output, and report paths must be distinct.")
+        for index, first in enumerate(paths):
+            for second in paths[index + 1:]:
+                if first.exists() and second.exists() and first.samefile(second):
+                    raise SvgError("Source, output, and report paths alias the same existing file.")
         for path in [args.report, getattr(args, "output", None)]:
             if path and path.exists() and not args.overwrite:
                 raise SvgError("An output already exists; choose a new path or use --overwrite.")
