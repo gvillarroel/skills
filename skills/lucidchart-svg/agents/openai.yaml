@@ -1,0 +1,4 @@
+interface:
+  display_name: "Lucidchart SVG"
+  short_description: "Export SVG or build Lucidchart diagrams from SVG"
+  default_prompt: "Use $lucidchart-svg to export a Lucidchart diagram as SVG or create Lucidchart content from an SVG source."

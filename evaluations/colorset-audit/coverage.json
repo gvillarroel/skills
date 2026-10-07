@@ -172,6 +172,18 @@
       "sourceFidelity": "Preserve explicitly identified source media/brand/evidence/exact-RGB pixels; authored frame, chrome and technical marks remain palette-controlled."
     },
     {
+      "skill": "lucidchart-svg",
+      "outputs": [
+        "original Lucidchart SVG export",
+        "byte-preserving SVG upload copy",
+        "SVG inspection JSON",
+        "semantic graph JSON and native Standard Import package",
+        "conversion and fidelity notes"
+      ],
+      "scope": "source-fidelity",
+      "sourceFidelity": "Preserve user-supplied or exported diagram colors and source bytes; native reconstruction uses explicit source colors with neutral black/white defaults rather than imposing a new palette."
+    },
+    {
       "skill": "manim-svg-video",
       "outputs": [
         "SVG sequencing/import",
