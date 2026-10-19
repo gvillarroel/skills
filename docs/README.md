@@ -10,6 +10,7 @@ A maintained collection of reusable skills, compact references, deterministic he
 - [Skill backlog and validation status](../SKILLS.md)
 - [Evaluation methodology](../evaluations/README.md)
 - [Skill authoring and generated bundle validation](skill-authoring.md)
+- [Pi Durable usage, feature selection, and tested recovery behavior](pi-durable.md)
 - [Colorset contract and skill output coverage](colorsets.md)
 
 ## Feedback from real projects

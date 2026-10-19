@@ -1,0 +1,4 @@
+interface:
+  display_name: "Pi Durable"
+  short_description: "Persistent event agents and chat on Windows and Mac"
+  default_prompt: "Use $pi-durable to create a persistent agent service that reacts to new pull requests and lets me reconnect to each agent's chat on Windows and macOS."

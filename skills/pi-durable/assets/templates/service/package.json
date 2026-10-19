@@ -1,0 +1,21 @@
+{
+  "name": "pi-durable-agent-service",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=24.0.0" },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/src/cli.js",
+    "test": "tsx --test tests/*.test.ts"
+  },
+  "dependencies": {
+    "@earendil-works/pi-durable": "1.3.0",
+    "@earendil-works/pi-ai": "1.3.0",
+    "@earendil-works/chord": "1.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "24.10.0",
+    "typescript": "5.9.3",
+    "tsx": "4.20.6"
+  }
+}

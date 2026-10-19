@@ -5,6 +5,18 @@
   "claim": "Supported output-route inventory and authored paint checks; source pixels and renderer-derived tones have explicit scopes. This is not an exhaustive proof of all arbitrary user-authored scenes.",
   "skills": [
     {
+      "skill": "pi-durable",
+      "outputs": [
+        "TypeScript durable agent service starter",
+        "JSON event, registry, and chat API",
+        "Windows task XML and PowerShell lifecycle plans",
+        "macOS LaunchAgent plist lifecycle plans",
+        "Markdown runtime and operating guidance"
+      ],
+      "scope": "nonvisual",
+      "sourceFidelity": null
+    },
+    {
       "skill": "ambientcg-material-search",
       "outputs": [
         "HTML candidate previews",

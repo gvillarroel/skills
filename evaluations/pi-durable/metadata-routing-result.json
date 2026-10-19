@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "skill": "pi-durable",
+  "case": "metadata-routing-smoke",
+  "date": "2026-10-19",
+  "model": "openai-codex/gpt-5.6-luna",
+  "modelException": "Previously recorded Spark account/provider incompatibility; no further exception introduced.",
+  "command": "pi --model openai-codex/gpt-5.6-luna --thinking low --mode json --print --no-session --no-tools --no-context-files --no-extensions --no-skills --no-prompt-templates --no-themes --offline @prompt.md",
+  "rawRun": "evaluations/runs/pi-durable-metadata-routing-20261019-2",
+  "promptPath": "evaluations/pi-durable/metadata-routing-prompt.md",
+  "promptSha256": "7eb3b50e1bcc18c9be54c0dbaf4fcf692de1047b295916e0bc360a6ee099ce62",
+  "skillMetadataSourceSha256": "271fdd56f2d47cdc8c6723f0e8fa34c65785385a94fca91e3d28bd614d103b02",
+  "passed": true,
+  "correct": 10,
+  "total": 10,
+  "positive": 5,
+  "negative": 5,
+  "observedToolCalls": 0,
+  "invalidJsonLines": 0,
+  "totalTokens": 1507,
+  "cases": [
+    {
+      "id": "desktop-pr-daemon",
+      "expected": "yes",
+      "select": "yes",
+      "correct": true,
+      "justification": "Matches named agent services, PR-triggered work, durable queues, and reconnectable chat."
+    },
+    {
+      "id": "real-pet",
+      "expected": "no",
+      "select": "no",
+      "correct": true,
+      "justification": "This is about choosing a real pet, not Pi Durable agent applications."
+    },
+    {
+      "id": "host-runtime",
+      "expected": "yes",
+      "select": "yes",
+      "correct": true,
+      "justification": "Matches embedding Pi Durable with persistent conversations, stable task IDs, and crash recovery."
+    },
+    {
+      "id": "one-shot-review",
+      "expected": "no",
+      "select": "no",
+      "correct": true,
+      "justification": "This is a one-time review without durable agents, registries, or persistent applications."
+    },
+    {
+      "id": "saved-task-chat",
+      "expected": "yes",
+      "select": "yes",
+      "correct": true,
+      "justification": "Matches named agent registries, saved task sessions, and reconnectable chat."
+    },
+    {
+      "id": "raspberry-case",
+      "expected": "no",
+      "select": "no",
+      "correct": true,
+      "justification": "This concerns a protective case for Raspberry Pi hardware, not Pi Durable."
+    },
+    {
+      "id": "version-wake",
+      "expected": "yes",
+      "select": "yes",
+      "correct": true,
+      "justification": "Directly concerns Pi Durable runtime features and background task waiting strategies."
+    },
+    {
+      "id": "generic-email",
+      "expected": "no",
+      "select": "no",
+      "correct": true,
+      "justification": "This is a cron and SMTP notifier without a durable agent runtime."
+    },
+    {
+      "id": "local-ci-event",
+      "expected": "yes",
+      "select": "yes",
+      "correct": true,
+      "justification": "Matches event-triggered tasks, persistence across restarts, and agent chat."
+    },
+    {
+      "id": "coding-terminal",
+      "expected": "no",
+      "select": "no",
+      "correct": true,
+      "justification": "This concerns the normal Pi Coding Agent terminal, not embedding or operating Pi Durable."
+    }
+  ],
+  "limitations": [
+    "One bounded metadata-only routing smoke, not a benchmark of task effectiveness or model quality.",
+    "All cases are explicit task requests; adversarial ambiguity and multilingual routing were not tested.",
+    "The skill body, references, templates, and acceptance fixtures were unavailable to this no-tools run.",
+    "An earlier trial at evaluations/runs/pi-durable-metadata-routing-20261019 is retained but superseded because its schema example showed the first classification; the retained prompt uses neutral placeholders."
+  ]
+}
