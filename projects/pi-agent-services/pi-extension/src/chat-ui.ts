@@ -112,7 +112,7 @@ export class DurableChatView implements Component, Focusable {
   private transcript(width: number): string[] {
     const lines: string[] = [];
     if (this.hiddenMessageCount) {
-      lines.push(this.theme.fg('muted', 'Earlier messages are available with /durable read.'), '');
+      lines.push(this.theme.fg('muted', 'Showing the latest 80 messages in this panel.'), '');
     }
     for (const message of this.messages) lines.push(...this.messageLines(message, width));
     if (this.progress.text && this.options.memory.pending) {
