@@ -22,35 +22,39 @@ pi -e "C:\Users\villa\dev\skills\projects\pi-agent-services\pi-extension\extensi
 
 The commands below run inside the Pi terminal. They are not Codex chat commands.
 
+Commands use the Durable namespace to distinguish these persistent service
+agents from the harness's own agents. This extension registers only `/durable`
+and `/durable-chat`; it reserves no generic `/agents` or `/agent` aliases.
+
 ```text
-/agents
-/agent
-/agent repo-quality
-/agent delivery-watch Explain your role and current limits.
+/durable
+/durable-chat
+/durable-chat repo-quality
+/durable-chat delivery-watch Explain your role and current limits.
 ```
 
-`/agents` lists registered agents with service-qualified IDs such as
-`local/repo-quality`. `/agent` opens a chooser; selecting an agent opens a message
+`/durable` lists registered agents with service-qualified IDs such as
+`local/repo-quality`. `/durable-chat` opens a chooser; selecting an agent opens a message
 editor and displays its public conversation history. Send a message, read its
 answer, and continue. Escape or `/exit` leaves the editor; it does not abort work.
-`/agent <id> <message>` sends a one-shot message and waits for its response.
+`/durable-chat <id> <message>` sends a one-shot message and waits for its response.
 
 ## Commands
 
 | Command | Purpose |
 |---|---|
-| `/agents services` | List configured service connections |
-| `/agents status` | Show service model, owner and queue status where supported |
-| `/agents jobs repo-quality` | List recent jobs and their exact IDs |
-| `/agents read repo-quality --job <id>` | Read the selected task's public history |
-| `/agents chat repo-quality --job <id>` | Open interactive chat for that task |
-| `/agents send repo-quality --job <id> <message>` | Queue a follow-up on that task |
-| `/agents steer repo-quality --job <id> <message>` | Send a correction to active task work |
-| `/agents traces repo-quality` | Show bounded public evidence |
-| `/agents wait repo-quality <submission-id>` | Reconnect to an already admitted message |
-| `/agents cancel` | Cancel local polling/waiting; remote work continues |
-| `/agents abort repo-quality --job <id>` | Explicitly abort that remote conversation |
-| `/agents help` | Display the complete command help |
+| `/durable services` | List configured service connections |
+| `/durable status` | Show service model, owner and queue status where supported |
+| `/durable jobs repo-quality` | List recent jobs and their exact IDs |
+| `/durable read repo-quality --job <id>` | Read the selected task's public history |
+| `/durable chat repo-quality --job <id>` | Open interactive chat for that task |
+| `/durable send repo-quality --job <id> <message>` | Queue a follow-up on that task |
+| `/durable steer repo-quality --job <id> <message>` | Send a correction to active task work |
+| `/durable traces repo-quality` | Show bounded public evidence |
+| `/durable wait repo-quality <submission-id>` | Reconnect to an already admitted message |
+| `/durable cancel` | Cancel local polling/waiting; remote work continues |
+| `/durable abort repo-quality --job <id>` | Explicitly abort that remote conversation |
+| `/durable help` | Display the complete command help |
 
 Without `--job`, conversation operations use the agent's control chat. A task ID
 keeps its own context and transcript. The service's current IDs contain no
@@ -58,7 +62,7 @@ spaces. Use `service/agent` when different services have the same agent ID.
 
 An ambiguous admission is retried once with the same request ID. If both
 attempts fail, preserve the displayed request ID and retry the same message via
-`/agents send <agent> --request-id <id> <same-message>`. If a submission ID was
+`/durable send <agent> --request-id <id> <same-message>`. If a submission ID was
 returned, use `wait` instead of sending the message again. A timeout or cancelled
 wait never sends the remote abort request.
 

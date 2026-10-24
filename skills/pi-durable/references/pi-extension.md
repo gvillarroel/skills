@@ -26,29 +26,33 @@ Run `npm test` only when tests were included. Dependencies and the npm cache are
 Connection discovery checks `PI_DURABLE_CONNECTIONS` first, then the nearest ancestor `.pi/durable-agents.json`, then `durable-agents.json` beside the extension. An existing project config therefore overrides the generated adjacent config unless the environment variable selects it explicitly. A connections file accepts only version 1 and up to 32 service entries:
 
 ```json
-{"version":1,"services":[{"id":"local","name":"My agents","configPath":"../agent-service/config.json"}]}
+{"version":1,"services":[{"id":"local","name":"My agents","configPath":"../durable-chat-service/config.json"}]}
 ```
 
 Resolve each `configPath` against that connections file. Resolve `dataDir` against the service config. The client reads `console-token` from service state for each request, authenticates only to the configured loopback port, rejects redirects, and bounds requests and response size. Never copy a token into a connections file, prompts, argv, or the manifest.
 
 ## Operate agents
 
+Reserve `/durable` and `/durable-chat` for these persistent services. Do not
+register generic `/agents` or `/agent` aliases: those names can refer to the
+harness's own agents. Keep this namespace in generated help, examples and tests.
+
 | Command | Use |
 | --- | --- |
-| `/agents` | List registered agents across configured services. |
-| `/agents services` | Inspect connection IDs and available endpoints. |
-| `/agents status [service]` | Inspect service/model/queue status when supported. |
-| `/agent` | Choose an agent and enter interactive chat. |
-| `/agent local/reviewer Explain your latest result` | Send one message and await its answer. |
-| `/agents jobs local/reviewer` | Find recent task IDs. |
-| `/agents read local/reviewer --job ID` | Read a task's public conversation. |
-| `/agents chat local/reviewer --job ID` | Continue that task's conversation interactively. |
-| `/agents send local/reviewer --request-id ID Message` | Send with a stable request ID for an intentional retry. |
-| `/agents steer local/reviewer Message` | Correct the current conversation while it is busy. |
-| `/agents wait local/reviewer SUBMISSION_ID` | Resume waiting on an accepted message. |
-| `/agents traces local/reviewer` | Read public action, outcome, and decision evidence. |
-| `/agents cancel` | Stop this extension's waits; admitted work continues. |
-| `/agents abort local/reviewer --job ID` | Explicitly abort the selected remote conversation. |
+| `/durable` | List registered agents across configured services. |
+| `/durable services` | Inspect connection IDs and available endpoints. |
+| `/durable status [service]` | Inspect service/model/queue status when supported. |
+| `/durable-chat` | Choose an agent and enter interactive chat. |
+| `/durable-chat local/reviewer Explain your latest result` | Send one message and await its answer. |
+| `/durable jobs local/reviewer` | Find recent task IDs. |
+| `/durable read local/reviewer --job ID` | Read a task's public conversation. |
+| `/durable chat local/reviewer --job ID` | Continue that task's conversation interactively. |
+| `/durable send local/reviewer --request-id ID Message` | Send with a stable request ID for an intentional retry. |
+| `/durable steer local/reviewer Message` | Correct the current conversation while it is busy. |
+| `/durable wait local/reviewer SUBMISSION_ID` | Resume waiting on an accepted message. |
+| `/durable traces local/reviewer` | Read public action, outcome, and decision evidence. |
+| `/durable cancel` | Stop this extension's waits; admitted work continues. |
+| `/durable abort local/reviewer --job ID` | Explicitly abort the selected remote conversation. |
 
 Bare agent IDs work only when unique; use `service/agent` to resolve ambiguity. Escape leaves the interactive editor. Without `--job`, commands target the agent's control conversation. Sending uses `followUp` by default. Timeout/cancellation retains the request/submission IDs so reconnecting does not submit another task; a network retry reuses the same request ID. A failed service is reported while reachable services remain usable.
 
@@ -58,6 +62,6 @@ Commands talk directly to the service, without invoking the outer Pi model. Disp
 
 ## Validate the integration
 
-Run the generated type check and acceptance tests, then load the extension with the installed Pi version. For isolated command checks use `--offline --mode rpc --no-session --no-context-files --no-extensions --no-skills --no-prompt-templates --no-themes -e <entry>`, with `PI_CODING_AGENT_DIR` in a disposable workspace. Explicit `-e` still works with discovery disabled. Send LF-delimited `get_commands` and `prompt` requests such as `/agents`, `/agents status`, and `/agents read <agent>`; inspect notifications and require no outer `agent_start` event. RPC selectors/editors use `extension_ui_request` / `extension_ui_response`, including explicit cancellation.
+Run the generated type check and acceptance tests, then load the extension with the installed Pi version. For isolated command checks use `--offline --mode rpc --no-session --no-context-files --no-extensions --no-skills --no-prompt-templates --no-themes -e <entry>`, with `PI_CODING_AGENT_DIR` in a disposable workspace. Explicit `-e` still works with discovery disabled. Send LF-delimited `get_commands` and `prompt` requests such as `/durable`, `/durable status`, and `/durable read <agent>`; inspect notifications and require no outer `agent_start` event. RPC selectors/editors use `extension_ui_request` / `extension_ui_response`, including explicit cancellation.
 
 Check actual agent IDs, general/task chat, a stable-ID retry, an unreachable service, oversized/error responses, local cancel versus remote abort, and shutdown cleanup. Keep read-only checks separate from a real model-backed message, which consumes that agent's provider quota. A process, registered agent, pending job, and active model generation are distinct states. Native macOS and Windows terminal checks must be reported separately.

@@ -23,7 +23,7 @@ events or human chat.
 ## Operate the pilot
 
 For a native Pi terminal console, use the [agent console extension](pi-extension/README.md).
-It provides `/agents` and `/agent` for listing, task history and direct chat.
+It provides `/durable` and `/durable-chat` for listing, task history and direct chat.
 
 From this repository root:
 

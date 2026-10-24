@@ -1,5 +1,12 @@
 # Native Pi extension validation, 2026-10-24
 
+Command namespace update: the current extension exposes `/durable` and
+`/durable-chat`, with no `/agents` or `/agent` aliases. The checks below retain
+the initial command names used in those original live communication receipts.
+The [namespace regression record](../../evaluations/pi-durable/pi-extension-namespace-20261024.md)
+covers the renamed registrations and fresh read-only native checks; the service
+API and agent conversations did not change.
+
 The extension is implemented under `pi-extension/` with a standalone HTTP client
 and package. The project loader `.pi/extensions/durable-agents.ts` provides
 normal Pi discovery; `.pi/durable-agents.json` points to the active independent

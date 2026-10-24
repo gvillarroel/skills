@@ -19,20 +19,20 @@ export interface ExtensionOptions {
 type Target={name:string;agentId:string;client:ClientApi};
 class CommandError extends Error {}
 const HELP=`Pi Durable agent console
-/agents                         List agents in configured services
-/agents services                List local service connections
-/agents status [service]        Service/model/queue status
-/agents jobs <service/agent>     List recent task IDs
-/agents read <agent> [--job ID]  Show public conversation history
-/agents chat <agent> [--job ID]  Open an interactive chat (Escape to leave)
-/agent <agent> <message>         Send a message and wait for its answer
-/agent                          Choose an agent and open chat
-/agents send <agent> [--job ID] [--request-id ID] <message>
-/agents steer <agent> [--job ID] <message>
-/agents wait <agent> <submission-id>  Reconnect to an admitted message
-/agents traces <agent>          Public operational evidence
-/agents cancel                  Cancel local waits; admitted tasks continue
-/agents abort <agent> [--job ID] Explicitly abort that remote conversation
+/durable                         List agents in configured services
+/durable services                List local service connections
+/durable status [service]        Service/model/queue status
+/durable jobs <service/agent>     List recent task IDs
+/durable read <agent> [--job ID]  Show public conversation history
+/durable chat <agent> [--job ID]  Open an interactive chat (Escape to leave)
+/durable-chat <agent> <message>         Send a message and wait for its answer
+/durable-chat                          Choose an agent and open chat
+/durable send <agent> [--job ID] [--request-id ID] <message>
+/durable steer <agent> [--job ID] <message>
+/durable wait <agent> <submission-id>  Reconnect to an admitted message
+/durable traces <agent>          Public operational evidence
+/durable cancel                  Cancel local waits; admitted tasks continue
+/durable abort <agent> [--job ID] Explicitly abort that remote conversation
 Bare agent IDs work when unique; use service/agent for an exact target.
 Commands operate directly and do not invoke the outer Pi model.`;
 
@@ -48,10 +48,10 @@ function targetArgs(input:string){
   const [target,tail]=word(input);let rest=tail;let jobId:string|undefined,requestId:string|undefined;
   while(rest.startsWith('--')){
     const [flag,afterFlag]=word(rest),[value,afterValue]=word(afterFlag);
-    if(!value||value.startsWith('--'))throw new CommandError('An option value is missing. Use /agents help.');
+    if(!value||value.startsWith('--'))throw new CommandError('An option value is missing. Use /durable help.');
     if(flag==='--job'&&!jobId)jobId=value.replace(/^(["'])(.*)\1$/,'$2');
     else if(flag==='--request-id'&&!requestId)requestId=value;
-    else throw new CommandError('Unknown or duplicate option. Use /agents help.');
+    else throw new CommandError('Unknown or duplicate option. Use /durable help.');
     rest=afterValue;
   }
   return {target,jobId,requestId,message:rest};
@@ -83,10 +83,10 @@ export function registerDurableExtension(pi:ExtensionAPI,options:ExtensionOption
   };
   const failure=(error:unknown)=>{
     if(error instanceof DurableSendError){
-      const receipt=error.receipt?`\nAdmitted conversation ${error.receipt.conversationId}, submission ${error.receipt.submissionId}. Use /agents wait <agent> ${error.receipt.submissionId} to reconnect.`:'';
+      const receipt=error.receipt?`\nAdmitted conversation ${error.receipt.conversationId}, submission ${error.receipt.submissionId}. Use /durable wait <agent> ${error.receipt.submissionId} to reconnect.`:'';
       return `${error.message}\nRequest ID: ${error.requestId}${receipt}\nCancellation stops only this wait; admitted work remains durable.`;
     }
-    return error instanceof DurableClientError||error instanceof CommandError?error.message:'The durable console operation failed. Check the configured local service and use /agents help.';
+    return error instanceof DurableClientError||error instanceof CommandError?error.message:'The durable console operation failed. Check the configured local service and use /durable help.';
   };
   async function clients(ctx:ExtensionContext){const loaded=await load(ctx);if(!loaded.connections.length)throw new CommandError('No services configured. Add .pi/durable-agents.json or set PI_DURABLE_CONNECTIONS.');return loaded.connections.map(make);}
   async function registry(ctx:ExtensionContext,signal?:AbortSignal){
@@ -101,11 +101,11 @@ export function registerDurableExtension(pi:ExtensionAPI,options:ExtensionOption
     return {results,targets,errors};
   }
   async function resolveTarget(name:string,ctx:ExtensionContext,signal?:AbortSignal):Promise<Target>{
-    if(!name)throw new CommandError('Specify an agent ID or service/agent. Use /agents list.');
+    if(!name)throw new CommandError('Specify an agent ID or service/agent. Use /durable list.');
     const current=await registry(ctx,signal);
     const matches=current.targets.filter(target=>target.name===name||(!name.includes('/')&&target.agentId===name));
-    if(matches.length>1)throw new CommandError('Agent ID is ambiguous. Use its exact service/agent name from /agents list.');
-    if(!matches.length)throw new CommandError(`Agent is unavailable or unknown. Use /agents list.${current.errors.length?' A configured service could not be reached.':''}`);
+    if(matches.length>1)throw new CommandError('Agent ID is ambiguous. Use its exact service/agent name from /durable list.');
+    if(!matches.length)throw new CommandError(`Agent is unavailable or unknown. Use /durable list.${current.errors.length?' A configured service could not be reached.':''}`);
     return matches[0];
   }
   async function operation<T>(ctx:ExtensionContext,work:(signal:AbortSignal)=>Promise<T>):Promise<T>{
@@ -127,7 +127,7 @@ export function registerDurableExtension(pi:ExtensionAPI,options:ExtensionOption
     }finally{if(!closed)ctx.ui.setStatus('durable-agents',undefined);}
   }
   async function chat(target:Target,jobId:string|undefined,ctx:ExtensionCommandContext,signal:AbortSignal){
-    if(!ctx.hasUI)throw new CommandError('Interactive chat needs Pi UI. Use /agent <agent> <message> for a one-shot message.');
+    if(!ctx.hasUI)throw new CommandError('Interactive chat needs Pi UI. Use /durable-chat <agent> <message> for a one-shot message.');
     show(`${target.name}\n${publicHistory(await target.client.snapshot(target.agentId,{jobId,signal}))}`,ctx);
     while(!signal.aborted&&!closed){
       const message=await ctx.ui.editor(`Message to ${target.name}${jobId?' / task':''} (Escape to leave)`);
@@ -143,21 +143,21 @@ export function registerDurableExtension(pi:ExtensionAPI,options:ExtensionOption
   }
   async function status(service:string|undefined,ctx:ExtensionContext,signal:AbortSignal){
     const selected=(await clients(ctx)).filter(client=>!service||client.connection.id===service);
-    if(!selected.length)throw new CommandError('Unknown service ID. Use /agents services.');
+    if(!selected.length)throw new CommandError('Unknown service ID. Use /durable services.');
     const results=await Promise.all(selected.map(async client=>{try{return {service:client.connection.id,...await client.status({signal})};}catch(error){return {service:client.connection.id,error:failure(error)};}}));
     show(pretty(results),ctx);return results;
   }
   async function dispatch(args:string,ctx:ExtensionCommandContext){
     const [action,rest]=word(args);
     if(action==='help'){show(HELP,ctx);return;}
-    if(action==='cancel'){for(const controller of controllers)controller.abort();show('Local waits cancelled. Admitted agent tasks continue; /agents abort is a separate explicit action.',ctx);return;}
+    if(action==='cancel'){for(const controller of controllers)controller.abort();show('Local waits cancelled. Admitted agent tasks continue; /durable abort is a separate explicit action.',ctx);return;}
     await operation(ctx,async signal=>{
       if(!action||action==='list'){await list(ctx,signal);return;}
       if(action==='services'){show(pretty((await clients(ctx)).map(client=>({id:client.connection.id,name:client.connection.name,url:client.connection.baseUrl}))),ctx);return;}
       if(action==='status'){await status(rest.trim()||undefined,ctx,signal);return;}
-      if(!['jobs','read','chat','send','steer','abort','traces','wait'].includes(action))throw new CommandError('Unknown durable operation. Use /agents help.');
+      if(!['jobs','read','chat','send','steer','abort','traces','wait'].includes(action))throw new CommandError('Unknown durable operation. Use /durable help.');
       const input=targetArgs(rest);
-      if(!['send','steer','wait'].includes(action)&&input.message)throw new CommandError('Unexpected trailing arguments. Select a task with --job ID; use /agents help.');
+      if(!['send','steer','wait'].includes(action)&&input.message)throw new CommandError('Unexpected trailing arguments. Select a task with --job ID; use /durable help.');
       const target=await resolveTarget(input.target,ctx,signal);
       if(action==='jobs'){show(`${target.name}\n${pretty(await target.client.jobs(target.agentId,{signal}))}`,ctx);return;}
       if(action==='read'){show(`${target.name}\n${publicHistory(await target.client.snapshot(target.agentId,{jobId:input.jobId,signal}))}`,ctx);return;}
@@ -171,8 +171,8 @@ export function registerDurableExtension(pi:ExtensionAPI,options:ExtensionOption
       show(pretty(await target.client.wait(target.agentId,receipt,{jobId:input.jobId,signal,...waitOptions})),ctx);
     });
   }
-  pi.registerCommand('agents',{description:'List, inspect and chat with local Pi Durable agents',getArgumentCompletions:prefix=>['list','services','status','jobs','read','chat','send','steer','traces','wait','abort','cancel','help'].filter(value=>value.startsWith(prefix)).map(value=>({value,label:value})),handler:async(args,ctx)=>{try{await dispatch(args,ctx);}catch(error){show(failure(error),ctx);}}});
-  pi.registerCommand('agent',{description:'Choose a Pi Durable agent or send /agent <id> <message>',getArgumentCompletions:prefix=>completions.filter(value=>value.startsWith(prefix)).map(value=>({value,label:value})),handler:async(args,ctx)=>{
+  pi.registerCommand('durable',{description:'List, inspect and chat with local Pi Durable agents',getArgumentCompletions:prefix=>['list','services','status','jobs','read','chat','send','steer','traces','wait','abort','cancel','help'].filter(value=>value.startsWith(prefix)).map(value=>({value,label:value})),handler:async(args,ctx)=>{try{await dispatch(args,ctx);}catch(error){show(failure(error),ctx);}}});
+  pi.registerCommand('durable-chat',{description:'Choose a Pi Durable agent or send /durable-chat <id> <message>',getArgumentCompletions:prefix=>completions.filter(value=>value.startsWith(prefix)).map(value=>({value,label:value})),handler:async(args,ctx)=>{
     try{
       if(args.trim()==='help'){show(HELP,ctx);return;}
       await operation(ctx,async signal=>{

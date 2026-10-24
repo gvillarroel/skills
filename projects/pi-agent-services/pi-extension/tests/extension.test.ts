@@ -58,14 +58,16 @@ function fixture(options: { services?: number; duplicate?: boolean; hasUI?: bool
     createRequestId: () => 'stable-request-id', waitTimeoutMs: 2_000, pollIntervalMs: 5,
   });
   const output = () => JSON.stringify({ entries, notifications });
-  async function command(args: string, name = 'agents') { await commands.get(name).handler(args, ctx); }
+  async function command(args: string, name = 'durable') { await commands.get(name).handler(args, ctx); }
   async function tool(params: Record<string, unknown>, signal?: AbortSignal) { return await tools.get('durable_agents').execute('call-1', params, signal, () => {}, ctx); }
   return { commands, tools, events, entries, calls, clients, ctx, output, command, tool, statuses };
 }
 
-test('registers native commands and a structured tool without model messaging', async () => {
+test('registers only Durable-namespaced commands and a tool without model messaging', async () => {
   const f = fixture();
-  assert.ok(f.commands.has('agents')); assert.ok(f.commands.has('agent')); assert.ok(f.tools.has('durable_agents'));
+  assert.deepEqual([...f.commands.keys()].sort(), ['durable', 'durable-chat']);
+  assert.equal(f.commands.has('agents'), false); assert.equal(f.commands.has('agent'), false);
+  assert.ok(f.tools.has('durable_agents'));
   await f.command('help');
   assert.equal(f.calls.length, 0);
   assert.match(f.output(), /send|chat/);
@@ -93,7 +95,7 @@ test('reads job-specific history without exposing reasoning blocks', async () =>
 
 test('sends a direct message with stable request identity and job context', async () => {
   const f = fixture();
-  await f.command('local/repo-quality --job job:one Explain the latest result, please.', 'agent');
+  await f.command('local/repo-quality --job job:one Explain the latest result, please.', 'durable-chat');
   const call = f.calls.find(call => call.method === 'send');
   assert.equal(call?.args[0], 'repo-quality');
   assert.equal(call?.args[1], 'Explain the latest result, please.');
@@ -174,8 +176,8 @@ test('cancel aborts only local waiting and keeps remote work alive', async () =>
 
 test('cancelling chooser or editor never submits an empty message', async () => {
   const f = fixture();
-  await f.command('', 'agent');
-  await f.command('local/repo-quality', 'agent');
+  await f.command('', 'durable-chat');
+  await f.command('local/repo-quality', 'durable-chat');
   assert.equal(f.calls.some(call => call.method === 'send'), false);
 });
 

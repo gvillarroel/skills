@@ -1,0 +1,9 @@
+Read ../prompt.md first. Use only the supplied pi-durable skill and normal local tools. Treat the copied skill as read-only. Keep generated files and dependency caches within this workspace. Do not inspect account credentials, send an agent message, start a model, register a global extension, or change files outside this workspace.
+
+Create an offline service configuration fixture at exactly `fixtures/service/config.json`, containing version 1, host `127.0.0.1`, port 4799, and dataDir `./state`.
+
+Use the skill's Pi-console generation capability to create an independent native Pi extension at exactly `outputs/pi-console`, with service ID `lab` pointing to that fixture. Use the bundled generator rather than reimplementing it. Install dependencies with lifecycle scripts disabled and run the TypeScript check. Acceptance fixtures may be absent from the runtime skill payload; do not treat that as a failure or invent test results. No backend or provider account is needed.
+
+Write exactly `outputs/console-check.json` with fields `independent` (boolean), `piVersion`, `typecheckPassed` (boolean), `testsIncluded` (boolean matching generation), `commands` (array of listing, one-shot message and task-chat examples using service `lab`), `registeredCommands` (array), `genericAgentCommandsReserved` (boolean), `connectionFile`, and `cancellationBehavior`. Inspect command registrations to ensure the console has its own Durable namespace and leaves generic harness agent commands available; do not infer this only from documentation. Do not claim live message, UI or model validation.
+
+Required exact nonempty artifacts are `fixtures/service/config.json`, `outputs/pi-console/extension.ts`, `outputs/pi-console/src/client.ts`, `outputs/pi-console/durable-agents.json`, `outputs/pi-console/scaffold-manifest.json`, and `outputs/console-check.json`.
