@@ -1,0 +1,6 @@
+{
+  "version": 1,
+  "services": [
+    {"id": "local", "name": "Local Pi Durable agents", "configPath": "../projects/pi-agent-services/app/config.local.json"}
+  ]
+}

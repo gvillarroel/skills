@@ -22,6 +22,9 @@ events or human chat.
 
 ## Operate the pilot
 
+For a native Pi terminal console, use the [agent console extension](pi-extension/README.md).
+It provides `/agents` and `/agent` for listing, task history and direct chat.
+
 From this repository root:
 
 ```powershell
@@ -38,11 +41,11 @@ Use `chat <agent> --job <saved-job-id>` to reconnect to a particular task, or om
 
 `start` launches a hidden background Node process and writes logs under `artifacts/state/logs/`. It survives closing a terminal. Automatic login registration is not installed; machine reboot/logout can stop the process. The application retains the existing Windows Task Scheduler/macOS LaunchAgent planner for an explicitly scoped later startup deployment. Native macOS operation has not been tested on this Windows machine.
 
-Build and test from `app/` with `npm ci --cache .cache/npm --ignore-scripts --no-audit --no-fund`, `npm run build`, and `npm test`. The project-local helper and [application runbook](app/AGENTS.md) also cover smoke checks, native plans, evidence and requested evolution. `manage.js` and live verification prefer the ignored `config.local.json` when present; `PI_PILOT_CONFIG` can select another config. Versioned `config.json` is an explicitly labeled faux/offline default. For live deployment, copy it to `config.local.json`, select `openai-codex` and `gpt-5.6-sol`, set `provider.piCliPath` to the installed Pi JavaScript entry point, and enable desired desktop notifications. Adjust `pilot.repositoryRoot`/repository allowlist for another checkout.
+Build and test from `app/` with `npm ci --cache .cache/npm --ignore-scripts --no-audit --no-fund`, `npm run build`, and `npm test`. The project-local helper and [application runbook](app/AGENTS.md) also cover smoke checks, native plans, evidence and requested evolution. `manage.js` and live verification prefer the ignored `config.local.json` when present; `PI_PILOT_CONFIG` can select another config. Versioned `config.json` is an explicitly labeled faux/offline default. For live deployment, copy it to `config.local.json`, select `openai-codex` and `gpt-6.1-sol`, set `provider.piCliPath` to the installed Pi JavaScript entry point, and enable desired desktop notifications. Adjust `pilot.repositoryRoot`/repository allowlist for another checkout.
 
 ## Authentication and notifications
 
-The live pilot uses Pi AI/Durable 1.3.0 and the installed Pi CLI 0.84.2 with `openai-codex/gpt-5.6-sol`. The provider captures `pi auth check --provider openai-codex --no-refresh --json --credentials` in memory. It never prints or copies the bearer and never refreshes the account. If that credential expires, the work fails visibly and the normal Pi sign-in must be renewed separately; then reconnect to the retained task or submit a new trusted task. This is a local pilot using an existing account, not unattended credential provisioning.
+The live pilot uses Pi AI/Durable 1.3.0 and the installed Pi CLI 0.84.2. Its initial validation used `gpt-5.6-sol`; both agents now select `openai-codex/gpt-6.1-sol` at the owner's request, including their existing task chats. Use `status` for the current model. The provider captures `pi auth check --provider openai-codex --no-refresh --json --credentials` in memory. It never prints or copies the bearer and never refreshes the account. If that credential expires, the work fails visibly and the normal Pi sign-in must be renewed separately; then reconnect to the retained task or submit a new trusted task. This is a local pilot using an existing account, not unattended credential provisioning.
 
 The durable notification outbox deduplicates start/completion/failure events and retries bounded transient failures. Desktop notifications contain only agent ID, fixed status and a short job reference. `provider_accepted` means the Windows notification API or messaging provider accepted an attempt; it does not prove a visible balloon, phone delivery or reading.
 

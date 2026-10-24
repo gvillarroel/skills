@@ -20,6 +20,7 @@ ROOT = Path(__file__).resolve().parents[1]
 PAGES_ROOT = ROOT / "dist" / "pages"
 SKILLS = ROOT / "skills"
 EXAMPLE_SOURCES = {
+    "pi-extension-acceptance": SKILLS / "pi-durable" / "assets" / "examples" / "pi-extension-acceptance",
     "reflex-xy-capabilities": SKILLS / "reflex-xy" / "assets" / "examples" / "reflex-xy-capabilities",
     "reflex-xy-colorsets": SKILLS / "reflex-xy" / "assets" / "examples" / "reflex-xy-colorsets",
     "hierarchy-lens": SKILLS / "hierarchy-lens" / "assets" / "examples" / "hierarchy-lens",
@@ -120,6 +121,8 @@ UNLISTED_EXAMPLE_SOURCES = {
     "mermaid-max-elements",
     "plantuml-colorset-renderer-base",
     "plantuml-colorset-renderer-cs1",
+    # Pi console TypeScript acceptance tests support scaffolding; they have no public gallery.
+    "pi-extension-acceptance",
 }
 PUBLISHED_EXAMPLE_SETS = [
     {
