@@ -11,9 +11,11 @@ Use Pi Durable as an application runtime. Use Pi Coding Agent when the task call
 
 - For feature selection, tools, compaction, branching, ownership, and typed state, read [runtime decisions](references/runtime-decisions.md).
 - For named agents that wait for events and accept human chat, read [event-service architecture](references/event-service-architecture.md).
+- For activity-informed repository/CI agents, efficient local change snapshots, and progress notifications, read [local watcher recipes](references/local-watchers.md).
 - For PR events, polling/webhook tradeoffs, deduplication, and catch-up, read [GitHub events](references/github-events.md).
 - For startup, restart, logs, install/start/stop/status/uninstall on Windows or macOS, read [service lifecycle](references/service-lifecycle.md).
 - To configure, run, smoke-test, or connect the bundled CLI/API starter, read [template operations](references/template-operations.md).
+- To use an existing Pi Codex OAuth account through a read-only credential bridge, read [Codex provider](references/codex-provider.md).
 - Before copying an unfamiliar API or claiming platform support, read [version compatibility](references/version-compatibility.md).
 - For a generated agent that must operate without this skill, retain decision evidence, or improve its prompts/tools/scripts on request, read [independence and requested evolution](references/agent-evolution.md).
 

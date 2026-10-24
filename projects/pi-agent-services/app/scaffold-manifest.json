@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "template": "pi-durable-service-1.3.0",
+  "runtimeSource": {
+    "package": "@earendil-works/pi-durable",
+    "version": "1.3.0",
+    "upstreamCommit": "71023aec1546d6d677a65669c5665c0927ce0dd0"
+  },
+  "runtimeIndependent": true,
+  "tests_included": true,
+  "dependencies": {
+    "@earendil-works/pi-durable": "1.3.0",
+    "@earendil-works/pi-ai": "1.3.0",
+    "@earendil-works/chord": "1.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "24.10.0",
+    "typescript": "5.9.3",
+    "tsx": "4.20.6"
+  },
+  "files": {
+    ".gitignore": "41a1b04774cf5dafec36188c3c40402342344e6387981469307e70891db1a561",
+    ".npmrc": "c5eba148604b2ef29ecec1fffdff39c87ad13c75e6171453f2b304d85274ccc1",
+    "AGENTS.md": "a256c44b40c7d19ef4db6a6b55b99a30b4461500be11b36036c4b47e35341f78",
+    "config.json": "923dce0d413941be9610d0919aebc6edb7b3a6c9460f5febac5e1c602a2e5843",
+    "evaluation/local-verifier.mjs": "3c4ab9a09a4750e742e51941b16dcb1433b8febd2933d72a2a87e706cd933b7a",
+    "evaluation/mechanics-cases.json": "ba1c38d44969d39c33346abe50ed14dae87c6d5b657ab11a641dfdd4e6305c4d",
+    "evaluation/request.example.json": "cfe39236f75590d8a14529a44a4dba06bcb62414536731852b25455e707e973b",
+    "package-lock.json": "5ad19dda4035ba8e6c606bae7aebc30fed821c0b32a02b975a1105407564cc48",
+    "package.json": "a3e9e612bf3eb4661ec39cf9ad58f2bd83c012ada6ad017e15c02a23e3a9d6a1",
+    "prompts/pr-reviewer.md": "ca0fca8af55d7929f90e2de46ef19766b0a9a4164c55927edf2f7a33ad35268d",
+    "scripts/project.py": "324fc6766d6177db9439f5614942a16e37c0c60ced8e88544df30fe2d5fd4db1",
+    "src/catalog.ts": "9bf5427b68bdcc74392b35fba3dc35d4b646c33b2f528e7bac3aed6df29b9c38",
+    "src/cli.ts": "c7d2f552e522e1365ec0940b617ec447a543e12bea8e1bc9a045c9b24f019ccf",
+    "src/config.ts": "33bf7647a5db8992aa0be324785c7839d49318fc1d369526bf8ee11c4df2a00c",
+    "src/evidence.ts": "cc25c911eac39b3482de073eceee87a0b8a625713c583810ea807230b224129a",
+    "src/evolution.ts": "d8bd395a67927e112f20268cf6ab9a53ecb4e683f4f4c4a18b2e1c393bcc01da",
+    "src/evolve-cli.ts": "0727fbfee821b19188a45fe08555c9016231ce37c32634d08cf5247d070bb487",
+    "src/github.ts": "89a560fe95a286087807c31536feeb4ae63e07f6aaf7018e479366cada8545d0",
+    "src/reflector.ts": "5082d9782f3feaf9c67ba1e174638eea9215635af9627376b8a0cee567aec984",
+    "src/runtime.ts": "f5093f79df0105b6a611083c8985e61e02d874521d88e81af6175758610b677a",
+    "src/server.ts": "39648dad81762a9b8901fe3dafe79fbea76c068fcf070e6264a8ab2b85118934",
+    "src/service-manager.ts": "e0bd53c6ff986a6e21477909411219ac428172d719e0867252ab222d677b23f4",
+    "src/smoke.ts": "f1962a43f40e593fd1e2c6af1785fa997530b892acf1523ae65877eee4d4c415",
+    "src/tools/read-pull-request.ts": "b87792bbd5fe4a7fb9fab0e43d0ad8189a0774ca5351b960fca9cc7f82803a71",
+    "tests/cli.test.ts": "7d87df3b58581817f62c157265137fac7265f425f393d690214738fe4b959464",
+    "tests/evidence.test.ts": "2bd089d6d86b87f453a463cd16a2cbec43a5f08cd817ec2ba5e5ca9921a72c9f",
+    "tests/evolution-integration.test.ts": "59ab456d7070407dffdbd47476d6669ba1f6d5c590f07c454174aae6fef22044",
+    "tests/evolution.test.ts": "a47f852aeb8d0d800ceb517561d6fc617861f40a276d2ec541193796d18ef11a",
+    "tests/github.test.ts": "948efa96fe001222e2d2bb91ec7841961980f88804d3cfd4613cffd756f6de08",
+    "tests/server.test.ts": "cb7da727061c8bc642e0899e769b205b7b03f9cc54b95c6cb1a591adf238b98c",
+    "tests/service-manager.test.ts": "8f6ae60471a7f06ba8b0bb3f59f2bab331c61844da45521435d2cfa1915b7c56",
+    "tests/standalone.test.ts": "8e0bbb07f2283fc5cb3c7623d54cca3b30ccff6758b97000206ac8219892eb69",
+    "tsconfig.json": "2d12823dc154cd40cb1fbe96a079918dd556e2ac43b86697f6dc979f901325a7"
+  }
+}

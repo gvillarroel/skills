@@ -6,7 +6,7 @@ import { parseEnv } from 'node:util';
 export interface AgentConfig { id: string; name: string; instructions: string; instructionsFile?: string; repositories: string[] }
 export interface ServiceConfig {
   version: 1; host: '127.0.0.1'; port: number; dataDir: string; serviceName?:string;
-  provider: { kind: 'faux' | 'openai' | 'anthropic'; model?: string; delayMs?: number };
+  provider: { kind: 'faux' | 'openai' | 'anthropic' | 'openai-codex'; model?: string; delayMs?: number; piCliPath?: string };
   github: { mode: 'off' | 'poll' | 'webhook'; intervalMs: number; initialScan: 'baseline' | 'enqueue'; maxPages?:number };
   agents: AgentConfig[]; projectDir?: string;
 }
@@ -16,7 +16,11 @@ export async function loadConfig(path: string): Promise<ServiceConfig> {
   if (value.version !== 1 || value.host !== '127.0.0.1' || !Number.isInteger(value.port) || value.port < 0 || value.port > 65535) throw new Error('Expected config version 1, loopback host, and a valid port.');
   if (typeof value.dataDir !== 'string' || !value.dataDir) throw new Error('dataDir is required.');
   if(value.serviceName!==undefined&&!/^[a-z][a-z0-9-]{0,47}$/.test(value.serviceName))throw new Error('serviceName must be a lowercase service identity.');
-  if (!['faux','openai','anthropic'].includes(value.provider?.kind) || (value.provider.kind !== 'faux' && !value.provider.model)) throw new Error('Select faux or a real provider with an explicit model.');
+  if (!['faux','openai','anthropic','openai-codex'].includes(value.provider?.kind) || (value.provider.kind !== 'faux' && !value.provider.model)) throw new Error('Select faux or a real provider with an explicit model.');
+  if(value.provider.kind==='openai-codex'){
+    const piCliPath=value.provider.piCliPath??process.env.PI_CLI_PATH;
+    if(typeof piCliPath!=='string'||!isAbsolute(piCliPath)||!/\.(?:mjs|cjs|js)$/i.test(piCliPath))throw new Error('The Codex bridge requires an absolute installed Pi CLI JavaScript path in provider.piCliPath or PI_CLI_PATH.');
+  }
   if (value.provider.delayMs !== undefined && (value.provider.kind !== 'faux' || !Number.isFinite(value.provider.delayMs) || value.provider.delayMs < 0 || value.provider.delayMs > 30000)) throw new Error('delayMs is an optional offline demo delay from 0 to 30000 ms.');
   if (!['off','poll','webhook'].includes(value.github?.mode) || !Number.isFinite(value.github.intervalMs) || value.github.intervalMs < 1000 || !['baseline','enqueue'].includes(value.github.initialScan)) throw new Error('Invalid GitHub configuration.');
   if(value.github.maxPages!==undefined&&(!Number.isInteger(value.github.maxPages)||value.github.maxPages<1||value.github.maxPages>10000))throw new Error('maxPages must be an integer from 1 to 10000.');

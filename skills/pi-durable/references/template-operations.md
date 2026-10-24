@@ -41,9 +41,13 @@ Use the compiled CLI without npm wrappers when capturing raw JSON output.
   file or an absolute state path. Port 0 is for embedded tests, not CLI clients.
 - Optional `serviceName` persists the OS service identity. Use a unique name for
   each installation and the same name for every later lifecycle action.
-- `provider.kind`: `faux`, `openai`, or `anthropic`. Real providers also require
+- `provider.kind`: `faux`, `openai`, `anthropic`, or `openai-codex`. Real providers also require
   an explicit `model` resolvable in the pinned catalog. `faux` emits labeled demo
   text and performs no useful model review; optional `delayMs` simulates latency.
+  For `openai-codex`, set an absolute installed Pi CLI JavaScript entry path in
+  `provider.piCliPath` or process `PI_CLI_PATH`, and follow the
+  [read-only Codex bridge](codex-provider.md). It uses an existing account;
+  ordinary `openai` and `anthropic` continue to use their API credentials.
 - `agents`: stable lowercase `id`, display `name`, trusted `instructions`, and
   an explicit `repositories` array in `owner/repo` form.
 - `github.mode`: `off`, `poll`, or `webhook`; `intervalMs` (normally 60000),

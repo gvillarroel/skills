@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "host": "127.0.0.1",
+  "port": 4792,
+  "dataDir": "../artifacts/state",
+  "serviceName": "pi-agent-pilots",
+  "provider": { "kind": "faux" },
+  "github": { "mode": "off", "intervalMs": 120000, "initialScan": "baseline" },
+  "pilot": { "repositoryRoot": "../../..", "repository": "gvillarroel/skills", "intervalMs": 30000, "stabilityMs": 30000, "minJobIntervalMs": 900000, "maxJobsPerAgentPerDay": 4, "desktopNotifications": false, "telegramNotifications": false },
+  "agents": [
+    {
+      "id": "repo-quality",
+      "name": "Repository Quality",
+      "instructions": "Use the project-local prompt.",
+      "instructionsFile": "prompts/repo-quality.md",
+      "repositories": []
+    },
+    {
+      "id": "delivery-watch",
+      "name": "Delivery Watch",
+      "instructions": "Use the project-local prompt.",
+      "instructionsFile": "prompts/delivery-watch.md",
+      "repositories": ["gvillarroel/skills"]
+    }
+  ]
+}
