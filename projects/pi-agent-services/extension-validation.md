@@ -1,5 +1,10 @@
 # Native Pi extension validation, 2026-10-24
 
+The current terminal chat uses a persistent conversation panel; its independent
+tests and actual Pi 0.84.2/1.4.0 Windows captures are recorded in the
+[chat UI evaluation](../../evaluations/pi-durable/pi-chat-ui-20261024.md).
+The original live communication cohort below remains historical evidence.
+
 Command namespace update: the current extension exposes `/durable` and
 `/durable-chat`, with no `/agents` or `/agent` aliases. The checks below retain
 the initial command names used in those original live communication receipts.

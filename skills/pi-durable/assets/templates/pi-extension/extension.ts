@@ -1,14 +1,19 @@
 // Pi 0.84.2 loads this TypeScript entry with jiti: pi -e ./extension.ts
 import type { ExtensionAPI, ExtensionContext, ExtensionCommandContext } from '@earendil-works/pi-coding-agent';
-import { Text } from '@earendil-works/pi-tui';
+import { Box, Container, Markdown, Text } from '@earendil-works/pi-tui';
+import { getMarkdownTheme } from '@earendil-works/pi-coding-agent';
 import { Type } from 'typebox';
 import { randomUUID } from 'node:crypto';
-import { stripVTControlCharacters } from 'node:util';
+import { setTimeout as delay } from 'node:timers/promises';
 import { dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { DurableClient, DurableClientError, DurableSendError, loadConnections, type ConnectionLoadResult, type ServiceConnection, type DurableSnapshot, type AdmissionReceipt } from './src/client.js';
+import { safeText } from './src/display.js';
+import { DurableChatView, type ChatMemory, type ChatRequest, type ChatProgress, type ChatReply } from './src/chat-ui.js';
+import { publicMessages, conversationModel, liveProgress } from './src/chat-data.js';
+export { safeText } from './src/display.js';
 
-export type ClientApi=Pick<DurableClient,'connection'|'list'|'status'|'jobs'|'snapshot'|'send'|'submission'|'wait'|'abort'|'evidence'>;
+export type ClientApi=Pick<DurableClient,'connection'|'list'|'status'|'jobs'|'snapshot'|'admit'|'send'|'submission'|'wait'|'abort'|'evidence'>;
 export interface ExtensionOptions {
   loadConnections?:(ctx:ExtensionContext)=>Promise<ConnectionLoadResult>;
   createClient?:(connection:ServiceConnection)=>ClientApi;
@@ -16,7 +21,8 @@ export interface ExtensionOptions {
   waitTimeoutMs?:number;
   pollIntervalMs?:number;
 }
-type Target={name:string;agentId:string;client:ClientApi};
+type Target={name:string;agentId:string;agentName?:string;client:ClientApi};
+type ConsoleCard={text:string;kind?:'user'|'assistant'|'error';target?:string;context?:string};
 class CommandError extends Error {}
 const HELP=`Pi Durable agent console
 /durable                         List agents in configured services
@@ -36,12 +42,6 @@ const HELP=`Pi Durable agent console
 Bare agent IDs work when unique; use service/agent for an exact target.
 Commands operate directly and do not invoke the outer Pi model.`;
 
-export function safeText(value:string,limit=24000):string {
-  const text=stripVTControlCharacters(value).replace(/[\x00-\x08\x0b-\x1f\x7f]/g,'')
-    .replace(/\bBearer\s+[^\s"'<>]+/gi,'Bearer [REDACTED]')
-    .replace(/\b(?:gh[pousr]_[A-Za-z0-9_]+|github_pat_[A-Za-z0-9_]+|sk-(?:ant-)?[A-Za-z0-9_-]{8,})\b/g,'[REDACTED]');
-  return text.length>limit?text.slice(0,limit)+'\n[Display truncated; use a specific job or evidence query.]':text;
-}
 function pretty(value:unknown){return safeText(JSON.stringify(value,null,2));}
 function word(text:string):[string,string]{const match=/^(\S+)(?:\s+([\s\S]*))?$/.exec(text.trim());return match?[match[1],match[2]??'']:['',''];}
 function targetArgs(input:string){
@@ -71,14 +71,24 @@ export function publicHistory(snapshot:DurableSnapshot):string {
 
 export function registerDurableExtension(pi:ExtensionAPI,options:ExtensionOptions={}){
   const controllers=new Set<AbortController>();let closed=false;let completions:string[]=[];
+  const chatMemories=new Map<string,ChatMemory>();
   const createRequestId=options.createRequestId??randomUUID;
   const load=options.loadConnections??((ctx:ExtensionContext)=>loadConnections({cwd:ctx.cwd,extensionDir:dirname(fileURLToPath(import.meta.url))}));
   const make=options.createClient??((connection:ServiceConnection)=>new DurableClient(connection));
   const waitOptions={waitTimeoutMs:options.waitTimeoutMs??180000,pollIntervalMs:options.pollIntervalMs??500};
-  pi.registerEntryRenderer<{text:string}>('durable-agents.console',entry=>new Text(safeText(entry.data?.text??''),0,0));
-  const show=(text:string,ctx:ExtensionContext)=>{
+  pi.registerEntryRenderer<ConsoleCard>('durable-agents.console',(entry,_options,theme)=>{
+    const card=entry.data;
+    if(!card?.kind)return new Text(safeText(card?.text??''),0,0);
+    const view=new Container();
+    const box=new Box(1,1,card.kind==='user'?text=>theme.bg('userMessageBg',text):undefined);
+    const label=card.kind==='user'?'You':card.kind==='error'?'Durable console':card.target??'Durable agent';
+    box.addChild(new Text(theme.fg(card.kind==='error'?'error':'accent',safeText(label))+(card.context?theme.fg('dim',`  ${safeText(card.context)}`):''),0,0));
+    box.addChild(new Markdown(safeText(card.text),0,0,getMarkdownTheme()));
+    view.addChild(box);return view;
+  });
+  const show=(text:string,ctx:ExtensionContext,card:Omit<ConsoleCard,'text'>={})=>{
     if(closed)return;
-    const clean=safeText(text);pi.appendEntry('durable-agents.console',{text:clean});
+    const clean=safeText(text);pi.appendEntry('durable-agents.console',{text:clean,...card});
     if(ctx.mode==='rpc')ctx.ui.notify(clean,'info');
   };
   const failure=(error:unknown)=>{
@@ -95,7 +105,7 @@ export function registerDurableExtension(pi:ExtensionAPI,options:ExtensionOption
     const targets:Target[]=[],errors:string[]=[];
     results.forEach((result,index)=>{
       if(result.status==='rejected'){errors.push(`${connections[index].connection.id}: ${failure(result.reason)}`);return;}
-      for(const agent of result.value.result.agents)if(agent.active!==false&&agent.active!==0)targets.push({name:`${result.value.client.connection.id}/${agent.id}`,agentId:agent.id,client:result.value.client});
+      for(const agent of result.value.result.agents)if(agent.active!==false&&agent.active!==0)targets.push({name:`${result.value.client.connection.id}/${agent.id}`,agentId:agent.id,agentName:agent.name,client:result.value.client});
     });
     completions=targets.map(target=>target.name);
     return {results,targets,errors};
@@ -118,22 +128,81 @@ export function registerDurableExtension(pi:ExtensionAPI,options:ExtensionOption
   async function send(target:Target,message:string,input:{jobId?:string;requestId?:string;steer?:boolean},ctx:ExtensionContext,signal:AbortSignal){
     if(!message.trim())throw new CommandError('A nonempty message is required.');
     const requestId=input.requestId??createRequestId();
-    show(`You -> ${target.name}${input.jobId?` (job ${input.jobId})`:''}:\n${message}`,ctx);
+    show(message,ctx,{kind:'user',target:target.name,context:input.jobId?`Task ${input.jobId}`:target.name});
     if(!closed)ctx.ui.setStatus('durable-agents',`Waiting: ${target.name}`);
     try{
       const result=await target.client.send(target.agentId,message,{jobId:input.jobId,requestId,whenBusy:input.steer?'steer':'followUp',signal,...waitOptions});
-      show(`${target.name} | conversation ${result.receipt.conversationId} | submission ${result.receipt.submissionId}\n${result.submission.status==='done'?result.submission.text??'Completed without final text.':`Unanswered: ${result.submission.reason??'unknown'}`}`,ctx);
+      show(result.submission.status==='done'?result.submission.text??'Completed without final text.':`Unanswered: ${result.submission.reason??'unknown'}`,ctx,{kind:'assistant',target:target.name,context:`Conversation ${result.receipt.conversationId} · Submission ${result.receipt.submissionId}`});
       return result;
     }finally{if(!closed)ctx.ui.setStatus('durable-agents',undefined);}
   }
   async function chat(target:Target,jobId:string|undefined,ctx:ExtensionCommandContext,signal:AbortSignal){
     if(!ctx.hasUI)throw new CommandError('Interactive chat needs Pi UI. Use /durable-chat <agent> <message> for a one-shot message.');
+    if(ctx.mode==='tui'){
+      const key=JSON.stringify([target.name,jobId??null]);
+      let memory=chatMemories.get(key);
+      if(!memory){memory={draft:''};chatMemories.set(key,memory);}
+      let snapshot=await target.client.snapshot(target.agentId,{jobId,signal});
+      // A completed reply may already be in durable history after a local close.
+      if(memory.pending?.receipt){
+        try{
+          const record=await target.client.submission(target.agentId,memory.pending.receipt.submissionId,{jobId,signal});
+          if(record.status==='done'||record.status==='unanswered'){
+            snapshot=await target.client.snapshot(target.agentId,{jobId,signal});
+            memory.pending=undefined;memory.error=undefined;
+          }
+        }catch(error){memory.error=safeText(failure(error));}
+      }
+      await ctx.ui.custom<void>((tui,theme,keybindings,done)=>new DurableChatView(tui,theme,keybindings,done,{
+        target:target.name,agentName:target.agentName,jobId,
+        conversationId:snapshot.conversation.id,model:conversationModel(snapshot),
+        messages:publicMessages(snapshot),memory:memory!,signal,createRequestId,
+        exchange:(request,localSignal,progress)=>exchange(target,jobId,request,AbortSignal.any([signal,localSignal]),progress),
+        describeError:error=>({message:safeText(failure(error)),...(error instanceof DurableSendError?{requestId:error.requestId,receipt:error.receipt}:{})}),
+      }),{overlay:true,overlayOptions:{width:'100%',maxHeight:'100%',anchor:'center'}});
+      show(`Durable chat closed: ${target.name}${jobId?` · Task ${jobId}`:' · Control chat'}. Reopen with /durable-chat ${target.name}${jobId?` --job ${jobId}`:''}.${memory.pending?' The local wait is paused; admitted work continues.':''}`,ctx);
+      return;
+    }
+    // RPC clients expose structured editor dialogs rather than terminal components.
     show(`${target.name}\n${publicHistory(await target.client.snapshot(target.agentId,{jobId,signal}))}`,ctx);
     while(!signal.aborted&&!closed){
       const message=await ctx.ui.editor(`Message to ${target.name}${jobId?' / task':''} (Escape to leave)`);
       if(message===undefined||message.trim()==='/exit')return;
       if(!message.trim())continue;
       await send(target,message,{jobId},ctx,signal);
+    }
+  }
+  async function exchange(target:Target,jobId:string|undefined,request:ChatRequest,signal:AbortSignal,progress:(value:ChatProgress)=>void):Promise<ChatReply>{
+    let polling:Promise<void>|undefined;
+    const pollController=new AbortController();
+    const pollSignal=AbortSignal.any([signal,pollController.signal]);
+    try{
+      if(!request.receipt){
+        request.receipt=await target.client.admit(target.agentId,request.message,{jobId,requestId:request.requestId,whenBusy:'followUp',signal});
+      }
+      const receipt=request.receipt;
+      progress({status:'Message admitted; waiting for the agent'});
+      polling=(async()=>{
+        while(!pollSignal.aborted){
+          try{
+            const current=await target.client.snapshot(target.agentId,{jobId,signal:pollSignal});
+            const update=liveProgress(current,receipt.submissionId);
+            if(update&&!pollSignal.aborted)progress(update);
+          }catch{
+            if(!pollSignal.aborted)progress({status:'Connection interrupted; waiting to reconnect'});
+          }
+          try{await delay(1000,undefined,{signal:pollSignal});}catch{break;}
+        }
+      })();
+      const result=await target.client.wait(target.agentId,receipt,{jobId,signal,...waitOptions});
+      return {receipt,status:result.status,text:safeText(result.status==='done'?result.text??'Completed without final text.':`Unanswered: ${result.reason??'The agent ended without a final answer.'}`)};
+    }catch(error){
+      if(error instanceof DurableSendError)throw error;
+      const detail=error instanceof DurableClientError?error:new DurableClientError('request_failed','The local conversation request failed. Resume with the same request ID.');
+      throw new DurableSendError(detail,request.requestId,request.receipt);
+    }finally{
+      pollController.abort();
+      await polling;
     }
   }
   async function list(ctx:ExtensionContext,signal:AbortSignal){

@@ -57,9 +57,38 @@ and `/durable-chat`; it reserves no generic `/agents` or `/agent` aliases.
 
 `/durable` lists registered agents with service-qualified IDs such as
 `local/repo-quality`. `/durable-chat` opens a chooser; selecting an agent opens a message
-editor and displays its public conversation history. Send a message, read its
-answer, and continue. Escape or `/exit` leaves the editor; it does not abort work.
+panel with its public conversation history and a fixed message editor. Send a
+message and read its answer in the same view. Escape or `/exit` leaves the
+panel; it does not abort work.
 `/durable-chat <id> <message>` sends a one-shot message and waits for its response.
+
+## Conversation panel
+
+The header identifies the service/agent, control chat or selected task,
+conversation and model. The transcript renders public Markdown with role
+labels; the composer stays visible while the response arrives. Only progress
+for the selected submission appears, including public partial text and bounded
+tool names. Thinking and raw tool inputs/results stay hidden.
+
+| Key | Action |
+|---|---|
+| Enter | Send the current message |
+| Shift+Enter | Add a line; backslash followed by Enter also works |
+| PgUp / PgDn | Browse the transcript |
+| Ctrl+End | Return to the latest reply |
+| Ctrl+C | Pause local waiting while the agent continues |
+| Ctrl+R | Resume the same paused request without admitting it twice |
+| Escape | Return to Pi; retain the draft and pending receipt in this session |
+
+You can prepare the next message while the agent responds. Enter while busy
+keeps that draft. A failed or paused request retains its stable ID and receipt;
+resume it before sending another message in that panel. Reopening a completed
+request reloads durable history instead of duplicating its final answer.
+Unsent drafts are local to the current Pi session. RPC clients keep the simpler
+structured-editor workflow because custom terminal components require TUI mode.
+
+The terminal composition is checked with the pinned Pi 0.84.2 and installed
+Pi 1.4.0 on Windows; native macOS UI behavior remains unverified.
 
 ## Commands
 

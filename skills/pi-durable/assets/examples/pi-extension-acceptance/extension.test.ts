@@ -26,6 +26,7 @@ function fixture(options: { services?: number; duplicate?: boolean; hasUI?: bool
       async status(...args: any[]) { record('status', args); return { supported: true, provider: 'openai-codex', model: 'gpt-6.1-sol', watching: true }; },
       async jobs(...args: any[]) { record('jobs', args); return { jobs: [{ id: 'job:one', status: 'done', result: 'Observed validation result' }] }; },
       async snapshot(...args: any[]) { record('snapshot', args); return { conversation: { id: 7 }, entries: [{ model: [{ role: 'user', content: 'Explain the result' }, { role: 'assistant', content: [{ type: 'thinking', thinking: 'Private reasoning must stay hidden' }, { type: 'text', text: 'Public agent answer' }] }] }] }; },
+      async admit(...args: any[]) { record('admit', args); return { conversationId: 7, submissionId: 9, requestId: args[2]?.requestId ?? 'fallback-request' }; },
       async send(...args: any[]) { record('send', args); const requestId = args[2]?.requestId ?? 'fallback-request'; return { requestId, receipt: { conversationId: 7, submissionId: 9, requestId }, submission: { status: 'done', text: 'A real service answer would appear here.' } }; },
       async submission(...args: any[]) { record('submission', args); return { status: 'done', text: 'Retained answer' }; },
       async wait(...args: any[]) { record('wait', args); return { status: 'done', text: 'Retained answer' }; },
