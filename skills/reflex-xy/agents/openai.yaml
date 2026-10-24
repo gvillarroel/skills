@@ -1,0 +1,4 @@
+interface:
+  display_name: "Reflex XY"
+  short_description: "Build XY charts with two exact colorsets"
+  default_prompt: "Use $reflex-xy to create an interactive Python chart in colorset1 or colorset2 and export it to HTML and SVG."

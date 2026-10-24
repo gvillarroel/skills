@@ -20,6 +20,7 @@ ROOT = Path(__file__).resolve().parents[1]
 PAGES_ROOT = ROOT / "dist" / "pages"
 SKILLS = ROOT / "skills"
 EXAMPLE_SOURCES = {
+    "reflex-xy-colorsets": SKILLS / "reflex-xy" / "assets" / "examples" / "reflex-xy-colorsets",
     "hierarchy-lens": SKILLS / "hierarchy-lens" / "assets" / "examples" / "hierarchy-lens",
     "usefulcharts-style": SKILLS / "usefulcharts-style" / "assets" / "examples" / "usefulcharts-style",
     "ai-concept-videos": SKILLS
@@ -120,6 +121,14 @@ UNLISTED_EXAMPLE_SOURCES = {
     "plantuml-colorset-renderer-cs1",
 }
 PUBLISHED_EXAMPLE_SETS = [
+    {
+        "id": "reflex-xy-colorsets",
+        "source": "reflex-xy-colorsets",
+        "title": "XY Colorset Chart Gallery",
+        "href": "examples/reflex-xy-colorsets/",
+        "kind": "Interactive Python charts",
+        "description": "Six native XY chart mechanisms paired in Colorset 1 and Colorset 2, with exact palette fills, offline interactions, SVG exports and editable Python sources.",
+    },
     {
         "id": "hierarchy-lens",
         "source": "hierarchy-lens",
@@ -709,6 +718,13 @@ def build_docs() -> None:
     reset_pages_output()
     (PAGES_ROOT / ".nojekyll").write_text("", encoding="utf-8")
     write_favicon()
+
+    xy_gallery = example_source("reflex-xy-colorsets")
+    run_command(
+        ["uv", "run", "--script", str(xy_gallery / "build.py"),
+         "--output-dir", str(PAGES_ROOT / "examples" / "reflex-xy-colorsets")],
+        ROOT,
+    )
 
     copy_tree(example_source("hierarchy-lens"), PAGES_ROOT / "examples" / "hierarchy-lens")
     copy_tree(example_source("usefulcharts-style"), PAGES_ROOT / "examples" / "usefulcharts-style")

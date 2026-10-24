@@ -5,6 +5,18 @@
   "claim": "Supported output-route inventory and authored paint checks; source pixels and renderer-derived tones have explicit scopes. This is not an exhaustive proof of all arbitrary user-authored scenes.",
   "skills": [
     {
+      "skill": "reflex-xy",
+      "outputs": [
+        "editable Python XY chart source",
+        "standalone interactive HTML",
+        "native SVG, PNG, PDF, JPEG and WebP exports",
+        "notebook widgets and Reflex chart components",
+        "JSON environment and memory diagnostics"
+      ],
+      "scope": "authored-colorset",
+      "sourceFidelity": "Preserve explicit user styling and imported source media when requested. Authored chart marks, axes, labels, DOM chrome and native exports use the selected bundled colorset. Use exact numeric bins; continuous XY interpolation is an explicitly separate renderer-derived mode and is not an exact-paint claim."
+    },
+    {
       "skill": "pi-durable",
       "outputs": [
         "TypeScript durable agent service starter",
@@ -411,6 +423,11 @@
     }
   ],
   "artifactChecks": [
+    {
+      "glob": "skills/reflex-xy/assets/examples/reflex-xy-colorsets/gallery.html",
+      "colorset": "colorset2",
+      "required": true
+    },
     {
       "glob": "skills/animated-svg-to-gif/assets/templates/*.svg",
       "colorset": "colorset1",

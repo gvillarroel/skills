@@ -1,0 +1,66 @@
+{
+  "example_set_id": "reflex-xy-colorsets",
+  "patterns": [
+    {
+      "id": "reflex-xy-category-scatter-cs1",
+      "mechanism": "category-scatter",
+      "colorset": "colorset1"
+    },
+    {
+      "id": "reflex-xy-category-scatter-cs2",
+      "mechanism": "category-scatter",
+      "colorset": "colorset2"
+    },
+    {
+      "id": "reflex-xy-trend-lines-cs1",
+      "mechanism": "trend-lines",
+      "colorset": "colorset1"
+    },
+    {
+      "id": "reflex-xy-trend-lines-cs2",
+      "mechanism": "trend-lines",
+      "colorset": "colorset2"
+    },
+    {
+      "id": "reflex-xy-grouped-bars-cs1",
+      "mechanism": "grouped-bars",
+      "colorset": "colorset1"
+    },
+    {
+      "id": "reflex-xy-grouped-bars-cs2",
+      "mechanism": "grouped-bars",
+      "colorset": "colorset2"
+    },
+    {
+      "id": "reflex-xy-histogram-cs1",
+      "mechanism": "histogram",
+      "colorset": "colorset1"
+    },
+    {
+      "id": "reflex-xy-histogram-cs2",
+      "mechanism": "histogram",
+      "colorset": "colorset2"
+    },
+    {
+      "id": "reflex-xy-heatmap-cs1",
+      "mechanism": "heatmap",
+      "colorset": "colorset1"
+    },
+    {
+      "id": "reflex-xy-heatmap-cs2",
+      "mechanism": "heatmap",
+      "colorset": "colorset2"
+    },
+    {
+      "id": "reflex-xy-dense-scatter-cs1",
+      "mechanism": "dense-scatter",
+      "colorset": "colorset1"
+    },
+    {
+      "id": "reflex-xy-dense-scatter-cs2",
+      "mechanism": "dense-scatter",
+      "colorset": "colorset2"
+    }
+  ],
+  "namespace": "reflex-xy"
+}

@@ -499,6 +499,13 @@ def validate_family_inventories(
         family_counts,
     )
 
+    xy_manifest_path = root / "skills/reflex-xy/assets/examples/reflex-xy-colorsets/patterns.json"
+    xy_ids = manifest_pattern_ids(xy_manifest_path, "reflex-xy", findings)
+    register_family(
+        "reflex-xy-colorsets", xy_ids, 12, xy_manifest_path,
+        findings, global_ids, review_ids, family_counts,
+    )
+
     return family_counts, review_ids, set(global_ids)
 
 
