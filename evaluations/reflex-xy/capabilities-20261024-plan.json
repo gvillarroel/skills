@@ -1,0 +1,116 @@
+{
+  "declared_at_utc": "2026-10-24T15:05:56.382278+00:00",
+  "model": "openai-codex/gpt-5.6-sol",
+  "profile": "runtime",
+  "mode": "json",
+  "strict": true,
+  "concurrency": 2,
+  "attempts": [
+    {
+      "case": "contract",
+      "repetition": 1,
+      "run_id": "20261024-reflex-xy-atlas-contract-sol-1",
+      "prompt": "evaluations/pi-prompts/reflex-xy-capabilities-svg-compat.md",
+      "outputs": [
+        "results/original.svg",
+        "results/repaired.svg",
+        "results/repair.json"
+      ]
+    },
+    {
+      "case": "naturalistic",
+      "repetition": 1,
+      "run_id": "20261024-reflex-xy-atlas-naturalistic-sol-1",
+      "prompt": "evaluations/pi-prompts/reflex-xy-naturalistic.md",
+      "outputs": [
+        "app.py",
+        "results/cloud.html",
+        "results/cloud.svg"
+      ]
+    },
+    {
+      "case": "naturalistic",
+      "repetition": 2,
+      "run_id": "20261024-reflex-xy-atlas-naturalistic-sol-2",
+      "prompt": "evaluations/pi-prompts/reflex-xy-naturalistic.md",
+      "outputs": [
+        "app.py",
+        "results/cloud.html",
+        "results/cloud.svg"
+      ]
+    },
+    {
+      "case": "naturalistic",
+      "repetition": 3,
+      "run_id": "20261024-reflex-xy-atlas-naturalistic-sol-3",
+      "prompt": "evaluations/pi-prompts/reflex-xy-naturalistic.md",
+      "outputs": [
+        "app.py",
+        "results/cloud.html",
+        "results/cloud.svg"
+      ]
+    },
+    {
+      "case": "generalization",
+      "repetition": 1,
+      "run_id": "20261024-reflex-xy-atlas-generalization-sol-1",
+      "prompt": "evaluations/pi-prompts/reflex-xy-capabilities-generalization.md",
+      "outputs": [
+        "app.py",
+        "notes.md",
+        "results/cs1/interval.html",
+        "results/cs1/interval.svg",
+        "results/cs2/interval.html",
+        "results/cs2/interval.svg"
+      ]
+    },
+    {
+      "case": "generalization",
+      "repetition": 2,
+      "run_id": "20261024-reflex-xy-atlas-generalization-sol-2",
+      "prompt": "evaluations/pi-prompts/reflex-xy-capabilities-generalization.md",
+      "outputs": [
+        "app.py",
+        "notes.md",
+        "results/cs1/interval.html",
+        "results/cs1/interval.svg",
+        "results/cs2/interval.html",
+        "results/cs2/interval.svg"
+      ]
+    },
+    {
+      "case": "generalization",
+      "repetition": 3,
+      "run_id": "20261024-reflex-xy-atlas-generalization-sol-3",
+      "prompt": "evaluations/pi-prompts/reflex-xy-capabilities-generalization.md",
+      "outputs": [
+        "app.py",
+        "notes.md",
+        "results/cs1/interval.html",
+        "results/cs1/interval.svg",
+        "results/cs2/interval.html",
+        "results/cs2/interval.svg"
+      ]
+    },
+    {
+      "case": "boundary",
+      "repetition": 1,
+      "run_id": "20261024-reflex-xy-atlas-boundary-sol-1",
+      "prompt": "evaluations/pi-prompts/reflex-xy-boundary.md",
+      "outputs": [
+        "app.py",
+        "design.md",
+        "results/selection.html"
+      ]
+    }
+  ],
+  "thresholds": {
+    "contract": "1/1 joint",
+    "boundary": "1/1 joint",
+    "naturalistic": ">=2/3 joint",
+    "generalization": ">=2/3 joint"
+  },
+  "retention": "Retain every attempt; no rerolls, repair, waivers, or pooled earlier passes.",
+  "runtime_digest": "9b99fa1c74684f2bb2090d90c75b64b99e004b8103a80bc00249a94c8c8331c8",
+  "runtime_files": 18
+}

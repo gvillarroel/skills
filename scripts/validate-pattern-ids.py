@@ -506,6 +506,13 @@ def validate_family_inventories(
         findings, global_ids, review_ids, family_counts,
     )
 
+    xy_atlas_path = root / "skills/reflex-xy/assets/examples/reflex-xy-capabilities/patterns.json"
+    xy_atlas_ids = manifest_pattern_ids(xy_atlas_path, "xy", findings)
+    register_family(
+        "reflex-xy-capabilities", xy_atlas_ids, 114, xy_atlas_path,
+        findings, global_ids, review_ids, family_counts,
+    )
+
     return family_counts, review_ids, set(global_ids)
 
 

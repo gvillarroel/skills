@@ -14,7 +14,7 @@
         "JSON environment and memory diagnostics"
       ],
       "scope": "authored-colorset",
-      "sourceFidelity": "Preserve explicit user styling and imported source media when requested. Authored chart marks, axes, labels, DOM chrome and native exports use the selected bundled colorset. Use exact numeric bins; continuous XY interpolation is an explicitly separate renderer-derived mode and is not an exact-paint claim."
+      "sourceFidelity": "Preserve explicit user styling and imported source media when requested. Authored base paints use the selected bundled colorset. Exact-paint examples use exact bins and opaque solids; the capability atlas separately identifies native interpolation, alpha, density and gradient modes, plus two native funnel contrast-label exceptions. Browser-only styling and native export support are recorded rather than conflated."
     },
     {
       "skill": "pi-durable",
@@ -425,6 +425,11 @@
     }
   ],
   "artifactChecks": [
+    {
+      "glob": "skills/reflex-xy/assets/examples/reflex-xy-capabilities/atlas.css",
+      "colorset": "colorset2",
+      "required": true
+    },
     {
       "glob": "skills/reflex-xy/assets/examples/reflex-xy-colorsets/gallery.html",
       "colorset": "colorset2",

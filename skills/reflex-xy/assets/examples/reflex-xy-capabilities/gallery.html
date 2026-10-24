@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Explore XY 0.0.8 chart families, styling, axes, annotations and interactions in two colorsets, with an indexed public API and portable Python source.">
+<title>XY capability atlas · Every family, two color sets</title>
+<link rel="stylesheet" href="atlas.css">
+</head>
+<body data-example-set="reflex-xy-capabilities" data-colorset="colorset2">
+<header class="site-head"><a href="../../">Skills / examples</a><nav><a href="../reflex-xy-colorsets/">Six-chart palette study</a><a href="api.html">API & options</a><a href="hosts.html">Hosts & exports</a><a href="source.zip" download>All Python source ↓</a></nav></header>
+<main>
+<section class="hero"><div><p class="eyebrow">Reflex XY · Capability atlas · v0.0.8</p><h1>One chart toolkit.<br><em>Explore its range.</em></h1><p class="lead">From individual points to distributions, fields, flows and polar geometry. Explore actual XY exports in two color sets, then open the code and make them your own.</p></div><aside><div class="stats"><div><strong>{{MECHANISMS}}</strong><span>visual mechanisms</span></div><div><strong>{{COUNT}}</strong><span>paired charts</span></div><div><strong>{{API_COUNT}}</strong><span>public exports indexed</span></div></div><p class="hero-note">The same fictional data and geometry in both palettes. Exact-paint examples and native renderer-derived tones are labeled. The API catalogue records all public options; unbounded combinations are not claimed as individual tests.</p><p class="compare-note">Color Set 1 emphasizes primary red and neutral contrast. Color Set 2 adds a wider categorical vocabulary. Where useful, single-series variants use red / blue to make the comparison visible.</p></aside></section>
+<div class="toolbar"><div class="palettes" aria-label="Palette filter"><button type="button" data-palette="all" aria-pressed="true">Side by side</button><button type="button" data-palette="colorset1" aria-pressed="false">Color Set 1</button><button type="button" data-palette="colorset2" aria-pressed="false">Color Set 2</button></div><label class="search-label">Find a chart or option<input id="search" type="search" placeholder="violin, polar, logarithmic, opacity…"></label><select id="category" aria-label="Chart category"><option value="all">All categories</option>{{CATEGORIES}}</select></div>
+<p id="status" class="status" role="status" aria-live="polite">Showing {{COUNT}} charts. Open one interactive chart at a time.</p>
+<div id="empty" class="no-results" hidden>No charts match these filters. Try a public API name such as “scatter” or clear the search.</div>
+{{SECTIONS}}
+<footer><p>Built with the real XY 0.0.8 Python library. All charts provide HTML, native SVG and native PNG. <a href="hosts.html">Additional exports and live-host recipes</a> · <a href="api.html">Public API, parameters and renderer capability matrix</a> · <a href="manifest.json">Machine-readable manifest</a></p><p>Chart data are fictional. Standalone HTML preserves browser interaction; future Python callbacks and updates require a live kernel or application. <a href="https://github.com/reflex-dev/xy">Reflex XY source</a>.</p></footer>
+</main>
+<script>
+(()=>{'use strict';
+const cards=[...document.querySelectorAll('article[data-pattern-id]')],status=document.querySelector('#status'),search=document.querySelector('#search'),category=document.querySelector('#category');let palette='all',active=null;
+function close(){if(!active)return;active.querySelector('iframe')?.remove();active.querySelector('.preview').hidden=false;active.querySelector('.stage').style.removeProperty('height');active.querySelector('.stage').style.removeProperty('aspect-ratio');const button=active.querySelector('[data-explore]');button.textContent='Explore chart ↗';button.setAttribute('aria-expanded','false');active=null}
+function filter(){const term=search.value.trim().toLowerCase();let visible=0;for(const card of cards){card.hidden=(palette!=='all'&&card.dataset.colorset!==palette)||(category.value!=='all'&&card.closest('.family').dataset.category!==category.value)||(term&&!card.dataset.search.includes(term));if(!card.hidden)visible++;if(card.hidden&&card===active)close()}document.querySelectorAll('.family').forEach(section=>section.hidden=![...section.querySelectorAll('article')].some(card=>!card.hidden));document.querySelector('#empty').hidden=visible>0;status.textContent=`Showing ${visible} charts. ${active?'One interactive chart is open.':'Open one interactive chart at a time.'}`}
+document.querySelectorAll('[data-palette]').forEach(button=>button.addEventListener('click',()=>{palette=button.dataset.palette;document.querySelectorAll('[data-palette]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));filter()}));search.addEventListener('input',filter);category.addEventListener('change',filter);
+cards.forEach(card=>card.querySelector('[data-explore]').addEventListener('click',()=>{if(active===card){close();filter();return}close();const frame=document.createElement('iframe');frame.title=`Interactive ${card.querySelector('h3').textContent}, ${card.dataset.colorset}`;frame.src=card.dataset.html;frame.setAttribute('allow','clipboard-write');card.querySelector('.preview').hidden=true;const stage=card.querySelector('.stage');stage.style.aspectRatio='auto';stage.style.height=card.dataset.height+'px';stage.append(frame);active=card;const button=card.querySelector('[data-explore]');button.textContent='Show SVG preview';button.setAttribute('aria-expanded','true');filter()}));
+function reveal(){const target=document.getElementById(decodeURIComponent(location.hash.slice(1)));if(!target?.matches('article[data-pattern-id]'))return;if(target.hidden){search.value='';category.value='all';palette='all';document.querySelectorAll('[data-palette]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.palette==='all')));filter()}target.scrollIntoView()}
+addEventListener('hashchange',reveal);filter();reveal();
+})();
+</script>
+</body>
+</html>

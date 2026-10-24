@@ -4,6 +4,7 @@
 
 - [Host and output engine](#choose-the-host-and-output-engine)
 - [Interactive snapshots](#interactive-snapshot-boundary)
+- [Native line-symbol SVG repair](#native-line-symbol-svg-repair)
 - [Observable verification](#verify-observable-results)
 - [Common failures](#diagnose-common-failures)
 
@@ -22,6 +23,10 @@
 Supplying a supported path also writes the file. `write_image()` infers PNG,
 JPEG, WebP, SVG, PDF, or HTML from the extension and returns written bytes.
 Create output parents explicitly and preserve exact user-requested paths.
+
+HTML dimensions belong to chart construction. `to_html()` has no width/height
+arguments, and `write_image("chart.html")` rejects image-only width/height/scale
+options rather than applying them to the HTML container.
 
 ```python
 from pathlib import Path
@@ -52,6 +57,23 @@ For example, 800×450 with scale 2 produces 1600×900 pixels. Responsive charts 
 export with fallback dimensions; do not rely on that when dimensions are specified.
 For facets, configure panel dimensions at construction rather than passing
 unsupported per-call `to_svg(width=...)` options.
+
+## Native line-symbol SVG repair
+
+XY 0.0.8 native SVG export emits duplicate `fill` attributes for four line-only
+scatter symbols. An exported string can therefore fail XML parsing even when
+the corresponding canvas/PNG renders. Parse the XML before delivering it.
+When this exact error occurs, use the bundled
+[narrow compatibility helper](../scripts/xy_svg_compat.py):
+
+```sh
+uv run --script <skill-dir>/scripts/xy_svg_compat.py --input results/original.svg --output results/repaired.svg
+```
+
+It removes only a redundant second hex fill from a path whose first fill is
+`none` and whose stroke matches that hex; geometry and stroke are preserved.
+It leaves valid SVG unchanged and rejects unrelated malformed XML. Keep the
+original artifact and report that this compatibility repair was applied.
 
 ## Interactive snapshot boundary
 

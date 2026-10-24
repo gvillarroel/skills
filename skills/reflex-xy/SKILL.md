@@ -48,6 +48,14 @@ multiple series, categorical bars, heatmaps, and facets. Start from
 useful. Preserve supplied data and missing-value semantics; label axes and units.
 Prefer `xy.chart(...)` for mixed marks and a family factory for a single family.
 
+For distributions, uncertainty, field/flow geometry, polar families or layered
+annotations, read [advanced-charts.md](references/advanced-charts.md). The
+[capability atlas](https://gvillarroel.github.io/skills/examples/reflex-xy-capabilities/)
+shows every implemented visual family in both palettes and indexes all 105
+public exports in the tested release. Its parameter catalogue distinguishes
+explicit examples from available options; it does not enumerate unbounded
+combinations. Use compact runtime recipes rather than reading its large fixture.
+
 ## Apply the selected colorset
 
 Read [colorsets.md](references/colorsets.md) before authoring chart paint.

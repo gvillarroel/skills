@@ -99,12 +99,13 @@ panels = xy.facet_chart(
     xy.scatter("distance_km", "minutes", color="#2563eb"),
     xy.x_axis(label="Distance (km)"), xy.y_axis(label="Travel time (min)"),
     data=rows, by="route", cols=2,
-    width=450, height=320, share_x=True, share_y=True,
+    width=900, height=320, share_x=True, share_y=True,
 )
 panels.to_html("routes.html")
 ```
 
-`width`/`height` are per-panel positive pixel integers here. Use compatible
+`width` is the total grid width; `height` is per-panel height. Both are
+positive pixel integers. Use compatible
 row-aligned channels so subsetting by facet remains valid. `FacetChart` has
 display/export/memory methods but no `append`, `pick`, or `select_range` methods.
 

@@ -61,6 +61,17 @@ legend can hide the endpoint: start with `loc="lower right"` or add a justified
 domain margin, then verify actual bounds. Exact palette paint is not a visual
 pass when a legend obscures data.
 
+For a Cartesian footer legend with up to three short series names, use
+`xy.legend(loc="upper left", anchor=(0, -.18), ncols=3,
+style=legend_style(selected))` with chart `height=480` and
+`padding=(44, 28, 112, 64)` (top, right, bottom, left). The negative normalized
+y anchor places the legend below the plot; explicit bottom padding reserves
+space for it after the x-axis title. This preserves data and domains. XY does
+not reserve that space automatically, and increasing top padding also moves
+the title. Adapt the anchor/padding for different dimensions, labels or fonts.
+Validate native SVG/PNG and actual HTML at desktop and 390px mobile sizes:
+keep the legend below both data and axis title and wholly inside the canvas.
+
 `categorical_colors(name, count=None, background=None)` returns the canonical
 solid sequence after excluding the actual canvas. Its default canvas is
 `#f7f7f7`; supply the same `background` to both it and `theme` when changing the
@@ -113,11 +124,12 @@ bin. The helper never changes the caller's values.
 
 For exact authored paints, create one constant-color mark per bin, or use bin
 labels with a complete explicit `xy.theme(palette={label: color})` mapping.
-Explain the thresholds in a discrete legend. A matrix can use square scatter
-marks per bin with cell-centered coordinates and explicit size, maintaining
-the original cell values in the source. Do not pass a list of CSS hex strings
-to `color=` and assume XY treats it as direct paints: string arrays are
-categorical labels and need the matching palette mapping.
+Explain the thresholds in a discrete legend. Use data-unit rectangles for a
+responsive matrix; fixed-pixel square scatter markers can overlap on narrow
+screens. Preserve the original cell values in source. XY 0.0.8 recognizes
+unambiguous `#hex`, `rgb(...)` and `hsl(...)` color arrays as direct per-point
+paints; bare color words can be categorical labels and need a matching palette
+mapping. Confirm the chosen mark's channel contract before binding these arrays.
 
 `sequential_colors(name)` returns four exact stops for an optional continuous
 numeric ramp: neutral-to-red for colorset1, pale-to-dark blue for colorset2.

@@ -1,0 +1,576 @@
+{
+  "namespace": "xy",
+  "example_set_id": "reflex-xy-capabilities",
+  "patterns": [
+    {
+      "id": "xy-scatter-encoding-cs1",
+      "mechanism": "scatter-encoding",
+      "colorset": "colorset1"
+    },
+    {
+      "id": "xy-scatter-encoding-cs2",
+      "mechanism": "scatter-encoding",
+      "colorset": "colorset2"
+    },
+    {
+      "id": "xy-scatter-continuous-cs1",
+      "mechanism": "scatter-continuous",
+      "colorset": "colorset1"
+    },
+    {
+      "id": "xy-scatter-continuous-cs2",
+      "mechanism": "scatter-continuous",
+      "colorset": "colorset2"
+    },
+    {
+      "id": "xy-scatter-density-cs1",
+      "mechanism": "scatter-density",
+      "colorset": "colorset1"
+    },
+    {
+      "id": "xy-scatter-density-cs2",
+      "mechanism": "scatter-density",
+      "colorset": "colorset2"
+    },
+    {
+      "id": "xy-line-gaps-cs1",
+      "mechanism": "line-gaps",
+      "colorset": "colorset1"
+    },
+    {
+      "id": "xy-line-gaps-cs2",
+      "mechanism": "line-gaps",
+      "colorset": "colorset2"
+    },
+    {
+      "id": "xy-area-baseline-cs1",
+      "mechanism": "area-baseline",
+      "colorset": "colorset1"
+    },
+    {
+      "id": "xy-area-baseline-cs2",
+      "mechanism": "area-baseline",
+      "colorset": "colorset2"
+    },
+    {
+      "id": "xy-stacked-area-cs1",
+      "mechanism": "stacked-area",
+      "colorset": "colorset1"
+    },
+    {
+      "id": "xy-stacked-area-cs2",
+      "mechanism": "stacked-area",
+      "colorset": "colorset2"
+    },
+    {
+      "id": "xy-grouped-bars-cs1",
+      "mechanism": "grouped-bars",
+      "colorset": "colorset1"
+    },
+    {
+      "id": "xy-grouped-bars-cs2",
+      "mechanism": "grouped-bars",
+      "colorset": "colorset2"
+    },
+    {
+      "id": "xy-stacked-bars-cs1",
+      "mechanism": "stacked-bars",
+      "colorset": "colorset1"
+    },
+    {
+      "id": "xy-stacked-bars-cs2",
+      "mechanism": "stacked-bars",
+      "colorset": "colorset2"
+    },
+    {
+      "id": "xy-normalized-bars-cs1",
+      "mechanism": "normalized-bars",
+      "colorset": "colorset1"
+    },
+    {
+      "id": "xy-normalized-bars-cs2",
+      "mechanism": "normalized-bars",
+      "colorset": "colorset2"
+    },
+    {
+      "id": "xy-horizontal-bars-cs1",
+      "mechanism": "horizontal-bars",
+      "colorset": "colorset1"
+    },
+    {
+      "id": "xy-horizontal-bars-cs2",
+      "mechanism": "horizontal-bars",
+      "colorset": "colorset2"
+    },
+    {
+      "id": "xy-columns-cs1",
+      "mechanism": "columns",
+      "colorset": "colorset1"
+    },
+    {
+      "id": "xy-columns-cs2",
+      "mechanism": "columns",
+      "colorset": "colorset2"
+    },
+    {
+      "id": "xy-histogram-counts-cs1",
+      "mechanism": "histogram-counts",
+      "colorset": "colorset1"
+    },
+    {
+      "id": "xy-histogram-counts-cs2",
+      "mechanism": "histogram-counts",
+      "colorset": "colorset2"
+    },
+    {
+      "id": "xy-histogram-cumulative-cs1",
+      "mechanism": "histogram-cumulative",
+      "colorset": "colorset1"
+    },
+    {
+      "id": "xy-histogram-cumulative-cs2",
+      "mechanism": "histogram-cumulative",
+      "colorset": "colorset2"
+    },
+    {
+      "id": "xy-step-transitions-cs1",
+      "mechanism": "step-transitions",
+      "colorset": "colorset1"
+    },
+    {
+      "id": "xy-step-transitions-cs2",
+      "mechanism": "step-transitions",
+      "colorset": "colorset2"
+    },
+    {
+      "id": "xy-prebinned-stairs-cs1",
+      "mechanism": "prebinned-stairs",
+      "colorset": "colorset1"
+    },
+    {
+      "id": "xy-prebinned-stairs-cs2",
+      "mechanism": "prebinned-stairs",
+      "colorset": "colorset2"
+    },
+    {
+      "id": "xy-stems-cs1",
+      "mechanism": "stems",
+      "colorset": "colorset1"
+    },
+    {
+      "id": "xy-stems-cs2",
+      "mechanism": "stems",
+      "colorset": "colorset2"
+    },
+    {
+      "id": "xy-empirical-cdf-cs1",
+      "mechanism": "empirical-cdf",
+      "colorset": "colorset1"
+    },
+    {
+      "id": "xy-empirical-cdf-cs2",
+      "mechanism": "empirical-cdf",
+      "colorset": "colorset2"
+    },
+    {
+      "id": "xy-box-distributions-cs1",
+      "mechanism": "box-distributions",
+      "colorset": "colorset1"
+    },
+    {
+      "id": "xy-box-distributions-cs2",
+      "mechanism": "box-distributions",
+      "colorset": "colorset2"
+    },
+    {
+      "id": "xy-violin-distributions-cs1",
+      "mechanism": "violin-distributions",
+      "colorset": "colorset1"
+    },
+    {
+      "id": "xy-violin-distributions-cs2",
+      "mechanism": "violin-distributions",
+      "colorset": "colorset2"
+    },
+    {
+      "id": "xy-error-bars-cs1",
+      "mechanism": "error-bars",
+      "colorset": "colorset1"
+    },
+    {
+      "id": "xy-error-bars-cs2",
+      "mechanism": "error-bars",
+      "colorset": "colorset2"
+    },
+    {
+      "id": "xy-error-band-cs1",
+      "mechanism": "error-band",
+      "colorset": "colorset1"
+    },
+    {
+      "id": "xy-error-band-cs2",
+      "mechanism": "error-band",
+      "colorset": "colorset2"
+    },
+    {
+      "id": "xy-native-heatmap-cs1",
+      "mechanism": "native-heatmap",
+      "colorset": "colorset1"
+    },
+    {
+      "id": "xy-native-heatmap-cs2",
+      "mechanism": "native-heatmap",
+      "colorset": "colorset2"
+    },
+    {
+      "id": "xy-hexbin-density-cs1",
+      "mechanism": "hexbin-density",
+      "colorset": "colorset1"
+    },
+    {
+      "id": "xy-hexbin-density-cs2",
+      "mechanism": "hexbin-density",
+      "colorset": "colorset2"
+    },
+    {
+      "id": "xy-contour-lines-cs1",
+      "mechanism": "contour-lines",
+      "colorset": "colorset1"
+    },
+    {
+      "id": "xy-contour-lines-cs2",
+      "mechanism": "contour-lines",
+      "colorset": "colorset2"
+    },
+    {
+      "id": "xy-filled-contours-cs1",
+      "mechanism": "filled-contours",
+      "colorset": "colorset1"
+    },
+    {
+      "id": "xy-filled-contours-cs2",
+      "mechanism": "filled-contours",
+      "colorset": "colorset2"
+    },
+    {
+      "id": "xy-independent-segments-cs1",
+      "mechanism": "independent-segments",
+      "colorset": "colorset1"
+    },
+    {
+      "id": "xy-independent-segments-cs2",
+      "mechanism": "independent-segments",
+      "colorset": "colorset2"
+    },
+    {
+      "id": "xy-triangle-mesh-cs1",
+      "mechanism": "triangle-mesh",
+      "colorset": "colorset1"
+    },
+    {
+      "id": "xy-triangle-mesh-cs2",
+      "mechanism": "triangle-mesh",
+      "colorset": "colorset2"
+    },
+    {
+      "id": "xy-flat-ribbons-cs1",
+      "mechanism": "flat-ribbons",
+      "colorset": "colorset1"
+    },
+    {
+      "id": "xy-flat-ribbons-cs2",
+      "mechanism": "flat-ribbons",
+      "colorset": "colorset2"
+    },
+    {
+      "id": "xy-sankey-flow-cs1",
+      "mechanism": "sankey-flow",
+      "colorset": "colorset1"
+    },
+    {
+      "id": "xy-sankey-flow-cs2",
+      "mechanism": "sankey-flow",
+      "colorset": "colorset2"
+    },
+    {
+      "id": "xy-funnel-area-cs1",
+      "mechanism": "funnel-area",
+      "colorset": "colorset1"
+    },
+    {
+      "id": "xy-funnel-area-cs2",
+      "mechanism": "funnel-area",
+      "colorset": "colorset2"
+    },
+    {
+      "id": "xy-funnel-bars-cs1",
+      "mechanism": "funnel-bars",
+      "colorset": "colorset1"
+    },
+    {
+      "id": "xy-funnel-bars-cs2",
+      "mechanism": "funnel-bars",
+      "colorset": "colorset2"
+    },
+    {
+      "id": "xy-polar-composition-cs1",
+      "mechanism": "polar-composition",
+      "colorset": "colorset1"
+    },
+    {
+      "id": "xy-polar-composition-cs2",
+      "mechanism": "polar-composition",
+      "colorset": "colorset2"
+    },
+    {
+      "id": "xy-polar-bars-cs1",
+      "mechanism": "polar-bars",
+      "colorset": "colorset1"
+    },
+    {
+      "id": "xy-polar-bars-cs2",
+      "mechanism": "polar-bars",
+      "colorset": "colorset2"
+    },
+    {
+      "id": "xy-radar-cs1",
+      "mechanism": "radar",
+      "colorset": "colorset1"
+    },
+    {
+      "id": "xy-radar-cs2",
+      "mechanism": "radar",
+      "colorset": "colorset2"
+    },
+    {
+      "id": "xy-pie-solid-cs1",
+      "mechanism": "pie-solid",
+      "colorset": "colorset1"
+    },
+    {
+      "id": "xy-pie-solid-cs2",
+      "mechanism": "pie-solid",
+      "colorset": "colorset2"
+    },
+    {
+      "id": "xy-pie-donut-cs1",
+      "mechanism": "pie-donut",
+      "colorset": "colorset1"
+    },
+    {
+      "id": "xy-pie-donut-cs2",
+      "mechanism": "pie-donut",
+      "colorset": "colorset2"
+    },
+    {
+      "id": "xy-wind-rose-cs1",
+      "mechanism": "wind-rose",
+      "colorset": "colorset1"
+    },
+    {
+      "id": "xy-wind-rose-cs2",
+      "mechanism": "wind-rose",
+      "colorset": "colorset2"
+    },
+    {
+      "id": "xy-polar-sectors-cs1",
+      "mechanism": "polar-sectors",
+      "colorset": "colorset1"
+    },
+    {
+      "id": "xy-polar-sectors-cs2",
+      "mechanism": "polar-sectors",
+      "colorset": "colorset2"
+    },
+    {
+      "id": "xy-annotation-guides-cs1",
+      "mechanism": "annotation-guides",
+      "colorset": "colorset1"
+    },
+    {
+      "id": "xy-annotation-guides-cs2",
+      "mechanism": "annotation-guides",
+      "colorset": "colorset2"
+    },
+    {
+      "id": "xy-annotation-notes-cs1",
+      "mechanism": "annotation-notes",
+      "colorset": "colorset1"
+    },
+    {
+      "id": "xy-annotation-notes-cs2",
+      "mechanism": "annotation-notes",
+      "colorset": "colorset2"
+    },
+    {
+      "id": "xy-annotation-thresholds-cs1",
+      "mechanism": "annotation-thresholds",
+      "colorset": "colorset1"
+    },
+    {
+      "id": "xy-annotation-thresholds-cs2",
+      "mechanism": "annotation-thresholds",
+      "colorset": "colorset2"
+    },
+    {
+      "id": "xy-axes-secondary-cs1",
+      "mechanism": "axes-secondary",
+      "colorset": "colorset1"
+    },
+    {
+      "id": "xy-axes-secondary-cs2",
+      "mechanism": "axes-secondary",
+      "colorset": "colorset2"
+    },
+    {
+      "id": "xy-scales-log-cs1",
+      "mechanism": "scales-log",
+      "colorset": "colorset1"
+    },
+    {
+      "id": "xy-scales-log-cs2",
+      "mechanism": "scales-log",
+      "colorset": "colorset2"
+    },
+    {
+      "id": "xy-scales-symlog-cs1",
+      "mechanism": "scales-symlog",
+      "colorset": "colorset1"
+    },
+    {
+      "id": "xy-scales-symlog-cs2",
+      "mechanism": "scales-symlog",
+      "colorset": "colorset2"
+    },
+    {
+      "id": "xy-axes-time-cs1",
+      "mechanism": "axes-time",
+      "colorset": "colorset1"
+    },
+    {
+      "id": "xy-axes-time-cs2",
+      "mechanism": "axes-time",
+      "colorset": "colorset2"
+    },
+    {
+      "id": "xy-axes-category-labels-cs1",
+      "mechanism": "axes-category-labels",
+      "colorset": "colorset1"
+    },
+    {
+      "id": "xy-axes-category-labels-cs2",
+      "mechanism": "axes-category-labels",
+      "colorset": "colorset2"
+    },
+    {
+      "id": "xy-axes-custom-ticks-cs1",
+      "mechanism": "axes-custom-ticks",
+      "colorset": "colorset1"
+    },
+    {
+      "id": "xy-axes-custom-ticks-cs2",
+      "mechanism": "axes-custom-ticks",
+      "colorset": "colorset2"
+    },
+    {
+      "id": "xy-layout-facets-linked-cs1",
+      "mechanism": "layout-facets-linked",
+      "colorset": "colorset1"
+    },
+    {
+      "id": "xy-layout-facets-linked-cs2",
+      "mechanism": "layout-facets-linked",
+      "colorset": "colorset2"
+    },
+    {
+      "id": "xy-navigation-x-only-cs1",
+      "mechanism": "navigation-x-only",
+      "colorset": "colorset1"
+    },
+    {
+      "id": "xy-navigation-x-only-cs2",
+      "mechanism": "navigation-x-only",
+      "colorset": "colorset2"
+    },
+    {
+      "id": "xy-selection-box-lasso-cs1",
+      "mechanism": "selection-box-lasso",
+      "colorset": "colorset1"
+    },
+    {
+      "id": "xy-selection-box-lasso-cs2",
+      "mechanism": "selection-box-lasso",
+      "colorset": "colorset2"
+    },
+    {
+      "id": "xy-controls-minimal-cs1",
+      "mechanism": "controls-minimal",
+      "colorset": "colorset1"
+    },
+    {
+      "id": "xy-controls-minimal-cs2",
+      "mechanism": "controls-minimal",
+      "colorset": "colorset2"
+    },
+    {
+      "id": "xy-animation-reveal-cs1",
+      "mechanism": "animation-reveal",
+      "colorset": "colorset1"
+    },
+    {
+      "id": "xy-animation-reveal-cs2",
+      "mechanism": "animation-reveal",
+      "colorset": "colorset2"
+    },
+    {
+      "id": "xy-data-column-override-cs1",
+      "mechanism": "data-column-override",
+      "colorset": "colorset1"
+    },
+    {
+      "id": "xy-data-column-override-cs2",
+      "mechanism": "data-column-override",
+      "colorset": "colorset2"
+    },
+    {
+      "id": "xy-point-symbols-cs1",
+      "mechanism": "point-symbols",
+      "colorset": "colorset1"
+    },
+    {
+      "id": "xy-point-symbols-cs2",
+      "mechanism": "point-symbols",
+      "colorset": "colorset2"
+    },
+    {
+      "id": "xy-line-dash-curves-cs1",
+      "mechanism": "line-dash-curves",
+      "colorset": "colorset1"
+    },
+    {
+      "id": "xy-line-dash-curves-cs2",
+      "mechanism": "line-dash-curves",
+      "colorset": "colorset2"
+    },
+    {
+      "id": "xy-mark-style-properties-cs1",
+      "mechanism": "mark-style-properties",
+      "colorset": "colorset1"
+    },
+    {
+      "id": "xy-mark-style-properties-cs2",
+      "mechanism": "mark-style-properties",
+      "colorset": "colorset2"
+    },
+    {
+      "id": "xy-custom-mark-composition-cs1",
+      "mechanism": "custom-mark-composition",
+      "colorset": "colorset1"
+    },
+    {
+      "id": "xy-custom-mark-composition-cs2",
+      "mechanism": "custom-mark-composition",
+      "colorset": "colorset2"
+    }
+  ]
+}

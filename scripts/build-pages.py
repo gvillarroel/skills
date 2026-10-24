@@ -20,6 +20,7 @@ ROOT = Path(__file__).resolve().parents[1]
 PAGES_ROOT = ROOT / "dist" / "pages"
 SKILLS = ROOT / "skills"
 EXAMPLE_SOURCES = {
+    "reflex-xy-capabilities": SKILLS / "reflex-xy" / "assets" / "examples" / "reflex-xy-capabilities",
     "reflex-xy-colorsets": SKILLS / "reflex-xy" / "assets" / "examples" / "reflex-xy-colorsets",
     "hierarchy-lens": SKILLS / "hierarchy-lens" / "assets" / "examples" / "hierarchy-lens",
     "usefulcharts-style": SKILLS / "usefulcharts-style" / "assets" / "examples" / "usefulcharts-style",
@@ -121,6 +122,14 @@ UNLISTED_EXAMPLE_SOURCES = {
     "plantuml-colorset-renderer-cs1",
 }
 PUBLISHED_EXAMPLE_SETS = [
+    {
+        "id": "reflex-xy-capabilities",
+        "source": "reflex-xy-capabilities",
+        "title": "XY Capability Atlas",
+        "href": "examples/reflex-xy-capabilities/",
+        "kind": "Python chart API atlas",
+        "description": "57 visual mechanisms in two colorsets: 114 real XY charts, every public export indexed, finite options, styling support, host recipes and native downloads.",
+    },
     {
         "id": "reflex-xy-colorsets",
         "source": "reflex-xy-colorsets",
@@ -723,6 +732,13 @@ def build_docs() -> None:
     run_command(
         ["uv", "run", "--script", str(xy_gallery / "build.py"),
          "--output-dir", str(PAGES_ROOT / "examples" / "reflex-xy-colorsets")],
+        ROOT,
+    )
+
+    xy_atlas = example_source("reflex-xy-capabilities")
+    run_command(
+        ["uv", "run", "--script", str(xy_atlas / "build.py"),
+         "--output-dir", str(PAGES_ROOT / "examples" / "reflex-xy-capabilities")],
         ROOT,
     )
 

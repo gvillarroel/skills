@@ -56,6 +56,12 @@ index is a row ID. Core notebook callbacks are `on_hover`, `on_click`,
 `xy.Selection`, while Reflex exposes a separate JSON-safe event envelope.
 Use the host's documented selection resolver for bounded/truncated projections.
 
+Range selection targets scatter source rows; a line-only chart returns an empty
+selection. `chart.select(range={"x0": 0, "x1": 2, "y0": 1, "y1": 5})`
+uses scalar rectangle bounds, while `set_view()` uses per-axis ranges. Widget
+construction or queuing a view/selection command does not establish that its
+frontend has delivered callbacks; test that separately in a running host.
+
 ## Append and streaming
 
 ```python
