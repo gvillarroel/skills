@@ -11,8 +11,30 @@ different package versions.
 
 From the skills repository, start `pi`. The project loader is
 `.pi/extensions/durable-agents.ts`. After Pi trusts the project, it is discovered
-normally; use `/reload` in an already running Pi session. This installs nothing
-in the global Pi account directory.
+normally; use `/reload` in an already running Pi session.
+
+The same loader can be registered for every Pi working directory:
+
+```powershell
+pi install C:/Users/villa/dev/skills/.pi/extensions/durable-agents.ts
+pi list
+```
+
+This user-wide registration references the existing file in place; it does not
+copy the implementation or install its dependencies. Install the exact same
+loader that project discovery uses. Registering the implementation package or a
+different entry alongside this wrapper loads the extension twice, duplicates
+`durable_agents`, and can suffix command names. Use `/reload` in an open Pi
+session after installation. To remove the user-wide registration:
+
+```powershell
+pi remove C:/Users/villa/dev/skills/.pi/extensions/durable-agents.ts
+```
+
+Keep this checkout and its installed extension dependencies available. If the
+checkout moves, remove the old registration and install the new absolute loader
+path. The implementation's adjacent `durable-agents.json` supplies the local
+service connection when no project connection file overrides it.
 
 To load explicitly from another working directory:
 
