@@ -7,6 +7,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import shutil
 from pathlib import Path
@@ -28,8 +29,28 @@ def scaffold(destination: Path, *, with_tests: bool = False) -> dict:
     included_tests = with_tests and tests.is_dir()
     if included_tests:
         shutil.copytree(tests, destination / "tests")
-    result = {"destination": str(destination), "template": "pi-durable-service-1.3.0", "tests_included": included_tests}
-    (destination / "scaffold-manifest.json").write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
+    package = json.loads((destination / "package.json").read_text(encoding="utf-8"))
+    files = {
+        path.relative_to(destination).as_posix(): hashlib.sha256(path.read_bytes()).hexdigest()
+        for path in sorted(destination.rglob("*"))
+        if path.is_file()
+    }
+    manifest = {
+        "schemaVersion": 1,
+        "template": "pi-durable-service-1.3.0",
+        "runtimeSource": {
+            "package": "@earendil-works/pi-durable",
+            "version": "1.3.0",
+            "upstreamCommit": "71023aec1546d6d677a65669c5665c0927ce0dd0",
+        },
+        "runtimeIndependent": True,
+        "tests_included": included_tests,
+        "dependencies": package.get("dependencies", {}),
+        "devDependencies": package.get("devDependencies", {}),
+        "files": files,
+    }
+    (destination / "scaffold-manifest.json").write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
+    result = {"destination": str(destination), "template": manifest["template"], "tests_included": included_tests}
     return result
 
 

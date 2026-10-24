@@ -6,6 +6,8 @@
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "start": "node dist/src/cli.js",
+    "smoke": "node dist/src/smoke.js",
+    "evolve": "node dist/src/evolve-cli.js",
     "test": "tsx --test tests/*.test.ts"
   },
   "dependencies": {

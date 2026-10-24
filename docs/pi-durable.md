@@ -8,6 +8,8 @@ The [source review and full feature inventory](../projects/pi-durable-lab/source
 
 For a reusable agent workflow and service starter, use the [Pi Durable skill](../skills/pi-durable/SKILL.md). Its [service validation record](../evaluations/pi-durable/validation-20261019.md) distinguishes template checks, isolated authoring outcomes, and unverified native deployments.
 
+Generated applications include their own operations guide, prompts, source, local helper and portable provenance; they operate without the generating skill. The [requested evolution workflow](../skills/pi-durable/references/agent-evolution.md) adds public evidence, versioned decisions, inactive model-assisted proposals, paired evaluation and source rollback. The [evolution validation record](../evaluations/pi-durable/evolution-20261024.md) separates tested mechanics from unverified model-quality improvements.
+
 ## Working model
 
 A **Harness** owns one open storage and its task scheduler. A **conversation** is a transcript plus typed documents. An **input submission** starts or joins a run; a **write submission** records something without asking the model. A **task** is a durable state machine. Model requests, tools, compaction, and application workflows all use tasks.

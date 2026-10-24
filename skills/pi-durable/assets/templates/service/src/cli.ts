@@ -11,7 +11,7 @@ import { AgentService } from './server.js';
 import { runServiceAction, type ServiceAction } from './service-manager.js';
 
 function option(args:string[],key:string){const index=args.indexOf(key);return index<0?undefined:args[index+1];}
-async function main(){const args=process.argv.slice(2);const command=args[0]??'help';if(command==='help'){console.log('Commands: serve, list, jobs <agent>, chat <agent> [--job <id>] [--message <text>] [--steer], abort <agent> [--job <id>], service <install|start|stop|status|uninstall> [--options local-options.json] [--platform win32|darwin] [--execute] [--output file]. Every command accepts --config file. Cross-platform plans should use JSON --options to preserve target paths.');return;}
+async function main(){const args=process.argv.slice(2);const command=args[0]??'help';if(command==='help'){console.log('Commands: serve, list, jobs <agent>, traces <agent> [--output file], feedback <agent> --message <summary> [--evidence id,id], chat <agent> [--job <id>] [--message <text>] [--steer], abort <agent> [--job <id>], service <install|start|stop|status|uninstall> [--options local-options.json] [--platform win32|darwin] [--execute] [--output file]. Every command accepts --config file. Cross-platform plans should use JSON --options to preserve target paths.');return;}
   const configPath=resolve(option(args,'--config')??'config.json');const config=await loadConfig(configPath);
   if(command==='serve'){const service=await AgentService.open(config);console.log(JSON.stringify({status:'listening',url:service.url,agents:config.agents.map(a=>a.id),provider:config.provider.kind}));await new Promise<void>(resolve=>{let closing=false;const stop=()=>{if(closing)return;closing=true;void service.close().then(resolve,error=>{console.error(error.message);process.exitCode=1;resolve();});};process.once('SIGINT',stop);process.once('SIGTERM',stop);});return;}
   if(command==='service'){
@@ -33,6 +33,8 @@ async function main(){const args=process.argv.slice(2);const command=args[0]??'h
   const agent=args[1];if(!agent||!config.agents.some(a=>a.id===agent))throw new Error('Specify an active agent ID from config.json.');
   const prefix=`/v1/agents/${agent}`;const suffix=option(args,'--job')?`?jobId=${encodeURIComponent(option(args,'--job')!)}`:'';
   if(command==='jobs'){console.log(JSON.stringify(await call(prefix+'/jobs'),null,2));return;}
+  if(command==='traces'){const value=await call(prefix+'/evidence');const output=option(args,'--output');if(output){await mkdir(dirname(resolve(output)),{recursive:true});await writeFile(resolve(output),JSON.stringify(value,null,2)+'\n',{mode:0o600});}else console.log(JSON.stringify(value,null,2));return;}
+  if(command==='feedback'){const summary=option(args,'--message');if(!summary)throw new Error('Provide feedback with --message.');console.log(JSON.stringify(await call(prefix+'/feedback'+suffix,{summary,evidenceIds:(option(args,'--evidence')??'').split(',').filter(Boolean)})));return;}
   if(command==='abort'){console.log(JSON.stringify(await call(prefix+'/abort'+suffix,{})));return;}
   if(command!=='chat')throw new Error('Unknown command. Run help.');
   const snapshot=await call(prefix+'/chat'+suffix);console.log(`Connected to ${agent}, conversation ${snapshot.conversation.id}.`);

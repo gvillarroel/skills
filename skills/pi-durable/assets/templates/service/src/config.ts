@@ -1,16 +1,17 @@
 // Build with npm run build; run through the generated CLI.
-import { readFile, mkdir } from 'node:fs/promises';
-import { dirname, resolve } from 'node:path';
+import { readFile, mkdir, realpath } from 'node:fs/promises';
+import { dirname, resolve, relative, isAbsolute } from 'node:path';
 import { parseEnv } from 'node:util';
 
-export interface AgentConfig { id: string; name: string; instructions: string; repositories: string[] }
+export interface AgentConfig { id: string; name: string; instructions: string; instructionsFile?: string; repositories: string[] }
 export interface ServiceConfig {
   version: 1; host: '127.0.0.1'; port: number; dataDir: string; serviceName?:string;
   provider: { kind: 'faux' | 'openai' | 'anthropic'; model?: string; delayMs?: number };
   github: { mode: 'off' | 'poll' | 'webhook'; intervalMs: number; initialScan: 'baseline' | 'enqueue'; maxPages?:number };
-  agents: AgentConfig[];
+  agents: AgentConfig[]; projectDir?: string;
 }
 export async function loadConfig(path: string): Promise<ServiceConfig> {
+  const projectDir = dirname(resolve(path));
   const value = JSON.parse(await readFile(path, 'utf8')) as ServiceConfig;
   if (value.version !== 1 || value.host !== '127.0.0.1' || !Number.isInteger(value.port) || value.port < 0 || value.port > 65535) throw new Error('Expected config version 1, loopback host, and a valid port.');
   if (typeof value.dataDir !== 'string' || !value.dataDir) throw new Error('dataDir is required.');
@@ -24,8 +25,18 @@ export async function loadConfig(path: string): Promise<ServiceConfig> {
   for (const agent of value.agents) {
     if (!/^[a-z][a-z0-9-]{0,47}$/.test(agent.id) || names.has(agent.id) || typeof agent.name !== 'string' || !agent.name || typeof agent.instructions !== 'string' || !Array.isArray(agent.repositories) || agent.repositories.some(r => typeof r !== 'string' || !/^[a-z0-9_.-]+\/[a-z0-9_.-]+$/i.test(r))) throw new Error('Agent IDs must be unique lowercase names and repositories must use owner/name.');
     names.add(agent.id); agent.repositories = [...new Set(agent.repositories.map(r => r.toLowerCase()))];
+    if (agent.instructionsFile !== undefined) {
+      if (typeof agent.instructionsFile !== 'string' || !/^prompts\/[a-z0-9][a-z0-9_./-]*\.md$/i.test(agent.instructionsFile) || agent.instructionsFile.split('/').includes('..')) throw new Error('instructionsFile must be a project-relative Markdown file under prompts/.');
+      const root = await realpath(projectDir);
+      const target = await realpath(resolve(projectDir, agent.instructionsFile));
+      const local = relative(root, target);
+      if (isAbsolute(local) || local.startsWith('..') || !local.replaceAll('\\','/').startsWith('prompts/')) throw new Error('instructionsFile must stay inside this project prompts directory.');
+      agent.instructions = await readFile(target, 'utf8');
+      if (!agent.instructions.trim()) throw new Error('instructionsFile must not be empty.');
+    }
   }
   value.dataDir = resolve(dirname(resolve(path)), value.dataDir);
+  Object.defineProperty(value, 'projectDir', { value: projectDir, enumerable: false });
   return value;
 }
 export async function loadServiceEnvironment(dataDir: string): Promise<void> {

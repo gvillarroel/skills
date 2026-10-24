@@ -3,7 +3,6 @@ import { createServer, type IncomingMessage, type ServerResponse } from 'node:ht
 import { randomBytes, timingSafeEqual } from 'node:crypto';
 import { readFile, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
-import { BACKGROUND_CONTEXT as context } from '@earendil-works/chord/context';
 import { Catalog, type Job } from './catalog.js';
 import { AgentRuntime } from './runtime.js';
 import { loadServiceEnvironment, type ServiceConfig } from './config.js';
@@ -65,20 +64,26 @@ export class AgentService {
       value.repository=value.repository.toLowerCase();value.id=`github:${value.repository}:pull_request:${value.number}:opened`;
       json(response,{jobs:this.admit(value)},202);return;
     }
-    const match=/^\/v1\/agents\/([a-z][a-z0-9-]*)\/(jobs|chat|messages|submissions\/[0-9]+|abort)$/.exec(url.pathname);
+    const match=/^\/v1\/agents\/([a-z][a-z0-9-]*)\/(jobs|chat|messages|evidence|feedback|submissions\/[0-9]+|abort)$/.exec(url.pathname);
     if(!match)throw new HttpError(404,'Unknown service route.');const runtime=this.runtimes.get(match[1]);if(!runtime)throw new HttpError(404,'Agent is not active in this configuration.');
     const jobId=url.searchParams.get('jobId')??undefined;
     if(jobId && !this.catalog.job(match[1],jobId))throw new HttpError(404,'Unknown job for this agent.');
     if(request.method==='GET'&&match[2]==='jobs'){json(response,{jobs:this.catalog.jobs(match[1])});return;}
+    if(request.method==='GET'&&match[2]==='evidence'){const limit=Number(url.searchParams.get('limit')??100);if(!Number.isInteger(limit)||limit<1||limit>10000)throw new HttpError(400,'Evidence limit must be from 1 to 10000.');json(response,{records:runtime.evidence.list(match[1],limit)});return;}
+    if(request.method==='POST'&&match[2]==='feedback'){
+      const value=JSON.parse((await rawBody(request)).toString('utf8')) as Record<string,unknown>;
+      if(typeof value.summary!=='string'||!value.summary.trim()||value.summary.length>4000||!Array.isArray(value.evidenceIds)||value.evidenceIds.length>30||value.evidenceIds.some(id=>typeof id!=='string'||!runtime.evidence.has(match[1],id)))throw new HttpError(400,'Feedback requires a bounded summary and existing evidence IDs for this agent.');
+      const receipt=runtime.trace('feedback.recorded',{summary:value.summary,evidenceIds:value.evidenceIds,source:'authenticated-local-user'},jobId?{jobId}:{});json(response,{evidenceId:receipt.id},201);return;
+    }
     if(request.method==='GET'&&match[2]==='chat'){json(response,await runtime.snapshot(jobId));return;}
     if(request.method==='GET'&&match[2].startsWith('submissions/')){const status=await runtime.status(Number(match[2].split('/')[1]));if(!status)throw new HttpError(404,'Unknown submission.');json(response,status);return;}
     if(request.method==='POST'&&match[2]==='messages'){
       const value=JSON.parse((await rawBody(request)).toString('utf8')) as Record<string,unknown>;
       if(typeof value.content!=='string'||!value.content.trim()||value.content.length>100000||typeof value.requestId!=='string'||!value.requestId||!['followUp','steer','reject'].includes(String(value.whenBusy??'followUp')))throw new HttpError(400,'content, stable requestId and a valid whenBusy mode are required.');
-      const conversation=await runtime.conversation(jobId);const submission=await conversation.submit({type:'input',content:value.content,requestId:value.requestId,whenBusy:(value.whenBusy??'followUp') as 'followUp'|'steer'|'reject'},context);
-      json(response,{submissionId:submission.id,conversationId:conversation.id},202);return;
+      const receipt=await runtime.submitHuman({content:value.content,requestId:value.requestId,whenBusy:(value.whenBusy??'followUp') as 'followUp'|'steer'|'reject'},jobId);
+      json(response,receipt,202);return;
     }
-    if(request.method==='POST'&&match[2]==='abort'){await(await runtime.conversation(jobId)).abort(context);json(response,{aborted:true});return;}
+    if(request.method==='POST'&&match[2]==='abort'){await runtime.abort(jobId);json(response,{aborted:true});return;}
     throw new HttpError(405,'Method not allowed.');
   }catch(error){if(!response.headersSent)json(response,{error:error instanceof Error?error.message:'Request failed'},(error as {statusCode?:number}).statusCode??(error instanceof SyntaxError?400:500));else response.end();}}
   async close(){if(this.stopping)return;this.stopping=true;if(this.timer)clearInterval(this.timer);this.pollAbort.abort();if(this.server.listening)await new Promise<void>((resolve,reject)=>this.server.close(error=>error?reject(error):resolve()));

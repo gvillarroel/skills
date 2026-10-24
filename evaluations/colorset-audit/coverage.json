@@ -23,7 +23,9 @@
         "JSON event, registry, and chat API",
         "Windows task XML and PowerShell lifecycle plans",
         "macOS LaunchAgent plist lifecycle plans",
-        "Markdown runtime and operating guidance"
+        "Markdown runtime and operating guidance",
+        "SQLite operational evidence and portable version manifests",
+        "Requested prompt/tool/script proposals, paired evaluations, and rollback"
       ],
       "scope": "nonvisual",
       "sourceFidelity": null
