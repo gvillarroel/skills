@@ -69,14 +69,29 @@ def synthetic_data() -> dict:
 
 
 def fingerprint(data: dict) -> str:
-    digest = hashlib.sha256()
-    for _, x, y in data["cohorts"]:
-        digest.update(x.tobytes())
-        digest.update(y.tobytes())
+    """Hash labelled arrays at XY's float32 wire precision, independent of libm.
+
+    Windows and Linux can differ in float64 transcendental last bits even when
+    XY exports identical transport buffers and SVGs. Record shape and names,
+    use explicit little endian bytes, and normalize NaNs before hashing.
+    """
+    digest = hashlib.sha256(b"labelled-float32-le-v1\0")
+
+    def add_array(label: str, values) -> None:
+        array = np.array(values, dtype="<f4", order="C", copy=True)
+        array[np.isnan(array)] = np.float32("nan")
+        digest.update(json.dumps([label, list(array.shape), "<f4"], separators=(",", ":")).encode())
+        digest.update(b"\0")
+        digest.update(array.tobytes(order="C"))
+
+    for label, x, y in data["cohorts"]:
+        add_array(f"cohorts/{label}/x", x)
+        add_array(f"cohorts/{label}/y", y)
+    add_array("weeks", data["weeks"])
     for key in ("latencies", "workload", "dense_x", "dense_y"):
-        digest.update(data[key].tobytes())
-    for _, values in data["trends"]:
-        digest.update(values.tobytes())
+        add_array(key, data[key])
+    for label, values in data["trends"]:
+        add_array(f"trends/{label}", values)
     return digest.hexdigest()
 
 
@@ -177,7 +192,7 @@ def main() -> None:
             shutil.copyfile(origin, target)
     palettes = {name: load_palette(name) for name in PALETTES}
     render_gallery(items, palettes, output)
-    (output / "manifest.json").write_text(json.dumps({"set_id": SET_ID, "package": "xy", "version": importlib.metadata.version("xy"), "seed": SEED, "data_sha256": fingerprint(data), "items": items, "palettes": palettes, "quantitative_color_note": "The binned matrix uses four exact-color data-unit rectangle marks with raw-value text labels. All categorical and numeric fills are opaque canonical solids; raster edge antialiasing may blend pixels."}, indent=2) + "\n", encoding="utf-8")
+    (output / "manifest.json").write_text(json.dumps({"set_id": SET_ID, "package": "xy", "version": importlib.metadata.version("xy"), "seed": SEED, "data_fingerprint_format": "labelled-float32-le-v1", "data_sha256": fingerprint(data), "items": items, "palettes": palettes, "quantitative_color_note": "The binned matrix uses four exact-color data-unit rectangle marks with raw-value text labels. All categorical and numeric fills are opaque canonical solids; raster edge antialiasing may blend pixels."}, indent=2) + "\n", encoding="utf-8")
     print(f"Built {len(items)} charts and gallery in {output}")
 
 

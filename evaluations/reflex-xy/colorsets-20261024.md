@@ -14,13 +14,13 @@ exact copy of `docs/colorsets.json`, with SHA-256
 
 | Payload | Files | Inventory SHA-256 |
 | --- | ---: | --- |
-| Source and full | 18 | `e3e3d030a84e948fc63f523a3e0c3351bca816ac93c8cd140e256c7ecab4def7` |
+| Source and full | 18 | `f929826fdd7691bf0b79f5f804e1a12b66520156e0b78c8e28e8e67819c01468` |
 | Runtime | 15 | `f48cc7462c7372aa3ddbcca1cdd0e60f0eea222b698faf0ecc4897411895d3fb` |
 
 Runtime excludes the three acceptance-gallery sources. Source/runtime/full
 audits pass and the source digest was unchanged during the final audit.
-The final source/full digest includes an EOF-whitespace-only gallery cleanup;
-the evaluated runtime digest is unchanged.
+The final source/full digest includes gallery-only EOF cleanup and the portable
+input-fingerprint correction described below. The evaluated runtime digest is unchanged.
 The reusable helper supports theme, categorical order, exact sequential stops,
 discrete numeric bins, contrast-aware labels, legend styling and browser chrome.
 The starter and diagnostic accept `--colorset colorset1|colorset2`; colorset1
@@ -103,7 +103,7 @@ The consolidated report is
 `projects/reflex-xy/artifacts/pi-palette-verification/final-legend-cohort-summary.json`;
 native/browser reports, inspected screenshots and tooltip screenshots are in
 the per-run directories beside it. The final audit is
-`projects/reflex-xy/artifacts/pi-palette-verification/payload-audit-472a0046/report.json`.
+`projects/reflex-xy/artifacts/pi-palette-verification/payload-audit-627d8f16/report.json`.
 
 ## Gallery and publication contract
 
@@ -146,10 +146,45 @@ gallery and source files, matches the verified release and repeats browser
 checks against the public route. Its output directory above is the retained
 post-deployment evidence location.
 
+The first deployed revision, `8cfeecaad07c448206513db6dad524492ade2d59`,
+passed every CI step in run `40097778158`. Its public review retained one
+manifest-identity failure: raw pre-export float64 bytes differed between Windows
+and Linux. All twelve public SVGs were byte-identical to the verified local
+release, and all six mechanisms' interactive JSON specs and decoded numeric
+transport buffers were exactly identical. The differing hash did not describe
+a delivered chart difference. The failed public report remains at
+`projects/reflex-xy/artifacts/colorset-gallery-review-published/` and its
+`public-wire-comparison.json` documents the actual exported identity.
+
+The gallery builder now fingerprints labelled input arrays at canonical
+little-endian float32 precision, with shape metadata and normalized NaN bits.
+It includes week coordinates and category/series names. The manifest explicitly
+declares `labelled-float32-le-v1`; this identifies canonical input precision,
+not the complete transport, whose offsets/scales live in the separate XY spec.
+This removes insignificant platform-dependent float64/libm last bits while
+detecting meaningful value, shape, label and coordinate changes. Six regression
+tests pass, including adjacent float64 values, endian/layout changes, alternate
+NaN payloads and changed-data controls:
+
+```powershell
+uv run --script projects/reflex-xy/scripts/test_gallery_fingerprint.py
+```
+
+The runtime subject is unchanged; no isolated cohort is rerun or pooled for
+this acceptance-builder correction. Final public verification is retained
+separately under
+`projects/reflex-xy/artifacts/colorset-gallery-review-published-final/`.
+
 Repository checks include pattern IDs (1,234 total; twelve new), skill structure,
 bundle independence, payload, colorset coverage, authoring audits, pattern
 source traversal, Pages boundary (14 tests), unified Pages format and local
 installation sync/check. The final local build contains 789 files, 64.54 MiB.
+
+A later whole-worktree validation/default sync attempt was blocked by concurrent,
+uncommitted `pi-durable` evolution work: its new `agent-evolution.md` reference
+had not yet been routed or given a contents section. Those files were preserved
+and excluded from both XY commits. Final XY validation and installation checks
+use the targeted bundle; CI validates the exact committed tree independently.
 
 Arbitrary user charts, continuous renderer-derived tones, antialiased edge
 pixels, live Reflex callback delivery and broad performance remain outside
