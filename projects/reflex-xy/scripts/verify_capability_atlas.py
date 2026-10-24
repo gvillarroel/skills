@@ -550,11 +550,17 @@ def main():
             paths.update(manifest.get("export_samples",[]))
             host = json.loads(read_url(url + "host-report.json"))
             paths.update("host-artifacts/" + path for path in host["artifacts"])
-            def download_asset(relative):
+            download_targets={}
+            # Windows resolution can race when another worker creates a
+            # previously absent parent. Validate destinations before workers.
+            for relative in sorted(paths):
                 path = (gallery / relative).resolve()
                 if not path.is_relative_to(gallery):
                     raise ValueError(f"Public asset path escapes output: {relative}")
                 path.parent.mkdir(parents=True, exist_ok=True)
+                download_targets[relative]=path
+            def download_asset(relative):
+                path=download_targets[relative]
                 path.write_bytes(read_url(urllib.parse.urljoin(url, relative)))
                 return relative
             with ThreadPoolExecutor(max_workers=8) as pool:

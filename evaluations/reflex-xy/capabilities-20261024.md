@@ -286,3 +286,44 @@ Publication target:
 [host recipes](https://gvillarroel.github.io/skills/examples/reflex-xy-capabilities/hosts.html).
 Publication workflow and independent live-site verification are recorded
 after deployment in the task's release evidence.
+
+The gallery source was published by commit
+`ba37a903690ba4ec017e203fe56bcbea4bc20437` on `main`.
+[Pages workflow 40109406492](https://github.com/gvillarroel/skills/actions/runs/40109406492)
+completed successfully, including exact committed-tree source/runtime/full
+bundle audits, native Pages generation on Linux and deployment.
+Actual browser discovery from the main examples index confirms a visible
+catalog card that opens the atlas and exposes all 114 pattern cards.
+The public manifest matches the reviewed local manifest semantically.
+Eleven portable source files are byte-identical; `core_marks.py` and
+`patterns.json` differ only by Windows CRLF versus Git-normalized LF, so all
+13 meet the explicit LF-normalized identity gate.
+
+The initial live-site verifier stopped before native/browser checks because
+parallel Windows `Path.resolve()` raced with another worker creating an
+absent parent directory. It falsely rejected
+`charts/xy-animation-reveal-cs1.svg` as escaping the output root. This
+evaluator-only failure is retained at
+`projects/reflex-xy/artifacts/capability-atlas-review-published/initial-download-error.json`.
+The project verifier now resolves/validates targets and creates all parents
+sequentially before parallel HTTP downloads. Path-escape protection and every
+native/browser/identity gate remain unchanged. The deployed gallery, skill
+payload and task outputs were not repaired for this verifier correction.
+
+The corrected full public audit passes with 387 freshly downloaded assets,
+114 native SVGs, 114 PNGs, 57 equal palette geometry/text pairs, 228 actual
+desktop/mobile chart renders, 580 links, 105 API/signature/anchor/coverage
+records, 59 targeted feature states, 12 filter/search/category states and two
+Explore states. There are zero console errors, page errors or external browser
+requests. The public 13-file ZIP matches its adjacent downloadable sources
+byte-for-byte and successfully rebuilds all 114 charts. Published desktop and
+mobile Sankey, symbols, normalized bars/legends and polar examples pass manual
+review. Final report and screenshots are retained at
+`projects/reflex-xy/artifacts/capability-atlas-review-published/`.
+
+```powershell
+projects/reflex-xy/artifacts/runtime/.venv/Scripts/python.exe projects/reflex-xy/scripts/verify_capability_atlas.py --pages-root dist/pages --route examples/reflex-xy-capabilities --base-url https://gvillarroel.github.io/skills/ --output-dir projects/reflex-xy/artifacts/capability-atlas-review-published
+```
+
+The compact release receipt is
+`projects/reflex-xy/artifacts/capability-atlas-release.json`.
