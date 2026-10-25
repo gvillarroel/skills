@@ -6,7 +6,7 @@ import {
 } from '@earendil-works/pi-tui';
 import { safeText } from './display.js';
 
-export interface CreationReviewOptions { text: string; signal?: AbortSignal }
+export interface CreationReviewOptions { text: string; signal?: AbortSignal; title?:string; confirmLabel?:string }
 
 /** Keep the review title and explicit Cancel/Create choices visible while content scrolls. */
 export class DurableCreationReview implements Component, Focusable {
@@ -63,13 +63,14 @@ export class DurableCreationReview implements Component, Focusable {
     this.scrollTop = Math.min(maximum, Math.max(0, this.scrollTop));
     const body = content.slice(this.scrollTop, this.scrollTop + this.viewportHeight);
     while (body.length < this.viewportHeight) body.push('');
-    const title = this.theme.bold(this.theme.fg('accent', 'Create Durable agent · Review'));
+    const title = this.theme.bold(this.theme.fg('accent', safeText(this.options.title??'Create Durable agent · Review',120)));
     const divider = this.theme.fg('borderMuted', '─'.repeat(columns));
     const range = this.viewportHeight && content.length
       ? `${this.scrollTop + 1}-${Math.min(content.length, this.scrollTop + this.viewportHeight)}/${content.length}` : '0/0';
     const position = this.theme.fg('muted', `Review lines ${range} · PgUp/PgDn scroll`);
     const cancel = this.selectedCreate ? '  Cancel  ' : '[ Cancel ]';
-    const create = this.selectedCreate ? '[ Create agent ]' : '  Create agent  ';
+    const label=safeText(this.options.confirmLabel??'Create agent',18);
+    const create = this.selectedCreate ? `[ ${label} ]` : `  ${label}  `;
     const buttons = this.theme.fg(!this.selectedCreate ? 'accent' : 'muted', cancel) + '   '
       + this.theme.fg(this.selectedCreate ? this.canCreate ? 'success' : 'warning' : 'muted', create);
     const help = this.theme.fg(this.canCreate ? 'dim' : 'warning', this.canCreate

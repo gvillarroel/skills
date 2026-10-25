@@ -44,7 +44,7 @@ export function createListEvidenceTool(agentId:string,evidence:EvidenceStore){re
 export class AgentRuntime {
   calls = 0;
   private conversationVersions=new Map<number,VersionManifest|undefined>();
-  private constructor(readonly agent: AgentConfig, readonly harness: Harness, readonly root: Conversation, private choices: Parameters<typeof configure>[2],readonly evidence:EvidenceStore,readonly version:VersionManifest,rootVersion=version,private roleProfiles:RoleModelProfiles={}) {this.conversationVersions.set(root.id,rootVersion);}
+  private constructor(readonly agent: AgentConfig, readonly harness: Harness, readonly root: Conversation, private choices: Parameters<typeof configure>[2],readonly evidence:EvidenceStore,readonly version:VersionManifest,rootVersion=version,private roleProfiles:RoleModelProfiles={},private disposeModels?:()=>void) {this.conversationVersions.set(root.id,rootVersion);}
   versionForConversation(conversationId:number){const version=this.conversationVersions.get(conversationId);return {hostVersion:versionReference(this.version),conversationVersion:version?versionReference(version):{unknown:true,reason:'Historical or recovering conversation; original manifest has not been loaded.'}};}
   trace(kind:string,details:Record<string,unknown>,ids:{runId?:string;jobId?:string;conversationId?:number;submissionId?:number}={}){return this.evidence.append({agentId:this.agent.id,kind,details,...ids,version:ids.conversationId?this.versionForConversation(ids.conversationId):{hostVersion:versionReference(this.version)}});}
   static async open(config: ServiceConfig, agent: AgentConfig) {
@@ -71,7 +71,8 @@ export class AgentRuntime {
     const modelEvidence:ModelResolutionEvidence|undefined=initialized?{catalog:{source:initialized.catalog.source,digest:initialized.catalog.digest,availability:initialized.catalog.availability},selected:{model:ref,effort:initialized.selection.thinkingLevel,requestedEffort:initialized.selection.requestedThinkingLevel,...(initialized.selection.effectiveThinkingLevel?{effectiveEffort:initialized.selection.effectiveThinkingLevel}:{}),reason:initialized.selection.reason},...(roleSelections?{roles:Object.entries(roleSelections).map(([role,selection])=>({role,model:selection.model,effort:selection.thinkingLevel,reason:selection.reason})).sort((a,b)=>a.role.localeCompare(b.role))}:{})}:undefined;
     const projectDir=(config as ServiceConfig&{projectDir?:string}).projectDir??process.cwd();
     const version=await captureVersion(projectDir,agent,config.provider,modelEvidence);
-    const evidence=await EvidenceStore.open(config.dataDir);evidence.saveVersion(version);let runtime:AgentRuntime|undefined;
+    const evidence=await EvidenceStore.open(config.dataDir);evidence.saveVersion(version);let runtime:AgentRuntime|undefined;let harness:Harness|undefined;
+    try{
     const trace=(kind:string,details:Record<string,unknown>,ids:{runId?:string;conversationId?:number}={})=>{if(runtime&&kind==='model.request'&&config.provider.kind!=='faux')runtime.calls++;return runtime?runtime.trace(kind,details,ids):evidence.append({agentId:agent.id,kind,details,...ids,version:{hostVersion:versionReference(version)}});};
     const readPR=createReadPullRequestTool(agent);const decision=createDecisionTool(agent.id,evidence,versionReference(version),id=>runtime?.versionForConversation(id)??{hostVersion:versionReference(version),conversationVersion:{unknown:true}});const listEvidence=createListEvidenceTool(agent.id,evidence);
     const workspaceHeader=agent.workspaceRoot?workspaceInstructions(agent.workspaceRoot):'';
@@ -79,8 +80,7 @@ export class AgentRuntime {
     const tools=agent.subagents?[...workerTools,makeSubagentTool({model:ref,roles:Object.fromEntries(agent.subagents.roles.map(role=>[role.id,[role.instructions,workspaceHeader].filter(Boolean).join('\n\n')])),...(roleSelections?{roleModels:Object.fromEntries(Object.entries(roleSelections).map(([role,selection])=>[role,{model:selection.model,thinkingLevel:selection.thinkingLevel}]))}:{}),tools:workerTools,maxChildrenPerCall:agent.subagents.maxChildrenPerCall,maxChildrenPerRun:agent.subagents.maxChildrenPerRun,maxTaskChars:agent.subagents.maxTaskChars,maxResultChars:agent.subagents.maxResultChars,trace})]:workerTools;
     const extension=defineExtension({name:'service-read-tools',tools,hooks:createEvidenceHooks(trace,ref)}); const registry=createRegistry(); registry.install(extension);
     const choices={ model:ref,...(thinkingLevel!==undefined?{thinkingLevel}:{}),instructions:[agent.instructions,workspaceHeader].filter(Boolean).join('\n\n'),extensions:[extension],tools };
-    let harness:Harness|undefined;
-    try {const directory=join(config.dataDir,'agents',agent.id);await mkdir(directory,{recursive:true});harness=await Harness.open(await openNodeSqliteStorage(join(directory,'harness.sqlite')),{models,registry,settings:{retry:{maxRetries:2},progress:{partialIntervalMs:250,outputIntervalMs:250}},onReport:() => {trace('runtime.report',{publicSummary:'The durable runtime reported a non-fatal failure; inspect its authorized runtime state.'});console.error(JSON.stringify({type:'runtime-report',agentId:agent.id}));}},context);
+    const directory=join(config.dataDir,'agents',agent.id);await mkdir(directory,{recursive:true});harness=await Harness.open(await openNodeSqliteStorage(join(directory,'harness.sqlite')),{models,registry,settings:{retry:{maxRetries:2},progress:{partialIntervalMs:250,outputIntervalMs:250}},onReport:() => {trace('runtime.report',{publicSummary:'The durable runtime reported a non-fatal failure; inspect its authorized runtime state.'});console.error(JSON.stringify({type:'runtime-report',agentId:agent.id}));}},context);
       const root=await harness.root(context,{agent:choices});
       const stored=await harness.snapshot(AgentDoc,root.id,context);
       // Creation initializes missing roots. Existing conversation profiles remain
@@ -100,11 +100,11 @@ export class AgentRuntime {
           rootVersion=await captureVersion(projectDir,agent,config.provider,{...modelEvidence,...(primaryChanged?{selected:{model:retained.model,effort:retained.thinkingLevel??'runtime-default',reason:'Retained the stored conversation model and effort across host restart.'}}:{}),...(retainedRoles?{roles:retainedRoles}:{})});evidence.saveVersion(rootVersion);
         }
       }
-      runtime=new AgentRuntime(agent,harness,root,choices,evidence,version,rootVersion,roleProfiles); count=()=>{runtime!.calls++;};
+      runtime=new AgentRuntime(agent,harness,root,choices,evidence,version,rootVersion,roleProfiles,initialized?.dispose); count=()=>{runtime!.calls++;};
       if(initialized)runtime.trace('model.selected',{...modelEvidence,observedAt:initialized.catalog.observedAt,...(initialized.catalog.warning?{warning:initialized.catalog.warning}:{}),scope:'new-job-conversations',publicSummary:'Resolved an exact model and supported effort before durable admission.'});
       runtime.trace('model.conversation-profile',{model:retained.model,effort:retained.thinkingLevel??'runtime-default',publicSummary:'The control conversation retains its stored model profile.'},{conversationId:root.id});
       runtime.trace('runtime.opened',{publicSummary:'Runtime opened and recovery enabled. Unfinished safe durable tasks may resume.',previousEvidenceId:evidence.list(agent.id,1)[0]?.id});harness.resume();return runtime;
-    }catch(error) {if(harness)await harness.close(context);evidence.close();throw error;}
+    }catch(error) {try{if(harness)await harness.close(context);}finally{try{initialized?.dispose();}finally{evidence.close();}}throw error;}
   }
   async conversation(jobId?:string):Promise<Conversation> {
     if (!jobId) return this.root;
@@ -127,12 +127,24 @@ export class AgentRuntime {
     }catch(error){this.trace('job.interrupted',{publicSummary:'Waiting for the durable submission was interrupted; startup recovery reconciles its retained state.',errorName:error instanceof Error?error.name:'UnknownError'},{jobId:job.id,conversationId:conversation.id,submissionId:submission.id});throw error;}
   }
   async submitHuman(input:{content:string;requestId:string;whenBusy?:'followUp'|'steer'|'reject'},jobId?:string){const conversation=await this.conversation(jobId);const submission=await conversation.submit({type:'input',...input},context);this.trace('human.submitted',{publicSummary:'A local user submitted a message.',content:fingerprint(input.content),request:fingerprint(input.requestId),whenBusy:input.whenBusy??'followUp'},{jobId,conversationId:conversation.id,submissionId:submission.id});return {conversationId:conversation.id,submissionId:submission.id};}
-  async abort(jobId?:string){const conversation=await this.conversation(jobId);this.trace('cancellation.requested',{publicSummary:'A local user requested cancellation.'},{jobId,conversationId:conversation.id});await conversation.abort(context);this.trace('cancellation.completed',{publicSummary:'Conversation abort completed; its durable record remains available.'},{jobId,conversationId:conversation.id});}
+  async abort(jobId?:string,options:{background?:boolean}={}){const conversation=await this.conversation(jobId);this.trace('cancellation.requested',{publicSummary:options.background?'A local user explicitly requested cancellation including background work.':'A local user requested cancellation.',background:options.background??false},{jobId,conversationId:conversation.id});await conversation.abort(context,options);this.trace('cancellation.completed',{publicSummary:'Conversation abort completed; its durable record remains available.'},{jobId,conversationId:conversation.id});}
   async answer(conversation:Conversation,answerId:number) {
     const entry=await conversation.commit(tx=>tx.entry(answerId as any),context);
     return (entry?.model ?? []).flatMap(m=>m.role==='assistant' ? m.content.filter(b=>b.type==='text').map(b=>(b as {text:string}).text) : []).join('\n');
   }
   async status(id:number) {const submission=await this.harness.submission(id as SubmissionId,context);if(!submission)return undefined;const record=await submission.status(context);return {...record,...(record.status==='done' && record.type==='input' ? {text:await this.answer((await this.harness.conversation(record.conversationId,context))!,record.answer!)} : {})};}
   async snapshot(jobId?:string) {const conversation=await this.conversation(jobId);const state=await conversation.viewState(context);try{return structuredClone(state.value);}finally{state.dispose();}}
-  async close(){this.trace('runtime.closing',{publicSummary:'Graceful shutdown requested; durable unfinished work will be recoverable.'});await this.harness.close(context);this.trace('runtime.closed',{publicSummary:'Runtime closed.'});this.evidence.close();}
+  /** Read every live task and unsettled submission, including background/child work. */
+  async activity(){
+    const [inspection,profile]=await Promise.all([this.harness.inspect(context),this.harness.snapshot(AgentDoc,this.root.id,context)]);
+    const byState:Record<string,number>={};
+    for(const task of inspection.tasks)byState[task.record.state.status]=(byState[task.record.state.status]??0)+1;
+    return {scheduling:inspection.scheduling,quiescent:inspection.tasks.length===0&&inspection.submissions.length===0,
+      model:profile?.model,effort:profile?.thinkingLevel,conversationId:this.root.id,
+      tasks:{live:inspection.tasks.length,background:inspection.tasks.filter(task=>task.record.background).length,runningGenerations:inspection.tasks.filter(task=>task.record.kind==='pi.generation'&&task.record.state.status==='running').length,byState,
+        items:inspection.tasks.slice(0,100).map(({record,state})=>({id:record.id,conversationId:record.conversationId,kind:record.kind,state:record.state.status,schedulerState:state.kind,background:record.background,...(record.owner!==undefined?{owner:record.owner}:{})}))},
+      unsettledSubmissions:inspection.submissions.length,
+      submissions:inspection.submissions.slice(0,100).map(record=>({id:record.id,conversationId:record.conversationId,status:record.status,type:record.type}))};
+  }
+  async close(){this.trace('runtime.closing',{publicSummary:'Graceful shutdown requested; durable unfinished work will be recoverable.'});try{await this.harness.close(context);this.trace('runtime.closed',{publicSummary:'Runtime closed.'});}finally{try{this.disposeModels?.();}finally{this.evidence.close();}}}
 }

@@ -122,7 +122,7 @@ export class EvolutionManager {
       }
     };
     for (const folder of ['src','prompts','scripts']) await visit(folder);
-    for (const file of ['package.json','package-lock.json','tsconfig.json',...(this.config.provider.catalogFile?[this.config.provider.catalogFile]:[])]) if (!names.includes(file)&&await exists(join(this.projectDir,file))) names.push(file);
+    for (const file of ['package.json','package-lock.json','tsconfig.json','verification-contract.json',...(this.config.provider.catalogFile?[this.config.provider.catalogFile]:[])]) if (!names.includes(file)&&await exists(join(this.projectDir,file))) names.push(file);
     return Promise.all(names.sort().map(path => this.version(path)));
   }
   private async evidenceMatches(request: ImprovementRequest) {
@@ -143,6 +143,29 @@ export class EvolutionManager {
     return request;
   }
   async getRequest(requestId:string){return this.requestArtifact(requestId);}
+  async getProposalRequest(proposalId:string){return (await this.pair(proposalId)).request;}
+  async history(agentId:string){
+    if(!this.config.agents.some(agent=>agent.id===agentId))throw new Error('Unknown evolution agent.');
+    const names=async(folder:string)=>{try{return(await readdir(join(this.directory,folder))).filter(name=>/^[a-zA-Z0-9][a-zA-Z0-9_-]{0,95}\.json$/.test(name)).slice(0,200);}catch(error){if((error as NodeJS.ErrnoException).code==='ENOENT')return [];throw error;}};
+    const requests=[];
+    for(const name of await names('requests')){const request=await this.requestArtifact(name.slice(0,-5));if(request.agentId===agentId)requests.push({id:request.id,at:request.at,goal:request.goal,allowedPaths:request.allowedPaths});}
+    const ids=new Set(requests.map(request=>request.id)),proposals=[],evaluations=[];
+    for(const name of await names('proposals')){const proposal=await readSealed<ImprovementProposal>(this.artifact('proposals',name.slice(0,-5)));if(ids.has(proposal.requestId))proposals.push({id:proposal.id,requestId:proposal.requestId,at:proposal.at,hypothesis:proposal.hypothesis});}
+    const proposalIds=new Set(proposals.map(proposal=>proposal.id));
+    for(const name of await names('evaluations')){const evaluation=await readSealed<ImprovementEvaluation>(this.artifact('evaluations',name.slice(0,-5)));if(proposalIds.has(evaluation.proposalId))evaluations.push({id:evaluation.id,proposalId:evaluation.proposalId,at:evaluation.at,passed:evaluation.passed,reason:evaluation.reason});}
+    const transactions=[];
+    for(const name of await names('transactions')){
+      const transaction=await readSealed<Transaction>(this.artifact('transactions',name.slice(0,-5)));
+      if(transaction.agentId!==agentId)continue;
+      if(transaction.version!==1||transaction.proposalId!==name.slice(0,-5)||!['prepared','committed','rolled-back'].includes(transaction.stage)||!['promote','rollback'].includes(transaction.operation))throw new Error('Activation transaction identity mismatch.');
+      let allCandidate=true,allPreimage=true,allKnown=true,unavailable=false;
+      for(const file of transaction.files){try{const current=sha(await readFile(await this.safe(file.path))),candidate=sha(Buffer.from(file.after,'base64')),preimage=sha(Buffer.from(file.before,'base64'));allCandidate&&=current===candidate;allPreimage&&=current===preimage;allKnown&&=current===candidate||current===preimage;}catch{unavailable=true;break;}}
+      const sourceState=unavailable?'unavailable':transaction.stage==='rolled-back'&&allPreimage?'matches-preimage':allCandidate?'matches-candidate':allPreimage?'matches-preimage':allKnown?'mixed-known':'changed';
+      transactions.push({proposalId:transaction.proposalId,agentId:transaction.agentId,stage:transaction.stage,operation:transaction.operation,digest:transaction.digest,evaluationDigest:transaction.evaluationDigest,fileCount:transaction.files.length,sourceState});
+    }
+    const currentActivation={scope:'source-bytes',activeProposalIds:transactions.filter(item=>item.stage==='committed'&&item.sourceState==='matches-candidate').map(item=>item.proposalId),pendingProposalIds:transactions.filter(item=>item.stage==='prepared').map(item=>item.proposalId),restoredProposalIds:transactions.filter(item=>item.stage==='rolled-back'&&item.sourceState==='matches-preimage').map(item=>item.proposalId),changedProposalIds:transactions.filter(item=>['changed','unavailable'].includes(item.sourceState)||item.stage==='committed'&&item.sourceState!=='matches-candidate'||item.stage==='rolled-back'&&item.sourceState!=='matches-preimage').map(item=>item.proposalId)};
+    return {agentId,requests,proposals,evaluations,transactions,currentActivation,limitPerKind:200};
+  }
   private async pair(proposalId: string) {
     const proposal = await readSealed<ImprovementProposal>(this.artifact('proposals',proposalId));
     if (proposal.id !== proposalId || proposal.kind !== 'proposal' || proposal.version !== 1) throw new Error('Proposal identity mismatch.');
@@ -162,6 +185,7 @@ export class EvolutionManager {
     const activePrompts=new Set(promptFiles.map(path=>relative(this.projectDir,isAbsolute(path)?path:resolve(this.projectDir,path)).split(sep).join('/')));
     const allowedPaths = [...new Set(input.allowedPaths.map(localPath))].sort();
     for (const path of allowedPaths) {
+      if(['src/tools/workspace.ts','src/tools/read-pull-request.ts'].includes(path))throw new Error('Core workspace and repository permission tools are outside the improvement surface.');
       if (!activePrompts.has(path) && !/^src\/tools\/[a-z0-9][a-z0-9_-]*\.ts$/i.test(path) && !/^scripts\/[a-z0-9][a-z0-9_-]*\.(?:ts|mjs|js|py)$/i.test(path)) throw new Error('Patches may change only configured supervisor/specialist prompts or explicitly requested existing tool/script files.');
       if(path==='scripts/project.py')throw new Error('The generated management wrapper is outside the improvement surface.');
       if (!activePrompts.has(path) && /(?:security|auth|credential|verif|validat|evol|manager|service|install)/i.test(path)) throw new Error('Management, validation, and security files are outside the improvement surface.');

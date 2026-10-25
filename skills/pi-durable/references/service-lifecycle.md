@@ -27,6 +27,18 @@ The generated executable contract is:
 <absolute-node> <absolute-project>/dist/src/cli.js serve --config <absolute-config>
 ```
 
+Console-managed projects instead supply optional `entryPath` equal to their
+absolute project-local `agent-host.mjs` with that project's `config.json`.
+The native argv is then `[entryPath]`, preserving the authenticated owner and
+drain protocol. This entry joins the registration's ownership identity. Managed
+macOS plans use `KeepAlive` with `SuccessfulExit: false`: a clean drained stop
+does not respawn. Generic CLI plans retain their existing supervision policy.
+Use `/durable login <agent>` or the project's control CLI `login-startup`
+subcommand for reviewed plan/install/status/uninstall. Installation requires a
+stopped managed owner; removal drains before unregistering. Once installed,
+managed start follows that owned native registration, avoiding a second detached
+process. Interrupted installation intent fails closed until inspected/recovered.
+
 Compile the application before installing. Resolve `nodePath` from `process.execPath`
 and keep that Node installation available. Reinstall the service after moving the
 project or replacing Node with a different absolute path. Never install directly

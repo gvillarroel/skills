@@ -58,10 +58,12 @@ test("Windows plan is scoped to current user with restart, hidden execution, and
   assert.match(task, /<MultipleInstancesPolicy>IgnoreNew<\/MultipleInstancesPolicy>/);
   assert.match(task, /O&apos;Brien &amp; Agents/);
   const runner = plan.artifacts.find((a) => a.path.endsWith("run-service.ps1"))!.content;
+  assert.equal(runner.charCodeAt(0),0xfeff,'PowerShell 5.1 requires an explicit UTF-8 BOM for Unicode literals.');
   assert.match(runner, /O''Brien & Agents/);
   assert.match(runner, /exit \$LASTEXITCODE/);
   assert.match(runner, /1>> .*service\.stdout\.log/);
   const manager = plan.artifacts.find((a) => a.path.endsWith("manage-service.ps1"))!.content;
+  assert.equal(manager.charCodeAt(0),0xfeff);
   assert.match(manager, /Refusing to modify an unrelated scheduled task/);
   assert.match(manager, /WindowsIdentity.*GetCurrent/);
   assert.match(manager, /Stop-ScheduledTask/);
@@ -89,6 +91,34 @@ test("owner identity is stable, case-insensitive on Windows, and configuration-s
   assert.equal(createServicePlan(win).ownerId, createServicePlan({ ...win, projectDir: win.projectDir.toLowerCase() }).ownerId);
   assert.notEqual(createServicePlan(win).ownerId, createServicePlan({ ...win, configPath: "C:\\Other\\config.json" }).ownerId);
   assert.notEqual(createServicePlan(mac).ownerId, createServicePlan({ ...mac, projectDir: mac.projectDir.toLowerCase() }).ownerId);
+});
+
+test('managed login hosts use exact project entry ownership and do not restart after a clean macOS shutdown',()=>{
+  const windows=createServicePlan({...win,entryPath:path.win32.join(win.projectDir,'agent-host.mjs')});
+  const runner=windows.artifacts.find(item=>item.path.endsWith('run-service.ps1'))!.content;
+  assert.match(runner,/agent-host\.mjs/);assert.doesNotMatch(runner,/"serve"|'serve'/);
+  assert.notEqual(windows.ownerId,createServicePlan(win).ownerId);
+  const managedMac=createServicePlan({...mac,entryPath:path.posix.join(mac.projectDir,'agent-host.mjs')});
+  const plist=managedMac.artifacts[1]!.content;
+  assert.match(plist,/<key>KeepAlive<\/key><dict><key>SuccessfulExit<\/key><false\/><\/dict>/);
+  assert.match(plist,/agent-host\.mjs/);assert.doesNotMatch(plist,/<string>serve<\/string>/);
+  assert.notEqual(managedMac.ownerId,createServicePlan(mac).ownerId);
+  for(const entryPath of ['relative/agent-host.mjs','/tmp/agent-host.mjs',path.posix.join(mac.projectDir,'another.mjs')])assert.throws(()=>createServicePlan({...mac,entryPath}),/entryPath/);
+});
+
+test('managed native execution refuses generic ownership and preserves clean-stop plans on both platforms',async()=>{
+  for(const options of [win,mac]){
+    const p=options.platform==='win32'?path.win32:path.posix,managed={...options,entryPath:p.join(options.projectDir,'agent-host.mjs')};
+    const generic=createServicePlan(options),context=memoryContext(options.platform);
+    context.files.set(generic.artifacts[0]!.path,generic.artifacts[0]!.content);
+    await assert.rejects(runServiceAction('install',{...managed,execute:true},context.context),/another service configuration/);
+    assert.equal(context.calls.length,0);context.files.clear();
+    const installed=await runServiceAction('install',{...managed,execute:true},context.context);
+    assert.equal(installed.executed,true);assert.ok(installed.plan.artifacts.some(item=>item.content.includes('agent-host.mjs')));
+    await runServiceAction('status',{...managed,execute:true},context.context);
+    await runServiceAction('uninstall',{...managed,execute:true},context.context);
+    assert.ok(context.files.has(installed.plan.artifacts[0]!.path),'Owned local state is retained after unregister.');
+  }
 });
 
 test("dry-run performs no IO or command execution on either platform", async () => {

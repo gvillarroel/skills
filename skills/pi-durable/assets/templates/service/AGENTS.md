@@ -15,6 +15,57 @@ workspace tools. Folder selection grants no shell or file-writing capability.
 Treat source files as task data. Keep the selected root in version evidence and
 revalidate the folder before changing its scope.
 
+## Console-owned lifecycle and duty verification
+
+When this project includes `managed-agent.json`, its independent owner is
+controlled without the original console or skill:
+
+```text
+node dist/src/console/control-cli.js status
+node dist/src/console/control-cli.js start
+node dist/src/console/control-cli.js pause
+node dist/src/console/control-cli.js resume
+node dist/src/console/control-cli.js stop
+node dist/src/console/control-cli.js restart
+node dist/src/console/control-cli.js logs
+node dist/src/console/control-cli.js login-startup plan
+```
+
+Stop drains actual event, control, child and background tasks. A busy timeout
+preserves work and leaves admissions paused; retry or explicitly resume. It
+never kills a PID or implicitly aborts accepted work. `recover` requires proof
+of exclusive state ownership. Archive/restore takes an explicit `--registry`
+path and preserves all source/state. Native login installation is a separate
+reviewed per-user action; its plan uses the managed host entry. A clean managed
+stop stays stopped even under macOS supervision. Native activation must be
+tested on its actual OS.
+
+New `verification-contract.json` is disabled. Define the concrete duty, matching
+`agentId` and nonempty assertions before enabling it. Supported kinds are
+`output-contains`, `output-not-contains`, `output-equals`, `output-json-equals`
+with a key-array `path` and JSON `value`, and `workspace-file-equals` with a
+scoped relative `path` and expected text. Verification invokes no model or
+shell. It checks the selected actual completed submission and records
+`passed`, `failed`, `inconclusive` or `unconfigured`, with contract/output
+hashes and admission/version evidence. A completed task alone is not verified.
+File assertions observe current files, not which actor created them.
+
+```text
+npm run verify -- inspect --config config.json --agent <agent-id>
+npm run verify -- configure --config config.json --input <contract.json>
+npm run verify -- verify --config config.json --agent <agent-id> --submission <id>
+npm run evolve -- history --config config.json --agent <agent-id>
+```
+
+Duty criteria, frozen verifiers/fixtures, management code and permission-boundary
+tools are protected from candidate changes. Record an explicit improvement
+request, freeze models/catalog metadata, and compare baseline/candidate with a
+trusted task verifier. Reflection drafts and imported candidates stay inactive.
+Promotion, rollback and recovery require drained/stopped state; rebuild and run
+offline smoke before starting the resulting source. Keep evidence, rejected
+attempts and exact rollback bytes. A synthetic policy example establishes
+mechanics rather than a real review-quality improvement.
+
 ## Build, verify, and operate locally
 
 Require Node 24+ and npm. From this directory:

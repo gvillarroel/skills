@@ -64,6 +64,7 @@ export async function generateReflection(packDirectory:string, configPath:string
   const requestHash=digest(content);let models=createModels();
   let model:{provider:string;modelId:string};
   let thinkingLevel:ModelThinkingLevel|undefined;
+  let initialized:Awaited<ReturnType<typeof buildModelRuntime>>|undefined;
   let selectionEvidence:Record<string,unknown>|undefined;
   if(config.provider.kind==='faux'){
     const faux=fauxProvider({tokensPerSecond:Infinity});
@@ -71,7 +72,7 @@ export async function generateReflection(packDirectory:string, configPath:string
     models.setProvider(faux.provider);model={provider:faux.getModel().provider,modelId:faux.getModel().id};
   }else{
     await loadServiceEnvironment(config.dataDir);
-    const initialized=await buildModelRuntime(config,getReflectionModelChoice(config));
+    initialized=await buildModelRuntime(config,getReflectionModelChoice(config));
     models=initialized.models;model=initialized.selection.model;thinkingLevel=initialized.selection.thinkingLevel;
     selectionEvidence={model,effort:thinkingLevel,requestedEffort:initialized.selection.requestedThinkingLevel,...(initialized.selection.effectiveThinkingLevel?{effectiveEffort:initialized.selection.effectiveThinkingLevel}:{}),reason:initialized.selection.reason,catalog:{source:initialized.catalog.source,digest:initialized.catalog.digest,availability:initialized.catalog.availability,observedAt:initialized.catalog.observedAt}};
   }
@@ -102,5 +103,5 @@ export async function generateReflection(packDirectory:string, configPath:string
     audit.append({agentId:request.agentId,kind:'evolution.model-reflection-completed',conversationId:conversation.id,submissionId:submission.id,details:{requestId:request.id,requestHash,mode:config.provider.kind,draft:relative(project,output),activated:false}});
     return {draft:output,requestId:request.id,mode:config.provider.kind,activated:false};
   }catch(error){audit.append({agentId:request.agentId,kind:'evolution.model-reflection-failed',details:{requestId:request.id,requestHash,errorCategory:error instanceof Error?error.name:'Error'}});throw error;}
-  finally{try{await harness?.close(context);}finally{audit.close();}}
+  finally{try{await harness?.close(context);}finally{try{initialized?.dispose();}finally{audit.close();}}}
 }

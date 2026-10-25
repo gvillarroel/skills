@@ -19,7 +19,7 @@ async function fixture() {
   await json(join(template, 'tsconfig.json'), {});
   for (const name of ['config', 'server', 'tools/workspace']) await text(join(template, 'src', name + '.ts'), '// Acceptance fixture; the fake compiler produces its bounded API.\n');
   const configSource = `import{readFile}from'node:fs/promises';import{dirname,resolve}from'node:path';export async function loadConfig(path){const value=JSON.parse(await readFile(path,'utf8'));value.dataDir=resolve(dirname(path),value.dataDir);return value;}`;
-  const serverSource = `import{createServer}from'node:http';import{mkdir,writeFile}from'node:fs/promises';import{join}from'node:path';export class AgentService{constructor(config){this.config=config;this.server=createServer((req,res)=>{if(req.headers.authorization!=='Bearer '+ 'a'.repeat(64)){res.writeHead(401);res.end('{}');return;}const path=new URL(req.url,this.url).pathname;res.setHeader('Content-Type','application/json');if(path==='/v1/agents')res.end(JSON.stringify({agents:config.agents.map(a=>({id:a.id,name:a.name,active:true})),mode:'faux'}));else if(path==='/v1/agents/'+config.agents[0].id+'/chat')res.end(JSON.stringify({conversation:{id:1},entries:[],docs:{'pi.agent':{model:{provider:'faux',modelId:'fixture'},thinkingLevel:'off'}}}));else{res.writeHead(404);res.end('{}');}});}static async open(config){await mkdir(config.dataDir,{recursive:true});await writeFile(join(config.dataDir,'console-token'),'a'.repeat(64));const service=new AgentService(config);await new Promise((ok,fail)=>{service.server.once('error',fail);service.server.listen(config.port,config.host,ok);});return service;}get url(){return'http://127.0.0.1:'+this.server.address().port;}async close(){this.server.closeAllConnections();await new Promise(ok=>this.server.close(ok));}}`;
+  const serverSource = `import{createServer}from'node:http';import{mkdir,writeFile}from'node:fs/promises';import{join}from'node:path';export class AgentService{constructor(config){this.config=config;this.closed=new Promise(ok=>{this.resolveClosed=ok});this.server=createServer((req,res)=>{if(req.headers.authorization!=='Bearer '+ 'a'.repeat(64)){res.writeHead(401);res.end('{}');return;}const path=new URL(req.url,this.url).pathname;res.setHeader('Content-Type','application/json');if(path==='/fixture-close'){setInterval(()=>{},1000);res.end('{}',()=>{void this.close();});}else if(path==='/v1/status')res.end(JSON.stringify({owner:this.owner,pid:process.pid,paused:false,quiescent:true,state:'running'}));else if(path==='/v1/agents')res.end(JSON.stringify({agents:config.agents.map(a=>({id:a.id,name:a.name,active:true})),mode:'faux'}));else if(path==='/v1/agents/'+config.agents[0].id+'/chat')res.end(JSON.stringify({conversation:{id:1},entries:[],docs:{'pi.agent':{model:{provider:'faux',modelId:'fixture'},thinkingLevel:'off'}}}));else{res.writeHead(404);res.end('{}');}});}setManagementOwner(owner){this.owner=owner;}static async open(config){await mkdir(config.dataDir,{recursive:true});await writeFile(join(config.dataDir,'console-token'),'a'.repeat(64));const service=new AgentService(config);await new Promise((ok,fail)=>{service.server.once('error',fail);service.server.listen(config.port,config.host,ok);});return service;}get url(){return'http://127.0.0.1:'+this.server.address().port;}async close(){this.server.closeAllConnections();await new Promise(ok=>this.server.close(ok));this.resolveClosed();}}`;
   await json(join(template, 'fixture-build.json'), { 'dist/src/config.js': configSource, 'dist/src/server.js': serverSource });
   const npmCliPath = join(root, 'runtime', 'npm-cli.js');
   const compiler = `const fs=require('node:fs');const path=require('node:path');const files=JSON.parse(fs.readFileSync('fixture-build.json','utf8'));for(const[name,bytes]of Object.entries(files)){fs.mkdirSync(path.dirname(name),{recursive:true});fs.writeFileSync(name,bytes);}`;
@@ -27,7 +27,7 @@ async function fixture() {
   await text(npmCliPath, `import{mkdirSync,writeFileSync}from'node:fs';mkdirSync('node_modules/typescript/bin',{recursive:true});writeFileSync('node_modules/typescript/package.json',JSON.stringify({type:'commonjs'}));writeFileSync('node_modules/typescript/bin/tsc',${JSON.stringify(compiler)});`);
   const context: AgentCreationContext = { cwd: baseDir, extensionDir: join(root, 'extension'), npmCliPath, provider: 'faux' };
   const input = { id: 'my-helper', name: 'My helper', baseDir, instructions: 'Inspect the selected workspace and explain observable findings.' };
-  return { root, template, baseDir, context, input, async close() { assert.ok(resolve(root).startsWith(artifacts + sep)); await rm(root, { recursive: true, force: true }); } };
+  return { root, template, baseDir, context, input, async close() { assert.ok(resolve(root).startsWith(artifacts + sep)); await rm(root, { recursive: true, force: true, maxRetries: 10, retryDelay: 100 }); } };
 }
 async function stop(pid: number) {
   try { process.kill(pid); } catch { return; }
@@ -166,7 +166,7 @@ test('creation starts an independent no-inference service, preserves registry en
     assert.deepEqual(registered.services[0], { id: 'existing', name: 'Existing pilot', configPath: '../existing/config.json' });
     assert.equal(registered.services[1].id, f.input.id); assert.equal(resolve(dirname(connectionsFile), registered.services[1].configPath), receipt.configPath);
     assert.equal(JSON.parse(await readFile(join(plan.projectDir, 'creation-receipt.json'), 'utf8')).registered, true);
-    const manifest = JSON.parse(await readFile(join(plan.projectDir, 'scaffold-manifest.json'), 'utf8')); assert.equal(manifest.runtimeIndependent, true); assert.ok(manifest.files['agent-host.mjs']); assert.ok(manifest.files['src/tools/workspace.ts']);
+    const manifest = JSON.parse(await readFile(join(plan.projectDir, 'scaffold-manifest.json'), 'utf8')); assert.equal(manifest.runtimeIndependent, true); assert.ok(manifest.files['agent-host.mjs']); assert.ok(manifest.files['managed-agent.json']); assert.ok(manifest.files['src/console/control-cli.ts']); assert.ok(manifest.files['src/console/agent-management.ts']); assert.ok(receipt.management?.controlCliPath); assert.ok(manifest.files['src/tools/workspace.ts']);
     await assert.rejects(createAgent(plan), { code: 'plan_invalid' });
     await stop(pid); pid = undefined;
     // A forced shutdown on Windows can retain this file. A new exclusive owner replaces it.
@@ -188,4 +188,18 @@ test('registration failure retains the new running service and exact recovery re
     const receipt = JSON.parse(await readFile(join(plan.projectDir, 'creation-receipt.json'), 'utf8')); assert.equal(receipt.registered, false); assert.equal(receipt.pid, pid); assert.equal(receipt.configPath, plan.configPath);
     await assert.rejects(readFile(plan.connectionsFile), { code: 'ENOENT' });
   } finally { if (pid) await stop(pid); await f.close(); }
+});
+
+test('the standalone host exits after closed work even when a provider retains an idle transport handle',async()=>{
+  const f=await fixture();let pid:number|undefined;
+  try{
+    const plan=await prepareAgentCreation(f.input,f.context),receipt=await createAgent(plan);pid=receipt.pid;
+    const config=JSON.parse(await readFile(receipt.configPath,'utf8'));
+    const response=await fetch(`http://127.0.0.1:${config.port}/fixture-close`,{method:'POST',headers:{Authorization:'Bearer '+'a'.repeat(64)}});
+    assert.equal(response.status,200);await response.arrayBuffer();
+    let exited=false;for(let attempt=0;attempt<100;attempt++){try{process.kill(pid,0);}catch{exited=true;break;}await delay(25);}
+    assert.equal(exited,true,'An idle transport must not retain the standalone owner after service.closed.');
+    await assert.rejects(readFile(join(plan.projectDir,'state/creation-owner.json')),{code:'ENOENT'});
+    const last=JSON.parse(await readFile(join(plan.projectDir,'state/last-owner.json'),'utf8'));assert.equal(last.pid,pid);assert.equal(last.configPath,plan.configPath);pid=undefined;
+  }finally{if(pid)await stop(pid);await f.close();}
 });

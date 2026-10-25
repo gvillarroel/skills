@@ -5,6 +5,7 @@ import { openSync, closeSync } from 'node:fs';
 import { lstat, mkdir, open, readFile, readdir, realpath, rename, rm, stat, writeFile } from 'node:fs/promises';
 import { basename, delimiter, dirname, isAbsolute, join, relative, resolve, sep } from 'node:path';
 import { createServer } from 'node:net';
+import { fileURLToPath } from 'node:url';
 import { setTimeout as delay } from 'node:timers/promises';
 import { DurableClient, type ServiceConnection } from './client.js';
 
@@ -31,6 +32,7 @@ export interface CreatedAgentReceipt {
   target: string; configPath: string; projectDir: string; baseDir: string;
   connectionsFile: string; pid: number; status: 'running'; requestedModel: string; task: AgentTask;
   resolvedModel?: string; thinkingLevel?: string;
+  management?: {descriptorPath:string;controlCliPath:string};
 }
 export interface CreateAgentOptions { signal?: AbortSignal; onProgress?: (message: string) => void }
 export class AgentCreationError extends Error {
@@ -151,6 +153,12 @@ export async function prepareAgentCreation(input: AgentCreationInput, context: A
   let files: Resource[];
   try { files = await resourceFiles(context.serviceTemplateDir ?? join(context.extensionDir, 'service-template')); }
   catch (cause) { if (cause instanceof AgentCreationError) throw cause; return error('template_missing', 'The independent service template is unavailable. Reinstall the updated extension package.'); }
+  // Freeze Node-only management resources alongside the reviewed service bytes.
+  const consoleSource=dirname(fileURLToPath(import.meta.url));
+  for(const name of ['agent-management.ts','client.ts','display.ts','control-cli.ts']){
+    const bytes=await bounded(join(consoleSource,name),256*1024);
+    files.push({name:'src/console/'+name,bytes});
+  }
   const provider = context.provider ?? 'openai-codex';
   if (!['openai-codex', 'faux'].includes(provider)) error('provider_invalid', 'Agent creation supports Codex or an explicit offline acceptance fixture.');
   const npmCliPath = await scriptPath([context.npmCliPath, process.env.npm_execpath, ...runtimeCandidates('npm')], 'npm');
@@ -186,8 +194,38 @@ async function runNode(args: string[], cwd: string, logPath: string, signal?: Ab
     });
   } finally { closeSync(output); }
 }
-function hostSource(nonce: string) {
-  return `// Run with node agent-host.mjs; all imports and state are project-local.\nimport {writeFile,rm} from 'node:fs/promises';\nimport {dirname,join} from 'node:path';\nimport {fileURLToPath} from 'node:url';\nimport {loadConfig} from './dist/src/config.js';\nimport {AgentService} from './dist/src/server.js';\nconst project=dirname(fileURLToPath(import.meta.url));\nconst configPath=join(project,'config.json');\nlet service;\ntry{const config=await loadConfig(configPath);service=await AgentService.open(config);const owner=join(config.dataDir,'creation-owner.json');/* Exclusive state ownership makes a stale crash receipt safe to replace. */await writeFile(owner,JSON.stringify({version:1,pid:process.pid,configPath,nonce:${JSON.stringify(nonce)},url:service.url})+'\\n',{mode:0o600});let closing=false;const close=()=>{if(closing)return;closing=true;void rm(owner,{force:true}).then(()=>service.close(),()=>service.close()).catch(()=>{process.exitCode=1;});};process.once('SIGINT',close);process.once('SIGTERM',close);console.log(JSON.stringify({status:'running',pid:process.pid,url:service.url}));}catch(error){if(service)await service.close();console.error(error instanceof Error?error.message:'The independent agent service failed to start.');process.exitCode=1;}\n`;
+function hostSource() {
+  return `// Run node agent-host.mjs or the compiled project-local control CLI. No extension or skill path is needed.
+import {readFile,writeFile,rm} from 'node:fs/promises';
+import {randomUUID} from 'node:crypto';
+import {dirname,join} from 'node:path';
+import {fileURLToPath} from 'node:url';
+import {loadConfig} from './dist/src/config.js';
+import {AgentService} from './dist/src/server.js';
+const project=dirname(fileURLToPath(import.meta.url)),configPath=join(project,'config.json'),nonce=randomUUID();
+let service,ownerPath,providerKind,closed=false;
+try{
+  const config=await loadConfig(configPath);providerKind=config.provider.kind;service=await AgentService.open(config);
+  const identity={pid:process.pid,nonce,configPath};service.setManagementOwner(identity);
+  ownerPath=join(config.dataDir,'creation-owner.json');
+  // State ownership excludes another live host; a stale crash receipt may be replaced.
+  const receipt=JSON.stringify({version:1,...identity,url:service.url})+'\\n';
+  await writeFile(join(config.dataDir,'last-owner.json'),receipt,{mode:0o600});
+  await writeFile(ownerPath,receipt,{mode:0o600});
+  let closing=false;const close=()=>{if(closing)return;closing=true;void service.close().catch(()=>{process.exitCode=1;});};
+  process.once('SIGINT',close);process.once('SIGTERM',close);
+  console.log(JSON.stringify({status:'running',pid:process.pid,url:service.url}));
+  await service.closed;closed=true;
+}catch(error){if(service)try{await service.close();closed=true;}catch{}console.error(error instanceof Error?error.message:'The independent agent service failed to start.');process.exitCode=1;}
+finally{
+  // This standalone process owns every Harness and provider session it opened.
+  if(closed&&providerKind==='openai-codex')try{const sdk=await import('@earendil-works/pi-ai/api/openai-codex-responses');sdk.closeOpenAICodexWebSocketSessions();}catch{console.error('The owned Codex transport cleanup failed.');process.exitCode=1;}
+  if(ownerPath)try{const current=JSON.parse(await readFile(ownerPath,'utf8'));if(current.pid===process.pid&&current.nonce===nonce)await rm(ownerPath,{force:true});}catch{}
+}
+// SDK transports may retain idle handles; all owned work and receipts are closed above.
+for(const stream of [process.stdout,process.stderr])if(stream.writableLength&&!stream.destroyed)await new Promise(resolve=>{const timer=setTimeout(resolve,1000);stream.write('',()=>{clearTimeout(timer);resolve();});});
+process.exit(process.exitCode??0);
+`;
 }
 async function appendConnection(prepared: PreparedAgentCreation) {
   const path = prepared.connectionsFile, parent = dirname(path); await mkdir(parent, { recursive: true });
@@ -226,18 +264,19 @@ export async function createAgent(prepared: PreparedAgentCreation, options: Crea
     await mkdir(dirname(prepared.projectDir), { recursive: true });
     if (!samePath(await realpath(dirname(prepared.projectDir)), dirname(prepared.projectDir))) error('folder_redirected', 'The reviewed .pi/durable destination changed during creation. Prepare a fresh plan.');
     await mkdir(prepared.projectDir); created = true;
-    const port = await unusedPort(), nonce = randomUUID();
+    const port = await unusedPort();
     const authored = new Map<string, Buffer>(privatePlan.files.map(file => [file.name, file.bytes]));
     const serviceName = prepared.id.length <= 40 ? `durable-${prepared.id}` : `durable-${prepared.id.slice(0, 31)}-${hash(Buffer.from(prepared.id)).slice(0, 8)}`;
     const config = { version: 1, host: '127.0.0.1', port, dataDir: './state', serviceName, provider: prepared.provider === 'faux' ? { kind: 'faux' } : { kind: 'openai-codex', model: prepared.requestedModel, catalogMode: 'refresh', piCliPath: privatePlan.piCliPath }, github: { mode: prepared.repository ? 'poll' : 'off', intervalMs: 60_000, initialScan: 'baseline' }, agents: [{ id: prepared.id, name: prepared.name, instructions: 'Use the project-local prompt.', instructionsFile: `prompts/${prepared.id}.md`, workspaceRoot: prepared.baseDir, repositories: prepared.repository ? [prepared.repository] : [], modelChoice: { task: prepared.task, ...(prepared.thinkingLevel ? { thinkingLevel: prepared.thinkingLevel } : {}) } }] };
     authored.set('config.json', Buffer.from(JSON.stringify(config, null, 2) + '\n'));
     authored.set(`prompts/${prepared.id}.md`, Buffer.from(prepared.instructions + '\n'));
-    authored.set('agent-host.mjs', Buffer.from(hostSource(nonce)));
+    authored.set('agent-host.mjs', Buffer.from(hostSource()));
+    authored.set('managed-agent.json',Buffer.from(JSON.stringify({version:1,kind:'pi-durable-console-managed',agentId:prepared.id,serviceId:prepared.id,configFile:'config.json',dataDir:'state',hostFile:'agent-host.mjs',hostSha256:hash(authored.get('agent-host.mjs')!)},null,2)+'\n'));
     authored.set('.gitignore', Buffer.from('node_modules/\ndist/\nstate/\nlogs/\n.npm-cache/\ncreation-receipt.json\n'));
-    const operations = `\n\n## Console-created service\n\nThis independent project serves ${prepared.id}. Its selected read-only workspace is ${prepared.baseDir}. Model policy ${prepared.requestedModel} uses task ${prepared.task}; the resolved conversation model is persisted in service state. Run commands from this directory.\n\nStart or restart with \`node agent-host.mjs\` after the previous owner has stopped. Stop only the verified process for this project; its current process receipt is \`state/creation-owner.json\`. A stale PID alone is not proof of process ownership. Creation does not install automatic login startup. Use the existing service lifecycle commands for an explicitly requested login service.\n\nThe Pi registry is ${prepared.connectionsFile}; the console target is ${prepared.target}. Logs are in \`logs/\`. \`creation-receipt.json\` records whether console registration completed. A setup failure retains this project for diagnosis and never restarts another service. Credentials remain in the installed Pi account and are read only when needed.\n`;
+    const operations = `\n\n## Console-created service\n\nThis independent project serves ${prepared.id}. Its selected read-only workspace is ${prepared.baseDir}. Model policy ${prepared.requestedModel} uses task ${prepared.task}; the resolved conversation model is persisted in service state. Run commands from this directory.\n\nOperate with \`node dist/src/console/control-cli.js status|start|stop|restart|pause|resume|recover|logs\`. This compiled project-local CLI works without Pi, this extension or the generating skill. Stop requests drain accepted work and use authenticated ownership; a stale PID alone is not proof. \`archive --registry <connections.json>\` unregisters a stopped agent while preserving all files; \`restore --registry <connections.json>\` reconnects it without starting it. Creation does not install automatic login startup. Use the existing service lifecycle commands for an explicitly requested login service.\n\nThe Pi registry is ${prepared.connectionsFile}; the console target is ${prepared.target}. Logs are in \`logs/\`. \`creation-receipt.json\` records whether console registration completed. A setup failure retains this project for diagnosis and never restarts another service. Credentials remain in the installed Pi account and are read only when needed.\n`;
     authored.set('AGENTS.md', Buffer.from((authored.get('AGENTS.md')?.toString('utf8') ?? '# Independent Durable agent\n') + operations));
     for (const [name, bytes] of authored) { checkAbort(options.signal); const target = resolve(prepared.projectDir, name); if (!inside(prepared.projectDir, target)) error('template_invalid', 'A template resource escapes the independent project.'); await mkdir(dirname(target), { recursive: true }); await writeFile(target, bytes, { flag: 'wx', mode: 0o600 }); }
-    await writeFile(join(prepared.projectDir, 'scaffold-manifest.json'), JSON.stringify({ schemaVersion: 1, template: 'pi-durable-console-created-service-v1', runtimeIndependent: true, createdAt: new Date().toISOString(), baseDir: prepared.baseDir, requestedModel: prepared.requestedModel, task: prepared.task, files: Object.fromEntries([...authored].map(([name, bytes]) => [name, hash(bytes)])) }, null, 2) + '\n', { flag: 'wx', mode: 0o600 });
+    await writeFile(join(prepared.projectDir, 'scaffold-manifest.json'), JSON.stringify({ schemaVersion: 1, template: 'pi-durable-console-created-service-v2', runtimeIndependent: true, createdAt: new Date().toISOString(), baseDir: prepared.baseDir, requestedModel: prepared.requestedModel, task: prepared.task, files: Object.fromEntries([...authored].map(([name, bytes]) => [name, hash(bytes)])) }, null, 2) + '\n', { flag: 'wx', mode: 0o600 });
     const logs = join(prepared.projectDir, 'logs'); await mkdir(logs);
     progress('Installing project-local dependencies');
     await runNode([privatePlan.npmCliPath, 'ci', '--ignore-scripts', '--no-audit', '--no-fund'], prepared.projectDir, join(logs, 'install.log'), options.signal);
@@ -258,9 +297,12 @@ export async function createAgent(prepared: PreparedAgentCreation, options: Crea
       checkAbort(options.signal);
       try {
         const owner = JSON.parse((await bounded(join(connection.dataDir, 'creation-owner.json'), 4096)).toString('utf8'));
-        if (owner.pid !== pid || owner.nonce !== nonce || owner.configPath !== prepared.configPath || owner.url !== connection.baseUrl) error('owner_mismatch', 'An unexpected process owns the new service endpoint.');
+        if (owner.pid !== pid || typeof owner.nonce !== 'string' || !/^[a-f0-9-]{36}$/i.test(owner.nonce) || owner.configPath !== prepared.configPath || owner.url !== connection.baseUrl) error('owner_mismatch', 'An unexpected process owns the new service endpoint.');
         const remaining = AbortSignal.timeout(Math.max(1, deadline - Date.now()));
-        const listed = await client.list({ signal: options.signal ? AbortSignal.any([options.signal, remaining]) : remaining });
+        const verifySignal=options.signal?AbortSignal.any([options.signal,remaining]):remaining;
+        const status=await client.status({signal:verifySignal});
+        if(!object(status.owner)||status.owner.pid!==pid||status.owner.nonce!==owner.nonce||status.owner.configPath!==prepared.configPath)error('owner_mismatch','The authenticated lifecycle endpoint does not match the newly started owner.');
+        const listed = await client.list({ signal: verifySignal });
         if (!listed.agents.some(agent => agent.id === prepared.id && agent.active !== false && agent.active !== 0)) error('owner_mismatch', 'The new service did not register the reviewed agent.');
         ready = true; break;
       } catch (cause) { if (cause instanceof AgentCreationError) throw cause; }
@@ -268,7 +310,7 @@ export async function createAgent(prepared: PreparedAgentCreation, options: Crea
       await delay(Math.max(1, Math.min(500, deadline - Date.now())), undefined, { signal: options.signal });
     }
     if (!ready) error('start_timeout', 'The new service did not become ready within 45 seconds.');
-    const receipt: CreatedAgentReceipt = { target: prepared.target, configPath: prepared.configPath, projectDir: prepared.projectDir, baseDir: prepared.baseDir, connectionsFile: prepared.connectionsFile, pid, status: 'running', requestedModel: prepared.requestedModel, task: prepared.task };
+    const receipt: CreatedAgentReceipt = { target: prepared.target, configPath: prepared.configPath, projectDir: prepared.projectDir, baseDir: prepared.baseDir, connectionsFile: prepared.connectionsFile, pid, status: 'running', requestedModel: prepared.requestedModel, task: prepared.task, management:{descriptorPath:join(prepared.projectDir,'managed-agent.json'),controlCliPath:join(prepared.projectDir,'dist/src/console/control-cli.js')} };
     try {
       const snapshot = await client.snapshot(prepared.id, { signal: options.signal });
       if (object(snapshot.docs) && object(snapshot.docs['pi.agent'])) {

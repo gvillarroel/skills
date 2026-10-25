@@ -3,6 +3,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createHash,randomUUID } from 'node:crypto';
 import { DatabaseSync } from 'node:sqlite';
+import { spawnSync } from 'node:child_process';
 import { chmod,lstat,mkdir,mkdtemp,readFile,rm,symlink,writeFile } from 'node:fs/promises';
 import { join,resolve } from 'node:path';
 import { EvolutionManager,type ProposalInput } from '../src/evolution.js';
@@ -38,6 +39,8 @@ test('improvement requires a trusted request, evidence, and an active bounded pa
     const store=await EvidenceStore.open(join(f.project,'state'));store.append({agentId:'worker',kind:'decision.recorded',details:{decision:'Observed case'}});store.close();
     await assert.rejects(f.manager.request({...f.input,allowedPaths:['src/evolution.ts']}),/active prompt|existing/);
     await assert.rejects(f.manager.request({...f.input,allowedPaths:['scripts/project.py']}),/management wrapper/);
+    await assert.rejects(f.manager.request({...f.input,allowedPaths:['src/tools/workspace.ts']}),/permission tools/);
+    await assert.rejects(f.manager.request({...f.input,allowedPaths:['src/tools/read-pull-request.ts']}),/permission tools/);
     await assert.rejects(f.manager.request({...f.input,allowedPaths:['../outside.md']}),/project-relative/);
     await assert.rejects(f.manager.request({...f.input,verifierPath:'scripts/compare.mjs'}),/cannot be candidate/);
     const request=await f.manager.request(f.input);
@@ -58,12 +61,36 @@ test('reflection and importing a proposal remain inactive; untested proposals ca
   }finally{await f.cleanup();}
 });
 
+test('duty criteria are protected study source and history returns metadata without candidate source',async()=>{
+  const f=await fixture();try{
+    await writeFile(join(f.project,'verification-contract.json'),JSON.stringify({version:1,enabled:false,goal:'Frozen duty criteria.',assertions:[]}));
+    const request=await f.manager.request(f.input);assert.ok(request.source.some(file=>file.path==='verification-contract.json'));
+    const proposal=await f.manager.propose(request.id,candidate(request));const history=await f.manager.history('worker');assert.equal(history.requests[0].id,request.id);assert.equal(history.proposals[0].id,proposal.id);assert.ok(!JSON.stringify(history).includes('beforeHash'));
+    await assert.rejects(f.manager.history('other'),/Unknown evolution agent/);
+    await writeFile(join(f.project,'verification-contract.json'),JSON.stringify({version:1,enabled:true,agentId:'worker',goal:'Changed criteria.',assertions:[{id:'changed',kind:'output-equals',value:'PASS'}]}));
+    await assert.rejects(f.manager.reflect(request.id),/Source changed/);
+  }finally{await f.cleanup();}
+});
+
+test('the actual evolution CLI refuses cross-agent request/proposal IDs and lists bounded history',async()=>{
+  const f=await ready();try{
+    for(const [action,flag,value] of [['reflect','--request',f.request.id],['evaluate','--proposal',f.proposal.id]]){
+      const result=spawnSync(process.execPath,['--import','tsx',resolve('src/evolve-cli.ts'),action,'--config',join(f.project,'config.json'),'--agent','other',flag,value],{encoding:'utf8',timeout:10000});
+      assert.equal(result.status,1,result.error?.message??result.stderr);assert.match(result.stderr,/different agent/);
+    }
+    const history=spawnSync(process.execPath,['--import','tsx',resolve('src/evolve-cli.ts'),'history','--config',join(f.project,'config.json'),'--agent','worker'],{encoding:'utf8',timeout:10000});assert.equal(history.status,0,history.error?.message??history.stderr);const body=JSON.parse(history.stdout);assert.equal(body.agentId,'worker');assert.equal(body.proposals[0].id,f.proposal.id);assert.ok(!history.stdout.includes('beforeHash'));
+  }finally{await f.cleanup();}
+});
+
 test('paired build/verifier improvement promotes and rolls back exact original bytes',{timeout:30000},async()=>{
   const f=await ready();try{
     const evaluation=await f.manager.evaluate(f.proposal.id);assert.equal(evaluation.passed,true);assert.equal(evaluation.baseline.verification?.score,0.3);assert.equal(evaluation.candidate.verification?.score,0.8);
     assert.equal(await readFile(join(f.project,'prompts/worker.md'),'utf8'),original);
     await f.manager.promote(f.proposal.id);assert.equal(await readFile(join(f.project,'prompts/worker.md'),'utf8'),improved);
+    const promoted=await f.manager.history('worker');assert.equal(promoted.transactions[0].stage,'committed');assert.equal(promoted.transactions[0].operation,'promote');assert.equal(promoted.transactions[0].sourceState,'matches-candidate');assert.deepEqual(promoted.currentActivation.activeProposalIds,[f.proposal.id]);assert.match(promoted.transactions[0].digest,/^[a-f0-9]{64}$/);assert.match(promoted.transactions[0].evaluationDigest,/^[a-f0-9]{64}$/);assert.equal(promoted.transactions[0].fileCount,1);
+    assert.equal('files' in promoted.transactions[0],false);assert.ok(!JSON.stringify(promoted).includes(Buffer.from(original).toString('base64')));assert.ok(!JSON.stringify(promoted).includes(Buffer.from(improved).toString('base64')));
     await f.manager.rollback(f.proposal.id);assert.deepEqual(await readFile(join(f.project,'prompts/worker.md')),Buffer.from(original));
+    const restored=await f.manager.history('worker');assert.equal(restored.transactions[0].stage,'rolled-back');assert.equal(restored.transactions[0].operation,'rollback');assert.equal(restored.transactions[0].sourceState,'matches-preimage');assert.deepEqual(restored.currentActivation.activeProposalIds,[]);assert.deepEqual(restored.currentActivation.restoredProposalIds,[f.proposal.id]);assert.equal(restored.currentActivation.scope,'source-bytes');
     const store=await EvidenceStore.open(join(f.project,'state'));const kinds=store.list('worker',100).map(r=>r.kind);store.close();assert.ok(kinds.includes('evolution.promotion'));assert.ok(kinds.includes('evolution.rollback'));
     await assert.rejects(f.manager.promote(f.proposal.id),/already activated|stopped service/);
   }finally{await f.cleanup();}
@@ -110,6 +137,7 @@ test('live owner and queued/running jobs block activation; rollback refuses chan
     await assert.rejects(f.manager.promote(f.proposal.id),/stopped service/);
     const finish=new DatabaseSync(join(f.project,'state/agents/worker/harness.sqlite'));finish.exec("UPDATE submissions SET status='done'");finish.close();
     await f.manager.promote(f.proposal.id);await writeFile(join(f.project,'prompts/worker.md'),`${improved}External edit.\n`);
+    const changed=await f.manager.history('worker');assert.equal(changed.transactions[0].sourceState,'changed');assert.deepEqual(changed.currentActivation.activeProposalIds,[]);assert.deepEqual(changed.currentActivation.changedProposalIds,[f.proposal.id]);
     await assert.rejects(f.manager.rollback(f.proposal.id),/stopped service/);assert.match(await readFile(join(f.project,'prompts/worker.md'),'utf8'),/External edit/);
   }finally{await f.cleanup();}
 });
@@ -121,7 +149,9 @@ test('recovery restores all preimages from an interrupted multi-file activation 
     const path=join(f.project,`state/evolution/transactions/${proposal.id}.json`),transaction=JSON.parse(await readFile(path,'utf8'));delete transaction.digest;transaction.stage='prepared';
     // Emulate a crash after one file rename and before the commit receipt.
     await writeFile(join(f.project,'src/tools/observe.ts'),'export const observe = 1;\n');await writeFile(path,JSON.stringify({...transaction,digest:hash(canonical(transaction))}));
+    const pending=await f.manager.history('worker');assert.equal(pending.transactions[0].stage,'prepared');assert.equal(pending.transactions[0].sourceState,'mixed-known');assert.deepEqual(pending.currentActivation.pendingProposalIds,[proposal.id]);assert.equal('files' in pending.transactions[0],false);
     assert.deepEqual((await f.manager.recover()).recovered,[proposal.id]);assert.equal(await readFile(join(f.project,'prompts/worker.md'),'utf8'),original);assert.equal(await readFile(join(f.project,'src/tools/observe.ts'),'utf8'),'export const observe = 1;\n');
+    const recovered=await f.manager.history('worker');assert.deepEqual(recovered.currentActivation.pendingProposalIds,[]);assert.deepEqual(recovered.currentActivation.restoredProposalIds,[proposal.id]);assert.equal(recovered.transactions[0].sourceState,'matches-preimage');
     assert.deepEqual((await f.manager.recover()).recovered,[]);
   }finally{await f.cleanup();}
 });

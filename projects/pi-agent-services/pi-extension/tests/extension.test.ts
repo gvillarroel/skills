@@ -5,7 +5,7 @@ import { registerDurableExtension } from '../extension.js';
 import { DurableClientError, DurableSendError, type AdmissionReceipt, type ServiceConnection } from '../src/client.js';
 
 interface Call { service: string; method: string; args: any[] }
-function fixture(options: { services?: number; duplicate?: boolean; hasUI?: boolean; creationWizard?:any } = {}) {
+function fixture(options: { services?: number; duplicate?: boolean; hasUI?: boolean; creationWizard?:any; operations?:any } = {}) {
   const calls: Call[] = [];
   const commands = new Map<string, any>();
   const tools = new Map<string, any>();
@@ -58,6 +58,7 @@ function fixture(options: { services?: number; duplicate?: boolean; hasUI?: bool
     createClient: (connection: ServiceConnection) => clients.find(client => client.connection.id === connection.id)!,
     createRequestId: () => 'stable-request-id', waitTimeoutMs: 2_000, pollIntervalMs: 5,
     creationWizard:options.creationWizard,
+    operations:options.operations,
   });
   const output = () => JSON.stringify({ entries, notifications });
   async function command(args: string, name = 'durable') { await commands.get(name).handler(args, ctx); }
@@ -112,6 +113,38 @@ test('creation rejects noninteractive use and unexpected arguments before mutati
   await f.command('new');assert.match(f.output(),/needs Pi UI/);
   await f.command('new C:/ambiguous');assert.match(f.output(),/creation form/);
   assert.equal(count,0);
+});
+
+test('stopped configured agents stay visible and can be started from the manager',async()=>{
+  let started=0;const f=fixture({operations:{
+    readConfiguredAgents:async()=>[{id:'repo-quality',name:'Useful agent'}],
+    inspectManaged:async()=>({managed:true,state:'stopped',project:{projectDir:'C:/fixture/managed'}}),
+    startManaged:async()=>{started++;return {managed:true,state:'running'};},
+  }});
+  f.clients[0].list=async()=>{throw new DurableClientError('network_error','Offline owner');};
+  await f.command('list');assert.match(f.output(),/local\/repo-quality.*stopped/);
+  f.ctx.mode='tui';f.ctx.ui.custom=async()=>true;
+  f.ctx.ui.select=async(title:string,values:string[])=>title.startsWith('Pi Durable agents')?values.find(value=>value.includes('local/repo-quality')):values.includes('Owner controls')?'Owner controls':'Start owner';
+  await f.command('');assert.equal(started,1);assert.match(f.output(),/running/);
+});
+
+test('verification and lifecycle commands resolve stopped configured identities without a live owner',async()=>{
+  const calls:any[]=[];const f=fixture({operations:{
+    readConfiguredAgents:async()=>[{id:'repo-quality',name:'Useful agent'}],
+    inspectManaged:async()=>({managed:true,state:'stopped',project:{projectDir:'C:/fixture/managed'}}),
+    verifyAgent:async(connection:any,options:any)=>{calls.push({connection,options});return {status:'inconclusive',reason:'The selected result is not terminal.'};},
+  }});
+  f.clients[0].list=async()=>{throw new DurableClientError('network_error','Offline owner');};
+  await f.command('verify local/repo-quality --job job:one --submission 9');
+  assert.equal(calls[0].options.jobId,'job:one');assert.equal(calls[0].options.submissionId,9);assert.match(f.output(),/inconclusive/);
+  assert.ok(f.commands.get('durable').getArgumentCompletions('e').some((value:any)=>value.value==='evolve'));
+});
+
+test('background abort needs explicit review and is never implied by ordinary cancellation',async()=>{
+  const f=fixture();f.ctx.ui.confirm=async()=>false;
+  await f.command('abort local/repo-quality --background');assert.equal(f.calls.some(call=>call.method==='abort'),false);
+  f.ctx.ui.confirm=async()=>true;await f.command('abort local/repo-quality --background');
+  assert.equal(f.calls.find(call=>call.method==='abort')?.args[1]?.background,true);
 });
 
 test('lists agents across configured services and reports service status', async () => {

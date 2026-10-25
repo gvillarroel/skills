@@ -34,6 +34,12 @@ The generated `AGENTS.md` is the durable operations and improvement runbook. It
 belongs to the generated application. Keep task instructions in that agent's
 configured `instructionsFile`, not by reading this skill at runtime.
 
+Console-created projects also carry their own `src/console` control CLI. Use
+[the agent lifecycle](agent-lifecycle.md) to operate and verify them from Pi or
+without the original console. Task-completion receipts are distinct from
+contract-bound verification outcomes. Include actual failed/passed verification
+evidence when selecting a useful improvement goal.
+
 ## Distinguish memory from improvement
 
 Durable conversations remember work. An evidence ledger records observed actions
@@ -67,6 +73,8 @@ optimizer APIs into this pinned application.
    minimumImprovement?,timeoutMs?}`. Only the active agent prompt, existing
    `src/tools/*.ts`, and explicitly allowed task scripts can be targets. Config,
    package files, manager/security code, verifier and fixtures remain protected.
+   The duty contract and core workspace/GitHub allowlist tools are also protected;
+   ordinary task tools and explicitly selected prompts/scripts remain eligible.
 3. Run `npm run evolve -- reflect --config config.json --request <id>`. Inspect
    the returned evidence/source pack, then reflect over its actual outcomes,
    relevant scripts/tools and prompt. Ordinary `reflect` exports evidence. When

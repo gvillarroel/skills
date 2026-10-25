@@ -19,13 +19,13 @@ const review = [
   '', '**Purpose**', ...Array.from({ length: 60 }, (_, index) => `Instruction ${index + 1}: Inspect scoped files and explain the observed result.`),
 ].join('\n\n');
 
-function fixture(options: { rows?: number; text?: string; signal?: AbortSignal } = {}) {
+function fixture(options: { rows?: number; text?: string; signal?: AbortSignal;title?:string;confirmLabel?:string } = {}) {
   const terminal = { rows: options.rows ?? 20 };
   const results: boolean[] = [];
   let renders = 0;
   const tui = { terminal, requestRender: () => { renders++; } } as unknown as TUI;
   const view = new DurableCreationReview(tui, plainTheme, result => results.push(result), {
-    text: options.text ?? review, signal: options.signal,
+    text: options.text ?? review, signal: options.signal,title:options.title,confirmLabel:options.confirmLabel,
   });
   const frame = (width = 48) => view.render(width);
   const text = (width = 48) => frame(width).map(line => stripVTControlCharacters(line)).join('\n');
@@ -42,6 +42,12 @@ test('review stays within all terminal row and column budgets, including Unicode
     for (const line of f.frame(width)) assert.ok(visibleWidth(line) <= width);
     f.view.dispose();
   }
+});
+
+test('lifecycle mutation review uses its literal operation title and still defaults to Cancel',()=>{
+  const f=fixture({title:'Durable stop · Review',confirmLabel:'Apply action',text:'Project: C:\\work\\.pi\\durable\\helper\nDrain accepted work before stopping.'});
+  assert.match(f.text(),/Durable stop/);assert.match(f.text(),/Apply action/);
+  assert.match(f.text(),/\\\.pi\\durable/);f.view.handleInput(keys.enter);assert.deepEqual(f.results,[false]);
 });
 
 test('fixed title, cancel/create actions and scroll help remain visible at native sizes', () => {

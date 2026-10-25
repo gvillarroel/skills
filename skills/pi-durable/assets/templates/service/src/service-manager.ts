@@ -12,6 +12,8 @@ export interface ServiceOptions {
   configPath: string;
   dataDir: string;
   nodePath: string;
+  /** Console-managed hosts keep authenticated lifecycle ownership across login startup. */
+  entryPath?: string;
   serviceName?: string;
   homeDir?: string;
   /** Required to render a macOS plan on another OS; native macOS uses process.getuid(). */
@@ -66,11 +68,12 @@ export function createServicePlan(options: ServiceOptions): ServicePlan {
   }
   const name = options.serviceName ?? "pi-agent-service";
   if (!/^[a-z][a-z0-9-]{0,47}$/.test(name)) throw new Error("serviceName must start with a lowercase letter and contain at most 48 lowercase letters, digits, or hyphens.");
-  const identity = [name, options.projectDir, options.configPath, options.dataDir].map((s) => options.platform === "win32" ? p.normalize(s).toLowerCase() : p.normalize(s));
+  if(options.entryPath!==undefined&&(!p.isAbsolute(options.entryPath)||/[\x00-\x1f]/.test(options.entryPath)||p.relative(options.projectDir,options.entryPath)!=='agent-host.mjs'||p.relative(options.projectDir,options.configPath)!=='config.json'))throw new Error('entryPath must be the absolute project-local agent-host.mjs path with the matching config.json.');
+  const identity = [name, options.projectDir, options.configPath, options.dataDir,...(options.entryPath?[options.entryPath]:[])].map((s) => options.platform === "win32" ? p.normalize(s).toLowerCase() : p.normalize(s));
   const ownerId = `pi-durable-service:${createHash("sha256").update(JSON.stringify(identity)).digest("hex")}`;
   const serviceDirectory = p.join(options.dataDir, "service");
   const cli = p.join(options.projectDir, "dist", "src", "cli.js");
-  const argv = [cli, "serve", "--config", options.configPath];
+  const argv = options.entryPath?[options.entryPath]:[cli, "serve", "--config", options.configPath];
   const logs = p.join(options.dataDir, "logs");
   const artifacts: ServicePlan["artifacts"] = [];
   const commands = {} as ServicePlan["commands"];
@@ -138,6 +141,8 @@ else {
   @{ installed = $true; name = $taskName; state = [string]$task.State; lastTaskResult = $info.LastTaskResult; lastRunTime = [string]$info.LastRunTime } | ConvertTo-Json -Compress
 }
 ` });
+    // Built-in Windows PowerShell 5.1 treats UTF-8 without BOM as ANSI.
+    for(const artifact of artifacts)if(artifact.path.endsWith('.ps1'))artifact.content='\ufeff'+artifact.content;
     for (const action of actions) commands[action] = [{ file: windowsPowerShell, args: ["-NoProfile", "-NonInteractive", "-ExecutionPolicy", "Bypass", "-File", manager, "-Action", action], description: `${action} the owned per-user scheduled task` }];
     return { platform: options.platform, serviceName: name, ownerId, serviceDirectory, installPath: taskXml, target: name, artifacts, commands };
   }
@@ -157,7 +162,7 @@ else {
   <key>ProgramArguments</key><array>${[options.nodePath, ...argv].map((s) => `<string>${xml(s)}</string>`).join("")}</array>
   <key>WorkingDirectory</key><string>${xml(options.projectDir)}</string>
   <key>RunAtLoad</key><true/>
-  <key>KeepAlive</key><true/>
+  <key>KeepAlive</key>${options.entryPath?'<dict><key>SuccessfulExit</key><false/></dict>':'<true/>'}
   <key>ThrottleInterval</key><integer>10</integer>
   <key>ProcessType</key><string>Background</string>
   <key>StandardOutPath</key><string>${xml(p.join(logs, "service.stdout.log"))}</string>

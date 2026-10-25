@@ -95,6 +95,49 @@ Add `--service-config <config.json>` to connect an existing service; omit it to
 create the first agent from Pi. Deploy the entry, source modules and factory
 resources together when updating this local installation.
 
+## Agent lifecycle
+
+The `/durable` manager now groups **Owner controls**, **Verification and
+evolution**, and **Logs, login and archive**. Stopped managed agents remain
+visible. Large inventories page before rendering and keep creation/reconnection
+available on every page. `/durable-chat` still opens chat directly.
+
+```text
+/durable inspect <service/agent>
+/durable start <service/agent>
+/durable pause <service/agent>
+/durable resume <service/agent>
+/durable stop <service/agent>
+/durable restart <service/agent>
+/durable logs <service/agent>
+/durable criteria <service/agent>
+/durable verify <service/agent> --submission <id>
+/durable evolve <service/agent>
+/durable login <service/agent>
+/durable archive <service/agent>
+/durable connect
+```
+
+Stop/restart drain actual event, control, child and background work. A busy
+deadline preserves work and leaves admissions paused. The separate
+`/durable abort <agent> --background` action explicitly reviews cancellation of
+retained background work. A PID alone never proves ownership.
+
+Verification requires concrete configured assertions and produces passed,
+failed, inconclusive or unconfigured receipts bound to actual admissions,
+versions and output/contract hashes. Completed work is not automatically
+verified. Requested evolution keeps reflection drafts and candidates inactive
+until paired evaluation passes; drained promotion/rollback rebuild and smoke
+the project before an explicit restart. Native login installation has its own
+owned plan/review. Archive removes a stopped registration while retaining all
+project/state files for reconnection.
+
+Full lifecycle writes apply to projects with a matching console-managed
+descriptor. Legacy/custom services keep chat and read-only status through their
+existing owner; this update does not rewrite their code. A newly generated
+project carries its own `dist/src/console/control-cli.js`, verification CLI and
+evolution CLI, so operation does not depend on this extension or skill.
+
 ## Conversation panel
 
 The header identifies the service/agent, control chat or selected task,

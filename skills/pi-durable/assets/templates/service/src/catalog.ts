@@ -53,6 +53,7 @@ export class Catalog {
   agents() { return this.db.prepare("SELECT a.id,a.name,a.active,(SELECT COUNT(*) FROM jobs j WHERE j.agentId=a.id AND j.status IN ('queued','running')) AS pending FROM agents a ORDER BY a.id").all(); }
   jobs(agentId: string): Job[] { return this.db.prepare('SELECT * FROM jobs WHERE agentId=? ORDER BY rowid DESC LIMIT 100').all(agentId).map(r => ({...r,event:JSON.parse(String(r.event))}) as unknown as Job); }
   job(agentId:string,id:string):Job|undefined {const row=this.db.prepare('SELECT * FROM jobs WHERE agentId=? AND id=?').get(agentId,id);return row?{...row,event:JSON.parse(String(row.event))} as unknown as Job:undefined;}
+  counts(agentId:string):Record<string,number>{return Object.fromEntries(this.db.prepare('SELECT status,COUNT(*) AS count FROM jobs WHERE agentId=? GROUP BY status').all(agentId).map(row=>[String(row.status),Number(row.count)]));}
   next(agentId: string): Job | undefined { const row = this.db.prepare("SELECT * FROM jobs WHERE agentId=? AND status='queued' ORDER BY rowid LIMIT 1").get(agentId); return row ? {...row,event:JSON.parse(String(row.event))} as unknown as Job : undefined; }
   update(id: string, status: string, fields: {conversationId?:number;submissionId?:number;error?:string;result?:string} = {}) {
     this.db.prepare('UPDATE jobs SET status=?,conversationId=COALESCE(?,conversationId),submissionId=COALESCE(?,submissionId),error=?,result=? WHERE id=?').run(status,fields.conversationId ?? null,fields.submissionId ?? null,fields.error ?? null,fields.result ?? null,id);

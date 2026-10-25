@@ -41,6 +41,12 @@ Resolve each `configPath` against that connections file. Resolve `dataDir` again
 
 For the new-agent form, base-folder selection, compact-terminal review and no-mutation plan API, read [agent creation](agent-creation.md). `/durable list` remains a noninteractive inventory.
 
+For lifecycle controls, actual duty verification, independent project operation,
+login startup, archive/reconnect and requested evolution, read
+[agent lifecycle](agent-lifecycle.md). The manager keeps stopped agents visible.
+Management mutations require a matching console-owned project descriptor;
+custom external services retain chat/read-only operations through their owners.
+
 Reserve `/durable` and `/durable-chat` for these persistent services. Do not
 register generic `/agents` or `/agent` aliases: those names can refer to the
 harness's own agents. Keep this namespace in generated help, examples and tests.

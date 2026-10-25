@@ -16,6 +16,7 @@ Use Pi Durable as an application runtime. Use Pi Coding Agent when the task call
 - For startup, restart, logs, install/start/stop/status/uninstall on Windows or macOS, read [service lifecycle](references/service-lifecycle.md).
 - To configure, run, smoke-test, or connect the bundled CLI/API starter, read [template operations](references/template-operations.md).
 - To create a Durable agent from Pi with an explicit base folder and an independent service process, read [agent creation](references/agent-creation.md).
+- To start, pause, drain, stop, recover, verify actual duty, archive/reconnect or evolve console-created agents, read [the complete agent lifecycle](references/agent-lifecycle.md).
 - To install the console, list agents, or chat from Pi Coding Agent, read [Pi console extension](references/pi-extension.md).
 - To generate a supervisor, bounded parallel workers, or an author/reviewer/refiner chain, read [subagent templates](references/subagent-templates.md) and select `scripts/scaffold.py <output> --profile supervisor|map-reduce|review-refine`.
 - To use an existing Pi Codex OAuth account through a read-only credential bridge, read [Codex provider](references/codex-provider.md).
@@ -64,3 +65,5 @@ Promote only the exact passing candidate within the requested scope while the se
 ## Acceptance
 
 Check: duplicate event causes one job; two agents receive independent jobs; task thread survives restart; late chat reattaches; a poll failure does not advance its checkpoint; invalid webhook signatures admit nothing; an idle service makes no model calls; a second owner cannot open the same state directory; shutdown closes the owner; failed jobs are visible. Move a generated project and operate without access to the skill. Verify evidence survives restart, no-request evolution remains inactive, failed/stale/tampered candidates cannot promote, and accepted changes can roll back. Exercise only configured events and authorized external actions. Record the native platform and real provider actually tested.
+
+For console lifecycle work also verify stopped inventory, pause/resume persistence, actual control/child/background task draining, busy shutdown preserving work, authenticated owner recovery, contract-bound passed/failed/inconclusive duty receipts, and archive/reconnect retaining source and state. A completed model response alone never establishes that the agent fulfilled its duty.

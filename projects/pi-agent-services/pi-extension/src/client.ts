@@ -262,8 +262,9 @@ export class DurableClient {
     const submission = await this.wait(agentId, receipt, options);
     return { receipt, submission, requestId: receipt.requestId };
   }
-  async abort(agentId: string, options: ConversationOptions = {}): Promise<{ aborted: boolean }> {
-    const value = await this.request(agentPath(agentId) + '/abort' + conversationSuffix(options), {}, options);
+  async abort(agentId: string, options: ConversationOptions & {background?:boolean} = {}): Promise<{ aborted: boolean }> {
+    if(options.background!==undefined&&typeof options.background!=='boolean')throw inputError();
+    const value = await this.request(agentPath(agentId) + '/abort' + conversationSuffix(options), options.background?{background:true}:{}, options);
     if (!record(value) || value.aborted !== true) throw new DurableClientError('invalid_response', 'The local durable service returned an invalid cancellation receipt.');
     return { aborted: true };
   }
