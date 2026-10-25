@@ -1,6 +1,8 @@
 # Pi Coding Agent console extension
 
-Use this optional console when the user wants to list, inspect, and talk to existing Durable agents from Pi's terminal. The extension targets `@earendil-works/pi-coding-agent` and `pi-tui` 0.84.2, Node 24+, and the bundled service HTTP API. It is a client of the owning service; it does not register agents in Codex or replace their service process.
+Use this optional console to create, list, inspect, and talk to Durable agents from Pi's terminal. The extension targets `@earendil-works/pi-coding-agent` and `pi-tui` 0.84.2, Node 24+, and the bundled service HTTP API. Each new agent owns an independent service project and process; existing services retain their owners. It does not register agents in Codex.
+
+Use the bundled console contracts below for ordinary generation and offline preparation. Installed declaration/documentation checks belong to API migrations and host compatibility investigations.
 
 ## Generate and connect
 
@@ -10,7 +12,9 @@ Run the helper relative to this skill, from the user's workspace:
 uv run --script scripts/scaffold-pi-extension.py <extension-directory> --service-config <service-directory>/config.json --service-id local --with-tests
 ```
 
-Use a destination outside the skill. The helper refuses nonempty destinations, validates the service's `127.0.0.1` host, port, and state path, and writes `durable-agents.json` with a relative service-config path. Keep extension and service on the same filesystem volume. The manifest hashes the generated files and records the Pi version; the generated extension needs no skill or original repository. Acceptance tests are copied only when present in the bundle; runtime payloads can omit them.
+Omit `--service-config` when creating the first agent; the console starts with an empty registry and exposes the creation action.
+
+Use a destination outside the skill. The helper refuses nonempty destinations, validates the service's `127.0.0.1` host, port, and state path, and writes `durable-agents.json` with a relative service-config path. Keep extension and service on the same filesystem volume. The manifest hashes the generated files and records the Pi version. The helper also copies the independent service template into `service-template/` beside the extension, so creation works after moving the console without this skill or the original repository. Acceptance tests are copied only when present in the bundle; runtime payloads can omit them. Update an older generated console's entry, source modules, and `service-template/` together.
 
 From the generated extension directory:
 
@@ -35,13 +39,17 @@ Resolve each `configPath` against that connections file. Resolve `dataDir` again
 
 ## Operate agents
 
+For the new-agent form, base-folder selection, compact-terminal review and no-mutation plan API, read [agent creation](agent-creation.md). `/durable list` remains a noninteractive inventory.
+
 Reserve `/durable` and `/durable-chat` for these persistent services. Do not
 register generic `/agents` or `/agent` aliases: those names can refer to the
 harness's own agents. Keep this namespace in generated help, examples and tests.
 
 | Command | Use |
 | --- | --- |
-| `/durable` | List registered agents across configured services. |
+| `/durable` | Open the terminal manager with existing agents and a create action; print inventory in RPC. |
+| `/durable new` | Create an independent agent and choose its base folder. |
+| `/durable list` | Print registered agents without opening the manager. |
 | `/durable services` | Inspect connection IDs and available endpoints. |
 | `/durable status [service]` | Inspect service/model/queue status when supported. |
 | `/durable-chat` | Choose an agent and enter interactive chat. |

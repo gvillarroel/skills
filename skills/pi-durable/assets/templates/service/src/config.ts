@@ -4,11 +4,12 @@ import { dirname, resolve, relative, isAbsolute } from 'node:path';
 import { parseEnv } from 'node:util';
 import type { ModelThinkingLevel } from '@earendil-works/pi-ai';
 import type { ModelChoice } from './model-selection.js';
+import { validateWorkspaceRoot } from './tools/workspace.js';
 
 export interface SubagentRole {id:string;instructions:string;instructionsFile?:string;modelChoice?:ModelChoice}
 export interface AgentConfig {
   id: string; name: string; instructions: string; instructionsFile?: string; repositories: string[];
-  modelChoice?:ModelChoice;
+  modelChoice?:ModelChoice; workspaceRoot?:string;
   subagents?:{roles:SubagentRole[];maxChildrenPerCall?:number;maxChildrenPerRun?:number;maxTaskChars?:number;maxResultChars?:number};
 }
 export interface ServiceConfig {
@@ -72,6 +73,7 @@ export async function loadConfig(path: string): Promise<ServiceConfig> {
     if (!/^[a-z][a-z0-9-]{0,47}$/.test(agent.id) || names.has(agent.id) || typeof agent.name !== 'string' || !agent.name || typeof agent.instructions !== 'string' || !Array.isArray(agent.repositories) || agent.repositories.some(r => typeof r !== 'string' || !/^[a-z0-9_.-]+\/[a-z0-9_.-]+$/i.test(r))) throw new Error('Agent IDs must be unique lowercase names and repositories must use owner/name.');
     names.add(agent.id); agent.repositories = [...new Set(agent.repositories.map(r => r.toLowerCase()))];
     validateModelChoice(agent.modelChoice);
+    if(agent.workspaceRoot!==undefined)agent.workspaceRoot=await validateWorkspaceRoot(agent.workspaceRoot);
     await loadPrompt(agent);
     if(agent.subagents!==undefined){
       const settings=agent.subagents;

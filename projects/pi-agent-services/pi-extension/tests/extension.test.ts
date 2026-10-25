@@ -5,7 +5,7 @@ import { registerDurableExtension } from '../extension.js';
 import { DurableClientError, DurableSendError, type AdmissionReceipt, type ServiceConnection } from '../src/client.js';
 
 interface Call { service: string; method: string; args: any[] }
-function fixture(options: { services?: number; duplicate?: boolean; hasUI?: boolean } = {}) {
+function fixture(options: { services?: number; duplicate?: boolean; hasUI?: boolean; creationWizard?:any } = {}) {
   const calls: Call[] = [];
   const commands = new Map<string, any>();
   const tools = new Map<string, any>();
@@ -57,6 +57,7 @@ function fixture(options: { services?: number; duplicate?: boolean; hasUI?: bool
     loadConnections: async () => ({ connections }),
     createClient: (connection: ServiceConnection) => clients.find(client => client.connection.id === connection.id)!,
     createRequestId: () => 'stable-request-id', waitTimeoutMs: 2_000, pollIntervalMs: 5,
+    creationWizard:options.creationWizard,
   });
   const output = () => JSON.stringify({ entries, notifications });
   async function command(args: string, name = 'durable') { await commands.get(name).handler(args, ctx); }
@@ -72,6 +73,45 @@ test('registers only Durable-namespaced commands and a tool without model messag
   await f.command('help');
   assert.equal(f.calls.length, 0);
   assert.match(f.output(), /send|chat/);
+});
+
+test('new and create route to a local creation wizard without a model or an existing service',async()=>{
+  const starts:any[]=[];
+  const f=fixture({services:0,creationWizard:async(_ctx:any,options:any)=>{starts.push(options);return undefined;}});
+  await f.command('new');await f.command('create');
+  assert.equal(starts.length,2);assert.equal(f.calls.length,0);
+  assert.ok(starts[0].signal instanceof AbortSignal);
+  assert.equal(starts[0].connectionsFile,undefined);
+  assert.ok(f.commands.get('durable').getArgumentCompletions('n').some((item:any)=>item.value==='new'));
+  assert.equal(f.statuses.at(-1)[1],undefined);
+});
+
+test('terminal manager and empty chat picker expose creation with a base folder',async()=>{
+  let count=0;
+  const f=fixture({services:0,creationWizard:async()=>{count++;return undefined;}});
+  f.ctx.mode='tui';
+  f.ctx.ui.select=async(title:string,choices:string[])=>{
+    assert.match(title,/Pi Durable/);assert.ok(choices.some(value=>/Create new agent.*base folder/.test(value)));
+    return choices.find(value=>value.startsWith('+ Create'));
+  };
+  await f.command('');await f.command('','durable-chat');
+  assert.equal(count,2);assert.equal(f.calls.length,0);
+});
+
+test('creation reports the independent folder and running process and offers chat',async()=>{
+  const f=fixture({creationWizard:async()=>({target:'new-agent/new-agent',baseDir:'C:/My workspace',projectDir:'C:/My workspace/.pi/durable/new-agent',configPath:'C:/My workspace/.pi/durable/new-agent/config.json',pid:12345,status:'running'})});
+  f.ctx.ui.select=async(title:string,choices:string[])=>{assert.match(title,/ready/);assert.ok(choices.includes('Open chat now'));return 'Back to Pi';};
+  await f.command('new');
+  assert.match(f.output(),/Created and running: new-agent\/new-agent/);
+  assert.match(f.output(),/C:\/My workspace/);assert.match(f.output(),/12345/);
+  assert.equal(f.calls.length,0);
+});
+
+test('creation rejects noninteractive use and unexpected arguments before mutation',async()=>{
+  let count=0;const f=fixture({hasUI:false,creationWizard:async()=>{count++;}});
+  await f.command('new');assert.match(f.output(),/needs Pi UI/);
+  await f.command('new C:/ambiguous');assert.match(f.output(),/creation form/);
+  assert.equal(count,0);
 });
 
 test('lists agents across configured services and reports service status', async () => {

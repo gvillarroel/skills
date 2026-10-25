@@ -35,31 +35,43 @@ def read_service_config(path: Path) -> dict:
     return value
 
 
-def scaffold(destination: Path, service_config: Path, *, service_id: str = "local", with_tests: bool = False) -> dict:
+def scaffold(destination: Path, service_config: Path | None = None, *, service_id: str = "local", with_tests: bool = False) -> dict:
     skill = Path(__file__).resolve().parents[1]
     destination = destination.resolve()
-    service_config = service_config.resolve(strict=True)
+    service_config = service_config.resolve(strict=True) if service_config is not None else None
     if destination == skill or skill in destination.parents:
         raise ValueError("Generate the extension outside the read-only skill bundle.")
     if destination.exists() and (not destination.is_dir() or any(destination.iterdir())):
         raise ValueError("The destination must be absent or an empty directory.")
     if not re.fullmatch(r"[a-z][a-z0-9-]{0,63}", service_id):
         raise ValueError("The service ID must start with a lowercase letter and use lowercase letters, digits, or hyphens (64 characters maximum).")
-    read_service_config(service_config)
-    try:
-        relative_config = Path(os.path.relpath(service_config, destination)).as_posix()
-    except ValueError as error:
-        raise ValueError("Place the extension and service config on the same filesystem volume so their connection path can remain relative.") from error
+    relative_config = None
+    if service_config is not None:
+        read_service_config(service_config)
+        try:
+            relative_config = Path(os.path.relpath(service_config, destination)).as_posix()
+        except ValueError as error:
+            raise ValueError("Place the extension and service config on the same filesystem volume so their connection path can remain relative.") from error
     template = skill / "assets/templates/pi-extension"
     if not (template / "extension.ts").is_file() or not (template / "package.json").is_file():
         raise ValueError("The Pi extension template is missing from this bundle.")
+    service_template = skill / "assets/templates/service"
+    if not (service_template / "package-lock.json").is_file():
+        raise ValueError("The independent service template is missing from this bundle.")
     tests = skill / "assets/examples/pi-extension-acceptance"
     destination.mkdir(parents=True, exist_ok=True)
     shutil.copytree(template, destination, dirs_exist_ok=True)
+    # Ship the independent factory payload with the console, rather than linking
+    # a running extension back to this skill or to its original checkout.
+    shutil.copytree(
+        service_template,
+        destination / "service-template",
+        ignore=shutil.ignore_patterns("node_modules", ".cache", "dist", "state", "*.log"),
+    )
     included_tests = with_tests and tests.is_dir()
     if included_tests:
         shutil.copytree(tests, destination / "tests")
-    connections = {"version": 1, "services": [{"id": service_id, "configPath": relative_config}]}
+    connections = {"version": 1, "services": [{"id": service_id, "configPath": relative_config}] if relative_config else []}
     (destination / "durable-agents.json").write_text(json.dumps(connections, indent=2) + "\n", encoding="utf-8")
     package = json.loads((destination / "package.json").read_text(encoding="utf-8"))
     files = {
@@ -72,6 +84,7 @@ def scaffold(destination: Path, service_config: Path, *, service_id: str = "loca
         "template": "pi-durable-console-pi-0.84.2",
         "runtimeSource": {"package": "@earendil-works/pi-coding-agent", "version": "0.84.2"},
         "runtimeIndependent": True,
+        "agentCreationIncluded": True,
         "tests_included": included_tests,
         "dependencies": package.get("dependencies", {}),
         "peerDependencies": package.get("peerDependencies", {}),
@@ -79,13 +92,13 @@ def scaffold(destination: Path, service_config: Path, *, service_id: str = "loca
         "files": files,
     }
     (destination / "scaffold-manifest.json").write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
-    return {"destination": str(destination), "template": manifest["template"], "tests_included": included_tests, "serviceId": service_id}
+    return {"destination": str(destination), "template": manifest["template"], "tests_included": included_tests, "serviceId": service_id if relative_config else None}
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("destination", type=Path)
-    parser.add_argument("--service-config", required=True, type=Path)
+    parser.add_argument("--service-config", type=Path, help="Optional existing service; omit to create the first agent from Pi.")
     parser.add_argument("--service-id", default="local")
     parser.add_argument("--with-tests", action="store_true")
     args = parser.parse_args()

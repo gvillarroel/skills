@@ -57,7 +57,7 @@ export class AgentService {
     const provided=Buffer.from(request.headers.authorization??'');const expected=Buffer.from(`Bearer ${this.token}`);
     if(provided.length!==expected.length||!timingSafeEqual(provided,expected))throw new HttpError(401,'A local console bearer token is required.');
     if(request.headers.origin && request.headers.origin!==this.url)throw new HttpError(403,'Cross-origin requests are disabled.');
-    if(request.method==='GET' && url.pathname==='/v1/agents'){json(response,{agents:this.catalog.agents(),mode:this.config.provider.kind});return;}
+    if(request.method==='GET' && url.pathname==='/v1/agents'){json(response,{agents:this.catalog.agents().map(agent=>{const workspaceRoot=this.config.agents.find(item=>item.id===agent.id)?.workspaceRoot;return {...agent,...(workspaceRoot?{workspaceRoot}:{})};}),mode:this.config.provider.kind});return;}
     if(request.method==='POST' && url.pathname==='/v1/events'){
       const value=JSON.parse((await rawBody(request)).toString('utf8')) as AgentEvent;
       if(value.type!=='pull_request.opened'||!Number.isInteger(value.number)||value.number<1||!this.config.agents.some(a=>a.repositories.includes(String(value.repository).toLowerCase())))throw new HttpError(400,'Expected an allowlisted pull_request.opened event.');

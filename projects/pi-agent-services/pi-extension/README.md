@@ -1,11 +1,12 @@
 # Pi Durable agent console extension
 
-Use this native Pi Coding Agent extension to list local durable agents, inspect
-jobs and public history, and exchange messages with a selected agent. It talks
-to the existing service over authenticated loopback HTTP; it does not own or
-restart the service. The tested extension API is Pi Coding Agent 0.84.2 on
-Windows with Node 24. The independent service uses Pi Durable 1.3.0; these are
-different package versions.
+Use this native Pi Coding Agent extension to create durable agents with an
+explicit base folder, list existing agents, inspect jobs and public history,
+and exchange messages. Each new agent runs in its own independent service;
+existing services retain their owners and need no restart. Connections use
+authenticated loopback HTTP. Native Windows validation covers Pi 1.4.0 and the
+template's pinned 0.84.2 with Node 24. The independent service uses Pi Durable
+1.3.0; these are different package versions.
 
 ## Load in Pi
 
@@ -50,17 +51,49 @@ and `/durable-chat`; it reserves no generic `/agents` or `/agent` aliases.
 
 ```text
 /durable
+/durable new
+/durable list
 /durable-chat
 /durable-chat repo-quality
 /durable-chat delivery-watch Explain your role and current limits.
 ```
 
-`/durable` lists registered agents with service-qualified IDs such as
-`local/repo-quality`. `/durable-chat` opens a chooser; selecting an agent opens a message
+`/durable` opens the terminal manager with a visible **Create new agent (choose
+base folder)** action. `/durable list` prints registered agents with
+service-qualified IDs such as `local/repo-quality`. `/durable-chat` opens a chooser; selecting an agent opens a message
 panel with its public conversation history and a fixed message editor. Send a
 message and read its answer in the same view. Escape or `/exit` leaves the
 panel; it does not abort work.
 `/durable-chat <id> <message>` sends a one-shot message and waits for its response.
+
+## Create an agent and choose its folder
+
+Use `/durable new`. The native form collects the name/ID, existing absolute base
+folder, purpose, task profile, model policy and optional PR repository. The
+folder editor starts with Pi's current working directory; replace it with the
+folder you want, including paths with spaces. The task-aware `latest` policy
+selects a current model and supported reasoning level before service admission.
+
+The final review shows the exact base folder, project path and model policy.
+PgUp/PgDn or Up/Down scroll; Tab or Left/Right selects Cancel/Create and Enter
+accepts. Cancel is selected initially. Escape cancels. The review preserves
+literal Windows paths and keeps its actions visible in compact terminals.
+
+The new independent project lives at `<base-folder>/.pi/durable/<agent-id>/`.
+Its tools can list and read text inside the chosen folder. Shell execution and
+file modification are not enabled. Creation installs locked dependencies,
+builds, starts a background Node owner and registers the service. Open its chat
+from the completion prompt or `/durable-chat <service/agent>`. The process
+continues after Pi closes; automatic login startup is a separate action. Its
+local `AGENTS.md`, logs and creation receipt explain operation and recovery.
+
+The installed factory resources are a generated, ignored `service-template/`
+copy beside this extension. Canonical sources remain under `skills/pi-durable`.
+To generate a fresh independent console including these resources, use
+`uv run --script skills/pi-durable/scripts/scaffold-pi-extension.py <new-directory>`.
+Add `--service-config <config.json>` to connect an existing service; omit it to
+create the first agent from Pi. Deploy the entry, source modules and factory
+resources together when updating this local installation.
 
 ## Conversation panel
 

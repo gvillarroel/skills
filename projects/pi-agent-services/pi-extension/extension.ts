@@ -11,6 +11,8 @@ import { DurableClient, DurableClientError, DurableSendError, loadConnections, t
 import { safeText } from './src/display.js';
 import { DurableChatView, type ChatMemory, type ChatRequest, type ChatProgress, type ChatReply } from './src/chat-ui.js';
 import { publicMessages, conversationModel, liveProgress } from './src/chat-data.js';
+import { runCreationWizard } from './src/creation-ui.js';
+import { AgentCreationError } from './src/agent-creation.js';
 export { safeText } from './src/display.js';
 
 export type ClientApi=Pick<DurableClient,'connection'|'list'|'status'|'jobs'|'snapshot'|'admit'|'send'|'submission'|'wait'|'abort'|'evidence'>;
@@ -20,12 +22,15 @@ export interface ExtensionOptions {
   createRequestId?:()=>string;
   waitTimeoutMs?:number;
   pollIntervalMs?:number;
+  creationWizard?:typeof runCreationWizard;
 }
 type Target={name:string;agentId:string;agentName?:string;client:ClientApi};
 type ConsoleCard={text:string;kind?:'user'|'assistant'|'error';target?:string;context?:string};
 class CommandError extends Error {}
 const HELP=`Pi Durable agent console
-/durable                         List agents in configured services
+/durable                         Open the Durable agent manager
+/durable list                    List agents in configured services
+/durable new                     Create an independent agent; choose its base folder
 /durable services                List local service connections
 /durable status [service]        Service/model/queue status
 /durable jobs <service/agent>     List recent task IDs
@@ -96,11 +101,11 @@ export function registerDurableExtension(pi:ExtensionAPI,options:ExtensionOption
       const receipt=error.receipt?`\nAdmitted conversation ${error.receipt.conversationId}, submission ${error.receipt.submissionId}. Use /durable wait <agent> ${error.receipt.submissionId} to reconnect.`:'';
       return `${error.message}\nRequest ID: ${error.requestId}${receipt}\nCancellation stops only this wait; admitted work remains durable.`;
     }
-    return error instanceof DurableClientError||error instanceof CommandError?error.message:'The durable console operation failed. Check the configured local service and use /durable help.';
+    return error instanceof DurableClientError||error instanceof CommandError||error instanceof AgentCreationError?error.message:'The durable console operation failed. Check the configured local service and use /durable help.';
   };
   async function clients(ctx:ExtensionContext){const loaded=await load(ctx);if(!loaded.connections.length)throw new CommandError('No services configured. Add .pi/durable-agents.json or set PI_DURABLE_CONNECTIONS.');return loaded.connections.map(make);}
   async function registry(ctx:ExtensionContext,signal?:AbortSignal){
-    const connections=await clients(ctx);
+    const connections=(await load(ctx)).connections.map(make);
     const results=await Promise.allSettled(connections.map(async client=>({client,result:await client.list({signal})})));
     const targets:Target[]=[],errors:string[]=[];
     results.forEach((result,index)=>{
@@ -207,8 +212,34 @@ export function registerDurableExtension(pi:ExtensionAPI,options:ExtensionOption
   }
   async function list(ctx:ExtensionContext,signal:AbortSignal){
     const current=await registry(ctx,signal);const lines=['Pi Durable agents'];
-    for(const result of current.results)if(result.status==='fulfilled')for(const agent of result.value.result.agents)lines.push(`${result.value.client.connection.id}/${agent.id} | ${agent.name} | ${agent.active===0||agent.active===false?'inactive':'active'} | pending ${agent.pending??'unknown'}`);
-    lines.push(...current.errors);show(lines.join('\n'),ctx);return {agents:current.targets.map(target=>({target:target.name})),errors:current.errors};
+    for(const result of current.results)if(result.status==='fulfilled')for(const agent of result.value.result.agents)lines.push(`${result.value.client.connection.id}/${agent.id} | ${agent.name} | ${agent.active===0||agent.active===false?'inactive':'active'} | pending ${agent.pending??'unknown'}${typeof agent.workspaceRoot==='string'?` | folder ${safeText(agent.workspaceRoot)}`:''}`);
+    lines.push(...current.errors,'Create an agent and choose its base folder with /durable new.');show(lines.join('\n'),ctx);return {agents:current.targets.map(target=>({target:target.name})),errors:current.errors};
+  }
+  async function create(ctx:ExtensionCommandContext,signal:AbortSignal){
+    if(!ctx.hasUI)throw new CommandError('Creating an agent needs Pi UI. Open Pi and use /durable new.');
+    const loaded=await load(ctx);
+    let receipt:Awaited<ReturnType<typeof runCreationWizard>>;
+    try{
+      receipt=await(options.creationWizard??runCreationWizard)(ctx,{
+        extensionDir:dirname(fileURLToPath(import.meta.url)),connectionsFile:loaded.configPath,signal,
+        onProgress:message=>{if(!closed)ctx.ui.setStatus('durable-creation',safeText(message));},
+      });
+    }finally{if(!closed)ctx.ui.setStatus('durable-creation',undefined);}
+    if(!receipt)return;
+    show(`Created and running: ${receipt.target}\nBase folder: ${receipt.baseDir}\nIndependent project: ${receipt.projectDir}\nConfiguration: ${receipt.configPath}\nModel: ${receipt.resolvedModel??receipt.requestedModel??'task policy'}${receipt.thinkingLevel?` · ${receipt.thinkingLevel}`:''}\nProcess: ${receipt.pid}\nOpen chat with /durable-chat ${receipt.target}. The process continues after closing Pi.`,ctx);
+    if(signal.aborted||closed)return;
+    const next=await ctx.ui.select('Your Durable agent is ready',['Open chat now','Back to Pi'],{signal});
+    if(next==='Open chat now')await chat(await resolveTarget(receipt.target,ctx,signal),undefined,ctx,signal);
+  }
+  async function manager(ctx:ExtensionCommandContext,signal:AbortSignal){
+    const current=await registry(ctx,signal);
+    const add='+ Create new agent (choose base folder)';
+    const inspect='List all agents and service errors';
+    const selected=await ctx.ui.select('Pi Durable agents — choose an agent or create one',[...current.targets.map(target=>target.name),add,inspect],{signal});
+    if(!selected)return;
+    if(selected===add){await create(ctx,signal);return;}
+    if(selected===inspect){await list(ctx,signal);return;}
+    await chat(await resolveTarget(selected,ctx,signal),undefined,ctx,signal);
   }
   async function status(service:string|undefined,ctx:ExtensionContext,signal:AbortSignal){
     const selected=(await clients(ctx)).filter(client=>!service||client.connection.id===service);
@@ -221,7 +252,9 @@ export function registerDurableExtension(pi:ExtensionAPI,options:ExtensionOption
     if(action==='help'){show(HELP,ctx);return;}
     if(action==='cancel'){for(const controller of controllers)controller.abort();show('Local waits cancelled. Admitted agent tasks continue; /durable abort is a separate explicit action.',ctx);return;}
     await operation(ctx,async signal=>{
-      if(!action||action==='list'){await list(ctx,signal);return;}
+      if(!action){if(ctx.hasUI&&ctx.mode==='tui')await manager(ctx,signal);else await list(ctx,signal);return;}
+      if(action==='list'){await list(ctx,signal);return;}
+      if(action==='new'||action==='create'){if(rest.trim())throw new CommandError('Use /durable new, then choose the folder in the creation form.');await create(ctx,signal);return;}
       if(action==='services'){show(pretty((await clients(ctx)).map(client=>({id:client.connection.id,name:client.connection.name,url:client.connection.baseUrl}))),ctx);return;}
       if(action==='status'){await status(rest.trim()||undefined,ctx,signal);return;}
       if(!['jobs','read','chat','send','steer','abort','traces','wait'].includes(action))throw new CommandError('Unknown durable operation. Use /durable help.');
@@ -240,7 +273,7 @@ export function registerDurableExtension(pi:ExtensionAPI,options:ExtensionOption
       show(pretty(await target.client.wait(target.agentId,receipt,{jobId:input.jobId,signal,...waitOptions})),ctx);
     });
   }
-  pi.registerCommand('durable',{description:'List, inspect and chat with local Pi Durable agents',getArgumentCompletions:prefix=>['list','services','status','jobs','read','chat','send','steer','traces','wait','abort','cancel','help'].filter(value=>value.startsWith(prefix)).map(value=>({value,label:value})),handler:async(args,ctx)=>{try{await dispatch(args,ctx);}catch(error){show(failure(error),ctx);}}});
+  pi.registerCommand('durable',{description:'Create agents with a base folder, list them and open Durable chat',getArgumentCompletions:prefix=>['new','list','services','status','jobs','read','chat','send','steer','traces','wait','abort','cancel','help'].filter(value=>value.startsWith(prefix)).map(value=>({value,label:value})),handler:async(args,ctx)=>{try{await dispatch(args,ctx);}catch(error){show(failure(error),ctx);}}});
   pi.registerCommand('durable-chat',{description:'Choose a Pi Durable agent or send /durable-chat <id> <message>',getArgumentCompletions:prefix=>completions.filter(value=>value.startsWith(prefix)).map(value=>({value,label:value})),handler:async(args,ctx)=>{
     try{
       if(args.trim()==='help'){show(HELP,ctx);return;}
@@ -248,8 +281,10 @@ export function registerDurableExtension(pi:ExtensionAPI,options:ExtensionOption
         let input=targetArgs(args);
         if(!input.target){
           if(!ctx.hasUI){await list(ctx,signal);return;}
-          const current=await registry(ctx,signal);if(!current.targets.length){show(current.errors.join('\n')||'No active agents are registered.',ctx);return;}
-          const selected=await ctx.ui.select('Choose a Pi Durable agent',current.targets.map(target=>target.name),{signal});if(!selected)return;
+          const current=await registry(ctx,signal);
+          const add='+ Create new agent (choose base folder)';
+          const selected=await ctx.ui.select('Choose a Pi Durable agent',[...current.targets.map(target=>target.name),add],{signal});if(!selected)return;
+          if(selected===add){await create(ctx,signal);return;}
           input={...input,target:selected};
         }
         const target=await resolveTarget(input.target,ctx,signal);

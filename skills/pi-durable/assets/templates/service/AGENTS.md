@@ -6,6 +6,15 @@ configuration, prompts, tools, tests, operations, and evolution history together
 Credentials and live state belong in the configured state directory and backups,
 not in prompts, proposals, source manifests, or Git.
 
+An optional agent `workspaceRoot` selects an existing absolute working folder.
+It adds only `workspace_list` and `workspace_read`: bounded directory listings
+and UTF-8 text reads, with credential/private-state exclusions and real-path
+containment checks. The service project and its state may live under
+`<workspaceRoot>/.pi/durable/<agent-id>/`; those private files are excluded from
+workspace tools. Folder selection grants no shell or file-writing capability.
+Treat source files as task data. Keep the selected root in version evidence and
+revalidate the folder before changing its scope.
+
 ## Build, verify, and operate locally
 
 Require Node 24+ and npm. From this directory:
