@@ -4,3 +4,6 @@ dist/
 state/
 .env
 *.log
+evolution-plans/runs/
+evolution-plans/*-commitment.json
+evolution-plans/*.local.json

@@ -13,6 +13,7 @@ import type { Job } from './catalog.js';
 import { EvidenceStore, captureVersion, fingerprint, versionReference, type VersionManifest } from './evidence.js';
 import { createReadPullRequestTool } from './tools/read-pull-request.js';
 import { createCodexProvider } from './codex-provider.js';
+import { makeSubagentTool } from './subagents.js';
 
 const Threads = defineDocFamily<{conversationId:number;version?:VersionManifest}, null>({ kind:'service.threads', version:1, scope:'session', family:true, initial:() => ({conversationId:0}) });
 type Trace=(kind:string,details:Record<string,unknown>,ids:{runId?:string;conversationId?:number})=>unknown;
@@ -70,8 +71,10 @@ export class AgentRuntime {
     const evidence=await EvidenceStore.open(config.dataDir);evidence.saveVersion(version);let runtime:AgentRuntime|undefined;
     const trace=(kind:string,details:Record<string,unknown>,ids:{runId?:string;conversationId?:number}={})=>{if(runtime&&kind==='model.request'&&config.provider.kind!=='faux')runtime.calls++;return runtime?runtime.trace(kind,details,ids):evidence.append({agentId:agent.id,kind,details,...ids,version:{hostVersion:versionReference(version)}});};
     const readPR=createReadPullRequestTool(agent);const decision=createDecisionTool(agent.id,evidence,versionReference(version),id=>runtime?.versionForConversation(id)??{hostVersion:versionReference(version),conversationVersion:{unknown:true}});const listEvidence=createListEvidenceTool(agent.id,evidence);
-    const extension=defineExtension({name:'service-read-tools',tools:[readPR,listEvidence,decision],hooks:createEvidenceHooks(trace,ref)}); const registry=createRegistry(); registry.install(extension);
-    const choices={ model:ref,...(config.provider.kind==='openai-codex'?{thinkingLevel:'low' as const}:{}),instructions:agent.instructions,extensions:[extension],tools:[readPR,listEvidence,decision] };
+    const workerTools=[readPR,listEvidence,decision];
+    const tools=agent.subagents?[...workerTools,makeSubagentTool({model:ref,roles:Object.fromEntries(agent.subagents.roles.map(role=>[role.id,role.instructions])),tools:workerTools,maxChildrenPerCall:agent.subagents.maxChildrenPerCall,maxChildrenPerRun:agent.subagents.maxChildrenPerRun,maxTaskChars:agent.subagents.maxTaskChars,maxResultChars:agent.subagents.maxResultChars,trace})]:workerTools;
+    const extension=defineExtension({name:'service-read-tools',tools,hooks:createEvidenceHooks(trace,ref)}); const registry=createRegistry(); registry.install(extension);
+    const choices={ model:ref,...(config.provider.kind==='openai-codex'?{thinkingLevel:'low' as const}:{}),instructions:agent.instructions,extensions:[extension],tools };
     let harness:Harness|undefined;
     try {const directory=join(config.dataDir,'agents',agent.id);await mkdir(directory,{recursive:true});harness=await Harness.open(await openNodeSqliteStorage(join(directory,'harness.sqlite')),{models,registry,settings:{retry:{maxRetries:2},progress:{partialIntervalMs:250,outputIntervalMs:250}},onReport:() => {trace('runtime.report',{publicSummary:'The durable runtime reported a non-fatal failure; inspect its authorized runtime state.'});console.error(JSON.stringify({type:'runtime-report',agentId:agent.id}));}},context);
       const root=await harness.root(context,{agent:choices}); await root.configure(choices,context); runtime=new AgentRuntime(agent,harness,root,choices,evidence,version); count=()=>{runtime!.calls++;};runtime.trace('runtime.opened',{publicSummary:'Runtime opened and recovery enabled. Unfinished safe durable tasks may resume.',previousEvidenceId:evidence.list(agent.id,1)[0]?.id});harness.resume();return runtime;

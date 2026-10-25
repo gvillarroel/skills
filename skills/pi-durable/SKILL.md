@@ -1,6 +1,6 @@
 ---
 name: pi-durable
-description: Builds independent Pi Durable agent applications with persistent named agents, event-triggered tasks, reconnectable chat, and Windows/macOS services. Adds observable evidence and explicitly requested self-improvement of prompts, tools, and scripts. Use for PR agents, durable queues, recovery, or evidence-based agent evolution.
+description: Builds independent Pi Durable applications with persistent event services, reconnectable chat, bounded specialist subagents, and requested trace, population or Pareto evolution. Use for PR agents, durable queues, recovery, Windows/macOS services, or evidence-based improvement of prompts, tools and scripts.
 ---
 
 # Pi Durable
@@ -16,9 +16,11 @@ Use Pi Durable as an application runtime. Use Pi Coding Agent when the task call
 - For startup, restart, logs, install/start/stop/status/uninstall on Windows or macOS, read [service lifecycle](references/service-lifecycle.md).
 - To configure, run, smoke-test, or connect the bundled CLI/API starter, read [template operations](references/template-operations.md).
 - To list, inspect, and chat with Durable agents from Pi Coding Agent, read [Pi console extension](references/pi-extension.md).
+- To generate a supervisor, bounded parallel workers, or an author/reviewer/refiner chain, read [subagent templates](references/subagent-templates.md) and select `scripts/scaffold.py <output> --profile supervisor|map-reduce|review-refine`.
 - To use an existing Pi Codex OAuth account through a read-only credential bridge, read [Codex provider](references/codex-provider.md).
 - Before copying an unfamiliar API or claiming platform support, read [version compatibility](references/version-compatibility.md).
 - For a generated agent that must operate without this skill, retain decision evidence, or improve its prompts/tools/scripts on request, read [independence and requested evolution](references/agent-evolution.md).
+- To generate bounded trace-distillation, population or Pareto study templates, read [evolution strategies](references/evolution-strategies.md). The project-local runner keeps development selection separate from one-way validation/holdout and never activates source changes itself.
 
 Read only what the requested mode needs. Execute the scaffolder without reading all template source. The template is a starting application, not code that extends the current chat's privileges or registers Pi sessions in another product.
 

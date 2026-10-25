@@ -1,4 +1,4 @@
 interface:
   display_name: "Pi Durable"
-  short_description: "Independent event agents with requested self-improvement"
-  default_prompt: "Use $pi-durable to create an independent persistent agent service with reconnectable chat on Windows and macOS, observable decision evidence, and a tested improvement workflow that runs only when I request it."
+  short_description: "Durable services, subagents and requested evolution"
+  default_prompt: "Use $pi-durable to generate an independent persistent service, bounded specialist subagents or evidence-based evolution templates, with reconnectable chat, observable decisions and evaluated improvements that run only when I request them."

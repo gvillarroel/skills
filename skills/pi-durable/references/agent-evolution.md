@@ -58,7 +58,9 @@ optimizer APIs into this pinned application.
 1. Define an observable goal from traces: for example fewer redundant PR reads
    with unchanged findings, or correct handling of a previously failing fixture.
    Record the goal, selected agent, exact allowed file paths, verifier, fixtures,
-   timeout and minimum required score improvement. Do not grant new permissions
+   timeout and minimum required score improvement. Configured specialist role
+   prompt files can be explicitly selected alongside the supervisor's active
+   prompt; unrelated prompt files cannot. Do not grant new permissions
    merely to improve a score.
 2. Use `npm run evolve -- request --config config.json --input request.json`.
    Request shape: `{agentId,goal,allowedPaths,verifierPath,fixturePaths,

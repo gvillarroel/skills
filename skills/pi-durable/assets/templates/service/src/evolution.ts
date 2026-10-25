@@ -157,13 +157,13 @@ export class EvolutionManager {
     if (!agent) throw new Error('Unknown agent.');
     text(input.goal,'goal');
     if (!Array.isArray(input.allowedPaths) || !input.allowedPaths.length || !Array.isArray(input.fixturePaths) || !input.fixturePaths.length) throw new Error('Declare exact allowedPaths and at least one trusted fixture.');
-    const primary = (agent as {instructionsFile?:string}).instructionsFile;
-    const activePrompt = primary ? relative(this.projectDir,isAbsolute(primary) ? primary : resolve(this.projectDir,primary)).split(sep).join('/') : undefined;
+    const promptFiles=[agent.instructionsFile,...(agent.subagents?.roles.map(role=>role.instructionsFile)??[])].filter((path):path is string=>!!path);
+    const activePrompts=new Set(promptFiles.map(path=>relative(this.projectDir,isAbsolute(path)?path:resolve(this.projectDir,path)).split(sep).join('/')));
     const allowedPaths = [...new Set(input.allowedPaths.map(localPath))].sort();
     for (const path of allowedPaths) {
-      if (path !== activePrompt && !/^src\/tools\/[a-z0-9][a-z0-9_-]*\.ts$/i.test(path) && !/^scripts\/[a-z0-9][a-z0-9_-]*\.(?:ts|mjs|js|py)$/i.test(path)) throw new Error('Patches may change only the active prompt or explicitly requested existing tool/script files.');
+      if (!activePrompts.has(path) && !/^src\/tools\/[a-z0-9][a-z0-9_-]*\.ts$/i.test(path) && !/^scripts\/[a-z0-9][a-z0-9_-]*\.(?:ts|mjs|js|py)$/i.test(path)) throw new Error('Patches may change only configured supervisor/specialist prompts or explicitly requested existing tool/script files.');
       if(path==='scripts/project.py')throw new Error('The generated management wrapper is outside the improvement surface.');
-      if (/(?:security|auth|credential|verif|validat|evol|manager|service|install)/i.test(path)) throw new Error('Management, validation, and security files are outside the improvement surface.');
+      if (!activePrompts.has(path) && /(?:security|auth|credential|verif|validat|evol|manager|service|install)/i.test(path)) throw new Error('Management, validation, and security files are outside the improvement surface.');
       await this.safe(path);
     }
     const verifierPath = localPath(input.verifierPath), fixturePaths = [...new Set(input.fixturePaths.map(localPath))].sort();

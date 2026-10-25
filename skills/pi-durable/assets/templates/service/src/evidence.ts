@@ -13,7 +13,7 @@ export interface EvidenceRecord {
 }
 export type VersionManifest = {
   version:1; digest:string; files:Array<{path:string;sha256:string;bytes:number}>;
-  policy:{agentId:string;repositories:string[];instructionsSha256:string;provider:{kind:string;model?:string}};
+  policy:{agentId:string;repositories:string[];instructionsSha256:string;provider:{kind:string;model?:string};subagents?:{roles:Array<{id:string;instructionsSha256:string}>;maxChildrenPerCall:number;maxChildrenPerRun:number;maxTaskChars:number;maxResultChars:number}};
 };
 const blockedKey=/(?:password|passwd|secret|token|api.?key|authorization|cookie|private.?key|environment|thinking|reasoning|chain.?of.?thought)/i;
 export function redactEvidenceText(text:string):string {
@@ -100,6 +100,6 @@ export async function captureVersion(projectDir:string,agent:AgentConfig,provide
   }
   for(const name of ['src','prompts','scripts','package.json','package-lock.json','tsconfig.json'])await inspect(join(root,name));
   files.sort((a,b)=>a.path.localeCompare(b.path));
-  const policy={agentId:agent.id,repositories:[...agent.repositories].sort(),instructionsSha256:fingerprint(agent.instructions).sha256,provider:{kind:provider.kind,...(provider.model?{model:provider.model}:{})}};
+  const policy={agentId:agent.id,repositories:[...agent.repositories].sort(),instructionsSha256:fingerprint(agent.instructions).sha256,provider:{kind:provider.kind,...(provider.model?{model:provider.model}:{})},...(agent.subagents?{subagents:{roles:agent.subagents.roles.map(role=>({id:role.id,instructionsSha256:fingerprint(role.instructions).sha256})).sort((a,b)=>a.id.localeCompare(b.id)),maxChildrenPerCall:agent.subagents.maxChildrenPerCall??4,maxChildrenPerRun:agent.subagents.maxChildrenPerRun??8,maxTaskChars:agent.subagents.maxTaskChars??6000,maxResultChars:agent.subagents.maxResultChars??12000}}:{})};
   const content={version:1 as const,files,policy};return {...content,digest:fingerprint(content).sha256};
 }

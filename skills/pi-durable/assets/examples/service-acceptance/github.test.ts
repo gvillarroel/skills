@@ -14,7 +14,9 @@ const pr = (number: number, created = number) => ({
 });
 
 async function server(handler: (req: IncomingMessage, res: ServerResponse) => void) {
-  const instance = createServer(handler);
+  // Ephemeral test servers can reuse ports while Undici still holds a socket
+  // from the previous closed fixture. Do not pool these short-lived connections.
+  const instance = createServer((request,response)=>{response.setHeader('connection','close');handler(request,response);});
   await new Promise<void>(resolve => instance.listen(0, '127.0.0.1', resolve));
   const address = instance.address();
   if (!address || typeof address === 'string') throw new Error('Missing server address');
