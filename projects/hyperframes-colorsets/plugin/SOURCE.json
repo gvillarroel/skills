@@ -1,0 +1,14 @@
+{
+  "repository": "https://github.com/heygen-com/hyperframes",
+  "release": "v0.8.199",
+  "commit": "42b84632a8d06cf86bd72633d03b38a7a8371a89",
+  "downloadedOn": "2026-10-25",
+  "upstreamFilesModified": false,
+  "coreSkills": ["hyperframes", "hyperframes-cli", "hyperframes-registry", "media-use"],
+  "localAdditions": ["skills/colorsets", "README-COLORSETS.md", "SOURCE.json"],
+  "paletteSourceBase": "skills repository root",
+  "paletteSources": [
+    "design/colorset1.yml",
+    "design/colorset2.yaml"
+  ]
+}

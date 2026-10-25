@@ -55,6 +55,8 @@ Use this file as the canonical list of skills to create, improve, or validate in
 
 ## Recent Validation Notes
 
+- 2026-10-25 — **HyperFrames plugin relocation:** moved the original 0.8.199 plugin and its native colorsets to `projects/hyperframes-colorsets/plugin`; translated the local package guide and examples to English, preserved the upstream workflow, and relocated the local marketplace entry alongside the existing Reflex XY entry. All 234 moved file hashes match; the original launcher reports 0.8.199; both palette sources match; pattern IDs, repository validation, independence tests and payload checks pass (4/4). The English distribution ZIP passes CRC and matches all 234 plugin files. This packaging-only change adds no standalone skill or behavior change. Commands, source provenance and validation scope: [HyperFrames plugin guide](docs/hyperframes-colorsets.md). Local verification evidence is kept under `projects/hyperframes-colorsets/artifacts/validation/`.
+
 ### 2026-10-25: Evidence collection and readiness guidelines for independent Pi agents
 
 - Added compact task-case collection and claim-specific readiness guidance, including prospective verification, material public decisions, version attribution, successes/failures, infrastructure classification and missing-data handling. Transfer operations to each generated runbook and adapt the active prompt; the model does not automatically read AGENTS.md.

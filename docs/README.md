@@ -11,6 +11,7 @@ A maintained collection of reusable skills, compact references, deterministic he
 - [Evaluation methodology](../evaluations/README.md)
 - [Skill authoring and generated bundle validation](skill-authoring.md)
 - [Pi Durable usage, feature selection, and tested recovery behavior](pi-durable.md)
+- [Original HyperFrames plugin with colorset1 and colorset2](hyperframes-colorsets.md)
 - [Colorset contract and skill output coverage](colorsets.md)
 
 ## Feedback from real projects
