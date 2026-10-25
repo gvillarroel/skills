@@ -183,6 +183,54 @@ private deliberation are not evidence to capture. Keep the Harness conversation
 database authoritative; do not reconstruct it from audit summaries. Inspect
 exports before sharing them: even public task text can contain sensitive data.
 
+### Collect useful task evidence and review readiness
+
+Define the observable duty and acceptance criteria before judging results.
+Configure the disabled-by-default duty contract where it fits the task, and
+arrange verification after representative completed tasks. Use a trusted task
+verifier for broader quality. Adapt the active `instructionsFile` and relevant
+specialist prompts to request material public decisions and factual completion
+summaries without changing the user's output format or permissions. The running
+Durable model does not automatically read this operations runbook.
+
+For each case used in improvement, link its goal/criterion and input reference,
+agent/job/conversation/submission IDs, source/prompt version and actual model,
+relevant tool calls/errors, observed output or artifact hashes, verification
+receipt and any attributable feedback. Keep expected and observed behavior
+separate. Record a short chosen action and observable basis through
+`list_evidence`/`record_decision` for a meaningful fallback, rejection, retry or
+escalation; do not invent retrospective reasoning or log every mechanical step.
+Preserve successes, failures and explicitly labeled negative controls. Separate
+task/tool defects from credentials, network, OS or evaluator failures.
+
+Before requesting improvement, write a private project-local readiness assessment
+with selected case/evidence IDs, versions, coverage, missing observations and the
+next bounded step. Use **insufficient**, **bounded reproduction**, or **ready for
+a bounded comparison**. A single reproducible defect can support a narrow tested
+fix; broader prompt/decision claims need varied independent cases and retained
+successes/regressions. There is no universal sufficient sample count. Missing
+criteria, results, usage or timing stay unknown; a completion claim is not a pass.
+
+These are operator/authoring guidelines, not a runtime sufficiency gate. The
+engine currently scans the latest 1000 non-filtered agent records, excludes
+`evolution.*`, then selects up to 20 recent records within 100 KB; it does not
+preserve whole task chains automatically. Inspect `evidenceSelection` and the
+actual exported `evidence.json` for attribution, relevant actions, outcomes,
+verification and versions. A candidate may cite only its exact request IDs.
+If essential evidence is missing, stop the proposal and report what is needed;
+do not rewrite sealed requests/packs or fabricate citations. Return
+`candidate: null` for insufficient model reflection, retaining the assessment
+outside candidate import. Preserve a private case index and authoritative durable
+history without depending on the original skill. Additional selection support
+requires a separately scoped, validated implementation.
+
+Compare frozen baseline/candidate cases and retain failures. Reserve separate
+validation/holdout cases where feasible; feedback used to tune a change becomes
+development evidence for a new study. Report only observed quality/resource
+improvements, then verify representative work after release and retain rollback.
+Do not add idle model calls just for telemetry or start evolution without a user
+request. Redact exports; never collect provider thinking or credentials.
+
 ## Run a bounded improvement study
 
 For trace-distillation, population or Pareto search, follow

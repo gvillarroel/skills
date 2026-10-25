@@ -23,6 +23,7 @@ Use Pi Durable as an application runtime. Use Pi Coding Agent when the task call
 - To list current models, inspect supported reasoning levels, select the latest suitable family per task, or freeze an evaluation's choices, read [model discovery and selection](references/model-selection.md). Preserve exact user pins; do not equate version, capability tier and reasoning effort.
 - Before copying an unfamiliar API or claiming platform support, read [version compatibility](references/version-compatibility.md).
 - For a generated agent that must operate without this skill, retain decision evidence, or improve its prompts/tools/scripts on request, read [independence and requested evolution](references/agent-evolution.md).
+- To design useful task traces, judge evidence coverage, or decide whether to collect more data before improvement, read [evidence readiness](references/evidence-readiness.md). Carry the collection rules into the generated runbook and the agent's active prompt.
 - To generate bounded trace-distillation, population or Pareto study templates, read [evolution strategies](references/evolution-strategies.md). The project-local runner keeps development selection separate from one-way validation/holdout and never activates source changes itself.
 
 Read only what the requested mode needs. Execute the scaffolder without reading all template source. The template is a starting application, not code that extends the current chat's privileges or registers Pi sessions in another product.
@@ -48,6 +49,8 @@ Read only what the requested mode needs. Execute the scaffolder without reading 
 ## Requested self-improvement
 
 Persist observable action, outcome, feedback, version, and concise decision evidence. Preserve the durable conversation as the authoritative transcript. Use `list_evidence` and `record_decision` for model-visible citations; do not request or store private chain-of-thought. Keep credential/state directories out of exported candidates.
+
+Before an improvement request, apply the [evidence readiness review](references/evidence-readiness.md): link complete task cases to their actual outcomes, verification and versions, include useful successes and failures, and name missing observations. These are authoring/operator guidelines; the current engine does not enforce sample sufficiency or automatic per-task verification. A sparse or incomplete pack calls for more authorized observation or a narrower claim.
 
 On a trusted user's improvement request, use the generated `npm run evolve -- ...` lifecycle: record the goal and exact editable files, export evidence and source, reflect, import an inactive proposal, and compare baseline/candidate against frozen application-specific cases. `reflect --generate` can use a separate no-tool Pi conversation; faux output demonstrates mechanics only. Prompt and tool/script changes require observable supporting evidence, a hypothesis, expected benefit, regression checks, and exact file preimages. Reflection is not evidence that a change is better.
 

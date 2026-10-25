@@ -59,6 +59,14 @@ Pi Durable 1.3.0 does not supply the newer telemetry API. Use the generated host
 instrumentation and version records; do not paste main-only telemetry or automatic
 optimizer APIs into this pinned application.
 
+Apply [evidence readiness](evidence-readiness.md) when authoring the agent and
+before opening a study. Transfer the operational guidance into its own runbook
+and adapt its active prompt; reading `AGENTS.md` is not automatic model behavior.
+Review complete attributed task outcomes, verification and relevant successes or
+failures, then name missing observations. The current engine requires existing
+evidence but does not enforce sufficient coverage. Inspect the actual bounded
+reflection pack; stop a proposal whose essential evidence was omitted.
+
 ## Run one requested cycle
 
 1. Define an observable goal from traces: for example fewer redundant PR reads
