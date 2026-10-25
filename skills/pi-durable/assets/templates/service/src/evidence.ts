@@ -5,6 +5,17 @@ import { mkdirSync, writeFileSync } from 'node:fs';
 import { mkdir, readFile, readdir, lstat } from 'node:fs/promises';
 import { join, relative, resolve, sep } from 'node:path';
 import type { AgentConfig, ServiceConfig } from './config.js';
+import type { ModelChoice } from './model-selection.js';
+
+type ChoicePolicy={model?:string;task?:string;effort?:string};
+export type ModelResolutionEvidence={
+  catalog:{source:string;digest:string;availability:string};
+  selected:{model:{provider:string;modelId:string};effort:string;requestedEffort?:string;effectiveEffort?:string;reason:string};
+  roles?:Array<{role:string;model:{provider:string;modelId:string};effort:string;reason:string}>;
+};
+function choicePolicy(choice:ModelChoice|undefined):ChoicePolicy|undefined{
+  return choice?{...(choice.model?{model:choice.model}:{}),...(choice.task?{task:choice.task}:{}),...(choice.thinkingLevel?{effort:choice.thinkingLevel}:{})}:undefined;
+}
 
 export interface EvidenceRecord {
   id:string; at:string; agentId:string; kind:string; runId?:string; jobId?:string;
@@ -13,7 +24,7 @@ export interface EvidenceRecord {
 }
 export type VersionManifest = {
   version:1; digest:string; files:Array<{path:string;sha256:string;bytes:number}>;
-  policy:{agentId:string;repositories:string[];instructionsSha256:string;provider:{kind:string;model?:string};subagents?:{roles:Array<{id:string;instructionsSha256:string}>;maxChildrenPerCall:number;maxChildrenPerRun:number;maxTaskChars:number;maxResultChars:number}};
+  policy:{agentId:string;repositories:string[];instructionsSha256:string;provider:{kind:string;model?:string;effort?:string;reflection?:ChoicePolicy};modelChoice?:ChoicePolicy;modelSelection?:ModelResolutionEvidence;subagents?:{roles:Array<{id:string;instructionsSha256:string;modelChoice?:ChoicePolicy}>;maxChildrenPerCall:number;maxChildrenPerRun:number;maxTaskChars:number;maxResultChars:number}};
 };
 const blockedKey=/(?:password|passwd|secret|token|api.?key|authorization|cookie|private.?key|environment|thinking|reasoning|chain.?of.?thought)/i;
 export function redactEvidenceText(text:string):string {
@@ -50,7 +61,7 @@ export function fingerprint(value:unknown):{sha256:string;bytes:number} {
   const encoded=typeof value==='string'?value:JSON.stringify(value)??String(value);
   return {sha256:createHash('sha256').update(encoded).digest('hex'),bytes:Buffer.byteLength(encoded)};
 }
-export function versionReference(version:VersionManifest){return {digest:version.digest,instructionsSha256:version.policy.instructionsSha256,provider:version.policy.provider};}
+export function versionReference(version:VersionManifest){return {digest:version.digest,instructionsSha256:version.policy.instructionsSha256,provider:version.policy.provider,...(version.policy.modelSelection?{modelSelection:version.policy.modelSelection}:{})};}
 export class EvidenceStore {
   private constructor(private db:DatabaseSync,readonly directory:string){}
   static async open(dataDir:string):Promise<EvidenceStore> {
@@ -86,7 +97,7 @@ export class EvidenceStore {
   close():void {this.db.close();}
 }
 /** Hash only portable project-owned source and policy; do not inspect credentials or state. */
-export async function captureVersion(projectDir:string,agent:AgentConfig,provider:ServiceConfig['provider']):Promise<VersionManifest> {
+export async function captureVersion(projectDir:string,agent:AgentConfig,provider:ServiceConfig['provider'],modelSelection?:ModelResolutionEvidence):Promise<VersionManifest> {
   const root=resolve(projectDir);const files:VersionManifest['files']=[];
   async function inspect(path:string):Promise<void>{
     let stat;try{stat=await lstat(path);}catch(error){if((error as NodeJS.ErrnoException).code==='ENOENT')return;throw error;}
@@ -100,6 +111,6 @@ export async function captureVersion(projectDir:string,agent:AgentConfig,provide
   }
   for(const name of ['src','prompts','scripts','package.json','package-lock.json','tsconfig.json'])await inspect(join(root,name));
   files.sort((a,b)=>a.path.localeCompare(b.path));
-  const policy={agentId:agent.id,repositories:[...agent.repositories].sort(),instructionsSha256:fingerprint(agent.instructions).sha256,provider:{kind:provider.kind,...(provider.model?{model:provider.model}:{})},...(agent.subagents?{subagents:{roles:agent.subagents.roles.map(role=>({id:role.id,instructionsSha256:fingerprint(role.instructions).sha256})).sort((a,b)=>a.id.localeCompare(b.id)),maxChildrenPerCall:agent.subagents.maxChildrenPerCall??4,maxChildrenPerRun:agent.subagents.maxChildrenPerRun??8,maxTaskChars:agent.subagents.maxTaskChars??6000,maxResultChars:agent.subagents.maxResultChars??12000}}:{})};
+  const policy={agentId:agent.id,repositories:[...agent.repositories].sort(),instructionsSha256:fingerprint(agent.instructions).sha256,provider:{kind:provider.kind,...(provider.model?{model:provider.model}:{}),...(provider.thinkingLevel?{effort:provider.thinkingLevel}:{}),...(provider.reflection?{reflection:choicePolicy(provider.reflection)}:{})},...(agent.modelChoice?{modelChoice:choicePolicy(agent.modelChoice)}:{}),...(modelSelection?{modelSelection}:{}),...(agent.subagents?{subagents:{roles:agent.subagents.roles.map(role=>({id:role.id,instructionsSha256:fingerprint(role.instructions).sha256,...(role.modelChoice?{modelChoice:choicePolicy(role.modelChoice)}:{})})).sort((a,b)=>a.id.localeCompare(b.id)),maxChildrenPerCall:agent.subagents.maxChildrenPerCall??4,maxChildrenPerRun:agent.subagents.maxChildrenPerRun??8,maxTaskChars:agent.subagents.maxTaskChars??6000,maxResultChars:agent.subagents.maxResultChars??12000}}:{})};
   const content={version:1 as const,files,policy};return {...content,digest:fingerprint(content).sha256};
 }

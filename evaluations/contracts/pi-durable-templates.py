@@ -157,9 +157,11 @@ def validate(args) -> dict:
                 require(contract.local(role["instructionsFile"]).read_text(encoding="utf-8").strip(), "Empty specialist prompt.")
                 role_ids.append(identity)
         live = contract.load("config.codex.example.json")
-        require(live.get("provider", {}).get("kind") == "openai-codex" and live["provider"].get("model") == "gpt-6.1-sol", "Live example must use the user's Sol 6.1 model.")
+        require(live.get("provider", {}).get("kind") == "openai-codex" and live["provider"].get("model") == args.live_model, "Live example must preserve the explicitly expected model or selection policy.")
+        if args.live_model == "latest":
+            require(live["provider"].get("catalogMode") == "refresh", "A latest live example must refresh its current catalog.")
         require([agent.get("id") for agent in live.get("agents", [])] == [agent["id"] for agent in agents], "Live example must preserve the named agents.")
-        return {"agents": sorted(identities), "roles": role_ids, "default_provider": "faux", "live_model": "openai-codex/gpt-6.1-sol"}
+        return {"agents": sorted(identities), "roles": role_ids, "default_provider": "faux", "live_model": "openai-codex/" + args.live_model}
     contract.check("explicit_specialists_bounds_and_models", roles_and_models)
 
     def evolution_plan():
@@ -272,6 +274,7 @@ def main() -> int:
     parser.add_argument("--allow-changed", action="append", default=[], metavar="RELATIVE_PATH", help="Preauthorized configuration/prompt edits after generation; initial hashes remain preserved.")
     parser.add_argument("--claimed-report", type=Path, default=Path("outputs/check.json"))
     parser.add_argument("--notes", type=Path)
+    parser.add_argument("--live-model", default="gpt-6.1-sol", help="Exact expected live model or policy; legacy cohorts retain their original default.")
     parser.add_argument("--output", type=Path, help="Write evaluator JSON here only when explicitly requested; never overwrite the candidate report.")
     args = parser.parse_args()
     report = validate(args)

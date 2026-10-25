@@ -27,7 +27,7 @@ absolute path for the target host:
 {
   "provider": {
     "kind": "openai-codex",
-    "model": "gpt-5.6-sol",
+    "model": "latest:sol",
     "piCliPath": "C:/Users/<user>/AppData/Roaming/npm/node_modules/@earendil-works/pi-coding-agent/dist/cli.js"
   }
 }
@@ -35,7 +35,8 @@ absolute path for the target host:
 
 Process `PI_CLI_PATH` is an alternative to `provider.piCliPath`. It is a path,
 not a credential. The generated `environment.env` continues to accept only its
-documented API/GitHub secret names. Select a model present in the pinned catalog;
+documented API/GitHub secret names. Use [model discovery](model-selection.md) to
+select a compatible current model and its supported reasoning level;
 catalog presence alone does not establish account access. A safe readiness check
 is `pi auth check --provider openai-codex --no-refresh --json`; a live bounded
 task must establish that the account can actually use the selected model.

@@ -42,7 +42,8 @@ Use the compiled CLI without npm wrappers when capturing raw JSON output.
 - Optional `serviceName` persists the OS service identity. Use a unique name for
   each installation and the same name for every later lifecycle action.
 - `provider.kind`: `faux`, `openai`, `anthropic`, or `openai-codex`. Real providers also require
-  an explicit `model` resolvable in the pinned catalog. `faux` emits labeled demo
+  an exact `model` or a task-aware `latest` policy resolved from a compatible current catalog.
+  Use the [model commands](model-selection.md) to inspect reasoning levels and freeze comparisons. `faux` emits labeled demo
   text and performs no useful model review; optional `delayMs` simulates latency.
   For `openai-codex`, set an absolute installed Pi CLI JavaScript entry path in
   `provider.piCliPath` or process `PI_CLI_PATH`, and follow the

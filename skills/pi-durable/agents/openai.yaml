@@ -1,4 +1,4 @@
 interface:
   display_name: "Pi Durable"
-  short_description: "Durable services, subagents and requested evolution"
-  default_prompt: "Use $pi-durable to generate an independent persistent service, bounded specialist subagents or evidence-based evolution templates, with reconnectable chat, observable decisions and evaluated improvements that run only when I request them."
+  short_description: "Durable agents with current model selection and evolution"
+  default_prompt: "Use $pi-durable to generate independent services and bounded subagents, discover current compatible models and reasoning levels for each task, preserve exact requested pins, and lock choices before evidence-based requested evolution."

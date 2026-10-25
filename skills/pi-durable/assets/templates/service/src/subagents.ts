@@ -1,16 +1,25 @@
 // Build with npm run build. Task-owned specialist conversations use Pi Durable 1.3.0.
-import { Type } from '@earendil-works/pi-ai';
+import { Type, type ModelThinkingLevel } from '@earendil-works/pi-ai';
 import { createHash } from 'node:crypto';
-import { AgentDoc, configure, defineDoc, defineTool, LiveDoc, type ConversationId, type ModelRef, type ToolRegistration } from '@earendil-works/pi-durable';
+import { AgentDoc, configure, defineDoc, defineTool, LiveDoc, type ConversationId, type ModelRef, type ToolRegistration, type Tx } from '@earendil-works/pi-durable';
 
 export const SUBAGENT_TOOL_NAME = 'delegate_tasks';
 const Budget = defineDoc<{ runId:number; used:number; charged:string[] }>({
   kind:'service.subagent-budget',version:1,scope:'conversation',history:'latest',fork:'initial',
   initial:()=>({runId:0,used:0,charged:[]}),
 });
+export type RoleModelProfiles=Record<string,{model:ModelRef;thinkingLevel?:ModelThinkingLevel}>;
+export const SubagentProfiles=defineDoc<{configured:boolean;roles:RoleModelProfiles}>({kind:'service.subagent-profiles',version:1,scope:'conversation',history:'latest',fork:'current',initial:()=>({configured:false,roles:{}})});
+/** Bind the parent conversation's resolved specialist choices once, before work. */
+export async function configureSubagentProfiles(tx:Tx,parentId:ConversationId,roles:RoleModelProfiles){
+  const document=await tx.doc(SubagentProfiles,parentId);
+  if(!document.configured){document.roles=structuredClone(roles);document.configured=true;}
+}
 export interface SubagentOptions {
   model:ModelRef;
   roles:Record<string,string>;
+  /** Already resolved choices for each role; omitted roles inherit the supervisor model. */
+  roleModels?:RoleModelProfiles;
   /** Install only trusted read tools and evidence tools; do not pass mutation tools. */
   tools:readonly ToolRegistration[];
   maxChildrenPerCall?:number;
@@ -36,7 +45,11 @@ export function makeSubagentTool(options:SubagentOptions){
   if(!options.model.provider||!options.model.modelId)throw new Error('Subagents require an explicit provider and model.');
   if(options.tools.some(tool=>tool.name===SUBAGENT_TOOL_NAME))throw new Error('Worker tools must exclude delegation.');
   const prompts=new Map(roles);
+  for(const [role,profile] of Object.entries(options.roleModels??{})){
+    if(!prompts.has(role)||!profile?.model?.provider||!profile.model.modelId||profile.thinkingLevel!==undefined&&!['off','minimal','low','medium','high','xhigh','max'].includes(profile.thinkingLevel))throw new Error('Role models require a configured role, exact model reference and supported Pi thinking level.');
+  }
   const tools=[...options.tools];
+  const defaultRoleModels=Object.fromEntries(roles.map(([role])=>[role,{model:options.roleModels?.[role]?.model??options.model,...(options.roleModels?.[role]?.thinkingLevel!==undefined?{thinkingLevel:options.roleModels[role].thinkingLevel}:{})}]));
   return defineTool({
     name:SUBAGENT_TOOL_NAME,
     description:'Delegate bounded self-contained tasks to configured specialists. Use parallel for independent analyses or pipeline for draft then review. Children have fresh context, read/evidence tools only, and cannot delegate. The parent must assess their returned evidence. Foreground cancellation includes children.',
@@ -48,6 +61,10 @@ export function makeSubagentTool(options:SubagentOptions){
       const children=await api.commit(async tx=>{
         // Table reads precede writes. An interrupted safe tool reuses its owner-index children.
         const existing=(await tx.scanConversations({ownerTaskId:api.taskId},maxChildren+1)).items;
+        // Legacy direct callers initialize here. Service-created parents already
+        // bind these choices before admitting any input or starting recovery.
+        await configureSubagentProfiles(tx,api.conversationId,defaultRoleModels);
+        const frozenProfiles=await tx.doc(SubagentProfiles,api.conversationId);
         const live=await tx.doc(LiveDoc,api.conversationId);
         const runId=live.run?.inputs[0];
         if(!runId)throw new Error('Delegation requires an active input run.');
@@ -66,7 +83,9 @@ export function makeSubagentTool(options:SubagentOptions){
         for(const item of args.tasks){
           const child=await tx.createConversation({ownership:{kind:'task',taskId:api.taskId}});
           // Exact tool selection overrides inherited delegation authority. No parent history is copied.
-          await configure(tx,child.id,{model:options.model,instructions:prompts.get(item.role)!,tools,modelTools:tools});
+          const profile=frozenProfiles.roles[item.role];
+          if(!profile)throw new Error('The requested role is outside this parent conversation\'s frozen specialist model profiles.');
+          await configure(tx,child.id,{model:profile?.model??options.model,...(profile?.thinkingLevel!==undefined?{thinkingLevel:profile.thinkingLevel}:{}),instructions:prompts.get(item.role)!,tools,modelTools:tools});
           ids.push(child.id);
         }
         return ids;
@@ -76,7 +95,7 @@ export function makeSubagentTool(options:SubagentOptions){
       const childProfiles=await Promise.all(children.map(async(id,index)=>{
         const stored=await api.snapshot(AgentDoc,id,context);
         if(!stored?.model||typeof stored.instructions!=='string')throw new Error('Stored specialist agent configuration is unavailable.');
-        return {role:args.tasks[index].role,model:stored.model,instructionsSha256:createHash('sha256').update(stored.instructions).digest('hex'),conversationId:Number(id)};
+        return {role:args.tasks[index].role,model:stored.model,effort:stored.thinkingLevel??'inherited',instructionsSha256:createHash('sha256').update(stored.instructions).digest('hex'),conversationId:Number(id)};
       }));
       const graph={mode:args.mode,parentConversationId:Number(api.conversationId),ownerTaskId:String(api.taskId),configuredModel:options.model,children:childProfiles};
       await api.details(graph,context);

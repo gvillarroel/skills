@@ -49,7 +49,8 @@ subagent smoke exercises native child conversations without network access;
 ordinary faux chat does not act as a useful autonomous supervisor.
 
 For real work edit the repository allowlist and select the generated
-`config.codex.example.json` (`openai-codex`, `gpt-6.1-sol`). Set process
+`config.codex.example.json` (`openai-codex`, task-aware `latest`). Inspect current
+models and supported reasoning levels with [model selection](model-selection.md). Set process
 `PI_CLI_PATH` to the installed Pi CLI JavaScript entry and follow the
 [existing-account bridge](codex-provider.md). Pass the selected config to both
 server and clients. Keep the prompt and provider explicit; a source change does

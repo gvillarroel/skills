@@ -70,11 +70,37 @@ work requiring a wall-time budget, and record incomplete usage as unknown.
 Run `npm run subagents:smoke` to exercise actual native child conversations with
 the offline provider. The three scaffold profiles select specialist delegation,
 parallel map/reduce, or author/reviewer/refiner prompts. The generated
-`config.codex.example.json` selects `openai-codex/gpt-6.1-sol`; set `PI_CLI_PATH`
+`config.codex.example.json` selects current task-appropriate Codex models; set `PI_CLI_PATH`
 to the installed Pi CLI JavaScript entry and use the read-only account bridge.
 Default `config.json` remains offline. Set the repository allowlist before live
 work. The supervisor is listed in the service registry; transient task-owned
 children are retained in its Harness task graph, not registered as resident agents.
+
+## List models and choose supported reasoning
+
+The live example uses `model: "latest"` with a public catalog refresh at startup.
+Current task defaults prefer Luna/low for routine work, Sol/medium for coding,
+Astra/high for review/reflection and Astra/xhigh for research. These are policy
+defaults, not intelligence scores. Exact user pins remain binding. The runtime
+resolves an ID/effort before creating a conversation and retains stored choices
+during recovery. Refresh/restart for newer future work; there is no idle poll.
+
+```text
+npm run models -- list --config config.codex.example.json --source pi-cache
+npm run models -- list --config config.codex.example.json --source refresh
+npm run models -- resolve --config config.codex.example.json --task coding
+npm run models -- resolve --config config.codex.example.json --task review
+npm run models -- lock --config config.codex.example.json --output config.resolved.json
+```
+
+Use the new resolved config consistently for controlled evaluation and service
+clients. Lock writes a sibling catalog snapshot and exact resident, specialist
+and reflection choices without activating anything. Dynamic choices are rejected
+by evolution. Pi `minimal` may map to provider `low`; only levels returned by the
+selected model are supported. `ultra` is not a Pi 1.3/1.4 level. The listing
+reports source, freshness and compatibility; configured credentials/catalog
+presence are not a successful inference probe. Refresh writes project files
+only; `pi update --models` is a separate global catalog operation.
 
 ## Record evidence and version the agent
 

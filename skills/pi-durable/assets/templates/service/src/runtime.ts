@@ -3,24 +3,22 @@ import { mkdir } from 'node:fs/promises';
 import { join } from 'node:path';
 import { setTimeout as delay } from 'node:timers/promises';
 import { BACKGROUND_CONTEXT as context } from '@earendil-works/chord/context';
-import { createModels, fauxProvider, fauxAssistantMessage, Type } from '@earendil-works/pi-ai';
-import { openaiProvider } from '@earendil-works/pi-ai/providers/openai';
-import { anthropicProvider } from '@earendil-works/pi-ai/providers/anthropic';
-import { Harness, configure, createRegistry, defineDocFamily, defineExtension, defineTool, hook, GenerationTask, ToolTask, type Conversation, type ConversationId, type SubmissionId, type HookRegistration } from '@earendil-works/pi-durable';
+import { createModels, fauxProvider, fauxAssistantMessage, Type, type ModelThinkingLevel } from '@earendil-works/pi-ai';
+import { AgentDoc, Harness, configure, createRegistry, defineDocFamily, defineExtension, defineTool, hook, GenerationTask, ToolTask, type Conversation, type ConversationId, type SubmissionId, type HookRegistration } from '@earendil-works/pi-durable';
 import { openNodeSqliteStorage } from '@earendil-works/pi-durable/storage/sqlite/node';
 import type { AgentConfig, ServiceConfig } from './config.js';
 import type { Job } from './catalog.js';
-import { EvidenceStore, captureVersion, fingerprint, versionReference, type VersionManifest } from './evidence.js';
+import { EvidenceStore, captureVersion, fingerprint, versionReference, type ModelResolutionEvidence, type VersionManifest } from './evidence.js';
 import { createReadPullRequestTool } from './tools/read-pull-request.js';
-import { createCodexProvider } from './codex-provider.js';
-import { makeSubagentTool } from './subagents.js';
+import { configureSubagentProfiles, makeSubagentTool, SubagentProfiles, type RoleModelProfiles } from './subagents.js';
+import { buildModelRuntime } from './model-runtime.js';
 
 const Threads = defineDocFamily<{conversationId:number;version?:VersionManifest}, null>({ kind:'service.threads', version:1, scope:'session', family:true, initial:() => ({conversationId:0}) });
 type Trace=(kind:string,details:Record<string,unknown>,ids:{runId?:string;conversationId?:number})=>unknown;
 export function createEvidenceHooks(trace:Trace,hostModel:{provider:string;modelId:string}):HookRegistration[]{return [
   hook(GenerationTask,{
-    beforeRequest:(request,api)=>{trace('model.request',{hostModel,messageCount:request.messages.length},{runId:String(api.taskId),conversationId:api.conversationId});return undefined;},
-    afterResponse:(message,api)=>{const text=message.content.filter(b=>b.type==='text').map(b=>(b as {text:string}).text).join('\n');trace('model.response',{model:{provider:message.provider,model:message.model},stopReason:message.stopReason,usage:message.usage,publicSummary:text.slice(0,700),publicText:fingerprint(text),toolCallCount:message.content.filter(b=>b.type==='toolCall').length},{runId:String(api.taskId),conversationId:api.conversationId});},
+    beforeRequest:async(request,api,ctx)=>{const stored=await api.snapshot(AgentDoc,api.conversationId,ctx);trace('model.request',{hostModel,model:stored?.model??hostModel,effort:stored?.thinkingLevel??'runtime-default',messageCount:request.messages.length},{runId:String(api.taskId),conversationId:api.conversationId});return undefined;},
+    afterResponse:(message,api)=>{const text=message.content.filter(b=>b.type==='text').map(b=>(b as {text:string}).text).join('\n');trace('model.response',{model:{provider:message.provider,model:message.model},...('thinkingLevel' in message?{effort:message.thinkingLevel}:{}),...('providerThinkingLevel' in message?{effectiveEffort:message.providerThinkingLevel}:{}),stopReason:message.stopReason,usage:message.usage,publicSummary:text.slice(0,700),publicText:fingerprint(text),toolCallCount:message.content.filter(b=>b.type==='toolCall').length},{runId:String(api.taskId),conversationId:api.conversationId});},
   }),
   hook(ToolTask,{
     beforeTool:(call,api)=>{trace('tool.started',{tool:call.name,callId:call.id,arguments:call.arguments},{runId:String(api.taskId),conversationId:api.conversationId});return undefined;},
@@ -45,11 +43,13 @@ export function createListEvidenceTool(agentId:string,evidence:EvidenceStore){re
 export class AgentRuntime {
   calls = 0;
   private conversationVersions=new Map<number,VersionManifest|undefined>();
-  private constructor(readonly agent: AgentConfig, readonly harness: Harness, readonly root: Conversation, private choices: Parameters<typeof configure>[2],readonly evidence:EvidenceStore,readonly version:VersionManifest) {this.conversationVersions.set(root.id,version);}
+  private constructor(readonly agent: AgentConfig, readonly harness: Harness, readonly root: Conversation, private choices: Parameters<typeof configure>[2],readonly evidence:EvidenceStore,readonly version:VersionManifest,rootVersion=version,private roleProfiles:RoleModelProfiles={}) {this.conversationVersions.set(root.id,rootVersion);}
   versionForConversation(conversationId:number){const version=this.conversationVersions.get(conversationId);return {hostVersion:versionReference(this.version),conversationVersion:version?versionReference(version):{unknown:true,reason:'Historical or recovering conversation; original manifest has not been loaded.'}};}
   trace(kind:string,details:Record<string,unknown>,ids:{runId?:string;jobId?:string;conversationId?:number;submissionId?:number}={}){return this.evidence.append({agentId:this.agent.id,kind,details,...ids,version:ids.conversationId?this.versionForConversation(ids.conversationId):{hostVersion:versionReference(this.version)}});}
   static async open(config: ServiceConfig, agent: AgentConfig) {
-    const models = createModels(); let ref: {provider:string;modelId:string}; let count = () => {};
+    let models = createModels(); let ref: {provider:string;modelId:string}; let count = () => {};
+    let initialized:Awaited<ReturnType<typeof buildModelRuntime>>|undefined;
+    let thinkingLevel:ModelThinkingLevel|undefined;
     if (config.provider.kind === 'faux') {
       const faux = fauxProvider({ tokensPerSecond: Infinity });
       const provider = { ...faux.provider, streamSimple: (...args: Parameters<typeof faux.provider.streamSimple>) => {
@@ -62,29 +62,53 @@ export class AgentRuntime {
       } };
       models.setProvider(provider); ref = { provider:faux.getModel().provider,modelId:faux.getModel().id };
     } else {
-      const provider = config.provider.kind === 'openai-codex' ? createCodexProvider(config.provider.piCliPath) : config.provider.kind === 'openai' ? openaiProvider() : anthropicProvider(); models.setProvider(provider);
-      if (config.provider.kind !== 'openai-codex' && !process.env[config.provider.kind === 'openai' ? 'OPENAI_API_KEY' : 'ANTHROPIC_API_KEY']) throw new Error('The selected provider credential is missing from the service environment.');
-      if (!models.getModel(provider.id,config.provider.model!)) throw new Error('Configured model is absent from this pinned provider catalog.');
-      ref = {provider:provider.id,modelId:config.provider.model!};
+      initialized=await buildModelRuntime(config,agent.modelChoice);models=initialized.models;
+      ref=initialized.selection.model;thinkingLevel=initialized.selection.thinkingLevel;
     }
-    const version=await captureVersion((config as ServiceConfig&{projectDir?:string}).projectDir??process.cwd(),agent,config.provider);
+    const roleSelections=initialized?Object.fromEntries((agent.subagents?.roles??[]).map(role=>[role.id,initialized!.select({...agent.modelChoice,...role.modelChoice})])):undefined;
+    const roleProfiles:RoleModelProfiles=Object.fromEntries((agent.subagents?.roles??[]).map(role=>[role.id,roleSelections?{model:roleSelections[role.id].model,thinkingLevel:roleSelections[role.id].thinkingLevel}:{model:ref}]));
+    const modelEvidence:ModelResolutionEvidence|undefined=initialized?{catalog:{source:initialized.catalog.source,digest:initialized.catalog.digest,availability:initialized.catalog.availability},selected:{model:ref,effort:initialized.selection.thinkingLevel,requestedEffort:initialized.selection.requestedThinkingLevel,...(initialized.selection.effectiveThinkingLevel?{effectiveEffort:initialized.selection.effectiveThinkingLevel}:{}),reason:initialized.selection.reason},...(roleSelections?{roles:Object.entries(roleSelections).map(([role,selection])=>({role,model:selection.model,effort:selection.thinkingLevel,reason:selection.reason})).sort((a,b)=>a.role.localeCompare(b.role))}:{})}:undefined;
+    const projectDir=(config as ServiceConfig&{projectDir?:string}).projectDir??process.cwd();
+    const version=await captureVersion(projectDir,agent,config.provider,modelEvidence);
     const evidence=await EvidenceStore.open(config.dataDir);evidence.saveVersion(version);let runtime:AgentRuntime|undefined;
     const trace=(kind:string,details:Record<string,unknown>,ids:{runId?:string;conversationId?:number}={})=>{if(runtime&&kind==='model.request'&&config.provider.kind!=='faux')runtime.calls++;return runtime?runtime.trace(kind,details,ids):evidence.append({agentId:agent.id,kind,details,...ids,version:{hostVersion:versionReference(version)}});};
     const readPR=createReadPullRequestTool(agent);const decision=createDecisionTool(agent.id,evidence,versionReference(version),id=>runtime?.versionForConversation(id)??{hostVersion:versionReference(version),conversationVersion:{unknown:true}});const listEvidence=createListEvidenceTool(agent.id,evidence);
     const workerTools=[readPR,listEvidence,decision];
-    const tools=agent.subagents?[...workerTools,makeSubagentTool({model:ref,roles:Object.fromEntries(agent.subagents.roles.map(role=>[role.id,role.instructions])),tools:workerTools,maxChildrenPerCall:agent.subagents.maxChildrenPerCall,maxChildrenPerRun:agent.subagents.maxChildrenPerRun,maxTaskChars:agent.subagents.maxTaskChars,maxResultChars:agent.subagents.maxResultChars,trace})]:workerTools;
+    const tools=agent.subagents?[...workerTools,makeSubagentTool({model:ref,roles:Object.fromEntries(agent.subagents.roles.map(role=>[role.id,role.instructions])),...(roleSelections?{roleModels:Object.fromEntries(Object.entries(roleSelections).map(([role,selection])=>[role,{model:selection.model,thinkingLevel:selection.thinkingLevel}]))}:{}),tools:workerTools,maxChildrenPerCall:agent.subagents.maxChildrenPerCall,maxChildrenPerRun:agent.subagents.maxChildrenPerRun,maxTaskChars:agent.subagents.maxTaskChars,maxResultChars:agent.subagents.maxResultChars,trace})]:workerTools;
     const extension=defineExtension({name:'service-read-tools',tools,hooks:createEvidenceHooks(trace,ref)}); const registry=createRegistry(); registry.install(extension);
-    const choices={ model:ref,...(config.provider.kind==='openai-codex'?{thinkingLevel:'low' as const}:{}),instructions:agent.instructions,extensions:[extension],tools };
+    const choices={ model:ref,...(thinkingLevel!==undefined?{thinkingLevel}:{}),instructions:agent.instructions,extensions:[extension],tools };
     let harness:Harness|undefined;
     try {const directory=join(config.dataDir,'agents',agent.id);await mkdir(directory,{recursive:true});harness=await Harness.open(await openNodeSqliteStorage(join(directory,'harness.sqlite')),{models,registry,settings:{retry:{maxRetries:2},progress:{partialIntervalMs:250,outputIntervalMs:250}},onReport:() => {trace('runtime.report',{publicSummary:'The durable runtime reported a non-fatal failure; inspect its authorized runtime state.'});console.error(JSON.stringify({type:'runtime-report',agentId:agent.id}));}},context);
-      const root=await harness.root(context,{agent:choices}); await root.configure(choices,context); runtime=new AgentRuntime(agent,harness,root,choices,evidence,version); count=()=>{runtime!.calls++;};runtime.trace('runtime.opened',{publicSummary:'Runtime opened and recovery enabled. Unfinished safe durable tasks may resume.',previousEvidenceId:evidence.list(agent.id,1)[0]?.id});harness.resume();return runtime;
+      const root=await harness.root(context,{agent:choices});
+      const stored=await harness.snapshot(AgentDoc,root.id,context);
+      // Creation initializes missing roots. Existing conversation profiles remain
+      // exact across restart, even when a latest policy selects newer future jobs.
+      const retained={...choices,...(stored?.model?{model:stored.model}:{}),...(stored?.thinkingLevel!==undefined?{thinkingLevel:stored.thinkingLevel}:{})};
+      await root.configure(retained,context);
+      if(agent.subagents)await harness.commit(tx=>configureSubagentProfiles(tx,root.id,roleProfiles),context);
+      let rootVersion=version;
+      if(modelEvidence){
+        const persistedRoles=agent.subagents?await harness.snapshot(SubagentProfiles,root.id,context):undefined;
+        const retainedRoles=modelEvidence.roles?.map(role=>{
+          const actual=persistedRoles?.roles[role.role];
+          return actual&&(JSON.stringify(actual.model)!==JSON.stringify(role.model)||actual.thinkingLevel!==role.effort)?{role:role.role,model:actual.model,effort:actual.thinkingLevel??'runtime-default',reason:'Retained the parent conversation\'s frozen specialist model and effort.'}:role;
+        });
+        const primaryChanged=JSON.stringify(retained.model)!==JSON.stringify(ref)||retained.thinkingLevel!==thinkingLevel;
+        if(primaryChanged||JSON.stringify(retainedRoles)!==JSON.stringify(modelEvidence.roles)){
+          rootVersion=await captureVersion(projectDir,agent,config.provider,{...modelEvidence,...(primaryChanged?{selected:{model:retained.model,effort:retained.thinkingLevel??'runtime-default',reason:'Retained the stored conversation model and effort across host restart.'}}:{}),...(retainedRoles?{roles:retainedRoles}:{})});evidence.saveVersion(rootVersion);
+        }
+      }
+      runtime=new AgentRuntime(agent,harness,root,choices,evidence,version,rootVersion,roleProfiles); count=()=>{runtime!.calls++;};
+      if(initialized)runtime.trace('model.selected',{...modelEvidence,observedAt:initialized.catalog.observedAt,...(initialized.catalog.warning?{warning:initialized.catalog.warning}:{}),scope:'new-job-conversations',publicSummary:'Resolved an exact model and supported effort before durable admission.'});
+      runtime.trace('model.conversation-profile',{model:retained.model,effort:retained.thinkingLevel??'runtime-default',publicSummary:'The control conversation retains its stored model profile.'},{conversationId:root.id});
+      runtime.trace('runtime.opened',{publicSummary:'Runtime opened and recovery enabled. Unfinished safe durable tasks may resume.',previousEvidenceId:evidence.list(agent.id,1)[0]?.id});harness.resume();return runtime;
     }catch(error) {if(harness)await harness.close(context);evidence.close();throw error;}
   }
   async conversation(jobId?:string):Promise<Conversation> {
     if (!jobId) return this.root;
     const id=await this.harness.commit(async tx => {
       const map=await tx.doc(Threads,jobId,null);
-      if (!map.conversationId) { const created=await tx.createConversation({ownership:{kind:'ownerless'}}); await configure(tx,created.id,this.choices); map.conversationId=created.id;map.version=this.version; }
+      if (!map.conversationId) { const created=await tx.createConversation({ownership:{kind:'ownerless'}}); await configure(tx,created.id,this.choices);if(this.agent.subagents)await configureSubagentProfiles(tx,created.id,this.roleProfiles); map.conversationId=created.id;map.version=this.version; }
       return {conversationId:map.conversationId,version:map.version?JSON.parse(JSON.stringify(map.version)) as VersionManifest:undefined};
     },context);
     this.conversationVersions.set(id.conversationId,id.version);

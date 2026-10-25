@@ -4,14 +4,15 @@
   "instructions": "Split independent questions, delegate in parallel and synthesize their evidence.",
   "instructionsFile": "prompts/map-reduce.md",
   "repositories": ["example/demo"],
+  "modelChoice": {"task":"coding"},
   "subagents": {
     "maxChildrenPerCall": 4,
     "maxChildrenPerRun": 8,
     "maxTaskChars": 6000,
     "maxResultChars": 12000,
     "roles": [
-      {"id":"researcher","instructions":"Research one independent slice.","instructionsFile":"prompts/researcher.md"},
-      {"id":"reviewer","instructions":"Check a synthesis against cited evidence.","instructionsFile":"prompts/reviewer.md"}
+      {"id":"researcher","instructions":"Research one independent slice.","instructionsFile":"prompts/researcher.md","modelChoice":{"task":"research"}},
+      {"id":"reviewer","instructions":"Check a synthesis against cited evidence.","instructionsFile":"prompts/reviewer.md","modelChoice":{"task":"review"}}
     ]
   }
 }

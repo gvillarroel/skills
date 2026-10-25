@@ -36,8 +36,6 @@ def scaffold(destination: Path, *, with_tests: bool = False, profile: str = "ser
         config["agents"] = [overlay]
         (destination / "config.json").write_text(json.dumps(config, indent=2) + "\n", encoding="utf-8")
         shutil.copytree(resources / "prompts", destination / "prompts", dirs_exist_ok=True)
-        live_config = {**config, "provider": {"kind": "openai-codex", "model": "gpt-6.1-sol"}}
-        (destination / "config.codex.example.json").write_text(json.dumps(live_config, indent=2) + "\n", encoding="utf-8")
         plan_path = destination / "evolution-plans/plan.json"
         if plan_path.is_file():
             plan = json.loads(plan_path.read_text(encoding="utf-8"))
@@ -46,6 +44,9 @@ def scaffold(destination: Path, *, with_tests: bool = False, profile: str = "ser
             example = {key: plan[key] for key in ("agentId", "goal", "allowedPaths", "minimumImprovement", "timeoutMs")}
             example.update(plan["development"])
             (destination / "evaluation/request.example.json").write_text(json.dumps(example, indent=2) + "\n", encoding="utf-8")
+    config = json.loads((destination / "config.json").read_text(encoding="utf-8"))
+    live_config = {**config, "provider": {"kind": "openai-codex", "model": "latest", "catalogMode": "refresh"}}
+    (destination / "config.codex.example.json").write_text(json.dumps(live_config, indent=2) + "\n", encoding="utf-8")
     included_tests = with_tests and tests.is_dir()
     if included_tests:
         shutil.copytree(tests, destination / "tests")

@@ -5,7 +5,7 @@ import { DatabaseSync } from 'node:sqlite';
 import { constants } from 'node:fs';
 import { chmod, copyFile, lstat, mkdir, readFile, readdir, realpath, rename, rm, stat, symlink, writeFile } from 'node:fs/promises';
 import { dirname, isAbsolute, join, relative, resolve, sep } from 'node:path';
-import { loadConfig, type ServiceConfig } from './config.js';
+import { hasDynamicModels, loadConfig, type ServiceConfig } from './config.js';
 import { EvidenceStore, sanitizeEvidence } from './evidence.js';
 
 type FileVersion = { path: string; sha256: string; bytes: number };
@@ -122,7 +122,7 @@ export class EvolutionManager {
       }
     };
     for (const folder of ['src','prompts','scripts']) await visit(folder);
-    for (const file of ['package.json','package-lock.json','tsconfig.json']) if (await exists(join(this.projectDir,file))) names.push(file);
+    for (const file of ['package.json','package-lock.json','tsconfig.json',...(this.config.provider.catalogFile?[this.config.provider.catalogFile]:[])]) if (!names.includes(file)&&await exists(join(this.projectDir,file))) names.push(file);
     return Promise.all(names.sort().map(path => this.version(path)));
   }
   private async evidenceMatches(request: ImprovementRequest) {
@@ -153,6 +153,7 @@ export class EvolutionManager {
   private log(agentId: string, kind: string, details: Record<string,unknown>) { this.evidence.append({agentId,kind,details:sanitizeEvidence(details)}); }
 
   async request(input: ImprovementRequestInput): Promise<Sealed<ImprovementRequest>> {
+    if(this.config.provider.kind!=='faux'&&(hasDynamicModels(this.config)||!this.config.provider.catalogFile&&this.config.provider.catalogMode!=='bundled'))throw new Error('Freeze model IDs, efforts and catalog metadata before an improvement study: run models lock and use its resolved configuration, or explicitly select exact models from the pinned bundled catalog.');
     const agent = this.config.agents.find(a => a.id === input.agentId);
     if (!agent) throw new Error('Unknown agent.');
     text(input.goal,'goal');

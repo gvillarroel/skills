@@ -25,5 +25,6 @@ This implementation is a small Pi Durable local controller. It does not call
 Harbor, train an optimizer, claim statistical generalization, or implement
 automatic metaskill evolution. Its operator output supplies hypotheses for a new
 study. The original sources' incidental model policies are not imported: this
-project uses the user's explicitly selected real model (Sol 6.1) or labeled faux
+project uses the user's exact model or resolves a current task-aware model policy,
+then locks IDs, supported reasoning levels and catalog metadata for studies; labeled faux
 mechanics. Private curator boundaries require operational isolation beyond files.

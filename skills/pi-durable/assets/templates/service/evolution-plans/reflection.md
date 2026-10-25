@@ -30,9 +30,12 @@ uv run --script evolution-plans/study.py reflect --study review-policy-v1
 
 Ordinary reflection exports a pack. Use `reflect --generate` only for separately
 requested model assistance. For real agents use the project's Codex provider
-bridge with explicit `gpt-6.1-sol`, an absolute installed Pi CLI JavaScript path,
+bridge with a resolved exact model, an absolute installed Pi CLI JavaScript path,
 and the existing account's credential environment. Keep `faux` for offline work.
-Freeze the same provider/model identity for comparable arms. Do not substitute
+Run `npm run models -- lock --config config.codex.example.json --output config.resolved.json`
+before collecting real evidence, then pass `--config config.resolved.json` to
+every study command. This pins resident, specialist and reflection IDs/efforts
+plus the catalog snapshot. Freeze the same provider/model identity for comparable arms. Do not substitute
 an unrelated model policy from the source playbooks.
 
 Author a complete `candidate.json` using the returned request ID, pack evidence

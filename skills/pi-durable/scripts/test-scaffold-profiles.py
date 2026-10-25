@@ -41,7 +41,7 @@ def main() -> None:
                 for role in agent["subagents"]["roles"]:
                     assert (destination / role["instructionsFile"]).read_text().strip()
                 live = json.loads((destination / "config.codex.example.json").read_text())
-                assert live["provider"] == {"kind": "openai-codex", "model": "gpt-6.1-sol"}
+                assert live["provider"] == {"kind": "openai-codex", "model": "latest", "catalogMode": "refresh"}
                 assert (destination / agent["instructionsFile"]).read_text().strip()
                 plan = json.loads((destination / "evolution-plans/plan.json").read_text())
                 example = json.loads((destination / "evaluation/request.example.json").read_text())

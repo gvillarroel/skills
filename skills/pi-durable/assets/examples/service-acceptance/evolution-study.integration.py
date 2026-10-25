@@ -32,6 +32,8 @@ try{
 """
 if json.loads((root/'config.json').read_text())['provider']['kind']!='faux':
     raise ValueError('This acceptance fixture requires the explicit faux provider.')
+if json.loads((root/'evolution-plans/plan.json').read_text())['maxCandidates']<2:
+    raise ValueError('Generate this multi-candidate acceptance fixture with scaffold-evolution.py --strategy pareto (or population).')
 seed_path=root/'evolution-study-seed.mjs'
 with seed_path.open('x',encoding='utf-8') as stream:
     stream.write(seed)
