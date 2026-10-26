@@ -51,9 +51,11 @@ def execute(argv: list[str], cwd: Path, env: dict[str, str], receipt: Path,
     return record
 
 
-def pi_discovery(node: str, cli: Path, cwd: Path, env: dict[str, str], receipt: Path) -> Path:
+def pi_discovery(node: str, cli: Path, cwd: Path, env: dict[str, str], receipt: Path,
+                 *, expected_project_skill: Path | None = None) -> Path:
     argv = [node, str(cli), "--mode", "rpc", "--offline", "--no-session",
-            "--no-approve", "--no-context-files", "--no-mcp", "--no-extensions",
+            "--approve" if expected_project_skill else "--no-approve",
+            "--no-context-files", "--no-mcp", "--no-extensions",
             "--no-prompt-templates", "--no-themes", "--no-builtin-tools"]
     process = subprocess.Popen(argv, cwd=cwd, env=env, stdin=subprocess.PIPE,
                                stdout=subprocess.PIPE, stderr=subprocess.PIPE,
@@ -94,12 +96,16 @@ def pi_discovery(node: str, cli: Path, cwd: Path, env: dict[str, str], receipt: 
                 if len(matches) != 1:
                     raise RuntimeError("Expected exactly one installed skill command")
                 source = matches[0].get("sourceInfo", {})
-                if source.get("origin") != "package":
-                    raise RuntimeError("Skill was not discovered through the installed package")
                 skill_file = Path(source["path"]).resolve()
-                agent_root = Path(env["PI_CODING_AGENT_DIR"]).resolve()
-                if not skill_file.is_relative_to(agent_root) or skill_file.name != "SKILL.md":
-                    raise RuntimeError("Discovered skill is outside isolated package storage")
+                if expected_project_skill:
+                    if source.get("scope") != "project" or skill_file != (expected_project_skill / "SKILL.md").resolve():
+                        raise RuntimeError("Skill was not automatically discovered from the selected project installation")
+                else:
+                    if source.get("origin") != "package":
+                        raise RuntimeError("Skill was not discovered through the installed package")
+                    agent_root = Path(env["PI_CODING_AGENT_DIR"]).resolve()
+                    if not skill_file.is_relative_to(agent_root) or skill_file.name != "SKILL.md":
+                        raise RuntimeError("Discovered skill is outside isolated package storage")
                 break
         if skill_file is None:
             raise RuntimeError("No installed skill discovery response")

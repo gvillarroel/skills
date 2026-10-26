@@ -96,6 +96,57 @@ fresh destinations with spaces. Native discovery uses `get_commands`, without
 Skill resources arrive through the installed package rather than ambient
 project configuration. The original read-only 37-file bundle stays unchanged.
 
+## Single-skill installation
+
+The user subsequently requested installing only this skill. The recommended Pi
+route now selects one resource with the existing Skills CLI:
+
+```sh
+npx skills add gvillarroel/skills --skill desktop-plugin-ui --agent pi --copy --yes
+```
+
+An actual remote installation using `skills@1.7.4` passes **8/8 checks** in a
+fresh project with spaces. The command reports 38 discovered skills and exactly
+one selected/installed skill. Only `.agents/skills/desktop-plugin-ui/` is created
+under the project skill root; all 37 files match canonical SHA-256 values.
+The project `skills-lock.json` has exactly one skill entry. The installation is
+a physical copy, passes standalone validation and remains unchanged afterward.
+
+Actual Pi 1.4.0 RPC automatically discovers the copied skill with project scope,
+without a `--skill` startup flag or a collection-wide package registration.
+`--approve` trusts only the isolated project's resources for this process; the
+empty project has its own Git root so ancestor repository skills cannot supply
+the result. No skill command/model prompt is executed. Observed model starts
+are zero, stderr is empty and the process closes. Canonical source stays
+unchanged. Installation takes 63.487 seconds including the CLI download and
+remote clone; this is a task-specific timing, not a performance guarantee.
+
+The project scope is the exercised installation. Global scope and other agent
+selectors are documented by the CLI, rather than claimed as separately executed
+tests. The CLI may fetch repository content temporarily to discover candidates;
+the permanent installed resource and lock contain only the requested skill.
+
+The [CLI options](https://github.com/vercel-labs/skills/blob/main/docs/commands.md)
+and [agent paths](https://github.com/vercel-labs/skills/blob/main/docs/agents.md)
+are primary references. The observed npm package requires Node 22.20+; this run
+uses Node 24.18.0. Telemetry is disabled and all npm/temp/Pi state stays inside
+the owning project's ignored artifact directory. No actual user installation
+is changed or removed.
+
+Receipt root:
+`projects/desktop-plugin-ui/artifacts/single-skill-install/20261026-skills-174/`.
+Its `install.json`, `lock.json`, `pi-discovery.json`, standalone validator output
+and `summary.json` retain the actual command, exact checks and discovery trace.
+The [single-skill verification helper](../../projects/desktop-plugin-ui/scripts/verify-single-skill-install.py)
+reproduces this with an explicit CLI version and unused run ID:
+
+```sh
+uv run --script projects/desktop-plugin-ui/scripts/verify-single-skill-install.py --run-id <fresh-id> --skills-version 1.7.4 --npm-cli <installed-npm-cli.js> --pi-cli <installed-Pi-cli.js>
+```
+
+No new distribution branch, duplicated runtime bundle or service was introduced.
+The existing Codex installer route also continues to select only this skill.
+
 ## Repository gates
 
 The clean committed source passes all required checks:

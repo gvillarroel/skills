@@ -6,6 +6,27 @@ keeps architecture small, applies Nielsen's ten heuristics and validates actual
 interactions. The complete independent bundle lives in
 [`skills/desktop-plugin-ui/`](../skills/desktop-plugin-ui/SKILL.md).
 
+## Install only this skill
+
+From your project, select the skill and target agent explicitly:
+
+```sh
+npx skills add gvillarroel/skills --skill desktop-plugin-ui --agent pi --copy --yes
+```
+
+This installs only `desktop-plugin-ui` into `.agents/skills/desktop-plugin-ui/`
+for Pi. All references, helpers, palettes and templates are included. `--copy`
+avoids symlink permissions, and `--yes` skips the selection prompts because both
+the skill and agent are already explicit. No collection-wide Pi package is
+registered. Requires Node 22.20+ and Git.
+
+Add `--global` to install in `~/.agents/skills/desktop-plugin-ui/` for all your
+projects. For Codex or Claude Code, replace `--agent pi` with `--agent codex`
+or `--agent claude-code`. Agent-specific installation paths follow the
+[Skills CLI agent table](https://github.com/vercel-labs/skills/blob/main/docs/agents.md).
+The [CLI reference](https://github.com/vercel-labs/skills/blob/main/docs/commands.md)
+defines skill selection, copying and project/global scope.
+
 ## Install in Codex
 
 Ask Codex to install the GitHub skill with its built-in installer:
@@ -30,35 +51,24 @@ avoids assuming a machine-specific script path.
 
 ## Install in Pi
 
-Install the repository's skill collection using Pi's native package manager:
-
-```sh
-pi install git:github.com/gvillarroel/skills
-```
-
-Use `pi install --local git:github.com/gvillarroel/skills` for project scope.
-Start a new Pi session, then invoke:
+Use the single-skill command above. Start Pi in the project and approve its
+project resources when prompted, then invoke:
 
 ```text
 /skill:desktop-plugin-ui Build a small plugin for the selected host.
 ```
 
-The root package already exposes `./skills`, so no separate manifest or
-generated local installation is required. Pi installs the collection; use
-`pi config` to narrow enabled resources if desired. Pin a version with
-`git:github.com/gvillarroel/skills@<commit-or-tag>`. Remove the package with
-`pi remove` and the same source string; use `--local` for a project installation.
+Pi discovers the copied skill automatically from `.agents/skills/`; there is
+no extension registration or `--skill` startup flag. A file-based skill does
+not appear as a package in `pi list`. To remove it, use
+`npx skills remove desktop-plugin-ui --agent pi --yes` from the same project;
+include `--global` if that was the installation scope.
 
-If a deeply nested Windows installation reports `Filename too long`, use Git's
-long-path support for that checkout, then install its local package:
-
-```sh
-git -c core.longpaths=true clone https://github.com/gvillarroel/skills.git skills
-pi install ./skills
-```
-
-This command does not change global Git configuration. A normal user-scope Pi
-destination is much shorter than the isolated artifact path used in verification.
+If you previously installed the full repository with `pi install`, remove that
+package using `pi remove git:github.com/gvillarroel/skills` before choosing this
+standalone route. Match its original pinned source string and `--local` scope
+when applicable. This prevents the collection from loading alongside the
+selected copied skill.
 
 ## Use a checkout in Codex
 

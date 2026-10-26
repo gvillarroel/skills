@@ -38,9 +38,14 @@ not register these console commands.
 
 ### Install the plugin authoring skill
 
-To build plugins across Claude Desktop, Claude Code, ChatGPT Desktop, Codex and
-Pi, install [Assistant Plugin UI](docs/desktop-plugin-ui.md) directly from this
-repository. In Codex, ask `$skill-installer` to install
+Install only [Assistant Plugin UI](docs/desktop-plugin-ui.md) for Pi:
+
+```sh
+npx skills add gvillarroel/skills --skill desktop-plugin-ui --agent pi --copy --yes
+```
+
+It builds plugins across Claude Desktop, Claude Code, ChatGPT Desktop, Codex and
+Pi. For the Codex built-in installer, ask `$skill-installer` to install
 `https://github.com/gvillarroel/skills/tree/main/skills/desktop-plugin-ui`.
 
 ### Validate the repository
