@@ -55,6 +55,8 @@ Use this file as the canonical list of skills to create, improve, or validate in
 
 ## Recent Validation Notes
 
+- 2026-10-25 — **HyperFrames Pi compatibility:** added a native Pi package manifest exposing the five existing HyperFrames/colorsets skills without a custom extension or renderer. Pi 1.4.0 on Node 24.18.0 passed isolated local install/list/reinstall and real SDK package discovery with five exact skills and no diagnostics; both preset pairs matched, the resolved package launcher reported HyperFrames 0.8.199, and source/global state stayed unchanged. Both colorsets also passed original lint/browser checks and exported fully decoded 2-second 1280×720/30fps videos through that resolved package, with 60 frames and visible exact tokens. The probes use no model session or authentication data. Reproduction, source layout and limits: [HyperFrames plugin guide](docs/hyperframes-colorsets.md).
+
 ### 2026-10-25: Ten custodian evolution attempts and tool-contract preservation
 
 - Completed ten native development proposals/evaluations with exact Sol 6.1, immutable baseline, frozen cases and protected mutation policy. The selected slot 10 scores 0.9200 against paired 0.4825; decision scores tie at 0.9650 and the complete gain comes from worker receipt utility. Native flags do not establish general task quality or compatibility.

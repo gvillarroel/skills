@@ -1,0 +1,23 @@
+{
+  "name": "@gvillarroel/hyperframes-colorsets",
+  "version": "0.8.199",
+  "private": true,
+  "description": "Original HyperFrames video skills with native colorset1 and colorset2 styles for Pi.",
+  "license": "Apache-2.0",
+  "keywords": ["pi-package", "hyperframes", "video", "colorsets"],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gvillarroel/skills.git",
+    "directory": "projects/hyperframes-colorsets"
+  },
+  "files": ["plugin/"],
+  "engines": {
+    "node": ">=22"
+  },
+  "pi": {
+    "skills": ["./plugin/skills"],
+    "extensions": [],
+    "prompts": [],
+    "themes": []
+  }
+}

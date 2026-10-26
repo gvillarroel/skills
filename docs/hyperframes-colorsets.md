@@ -132,6 +132,79 @@ The former copy under `personal/plugins/hyperframes` was moved to this project.
 Its old marketplace entry was removed. Previous generated videos remain separate
 from the reusable plugin source.
 
+## Install in Pi
+
+The enclosing project has a native Pi
+[`package.json`](../projects/hyperframes-colorsets/package.json) whose `pi.skills`
+field points to `./plugin/skills`. It exposes the same five skills without a
+custom extension, duplicate runtime or alternative renderer.
+
+From the skills repository root, install it for that checkout:
+
+```powershell
+pi install --local ./projects/hyperframes-colorsets
+```
+
+For a separate video project, run `pi install --local` from that directory and
+give the absolute path to `projects/hyperframes-colorsets`. Local packages are
+referenced in place, so keep the checkout at a stable path. Normal Pi project
+trust applies before project packages load.
+
+For a single session, load the package explicitly instead of registering it:
+
+```powershell
+pi -e ./projects/hyperframes-colorsets
+```
+
+Use the native skill commands:
+
+```text
+/skill:colorsets Create a video with colorset1.
+/skill:hyperframes Create a video with the selected native style.
+```
+
+Use `colorset2` explicitly for the extended palette. Pi resolves supporting files
+inside the same package, and the original launcher still reads HyperFrames
+0.8.199 from the plugin manifest.
+
+The repository root is a monorepo rather than this Pi package root. Clone the
+repository and install the subdirectory locally; a Git installation of the whole
+repository is not a substitute for selecting this package.
+
+References: [Pi 1.4.0 packages](https://github.com/earendil-works/pi/blob/v1.4.0/packages/coding-agent/docs/packages.md)
+and [Pi skills and invocation](https://github.com/earendil-works/pi/blob/v1.4.0/packages/coding-agent/docs/skills.md).
+
+### Native Pi regression
+
+```powershell
+uv run --script projects/hyperframes-colorsets/scripts/verify_pi.py
+```
+
+The probe copies only the package manifest and plugin payload into a fresh local
+workspace and isolates `PI_CODING_AGENT_DIR` with offline startup. It runs native
+local installation, package listing and repeat installation, then uses Pi's
+`DefaultResourceLoader` on the explicit package with ambient discovery disabled.
+It verifies the five skill paths, diagnostics, both preset/YAML pairs, and the
+original launcher version from the resolved package. It does not construct a
+model session or read authentication data.
+
+On 2026-10-25, Pi **1.4.0** on Node **24.18.0** passed the native package probe:
+exactly five skills, no diagnostics, no duplicate declaration after reinstall,
+HyperFrames **0.8.199**, unchanged source and unchanged global Pi settings.
+The evidence is kept under `projects/hyperframes-colorsets/artifacts/pi/`.
+
+Two additional renderer probes used the package root resolved by native Pi.
+Both colorsets passed original HyperFrames lint and browser checks without
+errors or warnings, then exported and fully decoded 2-second H.264 videos at
+1280×720, 30 fps and 60 frames. Open Sans loaded, and the native PNGs contained
+the selected red `#9e1b32` and blue `#007298` tokens. The resolved package and
+canonical plugin stayed unchanged. The reports, exact commands and frames are
+under `projects/hyperframes-colorsets/artifacts/pi/render-smoke/`.
+
+Native project-local installation requires project trust. The isolated test uses
+`--approve` for its fresh disposable workspace; add that flag for a deliberate
+noninteractive install into a workspace you intend to trust.
+
 ## Verification
 
 The relocation checks compare all 234 moved files against their pre-move hashes,

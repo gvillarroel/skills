@@ -57,3 +57,27 @@ Node.js, Chromium and FFmpeg must be available where rendering runs.
 
 The original Apache-2.0 license is preserved as `LICENSE`. Upstream source:
 https://github.com/heygen-com/hyperframes/tree/v0.8.199.
+
+## Pi
+
+The enclosing project is also a native Pi package. From the skills repository
+root, install it for that checkout:
+
+```powershell
+pi install --local ./projects/hyperframes-colorsets
+```
+
+For another video project, run `pi install --local` in that project's directory
+with the absolute path to `projects/hyperframes-colorsets`. Select the enclosing
+directory containing `package.json`, rather than the `plugin` child directory.
+Pi reads local package declarations after normal project trust is resolved.
+
+In Pi, invoke `/skill:colorsets` and `/skill:hyperframes`. For example:
+
+```text
+/skill:colorsets Create a video with HyperFrames using colorset2.
+```
+
+The package declares the same five skills through `pi.skills`. It adds no Pi
+extension or alternative renderer; the bundled original launcher and release
+manifest remain the source of the HyperFrames runtime version.
