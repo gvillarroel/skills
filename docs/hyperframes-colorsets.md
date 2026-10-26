@@ -134,7 +134,28 @@ from the reusable plugin source.
 
 ## Install in Pi
 
-The enclosing project has a native Pi
+Install directly from the skills repository, without cloning it yourself:
+
+```powershell
+pi install git:github.com/gvillarroel/skills
+```
+
+For an installation scoped to the current video project:
+
+```powershell
+pi install --local git:github.com/gvillarroel/skills
+```
+
+The repository-root [`package.json`](../package.json) exposes the existing
+canonical skills and the five HyperFrames/colorsets skills. Pi clones and
+manages that Git source. This installs the repository's collection; use
+`pi config` to choose which skills load. Normal project trust applies to local
+installation. Run `pi update --extensions` to reconcile managed packages with
+their configured sources; a Git tag or commit pins the selected revision.
+
+### Install only the video package from a checkout
+
+The enclosing project also has a native Pi
 [`package.json`](../projects/hyperframes-colorsets/package.json) whose `pi.skills`
 field points to `./plugin/skills`. It exposes the same five skills without a
 custom extension, duplicate runtime or alternative renderer.
@@ -167,14 +188,29 @@ Use `colorset2` explicitly for the extended palette. Pi resolves supporting file
 inside the same package, and the original launcher still reads HyperFrames
 0.8.199 from the plugin manifest.
 
-The repository root is a monorepo rather than this Pi package root. Clone the
-repository and install the subdirectory locally; a Git installation of the whole
-repository is not a substitute for selecting this package.
+The direct Git installation and this local subdirectory installation expose the
+same original HyperFrames bundle. The local subdirectory exposes only its five
+skills; the Git source also exposes the repository's other canonical skills.
 
 References: [Pi 1.4.0 packages](https://github.com/earendil-works/pi/blob/v1.4.0/packages/coding-agent/docs/packages.md)
 and [Pi skills and invocation](https://github.com/earendil-works/pi/blob/v1.4.0/packages/coding-agent/docs/skills.md).
 
 ### Native Pi regression
+
+Verify installation directly from the published Git repository:
+
+```powershell
+uv run --script projects/hyperframes-colorsets/scripts/verify_pi_repo.py
+```
+
+This probe performs native Git installation, listing and repeat installation in
+a clean workspace. It resolves Pi's installed package root, checks the Git
+revision and all canonical skills plus the five bundled HyperFrames skills,
+then verifies the launcher and both palette-resource pairs. It uses no model
+session or authentication store and writes evidence under
+`projects/hyperframes-colorsets/artifacts/pi-repo/`.
+
+The separate probe for the video-only local package remains available:
 
 ```powershell
 uv run --script projects/hyperframes-colorsets/scripts/verify_pi.py

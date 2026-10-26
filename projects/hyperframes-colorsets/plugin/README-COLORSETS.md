@@ -60,8 +60,17 @@ https://github.com/heygen-com/hyperframes/tree/v0.8.199.
 
 ## Pi
 
+Install directly from the skills repository:
+
+```powershell
+pi install git:github.com/gvillarroel/skills
+```
+
+This loads the repository's collection, including these five skills. Add
+`--local` for the current project, and use `pi config` to select active skills.
+
 The enclosing project is also a native Pi package. From the skills repository
-root, install it for that checkout:
+root, install only this video package for that checkout:
 
 ```powershell
 pi install --local ./projects/hyperframes-colorsets

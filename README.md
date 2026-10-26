@@ -6,6 +6,17 @@ A skill must work as an independent bundle. Repository documentation and example
 
 ## Get started
 
+Install the collection directly from GitHub in Pi, including HyperFrames and both
+colorsets:
+
+```sh
+pi install git:github.com/gvillarroel/skills
+```
+
+Add `--local` to install for the current project. The
+[HyperFrames guide](docs/hyperframes-colorsets.md#install-in-pi) covers invocation
+and installation of the video package alone from a checkout.
+
 Use uv to inspect and validate the repository.
 
 ```sh
