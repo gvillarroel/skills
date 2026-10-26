@@ -210,6 +210,18 @@ then verifies the launcher and both palette-resource pairs. It uses no model
 session or authentication store and writes evidence under
 `projects/hyperframes-colorsets/artifacts/pi-repo/`.
 
+On 2026-10-26, the default Git source passed on Pi **1.4.0** and Node
+**24.18.0**, resolving published commit
+[`c1c1b4ea`](https://github.com/gvillarroel/skills/commit/c1c1b4ea125edaf9ce3be9b5a049064cd9f3df70).
+All 12 native commands succeeded. The SDK discovered **42 skills**: the 37
+committed canonical skills and the five HyperFrames skills, without diagnostics
+or duplicate declarations. The launcher inside Pi's managed Git clone reported
+HyperFrames **0.8.199**, both preset pairs matched, and the 10,799-file
+skill/manifest payload remained unchanged after reinstall, discovery and launcher
+execution. The authoring source and global Pi settings also stayed unchanged.
+This was an installation and discovery test with zero model calls. The report
+is under `artifacts/pi-repo/20261026T120825Z-fe0f8fb2/` within this project.
+
 The separate probe for the video-only local package remains available:
 
 ```powershell

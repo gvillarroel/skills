@@ -55,6 +55,8 @@ Use this file as the canonical list of skills to create, improve, or validate in
 
 ## Recent Validation Notes
 
+- 2026-10-26 — **HyperFrames direct Pi repository installation:** added a native repository-root Pi manifest preserving canonical skills and exposing the five original HyperFrames/colorsets skills through `pi install git:github.com/gvillarroel/skills`. Pi 1.4.0 on Node 24.18.0 passed clean native Git install/list/reinstall, actual package location and SDK discovery at published commit `c1c1b4ea125edaf9ce3be9b5a049064cd9f3df70`: 12 commands succeeded, 37 canonical plus five plugin skills loaded without diagnostics or duplicates, the installed launcher reported 0.8.199 and both preset pairs matched. The 10,799-file skill/manifest payload, source bundle and global Pi settings stayed unchanged; zero model calls. Local preflight and all four repository gates also passed. Reproduce with `uv run --script projects/hyperframes-colorsets/scripts/verify_pi_repo.py`; [installation, evidence and limits](docs/hyperframes-colorsets.md#install-in-pi). This validates package installation/discovery, not a new model-generated video.
+
 ### 2026-10-26: Evidence-based evolution test priorities
 
 - Distilled the closed ten-attempt development evidence: all ten related candidates lost the same capability contract; five observed decision deltas were negative despite higher composites; the finalist's entire measured gain was worker receipt coverage. Preserve the original scores, source, rejected release and unopened private gates; do not infer operator causal rankings or independent incident frequency.
