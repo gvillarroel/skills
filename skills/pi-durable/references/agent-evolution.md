@@ -6,6 +6,7 @@
 - [Evidence](#distinguish-memory-from-improvement)
 - [Requested cycle](#run-one-requested-cycle)
 - [Change selection](#choose-the-change-and-judge-the-evidence)
+- [Tool compatibility](#preserve-the-tool-contract)
 - [Acceptance](#acceptance)
 
 Generate an application that can outlive this skill. Copy its source, prompts,
@@ -139,6 +140,31 @@ Keep changes compatible with persisted jobs and historical definitions. Package
 or schema upgrades need a separately reviewed migration plan with backed-up state;
 they are outside ordinary prompt/tool/script evolution. An audit log or hash chain
 is local provenance, not a defense against an owner who can rewrite the filesystem.
+
+## Preserve the tool contract
+
+Before evolving a tool or task script, inventory its existing inputs, output
+fields, types, status meanings, unknown/null behavior and bounded error shape.
+Find consumers in active prompts, console/report code, watchdogs and retained
+conversations. Prefer additive fields with unchanged semantics. A stored tool
+definition can outlive its original host implementation; passing a new producer's
+tests alone does not establish compatibility with those consumers.
+
+Keep capability observations separate from execution evidence. For example,
+`validationCommands` describes configured checks; `validationReceipts` records
+actual attempts. Adding receipts or `validationStatus: "not-run"` must not remove
+the configured command list, replace it with an empty list, or imply that no
+validation capability exists. Empty receipts establish neither a pass nor an
+unavailable check. Preserve unknowns and classify not-run, passed, failed and
+unavailable from their respective observations.
+
+Exercise old consumers against candidate responses, including unchanged/no-op,
+blocked, failed and partially observed work. Check the baseline contract too.
+Reject an incompatible candidate even when its scalar score improves; an
+incompatible baseline is not automatically releasable either. If changing the
+public schema is necessary, require a separately scoped version/adapter and
+consumer migration with recovery/rollback checks. Do not rewrite a frozen
+verifier or discard historical fields to make the chosen candidate pass.
 
 ## Acceptance
 

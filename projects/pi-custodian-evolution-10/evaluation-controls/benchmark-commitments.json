@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "frozenAtUtc": "2026-10-26T01:11:39.442762+00:00",
+  "studyId": "custodian-evolution-10-20261025",
+  "development": {
+    "path": "projects/pi-custodian-evolution-10/artifacts/development/decision-cases.json",
+    "sha256": "17ad47a53faa331f18fd16159873b4ec04e6bde76dce47f8450cf6fce35f8f89",
+    "cases": 10
+  },
+  "validationCommitment": {
+    "sha256": "b252d8fbcf33b6cbfcb1c5042e307f0ce795c7b39560b27fdfede3a89732bd39",
+    "cases": 4
+  },
+  "holdoutCommitment": {
+    "sha256": "c67a7fc012610e07f48fabaf8d676b25612fe59942917f1f359e86e637ad16f9",
+    "cases": 4
+  },
+  "reservedAccess": "Curator-owned artifact files in a shared workspace; procedural separation only, not an OS security boundary.",
+  "revision": 2,
+  "presearchCorrection": "Clean/no-change does not require irrelevant validation receipts; standardized response vocabulary added equally to all splits before model search.",
+  "responseContractSha256": "1d539ae7904acf4e69957addbfc3cfbabd1388c6c3c7c66ac9103b567250f1ce",
+  "evaluatorFiles": {
+    "decision-grader.ts": "40006d3485de997ca87dc2cd62ed796283516595571a088803abc9b841ee6033",
+    "decision-grader.test.ts": "f7b2a867f286e9da172f43dbc68ef33b6a0ba6e525d3376f1024b7cc1e059829",
+    "protocol.md": "c00a4924c70733c9f1195fb130ef44807030c800e2b9dc1c4a9d7a5f0c43207d"
+  },
+  "selection": {
+    "decisionWeight": 0.5,
+    "workerReceiptWeight": 0.5,
+    "minimumPairedImprovement": 0.01,
+    "tieBreak": [
+      "candidate-score-descending",
+      "patch-digest-lexicographic"
+    ]
+  },
+  "controller": "Local bounded population adaptation using native EvolutionManager; not stock study.py.",
+  "protocolAlignedBeforeSearchUtc": "2026-10-26T01:14:00.370582+00:00"
+}

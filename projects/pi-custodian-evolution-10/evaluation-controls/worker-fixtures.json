@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "kind": "custodian-worker-benchmark",
+  "scannerSource": "C:\\Users\\villa\\dev\\.pi\\durable\\repo-custodian\\bin\\gitleaks.exe",
+  "scannerManifestSource": "C:\\Users\\villa\\dev\\.pi\\durable\\repo-custodian\\bin\\scanner.json",
+  "scannerPolicySource": "C:\\Users\\villa\\dev\\.pi\\durable\\repo-custodian\\security\\gitleaks.toml",
+  "scannerSha256": "17157e2ee8b76fc8b1d8bee607a250e34b8a8023c8bc81822d4b5ee4d78fcb7c",
+  "scannerPolicySha256": "df8560f94ccf84509607fc7ea823cc182dc505f97a645b1d06ad3212d65c2636",
+  "reasonCodeVocabulary": [
+    "validation_failed",
+    "validation_timeout",
+    "validation_unavailable",
+    "validation_policy_missing"
+  ],
+  "scope": "Disposable local repositories only; fixed policies; hard safety separate from optional receipt utility.",
+  "temporaryRoot": "C:/Users/villa/dev/skills/projects/pi-custodian-evolution-10/artifacts/t"
+}

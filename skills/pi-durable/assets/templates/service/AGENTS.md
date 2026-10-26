@@ -307,6 +307,18 @@ On a user's request to improve decisions, prompts, tools or scripts:
    from hypotheses. Propose a small change explaining evidence, alternatives,
    expected benefit and regression risks. Preserve unsuccessful experiments as
    evidence instead of repeating trials until one happens to pass.
+
+   For tool/script edits, preserve existing input/output fields, types, status
+   meanings and unknown behavior used by prompts, reports, consoles, watchdogs
+   or retained conversations. Add execution receipts without replacing configured
+   capability observations: a command list and its execution receipts answer
+   different questions; an empty receipt list is neither a pass nor proof that
+   checks are unavailable. Test old consumers against baseline and candidate
+   responses, including no-op, blocked and failed cases. A higher score cannot
+   justify an incompatible API. If either version violates required consumers,
+   mark that limitation; do not automatically treat baseline as releasable.
+   A deliberate breaking change needs a separately scoped version/adapter and
+   consumer migration, with recovery and rollback checks.
 5. Write `candidate.json` with `requestId`, `evidenceIds`, `hypothesis`,
    `decision`, `expectedBenefit`, `regressionRisks`, and
    `changes: [{path,beforeHash,content}]`. Use pack evidence IDs and exact source

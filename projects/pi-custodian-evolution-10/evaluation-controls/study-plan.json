@@ -1,0 +1,36 @@
+{
+  "studyId": "custodian-evolution-10-20261025",
+  "kind": "bounded-local-population-native-manager",
+  "maxDevelopmentAttempts": 10,
+  "maxWallSeconds": 7200,
+  "minimumImprovement": 0.01,
+  "selection": [
+    "candidate-score-descending",
+    "patch-digest-lexicographic"
+  ],
+  "weights": {
+    "decisions": 0.5,
+    "worker": 0.5
+  },
+  "config": "config.evo10.json",
+  "allowedPaths": [
+    "prompts/repo-custodian.md",
+    "scripts/custodian.py",
+    "src/tools/maintenance.ts"
+  ],
+  "verifierPath": "evaluation/evo10/verifier.mjs",
+  "commonFixtures": [
+    "evaluation/evo10/evaluation-settings.json",
+    "evaluation/evo10/decision-grader.ts",
+    "evaluation/evo10/worker-benchmark.py",
+    "evaluation/evo10/worker-fixtures.json",
+    "config.evo10.json"
+  ],
+  "semanticCases": {
+    "development": "evaluation/evo10/development/decision-cases.json",
+    "validation": "evaluation/evo10/validation/decision-cases.json",
+    "holdout": "evaluation/evo10/holdout/decision-cases.json"
+  },
+  "gatePolicy": "one frozen finalist; one validation attempt then one holdout attempt; no reserved feedback in development",
+  "mutations": "Receipt/inspection-only worker changes, evidence/scope prompt, description-only existing tool; existing security and mutation semantics protected."
+}
