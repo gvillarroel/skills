@@ -1,0 +1,6 @@
+{
+  "name": "task-view",
+  "version": "0.1.0",
+  "description": "Inspect a local synthetic task list with native controls or direct text commands.",
+  "author": { "name": "Local plugin author" }
+}

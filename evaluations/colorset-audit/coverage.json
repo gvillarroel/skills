@@ -5,6 +5,17 @@
   "claim": "Supported output-route inventory and authored paint checks; source pixels and renderer-derived tones have explicit scopes. This is not an exhaustive proof of all arbitrary user-authored scenes.",
   "skills": [
     {
+      "skill": "desktop-plugin-ui",
+      "outputs": [
+        "Runnable native plugins, MCP Apps and Pi extension source",
+        "Host-specific plugin manifests and distribution instructions",
+        "English interaction, evidence and Nielsen usability reports",
+        "Scoped palette roles and JSON validation records"
+      ],
+      "scope": "authored-colorset",
+      "sourceFidelity": "Use ColorSet 1 by default and ColorSet 2 only when requested for authored pixels. Preserve explicit user/source styling. Native controls and host themes retain host-owned paint; protocol or source checks do not establish actual frontend pixels."
+    },
+    {
       "skill": "reflex-xy",
       "outputs": [
         "editable Python XY chart source",

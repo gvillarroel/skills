@@ -36,6 +36,13 @@ an agent's base folder, or `/durable-chat`. See the
 existing registrations, verification and removal. Installing skills alone does
 not register these console commands.
 
+### Install the plugin authoring skill
+
+To build plugins across Claude Desktop, Claude Code, ChatGPT Desktop, Codex and
+Pi, install [Assistant Plugin UI](docs/desktop-plugin-ui.md) directly from this
+repository. In Codex, ask `$skill-installer` to install
+`https://github.com/gvillarroel/skills/tree/main/skills/desktop-plugin-ui`.
+
 ### Validate the repository
 
 Use uv to inspect and validate the repository.

@@ -1,0 +1,10 @@
+{
+  "name": "task-view",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "validate": "claude plugin validate . --strict --json",
+    "test": "claude plugin test ."
+  }
+}

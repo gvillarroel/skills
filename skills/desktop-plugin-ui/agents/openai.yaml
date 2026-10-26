@@ -1,0 +1,4 @@
+interface:
+  display_name: "Assistant Plugin UI"
+  short_description: "Build simple plugins and validate useful interactions"
+  default_prompt: "Use $desktop-plugin-ui to build or improve a plugin for the selected assistant, choose the simplest supported interactions, iterate with concrete tests and all ten Nielsen heuristics, and preserve honest host evidence, English copy and ColorSet 1 defaults."

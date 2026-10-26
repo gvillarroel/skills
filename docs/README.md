@@ -10,6 +10,7 @@ A maintained collection of reusable skills, compact references, deterministic he
 - [Skill backlog and validation status](../SKILLS.md)
 - [Evaluation methodology](../evaluations/README.md)
 - [Skill authoring and generated bundle validation](skill-authoring.md)
+- [Install Assistant Plugin UI for cross-host plugin authoring](desktop-plugin-ui.md)
 - [Pi Durable usage, feature selection, and tested recovery behavior](pi-durable.md)
 - [Install the Pi Durable console extension from this repository](pi-durable-console.md)
 - [Original HyperFrames plugin with colorset1 and colorset2](hyperframes-colorsets.md)
