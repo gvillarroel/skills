@@ -1,0 +1,15 @@
+{
+  "name": "hyperframes-colorsets-local",
+  "description": "Original HyperFrames video creation with native colorset1 and colorset2 styles.",
+  "owner": {
+    "name": "gvillarroel"
+  },
+  "plugins": [
+    {
+      "name": "hyperframes",
+      "source": "./plugin",
+      "description": "Original HyperFrames with the user's native colorset1 and colorset2 styles.",
+      "version": "0.8.199"
+    }
+  ]
+}

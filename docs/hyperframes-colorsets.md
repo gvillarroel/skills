@@ -30,7 +30,7 @@ node ./projects/hyperframes-colorsets/plugin/skills/hyperframes/scripts/plugin-c
 For authoring and rendering, resolve the launcher's absolute path and run it from
 the video project directory, as described in the bundled plugin execution rules.
 
-## Install from a repository checkout
+## Install in Codex from a repository checkout
 
 The versioned catalog at
 [`projects/hyperframes-colorsets/.agents/plugins/marketplace.json`](../projects/hyperframes-colorsets/.agents/plugins/marketplace.json)
@@ -51,6 +51,82 @@ installation or activation.
 The developer's ignored repository-root catalog also points to this package and
 preserves its existing Reflex XY entry. It is local configuration and is not
 required by the portable catalog.
+
+## Install in Claude
+
+The project also provides a native Claude marketplace at
+[`projects/hyperframes-colorsets/.claude-plugin/marketplace.json`](../projects/hyperframes-colorsets/.claude-plugin/marketplace.json).
+The plugin includes the exact official HyperFrames 0.8.199 Claude manifest.
+From the repository root:
+
+```powershell
+claude plugin marketplace add ./projects/hyperframes-colorsets
+claude plugin install hyperframes@hyperframes-colorsets-local
+```
+
+In Claude Code, invoke `/hyperframes:colorsets` and
+`/hyperframes:hyperframes`. A session-only alternative avoids installation:
+
+```powershell
+claude --plugin-dir ./projects/hyperframes-colorsets/plugin
+```
+
+After choosing a palette, use the normal HyperFrames workflow. The original
+launcher reads the plugin release from its manifest, resolves its own installed
+location, and retains version 0.8.199.
+
+For the web/Desktop Chat/Cowork **Upload plugin** flow, use the plugin-only ZIP
+at `projects/hyperframes-colorsets/artifacts/packages/hyperframes-0.8.199-colorsets-claude.zip`.
+It contains `.claude-plugin/plugin.json` at its root. The Codex marketplace ZIP
+contains a catalog and a nested plugin, so it is not the Claude upload artifact.
+
+Claude's documentation describes skill availability across Chat, Cowork and
+Claude Code. Rendering a local video additionally requires a host with Node.js,
+Chromium and FFmpeg. The terminal installation checks below establish native
+Claude Code package discovery and execution, not an observed web/Desktop/Cowork
+session. Follow the account and environment capabilities of the selected surface.
+
+References: [Claude plugin manifest](https://code.claude.com/docs/en/plugins-reference),
+[Claude marketplaces](https://code.claude.com/docs/en/plugin-marketplaces), and
+[using plugins across Claude surfaces](https://support.claude.com/en/articles/13837440-use-plugins-in-claude).
+
+### Native Claude regression
+
+```powershell
+uv run --script projects/hyperframes-colorsets/scripts/verify_claude.py
+```
+
+The probe creates a fresh `CLAUDE_CONFIG_DIR` and workspace under the project's
+ignored artifacts directory. It performs no model calls or account login. It
+checks strict plugin and marketplace validation, actual marketplace registration
+and installation, the enabled installation inventory, the five discovered skills,
+the original launcher version from the installed cache, and both cached preset
+and YAML pairs. It checks source and global Claude-state hashes before and after.
+
+On 2026-10-25, two fresh runs passed with Claude Code **2.1.302**: all eight native
+commands exited successfully, exactly five skills were discovered, HyperFrames
+resolved to **0.8.199**, and the source and global state were unchanged. A separate
+session-only load of the plugin-only Claude ZIP also discovered the same five
+skills. Reports and logs are under `projects/hyperframes-colorsets/artifacts/claude/`.
+
+The probe requires a recognized, non-null manifest. An exit code of zero from
+`claude plugin validate` alone is insufficient: this Claude build returned success
+with `manifest: null` when the Claude manifest was missing. Component discovery
+is verified separately with the native inventory.
+
+These are native installation and execution-path checks. They do not claim that
+a Claude model generated a video, nor that the web/Desktop/Cowork interface was
+observed. The plugin's existing video-generation workflow and palette behavior
+are unchanged.
+
+Two additional renderer probes used the original launcher from the actual
+installed Claude cache. Each mounted a native sub-composition, used its cached
+colorset preset and Open Sans, and passed lint and browser check with zero errors
+or warnings. Both exported and fully decoded 2-second H.264 videos at 1280×720,
+30 fps, with 60 frames. Native PNGs visibly used the selected red `#9e1b32` or
+blue `#007298` token; the cache and canonical plugin stayed unchanged. These
+integration fixtures and their exact commands are kept locally under
+`projects/hyperframes-colorsets/artifacts/claude/render-smoke/`.
 
 The former copy under `personal/plugins/hyperframes` was moved to this project.
 Its old marketplace entry was removed. Previous generated videos remain separate

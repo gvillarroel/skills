@@ -55,6 +55,8 @@ Use this file as the canonical list of skills to create, improve, or validate in
 
 ## Recent Validation Notes
 
+- 2026-10-25 — **HyperFrames Claude compatibility:** added the exact upstream 0.8.199 Claude manifest and a native Claude marketplace alongside Codex. Two isolated Claude Code 2.1.302 runs passed strict validation, registration, installation, enabled inventory, discovery of all five skills, cached launcher resolution and both palette-resource pairs; source and global state hashes were unchanged, with zero model calls. The plugin-only ZIP also passed native session discovery. Both colorsets additionally passed native lint/check and 2-second 1280×720/30fps renders through the actual installed-cache launcher, with 60 frames each, complete decoding and visible exact palette tokens. Reproduction and surface-specific limits: [HyperFrames plugin guide](docs/hyperframes-colorsets.md). This is packaging compatibility, not a new standalone skill or model-quality claim.
+
 ### 2026-10-25: Existing-agent review, operational repairs and WAL-safe evidence inspection
 
 - Reviewed both stopped local pilots and the running custom custodian. Existing reports do not justify broad prompt-policy evolution; retained completions lack quality receipts. Added a private independent case index with 12/12 checks and byte-identical actual SQLite inspection; missing verification remains insufficient.

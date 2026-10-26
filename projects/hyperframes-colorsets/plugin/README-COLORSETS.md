@@ -7,7 +7,7 @@ and commit.
 
 The only functional addition is `skills/colorsets`: two native `FRAME.md` styles
 with the exact colors and typography from the user's original YAML files.
-Use `$colorsets` to select `colorset1` (the default) or `colorset2`. Copy the
+In Codex, use `$colorsets` to select `colorset1` (the default) or `colorset2`. Copy the
 selected style to the video project as `frame.md`, then follow the original
 HyperFrames workflow.
 
@@ -31,6 +31,29 @@ project directory a marketplace root. From the repository root, register it with
 The **HyperFrames Colorsets** source contains **HyperFrames by HeyGen** under the
 technical name `hyperframes`. Marketplace files alone do not confirm installation
 or activation in the desktop application.
+
+## Claude
+
+The package includes HyperFrames' original `.claude-plugin/plugin.json`.
+From a repository checkout, register and install the Claude marketplace:
+
+```powershell
+claude plugin marketplace add ./projects/hyperframes-colorsets
+claude plugin install hyperframes@hyperframes-colorsets-local
+```
+
+In a Claude Code session use `/hyperframes:colorsets` to choose the palette and
+`/hyperframes:hyperframes` for the original video workflow. For example:
+
+```text
+/hyperframes:colorsets Create a video with HyperFrames using colorset2.
+```
+
+For Claude's Upload plugin flow, use the plugin-only Claude ZIP, which places
+`.claude-plugin/plugin.json` at the root. The Codex marketplace ZIP has a
+different directory layout. Skill availability in Claude Chat or Cowork does
+not establish that their execution environment can run the local renderer;
+Node.js, Chromium and FFmpeg must be available where rendering runs.
 
 The original Apache-2.0 license is preserved as `LICENSE`. Upstream source:
 https://github.com/heygen-com/hyperframes/tree/v0.8.199.
