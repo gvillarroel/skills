@@ -6,19 +6,20 @@ import { BACKGROUND_CONTEXT as context } from '@earendil-works/chord/context';
 import { createModels, fauxProvider, fauxAssistantMessage, Type } from '@earendil-works/pi-ai';
 import { openaiProvider } from '@earendil-works/pi-ai/providers/openai';
 import { anthropicProvider } from '@earendil-works/pi-ai/providers/anthropic';
-import { Harness, configure, createRegistry, defineDocFamily, defineExtension, defineTool, hook, GenerationTask, ToolTask, type Conversation, type ConversationId, type SubmissionId, type HookRegistration } from '@earendil-works/pi-durable';
+import { AgentDoc, Harness, configure, createRegistry, defineDocFamily, defineExtension, defineTool, hook, GenerationTask, ToolTask, type Conversation, type ConversationId, type SubmissionId, type HookRegistration } from '@earendil-works/pi-durable';
 import { openNodeSqliteStorage } from '@earendil-works/pi-durable/storage/sqlite/node';
 import type { AgentConfig, ServiceConfig } from './config.js';
 import type { Job } from './catalog.js';
 import { EvidenceStore, captureVersion, fingerprint, versionReference, type VersionManifest } from './evidence.js';
 import { createReadPullRequestTool } from './tools/read-pull-request.js';
 import { createCodexProvider } from './codex-provider.js';
+import { ownProviderSessions } from './model-sessions.js';
 
 const Threads = defineDocFamily<{conversationId:number;version?:VersionManifest}, null>({ kind:'service.threads', version:1, scope:'session', family:true, initial:() => ({conversationId:0}) });
 type Trace=(kind:string,details:Record<string,unknown>,ids:{runId?:string;conversationId?:number})=>unknown;
 export function createEvidenceHooks(trace:Trace,hostModel:{provider:string;modelId:string}):HookRegistration[]{return [
   hook(GenerationTask,{
-    beforeRequest:(request,api)=>{trace('model.request',{hostModel,messageCount:request.messages.length},{runId:String(api.taskId),conversationId:api.conversationId});return undefined;},
+    beforeRequest:async(request,api,ctx)=>{const stored=await api.snapshot(AgentDoc,api.conversationId,ctx);trace('model.request',{hostModel,model:stored?.model??hostModel,effort:stored?.thinkingLevel??'runtime-default',messageCount:request.messages.length},{runId:String(api.taskId),conversationId:api.conversationId});return undefined;},
     afterResponse:(message,api)=>{const text=message.content.filter(b=>b.type==='text').map(b=>(b as {text:string}).text).join('\n');trace('model.response',{model:{provider:message.provider,model:message.model},stopReason:message.stopReason,usage:message.usage,publicSummary:text.slice(0,700),publicText:fingerprint(text),toolCallCount:message.content.filter(b=>b.type==='toolCall').length},{runId:String(api.taskId),conversationId:api.conversationId});},
   }),
   hook(ToolTask,{
@@ -44,11 +45,11 @@ export function createListEvidenceTool(agentId:string,evidence:EvidenceStore){re
 export class AgentRuntime {
   calls = 0;
   private conversationVersions=new Map<number,VersionManifest|undefined>();
-  private constructor(readonly agent: AgentConfig, readonly harness: Harness, readonly root: Conversation, private choices: Parameters<typeof configure>[2],readonly evidence:EvidenceStore,readonly version:VersionManifest) {this.conversationVersions.set(root.id,version);}
+  private constructor(readonly agent: AgentConfig, readonly harness: Harness, readonly root: Conversation, private choices: Parameters<typeof configure>[2],readonly evidence:EvidenceStore,readonly version:VersionManifest,private disposeModels:()=>void) {this.conversationVersions.set(root.id,version);}
   versionForConversation(conversationId:number){const version=this.conversationVersions.get(conversationId);return {hostVersion:versionReference(this.version),conversationVersion:version?versionReference(version):{unknown:true,reason:'Historical or recovering conversation; original manifest has not been loaded.'}};}
   trace(kind:string,details:Record<string,unknown>,ids:{runId?:string;jobId?:string;conversationId?:number;submissionId?:number}={}){return this.evidence.append({agentId:this.agent.id,kind,details,...ids,version:ids.conversationId?this.versionForConversation(ids.conversationId):{hostVersion:versionReference(this.version)}});}
   static async open(config: ServiceConfig, agent: AgentConfig) {
-    const models = createModels(); let ref: {provider:string;modelId:string}; let count = () => {};
+    const models = createModels(); let ref: {provider:string;modelId:string}; let count = () => {};let disposeModels=()=>{};
     if (config.provider.kind === 'faux') {
       const faux = fauxProvider({ tokensPerSecond: Infinity });
       const provider = { ...faux.provider, streamSimple: (...args: Parameters<typeof faux.provider.streamSimple>) => {
@@ -59,9 +60,9 @@ export class AgentRuntime {
         }]);
         return faux.provider.streamSimple(...args);
       } };
-      models.setProvider(provider); ref = { provider:faux.getModel().provider,modelId:faux.getModel().id };
+      const owned=ownProviderSessions(provider);disposeModels=owned.dispose;models.setProvider(owned.provider); ref = { provider:faux.getModel().provider,modelId:faux.getModel().id };
     } else {
-      const provider = config.provider.kind === 'openai-codex' ? createCodexProvider(config.provider.piCliPath!) : config.provider.kind === 'openai' ? openaiProvider() : anthropicProvider(); models.setProvider(provider);
+      const provider = config.provider.kind === 'openai-codex' ? createCodexProvider(config.provider.piCliPath!) : config.provider.kind === 'openai' ? openaiProvider() : anthropicProvider();const owned=ownProviderSessions(provider);disposeModels=owned.dispose;models.setProvider(owned.provider);
       if (config.provider.kind !== 'openai-codex' && !process.env[config.provider.kind === 'openai' ? 'OPENAI_API_KEY' : 'ANTHROPIC_API_KEY']) throw new Error('The selected provider credential is missing from the service environment.');
       if (!models.getModel(provider.id,config.provider.model!)) throw new Error('Configured model is absent from this pinned provider catalog.');
       ref = {provider:provider.id,modelId:config.provider.model!};
@@ -74,8 +75,8 @@ export class AgentRuntime {
     const choices={ model:ref,thinkingLevel:'low' as const,instructions:agent.instructions,extensions:[extension],tools:[readPR,listEvidence,decision] };
     let harness:Harness|undefined;
     try {const directory=join(config.dataDir,'agents',agent.id);await mkdir(directory,{recursive:true});harness=await Harness.open(await openNodeSqliteStorage(join(directory,'harness.sqlite')),{models,registry,settings:{retry:{maxRetries:2},progress:{partialIntervalMs:250,outputIntervalMs:250}},onReport:() => {trace('runtime.report',{publicSummary:'The durable runtime reported a non-fatal failure; inspect its authorized runtime state.'});console.error(JSON.stringify({type:'runtime-report',agentId:agent.id}));}},context);
-      const root=await harness.root(context,{agent:choices}); await root.configure(choices,context); runtime=new AgentRuntime(agent,harness,root,choices,evidence,version); count=()=>{runtime!.calls++;};runtime.trace('runtime.opened',{publicSummary:'Runtime opened and recovery enabled. Unfinished safe durable tasks may resume.',previousEvidenceId:evidence.list(agent.id,1)[0]?.id});harness.resume();return runtime;
-    }catch(error) {if(harness)await harness.close(context);evidence.close();throw error;}
+      const root=await harness.root(context,{agent:choices}); await root.configure(choices,context); runtime=new AgentRuntime(agent,harness,root,choices,evidence,version,disposeModels); count=()=>{runtime!.calls++;};runtime.trace('runtime.opened',{publicSummary:'Runtime opened and recovery enabled. Unfinished safe durable tasks may resume.',previousEvidenceId:evidence.list(agent.id,1)[0]?.id});harness.resume();return runtime;
+    }catch(error) {try{if(harness)await harness.close(context);}finally{try{disposeModels();}finally{evidence.close();}}throw error;}
   }
   async conversation(jobId?:string):Promise<Conversation> {
     if (!jobId) return this.root;
@@ -105,5 +106,6 @@ export class AgentRuntime {
   }
   async status(id:number) {const submission=await this.harness.submission(id as SubmissionId,context);if(!submission)return undefined;const record=await submission.status(context);return {...record,...(record.status==='done' && record.type==='input' ? {text:await this.answer((await this.harness.conversation(record.conversationId,context))!,record.answer!)} : {})};}
   async snapshot(jobId?:string) {const conversation=await this.conversation(jobId);const state=await conversation.viewState(context);try{return structuredClone(state.value);}finally{state.dispose();}}
-  async close(){this.trace('runtime.closing',{publicSummary:'Graceful shutdown requested; durable unfinished work will be recoverable.'});await this.harness.close(context);this.trace('runtime.closed',{publicSummary:'Runtime closed.'});this.evidence.close();}
+  async quiescent(){const inspection=await this.harness.inspect(context);return inspection.tasks.length===0&&inspection.submissions.length===0;}
+  async close(){this.trace('runtime.closing',{publicSummary:'Graceful shutdown requested; durable unfinished work will be recoverable.'});try{await this.harness.close(context);this.trace('runtime.closed',{publicSummary:'Runtime closed.'});}finally{try{this.disposeModels();}finally{this.evidence.close();}}}
 }

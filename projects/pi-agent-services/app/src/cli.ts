@@ -13,7 +13,13 @@ import { runServiceAction, type ServiceAction } from './service-manager.js';
 function option(args:string[],key:string){const index=args.indexOf(key);return index<0?undefined:args[index+1];}
 async function main(){const args=process.argv.slice(2);const command=args[0]??'help';if(command==='help'){console.log('Commands: serve, list, jobs <agent>, traces <agent> [--output file], feedback <agent> --message <summary> [--evidence id,id], chat <agent> [--job <id>] [--message <text>] [--steer], abort <agent> [--job <id>], service <install|start|stop|status|uninstall> [--options local-options.json] [--platform win32|darwin] [--execute] [--output file]. Every command accepts --config file. Cross-platform plans should use JSON --options to preserve target paths.');return;}
   const configPath=resolve(option(args,'--config')??'config.json');const config=await loadConfig(configPath);
-  if(command==='serve'){const service=await AgentService.open(config);console.log(JSON.stringify({status:'listening',url:service.url,agents:config.agents.map(a=>a.id),provider:config.provider.kind}));await new Promise<void>(resolve=>{let closing=false;const stop=()=>{if(closing)return;closing=true;void service.close().then(resolve,error=>{console.error(error.message);process.exitCode=1;resolve();});};process.once('SIGINT',stop);process.once('SIGTERM',stop);});return;}
+  if(command==='serve'){
+    const service=await AgentService.open(config);console.log(JSON.stringify({status:'listening',url:service.url,agents:config.agents.map(a=>a.id),provider:config.provider.kind}));
+    const stop=()=>{void service.close().catch(()=>{});};process.once('SIGINT',stop);process.once('SIGTERM',stop);
+    try{await service.closed;}finally{process.removeListener('SIGINT',stop);process.removeListener('SIGTERM',stop);}
+    await Promise.all([stdout,process.stderr].map(stream=>new Promise<void>(resolve=>{const timer=setTimeout(resolve,1000);stream.write('',()=>{clearTimeout(timer);resolve();});})));
+    process.exit(process.exitCode??0);return;
+  }
   if(command==='service'){
     const action=args[1] as ServiceAction;if(!['install','start','stop','status','uninstall'].includes(action))throw new Error('Choose a service action.');
     const platform=option(args,'--platform')??process.platform;if(platform!=='win32'&&platform!=='darwin')throw new Error('Native service plans target win32 or darwin.');

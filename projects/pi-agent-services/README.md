@@ -63,4 +63,11 @@ WhatsApp requires its own sender account, recipient consent and approved templat
 
 ## Retained verification
 
+For a read-only inventory of actual task attribution and missing outcome checks,
+run `uv run --script scripts/review-evidence.py --config config.local.json --output
+../artifacts/reviews/current-agent-cases.json` from `app/`. Completed work remains
+unverified unless an attributable contract-bound outcome receipt is present.
+The helper makes no inference calls and does not change service state; use its
+named gaps and the application runbook before requesting a bounded improvement.
+
 Local generated evidence is kept in `artifacts/`, including live before/after-restart receipts, source/GitHub observations, test logs and operational reports. The versioned [validation record](validation.md) distinguishes deterministic tests, real model executions, desktop acceptance and untested mobile/macOS behavior. Do not commit live state, console tokens, credentials, raw Codex sessions, dependency trees or generated logs.

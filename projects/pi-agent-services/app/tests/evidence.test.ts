@@ -20,6 +20,13 @@ async function temporary(){return mkdtemp(resolve('artifacts/evidence-'));}
 async function project(){const directory=await temporary();await mkdir(join(directory,'src/tools'),{recursive:true});await mkdir(join(directory,'prompts'));await writeFile(join(directory,'src/tools/inspect.ts'),'export const version = 1;\n');await writeFile(join(directory,'prompts/reviewer.md'),'Review the observed data.\n');await writeFile(join(directory,'package-lock.json'),'{"lockfileVersion":3}\n');return directory;}
 const job=(number:number):Job=>({id:`job-${number}`,agentId:agent.id,status:'queued',event:{id:`github:owner/repo:pull_request:${number}:opened`,type:'pull_request.opened',repository:'owner/repo',number,title:'Offline fixture',url:`https://github.com/owner/repo/pull/${number}`,headSha:'abcdef',createdAt:'2026-10-24T12:00:00Z'}});
 
+test('request provenance observes the retained conversation model and effort instead of the host default',{timeout:10000},async()=>{
+  const directory=await temporary(),store=await EvidenceStore.open(directory),faux=fauxProvider({tokensPerSecond:Infinity}),models=createModels();models.setProvider(faux.provider);const actual={provider:faux.getModel().provider,modelId:faux.getModel().id},host={provider:'host-fixture',modelId:'different-host-model'};
+  const extension=defineExtension({name:'provenance-fixture',hooks:createEvidenceHooks((kind,details,ids)=>store.append({agentId:agent.id,kind,details,...ids}),host)}),registry=createRegistry();registry.install(extension);faux.setResponses([fauxAssistantMessage('Observed fixture output.')]);
+  const harness=await Harness.open(await openNodeSqliteStorage(join(directory,'harness.sqlite')),{models,registry},context);
+  try{const conversation=await harness.root(context,{agent:{model:actual,thinkingLevel:'medium',extensions:[extension]}});const submission=await conversation.submit({type:'input',content:'Read the fixture.',requestId:'actual-provenance'},context);assert.equal((await submission.wait(context)).status,'done');const request=store.list(agent.id).find(record=>record.kind==='model.request')!;assert.deepEqual(request.details.hostModel,host);assert.deepEqual(request.details.model,actual);assert.equal(request.details.effort,'medium');assert.equal(request.conversationId,conversation.id);}finally{await harness.close(context);store.close();}
+});
+
 test('append-only evidence survives reopen, bounds payloads, and redacts credentials and private fields',async()=>{
   const directory=await temporary();let store=await EvidenceStore.open(directory);const previous=process.env.GITHUB_TOKEN;process.env.GITHUB_TOKEN='fixture-secret-credential-1234';
   try{

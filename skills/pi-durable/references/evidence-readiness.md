@@ -37,6 +37,16 @@ than adding model calls just to write telemetry. Idle collection must not poll
 the model. Keep raw authorized conversations private, redact exported summaries,
 and never collect provider thinking, credentials or private chain-of-thought.
 
+For a byte-preserving SQLite audit, do not assume `mode=ro` plus `query_only`
+leaves live state untouched: WAL reads can update shared-memory reader marks.
+Make bounded private copies of the database and its WAL in an artifact directory,
+verify source hashes/stat before and after copying and compare copied hashes,
+then query only the copies. Abort on a rollback journal or concurrent source
+change; do not copy credentials or the live SHM file. Scope temporary cleanup to
+the verified artifact-directory descendant. Separate database copies are not an
+atomic cross-database snapshot. Use a stopped owner or a supported consistent
+backup for release decisions; never treat a best-effort audit as a live backup.
+
 ## Close a task case with observable data
 
 Maintain a compact project-local case index or report when preparing improvement.

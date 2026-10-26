@@ -52,6 +52,55 @@ testing on that operating system. The console is this application's CLI/API.
 
 ## Record evidence and version the agent
 
+### Review the current pilot evidence
+
+The existing pilots use a custom host with local source/delivery watchers. They
+are not newly created console-managed agents. Preserve their watcher budgets,
+notifications, independent job conversations and original version manifests when
+maintaining the application. Both live configuration entries pin Sol 6.1; inspect
+actual request/response evidence rather than inferring a conversation's model
+from the host's current setting.
+
+From this application directory, create a private read-only case index before
+an improvement request:
+
+```text
+uv run --script scripts/review-evidence.py --config config.local.json --output ../artifacts/reviews/current-agent-cases.json
+```
+
+The helper reads retained state and emits an index; it does not start an owner,
+call a model, grade prose or change the ledger. Run it again after representative
+completed work. A completed job without an attributable verification receipt
+remains unverified. Human-control response records alone do not prove a completed
+or correct task. Missing IDs, original versions, checks and measurements stay
+unknown; do not backfill invented receipts or relabel old model errors as policy
+failures.
+
+For each selected case, inspect the authorized snapshot, criterion, exact source
+and actual model, material actions/decision references, observed output, receipt
+and any user correction. Keep successes and failures. Distinguish unchanged
+important behavior from desired changes: four source validators do not establish
+visual or isolated authoring quality; a failed GitHub query makes remote state
+unknown; successful CI for an older SHA does not validate current HEAD or dirty
+files. Existing reports already make these distinctions, so do not force prompt
+changes solely to create an evolution candidate.
+
+Record readiness as insufficient, bounded reproduction, or ready for a bounded
+comparison with named missing observations and a next step. No universal number
+of traces is sufficient. A concrete process-lifetime defect can justify a narrow
+regression repair without claiming a better general reviewing policy. A broader
+prompt change needs varied task outcomes, retained successes and meaningful
+baseline/candidate evaluation. Inspect the actual bounded exported pack; stop a
+proposal if necessary task/result/verification evidence was omitted. Never rewrite
+sealed evidence or cite absent request IDs. A null candidate is valid.
+
+These are operator guidelines, not a new semantic quality gate. Adapt any needed
+task-facing rules to the active prompt within its existing output format and
+permissions; Durable does not automatically read this runbook. Keep logs and
+private case exports local, reuse host instrumentation, and collect neither
+credentials nor private model reasoning. Preserve exact rollback bytes and verify
+representative work after a requested release.
+
 Preserve the scaffold manifest as the initial portable source inventory. Its
 relative paths and SHA-256 hashes describe authored files at generation time;
 the manifest does not hash itself or assert that later edits are unchanged.

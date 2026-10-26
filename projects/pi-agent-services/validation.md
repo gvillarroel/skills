@@ -91,3 +91,31 @@ created. Requested self-improvement remains inactive and retains the generated
 request/evidence/evaluation/promotion/rollback lifecycle.
 
 The final complete application suite passes 98/98 tests, including the legacy 10,000-path inventory regression. Its correction is retained as feedback and an acknowledged message in the original task conversation.
+
+## Current-agent operational review — 2026-10-25
+
+Both pilots were already stopped at review and remain stopped. Their 15 retained
+jobs include 13 completed reports and two unanswered model errors. Sampled reports
+already separate partial source coverage, failed GitHub observations and older
+CI from actual current results; no broad prompt-policy replacement is justified.
+There are no attributable outcome-verification receipts, so completed jobs are
+not labeled quality passes.
+
+The selective custom-host repair preserves watchers/notifications and adds safe
+remote draining, actual standalone process exit, exact owned-session cleanup and
+observed conversation model/effort provenance. Final build, faux smoke and Node
+tests pass 108/108. Retain the initial 106/107 full-suite observation with an
+unchanged abrupt-recovery random-port fetch failure, its isolated pass and the
+final additional late-watcher regression.
+
+The independent `scripts/review-evidence.py` case index passes 12 deterministic
+tests and indexes all retained pilot jobs without changing original SQLite
+bytes. It queries stable private DB+WAL copies to avoid live SHM reader-mark
+writes. Cases without actual bound outcome verification remain insufficient;
+human-control completion is not inferred from model output.
+
+The separately registered custodian was reviewed and repaired in its own private
+application with its existing schedule, tools and permission boundaries. It was
+returned to a healthy running state with its owned watchdog enabled; the delayed
+daily slot is admitted once. Its protected implementation and live state are not
+published here. [Full scoped methods, retained failures and limits](../../evaluations/pi-durable/current-agent-review-20261025.md).
