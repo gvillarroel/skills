@@ -49,6 +49,17 @@ generated local installation is required. Pi installs the collection; use
 `git:github.com/gvillarroel/skills@<commit-or-tag>`. Remove the package with
 `pi remove` and the same source string; use `--local` for a project installation.
 
+If a deeply nested Windows installation reports `Filename too long`, use Git's
+long-path support for that checkout, then install its local package:
+
+```sh
+git -c core.longpaths=true clone https://github.com/gvillarroel/skills.git skills
+pi install ./skills
+```
+
+This command does not change global Git configuration. A normal user-scope Pi
+destination is much shorter than the isolated artifact path used in verification.
+
 ## Use a checkout in Codex
 
 For repository maintenance, refresh the ignored project-local installation:

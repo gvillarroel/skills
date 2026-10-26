@@ -125,6 +125,7 @@ def main() -> int:
     parser.add_argument("--ref", required=True, help="Published branch, tag or commit to install")
     parser.add_argument("--installer", type=Path, required=True, help="Existing Codex GitHub skill installer")
     parser.add_argument("--pi-cli", type=Path, help="Existing Pi JavaScript CLI; omit to skip native package discovery")
+    parser.add_argument("--skip-codex", action="store_true", help="Continue only Pi verification after retained Codex transport passes")
     parser.add_argument("--methods", nargs="+", choices=("download", "git"), default=["download", "git"])
     args = parser.parse_args()
     if not re.fullmatch(r"[a-z0-9][a-z0-9-]{0,95}", args.run_id):
@@ -134,6 +135,8 @@ def main() -> int:
         parser.error("Choose a fresh run ID; retained evidence is not overwritten")
     if not args.installer.is_file() or (args.pi_cli and not args.pi_cli.is_file()):
         parser.error("The supplied installed CLI must exist")
+    if args.skip_codex and not args.pi_cli:
+        parser.error("--skip-codex requires --pi-cli")
     run.mkdir(parents=True)
     workspace, temporary = run / "workspace with spaces", run / "temporary"
     workspace.mkdir()
@@ -144,6 +147,10 @@ def main() -> int:
     env = {key: value for key, value in os.environ.items() if key.upper() in essentials}
     env.update(TEMP=str(temporary), TMP=str(temporary), TMPDIR=str(temporary),
                PYTHONDONTWRITEBYTECODE="1", GIT_TERMINAL_PROMPT="0", UV_CACHE_DIR=str(run / "uv-cache"))
+    if os.name == "nt":
+        # Artifact isolation adds a much longer prefix than a normal Pi install.
+        # Supply Git's Windows support to this process only, without global config.
+        env.update(GIT_CONFIG_COUNT="1", GIT_CONFIG_KEY_0="core.longpaths", GIT_CONFIG_VALUE_0="true")
     canonical = ROOT / "skills" / SKILL
     expected = inventory(canonical)
     checks = []
@@ -155,10 +162,12 @@ def main() -> int:
 
     summary = {"startedAtUtc": datetime.now(timezone.utc).isoformat(), "repository": REPO,
                "ref": args.ref, "skill": SKILL, "canonicalFiles": len(expected),
+               "codexTransports": [] if args.skip_codex else list(dict.fromkeys(args.methods)),
+               "processOnlyGitLongpaths": os.name == "nt",
                "checks": checks, "scope": "Repository installation, bundle integrity and native discovery only; no model task or plugin frontend acceptance."}
     save(run / "source-before.json", expected)
     try:
-        for method in dict.fromkeys(args.methods):
+        for method in ([] if args.skip_codex else dict.fromkeys(args.methods)):
             destination = run / f"codex-{method}" / "skills"
             execute([shutil.which("python"), str(args.installer), "--url",
                      f"https://github.com/{REPO}/tree/{args.ref}/skills/{SKILL}",
