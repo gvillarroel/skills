@@ -17,6 +17,27 @@ Add `--local` to install for the current project. The
 [HyperFrames guide](docs/hyperframes-colorsets.md#install-in-pi) covers invocation
 and installation of the video package alone from a checkout.
 
+### Install the Pi Durable agent console
+
+The agent console is a Pi extension. From this checkout, generate its complete
+standalone package beside the repository, then install it in Pi:
+
+```sh
+uv run --script skills/pi-durable/scripts/scaffold-pi-extension.py ../pi-durable-console
+cd ../pi-durable-console
+npm ci --ignore-scripts --no-audit --no-fund
+pi install ./extension.ts
+pi
+```
+
+Requires Node 24+, Pi, uv and Git. In Pi, use `/durable`, `/durable new` to choose
+an agent's base folder, or `/durable-chat`. See the
+[console installation guide](docs/pi-durable-console.md) for project-only scope,
+existing registrations, verification and removal. Installing skills alone does
+not register these console commands.
+
+### Validate the repository
+
 Use uv to inspect and validate the repository.
 
 ```sh

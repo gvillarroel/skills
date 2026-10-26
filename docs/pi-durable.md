@@ -1,5 +1,9 @@
 # Pi Durable usage and feature selection
 
+To get `/durable`, `/durable new` and `/durable-chat` in Pi Coding Agent, follow
+the [console extension installation guide](pi-durable-console.md). The console
+is an optional extension; installing the skill collection alone does not load it.
+
 Use **Pi Durable with Node SQLite, one owning process, stable request IDs, explicit tools, and foreground ownership** as the starting configuration for an application that must recover agent work after a process restart. Use Pi Coding Agent for an interactive terminal coding session. Add Code Mode when several tool calls benefit from programmatic composition; add background ownership only when the work should survive cancellation of its parent.
 
 This guide covers the published **1.3.0** release, tested on **Windows with Node 24.18.0 on 2026-10-19**. The API is experimental. The official release is pinned to commit `71023aec1546d6d677a65669c5665c0927ce0dd0`. Development documentation was also reviewed at `d2e7d8b7c1d31d3661f769d5caef7ba8d50c3e03`; several APIs there are absent from 1.3.0.
