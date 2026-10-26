@@ -25,6 +25,7 @@ Use Pi Durable as an application runtime. Use Pi Coding Agent when the task call
 - For a generated agent that must operate without this skill, retain decision evidence, or improve its prompts/tools/scripts on request, read [independence and requested evolution](references/agent-evolution.md).
 - To design useful task traces, judge evidence coverage, or decide whether to collect more data before improvement, read [evidence readiness](references/evidence-readiness.md). Carry the collection rules into the generated runbook and the agent's active prompt.
 - To generate bounded trace-distillation, population or Pareto study templates, read [evolution strategies](references/evolution-strategies.md). The project-local runner keeps development selection separate from one-way validation/holdout and never activates source changes itself.
+- To learn from completed attempts and spend evolution tests on the highest-impact gaps first, read [test priorities](references/evolution-test-priorities.md). Carry the applicable order, evidence and rejection criteria into the independent project before freezing its next study.
 
 Read only what the requested mode needs. Execute the scaffolder without reading all template source. The template is a starting application, not code that extends the current chat's privileges or registers Pi sessions in another product.
 

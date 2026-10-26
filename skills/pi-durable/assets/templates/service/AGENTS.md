@@ -288,6 +288,20 @@ On a user's request to improve decisions, prompts, tools or scripts:
    recovery, duplicate effects and relevant regressions; do not grade only a
    candidate's self-description. Keep secrets and live external effects out of
    fixtures. A custom verifier is executable trusted project code, so review it.
+
+   Before freezing a study, keep a development-only learning ledger: evidence
+   IDs/version, observed pass/failure or untested hypothesis, affected consumer,
+   impact, recurrence denominator, detection cost and next assertion. Prioritize
+   applicable permission/API/serialized-byte and path-scope checks before paid
+   model comparisons, then partial-failure/persisted-receipt and task-quality
+   cases. Retain useful passing controls; test compatible and deliberately broken
+   patches. Adjust priorities to the requested scope, not universal weights.
+   Separate quality from receipt utility and declare component regression and
+   incomplete-comparison rules in the verifier/precheck. Stop failed candidates
+   early without inventing skipped scores or reclaiming attempts. These rules
+   require implementation; the controller does not learn or enforce them itself.
+   New assertions belong to the next plan: preserve frozen cases/scoring/budgets,
+   and never tune from private gate feedback within the same study.
 3. Create `request.json` with `agentId`, `goal`, `allowedPaths`, `verifierPath`,
    `fixturePaths`, and optional `minimumImprovement` and `timeoutMs`. Use exact
    project-relative paths. Run:

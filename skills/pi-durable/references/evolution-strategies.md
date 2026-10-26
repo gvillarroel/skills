@@ -56,6 +56,12 @@ targets. Management, permissions, fixtures and evaluator code remain protected.
 
 ## Run a bounded study
 
+Before freezing a new plan, apply [evidence-based test priorities](evolution-test-priorities.md).
+Turn prior development failures and successful controls into cheap behavioral
+checks, separate task-quality constraints from receipt utility, and predeclare
+the test order and incomplete-comparison policy. These are verifier/operator
+requirements to implement; the controller does not infer them from past scores.
+
 Read the generated `evolution-plans/reflection.md` for complete commands and input
 contracts. From the project, use `uv run --script evolution-plans/study.py --help`.
 

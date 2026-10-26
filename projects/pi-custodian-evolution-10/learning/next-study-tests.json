@@ -1,0 +1,159 @@
+{
+  "schemaVersion": 1,
+  "planId": "custodian-evolution-test-priorities-20261026",
+  "status": "draft-for-next-study",
+  "automaticExecution": false,
+  "scope": "Prepare future custodian evolution tests; no new evolution, live changes or reserved-gate release.",
+  "provenance": {
+    "study": "custodian-evolution-10-20261025",
+    "finalistPatch": "a54a0aa757b121d715603302e0cc6f43d35e9b69f1c52d07751eb292f9a73812",
+    "selectionDigest": "7d69be2b17c21dd71ed7cc3bf6314f2541ec152791c4b94373b3ee8655c31c8f",
+    "publicReport": "evaluations/pi-durable/custodian-evolution-10-20261025.md",
+    "source": "Development aggregate and separate compatibility review only; reserved cases/answers are excluded."
+  },
+  "observations": {
+    "compatibilityFailures": {
+      "candidates": 10,
+      "totalRelatedCandidates": 10,
+      "interpretation": "One related source lineage, not ten independent production incidents."
+    },
+    "decisionComparisons": {
+      "lower": 5,
+      "equal": 3,
+      "higher": 2,
+      "replicated": false
+    },
+    "selectedPair": {
+      "baselineDecision": 0.965,
+      "candidateDecision": 0.965,
+      "weightedDecisionGain": 0,
+      "weightedReceiptGain": 0.4375
+    },
+    "journalCompoundScore": {
+      "candidatePasses": 0,
+      "totalRelatedCandidates": 10,
+      "cause": "Not isolated for successful maintenance; inspect context persistence is confirmed in finalist."
+    }
+  },
+  "ordering": [
+    "Environment/baseline and positive/negative controls",
+    "Candidate deterministic contract and host envelope",
+    "Bounded local worker effects and persisted evidence",
+    "Eligible paired model quality with predeclared component constraints",
+    "Frozen finalist compatibility review, then one-way reserved gates"
+  ],
+  "priorityNote": "Priority denotes release importance, not execution cost. Model quality may be mandatory but is evaluated only after cheap candidate checks pass.",
+  "tests": [
+    {
+      "id": "configured-check-capability",
+      "priority": "P0",
+      "stage": "candidate-no-model",
+      "status": "observed-regression",
+      "evidence": "10/10 related candidates omit validationCommands/equivalent; baseline consumer passes.",
+      "assertion": "Existing consumers still observe the complete authorized check capability with preserved types and unknowns; adding execution receipts is compatible.",
+      "controls": "Baseline and additive-compatible positive; omitted or empty substituted capability negative.",
+      "action": "Implement as a required pre-model eligibility check in the next trusted verifier/precheck."
+    },
+    {
+      "id": "serialized-byte-and-scope-envelope",
+      "priority": "P0",
+      "stage": "candidate-no-model",
+      "status": "observed-regression",
+      "evidence": "Finalist serializes 245,997 bytes versus baseline 119,566 under the existing 200,000-byte limit; rename source is lost in both status representations.",
+      "assertion": "Final tool transport fits actual encoded-byte limits; rename/copy retains source and destination or explicitly marks incomplete scope. Include Unicode, long paths and count boundaries.",
+      "controls": "Bounded complete/additively compatible response positive; oversized or scope-dropping response negative.",
+      "action": "Measure real serialization and old consumer behavior; do not grade only helper field presence."
+    },
+    {
+      "id": "security-and-source-integrity",
+      "priority": "P0",
+      "stage": "local-preflight-and-candidate",
+      "status": "observed-working-control",
+      "evidence": "Frozen source/permissions and actual disposable worker hard cases pass; scanner-removal negative control is rejected.",
+      "assertion": "Retain scanner, repository boundaries, exclusions, staging/mutation rules, exact source preimages and inactive proposals.",
+      "controls": "Known compatible baseline positive; targeted unsafe mutation negative.",
+      "action": "Retain meaningful controls without counting inherited utility flags as independent safety cases."
+    },
+    {
+      "id": "task-quality-separate-from-receipts",
+      "priority": "P0",
+      "stage": "eligible-paired-model",
+      "status": "observed-evaluator-blind-spot",
+      "evidence": "5/10 observed decision deltas are negative while all composite deltas are positive; selected pair has zero decision gain.",
+      "assertion": "Report task quality and receipt utility separately. A receipt gain cannot compensate for a violation of the declared task-quality requirement.",
+      "controls": "A candidate with known worse task outcomes but richer metadata must not qualify as a task-quality improvement.",
+      "action": "Freeze component constraints, minimum relevant benefit, sampling budget and incomplete-comparison policy before the next study; do not reuse old scores as new passes."
+    },
+    {
+      "id": "persisted-maintenance-receipts",
+      "priority": "P1",
+      "stage": "bounded-local-integration",
+      "status": "observed-incomplete-goal",
+      "evidence": "The compound successful-maintenance journal criterion scores zero in all ten; finalist inspect journal does retain branch/upstream/changes.",
+      "assertion": "Successful actual attempts and outcomes have matching safe returned/persisted records, diagnosed by action and field without raw command/environment exports.",
+      "controls": "Correct persisted receipt positive; correct return but missing persisted observation negative.",
+      "action": "Split diagnostics while retaining meaningful requirements; isolate the failing subcondition before proposing a repair."
+    },
+    {
+      "id": "partial-effect-then-failure",
+      "priority": "P1",
+      "stage": "bounded-local-integration",
+      "status": "observed-incomplete-new-feature",
+      "evidence": "Private real commit then failed local fetch changes HEAD; blocked result/journal omit before/after identities.",
+      "assertion": "Report observed partial state, preserve the blocked outcome, never invent remote verification, and do not blindly replay effects.",
+      "controls": "Bounded local failure after mutation plus a failure before mutation.",
+      "action": "Test the new provenance goal; distinguish absent new receipts from removal of an old API."
+    },
+    {
+      "id": "noop-and-validation-state-truth",
+      "priority": "P1",
+      "stage": "bounded-local-integration",
+      "status": "mixed-observed-and-untested",
+      "evidence": "No-op utility passes in eight of ten candidates; full timeout/unavailable cases were not established by the closed study.",
+      "assertion": "Noop does not claim a new push or invented checks. Distinguish configured/not-run, attempted/passed, failed, timeout and unavailable using actual observations.",
+      "controls": "Clean no-op and successful command positives; false passed/remote-success claims negatives.",
+      "action": "Retain working no-op cases and add missing validation-state families before claiming that coverage."
+    },
+    {
+      "id": "windows-fixture-readiness",
+      "priority": "P1",
+      "stage": "environment-preflight",
+      "status": "observed-infrastructure-learning",
+      "evidence": "Two pre-search native path-length failures precede a working short-root preflight; case-sensitive environment projection was corrected.",
+      "assertion": "Private fixture roots, child environment and model/dependency readiness work without global configuration changes or live Git effects.",
+      "controls": "A bounded dry readiness run and retained failing environment/path probes.",
+      "action": "Run once before paid search; classify setup failure separately from candidate quality."
+    },
+    {
+      "id": "actual-observation-to-model-consumer",
+      "priority": "P1",
+      "stage": "eligible-paired-integration",
+      "status": "unverified-integration-path",
+      "evidence": "The closed model batches consumed fixed scenario observations; worker fixtures ran separately. They did not prove that the model could consume the changed worker's actual output.",
+      "assertion": "Use actual baseline/candidate tool observations through the existing bounded consumer/adapter for a later task-quality comparison; do not resupply facts missing from the tool in synthetic model inputs.",
+      "controls": "Compatible actual tool output positive; removed or incomplete capability evidence must remain missing to the consumer rather than being repaired by the evaluator.",
+      "action": "Run only after cheap eligibility passes, using disposable task inputs and no live publication. Report this integration path separately from fixed-scenario decision fidelity."
+    },
+    {
+      "id": "unseen-domain-platform-and-duty",
+      "priority": "P2",
+      "stage": "scope-dependent-transfer",
+      "status": "unverified",
+      "evidence": "The closed study used Windows and bounded cases; general task quality and native macOS operation are not established.",
+      "assertion": "Exercise varied independent cases and actual native service/duty behavior needed by the proposed claim.",
+      "controls": "Platform-specific lifecycle and task-outcome checks when those claims enter scope.",
+      "action": "Raise to required acceptance before claiming that platform/domain; never infer failure or success merely from missing evidence."
+    }
+  ],
+  "beforeOpen": [
+    "Implement and demonstrate applicable positive/negative controls.",
+    "Declare exact goal, allowed paths, case versions, component constraints, comparison/missing-score policy and model/budget.",
+    "Commit independent gate cases and keep them outside optimizer inputs.",
+    "Freeze a new study; do not change closed-study receipts, scorer, weights or consumed attempts."
+  ],
+  "limitations": [
+    "This is an operator plan, not a schema consumed automatically by study.py.",
+    "No new outcome measurements, model-operator causal ranking or native platform certification are claimed.",
+    "New tests can reject old patches independently without rewriting their original native scores."
+  ]
+}

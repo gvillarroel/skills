@@ -121,6 +121,10 @@ not authorization. Routine work and idle waiting must not start this loop.
 
 ## Choose the change and judge the evidence
 
+Use [test priorities](evolution-test-priorities.md) when prior attempts reveal
+repeated failures or a misleading composite gain. Preserve the closed study;
+apply newly learned assertions and priorities to the next versioned plan.
+
 | Observed issue | Candidate change | Useful comparison |
 |---|---|---|
 | Repeated avoidable tool calls | Prompt or bounded read-tool caching | Call count and unchanged verified result |
