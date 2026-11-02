@@ -5,6 +5,26 @@
   "claim": "Supported output-route inventory and authored paint checks; source pixels and renderer-derived tones have explicit scopes. This is not an exhaustive proof of all arbitrary user-authored scenes.",
   "skills": [
     {
+      "skill": "curate-semantic-model",
+      "outputs": [
+        "Typed JSON semantic models, contracts and source maps",
+        "JSON validation, conflict and ontology coverage reports",
+        "Markdown decision and coverage summaries"
+      ],
+      "scope": "nonvisual",
+      "sourceFidelity": null
+    },
+    {
+      "skill": "extract-ontologies",
+      "outputs": [
+        "Evidence-led RDF/OWL vocabularies and instance data",
+        "SHACL shapes and machine-readable validation reports",
+        "Markdown competency questions, evidence and scope records"
+      ],
+      "scope": "nonvisual",
+      "sourceFidelity": null
+    },
+    {
       "skill": "desktop-plugin-ui",
       "outputs": [
         "Runnable native plugins, MCP Apps and Pi extension source",

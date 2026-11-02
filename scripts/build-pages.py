@@ -20,6 +20,7 @@ ROOT = Path(__file__).resolve().parents[1]
 PAGES_ROOT = ROOT / "dist" / "pages"
 SKILLS = ROOT / "skills"
 EXAMPLE_SOURCES = {
+    "semantic-model-cases": SKILLS / "curate-semantic-model" / "assets" / "examples" / "semantic-model",
     "pi-extension-acceptance": SKILLS / "pi-durable" / "assets" / "examples" / "pi-extension-acceptance",
     "reflex-xy-capabilities": SKILLS / "reflex-xy" / "assets" / "examples" / "reflex-xy-capabilities",
     "reflex-xy-colorsets": SKILLS / "reflex-xy" / "assets" / "examples" / "reflex-xy-colorsets",
@@ -111,6 +112,8 @@ EXAMPLE_SOURCES = {
     / "vectorize-abstract-world-maps",
 }
 UNLISTED_EXAMPLE_SOURCES = {
+    # Typed model/contradiction acceptance data; no public gallery is generated.
+    "semantic-model-cases",
     # Raw source folders copied for linked galleries or verification assets, not standalone landing pages.
     # The unified `d3` hub links these focused views while the old public routes remain stable.
     "d3-animated-svg",

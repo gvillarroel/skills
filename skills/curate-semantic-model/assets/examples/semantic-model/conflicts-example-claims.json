@@ -1,0 +1,26 @@
+{
+  "schema_version": "1",
+  "functional_predicates": [],
+  "assertions": [
+    {
+      "id": "claim:A",
+      "subject": "service:example",
+      "predicate": "supports_deployment",
+      "value": "self_hosted",
+      "polarity": "positive",
+      "source_ids": ["source:A"],
+      "scope": {"context": "enterprise", "version": "2.0", "time": {"kind": "all_time"}},
+      "normalization": {"status": "reviewed", "reviewer": "process:synthetic-fixture", "rationale": "Literal synthetic assertion; this declaration is part of the fixture, not an independent verification."}
+    },
+    {
+      "id": "claim:B",
+      "subject": "service:example",
+      "predicate": "supports_deployment",
+      "value": "self_hosted",
+      "polarity": "negative",
+      "source_ids": ["source:B"],
+      "scope": {"context": "enterprise", "version": "2.0", "time": {"kind": "all_time"}},
+      "normalization": {"status": "reviewed", "reviewer": "process:synthetic-fixture", "rationale": "Explicit negation in the second synthetic source; no source is selected automatically."}
+    }
+  ]
+}

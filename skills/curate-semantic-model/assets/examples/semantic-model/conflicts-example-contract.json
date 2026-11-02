@@ -1,0 +1,12 @@
+{
+  "schema_version": "1",
+  "id": "synthetic-conflict-example",
+  "version": "1.0",
+  "require_source_bindings": true,
+  "types": {"Service": {"attributes": {}, "closed_attributes": true}},
+  "relations": {},
+  "checks": [
+    {"id": "source-a-represented", "query": {"op": "bindings", "source_id": "source:A"}, "expect": ["service:example"]},
+    {"id": "source-b-represented", "query": {"op": "bindings", "source_id": "source:B"}, "expect": ["service:example"]}
+  ]
+}

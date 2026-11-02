@@ -1,0 +1,15 @@
+{
+  "schema_version": "1",
+  "contract_id": "synthetic-conflict-example",
+  "contract_version": "1.0",
+  "sources": [
+    {"id": "source:A", "locator": "synthetic-fixture#A", "text": "Example Service 2.0 supports self-hosted deployment for enterprise use."},
+    {"id": "source:B", "locator": "synthetic-fixture#B", "text": "Example Service 2.0 does not support self-hosted deployment for enterprise use."}
+  ],
+  "nodes": [
+    {"id": "service:example", "type": "Service", "label": "Example Service", "definition": "Synthetic service described by two source statements; the deployment claim is disputed.", "source_ids": ["source:A", "source:B"]}
+  ],
+  "relations": [],
+  "bindings": {"source:A": ["service:example"], "source:B": ["service:example"]},
+  "metadata": {"purpose": "Synthetic contradictory source fixture, not a statement about a real vendor or a real user's decision."}
+}

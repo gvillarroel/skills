@@ -1,0 +1,6 @@
+{
+  "sources": [{"id": "source:share", "locator": "synthetic-example#share", "text": "Share approved reusable instructions with authorized collaborators."}],
+  "nodes": [{"id": "req:share", "type": "Requirement", "label": "Skill sharing", "definition": "Share approved reusable instructions with authorized collaborators.", "source_ids": ["source:share"], "attributes": {"domain": "both"}}],
+  "relations": [],
+  "bindings": {"source:share": ["req:share"]}
+}

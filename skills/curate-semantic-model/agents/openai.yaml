@@ -1,0 +1,4 @@
+interface:
+  display_name: "Curate Semantic Models"
+  short_description: "Minimize models and expose coverage and conflicts"
+  default_prompt: "Use $curate-semantic-model to minimize structure, compare ontology case coverage, and present evidence-backed gaps and contradictions with resolution choices."

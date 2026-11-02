@@ -1,0 +1,39 @@
+{
+  "schema_version": "1",
+  "id": "reviewed-requirements",
+  "version": "1.0",
+  "require_source_bindings": true,
+  "types": {
+    "Requirement": {
+      "min_sources": 1,
+      "attributes": {"domain": {"type": "string", "enum": ["context", "metadata", "both"]}},
+      "required_attributes": ["domain"],
+      "closed_attributes": true
+    },
+    "Capability": {
+      "min_sources": 1,
+      "attributes": {"composition": {"type": "string", "enum": ["ALL", "ANY"]}},
+      "required_attributes": ["composition"],
+      "closed_attributes": true,
+      "outgoing": {"has_component": {"min": 2}}
+    },
+    "Topic": {"attributes": {}, "closed_attributes": true},
+    "Class": {"attributes": {}, "closed_attributes": true},
+    "Individual": {"attributes": {"identifier": {"type": "string", "min_length": 1}}, "required_attributes": ["identifier"], "closed_attributes": true, "outgoing": {"instance_of": {"min": 1}}}
+  },
+  "relations": {
+    "has_component": {"from_types": ["Capability"], "to_types": ["Requirement", "Capability"], "acyclic": true, "review_required": true},
+    "is_a": {"from_types": ["Class"], "to_types": ["Class"], "acyclic": true, "transitive": true, "review_required": true, "reduce_closure": false},
+    "instance_of": {"from_types": ["Individual"], "to_types": ["Class"], "review_required": true},
+    "broader": {"from_types": ["Topic"], "to_types": ["Topic"], "acyclic": true, "transitive": false},
+    "related_to": {"from_types": ["Requirement", "Capability", "Topic", "Class", "Individual"], "to_types": ["Requirement", "Capability", "Topic", "Class", "Individual"], "symmetric": true},
+    "same_acceptance": {"from_types": ["Requirement"], "to_types": ["Requirement"], "symmetric": true, "review_required": true, "exclusive_with": ["distinct_acceptance"]},
+    "distinct_acceptance": {"from_types": ["Requirement"], "to_types": ["Requirement"], "symmetric": true, "review_required": true, "exclusive_with": ["same_acceptance"]}
+  },
+  "checks": [
+    {"id": "skill-management-components", "query": {"op": "neighbors", "from": "cap:skills", "relation": "has_component"}, "expect": ["req:retrieve", "req:store"]},
+    {"id": "retrieval-scope", "query": {"op": "bindings", "source_id": "source:retrieve"}, "expect": ["req:retrieve"]},
+    {"id": "storage-scope", "query": {"op": "bindings", "source_id": "source:store"}, "expect": ["req:store"]},
+    {"id": "learning-remains-distinct", "query": {"op": "bindings", "source_id": "source:learn"}, "expect": ["req:learn"]}
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "schema_version": "1",
+  "contract_id": "reviewed-requirements",
+  "contract_version": "1.0",
+  "sources": [
+    {"id": "source:retrieve", "locator": "synthetic-example#retrieve", "text": "Find or load existing skills suited to the task.", "selected": true, "required": false, "weight": 1},
+    {"id": "source:store", "locator": "synthetic-example#store", "text": "Store and synchronize reusable agent instructions.", "selected": true, "required": true, "weight": 1},
+    {"id": "source:learn", "locator": "synthetic-example#learn", "text": "Derive new reusable procedures from execution.", "selected": false, "required": false}
+  ],
+  "nodes": [
+    {"id": "req:retrieve", "type": "Requirement", "label": "Skill retrieval", "definition": "Find or load existing skills suited to the task.", "source_ids": ["source:retrieve"], "attributes": {"domain": "context"}},
+    {"id": "req:store", "type": "Requirement", "label": "Skill storage", "definition": "Store and synchronize reusable agent instructions.", "source_ids": ["source:store"], "attributes": {"domain": "metadata"}},
+    {"id": "req:learn", "type": "Requirement", "label": "Skill learning", "definition": "Derive new reusable procedures from execution.", "source_ids": ["source:learn"], "attributes": {"domain": "context"}},
+    {"id": "cap:skills", "type": "Capability", "label": "Manage reusable skills", "definition": "Provide both retrieval and storage of existing reusable skills, preserving each acceptance test.", "source_ids": ["source:retrieve", "source:store"], "attributes": {"composition": "ALL"}}
+  ],
+  "relations": [
+    {"id": "edge:retrieval", "type": "has_component", "from": "cap:skills", "to": "req:retrieve", "source_ids": ["source:retrieve"], "review": {"decision": "accepted", "reviewer": "process:synthetic-example", "rationale": "An explicit ALL capability retains this component; it is not an identity or subclass assertion."}},
+    {"id": "edge:storage", "type": "has_component", "from": "cap:skills", "to": "req:store", "source_ids": ["source:store"], "review": {"decision": "accepted", "reviewer": "process:synthetic-example", "rationale": "Storage is the other ALL component. Approval and required flags remain attached to the original source."}}
+  ],
+  "bindings": {"source:retrieve": ["req:retrieve"], "source:store": ["req:store"], "source:learn": ["req:learn"]},
+  "metadata": {"purpose": "Synthetic worked example; not additional stakeholder votes or independent evaluation data."}
+}
