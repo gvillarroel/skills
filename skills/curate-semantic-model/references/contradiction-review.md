@@ -83,6 +83,8 @@ assertions and IDs, and each assertion's `source_id`, `locator`, and
 `original_excerpt`. JSON preserves evidence and Markdown presents both sides by
 case. Reciprocal exclusions produce one case per pair. Cycle cards include
 witness edges; cardinality cards include the node and implicated relations.
+Identifiers remain exact even when they contain slashes or are full IRIs.
+A missing contract-required relation review remains an open constraint case.
 
 Add the semantic consequences for questions, selections, required cases, and
 coverage. The helper does not calculate every downstream impact. Ask a concrete

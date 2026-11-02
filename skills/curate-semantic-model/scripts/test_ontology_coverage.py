@@ -118,6 +118,39 @@ class CoverageFixture(unittest.TestCase):
 
 
 class MetricsTests(CoverageFixture):
+    def test_large_finite_weight_does_not_overflow_percentage_intermediate(self):
+        self.make_cases(1)
+        self.payload["suite"]["cases"][0]["weight"] = 1e307
+        summary = self.summary()
+        self.assertEqual(summary["weighted_strict_coverage_percent"], 100)
+        self.assertEqual(summary["weight_denominator"], 1e307)
+        json.dumps(summary, allow_nan=False)
+
+    def test_unbounded_integer_weights_retain_exact_denominator(self):
+        self.make_cases(2)
+        for case in self.payload["suite"]["cases"]:
+            case["weight"] = 10 ** 400
+        self.payload["candidates"][0]["assessments"][-1] = self.assessment("C1", "fail")
+        summary = self.summary()
+        self.assertEqual(summary["weighted_strict_coverage_percent"], 50)
+        self.assertEqual(summary["weight_denominator"], 2 * 10 ** 400)
+        json.dumps(summary, allow_nan=False)
+
+    def test_nonrepresentable_total_weight_is_a_structured_error(self):
+        self.make_cases(2)
+        for case in self.payload["suite"]["cases"]:
+            case["weight"] = 1e308
+        with self.assertRaises(core.EngineError) as error:
+            self.evaluate()
+        self.assertEqual(error.exception.code, "NUMERIC_OVERFLOW")
+
+    def test_nonfinite_weight_is_rejected_by_direct_api(self):
+        for value in (float("inf"), float("nan")):
+            with self.subTest(value=str(value)):
+                self.payload["suite"]["cases"][0]["weight"] = value
+                with self.assertRaises(core.EngineError):
+                    self.evaluate()
+
     def test_nine_pass_one_failure_exposes_exact_ten_percent_residual(self):
         self.payload["candidates"][0]["assessments"][-1] = self.assessment("C9", "fail")
         c = self.candidate();s = c["summary"]
@@ -159,6 +192,35 @@ class MetricsTests(CoverageFixture):
         self.assertEqual(s["strict_coverage_percent"], 50)
         self.assertEqual(s["weighted_strict_coverage_percent"], 90)
         self.assertEqual(s["weight_denominator"], 10)
+
+    def test_markdown_separates_weighted_measurement_from_case_counts(self):
+        self.make_cases(2)
+        self.payload["suite"]["cases"][0]["weight"] = 9
+        self.payload["candidates"][0]["assessments"][1] = self.assessment("C1", "fail")
+        report = self.evaluate()
+        before = copy.deepcopy(report)
+        text = coverage.render_markdown(report)
+        table_rows = [[cell.strip() for cell in line.strip().strip("|").split("|")] for line in text.splitlines() if line.startswith("| ")]
+        count_header = next(row for row in table_rows if any("applicable" in cell.casefold() for cell in row))
+        count_row = next(row for row in table_rows if row[0] == "Synthetic ontology A" and len(row) == len(count_header))
+        weighted_header = next(row for row in table_rows if any("denominator" in cell.casefold() for cell in row))
+        weighted_row = next(row for row in table_rows if row[0] == "Synthetic ontology A" and len(row) == len(weighted_header))
+        counts = dict(zip(count_header, count_row)); weighted = dict(zip(weighted_header, weighted_row))
+        self.assertEqual(next(value for key, value in counts.items() if "applicable" in key.casefold()), "1/2")
+        self.assertEqual(float(next(value for key, value in counts.items() if "strict coverage" in key.casefold()).removesuffix("%")), 50)
+        self.assertEqual(float(next(value for key, value in weighted.items() if "coverage" in key.casefold()).removesuffix("%")), 90)
+        self.assertEqual(float(next(value for key, value in weighted.items() if "denominator" in key.casefold())), 10)
+        self.assertEqual(report, before)
+
+    def test_markdown_empty_applicable_suite_has_no_weighted_percentage(self):
+        self.make_cases(0)
+        text = coverage.render_markdown(self.evaluate())
+        rows = [[cell.strip() for cell in line.strip().strip("|").split("|")] for line in text.splitlines() if line.startswith("| ")]
+        header = next(row for row in rows if any("denominator" in cell.casefold() for cell in row))
+        row = next(row for row in rows if row[0] == "Synthetic ontology A" and len(row) == len(header))
+        values = dict(zip(header, row))
+        self.assertEqual(next(value for key, value in values.items() if "coverage" in key.casefold()), "not evaluable")
+        self.assertEqual(next(value for key, value in values.items() if "denominator" in key.casefold()), "0")
 
     def test_required_failure_blocks_even_when_total_is_ninety(self):
         self.payload["suite"]["cases"][-1]["required"] = True
@@ -344,6 +406,27 @@ class EvidenceConflictTests(CoverageFixture):
 
 
 class ProgressTests(CoverageFixture):
+    def test_previous_report_retains_historical_noninteger_percentages(self):
+        self.make_cases(3)
+        self.payload["candidates"][0]["assessments"][-1] = self.assessment("C2", "fail")
+        previous = self.evaluate()
+        self.assertEqual(previous["candidates"][0]["summary"]["strict_coverage_percent"], 66.66666666666667)
+        self.assertEqual(self.evaluate(previous)["comparison"]["status"], "comparable")
+
+    def test_previous_summary_does_not_accept_boolean_in_place_of_count(self):
+        self.make_cases(1)
+        previous = self.evaluate()
+        previous["candidates"][0]["summary"]["applicable_cases"] = True
+        with self.assertRaises(core.EngineError) as error:
+            self.evaluate(previous)
+        self.assertEqual(error.exception.code, "STALE_PREVIOUS_REPORT")
+
+    def test_previous_case_weight_does_not_accept_boolean_coercion(self):
+        previous = self.evaluate()
+        previous["candidates"][0]["cases"][0]["weight"] = True
+        with self.assertRaises(core.EngineError):
+            self.evaluate(previous)
+
     def test_same_suite_records_improvements_and_regressions_across_ontology_hashes(self):
         self.payload["candidates"][0]["assessments"][0] = self.assessment("C0", "fail")
         old = self.evaluate()
@@ -375,6 +458,17 @@ class ProgressTests(CoverageFixture):
 
 
 class CliTests(CoverageFixture):
+    def test_weight_total_overflow_has_json_error_and_no_partial_report(self):
+        self.make_cases(2)
+        for case in self.payload["suite"]["cases"]:
+            case["weight"] = 1e308
+        report = self.root / "overflow-report.json"
+        result, output = self.run_cli(["--report", report], expected=2)
+        self.assertNotIn("Traceback", result.stderr)
+        self.assertEqual(output["status"], "error")
+        self.assertEqual(output["errors"][0]["code"], "NUMERIC_OVERFLOW")
+        self.assertFalse(report.exists())
+
     def test_ninety_percent_is_successful_measurement_not_acceptance(self):
         self.payload["candidates"][0]["assessments"][-1] = self.assessment("C9", "fail")
         result, output = self.run_cli(["--report", self.root / "report.json", "--markdown", self.root / "report.md"])

@@ -17,7 +17,7 @@ import sys
 from collections import defaultdict, deque
 from pathlib import Path
 
-VERSION = "1.0.0"
+VERSION = "1.0.1"
 CONTRACT_KEYS = {"schema_version", "id", "version", "types", "relations", "require_source_bindings", "checks"}
 TYPE_KEYS = {"attributes", "required_attributes", "closed_attributes", "min_sources", "outgoing"}
 ATTRIBUTE_KEYS = {"type", "enum", "min_length", "max_length", "minimum", "maximum", "items_type"}
@@ -70,6 +70,17 @@ def string_list(value):
 
 def integer(value):
     return isinstance(value, int) and not isinstance(value, bool)
+
+
+def exact_json_equal(left, right):
+    """Compare JSON recursively without coercing booleans or numeric types."""
+    if type(left) is not type(right):
+        return False
+    if isinstance(left, dict):
+        return left.keys() == right.keys() and all(exact_json_equal(value, right[key]) for key, value in left.items())
+    if isinstance(left, list):
+        return len(left) == len(right) and all(exact_json_equal(a, b) for a, b in zip(left, right))
+    return left == right
 
 
 def unknown(obj, allowed, path):
@@ -308,7 +319,7 @@ def validate(model, contract, baseline=None):
             if not matches(value, spec["type"]):
                 issue("ATTRIBUTE_TYPE", apath, spec["type"], value, nid, kind)
                 continue
-            if "enum" in spec and not any(type(value) is type(v) and value == v for v in spec["enum"]):
+            if "enum" in spec and not any(exact_json_equal(value, v) for v in spec["enum"]):
                 issue("ATTRIBUTE_ENUM", apath, spec["enum"], value, nid, kind)
             if "min_length" in spec and len(value) < spec["min_length"] or "max_length" in spec and len(value) > spec["max_length"]:
                 issue("ATTRIBUTE_LENGTH", apath, spec, value, nid, kind)
@@ -382,11 +393,11 @@ def validate(model, contract, baseline=None):
         for source in old_sources:
             if source["id"] not in sources:
                 issue("SOURCE_LOSS", "/sources/" + source["id"], source, None, source["id"])
-            elif source != sources[source["id"]]:
+            elif not exact_json_equal(source, sources[source["id"]]):
                 issue("SOURCE_MUTATION", "/sources/" + source["id"], source, sources[source["id"]], source["id"])
         for key, value in baseline.get("metadata", {}).items():
             metadata = model.get("metadata", {})
-            if not isinstance(metadata, dict) or metadata.get(key) != value:
+            if not isinstance(metadata, dict) or key not in metadata or not exact_json_equal(metadata[key], value):
                 issue("METADATA_LOSS", "/metadata/" + key, value, metadata.get(key) if isinstance(metadata, dict) else metadata)
     outcomes = []
     if not errors:
@@ -459,9 +470,13 @@ def write_new(filename, value, forbidden):
     output = Path(filename).resolve()
     require(not aliases_input(output, forbidden), "An output cannot overwrite an input", str(output), "INPUT_OVERWRITE_FORBIDDEN")
     try:
+        serialized = json.dumps(value, ensure_ascii=False, indent=2, allow_nan=False) + "\n"
+    except (TypeError, ValueError, OverflowError) as exc:
+        raise EngineError("OUTPUT_SERIALIZATION_ERROR", str(exc), str(output)) from exc
+    try:
         output.parent.mkdir(parents=True, exist_ok=True)
         with output.open("x", encoding="utf-8", newline="\n") as stream:
-            stream.write(json.dumps(value, ensure_ascii=False, indent=2, allow_nan=False) + "\n")
+            stream.write(serialized)
     except OSError as exc:
         raise EngineError("OUTPUT_ERROR", str(exc), str(output)) from exc
 

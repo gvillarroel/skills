@@ -1,0 +1,52 @@
+{
+  "holdoutReleased": false,
+  "ledger": {
+    "eventCount": 31,
+    "headSha256": "0b9ec2f872adccde04be2c3c266e9f5c526c821d4ed46b2744617f3bb9fbd180"
+  },
+  "progress": {
+    "completedCount": 4,
+    "completionPercent": 100.0,
+    "stageCount": 4
+  },
+  "publicationPolicy": "indexes-and-result-tables-only-v1",
+  "resultIndex": [
+    {
+      "artifactType": "file",
+      "byteCount": 1139,
+      "evidenceId": "accepted-frozen-release-package",
+      "fileCount": 1,
+      "kind": "decision",
+      "role": "decision",
+      "sha256": "378fdc49df571cff3ec8e64565574b30d45c294855912c7d1904e0477a5a592f",
+      "stageId": "promote-final",
+      "visibility": "public"
+    },
+    {
+      "artifactType": "file",
+      "byteCount": 2514,
+      "evidenceId": "reviewed-independent-aggregate-table",
+      "fileCount": 1,
+      "kind": "final-report",
+      "role": "publication",
+      "sha256": "7b53d59de02045318a8289c19111f03adcd1a9dbfee7561b91bc247789388e59",
+      "stageId": "publish-final",
+      "visibility": "public"
+    }
+  ],
+  "resultTables": [
+    {
+      "byteCount": 2514,
+      "path": "tables/results.table.md",
+      "sha256": "7b53d59de02045318a8289c19111f03adcd1a9dbfee7561b91bc247789388e59"
+    }
+  ],
+  "schemaVersion": 1,
+  "study": {
+    "comparisonProfile": "harbor018-pi140-sol61-medium-publicreuse-freshtransfer-v13",
+    "createdAt": "2026-11-02T16:23:54Z",
+    "studyId": "semantic-curation-contracts-20261102-v13",
+    "title": "Frozen semantic candidate: canonical public reuse and fresh independent transfer"
+  },
+  "validationReleased": true
+}

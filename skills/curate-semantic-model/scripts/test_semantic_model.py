@@ -212,6 +212,42 @@ class ModelTests(unittest.TestCase):
         self.model["metadata"]["purpose"] = "changed"
         self.invalid(self.model, "METADATA_LOSS", baseline=baseline)
 
+    def test_baseline_source_marks_preserve_nested_json_types(self):
+        for original, replacement in [(True, 1), (1, 1.0),
+                                      ({"ballots": [{"approved": True}]}, {"ballots": [{"approved": 1}]})]:
+            with self.subTest(original=original, replacement=replacement):
+                baseline = copy.deepcopy(self.model)
+                baseline["sources"][0]["original_mark"] = original
+                candidate = copy.deepcopy(baseline)
+                candidate["sources"][0]["original_mark"] = replacement
+                self.invalid(candidate, "SOURCE_MUTATION", baseline=baseline)
+
+    def test_baseline_metadata_preserves_key_presence_and_nested_types(self):
+        for original, replacement in [(True, 1), (1, 1.0), ({"approved": [True]}, {"approved": [1]})]:
+            with self.subTest(original=original, replacement=replacement):
+                baseline = copy.deepcopy(self.model)
+                baseline["metadata"]["original_mark"] = original
+                candidate = copy.deepcopy(baseline)
+                candidate["metadata"]["original_mark"] = replacement
+                self.invalid(candidate, "METADATA_LOSS", baseline=baseline)
+        baseline = copy.deepcopy(self.model)
+        baseline["metadata"]["explicitly_unknown"] = None
+        candidate = copy.deepcopy(baseline)
+        candidate["metadata"].pop("explicitly_unknown")
+        self.invalid(candidate, "METADATA_LOSS", baseline=baseline)
+
+    def test_structured_enum_does_not_coerce_nested_boolean_to_number(self):
+        for kind, accepted, rejected in [("array", [True], [1]),
+                                         ("object", {"approved": True}, {"approved": 1})]:
+            with self.subTest(kind=kind):
+                contract = copy.deepcopy(self.contract)
+                contract["types"]["Requirement"]["attributes"]["structured"] = {"type": kind, "enum": [accepted]}
+                candidate = copy.deepcopy(self.model)
+                candidate["nodes"][0]["attributes"]["structured"] = accepted
+                self.assertEqual(engine.validate(candidate, contract)["contract_status"], "valid")
+                candidate["nodes"][0]["attributes"]["structured"] = rejected
+                self.invalid(candidate, "ATTRIBUTE_ENUM", contract=contract)
+
     def test_competency_answers_are_enforced(self):
         self.model["bindings"]["source:retrieve"].append("req:learn")
         self.invalid(self.model, "COMPETENCY_CHECK_FAILED")
@@ -382,6 +418,25 @@ class CliTests(unittest.TestCase):
         self.assertEqual(code, 0)
         self.assertEqual(report["semantic_status"], "not_run")
         self.assert_originals()
+
+    def test_cli_rejects_boolean_vote_coercion_against_baseline(self):
+        candidate = read(self.model)
+        candidate["sources"][0]["selected"] = int(candidate["sources"][0]["selected"])
+        candidate_path = self.write("typed-vote-change.json", candidate)
+        code, report = self.run_cli("validate", "--model", candidate_path, "--baseline", self.model)
+        self.assertEqual(code, 1)
+        self.assertIn("SOURCE_MUTATION", codes(report))
+        self.assert_originals()
+
+    def test_unserializable_output_does_not_create_empty_file(self):
+        for name, value in [("nonfinite.json", {"ratio": float("nan")}),
+                            ("unsupported.json", {"value": object()})]:
+            with self.subTest(name=name):
+                output = self.dir / name
+                with self.assertRaises(engine.EngineError) as error:
+                    engine.write_new(output, value, set())
+                self.assertEqual(error.exception.code, "OUTPUT_SERIALIZATION_ERROR")
+                self.assertFalse(output.exists())
 
     def test_cli_stage_success_writes_new_candidate_only(self):
         candidate, reportpath = self.dir / "candidate.json", self.dir / "report.json"

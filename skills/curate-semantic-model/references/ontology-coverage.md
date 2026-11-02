@@ -39,10 +39,13 @@ Root fields are `schema_version: "1"`, `suite`, and `candidates`.
 - Nonempty strings `id`, `title`, `expected`, and `method`.
 - Optional nonempty `kind` for breakdowns, for example `competency_question`,
   `requirement`, `structural_constraint`, or `consistency`.
-- Boolean `required` (default false), and positive `weight` (default 1).
+- Boolean `required` (default false), and positive finite `weight` (default 1).
 - Boolean `applicable` (default true). Exclusion needs `exclusion_reason`, applies
   to every candidate, and cannot exclude a required case. A candidate cannot
   remove its own failures from the denominator.
+
+Nonrepresentable weight totals produce a structured `NUMERIC_OVERFLOW` error,
+never a non-finite percentage or an empty report.
 
 Each candidate contains `id`, `label`, `ontology`, `assessments`, and optionally
 `conflict_review` and `formal_checks`. Candidate structure, with descriptive

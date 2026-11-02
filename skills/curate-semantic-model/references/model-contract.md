@@ -9,10 +9,9 @@
 - [Incremental validation](#incremental-validation-and-persistence)
 - [Diagnostics](#actionable-diagnostics)
 
-`semantic_model.py` implements a bounded local JSON contract, version 1. It is
-not full JSON Schema, SHACL, an OWL reasoner, or a natural-language equivalence
-detector. Use an available formal processor for additional RDF/OWL/SHACL checks;
-the optional `extract-ontologies` skill may help, but is not a dependency.
+`semantic_model.py` implements a bounded JSON contract, version 1, not full JSON
+Schema, SHACL, OWL reasoning, or semantic identity detection. Additional formal
+checks may use an available processor or the optional `extract-ontologies` skill.
 
 ## Canonical representation
 
@@ -125,6 +124,20 @@ Each `checks[]` entry has `id`, `query`, and `expect`, an exact ID list. Operato
 {"op":"reachable","from":"class:specific","relation":"is_a"}
 ```
 
+Each query has exactly the fields for its operator:
+
+| Operator | Required fields |
+|---|---|
+| `nodes_of_type` | `op`, `type` |
+| `nodes_where` | `op`, `type`, nonempty `equals` object |
+| `bindings` | `op`, `source_id` |
+| `neighbors`, `reachable` | `op`, `from`, `relation` |
+
+`nodes_where.type` is mandatory even when `equals` appears to identify a unique
+role. Name one declared type; use separate complete checks for different types
+rather than omitting the field. An incomplete query is an engine/input error,
+so repair the owned contract before interpreting model conformity.
+
 Results are compared as sorted ID sets. `nodes_where` uses conjunction over
 declared attributes and exact scalar values with matching JSON/Python types:
 no `true` to `1` coercion, and integer `1` differs from floating `1.0`. There
@@ -149,9 +162,10 @@ baseline validation.
 
 `stage` validates the baseline, then the complete candidate. `reduce` records
 removed assertions in `history`. Both create a new candidate only when conformant.
-`validate --baseline base.json` additionally preserves all earlier sources and
-all their original fields, plus existing metadata values. This detects lost
-original marks; it does not prove that a changed binding is semantically faithful.
+`validate --baseline base.json` preserves all earlier sources, their fields and
+exact nested JSON types, plus existing metadata keys and values, including nulls.
+Enums also compare exact nested types. This detects changed marks, not whether
+a changed binding is semantically faithful.
 
 Inputs and existing candidates are never overwritten. A report can be refreshed
 at a separate path. Exit codes: **0**, conformant; **1**, data violations; **2**,
@@ -171,7 +185,7 @@ Data errors include `code`, `path`, `entity`, `type`, `expected`, `actual`,
 | `MISSING_REQUIRED_FIELD` | Supply the missing field, such as a scope-preserving definition. |
 | `MISSING_ATTRIBUTE`, `ATTRIBUTE_TYPE`, `ATTRIBUTE_ENUM`, `ATTRIBUTE_RANGE` | Repair a value that violates its declared profile. |
 | `UNKNOWN_ATTRIBUTE` | Fix a typo or explicitly review an extension to a closed profile. |
-| `DANGLING_REFERENCE`, `INVALID_BINDING` | An endpoint or represented node does not exist. |
+| `DANGLING_REFERENCE`, `INVALID_BINDING` | An endpoint/represented node is absent, or a binding is not a nonempty list of existing node IDs. |
 | `RELATION_TYPE_MISMATCH` | Use the correct relation, such as instance-of instead of subclass. |
 | `CARDINALITY_VIOLATION` | A composite lacks enough distinct components. |
 | `CYCLE_FORBIDDEN` | The addition creates a cycle of a predicate declared acyclic. |
@@ -181,6 +195,12 @@ Data errors include `code`, `path`, `entity`, `type`, `expected`, `actual`,
 | `COMPETENCY_CHECK_FAILED` | A query no longer returns its agreed answer. |
 | `REDUNDANT_RELATION` | Warning: inspect the entire assertion before deduplicating a repeated pair. |
 | `UNSUPPORTED_CONSTRAINT` | Contract error: the requested rule was not checked. |
+
+Structural checks precede competency queries. An empty or dangling binding
+fails structural validation; competency checks are then not run. To test a
+query-answer mismatch, keep references and all other structure valid while
+changing the answer. Inspect the report before choosing an expected diagnostic;
+a later query failure cannot replace an earlier structural finding.
 
 For skills requirements, test retrieval, storage, and learning separately.
 An ALL capability can group retrieval and storage without asserting identity

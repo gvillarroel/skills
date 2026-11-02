@@ -247,6 +247,41 @@ class ScanTests(unittest.TestCase):
         report = self.scan()
         self.assertTrue(report["scan_status"] != "completed" or report["findings"], "Invalid competency expectation must be visible as a finding or incomplete scan")
 
+    def test_competency_check_identifier_preserves_slashes(self):
+        check_id = "https://example.invalid/checks/selection/source-A"
+        self.contract["checks"] = [{"id": check_id, "query": {"op": "bindings", "source_id": "source:A"}, "expect": ["B"]}]
+        report = self.scan()
+        item = report["findings"][0]
+        self.assertEqual(item["rule"]["check_id"], check_id)
+        self.assertEqual(item["assertions"][0]["id"], "check:" + check_id)
+        self.assertEqual(item["status"], "open")
+
+    def test_cardinality_preserves_full_iri_predicate_and_subject(self):
+        predicate = "https://example.invalid/vocabulary/hasPart"
+        subject = "https://example.invalid/items/A"
+        rules(self.contract, predicate)
+        self.contract["types"]["Entity"]["outgoing"] = {predicate: {"max": 1}}
+        self.model["nodes"][0]["id"] = subject
+        self.model["bindings"]["source:A"] = [subject]
+        self.model["relations"] = [relation("r/AB", predicate, subject, "B"), relation("r/AC", predicate, subject, "C", "source:B")]
+        item = self.scan()["findings"][0]
+        self.assertEqual(item["rule"]["predicate"], predicate)
+        self.assertEqual({a["id"] for a in item["assertions"]}, {subject, "r/AB", "r/AC"})
+
+    def test_missing_required_relation_review_remains_actionable(self):
+        rules(self.contract, "equivalent")
+        self.contract["relations"]["equivalent"]["review_required"] = True
+        self.model["relations"] = [relation("r:unreviewed", "equivalent")]
+        report = self.scan()
+        self.assertEqual(report["validation"]["contract_status"], "invalid")
+        self.assertEqual(report["counts"]["requires_user_decision"], 1)
+        item = report["findings"][0]
+        self.assertEqual(item["classification"], "constraint_conflict")
+        self.assertEqual(item["rule"]["id"], "review_required")
+        self.assertEqual(item["assertions"][0]["id"], "r:unreviewed")
+        self.assertIsNone(item["resolution"])
+        self.assertIn("request_evidence", {o["choice"] for o in item["resolution_options"]})
+
     def test_claim_evidence_and_subject_must_exist(self):
         for key, value in [("subject", "missing"), ("source_ids", ["missing"])]:
             with self.subTest(key=key):
@@ -261,6 +296,28 @@ class ScanTests(unittest.TestCase):
         for value in ("claim:A", "claim:B", "source:A", "source:B", "fixture#A", "fixture#B", "Original evidence A", "Original evidence B", "prefer_assertion", "defer"):
             self.assertIn(value, text)
         json.dumps(result, allow_nan=False)
+
+    def test_markdown_surfaces_actual_unknown_warning_without_negation(self):
+        unknown_id = "claim:unmeasured/retention"
+        claims = payload(assertion(unknown_id, "source:A", value=None), assertion("claim:known", "source:B", value="enabled"))
+        result = self.scan(claims)
+        before = copy.deepcopy(result)
+        text = helper.render_markdown(result)
+        warning_lines = [line for line in text.splitlines() if "UNKNOWN_VALUE_NOT_NEGATION" in line]
+        self.assertEqual(len(warning_lines), 1)
+        self.assertIn(unknown_id, warning_lines[0])
+        self.assertRegex(warning_lines[0].casefold(), r"unknown.*not.*negation")
+        self.assertEqual(result["findings"], [])
+        self.assertEqual(result, before)
+
+    def test_markdown_explains_nonfunctional_multivalues_without_inventing_warnings(self):
+        claims = payload(assertion("claim:east", "source:A", value="east"), assertion("claim:west", "source:B", value="west"))
+        result = self.scan(claims)
+        text = helper.render_markdown(result)
+        self.assertEqual(result["findings"], [])
+        self.assertEqual(result["warnings"], [])
+        self.assertRegex(text.casefold(), r"positive.*coexist.*not.*functional")
+        self.assertNotIn("UNKNOWN_VALUE_NOT_NEGATION", text)
 
 
 class DecisionTests(unittest.TestCase):
@@ -396,6 +453,29 @@ class CliTests(unittest.TestCase):
         for key in ("claim:A", "claim:B", "Original evidence A", "Original evidence B"):
             self.assertIn(key, text)
         self.assertEqual(json.loads(report.read_text())["findings"][0]["status"], "open")
+
+    def test_slash_check_id_cli_reports_a_grounded_case_without_traceback(self):
+        check_id = "audit/checks/source/A"
+        self.contract_data["checks"] = [{"id": check_id, "query": {"op": "bindings", "source_id": "source:A"}, "expect": ["B"]}]
+        self.write(self.contract.name, self.contract_data)
+        self.snapshots[self.contract] = self.contract.read_bytes()
+        report = self.root / "slash-check-review.json"
+        self.run_cli(*self.scan_args(report, claims=False), expected=1)
+        item = json.loads(report.read_text(encoding="utf-8"))["findings"][0]
+        self.assertEqual(item["rule"]["check_id"], check_id)
+
+    def test_missing_required_review_cli_never_returns_empty_success(self):
+        rules(self.contract_data, "equivalent")
+        self.contract_data["relations"]["equivalent"]["review_required"] = True
+        self.model_data["relations"] = [relation("r:unreviewed", "equivalent")]
+        for path, value in [(self.contract, self.contract_data), (self.model, self.model_data)]:
+            self.write(path.name, value)
+            self.snapshots[path] = path.read_bytes()
+        report = self.root / "missing-review.json"
+        self.run_cli(*self.scan_args(report, claims=False), expected=1)
+        result = json.loads(report.read_text(encoding="utf-8"))
+        self.assertEqual(result["findings"][0]["rule"]["id"], "review_required")
+        self.assertEqual(result["findings"][0]["status"], "open")
 
     def test_addition_previews_cross_boundary_conflict_without_staging_or_mutation(self):
         rules(self.contract_data, "same", "different")

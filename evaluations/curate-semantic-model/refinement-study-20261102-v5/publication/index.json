@@ -1,0 +1,52 @@
+{
+  "holdoutReleased": false,
+  "ledger": {
+    "eventCount": 24,
+    "headSha256": "370adf8920e5fe8c58cc54c7af748e529d4568be9fe2ef5b2b71a800841c6430"
+  },
+  "progress": {
+    "completedCount": 4,
+    "completionPercent": 100.0,
+    "stageCount": 4
+  },
+  "publicationPolicy": "indexes-and-result-tables-only-v1",
+  "resultIndex": [
+    {
+      "artifactType": "file",
+      "byteCount": 1237,
+      "evidenceId": "rejected-promotion",
+      "fileCount": 1,
+      "kind": "decision",
+      "role": "decision",
+      "sha256": "0d57b9e8b865379b80448a8b9d9a35e4b25f70d50fe904478366b13cfd767d48",
+      "stageId": "promote-final",
+      "visibility": "public"
+    },
+    {
+      "artifactType": "file",
+      "byteCount": 1328,
+      "evidenceId": "reviewed-aggregate-table",
+      "fileCount": 1,
+      "kind": "final-report",
+      "role": "publication",
+      "sha256": "e4b2f9ad0458dd6e7f940e059a077a37b703f86c536ad0a100a1abb450d73537",
+      "stageId": "publish-final",
+      "visibility": "public"
+    }
+  ],
+  "resultTables": [
+    {
+      "byteCount": 1328,
+      "path": "tables/results.table.md",
+      "sha256": "e4b2f9ad0458dd6e7f940e059a077a37b703f86c536ad0a100a1abb450d73537"
+    }
+  ],
+  "schemaVersion": 1,
+  "study": {
+    "comparisonProfile": "harbor018-custompi140-sol61-medium-sixdev-fourvalidation-v5",
+    "createdAt": "2026-11-02T11:44:09Z",
+    "studyId": "semantic-curation-refinement-20261102-v5",
+    "title": "Semantic curation final report-complete qualification"
+  },
+  "validationReleased": true
+}

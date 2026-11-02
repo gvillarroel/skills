@@ -19,7 +19,7 @@ from pathlib import Path
 
 import semantic_model as core
 
-VERSION = "1.1.0"
+VERSION = "1.1.2"
 OPTIONS = {
     "prefer_assertion": "Prioritize one assertion and retain the others as disputed; validate the change before accepting it.",
     "separate_scopes": "Retain both under distinct contexts, versions or periods, supplying the distinguishing data.",
@@ -169,12 +169,13 @@ def scan(model, contract, claims=None):
             findings.append(card("constraint_conflict", {"id": "acyclic", "predicate": predicate, "version": contract["version"]}, [public_assertion(e, sources, "relation") for e in involved], "These edges close a cycle in a predicate declared to be a DAG; review the edges or the profile rule.", contract, witness))
         elif error["code"] == "CARDINALITY_VIOLATION":
             node = next(n for n in model["nodes"] if n["id"] == error["entity"])
-            predicate = error["path"].rsplit("/", 1)[-1]
+            prefix = "/nodes/" + node["id"] + "/outgoing/"
+            predicate = error["path"][len(prefix):]
             involved = [e for e in relations if e["from"] == node["id"] and e["type"] == predicate]
             items = [public_assertion(node, sources, "node")] + [public_assertion(e, sources, "relation") for e in involved]
             findings.append(card("constraint_conflict", {"id": "cardinality", "predicate": predicate, "expected": error["expected"], "actual": error["actual"], "version": contract["version"]}, items, "The set violates the declared cardinality. This does not establish that a source is false.", contract))
         elif error["code"] == "COMPETENCY_CHECK_FAILED":
-            qid = error["path"].rsplit("/", 1)[-1]
+            qid = error["path"].removeprefix("/checks/")
             test = next(c for c in contract["checks"] if c["id"] == qid)
             involved = [n for n in model["nodes"] if n["id"] in set(error["expected"]) | set(error["actual"])]
             ids = {sid for n in involved for sid in n.get("source_ids", [])}
@@ -182,6 +183,9 @@ def scan(model, contract, claims=None):
                 ids.add(test["query"]["source_id"])
             record = {"id": "check:" + qid, "query": test["query"], "expected": error["expected"], "actual": error["actual"], "source_ids": sorted(ids)}
             findings.append(card("constraint_conflict", {"id": "competency_check", "check_id": qid, "version": contract["version"]}, [public_assertion(record, sources, "competency")], "The observed answer does not match the agreed obligation. Review the change or expectation before integrating the candidate.", contract))
+        elif error["code"] == "REVIEW_REQUIRED":
+            edge = next(e for e in relations if e["id"] == error["entity"])
+            findings.append(card("constraint_conflict", {"id": "review_required", "predicate": edge["type"], "version": contract["version"]}, [public_assertion(edge, sources, "relation")], "This relation lacks the accepted, attributed review required by the contract. Review the assertion and its evidence, or explicitly revise the rule; missing review does not establish that a source is false.", contract))
     warnings = []
     if claims is not None:
         check_claims(claims, model)
@@ -280,6 +284,13 @@ def combine_for_review(model, addition):
 
 def render_markdown(review):
     lines = ["# Conflicts for review", "", "Scan status: " + review["scan_status"], "", "Alternatives are preserved until a decision is recorded. A recorded choice still requires validation of its application.", ""]
+    lines += ["Interpretation policy: Different positive values can coexist when a predicate is not declared functional. Unknown or absent values are not negations.", ""]
+    unknowns = [warning for warning in review.get("warnings", []) if warning.get("code") == "UNKNOWN_VALUE_NOT_NEGATION"]
+    if unknowns:
+        lines += ["## Unknown values", ""]
+        for warning in unknowns:
+            lines += ["- `UNKNOWN_VALUE_NOT_NEGATION` — assertion " + json.dumps(warning["assertion_id"], ensure_ascii=False) + ": its null value is unknown, not evidence for negation."]
+        lines += [""]
     for item in review["findings"]:
         lines += ["## " + item["id"], "", "Classification: " + item["classification"] + "; status: " + item["status"], "", item["explanation"], ""]
         for index, assertion in enumerate(item["assertions"], 1):

@@ -30,3 +30,8 @@ docs/examples/threejs-animated-3d/assets/*.js binary
 # Retain exact bytes of frozen public benchmark controls and evidence.
 /evaluations/lucidchart-svg/benchmarks/v1/** -text
 /evaluations/pi-prompts/lucidchart-svg-benchmark-v1-*.md -text
+
+# Retain exact bytes of the evaluated semantic model bundle.
+/skills/curate-semantic-model/SKILL.md -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/skills/curate-semantic-model/agents/openai.yaml -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/skills/curate-semantic-model/references/methodology.md -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

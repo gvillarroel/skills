@@ -1,0 +1,63 @@
+{
+  "holdoutReleased": false,
+  "ledger": {
+    "eventCount": 34,
+    "headSha256": "bfe3f0ab38cc65e7c045dda0653d0307b34b899de5f5598e9a1b7be8c59fe4aa"
+  },
+  "progress": {
+    "completedCount": 4,
+    "completionPercent": 100.0,
+    "stageCount": 4
+  },
+  "publicationPolicy": "indexes-and-result-tables-only-v1",
+  "resultIndex": [
+    {
+      "artifactType": "directory",
+      "byteCount": 239209,
+      "evidenceId": "frozen-contracts06",
+      "fileCount": 18,
+      "kind": "candidate",
+      "role": "lineage",
+      "sha256": "b028ae3166c28ce97f797b8cb3ddd79463e65dabb320fd3bce290ff1e190f822",
+      "stageId": "evolve-final",
+      "visibility": "public"
+    },
+    {
+      "artifactType": "file",
+      "byteCount": 814,
+      "evidenceId": "non-evaluable-promotion-decision",
+      "fileCount": 1,
+      "kind": "decision",
+      "role": "decision",
+      "sha256": "ff3b2fec94171af623c24816c60d073514e423dda261d526d6d9a6a637d92014",
+      "stageId": "promote-final",
+      "visibility": "public"
+    },
+    {
+      "artifactType": "file",
+      "byteCount": 877,
+      "evidenceId": "reviewed-infrastructure-aggregate-table",
+      "fileCount": 1,
+      "kind": "final-report",
+      "role": "publication",
+      "sha256": "013cd1dafef694f052b7deb4464ae5480024645245d43ea075325073b659fd10",
+      "stageId": "publish-final",
+      "visibility": "public"
+    }
+  ],
+  "resultTables": [
+    {
+      "byteCount": 877,
+      "path": "tables/results.table.md",
+      "sha256": "013cd1dafef694f052b7deb4464ae5480024645245d43ea075325073b659fd10"
+    }
+  ],
+  "schemaVersion": 1,
+  "study": {
+    "comparisonProfile": "pi1.4-sol6.1-medium-docker-v11-public-r1",
+    "createdAt": "2026-11-02T14:49:59Z",
+    "studyId": "semantic-curation-contracts-20261102-v11",
+    "title": "Unchanged semantic candidate under corrected public verifier and fresh independent gate"
+  },
+  "validationReleased": true
+}

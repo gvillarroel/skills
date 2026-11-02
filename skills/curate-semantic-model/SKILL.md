@@ -24,6 +24,9 @@ needed capability. Compare parsimony only among models that meet these duties.
 - Run the bundled standard-library helpers with Python 3.11 or later through
   `uv run --script`. In commands below, replace `<skill-dir>` with this skill's
   actual directory; write task inputs and outputs outside that directory.
+  Use the same launcher for ad hoc scripts or an available Python 3 interpreter
+  such as `python3`; do not assume bare `python` or optional tools such as `rg`
+  are installed.
 - Produce only the requested deliverables. Keep one authoritative model and
   derive tables, graphs, spreadsheets, or reports from it when useful.
 
@@ -64,7 +67,9 @@ exceptions, complexity, and review effort. State when reduction is a local
 heuristic; do not claim a formal MDL optimum or globally minimal ontology.
 The helper only removes exact duplicate assertions and explicitly permitted
 transitive materialization, retaining audit history. It does not merge nodes or
-simplify definitions. `skos:broader` is not transitive by default.
+simplify definitions. `skos:broader` is not transitive by default. Verify each
+proposed removal against the declared competency obligations, then measure the
+resulting counts; an expected count or topology does not establish preservation.
 
 ## 4. Validate complete proposed states
 
@@ -80,12 +85,29 @@ rules, or repair source wording to obtain a pass. Follow the user's existing
 authorization when applying a valid change; a request for validation alone does
 not authorize integration. Routine checks do not require another approval.
 
+Preserve actual bundled helper reports verbatim at their requested paths.
+Keep manual interpretation and scratch helper experiments separately attributed;
+do not substitute them for a requested bundled report. When the helper is an
+authorized maintenance target, repair it within that scope and identify the
+revised implementation when rerunning.
+
 Keep `contract_status`, `semantic_status`, and `engine_status` distinct. Core exit
 codes are 0 for conformity, 1 for data violations, and 2 for unsupported contracts,
 malformed input, processor errors, or I/O errors. Core semantic review remains
 `not_run` even when the JSON contract passes. A missing formal processor is not
 a semantic pass. For RDF workflows, pin the ontology/imports, processor version,
 and inference regime; report SHACL conformity and OWL reasoning separately.
+
+Honor task-specific command constraints. When an exact invocation is requested,
+run it unchanged and inspect its tool result. For every other helper invocation,
+including first validation of newly authored inputs, capture the exit with
+`subprocess.run(..., check=False)` or a shell conditional. Inspect its report
+and branch on documented codes 0/1/2. Inspect actual
+diagnostics before asserting an error code; different invalid states can fail
+at different validation layers. Keep conformity and data findings distinct
+from engine errors. Diagnose an engine error and repair owned inputs or
+authorized processor code before rerunning; never report the failed check
+as a completed semantic result.
 
 ## 5. Expose contradictions for a user decision
 
@@ -143,9 +165,12 @@ the same frozen suite, and let the user decide which residual gaps to accept.
 
 ## 7. Verify and deliver
 
-Exercise meaningful positive and invalid cases for important rules. During
-skill maintenance, run the bundled helper tests; normal runtime tasks can
-create their own small inputs without reading acceptance fixtures. Deliver the
+Exercise meaningful positive and invalid cases for important rules. First
+collect each probe's actual exit, status, and diagnostics without speculative
+assertions. Check rejection and its direct evidence; assert a particular code
+only when its validation layer was reached. During skill maintenance, run the
+bundled helper tests; normal runtime tasks can create their own small inputs
+without reading acceptance fixtures. Deliver the
 canonical model, contract, source map, changes and competency results, together
 with actionable errors, conflict choices, coverage denominators, and remaining
 uncertainty as the task requires. Derive only useful views and avoid a broad

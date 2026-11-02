@@ -13,13 +13,14 @@ import argparse
 import copy
 import hashlib
 import json
+import math
 import sys
 from pathlib import Path
 
 import semantic_model as core
 import review_conflicts as conflicts
 
-VERSION = "1.2.0"
+VERSION = "1.2.2"
 STATUSES = {"pass", "fail", "partial", "unknown", "error"}
 ACTIVE = {"open", "deferred", "decision_recorded_pending_validation"}
 
@@ -41,11 +42,24 @@ def pinned(artifact, expected, base):
 
 
 def number(value):
-    return type(value) in (int, float)
+    return type(value) is int or type(value) is float and math.isfinite(value)
 
 
 def percentage(count, total):
-    return 100.0 * count / total if total else None
+    if not total:
+        return None
+    try:
+        scaled = 100.0 * count
+    except OverflowError as exc:
+        scaled = math.inf
+    try:
+        # Retain ordinary historical rounding; use ratio-first arithmetic only
+        # when the intermediate multiplication cannot remain finite.
+        value = scaled / total if number(scaled) else (count / total) * 100.0
+    except OverflowError as exc:
+        raise core.EngineError("NUMERIC_OVERFLOW", "Coverage ratio is not representable as a finite number") from exc
+    must(number(value), "Coverage ratio must remain finite", code="NUMERIC_OVERFLOW")
+    return value
 
 
 def check_suite(suite):
@@ -102,7 +116,11 @@ def conflict_review(candidate, base):
 
 def metric(rows):
     total = len(rows)
-    weight = sum(r["weight"] for r in rows)
+    try:
+        weight = sum(r["weight"] for r in rows)
+    except OverflowError as exc:
+        raise core.EngineError("NUMERIC_OVERFLOW", "Total case weight is not representable as a finite number") from exc
+    must(number(weight), "Total case weight must remain finite", code="NUMERIC_OVERFLOW")
     statuses = {state: {"count": sum(r["effective_status"] == state for r in rows)} for state in ["pass", "fail", "partial", "unknown", "error", "conflicted"]}
     for value in statuses.values():
         value["percent"] = percentage(value["count"], total)
@@ -195,8 +213,8 @@ def evaluate(payload, base, previous=None):
             for row in old_candidate["cases"]:
                 must(isinstance(row, dict) and core.nonempty(row.get("case_id")) and row["case_id"] in old_cases and row["case_id"] not in observed_ids, "Malformed previous case set")
                 observed_ids.add(row["case_id"])
-                must(isinstance(row.get("effective_status"), str) and row["effective_status"] in STATUSES | {"conflicted"} and row.get("weight") == old_cases[row["case_id"]].get("weight", 1), "Malformed previous result")
-            must(observed_ids == set(old_cases) and old_candidate.get("summary") == metric(old_candidate["cases"]), "Previous metrics or denominator do not reproduce", code="STALE_PREVIOUS_REPORT")
+                must(isinstance(row.get("effective_status"), str) and row["effective_status"] in STATUSES | {"conflicted"} and core.exact_json_equal(row.get("weight"), old_cases[row["case_id"]].get("weight", 1)), "Malformed previous result")
+            must(observed_ids == set(old_cases) and core.exact_json_equal(old_candidate.get("summary"), metric(old_candidate["cases"])), "Previous metrics or denominator do not reproduce", code="STALE_PREVIOUS_REPORT")
         if previous.get("suite_fingerprint") != report["suite_fingerprint"]:
             report["comparison"] = {"status": "not_comparable", "reason": "Suite or denominator changed; no improvement percentage is calculated"}
         else:
@@ -228,6 +246,11 @@ def render_markdown(report):
         s = candidate["summary"];b = s["status_breakdown"]
         count = candidate["conflict_review"]["open_count"]
         lines.append("| " + candidate["label"].replace("|", "\\|") + " | " + str(s["fully_covered_cases"]) + "/" + str(s["applicable_cases"]) + " | " + pct(s["strict_coverage_percent"]) + " | " + " | ".join(pct(b[k]["percent"]) for k in ("fail", "partial", "unknown", "error", "conflicted")) + " | " + (str(count) if count is not None else "not assessed") + " |")
+    lines += ["", "Weighted coverage uses the weight of fully covered cases divided by total applicable case weight. The weight denominator is separate from the number of cases; partial results receive no assumed partial credit.", "",
+              "| Ontology | Weighted strict coverage | Weight denominator |", "|---|---:|---:|"]
+    for candidate in report["candidates"]:
+        summary = candidate["summary"]
+        lines.append("| " + candidate["label"].replace("|", "\\|") + " | " + pct(summary["weighted_strict_coverage_percent"]) + " | " + str(summary["weight_denominator"]) + " |")
     for candidate in report["candidates"]:
         lines += ["", "## " + candidate["label"], "", "IRI: " + candidate["ontology"]["iri"] + " · version: " + candidate["ontology"]["version"], "", "Status: " + candidate["readiness"], "",
                   "Not fully covered: " + pct(candidate["summary"]["not_fully_covered_percent"]) + ". This includes partial, unknown and error results; it is not equivalent to demonstrated noncompliance.", "",
