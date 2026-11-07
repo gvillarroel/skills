@@ -12,7 +12,7 @@
 - Keep data deterministic and inline small datasets.
 - Preserve the pattern's core geometry and semantic color roles before changing labels or domain data.
 - Use SVG-native animation for standalone output; do not leave runtime D3 or CDN dependencies in a self-contained deliverable.
-- Include an SVG `<title>`, `<desc>`, stable `viewBox`, and final-state geometry.
+- Include an SVG `<title>`, `<desc>`, stable `viewBox`, and final-state geometry. Set the selected palette as the root's `data-colorset` and use six-digit color tokens, including `#ffffff` for white.
 
 ## Source Excerpt
 
@@ -30,7 +30,7 @@ function renderLineMissingData() {
     const line = d3.line().defined(d => d.value != null).x(d => x(d.t)).y(d => y(d.value)).curve(d3.curveMonotoneX);
     const path = svg.append("path").datum(data).attr("d", line).attr("fill", "none").attr("stroke", palette.blue).attr("stroke-width", 3);
     drawPath(path, .08, 1);
-    const dots = svg.append("g").selectAll("circle").data(data.filter(d => d.value != null)).join("circle").attr("cx", d => x(d.t)).attr("cy", d => y(d.value)).attr("fill", palette.blue).attr("stroke", "#fff").attr("stroke-width", 1.4);
+    const dots = svg.append("g").selectAll("circle").data(data.filter(d => d.value != null)).join("circle").attr("cx", d => x(d.t)).attr("cy", d => y(d.value)).attr("fill", palette.blue).attr("stroke", "#ffffff").attr("stroke-width", 1.4);
     grow(dots, "r", 2, 5, .12, .45);
     svg.append("text").attr("class", "mark-label").attr("fill", palette.red).attr("x", x(4.8)).attr("y", y(12)).text("gap");
     svg.append("text").attr("class", "mark-label").attr("fill", palette.red).attr("x", x(11.2)).attr("y", y(26)).text("gap");

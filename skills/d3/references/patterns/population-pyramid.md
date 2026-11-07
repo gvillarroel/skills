@@ -11,6 +11,7 @@
 - Use this file as the pattern source in isolated skill-only workspaces; read the gallery fixture only when maintaining that fixture.
 - Keep data deterministic and inline small datasets.
 - Preserve the pattern's core geometry and semantic color roles before changing labels or domain data.
+- Keep a neutral central gutter for age labels. Translate the two baselines equally away from zero, leaving each bar's encoded width intact. Put group headers over their respective sides and keep group names out of the age rows.
 - Use SVG-native animation for standalone output; do not leave runtime D3 or CDN dependencies in a self-contained deliverable.
 - Include an SVG `<title>`, `<desc>`, stable `viewBox`, and final-state geometry.
 
@@ -25,15 +26,18 @@ function renderPopulationPyramid() {
     const data = ages.map((age, i) => ({ age, left: 18 + i * 4 + (i % 3) * 3, right: 22 + (8 - i) * 3 + (i % 2) * 4 }));
     const x = d3.scaleLinear().domain([-60, 60]).range([72, width - 72]);
     const y = d3.scaleBand().domain(ages).range([58, 334]).padding(.18);
-    svg.append("line").attr("x1", x(0)).attr("x2", x(0)).attr("y1", 48).attr("y2", 346).attr("stroke", palette.ink).attr("stroke-width", 1.4);
+    const halfGutter = 16;
+    svg.append("g").selectAll("line").data([x(0) - halfGutter, x(0) + halfGutter]).join("line")
+      .attr("class", "age-gutter-guide").attr("x1", d => d).attr("x2", d => d).attr("y1", 48).attr("y2", 346)
+      .attr("stroke", palette.gray200).attr("stroke-width", 1);
     const leftBars = svg.append("g").selectAll("rect.left").data(data).join("rect")
-      .attr("class", "left").attr("x", d => x(-d.left)).attr("y", d => y(d.age)).attr("width", d => x(0) - x(-d.left)).attr("height", y.bandwidth()).attr("fill", palette.blue);
+      .attr("class", "left").attr("x", d => x(-d.left) - halfGutter).attr("y", d => y(d.age)).attr("width", d => x(0) - x(-d.left)).attr("height", y.bandwidth()).attr("fill", palette.blue);
     const rightBars = svg.append("g").selectAll("rect.right").data(data).join("rect")
-      .attr("class", "right").attr("x", x(0)).attr("y", d => y(d.age)).attr("width", d => x(d.right) - x(0)).attr("height", y.bandwidth()).attr("fill", palette.red);
+      .attr("class", "right").attr("x", x(0) + halfGutter).attr("y", d => y(d.age)).attr("width", d => x(d.right) - x(0)).attr("height", y.bandwidth()).attr("fill", palette.red);
     fadeIn(leftBars, .06, .55);
     fadeIn(rightBars, .1, .55);
-    svg.append("text").attr("class", "mark-label").attr("x", x(-34)).attr("y", 38).attr("text-anchor", "middle").text("Group A");
-    svg.append("text").attr("class", "mark-label").attr("x", x(34)).attr("y", 38).attr("text-anchor", "middle").text("Group B");
-    svg.selectAll(".age-label").data(data).join("text").attr("class", "mark-label").attr("x", x(0)).attr("y", d => y(d.age) + y.bandwidth() / 2).attr("text-anchor", "middle").attr("dy", ".35em").text(d => d.age);
+    svg.append("text").attr("class", "mark-label").attr("x", x(-34) - halfGutter).attr("y", 38).attr("text-anchor", "middle").text("Group A");
+    svg.append("text").attr("class", "mark-label").attr("x", x(34) + halfGutter).attr("y", 38).attr("text-anchor", "middle").text("Group B");
+    svg.selectAll(".age-label").data(data).join("text").attr("class", "mark-label age-label").attr("x", x(0)).attr("y", d => y(d.age) + y.bandwidth() / 2).attr("text-anchor", "middle").attr("dy", ".35em").text(d => d.age);
   }
 ```

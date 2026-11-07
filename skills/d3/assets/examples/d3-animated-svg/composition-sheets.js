@@ -3032,36 +3032,47 @@
 
   function renderBalancedBarComparison(group, variant, marks, labels) {
     if (/population-pyramid/.test(variant.sourceId)) {
+      const center = 180;
+      const halfGutter = 15;
+      const ages = labels.map(label => label.text).filter(text => /^\d+\+?$/.test(text));
+      ["Group A", "Group B"].forEach((label, index) => {
+        appendText(group, center + (index ? 1 : -1) * 58, 38, label, {
+          class: "semantic-balance-heading",
+          "text-anchor": "middle",
+          "font-size": 7,
+          "font-weight": 700,
+          fill: palette.ink
+        });
+      });
       Array.from({ length: 6 }, (_, index) => {
         const y = 48 + index * 20;
         const leftWidth = 42 + seededRange(variant, index + 1100, 18, 60);
         const rightWidth = 42 + seededRange(variant, index + 1200, 18, 60);
-        addRect(group, 180 - leftWidth, y, leftWidth, 11, {
+        addRect(group, center - halfGutter - leftWidth, y, leftWidth, 11, {
           class: "semantic-scatter-mark semantic-balance-bar",
           rx: 5,
           fill: palette.blue,
           "fill-opacity": 0.58,
           stroke: "none"
         });
-        addRect(group, 180, y, rightWidth, 11, {
+        addRect(group, center + halfGutter, y, rightWidth, 11, {
           class: "semantic-scatter-mark semantic-balance-bar",
           rx: 5,
           fill: palette.orange,
           "fill-opacity": 0.58,
           stroke: "none"
         });
-        appendText(group, 180, y + 8.5, labels[index]?.text || tokenLabel(variant, "age", index), {
+        appendText(group, center, y + 8.5, ages[index] || tokenLabel(variant, "age", index), {
           class: "semantic-balance-axis-label",
           "text-anchor": "middle",
-          "font-size": 5.8,
-          "font-weight": 800,
-          fill: palette.ink,
-          stroke: palette.surface,
-          "stroke-width": 1.8,
-          "paint-order": "stroke"
+          "font-size": 7,
+          "font-weight": 700,
+          fill: palette.ink
         });
       });
-      addLine(group, 180, 42, 180, 166, { class: "semantic-balance-baseline", stroke: palette.ink, "stroke-width": 1.2, "stroke-opacity": 0.34 });
+      for (const x of [center - halfGutter, center + halfGutter]) {
+        addLine(group, x, 44, x, 166, { class: "semantic-balance-baseline", stroke: palette.line, "stroke-width": 0.8 });
+      }
       return true;
     }
     if (/diverging-stack/.test(variant.sourceId)) {
@@ -3769,7 +3780,7 @@
         <article class="composition-card" id="${variant.id}" data-composition-id="${variant.compositionId}" data-example-id="${variant.sourceId}" data-pattern-id="${patternId}" data-composition-pattern-id="${variant.id}" data-legacy-composition-pattern-id="${variant.legacyId}" data-kind="${variant.kind}" data-source-family="${escapeHtml(variant.sourceFamily || source.kicker || variant.kind)}" data-armature-lines="${escapeHtml(variant.armatureLines || "")}" data-quadrants="${escapeHtml(variant.quadrants || "")}" data-reviewed="${variant.reviewed ? "true" : "false"}" data-search="${escapeHtml(search)}">
           <div class="preview-frame">
             <svg id="${variant.id}-svg" data-colorset="colorset2" class="composition-preview" data-composition-pattern-id="${variant.id}" data-legacy-composition-pattern-id="${variant.legacyId}" data-pattern-id="${patternId}" role="img"></svg>
-            <button class="replay-button" type="button" data-replay-composition="${variant.id}" aria-label="Replay animation for ${escapeHtml(title)} ${escapeHtml(variant.variantTitle)}">
+            <button class="replay-button" type="button" data-d3-export-ignore data-replay-composition="${variant.id}" aria-label="Replay animation for ${escapeHtml(title)} ${escapeHtml(variant.variantTitle)}">
               <span class="material-symbols-rounded" aria-hidden="true">replay</span>
               <span>Replay</span>
             </button>
@@ -3812,8 +3823,29 @@
       svg.appendChild(el("desc", { id: `${variant.id}-desc` }, [textNode(`${variant.reason || ""} ${variant.recipe}`)]));
       addRect(svg, 8, 8, 344, 204, { rx: 8, fill: palette.surface, stroke: "none" });
       renderVariantMarks(svg, variant);
+      setPresentationFrame(svg);
       prepareReplayAnimation(svg);
     });
+  }
+
+  function setPresentationFrame(svg) {
+    svg.removeAttribute("data-d3-export-frame");
+    const art = svg.querySelector(".source-pattern-recomposition");
+    const matrix = svg.getScreenCTM();
+    if (!art || !matrix?.a || !matrix.d) return;
+    const paint = art.getBoundingClientRect();
+    if (!paint.width || !paint.height) return;
+    const [x, y, width, height] = [
+      (paint.left - matrix.e) / matrix.a, (paint.top - matrix.f) / matrix.d,
+      paint.width / matrix.a, paint.height / matrix.d
+    ];
+    const pad = 9;
+    if (x < pad || y < pad || x + width > 360 - pad || y + height > 220 - pad) return;
+    const w = Math.max(270, Math.ceil(width + 2 * pad));
+    const h = Math.max(165, Math.ceil(height + 2 * pad));
+    const left = Math.max(1, Math.min(359 - w, Math.floor(x + (width - w) / 2)));
+    const top = Math.max(1, Math.min(219 - h, Math.floor(y + (height - h) / 2)));
+    svg.setAttribute("data-d3-export-frame", [left, top, w, h].join(" "));
   }
 
   function isVisibleReplayMark(mark) {

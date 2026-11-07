@@ -9,12 +9,17 @@
 from __future__ import annotations
 
 import argparse
+import json
 import re
 import sys
 from pathlib import Path
 
 from playwright.sync_api import Error as PlaywrightError
 from playwright.sync_api import sync_playwright
+
+sys.dont_write_bytecode = True
+
+from rendered_layout import rendered_layout
 
 
 def parse_viewport(value: str) -> tuple[int, int]:
@@ -64,6 +69,9 @@ def main() -> int:
     parser.add_argument("--browser-channel", help="Installed Chromium channel, for example msedge or chrome.")
     parser.add_argument("--viewport", type=parse_viewport, default=parse_viewport("1280x720"))
     parser.add_argument("--screenshot", type=Path, help="Optional PNG screenshot of the selected SVG")
+    parser.add_argument("--layout-report", type=Path, help="Write browser measurements of label size, clipping, and collisions")
+    parser.add_argument("--strict-layout", action="store_true", help="Fail if the rendered label checks report issues")
+    parser.add_argument("--min-label-px", type=float, default=12, help="Minimum effective label size in CSS pixels")
     parser.add_argument(
         "--wait-until",
         choices=("load", "domcontentloaded", "networkidle"),
@@ -76,6 +84,8 @@ def main() -> int:
         help="Capture even when the page reports console or runtime errors",
     )
     args = parser.parse_args()
+    if not 0 < args.min_label_px <= 100:
+        parser.error("--min-label-px must be greater than zero and at most 100.")
 
     output = args.output
     if output is None:
@@ -86,6 +96,7 @@ def main() -> int:
     width, height = args.viewport
     console_errors: list[str] = []
     page_errors: list[str] = []
+    layout_issues: list[dict] = []
 
     try:
         with sync_playwright() as playwright:
@@ -147,6 +158,7 @@ def main() -> int:
                         // serialize equivalent colors back to functional RGB.
                         copies[index].setAttribute('style', declarations.join(';'));
                     });
+                    clone.querySelectorAll('[data-d3-export-ignore]').forEach(node => node.remove());
                     return {
                         tagName: svg.tagName.toLowerCase(),
                         markup: clone.outerHTML,
@@ -171,8 +183,16 @@ def main() -> int:
 
             if args.screenshot:
                 args.screenshot.parent.mkdir(parents=True, exist_ok=True)
-                locator.screenshot(path=str(args.screenshot.resolve()))
+                locator.screenshot(
+                    path=str(args.screenshot.resolve()),
+                    style="[data-d3-export-ignore], [data-d3-export-ignore] * { visibility: hidden !important; }",
+                )
 
+            if args.layout_report or args.strict_layout:
+                layout = rendered_layout(locator, args.min_label_px)
+                layout_issues = layout["issues"]
+                if args.layout_report:
+                    write_text(args.layout_report, json.dumps(layout, ensure_ascii=False, indent=2) + "\n")
             browser.close()
     except PlaywrightError as error:
         print(f"[ERROR] Playwright failed: {error}", file=sys.stderr)
@@ -192,6 +212,11 @@ def main() -> int:
     print(f"Animation/style nodes: {info['animationCount'] + info['styleCount']}")
     if args.screenshot:
         print(f"Screenshot: {args.screenshot.resolve()}")
+    if args.layout_report:
+        print(f"Rendered layout: {args.layout_report.resolve()} ({len(layout_issues)} findings)")
+    if args.strict_layout and layout_issues:
+        print(f"[ERROR] Rendered label checks found {len(layout_issues)} issues.", file=sys.stderr)
+        return 1
     return 0
 
 

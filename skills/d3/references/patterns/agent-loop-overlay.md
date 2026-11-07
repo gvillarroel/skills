@@ -20,6 +20,7 @@
 - Only for gallery maintenance, keep the fixture mirror at `assets/examples/d3-animated-svg/assets/agent-loop-reference.png` byte-identical to the runtime asset. Do not read the fixture mirror during normal skill use.
 - Keep data deterministic and inline small datasets.
 - Preserve the pattern's core geometry and semantic color roles before changing labels or domain data.
+- Mark the veil above the reference bitmap with `data-opacity-role="semantic"` so palette normalization preserves its 0.08 opacity. Verify that the bitmap remains visible beneath all five partial covers.
 - Use SVG-native animation for standalone output; do not leave runtime D3 or CDN dependencies in a self-contained deliverable.
 - Include an SVG `<title>`, `<desc>`, stable `viewBox`, and final-state geometry.
 
@@ -86,6 +87,7 @@ function renderAgentLoopPartialCovers() {
       .attr("height", image.h)
       .attr("rx", 8)
       .attr("fill", palette.surface)
+      .attr("data-opacity-role", "semantic")
       .attr("opacity", .08)
       .attr("clip-path", "url(#agent-loop-overlay-clip)");
 

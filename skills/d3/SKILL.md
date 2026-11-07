@@ -41,6 +41,8 @@ python "<d3-skill>/scripts/build_contract_artifact.py" --help
 
 Replace `<d3-skill>` with the exact directory containing this `SKILL.md`; do not guess `.agents` or probe alternate paths. Use `python` when available; on `command not found`, immediately rerun the same command with `python3`. Do not plan, inspect the runtime, or write a deliverable before this command succeeds. A missing interpreter alias never permits hand-authoring: use the builder for the final files, and never replace or post-edit a supported form. Correct flags and rerun. The wedge builder already satisfies colorset2 accent, warning/orange, success/green, and special/purple groups.
 
+For an ordered line chart with missing observations or directly labeled series, first run `uv run --script "<d3-skill>/scripts/build_direct_line.py" --help`. Use the offline builder with ordered data, then export and verify the SVG at its intended size. Follow [rendered readability](references/rendered-readability.md) for the input contract.
+
 For an evaluation or composition audit, your first command after reading this file MUST instead be `python "<d3-skill>/scripts/build_evaluation_report.py" --help` with the same exact-directory rule. Use its outputs without post-editing.
 
 For an editable KPI/service dashboard, first run `python "<d3-skill>/scripts/create_d3_svg_starter.py" --help`, then read `references/user-artifact-workflow.md`. Generate the `operational-dashboard` starter and edit its output data. This route already provides compact neutral panels, active-colorset metadata, local runtime files, and the KPI/table layout.
@@ -129,6 +131,8 @@ python <d3-skill>/scripts/check_visual_contract.py <settled.svg> <exact-contract
 Run only the palette command matching the active colorset. Choose a wait beyond the last animation; the renderer writes both the captured SVG and inspection PNG in one call. It has declared Playwright dependencies: always invoke it with `uv run --script`, never bare `python` or a new Playwright import probe. It can reuse installed Edge/Chrome on Windows when managed Chromium is absent. Put every scratch output inside an owned directory in the writable task workspace, outside deliverables; do not use host `/tmp` paths or guess an image-conversion executable. A missing tool is not a pass; use an equivalent available browser/parser check. Use route-specific validators for logos, recompositions, galleries, or replication.
 
 Complete the rendered visual review before reporting success: open the inspection PNG or browser preview at the requested size and check every title, caption, token and branch label against the SVG boundary. A parser or render-success result cannot establish readability. Correct overflow in the authored layout, render again, and rerun affected validators. Once those required checks and the visual review pass, stop issuing verification commands and report the result. Avoid duplicate ad hoc parsers for conditions already covered by the bundled validators; raw first-occurrence logic can disagree with rendered accessibility text.
+
+For small or densely labeled artifacts, follow [rendered readability](references/rendered-readability.md). Use the renderer's `--layout-report` and `--strict-layout` at the requested display size. Mark presentation-only controls with `data-d3-export-ignore` so the browser interaction remains available and the exported SVG and preview focus on the visual.
 
 ## Acceptance gate
 

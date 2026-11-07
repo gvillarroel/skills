@@ -96,9 +96,9 @@ def build_cards(items: list[dict[str, str]], colorset: str, roles: dict[str, str
             <title id="{title_id}">{text}: {label} kinetic type</title>
             <desc id="{desc_id}">{escape(descriptions[variant])} Hover, focus, or press to reveal the structure.</desc>
             <rect class="word-surface" x="1" y="1" width="718" height="218" fill="{roles['surface']}" stroke="{roles['line']}"/>
-            <text class="base-text" x="360" y="154" text-anchor="middle" font-size="{font_size}" font-weight="900" fill="{roles['inkDark']}">{text}</text>
+            <text class="base-text" data-d3-export-raster="heavy-display-lettering" x="360" y="154" text-anchor="middle" font-size="{font_size}" font-weight="900" fill="{roles['inkDark']}">{text}</text>
             <g class="piece-layer" aria-hidden="true"></g>
-            <text class="material-label" x="24" y="202" font-size="12" font-weight="700" fill="{roles['muted']}">{label} · hover, focus, or tap</text>
+            <text class="material-label" data-d3-export-ignore="" x="24" y="202" font-size="12" font-weight="700" fill="{roles['muted']}">{label} · hover, focus, or tap</text>
           </svg>
         </button>'''
         )
