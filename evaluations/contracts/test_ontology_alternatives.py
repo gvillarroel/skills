@@ -119,6 +119,41 @@ class OntologyAlternatives(unittest.TestCase):
                 with self.subTest(case=case, operator=operator):
                     self.assertIs(self.shacl(data, shape)[0], conforms)
 
+    def test_qualified_union_count_and_total_typed_count_are_distinct(self):
+        qualified = f"sh:qualifiedValueShape [ sh:or {VALUE_BRANCHES} ] ; sh:qualifiedMinCount 1"
+        counts = (
+            qualified,
+            qualified + " ; sh:qualifiedMaxCount 1",
+            f"sh:or {VALUE_BRANCHES} ; sh:minCount 1 ; sh:maxCount 1",
+        )
+        shapes = [graph(f":Shape a sh:NodeShape ; sh:targetClass :Record ; "
+                        f"sh:property [ sh:path :target ; {count} ] .") for count in counts]
+        cases = {
+            "none": ("", (False, False, False)),
+            "one-qualified": ("; :target :left", (True, True, True)),
+            "one-overlap": ("; :target :overlap", (True, True, True)),
+            "two-qualified": ("; :target :left, :right", (True, False, False)),
+            "one-qualified-one-other": ("; :target :left, :other", (True, True, False)),
+            "one-other": ("; :target :other", (False, False, False)),
+            "one-qualified-one-untyped": ("; :target :left, :untyped", (True, True, False)),
+        }
+        for case, (fields, expected) in cases.items():
+            data = graph(f":record a :Record {fields} .\n" + INSTANCE_TYPES)
+            for index, (shape, conforms) in enumerate(zip(shapes, expected, strict=True)):
+                with self.subTest(case=case, shape=index):
+                    actual, report = self.shacl(data, shape)
+                    self.assertIs(actual, conforms)
+                    if not conforms:
+                        self.assertEqual(set(report.objects(None, SH.focusNode)), {EX.record})
+
+    def test_target_class_follows_asserted_subclass_hierarchy_without_optional_inference(self):
+        data = graph(":SpecialRecord rdfs:subClassOf :Record .\n"
+                     ":special a :SpecialRecord .\n:unrelated a :Unrelated .")
+        shape = graph(pointwise("or", "sh:minCount 1 ;"))
+        conforms, report = self.shacl(data, shape)
+        self.assertFalse(conforms)
+        self.assertEqual(set(report.objects(None, SH.focusNode)), {EX.special})
+
     def test_alternative_path_value_count_can_hide_two_selected_fields(self):
         data = graph(':record a :Record ; :email "shared" ; :sms "shared" .')
         value_count = graph("""

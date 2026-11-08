@@ -55,3 +55,51 @@ The raw run directories are local artifacts. The prompts, source fixtures,
 graders and local acceptance matrix are versioned. The separate
 [glossary and routing report](ontology-guided-cross-file-20261108.md#glossary-and-extraction-routing)
 covers glossary-only and extraction-plus-glossary behavior.
+
+## Branch selection and value counts
+
+The count guidance distinguishes existence, exactly one qualifying
+value, and exactly one value in total with an allowed type. A value
+belonging to both classes in the allowed union counts once. A
+qualified count alone allows values outside the qualifying class. A total
+typed count also checks those values. Separately, `sh:targetClass`
+follows subclass declarations in the submitted data graph even when
+optional inference is disabled. [OWL 2 cardinality semantics](https://www.w3.org/TR/owl2-direct-semantics/#Class_Expressions)
+and [SHACL class targets](https://www.w3.org/TR/shacl/#targetClass).
+
+The local suite now has nine methods. The added count matrix passed
+all 21 cases, including two different qualifying values, one value in
+both classes, and one qualifying value with an unqualified value.
+A separate target control found the subclass instance and left the
+unrelated instance outside the check.
+
+An offline HermiT probe passed 27/27 consistency checks and 9/9
+entailment checks under OWL 2 DL. It distinguished an explicit zero
+count from missing assertions, and two names from two explicitly
+different individuals. With two qualifying named fillers, exact-one
+entails equality unless difference is established. With a qualifying
+filler and an explicitly disjoint other filler, only the total typed
+count rejects the extra value. The local result SHA-256 is
+`fc4f26ca218490557a1fc921095b88dac72d189709416599469638951b4e6de3`.
+
+The count-only authoring fixture supplies three consumer contracts.
+Its independent grader executes the resulting shapes against a
+separate 22-check matrix, including the subclass focus node. The
+strict Luna run `semantic-count-scope-20261108-c` loaded the revised
+reference and passed 22/22. The grader rejected mutations that used
+exclusive branch membership, replaced a qualified bound with a total
+bound, or substituted a fixed node for the class target. An earlier
+self-check failed because it expected a named node shape in the
+human-readable result. The final evaluator checks the actual RDF
+focus nodes with optional inference disabled. The final guided run
+`semantic-guided-alternatives-20261108-d` retained all 12 supported
+facts and reported exactly the same three expected violations.
+
+```powershell
+uv run --script scripts/run-pi-skill-eval.py extract-ontologies --prompt-file evaluations/pi-prompts/ontology-count-scope.md --run-id semantic-count-scope-replay --model github-copilot/gpt-6-luna --thinking low --mode json --strict --expect-output shapes.ttl --expect-output review.md
+uv run --script evaluations/contracts/grade_ontology_count_scope.py evaluations/runs/semantic-count-scope-replay/workspace/shapes.ttl
+```
+
+The research that exposed the ambiguity between existence and
+exact-one in an RDF triple projection is recorded separately.
+[Evidence attribution study](ontology-attribution-20261108.md#matched-comparison)

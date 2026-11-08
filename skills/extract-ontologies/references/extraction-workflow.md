@@ -141,6 +141,23 @@ Report masking only for a concrete alternative. Name the changed
 axiom, the observation being compared, and the axioms that compensate
 for the change. Distinguish untested explanations from verified
 whole-ontology equivalence.
+
+For evidence attribution, distinguish a direct assertion, an assertion
+requiring joint source context, and a consequence derived from other
+assertions. A passage that mentions the same role or target may describe
+a different subject or layer. Check the source that establishes the
+relation between them. For joint evidence, keep the assertion locator
+and its governing locators together. For independently sufficient
+passages, keep each supported locator on the same axiom.
+Treat a vocabulary registry as metadata for term names and kinds.
+Use a source passage to establish the assertion.
+
+When trusted background entails the target without the passage under
+review, record background entailment separately from source support.
+To test a proposed joint attribution, remove each required passage in
+turn and check which part of the claim loses its support. Confirm
+consistency before using a formal entailment as evidence of a derivation.
+
 Record contextual premises that warrant no axiom separately from
 premises that remain unresolved. Match the requested premise roster.
 Keep vocabulary declarations separate when the ledger covers only

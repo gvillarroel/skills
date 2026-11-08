@@ -74,9 +74,13 @@ evidence supports the actual subject, property, object, and qualifiers.
 Run supplied SHACL shapes separately when appropriate. Pin the shapes,
 data graph and optional ontology/inference regime. Record how the
 shapes select focus nodes, especially when missing data can remove a
-node from the target. For alternative patterns, inspect records that
+node from the target. A class target can include subclass instances
+through hierarchy triples in the data graph with inference disabled.
+For alternative patterns, inspect records that
 satisfy each branch alone, both, and neither. Check mixed values for a
 per-value constraint and a record outside the target when relevant.
+Distinguish the count of conforming branches, the count of qualifying
+values, and the count of all values on the supplied path.
 Use the supplied shape's observed outcome and cite its focus node and
 component. Treat OWL domain and range as type entailments. Record a
 missing value as unestablished or as a violation of an applicable

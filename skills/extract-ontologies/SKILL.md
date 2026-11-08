@@ -43,9 +43,9 @@ Turn source evidence into a reviewed semantic model before lifecycle materializa
 9. Author portable SHACL Core shapes with explicit targets, severities, and messages. Add SHACL-SPARQL only when Core cannot express a requirement and the processor dependency is declared.
 10. Build conforming and non-conforming fixtures, execute competency queries, run the validation gates, and route low-confidence or high-impact assertions to review.
 
-Read [extraction-workflow.md](references/extraction-workflow.md) before extracting from source material. Read [semantic-modeling.md](references/semantic-modeling.md) before choosing OWL axioms, profiles, graph boundaries, or SHACL constraints. Read [turtle-patterns.md](references/turtle-patterns.md) when authoring RDF artifacts. Read [standards-and-tools.md](references/standards-and-tools.md) when exact standards status, validation scope, or tool limitations matter.
+Read [extraction-workflow.md](references/extraction-workflow.md) before extracting from sources or reviewing an axiom's source attribution. Read [semantic-modeling.md](references/semantic-modeling.md) before choosing OWL axioms, profiles, graph boundaries, or SHACL constraints. Read [turtle-patterns.md](references/turtle-patterns.md) when authoring RDF artifacts. Read [standards-and-tools.md](references/standards-and-tools.md) when exact standards status, validation scope, or tool limitations matter.
 
-Read [disjunctions.md](references/disjunctions.md) when the source permits alternatives or when testing how a choice applies to values and records.
+Read [disjunctions.md](references/disjunctions.md) for branch alternatives, qualified value counts, or tests that distinguish which values and records a choice governs.
 
 ## Produce an auditable bundle
 
