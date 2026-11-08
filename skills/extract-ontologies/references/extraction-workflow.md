@@ -24,6 +24,12 @@ Write the following before modeling:
 
 Create numbered competency questions with observable answers. Prefer questions such as “Which permits expire within 30 days?” over goals such as “Represent permits.” Mark each question as `ASK`, `SELECT`, or reasoning-dependent and state the expected answer on a small fixture.
 
+A competency question defines a required graph capability. A question alone
+does not establish its answer, an instance assertion, or a strong axiom.
+When the inputs are questions only, record missing evidence separately
+from missing modeling capabilities. Preserve requested roles and scope
+in the proposal and route unsupported axioms for review.
+
 ## 2. Build the evidence ledger
 
 Use one row per candidate assertion. Keep rejected candidates so future runs do not rediscover the same ambiguity.
@@ -44,6 +50,14 @@ Use one row per candidate assertion. Keep rejected candidates so future runs do 
 | `review_note` | Reason, reviewer, and decision |
 
 Keep confidence separate from truth status. A high-confidence extraction can faithfully capture a source claim that the ontology team later rejects.
+
+Assign stable IDs to exact source spans before extracting long documents. A candidate can cite the span ID and let the renderer retrieve the exact text. The locator establishes where to inspect the claim. Check that the span supports the whole axiom. Quarantine rows with invalid evidence while retaining validated rows from the same batch. Keep the complete-source gate unresolved until every required row is supported.
+
+Keep the governing segment when a short excerpt omits the scope,
+operative version, or authority that makes the claim applicable. Cite
+separate source IDs for noncontiguous evidence and resolve each ID
+against its own source revision. A role and its endpoints can be
+unchanged in the text while a different authority makes them operative.
 
 ## 3. Run extraction passes
 
@@ -90,6 +104,17 @@ Treat linguistic cues as prompts for review, not automatic mappings.
 
 Do not infer a negative fact from silence. Do not turn examples into universal restrictions. Do not use a document field name as a domain concept without checking its intended meaning.
 
+Keep the governing subject in both the interpretation and the axiom.
+Within a rule about class A, “if it has X, it must have Y” constrains
+members of A with X. In OWL, put both A and the X restriction on the
+left of the subclass axiom. Check that the same rule does not imply Y
+from X for an unrelated subject.
+
+When the source specifies a finite set of allowed values for the
+declared scope, preserve the set in the requested logical range.
+A datatype alone permits additional values. Check exhaustiveness
+against the operative text and any explicit extension boundary.
+
 ## 6. Test and review
 
 For each competency question:
@@ -100,6 +125,28 @@ For each competency question:
 4. state whether RDFS, OWL RL, another OWL reasoner, or no inference is required;
 5. compare the result with the expected answer;
 6. link failures back to evidence or a modeling decision.
+
+For repeated extraction, record graph identity separately from question
+coverage. Compare serialization-invariant RDF graphs under the declared
+IRI policy. Report alignment, asserted axiom coverage, and inferred
+reachability as separate checks. Equal inferred answers for a scoped
+test do not establish identical asserted graphs.
+
+When each formal requirement needs its own source mapping, check the
+axioms linked to that premise against the source wording on their own.
+Keep any text that establishes scope or resolves a reference. Separate
+this check from whole-ontology reasoning. Other axioms can compensate
+for an omitted condition and mask a weaker premise translation.
+Report masking only for a concrete alternative. Name the changed
+axiom, the observation being compared, and the axioms that compensate
+for the change. Distinguish untested explanations from verified
+whole-ontology equivalence.
+Record contextual premises that warrant no axiom separately from
+premises that remain unresolved. Match the requested premise roster.
+Keep vocabulary declarations separate when the ledger covers only
+numbered requirements. When the requested ledger represents intentional
+empty rows with a null gap, keep that value and explain the scope
+decision in the review artifact.
 
 Use a review queue for every `needs-review` row and for all strong axioms. Record acceptance criteria, not just reviewer comments.
 

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Ontology-Guided Extraction"
+  short_description: "Extract document facts using an existing ontology"
+  default_prompt: "Use $extract-with-ontology to extract facts from these files against the supplied ontology, keep evidence for each fact, and create a glossary."

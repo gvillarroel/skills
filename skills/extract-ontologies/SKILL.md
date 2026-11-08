@@ -1,11 +1,17 @@
 ---
 name: extract-ontologies
-description: "Extracts, authors, and validates reviewed domain ontologies from source evidence before Semantic OKF materialization, producing competency questions, evidence ledgers, vocabulary alignments, RDF graphs, OWL 2 axioms and profiles, instance data, SHACL shapes, fixtures, SPARQL checks, and validation reports. Use when Codex must perform ontology learning, evidence-led semantic modeling, entity or relation extraction, vocabulary alignment, OWL 2 engineering, or SHACL constraint design from documents, schemas, or datasets. Do not use it to create, expand, refresh, or repair a Semantic OKF snapshot, or to consult an existing knowledge bundle."
+description: "Authors and validates reviewed domain ontologies and source-backed glossaries from documents, schemas, or datasets. Use for ontology learning, vocabulary and definition authoring, competency questions, RDF/OWL modeling, SHACL design, and evidence-led entity or relation extraction as part of ontology authoring. For applying a fixed ontology to extract instances from supplied files, use an ontology-guided extraction workflow. Do not use for Semantic OKF snapshot operations or consulting an existing knowledge bundle."
 ---
 
 # Ontology Extraction
 
 Turn source evidence into a reviewed semantic model before lifecycle materialization. Deliver approved mappings and constraints as ordinary output artifacts. For requests outside this authoring boundary, return an explicit diagnostic without importing or invoking another skill.
+
+## Choose the deliverable
+
+- For a glossary, use the [glossary workflow](references/glossary.md) to produce `glossary.md` with its evidence locators. Add `glossary.csv` when the user requests tabular output or needs a machine-readable glossary.
+- For a glossary-only request, use the glossary workflow as the complete path. The ontology scaffold and graph validation gates apply to ontology work.
+- For ontology authoring, follow the extraction workflow below. When the user also requests a glossary, use the reviewed term registry for emitted ontology terms and record the status of in-scope terms still awaiting modeling review.
 
 ## Standalone boundary
 
@@ -38,6 +44,8 @@ Turn source evidence into a reviewed semantic model before lifecycle materializa
 10. Build conforming and non-conforming fixtures, execute competency queries, run the validation gates, and route low-confidence or high-impact assertions to review.
 
 Read [extraction-workflow.md](references/extraction-workflow.md) before extracting from source material. Read [semantic-modeling.md](references/semantic-modeling.md) before choosing OWL axioms, profiles, graph boundaries, or SHACL constraints. Read [turtle-patterns.md](references/turtle-patterns.md) when authoring RDF artifacts. Read [standards-and-tools.md](references/standards-and-tools.md) when exact standards status, validation scope, or tool limitations matter.
+
+Read [disjunctions.md](references/disjunctions.md) when the source permits alternatives or when testing how a choice applies to values and records.
 
 ## Produce an auditable bundle
 

@@ -19,7 +19,18 @@
       "outputs": [
         "Evidence-led RDF/OWL vocabularies and instance data",
         "SHACL shapes and machine-readable validation reports",
-        "Markdown competency questions, evidence and scope records"
+        "Markdown competency questions, evidence and scope records",
+        "Evidence-backed Markdown and CSV glossaries"
+      ],
+      "scope": "nonvisual",
+      "sourceFidelity": null
+    },
+    {
+      "skill": "extract-with-ontology",
+      "outputs": [
+        "Ontology-guided RDF instance data and source evidence",
+        "JSON vocabulary inventories and extraction checks",
+        "Markdown review reports and Markdown or CSV glossaries"
       ],
       "scope": "nonvisual",
       "sourceFidelity": null
