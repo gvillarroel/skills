@@ -103,3 +103,27 @@ uv run --script evaluations/contracts/grade_ontology_count_scope.py evaluations/
 The research that exposed the ambiguity between existence and
 exact-one in an RDF triple projection is recorded separately.
 [Evidence attribution study](ontology-attribution-20261108.md#matched-comparison)
+
+## Premise-local cardinality rewrites
+
+The review fixture covers a safe exact-count rewrite, an equivalent
+whole ontology with changed premise attribution, mismatched qualifiers
+and guards, a count on a named individual, an impossible class in a
+consistent ontology, and required versus optional exclusive branches.
+The eight expected decisions were checked with 16/16 HermiT probes
+under OWL 2 DL. The local reasoner receipt SHA-256 is
+`f328eca8117807fdfafe0c834e18c55ea0b64555cd3e384c6399f838a8220d28`.
+[OWL 2 Direct Semantics](https://www.w3.org/TR/owl2-direct-semantics/#Inference_Problems)
+
+The original shorthand output schema passed 8/8 in one strict Luna
+run. The other run interpreted the range of IDs as one key and
+passed 3/8. The revised schema enumerates each required key. Two
+fresh strict runs of the released skill, `semantic-count-guidance-20261108-c`
+and `semantic-count-guidance-20261108-d`, both read the disjunction
+reference and passed 8/8. The grader requires the exact case and
+field sets and JSON boolean values.
+
+```powershell
+uv run --script scripts/run-pi-skill-eval.py extract-ontologies --prompt-file evaluations/pi-prompts/ontology-cardinality-rewrite.md --run-id semantic-count-guidance-replay --model github-copilot/gpt-6-luna --thinking low --mode json --strict --expect-output reviews.json
+uv run --script evaluations/contracts/grade_ontology_cardinality_rewrite.py evaluations/runs/semantic-count-guidance-replay/workspace/reviews.json
+```
