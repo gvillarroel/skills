@@ -55,6 +55,18 @@ It does not perform these checks:
 
 When the delivery requires an OWL profile or consistency claim, select a profile-aware external tool and an appropriate reasoner explicitly. Record its name, version, import closure, and reasoning mode independently from the SHACL result. These tools are optional extensions; absence of one must not block the bundled RDF and SHACL validation baseline or be hidden behind a repository dependency.
 
+For SHACL Core, distinguish RDF term identity from datatype value
+equality. The bundled loader preserves explicit integer and boolean
+lexical forms and treats plain strings as the same RDF terms as
+their explicit `xsd:string` spellings. RDFLib can still normalize
+bare numeric tokens in Turtle or N3 and whitespace-derived
+`xsd:normalizedString` and `xsd:token` literals. Use quoted, typed
+numeric forms for checks sensitive to their lexical identity.
+Verify whitespace-derived types and literal comparisons in opt-in
+SPARQL constraints independently when lexical identity affects the
+result. [RDF literal term equality](https://www.w3.org/TR/rdf11-concepts/#dfn-literal-term-equality)
+and [RDFLib literal implementation](https://github.com/RDFLib/rdflib/blob/7.6.0/rdflib/term.py).
+
 ## Security policy
 
 Treat RDF and SHACL as active inputs: parsers may dereference contexts, and SPARQL or extension features may consume excessive resources. Keep inputs local, disable import dereferencing, keep SHACL Advanced Features opt-in, and process untrusted artifacts in an operating-system sandbox. The Python wrapper is a guardrail, not a security boundary.

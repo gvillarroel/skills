@@ -15,6 +15,7 @@ import sys
 import traceback
 from dataclasses import dataclass
 from pathlib import Path
+from threading import Lock
 from typing import Any, Iterable
 
 
@@ -26,6 +27,7 @@ PINNED_VERSIONS = {"rdflib": "7.6.0", "pyshacl": "0.40.0", "owlrl": "7.6.2"}
 GRAPH_FORMATS = ("auto", "turtle", "xml", "json-ld", "nt", "n3")
 DATASET_FORMATS = frozenset({"trig", "nquads", "trix"})
 URL_RE = re.compile(r"^[A-Za-z][A-Za-z0-9+.-]*://")
+RDFLIB_PARSE_LOCK = Lock()
 
 
 class ValidationInputError(Exception):
@@ -116,11 +118,12 @@ def load_dependencies() -> dict[str, Any]:
     """Import optional validator dependencies with one actionable error."""
 
     try:
+        import rdflib
         from pyshacl import validate
         from pyshacl.errors import ValidationFailure
         from rdflib import BNode, Graph, Literal, Namespace, URIRef
         from rdflib.compare import to_canonical_graph
-        from rdflib.namespace import OWL, RDF
+        from rdflib.namespace import OWL, RDF, XSD
         from rdflib.util import guess_format
     except ImportError as exc:
         raise ValidationInputError(
@@ -133,11 +136,13 @@ def load_dependencies() -> dict[str, Any]:
         "BNode": BNode,
         "Graph": Graph,
         "Literal": Literal,
+        "rdflib": rdflib,
         "Namespace": Namespace,
         "URIRef": URIRef,
         "to_canonical_graph": to_canonical_graph,
         "OWL": OWL,
         "RDF": RDF,
+        "XSD": XSD,
         "guess_format": guess_format,
     }
 
@@ -215,6 +220,9 @@ def parse_role(
 
     graph = dependencies["Graph"]()
     parsed: list[ParsedFile] = []
+    rdflib = dependencies["rdflib"]
+    literal = dependencies["Literal"]
+    string_type = dependencies["XSD"].string
     for raw in raw_paths:
         path = local_file(raw)
         rdf_format = resolve_rdf_format(path, requested_format, dependencies["guess_format"])
@@ -222,10 +230,24 @@ def parse_role(
             guard_jsonld(path)
         current = dependencies["Graph"]()
         try:
-            with path.open("rb") as stream:
-                current.parse(file=stream, publicID=path.as_uri(), format=rdf_format)
+            with RDFLIB_PARSE_LOCK, path.open("rb") as stream:
+                normalize_literals = rdflib.NORMALIZE_LITERALS
+                rdflib.NORMALIZE_LITERALS = False
+                try:
+                    current.parse(file=stream, publicID=path.as_uri(), format=rdf_format)
+                finally:
+                    rdflib.NORMALIZE_LITERALS = normalize_literals
         except Exception as exc:
             raise ValidationInputError(f"failed to parse {role} file {path}: {exc}") from exc
+        # Simple strings and explicit xsd:string are the same RDF term.
+        equivalent = [
+            (s, p, obj) for s, p, obj in current if isinstance(obj, literal)
+            and (obj.datatype == string_type or (obj.language and obj.language != obj.language.lower()))
+        ]
+        for subject, predicate, obj in equivalent:
+            current.remove((subject, predicate, obj))
+            lang = obj.language.lower() if obj.language else None
+            current.add((subject, predicate, literal(str(obj), lang=lang, normalize=False)))
         graph += current
         parsed.append(ParsedFile(role, str(path), rdf_format, len(current)))
     return graph, parsed
