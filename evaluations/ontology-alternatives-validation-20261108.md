@@ -169,7 +169,15 @@ four consistency probes. The reasoner receipt SHA-256 is
 [OWL 2 class expression semantics](https://www.w3.org/TR/owl2-direct-semantics/#Class_Expressions)
 
 Two strict Luna review runs of the released skill passed 3/3
-decisions each. In a separate generation diagnostic on two
+decisions each. The refined fixture makes the open-world name
+semantics, the typed literals, and the shared witness in the
+guard explicit. Two further strict Luna runs,
+`semantic-borrowed-scope-explicit-a` and
+`semantic-borrowed-scope-explicit-b`, each passed 3/3 with
+byte-identical decision files. The independent formal report
+also reproduced byte for byte.
+
+In a separate generation diagnostic on two
 already used WoT and ACME cases, the baseline and three wording
 variants each passed 0/4 strict runs under the original rubric.
 The variants tested a compact rule, a worked example, and a

@@ -1,38 +1,44 @@
 # Verify the scope of three ontology rewrites
 
 Use the ontology-authoring skill. In each case compare the original
-and revised axioms under OWL 2 Direct Semantics. All terms are distinct
-unless the rules imply otherwise. Assume no other domain axioms.
+and revised axioms under OWL 2 Direct Semantics. Assume no other
+domain axioms. Use open-world semantics, under which different
+individual names may denote the same object.
 
 The whole graph contains both premises. An isolated premise contains
-only the axioms linked to it. The comparison view must preserve both.
-Treat the count as a count of distinct object values.
+only the axioms linked to it. Check equivalence in both scopes.
+A count refers to distinct object values. The condition that a value
+has a specified string means that the property has at least that
+`xsd:string` value. The condition permits other values of the property.
 
 ## Case K01
 
 - P01 states that every `links` value of a `Record` is a `Link`.
-- P02 states that each `Record` has at most one `links` value whose
-  `kind` includes the string `type`. P02 counts all values with that
-  `kind`.
-- The proposed rewrite of P02 counts only values that are a `Link`
-  and have that `kind`. The rewrite keeps P01.
+- P02 states that each `Record` has at most one `links` value with
+  the string `type` as a `kind` value.
+- The rewrite counts only `links` values that are both a `Link` and
+  have the string `type` as a `kind` value. It keeps P01.
 
 ## Case K02
 
-- P01 defines an unrelated record classification.
+- P01 states that each `Beta` is a `Peer`.
 - P02 states both that every `links` value of a `Record` is a `Link`
-  and that at most one `links` value has `kind` equal to `type`.
-- The proposed rewrite keeps the P02 all-values type axiom and counts
-  only values that are a `Link` and have that `kind`.
+  and that each `Record` has at most one `links` value with the string
+  `type` as a `kind` value.
+- The rewrite keeps P01 and the P02 all-values type axiom. It counts
+  only `links` values that are both a `Link` and have the string
+  `type` as a `kind` value.
 
 ## Case K03
 
 - P01 states that every `config` value of a `Record` is a `Descriptor`.
-- P02 states that a `Record` with a `config` value whose `mediaType`
-  includes `empty` must have an `artifactType` value.
-- The proposed rewrite additionally requires the qualifying
-  `config` value to be a `Descriptor` for the guard to activate.
-  It keeps P01.
+- P02 states that a `Record` with a `config` value that has the string
+  `empty` as a `mediaType` value must have an `artifactType` value of
+  type `xsd:string`.
+- In the rewrite, the guard applies when at least one `config` value
+  is both a `Descriptor` and has the string `empty` as a `mediaType`
+  value. The rewrite keeps the P02 requirement for `artifactType`
+  and keeps P01.
 
 Write `scope-review.json` as one JSON object. It has exactly
 the top-level keys `K01`, `K02`, and `K03`. Each has exactly
