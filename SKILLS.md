@@ -59,6 +59,8 @@ Use this file as the canonical list of skills to create, improve, or validate in
 
 ## Recent Validation Notes
 
+- `extract-ontologies` 2026-11-08. Added a regression for types borrowed from separate premises into local guards or count qualifiers. HermiT passed 10/10 formal probes and two strict Luna reviews passed 3/3 decisions each. Three experimental wording changes tied the existing 0/4 result on full generation for two disclosed cases. [Borrowed scope validation](evaluations/ontology-alternatives-validation-20261108.md#types-supplied-by-another-premise)
+
 - `extract-ontologies` 2026-11-08. Preserve the source assertion's subject wrapper and syntax-sensitive line boundaries. Two strict Luna evidence reviews passed 3/3 each. Restoring the complete OWL source assertion improved a disclosed, unchanged-reference diagnostic from 0/4 to 4/4. [Syntax-bearing evidence spans](evaluations/ontology-alternatives-validation-20261108.md#syntax-bearing-evidence-spans)
 
 - `extract-ontologies` 2026-11-08. Added an isolated cardinality rewrite review with separate whole-ontology and premise judgments. Two strict Luna runs of the released skill passed 8/8 cases each after the fixture enumerated its JSON keys. HermiT passed 16/16 independent checks. [Premise-local cardinality rewrites](evaluations/ontology-alternatives-validation-20261108.md#premise-local-cardinality-rewrites)

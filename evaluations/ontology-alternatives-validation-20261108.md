@@ -154,3 +154,30 @@ in the complete example and rejected the flattened example.
 uv run --script scripts/run-pi-skill-eval.py extract-ontologies --prompt-file evaluations/pi-prompts/ontology-evidence-boundary.md --run-id semantic-evidence-boundary-replay --model github-copilot/gpt-6-luna --thinking low --mode json --strict --expect-output evidence.json
 uv run --script evaluations/contracts/grade_ontology_evidence_boundary.py evaluations/runs/semantic-evidence-boundary-replay/workspace/evidence.json
 ```
+
+## Types supplied by another premise
+
+The borrowed-scope fixture tests a type added to the values of
+a qualified maximum and a type added to the condition of a
+required field. A separate premise makes those rewrites equivalent
+in the complete ontology. The isolated premise accepts additional
+models after the rewrite. The positive control states the
+all-values type in the same premise, so the rewrite preserves both
+scopes. HermiT passed six bidirectional entailment contrasts and
+four consistency probes. The reasoner receipt SHA-256 is
+`e6b74749bbdfb091a18e45ae16a7e6983ba8b8a180955415c09e94c359cd5705`.
+[OWL 2 class expression semantics](https://www.w3.org/TR/owl2-direct-semantics/#Class_Expressions)
+
+Two strict Luna review runs of the released skill passed 3/3
+decisions each. In a separate generation diagnostic on two
+already used WoT and ACME cases, the baseline and three wording
+variants each passed 0/4 strict runs under the original rubric.
+The variants tested a compact rule, a worked example, and a
+premise-first workflow instruction. The scope decision test
+measures review of supplied alternatives. The generation
+diagnostic shows the remaining authoring gap.
+
+```powershell
+uv run --script scripts/run-pi-skill-eval.py extract-ontologies --prompt-file evaluations/pi-prompts/ontology-borrowed-scope.md --run-id semantic-borrowed-scope-replay --model github-copilot/gpt-6-luna --thinking low --mode json --strict --expect-output scope-review.json
+uv run --script evaluations/contracts/grade_ontology_borrowed_scope.py evaluations/runs/semantic-borrowed-scope-replay/workspace/scope-review.json
+```
