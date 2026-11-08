@@ -52,6 +52,32 @@ Verify mutual entailment for the whole ontology and for each changed
 premise separately. Test a different guard or qualifier and bounds
 from independently cited premises before accepting the rewrite.
 
+When comparing supplied alternatives for one premise, record a gap if
+none preserves the source requirement. Use an empty axiom bundle when
+the premise warrants no assertion in the requested projection. If
+multiple bundles have verified equivalent meaning in that premise
+and retain the same typed vocabulary and evidence, select a stable
+representative by content. Use the bundled
+[`choose_owl_comparison_bundle.py`](../scripts/choose_owl_comparison_bundle.py)
+to sort the canonical OWL Functional Syntax axiom lines in each bundle by
+UTF-8 bytes and choose the lexicographically first resulting list. Keep the
+renderer and ordering rule fixed.
+For the same admitted bundles, changing candidate labels or display
+order leaves the selected representation unchanged. Preserve the
+original source and axioms alongside any comparison view.
+
+Give the helper one JSON object mapping each premise or review group ID
+to its admitted candidate IDs and canonical axiom lists. A group with
+zero admitted candidates is `{}` and yields `"NONE"`. A candidate with no
+assertions has the list `[]` inside its group. Complete the semantic
+and evidence checks, then write the entire input JSON in one operation
+with the canonical lines copied verbatim. The helper orders the
+admitted candidates and writes their selected IDs.
+
+```bash
+uv run --script <skill-dir>/scripts/choose_owl_comparison_bundle.py admitted-options.json --out selected-options.json
+```
+
 When a lower bound exceeds its upper bound for the same count, test
 whether the governed class is satisfiable as well as whether the
 ontology is consistent. A consistent ontology can require that class

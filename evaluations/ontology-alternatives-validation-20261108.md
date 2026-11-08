@@ -189,3 +189,37 @@ diagnostic shows the remaining authoring gap.
 uv run --script scripts/run-pi-skill-eval.py extract-ontologies --prompt-file evaluations/pi-prompts/ontology-borrowed-scope.md --run-id semantic-borrowed-scope-replay --model github-copilot/gpt-6-luna --thinking low --mode json --strict --expect-output scope-review.json
 uv run --script evaluations/contracts/grade_ontology_borrowed_scope.py evaluations/runs/semantic-borrowed-scope-replay/workspace/scope-review.json
 ```
+
+## Stable choice among admitted representations
+
+Reissuing opaque IDs changed the lexicographic ID winner between
+two equivalent bundles in a synthetic control. The resulting OWL
+and ledger bytes changed even though both outputs passed reasoning.
+The bundled chooser sorts canonical axiom lists by UTF-8 bytes
+after semantic admission. It separates an empty admitted bundle
+from an unresolved group with no admitted candidates.
+
+An independent HermiT check confirmed all 11 expected option
+dispositions in the fixture, including permitted overlap outside
+an exclusive guard, typed literal mismatches, and explicit context.
+Four unit tests exercise invariant content order, strict input,
+empty versus unresolved, and deterministic UTF-8 output. The
+formal receipt SHA-256 is
+`4fa75bece1070a233503b59148fdb45f41ff7bca95dedf368394a27d6c2a5021`.
+
+Two strict baseline Luna runs each passed 1/6 exact decisions.
+Prose guidance alone reached 4/6 and 6/6. The lower result chose
+an equivalent bundle outside the expected content ordering.
+The first helper variant produced two correct artifacts, with
+one strict failure from an ambiguous partial file edit. The
+final guide asks the agent to write the complete admitted JSON
+once. Two strict final Luna runs invoked the helper, retained all
+nine admitted bundles, passed 6/6 each, and emitted identical
+decision bytes. This fixture measures review and representation
+selection for fixed alternatives.
+
+```powershell
+uv run --script evaluations/contracts/test_ontology_comparison_bundle.py
+uv run --script scripts/run-pi-skill-eval.py extract-ontologies --prompt-file evaluations/pi-prompts/ontology-stable-option-selection.md --run-id semantic-option-stable-replay --model github-copilot/gpt-6-luna --thinking low --mode json --strict --expect-output selected-options.json
+uv run --script evaluations/contracts/grade_ontology_stable_option_selection.py evaluations/runs/semantic-option-stable-replay/workspace/selected-options.json
+```
