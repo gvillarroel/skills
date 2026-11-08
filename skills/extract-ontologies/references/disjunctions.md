@@ -43,6 +43,20 @@ of the selected path under the chosen inference policy. [OWL 2
 cardinality semantics](https://www.w3.org/TR/owl2-direct-semantics/#Class_Expressions)
 and [SHACL qualified counts](https://www.w3.org/TR/shacl/#QualifiedValueShapeConstraintComponent).
 
+For an OWL comparison view, combine equal lower and upper bounds into
+an exact count only when they govern the same class or individual,
+property, qualifying expression, and source premise. A minimum of one
+has the same meaning as an existential restriction with the same
+property and qualifier. Keep the original axioms and their evidence.
+Verify mutual entailment for the whole ontology and for each changed
+premise separately. Test a different guard or qualifier and bounds
+from independently cited premises before accepting the rewrite.
+
+When a lower bound exceeds its upper bound for the same count, test
+whether the governed class is satisfiable as well as whether the
+ontology is consistent. A consistent ontology can require that class
+to be empty. [OWL 2 cardinality and inference problems](https://www.w3.org/TR/owl2-direct-semantics/#Inference_Problems)
+
 ## Test the choice and its scope
 
 - Test each branch alone, both branches, and neither branch. Inclusive choice admits both. Exactly one rejects both. A required SHACL choice fails when the selected graph satisfies neither branch.
