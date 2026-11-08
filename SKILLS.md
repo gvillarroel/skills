@@ -59,6 +59,8 @@ Use this file as the canonical list of skills to create, improve, or validate in
 
 ## Recent Validation Notes
 
+- `extract-ontologies` 2026-11-08. Preserve the source assertion's subject wrapper and syntax-sensitive line boundaries. Two strict Luna evidence reviews passed 3/3 each. Restoring the complete OWL source assertion improved a disclosed, unchanged-reference diagnostic from 0/4 to 4/4. [Syntax-bearing evidence spans](evaluations/ontology-alternatives-validation-20261108.md#syntax-bearing-evidence-spans)
+
 - `extract-ontologies` 2026-11-08. Added an isolated cardinality rewrite review with separate whole-ontology and premise judgments. Two strict Luna runs of the released skill passed 8/8 cases each after the fixture enumerated its JSON keys. HermiT passed 16/16 independent checks. [Premise-local cardinality rewrites](evaluations/ontology-alternatives-validation-20261108.md#premise-local-cardinality-rewrites)
 
 - `extract-ontologies` 2026-11-08. The bundled SHACL loader preserves explicitly typed lexical distinctions and canonicalizes equivalent string spellings. All five supported graph formats passed the RDF-term controls. An isolated strict Luna run returned the expected two violations with the exact input graphs. [Literal validation](evaluations/rdf-literal-validation-20261108.md)

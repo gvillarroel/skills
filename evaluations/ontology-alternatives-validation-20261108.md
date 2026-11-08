@@ -127,3 +127,30 @@ field sets and JSON boolean values.
 uv run --script scripts/run-pi-skill-eval.py extract-ontologies --prompt-file evaluations/pi-prompts/ontology-cardinality-rewrite.md --run-id semantic-count-guidance-replay --model github-copilot/gpt-6-luna --thinking low --mode json --strict --expect-output reviews.json
 uv run --script evaluations/contracts/grade_ontology_cardinality_rewrite.py evaluations/runs/semantic-count-guidance-replay/workspace/reviews.json
 ```
+
+## Syntax-bearing evidence spans
+
+The OWL Primer's minimum cardinality example supplies the named
+individual in the enclosing `ClassAssertion`. In a public development
+packet, the source fragment ended before the individual. Both count
+policies failed both runs on the clipped packet. Restoring the exact
+enclosing assertion at the same coordinate gave 4/4 correct Luna
+runs and one exact pair per policy under the unchanged HermiT reference.
+Restoring only the prose cue gave 1/4 whole-and-premise passes. All
+four restored the individual minimum at its code coordinate, while
+three also asserted logical claims at coordinates the frozen rubric
+treated as contextual. These are sensitivity results on a consumed
+source. [OWL Primer cardinality examples](https://www.w3.org/TR/2012/REC-owl2-primer-20121211/#Property_Cardinality_Restrictions)
+
+The isolated review fixture covers a complete named assertion, a
+code block with syntax-sensitive comment boundaries, and a guarded
+rule offered as evidence for a global claim. Two strict Luna runs,
+`semantic-evidence-boundary-20261108-a` and
+`semantic-evidence-boundary-20261108-b`, read the revised workflow
+and passed 3/3 each. A Rust compiler confirmed the three discriminants
+in the complete example and rejected the flattened example.
+
+```powershell
+uv run --script scripts/run-pi-skill-eval.py extract-ontologies --prompt-file evaluations/pi-prompts/ontology-evidence-boundary.md --run-id semantic-evidence-boundary-replay --model github-copilot/gpt-6-luna --thinking low --mode json --strict --expect-output evidence.json
+uv run --script evaluations/contracts/grade_ontology_evidence_boundary.py evaluations/runs/semantic-evidence-boundary-replay/workspace/evidence.json
+```

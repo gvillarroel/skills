@@ -59,6 +59,14 @@ separate source IDs for noncontiguous evidence and resolve each ID
 against its own source revision. A role and its endpoints can be
 unchanged in the text while a different authority makes them operative.
 
+Keep a code example's complete assertion when the wrapper supplies
+its subject or scope. A bare OWL restriction describes a class.
+Its enclosing `ClassAssertion` identifies the named individual that
+the restriction applies to. Preserve syntax-sensitive line breaks,
+including the end of each line comment. If an assertion depends on
+separate prose and code spans, record both locators and keep their
+roles clear.
+
 ## 3. Run extraction passes
 
 Process the corpus repeatedly rather than trying to model everything in one pass:
