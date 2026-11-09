@@ -1,5 +1,10 @@
 # Artifacts and mechanical checks
 
+## Contents
+
+- [RDF and evidence](#rdf-and-evidence)
+- [Review output](#review-output)
+
 Keep a separate instance graph, evidence ledger, and review queue.
 Keep the original ontology available by version and digest. Record
 the effective local import closure and the ontology format used.
@@ -86,9 +91,17 @@ and held assertions, unmapped terms or relationships, identity
 ambiguities, conflicting claims, and missing or unreadable evidence.
 Include source locators and enough surrounding context for a reviewer to
 decide each item. Report both the checks performed and their scope.
-For an unresolved alternative, group its candidate assertions under a
-shared source locator and record whether the choice rule is known.
-For a validation finding, report the targeted record, shape and constraint
-component, affected path or value when present, and expected versus
-observed condition. A source can establish a fact that violates a shape.
+For an unresolved alternative, group its candidate assertions and
+source locators. State what the evidence establishes and what would
+resolve the decision. If the source supports a choice that the
+supplied model cannot express, identify the missing mapping. If the
+source leaves the choice open, ask a concrete question such as
+whether both branches can hold for this record. A contextual passage
+that contributes no instance claim needs no decision.
+
+For a validation item, report the targeted record, shape and constraint
+component, and affected path or value when present. State the expected
+condition and the observed result when the check ran. If a check is
+blocked, identify the missing input or unsupported construct and the
+specific observation it prevents. A source can establish a fact that violates a shape.
 Keep the cited fact and the validation result in their respective layers.

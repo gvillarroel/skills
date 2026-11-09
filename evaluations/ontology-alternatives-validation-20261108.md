@@ -260,3 +260,33 @@ uv run --script evaluations/contracts/test_ontology_boolean_comparison.py
 uv run --script scripts/run-pi-skill-eval.py extract-ontologies --prompt-file evaluations/pi-prompts/ontology-boolean-comparison-view.md --run-id semantic-boolean-replay --model github-copilot/gpt-6-luna --thinking low --mode json --strict --expect-output left-source.json --expect-output right-source.json --expect-output shifted-source.json --expect-output left-view.json --expect-output right-view.json --expect-output shifted-view.json
 uv run --script evaluations/contracts/grade_ontology_boolean_comparison_view.py evaluations/runs/semantic-boolean-replay/workspace
 ```
+
+## Actionable extraction review
+
+The guided-extraction reference distinguishes an unresolved source
+interpretation, a supported claim that the model cannot express,
+an observed constraint finding, a blocked check, and contextual
+text. An open alternative retains its source and the question that
+would resolve it. A check records its scope, expected observation,
+and observed result or blocker.
+
+A new isolated review case covers five independently scored source
+rows. It includes a known disjunction with a missing mapping, an
+overlap ambiguity, a supported measurement that violates SHACL, a
+timestamp check without its required input, and context. Local
+pySHACL verified the measurement and boundary controls. The guided
+candidate passed the strict Pi event and output gates and scored
+20/20 on the blinded rubric. The baseline artifact scored 18/20
+and failed the strict tool gate. Its report treated a completed
+finding as blocked and conflated the measured fact with the finding.
+The candidate read the revised reference. The baseline did not
+read its counterpart. There was one strict isolated Luna slot per
+arm, so this contrast does not isolate the effect of wording.
+
+The separate ontology-authoring wording candidate tied its baseline
+at 13/16. Both selected an inclusive interpretation where the
+source left overlap unresolved. That candidate remained in
+development. All four runtime invocations used
+`github-copilot/gpt-6-luna`. The frozen blinded qualification
+receipt SHA-256 is
+`8d89e92e0fbede58a84e89f2be123708c2580bbd1f3625928ae6d505bd270b7b`.
