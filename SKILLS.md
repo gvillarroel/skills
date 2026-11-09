@@ -59,6 +59,8 @@ Use this file as the canonical list of skills to create, improve, or validate in
 
 ## Recent Validation Notes
 
+- `extract-with-ontology`: Added a source-bound keyword index for governed units on 2026-11-09. Independent GPT-6 Luna low runs selected all 34 SemVer and 16 HTTP assertions with exact witnesses and reproduced all five edition graphs. The released helper matched 114 prototype spans, two isolated runtime checks passed, and a native Harbor oracle verifier smoke returned 1.0. [Keyword witness results](evaluations/ontology-keyword-witnesses-20261109.md).
+
 - `extract-ontologies` and `extract-with-ontology` 2026-11-08. Use a concrete case whose expected outcomes distinguish competing decisions. Keep scope, focus, evidence, and pending verification separate. Two strict isolated Luna runs per skill passed five development cases each. The two fixed-model runs produced the same seven-triple graph and exact source quotes. The OWL overlap and permit glossary regressions passed. [Controls, iterations, and reproduction](evaluations/ontology-review-witnesses-20261108.md)
 
 - `extract-ontologies` 2026-11-08. Added a version-pinned reuse planner for approved OWL premise ledgers and reviewed authority dependencies. Eight repository tests, 41/41 independent decision checks, nine CLI boundary controls and two strict isolated Luna runs passed. Experimental public authoring reached 6/8 with the approved prior interpretation, with 1/4 exact raw pairs and 2/4 in a certified comparison view. [Reuse validation and scope](evaluations/ontology-incremental-reuse-20261108.md)

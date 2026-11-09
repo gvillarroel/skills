@@ -25,6 +25,8 @@ An ontology alone is enough for its vocabulary glossary.
    exact source units and retain the governing context for negation, dates,
    qualifiers, table headers, and references across passages. Apply the
    mapping and identity rules in [mapping.md](references/mapping.md).
+   If the vocabulary depends on explicit source keywords, use
+   [keyword witnesses](references/keyword-witnesses.md) to bind exact matches.
 4. Emit supported instance assertions under the supplied vocabulary.
    Keep candidates with unresolved mappings, conflicts, missing evidence,
    and unreadable inputs visible for review. Preserve unresolved
