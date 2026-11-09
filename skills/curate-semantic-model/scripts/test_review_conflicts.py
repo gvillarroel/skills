@@ -452,6 +452,8 @@ class CliTests(unittest.TestCase):
         text = markdown.read_text(encoding="utf-8")
         for key in ("claim:A", "claim:B", "Original evidence A", "Original evidence B"):
             self.assertIn(key, text)
+        self.assertIn("Which assertion should govern in the shared scope", text)
+        self.assertIn("opposite_polarities", text)
         self.assertEqual(json.loads(report.read_text())["findings"][0]["status"], "open")
 
     def test_slash_check_id_cli_reports_a_grounded_case_without_traceback(self):
@@ -502,26 +504,65 @@ class CliTests(unittest.TestCase):
         self.contract.write_text(json.dumps(self.contract_data), encoding="utf-8")
         self.snapshots[self.contract] = self.contract.read_bytes()
         report = self.root / "competency-review.json"
-        self.run_cli(*self.scan_args(report, claims=False), expected=1)
+        markdown = self.root / "competency-review.md"
+        self.run_cli(*self.scan_args(report, markdown, claims=False), expected=1)
         result = json.loads(report.read_text())
         self.assertEqual(result["validation"]["contract_status"], "invalid")
         self.assertTrue(result["findings"])
+        text = markdown.read_text(encoding="utf-8")
+        self.assertIn("Should the graph change to meet the rule", text)
+        for value in ('"expected"', '"actual"', "expected-population", "Original evidence A"):
+            self.assertIn(value, text)
 
     def test_no_findings_or_scope_differences_only_exit_zero(self):
-        self.run_cli(*self.scan_args(self.root / "none.json", claims=False), expected=0)
+        empty_md = self.root / "none.md"
+        self.run_cli(*self.scan_args(self.root / "none.json", empty_md, claims=False), expected=0)
+        self.assertIn("No cases were found by the implemented checks", empty_md.read_text(encoding="utf-8"))
         claims = payload()
         claims["assertions"][1]["scope"]["context"] = "elsewhere"
         self.claims.write_text(json.dumps(claims), encoding="utf-8")
         self.snapshots[self.claims] = self.claims.read_bytes()
-        self.run_cli(*self.scan_args(self.root / "scope.json"), expected=0)
+        scope_md = self.root / "scope.md"
+        self.run_cli(*self.scan_args(self.root / "scope.json", scope_md), expected=0)
+        text = scope_md.read_text(encoding="utf-8")
+        self.assertIn("Keep both assertions in their documented scopes", text)
+        self.assertIn("fixture#A", text)
+        self.assertIn("fixture#B", text)
+        self.assertNotIn("**Options**", text)
+
+    def test_incomplete_scan_markdown_surfaces_blocker_without_empty_success(self):
+        self.model_data["nodes"][0]["type"] = "UnknownType"
+        self.write(self.model.name, self.model_data)
+        self.snapshots[self.model] = self.model.read_bytes()
+        report, markdown = self.root / "blocked.json", self.root / "blocked.md"
+        self.run_cli(*self.scan_args(report, markdown), expected=2)
+        result = json.loads(report.read_text(encoding="utf-8"))
+        self.assertEqual(result["scan_status"], "incomplete")
+        text = markdown.read_text(encoding="utf-8")
+        self.assertIn("## Scan blocked", text)
+        for issue in result["validation"]["errors"]:
+            self.assertIn(issue["code"], text)
+            self.assertIn(issue["path"], text)
+        self.assertNotIn("No cases were found", text)
 
     def test_decision_exit_one_not_resolved_and_inputs_immutable(self):
         review = helper.scan(self.model_data, self.contract_data, payload())
-        review_path, decisions = self.write("review.json", review), self.write("decisions.json", decision_input(review))
-        self.snapshots.update({p: p.read_bytes() for p in (review_path, decisions)})
-        output = self.root / "decision-record.json"
-        self.run_cli("decide", "--review", review_path, "--decisions", decisions, "--report", output, expected=1)
-        self.assertEqual(json.loads(output.read_text())["findings"][0]["status"], "decision_recorded_pending_validation")
+        review_path = self.write("review.json", review)
+        self.snapshots[review_path] = review_path.read_bytes()
+        for choice, state, guidance in (
+            ("prefer_assertion", "decision_recorded_pending_validation", "Validate the candidate against the displayed rule"),
+            ("request_evidence", "deferred", "Keep the alternatives pending until the requested evidence is available"),
+        ):
+            with self.subTest(choice=choice):
+                decision = self.write(choice + ".json", decision_input(review, choice))
+                self.snapshots[decision] = decision.read_bytes()
+                output, markdown = self.root / (choice + "-record.json"), self.root / (choice + ".md")
+                self.run_cli("decide", "--review", review_path, "--decisions", decision, "--report", output, "--markdown", markdown, expected=1)
+                self.assertEqual(json.loads(output.read_text(encoding="utf-8"))["findings"][0]["status"], state)
+                text = markdown.read_text(encoding="utf-8")
+                self.assertIn(guidance, text)
+                self.assertIn("**Recorded decision**", text)
+                self.assertNotIn("**Options**", text)
 
     def test_existing_output_preserved(self):
         output = self.root / "existing.json"

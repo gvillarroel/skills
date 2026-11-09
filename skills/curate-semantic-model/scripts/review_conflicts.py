@@ -28,6 +28,11 @@ OPTIONS = {
     "request_evidence": "Request evidence or scope information before deciding.",
     "defer": "Leave pending and preserve the alternatives without resolving them automatically.",
 }
+QUESTIONS = {
+    "confirmed_conflict": "Which assertion should govern in the shared scope, or what evidence warrants a correction?",
+    "possible_conflict": "What evidence would establish whether these assertions apply to the same subject and scope?",
+    "constraint_conflict": "Should the graph change to meet the rule, or does the evidence warrant revising the rule?",
+}
 
 
 def digest(value):
@@ -283,7 +288,16 @@ def combine_for_review(model, addition):
 
 
 def render_markdown(review):
-    lines = ["# Conflicts for review", "", "Scan status: " + review["scan_status"], "", "Alternatives are preserved until a decision is recorded. A recorded choice still requires validation of its application.", ""]
+    lines = ["# Conflicts for review", "", "Scan status " + review["scan_status"], ""]
+    if review["scan_status"] == "incomplete":
+        blockers = [
+            {key: issue[key] for key in ("code", "path", "message")}
+            for issue in review["validation"]["errors"]
+        ]
+        lines += ["## Scan blocked", "", review["message"], "", "Correct the input findings below and rerun the scan.", ""]
+        lines += ["```json", json.dumps(blockers, ensure_ascii=False, indent=2), "```", ""]
+        return "\n".join(lines)
+
     lines += ["Interpretation policy: Different positive values can coexist when a predicate is not declared functional. Unknown or absent values are not negations.", ""]
     unknowns = [warning for warning in review.get("warnings", []) if warning.get("code") == "UNKNOWN_VALUE_NOT_NEGATION"]
     if unknowns:
@@ -292,14 +306,27 @@ def render_markdown(review):
             lines += ["- `UNKNOWN_VALUE_NOT_NEGATION` — assertion " + json.dumps(warning["assertion_id"], ensure_ascii=False) + ": its null value is unknown, not evidence for negation."]
         lines += [""]
     for item in review["findings"]:
-        lines += ["## " + item["id"], "", "Classification: " + item["classification"] + "; status: " + item["status"], "", item["explanation"], ""]
+        lines += ["## " + item["id"], "", "Classification " + item["classification"], "", "Status " + item["status"], "", item["explanation"], ""]
+        lines += ["**Governing rule**", "", "```json", json.dumps(item["rule"], ensure_ascii=False, indent=2), "```", ""]
         for index, assertion in enumerate(item["assertions"], 1):
             lines += [f"**Assertion {index}: {assertion['id']}**", "", "```json", json.dumps(assertion["statement"], ensure_ascii=False, indent=2), "```", ""]
             for evidence in assertion["evidence"]:
                 lines += ["Source: " + evidence["source_id"] + " · " + evidence["locator"], "", "> " + evidence["original_excerpt"].replace("\n", "\n> "), ""]
-        lines += ["**Options**", ""] + ["- `" + option["choice"] + "`: " + option["description"] for option in item["resolution_options"]] + [""]
         if item["scope_notes"]:
-            lines += ["Scope distinctions to review: " + ", ".join(item["scope_notes"]), ""]
+            lines += ["**Scope or witness details**", "", ", ".join(item["scope_notes"]), ""]
+        if item["status"] == "open":
+            question = QUESTIONS.get(item["classification"], "Which option is supported by the evidence and governing rule?")
+            lines += ["**Decision question**", "", question, ""]
+            lines += ["**Options**", ""] + ["- `" + option["choice"] + "` — " + option["description"] for option in item["resolution_options"]] + [""]
+        elif item["status"] == "scope_difference":
+            lines += ["Keep both assertions in their documented scopes. No decision is required.", ""]
+        elif item["status"] == "decision_recorded_pending_validation":
+            lines += ["**Validation needed**", "", "Validate the candidate against the displayed rule, rerun the competency checks, and rescan this conflict. Confirm that the candidate implements the recorded choice and preserves the evidence.", ""]
+        elif item["status"] == "deferred" and item["resolution"]:
+            if item["resolution"]["choice"] == "request_evidence":
+                lines += ["Keep the alternatives pending until the requested evidence is available.", ""]
+            else:
+                lines += ["Keep the alternatives pending and revisit the recorded reason for deferral before choosing.", ""]
         if item["resolution"]:
             lines += ["**Recorded decision**", "", "```json", json.dumps(item["resolution"], ensure_ascii=False, indent=2), "```", ""]
     if not review["findings"]:

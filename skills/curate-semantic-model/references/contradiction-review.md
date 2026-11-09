@@ -87,10 +87,13 @@ Identifiers remain exact even when they contain slashes or are full IRIs.
 A missing contract-required relation review remains an open constraint case.
 
 Add the semantic consequences for questions, selections, required cases, and
-coverage. The helper does not calculate every downstream impact. Ask a concrete
-question, such as: "Do these conditions describe the same version? If so, which
-assertion should govern, and why?" Group a large review for readability without
-merging conflicts that have different scopes.
+coverage. Ask whether the assertions share a scope when its boundary is
+uncertain. When they conflict in a shared scope, ask which assertion should
+govern and what evidence would justify changing it. When a graph constraint
+fails, show the governing rule and the expected and observed result when
+available. Keep established scope differences informational and keep blocked
+scans distinct from completed scans with no findings. Group a large review for
+readability while keeping conflicts in different scopes separate.
 
 ## Record an explicit choice
 

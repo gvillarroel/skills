@@ -60,6 +60,7 @@ Use this file as the canonical list of skills to create, improve, or validate in
 ## Recent Validation Notes
 
 - `curate-semantic-model` added deterministic comparison for reviewed document versions on 2026-11-09. Four strict isolated GPT-6 Luna runs produced byte-identical results within each mode. The compiler rejects stale class identity bindings and lossy decimal values. [Document comparison validation](evaluations/ontology-document-comparison-20261109.md).
+- `curate-semantic-model` clarified contradiction review cards on 2026-11-09. The Markdown shows the governing rule and distinguishes open choices, established scope differences, recorded choices awaiting validation, and blocked scans. The 187-test suite passes. Two strict isolated GPT-6 Luna low runs cover an open conflict and an invalid input. Both reproduce the reviewed Markdown and preserve the previous JSON bytes and exit codes for the same inputs.
 
 - `extract-ontologies` added a compact SHACL Core selector for zero or one reusable branch on 2026-11-09. The six-branch contract passed all 66 checks and used 34 selector triples, compared with 122 for the published reference. [Optional choice evaluation](evaluations/ontology-alternatives-validation-20261108.md#optional-choices-over-reusable-shacl-branches).
 
