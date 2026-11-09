@@ -1,6 +1,6 @@
 ---
 name: curate-semantic-model
-description: "Minimize semantic models while preserving sources and competency answers; model taxonomies and ontologies, validate typed additions, expose contradictions for user resolution, and compare candidate ontologies by case coverage and explicit gaps. Use for concept unification or maintained typed knowledge, not an ordinary text summary without a reusable model."
+description: "Minimize semantic models while preserving sources and competency answers; model taxonomies and ontologies, validate typed additions, expose contradictions for user resolution, and compare reviewed document versions and candidate ontologies by explicit evidence. Use for concept unification or maintained typed knowledge, not an ordinary text summary without a reusable model."
 ---
 
 # Curate a minimal semantic model
@@ -11,6 +11,10 @@ with typed records; add facets, hierarchy, or axioms only when they provide a
 needed capability. Compare parsimony only among models that meet these duties.
 
 ## 1. Select the needed capabilities
+
+When the user supplies two document versions and reviewed observations or typed
+inventories, use [document-versions.md](references/document-versions.md) for
+deterministic comparison and exact line evidence.
 
 - Use this skill's self-contained JSON workflow for source inventory, typed
   modeling, conservative reduction, conflict review, and coverage reporting.

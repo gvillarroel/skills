@@ -15,6 +15,7 @@ import math
 import os
 import sys
 from collections import defaultdict, deque
+from decimal import Decimal, InvalidOperation
 from pathlib import Path
 
 VERSION = "1.0.1"
@@ -39,7 +40,7 @@ def require(condition, message, path="/", code="INVALID_CONTRACT", actual=None):
         raise EngineError(code, message, path, actual)
 
 
-def read_json(filename):
+def parse_json_text(text, filename, *, exact_numbers=False):
     def unique(pairs):
         out = {}
         for key, value in pairs:
@@ -49,8 +50,21 @@ def read_json(filename):
         return out
     def invalid(value):
         raise EngineError("INVALID_JSON_NUMBER", "Non-finite JSON number", actual=value)
+    def exact_float(token):
+        value = float(token)
+        if not math.isfinite(value):
+            raise EngineError("INVALID_JSON_NUMBER", "Non-finite JSON number", str(filename), token)
+        try:
+            if Decimal(token) != Decimal(str(value)):
+                raise EngineError("JSON_NUMBER_PRECISION_LOSS",
+                                  "JSON number cannot be represented without decimal precision loss",
+                                  str(filename), token)
+        except InvalidOperation as exc:
+            raise EngineError("INVALID_JSON_NUMBER", "Invalid JSON number", str(filename), token) from exc
+        return value
     try:
-        value = json.loads(Path(filename).read_text(encoding="utf-8-sig"), object_pairs_hook=unique, parse_constant=invalid)
+        options = {"parse_float": exact_float} if exact_numbers else {}
+        value = json.loads(text, object_pairs_hook=unique, parse_constant=invalid, **options)
         # Also rejects exponents that overflow to infinity.
         json.dumps(value, allow_nan=False)
         return value
@@ -58,6 +72,14 @@ def read_json(filename):
         raise
     except (OSError, ValueError, TypeError) as exc:
         raise EngineError("INPUT_ERROR", str(exc), str(filename)) from exc
+
+
+def read_json(filename, *, exact_numbers=False):
+    try:
+        text = Path(filename).read_text(encoding="utf-8-sig")
+    except (OSError, ValueError, TypeError) as exc:
+        raise EngineError("INPUT_ERROR", str(exc), str(filename)) from exc
+    return parse_json_text(text, filename, exact_numbers=exact_numbers)
 
 
 def nonempty(value):
@@ -466,16 +488,16 @@ def reduce_model(model, contract):
     return (candidate if final["contract_status"] == "valid" else None), final
 
 
-def write_new(filename, value, forbidden):
+def write_new(filename, value, forbidden, *, sort_keys=False):
     output = Path(filename).resolve()
     require(not aliases_input(output, forbidden), "An output cannot overwrite an input", str(output), "INPUT_OVERWRITE_FORBIDDEN")
     try:
-        serialized = json.dumps(value, ensure_ascii=False, indent=2, allow_nan=False) + "\n"
+        serialized = (json.dumps(value, ensure_ascii=False, indent=2, allow_nan=False, sort_keys=sort_keys) + "\n").encode("utf-8")
     except (TypeError, ValueError, OverflowError) as exc:
         raise EngineError("OUTPUT_SERIALIZATION_ERROR", str(exc), str(output)) from exc
     try:
         output.parent.mkdir(parents=True, exist_ok=True)
-        with output.open("x", encoding="utf-8", newline="\n") as stream:
+        with output.open("xb") as stream:
             stream.write(serialized)
     except OSError as exc:
         raise EngineError("OUTPUT_ERROR", str(exc), str(output)) from exc
