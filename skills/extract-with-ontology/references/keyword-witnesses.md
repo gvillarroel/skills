@@ -9,6 +9,14 @@ whole unit when the local context leaves that unclear. An index match
 only locates a phrase. The source role determines whether it supports an
 assertion, a quotation, an example, or a proposal.
 
+Read each supplied rule description as a subject, action and conditions.
+The description can state an action in affirmative form while the source
+forbids it. Select an exact MUST NOT or SHOULD NOT that governs that
+action and record the corresponding negative modality. Use a missing
+witness only when no listed token governs the action. If several
+occurrences share the same modal, verify the subject and condition for
+each before accepting or changing the selected witness.
+
 Run `uv run --script SKILL/scripts/index_source_keywords.py --source source.txt --plan plan.json --output witnesses.json`.
 Replace SKILL with this skill's path. The plan contains the exact
 `source_sha256`, an array of `keywords` such as `["MUST NOT", "MUST", "MAY"]`,

@@ -70,3 +70,31 @@ uv run --script scripts/run-pi-skill-eval.py extract-with-ontology --prompt-file
 uv run --script scripts/validate-skills.py
 uv run --script scripts/check-repo-payload.py
 ~~~
+
+
+## Rewrapped-source witness review
+
+Two independent Luna trials used the same SemVer sentences with CRLF
+and different line wrapping. Their exact source positions were rebuilt.
+A single workspace-root input and bare token IDs passed strict custody
+in both trials. Both recovered all 34 expected edges, with 33 reviewed
+witnesses each. One trial added an unsupported metadata edge.
+
+A local recheck selected 17 and 19 decisions with a neighboring
+occurrence of the same modal or a reused witness. The first review
+wording held a valid prohibition and finished at 33/34 in each trial.
+A generic explanation in the isolated skill reference also finished
+at 33/34. The final reference explicitly accepts a governing
+MUST NOT or SHOULD NOT for a rule description phrased as an action.
+Two isolated Luna trials read the final reference and rechecked the
+same decision sets without the polarity wording in the task prompt.
+Both finished with 34/34 edges, 34/34 reviewed witnesses, no extra
+edges, and identical graph hashes across the three editions.
+
+In an RFC 9110 transfer probe, the final reference preserved four
+correct witnesses, repaired four swaps between client and origin
+server modals, and rejected an unrelated HEAD witness. The prior
+review prompt also passed all nine controls. These probes test
+local witness review under a fixed vocabulary. They do not measure
+the reproducibility of free-text ontology extraction.
+[RFC 9110](https://www.rfc-editor.org/rfc/rfc9110.txt)

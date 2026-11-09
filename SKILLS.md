@@ -59,6 +59,8 @@ Use this file as the canonical list of skills to create, improve, or validate in
 
 ## Recent Validation Notes
 
+- `extract-with-ontology`: Clarified negative modal evidence on 2026-11-09. Two isolated GPT-6 Luna low rechecks recovered 34/34 exact witnesses after SemVer line wrapping, with no extra edges. The final reference also passed nine RFC 9110 controls. [Rewrapped-source results](evaluations/ontology-keyword-witnesses-20261109.md#rewrapped-source-witness-review).
+
 - `extract-with-ontology`: Added a source-bound keyword index for governed units on 2026-11-09. Independent GPT-6 Luna low runs selected all 34 SemVer and 16 HTTP assertions with exact witnesses and reproduced all five edition graphs. The released helper matched 114 prototype spans, two isolated runtime checks passed, and a native Harbor oracle verifier smoke returned 1.0. [Keyword witness results](evaluations/ontology-keyword-witnesses-20261109.md).
 
 - `extract-ontologies` and `extract-with-ontology` 2026-11-08. Use a concrete case whose expected outcomes distinguish competing decisions. Keep scope, focus, evidence, and pending verification separate. Two strict isolated Luna runs per skill passed five development cases each. The two fixed-model runs produced the same seven-triple graph and exact source quotes. The OWL overlap and permit glossary regressions passed. [Controls, iterations, and reproduction](evaluations/ontology-review-witnesses-20261108.md)
