@@ -223,3 +223,40 @@ uv run --script evaluations/contracts/test_ontology_comparison_bundle.py
 uv run --script scripts/run-pi-skill-eval.py extract-ontologies --prompt-file evaluations/pi-prompts/ontology-stable-option-selection.md --run-id semantic-option-stable-replay --model github-copilot/gpt-6-luna --thinking low --mode json --strict --expect-output selected-options.json
 uv run --script evaluations/contracts/grade_ontology_stable_option_selection.py evaluations/runs/semantic-option-stable-replay/workspace/selected-options.json
 ```
+
+## Premise-local Boolean comparison views
+
+The standalone utility builds a bounded reduced decision form
+from class implications, equivalences and exclusions within each
+premise. It treats OWL restrictions as Boolean atoms and keeps
+unresolved rows and unsupported axioms in the source order.
+Use the output as a proposed comparison ledger. Verify the
+whole ontology and each premise against the original with an
+independent OWL 2 DL reasoner. [Bryant's reduced decision graphs](https://doi.org/10.1184/r1/6622400.v1)
+
+Nine executable controls passed, including all 256 three-variable
+truth tables. In a separate artifact fixture, seven HermiT checks
+confirmed valid equivalence and caught a source attribution shift
+that preserved whole-ontology meaning. The independent proof
+receipt SHA-256 is
+`01dee88d2a67ccd24558ffd790983fcfab37af154f5f93924204b8bbb95097d2`.
+
+On ten distinct public development sources, HermiT accepted
+30/30 changed comparison views of correct outputs. The raw exact
+pair counts were 2/10 for the separate-records arm and 4/10 for
+both grouped selectors. The independently verified comparison
+counts were 4/10 and 6/10. The released script matched the
+prototype's ledger content for all 60 scored artifacts.
+This measures representation stability on already correct graphs.
+
+Two final strict Luna runs of the standalone skill passed all six
+artifact checks. Each invoked the bundled script for all three
+ledgers. The equivalent pair produced identical comparison
+files, and the attribution-shifted input retained a different
+file. Both runs preserved the three raw input ledgers.
+
+```powershell
+uv run --script evaluations/contracts/test_ontology_boolean_comparison.py
+uv run --script scripts/run-pi-skill-eval.py extract-ontologies --prompt-file evaluations/pi-prompts/ontology-boolean-comparison-view.md --run-id semantic-boolean-replay --model github-copilot/gpt-6-luna --thinking low --mode json --strict --expect-output left-source.json --expect-output right-source.json --expect-output shifted-source.json --expect-output left-view.json --expect-output right-view.json --expect-output shifted-view.json
+uv run --script evaluations/contracts/grade_ontology_boolean_comparison_view.py evaluations/runs/semantic-boolean-replay/workspace
+```

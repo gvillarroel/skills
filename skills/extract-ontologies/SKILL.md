@@ -45,7 +45,7 @@ Turn source evidence into a reviewed semantic model before lifecycle materializa
 
 Read [extraction-workflow.md](references/extraction-workflow.md) before extracting from sources or reviewing an axiom's source attribution. Read [semantic-modeling.md](references/semantic-modeling.md) before choosing OWL axioms, profiles, graph boundaries, or SHACL constraints. Read [turtle-patterns.md](references/turtle-patterns.md) when authoring RDF artifacts. Read [standards-and-tools.md](references/standards-and-tools.md) when exact standards status, validation scope, or tool limitations matter.
 
-Read [disjunctions.md](references/disjunctions.md) for branch alternatives, qualified value counts, or tests that distinguish which values and records a choice governs.
+Read [disjunctions.md](references/disjunctions.md) for branch alternatives, qualified value counts, tests of their scope, and reproducible OWL comparison views.
 
 ## Produce an auditable bundle
 

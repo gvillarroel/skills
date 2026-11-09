@@ -1,5 +1,13 @@
 # Model and verify disjunctions
 
+## Contents
+
+- [Establish what the source allows](#establish-what-the-source-allows)
+- [Place the choice at the right level](#place-the-choice-at-the-right-level)
+- [Count the intended values](#count-the-intended-values)
+- [Normalize Boolean forms within a premise](#normalize-boolean-forms-within-a-premise)
+- [Test the choice and its scope](#test-the-choice-and-its-scope)
+
 ## Establish what the source allows
 
 Record the governing subject, branch conditions, and evidence for inclusion or exclusion. Keep competing interpretations of ambiguous wording as separate unresolved candidates in the evidence ledger. A union axiom asserts that the domain admits the alternatives, so emit it only when the source supports that reading.
@@ -77,6 +85,27 @@ admitted candidates and writes their selected IDs.
 ```bash
 uv run --script <skill-dir>/scripts/choose_owl_comparison_bundle.py admitted-options.json --out selected-options.json
 ```
+
+## Normalize Boolean forms within a premise
+
+When accepted snapshots use different but equivalent Boolean class
+axioms, use [`normalize_owl_comparison.py`](../scripts/normalize_owl_comparison.py)
+to propose a comparison ledger. It treats class restrictions as atomic
+expressions and uses a fixed decision-variable order within each
+premise. It can combine subclass implications, class equivalences and
+class exclusions. It preserves other axiom types, unresolved premises,
+and bundles outside its supported bounds.
+
+```bash
+uv run --script <skill-dir>/scripts/normalize_owl_comparison.py --ledger ledger.json --comparison-view comparison-ledger.json
+```
+
+Retain the source ledger and asserted ontology. For each rewritten
+premise, compare the local axioms in both directions with an independent
+OWL 2 DL reasoner. Also verify whole-ontology equivalence, consistency,
+typed signature, and source ownership before using the proposed view
+to compare snapshots. The Boolean helper constructs the proposal.
+Keep the source representation when any verification is unresolved.
 
 When a lower bound exceeds its upper bound for the same count, test
 whether the governed class is satisfiable as well as whether the
