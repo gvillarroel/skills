@@ -59,6 +59,8 @@ Use this file as the canonical list of skills to create, improve, or validate in
 
 ## Recent Validation Notes
 
+- `curate-semantic-model` 2026-11-08. Added an optional bounded Draft 7 validation graph checker for reference relocation and structurally equivalent choices. Eight repository tests, eight independent focused controls, 20 recursive comparison pairs, and two strict isolated Luna runs passed. GitHub Workflow #4145 produced identical validation graph hashes. [Schema graph review and reproduction](evaluations/schema-validation-graph-review-20261108.md#released-draft-7-graph-check)
+
 - `extract-ontologies` 2026-11-08. Review a complete disjunction with single-branch and overlap witnesses. For an unresolved policy, show the expected outcome under each interpretation and report observations only for executed checks. The final wording passed 16/16 and 12/12 in two strict isolated Luna development cases. [Overlap review qualification](evaluations/ontology-alternatives-validation-20261108.md#complete-choice-and-overlap-review)
 
 - `extract-ontologies` 2026-11-08. Normalized direct intersections of compatible integer lower and upper bounds in comparison ledgers. Eleven repository tests, 34 HermiT controls, and two strict isolated Luna runs passed. Verified comparison repeats on four prospective public sources improved from 2/4 to 3/4 in the frame arm. [Integer interval validation](evaluations/ontology-alternatives-validation-20261108.md#integer-interval-comparison)

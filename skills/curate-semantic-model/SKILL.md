@@ -163,6 +163,11 @@ to ignore required cases or unresolved contradictions. Test a composition as
 a new candidate; do not add coverage percentages. Compare progress only for
 the same frozen suite, and let the user decide which residual gaps to accept.
 
+For JSON Schema version reviews, read
+[schema-validation-review.md](references/schema-validation-review.md)
+to check Draft 7 graph equivalence and record concrete acceptance
+differences across the original schemas.
+
 ## 7. Verify and deliver
 
 Exercise meaningful positive and invalid cases for important rules. First
