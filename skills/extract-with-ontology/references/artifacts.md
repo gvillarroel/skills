@@ -92,16 +92,35 @@ ambiguities, conflicting claims, and missing or unreadable evidence.
 Include source locators and enough surrounding context for a reviewer to
 decide each item. Report both the checks performed and their scope.
 For an unresolved alternative, group its candidate assertions and
-source locators. State what the evidence establishes and what would
-resolve the decision. If the source supports a choice that the
-supplied model cannot express, identify the missing mapping. If the
-source leaves the choice open, ask a concrete question such as
-whether both branches can hold for this record. A contextual passage
-that contributes no instance claim needs no decision.
+source locators. State what the evidence establishes and ask for the
+specific information that would change the disposition.
 
-For a validation item, report the targeted record, shape and constraint
-component, and affected path or value when present. State the expected
-condition and the observed result when the check ran. If a check is
+- For an uncertain fact, ask which action, value, or identity the
+  source actually records for the named subject and scope. Preserve
+  any assertion that all supported readings share.
+- For an established fact without a supported mapping, retain the
+  fact in review and ask which term or authorized expression in the
+  supplied model represents it.
+- For an open policy, describe a record for which the readings
+  produce different outcomes and ask which outcome applies.
+
+For a settled policy question, give the governing rule and its scope.
+Raise a representation gap separately when the requested output
+depends on an expression the supplied model lacks.
+
+A pending value leaves other supported claims about the record
+eligible for extraction, including its established type. Give each
+retained assertion its own evidence row when using the checker.
+
+A contextual passage that contributes no instance claim needs no
+decision.
+
+For a validation item, identify the pinned inputs, check method,
+and expected outcome for the named record or witness. Record the
+observed result when the check ran. For SHACL, distinguish focus
+selection from conformance and include the shape, constraint
+component, and affected path or value when present. If a check is
 blocked, identify the missing input or unsupported construct and the
-specific observation it prevents. A source can establish a fact that violates a shape.
-Keep the cited fact and the validation result in their respective layers.
+specific observation it prevents. When confirmed values violate a
+constraint, keep the values and ask for the authorized resolution
+of the violation. Keep any later correction tied to new evidence.

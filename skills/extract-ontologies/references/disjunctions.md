@@ -10,7 +10,7 @@
 
 ## Establish what the source allows
 
-Record the governing subject, branch conditions, and evidence for inclusion or exclusion. Keep competing interpretations of ambiguous wording as separate unresolved candidates in the evidence ledger. A union axiom asserts that the domain admits the alternatives, so emit it only when the source supports that reading.
+Record the governing subject, branch conditions, and evidence for inclusion or exclusion. Keep competing interpretations of ambiguous wording as separate unresolved candidates in the evidence ledger. A covering union requires membership in at least one branch. Establish permission for overlap separately within the governed scope.
 
 - For **at least one branch**, use `ObjectUnionOf` for class expressions, `DataUnionOf` for data ranges, or `sh:or` for SHACL branch shapes. This expression admits overlap. Check the source's overlap rule before approving it as the complete choice policy.
 - For **exactly one branch**, keep the covering union and prohibit overlap within the governed scope. For two class expressions, use `A ⊑ (B ⊔ C) ⊓ ¬(B ⊓ C)`. Use `DisjointUnion(A B C)` only when the evidence establishes that `A` equals the union and the branches are disjoint everywhere. Use `sh:xone` when the graph contract requires exactly one branch to conform. [OWL 2 class expression semantics](https://www.w3.org/TR/owl2-direct-semantics/#Class_Expressions) · [OWL 2 class axioms](https://www.w3.org/TR/owl2-direct-semantics/#Class_Expression_Axioms) · [SHACL logical constraints](https://www.w3.org/TR/shacl/#core-components-logical)
@@ -97,6 +97,30 @@ and branch memberships. Use entailment for the separate question of
 what follows from a consistent ontology. Distinguish both from SHACL
 conformance on a graph. Record the observed result only when the check
 ran.
+
+For each material difference between the options, give a case in which
+their expected outcomes differ. For example, ask whether a record
+meeting neither branch qualifies to distinguish an exactly-one rule
+from an at-most-one rule. To distinguish a ban scoped to one class
+from global disjointness, give an explicitly out-of-scope case with
+both memberships. If the proposed cases all produce the same outcome,
+add a distinguishing case or leave that comparison open.
+
+Keep checks for shared requirements, a valid in-scope case, and
+scope boundaries even when another case separates the options.
+Identify the inputs and check method, the facts asserted for the
+witness, the expected outcome under each option, and the observed
+outcome when executed. In SHACL, verify focus selection separately
+from conformance. In OWL, check the base ontology and then check
+consistency with the witness. If an option with the witness is
+inconsistent, report its consistency result. Interpret entailments
+only for a consistent option with those facts.
+
+Make negative facts explicit in an OWL consistency witness. A missing
+property assertion leaves room for another filler. To distinguish
+a stronger existence requirement, assert zero matching fillers or
+check whether each ontology entails the stronger requirement. State
+the result of that exact test.
 
 If multiple bundles have verified equivalent meaning in that premise
 and retain the same typed vocabulary and evidence, select a stable
