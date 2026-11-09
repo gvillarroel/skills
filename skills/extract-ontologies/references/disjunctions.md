@@ -12,7 +12,7 @@
 
 Record the governing subject, branch conditions, and evidence for inclusion or exclusion. Keep competing interpretations of ambiguous wording as separate unresolved candidates in the evidence ledger. A union axiom asserts that the domain admits the alternatives, so emit it only when the source supports that reading.
 
-- For **at least one branch**, use `ObjectUnionOf` for class expressions, `DataUnionOf` for data ranges, or `sh:or` for SHACL branch shapes. Both branches may hold.
+- For **at least one branch**, use `ObjectUnionOf` for class expressions, `DataUnionOf` for data ranges, or `sh:or` for SHACL branch shapes. This expression admits overlap. Check the source's overlap rule before approving it as the complete choice policy.
 - For **exactly one branch**, keep the covering union and prohibit overlap within the governed scope. For two class expressions, use `A ⊑ (B ⊔ C) ⊓ ¬(B ⊓ C)`. Use `DisjointUnion(A B C)` only when the evidence establishes that `A` equals the union and the branches are disjoint everywhere. Use `sh:xone` when the graph contract requires exactly one branch to conform. [OWL 2 class expression semantics](https://www.w3.org/TR/owl2-direct-semantics/#Class_Expressions) · [OWL 2 class axioms](https://www.w3.org/TR/owl2-direct-semantics/#Class_Expression_Axioms) · [SHACL logical constraints](https://www.w3.org/TR/shacl/#core-components-logical)
 - For **at most one of two branches**, prohibit overlap without a covering union. Use `A ⊑ ¬(B ⊓ C)` for class-local exclusion, or a SHACL `sh:not` shape containing `sh:and` over the two branch shapes. A record meeting neither branch can conform.
 
@@ -60,10 +60,45 @@ Verify mutual entailment for the whole ontology and for each changed
 premise separately. Test a different guard or qualifier and bounds
 from independently cited premises before accepting the rewrite.
 
-When comparing supplied alternatives for one premise, record a gap if
-none preserves the source requirement. Use an empty axiom bundle when
-the premise warrants no assertion in the requested projection. If
-multiple bundles have verified equivalent meaning in that premise
+When comparing supplied alternatives, separate the dispositions:
+
+- **No supported option.** State the requirement established by the
+  source and the change that rules out each offered bundle.
+- **Source interpretation unresolved.** A covering union can preserve
+  the supported at-least-one requirement under both inclusive and
+  exactly-one readings. If the requested decision is the complete
+  policy and the operative evidence establishes neither permission
+  nor prohibition of overlap, state the covering requirement as
+  the supported part in its own sentence and leave every complete
+  option unselected. Distinguish any illustrative example from the
+  operative evidence. Ask whether an in-scope case satisfying both
+  branches may qualify. For that witness, state expected consistency
+  under each competing complete policy and leave the observation
+  empty until a check runs. Apply explicit permission or exclusion
+  at its own scope.
+- **Check unavailable.** Name the construct or input that prevents
+  verification and the observation that would close the gap.
+- **Context only.** Use an empty axiom bundle when the premise warrants
+  no assertion in the requested projection.
+
+Before approving a complete choice, compare each offered bundle with
+two named cases in its governed class. Give the first one branch and
+explicitly exclude the other. Give the second both branches. If the
+source allows one branch alone, reject a bundle that requires both.
+Check that the final disposition agrees with the source and those
+witness outcomes.
+
+Tie each open decision to its source locator, governed subject and
+scope. Phrase a validation item as an expected observation for a
+specific case, such as whether an in-scope record satisfying both
+branches should conform. In OWL, test whether both memberships are
+permitted by checking consistency with the witness's asserted class
+and branch memberships. Use entailment for the separate question of
+what follows from a consistent ontology. Distinguish both from SHACL
+conformance on a graph. Record the observed result only when the check
+ran.
+
+If multiple bundles have verified equivalent meaning in that premise
 and retain the same typed vocabulary and evidence, select a stable
 representative by content. Use the bundled
 [`choose_owl_comparison_bundle.py`](../scripts/choose_owl_comparison_bundle.py)

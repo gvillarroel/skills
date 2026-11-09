@@ -323,3 +323,43 @@ The HermiT receipt SHA-256 is
 The isolated check receipt SHA-256 is
 `60e73e71ade9342e14f5f43ab8c5f423d69f245897cb75c5a4c1fb65d23cb60e`.
 [Java SE 21 primitive ranges](https://docs.oracle.com/javase/specs/jls/se21/html/jls-4.html#jls-4.2.1) · [Isolated evaluation prompt](pi-prompts/ontology-integer-interval-view.md)
+
+## Complete choice and overlap review
+
+The workflow records which part of a choice follows from the
+source. A covering requirement can be supported while the rule
+for cases satisfying both branches remains open. State that
+open question for the governed class. Use a named single-branch
+witness to catch a bundle requiring both, and a named
+both-branches witness to test whether overlap is consistent.
+For an unresolved choice, describe the expected witness outcome
+under each policy and keep the observed outcome unreported
+until the check runs.
+
+The four-packet diagnostic covers unsupported supplied options,
+an unresolved policy, a blocked equivalence check, and context.
+The three-packet contrast covers unresolved, allowed, and
+prohibited overlap. The first wording revision scored 13/16
+and 8/12. The second scored 15/16 and 10/12 and introduced an
+incorrect approval of a bundle requiring both branches. The
+third scored 16/16 and 11/12. The fourth scored 16/16 and 12/12
+in two strict isolated Luna runs. Independent HermiT probes
+confirmed the scoped and asymmetric contrast cases. These
+inputs were disclosed development cases when the final wording
+was selected.
+
+A repeat of the fourth revision on the combined release payload
+scored 15/16 and 11/12. It named an inclusive offer as supported
+while also leaving the policy pending, and omitted the distinction
+between a form illustration and operative evidence in the contrast
+case. The final wording states the supported part separately, leaves
+every complete option unselected for unresolved policies, and checks
+the authority of examples. The two strict Luna executions on the
+final release payload both passed, scoring 16/16 and 12/12.
+
+The final release qualification receipt SHA-256 is
+`a68b66163388c71999a1beb45dd0b6dbdc00131e14651a7a17f12e13244819aa`.
+The frozen fourth-revision qualification receipt
+SHA-256 is
+`cc457d3809235abd05dfa71adf0182e70ebb0cef50a8037db6f94cf1bcf947b7`.
+[Four-packet review prompt](pi-prompts/ontology-review-disposition.md) · [Overlap contrast prompt](pi-prompts/ontology-overlap-policy.md)
