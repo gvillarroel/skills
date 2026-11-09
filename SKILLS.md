@@ -59,6 +59,8 @@ Use this file as the canonical list of skills to create, improve, or validate in
 
 ## Recent Validation Notes
 
+- `extract-ontologies` 2026-11-08. Normalized direct intersections of compatible integer lower and upper bounds in comparison ledgers. Eleven repository tests, 34 HermiT controls, and two strict isolated Luna runs passed. Verified comparison repeats on four prospective public sources improved from 2/4 to 3/4 in the frame arm. [Integer interval validation](evaluations/ontology-alternatives-validation-20261108.md#integer-interval-comparison)
+
 - `extract-with-ontology` 2026-11-08. Separated unresolved source interpretation, missing mappings, observed findings, and blocked checks in the review artifact. The revised skill scored 20/20 in a strict isolated Luna run. The previous skill's artifact scored 18/20 with a strict tool failure. [Actionable review qualification](evaluations/ontology-alternatives-validation-20261108.md#actionable-extraction-review)
 
 - `extract-ontologies` 2026-11-08. Added a bounded Boolean comparison ledger utility. Nine unit tests, seven formal fixture checks, and two strict 6/6 Luna artifact runs passed. HermiT verified 30 changed views on ten public development sources. Both grouped arms rose from 4/10 raw exact pairs to 6/10 verified comparison pairs. [Boolean comparison validation](evaluations/ontology-alternatives-validation-20261108.md#premise-local-boolean-comparison-views)

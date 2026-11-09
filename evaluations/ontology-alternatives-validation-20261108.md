@@ -290,3 +290,36 @@ development. All four runtime invocations used
 `github-copilot/gpt-6-luna`. The frozen blinded qualification
 receipt SHA-256 is
 `8d89e92e0fbede58a84e89f2be123708c2580bbd1f3625928ae6d505bd270b7b`.
+
+## Integer interval comparison
+
+The comparison utility recognizes a direct intersection of two
+restrictions on `xsd:integer` with one lower and one upper bound.
+It keeps the original inclusive or exclusive facets and explicitly
+typed literal spellings. The narrow rule applies to a nonempty
+interval and keeps it in its source-owned premise.
+
+In two independently correct outputs from a prospective Java SE 21
+case, one output joined the bounds in a single datatype restriction
+and the other intersected two restrictions. The previous views
+differed. The new views matched in canonical RDF, OWL Functional
+Syntax and premise-ledger bytes. Among four prospective public
+sources the frame arm gained one verified exact comparison pair
+from 2/4 to 3/4. The raw extraction counts were 7/8 correct runs
+and 2/4 exact pairs.
+
+Eleven repository tests passed. A pinned HermiT verifier matched
+34 expected results for the Java pair, positive rewrites and
+counterexamples. The controls distinguish disjunction, mismatched
+datatypes, a wrong endpoint or governing class, and shifted premise
+ownership. Both strict isolated Luna runs on the final bundle
+executed the utility for all three input ledgers. The combined
+and split ranges produced identical views. The shifted premise
+kept a distinct view. The output hashes repeated across the two
+runs, and the original three ledgers passed the artifact check.
+
+The HermiT receipt SHA-256 is
+`e3a2e145465f24c15ca3118036e1e43c61dafa0cc9d94d43417e874faf535810`.
+The isolated check receipt SHA-256 is
+`60e73e71ade9342e14f5f43ab8c5f423d69f245897cb75c5a4c1fb65d23cb60e`.
+[Java SE 21 primitive ranges](https://docs.oracle.com/javase/specs/jls/se21/html/jls-4.html#jls-4.2.1) · [Isolated evaluation prompt](pi-prompts/ontology-integer-interval-view.md)

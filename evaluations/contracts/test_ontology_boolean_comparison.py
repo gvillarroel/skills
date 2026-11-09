@@ -112,6 +112,33 @@ class NormalizeTests(unittest.TestCase):
         self.assertEqual(one("SubClassOf(:A ObjectMinCardinality(1 :p))"),
                          one("SubClassOf(:A ObjectMinCardinality(1 :p owl:Thing))"))
 
+    def test_direct_integer_intersection_and_combined_facets_share_a_view(self):
+        low = 'xsd:minInclusive "-128"^^xsd:integer'
+        high = 'xsd:maxInclusive "127"^^xsd:integer'
+        joined = f"DatatypeRestriction(xsd:integer {low} {high})"
+        split = (f"DataIntersectionOf(DatatypeRestriction(xsd:integer {high}) "
+                 f"DatatypeRestriction(xsd:integer {low}))")
+        def use(interval):
+            return f"SubClassOf(:ByteValue DataAllValuesFrom(:number {interval}))"
+
+        self.assertEqual(one(use(joined)), one(use(split)))
+        self.assertNotEqual(normalize(ledger([use(joined)], [])), normalize(ledger([], [use(split)])))
+
+    def test_integer_interval_join_requires_an_intersection_and_compatible_facets(self):
+        low = 'DatatypeRestriction(xsd:integer xsd:minInclusive "1"^^xsd:integer)'
+        high = 'DatatypeRestriction(xsd:integer xsd:maxInclusive "3"^^xsd:integer)'
+        joined = 'DatatypeRestriction(xsd:integer xsd:minInclusive "1"^^xsd:integer xsd:maxInclusive "3"^^xsd:integer)'
+        def use(interval):
+            return f"SubClassOf(:Value DataSomeValuesFrom(:number {interval}))"
+
+        self.assertNotEqual(one(use(joined)), one(use(f"DataUnionOf({low} {high})")))
+        for other in (high.replace("xsd:integer", "xsd:decimal", 1),
+                      high.replace("xsd:maxInclusive", "xsd:minInclusive"),
+                      high.replace('"3"', '"0"')):
+            with self.subTest(other=other):
+                result = one(use(f"DataIntersectionOf({low} {other})"))
+                self.assertIn("DataIntersectionOf(", result[0])
+
     def test_bounds_and_propositional_inconsistency_fail_closed(self):
         atom_bound = f"EquivalentClasses({' '.join(f':C{n}' for n in range(MAX_ATOMS + 1))})"
         self.assertEqual(one(atom_bound), [atom_bound])

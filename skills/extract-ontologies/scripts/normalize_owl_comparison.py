@@ -30,6 +30,7 @@ TOKEN = re.compile(r'"(?:[^"\\\r\n]|\\["\\])*"|<[^<>\s]+>|\^\^|[()]|[^\s()"<>^]+
 NAME = re.compile(r"(?:[A-Za-z_][A-Za-z0-9_.-]*)?:[A-Za-z_][A-Za-z0-9_.-]*|<[^<>\s]+>")
 OPERATOR = re.compile(r"[A-Za-z][A-Za-z0-9]*")
 NATURAL = re.compile(r"[0-9]+")
+INTEGER_BOUND = re.compile(r"[+-]?[0-9]{1,64}")
 BOOLEAN = {
     "ObjectIntersectionOf": "and", "ObjectUnionOf": "or", "ObjectComplementOf": "not",
     "DataIntersectionOf": "data_and", "DataUnionOf": "data_or", "DataComplementOf": "data_not",
@@ -240,12 +241,39 @@ def ofn(head, *args):
     return f"{head}({' '.join(args)})"
 
 
+def merge_integer_interval(value):
+    """Combine exactly one integer lower bound and one integer upper bound."""
+    if len(value.args) != 2:
+        return value
+    bounds = {}
+    for child in value.args:
+        if not isinstance(child, Call) or child.op != "DatatypeRestriction" or len(child.args) != 3:
+            return value
+        base, facet, bound = child.args
+        if (base != "xsd:integer" or facet not in FACETS or not isinstance(bound, Literal)
+                or bound.datatype != base or not INTEGER_BOUND.fullmatch(bound.lexical)):
+            return value
+        side = "lower" if facet.startswith("xsd:min") else "upper"
+        if side in bounds:
+            return value
+        bounds[side] = (facet, bound)
+    lower_facet, lower = bounds["lower"]
+    upper_facet, upper = bounds["upper"]
+    first = int(lower.lexical) + (lower_facet == "xsd:minExclusive")
+    last = int(upper.lexical) - (upper_facet == "xsd:maxExclusive")
+    if first > last:
+        return value
+    return Call("DatatypeRestriction", ("xsd:integer", lower_facet, lower, upper_facet, upper))
+
+
 def surface(value):
     """Canonicalize spelling within validated atoms without changing lexical values."""
     if isinstance(value, Literal):
         return f"{json.dumps(value.lexical, ensure_ascii=False)}^^{value.datatype}"
     if not isinstance(value, Call):
         return BUILTINS.get(value, value)
+    if value.op == "DataIntersectionOf":
+        value = merge_integer_interval(value)
     operands = list(map(surface, value.args))
     if value.op in COMMUTATIVE:
         operands.sort(key=byte_key)

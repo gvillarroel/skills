@@ -96,6 +96,12 @@ premise. It can combine subclass implications, class equivalences and
 class exclusions. It preserves other axiom types, unresolved premises,
 and bundles outside its supported bounds.
 
+For integer ranges, it also joins a direct intersection of one
+lower-bound restriction and one upper-bound restriction on
+`xsd:integer`. The range must be nonempty, and both boundary
+literals must be explicitly typed as `xsd:integer`. The result
+preserves each facet's inclusivity and literal spelling.
+
 ```bash
 uv run --script <skill-dir>/scripts/normalize_owl_comparison.py --ledger ledger.json --comparison-view comparison-ledger.json
 ```
