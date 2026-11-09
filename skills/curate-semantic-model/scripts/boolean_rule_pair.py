@@ -11,6 +11,7 @@ import re
 
 from semantic_model import require
 from typed_snapshot_delta import SHA256, validate_citation
+from index_rule_evidence import index_quote
 
 
 ATOM_ID = re.compile(r"[A-Za-z][A-Za-z0-9_-]{0,31}")
@@ -19,6 +20,8 @@ OPS = {"and", "or", "not"}
 MAX_ATOMS = 10
 MAX_RULES = 20
 MAX_DEPTH = 12
+MAX_ATOM_RANGES = 3
+MAX_ATOM_RANGE_TOKENS = 8
 
 
 def expression_atoms(expression, atoms, path, depth=0):
@@ -84,6 +87,7 @@ def validate_pair(pair, lines_by_side, source_sha256):
     expected_digests = pair["source_sha256"]
     require(isinstance(expected_digests, dict) and expected_digests.keys() == {"base", "head"},
             "source_sha256 needs base and head digests", "/source_sha256", "INVALID_BOOLEAN_PAIR")
+    compiled_rows = {"base": [], "head": []}
     for side in ("base", "head"):
         digest = expected_digests[side]
         require(isinstance(digest, str) and SHA256.fullmatch(digest),
@@ -101,10 +105,82 @@ def validate_pair(pair, lines_by_side, source_sha256):
                 "Each side needs 1 to 20 reviewed rules", f"/{side}", "INVALID_BOOLEAN_PAIR")
         for index, row in enumerate(rules):
             path = f"/{side}/{index}"
-            require(isinstance(row, dict) and row.keys() == {"rule", "evidence"},
-                    "Rule row needs rule and evidence", path, "INVALID_BOOLEAN_PAIR")
-            rule_atoms(row["rule"], atoms, path + "/rule")
-            validate_citation(row["evidence"], lines_by_side[side], path + "/evidence")
+            require(isinstance(row, dict) and row.keys() in ({"rule", "evidence"},
+                                                               {"rule", "evidence", "atom_refs"}),
+                    "Rule row needs rule and evidence, with optional atom_refs", path, "INVALID_BOOLEAN_PAIR")
+            used = rule_atoms(row["rule"], atoms, path + "/rule")
+            evidence = row["evidence"]
+            if row.keys() == {"rule", "evidence"} or not isinstance(evidence, dict) or "quote" in evidence:
+                validate_citation(evidence, lines_by_side[side], path + "/evidence")
+            else:
+                require(isinstance(evidence, dict) and evidence.keys() == {"start_line", "end_line"},
+                        "Evidence needs an exact citation or start_line and end_line", path + "/evidence",
+                        "INVALID_SNAPSHOT_EVIDENCE")
+                start, end = evidence["start_line"], evidence["end_line"]
+                require(type(start) is int and type(end) is int and 1 <= start <= end <= len(lines_by_side[side])
+                        and end - start <= 10,
+                        "Evidence needs an inclusive in-bounds span of up to 11 lines",
+                        path + "/evidence", "INVALID_SNAPSHOT_EVIDENCE")
+                quote = "\n".join(lines_by_side[side][start - 1:end])
+                require(bool(quote.strip()), "Evidence must contain source text", path + "/evidence",
+                        "INVALID_SNAPSHOT_EVIDENCE")
+                normalized_evidence = {"start_line": start, "end_line": end, "quote": quote}
+            if "quote" in evidence:
+                normalized_evidence = evidence
+                quote = evidence["quote"]
+            compiled = dict(row)
+            compiled["evidence"] = normalized_evidence
+            if "atom_refs" in row:
+                compiled["atom_evidence"] = validate_atom_refs(row["atom_refs"], used, quote,
+                                                                path + "/atom_refs")
+            compiled_rows[side].append(compiled)
+    return compiled_rows
+
+
+def validate_atom_refs(atom_refs, used_atoms, quote, path):
+    require(isinstance(atom_refs, dict) and atom_refs.keys() == used_atoms,
+            "atom_refs must cover exactly the atoms used by the rule", path, "INVALID_BOOLEAN_PAIR")
+    seen = set()
+    tokens = index_quote(quote)
+    raw = quote.encode("utf-8")
+    resolved = {}
+    for atom, ranges in atom_refs.items():
+        require(isinstance(ranges, list) and 1 <= len(ranges) <= MAX_ATOM_RANGES,
+                "Each atom needs one to three token ranges", f"{path}/{atom}", "INVALID_BOOLEAN_PAIR")
+        previous_end = 0
+        normalized = []
+        spans = []
+        for index, span in enumerate(ranges):
+            require(isinstance(span, list) and len(span) == 2
+                    and all(type(value) is int for value in span),
+                    "A token range needs two integer endpoints", f"{path}/{atom}/{index}",
+                    "INVALID_BOOLEAN_PAIR")
+            first, last = span
+            require(1 <= first <= last and last - first + 1 <= MAX_ATOM_RANGE_TOKENS
+                    and first > previous_end,
+                    "Token ranges must be increasing, non-overlapping, and at most eight tokens",
+                    f"{path}/{atom}/{index}", "INVALID_BOOLEAN_PAIR")
+            normalized.append((first, last))
+            require(last <= len(tokens), "Token range exceeds the indexed evidence",
+                    f"{path}/{atom}/{index}", "INVALID_BOOLEAN_PAIR")
+            start, end = tokens[first - 1]["start"], tokens[last - 1]["end"]
+            byte_start, byte_end = tokens[first - 1]["byte_start"], tokens[last - 1]["byte_end"]
+            exact = quote[start:end]
+            require(bool(re.search(r"\w", exact, re.UNICODE)),
+                    "Punctuation-only ranges cannot anchor an atom", f"{path}/{atom}/{index}",
+                    "INVALID_BOOLEAN_PAIR")
+            require(raw[byte_start:byte_end].decode("utf-8") == exact,
+                    "UTF-8 token offsets do not reproduce the evidence", f"{path}/{atom}/{index}",
+                    "INVALID_BOOLEAN_PAIR")
+            spans.append({"tokens": [first, last], "quote": exact, "start": start, "end": end,
+                          "byte_start": byte_start, "byte_end": byte_end})
+            previous_end = last
+        key = tuple(normalized)
+        require(key not in seen, "Distinct atoms need distinct token range sets", f"{path}/{atom}",
+                "INVALID_BOOLEAN_PAIR")
+        seen.add(key)
+        resolved[atom] = spans
+    return resolved
 
 
 def truth_fingerprint(atoms, table):
@@ -126,7 +202,7 @@ def truth_fingerprint(atoms, table):
 
 
 def compare_rules(pair, lines_by_side, source_sha256):
-    validate_pair(pair, lines_by_side, source_sha256)
+    reviewed_rows = validate_pair(pair, lines_by_side, source_sha256)
     atoms = sorted(pair["atoms"])
     witnesses = {"base_not_head": None, "head_not_base": None, "both": None, "neither": None}
     counts = dict.fromkeys(witnesses, 0)
@@ -159,5 +235,5 @@ def compare_rules(pair, lines_by_side, source_sha256):
             "region_witnesses": {"both": witnesses["both"], "neither": witnesses["neither"]},
             "jointly_satisfiable": jointly_satisfiable,
             "source_sha256": pair["source_sha256"], "atoms": pair["atoms"],
-            "reviewed_rules": {side: pair[side] for side in ("base", "head")},
+            "reviewed_rules": reviewed_rows,
             "fingerprints": {side: truth_fingerprint(atoms, table) for side, table in truth.items()}}

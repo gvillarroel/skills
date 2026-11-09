@@ -5,6 +5,7 @@
 - [Compile reviewed observations](#compile-reviewed-observations)
 - [Compare reviewed typed inventories](#compare-reviewed-typed-inventories)
 - [Compare reviewed Boolean rules](#compare-reviewed-boolean-rules)
+- [Bind reviewed atoms by token number](#bind-reviewed-atoms-by-token-number)
 
 Pin both source files and record their byte digests and revision identifiers.
 Use complete UTF-8 files or explicitly scoped excerpts. Keep reviewed values,
@@ -139,3 +140,36 @@ that can change its truth value and the corresponding truth table.
 Equivalent syntax and irrelevant atoms yield the same fingerprint when
 the reviewed atom IDs and their meanings are stable. Review the
 translation and atom identities separately from the Boolean result.
+
+## Bind reviewed atoms by token number
+
+Run the indexer on the cited excerpt from each source. Its output includes
+the raw source digest, the exact decoded quote, and numbered tokens.
+
+~~~text
+uv run --script SKILL/scripts/index_rule_evidence.py --source new.txt --start-line 1 --end-line 1 --output head-index.json
+~~~
+
+An indexed row supplies `atom_refs` for every atom in its rule. Each atom
+uses one to three increasing, non-overlapping ranges of up to eight tokens.
+The endpoints are inclusive and token numbering starts at one within the
+selected line span. A shared predicate and a separated conjunct can be
+represented by two ranges.
+
+~~~json
+{
+  "rule": ["iff", "P", ["or", "A", "B"]],
+  "evidence": {"start_line": 1, "end_line": 1},
+  "atom_refs": {"P": [[2, 3]], "A": [[7, 8], [12, 13]], "B": [[7, 10]]}
+}
+~~~
+
+Use the indexer's source digest in `source_sha256` for the corresponding
+side. The comparator restores the citation and records each fragment
+in `atom_evidence`. The character and UTF-8 byte offsets are zero-based
+and end-exclusive within the decoded citation quote. The raw file digest
+also covers any byte-order mark and original line endings.
+
+Review each atom's identity, the scope of negation, and the complete rule
+against the citation. A token range can identify an exact fragment while
+leaving the surrounding predicate or connective for the reviewer.
