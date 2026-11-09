@@ -1,5 +1,11 @@
 # Compare reviewed versions of a document
 
+## Contents
+
+- [Compile reviewed observations](#compile-reviewed-observations)
+- [Compare reviewed typed inventories](#compare-reviewed-typed-inventories)
+- [Compare reviewed Boolean rules](#compare-reviewed-boolean-rules)
+
 Pin both source files and record their byte digests and revision identifiers.
 Use complete UTF-8 files or explicitly scoped excerpts. Keep reviewed values,
 assertions and source evidence tied to the same scope and vocabulary.
@@ -81,3 +87,55 @@ whole proposition, including its conditions, polarity, role and
 alternatives. Compare deterministic results using the same reviewed
 inputs, source bytes and helper version. Write each result to a new
 path outside the input files.
+
+## Compare reviewed Boolean rules
+
+Use `--boolean-pair` after a reviewer has fixed the atom identities
+and translated each source rule into the bounded Boolean syntax. The
+comparator evaluates those formulas and reports counterexample assignments.
+
+The pair contains lowercase raw-byte SHA-256 digests in `source_sha256`,
+one to ten stable IDs with reviewed meanings in `atoms`, and `base`
+and `head` rule arrays.
+Each array contains one to twenty rows with a `rule` and exact `evidence`
+citation. A rule is `[mode, outcome, guard]`. Expressions
+are atom IDs or prefix arrays such as `["and", "A", ["not", "B"]]`
+and `["or", "A", "B"]`. `and` and `or` take two to ten arguments.
+`not` takes one. An expression may be nested at most twelve times.
+
+- `if` requires the outcome when the guard is true.
+- `only-if` requires the guard when the outcome is true.
+- `iff` requires both directions.
+- `unless` requires the outcome when the guard is false. A true guard leaves the outcome open.
+- `plain` asserts the outcome alone and requires a null guard.
+
+Rules on each side are conjoined. Every row's citation must exactly match up to
+eleven in-bounds source lines, and each supplied digest must match the
+current source bytes.
+
+~~~json
+{
+  "source_sha256": {"base": "<64 lowercase hex>", "head": "<64 lowercase hex>"},
+  "atoms": {"A": "reviewed meaning of A", "B": "reviewed meaning of B"},
+  "base": [{"rule": ["if", "A", "B"], "evidence": {"start_line": 2, "end_line": 2, "quote": "Exact base line."}}],
+  "head": [{"rule": ["iff", "A", "B"], "evidence": {"start_line": 3, "end_line": 3, "quote": "Exact head line."}}]
+}
+~~~
+
+~~~text
+uv run --script SKILL/scripts/compare_document_versions.py --base old.txt --head new.txt --boolean-pair reviewed-rules.json --output rule-comparison.json
+~~~
+
+The output classifies the pair as `same`, `base-implies-head`,
+`head-implies-base`, `different`, or `hold`. It reports one
+assignment for each nonempty region of the truth table. The two directional
+counterexamples show when only one side's rules hold. The `both` and
+`neither` witnesses show when the two sides succeed or fail together.
+An inconsistent or tautological side yields `hold`.
+
+The result carries the reviewed atom meanings, rules, citations, and
+source digests. Each side's fingerprint uses the sorted IDs of the atoms
+that can change its truth value and the corresponding truth table.
+Equivalent syntax and irrelevant atoms yield the same fingerprint when
+the reviewed atom IDs and their meanings are stable. Review the
+translation and atom identities separately from the Boolean result.
