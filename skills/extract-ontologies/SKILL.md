@@ -47,6 +47,10 @@ Read [extraction-workflow.md](references/extraction-workflow.md) before extracti
 
 Read [disjunctions.md](references/disjunctions.md) for branch alternatives, qualified value counts, tests of their scope, and reproducible OWL comparison views.
 
+For a reviewed prior premise ledger and two source revisions, read
+[premise-reuse.md](references/premise-reuse.md) to plan which premises
+can carry forward under unchanged authority dependencies.
+
 ## Produce an auditable bundle
 
 Create or adapt this bundle unless the user specifies another contract:
