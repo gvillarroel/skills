@@ -59,6 +59,8 @@ Use this file as the canonical list of skills to create, improve, or validate in
 
 ## Recent Validation Notes
 
+- `extract-ontologies` added a compact SHACL Core selector for zero or one reusable branch on 2026-11-09. The six-branch contract passed all 66 checks and used 34 selector triples, compared with 122 for the published reference. [Optional choice evaluation](evaluations/ontology-alternatives-validation-20261108.md#optional-choices-over-reusable-shacl-branches).
+
 - `extract-with-ontology`: Clarified negative modal evidence on 2026-11-09. Two isolated GPT-6 Luna low rechecks recovered 34/34 exact witnesses after SemVer line wrapping, with no extra edges. The final reference also passed nine RFC 9110 controls. [Rewrapped-source results](evaluations/ontology-keyword-witnesses-20261109.md#rewrapped-source-witness-review).
 
 - `extract-with-ontology`: Added a source-bound keyword index for governed units on 2026-11-09. Independent GPT-6 Luna low runs selected all 34 SemVer and 16 HTTP assertions with exact witnesses and reproduced all five edition graphs. The released helper matched 114 prototype spans, two isolated runtime checks passed, and a native Harbor oracle verifier smoke returned 1.0. [Keyword witness results](evaluations/ontology-keyword-witnesses-20261109.md).

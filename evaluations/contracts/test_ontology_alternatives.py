@@ -119,6 +119,36 @@ class OntologyAlternatives(unittest.TestCase):
                 with self.subTest(case=case, operator=operator):
                     self.assertIs(self.shacl(data, shape)[0], conforms)
 
+    def test_optional_three_way_choice_counts_complete_branch_matches(self):
+        branches = "(:Email :Sms :Postal)"
+        definitions = """
+:Email sh:property [ sh:path :email ; sh:minCount 1 ] .
+:Sms sh:property [ sh:path :sms ; sh:minCount 1 ] .
+:Postal sh:property [ sh:path :street ; sh:minCount 1 ] ,
+                    [ sh:path :postcode ; sh:minCount 1 ] .
+"""
+        shape = graph(definitions + f"""
+:RecordShape a sh:NodeShape ; sh:targetClass :Record ;
+    sh:or ( [ sh:xone {branches} ] [ sh:not [ sh:or {branches} ] ] ) .
+""")
+        cases = (
+            ("", True),
+            ("; :email :same", True),
+            ("; :sms :same", True),
+            ("; :street :road ; :postcode :code", True),
+            ("; :email :same ; :street :road", True),
+            ("; :email :same ; :sms :same", False),
+            ("; :email :same ; :street :road ; :postcode :code", False),
+            ("; :sms :same ; :street :road ; :postcode :code", False),
+            ("; :email :same ; :sms :same ; :street :road ; :postcode :code", False),
+        )
+        for fields, expected in cases:
+            with self.subTest(fields=fields):
+                data = graph(f":record a :Record {fields} .\n:other a :Unrelated {fields} .")
+                conforms, report = self.shacl(data, shape)
+                self.assertIs(conforms, expected)
+                self.assertEqual(set(report.objects(None, SH.focusNode)), set() if expected else {EX.record})
+
     def test_qualified_union_count_and_total_typed_count_are_distinct(self):
         qualified = f"sh:qualifiedValueShape [ sh:or {VALUE_BRANCHES} ] ; sh:qualifiedMinCount 1"
         counts = (

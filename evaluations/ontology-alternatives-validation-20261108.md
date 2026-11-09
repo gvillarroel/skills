@@ -363,3 +363,33 @@ The frozen fourth-revision qualification receipt
 SHA-256 is
 `cc457d3809235abd05dfa71adf0182e70ebb0cef50a8037db6f94cf1bcf947b7`.
 [Four-packet review prompt](pi-prompts/ontology-review-disposition.md) · [Overlap contrast prompt](pi-prompts/ontology-overlap-policy.md)
+
+## Optional choices over reusable SHACL branches
+
+This development evaluation compared two ways to check whether a
+dispatch matches zero or one of six existing route shapes. The branch
+shapes were available by IRI. The actor supplied only the selector.
+The independent verifier evaluated all 64 subsets of branches and
+two out-of-target records under pySHACL 0.40.0 with inference disabled.
+
+The published skill produced 122 selector triples and five
+references per branch. The compact selector uses a single exactly-one
+check or a no-match check over the same branches. Both isolated runs
+of the final reference passed 66/66 checks and produced the same
+canonical RDF graph with 34 selector triples and two references per
+branch. A separate five-case scope matrix
+covered 53 checks for optional, exclusive, inclusive, per-value, and
+whole-record choices. Both the published skill and the first compact
+candidate passed all 53 checks. Each actor used GPT-6 Luna low through
+the strict isolated Pi harness.
+
+The contract regression covers zero branches, each complete branch
+alone, every pair, all three branches, and a partial branch alongside a
+complete one. The out-of-target record uses the same data values.
+Conformance and the reported focus node are both checked.
+
+The relevant target is the count of matching shapes. Alternative paths
+can deduplicate equal RDF terms, and a constraint rejecting only a
+full conjunction leaves two-branch overlaps open. The documented
+selector expresses the same condition for any branch roster.
+[SHACL logical constraint semantics](https://www.w3.org/TR/shacl/#core-components-logical)

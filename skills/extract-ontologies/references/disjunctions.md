@@ -16,6 +16,20 @@ Record the governing subject, branch conditions, and evidence for inclusion or e
 - For **exactly one branch**, keep the covering union and prohibit overlap within the governed scope. For two class expressions, use `A ⊑ (B ⊔ C) ⊓ ¬(B ⊓ C)`. Use `DisjointUnion(A B C)` only when the evidence establishes that `A` equals the union and the branches are disjoint everywhere. Use `sh:xone` when the graph contract requires exactly one branch to conform. [OWL 2 class expression semantics](https://www.w3.org/TR/owl2-direct-semantics/#Class_Expressions) · [OWL 2 class axioms](https://www.w3.org/TR/owl2-direct-semantics/#Class_Expression_Axioms) · [SHACL logical constraints](https://www.w3.org/TR/shacl/#core-components-logical)
 - For **at most one of two branches**, prohibit overlap without a covering union. Use `A ⊑ ¬(B ⊓ C)` for class-local exclusion, or a SHACL `sh:not` shape containing `sh:and` over the two branch shapes. A record meeting neither branch can conform.
 
+For three or more branches, **at most one** means zero or one match.
+In SHACL Core, use an outer `sh:or` at the governed node or value level.
+Its first branch uses `sh:xone` over the full branch list and admits one
+match. Its second branch uses `sh:not` around `sh:or` over that same
+list and admits zero matches. Reuse named branch shapes by IRI. Negating a conjunction of all
+branches only excludes the case where every branch matches.
+
+Build each branch from its complete requirements. A partly satisfied
+branch does not count as a match. Keep requirements that apply to every
+case on the governed shape, alongside the choice. For three branches,
+check all three two-branch combinations as well as all three together.
+Include a fully matched branch with partial evidence for another when
+partial evidence is allowed.
+
 ## Place the choice at the right level
 
 | Source requirement | OWL domain semantics | SHACL graph validation |
