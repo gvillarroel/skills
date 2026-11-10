@@ -26,15 +26,17 @@ comes from GitHub Docs and is distributed by its publisher under
 ## Populate the existing ontology
 
 Give `extract-with-ontology` the ontology, the [SHACL shapes](shapes.ttl),
-`manifest.json`, and the downloaded Markdown directory. Request an
-asserted graph in `data.ttl`, source-bound `evidence.json`, and a
-`review.md` file. Keep the product and feature IRIs stable when the
-same feature appears in another source or revision.
+the [inventory scope](inventory-scope.json), and the crawler manifest
+and downloaded Markdown directory. The scope fixes the product and
+the 13 target feature IRIs without supplying their classes or
+relationships. Request an asserted graph in `data.ttl`, source-bound
+`evidence.json`, and a `review.md` file. Keep the product and feature
+IRIs stable when the same feature appears in another source or
+revision.
 
-Use a separate workspace for newly extracted outputs. The
+Use a separate workspace for newly extracted outputs. Keep the
 [reference graph](data.ttl), [evidence ledger](evidence.json), and
-[review decisions](review.md) in this directory form the reviewed
-example for the pinned corpus.
+[review decisions](review.md) separate until scoring.
 
 Use `AIFeature` for an evidenced AI operation. Use `NonAIFeature`
 for a specifically documented human operation, static service or
@@ -59,14 +61,34 @@ using its pin from the saved manifest.
 uv run --script SKILL/scripts/check_extraction.py lines --source-root /path/to/product-corpus --source sources/auto-merge.md --manifest /path/to/product-corpus/manifest.json --start-line 19 --end-line 23
 ```
 
-In `selections.json`, record each assertion with its source ID and
-inclusive line range using the skill's evidence binder format.
-For a new extraction, generate the graph and its exact citations from
-this plan.
-Choose a new result directory under an existing parent.
+In `selections.json`, record each assertion with its manifest source
+ID and inclusive line range. The file has a single `assertions` key
+when the manifest supplies the source roster. This entry classifies
+the documented auto-merge rule.
+
+```json
+{
+  "assertions": [
+    {
+      "subject": "urn:example:product:github:feature:auto-merge",
+      "predicate": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "object": {"iri": "https://example.org/product-features#NonAIFeature"},
+      "source_id": "auto-merge",
+      "start_line": 21,
+      "end_line": 21
+    }
+  ]
+}
+```
+
+For the full inventory, add the product and feature instances,
+memberships, labels, classifications, and supported directed
+relations to the plan. Choose a new result directory under an
+existing parent. The materializer uses the crawler's saved pins to
+generate the graph and exact citations.
 
 ```bash
-uv run --script SKILL/scripts/check_extraction.py materialize --ontology ontology.ttl --selection selections.json --source-root /path/to/product-corpus --output-dir /path/to/product-result
+uv run --script SKILL/scripts/check_extraction.py materialize --ontology ontology.ttl --selection selections.json --source-root /path/to/product-corpus --manifest /path/to/product-corpus/manifest.json --output-dir /path/to/product-result
 ```
 
 Write the review queue separately. To bind citations to an existing

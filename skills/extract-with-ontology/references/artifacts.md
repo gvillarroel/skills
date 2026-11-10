@@ -150,6 +150,14 @@ and locators from the selected lines. It writes the evidence ledger
 after checking the asserted graph and every citation. Preserve the
 selection file with the review when reproducing the extraction.
 
+Both `bind` and `materialize` accept `--manifest manifest.json`
+when the source roster already exists. In this mode, the selection
+contains only the `assertions` array. For each assertion, use the
+manifest row's `source_id` or `id` as the `source_id` value. When
+the manifest row has neither field, use its exact `path`. Every
+source in the manifest is checked and recorded in the evidence ledger.
+Use a manifest that corresponds to the intended source scope.
+
 ## Materialize a graph and evidence from one plan
 
 When starting with pinned UTF-8 sources and an ontology, draft the
@@ -159,6 +167,13 @@ for independent evidence fragments that support the same fact.
 
 ```text
 uv run --script SKILL/scripts/check_extraction.py materialize --ontology schema.ttl --selection selections.json --source-root . --output-dir result
+```
+
+To reuse the source roster and pins directly, pass the saved manifest
+with an assertions-only selection.
+
+```text
+uv run --script SKILL/scripts/check_extraction.py materialize --ontology schema.ttl --selection selections.json --source-root . --manifest manifest.json --output-dir result
 ```
 
 Use a new output directory under an existing parent. The command

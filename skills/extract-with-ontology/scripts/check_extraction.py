@@ -141,13 +141,13 @@ def source_text(root, row):
     return raw.decode("utf-8")
 
 
-def manifest_pin(manifest_path, source):
+def manifest_rows(manifest_path):
     manifest = json.loads(manifest_path.read_bytes(), object_pairs_hook=unique_object)
     rows = manifest.get("sources") if isinstance(manifest, dict) else None
     if not isinstance(rows, list) or not rows:
         raise ValueError("source manifest requires a nonempty sources array")
 
-    pins = {}
+    entries = {}
     for row in rows:
         if not isinstance(row, dict):
             raise ValueError("source manifest entries require a path and SHA-256")
@@ -155,12 +155,27 @@ def manifest_pin(manifest_path, source):
         if (not isinstance(path, str) or not path.strip() or not isinstance(checksum, str)
                 or not re.fullmatch(r"[0-9a-f]{64}", checksum)):
             raise ValueError("source manifest entries require a path and lowercase SHA-256")
-        if path in pins:
+        if path in entries:
             raise ValueError("duplicate source path in manifest")
-        pins[path] = checksum
-    if source not in pins:
+        entries[path] = row
+    return entries
+
+
+def manifest_pin(manifest_path, source):
+    entries = manifest_rows(manifest_path)
+    if source not in entries:
         raise ValueError("source path is absent from manifest")
-    return pins[source]
+    return entries[source]["sha256"]
+
+
+def manifest_sources(manifest_path):
+    sources = []
+    for path, row in manifest_rows(manifest_path).items():
+        if "source_id" in row and "id" in row and row["source_id"] != row["id"]:
+            raise ValueError("conflicting source IDs in manifest")
+        source_id = row.get("source_id", row.get("id", path))
+        sources.append({"id": source_id, "path": path, "sha256": row["sha256"]})
+    return sources
 
 
 def line_starts(text):
@@ -371,6 +386,10 @@ def extraction_result(args):
         return check(ontology, checksum, data, ledger, root)
 
     selection = json.loads(args.selection.read_bytes(), object_pairs_hook=unique_object)
+    if args.manifest is not None:
+        if not isinstance(selection, dict) or set(selection) != {"assertions"}:
+            raise ValueError("selection with a manifest requires only an assertions array")
+        selection["sources"] = manifest_sources(args.manifest)
     ledger = bind_evidence(checksum, selection, root)
     if args.command == "materialize":
         data, turtle = materialized_graph(ledger)
@@ -410,6 +429,7 @@ def main():
     check_command.add_argument("--evidence", type=Path, required=True)
     for command in (bind_command, materialize_command):
         command.add_argument("--selection", type=Path, required=True)
+        command.add_argument("--manifest", type=Path, help="read the source roster and pins from this manifest")
     materialize_command.add_argument("--output-dir", type=Path, required=True)
     materialize_command.set_defaults(output=None)
     args = parser.parse_args()

@@ -50,14 +50,16 @@ class ClaimMaterializationTests(unittest.TestCase):
             ],
         }
 
-    def invoke(self, plan, output=None):
+    def invoke(self, plan, output=None, *, manifest=None):
         self.selection.write_text(json.dumps(plan), encoding="utf-8")
-        return subprocess.run(
-            [sys.executable, "-B", str(SCRIPT), "materialize", "--ontology", str(self.ontology),
-             "--selection", str(self.selection), "--source-root", str(self.root),
-             "--output-dir", str(self.output if output is None else output)],
-            capture_output=True, text=True, check=False,
-        )
+        command = [
+            sys.executable, "-B", str(SCRIPT), "materialize", "--ontology", str(self.ontology),
+            "--selection", str(self.selection), "--source-root", str(self.root),
+            "--output-dir", str(self.output if output is None else output),
+        ]
+        if manifest is not None:
+            command.extend(["--manifest", str(manifest)])
+        return subprocess.run(command, capture_output=True, text=True, check=False)
 
     def test_deduplicated_graph_preserves_lexical_terms_and_all_citations(self):
         result = self.invoke(self.plan)
@@ -90,6 +92,36 @@ class ClaimMaterializationTests(unittest.TestCase):
                 plan["assertions"][0].update(update)
                 result = self.invoke(plan)
                 self.assertEqual(result.returncode, 2, result.stdout)
+                self.assertFalse(self.output.exists())
+
+    def test_manifest_roster_reproduces_the_explicit_plan(self):
+        original = self.invoke(self.plan)
+        self.assertEqual(original.returncode, 0, original.stderr)
+        source = self.plan["sources"][0]
+        entry = {"source_id": source["id"], "path": source["path"], "sha256": source["sha256"],
+                 "publisher_url": "https://example.org/report"}
+        manifest = self.root / "manifest.json"
+        manifest.write_text(json.dumps({"sources": [entry]}), encoding="utf-8")
+        target = self.root / "manifest-result"
+        result = self.invoke({"assertions": self.plan["assertions"]}, target, manifest=manifest)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        for name in ("data.ttl", "evidence.json"):
+            self.assertEqual((target / name).read_bytes(), (self.output / name).read_bytes())
+
+    def test_manifest_rejects_competing_rosters_and_invalid_pins(self):
+        manifest = self.root / "manifest.json"
+        source = self.plan["sources"][0]
+        claims = {"assertions": self.plan["assertions"]}
+        (self.root / "other.txt").write_bytes(b"changed")
+        for plan, sources in (
+            (self.plan, [source]),
+            (claims, [source | {"source_id": "another"}]),
+            (claims, [source | {"id": "unknown"}]),
+            (claims, [source, {"id": "unused", "path": "other.txt", "sha256": "0" * 64}]),
+        ):
+            with self.subTest(plan=plan, sources=sources):
+                manifest.write_text(json.dumps({"sources": sources}), encoding="utf-8")
+                self.assertEqual(self.invoke(plan, manifest=manifest).returncode, 2)
                 self.assertFalse(self.output.exists())
 
     def test_respects_existing_output_even_for_empty_assertions(self):

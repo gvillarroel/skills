@@ -1,0 +1,60 @@
+{
+  "product": {
+    "iri": "urn:example:product:github",
+    "label": "GitHub"
+  },
+  "features": [
+    {
+      "iri": "urn:example:product:github:feature:agent-merge",
+      "label": "Agent Merge"
+    },
+    {
+      "iri": "urn:example:product:github:feature:auto-merge",
+      "label": "Pull request auto-merge"
+    },
+    {
+      "iri": "urn:example:product:github:feature:copilot-automations",
+      "label": "Copilot automations"
+    },
+    {
+      "iri": "urn:example:product:github:feature:copilot-cloud-agent",
+      "label": "Copilot cloud agent"
+    },
+    {
+      "iri": "urn:example:product:github:feature:copilot-metrics",
+      "label": "GitHub Copilot usage metrics dashboard"
+    },
+    {
+      "iri": "urn:example:product:github:feature:copilot-pr-summary",
+      "label": "Copilot pull request summaries"
+    },
+    {
+      "iri": "urn:example:product:github:feature:copilot-review",
+      "label": "GitHub Copilot code review"
+    },
+    {
+      "iri": "urn:example:product:github:feature:dependabot-security-updates",
+      "label": "Dependabot security updates"
+    },
+    {
+      "iri": "urn:example:product:github:feature:dependabot-version-updates",
+      "label": "Dependabot version updates"
+    },
+    {
+      "iri": "urn:example:product:github:feature:github-pages",
+      "label": "GitHub Pages"
+    },
+    {
+      "iri": "urn:example:product:github:feature:human-pr-review",
+      "label": "Human pull request reviews"
+    },
+    {
+      "iri": "urn:example:product:github:feature:protected-branches",
+      "label": "Branch protection rules"
+    },
+    {
+      "iri": "urn:example:product:github:feature:required-status-checks",
+      "label": "Required status checks"
+    }
+  ]
+}

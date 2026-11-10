@@ -5,11 +5,12 @@
 # ///
 """Exercise the GitHub inventory shapes without fetching sources."""
 
+import json
 from pathlib import Path
 import unittest
 
 from pyshacl import validate
-from rdflib import Graph
+from rdflib import Graph, Literal, RDFS, URIRef
 
 ROOT = Path(__file__).resolve().parent
 PREFIX = "@prefix pf: <https://example.org/product-features#> .\n"
@@ -19,6 +20,21 @@ TYPED = OWNER + "<urn:f> a pf:AIFeature ."
 
 
 class InventoryShapesTests(unittest.TestCase):
+    def test_reference_matches_scope_roster(self):
+        scope = json.loads((ROOT / "inventory-scope.json").read_bytes())
+        graph = Graph().parse(ROOT / "data.ttl", format="turtle")
+        product = URIRef(scope["product"]["iri"])
+        membership = URIRef("https://example.org/product-features#hasFeature")
+        self.assertEqual(
+            graph.value(product, RDFS.label, any=False), Literal(scope["product"]["label"])
+        )
+
+        features = {URIRef(row["iri"]): Literal(row["label"]) for row in scope["features"]}
+        self.assertEqual(len(features), len(scope["features"]))
+        self.assertEqual(set(graph.objects(product, membership)), set(features))
+        for feature, label in features.items():
+            self.assertEqual(graph.value(feature, RDFS.label, any=False), label)
+
     def test_shape_witnesses(self):
         cases = (
             ("ai", TYPED, True),
