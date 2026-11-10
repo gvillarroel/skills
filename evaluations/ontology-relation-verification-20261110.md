@@ -136,6 +136,120 @@ controls were rejected. Two exact but insufficient quote controls
 stayed semantic failures. Input reordering preserved outputs, and
 Python 3.11 and 3.14 produced the same receipt.
 
+### Paired model repair
+
+An isolated Pi comparison used six frozen decisions across Power
+Automate and OpenSearch. The two control runs saw only each
+assertion's original selected citation. The two treatment runs
+also saw a bounded set of manually selected source windows with
+valid alternatives and distractors. The superseded actor packet
+partly restated one expected execution boundary. It was replaced
+with neutral scope text before inference. All four GPT-6 Luna low
+runs passed strict trace and carrier checks, with zero retries.
+
+| Paired result | Original citations | Expanded authorized windows |
+| --- | ---: | ---: |
+| Strict runtime and valid carrier | 2/2 | 2/2 |
+| Calibration against frozen exact decisions | 5/6 | 3/6 |
+| Calibration in independent text-only review | 6/6 | 4/6 |
+| Claims with sufficient selected support in independent review | 1/6 | 2/6 |
+
+The expanded OpenSearch run repaired the local embedding citation.
+It selected an additional relevant corroborating passage beyond
+either enumerated minimal pair. The exact witness rule did not
+credit that package. The model retained an anaphoric Power Automate
+provider quote without the needed antecedent. The independent
+review found that a bare OpenSearch version line lacks the heading
+needed to bind it to the processor. It also found that generic
+external-model documentation does not establish the deployment
+boundary of the caller's particular private endpoint. Its
+assessment is recorded separately from the frozen score.
+This comparison measures evidence use given supplied candidates.
+
+### Source routing controls
+
+A no-model replay kept the original citations and ranked added
+passages within the curated pool. With two additional passages
+per claim, distinct term overlap and role fusion covered two of
+the three repairable claims, while BM25 over the claim and scope
+covered all three. Prioritizing a new source before repeating one
+reduced coverage back to two.
+
+A separate replay searched the full verified Markdown corpora.
+Original citations covered two of five supported claims.
+The best short-window route with three additions covered three
+of five, including one of the three possible repairs. Whole-document
+BM25 with two additional documents covered all five and all
+three repairs. That route exposed 106,723 characters summed across
+the five claims. Documents can repeat across claims. The route
+establishes witness availability, and the model still has to select
+a sufficient evidence set. Python 3.11 and 3.14 produced identical
+full-corpus receipts.
+
+A follow-up added the first seven lines of the nearest heading
+section to the original quote. It recovered one of the three
+repairable witness sets, the Power Automate provider antecedent,
+by pairing lines 23–29 with line 38. The combined evidence was
+528 characters. Four preceding lines recovered none of the three.
+Whole sections exceeded the character limit in these cases.
+The two OpenSearch repairs still needed another document.
+Both interpreters produced identical receipts.
+
+### Evidence-set scoring controls
+
+The verifier audit enumerated all 250 nonempty subsets of the
+authorized windows for the six repair decisions. Exact equality
+to an authored witness bundle accepted 14 subsets. Containing a
+complete bundle accepted 130, including the entire window pool
+for every supported claim. Adding a requirement that every extra
+passage belongs to the union of authorized support windows
+accepted 39 and rejected all five full-pool submissions. This
+test separates proof completeness from irrelevant citation
+selection. The authored union remains a diagnostic because a
+reviewer can establish new corroboration or distinguish branches
+whose qualifiers differ.
+
+### Matched-evidence process comparison
+
+A fresh protocol compared direct judgment with explicit extraction
+of operation, authority, scope, and a plausible counterexample
+before the decision. Both arms receive identical evidence windows
+and use the same output carrier. The Power Automate evidence stays
+byte-identical to the preceding study. The OpenSearch fixture adds
+the processor heading to the version evidence and replaces the ambiguous private
+endpoint with the documented Bedrock Titan request and URL.
+The revised rubric accepts a complete bundle with relevant
+corroboration and reports exact witness-set equality separately.
+Across 314 nonempty subsets, its added relevance check rejected
+all five submissions that included the full window pool.
+
+The Power Automate pair completed with two strict Pi traces.
+One artifact passed the frozen carrier. The roles artifact
+omitted the required empty question field for two closed
+decisions. It remains excluded from the strict comparison.
+A separate diagnostic filled only those empty fields and
+retained the original output. Both Power Automate artifacts
+preserved the supported transfer and asked a direct evidence
+question for the unsupported transfer. Neither repaired the
+provider claim's missing antecedent. The first retained the short
+quote. The diagnostic replaced it with a relevant passage
+that still omitted the antecedent.
+
+Disk-space checks paused the OpenSearch pair before inference.
+After two readings confirmed enough headroom, a separate
+continuation ran only the two previously unattempted cells
+under the frozen protocol. Both traces and carriers passed.
+The original partial receipt and Power Automate admission
+decisions remain separately recorded.
+
+Both OpenSearch actors produced identical dispositions and
+selected witness sets. Each passed 3/3 exact, relevance-bound,
+and independently reviewed decisions. Each repaired both weak
+citations and retained the sufficiently scoped version citation.
+The OpenSearch comparison is one matched strict family and
+shows no separation between methods. The Power Automate roles
+output remains diagnostic, so the full paired gate was unmet.
+
 ## Application-produced evidence from dbt
 
 The installed dbt experiment stopped during dependency installation when
@@ -211,6 +325,19 @@ reproduced the same four deltas.
 | First independent relation-review assessment | `2e9940a5a1c31183139e0848f59016848308de22e508fe808df766bc5a8f947b` |
 | Second independent relation-review assessment | `1d0e677c89ed23b3ea61bce68b42b8153f9bd886ee924adb22437ee858580c1e` |
 | Citation repair prototype and alternate selections | `078e316569ea19095c5965c99de185e75cb9942a6b85cb53ac74c91fabc30c56` |
+| Paired model repair protocol | `1c0c807e2647168bd8e47c1b05369d6f4f3e3d9c25c2adf9cd571ad8d14aaf26` |
+| Paired model repair runtime comparison | `602c8bcc3060cfb6b32b482d4f241d406730ea4a92262ac9163e5e35314a8270` |
+| Independent model repair assessment | `461d973e2074a12e66cfe19966c7bb523cab745c5ffdee4084bbca47938e6d40` |
+| Curated pool ranking replay | `32f8bb010c3977b1d1aa2b9ada594d882014e71b65b2557723ada7eed37e2b34` |
+| Full-corpus routing replay | `c5fa9c35ae9f811b0e7289c208351254a970b3f0b033d55585f21ed38aad9950` |
+| Heading lead and antecedent routing replay | `e3bf12998d9f874a6c6b82793ed27a238cb1a6a6153b9a778b2e627b2504ee89` |
+| Exhaustive witness-set scoring controls | `81ff4355b6c1b2c5f846d6eda8a1f2114dd5508f19f1913f45e7a6bfd95632a8` |
+| Matched-evidence protocol | `cc89417d433519119e3c68eba1cb9ee2b7642efb82fc44fdb2face7eeb43cf76` |
+| Matched-evidence scorer | `384d3d56e5c81d6b29e8e4875f51346697ad3d85fc877c30ffbc1724913099f0` |
+| Partial matched-evidence execution receipt | `160ed297ca43d0a7832a65c8f7c698a3637b92eff2d3c437b666921e7a1f9bde` |
+| Independent partial matched-evidence assessment | `70bf623db080e7809dcc419967be9e592894a0f2ffb35b6c26c1c39fcddd8252` |
+| OpenSearch matched-evidence continuation | `4016c64e52256467494e79a10734e6109ddaab7eb7bccf51f33609fdbeb1234e` |
+| Independent OpenSearch matched-evidence assessment | `1f456f9c9b64b83e9873ee002625167188efef1898ef3f7fcc2a20e61131c08c` |
 | dbt projection and negative controls | `c3243d834bfc422d5ff1c3431dd0a153f5426f3e8495f608660817ad21e2023f` |
 | dbt projection with vertex identity and activity checks | `936ab3a0d20b5604b33b4bbf97f2bdc8f18d0be9b4e3a67539aa5294eb4e7517` |
 | dbt Jinja syntax and reachability | `5a52fdb1fee91c197661b0ab705115eb6b0f484a650ef4bda060a7b0610449be` |
