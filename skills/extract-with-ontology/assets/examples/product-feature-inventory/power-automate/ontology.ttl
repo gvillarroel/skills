@@ -1,0 +1,72 @@
+@prefix pf: <https://example.org/product-features#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<https://example.org/product-features> a owl:Ontology ;
+    owl:versionIRI <https://example.org/product-features/power-automate/1> ;
+    rdfs:comment "A product capability inventory grounded in a pinned documentation snapshot."@en .
+
+pf:Product a owl:Class ;
+    rdfs:label "Product"@en ;
+    rdfs:comment "The named product within the inventory scope."@en .
+
+pf:Feature a owl:Class ;
+    rdfs:label "Feature"@en ;
+    rdfs:comment "A separately identifiable capability offered by the product, assessed at its stated behavior boundary."@en .
+
+pf:AIFeature a owl:Class ;
+    rdfs:subClassOf pf:Feature ;
+    rdfs:label "AI feature"@en ;
+    rdfs:comment "The assessed operation explicitly uses AI, an AI model, or an AI-powered assistant. Evidence connects that mechanism to this operation."@en .
+
+pf:NonAIFeature a owl:Class ;
+    rdfs:subClassOf pf:Feature ;
+    rdfs:label "Non-AI feature"@en ;
+    rdfs:comment "The assessed operation is documented as executing a specified fixed rule or explicit human-controlled mechanism on its supplied inputs."@en .
+
+pf:UnclassifiedFeature a owl:Class ;
+    rdfs:subClassOf pf:Feature ;
+    rdfs:label "Unclassified feature"@en ;
+    rdfs:comment "The capability is documented and the evidence leaves its assessed use of AI unresolved. The review records the evidence boundary and a resolving question."@en .
+
+[] a owl:AllDisjointClasses ;
+    owl:members (pf:AIFeature pf:NonAIFeature pf:UnclassifiedFeature) .
+
+pf:hasFeature a owl:ObjectProperty ;
+    rdfs:domain pf:Product ;
+    rdfs:range pf:Feature ;
+    rdfs:label "has feature"@en ;
+    rdfs:comment "Connects the product to a documented capability in the inventory."@en .
+
+pf:ModelService a owl:Class ;
+    rdfs:label "Model service"@en .
+
+pf:AzureOpenAIService a owl:NamedIndividual, pf:ModelService ;
+    rdfs:label "Azure OpenAI Service"@en .
+
+pf:usesModelService a owl:ObjectProperty ;
+    rdfs:domain pf:Feature ;
+    rdfs:range pf:ModelService ;
+    rdfs:label "uses model service"@en ;
+    rdfs:comment "The pinned evidence identifies this named service as powering this exact scoped operation."@en .
+
+pf:AdministrativeScope a owl:Class ;
+    rdfs:label "Administrative scope"@en .
+
+pf:TenantScope a owl:NamedIndividual, pf:AdministrativeScope ;
+    rdfs:label "Tenant scope"@en .
+
+pf:EnvironmentScope a owl:NamedIndividual, pf:AdministrativeScope ;
+    rdfs:label "Environment scope"@en .
+
+pf:hasDocumentedOptOutScope a owl:ObjectProperty ;
+    rdfs:domain pf:Feature ;
+    rdfs:range pf:AdministrativeScope ;
+    rdfs:label "has documented opt-out scope"@en ;
+    rdfs:comment "The administration guidance describes an opt-out for this exact feature at the named scope. Any applicability conditions belong in the evidence and review."@en .
+
+pf:canSupplyConditionExpressionFor a owl:ObjectProperty ;
+    rdfs:domain pf:Feature ;
+    rdfs:range pf:Feature ;
+    rdfs:label "can supply a condition expression for"@en ;
+    rdfs:comment "The documented design procedure takes a condition expression prepared with the subject capability and places it into the object capability's condition setting. The edge covers optional authoring reuse."@en .

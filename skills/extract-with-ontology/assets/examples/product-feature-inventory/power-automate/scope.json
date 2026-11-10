@@ -1,0 +1,89 @@
+{
+  "assessment_snapshot": "MicrosoftDocs/power-automate-docs at e7a4c26faaa37ea3432ea7011957f3e72af745c1",
+  "product_iri": "urn:example:product:power-automate",
+  "product_label": "Microsoft Power Automate",
+  "scope": "Cloud-flow product capabilities in the supplied documentation snapshot. For each operation assess the behavior in its own scope. Default and effective tenant configuration are distinct questions.",
+  "assertion_fields": "Include product typing, all eight roster ownership links, exactly one behavior class per operation, and each evidence-supported relation or aspect from the candidate lists. Use the scope labels in the review.",
+  "operations": [
+    {
+      "iri": "urn:example:product:power-automate:feature:cloud-flow-copilot",
+      "label": "Copilot cloud-flow authoring",
+      "scope": "Create the structure of a new cloud flow from a natural-language description. This operation concerns the author's design experience."
+    },
+    {
+      "iri": "urn:example:product:power-automate:feature:expression-assistant",
+      "label": "Copilot expression authoring",
+      "scope": "Create, update, or fix a flow expression in the expression editor using the named Copilot expression assistant."
+    },
+    {
+      "iri": "urn:example:product:power-automate:feature:filter-array",
+      "label": "Filter array",
+      "scope": "Apply the Filter array data operation to a supplied array and a configured filter criterion."
+    },
+    {
+      "iri": "urn:example:product:power-automate:feature:join-array",
+      "label": "Join",
+      "scope": "Apply the Join data operation to a supplied array and a configured separator."
+    },
+    {
+      "iri": "urn:example:product:power-automate:feature:select-array",
+      "label": "Select",
+      "scope": "Apply the Select data operation to a supplied array with a configured field projection."
+    },
+    {
+      "iri": "urn:example:product:power-automate:feature:trigger-condition",
+      "label": "Trigger condition evaluation",
+      "scope": "Evaluate an already-configured trigger condition to decide whether a cloud-flow run starts. The condition can have been authored by any supported route."
+    },
+    {
+      "iri": "urn:example:product:power-automate:feature:flow-checker",
+      "label": "Flow Checker diagnosis",
+      "scope": "Identify errors, warnings, or improvement guidance using the Flow Checker design-time feedback surface. Consider the mechanism that performs the diagnosis."
+    },
+    {
+      "iri": "urn:example:product:power-automate:feature:custom-connector-operation",
+      "label": "Operation through a custom connector",
+      "scope": "Assess whether the selected organization-owned service operation called from a cloud flow through a configured custom connector uses an AI model. The supplied sources describe the Power Automate integration surface."
+    }
+  ],
+  "relation_candidates": [
+    {
+      "subject": "urn:example:product:power-automate:feature:filter-array",
+      "predicate": "https://example.org/product-features#canSupplyConditionExpressionFor",
+      "object": "urn:example:product:power-automate:feature:trigger-condition"
+    },
+    {
+      "subject": "urn:example:product:power-automate:feature:trigger-condition",
+      "predicate": "https://example.org/product-features#canSupplyConditionExpressionFor",
+      "object": "urn:example:product:power-automate:feature:filter-array"
+    },
+    {
+      "subject": "urn:example:product:power-automate:feature:expression-assistant",
+      "predicate": "https://example.org/product-features#canSupplyConditionExpressionFor",
+      "object": "urn:example:product:power-automate:feature:trigger-condition"
+    }
+  ],
+  "aspect_candidates": [
+    {
+      "subject": "urn:example:product:power-automate:feature:cloud-flow-copilot",
+      "predicate": "https://example.org/product-features#usesModelService",
+      "object": "https://example.org/product-features#AzureOpenAIService"
+    },
+    {
+      "subject": "urn:example:product:power-automate:feature:expression-assistant",
+      "predicate": "https://example.org/product-features#usesModelService",
+      "object": "https://example.org/product-features#AzureOpenAIService"
+    },
+    {
+      "subject": "urn:example:product:power-automate:feature:cloud-flow-copilot",
+      "predicate": "https://example.org/product-features#hasDocumentedOptOutScope",
+      "object": "https://example.org/product-features#TenantScope"
+    },
+    {
+      "subject": "urn:example:product:power-automate:feature:cloud-flow-copilot",
+      "predicate": "https://example.org/product-features#hasDocumentedOptOutScope",
+      "object": "https://example.org/product-features#EnvironmentScope"
+    }
+  ],
+  "review_scope": "Identify the open mechanism question for each unclassified operation. Address direction and use scope for the condition-expression relationship and distinguish documented tenant controls from an organization's effective configuration."
+}

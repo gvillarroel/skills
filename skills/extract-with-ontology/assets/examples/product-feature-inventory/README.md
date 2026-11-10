@@ -10,6 +10,10 @@ The [OpenSearch 2.19 variant](opensearch/README.md) uses the same
 workflow with a separate supplied ontology. It adds execution
 boundaries, conditional routing, and introduction versions.
 
+The [Power Automate variant](power-automate/README.md) distinguishes
+authoring assistance, configured cloud-flow execution, external
+service mechanisms, and administrative controls.
+
 ## Crawl the source snapshot
 
 Run from this example directory with Python 3.11 or later. Choose a new

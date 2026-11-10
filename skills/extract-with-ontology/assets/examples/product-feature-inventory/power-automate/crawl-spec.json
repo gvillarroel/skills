@@ -1,0 +1,67 @@
+{
+  "version": 2,
+  "repository": "MicrosoftDocs/power-automate-docs",
+  "revision": "e7a4c26faaa37ea3432ea7011957f3e72af745c1",
+  "docs_origin": "https://learn.microsoft.com",
+  "max_depth": 2,
+  "max_sources": 8,
+  "max_source_bytes": 20000,
+  "seeds": [
+    "copilot-overview",
+    "data-operations",
+    "trigger-conditions",
+    "expression-assistant-faq",
+    "flow-checker",
+    "custom-connectors"
+  ],
+  "allowlist": [
+    {
+      "source_id": "copilot-overview",
+      "source_path": "articles/copilot-overview.md",
+      "publisher_path": "/power-automate/copilot-overview",
+      "sha256": "59b3eee0dd8992081c417ecc752eea823ecb50f829ae7bdf8739f9dc52c80a6d"
+    },
+    {
+      "source_id": "cloud-copilot",
+      "source_path": "articles/create-cloud-flow-using-copilot.md",
+      "publisher_path": "/power-automate/create-cloud-flow-using-copilot",
+      "sha256": "faed7de3be6978c0c1dd84c229151f9a7f8386e213de142a74519bbf059e2674"
+    },
+    {
+      "source_id": "data-operations",
+      "source_path": "articles/data-operations.md",
+      "publisher_path": "/power-automate/data-operations",
+      "sha256": "c4125ae343465d99d55fc71eaa8394e61ce5744bda4ad3fc06282535078e2c10"
+    },
+    {
+      "source_id": "trigger-conditions",
+      "source_path": "articles/customize-triggers.md",
+      "publisher_path": "/power-automate/customize-triggers",
+      "sha256": "0bfa5560151ac15434c8df9f133ea3023dc8b093f9a36aad6f516d08ed7cd064"
+    },
+    {
+      "source_id": "expression-assistant",
+      "source_path": "articles/expressions-copilot.md",
+      "publisher_path": "/power-automate/expressions-copilot",
+      "sha256": "21ebad3ea0689c6ceafb1a0da99518e73666f5643bd9bfaab6324b75634136c7"
+    },
+    {
+      "source_id": "expression-assistant-faq",
+      "source_path": "articles/faqs-copilot-expression-assistant.md",
+      "publisher_path": "/power-automate/faqs-copilot-expression-assistant",
+      "sha256": "299ab1e166dbf3724afcf3d737003fc18bc48ba8df7089a4c72abf6f26c3e012"
+    },
+    {
+      "source_id": "flow-checker",
+      "source_path": "articles/error-checker.md",
+      "publisher_path": "/power-automate/error-checker",
+      "sha256": "0561916a300aa46dcb0b44fea52f96384b878bb9c9c3f48ab57427537c315563"
+    },
+    {
+      "source_id": "custom-connectors",
+      "source_path": "articles/developer/register-custom-api.md",
+      "publisher_path": "/power-automate/developer/register-custom-api",
+      "sha256": "02f117f172457cbfd1f1b67b7fecd134552d3333a2e52c0ad7ebe6231e8aaff0"
+    }
+  ]
+}

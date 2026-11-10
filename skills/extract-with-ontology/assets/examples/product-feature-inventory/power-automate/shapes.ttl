@@ -1,0 +1,58 @@
+@prefix pf: <https://example.org/product-features#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+
+pf:ProductShape a sh:NodeShape ;
+    sh:targetNode <urn:example:product:power-automate> ;
+    sh:targetClass pf:Product ;
+    sh:targetSubjectsOf pf:hasFeature ;
+    sh:nodeKind sh:IRI ;
+    sh:in ( <urn:example:product:power-automate> ) ;
+    sh:class pf:Product ;
+    sh:property [
+        sh:path pf:hasFeature ;
+        sh:minCount 8 ;
+        sh:maxCount 8 ;
+        sh:nodeKind sh:IRI ;
+        sh:in (
+            <urn:example:product:power-automate:feature:cloud-flow-copilot>
+            <urn:example:product:power-automate:feature:expression-assistant>
+            <urn:example:product:power-automate:feature:filter-array>
+            <urn:example:product:power-automate:feature:join-array>
+            <urn:example:product:power-automate:feature:select-array>
+            <urn:example:product:power-automate:feature:trigger-condition>
+            <urn:example:product:power-automate:feature:flow-checker>
+            <urn:example:product:power-automate:feature:custom-connector-operation>
+        )
+    ] .
+
+pf:FeatureShape a sh:NodeShape ;
+    sh:targetClass pf:AIFeature, pf:NonAIFeature, pf:UnclassifiedFeature ;
+    sh:targetObjectsOf pf:hasFeature, pf:canSupplyConditionExpressionFor ;
+    sh:targetSubjectsOf pf:canSupplyConditionExpressionFor, pf:usesModelService, pf:hasDocumentedOptOutScope ;
+    sh:nodeKind sh:IRI ;
+    sh:xone (
+        [ sh:property [ sh:path rdf:type ; sh:hasValue pf:AIFeature ] ]
+        [ sh:property [ sh:path rdf:type ; sh:hasValue pf:NonAIFeature ] ]
+        [ sh:property [ sh:path rdf:type ; sh:hasValue pf:UnclassifiedFeature ] ]
+    ) ;
+    sh:property [
+        sh:path [ sh:inversePath pf:hasFeature ] ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:class pf:Product
+    ] ;
+    sh:property [
+        sh:path pf:usesModelService ;
+        sh:maxCount 1 ;
+        sh:in ( pf:AzureOpenAIService )
+    ] ;
+    sh:property [
+        sh:path pf:hasDocumentedOptOutScope ;
+        sh:nodeKind sh:IRI ;
+        sh:in ( pf:TenantScope pf:EnvironmentScope )
+    ] ;
+    sh:property [
+        sh:path pf:canSupplyConditionExpressionFor ;
+        sh:nodeKind sh:IRI
+    ] .
