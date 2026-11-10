@@ -89,6 +89,9 @@ For authored filled marks and preview chrome, start with one opaque colorset fil
 8. Test every adapter and verifier before sealing:
 
    - the reference solution passes every task;
+   - for a separate verifier, follow the
+     [native no-model preflight](references/dataset-authoring-contract.md#pre-seal-quality-gates)
+     through the actual executor and artifact transfer path before inference;
    - at least two materially different valid solutions pass where alternatives
      exist;
    - empty, malformed, copied-gold, fixed-path, wrong-directory, and other

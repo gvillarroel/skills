@@ -405,6 +405,17 @@ Run all applicable gates before any candidate evaluation:
 
 - independent reviewer can solve the instruction using only declared inputs
 - reference solution passes every materialized task
+- for a separate verifier, run a no-model native reference-solution trial
+  through the actual executor and artifact transfer path before evaluation.
+  For local Docker, validate the verifier-side environment definition
+  (such as `tests/Dockerfile` or a pinned verifier image) separately from
+  the agent environment. Check the verifier Dockerfile's build context and
+  copy its entrypoint, verifier inputs and expectations from that context.
+  Check every Linux shell entrypoint uses LF, including the reference
+  solution. Verify the isolated verifier receives the actor output through
+  the declared artifact mount and gives the reference solution full credit.
+  Treat missing verifier inputs as an infrastructure diagnostic so a
+  transport failure can be distinguished from an incorrect submission.
 - no hidden filename, path, dependency, network, or resource requirement
 - task has a justified timeout and resource envelope
 - required state reset prevents cross-task and cross-arm residue
