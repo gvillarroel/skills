@@ -1,0 +1,47 @@
+@prefix pf: <https://example.org/product-features#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<https://example.org/product-features> a owl:Ontology ;
+    owl:versionIRI <https://example.org/product-features/1> ;
+    rdfs:comment "A product feature inventory classified by the behavior documented in a pinned source snapshot."@en .
+
+pf:Product a owl:Class ;
+    rdfs:label "Product"@en ;
+    rdfs:comment "The named product within the scope of this inventory."@en .
+
+pf:Feature a owl:Class ;
+    rdfs:label "Feature"@en ;
+    rdfs:comment "A separately identifiable capability of the product."@en .
+
+pf:AIFeature a owl:Class ;
+    rdfs:subClassOf pf:Feature ;
+    rdfs:label "AI feature"@en ;
+    rdfs:comment "A feature whose documented behavior in the assessed scope explicitly uses an AI model, agent or AI-powered operation. Cite evidence connecting AI to the behavior of this feature."@en .
+
+pf:NonAIFeature a owl:Class ;
+    rdfs:subClassOf pf:Feature ;
+    rdfs:label "Non-AI feature"@en ;
+    rdfs:comment "A feature whose assessed behavior is documented as a human-controlled operation, a static service or a fixed input and rule. The classification covers the documented operation and its stated scope."@en .
+
+pf:UnclassifiedFeature a owl:Class ;
+    rdfs:subClassOf pf:Feature ;
+    rdfs:label "Unclassified feature"@en ;
+    rdfs:comment "A documented feature for which the pinned evidence does not support one classification at the assessed scope. Record the specific open question in review."@en .
+
+[] a owl:AllDisjointClasses ;
+    owl:members (pf:AIFeature pf:NonAIFeature pf:UnclassifiedFeature) .
+
+pf:hasFeature a owl:ObjectProperty ;
+    rdfs:domain pf:Product ;
+    rdfs:range pf:Feature ;
+    rdfs:label "has feature"@en ;
+    rdfs:comment "Connects a product to an evidenced capability in the inventory."@en .
+
+pf:relatedFeature a owl:ObjectProperty ;
+    rdfs:domain pf:Feature ;
+    rdfs:range pf:Feature ;
+    rdfs:label "related feature"@en ;
+    rdfs:comment "Connects a described feature to a separate feature explicitly used, required or contrasted in the source. Require a passage that links the two features."@en .
+
+rdfs:label a owl:AnnotationProperty .

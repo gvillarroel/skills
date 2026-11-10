@@ -1,0 +1,39 @@
+@prefix pf: <https://example.org/product-features#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+
+pf:ProductShape a sh:NodeShape ;
+    sh:targetNode <urn:example:product:github> ;
+    sh:targetClass pf:Product ;
+    sh:targetSubjectsOf pf:hasFeature ;
+    sh:nodeKind sh:IRI ;
+    sh:class pf:Product ;
+    sh:property [
+        sh:path pf:hasFeature ;
+        sh:minCount 1 ;
+        sh:nodeKind sh:IRI
+    ] .
+
+pf:FeatureShape a sh:NodeShape ;
+    sh:targetClass pf:Feature, pf:AIFeature, pf:NonAIFeature, pf:UnclassifiedFeature ;
+    sh:targetObjectsOf pf:hasFeature, pf:relatedFeature ;
+    sh:targetSubjectsOf pf:relatedFeature ;
+    sh:nodeKind sh:IRI ;
+    sh:sparql [
+        sh:message "A feature relationship requires two distinct feature nodes."@en ;
+        sh:select """
+            SELECT $this
+            WHERE { $this <https://example.org/product-features#relatedFeature> $this . }
+        """
+    ] ;
+    sh:xone (
+        [ sh:property [ sh:path rdf:type ; sh:hasValue pf:AIFeature ] ]
+        [ sh:property [ sh:path rdf:type ; sh:hasValue pf:NonAIFeature ] ]
+        [ sh:property [ sh:path rdf:type ; sh:hasValue pf:UnclassifiedFeature ] ]
+    ) ;
+    sh:property [
+        sh:path [ sh:inversePath pf:hasFeature ] ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:class pf:Product
+    ] .

@@ -25,6 +25,10 @@ retain the distinct locators that establish the assertion and any
 identity link or governing condition it depends on. Repeated names or
 codes can help find passages. Verify their meaning in the cited records.
 
+For UTF-8 files with line numbers, use the [evidence binder](artifacts.md#bind-exact-text-from-selected-lines)
+to derive quotes and offsets directly from the pinned source and your
+selected lines.
+
 ## Resolve evidence and identity
 
 For each candidate, identify subject, predicate, object, type or unit,

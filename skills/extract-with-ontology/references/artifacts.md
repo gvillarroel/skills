@@ -3,6 +3,7 @@
 ## Contents
 
 - [RDF and evidence](#rdf-and-evidence)
+- [Bind exact text from selected lines](#bind-exact-text-from-selected-lines)
 - [Review output](#review-output)
 
 Keep a separate instance graph, evidence ledger, and review queue.
@@ -83,6 +84,27 @@ the assertion. Check identity, ontology meaning, completeness, and
 SHACL or OWL reasoning separately. A literal quote, declared predicate,
 or matching fingerprint establishes only the corresponding mechanical
 property.
+
+## Bind exact text from selected lines
+
+For UTF-8 source files with line locators, draft the asserted graph and
+a selection JSON file. Use the evidence format's `sources` array and
+an `assertions` array. For each assertion supply `subject`,
+`predicate`, `object`, `source_id`, `start_line`, and `end_line`.
+Use inclusive one-based LF line numbers and the smallest passage that
+supports the assertion. Cite multiple passages separately when needed.
+
+```text
+uv run --script SKILL/scripts/check_extraction.py bind --ontology schema.ttl --data data.ttl --selection selections.json --source-root . --output evidence.json
+```
+
+Use `python3 SKILL/scripts/check_extraction.py bind` with the same
+arguments when the declared RDFLib dependency is already installed.
+
+The binder checks the pinned sources and builds exact quotes, offsets
+and locators from the selected lines. It writes the evidence ledger
+after checking the asserted graph and every citation. Preserve the
+selection file with the review when reproducing the extraction.
 
 ## Review output
 

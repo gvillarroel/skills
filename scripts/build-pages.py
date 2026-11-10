@@ -21,6 +21,7 @@ PAGES_ROOT = ROOT / "dist" / "pages"
 SKILLS = ROOT / "skills"
 EXAMPLE_SOURCES = {
     "semantic-model-cases": SKILLS / "curate-semantic-model" / "assets" / "examples" / "semantic-model",
+    "product-feature-inventory": SKILLS / "extract-with-ontology" / "assets" / "examples" / "product-feature-inventory",
     "pi-extension-acceptance": SKILLS / "pi-durable" / "assets" / "examples" / "pi-extension-acceptance",
     "reflex-xy-capabilities": SKILLS / "reflex-xy" / "assets" / "examples" / "reflex-xy-capabilities",
     "reflex-xy-colorsets": SKILLS / "reflex-xy" / "assets" / "examples" / "reflex-xy-colorsets",
@@ -128,6 +129,14 @@ UNLISTED_EXAMPLE_SOURCES = {
     "pi-extension-acceptance",
 }
 PUBLISHED_EXAMPLE_SETS = [
+    {
+        "id": "product-feature-inventory",
+        "source": "product-feature-inventory",
+        "title": "Product Feature Inventory",
+        "href": "examples/product-feature-inventory/",
+        "kind": "Ontology-guided extraction",
+        "description": "A pinned documentation crawl, a typed GitHub.com feature graph, and source evidence for AI, non-AI, and unresolved classifications.",
+    },
     {
         "id": "reflex-xy-capabilities",
         "source": "reflex-xy-capabilities",
@@ -750,6 +759,7 @@ def build_docs() -> None:
 
     copy_tree(example_source("hierarchy-lens"), PAGES_ROOT / "examples" / "hierarchy-lens")
     copy_tree(example_source("usefulcharts-style"), PAGES_ROOT / "examples" / "usefulcharts-style")
+    copy_tree(example_source("product-feature-inventory"), PAGES_ROOT / "examples" / "product-feature-inventory")
 
     copy_tree(example_source("compose-synchronized-svg"), PAGES_ROOT / "examples" / "compose-synchronized-svg")
     copy_tree(example_source("echarts-animated-svg"), PAGES_ROOT / "examples" / "echarts-animated-svg")

@@ -34,8 +34,9 @@ An ontology alone is enough for its vocabulary glossary.
    faithfully. Distinguish asserted facts, derived entailments, and
    validation findings.
 5. Verify the output vocabulary, evidence coverage, and requested
-   constraints. Run the bundled checker for the supported RDF and
-   evidence formats in [artifacts.md](references/artifacts.md). Compare
+   constraints. For pinned UTF-8 text, use the [evidence binder](references/artifacts.md#bind-exact-text-from-selected-lines)
+   to turn selected line ranges into exact citations. Run the bundled
+   checker for the supported RDF and evidence formats. Compare
    repeated outputs by canonical graph identity and evidence separately.
 
 For RDF tasks, default to `data.ttl`, `evidence.json`, and `review.md`

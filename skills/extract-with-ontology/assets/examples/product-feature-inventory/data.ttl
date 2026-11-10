@@ -1,0 +1,47 @@
+<urn:example:product:github:feature:agent-merge> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://example.org/product-features#AIFeature> .
+<urn:example:product:github:feature:agent-merge> <http://www.w3.org/2000/01/rdf-schema#label> "Agent Merge" .
+<urn:example:product:github:feature:agent-merge> <https://example.org/product-features#relatedFeature> <urn:example:product:github:feature:auto-merge> .
+<urn:example:product:github:feature:auto-merge> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://example.org/product-features#NonAIFeature> .
+<urn:example:product:github:feature:auto-merge> <http://www.w3.org/2000/01/rdf-schema#label> "Pull request auto-merge" .
+<urn:example:product:github:feature:auto-merge> <https://example.org/product-features#relatedFeature> <urn:example:product:github:feature:required-status-checks> .
+<urn:example:product:github:feature:copilot-automations> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://example.org/product-features#AIFeature> .
+<urn:example:product:github:feature:copilot-automations> <http://www.w3.org/2000/01/rdf-schema#label> "Copilot automations" .
+<urn:example:product:github:feature:copilot-automations> <https://example.org/product-features#relatedFeature> <urn:example:product:github:feature:copilot-cloud-agent> .
+<urn:example:product:github:feature:copilot-cloud-agent> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://example.org/product-features#AIFeature> .
+<urn:example:product:github:feature:copilot-cloud-agent> <http://www.w3.org/2000/01/rdf-schema#label> "Copilot cloud agent" .
+<urn:example:product:github:feature:copilot-metrics> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://example.org/product-features#UnclassifiedFeature> .
+<urn:example:product:github:feature:copilot-metrics> <http://www.w3.org/2000/01/rdf-schema#label> "GitHub Copilot usage metrics dashboard" .
+<urn:example:product:github:feature:copilot-pr-summary> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://example.org/product-features#AIFeature> .
+<urn:example:product:github:feature:copilot-pr-summary> <http://www.w3.org/2000/01/rdf-schema#label> "Copilot pull request summaries" .
+<urn:example:product:github:feature:copilot-review> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://example.org/product-features#AIFeature> .
+<urn:example:product:github:feature:copilot-review> <http://www.w3.org/2000/01/rdf-schema#label> "GitHub Copilot code review" .
+<urn:example:product:github:feature:copilot-review> <https://example.org/product-features#relatedFeature> <urn:example:product:github:feature:human-pr-review> .
+<urn:example:product:github:feature:dependabot-security-updates> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://example.org/product-features#NonAIFeature> .
+<urn:example:product:github:feature:dependabot-security-updates> <http://www.w3.org/2000/01/rdf-schema#label> "Dependabot security updates" .
+<urn:example:product:github:feature:dependabot-security-updates> <https://example.org/product-features#relatedFeature> <urn:example:product:github:feature:dependabot-version-updates> .
+<urn:example:product:github:feature:dependabot-version-updates> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://example.org/product-features#NonAIFeature> .
+<urn:example:product:github:feature:dependabot-version-updates> <http://www.w3.org/2000/01/rdf-schema#label> "Dependabot version updates" .
+<urn:example:product:github:feature:github-pages> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://example.org/product-features#NonAIFeature> .
+<urn:example:product:github:feature:github-pages> <http://www.w3.org/2000/01/rdf-schema#label> "GitHub Pages" .
+<urn:example:product:github:feature:human-pr-review> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://example.org/product-features#NonAIFeature> .
+<urn:example:product:github:feature:human-pr-review> <http://www.w3.org/2000/01/rdf-schema#label> "Human pull request reviews" .
+<urn:example:product:github:feature:protected-branches> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://example.org/product-features#NonAIFeature> .
+<urn:example:product:github:feature:protected-branches> <http://www.w3.org/2000/01/rdf-schema#label> "Branch protection rules" .
+<urn:example:product:github:feature:protected-branches> <https://example.org/product-features#relatedFeature> <urn:example:product:github:feature:required-status-checks> .
+<urn:example:product:github:feature:required-status-checks> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://example.org/product-features#NonAIFeature> .
+<urn:example:product:github:feature:required-status-checks> <http://www.w3.org/2000/01/rdf-schema#label> "Required status checks" .
+<urn:example:product:github> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://example.org/product-features#Product> .
+<urn:example:product:github> <http://www.w3.org/2000/01/rdf-schema#label> "GitHub" .
+<urn:example:product:github> <https://example.org/product-features#hasFeature> <urn:example:product:github:feature:agent-merge> .
+<urn:example:product:github> <https://example.org/product-features#hasFeature> <urn:example:product:github:feature:auto-merge> .
+<urn:example:product:github> <https://example.org/product-features#hasFeature> <urn:example:product:github:feature:copilot-automations> .
+<urn:example:product:github> <https://example.org/product-features#hasFeature> <urn:example:product:github:feature:copilot-cloud-agent> .
+<urn:example:product:github> <https://example.org/product-features#hasFeature> <urn:example:product:github:feature:copilot-metrics> .
+<urn:example:product:github> <https://example.org/product-features#hasFeature> <urn:example:product:github:feature:copilot-pr-summary> .
+<urn:example:product:github> <https://example.org/product-features#hasFeature> <urn:example:product:github:feature:copilot-review> .
+<urn:example:product:github> <https://example.org/product-features#hasFeature> <urn:example:product:github:feature:dependabot-security-updates> .
+<urn:example:product:github> <https://example.org/product-features#hasFeature> <urn:example:product:github:feature:dependabot-version-updates> .
+<urn:example:product:github> <https://example.org/product-features#hasFeature> <urn:example:product:github:feature:github-pages> .
+<urn:example:product:github> <https://example.org/product-features#hasFeature> <urn:example:product:github:feature:human-pr-review> .
+<urn:example:product:github> <https://example.org/product-features#hasFeature> <urn:example:product:github:feature:protected-branches> .
+<urn:example:product:github> <https://example.org/product-features#hasFeature> <urn:example:product:github:feature:required-status-checks> .

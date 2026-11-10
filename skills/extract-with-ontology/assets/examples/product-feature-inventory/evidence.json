@@ -1,0 +1,641 @@
+{
+  "assertions": [
+    {
+      "end": 273,
+      "locator": "line 3",
+      "object": {
+        "iri": "https://example.org/product-features#Product"
+      },
+      "predicate": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "quote": "directly from a repository on {% data variables.product.prodname_dotcom %}",
+      "source_id": "github-pages",
+      "start": 199,
+      "subject": "urn:example:product:github"
+    },
+    {
+      "end": 273,
+      "locator": "line 3",
+      "object": {
+        "value": "GitHub"
+      },
+      "predicate": "http://www.w3.org/2000/01/rdf-schema#label",
+      "quote": "directly from a repository on {% data variables.product.prodname_dotcom %}",
+      "source_id": "github-pages",
+      "start": 199,
+      "subject": "urn:example:product:github"
+    },
+    {
+      "end": 2726,
+      "locator": "line 38",
+      "object": {
+        "iri": "urn:example:product:github:feature:agent-merge"
+      },
+      "predicate": "https://example.org/product-features#hasFeature",
+      "quote": "When one of the blockers you selected appears, {% data variables.product.prodname_copilot_short %} starts working in a cloud development environment to fix it.",
+      "source_id": "agent-merge",
+      "start": 2567,
+      "subject": "urn:example:product:github"
+    },
+    {
+      "end": 4809,
+      "locator": "line 66",
+      "object": {
+        "iri": "urn:example:product:github:feature:auto-merge"
+      },
+      "predicate": "https://example.org/product-features#hasFeature",
+      "quote": "{% data variables.copilot.agent_merge %} fixes blockers, while auto-merge merges a pull request after all required reviews and status checks pass. Enabling {% data variables.copilot.agent_merge %} does not enable auto-merge.",
+      "source_id": "agent-merge",
+      "start": 4585,
+      "subject": "urn:example:product:github"
+    },
+    {
+      "end": 321,
+      "locator": "line 5",
+      "object": {
+        "iri": "urn:example:product:github:feature:copilot-automations"
+      },
+      "predicate": "https://example.org/product-features#hasFeature",
+      "quote": "intro: '{% data variables.copilot.copilot_automations_cap %} let you run {% data variables.copilot.copilot_cloud_agent %} automatically on a schedule, in response to events in a repository, or programmatically via the API.'",
+      "source_id": "copilot-automations",
+      "start": 98,
+      "subject": "urn:example:product:github"
+    },
+    {
+      "end": 828,
+      "locator": "lines 12–16",
+      "object": {
+        "iri": "urn:example:product:github:feature:copilot-cloud-agent"
+      },
+      "predicate": "https://example.org/product-features#hasFeature",
+      "quote": "## What is an agent?\n\nAn agent is an AI system that can complete a goal on your behalf. Unlike an assistant that only returns a response, an agent can plan a task, use tools to take action, inspect the results, and adjust its approach.\n\nFor example, when you ask an agent to fix a bug, it can search a repository, identify the relevant files, edit the code, run tests, and revise its changes in response to test failures. The tools and environments available to an agent depend on where you use it.",
+      "source_id": "copilot-agents",
+      "start": 330,
+      "subject": "urn:example:product:github"
+    },
+    {
+      "end": 1540,
+      "locator": "line 32",
+      "object": {
+        "iri": "urn:example:product:github:feature:copilot-metrics"
+      },
+      "predicate": "https://example.org/product-features#hasFeature",
+      "quote": "* The usage metrics dashboard shows adoption and engagement trends.",
+      "source_id": "copilot-metrics",
+      "start": 1473,
+      "subject": "urn:example:product:github"
+    },
+    {
+      "end": 226,
+      "locator": "line 4",
+      "object": {
+        "iri": "urn:example:product:github:feature:copilot-pr-summary"
+      },
+      "predicate": "https://example.org/product-features#hasFeature",
+      "quote": "intro: 'Generate an AI-powered summary of your pull request changes to help reviewers quickly understand what you changed and why.'",
+      "source_id": "copilot-pr-summary",
+      "start": 95,
+      "subject": "urn:example:product:github"
+    },
+    {
+      "end": 8755,
+      "locator": "line 105",
+      "object": {
+        "iri": "urn:example:product:github:feature:copilot-review"
+      },
+      "predicate": "https://example.org/product-features#hasFeature",
+      "quote": "Each time {% data variables.product.prodname_copilot_short %} reviews a pull request or reviews code in your IDE, the interaction consumes {% data variables.product.prodname_ai_credits_short %}. The amount depends on the model used and the number of tokens processed.",
+      "source_id": "copilot-review",
+      "start": 8488,
+      "subject": "urn:example:product:github"
+    },
+    {
+      "end": 3873,
+      "locator": "line 47",
+      "object": {
+        "iri": "urn:example:product:github:feature:dependabot-security-updates"
+      },
+      "predicate": "https://example.org/product-features#hasFeature",
+      "quote": "{% data variables.product.prodname_dependabot %} checks whether it's possible to upgrade the vulnerable dependency to a fixed version without disrupting the dependency graph for the repository. Then {% data variables.product.prodname_dependabot %} raises a pull request to update the dependency to the minimum version that includes the patch and links the pull request to the {% data variables.product.prodname_dependabot %} alert, or reports an error on the alert. For more information, see [AUTOTITLE](/code-security/reference/supply-chain-security/troubleshoot-dependabot/dependabot-errors).",
+      "source_id": "dependabot-security-updates",
+      "start": 3279,
+      "subject": "urn:example:product:github"
+    },
+    {
+      "end": 5647,
+      "locator": "line 62",
+      "object": {
+        "iri": "urn:example:product:github:feature:dependabot-version-updates"
+      },
+      "predicate": "https://example.org/product-features#hasFeature",
+      "quote": "For each action in the file, {% data variables.product.prodname_dependabot %} checks the action's reference (typically a version number or commit identifier associated with the action) against the latest version. If a more recent version of the action is available, {% data variables.product.prodname_dependabot %} will send you a pull request that updates the reference in the workflow file to the latest version.",
+      "source_id": "dependabot-version-updates",
+      "start": 5233,
+      "subject": "urn:example:product:github"
+    },
+    {
+      "end": 1486,
+      "locator": "line 26",
+      "object": {
+        "iri": "urn:example:product:github:feature:github-pages"
+      },
+      "predicate": "https://example.org/product-features#hasFeature",
+      "quote": "{% data variables.product.prodname_pages %} is a static site hosting service that takes HTML, CSS, and JavaScript files straight from a repository on {% data variables.product.github %}, optionally runs the files through a build process, and publishes a website. You can see examples of {% data variables.product.prodname_pages %} sites in the [{% data variables.product.prodname_pages %} examples collection](https://github.com/collections/github-pages-examples).",
+      "source_id": "github-pages",
+      "start": 1022,
+      "subject": "urn:example:product:github"
+    },
+    {
+      "end": 1054,
+      "locator": "line 21",
+      "object": {
+        "iri": "urn:example:product:github:feature:human-pr-review"
+      },
+      "predicate": "https://example.org/product-features#hasFeature",
+      "quote": "Pull request reviews let people comment on changes, suggest improvements, and approve or request changes before code is merged. Anyone with read access can review and comment on proposed changes, helping teams maintain code quality and share knowledge.",
+      "source_id": "human-pr-review",
+      "start": 802,
+      "subject": "urn:example:product:github"
+    },
+    {
+      "end": 2395,
+      "locator": "line 35",
+      "object": {
+        "iri": "urn:example:product:github:feature:protected-branches"
+      },
+      "predicate": "https://example.org/product-features#hasFeature",
+      "quote": "By default, each branch protection rule disables force pushes to the matching branches and prevents the matching branches from being deleted. You can optionally disable these restrictions and enable additional branch protection settings.",
+      "source_id": "protected-branches",
+      "start": 2158,
+      "subject": "urn:example:product:github"
+    },
+    {
+      "end": 1171,
+      "locator": "lines 19–21",
+      "object": {
+        "iri": "urn:example:product:github:feature:required-status-checks"
+      },
+      "predicate": "https://example.org/product-features#hasFeature",
+      "quote": "Use these checks when a required status check blocks merging or pushing to a protected branch. See [AUTOTITLE](/pull-requests/reference/status-checks).\n\n* A required status check must have completed successfully in the chosen repository during the past seven days.",
+      "source_id": "required-status-checks",
+      "start": 907,
+      "subject": "urn:example:product:github"
+    },
+    {
+      "end": 2726,
+      "locator": "line 38",
+      "object": {
+        "iri": "https://example.org/product-features#AIFeature"
+      },
+      "predicate": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "quote": "When one of the blockers you selected appears, {% data variables.product.prodname_copilot_short %} starts working in a cloud development environment to fix it.",
+      "source_id": "agent-merge",
+      "start": 2567,
+      "subject": "urn:example:product:github:feature:agent-merge"
+    },
+    {
+      "end": 2726,
+      "locator": "line 38",
+      "object": {
+        "value": "Agent Merge"
+      },
+      "predicate": "http://www.w3.org/2000/01/rdf-schema#label",
+      "quote": "When one of the blockers you selected appears, {% data variables.product.prodname_copilot_short %} starts working in a cloud development environment to fix it.",
+      "source_id": "agent-merge",
+      "start": 2567,
+      "subject": "urn:example:product:github:feature:agent-merge"
+    },
+    {
+      "end": 4809,
+      "locator": "line 66",
+      "object": {
+        "iri": "urn:example:product:github:feature:auto-merge"
+      },
+      "predicate": "https://example.org/product-features#relatedFeature",
+      "quote": "{% data variables.copilot.agent_merge %} fixes blockers, while auto-merge merges a pull request after all required reviews and status checks pass. Enabling {% data variables.copilot.agent_merge %} does not enable auto-merge.",
+      "source_id": "agent-merge",
+      "start": 4585,
+      "subject": "urn:example:product:github:feature:agent-merge"
+    },
+    {
+      "end": 4809,
+      "locator": "line 66",
+      "object": {
+        "iri": "https://example.org/product-features#NonAIFeature"
+      },
+      "predicate": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "quote": "{% data variables.copilot.agent_merge %} fixes blockers, while auto-merge merges a pull request after all required reviews and status checks pass. Enabling {% data variables.copilot.agent_merge %} does not enable auto-merge.",
+      "source_id": "agent-merge",
+      "start": 4585,
+      "subject": "urn:example:product:github:feature:auto-merge"
+    },
+    {
+      "end": 4809,
+      "locator": "line 66",
+      "object": {
+        "value": "Pull request auto-merge"
+      },
+      "predicate": "http://www.w3.org/2000/01/rdf-schema#label",
+      "quote": "{% data variables.copilot.agent_merge %} fixes blockers, while auto-merge merges a pull request after all required reviews and status checks pass. Enabling {% data variables.copilot.agent_merge %} does not enable auto-merge.",
+      "source_id": "agent-merge",
+      "start": 4585,
+      "subject": "urn:example:product:github:feature:auto-merge"
+    },
+    {
+      "end": 1254,
+      "locator": "line 21",
+      "object": {
+        "iri": "urn:example:product:github:feature:required-status-checks"
+      },
+      "predicate": "https://example.org/product-features#relatedFeature",
+      "quote": "Auto-merge merges a pull request automatically after all required reviews and status checks pass. Before you use auto-merge, it must be enabled for the repository. See [AUTOTITLE](/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/managing-auto-merge-for-pull-requests-in-your-repository).",
+      "source_id": "auto-merge",
+      "start": 919,
+      "subject": "urn:example:product:github:feature:auto-merge"
+    },
+    {
+      "end": 321,
+      "locator": "line 5",
+      "object": {
+        "iri": "https://example.org/product-features#AIFeature"
+      },
+      "predicate": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "quote": "intro: '{% data variables.copilot.copilot_automations_cap %} let you run {% data variables.copilot.copilot_cloud_agent %} automatically on a schedule, in response to events in a repository, or programmatically via the API.'",
+      "source_id": "copilot-automations",
+      "start": 98,
+      "subject": "urn:example:product:github:feature:copilot-automations"
+    },
+    {
+      "end": 321,
+      "locator": "line 5",
+      "object": {
+        "value": "Copilot automations"
+      },
+      "predicate": "http://www.w3.org/2000/01/rdf-schema#label",
+      "quote": "intro: '{% data variables.copilot.copilot_automations_cap %} let you run {% data variables.copilot.copilot_cloud_agent %} automatically on a schedule, in response to events in a repository, or programmatically via the API.'",
+      "source_id": "copilot-automations",
+      "start": 98,
+      "subject": "urn:example:product:github:feature:copilot-automations"
+    },
+    {
+      "end": 321,
+      "locator": "line 5",
+      "object": {
+        "iri": "urn:example:product:github:feature:copilot-cloud-agent"
+      },
+      "predicate": "https://example.org/product-features#relatedFeature",
+      "quote": "intro: '{% data variables.copilot.copilot_automations_cap %} let you run {% data variables.copilot.copilot_cloud_agent %} automatically on a schedule, in response to events in a repository, or programmatically via the API.'",
+      "source_id": "copilot-automations",
+      "start": 98,
+      "subject": "urn:example:product:github:feature:copilot-automations"
+    },
+    {
+      "end": 828,
+      "locator": "lines 12–16",
+      "object": {
+        "iri": "https://example.org/product-features#AIFeature"
+      },
+      "predicate": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "quote": "## What is an agent?\n\nAn agent is an AI system that can complete a goal on your behalf. Unlike an assistant that only returns a response, an agent can plan a task, use tools to take action, inspect the results, and adjust its approach.\n\nFor example, when you ask an agent to fix a bug, it can search a repository, identify the relevant files, edit the code, run tests, and revise its changes in response to test failures. The tools and environments available to an agent depend on where you use it.",
+      "source_id": "copilot-agents",
+      "start": 330,
+      "subject": "urn:example:product:github:feature:copilot-cloud-agent"
+    },
+    {
+      "end": 828,
+      "locator": "lines 12–16",
+      "object": {
+        "value": "Copilot cloud agent"
+      },
+      "predicate": "http://www.w3.org/2000/01/rdf-schema#label",
+      "quote": "## What is an agent?\n\nAn agent is an AI system that can complete a goal on your behalf. Unlike an assistant that only returns a response, an agent can plan a task, use tools to take action, inspect the results, and adjust its approach.\n\nFor example, when you ask an agent to fix a bug, it can search a repository, identify the relevant files, edit the code, run tests, and revise its changes in response to test failures. The tools and environments available to an agent depend on where you use it.",
+      "source_id": "copilot-agents",
+      "start": 330,
+      "subject": "urn:example:product:github:feature:copilot-cloud-agent"
+    },
+    {
+      "end": 1540,
+      "locator": "line 32",
+      "object": {
+        "iri": "https://example.org/product-features#UnclassifiedFeature"
+      },
+      "predicate": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "quote": "* The usage metrics dashboard shows adoption and engagement trends.",
+      "source_id": "copilot-metrics",
+      "start": 1473,
+      "subject": "urn:example:product:github:feature:copilot-metrics"
+    },
+    {
+      "end": 1540,
+      "locator": "line 32",
+      "object": {
+        "value": "GitHub Copilot usage metrics dashboard"
+      },
+      "predicate": "http://www.w3.org/2000/01/rdf-schema#label",
+      "quote": "* The usage metrics dashboard shows adoption and engagement trends.",
+      "source_id": "copilot-metrics",
+      "start": 1473,
+      "subject": "urn:example:product:github:feature:copilot-metrics"
+    },
+    {
+      "end": 226,
+      "locator": "line 4",
+      "object": {
+        "iri": "https://example.org/product-features#AIFeature"
+      },
+      "predicate": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "quote": "intro: 'Generate an AI-powered summary of your pull request changes to help reviewers quickly understand what you changed and why.'",
+      "source_id": "copilot-pr-summary",
+      "start": 95,
+      "subject": "urn:example:product:github:feature:copilot-pr-summary"
+    },
+    {
+      "end": 226,
+      "locator": "line 4",
+      "object": {
+        "value": "Copilot pull request summaries"
+      },
+      "predicate": "http://www.w3.org/2000/01/rdf-schema#label",
+      "quote": "intro: 'Generate an AI-powered summary of your pull request changes to help reviewers quickly understand what you changed and why.'",
+      "source_id": "copilot-pr-summary",
+      "start": 95,
+      "subject": "urn:example:product:github:feature:copilot-pr-summary"
+    },
+    {
+      "end": 8755,
+      "locator": "line 105",
+      "object": {
+        "iri": "https://example.org/product-features#AIFeature"
+      },
+      "predicate": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "quote": "Each time {% data variables.product.prodname_copilot_short %} reviews a pull request or reviews code in your IDE, the interaction consumes {% data variables.product.prodname_ai_credits_short %}. The amount depends on the model used and the number of tokens processed.",
+      "source_id": "copilot-review",
+      "start": 8488,
+      "subject": "urn:example:product:github:feature:copilot-review"
+    },
+    {
+      "end": 8755,
+      "locator": "line 105",
+      "object": {
+        "value": "GitHub Copilot code review"
+      },
+      "predicate": "http://www.w3.org/2000/01/rdf-schema#label",
+      "quote": "Each time {% data variables.product.prodname_copilot_short %} reviews a pull request or reviews code in your IDE, the interaction consumes {% data variables.product.prodname_ai_credits_short %}. The amount depends on the model used and the number of tokens processed.",
+      "source_id": "copilot-review",
+      "start": 8488,
+      "subject": "urn:example:product:github:feature:copilot-review"
+    },
+    {
+      "end": 30197,
+      "locator": "line 292",
+      "object": {
+        "iri": "urn:example:product:github:feature:human-pr-review"
+      },
+      "predicate": "https://example.org/product-features#relatedFeature",
+      "quote": "{% data variables.product.prodname_copilot_short %} is not guaranteed to spot all problems or issues in a pull request. Sometimes it will make mistakes. Always validate {% data variables.product.prodname_copilot_short %}'s feedback carefully. Supplement {% data variables.product.prodname_copilot_short %}'s feedback with a human review.",
+      "source_id": "copilot-review",
+      "start": 29860,
+      "subject": "urn:example:product:github:feature:copilot-review"
+    },
+    {
+      "end": 3873,
+      "locator": "line 47",
+      "object": {
+        "iri": "https://example.org/product-features#NonAIFeature"
+      },
+      "predicate": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "quote": "{% data variables.product.prodname_dependabot %} checks whether it's possible to upgrade the vulnerable dependency to a fixed version without disrupting the dependency graph for the repository. Then {% data variables.product.prodname_dependabot %} raises a pull request to update the dependency to the minimum version that includes the patch and links the pull request to the {% data variables.product.prodname_dependabot %} alert, or reports an error on the alert. For more information, see [AUTOTITLE](/code-security/reference/supply-chain-security/troubleshoot-dependabot/dependabot-errors).",
+      "source_id": "dependabot-security-updates",
+      "start": 3279,
+      "subject": "urn:example:product:github:feature:dependabot-security-updates"
+    },
+    {
+      "end": 3873,
+      "locator": "line 47",
+      "object": {
+        "value": "Dependabot security updates"
+      },
+      "predicate": "http://www.w3.org/2000/01/rdf-schema#label",
+      "quote": "{% data variables.product.prodname_dependabot %} checks whether it's possible to upgrade the vulnerable dependency to a fixed version without disrupting the dependency graph for the repository. Then {% data variables.product.prodname_dependabot %} raises a pull request to update the dependency to the minimum version that includes the patch and links the pull request to the {% data variables.product.prodname_dependabot %} alert, or reports an error on the alert. For more information, see [AUTOTITLE](/code-security/reference/supply-chain-security/troubleshoot-dependabot/dependabot-errors).",
+      "source_id": "dependabot-security-updates",
+      "start": 3279,
+      "subject": "urn:example:product:github:feature:dependabot-security-updates"
+    },
+    {
+      "end": 6046,
+      "locator": "line 60",
+      "object": {
+        "iri": "urn:example:product:github:feature:dependabot-version-updates"
+      },
+      "predicate": "https://example.org/product-features#relatedFeature",
+      "quote": "You can enable a related feature, {% data variables.product.prodname_dependabot_version_updates %}, so that {% data variables.product.prodname_dependabot %} raises pull requests to update the manifest to the latest version of the dependency, whenever it detects an outdated dependency. For more information, see [AUTOTITLE](/code-security/concepts/supply-chain-security/dependabot-version-updates).",
+      "source_id": "dependabot-security-updates",
+      "start": 5648,
+      "subject": "urn:example:product:github:feature:dependabot-security-updates"
+    },
+    {
+      "end": 5647,
+      "locator": "line 62",
+      "object": {
+        "iri": "https://example.org/product-features#NonAIFeature"
+      },
+      "predicate": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "quote": "For each action in the file, {% data variables.product.prodname_dependabot %} checks the action's reference (typically a version number or commit identifier associated with the action) against the latest version. If a more recent version of the action is available, {% data variables.product.prodname_dependabot %} will send you a pull request that updates the reference in the workflow file to the latest version.",
+      "source_id": "dependabot-version-updates",
+      "start": 5233,
+      "subject": "urn:example:product:github:feature:dependabot-version-updates"
+    },
+    {
+      "end": 5647,
+      "locator": "line 62",
+      "object": {
+        "value": "Dependabot version updates"
+      },
+      "predicate": "http://www.w3.org/2000/01/rdf-schema#label",
+      "quote": "For each action in the file, {% data variables.product.prodname_dependabot %} checks the action's reference (typically a version number or commit identifier associated with the action) against the latest version. If a more recent version of the action is available, {% data variables.product.prodname_dependabot %} will send you a pull request that updates the reference in the workflow file to the latest version.",
+      "source_id": "dependabot-version-updates",
+      "start": 5233,
+      "subject": "urn:example:product:github:feature:dependabot-version-updates"
+    },
+    {
+      "end": 1486,
+      "locator": "line 26",
+      "object": {
+        "iri": "https://example.org/product-features#NonAIFeature"
+      },
+      "predicate": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "quote": "{% data variables.product.prodname_pages %} is a static site hosting service that takes HTML, CSS, and JavaScript files straight from a repository on {% data variables.product.github %}, optionally runs the files through a build process, and publishes a website. You can see examples of {% data variables.product.prodname_pages %} sites in the [{% data variables.product.prodname_pages %} examples collection](https://github.com/collections/github-pages-examples).",
+      "source_id": "github-pages",
+      "start": 1022,
+      "subject": "urn:example:product:github:feature:github-pages"
+    },
+    {
+      "end": 1486,
+      "locator": "line 26",
+      "object": {
+        "value": "GitHub Pages"
+      },
+      "predicate": "http://www.w3.org/2000/01/rdf-schema#label",
+      "quote": "{% data variables.product.prodname_pages %} is a static site hosting service that takes HTML, CSS, and JavaScript files straight from a repository on {% data variables.product.github %}, optionally runs the files through a build process, and publishes a website. You can see examples of {% data variables.product.prodname_pages %} sites in the [{% data variables.product.prodname_pages %} examples collection](https://github.com/collections/github-pages-examples).",
+      "source_id": "github-pages",
+      "start": 1022,
+      "subject": "urn:example:product:github:feature:github-pages"
+    },
+    {
+      "end": 1054,
+      "locator": "line 21",
+      "object": {
+        "iri": "https://example.org/product-features#NonAIFeature"
+      },
+      "predicate": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "quote": "Pull request reviews let people comment on changes, suggest improvements, and approve or request changes before code is merged. Anyone with read access can review and comment on proposed changes, helping teams maintain code quality and share knowledge.",
+      "source_id": "human-pr-review",
+      "start": 802,
+      "subject": "urn:example:product:github:feature:human-pr-review"
+    },
+    {
+      "end": 1054,
+      "locator": "line 21",
+      "object": {
+        "value": "Human pull request reviews"
+      },
+      "predicate": "http://www.w3.org/2000/01/rdf-schema#label",
+      "quote": "Pull request reviews let people comment on changes, suggest improvements, and approve or request changes before code is merged. Anyone with read access can review and comment on proposed changes, helping teams maintain code quality and share knowledge.",
+      "source_id": "human-pr-review",
+      "start": 802,
+      "subject": "urn:example:product:github:feature:human-pr-review"
+    },
+    {
+      "end": 2395,
+      "locator": "line 35",
+      "object": {
+        "iri": "https://example.org/product-features#NonAIFeature"
+      },
+      "predicate": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "quote": "By default, each branch protection rule disables force pushes to the matching branches and prevents the matching branches from being deleted. You can optionally disable these restrictions and enable additional branch protection settings.",
+      "source_id": "protected-branches",
+      "start": 2158,
+      "subject": "urn:example:product:github:feature:protected-branches"
+    },
+    {
+      "end": 2395,
+      "locator": "line 35",
+      "object": {
+        "value": "Branch protection rules"
+      },
+      "predicate": "http://www.w3.org/2000/01/rdf-schema#label",
+      "quote": "By default, each branch protection rule disables force pushes to the matching branches and prevents the matching branches from being deleted. You can optionally disable these restrictions and enable additional branch protection settings.",
+      "source_id": "protected-branches",
+      "start": 2158,
+      "subject": "urn:example:product:github:feature:protected-branches"
+    },
+    {
+      "end": 8558,
+      "locator": "line 95",
+      "object": {
+        "iri": "urn:example:product:github:feature:required-status-checks"
+      },
+      "predicate": "https://example.org/product-features#relatedFeature",
+      "quote": "Required status checks must have a `successful`, `skipped`, or `neutral` status before collaborators can make changes to a protected branch. Required status checks can be checks or commit statuses. For more information, see [AUTOTITLE](/pull-requests/reference/status-checks).",
+      "source_id": "protected-branches",
+      "start": 8282,
+      "subject": "urn:example:product:github:feature:protected-branches"
+    },
+    {
+      "end": 1171,
+      "locator": "lines 19–21",
+      "object": {
+        "iri": "https://example.org/product-features#NonAIFeature"
+      },
+      "predicate": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+      "quote": "Use these checks when a required status check blocks merging or pushing to a protected branch. See [AUTOTITLE](/pull-requests/reference/status-checks).\n\n* A required status check must have completed successfully in the chosen repository during the past seven days.",
+      "source_id": "required-status-checks",
+      "start": 907,
+      "subject": "urn:example:product:github:feature:required-status-checks"
+    },
+    {
+      "end": 1171,
+      "locator": "lines 19–21",
+      "object": {
+        "value": "Required status checks"
+      },
+      "predicate": "http://www.w3.org/2000/01/rdf-schema#label",
+      "quote": "Use these checks when a required status check blocks merging or pushing to a protected branch. See [AUTOTITLE](/pull-requests/reference/status-checks).\n\n* A required status check must have completed successfully in the chosen repository during the past seven days.",
+      "source_id": "required-status-checks",
+      "start": 907,
+      "subject": "urn:example:product:github:feature:required-status-checks"
+    }
+  ],
+  "ontology_sha256": "7db48deaea46d6c7344ddd5c7961fc23230c8b916843e1173d7f16acdb49a41f",
+  "sources": [
+    {
+      "id": "agent-merge",
+      "path": "sources/agent-merge.md",
+      "sha256": "338ca56e37dda47baa9833a73a93730a9579b07ae1768e9f4f875f38e2d087dd"
+    },
+    {
+      "id": "auto-merge",
+      "path": "sources/auto-merge.md",
+      "sha256": "9158fcf53bfb92301b25f97c1efb4c39e64d7b6feea4053aa2444e811ea9d0e5"
+    },
+    {
+      "id": "copilot-agents",
+      "path": "sources/copilot-agents.md",
+      "sha256": "8ee374a163023f17b0f0fb55e116107e7ce151d0fd0529c46710441700711364"
+    },
+    {
+      "id": "copilot-automations",
+      "path": "sources/copilot-automations.md",
+      "sha256": "6486cb0581b2dcf54a4fe7309033ece56bcf0d8a3e6742ea1cf8fb20048c4be0"
+    },
+    {
+      "id": "copilot-metrics",
+      "path": "sources/copilot-metrics.md",
+      "sha256": "56bdf9468cfca68a7b71e3adb21488c5c07af95e04e128c9c20cd7019246ceb1"
+    },
+    {
+      "id": "copilot-pr-summary",
+      "path": "sources/copilot-pr-summary.md",
+      "sha256": "bfbee311a70d1cf8f91a6143d50495e5d733fe8292be6efeb97320c90ef9bcfa"
+    },
+    {
+      "id": "copilot-review",
+      "path": "sources/copilot-review.md",
+      "sha256": "1b6bf576616797bd229eba750ff96798c0f7eda91ed6fd84c742d4d851b9f8ab"
+    },
+    {
+      "id": "copilot-review-configuration",
+      "path": "sources/copilot-review-configuration.md",
+      "sha256": "12427837345ca4e6af85844e7f12ece684c7be8192ed8edc393ea52dcec081c3"
+    },
+    {
+      "id": "dependabot-security-updates",
+      "path": "sources/dependabot-security-updates.md",
+      "sha256": "013cec8c4d12ad8f9e734b0f942bcfc4ece4342e2167b125cbaf9dc39f3b3b11"
+    },
+    {
+      "id": "dependabot-version-updates",
+      "path": "sources/dependabot-version-updates.md",
+      "sha256": "e40943e51b1a9e68d31a6af25a50d2df5cde1d6030b024e1da972670185e546a"
+    },
+    {
+      "id": "github-pages",
+      "path": "sources/github-pages.md",
+      "sha256": "ee0037770b2f319a26000bce956ea7038ac853328ae6f6b888adce01debfe1a5"
+    },
+    {
+      "id": "human-pr-review",
+      "path": "sources/human-pr-review.md",
+      "sha256": "182225d7af6472e67588544aeb0723d661d3dfa5de1b15603eb24dfb0f71b255"
+    },
+    {
+      "id": "protected-branches",
+      "path": "sources/protected-branches.md",
+      "sha256": "52c7c02847bc2ef84f3db2291960a6fdf29d410dc6f03db7fe73712a23bd5f84"
+    },
+    {
+      "id": "required-status-checks",
+      "path": "sources/required-status-checks.md",
+      "sha256": "9b5561c1111ad4a6e3430d1656cc17d7f923539794df8224638952984e1e2990"
+    }
+  ]
+}

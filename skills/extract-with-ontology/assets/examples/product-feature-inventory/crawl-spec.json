@@ -1,0 +1,91 @@
+{
+  "version": 1,
+  "repository": "github/docs",
+  "revision": "f309096a83abde7c311523f8ca97fc587388b0e1",
+  "max_depth": 2,
+  "max_sources": 14,
+  "max_source_bytes": 262144,
+  "seeds": [
+    "agent-merge",
+    "copilot-agents",
+    "copilot-automations",
+    "copilot-metrics",
+    "copilot-pr-summary",
+    "copilot-review",
+    "dependabot-security-updates",
+    "github-pages",
+    "human-pr-review"
+  ],
+  "allowlist": [
+    {
+      "source_id": "agent-merge",
+      "source_path": "content/copilot/how-tos/copilot-on-github/use-copilot-agents/watch-and-fix-pull-requests.md",
+      "sha256": "338ca56e37dda47baa9833a73a93730a9579b07ae1768e9f4f875f38e2d087dd"
+    },
+    {
+      "source_id": "auto-merge",
+      "source_path": "content/pull-requests/how-tos/merge-and-close-pull-requests/automatically-merging-a-pull-request.md",
+      "sha256": "9158fcf53bfb92301b25f97c1efb4c39e64d7b6feea4053aa2444e811ea9d0e5"
+    },
+    {
+      "source_id": "copilot-agents",
+      "source_path": "content/copilot/concepts/agent-capabilities/about-agents/about-github-copilot-agents.md",
+      "sha256": "8ee374a163023f17b0f0fb55e116107e7ce151d0fd0529c46710441700711364"
+    },
+    {
+      "source_id": "copilot-automations",
+      "source_path": "content/copilot/concepts/agent-capabilities/agent-powered-workflows-and-operations/about-automations.md",
+      "sha256": "6486cb0581b2dcf54a4fe7309033ece56bcf0d8a3e6742ea1cf8fb20048c4be0"
+    },
+    {
+      "source_id": "copilot-metrics",
+      "source_path": "content/copilot/concepts/billing-and-usage/copilot-usage-metrics/copilot-metrics.md",
+      "sha256": "56bdf9468cfca68a7b71e3adb21488c5c07af95e04e128c9c20cd7019246ceb1"
+    },
+    {
+      "source_id": "copilot-pr-summary",
+      "source_path": "content/copilot/how-tos/copilot-on-github/copilot-for-github-tasks/create-a-pr-summary.md",
+      "sha256": "bfbee311a70d1cf8f91a6143d50495e5d733fe8292be6efeb97320c90ef9bcfa"
+    },
+    {
+      "source_id": "copilot-review",
+      "source_path": "content/copilot/concepts/agent-capabilities/agent-powered-workflows-and-operations/code-review.md",
+      "sha256": "1b6bf576616797bd229eba750ff96798c0f7eda91ed6fd84c742d4d851b9f8ab"
+    },
+    {
+      "source_id": "copilot-review-configuration",
+      "source_path": "content/copilot/how-tos/copilot-on-github/set-up-copilot/configure-code-review.md",
+      "sha256": "12427837345ca4e6af85844e7f12ece684c7be8192ed8edc393ea52dcec081c3"
+    },
+    {
+      "source_id": "dependabot-security-updates",
+      "source_path": "content/code-security/concepts/supply-chain-security/dependabot-security-updates.md",
+      "sha256": "013cec8c4d12ad8f9e734b0f942bcfc4ece4342e2167b125cbaf9dc39f3b3b11"
+    },
+    {
+      "source_id": "dependabot-version-updates",
+      "source_path": "content/code-security/concepts/supply-chain-security/dependabot-version-updates.md",
+      "sha256": "e40943e51b1a9e68d31a6af25a50d2df5cde1d6030b024e1da972670185e546a"
+    },
+    {
+      "source_id": "github-pages",
+      "source_path": "content/pages/getting-started-with-github-pages/what-is-github-pages.md",
+      "sha256": "ee0037770b2f319a26000bce956ea7038ac853328ae6f6b888adce01debfe1a5"
+    },
+    {
+      "source_id": "human-pr-review",
+      "source_path": "content/pull-requests/reference/pull-request-reviews.md",
+      "sha256": "182225d7af6472e67588544aeb0723d661d3dfa5de1b15603eb24dfb0f71b255"
+    },
+    {
+      "source_id": "protected-branches",
+      "source_path": "content/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches.md",
+      "sha256": "52c7c02847bc2ef84f3db2291960a6fdf29d410dc6f03db7fe73712a23bd5f84"
+    },
+    {
+      "source_id": "required-status-checks",
+      "source_path": "content/pull-requests/how-tos/merge-and-close-pull-requests/troubleshooting-required-status-checks.md",
+      "sha256": "9b5561c1111ad4a6e3430d1656cc17d7f923539794df8224638952984e1e2990"
+    }
+  ]
+}

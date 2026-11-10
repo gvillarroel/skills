@@ -231,17 +231,67 @@ def check(ontology, checksum, data, ledger, root):
     }
 
 
+def bind_evidence(checksum, selection, root):
+    if (not isinstance(selection, dict) or set(selection) != {"sources", "assertions"}
+            or not isinstance(selection["sources"], list) or not selection["sources"]
+            or not isinstance(selection["assertions"], list)):
+        raise ValueError("selection requires a nonempty sources array and an assertions array")
+    sources = {}
+    for item in selection["sources"]:
+        source_id = item["id"]
+        if not isinstance(source_id, str) or not source_id.strip() or source_id in sources:
+            raise ValueError("source IDs must be nonempty and unique")
+        text = source_text(root, item)
+        starts = [0, *(match.end() for match in re.finditer("\n", text))]
+        if not text or text.endswith("\n"):
+            starts.pop()
+        sources[source_id] = (text, starts)
+
+    assertions = []
+    triple_fields = {"subject", "predicate", "object", "source_id"}
+    for index, row in enumerate(selection["assertions"], 1):
+        if not isinstance(row, dict) or set(row) != triple_fields | {"start_line", "end_line"}:
+            raise ValueError(f"selection row {index} requires triple fields, source_id, start_line and end_line")
+        source_id = row["source_id"]
+        if source_id not in sources:
+            raise ValueError(f"selection row {index} has an unknown source")
+        text, starts = sources[source_id]
+        first, last = row["start_line"], row["end_line"]
+        if not (type(first) is type(last) is int and 1 <= first <= last <= len(starts)):
+            raise ValueError(f"selection row {index} has an out-of-bounds line range")
+        start = starts[first - 1]
+        end = starts[last] if last < len(starts) else len(text)
+        if text[end - 1:end] == "\n":
+            end -= 1
+            if text[end - 1:end] == "\r":
+                end -= 1
+        quote = text[start:end]
+        if not quote.strip():
+            raise ValueError(f"selection row {index} has a blank citation")
+        locator = f"line {first}" if first == last else f"lines {first}-{last}"
+        assertions.append({key: row[key] for key in triple_fields} | {
+            "locator": locator, "quote": quote, "start": start, "end": end,
+        })
+    assertions.sort(key=lambda row: (row["source_id"], row["start"], row["end"],
+                                     row["subject"], row["predicate"], json.dumps(row["object"], sort_keys=True)))
+    return {"ontology_sha256": checksum, "sources": sorted(selection["sources"], key=lambda item: item["id"]),
+            "assertions": assertions}
+
+
 def main():
     parser = ArgumentParser(description=__doc__)
     commands = parser.add_subparsers(dest="command", required=True)
     inventory_command = commands.add_parser("inventory")
     check_command = commands.add_parser("check")
-    for command in (inventory_command, check_command):
+    bind_command = commands.add_parser("bind")
+    for command in (inventory_command, check_command, bind_command):
         command.add_argument("--ontology", type=Path, required=True)
         command.add_argument("--output", type=Path)
-    check_command.add_argument("--data", type=Path, required=True)
+    for command in (check_command, bind_command):
+        command.add_argument("--data", type=Path, required=True)
+        command.add_argument("--source-root", type=Path, required=True)
     check_command.add_argument("--evidence", type=Path, required=True)
-    check_command.add_argument("--source-root", type=Path, required=True)
+    bind_command.add_argument("--selection", type=Path, required=True)
     args = parser.parse_args()
     rdflib.NORMALIZE_LITERALS = False
     try:
@@ -250,8 +300,16 @@ def main():
             result = inventory(ontology, checksum)
         else:
             data, _ = parse_graph(args.data)
-            ledger = json.loads(args.evidence.read_bytes(), object_pairs_hook=unique_object)
-            result = check(ontology, checksum, data, ledger, args.source_root.resolve())
+            root = args.source_root.resolve()
+            if args.command == "bind":
+                selection = json.loads(args.selection.read_bytes(), object_pairs_hook=unique_object)
+                result = bind_evidence(checksum, selection, root)
+                validation = check(ontology, checksum, data, result, root)
+                if validation["status"] != "passed":
+                    raise ValueError(f"bound evidence failed validation: {validation['issues'][0]['issue']}")
+            else:
+                ledger = json.loads(args.evidence.read_bytes(), object_pairs_hook=unique_object)
+                result = check(ontology, checksum, data, ledger, root)
         text = json.dumps(result, ensure_ascii=False, indent=2, sort_keys=True) + "\n"
         if args.output:
             with args.output.open("x", encoding="utf-8", newline="\n") as output:
