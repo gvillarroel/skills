@@ -759,7 +759,10 @@ def build_docs() -> None:
 
     copy_tree(example_source("hierarchy-lens"), PAGES_ROOT / "examples" / "hierarchy-lens")
     copy_tree(example_source("usefulcharts-style"), PAGES_ROOT / "examples" / "usefulcharts-style")
-    copy_tree(example_source("product-feature-inventory"), PAGES_ROOT / "examples" / "product-feature-inventory")
+    product_example = PAGES_ROOT / "examples" / "product-feature-inventory"
+    copy_tree(example_source("product-feature-inventory"), product_example)
+    shutil.copyfile(SKILLS / "extract-with-ontology" / "scripts" / "crawl_product_docs.py",
+                    product_example / "crawl.py")
 
     copy_tree(example_source("compose-synchronized-svg"), PAGES_ROOT / "examples" / "compose-synchronized-svg")
     copy_tree(example_source("echarts-animated-svg"), PAGES_ROOT / "examples" / "echarts-animated-svg")

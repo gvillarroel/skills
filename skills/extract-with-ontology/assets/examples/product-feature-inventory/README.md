@@ -6,10 +6,16 @@ product membership, feature identity, and the evidence for a feature's
 documented use of AI. It includes an explicit unresolved class for
 features whose documented behavior leaves their mechanism open.
 
+The [OpenSearch 2.19 variant](opensearch/README.md) uses the same
+workflow with a separate supplied ontology. It adds execution
+boundaries, conditional routing, and introduction versions.
+
 ## Crawl the source snapshot
 
 Run from this example directory with Python 3.11 or later. Choose a new
 directory outside the skill for the downloads. Create its parent first.
+The published example provides `crawl.py`. In a repository checkout,
+use the skill's `scripts/crawl_product_docs.py` in its place.
 
 ```bash
 python crawl.py crawl --spec crawl-spec.json --output /path/to/product-corpus

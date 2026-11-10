@@ -1,0 +1,90 @@
+{
+  "allowlist": [
+    {
+      "aliases": [
+        "/2.19/ml-commons-plugin/extensibility/blueprints/"
+      ],
+      "publisher_path": "/2.19/ml-commons-plugin/remote-models/blueprints/",
+      "sha256": "0d7741a1f97abf54d66e0df106e9591c10e264c0f495f52b27cc95632cf21b15",
+      "source_id": "blueprints",
+      "source_path": "_ml-commons-plugin/remote-models/blueprints.md"
+    },
+    {
+      "aliases": [
+        "/2.19/ml-commons-plugin/extensibility/connectors/"
+      ],
+      "publisher_path": "/2.19/ml-commons-plugin/remote-models/connectors/",
+      "sha256": "e6f38da208bdd5ddd5080d37efbf7fd0168da5313d8bc1f74196c246955b671c",
+      "source_id": "connectors",
+      "source_path": "_ml-commons-plugin/remote-models/connectors.md"
+    },
+    {
+      "aliases": [
+        "/2.19/api-reference/ingest-apis/processors/text-embedding/"
+      ],
+      "publisher_path": "/2.19/ingest-pipelines/processors/text-embedding/",
+      "sha256": "dde75c4db7c4d6edbe616760c6abd70a8aa694ef85336d763e2808c93eb40f26",
+      "source_id": "embedding",
+      "source_path": "_ingest-pipelines/processors/text-embedding.md"
+    },
+    {
+      "publisher_path": "/2.19/search-plugins/keyword-search/",
+      "sha256": "a3ed9052f9002f05bb536711acce4dbe319e762b78f84d7e5ab2a3fb4ff19d62",
+      "source_id": "keyword",
+      "source_path": "_search-plugins/keyword-search.md"
+    },
+    {
+      "aliases": [
+        "/2.19/query-dsl/specialized/k-nn/index/"
+      ],
+      "publisher_path": "/2.19/query-dsl/specialized/k-nn/",
+      "sha256": "73a7e979c0dd7ae506f0455af0efde0391ca18be41dc12b9f069bb22198549dc",
+      "source_id": "knn",
+      "source_path": "_query-dsl/specialized/k-nn.md"
+    },
+    {
+      "publisher_path": "/2.19/ml-commons-plugin/custom-local-models/",
+      "sha256": "b8d40205f8f9d2a371d371b997cede07e3e1c288ede108b4d2f7750970c38ae2",
+      "source_id": "local",
+      "source_path": "_ml-commons-plugin/custom-local-models.md"
+    },
+    {
+      "publisher_path": "/2.19/ml-commons-plugin/integrating-ml-models/",
+      "sha256": "ce9bd6df37a25fb2a6658338eb15b72b6695dcd329216026e9521e90bc3183bb",
+      "source_id": "models",
+      "source_path": "_ml-commons-plugin/integrating-ml-models.md"
+    },
+    {
+      "publisher_path": "/2.19/search-plugins/search-pipelines/normalization-processor/",
+      "sha256": "0368bd6411b025531214e75a727ead3c26c8d09a5a65789a1cc49879476fb7c4",
+      "source_id": "normalize",
+      "source_path": "_search-plugins/search-pipelines/normalization-processor.md"
+    },
+    {
+      "aliases": [
+        "/2.19/ml-commons-plugin/extensibility/index/",
+        "/2.19/ml-commons-plugin/remote-models/"
+      ],
+      "publisher_path": "/2.19/ml-commons-plugin/remote-models/index/",
+      "sha256": "8de255f226e567ef764077d6027a1cc7a2194ed7cf961f7dd9ff394ad5dd83e7",
+      "source_id": "remote",
+      "source_path": "_ml-commons-plugin/remote-models/index.md"
+    }
+  ],
+  "docs_base_path": "/2.19",
+  "docs_origin": "https://docs.opensearch.org",
+  "max_depth": 2,
+  "max_source_bytes": 21000,
+  "max_sources": 9,
+  "repository": "opensearch-project/documentation-website",
+  "revision": "f5e5e211d197f0fcee0cbf6dfc93e680b8c7ff12",
+  "seeds": [
+    "embedding",
+    "remote",
+    "local",
+    "keyword",
+    "knn",
+    "normalize"
+  ],
+  "version": 2
+}

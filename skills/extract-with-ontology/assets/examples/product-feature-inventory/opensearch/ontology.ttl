@@ -1,0 +1,67 @@
+@prefix pf: <https://example.org/product-features#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<https://example.org/product-features> a owl:Ontology ;
+    owl:versionIRI <https://example.org/product-features/opensearch/1> ;
+    rdfs:comment "A product feature inventory classified by the behavior documented in a pinned source snapshot."@en .
+
+pf:Product a owl:Class ;
+    rdfs:label "Product"@en ;
+    rdfs:comment "The named product within the scope of this inventory."@en .
+
+pf:Feature a owl:Class ;
+    rdfs:label "Feature"@en ;
+    rdfs:comment "A separately identifiable capability of the product."@en .
+
+pf:AIFeature a owl:Class ;
+    rdfs:subClassOf pf:Feature ;
+    rdfs:label "AI feature"@en ;
+    rdfs:comment "A feature whose documented behavior in the assessed scope explicitly uses an AI model, agent or AI-powered operation. Cite evidence connecting AI to the behavior of this feature."@en .
+
+pf:NonAIFeature a owl:Class ;
+    rdfs:subClassOf pf:Feature ;
+    rdfs:label "Non-AI feature"@en ;
+    rdfs:comment "A feature whose assessed behavior is documented as a human-controlled operation, a static service or a fixed input and rule. The classification covers the documented operation and its stated scope."@en .
+
+pf:UnclassifiedFeature a owl:Class ;
+    rdfs:subClassOf pf:Feature ;
+    rdfs:label "Unclassified feature"@en ;
+    rdfs:comment "A documented feature for which the pinned evidence does not support one classification at the assessed scope. Record the specific open question in review."@en .
+
+[] a owl:AllDisjointClasses ;
+    owl:members (pf:AIFeature pf:NonAIFeature pf:UnclassifiedFeature) .
+
+pf:hasFeature a owl:ObjectProperty ;
+    rdfs:domain pf:Product ;
+    rdfs:range pf:Feature ;
+    rdfs:label "has feature"@en ;
+    rdfs:comment "Connects a product to an evidenced capability in the inventory."@en .
+
+pf:ExecutionBoundary a owl:Class ;
+    rdfs:label "Execution boundary"@en .
+
+pf:InOpenSearchCluster a owl:NamedIndividual, pf:ExecutionBoundary ;
+    rdfs:label "Within the OpenSearch cluster"@en .
+
+pf:OutsideOpenSearchCluster a owl:NamedIndividual, pf:ExecutionBoundary ;
+    rdfs:label "Outside the OpenSearch cluster"@en .
+
+pf:executesAt a owl:ObjectProperty ;
+    rdfs:domain pf:Feature ;
+    rdfs:range pf:ExecutionBoundary ;
+    rdfs:label "executes at"@en ;
+    rdfs:comment "Assign the boundary of the assessed operation itself. For example an operation's request transport and the requested operation can have different execution boundaries."@en .
+
+pf:routesConfiguredRequestTo a owl:ObjectProperty ;
+    rdfs:domain pf:Feature ;
+    rdfs:range pf:Feature ;
+    rdfs:label "routes a configured request to"@en ;
+    rdfs:comment "The subject is the request-dispatch operation and the object is the operation reached through the endpoint that the subject is explicitly configured to call. Each assertion is conditional on selection of that configuration. It makes no claim that both endpoints are selected in one request."@en .
+
+pf:introducedVersion a owl:DatatypeProperty ;
+    rdfs:domain pf:Feature ;
+    rdfs:label "introduced version"@en ;
+    rdfs:comment "The expressly documented introduction version for the scoped feature, as a string such as 3.1. Do not transfer a component version to a distinct workflow."@en .
+
+rdfs:label a owl:AnnotationProperty .

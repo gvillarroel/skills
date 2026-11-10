@@ -13,6 +13,10 @@ For a glossary-only request, read [glossary.md](references/glossary.md)
 and use the supplied vocabulary and any requested source scope directly.
 An ontology alone is enough for its vocabulary glossary.
 
+For a product inventory that starts from authorized GitHub-hosted
+documentation, use the [bounded documentation crawler](references/product-crawl.md)
+to create the pinned text inputs first.
+
 1. Identify the intended ontology version, input files, scope, desired
    fields, and output format. Record ontology and file identities. Use
    only supplied or explicitly authorized input versions and local imports.

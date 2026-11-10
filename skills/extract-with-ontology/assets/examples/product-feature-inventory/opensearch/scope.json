@@ -1,0 +1,96 @@
+{
+  "assessment_release": "2.19",
+  "location_facts_requested": [
+    {
+      "feature": "urn:example:product:opensearch:feature:local-ingest-embedding",
+      "predicate": "https://example.org/product-features#executesAt"
+    },
+    {
+      "feature": "urn:example:product:opensearch:feature:bedrock-titan-embedding",
+      "predicate": "https://example.org/product-features#executesAt"
+    },
+    {
+      "feature": "urn:example:product:opensearch:feature:configured-connector-dispatch",
+      "predicate": "https://example.org/product-features#executesAt"
+    },
+    {
+      "feature": "urn:example:product:opensearch:feature:private-endpoint-response",
+      "predicate": "https://example.org/product-features#executesAt"
+    }
+  ],
+  "operations": [
+    {
+      "iri": "urn:example:product:opensearch:feature:lexical-ranking",
+      "label": "Keyword relevance ranking",
+      "scope": "Calculate ordinary keyword relevance with default similarity on a text field without a custom model."
+    },
+    {
+      "iri": "urn:example:product:opensearch:feature:provided-vector-knn",
+      "label": "Nearest-neighbor retrieval with a supplied vector",
+      "scope": "Retrieve nearest indexed vectors with the knn query. Numeric query and index vectors are already supplied. Their upstream generation and index-training modes are outside scope."
+    },
+    {
+      "iri": "urn:example:product:opensearch:feature:local-ingest-embedding",
+      "label": "Text embedding in a locally served ingest configuration",
+      "scope": "The text_embedding processor has been configured with the ID of a text embedding model deployed locally in this self-managed OpenSearch cluster."
+    },
+    {
+      "iri": "urn:example:product:opensearch:feature:bedrock-titan-embedding",
+      "label": "Amazon Bedrock Titan text embedding",
+      "scope": "The external Amazon Bedrock Titan operation when the documented Titan connector configuration is selected. Assess execution of the embedding itself."
+    },
+    {
+      "iri": "urn:example:product:opensearch:feature:configured-connector-dispatch",
+      "label": "Configured connector request dispatch",
+      "scope": "The OpenSearch ML Commons transport for a registered remote connector, limited to constructing and dispatching the configured request and receiving its response. The scenario assesses two configurations separately, the documented Titan connector and a custom HTTP endpoint."
+    },
+    {
+      "iri": "urn:example:product:opensearch:feature:private-endpoint-response",
+      "label": "Configured private endpoint response",
+      "scope": "The actual implementation inside a particular organization-owned service reached through the custom HTTP connector. A response carrying a vector is given, but no implementation, model identity or provider log is supplied. Do not infer from the behavior of the OpenSearch connector itself."
+    },
+    {
+      "iri": "urn:example:product:opensearch:feature:hybrid-score-normalization",
+      "label": "Hybrid search score normalization",
+      "scope": "Normalize and combine existing query scores with the normalization processor. Query generation and any model upstream of those scores are outside scope."
+    }
+  ],
+  "product_iri": "urn:example:product:opensearch",
+  "product_label": "OpenSearch",
+  "relation_candidates": [
+    {
+      "object": "urn:example:product:opensearch:feature:bedrock-titan-embedding",
+      "predicate": "https://example.org/product-features#routesConfiguredRequestTo",
+      "subject": "urn:example:product:opensearch:feature:configured-connector-dispatch"
+    },
+    {
+      "object": "urn:example:product:opensearch:feature:configured-connector-dispatch",
+      "predicate": "https://example.org/product-features#routesConfiguredRequestTo",
+      "subject": "urn:example:product:opensearch:feature:bedrock-titan-embedding"
+    },
+    {
+      "object": "urn:example:product:opensearch:feature:configured-connector-dispatch",
+      "predicate": "https://example.org/product-features#routesConfiguredRequestTo",
+      "subject": "urn:example:product:opensearch:feature:private-endpoint-response"
+    },
+    {
+      "object": "urn:example:product:opensearch:feature:private-endpoint-response",
+      "predicate": "https://example.org/product-features#routesConfiguredRequestTo",
+      "subject": "urn:example:product:opensearch:feature:configured-connector-dispatch"
+    }
+  ],
+  "version_contrast_requested": {
+    "feature": "urn:example:product:opensearch:feature:hybrid-score-normalization",
+    "release": "2.9"
+  },
+  "version_facts_requested": [
+    {
+      "feature": "urn:example:product:opensearch:feature:configured-connector-dispatch",
+      "predicate": "https://example.org/product-features#introducedVersion"
+    },
+    {
+      "feature": "urn:example:product:opensearch:feature:hybrid-score-normalization",
+      "predicate": "https://example.org/product-features#introducedVersion"
+    }
+  ]
+}
