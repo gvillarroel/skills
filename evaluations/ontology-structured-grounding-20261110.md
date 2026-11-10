@@ -116,6 +116,14 @@ no AWS resource creation.
 [Terraform 1.13.5 binaries](https://releases.hashicorp.com/terraform/1.13.5/) ·
 [Built-in Terraform data resource](https://developer.hashicorp.com/terraform/language/resources/terraform-data)
 
+A checksum-verified OpenTofu 1.13.2 binary ran the same built-in
+configuration with its own version constraint. The five relevant
+value and mask shapes, source locators, and membership decisions
+were identical across the retained Terraform and OpenTofu plans.
+The complete plan bytes and generator versions differ.
+[OpenTofu 1.13.2 release](https://github.com/opentofu/opentofu/releases/tag/v1.13.2) ·
+[OpenTofu JSON plan format](https://opentofu.org/docs/internals/json-format/)
+
 A separate compiler combines the computed structured findings
 with the authored documentary findings and review. The complete
 typed path and the grounded path reproduced identical decisions,
@@ -134,6 +142,66 @@ and exact joint decisions from 19/22 to 21/22. The foreign-ID
 case changed from insufficient to refuted. Both graphs stayed
 identical to the reference. The replay preserves the original
 trace exclusions and does not reevaluate the unchanged reviews.
+
+## Paired native compiler follow-up
+
+The follow-up reused the frozen cases and verified source files.
+Both arms used the typed carrier, an identical draft checker that
+reports expected validation findings, and the same final compiler
+command. Both received the explicit convention that each supplied
+invocation input contains its complete Records array. The control
+authored every role. The grounded arm authored documentary roles
+and review. It received a model-visible view of the 23 computed
+structured roles. The compiler independently recomputed and
+inserted those roles from the original actor packet.
+
+The positive references reproduced identical full decisions,
+RDF, and ledger bytes. The actual Docker verifier passed 24
+controls. Both no-inference Harbor jobs exercised the four actor
+commands and transferred the raw submission and all three
+compiled artifacts. Each arm then ran two GPT-6 Luna low
+attempts with zero retries.
+
+| Native outcome | Fully authored typed roles | Executable structured roles |
+| --- | ---: | ---: |
+| Strict trace and complete artifact replay | 2/2 | 2/2 |
+| Correct decision state and graph admission | 21/22 | 22/22 |
+| Exact structured roles | 45/46 | 46/46 |
+| Exact documentary roles | 52/58 | 53/58 |
+| Exact joint state and mode-specific witness decision | 16/22 | 17/22 |
+| Exact joint state and shared flat witness decision | 18/22 | 19/22 |
+| Full exact artifact | 1/2 | 1/2 |
+
+One control accepted a runtime claim after missing the refuting
+side of a same-invocation conflict. Both grounded runs preserved
+the returned-response and exception records, which kept the
+conflict out of the asserted graph. Both grounded graphs matched
+the three-triple reference byte for byte. The control graphs
+contained three and four triples respectively, with the conflict
+claim as the only difference. Effective decisions and ledgers
+varied within both arms. Flattened witness ID sets agreed in six
+of eleven cases between grounded repeats and in zero of eleven
+between control repeats. The exact role and full-artifact
+metrics therefore describe different outcomes.
+
+| Independent masked outcome | Fully authored typed roles | Executable structured roles |
+| --- | ---: | ---: |
+| Correct state with decisive evidence | 21/22 | 22/22 |
+| Complete documentary coverage | 16/22 | 17/22 |
+| Accurate review text | 0/22 | 15/22 |
+| Direct closure for open or conflicting outcomes | 1/12 | 11/12 |
+| Complete independently reviewed outcome | 0/22 | 14/22 |
+| Graphs identical to the reference | 1/2 | 2/2 |
+
+The strict native full-artifact metric scores state and exact
+role witnesses. It is separate from the semantic review gate.
+One exact control artifact had generic review wording throughout.
+The independent reviewer credited its evidence and excluded its
+reviews. The result favors executable grounding for these cases
+while leaving the remaining review and documentary choices open.
+The compared arms reuse the same prospective transfer fixture.
+The workflow remains experimental pending model evaluation on a
+separate family.
 
 ## Independent Kubernetes runtime experiment
 
@@ -168,6 +236,16 @@ Fresh captures have their own IDs and timestamps.
 [JMESPath specification](https://jmespath.org/specification.html) ·
 [OPA policy language](https://www.openpolicyagent.org/docs/policy-language)
 
+An independent author prepared a prospective model extraction
+fixture with 12 decisions, 11 retained authentic records, and
+five explicit synthetic mutations. The cases include declaration,
+dry-run, persistence, controller status, stale generations,
+another resource version or UID, and transport versus admission
+rejection. Both reference carriers produced the same five-triple
+graph. All 30 reference, adversarial and staging controls passed
+on Windows Python 3.11 and 3.14 and Ubuntu WSL Python 3.12.
+Luna evaluation of this family remains pending.
+
 ## Receipts
 
 | Local artifact | SHA-256 |
@@ -184,11 +262,22 @@ Fresh captures have their own IDs and timestamps.
 | Revised independent mutation replay | `821429c28cb62fab12a6e3d8e7227258e790e384922136f7afa73ab11e0232cc` |
 | Independent mutation witness equivalence | `4c30c0ede8962711fec7129423f9f42f17e9fcc21a7d5ea8863f83fb280a2944` |
 | Real Terraform plan shape replay | `5cdfdbee207526ace31af4896363a0337e636173b8c346a133cb8891e09d9e05` |
+| Real OpenTofu plan shape replay | `af7f75d7d2953dcb62ffa6cdb57d418a7185899857bfdfc76fc4b4b23e8dadb6` |
 | Atomic compiler reference replay | `8586cf047a2a94632d79a86334ae0acafbd26d64845e84120c06d33befb0a999` |
 | Retained typed output replacement replay | `bc11084b087b1afa52af38b3fbcba060210592a1977177b097794f5edac13053` |
+| Grounded native protocol | `613dac274a0ef9c49aa99339ec359a9df083b84d6cbf33884ac5560c04b2a37c` |
+| Grounded native pre-inference receipt | `0bb729e9e3ac03dba294d02add261b49d0897f4b6cf527c57ebd5beb132c87c0` |
+| Grounded independent rubric addendum | `4eedf2635fb68ab0f9007bfaf8a04b22e44b3b16d25917bac2cccb7e3f665dc7` |
+| Grounded native comparison | `d41341972ccbef509ab72132fef261c19cd68197fa34d8a1b5984a8437ca9e11` |
+| Grounded repeat stability and graph difference | `437fc9abdb2ad414e9d2b02187c8dac842dcc8dc2447fec517dcf613c8bc4d01` |
+| Grounded independent masked assessment | `6780f98e4f5c32cea72e8c9000c3db108d9ff2198df4227ca4337dcc5e09dc17` |
+| Independent assessment note correction | `e54badf1d4e932ee1016f1ae87bb9b66686276c129160f4ade05cf0374a4b042` |
 | Kubernetes capture index | `8c86d18427d952817ef829d60d8939cc17e2531f7f9fa207e65b1fd694c7b850` |
 | Kubernetes diagnostic freeze | `abdc0394b2fd131f1203c6dc5902e8031093296a1322846dc546b08a7979048c` |
 | Kubernetes JSON Pointer replay and controls | `5ef08d923706dc92873b0148d00b8cde59e54ff79198ee79b8fc5f99adc8d07b` |
 | Kubernetes direct JMESPath comparison | `b8a3f21728d7ce7a51f86a9c74da91e861b282e3b5b962efaa1cc043a9a86ce3` |
 | Kubernetes scoped JMESPath comparison | `2e94a3cf893e0ddb849442cdccb8ce6260626d58aee2c726491be77f476c67c4` |
 | Kubernetes scoped OPA comparison | `51e3de3609e7cfbf81505174b49e73b0014d70609069c3bbbf2f61db1278ae86` |
+| Prospective Kubernetes actor freeze | `3af5535b7bf5d843e3898e8347c75b6c10e02632097e44cac09e0bda8d1aff78` |
+| Prospective Kubernetes full freeze | `e3c52c769bcbaafedb1bc8a018fc26813e387d5a611969e0e8232ce8b07e97ba` |
+| Prospective Kubernetes preflight | `2fe4b5d550fd1faa451f4a6e21bbcda8bd1254f604381d2465390ddca789ba20` |
