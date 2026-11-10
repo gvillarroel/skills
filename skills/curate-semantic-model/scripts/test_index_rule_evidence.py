@@ -217,6 +217,70 @@ class IndexRuleEvidenceTests(unittest.TestCase):
         self.assertIn("Distinct atoms need different source token coverage", proc.stdout)
         self.assertFalse(output.exists())
 
+    def test_quote_context_can_require_both_neighbors(self):
+        self.base.write_text("A key X; A key Y; B key X.\n", encoding="utf-8")
+        row = {"rule": ["plain", "A", None], "evidence": {"start_line": 1, "end_line": 1},
+               "atom_refs": {"A": []}}
+        pair = self.pair(base_row=row)
+        for selector in ({"quote": "key", "prefix": "A "}, {"quote": "key", "suffix": " X"}):
+            row["atom_refs"]["A"] = [selector]
+            proc, output = self.run_compare(pair)
+            self.assertEqual(proc.returncode, 2, proc.stdout + proc.stderr)
+            self.assertIn("Atom quote repeats", proc.stdout)
+            self.assertFalse(output.exists())
+        row["atom_refs"]["A"] = [{"quote": "key", "prefix": "A ", "suffix": " X"}]
+        proc, output = self.run_compare(pair)
+        self.assertEqual(proc.returncode, 0, proc.stdout + proc.stderr)
+        compiled = json.loads(output.read_bytes())["reviewed_rules"]["base"][0]
+        self.assertEqual(compiled["atom_evidence"]["A"][0]["tokens"], [2, 2])
+
+    def test_quote_context_and_position_must_agree(self):
+        self.base.write_text("A key X; A key Y; B key X.\n", encoding="utf-8")
+        row = {"rule": ["plain", "A", None], "evidence": {"start_line": 1, "end_line": 1},
+               "atom_refs": {"A": [{"quote": "key", "prefix": "A ", "suffix": " Y", "first_token": 2}]}}
+        pair = self.pair(base_row=row)
+        proc, output = self.run_compare(pair)
+        self.assertEqual(proc.returncode, 2, proc.stdout + proc.stderr)
+        self.assertFalse(output.exists())
+        row["atom_refs"]["A"][0]["first_token"] = 6
+        proc, output = self.run_compare(pair)
+        self.assertEqual(proc.returncode, 0, proc.stdout + proc.stderr)
+        compiled = json.loads(output.read_bytes())["reviewed_rules"]["base"][0]
+        self.assertEqual(compiled["atom_evidence"]["A"][0]["tokens"], [6, 6])
+
+    def test_quote_context_is_exact_and_stays_inside_the_citation(self):
+        self.base.write_bytes(b"\xef\xbb\xbf" + "Café\r\nkey.\r\n".encode("utf-8"))
+        row = {"rule": ["plain", "A", None], "evidence": {"start_line": 2, "end_line": 2},
+               "atom_refs": {"A": [{"quote": "key", "prefix": "fé\n", "suffix": "."}]}}
+        pair = self.pair(base_row=row)
+        proc, output = self.run_compare(pair)
+        self.assertEqual(proc.returncode, 2, proc.stdout + proc.stderr)
+        self.assertFalse(output.exists())
+        row["evidence"]["start_line"] = 1
+        for invalid in ("fé\r\n", "", None):
+            row["atom_refs"]["A"][0]["prefix"] = invalid
+            proc, output = self.run_compare(pair)
+            self.assertEqual(proc.returncode, 2, proc.stdout + proc.stderr)
+            self.assertFalse(output.exists())
+        row["atom_refs"]["A"][0]["prefix"] = "fé\n"
+        proc, output = self.run_compare(pair)
+        self.assertEqual(proc.returncode, 0, proc.stdout + proc.stderr)
+        compiled = json.loads(output.read_bytes())["reviewed_rules"]["base"][0]
+        self.assertEqual(compiled["atom_evidence"]["A"][0]["quote"], "key")
+
+    def test_quote_context_preserves_coverage_fingerprint(self):
+        self.base.write_text("The key remains.\n", encoding="utf-8")
+        row = {"rule": ["plain", "A", None], "evidence": {"start_line": 1, "end_line": 1},
+               "atom_refs": {"A": [{"quote": "key", "prefix": " ", "suffix": " remains"}]}}
+        pair = self.pair(base_row=row)
+        lines = {"base": ["The key remains."], "head": ["A and B"]}
+        contextual = boolean_rule_pair.compare_rules(pair, lines, pair["source_sha256"])["reviewed_rules"]["base"][0]
+        self.assertEqual(contextual["atom_evidence"]["A"][0]["tokens"], [2, 2])
+        row["atom_refs"]["A"] = [{"quote": "key"}]
+        exact = boolean_rule_pair.compare_rules(pair, lines, pair["source_sha256"])["reviewed_rules"]["base"][0]
+        self.assertEqual(contextual["atom_evidence_sha256"], exact["atom_evidence_sha256"])
+        self.assertEqual(contextual["atom_evidence"], exact["atom_evidence"])
+
     def test_punctuation_only_atom_range_is_rejected(self):
         self.base.write_text("A. B\n", encoding="utf-8")
         row = {"rule": ["plain", "A", None], "evidence": {"start_line": 1, "end_line": 1},

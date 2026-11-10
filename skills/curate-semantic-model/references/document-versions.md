@@ -218,11 +218,25 @@ A fragment can also be an exact quote selector such as
 `{"quote": "security key"}`. The quote must start and end at indexed
 token boundaries inside that rule's selected line span. Case,
 whitespace, punctuation and Unicode code points must match the decoded
-citation. Its line breaks are LF. When the quote occurs more than once,
-add `first_token` with the one-based start of the reviewed occurrence,
-for example `{"quote": "security key", "first_token": 8}`. The
-selector must match at a supplied start. A missing match or an
-unresolved repeat produces a validation error.
+citation. Its line breaks are LF. To distinguish repeated text, supply
+the one-based `first_token` of the reviewed occurrence, exact adjacent
+`prefix` or `suffix` context, or a combination.
+
+~~~json
+{"quote": "security key", "prefix": "Reject the ", "suffix": " only if"}
+~~~
+
+Copy context exactly from within the same citation, including its
+spaces and punctuation. A prefix ends immediately before the quote,
+and a suffix begins immediately after it. Each supplied context string
+must be nonempty. Context can start or end inside a neighboring token.
+The quote itself still spans whole tokens.
+
+All supplied selectors must match the same occurrence. A missing match
+or an unresolved repeat produces a validation error. Context helps
+locate the quote. The resolved fragment and its evidence fingerprint
+cover the quote's tokens. Review whether the selected occurrence
+supports the atom in the operative rule.
 
 You can combine quote selectors and numeric ranges in one atom's
 fragment list. They share the same count, length, ordering and overlap

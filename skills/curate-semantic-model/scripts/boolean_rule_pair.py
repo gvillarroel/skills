@@ -143,11 +143,17 @@ def validate_pair(pair, lines_by_side, source_sha256):
 
 
 def locate_atom_quote(selector, tokens, source, path):
-    require(selector.keys() in ({"quote"}, {"quote", "first_token"}),
-            "An exact quote selector needs quote and optional first_token", path, "INVALID_BOOLEAN_PAIR")
+    require("quote" in selector and selector.keys() <= {"quote", "first_token", "prefix", "suffix"},
+            "An exact quote selector needs quote and may include first_token, prefix or suffix",
+            path, "INVALID_BOOLEAN_PAIR")
     exact = selector["quote"]
     require(isinstance(exact, str) and bool(exact.strip()), "Atom quote must be nonempty text",
             path, "INVALID_BOOLEAN_PAIR")
+    for key in ("prefix", "suffix"):
+        if key in selector:
+            require(isinstance(selector[key], str) and bool(selector[key]),
+                    f"Quote {key} must be nonempty text", path, "INVALID_BOOLEAN_PAIR")
+    prefix, suffix = selector.get("prefix", ""), selector.get("suffix", "")
     starts = tokens
     if "first_token" in selector:
         first = selector["first_token"]
@@ -158,17 +164,18 @@ def locate_atom_quote(selector, tokens, source, path):
     match = None
     for token in starts:
         start = token["start"]
-        if not source.startswith(exact, start):
-            continue
         end = start + len(exact)
+        if not (source.startswith(exact, start) and source.endswith(prefix, 0, start)
+                and source.startswith(suffix, end)):
+            continue
         first = token["index"]
         last_index = bisect_left(tokens, end, lo=first - 1, key=lambda item: item["end"])
         if last_index == len(tokens) or tokens[last_index]["end"] != end:
             continue
-        require(match is None, "Atom quote repeats in the citation. Supply first_token.",
+        require(match is None, "Atom quote repeats in the citation. Supply context or first_token.",
                 path, "INVALID_BOOLEAN_PAIR")
         match = [first, last_index + 1]
-    require(match is not None, "Atom quote must match complete tokens at its specified or unique location",
+    require(match is not None, "Atom quote must match complete tokens and satisfy every supplied selector",
             path, "INVALID_BOOLEAN_PAIR")
     return match
 
