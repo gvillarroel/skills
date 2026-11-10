@@ -16,7 +16,7 @@ from index_rule_evidence import index_quote
 
 ATOM_ID = re.compile(r"[A-Za-z][A-Za-z0-9_-]{0,31}")
 MODES = {"if", "only-if", "iff", "unless", "plain"}
-OPS = {"and", "or", "not"}
+OPS = {"and", "or", "not", "exactly-one"}
 MAX_ATOMS = 10
 MAX_RULES = 20
 MAX_DEPTH = 12
@@ -31,10 +31,10 @@ def expression_atoms(expression, atoms, path, depth=0):
         return {expression}
     require(isinstance(expression, list) and len(expression) >= 2
             and isinstance(expression[0], str) and expression[0] in OPS,
-            "Expression must be an atom or [and|or|not, ...]", path, "INVALID_BOOLEAN_PAIR")
+            "Expression must be an atom or [and|or|not|exactly-one, ...]", path, "INVALID_BOOLEAN_PAIR")
     op, *children = expression
     require((op == "not" and len(children) == 1)
-            or (op in {"and", "or"} and 2 <= len(children) <= MAX_ATOMS),
+            or (op in {"and", "or", "exactly-one"} and 2 <= len(children) <= MAX_ATOMS),
             "Invalid Boolean operator arity", path, "INVALID_BOOLEAN_PAIR")
     used = set()
     for index, child in enumerate(children):
@@ -63,6 +63,8 @@ def evaluate(expression, assignment):
         return not values[0]
     if op == "and":
         return all(values)
+    if op == "exactly-one":
+        return sum(values) == 1
     return any(values)
 
 

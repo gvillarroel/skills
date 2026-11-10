@@ -95,6 +95,28 @@ class BooleanRulePairCLITest(unittest.TestCase):
         self.assertEqual(result["classification"], "same")
         self.assertEqual(result["fingerprints"]["base"], result["fingerprints"]["head"])
 
+    def test_three_branch_exactly_one_rejects_all_overlap(self):
+        pair = self.pair(["plain", ["exactly-one", "A", "B", "C"], None],
+                         ["plain", ["or", "A", "B", "C"], None])
+        pair["atoms"]["C"] = "reviewed proposition C"
+        result = self.checked(pair)
+        self.assertEqual(result["classification"], "base-implies-head")
+        self.assertEqual(result["region_counts"], {"base_not_head": 0, "head_not_base": 4,
+                                                   "both": 3, "neither": 1})
+
+    def test_exactly_one_preserves_repetition_and_fingerprint(self):
+        result = self.checked(self.pair(["plain", ["exactly-one", "A", "A", "B"], None],
+                                        ["plain", ["and", ["not", "A"], "B"], None]))
+        self.assertEqual(result["classification"], "same")
+        self.assertEqual(result["fingerprints"]["base"], result["fingerprints"]["head"])
+
+    def test_exactly_one_requires_at_least_two_branches(self):
+        pair = self.pair(["plain", ["exactly-one", "A"], None], ["plain", "A", None])
+        process = self.run_pair(pair)
+        self.assertEqual(process.returncode, 2, process.stdout + process.stderr)
+        self.assertIn("Invalid Boolean operator arity", process.stdout)
+        self.assertFalse(self.output.exists())
+
     def test_fingerprint_ignores_inessential_reviewed_atoms(self):
         first = self.checked(self.pair(["plain", "A", None], ["plain", "A", None]))
         second_pair = self.pair(["plain", "A", None], ["plain", "A", None])

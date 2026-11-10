@@ -101,14 +101,22 @@ and `head` rule arrays.
 Each array contains one to twenty rows with a `rule` and exact `evidence`
 citation. A rule is `[mode, outcome, guard]`. Expressions
 are atom IDs or prefix arrays such as `["and", "A", ["not", "B"]]`
-and `["or", "A", "B"]`. `and` and `or` take two to ten arguments.
-`not` takes one. An expression may be nested at most twelve times.
-`or` is inclusive. Use
-`["and", ["or", "A", "B"], ["not", ["and", "A", "B"]]]`
-when the source requires exactly one of two branches. To review the
-choice, check A alone, B alone, both, and neither while holding the
-surrounding conditions fixed. If the source leaves overlap unresolved,
-record the competing readings for review.
+and `["or", "A", "B"]`. `and`, `or`, and `exactly-one` take two to
+ten arguments. `not` takes one. An expression may be nested at most
+twelve times.
+
+Use inclusive `or` when one or more branches may hold. Use
+`["exactly-one", "A", "B", "C"]` when exactly one branch must hold.
+Each child is a separate branch occurrence. Review repetitions against
+the source because repeated branches contribute separately. Keep nested
+choices grouped at their stated scope.
+
+To review a two-branch choice, check A alone, B alone, both, and
+neither while holding the surrounding conditions fixed. With more than
+two branches, check each branch alone and include assignments with two
+or more active branches. Three simultaneously true branches fail an
+`exactly-one` choice. If the source leaves overlap unresolved, record
+the competing readings for review.
 
 - `if` requires the outcome when the guard is true.
 - `only-if` requires the guard when the outcome is true.
