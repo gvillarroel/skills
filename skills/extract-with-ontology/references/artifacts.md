@@ -97,6 +97,12 @@ SHA-256 from its source pin.
 uv run --script SKILL/scripts/check_extraction.py lines --source-root . --source sources/register.txt --sha256 SOURCE_SHA256 --start-line 10 --end-line 16
 ```
 
+For a saved manifest with a `sources` array of `path` and
+`sha256` entries, you can pass `--manifest manifest.json`
+in place of `--sha256 SOURCE_SHA256`. Use the exact path
+recorded in the manifest. Both options check the local file
+against the supplied pin.
+
 The JSON contains the original line count and numbered text. Omit the
 range for a short source. Numbering starts at one and counts blank lines.
 LF and CRLF both delimit lines, and the view keeps the same numbers as

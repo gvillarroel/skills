@@ -59,12 +59,14 @@ class EvidenceBindingTests(unittest.TestCase):
             capture_output=True, text=True, check=False,
         )
 
-    def view(self, *args, source=None, checksum=None):
+    def view(self, *args, source=None, checksum=None, manifest=None):
+        pin_args = (["--manifest", str(manifest)] if manifest is not None
+                    else ["--sha256", sha256(self.source.read_bytes()).hexdigest()
+                          if checksum is None else checksum])
         return subprocess.run(
             [sys.executable, "-B", str(SCRIPT), "lines", "--source-root", str(self.root),
              "--source", self.source.name if source is None else source,
-             "--sha256", sha256(self.source.read_bytes()).hexdigest() if checksum is None else checksum,
-             *args],
+             *pin_args, *args],
             capture_output=True, check=False, env=dict(os.environ) | {"PYTHONIOENCODING": "ascii"},
         )
 
@@ -113,6 +115,36 @@ class EvidenceBindingTests(unittest.TestCase):
         self.output.write_bytes(b"existing")
         self.assertEqual(self.view("--output", str(self.output)).returncode, 2)
         self.assertEqual(self.output.read_bytes(), b"existing")
+
+    def test_manifest_view_matches_explicit_pin_with_provenance_fields(self):
+        manifest = self.root / "manifest.json"
+        row = self.plan["sources"][0] | {"source_id": "source", "url": "https://example.org/source"}
+        manifest.write_text(json.dumps({"sources": [row], "revision": "frozen"}), encoding="utf-8")
+        flags = ("--start-line", "2", "--end-line", "3")
+        explicit = self.view(*flags)
+        from_manifest = self.view(*flags, manifest=manifest)
+        self.assertEqual(explicit.returncode, 0, explicit.stderr)
+        self.assertEqual(from_manifest.returncode, 0, from_manifest.stderr)
+        self.assertEqual(explicit.stdout, from_manifest.stdout)
+        self.assertEqual(self.view("--sha256", row["sha256"], manifest=manifest).returncode, 2)
+
+    def test_manifest_rejects_ambiguous_invalid_and_stale_pins(self):
+        manifest = self.root / "manifest.json"
+        row = self.plan["sources"][0]
+        for raw in (
+            b'{"sources":[],"sources":[]}',
+            b'{"sources":[]}',
+            json.dumps({"sources": [None, row]}).encode(),
+            json.dumps({"sources": [row, row]}).encode(),
+            json.dumps({"sources": [row | {"path": "unlisted.txt"}]}).encode(),
+            json.dumps({"sources": [row | {"sha256": "0" * 65}]}).encode(),
+            json.dumps({"sources": [row | {"sha256": "0" * 64}]}).encode(),
+        ):
+            with self.subTest(raw=raw):
+                manifest.write_bytes(raw)
+                result = self.view("--output", str(self.output), manifest=manifest)
+                self.assertEqual(result.returncode, 2, result.stdout)
+                self.assertFalse(self.output.exists())
 
     def test_exact_raw_offsets_and_order_independent_output(self):
         result = self.invoke(self.plan)

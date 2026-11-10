@@ -94,7 +94,7 @@ def inventory(ontology, checksum):
 def unique_object(items):
     result = dict(items)
     if len(result) != len(items):
-        raise ValueError("duplicate JSON key in evidence")
+        raise ValueError("duplicate JSON key")
     return result
 
 
@@ -139,6 +139,28 @@ def source_text(root, row):
     if digest(raw) != row["sha256"]:
         raise ValueError("source SHA-256 mismatch")
     return raw.decode("utf-8")
+
+
+def manifest_pin(manifest_path, source):
+    manifest = json.loads(manifest_path.read_bytes(), object_pairs_hook=unique_object)
+    rows = manifest.get("sources") if isinstance(manifest, dict) else None
+    if not isinstance(rows, list) or not rows:
+        raise ValueError("source manifest requires a nonempty sources array")
+
+    pins = {}
+    for row in rows:
+        if not isinstance(row, dict):
+            raise ValueError("source manifest entries require a path and SHA-256")
+        path, checksum = row.get("path"), row.get("sha256")
+        if (not isinstance(path, str) or not path.strip() or not isinstance(checksum, str)
+                or not re.fullmatch(r"[0-9a-f]{64}", checksum)):
+            raise ValueError("source manifest entries require a path and lowercase SHA-256")
+        if path in pins:
+            raise ValueError("duplicate source path in manifest")
+        pins[path] = checksum
+    if source not in pins:
+        raise ValueError("source path is absent from manifest")
+    return pins[source]
 
 
 def line_starts(text):
@@ -380,7 +402,9 @@ def main():
     for command in (check_command, bind_command, materialize_command, lines_command):
         command.add_argument("--source-root", type=Path, required=True)
     lines_command.add_argument("--source", required=True, help="path relative to the source root")
-    lines_command.add_argument("--sha256", required=True)
+    source_pin = lines_command.add_mutually_exclusive_group(required=True)
+    source_pin.add_argument("--sha256")
+    source_pin.add_argument("--manifest", type=Path, help="read the SHA-256 from this source manifest")
     lines_command.add_argument("--start-line", type=int, default=1)
     lines_command.add_argument("--end-line", type=int)
     check_command.add_argument("--evidence", type=Path, required=True)
@@ -392,8 +416,9 @@ def main():
     rdflib.NORMALIZE_LITERALS = False
     try:
         if args.command == "lines":
+            checksum = args.sha256 if args.manifest is None else manifest_pin(args.manifest, args.source)
             result = numbered_source(
-                args.source_root.resolve(), args.source, args.sha256, args.start_line, args.end_line
+                args.source_root.resolve(), args.source, checksum, args.start_line, args.end_line
             )
         else:
             result = extraction_result(args)

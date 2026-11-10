@@ -52,10 +52,17 @@ operations in the pinned snapshot.
 ## Build and check the result
 
 Replace `SKILL` with the absolute directory of `extract-with-ontology`
-and set the source root to the crawler output. In `selections.json`,
-record each assertion with its source ID and inclusive line range
-using the skill's evidence binder format. For a new extraction,
-generate the asserted graph and its exact citations from this plan.
+and set the source root to the crawler output. Inspect a source
+using its pin from the saved manifest.
+
+```bash
+uv run --script SKILL/scripts/check_extraction.py lines --source-root /path/to/product-corpus --source sources/auto-merge.md --manifest /path/to/product-corpus/manifest.json --start-line 19 --end-line 23
+```
+
+In `selections.json`, record each assertion with its source ID and
+inclusive line range using the skill's evidence binder format.
+For a new extraction, generate the graph and its exact citations from
+this plan.
 Choose a new result directory under an existing parent.
 
 ```bash
