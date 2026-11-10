@@ -193,6 +193,32 @@ from one to four. This result blocks selection of the revised
 router on the current evidence. The synthetic transfer cases
 are separate from the sealed Harbor cohorts.
 
+### Explicit reference targets
+
+A separate prototype keeps the parsed reference inventory and
+its per-destination status before assigning a requested target.
+It preserves occurrences, separates unavailable documents,
+missing fragments, and malformed destinations, and returns
+coordinates as candidates. An explicit caller selection uses
+the literal destination. The same inventory also supports a
+language-based selector for comparison.
+
+The eight new frozen synthetic controls used the installed
+markdown-it-py 4.2.0 parser. They produced 14 distinct
+destinations from 15 occurrences. The parser preserved a
+reference-style link and excluded a link shown inside code.
+The caller supplied a correct destination declaration in seven
+cases. With that declaration the prototype returned all seven
+expected destination-and-status maps. The language selector
+returned one of those seven. In the eighth case the caller
+supplied only a natural question. The language selector chose
+the correct target and the explicit interface requested a
+selection. Counting that abstention, the scores are 7/8 and
+2/8. The explicit interface received additional information
+and its result measures use of that information. The
+prototype records candidate locations for separate evidence
+verification. [markdown-it-py tokens](https://markdown-it-py.readthedocs.io/en/latest/using.html)
+
 ## Matched Power Automate model diagnostic
 
 A frozen four-decision packet isolated one change in evidence.
@@ -219,7 +245,7 @@ correct in both arms. Each response satisfied the four-decision
 development rubric. There was one attempt per arm on a case
 already studied during development.
 
-### Strict Pi replay with the installed skill bundle
+### Strict Pi replay with the isolated skill bundle
 
 Once disk space met the frozen threshold, each arm ran once
 in the isolated Pi workspace using the same 13-file skill
@@ -239,6 +265,42 @@ improved from 3/4 to 4/4, with 3/3 correct and stable controls.
 The frozen pair criterion required the original arm to ask
 for evidence, so the pair failed that criterion. The tool-free
 and full-skill runs therefore differed on the original target.
+
+### Candidate verification instruction
+
+A temporary candidate adds one sentence to the verification
+step. It directs the reader to establish the decisive subject,
+operation, and scope from the source windows, treat the claim
+as a hypothesis, and request the exact missing antecedent.
+The copied source and runtime payloads passed offline checks.
+The candidate and both arms froze with the original prompts,
+answer key, carrier, and strict runner. The launch preflight
+measured zero free bytes twice against the 20 MiB threshold.
+The candidate has zero full-skill model attempts.
+
+An independent in-memory diagnostic exercised the same rule on
+eight frozen cases with pinned PostgreSQL and Power Automate
+windows. The actor saw opaque source IDs and the claim and
+source text. The evaluator retained the real-case and
+counterfactual labels. One GPT-6 Luna low request per arm used
+the same inputs, with one added instruction in the second arm,
+zero retries, and zero observed writes.
+
+| Measure | Standard instruction | Source-only verification |
+| --- | ---: | ---: |
+| Correct verdict and exact citation | 7/8 | 8/8 |
+| Correct resolved controls | 5/5 | 5/5 |
+| Correct unresolved decisions | 2/3 | 3/3 |
+| Decisive question roles under the strict rubric | 1/4 | 4/4 |
+| Fully decisive questions under the strict rubric | 0/3 | 3/3 |
+
+The standard arm treated the identity in a Power Automate
+claim as the referent of a pronoun in the source. The source-only
+arm requested the antecedent. A more permissive reading of the
+standard questions credits two roles and one complete question.
+Two source-only questions still name the proposed identity
+while requesting the exact source authority. This small paired
+diagnostic supports testing the candidate in the full skill.
 
 ## Matched PostgreSQL model diagnostic
 
@@ -275,7 +337,7 @@ public development packet.
 
 ## Clarification question diagnostic
 
-The diagnostic held the evidence and decisions fixed and
+The diagnostic held the evidence and claims fixed and
 compared the existing question instruction with one added
 sentence. The new instruction asked for every still-decisive
 obligation and used a contrastive check. If two interpretations
@@ -339,9 +401,17 @@ the development principal. The private cohort remained sealed.
 | Revised router on Compose and the revealed controls | `f61a022fb91bea7d3bac2a57295e83f9f3a3e27c61d4e1933365d9ace8e42443` |
 | Additional Markdown synthetic transfer fixture | `537efea79024a3bccf73f23cdb4fc187b91ace0e06059eb8198c2fa66d8cb3c8` |
 | Revised router on the additional transfer fixture | `d269f64ec72216d8390856a611cd182c974b2955e2d570be1947a083f23ed19a` |
+| Explicit Markdown reference controls | `ee8bde1424044856339b2c49e088ed440f92b0fc7e2308b80ebe345bc0fe97e1` |
+| Explicit Markdown reference prototype results | `49aba08eefb1ccde93e755d60ab6a0b170548c29d1c5e06da15312c41450e0b8` |
 | Frozen full-run Power Automate protocol | `adcde9f72ec3c52e369944c659da2c8889d0d5881f1908fa53a90cb8e214fadc` |
 | Power Automate pre-inference carrier checks | `fa4f15b96ea895e7475c5d24ffc6ed72f3857c77e3435af534e09776793ce8e2` |
 | Power Automate strict Pi pair receipt | `4f53e34b227fb4fe13728be7320728aafeaf4a0dcfd42a0ab06e957b0196dd27` |
+| Frozen source-only verification candidate study | `05c1716db8ad9988b7c6c5bd956c539cfd49e34d749aa64a9f0c30577b1ef5da` |
+| Source-only verification candidate payload | `3962cbfef9044bf17173ce5942f99388850ef37fe09d99226b4b55d49c8f1e89` |
+| Source-only model diagnostic frozen cases | `0fd5a5591a49723537345e87c7bd719611508988688dc33076bf2ee5a3714c24` |
+| Source-only model diagnostic frozen rubric | `b81afcb2c73dccced875f3be55244bdd23f1ec3b525dff2b739c2f54cb4ff257` |
+| Source-only model diagnostic standard reply | `d4422695a94cecb4d319aa09f8c5492ec4484c5b748cffea10e079369ace56f3` |
+| Source-only model diagnostic intervention reply | `cd71f3fb877d5d25a982f7dce5fa6b2bfe1a77b3ce005b889ab4423c2666ca27` |
 | In-memory Power Automate reply with the original citation | `a1e679078f4ec32e61333b2384cad8604c9f8525309249904a31ca8e63352885` |
 | In-memory Power Automate reply with the recovered antecedent | `b82ea934876da6a01b1d5907e6717b5f41efe5c4c14e1a8df48d3aad45f5cba5` |
 | In-memory PostgreSQL frozen answer key | `abd194ddeded240711e81058c2fca51a6de161917c8afdb4ba1f8d209f0491fa` |
