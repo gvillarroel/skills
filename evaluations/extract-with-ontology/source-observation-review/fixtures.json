@@ -1,0 +1,613 @@
+{
+  "version": 1,
+  "provider": "github-copilot/gpt-6-luna",
+  "cohort": "public-development",
+  "sources": {
+    "cloud-copilot.md": {
+      "url": "https://raw.githubusercontent.com/MicrosoftDocs/power-automate-docs/e7a4c26faaa37ea3432ea7011957f3e72af745c1/articles/create-cloud-flow-using-copilot.md",
+      "sha256": "faed7de3be6978c0c1dd84c229151f9a7f8386e213de142a74519bbf059e2674"
+    },
+    "create_policy.sgml": {
+      "url": "https://raw.githubusercontent.com/postgres/postgres/5e2f3df49d4298c6097789364a5a53be172f6e85/doc/src/sgml/ref/create_policy.sgml",
+      "sha256": "6c0c377ff2383245b6019bf56162db4b1905efa13282fabf1b04cf2a6771751e"
+    },
+    "12-interpolation.md": {
+      "url": "https://raw.githubusercontent.com/compose-spec/compose-spec/3a4a6995e4a971f6173dff9130cb3e38e6738651/12-interpolation.md",
+      "sha256": "2571f24029c704105ce14de0f3c46a94783ea03e8f65b30323ecfffa09ad4d0d"
+    },
+    "05-services.md": {
+      "url": "https://raw.githubusercontent.com/compose-spec/compose-spec/3a4a6995e4a971f6173dff9130cb3e38e6738651/05-services.md",
+      "sha256": "fb1404c12747e6e520ca47fee076d418b4b4ea9d60e95594b6afb5b881ce5ed5"
+    },
+    "csv.rst": {
+      "url": "https://raw.githubusercontent.com/python/cpython/6cb20a219a860eaf687b2d968b41c480c7461909/Doc/library/csv.rst",
+      "sha256": "c7330d41d1b6a05866639be9abe8cb294c2f1a9dc7d6eda9e7186d6b5087a7ac"
+    },
+    "contextlib.rst": {
+      "url": "https://raw.githubusercontent.com/python/cpython/6cb20a219a860eaf687b2d968b41c480c7461909/Doc/library/contextlib.rst",
+      "sha256": "eaa300158d863abe7216dcfba6bb64641214b337f844a5e27a080b2054c41bc9"
+    },
+    "github-pagination.md": {
+      "url": "https://raw.githubusercontent.com/github/docs/7c3387d3b513ed43ea26c9b2e4c0e1b12234c010/content/rest/using-the-rest-api/using-pagination-in-the-rest-api.md",
+      "sha256": "418bdf281d74a89c7dabedc4af53a6f7b286f2416e7670d9cc71453db08d8640"
+    }
+  },
+  "packets": [
+    {
+      "key": "power-automate-isolated",
+      "batch": "a",
+      "windows": {
+        "provider": {
+          "source": "cloud-copilot.md",
+          "start": 38,
+          "end": 38
+        }
+      },
+      "claims": [
+        {
+          "key": "natural-language-provider",
+          "text": "The Power Automate Copilot operation that creates a cloud flow from natural language is powered by Azure OpenAI Service.",
+          "identity": "named",
+          "expected": {
+            "verdict": "unresolved",
+            "witnesses": [],
+            "missing": "the named capability to which the provider sentence refers"
+          }
+        },
+        {
+          "key": "expression-assistant-provider",
+          "text": "The Power Automate Copilot expression assistant is powered by Azure OpenAI Service.",
+          "identity": "named",
+          "expected": {
+            "verdict": "unresolved",
+            "witnesses": [],
+            "missing": "the named capability to which the provider sentence refers"
+          }
+        },
+        {
+          "key": "unnamed-provider",
+          "text": "The unnamed capability mentioned in this source window is powered by Azure OpenAI Service.",
+          "identity": "unnamed",
+          "expected": {
+            "verdict": "supported",
+            "witnesses": [
+              [
+                "provider"
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "key": "postgres-policy-kinds",
+      "batch": "a",
+      "windows": {
+        "permissive": {
+          "source": "create_policy.sgml",
+          "start": 128,
+          "end": 132
+        },
+        "restrictive": {
+          "source": "create_policy.sgml",
+          "start": 141,
+          "end": 146
+        },
+        "mix": {
+          "source": "create_policy.sgml",
+          "start": 150,
+          "end": 156
+        }
+      },
+      "claims": [
+        {
+          "key": "permissive-or",
+          "text": "Permissive policies applicable to a given query are combined using Boolean OR.",
+          "identity": "named",
+          "expected": {
+            "verdict": "supported",
+            "witnesses": [
+              [
+                "permissive"
+              ]
+            ]
+          }
+        },
+        {
+          "key": "restrictive-or",
+          "text": "Restrictive policies applicable to a given query are combined using Boolean OR.",
+          "identity": "named",
+          "expected": {
+            "verdict": "contradicted",
+            "witnesses": [
+              [
+                "restrictive"
+              ]
+            ]
+          }
+        },
+        {
+          "key": "materialized-policy",
+          "text": "PostgreSQL materializes a copy of each row while these policy expressions are evaluated.",
+          "identity": "named",
+          "expected": {
+            "verdict": "unresolved",
+            "witnesses": [],
+            "missing": "documentation that describes whether policy evaluation materializes a row copy"
+          }
+        },
+        {
+          "key": "mixed-policy",
+          "text": "Where both policy kinds are present, access to a record requires passing at least one permissive policy and every restrictive policy.",
+          "identity": "named",
+          "expected": {
+            "verdict": "supported",
+            "witnesses": [
+              [
+                "mix"
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "key": "compose-required-variable",
+      "batch": "a",
+      "windows": {
+        "operators": {
+          "source": "12-interpolation.md",
+          "start": 13,
+          "end": 18
+        }
+      },
+      "claims": [
+        {
+          "key": "colon-question",
+          "text": "The form ${VARIABLE:?err} exits with an error when the variable is present but empty.",
+          "identity": "named",
+          "expected": {
+            "verdict": "supported",
+            "witnesses": [
+              [
+                "operators"
+              ]
+            ]
+          }
+        },
+        {
+          "key": "question-no-colon",
+          "text": "The form ${VARIABLE?err} exits with an error for a present but empty variable.",
+          "identity": "named",
+          "expected": {
+            "verdict": "contradicted",
+            "witnesses": [
+              [
+                "operators"
+              ]
+            ]
+          }
+        },
+        {
+          "key": "assign-default",
+          "text": "The form ${VARIABLE:=default} assigns the supplied default to the environment variable.",
+          "identity": "named",
+          "expected": {
+            "verdict": "unresolved",
+            "witnesses": [],
+            "missing": "the documented semantics of the := interpolation form"
+          }
+        }
+      ]
+    },
+    {
+      "key": "python-context-manager-body",
+      "batch": "a",
+      "windows": {
+        "body": {
+          "source": "contextlib.rst",
+          "start": 196,
+          "end": 197
+        }
+      },
+      "claims": [
+        {
+          "key": "named-aclosing",
+          "text": "The function contextlib.aclosing creates a context manager that calls the object's aclose() when the block finishes.",
+          "identity": "named",
+          "expected": {
+            "verdict": "unresolved",
+            "witnesses": [],
+            "missing": "the function declaration or heading naming the context manager described"
+          }
+        },
+        {
+          "key": "unnamed-aclosing",
+          "text": "The async context manager described by this excerpt calls the object's aclose() when the block finishes.",
+          "identity": "unnamed",
+          "expected": {
+            "verdict": "supported",
+            "witnesses": [
+              [
+                "body"
+              ]
+            ]
+          }
+        },
+        {
+          "key": "unnamed-synchronous",
+          "text": "The async context manager described by this excerpt calls close() instead of aclose() when the block finishes.",
+          "identity": "unnamed",
+          "expected": {
+            "verdict": "contradicted",
+            "witnesses": [
+              [
+                "body"
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "key": "github-link-relations",
+      "batch": "a",
+      "windows": {
+        "header": {
+          "source": "github-pagination.md",
+          "start": 46,
+          "end": 51
+        },
+        "exceptions": {
+          "source": "github-pagination.md",
+          "start": 53,
+          "end": 53
+        }
+      },
+      "claims": [
+        {
+          "key": "first-page-prev",
+          "text": "On the first page of paginated results, the response link header omits the previous-page link.",
+          "identity": "named",
+          "expected": {
+            "verdict": "supported",
+            "witnesses": [
+              [
+                "header",
+                "exceptions"
+              ]
+            ]
+          }
+        },
+        {
+          "key": "last-always-present",
+          "text": "The pagination link header always includes a link to the last page of results.",
+          "identity": "named",
+          "expected": {
+            "verdict": "contradicted",
+            "witnesses": [
+              [
+                "header",
+                "exceptions"
+              ]
+            ]
+          }
+        },
+        {
+          "key": "repository-page-size",
+          "text": "The REST endpoint for listing repositories returns 30 items per page by default.",
+          "identity": "named",
+          "expected": {
+            "verdict": "unresolved",
+            "witnesses": [],
+            "missing": "the endpoint documentation stating its default page size"
+          }
+        }
+      ]
+    },
+    {
+      "key": "power-automate-with-antecedent",
+      "batch": "b",
+      "windows": {
+        "operation": {
+          "source": "cloud-copilot.md",
+          "start": 23,
+          "end": 29
+        },
+        "provider": {
+          "source": "cloud-copilot.md",
+          "start": 38,
+          "end": 38
+        }
+      },
+      "claims": [
+        {
+          "key": "natural-language-provider",
+          "text": "The Power Automate Copilot operation that creates a cloud flow from natural language is powered by Azure OpenAI Service.",
+          "identity": "named",
+          "expected": {
+            "verdict": "supported",
+            "witnesses": [
+              [
+                "operation",
+                "provider"
+              ]
+            ]
+          }
+        },
+        {
+          "key": "expression-assistant-provider",
+          "text": "The Power Automate Copilot expression assistant is powered by Azure OpenAI Service.",
+          "identity": "named",
+          "expected": {
+            "verdict": "unresolved",
+            "witnesses": [],
+            "missing": "a provider statement tied specifically to the expression assistant"
+          }
+        },
+        {
+          "key": "description-input",
+          "text": "Copilot in cloud flows can create a flow from a user's scenario description.",
+          "identity": "named",
+          "expected": {
+            "verdict": "supported",
+            "witnesses": [
+              [
+                "operation"
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "key": "postgres-row-policy",
+      "batch": "b",
+      "windows": {
+        "using": {
+          "source": "create_policy.sgml",
+          "start": 44,
+          "end": 51
+        },
+        "check": {
+          "source": "create_policy.sgml",
+          "start": 52,
+          "end": 54
+        }
+      },
+      "claims": [
+        {
+          "key": "existing-rows",
+          "text": "A policy checks existing table rows using the expression specified in USING.",
+          "identity": "named",
+          "expected": {
+            "verdict": "supported",
+            "witnesses": [
+              [
+                "using"
+              ]
+            ]
+          }
+        },
+        {
+          "key": "using-null-error",
+          "text": "If a USING expression returns false or null for an existing row, an error occurs instead of hiding the row.",
+          "identity": "named",
+          "expected": {
+            "verdict": "contradicted",
+            "witnesses": [
+              [
+                "using"
+              ]
+            ]
+          }
+        },
+        {
+          "key": "check-null-error",
+          "text": "A WITH CHECK expression that returns false or null causes an error.",
+          "identity": "named",
+          "expected": {
+            "verdict": "supported",
+            "witnesses": [
+              [
+                "check"
+              ]
+            ]
+          }
+        },
+        {
+          "key": "cache-reuse",
+          "text": "A cached UPDATE query reuses the result of a previous WITH CHECK evaluation.",
+          "identity": "named",
+          "expected": {
+            "verdict": "unresolved",
+            "witnesses": [],
+            "missing": "documentation on how the cached UPDATE query evaluates WITH CHECK"
+          }
+        }
+      ]
+    },
+    {
+      "key": "compose-service-extends",
+      "batch": "b",
+      "windows": {
+        "declaration": {
+          "source": "05-services.md",
+          "start": 61,
+          "end": 64
+        },
+        "keys": {
+          "source": "05-services.md",
+          "start": 72,
+          "end": 73
+        }
+      },
+      "claims": [
+        {
+          "key": "file-optional",
+          "text": "An extends mapping requires the service key and makes the file key optional.",
+          "identity": "named",
+          "expected": {
+            "verdict": "supported",
+            "witnesses": [
+              [
+                "declaration"
+              ]
+            ]
+          }
+        },
+        {
+          "key": "file-required",
+          "text": "An extends mapping requires the file key in every case.",
+          "identity": "named",
+          "expected": {
+            "verdict": "contradicted",
+            "witnesses": [
+              [
+                "declaration"
+              ]
+            ]
+          }
+        },
+        {
+          "key": "service-endpoint",
+          "text": "The service key in an extends mapping names the service being referenced as the base.",
+          "identity": "named",
+          "expected": {
+            "verdict": "supported",
+            "witnesses": [
+              [
+                "declaration",
+                "keys"
+              ]
+            ]
+          }
+        },
+        {
+          "key": "relative-path-base",
+          "text": "A relative extends file path is resolved relative to the directory of the file that declares the service.",
+          "identity": "named",
+          "expected": {
+            "verdict": "unresolved",
+            "witnesses": [],
+            "missing": "the rule defining the base directory for a relative extends path"
+          }
+        }
+      ]
+    },
+    {
+      "key": "python-csv-dictreader",
+      "batch": "b",
+      "windows": {
+        "declaration": {
+          "source": "csv.rst",
+          "start": 150,
+          "end": 151
+        },
+        "behavior": {
+          "source": "csv.rst",
+          "start": 157,
+          "end": 168
+        }
+      },
+      "claims": [
+        {
+          "key": "headers-default",
+          "text": "If DictReader's fieldnames argument is omitted, it uses the first row as field names and omits that row from its results.",
+          "identity": "named",
+          "expected": {
+            "verdict": "supported",
+            "witnesses": [
+              [
+                "declaration",
+                "behavior"
+              ]
+            ]
+          }
+        },
+        {
+          "key": "header-first-row",
+          "text": "When DictReader is given fieldnames, it omits the first row from the results.",
+          "identity": "named",
+          "expected": {
+            "verdict": "contradicted",
+            "witnesses": [
+              [
+                "declaration",
+                "behavior"
+              ]
+            ]
+          }
+        },
+        {
+          "key": "short-row-empty-string",
+          "text": "DictReader fills missing values in a short nonblank row with the empty string by default.",
+          "identity": "named",
+          "expected": {
+            "verdict": "contradicted",
+            "witnesses": [
+              [
+                "declaration",
+                "behavior"
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "key": "github-pagination-page-size",
+      "batch": "b",
+      "windows": {
+        "option": {
+          "source": "github-pagination.md",
+          "start": 67,
+          "end": 67
+        },
+        "limit": {
+          "source": "github-pagination.md",
+          "start": 69,
+          "end": 69
+        }
+      },
+      "claims": [
+        {
+          "key": "page-size-configurable",
+          "text": "On an endpoint that supports per_page, that parameter controls the number of results per page.",
+          "identity": "named",
+          "expected": {
+            "verdict": "supported",
+            "witnesses": [
+              [
+                "option"
+              ]
+            ]
+          }
+        },
+        {
+          "key": "above-limit-error",
+          "text": "A per_page value above the endpoint maximum causes an error instead of being capped.",
+          "identity": "named",
+          "expected": {
+            "verdict": "contradicted",
+            "witnesses": [
+              [
+                "limit"
+              ]
+            ]
+          }
+        },
+        {
+          "key": "repository-default",
+          "text": "The endpoint for listing repositories defaults to 30 results per page.",
+          "identity": "named",
+          "expected": {
+            "verdict": "unresolved",
+            "witnesses": [],
+            "missing": "the endpoint documentation stating its default page size"
+          }
+        }
+      ]
+    }
+  ]
+}

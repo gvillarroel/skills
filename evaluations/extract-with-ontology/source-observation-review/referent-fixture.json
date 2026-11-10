@@ -1,0 +1,244 @@
+[
+  {
+    "name": "pa-named",
+    "batch": "a",
+    "windows": [
+      [
+        "cloud-copilot.md",
+        23,
+        29
+      ],
+      [
+        "cloud-copilot.md",
+        38,
+        38
+      ]
+    ],
+    "focus": "This capability",
+    "role": "Which specific named operation does the quoted capability refer to?",
+    "terms": [
+      "copilot",
+      "cloud flow",
+      "create"
+    ],
+    "claim_aliases": [
+      "copilot operation"
+    ]
+  },
+  {
+    "name": "csv-unnamed",
+    "batch": "a",
+    "windows": [
+      [
+        "csv.rst",
+        157,
+        168
+      ]
+    ],
+    "focus": "The *fieldnames* parameter",
+    "role": "Which named callable owns the parameter in this excerpt?",
+    "terms": null,
+    "claim_aliases": []
+  },
+  {
+    "name": "pg-named",
+    "batch": "a",
+    "windows": [
+      [
+        "create_policy.sgml",
+        204,
+        204
+      ],
+      [
+        "create_policy.sgml",
+        209,
+        214
+      ]
+    ],
+    "focus": "This expression",
+    "role": "Which exact parameter is being described?",
+    "terms": [
+      "check_expression"
+    ],
+    "claim_aliases": [
+      "check_expression"
+    ]
+  },
+  {
+    "name": "github-unnamed",
+    "batch": "a",
+    "windows": [
+      [
+        "github-pagination.md",
+        53,
+        53
+      ]
+    ],
+    "focus": "these links",
+    "role": "Which named response field contains these links?",
+    "terms": null,
+    "claim_aliases": []
+  },
+  {
+    "name": "compose-named",
+    "batch": "a",
+    "windows": [
+      [
+        "05-services.md",
+        61,
+        64
+      ],
+      [
+        "05-services.md",
+        72,
+        73
+      ]
+    ],
+    "focus": "Defines the name of the service being referenced as a base",
+    "role": "Which configuration mapping declares this key?",
+    "terms": [
+      "extends"
+    ],
+    "claim_aliases": [
+      "extends"
+    ]
+  },
+  {
+    "name": "python-unnamed",
+    "batch": "a",
+    "windows": [
+      [
+        "contextlib.rst",
+        196,
+        197
+      ]
+    ],
+    "focus": "Return an async context manager",
+    "role": "Which named function is documented by this excerpt?",
+    "terms": null,
+    "claim_aliases": []
+  },
+  {
+    "name": "pa-unnamed",
+    "batch": "b",
+    "windows": [
+      [
+        "cloud-copilot.md",
+        38,
+        38
+      ]
+    ],
+    "focus": "This capability",
+    "role": "Which specific named operation does the quoted capability refer to?",
+    "terms": null,
+    "claim_aliases": []
+  },
+  {
+    "name": "pa-generic-mention",
+    "batch": "b",
+    "windows": [
+      [
+        "cloud-copilot.md",
+        37,
+        37
+      ],
+      [
+        "cloud-copilot.md",
+        38,
+        38
+      ]
+    ],
+    "focus": "This capability",
+    "role": "Which specific named operation does the quoted capability refer to?",
+    "terms": null,
+    "claim_aliases": []
+  },
+  {
+    "name": "csv-named",
+    "batch": "b",
+    "windows": [
+      [
+        "csv.rst",
+        150,
+        151
+      ],
+      [
+        "csv.rst",
+        157,
+        168
+      ]
+    ],
+    "focus": "The *fieldnames* parameter",
+    "role": "Which named callable owns the parameter in this excerpt?",
+    "terms": [
+      "dictreader"
+    ],
+    "claim_aliases": [
+      "dictreader"
+    ]
+  },
+  {
+    "name": "github-named",
+    "batch": "b",
+    "windows": [
+      [
+        "github-pagination.md",
+        46,
+        51
+      ],
+      [
+        "github-pagination.md",
+        53,
+        53
+      ]
+    ],
+    "focus": "these links",
+    "role": "Which named response field contains these links?",
+    "terms": [
+      "link",
+      "header"
+    ],
+    "claim_aliases": [
+      "link header"
+    ]
+  },
+  {
+    "name": "compose-unnamed",
+    "batch": "b",
+    "windows": [
+      [
+        "05-services.md",
+        72,
+        73
+      ]
+    ],
+    "focus": "Defines the name of the service being referenced as a base",
+    "role": "Which configuration mapping declares this key?",
+    "terms": null,
+    "claim_aliases": []
+  },
+  {
+    "name": "python-named",
+    "batch": "b",
+    "windows": [
+      [
+        "contextlib.rst",
+        194,
+        194
+      ],
+      [
+        "contextlib.rst",
+        196,
+        197
+      ]
+    ],
+    "focus": "Return an async context manager",
+    "role": "Which named function is documented by this excerpt?",
+    "terms": [
+      "aclosing"
+    ],
+    "claim_aliases": [
+      "aclosing"
+    ]
+  }
+]
