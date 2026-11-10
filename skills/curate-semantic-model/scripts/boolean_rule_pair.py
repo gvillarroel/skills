@@ -4,6 +4,7 @@
 # dependencies = []
 # ///
 """Compare source-bound, human-reviewed propositional rule sets."""
+from bisect import bisect_left
 from itertools import product
 from hashlib import sha256
 import json
@@ -141,6 +142,37 @@ def validate_pair(pair, lines_by_side, source_sha256):
     return compiled_rows
 
 
+def locate_atom_quote(selector, tokens, source, path):
+    require(selector.keys() in ({"quote"}, {"quote", "first_token"}),
+            "An exact quote selector needs quote and optional first_token", path, "INVALID_BOOLEAN_PAIR")
+    exact = selector["quote"]
+    require(isinstance(exact, str) and bool(exact.strip()), "Atom quote must be nonempty text",
+            path, "INVALID_BOOLEAN_PAIR")
+    starts = tokens
+    if "first_token" in selector:
+        first = selector["first_token"]
+        require(type(first) is int and 1 <= first <= len(tokens),
+                "Quote first_token must be an in-bounds integer", path, "INVALID_BOOLEAN_PAIR")
+        starts = (tokens[first - 1],)
+
+    match = None
+    for token in starts:
+        start = token["start"]
+        if not source.startswith(exact, start):
+            continue
+        end = start + len(exact)
+        first = token["index"]
+        last_index = bisect_left(tokens, end, lo=first - 1, key=lambda item: item["end"])
+        if last_index == len(tokens) or tokens[last_index]["end"] != end:
+            continue
+        require(match is None, "Atom quote repeats in the citation. Supply first_token.",
+                path, "INVALID_BOOLEAN_PAIR")
+        match = [first, last_index + 1]
+    require(match is not None, "Atom quote must match complete tokens at its specified or unique location",
+            path, "INVALID_BOOLEAN_PAIR")
+    return match
+
+
 def validate_atom_refs(atom_refs, used_atoms, quote, path):
     require(isinstance(atom_refs, dict) and atom_refs.keys() == used_atoms,
             "atom_refs must cover exactly the atoms used by the rule", path, "INVALID_BOOLEAN_PAIR")
@@ -151,11 +183,13 @@ def validate_atom_refs(atom_refs, used_atoms, quote, path):
     resolved = {}
     for atom, ranges in atom_refs.items():
         require(isinstance(ranges, list) and 1 <= len(ranges) <= MAX_ATOM_RANGES,
-                "Each atom needs one to three token ranges", f"{path}/{atom}", "INVALID_BOOLEAN_PAIR")
+                "Each atom needs one to three token ranges or quote selectors", f"{path}/{atom}", "INVALID_BOOLEAN_PAIR")
         previous_end = 0
         positions = []
         spans = []
         for index, span in enumerate(ranges):
+            if isinstance(span, dict):
+                span = locate_atom_quote(span, tokens, quote, f"{path}/{atom}/{index}")
             require(isinstance(span, list) and len(span) == 2
                     and all(type(value) is int for value in span),
                     "A token range needs two integer endpoints", f"{path}/{atom}/{index}",

@@ -6,7 +6,7 @@
 - [Compare reviewed typed inventories](#compare-reviewed-typed-inventories)
 - [Compare reviewed Boolean rules](#compare-reviewed-boolean-rules)
 - [Check a reviewed Boolean consequence](#check-a-reviewed-boolean-consequence)
-- [Bind reviewed atoms by token number](#bind-reviewed-atoms-by-token-number)
+- [Bind reviewed atoms by token number or exact quote](#bind-reviewed-atoms-by-token-number)
 
 Pin both source files and record their byte digests and revision identifiers.
 Use complete UTF-8 files or explicitly scoped excerpts. Keep reviewed values,
@@ -213,6 +213,22 @@ represented by two ranges.
   "atom_refs": {"P": [[2, 3]], "A": [[7, 8], [12, 13]], "B": [[7, 10]]}
 }
 ~~~
+
+A fragment can also be an exact quote selector such as
+`{"quote": "security key"}`. The quote must start and end at indexed
+token boundaries inside that rule's selected line span. Case,
+whitespace, punctuation and Unicode code points must match the decoded
+citation. Its line breaks are LF. When the quote occurs more than once,
+add `first_token` with the one-based start of the reviewed occurrence,
+for example `{"quote": "security key", "first_token": 8}`. The
+selector must match at a supplied start. A missing match or an
+unresolved repeat produces a validation error.
+
+You can combine quote selectors and numeric ranges in one atom's
+fragment list. They share the same count, length, ordering and overlap
+rules. The result records the original selectors and resolved evidence.
+When the two forms cover the same tokens in the same source and line
+span, they produce the same evidence fingerprint.
 
 Use the indexer's source digest in `source_sha256` for the corresponding
 side. The comparator restores the citation and records each fragment
