@@ -141,7 +141,7 @@ def main(argv=None):
         raw_output = (json.dumps(result, ensure_ascii=True, indent=2, sort_keys=True) + "\n").encode("utf-8")
         with args.output.open("xb") as stream:
             stream.write(raw_output)
-    except (OSError, UnicodeError, ValueError) as error:
+    except (OSError, RecursionError, UnicodeError, ValueError) as error:
         print(json.dumps({"status": "error", "error": str(error)}))
         return 2
     print(json.dumps({"status": "compiled", "proposals": len(result["proposals"])}))

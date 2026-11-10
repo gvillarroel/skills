@@ -167,6 +167,23 @@ class GlossaryProposalTests(unittest.TestCase):
             self.assertEqual(second.returncode, 2)
             self.assertEqual(output.read_bytes(), result)
 
+    def test_cli_reports_deeply_nested_draft_without_writing_output(self):
+        with TemporaryDirectory() as root:
+            root = Path(root)
+            source, inputs, output = (root / name for name in ("source.txt", "draft.json", "ledger.json"))
+            source.write_bytes(b"X means device.")
+            pin = sha256(source.read_bytes()).hexdigest().encode("ascii")
+            depth = 100_000
+            inputs.write_bytes(b'{"source_sha256":"' + pin + b'","proposals":'
+                               + b"[" * depth + b"null" + b"]" * depth + b"}")
+            command = [sys.executable, str(CLI), "--source", str(source), "--draft", str(inputs),
+                       "--output", str(output)]
+            result = subprocess.run(command, capture_output=True, text=True, check=False)
+            self.assertEqual(result.returncode, 2, result.stdout + result.stderr)
+            self.assertEqual(result.stderr, "")
+            self.assertEqual(json.loads(result.stdout)["status"], "error")
+            self.assertFalse(output.exists())
+
 
 if __name__ == "__main__":
     unittest.main()
