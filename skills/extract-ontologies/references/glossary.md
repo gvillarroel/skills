@@ -97,12 +97,15 @@ a null value.
 The term and value must occupy separate, whole-token spans in the
 same cited window. Line bounds are inclusive and one-based. A window
 can cover up to eleven lines. If a quote repeats inside that window,
-add `first_char` with its zero-based character offset within the
-decoded citation. Preserve case, spaces, punctuation and Unicode
-code points. A combining mark stays attached to its preceding
-non-space character when locating token boundaries. The decoded
-citation uses LF line endings and omits
-a UTF-8 byte-order mark.
+provide an exact `prefix` immediately before the quote or an exact
+`suffix` immediately after it. Include the separating spaces or
+punctuation in the context. You can also supply `first_char` as a
+zero-based character offset within the decoded citation. Every
+supplied selector must agree on one occurrence. Preserve case, spaces,
+punctuation and Unicode code points. A combining mark stays attached
+to its preceding non-space character when locating token boundaries.
+The decoded citation uses LF line endings and omits a UTF-8 byte-order
+mark.
 
 ~~~text
 uv run --script SKILL/scripts/compile_glossary_proposals.py --source document.txt --draft proposals.json --output proposal-ledger.json

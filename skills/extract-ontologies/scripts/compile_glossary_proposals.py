@@ -40,17 +40,24 @@ def token_ranges(text):
 
 
 def locate(fragment, citation, starts, ends, offset, field):
-    if not isinstance(fragment, dict) or fragment.keys() not in ({"quote"}, {"quote", "first_char"}):
-        raise ValueError(f"{field} needs a quote and optional first_char")
+    if (not isinstance(fragment, dict) or "quote" not in fragment
+            or not fragment.keys() <= {"quote", "first_char", "prefix", "suffix"}):
+        raise ValueError(f"{field} needs a quote and may include first_char, prefix or suffix")
     quote = fragment["quote"]
     if not isinstance(quote, str) or not re.search(r"\w", quote):
         raise ValueError(f"{field} needs nonblank lexical text")
     first = fragment.get("first_char")
     if "first_char" in fragment and (type(first) is not int or first not in starts):
         raise ValueError(f"{field} first_char must be an in-bounds token start")
+    for side in ("prefix", "suffix"):
+        if side in fragment and (not isinstance(fragment[side], str) or not fragment[side]):
+            raise ValueError(f"{field} {side} must be nonempty exact text")
+    prefix, suffix = fragment.get("prefix", ""), fragment.get("suffix", "")
     candidates = (first,) if first is not None else sorted(starts)
     locations = [start for start in candidates
-                 if start + len(quote) in ends and citation.startswith(quote, start)]
+                 if start + len(quote) in ends and citation.startswith(quote, start)
+                 and start >= len(prefix) and citation.startswith(prefix, start - len(prefix))
+                 and citation.startswith(suffix, start + len(quote))]
     if len(locations) != 1:
         raise ValueError(f"{field} must locate one exact token-aligned occurrence")
     start = offset + locations[0]

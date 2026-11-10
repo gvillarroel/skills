@@ -55,6 +55,43 @@ class GlossaryProposalTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "term must locate one exact"):
             compile_ledger(source, draft(source, [row]))
 
+    def test_adjacent_context_selects_a_repeated_term_and_value(self):
+        source = b"The example uses Lease for storage, but production uses Lease for storage too.\n"
+        row = proposal("Lease", "storage", 1)
+        row["term"]["prefix"] = "production uses "
+        row["value"]["suffix"] = " too."
+        entry = compile_ledger(source, draft(source, [row]))["proposals"][0]
+        self.assertEqual(entry["term"]["start"], source.rindex(b"Lease"))
+        self.assertEqual(entry["value"]["start"], source.rindex(b"storage"))
+        self.assertEqual(entry["term"]["quote"], "Lease")
+        self.assertEqual(entry["value"]["quote"], "storage")
+
+        revised = b"Note: " + source
+        moved = compile_ledger(revised, draft(revised, [row]))["proposals"][0]
+        self.assertEqual(moved["term"]["start"], entry["term"]["start"] + len(b"Note: "))
+        self.assertEqual(moved["value"]["start"], entry["value"]["start"] + len(b"Note: "))
+
+    def test_context_and_offsets_must_agree_at_one_exact_occurrence(self):
+        source = b"X needs A. X needs A in review.\n"
+        row = proposal("X", "A", 1)
+        row["term"] |= {"first_char": 0, "suffix": " needs A."}
+        row["value"]["prefix"] = "X needs "
+        with self.assertRaisesRegex(ValueError, "value must locate one exact"):
+            compile_ledger(source, draft(source, [row]))
+        row["value"]["suffix"] = "."
+        self.assertEqual(compile_ledger(source, draft(source, [row]))["proposals"][0]["term"]["start"], 0)
+
+        for change in (
+            {"first_char": source.rindex(b"X")},
+            {"prefix": "A. "},
+            {"suffix": " needs A in review."},
+            {"suffix": ""},
+            {"suffix": True},
+        ):
+            with self.subTest(change=change), self.assertRaises(ValueError):
+                modified = row | {"term": row["term"] | change}
+                compile_ledger(source, draft(source, [modified]))
+
     def test_stale_raw_source_and_duplicate_occurrence_are_rejected(self):
         source = b"X means device.\nOther text.\n"
         row = proposal("X", "device", 1)
