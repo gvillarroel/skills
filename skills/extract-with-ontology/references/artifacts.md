@@ -4,6 +4,7 @@
 
 - [RDF and evidence](#rdf-and-evidence)
 - [Bind exact text from selected lines](#bind-exact-text-from-selected-lines)
+- [Materialize a graph and evidence from one plan](#materialize-a-graph-and-evidence-from-one-plan)
 - [Review output](#review-output)
 
 Keep a separate instance graph, evidence ledger, and review queue.
@@ -88,9 +89,29 @@ property.
 ## Bind exact text from selected lines
 
 For UTF-8 source files with line locators, draft the asserted graph and
-a selection JSON file. Use the evidence format's `sources` array and
-an `assertions` array. For each assertion supply `subject`,
-`predicate`, `object`, `source_id`, `start_line`, and `end_line`.
+a selection JSON file. The selection has exactly two top-level keys,
+`sources` and `assertions`. The command computes the ontology digest
+from the supplied ontology file. The following selection cites line
+12 for an `issuedBy` assertion.
+
+```json
+{
+  "sources": [
+    {"id": "register", "path": "sources/register.txt", "sha256": "<source SHA-256>"}
+  ],
+  "assertions": [
+    {
+      "subject": "urn:records:permit-17",
+      "predicate": "urn:example:issuedBy",
+      "object": {"iri": "urn:records:office-5"},
+      "source_id": "register",
+      "start_line": 12,
+      "end_line": 12
+    }
+  ]
+}
+```
+
 Use inclusive one-based LF line numbers and the smallest passage that
 supports the assertion. Cite multiple passages separately when needed.
 
@@ -105,6 +126,26 @@ The binder checks the pinned sources and builds exact quotes, offsets
 and locators from the selected lines. It writes the evidence ledger
 after checking the asserted graph and every citation. Preserve the
 selection file with the review when reproducing the extraction.
+
+## Materialize a graph and evidence from one plan
+
+When starting with pinned UTF-8 sources and an ontology, draft the
+same selection JSON and list each asserted fact there. Include
+supported types and ownership links explicitly. Use separate rows
+for independent evidence fragments that support the same fact.
+
+```text
+uv run --script SKILL/scripts/check_extraction.py materialize --ontology schema.ttl --selection selections.json --source-root . --output-dir result
+```
+
+Use a new output directory under an existing parent. The command
+validates the claims and writes `data.ttl` and `evidence.json`.
+The graph uses sorted N-Triples syntax, which is a subset of Turtle.
+Several evidence rows can refer to one asserted triple. Use the
+existing `bind` command when you already have an asserted graph.
+
+Review class assignments, missing facts, and whether each passage
+supports the assertion. Run supplied SHACL shapes separately.
 
 ## Review output
 

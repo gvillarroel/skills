@@ -34,9 +34,11 @@ An ontology alone is enough for its vocabulary glossary.
    faithfully. Distinguish asserted facts, derived entailments, and
    validation findings.
 5. Verify the output vocabulary, evidence coverage, and requested
-   constraints. For pinned UTF-8 text, use the [evidence binder](references/artifacts.md#bind-exact-text-from-selected-lines)
-   to turn selected line ranges into exact citations. Run the bundled
-   checker for the supported RDF and evidence formats. Compare
+   constraints. For a new RDF graph from pinned UTF-8 text, use the
+   [assertion plan](references/artifacts.md#materialize-a-graph-and-evidence-from-one-plan)
+   to generate the graph and evidence together. Use the
+   [evidence binder](references/artifacts.md#bind-exact-text-from-selected-lines)
+   for an existing graph. Run the bundled checker and compare
    repeated outputs by canonical graph identity and evidence separately.
 
 For RDF tasks, default to `data.ttl`, `evidence.json`, and `review.md`

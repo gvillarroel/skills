@@ -49,20 +49,23 @@ code review, and the dashboard that measures Copilot usage. Each
 describes a different operation. The ontology classifies those
 operations in the pinned snapshot.
 
-## Check the result
+## Build and check the result
 
 Replace `SKILL` with the absolute directory of `extract-with-ontology`
-and set the source root to the crawler output. For a new extraction,
-record each source ID and inclusive line range in `selections.json`
-using the skill's evidence binder format. The binder builds the exact
-citation text and offsets from the saved files.
+and set the source root to the crawler output. In `selections.json`,
+record each assertion with its source ID and inclusive line range
+using the skill's evidence binder format. For a new extraction,
+generate the asserted graph and its exact citations from this plan.
+Choose a new result directory under an existing parent.
 
 ```bash
-uv run --script SKILL/scripts/check_extraction.py bind --ontology ontology.ttl --data data.ttl --selection selections.json --source-root /path/to/product-corpus --output evidence.json
+uv run --script SKILL/scripts/check_extraction.py materialize --ontology ontology.ttl --selection selections.json --source-root /path/to/product-corpus --output-dir /path/to/product-result
 ```
 
-Use the standard extraction checker and evaluate the supplied SHACL
-shapes separately.
+Write the review queue separately. To bind citations to an existing
+graph, use the skill's `bind` command. The following commands validate
+the reviewed reference in this directory. Substitute the generated
+graph and evidence paths to check a new extraction.
 
 ```bash
 uv run --script SKILL/scripts/check_extraction.py check --ontology ontology.ttl --data data.ttl --evidence evidence.json --source-root /path/to/product-corpus --output checks.json

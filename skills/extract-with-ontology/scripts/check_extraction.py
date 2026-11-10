@@ -99,7 +99,8 @@ def unique_object(items):
 
 
 def iri(value):
-    if not isinstance(value, str) or not IRI_PATTERN.fullmatch(value):
+    if (not isinstance(value, str) or not IRI_PATTERN.fullmatch(value)
+            or re.search(r"[\x00-\x1f\x7f-\x9f]", value)):
         raise ValueError("evidence requires an absolute IRI")
     return URIRef(value)
 
@@ -142,6 +143,15 @@ def source_text(root, row):
 
 def triple_text(triple):
     return " ".join(term.n3() for term in triple) + " ."
+
+
+def assertion_triple(row):
+    return iri(row["subject"]), iri(row["predicate"]), object_term(row["object"])
+
+
+def canonical_graph_text(graph):
+    records = graph.serialize(format="nt").split("\n")
+    return "".join(f"{row}\n" for row in sorted(filter(None, records)))
 
 
 def graph_issues(data, ontology):
@@ -197,7 +207,7 @@ def check(ontology, checksum, data, ledger, root):
             issues.append({"issue": str(exc), "source_id": source_id})
     covered = set()
     for index, row in enumerate(ledger["assertions"], 1):
-        triple = (iri(row["subject"]), iri(row["predicate"]), object_term(row["object"]))
+        triple = assertion_triple(row)
         text = sources.get(row["source_id"])
         quote = row["quote"]
         valid_quote = (text is not None and isinstance(quote, str) and bool(quote.strip()) and quote in text
@@ -214,10 +224,7 @@ def check(ontology, checksum, data, ledger, root):
     for missing in sorted(set(data) - covered, key=triple_text):
         issues.append({"issue": "asserted triple lacks valid evidence", "triple": triple_text(missing)})
     has_unnamed_terms = any(issue["issue"] == "unnamed RDF term" for issue in issues)
-    canonical = None
-    if not has_unnamed_terms:
-        records = data.serialize(format="nt").split("\n")
-        canonical = "".join(f"{row}\n" for row in sorted(filter(None, records)))
+    canonical = None if has_unnamed_terms else canonical_graph_text(data)
     return {
         "status": "violations" if issues else "passed",
         "ontology_sha256": checksum,
@@ -278,20 +285,55 @@ def bind_evidence(checksum, selection, root):
             "assertions": assertions}
 
 
+def materialized_graph(ledger):
+    graph = Graph()
+    for row in ledger["assertions"]:
+        graph.add(assertion_triple(row))
+    turtle = canonical_graph_text(graph)
+    parsed = Graph().parse(data=turtle, format="turtle")
+    if set(parsed) != set(graph):
+        raise ValueError("materialized RDF does not preserve the selected terms")
+    return parsed, turtle
+
+
+def write_claim_bundle(directory, turtle, ledger):
+    evidence = json.dumps(ledger, ensure_ascii=False, indent=2, sort_keys=True) + "\n"
+    files = (("data.ttl", turtle.encode("utf-8")), ("evidence.json", evidence.encode("utf-8")))
+    directory.mkdir()
+    created = []
+    try:
+        for name, payload in files:
+            path = directory / name
+            with path.open("xb") as stream:
+                created.append(path)
+                stream.write(payload)
+    except BaseException:
+        for path in created:
+            path.unlink(missing_ok=True)
+        directory.rmdir()
+        raise
+
+
 def main():
     parser = ArgumentParser(description=__doc__)
     commands = parser.add_subparsers(dest="command", required=True)
     inventory_command = commands.add_parser("inventory")
     check_command = commands.add_parser("check")
     bind_command = commands.add_parser("bind")
+    materialize_command = commands.add_parser("materialize")
     for command in (inventory_command, check_command, bind_command):
-        command.add_argument("--ontology", type=Path, required=True)
         command.add_argument("--output", type=Path)
+    for command in (inventory_command, check_command, bind_command, materialize_command):
+        command.add_argument("--ontology", type=Path, required=True)
     for command in (check_command, bind_command):
         command.add_argument("--data", type=Path, required=True)
+    for command in (check_command, bind_command, materialize_command):
         command.add_argument("--source-root", type=Path, required=True)
     check_command.add_argument("--evidence", type=Path, required=True)
-    bind_command.add_argument("--selection", type=Path, required=True)
+    for command in (bind_command, materialize_command):
+        command.add_argument("--selection", type=Path, required=True)
+    materialize_command.add_argument("--output-dir", type=Path, required=True)
+    materialize_command.set_defaults(output=None)
     args = parser.parse_args()
     rdflib.NORMALIZE_LITERALS = False
     try:
@@ -299,17 +341,24 @@ def main():
         if args.command == "inventory":
             result = inventory(ontology, checksum)
         else:
-            data, _ = parse_graph(args.data)
             root = args.source_root.resolve()
-            if args.command == "bind":
+            if args.command == "check":
+                data, _ = parse_graph(args.data)
+                ledger = json.loads(args.evidence.read_bytes(), object_pairs_hook=unique_object)
+                result = check(ontology, checksum, data, ledger, root)
+            else:
                 selection = json.loads(args.selection.read_bytes(), object_pairs_hook=unique_object)
                 result = bind_evidence(checksum, selection, root)
+                if args.command == "materialize":
+                    data, turtle = materialized_graph(result)
+                else:
+                    data, _ = parse_graph(args.data)
                 validation = check(ontology, checksum, data, result, root)
                 if validation["status"] != "passed":
                     raise ValueError(f"bound evidence failed validation: {validation['issues'][0]['issue']}")
-            else:
-                ledger = json.loads(args.evidence.read_bytes(), object_pairs_hook=unique_object)
-                result = check(ontology, checksum, data, ledger, root)
+                if args.command == "materialize":
+                    write_claim_bundle(args.output_dir, turtle, result)
+                    result = validation
         text = json.dumps(result, ensure_ascii=False, indent=2, sort_keys=True) + "\n"
         if args.output:
             with args.output.open("x", encoding="utf-8", newline="\n") as output:
