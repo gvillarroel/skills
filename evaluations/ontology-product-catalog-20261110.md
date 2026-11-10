@@ -39,6 +39,8 @@ and conformance from semantic support.
 The Pages build and its pattern validator passed. A headless
 Playwright browser loaded the catalog section and verified HTTP 200
 responses for all five example files.
+Two separate glossary vocabulary inspections listed the same 14
+declared terms and produced byte-identical inventories.
 
 ## Evidence retrieval experiments
 
@@ -72,7 +74,7 @@ and 438,022 unique characters per claim across the two datasets,
 respectively. The same source may be reused across claims. The
 corpora themselves contain 92,511 and 47,325 characters. Narrow
 retrieval remains a navigation aid. The paired model evaluation
-retains the full approved corpus. Six retrieval controls passed
+retains the full approved corpus. Eight retrieval controls passed
 on each of Python 3.11 and 3.14, and both final results were
 byte-identical between the two interpreters.
 
@@ -100,6 +102,114 @@ crawl and checked accepted and rejected publication paths. A native
 zero-inference job passed through the real actor and verifier
 boundary with credentials disabled.
 
+## First paired results
+
+All four actors successfully read the assigned product reference
+and rebuilt the exact crawl. All four retained artifacts passed the
+mechanical verifier. One variant trace had a shell syntax error and
+was excluded from strict semantic results. The blinded adjudication
+was sealed before revealing arm assignment.
+
+| Strict result | Published skill | Operation-boundary variant |
+| --- | ---: | ---: |
+| Exact crawl, all attempted runs | 2/2 | 2/2 |
+| Mechanical artifact pass, all retained runs | 2/2 | 2/2 |
+| Strict trace admission | 2/2 | 1/2 |
+| Correct classifications in admitted runs | 15/16 | 8/8 |
+| Correct required graph assertions in admitted runs | 39/40 | 20/20 |
+| Independently sufficient selected witnesses | 27/40 | 14/20 |
+| Direct resolution questions with a source authority | 0/4 | 2/2 |
+| Exact reference graphs | 0/2 | 0/1 |
+| Full strict semantic pass, all attempted runs | 0/2 | 0/2 |
+
+All three admitted runs asserted the required guarded expression
+reuse, but also inferred a second reuse route from a link to a
+related help page. The linked page documents a general authoring
+capability. The assessed property requires the specific transfer
+into the target setting. One run transferred a named model provider
+across feature boundaries. The other missed an explicit fixed trigger
+rule. With the governing text around selected citations, the
+reviewer found support for 59/60 required assertions. The selected
+witnesses alone supported 41/60. All three reviews distinguished a
+documented control from the organization's effective settings.
+
+The excluded artifact was separately scored at 8/8 classes and
+16/20 sufficiently cited required assertions. The two retained
+variant graphs agree on the eight classes but differ on a named
+provider edge. Both baseline graphs differ even after excluding
+labels. Native trace distillation verified both skill locks on the
+matching Linux runtime and normalized both jobs separately. Each
+pool contains two trials with one task checksum. This experiment
+cannot establish the trace diversity required for a patch or the
+repeatability of independent graph generation.
+
+A separate read-only replay expanded the selected citations by
+one, two, or four lines on each side, refusing expansions above
+1,800 characters. It did not add source IDs or alter the graph.
+Among the 60 required assertions in admitted runs, selected line
+intervals enclosing a frozen valid witness bundle went from 13 to
+13, 26, and 30, respectively. Four-line expansion increased cited
+characters from 25,438 to 47,051. This measures interval coverage.
+The blinded sufficiency scores and original artifacts remain fixed.
+
+## Exact authority variant
+
+A second paired run reuses the exact task, baseline, actor tools,
+mechanical verifier, and primary semantic criteria. The revised
+reference asks for the produced value, receiving setting, and
+documented transfer action for a directed reuse claim. It attaches
+named providers and scopes to the exact operation and checks whether
+a review statement describes a selected witness or consulted text.
+Eleven Docker verifier controls and the native zero-inference gate
+passed before the four new Luna low attempts.
+
+| Strict result | Published skill | Exact-authority variant |
+| --- | ---: | ---: |
+| Exact crawl and mechanical artifact pass, all retained runs | 2/2 | 2/2 |
+| Strict trace admission | 1/2 | 1/2 |
+| Correct classifications in admitted runs | 8/8 | 8/8 |
+| Correct required graph assertions in admitted runs | 20/20 | 20/20 |
+| Independently sufficient selected witnesses | 15/20 | 14/20 |
+| Direct resolution questions with a source authority | 0/2 | 2/2 |
+| Unsupported assertions in admitted runs | 2 | 1 |
+| Full strict semantic pass, all attempted runs | 0/2 | 0/2 |
+
+The baseline exclusion attempted to repeat the crawl into an existing
+directory. The variant exclusion misread the numbered-source response
+and tried to open a path outside the workspace. All four retained
+artifacts passed source, roster, replay and SHACL checks. Both pairs
+agreed on all eight classes and differed on the provider assertion.
+With one admitted run per arm, strict repeatability is unmeasured
+in this comparison.
+
+A second masked reviewer confirmed that all eight retained graphs
+added the unsupported assistant-to-trigger edge and correctly
+preserved the explicit Filter array-to-trigger relation. Across all
+five admitted runs, the full source attached the named provider to
+cloud-flow authoring, but none of the chosen passages identified
+that operation under the second reviewer's exact-scope criterion.
+The reviewer also confirmed that each variant's sole admitted run
+asked both direct questions. The first and second comparisons share
+one development family and do not qualify either variant for release.
+
+A third experiment has been designed to check each optional
+asserted relation against its selected source intervals after draft
+extraction. It would let the reviewer propose removal while locking
+the product, ownership and class assertions, and measure changes in
+precision and coverage separately. This experiment has not run.
+
+## Prospective independent check
+
+A curator prepared a separate product family with private evaluator
+data. Two live crawls and two offline checks reproduced eight source
+files, including four non-seed discoveries. The pinned verifier
+passed 15 proof controls and five acquisition controls. Two valid
+witness plans produced the same 25-assertion reference graph. The
+provisional actor could read its own inputs and could not read
+evaluator files. Native registration, executor-specific access
+checks, and blinded semantic calibration remain pending. No model
+has accessed this family.
+
 ## Receipts
 
 | Local artifact | SHA-256 |
@@ -113,3 +223,18 @@ boundary with credentials disabled.
 | Retrieval probe | `229ff1f3ab38d1617eede05696e2bf9e1a73d75f1fc0805329272d7358f1e2b2` |
 | Paired Harbor protocol | `8ada2c54bb738fcc54e3c07437a05f678c5d07ad11a6ddd2313b517c25e0cc49` |
 | Native zero-inference preflight | `5251cb916dfe750e7790686ede32015d96f4aa6d9e77befef09977dbc8ccc1a2` |
+| First native comparison | `1e9abece7454baa60b7cefdff130c3fcf580cf462673c1612a96689a0cbee907` |
+| First independent masked assessment | `9329299846feee46a87c9d657bdf55f0a4ba9e46b1b249ed9b688be5b10431df` |
+| First repeat signatures | `feb64953b6e21cde8f20003be1b91ed081fb158909bbedfd077efdfa8e78a234` |
+| First baseline trace pool | `2fc6791665df19a574ebb3631f9639f8b20b455163a1800fb69eba4752fab329` |
+| First variant trace pool | `5f667a20afbe04047000c8bd8df43a099fce74e69104ce0d9a44eb9ff157a332` |
+| Citation context replay | `85c7e4b8fb64f5df839d43865d1405823b9017bd2c93bd6f1fd295043627784a` |
+| Second paired Harbor protocol | `da904251cc0a8b79732f3cbba71f68d4cc3c003a0cedcb5126babb6e00140526` |
+| Second native zero-inference preflight | `ef9d8a3e298990bbd4cffdbfde2320b1b29b653e4627d4fd9e9340490ba72d6e` |
+| Second native comparison | `96c4628b82475a4bdfcbd0eadb31c3b6dd41e2d3a9d8b40ca12cfaed10ccc860` |
+| Second independent masked assessment | `42b0a64d75d3d6416f278af2edbcf6a432367297ec345b7f0caaf378137eebd4` |
+| Second repeat signatures | `6b70d291ae215a02445d61692c452b2a673243218e6aca9423336f617ee9d954` |
+| Independent relation and question audit, first comparison | `9f76c86d9070376903b0dedf3190235dd8d69ec7640914b1781f542354007b50` |
+| Independent relation and question audit, second comparison | `ee3e37f3f7b7d36f60ed9239f1e757710b4a6025e292e3bccef455fa05d1ce3f` |
+| Prospective curator proof controls | `b4bcfdc116abbf616520c7f6787dd9c40f55435dc27976346bf12437cc40cb59` |
+| Glossary vocabulary inventory | `afe237ce669a477d5a290f9f0a18627c7dbac1404dc91fa7cbe79429ecce9037` |

@@ -33,7 +33,9 @@ Give `extract-with-ontology` the ontology, shapes, scope, and verified
 corpus. Ask for a `data.ttl` instance graph, exact source citations in
 `evidence.json`, and a `review.md` file that accounts for every requested
 decision. To produce a glossary too, request it as a separate artifact
-and use the ontology's labels and definitions for its vocabulary.
+and use the ontology's labels and definitions for its vocabulary. The
+optional `inventory` command below lists the declared terms and their
+annotation predicates before glossary authoring.
 
 Assess what each operation does within its stated boundary. Evidence
 that a designer helps author an expression, evidence about evaluating
@@ -48,6 +50,7 @@ Verify the asserted graph and its cited text against the saved corpus,
 then check schema conformity.
 
 ```bash
+uv run --script SKILL/scripts/check_extraction.py inventory --ontology ontology.ttl --output vocabulary.json
 uv run --script SKILL/scripts/check_extraction.py check --ontology ontology.ttl --data output/data.ttl --evidence output/evidence.json --source-root corpus --output checks.json
 uv run --isolated --no-project --with pyshacl==0.40.0 pyshacl -s shapes.ttl -e ontology.ttl -i none output/data.ttl
 ```
