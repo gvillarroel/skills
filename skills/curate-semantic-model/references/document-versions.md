@@ -103,6 +103,12 @@ citation. A rule is `[mode, outcome, guard]`. Expressions
 are atom IDs or prefix arrays such as `["and", "A", ["not", "B"]]`
 and `["or", "A", "B"]`. `and` and `or` take two to ten arguments.
 `not` takes one. An expression may be nested at most twelve times.
+`or` is inclusive. Use
+`["and", ["or", "A", "B"], ["not", ["and", "A", "B"]]]`
+when the source requires exactly one of two branches. To review the
+choice, check A alone, B alone, both, and neither while holding the
+surrounding conditions fixed. If the source leaves overlap unresolved,
+record the competing readings for review.
 
 - `if` requires the outcome when the guard is true.
 - `only-if` requires the guard when the outcome is true.
@@ -173,3 +179,11 @@ also covers any byte-order mark and original line endings.
 Review each atom's identity, the scope of negation, and the complete rule
 against the citation. A token range can identify an exact fragment while
 leaving the surrounding predicate or connective for the reviewer.
+
+For an indexed rule, `atom_evidence_sha256` binds the source digest,
+cited line bounds, reviewed atom IDs, and the exact token positions
+covered by each atom. Splitting a range into adjacent valid pieces preserves
+this fingerprint and the output keeps the submitted fragments.
+Different coverage changes the fingerprint. Distinct atoms may share
+tokens when their complete coverage differs. Compare this fingerprint
+only within the same source version and reviewed atom vocabulary.

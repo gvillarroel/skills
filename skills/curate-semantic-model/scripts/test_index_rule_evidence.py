@@ -121,6 +121,36 @@ class IndexRuleEvidenceTests(unittest.TestCase):
         self.assertEqual([part["quote"] for part in compiled["atom_evidence"]["A"]], ["café", "tea"])
         self.assertEqual(compiled["atom_evidence"]["A"][0]["byte_start"], len("😀 ".encode("utf-8")))
 
+    def test_different_partitions_cannot_reuse_same_tokens_for_two_atoms(self):
+        self.base.write_text("A one B two\n", encoding="utf-8")
+        row = {"rule": ["plain", ["or", "A", "B"], None],
+               "evidence": {"start_line": 1, "end_line": 1},
+               "atom_refs": {"A": [[1, 4]], "B": [[1, 2], [3, 4]]}}
+        proc, output = self.run_compare(self.pair(base_row=row))
+        self.assertEqual(proc.returncode, 2, proc.stdout + proc.stderr)
+        self.assertIn("Distinct atoms need different source token coverage", proc.stdout)
+        self.assertFalse(output.exists())
+
+    def test_fingerprint_uses_token_coverage_and_preserves_fragments(self):
+        self.base.write_text("café checks postal code or city\n", encoding="utf-8")
+        lines = {"base": ["café checks postal code or city"], "head": ["A and B"]}
+        row = {"rule": ["plain", ["or", "A", "B"], None],
+               "evidence": {"start_line": 1, "end_line": 1},
+               "atom_refs": {"A": [[1, 4]], "B": [[1, 2], [6, 6]]}}
+        pair = self.pair(base_row=row)
+
+        def compare():
+            result = boolean_rule_pair.compare_rules(pair, lines, pair["source_sha256"])
+            return result["reviewed_rules"]["base"][0]
+
+        first = compare()
+        row["atom_refs"] = {"B": [[1, 2], [6, 6]], "A": [[1, 2], [3, 4]]}
+        split = compare()
+        self.assertEqual(first["atom_evidence_sha256"], split["atom_evidence_sha256"])
+        self.assertEqual([part["quote"] for part in split["atom_evidence"]["A"]], ["café checks", "postal code"])
+        row["atom_refs"]["A"] = [[1, 3]]
+        self.assertNotEqual(first["atom_evidence_sha256"], compare()["atom_evidence_sha256"])
+
     def test_punctuation_only_atom_range_is_rejected(self):
         self.base.write_text("A. B\n", encoding="utf-8")
         row = {"rule": ["plain", "A", None], "evidence": {"start_line": 1, "end_line": 1},

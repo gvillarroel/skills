@@ -131,8 +131,10 @@ def validate_pair(pair, lines_by_side, source_sha256):
             compiled = dict(row)
             compiled["evidence"] = normalized_evidence
             if "atom_refs" in row:
-                compiled["atom_evidence"] = validate_atom_refs(row["atom_refs"], used, quote,
-                                                                path + "/atom_refs")
+                atom_evidence, coverage = validate_atom_refs(row["atom_refs"], used, quote, path + "/atom_refs")
+                compiled["atom_evidence"] = atom_evidence
+                compiled["atom_evidence_sha256"] = atom_evidence_fingerprint(
+                    expected_digests[side], normalized_evidence, coverage)
             compiled_rows[side].append(compiled)
     return compiled_rows
 
@@ -140,6 +142,7 @@ def validate_pair(pair, lines_by_side, source_sha256):
 def validate_atom_refs(atom_refs, used_atoms, quote, path):
     require(isinstance(atom_refs, dict) and atom_refs.keys() == used_atoms,
             "atom_refs must cover exactly the atoms used by the rule", path, "INVALID_BOOLEAN_PAIR")
+    coverage = {}
     seen = set()
     tokens = index_quote(quote)
     raw = quote.encode("utf-8")
@@ -148,7 +151,7 @@ def validate_atom_refs(atom_refs, used_atoms, quote, path):
         require(isinstance(ranges, list) and 1 <= len(ranges) <= MAX_ATOM_RANGES,
                 "Each atom needs one to three token ranges", f"{path}/{atom}", "INVALID_BOOLEAN_PAIR")
         previous_end = 0
-        normalized = []
+        positions = []
         spans = []
         for index, span in enumerate(ranges):
             require(isinstance(span, list) and len(span) == 2
@@ -160,9 +163,9 @@ def validate_atom_refs(atom_refs, used_atoms, quote, path):
                     and first > previous_end,
                     "Token ranges must be increasing, non-overlapping, and at most eight tokens",
                     f"{path}/{atom}/{index}", "INVALID_BOOLEAN_PAIR")
-            normalized.append((first, last))
             require(last <= len(tokens), "Token range exceeds the indexed evidence",
                     f"{path}/{atom}/{index}", "INVALID_BOOLEAN_PAIR")
+            positions.extend(range(first, last + 1))
             start, end = tokens[first - 1]["start"], tokens[last - 1]["end"]
             byte_start, byte_end = tokens[first - 1]["byte_start"], tokens[last - 1]["byte_end"]
             exact = quote[start:end]
@@ -175,12 +178,21 @@ def validate_atom_refs(atom_refs, used_atoms, quote, path):
             spans.append({"tokens": [first, last], "quote": exact, "start": start, "end": end,
                           "byte_start": byte_start, "byte_end": byte_end})
             previous_end = last
-        key = tuple(normalized)
-        require(key not in seen, "Distinct atoms need distinct token range sets", f"{path}/{atom}",
+        key = tuple(positions)
+        require(key not in seen, "Distinct atoms need different source token coverage", f"{path}/{atom}",
                 "INVALID_BOOLEAN_PAIR")
         seen.add(key)
+        coverage[atom] = positions
         resolved[atom] = spans
-    return resolved
+    return resolved, coverage
+
+
+def atom_evidence_fingerprint(source_sha256, evidence, coverage):
+    payload = {"source_sha256": source_sha256,
+               "lines": [evidence["start_line"], evidence["end_line"]],
+               "tokens_by_atom": coverage}
+    raw = json.dumps(payload, sort_keys=True, separators=(",", ":")).encode("utf-8")
+    return sha256(raw).hexdigest()
 
 
 def truth_fingerprint(atoms, table):
