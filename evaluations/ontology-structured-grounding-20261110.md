@@ -203,6 +203,46 @@ The compared arms reuse the same prospective transfer fixture.
 The workflow remains experimental pending model evaluation on a
 separate family.
 
+## Review-only replay of both grounded results
+
+A dedicated review task fixed both strict grounded artifacts
+from the paired compiler study. Each task held the exact source
+packet, 11 decision states, selected witness IDs, and RDF bytes
+constant. It withheld the original review text and asked for a
+new evidence-aware explanation and a concrete resolution question
+when a case remained open or conflicted. An omitted upstream
+witness could be flagged in review. The task had no graph or
+witness replacement path.
+
+Both native Docker verifier images passed ten format and mutation
+controls, and the no-inference Harbor job transferred both
+artifacts successfully. One GPT-6 Luna low attempt ran per fixed
+artifact, with zero retries. The review comparison pairs each new
+review with its own original through randomized aliases. One
+grader had seen the earlier masked prose. A second grader had
+no prior access to those outputs. Both scored against the frozen
+criteria before seeing the pair mapping.
+
+The review-only job admitted both runs. The pair audit verified
+that all statuses, selected witnesses, and graph bytes were
+identical to their respective originals. Both masked graders
+credited 19/22 accurate reviews after the replay versus 15/22
+before it, and 17/22 complete outcomes versus 14/22. One grader
+credited 11/12 direct resolution questions before and after.
+The grader new to the source material credited 9/12 before and
+11/12 after. The gains came from one paired input. The other
+declined by one accurate review and one complete outcome.
+
+The graders found two and three instances, respectively, of the
+new reviews describing available evidence as selected when the
+ledger did not contain it. One explanation called an actually
+selected provider witness missing. Neither grader credited
+identification of any of the five documentary witnesses omitted
+from one fixed ledger. Exact witness metadata needs to remain
+separately sourced when generating narrative review. The paired
+result measures development replay of two fixed inputs and does
+not support changing the default workflow.
+
 ## Independent Kubernetes runtime experiment
 
 A local Kind cluster ran Kubernetes 1.33.1 at a pinned node
@@ -272,6 +312,15 @@ Luna evaluation of this family remains pending.
 | Grounded repeat stability and graph difference | `437fc9abdb2ad414e9d2b02187c8dac842dcc8dc2447fec517dcf613c8bc4d01` |
 | Grounded independent masked assessment | `6780f98e4f5c32cea72e8c9000c3db108d9ff2198df4227ca4337dcc5e09dc17` |
 | Independent assessment note correction | `e54badf1d4e932ee1016f1ae87bb9b66686276c129160f4ade05cf0374a4b042` |
+| Review-only protocol | `f7dd292cadb61225aa81a761f692706c519cc9bd5a7eeaf653a3a34f25a05070` |
+| Review-only fixed source binding | `f0291775297140e072ca4577bd98dab5e5ebfdadada9ed67fbc75393c8d5ed25` |
+| Review-only independent rubric addendum | `c67a12b83ef0b787a5f6e4e8174371558504f0ad37a5a5efbef16c2454551887` |
+| Review-only pre-inference receipt | `1b53cb1975aba9f1a3a2ff606e9752fa0999bd47972d51856bf124fdb8bc6026` |
+| Review-only native result | `86d984940e58da533d014e97e149ab489081c54718214af4859972347fa8477f` |
+| Review-only pair integrity | `5a181d31f243e0d0f55ccd9d49ac4e8c764553ba4c10b62cbe316fdaf769ce77` |
+| First independent masked review-only assessment | `6fbeafdcab0e2d763e9e6b7131681812403f3c6a93eaf321479e9a1e1a401903` |
+| Second independent masked review-only assessment | `c8ac045198ce7c35fc4780f0d1bd506645c8bfea4d171761bc8e569c9f045d8b` |
+| Paired aggregation of both masked assessments | `76af8ad065b31b9e000dfa6abd1153bda6ae0900cca4ff08ad13a8613262ea5c` |
 | Kubernetes capture index | `8c86d18427d952817ef829d60d8939cc17e2531f7f9fa207e65b1fd694c7b850` |
 | Kubernetes diagnostic freeze | `abdc0394b2fd131f1203c6dc5902e8031093296a1322846dc546b08a7979048c` |
 | Kubernetes JSON Pointer replay and controls | `5ef08d923706dc92873b0148d00b8cde59e54ff79198ee79b8fc5f99adc8d07b` |
