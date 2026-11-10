@@ -274,9 +274,26 @@ operation, and scope from the source windows, treat the claim
 as a hypothesis, and request the exact missing antecedent.
 The copied source and runtime payloads passed offline checks.
 The candidate and both arms froze with the original prompts,
-answer key, carrier, and strict runner. The launch preflight
-measured zero free bytes twice against the 20 MiB threshold.
-The candidate has zero full-skill model attempts.
+answer key, carrier, and strict runner. The initial launch
+preflight measured zero free bytes twice against the 20 MiB
+threshold. A later preflight cleared that threshold and each
+candidate arm ran once with GPT-6 Luna low, without retries.
+
+| Strict Pi measure | Published baseline | Source-only candidate |
+| --- | ---: | ---: |
+| Admitted arms | 2/2 | 2/2 |
+| Correct decisions and exact evidence with the original citation | 3/4 | 3/4 |
+| Correct decisions and exact evidence with the antecedent | 4/4 | 4/4 |
+| Correct and stable controls | 3/3 | 3/3 |
+| Frozen pair criterion | Fail | Fail |
+
+All eight verdict and witness selections matched the baseline.
+The candidate still kept the provider-only citation and used
+the claim to supply the missing operation. With the added
+source window it correctly identified the unresolved referent
+in the original passage and selected both citations. The
+unchanged failure on the original arm blocked promotion.
+The private Harbor cohort remained sealed.
 
 An independent in-memory diagnostic exercised the same rule on
 eight frozen cases with pinned PostgreSQL and Power Automate
@@ -299,8 +316,9 @@ claim as the referent of a pronoun in the source. The source-only
 arm requested the antecedent. A more permissive reading of the
 standard questions credits two roles and one complete question.
 Two source-only questions still name the proposed identity
-while requesting the exact source authority. This small paired
-diagnostic supports testing the candidate in the full skill.
+while requesting the exact source authority. The strict Pi
+result above records the outcome when the same intervention
+was tested in the full skill.
 
 ## Matched PostgreSQL model diagnostic
 
@@ -408,6 +426,7 @@ the development principal. The private cohort remained sealed.
 | Power Automate strict Pi pair receipt | `4f53e34b227fb4fe13728be7320728aafeaf4a0dcfd42a0ab06e957b0196dd27` |
 | Frozen source-only verification candidate study | `05c1716db8ad9988b7c6c5bd956c539cfd49e34d749aa64a9f0c30577b1ef5da` |
 | Source-only verification candidate payload | `3962cbfef9044bf17173ce5942f99388850ef37fe09d99226b4b55d49c8f1e89` |
+| Strict source-only candidate comparison receipt | `48a146d858f5c6f1ebfcdf0d0fba8fb9b12a71149cfffd7dd5746815287fbf86` |
 | Source-only model diagnostic frozen cases | `0fd5a5591a49723537345e87c7bd719611508988688dc33076bf2ee5a3714c24` |
 | Source-only model diagnostic frozen rubric | `b81afcb2c73dccced875f3be55244bdd23f1ec3b525dff2b739c2f54cb4ff257` |
 | Source-only model diagnostic standard reply | `d4422695a94cecb4d319aa09f8c5492ec4484c5b748cffea10e079369ace56f3` |
