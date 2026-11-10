@@ -42,17 +42,17 @@ class BooleanRulePairCLITest(unittest.TestCase):
                 "start_line": 1, "end_line": 1, "quote": self.head.read_text().rstrip("\n")}}],
         }
 
-    def run_pair(self, pair, *, output=None):
+    def run_pair(self, pair, *, output=None, mode="--boolean-pair"):
         self.pair_path.write_text(json.dumps(pair), encoding="utf-8")
         destination = output or self.output
         return subprocess.run([sys.executable, str(CLI), "--base", str(self.base), "--head", str(self.head),
-                               "--boolean-pair", str(self.pair_path), "--output", str(destination)],
+                               mode, str(self.pair_path), "--output", str(destination)],
                               check=False, capture_output=True, text=True)
 
-    def checked(self, pair):
+    def checked(self, pair, *, mode="--boolean-pair"):
         self.output_counter += 1
         destination = self.root / f"result-{self.output_counter}.json"
-        process = self.run_pair(pair, output=destination)
+        process = self.run_pair(pair, output=destination, mode=mode)
         self.assertEqual(process.returncode, 0, process.stdout + process.stderr)
         self.assertEqual(json.loads(process.stdout)["engine_status"], "completed")
         return json.loads(destination.read_text(encoding="utf-8"))
@@ -142,6 +142,60 @@ class BooleanRulePairCLITest(unittest.TestCase):
         result = self.checked(self.pair(["plain", ["or", "A", ["not", "A"]], None],
                                          ["plain", "B", None]))
         self.assertEqual(result["classification"], "hold")
+
+    def test_consequence_uses_all_reviewed_premises(self):
+        first = ["if", "B", "A"]
+        second = ["if", "C", "B"]
+        candidate = ["if", "C", "A"]
+        premise = {"start_line": 1, "end_line": 1, "quote": "Base reviewed rule."}
+        rows = [{"rule": rule, "evidence": premise} for rule in (first, second)]
+        pair = self.pair(None, candidate, base_rows=rows)
+        pair["atoms"]["C"] = "reviewed proposition C"
+        result = self.checked(pair, mode="--boolean-consequence")
+        self.assertEqual((result["status"], result["classification"]), ("evaluated", "entailed"))
+        self.assertIsNone(result["counterexamples"]["base_not_head"])
+        self.assertIsNotNone(result["region_witnesses"]["both"])
+        pair["base"].pop()
+        result = self.checked(pair, mode="--boolean-consequence")
+        self.assertEqual(result["classification"], "independent")
+        self.assertEqual(result["counterexamples"]["base_not_head"], {"A": True, "B": True, "C": False})
+        self.assertIsNotNone(result["region_witnesses"]["both"])
+
+    def test_consequence_distinguishes_refutation_and_candidate_profiles(self):
+        cases = [
+            ("B", ["not", "B"], "refuted", "contingent"),
+            ("B", ["or", "A", ["not", "A"]], "entailed", "tautology"),
+            ("B", ["and", "A", ["not", "A"]], "refuted", "contradiction"),
+            (["or", "A", ["not", "A"]], "B", "independent", "contingent"),
+        ]
+        for premise, candidate, classification, profile in cases:
+            with self.subTest(premise=premise, candidate=candidate):
+                result = self.checked(self.pair(["plain", premise, None], ["plain", candidate, None]),
+                                      mode="--boolean-consequence")
+                self.assertEqual(result["classification"], classification)
+                self.assertEqual(result["candidate_profile"], profile)
+                self.assertEqual(result["region_witnesses"]["both"] is None, classification == "refuted")
+                self.assertEqual(result["counterexamples"]["base_not_head"] is None, classification == "entailed")
+
+    def test_consequence_holds_on_inconsistent_premises_before_candidate_profile(self):
+        premise = ["plain", ["and", "A", ["not", "A"]], None]
+        candidate = ["plain", ["or", "B", ["not", "B"]], None]
+        result = self.checked(self.pair(premise, candidate), mode="--boolean-consequence")
+        self.assertEqual((result["status"], result["classification"]), ("hold", "inconsistent-premises"))
+        self.assertEqual(result["premise_profile"], "contradiction")
+        self.assertEqual(result["candidate_profile"], "tautology")
+        self.assertIsNone(result["region_witnesses"]["both"])
+        self.assertIsNone(result["counterexamples"]["base_not_head"])
+
+    def test_consequence_fails_before_evaluation_on_stale_candidate_source(self):
+        pair = self.pair(["plain", "A", None], ["plain", "A", None])
+        self.head.write_text("Edited candidate.\n", encoding="utf-8")
+        process = self.run_pair(pair, mode="--boolean-consequence")
+        self.assertEqual(process.returncode, 2)
+        summary = json.loads(process.stdout)
+        self.assertEqual(summary["semantic_status"], "not_run")
+        self.assertEqual(summary["error"]["code"], "BOOLEAN_PAIR_BINDING_MISMATCH")
+        self.assertFalse(self.output.exists())
 
     def test_exact_line_quote_is_required(self):
         pair = self.pair(["plain", "A", None], ["plain", "A", None])

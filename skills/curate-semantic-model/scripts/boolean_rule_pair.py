@@ -251,3 +251,32 @@ def compare_rules(pair, lines_by_side, source_sha256):
             "source_sha256": pair["source_sha256"], "atoms": pair["atoms"],
             "reviewed_rules": reviewed_rows,
             "fingerprints": {side: truth_fingerprint(atoms, table) for side, table in truth.items()}}
+
+
+def truth_profile(satisfying, total):
+    if satisfying == 0:
+        return "contradiction"
+    if satisfying == total:
+        return "tautology"
+    return "contingent"
+
+
+def check_consequence(pair, lines_by_side, source_sha256):
+    result = compare_rules(pair, lines_by_side, source_sha256)
+    counts = result["region_counts"]
+    total = sum(counts.values())
+    supported, countermodels = counts["both"], counts["base_not_head"]
+    if supported + countermodels == 0:
+        status, classification = "hold", "inconsistent-premises"
+    elif countermodels == 0:
+        status, classification = "evaluated", "entailed"
+    elif supported == 0:
+        status, classification = "evaluated", "refuted"
+    else:
+        status, classification = "evaluated", "independent"
+    return result | {
+        "status": status,
+        "classification": classification,
+        "premise_profile": truth_profile(supported + countermodels, total),
+        "candidate_profile": truth_profile(supported + counts["head_not_base"], total),
+    }

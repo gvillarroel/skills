@@ -14,7 +14,7 @@ sys.dont_write_bytecode = True
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from semantic_model import EngineError, parse_json_text, exact_json_equal, nonempty, read_json, require, write_new
 from typed_snapshot_delta import compare_snapshots
-from boolean_rule_pair import compare_rules
+from boolean_rule_pair import check_consequence, compare_rules
 
 
 def source_path(filename):
@@ -49,14 +49,15 @@ def compare_bound_snapshots(args):
                              class_identity=identity, input_sha256=binding)
 
 
-def compare_boolean_pair(args):
+def evaluate_boolean_pair(args, proposal):
     paths = {side: source_path(getattr(args, side)) for side in ("base", "head")}
     sources = {side: path.read_bytes() for side, path in paths.items()}
     digests = {side: sha256(raw).hexdigest() for side, raw in sources.items()}
     lines = {side: source_lines(raw.decode("utf-8-sig").replace("\r\n", "\n").replace("\r", "\n"),
                                paths[side]) for side, raw in sources.items()}
-    pair = read_json(args.boolean_pair, exact_numbers=True)
-    return compare_rules(pair, lines, digests)
+    pair = read_json(proposal, exact_numbers=True)
+    evaluate = check_consequence if args.boolean_consequence is not None else compare_rules
+    return evaluate(pair, lines, digests)
 
 
 def compile_state(state, source, path):
@@ -116,16 +117,18 @@ def main(argv=None):
     mode.add_argument("--draft")
     mode.add_argument("--snapshot-pair")
     mode.add_argument("--boolean-pair")
+    mode.add_argument("--boolean-consequence", help="Check whether base rules entail the head candidate")
     parser.add_argument("--class-identity", help="Reviewed base/head class pairs for snapshot comparison")
     parser.add_argument("--output", required=True)
     args = parser.parse_args(argv)
+    boolean_path = args.boolean_pair if args.boolean_pair is not None else args.boolean_consequence
     try:
-        proposal = (args.boolean_pair if args.boolean_pair is not None else
+        proposal = (boolean_path if boolean_path is not None else
                     args.snapshot_pair if args.snapshot_pair is not None else args.draft)
-        if args.boolean_pair is not None:
+        if boolean_path is not None:
             require(args.class_identity is None, "--class-identity applies only to --snapshot-pair",
                     "/class_identity", "INVALID_CLASS_IDENTITY")
-            result = compare_boolean_pair(args)
+            result = evaluate_boolean_pair(args, proposal)
         elif args.class_identity is None:
             compile_pair = compare_snapshots if args.snapshot_pair is not None else compile_observations
             result = compile_pair(read_json(proposal, exact_numbers=True), read_lines(args.base), read_lines(args.head))
@@ -144,8 +147,9 @@ def main(argv=None):
                           "error": {"code": "DOCUMENT_INPUT", "message": str(exc)}}))
         return 2
     summary = {"engine_status": "completed", "semantic_status": "not_run"}
-    if args.boolean_pair is not None:
-        summary["boolean_pair_status"] = result["status"]
+    if boolean_path is not None:
+        status_key = "boolean_pair_status" if args.boolean_pair is not None else "boolean_consequence_status"
+        summary[status_key] = result["status"]
         summary["classification"] = result["classification"]
     elif args.snapshot_pair is not None:
         summary["snapshot_status"] = result["status"]

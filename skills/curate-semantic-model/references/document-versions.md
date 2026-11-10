@@ -5,6 +5,7 @@
 - [Compile reviewed observations](#compile-reviewed-observations)
 - [Compare reviewed typed inventories](#compare-reviewed-typed-inventories)
 - [Compare reviewed Boolean rules](#compare-reviewed-boolean-rules)
+- [Check a reviewed Boolean consequence](#check-a-reviewed-boolean-consequence)
 - [Bind reviewed atoms by token number](#bind-reviewed-atoms-by-token-number)
 
 Pin both source files and record their byte digests and revision identifiers.
@@ -154,6 +155,41 @@ that can change its truth value and the corresponding truth table.
 Equivalent syntax and irrelevant atoms yield the same fingerprint when
 the reviewed atom IDs and their meanings are stable. Review the
 translation and atom identities separately from the Boolean result.
+
+## Check a reviewed Boolean consequence
+
+Use the same reviewed Boolean pair format. The `base` rows are the
+premises and the `head` rows form the candidate. Each side's rows are
+conjoined. Pin both source files and review the common atom meanings
+before running the check. A candidate can be a proposed relationship
+written in its own source file. Its citation identifies the proposal.
+
+~~~text
+uv run --script SKILL/scripts/compare_document_versions.py --base premises.txt --head candidate.txt --boolean-consequence reviewed-rules.json --output consequence.json
+~~~
+
+| Classification | Result under the reviewed premises |
+| --- | --- |
+| `entailed` | Every assignment satisfying the premises also satisfies the candidate. |
+| `refuted` | Every assignment satisfying the premises falsifies the candidate. |
+| `independent` | There is an assignment supporting the candidate and another falsifying it. |
+| `inconsistent-premises` | No assignment satisfies the premises. The status is `hold`. |
+
+Inspect `counterexamples.base_not_head` for an assignment that
+satisfies the premises and falsifies the candidate.
+`region_witnesses.both` gives a satisfying example when one exists.
+For an independent candidate, inspect both assignments to identify
+which additional assumption would require review. Read the
+`premise_profile` and `candidate_profile` to distinguish a
+tautology, a contradiction and a contingent formula. For example,
+consistent premises entail a tautological candidate, which needs no
+domain-specific assumption. Inconsistent premises take precedence over
+the candidate's profile.
+
+The result retains the pinned citations, reviewed atom IDs and truth
+fingerprints. The calculation is exhaustive over the reviewed atom
+inventory. Review the source-to-formula translation and the cross-source
+identity of atoms before using the classification.
 
 ## Bind reviewed atoms by token number
 

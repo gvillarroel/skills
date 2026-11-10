@@ -14,7 +14,8 @@ needed capability. Compare parsimony only among models that meet these duties.
 
 When the user supplies two document versions and reviewed observations, typed
 inventories, or Boolean rules, use [document-versions.md](references/document-versions.md)
-for deterministic comparison and exact line evidence.
+for deterministic comparison and exact line evidence. Use its consequence
+mode to test a reviewed candidate against reviewed premises.
 
 - Use this skill's self-contained JSON workflow for source inventory, typed
   modeling, conservative reduction, conflict review, and coverage reporting.
