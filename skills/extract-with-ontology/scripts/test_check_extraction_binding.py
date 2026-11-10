@@ -8,6 +8,7 @@
 from copy import deepcopy
 from hashlib import sha256
 import json
+import os
 from pathlib import Path
 import subprocess
 import sys
@@ -57,6 +58,61 @@ class EvidenceBindingTests(unittest.TestCase):
              "--output", str(self.output if output is None else output)],
             capture_output=True, text=True, check=False,
         )
+
+    def view(self, *args, source=None, checksum=None):
+        return subprocess.run(
+            [sys.executable, "-B", str(SCRIPT), "lines", "--source-root", str(self.root),
+             "--source", self.source.name if source is None else source,
+             "--sha256", sha256(self.source.read_bytes()).hexdigest() if checksum is None else checksum,
+             *args],
+            capture_output=True, check=False, env=dict(os.environ) | {"PYTHONIOENCODING": "ascii"},
+        )
+
+    def test_numbered_view_matches_physical_line_binding(self):
+        result = self.view()
+        self.assertEqual(result.returncode, 0, result.stderr)
+        view = json.loads(result.stdout)
+        self.assertEqual(view["source_sha256"], self.plan["sources"][0]["sha256"])
+        self.assertEqual(view["line_count"], 4)
+        self.assertEqual(view["lines"], [
+            {"line": 1, "text": "\ufeffDébut."},
+            {"line": 2, "text": "Clé\u2028intacte."},
+            {"line": 3, "text": ""},
+            {"line": 4, "text": "Fin."},
+        ])
+        ranged = self.view("--start-line", "2", "--end-line", "3")
+        self.assertEqual(ranged.returncode, 0, ranged.stderr)
+        self.assertEqual(json.loads(ranged.stdout)["lines"], view["lines"][1:3])
+
+    def test_numbered_view_handles_empty_and_terminated_sources(self):
+        for raw, expected in (
+            (b"", []),
+            (b"\n", [""]),
+            (b"start\rbody\n\nend\r\n", ["start\rbody", "", "end"]),
+        ):
+            with self.subTest(raw=raw):
+                self.source.write_bytes(raw)
+                result = self.view()
+                self.assertEqual(result.returncode, 0, result.stderr)
+                view = json.loads(result.stdout)
+                self.assertEqual(view["line_count"], len(expected))
+                self.assertEqual([row["text"] for row in view["lines"]], expected)
+
+    def test_numbered_view_checks_path_pin_range_and_existing_output(self):
+        for args, kwargs in (
+            (("--start-line", "0"), {}),
+            (("--start-line", "3", "--end-line", "2"), {}),
+            (("--end-line", "5"), {}),
+            ((), {"source": "../outside.txt"}),
+            ((), {"checksum": "0" * 64}),
+        ):
+            with self.subTest(args=args, kwargs=kwargs):
+                result = self.view(*args, "--output", str(self.output), **kwargs)
+                self.assertEqual(result.returncode, 2, result.stdout)
+                self.assertFalse(self.output.exists())
+        self.output.write_bytes(b"existing")
+        self.assertEqual(self.view("--output", str(self.output)).returncode, 2)
+        self.assertEqual(self.output.read_bytes(), b"existing")
 
     def test_exact_raw_offsets_and_order_independent_output(self):
         result = self.invoke(self.plan)

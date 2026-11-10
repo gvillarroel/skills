@@ -3,6 +3,7 @@
 ## Contents
 
 - [RDF and evidence](#rdf-and-evidence)
+- [Inspect numbered source lines](#inspect-numbered-source-lines)
 - [Bind exact text from selected lines](#bind-exact-text-from-selected-lines)
 - [Materialize a graph and evidence from one plan](#materialize-a-graph-and-evidence-from-one-plan)
 - [Review output](#review-output)
@@ -85,6 +86,22 @@ the assertion. Check identity, ontology meaning, completeness, and
 SHACL or OWL reasoning separately. A literal quote, declared predicate,
 or matching fingerprint establishes only the corresponding mechanical
 property.
+
+## Inspect numbered source lines
+
+Use the numbered view when choosing citation line ranges from a pinned
+UTF-8 snapshot. Supply the source path relative to the root and the
+SHA-256 from its source pin.
+
+```text
+uv run --script SKILL/scripts/check_extraction.py lines --source-root . --source sources/register.txt --sha256 SOURCE_SHA256 --start-line 10 --end-line 16
+```
+
+The JSON contains the original line count and numbered text. Omit the
+range for a short source. Numbering starts at one and counts blank lines.
+LF and CRLF both delimit lines, and the view keeps the same numbers as
+`bind` and `materialize`. Use the selected numbers in the plan. The
+binder reconstructs the exact quote from the original snapshot.
 
 ## Bind exact text from selected lines
 

@@ -141,6 +141,38 @@ def source_text(root, row):
     return raw.decode("utf-8")
 
 
+def line_starts(text):
+    starts = [0, *(match.end() for match in re.finditer("\n", text))]
+    if not text or text.endswith("\n"):
+        starts.pop()
+    return starts
+
+
+def line_span(text, starts, first, last):
+    start = starts[first - 1]
+    end = starts[last] if last < len(starts) else len(text)
+    if text[end - 1:end] == "\n":
+        end -= 1
+        if text[end - 1:end] == "\r":
+            end -= 1
+    return start, end
+
+
+def numbered_source(root, path, checksum, first, last):
+    text = source_text(root, {"path": path, "sha256": checksum})
+    starts = line_starts(text)
+    lines = []
+    if starts or first != 1 or last is not None:
+        stop = len(starts) if last is None else last
+        if not 1 <= first <= stop <= len(starts):
+            raise ValueError("requested source lines are out of bounds")
+        for number in range(first, stop + 1):
+            start, end = line_span(text, starts, number, number)
+            lines.append({"line": number, "text": text[start:end]})
+    return {"source": path, "source_sha256": checksum,
+            "line_count": len(starts), "lines": lines}
+
+
 def triple_text(triple):
     return " ".join(term.n3() for term in triple) + " ."
 
@@ -249,10 +281,7 @@ def bind_evidence(checksum, selection, root):
         if not isinstance(source_id, str) or not source_id.strip() or source_id in sources:
             raise ValueError("source IDs must be nonempty and unique")
         text = source_text(root, item)
-        starts = [0, *(match.end() for match in re.finditer("\n", text))]
-        if not text or text.endswith("\n"):
-            starts.pop()
-        sources[source_id] = (text, starts)
+        sources[source_id] = (text, line_starts(text))
 
     assertions = []
     triple_fields = {"subject", "predicate", "object", "source_id"}
@@ -266,12 +295,7 @@ def bind_evidence(checksum, selection, root):
         first, last = row["start_line"], row["end_line"]
         if not (type(first) is type(last) is int and 1 <= first <= last <= len(starts)):
             raise ValueError(f"selection row {index} has an out-of-bounds line range")
-        start = starts[first - 1]
-        end = starts[last] if last < len(starts) else len(text)
-        if text[end - 1:end] == "\n":
-            end -= 1
-            if text[end - 1:end] == "\r":
-                end -= 1
+        start, end = line_span(text, starts, first, last)
         quote = text[start:end]
         if not quote.strip():
             raise ValueError(f"selection row {index} has a blank citation")
@@ -314,6 +338,31 @@ def write_claim_bundle(directory, turtle, ledger):
         raise
 
 
+def extraction_result(args):
+    ontology, checksum = parse_graph(args.ontology)
+    if args.command == "inventory":
+        return inventory(ontology, checksum)
+    root = args.source_root.resolve()
+    if args.command == "check":
+        data, _ = parse_graph(args.data)
+        ledger = json.loads(args.evidence.read_bytes(), object_pairs_hook=unique_object)
+        return check(ontology, checksum, data, ledger, root)
+
+    selection = json.loads(args.selection.read_bytes(), object_pairs_hook=unique_object)
+    ledger = bind_evidence(checksum, selection, root)
+    if args.command == "materialize":
+        data, turtle = materialized_graph(ledger)
+    else:
+        data, _ = parse_graph(args.data)
+    validation = check(ontology, checksum, data, ledger, root)
+    if validation["status"] != "passed":
+        raise ValueError(f"bound evidence failed validation: {validation['issues'][0]['issue']}")
+    if args.command == "materialize":
+        write_claim_bundle(args.output_dir, turtle, ledger)
+        return validation
+    return ledger
+
+
 def main():
     parser = ArgumentParser(description=__doc__)
     commands = parser.add_subparsers(dest="command", required=True)
@@ -321,14 +370,19 @@ def main():
     check_command = commands.add_parser("check")
     bind_command = commands.add_parser("bind")
     materialize_command = commands.add_parser("materialize")
-    for command in (inventory_command, check_command, bind_command):
+    lines_command = commands.add_parser("lines", help="show numbered lines from pinned UTF-8 text")
+    for command in (inventory_command, check_command, bind_command, lines_command):
         command.add_argument("--output", type=Path)
     for command in (inventory_command, check_command, bind_command, materialize_command):
         command.add_argument("--ontology", type=Path, required=True)
     for command in (check_command, bind_command):
         command.add_argument("--data", type=Path, required=True)
-    for command in (check_command, bind_command, materialize_command):
+    for command in (check_command, bind_command, materialize_command, lines_command):
         command.add_argument("--source-root", type=Path, required=True)
+    lines_command.add_argument("--source", required=True, help="path relative to the source root")
+    lines_command.add_argument("--sha256", required=True)
+    lines_command.add_argument("--start-line", type=int, default=1)
+    lines_command.add_argument("--end-line", type=int)
     check_command.add_argument("--evidence", type=Path, required=True)
     for command in (bind_command, materialize_command):
         command.add_argument("--selection", type=Path, required=True)
@@ -337,32 +391,18 @@ def main():
     args = parser.parse_args()
     rdflib.NORMALIZE_LITERALS = False
     try:
-        ontology, checksum = parse_graph(args.ontology)
-        if args.command == "inventory":
-            result = inventory(ontology, checksum)
+        if args.command == "lines":
+            result = numbered_source(
+                args.source_root.resolve(), args.source, args.sha256, args.start_line, args.end_line
+            )
         else:
-            root = args.source_root.resolve()
-            if args.command == "check":
-                data, _ = parse_graph(args.data)
-                ledger = json.loads(args.evidence.read_bytes(), object_pairs_hook=unique_object)
-                result = check(ontology, checksum, data, ledger, root)
-            else:
-                selection = json.loads(args.selection.read_bytes(), object_pairs_hook=unique_object)
-                result = bind_evidence(checksum, selection, root)
-                if args.command == "materialize":
-                    data, turtle = materialized_graph(result)
-                else:
-                    data, _ = parse_graph(args.data)
-                validation = check(ontology, checksum, data, result, root)
-                if validation["status"] != "passed":
-                    raise ValueError(f"bound evidence failed validation: {validation['issues'][0]['issue']}")
-                if args.command == "materialize":
-                    write_claim_bundle(args.output_dir, turtle, result)
-                    result = validation
+            result = extraction_result(args)
         text = json.dumps(result, ensure_ascii=False, indent=2, sort_keys=True) + "\n"
         if args.output:
             with args.output.open("x", encoding="utf-8", newline="\n") as output:
                 output.write(text)
+        elif args.command == "lines":
+            sys.stdout.buffer.write(text.encode("utf-8"))
         else:
             print(text, end="")
     except (OSError, KeyError, AttributeError, TypeError, ValueError, SyntaxError, ParserError) as exc:
