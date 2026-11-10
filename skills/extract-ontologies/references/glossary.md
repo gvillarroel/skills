@@ -1,5 +1,12 @@
 # Author a source-backed glossary
 
+## Contents
+
+- [Write reviewed glossary entries](#write-reviewed-glossary-entries)
+- [Compile proposals before assigning identity](#compile-proposals-before-assigning-identity)
+
+## Write reviewed glossary entries
+
 Use a glossary to explain the terminology in scope. Record the source
 versions and the vocabulary or language coverage at the top of
 `glossary.md`. Start with the user's term list when supplied. For
@@ -51,3 +58,57 @@ resolvable evidence ledger record. In Markdown, retain scope notes and
 other review details alongside the same core fields. Glossary wording
 is documentation. Use the ontology authoring workflow to review any
 corresponding formal axiom.
+
+## Compile proposals before assigning identity
+
+When extracting a glossary from raw UTF-8 text, use the proposal
+ledger to validate the source pointers before reviewing the entries.
+Read the source and draft candidate definitions, aliases and
+attestations. Copy the exact term and value. Keep cases that only
+mention a term as attestations when those occurrences are needed.
+Review whether each passage defines the term in the requested scope.
+
+The draft has the raw file's `source_sha256` and a `proposals` array.
+Each row supplies `kind`, `lane`, `term`, `value`, and `evidence`.
+Use kinds `definition`, `alias`, and `attestation`. Use the
+`entity`, `predicate`, or `unspecified` lane. These proposal lanes
+organize the review. Assign the glossary entry's reviewed semantic
+kind separately.
+
+~~~json
+{
+  "source_sha256": "<lowercase raw-file SHA-256>",
+  "proposals": [
+    {
+      "kind": "definition",
+      "lane": "entity",
+      "term": {"quote": "X7"},
+      "value": {"quote": "the gateway device"},
+      "evidence": {"start_line": 1, "end_line": 1}
+    }
+  ]
+}
+~~~
+
+For an alias, copy the two lexical forms in the order given by the
+source. Review which form is preferred separately. An attestation has
+a null value.
+The term and value must occupy separate, whole-token spans in the
+same cited window. Line bounds are inclusive and one-based. A window
+can cover up to eleven lines. If a quote repeats inside that window,
+add `first_char` with its zero-based character offset within the
+decoded citation. Preserve case, spaces, punctuation and Unicode
+code points. The decoded citation uses LF line endings and omits
+a UTF-8 byte-order mark.
+
+~~~text
+uv run --script SKILL/scripts/compile_glossary_proposals.py --source document.txt --draft proposals.json --output proposal-ledger.json
+~~~
+
+Replace SKILL with this skill's directory. The compiler pins the raw
+source and draft bytes, reconstructs each citation, and sorts the
+candidate entries by source occurrence. Resolved start and end offsets
+are zero-based and end-exclusive in the normalized document. The
+ledger retains competing passages and keeps entity and predicate
+uses separate. Review the candidates and establish identity before
+assigning glossary IDs or carrying bindings across source versions.
