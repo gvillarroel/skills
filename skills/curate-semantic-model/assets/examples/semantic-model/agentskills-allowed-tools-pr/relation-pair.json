@@ -1,0 +1,294 @@
+{
+  "source_sha256": {
+    "base": "e4d2fbcc5e1b27d57eec8184d2883177e7b807adda695c90acc44b1bf094fb25",
+    "head": "2dd6ed990a1d7f3c17b99b3bad9a0308e70458915958951169a4b9c895914045"
+  },
+  "base": {
+    "entities": {
+      "allowed-tools": {
+        "id": "urn:agentskills:specification:allowed-tools",
+        "evidence": {
+          "start_line": 165,
+          "end_line": 165,
+          "quote": "The optional `allowed-tools` field:"
+        }
+      },
+      "wording": {
+        "id": "urn:agentskills:specification:space-delimited-list",
+        "evidence": {
+          "start_line": 166,
+          "end_line": 166,
+          "quote": "- A space-delimited list of tools that are pre-approved to run"
+        }
+      },
+      "optional": {
+        "id": "urn:agentskills:specification:optional",
+        "evidence": {
+          "start_line": 165,
+          "end_line": 165,
+          "quote": "The optional `allowed-tools` field:"
+        }
+      },
+      "experimental": {
+        "id": "urn:agentskills:specification:experimental",
+        "evidence": {
+          "start_line": 167,
+          "end_line": 167,
+          "quote": "- Experimental. Support for this field may vary between agent implementations"
+        }
+      },
+      "varies": {
+        "id": "urn:agentskills:specification:varies-by-implementation",
+        "evidence": {
+          "start_line": 167,
+          "end_line": 167,
+          "quote": "- Experimental. Support for this field may vary between agent implementations"
+        }
+      }
+    },
+    "predicates": {
+      "representation-wording": {
+        "id": "urn:agentskills:specification:representation-wording",
+        "evidence": {
+          "start_line": 166,
+          "end_line": 166,
+          "quote": "- A space-delimited list of tools that are pre-approved to run"
+        }
+      },
+      "requirement-status": {
+        "id": "urn:agentskills:specification:requirement-status",
+        "evidence": {
+          "start_line": 165,
+          "end_line": 165,
+          "quote": "The optional `allowed-tools` field:"
+        }
+      },
+      "maturity": {
+        "id": "urn:agentskills:specification:maturity",
+        "evidence": {
+          "start_line": 167,
+          "end_line": 167,
+          "quote": "- Experimental. Support for this field may vary between agent implementations"
+        }
+      },
+      "implementation-support": {
+        "id": "urn:agentskills:specification:implementation-support",
+        "evidence": {
+          "start_line": 167,
+          "end_line": 167,
+          "quote": "- Experimental. Support for this field may vary between agent implementations"
+        }
+      }
+    },
+    "relations": [
+      {
+        "subject": "allowed-tools",
+        "predicate": "representation-wording",
+        "object": "wording",
+        "qualifiers": {
+          "polarity": "positive",
+          "modality": "asserted",
+          "time": null,
+          "scope": "urn:agentskills:specification:frontmatter"
+        },
+        "evidence": {
+          "start_line": 165,
+          "end_line": 166,
+          "quote": "The optional `allowed-tools` field:\n- A space-delimited list of tools that are pre-approved to run"
+        }
+      },
+      {
+        "subject": "allowed-tools",
+        "predicate": "requirement-status",
+        "object": "optional",
+        "qualifiers": {
+          "polarity": "positive",
+          "modality": "asserted",
+          "time": null,
+          "scope": "urn:agentskills:specification:frontmatter"
+        },
+        "evidence": {
+          "start_line": 165,
+          "end_line": 165,
+          "quote": "The optional `allowed-tools` field:"
+        }
+      },
+      {
+        "subject": "allowed-tools",
+        "predicate": "maturity",
+        "object": "experimental",
+        "qualifiers": {
+          "polarity": "positive",
+          "modality": "asserted",
+          "time": null,
+          "scope": "urn:agentskills:specification:frontmatter"
+        },
+        "evidence": {
+          "start_line": 165,
+          "end_line": 167,
+          "quote": "The optional `allowed-tools` field:\n- A space-delimited list of tools that are pre-approved to run\n- Experimental. Support for this field may vary between agent implementations"
+        }
+      },
+      {
+        "subject": "allowed-tools",
+        "predicate": "implementation-support",
+        "object": "varies",
+        "qualifiers": {
+          "polarity": "positive",
+          "modality": "asserted",
+          "time": null,
+          "scope": "urn:agentskills:specification:frontmatter"
+        },
+        "evidence": {
+          "start_line": 165,
+          "end_line": 167,
+          "quote": "The optional `allowed-tools` field:\n- A space-delimited list of tools that are pre-approved to run\n- Experimental. Support for this field may vary between agent implementations"
+        }
+      }
+    ]
+  },
+  "head": {
+    "entities": {
+      "allowed-tools": {
+        "id": "urn:agentskills:specification:allowed-tools",
+        "evidence": {
+          "start_line": 165,
+          "end_line": 165,
+          "quote": "The optional `allowed-tools` field:"
+        }
+      },
+      "wording": {
+        "id": "urn:agentskills:specification:space-separated-string",
+        "evidence": {
+          "start_line": 166,
+          "end_line": 166,
+          "quote": "- A space-separated string of tools that are pre-approved to run"
+        }
+      },
+      "optional": {
+        "id": "urn:agentskills:specification:optional",
+        "evidence": {
+          "start_line": 165,
+          "end_line": 165,
+          "quote": "The optional `allowed-tools` field:"
+        }
+      },
+      "experimental": {
+        "id": "urn:agentskills:specification:experimental",
+        "evidence": {
+          "start_line": 167,
+          "end_line": 167,
+          "quote": "- Experimental. Support for this field may vary between agent implementations"
+        }
+      },
+      "varies": {
+        "id": "urn:agentskills:specification:varies-by-implementation",
+        "evidence": {
+          "start_line": 167,
+          "end_line": 167,
+          "quote": "- Experimental. Support for this field may vary between agent implementations"
+        }
+      }
+    },
+    "predicates": {
+      "representation-wording": {
+        "id": "urn:agentskills:specification:representation-wording",
+        "evidence": {
+          "start_line": 166,
+          "end_line": 166,
+          "quote": "- A space-separated string of tools that are pre-approved to run"
+        }
+      },
+      "requirement-status": {
+        "id": "urn:agentskills:specification:requirement-status",
+        "evidence": {
+          "start_line": 165,
+          "end_line": 165,
+          "quote": "The optional `allowed-tools` field:"
+        }
+      },
+      "maturity": {
+        "id": "urn:agentskills:specification:maturity",
+        "evidence": {
+          "start_line": 167,
+          "end_line": 167,
+          "quote": "- Experimental. Support for this field may vary between agent implementations"
+        }
+      },
+      "implementation-support": {
+        "id": "urn:agentskills:specification:implementation-support",
+        "evidence": {
+          "start_line": 167,
+          "end_line": 167,
+          "quote": "- Experimental. Support for this field may vary between agent implementations"
+        }
+      }
+    },
+    "relations": [
+      {
+        "subject": "allowed-tools",
+        "predicate": "representation-wording",
+        "object": "wording",
+        "qualifiers": {
+          "polarity": "positive",
+          "modality": "asserted",
+          "time": null,
+          "scope": "urn:agentskills:specification:frontmatter"
+        },
+        "evidence": {
+          "start_line": 165,
+          "end_line": 166,
+          "quote": "The optional `allowed-tools` field:\n- A space-separated string of tools that are pre-approved to run"
+        }
+      },
+      {
+        "subject": "allowed-tools",
+        "predicate": "requirement-status",
+        "object": "optional",
+        "qualifiers": {
+          "polarity": "positive",
+          "modality": "asserted",
+          "time": null,
+          "scope": "urn:agentskills:specification:frontmatter"
+        },
+        "evidence": {
+          "start_line": 165,
+          "end_line": 165,
+          "quote": "The optional `allowed-tools` field:"
+        }
+      },
+      {
+        "subject": "allowed-tools",
+        "predicate": "maturity",
+        "object": "experimental",
+        "qualifiers": {
+          "polarity": "positive",
+          "modality": "asserted",
+          "time": null,
+          "scope": "urn:agentskills:specification:frontmatter"
+        },
+        "evidence": {
+          "start_line": 165,
+          "end_line": 167,
+          "quote": "The optional `allowed-tools` field:\n- A space-separated string of tools that are pre-approved to run\n- Experimental. Support for this field may vary between agent implementations"
+        }
+      },
+      {
+        "subject": "allowed-tools",
+        "predicate": "implementation-support",
+        "object": "varies",
+        "qualifiers": {
+          "polarity": "positive",
+          "modality": "asserted",
+          "time": null,
+          "scope": "urn:agentskills:specification:frontmatter"
+        },
+        "evidence": {
+          "start_line": 165,
+          "end_line": 167,
+          "quote": "The optional `allowed-tools` field:\n- A space-separated string of tools that are pre-approved to run\n- Experimental. Support for this field may vary between agent implementations"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "namespace": "urn:agentskills:specification:",
+  "subject": "allowed-tools",
+  "status": "changed",
+  "added": [
+    [
+      "representation-wording",
+      "space-separated-string"
+    ]
+  ],
+  "removed": [
+    [
+      "representation-wording",
+      "space-delimited-list"
+    ]
+  ],
+  "modified": [],
+  "preserved": [
+    [
+      "requirement-status",
+      "optional"
+    ],
+    [
+      "maturity",
+      "experimental"
+    ],
+    [
+      "implementation-support",
+      "varies-by-implementation"
+    ]
+  ],
+  "graph_sha256": {
+    "base": "56ded27a8cf98caab96240d0d10f8267701a41357c619b8284eff2ca43d41365",
+    "head": "c67c1bf1c6f5d74b9c29aa62d8e2e4cd45c04eddc65040656b88fff7c7940764"
+  },
+  "report_sha256": "304ece2c8f1b492c2c6524608c8f7487a1e6875c8543efaf2622fb37ff6d8985"
+}
