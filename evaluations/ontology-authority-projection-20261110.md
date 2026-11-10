@@ -189,6 +189,80 @@ packets. No tested route reached zero incorrect acceptances.
 The raw scores and results were byte-identical on Python 3.11
 and 3.12.
 
+## Dedicated review pass
+
+A separate native task froze the first typed trial by lexicographic
+trial ID. Its six insufficient decisions and one conflict were
+given to both review arms with the same source excerpts, state,
+and selected evidence. Both prompts asked for a direct question
+and an explanation of which answer would resolve it. The treatment
+also received a machine-derived list of unresolved or disputed
+requirements. The two arms used the same output fields and could
+write only the review artifact. They ran twice with GPT-6 Luna low
+and zero retries.
+
+All 11 exact Docker carrier controls and both no-inference Harbor
+probes passed. All four live traces and structural carriers passed.
+The independent rubric was frozen before inference. It checks the
+exact scope, relevant authority, a discriminating question, and a
+valid mapping from an observation to the decision. It accepts
+semantically equivalent wording.
+
+| Review-only outcome | Common review prompt | Common prompt plus unresolved requirements |
+| --- | ---: | ---: |
+| Strict carrier and trace admission | 2/2 | 2/2 |
+| Complete review decisions | 14/14 | 14/14 |
+| Direct resolution question for the conflict | 2/2 | 2/2 |
+
+The selected extraction artifact already supplied direct questions
+for its six insufficient decisions. It described the conflicting
+testimony without asking how to resolve it. Every dedicated review
+addressed the conflict. The added requirement list gave no observed
+benefit over the common review prompt in this sample. This test
+measures question quality with already-fixed upstream decisions.
+It leaves extraction and graph repeatability to the preceding study.
+Three answers could distinguish observed nonapproval from a missing
+approval record more explicitly. Their questions asked about the
+actual decision for the correct call and met the frozen rubric.
+
+## Choose the next discriminating observation
+
+A separate deterministic probe compared lexical order, the shortest
+unresolved branch, and exact expected-cost optimization on small
+monotone proof formulas. It used nine structures and enumerated 158
+simulated truth assignments. The inputs included the n8n task's
+declared alternate proof shape, a shared guard, unequal observation
+costs, a redundant branch, and an already-settled outcome. The probe
+assumes independently obtainable Boolean observations with supplied
+probabilities and costs. It does not model ambiguous observations or
+competing testimony.
+[Stochastic Boolean Function Evaluation](https://arxiv.org/abs/1303.0726) ·
+[Adaptivity Gaps](https://arxiv.org/abs/2208.03810)
+
+The adaptive policy reduced expected cost in five of nine structures
+against lexical order and in three against the shortest branch.
+All policies resolved every assignment correctly. For the n8n
+alternate proof, equal costs and probabilities gave 39/16 expected
+queries in lexical order and 31/16 with either of the other methods.
+For a shared guard the adaptive method asked about that guard first
+and reduced the expected count from 21/8 to 15/8. The result was
+byte-identical in Python 3.11 and 3.14. This probe measures selection
+over declared alternatives with simulated answers. The wording of
+questions is evaluated separately.
+
+## Prospective Terraform and AWS transfer
+
+An independent author prepared 11 new extraction decisions from
+ten scenarios selected before consulting the Luna outcomes.
+The packet combines the pinned primary documents with raw JSON
+excerpts for a plan, deployed mapping, and runtime observations.
+It tests neighboring resource addresses, after-unknown values,
+deployment scope, exact invocation IDs, explicit guard failure,
+conflict, and alternate proof paths. Twenty-four controls passed
+on Windows Python 3.11 and 3.14 and Ubuntu WSL Python 3.12.
+Both reference carriers produced the same three-triple graph.
+This package has no Luna or native semantic results yet.
+
 ## Receipts
 
 | Local artifact | SHA-256 |
@@ -213,3 +287,13 @@ and 3.12.
 | Frozen NLI model receipt | `48e91fec8e08ebcf57e10314787b84d562043a5fdf230dad5ab1172cc0760a13` |
 | Local NLI scores, both interpreters | `732bcb965766089181338aeadce9974cbc097de89a540a7e302e5ab4e775dd50` |
 | Local NLI assessment, both interpreters | `ef14febaddeeadbcaa8257604f073bb7be8f38255c84f75a49ec5f417c343766` |
+| Review-only protocol | `d3c476c7ebeeed0f929c54d9e4738b21689c60fbffc60b0c600817f601d0546b` |
+| Review-only pre-inference receipt | `4caf7856801df113ba473a5c03744ec857b17c5b9c08791a90e08d33acd743c7` |
+| Frozen independent review rubric | `ffab4c9bda55da709d77eeb6db827578b7a4b5809f8ef2bac79b2dd4e54f8c98` |
+| Review-only native comparison | `045df45e421722b42c7da03de859cc9f77e1b281cd768ab2000508b85d02d455` |
+| Review-only observed read and write boundary | `630bd5413970787a8d853580ff35d8beddfbe288eb9439bb73a18dd7eddb8c8a` |
+| Review-only independent masked assessment | `637b4cff50577524f0e25a6e426c053f342c02e0c9a85c02fbfa6916fdb127f7` |
+| Adaptive query order, both interpreters | `4e3f1f1726f4f3d895b69bb3c0a0f759a6c18ae0851e396a864e800239d7836e` |
+| Prospective transfer actor freeze | `2b8a4d746064a501ed1e53406c9c5a317a48bbcbb9b1af30aa238c932f69eff1` |
+| Prospective transfer full freeze | `aa93fae9fdfba9dfc659376f3ef41bb839986dd84bcca0f5974aa81091cacb61` |
+| Prospective transfer reference and preflight controls | `510d1f47772e5310db12bc690b04d3620413615a9f640dcde9ae89e585d55096` |
