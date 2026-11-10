@@ -4,6 +4,7 @@
 
 - [Write reviewed glossary entries](#write-reviewed-glossary-entries)
 - [Compile proposals before assigning identity](#compile-proposals-before-assigning-identity)
+- [Compile and review documents independently](#compile-and-review-documents-independently)
 
 ## Write reviewed glossary entries
 
@@ -112,3 +113,43 @@ are zero-based and end-exclusive in the normalized document. The
 ledger retains competing passages and keeps entity and predicate
 uses separate. Review the candidates and establish identity before
 assigning glossary IDs or carrying bindings across source versions.
+
+## Compile and review documents independently
+
+For several raw files, pin the expected documents before drafting
+proposals. Create `manifest.json` with a `documents` object. Each key
+is an ID beginning with an ASCII letter and containing up to 100 ASCII
+letters, digits, underscores, hyphens or dots. Each value has `path`
+(relative to the manifest directory) and `sha256` (the lowercase
+digest of the exact source bytes).
+
+Write one physical line per document in a UTF-8 records file. Start
+each line with the document ID and a literal tab, then write the same
+JSON object used for a single draft. Keep newlines inside JSON strings
+escaped. A reviewed document with no proposals still needs a record
+with its digest and an empty `proposals` array.
+
+~~~text
+uv run --script SKILL/scripts/compile_glossary_batch.py --manifest manifest.json --records drafts.txt --output batch-ledger.json
+~~~
+
+Exit 0 means every expected document compiled. Exit 1 writes a
+`partial` ledger with successful documents and diagnostics. Exit 2
+reports a manifest or input/output error. A duplicate ID keeps that
+document out of the ledger, even if one of its rows has invalid JSON.
+A malformed or missing row, a stale source, or an invalid draft is
+reported separately from successfully compiled documents. Review
+unrecognized rows as well as missing IDs. Use a fresh output path for
+each run.
+
+Treat each compiled document as a collection of source-backed
+candidates. In a partial batch, state which documents were unavailable
+before describing the glossary's coverage. For conflicting definitions
+or aliases, put the term and its scope first, then list each distinct
+reading with the source locator and the decision it would change.
+Phrase the review question so the reviewer can check the evidence.
+Separate what each source says from the choice the reviewer needs to
+make. For example, cite the inventory's device and the API guide's
+service, then ask whether an authoritative passage ties these two uses
+of `gateway` to the same glossary identity. Until that distinction
+is resolved, keep their identities separate.
