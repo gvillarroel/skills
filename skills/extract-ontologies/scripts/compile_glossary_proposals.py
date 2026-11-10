@@ -10,6 +10,7 @@ from hashlib import sha256
 import json
 from pathlib import Path
 import re
+from unicodedata import category
 
 TOKEN = re.compile(r"\w+(?:[-’']\w+)*|[^\w\s]", re.UNICODE)
 KINDS = ("definition", "alias", "attestation")
@@ -23,6 +24,19 @@ def unique_fields(items):
             raise ValueError(f"Duplicate JSON field: {key}")
         result[key] = value
     return result
+
+
+def token_ranges(text):
+    # Match on base characters and map each token back to the exact source.
+    base, offsets = [], []
+    for index, char in enumerate(text):
+        if category(char).startswith("M") and base and not base[-1].isspace():
+            continue
+        base.append(char)
+        offsets.append(index)
+    offsets.append(len(text))
+    return [(offsets[token.start()], offsets[token.end()])
+            for token in TOKEN.finditer("".join(base))]
 
 
 def locate(fragment, citation, starts, ends, offset, field):
@@ -55,8 +69,8 @@ def compile_row(row, lines, offsets):
     if not (type(first) is int and type(last) is int and 1 <= first <= last <= len(lines) and last - first <= 10):
         raise ValueError("Evidence must span one to eleven in-bounds lines")
     quote = "\n".join(lines[first - 1:last])
-    tokens = list(TOKEN.finditer(quote))
-    starts, ends = {token.start() for token in tokens}, {token.end() for token in tokens}
+    tokens = token_ranges(quote)
+    starts, ends = {start for start, _ in tokens}, {end for _, end in tokens}
     term = locate(row["term"], quote, starts, ends, offsets[first - 1], "term")
     value = row["value"]
     if kind == "attestation":

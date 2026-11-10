@@ -75,6 +75,42 @@ class GlossaryProposalTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "exact token-aligned"):
             compile_ledger(source, draft(source, [row]))
 
+    def test_combining_marks_preserve_the_whole_source_token(self):
+        for term, prefix, suffix in (
+            ("cafe\u0301", "cafe", None),
+            ("cafe\u0301teria", "cafe\u0301", "teria"),
+            ("क\u093e", "क", None),
+            ("a\u20dd", "a", None),
+        ):
+            with self.subTest(term=term):
+                value = f"the {term} label"
+                source = f"{term} means {value}.\n".encode()
+                row = proposal(term, value, 1)
+                row["term"]["first_char"] = 0
+                entry = compile_ledger(source, draft(source, [row]))["proposals"][0]
+                self.assertEqual(entry["term"], {"quote": term, "start": 0, "end": len(term)})
+                self.assertEqual(entry["value"]["quote"], value)
+                for partial in (prefix, suffix):
+                    if partial is None:
+                        continue
+                    truncated_term = row | {"term": {"quote": partial, "first_char": term.index(partial)}}
+                    with self.assertRaisesRegex(ValueError, "token"):
+                        compile_ledger(source, draft(source, [truncated_term]))
+                truncated_value = row | {"value": {"quote": f"the {prefix}"}}
+                with self.assertRaisesRegex(ValueError, "exact token-aligned"):
+                    compile_ledger(source, draft(source, [truncated_value]))
+
+    def test_distinct_normalizations_keep_exact_offsets(self):
+        source = "cafe, café and cafe\u0301 are three configuration keys.\n".encode()
+        terms = ("cafe", "café", "cafe\u0301")
+        rows = [proposal(term, None, 1, kind="attestation", lane="unspecified") for term in terms]
+        entry = compile_ledger(source, draft(source, rows))["proposals"]
+        self.assertEqual([item["term"] for item in entry], [
+            {"quote": terms[0], "start": 0, "end": 4},
+            {"quote": terms[1], "start": 6, "end": 10},
+            {"quote": terms[2], "start": 15, "end": 20},
+        ])
+
     def test_cli_never_overwrites_and_preserves_attestations(self):
         with TemporaryDirectory() as root:
             root = Path(root)

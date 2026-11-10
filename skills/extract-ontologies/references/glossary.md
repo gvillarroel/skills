@@ -99,7 +99,9 @@ same cited window. Line bounds are inclusive and one-based. A window
 can cover up to eleven lines. If a quote repeats inside that window,
 add `first_char` with its zero-based character offset within the
 decoded citation. Preserve case, spaces, punctuation and Unicode
-code points. The decoded citation uses LF line endings and omits
+code points. A combining mark stays attached to its preceding
+non-space character when locating token boundaries. The decoded
+citation uses LF line endings and omits
 a UTF-8 byte-order mark.
 
 ~~~text
