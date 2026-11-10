@@ -4,6 +4,7 @@
 
 - [Compile reviewed observations](#compile-reviewed-observations)
 - [Compare reviewed typed inventories](#compare-reviewed-typed-inventories)
+- [Compare reviewed qualified relations](#compare-reviewed-qualified-relations)
 - [Compare reviewed Boolean rules](#compare-reviewed-boolean-rules)
 - [Check a reviewed Boolean consequence](#check-a-reviewed-boolean-consequence)
 - [Bind reviewed atoms by token number or exact quote](#bind-reviewed-atoms-by-token-number)
@@ -89,6 +90,82 @@ whole proposition, including its conditions, polarity, role and
 alternatives. Compare deterministic results using the same reviewed
 inputs, source bytes and helper version. Write each result to a new
 path outside the input files.
+
+## Compare reviewed qualified relations
+
+Use `--relation-pair` for directed relations with reviewed identity in
+each source version. The pair contains `source_sha256` with the raw
+base and head file digests, plus `base` and `head` inventories. Pin the
+complete supplied files, including glossary text used for the bindings.
+
+Each inventory has `entities` and `predicates` maps and a `relations`
+array. Each map key is a local ID. A binding contains a stable ID and an
+exact citation from that version. The same local ID can identify an
+entity and a predicate in their separate maps. Several local IDs can
+map to one reviewed stable ID. A stable ID is a nonblank token of up to
+200 characters, such as an IRI or a namespace-qualified identifier.
+
+When using a model to draft relation rows, give it the source text,
+the local entity and predicate code lists, and the reviewed scope IDs.
+Keep the local-to-stable maps with the comparator and attach them to
+the reviewed draft after extraction. This keeps the extraction fields
+in the source-local vocabulary.
+
+~~~json
+{
+  "entities": {
+    "C": {"id": "urn:role:courier", "evidence": {"start_line": 1, "end_line": 1, "quote": "C denotes the courier."}},
+    "P": {"id": "urn:item:parcel", "evidence": {"start_line": 2, "end_line": 2, "quote": "C may dispatch P in production."}}
+  },
+  "predicates": {
+    "D": {"id": "urn:relation:dispatch", "evidence": {"start_line": 2, "end_line": 2, "quote": "C may dispatch P in production."}}
+  },
+  "relations": [
+    {
+      "subject": "C", "predicate": "D", "object": "P",
+      "qualifiers": {"polarity": "positive", "modality": "permitted", "time": null, "scope": "urn:scope:production"},
+      "evidence": {"start_line": 2, "end_line": 2, "quote": "C may dispatch P in production."}
+    }
+  ]
+}
+~~~
+
+Every relation needs all four reviewed qualifiers. Polarity is
+`positive` or `negative`. Modality is `asserted`, `required`,
+`recommended`, `permitted`, or `prohibited`. Time is null for an
+unqualified relation, or an object with `start` and `end` dates in
+`YYYY-MM-DD` form. The start is inclusive and the end is exclusive.
+One end may be null for an open interval. Scope is a reviewed stable
+ID or null for an unscoped relation. Use a review record for unresolved
+qualifiers, including ambiguous temporal bounds. Null records an
+explicitly unqualified field.
+
+~~~text
+uv run --script SKILL/scripts/compare_document_versions.py --base old.txt --head new.txt --relation-pair reviewed-relations.json --output relation-delta.json
+~~~
+
+The comparator resolves the ordered subject, predicate and object
+separately in each version. Equal resolved roles and qualifiers
+produce equal graph identity even when local names, citations, or row
+order differ. A changed role or predicate produces an addition and a
+removal. The comparator links a qualifier change as a modification
+when exactly one unmatched row on each side has the same resolved
+roles. Other unmatched alternatives remain separate.
+
+The result preserves local and stable roles, relation and binding
+citations, raw source and input digests, and a fingerprint of each
+resolved relation set. The operation indexes refer to rows in the
+corresponding version. The fingerprints cover this reviewed relation
+set. Review the asserted roles, qualifier encodings and the binding
+evidence before using the delta. Two distinct IDs or time intervals
+stay distinct unless their reviewed encodings agree.
+
+Leave a local binding absent when its identity is unresolved. The
+result then records the missing roles and abstains from the entire
+delta. An optional top-level `review` record can state a reason and
+supply exact `base` and `head` citations, using the same format as
+the typed inventory mode. An abstention retains available evidence and
+leaves the operation lists empty and graph fingerprints null.
 
 ## Compare reviewed Boolean rules
 
