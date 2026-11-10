@@ -105,6 +105,94 @@ one baseline artifact stopped at the crawl. The initial experiment
 provides no strict comparison of semantic quality. The acquisition
 results and task controls have separate receipts.
 
+A reviewer scored the two complete files without the arm key.
+These results are diagnostic because both traces were excluded.
+The original exact-window counts remain alongside the independent
+assessment.
+
+| Diagnostic on one retained artifact per arm | Baseline | Evidence table |
+| --- | ---: | ---: |
+| Mechanical source and evidence binding | 1/1 | 1/1 |
+| SHACL conformity | 0/1 | 1/1 |
+| Correct scoped classes | 7/7 | 6/7 |
+| Correct requested execution boundaries | 4/4 | 3/4 |
+| Correct documented introduction versions | 2/2 | 2/2 |
+| Supported forward relations with their configuration | 1/2 | 1/2 |
+| Obligations with an approved witness set | 4/17 | 7/17 |
+| Obligations with independently sufficient evidence | 7/17 | 10/17 |
+| Direct question for the private implementation | 0/1 | 1/1 |
+| Exact reference graph | 0/1 | 0/1 |
+
+Both withheld the configured route to the private endpoint because
+its implementation was open. The scenario supplied the route and
+the source described how the connector uses the configured endpoint.
+The two facts can be represented separately. Both retained files
+also omitted the product and feature labels, which the frozen
+reference expects but SHACL does not require. Each graph and
+evidence ledger had a different digest. Analyzing each arm under
+its own locked bundle with Harbor Trace Distillation found two
+execution errors and one task checksum per arm. This cohort alone
+does not provide diverse evidence for an accepted patch.
+
+## Follow-up with a checked publication command
+
+The follow-up kept both skill bundles, the crawl input, the
+ontology, and the evaluator frozen. It supplied working search
+and SHACL commands to both arms. A shared publisher materialized
+the draft in a fresh staging directory and checked SHACL before
+publishing the three requested outputs. Rejected drafts reported
+their status and preserved the previous valid output. The real
+Docker and native no-inference controls exercised acquisition,
+publication, artifact transfer, and verifier isolation.
+
+Two new Luna low attempts per arm ran with zero retries. All four
+retained the same exact nine-source capture. The baseline had one
+strict trace admission. It submitted an empty assertion plan,
+which the publisher rejected under the product shape. The other
+baseline trace had an edit error. Its mechanically valid
+30-triple graph was retained for diagnosis. Both candidate
+attempts passed strict trace admission, exact artifact paths,
+source binding, selection-plan replay, and SHACL. They produced
+different graphs, with 31 and 21 triples, and different evidence
+ledgers.
+
+| Follow-up across two attempts per arm | Baseline | Evidence table |
+| --- | ---: | ---: |
+| Exact retained crawl | 2/2 | 2/2 |
+| Strict trace admission | 1/2 | 2/2 |
+| Strict artifact, evidence binding, plan and SHACL pass | 0/2 | 2/2 |
+| Full strict semantic pass | 0/2 | 0/2 |
+
+The blind review of the two admitted candidate artifacts found
+13/14 correct classes, 7/8 requested boundaries, 4/4 introduction
+versions, and 3/4 expected forward edges. Only 1/4 forward edges
+had independently sufficient evidence for the roles and the
+governing configuration. The complete 31-triple artifact
+misclassified request dispatch as AI and attached a Titan-only
+citation to the private route. Its review mentioned relevant
+private-route support that the ledger omitted. The 21-triple
+artifact omitted all eight labels and the private route and
+boundary. The two graphs had 20 triples in common and all seven
+product ownership links. They still differ after removing labels.
+
+Of 34 witness obligations, nine matched the frozen approved sets
+and 16 had sufficient evidence in the independent review. One of
+the two reviews asked a direct implementation question. Both
+denied the two reversed routes. Both included the documented
+introduction versions, while one treated the already resolved
+2.9 contrast as open. Neither matched the reference graph.
+
+The trace-excluded baseline diagnostic had 7/7 correct classes,
+3/4 requested boundaries, both versions and both forward edges
+with sufficient guarded evidence. It had 7/17 approved witness
+sets and 13/17 independently sufficient obligations, and it asked
+a direct implementation question. It failed the complete semantic
+criterion. The difference in strict artifact admissions supports
+retaining the evidence table for development. It leaves semantic
+superiority and independently generated graph identity unproven.
+The published runtime includes the evaluated crawler. The
+candidate semantic guidance remains experimental.
+
 ## Receipts
 
 | Local artifact | SHA-256 |
@@ -118,4 +206,13 @@ results and task controls have separate receipts.
 | Portable Linux replay | `a51aca91786d4768792765ae6e18f06e95e2e190f9ae2030f07b903c3c9024ec` |
 | First paired Harbor protocol | `59d67f566bb49d57cdaaf5e60e94bf6c98cc895ea370976ceb2fc3875f4b50bb` |
 | Native no-inference preflight | `32c8303f915c544c6017551c04853fd8c9d018ff8280114472993ffcab258238` |
+| First paired native comparison | `9ead391cd5842abb613fa29ee2526981f3ea18fb60c668f9297c2a554b08cebd` |
+| First paired masked semantic assessment | `521b419557aa0251fbf754252c14650e8017d95f7119d12bbe64cc39b8893ecc` |
+| Baseline trace pool | `7a30d19ad589a61dce82060fa0d29d7c9ccf7348fd25b3f490170ceb8c3a3a82` |
+| Evidence-table trace pool | `99f61a1aa392f3b78d746c503f2b5cfa7992383c7ab51ce645ef8c88f174fd67` |
+| Follow-up protocol | `bb061c462b34aaeb401359c10299d9d43a5ff81e2706565183444487f6ebf2f5` |
+| Follow-up native no-inference preflight | `c004c36b711b33768441ba8b2ce6a0e2ad3a9a023019891ca1c303870b83e1a9` |
+| Follow-up native comparison | `4780bf82998801754f3e8eb8f84b9109f61f8a82222e6d0a7520377cddd693d8` |
+| Follow-up independent semantic assessment | `3c4e6a03ee1cda3c809e1f940a976cf4514ae17e793edeae22e10f2021f190d4` |
+| Follow-up candidate graph difference | `a81ff983cac91c0e9ad10753305ace93f80d109565a56c749d00792a08598705` |
 | Published example browser and download audit | `f2bdd9ff9da44ddb23ef3d67929bb9a0d8ed2e550df679797551ed19da3971ec` |
