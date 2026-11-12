@@ -12,6 +12,7 @@ package names or schema imports.
 - [Choose the smallest entry point](#choose-the-smallest-entry-point)
 - [Native command with dialog and argument fallback](#native-command-with-dialog-and-argument-fallback)
 - [Account for the frontend](#account-for-the-frontend)
+- [Compose status and detail](#compose-status-and-detail)
 - [Keep installation local](#keep-installation-local)
 - [Validate interaction and evidence](#validate-interaction-and-evidence)
 
@@ -96,6 +97,33 @@ String-array widgets can be forwarded, while component factories cannot.
 Successful JSON transport establishes no native terminal painting or custom
 RPC-client rendering.
 [RPC UI contract](https://github.com/earendil-works/pi/blob/v1.4.0/packages/coding-agent/docs/rpc-extension-ui.md).
+
+## Compose status and detail
+
+Use `setStatus(key, text)` for a small persistent status and
+`setWidget(key, lines, options)` for task context above/below the editor.
+Clear either keyed surface with `undefined`. Pair them with a command for
+details; avoid stacking tall permanent surfaces. For transcript results, use
+tool `renderCall`/`renderResult` or an entry/message renderer, with compact
+output and optional expansion. Keep model-facing content useful separately.
+See [composition choices](ui-composition.md) and [visual review](visual-review.md).
+
+`setHeader`, `setFooter` and `setEditorComponent` replace existing UI.
+Before replacing, decide how needed model/context/branch information and
+other extensions' statuses remain visible. A footer factory exposes
+`footerData.getExtensionStatuses()` and `getGitBranch()`; their availability
+does not paint them automatically. Restore defaults with `undefined`.
+Guard terminal factories and `custom()` with `ctx.mode === "tui"`; RPC status
+and string widgets remain client-dependent, even though `hasUI` is true.
+[API contracts](https://github.com/earendil-works/pi/blob/v1.4.0/packages/coding-agent/src/core/extensions/types.ts).
+
+For custom components, measure visible terminal columns with the exported
+width utilities, not string length. Check narrow/short terminals, wide text,
+resize and theme-cache invalidation. Propagate focus into nested Input/Editor
+components for cursor/IME placement. Preserve host keys, and finish custom
+interactions through `done()`, not `OverlayHandle.hide()`. Test keyboard paths
+in both regular and fullscreen modes; mouse routing differs. See the matching
+[TUI contracts](https://github.com/earendil-works/pi/blob/v1.4.0/packages/coding-agent/docs/tui.md).
 
 ## Keep installation local
 

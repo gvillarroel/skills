@@ -7,8 +7,10 @@
 - [Quantitative colors without changing the source data](#quantitative-colors-without-changing-the-source-data)
 - [Validate the portable helper](#validate-the-portable-helper)
 
-Use `colorset1` by default. Select `colorset2` when the user requests it or when
-several series need the red, blue, orange, green, purple, and yellow roles.
+Use `colorset1` for every new chart unless the user explicitly requests or
+selects `colorset2`. Multiple series or categories do not select colorset2
+automatically. A previous chart's explicit colorset2 choice does not change
+the default for a new chart.
 Honor an explicit source-style or user palette request. The exact contract is
 bundled in [colorsets.json](../assets/palettes/colorsets.json); do not require a
 repository-level file or a sibling skill.

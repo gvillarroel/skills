@@ -1,0 +1,18 @@
+{
+  "name": "reflex-xy",
+  "displayName": "Reflex XY Charts",
+  "version": "0.3.2",
+  "description": "Create Python XY charts with Colorset 1 by default, optional Colorset 2, native previews, and interactive HTML artifacts.",
+  "author": { "name": "gvillarroel" },
+  "homepage": "https://gvillarroel.github.io/skills/examples/reflex-xy-capabilities/",
+  "repository": "https://github.com/gvillarroel/skills",
+  "keywords": ["charts", "python", "xy", "colorsets"],
+  "userConfig": {
+    "uvExecutable": {
+      "type": "string",
+      "title": "uv executable",
+      "description": "Executable name or absolute path for uv. Arguments are passed without a shell.",
+      "default": "uv"
+    }
+  }
+}

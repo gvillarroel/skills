@@ -1,0 +1,29 @@
+{
+  "recordedAtUtc": "2026-10-25 17:10:19 UTC",
+  "hostSurface": "Current Codex desktop conversation",
+  "tool": "reflex_xy_local.xy_render_chart",
+  "modelTurnsAddedByControls": 0,
+  "toolCalls": 1,
+  "structuredResult": {
+    "title": "Codex UI capability study",
+    "palette": "colorset1",
+    "width": 960,
+    "height": 540,
+    "rows": 6,
+    "marks": 1,
+    "factory": "chart",
+    "downloadFormats": [
+      "html",
+      "svg",
+      "png",
+      "source",
+      "spec"
+    ],
+    "warnings": [
+      "Standalone HTML is an interactive snapshot; Python callbacks and future updates need a live host."
+    ]
+  },
+  "evidence": "observed-working: connected MCP render tool returned synthetic chart metadata. Actual component controls remain untested until expanded into the browser controller's side panel.",
+  "actualPixelsVerifiedInThisAttempt": false,
+  "appPanelTabsObserved": 0
+}

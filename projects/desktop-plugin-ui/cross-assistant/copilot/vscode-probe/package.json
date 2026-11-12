@@ -1,0 +1,9 @@
+{
+  "name": "ui-evidence-probe",
+  "displayName": "UI Evidence Probe",
+  "version": "0.0.1",
+  "publisher": "local-evidence",
+  "engines": { "vscode": "^1.110.0" },
+  "main": "./extension.cjs",
+  "activationEvents": [ "*" ]
+}

@@ -1,0 +1,12 @@
+{
+  "name": "desktop-plugin-ui-local-verification",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "verify": "node ../mcp-probe/node_modules/tsx/dist/cli.mjs verify-components.ts"
+  },
+  "devDependencies": {
+    "playwright": "1.64.1",
+    "tsx": "4.23.15"
+  }
+}

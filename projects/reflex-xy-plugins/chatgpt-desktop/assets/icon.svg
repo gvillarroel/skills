@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="XY Charts">
+  <rect width="64" height="64" rx="14" fill="#f7f7f7"/>
+  <path d="M13 13v38h39" fill="none" stroke="#333e48" stroke-width="3"/>
+  <path d="m19 41 10-12 9 6 13-20" fill="none" stroke="#9e1b32" stroke-linecap="round" stroke-linejoin="round" stroke-width="5"/>
+</svg>

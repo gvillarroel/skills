@@ -1,0 +1,82 @@
+{
+  "passed": false,
+  "runs": [
+    {
+      "run": "20261024-desktop-ui-cross-v1-generalization-luna-1",
+      "case": "generalization",
+      "payloadSha256": "a54a8e1ea5bf4c5ab693557b90b711881cb9600b6df3ff45753eec2947d54fac",
+      "model": "openai-codex/gpt-5.6-luna",
+      "strictPassed": true,
+      "structuralEvidencePassed": true,
+      "canonicalPatternCount": 42,
+      "selectedPatternCount": 28,
+      "artifactSha256": {
+        "handoff/restricted-surfaces.md": "cc791732dc2aabd437edaae59809b7e6b2e651aeba47c7c3604fccfc47167523",
+        "handoff/recovery-plan.json": "880de6222efcdc80e49980b66ab85825a174c613d5f10d7ac413450560cda782"
+      },
+      "sourceCheckerPassed": true,
+      "agentCheckerCoveredArtifacts": [
+        "handoff/recovery-plan.json",
+        "handoff/restricted-surfaces.md"
+      ],
+      "findings": [],
+      "broadExclusionReviewCues": [],
+      "externalCommandReview": [],
+      "semanticReviewRequired": true
+    },
+    {
+      "run": "20261024-desktop-ui-cross-v1-generalization-luna-2",
+      "case": "generalization",
+      "payloadSha256": "a54a8e1ea5bf4c5ab693557b90b711881cb9600b6df3ff45753eec2947d54fac",
+      "model": "openai-codex/gpt-5.6-luna",
+      "strictPassed": true,
+      "structuralEvidencePassed": true,
+      "canonicalPatternCount": 42,
+      "selectedPatternCount": 12,
+      "artifactSha256": {
+        "handoff/restricted-surfaces.md": "50f925f6ca885fac34f2b1423cdcc78c2297c1d1941d3806a32eb0badf32c3bc",
+        "handoff/recovery-plan.json": "48636d411b47c7b765b078c3d73fd5f4b8c44028837f0c79f978c8c4a8012430"
+      },
+      "sourceCheckerPassed": true,
+      "agentCheckerCoveredArtifacts": [
+        "handoff/recovery-plan.json",
+        "handoff/restricted-surfaces.md"
+      ],
+      "findings": [],
+      "broadExclusionReviewCues": [],
+      "externalCommandReview": [],
+      "semanticReviewRequired": true
+    },
+    {
+      "run": "20261024-desktop-ui-cross-v1-generalization-luna-3",
+      "case": "generalization",
+      "payloadSha256": "a54a8e1ea5bf4c5ab693557b90b711881cb9600b6df3ff45753eec2947d54fac",
+      "model": "openai-codex/gpt-5.6-luna",
+      "strictPassed": true,
+      "structuralEvidencePassed": false,
+      "canonicalPatternCount": 42,
+      "selectedPatternCount": 8,
+      "artifactSha256": {
+        "handoff/restricted-surfaces.md": "190e46514af31f4675480c6d157bc79279fa7a256f083e59f3f3eb0de17a5ee7",
+        "handoff/recovery-plan.json": "b8fae130e8942a5cf26fb3ea3390a458fc9478baa2e1b1bd7f6fe30b0a0be907"
+      },
+      "sourceCheckerPassed": true,
+      "agentCheckerCoveredArtifacts": [
+        "handoff/recovery-plan.json",
+        "handoff/restricted-surfaces.md"
+      ],
+      "findings": [
+        "Historical observations must preserve recorded empirical evidence labels"
+      ],
+      "broadExclusionReviewCues": [],
+      "externalCommandReview": [],
+      "semanticReviewRequired": true
+    }
+  ],
+  "completedCount": 3,
+  "payloads": [
+    "a54a8e1ea5bf4c5ab693557b90b711881cb9600b6df3ff45753eec2947d54fac"
+  ],
+  "singleFrozenPayload": true,
+  "semanticReviewRequired": true
+}

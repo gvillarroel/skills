@@ -1,0 +1,7 @@
+# The distribution builder supplies the self-contained server and runtime skill.
+**/node_modules/**
+**/.venv/**
+**/__pycache__/**
+**/.runtime/**
+**/.xy-charts/**
+**/*.log

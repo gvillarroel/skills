@@ -1,9 +1,21 @@
 # Task-first interaction quality
 
+## Contents
+
+- [Smallest useful path](#define-the-smallest-useful-path)
+- [Actions and state](#define-actions-and-state-ownership)
+- [Inspect and simplify](#inspect-exercise-simplify)
+- [Evidence](#keep-the-evidence-useful)
+
 Use this loop when building or improving a plugin. It operationalizes the
 [Nielsen checks](usability-and-color.md#ten-usability-checks); the selection
 and measurement rules below are engineering recommendations, not host APIs
 or a promise of measured user satisfaction.
+
+For host surface combinations and replacement hazards, use
+[ui-composition.md](ui-composition.md). For screenshot-based comparison and
+iteration, use [visual-review.md](visual-review.md). Read these when selecting
+or reviewing a composition; a small command does not need a visual study.
 
 ## Define the smallest useful path
 

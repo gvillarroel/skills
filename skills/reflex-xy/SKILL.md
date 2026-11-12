@@ -31,6 +31,11 @@ files outside this skill bundle.
 
 ## Build for the requested host
 
+For declarative requests to the connected XY renderer, read
+[connected-adapter.md](references/connected-adapter.md). Use its versioned JSON
+contract and focused checker; do not translate Python kwargs into guessed wire
+fields. This route can produce request specs when no live renderer is available.
+
 - For a script or portable interactive deliverable, call `chart.to_html(path)`.
   The file embeds its data and client; browser hover/pan/zoom work locally.
 - For a notebook, leave `chart` as the last expression or display
@@ -41,6 +46,10 @@ files outside this skill bundle.
 - For Reflex or Matplotlib migration, read
   [reflex-and-pyplot.md](references/reflex-and-pyplot.md). Choose the static,
   fixed-data live, or state-dependent tier before wiring backend events.
+
+When embedding a chart in a chat component or small application panel, read
+[interaction-design.md](references/interaction-design.md). Start with the chart
+and a primary action; reveal display/export controls on request.
 
 Read [chart-recipes.md](references/chart-recipes.md) for arrays, named columns,
 multiple series, categorical bars, heatmaps, and facets. Start from
@@ -59,8 +68,9 @@ combinations. Use compact runtime recipes rather than reading its large fixture.
 ## Apply the selected colorset
 
 Read [colorsets.md](references/colorsets.md) before authoring chart paint.
-Default to `colorset1`; select `colorset2` when requested or when several
-independent categories need full color. Use the bundled helper and exact
+Default to `colorset1` for every new chart. Select `colorset2` only when the user
+explicitly requests or selects it; multiple categories do not change the default.
+Use the bundled helper and exact
 [palette contract](assets/palettes/colorsets.json) for marks, text, axes,
 backgrounds, legends, tooltips and controls. Apply the helper's `theme()` to
 the chart and `css()` to HTML export. Keep explicit user style when requested.

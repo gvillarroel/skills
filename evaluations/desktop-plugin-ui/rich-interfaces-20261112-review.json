@@ -1,0 +1,34 @@
+{
+  "scope": "Spot pixel review of the authored Service Observatory and representative generated views. Technical artifact pass counts do not assert pixel perfection or complete accessibility acceptance.",
+  "findings": [
+    {
+      "artifact": "20261112-rich-ui-desktop-chat-plugin-ui-naturalistic-sol-2",
+      "severity": "minor",
+      "observation": "The selected enrich node's state wraps onto a third line and extends below its fixed node box. The latency objective caption also approaches the rising segment.",
+      "userCost": "Selection/status text loses visual containment, and the reference annotation competes with the observed trend.",
+      "repair": "Measure selected and focused label states, reserve the needed node height or use a state symbol with full accessible text, and move the objective caption to an empty chart region.",
+      "scopeOfResult": "The preserved output still passes its recorded technical data/interaction/geometry checks. This visual finding is retained separately; no original evaluation output was silently edited. The owning skill already requires checking labels against node bounds and decluttering chart references."
+    },
+    {
+      "artifact": "20261112-rich-ui-chatgpt-desktop-plugin-ui-naturalistic-sol-2",
+      "severity": "observation",
+      "observation": "The populated view places its legend below the line and provides an exact table; switching to store explicitly says metrics and owner were not supplied.",
+      "userCost": "The main task remains readable without inventing measurements for healthy nodes.",
+      "repair": "Retain this missing-data behavior and compare node-label containment in selected states before delivery."
+    },
+    {
+      "artifact": "20261112-rich-ui-codex-plugin-ui-naturalistic-polish-1",
+      "severity": "observation",
+      "observation": "The 320px layout uses a readable node list, a reflowed chart and exact table, followed by the selected-item inspector.",
+      "userCost": "The task remains available on a narrow surface, with additional vertical scrolling.",
+      "repair": "For larger graphs prefer the authored project's selected-neighborhood default, preserve the full-list alternative and keep the inspector easy to reach."
+    },
+    {
+      "artifact": "authored-service-observatory",
+      "severity": "observation",
+      "observation": "The final authored view uses separate node label/detail/state regions, bounded visible labels, a direct-neighborhood mobile list, reflowed chart ticks and 44px mobile controls. The repaired XY export leaves the upward endpoint unobstructed.",
+      "userCost": "Graph identity, selected context, data values and reference lines remain legible while advanced controls stay optional.",
+      "repair": "Keep actual-host theme, screen-reader, deployment and stock inline paint checks separate from these local pixels."
+    }
+  ]
+}

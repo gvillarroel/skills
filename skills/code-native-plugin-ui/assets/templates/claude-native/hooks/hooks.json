@@ -1,0 +1,4 @@
+{
+  "description": "Register deterministic task-view commands and a native pane.",
+  "modules": ["./register.ts"]
+}

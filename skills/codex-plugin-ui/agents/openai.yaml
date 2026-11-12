@@ -1,0 +1,4 @@
+interface:
+  display_name: "Codex Plugin UI"
+  short_description: "Build Codex plugins with scoped UI validation"
+  default_prompt: "Use $codex-plugin-ui to build and validate a clear interface for its supported host, with readable graphs, charts, linked state, and honest fallbacks when needed."

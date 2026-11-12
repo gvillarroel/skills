@@ -1,0 +1,8 @@
+{
+  "name": "reflex-xy-claude-mod",
+  "version": "0.3.2",
+  "private": true,
+  "type": "module",
+  "scripts": { "test:portable": "tsx tests/portable.ts" },
+  "devDependencies": { "tsx": "4.21.0", "typescript": "5.9.3" }
+}

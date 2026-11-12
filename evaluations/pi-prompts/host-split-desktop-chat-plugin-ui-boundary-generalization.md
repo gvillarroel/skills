@@ -1,0 +1,5 @@
+Use the copied skill for ordinary Claude Desktop Chat. Treat `skills/desktop-chat-plugin-ui/` as read-only. Write task artifacts only in this workspace outside the skill. Keep temporary state and caches task-local. Use only the supplied skill and normal local tools. Do not discover other skills or read installed host documentation, host examples, personal configuration, or any source outside this workspace. Running installed tool executables is allowed.
+
+The teammate supplied a Claude Code Mod and expects it to draw a panel in ordinary Claude Desktop Chat. They also copied a ChatGPT widget domain for a local stdio connector. Diagnose this route and prepare a corrected local build plan, with remote hosting kept out of scope.
+
+Write `deliverables/recovery.md` and `deliverables/checks.json`. The JSON must have a `checks` array with records containing `layer`, `action`, `expected`, and `status`. Keep planned checks distinct from executed results. Do not run a live installation, account change, deployment, or model call to probe the target host. Use the available bundled sources; identify any current source question that remains unresolved.

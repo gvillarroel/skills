@@ -1,0 +1,31 @@
+{
+  "name": "reflex-xy-mcp-app",
+  "version": "0.3.1",
+  "private": true,
+  "type": "module",
+  "description": "Native Python XY charts through MCP tools and a portable MCP Apps widget.",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "check": "tsc --noEmit",
+    "start": "node dist/server.js",
+    "dev": "tsx src/server.ts",
+    "test": "tsx --test tests/*.test.ts",
+    "test:browser": "tsx tests/browser.ts",
+    "test:desktop": "tsx tests/browser.ts --desktop",
+    "test:fallbacks": "tsx tests/host-fallbacks.ts",
+    "test:bundled": "tsx tests/bundled.ts"
+  },
+  "engines": { "node": ">=22" },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.32.1",
+    "@modelcontextprotocol/ext-apps": "1.7.5",
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "24.10.0",
+    "esbuild": "0.28.2",
+    "playwright": "1.64.1",
+    "tsx": "4.23.15",
+    "typescript": "7.0.2"
+  }
+}

@@ -1,0 +1,1 @@
+{"name":"service-observatory-pi","version":"1.0.0","private":true,"type":"module","pi":{"extensions":["./observatory.ts"]},"peerDependencies":{"@earendil-works/pi-coding-agent":"1.4.0","@earendil-works/pi-tui":"1.4.0"}}

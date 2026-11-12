@@ -1,0 +1,58 @@
+{
+  "manifest_version": "0.3",
+  "name": "reflex-xy-charts",
+  "display_name": "Reflex XY Charts",
+  "version": "0.3.2",
+  "description": "Create native XY charts in Claude with Colorset 1 by default, optional Colorset 2, and an interactive MCP Apps preview.",
+  "long_description": "Generate charts from your supplied data with Python XY 0.0.8. Read the bundled reflex-xy skill, select from the renderer's preset catalog or a declarative chart specification, and download interactive HTML, native SVG/PNG, editable Python, and JSON. Every new request defaults to Colorset 1; Colorset 2 requires an explicit request or palette selection. The local extension uses a bundled Node MCP server and uv for the pinned Python environment. Chart rendering runs on the machine running this server. Exported HTML is an interactive snapshot; Python callbacks need a live Python host.",
+  "author": { "name": "gvillarroel" },
+  "repository": { "type": "git", "url": "https://github.com/gvillarroel/skills" },
+  "homepage": "https://gvillarroel.github.io/skills/examples/reflex-xy-capabilities/",
+  "server": {
+    "type": "node",
+    "entry_point": "chatgpt/dist/server-bundled.js",
+    "mcp_config": {
+      "command": "node",
+      "args": ["${__dirname}/chatgpt/dist/server-bundled.js", "--stdio", "--desktop"],
+      "env": {
+        "HOST": "127.0.0.1",
+        "PORT": "0",
+        "XY_RENDER_SCRIPT": "${__dirname}/runtime/render.py",
+        "XY_SKILL_DIR": "${__dirname}/runtime/skill/reflex-xy",
+        "XY_RUNTIME_DIR": "${user_config.artifactDirectory}",
+        "XY_UV_BINARY": "${user_config.uvExecutable}",
+        "PYTHONIOENCODING": "utf-8",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    }
+  },
+  "tools": [
+    { "name": "xy_open_chart_app", "description": "Open the chart workspace with a clearly labelled Colorset 1 sample through a compatible app entrypoint." },
+    { "name": "xy_render_chart", "description": "Render supplied data with native XY and an interactive chart preview." },
+    { "name": "xy_recolor_chart", "description": "Switch an existing chart between Colorset 1 and Colorset 2 from its app interface." },
+    { "name": "xy_get_chart_artifact", "description": "Return an original chart export to the application for host-mediated file saving." },
+    { "name": "xy_get_reference", "description": "Read a compact reference from the bundled reflex-xy skill." },
+    { "name": "xy_capabilities", "description": "List the renderer's supported presets, factories, marks, components, and limits." }
+  ],
+  "compatibility": {
+    "platforms": ["darwin", "win32"],
+    "runtimes": { "node": ">=22" }
+  },
+  "user_config": {
+    "uvExecutable": {
+      "type": "string",
+      "title": "uv executable",
+      "description": "Executable name or absolute path for an installed uv. Its first render may download the pinned Python dependencies.",
+      "default": "uv",
+      "required": true
+    },
+    "artifactDirectory": {
+      "type": "directory",
+      "title": "Chart artifact directory",
+      "description": "A writable local directory for temporary chart data and generated HTML, SVG, PNG, Python and JSON files. The server expires chart records after 20 minutes.",
+      "default": "${DOCUMENTS}/XY Charts",
+      "required": true
+    }
+  },
+  "keywords": ["charts", "xy", "python", "colorsets", "mcp-apps"]
+}

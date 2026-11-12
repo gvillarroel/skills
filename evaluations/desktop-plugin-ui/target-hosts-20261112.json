@@ -1,0 +1,1257 @@
+{
+  "createdAt": "2026-11-12T11:03:21.670675+00:00",
+  "scope": "Additional target-host observations, fixes and focused contracts; previous 91-run frozen cohorts remain separate.",
+  "sourceHashes": {
+    "web/app.js": "91fae2abb69813f1a0aed9571d403a3de2cb0e9c2477b38675d4b2485adf1de2",
+    "web/styles.css": "caf976e85d662b3dda77aa8339134c6b4f3de4c32bdd2d56e839a41f28c5d0f0",
+    "pi/observatory.ts": "5e15b89d92483f00d4b0cb1117832bb03af43f289dd88a3543e1d3e1e2a62556",
+    "host-tests/capture.mjs": "50a5215d115a79af0dbd46fadfbf0244e6df5f1fddd50b7c705ec7e12ae1b422",
+    "host-tests/terminal.html": "7e07ba36e7864f053a08846e3684d8c1a596e67d4b87a0dfb68a5f2ca8b23bf6",
+    "scripts/verify-codex.py": "a4404790c6e30fd4992499e320e868307d211b16d67cfea9c2245f2018f018c6"
+  },
+  "reports": {
+    "pi": {
+      "host": "pi",
+      "version": "1.4.0",
+      "platform": "Windows 11 Home",
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "args": [
+        "C:\\Users\\villa\\AppData\\Roaming\\npm\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bundle\\cli.js",
+        "--offline",
+        "--no-session",
+        "--no-context-files",
+        "--no-extensions",
+        "--no-skills",
+        "--no-prompt-templates",
+        "--no-themes",
+        "--no-mcp",
+        "--no-tools",
+        "--no-approve",
+        "-e",
+        "C:\\Users\\villa\\dev\\skills\\projects\\plugin-ui-rich-interfaces\\pi\\observatory.ts"
+      ],
+      "sourceDigests": {
+        "pi/observatory.ts": "5e15b89d92483f00d4b0cb1117832bb03af43f289dd88a3543e1d3e1e2a62556",
+        "pi/data.ts": "aabece463a10890f05db3e88d21599617e38a9de15886879d3b088f8190d6fd0"
+      },
+      "pid": 8304,
+      "capturedAt": "2026-11-12T10:20:51.510Z",
+      "checks": [
+        {
+          "name": "Real Pi TUI paints exact directed Payments relationships",
+          "passed": true
+        },
+        {
+          "name": "Real metrics view declares shared units, scale and latest value",
+          "passed": true
+        },
+        {
+          "name": "Real Values view paints all 24 hourly records",
+          "passed": true
+        },
+        {
+          "name": "Narrow TUI preserves visible close instructions",
+          "passed": true
+        },
+        {
+          "name": "Short-terminal content has real keyboard pagination",
+          "passed": true
+        },
+        {
+          "name": "All 24 hours remain reachable in a 60 by 16 terminal",
+          "passed": true,
+          "detail": {
+            "hours": 24
+          }
+        },
+        {
+          "name": "PageUp returns to the preceding page",
+          "passed": true
+        },
+        {
+          "name": "Real service navigation changes selection",
+          "passed": true
+        },
+        {
+          "name": "Escape removes the custom TUI",
+          "passed": true
+        },
+        {
+          "name": "Pi exits normally",
+          "passed": true,
+          "detail": {
+            "exitCode": 0
+          }
+        }
+      ],
+      "captures": [
+        {
+          "name": "startup",
+          "file": "C:\\Users\\villa\\dev\\skills\\projects\\plugin-ui-rich-interfaces\\artifacts\\reviews\\target-hosts\\pi-final-1\\startup.png",
+          "cols": 80,
+          "rows": 32,
+          "textFile": "startup.txt"
+        },
+        {
+          "name": "dependencies-80",
+          "file": "C:\\Users\\villa\\dev\\skills\\projects\\plugin-ui-rich-interfaces\\artifacts\\reviews\\target-hosts\\pi-final-1\\dependencies-80.png",
+          "cols": 80,
+          "rows": 32,
+          "textFile": "dependencies-80.txt"
+        },
+        {
+          "name": "metrics-80",
+          "file": "C:\\Users\\villa\\dev\\skills\\projects\\plugin-ui-rich-interfaces\\artifacts\\reviews\\target-hosts\\pi-final-1\\metrics-80.png",
+          "cols": 80,
+          "rows": 32,
+          "textFile": "metrics-80.txt"
+        },
+        {
+          "name": "values-80",
+          "file": "C:\\Users\\villa\\dev\\skills\\projects\\plugin-ui-rich-interfaces\\artifacts\\reviews\\target-hosts\\pi-final-1\\values-80.png",
+          "cols": 80,
+          "rows": 32,
+          "textFile": "values-80.txt"
+        },
+        {
+          "name": "values-60x24",
+          "file": "C:\\Users\\villa\\dev\\skills\\projects\\plugin-ui-rich-interfaces\\artifacts\\reviews\\target-hosts\\pi-final-1\\values-60x24.png",
+          "cols": 60,
+          "rows": 24,
+          "textFile": "values-60x24.txt"
+        },
+        {
+          "name": "values-60x16-page-1",
+          "file": "C:\\Users\\villa\\dev\\skills\\projects\\plugin-ui-rich-interfaces\\artifacts\\reviews\\target-hosts\\pi-final-1\\values-60x16-page-1.png",
+          "cols": 60,
+          "rows": 16,
+          "textFile": "values-60x16-page-1.txt"
+        },
+        {
+          "name": "values-60x16-page-2",
+          "file": "C:\\Users\\villa\\dev\\skills\\projects\\plugin-ui-rich-interfaces\\artifacts\\reviews\\target-hosts\\pi-final-1\\values-60x16-page-2.png",
+          "cols": 60,
+          "rows": 16,
+          "textFile": "values-60x16-page-2.txt"
+        },
+        {
+          "name": "values-60x16-page-3",
+          "file": "C:\\Users\\villa\\dev\\skills\\projects\\plugin-ui-rich-interfaces\\artifacts\\reviews\\target-hosts\\pi-final-1\\values-60x16-page-3.png",
+          "cols": 60,
+          "rows": 16,
+          "textFile": "values-60x16-page-3.txt"
+        },
+        {
+          "name": "values-60x16-page-up",
+          "file": "C:\\Users\\villa\\dev\\skills\\projects\\plugin-ui-rich-interfaces\\artifacts\\reviews\\target-hosts\\pi-final-1\\values-60x16-page-up.png",
+          "cols": 60,
+          "rows": 16,
+          "textFile": "values-60x16-page-up.txt"
+        },
+        {
+          "name": "values-120x40",
+          "file": "C:\\Users\\villa\\dev\\skills\\projects\\plugin-ui-rich-interfaces\\artifacts\\reviews\\target-hosts\\pi-final-1\\values-120x40.png",
+          "cols": 120,
+          "rows": 40,
+          "textFile": "values-120x40.txt"
+        },
+        {
+          "name": "selection-120",
+          "file": "C:\\Users\\villa\\dev\\skills\\projects\\plugin-ui-rich-interfaces\\artifacts\\reviews\\target-hosts\\pi-final-1\\selection-120.png",
+          "cols": 120,
+          "rows": 40,
+          "textFile": "selection-120.txt"
+        },
+        {
+          "name": "closed",
+          "file": "C:\\Users\\villa\\dev\\skills\\projects\\plugin-ui-rich-interfaces\\artifacts\\reviews\\target-hosts\\pi-final-1\\closed.png",
+          "cols": 120,
+          "rows": 40,
+          "textFile": "closed.txt"
+        },
+        {
+          "name": "reopened",
+          "file": "C:\\Users\\villa\\dev\\skills\\projects\\plugin-ui-rich-interfaces\\artifacts\\reviews\\target-hosts\\pi-final-1\\reopened.png",
+          "cols": 120,
+          "rows": 40,
+          "textFile": "reopened.txt"
+        }
+      ],
+      "exit": {
+        "exitCode": 0
+      },
+      "passed": true,
+      "scope": "Actual installed terminal process and native extension over Windows ConPTY, rendered by xterm.js. Does not establish Desktop Code, ChatGPT or a stock Windows Terminal frontend."
+    },
+    "codex": {
+      "passed": true,
+      "version": "codex-cli 0.167.0-alpha.3.2",
+      "checks": [
+        {
+          "name": "Installed core marketplace-add accepts the exact local portable package",
+          "passed": true
+        },
+        {
+          "name": "Installed core plugin-list accepts the exact local portable package",
+          "passed": true
+        },
+        {
+          "name": "Installed core plugin-add accepts the exact local portable package",
+          "passed": true
+        },
+        {
+          "name": "Installed cache contains the exact portable server bytes",
+          "passed": true
+        },
+        {
+          "name": "Plugin route has no direct mcp_servers configuration",
+          "passed": true
+        },
+        {
+          "name": "Installed app-server initializes",
+          "passed": true
+        },
+        {
+          "name": "Ephemeral thread starts without a turn",
+          "passed": true
+        },
+        {
+          "name": "Configured MCP server and actual tools are discovered",
+          "passed": true
+        },
+        {
+          "name": "Direct tool result preserves the exact synthetic snapshot",
+          "passed": true
+        },
+        {
+          "name": "No model turn was requested",
+          "passed": true
+        }
+      ],
+      "failure": null,
+      "hostPaintVerified": false,
+      "scope": "Installed Codex app-server with isolated-home portable marketplace installation, verified cache bytes, discovery and exact read-only tool. Stock frontend paint remains separate."
+    },
+    "browser": {
+      "passed": true,
+      "checks": [
+        {
+          "name": "Real stdio tool discovery",
+          "passed": true
+        },
+        {
+          "name": "Text-only clients receive useful results",
+          "passed": true
+        },
+        {
+          "name": "Shared exact dataset",
+          "passed": true
+        },
+        {
+          "name": "MCP App resource MIME",
+          "passed": true
+        },
+        {
+          "name": "Bundled network-free resource",
+          "passed": true
+        },
+        {
+          "name": "Real App SDK handshake and result delivery",
+          "passed": true
+        },
+        {
+          "name": "Visible map has all nodes",
+          "passed": true
+        },
+        {
+          "name": "Long graph label stays within the node",
+          "passed": true
+        },
+        {
+          "name": "Summary metrics derive from the same snapshot",
+          "passed": true
+        },
+        {
+          "name": "Graph selection updates inspector",
+          "passed": true
+        },
+        {
+          "name": "Selection survives view change",
+          "passed": true
+        },
+        {
+          "name": "Exact hourly data provided",
+          "passed": true
+        },
+        {
+          "name": "Metric units update",
+          "passed": true
+        },
+        {
+          "name": "No stale point titles after redraw",
+          "passed": true
+        },
+        {
+          "name": "Filtered-out selection remains explicit",
+          "passed": true
+        },
+        {
+          "name": "Empty filter has recovery",
+          "passed": true
+        },
+        {
+          "name": "Escape closes only focused options and returns focus",
+          "passed": true
+        },
+        {
+          "name": "Graph roving keyboard selection",
+          "passed": true
+        },
+        {
+          "name": "Error preserves selected identity",
+          "passed": true
+        },
+        {
+          "name": "Retry recovers with actual server tool",
+          "passed": true
+        },
+        {
+          "name": "Cancel occurs before delayed response",
+          "passed": true
+        },
+        {
+          "name": "Canceled server request actually completes",
+          "passed": true
+        },
+        {
+          "name": "Late canceled response cannot overwrite snapshot",
+          "passed": true,
+          "detail": {
+            "before": 2,
+            "after": {
+              "revision": 2,
+              "state": {
+                "selected": "catalog",
+                "tab": "dependencies",
+                "team": "all",
+                "query": "",
+                "metric": "error",
+                "trace": false,
+                "mobileAll": false,
+                "compare": false,
+                "layout": "focus",
+                "sort": "name",
+                "descending": false,
+                "alertFilter": false,
+                "epoch": 4,
+                "busy": false
+              }
+            }
+          }
+        },
+        {
+          "name": "Fullscreen refusal respects returned mode",
+          "passed": true
+        },
+        {
+          "name": "Data view works without sandbox downloads",
+          "passed": true
+        },
+        {
+          "name": "No page overflow at 1440px",
+          "passed": true,
+          "detail": {
+            "width": 1440,
+            "scroll": 1440
+          }
+        },
+        {
+          "name": "Inspector visible at 1440px",
+          "passed": true
+        },
+        {
+          "name": "Primary graph labels remain at least 12 physical CSS pixels at 1440px",
+          "passed": true,
+          "detail": {
+            "font": 15.357142857142858
+          }
+        },
+        {
+          "name": "No page overflow at 1280px",
+          "passed": true,
+          "detail": {
+            "width": 1280,
+            "scroll": 1280
+          }
+        },
+        {
+          "name": "Inspector visible at 1280px",
+          "passed": true
+        },
+        {
+          "name": "Primary graph labels remain at least 12 physical CSS pixels at 1280px",
+          "passed": true,
+          "detail": {
+            "font": 13.071428571428571
+          }
+        },
+        {
+          "name": "No page overflow at 1024px",
+          "passed": true,
+          "detail": {
+            "width": 1024,
+            "scroll": 1024
+          }
+        },
+        {
+          "name": "Inspector visible at 1024px",
+          "passed": true
+        },
+        {
+          "name": "Readable dependency list at 1024px",
+          "passed": true
+        },
+        {
+          "name": "Mobile graph starts with the direct neighborhood at 1024px",
+          "passed": true
+        },
+        {
+          "name": "Full topology remains available at 1024px",
+          "passed": true
+        },
+        {
+          "name": "No page overflow at 768px",
+          "passed": true,
+          "detail": {
+            "width": 768,
+            "scroll": 768
+          }
+        },
+        {
+          "name": "Inspector visible at 768px",
+          "passed": true
+        },
+        {
+          "name": "Readable dependency list at 768px",
+          "passed": true
+        },
+        {
+          "name": "Mobile graph starts with the direct neighborhood at 768px",
+          "passed": true
+        },
+        {
+          "name": "Full topology remains available at 768px",
+          "passed": true
+        },
+        {
+          "name": "No page overflow at 542px",
+          "passed": true,
+          "detail": {
+            "width": 542,
+            "scroll": 542
+          }
+        },
+        {
+          "name": "Inspector visible at 542px",
+          "passed": true
+        },
+        {
+          "name": "Readable dependency list at 542px",
+          "passed": true
+        },
+        {
+          "name": "Mobile graph starts with the direct neighborhood at 542px",
+          "passed": true
+        },
+        {
+          "name": "Full topology remains available at 542px",
+          "passed": true
+        },
+        {
+          "name": "Keyboard selection preserves focus on the rebuilt compact-list control",
+          "passed": true,
+          "detail": {
+            "selected": "Orders",
+            "activeTag": "BUTTON",
+            "activeText": "OrdersWatch \u00b7 142 ms \u2192 Payments, Primary DB, Events",
+            "scope": "adjacency",
+            "keys": [
+              "Public API",
+              "Orders",
+              "Payments",
+              "Primary DB",
+              "Events"
+            ]
+          }
+        },
+        {
+          "name": "A removed relationship trigger moves focus to the selected-service heading",
+          "passed": true
+        },
+        {
+          "name": "No page overflow at 390px",
+          "passed": true,
+          "detail": {
+            "width": 390,
+            "scroll": 390
+          }
+        },
+        {
+          "name": "Inspector visible at 390px",
+          "passed": true
+        },
+        {
+          "name": "Readable dependency list at 390px",
+          "passed": true
+        },
+        {
+          "name": "Mobile graph starts with the direct neighborhood at 390px",
+          "passed": true
+        },
+        {
+          "name": "Full topology remains available at 390px",
+          "passed": true
+        },
+        {
+          "name": "Visible mobile controls meet the 44px target at 390px",
+          "passed": true,
+          "detail": []
+        },
+        {
+          "name": "No page overflow at 320px",
+          "passed": true,
+          "detail": {
+            "width": 320,
+            "scroll": 320
+          }
+        },
+        {
+          "name": "Inspector visible at 320px",
+          "passed": true
+        },
+        {
+          "name": "Readable dependency list at 320px",
+          "passed": true
+        },
+        {
+          "name": "Mobile graph starts with the direct neighborhood at 320px",
+          "passed": true
+        },
+        {
+          "name": "Full topology remains available at 320px",
+          "passed": true
+        },
+        {
+          "name": "Visible mobile controls meet the 44px target at 320px",
+          "passed": true,
+          "detail": []
+        },
+        {
+          "name": "Overview alternative retains same selected data",
+          "passed": true
+        },
+        {
+          "name": "No unhandled browser exceptions",
+          "passed": true,
+          "detail": []
+        },
+        {
+          "name": "No assistant messages requested by inspection controls",
+          "passed": true
+        },
+        {
+          "name": "Absent server-tool capability hides refresh",
+          "passed": true
+        },
+        {
+          "name": "Local inspection remains available without server actions",
+          "passed": true
+        },
+        {
+          "name": "Data access remains available without optional host file APIs",
+          "passed": true
+        },
+        {
+          "name": "Export declares and preserves the visible filter scope",
+          "passed": true
+        },
+        {
+          "name": "Standalone page paints at 1440px",
+          "passed": true
+        },
+        {
+          "name": "Standalone page paints at 1280px",
+          "passed": true
+        },
+        {
+          "name": "Standalone page paints at 1024px",
+          "passed": true
+        },
+        {
+          "name": "Standalone page paints at 768px",
+          "passed": true
+        },
+        {
+          "name": "Standalone page paints at 542px",
+          "passed": true
+        },
+        {
+          "name": "Standalone page paints at 390px",
+          "passed": true
+        },
+        {
+          "name": "Standalone page paints at 320px",
+          "passed": true
+        }
+      ],
+      "errors": [],
+      "scope": "Actual stdio MCP server and real App SDK in a sandboxed browser fixture. This is not signed-in host acceptance."
+    },
+    "previews": {
+      "passed": true,
+      "checks": [
+        {
+          "name": "Six host routes are visible",
+          "passed": true
+        },
+        {
+          "name": "Preview index fits 1440px",
+          "passed": true
+        },
+        {
+          "name": "Preview index fits 390px",
+          "passed": true
+        },
+        {
+          "name": "Native SVG artifact changes view",
+          "passed": true
+        },
+        {
+          "name": "Native SVG bytes paint",
+          "passed": true
+        },
+        {
+          "name": "Pi preview includes all 24 exact values",
+          "passed": true
+        },
+        {
+          "name": "Canvas alternative starts collapsed",
+          "passed": true
+        },
+        {
+          "name": "Exact Gemini embed payload paints locally",
+          "passed": true
+        },
+        {
+          "name": "Unsupported live actions are not simulated",
+          "passed": true
+        },
+        {
+          "name": "Embedded local inspection works",
+          "passed": true
+        },
+        {
+          "name": "Documented connect-src policy blocks the probe in this fixture",
+          "passed": true,
+          "detail": {
+            "directive": "connect-src",
+            "uri": "https://example.com/network-probe"
+          }
+        },
+        {
+          "name": "No preview JavaScript exceptions",
+          "passed": true,
+          "detail": []
+        }
+      ],
+      "errors": [],
+      "scope": "Local authored preview pages and original embedded/SVG payloads; not native host paint."
+    },
+    "inAppBrowser": {
+      "capturedAt": "2026-11-12T10:40:21.353Z",
+      "host": "ChatGPT desktop 26.1103.7773.0, Codex mode, in-app browser",
+      "url": "http://127.0.0.1:8872/web/index.html",
+      "scope": "Actual stock in-app browser alternative; not MCP App installation or inline resource acceptance.",
+      "measurements": {
+        "dpr": 1,
+        "graphVisible": false,
+        "height": 767,
+        "neighborhoodCount": 3,
+        "pageOverflow": false,
+        "primaryLabelSize": "14px",
+        "selected": "Payments",
+        "selectedLatency": "268 ms",
+        "width": 542
+      },
+      "observedChecks": {
+        "compactNeighborhood": true,
+        "allServicesBrowseCount": 12,
+        "keyboardSelection": "Orders",
+        "keyboardFocusScope": "adjacency",
+        "selectedMetric": "142 ms",
+        "exactHourCount": 24,
+        "lastExactRow": "23:00 142",
+        "emptyFilterRecovery": true,
+        "restoredService": "Payments"
+      },
+      "captureToolBoundary": "MCP Apps tab screenshots reject nested frames; native host capture separately preserved for XY."
+    },
+    "claudeXY": {
+      "capturedAt": "2026-11-12T10:45:59.130Z",
+      "host": "Claude Desktop",
+      "version": "5.1231.2",
+      "accountSurface": "Signed-in Free, Haiku 5.5 Medium",
+      "tool": "reflex-xy.xy_render_chart",
+      "input": "spec.json",
+      "userPromptsSent": 1,
+      "observedChartOutputs": 1,
+      "observedChecks": {
+        "freshToolPaint": true,
+        "expectedTitle": true,
+        "observedSeries": [
+          "Payments",
+          "250 ms objective"
+        ],
+        "hourlyInputCount": 24,
+        "latestInputValue": 268,
+        "objective": 250,
+        "fullscreenHostRegion": true,
+        "endpointClearOfLegend": true
+      },
+      "scope": "Fresh installed Reflex XY MCP App render in ordinary Claude Desktop Chat. Does not install or certify the new Service Observatory MCP package."
+    },
+    "contracts": {
+      "passed": true,
+      "results": [
+        {
+          "runId": "20261112-ui-short-terminal-contract-sol-1",
+          "strictPassed": false,
+          "artifactPassed": true,
+          "checks": [
+            "All exact records survive forward/backward traversal and capacity changes",
+            "Bounds, empty data, invalid capacities and independent page arrays"
+          ]
+        },
+        {
+          "runId": "20261112-ui-short-terminal-contract-sol-2",
+          "strictPassed": true,
+          "artifactPassed": true,
+          "checks": [
+            "All exact records survive forward/backward traversal and capacity changes",
+            "Bounds, empty data, invalid capacities and independent page arrays"
+          ]
+        },
+        {
+          "runId": "20261112-ui-allocated-panel-codex-sol-1",
+          "strictPassed": true,
+          "artifactPassed": true,
+          "checks": [
+            "Exact allocated-width arithmetic and compact route",
+            "Required state, focus, host-route and acceptance fields"
+          ]
+        },
+        {
+          "runId": "20261112-ui-allocated-panel-router-sol-1",
+          "strictPassed": true,
+          "artifactPassed": true,
+          "checks": [
+            "Exact allocated-width arithmetic and compact route",
+            "Required state, focus, host-route and acceptance fields"
+          ]
+        }
+      ],
+      "scope": "Independent focused artifact contracts and manual prose review; no new broad naturalistic cohort or host-paint certification."
+    },
+    "geminiDiscovery": {
+      "capturedAt": "2026-11-12T10:51:54.497924+00:00",
+      "location": "global",
+      "collection": "default_collection",
+      "scope": "Read-only engine inventory in one configured project/location; no deployment, API enablement, IAM change or host painting.",
+      "status": "request-rejected",
+      "httpStatus": 403,
+      "apiStatus": "PERMISSION_DENIED",
+      "reasons": [
+        "SERVICE_DISABLED"
+      ],
+      "projectScope": "Configured default project; exact identity stays in ignored local evidence."
+    },
+    "geminiSchema": {
+      "passed": true,
+      "sources": {
+        "https://a2ui.org/specification/v0_9/server_to_client.json": "f5ae741d7cfc1f710d8854b75f178356e04823dcd579bb948d635d8c5232aff1",
+        "https://www.gstatic.com/vertexaisearch/a2ui/v0_9/gemini_enterprise_composite_catalog.json": "ec9da1b6f2d2fd375d1df902e3fd52f95b5e8be0c16c86db172f8f251f4c7218",
+        "https://a2ui.org/specification/v0_9/common_types.json": "a13897d7dbe14c37512c5cbc9b8561782fc3b01e3a6ff114c1f12c82275b5884",
+        "https://vega.github.io/schema/vega-lite/v5.json": "1aeeda8aa44dcce60f6b6fb7d8b650487e3e389a8284a2040e590be9a4c7610e"
+      },
+      "catalog_binding": "Official host component union bound to the envelope's catalog.json slot. Theme-property semantics are outside this check.",
+      "streams": [
+        {
+          "path": "projects\\plugin-ui-rich-interfaces\\artifacts\\payloads\\gemini\\native-messages.json",
+          "passed": true,
+          "messages": 3,
+          "components": 10,
+          "errors": []
+        },
+        {
+          "path": "projects\\plugin-ui-rich-interfaces\\artifacts\\payloads\\gemini\\canvas-messages.json",
+          "passed": true,
+          "messages": 3,
+          "components": 2,
+          "errors": []
+        }
+      ],
+      "scope": "Official JSON envelope and host catalog validation; A2A transport and Gemini Enterprise paint remain untested."
+    }
+  },
+  "screenshots": [
+    {
+      "path": "projects/plugin-ui-rich-interfaces/artifacts/reviews/target-hosts/claude-after-theme-1/after-theme.png",
+      "bytes": 30754,
+      "sha256": "2971e95b53c8b6a683cd3006c759e65846fe79c35b3b1b324c72b97c3784b913"
+    },
+    {
+      "path": "projects/plugin-ui-rich-interfaces/artifacts/reviews/target-hosts/claude-after-theme-1/startup-gate.png",
+      "bytes": 37028,
+      "sha256": "c3bdb793864caef7fbfb7ba6eed06fc8215a21a4544ae21bb426a7cc3a2f6911"
+    },
+    {
+      "path": "projects/plugin-ui-rich-interfaces/artifacts/reviews/target-hosts/claude-baseline-1/startup-gate.png",
+      "bytes": 37369,
+      "sha256": "b695132a03e196d64a1ef170134383a2514e449efb50ef0c5f55f3072195fc9c"
+    },
+    {
+      "path": "projects/plugin-ui-rich-interfaces/artifacts/reviews/target-hosts/claude-desktop-code/onboarding-gate.png",
+      "bytes": 52920,
+      "sha256": "0e4a869fc7143c4c40d1e061a392dda32c4111f13cd227a45d07343cbead2c83"
+    },
+    {
+      "path": "projects/plugin-ui-rich-interfaces/artifacts/reviews/target-hosts/claude-desktop-live-xy/fullscreen.png",
+      "bytes": 79250,
+      "sha256": "a9eeb6569de7e009405f2abc03e0b3b21a7466777003bc3cfd06f2b15aef4cfc"
+    },
+    {
+      "path": "projects/plugin-ui-rich-interfaces/artifacts/reviews/target-hosts/claude-desktop-live-xy/inline-initial.png",
+      "bytes": 131845,
+      "sha256": "7a6476703f9b484a1472ffc55fbc3bc6fb8def6a7b3c0ba635280ea3750d16ee"
+    },
+    {
+      "path": "projects/plugin-ui-rich-interfaces/artifacts/reviews/target-hosts/claude-desktop-live-xy/inline-restored.png",
+      "bytes": 127014,
+      "sha256": "4e3971e54b6f4883ee1cd4a0881cbc30ed9cc0556e33932c4f8aa39faa579a74"
+    },
+    {
+      "path": "projects/plugin-ui-rich-interfaces/artifacts/reviews/target-hosts/claude-desktop-xy/expanded-options.png",
+      "bytes": 76450,
+      "sha256": "3aba7ae679ca05bc78667885ca3676fb1d99a645725373c02b480eb9c5094f99"
+    },
+    {
+      "path": "projects/plugin-ui-rich-interfaces/artifacts/reviews/target-hosts/claude-desktop-xy/inline-restored.png",
+      "bytes": 77207,
+      "sha256": "b7bfbe38b94416e23d6fd4535be0125da8c13d7b08b6ff444a8673a3de37c79d"
+    },
+    {
+      "path": "projects/plugin-ui-rich-interfaces/artifacts/reviews/target-hosts/claude-desktop-xy/reset-view.png",
+      "bytes": 76657,
+      "sha256": "eedfc1755666f7fe66162359f74b324aeb33b7ccc5ba27ce495dcb7c7745cb77"
+    },
+    {
+      "path": "projects/plugin-ui-rich-interfaces/artifacts/reviews/target-hosts/claude-desktop-xy/zoom-recovery-menu.png",
+      "bytes": 73934,
+      "sha256": "1494d173e892fe5a029fc74f510d98ce3a5693fee8153540c00555dd491cba6e"
+    },
+    {
+      "path": "projects/plugin-ui-rich-interfaces/artifacts/reviews/target-hosts/codex-xy/image-panel.png",
+      "bytes": 166492,
+      "sha256": "aff45e5a783ac200ca823f825d542025104040f4756185b42068e9c7d95efcd7"
+    },
+    {
+      "path": "projects/plugin-ui-rich-interfaces/artifacts/reviews/target-hosts/in-app-browser/after-542-full.jpg",
+      "bytes": 93777,
+      "sha256": "44c52d08f15043ac753631970dec418a333dfe943b1cf7c9df6268d984849f27"
+    },
+    {
+      "path": "projects/plugin-ui-rich-interfaces/artifacts/reviews/target-hosts/in-app-browser/after-542.jpg",
+      "bytes": 39427,
+      "sha256": "91160b341ccf29655036853b31357ec2e9e9c37225fe485b47c09ea9a0ff3cc2"
+    },
+    {
+      "path": "projects/plugin-ui-rich-interfaces/artifacts/reviews/target-hosts/in-app-browser/after-selection-542.jpg",
+      "bytes": 38587,
+      "sha256": "8d9f0e9c9d660a355d3a42c8489c06e8feb3c54d01a233359f73b3642e0cfce0"
+    },
+    {
+      "path": "projects/plugin-ui-rich-interfaces/artifacts/reviews/target-hosts/in-app-browser/before-542.jpg",
+      "bytes": 40429,
+      "sha256": "129be0d255f8b70e5e2517191c653516c48b8037204700274bddd74ae8c7eac4"
+    },
+    {
+      "path": "projects/plugin-ui-rich-interfaces/artifacts/reviews/target-hosts/in-app-browser/empty-filter-542.jpg",
+      "bytes": 40612,
+      "sha256": "4016c178a11b0a48df54cbff974991c5f85f83d8529685c7d426c49e89a03e0f"
+    },
+    {
+      "path": "projects/plugin-ui-rich-interfaces/artifacts/reviews/target-hosts/in-app-browser/exact-values-542.jpg",
+      "bytes": 29003,
+      "sha256": "3207b7443d12e1d90be08aff09d9fb4fcc12b856e21298cd984a6fe644d95537"
+    },
+    {
+      "path": "projects/plugin-ui-rich-interfaces/artifacts/reviews/target-hosts/in-app-browser/metrics-orders-542.jpg",
+      "bytes": 35509,
+      "sha256": "e68b88f3f4b304b1160dee6e20ac81bb564e3145e0a79b1d117afe0fb8ec0799"
+    },
+    {
+      "path": "projects/plugin-ui-rich-interfaces/artifacts/reviews/target-hosts/in-app-browser/metrics-orders-readable-542.jpg",
+      "bytes": 34393,
+      "sha256": "f658b097301213cf3fb5614bb4a2de04b5b56177b24079ef93775aafa01d0600"
+    },
+    {
+      "path": "projects/plugin-ui-rich-interfaces/artifacts/reviews/target-hosts/in-app-browser/native-after.png",
+      "bytes": 198922,
+      "sha256": "ad34564766d1cf25a2e1843de9b807b5f4da9f15267a3c1d8bd16680fa1d2c87"
+    },
+    {
+      "path": "projects/plugin-ui-rich-interfaces/artifacts/reviews/target-hosts/in-app-browser/native-before.png",
+      "bytes": 201257,
+      "sha256": "d50893ff39f067ed96a05264bbe00d7f1674d57fc17fbdd10478fabcc512786c"
+    },
+    {
+      "path": "projects/plugin-ui-rich-interfaces/artifacts/reviews/target-hosts/pi-baseline-1/closed.png",
+      "bytes": 34947,
+      "sha256": "20cd316c0e36a600879ad55298bd4a44909c67bc22695d95d68532875a7c55bf"
+    },
+    {
+      "path": "projects/plugin-ui-rich-interfaces/artifacts/reviews/target-hosts/pi-baseline-1/dependencies-80.png",
+      "bytes": 50621,
+      "sha256": "6a5594a8a1e6676fb1ee6201723e848355c84d886d5c8028de3d827bbec9755c"
+    },
+    {
+      "path": "projects/plugin-ui-rich-interfaces/artifacts/reviews/target-hosts/pi-baseline-1/metrics-80.png",
+      "bytes": 60024,
+      "sha256": "24a0161b3be91d7e01a6c28185797759d6c4f8cf23d7130023236fb66042da24"
+    },
+    {
+      "path": "projects/plugin-ui-rich-interfaces/artifacts/reviews/target-hosts/pi-baseline-1/reopened.png",
+      "bytes": 62617,
+      "sha256": "a6153192bc53a5b2bf88929220277f39ac2b13a82ebb00dbbc87bd0f35d22dc7"
+    },
+    {
+      "path": "projects/plugin-ui-rich-interfaces/artifacts/reviews/target-hosts/pi-baseline-1/selection-120.png",
+      "bytes": 62617,
+      "sha256": "a6153192bc53a5b2bf88929220277f39ac2b13a82ebb00dbbc87bd0f35d22dc7"
+    },
+    {
+      "path": "projects/plugin-ui-rich-interfaces/artifacts/reviews/target-hosts/pi-baseline-1/startup.png",
+      "bytes": 32917,
+      "sha256": "3b36c2a35ba5987813edb57e2d8e2ea9c1555266e68cd16da5067c6a72fbf367"
+    },
+    {
+      "path": "projects/plugin-ui-rich-interfaces/artifacts/reviews/target-hosts/pi-baseline-1/values-120x40.png",
+      "bytes": 63704,
+      "sha256": "9265ad576e8cc8a5f429c0aff58483ee85791464f5a4130b86f05ff2b4b64d7f"
+    },
+    {
+      "path": "projects/plugin-ui-rich-interfaces/artifacts/reviews/target-hosts/pi-baseline-1/values-60x24.png",
+      "bytes": 46330,
+      "sha256": "c2ede81305307c36043acde587f6ec7b00d8898d1eef466e4aafea7d0ae84cd4"
+    },
+    {
+      "path": "projects/plugin-ui-rich-interfaces/artifacts/reviews/target-hosts/pi-baseline-1/values-80.png",
+      "bytes": 60255,
+      "sha256": "734c443b1ef13160f159c8fd626801efb639ee81f212beb662d77e95dff027f8"
+    },
+    {
+      "path": "projects/plugin-ui-rich-interfaces/artifacts/reviews/target-hosts/pi-final-1/closed.png",
+      "bytes": 34818,
+      "sha256": "3fe9577a75ca503406f01bdcd5769d696fd8703440150779e38a1e183c3943e5"
+    },
+    {
+      "path": "projects/plugin-ui-rich-interfaces/artifacts/reviews/target-hosts/pi-final-1/dependencies-80.png",
+      "bytes": 50555,
+      "sha256": "f7fdc7b72abbad3fcaabc3c047fef16c005453f1f32463e3fe5967cb4c161872"
+    },
+    {
+      "path": "projects/plugin-ui-rich-interfaces/artifacts/reviews/target-hosts/pi-final-1/metrics-80.png",
+      "bytes": 59953,
+      "sha256": "45a46c463614f8e3169242737d6edd5114fb5d76c40fb0a656ea170df777e0a2"
+    },
+    {
+      "path": "projects/plugin-ui-rich-interfaces/artifacts/reviews/target-hosts/pi-final-1/reopened.png",
+      "bytes": 62472,
+      "sha256": "6cb97a7316611b20f524b3383530e1a32845a3ff5032d3022f8c8832d90c60a3"
+    },
+    {
+      "path": "projects/plugin-ui-rich-interfaces/artifacts/reviews/target-hosts/pi-final-1/selection-120.png",
+      "bytes": 62472,
+      "sha256": "6cb97a7316611b20f524b3383530e1a32845a3ff5032d3022f8c8832d90c60a3"
+    },
+    {
+      "path": "projects/plugin-ui-rich-interfaces/artifacts/reviews/target-hosts/pi-final-1/startup.png",
+      "bytes": 32848,
+      "sha256": "da450caa2e0ae2149ae9973b84301d2d62ddd2fbcd32af83b0c282ff4d750ed4"
+    },
+    {
+      "path": "projects/plugin-ui-rich-interfaces/artifacts/reviews/target-hosts/pi-final-1/values-120x40.png",
+      "bytes": 63556,
+      "sha256": "51fd424aa8c8a789da4cf0f46a1a0a8d506291cfea5befa96db8102560680059"
+    },
+    {
+      "path": "projects/plugin-ui-rich-interfaces/artifacts/reviews/target-hosts/pi-final-1/values-60x16-page-1.png",
+      "bytes": 35360,
+      "sha256": "f8efebcc8970241b59716ddc8d0d537733ad6c75b4fbe854a88e7a49cd5676fc"
+    },
+    {
+      "path": "projects/plugin-ui-rich-interfaces/artifacts/reviews/target-hosts/pi-final-1/values-60x16-page-2.png",
+      "bytes": 33635,
+      "sha256": "adf9793added15e9b65f6505ee68e72e7f55f42f2d3cd1e21355eac8a0174643"
+    },
+    {
+      "path": "projects/plugin-ui-rich-interfaces/artifacts/reviews/target-hosts/pi-final-1/values-60x16-page-3.png",
+      "bytes": 30460,
+      "sha256": "85b277ccb506d7254f70055934b4e0489a4fb76d4326b19a7a5dfbee8ad6f4e0"
+    },
+    {
+      "path": "projects/plugin-ui-rich-interfaces/artifacts/reviews/target-hosts/pi-final-1/values-60x16-page-up.png",
+      "bytes": 33635,
+      "sha256": "adf9793added15e9b65f6505ee68e72e7f55f42f2d3cd1e21355eac8a0174643"
+    },
+    {
+      "path": "projects/plugin-ui-rich-interfaces/artifacts/reviews/target-hosts/pi-final-1/values-60x24.png",
+      "bytes": 46268,
+      "sha256": "d4cbf1df5b457825a510ad21d59c3e7aaa0d3a51f5617dc47bf0ba9eef16fcdc"
+    },
+    {
+      "path": "projects/plugin-ui-rich-interfaces/artifacts/reviews/target-hosts/pi-final-1/values-80.png",
+      "bytes": 60183,
+      "sha256": "fcb6da4adb9150d69d4a705bd491d1470f99479a8eb97b92a9e31470bdb192ae"
+    },
+    {
+      "path": "projects/plugin-ui-rich-interfaces/artifacts/reviews/target-hosts/pi-rectified-1/closed.png",
+      "bytes": 34953,
+      "sha256": "7792ea98b79c6f37383c064a15093d4f23bbd7df3d875a512cbf5504208ca303"
+    },
+    {
+      "path": "projects/plugin-ui-rich-interfaces/artifacts/reviews/target-hosts/pi-rectified-1/dependencies-80.png",
+      "bytes": 50634,
+      "sha256": "fd8f8593eb4ecc2c5a2cf25b3d3de1a3236f2e73ed8d7324c479a311b988b6e7"
+    },
+    {
+      "path": "projects/plugin-ui-rich-interfaces/artifacts/reviews/target-hosts/pi-rectified-1/metrics-80.png",
+      "bytes": 60037,
+      "sha256": "3cf8526a552d7ed77eaab3cc3e3dc189d5eb0378b0f71026fa8d3746e0e41c94"
+    },
+    {
+      "path": "projects/plugin-ui-rich-interfaces/artifacts/reviews/target-hosts/pi-rectified-1/reopened.png",
+      "bytes": 62623,
+      "sha256": "b7737b38681070f05b38bdea0f40908a00233af803cc4dc30e1e0ac354cbbc37"
+    },
+    {
+      "path": "projects/plugin-ui-rich-interfaces/artifacts/reviews/target-hosts/pi-rectified-1/selection-120.png",
+      "bytes": 62623,
+      "sha256": "b7737b38681070f05b38bdea0f40908a00233af803cc4dc30e1e0ac354cbbc37"
+    },
+    {
+      "path": "projects/plugin-ui-rich-interfaces/artifacts/reviews/target-hosts/pi-rectified-1/startup.png",
+      "bytes": 32941,
+      "sha256": "437c320ece1de5d470b9d33e553bcc263e9b678564b4075a977bdccb33bcb467"
+    },
+    {
+      "path": "projects/plugin-ui-rich-interfaces/artifacts/reviews/target-hosts/pi-rectified-1/values-120x40.png",
+      "bytes": 63706,
+      "sha256": "65c6d439b601f0756cadd0e9fe56854dad89a443cc7f4e4110f4d8478b764939"
+    },
+    {
+      "path": "projects/plugin-ui-rich-interfaces/artifacts/reviews/target-hosts/pi-rectified-1/values-60x16-page-1.png",
+      "bytes": 34734,
+      "sha256": "02eb4c00e9d5e477fcdaf09e64f1c54cd798b8ec8344e179c47044157b8a2f83"
+    },
+    {
+      "path": "projects/plugin-ui-rich-interfaces/artifacts/reviews/target-hosts/pi-rectified-1/values-60x16-page-2.png",
+      "bytes": 34734,
+      "sha256": "02eb4c00e9d5e477fcdaf09e64f1c54cd798b8ec8344e179c47044157b8a2f83"
+    },
+    {
+      "path": "projects/plugin-ui-rich-interfaces/artifacts/reviews/target-hosts/pi-rectified-1/values-60x16-page-3.png",
+      "bytes": 34734,
+      "sha256": "02eb4c00e9d5e477fcdaf09e64f1c54cd798b8ec8344e179c47044157b8a2f83"
+    },
+    {
+      "path": "projects/plugin-ui-rich-interfaces/artifacts/reviews/target-hosts/pi-rectified-1/values-60x16-page-up.png",
+      "bytes": 36544,
+      "sha256": "c0d4b694432537b496f547a5c3e1f881f5909dcb3922329097b386f40023e11c"
+    },
+    {
+      "path": "projects/plugin-ui-rich-interfaces/artifacts/reviews/target-hosts/pi-rectified-1/values-60x24.png",
+      "bytes": 46369,
+      "sha256": "80279b841a4ce9ada52244ce2599f93518f8d35483a74643a59987d4d78b6cb8"
+    },
+    {
+      "path": "projects/plugin-ui-rich-interfaces/artifacts/reviews/target-hosts/pi-rectified-1/values-80.png",
+      "bytes": 60268,
+      "sha256": "87981f6a6de90c38367ae631a2c9b2c52cabdb18b0c2f5a360bd745af28c09f9"
+    },
+    {
+      "path": "projects/plugin-ui-rich-interfaces/artifacts/reviews/target-hosts/pi-rectified-2/closed.png",
+      "bytes": 35015,
+      "sha256": "7c2da3db82256f87266a90118ff2a4e4baeb6ee7f55844f83e267fc3296c7abc"
+    },
+    {
+      "path": "projects/plugin-ui-rich-interfaces/artifacts/reviews/target-hosts/pi-rectified-2/dependencies-80.png",
+      "bytes": 50579,
+      "sha256": "dd317b3c6104ec61c1489a965541ec42d9cc6e94f7e0f1c7ba84905652a4d0f1"
+    },
+    {
+      "path": "projects/plugin-ui-rich-interfaces/artifacts/reviews/target-hosts/pi-rectified-2/metrics-80.png",
+      "bytes": 59978,
+      "sha256": "568fd967dc94c567a7d44f203e6a3d4450bb43949f5e1630b015bbe108d02cfe"
+    },
+    {
+      "path": "projects/plugin-ui-rich-interfaces/artifacts/reviews/target-hosts/pi-rectified-2/reopened.png",
+      "bytes": 62689,
+      "sha256": "448c9a06294c0aa96f03bf8f3cd84203e2a97079375af3019eb7e86f2cdd0a5f"
+    },
+    {
+      "path": "projects/plugin-ui-rich-interfaces/artifacts/reviews/target-hosts/pi-rectified-2/selection-120.png",
+      "bytes": 62689,
+      "sha256": "448c9a06294c0aa96f03bf8f3cd84203e2a97079375af3019eb7e86f2cdd0a5f"
+    },
+    {
+      "path": "projects/plugin-ui-rich-interfaces/artifacts/reviews/target-hosts/pi-rectified-2/startup.png",
+      "bytes": 32872,
+      "sha256": "2c5e55d4b6f685cff90666bf357e267af4d3d98b33cc015311b8fc3fc1df4890"
+    },
+    {
+      "path": "projects/plugin-ui-rich-interfaces/artifacts/reviews/target-hosts/pi-rectified-2/values-120x40.png",
+      "bytes": 63771,
+      "sha256": "f347e24873d3eeb57973e1e407639c543520f68d73b54b998bf69e302dad66a9"
+    },
+    {
+      "path": "projects/plugin-ui-rich-interfaces/artifacts/reviews/target-hosts/pi-rectified-2/values-60x16-page-1.png",
+      "bytes": 34800,
+      "sha256": "3e5a6ab9307f18c1617152ddc1966b7a7ff735810d2d62bafe7b61272cefe4b9"
+    },
+    {
+      "path": "projects/plugin-ui-rich-interfaces/artifacts/reviews/target-hosts/pi-rectified-2/values-60x16-page-2.png",
+      "bytes": 32956,
+      "sha256": "d5481961ab39b2d1831f18f500ed34d5630becfa552f9c8045feefdc3dedc5c8"
+    },
+    {
+      "path": "projects/plugin-ui-rich-interfaces/artifacts/reviews/target-hosts/pi-rectified-2/values-60x16-page-3.png",
+      "bytes": 29759,
+      "sha256": "addfa957d802d0ccb114465632fbc7fe63e1ff2d2ff8d7ddcd3788f1742541ea"
+    },
+    {
+      "path": "projects/plugin-ui-rich-interfaces/artifacts/reviews/target-hosts/pi-rectified-2/values-60x16-page-up.png",
+      "bytes": 32956,
+      "sha256": "d5481961ab39b2d1831f18f500ed34d5630becfa552f9c8045feefdc3dedc5c8"
+    },
+    {
+      "path": "projects/plugin-ui-rich-interfaces/artifacts/reviews/target-hosts/pi-rectified-2/values-60x24.png",
+      "bytes": 46383,
+      "sha256": "926f656f5d0e5edf95df92f1e194775b84532c5f6ab6b49095e4c7d9a6b7fbc6"
+    },
+    {
+      "path": "projects/plugin-ui-rich-interfaces/artifacts/reviews/target-hosts/pi-rectified-2/values-80.png",
+      "bytes": 60208,
+      "sha256": "98aa5853ed3ca7d2773fe2e44186b25fb88d7352b21bececdd28c02ded87a138"
+    },
+    {
+      "path": "projects/plugin-ui-rich-interfaces/artifacts/reviews/target-hosts/pi-short-baseline-1/closed.png",
+      "bytes": 35138,
+      "sha256": "9ea534f508ddf5e5810b24197e73265bf0280ad626b5313a0b905440df661283"
+    },
+    {
+      "path": "projects/plugin-ui-rich-interfaces/artifacts/reviews/target-hosts/pi-short-baseline-1/dependencies-80.png",
+      "bytes": 50543,
+      "sha256": "bb7622ed7d236e6834ecca0f3f82f7e31a2a9b69925d582dae4468301d88e659"
+    },
+    {
+      "path": "projects/plugin-ui-rich-interfaces/artifacts/reviews/target-hosts/pi-short-baseline-1/metrics-80.png",
+      "bytes": 59942,
+      "sha256": "50ad2cba238d8e668948d4c5523820c825750c21f471c6cdf0ac7e77626e5002"
+    },
+    {
+      "path": "projects/plugin-ui-rich-interfaces/artifacts/reviews/target-hosts/pi-short-baseline-1/reopened.png",
+      "bytes": 62806,
+      "sha256": "8b90188822006c06d22a8cc7920a1b12fda245f9775b787be945dc2a3037c05f"
+    },
+    {
+      "path": "projects/plugin-ui-rich-interfaces/artifacts/reviews/target-hosts/pi-short-baseline-1/selection-120.png",
+      "bytes": 62806,
+      "sha256": "8b90188822006c06d22a8cc7920a1b12fda245f9775b787be945dc2a3037c05f"
+    },
+    {
+      "path": "projects/plugin-ui-rich-interfaces/artifacts/reviews/target-hosts/pi-short-baseline-1/startup.png",
+      "bytes": 32835,
+      "sha256": "c91119960c9110eb9686f58ee6d23a0c36a6fd30f9c630e7306d1f1a53f16e3d"
+    },
+    {
+      "path": "projects/plugin-ui-rich-interfaces/artifacts/reviews/target-hosts/pi-short-baseline-1/values-120x40.png",
+      "bytes": 63891,
+      "sha256": "3ac77ce7e1059c8b69f829e2ceb986b70311df6b11244eb9551f85b8f99be5d8"
+    },
+    {
+      "path": "projects/plugin-ui-rich-interfaces/artifacts/reviews/target-hosts/pi-short-baseline-1/values-60x16-page-1.png",
+      "bytes": 35800,
+      "sha256": "4f44b3a0df8faa5b42324ae46dc4068206f1c549367b3470e6d9ec9daf805061"
+    },
+    {
+      "path": "projects/plugin-ui-rich-interfaces/artifacts/reviews/target-hosts/pi-short-baseline-1/values-60x16-page-2.png",
+      "bytes": 35800,
+      "sha256": "4f44b3a0df8faa5b42324ae46dc4068206f1c549367b3470e6d9ec9daf805061"
+    },
+    {
+      "path": "projects/plugin-ui-rich-interfaces/artifacts/reviews/target-hosts/pi-short-baseline-1/values-60x24.png",
+      "bytes": 46388,
+      "sha256": "95c2e7312fa08e9346cf8e90ef118cd1d450e8359021466dd6340da2d6d67bf6"
+    },
+    {
+      "path": "projects/plugin-ui-rich-interfaces/artifacts/reviews/target-hosts/pi-short-baseline-1/values-80.png",
+      "bytes": 60174,
+      "sha256": "5f481ba9f60cf1f592f9eaa4e078312d4be231a5b503310ee17ea3b704615caf"
+    }
+  ],
+  "packages": {
+    "packages": [
+      {
+        "name": "service-observatory",
+        "files": 8,
+        "bytes": 577281,
+        "sha256": "7c297569b9000f27b980f95980efe2d91ce83b9479661b3b6aa98c47c1e48080"
+      },
+      {
+        "name": "claude-native",
+        "files": 6,
+        "bytes": 8247,
+        "sha256": "ea1ff0c4f6500f5460eff84b01395a56a9e7732c9ee9ec95e942594dd4de71df"
+      },
+      {
+        "name": "pi-extension",
+        "files": 3,
+        "bytes": 6321,
+        "sha256": "c22c512ac801e184a3476c66694cdf5e8322ff3332279689472b708d79be9762"
+      },
+      {
+        "name": "gemini-payloads",
+        "files": 3,
+        "bytes": 113093,
+        "sha256": "879e7b180b2f68628dac1d71fc0205a116afe8279333a273d6d8f06191ac2201"
+      }
+    ],
+    "scope": "Local review packages. Gemini contains UI payloads, not a deployed A2A service. Host installation is separate."
+  },
+  "unperformed": [
+    "New Service Observatory installation and paint in Claude Desktop Chat",
+    "Authenticated native Claude Code pane paint",
+    "New Service Observatory stock MCP App frontend paint in Codex/ChatGPT Desktop",
+    "Gemini Enterprise hosted A2A transport, administrator registration and host painting"
+  ],
+  "configurationBoundary": "All authored files and task-local installs remain in this repository. Personal Claude configuration authorization and Gemini app URL are pending.",
+  "additionalObservedGates": {
+    "claudeCliAuthStatus": {
+      "loggedIn": false,
+      "authMethod": "none"
+    },
+    "desktopCode": "Get Claude Code onboarding gateway",
+    "excalidrawReference": "Fresh read_me call returned MCP -32001 Unknown tool; connector availability, not an unsupported renderer result."
+  }
+}

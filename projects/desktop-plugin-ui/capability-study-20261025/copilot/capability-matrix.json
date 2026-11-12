@@ -1,0 +1,396 @@
+{
+  "snapshot_date": "2026-10-25",
+  "host_family": "GitHub Copilot; distinct CLI, SDK consumer, VS Code extension, chat MCP App, and canvas surfaces",
+  "current_builds": {
+    "installed_cli": "1.0.103",
+    "task_local_cli": "1.0.103",
+    "sdk": "1.0.26",
+    "vscode": "1.143.1",
+    "bundled_copilot_chat": "0.71.0"
+  },
+  "fresh_checks": {
+    "inventory_commands": 11,
+    "inventory_exit_zero": 11,
+    "sdk_protocol_passed": 15,
+    "acp_protocol_passed": 2,
+    "model_prompts": 0,
+    "sdk_provider_requests": 0,
+    "webview_contract_passed": 8
+  },
+  "historical_evidence_not_repeated": {
+    "native_cli_dialogs": 4,
+    "vscode_webview_contract_checks": 5,
+    "source": "cross-assistant/copilot/validation-20261024.md"
+  },
+  "current_account_readiness": "Root observed the visible task-profile paint-workspace window in Restricted Mode, with Models unavailable and Sign In visible. Human workspace-trust review and GitHub sign-in are pending; no authentication automation or model call was performed.",
+  "filesystem_boundary": "Task-scoped arguments are not strict filesystem isolation: root observed automatic VS Code sharedStorage/state.vscdb creation under the user .vscode-shared directory. It was not read, deleted, or edited by the agent.",
+  "features": [
+    {
+      "id": "cli-confirm",
+      "surface": "CLI runtime with SDK consumer callback",
+      "offering": "Boolean confirmation",
+      "status": [
+        "observed-working"
+      ],
+      "layer": "real-runtime/callback round trip",
+      "evidence": "Fresh accept=true, decline=false, cancel=false; no model call.",
+      "limit": "A supplied callback is not a terminal painter.",
+      "probe": "sdk-protocol.mjs",
+      "sources": [
+        "https://github.com/github/copilot-sdk"
+      ]
+    },
+    {
+      "id": "cli-select-input",
+      "surface": "CLI runtime with SDK consumer callback",
+      "offering": "Choice and constrained text input",
+      "status": [
+        "observed-working"
+      ],
+      "layer": "real-runtime/callback round trip",
+      "evidence": "Beta and synthetic returned; cancel/decline returned null. Input maxLength=12 reached the callback schema.",
+      "limit": "Validation/schema transport is distinct from real focus, keyboard or paint.",
+      "probe": "sdk-protocol.mjs",
+      "sources": [
+        "https://github.com/github/copilot-sdk"
+      ]
+    },
+    {
+      "id": "cli-ui-capability-gate",
+      "surface": "Bare SDK consumer",
+      "offering": "Negotiated elicitation gate",
+      "status": [
+        "observed-working",
+        "observed-failed"
+      ],
+      "layer": "runtime capability gate",
+      "evidence": "Bare ui.elicitation=false; confirm refused. Explicit callback advertises elicitation=true.",
+      "limit": "No-renderer result does not exclude native Copilot UI.",
+      "probe": "sdk-protocol.mjs",
+      "sources": [
+        "https://github.com/github/copilot-sdk"
+      ]
+    },
+    {
+      "id": "cli-native-dialogs",
+      "surface": "Actual Copilot CLI terminal",
+      "offering": "Confirm, select, input and Escape",
+      "status": [
+        "observed-working"
+      ],
+      "layer": "historical real terminal UI",
+      "evidence": "Four dialogs passed in the prior 1.0.103 cohort, zero inference.",
+      "limit": "Not repeated in this study; terminal GUI remains under foreground/tool constraints.",
+      "sources": [
+        "https://docs.github.com/en/copilot/tutorials/create-an-extension"
+      ]
+    },
+    {
+      "id": "cli-extensions",
+      "surface": "Copilot CLI",
+      "offering": "Session-aware JavaScript tools and slash commands",
+      "status": [
+        "documented",
+        "conditional"
+      ],
+      "layer": "official extension contract and current help",
+      "evidence": "Experimental; repository, personal or plugin scope.",
+      "limit": "Separate from retired GitHub App integrations and IDE extensions.",
+      "sources": [
+        "https://docs.github.com/en/copilot/concepts/customizations/extensions",
+        "https://docs.github.com/en/copilot/tutorials/create-an-extension"
+      ]
+    },
+    {
+      "id": "cli-permissions",
+      "surface": "Copilot CLI",
+      "offering": "Tool, path, URL and sandbox controls",
+      "status": [
+        "documented"
+      ],
+      "layer": "installed 1.0.103 help",
+      "evidence": "Availability filters and approval rules differ; deny rules take precedence.",
+      "limit": "No permission UI or OS effect tested in this cohort.",
+      "sources": [],
+      "local_source": "artifacts/capability-study-20261025/copilot/inventory.json"
+    },
+    {
+      "id": "cli-session-theme",
+      "surface": "Copilot CLI",
+      "offering": "Resume, fork, usage, theme and statusline commands",
+      "status": [
+        "documented"
+      ],
+      "layer": "installed 1.0.103 help",
+      "evidence": "Commands are present in current help.",
+      "limit": "No private session history or effective terminal theme was inspected.",
+      "sources": [],
+      "local_source": "artifacts/capability-study-20261025/copilot/inventory.json"
+    },
+    {
+      "id": "sdk-mcp-app-opt-in",
+      "surface": "SDK-owned app client",
+      "offering": "Experimental MCP Apps opt-in",
+      "status": [
+        "documented",
+        "conditional",
+        "untested"
+      ],
+      "layer": "installed official SDK 1.0.26 types",
+      "evidence": "enableMcpApps and runtime feature gate are separate requirements; consumer must have an iframe renderer.",
+      "limit": "Bare-consumer mcpApps=false is not a global product exclusion; opt-in paint is untested.",
+      "sources": [
+        "https://github.com/github/copilot-sdk"
+      ],
+      "local_source": "artifacts/cross-assistant/copilot/package/dist/types.d.ts"
+    },
+    {
+      "id": "acp-input-capabilities",
+      "surface": "Copilot ACP",
+      "offering": "Image input and embedded context negotiation",
+      "status": [
+        "observed-working"
+      ],
+      "layer": "ACP initialize",
+      "evidence": "CLI 1.0.103 reports image=true, audio=false, embeddedContext=true.",
+      "limit": "Input capability does not establish image output or interactive canvas.",
+      "probe": "acp-protocol.py",
+      "sources": [
+        "https://docs.github.com/en/copilot/reference/copilot-cli-reference/acp-server"
+      ]
+    },
+    {
+      "id": "acp-invalid-ui-method",
+      "surface": "Copilot ACP",
+      "offering": "Exact negative method probe",
+      "status": [
+        "observed-failed"
+      ],
+      "layer": "ACP JSON-RPC",
+      "evidence": "Invented ui/show rejected with -32601.",
+      "limit": "Only this method was rejected; other UI routes remain separate.",
+      "probe": "acp-protocol.py",
+      "sources": [
+        "https://docs.github.com/en/copilot/reference/copilot-cli-reference/acp-server"
+      ]
+    },
+    {
+      "id": "vscode-mcp-app-view",
+      "surface": "VS Code chat MCP App",
+      "offering": "Inline HTML forms, dashboards and visualizations",
+      "status": [
+        "documented",
+        "untested"
+      ],
+      "layer": "official host contract; current paint pending",
+      "evidence": "Tool metadata identifies ui:// HTML resource, bridged from a sandboxed iframe.",
+      "limit": "Account, trust, capabilities and actual paint still require named-host verification.",
+      "sources": [
+        "https://code.visualstudio.com/api/extension-guides/ai/mcp"
+      ]
+    },
+    {
+      "id": "vscode-mcp-app-actions",
+      "surface": "VS Code chat MCP App",
+      "offering": "Server tools, drafted follow-up and context attachment",
+      "status": [
+        "documented",
+        "untested"
+      ],
+      "layer": "official host contract",
+      "evidence": "sendMessage drafts chat input; context updates appear as attachments.",
+      "limit": "Neither drafts nor direct controls imply another inference turn.",
+      "sources": [
+        "https://code.visualstudio.com/api/extension-guides/ai/mcp"
+      ]
+    },
+    {
+      "id": "vscode-mcp-app-exclusions",
+      "surface": "VS Code chat MCP App",
+      "offering": "Bounded mode and device support",
+      "status": [
+        "unsupported",
+        "documented"
+      ],
+      "layer": "official support table",
+      "evidence": "Inline only; fullscreen, PiP, camera, microphone and geolocation excluded. Clipboard write is supported.",
+      "limit": "Do not transfer these exclusions to ordinary webviews or other hosts.",
+      "sources": [
+        "https://code.visualstudio.com/api/extension-guides/ai/mcp"
+      ]
+    },
+    {
+      "id": "vscode-mcp-app-security",
+      "surface": "VS Code chat MCP App",
+      "offering": "Sandbox and explicit CSP origins",
+      "status": [
+        "documented",
+        "untested"
+      ],
+      "layer": "official contract",
+      "evidence": "Declare connection, resource and embedded-frame origins; negotiate optional features.",
+      "limit": "Current resource reachability is not iframe-paint acceptance.",
+      "sources": [
+        "https://code.visualstudio.com/api/extension-guides/ai/mcp"
+      ]
+    },
+    {
+      "id": "vscode-webview-panel",
+      "surface": "Ordinary VS Code extension webview",
+      "offering": "Custom editor document and message bridge",
+      "status": [
+        "observed-working"
+      ],
+      "layer": "fresh real VS Code 1.143.1 extension host",
+      "evidence": "Button action changed7 to8; unsupported action refused; disposal callback fired. Eight checks include runtime inventory.",
+      "limit": "Copilot extension metadata was null in this test runtime; this is not Copilot Chat rendering.",
+      "probe": "webview-probe/test.cjs",
+      "sources": [
+        "https://code.visualstudio.com/api/extension-guides/webview"
+      ]
+    },
+    {
+      "id": "vscode-webview-security",
+      "surface": "Ordinary VS Code extension webview",
+      "offering": "Script opt-in, CSP and resource boundaries",
+      "status": [
+        "observed-working",
+        "observed-failed"
+      ],
+      "layer": "fresh real extension host",
+      "evidence": "Default scripts emitted zero messages; unapproved script denied; top DOM SecurityError; no require/process.",
+      "limit": "Immediate wrapper access differs from top-application access.",
+      "probe": "webview-probe/test.cjs",
+      "sources": [
+        "https://code.visualstudio.com/api/extension-guides/webview"
+      ]
+    },
+    {
+      "id": "vscode-webview-state",
+      "surface": "Ordinary VS Code extension webview",
+      "offering": "JSON state and serializer-based restoration",
+      "status": [
+        "observed-working",
+        "documented",
+        "conditional"
+      ],
+      "layer": "fresh content-reload/new-panel checks; documented broader persistence",
+      "evidence": "State7 survived content reload; a new panel did not inherit disposed-panel state.",
+      "limit": "Hidden-tab lifecycle/restart serializer behavior remains untested; retainContextWhenHidden has memory cost.",
+      "probe": "webview-probe/test.cjs",
+      "sources": [
+        "https://code.visualstudio.com/api/extension-guides/webview"
+      ]
+    },
+    {
+      "id": "vscode-webview-theme",
+      "surface": "Ordinary VS Code extension webview",
+      "offering": "Theme classes, CSS variables and accessibility cues",
+      "status": [
+        "observed-working",
+        "documented",
+        "untested"
+      ],
+      "layer": "fresh active-theme inspection; other modes untested",
+      "evidence": "lang=en, vscode-dark and injected editorForeground #bbbebf observed.",
+      "limit": "No light/high-contrast/reduced-motion switch tested; host variables are not exact ColorSet claims.",
+      "probe": "webview-probe/test.cjs",
+      "sources": [
+        "https://code.visualstudio.com/api/extension-guides/webview"
+      ]
+    },
+    {
+      "id": "vscode-native-extension-ui",
+      "surface": "VS Code extension APIs",
+      "offering": "Quick picks, input boxes, notifications, trees and status items",
+      "status": [
+        "documented",
+        "untested"
+      ],
+      "layer": "official API contract",
+      "evidence": "Native extension surfaces complement panels, custom editors and webview views.",
+      "limit": "An MCP tool alone does not grant the VS Code extension API.",
+      "sources": [
+        "https://code.visualstudio.com/api/references/vscode-api"
+      ]
+    },
+    {
+      "id": "vscode-agent-tools",
+      "surface": "VS Code agent tool integration",
+      "offering": "Extension-contributed and MCP tools",
+      "status": [
+        "documented",
+        "conditional"
+      ],
+      "layer": "official Language Model Tool API",
+      "evidence": "Contribute/register tools and meaningful confirmation messages; availability depends on harness and configuration.",
+      "limit": "A tool contribution is not an arbitrary chat DOM insertion API.",
+      "sources": [
+        "https://code.visualstudio.com/api/extension-guides/ai/tools"
+      ]
+    },
+    {
+      "id": "vscode-canvas",
+      "surface": "Local Copilot Agent Host on VS Code desktop",
+      "offering": "Preview canvas extensions with agent-callable actions",
+      "status": [
+        "documented",
+        "conditional",
+        "untested"
+      ],
+      "layer": "official preview contract",
+      "evidence": "Enable chat.canvases.enabled and use an installed canvas extension in a supported session.",
+      "limit": "Excludes Claude, Codex, extension-host Local, remote Agent Host, web and auxiliary-window hosting.",
+      "sources": [
+        "https://code.visualstudio.com/docs/agents/run/agent-harnesses"
+      ]
+    },
+    {
+      "id": "copilot-app-canvas",
+      "surface": "GitHub Copilot app",
+      "offering": "Shared side-panel canvases and extension-managed artifacts",
+      "status": [
+        "documented",
+        "conditional",
+        "untested"
+      ],
+      "layer": "official app contract",
+      "evidence": "Humans and agent actions share the work surface; plugins can distribute canvases.",
+      "limit": "Persistence depends on extension state/artifacts; no app canvas paint was tested here.",
+      "sources": [
+        "https://docs.github.com/en/copilot/how-tos/github-copilot-app/working-with-canvas-extensions"
+      ]
+    }
+  ],
+  "not_claimed": [
+    "Fresh native terminal form paint",
+    "Signed-in Copilot Chat MCP App paint",
+    "Native canvas paint",
+    "Authentication entitlement",
+    "Cross-host equivalence",
+    "Strict filesystem isolation (automatic shared storage write was observed by root)"
+  ],
+  "coordinated_gui_observation": {
+    "observer": "root agent, foreground CUA",
+    "surface": "portable VS Code task profile",
+    "state": "conditional; awaiting human trust/sign-in",
+    "not_claimed": [
+      "MCP App paint",
+      "canvas paint",
+      "account entitlement"
+    ]
+  },
+  "activation_diagnostic": {
+    "extension_id": "github.copilot-chat",
+    "severity": "error",
+    "missing_proposals": [
+      "authIssuers",
+      "languageModelRateLimit"
+    ],
+    "observed_activation_attempt": false,
+    "observed_activation_fatal": false,
+    "compatibility_verified": false,
+    "scope": "Scoped visible-profile renderer/exthost logs only",
+    "next_check": "After human trust review, obtain an actual activation attempt/Running Extensions status before assuming compatibility; do not bypass proposed API restrictions."
+  }
+}

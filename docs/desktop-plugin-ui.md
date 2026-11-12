@@ -1,12 +1,36 @@
-# Install Assistant Plugin UI from this repository
+# Choose and install an assistant UI skill
 
-`desktop-plugin-ui` is the authoring skill for Claude Desktop, Claude Code,
-ChatGPT Desktop, Codex and Pi extensions. It selects supported host controls,
-keeps architecture small, applies Nielsen's ten heuristics and validates actual
-interactions. The complete independent bundle lives in
-[`skills/desktop-plugin-ui/`](../skills/desktop-plugin-ui/SKILL.md).
+Use the skill matching the actual host. Each bundle contains its own required
+instructions, references, palettes, helpers, and relevant runtime templates.
+It does not depend on the comparison skill or another host bundle.
 
-## Install only this skill
+| Target | Skill | Scope |
+| --- | --- | --- |
+| Claude Desktop Chat | [desktop-chat-plugin-ui](../skills/desktop-chat-plugin-ui/SKILL.md) | MCP Apps and optional MCPB installation; ordinary Chat. |
+| Claude Code | [code-native-plugin-ui](../skills/code-native-plugin-ui/SKILL.md) | Native commands/Mods for terminal, Desktop Code, and VS Code. |
+| Pi | [pi-extension-ui](../skills/pi-extension-ui/SKILL.md) | Native commands/dialogs/widgets, mode-aware TUI/RPC, stateful actions. |
+| Codex | [codex-plugin-ui](../skills/codex-plugin-ui/SKILL.md) | Plugins/MCP with loader, frontend, and policy-specific validation. |
+| ChatGPT Desktop | [chatgpt-desktop-plugin-ui](../skills/chatgpt-desktop-plugin-ui/SKILL.md) | Local-thread packages, remote connections, and MCP Apps. |
+| Gemini Enterprise | [gemini-enterprise-ui](../skills/gemini-enterprise-ui/SKILL.md) | Google Cloud A2UI catalogs over A2A and registration preparation. |
+| Cross-host comparison | [desktop-plugin-ui](../skills/desktop-plugin-ui/SKILL.md) | Surface selection, shared-domain adapters, and capability studies. |
+
+For example, select `--skill pi-extension-ui` in the installation command below
+to install only Pi authoring. Select the host where the generated interface
+will run; the agent executing these instructions can be different.
+For a bundle that is still local to this checkout, use the checkout/sync
+workflow below. Remote installation requires a published revision containing
+the selected bundle.
+Gemini Enterprise here means the Google Cloud app, with documented host-bound
+A2UI versions; it does not mean Gemini CLI, Code Assist, or consumer Gemini.
+See the [host-split validation record](../evaluations/desktop-plugin-ui/host-split-20261111.md)
+for current validation and host acceptance limits.
+
+For rich graphs, charts and linked workspaces, see the
+[local interface lab](plugin-ui-rich-interfaces.md). It contains six host routes,
+pixel critiques, runnable project sources and the exact scope of protocol,
+native-engine, schema and actual-host checks.
+
+## Install the comparison skill
 
 From your project, select the skill and target agent explicitly:
 
@@ -89,7 +113,7 @@ workspaces, generated PoCs and local artifacts are not installation dependencies
 
 Check that the selected installation contains `SKILL.md`, `agents/openai.yaml`,
 `references/`, `scripts/`, both palettes and both runtime template directories.
-The current published bundle has 37 files. Its optional Pi readiness helper is
+The comparison bundle retains its historical resources. Its optional Pi readiness helper is
 stdlib Python and only checks installed versions:
 
 ```sh

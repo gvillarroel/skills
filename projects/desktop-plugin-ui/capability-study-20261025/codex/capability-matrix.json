@@ -1,0 +1,251 @@
+{
+  "snapshot_date": "2026-10-25",
+  "language": "en",
+  "scope": "Installed Codex backend/CLI inventory and synthetic protocol experiments; frontend paint is a separate evidence layer.",
+  "model_turns_started": 0,
+  "current_backend_tests_performed": true,
+  "current_frontend_tests_performed": false,
+  "global_configuration_writes": false,
+  "artifact_root": "projects/desktop-plugin-ui/artifacts/capability-study-20261025/codex",
+  "proof_path_rule": "Proof paths are relative to artifact_root unless they begin with evaluations/, which is repository-relative.",
+  "versions": {
+    "npm_cli": "0.145.0",
+    "desktop_bundled_core": "0.164.0-alpha.11.1",
+    "windows_package": "OpenAI.Codex 26.1021.3705.0",
+    "ide_extension": "untested; no code command or standard user extension directory was found in the bounded inventory"
+  },
+  "verification": {
+    "baseline_replay": {
+      "npm_on_request": "18/18",
+      "desktop_on_request": "17/18",
+      "desktop_never": "17/18",
+      "desktop_without_form_opt_in": "17/18",
+      "retained_failure": "The old assertion expects nested-schema error -32601; the desktop core returns -32602. All three original failing reports are preserved."
+    },
+    "version_aware_feature_cases": {
+      "npm_current_contract": "21/21",
+      "desktop_current_contract": "21/21",
+      "desktop_never": "21/21",
+      "desktop_without_form_opt_in": "21/21",
+      "npm_experimental_mcp_apps_flag": "21/21",
+      "desktop_experimental_mcp_apps_flag": "21/21"
+    },
+    "schema": {
+      "npm_client_requests": 126,
+      "desktop_client_requests": 175,
+      "server_requests_each": 11,
+      "npm_generated_schema_files": 347,
+      "desktop_generated_schema_files": 458
+    }
+  },
+  "features": [
+    {
+      "id": "codex-text-structured-tools",
+      "surface": "Both installed app-server stdio cores; CLI JSON fallback has separate historical evidence",
+      "offering": "MCP text, structuredContent and private result metadata can travel together.",
+      "evidence": "observed-working; direct synthetic tool results in both current binaries",
+      "limits": "Receipt does not establish a card, iframe, native form or model interpretation.",
+      "proof": ["npm-current-contract-v1/report.json", "desktop-current-contract-v1/report.json"],
+      "sources": ["https://learn.chatgpt.com/docs/app-server"]
+    },
+    {
+      "id": "codex-cli-output-modes",
+      "surface": "npm CLI and desktop-bundled executable",
+      "offering": "Installed exec help exposes noninteractive JSON events, schema-constrained final output, output-file options and image attachments; interactive CLI has its own TUI.",
+      "evidence": "observed-working help inventory; documented interface; current model execution untested",
+      "limits": "JSON event serialization and a model output schema are data contracts. They do not provide an HTML renderer.",
+      "proof": ["inventory-v1/npm/exec-help.stdout.txt", "inventory-v1/desktop-bundled/exec-help.stdout.txt"],
+      "sources": ["https://learn.chatgpt.com/docs/app-server"]
+    },
+    {
+      "id": "codex-model-frontends",
+      "surface": "Fresh isolated model/list responses",
+      "offering": "The npm catalog defaults to gpt-5.6-sol; the desktop-bundled catalog defaults to gpt-6.1-sol. The sampled entries advertise text/image input modalities.",
+      "evidence": "observed-working zero-inference catalog requests; conditional account entitlement",
+      "limits": "Catalog defaults are not an account inference entitlement test. A model ID or image modality does not grant a UI surface. The synthetic app-server metadata source value vscode is not evidence of an actual IDE frontend.",
+      "proof": ["npm-current-contract-v1/report.json", "desktop-current-contract-v1/report.json"],
+      "sources": ["https://learn.chatgpt.com/docs/app-server"]
+    },
+    {
+      "id": "codex-plugin-bundles",
+      "surface": "Codex in ChatGPT desktop; Codex CLI plugin browser; IDE extension",
+      "offering": "Official docs describe plugin bundles with skills, MCP servers, optional UI and other capabilities on supported desktop/CLI surfaces.",
+      "evidence": "documented; IDE plugin-bundle availability explicitly excluded by current docs; package installation not repeated here",
+      "limits": "The IDE plugin-bundle exclusion does not exclude separately configured MCP servers or tools in the IDE.",
+      "proof": ["inventory-v1/npm/plugin-help.stdout.txt", "inventory-v1/desktop-bundled/plugin-help.stdout.txt"],
+      "sources": ["https://learn.chatgpt.com/docs/plugins", "https://learn.chatgpt.com/docs/enterprise/apps-and-connectors", "https://learn.chatgpt.com/docs/extend/mcp"]
+    },
+    {
+      "id": "codex-direct-mcp-transports",
+      "surface": "Desktop, CLI and IDE configuration; tested backend uses stdio",
+      "offering": "Official same-host configuration supports local stdio and Streamable HTTP, with transport-specific environment/authentication options and tool policy.",
+      "evidence": "observed-working stdio fixture; documented HTTP and shared-surface setup",
+      "limits": "HTTP/OAuth, remote executors and IDE installation were not exercised. No global configuration was changed.",
+      "proof": ["desktop-current-contract-v1/report.json", "desktop-metadata.json"],
+      "sources": ["https://learn.chatgpt.com/docs/extend/mcp"]
+    },
+    {
+      "id": "codex-html-resource",
+      "surface": "Direct app-server MCP tool/resource calls",
+      "offering": "HTML app MIME, ui:// resources and _meta.ui.resourceUri survive transport; SVG and CSV resources can also be read.",
+      "evidence": "observed-working bytes and metadata in both cores",
+      "limits": "The HTML script marker exists in delivered bytes. No script execution or frontend resource fetch is established by the backend test.",
+      "proof": ["desktop-current-contract-v1/report.json", "npm-on-request-v1/report.json"],
+      "sources": ["https://developers.openai.com/plugins/build/chatgpt-ui", "https://learn.chatgpt.com/docs/app-server"]
+    },
+    {
+      "id": "codex-mcp-apps-bridge",
+      "surface": "Isolated app-server JSON-RPC connection",
+      "offering": "A custom client can receive tool/resource data and implement its own frontend. Actual desktop MCP App rendering is a distinct host bridge.",
+      "evidence": "observed-failed ui/initialize at this wrong app-server endpoint; observed-working resource transport; frontend paint untested in this study",
+      "limits": "Neither schema has ui/* or fullscreen/sidebar/canvas placement method names in its client-request union. This absence does not exclude supported plugin UI in the desktop frontend.",
+      "proof": ["schema-summary.json", "desktop-current-contract-v1/report.json"],
+      "sources": ["https://learn.chatgpt.com/docs/app-server", "https://developers.openai.com/plugins/build/chatgpt-ui"]
+    },
+    {
+      "id": "codex-experimental-ui-flag",
+      "surface": "Fresh isolated effective feature flags in both cores",
+      "offering": "features list reports enable_mcp_apps as under development and false. A per-process true override was tested without editing global settings.",
+      "evidence": "observed-working override and existing contracts; no additional UI extension advertisement observed",
+      "limits": "The override did not advertise io.modelcontextprotocol/ui in these fixture connections. It is not a general recipe for enabling desktop paint or proof of its absence.",
+      "proof": ["inventory-v1/desktop-bundled/feature-defaults.stdout.txt", "desktop-mcp-apps-optin-v1/report.json", "npm-mcp-apps-optin-v1/report.json"],
+      "sources": ["https://learn.chatgpt.com/docs/app-server"]
+    },
+    {
+      "id": "codex-form-primitives",
+      "surface": "MCP elicitation through app-server, on-request policy",
+      "offering": "Synthetic string, bounded integer, boolean, single enum and enumerated string-array schemas reached the client; accept, decline and cancel responses reached the MCP server.",
+      "evidence": "observed-working protocol callbacks and synthetic responses in both cores",
+      "limits": "The study did not render controls or verify screen-reader, keyboard, focus or native form pixels.",
+      "proof": ["desktop-current-contract-v1/report.json", "npm-current-contract-v1/report.json"],
+      "sources": ["https://learn.chatgpt.com/docs/app-server#mcp-server-elicitation-requests"]
+    },
+    {
+      "id": "codex-form-policy",
+      "surface": "App-server approvalPolicy never versus on-request",
+      "offering": "on-request forwards elicitation callbacks. never auto-declines the same synthetic form requests without forwarding a form callback.",
+      "evidence": "observed-working policy-specific fallback; observed-failed presentation opportunity under never",
+      "limits": "These results concern elicitation policy; they do not prove a command/file approval UI or a global permission bypass.",
+      "proof": ["desktop-current-never-v1/report.json", "desktop-current-contract-v1/report.json"],
+      "sources": ["https://learn.chatgpt.com/docs/app-server#mcp-server-elicitation-requests"]
+    },
+    {
+      "id": "codex-extended-form-boundary",
+      "surface": "MCP form opt-in and actual tool-serving process",
+      "offering": "PID-correlated initialization shows the process serving direct tools advertises openai/form when opted in. Flat openai/form and openaiForm requests normalize to ordinary form, including without opt-in.",
+      "evidence": "observed-working capability correlation and flat normalization; observed-failed arbitrary nested schema",
+      "limits": "The nested invalid fixture returns -32601 on 0.145.0 and -32602 on 0.164.0-alpha.11.1. It is not a valid image-picker acceptance test. Documented richer native forms and thumbnails remain untested. Prior attribution to a non-advertising executing thread connection was unsupported by the old logs and should be withdrawn.",
+      "proof": ["desktop-current-contract-v1/report.json", "npm-current-contract-v1/report.json", "desktop-current-no-optin-v1/report.json"],
+      "sources": ["https://learn.chatgpt.com/docs/app-server#mcp-server-elicitation-requests", "https://developers.openai.com/plugins/build/extensions"]
+    },
+    {
+      "id": "codex-command-approval-contracts",
+      "surface": "Generated server-request schemas and official app-server docs",
+      "offering": "Server requests cover command execution, file changes, user questions, MCP elicitation and additional permission approval.",
+      "evidence": "observed-working schema generation; documented decision payloads; actual command/file approval presentation untested",
+      "limits": "A request schema is not a rendered prompt. Device user-verification mode in the new schema was not invoked.",
+      "proof": ["schema-summary.json"],
+      "sources": ["https://learn.chatgpt.com/docs/app-server"]
+    },
+    {
+      "id": "codex-image-transport",
+      "surface": "MCP output; CLI/model input catalogs",
+      "offering": "PNG result content survives the baseline replay, while help/catalogs separately expose image input paths.",
+      "evidence": "observed-working one-pixel PNG transport; documented and inventoried input interface",
+      "limits": "A transport pixel is not a meaningful model-vision test, image-generation test, terminal image display or interactive canvas.",
+      "proof": ["desktop-on-request-v1/report.json", "npm-on-request-v1/report.json", "inventory-v1/desktop-bundled/exec-help.stdout.txt"],
+      "sources": ["https://learn.chatgpt.com/docs/app-server"]
+    },
+    {
+      "id": "codex-image-browser-feature-flags",
+      "surface": "Isolated installed feature inventories",
+      "offering": "Both inventories report stable enabled apps, plugins, image_generation and in_app_browser flags; the newer core also lists in-app chat, dictation and voice flags.",
+      "evidence": "observed-working feature inventory; actual generation, browser and voice behavior untested in this study",
+      "limits": "An enabled flag does not establish model entitlement, a callable plugin surface, a visible image viewer or media rendering. No image-generation or browser automation model turn was spent.",
+      "proof": ["inventory-v1/npm/feature-defaults.stdout.txt", "inventory-v1/desktop-bundled/feature-defaults.stdout.txt"],
+      "sources": ["https://learn.chatgpt.com/docs/app-server"]
+    },
+    {
+      "id": "codex-audio-svg-resource-links",
+      "surface": "Synthetic MCP result content through both cores",
+      "offering": "Audio content carries a valid 80-frame 8kHz PCM WAV; resource_link carries CSV metadata; embedded resource carries SVG text.",
+      "evidence": "observed-working typed transport and WAV byte decoding",
+      "limits": "No audio playback, transcription, SVG native paint, OS download, camera/microphone permission or video decoder was tested. Invalid custom MCP content variants return -32603 Unexpected response type.",
+      "proof": ["desktop-current-contract-v1/report.json", "npm-current-contract-v1/report.json"],
+      "sources": ["https://learn.chatgpt.com/docs/app-server"]
+    },
+    {
+      "id": "codex-tool-state-progress",
+      "surface": "Direct mcpServer/tool/call without a model turn",
+      "offering": "A synthetic server state can move from value/version 0 to 1; stale writes return isError while preserving value/version 1. The progress tool's final result arrives.",
+      "evidence": "observed-working versioned state and final result; progress notification forwarding unobserved in this route",
+      "limits": "No app-server progress event was seen for these direct calls. In-turn item streaming and actual progress widgets are separate tests; their absence is not inferred.",
+      "proof": ["desktop-current-contract-v1/report.json", "npm-current-contract-v1/report.json"],
+      "sources": ["https://learn.chatgpt.com/docs/app-server"]
+    },
+    {
+      "id": "codex-state-persistence",
+      "surface": "Fresh synthetic threads and fixture processes",
+      "offering": "Ephemeral thread metadata is readable without a turn. The newer core reports paginated history, the older core legacy history. A second thread creates a fresh synthetic MCP process with value/version 0.",
+      "evidence": "observed-working empty-thread metadata and process-scoped fixture state; durable storage untested",
+      "limits": "The fixture stores state only in memory. Neither widget persistence, cross-session business storage nor existing user conversation history was tested or read.",
+      "proof": ["desktop-current-contract-v1/report.json", "npm-current-contract-v1/report.json"],
+      "sources": ["https://learn.chatgpt.com/docs/app-server"]
+    },
+    {
+      "id": "codex-inline-fullscreen-canvas",
+      "surface": "Plugin UI frontend; separate from app-server requests",
+      "offering": "The OpenAI UI guide documents iframe-based inline, fullscreen and picture-in-picture experiences; extensions document sidebar apps, conversation panels, file viewers and composer entry points in their stated ChatGPT scope.",
+      "evidence": "documented frontend offerings; current-study placement and canvas paint untested",
+      "limits": "Do not transfer these UI capabilities to the CLI TUI or IDE merely because they share a model/backend. A custom frontend is one available route, not the only possible dashboard route.",
+      "proof": ["schema-summary.json"],
+      "sources": ["https://developers.openai.com/plugins/build/chatgpt-ui", "https://developers.openai.com/plugins/build/extensions"]
+    },
+    {
+      "id": "codex-realtime-media",
+      "surface": "Generated protocol methods",
+      "offering": "Both cores expose realtime start/appendAudio/appendText/appendSpeech/stop and voice-list method names.",
+      "evidence": "observed-working schema inventory; realtime service and media UI untested",
+      "limits": "Method presence does not establish audio model entitlement, recording consent, playback, video support or a plugin media player.",
+      "proof": ["schema-summary.json"],
+      "sources": ["https://learn.chatgpt.com/docs/app-server"]
+    },
+    {
+      "id": "codex-app-server-deployment",
+      "surface": "Installed help and current official app-server documentation",
+      "offering": "Stdio is tested. Help also exposes TCP WebSocket and Unix-socket listeners plus non-loopback authentication options; docs mark the WebSocket route experimental and unsupported.",
+      "evidence": "observed-working stdio; documented and inventoried other listeners",
+      "limits": "No remote listener, bearer-token setup or external deployment was performed. These app-server transports differ from MCP Streamable HTTP configuration.",
+      "proof": ["inventory-v1/desktop-bundled/app-server-help.stdout.txt", "desktop-current-contract-v1/report.json"],
+      "sources": ["https://learn.chatgpt.com/docs/app-server", "https://learn.chatgpt.com/docs/extend/mcp"]
+    },
+    {
+      "id": "codex-desktop-attributed-paint",
+      "surface": "Earlier ChatGPT Windows desktop Codex-mode direct MCP session",
+      "offering": "An existing local report records a real XY chart painted inside the native app tool component after direct MCP Save and Restart.",
+      "evidence": "observed-working attributed historical frontend evidence; not newly reproduced by this backend study",
+      "limits": "The earlier report bounds the app to its observed 26.1016.6573.0 package and distinguishes failed folder-plugin server discovery from the successful direct-MCP workaround. Fresh 26.1021.3705.0 paint and component controls remain the root task's separate check.",
+      "proof": ["evaluations/reflex-xy/native-desktop-20261025.md"],
+      "sources": ["https://learn.chatgpt.com/docs/extend/mcp"]
+    }
+  ],
+  "recommended_canonical_deltas": [
+    "Pin npm CLI, desktop package and bundled core separately; do not generalize the old 0.145.0 backend to current desktop.",
+    "Withdraw the old uninstrumented claim that the executing thread connection omitted openai/form; current PID-correlated evidence shows the tool-serving process advertises it when opted in.",
+    "Keep both invalid nested-schema outcomes and make code-specific assertions version-aware; distinguish -32601 from -32602 rather than calling MCP unsupported.",
+    "Add observed backend transport of valid WAV, CSV resource links and embedded SVG without promoting it to playback, download or native paint.",
+    "Record standard typed forms and accept/decline/cancel as callback evidence; valid rich image-picker rendering remains untested.",
+    "Separate documented IDE plugin-bundle exclusion from supported IDE MCP configuration.",
+    "Attribute the earlier real desktop direct-MCP paint success and its failed folder-plugin discovery; keep fresh current-package paint and host controls separate.",
+    "Treat zero forwarded progress events in direct tool calls as a route-specific observation, not universal absence of streamed tool status."
+  ],
+  "sources": [
+    "https://learn.chatgpt.com/docs/app-server",
+    "https://learn.chatgpt.com/docs/app-server#mcp-server-elicitation-requests",
+    "https://learn.chatgpt.com/docs/plugins",
+    "https://learn.chatgpt.com/docs/enterprise/apps-and-connectors",
+    "https://learn.chatgpt.com/docs/extend/mcp",
+    "https://developers.openai.com/plugins/build/chatgpt-ui",
+    "https://developers.openai.com/plugins/build/extensions"
+  ]
+}

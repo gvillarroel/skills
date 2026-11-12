@@ -1,0 +1,9 @@
+{
+  "name": "copilot-ui-contract-study",
+  "displayName": "Copilot UI Contract Study",
+  "version": "0.0.1",
+  "publisher": "local-evidence",
+  "engines": { "vscode": "^1.143.1" },
+  "main": "./extension.cjs",
+  "activationEvents": ["*"]
+}

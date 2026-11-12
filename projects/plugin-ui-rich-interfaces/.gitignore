@@ -1,0 +1,7 @@
+# Reproducible task output; authored sources and build scripts remain versioned.
+artifacts/
+data/observatory.json
+web/data.js
+claude/assets/data.ts
+pi/data.ts
+node_modules/

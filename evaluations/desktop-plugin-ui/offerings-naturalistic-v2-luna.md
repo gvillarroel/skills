@@ -1,0 +1,67 @@
+# Capability-offerings naturalistic study, version 2
+
+Reviewed October 25, 2026. Three fresh sessions used the frozen 22-file bundle and the unchanged naturalistic prompt/review criteria. **Strict harness: 2/3; final report checker: 3/3; conservative manual acceptance: 0/3; joint acceptance: 0/3.** All attempts remain intact. No retry, reviewer repair, canonical edit, new host/UI test or additional provider action was performed. The earlier [version 1 cohort](offerings-naturalistic-v1-luna.md) remains separate.
+
+The new guidance improved CSP separation and historical ledgers, while the outputs retained useful English queue workflows and accurate explicit token arithmetic. Remaining failures are narrower: two recommendations impose ownership of a custom frontend on a stock Codex desktop/IDE dashboard route, one observation is missing from its required ledger, and one authored focus binding is insufficient. The third run also has four retained tool errors. The pre-frozen naturalistic joint threshold of at least 2/3 was not met; this report does not establish broad skill completion.
+
+## Frozen provenance and command
+
+- Source/runtime/full payload: `42df224d120f4bfd71445670e55c25891cb8e540eb8a2ec6c21fb8ee7a9d34f6`, 22 files. All three copied manifests match exactly and all final skill-integrity checks pass.
+- [Unchanged task prompt](../pi-prompts/desktop-plugin-ui-offerings-naturalistic.md): source bytes SHA-256 `a7ff09f0ef63e3ba30c7502eb32f2228195d634e88fd593c9b5344526579938b`.
+- [Unchanged pre-frozen criteria](offerings-review-criteria.md): SHA-256 `4e6d0d0a0f85c04cc7a73c4a89a8ae8d81f8a4caf8c87b6f9658832173b4d590`. No grading requirements were added after launch.
+- Harness-normalized prompt text SHA-256: `62e1a5e84349933dc124de095d5ab5401032a43c6ba79e16fd2145282bb7f447`; Windows copied-prompt bytes SHA-256: `5d37bd25f99483d32e414fb288caa1f1d7b2814a886d04e92b602987732011b3`. All copied texts equal the frozen source after newline normalization.
+- Model: the documented `openai-codex/gpt-5.6-luna` exception, high thinking, Pi 1.4.0, JSON mode, strict checks, 600 seconds. All three observed model traces contain only this model/provider. No Claude/Copilot allowance was used.
+
+Executed once per suffix `1`, `2`, `3`, substituting the corresponding exact run ID:
+
+```powershell
+uv run --script scripts/run-pi-skill-eval.py desktop-plugin-ui --prompt-file evaluations/pi-prompts/desktop-plugin-ui-offerings-naturalistic.md --model openai-codex/gpt-5.6-luna --mode json --strict --timeout-seconds 600 --run-id 20261025-desktop-ui-offerings-naturalistic-v2-luna-1 --expect-output offerings/recommendation.md --expect-output offerings/recommendation.json --expect-output-json-field 'offerings/recommendation.json::host_acceptance_verified=false' --expect-output-json-field 'offerings/recommendation.json::task_empirical_tests_performed=false'
+```
+
+Required-model event summaries used `summarize-pi-json-events.py --require-model gpt-5.6-luna --require-tool-call --fail-on-invalid-json --fail-on-tool-error --require-read ../prompt.md` with acceptance-fixture and sibling-skill read exclusions. Summaries pass for runs 1/2 and correctly fail run 3 for four `edit` errors. All three have valid JSON events, prompt-first reads, exact requested artifacts, literal false task flags and unchanged copied payloads. Pi itself exits 0 in all three; the strict wrapper returns 4 for run 3.
+
+## Per-run results and factual review
+
+| Suffix | Duration | Strict | Final checker | Manual / joint | Principal retained failure |
+| --- | --- | --- | --- | --- | --- |
+| 1 | 131.713 s | PASS | PASS: 32 URLs, 8 rows | FAIL / FAIL | Codex desktop/IDE dashboard described as available only in a developer-owned frontend. |
+| 2 | 120.197 s | PASS | PASS: 32 URLs, 10 rows | FAIL / FAIL | The same client-specific exclusivity, plus an observed CLI canvas flag without its required history result. |
+| 3 | 126.772 s | FAIL | PASS: 26 URLs, 9 rows | FAIL / FAIL | Four failed edits; authored focus bound to low-contrast gray without a verified repair. |
+
+Full IDs are `20261025-desktop-ui-offerings-naturalistic-v2-luna-{1,2,3}`. Each ignored run folder preserves the manifest, events, gate files, trace summary, final output pair and `independent-review.json`. Reviewer code is retained as `evaluations/runs/offerings-naturalistic-v2-review.py`; compact arithmetic/checker results are `evaluations/runs/offerings-naturalistic-v2-independent-summary.json`.
+
+**Run 1: desktop/IDE exclusivity, in its actual context.** JSON `offerings[1]` explicitly names client **“Codex desktop / IDE”**. Its feature at line 34 is **“The same queue workflow, with an optional dense dashboard only in a developer-owned frontend”**. The next field says **“If a visual dashboard is required, use a separately owned frontend around app-server; do not represent it as stock Codex desktop or IDE panel injection.”** A recommendation to build a custom client is permissible, and app-server JSON alone does not inject stock panels. The failure is the client-scoped **only** condition: the frozen bundle allows a conditional stock desktop MCP App and records bounded historical inline chart paint through direct MCP. The output should distinguish that route from a separately owned app-server frontend. This finding is not applied to ordinary CLI text or to a clearly scoped optional custom-client recommendation.
+
+**Run 2: desktop/IDE exclusivity and missing result.** JSON `offerings[3]` names **“Codex desktop/IDE”**, feature **“All queue operations through tools and host-owned elicitation”**. Its mechanism permits a custom frontend if the organization owns it, which is reasonable by itself. Its fallback at line 42 then adds **“If no custom frontend is owned, do not promise an inline chart.”** In this desktop/IDE context, that overrestricts the conditional stock desktop MCP App route. The recommendation can require exact frontend negotiation, actual paint and interaction checks without requiring ownership of the whole frontend.
+
+Independently, JSON `offerings[8].evidence` at line 90 says **“observed-working: CLI 1.0.103 negotiated `canvases:true`”**. None of the ten history result fields records that CLI negotiation. The bare SDK row records `canvases` false on a different consumer; the terminal UI row records form controls, not the flag. Under the unchanged prompt's every-used-empirical-claim rule, the result is missing. The fact is consistent with the frozen bundle, but the artifact's required evidence coverage is incomplete. This is distinct from the desktop wording failure and from checker row-format success.
+
+**Run 3: focus use and strict execution.** Its desktop recommendation correctly offers a conditional direct MCP App and keeps the old capture's build unknown, separately from current package/core inventory. Its red/pink contrast decision is also correct: ordinary error text uses primary text, with red as an icon/accent. However, the authored styling paragraph and JSON `palette_bindings.tokens.focus` (line 128) bind focus to `interface.state.focus` / `#cfcfcf`. No alternative essential focus cue, safe contrast pair or warning repairs that focus role. Independent gray/white arithmetic is **1.5579550563651179:1**, below the 3:1 essential non-text target. The frozen criteria require per-use decisions, so an exact token path does not make this a suitable sole authored focus binding. No rendered failure is claimed; this is a deficient recommendation. Runs 1/2 choose primary-action focus, and run 1 explicitly warns against this gray on white.
+
+Separately, run 3 has four `edit` errors at event lines 9325, 9326, 9436 and 9437. Every error says the exact old text could not be found, including whitespace/newlines. The agent eventually edits both files, diagnoses and repairs invalid JSON with the default checker, then obtains final `passed:true` and a clean CI check. This recovery does not erase strict failure. Its Markdown also retains a literal `\n` between two state-table rows, a formatting limitation separate from the factual/color result. None of these outputs was repaired by the reviewer.
+
+## Scoped verification that passed
+
+- All three produce both exact files, every required top-level field, English actual control/state/help/fallback copy, `language: "en"`, and the preserved `T-104`, `high`, `pending`, `E_INVALID_PRIORITY`. Both current-task acceptance flags are literally false. No user study or current host paint is claimed.
+- All requested queue actions have useful mechanisms, fallbacks and next checks. Each includes tools/text, bounded terminal elicitation, ordinary VS Code webviews, optional inline MCP Apps and conditional canvas. The recommendations keep privileged work in extension/server code, Explain/export bounded to selection, and file bytes/delivery distinct from a resource URI.
+- State plans separate server business values/revisions from client selection, drafts and preferences. Reconnect/refetch, stale Save rejection, cancellation, last-successful snapshots and conditional persistence are explicit. A disposed webview is not presented as a durable business database.
+- The previous MCP Apps CSP metadata transfer into an ordinary webview does not recur: metadata names are scoped to the MCP App route, while ordinary webviews use script permissions, narrow nonce CSP, message validation and disposal. Copilot Chat signed-in paint remains separate from ordinary extension-host checks. No output excludes direct IDE MCP because plugin bundles are unavailable; none repeats the withdrawn executing-connection attribution. The two desktop exclusivity failures above remain significant despite these correct boundaries.
+- All three use default colorset1, keep authored iframe/webview paint separate from host chrome/terminal/native forms and accessibility overrides, and include all ten exact H IDs/canonical labels with queue-specific checks: **30/30 labels**. These remain inspection plans, not user-tested results.
+- Every declared JSON token/value binding resolves exactly in its frozen asset: **31/31**, allowing either node or `.value` paths and joined paths where explicitly provided. All three actually invoke `design_values.py`. Independent opaque sRGB arithmetic matches **19/19 explicit reported ratios**, absolute tolerance 1e-9: 6 / 8 / 5 per run. Correct arithmetic does not close run 3's omitted focus-threshold decision or certify rendered accessibility.
+- Final copied `check_reports.py` checks pass on both final files in every run: **90 official-URL checks and 27 listed historical rows**, zero findings. Complete URLs/fragments match the frozen catalog. Post-write traces show the checker runs after the final mutation and the agent inspects results. These checks validate listed rows and URLs, not omitted facts or semantic mechanism/color decisions.
+- Diagnostic repairs are retained. Run 1 first gets `passed:false` for a trailing-slash WCAG URL, corrects both artifacts and rechecks. Run 3 first diagnoses invented token paths and later malformed JSON before successful final checks; its clean final CI command follows clean default diagnostics. These diagnostic exit-0 findings are distinct from its four genuine edit-tool errors.
+- False/null instructions remain method/action-scoped and do not equate false business data with a missing value. No hidden method-specific response table is required to pass this naturalistic prompt. More explicit mappings would help implementation but are not used as an extra failure criterion.
+
+## Read surface, usage and immutable outputs
+
+All sessions read the prompt then SKILL. All read the new `report-authoring.md` plus the relevant bundled capability, assistant matrix, Codex/Copilot, distribution and usability/color references. Runs 1/2 also read chat patterns; run 1 reads evidence/probing and bridge patterns; run 3 reads report-checker source. Generated outputs were read for reconciliation. Helpers load only their own bundled palette/catalog. There are no acceptance-fixture, repository-document, sibling-skill or project-evidence reads and no network, installation, host/account/global or extra-provider action in these traces. Read calls: 14 / 12 / 15; bash calls: 5 / 7 / 10; run 3's four failed edits remain the only tool errors.
+
+Usage counters total input 164,414; output 47,618; cache read 1,203,328; reported total 1,415,360. These are counters, not cost estimates. Three fresh isolated OpenAI-backed sessions were used; no Claude/Copilot model allowance was used.
+
+| Run | `offerings/recommendation.md` SHA-256 | `offerings/recommendation.json` SHA-256 |
+| --- | --- | --- |
+| 1 | `f5257610dd00309fd73160289a2b889d8df2a6a68d23f6d78d003fa02ca34acf` | `b16c41bccf51414e703c4b699c2718f16e9dcdcd6a7875b19612a60acf3e36ab` |
+| 2 | `ecd2de1c209b681b8eb42dc462b4977b399deff7a9c859773c66f473ad9e760d` | `b7aee69a08da2e60d5eb9499aa2724b6daccc22cbb01eb77ed65ba90ede32734` |
+| 3 | `119890d6eedc344fb1c18fdade33f8439954411b644b9d2aee2b034450e969d9` | `24933d6b18c6ff7c231fa553fa88565343e3d340bc274662ce385f01d7c2ef02` |
+
+The reusable next guidance is to attach a mechanism and scope to every exclusion, reconcile every used observation against its ledger result, and make per-role contrast decisions after resolving tokens. A compact stock-desktop MCP App versus custom app-server-client comparison and an explicit safe-focus role would reduce these remaining mistakes. The frozen subject and outputs are unchanged; no further cohort or repair was run for this review.

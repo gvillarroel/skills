@@ -1,0 +1,16 @@
+{
+  "servers": {
+    "copilot_ui_study": {
+      "args": [
+        "C:\\Users\\villa\\dev\\skills\\projects\\desktop-plugin-ui\\mcp-probe\\node_modules\\tsx\\dist\\cli.mjs",
+        "C:\\Users\\villa\\dev\\skills\\projects\\desktop-plugin-ui\\mcp-probe\\live-server-copilot-20261025.ts",
+        "--stdio"
+      ],
+      "type": "stdio",
+      "env": {
+        "UI_PROBE_ARTIFACTS": "C:\\Users\\villa\\dev\\skills\\projects\\desktop-plugin-ui\\artifacts\\capability-study-20261025\\copilot\\mcp-chat-live-v2"
+      },
+      "command": "C:\\Program Files\\nodejs\\node.exe"
+    }
+  }
+}

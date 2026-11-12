@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Support queue status panel</title>
+  <style>
+    :root {
+      --brand: #9e1b32;
+      --brand-dark: #6d1222;
+      --text: #333e48;
+      --secondary: #696969;
+      --page: #f7f7f7;
+      --surface: #ffffff;
+      --line: #696969;
+      --light-line: #cfcfcf;
+      --selected: #ffccd5;
+      --error: #e8002a;
+      --neutral-message: #e7e7e7;
+      --disabled: #cfcfcf;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-width: 320px;
+      background: var(--page);
+      color: var(--text);
+      font-family: 'Open Sans', Arial, sans-serif;
+      line-height: 1.45;
+    }
+    button, input, select { font: inherit; }
+    button, select, input { border-radius: 6px; }
+    button {
+      border: 1px solid var(--brand);
+      background: var(--brand);
+      color: var(--surface);
+      cursor: pointer;
+      min-height: 44px;
+      padding: 0.65rem 0.9rem;
+      font-weight: 700;
+    }
+    button:hover { background: var(--brand-dark); border-color: var(--brand-dark); }
+    button.secondary { background: var(--surface); color: var(--brand); border-color: var(--brand); }
+    button.secondary:hover { background: var(--selected); color: var(--brand-dark); border-color: var(--brand-dark); }
+    button.tertiary { background: transparent; color: var(--brand); border-color: transparent; text-decoration: underline; }
+    button:disabled { background: var(--disabled); border-color: var(--disabled); color: var(--text); cursor: not-allowed; }
+    :focus-visible { outline: 3px solid var(--brand); outline-offset: 3px; }
+
+    .page { padding: 1rem; }
+    .panel {
+      width: min(100%, 900px);
+      margin: 0 auto;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .panel-header { padding: 1.25rem 1.25rem 0.75rem; border-bottom: 1px solid var(--light-line); }
+    h1 { margin: 0; font-size: clamp(1.35rem, 3vw, 1.8rem); }
+    h2 { margin: 0; font-size: 1rem; }
+    .subtitle, .helper, .meta { color: var(--secondary); }
+    .subtitle { margin: 0.35rem 0 0; }
+    .content { padding: 1.25rem; }
+    .toolbar, .actions, .edit-actions, .fixture-actions { display: flex; flex-wrap: wrap; gap: 0.65rem; align-items: end; }
+    .toolbar { justify-content: space-between; margin-bottom: 1rem; }
+    .field { display: grid; gap: 0.35rem; flex: 1 1 260px; }
+    label { font-weight: 700; }
+    input, select {
+      min-height: 44px;
+      border: 1px solid var(--line);
+      background: var(--surface);
+      color: var(--text);
+      padding: 0.6rem 0.7rem;
+    }
+    .helper { margin: 0; font-size: 0.9rem; }
+    .status {
+      min-height: 3rem;
+      margin: 0 0 1rem;
+      padding: 0.75rem 0.9rem;
+      border-left: 4px solid var(--secondary);
+      background: var(--neutral-message);
+      color: var(--text);
+    }
+    .status[hidden] { display: none; }
+    .status.error { border-left-color: var(--error); }
+    .status.success { border-left-color: var(--brand); }
+    .status.busy { border-left-color: var(--brand); }
+    .queue-layout { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(250px, 0.75fr); gap: 1rem; }
+    .ticket-list { display: grid; gap: 0.65rem; margin: 0; padding: 0; list-style: none; }
+    .ticket-row {
+      width: 100%;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 0.75rem;
+      align-items: center;
+      text-align: left;
+      background: var(--surface);
+      color: var(--text);
+      border-color: var(--line);
+      font-weight: 400;
+    }
+    .ticket-row[aria-pressed="true"] .meta { color: var(--text); }
+    .ticket-row:hover { background: var(--selected); border-color: var(--brand); color: var(--text); }
+    .ticket-row[aria-pressed="true"] { background: var(--selected); border: 2px solid var(--brand); padding: calc(0.65rem - 1px) calc(0.9rem - 1px); }
+    .ticket-id { font-weight: 700; color: var(--brand); }
+    .ticket-title { font-weight: 700; }
+    .priority-pill { border: 1px solid var(--line); border-radius: 999px; padding: 0.2rem 0.5rem; white-space: nowrap; font-size: 0.84rem; }
+    .empty { padding: 1rem; border: 1px dashed var(--line); text-align: center; }
+    .empty p { margin-top: 0; }
+    .editor { border: 1px solid var(--line); border-radius: 8px; padding: 1rem; background: var(--page); }
+    .editor h2 { margin-bottom: 0.5rem; }
+    .editor .meta { margin: 0 0 1rem; }
+    .edit-actions { margin-top: 0.9rem; align-items: center; }
+    .fixture {
+      margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid var(--light-line);
+    }
+    .fixture summary { cursor: pointer; font-weight: 700; }
+    .fixture-body { display: grid; gap: 0.7rem; padding-top: 0.75rem; }
+    .fixture-note { margin: 0; color: var(--secondary); font-size: 0.9rem; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+    @media (max-width: 680px) {
+      .page { padding: 0.5rem; }
+      .content, .panel-header { padding: 1rem; }
+      .queue-layout { grid-template-columns: 1fr; }
+      .toolbar { align-items: stretch; }
+      .toolbar > button { width: 100%; }
+      .ticket-row { grid-template-columns: auto 1fr; }
+      .priority-pill { grid-column: 2; justify-self: start; }
+    }
+
+    /* Descriptions do not intercept actions; reveal without composited paint. */
+    .tooltip-wrap { position: relative; display: inline-flex; max-width: 100%; }
+    .tooltip {
+      position: absolute; z-index: 2; right: 0; left: auto;
+      bottom: calc(100% + 8px); width: 220px; max-width: calc(100vw - 32px);
+      padding: 8px 10px; border-radius: 5px;
+      background: var(--text); color: var(--surface); font-size: .85rem;
+      visibility: hidden; pointer-events: none;
+    }
+    .tooltip-wrap:hover .tooltip, .tooltip-wrap:focus-within .tooltip { visibility: visible; }
+    .tooltip-wrap.dismissed .tooltip { visibility: hidden; }
+    @media (max-width: 680px) { .tooltip { left: 0; right: auto; } }
+
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="panel" aria-labelledby="panel-heading" aria-describedby="panel-help">
+      <header class="panel-header">
+        <h1 id="panel-heading">Support queue</h1>
+        <p id="panel-help" class="subtitle">Search requests, select one, and stage a priority change before saving.</p>
+      </header>
+      <div class="content">
+        <div class="toolbar">
+          <div class="field">
+            <label for="search">Search requests</label>
+            <input id="search" type="search" placeholder="Type an ID or subject" autocomplete="off" aria-describedby="search-help">
+            <p id="search-help" class="helper">Search by ticket ID or subject. Results update as you type.</p>
+          </div>
+          <button id="refresh" type="button">Refresh queue</button>
+        </div>
+
+        <div id="status" class="status" role="status" aria-live="polite" hidden></div>
+
+        <div class="queue-layout">
+          <section aria-labelledby="results-heading">
+            <h2 id="results-heading">Requests</h2>
+            <p id="result-count" class="meta" aria-live="polite"></p>
+            <ul id="ticket-list" class="ticket-list" aria-label="Support requests"></ul>
+            <div id="empty-state" class="empty" hidden>
+              <p><strong>No requests match your search.</strong></p>
+              <p class="helper">Try a different ID or subject, or clear the search to see the full queue.</p>
+              <button id="clear-search" class="secondary" type="button">Clear search</button>
+            </div>
+          </section>
+
+          <section id="editor" class="editor" aria-labelledby="editor-heading" aria-disabled="true">
+            <h2 id="editor-heading">Edit priority</h2>
+            <p id="selection-summary" class="meta">Select a request to edit its priority.</p>
+            <div class="field">
+              <label for="priority">Priority</label>
+              <select id="priority" aria-describedby="priority-help" disabled>
+                <option value="">Choose a priority</option>
+                <option value="high">High</option>
+                <option value="medium">Medium</option>
+                <option value="low">Low</option>
+              </select>
+              <p id="priority-help" class="helper">This is a staged change. Save to commit it, or cancel to restore the current value.</p>
+            </div>
+            <div class="edit-actions">
+              <button id="save" type="button" disabled>Save priority</button>
+              <button id="cancel" class="secondary" type="button" disabled>Cancel edit</button>
+              <button id="explain" class="tertiary" type="button" disabled>Explain selection</button>
+            </div>
+          </section>
+        </div>
+
+        <div class="actions" style="margin-top: 1rem;">
+          <span class="tooltip-wrap">
+            <button id="export" class="secondary" type="button" aria-describedby="export-tip">Export CSV</button>
+            <span id="export-tip" class="tooltip" role="tooltip">Exports only the current selection.</span>
+          </span>
+        </div>
+
+        <details class="fixture">
+          <summary>Preview state controls</summary>
+          <div class="fixture-body">
+            <p class="fixture-note">These local controls make service states reachable without an assistant or network connection.</p>
+            <div class="fixture-actions">
+              <button id="invalid" class="secondary" type="button">Try invalid save</button>
+              <button id="cancel-demo" class="secondary" type="button">Stage then cancel</button>
+              <button id="failure" class="secondary" type="button">Refresh with failure</button>
+              <button id="empty-demo" class="secondary" type="button">Show empty result</button>
+              <button id="reset" class="tertiary" type="button">Reset preview</button>
+            </div>
+          </div>
+        </details>
+
+        <p id="fallback" class="helper" style="margin-top: 1rem;">Text fallback: Support queue contains 3 requests. Select a request to view or stage its priority; saving is local to this preview.</p>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    (() => {
+      const initialTickets = [
+        { id: 'T-104', title: 'Cannot access my account', priority: 'high', status: 'pending' },
+        { id: 'T-105', title: 'Billing address needs an update', priority: 'medium', status: 'pending' },
+        { id: 'T-106', title: 'Export request is missing a column', priority: 'low', status: 'pending' }
+      ];
+      const priorityLabels = { high: 'High', medium: 'Medium', low: 'Low' };
+      const state = { tickets: structuredClone(initialTickets), selectedId: null, draft: '', query: '', failNextRefresh: false };
+      const $ = (id) => document.getElementById(id);
+      const search = $('search'), list = $('ticket-list'), empty = $('empty-state'), status = $('status');
+      const priority = $('priority'), save = $('save'), cancel = $('cancel'), explain = $('explain');
+
+      function setStatus(message, kind = 'neutral') {
+        status.textContent = message;
+        status.className = `status ${kind}`;
+        status.hidden = !message;
+      }
+      function selectedTicket() { return state.tickets.find((ticket) => ticket.id === state.selectedId) || null; }
+      function filteredTickets() {
+        const term = state.query.trim().toLowerCase();
+        return state.tickets.filter((ticket) => !term || `${ticket.id} ${ticket.title}`.toLowerCase().includes(term));
+      }
+      function render() {
+        const visible = filteredTickets();
+        list.replaceChildren();
+        $('result-count').textContent = `${visible.length} request${visible.length === 1 ? '' : 's'} shown`;
+        empty.hidden = visible.length !== 0;
+        list.hidden = visible.length === 0;
+        visible.forEach((ticket) => {
+          const item = document.createElement('li');
+          const button = document.createElement('button');
+          button.type = 'button';
+          button.className = 'ticket-row';
+          button.dataset.id = ticket.id;
+          button.setAttribute('aria-pressed', String(ticket.id === state.selectedId));
+          button.setAttribute('aria-label', `${ticket.id}, ${ticket.title}, priority ${priorityLabels[ticket.priority]}, status pending`);
+          button.innerHTML = `<span class="ticket-id">${ticket.id}</span><span><span class="ticket-title">${ticket.title}</span><br><span class="meta">Status: Pending</span></span><span class="priority-pill">${priorityLabels[ticket.priority]}</span>`;
+          button.addEventListener('click', () => selectTicket(ticket.id));
+          item.append(button); list.append(item);
+        });
+        const ticket = selectedTicket();
+        $('editor').setAttribute('aria-disabled', String(!ticket));
+        $('selection-summary').textContent = ticket ? `${ticket.id}: ${ticket.title}` : 'Select a request to edit its priority.';
+        priority.disabled = !ticket;
+        save.disabled = !ticket;
+        cancel.disabled = !ticket;
+        explain.disabled = !ticket;
+        if (ticket && document.activeElement !== priority) priority.value = state.draft || ticket.priority;
+        $('fallback').textContent = visible.length ? `Text fallback: Support queue contains ${visible.length} visible request${visible.length === 1 ? '' : 's'}. Select a request to view or stage its priority; saving is local to this preview.` : 'Text fallback: No requests match the current search. Clear the search to restore the queue.';
+      }
+      function selectTicket(id) {
+        state.selectedId = id;
+        const ticket = selectedTicket();
+        state.draft = ticket ? ticket.priority : '';
+        setStatus(`Selected ${id}. Priority is ready to edit.`);
+        render();
+        priority.focus();
+      }
+      function savePriority() {
+        const ticket = selectedTicket();
+        if (!ticket) return;
+        if (!['high', 'medium', 'low'].includes(state.draft)) {
+          setStatus('Choose a valid priority before saving.', 'error');
+          priority.focus();
+          return;
+        }
+        ticket.priority = state.draft;
+        setStatus(`Priority saved for ${ticket.id}.`, 'success');
+        render();
+      }
+      function cancelEdit() {
+        const ticket = selectedTicket();
+        if (!ticket) return;
+        state.draft = ticket.priority;
+        priority.value = ticket.priority;
+        setStatus('Edit cancelled; no changes were saved.');
+        render();
+        priority.focus();
+      }
+      function refreshQueue() {
+        const button = $('refresh');
+        button.disabled = true;
+        setStatus('Updating the queue…', 'busy');
+        window.setTimeout(() => {
+          button.disabled = false;
+          if (state.failNextRefresh) {
+            state.failNextRefresh = false;
+            setStatus('Unable to update the queue. Try again.', 'error');
+            return;
+          }
+          setStatus('Queue refreshed successfully.', 'success');
+          render();
+        }, 550);
+      }
+      function showInvalid() {
+        if (!state.selectedId) selectTicket(state.tickets[0].id);
+        state.draft = '';
+        priority.value = '';
+        setStatus('Draft priority is invalid. Choose High, Medium, or Low.', 'error');
+        priority.focus();
+      }
+      function stageThenCancel() {
+        if (!state.selectedId) selectTicket(state.tickets[0].id);
+        const ticket = selectedTicket();
+        const next = ticket.priority === 'high' ? 'low' : 'high';
+        state.draft = next;
+        priority.value = next;
+        setStatus(`Drafted ${priorityLabels[next]} for ${ticket.id}; choose Cancel edit to discard it.`);
+        priority.focus();
+      }
+      function explainSelection() {
+        const ticket = selectedTicket();
+        if (ticket) setStatus(`${ticket.id} is currently ${priorityLabels[ticket.priority]} priority with a Pending status.`, 'success');
+      }
+      function exportSelection() {
+        const ticket = selectedTicket();
+        if (!ticket) { setStatus('Select a request before exporting.', 'error'); return; }
+        const csv = `id,title,priority,status\n${ticket.id},"${ticket.title}",${ticket.priority},${ticket.status}\n`;
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(new Blob([csv], { type: 'text/csv' }));
+        link.download = `${ticket.id}-support-queue.csv`;
+        link.click();
+        URL.revokeObjectURL(link.href);
+        setStatus(`CSV prepared for ${ticket.id}.`, 'success');
+      }
+      search.addEventListener('input', () => { state.query = search.value; render(); });
+      priority.addEventListener('change', () => { state.draft = priority.value; });
+      $('refresh').addEventListener('click', refreshQueue);
+      save.addEventListener('click', savePriority);
+      cancel.addEventListener('click', cancelEdit);
+      explain.addEventListener('click', explainSelection);
+      $('export').addEventListener('click', exportSelection);
+      $('clear-search').addEventListener('click', () => { search.value = ''; state.query = ''; render(); search.focus(); });
+      $('invalid').addEventListener('click', showInvalid);
+      $('cancel-demo').addEventListener('click', stageThenCancel);
+      $('failure').addEventListener('click', () => { state.failNextRefresh = true; refreshQueue(); });
+      $('empty-demo').addEventListener('click', () => { search.value = 'no-match-fixture'; state.query = search.value; setStatus('Empty result shown.'); render(); search.focus(); });
+      $('reset').addEventListener('click', () => { state.tickets = structuredClone(initialTickets); state.selectedId = null; state.draft = ''; state.query = ''; state.failNextRefresh = false; search.value = ''; setStatus('Preview reset.'); render(); });
+      render();
+    })();
+  </script>
+
+  <script>
+    document.querySelectorAll('.tooltip-wrap').forEach(wrap => {
+      const place = () => {
+        const tooltip = wrap.querySelector('.tooltip');
+        tooltip.style.transform = '';
+        const bounds = tooltip.getBoundingClientRect();
+        const shift = Math.max(16 - bounds.left, Math.min(0, innerWidth - 16 - bounds.right));
+        tooltip.style.transform = `translateX(${shift}px)`;
+      };
+      wrap.addEventListener('pointerenter', () => { wrap.classList.remove('dismissed'); place(); });
+      wrap.addEventListener('focusin', () => { wrap.classList.remove('dismissed'); place(); });
+      window.addEventListener('resize', place);
+      wrap.addEventListener('keydown', event => {
+        if (event.key === 'Escape') {
+          wrap.classList.add('dismissed');
+          event.stopPropagation();
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

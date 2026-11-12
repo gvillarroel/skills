@@ -6,6 +6,7 @@
 - [Time series and gaps](#time-series-gaps-and-mixed-marks)
 - [Categories and a matrix](#categories-and-a-matrix)
 - [Facets](#facets)
+- [Sankey adapter identities](#sankey-adapter-identities)
 - [Visible notes](#visible-notes)
 - [Style and layout](#style-and-layout-decisions)
 
@@ -109,6 +110,22 @@ positive pixel integers. Use compatible
 row-aligned channels so subsetting by facet remains valid. `FacetChart` has
 display/export/memory methods but no `append`, `pick`, or `select_range` methods.
 
+## Sankey adapter identities
+
+For the deterministic connected adapter's `sankey` preset, nodes are ordered
+label strings and each link is `[sourceLabel, targetLabel, value]`:
+
+```json
+{"preset":"sankey","data":{"nodes":["Orders","Payments","Events"],"links":[["Orders","Payments",920],["Orders","Events",280]]}}
+```
+
+Numeric source/target indices do not identify those labels in this adapter.
+Preserve exact node names and reject unresolved endpoints. This is the JSON
+adapter contract, not a claim about every native XY factory signature.
+Use a Sankey for quantitative flow with meaningful units/accounting. A general
+service dependency graph can fan out or retry and should not imply conserved
+flow; use a directed graph or relationship table for that question.
+
 ## Visible notes
 
 Use `xy.text(x, y, value, ...)` as a chart child for a short data-coordinate
@@ -128,6 +145,14 @@ which extra fields the installed renderer actually retains before promising
 per-row metadata in hover output.
 
 ## Style and layout decisions
+
+Inspect legend placement against meaningful endpoints and objective crossings.
+For an upward trend whose final value occupies the upper-right corner, a
+default upper-right legend can obscure the result. XY 0.0.8 supports
+`xy.legend(loc="lower right")`; in the connected JSON adapter use a legend
+component with `kwargs: {"loc":"lower right"}`. Choose a genuinely empty region
+for the actual data and inspect the exported pixels. Keep the final value and
+threshold visible; a successful render does not prove the legend is clear.
 
 Use [the colorset workflow](colorsets.md), defaulting to colorset1 and selecting
 colorset2 for an explicit multicolor request. The examples above illustrate API

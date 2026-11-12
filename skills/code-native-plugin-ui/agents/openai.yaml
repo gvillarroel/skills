@@ -1,0 +1,4 @@
+interface:
+  display_name: "Claude Code Plugin UI"
+  short_description: "Build native Claude Code plugin interactions"
+  default_prompt: "Use $code-native-plugin-ui to build and validate a clear interface for its supported host, with readable graphs, charts, linked state, and honest fallbacks when needed."

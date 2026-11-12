@@ -21,7 +21,7 @@ the package and API facts. Recheck the requested host's current contract.
 | Claude Desktop ordinary Chat | One local stdio MCP server with useful text/structured tools | An MCP Apps HTML resource for interactions; MCPB for installation | [Chat deployment](distribution.md), [chat patterns](chat-patterns.md), [bridge](bridge-patterns.md) |
 | Claude Desktop Code tab / Claude Code terminal | A Claude Code plugin with a native command or skill | A Mod with supported native controls; MCP only for a separate tool service | [Native patterns](native-patterns.md), [surface limits](claude-host-limits.md) |
 | ChatGPT Desktop local thread | Portable OpenAI plugin with a packaged stdio MCP server, when tools are needed | MCP Apps UI and documented OpenAI extensions | [ChatGPT](chatgpt-limits.md), [bridge](bridge-patterns.md) |
-| Codex desktop / CLI | A supported plugin bundle or direct MCP configuration for the requested workflow | UI only after checking the actual frontend; an owned frontend only when requested | [Current offerings](capability-offerings.md), [Codex](codex-limits.md) |
+| Codex desktop / CLI | A supported plugin bundle or direct MCP configuration for the requested workflow | Check the actual frontend; justify a scoped browser preview or owned client by the task, keeping deployment within authorization | [Current offerings](capability-offerings.md), [Codex](codex-limits.md) |
 | Pi | A local TypeScript extension with a command and native terminal UI | A model-facing tool only when the agent must invoke the operation | [Pi extensions](pi-extensions.md) |
 
 Claude Desktop Chat and its Code tab use different extension runtimes. ChatGPT
@@ -35,6 +35,10 @@ For a plan spanning several hosts, start with this reference's route table and
 packaging sections. Read a deeper host or pattern reference only to resolve a
 specific API, interaction or support question; do not load every catalog merely
 because the plan names several products.
+
+Use [efficient delivery](efficient-delivery.md) for host presentation defaults,
+predefined versus generated UI and shared action contracts; reuse its decision
+guide instead of introducing a universal renderer or one application per host.
 
 Define the domain logic, draft/commit authority, state transitions and Nielsen
 review once. Give each host a short adapter record with required files,

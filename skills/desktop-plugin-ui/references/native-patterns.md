@@ -1,6 +1,8 @@
 # Native Claude Code Mod patterns
 
-Contents: [Panes](#claude-ui-native-pane), [input](#claude-ui-native-input),
+## Contents
+
+[Panes](#claude-ui-native-pane), [input](#claude-ui-native-input),
 [preview](#claude-ui-native-preview), [actions](#claude-ui-native-actions),
 [lifecycle](#claude-ui-native-lifecycle), [Client](#claude-ui-native-client).
 
@@ -14,6 +16,29 @@ includes authentic registration/execution contracts and native tests; keep
 Evidence: 2026-10-24, official Claude Code **2.1.302**, strict plugin validation and a **34/34 baseline** of native engine tests. The [expanded host-limits cohort](claude-host-limits.md) passes **57/57**, retaining all 34 baseline cases. Tests exercise engine trees, dispatch, and Client execution; installed paint, account installation, clipboard, process launching, and cloud delivery remain unverified.
 
 Use [the reference](https://code.claude.com/docs/en/plugins/mods/reference), [interface guide](https://code.claude.com/docs/en/plugins/mods/interface), [API guide](https://code.claude.com/docs/en/plugins/mods/api), and [test kit](https://code.claude.com/docs/en/plugins/mods/test). Prefer the installed build's declarations over older public snapshots.
+
+## Compose with other native UI
+
+For cross-host choices use [UI composition](ui-composition.md); for visual
+critique use [visual review](visual-review.md). The following are documented
+contracts rechecked on 2026-10-31, not new paint or native-test results.
+
+- `AbovePrompt` is shared. To retain later mods' content, include
+  `await next(e)` in your returned tree; replacing it deliberately hides them.
+- Users can collapse the band, disabling its actions. The mod cannot observe
+  or undo that collapse. Keep required decisions reachable through a command
+  or another supported surface, with a useful transcript fallback.
+- Use `holdToasts: true` for a temporary decision dialog; omit it on a
+  persistent inspector so other notifications remain available.
+- Keep hotkeys unique within a drawing: the later button wins a collision.
+  Check the actual surface before promising hotkeys or focus behavior.
+
+These rules come from the [interface guide](https://code.claude.com/docs/en/plugins/mods/interface#pick-where-to-draw)
+and [element reference](https://code.claude.com/docs/en/plugins/mods/reference#elements).
+For shared-site changes, test with a second small mod: preserve its content,
+collapse/reopen the band, exercise conflicting keys, and verify notifications
+return after the dialog closes. Record native-engine and real-host checks
+separately; a composed tree alone does not establish visible coexistence.
 
 ## claude-ui-native-pane
 

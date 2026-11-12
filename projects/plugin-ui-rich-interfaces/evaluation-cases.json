@@ -1,0 +1,203 @@
+[
+  {
+    "skill": "desktop-chat-plugin-ui",
+    "case": "contract",
+    "prompt": "evaluations/pi-prompts/rich-ui-desktop-chat-plugin-ui-contract.md",
+    "expected": [
+      "deliverables/design.json",
+      "deliverables/route.md"
+    ]
+  },
+  {
+    "skill": "desktop-chat-plugin-ui",
+    "case": "naturalistic",
+    "prompt": "evaluations/pi-prompts/rich-ui-desktop-chat-plugin-ui-naturalistic.md",
+    "expected": [
+      "deliverables/workspace.html",
+      "deliverables/review.json"
+    ]
+  },
+  {
+    "skill": "desktop-chat-plugin-ui",
+    "case": "boundary-generalization",
+    "prompt": "evaluations/pi-prompts/rich-ui-desktop-chat-plugin-ui-boundary-generalization.md",
+    "expected": [
+      "deliverables/blueprint.json"
+    ]
+  },
+  {
+    "skill": "code-native-plugin-ui",
+    "case": "contract",
+    "prompt": "evaluations/pi-prompts/rich-ui-code-native-plugin-ui-contract.md",
+    "expected": [
+      "deliverables/design.json",
+      "deliverables/route.md"
+    ]
+  },
+  {
+    "skill": "code-native-plugin-ui",
+    "case": "naturalistic",
+    "prompt": "evaluations/pi-prompts/rich-ui-code-native-plugin-ui-naturalistic.md",
+    "expected": [
+      "deliverables/view.ts",
+      "deliverables/review.json"
+    ]
+  },
+  {
+    "skill": "code-native-plugin-ui",
+    "case": "boundary-generalization",
+    "prompt": "evaluations/pi-prompts/rich-ui-code-native-plugin-ui-boundary-generalization.md",
+    "expected": [
+      "deliverables/blueprint.json"
+    ]
+  },
+  {
+    "skill": "pi-extension-ui",
+    "case": "contract",
+    "prompt": "evaluations/pi-prompts/rich-ui-pi-extension-ui-contract.md",
+    "expected": [
+      "deliverables/design.json",
+      "deliverables/route.md"
+    ]
+  },
+  {
+    "skill": "pi-extension-ui",
+    "case": "naturalistic",
+    "prompt": "evaluations/pi-prompts/rich-ui-pi-extension-ui-naturalistic.md",
+    "expected": [
+      "deliverables/view.ts",
+      "deliverables/review.json"
+    ]
+  },
+  {
+    "skill": "pi-extension-ui",
+    "case": "boundary-generalization",
+    "prompt": "evaluations/pi-prompts/rich-ui-pi-extension-ui-boundary-generalization.md",
+    "expected": [
+      "deliverables/blueprint.json"
+    ]
+  },
+  {
+    "skill": "codex-plugin-ui",
+    "case": "contract",
+    "prompt": "evaluations/pi-prompts/rich-ui-codex-plugin-ui-contract.md",
+    "expected": [
+      "deliverables/design.json",
+      "deliverables/route.md"
+    ]
+  },
+  {
+    "skill": "codex-plugin-ui",
+    "case": "naturalistic",
+    "prompt": "evaluations/pi-prompts/rich-ui-codex-plugin-ui-naturalistic.md",
+    "expected": [
+      "deliverables/workspace.html",
+      "deliverables/review.json"
+    ]
+  },
+  {
+    "skill": "codex-plugin-ui",
+    "case": "boundary-generalization",
+    "prompt": "evaluations/pi-prompts/rich-ui-codex-plugin-ui-boundary-generalization.md",
+    "expected": [
+      "deliverables/blueprint.json"
+    ]
+  },
+  {
+    "skill": "chatgpt-desktop-plugin-ui",
+    "case": "contract",
+    "prompt": "evaluations/pi-prompts/rich-ui-chatgpt-desktop-plugin-ui-contract.md",
+    "expected": [
+      "deliverables/design.json",
+      "deliverables/route.md"
+    ]
+  },
+  {
+    "skill": "chatgpt-desktop-plugin-ui",
+    "case": "naturalistic",
+    "prompt": "evaluations/pi-prompts/rich-ui-chatgpt-desktop-plugin-ui-naturalistic.md",
+    "expected": [
+      "deliverables/workspace.html",
+      "deliverables/review.json"
+    ]
+  },
+  {
+    "skill": "chatgpt-desktop-plugin-ui",
+    "case": "boundary-generalization",
+    "prompt": "evaluations/pi-prompts/rich-ui-chatgpt-desktop-plugin-ui-boundary-generalization.md",
+    "expected": [
+      "deliverables/blueprint.json"
+    ]
+  },
+  {
+    "skill": "gemini-enterprise-ui",
+    "case": "contract",
+    "prompt": "evaluations/pi-prompts/rich-ui-gemini-enterprise-ui-contract.md",
+    "expected": [
+      "deliverables/design.json",
+      "deliverables/route.md"
+    ]
+  },
+  {
+    "skill": "gemini-enterprise-ui",
+    "case": "naturalistic",
+    "prompt": "evaluations/pi-prompts/rich-ui-gemini-enterprise-ui-naturalistic.md",
+    "expected": [
+      "deliverables/interface.json",
+      "deliverables/review.json"
+    ]
+  },
+  {
+    "skill": "gemini-enterprise-ui",
+    "case": "boundary-generalization",
+    "prompt": "evaluations/pi-prompts/rich-ui-gemini-enterprise-ui-boundary-generalization.md",
+    "expected": [
+      "deliverables/blueprint.json"
+    ]
+  },
+  {
+    "skill": "desktop-plugin-ui",
+    "case": "contract",
+    "prompt": "evaluations/pi-prompts/rich-ui-desktop-plugin-ui-contract.md",
+    "expected": [
+      "deliverables/design.json",
+      "deliverables/route.md"
+    ]
+  },
+  {
+    "skill": "desktop-plugin-ui",
+    "case": "naturalistic",
+    "prompt": "evaluations/pi-prompts/rich-ui-desktop-plugin-ui-naturalistic.md",
+    "expected": [
+      "deliverables/blueprint.json",
+      "deliverables/review.json"
+    ]
+  },
+  {
+    "skill": "desktop-plugin-ui",
+    "case": "boundary-generalization",
+    "prompt": "evaluations/pi-prompts/rich-ui-desktop-plugin-ui-boundary-generalization.md",
+    "expected": [
+      "deliverables/blueprint.json"
+    ]
+  },
+  {
+    "skill": "reflex-xy",
+    "case": "contract",
+    "prompt": "evaluations/pi-prompts/rich-ui-reflex-xy-contract.md",
+    "expected": [
+      "deliverables/design.json",
+      "deliverables/route.md"
+    ]
+  },
+  {
+    "skill": "reflex-xy",
+    "case": "naturalistic",
+    "prompt": "evaluations/pi-prompts/rich-ui-reflex-xy-naturalistic.md",
+    "expected": [
+      "deliverables/flow.json",
+      "deliverables/latency.json",
+      "deliverables/review.json"
+    ]
+  }
+]

@@ -1,0 +1,14 @@
+{
+  "name": "desktop-plugin-ui-research-probe",
+  "private": true,
+  "type": "module",
+  "scripts": {"probe": "tsx probe.ts"},
+  "dependencies": {
+    "@modelcontextprotocol/ext-apps": "1.7.5",
+    "@modelcontextprotocol/sdk": "1.32.1",
+    "esbuild": "0.28.2",
+    "playwright": "1.64.1",
+    "tsx": "4.23.15",
+    "zod": "4.6.7"
+  }
+}

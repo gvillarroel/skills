@@ -1,0 +1,17 @@
+[
+  {"version":"v0.9","createSurface":{"surfaceId":"metric-inspector","catalogId":"https://www.gstatic.com/vertexaisearch/a2ui/v0_9/gemini_enterprise_composite_catalog.json"}},
+  {"version":"v0.9","updateComponents":{"surfaceId":"metric-inspector","components":[
+    {"id":"root","component":"MaterialColumn","children":["heading","finding","chart","values"]},
+    {"id":"heading","component":"MaterialText","text":"Synthetic workflow latency"},
+    {"id":"finding","component":"MaterialText","text":"The latest observation is 180 ms, above the 150 ms objective. Hours are UTC."},
+    {"id":"chart","component":"VegaChart","spec":{"path":"/chart"},"height":300},
+    {"id":"values","component":"MaterialTable","caption":"Exact synthetic observations","ariaLabel":"Hourly latency and objective","columns":[{"header":"Hour (UTC)","field":"hour"},{"header":"Latency (ms)","field":"latency"},{"header":"Objective (ms)","field":"objective"}],"rows":{"path":"/rows"}}
+  ]}},
+  {"version":"v0.9","updateDataModel":{"surfaceId":"metric-inspector","path":"/","value":{
+    "rows":[{"hour":"00:00","latency":"90","objective":"150"},{"hour":"12:00","latency":"130","objective":"150"},{"hour":"20:00","latency":"180","objective":"150"}],
+    "chart":{"$schema":"https://vega.github.io/schema/vega-lite/v5.json","description":"Synthetic latency in milliseconds by UTC hour; dashed objective at 150 ms.","width":"container","height":240,"data":{"values":[{"hour":0,"latency":90},{"hour":12,"latency":130},{"hour":20,"latency":180}]},"layer":[
+      {"mark":{"type":"line","point":true,"color":"#9e1b32"},"encoding":{"x":{"field":"hour","type":"quantitative","title":"Hour (UTC)","scale":{"domain":[0,20]}},"y":{"field":"latency","type":"quantitative","title":"Latency (ms)","scale":{"domain":[0,200]}}}},
+      {"data":{"values":[{"objective":150}]},"mark":{"type":"rule","color":"#696969","strokeDash":[4,4]},"encoding":{"y":{"field":"objective","type":"quantitative"}}}
+    ]}
+  }}}
+]

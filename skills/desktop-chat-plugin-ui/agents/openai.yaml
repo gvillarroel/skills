@@ -1,0 +1,4 @@
+interface:
+  display_name: "Claude Desktop Plugin UI"
+  short_description: "Build Claude Desktop Chat MCP App interfaces"
+  default_prompt: "Use $desktop-chat-plugin-ui to build and validate a clear interface for its supported host, with readable graphs, charts, linked state, and honest fallbacks when needed."

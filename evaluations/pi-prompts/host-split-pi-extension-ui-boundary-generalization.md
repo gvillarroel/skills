@@ -1,0 +1,5 @@
+Use the copied skill for Pi Coding Agent. Treat `skills/pi-extension-ui/` as read-only. Write task artifacts only in this workspace outside the skill. Keep temporary state and caches task-local. Use only the supplied skill and normal local tools. Do not discover other skills or read installed host documentation, host examples, personal configuration, or any source outside this workspace. Running installed tool executables is allowed.
+
+A teammate uses ctx.hasUI to call ctx.ui.custom in RPC and confirms an edit after a newer update to the same row. They want a JSON/print fallback too. Explain the actual mode and authority boundaries and provide a concrete recovery/test plan for this report-editing workflow.
+
+Write `deliverables/recovery.md` and `deliverables/checks.json`. The JSON must have a `checks` array with records containing `layer`, `action`, `expected`, and `status`. Keep planned checks distinct from executed results. Do not run a live installation, account change, deployment, or model call to probe the target host. Use the available bundled sources; identify any current source question that remains unresolved.

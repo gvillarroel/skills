@@ -1,0 +1,364 @@
+{
+  "version": "0.0.8",
+  "spec_version": 1,
+  "default_colorset": "colorset1",
+  "colorset_policy": "Every new chart defaults to colorset1, including after a previous colorset2 chart. Use colorset2 only for an explicit user request or palette selection; category count does not change the default.",
+  "presets": [
+    "line",
+    "scatter",
+    "area",
+    "bar",
+    "grouped-bars",
+    "stacked-bars",
+    "normalized-bars",
+    "horizontal-bars",
+    "histogram",
+    "step",
+    "stairs",
+    "stem",
+    "ecdf",
+    "box",
+    "violin",
+    "error-bars",
+    "error-band",
+    "heatmap",
+    "hexbin",
+    "contour",
+    "filled-contour",
+    "segments",
+    "triangle-mesh",
+    "ribbon",
+    "sankey",
+    "funnel",
+    "polar",
+    "polar-bars",
+    "radar",
+    "pie",
+    "donut",
+    "wind-rose",
+    "annotations",
+    "facets",
+    "log-scale",
+    "animation"
+  ],
+  "factories": [
+    "area_chart",
+    "bar_chart",
+    "box_chart",
+    "chart",
+    "column_chart",
+    "contour_chart",
+    "ecdf_chart",
+    "error_band_chart",
+    "errorbar_chart",
+    "facet_chart",
+    "funnel_chart",
+    "heatmap_chart",
+    "hexbin_chart",
+    "histogram_chart",
+    "line_chart",
+    "pie_chart",
+    "polar_bar_chart",
+    "polar_chart",
+    "radar_chart",
+    "sankey_chart",
+    "scatter_chart",
+    "segments_chart",
+    "stairs_chart",
+    "stem_chart",
+    "step_chart",
+    "triangle_mesh_chart",
+    "violin_chart",
+    "wind_rose"
+  ],
+  "marks": [
+    "area",
+    "bar",
+    "box",
+    "column",
+    "contour",
+    "ecdf",
+    "error_band",
+    "errorbar",
+    "funnel",
+    "heatmap",
+    "hexbin",
+    "hist",
+    "histogram",
+    "line",
+    "ribbon",
+    "scatter",
+    "segments",
+    "stairs",
+    "stem",
+    "step",
+    "triangle_mesh",
+    "violin"
+  ],
+  "components": [
+    "animation",
+    "arrow",
+    "callout",
+    "colorbar",
+    "export_config",
+    "hline",
+    "interaction_config",
+    "label",
+    "legend",
+    "marker",
+    "modebar",
+    "r_axis",
+    "text",
+    "theme",
+    "theta_axis",
+    "threshold",
+    "threshold_zone",
+    "tooltip",
+    "vline",
+    "x_axis",
+    "x_band",
+    "y_axis",
+    "y_band"
+  ],
+  "preset_data_columns": {
+    "line": [
+      "x",
+      "y"
+    ],
+    "scatter": [
+      "x",
+      "y"
+    ],
+    "area": [
+      "x",
+      "y"
+    ],
+    "bar": [
+      "categories",
+      "values"
+    ],
+    "grouped-bars": [
+      "categories",
+      "values",
+      "series"
+    ],
+    "stacked-bars": [
+      "categories",
+      "values",
+      "series"
+    ],
+    "normalized-bars": [
+      "categories",
+      "values",
+      "series"
+    ],
+    "horizontal-bars": [
+      "categories",
+      "values"
+    ],
+    "histogram": [
+      "values"
+    ],
+    "step": [
+      "x",
+      "y"
+    ],
+    "stairs": [
+      "values",
+      "edges"
+    ],
+    "stem": [
+      "x",
+      "y"
+    ],
+    "ecdf": [
+      "values"
+    ],
+    "box": [
+      "values"
+    ],
+    "violin": [
+      "values"
+    ],
+    "error-bars": [
+      "x",
+      "center",
+      "lower",
+      "upper"
+    ],
+    "error-band": [
+      "x",
+      "center",
+      "lower",
+      "upper"
+    ],
+    "heatmap": [
+      "x",
+      "y",
+      "z"
+    ],
+    "hexbin": [
+      "x",
+      "y"
+    ],
+    "contour": [
+      "x",
+      "y",
+      "z"
+    ],
+    "filled-contour": [
+      "x",
+      "y",
+      "z"
+    ],
+    "segments": [
+      "x0",
+      "y0",
+      "x1",
+      "y1"
+    ],
+    "triangle-mesh": [
+      "x0",
+      "y0",
+      "x1",
+      "y1",
+      "x2",
+      "y2"
+    ],
+    "ribbon": [
+      "x0",
+      "x1",
+      "source_lo",
+      "source_hi",
+      "target_lo",
+      "target_hi"
+    ],
+    "sankey": [
+      "nodes",
+      "links"
+    ],
+    "funnel": [
+      "stage",
+      "value"
+    ],
+    "polar": [
+      "x",
+      "y"
+    ],
+    "polar-bars": [
+      "x",
+      "y"
+    ],
+    "radar": [
+      "categories",
+      "values"
+    ],
+    "pie": [
+      "labels",
+      "values"
+    ],
+    "donut": [
+      "labels",
+      "values"
+    ],
+    "wind-rose": [
+      "direction",
+      "speed"
+    ],
+    "annotations": [
+      "x",
+      "y"
+    ],
+    "facets": [
+      "x",
+      "y",
+      "group"
+    ],
+    "log-scale": [
+      "x",
+      "y"
+    ],
+    "animation": [
+      "x",
+      "y"
+    ]
+  },
+  "preset_contract": "Supply every listed column for a preset or omit data for labelled synthetic defaults. Grouped values are rows by series; grid z is y rows by x columns. Uncertainty lower/upper are absolute bounds. Sankey links are [source,target,value] triples; nodes are ordered labels.",
+  "generic_contract": {
+    "version": 1,
+    "factory": "allowlisted factory",
+    "args": "optional positional JSON arguments for factory-owned data",
+    "data": "optional named equal-length array columns",
+    "marks": [
+      {
+        "kind": "allowlisted mark",
+        "args": [],
+        "kwargs": {}
+      }
+    ],
+    "components": [
+      {
+        "kind": "allowlisted component",
+        "args": [],
+        "kwargs": {}
+      }
+    ],
+    "options": "public chart/factory keyword arguments; consult focused skill references",
+    "width": 960,
+    "height": 540
+  },
+  "limits": {
+    "request_bytes": 1048576,
+    "scalars": 40000,
+    "marks": 32,
+    "components": 32,
+    "width": [
+      320,
+      2000
+    ],
+    "height": [
+      240,
+      1400
+    ],
+    "facets": 24
+  },
+  "palette_tokens": [
+    "$ink",
+    "$primary",
+    "$muted",
+    "$dark",
+    "$soft",
+    "$on-ink",
+    "$series",
+    "$series:N",
+    "$ramp"
+  ],
+  "example": {
+    "version": 1,
+    "title": "Supplied trend",
+    "colorset": "colorset1",
+    "factory": "chart",
+    "marks": [
+      {
+        "kind": "line",
+        "args": [
+          [
+            1,
+            2,
+            3
+          ],
+          [
+            4,
+            7,
+            5
+          ]
+        ],
+        "kwargs": {
+          "color": "$ink",
+          "width": 2
+        }
+      }
+    ]
+  },
+  "scope": "Declarative native XY construction only; no arbitrary code, registered plugins, live Python callbacks, or source URL loading."
+}

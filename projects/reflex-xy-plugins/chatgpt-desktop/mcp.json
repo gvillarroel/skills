@@ -1,0 +1,17 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
+  "mcpServers": {
+    "xy": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["chatgpt/dist/server-bundled.js", "--stdio", "--desktop"],
+      "cwd": "./",
+      "env": {
+        "XY_RENDER_SCRIPT": "runtime/render.py",
+        "XY_SKILL_DIR": "skills/reflex-xy",
+        "PYTHONIOENCODING": "utf-8",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      }
+    }
+  }
+}

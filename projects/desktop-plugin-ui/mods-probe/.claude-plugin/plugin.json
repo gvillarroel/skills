@@ -1,0 +1,6 @@
+{
+  "name": "desktop-ui-probe",
+  "version": "0.1.0",
+  "description": "Local account-free probes of Claude Code Mod UI contracts.",
+  "author": { "name": "Local UI probe" }
+}

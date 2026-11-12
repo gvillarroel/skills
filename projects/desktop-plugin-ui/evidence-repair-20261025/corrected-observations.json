@@ -1,0 +1,132 @@
+{
+  "records": [
+    {
+      "id": "copilot-paint-not-run",
+      "claim": "Signed-in Copilot Chat painting was not tested after the user chose continuation without sign-in.",
+      "host": "GitHub Copilot in VS Code",
+      "surface": "Signed-in chat MCP App",
+      "version": "VS Code 1.143.1; Copilot Chat 0.71.0 on disk",
+      "layer": "Unperformed frontend acceptance",
+      "basis": "not-run",
+      "reason": "The user chose Continue without Copilot sign-in; no authenticated model or chat-paint action followed."
+    },
+    {
+      "id": "codex-expand-source",
+      "claim": "The inspected widget's Expand handler declares a fullscreen display-mode request.",
+      "host": "Reflex XY project adapter",
+      "surface": "Widget source handler",
+      "version": "Source inspection dated 2026-10-25; active installed build unknown",
+      "layer": "Static implementation inspection",
+      "basis": "source-inspection",
+      "source": "projects/reflex-xy-plugins/chatgpt/web/widget.ts, Expand handler; scope recorded in projects/desktop-plugin-ui/capability-study-20261025/codex/panel-followup-diagnostic.md"
+    },
+    {
+      "id": "codex-fullscreen-not-run",
+      "claim": "No agent receipt establishes execution of the fresh chart's fullscreen request.",
+      "host": "Codex desktop",
+      "surface": "Fresh chart component display-mode control",
+      "version": "Capture-specific renderer build unknown",
+      "layer": "Unperformed control acceptance",
+      "basis": "not-run",
+      "reason": "Source inspection describes the handler, while controller binding failed before any DOM/control check executed."
+    },
+    {
+      "id": "codex-binding-failed",
+      "claim": "The attempted binding of the briefly listed chart tab failed.",
+      "host": "Codex MCP Apps controller",
+      "surface": "Expanded app-tab binding",
+      "version": "Controller build unknown",
+      "layer": "Automation controller",
+      "basis": "execution",
+      "action": "Bind the returned chart tab ID 1 after a successful inventory result.",
+      "expected": "A usable tab handle for a DOM inspection.",
+      "actual": "Tab not found in browser undefined; no DOM or control check executed.",
+      "outcome": "fail"
+    },
+    {
+      "id": "codex-human-visibility",
+      "claim": "The user reported the fresh chart expanded and visible.",
+      "host": "Codex desktop",
+      "surface": "Fresh study chart",
+      "version": "Capture-specific renderer build unknown",
+      "layer": "Human-reported visibility",
+      "basis": "user-report",
+      "reporter": "User in the study conversation",
+      "reported_result": "Fresh chart expanded and visible."
+    },
+    {
+      "id": "codex-never-decline",
+      "claim": "The policy probe passed when never automatically declined the form without invoking a user callback.",
+      "host": "Codex app-server",
+      "surface": "Historical synthetic elicitation probe",
+      "version": "npm core 0.145.0 historical baseline",
+      "layer": "Backend policy response",
+      "basis": "execution",
+      "action": "Request synthetic elicitation under approval policy never.",
+      "expected": "Automatic decline with no host presentation callback.",
+      "actual": "Automatic decline with no host presentation callback.",
+      "outcome": "pass"
+    },
+    {
+      "id": "codex-never-paint",
+      "claim": "The never-policy backend probe did not test form pixels.",
+      "host": "Codex app-server",
+      "surface": "Historical synthetic elicitation probe",
+      "version": "npm core 0.145.0 historical baseline",
+      "layer": "Unperformed visual acceptance",
+      "basis": "not-run",
+      "reason": "The policy automatically declined the request; no presentation callback or visual paint check ran."
+    },
+    {
+      "id": "copilot-ready-state",
+      "claim": "The reopened workspace no longer displayed Restricted Mode but still required Copilot sign-in for models.",
+      "host": "VS Code with GitHub Copilot Chat",
+      "surface": "Task-profile paint-workspace window",
+      "version": "VS Code 1.143.1; Copilot Chat 0.71.0 on disk",
+      "layer": "Native readiness inspection",
+      "basis": "execution",
+      "action": "Inspect the reopened study workspace's visible trust and model-account controls.",
+      "expected": "Read the current trust and account controls without performing authentication.",
+      "actual": "No Restricted Mode banner; Sign In and Models, sign in to use Copilot remained visible; default permissions remained selected.",
+      "outcome": "pass"
+    }
+  ],
+  "report": {
+    "snapshot_date": "2026-10-25",
+    "findings": [
+      {
+        "message": "Skipped Copilot painting remains untested.",
+        "evidence_ids": [
+          "copilot-paint-not-run"
+        ]
+      },
+      {
+        "message": "The source-declared Expand request is distinct from an unperformed runtime control check.",
+        "evidence_ids": [
+          "codex-expand-source",
+          "codex-fullscreen-not-run"
+        ]
+      },
+      {
+        "message": "The actually attempted controller binding failed; the user visibility report remains separate.",
+        "evidence_ids": [
+          "codex-binding-failed",
+          "codex-human-visibility"
+        ]
+      },
+      {
+        "message": "Automatic decline passed its policy expectation; no form paint check ran.",
+        "evidence_ids": [
+          "codex-never-decline",
+          "codex-never-paint"
+        ]
+      }
+    ],
+    "sources": [
+      "projects/desktop-plugin-ui/capability-study-20261025/codex/panel-followup-diagnostic.md",
+      "evaluations/desktop-plugin-ui/live-followup-20261025.md"
+    ],
+    "host_acceptance_verified": false,
+    "task_empirical_tests_performed": false
+  }
+}

@@ -464,6 +464,60 @@
       ],
       "scope": "authored-colorset",
       "sourceFidelity": "Preserve explicitly identified source media/brand/evidence/exact-RGB pixels; authored frame, chrome and technical marks remain palette-controlled."
+    },
+    {
+      "skill": "desktop-chat-plugin-ui",
+      "outputs": [
+        "Claude Desktop Chat MCP Apps and optional MCPB packages",
+        "Host-scoped interaction and visual validation reports"
+      ],
+      "scope": "authored-colorset",
+      "sourceFidelity": "Use ColorSet 1 by default and ColorSet 2 only when requested for authored pixels. Preserve explicit user/source styling. Native controls and host themes retain host-owned paint; schema, protocol and source checks do not establish actual frontend pixels."
+    },
+    {
+      "skill": "code-native-plugin-ui",
+      "outputs": [
+        "Claude Code native commands and Mods",
+        "Frontend-specific terminal and Desktop Code controls"
+      ],
+      "scope": "authored-colorset",
+      "sourceFidelity": "Use ColorSet 1 by default and ColorSet 2 only when requested for authored pixels. Preserve explicit user/source styling. Native controls and host themes retain host-owned paint; schema, protocol and source checks do not establish actual frontend pixels."
+    },
+    {
+      "skill": "pi-extension-ui",
+      "outputs": [
+        "Pi TypeScript commands, dialogs and widgets",
+        "Mode-aware TUI and RPC contracts"
+      ],
+      "scope": "authored-colorset",
+      "sourceFidelity": "Use ColorSet 1 by default and ColorSet 2 only when requested for authored pixels. Preserve explicit user/source styling. Native controls and host themes retain host-owned paint; schema, protocol and source checks do not establish actual frontend pixels."
+    },
+    {
+      "skill": "codex-plugin-ui",
+      "outputs": [
+        "Codex plugin packages and MCP interactions",
+        "Owned app-server frontends and host-scoped validation"
+      ],
+      "scope": "authored-colorset",
+      "sourceFidelity": "Use ColorSet 1 by default and ColorSet 2 only when requested for authored pixels. Preserve explicit user/source styling. Native controls and host themes retain host-owned paint; schema, protocol and source checks do not establish actual frontend pixels."
+    },
+    {
+      "skill": "chatgpt-desktop-plugin-ui",
+      "outputs": [
+        "ChatGPT Desktop local and remote MCP App packages",
+        "Portable runtime and actual-host acceptance reports"
+      ],
+      "scope": "authored-colorset",
+      "sourceFidelity": "Use ColorSet 1 by default and ColorSet 2 only when requested for authored pixels. Preserve explicit user/source styling. Native controls and host themes retain host-owned paint; schema, protocol and source checks do not establish actual frontend pixels."
+    },
+    {
+      "skill": "gemini-enterprise-ui",
+      "outputs": [
+        "Versioned A2UI surfaces and A2A agent registration material",
+        "Catalog/schema checks and host-scoped validation reports"
+      ],
+      "scope": "authored-colorset",
+      "sourceFidelity": "Use ColorSet 1 by default and ColorSet 2 only when requested for authored pixels. Preserve explicit user/source styling. Native controls and host themes retain host-owned paint; schema, protocol and source checks do not establish actual frontend pixels."
     }
   ],
   "artifactChecks": [

@@ -1,0 +1,80 @@
+{
+  "passed": true,
+  "runs": [
+    {
+      "run": "20261024-desktop-ui-cross-v2-generalization-luna-1",
+      "case": "generalization",
+      "payloadSha256": "455db7f6daee26026e3c3be314406baf2f19a9e3c31c2250f09fc4d978389c05",
+      "model": "openai-codex/gpt-5.6-luna",
+      "strictPassed": true,
+      "structuralEvidencePassed": true,
+      "canonicalPatternCount": 42,
+      "selectedPatternCount": 19,
+      "artifactSha256": {
+        "handoff/restricted-surfaces.md": "865e6f8a2b2c26dd918a31e5f1a88b54afb7f44beceba361d397a8f643bf9561",
+        "handoff/recovery-plan.json": "a990346ae73658f14340072e2a449b7b5a121cf0438098d30321ec07d20b3b62"
+      },
+      "sourceCheckerPassed": true,
+      "agentCheckerCoveredArtifacts": [
+        "handoff/recovery-plan.json",
+        "handoff/restricted-surfaces.md"
+      ],
+      "findings": [],
+      "broadExclusionReviewCues": [],
+      "externalCommandReview": [],
+      "semanticReviewRequired": true
+    },
+    {
+      "run": "20261024-desktop-ui-cross-v2-generalization-luna-2",
+      "case": "generalization",
+      "payloadSha256": "455db7f6daee26026e3c3be314406baf2f19a9e3c31c2250f09fc4d978389c05",
+      "model": "openai-codex/gpt-5.6-luna",
+      "strictPassed": true,
+      "structuralEvidencePassed": true,
+      "canonicalPatternCount": 42,
+      "selectedPatternCount": 20,
+      "artifactSha256": {
+        "handoff/restricted-surfaces.md": "b3d1eae2583978b136c0e1c6a2cdd32932730a8168a6cb558d2780c77851bab0",
+        "handoff/recovery-plan.json": "794b8a4c75a31b74780f2b32f366fe5eb16f0939aec21931e186ecb032d91d2e"
+      },
+      "sourceCheckerPassed": true,
+      "agentCheckerCoveredArtifacts": [
+        "handoff/recovery-plan.json",
+        "handoff/restricted-surfaces.md"
+      ],
+      "findings": [],
+      "broadExclusionReviewCues": [],
+      "externalCommandReview": [],
+      "semanticReviewRequired": true
+    },
+    {
+      "run": "20261024-desktop-ui-cross-v2-generalization-luna-3",
+      "case": "generalization",
+      "payloadSha256": "455db7f6daee26026e3c3be314406baf2f19a9e3c31c2250f09fc4d978389c05",
+      "model": "openai-codex/gpt-5.6-luna",
+      "strictPassed": true,
+      "structuralEvidencePassed": true,
+      "canonicalPatternCount": 42,
+      "selectedPatternCount": 19,
+      "artifactSha256": {
+        "handoff/restricted-surfaces.md": "30787c598e270984de32d1785eb1e6a724ec5cce152e120989155a166989dd27",
+        "handoff/recovery-plan.json": "6990008b12d90ec51181c83bba25599c45e6916f50a053b164865dca821e06b1"
+      },
+      "sourceCheckerPassed": true,
+      "agentCheckerCoveredArtifacts": [
+        "handoff/recovery-plan.json",
+        "handoff/restricted-surfaces.md"
+      ],
+      "findings": [],
+      "broadExclusionReviewCues": [],
+      "externalCommandReview": [],
+      "semanticReviewRequired": true
+    }
+  ],
+  "completedCount": 3,
+  "payloads": [
+    "455db7f6daee26026e3c3be314406baf2f19a9e3c31c2250f09fc4d978389c05"
+  ],
+  "singleFrozenPayload": true,
+  "semanticReviewRequired": true
+}

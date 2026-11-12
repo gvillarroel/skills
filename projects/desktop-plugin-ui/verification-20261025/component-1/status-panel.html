@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Support queue status panel</title>
+  <style>
+    :root {
+      --brand: #9e1b32;
+      --brand-dark: #6d1222;
+      --text: #333e48;
+      --muted: #696969;
+      --page: #f7f7f7;
+      --surface: #ffffff;
+      --border: #696969;
+      --light-border: #cfcfcf;
+      --selected: #ffccd5;
+      --error: #e8002a;
+      --neutral-message: #e7e7e7;
+      --disabled: #cfcfcf;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--page);
+      color: var(--text);
+      font-family: "Open Sans", Arial, sans-serif;
+      line-height: 1.45;
+    }
+    button, input, select { font: inherit; }
+    button { cursor: pointer; }
+    button:disabled, select:disabled { cursor: not-allowed; }
+    :focus-visible {
+      outline: 3px solid var(--text);
+      outline-offset: 2px;
+    }
+    .shell { max-width: 980px; margin: 0 auto; padding: 24px 16px 40px; }
+    .panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .panel-header {
+      background: var(--text);
+      color: var(--surface);
+      padding: 22px 24px;
+    }
+    h1, h2, p { margin-top: 0; }
+    h1 { margin-bottom: 4px; font-size: 1.5rem; }
+    h2 { font-size: 1.05rem; margin-bottom: 12px; }
+    .subtitle { margin-bottom: 0; color: var(--surface); }
+    .content { padding: 22px 24px; }
+    .toolbar, .actions, .utility-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: end;
+      gap: 12px;
+    }
+    .toolbar { justify-content: space-between; margin-bottom: 18px; }
+    .field { min-width: 240px; flex: 1 1 300px; }
+    label, legend { font-weight: 700; }
+    label { display: block; margin-bottom: 5px; }
+    input[type="search"], select {
+      width: 100%;
+      min-height: 44px;
+      border: 2px solid var(--border);
+      border-radius: 5px;
+      background: var(--surface);
+      color: var(--text);
+      padding: 9px 11px;
+    }
+    .help { color: var(--muted); font-size: .9rem; margin: 5px 0 0; }
+    .button {
+      min-height: 44px;
+      border: 2px solid var(--brand);
+      border-radius: 5px;
+      padding: 9px 14px;
+      background: var(--brand);
+      color: var(--surface);
+      font-weight: 700;
+    }
+    .button:hover, .button:active { background: var(--brand-dark); border-color: var(--brand-dark); }
+    .button.secondary {
+      background: var(--surface);
+      color: var(--brand);
+    }
+    .button.secondary:hover, .button.secondary:active {
+      background: var(--selected);
+      color: var(--brand-dark);
+    }
+    .button.quiet {
+      border-color: var(--border);
+      background: var(--surface);
+      color: var(--text);
+    }
+    .button.quiet:hover, .button.quiet:active { background: var(--neutral-message); }
+    .button:disabled { background: var(--disabled); border-color: var(--disabled); color: var(--text); }
+    .status-region { min-height: 52px; margin-bottom: 16px; }
+    .message {
+      display: flex;
+      gap: 9px;
+      align-items: flex-start;
+      padding: 11px 13px;
+      border: 1px solid var(--border);
+      border-left: 5px solid var(--text);
+      border-radius: 5px;
+      background: var(--neutral-message);
+    }
+    .message.error { border-left-color: var(--error); background: var(--selected); }
+    .message strong { white-space: nowrap; }
+    .message.busy { border-left-color: var(--brand); }
+    .message.success { border-left-color: var(--brand); }
+    .message-icon { font-weight: 900; min-width: 18px; }
+    .message.error .message-icon { color: var(--error); }
+    .queue-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+    .count { color: var(--muted); font-size: .9rem; }
+    .table-wrap { overflow-x: visible; border: 1px solid var(--border); border-radius: 5px; }
+    table { width: 100%; border-collapse: collapse; min-width: 0; }
+    caption { text-align: left; padding: 10px 12px; font-weight: 700; background: var(--neutral-message); }
+    th, td { padding: 12px; text-align: left; border-top: 1px solid var(--light-border); vertical-align: top; }
+    th { color: var(--text); background: var(--page); }
+    tbody tr.selected { background: var(--selected); }
+    tbody tr:hover { background: var(--selected); }
+    .select-cell { width: 64px; text-align: center; }
+    input[type="radio"] { width: 20px; height: 20px; accent-color: var(--brand); }
+    .ticket-id { font-weight: 700; color: var(--brand); }
+    .status-chip { display: inline-block; border: 1px solid var(--border); border-radius: 12px; padding: 2px 8px; font-size: .85rem; }
+    .editor {
+      margin-top: 20px;
+      padding: 16px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: var(--page);
+    }
+    .editor-grid { display: grid; grid-template-columns: minmax(180px, 280px) 1fr; gap: 16px; align-items: end; }
+    .editor-note { margin: 0; color: var(--muted); }
+    .actions { margin-top: 14px; }
+    .diagnostics, .fallback { margin-top: 22px; border-top: 1px solid var(--light-border); padding-top: 16px; }
+    .diagnostics fieldset { border: 0; padding: 0; margin: 0; }
+    .check { display: inline-flex; gap: 8px; align-items: center; margin-right: 18px; }
+    .check input { width: 18px; height: 18px; accent-color: var(--brand); }
+    .fallback pre {
+      margin: 0;
+      white-space: pre-wrap;
+      color: var(--text);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      padding: 12px;
+      font: inherit;
+    }
+    .sr-only {
+      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+    }
+    .empty {
+      padding: 26px 16px;
+      text-align: center;
+      border: 1px dashed var(--border);
+      border-radius: 5px;
+      background: var(--neutral-message);
+    }
+    .empty p { margin-bottom: 12px; }
+
+    .request-cards { display: none; list-style: none; padding: 0; margin: 0; gap: 10px; }
+    .request-card {
+      width: 100%; min-height: 44px; padding: 12px; text-align: left;
+      color: var(--text); background: var(--surface); border: 2px solid var(--border);
+      border-radius: 5px; overflow-wrap: anywhere;
+    }
+    .request-card[aria-pressed="true"] { background: var(--selected); border-color: var(--brand); }
+    .request-card span { display: block; }
+    @media (max-width: 650px) {
+      .table-wrap { display: none; }
+      .request-cards { display: grid; }
+
+      .shell { padding: 12px 10px 28px; }
+      .panel-header, .content { padding: 18px 15px; }
+      .toolbar { display: block; }
+      .toolbar .utility-actions { margin-top: 12px; }
+      .editor-grid { grid-template-columns: 1fr; }
+    }
+
+    /* Descriptions do not intercept actions; reveal without composited paint. */
+    .tooltip-wrap { position: relative; display: inline-flex; max-width: 100%; }
+    .tooltip {
+      position: absolute; z-index: 2; right: 0; left: auto;
+      bottom: calc(100% + 8px); width: 220px; max-width: calc(100vw - 32px);
+      padding: 8px 10px; border-radius: 5px;
+      background: var(--text); color: var(--surface); font-size: .85rem;
+      visibility: hidden; pointer-events: none;
+    }
+    .tooltip-wrap:hover .tooltip, .tooltip-wrap:focus-within .tooltip { visibility: visible; }
+    .tooltip-wrap.dismissed .tooltip { visibility: hidden; }
+    @media (max-width: 680px) { .tooltip { left: 0; right: auto; } }
+
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="panel" aria-labelledby="panel-title" aria-describedby="panel-help">
+      <header class="panel-header">
+        <h1 id="panel-title">Support queue</h1>
+        <p id="panel-help" class="subtitle">Search requests, select one, and stage a priority change before saving.</p>
+      </header>
+      <div class="content">
+        <div class="toolbar">
+          <div class="field">
+            <label for="search">Search requests</label>
+            <input id="search" type="search" placeholder="Type an ID or subject" aria-describedby="search-help">
+            <p id="search-help" class="help">Search matches ticket IDs, subjects, priorities, and statuses.</p>
+          </div>
+          <div class="utility-actions" aria-label="Queue actions">
+            <button id="refresh" class="button" type="button">Refresh queue</button>
+            <button id="explain" class="button secondary" type="button">Explain selection</button>
+            <span class="tooltip-wrap"><button id="export" class="button secondary" type="button" aria-describedby="export-tip">Export CSV</button><span id="export-tip" class="tooltip" role="tooltip">Exports only the current selection.</span></span>
+          </div>
+        </div>
+
+        <div id="status" class="status-region" role="status" aria-live="polite" aria-atomic="true"></div>
+
+        <div class="queue-heading">
+          <h2 id="results-heading">Requests</h2>
+          <span id="count" class="count" aria-live="polite"></span>
+        </div>
+        <div id="results" aria-labelledby="results-heading"></div>
+
+        <section class="editor" aria-labelledby="editor-heading">
+          <h2 id="editor-heading">Edit selected priority</h2>
+          <div class="editor-grid">
+            <div>
+              <label for="priority">Priority</label>
+              <select id="priority" aria-describedby="priority-help">
+                <option value="">Choose a priority</option>
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+                <option value="urgent">Urgent</option>
+              </select>
+              <p id="priority-help" class="help">This is a staged draft. Save to commit it, or cancel to discard it.</p>
+            </div>
+            <p id="selection-note" class="editor-note">Select a request to edit its priority.</p>
+          </div>
+          <div class="actions">
+            <button id="save" class="button" type="button">Save priority</button>
+            <button id="cancel" class="button quiet" type="button">Cancel edit</button>
+          </div>
+        </section>
+
+        <section class="diagnostics" aria-labelledby="diagnostics-heading">
+          <h2 id="diagnostics-heading">Preview controls</h2>
+          <p class="help">These local switches make recovery states reachable without an assistant or service.</p>
+          <fieldset>
+            <legend class="sr-only">Simulation options</legend>
+            <label class="check"><input id="refresh-failure" type="checkbox"> Simulate next refresh failure</label>
+            <label class="check"><input id="save-failure" type="checkbox"> Simulate next save failure</label>
+            <button id="empty" class="button quiet" type="button">Show empty result</button>
+          </fieldset>
+        </section>
+
+        <details class="fallback">
+          <summary>Text-only fallback</summary>
+          <p class="help">Use this summary when an interactive panel is unavailable.</p>
+          <pre id="fallback-copy"></pre>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    (() => {
+      "use strict";
+      const initialTickets = [
+        { id: "T-104", title: "Cannot access my account", priorityCode: "high", priorityLabel: "High", statusCode: "pending", statusLabel: "Pending" },
+        { id: "T-105", title: "Billing address needs an update", priorityCode: "medium", priorityLabel: "Medium", statusCode: "open", statusLabel: "Open" },
+        { id: "T-106", title: "Export is missing recent records", priorityCode: "low", priorityLabel: "Low", statusCode: "pending", statusLabel: "Pending" }
+      ];
+      const priorityLabels = { low: "Low", medium: "Medium", high: "High", urgent: "Urgent" };
+      const els = {
+        search: document.getElementById("search"), refresh: document.getElementById("refresh"), explain: document.getElementById("explain"), export: document.getElementById("export"),
+        status: document.getElementById("status"), results: document.getElementById("results"), count: document.getElementById("count"), priority: document.getElementById("priority"),
+        note: document.getElementById("selection-note"), save: document.getElementById("save"), cancel: document.getElementById("cancel"), empty: document.getElementById("empty"),
+        refreshFailure: document.getElementById("refresh-failure"), saveFailure: document.getElementById("save-failure"), fallback: document.getElementById("fallback-copy")
+      };
+      const state = {
+        tickets: initialTickets.map(ticket => ({ ...ticket })),
+        query: "",
+        selectedId: "T-104",
+        draftPriority: "high",
+        committedPriority: "high",
+        busy: false,
+        emptyMode: false,
+        status: null
+      };
+
+      function selectedTicket() { return state.tickets.find(ticket => ticket.id === state.selectedId) || null; }
+      function visibleTickets() {
+        if (state.emptyMode) return [];
+        const query = state.query.trim().toLowerCase();
+        if (!query) return state.tickets;
+        return state.tickets.filter(ticket => [ticket.id, ticket.title, ticket.priorityLabel, ticket.statusLabel].join(" ").toLowerCase().includes(query));
+      }
+      function setStatus(kind, title, text) { state.status = { kind, title, text }; renderStatus(); }
+      function renderStatus() {
+        if (!state.status) { els.status.innerHTML = ""; return; }
+        const icon = state.status.kind === "error" ? "!" : state.status.kind === "success" ? "✓" : state.status.kind === "busy" ? "…" : "i";
+        els.status.innerHTML = `<div class="message ${state.status.kind}" role="${state.status.kind === "error" ? "alert" : "status"}"><span class="message-icon" aria-hidden="true">${icon}</span><div><strong>${state.status.title}</strong> ${state.status.text}</div></div>`;
+      }
+      function renderResults() {
+        const rows = visibleTickets();
+        els.count.textContent = `${rows.length} ${rows.length === 1 ? "request" : "requests"}`;
+        if (!rows.length) {
+          els.results.innerHTML = `<div class="empty"><h3>No matching requests</h3><p>Try a different ID or subject, or clear the search.</p><button id="clear-search" class="button secondary" type="button">Clear search</button></div>`;
+          document.getElementById("clear-search").addEventListener("click", () => { state.query = ""; state.emptyMode = false; els.search.value = ""; setStatus("neutral", "Search cleared.", "Showing all requests."); render(); els.search.focus(); });
+          return;
+        }
+        els.results.innerHTML = `<div class="table-wrap"><table><caption>Support requests available for selection</caption><thead><tr><th scope="col" class="select-cell">Select</th><th scope="col">Request</th><th scope="col">Priority</th><th scope="col">Status</th></tr></thead><tbody>${rows.map(ticket => `<tr class="${ticket.id === state.selectedId ? "selected" : ""}"><td class="select-cell"><input type="radio" name="ticket" value="${ticket.id}" ${ticket.id === state.selectedId ? "checked" : ""} aria-label="Select ${ticket.id}: ${ticket.title}"></td><td><span class="ticket-id">${ticket.id}</span><br>${ticket.title}</td><td>${ticket.priorityLabel}</td><td><span class="status-chip">${ticket.statusLabel}</span></td></tr>`).join("")}</tbody></table></div>`;
+        const cards = document.createElement("ul");
+        cards.className = "request-cards";
+        cards.setAttribute("aria-label", "Support requests");
+        rows.forEach(ticket => {
+          const item = document.createElement("li");
+          const button = document.createElement("button");
+          button.type = "button";
+          button.className = "request-card";
+          button.dataset.ticketId = ticket.id;
+          button.setAttribute("aria-pressed", String(ticket.id === state.selectedId));
+          button.setAttribute("aria-label", `Select ${ticket.id}: ${ticket.title}. Priority: ${ticket.priorityLabel}. Status: ${ticket.statusLabel}.`);
+          [ticket.id, ticket.title, `Priority: ${ticket.priorityLabel}`, `Status: ${ticket.statusLabel}`].forEach(text => {
+            const line = document.createElement("span");
+            line.textContent = text;
+            button.append(line);
+          });
+          button.addEventListener("click", () => {
+            selectTicket(ticket.id);
+            els.results.querySelector(`[data-ticket-id="${ticket.id}"]`)?.focus();
+          });
+          item.append(button); cards.append(item);
+        });
+        els.results.append(cards);
+        els.results.querySelectorAll('input[name="ticket"]').forEach(input => input.addEventListener("change", () => {
+          selectTicket(input.value);
+          els.results.querySelector(`input[name="ticket"][value="${input.value}"]`)?.focus();
+        }));
+      }
+      function renderEditor() {
+        const ticket = selectedTicket();
+        const hasSelection = Boolean(ticket);
+        els.priority.disabled = !hasSelection || state.busy;
+        els.save.disabled = !hasSelection || state.busy;
+        els.cancel.disabled = !hasSelection || state.busy;
+        if (ticket) {
+          els.priority.value = state.draftPriority;
+          els.note.textContent = `Editing ${ticket.id}: ${ticket.title}. Current saved priority: ${ticket.priorityLabel}.`;
+        } else {
+          els.priority.value = "";
+          els.note.textContent = "Select a request to edit its priority.";
+        }
+      }
+      function renderFallback() {
+        const ticket = selectedTicket();
+        if (!ticket) { els.fallback.textContent = "No request is selected. Search the queue and select a request to see its details."; return; }
+        els.fallback.textContent = `Support queue — ${state.tickets.length} requests\nSelected: ${ticket.id} — ${ticket.title}\nPriority: ${ticket.priorityLabel}\nStatus: ${ticket.statusLabel}\nActions: Save priority, Cancel edit, Refresh queue, Export CSV`;
+      }
+      function render() { renderStatus(); renderResults(); renderEditor(); renderFallback(); }
+      function selectTicket(id) {
+        const ticket = state.tickets.find(item => item.id === id);
+        if (!ticket) return;
+        state.selectedId = id; state.draftPriority = ticket.priorityCode; state.committedPriority = ticket.priorityCode; state.emptyMode = false;
+        setStatus("neutral", "Selection changed.", `${ticket.id} is ready to edit.`); render();
+      }
+      function setBusy(value) {
+        state.busy = value;
+        els.refresh.disabled = value; els.explain.disabled = value; els.export.disabled = value; els.empty.disabled = value;
+        els.search.disabled = value;
+        renderEditor();
+      }
+      function refreshQueue() {
+        if (state.busy) return;
+        setBusy(true); setStatus("busy", "Refreshing the queue.", "Please wait…");
+        window.setTimeout(() => {
+          const failed = els.refreshFailure.checked;
+          els.refreshFailure.checked = false; setBusy(false);
+          if (failed) { setStatus("error", "Refresh failed.", "The queue could not be updated. Your last successful view is still shown. Try again."); return; }
+          state.emptyMode = false; setStatus("success", "Queue refreshed.", "The latest local snapshot is displayed."); render();
+        }, 650);
+      }
+      function savePriority() {
+        const ticket = selectedTicket();
+        if (!ticket) { setStatus("error", "Select a request.", "Choose a request before saving a priority."); return; }
+        if (!priorityLabels[els.priority.value]) { setStatus("error", "Choose a valid priority.", "Select Low, Medium, High, or Urgent before saving."); els.priority.focus(); return; }
+        state.draftPriority = els.priority.value; setBusy(true); setStatus("busy", "Saving priority.", "Your staged change is being checked…");
+        window.setTimeout(() => {
+          const failed = els.saveFailure.checked;
+          els.saveFailure.checked = false; setBusy(false);
+          if (failed) { setStatus("error", "Save failed.", "The priority was not changed. Your draft is preserved so you can retry."); render(); return; }
+          ticket.priorityCode = state.draftPriority; ticket.priorityLabel = priorityLabels[state.draftPriority]; state.committedPriority = state.draftPriority;
+          setStatus("success", "Priority saved.", `${ticket.id} is now ${ticket.priorityLabel}.`); render();
+        }, 650);
+      }
+      function cancelEdit() {
+        const ticket = selectedTicket();
+        if (!ticket) { setStatus("error", "Select a request.", "Choose a request before cancelling an edit."); return; }
+        state.draftPriority = state.committedPriority; setStatus("neutral", "Edit cancelled.", "Your staged change was discarded; no changes were saved."); render();
+      }
+      els.search.addEventListener("input", () => { state.query = els.search.value; state.emptyMode = false; renderResults(); renderEditor(); renderFallback(); });
+      els.priority.addEventListener("change", () => { state.draftPriority = els.priority.value; });
+      els.refresh.addEventListener("click", refreshQueue);
+      els.save.addEventListener("click", savePriority);
+      els.cancel.addEventListener("click", cancelEdit);
+      els.empty.addEventListener("click", () => { state.emptyMode = true; state.query = "__no_local_match__"; els.search.value = ""; setStatus("neutral", "Empty result shown.", "No requests match the current local filter."); render(); });
+      els.explain.addEventListener("click", () => { const ticket = selectedTicket(); setStatus(ticket ? "neutral" : "error", ticket ? "Selection summary ready." : "Nothing selected.", ticket ? `${ticket.id} is ${ticket.statusLabel.toLowerCase()} with ${ticket.priorityLabel.toLowerCase()} priority.` : "Select a request first."); });
+      els.export.addEventListener("click", () => {
+        const ticket = selectedTicket();
+        if (!ticket) { setStatus("error", "Nothing to export.", "Select one request before exporting."); return; }
+        const csv = `id,title,priority_code,priority_label,status_code,status_label\n${ticket.id},"${ticket.title}",${ticket.priorityCode},${ticket.priorityLabel},${ticket.statusCode},${ticket.statusLabel}\n`;
+        const link = document.createElement("a"); link.href = URL.createObjectURL(new Blob([csv], { type: "text/csv" })); link.download = `${ticket.id}-support-request.csv`; link.click(); URL.revokeObjectURL(link.href);
+        setStatus("success", "CSV prepared.", `The local export contains only ${ticket.id}.`);
+      });
+      render();
+    })();
+  </script>
+
+  <script>
+    document.querySelectorAll('.tooltip-wrap').forEach(wrap => {
+      const place = () => {
+        const tooltip = wrap.querySelector('.tooltip');
+        tooltip.style.transform = '';
+        const bounds = tooltip.getBoundingClientRect();
+        const shift = Math.max(16 - bounds.left, Math.min(0, innerWidth - 16 - bounds.right));
+        tooltip.style.transform = `translateX(${shift}px)`;
+      };
+      wrap.addEventListener('pointerenter', () => { wrap.classList.remove('dismissed'); place(); });
+      wrap.addEventListener('focusin', () => { wrap.classList.remove('dismissed'); place(); });
+      window.addEventListener('resize', place);
+      wrap.addEventListener('keydown', event => {
+        if (event.key === 'Escape') {
+          wrap.classList.add('dismissed');
+          event.stopPropagation();
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

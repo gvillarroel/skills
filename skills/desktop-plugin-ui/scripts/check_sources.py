@@ -18,6 +18,8 @@ URL = re.compile(r"https?://[^\s<>\"'`\[\]]+")
 # Exact hosts identify source ownership; they do not approve arbitrary paths.
 # A citation must still equal an entry in the bundle or an explicit --allow-url.
 PRIMARY_HOSTS = {
+    "docs.cloud.google.com": "google",
+    "cloud.google.com": "google",
     "agent-plugins.org": "agent-plugins",
     "modelcontextprotocol.io": "modelcontextprotocol",
     "apps.extensions.modelcontextprotocol.io": "modelcontextprotocol",
@@ -33,6 +35,8 @@ PRIMARY_HOSTS = {
     "platform.openai.com": "openai",
     "help.openai.com": "openai",
     "learn.chatgpt.com": "openai",
+    "openui.com": "openui",
+    "www.openui.com": "openui",
     "docs.github.com": "github",
     "github.blog": "github",
     "code.visualstudio.com": "vscode",
@@ -57,11 +61,13 @@ GITHUB_OWNERS = {
     "earendil-works": "pi",
 }
 CLAIMED_HOST_LABELS = {
+    "google": "google",
     "modelcontextprotocol": "modelcontextprotocol",
     "claude": "claude",
     "anthropic": "anthropic",
     "openai": "openai",
     "chatgpt": "openai",
+    "openui": "openui",
     "github": "github",
     "githubusercontent": "github",
     "visualstudio": "vscode",

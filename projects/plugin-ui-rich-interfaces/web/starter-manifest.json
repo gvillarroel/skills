@@ -1,0 +1,12 @@
+{
+  "pattern": "operational-dashboard",
+  "title": "Service Observatory",
+  "colorset": "colorset1",
+  "files": [
+    "index.html",
+    "styles.css",
+    "data.js",
+    "NOTES.md"
+  ],
+  "usesLocalD3": true
+}

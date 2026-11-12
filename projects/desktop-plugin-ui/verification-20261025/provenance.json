@@ -1,0 +1,41 @@
+{
+  "source_artifacts_unchanged": true,
+  "components": [
+    {
+      "component": 1,
+      "source_run": "20261025-desktop-ui-english-components-v1-luna-1",
+      "historical_hashes": {
+        "status-panel.html": "215620c71673fa21ced251b2db9b9d6a966e1b7809fb837b01f4a470761291a1",
+        "component-copy.json": "bafe0cc97f79ff21bee5a5cb660f1bf0a94870d8b99cacf83751f9cee936a196"
+      },
+      "corrected_hashes": {
+        "status-panel.html": "dcbfd638b82cacab702e9e2e78f46c9a941a1a950ccfbdaf38edad4e9e3fc0d2",
+        "component-copy.json": "6aa444c0d4282d0456ac338dc3318f39f9145c0615ade95b6b9bdcd85b77d7d2"
+      }
+    },
+    {
+      "component": 2,
+      "source_run": "20261025-desktop-ui-english-components-v1-luna-2",
+      "historical_hashes": {
+        "status-panel.html": "483a65334c69cf304e160c63e320d66402958638c9036ac9a6d2d919abe76f7c",
+        "component-copy.json": "03f139576c9831d9a5929542b924f0b3515ac06ca94df9f88d23d9807221d70f"
+      },
+      "corrected_hashes": {
+        "status-panel.html": "7ad2e41f2e2d99be4d729f30687b6bf1ecb9fed0c3e4f79e3ae5fad5ad2b5c62",
+        "component-copy.json": "909a98f51ab7b1f2e2f9b231b72e9608cfa086160b5b4dae1b038c351b21ca00"
+      }
+    },
+    {
+      "component": 3,
+      "source_run": "20261025-desktop-ui-english-components-v1-luna-3",
+      "historical_hashes": {
+        "status-panel.html": "a26fcea22a77c570e9b696936346b274000d3084f00d624ae8116f186f7d0ea9",
+        "component-copy.json": "9289330230f236f6506ff8ed467712255dce411b68c3bd8f43531fa885e72df5"
+      },
+      "corrected_hashes": {
+        "status-panel.html": "abfc358a8dd6a78078c99e9a18764a3d31b101f9e16e990257ca67dd5d286e9a",
+        "component-copy.json": "26d46ad578af8dc8b419e6ef9292185c639c686542cbc4a9bdfdd167d82adfa8"
+      }
+    }
+  ]
+}

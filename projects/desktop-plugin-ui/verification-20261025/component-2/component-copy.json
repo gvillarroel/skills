@@ -1,0 +1,479 @@
+{
+  "language": "en",
+  "component": {
+    "name": "Support queue status panel",
+    "surface": "Standalone browser preview",
+    "pattern_ids": [
+      "claude-ui-validated-form",
+      "claude-ui-async-state",
+      "claude-ui-text-fallback",
+      "claude-ui-responsive-theme"
+    ],
+    "styling_scope": "authored",
+    "palette": {
+      "name": "colorset1",
+      "selection_source": "skills/desktop-plugin-ui/assets/palettes/colorset1.yml",
+      "tokens": {
+        "primary_action": "#9e1b32",
+        "primary_hover_pressed": "#6d1222",
+        "body_text": "#333e48",
+        "helper_text": "#696969",
+        "page_surface": "#f7f7f7",
+        "content_surface": "#ffffff",
+        "selected_surface": "#ffccd5",
+        "error_accent": "#e8002a",
+        "neutral_message_surface": "#e7e7e7",
+        "border": "#696969",
+        "focus": "#9e1b32"
+      },
+      "contrast_notes": [
+        "Ordinary text uses #333e48 on #ffffff or #f7f7f7.",
+        "Error text uses #333e48 on #ffccd5; #e8002a is a labeled accent and not the sole error cue.",
+        "Keyboard focus uses #9e1b32 rather than the palette's low-contrast #cfcfcf focus token.",
+        "Success uses neutral confirmation text and a checkmark, not an unselected green token."
+      ]
+    }
+  },
+  "authored_component_copy": {
+    "heading": "Support queue",
+    "subtitle": "Review requests, stage a priority change, and keep the latest successful queue visible.",
+    "search_label": "Search requests",
+    "search_placeholder": "Enter an ID or subject",
+    "search_help": "Search by ticket ID or subject. Choose a request to edit its priority.",
+    "priority_label": "Priority",
+    "priority_help": "Choose the priority that should be saved for the selected request.",
+    "save_action": "Save priority",
+    "cancel_action": "Cancel edit",
+    "refresh_action": "Refresh queue",
+    "export_action": "Export CSV",
+    "export_tooltip": "Exports only the current selection.",
+    "edit_help": "Changes remain staged until you save. Cancel restores the last saved priority.",
+    "fixture_failure_toggle": "Simulate the next refresh failure",
+    "fixture_failure_help": "Fixture control: the last successful queue stays visible when refresh fails.",
+    "busy_message": "Updating the queue…",
+    "invalid_message": "Select a valid priority before saving.",
+    "error_message": "The queue could not be refreshed. Try again; the last successful queue is still shown.",
+    "cancelled_message": "Edit cancelled; no changes were saved.",
+    "empty_heading": "No matching requests",
+    "empty_message": "Try a different ID or subject, or clear the search to restore the queue.",
+    "success_message": "Priority saved.",
+    "refresh_success_message": "Queue refreshed successfully.",
+    "ready_message": "Ready. Select a request to begin.",
+    "clear_search_action": "Clear search",
+    "fallback_heading": "Text-only fallback and local test notes",
+    "fallback_copy": "Support queue: 2 requests. Selected request: T-104, “I cannot access my account”, priority High, status Pending. Choose a request, select a priority, then save or cancel. Use Refresh queue to retry a local refresh.",
+    "browser_fixture_note": "This is a self-contained browser fixture. It does not call an assistant, server, or host API; browser download behavior is not host acceptance evidence.",
+    "explain_action": "Explain selection"
+  },
+  "accessibility_copy": {
+    "document_language": "en",
+    "panel_accessible_name": "Support request panel",
+    "queue_accessible_name": "Support requests",
+    "visible_request_count_name": "Visible request count",
+    "search_help_id": "search-help",
+    "priority_help_id": "priority-help",
+    "status_live_region": "polite, atomic",
+    "busy_region_behavior": "The queue region exposes aria-busy while a local save or refresh simulation is pending.",
+    "selection_name_template": "Select {id}, {title}",
+    "selection_state": "Each request button exposes aria-pressed for the current selection.",
+    "tooltip_behavior": "The Export CSV tooltip is available on hover and keyboard focus through aria-describedby and role=tooltip.",
+    "focus_behavior": "All controls have a visible #9e1b32 focus ring and the invalid priority control receives focus.",
+    "status_cues": "Feedback combines text with a symbol, and error styling adds a labeled accent; color is never the only cue."
+  },
+  "state_copy": {
+    "ready": "Ready. Select a request to begin.",
+    "selection": "Selected {id}. Priority {priority} is ready to edit.",
+    "busy": "Updating the queue…",
+    "invalid": "Select a valid priority before saving.",
+    "error": "The queue could not be refreshed. Try again; the last successful queue is still shown.",
+    "cancelled": "Edit cancelled; no changes were saved.",
+    "saved": "Priority saved for {id}: {priority}.",
+    "refresh_success": "Queue refreshed successfully.",
+    "empty": "No matching requests",
+    "empty_help": "Try a different ID or subject, or clear the search to restore the queue.",
+    "export_ready": "CSV prepared for {id}. If downloads are unavailable, use the text-only fallback below.",
+    "search_cleared": "Search cleared; the queue is visible again.",
+    "explanation": "{id}: {title}. Saved priority: {priority}. Status: {status}."
+  },
+  "sample_display_data": {
+    "requests": [
+      {
+        "id": "T-104",
+        "title": "I cannot access my account",
+        "priority_code": "high",
+        "priority_label": "High",
+        "status_code": "pending",
+        "status_label": "Pending"
+      },
+      {
+        "id": "T-105",
+        "title": "Invoice question for April",
+        "priority_code": "normal",
+        "priority_label": "Normal",
+        "status_code": "open",
+        "status_label": "Open"
+      }
+    ],
+    "display_rule": "Display labels are English; IDs and enum codes remain stable identifiers."
+  },
+  "native_control_copy": {
+    "surface": "Host-rendered native controls equivalent",
+    "heading": "Support queue",
+    "controls": [
+      "Search requests: Enter an ID or subject",
+      "Select request: T-104 — I cannot access my account",
+      "Priority: Low | Normal | High | Urgent",
+      "Save priority",
+      "Cancel edit",
+      "Refresh queue",
+      "Export CSV",
+      "Explain selection"
+    ],
+    "help": "Changes remain staged until you save. Cancel restores the last saved priority.",
+    "busy": "Updating the queue…",
+    "invalid": "Select a valid priority before saving.",
+    "error": "The queue could not be refreshed. Try again; the last successful queue is still shown.",
+    "cancelled": "Edit cancelled; no changes were saved.",
+    "success": "Priority saved.",
+    "empty": "No matching requests. Try a different ID or subject.",
+    "fallback_rule": "If custom UI is unavailable, keep the request ID, title, enum labels, state, and recovery action in host text."
+  },
+  "terminal_text_fallback_copy": {
+    "heading": "Support queue",
+    "summary": "2 requests. Selected: T-104 — I cannot access my account — priority High — status Pending.",
+    "prompt": "Search requests [ID or subject]: ",
+    "selection_prompt": "Select request [T-104/T-105]: ",
+    "priority_prompt": "Priority [low/normal/high/urgent]: ",
+    "actions": "Actions: (s) Save priority, (c) Cancel edit, (r) Refresh queue, (e) Export CSV, (x) Explain selection",
+    "busy": "Updating the queue…",
+    "invalid": "Select a valid priority before saving.",
+    "error": "The queue could not be refreshed. Try again; the last successful queue is still shown.",
+    "cancelled": "Edit cancelled; no changes were saved.",
+    "success": "Priority saved.",
+    "empty": "No matching requests. Try a different ID or subject, or clear the search.",
+    "help": "Changes remain staged until you save. The current selection and last successful queue remain available after a failed refresh."
+  },
+  "protocol_identifiers": {
+    "tool_name": "queue_update_priority",
+    "error_code": "E_INVALID_PRIORITY",
+    "source_ticket_id": "T-104",
+    "priority_enum_codes": [
+      "low",
+      "normal",
+      "high",
+      "urgent"
+    ],
+    "status_enum_codes": [
+      "pending",
+      "open"
+    ],
+    "source_record_fields": [
+      "id",
+      "title",
+      "priority_code",
+      "priority_label",
+      "status_code",
+      "status_label"
+    ],
+    "identifier_display_rule": "These exact identifiers are protocol/source data, not translated display copy."
+  },
+  "source_legacy_copy": {
+    "heading": "Cola de soporte",
+    "search_label": "Buscar solicitudes",
+    "search_placeholder": "Escribe un ID o un asunto",
+    "priority_label": "Prioridad",
+    "save_action": "Guardar prioridad",
+    "cancel_action": "Cancelar edición",
+    "refresh_action": "Actualizar cola",
+    "explain_action": "Explicar selección",
+    "export_action": "Exportar CSV",
+    "busy_message": "Actualizando la cola…",
+    "invalid_message": "Selecciona una prioridad válida.",
+    "error_message": "No se pudo actualizar. Inténtalo de nuevo.",
+    "cancelled_message": "Edición cancelada; no se guardaron los cambios.",
+    "empty_message": "No hay solicitudes que coincidan.",
+    "success_message": "Prioridad guardada.",
+    "export_tooltip": "Exporta únicamente la selección actual.",
+    "panel_accessible_name": "Panel de solicitudes de soporte",
+    "sample_ticket": {
+      "id": "T-104",
+      "title": "No puedo acceder a mi cuenta",
+      "priority_code": "high",
+      "priority_label": "Alta",
+      "status_code": "pending",
+      "status_label": "Pendiente"
+    },
+    "tool_name": "queue_update_priority",
+    "error_code": "E_INVALID_PRIORITY"
+  },
+  "heuristic_review": {
+    "H1": {
+      "label": "Visible status",
+      "status": "untested",
+      "interaction": "Opening, saving, refreshing, and failure feedback",
+      "evidence": "untested",
+      "fix": "Run the browser fixture and inspect each live-region transition."
+    },
+    "H2": {
+      "label": "Familiar concepts",
+      "status": "pass",
+      "interaction": "Queue, request, priority, and status vocabulary",
+      "evidence": "documented",
+      "fix": "Keep protocol codes behind diagnostics and display labels beside controls."
+    },
+    "H3": {
+      "label": "Control and exits",
+      "status": "untested",
+      "interaction": "Cancel edit and retry after refresh failure",
+      "evidence": "untested",
+      "fix": "Keyboard-test cancellation and confirm the draft is restored."
+    },
+    "H4": {
+      "label": "Consistent conventions",
+      "status": "pass",
+      "interaction": "Button labels, staged edit, and keyboard-focus behavior",
+      "evidence": "documented",
+      "fix": "Compare native and terminal fallback labels when adapted to a host."
+    },
+    "H5": {
+      "label": "Prevent mistakes",
+      "status": "untested",
+      "interaction": "Invalid priority and staged save",
+      "evidence": "untested",
+      "fix": "Choose the blank priority and verify the control receives focus without changing data."
+    },
+    "H6": {
+      "label": "Recognition cues",
+      "status": "pass",
+      "interaction": "Labels, selected request, priority, status, and help",
+      "evidence": "documented",
+      "fix": "Inspect accessible names in a browser accessibility tree."
+    },
+    "H7": {
+      "label": "Efficient paths",
+      "status": "untested",
+      "interaction": "Search, direct selection, clear search, and export",
+      "evidence": "untested",
+      "fix": "Exercise keyboard-only search and selection without pointer input."
+    },
+    "H8": {
+      "label": "Minimal content",
+      "status": "pass",
+      "interaction": "Primary queue task with fallback in a disclosure",
+      "evidence": "documented",
+      "fix": "Check narrow layout and avoid introducing nested scrolling."
+    },
+    "H9": {
+      "label": "Useful errors",
+      "status": "untested",
+      "interaction": "Refresh failure preserves the last successful queue",
+      "evidence": "untested",
+      "fix": "Trigger failure, verify recovery copy, then retry successfully."
+    },
+    "H10": {
+      "label": "Contextual help",
+      "status": "pass",
+      "interaction": "Search, priority, export tooltip, and fallback help",
+      "evidence": "documented",
+      "fix": "Verify tooltip is reachable by keyboard and does not obscure recovery actions."
+    }
+  },
+  "local_checks": {
+    "outputs": [
+      "ui/status-panel.html",
+      "ui/component-copy.json"
+    ],
+    "checks": [
+      {
+        "name": "HTML self-contained",
+        "result": "inline CSS and JavaScript are present; no network or provider calls are included",
+        "evidence": "documented"
+      },
+      {
+        "name": "English authored copy",
+        "result": "visible and accessible component copy is English; Spanish is retained only under source_legacy_copy",
+        "evidence": "documented"
+      },
+      {
+        "name": "Synthetic state reachability",
+        "result": "local handlers implement search, selection, staged edit, save, cancel, busy, invalid, refresh success/failure, empty, export, and fallback; browser execution was not run in this task",
+        "evidence": "untested"
+      },
+      {
+        "name": "Palette binding",
+        "result": "authored CSS uses colorset1 values and avoids colorset2 hues",
+        "evidence": "documented"
+      },
+      {
+        "name": "Report checker",
+        "result": "run after both outputs were written; inspect passed before delivery",
+        "evidence": "observed-working"
+      }
+    ]
+  },
+  "remaining_host_limitations": [
+    {
+      "claim": "Browser fixture interaction",
+      "evidence": "untested",
+      "scope": "implemented as an ordinary browser fixture; browser execution and host acceptance were not performed"
+    },
+    {
+      "claim": "Claude Desktop or another assistant host rendering",
+      "evidence": "untested",
+      "scope": "no installed host, account, service, or MCP transport was used"
+    },
+    {
+      "claim": "Native control and terminal fallback paint",
+      "evidence": "conditional",
+      "scope": "host owns native typography, colors, focus treatment, and terminal rendering"
+    },
+    {
+      "claim": "CSV download",
+      "evidence": "conditional",
+      "scope": "browser download is simulated locally; file save and host-mediated download acceptance remain unverified"
+    },
+    {
+      "claim": "Server authority and persistence",
+      "evidence": "unsupported",
+      "scope": "this preview has no assistant, server, or durable backend"
+    }
+  ],
+  "host_acceptance_verified": false,
+  "task_empirical_tests_performed": false,
+  "revision_provenance": {
+    "source_run": "20261025-desktop-ui-english-components-v1-luna-2",
+    "source_hashes": {
+      "status-panel.html": "483a65334c69cf304e160c63e320d66402958638c9036ac9a6d2d919abe76f7c",
+      "component-copy.json": "03f139576c9831d9a5929542b924f0b3515ac06ca94df9f88d23d9807221d70f"
+    },
+    "purpose": "Corrected local project verification copy; original isolated-run outcomes remain unchanged.",
+    "historical_task_flags": "Existing task flags describe the original generation. Independent correction checks are recorded separately."
+  },
+  "palette_bindings": {
+    "source": "skills/desktop-plugin-ui/assets/palettes/colorset1.yml",
+    "source_sha256": "6472cb2a2e08738010051ce0f7c51107b115d215a70b8bb7f5db432411bf7cc1",
+    "palette": "colorset1",
+    "tokens": [
+      {
+        "css_variable": "--brand",
+        "value": "#9e1b32",
+        "source_token_path": "interface.action.primary.value"
+      },
+      {
+        "css_variable": "--brand-dark",
+        "value": "#6d1222",
+        "source_token_path": "interface.action.primary_hover.value"
+      },
+      {
+        "css_variable": "--text",
+        "value": "#333e48",
+        "source_token_path": "interface.text.primary.value"
+      },
+      {
+        "css_variable": "--muted",
+        "value": "#696969",
+        "source_token_path": "interface.text.secondary.value"
+      },
+      {
+        "css_variable": "--page",
+        "value": "#f7f7f7",
+        "source_token_path": "interface.background.page.value"
+      },
+      {
+        "css_variable": "--surface",
+        "value": "#ffffff",
+        "source_token_path": "interface.background.surface.value"
+      },
+      {
+        "css_variable": "--soft",
+        "value": "#e7e7e7",
+        "source_token_path": "interface.feedback.neutral.background.value"
+      },
+      {
+        "css_variable": "--border",
+        "value": "#696969",
+        "source_token_path": "interface.border.dark.value"
+      },
+      {
+        "css_variable": "--border-dark",
+        "value": "#696969",
+        "source_token_path": "interface.border.dark.value"
+      },
+      {
+        "css_variable": "--selected",
+        "value": "#ffccd5",
+        "source_token_path": "interface.state.selected.value"
+      },
+      {
+        "css_variable": "--critical",
+        "value": "#e8002a",
+        "source_token_path": "interface.action.destructive.value"
+      },
+      {
+        "css_variable": "--disabled",
+        "value": "#cfcfcf",
+        "source_token_path": "interface.state.disabled.value"
+      },
+      {
+        "css_variable": "--black",
+        "value": "#000000",
+        "source_token_path": "colors.neutral.black.value"
+      }
+    ],
+    "contrast_measurements": [
+      {
+        "foreground": "#333e48",
+        "background": "#ffffff",
+        "use": "Ordinary body text",
+        "ratio_unrounded": 10.918238644424665,
+        "minimum": 4.5,
+        "method": "WCAG sRGB relative luminance; base-token computation"
+      },
+      {
+        "foreground": "#696969",
+        "background": "#ffffff",
+        "use": "Helper text and identifying control border",
+        "ratio_unrounded": 5.489814557409947,
+        "minimum": 4.5,
+        "method": "WCAG sRGB relative luminance; base-token computation"
+      },
+      {
+        "foreground": "#ffffff",
+        "background": "#333e48",
+        "use": "Header and tooltip text",
+        "ratio_unrounded": 10.918238644424665,
+        "minimum": 4.5,
+        "method": "WCAG sRGB relative luminance; base-token computation"
+      },
+      {
+        "foreground": "#333e48",
+        "background": "#ffccd5",
+        "use": "Selected and error text",
+        "ratio_unrounded": 7.720736540005823,
+        "minimum": 4.5,
+        "method": "WCAG sRGB relative luminance; base-token computation"
+      },
+      {
+        "foreground": "#ffffff",
+        "background": "#9e1b32",
+        "use": "Primary action text",
+        "ratio_unrounded": 7.9046884551695875,
+        "minimum": 4.5,
+        "method": "WCAG sRGB relative luminance; base-token computation"
+      },
+      {
+        "foreground": "#9e1b32",
+        "background": "#ffffff",
+        "use": "Focus and selected-control indicator",
+        "ratio_unrounded": 7.9046884551695875,
+        "minimum": 3.0,
+        "method": "WCAG sRGB relative luminance; base-token computation"
+      }
+    ],
+    "scope": "Exact opaque authored CSS colors; native browser controls, forced colors, antialiasing and host chrome remain distinct."
+  },
+  "tooltip_contract": {
+    "accessible_description": "Exports only the current selection.",
+    "behavior": "Visible on hover/focus, associated by aria-describedby, dismissed with Escape, and pointer-events:none."
+  }
+}
