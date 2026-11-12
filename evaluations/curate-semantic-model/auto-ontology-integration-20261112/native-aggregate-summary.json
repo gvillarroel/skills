@@ -1,0 +1,1225 @@
+{
+  "schemaVersion": 1,
+  "generatedBy": "Aggregate projection of harbor-run-results final-report.json; no raw-trial scorer",
+  "study": "auto-ontology-integration-study-v5-20261112",
+  "physicalModelAttempts": 84,
+  "countDefinition": "Physical native task-model attempts; excludes curator/reviewer coordination and deterministic Oracle/QA",
+  "retiredEarlierDiagnosticAttempts": 12,
+  "independentCaseBreadth": "six public tasks, two per target; repetitions/variants reuse those cases",
+  "privateModelAttempts": 0,
+  "privateReleased": false,
+  "decision": "retain-all-three-original-skill-bundles",
+  "changedCandidateDigest": "sha256:e58a70c28c3eb0a38e5b29ca2b3b8189e99562b92239de12a6c7468517b01a5f",
+  "freshDevelopmentGate": {
+    "status": "complete",
+    "decision": "fail",
+    "passed": false,
+    "uniqueTrials": 4,
+    "uniqueTasks": 2,
+    "passedTrials": 3,
+    "candidatePassRate": 0.75,
+    "minimumPassRate": 1.0,
+    "candidateErrors": 0,
+    "fairnessBasis": "trial-lock-and-result",
+    "candidateDigest": "sha256:e58a70c28c3eb0a38e5b29ca2b3b8189e99562b92239de12a6c7468517b01a5f"
+  },
+  "rows": [
+    {
+      "skill": "curate-semantic-model",
+      "variant": "baseline",
+      "split": "development",
+      "nativeJobLabel": "catalog-20261112-v8-curate-semantic-model-base",
+      "summary": {
+        "requestedTrials": 4,
+        "completedTrials": 4,
+        "passedTrials": 2,
+        "verifierFailedTrials": 2,
+        "erroredTrials": 0,
+        "passRate": 0.5,
+        "reward": {
+          "count": 4,
+          "total": 2.0,
+          "average": 0.5,
+          "stddev": 0.5,
+          "minimum": 0.0,
+          "maximum": 1.0
+        },
+        "totalTokens": {
+          "count": 4,
+          "total": 45903.0,
+          "average": 11475.75,
+          "stddev": 2279.2662607734096,
+          "minimum": 8587.0,
+          "maximum": 14117.0
+        },
+        "agentLatencyMs": {
+          "count": 4,
+          "total": 56447.168,
+          "average": 14111.792,
+          "stddev": 1745.3694995027563,
+          "minimum": 12216.874,
+          "maximum": 16025.407000000001
+        },
+        "costUsd": {
+          "count": 4,
+          "total": 0.003630625,
+          "average": 0.00090765625,
+          "stddev": 0.0003232965162079349,
+          "minimum": 0.00045802500000000003,
+          "maximum": 0.00136932
+        }
+      },
+      "reportSha256": "ccafeeb3f925f366d5484f85249f5cf3c9cd55e9c86698f6e8dff4297116c204",
+      "reportGeneratedAt": "2026-11-12T18:28:02.709114+00:00",
+      "fairnessBasis": null,
+      "skillIdentity": [
+        {
+          "name": "curate-semantic-model",
+          "digest": "sha256:44005570c4d357f87c526d9190684c9654471d813ad7a467cf81795c37f5d084",
+          "gitUrl": null,
+          "gitCommitId": null
+        }
+      ]
+    },
+    {
+      "skill": "curate-semantic-model",
+      "variant": "v1",
+      "split": "development",
+      "nativeJobLabel": "catalog-20261112-v8-curate-semantic-model-v1",
+      "summary": {
+        "requestedTrials": 4,
+        "completedTrials": 4,
+        "passedTrials": 3,
+        "verifierFailedTrials": 0,
+        "erroredTrials": 1,
+        "passRate": 0.75,
+        "reward": {
+          "count": 4,
+          "total": 4.0,
+          "average": 1.0,
+          "stddev": 0.0,
+          "minimum": 1.0,
+          "maximum": 1.0
+        },
+        "totalTokens": {
+          "count": 4,
+          "total": 87500.0,
+          "average": 21875.0,
+          "stddev": 7377.486936620085,
+          "minimum": 9985.0,
+          "maximum": 30162.0
+        },
+        "agentLatencyMs": {
+          "count": 4,
+          "total": 71546.235,
+          "average": 17886.55875,
+          "stddev": 2552.0534804310405,
+          "minimum": 14325.919,
+          "maximum": 20798.979
+        },
+        "costUsd": {
+          "count": 4,
+          "total": 0.004264550000000001,
+          "average": 0.0010661375000000002,
+          "stddev": 0.00011490149419720354,
+          "minimum": 0.0008846450000000001,
+          "maximum": 0.001196475
+        }
+      },
+      "reportSha256": "e8862ddd088213342eb796d9cca17e1cbcc646886a642dd978bb814a826f276c",
+      "reportGeneratedAt": "2026-11-12T18:49:17.435028+00:00",
+      "fairnessBasis": "lock-and-trial-results",
+      "skillIdentity": [
+        {
+          "name": "curate-semantic-model",
+          "digest": "sha256:c414485315cd475410285a7480fcc142e0518c08e02f4dea8168d5189ce4ec4e",
+          "gitUrl": null,
+          "gitCommitId": null
+        }
+      ]
+    },
+    {
+      "skill": "curate-semantic-model",
+      "variant": "v2",
+      "split": "development",
+      "nativeJobLabel": "catalog-20261112-v8-curate-semantic-model-v2",
+      "summary": {
+        "requestedTrials": 4,
+        "completedTrials": 4,
+        "passedTrials": 3,
+        "verifierFailedTrials": 1,
+        "erroredTrials": 0,
+        "passRate": 0.75,
+        "reward": {
+          "count": 4,
+          "total": 3.0,
+          "average": 0.75,
+          "stddev": 0.4330127018922193,
+          "minimum": 0.0,
+          "maximum": 1.0
+        },
+        "totalTokens": {
+          "count": 4,
+          "total": 86063.0,
+          "average": 21515.75,
+          "stddev": 7038.126362001467,
+          "minimum": 15807.0,
+          "maximum": 33157.0
+        },
+        "agentLatencyMs": {
+          "count": 4,
+          "total": 67100.88,
+          "average": 16775.22,
+          "stddev": 1378.4008891191622,
+          "minimum": 14648.173,
+          "maximum": 18406.002999999997
+        },
+        "costUsd": {
+          "count": 4,
+          "total": 0.0048255,
+          "average": 0.001206375,
+          "stddev": 0.00011578819677540533,
+          "minimum": 0.00102523,
+          "maximum": 0.0013474049999999999
+        }
+      },
+      "reportSha256": "f308ee0038c2cdc0a52282d3d397b9999a16328de5b45282f32d34e41d5e622c",
+      "reportGeneratedAt": "2026-11-12T18:55:15.129751+00:00",
+      "fairnessBasis": "lock-and-trial-results",
+      "skillIdentity": [
+        {
+          "name": "curate-semantic-model",
+          "digest": "sha256:57aa9a415d0189f03fea4d8433ce56284880ac1f289c667c9be374a22be01198",
+          "gitUrl": null,
+          "gitCommitId": null
+        }
+      ]
+    },
+    {
+      "skill": "curate-semantic-model",
+      "variant": "v3",
+      "split": "development",
+      "nativeJobLabel": "catalog-20261112-v8-curate-semantic-model-v3",
+      "summary": {
+        "requestedTrials": 4,
+        "completedTrials": 4,
+        "passedTrials": 2,
+        "verifierFailedTrials": 2,
+        "erroredTrials": 0,
+        "passRate": 0.5,
+        "reward": {
+          "count": 4,
+          "total": 2.0,
+          "average": 0.5,
+          "stddev": 0.5,
+          "minimum": 0.0,
+          "maximum": 1.0
+        },
+        "totalTokens": {
+          "count": 4,
+          "total": 60698.0,
+          "average": 15174.5,
+          "stddev": 3093.704454210195,
+          "minimum": 10321.0,
+          "maximum": 18895.0
+        },
+        "agentLatencyMs": {
+          "count": 4,
+          "total": 62034.351,
+          "average": 15508.58775,
+          "stddev": 1956.4997384026628,
+          "minimum": 12253.773000000001,
+          "maximum": 17430.561
+        },
+        "costUsd": {
+          "count": 4,
+          "total": 0.004359,
+          "average": 0.00108975,
+          "stddev": 0.00018402668519130582,
+          "minimum": 0.00084321,
+          "maximum": 0.0013060749999999999
+        }
+      },
+      "reportSha256": "8339502302a11008f82d5d51f9e104645800e2605afdd88d1fbe2f84132a1640",
+      "reportGeneratedAt": "2026-11-12T19:00:57.158547+00:00",
+      "fairnessBasis": "lock-and-trial-results",
+      "skillIdentity": [
+        {
+          "name": "curate-semantic-model",
+          "digest": "sha256:2a94e5ce0ac0d16d49934936996f6769780ccb3b6223230fe9c33ba01fe3c316",
+          "gitUrl": null,
+          "gitCommitId": null
+        }
+      ]
+    },
+    {
+      "skill": "curate-semantic-model",
+      "variant": "v4",
+      "split": "development",
+      "nativeJobLabel": "catalog-20261112-v8-curate-semantic-model-v4",
+      "summary": {
+        "requestedTrials": 4,
+        "completedTrials": 4,
+        "passedTrials": 3,
+        "verifierFailedTrials": 1,
+        "erroredTrials": 0,
+        "passRate": 0.75,
+        "reward": {
+          "count": 4,
+          "total": 3.0,
+          "average": 0.75,
+          "stddev": 0.4330127018922193,
+          "minimum": 0.0,
+          "maximum": 1.0
+        },
+        "totalTokens": {
+          "count": 4,
+          "total": 70532.0,
+          "average": 17633.0,
+          "stddev": 5503.598913438369,
+          "minimum": 10364.0,
+          "maximum": 23004.0
+        },
+        "agentLatencyMs": {
+          "count": 4,
+          "total": 66243.861,
+          "average": 16560.96525,
+          "stddev": 1553.6568448412884,
+          "minimum": 14032.451,
+          "maximum": 18237.846999999998
+        },
+        "costUsd": {
+          "count": 4,
+          "total": 0.00411018,
+          "average": 0.001027545,
+          "stddev": 0.00015519345242309685,
+          "minimum": 0.00084618,
+          "maximum": 0.0012712600000000002
+        }
+      },
+      "reportSha256": "9ddbea9a87474188514b11c436aa93962841fe35d40e6ebc047709b1c9e6523d",
+      "reportGeneratedAt": "2026-11-12T19:15:25.651898+00:00",
+      "fairnessBasis": "lock-and-trial-results",
+      "skillIdentity": [
+        {
+          "name": "curate-semantic-model",
+          "digest": "sha256:41a287e170c042d903c58891eaa65a98d288ae96b5d69611726c98f728f3b6bd",
+          "gitUrl": null,
+          "gitCommitId": null
+        }
+      ]
+    },
+    {
+      "skill": "curate-semantic-model",
+      "variant": "v5",
+      "split": "development",
+      "nativeJobLabel": "catalog-20261112-v8-curate-semantic-model-v5",
+      "summary": {
+        "requestedTrials": 4,
+        "completedTrials": 4,
+        "passedTrials": 4,
+        "verifierFailedTrials": 0,
+        "erroredTrials": 0,
+        "passRate": 1.0,
+        "reward": {
+          "count": 4,
+          "total": 4.0,
+          "average": 1.0,
+          "stddev": 0.0,
+          "minimum": 1.0,
+          "maximum": 1.0
+        },
+        "totalTokens": {
+          "count": 4,
+          "total": 71649.0,
+          "average": 17912.25,
+          "stddev": 2468.787999707549,
+          "minimum": 14836.0,
+          "maximum": 20386.0
+        },
+        "agentLatencyMs": {
+          "count": 4,
+          "total": 65125.52,
+          "average": 16281.38,
+          "stddev": 383.0923954570229,
+          "minimum": 15771.633,
+          "maximum": 16850.535
+        },
+        "costUsd": {
+          "count": 4,
+          "total": 0.004350365,
+          "average": 0.00108759125,
+          "stddev": 5.00035780438511e-05,
+          "minimum": 0.0010350049999999999,
+          "maximum": 0.00116981
+        }
+      },
+      "reportSha256": "2451a78d0a3bcbab370ec7b2776d949808335f86e4ef16919d81c4dc393fe8e8",
+      "reportGeneratedAt": "2026-11-12T19:28:55.546418+00:00",
+      "fairnessBasis": "lock-and-trial-results",
+      "skillIdentity": [
+        {
+          "name": "curate-semantic-model",
+          "digest": "sha256:e58a70c28c3eb0a38e5b29ca2b3b8189e99562b92239de12a6c7468517b01a5f",
+          "gitUrl": null,
+          "gitCommitId": null
+        }
+      ]
+    },
+    {
+      "skill": "curate-semantic-model",
+      "variant": "v6",
+      "split": "development",
+      "nativeJobLabel": "catalog-20261112-v8-curate-semantic-model-v6",
+      "summary": {
+        "requestedTrials": 4,
+        "completedTrials": 4,
+        "passedTrials": 3,
+        "verifierFailedTrials": 0,
+        "erroredTrials": 1,
+        "passRate": 0.75,
+        "reward": {
+          "count": 4,
+          "total": 3.0,
+          "average": 0.75,
+          "stddev": 0.4330127018922193,
+          "minimum": 0.0,
+          "maximum": 1.0
+        },
+        "totalTokens": {
+          "count": 4,
+          "total": 71105.0,
+          "average": 17776.25,
+          "stddev": 7995.582667166915,
+          "minimum": 10298.0,
+          "maximum": 29722.0
+        },
+        "agentLatencyMs": {
+          "count": 4,
+          "total": 61427.917,
+          "average": 15356.97925,
+          "stddev": 2955.0959806360243,
+          "minimum": 12477.681,
+          "maximum": 20230.87
+        },
+        "costUsd": {
+          "count": 4,
+          "total": 0.004219125,
+          "average": 0.00105478125,
+          "stddev": 0.000176344324028837,
+          "minimum": 0.0009103150000000001,
+          "maximum": 0.0013550799999999998
+        }
+      },
+      "reportSha256": "84a222a4d64ea668fd8a862707c2cd395b5b4e1c65eceed2de0cda9cc5b5a8f1",
+      "reportGeneratedAt": "2026-11-12T19:53:42.808573+00:00",
+      "fairnessBasis": "lock-and-trial-results",
+      "skillIdentity": [
+        {
+          "name": "curate-semantic-model",
+          "digest": "sha256:885ab23ad8e81636131c5049f3cd30c7aea23c26d7ab794903ec835241311f38",
+          "gitUrl": null,
+          "gitCommitId": null
+        }
+      ]
+    },
+    {
+      "skill": "curate-semantic-model",
+      "variant": "v7",
+      "split": "development",
+      "nativeJobLabel": "catalog-20261112-v8-curate-semantic-model-v7",
+      "summary": {
+        "requestedTrials": 4,
+        "completedTrials": 4,
+        "passedTrials": 3,
+        "verifierFailedTrials": 1,
+        "erroredTrials": 0,
+        "passRate": 0.75,
+        "reward": {
+          "count": 4,
+          "total": 3.0,
+          "average": 0.75,
+          "stddev": 0.4330127018922193,
+          "minimum": 0.0,
+          "maximum": 1.0
+        },
+        "totalTokens": {
+          "count": 4,
+          "total": 71935.0,
+          "average": 17983.75,
+          "stddev": 6310.032859462778,
+          "minimum": 10596.0,
+          "maximum": 28023.0
+        },
+        "agentLatencyMs": {
+          "count": 4,
+          "total": 63948.911,
+          "average": 15987.22775,
+          "stddev": 2176.1439254049087,
+          "minimum": 12604.380000000001,
+          "maximum": 18628.587
+        },
+        "costUsd": {
+          "count": 4,
+          "total": 0.00456987,
+          "average": 0.0011424675,
+          "stddev": 0.00019639889296085657,
+          "minimum": 0.00089775,
+          "maximum": 0.001419095
+        }
+      },
+      "reportSha256": "6005c0b7afae779cbdeedb55b1a536a42909e8bb8d6bcdf42f23a456513b3914",
+      "reportGeneratedAt": "2026-11-12T19:53:42.809460+00:00",
+      "fairnessBasis": "lock-and-trial-results",
+      "skillIdentity": [
+        {
+          "name": "curate-semantic-model",
+          "digest": "sha256:856a29793e93784b74f92be90bd5ff2e3c2df921514d78763caf5a4c2d9c48ab",
+          "gitUrl": null,
+          "gitCommitId": null
+        }
+      ]
+    },
+    {
+      "skill": "curate-semantic-model",
+      "variant": "v8",
+      "split": "development",
+      "nativeJobLabel": "catalog-20261112-v8-curate-semantic-model-v8",
+      "summary": {
+        "requestedTrials": 4,
+        "completedTrials": 4,
+        "passedTrials": 2,
+        "verifierFailedTrials": 1,
+        "erroredTrials": 1,
+        "passRate": 0.5,
+        "reward": {
+          "count": 4,
+          "total": 2.0,
+          "average": 0.5,
+          "stddev": 0.5,
+          "minimum": 0.0,
+          "maximum": 1.0
+        },
+        "totalTokens": {
+          "count": 4,
+          "total": 68374.0,
+          "average": 17093.5,
+          "stddev": 7304.509309323933,
+          "minimum": 10027.0,
+          "maximum": 27430.0
+        },
+        "agentLatencyMs": {
+          "count": 4,
+          "total": 64990.599,
+          "average": 16247.64975,
+          "stddev": 3054.442290025004,
+          "minimum": 12664.206,
+          "maximum": 21011.074
+        },
+        "costUsd": {
+          "count": 4,
+          "total": 0.004203854999999999,
+          "average": 0.0010509637499999998,
+          "stddev": 0.0002195996280272066,
+          "minimum": 0.000793525,
+          "maximum": 0.001397145
+        }
+      },
+      "reportSha256": "7951612646ff0fc24ffe97a0823e80ae4c62c1a25f6dd72e14a7f793f268406f",
+      "reportGeneratedAt": "2026-11-12T20:01:20.902583+00:00",
+      "fairnessBasis": "lock-and-trial-results",
+      "skillIdentity": [
+        {
+          "name": "curate-semantic-model",
+          "digest": "sha256:9752b5f66d37a2c99bf08aeebd5229c5c2d04b8d324f0808d335aa67e83d1cd1",
+          "gitUrl": null,
+          "gitCommitId": null
+        }
+      ]
+    },
+    {
+      "skill": "curate-semantic-model",
+      "variant": "frozen-public-replay",
+      "split": "development",
+      "nativeJobLabel": "catalog-20261112-v9-final-curate-semantic-model",
+      "summary": {
+        "requestedTrials": 4,
+        "completedTrials": 4,
+        "passedTrials": 3,
+        "verifierFailedTrials": 1,
+        "erroredTrials": 0,
+        "passRate": 0.75,
+        "reward": {
+          "count": 4,
+          "total": 3.0,
+          "average": 0.75,
+          "stddev": 0.4330127018922193,
+          "minimum": 0.0,
+          "maximum": 1.0
+        },
+        "totalTokens": {
+          "count": 4,
+          "total": 73063.0,
+          "average": 18265.75,
+          "stddev": 4127.857275572885,
+          "minimum": 12595.0,
+          "maximum": 22887.0
+        },
+        "agentLatencyMs": {
+          "count": 4,
+          "total": 65290.416,
+          "average": 16322.604,
+          "stddev": 1763.818021242412,
+          "minimum": 13882.396,
+          "maximum": 18705.833
+        },
+        "costUsd": {
+          "count": 4,
+          "total": 0.00461691,
+          "average": 0.0011542275,
+          "stddev": 0.00016231954120268457,
+          "minimum": 0.0008873449999999999,
+          "maximum": 0.00130108
+        }
+      },
+      "reportSha256": "f2382f20b0d88f2c98b824bc3f2797faa8b6012ad808710f41ca19dc0a6f6ced",
+      "reportGeneratedAt": "2026-11-12T20:01:33.867037+00:00",
+      "fairnessBasis": "lock-and-trial-results",
+      "skillIdentity": [
+        {
+          "name": "curate-semantic-model",
+          "digest": "sha256:e58a70c28c3eb0a38e5b29ca2b3b8189e99562b92239de12a6c7468517b01a5f",
+          "gitUrl": null,
+          "gitCommitId": null
+        }
+      ]
+    },
+    {
+      "skill": "extract-ontologies",
+      "variant": "baseline",
+      "split": "development",
+      "nativeJobLabel": "catalog-20261112-v8-extract-ontologies-base",
+      "summary": {
+        "requestedTrials": 4,
+        "completedTrials": 4,
+        "passedTrials": 4,
+        "verifierFailedTrials": 0,
+        "erroredTrials": 0,
+        "passRate": 1.0,
+        "reward": {
+          "count": 4,
+          "total": 4.0,
+          "average": 1.0,
+          "stddev": 0.0,
+          "minimum": 1.0,
+          "maximum": 1.0
+        },
+        "totalTokens": {
+          "count": 4,
+          "total": 59918.0,
+          "average": 14979.5,
+          "stddev": 8063.006526724384,
+          "minimum": 8406.0,
+          "maximum": 28691.0
+        },
+        "agentLatencyMs": {
+          "count": 4,
+          "total": 57841.693,
+          "average": 14460.42325,
+          "stddev": 1991.3461763207292,
+          "minimum": 11897.506,
+          "maximum": 17410.075
+        },
+        "costUsd": {
+          "count": 4,
+          "total": 0.00282488,
+          "average": 0.00070622,
+          "stddev": 0.00028758190174713705,
+          "minimum": 0.000475265,
+          "maximum": 0.0011928
+        }
+      },
+      "reportSha256": "079ef75d06c02d20176f04c88d7ef70679c060d6fb3a8061e3c67915c6e618ca",
+      "reportGeneratedAt": "2026-11-12T18:28:02.709618+00:00",
+      "fairnessBasis": null,
+      "skillIdentity": [
+        {
+          "name": "extract-ontologies",
+          "digest": "sha256:2f1ec4596317086169f88c5dce5ceaa200f57409b7c2e980155d75643c45f738",
+          "gitUrl": null,
+          "gitCommitId": null
+        }
+      ]
+    },
+    {
+      "skill": "extract-ontologies",
+      "variant": "v1",
+      "split": "development",
+      "nativeJobLabel": "catalog-20261112-v8-extract-ontologies-v1",
+      "summary": {
+        "requestedTrials": 4,
+        "completedTrials": 4,
+        "passedTrials": 4,
+        "verifierFailedTrials": 0,
+        "erroredTrials": 0,
+        "passRate": 1.0,
+        "reward": {
+          "count": 4,
+          "total": 4.0,
+          "average": 1.0,
+          "stddev": 0.0,
+          "minimum": 1.0,
+          "maximum": 1.0
+        },
+        "totalTokens": {
+          "count": 4,
+          "total": 91515.0,
+          "average": 22878.75,
+          "stddev": 10615.099678641742,
+          "minimum": 10697.0,
+          "maximum": 39763.0
+        },
+        "agentLatencyMs": {
+          "count": 4,
+          "total": 60962.19,
+          "average": 15240.5475,
+          "stddev": 1865.7416952660542,
+          "minimum": 12992.172,
+          "maximum": 18178.411
+        },
+        "costUsd": {
+          "count": 4,
+          "total": 0.00372363,
+          "average": 0.0009309075,
+          "stddev": 0.00030840157798923463,
+          "minimum": 0.000472875,
+          "maximum": 0.0012993549999999999
+        }
+      },
+      "reportSha256": "55cf9d3c720cdb3bbe4ea41b17ad91c6e1429e223144f310244ace2b5358480b",
+      "reportGeneratedAt": "2026-11-12T18:55:15.155182+00:00",
+      "fairnessBasis": "lock-and-trial-results",
+      "skillIdentity": [
+        {
+          "name": "extract-ontologies",
+          "digest": "sha256:0c9d19c61e3b6f125f6834dbe51cd7018231cf958ed955430e2c7a6ac2619a9f",
+          "gitUrl": null,
+          "gitCommitId": null
+        }
+      ]
+    },
+    {
+      "skill": "extract-ontologies",
+      "variant": "v2",
+      "split": "development",
+      "nativeJobLabel": "catalog-20261112-v8-extract-ontologies-v2",
+      "summary": {
+        "requestedTrials": 4,
+        "completedTrials": 4,
+        "passedTrials": 2,
+        "verifierFailedTrials": 0,
+        "erroredTrials": 2,
+        "passRate": 0.5,
+        "reward": {
+          "count": 4,
+          "total": 4.0,
+          "average": 1.0,
+          "stddev": 0.0,
+          "minimum": 1.0,
+          "maximum": 1.0
+        },
+        "totalTokens": {
+          "count": 4,
+          "total": 120189.0,
+          "average": 30047.25,
+          "stddev": 18399.732679783694,
+          "minimum": 10536.0,
+          "maximum": 48646.0
+        },
+        "agentLatencyMs": {
+          "count": 4,
+          "total": 80574.756,
+          "average": 20143.689,
+          "stddev": 4367.843449855488,
+          "minimum": 15657.621000000001,
+          "maximum": 24954.23
+        },
+        "costUsd": {
+          "count": 4,
+          "total": 0.004182225,
+          "average": 0.00104555625,
+          "stddev": 0.0005566857859732791,
+          "minimum": 0.000477445,
+          "maximum": 0.0016126600000000001
+        }
+      },
+      "reportSha256": "5c10d72dc32897cc4835c50d00e83bf1120039ab87a15235673ba13c15abb06f",
+      "reportGeneratedAt": "2026-11-12T19:23:00.214924+00:00",
+      "fairnessBasis": "lock-and-trial-results",
+      "skillIdentity": [
+        {
+          "name": "extract-ontologies",
+          "digest": "sha256:008fcdbbf5317e8874d34920302d35b31037dcdc18faeffc422815f9648575cf",
+          "gitUrl": null,
+          "gitCommitId": null
+        }
+      ]
+    },
+    {
+      "skill": "extract-ontologies",
+      "variant": "v3",
+      "split": "development",
+      "nativeJobLabel": "catalog-20261112-v8-extract-ontologies-v3",
+      "summary": {
+        "requestedTrials": 4,
+        "completedTrials": 4,
+        "passedTrials": 3,
+        "verifierFailedTrials": 0,
+        "erroredTrials": 1,
+        "passRate": 0.75,
+        "reward": {
+          "count": 4,
+          "total": 4.0,
+          "average": 1.0,
+          "stddev": 0.0,
+          "minimum": 1.0,
+          "maximum": 1.0
+        },
+        "totalTokens": {
+          "count": 4,
+          "total": 94667.0,
+          "average": 23666.75,
+          "stddev": 12247.712426714632,
+          "minimum": 12986.0,
+          "maximum": 43617.0
+        },
+        "agentLatencyMs": {
+          "count": 4,
+          "total": 76227.92,
+          "average": 19056.98,
+          "stddev": 4953.371093265322,
+          "minimum": 13277.987,
+          "maximum": 24452.757999999998
+        },
+        "costUsd": {
+          "count": 4,
+          "total": 0.004463095,
+          "average": 0.00111577375,
+          "stddev": 0.0005043679312686201,
+          "minimum": 0.00046199000000000007,
+          "maximum": 0.001607745
+        }
+      },
+      "reportSha256": "4582f05e14c179a7710fa1d37ea96a317576a689ad9aa2ebb93d2c35410d308d",
+      "reportGeneratedAt": "2026-11-12T19:28:56.491946+00:00",
+      "fairnessBasis": "lock-and-trial-results",
+      "skillIdentity": [
+        {
+          "name": "extract-ontologies",
+          "digest": "sha256:3ee4ffa09062a2c2645495918f390204a6075d304d4ef57d7bf510052afb1cd6",
+          "gitUrl": null,
+          "gitCommitId": null
+        }
+      ]
+    },
+    {
+      "skill": "extract-ontologies",
+      "variant": "frozen-public-replay",
+      "split": "development",
+      "nativeJobLabel": "catalog-20261112-v9-final-extract-ontologies",
+      "summary": {
+        "requestedTrials": 4,
+        "completedTrials": 4,
+        "passedTrials": 4,
+        "verifierFailedTrials": 0,
+        "erroredTrials": 0,
+        "passRate": 1.0,
+        "reward": {
+          "count": 4,
+          "total": 4.0,
+          "average": 1.0,
+          "stddev": 0.0,
+          "minimum": 1.0,
+          "maximum": 1.0
+        },
+        "totalTokens": {
+          "count": 4,
+          "total": 100989.0,
+          "average": 25247.25,
+          "stddev": 9879.495037070468,
+          "minimum": 10432.0,
+          "maximum": 38099.0
+        },
+        "agentLatencyMs": {
+          "count": 4,
+          "total": 73028.349,
+          "average": 18257.08725,
+          "stddev": 3139.0448508494887,
+          "minimum": 13858.872,
+          "maximum": 22554.818
+        },
+        "costUsd": {
+          "count": 4,
+          "total": 0.0048072950000000005,
+          "average": 0.0012018237500000001,
+          "stddev": 0.0005531294279300167,
+          "minimum": 0.00044503999999999995,
+          "maximum": 0.00188388
+        }
+      },
+      "reportSha256": "ab1a61f2bec39dbfd02022e5b39e562766db09c5ca90e22e621fe3dc7363d0ef",
+      "reportGeneratedAt": "2026-11-12T20:10:48.808039+00:00",
+      "fairnessBasis": "lock-and-trial-results",
+      "skillIdentity": [
+        {
+          "name": "extract-ontologies",
+          "digest": "sha256:2f1ec4596317086169f88c5dce5ceaa200f57409b7c2e980155d75643c45f738",
+          "gitUrl": null,
+          "gitCommitId": null
+        }
+      ]
+    },
+    {
+      "skill": "extract-with-ontology",
+      "variant": "baseline",
+      "split": "development",
+      "nativeJobLabel": "catalog-20261112-v8-extract-with-ontology-base",
+      "summary": {
+        "requestedTrials": 4,
+        "completedTrials": 4,
+        "passedTrials": 2,
+        "verifierFailedTrials": 2,
+        "erroredTrials": 0,
+        "passRate": 0.5,
+        "reward": {
+          "count": 4,
+          "total": 2.0,
+          "average": 0.5,
+          "stddev": 0.5,
+          "minimum": 0.0,
+          "maximum": 1.0
+        },
+        "totalTokens": {
+          "count": 4,
+          "total": 51741.0,
+          "average": 12935.25,
+          "stddev": 3783.181291915575,
+          "minimum": 8087.0,
+          "maximum": 18204.0
+        },
+        "agentLatencyMs": {
+          "count": 4,
+          "total": 78541.21399999999,
+          "average": 19635.303499999998,
+          "stddev": 3455.7131504605904,
+          "minimum": 16195.972999999998,
+          "maximum": 23911.597
+        },
+        "costUsd": {
+          "count": 4,
+          "total": 0.003874855,
+          "average": 0.00096871375,
+          "stddev": 0.0002247251935246413,
+          "minimum": 0.00071383,
+          "maximum": 0.001309595
+        }
+      },
+      "reportSha256": "5f63beb536fc33a3fcd5cbeb08fecfbd5c425b27b0ee643f563bfc9119485766",
+      "reportGeneratedAt": "2026-11-12T18:34:03.652367+00:00",
+      "fairnessBasis": null,
+      "skillIdentity": [
+        {
+          "name": "extract-with-ontology",
+          "digest": "sha256:adc1c9f0f1e15b87dce24bd969e02520dd75d6a4e7f4b6dcf0837a208cd4f56e",
+          "gitUrl": null,
+          "gitCommitId": null
+        }
+      ]
+    },
+    {
+      "skill": "extract-with-ontology",
+      "variant": "v4",
+      "split": "development",
+      "nativeJobLabel": "catalog-20261112-v8-extract-with-ontology-v4",
+      "summary": {
+        "requestedTrials": 4,
+        "completedTrials": 4,
+        "passedTrials": 3,
+        "verifierFailedTrials": 1,
+        "erroredTrials": 0,
+        "passRate": 0.75,
+        "reward": {
+          "count": 4,
+          "total": 3.0,
+          "average": 0.75,
+          "stddev": 0.4330127018922193,
+          "minimum": 0.0,
+          "maximum": 1.0
+        },
+        "totalTokens": {
+          "count": 4,
+          "total": 72909.0,
+          "average": 18227.25,
+          "stddev": 4816.016371182723,
+          "minimum": 13304.0,
+          "maximum": 25832.0
+        },
+        "agentLatencyMs": {
+          "count": 4,
+          "total": 88766.812,
+          "average": 22191.703,
+          "stddev": 3521.523824289209,
+          "minimum": 16146.19,
+          "maximum": 24828.306999999997
+        },
+        "costUsd": {
+          "count": 4,
+          "total": 0.004398579999999999,
+          "average": 0.0010996449999999998,
+          "stddev": 0.00029541555165986096,
+          "minimum": 0.000752545,
+          "maximum": 0.0014459999999999998
+        }
+      },
+      "reportSha256": "23f6423d2ce2f96fb7056847c8126cbd4ca00785ef16d74cf65c32b3bd6f369a",
+      "reportGeneratedAt": "2026-11-12T18:49:17.434160+00:00",
+      "fairnessBasis": "lock-and-trial-results",
+      "skillIdentity": [
+        {
+          "name": "extract-with-ontology",
+          "digest": "sha256:0315e65c1275744a849cba3c43eec06b82bbbc489f305aff9ac9939999cef03e",
+          "gitUrl": null,
+          "gitCommitId": null
+        }
+      ]
+    },
+    {
+      "skill": "extract-with-ontology",
+      "variant": "v5",
+      "split": "development",
+      "nativeJobLabel": "catalog-20261112-v8-extract-with-ontology-v5",
+      "summary": {
+        "requestedTrials": 4,
+        "completedTrials": 4,
+        "passedTrials": 1,
+        "verifierFailedTrials": 0,
+        "erroredTrials": 3,
+        "passRate": 0.25,
+        "reward": {
+          "count": 4,
+          "total": 4.0,
+          "average": 1.0,
+          "stddev": 0.0,
+          "minimum": 1.0,
+          "maximum": 1.0
+        },
+        "totalTokens": {
+          "count": 4,
+          "total": 86190.0,
+          "average": 21547.5,
+          "stddev": 3165.2200950328875,
+          "minimum": 16795.0,
+          "maximum": 25323.0
+        },
+        "agentLatencyMs": {
+          "count": 4,
+          "total": 92252.73000000001,
+          "average": 23063.182500000003,
+          "stddev": 910.3843346228838,
+          "minimum": 22162.889,
+          "maximum": 24360.313000000002
+        },
+        "costUsd": {
+          "count": 4,
+          "total": 0.00423335,
+          "average": 0.0010583375,
+          "stddev": 0.00016919072468297433,
+          "minimum": 0.0008605399999999999,
+          "maximum": 0.00123908
+        }
+      },
+      "reportSha256": "2351113e8fa1cd8ca495d54c450638f6328d003c86d20cefa17aef6de86a47d8",
+      "reportGeneratedAt": "2026-11-12T19:15:25.643914+00:00",
+      "fairnessBasis": "lock-and-trial-results",
+      "skillIdentity": [
+        {
+          "name": "extract-with-ontology",
+          "digest": "sha256:6e335776412aecec4211323358e28ede7040550f3931d7c0d11eea64df8a24db",
+          "gitUrl": null,
+          "gitCommitId": null
+        }
+      ]
+    },
+    {
+      "skill": "extract-with-ontology",
+      "variant": "v6",
+      "split": "development",
+      "nativeJobLabel": "catalog-20261112-v8-extract-with-ontology-v6",
+      "summary": {
+        "requestedTrials": 4,
+        "completedTrials": 4,
+        "passedTrials": 2,
+        "verifierFailedTrials": 2,
+        "erroredTrials": 0,
+        "passRate": 0.5,
+        "reward": {
+          "count": 4,
+          "total": 2.0,
+          "average": 0.5,
+          "stddev": 0.5,
+          "minimum": 0.0,
+          "maximum": 1.0
+        },
+        "totalTokens": {
+          "count": 4,
+          "total": 71025.0,
+          "average": 17756.25,
+          "stddev": 749.7690894535464,
+          "minimum": 16979.0,
+          "maximum": 18585.0
+        },
+        "agentLatencyMs": {
+          "count": 4,
+          "total": 86917.437,
+          "average": 21729.35925,
+          "stddev": 1645.0302299890072,
+          "minimum": 19517.962,
+          "maximum": 24000.441
+        },
+        "costUsd": {
+          "count": 4,
+          "total": 0.004066005,
+          "average": 0.00101650125,
+          "stddev": 0.00011844493680477646,
+          "minimum": 0.000889785,
+          "maximum": 0.00115165
+        }
+      },
+      "reportSha256": "33f97e6a064ef30d19aa25e803495bb668f9219e8aaaf724c5baa7fdf9f463c1",
+      "reportGeneratedAt": "2026-11-12T19:15:25.647649+00:00",
+      "fairnessBasis": "lock-and-trial-results",
+      "skillIdentity": [
+        {
+          "name": "extract-with-ontology",
+          "digest": "sha256:5b730e9bc3163698d841208f9bf123e30bc1ace5f06d134a1ed1193ed890dd9b",
+          "gitUrl": null,
+          "gitCommitId": null
+        }
+      ]
+    },
+    {
+      "skill": "extract-with-ontology",
+      "variant": "v1",
+      "split": "development",
+      "nativeJobLabel": "catalog-20261112-v8-extract-with-ontology-v1",
+      "summary": {
+        "requestedTrials": 4,
+        "completedTrials": 4,
+        "passedTrials": 2,
+        "verifierFailedTrials": 2,
+        "erroredTrials": 0,
+        "passRate": 0.5,
+        "reward": {
+          "count": 4,
+          "total": 2.0,
+          "average": 0.5,
+          "stddev": 0.5,
+          "minimum": 0.0,
+          "maximum": 1.0
+        },
+        "totalTokens": {
+          "count": 4,
+          "total": 50925.0,
+          "average": 12731.25,
+          "stddev": 1717.3257371564662,
+          "minimum": 10784.0,
+          "maximum": 15429.0
+        },
+        "agentLatencyMs": {
+          "count": 4,
+          "total": 66678.121,
+          "average": 16669.53025,
+          "stddev": 759.1157872407772,
+          "minimum": 15940.167000000001,
+          "maximum": 17800.861999999997
+        },
+        "costUsd": {
+          "count": 4,
+          "total": 0.00344754,
+          "average": 0.000861885,
+          "stddev": 8.865755741898153e-05,
+          "minimum": 0.0007479499999999999,
+          "maximum": 0.000982325
+        }
+      },
+      "reportSha256": "028176761c2a4ff10bc693ccd06c435dcd4b7149b5885cf2c11d3227868885c0",
+      "reportGeneratedAt": "2026-11-12T19:23:00.207128+00:00",
+      "fairnessBasis": "lock-and-trial-results",
+      "skillIdentity": [
+        {
+          "name": "extract-with-ontology",
+          "digest": "sha256:ea716cb9877e40398cb5d42c0e31357e9af684a72a41723ac93872a26fbab165",
+          "gitUrl": null,
+          "gitCommitId": null
+        }
+      ]
+    },
+    {
+      "skill": "extract-with-ontology",
+      "variant": "frozen-public-replay",
+      "split": "development",
+      "nativeJobLabel": "catalog-20261112-v9-final-extract-with-ontology",
+      "summary": {
+        "requestedTrials": 4,
+        "completedTrials": 4,
+        "passedTrials": 3,
+        "verifierFailedTrials": 1,
+        "erroredTrials": 0,
+        "passRate": 0.75,
+        "reward": {
+          "count": 4,
+          "total": 3.0,
+          "average": 0.75,
+          "stddev": 0.4330127018922193,
+          "minimum": 0.0,
+          "maximum": 1.0
+        },
+        "totalTokens": {
+          "count": 4,
+          "total": 53209.0,
+          "average": 13302.25,
+          "stddev": 2933.6083902763844,
+          "minimum": 8282.0,
+          "maximum": 15643.0
+        },
+        "agentLatencyMs": {
+          "count": 4,
+          "total": 75881.43000000001,
+          "average": 18970.357500000002,
+          "stddev": 2281.4544361100548,
+          "minimum": 15496.408000000001,
+          "maximum": 21674.021
+        },
+        "costUsd": {
+          "count": 4,
+          "total": 0.003915215,
+          "average": 0.00097880375,
+          "stddev": 0.00011813349659257314,
+          "minimum": 0.000851785,
+          "maximum": 0.0011606899999999998
+        }
+      },
+      "reportSha256": "85b304e7fc0d2a4a1c449eeab22717795a3c6b649526a3f4d8c82630c778f3ca",
+      "reportGeneratedAt": "2026-11-12T20:10:49.776654+00:00",
+      "fairnessBasis": "lock-and-trial-results",
+      "skillIdentity": [
+        {
+          "name": "extract-with-ontology",
+          "digest": "sha256:adc1c9f0f1e15b87dce24bd969e02520dd75d6a4e7f4b6dcf0837a208cd4f56e",
+          "gitUrl": null,
+          "gitCommitId": null
+        }
+      ]
+    }
+  ]
+}

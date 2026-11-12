@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "sourceAggregateSha256": "7a119da39f349a50813c5f470facf98bfba9122aa392ca82b1b467065090d627",
+  "readiness": {
+    "preflight": {
+      "reportsChecked": 1,
+      "receiptSha256": "f0a82c2065587404aaeaba6eb258db8170ab825d140947955411ce80286f6ddd",
+      "traceConfigSha256": "79120039746ab90bc04c425b09a9a942d55dd276773b453a7951200938293d60",
+      "trialsChecked": 6,
+      "passed": false,
+      "owningReportSha256": "750e5c4e41ccb953236922cf321cd6384d2ca984ef6ad6bd53a40d8a138ae70e",
+      "failureCounts": {
+        "missing-required-reward:artifact_gate": 6
+      },
+      "jobsChecked": 1,
+      "guardSha256": "0b04a64967ba8c07391c578bb88aba5c380d1d2e4e949dfe95a66e2deda30a2f"
+    },
+    "cohortStatus": "unconsumed",
+    "requiredRewardKeys": [
+      "artifact_gate",
+      "reward"
+    ],
+    "disposition": "Do not consume or repair this cohort for validation. Before any future use, require an owning Oracle report to pass the generic required-reward-key preflight. Preserve the existing primary-only 6/6 result without describing it as full artifact-gate qualification.",
+    "execution": {
+      "cohortMutation": false,
+      "scoreChanges": 0,
+      "verifierReruns": 0,
+      "additionalModelCalls": 0
+    },
+    "status": "NOT_READY",
+    "canonicalOracle": {
+      "errors": 0,
+      "passed": 6,
+      "trials": 6,
+      "rewardObjectsWithArtifactGate": 0,
+      "rewardObjectsWithPrimaryReward": 6
+    },
+    "schemaVersion": 1,
+    "scope": "legacy broad semantic benchmark"
+  }
+}

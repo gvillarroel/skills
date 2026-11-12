@@ -1,0 +1,9 @@
+variant,split,requested,completed,native_primary_passed,verifier_failed,errors,source_report_sha256,fairness,interpretation
+baseline,development,4,4,3,0,1,fdaf9092fb0d00f7ae110e905cad9cb5bc59297e198bc5faf19f0bdc763e4e67,lock-and-trial-results,Imported baseline; no new physical calls
+v1,development,4,4,4,0,0,fdaf9092fb0d00f7ae110e905cad9cb5bc59297e198bc5faf19f0bdc763e4e67,lock-and-trial-results,Public required-reward interface available
+v2,development,4,4,4,0,0,8db05bf054740c7f22f9311dc34e463b1958b132c23c686eafa2ea949ba4e139,lock-and-trial-results,Public required-reward interface available
+v3,development,4,4,3,0,1,811cd76105dd0321009fe6c8fca46e8cb0cb82331ee3c765ff3cef2afdde3760,lock-and-trial-results,Public required-reward interface available
+v4,development,4,4,4,0,0,acb005c814c23f7599f8222b1edecc6d4a58a17ae91b548e71857a216db19343,lock-and-trial-results,Public required-reward interface available
+fresh-final-v1,development,4,4,4,0,0,0b95ecdeb1d43d3b387383c632d245c3126bbdeefec751ec48ea5773a3e5e5f6,lock-and-trial-results,Public required-reward interface available
+private-baseline,validation,4,4,0,3,1,553c9bc74dd995849b6c1e4173b90404501abcf11b69aa293c087945d9059e53,native lock and trial results,Diagnostics only: required artifact reward absent; no promotion
+private-candidate,validation,4,4,1,2,1,553c9bc74dd995849b6c1e4173b90404501abcf11b69aa293c087945d9059e53,native lock and trial results,Diagnostics only: required artifact reward absent; no promotion

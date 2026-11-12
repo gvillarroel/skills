@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "scope": "Post-study reward-interface preflight regression; no model or verifier calls",
+  "testsPassed": 6,
+  "guardSha256": "0b04a64967ba8c07391c578bb88aba5c380d1d2e4e949dfe95a66e2deda30a2f",
+  "testsSha256": "80f17134842f958256f665b908fad65c46ec4a5a108bf7c719f0214c6e7b31d6",
+  "publicOracleControl": {
+    "schemaVersion": 1,
+    "kind": "canonical-reward-interface-preflight",
+    "notAScorer": true,
+    "passed": true,
+    "reportsChecked": 1,
+    "jobsChecked": 1,
+    "trialsChecked": 2,
+    "requiredRewardKeys": [
+      "artifact_gate",
+      "reward"
+    ],
+    "failureCounts": {},
+    "limits": "Trusted native reports and actual canonical Oracle provenance remain prerequisites; no semantic score is created or repaired.",
+    "configSha256": "79120039746ab90bc04c425b09a9a942d55dd276773b453a7951200938293d60",
+    "sourceReportSha256": [
+      "0f9e4f36985edc8778452c8520fe992c64b8d657fa615365f11d545d56d53760"
+    ]
+  },
+  "privateOracleNegativeControl": {
+    "schemaVersion": 1,
+    "kind": "canonical-reward-interface-preflight",
+    "notAScorer": true,
+    "passed": false,
+    "reportsChecked": 1,
+    "jobsChecked": 1,
+    "trialsChecked": 2,
+    "requiredRewardKeys": [
+      "artifact_gate",
+      "reward"
+    ],
+    "failureCounts": {
+      "missing-required-reward:artifact_gate": 2
+    },
+    "limits": "Trusted native reports and actual canonical Oracle provenance remain prerequisites; no semantic score is created or repaired.",
+    "configSha256": "79120039746ab90bc04c425b09a9a942d55dd276773b453a7951200938293d60",
+    "sourceReportSha256": [
+      "0a9713c15082a208d0154712784f9cbbc3c6612b6583c0d3463a81d515f867eb"
+    ]
+  },
+  "privatePeerReceiptSha256": "079a9ba221fb482bc928e4665adfe4122a27635d305ca63083fbf435d63780e1",
+  "doesNotRepairConsumedStudy": true
+}

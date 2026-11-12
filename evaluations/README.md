@@ -98,6 +98,14 @@ Run bundled validators, builders, schema checks, and exact-path smoke tests with
 
 Prefer small fixtures. Verify exit codes, exact output paths, non-empty files, machine-readable fields, and deterministic reruns.
 
+For native Harbor studies, also verify every required reward key against actual
+packaged canonical Oracle output before sealing or task-model inference. A
+primary-reward pass does not prove that a later required gate is satisfiable.
+Use the [native reward-contract preflight](../projects/semantic-skill-evaluation/README.md)
+on the owning Oracle report for each cohort. Preserve an invalid instrument and
+its scores; correct a future version before use rather than aliasing or rescoring
+a consumed gate. The preflight checks an interface, not semantic correctness.
+
 ### Gate 2: Isolated Spark forward tests
 
 Use the runtime payload unless the task explicitly maintains an acceptance fixture. The runtime profile copies only the target bundle and excludes `assets/examples/`, dependency folders, caches, and build output.

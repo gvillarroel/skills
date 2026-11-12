@@ -9,6 +9,7 @@ A maintained collection of reusable skills, compact references, deterministic he
 - [Agent instructions](../AGENTS.md)
 - [Skill backlog and validation status](../SKILLS.md)
 - [Evaluation methodology](../evaluations/README.md)
+- [Reviewed skill evaluation reports](evaluation-reports.md)
 - [Skill authoring and generated bundle validation](skill-authoring.md)
 - [Choose and install a host-specific assistant UI skill](desktop-plugin-ui.md)
 - [Rich plugin interface lab, host alternatives and validation](plugin-ui-rich-interfaces.md)

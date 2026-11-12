@@ -49,6 +49,13 @@ jobs:
       - name: Audit runtime and full skill bundles
         run: uv run --script scripts/audit-skill-authoring.py --check-bundles --output dist/skill-authoring-audit.json
 
+      - name: Test experimental semantic audit and reward preflight
+        env:
+          PYTHONDONTWRITEBYTECODE: "1"
+        run: |
+          uv run --script projects/semantic-skill-evaluation/scripts/test_native_reward_contract.py
+          uv run --script projects/semantic-skill-evaluation/scripts/test_audit_catalog_projection.py
+
       - name: Validate diagram-type coverage
         run: uv run --script scripts/validate-diagram-type-coverage.py --disable-mermaid-browser-sandbox
 

@@ -1,0 +1,41 @@
+{
+  "holdoutReleased": false,
+  "ledger": {
+    "eventCount": 68,
+    "headSha256": "17b5c3ca91475e2f2405464cfb04b2d5cd4ff93d65e1b0a15e1ffd747db52ce1"
+  },
+  "progress": {
+    "completedCount": 4,
+    "completionPercent": 100.0,
+    "stageCount": 4
+  },
+  "publicationPolicy": "indexes-and-result-tables-only-v1",
+  "resultIndex": [
+    {
+      "artifactType": "file",
+      "byteCount": 2070,
+      "evidenceId": "metric-interface-public-appendix-v1",
+      "fileCount": 1,
+      "kind": "final-report",
+      "role": "publication",
+      "sha256": "8069742cbd65a448776683179c73069790bc1417d687faf7b46db02ca8f68cdb",
+      "stageId": "metric-interface-disposition",
+      "visibility": "public"
+    }
+  ],
+  "resultTables": [
+    {
+      "byteCount": 1471,
+      "path": "tables/native-outcomes.table.csv",
+      "sha256": "cb1979f38adaefa566e99a2743a0ca95aec1d513850b44605e5baa3279379f3e"
+    }
+  ],
+  "schemaVersion": 1,
+  "study": {
+    "comparisonProfile": "projection-evolution-luna-low-pi140-harbor018-retry0",
+    "createdAt": "2026-11-12T21:12:02Z",
+    "studyId": "projection-invocation-evolution-20261112",
+    "title": "Projection audit invocation evolution"
+  },
+  "validationReleased": true
+}

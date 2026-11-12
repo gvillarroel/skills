@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "source": "Independent inspection of actual archived public final artifacts; native qualification copied unchanged",
+  "notANewScorer": true,
+  "inspectorSha256": "ebd704df1abcc8ab23c25022851c9ef1abe34e6599f4154db239bf711fcfce83",
+  "curationSelectedView": {
+    "included": [
+      "semantic_changes",
+      "unchanged_ids"
+    ],
+    "excluded": [
+      "evidence",
+      "projection_losses",
+      "review_changes"
+    ],
+    "interpretation": "A deliberately partial fact view; agreement does not prove full-report reproducibility or correctness"
+  },
+  "aggregateRows": [
+    {
+      "scope": "curation-v5-development",
+      "summary": {
+        "task_pairs": 2,
+        "model_agreement_pairs": 2,
+        "qualified_model_agreement_pairs": 2,
+        "artifact_view_agreement_pairs": 2
+      },
+      "inspectionReceiptSha256": "0f6dc6b030e705df59555dc75ec1ce087295d5fd54ca5e2871b9869c54a05058"
+    },
+    {
+      "scope": "curation-frozen-replay",
+      "summary": {
+        "task_pairs": 2,
+        "model_agreement_pairs": 2,
+        "qualified_model_agreement_pairs": 1,
+        "artifact_view_agreement_pairs": 1
+      },
+      "inspectionReceiptSha256": "f4962e0727fb467a86a6543bd7d1f50f3e7de2e25df8481a556a4174fed83d88"
+    },
+    {
+      "scope": "authoring-unchanged-replay",
+      "summary": {
+        "task_pairs": 2,
+        "model_agreement_pairs": 2,
+        "qualified_model_agreement_pairs": 2,
+        "artifact_view_agreement_pairs": 2
+      },
+      "inspectionReceiptSha256": "6fdd817812aa7fa1fee25c3e8aa1650be560c39371adf57d0df7119cad6b6678"
+    },
+    {
+      "scope": "guided-unchanged-replay",
+      "summary": {
+        "task_pairs": 2,
+        "model_agreement_pairs": 1,
+        "qualified_model_agreement_pairs": 1,
+        "artifact_view_agreement_pairs": 1
+      },
+      "inspectionReceiptSha256": "690270e4885fb31c2c4952b6bfa389367add69841aa2cd7ca03a752544d714ec"
+    }
+  ],
+  "curationReplayDisagreementDecomposition": {
+    "differingPairs": 1,
+    "findings": [
+      {
+        "differingTopLevelSections": [
+          "projection_losses"
+        ],
+        "differingProjectionLossFields": [
+          "description_certified"
+        ],
+        "selectedSemanticChangesAndUnchangedIdsEqual": true,
+        "oneNativeQualifiedAndOneNativeFailed": true
+      }
+    ]
+  }
+}

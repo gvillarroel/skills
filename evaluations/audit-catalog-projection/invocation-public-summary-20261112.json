@@ -1,0 +1,427 @@
+{
+  "schemaVersion": 1,
+  "source": "Owning native Harbor final-report.json aggregates; no rescoring or private data read",
+  "scope": "Invocation reliability of a bounded structural projection engine, not ontology semantic truth",
+  "rows": [
+    {
+      "variant": "baseline",
+      "split": "development",
+      "nativeJobLabel": "projection-20261112-v1-candidate",
+      "summary": {
+        "requestedTrials": 4,
+        "completedTrials": 4,
+        "passedTrials": 3,
+        "verifierFailedTrials": 0,
+        "erroredTrials": 1,
+        "passRate": 0.75,
+        "reward": {
+          "count": 4,
+          "total": 4.0,
+          "average": 1.0,
+          "stddev": 0.0,
+          "minimum": 1.0,
+          "maximum": 1.0
+        },
+        "totalTokens": {
+          "count": 4,
+          "total": 92526.0,
+          "average": 23131.5,
+          "stddev": 4532.2908390790635,
+          "minimum": 16999.0,
+          "maximum": 29330.0
+        },
+        "agentLatencyMs": {
+          "count": 4,
+          "total": 107241.91799999999,
+          "average": 26810.479499999998,
+          "stddev": 6648.348529689252,
+          "minimum": 16724.28,
+          "maximum": 34296.439
+        },
+        "costUsd": {
+          "count": 4,
+          "total": 0.00803508,
+          "average": 0.00200877,
+          "stddev": 0.00043523179367435926,
+          "minimum": 0.001549675,
+          "maximum": 0.002656185
+        }
+      },
+      "skillIdentity": [
+        {
+          "name": "audit-catalog-projection",
+          "digest": "sha256:c9a50e87e5cb54e8850c6a57caccd93156ab210c3c2ab4d4ba6d82c99ff58905",
+          "gitUrl": null,
+          "gitCommitId": null
+        }
+      ],
+      "nativeFairnessBasis": "lock-and-trial-results",
+      "sourceReportSha256": "fdaf9092fb0d00f7ae110e905cad9cb5bc59297e198bc5faf19f0bdc763e4e67"
+    },
+    {
+      "variant": "v1",
+      "split": "development",
+      "nativeJobLabel": "projection-evolve-20261112-v1",
+      "summary": {
+        "requestedTrials": 4,
+        "completedTrials": 4,
+        "passedTrials": 4,
+        "verifierFailedTrials": 0,
+        "erroredTrials": 0,
+        "passRate": 1.0,
+        "reward": {
+          "count": 4,
+          "total": 4.0,
+          "average": 1.0,
+          "stddev": 0.0,
+          "minimum": 1.0,
+          "maximum": 1.0
+        },
+        "totalTokens": {
+          "count": 4,
+          "total": 77323.0,
+          "average": 19330.75,
+          "stddev": 4962.353089764975,
+          "minimum": 15391.0,
+          "maximum": 27843.0
+        },
+        "agentLatencyMs": {
+          "count": 4,
+          "total": 76820.229,
+          "average": 19205.05725,
+          "stddev": 3209.5264198970517,
+          "minimum": 15218.685000000001,
+          "maximum": 24106.507
+        },
+        "costUsd": {
+          "count": 4,
+          "total": 0.005485865,
+          "average": 0.00137146625,
+          "stddev": 0.00042287630378715665,
+          "minimum": 0.00091869,
+          "maximum": 0.0019703750000000003
+        }
+      },
+      "skillIdentity": [
+        {
+          "name": "audit-catalog-projection",
+          "digest": "sha256:a959fccd3eedeeaad160dafcdd006cd00432bb7ad3b37082c396753b934ed9b4",
+          "gitUrl": null,
+          "gitCommitId": null
+        }
+      ],
+      "nativeFairnessBasis": "lock-and-trial-results",
+      "sourceReportSha256": "fdaf9092fb0d00f7ae110e905cad9cb5bc59297e198bc5faf19f0bdc763e4e67"
+    },
+    {
+      "variant": "v2",
+      "split": "development",
+      "nativeJobLabel": "projection-evolve-20261112-v2",
+      "summary": {
+        "requestedTrials": 4,
+        "completedTrials": 4,
+        "passedTrials": 4,
+        "verifierFailedTrials": 0,
+        "erroredTrials": 0,
+        "passRate": 1.0,
+        "reward": {
+          "count": 4,
+          "total": 4.0,
+          "average": 1.0,
+          "stddev": 0.0,
+          "minimum": 1.0,
+          "maximum": 1.0
+        },
+        "totalTokens": {
+          "count": 4,
+          "total": 76082.0,
+          "average": 19020.5,
+          "stddev": 5202.889701886827,
+          "minimum": 12297.0,
+          "maximum": 26631.0
+        },
+        "agentLatencyMs": {
+          "count": 4,
+          "total": 68980.78,
+          "average": 17245.195,
+          "stddev": 2876.1905070400844,
+          "minimum": 13660.769,
+          "maximum": 21637.216
+        },
+        "costUsd": {
+          "count": 4,
+          "total": 0.00492324,
+          "average": 0.00123081,
+          "stddev": 0.00031874370148679006,
+          "minimum": 0.00091785,
+          "maximum": 0.0017337599999999998
+        }
+      },
+      "skillIdentity": [
+        {
+          "name": "audit-catalog-projection",
+          "digest": "sha256:5dc18d476df936c5d33319fb6f3fa9052f65e6403038daa7fcc2e81b1fc59a2a",
+          "gitUrl": null,
+          "gitCommitId": null
+        }
+      ],
+      "nativeFairnessBasis": "lock-and-trial-results",
+      "sourceReportSha256": "8db05bf054740c7f22f9311dc34e463b1958b132c23c686eafa2ea949ba4e139"
+    },
+    {
+      "variant": "v3",
+      "split": "development",
+      "nativeJobLabel": "projection-evolve-20261112-v3",
+      "summary": {
+        "requestedTrials": 4,
+        "completedTrials": 4,
+        "passedTrials": 3,
+        "verifierFailedTrials": 0,
+        "erroredTrials": 1,
+        "passRate": 0.75,
+        "reward": {
+          "count": 4,
+          "total": 4.0,
+          "average": 1.0,
+          "stddev": 0.0,
+          "minimum": 1.0,
+          "maximum": 1.0
+        },
+        "totalTokens": {
+          "count": 4,
+          "total": 166136.0,
+          "average": 41534.0,
+          "stddev": 24500.431373753403,
+          "minimum": 22060.0,
+          "maximum": 83453.0
+        },
+        "agentLatencyMs": {
+          "count": 4,
+          "total": 90119.426,
+          "average": 22529.8565,
+          "stddev": 3073.0314107087715,
+          "minimum": 17702.296000000002,
+          "maximum": 25719.933999999997
+        },
+        "costUsd": {
+          "count": 4,
+          "total": 0.00698102,
+          "average": 0.001745255,
+          "stddev": 0.0005295090939374884,
+          "minimum": 0.0011091500000000002,
+          "maximum": 0.00250352
+        }
+      },
+      "skillIdentity": [
+        {
+          "name": "audit-catalog-projection",
+          "digest": "sha256:106e01ecd9e3233c7a4b74303d3724b781dacbcff114b917b5c357241bc53d85",
+          "gitUrl": null,
+          "gitCommitId": null
+        }
+      ],
+      "nativeFairnessBasis": "lock-and-trial-results",
+      "sourceReportSha256": "811cd76105dd0321009fe6c8fca46e8cb0cb82331ee3c765ff3cef2afdde3760"
+    },
+    {
+      "variant": "v4",
+      "split": "development",
+      "nativeJobLabel": "projection-evolve-20261112-v4",
+      "summary": {
+        "requestedTrials": 4,
+        "completedTrials": 4,
+        "passedTrials": 4,
+        "verifierFailedTrials": 0,
+        "erroredTrials": 0,
+        "passRate": 1.0,
+        "reward": {
+          "count": 4,
+          "total": 4.0,
+          "average": 1.0,
+          "stddev": 0.0,
+          "minimum": 1.0,
+          "maximum": 1.0
+        },
+        "totalTokens": {
+          "count": 4,
+          "total": 90003.0,
+          "average": 22500.75,
+          "stddev": 3358.558051828195,
+          "minimum": 17201.0,
+          "maximum": 26245.0
+        },
+        "agentLatencyMs": {
+          "count": 4,
+          "total": 86066.789,
+          "average": 21516.69725,
+          "stddev": 2801.246092448893,
+          "minimum": 16949.457,
+          "maximum": 24340.501
+        },
+        "costUsd": {
+          "count": 4,
+          "total": 0.005467965,
+          "average": 0.00136699125,
+          "stddev": 0.00021343872535153379,
+          "minimum": 0.00113987,
+          "maximum": 0.00167455
+        }
+      },
+      "skillIdentity": [
+        {
+          "name": "audit-catalog-projection",
+          "digest": "sha256:5f7901febc03666384652e78b9774cb11da835a38577602fd55c5f8bddcbef78",
+          "gitUrl": null,
+          "gitCommitId": null
+        }
+      ],
+      "nativeFairnessBasis": "lock-and-trial-results",
+      "sourceReportSha256": "acb005c814c23f7599f8222b1edecc6d4a58a17ae91b548e71857a216db19343"
+    },
+    {
+      "variant": "fresh-final-v1",
+      "split": "development",
+      "nativeJobLabel": "projection-evolve-20261112-final-public",
+      "summary": {
+        "requestedTrials": 4,
+        "completedTrials": 4,
+        "passedTrials": 4,
+        "verifierFailedTrials": 0,
+        "erroredTrials": 0,
+        "passRate": 1.0,
+        "reward": {
+          "count": 4,
+          "total": 4.0,
+          "average": 1.0,
+          "stddev": 0.0,
+          "minimum": 1.0,
+          "maximum": 1.0
+        },
+        "totalTokens": {
+          "count": 4,
+          "total": 87171.0,
+          "average": 21792.75,
+          "stddev": 2674.8961077955905,
+          "minimum": 17594.0,
+          "maximum": 25037.0
+        },
+        "agentLatencyMs": {
+          "count": 4,
+          "total": 75792.529,
+          "average": 18948.13225,
+          "stddev": 1323.6110546696452,
+          "minimum": 16703.468999999997,
+          "maximum": 19958.722
+        },
+        "costUsd": {
+          "count": 4,
+          "total": 0.005666714999999999,
+          "average": 0.0014166787499999998,
+          "stddev": 9.434843986355842e-05,
+          "minimum": 0.0012780299999999999,
+          "maximum": 0.001536895
+        }
+      },
+      "skillIdentity": [
+        {
+          "name": "audit-catalog-projection",
+          "digest": "sha256:a959fccd3eedeeaad160dafcdd006cd00432bb7ad3b37082c396753b934ed9b4",
+          "gitUrl": null,
+          "gitCommitId": null
+        }
+      ],
+      "nativeFairnessBasis": "lock-and-trial-results",
+      "sourceReportSha256": "0b95ecdeb1d43d3b387383c632d245c3126bbdeefec751ec48ea5773a3e5e5f6"
+    }
+  ],
+  "repetition": [
+    {
+      "variant": "v1",
+      "summary": {
+        "taskPairs": 2,
+        "rawEqualPairs": 2,
+        "qualifiedEqualPairs": 2,
+        "reportFilesPerAttempt": 5
+      },
+      "sourceInspectionSha256": "2c59f4741905e735525f55bcb7cf96ccb4a2c40e716b549c2dc5030ea77878ee"
+    },
+    {
+      "variant": "v2",
+      "summary": {
+        "taskPairs": 2,
+        "rawEqualPairs": 2,
+        "qualifiedEqualPairs": 2,
+        "reportFilesPerAttempt": 5
+      },
+      "sourceInspectionSha256": "7c87cbf39ab80219159941d23748d87c8f9b5917dd0a1b6b06815956a8c12a2d"
+    },
+    {
+      "variant": "v3",
+      "summary": {
+        "taskPairs": 2,
+        "rawEqualPairs": 2,
+        "qualifiedEqualPairs": 1,
+        "reportFilesPerAttempt": 5
+      },
+      "sourceInspectionSha256": "dfd0473ccf53c869bfc49b46cb1e23dd99553c2d1f00eba88dfe7cecd4316788"
+    },
+    {
+      "variant": "v4",
+      "summary": {
+        "taskPairs": 2,
+        "rawEqualPairs": 2,
+        "qualifiedEqualPairs": 2,
+        "reportFilesPerAttempt": 5
+      },
+      "sourceInspectionSha256": "17a8f8310acd9ae334e14d941357903d52ca58d50188300090827e9ff466cedc"
+    },
+    {
+      "variant": "fresh-final-v1",
+      "summary": {
+        "taskPairs": 2,
+        "rawEqualPairs": 2,
+        "qualifiedEqualPairs": 2,
+        "reportFilesPerAttempt": 5
+      },
+      "sourceInspectionSha256": "81453ebab59d815e77fc72ebab5c676a72ddd3084892017ce0ee36ad68f869af"
+    }
+  ],
+  "winner": {
+    "variant": "v1",
+    "digest": "sha256:a959fccd3eedeeaad160dafcdd006cd00432bb7ad3b37082c396753b934ed9b4",
+    "publicQualified": 4,
+    "attempts": 4,
+    "errors": 0,
+    "qualifiedRawEqualPairs": 2,
+    "changedFiles": 1,
+    "changedLines": 7,
+    "sourceEdits": {
+      "v1": 7,
+      "v2": 11,
+      "v3": 11,
+      "v4": 11
+    }
+  },
+  "threeConsecutiveNonimprovements": [
+    "v2",
+    "v3",
+    "v4"
+  ],
+  "unusedExploratoryCapacity": "v5-v12 not prepared or run",
+  "publicFreshGate": {
+    "passed": true,
+    "decision": "pass",
+    "candidateDigest": "sha256:a959fccd3eedeeaad160dafcdd006cd00432bb7ad3b37082c396753b934ed9b4",
+    "uniqueTrials": 4,
+    "uniqueTasks": 2,
+    "passedTrials": 4,
+    "candidateErrors": 0,
+    "fairnessBasis": "trial-lock-and-result",
+    "attemptIndependenceVerified": true
+  },
+  "gateReceiptSha256": "2452a1f46ee000010e34cbb82bc0d05c6486b74ea5dc98143e14f0c3263ff0cc",
+  "countDefinition": "Original broad study84, fixed pilot12, new exploration16 plus fresh4 are distinct task-model calls; c9 baseline and diagnostic imports are not new calls",
+  "priorFixedPilotPhysicalAttempts": 12,
+  "newPublicPhysicalAttempts": 20,
+  "privateGate": "See separately released aggregate after all8paired task-model calls; not inferred here"
+}

@@ -1,0 +1,155 @@
+{
+  "schemaVersion": 1,
+  "status": "experimental-prototype-not-promoted",
+  "candidateDigest": "sha256:a959fccd3eedeeaad160dafcdd006cd00432bb7ad3b37082c396753b934ed9b4",
+  "canonicalSkillChanges": 0,
+  "privateCohortConsumed": true,
+  "definition": "Native primary pass counts are diagnostics; the declared required artifact reward is absent, so this phase cannot certify the full gate. Other required execution/repetition gates also fail.",
+  "approvedReceipts": [
+    {
+      "sourceAggregateSha256": "44ffda441ee1d91bfdb5b95293acac936542701105c2b6e8bf2ebbf36c4c66a2",
+      "approvedAggregate": {
+        "schemaVersion": 1,
+        "study": "audit-catalog-projection invocation-only evolution",
+        "execution": {
+          "originalPendingScaffoldsPerArm": 4,
+          "candidateAttemptBudget": 8,
+          "additionalCalls": 0,
+          "originalCalls": 0,
+          "correctedActualCalls": 8,
+          "originalHostImportFailures": 2
+        },
+        "semantic_status": "not_checked",
+        "baseline": {
+          "qualified": 0,
+          "requested": 4,
+          "retries": 0,
+          "verifierFailed": 3,
+          "errors": 1,
+          "allReportedRewardMean": 0.25,
+          "skillSha256": "c9a50e87e5cb54e8850c6a57caccd93156ab210c3c2ab4d4ba6d82c99ff58905",
+          "requiredArtifactRewards": {
+            "artifact_gate": {
+              "requested": 4,
+              "present": 0
+            }
+          },
+          "strictQualifiedMeanReward": 0.0,
+          "completed": 4
+        },
+        "repeatability": {
+          "semanticCorePairs": {
+            "equal": 1,
+            "measurable": 2
+          },
+          "rawArtifactAndContractHashesReportedSeparately": true,
+          "rawHelperReportBytePairs": {
+            "equal": 1,
+            "measurable": 2
+          }
+        },
+        "sourceReportSha256": "553c9bc74dd995849b6c1e4173b90404501abcf11b69aa293c087945d9059e53",
+        "noPrivateIdentifiersOrCaseContent": true,
+        "fairness": {
+          "skillIdentityMatchedExpectedDigests": true,
+          "basis": "native lock and trial results",
+          "sourceChecksumsMatched": true,
+          "strictLockAndTrialResultCheckPassed": true,
+          "warning": null
+        },
+        "candidate": {
+          "qualified": 1,
+          "requested": 4,
+          "retries": 0,
+          "verifierFailed": 2,
+          "errors": 1,
+          "allReportedRewardMean": 0.5,
+          "skillSha256": "a959fccd3eedeeaad160dafcdd006cd00432bb7ad3b37082c396753b934ed9b4",
+          "requiredArtifactRewards": {
+            "artifact_gate": {
+              "requested": 4,
+              "present": 0
+            }
+          },
+          "strictQualifiedMeanReward": 0.25,
+          "completed": 4
+        },
+        "model": "github-copilot/gpt-6-luna",
+        "schema2TraceGate": {
+          "validationDecision": "keep-baseline",
+          "candidateQualified": false,
+          "strictErrors": 1,
+          "candidateDevelopmentGate": "pass",
+          "meanGain": 0.25,
+          "blockedBy": [
+            "candidate job has a strict execution error",
+            "required artifact reward absent in baseline and candidate holdout outputs",
+            "only one of two candidate semantic-core pairs agreed"
+          ],
+          "perTaskRegressions": false,
+          "requiredRewardsComplete": false,
+          "candidateDigestExact": true
+        }
+      }
+    },
+    {
+      "sourceAggregateSha256": "8069742cbd65a448776683179c73069790bc1417d687faf7b46db02ca8f68cdb",
+      "approvedAggregate": {
+        "limitations": [
+          "The consumed cohort does not support a fresh qualification after this interface finding.",
+          "The candidate remains unqualified under other preregistered gates.",
+          "No task-level case content is included."
+        ],
+        "schemaVersion": 1,
+        "disposition": {
+          "futurePreflight": "Before any task-model calls, verify native Oracle reward keys satisfy every configured required reward key.",
+          "rescore": false,
+          "rewardsPreserved": true,
+          "candidatePromotion": false,
+          "gateRerun": false,
+          "rewardAlias": false
+        },
+        "priorSummarySha256": "44ffda441ee1d91bfdb5b95293acac936542701105c2b6e8bf2ebbf36c4c66a2",
+        "review": {
+          "peerReceiptSha256": "b68ef75a80491b6406e2a4a8182449150926e74d345999bcb73b54ac45dbf3d9",
+          "independentPeerReview": "confirmed",
+          "localReadOnlyAuditSha256": "24a9e11a31bf82fea4012e5ab66a6d3a54cec78c1baacd2a9a0f5d22812bdd27"
+        },
+        "independentGates": {
+          "candidatePromoted": false,
+          "candidateStrictExecutionErrors": 1,
+          "candidateSemanticCorePairs": {
+            "equal": 1,
+            "total": 2
+          },
+          "decision": "keep-baseline"
+        },
+        "semantic_status": "not_checked",
+        "finding": {
+          "classification": "required reward key mismatch",
+          "configuredMetricEmissionCount": 0,
+          "interpretation": "The schema-2 required artifact reward was not produced by either task verifier. Its absence is an instrument interface defect, not an observed task-quality failure.",
+          "configuredRequiredMetric": "artifact_gate",
+          "pairedValidation": {
+            "candidateTrials": 4,
+            "baselineTrials": 4,
+            "requiredArtifactRewardPresentByArm": {
+              "baseline": 0,
+              "candidate": 0
+            },
+            "rawRewardResultPairsAgree": 8,
+            "declaredPrimaryRewardKey": "reward"
+          },
+          "canonicalOracle": {
+            "requiredArtifactRewardPresent": 0,
+            "errors": 0,
+            "completed": 2,
+            "emittedMetricKey": "reward",
+            "primaryRewardReportsAgree": 2
+          }
+        },
+        "type": "append-only metric-interface disposition"
+      }
+    }
+  ]
+}

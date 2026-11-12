@@ -1,0 +1,29 @@
+{
+  "holdoutReleased": false,
+  "ledger": {
+    "eventCount": 68,
+    "headSha256": "caed2006d292b253692a467dc904a2fddad1966c73aef5f04b3cb6cb100174c8"
+  },
+  "progress": {
+    "completedCount": 1,
+    "completionPercent": 33.33,
+    "stageCount": 3
+  },
+  "publicationPolicy": "indexes-and-result-tables-only-v1",
+  "resultIndex": [],
+  "resultTables": [
+    {
+      "byteCount": 4284,
+      "path": "tables/native-public.table.csv",
+      "sha256": "7df29db2a88095e5e66f7357412637d5cc6aabf4d8f865492958abac51ddd28e"
+    }
+  ],
+  "schemaVersion": 1,
+  "study": {
+    "comparisonProfile": "catalog-luna-low-pi14-harbor018-paired-v4",
+    "createdAt": "2026-11-12T19:34:04Z",
+    "studyId": "auto-ontology-integration-v5-20261112",
+    "title": "Catalog preservation public continuation and frozen validation"
+  },
+  "validationReleased": false
+}

@@ -1,0 +1,29 @@
+{
+  "holdoutReleased": false,
+  "ledger": {
+    "eventCount": 21,
+    "headSha256": "f7929d4355d1b5b97081a63426aa665c5fb486685b9e17366dc22b2aac148f67"
+  },
+  "progress": {
+    "completedCount": 0,
+    "completionPercent": 0.0,
+    "stageCount": 2
+  },
+  "publicationPolicy": "indexes-and-result-tables-only-v1",
+  "resultIndex": [],
+  "resultTables": [
+    {
+      "byteCount": 737,
+      "path": "tables/native-outcomes.table.csv",
+      "sha256": "8b54c9d1ff7b9bacdcd3a9f5fb002fb43acca842690a3ef4399680e2d692c40b"
+    }
+  ],
+  "schemaVersion": 1,
+  "study": {
+    "comparisonProfile": "projection-v1-luna-pi140-harbor018-two-attempts-retry0",
+    "createdAt": "2026-11-12T20:21:17Z",
+    "studyId": "projection-auditor-qualification-20261112",
+    "title": "Fixed projection auditor qualification"
+  },
+  "validationReleased": false
+}

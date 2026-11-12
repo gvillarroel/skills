@@ -1,0 +1,4 @@
+variant,split,requested,completed,native_primary_passed,verifier_failed,errors,source_report_sha256,fairness,interpretation
+projection-20261112-v1-broad-control,development,4,4,0,3,1,4009439a7af3c0f0b8299223ebca1ab6e489eeb1b51936242f550f53421f5aca,not available,Closed failed public gate; cross-skill fair delta unavailable
+projection-20261112-v1-candidate,development,4,4,3,0,1,f29aad83ba933a5c99c8d9e1200b86f1cc23b66ccdbc9da25b85e2904539bfd5,lock-and-trial-results,Closed failed public gate; cross-skill fair delta unavailable
+projection-20261112-v1-fresh-replay,development,4,4,2,0,2,f29aad83ba933a5c99c8d9e1200b86f1cc23b66ccdbc9da25b85e2904539bfd5,lock-and-trial-results,Closed failed public gate; cross-skill fair delta unavailable

@@ -66,4 +66,5 @@ The [usage and maintenance guide](docs/getting-started.md) covers local installa
 - [Repository layout and validation](docs/repository-guide.md)
 - [Skill backlog and validation status](SKILLS.md)
 - [Evaluation methodology](evaluations/README.md)
+- [Reviewed skill evaluation reports](docs/evaluation-reports.md)
 - [AGENTS.md](AGENTS.md)
