@@ -43,6 +43,10 @@ uv run --script scripts/audit-skill-authoring.py --check-bundles --output evalua
 
 When published examples or the Pages pipeline change, also run `uv run --script scripts/build-pages.py` and `uv run --script scripts/validate-pages-pattern-format.py`. Skill behavior changes additionally require the isolated forward tests defined in AGENTS.md.
 
+The Pages workflow validates, builds, and uploads in its `build` job. Its separate
+`deploy` job depends on that successful build and publishes the same run's
+artifact. Retry only a failed `deploy` job to reuse the uploaded artifact.
+
 Use [the authoring and bundle guide](skill-authoring.md) for policy details,
 standalone generated-skill validation, copied-payload checks, and the limits of
 static compliance.
