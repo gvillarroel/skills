@@ -5,9 +5,17 @@ description: Creates and validates native Claude Code plugin commands, Mods, pan
 
 # Claude Code Plugin UI
 
+Start with the pending human decision. Read
+[micro-decisions.md](references/micro-decisions.md) for the default agent UI:
+one bounded question, only decision-relevant evidence, and a typed result
+returned to the agent. Use a full workspace only when the user requests it.
+
 For graphs, charts, dense tables, or linked multi-panel interfaces, read
 [rich-interfaces.md](references/rich-interfaces.md) before choosing the layout.
 Apply its graph/chart recipes, host alternatives, state rules and pixel critique.
+
+For coordinated investigations, dense matrices and reviewed actions, read
+[complex-workspaces.md](references/complex-workspaces.md).
 
 Identify terminal, Desktop Code tab, or VS Code before selecting controls.
 Read [host.md](references/host.md) for bounded surface support, then

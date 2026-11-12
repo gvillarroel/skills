@@ -5,9 +5,17 @@ description: Creates, improves, packages, and validates MCP App interfaces for o
 
 # Claude Desktop Plugin UI
 
+Start with the pending human decision. Read
+[micro-decisions.md](references/micro-decisions.md) for the default agent UI:
+one bounded question, only decision-relevant evidence, and a typed result
+returned to the agent. Use a full workspace only when the user requests it.
+
 For graphs, charts, dense tables, or linked multi-panel interfaces, read
 [rich-interfaces.md](references/rich-interfaces.md) before choosing the layout.
 Apply its graph/chart recipes, host alternatives, state rules and pixel critique.
+
+For coordinated investigations, dense matrices and reviewed actions, read
+[complex-workspaces.md](references/complex-workspaces.md).
 
 Build for ordinary Claude Desktop Chat. Identify Chat versus the Code tab
 before choosing a runtime. Use [host.md](references/host.md) for transport,

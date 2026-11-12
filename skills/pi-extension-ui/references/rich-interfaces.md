@@ -21,7 +21,7 @@ timestamps/timezone, missing-value rules, data revision, and selection state.
 Keep one authoritative model. Derive the graph, chart, table and inspector from
 that model; an export must contain the same scope and values.
 
-Use a focused workspace as the default: a compact summary, one active analysis
+For an explicitly requested multi-view workspace, use: a compact summary, one active analysis
 view, and a selected-entity inspector. Offer an overview or comparison when the
 task needs simultaneous views. Compare both with the same data and viewport.
 Put layout, comparison, display settings, and export behind a named disclosure.

@@ -1,0 +1,21 @@
+// Run: npm run build (dependencies declared in ../package.json).
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
+import {build} from 'esbuild';
+const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..'),output=path.join(root,'artifacts/packages/incident-analysis');
+await fs.mkdir(output,{recursive:true});
+const bundle=async file=>(await build({entryPoints:[path.join(root,file)],bundle:true,write:false,format:'iife',platform:'browser',minify:true})).outputFiles[0].text;
+const [app,bridge,css,d3,source]=await Promise.all([bundle('web/app.mjs'),bundle('web/bridge.mjs'),fs.readFile(path.join(root,'web/styles.css'),'utf8'),fs.readFile(path.join(root,'web/vendor/d3.min.js'),'utf8'),fs.readFile(path.join(root,'web/index.html'),'utf8')]);
+const esc=s=>s.replace(/<\/script/gi,'<\\/script');
+const html=source.replace('<link rel="stylesheet" href="styles.css">',()=>`<style>${css}</style>`).replace('<script src="vendor/d3.min.js"></script>',()=>`<script>${esc(d3)}</script>`).replace('<script type="module" src="app.mjs"></script>',()=>`<script>${esc(app)}</script>`);
+await fs.writeFile(path.join(output,'standalone.html'),html);
+await fs.writeFile(path.join(output,'workspace.html'),html.replace('</body>',()=>`<script>${esc(bridge)}</script></body>`));
+await build({entryPoints:[path.join(root,'server.mjs')],outfile:path.join(output,'server.mjs'),bundle:true,platform:'node',format:'esm',banner:{js:"import {createRequire as __createRequire} from 'node:module'; const require=__createRequire(import.meta.url);"}});
+await fs.writeFile(path.join(output,'package.json'),JSON.stringify({name:'incident-analysis',version:'1.0.0',type:'module',private:true},null,2));
+await fs.writeFile(path.join(output,'plugin.json'),JSON.stringify({$schema:'https://agent-plugins.org/schemas/1.0.0/plugin.schema.json',name:'incident-analysis',version:'1.0.0',description:'Synthetic incident investigation and versioned plan sandbox.'},null,2));
+await fs.writeFile(path.join(output,'mcp.json'),JSON.stringify({$schema:'https://agent-plugins.org/schemas/1.0.0/mcp.schema.json',mcpServers:{'incident-analysis':{type:'stdio',command:'node',args:['${PLUGIN_ROOT}/server.mjs'],cwd:'${PLUGIN_ROOT}'}}},null,2));
+const licenses=[['D3','web/vendor/D3-LICENSE.txt'],['MCP SDK','node_modules/@modelcontextprotocol/sdk/LICENSE'],['MCP Apps SDK','node_modules/@modelcontextprotocol/ext-apps/LICENSE'],['Zod','node_modules/zod/LICENSE']];
+let notices='Third-party notices for this synthetic laboratory bundle\n';for(const[name,file]of licenses)notices+=`\n${name}\n${await fs.readFile(path.join(root,file),'utf8')}\n`;
+await fs.writeFile(path.join(output,'THIRD-PARTY-NOTICES.txt'),notices);
+console.log(JSON.stringify({output,standaloneBytes:Buffer.byteLength(html),offline:true}));

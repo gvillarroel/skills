@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Live terminal host capture</title>
+<link rel="stylesheet" href="/xterm.css">
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #f7f7f7; color: #333e48; font: 14px Arial,sans-serif; }
+  header { padding: 15px 20px; border-bottom: 1px solid #696969; }
+  h1 { margin: 0 0 6px; font-size: 18px; }
+  p { margin: 0; line-height: 1.4; }
+  #terminal { margin: 16px; padding: 12px; width: max-content; background: #000; }
+  #receipt { padding: 0 20px 16px; font: 12px Consolas,monospace; }
+</style>
+<header>
+  <h1 id="heading">Live installed terminal process</h1>
+  <p>Real process output over Windows ConPTY. xterm.js displays the terminal cells; this is not a Desktop Code pane.</p>
+</header>
+<div id="terminal"></div>
+<p id="receipt">Connecting to the isolated process…</p>
+<script src="/xterm.js"></script>
+<script>
+  const query=new URLSearchParams(location.search);
+  const terminal=new Terminal({cols:80,rows:32,fontSize:16,fontFamily:'Consolas,monospace',cursorBlink:false,scrollback:2000});
+  terminal.open(document.querySelector('#terminal'));
+  const socket=new WebSocket(`ws://${location.host}/stream?token=${encodeURIComponent(query.get('token'))}`);
+  window.readScreen=()=>{const b=terminal.buffer.active;return Array.from({length:b.length},(_,i)=>b.getLine(i)?.translateToString(true)??'').join('\n');};
+  function receipt(message){
+    document.querySelector('#receipt').textContent=`PID ${message.pid} | ${message.version} | ${message.cols} × ${message.rows} cells | isolated local state | no model prompt`;
+  }
+  socket.onmessage=({data})=>{
+    const message=JSON.parse(data);
+    if(message.type==='output')terminal.write(message.data);
+    if(message.type==='resize'){terminal.resize(message.cols,message.rows);window.currentSize={cols:message.cols,rows:message.rows};if(window.hostReceipt){Object.assign(window.hostReceipt,window.currentSize);receipt(window.hostReceipt);}}
+    if(message.type==='receipt'){
+      window.hostReceipt=message;
+      document.querySelector('#heading').textContent=`${message.host} — installed terminal UI`;
+      receipt(message);
+    }
+    if(message.type==='exit')document.querySelector('#receipt').textContent+=` | process exit ${message.code}`;
+  };
+</script>
+</html>

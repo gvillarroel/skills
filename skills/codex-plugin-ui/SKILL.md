@@ -5,9 +5,17 @@ description: Creates, packages, and validates Codex plugins and MCP interactions
 
 # Codex Plugin UI
 
+Start with the pending human decision. Read
+[micro-decisions.md](references/micro-decisions.md) for the default agent UI:
+one bounded question, only decision-relevant evidence, and a typed result
+returned to the agent. Use a full workspace only when the user requests it.
+
 For graphs, charts, dense tables, or linked multi-panel interfaces, read
 [rich-interfaces.md](references/rich-interfaces.md) before choosing the layout.
 Apply its graph/chart recipes, host alternatives, state rules and pixel critique.
+
+For coordinated investigations, dense matrices and reviewed actions, read
+[complex-workspaces.md](references/complex-workspaces.md).
 
 Identify the executing Codex binary, frontend, build, approval policy, and
 negotiated capabilities. Read [host.md](references/host.md); a model name,

@@ -12,6 +12,8 @@ A maintained collection of reusable skills, compact references, deterministic he
 - [Skill authoring and generated bundle validation](skill-authoring.md)
 - [Choose and install a host-specific assistant UI skill](desktop-plugin-ui.md)
 - [Rich plugin interface lab, host alternatives and validation](plugin-ui-rich-interfaces.md)
+- [Agent micro decisions, focused evidence and semantic terminal UI](plugin-ui-micro-decisions.md)
+- [Complex plugin UI workbenches, coordinated views and reviewed actions](plugin-ui-complex-workbenches.md)
 - [Reflex XY plugins for Claude Desktop, Claude Code and ChatGPT](reflex-xy-plugins.md)
 - [Pi Durable usage, feature selection, and tested recovery behavior](pi-durable.md)
 - [Install the Pi Durable console extension from this repository](pi-durable-console.md)

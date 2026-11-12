@@ -1,0 +1,327 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-12",
+  "purpose": "Correct the default from broad workspaces to one decision-relevant agent micro UI.",
+  "decision": {
+    "id": "ontology-alignment-parent",
+    "options": [
+      "knowledge-modeling",
+      "data-integration"
+    ],
+    "independentQuestions": 1,
+    "globalNavigationElements": 0,
+    "outcomes": [
+      "selected",
+      "deferred"
+    ],
+    "editsTaxonomy": false,
+    "synthetic": true
+  },
+  "suites": {
+    "browserAndSdk": {
+      "passed": true,
+      "checks": 25,
+      "version": null,
+      "report": "projects/plugin-ui-micro-decisions/artifacts/reviews/browser/compact-final/review.json",
+      "scope": "Actual Edge micro UI, real MCP server and SDK iframe; continuation is acknowledged by the controlled host fixture, not a stock agent turn."
+    },
+    "piTerminal": {
+      "passed": true,
+      "checks": 8,
+      "version": "1.4.0",
+      "report": "projects/plugin-ui-micro-decisions/artifacts/reviews/target-hosts/pi-micro-final/review.json",
+      "scope": "Actual installed terminal process and native extension over Windows ConPTY, rendered by xterm.js. Does not establish Desktop Code, ChatGPT or a stock Windows Terminal frontend."
+    },
+    "codexPackage": {
+      "passed": true,
+      "checks": 10,
+      "version": "codex-cli 0.167.0-alpha.3.2",
+      "report": "projects/plugin-ui-micro-decisions/artifacts/reviews/codex/micro-final/review.json",
+      "scope": "Installed Codex app-server with isolated-home portable marketplace installation, verified cache bytes, discovery and exact read-only tool. Stock frontend paint remains separate."
+    }
+  },
+  "forwards": [
+    {
+      "skill": "desktop-plugin-ui",
+      "runId": "20261112-micro-ui-desktop-plugin-ui-sol-1",
+      "strictPassed": true,
+      "eventPassed": true,
+      "tracePassed": true,
+      "artifactShapePassed": true,
+      "reviewWords": 323,
+      "model": "openai-codex/gpt-6.1-sol",
+      "thinking": "medium",
+      "durationSeconds": 165.248,
+      "scope": "Single contract case; no live-host paint or model-continuation claim."
+    },
+    {
+      "skill": "desktop-chat-plugin-ui",
+      "runId": "20261112-micro-ui-desktop-chat-plugin-ui-sol-1",
+      "strictPassed": true,
+      "eventPassed": true,
+      "tracePassed": true,
+      "artifactShapePassed": true,
+      "reviewWords": 306,
+      "model": "openai-codex/gpt-6.1-sol",
+      "thinking": "medium",
+      "durationSeconds": 164.794,
+      "scope": "Single contract case; no live-host paint or model-continuation claim."
+    },
+    {
+      "skill": "code-native-plugin-ui",
+      "runId": "20261112-micro-ui-code-native-plugin-ui-sol-1",
+      "strictPassed": true,
+      "eventPassed": true,
+      "tracePassed": true,
+      "artifactShapePassed": true,
+      "reviewWords": 306,
+      "model": "openai-codex/gpt-6.1-sol",
+      "thinking": "medium",
+      "durationSeconds": 133.314,
+      "scope": "Single contract case; no live-host paint or model-continuation claim."
+    },
+    {
+      "skill": "pi-extension-ui",
+      "runId": "20261112-micro-ui-pi-extension-ui-sol-1",
+      "strictPassed": true,
+      "eventPassed": true,
+      "tracePassed": true,
+      "artifactShapePassed": true,
+      "reviewWords": 305,
+      "model": "openai-codex/gpt-6.1-sol",
+      "thinking": "medium",
+      "durationSeconds": 136.54,
+      "scope": "Single contract case; no live-host paint or model-continuation claim."
+    },
+    {
+      "skill": "codex-plugin-ui",
+      "runId": "20261112-micro-ui-codex-plugin-ui-sol-1",
+      "strictPassed": true,
+      "eventPassed": true,
+      "tracePassed": true,
+      "artifactShapePassed": true,
+      "reviewWords": 321,
+      "model": "openai-codex/gpt-6.1-sol",
+      "thinking": "medium",
+      "durationSeconds": 162.621,
+      "scope": "Single contract case; no live-host paint or model-continuation claim."
+    },
+    {
+      "skill": "chatgpt-desktop-plugin-ui",
+      "runId": "20261112-micro-ui-chatgpt-desktop-plugin-ui-sol-1",
+      "strictPassed": true,
+      "eventPassed": true,
+      "tracePassed": true,
+      "artifactShapePassed": true,
+      "reviewWords": 309,
+      "model": "openai-codex/gpt-6.1-sol",
+      "thinking": "medium",
+      "durationSeconds": 134.768,
+      "scope": "Single contract case; no live-host paint or model-continuation claim."
+    },
+    {
+      "skill": "gemini-enterprise-ui",
+      "runId": "20261112-micro-ui-gemini-enterprise-ui-sol-1",
+      "strictPassed": true,
+      "eventPassed": true,
+      "tracePassed": true,
+      "artifactShapePassed": true,
+      "reviewWords": 308,
+      "model": "openai-codex/gpt-6.1-sol",
+      "thinking": "medium",
+      "durationSeconds": 113.075,
+      "scope": "Single contract case; no live-host paint or model-continuation claim."
+    }
+  ],
+  "visualReview": {
+    "browser": "Inspected wide and 542px local-tree comparisons. Removed duplicated parent labels; one heading, two comparable alternatives, relevant reasons and optional scope evidence remain. Actual IAB 542x767 captured undecided, selected and returned states.",
+    "terminal": "Inspected actual Pi 80x32 and 60x16 captures. Native accent marks active option, warning marks unresolved concept, success marks selected receipt, and muted/dim marks context. Weight, circles, checks, separators and tree connectors also encode state. Evidence returns to the same pending choice; Escape defers without a placement.",
+    "continuation": "Real SDK iframe calls the actual MCP server, updates future model context then receives one controlled-host ui/message acknowledgement. Actual IAB is a standalone local example. Native Pi command records a model-visible result without a new turn. No stock host live model continuation was executed."
+  },
+  "retainedFailure": {
+    "report": "artifacts/reviews/target-hosts/pi-micro-1/review.json",
+    "classification": "evaluator",
+    "cause": "Selected placement wrapped Data and integration across terminal rows; corrected whitespace-aware assertion. Visual/source output was correct."
+  },
+  "hostLimits": [
+    "New MCP server not installed in personal Claude Chat configuration.",
+    "Claude Code login/Desktop Code gates remain; native Mod paint not newly accepted.",
+    "Current IAB is in Codex mode; no stock ChatGPT inline paint claim.",
+    "No registered Gemini Enterprise agent supplied; catalog/A2A guidance is not a host-rendering result."
+  ],
+  "sourceSha256": {
+    "projects/plugin-ui-micro-decisions/decision.mjs": "3ddb96859b1edf0839b8e673534364910ddce82c423ea7557602e175a0464641",
+    "projects/plugin-ui-micro-decisions/server.mjs": "ead881d74556344a18f092028472c61e56d7428e269b2b1fc8dfc5de807dc5b4",
+    "projects/plugin-ui-micro-decisions/web/index.html": "09330b8679d9f958135d39d87368071719aaf3d95c32a776173283f81d4f31ef",
+    "projects/plugin-ui-micro-decisions/web/styles.css": "54f0df5dc857d0641f130ce6c95244621863d2a46db24b4c3f8ef8e4bda76dde",
+    "projects/plugin-ui-micro-decisions/web/app.mjs": "e2182ee3adad1427d36416ce9a61b141a2dc032204b7dbfba04c287d128ae7e1",
+    "projects/plugin-ui-micro-decisions/web/bridge.mjs": "4aff9da03151b817602c2ab107e321c3676c32ce9d8ed8658b2fdadbfdcf23ab",
+    "projects/plugin-ui-micro-decisions/pi/taxonomy-choice.ts": "3bbcd5718811cb7c763ae6c8a9aa793ab768c48b5a67eb6f9a91b9c86ee25fc3",
+    "skills/desktop-plugin-ui/SKILL.md": "dd5277bcb169ded7463caf8c04582258a5ec7036238a4e70222f3c9fc83b9a42",
+    "skills/desktop-plugin-ui/agents/openai.yaml": "156f7197e3c662933264bd2b2452d1fa60c5702d859f6f565853c2a3ce951e77",
+    "skills/desktop-plugin-ui/references/micro-decisions.md": "cfc3cde234b7215f057442919cfb0d720078c184dad98d28f19cb754e40b0a45",
+    "skills/desktop-plugin-ui/references/complex-workspaces.md": "270a5b2a0521fe5f63fec76970dd10402393539508ddac696cb9a67b501b51d3",
+    "skills/desktop-plugin-ui/references/rich-interfaces.md": "266fbde18d01556942eb4de67a7fe0c4f2d70808269790c4743b5f3cafa19568",
+    "skills/desktop-chat-plugin-ui/SKILL.md": "dffa96154d64ded56a8c56bae69a8d552046edc30016868bb46b253e1fb5e7c3",
+    "skills/desktop-chat-plugin-ui/agents/openai.yaml": "306ca101e7f9b3f379ec5b9ee8a76e93fbc94020e8314bd4ded8929594c66888",
+    "skills/desktop-chat-plugin-ui/references/micro-decisions.md": "1a04a5f0ff645675c68a0527e915d814ef80301ad1b5124dc38b402b3e9d127b",
+    "skills/desktop-chat-plugin-ui/references/complex-workspaces.md": "02a3135da2741223d5662081711d40297985ebfd1655dfe1c3df23be63da47f7",
+    "skills/desktop-chat-plugin-ui/references/rich-interfaces.md": "9ed6d001279a71db20f4da23a65b9d195530e5762d33175db236be048a22f226",
+    "skills/code-native-plugin-ui/SKILL.md": "cd591d93b13a745db519e3c429087a2b4fb4896aeee265fb248e5773ec0d37b0",
+    "skills/code-native-plugin-ui/agents/openai.yaml": "09a9f90e74932ca9d421d3ab2b9303738deeb923948d197616a7caa166c6c0e2",
+    "skills/code-native-plugin-ui/references/micro-decisions.md": "bae572753d199dc0015b9d9d546a878239e2828362414c491eedc262ee447c43",
+    "skills/code-native-plugin-ui/references/complex-workspaces.md": "8c019ece52a4b4ce16fd541d250ce6b7a135a8cfc7d3583062496e7e68f6644d",
+    "skills/code-native-plugin-ui/references/rich-interfaces.md": "08337ea8cdf6e8e270fdc708a459dfc84d08056c45d2c6648f3c44b58fad1fd9",
+    "skills/pi-extension-ui/SKILL.md": "f24b93ba62e181a300203d789f30a5b64a1fc5b2239cccd548d834451ecf5f5f",
+    "skills/pi-extension-ui/agents/openai.yaml": "a174875d9bdffebf9136a6b7cc46399a43d4b82c885445e9031f93636d412618",
+    "skills/pi-extension-ui/references/micro-decisions.md": "0be7fce4068ad2b0acb3f9c134a179f7dabe681ae75a72d2e5d388e3f22a9514",
+    "skills/pi-extension-ui/references/complex-workspaces.md": "d5a588fcd5502242becaed5e99f2b9233a3e367e8ac3f5f70cf99da7f50bb632",
+    "skills/pi-extension-ui/references/rich-interfaces.md": "24630771610d38704eeb034438b2e3afbc5c777caaab6bf1b04c71b719aefbb4",
+    "skills/codex-plugin-ui/SKILL.md": "a6f80c08368188ffbab63b9dcf36fd5f5612e17ed73b1cabb60040eb83737467",
+    "skills/codex-plugin-ui/agents/openai.yaml": "dd06529ee7949f94543475149002b9d3758b32794e5ecc066f61959642f7962d",
+    "skills/codex-plugin-ui/references/micro-decisions.md": "a27afa156f7f4aacda1627483253f66a0797c230e123b7b5c00b845c1b5ccee6",
+    "skills/codex-plugin-ui/references/complex-workspaces.md": "0287572d74ff2604ba92d02522ecbd1fe01c45b485cf824d5e1f12d3f988ae6b",
+    "skills/codex-plugin-ui/references/rich-interfaces.md": "deb7e10ed524e251805c976912eb651069f51b758ab750d2a6ff30429326dc5b",
+    "skills/chatgpt-desktop-plugin-ui/SKILL.md": "bdb8458cb8cad4519f910facbd98b96db719cae3a5ba5ea81dc2e0a56d7372ee",
+    "skills/chatgpt-desktop-plugin-ui/agents/openai.yaml": "0e993f46f2761b7b55de16dc5f7e148366e5b86622822d697cf750c1c7a5a7e5",
+    "skills/chatgpt-desktop-plugin-ui/references/micro-decisions.md": "d0753a1ad14f640fdf059d1478b75ad903fc36a37d66efb18639bb993f51942c",
+    "skills/chatgpt-desktop-plugin-ui/references/complex-workspaces.md": "33b87dbbdc9c22e17ee4aafd43b877fd8bf9ef3f24aa6d409b94026df98f6462",
+    "skills/chatgpt-desktop-plugin-ui/references/rich-interfaces.md": "d27ef5fd1ac0921fc5c7101774dbc3340ad496724f318ac38d8a9d22d73516d1",
+    "skills/gemini-enterprise-ui/SKILL.md": "0e352d5b73b2d19d3e6079195f70ad08bcfaf5f6b08c88e67165f125518ca05d",
+    "skills/gemini-enterprise-ui/agents/openai.yaml": "190b1056a8a9771c5b332db27ce7b41eeed3bfdfbf4f0892d27956e22e877f2d",
+    "skills/gemini-enterprise-ui/references/micro-decisions.md": "35053d4b29cb8098e83e448511530591c3dcfe8ed9c834d12694db984263a558",
+    "skills/gemini-enterprise-ui/references/complex-workspaces.md": "4f8ffbd1365101c4974c698489b1fe67ea568300d84204363d8a0e0c1dc74e94",
+    "skills/gemini-enterprise-ui/references/rich-interfaces.md": "a09baa7c5f2fa1e00c6b3e1c65b771723c161196e3114e177a4e6a0eb4492afb",
+    "skills/pi-extension-ui/assets/templates/pi-command/micro-choice.ts": "3bbcd5718811cb7c763ae6c8a9aa793ab768c48b5a67eb6f9a91b9c86ee25fc3"
+  },
+  "screenshots": [
+    {
+      "path": "projects/plugin-ui-micro-decisions/artifacts/reviews/browser/compact-final/bridge-returned.png",
+      "sha256": "4b61f60be4327bfbaf6f22906f8e55465507c0d32460fed16c7f60758ab7c2c0"
+    },
+    {
+      "path": "projects/plugin-ui-micro-decisions/artifacts/reviews/browser/compact-final/choice-320.png",
+      "sha256": "05531d51ed48c744caa47ea1c22b113384b108d2deac94ce60a0215c745ece9c"
+    },
+    {
+      "path": "projects/plugin-ui-micro-decisions/artifacts/reviews/browser/compact-final/choice-390.png",
+      "sha256": "6b6cb3475fd2fdc5e94e24998f4e2eba74441f65a3699c41ded382677f8a691d"
+    },
+    {
+      "path": "projects/plugin-ui-micro-decisions/artifacts/reviews/browser/compact-final/choice-542.png",
+      "sha256": "d55826075cf78401078b51a69cd8feb12025f19dd73d2d58dab5ed456e908215"
+    },
+    {
+      "path": "projects/plugin-ui-micro-decisions/artifacts/reviews/browser/compact-final/choice-780.png",
+      "sha256": "90d9012fd47fa240c3810e570f06747923baf6f4e92ee37d1c248eb0a7f48928"
+    },
+    {
+      "path": "projects/plugin-ui-micro-decisions/artifacts/reviews/browser/compact-final/choice-recorded.png",
+      "sha256": "c6b77cc3fe697b3f7dc97c2a20672381fccd1f60cbd9279ab753ec61ab472a88"
+    },
+    {
+      "path": "projects/plugin-ui-micro-decisions/artifacts/reviews/browser/first/bridge-returned.png",
+      "sha256": "4b61f60be4327bfbaf6f22906f8e55465507c0d32460fed16c7f60758ab7c2c0"
+    },
+    {
+      "path": "projects/plugin-ui-micro-decisions/artifacts/reviews/browser/first/choice-320.png",
+      "sha256": "2977b460db6c85335b91ce31ece44fabdc380e5e23568e279b18b1a07dcdb766"
+    },
+    {
+      "path": "projects/plugin-ui-micro-decisions/artifacts/reviews/browser/first/choice-390.png",
+      "sha256": "93d8dbb905b27b82c91422fd891050fdc8b86f2cfbb6195ecb3d0129b0df5b23"
+    },
+    {
+      "path": "projects/plugin-ui-micro-decisions/artifacts/reviews/browser/first/choice-542.png",
+      "sha256": "26ec90d093c91287b443a20e9e2a1a613df1bc91f1d2346b666a871fa6858bef"
+    },
+    {
+      "path": "projects/plugin-ui-micro-decisions/artifacts/reviews/browser/first/choice-780.png",
+      "sha256": "92f86467111cc383e86101c3cd6222a69e1ca4038f2d3f68d41fed4bf8814323"
+    },
+    {
+      "path": "projects/plugin-ui-micro-decisions/artifacts/reviews/browser/first/choice-recorded.png",
+      "sha256": "c6b77cc3fe697b3f7dc97c2a20672381fccd1f60cbd9279ab753ec61ab472a88"
+    },
+    {
+      "path": "projects/plugin-ui-micro-decisions/artifacts/reviews/codex/micro-final/codex-home/skills/.system/imagegen/assets/imagegen.png",
+      "sha256": "95952f644064eb9e890f98d8db07216347186526e4c41ad66d3420629eb86e20"
+    },
+    {
+      "path": "projects/plugin-ui-micro-decisions/artifacts/reviews/codex/micro-final/codex-home/skills/.system/openai-docs/assets/openai.png",
+      "sha256": "156cc84d7332bfe95b310350bd470b690d22aa33d65340cc6c2e06022946194c"
+    },
+    {
+      "path": "projects/plugin-ui-micro-decisions/artifacts/reviews/codex/micro-final/codex-home/skills/.system/skill-creator/assets/skill-creator.png",
+      "sha256": "a4024b0306ddb05847e1012879d37aaf1e658205199da596f5145ed7a88d9162"
+    },
+    {
+      "path": "projects/plugin-ui-micro-decisions/artifacts/reviews/codex/micro-final/codex-home/skills/.system/skill-installer/assets/skill-installer.png",
+      "sha256": "d0a230b1a79b71b858b7c215a0fbb0768d6459c14ea4ef80c61592629bf0e605"
+    },
+    {
+      "path": "projects/plugin-ui-micro-decisions/artifacts/reviews/in-app-browser/question-542.jpg",
+      "sha256": "9a983e5e4d1e5349ceb640b2bb1f281cca29e20b237b2099ea14c6618c925978"
+    },
+    {
+      "path": "projects/plugin-ui-micro-decisions/artifacts/reviews/in-app-browser/returned-542.jpg",
+      "sha256": "27cf956fe58a0d47b01fcd9758724ee0288ef2b2e6d07526251a3ce3c23837e3"
+    },
+    {
+      "path": "projects/plugin-ui-micro-decisions/artifacts/reviews/in-app-browser/selected-542.jpg",
+      "sha256": "c2b91fb707d688c78e14940f404b6f988875182b1994b3f60fb03e29f99ab9ae"
+    },
+    {
+      "path": "projects/plugin-ui-micro-decisions/artifacts/reviews/target-hosts/pi-micro-1/deferred-60x16.png",
+      "sha256": "976b8072e0d4bf42cf4ece95d9b11090bf1c80350fd98553d4ed2f785053c079"
+    },
+    {
+      "path": "projects/plugin-ui-micro-decisions/artifacts/reviews/target-hosts/pi-micro-1/question-60x16.png",
+      "sha256": "588bc45297aa9db24888787550800c337fba052ad6d2ec49ace559d801ef94ad"
+    },
+    {
+      "path": "projects/plugin-ui-micro-decisions/artifacts/reviews/target-hosts/pi-micro-1/question-80.png",
+      "sha256": "37988b4b2940464516e38ca8121fcba1db881d0a63be2cc262475aa8e223c9df"
+    },
+    {
+      "path": "projects/plugin-ui-micro-decisions/artifacts/reviews/target-hosts/pi-micro-1/returned-60x16.png",
+      "sha256": "8bd9268100d58691b639abc8ba663d560864cd98584f533ab0038625458f5a08"
+    },
+    {
+      "path": "projects/plugin-ui-micro-decisions/artifacts/reviews/target-hosts/pi-micro-1/selected-b-60x16.png",
+      "sha256": "d7f55ff47c7efa68b7bd0a781849275efb0dfa8d83bcc64acb8004d6fd790320"
+    },
+    {
+      "path": "projects/plugin-ui-micro-decisions/artifacts/reviews/target-hosts/pi-micro-1/startup.png",
+      "sha256": "dd48e0d1a992b48dfaf6bae26556f0cc6926e09a650044578f40937ade28a57b"
+    },
+    {
+      "path": "projects/plugin-ui-micro-decisions/artifacts/reviews/target-hosts/pi-micro-final/deferred-60x16.png",
+      "sha256": "cec9c1a1400ff8eaa22513149745e18c3884ebf9a4e13bfd0b2e9380fd3ee410"
+    },
+    {
+      "path": "projects/plugin-ui-micro-decisions/artifacts/reviews/target-hosts/pi-micro-final/evidence-60x16.png",
+      "sha256": "fc85095f72eaed606919090cc748b2152d685a0d4d1a3cefdf6fd271e4d5b05d"
+    },
+    {
+      "path": "projects/plugin-ui-micro-decisions/artifacts/reviews/target-hosts/pi-micro-final/question-60x16.png",
+      "sha256": "e805bd88d8f37b910f6335f6423bf39c81b354195c87a5ff0dbe45741352b817"
+    },
+    {
+      "path": "projects/plugin-ui-micro-decisions/artifacts/reviews/target-hosts/pi-micro-final/question-80.png",
+      "sha256": "c2e44fe6339c7f9b5a2e0984d13ee484a8d73880cb85e57ab2a14edfa9b12f43"
+    },
+    {
+      "path": "projects/plugin-ui-micro-decisions/artifacts/reviews/target-hosts/pi-micro-final/returned-60x16.png",
+      "sha256": "77df1dd15ac66a17d9539187dfff56bcf23ec0957f347421bf3cf88babf64cfd"
+    },
+    {
+      "path": "projects/plugin-ui-micro-decisions/artifacts/reviews/target-hosts/pi-micro-final/selected-b-60x16.png",
+      "sha256": "02e327dcfad6da22402625f34f4e8a05f92a72eb047a30203b62f6b4f55daa83"
+    },
+    {
+      "path": "projects/plugin-ui-micro-decisions/artifacts/reviews/target-hosts/pi-micro-final/startup.png",
+      "sha256": "a708c13dc1248416a2022ac2abbed480c6be0a551dc6e051f8a59af1bfa160a2"
+    }
+  ]
+}

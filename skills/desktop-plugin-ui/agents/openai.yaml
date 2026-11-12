@@ -1,4 +1,4 @@
 interface:
   display_name: "Assistant Plugin UI Comparison"
   short_description: "Compare UI routes and plan cross-host adapters"
-  default_prompt: "Use $desktop-plugin-ui to compare supported UI routes and plan small host adapters for this workflow."
+  default_prompt: "Use $desktop-plugin-ui for one focused human decision, relevant evidence and a result returned to the agent; validate the actual host and use semantic native styling."

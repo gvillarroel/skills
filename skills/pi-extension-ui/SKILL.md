@@ -5,9 +5,17 @@ description: Creates, improves, and validates Pi Coding Agent TypeScript extensi
 
 # Pi Extension UI
 
+Start with the pending human decision. Read
+[micro-decisions.md](references/micro-decisions.md) for the default agent UI:
+one bounded question, only decision-relevant evidence, and a typed result
+returned to the agent. Use a full workspace only when the user requests it.
+
 For graphs, charts, dense tables, or linked multi-panel interfaces, read
 [rich-interfaces.md](references/rich-interfaces.md) before choosing the layout.
 Apply its graph/chart recipes, host alternatives, state rules and pixel critique.
+
+For coordinated investigations, dense matrices and reviewed actions, read
+[complex-workspaces.md](references/complex-workspaces.md).
 
 Build a Pi Coding Agent extension, identifying `tui`, `rpc`, `json`, or print
 mode first. Read [pi-extensions.md](references/pi-extensions.md) and retain the
@@ -41,3 +49,6 @@ Deliver runnable extension files and dependencies, exact output paths,
 one-invocation load commands, and concise tested limits. Keep project
 installation local when requested. A JSON/RPC pass does not prove terminal
 paint, focus, resize, arbitrary client UI, or persistent installation.
+
+For a formatted single-choice TUI with semantic theme colors, adapt
+[micro-choice.ts](assets/templates/pi-command/micro-choice.ts).

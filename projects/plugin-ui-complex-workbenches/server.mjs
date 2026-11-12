@@ -1,0 +1,18 @@
+import {readFile} from 'node:fs/promises';
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
+import {z} from 'zod';
+import {McpServer} from '@modelcontextprotocol/sdk/server/mcp.js';
+import {StdioServerTransport} from '@modelcontextprotocol/sdk/server/stdio.js';
+import {registerAppResource,registerAppTool,RESOURCE_MIME_TYPE} from '@modelcontextprotocol/ext-apps/server';
+import {data,createBackend} from './model.mjs';
+const directory=path.dirname(fileURLToPath(import.meta.url)),uri='ui://incident-analysis/workspace.html',backend=createBackend();
+const html=await readFile(path.join(directory,'workspace.html'),'utf8');
+const server=new McpServer({name:'incident-analysis',version:'1.0.0'});
+const wrap=value=>({content:[{type:'text',text:JSON.stringify(value)}],structuredContent:value});
+registerAppResource(server,'workspace',uri,{},async()=>({contents:[{uri,mimeType:RESOURCE_MIME_TYPE,text:html,_meta:{ui:{csp:{connectDomains:[],resourceDomains:[]}}}}]}));
+registerAppTool(server,'open_incident_analysis',{description:`Inspect 96 synthetic services, ${data.edges.length} directed edges, quarter-hour latency and an isolated plan sandbox. No production connection.`,inputSchema:{},annotations:{readOnlyHint:true,destructiveHint:false,openWorldHint:false},_meta:{ui:{resourceUri:uri}}},async()=>wrap({schemaVersion:1,synthetic:true,serviceCount:data.services.length,edgeCount:data.edges.length,scheduledSamples:9216,revision:backend.state().revision}));
+registerAppTool(server,'sandbox_state',{description:'Read this process-local synthetic sandbox state.',inputSchema:{},annotations:{readOnlyHint:true,openWorldHint:false},_meta:{ui:{visibility:['app']}}},async()=>wrap(backend.state()));
+registerAppTool(server,'simulate_competing_edit',{description:'Advance the synthetic sandbox version for conflict verification. No production effect.',inputSchema:{},annotations:{readOnlyHint:false,destructiveHint:false,openWorldHint:false},_meta:{ui:{visibility:['app']}}},async()=>wrap(backend.compete()));
+registerAppTool(server,'apply_simulated_plan',{description:'Apply an idempotent, version-checked plan only to this in-memory synthetic sandbox.',inputSchema:{targetId:z.string(),percent:z.number().int().min(10).max(50),reason:z.string().min(8).max(300),expectedRevision:z.number().int(),requestId:z.string().min(1),range:z.array(z.number()).optional()},annotations:{readOnlyHint:false,destructiveHint:false,idempotentHint:true,openWorldHint:false},_meta:{ui:{visibility:['app']}}},async draft=>wrap(await backend.apply(draft)));
+await server.connect(new StdioServerTransport());

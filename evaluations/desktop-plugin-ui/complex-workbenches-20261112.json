@@ -1,0 +1,721 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-12",
+  "dataset": {
+    "services": 96,
+    "edges": 205,
+    "scheduledSamples": 9216,
+    "cadenceMinutes": 15,
+    "timezone": "UTC",
+    "synthetic": true
+  },
+  "suites": {
+    "browserAndMcp": {
+      "passed": true,
+      "checks": 48,
+      "version": null,
+      "report": "projects/plugin-ui-complex-workbenches/artifacts/reviews/browser/sandbox-form-fix/review.json",
+      "scope": "Actual Edge rendering of standalone workspace, real pointer/keyboard UI and portable MCP SDK transport. Stock host paint is separate."
+    },
+    "piTerminal": {
+      "passed": true,
+      "checks": 6,
+      "version": "1.4.0",
+      "report": "projects/plugin-ui-complex-workbenches/artifacts/reviews/target-hosts/pi-complex-verified/review.json",
+      "scope": "Actual installed terminal process and native extension over Windows ConPTY, rendered by xterm.js. Does not establish Desktop Code, ChatGPT or a stock Windows Terminal frontend."
+    },
+    "codexPackage": {
+      "passed": true,
+      "checks": 10,
+      "version": "codex-cli 0.167.0-alpha.3.2",
+      "report": "projects/plugin-ui-complex-workbenches/artifacts/reviews/codex/complex-final/review.json",
+      "scope": "Installed Codex app-server with isolated-home portable marketplace installation, verified cache bytes, discovery and exact read-only tool. Stock frontend paint remains separate."
+    }
+  },
+  "forwards": [
+    {
+      "skill": "desktop-plugin-ui",
+      "runId": "20261112-complex-ui-desktop-plugin-ui-sol-1",
+      "strictPassed": true,
+      "eventPassed": true,
+      "artifactShapePassed": true,
+      "reviewWords": 500,
+      "model": "openai-codex/gpt-6.1-sol",
+      "thinking": "medium",
+      "durationSeconds": 219.23,
+      "scope": "Contract/planning forward only; not live-host UI acceptance.",
+      "traceKeys": [
+        "calls",
+        "findings",
+        "invalidEventRecordCount",
+        "invalidEventRecordLineSamples",
+        "invalidJsonLineCount",
+        "invalidJsonLineSamples",
+        "models",
+        "passed",
+        "paths",
+        "policyReadPaths",
+        "providers",
+        "readPaths",
+        "session",
+        "toolCounts",
+        "totalReadResultBytes",
+        "usageTotals"
+      ]
+    },
+    {
+      "skill": "desktop-chat-plugin-ui",
+      "runId": "20261112-complex-ui-desktop-chat-plugin-ui-sol-1",
+      "strictPassed": true,
+      "eventPassed": true,
+      "artifactShapePassed": true,
+      "reviewWords": 469,
+      "model": "openai-codex/gpt-6.1-sol",
+      "thinking": "medium",
+      "durationSeconds": 131.898,
+      "scope": "Contract/planning forward only; not live-host UI acceptance.",
+      "traceKeys": [
+        "calls",
+        "findings",
+        "invalidEventRecordCount",
+        "invalidEventRecordLineSamples",
+        "invalidJsonLineCount",
+        "invalidJsonLineSamples",
+        "models",
+        "passed",
+        "paths",
+        "policyReadPaths",
+        "providers",
+        "readPaths",
+        "session",
+        "toolCounts",
+        "totalReadResultBytes",
+        "usageTotals"
+      ]
+    },
+    {
+      "skill": "code-native-plugin-ui",
+      "runId": "20261112-complex-ui-code-native-plugin-ui-sol-1",
+      "strictPassed": true,
+      "eventPassed": true,
+      "artifactShapePassed": true,
+      "reviewWords": 476,
+      "model": "openai-codex/gpt-6.1-sol",
+      "thinking": "medium",
+      "durationSeconds": 159.294,
+      "scope": "Contract/planning forward only; not live-host UI acceptance.",
+      "traceKeys": [
+        "calls",
+        "findings",
+        "invalidEventRecordCount",
+        "invalidEventRecordLineSamples",
+        "invalidJsonLineCount",
+        "invalidJsonLineSamples",
+        "models",
+        "passed",
+        "paths",
+        "policyReadPaths",
+        "providers",
+        "readPaths",
+        "session",
+        "toolCounts",
+        "totalReadResultBytes",
+        "usageTotals"
+      ]
+    },
+    {
+      "skill": "pi-extension-ui",
+      "runId": "20261112-complex-ui-pi-extension-ui-sol-1",
+      "strictPassed": true,
+      "eventPassed": true,
+      "artifactShapePassed": true,
+      "reviewWords": 466,
+      "model": "openai-codex/gpt-6.1-sol",
+      "thinking": "medium",
+      "durationSeconds": 150.194,
+      "scope": "Contract/planning forward only; not live-host UI acceptance.",
+      "traceKeys": [
+        "calls",
+        "findings",
+        "invalidEventRecordCount",
+        "invalidEventRecordLineSamples",
+        "invalidJsonLineCount",
+        "invalidJsonLineSamples",
+        "models",
+        "passed",
+        "paths",
+        "policyReadPaths",
+        "providers",
+        "readPaths",
+        "session",
+        "toolCounts",
+        "totalReadResultBytes",
+        "usageTotals"
+      ]
+    },
+    {
+      "skill": "codex-plugin-ui",
+      "runId": "20261112-complex-ui-codex-plugin-ui-sol-1",
+      "strictPassed": true,
+      "eventPassed": true,
+      "artifactShapePassed": true,
+      "reviewWords": 494,
+      "model": "openai-codex/gpt-6.1-sol",
+      "thinking": "medium",
+      "durationSeconds": 159.979,
+      "scope": "Contract/planning forward only; not live-host UI acceptance.",
+      "traceKeys": [
+        "calls",
+        "findings",
+        "invalidEventRecordCount",
+        "invalidEventRecordLineSamples",
+        "invalidJsonLineCount",
+        "invalidJsonLineSamples",
+        "models",
+        "passed",
+        "paths",
+        "policyReadPaths",
+        "providers",
+        "readPaths",
+        "session",
+        "toolCounts",
+        "totalReadResultBytes",
+        "usageTotals"
+      ]
+    },
+    {
+      "skill": "chatgpt-desktop-plugin-ui",
+      "runId": "20261112-complex-ui-chatgpt-desktop-plugin-ui-sol-1",
+      "strictPassed": true,
+      "eventPassed": true,
+      "artifactShapePassed": true,
+      "reviewWords": 491,
+      "model": "openai-codex/gpt-6.1-sol",
+      "thinking": "medium",
+      "durationSeconds": 177.617,
+      "scope": "Contract/planning forward only; not live-host UI acceptance.",
+      "traceKeys": [
+        "calls",
+        "findings",
+        "invalidEventRecordCount",
+        "invalidEventRecordLineSamples",
+        "invalidJsonLineCount",
+        "invalidJsonLineSamples",
+        "models",
+        "passed",
+        "paths",
+        "policyReadPaths",
+        "providers",
+        "readPaths",
+        "session",
+        "toolCounts",
+        "totalReadResultBytes",
+        "usageTotals"
+      ]
+    },
+    {
+      "skill": "gemini-enterprise-ui",
+      "runId": "20261112-complex-ui-gemini-enterprise-ui-sol-1",
+      "strictPassed": true,
+      "eventPassed": true,
+      "artifactShapePassed": true,
+      "reviewWords": 457,
+      "model": "openai-codex/gpt-6.1-sol",
+      "thinking": "medium",
+      "durationSeconds": 143.273,
+      "scope": "Contract/planning forward only; not live-host UI acceptance.",
+      "traceKeys": [
+        "calls",
+        "findings",
+        "invalidEventRecordCount",
+        "invalidEventRecordLineSamples",
+        "invalidJsonLineCount",
+        "invalidJsonLineSamples",
+        "models",
+        "passed",
+        "paths",
+        "policyReadPaths",
+        "providers",
+        "readPaths",
+        "session",
+        "toolCounts",
+        "totalReadResultBytes",
+        "usageTotals"
+      ]
+    }
+  ],
+  "manualReview": {
+    "integratedBrowser": "Observed visible version-1/version-2 conflict; fresh review applied plan-1 once at version 3, then read authoritative browser-local state. Captured at actual allocated panel width. This was the standalone sandbox, not inline MCP App paint.",
+    "screenshotsInspected": [
+      "wide investigation",
+      "542px full-page investigation",
+      "fleet matrix",
+      "review conflict",
+      "actual Pi 80x32 matrix",
+      "actual Pi 60x16 values",
+      "actual integrated-browser conflict and acknowledgement"
+    ],
+    "repairs": [
+      "Bound neighborhood by measured per-column capacity",
+      "Collapsed secondary directory on narrow panels",
+      "Explicit full-day matrix context with active-window outline",
+      "End-of-day axis label 24:00",
+      "Repeated terminal time scope, units and legend; corrected hour-column alignment",
+      "Replaced sandbox-blocked form submit with explicit action and constraint validation",
+      "Bound idempotency to normalized payload and rechecked after await",
+      "Added authoritative-state reconciliation control"
+    ]
+  },
+  "retainedFailures": [
+    {
+      "path": "artifacts/reviews/browser/review.json",
+      "classification": "evaluator",
+      "cause": "Pointer brush target was offscreen; fixed harness scrolling before real input."
+    },
+    {
+      "path": "artifacts/reviews/browser/bridge-final/review.json",
+      "classification": "artifact-and-evaluator",
+      "cause": "Strict sandbox blocked ambient HTML form submission; explicit app action repaired it. Fixture also navigates to reset the previous document realm and its observer."
+    },
+    {
+      "path": "artifacts/reviews/target-hosts/pi-complex-final/review.json",
+      "classification": "evaluator",
+      "cause": "Old literal legend assertion after the visible threshold wording changed; source unchanged for verified rerun."
+    }
+  ],
+  "hostLimits": {
+    "claudeDesktopChat": "New Incident Analysis server not added to personal configuration; previous installed XY evidence remains separate.",
+    "claudeCode": "Earlier CLI login/Desktop Code onboarding gates remain; no new pane acceptance.",
+    "chatgptDesktop": "Actual integrated-browser surface observed in current Codex mode; no new stock ChatGPT inline component acceptance.",
+    "geminiEnterprise": "No registered target agent supplied; earlier configured-project API-disabled result remains bounded to that project. No cloud configuration changed."
+  },
+  "sourceSha256": {
+    "projects/plugin-ui-complex-workbenches/model.mjs": "d37db462556f38f68f86e850898d210e8d5094da9a41ec1fd36ce61a19ef5ffc",
+    "projects/plugin-ui-complex-workbenches/server.mjs": "64feca243238a60a1733d5b95ba2a38e488ffce1b146466a980d91da6945ee41",
+    "projects/plugin-ui-complex-workbenches/web/index.html": "5cdbc95550ca64a4b7ba9cdce2447e2cad29f08732629dbec3661abaf63f75eb",
+    "projects/plugin-ui-complex-workbenches/web/styles.css": "a4d5ad808b7e1cd00f4f9c244caf0cbaad007acbb623b49ad5b6f5c1d4f74150",
+    "projects/plugin-ui-complex-workbenches/web/app.mjs": "bd267949f2958e3a8811d65f3e117b1f0e3a796f623fba1cdaf19e4fa9436d61",
+    "projects/plugin-ui-complex-workbenches/web/bridge.mjs": "9f155a62fdca37e985d93e193cb02977a3d45b5105519f6ed8f3e1ef904b3fcd",
+    "projects/plugin-ui-complex-workbenches/pi/incident.ts": "390f982bb21cc468df05d5c2b9268db45959da4af07cdc2dfc93054e0f4459e6",
+    "skills/desktop-plugin-ui/SKILL.md": "4e6d220e209e4e6415a0f2e1e53d4df10f501c98e228f8fc3da4353007cc28ef",
+    "skills/desktop-plugin-ui/references/complex-workspaces.md": "35cae043a6f173c546a2e9381bc6ee699d2c63e11e01269531fc4138f2734772",
+    "skills/desktop-chat-plugin-ui/SKILL.md": "d67ede8c204e74f8aa803c2eea614eb3f927b6dd689d7a382125eda621fbbbca",
+    "skills/desktop-chat-plugin-ui/references/complex-workspaces.md": "cbba0bbed3cc85c5d323774d69e0c7bccb9382ea8f32b604522d7610f6dba054",
+    "skills/code-native-plugin-ui/SKILL.md": "ba2cfed70207a280c02003c81d4f5d439092a9acc23e8f78b71800a6d7f82fcd",
+    "skills/code-native-plugin-ui/references/complex-workspaces.md": "a0d17ee66a8bd189ee5e66f042a6700435fe487bddddbb5ff0cbd859953b8e9c",
+    "skills/pi-extension-ui/SKILL.md": "ba1af2c717ca9c72413401fc0028e6842de31afb899467bc3e288f3bbc2bbdf0",
+    "skills/pi-extension-ui/references/complex-workspaces.md": "053f46e38aaae60255931480eb209a1e4765804c9f74f14ee3258fa9a062eb27",
+    "skills/codex-plugin-ui/SKILL.md": "38df42bed4a9495ae379970b413c9b70a47510ea2385be2dbc63140f08c0538c",
+    "skills/codex-plugin-ui/references/complex-workspaces.md": "8913401b4ba8d0b66d8889ebdab760b6a7a43a60e6e39cf6f1dc93e57ff3dc4e",
+    "skills/chatgpt-desktop-plugin-ui/SKILL.md": "22dc463fa3a05e8d54134bed7aa456e4b9a11b4a3ba4623f4909289e9655aab2",
+    "skills/chatgpt-desktop-plugin-ui/references/complex-workspaces.md": "c6535d13b8cb3daf0b88814326c1d9640ac117b25abedaa6776fd4ca04334ad8",
+    "skills/gemini-enterprise-ui/SKILL.md": "980075ea431451c5b89071b75a1aa78e6bef3b618357da7ddf488d1454f8c9d2",
+    "skills/gemini-enterprise-ui/references/complex-workspaces.md": "1085dc5712876a10ad0a8a7104964fdafa45781295233357ce077ebe41835f4c"
+  },
+  "screenshots": [
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/browser/bridge-final/investigate-1024.png",
+      "sha256": "4f7d292889242a80f35af3da621b61bb320750407e0f688a44e36540ed023662"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/browser/bridge-final/investigate-1440.png",
+      "sha256": "45e15f656fec900f6b4cd89d95a1d265d13bd6d9fd8d22b2163c6387165ece02"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/browser/bridge-final/investigate-320.png",
+      "sha256": "ada3a8473453feb282ca5d549bb8e676a79ac155022f954652371a51aff31892"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/browser/bridge-final/investigate-390.png",
+      "sha256": "f1020980bf27d5a900a07a81dcf5d6037e41e7bb4f60941be16ab4b44dab85b0"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/browser/bridge-final/investigate-542.png",
+      "sha256": "0a33e32483223347811d375e8e9e2da9f9922d585bfd89df91242294917c7e65"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/browser/bridge-final/investigate-768.png",
+      "sha256": "74f98d12cf6b2dcaaae219843cda16b8a917c649c030143a7db8b4d1a2d1bfe3"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/browser/bridge-final/linked-window.png",
+      "sha256": "835b809c6cf354336d5621898673f305fa2edea0cf0462d9c8435ddacaf9c338"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/browser/bridge-final/matrix-1440.png",
+      "sha256": "451e27466bde5d6c1a340461297e57368ffebc4d0d54b0d24c8b51bf77b58849"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/browser/bridge-final/plan-applied.png",
+      "sha256": "9b889165f6d8db0105361fcc4f1e44610e02e85976257a0be15744024403bc5d"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/browser/bridge-final/review-390.png",
+      "sha256": "feff088b4750fbea4c76d12b0135b4b2533ffda18a8c5a408e325a735dbcd7fc"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/browser/bridge-final/review-before.png",
+      "sha256": "0289f171965b336d79bb8f0da61af91077a1e0dc5c96a80237d5d660d0617130"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/browser/bridge-final/review-conflict.png",
+      "sha256": "95800ac6ea7f636b14f23323406820a07a2acc18a7efdad5a336bf54a29636c2"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/browser/corrected-brush/investigate-1024.png",
+      "sha256": "a768400995f8caba85231c840e741c93d0dc2d5348b26a21f78c0a3c73c44170"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/browser/corrected-brush/investigate-1440.png",
+      "sha256": "7ebdd8964cbf0185670c03aefbadfd9ea0334a8722b5f8dd16e56777e1d8b961"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/browser/corrected-brush/investigate-320.png",
+      "sha256": "bd8776518c08cc25cbbfd8bafb4b71705e0a3a9886034c62d21b404660f1cd38"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/browser/corrected-brush/investigate-390.png",
+      "sha256": "7bbe0e8d245c2e4fbf943961a950e51eacce59bb3ab8126cbeb36e4ceb600de8"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/browser/corrected-brush/investigate-542.png",
+      "sha256": "123d30dc02f1e155ac7a6b520c567bd0e150f56bd154e7df2b43c47ffa6a2423"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/browser/corrected-brush/investigate-768.png",
+      "sha256": "60eb18387785f347923e3e053b63d46ac86daa61b5003d3eefdc67d0ae0d3bca"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/browser/corrected-brush/linked-window.png",
+      "sha256": "ed88c3623f6c8edb7f47f86c9cd42fb0aa6e8ff50b888212fd00c2768810e1b9"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/browser/corrected-brush/matrix-1440.png",
+      "sha256": "787812987c5a8f11727b25b4755ae2bdff8fb60d8eb42c66f5d484565c487adc"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/browser/corrected-brush/plan-applied.png",
+      "sha256": "d707dc72426d79ce4445474b24e4b360087c88acdf8b04925b0d46e84178a427"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/browser/corrected-brush/review-390.png",
+      "sha256": "394ad1ed28002f533d0ffcb82cf7762bcddb379ffc38e125a12181b047da2576"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/browser/corrected-brush/review-before.png",
+      "sha256": "76b97ba9becb3d83016fcb526ea37edd613edc003261a6d8afb1636c640f2d96"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/browser/corrected-brush/review-conflict.png",
+      "sha256": "08aec8942fef856063c8faa65f75b3027a6a1cccc99afdc03f919c8047b1c359"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/browser/investigate-1024.png",
+      "sha256": "a768400995f8caba85231c840e741c93d0dc2d5348b26a21f78c0a3c73c44170"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/browser/investigate-1440.png",
+      "sha256": "7ebdd8964cbf0185670c03aefbadfd9ea0334a8722b5f8dd16e56777e1d8b961"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/browser/investigate-320.png",
+      "sha256": "bd8776518c08cc25cbbfd8bafb4b71705e0a3a9886034c62d21b404660f1cd38"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/browser/investigate-390.png",
+      "sha256": "7bbe0e8d245c2e4fbf943961a950e51eacce59bb3ab8126cbeb36e4ceb600de8"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/browser/investigate-542.png",
+      "sha256": "123d30dc02f1e155ac7a6b520c567bd0e150f56bd154e7df2b43c47ffa6a2423"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/browser/investigate-768.png",
+      "sha256": "60eb18387785f347923e3e053b63d46ac86daa61b5003d3eefdc67d0ae0d3bca"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/browser/linked-window.png",
+      "sha256": "ed88c3623f6c8edb7f47f86c9cd42fb0aa6e8ff50b888212fd00c2768810e1b9"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/browser/refined/investigate-1024.png",
+      "sha256": "4f7d292889242a80f35af3da621b61bb320750407e0f688a44e36540ed023662"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/browser/refined/investigate-1440.png",
+      "sha256": "45e15f656fec900f6b4cd89d95a1d265d13bd6d9fd8d22b2163c6387165ece02"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/browser/refined/investigate-320.png",
+      "sha256": "ada3a8473453feb282ca5d549bb8e676a79ac155022f954652371a51aff31892"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/browser/refined/investigate-390.png",
+      "sha256": "f1020980bf27d5a900a07a81dcf5d6037e41e7bb4f60941be16ab4b44dab85b0"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/browser/refined/investigate-542.png",
+      "sha256": "0a33e32483223347811d375e8e9e2da9f9922d585bfd89df91242294917c7e65"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/browser/refined/investigate-768.png",
+      "sha256": "74f98d12cf6b2dcaaae219843cda16b8a917c649c030143a7db8b4d1a2d1bfe3"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/browser/refined/linked-window.png",
+      "sha256": "835b809c6cf354336d5621898673f305fa2edea0cf0462d9c8435ddacaf9c338"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/browser/refined/matrix-1440.png",
+      "sha256": "451e27466bde5d6c1a340461297e57368ffebc4d0d54b0d24c8b51bf77b58849"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/browser/refined/plan-applied.png",
+      "sha256": "9b889165f6d8db0105361fcc4f1e44610e02e85976257a0be15744024403bc5d"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/browser/refined/review-390.png",
+      "sha256": "feff088b4750fbea4c76d12b0135b4b2533ffda18a8c5a408e325a735dbcd7fc"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/browser/refined/review-before.png",
+      "sha256": "0289f171965b336d79bb8f0da61af91077a1e0dc5c96a80237d5d660d0617130"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/browser/refined/review-conflict.png",
+      "sha256": "95800ac6ea7f636b14f23323406820a07a2acc18a7efdad5a336bf54a29636c2"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/browser/sandbox-form-fix/investigate-1024.png",
+      "sha256": "4f7d292889242a80f35af3da621b61bb320750407e0f688a44e36540ed023662"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/browser/sandbox-form-fix/investigate-1440.png",
+      "sha256": "45e15f656fec900f6b4cd89d95a1d265d13bd6d9fd8d22b2163c6387165ece02"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/browser/sandbox-form-fix/investigate-320.png",
+      "sha256": "ada3a8473453feb282ca5d549bb8e676a79ac155022f954652371a51aff31892"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/browser/sandbox-form-fix/investigate-390.png",
+      "sha256": "f1020980bf27d5a900a07a81dcf5d6037e41e7bb4f60941be16ab4b44dab85b0"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/browser/sandbox-form-fix/investigate-542.png",
+      "sha256": "0a33e32483223347811d375e8e9e2da9f9922d585bfd89df91242294917c7e65"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/browser/sandbox-form-fix/investigate-768.png",
+      "sha256": "74f98d12cf6b2dcaaae219843cda16b8a917c649c030143a7db8b4d1a2d1bfe3"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/browser/sandbox-form-fix/linked-window.png",
+      "sha256": "835b809c6cf354336d5621898673f305fa2edea0cf0462d9c8435ddacaf9c338"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/browser/sandbox-form-fix/matrix-1440.png",
+      "sha256": "451e27466bde5d6c1a340461297e57368ffebc4d0d54b0d24c8b51bf77b58849"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/browser/sandbox-form-fix/mcp-bridge-applied.png",
+      "sha256": "a8ded734f10df7b660f4776c8492a1242174821f84c43b2981af8d08cf764eb6"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/browser/sandbox-form-fix/mcp-no-server-tools.png",
+      "sha256": "484d5fcc6ac0554f9191b711ecd95e323cf9b0435d2ad0d3965e1a8de072b2ea"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/browser/sandbox-form-fix/plan-applied.png",
+      "sha256": "9b889165f6d8db0105361fcc4f1e44610e02e85976257a0be15744024403bc5d"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/browser/sandbox-form-fix/review-390.png",
+      "sha256": "feff088b4750fbea4c76d12b0135b4b2533ffda18a8c5a408e325a735dbcd7fc"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/browser/sandbox-form-fix/review-before.png",
+      "sha256": "0289f171965b336d79bb8f0da61af91077a1e0dc5c96a80237d5d660d0617130"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/browser/sandbox-form-fix/review-conflict.png",
+      "sha256": "95800ac6ea7f636b14f23323406820a07a2acc18a7efdad5a336bf54a29636c2"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/codex/complex-1/codex-home/skills/.system/imagegen/assets/imagegen.png",
+      "sha256": "95952f644064eb9e890f98d8db07216347186526e4c41ad66d3420629eb86e20"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/codex/complex-1/codex-home/skills/.system/openai-docs/assets/openai.png",
+      "sha256": "156cc84d7332bfe95b310350bd470b690d22aa33d65340cc6c2e06022946194c"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/codex/complex-1/codex-home/skills/.system/skill-creator/assets/skill-creator.png",
+      "sha256": "a4024b0306ddb05847e1012879d37aaf1e658205199da596f5145ed7a88d9162"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/codex/complex-1/codex-home/skills/.system/skill-installer/assets/skill-installer.png",
+      "sha256": "d0a230b1a79b71b858b7c215a0fbb0768d6459c14ea4ef80c61592629bf0e605"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/codex/complex-final/codex-home/skills/.system/imagegen/assets/imagegen.png",
+      "sha256": "95952f644064eb9e890f98d8db07216347186526e4c41ad66d3420629eb86e20"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/codex/complex-final/codex-home/skills/.system/openai-docs/assets/openai.png",
+      "sha256": "156cc84d7332bfe95b310350bd470b690d22aa33d65340cc6c2e06022946194c"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/codex/complex-final/codex-home/skills/.system/skill-creator/assets/skill-creator.png",
+      "sha256": "a4024b0306ddb05847e1012879d37aaf1e658205199da596f5145ed7a88d9162"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/codex/complex-final/codex-home/skills/.system/skill-installer/assets/skill-installer.png",
+      "sha256": "d0a230b1a79b71b858b7c215a0fbb0768d6459c14ea4ef80c61592629bf0e605"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/in-app-browser/applied-542.jpg",
+      "sha256": "8412f7f9e78c0545800ebca9839a90bfae8d9d5e80cc8fb2cafd994de07084e9"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/in-app-browser/conflict-542.jpg",
+      "sha256": "e90cd4044a06dd36c3301b484fdd38cfae632c316a098fd45c2ceb6f2df29e78"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/in-app-browser/linked-charts-542.jpg",
+      "sha256": "e6701183ff6970404fa752e69e3b2c4e9ac57d49891d397c2afbf52193f32015"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/target-hosts/pi-complex-1/matrix-80.png",
+      "sha256": "b5eca650ed265a9811e5a7aee9e047ced59974b3ca43a7a7c5cc13adc424c6ca"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/target-hosts/pi-complex-1/matrix-next.png",
+      "sha256": "41f0b94b3eb0cd16a21072babb1509be0b8b5104302cf4446cba5f982f659552"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/target-hosts/pi-complex-1/relations-60x16.png",
+      "sha256": "bba1d0247a8d7b44ed49c1da679ae2c993dd034b58c686bfcd8944fed8c98cb9"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/target-hosts/pi-complex-1/startup.png",
+      "sha256": "dde7643ae4f1f099586f51c9ee2ac4701f6a292286ec6664d0f3380d49f99cc2"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/target-hosts/pi-complex-1/values-60x16-2.png",
+      "sha256": "de475cce12bb4b1fd1cc78f355ef62219b0d14edc974536a39dd2a7af0136527"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/target-hosts/pi-complex-1/values-60x16-3.png",
+      "sha256": "172dd0ec7ddce10cfacefdf50facfbc047a9c1a23c000919f80fe8f50f60fa30"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/target-hosts/pi-complex-1/values-60x16-4.png",
+      "sha256": "172dd0ec7ddce10cfacefdf50facfbc047a9c1a23c000919f80fe8f50f60fa30"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/target-hosts/pi-complex-1/values-60x16-5.png",
+      "sha256": "172dd0ec7ddce10cfacefdf50facfbc047a9c1a23c000919f80fe8f50f60fa30"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/target-hosts/pi-complex-1/values-60x16-6.png",
+      "sha256": "172dd0ec7ddce10cfacefdf50facfbc047a9c1a23c000919f80fe8f50f60fa30"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/target-hosts/pi-complex-1/values-60x16-first.png",
+      "sha256": "ab30f67a99903859a08abc45a3b7f8cf9c300145f5c582837b3b07662b40a3fa"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/target-hosts/pi-complex-1/values-80.png",
+      "sha256": "f0f7ef992b4ade97670a0cd6d3fdbc8f1004fb9c46bc0b963808f4a0de98eb87"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/target-hosts/pi-complex-final/matrix-80.png",
+      "sha256": "11cb6f52ba98b1c93067f6b3c5faeba770f4417df1c52d96d50cbf83ac08ce00"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/target-hosts/pi-complex-final/matrix-next.png",
+      "sha256": "3a36e0bc27d1aa01edc70f92a0865217951d2c03caecd9e1c17c779f85740fae"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/target-hosts/pi-complex-final/relations-60x16.png",
+      "sha256": "297ca7f25e38492ac942850e789960e9afc791f91f3081bded7c9fceb47e59f7"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/target-hosts/pi-complex-final/startup.png",
+      "sha256": "0d0c083b8cdb0876b480ece921d59fa165dbbb4d066d04bc05c2d4dc14c699d6"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/target-hosts/pi-complex-final/values-60x16-2.png",
+      "sha256": "a38a3266acc19d5cac440b67acdef4a7bb4ff03ad83728380415b164b40c29ed"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/target-hosts/pi-complex-final/values-60x16-3.png",
+      "sha256": "59eda510b695bf63698c1138078eb339b890bd4eabaaa71fd7b0d21b42b80a19"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/target-hosts/pi-complex-final/values-60x16-4.png",
+      "sha256": "59eda510b695bf63698c1138078eb339b890bd4eabaaa71fd7b0d21b42b80a19"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/target-hosts/pi-complex-final/values-60x16-5.png",
+      "sha256": "59eda510b695bf63698c1138078eb339b890bd4eabaaa71fd7b0d21b42b80a19"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/target-hosts/pi-complex-final/values-60x16-6.png",
+      "sha256": "59eda510b695bf63698c1138078eb339b890bd4eabaaa71fd7b0d21b42b80a19"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/target-hosts/pi-complex-final/values-60x16-first.png",
+      "sha256": "9f2e12dd7760cc6f94d37fbc4ebf35e4255bea0c4db8ac3741a87a11b8f24410"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/target-hosts/pi-complex-final/values-80.png",
+      "sha256": "06686c5009cb4151573bd1f0f3ec75e566ed0b3699a1078bfce1de2d5b3606e8"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/target-hosts/pi-complex-verified/matrix-80.png",
+      "sha256": "85a12b637ccd030c908c4d09c99845224ed4ebe1af88a0c41435c8d42e77f7e5"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/target-hosts/pi-complex-verified/matrix-next.png",
+      "sha256": "3491668100f1806025b7b56b0cae4a23336e63135c40c921977780a50b511f29"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/target-hosts/pi-complex-verified/relations-60x16.png",
+      "sha256": "548c3bb59a8840519e06287ee62337fee94dd51c39fa2534b8d776afdbe046e3"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/target-hosts/pi-complex-verified/startup.png",
+      "sha256": "d2f87b606624948e1bd7a1c82e4de9122d47f9fe4b09f59336960128d9b1678e"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/target-hosts/pi-complex-verified/values-60x16-2.png",
+      "sha256": "1f6673f18575603cb20a0b43d59ac3403f262ac44c9197497e741a632e1f211b"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/target-hosts/pi-complex-verified/values-60x16-3.png",
+      "sha256": "96fdd08d8d9544ae7a6978c84b20b16b0a80ff617b2bdfcae494c026cca2de74"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/target-hosts/pi-complex-verified/values-60x16-4.png",
+      "sha256": "96fdd08d8d9544ae7a6978c84b20b16b0a80ff617b2bdfcae494c026cca2de74"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/target-hosts/pi-complex-verified/values-60x16-5.png",
+      "sha256": "96fdd08d8d9544ae7a6978c84b20b16b0a80ff617b2bdfcae494c026cca2de74"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/target-hosts/pi-complex-verified/values-60x16-6.png",
+      "sha256": "96fdd08d8d9544ae7a6978c84b20b16b0a80ff617b2bdfcae494c026cca2de74"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/target-hosts/pi-complex-verified/values-60x16-first.png",
+      "sha256": "5811956f1ee1a59079159fa0ab9bdd7d9bf0da2ba81c97b8f756d65e070ccd70"
+    },
+    {
+      "path": "projects/plugin-ui-complex-workbenches/artifacts/reviews/target-hosts/pi-complex-verified/values-80.png",
+      "sha256": "910c17c16d91a67dc90ee08c4bc6ceb14b358ef34a1f9974954fde3466fa8411"
+    }
+  ]
+}
