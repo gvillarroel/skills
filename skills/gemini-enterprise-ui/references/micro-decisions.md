@@ -145,4 +145,7 @@ message acknowledgement a live model continuation.
 
 ## Host adapter
 
+Use [craft-by-surface.md](craft-by-surface.md) to implement these
+criteria with this host's actual controls and styling authority.
+
 Express the same bounded question with host-supported A2UI catalog components and typed A2A action/data-model updates. Use a compact choice/tree/table when arbitrary graphs are unavailable. Return through the registered agent action; do not insert MCP App messaging or arbitrary JavaScript into a catalog.

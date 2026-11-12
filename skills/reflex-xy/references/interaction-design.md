@@ -4,6 +4,12 @@ Use this recipe when embedding an XY chart in a chat component, small panel or
 application. Keep the first view focused on the user's chart. Do not turn a
 chart into an API catalogue or export dashboard.
 
+For an agent decision, make the primary action return that choice; save/export
+can stay secondary. A requested chart or export does not require a human
+decision flow. Follow [craft-by-surface.md](craft-by-surface.md) for chart versus
+wrapper styling: primary red may encode data, and visual polish must preserve
+category mappings, values, scales and missing observations.
+
 ## First view
 
 - Show the chart with a meaningful title and keep Colorset 1 as the default.

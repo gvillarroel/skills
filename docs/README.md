@@ -14,6 +14,7 @@ A maintained collection of reusable skills, compact references, deterministic he
 - [Rich plugin interface lab, host alternatives and validation](plugin-ui-rich-interfaces.md)
 - [Agent micro decisions, focused evidence and semantic terminal UI](plugin-ui-micro-decisions.md)
 - [Impeccable lessons applied to agent micro UIs](plugin-ui-impeccable-review.md)
+- [Surface-specific craft implementation for assistant UI and XY](plugin-ui-surface-craft.md)
 - [Complex plugin UI workbenches, coordinated views and reviewed actions](plugin-ui-complex-workbenches.md)
 - [Reflex XY plugins for Claude Desktop, Claude Code and ChatGPT](reflex-xy-plugins.md)
 - [Pi Durable usage, feature selection, and tested recovery behavior](pi-durable.md)

@@ -145,4 +145,7 @@ message acknowledgement a live model continuation.
 
 ## Host adapter
 
+Use [craft-by-surface.md](craft-by-surface.md) to implement these
+criteria with this host's actual controls and styling authority.
+
 Use native Claude Code commands/Mods and supported controls. Keep any local tree within the choice; return through the real request/component completion route. Verify terminal, Desktop Code and VS Code separately. Do not embed arbitrary HTML in a native node.

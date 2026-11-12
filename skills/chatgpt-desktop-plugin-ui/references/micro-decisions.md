@@ -145,4 +145,7 @@ message acknowledgement a live model continuation.
 
 ## Host adapter
 
+Use [craft-by-surface.md](craft-by-surface.md) to implement these
+criteria with this host's actual controls and styling authority.
+
 Use a focused MCP App when graph comparison helps. Check local/remote Desktop loader, actual component placement, direct tool receipt and host text-message capability. A context update alone is not continuation, and Codex mode does not establish stock ChatGPT acceptance.

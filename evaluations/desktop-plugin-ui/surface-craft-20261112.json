@@ -1,0 +1,187 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-12",
+  "purpose": "Implement focused craft at each surface's actual styling authority.",
+  "skills": [
+    "desktop-plugin-ui",
+    "desktop-chat-plugin-ui",
+    "code-native-plugin-ui",
+    "pi-extension-ui",
+    "codex-plugin-ui",
+    "chatgpt-desktop-plugin-ui",
+    "gemini-enterprise-ui",
+    "reflex-xy"
+  ],
+  "forwards": [
+    {
+      "skill": "desktop-plugin-ui",
+      "runId": "20261112-surface-craft-desktop-plugin-ui-sol-1",
+      "strictPassed": true,
+      "eventPassed": true,
+      "tracePassed": true,
+      "artifactShapePassed": true,
+      "words": 857,
+      "model": "openai-codex/gpt-6.1-sol",
+      "thinking": "medium",
+      "scope": "One implementation contract; no new host installation or paint claim."
+    },
+    {
+      "skill": "desktop-chat-plugin-ui",
+      "runId": "20261112-surface-craft-desktop-chat-plugin-ui-sol-2",
+      "strictPassed": true,
+      "eventPassed": true,
+      "tracePassed": true,
+      "artifactShapePassed": true,
+      "words": 675,
+      "model": "openai-codex/gpt-6.1-sol",
+      "thinking": "medium",
+      "scope": "One implementation contract; no new host installation or paint claim."
+    },
+    {
+      "skill": "code-native-plugin-ui",
+      "runId": "20261112-surface-craft-code-native-plugin-ui-sol-1",
+      "strictPassed": true,
+      "eventPassed": true,
+      "tracePassed": true,
+      "artifactShapePassed": true,
+      "words": 754,
+      "model": "openai-codex/gpt-6.1-sol",
+      "thinking": "medium",
+      "scope": "One implementation contract; no new host installation or paint claim."
+    },
+    {
+      "skill": "pi-extension-ui",
+      "runId": "20261112-surface-craft-pi-extension-ui-sol-1",
+      "strictPassed": true,
+      "eventPassed": true,
+      "tracePassed": true,
+      "artifactShapePassed": true,
+      "words": 719,
+      "model": "openai-codex/gpt-6.1-sol",
+      "thinking": "medium",
+      "scope": "One implementation contract; no new host installation or paint claim."
+    },
+    {
+      "skill": "codex-plugin-ui",
+      "runId": "20261112-surface-craft-codex-plugin-ui-sol-1",
+      "strictPassed": true,
+      "eventPassed": true,
+      "tracePassed": true,
+      "artifactShapePassed": true,
+      "words": 748,
+      "model": "openai-codex/gpt-6.1-sol",
+      "thinking": "medium",
+      "scope": "One implementation contract; no new host installation or paint claim."
+    },
+    {
+      "skill": "chatgpt-desktop-plugin-ui",
+      "runId": "20261112-surface-craft-chatgpt-desktop-plugin-ui-sol-1",
+      "strictPassed": true,
+      "eventPassed": true,
+      "tracePassed": true,
+      "artifactShapePassed": true,
+      "words": 725,
+      "model": "openai-codex/gpt-6.1-sol",
+      "thinking": "medium",
+      "scope": "One implementation contract; no new host installation or paint claim."
+    },
+    {
+      "skill": "gemini-enterprise-ui",
+      "runId": "20261112-surface-craft-gemini-enterprise-ui-sol-1",
+      "strictPassed": true,
+      "eventPassed": true,
+      "tracePassed": true,
+      "artifactShapePassed": true,
+      "words": 707,
+      "model": "openai-codex/gpt-6.1-sol",
+      "thinking": "medium",
+      "scope": "One implementation contract; no new host installation or paint claim."
+    },
+    {
+      "skill": "reflex-xy",
+      "runId": "20261112-surface-craft-reflex-xy-sol-1",
+      "strictPassed": true,
+      "eventPassed": true,
+      "tracePassed": true,
+      "artifactShapePassed": true,
+      "words": 763,
+      "model": "openai-codex/gpt-6.1-sol",
+      "thinking": "medium",
+      "scope": "One implementation contract; no new host installation or paint claim."
+    }
+  ],
+  "retainedEarlierRun": {
+    "runId": "20261112-surface-craft-desktop-chat-plugin-ui-sol-1",
+    "strictPassed": true,
+    "finalCandidate": false,
+    "reason": "Refined the example CSS to preserve the inherited font family; final Claude Chat contract uses sol-2."
+  },
+  "deterministicChecks": {
+    "selectedSkillValidation": "8 bundles passed",
+    "a2uiCheckerTests": {
+      "passed": true,
+      "tests": 12
+    },
+    "a2uiStarters": {
+      "passed": true,
+      "streams": 2,
+      "scope": "v0.9 closed-tree integrity only; no full catalog or host paint claim"
+    },
+    "xyCheckerTests": {
+      "passed": true,
+      "tests": 4
+    },
+    "generatedXYSpec": {
+      "passed": true,
+      "exactDataPassed": true
+    }
+  },
+  "liveXY": {
+    "renderer": "connected xy_render_chart",
+    "palette": "colorset1",
+    "marks": 2,
+    "cssSize": [
+      800,
+      420
+    ],
+    "nativePngSize": [
+      1600,
+      840
+    ],
+    "warnings": [
+      "Standalone HTML is an interactive snapshot; Python callbacks and future updates need a live host."
+    ],
+    "specSha256": "cbf3069a53a7c05ba892587985bcb642b9551b32eb6436945a1d94ee21d4b89a",
+    "exports": [
+      {
+        "path": "projects/plugin-ui-surface-craft/artifacts/images/xy-render.png",
+        "sha256": "768535bef58e5ba748d7860147252d154371fc1c59bd09cc8d1d330ce74b71f5"
+      },
+      {
+        "path": "projects/plugin-ui-surface-craft/artifacts/images/xy-render.svg",
+        "sha256": "a6f27a6cbe2a28b44ab0449b4a5e5de2bd1d27b2fbe3797e39b4e7651ca85b1d"
+      }
+    ],
+    "manualInspection": "Observed red data line preserves 110/140/190 ms, dashed objective remains at 150 ms, axes retain units, lower-right legend does not obscure the high endpoint.",
+    "scope": "Actual connected renderer and native exports; no new stock-host UI paint or live Python callback acceptance."
+  },
+  "sourceSha256": {
+    "skills/desktop-plugin-ui/SKILL.md": "28befd289ad88316e673fb6aedcdc343d25bc8bf91c04a4b4db22bc595dce8a8",
+    "skills/desktop-plugin-ui/references/craft-by-surface.md": "0b0cb1ddfe3441b4449057ca70a122600b22d81df918b4af1161fa4865b23e59",
+    "skills/desktop-chat-plugin-ui/SKILL.md": "4722aca6f658d4b8e8df6e82343d962e0d3172d61e6d4f514dcf0940e471df69",
+    "skills/desktop-chat-plugin-ui/references/craft-by-surface.md": "6653fd39180d5a0d3f2a817da65cfecced0e5bfd1511fa8a2003366121f2711d",
+    "skills/code-native-plugin-ui/SKILL.md": "b2ec1a4c430a9a915075ab833759f8f59eb25ca1b385884392094b82a2b5fd56",
+    "skills/code-native-plugin-ui/references/craft-by-surface.md": "e95301fe5aed7e2654e977d596897f894bf9b8a72a8fc5ce23b766dc12035971",
+    "skills/pi-extension-ui/SKILL.md": "a4b0ac5f946075b6a953ddd95020cbbd775914f173008751ff24aebd0b77b08c",
+    "skills/pi-extension-ui/references/craft-by-surface.md": "fa78c903a09a3f29d8d023c28c731558e3d38978ddd7c6525e4bbb24f7e65fb2",
+    "skills/codex-plugin-ui/SKILL.md": "c6105f6d475a2ac0c309621c54421260b657ee4d1b52ef5d5d21f4049ff51878",
+    "skills/codex-plugin-ui/references/craft-by-surface.md": "9c850bc8af22fab1d9736e1b7fc4d8b16f38ed7c4ab1075e7e740ef01c12aa93",
+    "skills/chatgpt-desktop-plugin-ui/SKILL.md": "0292d495679cf46e6dc4206482b628455a3ca519086b5162bd745689fe30d9e2",
+    "skills/chatgpt-desktop-plugin-ui/references/craft-by-surface.md": "e33139c4b9b0ade8bdb01ebd677b6d6ef0da028e757afc96b2bf016257a87bbe",
+    "skills/gemini-enterprise-ui/SKILL.md": "b7b321cb31d9df40e13b774757d9df61e4d6f7d7803c9899736143f6926c8719",
+    "skills/gemini-enterprise-ui/references/craft-by-surface.md": "fc730b7522e6bf04257d78920126f6c3a463ab31661216b2d22df86aebeb75f8",
+    "skills/reflex-xy/SKILL.md": "219c7a6a04810942f2063eb3f099e309d7669e7d161af1d1e5caaba54e81057a",
+    "skills/reflex-xy/references/craft-by-surface.md": "64ad6ca08d3937f0cdd1e8fd3afda51951295841b16cea64a962d1cc9a9b178a"
+  },
+  "hostLimits": "Native control paint, signed-in MCP App placement, Gemini registration and agent continuation retain their prior independently scoped evidence. No personal configuration or cloud settings changed."
+}

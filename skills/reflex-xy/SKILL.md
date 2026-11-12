@@ -47,6 +47,10 @@ fields. This route can produce request specs when no live renderer is available.
   [reflex-and-pyplot.md](references/reflex-and-pyplot.md). Choose the static,
   fixed-data live, or state-dependent tier before wiring backend events.
 
+When authoring or refining presentation, follow
+[craft-by-surface.md](references/craft-by-surface.md) for the actual
+styling owner, supported mechanism, fallback and acceptance checks.
+
 When embedding a chart in a chat component or small application panel, read
 [interaction-design.md](references/interaction-design.md). Start with the chart
 and a primary action; reveal display/export controls on request.

@@ -145,4 +145,7 @@ message acknowledgement a live model continuation.
 
 ## Host adapter
 
+Use [craft-by-surface.md](craft-by-surface.md) to implement these
+criteria with this host's actual controls and styling authority.
+
 Use native select for simple choices, or a theme-aware TUI for meaningful comparative structure. Guard custom rendering with ctx.mode === tui; RPC needs native UI requests with matching response IDs. The bundled micro-choice.ts is a tested standalone formatted example with evidence disclosure, neutral deferral and model-visible result without a new turn.

@@ -145,4 +145,7 @@ message acknowledgement a live model continuation.
 
 ## Host adapter
 
+Use [craft-by-surface.md](craft-by-surface.md) to implement these
+criteria with this host's actual controls and styling authority.
+
 Compare the one-decision adapter and result/continuation route across hosts. Keep the domain question shared and surface mechanisms independent. A plan request needs a plan, not an extra prototype.

@@ -145,4 +145,7 @@ message acknowledgement a live model continuation.
 
 ## Host adapter
 
+Use [craft-by-surface.md](craft-by-surface.md) to implement these
+criteria with this host's actual controls and styling authority.
+
 Use a focused MCP App or ordinary text choice in Claude Chat. Verify the actual Chat resource, choice tool, host-message capability and acknowledgement independently. Desktop Code has a separate renderer.

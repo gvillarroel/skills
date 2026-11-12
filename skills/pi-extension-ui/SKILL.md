@@ -10,6 +10,10 @@ Start with the pending human decision. Read
 one bounded question, only decision-relevant evidence, and a typed result
 returned to the agent. Use a full workspace only when the user requests it.
 
+When authoring or refining presentation, follow
+[craft-by-surface.md](references/craft-by-surface.md) for the actual
+styling owner, supported mechanism, fallback and acceptance checks.
+
 For graphs, charts, dense tables, or linked multi-panel interfaces, read
 [rich-interfaces.md](references/rich-interfaces.md) before choosing the layout.
 Apply its graph/chart recipes, host alternatives, state rules and pixel critique.

@@ -145,4 +145,7 @@ message acknowledgement a live model continuation.
 
 ## Host adapter
 
+Use [craft-by-surface.md](craft-by-surface.md) to implement these
+criteria with this host's actual controls and styling authority.
+
 Choose the actual executing Codex surface. Verify task-local loader/tool acceptance separately from an MCP App's paint and continuation. An integrated-browser demo is an owned browser surface. Keep absent host-message capability an explicit fallback.
