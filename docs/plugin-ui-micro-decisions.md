@@ -72,6 +72,15 @@ substitute arbitrary HTML for a native/catalog renderer or treat a browser demo
 as signed-in host acceptance. Remaining Claude/ChatGPT/Gemini host gates are
 recorded separately in the [micro-decision evaluation](../evaluations/desktop-plugin-ui/micro-decisions-20261112.md).
 
+## Focused craft refinement
+
+The [Impeccable source review](plugin-ui-impeccable-review.md) adds a design-first
+quality pass without expanding the decision. Subject nodes now use neutral ink
+and outline, the action names the chosen parent, and browser-relative reading
+roles preserve user text scaling. An equivalent text tree replaces diagram
+labels when they no longer fit. The additional 14-check quality audit remains
+separate from the functional and actual-host evidence above.
+
 ## Reusable skill guidance
 
 The comparison router and all six host bundles link their own compact

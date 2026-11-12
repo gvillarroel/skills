@@ -1,0 +1,167 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-12",
+  "upstream": {
+    "repository": "https://github.com/pbakaus/impeccable",
+    "commit": "b4bff1626c344067788c2679f048a20057c7cc5a",
+    "commitDate": "2026-11-11T19:28:26Z",
+    "sourceFiles": [
+      {
+        "path": "skill/reference/audit.md",
+        "sha256": "9d938428e5b0309b99fbc34c105a1a48ea09c709d99d828b9ffd7d542648f70f"
+      },
+      {
+        "path": "skill/reference/clarify.md",
+        "sha256": "4738e125835bd6c166aec2622977c9bc59bada52aaeb186585ed38b3900860b5"
+      },
+      {
+        "path": "skill/reference/colorize.md",
+        "sha256": "dcc0c3ebb76bd22c543f45d73c283e3890e5b8a44eb5053ca2f7fdd425635c32"
+      },
+      {
+        "path": "skill/reference/critique.md",
+        "sha256": "92d455c62f2855c524cf0642ae4b4b6014c40697031bfd1ef6c8c3807ee589a1"
+      },
+      {
+        "path": "skill/reference/distill.md",
+        "sha256": "db5d44441e3a94c3a7b8a70be23f036ac6e492e9272db0f937b57f05cc629373"
+      },
+      {
+        "path": "skill/reference/layout.md",
+        "sha256": "14ba132b6168bf0a7498f8c3fbbb41b73ff704da5dc3688fd842807446e54a05"
+      },
+      {
+        "path": "skill/reference/mode-operate.md",
+        "sha256": "7a52dd7a94ee75f6ae89542c86a1b6e1d306812b16e0d9dbf12d4acad44d148b"
+      },
+      {
+        "path": "skill/reference/operate.md",
+        "sha256": "e5bf4980c547e60b091f82f38d0eec4cc3ab85610b4b15ec8f1d86584f9eb404"
+      },
+      {
+        "path": "skill/reference/polish.md",
+        "sha256": "c504e12ea076fd1a57b8c9ece79fbb532c54226b2b6298c5c62fa889ae1dd34d"
+      },
+      {
+        "path": "skill/reference/typeset.md",
+        "sha256": "925720c1d610d2a08a6811001303f395e4b2c971ef3d2506fbce43b2a1303152"
+      }
+    ],
+    "method": "Selective primary-source review, independent paraphrase and local checks. No formal upstream command/detector execution or code redistribution."
+  },
+  "suites": {
+    "functionalBrowserAndSdk": {
+      "passed": true,
+      "checks": 25,
+      "report": "projects/plugin-ui-micro-decisions/artifacts/reviews/browser/impeccable-first/review.json",
+      "scope": "Actual Edge micro UI, real MCP server and SDK iframe; continuation is acknowledged by the controlled host fixture, not a stock agent turn."
+    },
+    "targetedQuality": {
+      "passed": true,
+      "checks": 14,
+      "report": "projects/plugin-ui-impeccable-review/artifacts/reviews/quality/review.json",
+      "scope": "Targeted local quality audit inspired by source review. 200% is root-font scaling, not a claim of browser UI zoom or an upstream Impeccable detector run."
+    }
+  },
+  "forwards": [
+    {
+      "skill": "desktop-plugin-ui",
+      "runId": "20261112-impeccable-ui-desktop-plugin-ui-sol-2",
+      "strictPassed": true,
+      "eventPassed": true,
+      "tracePassed": true,
+      "artifactShapePassed": true,
+      "model": "openai-codex/gpt-6.1-sol",
+      "thinking": "medium",
+      "scope": "One contract case; no new actual-host support or deployment claim."
+    },
+    {
+      "skill": "desktop-chat-plugin-ui",
+      "runId": "20261112-impeccable-ui-desktop-chat-plugin-ui-sol-2",
+      "strictPassed": true,
+      "eventPassed": true,
+      "tracePassed": true,
+      "artifactShapePassed": true,
+      "model": "openai-codex/gpt-6.1-sol",
+      "thinking": "medium",
+      "scope": "One contract case; no new actual-host support or deployment claim."
+    },
+    {
+      "skill": "code-native-plugin-ui",
+      "runId": "20261112-impeccable-ui-code-native-plugin-ui-sol-2",
+      "strictPassed": true,
+      "eventPassed": true,
+      "tracePassed": true,
+      "artifactShapePassed": true,
+      "model": "openai-codex/gpt-6.1-sol",
+      "thinking": "medium",
+      "scope": "One contract case; no new actual-host support or deployment claim."
+    },
+    {
+      "skill": "pi-extension-ui",
+      "runId": "20261112-impeccable-ui-pi-extension-ui-sol-2",
+      "strictPassed": true,
+      "eventPassed": true,
+      "tracePassed": true,
+      "artifactShapePassed": true,
+      "model": "openai-codex/gpt-6.1-sol",
+      "thinking": "medium",
+      "scope": "One contract case; no new actual-host support or deployment claim."
+    },
+    {
+      "skill": "codex-plugin-ui",
+      "runId": "20261112-impeccable-ui-codex-plugin-ui-sol-2",
+      "strictPassed": true,
+      "eventPassed": true,
+      "tracePassed": true,
+      "artifactShapePassed": true,
+      "model": "openai-codex/gpt-6.1-sol",
+      "thinking": "medium",
+      "scope": "One contract case; no new actual-host support or deployment claim."
+    },
+    {
+      "skill": "chatgpt-desktop-plugin-ui",
+      "runId": "20261112-impeccable-ui-chatgpt-desktop-plugin-ui-sol-2",
+      "strictPassed": true,
+      "eventPassed": true,
+      "tracePassed": true,
+      "artifactShapePassed": true,
+      "model": "openai-codex/gpt-6.1-sol",
+      "thinking": "medium",
+      "scope": "One contract case; no new actual-host support or deployment claim."
+    },
+    {
+      "skill": "gemini-enterprise-ui",
+      "runId": "20261112-impeccable-ui-gemini-enterprise-ui-sol-2",
+      "strictPassed": true,
+      "eventPassed": true,
+      "tracePassed": true,
+      "artifactShapePassed": true,
+      "model": "openai-codex/gpt-6.1-sol",
+      "thinking": "medium",
+      "scope": "One contract case; no new actual-host support or deployment claim."
+    }
+  ],
+  "preflightFailures": {
+    "count": 7,
+    "modelStarted": false,
+    "cause": "Expanded references passed 100 lines without a contents section. Added local contents navigation before the sol-2 runs.",
+    "logs": "projects/plugin-ui-impeccable-review/artifacts/eval-<skill>.log"
+  },
+  "manualReview": {
+    "beforeMechanical": "Identified repeated action-color fill on diagram subjects, fixed-size reading text, ambiguous generic action copy, and overlapping pointer/focus frames.",
+    "actualIntegratedBrowser": "Observed 542x767, browser-default 16px root, one question, no global navigation, subject outline and contextual Use Data integration action.",
+    "limits": "Controlled SDK bridge and standalone IAB remain distinct from stock-host continuation. Native source is unchanged. 200% root-font scaling is not browser UI zoom."
+  },
+  "sourceSha256": {
+    "skills/desktop-plugin-ui/references/micro-decisions.md": "285ae9a95efc353f67203078d8261d945d7a3db8b17cc885a43080d37eb4fc31",
+    "skills/desktop-chat-plugin-ui/references/micro-decisions.md": "d24b86de36b10f7b907910710ecdae02b57e6dee2941f5ed916b5d5b20dc69b5",
+    "skills/code-native-plugin-ui/references/micro-decisions.md": "9e71a9c58ee922862b5f4f7758d990d98783abc826da85c61415ef562348f953",
+    "skills/pi-extension-ui/references/micro-decisions.md": "99876a09c6fd689e190293ec70776c992d4740d857e4118318d8e6bbe054af3b",
+    "skills/codex-plugin-ui/references/micro-decisions.md": "528adfd328fd13af12f65fa3643435376057c60a18a86d31c13782248dc5c86c",
+    "skills/chatgpt-desktop-plugin-ui/references/micro-decisions.md": "a9fbff718c0a1a876f628543d52fee51f0c2f5b45781e378321e214dd32d0414",
+    "skills/gemini-enterprise-ui/references/micro-decisions.md": "6a4bc8b1915ff37166184ab9587d96dd00dae3a87492f43184c407ef7dfb56f9",
+    "projects/plugin-ui-micro-decisions/web/app.mjs": "45d69f25034492f08768e61ee19b4a12fa3ec8c0baf69b98cd8d4621471aa39f",
+    "projects/plugin-ui-micro-decisions/web/styles.css": "2936e10e5f2a49a3d05602d3f08b446d9f02b1e38718a700f77c4a3de4e9a0a4"
+  }
+}
