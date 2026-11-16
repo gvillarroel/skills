@@ -96,7 +96,8 @@ also available. The workflow retains its verification receipt as an artifact.
 The generated catalog uses plugin paths relative to the distribution root,
 so users install directly from Git without local artifact paths. Every plugin
 has a version and payload digest. Changing an already published plugin's bytes
-requires a version bump. A distribution manifest records the source commit and
+requires a version bump. Inventory-only ordering can normalize when every
+payload file remains byte-identical. A distribution manifest records the source commit and
 every managed file. The publisher preserves unmanaged authored files, refuses
 a dirty checkout and never force-pushes.
 

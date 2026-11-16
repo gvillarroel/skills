@@ -89,6 +89,9 @@ def check(root):
         plugin = read(folder / '.codex-plugin/plugin.json')
         if plugin['name'] != entry['name'] or not plugin.get('version'): raise ValueError('Invalid native plugin identity.')
         bundle = read(folder / 'bundle-manifest.json')
+        paths = [f['path'] for f in bundle['files']]
+        actual_payload = {p.relative_to(folder).as_posix() for p in folder.rglob('*') if p.is_file() and p != folder / 'bundle-manifest.json'}
+        if len(set(paths)) != len(paths) or set(paths) != actual_payload or bundle['name'] != plugin['name'] or bundle['version'] != plugin['version']: raise ValueError('Plugin inventory is incomplete or has the wrong identity.')
         release = next((p for p in manifest['plugins'] if p['name'] == plugin['name']), None)
         payload = sha(json.dumps(bundle['files'], sort_keys=True).encode())
         if not release or release['version'] != plugin['version'] or payload != release['payloadSha256']: raise ValueError('Plugin release and payload inventory differ.')
@@ -178,7 +181,13 @@ def publish(build_root, checkout, remote, branch, token_env=None):
     for previous in old['plugins']:
         current = next((p for p in incoming['plugins'] if p['name'] == previous['name']), None)
         if current and current['version'] == previous['version'] and current['payloadSha256'] != previous['payloadSha256']:
-            raise ValueError('Bump the changed plugin version before replacing an immutable release: ' + current['name'])
+            relative = 'plugins/' + current['name'] + '/bundle-manifest.json'
+            old_payload = {f['path']: f['sha256'] for f in read(contained(checkout, relative))['files']}
+            new_payload = {f['path']: f['sha256'] for f in read(contained(build_root, relative))['files']}
+            # An inventory-order normalization changes the list digest, while
+            # every payload file remains byte-identical. Require a version bump
+            # for actual content changes, not that representational migration.
+            if old_payload != new_payload: raise ValueError('Bump the changed plugin version before replacing an immutable release: ' + current['name'])
     old_files = {p['path']: p['sha256'] for p in old['files']}; new_files = {p['path']: p['sha256'] for p in incoming['files']}
     for name, digest in old_files.items():
         target = contained(checkout, name)

@@ -105,5 +105,18 @@ class MarketplaceTests(unittest.TestCase):
         authored.write_text('Unsaved author change.\n', encoding='utf-8')
         with self.assertRaisesRegex(ValueError, 'clean'): m.publish(self.project / 'artifacts/next', checkout, str(remote), 'marketplace')
 
+    def test_inventory_order_migration_preserves_exact_payload_identity(self):
+        remote = self.root / 'remote.git'
+        subprocess.run(['git', 'init', '--bare', '--quiet', str(remote)], check=True, capture_output=True)
+        self.build(); root = self.project / 'artifacts/build'; checkout = self.project / 'artifacts/distribution'
+        m.publish(root, checkout, str(remote), 'marketplace')
+        relative = 'plugins/demo/bundle-manifest.json'; bundle = m.read(root / relative)
+        bundle['files'].reverse(); m.write(root / relative, bundle)
+        manifest = m.read(root / 'distribution-manifest.json')
+        next(f for f in manifest['files'] if f['path'] == relative)['sha256'] = m.sha((root / relative).read_bytes())
+        manifest['plugins'][0]['payloadSha256'] = m.sha(json.dumps(bundle['files'], sort_keys=True).encode())
+        m.write(root / 'distribution-manifest.json', manifest)
+        self.assertTrue(m.publish(root, checkout, str(remote), 'marketplace')['changed'])
+
 
 if __name__ == '__main__': unittest.main()
