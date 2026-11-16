@@ -83,6 +83,136 @@
       "sha256": "b424b5aa2223a9587fa5d32e4258491f85207e73038c5f5be1d3f4ef99108a13"
     },
     {
+      "path": "skills/hyperframes-cli/SKILL.md",
+      "bytes": 7131,
+      "sha256": "44a48ccfa4cbd4f4234f8306c96268a4be56a0f2376abedbf31d2167b3c21286"
+    },
+    {
+      "path": "skills/hyperframes-cli/references/beats.md",
+      "bytes": 802,
+      "sha256": "09689994eba8c977693fdc54702b07dd492e80aa47075de0a027df901dc51b1d"
+    },
+    {
+      "path": "skills/hyperframes-cli/references/cloud.md",
+      "bytes": 11149,
+      "sha256": "8191550a036130249c26b37912dfd321c771c6670223cc7e0fff7aedd67607bf"
+    },
+    {
+      "path": "skills/hyperframes-cli/references/cloudrun.md",
+      "bytes": 3553,
+      "sha256": "16f46a18ee3d165dba3b7ee50362bb32cb0a927643a90821e7b63494fe0bde83"
+    },
+    {
+      "path": "skills/hyperframes-cli/references/compare-and-batch.md",
+      "bytes": 4378,
+      "sha256": "d17fa5a16707d981fa6473b99a28aa45abf41bca0fd96c5157c632abd0bfc222"
+    },
+    {
+      "path": "skills/hyperframes-cli/references/conventions.md",
+      "bytes": 2092,
+      "sha256": "5012403aa194bc350bdfd89d7c9f00e85c0ecc0356a1417ae4146b7bb8bb7b07"
+    },
+    {
+      "path": "skills/hyperframes-cli/references/doctor-browser.md",
+      "bytes": 4357,
+      "sha256": "9747dd5a545d2528914c58d55d0c54281ace686fc5c782072334c6ba0ff65c55"
+    },
+    {
+      "path": "skills/hyperframes-cli/references/feedback.md",
+      "bytes": 2539,
+      "sha256": "ae188d5c3e90f0e011b1e322bbfbe10575667b2a5073cffdac05026ac59925a7"
+    },
+    {
+      "path": "skills/hyperframes-cli/references/init-and-scaffold.md",
+      "bytes": 6220,
+      "sha256": "30d7bd19a0ec8bf7b32fbc0d216c7f606420c94cbbac5a7b52875799943abd4b"
+    },
+    {
+      "path": "skills/hyperframes-cli/references/lambda.md",
+      "bytes": 16670,
+      "sha256": "8f97fe2781db3f7ef72795782f88ee56c2ae81804d2128459393e06f8a54b175"
+    },
+    {
+      "path": "skills/hyperframes-cli/references/lint-validate-inspect.md",
+      "bytes": 17877,
+      "sha256": "2629c4af5e2255c18e7782622516e225393ffef77844bde53fa923d34aa1be13"
+    },
+    {
+      "path": "skills/hyperframes-cli/references/preview-render.md",
+      "bytes": 32472,
+      "sha256": "d534ce9911a609777ecba84074c838b33e9a302c6ee80254f0e6a0cd6b2a7ca0"
+    },
+    {
+      "path": "skills/hyperframes-cli/references/upgrade-info-misc.md",
+      "bytes": 11709,
+      "sha256": "a46662ad866669d1cf70bfa6404e9a01f68d2db4eb667fe6dc8a8442f6a069d8"
+    },
+    {
+      "path": "skills/hyperframes-registry/SKILL.md",
+      "bytes": 4246,
+      "sha256": "1c7b27632c9ea9febaafc2d9af073b377029f46be4bee70d75b5e713eb698423"
+    },
+    {
+      "path": "skills/hyperframes-registry/examples/add-block.md",
+      "bytes": 1232,
+      "sha256": "0e3353755c4ef55e53570d1266a4a43b2c5aef9bbe41276430e38cfa6580b83a"
+    },
+    {
+      "path": "skills/hyperframes-registry/examples/add-component.md",
+      "bytes": 1473,
+      "sha256": "d06992d31eec617a91f5c34630c9274c52dd07898bd24f10a869d0d1cab5af29"
+    },
+    {
+      "path": "skills/hyperframes-registry/references/component-quality-bar.md",
+      "bytes": 16390,
+      "sha256": "f0d4c3c44131bc0791f8a8cc3d2d7478d38045451775af7d20b2dd47cf5f91ac"
+    },
+    {
+      "path": "skills/hyperframes-registry/references/contributing.md",
+      "bytes": 7258,
+      "sha256": "7e9e6fd894e54251fad9aa30a08730960ceb776da590a175eadfc1d9014106b1"
+    },
+    {
+      "path": "skills/hyperframes-registry/references/demo-html-pattern.md",
+      "bytes": 1884,
+      "sha256": "dfc50cd33eff2c2be75437786fc3e851ab0085f7d453fb35b3380ecf9a6e9f04"
+    },
+    {
+      "path": "skills/hyperframes-registry/references/discovery.md",
+      "bytes": 16593,
+      "sha256": "ca82fcc1e0b2d824b72a8bda99b60d257b23d493fa1d28adbb0548a762cacd04"
+    },
+    {
+      "path": "skills/hyperframes-registry/references/install-locations.md",
+      "bytes": 1519,
+      "sha256": "83793e7d6aeea9a751755e4bd23ea48182ff9af082287b98a1192343d2571dd1"
+    },
+    {
+      "path": "skills/hyperframes-registry/references/placeholder-material.md",
+      "bytes": 9006,
+      "sha256": "15adf4a40b26166f64df784aed065adb58051d9ccd5c0c52ad9b71e3b8367a09"
+    },
+    {
+      "path": "skills/hyperframes-registry/references/search.md",
+      "bytes": 9416,
+      "sha256": "3da7b42d2a0d8d9e2cbcdd8591da5a83203c424de9f46a995950d374a74531ee"
+    },
+    {
+      "path": "skills/hyperframes-registry/references/templates.md",
+      "bytes": 11451,
+      "sha256": "98e1ef62d3c1264b28139d85a1c9b5a8b7438209914aebef6d9890e3f4275805"
+    },
+    {
+      "path": "skills/hyperframes-registry/references/wiring-blocks.md",
+      "bytes": 2641,
+      "sha256": "397f9ad5a9244d173b97bb5a5dfe76ea3cbccfb8dde16cba8b3dabc6044b011a"
+    },
+    {
+      "path": "skills/hyperframes-registry/references/wiring-components.md",
+      "bytes": 1723,
+      "sha256": "6c8341c29fdae6de4f9fd1560a668d11cf34731b81fe5a06c9aeb4a000047b2a"
+    },
+    {
       "path": "skills/hyperframes/SKILL.md",
       "bytes": 7167,
       "sha256": "180ce4eea5f33f1617105c92e2690a5a2320abf624c263186ec0cb1a78a919ef"
@@ -466,136 +596,6 @@
       "path": "skills/hyperframes/scripts/plugin-cli.test.mjs",
       "bytes": 4398,
       "sha256": "abfdf2498b57509438077803bee3a626c6fc13e1014ae066e5281edbfc4ca23d"
-    },
-    {
-      "path": "skills/hyperframes-cli/SKILL.md",
-      "bytes": 7131,
-      "sha256": "44a48ccfa4cbd4f4234f8306c96268a4be56a0f2376abedbf31d2167b3c21286"
-    },
-    {
-      "path": "skills/hyperframes-cli/references/beats.md",
-      "bytes": 802,
-      "sha256": "09689994eba8c977693fdc54702b07dd492e80aa47075de0a027df901dc51b1d"
-    },
-    {
-      "path": "skills/hyperframes-cli/references/cloud.md",
-      "bytes": 11149,
-      "sha256": "8191550a036130249c26b37912dfd321c771c6670223cc7e0fff7aedd67607bf"
-    },
-    {
-      "path": "skills/hyperframes-cli/references/cloudrun.md",
-      "bytes": 3553,
-      "sha256": "16f46a18ee3d165dba3b7ee50362bb32cb0a927643a90821e7b63494fe0bde83"
-    },
-    {
-      "path": "skills/hyperframes-cli/references/compare-and-batch.md",
-      "bytes": 4378,
-      "sha256": "d17fa5a16707d981fa6473b99a28aa45abf41bca0fd96c5157c632abd0bfc222"
-    },
-    {
-      "path": "skills/hyperframes-cli/references/conventions.md",
-      "bytes": 2092,
-      "sha256": "5012403aa194bc350bdfd89d7c9f00e85c0ecc0356a1417ae4146b7bb8bb7b07"
-    },
-    {
-      "path": "skills/hyperframes-cli/references/doctor-browser.md",
-      "bytes": 4357,
-      "sha256": "9747dd5a545d2528914c58d55d0c54281ace686fc5c782072334c6ba0ff65c55"
-    },
-    {
-      "path": "skills/hyperframes-cli/references/feedback.md",
-      "bytes": 2539,
-      "sha256": "ae188d5c3e90f0e011b1e322bbfbe10575667b2a5073cffdac05026ac59925a7"
-    },
-    {
-      "path": "skills/hyperframes-cli/references/init-and-scaffold.md",
-      "bytes": 6220,
-      "sha256": "30d7bd19a0ec8bf7b32fbc0d216c7f606420c94cbbac5a7b52875799943abd4b"
-    },
-    {
-      "path": "skills/hyperframes-cli/references/lambda.md",
-      "bytes": 16670,
-      "sha256": "8f97fe2781db3f7ef72795782f88ee56c2ae81804d2128459393e06f8a54b175"
-    },
-    {
-      "path": "skills/hyperframes-cli/references/lint-validate-inspect.md",
-      "bytes": 17877,
-      "sha256": "2629c4af5e2255c18e7782622516e225393ffef77844bde53fa923d34aa1be13"
-    },
-    {
-      "path": "skills/hyperframes-cli/references/preview-render.md",
-      "bytes": 32472,
-      "sha256": "d534ce9911a609777ecba84074c838b33e9a302c6ee80254f0e6a0cd6b2a7ca0"
-    },
-    {
-      "path": "skills/hyperframes-cli/references/upgrade-info-misc.md",
-      "bytes": 11709,
-      "sha256": "a46662ad866669d1cf70bfa6404e9a01f68d2db4eb667fe6dc8a8442f6a069d8"
-    },
-    {
-      "path": "skills/hyperframes-registry/SKILL.md",
-      "bytes": 4246,
-      "sha256": "1c7b27632c9ea9febaafc2d9af073b377029f46be4bee70d75b5e713eb698423"
-    },
-    {
-      "path": "skills/hyperframes-registry/examples/add-block.md",
-      "bytes": 1232,
-      "sha256": "0e3353755c4ef55e53570d1266a4a43b2c5aef9bbe41276430e38cfa6580b83a"
-    },
-    {
-      "path": "skills/hyperframes-registry/examples/add-component.md",
-      "bytes": 1473,
-      "sha256": "d06992d31eec617a91f5c34630c9274c52dd07898bd24f10a869d0d1cab5af29"
-    },
-    {
-      "path": "skills/hyperframes-registry/references/component-quality-bar.md",
-      "bytes": 16390,
-      "sha256": "f0d4c3c44131bc0791f8a8cc3d2d7478d38045451775af7d20b2dd47cf5f91ac"
-    },
-    {
-      "path": "skills/hyperframes-registry/references/contributing.md",
-      "bytes": 7258,
-      "sha256": "7e9e6fd894e54251fad9aa30a08730960ceb776da590a175eadfc1d9014106b1"
-    },
-    {
-      "path": "skills/hyperframes-registry/references/demo-html-pattern.md",
-      "bytes": 1884,
-      "sha256": "dfc50cd33eff2c2be75437786fc3e851ab0085f7d453fb35b3380ecf9a6e9f04"
-    },
-    {
-      "path": "skills/hyperframes-registry/references/discovery.md",
-      "bytes": 16593,
-      "sha256": "ca82fcc1e0b2d824b72a8bda99b60d257b23d493fa1d28adbb0548a762cacd04"
-    },
-    {
-      "path": "skills/hyperframes-registry/references/install-locations.md",
-      "bytes": 1519,
-      "sha256": "83793e7d6aeea9a751755e4bd23ea48182ff9af082287b98a1192343d2571dd1"
-    },
-    {
-      "path": "skills/hyperframes-registry/references/placeholder-material.md",
-      "bytes": 9006,
-      "sha256": "15adf4a40b26166f64df784aed065adb58051d9ccd5c0c52ad9b71e3b8367a09"
-    },
-    {
-      "path": "skills/hyperframes-registry/references/search.md",
-      "bytes": 9416,
-      "sha256": "3da7b42d2a0d8d9e2cbcdd8591da5a83203c424de9f46a995950d374a74531ee"
-    },
-    {
-      "path": "skills/hyperframes-registry/references/templates.md",
-      "bytes": 11451,
-      "sha256": "98e1ef62d3c1264b28139d85a1c9b5a8b7438209914aebef6d9890e3f4275805"
-    },
-    {
-      "path": "skills/hyperframes-registry/references/wiring-blocks.md",
-      "bytes": 2641,
-      "sha256": "397f9ad5a9244d173b97bb5a5dfe76ea3cbccfb8dde16cba8b3dabc6044b011a"
-    },
-    {
-      "path": "skills/hyperframes-registry/references/wiring-components.md",
-      "bytes": 1723,
-      "sha256": "6c8341c29fdae6de4f9fd1560a668d11cf34731b81fe5a06c9aeb4a000047b2a"
     },
     {
       "path": "skills/media-use/.gitignore",

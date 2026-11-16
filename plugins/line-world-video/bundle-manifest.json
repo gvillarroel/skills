@@ -1,21 +1,21 @@
 {
   "name": "line-world-video",
-  "version": "0.25.1",
+  "version": "0.25.2",
   "files": [
     {
       "path": ".claude-plugin/plugin.json",
       "bytes": 326,
-      "sha256": "6c4ef390a3fc64f0c0fbbfde142cd8797c93c01227fb8f556a427579f5446090"
+      "sha256": "317bbed90884bcb257f13fa82ca3b92c739d9d4a84ecd68d0448083ac97579c2"
     },
     {
       "path": ".codex-plugin/plugin.json",
       "bytes": 545,
-      "sha256": "cd281fb3aae5fab6054273d74c360c120bdf693a8d6a72d76c9ad1d1e0d6de38"
+      "sha256": "c920bb6f37f40be66ee9ca438b601453218796aaa6c5d8b144e9d56b7aaddeca"
     },
     {
       "path": "plugin.json",
       "bytes": 401,
-      "sha256": "a9158da3f9677a3d1c9895aaa556b10772f6c8dddf64ba3b82592129d7229305"
+      "sha256": "d56ab1d23fded082d5e5cd63a7e633b27fa71bd955cb6035873e050376991709"
     },
     {
       "path": "skills/line-world-d3/SKILL.md",
@@ -435,7 +435,7 @@
     {
       "path": "skills/line-world-d3/video-profile.json",
       "bytes": 1710,
-      "sha256": "0ac934a5857e129d551a02412ec9f1edff4ef4dc6d9d9510849e3aa24e13cc85"
+      "sha256": "46211a6afe388b7710e294eadd5c46edf50d00e2b5aa496bf5ee8766dc395986"
     },
     {
       "path": "skills/line-world-google-vids/SKILL.md",
@@ -715,7 +715,7 @@
     {
       "path": "skills/line-world-hyperframes/video-profile.json",
       "bytes": 1369,
-      "sha256": "ff3897db7249a68d09ee9e57ed99899a49511495e0461af4d19f9fca0736d564"
+      "sha256": "a2f96802d306ca8cb270f0c151f490ac338d3f8e334950b099478ed7e1adb5d2"
     },
     {
       "path": "skills/line-world-icons/SKILL.md",
