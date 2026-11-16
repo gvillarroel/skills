@@ -101,3 +101,12 @@ still report four pre-existing unrelated reference-route findings in the
 semantic-model/ontology skills. The scoped Line World validator passes and
 the scoped local sync verifies 152 primary and 22 adapter files. No unrelated
 skill changes are included in the publication.
+
+The final native-light Reddit encode is 104.866667 seconds, 3146 frames at
+30 fps, 1920 by 1080 with H.264/AAC. Full decoding and all-frame content scan
+pass with zero insufficient-content frames. Manual inspection covers all nine
+encoded scene contact sheets, cue reading poses and joins; 137 encoded samples
+pass and the exact-movie visual review is recorded. Provider word boundaries
+and measured extents supply the speech alignment; independent audio listening
+is not claimed. Movie SHA-256:
+`1fe07d040ab505a1accc8be1232aaa0f71439d80a4b6c0f1a0df1d7127e5bcc3`.

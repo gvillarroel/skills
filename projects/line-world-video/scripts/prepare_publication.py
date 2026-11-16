@@ -48,7 +48,10 @@ def main():
     if len(candidates) != 1: raise ValueError('Record one recent validation heading for the release version.')
     marker = candidates[0]
     note = source_backlog.split(marker, 1)[1].split('\n### ', 1)[0]
-    if marker not in backlog: backlog = backlog.replace('## Recent Validation Notes\n', '## Recent Validation Notes\n\n' + marker + note + '\n', 1)
+    if marker in backlog:
+        start = backlog.index(marker); end = backlog.find('\n### ', start + len(marker))
+        backlog = backlog[:start] + marker + note.rstrip() + '\n' + (backlog[end:] if end >= 0 else '')
+    else: backlog = backlog.replace('## Recent Validation Notes\n', '## Recent Validation Notes\n\n' + marker + note + '\n', 1)
     (target / 'SKILLS.md').write_text(backlog, encoding='utf-8'); selected.append('SKILLS.md')
     index = target / 'docs/README.md'; text = index.read_text(encoding='utf-8')
     link = '- [Line World Video plugin, reusable production and verified delivery](line-world-video.md)\n'

@@ -73,7 +73,6 @@ Use this file as the canonical list of skills to create, improve, or validate in
 - The actual extracted 0.25.1 plugin passes task-local native install, all six app-server skill discoveries and 22 installed utility suites. The final runtime-only strict Pi contract passes on the recorded `openai-codex/gpt-6.1-sol` medium exception; three natural candidate runs also pass before the final producer-contract clarification. Keep the primary skill `validating` and retain the native Google Vids upload/export limitation. [Evidence](evaluations/line-world-video/website-tours-20261116.md).
 - Add **Skills Marketplace**, with a versioned registry, committed-source builds, native catalogs, immutable payload checks, ordinary distribution-branch publication and a zero-model-turn native verifier. Five real-Git regression tests pass. Initial plugins are Line World Video and HyperFrames. [Installation and maintenance](docs/plugins-marketplace.md), [validation scope](evaluations/plugin-marketplace/20261116.md).
 
-
 ### 2026-11-16 - Original photographic color during focus, plugin 0.24.1
 
 Secondary component photographs retain their neutral treatment outside semantic
