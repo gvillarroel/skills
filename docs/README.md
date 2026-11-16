@@ -5,6 +5,7 @@ A maintained collection of reusable skills, compact references, deterministic he
 ## Start here
 
 - [Usage and setup](getting-started.md)
+- [Skills Marketplace: install plugins and publish new ones](plugins-marketplace.md)
 - [Repository layout, maintenance, and validation](repository-guide.md)
 - [Agent instructions](../AGENTS.md)
 - [Skill backlog and validation status](../SKILLS.md)

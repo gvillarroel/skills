@@ -1,12 +1,24 @@
 # Line World Video plugin
 
-Release **0.24.1**, November 16, 2026. Create explanatory videos with a guiding
+Release **0.25.1**, November 16, 2026. Create explanatory videos with a guiding
 dot, a larger continuous world, full-frame sections, sourced photographs,
 D3/Mermaid diagrams and measured narration. The plugin contains six standalone
 skills: the main orchestrator, dedicated D3, Mermaid, icon and HyperFrames
 producers, and the Google Vids adapter.
 
 ## Build and install
+
+For direct installation from the published repository marketplace:
+
+```sh
+codex plugin marketplace add gvillarroel/skills --ref marketplace
+codex plugin add line-world-video@skills-marketplace
+```
+
+The source is **Skills Marketplace**. See the
+[marketplace guide](plugins-marketplace.md) for desktop activation, updates
+and adding the next plugin. The following commands are for local development
+and immutable ZIP verification.
 
 Run from the repository root with uv, Node, a supported browser, FFmpeg,
 FFprobe and the Codex CLI available:
@@ -40,6 +52,32 @@ Use `$line-world-video` for a new film. Discover the installed skill paths and
 run their bundled utilities through uv. A source checkout is also usable by
 loading `skills/line-world-video/SKILL.md`. Required runtime resources live
 inside each skill; optional companions exchange project-owned assets.
+
+## Make the plugin visible in the workspace catalog
+
+A built ZIP or Git push does not register a plugin in the app catalog. In this
+workspace the existing native marketplace is `xy-desktop-local` (display name
+`XY Desktop Local`). Add the validated release without changing other entries:
+
+```text
+uv run --script projects/line-world-video/scripts/register_local.py --version 0.25.1
+codex plugin list --available --marketplace xy-desktop-local --json
+```
+
+The first command checks every release digest, backs up the existing catalog
+and adds only `line-world-video`. It writes the ignored workspace runtime
+catalog, never a user-home configuration or a global install. The canonical
+skill sources remain in `skills/`. Install from the available catalog with:
+
+```text
+codex plugin add line-world-video@xy-desktop-local
+```
+
+This install command targets the user's Codex configuration. Catalog availability,
+installation and skill activation are separate states; verify the intended host.
+The initial corrected catalog entry was verified at 0.24.1 on November 16, 2026.
+Public ZIP distribution uses the standalone `line-world-local` marketplace
+inside the archive; its install command above is intentionally different.
 
 ## Defaults learned from the films
 
@@ -79,6 +117,11 @@ visual simplifications. For paper tours, use pinned original pages, one gradual
 camera entry and fixed-scale pans. Keep emphasis clear of actual words,
 figures and table values.
 
+For website tutorials, preserve actual browser captures and source-pixel
+control identities. Keep account gates visible, use measured speech cues,
+clear guide routes and fixed-scale pans. The renderer caches clips and composes
+one sample-aligned audio track. See [website screenshot tours](../skills/line-world-video/references/website-tours.md).
+
 ## Choose a repeated-work utility
 
 | Task | Bundled primary utility |
@@ -91,6 +134,7 @@ figures and table values.
 | Review subject-focused narration | `narration_review.py` |
 | Inspect icon/text contrast, alignment or guide clearance | `inspect_items.py`, `inspect_focus.py` |
 | Animate and verify long chart/diagram focus holds | `assets/runtime/focus-motion.js`, `inspect_focus_motion.py` |
+| Teach navigation from original website captures | `website_video.py build`, `render` |
 | Capture and navigate an original paper | `paper_video.py` |
 | Assemble rendered clips with measured audio and package inputs | `project_delivery.py prepare`, `assemble`, `bundle` |
 | Check the actual complete film and record visual decisions | `review_video.py` |

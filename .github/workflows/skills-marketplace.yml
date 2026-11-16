@@ -1,0 +1,61 @@
+name: Publish Skills Marketplace
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/skills-marketplace.yml'
+      - 'projects/skills-marketplace/**'
+      - 'projects/line-world-video/package-spec.json'
+      - 'projects/line-world-video/plugin.json'
+      - 'projects/line-world-video/scripts/package_plugin.py'
+      - 'projects/hyperframes-colorsets/plugin/**'
+      - 'skills/line-world-video/**'
+      - 'skills/line-world-google-vids/**'
+      - 'skills/d3/**'
+      - 'skills/mermaid/**'
+      - 'skills/iconify-icon-search/**'
+      - 'skills/hyperframes-explainer/**'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: skills-marketplace-publication
+  cancel-in-progress: false
+
+jobs:
+  marketplace:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Test the registry, committed builds and publication guards
+        run: uv run --script projects/skills-marketplace/scripts/test_marketplace.py
+      - name: Build the installable distribution from committed sources
+        run: uv run --script projects/skills-marketplace/scripts/marketplace.py build --output projects/skills-marketplace/artifacts/build
+      - name: Verify the complete distribution inventory
+        run: uv run --script projects/skills-marketplace/scripts/marketplace.py check --root projects/skills-marketplace/artifacts/build
+      - name: Install the verified Codex loader in job-local tools
+        run: |
+          npm install --prefix "$RUNNER_TEMP/marketplace-tools" @openai/codex@0.167.0 --no-audit --no-fund
+          echo "$RUNNER_TEMP/marketplace-tools/node_modules/.bin" >> "$GITHUB_PATH"
+      - name: Exercise native catalog installation and skill discovery
+        run: uv run --script projects/skills-marketplace/scripts/verify_marketplace.py --root projects/skills-marketplace/artifacts/build --output projects/skills-marketplace/artifacts/native-check
+      - name: Publish the generated marketplace branch without force
+        env:
+          MARKETPLACE_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: uv run --script projects/skills-marketplace/scripts/marketplace.py publish --root projects/skills-marketplace/artifacts/build --checkout projects/skills-marketplace/artifacts/publication --token-env MARKETPLACE_GITHUB_TOKEN
+      - name: Keep the distribution and native verification receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: skills-marketplace-verification
+          path: |
+            projects/skills-marketplace/artifacts/build/distribution-manifest.json
+            projects/skills-marketplace/artifacts/native-check/verification.json
+          if-no-files-found: warn

@@ -201,3 +201,14 @@ repeated arbitrary seek. Check complete partitions, label bounds, pairwise text
 clearance, units, honest scales, stable IDs, exact palette and data agreement.
 Render and decode the final movie before calling delivery verified. Preserve
 failed checks and record which renderer and plugin copy produced the result.
+
+Capture websites and application interfaces in their native light theme.
+Select the supported appearance control before capture, verify the visible
+result and keep subsequent views in the same theme. Preserve those original
+light screenshot pixels; a recoloring filter is not a native light capture.
+
+For website tutorials, return actual captured interface states with source URLs,
+account state and source-pixel control/port coordinates. Preserve native UI
+colors and complete labels. Explain observed account gates; do not redraw a
+lookalike UI or imply that a gated action completed. The primary orchestrator
+can compose and audit captured states with its website-tour utility.

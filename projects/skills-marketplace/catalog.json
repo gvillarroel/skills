@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "name": "skills-marketplace",
+  "displayName": "Skills Marketplace",
+  "repository": "https://github.com/gvillarroel/skills.git",
+  "distributionBranch": "marketplace",
+  "plugins": [
+    {
+      "name": "line-world-video",
+      "displayName": "Line World Video",
+      "description": "Guided explanatory videos, original paper and website tours, D3, Mermaid, icons and Google Vids workflows.",
+      "category": "Creativity",
+      "kind": "line-world-release",
+      "spec": "projects/line-world-video/package-spec.json"
+    },
+    {
+      "name": "hyperframes",
+      "displayName": "HyperFrames by HeyGen",
+      "description": "HTML video compositions with HyperFrames and the bundled colorset1 and colorset2 adaptations.",
+      "category": "Creativity",
+      "kind": "directory",
+      "path": "projects/hyperframes-colorsets/plugin"
+    }
+  ]
+}

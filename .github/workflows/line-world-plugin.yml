@@ -44,6 +44,8 @@ jobs:
         run: uv run --script skills/line-world-video/scripts/test_focus_motion.py
       - name: Verify original photographic color and neutral recovery
         run: uv run --script skills/line-world-video/scripts/test_photo_focus.py
+      - name: Verify original website screenshots and narrated clocks
+        run: uv run --script skills/line-world-video/scripts/test_website_video.py
       - name: Build and extract the actual plugin packages
         run: uv run --script projects/line-world-video/scripts/package_plugin.py
       - name: Read the release version

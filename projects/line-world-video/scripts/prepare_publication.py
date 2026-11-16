@@ -12,7 +12,7 @@ import subprocess
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[3]
-SHARED = ['package-spec.json', 'plugin.json', *['scripts/' + s for s in ['package_plugin.py', 'verify_plugin.py', 'verify_openai_package.py', 'sync_local.py', 'prepare_publication.py', 'make_focus_motion_demo.py', 'make_photo_focus_demo.py']]]
+SHARED = ['package-spec.json', 'plugin.json', *['scripts/' + s for s in ['package_plugin.py', 'verify_plugin.py', 'verify_openai_package.py', 'sync_local.py', 'prepare_publication.py', 'make_focus_motion_demo.py', 'make_photo_focus_demo.py', 'register_local.py']]]
 
 
 def main():
@@ -24,8 +24,10 @@ def main():
     for name in inventory:
         keep = name.startswith(('skills/line-world-video/', 'skills/line-world-google-vids/', 'evaluations/line-world-video/', 'evaluations/line-world-google-vids/'))
         keep |= name.startswith('evaluations/pi-prompts/line-world-') or name.startswith('evaluations/contracts/verify-line-world-')
-        keep |= name in ['docs/line-world-video.md', '.github/workflows/line-world-plugin.yml', *['projects/line-world-video/' + s for s in SHARED]]
-        for project in ['cuda-alexnet-vids', 'ml-overfitting-vids', 'seal-paper-vids']:
+        keep |= name in ['docs/line-world-video.md', 'docs/plugins-marketplace.md', '.github/workflows/line-world-plugin.yml', '.github/workflows/skills-marketplace.yml', *['projects/line-world-video/' + s for s in SHARED]]
+        keep |= name.startswith('projects/skills-marketplace/')
+        keep |= name.startswith('evaluations/plugin-marketplace/')
+        for project in ['cuda-alexnet-vids', 'ml-overfitting-vids', 'seal-paper-vids', 'reddit-navigation-video']:
             prefix = 'projects/' + project + '/'
             if name.startswith(prefix):
                 relative = Path(name[len(prefix):])
@@ -55,6 +57,18 @@ def main():
         if anchor not in text: raise ValueError('Review the documentation index insertion point.')
         index.write_text(text.replace(anchor, anchor + link), encoding='utf-8')
     selected.append('docs/README.md')
+    marketplace_link = '- [Skills Marketplace: install plugins and publish new ones](plugins-marketplace.md)\n'
+    index_text = index.read_text(encoding='utf-8')
+    if '(plugins-marketplace.md)' not in index_text:
+        index.write_text(index_text.replace('- [Usage and setup](getting-started.md)\n', '- [Usage and setup](getting-started.md)\n' + marketplace_link), encoding='utf-8')
+    overview = subprocess.check_output(['git', 'show', 'HEAD:README.md'], cwd=target, text=True, encoding='utf-8')
+    source_overview = (ROOT / 'README.md').read_text(encoding='utf-8')
+    install = source_overview.split('Install complete plugins from **Skills Marketplace**:', 1)[1].split('\n## ', 1)[0]
+    if '(docs/plugins-marketplace.md)' not in overview:
+        anchor = 'A skill must work as an independent bundle. Repository documentation and example galleries support maintenance but must not become hidden runtime dependencies.\n'
+        if anchor not in overview: raise ValueError('Review the README marketplace insertion point.')
+        (target / 'README.md').write_text(overview.replace(anchor, anchor + '\nInstall complete plugins from **Skills Marketplace**:' + install + '\n'), encoding='utf-8')
+    selected.append('README.md')
     coverage_path = 'evaluations/colorset-audit/coverage.json'
     source_coverage = json.loads((ROOT / coverage_path).read_text(encoding='utf-8'))
     coverage = json.loads(subprocess.check_output(['git', 'show', 'HEAD:' + coverage_path], cwd=target, text=True))

@@ -1,6 +1,6 @@
 ---
 name: line-world-video
-description: Creates balanced explanatory videos with sourced object photographs, a guiding dot, original-paper page tours, full-frame D3/Mermaid sections, linked data and editable timing. Use for clean geometric stories, narrated research-paper walkthroughs and diagram journeys with colorset1 by default, justified colorset2, browser preview and final MP4; visible titles are opt-in.
+description: Creates balanced explanatory videos with sourced photographs, a guiding dot, original-paper and website screenshot tours, full-frame D3/Mermaid sections, linked data and editable timing. Use for clean geometric stories, narrated research or website walkthroughs and diagram journeys with colorset1 by default, justified colorset2, browser preview and final MP4; visible titles are opt-in.
 ---
 
 # Line World Video
@@ -38,6 +38,12 @@ When dividing the presentation, partition the complete frame; place margins
 inside sections and use each section for a related concept.
 
 ## Plan the story
+
+For website navigation or participation tutorials, read
+[real website screenshot tours](references/website-tours.md). Select the native
+light theme before capturing pages and interfaces; verify its visible result
+and keep it consistent. Preserve the actual interface and account gates, then use the bundled
+builder for source-pixel targets, measured audio cues and a downloadable MP4.
 
 For a research-paper walkthrough, read [original-paper tours](references/paper-tours.md).
 Use actual pinned PDF captures, source-region identities and measured narration

@@ -4,6 +4,17 @@ A maintained collection of reusable skills, compact references, deterministic he
 
 A skill must work as an independent bundle. Repository documentation and example galleries support maintenance but must not become hidden runtime dependencies.
 
+Install complete plugins from **Skills Marketplace**:
+
+```sh
+codex plugin marketplace add gvillarroel/skills --ref marketplace
+codex plugin add line-world-video@skills-marketplace
+```
+
+See the [marketplace guide](docs/plugins-marketplace.md) for available plugins,
+desktop activation, updates, and publishing the next plugin.
+
+
 ## Get started
 
 Install the collection directly from GitHub in Pi, including HyperFrames and both

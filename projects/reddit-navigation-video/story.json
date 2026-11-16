@@ -1,0 +1,535 @@
+{
+  "fps": 30,
+  "source": {
+    "capturedAt": "2026-11-16T13:51:56.319Z",
+    "provider": "Actual Chrome UI through CUA",
+    "community": "https://www.reddit.com/r/learnpython/",
+    "thread": "https://www.reddit.com/r/learnpython/comments/1xxar0o/ask_anything_monday_weekly_thread/",
+    "search": "https://www.reddit.com/search/?q=learnpython",
+    "accountState": "Signed out",
+    "actions": "Read-only navigation, public search, opening comments and account dialog. No votes, joins, comments, posts, credentials or account creation submitted.",
+    "screenshots": [
+      "light/01-search.jpg",
+      "light/02-communities.jpg",
+      "light/03-community.jpg",
+      "light/04-rules.jpg",
+      "light/05-thread.jpg",
+      "light/06-comments.jpg",
+      "light/11-reply.jpg",
+      "light/13-login.jpg"
+    ],
+    "theme": "light",
+    "themeSelection": "Reddit native Display Mode dialog: Light",
+    "captureNotes": "Native light theme selected before capture. The rules view uses the same unmodified community capture. No website pixel recoloring, credentials or submitted participation."
+  },
+  "voice": {
+    "provider": "Microsoft Edge speech via edge-tts",
+    "voice": "es-CL-CatalinaNeural",
+    "nativeGoogleVids": false
+  },
+  "scenes": [
+    {
+      "id": "search",
+      "capture": "artifacts/screenshots/light/01-search.jpg",
+      "region": [
+        320,
+        0,
+        1160,
+        420
+      ],
+      "scale": 1.95,
+      "script": "Busca un tema en la barra superior. En este ejemplo usamos learnpython. Después elige Communities para ver comunidades, en lugar de publicaciones.",
+      "targets": {
+        "search": {
+          "box": [
+            422,
+            8,
+            554,
+            42
+          ],
+          "port": [
+            444,
+            66
+          ]
+        },
+        "communities": {
+          "box": [
+            462,
+            70,
+            111,
+            41
+          ],
+          "port": [
+            517,
+            124
+          ]
+        }
+      },
+      "cues": [
+        {
+          "target": "search",
+          "at": 1.8694,
+          "phrase": "barra superior"
+        },
+        {
+          "target": "communities",
+          "at": 7.3388,
+          "phrase": "Communities"
+        }
+      ],
+      "audio": "artifacts/audio/search.mp3",
+      "audioLead": 0.65,
+      "voiceSeconds": 11.256,
+      "duration": 12.566666666666666
+    },
+    {
+      "id": "choose-community",
+      "capture": "artifacts/screenshots/light/02-communities.jpg",
+      "region": [
+        330,
+        65,
+        1390,
+        450
+      ],
+      "scale": 1.6,
+      "script": "Abre la comunidad learnpython. Su descripción te permite comprobar si el tema coincide con lo que buscas.",
+      "targets": {
+        "community": {
+          "box": [
+            410,
+            131,
+            270,
+            31
+          ],
+          "port": [
+            450,
+            117
+          ]
+        },
+        "description": {
+          "box": [
+            411,
+            168,
+            650,
+            20
+          ],
+          "port": [
+            1082,
+            177
+          ]
+        }
+      },
+      "cues": [
+        {
+          "target": "community",
+          "at": 1.2186,
+          "phrase": "comunidad"
+        },
+        {
+          "target": "description",
+          "at": 3.5888,
+          "phrase": "descripción"
+        }
+      ],
+      "audio": "artifacts/audio/choose-community.mp3",
+      "audioLead": 0.65,
+      "voiceSeconds": 7.68,
+      "duration": 9.0
+    },
+    {
+      "id": "follow",
+      "capture": "artifacts/screenshots/light/03-community.jpg",
+      "region": [
+        330,
+        62,
+        1390,
+        410
+      ],
+      "scale": 1.6,
+      "script": "Ya estás dentro de la comunidad. El botón Join te permite seguirla cuando hayas iniciado sesión.",
+      "targets": {
+        "community": {
+          "box": [
+            445,
+            144,
+            420,
+            37
+          ],
+          "port": [
+            650,
+            196
+          ]
+        },
+        "join": {
+          "box": [
+            1320,
+            139,
+            55,
+            40
+          ],
+          "port": [
+            1347,
+            123
+          ]
+        }
+      },
+      "cues": [
+        {
+          "target": "community",
+          "at": 1.3641,
+          "phrase": "dentro"
+        },
+        {
+          "target": "join",
+          "at": 3.9745,
+          "phrase": "Join"
+        }
+      ],
+      "audio": "artifacts/audio/follow.mp3",
+      "audioLead": 0.65,
+      "voiceSeconds": 7.344,
+      "duration": 8.666666666666666
+    },
+    {
+      "id": "rules",
+      "capture": "artifacts/screenshots/light/04-rules.jpg",
+      "region": [
+        1074,
+        344,
+        1384,
+        760
+      ],
+      "scale": 2,
+      "script": "Antes de participar, revisa las reglas. Aquí se pide ser amable y que las publicaciones sean preguntas para aprender Python. También puedes consultar las preguntas frecuentes.",
+      "targets": {
+        "rules": {
+          "box": [
+            1090,
+            550,
+            275,
+            66
+          ],
+          "port": [
+            1078,
+            588
+          ]
+        },
+        "questions": {
+          "box": [
+            1136,
+            623,
+            210,
+            64
+          ],
+          "port": [
+            1078,
+            654
+          ]
+        },
+        "faq": {
+          "box": [
+            1091,
+            490,
+            280,
+            33
+          ],
+          "port": [
+            1078,
+            506
+          ]
+        }
+      },
+      "cues": [
+        {
+          "target": "rules",
+          "at": 2.8542,
+          "phrase": "reglas"
+        },
+        {
+          "target": "questions",
+          "at": 6.142,
+          "phrase": "publicaciones"
+        },
+        {
+          "target": "faq",
+          "at": 11.5542,
+          "phrase": "preguntas frecuentes"
+        }
+      ],
+      "audio": "artifacts/audio/rules.mp3",
+      "audioLead": 0.65,
+      "voiceSeconds": 13.056,
+      "duration": 14.366666666666667
+    },
+    {
+      "id": "read-thread",
+      "capture": "artifacts/screenshots/light/05-thread.jpg",
+      "region": [
+        320,
+        63,
+        1060,
+        475
+      ],
+      "scale": 2,
+      "script": "Abre una publicación y lee el contexto completo. Este hilo semanal reúne preguntas pequeñas. Revisa sus indicaciones antes de responder.",
+      "targets": {
+        "title": {
+          "box": [
+            334,
+            126,
+            705,
+            32
+          ],
+          "port": [
+            315,
+            142
+          ]
+        },
+        "context": {
+          "box": [
+            334,
+            166,
+            705,
+            91
+          ],
+          "port": [
+            315,
+            213
+          ]
+        },
+        "instructions": {
+          "box": [
+            334,
+            311,
+            710,
+            143
+          ],
+          "port": [
+            315,
+            382
+          ]
+        }
+      },
+      "cues": [
+        {
+          "target": "title",
+          "at": 1.3383,
+          "phrase": "publicación"
+        },
+        {
+          "target": "context",
+          "at": 4.8521,
+          "phrase": "hilo semanal"
+        },
+        {
+          "target": "instructions",
+          "at": 8.8681,
+          "phrase": "indicaciones"
+        }
+      ],
+      "audio": "artifacts/audio/read-thread.mp3",
+      "audioLead": 0.65,
+      "voiceSeconds": 10.992,
+      "duration": 12.3
+    },
+    {
+      "id": "vote-and-reply",
+      "capture": "artifacts/screenshots/light/11-reply.jpg",
+      "region": [
+        320,
+        238,
+        1059,
+        645
+      ],
+      "scale": 2,
+      "script": "La flecha hacia arriba sirve para votar a favor de una aportación útil. Reply responde a un comentario concreto, manteniendo el hilo de la conversación.",
+      "targets": {
+        "upvote": {
+          "box": [
+            371,
+            370,
+            32,
+            33
+          ],
+          "port": [
+            387,
+            420
+          ]
+        },
+        "reply": {
+          "box": [
+            439,
+            370,
+            77,
+            33
+          ],
+          "port": [
+            478,
+            420
+          ]
+        }
+      },
+      "cues": [
+        {
+          "target": "upvote",
+          "at": 0.9127,
+          "phrase": "flecha"
+        },
+        {
+          "target": "reply",
+          "at": 5.65,
+          "phrase": "Reply"
+        }
+      ],
+      "audio": "artifacts/audio/vote-and-reply.mp3",
+      "audioLead": 0.65,
+      "voiceSeconds": 10.776,
+      "duration": 12.1
+    },
+    {
+      "id": "new-comment",
+      "capture": "artifacts/screenshots/light/06-comments.jpg",
+      "region": [
+        306,
+        100,
+        1065,
+        645
+      ],
+      "scale": 2,
+      "script": "Para añadir un comentario nuevo a la publicación, utiliza Join the conversation.",
+      "targets": {
+        "comment": {
+          "box": [
+            335,
+            131,
+            718,
+            43
+          ],
+          "port": [
+            318,
+            152
+          ]
+        }
+      },
+      "cues": [
+        {
+          "target": "comment",
+          "at": 1.4979,
+          "phrase": "comentario nuevo"
+        }
+      ],
+      "audio": "artifacts/audio/new-comment.mp3",
+      "audioLead": 0.65,
+      "voiceSeconds": 5.784,
+      "duration": 7.1
+    },
+    {
+      "id": "account",
+      "capture": "artifacts/screenshots/light/13-login.jpg",
+      "region": [
+        448,
+        31,
+        978,
+        744
+      ],
+      "scale": 1.85,
+      "script": "Reddit solicita una cuenta para participar. Si ya tienes una, inicia sesión con Log In. Si eres nuevo, completa el registro antes de publicar.",
+      "targets": {
+        "account": {
+          "box": [
+            662,
+            109,
+            101,
+            32
+          ],
+          "port": [
+            644,
+            125
+          ]
+        },
+        "login": {
+          "box": [
+            529,
+            669,
+            369,
+            45
+          ],
+          "port": [
+            511,
+            691
+          ]
+        },
+        "signup": {
+          "box": [
+            628,
+            620,
+            54,
+            24
+          ],
+          "port": [
+            701,
+            632
+          ]
+        }
+      },
+      "cues": [
+        {
+          "target": "account",
+          "at": 2.0431,
+          "phrase": "cuenta"
+        },
+        {
+          "target": "login",
+          "at": 6.634,
+          "phrase": "Log In"
+        },
+        {
+          "target": "signup",
+          "at": 9.7192,
+          "phrase": "registro"
+        }
+      ],
+      "audio": "artifacts/audio/account.mp3",
+      "audioLead": 0.65,
+      "voiceSeconds": 11.64,
+      "duration": 12.966666666666667
+    },
+    {
+      "id": "create-post",
+      "capture": "artifacts/screenshots/light/03-community.jpg",
+      "region": [
+        330,
+        62,
+        1390,
+        410
+      ],
+      "scale": 1.6,
+      "script": "Para iniciar tu propio tema, vuelve a la comunidad y utiliza Create Post. Describe tu pregunta, explica qué has intentado y añade el error o un ejemplo breve. Revisa las reglas antes de enviarla.",
+      "targets": {
+        "post": {
+          "box": [
+            1188,
+            139,
+            135,
+            40
+          ],
+          "port": [
+            1255,
+            123
+          ]
+        }
+      },
+      "cues": [
+        {
+          "target": "post",
+          "at": 4.4899,
+          "phrase": "Create Post"
+        }
+      ],
+      "audio": "artifacts/audio/create-post.mp3",
+      "audioLead": 0.65,
+      "voiceSeconds": 14.496,
+      "duration": 15.8
+    }
+  ]
+}

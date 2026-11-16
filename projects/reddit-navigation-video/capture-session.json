@@ -1,0 +1,22 @@
+{
+  "capturedAt": "2026-11-16T13:51:56.319Z",
+  "provider": "Actual Chrome UI through CUA",
+  "community": "https://www.reddit.com/r/learnpython/",
+  "thread": "https://www.reddit.com/r/learnpython/comments/1xxar0o/ask_anything_monday_weekly_thread/",
+  "search": "https://www.reddit.com/search/?q=learnpython",
+  "accountState": "Signed out",
+  "actions": "Read-only navigation, public search, opening comments and account dialog. No votes, joins, comments, posts, credentials or account creation submitted.",
+  "screenshots": [
+    "light/01-search.jpg",
+    "light/02-communities.jpg",
+    "light/03-community.jpg",
+    "light/04-rules.jpg",
+    "light/05-thread.jpg",
+    "light/06-comments.jpg",
+    "light/11-reply.jpg",
+    "light/13-login.jpg"
+  ],
+  "theme": "light",
+  "themeSelection": "Reddit native Display Mode dialog: Light",
+  "captureNotes": "Native light theme selected before capture. The rules view uses the same unmodified community capture. No website pixel recoloring, credentials or submitted participation."
+}
