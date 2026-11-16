@@ -1,6 +1,6 @@
 # Line World Video plugin
 
-Release **0.25.2**, November 16, 2026. Create explanatory videos with a guiding
+Release **0.26.0**, November 16, 2026. Create explanatory videos with a guiding
 dot, a larger continuous world, full-frame sections, sourced photographs,
 D3/Mermaid diagrams and measured narration. The plugin contains six standalone
 skills: the main orchestrator, dedicated D3, Mermaid, icon and HyperFrames
@@ -186,3 +186,19 @@ screenshots and native receipts remain in ignored project artifacts. This
 repository publishes reusable skill/plugin sources, tests and summarized
 evidence. Build packages locally; do not treat historical local artifact paths
 as public downloads.
+
+## Review existing movie collections
+
+Release 0.26.0 adds a source-aware batch reviewer, parallel jobs, exact delivery
+identities and hash-bound per-scene observations. Paper, website, SVG and starter
+compositions use their appropriate source audits. Optional focus/photo checks
+run through each helper's UV environment and reuse verified receipts. The
+scene-local effects bridge keeps motion and photo fades in frame-cache state
+while retaining static PNG reuse.
+
+See the [current eight-video review](../projects/line-world-quality-review/review.md)
+and [release validation](../evaluations/line-world-video/collection-review-20261116.md).
+The review corrects atlas reading/flight issues, original-photo focus, larger
+portrait captions and safe paper emphasis. Revised narrated movies preserve the
+approved AAC streams and frame budgets. They are local assemblies; retained
+native editor exports are identified separately.

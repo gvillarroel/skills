@@ -1,0 +1,378 @@
+{
+  "date": "2026-11-16",
+  "operator": "Codex visual review of actual encoded scene contacts and full-resolution defect/focus frames",
+  "scope": "Per-scene visual observations plus separate machine trajectory/content checks. Approved scripts and measured cue evidence were reviewed; this record does not claim a new human listening pass over every historical movie. Observations are frozen to the exact movie and source digests.",
+  "videos": [
+    {
+      "id": "ml",
+      "videoSha256": "1a64daa9d759b58d14488beee49aa6f6dada7b0ddf74cae72ea47be4107f6349",
+      "sourceSha256": "25092ad8b3f47b02d701db2f550d3163f3f2ef1669f6d608216ba0b9b7c31d81",
+      "scenes": [
+        {
+          "id": "generalize",
+          "reviewed": true,
+          "notes": "Observation field, controlled red fit and other gray curves remain readable; the motion preserves every quantitative endpoint."
+        },
+        {
+          "id": "problem-data",
+          "reviewed": true,
+          "notes": "Full-frame three-column data contract is balanced. Variables, error expression and quality gates have clear reading lanes."
+        },
+        {
+          "id": "split",
+          "reviewed": true,
+          "notes": "The 60/20/20 split, 144/48/48 observations and grouped pairs agree. Distinct spoken targets retain their measured guide cues."
+        },
+        {
+          "id": "preprocessing",
+          "reviewed": true,
+          "notes": "The two preparation/application rows remain clear; the right transfer lane avoids labels and model boxes."
+        },
+        {
+          "id": "baseline",
+          "reviewed": true,
+          "notes": "The 0.956 mean baseline stays dark gray and the 0.069 pipeline stays primary red; the adjacent CV plot keeps a shared scale."
+        },
+        {
+          "id": "cross-validation",
+          "reviewed": true,
+          "notes": "The five-fold grid and degree/error/deviation table are readable. Degree 3, 0.059 mean and 0.013 deviation are consistent."
+        },
+        {
+          "id": "regularization",
+          "reviewed": true,
+          "notes": "The logarithmic regularization axes and coefficient values remain clear of the actual curve; the trace changes no data."
+        },
+        {
+          "id": "early-stopping",
+          "reviewed": true,
+          "notes": "The schematic training/validation curves, saved-state marker and caveat remain readable without repeated camera zooming."
+        },
+        {
+          "id": "diagnostics",
+          "reviewed": true,
+          "notes": "The measured grouped learning curves preserve points, axes, model parameters and train/CV distinctions."
+        },
+        {
+          "id": "final-test",
+          "reviewed": true,
+          "notes": "The frozen pipeline, 0.058 final MSE and 0.036-0.086 interval are legible; the white group and red result maintain hierarchy."
+        },
+        {
+          "id": "production",
+          "reviewed": true,
+          "notes": "The production loop has centered labels, separate version metadata and clear connector lanes. Active small objects stay solid red."
+        },
+        {
+          "id": "overview",
+          "reviewed": true,
+          "notes": "The final world view is an intentional summary: miniature copy fades, concept labels remain readable and explanatory objects remain visible."
+        }
+      ]
+    },
+    {
+      "id": "cuda",
+      "videoSha256": "951ab6bbbb13230af6041f9987a1cb0c1a41b9cc71e1a0213f48feba91870030",
+      "sourceSha256": "85fea432121c38c20de5579bd86b55275fec1124fdb4929fd099e611b5dd30a2",
+      "scenes": [
+        {
+          "id": "turning-point",
+          "reviewed": true,
+          "notes": "The 2012/AlexNet convergence and three supporting concepts are balanced; white foregrounds on red and icon centers are clear."
+        },
+        {
+          "id": "learned-features",
+          "reviewed": true,
+          "notes": "The two actual Mermaid feature lanes share readable typography; moving edge emphasis leaves labels and node fills intact."
+        },
+        {
+          "id": "cuda-platform",
+          "reviewed": true,
+          "notes": "Ian Buck has a visible name and two 26-pixel contribution lines with corrected spacing. CPU/GPU photographs are neutral outside focus; the GPU returns to its actual original color during focus."
+        },
+        {
+          "id": "parallel-work",
+          "reviewed": true,
+          "notes": "Input, kernel/thread blocks and output occupy three complete sections. The explanatory edge trace preserves the work/result relationship."
+        },
+        {
+          "id": "imagenet-scale",
+          "reviewed": true,
+          "notes": "Fei-Fei Li and Jia Deng have named contribution captions. Thirty sourced examples, 1.2 million images and 1000 classes remain distinct."
+        },
+        {
+          "id": "alexnet-model",
+          "reviewed": true,
+          "notes": "All three AlexNet authors have readable names/roles. Five convolutional and three connected layers remain clear; the real input image retains its source identity."
+        },
+        {
+          "id": "two-gpus",
+          "reviewed": true,
+          "notes": "The actual GTX 580 photographs, two 3 GB labels, central partition diagram and 5-6 day result are clear; the photographs return to neutral after focus."
+        },
+        {
+          "id": "training-recipe",
+          "reviewed": true,
+          "notes": "ReLU, actual image augmentations and dropout use three balanced sections. Monochrome source originals remain monochrome; no invented colorization is applied."
+        },
+        {
+          "id": "imagenet-result",
+          "reviewed": true,
+          "notes": "The 15.3 percent primary result and 26.2 percent dark-gray comparison share the same zero scale. The 10.9 pp difference and schematic top-five cells are legible."
+        },
+        {
+          "id": "historical-impact",
+          "reviewed": true,
+          "notes": "The closing CUDA/data/network convergence preserves the same object identities and a readable primary-red AlexNet node."
+        }
+      ]
+    },
+    {
+      "id": "seal",
+      "videoSha256": "c0735b4d8c2162f99012ff18e4e1a83dded0b0da079d862c24da438d5f133e3b",
+      "sourceSha256": "ae8b76008654a24ca92af15a178b05d21512f2ddf1ae4d5bdb84e23a98676519",
+      "scenes": [
+        {
+          "id": "method",
+          "reviewed": true,
+          "notes": "The pinned first figure uses a calm entry and lateral pans. Active annotated regions stay complete; nonactive context can intentionally leave the viewport. Safe margin emphasis does not box or cut text."
+        },
+        {
+          "id": "knowledge",
+          "reviewed": true,
+          "notes": "The original passage/self-edit/evaluation diagram and colors remain intact. The margin trace and adjacent guide leave source text and arrows readable."
+        },
+        {
+          "id": "few-shot",
+          "reviewed": true,
+          "notes": "The actual ARC grids, augmentation settings and evaluation diagram remain unmodified; focus follows source regions rather than fabricated connections."
+        },
+        {
+          "id": "arc-table",
+          "reviewed": true,
+          "notes": "Original Table 1 and derived bars agree on 0, 20, 72.5 and 100. The selected-task and successful-self-edit context remains in the approved script."
+        },
+        {
+          "id": "knowledge-table",
+          "reviewed": true,
+          "notes": "Original Table 2 remains legible while derived bars follow the active condition. The 200-document 58.2 versus 59.4 comparison is preserved; the script retains the bounded conclusion."
+        },
+        {
+          "id": "limits",
+          "reviewed": true,
+          "notes": "The original forgetting heatmap and legend remain readable. Source attribution is larger and inset; safe margin motion preserves the source pixels and retention/cost caveats."
+        }
+      ]
+    },
+    {
+      "id": "reddit",
+      "videoSha256": "1fe07d040ab505a1accc8be1232aaa0f71439d80a4b6c0f1a0df1d7127e5bcc3",
+      "sourceSha256": "cce6ab64e0d46d5b8394348d20a060358dcc7e6619aab532946ce01c2a1809d9",
+      "scenes": [
+        {
+          "id": "search",
+          "reviewed": true,
+          "notes": "Actual native light search capture shows learnpython and Communities; the guide remains adjacent to the intended control."
+        },
+        {
+          "id": "choose-community",
+          "reviewed": true,
+          "notes": "Community names and descriptions are preserved from the real interface; the walkthrough remains read-only."
+        },
+        {
+          "id": "follow",
+          "reviewed": true,
+          "notes": "The real Join control is shown in its signed-out context without claiming a submitted action."
+        },
+        {
+          "id": "rules",
+          "reviewed": true,
+          "notes": "The original rules and FAQ region remains readable. Its narrow crop intentionally retains white space rather than inventing interface content."
+        },
+        {
+          "id": "read-thread",
+          "reviewed": true,
+          "notes": "The real weekly thread and its instructions remain readable; guide emphasis stays outside the paragraphs."
+        },
+        {
+          "id": "vote-and-reply",
+          "reviewed": true,
+          "notes": "Actual voting and Reply controls are visible without submitting a vote or reply."
+        },
+        {
+          "id": "new-comment",
+          "reviewed": true,
+          "notes": "The original Join the conversation field is identified without entering or publishing text."
+        },
+        {
+          "id": "account",
+          "reviewed": true,
+          "notes": "The native light account dialog is an intentional portrait crop. No credentials or account submission are implied."
+        },
+        {
+          "id": "create-post",
+          "reviewed": true,
+          "notes": "The real Create Post control is identified with the existing rules-first script; no fabricated compose or publication result appears."
+        }
+      ]
+    },
+    {
+      "id": "linked",
+      "videoSha256": "59c64abc868e4b96376455b4c51be8e24fe6f812959a0fd53b792712e32ed898",
+      "sourceSha256": "8f70d99fc479d356b82fd3ff8bcb7611cfb9115f73bcc724099c27a664416c3b",
+      "scenes": [
+        {
+          "id": "cloud",
+          "reviewed": true,
+          "notes": "The sparse observation field and semantic nodes are visible from the opening and retain the primary-red guide."
+        },
+        {
+          "id": "relations",
+          "reviewed": true,
+          "notes": "The native relation diagram and actual edge motion stay readable with transparent emphasis."
+        },
+        {
+          "id": "travel",
+          "reviewed": true,
+          "notes": "The world pan retains explanatory content while arriving at the data table."
+        },
+        {
+          "id": "compare",
+          "reviewed": true,
+          "notes": "Table values and paired before/after bars remain linked, readable and proportional; the primary comparison stays red and secondary marks gray."
+        },
+        {
+          "id": "history",
+          "reviewed": true,
+          "notes": "The linked history selection and curve trace preserve all observations and endpoints."
+        },
+        {
+          "id": "categories",
+          "reviewed": true,
+          "notes": "The complete proportional partition now uses white outlined groups and readable red/gray values. The guide sits beside the final value, and a contour trace preserves all areas."
+        },
+        {
+          "id": "overview",
+          "reviewed": true,
+          "notes": "The world overview is an intentional map of completed views; objects remain visible and no title banner appears."
+        }
+      ]
+    },
+    {
+      "id": "atlas",
+      "videoSha256": "183db6af5b9186b869a8d6aad9ae136d69c0aad083d7f59296af2dcb53c00a76",
+      "sourceSha256": "9a904d1594c3fc16c6750372b1dc895f8cb800d8791cc04e3bac544e1196cf83",
+      "scenes": [
+        {
+          "id": "process",
+          "reviewed": true,
+          "notes": "Native process and D3 network remain balanced. Actual encoded red nodes now stay red with white text/icons; transparent pulse layers do not obscure labels."
+        },
+        {
+          "id": "interactions",
+          "reviewed": true,
+          "notes": "The native sequence diagram and scatter/histogram pair occupy their full frame sections with stable labels and quantities."
+        },
+        {
+          "id": "states",
+          "reviewed": true,
+          "notes": "The state diagram and area/event views keep stable values and readable labels; active native nodes have no pink fill."
+        },
+        {
+          "id": "hierarchy",
+          "reviewed": true,
+          "notes": "Mindmap, radial tree and circle packing remain distinct but linked; quantity points avoid names and values."
+        },
+        {
+          "id": "parts",
+          "reviewed": true,
+          "notes": "Native treemap name/value spacing is corrected. The sunburst and D3 treemap preserve proportional geometry and readable shared focus."
+        },
+        {
+          "id": "flows",
+          "reviewed": true,
+          "notes": "Sankey, chord and matrix retain their source quantities and complementary relationships; frame divisions remain complete."
+        },
+        {
+          "id": "records",
+          "reviewed": true,
+          "notes": "Native ER/class diagrams and linked table/bars stay clear. A white inset glint remains visible within the thick red mark without changing its width or endpoints."
+        },
+        {
+          "id": "schedule",
+          "reviewed": true,
+          "notes": "Gantt, rank and dumbbell views keep their scales, reading labels and connectors clear."
+        },
+        {
+          "id": "history",
+          "reviewed": true,
+          "notes": "Timeline glyphs are measured at their actual nested span size. Stream/history curves keep fixed geometry and calm emphasis."
+        },
+        {
+          "id": "tradeoffs",
+          "reviewed": true,
+          "notes": "Quadrant, parallel-coordinate and box-plot views remain readable with stable quantitative positions."
+        },
+        {
+          "id": "profiles",
+          "reviewed": true,
+          "notes": "Radar and XY/dumbbell views are distinct. The moved axis unit no longer overlaps the tick value, and native bar focus follows the row."
+        },
+        {
+          "id": "experience",
+          "reviewed": true,
+          "notes": "Journey and kanban keep centered labels and red active objects. Transparent overlays remove the former pink/text-obscuring effect."
+        },
+        {
+          "id": "contracts",
+          "reviewed": true,
+          "notes": "Git/requirements/block representations remain legible and aligned; the active block remains primary red."
+        },
+        {
+          "id": "deployment",
+          "reviewed": true,
+          "notes": "Architecture icons and the orthographic globe remain clear. The synthetic deployment note distinguishes the illustration from real infrastructure."
+        },
+        {
+          "id": "shares",
+          "reviewed": true,
+          "notes": "The native pie legend has larger spaced labels; quantity flights and guide avoid it. Donut/lollipop values and the total remain consistent."
+        },
+        {
+          "id": "space",
+          "reviewed": true,
+          "notes": "Voronoi, Delaunay, contours and beeswarm preserve the synthetic observation positions while emphasis supplies motion."
+        },
+        {
+          "id": "overview",
+          "reviewed": true,
+          "notes": "The final atlas is an intentional overview rather than a reading scale for every internal label. All completed panels remain visible."
+        }
+      ]
+    },
+    {
+      "id": "focus-motion",
+      "videoSha256": "24a2c96a6d98492426894def4607b7d0544f22868f1627892a52decc925f1023",
+      "sourceSha256": "c91665977860ef10f8c242dd1fc4f852d28ec0b024daccd11f4820b6702d3e88",
+      "scenes": [
+        {
+          "id": "focus-motion",
+          "reviewed": true,
+          "notes": "Five actual encoded progress poses show edge motion followed by curve motion. The guide is adjacent, labels and the 0.82 value stay fixed, and the final reading hold remains visible. This is intentionally silent."
+        }
+      ]
+    },
+    {
+      "id": "photo-focus",
+      "videoSha256": "ceb028c23851109fecea4ecbfe10b83d658c47e058544bc985d524ee904682b5",
+      "sourceSha256": "af5b4784a48ffcd04a4db2c63f3f2ff277a66a049fbf1ba8029957bb05ec1628",
+      "scenes": [
+        {
+          "id": "photo-focus",
+          "reviewed": true,
+          "notes": "Five actual encoded progress poses show the reviewed CPU/GPU originals during focus and neutral recovery afterwards. Crops, labels and bounds stay fixed; no color is invented. This is intentionally silent."
+        }
+      ]
+    }
+  ]
+}

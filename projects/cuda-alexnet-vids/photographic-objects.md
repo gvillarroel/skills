@@ -1,16 +1,17 @@
 # Photographic object revision
 
 The current local film is
-[cuda-alexnet-photographic-local.mp4](artifacts/videos/cuda-alexnet-photographic-local.mp4),
-220.6 seconds, 1080p30. It preserves the approved Google Vids narration exactly.
+[cuda-alexnet-polished.mp4](artifacts/videos/cuda-alexnet-polished.mp4),
+220.667 seconds in its approved frame budget, 1080p30. It preserves the approved Google Vids narration exactly.
 Complete native visual replacement/export remains pending the existing browser
 upload permission. The native project does not yet represent this revision.
 
 ## Choose and change treatments
 
-`object-media.json` is the reviewed source/preparation request. Hardware uses
-gray/white ordered one-bit at cell size 2. Training samples use grayscale; the
-network input uses a restrained pixel treatment of an actual paper photograph.
+`object-media.json` is the reviewed source/preparation request. The 0.26.0 revision uses neutral grayscale hardware, training and input photographs
+outside semantic focus, restoring the aligned prepared original colors only
+during the measured focus windows. Earlier one-bit/pixel variants remain cached
+source treatments.
 Keep the source scope and credit records intact. Do not describe the EVGA
 product image as the researchers' exact physical boards or the illustrative
 CPU as the documented experiment host.

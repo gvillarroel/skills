@@ -75,6 +75,16 @@ class ReviewTests(unittest.TestCase):
             with self.subTest(scenes=scenes),self.assertRaisesRegex(ValueError,'scene IDs'):
                 review.plan({'scenes':scenes},None,None,30,330)
 
+    def test_actual_nested_glyph_size_and_composite_guide_are_reviewed(self):
+        path=self.root/'nested.html'
+        path.write_text('<style>body{margin:0}</style><svg id="stage" width="640" height="360"><text x="100" y="100" font-size="12"><tspan font-size="28">Readable glyphs</tspan></text><g id="guide"><circle cx="500" cy="260" r="12" fill="white"/><circle cx="500" cy="260" r="9" fill="#9e1b32"/></g></svg><script>window.renderAt=t=>({camera:1});window.snapshot=()=>({camera:1})</script>',encoding='utf-8')
+        output=self.root/'nested-review';output.mkdir(exist_ok=True)
+        scenes=[{'id':'fixture','index':0,'start':0,'duration':11,'sourceDuration':11,'cues':[]}]
+        report=review.source_review(path,scenes,'global',1,640,360,output,[])
+        self.assertEqual(report['browserErrors'],[])
+        self.assertEqual(report['scenes'][0]['guideIssues'],[])
+        self.assertEqual(report['scenes'][0]['readingIssues'],[])
+
     def test_visual_attestation_is_bound_to_the_exact_artifacts(self):
         path=self.root/'operator.json';path.write_text(json.dumps({'videoSha256':'movie','sourceSha256':'source','scenes':[{'id':'fixture','reviewed':True,'notes':'Inspected the fixture contact sheet.'}]}),encoding='utf-8')
         self.assertEqual(review.manual_review(path,'movie',{'sourceSha256':'source'},[{'id':'fixture'}]),'recorded')

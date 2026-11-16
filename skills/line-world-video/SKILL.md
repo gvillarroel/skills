@@ -156,6 +156,11 @@ For plugin maintenance, read [dedicated profiles](references/plugin-profiles.md)
 
 ## Preview, test and deliver
 
+For several existing videos, read [collection review](references/collection-review.md).
+Use the batch reviewer to select one current delivery per production, route
+source audits correctly, retain historical findings and reuse hash-bound checks.
+Inspect actual encoded results before recording visual approval.
+
 For prepared narrated clips or a visual-only revision, read
 [reusable project delivery](references/project-delivery.md). Use
 `project_delivery.py` to prepare measured assembly requests, cache local

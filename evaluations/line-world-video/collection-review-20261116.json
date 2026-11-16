@@ -1,0 +1,389 @@
+{
+  "date": "2026-11-16",
+  "pluginVersion": "0.26.0",
+  "scope": "Eight current local deliveries and 29 historical/voice/utility references. Per-scene actual encoded visual observations plus separate source, decode/content and effect checks. Historical entries are not approved current movies.",
+  "currentVideos": [
+    {
+      "id": "ml",
+      "videoSha256": "1a64daa9d759b58d14488beee49aa6f6dada7b0ddf74cae72ea47be4107f6349",
+      "sourceSha256": "25092ad8b3f47b02d701db2f550d3163f3f2ef1669f6d608216ba0b9b7c31d81",
+      "sourceKind": "svg",
+      "machineOK": true,
+      "manualReview": "recorded",
+      "deliveryReady": true,
+      "decodedFrames": 7976,
+      "insufficientContentFrames": 0,
+      "guideEvents": 0,
+      "advisories": 0,
+      "provenance": {
+        "nativeGoogleVidsExport": false,
+        "nativeHyperFramesRender": false,
+        "renderer": "Local HTML/SVG, isolated browser and FFmpeg",
+        "voice": "Actual approved Google Vids generation, unchanged AAC stream"
+      },
+      "sceneCount": 12,
+      "videoPath": "projects/ml-overfitting-vids/artifacts/videos/ml-overfitting-polished.mp4",
+      "effectChecks": [
+        {
+          "check": "focus-motion",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "id": "cuda",
+      "videoSha256": "951ab6bbbb13230af6041f9987a1cb0c1a41b9cc71e1a0213f48feba91870030",
+      "sourceSha256": "85fea432121c38c20de5579bd86b55275fec1124fdb4929fd099e611b5dd30a2",
+      "sourceKind": "svg",
+      "machineOK": true,
+      "manualReview": "recorded",
+      "deliveryReady": true,
+      "decodedFrames": 6620,
+      "insufficientContentFrames": 0,
+      "guideEvents": 0,
+      "advisories": 0,
+      "provenance": {
+        "nativeGoogleVidsExport": false,
+        "nativeHyperFramesRender": false,
+        "renderer": "Local HTML/SVG, isolated browser and FFmpeg",
+        "voice": "Actual approved Google Vids generation, unchanged AAC stream"
+      },
+      "sceneCount": 10,
+      "videoPath": "projects/cuda-alexnet-vids/artifacts/videos/cuda-alexnet-polished.mp4",
+      "effectChecks": [
+        {
+          "check": "focus-motion",
+          "ok": true
+        },
+        {
+          "check": "photo-focus",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "id": "seal",
+      "videoSha256": "c0735b4d8c2162f99012ff18e4e1a83dded0b0da079d862c24da438d5f133e3b",
+      "sourceSha256": "ae8b76008654a24ca92af15a178b05d21512f2ddf1ae4d5bdb84e23a98676519",
+      "sourceKind": "paper",
+      "machineOK": true,
+      "manualReview": "recorded",
+      "deliveryReady": true,
+      "decodedFrames": 6369,
+      "insufficientContentFrames": 0,
+      "guideEvents": 0,
+      "advisories": 0,
+      "provenance": {
+        "nativeGoogleVidsExport": false,
+        "nativeHyperFramesRender": false,
+        "renderer": "Local HTML/SVG, isolated browser and FFmpeg",
+        "voice": "Actual approved Google Vids generation, unchanged AAC stream"
+      },
+      "sceneCount": 6,
+      "videoPath": "projects/seal-paper-vids/artifacts/videos/seal-paper-polished.mp4",
+      "effectChecks": []
+    },
+    {
+      "id": "reddit",
+      "videoSha256": "1fe07d040ab505a1accc8be1232aaa0f71439d80a4b6c0f1a0df1d7127e5bcc3",
+      "sourceSha256": "cce6ab64e0d46d5b8394348d20a060358dcc7e6619aab532946ce01c2a1809d9",
+      "sourceKind": "website",
+      "machineOK": true,
+      "manualReview": "recorded",
+      "deliveryReady": true,
+      "decodedFrames": 3146,
+      "insufficientContentFrames": 0,
+      "guideEvents": 0,
+      "advisories": 0,
+      "provenance": {
+        "nativeGoogleVidsExport": false,
+        "nativeHyperFramesRender": false,
+        "renderer": "Local HTML/SVG, isolated browser and FFmpeg",
+        "voice": "Edge speech, es-CL-CatalinaNeural"
+      },
+      "sceneCount": 9,
+      "videoPath": "projects/reddit-navigation-video/artifacts/videos/reddit-navigation.mp4",
+      "effectChecks": []
+    },
+    {
+      "id": "linked",
+      "videoSha256": "59c64abc868e4b96376455b4c51be8e24fe6f812959a0fd53b792712e32ed898",
+      "sourceSha256": "8f70d99fc479d356b82fd3ff8bcb7611cfb9115f73bcc724099c27a664416c3b",
+      "sourceKind": "starter",
+      "machineOK": true,
+      "manualReview": "recorded",
+      "deliveryReady": true,
+      "decodedFrames": 1680,
+      "insufficientContentFrames": 0,
+      "guideEvents": 0,
+      "advisories": 0,
+      "provenance": {
+        "nativeGoogleVidsExport": false,
+        "nativeHyperFramesRender": false,
+        "renderer": "Local HTML/SVG, isolated browser and FFmpeg",
+        "voice": "Intentionally silent style demonstration"
+      },
+      "sceneCount": 7,
+      "videoPath": "projects/line-world-video/artifacts/videos/line-world-polished-linked.mp4",
+      "effectChecks": [
+        {
+          "check": "focus-motion",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "id": "atlas",
+      "videoSha256": "183db6af5b9186b869a8d6aad9ae136d69c0aad083d7f59296af2dcb53c00a76",
+      "sourceSha256": "9a904d1594c3fc16c6750372b1dc895f8cb800d8791cc04e3bac544e1196cf83",
+      "sourceKind": "starter",
+      "machineOK": true,
+      "manualReview": "recorded",
+      "deliveryReady": true,
+      "decodedFrames": 5550,
+      "insufficientContentFrames": 0,
+      "guideEvents": 0,
+      "advisories": 0,
+      "provenance": {
+        "nativeGoogleVidsExport": false,
+        "nativeHyperFramesRender": false,
+        "renderer": "Local HTML/SVG, isolated browser and FFmpeg",
+        "voice": "Intentionally silent style demonstration"
+      },
+      "sceneCount": 17,
+      "videoPath": "projects/line-world-video/artifacts/videos/line-world-reviewed-atlas.mp4",
+      "effectChecks": [
+        {
+          "check": "focus-motion",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "id": "focus-motion",
+      "videoSha256": "24a2c96a6d98492426894def4607b7d0544f22868f1627892a52decc925f1023",
+      "sourceSha256": "c91665977860ef10f8c242dd1fc4f852d28ec0b024daccd11f4820b6702d3e88",
+      "sourceKind": "encoded",
+      "machineOK": true,
+      "manualReview": "recorded",
+      "deliveryReady": true,
+      "decodedFrames": 270,
+      "insufficientContentFrames": 0,
+      "guideEvents": 0,
+      "advisories": 0,
+      "provenance": {
+        "nativeGoogleVidsExport": false,
+        "nativeHyperFramesRender": false,
+        "voice": "Intentionally silent feature demonstration"
+      },
+      "sceneCount": 1,
+      "videoPath": "projects/line-world-video/artifacts/focus-motion-demo/focus-motion-demo.mp4",
+      "effectChecks": [
+        {
+          "check": "focus-motion",
+          "ok": true
+        }
+      ]
+    },
+    {
+      "id": "photo-focus",
+      "videoSha256": "ceb028c23851109fecea4ecbfe10b83d658c47e058544bc985d524ee904682b5",
+      "sourceSha256": "af5b4784a48ffcd04a4db2c63f3f2ff277a66a049fbf1ba8029957bb05ec1628",
+      "sourceKind": "encoded",
+      "machineOK": true,
+      "manualReview": "recorded",
+      "deliveryReady": true,
+      "decodedFrames": 270,
+      "insufficientContentFrames": 0,
+      "guideEvents": 0,
+      "advisories": 0,
+      "provenance": {
+        "nativeGoogleVidsExport": false,
+        "nativeHyperFramesRender": false,
+        "voice": "Intentionally silent feature demonstration"
+      },
+      "sceneCount": 1,
+      "videoPath": "projects/line-world-video/artifacts/photo-focus-demo/photo-focus-demo.mp4",
+      "effectChecks": [
+        {
+          "check": "photo-focus",
+          "ok": true
+        }
+      ]
+    }
+  ],
+  "filesReviewed": 37,
+  "uniqueMovieDigests": 35,
+  "currentFrames": 31881,
+  "allFileFrames": 180857,
+  "observedScenes": 63,
+  "historicalFindings": [
+    {
+      "id": "history-11-native-voice-reference",
+      "insufficientContentFrames": 6234
+    },
+    {
+      "id": "history-19-line-world-atlas-final",
+      "insufficientContentFrames": 38
+    },
+    {
+      "id": "history-20-line-world-atlas",
+      "insufficientContentFrames": 38
+    },
+    {
+      "id": "history-21-line-world-clean",
+      "insufficientContentFrames": 15
+    },
+    {
+      "id": "history-22-line-world-final",
+      "insufficientContentFrames": 58
+    },
+    {
+      "id": "history-23-line-world-first-pass",
+      "insufficientContentFrames": 58
+    },
+    {
+      "id": "history-26-line-world-points-highlights",
+      "insufficientContentFrames": 32
+    },
+    {
+      "id": "history-27-line-world-red-gray-final",
+      "insufficientContentFrames": 15
+    },
+    {
+      "id": "history-30-utility-validation",
+      "insufficientContentFrames": 4
+    }
+  ],
+  "unitSuites": {
+    "focus-motion": 14,
+    "scene-effects": 5,
+    "collection": 4,
+    "atlas-reading": 4,
+    "single-film-review": 6,
+    "photo-focus": 15,
+    "paper-motion": 10,
+    "paper-video": 15
+  },
+  "unitTests": 73,
+  "model": "openai-codex/gpt-6.1-sol, medium; recorded Spark account exception",
+  "isolatedRuns": [
+    {
+      "id": "20261116-line-world-0260-collection-contract",
+      "passed": true,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "durationSeconds": 49.52,
+      "matchesFinalRuntimePayload": false
+    },
+    {
+      "id": "20261116-line-world-0260-final-collection",
+      "passed": true,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "durationSeconds": 41.477,
+      "matchesFinalRuntimePayload": false
+    },
+    {
+      "id": "20261116-line-world-0260-final-effects",
+      "passed": true,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "durationSeconds": 86.683,
+      "matchesFinalRuntimePayload": false
+    },
+    {
+      "id": "20261116-line-world-0260-release-collection",
+      "passed": true,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "durationSeconds": 46.679,
+      "matchesFinalRuntimePayload": true
+    },
+    {
+      "id": "20261116-line-world-0260-release-effects",
+      "passed": true,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "durationSeconds": 91.985,
+      "matchesFinalRuntimePayload": true
+    },
+    {
+      "id": "20261116-line-world-0260-scene-effects",
+      "passed": true,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "durationSeconds": 96.936,
+      "matchesFinalRuntimePayload": false
+    }
+  ],
+  "finalRuntimeFiles": 158,
+  "finalStrictPasses": 2,
+  "nativeOpenAIPackage": {
+    "ok": true,
+    "report": "projects\\line-world-video\\artifacts\\host-checks\\openai-0.26.0\\verification.json",
+    "zipSha256": "3bda40d73d6ebb8c5bc1e4e92ff46ba2c30d7382eb3648c7ffb46b640fcbd6f0"
+  },
+  "approvedAudio": [
+    {
+      "id": "ml",
+      "audioBitstreamPreserved": true,
+      "aacSha256": "c646e9c852d0052b633d6697d413ae57d6dea7fa90be7fd9fb56d5ba56b01d91",
+      "extraFinalHoldFrames": 0
+    },
+    {
+      "id": "cuda",
+      "audioBitstreamPreserved": true,
+      "aacSha256": "bfee5ba00a3c9f4a8ee4252d57d8005cba89c9be1f74e9898f06b73801f40bc4",
+      "extraFinalHoldFrames": 2
+    },
+    {
+      "id": "seal",
+      "audioBitstreamPreserved": true,
+      "aacSha256": "7364580a7c42c86ec3c61345a95e0bc77cb74f0f0638bb1ad928be88ae7363b9",
+      "extraFinalHoldFrames": 0
+    }
+  ],
+  "playback": {
+    "ok": true,
+    "movies": 8,
+    "actualMutedPlayback": true,
+    "scope": "Fresh local Chrome profile, local review index and actual H.264 MP4 playback/seek. Muted playback; not Google Vids cloud playback or a new listening pass."
+  },
+  "repeatedReview": {
+    "newGalleryFrames": 0,
+    "reusedGalleryFrames": 1280,
+    "contentCacheReused": 37
+  },
+  "limitations": [
+    "Primary skill remains validating for previously recorded broader generation limits.",
+    "No new native Google Vids or HyperFrames render/export is claimed; upload permission remains unresolved.",
+    "Archive scan is not a new manual listening/visual pass over every historical scene.",
+    "Review reuse is qualified with separate composition and review directories.",
+    "Root global validation retains four pre-existing unrelated semantic reference-route findings; clean publication checks are recorded separately."
+  ]
+}

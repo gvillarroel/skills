@@ -13,6 +13,8 @@ import unittest
 from pathlib import Path
 from playwright.sync_api import sync_playwright
 from inspect_focus import browser_path
+from inspect_focus_motion import equivalent_pixels
+from PIL import Image
 
 SKILL = Path(__file__).resolve().parent.parent
 MARKUP = '<style>body{margin:0;background:white}text{font:30px Arial}</style><svg id="stage" width="1920" height="1080"><g id="figure"><path id="curve" d="M200 720 Q700 100 1300 420" stroke="#696969" stroke-width="3" fill="none"/><text id="value" x="1300" y="380">0.82</text></g><circle id="guide" cx="160" cy="720" r="10" fill="#9e1b32"/></svg>'
@@ -61,6 +63,33 @@ class FocusMotionTests(unittest.TestCase):
         self.assertNotEqual(first, second); self.assertEqual(original, self.page.locator('#curve').get_attribute('d'))
         self.assertEqual(self.page.locator('#value').text_content(), '0.82')
 
+    def test_thick_primary_red_marks_have_a_visible_inset_trace(self):
+        self.page.locator('#curve').evaluate('e=>{e.style.stroke="#9e1b32";e.style.strokeWidth="10"}')
+        self.controller();self.page.evaluate('motion.render(.5)');first=self.page.screenshot()
+        self.page.evaluate('motion.render(1.5)');self.assertNotEqual(first,self.page.screenshot())
+        self.assertEqual(self.page.locator('[data-lw-motion-overlay]').evaluate('e=>getComputedStyle(e).stroke'),'rgb(255, 255, 255)')
+        self.assertEqual(self.page.locator('#curve').evaluate('e=>getComputedStyle(e).strokeWidth'),'10px')
+
+    def test_producer_css_cannot_fill_an_overlay_or_cover_reading_text(self):
+        self.page.set_content('<style>body{margin:0}.node rect{fill:white!important;stroke:none!important}</style><svg id="stage" width="800" height="450"><g class="node"><rect id="tile" x="100" y="100" width="400" height="200" style="fill:#9e1b32!important;stroke:none!important"/><text x="260" y="210" fill="white">Read me</text></g></svg>')
+        self.page.add_script_tag(path=str(SKILL/'assets/runtime/focus-motion.js'))
+        self.page.evaluate('window.m=LineWorldFocusMotion.attach(document.querySelector("#stage"),[{id:"tile",source:"#tile",kind:"diagram",mode:"pulse",start:0,end:5}]);m.render(1.4)')
+        self.assertEqual(self.page.locator('[data-lw-motion-overlay]').evaluate('e=>getComputedStyle(e).fill'),'none')
+        self.assertEqual(self.page.locator('[data-lw-motion-overlay]').evaluate('e=>getComputedStyle(e).stroke'),'rgb(158, 27, 50)')
+        import io
+        pixels=Image.open(io.BytesIO(self.page.screenshot())).convert('RGB')
+        self.assertEqual(pixels.getpixel((150,150)),(158,27,50))
+        self.assertEqual(self.page.locator('text').evaluate('e=>getComputedStyle(e).fill'),'rgb(255, 255, 255)')
+
+    def test_sparse_edge_antialiasing_does_not_allow_interior_or_large_changes(self):
+        first=Image.new('RGB',(100,100),'white');first.paste('#696969',(25,25,75,75))
+        edge=first.copy();edge.putpixel((25,40),(130,130,130))
+        self.assertTrue(equivalent_pixels(first,edge))
+        interior=first.copy();interior.putpixel((50,50),(130,130,130))
+        self.assertFalse(equivalent_pixels(first,interior))
+        large=first.copy();large.paste('#898989',(25,25,30,75))
+        self.assertFalse(equivalent_pixels(first,large))
+
     def test_backward_seek_and_focus_exit_are_deterministic(self):
         self.controller(); self.page.evaluate('motion.render(1.4)'); before = self.page.screenshot()
         self.page.evaluate('motion.render(4);motion.render(0);motion.render(1.4)')
@@ -96,6 +125,15 @@ class FocusMotionTests(unittest.TestCase):
             root = Path(folder); html = self.fixture(folder, 'window.renderAt=t=>document.querySelector("#guide").setAttribute("cx",200+t*100);')
             report = self.audit(root, html)
             self.assertFalse(report['ok']); self.assertEqual(report['windows'][0]['changedPixels'], 0)
+
+    def test_inspector_rejects_opaque_emphasis_even_when_it_moves(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root=Path(folder)
+            html=self.fixture(folder,'window.motion=LineWorldFocusMotion.attach(document.querySelector("#stage"),FOCUS_PLAN.windows);window.renderAt=t=>{motion.render(t);document.querySelector("[data-lw-motion-overlay]").style.setProperty("fill","white","important")};')
+            report=self.audit(root,html)
+            self.assertFalse(report['ok'])
+            self.assertFalse(report['windows'][0]['transparentEmphasis'])
+            self.assertIn('emphasis overlay fills',' '.join(report['issues']))
 
     def test_value_geometry_or_label_motion_is_rejected(self):
         with tempfile.TemporaryDirectory() as folder:

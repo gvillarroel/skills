@@ -72,6 +72,11 @@ window. Geometry, labels, crop and the camera remain fixed. It uses no timers,
 CSS autoplay, hover listeners or asynchronous source swaps during playback.
 Use explicit image attributes for geometry; avoid ID-only CSS transforms on
 the original image. Do not attach two controllers to one image.
+Prefer a stable image ID or a selector retaining its documentary attribute.
+The inspector excludes its own original-color clone when resolving a broad
+image selector; the clone must not be mistaken for a second source photograph.
+For scene-local clocks and frame-cache integration, use the bridge described in
+[long focus holds](focus-motion.md#integrate-an-existing-scene-local-renderer).
 
 `transition` is the fade duration at each edge, default **0.35 seconds**. Change
 `start`/`end` or `transition` in project JSON and rerender the affected scene.

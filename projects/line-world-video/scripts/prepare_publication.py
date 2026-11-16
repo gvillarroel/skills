@@ -27,7 +27,7 @@ def main():
         keep |= name in ['docs/line-world-video.md', 'docs/plugins-marketplace.md', '.github/workflows/line-world-plugin.yml', '.github/workflows/skills-marketplace.yml', *['projects/line-world-video/' + s for s in SHARED]]
         keep |= name.startswith('projects/skills-marketplace/')
         keep |= name.startswith('evaluations/plugin-marketplace/')
-        for project in ['cuda-alexnet-vids', 'ml-overfitting-vids', 'seal-paper-vids', 'reddit-navigation-video']:
+        for project in ['cuda-alexnet-vids', 'ml-overfitting-vids', 'seal-paper-vids', 'reddit-navigation-video', 'line-world-quality-review']:
             prefix = 'projects/' + project + '/'
             if name.startswith(prefix):
                 relative = Path(name[len(prefix):])

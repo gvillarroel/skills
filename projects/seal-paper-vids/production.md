@@ -1,3 +1,5 @@
+Current visual review (0.26.0): [seal-paper-polished.mp4](artifacts/videos/seal-paper-polished.mp4). See the [collection review](../line-world-quality-review/review.md) for exact delivery identity and current validation. This is a local visual revision with the approved Google Vids AAC voice preserved; earlier native export records below remain historical evidence.
+
 # SEAL paper walkthrough
 
 This example explains the actual paper **Self-Adapting Language Models** by Adam

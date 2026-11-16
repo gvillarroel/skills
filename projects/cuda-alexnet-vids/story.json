@@ -124,7 +124,7 @@
           "purpose": "identity",
           "depiction": "photo-treatment",
           "asset": "cpu",
-          "variant": "one-bit"
+          "variant": "gray"
         },
         {
           "id": "gpu-photo",
@@ -132,7 +132,7 @@
           "purpose": "identity",
           "depiction": "photo-treatment",
           "asset": "gtx580",
-          "variant": "one-bit"
+          "variant": "gray"
         }
       ]
     },
@@ -560,7 +560,7 @@
           "purpose": "identity",
           "depiction": "photo-treatment",
           "asset": "leopard",
-          "variant": "pixel"
+          "variant": "gray"
         },
         {
           "id": "learned-layers",
@@ -606,7 +606,7 @@
           "purpose": "identity",
           "depiction": "photo-treatment",
           "asset": "gtx580",
-          "variant": "one-bit"
+          "variant": "gray"
         },
         {
           "id": "gtx-right",
@@ -614,7 +614,7 @@
           "purpose": "identity",
           "depiction": "photo-treatment",
           "asset": "gtx580",
-          "variant": "one-bit"
+          "variant": "gray"
         },
         {
           "id": "split-model",

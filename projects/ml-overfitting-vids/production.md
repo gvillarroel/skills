@@ -1,3 +1,5 @@
+Current visual review (0.26.0): [ml-overfitting-polished.mp4](artifacts/videos/ml-overfitting-polished.mp4). See the [collection review](../line-world-quality-review/review.md) for exact delivery identity and current validation. This is a local visual revision with the approved Google Vids AAC voice preserved; earlier native export records below remain historical evidence.
+
 # Native Google Vids ML explainer
 
 The requested Spanish narration is source material for the film. Production

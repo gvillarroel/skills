@@ -4,7 +4,7 @@
 # dependencies = []
 # ///
 """Prepare project-owned runtime assets and native Mermaid comparison lanes."""
-import argparse,json,os,shutil,subprocess,sys
+import argparse,hashlib,json,os,shutil,subprocess,sys
 from pathlib import Path
 ROOT=Path(__file__).resolve().parent.parent
 REPO=ROOT.parent.parent
@@ -22,7 +22,8 @@ def main():
  for name in ['d3.min.js','gsap.min.js','D3-LICENSE.txt']:
   shutil.copyfile(PRIMARY/'assets/vendor'/name,out/name)
  for name in ['space-grotesk.ttf','OFL.txt']:shutil.copyfile(PRIMARY/'assets/fonts'/name,out/name)
- for name in ['focus.js','theme.js']:shutil.copyfile(PRIMARY/'assets/runtime'/name,out/name)
+ for name in ['focus.js','theme.js','focus-motion.js','photo-focus.js','scene-effects.js']:shutil.copyfile(PRIMARY/'assets/runtime'/name,out/name)
+ shutil.copyfile(ROOT/'scripts/effects.js',out/'effects.js')
  if not (ROOT/edit.META).is_file():edit.setup(ROOT)
  # Recompile the owned theme so updated runtime rules replace stale generated CSS.
  (ROOT/'theme.css').write_text(edit.theme_css(edit.read(ROOT/'theme.json')),encoding='utf-8')
@@ -59,13 +60,21 @@ accDescr: A convolutional network learns features from images and predicts an ob
  (out/'media.js').write_text('window.MEDIA_ASSETS='+json.dumps({a['id']:{'image':'media/'+a['svg'],'label':a['label'],'kind':a['kind']} for a in media},ensure_ascii=False)+';\n',encoding='utf-8')
  objects=edit.read(ROOT/'artifacts/media/objects/manifest.json')['assets'];(out/'objects').mkdir(exist_ok=True)
  for asset in objects:
+  original=ROOT/'artifacts/media/objects'/(asset['id']+'.prepared.png')
+  if hashlib.sha256(original.read_bytes()).hexdigest()!=asset['preparedSha256']:raise ValueError('A reviewed color source changed: '+asset['id'])
+  shutil.copyfile(original,out/'objects'/original.name)
+ for asset in objects:
   for variant in asset['variants']:shutil.copyfile(ROOT/'artifacts/media/objects'/variant['png'],out/'objects'/variant['png'])
- (out/'objects.js').write_text('window.DOCUMENTARY_ASSETS='+json.dumps({a['id']:{'variants':{v['id']:{'image':'objects/'+v['png'],'width':v['width'],'height':v['height']} for v in a['variants']}} for a in objects},ensure_ascii=False)+';\n',encoding='utf-8')
+ (out/'objects.js').write_text('window.DOCUMENTARY_ASSETS='+json.dumps({a['id']:{'original':'objects/'+a['id']+'.prepared.png','variants':{v['id']:{'image':'objects/'+v['png'],'width':v['width'],'height':v['height']} for v in a['variants']}} for a in objects},ensure_ascii=False)+';\n',encoding='utf-8')
  html=(out/'index.html').read_text(encoding='utf-8')
  preview=html.replace('<svg id="stage"','<div id="viewer"><svg id="stage"').replace('</svg></div>','</svg></div></div>')
  preview=preview.replace('</style>','''#viewer{max-width:1280px;aspect-ratio:16/9;margin:auto}#stage{width:100%;height:100%}html,body{overflow:auto;background:#f7f7f7}#controls{max-width:1280px;margin:16px auto;display:flex;gap:12px;padding:12px;font:16px Arial}#seek{flex:1}</style>''')
  controls='''<div id="controls"><button id="play">Play</button><select id="pick"></select><input id="seek" type="range" min="0" step="0.01"><output id="clock"></output></div><script>ready.then(()=>{let i=0,t=0,playing=false,previous=0;const pick=document.querySelector('#pick'),seek=document.querySelector('#seek'),clock=document.querySelector('#clock'),play=document.querySelector('#play');PRODUCTION.scenes.forEach((s,k)=>{const o=document.createElement('option');o.value=k;o.textContent=(k+1)+' · '+s.id;pick.append(o)});function draw(){seek.max=PRODUCTION.scenes[i].clipSeconds;seek.value=t;clock.textContent=t.toFixed(2)+' / '+Number(seek.max).toFixed(2)+' s';renderClip(i,t)}pick.onchange=()=>{i=+pick.value;t=0;draw()};seek.oninput=()=>{t=+seek.value;draw()};play.onclick=()=>{playing=!playing;play.textContent=playing?'Pause':'Play'};function tick(now){if(playing&&previous){t+=Math.min(.1,(now-previous)/1000);if(t>=+seek.max){if(i<PRODUCTION.scenes.length-1){i++;pick.value=i;t=0}else{t=+seek.max;playing=false;play.textContent='Play'}}draw()}previous=now;requestAnimationFrame(tick)}draw();requestAnimationFrame(tick)});</script>'''
  preview=preview.replace('</body>',controls+'</body>');(out/'preview.html').write_text(preview,encoding='utf-8')
  c=edit.config(ROOT);c['sharedInputs']=['scripts/scene.js','theme.css','artifacts/composition/index.html','artifacts/composition/focus.js','artifacts/composition/theme.js','artifacts/composition/d3.min.js','artifacts/composition/space-grotesk.ttf','artifacts/svgs/engineered.svg','artifacts/svgs/learned.svg','artifacts/composition/media.js']+[('artifacts/composition/media/'+a['svg']) for a in media];variants={a['id']:{v['id']:v for v in a['variants']} for a in objects};c['sceneInputs']={s['id']:sorted({'artifacts/composition/objects/'+variants[o['asset']][o['variant']]['png'] for o in s.get('objects',[]) if o.get('asset')}) for s in story['scenes']};c['overviewIds']=[];c['files']['cues']='artifacts/data/cues.json';c['clock']='scene-local';edit.atomic(ROOT/edit.META,edit.encode(c))
+ c['sharedInputs']+=['scripts/effects.js']+['artifacts/composition/'+name for name in ['focus-motion.js','photo-focus.js','scene-effects.js','objects.js']]
+ for scene in story['scenes']:
+  c['sceneInputs'][scene['id']]+=sorted({'artifacts/composition/objects/'+o['asset']+'.prepared.png' for o in scene.get('objects',[]) if o.get('asset')})
+ edit.atomic(ROOT/edit.META,edit.encode(c))
  print(json.dumps({'ok':True,'composition':str(out),'diagramCount':sum((diagrams/(k+'.svg')).is_file() for k in sources),'pluginVersion':edit.read(PLUGIN.parent/'plugin.json')['version']}))
 if __name__=='__main__':main()

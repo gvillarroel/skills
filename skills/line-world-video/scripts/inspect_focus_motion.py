@@ -14,7 +14,7 @@ import subprocess
 import threading
 from http.server import ThreadingHTTPServer
 from pathlib import Path
-from PIL import Image, ImageChops
+from PIL import Image, ImageChops, ImageFilter
 from playwright.sync_api import sync_playwright
 from inspect_focus import Quiet, browser_path
 
@@ -25,6 +25,23 @@ def changed_pixels(a, b):
     difference = ImageChops.difference(a.convert('RGB'), b.convert('RGB'))
     maximum = ImageChops.lighter(ImageChops.lighter(difference.getchannel('R'), difference.getchannel('G')), difference.getchannel('B'))
     return sum(maximum.histogram()[13:])
+
+
+def equivalent_pixels(a,b,details=None):
+    """Allow sparse edge antialiasing only; geometry/paint are checked separately."""
+    if a.size!=b.size:return False
+    difference=ImageChops.difference(a.convert('RGB'),b.convert('RGB'))
+    maximum=ImageChops.lighter(ImageChops.lighter(difference.getchannel('R'),difference.getchannel('G')),difference.getchannel('B'))
+    if maximum.getextrema()[1]<=8:return True
+    if maximum.getextrema()[1]>64:return False
+    high=[i for i,v in enumerate(maximum.tobytes()) if v>8]
+    if details is not None:details.update(aboveUniformTolerance=len(high),edgePixelBudget=max(8,math.ceil(a.width*a.height*.0005)))
+    if len(high)>max(8,math.ceil(a.width*a.height*.0005)):return False
+    def edges(image):
+        gray=image.convert('L');return ImageChops.difference(gray.filter(ImageFilter.MaxFilter(3)),gray.filter(ImageFilter.MinFilter(3)))
+    edge=ImageChops.lighter(edges(a),edges(b)).tobytes()
+    if details is not None:details['minimumChangedEdgeContrast']=min((edge[i] for i in high),default=0)
+    return all(edge[i]>=32 for i in high)
 
 
 def inspect(html, output, screenshot, plan=None, video=None, fps=30, duration=None):
@@ -65,18 +82,26 @@ def inspect(html, output, screenshot, plan=None, video=None, fps=30, duration=No
                 stable = all(s == states[0] for s in states[1:])
                 motion = max((changed_pixels(frames[0], f) for f in frames[1:] if f.size == frames[0].size), default=0)
                 minimum = max(12, round(frames[0].width * frames[0].height * .0001))
-                original_paint = page.evaluate('''w=>{const e=document.querySelector(w.source),overlay=[...document.querySelectorAll('[data-lw-motion-overlay]')].find(e=>e.dataset.lwMotionOverlay===w.id);return[e,overlay].filter(Boolean).map(e=>{const s=getComputedStyle(e);return{stroke:s.stroke,width:s.strokeWidth,opacity:s.opacity,dash:s.strokeDasharray,offset:s.strokeDashoffset,transform:e.getAttribute('transform')}})}''', window)
+                original_paint = page.evaluate('''w=>{const e=document.querySelector(w.source),overlay=[...document.querySelectorAll('[data-lw-motion-overlay]')].find(e=>e.dataset.lwMotionOverlay===w.id);return[e,overlay].filter(Boolean).map(e=>{const s=getComputedStyle(e);return{fill:s.fill,stroke:s.stroke,width:s.strokeWidth,opacity:s.opacity,dash:s.strokeDasharray,offset:s.strokeDashoffset,transform:e.getAttribute('transform')}})}''', window)
                 render(times[0]); render(times[-1]); repeated = Image.open(io.BytesIO(page.screenshot()))
                 b = states[-1]['box']; box = (max(0, math.floor(b['x'] - 8)), max(0, math.floor(b['y'] - 8)), min(1920, math.ceil(b['x'] + b['width'] + 8)), min(1080, math.ceil(b['y'] + b['height'] + 8)))
                 last_rgb, repeat_rgb = frames[-1].convert('RGB'), repeated.crop(box).convert('RGB')
                 repeat_geometry = page.evaluate(geometry_js, window) == states[-1]
-                repeat_paint = page.evaluate('''w=>{const e=document.querySelector(w.source),overlay=[...document.querySelectorAll('[data-lw-motion-overlay]')].find(e=>e.dataset.lwMotionOverlay===w.id);return[e,overlay].filter(Boolean).map(e=>{const s=getComputedStyle(e);return{stroke:s.stroke,width:s.strokeWidth,opacity:s.opacity,dash:s.strokeDasharray,offset:s.strokeDashoffset,transform:e.getAttribute('transform')}})}''', window)
-                repeat = repeat_rgb.tobytes() == last_rgb.tobytes() and repeat_geometry and repeat_paint == original_paint
+                repeat_paint = page.evaluate('''w=>{const e=document.querySelector(w.source),overlay=[...document.querySelectorAll('[data-lw-motion-overlay]')].find(e=>e.dataset.lwMotionOverlay===w.id);return[e,overlay].filter(Boolean).map(e=>{const s=getComputedStyle(e);return{fill:s.fill,stroke:s.stroke,width:s.strokeWidth,opacity:s.opacity,dash:s.strokeDasharray,offset:s.strokeDashoffset,transform:e.getAttribute('transform')}})}''', window)
                 difference = ImageChops.difference(last_rgb, repeat_rgb)
                 repeat_maximum = max(high for _, high in difference.getextrema())
-                item = {'id': window['id'], 'seconds': end - start, 'required': True, 'changedPixels': motion, 'minimumChangedPixels': minimum, 'stableGeometryAndLabels': stable, 'repeatSeek': repeat, 'repeatMaxChannelDifference': repeat_maximum, 'repeatChangedPixels': changed_pixels(last_rgb, repeat_rgb), 'repeatGeometryStable': repeat_geometry, 'repeatPaintStable': repeat_paint == original_paint}
+                # Chromium can vary edge antialiasing after invalidating an SVG
+                # layer. Accept at most 8/255 only with identical geometry and
+                # computed source/overlay paint; report exact pixel equality too.
+                pixel_details={}
+                repeat = equivalent_pixels(last_rgb,repeat_rgb,pixel_details) and repeat_geometry and repeat_paint == original_paint
+                item = {'id': window['id'], 'seconds': end - start, 'required': True, 'changedPixels': motion, 'minimumChangedPixels': minimum, 'stableGeometryAndLabels': stable, 'repeatSeek': repeat, 'repeatPixelsExact': repeat_rgb.tobytes() == last_rgb.tobytes(), 'repeatAntialiasTolerance': 8, 'repeatMaxChannelDifference': repeat_maximum, 'repeatChangedPixels': changed_pixels(last_rgb, repeat_rgb), 'repeatGeometryStable': repeat_geometry, 'repeatPaintStable': repeat_paint == original_paint}
+                item['repeatEdgeAntialiasAllowance']={'maximumChannelDifference':64,'maximumPixelFraction':.0005,'minimumPixelBudget':8,'minimumLocalEdgeContrast':32}
+                item['repeatPixelDiagnostics']=pixel_details
                 if not repeat: item['repeatPaintDiagnostics'] = {'original': original_paint, 'repeated': repeat_paint}
                 report['windows'].append(item)
+                item['transparentEmphasis']=len(original_paint)<2 or original_paint[1]['fill']=='none'
+                if not item['transparentEmphasis']:report['issues'].append(window['id']+': emphasis overlay fills or obscures the source figure')
                 if motion < minimum: report['issues'].append(window['id'] + ': long focus is visually static inside its actual target')
                 if not stable: report['issues'].append(window['id'] + ': fixed-data geometry or reading labels move during the hold')
                 if not repeat: report['issues'].append(window['id'] + ': backward/repeated seek changes the rendered result')

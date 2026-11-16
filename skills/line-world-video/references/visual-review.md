@@ -32,6 +32,11 @@ and either `renderAt(globalSeconds)` or, with `--clock scene-local`,
 `renderClip(sceneIndex, localSeconds)`. A pure `snapshot()` enables repeat-seek
 checks. Canvas/WebGL productions can use encoded galleries without `--html`;
 this helper does not infer their internal geometry.
+Use `--guide-selector '#guide-dot'` for a differently named SVG guide. Composite
+guides exclude their own child circles from obstacle checks. For paper, website,
+starter or mixed collections, use [collection review](collection-review.md) to
+run the matching source audit rather than treating a full-page capture as an
+obstructing photograph.
 
 Read `summary.json` first, then `findings.json` for the affected scene/time.
 Open `index.html` to inspect the encoded frames and seek the original movie.

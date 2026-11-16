@@ -1,3 +1,5 @@
+Current visual review (0.26.0): [cuda-alexnet-polished.mp4](artifacts/videos/cuda-alexnet-polished.mp4). See the [collection review](../line-world-quality-review/review.md) for exact delivery identity and current validation. This is a local visual revision with the approved Google Vids AAC voice preserved; earlier native export records below remain historical evidence.
+
 # CUDA and AlexNet: native Google Vids production
 
 This project uses the six-skill Line World Video 0.14.2 plugin. The Spanish

@@ -1,0 +1,413 @@
+{
+  "schemaVersion": 1,
+  "videos": [
+    {
+      "id": "ml",
+      "role": "current",
+      "production": "ml",
+      "video": "../ml-overfitting-vids/artifacts/videos/ml-overfitting-polished.mp4",
+      "story": "../ml-overfitting-vids/story.json",
+      "sourceKind": "svg",
+      "html": "../ml-overfitting-vids/artifacts/composition/index.html",
+      "manualReview": "artifacts/manual/ml.json",
+      "provenance": {
+        "nativeGoogleVidsExport": false,
+        "nativeHyperFramesRender": false,
+        "renderer": "Local HTML/SVG, isolated browser and FFmpeg",
+        "voice": "Actual approved Google Vids generation, unchanged AAC stream"
+      },
+      "cues": "../ml-overfitting-vids/artifacts/revision/cues.json",
+      "clock": "scene-local",
+      "checks": [
+        "focus-motion"
+      ]
+    },
+    {
+      "id": "cuda",
+      "role": "current",
+      "production": "cuda",
+      "video": "../cuda-alexnet-vids/artifacts/videos/cuda-alexnet-polished.mp4",
+      "story": "../cuda-alexnet-vids/story.json",
+      "sourceKind": "svg",
+      "html": "../cuda-alexnet-vids/artifacts/composition/index.html",
+      "manualReview": "artifacts/manual/cuda.json",
+      "provenance": {
+        "nativeGoogleVidsExport": false,
+        "nativeHyperFramesRender": false,
+        "renderer": "Local HTML/SVG, isolated browser and FFmpeg",
+        "voice": "Actual approved Google Vids generation, unchanged AAC stream"
+      },
+      "cues": "../cuda-alexnet-vids/artifacts/data/cues.json",
+      "clock": "scene-local",
+      "checks": [
+        "focus-motion",
+        "photo-focus"
+      ]
+    },
+    {
+      "id": "seal",
+      "role": "current",
+      "production": "seal",
+      "video": "../seal-paper-vids/artifacts/videos/seal-paper-polished.mp4",
+      "story": "../seal-paper-vids/story.json",
+      "sourceKind": "paper",
+      "html": "../seal-paper-vids/artifacts/composition/index.html",
+      "manualReview": "artifacts/manual/seal.json",
+      "provenance": {
+        "nativeGoogleVidsExport": false,
+        "nativeHyperFramesRender": false,
+        "renderer": "Local HTML/SVG, isolated browser and FFmpeg",
+        "voice": "Actual approved Google Vids generation, unchanged AAC stream"
+      }
+    },
+    {
+      "id": "reddit",
+      "role": "current",
+      "production": "reddit",
+      "video": "../reddit-navigation-video/artifacts/videos/reddit-navigation.mp4",
+      "story": "../reddit-navigation-video/story.json",
+      "sourceKind": "website",
+      "html": "../reddit-navigation-video/artifacts/composition/index.html",
+      "manualReview": "artifacts/manual/reddit.json",
+      "provenance": {
+        "nativeGoogleVidsExport": false,
+        "nativeHyperFramesRender": false,
+        "renderer": "Local HTML/SVG, isolated browser and FFmpeg",
+        "voice": "Edge speech, es-CL-CatalinaNeural"
+      }
+    },
+    {
+      "id": "linked",
+      "role": "current",
+      "production": "linked",
+      "video": "../line-world-video/artifacts/videos/line-world-polished-linked.mp4",
+      "story": "../line-world-video/artifacts/polished-linked/timing.json",
+      "sourceKind": "starter",
+      "html": "../line-world-video/artifacts/polished-linked/index.html",
+      "manualReview": "artifacts/manual/linked.json",
+      "provenance": {
+        "nativeGoogleVidsExport": false,
+        "nativeHyperFramesRender": false,
+        "renderer": "Local HTML/SVG, isolated browser and FFmpeg",
+        "voice": "Intentionally silent style demonstration"
+      },
+      "checks": [
+        "focus-motion"
+      ]
+    },
+    {
+      "id": "atlas",
+      "role": "current",
+      "production": "atlas",
+      "video": "../line-world-video/artifacts/videos/line-world-reviewed-atlas.mp4",
+      "story": "../line-world-video/artifacts/polished-atlas/timing.json",
+      "sourceKind": "starter",
+      "html": "../line-world-video/artifacts/polished-atlas/index.html",
+      "manualReview": "artifacts/manual/atlas.json",
+      "provenance": {
+        "nativeGoogleVidsExport": false,
+        "nativeHyperFramesRender": false,
+        "renderer": "Local HTML/SVG, isolated browser and FFmpeg",
+        "voice": "Intentionally silent style demonstration"
+      },
+      "checks": [
+        "focus-motion"
+      ]
+    },
+    {
+      "id": "focus-motion",
+      "role": "current",
+      "video": "../line-world-video/artifacts/focus-motion-demo/focus-motion-demo.mp4",
+      "story": "artifacts/focus-motion-clock.json",
+      "sourceKind": "encoded",
+      "html": "../line-world-video/artifacts/focus-motion-demo/scene.html",
+      "checks": [
+        "focus-motion"
+      ],
+      "manualReview": "artifacts/manual/focus-motion.json",
+      "provenance": {
+        "nativeGoogleVidsExport": false,
+        "nativeHyperFramesRender": false,
+        "voice": "Intentionally silent feature demonstration"
+      }
+    },
+    {
+      "id": "photo-focus",
+      "role": "current",
+      "video": "../line-world-video/artifacts/photo-focus-demo/photo-focus-demo.mp4",
+      "story": "artifacts/photo-focus-clock.json",
+      "sourceKind": "encoded",
+      "html": "../line-world-video/artifacts/photo-focus-demo/scene.html",
+      "checks": [
+        "photo-focus"
+      ],
+      "manualReview": "artifacts/manual/photo-focus.json",
+      "provenance": {
+        "nativeGoogleVidsExport": false,
+        "nativeHyperFramesRender": false,
+        "voice": "Intentionally silent feature demonstration"
+      }
+    },
+    {
+      "id": "history-01-ml-overfitting-google-vids-final",
+      "role": "reference",
+      "video": "../../projects/ml-overfitting-vids/artifacts/videos/ml-overfitting-google-vids-final.mp4",
+      "sourceKind": "encoded",
+      "provenance": {
+        "status": "Superseded export, draft or retained native voice reference; not the current delivery."
+      }
+    },
+    {
+      "id": "history-02-ml-overfitting-google-vids-revised-r2",
+      "role": "reference",
+      "video": "../../projects/ml-overfitting-vids/artifacts/videos/ml-overfitting-google-vids-revised-r2.mp4",
+      "sourceKind": "encoded",
+      "provenance": {
+        "status": "Superseded export, draft or retained native voice reference; not the current delivery."
+      }
+    },
+    {
+      "id": "history-03-ml-overfitting-google-vids-revised",
+      "role": "reference",
+      "video": "../../projects/ml-overfitting-vids/artifacts/videos/ml-overfitting-google-vids-revised.mp4",
+      "sourceKind": "encoded",
+      "provenance": {
+        "status": "Superseded export, draft or retained native voice reference; not the current delivery."
+      }
+    },
+    {
+      "id": "history-04-ml-overfitting-solid-final",
+      "role": "reference",
+      "video": "../../projects/ml-overfitting-vids/artifacts/videos/ml-overfitting-solid-final.mp4",
+      "sourceKind": "encoded",
+      "provenance": {
+        "status": "Superseded export, draft or retained native voice reference; not the current delivery."
+      }
+    },
+    {
+      "id": "history-05-ml-overfitting-subject-first-local",
+      "role": "reference",
+      "video": "../../projects/ml-overfitting-vids/artifacts/videos/ml-overfitting-subject-first-local.mp4",
+      "sourceKind": "encoded",
+      "provenance": {
+        "status": "Superseded export, draft or retained native voice reference; not the current delivery."
+      }
+    },
+    {
+      "id": "history-06-cuda-alexnet-final",
+      "role": "reference",
+      "video": "../../projects/cuda-alexnet-vids/artifacts/videos/cuda-alexnet-final.mp4",
+      "sourceKind": "encoded",
+      "provenance": {
+        "status": "Superseded export, draft or retained native voice reference; not the current delivery."
+      }
+    },
+    {
+      "id": "history-07-cuda-alexnet-google-vids-final",
+      "role": "reference",
+      "video": "../../projects/cuda-alexnet-vids/artifacts/videos/cuda-alexnet-google-vids-final.mp4",
+      "sourceKind": "encoded",
+      "provenance": {
+        "status": "Superseded export, draft or retained native voice reference; not the current delivery."
+      }
+    },
+    {
+      "id": "history-08-cuda-alexnet-photographic-local",
+      "role": "reference",
+      "video": "../../projects/cuda-alexnet-vids/artifacts/videos/cuda-alexnet-photographic-local.mp4",
+      "sourceKind": "encoded",
+      "provenance": {
+        "status": "Superseded export, draft or retained native voice reference; not the current delivery."
+      }
+    },
+    {
+      "id": "history-09-cuda-alexnet-reusable-local",
+      "role": "reference",
+      "video": "../../projects/cuda-alexnet-vids/artifacts/videos/cuda-alexnet-reusable-local.mp4",
+      "sourceKind": "encoded",
+      "provenance": {
+        "status": "Superseded export, draft or retained native voice reference; not the current delivery."
+      }
+    },
+    {
+      "id": "history-10-cuda-alexnet-subject-first-local",
+      "role": "reference",
+      "video": "../../projects/cuda-alexnet-vids/artifacts/videos/cuda-alexnet-subject-first-local.mp4",
+      "sourceKind": "encoded",
+      "provenance": {
+        "status": "Superseded export, draft or retained native voice reference; not the current delivery."
+      }
+    },
+    {
+      "id": "history-11-native-voice-reference",
+      "role": "reference",
+      "video": "../../projects/seal-paper-vids/artifacts/videos/native-voice-reference.mp4",
+      "sourceKind": "encoded",
+      "provenance": {
+        "status": "Superseded export, draft or retained native voice reference; not the current delivery."
+      }
+    },
+    {
+      "id": "history-12-seal-google-vids-before-pan",
+      "role": "reference",
+      "video": "../../projects/seal-paper-vids/artifacts/videos/seal-google-vids-before-pan.mp4",
+      "sourceKind": "encoded",
+      "provenance": {
+        "status": "Superseded export, draft or retained native voice reference; not the current delivery."
+      }
+    },
+    {
+      "id": "history-13-seal-google-vids-final",
+      "role": "reference",
+      "video": "../../projects/seal-paper-vids/artifacts/videos/seal-google-vids-final.mp4",
+      "sourceKind": "encoded",
+      "provenance": {
+        "status": "Superseded export, draft or retained native voice reference; not the current delivery."
+      }
+    },
+    {
+      "id": "history-14-seal-paper-final",
+      "role": "reference",
+      "video": "../../projects/seal-paper-vids/artifacts/videos/seal-paper-final.mp4",
+      "sourceKind": "encoded",
+      "provenance": {
+        "status": "Superseded export, draft or retained native voice reference; not the current delivery."
+      }
+    },
+    {
+      "id": "history-15-seal-paper-subject-first-local",
+      "role": "reference",
+      "video": "../../projects/seal-paper-vids/artifacts/videos/seal-paper-subject-first-local.mp4",
+      "sourceKind": "encoded",
+      "provenance": {
+        "status": "Superseded export, draft or retained native voice reference; not the current delivery."
+      }
+    },
+    {
+      "id": "history-17-line-world-aligned-atlas",
+      "role": "reference",
+      "video": "../../projects/line-world-video/artifacts/videos/line-world-aligned-atlas.mp4",
+      "sourceKind": "encoded",
+      "provenance": {
+        "status": "Superseded export, draft or retained native voice reference; not the current delivery."
+      }
+    },
+    {
+      "id": "history-18-line-world-aligned-linked",
+      "role": "reference",
+      "video": "../../projects/line-world-video/artifacts/videos/line-world-aligned-linked.mp4",
+      "sourceKind": "encoded",
+      "provenance": {
+        "status": "Superseded export, draft or retained native voice reference; not the current delivery."
+      }
+    },
+    {
+      "id": "history-19-line-world-atlas-final",
+      "role": "reference",
+      "video": "../../projects/line-world-video/artifacts/videos/line-world-atlas-final.mp4",
+      "sourceKind": "encoded",
+      "provenance": {
+        "status": "Superseded export, draft or retained native voice reference; not the current delivery."
+      }
+    },
+    {
+      "id": "history-20-line-world-atlas",
+      "role": "reference",
+      "video": "../../projects/line-world-video/artifacts/videos/line-world-atlas.mp4",
+      "sourceKind": "encoded",
+      "provenance": {
+        "status": "Superseded export, draft or retained native voice reference; not the current delivery."
+      }
+    },
+    {
+      "id": "history-21-line-world-clean",
+      "role": "reference",
+      "video": "../../projects/line-world-video/artifacts/videos/line-world-clean.mp4",
+      "sourceKind": "encoded",
+      "provenance": {
+        "status": "Superseded export, draft or retained native voice reference; not the current delivery."
+      }
+    },
+    {
+      "id": "history-22-line-world-final",
+      "role": "reference",
+      "video": "../../projects/line-world-video/artifacts/videos/line-world-final.mp4",
+      "sourceKind": "encoded",
+      "provenance": {
+        "status": "Superseded export, draft or retained native voice reference; not the current delivery."
+      }
+    },
+    {
+      "id": "history-23-line-world-first-pass",
+      "role": "reference",
+      "video": "../../projects/line-world-video/artifacts/videos/line-world-first-pass.mp4",
+      "sourceKind": "encoded",
+      "provenance": {
+        "status": "Superseded export, draft or retained native voice reference; not the current delivery."
+      }
+    },
+    {
+      "id": "history-24-line-world-gray-atlas-final",
+      "role": "reference",
+      "video": "../../projects/line-world-video/artifacts/videos/line-world-gray-atlas-final.mp4",
+      "sourceKind": "encoded",
+      "provenance": {
+        "status": "Superseded export, draft or retained native voice reference; not the current delivery."
+      }
+    },
+    {
+      "id": "history-25-line-world-points-final",
+      "role": "reference",
+      "video": "../../projects/line-world-video/artifacts/videos/line-world-points-final.mp4",
+      "sourceKind": "encoded",
+      "provenance": {
+        "status": "Superseded export, draft or retained native voice reference; not the current delivery."
+      }
+    },
+    {
+      "id": "history-26-line-world-points-highlights",
+      "role": "reference",
+      "video": "../../projects/line-world-video/artifacts/videos/line-world-points-highlights.mp4",
+      "sourceKind": "encoded",
+      "provenance": {
+        "status": "Superseded export, draft or retained native voice reference; not the current delivery."
+      }
+    },
+    {
+      "id": "history-27-line-world-red-gray-final",
+      "role": "reference",
+      "video": "../../projects/line-world-video/artifacts/videos/line-world-red-gray-final.mp4",
+      "sourceKind": "encoded",
+      "provenance": {
+        "status": "Superseded export, draft or retained native voice reference; not the current delivery."
+      }
+    },
+    {
+      "id": "history-28-line-world-solid-atlas",
+      "role": "reference",
+      "video": "../../projects/line-world-video/artifacts/videos/line-world-solid-atlas.mp4",
+      "sourceKind": "encoded",
+      "provenance": {
+        "status": "Superseded export, draft or retained native voice reference; not the current delivery."
+      }
+    },
+    {
+      "id": "history-29-line-world-solid-linked",
+      "role": "reference",
+      "video": "../../projects/line-world-video/artifacts/videos/line-world-solid-linked.mp4",
+      "sourceKind": "encoded",
+      "provenance": {
+        "status": "Superseded export, draft or retained native voice reference; not the current delivery."
+      }
+    },
+    {
+      "id": "history-30-utility-validation",
+      "role": "reference",
+      "video": "../../projects/line-world-video/artifacts/videos/utility-validation.mp4",
+      "sourceKind": "encoded",
+      "provenance": {
+        "status": "Superseded export, draft or retained native voice reference; not the current delivery."
+      }
+    }
+  ]
+}

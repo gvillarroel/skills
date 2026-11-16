@@ -23,6 +23,10 @@ simulation needs its own truthful state/units; do not apply a fixed-data
 stability check to that different case.
 
 Use a single explanatory motion in the active figure and quiet inactive views.
+For linked views of the same selected row, measure its complete reading hold
+across those views. Do not divide it by the guide's visits to individual panes;
+doing so can disable every interval while the same datum is explained for
+several seconds. Keep corresponding representations synchronized.
 Prefer a 3.2-second cycle, gentle entry/exit and no flicker, shaking or repeated
 zooming. Shorter eligible holds can use part of one pass. Keep the motion
 running through the hold instead of finishing a quick reveal and leaving a
@@ -40,6 +44,13 @@ The bundled `assets/runtime/focus-motion.js` supplies two fixed-data options:
 `trace` moves a short red emphasis segment along real SVG geometry; `pulse`
 changes a restrained contour's opacity without changing its size. Both leave
 the source element untouched. An emphasis trace is not an additional datum.
+On a thick primary-red stroke, a thin white inset trace keeps motion visible
+without changing the mark's quantitative width or endpoints.
+Emphasis layers must keep computed `fill: none`. The runtime gives its own
+transparent fill and stroke priority over imported producer CSS. A Mermaid
+`.node rect` rule can otherwise fill an animation clone, cover reading text and
+blend a red node into pink. The pixel inspector rejects opaque emphasis even
+when that layer moves. Apply this protection to the overlay alone.
 Copy the runtime into project assets, load it before scene code and declare
 all focus windows in project-owned JSON or `window.FOCUS_PLAN`:
 
@@ -101,3 +112,45 @@ It produces a silent 1080p preview at the parent clock, capped at 60 seconds;
 `--fps` accepts 24, 25, 30 or 60. Keep complete narrated-film rendering and
 measured speech in their existing workflow. Changing this emphasis does not
 justify regenerating an approved voice or changing the scene budget.
+The repeat-pixel check reports exact equality separately and requires identical
+geometry and computed source/overlay paint. It permits 8/255 of Chromium
+antialiasing variation. A sparse edge allowance additionally permits up to
+64/255 on at most 0.05% of target pixels (minimum budget eight), only beside a
+local contrast edge of at least 32/255. Solid-interior changes, larger changes,
+or changed geometry/paint fail. These reported bounds do not replace inspecting
+the motion. Run the source inspector before a long final capture.
+
+## Integrate an existing scene-local renderer
+
+For narrated projects with `renderClip(index, localSeconds)`, copy
+`focus-motion.js`, optional `photo-focus.js`, and `scene-effects.js` from
+`assets/runtime/`. Declare ordered scenes plus scene-local effect windows:
+
+```js
+const authored = window.renderClip;
+const effects = LineWorldSceneEffects.attach(stage, {
+  scenes: story.scenes,
+  motion: [{id:'flow', sceneId:'prepare', source:'#actual-edge',
+    kind:'diagram', start:1, end:8}],
+  photos: [{id:'gpu', sceneId:'compute', target:'#gpu-photo',
+    neutral:'gpu-gray.png', color:'gpu.prepared.png',
+    windows:[{start:2, end:7}]}]
+});
+window.FOCUS_PLAN = {windows:effects.windows};
+window.PHOTO_FOCUS_PLAN = {bindings:effects.photos};
+await effects.ready; // Inside the existing layout/image readiness promise.
+window.renderClip = (i,t) => effects.frame(i,t,authored(i,t));
+window.renderAt = t => {
+  const p=effects.locate(t); return renderClip(p.index,p.seconds);
+};
+window.snapshot = effects.snapshot;
+```
+
+Attach after font, geometry and centering work. Preserve the original readiness
+promise and await the combined one in the capture helper. The bridge validates
+local bounds, converts windows to the parent clock and includes active motion
+phases/photo fades in the returned frame-cache identity. A camera/guide-only
+cache otherwise freezes these effects during a reading hold. Inactive effects
+keep the same identity so static PNGs can still be reused. Do not add absolute
+time to every cache key when no rendered property changes. Never replace the
+authored camera or semantic guide with this bridge.

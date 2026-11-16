@@ -67,6 +67,18 @@ Use this file as the canonical list of skills to create, improve, or validate in
 
 ## Recent Validation Notes
 
+### 2026-11-16 - Collection review and visual polish, plugin 0.26.0
+
+Review current films and historical exports with explicit delivery identities.
+Promote type-aware batch review, hash-bound operator notes, scene-local effect
+clocks and frame-cache invalidation. Correct long static holds, photographic
+color focus, portrait caption spacing, atlas point/label clearance and native
+diagram typography. Preserve approved AAC speech and exact frame budgets.
+The eight current movies pass with 63 frozen scene observations and no low-content frames. The 37-file archive retains nine flagged reference entries. All 73 selected utility tests, two final-source strict Pi runs (recorded `openai-codex/gpt-6.1-sol` medium-thinking Spark exception), actual eight-movie local playback and native six-skill installation/discovery pass. The main skill remains `validating` for its established broader limits.
+See [review scope and evidence](evaluations/line-world-video/collection-review-20261116.md).
+
+
+
 ### 2026-11-16 - Original website walkthroughs and repository marketplace, plugin 0.25.2
 
 - Add source-pixel website tours with preserved captures, adjacent routed focus, measured narration cues, stable within-scene camera scale, continuous joins and sample-aligned audio assembly. Require native light UI captures and reject dark-theme regressions without recoloring. Eight new utility tests cover light-theme enforcement, actual encoding, invalid controls/crops, blocked routes, source changes and selective cache invalidation.

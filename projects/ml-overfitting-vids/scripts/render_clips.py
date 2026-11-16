@@ -29,7 +29,7 @@ def main():
     with sync_playwright() as pw:
         browser=pw.chromium.launch(executable_path=str(paths[0]) if paths else 'C:/Program Files/Google/Chrome/Application/chrome.exe',headless=True)
         page=browser.new_page(viewport={'width':1920,'height':1080});errors=[];page.on('pageerror',lambda e:errors.append(str(e)))
-        page.goto(f'http://127.0.0.1:{server.server_port}/index.html');page.evaluate('document.fonts.ready');page.evaluate('prepareFocus()')
+        page.goto(f'http://127.0.0.1:{server.server_port}/index.html');page.evaluate('async()=>await window.ready')
         cache_signature=None;cache_png=None;captured=0;reused=0
         def capture(i,t):
             nonlocal cache_signature,cache_png,captured,reused
