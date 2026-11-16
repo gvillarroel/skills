@@ -7,13 +7,12 @@ A skill must work as an independent bundle. Repository documentation and example
 Install complete plugins from **Skills Marketplace**:
 
 ```sh
-codex plugin marketplace add gvillarroel/skills --ref marketplace
+codex plugin marketplace add gvillarroel/skills --ref marketplace --sparse .agents/plugins --sparse plugins
 codex plugin add line-world-video@skills-marketplace
 ```
 
 See the [marketplace guide](docs/plugins-marketplace.md) for available plugins,
 desktop activation, updates, and publishing the next plugin.
-
 
 ## Get started
 

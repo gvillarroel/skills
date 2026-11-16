@@ -64,10 +64,13 @@ def main():
     args = parser.parse_args(); output = args.output.resolve()
     if not output.is_relative_to((PROJECT / 'artifacts').resolve()): raise ValueError('Keep native verification inside project artifacts.')
     output.mkdir(parents=True, exist_ok=True)
-    work = Path(tempfile.mkdtemp(prefix='native-', dir=output)); home = work / 'codex-home'; home.mkdir(); temp = work / 'tmp'; temp.mkdir()
+    work = Path(tempfile.mkdtemp(prefix='native-', dir=output))
+    # Keep native Git/cache paths comparable to a normal user home on Windows.
+    # Nesting a second home inside verbose review paths exceeds Git's path limit.
+    home = Path(tempfile.mkdtemp(prefix='h-', dir=PROJECT / 'artifacts')); temp = work / 'tmp'; temp.mkdir()
     environment = {**os.environ, 'CODEX_HOME': str(home), 'TMP': str(temp), 'TEMP': str(temp)}
     binary = shutil.which('codex.cmd') or shutil.which('codex')
-    report = {'ok': False, 'modelTurns': 0, 'source': args.source or str(args.root.resolve()), 'ref': args.ref, 'workdir': str(work), 'commands': [], 'installed': []}
+    report = {'ok': False, 'modelTurns': 0, 'source': args.source or str(args.root.resolve()), 'ref': args.ref, 'workdir': str(work), 'codexHome': str(home), 'commands': [], 'installed': []}
     try:
         if not binary: raise ValueError('Install Codex CLI before running native verification.')
         manifest = read(args.root / 'distribution-manifest.json'); name = manifest['name']; expected = {p['name']: p for p in manifest['plugins']}
@@ -79,7 +82,7 @@ def main():
             return result.stdout
         report['codexVersion'] = run(['--version']).strip()
         command = ['plugin', 'marketplace', 'add', report['source'], '--json']
-        if args.ref: command += ['--ref', args.ref]
+        if args.ref: command += ['--ref', args.ref, '--sparse', '.agents/plugins', '--sparse', 'plugins']
         run(command)
         available = json.loads(run(['plugin', 'list', '--available', '--marketplace', name, '--json']))
         report['available'] = available

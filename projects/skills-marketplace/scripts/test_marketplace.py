@@ -56,6 +56,18 @@ class MarketplaceTests(unittest.TestCase):
         (root / 'plugins/demo/skills/demo/SKILL.md').write_text('Changed', encoding='utf-8')
         with self.assertRaisesRegex(ValueError, 'Changed distribution'): m.check(root)
 
+    def test_independent_builds_use_case_sensitive_portable_inventory_order(self):
+        for name in ['z-last.md', 'Alpha.md', 'a-second.md']:
+            (self.folder / name).write_text(name + '\n', encoding='utf-8')
+        self.commit(); self.build('first'); self.build('second')
+        first = self.project / 'artifacts/first'; second = self.project / 'artifacts/second'
+        self.assertEqual(m.read(first / 'distribution-manifest.json'), m.read(second / 'distribution-manifest.json'))
+        files = m.read(first / 'plugins/demo/bundle-manifest.json')['files']
+        names = [f['path'] for f in files]
+        self.assertEqual(names, sorted(names))
+        for item in m.read(first / 'distribution-manifest.json')['files']:
+            self.assertEqual((first / item['path']).read_bytes(), (second / item['path']).read_bytes())
+
     def test_registry_rejects_duplicate_ignored_and_escaping_inputs(self):
         self.catalog['plugins'].append(dict(self.catalog['plugins'][0]))
         with self.assertRaisesRegex(ValueError, 'unique'): m.entries(self.catalog)

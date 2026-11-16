@@ -133,7 +133,7 @@ def build(repo, ref, output):
                 except UnicodeDecodeError: continue
                 path.write_bytes(raw.replace(b'\r\n', b'\n'))
         bundle_path = target / 'bundle-manifest.json'
-        files = [{'path': p.relative_to(target).as_posix(), 'bytes': p.stat().st_size, 'sha256': sha(p.read_bytes())} for p in sorted(target.rglob('*')) if p.is_file() and p != bundle_path]
+        files = [{'path': p.relative_to(target).as_posix(), 'bytes': p.stat().st_size, 'sha256': sha(p.read_bytes())} for p in sorted(target.rglob('*'), key=lambda p: p.relative_to(target).as_posix()) if p.is_file() and p != bundle_path]
         write(bundle_path, {'name': native['name'], 'version': native['version'], 'files': files})
         digest = sha(json.dumps(files, sort_keys=True).encode())
         results.append({'name': native['name'], 'displayName': entry['displayName'], 'version': native['version'], 'payloadSha256': digest, 'files': len(files)})
@@ -141,11 +141,11 @@ def build(repo, ref, output):
     write(output / '.agents/plugins/marketplace.json', {'name': catalog['name'], 'interface': {'displayName': catalog['displayName']}, 'plugins': public})
     write(output / '.claude-plugin/marketplace.json', {'name': catalog['name'], 'owner': {'name': 'Gerardo Villarroel'}, 'plugins': [{'name': e['name'], 'source': e['source']['path'], 'description': next(c['description'] for c in catalog['plugins'] if c['name'] == e['name'])} for e in public]})
     (output / '.gitattributes').write_bytes(b'* -text\n')
-    lines = ['# ' + catalog['displayName'], '', 'Generated installable distribution from [the canonical skills repository](https://github.com/gvillarroel/skills/tree/main).', '', '## Install', '', '```sh', 'codex plugin marketplace add gvillarroel/skills --ref marketplace', 'codex plugin add line-world-video@' + catalog['name'], '```', '', 'Restart ChatGPT Desktop, choose **Skills Marketplace** in Plugins, and start a new chat after installation.', '', '## Plugins', '', '| Plugin | Version | Install |', '| --- | --- | --- |']
+    lines = ['# ' + catalog['displayName'], '', 'Generated installable distribution from [the canonical skills repository](https://github.com/gvillarroel/skills/tree/main).', '', '## Install', '', '```sh', 'codex plugin marketplace add gvillarroel/skills --ref marketplace --sparse .agents/plugins --sparse plugins', 'codex plugin add line-world-video@' + catalog['name'], '```', '', 'Restart ChatGPT Desktop, choose **Skills Marketplace** in Plugins, and start a new chat after installation.', '', '## Plugins', '', '| Plugin | Version | Install |', '| --- | --- | --- |']
     lines += ['| ' + p['displayName'] + ' | ' + p['version'] + ' | `codex plugin add ' + p['name'] + '@' + catalog['name'] + '` |' for p in results]
     lines += ['', '## Maintain', '', 'Edit versioned sources and `projects/skills-marketplace/catalog.json` on `main`. The marketplace workflow rebuilds and validates this branch. Do not edit generated plugin copies here.', '', 'Refresh this source with `codex plugin marketplace upgrade ' + catalog['name'] + '`.', '', 'Source commit: `' + commit + '`.', '', 'Catalog availability, installation, external account authentication and frontend activation are separate states. No user account configuration or credentials are bundled.', '']
     (output / 'README.md').write_bytes('\n'.join(lines).encode())
-    files = [{'path': p.relative_to(output).as_posix(), 'sha256': sha(p.read_bytes())} for p in sorted(output.rglob('*')) if p.is_file()]
+    files = [{'path': p.relative_to(output).as_posix(), 'sha256': sha(p.read_bytes())} for p in sorted(output.rglob('*'), key=lambda p: p.relative_to(output).as_posix()) if p.is_file()]
     write(output / 'distribution-manifest.json', {'schemaVersion': 1, 'name': catalog['name'], 'sourceCommit': commit, 'plugins': results, 'files': files})
     return check(output)
 
@@ -215,13 +215,18 @@ def add(catalog_path, name, source, display_name, description, category):
 def main():
     parser = argparse.ArgumentParser(description=__doc__); sub = parser.add_subparsers(dest='command', required=True)
     p = sub.add_parser('build'); p.add_argument('--repo', type=Path, default=REPO); p.add_argument('--ref', default='HEAD'); p.add_argument('--output', type=Path, required=True)
-    p = sub.add_parser('check'); p.add_argument('--root', type=Path, required=True)
+    p = sub.add_parser('check'); p.add_argument('--root', type=Path, required=True); p.add_argument('--compare', type=Path, help='Require byte-identical independently built distributions.')
     p = sub.add_parser('publish'); p.add_argument('--root', type=Path, required=True); p.add_argument('--checkout', type=Path, required=True); p.add_argument('--remote', default='https://github.com/gvillarroel/skills.git'); p.add_argument('--branch', default='marketplace'); p.add_argument('--token-env')
     p = sub.add_parser('add'); p.add_argument('--catalog', type=Path, default=PROJECT / 'catalog.json'); p.add_argument('--name', required=True); p.add_argument('--source', required=True); p.add_argument('--display-name', required=True); p.add_argument('--description', required=True); p.add_argument('--category', default='Productivity')
     args = parser.parse_args()
     try:
         if args.command == 'build': result = build(args.repo.resolve(), args.ref, args.output.resolve())
-        elif args.command == 'check': result = check(args.root.resolve())
+        elif args.command == 'check':
+            result = check(args.root.resolve())
+            if args.compare:
+                check(args.compare.resolve())
+                if read(args.root / 'distribution-manifest.json') != read(args.compare / 'distribution-manifest.json'): raise ValueError('Independent distribution builds differ.')
+                result['reproducible'] = True
         elif args.command == 'publish': result = publish(args.root.resolve(), args.checkout.resolve(), args.remote, args.branch, args.token_env)
         else: result = add(args.catalog, args.name, args.source, args.display_name, args.description, args.category)
         print(json.dumps(result)); return 0

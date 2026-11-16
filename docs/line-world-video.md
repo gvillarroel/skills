@@ -1,6 +1,6 @@
 # Line World Video plugin
 
-Release **0.25.1**, November 16, 2026. Create explanatory videos with a guiding
+Release **0.25.2**, November 16, 2026. Create explanatory videos with a guiding
 dot, a larger continuous world, full-frame sections, sourced photographs,
 D3/Mermaid diagrams and measured narration. The plugin contains six standalone
 skills: the main orchestrator, dedicated D3, Mermaid, icon and HyperFrames
@@ -11,7 +11,7 @@ producers, and the Google Vids adapter.
 For direct installation from the published repository marketplace:
 
 ```sh
-codex plugin marketplace add gvillarroel/skills --ref marketplace
+codex plugin marketplace add gvillarroel/skills --ref marketplace --sparse .agents/plugins --sparse plugins
 codex plugin add line-world-video@skills-marketplace
 ```
 
@@ -60,7 +60,7 @@ workspace the existing native marketplace is `xy-desktop-local` (display name
 `XY Desktop Local`). Add the validated release without changing other entries:
 
 ```text
-uv run --script projects/line-world-video/scripts/register_local.py --version 0.25.1
+uv run --script projects/line-world-video/scripts/register_local.py --version 0.25.2
 codex plugin list --available --marketplace xy-desktop-local --json
 ```
 

@@ -71,6 +71,11 @@ def main():
         anchor = 'A skill must work as an independent bundle. Repository documentation and example galleries support maintenance but must not become hidden runtime dependencies.\n'
         if anchor not in overview: raise ValueError('Review the README marketplace insertion point.')
         (target / 'README.md').write_text(overview.replace(anchor, anchor + '\nInstall complete plugins from **Skills Marketplace**:' + install + '\n'), encoding='utf-8')
+    else:
+        start = overview.index('Install complete plugins from **Skills Marketplace**:')
+        end = overview.find('\n## ', start)
+        if end < 0: raise ValueError('Review the README marketplace block boundary.')
+        (target / 'README.md').write_text(overview[:start] + 'Install complete plugins from **Skills Marketplace**:' + install.rstrip() + '\n' + overview[end:], encoding='utf-8')
     selected.append('README.md')
     coverage_path = 'evaluations/colorset-audit/coverage.json'
     source_coverage = json.loads((ROOT / coverage_path).read_text(encoding='utf-8'))

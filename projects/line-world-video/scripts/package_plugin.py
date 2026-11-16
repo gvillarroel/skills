@@ -41,7 +41,7 @@ def main():
     for name in spec["skills"]:
         origin=spec.get("sources",{}).get(name,name)
         source, dest = REPO / "skills" / origin, plugin / "skills" / name
-        for file in sorted(source.rglob("*")):
+        for file in sorted(source.rglob("*"), key=lambda p: p.relative_to(source).as_posix()):
             rel = file.relative_to(source)
             if not file.is_file() or any(part in {"node_modules", "__pycache__", ".venv", ".cache", "dist", "output"} for part in rel.parts) or rel.parts[:2] == ("assets", "examples") or file.suffix in {".pyc", ".pyo"}:
                 continue
@@ -69,7 +69,7 @@ def main():
             shutil.copyfile(video_palette,dest/"assets/palettes/video-colors.json")
             shutil.copyfile(REPO/'skills/line-world-video/assets/palettes/video-color-direction.json',dest/'assets/palettes/video-color-direction.json')
             adapted_readers=[]
-            for reader in (dest/'scripts').rglob('*'):
+            for reader in sorted((dest/'scripts').rglob('*'), key=lambda p: p.relative_to(dest).as_posix()):
                 if reader.suffix not in ('.py','.ts','.js','.mjs','.cjs'):continue
                 code=reader.read_text(encoding='utf-8')
                 if 'colorsets.json' in code:
@@ -106,13 +106,13 @@ def main():
     save(bundle / ".agents/plugins/marketplace.json", catalog)
     save(bundle / ".claude-plugin/marketplace.json", {"name": "line-world-local", "owner": {"name": "Line World"}, "plugins": [{"name": "line-world-video", "source": "./plugin", "description": manifest["description"]}]})
     save(bundle / "package.json", {"name": "line-world-video", "version": spec["version"], "private": True, "keywords": ["pi-package"], "pi": {"skills": ["./plugin/skills"], "extensions": [], "prompts": [], "themes": []}})
-    files = [{"path": p.relative_to(plugin).as_posix(), "bytes": p.stat().st_size, "sha256": hashlib.sha256(p.read_bytes()).hexdigest()} for p in sorted(plugin.rglob("*")) if p.is_file()]
+    files = [{"path": p.relative_to(plugin).as_posix(), "bytes": p.stat().st_size, "sha256": hashlib.sha256(p.read_bytes()).hexdigest()} for p in sorted(plugin.rglob("*"), key=lambda p: p.relative_to(plugin).as_posix()) if p.is_file()]
     save(plugin / "bundle-manifest.json", {"name": spec["name"], "version": spec["version"], "skills": spec["skills"], "files": files})
     plugin_zip = packages / f'{spec["name"]}-{spec["version"]}.zip'
     market_zip = packages / f'{spec["name"]}-{spec["version"]}-marketplace.zip'
     for root, output in ((plugin, plugin_zip), (bundle, market_zip)):
         with zipfile.ZipFile(output, "w", compression=zipfile.ZIP_DEFLATED) as archive:
-            for file in sorted(root.rglob("*")):
+            for file in sorted(root.rglob("*"), key=lambda p: p.relative_to(root).as_posix()):
                 if file.is_file():
                     info = zipfile.ZipInfo(file.relative_to(root).as_posix(), date_time=(2026, 11, 14, 0, 0, 0))
                     info.compress_type = zipfile.ZIP_DEFLATED

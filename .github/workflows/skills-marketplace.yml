@@ -40,6 +40,10 @@ jobs:
         run: uv run --script projects/skills-marketplace/scripts/marketplace.py build --output projects/skills-marketplace/artifacts/build
       - name: Verify the complete distribution inventory
         run: uv run --script projects/skills-marketplace/scripts/marketplace.py check --root projects/skills-marketplace/artifacts/build
+      - name: Verify an independent build is byte-identical
+        run: |
+          uv run --script projects/skills-marketplace/scripts/marketplace.py build --output projects/skills-marketplace/artifacts/repeated
+          uv run --script projects/skills-marketplace/scripts/marketplace.py check --root projects/skills-marketplace/artifacts/build --compare projects/skills-marketplace/artifacts/repeated
       - name: Install the verified Codex loader in job-local tools
         run: |
           npm install --prefix "$RUNNER_TEMP/marketplace-tools" @openai/codex@0.167.0 --no-audit --no-fund

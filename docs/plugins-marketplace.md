@@ -11,7 +11,7 @@ contains complete plugin folders and the native
 Use a current Codex CLI with the `plugin` commands:
 
 ```sh
-codex plugin marketplace add gvillarroel/skills --ref marketplace
+codex plugin marketplace add gvillarroel/skills --ref marketplace --sparse .agents/plugins --sparse plugins
 codex plugin list --available --marketplace skills-marketplace
 codex plugin add line-world-video@skills-marketplace
 ```
@@ -46,7 +46,7 @@ alone does not register a marketplace. The older workspace-local
 | Plugin | Purpose | Included skills |
 | --- | --- | --- |
 | `line-world-video` | Guided explanatory video, source photographs, paper and website tours, synchronized focus and editable timing | Line World Video, D3, Mermaid, Icons, HyperFrames and Google Vids |
-| `hyperframes` | Original HyperFrames plugin with the maintained colorset1 and colorset2 adaptations | HyperFrames, CLI, GSAP, registry and website capture |
+| `hyperframes` | Original HyperFrames plugin with the maintained colorset1 and colorset2 adaptations | HyperFrames, CLI, registry, media use and colorsets |
 
 These are complete plugin payloads. Skills remain canonical under `skills/`;
 the plugin builder adapts and copies their runtime resources. Acceptance
@@ -89,7 +89,7 @@ maintainer's personal plugin configuration.
 
 Pushing relevant changes to `main` runs
 [Publish Skills Marketplace](../.github/workflows/skills-marketplace.yml): tests,
-committed-source build, full digest verification, native installation and
+two independent committed-source builds with identical bytes, full digest verification, native installation and
 discovery, then a normal push to `marketplace`. Manual workflow dispatch is
 also available. The workflow retains its verification receipt as an artifact.
 
