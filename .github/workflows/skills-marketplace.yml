@@ -54,6 +54,8 @@ jobs:
         env:
           MARKETPLACE_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: uv run --script projects/skills-marketplace/scripts/marketplace.py publish --root projects/skills-marketplace/artifacts/build --checkout projects/skills-marketplace/artifacts/publication --token-env MARKETPLACE_GITHUB_TOKEN
+      - name: Verify installation from the actual published Git source
+        run: uv run --script projects/skills-marketplace/scripts/verify_marketplace.py --root projects/skills-marketplace/artifacts/build --source gvillarroel/skills --ref marketplace --output projects/skills-marketplace/artifacts/remote-check
       - name: Keep the distribution and native verification receipt
         if: always()
         uses: actions/upload-artifact@v4
@@ -62,4 +64,5 @@ jobs:
           path: |
             projects/skills-marketplace/artifacts/build/distribution-manifest.json
             projects/skills-marketplace/artifacts/native-check/verification.json
+            projects/skills-marketplace/artifacts/remote-check/verification.json
           if-no-files-found: warn

@@ -90,7 +90,8 @@ maintainer's personal plugin configuration.
 Pushing relevant changes to `main` runs
 [Publish Skills Marketplace](../.github/workflows/skills-marketplace.yml): tests,
 two independent committed-source builds with identical bytes, full digest verification, native installation and
-discovery, then a normal push to `marketplace`. Manual workflow dispatch is
+discovery, then a normal push to `marketplace`. It installs the actual published
+Git source again and retains that remote verification receipt. Manual workflow dispatch is
 also available. The workflow retains its verification receipt as an artifact.
 
 The generated catalog uses plugin paths relative to the distribution root,
