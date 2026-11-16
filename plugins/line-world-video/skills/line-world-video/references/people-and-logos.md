@@ -79,6 +79,9 @@ Keep the complete original, source digest, attribution, license and changes.
 Plan each portrait as a sourced explanation. At the first meaningful appearance,
 say the person's name and what they contributed to the process being explained.
 Show the full name and one or two short contribution lines next to the face.
+Measure caption size after the final fit; prefer at least 24 screen pixels in
+1080p reading states. When increasing type, remeasure the line gap and nearby
+divider clearance. Two individually readable lines can still overlap each other.
 An affiliation or present-day executive title alone does not explain a historical
 contribution. Use the role at the story's date. Preserve team/coauthor credit;
 do not invent individual responsibilities that the evidence does not establish.

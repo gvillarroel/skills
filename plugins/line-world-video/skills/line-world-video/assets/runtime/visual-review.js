@@ -12,7 +12,7 @@ function guide(root,{selector='#guide',gap=3}={}){
  const b=rect(e),s=getComputedStyle(e),r=Math.max(b.x1-b.x0,b.y1-b.y0)/2+(parseFloat(s.strokeWidth)||0)/2+gap,p={x:(b.x0+b.x1)/2,y:(b.y0+b.y1)/2},frame=rect(root),issues=[];
  if(p.x-r<frame.x0||p.x+r>frame.x1||p.y-r<frame.y0||p.y+r>frame.y1)issues.push({kind:'clipped-guide',target:selector,x:p.x,y:p.y,radius:r});
  for(const item of root.querySelectorAll('text,rect,circle,[data-focus-obstacle],image')){
-  if(item===e||item.closest('defs')||item.closest('[data-review-ignore="true"]')||!shown(item,root))continue;
+  if(item===e||e.contains(item)||item.closest('defs')||item.closest('[data-review-ignore="true"]')||!shown(item,root))continue;
   const q=rect(item);if(q.x1<=q.x0||q.y1<=q.y0||!intersects(q,frame))continue;
   if(item.tagName.toLowerCase()!=='text'&&(q.x1-q.x0)*(q.y1-q.y0)>(frame.x1-frame.x0)*(frame.y1-frame.y0)*.8)continue;
   const visibleBox={x0:Math.max(q.x0,frame.x0),x1:Math.min(q.x1,frame.x1),y0:Math.max(q.y0,frame.y0),y1:Math.min(q.y1,frame.y1)};
@@ -25,7 +25,7 @@ function reading(root,{inset=36,minFont=24,fontRatio=1.12,dividerGap=12}={}){
  const frame=rect(root),issues=[],fonts=[],groups=new Map(),bounds=[];
  for(const e of root.querySelectorAll('text')){
   if(!e.textContent.trim()||!shown(e,root))continue;const b=rect(e);if(!intersects(b,frame))continue;
-  const m=e.getScreenCTM(),s=getComputedStyle(e),px=(parseFloat(s.fontSize)||0)*(m?Math.hypot(m.c,m.d):1),name=label(e);fonts.push({target:name,pixels:+px.toFixed(2)});
+  const glyphs=[e,...e.querySelectorAll('tspan')].filter(n=>[...n.childNodes].some(t=>t.nodeType===3&&t.textContent.trim())),px=Math.min(...glyphs.map(n=>{const m=n.getScreenCTM();return(parseFloat(getComputedStyle(n).fontSize)||0)*(m?Math.hypot(m.c,m.d):1)})),name=label(e);fonts.push({target:name,pixels:+px.toFixed(2)});
   if(px<minFont)issues.push({kind:'small-text',target:name,pixels:+px.toFixed(2),minimum:minFont,severity:'advisory'});
   if(b.x0<frame.x0+inset||b.x1>frame.x1-inset||b.y0<frame.y0+inset||b.y1>frame.y1-inset)issues.push({kind:'text-near-edge',target:name,severity:'advisory'});
   const id=e.getAttribute('data-review-font-group');if(id){if(!groups.has(id))groups.set(id,[]);groups.get(id).push(px)}

@@ -34,7 +34,8 @@ CHECKS = r"""() => {
    const surface=p.querySelector('.panel-surface').getBoundingClientRect(),text=[...p.querySelectorAll('text')],short=[];
    const outside=[],labels=[];
    for(const e of text){const cs=getComputedStyle(e);if(cs.display==='none'||cs.visibility==='hidden')continue;const b=e.getBoundingClientRect();if(!b.width||!b.height)continue;
-     const size=parseFloat(cs.fontSize)*Math.hypot(e.getCTM().a,e.getCTM().b);
+     const glyphs=[e,...e.querySelectorAll('tspan')].filter(n=>[...n.childNodes].some(t=>t.nodeType===3&&t.textContent.trim()));
+     const size=Math.min(...glyphs.map(n=>parseFloat(getComputedStyle(n).fontSize)*Math.hypot(n.getCTM().a,n.getCTM().b)));
      if(size<18)short.push({text:e.textContent.trim(),size});
      if(e.textContent.trim())labels.push({text:e.textContent.trim(),b});
      if(b.x<surface.x-3||b.y<surface.y-3||b.right>surface.right+3||b.bottom>surface.bottom+3)outside.push(e.textContent.trim());
@@ -58,6 +59,14 @@ CHECKS = r"""() => {
  }
  if(ratios.length&&Math.max(...ratios)-Math.min(...ratios)>1e-6)issues.push('Paired marks do not use the same zero-based scale.');
  const currentGroup=document.querySelector('.quantity-points[data-scene-id="'+state.beat+'"]'),quantities=[];
+ // Quantity flights are part of the explanation, so protect the actual reading
+ // labels as well as the primary guide. Preserve every encoded quantity.
+ if(cell&&currentGroup&&+getComputedStyle(currentGroup).opacity>.05){
+   const labels=[...cell.querySelectorAll('text')].filter(e=>e.textContent.trim()).map(e=>({text:e.textContent.trim(),box:e.getBoundingClientRect()}));
+   for(const e of currentGroup.querySelectorAll('circle'))if(+e.getAttribute('opacity')>.05&&+e.getAttribute('r')>0){const b=e.getBoundingClientRect(),x=(b.left+b.right)/2,y=(b.top+b.bottom)/2,r=b.width/2+2;
+     for(const label of labels){const q=label.box;if(Math.hypot(x-Math.max(q.left,Math.min(x,q.right)),y-Math.max(q.top,Math.min(y,q.bottom)))<r)issues.push('Quantity point overlaps label: '+label.text);}
+   }
+ }
  if(currentGroup){for(const row of STORY.rows){const nodes=[...currentGroup.querySelectorAll('circle')].filter(e=>e.dataset.entityId===row.id),points=state.points.filter(p=>p.view===currentGroup.dataset.view&&p.rowId===row.id);
    const quantity=points.reduce((n,p)=>n+p.quantity,0);quantities.push({rowId:row.id,quantity,landed:points.every(p=>p.landed)});
    if(Math.abs(quantity-row.after)>1e-8)issues.push('Point quantities differ from source: '+row.id);
@@ -93,7 +102,8 @@ def main_atlas(args):
                     hold=(beat['duration']-story['camera']['transitionSeconds'])/4
                     start=.38/len(scene['panels'])+.035
                     span=min(story['attention']['emissionSeconds'],hold*max(.04,1/len(scene['panels'])-start-.025))
-                    times += [beat['start']+story['camera']['transitionSeconds']*.25,beat['start']+story['camera']['transitionSeconds']+start*hold+span/2]
+                    times += [beat['start']+story['camera']['transitionSeconds']*.25]
+                    times += [beat['start']+story['camera']['transitionSeconds']+row*hold+start*hold+span/2+story['attention']['flightSeconds']*.5 for row in range(len(story['rows']))]
                 for seconds in times:
                     page.evaluate("t=>renderAt(t)",seconds)
                     data=page.evaluate(CHECKS)

@@ -168,3 +168,9 @@ the complete movie, and inspect encoded samples and audio continuity.
 Deliver the final MP4, editable preview/story/timing, source attribution and
 actual validation scope. Keep original-page evidence separate from generated
 charts and do not claim a local clip was itself a native editor export.
+For reading holds longer than two seconds, the bundled player traces a calm
+red segment along the existing safe margin emphasis mark. The PDF pixels,
+connectors and table values remain intact. The 3.2-second phase comes from the
+same scene clock and is included in the capture state so PNG hold reuse cannot
+freeze it. This is an emphasis overlay, not an inferred source relation or a
+new datum. Keep its complete ink envelope outside protected words and figures.

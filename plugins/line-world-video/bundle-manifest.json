@@ -1,21 +1,21 @@
 {
   "name": "line-world-video",
-  "version": "0.25.2",
+  "version": "0.26.0",
   "files": [
     {
       "path": ".claude-plugin/plugin.json",
       "bytes": 326,
-      "sha256": "317bbed90884bcb257f13fa82ca3b92c739d9d4a84ecd68d0448083ac97579c2"
+      "sha256": "10a593240b2487b7d2552a0052b33338d180af7c0da18c9af802be2502afa6a4"
     },
     {
       "path": ".codex-plugin/plugin.json",
       "bytes": 545,
-      "sha256": "c920bb6f37f40be66ee9ca438b601453218796aaa6c5d8b144e9d56b7aaddeca"
+      "sha256": "aa2b6c3b6ddf925df851f7926fa62f1bc51e261d91546a8f4062b16742d42655"
     },
     {
       "path": "plugin.json",
       "bytes": 401,
-      "sha256": "d56ab1d23fded082d5e5cd63a7e633b27fa71bd955cb6035873e050376991709"
+      "sha256": "faad76c899900412e80ae36e4b5d1fbe16474236e5ed57e743ba2479305641bc"
     },
     {
       "path": "skills/line-world-d3/SKILL.md",
@@ -69,8 +69,8 @@
     },
     {
       "path": "skills/line-world-d3/assets/runtime/focus-motion.js",
-      "bytes": 4520,
-      "sha256": "7ece2fb89b06f38f8af115082f2009fec89cde23f65fb12cd9448001515215a5"
+      "bytes": 5061,
+      "sha256": "e7fb1544fe361f7b6bfb5e5e909bf4b210057daafa7ba2252148850550b12fcf"
     },
     {
       "path": "skills/line-world-d3/assets/runtime/focus.js",
@@ -81,6 +81,11 @@
       "path": "skills/line-world-d3/assets/runtime/photo-focus.js",
       "bytes": 5013,
       "sha256": "74645e5ead518c0f437cd555f2d4de3e801c84c4fbbb2b1fcf0d4c8a87148403"
+    },
+    {
+      "path": "skills/line-world-d3/assets/runtime/scene-effects.js",
+      "bytes": 3000,
+      "sha256": "cacd52eb96e9ca03b8fc44f65074427ac2555d05c976e474a8d39e808744984a"
     },
     {
       "path": "skills/line-world-d3/assets/runtime/theme.css",
@@ -589,8 +594,8 @@
     },
     {
       "path": "skills/line-world-hyperframes/assets/runtime/focus-motion.js",
-      "bytes": 4520,
-      "sha256": "7ece2fb89b06f38f8af115082f2009fec89cde23f65fb12cd9448001515215a5"
+      "bytes": 5061,
+      "sha256": "e7fb1544fe361f7b6bfb5e5e909bf4b210057daafa7ba2252148850550b12fcf"
     },
     {
       "path": "skills/line-world-hyperframes/assets/runtime/focus.js",
@@ -601,6 +606,11 @@
       "path": "skills/line-world-hyperframes/assets/runtime/photo-focus.js",
       "bytes": 5013,
       "sha256": "74645e5ead518c0f437cd555f2d4de3e801c84c4fbbb2b1fcf0d4c8a87148403"
+    },
+    {
+      "path": "skills/line-world-hyperframes/assets/runtime/scene-effects.js",
+      "bytes": 3000,
+      "sha256": "cacd52eb96e9ca03b8fc44f65074427ac2555d05c976e474a8d39e808744984a"
     },
     {
       "path": "skills/line-world-hyperframes/assets/runtime/theme.css",
@@ -749,8 +759,8 @@
     },
     {
       "path": "skills/line-world-icons/assets/runtime/focus-motion.js",
-      "bytes": 4520,
-      "sha256": "7ece2fb89b06f38f8af115082f2009fec89cde23f65fb12cd9448001515215a5"
+      "bytes": 5061,
+      "sha256": "e7fb1544fe361f7b6bfb5e5e909bf4b210057daafa7ba2252148850550b12fcf"
     },
     {
       "path": "skills/line-world-icons/assets/runtime/focus.js",
@@ -761,6 +771,11 @@
       "path": "skills/line-world-icons/assets/runtime/photo-focus.js",
       "bytes": 5013,
       "sha256": "74645e5ead518c0f437cd555f2d4de3e801c84c4fbbb2b1fcf0d4c8a87148403"
+    },
+    {
+      "path": "skills/line-world-icons/assets/runtime/scene-effects.js",
+      "bytes": 3000,
+      "sha256": "cacd52eb96e9ca03b8fc44f65074427ac2555d05c976e474a8d39e808744984a"
     },
     {
       "path": "skills/line-world-icons/assets/runtime/theme.css",
@@ -844,8 +859,8 @@
     },
     {
       "path": "skills/line-world-mermaid/assets/runtime/focus-motion.js",
-      "bytes": 4520,
-      "sha256": "7ece2fb89b06f38f8af115082f2009fec89cde23f65fb12cd9448001515215a5"
+      "bytes": 5061,
+      "sha256": "e7fb1544fe361f7b6bfb5e5e909bf4b210057daafa7ba2252148850550b12fcf"
     },
     {
       "path": "skills/line-world-mermaid/assets/runtime/focus.js",
@@ -856,6 +871,11 @@
       "path": "skills/line-world-mermaid/assets/runtime/photo-focus.js",
       "bytes": 5013,
       "sha256": "74645e5ead518c0f437cd555f2d4de3e801c84c4fbbb2b1fcf0d4c8a87148403"
+    },
+    {
+      "path": "skills/line-world-mermaid/assets/runtime/scene-effects.js",
+      "bytes": 3000,
+      "sha256": "cacd52eb96e9ca03b8fc44f65074427ac2555d05c976e474a8d39e808744984a"
     },
     {
       "path": "skills/line-world-mermaid/assets/runtime/theme.css",
@@ -964,8 +984,8 @@
     },
     {
       "path": "skills/line-world-video/SKILL.md",
-      "bytes": 13758,
-      "sha256": "55afce39534ff0ff641bc458ed77b814d2f62e5e7bb9faa082f8df718c888526"
+      "bytes": 14074,
+      "sha256": "e670b52fd1efe95c37694c4f10193bf93a48f43683ffd6af8c43e13c29c3a26b"
     },
     {
       "path": "skills/line-world-video/agents/openai.yaml",
@@ -1249,8 +1269,8 @@
     },
     {
       "path": "skills/line-world-video/assets/paper-video/paper.js",
-      "bytes": 13311,
-      "sha256": "e1f1da6215ac87585d81b3e9af45856061e46d32653a7c0608e2fa1aeb91bba6"
+      "bytes": 13896,
+      "sha256": "6446c529e4f5d3d38c64a35b035f775eb09f6a7e8155c203ff1f484618505813"
     },
     {
       "path": "skills/line-world-video/assets/plugin-profiles/d3-operations.md.in",
@@ -1314,8 +1334,8 @@
     },
     {
       "path": "skills/line-world-video/assets/runtime/focus-motion.js",
-      "bytes": 4520,
-      "sha256": "7ece2fb89b06f38f8af115082f2009fec89cde23f65fb12cd9448001515215a5"
+      "bytes": 5061,
+      "sha256": "e7fb1544fe361f7b6bfb5e5e909bf4b210057daafa7ba2252148850550b12fcf"
     },
     {
       "path": "skills/line-world-video/assets/runtime/focus.js",
@@ -1326,6 +1346,11 @@
       "path": "skills/line-world-video/assets/runtime/photo-focus.js",
       "bytes": 5013,
       "sha256": "74645e5ead518c0f437cd555f2d4de3e801c84c4fbbb2b1fcf0d4c8a87148403"
+    },
+    {
+      "path": "skills/line-world-video/assets/runtime/scene-effects.js",
+      "bytes": 3000,
+      "sha256": "cacd52eb96e9ca03b8fc44f65074427ac2555d05c976e474a8d39e808744984a"
     },
     {
       "path": "skills/line-world-video/assets/runtime/theme.css",
@@ -1339,8 +1364,8 @@
     },
     {
       "path": "skills/line-world-video/assets/runtime/visual-review.js",
-      "bytes": 7074,
-      "sha256": "b01d73c3866c1ce143cdaed534aa2da34da35987d95423be4a05594e2603b8b1"
+      "bytes": 7247,
+      "sha256": "f727a3e72daf60730237c5a85f7c0f4476d643a62c0597011d6277cbc3d1cd56"
     },
     {
       "path": "skills/line-world-video/assets/runtime/website-tour.js",
@@ -1349,8 +1374,8 @@
     },
     {
       "path": "skills/line-world-video/assets/templates/atlas-scene.js",
-      "bytes": 30578,
-      "sha256": "18664ba393a07af5748cbebe609e110c23125677fd45e8f17bcca553d1437ada"
+      "bytes": 33917,
+      "sha256": "f5cb705cdf4d7763d3fc908a801dec8fd34199aeaa110e3c3436654fc4cf74f1"
     },
     {
       "path": "skills/line-world-video/assets/templates/hf.ts",
@@ -1359,8 +1384,8 @@
     },
     {
       "path": "skills/line-world-video/assets/templates/index.html",
-      "bytes": 2785,
-      "sha256": "c41fd69618110aeb334f26ec193766ef93101fb694e8c2d43909f4f35bcb9a5c"
+      "bytes": 2832,
+      "sha256": "645140d3531b319029b48df7c7628a1547528781cdcaba8b5e193ecf6ce11558"
     },
     {
       "path": "skills/line-world-video/assets/templates/local-runtime.ts",
@@ -1374,8 +1399,8 @@
     },
     {
       "path": "skills/line-world-video/assets/templates/scene.js",
-      "bytes": 17166,
-      "sha256": "fff1e53d4bfc3d456edcbf5f63ff3035aa44068f2d0b41fa95bff588201576e9"
+      "bytes": 18027,
+      "sha256": "1d19ace446c5544e07f689cc53f28d004b5bcc26222e6551218354fa2bbcaef7"
     },
     {
       "path": "skills/line-world-video/assets/vendor/D3-LICENSE.txt",
@@ -1418,6 +1443,11 @@
       "sha256": "5e12b35bca86f5cccb1b4bc9fe5d478b55adf97906bb700783c820db603b268f"
     },
     {
+      "path": "skills/line-world-video/references/collection-review.md",
+      "bytes": 4511,
+      "sha256": "b90fc34b35cd0c7923502daa79a8c08b3d1c440d0f861c232cbe04aa170fd60b"
+    },
+    {
       "path": "skills/line-world-video/references/color-priority.md",
       "bytes": 8488,
       "sha256": "b26a2bdc18bd835fd42193834a1ee522a6cadcf089f35d04e8ea5dc4a1ff70f5"
@@ -1434,8 +1464,8 @@
     },
     {
       "path": "skills/line-world-video/references/focus-motion.md",
-      "bytes": 5569,
-      "sha256": "9b5149543f20a00a983be7cb6430a01f8effa96b6ea59f507e4b2f9abd57ba9f"
+      "bytes": 8527,
+      "sha256": "42d7863757f099e713db26faced281deec6e383952d75f87020927d7c33ebce3"
     },
     {
       "path": "skills/line-world-video/references/full-frame-atlas.md",
@@ -1459,8 +1489,8 @@
     },
     {
       "path": "skills/line-world-video/references/paper-tours.md",
-      "bytes": 10010,
-      "sha256": "29c4a8ca3248cbcc6cccf850812b9d6079f356a7ae8f05d454f13dadeb5f9653"
+      "bytes": 10474,
+      "sha256": "08f0f88ac55514e1e8ac125a058101b67fa8367efee14206dee70d653e8a4e88"
     },
     {
       "path": "skills/line-world-video/references/pattern-recipes.md",
@@ -1469,13 +1499,13 @@
     },
     {
       "path": "skills/line-world-video/references/people-and-logos.md",
-      "bytes": 8912,
-      "sha256": "db9fd7152653ba430cbbb685fc82c0959e55f40fea7d91d245967ca4490f27e4"
+      "bytes": 9149,
+      "sha256": "8efdd18c1854c48b49ea0b3e315dbb1939f3b3033432560692f5463ba544d429"
     },
     {
       "path": "skills/line-world-video/references/photo-focus.md",
-      "bytes": 5561,
-      "sha256": "e115c3126fb6e6d1d86495bbee58848e591f8d332b59f8f2e6a15b3ff4cd9413"
+      "bytes": 5951,
+      "sha256": "06138099167f6ef30dff07fa9974c6f8520211d0a829f006ff2993ee995f60ef"
     },
     {
       "path": "skills/line-world-video/references/plugin-profiles.md",
@@ -1489,8 +1519,8 @@
     },
     {
       "path": "skills/line-world-video/references/project-delivery.md",
-      "bytes": 7304,
-      "sha256": "db953f65f4691b53136b3d993f34f1e1ef8be6aa1615cd4be74aa4844291a2c1"
+      "bytes": 7988,
+      "sha256": "c199e57e3f79020cc52cb4578a78a6aa5950886414edce9dd142440ac3710c3a"
     },
     {
       "path": "skills/line-world-video/references/rendering.md",
@@ -1514,8 +1544,8 @@
     },
     {
       "path": "skills/line-world-video/references/visual-review.md",
-      "bytes": 9670,
-      "sha256": "bd605229fe2686a100e2b3728b744f07884907e7b07ff0f585ddd615452de944"
+      "bytes": 10012,
+      "sha256": "8f490619e47a8d36f1593efe40cad7dce39e75fdc4e03aa1f256ce4cf579fb6c"
     },
     {
       "path": "skills/line-world-video/references/website-tours.md",
@@ -1524,8 +1554,8 @@
     },
     {
       "path": "skills/line-world-video/scripts/atlas_audit.py",
-      "bytes": 13162,
-      "sha256": "bc9fff70baf9707be56d2cdeacb588404ce75a0684bcf738ef4a5e83940a2846"
+      "bytes": 14249,
+      "sha256": "85459ace93c3c192388470be0faec5fccf1e8e8c9bb120a8c8ce0c055bf821bd"
     },
     {
       "path": "skills/line-world-video/scripts/atlas_story.py",
@@ -1564,8 +1594,8 @@
     },
     {
       "path": "skills/line-world-video/scripts/inspect_focus_motion.py",
-      "bytes": 10305,
-      "sha256": "21aae4b388bcae1ba004b894e9fee7ebdfe119db3141e1510ed6da953e0e71eb"
+      "bytes": 12430,
+      "sha256": "b476ac298b065c9a4c5b199bd0229831582ed6a6fda2e4704602783df75df19d"
     },
     {
       "path": "skills/line-world-video/scripts/inspect_items.py",
@@ -1599,8 +1629,8 @@
     },
     {
       "path": "skills/line-world-video/scripts/photo_focus.py",
-      "bytes": 12926,
-      "sha256": "f9d32d6229a78634141fa4cc595579c93d903dd1f5a83c1ad6d79a7a8103bc8b"
+      "bytes": 13002,
+      "sha256": "9ff70e9570c06f7110a9be9ca92ae1d60d183aebd4633f2f237c5c937c73077f"
     },
     {
       "path": "skills/line-world-video/scripts/project_delivery.py",
@@ -1613,9 +1643,19 @@
       "sha256": "e93c6b4158b163ace22f2086be119395de94b9e3f12c1ebef3db75e7a7427c13"
     },
     {
+      "path": "skills/line-world-video/scripts/review_collection.py",
+      "bytes": 12442,
+      "sha256": "afe520b64c8166450fd045b0f32712d55a48b50db75939d5dec22c01f2f99726"
+    },
+    {
       "path": "skills/line-world-video/scripts/review_video.py",
-      "bytes": 22431,
-      "sha256": "3b708df06eb54e7083586a99fc2945596098746f3ef3b18415d742ff0d6ba10e"
+      "bytes": 22706,
+      "sha256": "d8744b5ddf519525ffb59a11843b346a0a7be0742c25b2ca180b853af6116657"
+    },
+    {
+      "path": "skills/line-world-video/scripts/test_atlas_reading.py",
+      "bytes": 3417,
+      "sha256": "50a3d4b0bb3d345ce3655eb2815a8346f9430ca6c45e63fe14d76c9c415e5b32"
     },
     {
       "path": "skills/line-world-video/scripts/test_attention.ts",
@@ -1639,8 +1679,8 @@
     },
     {
       "path": "skills/line-world-video/scripts/test_focus_motion.py",
-      "bytes": 7483,
-      "sha256": "2ed042fdeaa4856ed88fc85b5b3256cf80c7c49d853da4b5a1bf8af92ad170f6"
+      "bytes": 10594,
+      "sha256": "bb5c436789ecd40312f6a9eee625abbd937576951f39a9b81329127fc0a994ba"
     },
     {
       "path": "skills/line-world-video/scripts/test_item_contrast.py",
@@ -1669,8 +1709,8 @@
     },
     {
       "path": "skills/line-world-video/scripts/test_paper_video.py",
-      "bytes": 5319,
-      "sha256": "39498b158aa34488d824dfdcbfb671ef6c78e467518f1b388e84787eb3756ef3"
+      "bytes": 7285,
+      "sha256": "872894ec583f74c700d8518433828e99b649dc2f519518619e1eaf2606e6f35b"
     },
     {
       "path": "skills/line-world-video/scripts/test_people_context.py",
@@ -1679,8 +1719,8 @@
     },
     {
       "path": "skills/line-world-video/scripts/test_photo_focus.py",
-      "bytes": 10094,
-      "sha256": "7b5cfa6bf38af1c384ed40de81eeb3c62bed372b619b770932f06c2583b76bcc"
+      "bytes": 10381,
+      "sha256": "af6d583461e99a59d0170c755019df034c46a184383b78943856002930e3bbc3"
     },
     {
       "path": "skills/line-world-video/scripts/test_project_delivery.py",
@@ -1688,9 +1728,19 @@
       "sha256": "2bd85b30117711f286ebc66b58004b905673bec13795326e0ac69e678f548782"
     },
     {
+      "path": "skills/line-world-video/scripts/test_review_collection.py",
+      "bytes": 3349,
+      "sha256": "ffb59139544eb4037a5463e0d6eb7519cbb21d2ed548a56e02d6208bb8fa2f86"
+    },
+    {
       "path": "skills/line-world-video/scripts/test_review_video.py",
-      "bytes": 5625,
-      "sha256": "2fabd66f6b2f8bfed795012b1291e58f611874c6936e39ebcf61d844e8dabe9d"
+      "bytes": 6573,
+      "sha256": "5cfe6ec46658a0634a67e91b0648cfd95d6fa8b3410d5ef9b2af27a5e5c0cea5"
+    },
+    {
+      "path": "skills/line-world-video/scripts/test_scene_effects.py",
+      "bytes": 3190,
+      "sha256": "3bd39aea9ab744fcd3fe3908bc5ee60eb079948ecb1bf50e41285684056643ad"
     },
     {
       "path": "skills/line-world-video/scripts/test_story_update.py",

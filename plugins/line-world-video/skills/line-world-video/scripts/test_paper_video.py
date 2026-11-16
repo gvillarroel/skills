@@ -4,10 +4,12 @@
 # dependencies = ["pymupdf>=1.26,<2", "playwright>=1.51,<2", "pillow>=11,<13"]
 # ///
 """Exercise PDF identity, cache invalidation, data bounds and actual browser seeking."""
-import copy,json,tempfile,unittest
+import copy,functools,io,json,tempfile,threading,unittest
+from http.server import ThreadingHTTPServer
 from pathlib import Path
 import pymupdf
 from paper_video import prepare,build,validate,read,run_browser,inspect_page
+from inspect_focus import Quiet,browser_path
 
 class PaperVideoTests(unittest.TestCase):
  def setUp(self):
@@ -65,6 +67,28 @@ class PaperVideoTests(unittest.TestCase):
   story=self.root/'story.json';story.write_text(json.dumps(self.story),encoding='utf-8');result=build(self.project,story)
   self.assertEqual(read(self.project/'story.json')['scenes'][0]['chart']['rows'][0]['values'],[20,25.5])
   self.assertEqual(read(self.project/'timing.json')['scenes'][0]['frames'],66);self.assertAlmostEqual(result['duration'],2.2)
+ def test_long_hold_moves_only_safe_emphasis_ink_and_keeps_source_pixels(self):
+  from PIL import Image,ImageChops,ImageDraw
+  from playwright.sync_api import sync_playwright
+  self.story['scenes'][0]['duration']=5
+  story=self.root/'story.json';story.write_text(json.dumps(self.story),encoding='utf-8');build(self.project,story)
+  server=ThreadingHTTPServer(('127.0.0.1',0),functools.partial(Quiet,directory=str(self.project)));threading.Thread(target=server.serve_forever,daemon=True).start()
+  try:
+   with sync_playwright() as pw:
+    browser=pw.chromium.launch(executable_path=browser_path(),headless=True);page=browser.new_page(viewport={'width':1920,'height':1080})
+    page.goto(f'http://127.0.0.1:{server.server_port}/index.html?capture=1');page.evaluate('async()=>await ready');page.add_style_tag(content='circle{visibility:hidden}')
+    a=page.evaluate('renderClip(0,1.2)');first=Image.open(io.BytesIO(page.screenshot())).convert('RGB')
+    b=page.evaluate('renderClip(0,2.2)');second=Image.open(io.BytesIO(page.screenshot())).convert('RGB')
+    self.assertEqual(a['camera'],b['camera']);self.assertEqual(a['target'],b['target']);self.assertNotEqual(a['emphasisPhase'],b['emphasisPhase'])
+    diff=ImageChops.difference(first,second);self.assertIsNotNone(diff.getbbox())
+    marks=page.locator('[data-role="paper-emphasis"]').evaluate_all('es=>es.map(e=>{const b=e.getBoundingClientRect();return [b.x-4,b.y-4,b.right+4,b.bottom+4]})')
+    draw=ImageDraw.Draw(diff)
+    for box in marks:draw.rectangle(box,fill='black')
+    self.assertIsNone(diff.getbbox(),'Pixels outside the existing safe emphasis marks changed.')
+    page.evaluate('renderClip(0,0);renderClip(0,1.2)');self.assertEqual(first.tobytes(),Image.open(io.BytesIO(page.screenshot())).convert('RGB').tobytes())
+    browser.close()
+  finally:server.shutdown();server.server_close()
+
  def test_real_browser_can_seek_page_changes_without_collisions(self):
   s=self.story['scenes'][0];s['duration']=3.2;s['cues'].append({'target':'evidence','phrase':'second page','at':2.0});s['shots']=[{'at':1.3,'page':2,'view':s['view']}]
   story=self.root/'story.json';story.write_text(json.dumps(self.story),encoding='utf-8');build(self.project,story)

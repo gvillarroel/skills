@@ -139,11 +139,11 @@ def browser_path():
     return next((str(p) for p in options if str(p) and Path(p).is_file()), None)
 
 
-def source_review(document, scenes, clock, fps, width, height, output, extra):
+def source_review(document, scenes, clock, fps, width, height, output, extra, guide_selector='#guide'):
     from playwright.sync_api import sync_playwright
     extensions = {".html", ".js", ".css", ".json", ".csv", ".tsv", ".svg", ".png", ".jpg", ".jpeg", ".webp", ".ttf", ".woff", ".woff2"}
     files = sorted(p for p in document.parent.rglob("*") if p.is_file() and p.suffix.lower() in extensions and not p.resolve().is_relative_to(output))
-    fingerprint = key({"files": [(p.relative_to(document.parent).as_posix(), sha(p)) for p in files], "extra": [(str(p), sha(p)) for p in extra], "runtime": sha(SKILL/"assets/runtime/visual-review.js"), "focus": sha(SKILL/"assets/runtime/focus.js"), "script": sha(Path(__file__)), "scenes": scenes, "clock": clock, "fps": fps, "size": [width, height]})
+    fingerprint = key({"files": [(p.relative_to(document.parent).as_posix(), sha(p)) for p in files], "extra": [(str(p), sha(p)) for p in extra], "runtime": sha(SKILL/"assets/runtime/visual-review.js"), "focus": sha(SKILL/"assets/runtime/focus.js"), "script": sha(Path(__file__)), "scenes": scenes, "clock": clock, "guideSelector":guide_selector, "fps": fps, "size": [width, height]})
     cache = output / ("source-"+fingerprint+".json")
     if cache.is_file():
         result = read(cache); result["reused"] = True; return result
@@ -159,7 +159,7 @@ def source_review(document, scenes, clock, fps, width, height, output, extra):
             page.evaluate("async()=>{await document.fonts.ready;if(window.ready?.then)await window.ready}")
             page.add_script_tag(path=str(SKILL/"assets/runtime/focus.js")); page.add_script_tag(path=str(SKILL/"assets/runtime/visual-review.js"))
             for scene in scenes:
-                record = page.evaluate("""({scene,clock,fps})=>{
+                record = page.evaluate("""({scene,clock,fps,guideSelector})=>{
                   const stage=document.querySelector('#stage')||document.querySelector('svg');if(!stage)throw Error('A rendered SVG stage is required.');
                   const render=t=>clock==='scene-local'?window.renderClip(scene.index,t):window.renderAt(scene.start+t);
                   if(clock==='scene-local'&&typeof window.renderClip!=='function')throw Error('Scene-local review requires renderClip(index, seconds).');
@@ -167,14 +167,14 @@ def source_review(document, scenes, clock, fps, width, height, output, extra):
                   for(let frame=0;frame<count;frame++){
                     const seconds=frame/fps,state=render(seconds)||window.snapshot?.(),camera=JSON.stringify(state?.camera||null),moving=previousCamera!==null&&camera!==previousCamera;previousCamera=camera;
                     const coverage=LineWorldVisualReview.content(stage);minAnchors=Math.min(minAnchors,coverage.visibleAnchors);if(coverage.empty){const last=emptyIntervals.at(-1);if(last&&last.lastFrame===frame-1){last.end=(frame+1)/fps;last.lastFrame=frame;last.frames++;}else emptyIntervals.push({start:seconds,end:(frame+1)/fps,firstFrame:frame,lastFrame:frame,frames:1});}
-                    const test=LineWorldVisualReview.guide(stage);
+                    const test=LineWorldVisualReview.guide(stage,{selector:guideSelector});
                     const seen=new Set();for(const issue of test.issues){const id=issue.kind+'|'+issue.target;if(seen.has(id))continue;seen.add(id);let item=found.get(id);if(!item){item={...issue,firstSeconds:seconds,lastSeconds:seconds,frames:0,inCameraMotion:0,intervals:[],lastFrame:-2};found.set(id,item)}if(item.lastFrame!==frame-1)item.intervals.push({start:seconds,end:seconds});else item.intervals.at(-1).end=seconds;item.lastFrame=frame;item.lastSeconds=seconds;item.frames++;if(moving)item.inCameraMotion++;}
                   }
                   const points=[scene.sourceDuration*.25,scene.sourceDuration*.5,scene.sourceDuration*.75,...scene.cues.map(c=>Math.min(scene.sourceDuration-1/fps,c.at+.25))];
                   for(const seconds of [...new Set(points.map(t=>Math.round(t*fps)/fps))]){render(seconds);readings.push({seconds,...LineWorldVisualReview.reading(stage)});}
                   render(0);const first=window.snapshot?.();render(scene.sourceDuration-1/fps);const end=window.snapshot?.();render(scene.sourceDuration*.4);render(scene.sourceDuration-1/fps);const repeated=window.snapshot?.();
                   return{id:scene.id,start:scene.start,duration:scene.duration,trajectoryFrames:count,content:{minimumVisibleAnchors:minAnchors,emptyIntervals},guideIssues:[...found.values()].map(({lastFrame,...rest})=>rest),readingSamples:readings,repeatSeek:JSON.stringify(end)===JSON.stringify(repeated),firstPose:first,lastPose:end};
-                }""", {"scene": scene, "clock": clock, "fps": fps})
+                }""", {"scene": scene, "clock": clock, "fps": fps,"guideSelector":guide_selector})
                 grouped = {}
                 for reading in record["readingSamples"]:
                     for issue in reading["issues"]:
@@ -229,6 +229,7 @@ def manual_review(path, video_sha, source, scenes):
 def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("--video", type=Path, required=True); p.add_argument("--story", type=Path, required=True); p.add_argument("--timing", type=Path); p.add_argument("--cues", type=Path); p.add_argument("--html", type=Path); p.add_argument("--clock", choices=["global", "scene-local"], default="global"); p.add_argument("--trajectory-fps", type=float, default=30); p.add_argument("--input", type=Path, action="append", default=[]); p.add_argument("--manual-review", type=Path); p.add_argument("--output", type=Path, required=True)
+    p.add_argument('--guide-selector', default='#guide', help='Actual SVG guide selector; included in the source fingerprint.')
     args = p.parse_args(); output = args.output.resolve()
     if output.is_relative_to(SKILL): p.error("Keep generated review files outside the skill.")
     if args.html and args.html.resolve().parent.is_relative_to(output): p.error("Use a separate review directory that does not contain the authored HTML.")
@@ -240,7 +241,7 @@ def main():
         frames = int(stream["nb_frames"]); story = read(args.story); scenes, samples = plan(story, read(args.timing) if args.timing else None, read(args.cues) if args.cues else None, fps, frames)
         video_sha = sha(video); cache_file = output/"cache.json"; old = read(cache_file) if cache_file.is_file() else {}
         content = scan_content(video, cache=output/'content-scan.json', video_sha=video_sha)
-        source = source_review(args.html.resolve(), scenes, args.clock, args.trajectory_fps, stream["width"], stream["height"], output, [p.resolve() for p in args.input]) if args.html else None
+        source = source_review(args.html.resolve(), scenes, args.clock, args.trajectory_fps, stream["width"], stream["height"], output, [p.resolve() for p in args.input],args.guide_selector) if args.html else None
         extra=[(content['lowestInkFrame']['frame'],'lowest-content')]
         for interval in content['intervals']:
             extra.extend((n,'insufficient-content') for n in [interval['firstFrame'],(interval['firstFrame']+interval['lastFrame'])//2,interval['lastFrame']])

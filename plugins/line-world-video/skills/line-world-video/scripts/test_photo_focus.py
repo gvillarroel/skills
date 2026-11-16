@@ -127,6 +127,12 @@ class PhotoFocusTests(unittest.TestCase):
         probe = json.loads(subprocess.check_output(['ffprobe', '-v', 'error', '-show_streams', '-of', 'json', str(self.root / 'preview.mp4')], text=True))
         self.assertEqual(int(probe['streams'][0]['nb_frames']), 120)
 
+    def test_inspector_excludes_its_own_color_clone_from_broad_photo_selector(self):
+        self.page.close()
+        self.html.write_text(self.html.read_text().replace('"target": "#card"', '"target": "image"'))
+        report=self.audit()
+        self.assertTrue(report['ok'],report)
+
     def test_inspector_rejects_a_stuck_color_layer(self):
         self.page.close()
         self.html.write_text(self.html.read_text().replace('window.renderAt=t=>photos.render(t)', 'window.renderAt=t=>photos.render(2)'))

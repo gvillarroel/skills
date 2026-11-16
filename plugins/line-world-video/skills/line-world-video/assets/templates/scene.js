@@ -78,12 +78,12 @@ const colors=S.colorSequence;
 const positive=rows.filter(d=>d.after>0),root=d3.hierarchy({children:positive.map(d=>({name:d.label,value:d.after,id:d.id}))}).sum(d=>d.value||0);d3.treemap().size([1920,1080]).paddingInner(0).round(true)(root);
 const leaves=positive.length?root.leaves():[];
 const cells=categories.append('g').selectAll('.cell').data(leaves).join('g').attr('class','cell').attr('data-row-id',d=>d.data.id).attr('transform',d=>`translate(${d.x0} ${d.y0})`);
-cells.append('rect').attr('width',d=>d.x1-d.x0).attr('height',d=>d.y1-d.y0).attr('fill',(d,i)=>colors[i]);
-cells.append('text').attr('x',28).attr('y',48).attr('class','world-label').style('fill',(d,i)=>S.textOnFill[colors[i]]).text(d=>d.data.name);
-cells.append('text').attr('x',28).attr('y',99).attr('class','world-number').style('fill',(d,i)=>S.textOnFill[colors[i]]).text(d=>d.value);
+cells.append('rect').attr('width',d=>d.x1-d.x0).attr('height',d=>d.y1-d.y0).attr('fill',C.white).attr('stroke',C.line).attr('stroke-width',2).attr('data-lw-surface','group');
+cells.append('text').attr('x',28).attr('y',48).attr('class','world-label').style('fill',(d,i)=>i?C.ink:C.red).text(d=>d.data.name);
+cells.append('text').attr('x',28).attr('y',99).attr('class','world-number').style('fill',(d,i)=>i?C.ink:C.red).text(d=>d.value);
 if(!leaves.length)text(categories,960,540,'0 '+S.unit,'number').attr('text-anchor','middle');
-cells.append('text').attr('x',28).attr('y',d=>d.y1-d.y0-28).attr('class','world-small').style('fill',(d,i)=>S.textOnFill[colors[i]]).text(unitNote);
-const categoryTarget=leaves.length?{x:O.categories.x+(leaves.at(-1).x0+leaves.at(-1).x1)/2,y:O.categories.y+(leaves.at(-1).y0+leaves.at(-1).y1)/2}:{x:960,y:1620};
+cells.append('text').attr('x',28).attr('y',d=>d.y1-d.y0-28).attr('class','world-small').style('fill',C.secondary).text(unitNote);
+let categoryTarget=leaves.length?{x:O.categories.x+(leaves.at(-1).x0+leaves.at(-1).x1)/2,y:O.categories.y+(leaves.at(-1).y0+leaves.at(-1).y1)/2}:{x:960,y:1620};
 const firstTablePort={x:O.data.x+tableX-40,y:O.data.y+tableY+78};
 const bridge=path(world,`M${nodes.at(-1).x} ${nodes.at(-1).y}C1680 1050 1820 480 ${diagramPorts[0].x} ${diagramPorts[0].y}M${diagramPorts.at(-1).x} ${diagramPorts.at(-1).y}C3900 860 2370 940 ${firstTablePort.x} ${firstTablePort.y}M${O.data.x+90} 1910C1850 2130 1820 2120 1730 1860`,'guide-line').attr('stroke-dasharray','3 13').attr('data-layout-allow-overlap','');
 const guide=world.append('g').attr('id','attention-dot');guide.append('circle').attr('r',M.baseRadius+3).attr('fill',C.white);guide.append('circle').attr('r',M.baseRadius).attr('fill',A.PRIMARY_RED);
@@ -94,6 +94,7 @@ const registerMotion=(element,id,start,end,kind,mode,scope)=>{if(!element)return
 registerMotion(diagramAsset.node().querySelector('path.flowchart-link,.edgePath path,path.guide-line'),'linked-flow',at('relations').start+2.7,at('relations').end,'diagram','trace','#producer-diagram');
 pairs.select('.after-bar').each(function(d,i){const span=(at('compare').duration-2)/rows.length;registerMotion(this,'linked-bar-'+d.id,at('compare').start+2+i*span,at('compare').start+2+(i+1)*span,'chart','pulse','#paired-chart');});
 histories.each(function(d,i){if(!i)return;const span=at('history').duration/rows.length;registerMotion(this,'linked-history-'+d.id,at('history').start+i*span,at('history').start+(i+1)*span,'chart','trace','#history-chart');});
+if(leaves.length)registerMotion(cells.filter((d,i)=>i===leaves.length-1).select('rect').node(),'linked-category',at('categories').start+2.7*Math.min(1,at('categories').duration/8),at('categories').end,'chart','trace','#categories');
 window.FOCUS_PLAN={windows:motionWindows};
 const focusMotion=LineWorldFocusMotion.attach(stage.node(),motionWindows);
 
@@ -141,4 +142,8 @@ window.renderAt=function(seconds,options={}){
   currentState={seconds:t,beat,selectedRowId:row.id,before:row.before,after:row.after,mode,camera:c,dot,palette:S.palette,contextLabel:requestedContext,layout:'balanced-four-islands',guideRadius,guideColor:A.PRIMARY_RED,figureMotion};return currentState;
 };
 window.snapshot=()=>({...currentState});window.renderAt(0);
+window.ready=document.fonts.ready.then(()=>{
+ if(leaves.length){const last=leaves.at(-1),offset=d=>({x:O.categories.x+d.x0,y:O.categories.y+d.y0}),box=e=>{const b=e.getBBox(),d=e.__data__,o=offset(d);return{x0:o.x+b.x,y0:o.y+b.y,x1:o.x+b.x+b.width,y1:o.y+b.y+b.height}},target=cells.filter((d,i)=>i===leaves.length-1).select('.world-number').node(),labels=cells.selectAll('text').nodes().map(box);categoryTarget=A.clearPort(box(target),{x0:O.categories.x+24,y0:O.categories.y+24,x1:O.categories.x+1896,y1:O.categories.y+1056},labels,M.focusRadius+5);}
+ return renderAt(currentState.seconds);
+});
 })();

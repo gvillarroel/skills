@@ -102,6 +102,15 @@ content checks, source geometry and manual judgments are different evidence.
 For a visual-only revision, compare the approved audio or aligned PCM digests;
 do not claim byte identity from matching durations. Preserve readable names and
 contributions, primary-red guide, white-on-red content and unclipped labels.
+When only visuals change and every scene keeps its approved frame budget,
+reuse the approved complete audio stream instead of generating speech again.
+Concatenate the revised silent clips, then map that video and the approved
+movie's audio with FFmpeg stream copy. Compare actual compressed AAC payloads
+(`-map 0:a:0 -c:a copy -f adts`) before claiming exact preservation. If the
+approved movie includes one or two final reading-hold frames protecting a
+quiet voice tail, preserve those frames too. Fail on an unexplained budget
+change; equal total duration alone does not prove per-scene synchronization.
+Record a new movie digest and keep the approved reference immutable.
 
 When the native editor is unavailable or upload permission is rejected, retain
 the local movie, exact clip queue, scripts, observations and approved speech.

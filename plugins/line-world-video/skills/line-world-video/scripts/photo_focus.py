@@ -99,7 +99,7 @@ def inspect(html, plan_path, output, screenshot=None, video=None, duration=None,
             hide = page.add_style_tag(content='#guide,#guide-dot,#attention-dot,[data-lw-guide]{visibility:hidden!important}')
             def render(t): page.evaluate('t=>{window.renderAt(t);window.gsap?.ticker?.sleep?.();}', t)
             def capture(binding):
-                box = page.locator(binding['target']).bounding_box()
+                box = page.locator(':is('+binding['target']+'):not([data-lw-photo-color])').bounding_box()
                 if not box or min(box['width'], box['height']) <= 0: raise ValueError('Photograph is hidden or has no bounds.')
                 crop = (max(0, math.floor(box['x'])), max(0, math.floor(box['y'])), min(1920, math.ceil(box['x'] + box['width'])), min(1080, math.ceil(box['y'] + box['height'])))
                 if crop[2] <= crop[0] or crop[3] <= crop[1]: raise ValueError('Photograph is outside the frame.')
@@ -116,7 +116,7 @@ def inspect(html, plan_path, output, screenshot=None, video=None, duration=None,
                     # Independent reference captures use the actual paired layers, not reported state.
                     def opacity(value): page.evaluate('([id,v])=>{[...document.querySelectorAll("[data-lw-photo-color]")].find(e=>e.dataset.lwPhotoColor===id).style.opacity=String(v)}', [b['id'], value])
                     opacity(0); neutral, reference_box = capture(b)
-                    source_opacity = page.locator(b['target']).evaluate('e=>Number(getComputedStyle(e).opacity)')
+                    source_opacity = page.locator(':is('+b['target']+'):not([data-lw-photo-color])').evaluate('e=>Number(getComputedStyle(e).opacity)')
                     opacity(source_opacity); original, _ = capture(b)
                     render(middle); active, box = capture(b)
                     render(w['end']); exited, exit_box = capture(b)

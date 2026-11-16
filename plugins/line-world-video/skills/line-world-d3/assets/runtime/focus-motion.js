@@ -30,7 +30,7 @@
       const source = matches[0], overlay = document.createElementNS(NS, source.tagName);
       if ((w.mode || 'trace') === 'trace' && source.tagName.toLowerCase() === 'path' && (source.getAttribute('d')?.match(/[Mm]/g) || []).length > 1) throw Error('Trace one continuous SVG path; bind separate edges or use pulse for multiple subpaths.');
       overlay.setAttribute('data-lw-motion-overlay', w.id); overlay.setAttribute('aria-hidden', 'true');
-      overlay.style.pointerEvents = 'none'; overlay.style.fill = 'none'; overlay.style.stroke = PRIMARY;
+      overlay.style.pointerEvents = 'none'; overlay.style.setProperty('fill','none','important'); overlay.style.setProperty('stroke',PRIMARY,'important');
       overlay.style.strokeWidth = '3'; overlay.style.strokeLinecap = 'round'; overlay.style.vectorEffect = 'non-scaling-stroke';
       source.parentNode.appendChild(overlay);
       return {window: w, source, overlay};
@@ -49,7 +49,13 @@
         const key = JSON.stringify(geometry), previous = lengths.get(source);
         if (previous?.key !== key) lengths.set(source, {key, length: source.getTotalLength()});
         const length = lengths.get(source).length, paint = getComputedStyle(source);
-        overlay.style.strokeWidth = String(Math.min(6, Math.max(3, (parseFloat(paint.strokeWidth) || 1) + 2)));
+        const sourceWidth=parseFloat(paint.strokeWidth)||1;
+        const red=paint.stroke==='rgb(158, 27, 50)'||paint.stroke.toLowerCase()===PRIMARY;
+        // A thin red trace disappears inside a thicker red quantitative mark.
+        // Keep that mark's endpoints/width fixed and use an inset white glint.
+        const inset=red&&sourceWidth>=6&&s.mode==='trace';
+        overlay.style.setProperty('stroke',inset?'#ffffff':PRIMARY,'important');
+        overlay.style.setProperty('stroke-width',String(inset?Math.max(2,Math.min(6,sourceWidth-2)):Math.min(6,Math.max(3,sourceWidth+2))),'important');
         overlay.style.clipPath = paint.clipPath;
         overlay.style.display = s.active && length > 0 && paint.display !== 'none' && paint.visibility !== 'hidden' && +paint.opacity > 0 ? '' : 'none';
         overlay.style.opacity = String(s.opacity * (s.mode === 'pulse' ? .45 + .4 * (.5 - .5 * Math.cos(s.phase * Math.PI * 2)) : .9));
