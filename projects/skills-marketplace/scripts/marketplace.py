@@ -157,7 +157,9 @@ def publish(build_root, checkout, remote, branch, token_env=None):
     if token_env:
         token = env.get(token_env)
         if not token: raise ValueError('The named CI token variable is not set.')
-        env.update(GIT_CONFIG_COUNT='1', GIT_CONFIG_KEY_0='http.https://github.com/.extraheader', GIT_CONFIG_VALUE_0='AUTHORIZATION: basic ' + base64.b64encode(('x-access-token:' + token).encode()).decode())
+        # extraheader is multi-valued. Clear an inherited checkout credential
+        # before adding one header; duplicate Authorization headers fail remotely.
+        env.update(GIT_CONFIG_COUNT='2', GIT_CONFIG_KEY_0='http.https://github.com/.extraheader', GIT_CONFIG_VALUE_0='', GIT_CONFIG_KEY_1='http.https://github.com/.extraheader', GIT_CONFIG_VALUE_1='AUTHORIZATION: basic ' + base64.b64encode(('x-access-token:' + token).encode()).decode())
     def run(*args, check=True): return subprocess.run(['git', *args], cwd=checkout, env=env, check=check, capture_output=True, text=True, encoding='utf-8')
     if not checkout.exists():
         found = subprocess.run(['git', 'ls-remote', '--exit-code', '--heads', remote, branch], env=env, capture_output=True, text=True)
@@ -165,7 +167,11 @@ def publish(build_root, checkout, remote, branch, token_env=None):
         if found.returncode == 0: subprocess.run(['git', 'clone', '--quiet', '--single-branch', '--branch', branch, remote, str(checkout)], env=env, check=True, capture_output=True)
         elif found.returncode == 2:
             checkout.mkdir(); run('init', '--quiet'); run('symbolic-ref', 'HEAD', 'refs/heads/' + branch); run('remote', 'add', 'origin', remote)
-        else: raise ValueError('Cannot inspect the distribution remote.')
+        else:
+            detail = found.stderr.strip()
+            if token_env:
+                for secret in [token, base64.b64encode(('x-access-token:' + token).encode()).decode()]: detail = detail.replace(secret, '[redacted]')
+            raise ValueError('Cannot inspect the distribution remote (exit ' + str(found.returncode) + '): ' + detail[-500:])
     if run('status', '--porcelain').stdout.strip(): raise ValueError('Use a clean distribution checkout; preserve existing changes.')
     if run('remote', 'get-url', 'origin').stdout.strip() != remote or run('symbolic-ref', '--short', 'HEAD').stdout.strip() != branch: raise ValueError('Wrong distribution remote or branch.')
     old_path = checkout / 'distribution-manifest.json'; old = read(old_path) if old_path.exists() else {'files': [], 'plugins': []}
