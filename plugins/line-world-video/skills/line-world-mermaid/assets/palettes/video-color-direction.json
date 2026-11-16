@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "mode": "qualitative-composition",
+  "hierarchy": [
+    {"role": "white", "purpose": "Predominant light composition, breathing room and ordinary surfaces."},
+    {"role": "grayscale", "purpose": "Structure, context, readable information and secondary comparisons."},
+    {"role": "primary-red", "color": "#9e1b32", "purpose": "Selective attention, active relations and the guiding dot."}
+  ],
+  "review": "Judge the whole composition, visual weight, geometry, negative space and contrast. Do not impose pixel quotas or a fixed background split.",
+  "surfaces": {"item": "Small individual objects use solid gray or primary-red fill, with no border and readable internal text.", "group": "Containers use white interiors and discreet outlines to avoid large colored background regions."},
+  "additionalColors": {
+    "palette": "colorset2",
+    "when": "Exceptionally, when multiple entities, categories or independent data lines need additional distinct colors.",
+    "identity": "Keep the entity-to-color mapping stable across views. Preserve real photo and logo identity."
+  }
+}

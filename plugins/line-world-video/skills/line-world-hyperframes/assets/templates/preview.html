@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Interactive explanation preview</title>
+<style>
+  * {box-sizing: border-box} body {margin: 0; background: #f7f7f7; color: #333e48; font: 16px system-ui}
+  main {max-width: 1280px; margin: 24px auto; padding: 0 20px}
+  iframe {border: 0; width: 100%; aspect-ratio: __WIDTH__ / __HEIGHT__; display: block}
+  form {display: flex; flex-wrap: wrap; gap: 20px; align-items: center; margin-top: 20px}
+  label {display: inline-flex; align-items: center; gap: 10px} input {max-width: 240px}
+  button {padding: 8px 14px; cursor: pointer} p {max-width: 76ch; line-height: 1.5}
+</style>
+<main><iframe id="film" src="index.html" title="Synchronized explanatory stage"></iframe>
+<form onsubmit="return false"><button id="play" type="button">Play</button>
+  <label>Time <input id="time" type="range" min="0" max="__DURATION__" step="0.01" value="0"><output id="second">0.00 s</output></label>
+  <button id="reset" type="button">Restore scripted inputs</button><span id="parameters"></span>
+</form><p id="claim"></p><p id="evidence"></p></main>
+<script>
+  const frame = document.getElementById('film'), time = document.getElementById('time');
+  let api, playing = false, last;
+  function show(t) {time.value = t; document.getElementById('second').value = Number(t).toFixed(2) + ' s'; api.seek(Number(t));}
+  frame.addEventListener('load', () => {
+    api = frame.contentWindow.explainer;
+    document.getElementById('claim').textContent = api.brief.claim;
+    document.getElementById('evidence').textContent = api.brief.evidence;
+    for (const [name, source] of Object.entries(api.brief.sources)) {
+      const label = document.createElement('label'); label.append(name + (source.unit ? ' · ' + source.unit : '') + ' ');
+      const input = document.createElement('input'); input.type = 'range'; input.min = source.domain[0]; input.max = source.domain[1];
+      input.step = (source.domain[1] - source.domain[0]) / 200; input.value = source.value;
+      input.dataset.source = name;
+      input.addEventListener('input', () => api.setInputs({[name]: Number(input.value)}));
+      label.append(input); document.getElementById('parameters').append(label);
+    }
+  });
+  time.addEventListener('input', () => {playing = false; document.getElementById('play').textContent = 'Play'; show(time.value);});
+  document.getElementById('reset').addEventListener('click', () => {
+    api.clearInputs(); for (const input of document.querySelectorAll('[data-source]')) input.value = api.stateAt(Number(time.value))[input.dataset.source];
+  });
+  document.getElementById('play').addEventListener('click', () => {
+    playing = !playing; last = performance.now(); if (playing && Number(time.value) >= api.brief.output.duration) show(0);
+    document.getElementById('play').textContent = playing ? 'Pause' : 'Play';
+  });
+  function tick(now) {
+    if (playing && api) {const t = Math.min(api.brief.output.duration, Number(time.value) + (now - last) / 1000); show(t);
+      if (t === api.brief.output.duration) {playing = false; document.getElementById('play').textContent = 'Play';}}
+    last = now; requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+</script></html>

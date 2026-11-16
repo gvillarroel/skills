@@ -1,0 +1,18 @@
+{
+  "name": "skills-marketplace",
+  "owner": {
+    "name": "Gerardo Villarroel"
+  },
+  "plugins": [
+    {
+      "name": "line-world-video",
+      "source": "./plugins/line-world-video",
+      "description": "Guided explanatory videos, original paper and website tours, D3, Mermaid, icons and Google Vids workflows."
+    },
+    {
+      "name": "hyperframes",
+      "source": "./plugins/hyperframes",
+      "description": "HTML video compositions with HyperFrames and the bundled colorset1 and colorset2 adaptations."
+    }
+  ]
+}

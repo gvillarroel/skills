@@ -1,0 +1,54 @@
+---
+# mermaid: config begin
+config:
+  theme: "base"
+  themeVariables:
+    background: "#ffffff"
+    primaryColor: "#9e1b32"
+    primaryTextColor: "#ffffff"
+    primaryBorderColor: "#9e1b32"
+    secondaryColor: "#000000"
+    secondaryTextColor: "#ffffff"
+    secondaryBorderColor: "#000000"
+    tertiaryColor: "#828282"
+    tertiaryTextColor: "#000000"
+    tertiaryBorderColor: "#828282"
+    lineColor: "#696969"
+    textColor: "#333e48"
+    mainBkg: "#9e1b32"
+    nodeBkg: "#9e1b32"
+    nodeBorder: "#9e1b32"
+    clusterBkg: "#e7e7e7"
+    clusterBorder: "#9c9c9c"
+    defaultLinkColor: "#696969"
+    edgeLabelBackground: "#ffffff"
+    labelColor: "#ffffff"
+    titleColor: "#333e48"
+    xyChart:
+      backgroundColor: "#ffffff"
+      titleColor: "#333e48"
+      xAxisLabelColor: "#333e48"
+      xAxisTitleColor: "#333e48"
+      xAxisTickColor: "#696969"
+      xAxisLineColor: "#696969"
+      yAxisLabelColor: "#333e48"
+      yAxisTitleColor: "#333e48"
+      yAxisTickColor: "#696969"
+      yAxisLineColor: "#696969"
+      plotColorPalette: "#9e1b32, #4f4f4f, #828282, #333e48, #696969"
+  themeCSS: ".node > rect, .node > circle, .node > ellipse, .node > polygon, .node > path, rect.actor, .note, .task, .task0, .task1, .task2, .task3 { stroke-width: 0 !important; }"
+# mermaid: config end
+# mermaid: metadata begin
+mermaid:
+  colorset: "colorset1"
+  mode: "standard"
+  palette: "basic-red-neutral-style"
+# mermaid: metadata end
+---
+xychart-beta
+accTitle: Illustrative xy relationships
+accDescr: Synthetic records for Intake, Review, Build and Release. Values are illustrative and make no measured performance claim.
+x-axis [Intake, Review, Build, Release]
+y-axis "days" 0 --> 24
+line [18,14,24,10]
+bar [12,8,16,6]

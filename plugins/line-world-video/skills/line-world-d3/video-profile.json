@@ -1,0 +1,32 @@
+{
+  "name": "line-world-d3",
+  "sourceSkill": "d3",
+  "sourceInstructionSha256": "97c91ded1a13617c5a3afe7fc8371108fc65a4ba36c34158faa113dedde7eef8",
+  "profileSha256": "f37f28254194a0f660c41aa596e966d88341ce76bed2c8f440645d27fde28e76",
+  "sharedContractSha256": "27fb4fd3fad2212639d240642995cc6ea67fc0e9e2ac85327a809e4b56e3e381",
+  "attentionRuntimeSha256": "f9811cc2ff3c32b03cedb8cf6b73662c9d25be88f99d23e1aa1808856bc57451",
+  "focusRuntimeSha256": "d21fb40c114547121d2135c06f0faf9f6d66f005e17c2b3fe060d2c3f9f47b32",
+  "paletteSha256": "b557cb508d9b31534506b9ae22ad3073e8951b49f6ab4e2251f6727ac92a405c",
+  "videoPaletteSha256": "782fb98b6f823c0c8e50d1d1f21f26c5a6de10b3a6b694b7c695d33add5d5ab7",
+  "adaptedPaletteReaders": [
+    "scripts/build_treemap.py",
+    "scripts/build_logo_studio.py",
+    "scripts/check_palette_contract.py",
+    "scripts/build_contract_artifact.py",
+    "scripts/colorset_adapter.py",
+    "scripts/build_dense_task_overlap.py",
+    "scripts/dither_d3_output.py",
+    "scripts/create_d3_svg_starter.py",
+    "scripts/build_speculative_decoding.py",
+    "scripts/build_category_grid.py",
+    "scripts/build_kinetic_type.py"
+  ],
+  "patches": [
+    "Use primary red first, light/medium gray second and black last in the video palette.",
+    "Route 11 copied runtime palette readers to the video style while preserving the canonical base contract.",
+    "Share semantic CSS tokens and the theme runtime for project-owned style changes.",
+    "Bind audio word cues to measured adjacent ports and audit label/stroke clearance.",
+    "Share primary-red size choreography and semantic quantity-point motion.",
+    "Add the bounded video table/comparison builder and browser exporter."
+  ]
+}

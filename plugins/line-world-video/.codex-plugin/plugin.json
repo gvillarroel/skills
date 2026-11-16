@@ -1,0 +1,10 @@
+{
+  "name": "line-world-video",
+  "version": "0.25.1",
+  "description": "Create clean explanatory videos with sourced object photographs, restrained image treatments, original-paper tours, D3/Mermaid diagrams, semantic focus and editable timing. Includes whole-film review and a Google Vids narration and delivery adapter.",
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Line World Video",
+    "shortDescription": "Guided explanatory videos, original paper and website tours, D3, Mermaid, icons and Google Vids workflows."
+  }
+}

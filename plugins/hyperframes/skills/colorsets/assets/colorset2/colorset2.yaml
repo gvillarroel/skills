@@ -1,0 +1,260 @@
+metadata:
+  name: "full-color-style"
+  description: "Style using the full color palette. All color values are explicit and do not reference other tokens."
+
+typography:
+  primary:
+    value: "'Open Sans', Arial, sans-serif"
+    use: "Primary font for text and interface components."
+
+iconography:
+  primary:
+    value: "'Material Symbols Rounded'"
+    use: "Font used for system icons."
+
+colors:
+  brand:
+    primary:
+      value: "#9e1b32"
+      use: "Brand identity, headers, navigation, and prominent elements."
+    neutral:
+      value: "#333e48"
+      use: "Primary text, dark backgrounds, and institutional elements."
+
+  primary:
+    red:
+      value: "#9e1b32"
+      use: "Primary actions, prominent elements, and visual emphasis."
+    orange:
+      value: "#e77204"
+      use: "Categories, charts, and highlighted secondary elements."
+    yellow:
+      value: "#f1c319"
+      use: "Attention indicators, categories, and informational elements."
+    green:
+      value: "#45842a"
+      use: "Positive actions, categories, and charts."
+    blue:
+      value: "#007298"
+      use: "Links, informational actions, and interactive elements."
+    purple:
+      value: "#652f6c"
+      use: "Categories, charts, and special visual elements."
+    black:
+      value: "#000000"
+      use: "Text or elements requiring maximum contrast."
+    white:
+      value: "#ffffff"
+      use: "Light backgrounds and content displayed on dark surfaces."
+    gray:
+      value: "#333e48"
+      use: "Primary text, neutral surfaces, and dark interface areas."
+
+  gray:
+    "100":
+      value: "#e7e7e7"
+      use: "Subtle backgrounds and low-emphasis separators."
+    "200":
+      value: "#cfcfcf"
+      use: "Disabled states, light borders, and focus indicators."
+    "300":
+      value: "#b5b5b5"
+      use: "Low-priority neutral elements."
+    "400":
+      value: "#9c9c9c"
+      use: "Standard borders and dividers."
+    "500":
+      value: "#828282"
+      use: "Secondary text and neutral elements."
+    "600":
+      value: "#696969"
+      use: "Dark borders and higher-contrast secondary text."
+    "700":
+      value: "#4f4f4f"
+      use: "High-priority text and dark surfaces."
+    "800":
+      value: "#363636"
+      use: "Dark backgrounds and high-contrast text."
+    "900":
+      value: "#1c1c1c"
+      use: "Very dark surfaces and maximum neutral emphasis."
+
+  interaction:
+    red:
+      value: "#6d1222"
+      use: "Hover, active, or pressed state for red elements."
+    orange:
+      value: "#994a00"
+      use: "Hover, active, or pressed state for orange elements."
+    yellow:
+      value: "#98700c"
+      use: "Hover, active, or pressed state for yellow elements."
+    green:
+      value: "#294d19"
+      use: "Hover, active, or pressed state for green elements."
+    blue:
+      value: "#004d66"
+      use: "Hover, active, or pressed state for blue elements."
+    purple:
+      value: "#431f47"
+      use: "Hover, active, or pressed state for purple elements."
+
+  highlight:
+    red:
+      value: "#ffccd5"
+      use: "Subtle background for errors, critical alerts, or highlighted content."
+    orange:
+      value: "#ffe5cc"
+      use: "Subtle background for warnings."
+    yellow:
+      value: "#fff4cc"
+      use: "Subtle background for caution or pending states."
+    green:
+      value: "#dbffcc"
+      use: "Subtle background for success messages."
+    blue:
+      value: "#cdf3ff"
+      use: "Subtle background for information and contextual help."
+    purple:
+      value: "#f9ccff"
+      use: "Subtle background for special or custom states."
+
+  status:
+    error:
+      value: "#e8002a"
+      use: "Errors, destructive actions, and critical alerts."
+    warning:
+      value: "#ff9633"
+      use: "Warnings and situations requiring attention."
+    caution:
+      value: "#ffd332"
+      use: "Caution messages, pending processes, and notices."
+    success:
+      value: "#36b300"
+      use: "Successful operations, completed states, and confirmations."
+    information:
+      value: "#00ace6"
+      use: "Informational messages and active processes."
+    special:
+      value: "#9e00b3"
+      use: "Custom, special, or secondary states."
+
+interface:
+  text:
+    primary:
+      value: "#333e48"
+      use: "Primary text color."
+    secondary:
+      value: "#696969"
+      use: "Secondary text, captions, helper text, and metadata."
+    inverse:
+      value: "#ffffff"
+      use: "Text displayed on dark or saturated backgrounds."
+
+  action:
+    primary:
+      value: "#9e1b32"
+      use: "Primary buttons and main calls to action."
+    primary_hover:
+      value: "#6d1222"
+      use: "Hover, active, or pressed state for primary actions."
+    secondary:
+      value: "#007298"
+      use: "Secondary actions and informational interactions."
+    secondary_hover:
+      value: "#004d66"
+      use: "Hover, active, or pressed state for secondary actions."
+    positive:
+      value: "#45842a"
+      use: "Positive or confirmatory actions."
+    destructive:
+      value: "#e8002a"
+      use: "Destructive actions and critical decisions."
+
+  link:
+    default:
+      value: "#007298"
+      use: "Default color for links."
+    hover:
+      value: "#004d66"
+      use: "Color for links when hovered or active."
+
+  feedback:
+    error:
+      text:
+        value: "#e8002a"
+        use: "Text color for errors and critical alerts."
+      background:
+        value: "#ffccd5"
+        use: "Background for error messages and critical alert panels."
+    warning:
+      text:
+        value: "#ff9633"
+        use: "Text color for warnings and attention states."
+      background:
+        value: "#ffe5cc"
+        use: "Background for warning messages and attention panels."
+    caution:
+      text:
+        value: "#ffd332"
+        use: "Text color for caution, pending, or notice states."
+      background:
+        value: "#fff4cc"
+        use: "Background for caution messages and pending-state panels."
+    success:
+      text:
+        value: "#36b300"
+        use: "Text color for success messages and confirmations."
+      background:
+        value: "#dbffcc"
+        use: "Background for success messages and confirmation panels."
+    information:
+      text:
+        value: "#00ace6"
+        use: "Text color for informational messages and active processes."
+      background:
+        value: "#cdf3ff"
+        use: "Background for information messages and contextual help."
+    special:
+      text:
+        value: "#9e00b3"
+        use: "Text color for special, custom, or secondary states."
+      background:
+        value: "#f9ccff"
+        use: "Background for special or custom-state panels."
+
+  background:
+    page:
+      value: "#f7f7f7"
+      use: "General page background."
+    surface:
+      value: "#ffffff"
+      use: "Cards, panels, modals, and content containers."
+    footer:
+      value: "#333e48"
+      use: "Footer and dark neutral sections."
+    overlay:
+      value: "#000000"
+      use: "Modal overlays and high-contrast scrims."
+
+  state:
+    disabled:
+      value: "#cfcfcf"
+      use: "Disabled controls, disabled text, and inactive interface elements."
+    focus:
+      value: "#cfcfcf"
+      use: "Visible focus indicator for keyboard navigation."
+    selected:
+      value: "#cdf3ff"
+      use: "Selected rows, selected list items, and subtle active backgrounds."
+
+  border:
+    default:
+      value: "#9c9c9c"
+      use: "Standard component borders."
+    light:
+      value: "#cfcfcf"
+      use: "Subtle separators and low-emphasis containers."
+    dark:
+      value: "#696969"
+      use: "Prominent borders and high-contrast separators."

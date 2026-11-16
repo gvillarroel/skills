@@ -1,0 +1,159 @@
+metadata:
+  name: "basic-red-neutral-style"
+  description: "Style using only red, black, white, and gray tones. All color values are explicit and do not reference other tokens."
+
+typography:
+  primary:
+    value: "'Open Sans', Arial, sans-serif"
+    use: "Primary font for text and interface components."
+
+iconography:
+  primary:
+    value: "'Material Symbols Rounded'"
+    use: "Font used for system icons."
+
+colors:
+  brand:
+    primary:
+      value: "#9e1b32"
+      use: "Brand identity, main actions, headers, navigation, and prominent accents."
+    neutral:
+      value: "#333e48"
+      use: "Primary text, dark backgrounds, footer areas, and institutional elements."
+
+  red:
+    base:
+      value: "#9e1b32"
+      use: "Primary action color, emphasis, and brand-level highlights."
+    dark:
+      value: "#6d1222"
+      use: "Hover, active, pressed, or high-emphasis state for red elements."
+    light:
+      value: "#ffccd5"
+      use: "Subtle background for errors, critical alerts, selected content, or highlighted areas."
+    status:
+      value: "#e8002a"
+      use: "Errors, destructive actions, validation failures, and critical alerts."
+
+  neutral:
+    black:
+      value: "#000000"
+      use: "Maximum contrast text and high-emphasis elements."
+    white:
+      value: "#ffffff"
+      use: "Light surfaces, text on dark backgrounds, and content containers."
+    gray:
+      value: "#333e48"
+      use: "Default text color and neutral brand surfaces."
+
+  gray:
+    "100":
+      value: "#e7e7e7"
+      use: "Subtle backgrounds, low-emphasis containers, and soft separators."
+    "200":
+      value: "#cfcfcf"
+      use: "Disabled states, light borders, muted controls, and focus indicators."
+    "300":
+      value: "#b5b5b5"
+      use: "Low-priority neutral elements and subdued interface details."
+    "400":
+      value: "#9c9c9c"
+      use: "Standard borders, dividers, and neutral component outlines."
+    "500":
+      value: "#828282"
+      use: "Secondary text and medium-emphasis neutral elements."
+    "600":
+      value: "#696969"
+      use: "Dark borders, stronger dividers, and higher-contrast secondary text."
+    "700":
+      value: "#4f4f4f"
+      use: "High-priority neutral text and dark interface surfaces."
+    "800":
+      value: "#363636"
+      use: "Dark backgrounds and high-contrast neutral blocks."
+    "900":
+      value: "#1c1c1c"
+      use: "Very dark surfaces and maximum neutral emphasis."
+
+interface:
+  text:
+    primary:
+      value: "#333e48"
+      use: "Primary text color."
+    secondary:
+      value: "#696969"
+      use: "Secondary text, captions, helper text, and metadata."
+    inverse:
+      value: "#ffffff"
+      use: "Text displayed on dark or red backgrounds."
+
+  action:
+    primary:
+      value: "#9e1b32"
+      use: "Primary buttons, selected states, and main calls to action."
+    primary_hover:
+      value: "#6d1222"
+      use: "Hover, active, or pressed state for primary actions."
+    destructive:
+      value: "#e8002a"
+      use: "Destructive actions and critical decisions."
+
+  link:
+    default:
+      value: "#9e1b32"
+      use: "Default color for links."
+    hover:
+      value: "#6d1222"
+      use: "Color for links when hovered or active."
+
+  feedback:
+    critical:
+      text:
+        value: "#e8002a"
+        use: "Text color for errors and critical alerts."
+      background:
+        value: "#ffccd5"
+        use: "Background for error messages and critical alert panels."
+    neutral:
+      text:
+        value: "#333e48"
+        use: "Text color for neutral system messages."
+      background:
+        value: "#e7e7e7"
+        use: "Background for neutral messages, empty states, and subtle notices."
+
+  background:
+    page:
+      value: "#f7f7f7"
+      use: "General page background."
+    surface:
+      value: "#ffffff"
+      use: "Cards, panels, modals, and content containers."
+    footer:
+      value: "#333e48"
+      use: "Footer and dark neutral sections."
+    overlay:
+      value: "#000000"
+      use: "Modal overlays and high-contrast scrims."
+
+  state:
+    disabled:
+      value: "#cfcfcf"
+      use: "Disabled controls, disabled text, and inactive interface elements."
+    focus:
+      value: "#cfcfcf"
+      use: "Visible focus indicator for keyboard navigation."
+    selected:
+      value: "#ffccd5"
+      use: "Selected rows, selected list items, and subtle active backgrounds."
+
+  border:
+    default:
+      value: "#9c9c9c"
+      use: "Standard component borders."
+    light:
+      value: "#cfcfcf"
+      use: "Subtle separators and low-emphasis containers."
+    dark:
+      value: "#696969"
+      use: "Prominent borders and high-contrast separators."

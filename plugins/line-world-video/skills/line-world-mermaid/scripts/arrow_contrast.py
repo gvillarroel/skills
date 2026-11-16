@@ -1,0 +1,364 @@
+#!/usr/bin/env -S uv run --script
+# /// script
+# requires-python = ">=3.11"
+# dependencies = []
+# ///
+"""Finish newly generated native SVG connectors; supplied artwork is unchanged."""
+from __future__ import annotations
+import copy
+import math
+import re
+import textwrap
+import xml.etree.ElementTree as ET
+from palette_paints import COLORSETS, canonical, relative_luminance, rgb
+
+NUMBER = r'[-+]?(?:\d*\.\d+|\d+\.?\d*)(?:[eE][-+]?\d+)?'
+
+
+def property_value(node, key, fallback=''):
+    matches = re.findall(r'(?:^|;)\s*'+re.escape(key)+r'\s*:\s*([^;!]+)', node.get('style', ''))
+    return matches[-1].strip() if matches else node.get(key, fallback)
+
+
+def set_style(node, **values):
+    old = [d for d in node.get('style', '').split(';') if ':' in d and d.split(':', 1)[0].strip() not in values]
+    node.set('style', ';'.join(old+[f'{k}:{v} !important' for k, v in values.items()])+';')
+
+
+def native_css_property(root, node, key, fallback):
+    """Resolve native class paint before choosing a nearby contrast-safe tone."""
+    own = property_value(node, key)
+    if own and node.get('data-arrow-id') is None and re.search(r'(?:^|;)\s*'+re.escape(key)+r'\s*:', node.get('style', '')): return own
+    value = own or fallback
+    for sheet in root.iter():
+        if sheet.tag.rsplit('}', 1)[-1] != 'style': continue
+        for selectors, declarations in re.findall(r'([^{}]+)\{([^}]+)\}', sheet.text or ''):
+            matches = any(re.search(r'\.'+re.escape(c)+r'(?![\w-])', selectors) for c in node.get('class', '').split())
+            if matches:
+                found = re.search(r'(?:^|;)\s*'+re.escape(key)+r'\s*:\s*([^;!]+)', declarations)
+                if found: value = found.group(1).strip()
+    return value
+
+
+def contrast(left, right):
+    a, b = relative_luminance(left), relative_luminance(right)
+    return (max(a, b)+.05)/(min(a, b)+.05)
+
+
+def safe_paint(preferred, backgrounds, colorset):
+    """Keep a valid authored hue; otherwise choose the nearest allowed 3:1 paint."""
+    preferred = canonical(preferred)
+    choices = [c for c in COLORSETS[colorset]['allowed'] if all(contrast(c, b) >= 3 for b in backgrounds)]
+    if not choices:
+        raise ValueError('Connector crosses incompatible painted surfaces; reroute it through a clear gutter.')
+    origin = rgb(preferred)
+    return min(choices, key=lambda c: sum((a-b)**2 for a, b in zip(rgb(c), origin)))
+
+
+def path_points(node, steps=40):
+    """Sample native straight/quadratic/cubic connector geometry, in SVG coordinates."""
+    tag = node.tag.rsplit('}', 1)[-1]
+    if tag == 'line':
+        start = (float(node.get('x1', 0)), float(node.get('y1', 0)))
+        end = (float(node.get('x2', 0)), float(node.get('y2', 0)))
+        return [(start[0]+(end[0]-start[0])*i/steps, start[1]+(end[1]-start[1])*i/steps) for i in range(steps+1)]
+    if tag in {'polygon', 'polyline'}:
+        values = list(map(float, re.findall(NUMBER, node.get('points', ''))))
+        return list(zip(values[::2], values[1::2]))
+    tokens = re.findall(r'[a-zA-Z]|'+NUMBER, node.get('d', ''))
+    points, current, first, previous, command = [], (0., 0.), (0., 0.), None, None
+    index = 0
+    counts = {'M': 2, 'L': 2, 'H': 1, 'V': 1, 'C': 6, 'Q': 4, 'S': 4, 'T': 2, 'A': 7}
+    while index < len(tokens):
+        if tokens[index].isalpha():
+            command = tokens[index]; index += 1
+            if command.upper() == 'Z':
+                current = first; points.append(first); continue
+        kind = command.upper() if command else ''
+        if kind not in counts or index+counts[kind] > len(tokens):
+            break
+        values = list(map(float, tokens[index:index+counts[kind]])); index += counts[kind]
+        relative = command.islower()
+        def xy(a, b): return (a+current[0], b+current[1]) if relative else (a, b)
+        end = xy(*values[-2:]) if kind not in {'H', 'V'} else (values[0]+(current[0] if relative else 0), current[1]) if kind == 'H' else (current[0], values[0]+(current[1] if relative else 0))
+        if kind == 'M':
+            current = first = end; points.append(end); command = 'l' if relative else 'L'; continue
+        controls = [xy(*values[i:i+2]) for i in range(0, len(values)-2, 2)] if kind in {'C', 'Q'} else []
+        if kind in {'S', 'T'}:
+            reflected = (2*current[0]-previous[0], 2*current[1]-previous[1]) if previous else current
+            controls = [reflected, xy(*values[:2])] if kind == 'S' else [reflected]
+        arc = None
+        if kind == 'A' and values[0] and values[1] and current != end:
+            rx, ry = abs(values[0]), abs(values[1])
+            phi = math.radians(values[2]); co, si = math.cos(phi), math.sin(phi)
+            dx, dy = (current[0]-end[0])/2, (current[1]-end[1])/2
+            xp, yp = co*dx+si*dy, -si*dx+co*dy
+            scale = math.sqrt(max(1,(xp/rx)**2+(yp/ry)**2)); rx *= scale; ry *= scale
+            numerator = max(0,rx*rx*ry*ry-rx*rx*yp*yp-ry*ry*xp*xp)
+            denominator = rx*rx*yp*yp+ry*ry*xp*xp
+            factor = (-1 if bool(values[3]) == bool(values[4]) else 1)*math.sqrt(numerator/denominator) if denominator else 0
+            cxp, cyp = factor*rx*yp/ry, -factor*ry*xp/rx
+            cx, cy = co*cxp-si*cyp+(current[0]+end[0])/2, si*cxp+co*cyp+(current[1]+end[1])/2
+            start_angle = math.atan2((yp-cyp)/ry,(xp-cxp)/rx)
+            end_angle = math.atan2((-yp-cyp)/ry,(-xp-cxp)/rx)
+            sweep = (end_angle-start_angle) % (2*math.pi)
+            if not values[4] and sweep > 0: sweep -= 2*math.pi
+            arc = (rx,ry,co,si,cx,cy,start_angle,sweep)
+        for i in range(1, steps+1):
+            t = i/steps; u = 1-t
+            if arc:
+                rx,ry,co,si,cx,cy,angle,sweep = arc; angle += sweep*t
+                p = (cx+rx*co*math.cos(angle)-ry*si*math.sin(angle),cy+rx*si*math.cos(angle)+ry*co*math.sin(angle))
+            elif len(controls) == 2:
+                p = tuple(u**3*current[j]+3*u*u*t*controls[0][j]+3*u*t*t*controls[1][j]+t**3*end[j] for j in range(2))
+            elif len(controls) == 1:
+                p = tuple(u*u*current[j]+2*u*t*controls[0][j]+t*t*end[j] for j in range(2))
+            else:
+                p = tuple(u*current[j]+t*end[j] for j in range(2))
+            points.append(p)
+        previous = controls[-1] if controls else None
+        current = end
+    return points
+
+
+def rect_bounds(node):
+    tag = node.tag.rsplit('}', 1)[-1]
+    if tag == 'rect':
+        x, y = float(node.get('x', 0)), float(node.get('y', 0))
+        return x, y, x+float(node.get('width', 0)), y+float(node.get('height', 0))
+    if tag in {'circle', 'ellipse'}:
+        x, y = float(node.get('cx', 0)), float(node.get('cy', 0))
+        rx, ry = float(node.get('rx', node.get('r', 0))), float(node.get('ry', node.get('r', 0)))
+        return x-rx, y-ry, x+rx, y+ry
+    pts = path_points(node)
+    return (min(x for x, _ in pts), min(y for _, y in pts), max(x for x, _ in pts), max(y for _, y in pts)) if pts else None
+
+
+def contains(node, point):
+    bounds = rect_bounds(node)
+    if not bounds:
+        return False
+    x, y = point; left, top, right, bottom = bounds
+    if node.tag.rsplit('}', 1)[-1] in {'circle', 'ellipse'}:
+        rx, ry = (right-left)/2, (bottom-top)/2
+        return rx > 0 and ry > 0 and ((x-(left+right)/2)/rx)**2+((y-(top+bottom)/2)/ry)**2 < .999
+    if node.tag.rsplit('}', 1)[-1] in {'polygon','path'}:
+        # Filled polygons use their actual contour, not their rectangular extent.
+        pts = path_points(node)
+        inside = False
+        for a, b in zip(pts, pts[1:]+pts[:1]):
+            if (a[1] > y) != (b[1] > y) and x < (b[0]-a[0])*(y-a[1])/(b[1]-a[1])+a[0]: inside = not inside
+        return inside
+    return left+.1 < x < right-.1 and top+.1 < y < bottom-.1
+
+
+def event_gutter(root):
+    """Approach event cards perpendicularly through the existing inter-row gutter."""
+    bodies = [e for e in root.iter() if e.tag.rsplit('}',1)[-1] == 'rect' and 'stroke:none' in e.get('style','')]
+    for edge in root.iter():
+        if 'em-relation' not in edge.get('class','').split(): continue
+        pts = path_points(edge)
+        if not pts: continue
+        start, end = pts[0], pts[-1]
+        target = next((b for b in bodies if (bounds:=rect_bounds(b)) and bounds[0] <= end[0] <= bounds[2] and abs(end[1]-bounds[1]) < 4), None)
+        if target is None: continue
+        top = rect_bounds(target)[1]
+        middle = (start[1]+top)/2
+        route = [start,(start[0],middle),(end[0],middle),(end[0],top-3)]
+        edge.set('d','M'+' L'.join(f'{x:g},{y:g}' for x,y in route))
+        edge.set('data-arrow-gutter','event-row-clearance')
+
+
+def c4_gutter(root):
+    """Route C4 bypass relations around intervening entities without moving nodes."""
+    bodies = [e for g in root.iter() if 'person-man' in g.get('class', '').split() for e in g if e.tag.rsplit('}', 1)[-1] == 'rect' or e.tag.rsplit('}', 1)[-1] == 'path' and e.get('fill', 'none') != 'none']
+    bodies = [(e, rect_bounds(e)) for e in bodies if rect_bounds(e)]
+    if not bodies: return
+    parents = {c:p for p in root.iter() for c in p}
+    def caption(edge, route):
+        siblings=list(parents.get(edge,root));position=siblings.index(edge)
+        text=siblings[position+1] if position+1 < len(siblings) and siblings[position+1].tag.rsplit('}',1)[-1]=='text' else None
+        if text is None:return
+        content=' '.join(''.join(text.itertext()).split())
+        if not content:return
+        gx=route[1][0];side='left' if gx < route[0][0] else 'right'
+        x=gx-8 if side=='left' else gx+8;y=(route[1][1]+route[2][1])/2
+        lines=textwrap.wrap(content,width=16,break_long_words=False,break_on_hyphens=False)
+        text.set('x',f'{x:g}');text.set('y',f'{y-(len(lines)-1)*7:g}')
+        text.set('data-arrow-caption-for',edge.get('data-arrow-id','c4-native-relation'))
+        set_style(text,fill='#000000',color='#000000',**{'text-anchor':'end' if side=='left' else 'start'})
+        for child in list(text):text.remove(child)
+        for index,line in enumerate(lines):
+            span=ET.SubElement(text,text.tag.replace('text','tspan'),{'x':f'{x:g}','dy':'0' if index==0 else '14'})
+            span.text=line;set_style(span,fill='#000000',color='#000000')
+        box=list(map(float,root.get('viewBox','').split()))
+        if len(box)==4:
+            extent=max(len(line) for line in lines)*12*.7
+            low=x-extent-8 if side=='left' else x-8;high=x+8 if side=='left' else x+extent+8
+            right=max(box[0]+box[2],high);box[0]=min(box[0],low);box[2]=right-box[0]
+            root.set('viewBox',' '.join(f'{v:g}' for v in box))
+    left = min(b[0] for _, b in bodies)-32; right = max(b[2] for _, b in bodies)+32
+    for edge in root.iter():
+        if not edge.get('marker-end'): continue
+        pts = path_points(edge)
+        if not pts: continue
+        def nearest(point):
+            x, y = point
+            return min(bodies, key=lambda item: max(item[1][0]-x, 0, x-item[1][2])**2+max(item[1][1]-y, 0, y-item[1][3])**2)
+        source, target = nearest(pts[0]), nearest(pts[-1])
+        # C4 may put a relation endpoint inside the database/person silhouette.
+        # Clip only those contacts, retaining an ordinary native curve otherwise.
+        clipped = False
+        while len(pts) > 2 and contains(source[0], pts[0]):
+            pts.pop(0); clipped = True
+        while len(pts) > 2 and contains(target[0], pts[-1]):
+            pts.pop(); clipped = True
+        if clipped:
+            edge.tag = edge.tag.rsplit('}', 1)[0]+'}path' if '}' in edge.tag else 'path'
+            for key in ['x1', 'y1', 'x2', 'y2']: edge.attrib.pop(key, None)
+            edge.set('d', 'M'+' L'.join(f'{x:g},{y:g}' for x, y in pts))
+            edge.set('data-arrow-clearance', 'native-body-contact')
+        crossed = [e for e, _ in bodies if e not in {source[0], target[0]} and any(contains(e, p) for p in pts[1:-1])]
+        if not crossed:
+            if edge.get('data-arrow-gutter') == 'true':
+                vertices=list(map(float,re.findall(NUMBER,edge.get('d',''))));route=list(zip(vertices[::2],vertices[1::2]))
+                if len(route)==4:caption(edge,route)
+            continue
+        candidates = []
+        for side, gutter in [('left', left), ('right', right)]:
+            source_x = source[1][0]-3 if side == 'left' else source[1][2]+3
+            target_x = target[1][0]-3 if side == 'left' else target[1][2]+3
+            sy, ty = (source[1][1]+source[1][3])/2, (target[1][1]+target[1][3])/2
+            route = [(source_x, sy), (gutter, sy), (gutter, ty), (target_x, ty)]
+            blocked = 0
+            for a, b in zip(route, route[1:]):
+                for other, _ in bodies:
+                    if other in {source[0], target[0]}: continue
+                    if any(contains(other, (a[0]+(b[0]-a[0])*t/20, a[1]+(b[1]-a[1])*t/20)) for t in range(21)): blocked += 1
+            candidates.append((blocked, route))
+        blocked, route = min(candidates, key=lambda c: c[0])
+        if blocked: raise ValueError('C4 relationship needs a manual clear gutter.')
+        edge.tag = edge.tag.rsplit('}', 1)[0]+'}path' if '}' in edge.tag else 'path'
+        for key in ['x1', 'y1', 'x2', 'y2']: edge.attrib.pop(key, None)
+        edge.set('d', 'M'+' L'.join(f'{x:g},{y:g}' for x, y in route))
+        edge.set('data-arrow-gutter', 'true')
+        caption(edge,route)
+
+
+def marker_copy(root, edge, key, paint, index, parents):
+    ref = re.search(r'#([^\)]+)', edge.get(key, ''))
+    if not ref or 'sequencenumber' in ref.group(1): return
+    marker = next((e for e in root.iter() if e.get('id') == ref.group(1)), None)
+    if marker is None: return
+    if marker.get('data-arrow-owner') == str(index)+key:
+        clone = marker
+    else:
+        clone = copy.deepcopy(marker)
+        clone.set('id', ref.group(1)+'-contrast-'+str(index)+'-'+key)
+        clone.set('data-arrow-owner', str(index)+key)
+        parents[marker].append(clone)
+    bounds = [rect_bounds(e) for e in clone.iter() if e is not clone and rect_bounds(e)]
+    if bounds:
+        vb = list(map(float, clone.get('viewBox', '').split()))
+        scale = min(float(clone.get('markerWidth', 3))/vb[2], float(clone.get('markerHeight', 3))/vb[3]) if len(vb) == 4 else 1
+        units = 1 if clone.get('markerUnits') == 'userSpaceOnUse' else float(property_value(edge, 'stroke-width', '1'))
+        padding = 3/max(.01, scale*units)
+        value = float(clone.get('refX', 0))
+        clone.set('refX', str(max(value, max(b[2] for b in bounds)+padding) if key == 'marker-end' else min(value, min(b[0] for b in bounds)-padding)))
+    for child in clone.iter():
+        tag = child.tag.rsplit('}', 1)[-1]
+        if tag not in {'path', 'polygon', 'polyline', 'line', 'circle', 'rect'}: continue
+        closed = tag in {'polygon', 'circle', 'rect'} or re.search(r'[zZ]', child.get('d', ''))
+        hollow = tag in {'circle', 'rect'} and property_value(child, 'fill', '').lower() in {'white', '#ffffff'}
+        set_style(child, fill='#ffffff' if hollow else paint if closed else 'none', stroke=paint if hollow or not closed else 'none')
+    edge.set(key, 'url(#'+clone.get('id')+')')
+    # Animated SVG keeps marker identity in a CSS custom property so reveal can
+    # hide the head until its shaft arrives. Update that identity, not its timing.
+    animation_key = '--am-'+key
+    if re.search(re.escape(animation_key)+r'\s*:',edge.get('style','')):
+        set_style(edge, **{animation_key:'url(#'+clone.get('id')+')'})
+
+
+def finish_native_arrows(root, colorset, renderer='mermaid'):
+    """Preserve direction; repair resting paints and native marker clearance."""
+    family = root.get('aria-roledescription', '').lower()
+    if family == 'c4': c4_gutter(root)
+    if family == 'eventmodeling': event_gutter(root)
+    if family == 'er':
+        # Native ER captions use XHTML inside foreignObject. Choose binary text
+        # against the actual CSS backing; SVG text-only scans cannot cover it.
+        for group in root.iter():
+            if group.tag.rsplit('}',1)[-1] != 'g' or 'edgeLabel' not in group.get('class','').split():continue
+            backing=next((e for e in group.iter() if 'labelBkg' in e.get('class','').split()),group)
+            raw=native_css_property(root,backing,'background-color','#ffffff')
+            values=re.findall(NUMBER,raw);alpha=float(values[-1]) if raw.startswith(('rgba','hsla')) and len(values)==4 else 1
+            base=rgb(canonical(raw));effective='#'+''.join(f'{round(c*alpha+255*(1-alpha)):02x}' for c in base)
+            ink='#000000' if contrast('#000000',effective)>=contrast('#ffffff',effective) else '#ffffff'
+            for leaf in group.iter():
+                if leaf.tag.rsplit('}',1)[-1] in {'text','tspan','span','p'}:set_style(leaf,fill=ink,color=ink)
+    parents = {c: p for p in root.iter() for c in p}
+    def in_group(node, name):
+        while node in parents:
+            node = parents[node]
+            if name in node.get('class', '').split(): return True
+        return False
+    def in_definition(node):
+        while node in parents:
+            node = parents[node]
+            if node.tag.rsplit('}', 1)[-1] in {'defs', 'marker', 'clipPath'}: return True
+        return False
+    edges = []
+    for node in root.iter():
+        tag = node.tag.rsplit('}', 1)[-1]
+        classes = ' '.join(c for c in node.get('class', '').split() if not c.startswith('am-'))
+        marker = any(node.get(k) for k in ['marker-start', 'marker-end']) and 'sequencenumber' not in ''.join(node.get(k, '') for k in ['marker-start', 'marker-end'])
+        native = renderer == 'plantuml' and in_group(node, 'link')
+        fill = property_value(node, 'fill', 'none')
+        if fill != 'none' and not marker and not native and 'arrow' not in classes.lower(): continue
+        if tag in {'line', 'path', 'polyline', 'polygon'} and not in_definition(node) and (marker or native or re.search(r'arrow|relation|edge|link|message-line|messageLine', classes)):
+            if in_group(node, 'node'): continue
+            edges.append(node)
+    backgrounds = [e for e in root.iter() if e.tag.rsplit('}', 1)[-1] in {'rect', 'circle', 'ellipse','polygon'} and not in_definition(e) and property_value(e, 'fill', 'none') not in {'none', 'transparent'} and e not in edges]
+    order = {e: i for i, e in enumerate(root.iter())}
+    for index, edge in enumerate(edges):
+        points = path_points(edge)
+        if not points: continue
+        if family == 'er':
+            length = sum(math.dist(a,b) for a,b in zip(points,points[1:]))
+            needed = 6
+            for key in ['marker-start','marker-end']:
+                ref = re.search(r'#([^\)]+)',edge.get(key,''))
+                marker = next((e for e in root.iter() if ref and e.get('id') == ref.group(1)),None)
+                if marker is None: continue
+                bounds = [rect_bounds(e) for e in marker if rect_bounds(e)]
+                if bounds:
+                    low,high = min(b[0] for b in bounds),max(b[2] for b in bounds)
+                    existing = float(marker.get('refX',0))
+                    needed += high-min(existing,low-3) if key == 'marker-start' else max(existing,high+3)-low
+            if length < needed:
+                raise ValueError('ER gutter cannot fit both cardinality glyphs. Increase config.er.rankSpacing to at least 80 and rerender; preserve glyph semantics.')
+        paints = ['#ffffff']
+        if family == 'cynefin': paints = [COLORSETS[colorset]['solidSequence'][0], COLORSETS[colorset]['solidSequence'][1]]
+        elif renderer == 'plantuml':
+            paints = []
+            for point in points[1:-1:4]:
+                backing = '#ffffff'
+                for shape in backgrounds:
+                    if order[shape] < order[edge] and contains(shape, point): backing = canonical(property_value(shape, 'fill'))
+                paints.append(backing)
+            paints = list(set(paints)) or ['#ffffff']
+        preferred = native_css_property(root, edge, 'stroke', '#696969')
+        if preferred in {'none', 'inherit', 'currentColor'}: preferred = '#696969'
+        paint = safe_paint(preferred, paints, colorset)
+        filled_head = 'arrow' in edge.get('class', '').lower() and property_value(edge, 'fill', 'none') != 'none' and not any(edge.get(k) for k in ['marker-start','marker-end'])
+        set_style(edge, stroke='none' if filled_head else paint, **{'stroke-opacity': '1'})
+        if filled_head: set_style(edge, fill=paint)
+        if renderer == 'plantuml' and edge.tag.rsplit('}', 1)[-1] == 'polygon': set_style(edge, fill=paint)
+        edge.set('data-arrow-id', edge.get('id', family+'-arrow-'+str(index)))
+        if family == 'c4' and edge in parents:
+            siblings=list(parents[edge]);position=siblings.index(edge)
+            if position+1 < len(siblings) and siblings[position+1].get('data-arrow-caption-for'):
+                siblings[position+1].set('data-arrow-caption-for',edge.get('data-arrow-id'))
+        for key in ['marker-start', 'marker-end']: marker_copy(root, edge, key, paint, index, parents)
+    if edges: root.set('data-arrow-contrast', 'native-resting-3to1')
+    else: root.attrib.pop('data-arrow-contrast',None)

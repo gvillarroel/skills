@@ -1,0 +1,169 @@
+{
+  "producer": "Mermaid CLI 11.16.0 with the dedicated Line World video finish",
+  "videoFinishSha256": "c7e9a0f121f30fb0c72e7bf6fbdca10d5e1ed49a9995e140648c73b9d0f4dab6",
+  "presentation": "Primary red, secondary light/medium grays, black last. White native surfaces and pale Sankey bands preserve quantitative geometry. Prior native metadata and layout repairs remain.",
+  "dataStatus": "synthetic",
+  "families": [
+    {
+      "family": "flowchart",
+      "ok": true,
+      "metadataVerified": true,
+      "metadataMethod": "native source directives",
+      "sourceSha256": "21cd61c118981e647b74c7d5c3b7fe1e0b187d01cd83609687b15a53545905b8",
+      "svgSha256": "36182f00a45aa5362301f3fb103bb31b8bdd2f9b130241f7d5134296c4395f1c"
+    },
+    {
+      "family": "sequence",
+      "ok": true,
+      "metadataVerified": true,
+      "metadataMethod": "native source directives",
+      "sourceSha256": "010f6fc7f9ff34ec8b58e82d27d8376f35a1e2da3ef2bcc9175f901ddadc77ed",
+      "svgSha256": "b5c493d1ded4c52060bfb0aaa5447128f02ae57129a71f780dc82003f99a949e"
+    },
+    {
+      "family": "state",
+      "ok": true,
+      "metadataVerified": true,
+      "metadataMethod": "native source directives",
+      "sourceSha256": "6bae384570a6e5134959b491f06af34b7ff8354a2ec84b938659a97e53448547",
+      "svgSha256": "c770e4576b5ca853e570ed5b6c13b0a6007ca101c77eb5ce8c5e6a9b6a3ed195"
+    },
+    {
+      "family": "mindmap",
+      "ok": true,
+      "metadataVerified": true,
+      "metadataMethod": "invisible SVG metadata repair for native grammar limitation",
+      "sourceSha256": "79e2e887d4b3b7626a2f1498d41f9cc5e5895ae37e92d9debcaf0142df076ef3",
+      "svgSha256": "b2c45c28fe8334cd04986af26b29d0bc1ff32406f789dac55091f7d7483ad156"
+    },
+    {
+      "family": "treemap",
+      "ok": true,
+      "metadataVerified": true,
+      "metadataMethod": "native source directives",
+      "sourceSha256": "d035effd8b5043cfee2ae5b1a50ae125d4051f8dfa670777e514d2c4fe3c6d72",
+      "svgSha256": "82c5768a3b8503a777d31334ec9eca5269f50b46a7cbf14baaf5252ba925d782"
+    },
+    {
+      "family": "sankey",
+      "ok": true,
+      "metadataVerified": true,
+      "metadataMethod": "invisible SVG metadata repair for native grammar limitation",
+      "sourceSha256": "1273302fa7eeb8bcf9741c5a0d5bcd31c3b4e668feaf066f4e4879ebdd156734",
+      "svgSha256": "9f659168013e46c76d065d40223a330f543e3cdb0d999e294ab7583d9f1bbe7d"
+    },
+    {
+      "family": "er",
+      "ok": true,
+      "metadataVerified": true,
+      "metadataMethod": "native source directives",
+      "sourceSha256": "bdf756895e451d9ac7d3636716f623b8767a7b5c723a3cbfd47a11f0572d6985",
+      "svgSha256": "372eb2de9d05037c612ddf26e0c755122a0e5471fac715ade2e682b28611ad7b"
+    },
+    {
+      "family": "class",
+      "ok": true,
+      "metadataVerified": true,
+      "metadataMethod": "native source directives",
+      "sourceSha256": "2cd197948ee80575d6f1fae38c75552f5ff33dc5872fc8fedff47af7e31f4b3b",
+      "svgSha256": "9821c15a56ce0102d07335e05ce20f06dd3967612c41351128787094e00f7880"
+    },
+    {
+      "family": "gantt",
+      "ok": true,
+      "metadataVerified": true,
+      "metadataMethod": "native source directives",
+      "sourceSha256": "4d43000d298f01045ae774d9c3f126db1636c460a66296dc4e05363c2d0e90f3",
+      "svgSha256": "4fae4be4d653da43ffb5d47e5f712661942fa0b9ad6c36be436f5a97cdbfb004"
+    },
+    {
+      "family": "timeline",
+      "ok": true,
+      "metadataVerified": true,
+      "metadataMethod": "invisible SVG metadata repair for native grammar limitation",
+      "sourceSha256": "834e72c61926b95f0a50bc37ff27bff74fb0d4aa5a0fe58db9e0c016622a5e9e",
+      "svgSha256": "b81621e7183804501f4133de3a59ef4453eb29b4c31a0fd1f98ddd1d78659cf2"
+    },
+    {
+      "family": "quadrant",
+      "ok": true,
+      "metadataVerified": true,
+      "metadataMethod": "native source directives",
+      "sourceSha256": "fb850a9613d0589d0ad59e1f2d364f4a32307dc8df7985db7e62f923c2959e16",
+      "svgSha256": "486fad332db4a430d582e7060b22ea2dc4069158d6d83f66731e7c56dd00055f"
+    },
+    {
+      "family": "radar",
+      "ok": true,
+      "metadataVerified": true,
+      "metadataMethod": "native source directives",
+      "sourceSha256": "0e4cd2d3cf53d689e39f3bd7d4a459ab0e12c139e5c5f27cc8d421e4bce17c53",
+      "svgSha256": "3a7c2524ca7616cdf0adba863f00259296c4d9dadf1c2913d58be3fb8d063e75"
+    },
+    {
+      "family": "xy",
+      "ok": true,
+      "metadataVerified": true,
+      "metadataMethod": "native source directives",
+      "sourceSha256": "4ce45b92c917c12f23b8d5cc457e9d35e71d1437c51e5ed23b1fa2b03fd72880",
+      "svgSha256": "d6b7f2ea21dce1790393033d8375f923660e07d8c4bbd9fb63f14539db64dc7e"
+    },
+    {
+      "family": "journey",
+      "ok": true,
+      "metadataVerified": true,
+      "metadataMethod": "native source directives",
+      "sourceSha256": "c0ee5946900eba43670dd33d4cf8e43a00493f90314307289eab345f00b55605",
+      "svgSha256": "1ac66d07a1dbeb77427f12ab43a8e99438a3c4a5f61fbe9c6c7a190c9565d929"
+    },
+    {
+      "family": "kanban",
+      "ok": true,
+      "metadataVerified": true,
+      "metadataMethod": "invisible SVG metadata repair for native grammar limitation",
+      "sourceSha256": "f78564d8f79bd145013224c3dc39124f83e81ecb6f96dbbe3168cf138b7407e6",
+      "svgSha256": "5aeca7f46db52f9b88dfb47988283681fe683af7b9cae1849b704d31fde20dfa"
+    },
+    {
+      "family": "git",
+      "ok": true,
+      "metadataVerified": true,
+      "metadataMethod": "native source directives",
+      "sourceSha256": "dbf4d1387983c06fb7a1185b3b44f3c0ac1495f01a105ec1f7b61ada667d3935",
+      "svgSha256": "e3f52b4ab97f86689b69f47a37bf4b8ef029141650508bf0f0348cbc2470042b"
+    },
+    {
+      "family": "requirement",
+      "ok": true,
+      "metadataVerified": true,
+      "metadataMethod": "native source directives",
+      "sourceSha256": "111ec4e4577a12dbd3d965a5265609ee00b896340b9c8591bced1f2fe5199567",
+      "svgSha256": "4e0adf96338645038e3a80d2a7b9dd448172b62fdf3ab808b180d6270dda936f"
+    },
+    {
+      "family": "block",
+      "ok": true,
+      "metadataVerified": true,
+      "metadataMethod": "invisible SVG metadata repair for native grammar limitation",
+      "sourceSha256": "396013b523b2d3912c3c4dc7cac9054ee2bb7fd2d08ec48a09f8f74564163459",
+      "svgSha256": "cb943728f38f3a3491a6e488bbe7b3ca74d2fb238539079d0c061817c160f382"
+    },
+    {
+      "family": "architecture",
+      "ok": true,
+      "metadataVerified": true,
+      "metadataMethod": "native source directives",
+      "sourceSha256": "f4de0f19b4f77e4003cba08ecfcb0dd796f6fa89b6b9cab2d826e0d57575a9ec",
+      "svgSha256": "3cb60c624ab2b295bab7f755a32140387764a968690d87d300de6778282e700c"
+    },
+    {
+      "family": "pie",
+      "ok": true,
+      "metadataVerified": true,
+      "metadataMethod": "native source directives",
+      "sourceSha256": "4c71a65eabef6bd09f38dd1b9a5d9b74761117caaacc9dc871fa9114dfc5bf36",
+      "svgSha256": "84024fd316c00587767d06bc6655eb6b2cdb0ab1ced48de68ff42a48f61f9517"
+    }
+  ],
+  "ok": true
+}

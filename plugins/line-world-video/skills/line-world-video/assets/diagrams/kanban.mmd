@@ -1,0 +1,82 @@
+---
+# mermaid: config begin
+config:
+  theme: "base"
+  themeVariables:
+    THEME_COLOR_LIMIT: 12
+    background: "#ffffff"
+    primaryColor: "#9e1b32"
+    primaryTextColor: "#ffffff"
+    primaryBorderColor: "#9e1b32"
+    secondaryColor: "#000000"
+    secondaryTextColor: "#ffffff"
+    secondaryBorderColor: "#000000"
+    tertiaryColor: "#828282"
+    tertiaryTextColor: "#000000"
+    tertiaryBorderColor: "#828282"
+    lineColor: "#696969"
+    textColor: "#333e48"
+    mainBkg: "#9e1b32"
+    nodeBkg: "#9e1b32"
+    nodeBorder: "#9e1b32"
+    clusterBkg: "#e7e7e7"
+    clusterBorder: "#9c9c9c"
+    defaultLinkColor: "#696969"
+    edgeLabelBackground: "#ffffff"
+    labelColor: "#ffffff"
+    titleColor: "#333e48"
+    cScale0: "#9e1b32"
+    cScale1: "#000000"
+    cScale2: "#828282"
+    cScale3: "#1c1c1c"
+    cScale4: "#9c9c9c"
+    cScale5: "#363636"
+    cScale6: "#b5b5b5"
+    cScale7: "#333e48"
+    cScale8: "#cfcfcf"
+    cScale9: "#4f4f4f"
+    cScale10: "#e7e7e7"
+    cScale11: "#696969"
+    cScaleLabel0: "#ffffff"
+    cScaleLabel1: "#ffffff"
+    cScaleLabel2: "#000000"
+    cScaleLabel3: "#ffffff"
+    cScaleLabel4: "#000000"
+    cScaleLabel5: "#ffffff"
+    cScaleLabel6: "#000000"
+    cScaleLabel7: "#ffffff"
+    cScaleLabel8: "#000000"
+    cScaleLabel9: "#ffffff"
+    cScaleLabel10: "#000000"
+    cScaleLabel11: "#ffffff"
+    cScaleInv0: "#ffffff"
+    cScaleInv1: "#ffffff"
+    cScaleInv2: "#000000"
+    cScaleInv3: "#ffffff"
+    cScaleInv4: "#000000"
+    cScaleInv5: "#ffffff"
+    cScaleInv6: "#000000"
+    cScaleInv7: "#ffffff"
+    cScaleInv8: "#000000"
+    cScaleInv9: "#ffffff"
+    cScaleInv10: "#000000"
+    cScaleInv11: "#ffffff"
+  themeCSS: ".node > rect, .node > circle, .node > ellipse, .node > polygon, .node > path, rect.actor, .note, .task, .task0, .task1, .task2, .task3 { stroke-width: 0 !important; }"
+# mermaid: config end
+# mermaid: metadata begin
+mermaid:
+  colorset: "colorset1"
+  mode: "standard"
+  palette: "basic-red-neutral-style"
+# mermaid: metadata end
+---
+kanban
+%% accTitle: Illustrative kanban relationships
+%% accDescr: Synthetic records for Intake, Review, Build and Release. Values are illustrative and make no measured performance claim.
+waiting[Waiting]
+  i[Intake]
+active[Active]
+  r[Review]
+  b[Build]
+done[Done]
+  l[Release]

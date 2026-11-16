@@ -1,0 +1,4 @@
+interface:
+  display_name: "Line World Icons"
+  short_description: "Specialized producer for clean synchronized video"
+  default_prompt: "Use $line-world-icons for a clean Line World video asset with full-frame composition, shared focus, one parent clock and no unrequested titles."

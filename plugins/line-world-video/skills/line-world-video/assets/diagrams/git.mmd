@@ -1,0 +1,73 @@
+---
+# mermaid: config begin
+config:
+  theme: "base"
+  themeVariables:
+    background: "#ffffff"
+    primaryColor: "#9e1b32"
+    primaryTextColor: "#ffffff"
+    primaryBorderColor: "#9e1b32"
+    secondaryColor: "#000000"
+    secondaryTextColor: "#ffffff"
+    secondaryBorderColor: "#000000"
+    tertiaryColor: "#828282"
+    tertiaryTextColor: "#000000"
+    tertiaryBorderColor: "#828282"
+    lineColor: "#696969"
+    textColor: "#333e48"
+    mainBkg: "#9e1b32"
+    nodeBkg: "#9e1b32"
+    nodeBorder: "#9e1b32"
+    clusterBkg: "#e7e7e7"
+    clusterBorder: "#9c9c9c"
+    defaultLinkColor: "#696969"
+    edgeLabelBackground: "#ffffff"
+    labelColor: "#ffffff"
+    titleColor: "#333e48"
+    commitLabelColor: "#333e48"
+    commitLabelBackground: "#ffffff"
+    tagLabelColor: "#333e48"
+    tagLabelBackground: "#e7e7e7"
+    git0: "#9e1b32"
+    git1: "#000000"
+    git2: "#828282"
+    git3: "#1c1c1c"
+    git4: "#9c9c9c"
+    git5: "#363636"
+    git6: "#b5b5b5"
+    git7: "#333e48"
+    gitInv0: "#ffffff"
+    gitInv1: "#ffffff"
+    gitInv2: "#000000"
+    gitInv3: "#ffffff"
+    gitInv4: "#000000"
+    gitInv5: "#ffffff"
+    gitInv6: "#000000"
+    gitInv7: "#ffffff"
+    gitBranchLabel0: "#ffffff"
+    gitBranchLabel1: "#ffffff"
+    gitBranchLabel2: "#000000"
+    gitBranchLabel3: "#ffffff"
+    gitBranchLabel4: "#000000"
+    gitBranchLabel5: "#ffffff"
+    gitBranchLabel6: "#000000"
+    gitBranchLabel7: "#ffffff"
+  themeCSS: ".node > rect, .node > circle, .node > ellipse, .node > polygon, .node > path, rect.actor, .note, .task, .task0, .task1, .task2, .task3 { stroke-width: 0 !important; }"
+# mermaid: config end
+# mermaid: metadata begin
+mermaid:
+  colorset: "colorset1"
+  mode: "standard"
+  palette: "basic-red-neutral-style"
+# mermaid: metadata end
+---
+gitGraph LR:
+accTitle: Illustrative git relationships
+accDescr: Synthetic records for Intake, Review, Build and Release. Values are illustrative and make no measured performance claim.
+commit id: "Intake"
+branch review
+checkout review
+commit id: "Review"
+checkout main
+merge review id: "Build"
+commit id: "Release"

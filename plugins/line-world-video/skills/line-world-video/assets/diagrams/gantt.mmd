@@ -1,0 +1,64 @@
+---
+# mermaid: config begin
+config:
+  theme: "base"
+  themeVariables:
+    background: "#ffffff"
+    primaryColor: "#9e1b32"
+    primaryTextColor: "#ffffff"
+    primaryBorderColor: "#9e1b32"
+    secondaryColor: "#000000"
+    secondaryTextColor: "#ffffff"
+    secondaryBorderColor: "#000000"
+    tertiaryColor: "#828282"
+    tertiaryTextColor: "#000000"
+    tertiaryBorderColor: "#828282"
+    lineColor: "#696969"
+    textColor: "#333e48"
+    mainBkg: "#9e1b32"
+    nodeBkg: "#9e1b32"
+    nodeBorder: "#9e1b32"
+    clusterBkg: "#e7e7e7"
+    clusterBorder: "#9c9c9c"
+    defaultLinkColor: "#696969"
+    edgeLabelBackground: "#ffffff"
+    labelColor: "#ffffff"
+    titleColor: "#333e48"
+    sectionBkgColor: "#e7e7e7"
+    altSectionBkgColor: "#cfcfcf"
+    sectionBkgColor2: "#e7e7e7"
+    taskBkgColor: "#9e1b32"
+    taskBorderColor: "#9e1b32"
+    taskTextColor: "#ffffff"
+    taskTextDarkColor: "#333e48"
+    taskTextLightColor: "#ffffff"
+    taskTextOutsideColor: "#333e48"
+    activeTaskBkgColor: "#000000"
+    activeTaskBorderColor: "#000000"
+    doneTaskBkgColor: "#828282"
+    doneTaskBorderColor: "#828282"
+    critBkgColor: "#9e1b32"
+    critBorderColor: "#e8002a"
+    excludeBkgColor: "#e7e7e7"
+    gridColor: "#9c9c9c"
+    todayLineColor: "#e8002a"
+  themeCSS: ".node > rect, .node > circle, .node > ellipse, .node > polygon, .node > path, rect.actor, .note, .task, .task0, .task1, .task2, .task3 { stroke-width: 0 !important; }"
+# mermaid: config end
+# mermaid: metadata begin
+mermaid:
+  colorset: "colorset1"
+  mode: "standard"
+  palette: "basic-red-neutral-style"
+# mermaid: metadata end
+---
+gantt
+accTitle: Illustrative gantt relationships
+accDescr: Synthetic records for Intake, Review, Build and Release. Values are illustrative and make no measured performance claim.
+dateFormat YYYY-MM-DD
+axisFormat %d
+todayMarker off
+section Work
+Intake :i, 2026-01-01, 2d
+Review :r, after i, 3d
+Build :b, after r, 4d
+Release :l, after b, 3d

@@ -1,0 +1,2363 @@
+{
+  "schemaVersion": 1,
+  "name": "skills-marketplace",
+  "sourceCommit": "405e18376f2f41c952b919c57f713ac9c802a43f",
+  "plugins": [
+    {
+      "name": "line-world-video",
+      "displayName": "Line World Video",
+      "version": "0.25.1",
+      "payloadSha256": "6c327d4f26b4d889494aec907c47e5b0251a625d30ccc6858b11acfdafbda62e",
+      "files": 344
+    },
+    {
+      "name": "hyperframes",
+      "displayName": "HyperFrames by HeyGen",
+      "version": "0.8.199",
+      "payloadSha256": "ad357ee4008d7747a04ad7e572a91ff24ae3c1712bd6317e222abcc556a8b6f1",
+      "files": 235
+    }
+  ],
+  "files": [
+    {
+      "path": ".agents/plugins/marketplace.json",
+      "sha256": "9142eb3d90dc7e62d3748b8a97d43c3952d84e3301458039f4a1067f3e266a06"
+    },
+    {
+      "path": ".claude-plugin/marketplace.json",
+      "sha256": "699a9adc6638bfa0e8740e60d7de98c124c0af6b13e7e11002138d036885b137"
+    },
+    {
+      "path": ".gitattributes",
+      "sha256": "705fd4d6451a31d36b3df7de96f83f30ac976c9b4a6d1e51671d8e2f33e2d0da"
+    },
+    {
+      "path": "README.md",
+      "sha256": "d72b20b9619265088a331ba92b407a16405cb2d0d5a9f87afa8938ddf071d6a1"
+    },
+    {
+      "path": "plugins/hyperframes/.claude-plugin/plugin.json",
+      "sha256": "0a1afec01cc72156a96ef3e6c7a3a7220663d528b92b23c900d8d436d6624619"
+    },
+    {
+      "path": "plugins/hyperframes/.codex-plugin/plugin.json",
+      "sha256": "6a80081314ab3cbbe6c3a6626057004afca653bf40a2482e7e14151ce8c0200e"
+    },
+    {
+      "path": "plugins/hyperframes/LICENSE",
+      "sha256": "4259155fb06f127687ee7b0a8a3682d45132db0f2da26cbc0b7a2d1e796436b8"
+    },
+    {
+      "path": "plugins/hyperframes/README-COLORSETS.md",
+      "sha256": "ce5c8d85f7f4fc10d774c90943c9251eb902755b882ba35c2b39cbce220c810c"
+    },
+    {
+      "path": "plugins/hyperframes/README.md",
+      "sha256": "799d416b10256286454ca636d9ee8b1f51dd45599bbf6a786d1f67e94d1ecc3b"
+    },
+    {
+      "path": "plugins/hyperframes/SOURCE.json",
+      "sha256": "ac1f33753adcb9dcc910639ab4a3bcdd5175894d0491ec6315f39ddeae2a702e"
+    },
+    {
+      "path": "plugins/hyperframes/assets/claude-code-icon-dark.svg",
+      "sha256": "cde038469b062f049741b0e96c553591166a3864e2710c27900fa25a6ed2566e"
+    },
+    {
+      "path": "plugins/hyperframes/assets/claude-code-icon-light.svg",
+      "sha256": "c4c61c8a5f6b2b3a9d4d8e6672b3e37412e3fd814d2874c2618b76d10648bb01"
+    },
+    {
+      "path": "plugins/hyperframes/assets/icon.png",
+      "sha256": "cc97812c2f8b56feb96854141c609cdda17d64502d01da7ad7c0e5649bf8472e"
+    },
+    {
+      "path": "plugins/hyperframes/assets/logo.png",
+      "sha256": "0328eb84e11871561739d8541bc30d4bdca81ceae09730be779e5c38ee8b7c60"
+    },
+    {
+      "path": "plugins/hyperframes/bundle-manifest.json",
+      "sha256": "073c720a3c9685edf6f49f33d2d80b6ec94f8893260c1b84444ab26c827277b5"
+    },
+    {
+      "path": "plugins/hyperframes/plugin.json",
+      "sha256": "d538e58fbc44b8922f56129877f95113467b548f765d84f569f38bb06dbc3a69"
+    },
+    {
+      "path": "plugins/hyperframes/skills/colorsets/SKILL.md",
+      "sha256": "884045dbfa8b66ed49ef75a8cb9ab4d19868e73b0cea2d5234ae7bfe1f6e001e"
+    },
+    {
+      "path": "plugins/hyperframes/skills/colorsets/assets/colorset1/FRAME.md",
+      "sha256": "3e348aa9f4d46a2702f6d6643f525c2ac042302106a48770bb6baff289515c4e"
+    },
+    {
+      "path": "plugins/hyperframes/skills/colorsets/assets/colorset1/colorset1.yml",
+      "sha256": "6472cb2a2e08738010051ce0f7c51107b115d215a70b8bb7f5db432411bf7cc1"
+    },
+    {
+      "path": "plugins/hyperframes/skills/colorsets/assets/colorset2/FRAME.md",
+      "sha256": "4583eb7bfdd4951f992e5c1280779744ab5a9831909e85b2b95c2f22d3a54d49"
+    },
+    {
+      "path": "plugins/hyperframes/skills/colorsets/assets/colorset2/colorset2.yaml",
+      "sha256": "b424b5aa2223a9587fa5d32e4258491f85207e73038c5f5be1d3f4ef99108a13"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes/SKILL.md",
+      "sha256": "180ce4eea5f33f1617105c92e2690a5a2320abf624c263186ec0cb1a78a919ef"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes/assets/frame-presets/biennale-yellow/FRAME.md",
+      "sha256": "76d22cced9c152b0edb520543cf34c4ce772a312caa7211c40d4315b53c053cf"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes/assets/frame-presets/biennale-yellow/caption-skin.html",
+      "sha256": "b0e4812d9cb5852969be276f8a98ffa2b293ba8cc902fababae3f3f6340088c3"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes/assets/frame-presets/biennale-yellow/frame-showcase.html",
+      "sha256": "5ba04e47cf9897e023dcfa49e1ec26fe26bac0c5061097dc6e7cb1d9ed46d7d0"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes/assets/frame-presets/blockframe/FRAME.md",
+      "sha256": "ef8d9d47a209bed4ccc2d928c14a81cdaecb5129f5dc0cdc0dc40afc7ef92931"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes/assets/frame-presets/blockframe/caption-skin.html",
+      "sha256": "a1073a9910efb0bd146d9ee4513ef95bd72c4993db399ccb4decf2d10002faab"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes/assets/frame-presets/blockframe/frame-showcase.html",
+      "sha256": "8d2e4963713928b353d0aa28c2c83fce415df81b66a500c192b602c0aaf4ddf2"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes/assets/frame-presets/blue-professional/FRAME.md",
+      "sha256": "62e9a445885f6057084493de385a8ce20c3b4a299ae36a553ef54884f06bad68"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes/assets/frame-presets/blue-professional/caption-skin.html",
+      "sha256": "e2524d610d0c833f6b71355357c13b26e670ec581c28ce37d12ead15ce4297b4"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes/assets/frame-presets/blue-professional/frame-showcase.html",
+      "sha256": "715b130d086977a48925a3c79bb079fbc7270274c9c9a7761bf275df3020b0ba"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes/assets/frame-presets/bold-poster/FRAME.md",
+      "sha256": "af756ef993099f9ac78328f676eb79a6572ff0e9c2aacf12787471cd4525b171"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes/assets/frame-presets/bold-poster/caption-skin.html",
+      "sha256": "a19c81d30377687605e2345601efabba5315d0d4db13c3ab4748d7004778c24a"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes/assets/frame-presets/bold-poster/frame-showcase.html",
+      "sha256": "57bbc3374b6a8b37ce59e36ed784c22bbb88fd44d039955221913b3e1bacf159"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes/assets/frame-presets/broadside/FRAME.md",
+      "sha256": "3af0a1e5e61bece19841671672d7732082f03d5699b713475e90323a21dbcc89"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes/assets/frame-presets/broadside/caption-skin.html",
+      "sha256": "f074e1a9662d48ec0008aff7fffa1bdeeda40c5c5e05db9bd0fa6dd2ecdc7a6b"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes/assets/frame-presets/broadside/frame-showcase.html",
+      "sha256": "8d23a2cbeb898568a5626b38ffc864236fb4a09930d59b17c34c45f34c8e4161"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes/assets/frame-presets/capsule/FRAME.md",
+      "sha256": "f06dba67a3859f7c732b5177f7bcc58c94592caa5d6bbbcc6730a7876f5baa7a"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes/assets/frame-presets/capsule/caption-skin.html",
+      "sha256": "0e62f725051213512566b6f615c438b893a3b39507a5a2666a52938c8dd74e46"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes/assets/frame-presets/capsule/frame-showcase.html",
+      "sha256": "b3a642b5df3bbfb1ff227f1b82ee3ea02b51f20a0d7c5c46c97d72b180cddb4f"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes/assets/frame-presets/cartesian/FRAME.md",
+      "sha256": "3dc6a31813a333b2a7a1509ddbd3b4dabbbd7e12e6479b6cff10d69c185fec95"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes/assets/frame-presets/cartesian/caption-skin.html",
+      "sha256": "e3e08147d1725d40576f4f97687ce0c6a4c32ee1b74dac2720f0ba652b9dfcfd"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes/assets/frame-presets/cartesian/frame-showcase.html",
+      "sha256": "d7867cee5e07c4f22345c566071f2ce0261b3fccca111a94dfbec5fde64f3e55"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes/assets/frame-presets/cobalt-grid/FRAME.md",
+      "sha256": "62a6c9e6e5188cc29b9c0098e9bb8e72c23f152d9a99dd92c58139d26b69b19f"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes/assets/frame-presets/cobalt-grid/caption-skin.html",
+      "sha256": "5cc71d8f0669e80d12ccb6bb83722870eecfeccade0bf64f8fb165e23fbadf3f"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes/assets/frame-presets/cobalt-grid/frame-showcase.html",
+      "sha256": "b135214cd2e310273a01e3f72b2828149f022803954a22a13cbf27aa1c2f518a"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes/assets/frame-presets/code-editorial/FRAME.md",
+      "sha256": "c24f6925cf938b88a93368443091440648e715c75ac38bd90abdaab6130bb4ad"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes/assets/frame-presets/code-editorial/caption-skin.html",
+      "sha256": "724a20adff3824e4d31d5d51cc094337209a896a5ef3ae1e4e28aa502ee980e4"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes/assets/frame-presets/code-editorial/fonts/EBGaramond-400.woff2",
+      "sha256": "b63448e2680a0dbde70ebb2f3de78f6c515122835491f938e8a8595b46f29210"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes/assets/frame-presets/code-editorial/fonts/EBGaramond-700.woff2",
+      "sha256": "5d0f8a497a48fd2a3611d07acc844f65c9fbb35419eafa4e1295f5f0f95f86e4"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes/assets/frame-presets/code-editorial/fonts/Inter-400.woff2",
+      "sha256": "8909904ab6c872eb994093482a88a28eca2cd95912d7b6fecd72103b0dc07edc"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes/assets/frame-presets/code-editorial/fonts/Inter-700.woff2",
+      "sha256": "6f56409fd3d64bb85f7d070bce20749db2d66b6d63cec586cc22d1c761be2491"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes/assets/frame-presets/code-editorial/fonts/JetBrainsMono-400.woff2",
+      "sha256": "14425ba9c695763c1547f48a206b7aa60350a33ae23de09f0407877f3fcd89eb"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes/assets/frame-presets/code-editorial/fonts/JetBrainsMono-700.woff2",
+      "sha256": "d0d4e818808f2a0ba39b2b09d1989366f63494e295f003c7ef436697378507e8"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes/assets/frame-presets/code-editorial/fonts/OFL-eb-garamond.txt",
+      "sha256": "f03c8eda63076cd52317dcd40aa04db8472d4cb592dfaafa385129dfdafc7f9c"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes/assets/frame-presets/code-editorial/fonts/OFL-inter.txt",
+      "sha256": "3b0a5fca3d17942cde889069889dedbbbd075e9b599968c82a95f4d944e9b345"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes/assets/frame-presets/code-editorial/fonts/OFL-jetbrains-mono.txt",
+      "sha256": "403581b69dac5cff4079205e01c6b467e56af449ecbd7247693ddb1baafa005b"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes/assets/frame-presets/code-editorial/frame-showcase.html",
+      "sha256": "08d711f5409a6af3fb6de05febe47fee77e4c8e85517bf2d087e2277b524e4ab"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes/assets/frame-presets/coral/FRAME.md",
+      "sha256": "8530ecb36d1bb2d53392d88d972df35beeba19a5bcb3260fc9b18a58de7cdfe8"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes/assets/frame-presets/coral/caption-skin.html",
+      "sha256": "44904b0567292521391fb576f07de7d2f5d8bce81d0369460f1054d093a06877"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes/assets/frame-presets/coral/frame-showcase.html",
+      "sha256": "8ddf31ae13a4e57fe9730892fbbcb171cae67a204b5cb00b00374984f49b8f76"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes/assets/frame-presets/creative-mode/FRAME.md",
+      "sha256": "c1a1359502d9fc79ef267305291fe0f651219c72d88088cee32327dd933dead8"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes/assets/frame-presets/creative-mode/caption-skin.html",
+      "sha256": "2a45f759d64f5f6713ad2d529468df5bb345afe7d441d46c6316072348c1061b"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes/assets/frame-presets/creative-mode/frame-showcase.html",
+      "sha256": "32c1371fcd526c56edb515e5b255ad736a3e330ba3ff2631c61576064b384ef0"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes/assets/frame-presets/daisy-days/FRAME.md",
+      "sha256": "42d827dbd279990052e171d04380b5e6bbc111ae391dc283deb7a452e70b9b97"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes/assets/frame-presets/daisy-days/caption-skin.html",
+      "sha256": "5af839f607efb817d96956f3b016fd6fd065851f69ac1ac223a8634737bd497e"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes/assets/frame-presets/daisy-days/frame-showcase.html",
+      "sha256": "4fb93e5fa3ba12367f303996b6ca8b62f8e18c721d02e8032274df12d49d96f3"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes/assets/frame-presets/editorial-forest/FRAME.md",
+      "sha256": "ceeb2ab768367da1e1f3e1eca36ab9feeb3de3e4d15493319b0044c3d869329c"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes/assets/frame-presets/editorial-forest/caption-skin.html",
+      "sha256": "50427bf7fcec9c8ac22f195a0e7fc442ad85e733198837ee0b9b8050296a0fa5"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes/assets/frame-presets/editorial-forest/frame-showcase.html",
+      "sha256": "bb87b88b91184f4fee7f02eea63ed35d9d378fa89fad8988326e31e82a43dbb1"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes/references/captions.md",
+      "sha256": "e7e2af7eace992487baa455bfa703fb3d770fb29f36732541554e60a46896d54"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes/references/film.md",
+      "sha256": "b684403f725cf720b9f192bafd420ca55f24060114004234a4e46a715de7a183"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes/references/format.md",
+      "sha256": "6418c8f1fe24943be2eb913421a6355d5d4bee60fe8eea4ced9b78ccdf88a4bb"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes/references/look.md",
+      "sha256": "5128a54cdb75bca2f627170e4a3a9667f4f11cf1579301fc16c53862c29c3ad3"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes/references/motion.md",
+      "sha256": "80b9bd70c011b7fc679f351cb41b993b16d610af1cda316eaf9d19bf9c08372f"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes/references/overlays.md",
+      "sha256": "d87fa3d13e8e0dace593f4aafb68c085b7f4393eee468c7695a74d5665150da3"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes/references/plugin-installation.md",
+      "sha256": "d3268edd1bbf2bc4e077108462aacff8c04bd2660472dd6ca9fd1bb32839b661"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes/references/review.md",
+      "sha256": "90886b58db02aaa53e6b91c433748629eda061b18465804b56ebbbab92508e56"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes/references/runtimes.md",
+      "sha256": "584e5312a6cdcba93bc9cf92261b4bfaf0ad4ef3dff9ce9e4ce7080d07913b03"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes/references/skill-lifecycle.md",
+      "sha256": "3039b344a4bc63118ff7680a1008bcc7bfc0637563e6ac69f59cc5e06a31874a"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes/references/sound.md",
+      "sha256": "be9e39ef947678b3ffed452063ce414af4a7d7c534b1e6c440bb5ce474d28ab4"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes/references/spec.md",
+      "sha256": "6fa0658c5cf5c23058f70a6549cc952d683979052a0934760ba748bbec88fbc0"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes/references/story.md",
+      "sha256": "3c2b96bb7f262652f4bf5efdef1ae806b47fd259c6704cb131938c5254965f22"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes/references/storyboard-format.md",
+      "sha256": "f79e3be44cf2e506cdd2d1c46926319a0067f11889fe8aaf3a55759a9c61fb86"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes/references/storyboard.md",
+      "sha256": "f757c6d2b26e1a3587a63a4a8f9aafab86d9507ed31579f4dda4279397742fe3"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes/references/types/3d.md",
+      "sha256": "1a8c965d36bac37c5625cd404b37c3d3913632cb858881d89741afacc560ea12"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes/references/types/character.md",
+      "sha256": "e8b4f6fd622acff593e2d7e478aa4e18ace1f9f785d16e42db5faf57ed525498"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes/references/types/data.md",
+      "sha256": "c5fda22433aca573b871eeff956cd57e3773d6b16ffd9b3cc5726937912c1b7a"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes/references/types/explainer.md",
+      "sha256": "ef2bd945bd347e760fd483515189c58e8000bd2cbc5f4b1c2d3e5d34e4d81f4e"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes/references/types/launch.md",
+      "sha256": "405984871b15c2acc8535bc1c95a2205a9c89f97f0d5313cda8c4fb23c6d7900"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes/references/types/music.md",
+      "sha256": "868df2814d2a8e8f2bc884372d674320aee43c995fc67d25a109ebfdecb58b4a"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes/references/types/vertical.md",
+      "sha256": "fed9f5a1a3ceb204bb54e0dda0fd50befe611d0ab388a5036fc80cbc117a691b"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes/scripts/bake-basemap.mjs",
+      "sha256": "8322256cd43c597e2962af6c33c6be652084ae24c0c9a6af24183388d64e2b8d"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes/scripts/lib/main-module.mjs",
+      "sha256": "61811e09110856e1439c29875e4a4ad7701ae45d4045f9d1dcb6a7929698e4c0"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes/scripts/lib/main-module.test.mjs",
+      "sha256": "3d0ee22dd8b7acbdf8997c11449f29f13bafe6b20668a478ba504f66ec1ef151"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes/scripts/locate.mjs",
+      "sha256": "9274b1b63a74b305f044dfd907ae5ddae538d566d31c23b81c39975be6317147"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes/scripts/plugin-cli.mjs",
+      "sha256": "1ec46cdb9d819ecc9367aba719fea9253089617ead8c5454e59ab18b206711fb"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes/scripts/plugin-cli.test.mjs",
+      "sha256": "abfdf2498b57509438077803bee3a626c6fc13e1014ae066e5281edbfc4ca23d"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes-cli/SKILL.md",
+      "sha256": "44a48ccfa4cbd4f4234f8306c96268a4be56a0f2376abedbf31d2167b3c21286"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes-cli/references/beats.md",
+      "sha256": "09689994eba8c977693fdc54702b07dd492e80aa47075de0a027df901dc51b1d"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes-cli/references/cloud.md",
+      "sha256": "8191550a036130249c26b37912dfd321c771c6670223cc7e0fff7aedd67607bf"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes-cli/references/cloudrun.md",
+      "sha256": "16f46a18ee3d165dba3b7ee50362bb32cb0a927643a90821e7b63494fe0bde83"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes-cli/references/compare-and-batch.md",
+      "sha256": "d17fa5a16707d981fa6473b99a28aa45abf41bca0fd96c5157c632abd0bfc222"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes-cli/references/conventions.md",
+      "sha256": "5012403aa194bc350bdfd89d7c9f00e85c0ecc0356a1417ae4146b7bb8bb7b07"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes-cli/references/doctor-browser.md",
+      "sha256": "9747dd5a545d2528914c58d55d0c54281ace686fc5c782072334c6ba0ff65c55"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes-cli/references/feedback.md",
+      "sha256": "ae188d5c3e90f0e011b1e322bbfbe10575667b2a5073cffdac05026ac59925a7"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes-cli/references/init-and-scaffold.md",
+      "sha256": "30d7bd19a0ec8bf7b32fbc0d216c7f606420c94cbbac5a7b52875799943abd4b"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes-cli/references/lambda.md",
+      "sha256": "8f97fe2781db3f7ef72795782f88ee56c2ae81804d2128459393e06f8a54b175"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes-cli/references/lint-validate-inspect.md",
+      "sha256": "2629c4af5e2255c18e7782622516e225393ffef77844bde53fa923d34aa1be13"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes-cli/references/preview-render.md",
+      "sha256": "d534ce9911a609777ecba84074c838b33e9a302c6ee80254f0e6a0cd6b2a7ca0"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes-cli/references/upgrade-info-misc.md",
+      "sha256": "a46662ad866669d1cf70bfa6404e9a01f68d2db4eb667fe6dc8a8442f6a069d8"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes-registry/SKILL.md",
+      "sha256": "1c7b27632c9ea9febaafc2d9af073b377029f46be4bee70d75b5e713eb698423"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes-registry/examples/add-block.md",
+      "sha256": "0e3353755c4ef55e53570d1266a4a43b2c5aef9bbe41276430e38cfa6580b83a"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes-registry/examples/add-component.md",
+      "sha256": "d06992d31eec617a91f5c34630c9274c52dd07898bd24f10a869d0d1cab5af29"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes-registry/references/component-quality-bar.md",
+      "sha256": "f0d4c3c44131bc0791f8a8cc3d2d7478d38045451775af7d20b2dd47cf5f91ac"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes-registry/references/contributing.md",
+      "sha256": "7e9e6fd894e54251fad9aa30a08730960ceb776da590a175eadfc1d9014106b1"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes-registry/references/demo-html-pattern.md",
+      "sha256": "dfc50cd33eff2c2be75437786fc3e851ab0085f7d453fb35b3380ecf9a6e9f04"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes-registry/references/discovery.md",
+      "sha256": "ca82fcc1e0b2d824b72a8bda99b60d257b23d493fa1d28adbb0548a762cacd04"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes-registry/references/install-locations.md",
+      "sha256": "83793e7d6aeea9a751755e4bd23ea48182ff9af082287b98a1192343d2571dd1"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes-registry/references/placeholder-material.md",
+      "sha256": "15adf4a40b26166f64df784aed065adb58051d9ccd5c0c52ad9b71e3b8367a09"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes-registry/references/search.md",
+      "sha256": "3da7b42d2a0d8d9e2cbcdd8591da5a83203c424de9f46a995950d374a74531ee"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes-registry/references/templates.md",
+      "sha256": "98e1ef62d3c1264b28139d85a1c9b5a8b7438209914aebef6d9890e3f4275805"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes-registry/references/wiring-blocks.md",
+      "sha256": "397f9ad5a9244d173b97bb5a5dfe76ea3cbccfb8dde16cba8b3dabc6044b011a"
+    },
+    {
+      "path": "plugins/hyperframes/skills/hyperframes-registry/references/wiring-components.md",
+      "sha256": "6c8341c29fdae6de4f9fd1560a668d11cf34731b81fe5a06c9aeb4a000047b2a"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/.gitignore",
+      "sha256": "a299ec0fcdb6bc6670cf9fb22eefe3fcc37730e2e554b7f54e25de88be1ede02"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/SKILL.md",
+      "sha256": "ef3976a02ff516d8e5ed0b7fff19d4bbf9358264233bace33fdacaa3aa7f37de"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/audio/assets/sfx/CREDITS.md",
+      "sha256": "79590c7738b0427b10f362f76b02cfd2643158a40e1d5fd787f9ac6b33bcf4ce"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/audio/assets/sfx/chime.mp3",
+      "sha256": "74823b1b27703c56e0652db838f503c150ce9c2442d47d27430af3d5121d6d12"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/audio/assets/sfx/click-soft.mp3",
+      "sha256": "075e17bdac5c13662a1c9530050e0046f81d4138e00eb3bf30427a7b4404103d"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/audio/assets/sfx/click.mp3",
+      "sha256": "075e17bdac5c13662a1c9530050e0046f81d4138e00eb3bf30427a7b4404103d"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/audio/assets/sfx/error.mp3",
+      "sha256": "b4882e3941ca496b5038e7c7d64318419da9f69d3da9540a1c693adc639cf121"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/audio/assets/sfx/glitch-1.mp3",
+      "sha256": "760b72bdaad71f83350e2ef3a9d037daf58f44855a05a6cce25d990f1ffb888a"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/audio/assets/sfx/glitch-2.mp3",
+      "sha256": "b326efdf687f18f68f0df7443a65b0ea7a4a1287dfe3143ea23707cc645257f1"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/audio/assets/sfx/glitch-3.mp3",
+      "sha256": "7ebe61cfd0d69a2d35d9ee3a88c26025101e999d5cc6bfb2df410f820b433042"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/audio/assets/sfx/impact-bass-1.mp3",
+      "sha256": "634d5eda5eb7b501aca98393a64f3815eccf24157cd1d95df55aaec1b5000bd7"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/audio/assets/sfx/impact-bass-2.mp3",
+      "sha256": "fb832995477784f44ba8533359d20caf706195b52117ecc2a33b3e63e3c1307b"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/audio/assets/sfx/key-press.mp3",
+      "sha256": "bcc892df0898bf466162f14233c3e92a8c1ea351f6affd8a3a7e56c9a760bb72"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/audio/assets/sfx/manifest.json",
+      "sha256": "1b1aae06c6e25412e1d217ebf1e646a0ed36410c0fcad11acdb8f5d5e5b7dc10"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/audio/assets/sfx/notification.mp3",
+      "sha256": "b1559967dedb7994a82371f10cec9f7f3992e6b147b4cd88d62112bcdc3f9ba3"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/audio/assets/sfx/ping.mp3",
+      "sha256": "c54d088fa2709e6b3c9ce87594a9187d0d5338d3a8c683271f9c4353a8ee8c91"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/audio/assets/sfx/pop.mp3",
+      "sha256": "19ab7193f626ff57fdeef60b45543bac416fcbcec803cfb417abe4b271c1b352"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/audio/assets/sfx/riser.mp3",
+      "sha256": "d2f29d49f27dee7d3b25af22ffe5bebc39390cc5d5fb3b3e1c433499c77f3d1d"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/audio/assets/sfx/sparkle.mp3",
+      "sha256": "a66b2829a307bcb5b1f6551d7cdc72fe45bbe9a91abfb994d28db8d5e4e42ea8"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/audio/assets/sfx/typing.mp3",
+      "sha256": "944160652faeb7b32acc9341ede4d735a5c9a4ce3fe8509ef7eab91efb430487"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/audio/assets/sfx/whoosh-cinematic.mp3",
+      "sha256": "0a0f3505856fdfa84ac6b86b3c55ccd0ef1eb4ff0907d7b6934002218a73404e"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/audio/assets/sfx/whoosh-short.mp3",
+      "sha256": "c2efd9d902a59bf9ec5019035d7deadd17762136896b6e3cb6dd99ea50997a30"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/audio/assets/sfx/whoosh.mp3",
+      "sha256": "c2efd9d902a59bf9ec5019035d7deadd17762136896b6e3cb6dd99ea50997a30"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/audio/references/bgm.md",
+      "sha256": "d21a03d47aa8b77ef74bd8a1e91a06de71085ec15312cc71d3b7b52d655c93b4"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/audio/references/captions/authoring.md",
+      "sha256": "c1f159e6a99b5ed65812fbc777fabdbf8cb82dec7fcb2e970b9524653d96bb59"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/audio/references/captions/motion.md",
+      "sha256": "ee1b89fc53e7433e1c1192c24e09365a3894bae653d8061c2bbc4202c097250f"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/audio/references/captions/transcript-handling.md",
+      "sha256": "84c4d5181749022c00b6de62ffe95fe257598fb5f9111d9e8541d25a13836287"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/audio/references/remove-background.md",
+      "sha256": "fb6b38a25c6535c57a461bbe2ca681b38f18e5f09b1e904e4a0b5f6eca7a5b98"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/audio/references/requirements.md",
+      "sha256": "3a9092a3ad9e3133dc2d4888c73c9373e988cbcc5dd46997cd800e075127d09c"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/audio/references/sfx.md",
+      "sha256": "b89b14e4d819594d07cf2899e3ca59ceafe743e77e7df46dafdbebe4effebe75"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/audio/references/transcribe.md",
+      "sha256": "5525a555f5356766a5e3333a945b5f90af51f63b2b98210d23e3a605a5de8703"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/audio/references/tts-to-captions.md",
+      "sha256": "bc74fa83c096d64997dde33c9873c01b23c3b575b80689793440cd91466c8bd1"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/audio/references/tts.md",
+      "sha256": "37ce53c1744359b68f09b31878ede560c75791ecd73b4e7bbaaff0b147cbc442"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/audio/scripts/audio.mjs",
+      "sha256": "f41c88d86aa3c87c41a8edfe1017a41c86ea44a6e5bdd5f5442fb4046c63f8ef"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/audio/scripts/audio.test.mjs",
+      "sha256": "07df6c38f1d98305fce9f37848334d6c84e26bceb52eca1e0ee3f9fa2fd2ae12"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/audio/scripts/carve.mjs",
+      "sha256": "7ddef413955ca81b66eba4630e3296220613150d428795f636577f2d8626c160"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/audio/scripts/carve.test.mjs",
+      "sha256": "6f72d9e0a349d9deaee62f1835b9c5639dc71389643f5d37accc0844958b43f6"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/audio/scripts/extract-audio-data.py",
+      "sha256": "2b72d7aaa8688a4c524042274364f9696fb26fa9dd7125c58798cbdf021950e8"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/audio/scripts/gemini-pipeline.test.mjs",
+      "sha256": "1caced7d5d088cc1281d7ba4346bf3bb540870482a56515f5a6a35352fbbc0f9"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/audio/scripts/heygen-tts.mjs",
+      "sha256": "7cf5e907807e0df919fdff2c762733c9d6dbdad5b605d05236ea788d8aecf5ff"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/audio/scripts/heygen-tts.test.mjs",
+      "sha256": "55f54468f0ba01f24c7a587f1b58d7d128a9c03919dfadd92dc2929aa1e8ed69"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/audio/scripts/heygen-voice.mjs",
+      "sha256": "1ab6d29860c106b49ca0c3dec408d99a8d3297a5bbc953d21f1148c3d8568064"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/audio/scripts/heygen-voice.test.mjs",
+      "sha256": "d0920895246ee7679a424ffa36ed13d3f1bb7c03b8641c8bbb4a4efd4ede320b"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/audio/scripts/lib/audio-meta.mjs",
+      "sha256": "94e1b4cf242362eeb52bb8a5665b5b50fe4ffdc7854f4366b82e290c33d03890"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/audio/scripts/lib/audio-meta.test.mjs",
+      "sha256": "dcb64fed2a256b0f9305f1434024e588adf312d787e8a8dfdc9349193d37f2ad"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/audio/scripts/lib/bgm-volume.mjs",
+      "sha256": "bb9debebdbd09724f6d07cd10b3982a076639664420ff8caf5f5a36ae7429a8c"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/audio/scripts/lib/bgm.mjs",
+      "sha256": "2e7e7590bef554c4aa8fa0250ca4fd0dc96da5e388644c90128cf7767c6a7532"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/audio/scripts/lib/bgm.test.mjs",
+      "sha256": "59b6b3d23a7de4b8dcaef846290ec14c6f74530a4e9a8fd5fa354501c35c73ad"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/audio/scripts/lib/concurrency.mjs",
+      "sha256": "36a28dc1a0528b5605cba29a593dd54a786ad6283611b09a634946b12a5ed32e"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/audio/scripts/lib/concurrency.test.mjs",
+      "sha256": "daf0b162a9c3fc1a20cc22dff19566530e198459a10afcdf42ad39bec2426f55"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/audio/scripts/lib/gemini-auth.mjs",
+      "sha256": "72fa1b984693279656ef5398bbdc48c074040ac4feafaedd1b7c45f12545bf10"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/audio/scripts/lib/gemini-auth.py",
+      "sha256": "5ba85af3b5b46bfa04013f5d24b2c5b72dc7677b6cc5ef5ef926de82be4f8542"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/audio/scripts/lib/gemini-auth.test.mjs",
+      "sha256": "4a74c9e910914d57c715b0ed487e6e8ce2af265e32edfe04e8432780a6ffe0b0"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/audio/scripts/lib/gemini-auth_test.py",
+      "sha256": "5f524492aa5d4fa77c45bfed0002a33045677bd1c28027ff80554c9911f32b66"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/audio/scripts/lib/gemini-tts.mjs",
+      "sha256": "cf34c6781e809d39b7d36a8f0caf32afd23a21860db45ccdc4cd70c6a08e9597"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/audio/scripts/lib/gemini-tts.test.mjs",
+      "sha256": "c36d0a99d85dd377ba4f1314e8dc15a6f8e55284fc0176a6bcd529017767eff8"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/audio/scripts/lib/heygen.mjs",
+      "sha256": "65c996c8f494248aba28030888b43b32e1da659a48842ad2ba259c64b4a2967e"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/audio/scripts/lib/heygen.test.mjs",
+      "sha256": "eedb0c96ebb8a1e04fad51d0f400a450d9f304e4961684f0d98b138aa48f9463"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/audio/scripts/lib/main-module.mjs",
+      "sha256": "61811e09110856e1439c29875e4a4ad7701ae45d4045f9d1dcb6a7929698e4c0"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/audio/scripts/lib/media-record.mjs",
+      "sha256": "bf904e88b0038b6fbae8b562ff1fc99ff8794383c5b3470773c7692162c948e9"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/audio/scripts/lib/media-record.test.mjs",
+      "sha256": "922738b67e8baa5bbf958ac02e92e3192e51f5b6c66d8bbd3f544151c5a22523"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/audio/scripts/lib/openverse.mjs",
+      "sha256": "e2b176ed6e0b91231debab84ef6633a1a4885e400b9511a39f11e97acef261bd"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/audio/scripts/lib/python.mjs",
+      "sha256": "cfcee5d30291edc45f0bf3779ee346adb5bb91ae3b6e9e504d4b4f63259fdd4f"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/audio/scripts/lib/python.test.mjs",
+      "sha256": "f8e1e5df3977691772605867ebe8ae2d02a8132c1745dfd3cbf6453f351bcc79"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/audio/scripts/lib/sfx.mjs",
+      "sha256": "ddd7da6f359011f2aaa9e3b78e62246766be4dedb4825b5c40f2c287c0c2c62c"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/audio/scripts/lib/sfx.test.mjs",
+      "sha256": "87bc81631a1dae1e251e13bb219521815f1cc14f7ec30b8d29b38885138f360d"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/audio/scripts/lib/tts.cleanup.test.mjs",
+      "sha256": "bacb2ac60b7d755237aad3535b90c0093d0ff1b3cd71c9c8dc80cfc37f4efdf8"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/audio/scripts/lib/tts.mjs",
+      "sha256": "0a706b9f83ba1b8723d5f8247b5d35c6f85b28b6849bbf47a7bef2f413eb2ffd"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/audio/scripts/lib/tts.spawn.test.mjs",
+      "sha256": "62ec9589648477e8c7242567e9daa67d1cf07a0fbe2cf9968acef8df8e982ef2"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/audio/scripts/lib/tts.test.mjs",
+      "sha256": "47185cb0d6ac4ca9350d65640a93e9f477d022a8a48d614f51e2ca57f3ca4a39"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/audio/scripts/lyria-recipe.py",
+      "sha256": "07bcba4a128430545a03e7ced49b9a6750a77d72a3659d67e4e9886fe9731436"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/audio/scripts/wait-bgm.mjs",
+      "sha256": "bb9cf35cae4342ca1b03c1c129df199d6e389b67a8d5be9d4973a3bc20d585e3"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/audio/scripts/wait-bgm.test.mjs",
+      "sha256": "8f3c50a19e14c6d0b6c2d871892be8fa1022d6ee5653f3f5224c955f4afdf862"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/luts/README.md",
+      "sha256": "c06cbbf2aab80cbf8aa25c83497202a63107a61e083b6c199a89d513e8096a3b"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/luts/index.json",
+      "sha256": "988ac83c14bc3a9ef09aa6ab64459a0aa9e766e96361738136970ec89df1675a"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/references/audio.md",
+      "sha256": "4c2602fec675b5234b18a0a03ac05aa6c380398c75176c6a071ce683d5107973"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/references/grading.md",
+      "sha256": "00455ee9d1eecec76d846c9bc5d0eac35017ca08f514f2efc7f3fc5f6ffb6e87"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/references/local.md",
+      "sha256": "c72b10577e731c9904e7cda14a64ed5b7177b4b2ec5053778cbe8cb64d2a6634"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/references/media-treatment-recipes.md",
+      "sha256": "852e7e978af56c9e99ba14f19009da974cd78f99b399ca194dc416c31c49bda5"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/references/media-treatments.md",
+      "sha256": "2125e106e7f891e14716efabda40f5d6a46284592c6f37d5a14b2b86bda96c1a"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/references/memory.md",
+      "sha256": "ba8db2ff81eb903ded09efaf8fe2a381176d4d90fc0568162c14aa8935e94725"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/references/meta.md",
+      "sha256": "0397b11301e10de6b126f6f39e5ad8bac68f8b22a5ab32236fb6a8f0e5c279dd"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/references/mixing.md",
+      "sha256": "6f37bde4921ba95f343ec4ae43cd19a94ad4b7684b8f81682dfaab91bc4bdccd"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/references/operations.md",
+      "sha256": "a40792b8f01f99ccf3ccab8f15b0b9285fa08d5ac9fa1f189cf60efdf3e17b30"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/references/resolve.md",
+      "sha256": "c90a833f6c3dcc8f33b289f5ad90e9f835f59581873bdc774035f25b6eb72314"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/references/setup-providers.md",
+      "sha256": "76f133bb9c4b1e0323b58544e2e7235f5ac09408adad1502e69e64c92eeeb085"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/references/telemetry-dashboard.md",
+      "sha256": "bdc30ad1ff84ebe7f5ca835acb9f47b33717e041ea79b41c6f0db489b86094a7"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/scripts/audio-duck.mjs",
+      "sha256": "6beac3c1c6c0e0375e67a04c184406ced3740cc832bb3ba9a09c796bbe16d40e"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/scripts/compatibility.test.mjs",
+      "sha256": "3263a2e82b06560d2c0ea9f7e41b3fe46bec624b70c539ccb121b880dae2250e"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/scripts/dither.mjs",
+      "sha256": "8e9f437526f39f417f6793912ddeef71094ddb5a5b8d4893c5339086bc39547f"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/scripts/dither.test.mjs",
+      "sha256": "c22c3a0ae41647ac3f733b489a6bc6043fd294155d00954be5d901b3cff7d216"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/scripts/eval.mjs",
+      "sha256": "fadf274111a682acbfdff91eca75b977e3821c53026cd058551c538027f21f51"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/scripts/lib/config-lock.mjs",
+      "sha256": "a9d1679e2039be38cd1756a1011f813ae4be0577c2ff77b9ed411b99b1c94275"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/scripts/lib/cutlist.mjs",
+      "sha256": "c395f49bdb602b29dfc1ea98b7f6d0d5d8781f00eca1c16d009d10e7ef0205be"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/scripts/lib/duck.mjs",
+      "sha256": "0930aea672a8cb204d344902cb90442491a8979f9f554f9c7c61cd13666a6846"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/scripts/lib/error-diffusion.mjs",
+      "sha256": "aa718fe95f98087979bab5ea31d68b8e45fbde0c5b874c6888ad21923fb45936"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/scripts/lib/index-gen.mjs",
+      "sha256": "fde84f36ebfb4fa819935956b2b6dc43a70b749a5c846d5470295d7c439e40e6"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/scripts/lib/manifest.mjs",
+      "sha256": "67f827f7591241c170fd92eb7fa789df2f1756b2cd4889907141936179f5d00f"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/scripts/lib/media-fetch.mjs",
+      "sha256": "6a90740eee3e4765b83b4c9726676b2935a7fbc9990f61ad5b166f9263188366"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/scripts/lib/media-home.mjs",
+      "sha256": "7f69890d7b822f202b44ddec0d8176c767cd8b1da4dfc4d918599c6a05cfecb1"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/scripts/lib/npx-sync.mjs",
+      "sha256": "1dc7f6372da36242f8c373defcba80fe9e006ce824e0f459e6d56226b3bf919a"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/scripts/lib/parakeet-words.mjs",
+      "sha256": "d5b66efe6cb8975beab2f523503113c3be3117e687ebc20695e7ab08c2ba1b4d"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/scripts/lib/prefs-store.mjs",
+      "sha256": "a387fc2db77868d327536f282fb22b8b0c1e4df68bca74cd8a2b21253b7c3d67"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/scripts/lib/recipe-store.mjs",
+      "sha256": "6d2786c2ba4959178351047c3b6d1d2b29a701685c9b256fcc4793c50717ce83"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/scripts/lib/telemetry.mjs",
+      "sha256": "292ca36e91189e69d36b197311a345664a3a407b4e3fdb91f8044190649961cd"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/scripts/lib/telemetry.test.mjs",
+      "sha256": "b7f6513eede2eb33f6fde626162b2fd4ef74b0034a3e81b9eebdede89f766373"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/scripts/lib/transcriptCutFade.mjs",
+      "sha256": "ee9c7ec28650cf0f6a0f1f21f1c6a1faa5e152337163cccc0cc9a109b3c99805"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/scripts/lib/words.mjs",
+      "sha256": "bfc1f93523d2fc8ce55580b262efcca537c7feabaf029c1c6f33433591377adb"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/scripts/prefs.mjs",
+      "sha256": "f551d5efe51dea7b59d37595c052b950111c6734d913567630181959e7497a04"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/scripts/recipe.mjs",
+      "sha256": "97d2a12604084668599c44f235d6300b77593f86a9a58a6034cf5aa92c98fcba"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/scripts/resolve-plugin.test.mjs",
+      "sha256": "fe8f4dce139b3a88e9ba817da335ae7667a644a715f250613901f7cc1e75f0ed"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/scripts/resolve.mjs",
+      "sha256": "85aec401d22b65639fa6a91056e515563135962a127516aaae1e2644d48fa0b9"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/scripts/transcribe.mjs",
+      "sha256": "9e0f2fd2775e3a76267fc219d4b5aa52373a95478812884f8f40f6292e09dac7"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/scripts/transcribe.test.mjs",
+      "sha256": "39a456ac37a0eca282417b09d7e556c0f2ac11ab3726bc361ff077e75a963ae1"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/scripts/transcript-cut.mjs",
+      "sha256": "17e148571738ad8cf30b0ccb3f28d0837df5072114b9dfb63bc8d9f5d25e5a5d"
+    },
+    {
+      "path": "plugins/hyperframes/skills/media-use/scripts/transcript-cut.test.mjs",
+      "sha256": "af546cd7d473eb5f4258148a8dd8ec637a67a242cd50948abe1e0dcd6f64c527"
+    },
+    {
+      "path": "plugins/line-world-video/.claude-plugin/plugin.json",
+      "sha256": "6c4ef390a3fc64f0c0fbbfde142cd8797c93c01227fb8f556a427579f5446090"
+    },
+    {
+      "path": "plugins/line-world-video/.codex-plugin/plugin.json",
+      "sha256": "cd281fb3aae5fab6054273d74c360c120bdf693a8d6a72d76c9ad1d1e0d6de38"
+    },
+    {
+      "path": "plugins/line-world-video/bundle-manifest.json",
+      "sha256": "a9dabc35edfa72618c9767b7a6aa11fdc964ff97ddfbd95c65cb6127ce350b81"
+    },
+    {
+      "path": "plugins/line-world-video/plugin.json",
+      "sha256": "a9158da3f9677a3d1c9895aaa556b10772f6c8dddf64ba3b82592129d7229305"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-d3/SKILL.md",
+      "sha256": "f37f28254194a0f660c41aa596e966d88341ce76bed2c8f440645d27fde28e76"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-d3/agents/openai.yaml",
+      "sha256": "5afc754252c348b103b7969ef432d1220bdc9091ef86d4c71a9d8f5745a977af"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-d3/assets/catalog/logo-manifest.json",
+      "sha256": "254607a258450b43308e0373cc7a03efc542f54f572bad0babcab0b38f283d0e"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-d3/assets/palettes/colorset1.yml",
+      "sha256": "58c4b5d726f7d92ffa97fb96c50e0508b964edc740d2752ff2ee5081d68cf5af"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-d3/assets/palettes/colorset2.yaml",
+      "sha256": "62d95f22ca7864f158bc44007fd346471fd26eeb9db38508d283db6d7b86ca15"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-d3/assets/palettes/colorsets.json",
+      "sha256": "b557cb508d9b31534506b9ae22ad3073e8951b49f6ab4e2251f6727ac92a405c"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-d3/assets/palettes/video-color-direction.json",
+      "sha256": "67dc7db36b5139917155bb5446b00c292aefb48f955db823b90d9b7095be9d8c"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-d3/assets/palettes/video-colors.json",
+      "sha256": "5f2583d8de2765e3fb3b95346e33c98feb5af18b19363c33a818037cad23de7e"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-d3/assets/reference/agent-loop-reference.png",
+      "sha256": "1c0a2dd3b7a9a80146f989ff23fe88fb7750813738ee5fc417637d0465e1b3d4"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-d3/assets/runtime/attention.js",
+      "sha256": "f9811cc2ff3c32b03cedb8cf6b73662c9d25be88f99d23e1aa1808856bc57451"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-d3/assets/runtime/focus-motion.js",
+      "sha256": "7ece2fb89b06f38f8af115082f2009fec89cde23f65fb12cd9448001515215a5"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-d3/assets/runtime/focus.js",
+      "sha256": "d21fb40c114547121d2135c06f0faf9f6d66f005e17c2b3fe060d2c3f9f47b32"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-d3/assets/runtime/photo-focus.js",
+      "sha256": "74645e5ead518c0f437cd555f2d4de3e801c84c4fbbb2b1fcf0d4c8a87148403"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-d3/assets/runtime/theme.css",
+      "sha256": "bb2e057f163407d61bdadd8cecaf3b10aacbea43c6fb893a6580d6e34ff52ada"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-d3/assets/runtime/theme.js",
+      "sha256": "5c548f1dbeb0f1934a258fdf4944e711c7a77988ed696272e04bbf845b64c68b"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-d3/assets/templates/category-grid.html",
+      "sha256": "7f22f6fa0c7988521050991231b9fd952ec9215bf3fd424ddda229632a1e3299"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-d3/assets/templates/direct-line.js",
+      "sha256": "1b80eefc06c27817fe20b5f3645f80b49c977591c42d1cba627c589e56086a78"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-d3/assets/templates/logo-engine.js",
+      "sha256": "def0660fcf8fb39380ed4887574ccc27bf8d161f4a252a5c2c5284781e1b49cc"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-d3/assets/templates/logo-studio.html",
+      "sha256": "2e468b39a09891a873c1eae7aa76c91c788f2254b1bd2b12ed92ac09aeebf095"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-d3/assets/templates/self-contained-animated-svg.html",
+      "sha256": "c970a18620e755204fce4173d7e0e47f259502051cf8c8294caefcfc072d5af3"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-d3/assets/templates/solid-style.js",
+      "sha256": "755e27738f2841a2f2abb9ff92017c515a5bd6d8326a9d3609519160673ee66d"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-d3/assets/templates/surface-stable-fractal-dither.js",
+      "sha256": "d880bc7d675c2b94cb5b028c78a44195d4525d36f74c221a047d7b1f761084aa"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-d3/assets/templates/texture-gallery.html",
+      "sha256": "accc90a7b8223129dfee89e7fea97be3bc9a76317ab11196fe43b71aa2151ae4"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-d3/assets/vendor/D3-LICENSE.txt",
+      "sha256": "3e6849627f74ff73c257a3ae1efb574015d94fc1035c05ec3c15805165efcbc4"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-d3/assets/vendor/d3.v7.9.0.min.js",
+      "sha256": "f2094bbf6141b359722c4fe454eb6c4b0f0e42cc10cc7af921fc158fceb86539"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-d3/references/producer-workflows.md",
+      "sha256": "4f945b57e361cfd4b76e6cc0ea8d03cf4b00967420a39a6a5bb736341dbd813e"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-d3/references/video-contract.md",
+      "sha256": "c3ad8988aa1da00a6fc3f2af7cfec1c3a9d0ecdbb66bfdb31c289d010e2aa0e6"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-d3/scripts/audit_dynamic_symmetry.py",
+      "sha256": "f1fdf11a58cd1d6eb0adb57d98e6ba5edcb2bf6b57d9b3f8f5baf0657f51a87d"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-d3/scripts/build_agent_loop_overlay.py",
+      "sha256": "26cec7f6c441f808d7c19d08c157487c9629f4ae9351f22d48776977703376d6"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-d3/scripts/build_attention_arc_decoding.py",
+      "sha256": "4e50921338e3bf737b2e53ce0a2de41d1482d9929829eb49448db9efb122e1eb"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-d3/scripts/build_cardinality_variants.ts",
+      "sha256": "0eae87e5088a42909faf1dfe4b3fe3d4527a7e3a440373a162a8e0f0a82ab998"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-d3/scripts/build_category_burst.py",
+      "sha256": "fccfa2b6c436b5b507afe8173aa26ef5ab171b21fd6439e8e2eda9c9251096ef"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-d3/scripts/build_category_grid.py",
+      "sha256": "c189adce16885d267119b4e2c1cc9fc2de67cabad023e8f403a3a564dbe8a7db"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-d3/scripts/build_circuit_signal_traces.py",
+      "sha256": "5dd1c554e80828f7db196096a78c1dd8f68a7f133cc0a0170a364ea926b1daef"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-d3/scripts/build_contract_artifact.py",
+      "sha256": "87cd3076106901057df507275198be2a8324685f8ccee8436d8b4d51ee1b3845"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-d3/scripts/build_critical_bowtie_barrier.py",
+      "sha256": "f36b8b1a60dd391f64caa46997c8444b9ecb8bd218936dd50d6bdf7ccaeb3e16"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-d3/scripts/build_critical_bulkhead_isolation.py",
+      "sha256": "07712f58c6366409838bbd175d10ee6000bf3c90e7f092a47549179909a183df"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-d3/scripts/build_critical_cache_stampede.py",
+      "sha256": "c0872f4d8a2fd645a757948eb301c18ef8707cfbe229f2e4ca5ff5b450c83da5"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-d3/scripts/build_critical_chain_buffer.py",
+      "sha256": "dcc1eb0c69a66f1cf97052bf5692780964cc80a98f451fa69a05ffdabb84e2b7"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-d3/scripts/build_critical_circuit_breaker.py",
+      "sha256": "44959a9b1dc5bb073011a2c9d7260fc001c6e04ac74545b05559cd2503c1f56a"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-d3/scripts/build_critical_dependency_blast_radius.py",
+      "sha256": "a8c812b0501cb01c56e48e18ce786f12f0f6a7cea6dc89d933c44d2b0080085e"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-d3/scripts/build_critical_fault_tree.py",
+      "sha256": "603d1183ad104da9a91db3222dc822fff262aab21ed4e796b948fd707c430f35"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-d3/scripts/build_critical_idempotency_replay_guard.py",
+      "sha256": "8d41f4e39a5f8dbfa64fd2672ecc279e26f36fe2f8b586574303a5a28b1097cc"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-d3/scripts/build_critical_incident_escalation.py",
+      "sha256": "179393f02b52bb3f0bc8241da03258caafe5e2c637db0d0ae55c48255f857156"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-d3/scripts/build_critical_queue_backpressure.py",
+      "sha256": "ca9da11ef96d505bb7a7c99413beb1cade75bdffec525d519bcfb8beadb6550b"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-d3/scripts/build_critical_rate_limit_token_bucket.py",
+      "sha256": "995d45603299f2204fcd0c9b7e004664cb3c67a9c0005c43cfc4bd929baae536"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-d3/scripts/build_critical_replication_failover.py",
+      "sha256": "3349194979f8323b2545a154fe7f22ff2b3a07c2922924e19a6e6b2d29b1ea43"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-d3/scripts/build_critical_slo_burn_rate.py",
+      "sha256": "7dd94f27384d8f5e9a233091d4fe7be8b819c08fd2c8a08703e89a412d4239b5"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-d3/scripts/build_dense_task_overlap.py",
+      "sha256": "8a33d83da6ba7df8f3fb27f69dbc426fd81db3614b0a49e6209c641a7314d980"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-d3/scripts/build_direct_line.py",
+      "sha256": "918e68e0cd32acee39879f7c4a158254747af9c9d13c5bc785cbe8dd6167dba5"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-d3/scripts/build_evaluation_report.py",
+      "sha256": "068e5d8b58fef44e3fa9280acf0ae60ddbd5fbe63d99d3702b52e84628898d0b"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-d3/scripts/build_kinetic_type.py",
+      "sha256": "ec29c278fe7bcf7ff688358f7a90b18832279f0a2c04d6d0a2240e635736873f"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-d3/scripts/build_logo_studio.py",
+      "sha256": "8cdf27e44788707431c9f5640989e115c27c1026e5ba1cc7efa13d5f4dcccf91"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-d3/scripts/build_natural_math_archetypes.py",
+      "sha256": "c3dda40fc32bee23d5894a61586bd9b4ed097acf84f7cd55e588c4f558631199"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-d3/scripts/build_organic_growth_patterns.py",
+      "sha256": "088f0127c755f19e7432414259d457b48f338f0d2a0b10af0fbe0453b61b84fa"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-d3/scripts/build_process_pid_control_loop.py",
+      "sha256": "b3699d82b6e07c81740e5c9b8d565a1cf7a9725179c52545fd2682224ee34495"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-d3/scripts/build_rotating_dot_rings.py",
+      "sha256": "0ecdad37f1f8161876b009e0e84cdfaf6a022844b9af8c0bebeb92e8716e5f4a"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-d3/scripts/build_solar_terminator.py",
+      "sha256": "cb9b2e30a741b20cbdaf1151e5cac16a5e6160e2121a1a3555e15cfab3f540a7"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-d3/scripts/build_speculative_decoding.py",
+      "sha256": "9bc1842aa0821d4a60ba384daa2a439709480013f3b7633b26795a0d94f8405f"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-d3/scripts/build_treemap.py",
+      "sha256": "f95d364ea72ec57c32bfe8a84ab3f288edd7fe2561d01ee2f52a94aeb6279a43"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-d3/scripts/check_palette_contract.py",
+      "sha256": "0a445bf3d88053d36d8943d737c17ab6dbd9f77a0a7413c9e946532a457be84d"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-d3/scripts/check_recomposition_contract.py",
+      "sha256": "41e1b145ab9aac09bc3855856bae4e5e7f659d0735968846aa9481aa2085707f"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-d3/scripts/check_self_contained_html.py",
+      "sha256": "6bb31c52496dec9a861b0327f727d442eb91014d9805378b8e7404d0047f625e"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-d3/scripts/check_svg_contract.ts",
+      "sha256": "2d5694ce56c3f72e3ef8a196e56f72731fafd8766a6ea98d29872442b5d65aff"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-d3/scripts/check_visual_contract.py",
+      "sha256": "dae84cebf31a7d86dfe8056062415a5380a2e9473a263b8220a195f8623f879f"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-d3/scripts/colorset_adapter.py",
+      "sha256": "af0c40593e339eb2b438f7d0b852c31b9b7df8ac1cf5feb359bef27540da1b4a"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-d3/scripts/compare_svg_style_signatures.py",
+      "sha256": "713cc862e30e5368f2d76299cbafacc3699a1c89e64291c16bd5ba81d1485b42"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-d3/scripts/create_d3_svg_starter.py",
+      "sha256": "b0e3e3360456289feb958f127f01f00036168cd23106f17bf7046fc9ada8388e"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-d3/scripts/dither_d3_output.py",
+      "sha256": "0644c5654a5960c0ac60b4a994c2c5f822c4387f46f341c66ab78b26c52ad9ea"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-d3/scripts/evaluate_composition_variants.py",
+      "sha256": "96f6ced3e05b966184384f551b51a01f5c4c38b8977f17aaee31fb3c5b2a4b0f"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-d3/scripts/layout_task_overlap_labels.py",
+      "sha256": "0fd72945cf65f6714c606aa7240a1a4d6539e19600f0bef13fe7e404c2b714ca"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-d3/scripts/prepare_svg_recreation_templates.py",
+      "sha256": "1ade3f2423e902e7bbb97ebe24c2bb48c5d4f842624917438054184f63d3f8e8"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-d3/scripts/render_d3_svg.py",
+      "sha256": "9cdde5946276a24edc69ab48eaed999157fd7eb22de230cb1acc1ab01f03229e"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-d3/scripts/rendered_layout.py",
+      "sha256": "f0d54dfb1fc787ad8be4ab6a9cbedf0071d03373801e8ed542d731372cf5038d"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-d3/scripts/test_category_order.py",
+      "sha256": "3189b4ab3872c29294cd0469aa18db5a5558edf0fc8eeb2c802ca3c4ba6d5203"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-d3/scripts/test_colorset_adapter.py",
+      "sha256": "581a387bf05da9adcf28aa915e73d29bbe74e808d67018e6f3c164c1a254d1ce"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-d3/scripts/test_compact_diagrams.py",
+      "sha256": "8bf653a32e2fe1a028fcec6b2e26437b8e828ec076d371017f7632fc53229d01"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-d3/scripts/test_speculative_decoding.py",
+      "sha256": "7127dbf6730ae9eac3a845c5dfc39264bfd074943ae4030f5f8843fedea0d999"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-d3/scripts/validate_logo_artifact.py",
+      "sha256": "87e5c65135ee9b649033707fca883ee50eb783ddc0aeab9b1691f0b6209b33a3"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-d3/scripts/verify_logo_gallery.py",
+      "sha256": "419e47b5626570a31e818348c304939363067c40155e5fba3a20a814bd353dd1"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-d3/scripts/verify_logo_texture_gallery.py",
+      "sha256": "1ac147992ee0d004a1e5f24f48a9a374e46aa1b84e1d8b61969d3e6e292c9e91"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-d3/scripts/verify_speculative_decoding.py",
+      "sha256": "3b8a0e3c39286f73289aca1460d704a738771bca01c1602008dc89cd5fefc063"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-d3/scripts/video_chart.py",
+      "sha256": "7db28f2ead0569d720de9b0f033507c60c4b800bed3b4ee0c4cbc00a23ca2e1c"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-d3/video-profile.json",
+      "sha256": "0ac934a5857e129d551a02412ec9f1edff4ef4dc6d9d9510849e3aa24e13cc85"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-google-vids/SKILL.md",
+      "sha256": "4e20eb7bb7141f0e542e48c387772d9687f8415f7a970d4c61ce61d797a256b7"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-google-vids/agents/openai.yaml",
+      "sha256": "4a21ef3d5468aeb820011cdfca01ee26d46682f30921af7ca8cc45df633d1669"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-google-vids/assets/runtime/vids-ui.js",
+      "sha256": "c62dcef12dc6fc66faacacfe26899702a7d331fe044397ca5aea2c445b84f945"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-google-vids/references/batch-production.md",
+      "sha256": "6912594c655476a5b48282eb4f56ddc8002b19e1936f7de0072ec3e46d76ea76"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-google-vids/references/delivery.md",
+      "sha256": "c428ea45241ada2ef5d78ec6f7b10b615e1ce7e53d3641c6a5627c596c5b0b32"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-google-vids/references/narration-cues.md",
+      "sha256": "da6817ace544651b0ef4875444ccfb24aefcd28e311aedfa0545dab0a1687f74"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-google-vids/references/recovery.md",
+      "sha256": "23136003e8ad6a043134a1b2de8b643b96d707bb49a4bc1ae735c14ecb822cf4"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-google-vids/references/scene-handoff.md",
+      "sha256": "fdea92306335ea7a42146e887f6251e6e7a99eb0cd330cb6614dac47db2082ee"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-google-vids/references/timing-continuity.md",
+      "sha256": "9c2efbba7f72e45758a9dd3b3c953ad5f85f2a0e17a478a56d56f655067c2f08"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-google-vids/references/ui-workflow.md",
+      "sha256": "9dd808a5114fb8705aee382976573dbe234718684af0e6c8ecd6114b6876af1e"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-google-vids/scripts/batch_clips.py",
+      "sha256": "cb2c8207be3ee84fa77a990a109842060eab01ad57d2b3c068c90bb8de43abb7"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-google-vids/scripts/narration_cues.py",
+      "sha256": "d5bfdc8eff065e77649a9c8abd4bd325f77a22511ee0769012e482142e41901b"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-google-vids/scripts/test_narration_cues.py",
+      "sha256": "f543c239b0f303dc489ac354fb6b80b9fa1c4df4ec5cbc55295672837899a682"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-google-vids/scripts/test_vids_batch.py",
+      "sha256": "dc8502e456c0472baeb0196c36536d702b0e12fe16288ed9f478fe0316b198f1"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-google-vids/scripts/test_vids_delivery.py",
+      "sha256": "54116d80b15f83d252a3543a301d906caef6a2e31ea2fcd57fe27610d008783f"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-google-vids/scripts/test_vids_inventory.py",
+      "sha256": "0c7c06787093045420fabc19e4bdc65630a8e8850993278d82e93f008d09c196"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-google-vids/scripts/test_vids_plan.py",
+      "sha256": "5a14035fc6e2ad2f8bd66822a7fa6c755a98c67127e3b259e1b3493f4e7b6c0c"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-google-vids/scripts/test_vids_ui.py",
+      "sha256": "804cbe23733bdf9988817181064d6afbcc06bc3d799cbe284e20b1afba4f7e01"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-google-vids/scripts/vids_batch.py",
+      "sha256": "6275ae7cc24381ff0bdc01d1b2286fb6659a70f7a7f698b04dbddcc884d47c27"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-google-vids/scripts/vids_delivery.py",
+      "sha256": "331f1113cc120747ccb741b808b980970fa5954fc00512d8b601e594e70552d6"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-google-vids/scripts/vids_inventory.py",
+      "sha256": "1e1d12d0e0ddc08ee94ef97654a7eaf39cc5f09f489c2e7c4838a59ed7b571a6"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-google-vids/scripts/vids_plan.py",
+      "sha256": "d1782a536a9fa20663e8d71ee56118470fc58f7ea50db7b597ff43c38feae444"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-hyperframes/SKILL.md",
+      "sha256": "700de993b6ca6733402c90ddcdaad1434ba3c000da8b5abe52551686e6b3f2d0"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-hyperframes/agents/openai.yaml",
+      "sha256": "3cf5d1b41474f9eb84a92b35544265f89b6844f89a159720d5de45b309d2a5ae"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-hyperframes/assets/fonts/OFL.txt",
+      "sha256": "c6dec685825f73b18c20926fddc65e8315642e12986f15db0699170940a09efc"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-hyperframes/assets/fonts/space-grotesk.ttf",
+      "sha256": "3e699ead1876244fa392243054ddefe7cf631b488438828a8a100731a22ab995"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-hyperframes/assets/palettes/colorsets.json",
+      "sha256": "b557cb508d9b31534506b9ae22ad3073e8951b49f6ab4e2251f6727ac92a405c"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-hyperframes/assets/palettes/video-color-direction.json",
+      "sha256": "67dc7db36b5139917155bb5446b00c292aefb48f955db823b90d9b7095be9d8c"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-hyperframes/assets/palettes/video-colors.json",
+      "sha256": "5f2583d8de2765e3fb3b95346e33c98feb5af18b19363c33a818037cad23de7e"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-hyperframes/assets/runtime/attention.js",
+      "sha256": "f9811cc2ff3c32b03cedb8cf6b73662c9d25be88f99d23e1aa1808856bc57451"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-hyperframes/assets/runtime/focus-motion.js",
+      "sha256": "7ece2fb89b06f38f8af115082f2009fec89cde23f65fb12cd9448001515215a5"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-hyperframes/assets/runtime/focus.js",
+      "sha256": "d21fb40c114547121d2135c06f0faf9f6d66f005e17c2b3fe060d2c3f9f47b32"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-hyperframes/assets/runtime/photo-focus.js",
+      "sha256": "74645e5ead518c0f437cd555f2d4de3e801c84c4fbbb2b1fcf0d4c8a87148403"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-hyperframes/assets/runtime/theme.css",
+      "sha256": "bb2e057f163407d61bdadd8cecaf3b10aacbea43c6fb893a6580d6e34ff52ada"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-hyperframes/assets/runtime/theme.js",
+      "sha256": "5c548f1dbeb0f1934a258fdf4944e711c7a77988ed696272e04bbf845b64c68b"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-hyperframes/assets/templates/arrow-quality.js",
+      "sha256": "640e9a352297dd656ad0437de7e74c2153f695c160504ae81eb18c81f0afa45d"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-hyperframes/assets/templates/audit.ts",
+      "sha256": "d99cfd922c91cab819d1fea33c7b9a773a914d5f768afebad2bce045446386c5"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-hyperframes/assets/templates/brief.json",
+      "sha256": "0aa7fe12e93ad2ed56e937f68297c7e9e6f48e328959dea455b7beff8294fa81"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-hyperframes/assets/templates/hf.ts",
+      "sha256": "11a4e32cde23c7aca4c27cf76ca1a798c070e23ee4f515be8c7ec5f7f12ceaf0"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-hyperframes/assets/templates/index.html",
+      "sha256": "777b12d167c59c0070a830e2a2a383ee141881a50b56d38d22d10d203b5a13b7"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-hyperframes/assets/templates/kernel.js",
+      "sha256": "2658ed4ea2927dc43e7e1f44cc03404b7c080f967de50de5b0301877ef883039"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-hyperframes/assets/templates/local-runtime.ts",
+      "sha256": "49206064f798fc72d26a2b0d94d56c87f01cdca232dcd8e8afb43ff0ea6e194a"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-hyperframes/assets/templates/preview.html",
+      "sha256": "67077c8c989c3f7f301242fcd7e55aceb7f575e526fe4da627a047a592082cb3"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-hyperframes/assets/vendor/GSAP-LICENSE.txt",
+      "sha256": "5e97d0bff35968b4642580876d00489591dc2d1cca0aaccf10e0fb7bb2302e75"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-hyperframes/assets/vendor/gsap.min.js",
+      "sha256": "c174bfce53a729418d57a8ad8625e7247c793a22fef8e2851e3cfa3de9cd8280"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-hyperframes/references/producer-workflows.md",
+      "sha256": "520b7382cd82daca2c93cece69b9a39b08d19c2475a6dbb9b1d5a368c4076b97"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-hyperframes/references/video-contract.md",
+      "sha256": "c3ad8988aa1da00a6fc3f2af7cfec1c3a9d0ecdbb66bfdb31c289d010e2aa0e6"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-hyperframes/scripts/compose_mechanism.py",
+      "sha256": "21d8856f535a0daa79dbf1009e65ee338544428554f10f756cca8ae7545b9edf"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-hyperframes/scripts/compose_mechanism.py.lock",
+      "sha256": "5f1151c6aa30526aad7026077df5376a79aa05ef1d990b04a69ea60e7c5018e2"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-hyperframes/scripts/explainer.py",
+      "sha256": "ecd48f8918dd8037695814014e4fc103711ebd7ef0b29521e1e1c6d20c7476da"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-hyperframes/scripts/import_assets.py",
+      "sha256": "2c270255d0fee1b0362851b3669f4e8eba58a12f568e5860e5cfbe4b662ba336"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-hyperframes/scripts/test_asset_import.py",
+      "sha256": "b874ef9980a09e88d730aea1a0e0bf6677a596b7859281a262c17ccdddb438ec"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-hyperframes/scripts/test_composition.py",
+      "sha256": "059b0a1ea5e503cd63bb987ee22b5e7da14a7a6f2c5d0f4b56235e74eb49c4a9"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-hyperframes/scripts/test_composition.py.lock",
+      "sha256": "5f1151c6aa30526aad7026077df5376a79aa05ef1d990b04a69ea60e7c5018e2"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-hyperframes/scripts/test_explainer.py",
+      "sha256": "cfc20755ec4bf9cdb098a1fdc9c3b81d75a73a576df21e540cce3882a1d98b32"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-hyperframes/video-profile.json",
+      "sha256": "ff3897db7249a68d09ee9e57ed99899a49511495e0461af4d19f9fca0736d564"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-icons/SKILL.md",
+      "sha256": "2747deb16333c169d821bb4014b2fe4d8d7b6f4eb6d33db96847bec58126c51b"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-icons/agents/openai.yaml",
+      "sha256": "aed84ec458846e1a53e93a0b4ccd1787e7b7bd1943124637bc12bcf7151301b9"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-icons/assets/palettes/colorsets.json",
+      "sha256": "b557cb508d9b31534506b9ae22ad3073e8951b49f6ab4e2251f6727ac92a405c"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-icons/assets/palettes/video-color-direction.json",
+      "sha256": "67dc7db36b5139917155bb5446b00c292aefb48f955db823b90d9b7095be9d8c"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-icons/assets/palettes/video-colors.json",
+      "sha256": "5f2583d8de2765e3fb3b95346e33c98feb5af18b19363c33a818037cad23de7e"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-icons/assets/runtime/attention.js",
+      "sha256": "f9811cc2ff3c32b03cedb8cf6b73662c9d25be88f99d23e1aa1808856bc57451"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-icons/assets/runtime/focus-motion.js",
+      "sha256": "7ece2fb89b06f38f8af115082f2009fec89cde23f65fb12cd9448001515215a5"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-icons/assets/runtime/focus.js",
+      "sha256": "d21fb40c114547121d2135c06f0faf9f6d66f005e17c2b3fe060d2c3f9f47b32"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-icons/assets/runtime/photo-focus.js",
+      "sha256": "74645e5ead518c0f437cd555f2d4de3e801c84c4fbbb2b1fcf0d4c8a87148403"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-icons/assets/runtime/theme.css",
+      "sha256": "bb2e057f163407d61bdadd8cecaf3b10aacbea43c6fb893a6580d6e34ff52ada"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-icons/assets/runtime/theme.js",
+      "sha256": "5c548f1dbeb0f1934a258fdf4944e711c7a77988ed696272e04bbf845b64c68b"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-icons/references/producer-workflows.md",
+      "sha256": "abb0c95763691f38bbd9183f460485b5908bb20a535d708416d0fe9691c78288"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-icons/references/video-contract.md",
+      "sha256": "c3ad8988aa1da00a6fc3f2af7cfec1c3a9d0ecdbb66bfdb31c289d010e2aa0e6"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-icons/scripts/asset_io.py",
+      "sha256": "23cd514912bf07fcf586941314162a89b30ca33b2298d0c63eee54361f0a30cf"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-icons/scripts/iconify.py",
+      "sha256": "664809dc3f7f695450414ce3a7d17b673ffac7969d00c4ec962c90610a835152"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-icons/scripts/test_asset_io.py",
+      "sha256": "d353351f34873e3bd684ec18c402d49695f8331c3bf68ee2d83fa5773d329c13"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-icons/scripts/test_iconify.py",
+      "sha256": "3cde9873ea9a8a23202933efa1bb7599fe8493f68158136043119fe0b8981dba"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-icons/video-profile.json",
+      "sha256": "ac57186fed572ebf6f9c5f236efcb25d875221725b81f35409eb7650b7cc354a"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-mermaid/SKILL.md",
+      "sha256": "cc1fa12c6d15363e3b9ba092bdc769c5947e814f83c8b670c9589006a3ec8f47"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-mermaid/agents/openai.yaml",
+      "sha256": "c6e6f250ae44ad951a2bb5d78623438a03ed0419f7bbfd897b0678790aea83ee"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-mermaid/assets/palettes/colorsets.json",
+      "sha256": "b557cb508d9b31534506b9ae22ad3073e8951b49f6ab4e2251f6727ac92a405c"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-mermaid/assets/palettes/css-named-colors.json",
+      "sha256": "02c347487d439770060574ccabb2d7957ebc218599617753d11587569c6a1e8e"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-mermaid/assets/palettes/video-color-direction.json",
+      "sha256": "67dc7db36b5139917155bb5446b00c292aefb48f955db823b90d9b7095be9d8c"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-mermaid/assets/palettes/video-colors.json",
+      "sha256": "5f2583d8de2765e3fb3b95346e33c98feb5af18b19363c33a818037cad23de7e"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-mermaid/assets/runtime/attention.js",
+      "sha256": "f9811cc2ff3c32b03cedb8cf6b73662c9d25be88f99d23e1aa1808856bc57451"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-mermaid/assets/runtime/focus-motion.js",
+      "sha256": "7ece2fb89b06f38f8af115082f2009fec89cde23f65fb12cd9448001515215a5"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-mermaid/assets/runtime/focus.js",
+      "sha256": "d21fb40c114547121d2135c06f0faf9f6d66f005e17c2b3fe060d2c3f9f47b32"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-mermaid/assets/runtime/photo-focus.js",
+      "sha256": "74645e5ead518c0f437cd555f2d4de3e801c84c4fbbb2b1fcf0d4c8a87148403"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-mermaid/assets/runtime/theme.css",
+      "sha256": "bb2e057f163407d61bdadd8cecaf3b10aacbea43c6fb893a6580d6e34ff52ada"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-mermaid/assets/runtime/theme.js",
+      "sha256": "5c548f1dbeb0f1934a258fdf4944e711c7a77988ed696272e04bbf845b64c68b"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-mermaid/references/diagram-types.json",
+      "sha256": "6d1aab8d2c8e9cc2268270e60d68a4de13409008dee9bf32a6b81f529e7e9628"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-mermaid/references/producer-workflows.md",
+      "sha256": "62e46e2da5d24b4a1a57b8c46da00025ae4ceb1595578aaeac49e384c9910b61"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-mermaid/references/video-contract.md",
+      "sha256": "c3ad8988aa1da00a6fc3f2af7cfec1c3a9d0ecdbb66bfdb31c289d010e2aa0e6"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-mermaid/scripts/animate_mermaid_svg.py",
+      "sha256": "b50e376023c6a208dea84373f3e4ec01bf460919bbb45e468251fee4ffe707f3"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-mermaid/scripts/arrow_contrast.py",
+      "sha256": "55edaad6b0a1bfa12d2d17938a8aceed198afd388684252fb02ce7b3c03432f6"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-mermaid/scripts/mermaid_animation/common.py",
+      "sha256": "e8e40a37ff498d028b9b5fb6ca48ba4854fc71f0358b8b37bbbc84bb0418f191"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-mermaid/scripts/mermaid_animation/diagrams.py",
+      "sha256": "8ac0017b70935053a49627a9252d8c4aa2dc5a48ccbe1ce518b3ba0be1b65c54"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-mermaid/scripts/mermaid_animation/directives.py",
+      "sha256": "c4112db62da30998d2d86304c89b44100972c4d5dc9c8d56ece3397ec99690f3"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-mermaid/scripts/mermaid_animation/discovery.py",
+      "sha256": "544c9304c568c635993a181e00a9925e25600fa9c4b53d16424fc9c01b65b8a1"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-mermaid/scripts/mermaid_animation/planning.py",
+      "sha256": "a1c831336529472455590b6b88e933f6ba42b825a2750fca67b49dde158b6f84"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-mermaid/scripts/mermaid_animation/rendering.py",
+      "sha256": "72b9e8af2e849b7293003550ad0f8aa6026d5cc745f6aba8efc4cb8558230201"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-mermaid/scripts/mermaid_animation/solid.py",
+      "sha256": "3ff59f29628d4a2a4e481ed45feddf91aba01b3bb91dcc02b45aab06a45d0f4c"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-mermaid/scripts/mermaid_animation/style.py",
+      "sha256": "c03308d8f6c11780d11121681f540a3b944aae48ec614d2399c550dec3fc9bfe"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-mermaid/scripts/palette_paints.py",
+      "sha256": "b47502166312276e34ffc2d3bb668d4793003e5d0d38b5cc0417eda734d0808a"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-mermaid/scripts/style_mermaid_directory.py",
+      "sha256": "a6250d8876fe6bfe6124ce3c182c451df1503310e22583ccf27cfff0933ddad7"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-mermaid/scripts/test_arrow_contrast.py",
+      "sha256": "47ddc79b351a5abb42352275fa4b33b0dc09ffde09a55bcf78958c6d2983f138"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-mermaid/scripts/test_native_solid.py",
+      "sha256": "7bac230b031ab347f527359e49b68f2025b97232442f2d086519dc85ea712571"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-mermaid/scripts/video_style.py",
+      "sha256": "82aaf86b96b129a7482dfa21498b0d387568e2b96e8b73802e3666bdc1bae990"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-mermaid/video-profile.json",
+      "sha256": "2bb50a2a61d32bdebc822fa8c93f8b4c22dafaf25725cc85ed56d8735bb98d90"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/SKILL.md",
+      "sha256": "55afce39534ff0ff641bc458ed77b814d2f62e5e7bb9faa082f8df718c888526"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/agents/openai.yaml",
+      "sha256": "46ce8bdae4fe27a3b0fe0767e1d15abd15f09907d34b04af4dfbc197b15e3390"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/diagrams/architecture.mmd",
+      "sha256": "f4de0f19b4f77e4003cba08ecfcb0dd796f6fa89b6b9cab2d826e0d57575a9ec"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/diagrams/architecture.svg",
+      "sha256": "3cb60c624ab2b295bab7f755a32140387764a968690d87d300de6778282e700c"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/diagrams/block.mmd",
+      "sha256": "396013b523b2d3912c3c4dc7cac9054ee2bb7fd2d08ec48a09f8f74564163459"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/diagrams/block.svg",
+      "sha256": "cb943728f38f3a3491a6e488bbe7b3ca74d2fb238539079d0c061817c160f382"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/diagrams/class.mmd",
+      "sha256": "2cd197948ee80575d6f1fae38c75552f5ff33dc5872fc8fedff47af7e31f4b3b"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/diagrams/class.svg",
+      "sha256": "9821c15a56ce0102d07335e05ce20f06dd3967612c41351128787094e00f7880"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/diagrams/er.mmd",
+      "sha256": "bdf756895e451d9ac7d3636716f623b8767a7b5c723a3cbfd47a11f0572d6985"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/diagrams/er.svg",
+      "sha256": "372eb2de9d05037c612ddf26e0c755122a0e5471fac715ade2e682b28611ad7b"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/diagrams/flowchart.mmd",
+      "sha256": "21cd61c118981e647b74c7d5c3b7fe1e0b187d01cd83609687b15a53545905b8"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/diagrams/flowchart.svg",
+      "sha256": "36182f00a45aa5362301f3fb103bb31b8bdd2f9b130241f7d5134296c4395f1c"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/diagrams/gantt.mmd",
+      "sha256": "4d43000d298f01045ae774d9c3f126db1636c460a66296dc4e05363c2d0e90f3"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/diagrams/gantt.svg",
+      "sha256": "4fae4be4d653da43ffb5d47e5f712661942fa0b9ad6c36be436f5a97cdbfb004"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/diagrams/git.mmd",
+      "sha256": "dbf4d1387983c06fb7a1185b3b44f3c0ac1495f01a105ec1f7b61ada667d3935"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/diagrams/git.svg",
+      "sha256": "e3f52b4ab97f86689b69f47a37bf4b8ef029141650508bf0f0348cbc2470042b"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/diagrams/journey.mmd",
+      "sha256": "c0ee5946900eba43670dd33d4cf8e43a00493f90314307289eab345f00b55605"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/diagrams/journey.svg",
+      "sha256": "1ac66d07a1dbeb77427f12ab43a8e99438a3c4a5f61fbe9c6c7a190c9565d929"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/diagrams/kanban.mmd",
+      "sha256": "f78564d8f79bd145013224c3dc39124f83e81ecb6f96dbbe3168cf138b7407e6"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/diagrams/kanban.svg",
+      "sha256": "5aeca7f46db52f9b88dfb47988283681fe683af7b9cae1849b704d31fde20dfa"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/diagrams/mindmap.mmd",
+      "sha256": "79e2e887d4b3b7626a2f1498d41f9cc5e5895ae37e92d9debcaf0142df076ef3"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/diagrams/mindmap.svg",
+      "sha256": "b2c45c28fe8334cd04986af26b29d0bc1ff32406f789dac55091f7d7483ad156"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/diagrams/pie.mmd",
+      "sha256": "4c71a65eabef6bd09f38dd1b9a5d9b74761117caaacc9dc871fa9114dfc5bf36"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/diagrams/pie.svg",
+      "sha256": "84024fd316c00587767d06bc6655eb6b2cdb0ab1ced48de68ff42a48f61f9517"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/diagrams/quadrant.mmd",
+      "sha256": "fb850a9613d0589d0ad59e1f2d364f4a32307dc8df7985db7e62f923c2959e16"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/diagrams/quadrant.svg",
+      "sha256": "486fad332db4a430d582e7060b22ea2dc4069158d6d83f66731e7c56dd00055f"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/diagrams/radar.mmd",
+      "sha256": "0e4cd2d3cf53d689e39f3bd7d4a459ab0e12c139e5c5f27cc8d421e4bce17c53"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/diagrams/radar.svg",
+      "sha256": "3a7c2524ca7616cdf0adba863f00259296c4d9dadf1c2913d58be3fb8d063e75"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/diagrams/receipt.json",
+      "sha256": "d09a4eb2bcfe03c743c312a7e8fcbd6b9c2b17d91f904e6951a1b826cfc3581a"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/diagrams/requirement.mmd",
+      "sha256": "111ec4e4577a12dbd3d965a5265609ee00b896340b9c8591bced1f2fe5199567"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/diagrams/requirement.svg",
+      "sha256": "4e0adf96338645038e3a80d2a7b9dd448172b62fdf3ab808b180d6270dda936f"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/diagrams/sankey.mmd",
+      "sha256": "1273302fa7eeb8bcf9741c5a0d5bcd31c3b4e668feaf066f4e4879ebdd156734"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/diagrams/sankey.svg",
+      "sha256": "9f659168013e46c76d065d40223a330f543e3cdb0d999e294ab7583d9f1bbe7d"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/diagrams/sequence.mmd",
+      "sha256": "010f6fc7f9ff34ec8b58e82d27d8376f35a1e2da3ef2bcc9175f901ddadc77ed"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/diagrams/sequence.svg",
+      "sha256": "b5c493d1ded4c52060bfb0aaa5447128f02ae57129a71f780dc82003f99a949e"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/diagrams/state.mmd",
+      "sha256": "6bae384570a6e5134959b491f06af34b7ff8354a2ec84b938659a97e53448547"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/diagrams/state.svg",
+      "sha256": "c770e4576b5ca853e570ed5b6c13b0a6007ca101c77eb5ce8c5e6a9b6a3ed195"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/diagrams/timeline.mmd",
+      "sha256": "834e72c61926b95f0a50bc37ff27bff74fb0d4aa5a0fe58db9e0c016622a5e9e"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/diagrams/timeline.svg",
+      "sha256": "b81621e7183804501f4133de3a59ef4453eb29b4c31a0fd1f98ddd1d78659cf2"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/diagrams/treemap.mmd",
+      "sha256": "d035effd8b5043cfee2ae5b1a50ae125d4051f8dfa670777e514d2c4fe3c6d72"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/diagrams/treemap.svg",
+      "sha256": "82c5768a3b8503a777d31334ec9eca5269f50b46a7cbf14baaf5252ba925d782"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/diagrams/xy.mmd",
+      "sha256": "4ce45b92c917c12f23b8d5cc457e9d35e71d1437c51e5ed23b1fa2b03fd72880"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/diagrams/xy.svg",
+      "sha256": "d6b7f2ea21dce1790393033d8375f923660e07d8c4bbd9fb63f14539db64dc7e"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/fonts/OFL.txt",
+      "sha256": "564ce565c371c5e5bbf286006565a7c9aa55a9f56e7ca58d56e05d649dd61a72"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/fonts/space-grotesk.ttf",
+      "sha256": "3e699ead1876244fa392243054ddefe7cf631b488438828a8a100731a22ab995"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/icons/LUCIDE-LICENSE.txt",
+      "sha256": "b495047bd93a9b06913511076f504daba17d5bbeb3e0650f3bb53a4220329c57"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/icons/chart-no-axes-combined.svg",
+      "sha256": "0811ba583033d8313d49760da3f1192c700a880b5d91bd976e9b08ce67561809"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/icons/chart-no-axes-combined.svg.json",
+      "sha256": "c7725fdb299da34c490a6d9d1c9e41b67a8685fa0d95fc027b8592df1d9f327c"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/icons/database.svg",
+      "sha256": "1ca66d8473a24e803a1f2650c58e088de2880cc753110b590d6a70d11d9e4330"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/icons/database.svg.json",
+      "sha256": "517a869eeec1298ac498e93869e4187bb1efde49eb50cabb0aa827397c4fd467"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/icons/workflow.svg",
+      "sha256": "9d919ef849b7ebf5bb58a69341b094eb0a9fe8a2accae41887b13a8a6cb03656"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/icons/workflow.svg.json",
+      "sha256": "6a1bd4c67e2e8e4c8ebbdc0a315418d60de70fc334b75f8a8bd0df3f672b8830"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/palettes/colorsets.json",
+      "sha256": "b557cb508d9b31534506b9ae22ad3073e8951b49f6ab4e2251f6727ac92a405c"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/palettes/video-color-direction.json",
+      "sha256": "67dc7db36b5139917155bb5446b00c292aefb48f955db823b90d9b7095be9d8c"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/palettes/video-colors.json",
+      "sha256": "782fb98b6f823c0c8e50d1d1f21f26c5a6de10b3a6b694b7c695d33add5d5ab7"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/paper-video/index.html",
+      "sha256": "ea58001a51983644d9ffb54ec5d847fbbcd17f6fe0da6b47d54612e2876984aa"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/paper-video/paper-motion.js",
+      "sha256": "2ce13aafe20892ca02eabd60f9201471bcf77108ddfa4e54ae3465c9b75319a4"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/paper-video/paper.js",
+      "sha256": "e1f1da6215ac87585d81b3e9af45856061e46d32653a7c0608e2fa1aeb91bba6"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/plugin-profiles/d3-operations.md.in",
+      "sha256": "4f945b57e361cfd4b76e6cc0ea8d03cf4b00967420a39a6a5bb736341dbd813e"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/plugin-profiles/hyperframes-operations.md.in",
+      "sha256": "520b7382cd82daca2c93cece69b9a39b08d19c2475a6dbb9b1d5a368c4076b97"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/plugin-profiles/icons-operations.md.in",
+      "sha256": "abb0c95763691f38bbd9183f460485b5908bb20a535d708416d0fe9691c78288"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/plugin-profiles/line-world-d3.md.in",
+      "sha256": "f37f28254194a0f660c41aa596e966d88341ce76bed2c8f440645d27fde28e76"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/plugin-profiles/line-world-hyperframes.md.in",
+      "sha256": "700de993b6ca6733402c90ddcdaad1434ba3c000da8b5abe52551686e6b3f2d0"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/plugin-profiles/line-world-icons.md.in",
+      "sha256": "2747deb16333c169d821bb4014b2fe4d8d7b6f4eb6d33db96847bec58126c51b"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/plugin-profiles/line-world-mermaid.md.in",
+      "sha256": "cc1fa12c6d15363e3b9ba092bdc769c5947e814f83c8b670c9589006a3ec8f47"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/plugin-profiles/mermaid-operations.md.in",
+      "sha256": "62e46e2da5d24b4a1a57b8c46da00025ae4ceb1595578aaeac49e384c9910b61"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/plugin-profiles/video-contract.md",
+      "sha256": "27fb4fd3fad2212639d240642995cc6ea67fc0e9e2ac85327a809e4b56e3e381"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/plugin-profiles/video_chart.py.in",
+      "sha256": "7bff5c687d46b25d4d208925c25cc1fe6ba8113e4f1903ed071140280824a65c"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/plugin-profiles/video_style.py",
+      "sha256": "82aaf86b96b129a7482dfa21498b0d387568e2b96e8b73802e3666bdc1bae990"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/runtime/attention.js",
+      "sha256": "f9811cc2ff3c32b03cedb8cf6b73662c9d25be88f99d23e1aa1808856bc57451"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/runtime/focus-motion.js",
+      "sha256": "7ece2fb89b06f38f8af115082f2009fec89cde23f65fb12cd9448001515215a5"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/runtime/focus.js",
+      "sha256": "d21fb40c114547121d2135c06f0faf9f6d66f005e17c2b3fe060d2c3f9f47b32"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/runtime/photo-focus.js",
+      "sha256": "74645e5ead518c0f437cd555f2d4de3e801c84c4fbbb2b1fcf0d4c8a87148403"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/runtime/theme.css",
+      "sha256": "2bf5bea206b2d5f886241a5a95ed9d6902ec20c8af38a6362a01d19990f01a24"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/runtime/theme.js",
+      "sha256": "4ddffce313dd47badd91bad0e385ac370a905a000b0bbe72ee9e4d07bf50d5a0"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/runtime/visual-review.js",
+      "sha256": "b01d73c3866c1ce143cdaed534aa2da34da35987d95423be4a05594e2603b8b1"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/runtime/website-tour.js",
+      "sha256": "03c92cb02dca97b6cf03fc9d184e636dd4ce084b2dc2c6515d5ab8dbc185f8b9"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/templates/atlas-scene.js",
+      "sha256": "18664ba393a07af5748cbebe609e110c23125677fd45e8f17bcca553d1437ada"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/templates/hf.ts",
+      "sha256": "11a4e32cde23c7aca4c27cf76ca1a798c070e23ee4f515be8c7ec5f7f12ceaf0"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/templates/index.html",
+      "sha256": "c41fd69618110aeb334f26ec193766ef93101fb694e8c2d43909f4f35bcb9a5c"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/templates/local-runtime.ts",
+      "sha256": "49206064f798fc72d26a2b0d94d56c87f01cdca232dcd8e8afb43ff0ea6e194a"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/templates/preview.html",
+      "sha256": "699a5d4920e14d9a64fc4e417022f18f7d3b2480865042146ab38b3caf4380ba"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/templates/scene.js",
+      "sha256": "fff1e53d4bfc3d456edcbf5f63ff3035aa44068f2d0b41fa95bff588201576e9"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/vendor/D3-LICENSE.txt",
+      "sha256": "3e6849627f74ff73c257a3ae1efb574015d94fc1035c05ec3c15805165efcbc4"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/vendor/GSAP-LICENSE.txt",
+      "sha256": "5e97d0bff35968b4642580876d00489591dc2d1cca0aaccf10e0fb7bb2302e75"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/vendor/d3.min.js",
+      "sha256": "f2094bbf6141b359722c4fe454eb6c4b0f0e42cc10cc7af921fc158fceb86539"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/vendor/gsap.min.js",
+      "sha256": "c174bfce53a729418d57a8ad8625e7247c793a22fef8e2851e3cfa3de9cd8280"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/vendor/photo-onebit/colorset_contract.py",
+      "sha256": "b9b0ade7190656714b118879507474aae8b27d3e884d71d0da0c0bab94cf11d7"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/vendor/photo-onebit/provenance.json",
+      "sha256": "33114bfcdb9ba2d3fb21da9711062b22adcedd7834c668e8e74abc56b7746f13"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/assets/vendor/photo-onebit/stylize_svg.py",
+      "sha256": "5f283ab67beadac356d8314c7aec7a333e5b00a310e7a8f745635108ebb8b6b2"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/references/attention-choreography.md",
+      "sha256": "5e12b35bca86f5cccb1b4bc9fe5d478b55adf97906bb700783c820db603b268f"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/references/color-priority.md",
+      "sha256": "b26a2bdc18bd835fd42193834a1ee522a6cadcf089f35d04e8ea5dc4a1ff70f5"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/references/data-storytelling.md",
+      "sha256": "59a50b9de99f48a7c0e4ef3191057c25f65c446e8cba5b63315e819b29e8a14a"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/references/documentary-images.md",
+      "sha256": "076d2f110308441dd423e8a81206a524c51facb27ff93aa811da0d030b5d2a24"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/references/focus-motion.md",
+      "sha256": "9b5149543f20a00a983be7cb6430a01f8effa96b6ea59f507e4b2f9abd57ba9f"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/references/full-frame-atlas.md",
+      "sha256": "fa03eb515a0b7f8a6172cd96e132a6a83ca8b44d12e7fc33f929db456f1b23db"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/references/icons-and-alignment.md",
+      "sha256": "1be2855481cac526954e18a9b2325ad22d52034818d87ac9ec5c6e79f30a0d1b"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/references/incremental-editing.md",
+      "sha256": "62bac86a8315bda8e3152ab1b145265a0bc446bc8b22cc975e835b8b95d884b0"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/references/narration.md",
+      "sha256": "ac7c0783aa482d03ce2dc6ac68d5d867fc135175ba43d90330fc7ea0eb5dfd2f"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/references/paper-tours.md",
+      "sha256": "29c4a8ca3248cbcc6cccf850812b9d6079f356a7ae8f05d454f13dadeb5f9653"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/references/pattern-recipes.md",
+      "sha256": "7f2a17dc0284653c24c4662bbf8ef1fa36248cd520e36b62f2f396534e6939f1"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/references/people-and-logos.md",
+      "sha256": "db9fd7152653ba430cbbb685fc82c0959e55f40fea7d91d245967ca4490f27e4"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/references/photo-focus.md",
+      "sha256": "e115c3126fb6e6d1d86495bbee58848e591f8d332b59f8f2e6a15b3ff4cd9413"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/references/plugin-profiles.md",
+      "sha256": "a119ceb484b23d1c09ae6e0114de7c5039b15076c42df70b802f6c413ed3ade3"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/references/producers.md",
+      "sha256": "6a9630c838b7e8b6681a8a899f8d20192d4146ba4b7ce5f01ea89d7352f58e78"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/references/project-delivery.md",
+      "sha256": "db953f65f4691b53136b3d993f34f1e1ef8be6aa1615cd4be74aa4844291a2c1"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/references/rendering.md",
+      "sha256": "edda875763240647fb0e5449f0650254780f470295f87a0fb96849dade720f1f"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/references/speech-focus.md",
+      "sha256": "cf14403443714e560198e08b27eeb68decb4d34f779d67861cfc894d31859214"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/references/timing.md",
+      "sha256": "5f927c3cc9a8b635e8bda67bb78f9121b4736f14ba97260eedea29d2085124b8"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/references/visual-direction.md",
+      "sha256": "bc8b2a8af766df152e96c14cff276e8ed4079a91fe05149dc71b39ea1f2345c4"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/references/visual-review.md",
+      "sha256": "bd605229fe2686a100e2b3728b744f07884907e7b07ff0f585ddd615452de944"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/references/website-tours.md",
+      "sha256": "4c4f800413ef310f8231c2194b20dc8f41e9184ce5ea37f3c17ca19f91229b20"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/scripts/atlas_audit.py",
+      "sha256": "bc9fff70baf9707be56d2cdeacb588404ce75a0684bcf738ef4a5e83940a2846"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/scripts/atlas_story.py",
+      "sha256": "604275b23c166b77f19b7f292cbde445dab98d5e8d64b8066c78d1bb0d761c7d"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/scripts/attention_contract.py",
+      "sha256": "18a51babf7f6cbe89af5fa8374b5990b2ae63f317faa43f01c52b6dc9ad65460"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/scripts/capture_benchmark.py",
+      "sha256": "34ac1730ba9beda6d06ecd5937b5a302c01f83ca5cdfda856128aef2027a3e0d"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/scripts/color_audit.py",
+      "sha256": "a9dee1ba27e1446ef88e30a2f2107b184ca6cd39137c544a56104677fd0858db"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/scripts/content_scan.py",
+      "sha256": "da082caa5048b7e4b7205097c5df7b1b7ee16f15d6d506fee728bef5bcbf4ca9"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/scripts/documentary_assets.py",
+      "sha256": "72aa14ec30fb5bbd346a45ea38ce4c00e70de45fa47e0fb29f38b6a280618eaa"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/scripts/inspect_focus.py",
+      "sha256": "ba9c37ea7c62a5bff270b440db37d53b555ab258aa3616260ded6c5d0887c836"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/scripts/inspect_focus_motion.py",
+      "sha256": "21aae4b388bcae1ba004b894e9fee7ebdfe119db3141e1510ed6da953e0e71eb"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/scripts/inspect_items.py",
+      "sha256": "2243785475e48ad67c10b53e3081fb1c17485572444b7fb46142a7363932f7b0"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/scripts/line_world.py",
+      "sha256": "3d60a402eebe4d19bf048661d368351ff52a17550bc9467c07172797b8d39804"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/scripts/media_assets.py",
+      "sha256": "a302c3f8a59d11fd2e7d1e90c9bf0a5a8a1fe54f4cc773c5cd1c14cfb746085d"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/scripts/narration_review.py",
+      "sha256": "351e6392397c9e2e90e28077e72c498442d3b1053cda2c1a540e1a20b2e8be96"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/scripts/paper_video.py",
+      "sha256": "fd6ac820b2c035bad3b189bc9e7830a3cbc59edf10e9ce09fed8de41ba301a11"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/scripts/people_context.py",
+      "sha256": "513d14cb085072a958f8a234faa3ca9425f767bf73b43482141c069919247c3b"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/scripts/photo_focus.py",
+      "sha256": "f9d32d6229a78634141fa4cc595579c93d903dd1f5a83c1ad6d79a7a8103bc8b"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/scripts/project_delivery.py",
+      "sha256": "a13b0b25ef37a1c37e08377190a0e8b5a9aa334513d25684c45492456d4ad5f8"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/scripts/render_line_world.py",
+      "sha256": "e93c6b4158b163ace22f2086be119395de94b9e3f12c1ebef3db75e7a7427c13"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/scripts/review_video.py",
+      "sha256": "3b708df06eb54e7083586a99fc2945596098746f3ef3b18415d742ff0d6ba10e"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/scripts/test_attention.ts",
+      "sha256": "9454a9d3cbfacd2d9410f70092c38447060cf68ef0408fb2178857052a8e2088"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/scripts/test_content_scan.py",
+      "sha256": "b80a4dd082a21fbdd7040fb04ea3a8071356bf6466b02035e99599fba733b503"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/scripts/test_documentary_assets.py",
+      "sha256": "65f23eec82e4c9eb4daf297dde815d611067755ba42d20d5df7c647839941233"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/scripts/test_focus.py",
+      "sha256": "0a277472c628ba73f53e985154c7afd24a1dfe6f11aba6772e5c0e57894fcab2"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/scripts/test_focus_motion.py",
+      "sha256": "2ed042fdeaa4856ed88fc85b5b3256cf80c7c49d853da4b5a1bf8af92ad170f6"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/scripts/test_item_contrast.py",
+      "sha256": "2e7382b476ba75a5fa999dc8e0f8f33677e440ea86df89bed46366093dc54f0e"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/scripts/test_line_world.py",
+      "sha256": "afe6d244e7276892bec2a97935ea4a93e5d1c8e9cce99ff7fef2134d1f806efd"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/scripts/test_media_assets.py",
+      "sha256": "b7b42385f2cd94cfeced104a7e6fb68bc5a75a34a773203cc33f363e35754d23"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/scripts/test_narration_review.py",
+      "sha256": "21595d9d161fe7bd6e8600c5175a7260aef7bd593b7f094dc1d44a05aed440f1"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/scripts/test_paper_motion.py",
+      "sha256": "df82d53165725884ebf6560e7ebecdc2e75b4ce52b57324396323823c1066b9c"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/scripts/test_paper_video.py",
+      "sha256": "39498b158aa34488d824dfdcbfb671ef6c78e467518f1b388e84787eb3756ef3"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/scripts/test_people_context.py",
+      "sha256": "7f21014037863b89eaee50d3ac6185e05d14bf5bbca2ccdbd00c03c88b1b21ee"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/scripts/test_photo_focus.py",
+      "sha256": "7b5cfa6bf38af1c384ed40de81eeb3c62bed372b619b770932f06c2583b76bcc"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/scripts/test_project_delivery.py",
+      "sha256": "2bd85b30117711f286ebc66b58004b905673bec13795326e0ac69e678f548782"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/scripts/test_review_video.py",
+      "sha256": "2fabd66f6b2f8bfed795012b1291e58f611874c6936e39ebcf61d844e8dabe9d"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/scripts/test_story_update.py",
+      "sha256": "d5c6d9a15581fbe336c7c73d4772b241e5d83218a9573eb007b96b4b5864765d"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/scripts/test_theme.py",
+      "sha256": "54b6b706454e42c08fbafadc6c4f5205d3edfb81e76372adac977c861e47fb1a"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/scripts/test_video_edit.py",
+      "sha256": "0e601b0ee69d16ecfaed252d7b5c23a1247193d930cf3092e8977700f4706594"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/scripts/test_website_video.py",
+      "sha256": "8133726c25c825c6e1078954151412feb777c5556ac73ec12505d3ef2d7b1429"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/scripts/video_edit.py",
+      "sha256": "daa57622a09be313707df531a847d8f18124cb84b24853d0910c1c73feee72b4"
+    },
+    {
+      "path": "plugins/line-world-video/skills/line-world-video/scripts/website_video.py",
+      "sha256": "c54dc0fe102f815a969ca753503837d70cc62bd5ce691bd38368e8e19a137294"
+    }
+  ]
+}

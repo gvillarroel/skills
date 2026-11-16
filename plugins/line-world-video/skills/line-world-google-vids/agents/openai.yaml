@@ -1,0 +1,4 @@
+interface:
+  display_name: "Line World Google Vids"
+  short_description: "Resume Vids scenes and verify playable MP4 delivery"
+  default_prompt: "Use $line-world-google-vids to resume prepared scenes in Google Vids, synchronize native narration, and verify a complete playable/downloadable MP4 plus the editable project URL using the cached delivery receipt."
