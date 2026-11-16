@@ -1,6 +1,6 @@
 # Line World Video plugin
 
-Release **0.23.1**, November 16, 2026. Create explanatory videos with a guiding
+Release **0.24.1**, November 16, 2026. Create explanatory videos with a guiding
 dot, a larger continuous world, full-frame sections, sourced photographs,
 D3/Mermaid diagrams and measured narration. The plugin contains six standalone
 skills: the main orchestrator, dedicated D3, Mermaid, icon and HyperFrames
@@ -66,7 +66,11 @@ moves. See [long-focus motion](../skills/line-world-video/references/focus-motio
 Use researched photographs for documented physical objects and diagrams for
 mechanisms, relations and quantities. Retain originals, identity/variant
 checks, credits and transformation lineage. Compare original, grayscale, edge,
-pixel and one-bit options at actual delivery size. Introduce people by spoken
+pixel and one-bit options at actual delivery size. Keep secondary components
+neutral; restore the aligned prepared original colors during semantic focus
+and return to gray afterward. Use editable 0.35-second edge transitions and
+the [photographic focus utility](../skills/line-world-video/references/photo-focus.md)
+for paired assets and actual-pixel checks. Introduce people by spoken
 name and contribution plus a short visible role caption.
 
 Explain the subject, evidence and consequences in narration. Keep substantive
@@ -82,6 +86,7 @@ figures and table values.
 | Scaffold a linked story or full-frame atlas | `line_world.py init`, `build`, `update` |
 | Inspect or change a few fields and select rerenders | `video_edit.py inspect`, `plan`, `apply`, `status` |
 | Cache real-object images and compare treatments | `documentary_assets.py fetch`, `prepare`, `audit --screenshot` |
+| Restore original photo color only during focus | `photo_focus.py plan`, `inspect`, `assets/runtime/photo-focus.js` |
 | Prepare portraits, circular logos and credits | `media_assets.py` and `people_context.py` |
 | Review subject-focused narration | `narration_review.py` |
 | Inspect icon/text contrast, alignment or guide clearance | `inspect_items.py`, `inspect_focus.py` |

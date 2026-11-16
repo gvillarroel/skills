@@ -82,7 +82,7 @@ def main():
             shutil.copyfile(motion,dest/"assets/runtime/attention.js")
             focus=REPO/"skills/line-world-video/assets/runtime/focus.js"
             shutil.copyfile(focus,dest/"assets/runtime/focus.js")
-            for resource in ['theme.css','theme.js','focus-motion.js']:
+            for resource in ['theme.css','theme.js','focus-motion.js','photo-focus.js']:
                 shutil.copyfile(REPO/'skills/line-world-video/assets/runtime'/resource,dest/'assets/runtime'/resource)
             patches.append('Share semantic CSS tokens and the theme runtime for project-owned style changes.')
             patches.append('Bind audio word cues to measured adjacent ports and audit label/stroke clearance.')

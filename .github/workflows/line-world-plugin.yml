@@ -42,6 +42,8 @@ jobs:
         run: uv run --with "playwright>=1.51,<2" playwright install --with-deps --only-shell chromium
       - name: Verify actual focused pixels and clock seeking
         run: uv run --script skills/line-world-video/scripts/test_focus_motion.py
+      - name: Verify original photographic color and neutral recovery
+        run: uv run --script skills/line-world-video/scripts/test_photo_focus.py
       - name: Build and extract the actual plugin packages
         run: uv run --script projects/line-world-video/scripts/package_plugin.py
       - name: Read the release version

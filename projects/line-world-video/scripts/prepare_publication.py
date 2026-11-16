@@ -12,7 +12,7 @@ import subprocess
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[3]
-SHARED = ['package-spec.json', 'plugin.json', *['scripts/' + s for s in ['package_plugin.py', 'verify_plugin.py', 'verify_openai_package.py', 'sync_local.py', 'prepare_publication.py', 'make_focus_motion_demo.py']]]
+SHARED = ['package-spec.json', 'plugin.json', *['scripts/' + s for s in ['package_plugin.py', 'verify_plugin.py', 'verify_openai_package.py', 'sync_local.py', 'prepare_publication.py', 'make_focus_motion_demo.py', 'make_photo_focus_demo.py']]]
 
 
 def main():
@@ -36,7 +36,7 @@ def main():
         destination.parent.mkdir(parents=True, exist_ok=True); shutil.copyfile(source, destination); selected.append(name)
     source_backlog = (ROOT / 'SKILLS.md').read_text(encoding='utf-8')
     rows = [l for l in source_backlog.splitlines() if l.startswith(('| line-world-video |', '| line-world-google-vids |'))]
-    backlog = (target / 'SKILLS.md').read_text(encoding='utf-8')
+    backlog = subprocess.check_output(['git', 'show', 'HEAD:SKILLS.md'], cwd=target, text=True, encoding='utf-8')
     lines = [l for l in backlog.splitlines() if not l.startswith(('| line-world-video |', '| line-world-google-vids |'))]
     insert = next(i for i, l in enumerate(lines) if l.startswith('| ---')) + 1
     lines[insert:insert] = rows

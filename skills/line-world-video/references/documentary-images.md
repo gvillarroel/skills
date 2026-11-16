@@ -104,8 +104,13 @@ source's access rejection.
 Use rectangular image bounds with aspect-preserving `meet` fitting. Do not
 circle-crop hardware, add decorative card borders or hide distinctive ports.
 Place diagrams and guide paths beside the photo. Reserve an adjacent semantic
-port around the photo plus its essential label. Use a fixed baked treatment
-throughout the shot so a dither pattern does not change on every frame.
+port around the photo plus its essential label. Keep each baked treatment fixed
+so a dither pattern does not change on every frame. For secondary components,
+restore the aligned prepared original during focus, then return to the neutral
+treatment. Read [photographic focus](photo-focus.md) for cached pairs, an editable
+crossfade and actual pixel verification. This changes appearance, not the source
+photograph, crop or object identity. Preserve evidence-bearing color when the
+explanation depends on it instead of applying a neutral secondary treatment.
 
 Declare a physical identity view as
 `{"id":"card-left","kind":"physical","purpose":"identity","depiction":"photo-treatment","asset":"documented-card","variant":"one-bit"}`.

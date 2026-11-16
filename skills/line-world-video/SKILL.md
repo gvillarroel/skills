@@ -70,6 +70,10 @@ from emphasis ink. Never pulse in and out for each narrated item.
    Use `documentary_assets.py` for cached originals, grayscale/edge/pixel/one-bit
    variants, credits and object-binding audits. Keep diagrams for explanatory
    mechanisms and relationships. Inspect recognition at actual delivery size.
+   Keep secondary component photographs neutral; restore their reviewed original
+   colors only during semantic focus, then return to gray. Use
+   [photographic focus](references/photo-focus.md) for aligned pairs, editable
+   transitions and the parent-clock pixel check.
 6. When the story needs recognizable people or company marks, read
    [portraits and circular logos](references/people-and-logos.md). Research real
    source photographs and their contribution context, then use `media_assets.py`

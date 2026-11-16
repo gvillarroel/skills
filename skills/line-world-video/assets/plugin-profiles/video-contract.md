@@ -171,6 +171,16 @@ by fitting labels inside their sections. Inspect cue arrivals and encoded audio.
 
 ## Incremental changes
 
+For secondary photographic components, keep the prepared neutral treatment
+outside semantic focus and restore the aligned prepared original colors only
+while focused. Use `assets/runtime/photo-focus.js` with the parent clock,
+reviewed neutral/color pairs and editable `start`/`end`/`transition` fields.
+Default to a 0.35-second crossfade inside each focus boundary. Preserve crop,
+fit, geometry, identity, rights and source pixels; never invent missing color.
+Await the controller's `ready` before capture. Preserve evidence-bearing colors
+in source charts and documents. The orchestrator supplies a verified pair and
+measured cue windows; return the binding plan with the produced asset.
+
 Keep stable scene/entity/cue IDs and expose editable values as project JSON.
 Inspect only the requested IDs; return a small field patch instead of rewriting
 the whole storyboard. The primary video skill has a deterministic semantic
