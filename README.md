@@ -24,6 +24,6 @@ Edit versioned sources and `projects/skills-marketplace/catalog.json` on `main`.
 
 Refresh this source with `codex plugin marketplace upgrade skills-marketplace`.
 
-Source commit: `ac31520d024002a9d93f2449823be954d5a62ce8`.
+Source commit: `58cfea36bacfc9ee99cd20e0026252561d9de71b`.
 
 Catalog availability, installation, external account authentication and frontend activation are separate states. No user account configuration or credentials are bundled.

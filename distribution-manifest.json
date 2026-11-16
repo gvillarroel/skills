@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "name": "skills-marketplace",
-  "sourceCommit": "ac31520d024002a9d93f2449823be954d5a62ce8",
+  "sourceCommit": "58cfea36bacfc9ee99cd20e0026252561d9de71b",
   "plugins": [
     {
       "name": "line-world-video",
@@ -33,7 +33,7 @@
     },
     {
       "path": "README.md",
-      "sha256": "118534ce18444ed612e6e37abc66f1366056d25d716d479910e6cb306e805584"
+      "sha256": "1711bbd87ecd1c8112c22246440021ddb8d6a4db235a119bd89d116465189486"
     },
     {
       "path": "plugins/hyperframes/.claude-plugin/plugin.json",
