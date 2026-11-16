@@ -1,0 +1,12 @@
+/* Semantic defaults. Project theme.css supplies validated custom properties. */
+:root{--lw-background:#ffffff;--lw-surface:#ffffff;--lw-primary:#9e1b32;--lw-secondary-highlight:#696969;--lw-ink:#333e48;--lw-muted:#696969;--lw-line:#828282;--lw-quiet:#e7e7e7;--lw-font-scale:1;--lw-line-width:2px}
+[data-color-role="primary-highlight"]{fill:var(--lw-primary)}
+[data-color-role="secondary-highlight"]{fill:var(--lw-secondary-highlight)}
+[data-color-role="quiet"]{fill:var(--lw-quiet)}
+[data-text-role="label"]{font-size:calc(27px * var(--lw-font-scale))}
+[data-text-role="small"]{font-size:calc(23px * var(--lw-font-scale))}
+[data-lw-surface="item"]{stroke:none!important;stroke-width:0!important}
+[data-lw-icon]{isolation:isolate}
+[data-lw-layout="center"]{display:flex;align-items:center;justify-content:center}
+
+:root{--lw-background:#ffffff;--lw-surface:#ffffff;--lw-primary:#9e1b32;--lw-secondary-highlight:#696969;--lw-ink:#333e48;--lw-muted:#696969;--lw-line:#828282;--lw-quiet:#e7e7e7;--lw-font-scale:1;--lw-line-width:2px;}

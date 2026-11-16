@@ -1,0 +1,9 @@
+{
+  "origin": "one-bit-dither-svg",
+  "purpose": "Pinned self-contained static photo dither engine",
+  "adaptation": "Palette lookup stays inside the primary video skill.",
+  "sourceFiles": {
+    "stylize_svg.py": "0e27f995ff1e864408d885a4dd3e8c87ab9612e9009d78e0beecd35f4e6012f4",
+    "colorset_contract.py": "6b284e2ed09a776b0cbe4539a19d36159904466746b1f91e39313d913a9298a0"
+  }
+}

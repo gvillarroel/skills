@@ -1,0 +1,260 @@
+{
+  "ok": true,
+  "actualForwardRuns": 17,
+  "passedRuns": 15,
+  "failedRuns": 2,
+  "model": "openai-codex/gpt-6.1-sol",
+  "runs": [
+    {
+      "case": "batch-contract",
+      "runId": "20261115-utilities-batch-contract-1",
+      "passed": true,
+      "durationSeconds": 48.722,
+      "toolCalls": 13,
+      "reads": [
+        "../prompt.md",
+        "skills/line-world-google-vids/SKILL.md",
+        "skills/line-world-google-vids/references/batch-production.md",
+        "skills/line-world-google-vids/references/scene-handoff.md",
+        "result.json",
+        "film/handoff/timing.json"
+      ]
+    },
+    {
+      "case": "batch-naturalistic",
+      "runId": "20261115-utilities-batch-naturalistic-1",
+      "passed": true,
+      "durationSeconds": 61.974,
+      "toolCalls": 17,
+      "reads": [
+        "../prompt.md",
+        "skills/line-world-google-vids/SKILL.md",
+        "skills/line-world-google-vids/references/batch-production.md",
+        "skills/line-world-google-vids/references/scene-handoff.md",
+        "skills/line-world-google-vids/references/timing-continuity.md",
+        "film/handoff/observed.json",
+        "film/handoff/timing.json"
+      ]
+    },
+    {
+      "case": "batch-naturalistic",
+      "runId": "20261115-utilities-batch-naturalistic-2",
+      "passed": true,
+      "durationSeconds": 66.627,
+      "toolCalls": 18,
+      "reads": [
+        "../prompt.md",
+        "skills/line-world-google-vids/SKILL.md",
+        "skills/line-world-google-vids/references/batch-production.md",
+        "skills/line-world-google-vids/references/timing-continuity.md",
+        "skills/line-world-google-vids/references/scene-handoff.md",
+        "film/handoff/timing.json",
+        "film/handoff/observed.json"
+      ]
+    },
+    {
+      "case": "batch-naturalistic",
+      "runId": "20261115-utilities-batch-naturalistic-3",
+      "passed": true,
+      "durationSeconds": 62.504,
+      "toolCalls": 17,
+      "reads": [
+        "../prompt.md",
+        "skills/line-world-google-vids/SKILL.md",
+        "skills/line-world-google-vids/references/batch-production.md",
+        "skills/line-world-google-vids/references/timing-continuity.md",
+        "skills/line-world-google-vids/references/scene-handoff.md",
+        "film/handoff/observed.json",
+        "film/handoff/timing.json"
+      ]
+    },
+    {
+      "case": "batch-generalization",
+      "runId": "20261115-utilities-batch-generalization-1",
+      "passed": true,
+      "durationSeconds": 67.429,
+      "toolCalls": 13,
+      "reads": [
+        "../prompt.md",
+        "skills/line-world-google-vids/SKILL.md",
+        "skills/line-world-google-vids/references/batch-production.md",
+        "skills/line-world-google-vids/references/scene-handoff.md",
+        "skills/line-world-google-vids/references/timing-continuity.md",
+        "film/handoff/timing.json"
+      ]
+    },
+    {
+      "case": "batch-generalization",
+      "runId": "20261115-utilities-batch-generalization-2",
+      "passed": true,
+      "durationSeconds": 73.977,
+      "toolCalls": 15,
+      "reads": [
+        "../prompt.md",
+        "skills/line-world-google-vids/SKILL.md",
+        "skills/line-world-google-vids/references/batch-production.md",
+        "skills/line-world-google-vids/references/scene-handoff.md",
+        "skills/line-world-google-vids/references/timing-continuity.md",
+        "film/handoff/timing.json",
+        "film/handoff/build.json"
+      ]
+    },
+    {
+      "case": "batch-generalization",
+      "runId": "20261115-utilities-batch-generalization-3",
+      "passed": true,
+      "durationSeconds": 66.008,
+      "toolCalls": 17,
+      "reads": [
+        "../prompt.md",
+        "skills/line-world-google-vids/SKILL.md",
+        "skills/line-world-google-vids/references/batch-production.md",
+        "skills/line-world-google-vids/references/timing-continuity.md",
+        "skills/line-world-google-vids/references/scene-handoff.md",
+        "film/handoff/timing.json",
+        "film/handoff/build.json"
+      ]
+    },
+    {
+      "case": "batch-boundary",
+      "runId": "20261115-utilities-batch-boundary-1",
+      "passed": true,
+      "durationSeconds": 62.568,
+      "toolCalls": 13,
+      "reads": [
+        "../prompt.md",
+        "skills/line-world-google-vids/SKILL.md",
+        "skills/line-world-google-vids/references/batch-production.md",
+        "skills/line-world-google-vids/references/timing-continuity.md",
+        "skills/line-world-google-vids/references/scene-handoff.md",
+        "skills/line-world-google-vids/scripts/vids_batch.py"
+      ]
+    },
+    {
+      "case": "producer-contract",
+      "runId": "20261115-utilities-producer-contract-1",
+      "passed": true,
+      "durationSeconds": 34.248,
+      "toolCalls": 9,
+      "reads": [
+        "../prompt.md",
+        "skills/line-world-video/SKILL.md",
+        "film/story.json"
+      ]
+    },
+    {
+      "case": "producer-naturalistic",
+      "runId": "20261115-utilities-producer-naturalistic-1",
+      "passed": true,
+      "durationSeconds": 45.132,
+      "toolCalls": 15,
+      "reads": [
+        "../prompt.md",
+        "skills/line-world-video/SKILL.md",
+        "skills/line-world-video/references/visual-direction.md",
+        "skills/line-world-video/references/data-storytelling.md",
+        "skills/line-world-video/references/color-priority.md",
+        "skills/line-world-video/references/timing.md",
+        "film/story.json",
+        "second-update.json",
+        "film/timing.json"
+      ]
+    },
+    {
+      "case": "producer-naturalistic",
+      "runId": "20261115-utilities-producer-naturalistic-2",
+      "passed": true,
+      "durationSeconds": 41.955,
+      "toolCalls": 14,
+      "reads": [
+        "../prompt.md",
+        "skills/line-world-video/SKILL.md",
+        "skills/line-world-video/references/data-storytelling.md",
+        "skills/line-world-video/references/visual-direction.md",
+        "skills/line-world-video/references/timing.md",
+        "film/story.json",
+        "first-update.json",
+        "film/timing.json"
+      ]
+    },
+    {
+      "case": "producer-naturalistic",
+      "runId": "20261115-utilities-producer-naturalistic-3",
+      "passed": true,
+      "durationSeconds": 49.599,
+      "toolCalls": 15,
+      "reads": [
+        "../prompt.md",
+        "skills/line-world-video/SKILL.md",
+        "skills/line-world-video/references/timing.md",
+        "skills/line-world-video/references/visual-direction.md",
+        "skills/line-world-video/references/color-priority.md",
+        "film/story.json",
+        "first-update.json",
+        "film/timing.json",
+        "second-update.json"
+      ]
+    },
+    {
+      "case": "batch-final",
+      "runId": "20261115-utilities-final-naturalistic-1",
+      "passed": true,
+      "durationSeconds": 86.587,
+      "toolCalls": 18,
+      "reads": [
+        "../prompt.md",
+        "skills/line-world-google-vids/SKILL.md",
+        "skills/line-world-google-vids/references/batch-production.md",
+        "skills/line-world-google-vids/references/timing-continuity.md",
+        "skills/line-world-google-vids/references/scene-handoff.md",
+        "film/handoff/timing.json",
+        "film/handoff/observed.json"
+      ]
+    },
+    {
+      "case": "ui-final",
+      "runId": "20261115-utilities-final-ui-contract-1",
+      "passed": true,
+      "durationSeconds": 32.232,
+      "toolCalls": 7,
+      "reads": [
+        "../prompt.md",
+        "skills/line-world-google-vids/SKILL.md",
+        "skills/line-world-google-vids/references/ui-workflow.md",
+        "skills/line-world-google-vids/assets/runtime/vids-ui.js"
+      ]
+    },
+    {
+      "case": "source-schema-failure",
+      "runId": "20261115-utilities-final-source-contract-1",
+      "passed": false,
+      "classification": "skill-schema-contract",
+      "resolvedBy": "20261115-utilities-final-source-contract-3"
+    },
+    {
+      "case": "source-probe-failure",
+      "runId": "20261115-utilities-final-source-contract-2",
+      "passed": false,
+      "classification": "agent-tool-error",
+      "resolvedBy": "20261115-utilities-final-source-contract-3"
+    },
+    {
+      "case": "source-final",
+      "runId": "20261115-utilities-final-source-contract-3",
+      "passed": true,
+      "durationSeconds": 41.864,
+      "toolCalls": 12,
+      "reads": [
+        "../prompt.md",
+        "skills/line-world-google-vids/SKILL.md",
+        "skills/line-world-google-vids/references/scene-handoff.md",
+        "skills/line-world-google-vids/references/batch-production.md",
+        "skills/line-world-google-vids/references/timing-continuity.md",
+        "film/.vids/state.json",
+        "film/handoff/timing.json",
+        "film/handoff/build.json"
+      ]
+    }
+  ],
+  "preflightNote": "Eight initial source-preflight exits preceded model execution. Actual source-contract run 1 exposed a shared-schema defect; run 2 produced correct media but a preliminary shell listing of nonexistent directories caused a strict tool error. Both are retained; the corrected source contract passed in fresh run 3."
+}

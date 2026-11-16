@@ -1,0 +1,223 @@
+{
+  "ok": false,
+  "passed": 10,
+  "total": 12,
+  "model": "openai-codex/gpt-6.1-sol",
+  "results": [
+    {
+      "scope": "orchestrator",
+      "case": "contract",
+      "repeat": 1,
+      "ok": true,
+      "checks": {
+        "strictHarness": true,
+        "trace": true,
+        "currentPayloadMatches": true,
+        "noAutomaticTitles": true,
+        "contiguousClock": true,
+        "atlas": true,
+        "inventory": true,
+        "duration": true,
+        "fullFramePartitions": true,
+        "sameFacts": true
+      },
+      "run": "evaluations/runs/20261114-line-world-plugin-contract-sol-1"
+    },
+    {
+      "scope": "orchestrator",
+      "case": "boundary",
+      "repeat": 1,
+      "ok": true,
+      "checks": {
+        "strictHarness": true,
+        "trace": true,
+        "currentPayloadMatches": true,
+        "noAutomaticTitles": true,
+        "contiguousClock": true,
+        "atlas": true,
+        "inventory": true,
+        "duration": true,
+        "fullFramePartitions": true,
+        "sameFacts": true,
+        "rejections": true
+      },
+      "run": "evaluations/runs/20261114-line-world-plugin-boundary-sol-1"
+    },
+    {
+      "scope": "orchestrator",
+      "case": "naturalistic",
+      "repeat": 1,
+      "ok": true,
+      "checks": {
+        "strictHarness": true,
+        "trace": true,
+        "currentPayloadMatches": true,
+        "noAutomaticTitles": true,
+        "contiguousClock": true,
+        "atlas": true,
+        "inventory": true,
+        "duration": true,
+        "fullFramePartitions": true,
+        "sameFacts": true,
+        "requestedRetime": true,
+        "actualBrowserAudit": true
+      },
+      "run": "evaluations/runs/20261114-line-world-plugin-naturalistic-sol-1"
+    },
+    {
+      "scope": "orchestrator",
+      "case": "naturalistic",
+      "repeat": 2,
+      "ok": true,
+      "checks": {
+        "strictHarness": true,
+        "trace": true,
+        "currentPayloadMatches": true,
+        "noAutomaticTitles": true,
+        "contiguousClock": true,
+        "atlas": true,
+        "inventory": true,
+        "duration": true,
+        "fullFramePartitions": true,
+        "sameFacts": true,
+        "requestedRetime": true,
+        "actualBrowserAudit": true
+      },
+      "run": "evaluations/runs/20261114-line-world-plugin-naturalistic-sol-2"
+    },
+    {
+      "scope": "orchestrator",
+      "case": "naturalistic",
+      "repeat": 3,
+      "ok": true,
+      "checks": {
+        "strictHarness": true,
+        "trace": true,
+        "currentPayloadMatches": true,
+        "noAutomaticTitles": true,
+        "contiguousClock": true,
+        "atlas": true,
+        "inventory": true,
+        "duration": true,
+        "fullFramePartitions": true,
+        "sameFacts": true,
+        "requestedRetime": true,
+        "actualBrowserAudit": true
+      },
+      "run": "evaluations/runs/20261114-line-world-plugin-naturalistic-sol-3"
+    },
+    {
+      "scope": "orchestrator",
+      "case": "generalization",
+      "repeat": 1,
+      "ok": true,
+      "checks": {
+        "strictHarness": true,
+        "trace": true,
+        "currentPayloadMatches": true,
+        "noAutomaticTitles": true,
+        "contiguousClock": true,
+        "actualBrowserAudit": true,
+        "newFacts": true,
+        "newTiming": true,
+        "newUnitsAndColor": true
+      },
+      "run": "evaluations/runs/20261114-line-world-plugin-generalization-sol-1"
+    },
+    {
+      "scope": "orchestrator",
+      "case": "generalization",
+      "repeat": 2,
+      "ok": true,
+      "checks": {
+        "strictHarness": true,
+        "trace": true,
+        "currentPayloadMatches": true,
+        "noAutomaticTitles": true,
+        "contiguousClock": true,
+        "actualBrowserAudit": true,
+        "newFacts": true,
+        "newTiming": true,
+        "newUnitsAndColor": true
+      },
+      "run": "evaluations/runs/20261114-line-world-plugin-generalization-sol-2"
+    },
+    {
+      "scope": "orchestrator",
+      "case": "generalization",
+      "repeat": 3,
+      "ok": true,
+      "checks": {
+        "strictHarness": true,
+        "trace": true,
+        "currentPayloadMatches": true,
+        "noAutomaticTitles": true,
+        "contiguousClock": true,
+        "actualBrowserAudit": true,
+        "newFacts": true,
+        "newTiming": true,
+        "newUnitsAndColor": true
+      },
+      "run": "evaluations/runs/20261114-line-world-plugin-generalization-sol-3"
+    },
+    {
+      "scope": "producer",
+      "case": "d3",
+      "repeat": 1,
+      "ok": false,
+      "checks": {
+        "strictHarness": false,
+        "trace": false,
+        "currentPayloadMatches": true,
+        "sourceLabels": true,
+        "realD3Version": true
+      },
+      "run": "evaluations/runs/line-world-plugin-profiles/evaluations/runs/20261114-line-world-d3-contract-sol-1"
+    },
+    {
+      "scope": "producer",
+      "case": "mermaid",
+      "repeat": 1,
+      "ok": true,
+      "checks": {
+        "strictHarness": true,
+        "trace": true,
+        "currentPayloadMatches": true,
+        "realVideoFinish": true,
+        "noVisibleDraftTitle": true,
+        "metadata": true,
+        "tasks": true
+      },
+      "run": "evaluations/runs/line-world-plugin-profiles/evaluations/runs/20261114-line-world-mermaid-contract-sol-1"
+    },
+    {
+      "scope": "producer",
+      "case": "icons",
+      "repeat": 1,
+      "ok": true,
+      "checks": {
+        "strictHarness": true,
+        "trace": true,
+        "currentPayloadMatches": true,
+        "realProviderReceipts": true,
+        "license": true,
+        "svgRoots": true
+      },
+      "run": "evaluations/runs/line-world-plugin-profiles/evaluations/runs/20261114-line-world-icons-contract-sol-1"
+    },
+    {
+      "scope": "producer",
+      "case": "hyperframes",
+      "repeat": 1,
+      "ok": false,
+      "checks": {
+        "strictHarness": false,
+        "trace": false,
+        "currentPayloadMatches": true,
+        "nativeClockContract": true,
+        "actualSeekEvidence": true
+      },
+      "run": "evaluations/runs/line-world-plugin-profiles/evaluations/runs/20261114-line-world-hyperframes-contract-sol-1"
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "provider": "Iconify",
+  "asset_id": "lucide:workflow",
+  "variant": "svg",
+  "downloaded_at": "2026-11-14T21:22:19.197683+00:00",
+  "source": {
+    "id": "lucide:workflow",
+    "title": "workflow",
+    "type": "icon",
+    "family": "lucide",
+    "page_url": "https://icon-sets.iconify.design/lucide/workflow/",
+    "thumbnail": "https://api.iconify.design/lucide/workflow.svg?height=128&color=%23333e48",
+    "author": "Lucide Contributors",
+    "license": {
+      "title": "ISC",
+      "spdx": "ISC",
+      "url": "https://github.com/lucide-icons/lucide/blob/main/LICENSE"
+    },
+    "collection": "Lucide",
+    "multicolor": false,
+    "collection_tags": [
+      "Precise Shapes",
+      "Has Padding",
+      "Uses Stroke"
+    ],
+    "export": {
+      "color": "#333e48",
+      "height": 24
+    }
+  },
+  "file": {
+    "path": "skills\\line-world-video\\assets\\icons\\workflow.svg",
+    "url": "https://api.iconify.design/lucide/workflow.svg?color=%23333e48&height=24",
+    "final_url": "https://api.iconify.design/lucide/workflow.svg?color=%23333e48&height=24",
+    "bytes": 320,
+    "sha256": "9d919ef849b7ebf5bb58a69341b094eb0a9fe8a2accae41887b13a8a6cb03656",
+    "provider_md5": null,
+    "validation": {
+      "format": "svg",
+      "viewBox": "0 0 24 24"
+    }
+  }
+}

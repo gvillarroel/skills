@@ -1,0 +1,285 @@
+{
+  "ok": true,
+  "allStrict": true,
+  "cases": {
+    "contract": {
+      "passed": 1,
+      "total": 1
+    },
+    "naturalistic": {
+      "passed": 3,
+      "total": 3
+    }
+  },
+  "paletteCopies": {
+    "line-world-video": true,
+    "line-world-d3": true,
+    "line-world-mermaid": true,
+    "line-world-icons": true,
+    "line-world-hyperframes": true
+  },
+  "nativeGeometryUnchanged": {
+    "architecture": true,
+    "block": true,
+    "class": true,
+    "er": true,
+    "flowchart": true,
+    "gantt": true,
+    "git": true,
+    "journey": true,
+    "kanban": true,
+    "mindmap": true,
+    "pie": true,
+    "quadrant": true,
+    "radar": true,
+    "requirement": true,
+    "sankey": true,
+    "sequence": true,
+    "state": true,
+    "timeline": true,
+    "treemap": true,
+    "xy": true
+  },
+  "paletteSha256": "3eeeb22040d95729e89ce267613335d0461d8aaf6cc6c64ca473a1372b9b5005",
+  "results": [
+    {
+      "case": "contract",
+      "repeat": 1,
+      "ok": true,
+      "checks": {
+        "strictHarness": true,
+        "trace": true,
+        "sourceUnchanged": true,
+        "primaryRedFirst": true,
+        "blackLast": true,
+        "palette": true,
+        "duration": true,
+        "noTitles": true,
+        "actualAudit": true,
+        "noLargeDarkBlocks": true,
+        "guidePrimary": true,
+        "completeArea": true,
+        "truthfulArea": true,
+        "actualOrderedFills": true,
+        "noEarlyDarkFill": true
+      },
+      "categoryCells": [
+        {
+          "id": "intake",
+          "width": 914,
+          "height": 648,
+          "fill": "#9e1b32"
+        },
+        {
+          "id": "review",
+          "width": 914,
+          "height": 432,
+          "fill": "#b5b5b5"
+        },
+        {
+          "id": "build",
+          "width": 1006,
+          "height": 785,
+          "fill": "#e7e7e7"
+        },
+        {
+          "id": "release",
+          "width": 1006,
+          "height": 295,
+          "fill": "#9c9c9c"
+        }
+      ],
+      "run": "evaluations/runs/20261114-line-world-v051-contract-sol-1"
+    },
+    {
+      "case": "naturalistic",
+      "repeat": 1,
+      "ok": true,
+      "checks": {
+        "strictHarness": true,
+        "trace": true,
+        "sourceUnchanged": true,
+        "primaryRedFirst": true,
+        "blackLast": true,
+        "palette": true,
+        "duration": true,
+        "noTitles": true,
+        "actualAudit": true,
+        "noLargeDarkBlocks": true,
+        "guidePrimary": true,
+        "newFacts": true,
+        "newUnits": true,
+        "completeArea": true,
+        "truthfulArea": true,
+        "actualOrderedFills": true,
+        "noEarlyDarkFill": true
+      },
+      "categoryCells": [
+        {
+          "id": "alpha",
+          "width": 713,
+          "height": 665,
+          "fill": "#9e1b32"
+        },
+        {
+          "id": "beta",
+          "width": 713,
+          "height": 415,
+          "fill": "#b5b5b5"
+        },
+        {
+          "id": "gamma",
+          "width": 823,
+          "height": 648,
+          "fill": "#e7e7e7"
+        },
+        {
+          "id": "delta",
+          "width": 823,
+          "height": 432,
+          "fill": "#9c9c9c"
+        },
+        {
+          "id": "epsilon",
+          "width": 384,
+          "height": 463,
+          "fill": "#cfcfcf"
+        },
+        {
+          "id": "zeta",
+          "width": 384,
+          "height": 617,
+          "fill": "#828282"
+        }
+      ],
+      "run": "evaluations/runs/20261114-line-world-v051-naturalistic-sol-1"
+    },
+    {
+      "case": "naturalistic",
+      "repeat": 2,
+      "ok": true,
+      "checks": {
+        "strictHarness": true,
+        "trace": true,
+        "sourceUnchanged": true,
+        "primaryRedFirst": true,
+        "blackLast": true,
+        "palette": true,
+        "duration": true,
+        "noTitles": true,
+        "actualAudit": true,
+        "noLargeDarkBlocks": true,
+        "guidePrimary": true,
+        "newFacts": true,
+        "newUnits": true,
+        "completeArea": true,
+        "truthfulArea": true,
+        "actualOrderedFills": true,
+        "noEarlyDarkFill": true
+      },
+      "categoryCells": [
+        {
+          "id": "alpha",
+          "width": 713,
+          "height": 665,
+          "fill": "#9e1b32"
+        },
+        {
+          "id": "beta",
+          "width": 713,
+          "height": 415,
+          "fill": "#b5b5b5"
+        },
+        {
+          "id": "gamma",
+          "width": 823,
+          "height": 648,
+          "fill": "#e7e7e7"
+        },
+        {
+          "id": "delta",
+          "width": 823,
+          "height": 432,
+          "fill": "#9c9c9c"
+        },
+        {
+          "id": "epsilon",
+          "width": 384,
+          "height": 463,
+          "fill": "#cfcfcf"
+        },
+        {
+          "id": "zeta",
+          "width": 384,
+          "height": 617,
+          "fill": "#828282"
+        }
+      ],
+      "run": "evaluations/runs/20261114-line-world-v051-naturalistic-sol-2"
+    },
+    {
+      "case": "naturalistic",
+      "repeat": 3,
+      "ok": true,
+      "checks": {
+        "strictHarness": true,
+        "trace": true,
+        "sourceUnchanged": true,
+        "primaryRedFirst": true,
+        "blackLast": true,
+        "palette": true,
+        "duration": true,
+        "noTitles": true,
+        "actualAudit": true,
+        "noLargeDarkBlocks": true,
+        "guidePrimary": true,
+        "newFacts": true,
+        "newUnits": true,
+        "completeArea": true,
+        "truthfulArea": true,
+        "actualOrderedFills": true,
+        "noEarlyDarkFill": true
+      },
+      "categoryCells": [
+        {
+          "id": "alpha",
+          "width": 713,
+          "height": 665,
+          "fill": "#9e1b32"
+        },
+        {
+          "id": "beta",
+          "width": 713,
+          "height": 415,
+          "fill": "#b5b5b5"
+        },
+        {
+          "id": "gamma",
+          "width": 823,
+          "height": 648,
+          "fill": "#e7e7e7"
+        },
+        {
+          "id": "delta",
+          "width": 823,
+          "height": 432,
+          "fill": "#9c9c9c"
+        },
+        {
+          "id": "epsilon",
+          "width": 384,
+          "height": 463,
+          "fill": "#cfcfcf"
+        },
+        {
+          "id": "zeta",
+          "width": 384,
+          "height": 617,
+          "fill": "#828282"
+        }
+      ],
+      "run": "evaluations/runs/20261114-line-world-v051-naturalistic-sol-3"
+    }
+  ],
+  "scope": "Focused color-priority patch: one contract and three fresh naturalistic tests; prior data/timing/attention and broad diagram coverage evidence remains historical."
+}

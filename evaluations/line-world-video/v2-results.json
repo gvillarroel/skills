@@ -1,0 +1,116 @@
+{
+  "ok": true,
+  "passed": 8,
+  "total": 8,
+  "model": "openai-codex/gpt-6.1-sol",
+  "results": [
+    {
+      "case": "contract-sol-1",
+      "ok": true,
+      "checks": {
+        "strictHarness": true,
+        "trace": true,
+        "currentPayloadMatches": true,
+        "contiguous": true,
+        "focusData": true,
+        "contract": true
+      }
+    },
+    {
+      "case": "boundary-sol-1",
+      "ok": true,
+      "checks": {
+        "strictHarness": true,
+        "trace": true,
+        "currentPayloadMatches": true,
+        "contiguous": true,
+        "focusData": true,
+        "invalidInputsRejected": true
+      }
+    },
+    {
+      "case": "naturalistic-sol-1",
+      "ok": true,
+      "checks": {
+        "strictHarness": true,
+        "trace": true,
+        "currentPayloadMatches": true,
+        "contiguous": true,
+        "focusData": true,
+        "actualBrowserAudit": true,
+        "requestedRetime": true
+      }
+    },
+    {
+      "case": "naturalistic-sol-2",
+      "ok": true,
+      "checks": {
+        "strictHarness": true,
+        "trace": true,
+        "currentPayloadMatches": true,
+        "contiguous": true,
+        "focusData": true,
+        "actualBrowserAudit": true,
+        "requestedRetime": true
+      }
+    },
+    {
+      "case": "naturalistic-sol-3",
+      "ok": true,
+      "checks": {
+        "strictHarness": true,
+        "trace": true,
+        "currentPayloadMatches": true,
+        "contiguous": true,
+        "focusData": true,
+        "actualBrowserAudit": true,
+        "requestedRetime": true
+      }
+    },
+    {
+      "case": "generalization-sol-1",
+      "ok": true,
+      "checks": {
+        "strictHarness": true,
+        "trace": true,
+        "currentPayloadMatches": true,
+        "contiguous": true,
+        "focusData": true,
+        "actualBrowserAudit": true,
+        "newData": true,
+        "newTiming": true,
+        "newUnits": true
+      }
+    },
+    {
+      "case": "generalization-sol-2",
+      "ok": true,
+      "checks": {
+        "strictHarness": true,
+        "trace": true,
+        "currentPayloadMatches": true,
+        "contiguous": true,
+        "focusData": true,
+        "actualBrowserAudit": true,
+        "newData": true,
+        "newTiming": true,
+        "newUnits": true
+      }
+    },
+    {
+      "case": "generalization-sol-3",
+      "ok": true,
+      "checks": {
+        "strictHarness": true,
+        "trace": true,
+        "currentPayloadMatches": true,
+        "contiguous": true,
+        "focusData": true,
+        "actualBrowserAudit": true,
+        "newData": true,
+        "newTiming": true,
+        "newUnits": true
+      }
+    }
+  ]
+}

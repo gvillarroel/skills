@@ -1,0 +1,590 @@
+{
+  "date": "2026-11-15",
+  "model": "openai-codex/gpt-6.1-sol; medium; existing Spark account exception",
+  "cases": [
+    {
+      "id": "20261115-line-world-cues-contract",
+      "skill": "line-world-google-vids",
+      "payload": "b2954c3166df087383bd8f6316eeeb9e77a6b7c433c301902b787ef4510f9144",
+      "strictPassed": true,
+      "traceSummaryExitCode": 0,
+      "findings": [],
+      "toolErrors": [],
+      "readPaths": [
+        "../prompt.md",
+        "skills/line-world-google-vids/SKILL.md",
+        "skills/line-world-google-vids/references/narration-cues.md",
+        "skills/line-world-google-vids/scripts/narration_cues.py",
+        "words.json",
+        "timing.json",
+        "cue-spec.json",
+        "verify_cues.py",
+        "aligned.json",
+        "rejection.json"
+      ]
+    },
+    {
+      "id": "20261115-line-world-cues-final-contract",
+      "skill": "line-world-google-vids",
+      "payload": "5e9cf887ffd45cb19ebca8fa365832270bdf7ab7acfb1865e3b7776fda2e4592",
+      "strictPassed": true,
+      "traceSummaryExitCode": 0,
+      "findings": [],
+      "toolErrors": [],
+      "readPaths": [
+        "../prompt.md",
+        "skills/line-world-google-vids/SKILL.md",
+        "skills/line-world-google-vids/references/narration-cues.md",
+        "skills/line-world-google-vids/scripts/narration_cues.py",
+        "words.json",
+        "timing.json",
+        "cue-spec.json",
+        "verify_cues.py",
+        "aligned.json",
+        "rejection.json"
+      ]
+    },
+    {
+      "id": "20261115-line-world-cues-natural-1",
+      "skill": "line-world-google-vids",
+      "payload": "b2954c3166df087383bd8f6316eeeb9e77a6b7c433c301902b787ef4510f9144",
+      "strictPassed": true,
+      "traceSummaryExitCode": 0,
+      "findings": [],
+      "toolErrors": [],
+      "readPaths": [
+        "../prompt.md",
+        "skills/line-world-google-vids/SKILL.md",
+        "skills/line-world-google-vids/references/scene-handoff.md",
+        "skills/line-world-google-vids/references/timing-continuity.md",
+        "skills/line-world-google-vids/references/narration-cues.md",
+        "cue-inputs/words.json",
+        "cue-inputs/timing.json",
+        "cue-inputs/cue-spec.json",
+        "cues.json",
+        "handoff.md"
+      ]
+    },
+    {
+      "id": "20261115-line-world-cues-natural-2",
+      "skill": "line-world-google-vids",
+      "payload": "b2954c3166df087383bd8f6316eeeb9e77a6b7c433c301902b787ef4510f9144",
+      "strictPassed": true,
+      "traceSummaryExitCode": 0,
+      "findings": [],
+      "toolErrors": [],
+      "readPaths": [
+        "../prompt.md",
+        "skills/line-world-google-vids/SKILL.md",
+        "skills/line-world-google-vids/references/narration-cues.md",
+        "skills/line-world-google-vids/references/scene-handoff.md",
+        "skills/line-world-google-vids/references/timing-continuity.md",
+        "skills/line-world-google-vids/scripts/narration_cues.py",
+        "cue-inputs/words.json",
+        "cue-inputs/timing.json",
+        "cue-inputs/cue-spec.json",
+        "handoff.md"
+      ]
+    },
+    {
+      "id": "20261115-line-world-cues-natural-3",
+      "skill": "line-world-google-vids",
+      "payload": "b2954c3166df087383bd8f6316eeeb9e77a6b7c433c301902b787ef4510f9144",
+      "strictPassed": true,
+      "traceSummaryExitCode": 0,
+      "findings": [],
+      "toolErrors": [],
+      "readPaths": [
+        "../prompt.md",
+        "skills/line-world-google-vids/SKILL.md",
+        "skills/line-world-google-vids/references/timing-continuity.md",
+        "skills/line-world-google-vids/references/narration-cues.md",
+        "skills/line-world-google-vids/references/scene-handoff.md",
+        "words.json",
+        "timing.json",
+        "cue-spec.json",
+        "cues.json",
+        "handoff.md"
+      ]
+    },
+    {
+      "id": "20261115-line-world-focus-contract",
+      "skill": "line-world-video",
+      "payload": "465d295daa7cf9cbb98b389c49f6b62498067eb794eb0d77403d55084839611f",
+      "strictPassed": true,
+      "traceSummaryExitCode": 0,
+      "findings": [],
+      "toolErrors": [],
+      "readPaths": [
+        "../prompt.md",
+        "skills/line-world-video/SKILL.md",
+        "skills/line-world-video/scripts/test_focus.py",
+        "contract.json"
+      ]
+    },
+    {
+      "id": "20261115-line-world-focus-final-contract",
+      "skill": "line-world-video",
+      "payload": "0bcee838fde7f99fdd78aa447b7c95d62227754be9df16b4077ac6b19bed7b41",
+      "strictPassed": true,
+      "traceSummaryExitCode": 0,
+      "findings": [],
+      "toolErrors": [],
+      "readPaths": [
+        "../prompt.md",
+        "skills/line-world-video/SKILL.md",
+        "skills/line-world-video/scripts/test_focus.py",
+        "focus-test.log",
+        "contract.json"
+      ]
+    },
+    {
+      "id": "20261115-line-world-focus-natural-1",
+      "skill": "line-world-video",
+      "payload": "465d295daa7cf9cbb98b389c49f6b62498067eb794eb0d77403d55084839611f",
+      "strictPassed": false,
+      "traceSummaryExitCode": 1,
+      "findings": [
+        {
+          "code": "tool-error",
+          "line": 365,
+          "tool": "bash"
+        }
+      ],
+      "toolErrors": [
+        {
+          "line": 365,
+          "tool": "bash",
+          "path": null,
+          "command": "ls film; ls film/vendor; python -c \"import playwright; print('python playwright available')\"",
+          "isError": true
+        }
+      ],
+      "readPaths": [
+        "../prompt.md",
+        "skills/line-world-video/SKILL.md",
+        "skills/line-world-video/references/speech-focus.md",
+        "skills/line-world-video/references/attention-choreography.md",
+        "skills/line-world-video/references/timing.md",
+        "skills/line-world-video/references/data-storytelling.md",
+        "skills/line-world-video/references/color-priority.md",
+        "skills/line-world-video/references/rendering.md",
+        "skills/line-world-video/references/visual-direction.md",
+        "skills/line-world-video/assets/runtime/focus.js",
+        "scene-story.js",
+        "figure.html",
+        "check_scene.py",
+        "preview.png",
+        "check-validation.png",
+        "check-train.png"
+      ]
+    },
+    {
+      "id": "20261115-line-world-focus-natural-2",
+      "skill": "line-world-video",
+      "payload": "465d295daa7cf9cbb98b389c49f6b62498067eb794eb0d77403d55084839611f",
+      "strictPassed": false,
+      "traceSummaryExitCode": 1,
+      "findings": [
+        {
+          "code": "tool-error",
+          "line": 315,
+          "tool": "bash"
+        }
+      ],
+      "toolErrors": [
+        {
+          "line": 315,
+          "tool": "bash",
+          "path": null,
+          "command": "ls film; node --version; python --version; which chromium || which google-chrome || true; ls /c/Users/villa/AppData/Local/ms-playwright 2>/dev/null; ls film/vendor",
+          "isError": true
+        }
+      ],
+      "readPaths": [
+        "../prompt.md",
+        "skills/line-world-video/SKILL.md",
+        "skills/line-world-video/references/color-priority.md",
+        "skills/line-world-video/references/speech-focus.md",
+        "skills/line-world-video/references/timing.md",
+        "skills/line-world-video/references/attention-choreography.md",
+        "skills/line-world-video/references/rendering.md",
+        "skills/line-world-video/references/visual-direction.md",
+        "skills/line-world-video/assets/runtime/focus.js",
+        "story.json",
+        "figure.html",
+        "check_scene.py",
+        "preview.png",
+        "travel.png",
+        "cue-train.png",
+        "cue-test.png"
+      ]
+    },
+    {
+      "id": "20261115-line-world-focus-natural-3",
+      "skill": "line-world-video",
+      "payload": "465d295daa7cf9cbb98b389c49f6b62498067eb794eb0d77403d55084839611f",
+      "strictPassed": true,
+      "traceSummaryExitCode": 0,
+      "findings": [],
+      "toolErrors": [],
+      "readPaths": [
+        "../prompt.md",
+        "skills/line-world-video/SKILL.md",
+        "skills/line-world-video/references/speech-focus.md",
+        "skills/line-world-video/references/visual-direction.md",
+        "skills/line-world-video/references/color-priority.md",
+        "skills/line-world-video/references/data-storytelling.md",
+        "skills/line-world-video/references/rendering.md",
+        "skills/line-world-video/references/attention-choreography.md",
+        "skills/line-world-video/references/timing.md",
+        "skills/line-world-video/assets/runtime/focus.js",
+        "story.json",
+        "figure.html",
+        "check_scene.py",
+        "preview.png",
+        "review-test.png",
+        "review-travel.png",
+        "review-train.png",
+        "focus-review.json"
+      ]
+    },
+    {
+      "id": "20261115-line-world-focus-v2-contract",
+      "skill": "line-world-video",
+      "payload": "796c5f1fa48e5eeabcff18b87f01e580894654e0960f79a2999aa3c041270f48",
+      "strictPassed": true,
+      "traceSummaryExitCode": 0,
+      "findings": [],
+      "toolErrors": [],
+      "readPaths": [
+        "../prompt.md",
+        "skills/line-world-video/SKILL.md",
+        "skills/line-world-video/scripts/test_focus.py",
+        "contract-test.log",
+        "contract.json"
+      ]
+    },
+    {
+      "id": "20261115-line-world-focus-v2-natural-1",
+      "skill": "line-world-video",
+      "payload": "796c5f1fa48e5eeabcff18b87f01e580894654e0960f79a2999aa3c041270f48",
+      "strictPassed": false,
+      "traceSummaryExitCode": 1,
+      "findings": [
+        {
+          "code": "tool-error",
+          "line": 2032,
+          "tool": "read"
+        }
+      ],
+      "toolErrors": [
+        {
+          "line": 2032,
+          "tool": "read",
+          "path": "focus-review.json",
+          "command": null,
+          "isError": true
+        }
+      ],
+      "readPaths": [
+        "../prompt.md",
+        "skills/line-world-video/SKILL.md",
+        "skills/line-world-video/references/attention-choreography.md",
+        "skills/line-world-video/references/rendering.md",
+        "skills/line-world-video/references/visual-direction.md",
+        "skills/line-world-video/references/timing.md",
+        "skills/line-world-video/references/color-priority.md",
+        "skills/line-world-video/references/speech-focus.md",
+        "skills/line-world-video/assets/runtime/focus.js",
+        "story.json",
+        "figure.html",
+        "focus-review.json",
+        "preview.png",
+        "focus-review.json",
+        "focus-review.json",
+        "focus-review.json"
+      ]
+    },
+    {
+      "id": "20261115-line-world-focus-v2-natural-2",
+      "skill": "line-world-video",
+      "payload": "796c5f1fa48e5eeabcff18b87f01e580894654e0960f79a2999aa3c041270f48",
+      "strictPassed": true,
+      "traceSummaryExitCode": 0,
+      "findings": [],
+      "toolErrors": [],
+      "readPaths": [
+        "../prompt.md",
+        "skills/line-world-video/SKILL.md",
+        "skills/line-world-video/references/attention-choreography.md",
+        "skills/line-world-video/references/color-priority.md",
+        "skills/line-world-video/references/speech-focus.md",
+        "skills/line-world-video/references/rendering.md",
+        "skills/line-world-video/references/visual-direction.md",
+        "skills/line-world-video/references/timing.md",
+        "skills/line-world-video/assets/runtime/focus.js",
+        "figure.html",
+        "focus-review.json",
+        "preview.png",
+        "preview.png"
+      ]
+    },
+    {
+      "id": "20261115-line-world-focus-v2-natural-3",
+      "skill": "line-world-video",
+      "payload": "796c5f1fa48e5eeabcff18b87f01e580894654e0960f79a2999aa3c041270f48",
+      "strictPassed": true,
+      "traceSummaryExitCode": 0,
+      "findings": [],
+      "toolErrors": [],
+      "readPaths": [
+        "../prompt.md",
+        "skills/line-world-video/SKILL.md",
+        "skills/line-world-video/references/speech-focus.md",
+        "skills/line-world-video/references/timing.md",
+        "skills/line-world-video/references/visual-direction.md",
+        "skills/line-world-video/references/rendering.md",
+        "skills/line-world-video/assets/runtime/focus.js",
+        "skills/line-world-video/references/attention-choreography.md",
+        "skills/line-world-video/references/color-priority.md",
+        "skills/line-world-video/scripts/inspect_focus.py",
+        "story.json",
+        "figure.html",
+        "preview.png",
+        "focus-review.json"
+      ]
+    }
+  ],
+  "actualRunCount": 14,
+  "strictPassCount": 11,
+  "currentSources": [
+    {
+      "skill": "line-world-video",
+      "fileCount": 100,
+      "matchesFinalContract": true
+    },
+    {
+      "skill": "line-world-google-vids",
+      "fileCount": 16,
+      "matchesFinalContract": true
+    }
+  ],
+  "sharedFocusRuntime": {
+    "line-world-video": "61d9dc939a4cd1a68e0eba431589bdcccea1c03716d78d2837ebf8d0f1820f8c",
+    "line-world-d3": "61d9dc939a4cd1a68e0eba431589bdcccea1c03716d78d2837ebf8d0f1820f8c",
+    "line-world-mermaid": "61d9dc939a4cd1a68e0eba431589bdcccea1c03716d78d2837ebf8d0f1820f8c",
+    "line-world-icons": "61d9dc939a4cd1a68e0eba431589bdcccea1c03716d78d2837ebf8d0f1820f8c",
+    "line-world-hyperframes": "61d9dc939a4cd1a68e0eba431589bdcccea1c03716d78d2837ebf8d0f1820f8c"
+  },
+  "nativeVerification": {
+    "ok": true,
+    "nativeGoogleVidsExport": "C:\\Users\\villa\\dev\\skills\\projects\\ml-overfitting-vids\\artifacts\\videos\\ml-overfitting-google-vids-revised.mp4",
+    "sha256": "63517dfaf6baf8e4b7ea0f2211df9aee85c61da92cf47b080b66f59e58b8f6a0",
+    "encoder": "Google",
+    "width": 1920,
+    "height": 1080,
+    "fps": "717930000/23930999",
+    "duration": 265.914921,
+    "decodedFrames": 7977,
+    "blankFrames": [],
+    "blackFrames": [],
+    "sourceReadingLayoutAudit": true,
+    "sourceCueCount": 80,
+    "sourceGuideTextCollisions": 0,
+    "secondaryBarMeanRGB": [
+      103.0,
+      103.0,
+      103.0
+    ],
+    "secondaryBarGrayCorrect": true,
+    "voicePreservation": {
+      "decodedSamplesOriginal": 4254639,
+      "decodedSamplesRevised": 4254639,
+      "samePcmBytes": true,
+      "correlation": 1.0,
+      "ok": true
+    },
+    "spokenPercentageFocus": [
+      {
+        "target": "split-train",
+        "spokenStart": 50.44,
+        "inspectedAt": 50.5,
+        "expectedPort": {
+          "x": 473,
+          "y": 140
+        },
+        "redPixels": 358,
+        "centerDistance": 0.41176254215733593,
+        "ok": true,
+        "image": "C:\\Users\\villa\\dev\\skills\\projects\\ml-overfitting-vids\\artifacts\\revision\\native\\split-train.png"
+      },
+      {
+        "target": "split-validation",
+        "spokenStart": 51.34,
+        "inspectedAt": 51.400000000000006,
+        "expectedPort": {
+          "x": 1242,
+          "y": 140
+        },
+        "redPixels": 347,
+        "centerDistance": 0.7415249353809976,
+        "ok": true,
+        "image": "C:\\Users\\villa\\dev\\skills\\projects\\ml-overfitting-vids\\artifacts\\revision\\native\\split-validation.png"
+      },
+      {
+        "target": "split-test",
+        "spokenStart": 51.92,
+        "inspectedAt": 51.980000000000004,
+        "expectedPort": {
+          "x": 1626,
+          "y": 140
+        },
+        "redPixels": 334,
+        "centerDistance": 0.8569623821174694,
+        "ok": true,
+        "image": "C:\\Users\\villa\\dev\\skills\\projects\\ml-overfitting-vids\\artifacts\\revision\\native\\split-test.png"
+      }
+    ],
+    "samples": [
+      {
+        "id": "generalize",
+        "time": 12.5,
+        "file": "C:\\Users\\villa\\dev\\skills\\projects\\ml-overfitting-vids\\artifacts\\revision\\native\\generalize.png"
+      },
+      {
+        "id": "problem-data",
+        "time": 32.96666666666667,
+        "file": "C:\\Users\\villa\\dev\\skills\\projects\\ml-overfitting-vids\\artifacts\\revision\\native\\problem-data.png"
+      },
+      {
+        "id": "split",
+        "time": 55.56666666666667,
+        "file": "C:\\Users\\villa\\dev\\skills\\projects\\ml-overfitting-vids\\artifacts\\revision\\native\\split.png"
+      },
+      {
+        "id": "preprocessing",
+        "time": 76.26666666666667,
+        "file": "C:\\Users\\villa\\dev\\skills\\projects\\ml-overfitting-vids\\artifacts\\revision\\native\\preprocessing.png"
+      },
+      {
+        "id": "baseline",
+        "time": 97.86666666666666,
+        "file": "C:\\Users\\villa\\dev\\skills\\projects\\ml-overfitting-vids\\artifacts\\revision\\native\\baseline.png"
+      },
+      {
+        "id": "cross-validation",
+        "time": 119.86666666666666,
+        "file": "C:\\Users\\villa\\dev\\skills\\projects\\ml-overfitting-vids\\artifacts\\revision\\native\\cross-validation.png"
+      },
+      {
+        "id": "regularization",
+        "time": 140.96666666666667,
+        "file": "C:\\Users\\villa\\dev\\skills\\projects\\ml-overfitting-vids\\artifacts\\revision\\native\\regularization.png"
+      },
+      {
+        "id": "early-stopping",
+        "time": 166.76666666666668,
+        "file": "C:\\Users\\villa\\dev\\skills\\projects\\ml-overfitting-vids\\artifacts\\revision\\native\\early-stopping.png"
+      },
+      {
+        "id": "diagnostics",
+        "time": 187.03333333333333,
+        "file": "C:\\Users\\villa\\dev\\skills\\projects\\ml-overfitting-vids\\artifacts\\revision\\native\\diagnostics.png"
+      },
+      {
+        "id": "final-test",
+        "time": 209.36666666666667,
+        "file": "C:\\Users\\villa\\dev\\skills\\projects\\ml-overfitting-vids\\artifacts\\revision\\native\\final-test.png"
+      },
+      {
+        "id": "production",
+        "time": 231.06666666666666,
+        "file": "C:\\Users\\villa\\dev\\skills\\projects\\ml-overfitting-vids\\artifacts\\revision\\native\\production.png"
+      },
+      {
+        "id": "overview",
+        "time": 253.46666666666667,
+        "file": "C:\\Users\\villa\\dev\\skills\\projects\\ml-overfitting-vids\\artifacts\\revision\\native\\overview.png"
+      }
+    ],
+    "scope": "All native frames decoded at thumbnail size; full-size scene samples, three percentage cue ports and secondary gray sampled. Source vector audit covers settled reading frames and all post-pan guide poses. ASR word boundaries remain approximate.",
+    "importantObjectFocus": [
+      {
+        "target": "apply-model",
+        "inspectedAt": 74.7,
+        "expectedPort": {
+          "x": 1463,
+          "y": 732
+        },
+        "redPixels": 346,
+        "centerDistance": 0.44634234715261534,
+        "ok": true,
+        "image": "C:\\Users\\villa\\dev\\skills\\projects\\ml-overfitting-vids\\artifacts\\revision\\native\\object-apply-model.png"
+      },
+      {
+        "target": "cv-large",
+        "inspectedAt": 96.02,
+        "expectedPort": {
+          "x": 1799,
+          "y": 654
+        },
+        "redPixels": 341,
+        "centerDistance": 0.4511556507596995,
+        "ok": true,
+        "image": "C:\\Users\\villa\\dev\\skills\\projects\\ml-overfitting-vids\\artifacts\\revision\\native\\object-cv-large.png"
+      },
+      {
+        "target": "best-state",
+        "inspectedAt": 159.32,
+        "expectedPort": {
+          "x": 916,
+          "y": 665
+        },
+        "redPixels": 334,
+        "centerDistance": 0.6280649328677474,
+        "ok": true,
+        "image": "C:\\Users\\villa\\dev\\skills\\projects\\ml-overfitting-vids\\artifacts\\revision\\native\\object-best-state.png"
+      },
+      {
+        "target": "training-curve",
+        "inspectedAt": 155.0,
+        "expectedPort": {
+          "x": 1420,
+          "y": 723
+        },
+        "redPixels": 357,
+        "centerDistance": 1.0194385305909024,
+        "ok": true,
+        "image": "C:\\Users\\villa\\dev\\skills\\projects\\ml-overfitting-vids\\artifacts\\revision\\native\\object-training-curve.png"
+      },
+      {
+        "target": "more-data",
+        "inspectedAt": 179.46,
+        "expectedPort": {
+          "x": 1660,
+          "y": 642
+        },
+        "redPixels": 341,
+        "centerDistance": 1.0341973918133447,
+        "ok": true,
+        "image": "C:\\Users\\villa\\dev\\skills\\projects\\ml-overfitting-vids\\artifacts\\revision\\native\\object-more-data.png"
+      },
+      {
+        "target": "real-error",
+        "inspectedAt": 228.14000000000001,
+        "expectedPort": {
+          "x": 1118,
+          "y": 752
+        },
+        "redPixels": 335,
+        "centerDistance": 0.4952075964682992,
+        "ok": true,
+        "image": "C:\\Users\\villa\\dev\\skills\\projects\\ml-overfitting-vids\\artifacts\\revision\\native\\object-real-error.png"
+      }
+    ],
+    "sourceCueArrivalMismatches": [],
+    "readingSceneImportantMarkPortsClear": true
+  },
+  "scope": "Focused speech, label and color correction; broad generation remains validating for one inset divider in a strict-passing scene."
+}

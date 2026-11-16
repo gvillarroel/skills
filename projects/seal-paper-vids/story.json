@@ -1,0 +1,773 @@
+{
+  "schemaVersion": 1,
+  "title": "SEAL: lectura visual de un paper de autoaprendizaje",
+  "language": "es",
+  "voice": "Nyla",
+  "fps": 30,
+  "source": {
+    "title": "Self-Adapting Language Models",
+    "authors": "Adam Zweiger, Jyothish Pari, Han Guo, Ekin Akyürek, Yoon Kim and Pulkit Agrawal",
+    "version": "2506.10943v2",
+    "url": "https://arxiv.org/abs/2506.10943v2",
+    "pdfUrl": "https://arxiv.org/pdf/2506.10943v2",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "adaptation": "Original PDF page captures are cropped and animated without recoloring. Red attention overlays, Spanish narration and derived bar charts are additions."
+  },
+  "scenes": [
+    {
+      "id": "method",
+      "duration": 36.96666666666667,
+      "script": "SEAL investiga cómo un modelo puede preparar sus propias actualizaciones de conocimiento. El objetivo es adaptar sus pesos a nueva información y tareas. En la figura uno, el modelo recibe información y propone varias autoediciones: materiales e instrucciones para aprender. Cada candidata se utiliza para actualizar una copia del modelo. Después se evalúa esa copia en una tarea. El resultado sirve como recompensa para mejorar la generación de futuras autoediciones. Hay dos procesos distintos: aprender del material generado y aprender a generar material que realmente ayude.",
+      "layout": "paper",
+      "page": 2,
+      "view": [
+        101,
+        65,
+        501,
+        179
+      ],
+      "entry": {
+        "page": 1,
+        "view": [
+          100,
+          65,
+          512,
+          355
+        ]
+      },
+      "targets": {
+        "input": [
+          109,
+          115,
+          163,
+          145
+        ],
+        "edits": [
+          184,
+          96,
+          205,
+          167
+        ],
+        "updates": [
+          210,
+          94,
+          313,
+          169
+        ],
+        "evaluation": [
+          320,
+          94,
+          408,
+          169
+        ],
+        "reward": [
+          420,
+          81,
+          493,
+          146
+        ]
+      },
+      "cues": [
+        {
+          "target": "input",
+          "phrase": "En la figura uno",
+          "at": 9.92,
+          "audioStart": 9.92,
+          "audioEnd": 10.88,
+          "timingEvidence": "supplied ASR word timestamps; approximate alignment"
+        },
+        {
+          "target": "edits",
+          "phrase": "varias autoediciones",
+          "at": 13.04,
+          "audioStart": 13.04,
+          "audioEnd": 14.12,
+          "timingEvidence": "supplied ASR word timestamps; approximate alignment"
+        },
+        {
+          "target": "updates",
+          "phrase": "actualizar una copia",
+          "at": 19.36,
+          "audioStart": 19.36,
+          "audioEnd": 20.32,
+          "timingEvidence": "supplied ASR word timestamps; approximate alignment"
+        },
+        {
+          "target": "evaluation",
+          "phrase": "se evalúa esa copia",
+          "at": 21.76,
+          "audioStart": 21.76,
+          "audioEnd": 23.02,
+          "timingEvidence": "supplied ASR word timestamps; approximate alignment"
+        },
+        {
+          "target": "reward",
+          "phrase": "como recompensa",
+          "at": 25.14,
+          "audioStart": 25.14,
+          "audioEnd": 26.1,
+          "timingEvidence": "supplied ASR word timestamps; approximate alignment"
+        },
+        {
+          "target": "updates",
+          "phrase": "aprender del material",
+          "at": 31.86,
+          "audioStart": 31.86,
+          "audioEnd": 32.92,
+          "timingEvidence": "supplied ASR word timestamps; approximate alignment"
+        },
+        {
+          "target": "edits",
+          "phrase": "aprender a generar",
+          "at": 33.94,
+          "audioStart": 33.94,
+          "audioEnd": 34.84,
+          "timingEvidence": "supplied ASR word timestamps; approximate alignment"
+        }
+      ],
+      "emphasis": "margin",
+      "camera": {
+        "mode": "pan",
+        "zoom": 1.3,
+        "enterSeconds": 2.6,
+        "travelSeconds": 2,
+        "minTravelSeconds": 1.4,
+        "minHoldSeconds": 1.1,
+        "maxPanSpeed": 540
+      }
+    },
+    {
+      "id": "knowledge",
+      "duration": 29.5,
+      "script": "La figura dos concreta la incorporación de conocimiento. A la izquierda entra un pasaje. En el centro, el modelo lo transforma en afirmaciones e implicaciones que sirven como datos de entrenamiento. Una adaptación con LoRA modifica los pesos. A la derecha se comprueba si el modelo responde preguntas sin volver a ver el pasaje original. Esta separación es esencial: el experimento mide conocimiento incorporado en los pesos, y no solamente información copiada desde el contexto.",
+      "layout": "paper",
+      "page": 5,
+      "view": [
+        102,
+        302,
+        507,
+        377
+      ],
+      "targets": {
+        "passage": [
+          109,
+          320,
+          192,
+          363
+        ],
+        "synthetic": [
+          237,
+          320,
+          311,
+          363
+        ],
+        "lora": [
+          319,
+          328,
+          341,
+          365
+        ],
+        "test": [
+          349,
+          320,
+          495,
+          365
+        ]
+      },
+      "cues": [
+        {
+          "target": "passage",
+          "phrase": "A la izquierda",
+          "at": 3.82,
+          "audioStart": 40.78,
+          "audioEnd": 41.42,
+          "timingEvidence": "Reused measured local cue after verifying unchanged native voice within 50 ms; see voice-reuse.json."
+        },
+        {
+          "target": "synthetic",
+          "phrase": "En el centro",
+          "at": 5.76,
+          "audioStart": 42.72,
+          "audioEnd": 43.5,
+          "timingEvidence": "Reused measured local cue after verifying unchanged native voice within 50 ms; see voice-reuse.json."
+        },
+        {
+          "target": "lora",
+          "phrase": "con LoRA",
+          "at": 13.48,
+          "audioStart": 50.44,
+          "audioEnd": 50.92,
+          "timingEvidence": "Reused measured local cue after verifying unchanged native voice within 50 ms; see voice-reuse.json."
+        },
+        {
+          "target": "test",
+          "phrase": "A la derecha",
+          "at": 15.94,
+          "audioStart": 52.9,
+          "audioEnd": 53.52000000000001,
+          "timingEvidence": "Reused measured local cue after verifying unchanged native voice within 50 ms; see voice-reuse.json."
+        },
+        {
+          "target": "test",
+          "phrase": "sin volver a ver",
+          "at": 18.62,
+          "audioStart": 55.58,
+          "audioEnd": 56.660000000000004,
+          "timingEvidence": "Reused measured local cue after verifying unchanged native voice within 50 ms; see voice-reuse.json."
+        }
+      ],
+      "emphasis": "margin",
+      "camera": {
+        "mode": "pan",
+        "zoom": 1.3,
+        "enterSeconds": 2.6,
+        "travelSeconds": 2,
+        "minTravelSeconds": 1.4,
+        "minHoldSeconds": 1.1,
+        "maxPanSpeed": 540
+      }
+    },
+    {
+      "id": "few-shot",
+      "duration": 32.1,
+      "script": "La figura tres muestra otra aplicación. Ahora la entrada contiene ejemplos de pequeñas cuadrículas del conjunto ARC. La autoedición decide aumentos de datos, como rotaciones, y también parámetros de entrenamiento. Esas decisiones producen la adaptación del modelo, que después intenta resolver una entrada nueva. Aquí evolucionan las instrucciones de aprendizaje, además de los datos. Así, el modelo puede elegir cómo aprovechar los pocos ejemplos disponibles para adaptarse a una tarea nueva.",
+      "layout": "paper",
+      "page": 5,
+      "view": [
+        102,
+        572,
+        507,
+        681
+      ],
+      "targets": {
+        "examples": [
+          110,
+          604,
+          150,
+          667
+        ],
+        "augmentation": [
+          207,
+          603,
+          295,
+          637
+        ],
+        "parameters": [
+          207,
+          641,
+          295,
+          668
+        ],
+        "adaptation": [
+          298,
+          598,
+          398,
+          669
+        ],
+        "new-input": [
+          410,
+          602,
+          501,
+          662
+        ]
+      },
+      "cues": [
+        {
+          "target": "examples",
+          "phrase": "la entrada contiene",
+          "at": 3.6199999999999903,
+          "audioStart": 70.08,
+          "audioEnd": 71.0,
+          "timingEvidence": "supplied ASR word timestamps; approximate alignment"
+        },
+        {
+          "target": "augmentation",
+          "phrase": "aumentos de datos",
+          "at": 9.83999999999999,
+          "audioStart": 76.3,
+          "audioEnd": 77.34,
+          "timingEvidence": "supplied ASR word timestamps; approximate alignment"
+        },
+        {
+          "target": "parameters",
+          "phrase": "parámetros de entrenamiento",
+          "at": 12.939999999999998,
+          "audioStart": 79.4,
+          "audioEnd": 80.7,
+          "timingEvidence": "supplied ASR word timestamps; approximate alignment"
+        },
+        {
+          "target": "adaptation",
+          "phrase": "la adaptación del modelo",
+          "at": 16.279999999999987,
+          "audioStart": 82.74,
+          "audioEnd": 83.98,
+          "timingEvidence": "supplied ASR word timestamps; approximate alignment"
+        },
+        {
+          "target": "new-input",
+          "phrase": "una entrada nueva",
+          "at": 19.099999999999994,
+          "audioStart": 85.56,
+          "audioEnd": 86.38,
+          "timingEvidence": "supplied ASR word timestamps; approximate alignment"
+        }
+      ],
+      "emphasis": "margin",
+      "camera": {
+        "mode": "pan",
+        "zoom": 1.3,
+        "enterSeconds": 2.6,
+        "travelSeconds": 2,
+        "minTravelSeconds": 1.4,
+        "minHoldSeconds": 1.1,
+        "maxPanSpeed": 540
+      }
+    },
+    {
+      "id": "arc-table",
+      "duration": 34.5,
+      "script": "Leamos la tabla uno. Sin adaptación, el resultado es cero. Con autoediciones sin aprendizaje previo por refuerzo, llega al veinte por ciento. SEAL alcanza setenta y dos coma cinco. La configuración humana de referencia alcanza cien. Son cincuenta y dos coma cinco puntos porcentuales más que sin refuerzo. Pero esta cifra necesita contexto: se evaluaron ocho tareas seleccionadas de ARC, y la métrica cuenta autoediciones que terminan en una solución correcta. No significa que SEAL resuelva el setenta y dos por ciento de todo ARC.",
+      "layout": "table-side",
+      "page": 7,
+      "view": [
+        188,
+        63,
+        420,
+        150
+      ],
+      "targets": {
+        "icl": [
+          194,
+          85,
+          407,
+          96
+        ],
+        "no-rl": [
+          194,
+          96,
+          407,
+          107
+        ],
+        "seal": [
+          194,
+          107,
+          407,
+          118
+        ],
+        "oracle": [
+          194,
+          118,
+          407,
+          130
+        ]
+      },
+      "chart": {
+        "unit": "% de autoediciones exitosas",
+        "columns": [
+          "ARC · subconjunto seleccionado"
+        ],
+        "rows": [
+          {
+            "id": "icl",
+            "label": "Sin adaptación",
+            "values": [
+              0
+            ]
+          },
+          {
+            "id": "no-rl",
+            "label": "Sin refuerzo previo",
+            "values": [
+              20
+            ]
+          },
+          {
+            "id": "seal",
+            "label": "SEAL",
+            "values": [
+              72.5
+            ]
+          },
+          {
+            "id": "oracle",
+            "label": "Referencia humana",
+            "values": [
+              100
+            ]
+          }
+        ]
+      },
+      "cues": [
+        {
+          "target": "icl",
+          "phrase": "Sin adaptación",
+          "at": 2.0999999999999943,
+          "audioStart": 100.66,
+          "audioEnd": 101.38,
+          "timingEvidence": "supplied ASR word timestamps; approximate alignment"
+        },
+        {
+          "target": "no-rl",
+          "phrase": "al veinte por ciento",
+          "at": 8.159999999999997,
+          "audioStart": 106.72,
+          "audioEnd": 107.9,
+          "timingEvidence": "supplied ASR word timestamps; approximate alignment"
+        },
+        {
+          "target": "seal",
+          "phrase": "setenta y dos coma cinco",
+          "at": 10.799999999999997,
+          "audioStart": 109.36,
+          "audioEnd": 110.7,
+          "timingEvidence": "supplied ASR word timestamps; approximate alignment"
+        },
+        {
+          "target": "oracle",
+          "phrase": "alcanza cien",
+          "at": 14.620000000000005,
+          "audioStart": 113.18,
+          "audioEnd": 113.94,
+          "timingEvidence": "supplied ASR word timestamps; approximate alignment"
+        },
+        {
+          "target": "seal",
+          "phrase": "cincuenta y dos coma cinco",
+          "at": 16.319999999999993,
+          "guide": "chart",
+          "audioStart": 114.88,
+          "audioEnd": 116.28,
+          "timingEvidence": "supplied ASR word timestamps; approximate alignment"
+        }
+      ],
+      "emphasis": "margin"
+    },
+    {
+      "id": "knowledge-table",
+      "duration": 39.93333333333333,
+      "script": "La tabla dos compara tres condiciones de incorporación de conocimiento. En un solo pasaje, entrenar únicamente con el texto logra treinta y tres coma cinco por ciento. SEAL obtiene cuarenta y siete, frente a cuarenta y seis coma tres con datos sintéticos de GPT cuatro punto uno. Es una ventaja de cero coma siete puntos porcentuales. Al cambiar a doscientos documentos, GPT obtiene cincuenta y nueve coma cuatro y SEAL cincuenta y ocho coma dos. Con dos mil sesenta y siete documentos, ocurre lo mismo: cuarenta y nueve coma dos frente a cuarenta y seis coma cuatro. La conclusión es acotada: SEAL mejora los baselines simples, pero no gana en todas las condiciones.",
+      "layout": "table-stack",
+      "page": 8,
+      "view": [
+        104,
+        68,
+        524,
+        177
+      ],
+      "targets": {
+        "passage-1": [
+          259,
+          109,
+          282,
+          119
+        ],
+        "seal-1": [
+          259,
+          139,
+          282,
+          149
+        ],
+        "gpt-1": [
+          259,
+          129,
+          282,
+          139
+        ],
+        "gpt-200": [
+          333,
+          129,
+          358,
+          139
+        ],
+        "seal-200": [
+          333,
+          139,
+          358,
+          149
+        ],
+        "gpt-2067": [
+          424,
+          129,
+          449,
+          139
+        ],
+        "seal-2067": [
+          424,
+          139,
+          449,
+          149
+        ]
+      },
+      "chart": {
+        "unit": "% de aciertos · sin pasaje en contexto",
+        "columns": [
+          "1 pasaje · LoRA",
+          "200 documentos · ajuste completo",
+          "2067 documentos · ajuste completo"
+        ],
+        "rows": [
+          {
+            "id": "base",
+            "label": "Base",
+            "values": [
+              32.7,
+              32.7,
+              29.0
+            ]
+          },
+          {
+            "id": "passage",
+            "label": "Pasaje",
+            "values": [
+              33.5,
+              36.0,
+              31.2
+            ]
+          },
+          {
+            "id": "synthetic",
+            "label": "Sintético",
+            "values": [
+              39.7,
+              50.6,
+              43.4
+            ]
+          },
+          {
+            "id": "gpt",
+            "label": "GPT-4.1",
+            "values": [
+              46.3,
+              59.4,
+              49.2
+            ]
+          },
+          {
+            "id": "seal",
+            "label": "SEAL",
+            "values": [
+              47.0,
+              58.2,
+              46.4
+            ]
+          }
+        ]
+      },
+      "cues": [
+        {
+          "target": "passage-1",
+          "phrase": "treinta y tres coma cinco",
+          "at": 7.638,
+          "column": 0,
+          "row": "passage",
+          "audioStart": 140.679,
+          "audioEnd": 142.659,
+          "timingEvidence": "Reused measured local cue after verifying unchanged native voice within 50 ms; see voice-reuse.json."
+        },
+        {
+          "target": "seal-1",
+          "phrase": "cuarenta y siete",
+          "at": 10.758,
+          "column": 0,
+          "row": "seal",
+          "audioStart": 143.799,
+          "audioEnd": 144.519,
+          "timingEvidence": "Reused measured local cue after verifying unchanged native voice within 50 ms; see voice-reuse.json."
+        },
+        {
+          "target": "gpt-1",
+          "phrase": "cuarenta y seis coma tres",
+          "at": 12.378,
+          "column": 0,
+          "row": "gpt",
+          "audioStart": 145.41899999999998,
+          "audioEnd": 146.59900000000002,
+          "timingEvidence": "Reused measured local cue after verifying unchanged native voice within 50 ms; see voice-reuse.json."
+        },
+        {
+          "target": "gpt-1",
+          "phrase": "cero coma siete",
+          "at": 17.778,
+          "column": 0,
+          "row": "seal",
+          "guide": "chart",
+          "audioStart": 150.819,
+          "audioEnd": 151.659,
+          "timingEvidence": "Reused measured local cue after verifying unchanged native voice within 50 ms; see voice-reuse.json."
+        },
+        {
+          "target": "gpt-200",
+          "phrase": "cincuenta y nueve coma cuatro",
+          "at": 23.098,
+          "column": 1,
+          "row": "gpt",
+          "audioStart": 156.139,
+          "audioEnd": 157.659,
+          "timingEvidence": "Reused measured local cue after verifying unchanged native voice within 50 ms; see voice-reuse.json."
+        },
+        {
+          "target": "seal-200",
+          "phrase": "cincuenta y ocho coma dos",
+          "at": 25.538,
+          "column": 1,
+          "row": "seal",
+          "audioStart": 158.579,
+          "audioEnd": 159.99900000000002,
+          "timingEvidence": "Reused measured local cue after verifying unchanged native voice within 50 ms; see voice-reuse.json."
+        },
+        {
+          "target": "gpt-2067",
+          "phrase": "cuarenta y nueve coma dos",
+          "at": 30.478,
+          "column": 2,
+          "row": "gpt",
+          "audioStart": 163.519,
+          "audioEnd": 164.659,
+          "timingEvidence": "Reused measured local cue after verifying unchanged native voice within 50 ms; see voice-reuse.json."
+        },
+        {
+          "target": "seal-2067",
+          "phrase": "cuarenta y seis coma cuatro",
+          "at": 32.138,
+          "column": 2,
+          "row": "seal",
+          "audioStart": 165.179,
+          "audioEnd": 166.41899999999998,
+          "timingEvidence": "Reused measured local cue after verifying unchanged native voice within 50 ms; see voice-reuse.json."
+        }
+      ],
+      "emphasis": "margin"
+    },
+    {
+      "id": "limits",
+      "duration": 39.3,
+      "script": "Antes de cerrar, miremos la figura seis. Cada nueva actualización permite aprender otro pasaje, pero el rendimiento en conocimientos anteriores puede caer. El propio paper reconoce que no optimiza explícitamente la retención. También señala el coste: evaluar una autoedición requiere ajustar y probar un modelo. Además, el entrenamiento necesita tareas con respuestas de referencia. Por eso este trabajo ofrece evidencia de una estrategia de adaptación prometedora; todavía no demuestra aprendizaje continuo ilimitado ni ausencia de olvido. Leer los resultados junto a estas limitaciones cambia cómo interpretamos la propuesta.",
+      "layout": "paper",
+      "page": 8,
+      "view": [
+        341,
+        494,
+        508,
+        664
+      ],
+      "targets": {
+        "new": [
+          457,
+          626,
+          482,
+          645
+        ],
+        "old": [
+          360,
+          510,
+          378,
+          643
+        ],
+        "retention": [
+          361,
+          615,
+          481,
+          644
+        ],
+        "cost": [
+          107,
+          192,
+          506,
+          259
+        ],
+        "supervision": [
+          107,
+          273,
+          506,
+          362
+        ]
+      },
+      "cues": [
+        {
+          "target": "new",
+          "phrase": "Cada nueva actualización",
+          "at": 3.178,
+          "audioStart": 176.151,
+          "audioEnd": 177.371,
+          "timingEvidence": "Reused measured local cue after verifying unchanged native voice within 50 ms; see voice-reuse.json."
+        },
+        {
+          "target": "old",
+          "phrase": "conocimientos anteriores",
+          "at": 7.558,
+          "audioStart": 180.531,
+          "audioEnd": 181.671,
+          "timingEvidence": "Reused measured local cue after verifying unchanged native voice within 50 ms; see voice-reuse.json."
+        },
+        {
+          "target": "retention",
+          "phrase": "la retención",
+          "at": 12.918,
+          "audioStart": 185.89100000000002,
+          "audioEnd": 186.63100000000003,
+          "timingEvidence": "Reused measured local cue after verifying unchanged native voice within 50 ms; see voice-reuse.json."
+        },
+        {
+          "target": "cost",
+          "phrase": "También señala el coste",
+          "at": 14.378,
+          "audioStart": 187.351,
+          "audioEnd": 188.571,
+          "timingEvidence": "Reused measured local cue after verifying unchanged native voice within 50 ms; see voice-reuse.json."
+        },
+        {
+          "target": "supervision",
+          "phrase": "Además el entrenamiento",
+          "at": 19.778,
+          "audioStart": 192.751,
+          "audioEnd": 194.611,
+          "timingEvidence": "Reused measured local cue after verifying unchanged native voice within 50 ms; see voice-reuse.json."
+        },
+        {
+          "target": "retention",
+          "phrase": "ausencia de olvido",
+          "at": 32.678,
+          "audioStart": 205.651,
+          "audioEnd": 206.651,
+          "timingEvidence": "Reused measured local cue after verifying unchanged native voice within 50 ms; see voice-reuse.json."
+        }
+      ],
+      "cameraZoom": false,
+      "shots": [
+        {
+          "at": 13.7,
+          "page": 9,
+          "view": [
+            103,
+            187,
+            510,
+            366
+          ],
+          "cameraZoom": false
+        },
+        {
+          "at": 24.5,
+          "page": 8,
+          "view": [
+            341,
+            494,
+            508,
+            664
+          ],
+          "cameraZoom": false
+        }
+      ],
+      "avoid": [
+        [
+          345,
+          499,
+          505,
+          658
+        ]
+      ],
+      "emphasis": "margin"
+    }
+  ]
+}

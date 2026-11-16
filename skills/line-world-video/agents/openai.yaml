@@ -1,0 +1,4 @@
+interface:
+  display_name: "Line World Video"
+  short_description: "Clean explanatory videos with real photos and diagrams"
+  default_prompt: "Use $line-world-video to create a balanced explanatory video with borderless solid gray/red items, complete frame partitions, a guiding dot and editable timing. Use real photographs for documented physical objects and diagrams for mechanisms. For a paper, use actual PDF pages, source-region focus and linked table charts. Add visible titles only when requested."

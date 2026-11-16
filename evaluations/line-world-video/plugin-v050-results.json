@@ -1,0 +1,365 @@
+{
+  "ok": true,
+  "allStrict": false,
+  "passed": 11,
+  "total": 17,
+  "releaseGates": {
+    "orchestrator": true,
+    "d3": true,
+    "mermaid": true,
+    "icons": true,
+    "hyperframes": true
+  },
+  "model": "openai-codex/gpt-6.1-sol",
+  "results": [
+    {
+      "scope": "orchestrator",
+      "case": "contract",
+      "repeat": 1,
+      "ok": true,
+      "checks": {
+        "strictHarness": true,
+        "trace": true,
+        "currentPayloadMatches": true,
+        "noAutomaticTitles": true,
+        "contiguousClock": true,
+        "atlas": true,
+        "inventory": true,
+        "duration": true,
+        "fullFramePartitions": true,
+        "sameFacts": true
+      },
+      "run": "evaluations/runs/20261114-line-world-v050-contract-sol-1"
+    },
+    {
+      "scope": "orchestrator",
+      "case": "boundary",
+      "repeat": 1,
+      "ok": true,
+      "checks": {
+        "strictHarness": true,
+        "trace": true,
+        "currentPayloadMatches": true,
+        "noAutomaticTitles": true,
+        "contiguousClock": true,
+        "atlas": true,
+        "inventory": true,
+        "duration": true,
+        "fullFramePartitions": true,
+        "sameFacts": true,
+        "rejections": true
+      },
+      "run": "evaluations/runs/20261114-line-world-v050-boundary-sol-1"
+    },
+    {
+      "scope": "orchestrator",
+      "case": "naturalistic",
+      "repeat": 1,
+      "ok": true,
+      "checks": {
+        "strictHarness": true,
+        "trace": true,
+        "currentPayloadMatches": true,
+        "noAutomaticTitles": true,
+        "contiguousClock": true,
+        "atlas": true,
+        "inventory": true,
+        "duration": true,
+        "fullFramePartitions": true,
+        "sameFacts": true,
+        "requestedRetime": true,
+        "actualBrowserAudit": true,
+        "primaryRed": true,
+        "semanticPointMap": true,
+        "visibleSizeVariation": true,
+        "quantityReceivers": true
+      },
+      "run": "evaluations/runs/20261114-line-world-v050-naturalistic-sol-1"
+    },
+    {
+      "scope": "orchestrator",
+      "case": "naturalistic",
+      "repeat": 2,
+      "ok": true,
+      "checks": {
+        "strictHarness": true,
+        "trace": true,
+        "currentPayloadMatches": true,
+        "noAutomaticTitles": true,
+        "contiguousClock": true,
+        "atlas": true,
+        "inventory": true,
+        "duration": true,
+        "fullFramePartitions": true,
+        "sameFacts": true,
+        "requestedRetime": true,
+        "actualBrowserAudit": true,
+        "primaryRed": true,
+        "semanticPointMap": true,
+        "visibleSizeVariation": true,
+        "quantityReceivers": true
+      },
+      "run": "evaluations/runs/20261114-line-world-v050-naturalistic-sol-2"
+    },
+    {
+      "scope": "orchestrator",
+      "case": "naturalistic",
+      "repeat": 3,
+      "ok": true,
+      "checks": {
+        "strictHarness": true,
+        "trace": true,
+        "currentPayloadMatches": true,
+        "noAutomaticTitles": true,
+        "contiguousClock": true,
+        "atlas": true,
+        "inventory": true,
+        "duration": true,
+        "fullFramePartitions": true,
+        "sameFacts": true,
+        "requestedRetime": true,
+        "actualBrowserAudit": true,
+        "primaryRed": true,
+        "semanticPointMap": true,
+        "visibleSizeVariation": true,
+        "quantityReceivers": true
+      },
+      "run": "evaluations/runs/20261114-line-world-v050-naturalistic-sol-3"
+    },
+    {
+      "scope": "orchestrator",
+      "case": "generalization",
+      "repeat": 1,
+      "ok": true,
+      "checks": {
+        "strictHarness": true,
+        "trace": true,
+        "currentPayloadMatches": true,
+        "noAutomaticTitles": true,
+        "contiguousClock": true,
+        "actualBrowserAudit": true,
+        "primaryRed": true,
+        "newFacts": true,
+        "newTiming": true,
+        "newUnitsAndColor": true
+      },
+      "run": "evaluations/runs/20261114-line-world-v050-generalization-sol-1"
+    },
+    {
+      "scope": "orchestrator",
+      "case": "generalization",
+      "repeat": 2,
+      "ok": true,
+      "checks": {
+        "strictHarness": true,
+        "trace": true,
+        "currentPayloadMatches": true,
+        "noAutomaticTitles": true,
+        "contiguousClock": true,
+        "actualBrowserAudit": true,
+        "primaryRed": true,
+        "newFacts": true,
+        "newTiming": true,
+        "newUnitsAndColor": true
+      },
+      "run": "evaluations/runs/20261114-line-world-v050-generalization-sol-2"
+    },
+    {
+      "scope": "orchestrator",
+      "case": "generalization",
+      "repeat": 3,
+      "ok": false,
+      "checks": {
+        "strictHarness": false,
+        "trace": false,
+        "currentPayloadMatches": true,
+        "noAutomaticTitles": true,
+        "contiguousClock": true,
+        "actualBrowserAudit": true,
+        "primaryRed": true,
+        "newFacts": true,
+        "newTiming": true,
+        "newUnitsAndColor": true
+      },
+      "run": "evaluations/runs/20261114-line-world-v050-generalization-sol-3"
+    },
+    {
+      "scope": "producer",
+      "case": "d3",
+      "repeat": 1,
+      "ok": true,
+      "checks": {
+        "strictHarness": true,
+        "trace": true,
+        "currentPayloadMatches": true,
+        "sourceLabels": true,
+        "realD3Version": true,
+        "actualExporterPass": true
+      },
+      "run": "evaluations/runs/line-world-profiles-v050/evaluations/runs/20261114-line-world-d3-contract-sol-1"
+    },
+    {
+      "scope": "producer",
+      "case": "icons",
+      "repeat": 1,
+      "ok": true,
+      "checks": {
+        "strictHarness": true,
+        "trace": true,
+        "currentPayloadMatches": true,
+        "realProviderReceipts": true,
+        "license": true,
+        "svgRoots": true
+      },
+      "run": "evaluations/runs/line-world-profiles-v050/evaluations/runs/20261114-line-world-icons-contract-sol-1"
+    },
+    {
+      "scope": "producer",
+      "case": "mermaid",
+      "repeat": 1,
+      "ok": false,
+      "checks": {
+        "strictHarness": false,
+        "trace": false,
+        "currentPayloadMatches": true,
+        "realVideoFinish": true,
+        "noVisibleDraftTitle": true,
+        "metadata": true,
+        "tasks": true,
+        "neutralNativeEventSurfaces": true
+      },
+      "run": "evaluations/runs/line-world-profiles-v050/evaluations/runs/20261114-line-world-mermaid-contract-sol-1"
+    },
+    {
+      "scope": "producer",
+      "case": "mermaid",
+      "repeat": 2,
+      "ok": false,
+      "checks": {
+        "strictHarness": false,
+        "trace": false,
+        "currentPayloadMatches": true,
+        "realVideoFinish": true,
+        "noVisibleDraftTitle": true,
+        "metadata": true,
+        "tasks": true,
+        "neutralNativeEventSurfaces": true
+      },
+      "run": "evaluations/runs/line-world-profiles-v050/evaluations/runs/20261114-line-world-mermaid-contract-sol-2"
+    },
+    {
+      "scope": "producer",
+      "case": "mermaid",
+      "repeat": 3,
+      "ok": true,
+      "checks": {
+        "strictHarness": true,
+        "trace": true,
+        "currentPayloadMatches": true,
+        "realVideoFinish": true,
+        "noVisibleDraftTitle": true,
+        "metadata": true,
+        "tasks": true,
+        "neutralNativeEventSurfaces": true
+      },
+      "run": "evaluations/runs/line-world-profiles-v050/evaluations/runs/20261114-line-world-mermaid-contract-sol-3"
+    },
+    {
+      "scope": "producer",
+      "case": "hyperframes",
+      "repeat": 1,
+      "ok": false,
+      "checks": {
+        "strictHarness": false,
+        "trace": false,
+        "currentPayloadMatches": true,
+        "nativeClockContract": true,
+        "actualSeekEvidence": true
+      },
+      "run": "evaluations/runs/line-world-profiles-v050/evaluations/runs/20261114-line-world-hyperframes-contract-sol-1"
+    },
+    {
+      "scope": "producer",
+      "case": "hyperframes",
+      "repeat": 2,
+      "ok": false,
+      "checks": {
+        "strictHarness": false,
+        "trace": false,
+        "currentPayloadMatches": true,
+        "nativeClockContract": true,
+        "actualSeekEvidence": true
+      },
+      "run": "evaluations/runs/line-world-profiles-v050/evaluations/runs/20261114-line-world-hyperframes-contract-sol-2"
+    },
+    {
+      "scope": "producer",
+      "case": "hyperframes",
+      "repeat": 3,
+      "ok": false,
+      "checks": {
+        "strictHarness": false,
+        "trace": false,
+        "currentPayloadMatches": true,
+        "nativeClockContract": true,
+        "actualSeekEvidence": true
+      },
+      "run": "evaluations/runs/line-world-profiles-v050/evaluations/runs/20261114-line-world-hyperframes-contract-sol-3"
+    },
+    {
+      "scope": "producer",
+      "case": "hyperframes-attention",
+      "repeat": 1,
+      "ok": true,
+      "checks": {
+        "strictHarness": true,
+        "trace": true,
+        "currentPayloadMatches": true,
+        "nativeClockContract": true,
+        "actualSeekEvidence": true
+      },
+      "run": "evaluations/runs/line-world-profiles-v050/evaluations/runs/20261114-line-world-hyperframes-attention-sol-1"
+    }
+  ],
+  "policy": "Apply evaluations/README.md: one passing deterministic contract/boundary or producer smoke; at least two of three fresh naturalistic/generalization runs. Preserve every strict failure and independently inspect artifacts. Producer integration probes are separate from the formal primary cohort.",
+  "primaryCaseCounts": {
+    "contract": {
+      "passed": 1,
+      "total": 1
+    },
+    "boundary": {
+      "passed": 1,
+      "total": 1
+    },
+    "naturalistic": {
+      "passed": 3,
+      "total": 3
+    },
+    "generalization": {
+      "passed": 2,
+      "total": 3
+    }
+  },
+  "producerCaseCounts": {
+    "d3": {
+      "passed": 1,
+      "total": 1
+    },
+    "mermaid": {
+      "passed": 1,
+      "total": 3
+    },
+    "icons": {
+      "passed": 1,
+      "total": 1
+    },
+    "hyperframes": {
+      "passed": 0,
+      "total": 3
+    },
+    "hyperframes-attention": {
+      "passed": 1,
+      "total": 1
+    }
+  }
+}

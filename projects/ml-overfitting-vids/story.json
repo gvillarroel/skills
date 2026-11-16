@@ -1,0 +1,125 @@
+{
+  "projectTitle": "Entrenar un modelo: controlar el sobreajuste",
+  "language": "es",
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "palette": "colorset1",
+  "visibleTitles": false,
+  "motion": {
+    "panSeconds": 0.65,
+    "overviewSeconds": 2
+  },
+  "dataStatus": "Synthetic, seeded regression experiment; schematic early-stopping illustration is labeled separately.",
+  "googleVidsUrl": "https://docs.google.com/videos/d/12pQ3UaqihBOtZe_w6VaigVhjQzzgnU4qCnCKa0VmLCs/edit",
+  "scenes": [
+    {
+      "id": "generalize",
+      "visual": "fit-comparison",
+      "script": "Entrenar un modelo no consiste en memorizar los ejemplos. Buscamos que prediga bien datos nuevos. Una curva demasiado flexible puede aprender incluso el ruido: eso es sobreajuste, u overfitting. Ningún método garantiza eliminarlo por completo. Vamos a recorrer los controles que reducen ese riesgo y permiten detectarlo.",
+      "clipSeconds": 20.466666666666665,
+      "essentialAnimationSeconds": 19.35,
+      "clip": "C:\\Users\\villa\\dev\\skills\\projects\\ml-overfitting-vids\\artifacts\\videos\\clips-revised\\01-generalize.mp4",
+      "staticHoldAfterSeconds": 19.35
+    },
+    {
+      "id": "problem-data",
+      "visual": "data-quality",
+      "script": "Primero definimos qué predecir, con qué información disponible y cómo mediremos el error. Revisamos procedencia, etiquetas, valores ausentes, duplicados y representatividad. Aquí usaremos una regresión con datos sintéticos. Si los ejemplos no representan el uso real, una buena puntuación durante el desarrollo puede resultar engañosa.",
+      "clipSeconds": 22.6,
+      "essentialAnimationSeconds": 18.743333333333336,
+      "clip": "C:\\Users\\villa\\dev\\skills\\projects\\ml-overfitting-vids\\artifacts\\videos\\clips-revised\\02-problem-data.mp4",
+      "staticHoldAfterSeconds": 18.743333333333336
+    },
+    {
+      "id": "split",
+      "visual": "group-split",
+      "script": "Separamos entrenamiento, validación y prueba antes de ajustar transformaciones. En este ejemplo reservamos sesenta, veinte y veinte por ciento. Las observaciones de una misma entidad permanecen juntas. Para predecir el futuro, separaríamos por tiempo. El conjunto de prueba queda cerrado hasta que terminemos de elegir el modelo.",
+      "clipSeconds": 20.7,
+      "essentialAnimationSeconds": 18.58333333333333,
+      "clip": "C:\\Users\\villa\\dev\\skills\\projects\\ml-overfitting-vids\\artifacts\\videos\\clips-revised\\03-split.mp4",
+      "staticHoldAfterSeconds": 18.58333333333333
+    },
+    {
+      "id": "preprocessing",
+      "visual": "pipeline",
+      "script": "La limpieza estadística, la imputación, el escalado y la selección de variables aprenden únicamente del entrenamiento. Después aplicamos esas mismas transformaciones a validación y prueba. Un pipeline repite esta separación dentro de cada partición de validación cruzada. Así evitamos que información reservada se filtre al ajuste del modelo.",
+      "clipSeconds": 21.6,
+      "essentialAnimationSeconds": 20.06333333333334,
+      "clip": "C:\\Users\\villa\\dev\\skills\\projects\\ml-overfitting-vids\\artifacts\\videos\\clips-revised\\04-preprocessing.mp4",
+      "staticHoldAfterSeconds": 20.06333333333334
+    },
+    {
+      "id": "baseline",
+      "visual": "baseline-complexity",
+      "script": "Empezamos con una referencia sencilla, como predecir siempre la media, y después aumentamos la capacidad. Un modelo demasiado simple puede quedarse corto. Uno excesivamente complejo puede ajustar el ruido. No elegimos por el menor error de entrenamiento: comparamos cómo se comportan los candidatos con ejemplos que no utilizaron para ajustarse.",
+      "clipSeconds": 22.0,
+      "essentialAnimationSeconds": 21.143333333333338,
+      "clip": "C:\\Users\\villa\\dev\\skills\\projects\\ml-overfitting-vids\\artifacts\\videos\\clips-revised\\05-baseline.mp4",
+      "staticHoldAfterSeconds": 21.143333333333338
+    },
+    {
+      "id": "cross-validation",
+      "visual": "folds-table",
+      "script": "Dentro del entrenamiento usamos cinco particiones por grupos. Cada candidato se ajusta en unas y se evalúa en otra, rotando la partición reservada. Comparamos el error medio y su variabilidad. Si exploramos muchas alternativas, una validación anidada permite evaluar el procedimiento de selección sin reutilizar la misma evidencia para todo.",
+      "clipSeconds": 21.1,
+      "essentialAnimationSeconds": 18.503333333333337,
+      "clip": "C:\\Users\\villa\\dev\\skills\\projects\\ml-overfitting-vids\\artifacts\\videos\\clips-revised\\06-cross-validation.mp4",
+      "staticHoldAfterSeconds": 18.503333333333337
+    },
+    {
+      "id": "regularization",
+      "visual": "regularization",
+      "script": "Controlamos la complejidad con regularización y una búsqueda limitada de hiperparámetros. En nuestra regresión, la penalización ele dos reduce coeficientes excesivos. También podemos quitar variables irrelevantes o conseguir más datos útiles. En redes neuronales existen técnicas como dropout o aumento de datos, siempre que las transformaciones conserven el significado de las etiquetas.",
+      "clipSeconds": 25.8,
+      "essentialAnimationSeconds": 24.943333333333335,
+      "clip": "C:\\Users\\villa\\dev\\skills\\projects\\ml-overfitting-vids\\artifacts\\videos\\clips-revised\\07-regularization.mp4",
+      "staticHoldAfterSeconds": 24.943333333333335
+    },
+    {
+      "id": "early-stopping",
+      "visual": "early-stopping",
+      "script": "Cuando el entrenamiento es iterativo, vigilamos una validación separada. Si su error deja de mejorar, detenemos el proceso y recuperamos el mejor estado guardado. Seguir entrenando puede reducir el error de entrenamiento mientras aumenta el de validación. La prueba final no se usa para decidir cuándo parar.",
+      "clipSeconds": 20.266666666666666,
+      "essentialAnimationSeconds": 15.404999999999978,
+      "clip": "C:\\Users\\villa\\dev\\skills\\projects\\ml-overfitting-vids\\artifacts\\videos\\clips-revised\\08-early-stopping.mp4",
+      "staticHoldAfterSeconds": 15.404999999999978
+    },
+    {
+      "id": "diagnostics",
+      "visual": "diagnostics",
+      "script": "Examinamos la diferencia entre entrenamiento y validación, las curvas al aumentar los datos y los errores por segmentos. Errores altos en ambos conjuntos pueden indicar falta de capacidad o de señal. Una diferencia grande puede sugerir sobreajuste. Repetimos con semillas y particiones apropiadas: una sola división favorable no demuestra que el modelo generalice.",
+      "clipSeconds": 22.333333333333332,
+      "essentialAnimationSeconds": 18.51666666666666,
+      "clip": "C:\\Users\\villa\\dev\\skills\\projects\\ml-overfitting-vids\\artifacts\\videos\\clips-revised\\09-diagnostics.mp4",
+      "staticHoldAfterSeconds": 18.51666666666666
+    },
+    {
+      "id": "final-test",
+      "visual": "frozen-test",
+      "script": "Congelamos el pipeline, los hiperparámetros y el protocolo de evaluación. Si corresponde, reajustamos con los datos de desarrollo antes de abrir la prueba final una sola vez. Reportamos el resultado, su incertidumbre y los segmentos donde falla. Si cambiamos decisiones después de mirar esa prueba, deja de ser una evaluación independiente.",
+      "clipSeconds": 21.7,
+      "essentialAnimationSeconds": 21.7,
+      "clip": "C:\\Users\\villa\\dev\\skills\\projects\\ml-overfitting-vids\\artifacts\\videos\\clips-revised\\10-final-test.mp4",
+      "staticHoldAfterSeconds": 21.7
+    },
+    {
+      "id": "production",
+      "visual": "monitoring",
+      "script": "Al desplegar, guardamos versiones de datos, código, transformaciones y modelo. Monitorizamos cambios en las entradas y en las predicciones, y medimos el error cuando llegan etiquetas reales. Una distribución nueva puede invalidar las conclusiones anteriores. Reentrenar requiere una evaluación renovada; reutilizar indefinidamente la misma prueba también introduce sesgo.",
+      "clipSeconds": 22.4,
+      "essentialAnimationSeconds": 18.623333333333342,
+      "clip": "C:\\Users\\villa\\dev\\skills\\projects\\ml-overfitting-vids\\artifacts\\videos\\clips-revised\\11-production.mp4",
+      "staticHoldAfterSeconds": 18.623333333333342
+    },
+    {
+      "id": "overview",
+      "visual": "world-overview",
+      "script": "El control del sobreajuste es una cadena: datos adecuados, separación correcta, transformaciones sin fugas, capacidad controlada, validación honesta, prueba independiente y seguimiento en producción. No es una garantía absoluta. Es un proceso reproducible para detectar problemas, comparar alternativas y obtener evidencia de que las predicciones seguirán siendo útiles fuera del entrenamiento.",
+      "clipSeconds": 24.9,
+      "essentialAnimationSeconds": 24.883333333333333,
+      "clip": "C:\\Users\\villa\\dev\\skills\\projects\\ml-overfitting-vids\\artifacts\\videos\\clips-revised\\12-overview.mp4",
+      "staticHoldAfterSeconds": 24.883333333333333
+    }
+  ]
+}

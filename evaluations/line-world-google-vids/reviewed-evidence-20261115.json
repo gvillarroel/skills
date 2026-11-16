@@ -1,0 +1,160 @@
+{
+  "ok": true,
+  "cases": [
+    {
+      "case": "contract",
+      "runId": "20261115-line-world-vids-contract-1",
+      "passed": true,
+      "readSurface": [
+        "../prompt.md",
+        "skills/line-world-google-vids/SKILL.md",
+        "skills/line-world-google-vids/references/timing-continuity.md",
+        "skills/line-world-google-vids/references/scene-handoff.md",
+        "handoff/observed.json",
+        "handoff/scripts.txt",
+        "release/timing.json"
+      ],
+      "model": "openai-codex/gpt-6.1-sol",
+      "durationSeconds": 33.933
+    },
+    {
+      "case": "naturalistic",
+      "runId": "20261115-line-world-vids-naturalistic-1",
+      "passed": true,
+      "readSurface": [
+        "../prompt.md",
+        "skills/line-world-google-vids/SKILL.md",
+        "skills/line-world-google-vids/references/scene-handoff.md",
+        "skills/line-world-google-vids/references/timing-continuity.md",
+        "handoff/scripts.txt",
+        "release/timing.json",
+        "handoff/observed.json"
+      ],
+      "model": "openai-codex/gpt-6.1-sol",
+      "durationSeconds": 55.424
+    },
+    {
+      "case": "naturalistic",
+      "runId": "20261115-line-world-vids-naturalistic-2",
+      "passed": true,
+      "readSurface": [
+        "../prompt.md",
+        "skills/line-world-google-vids/SKILL.md",
+        "skills/line-world-google-vids/references/scene-handoff.md",
+        "skills/line-world-google-vids/references/timing-continuity.md",
+        "skills/line-world-google-vids/scripts/vids_plan.py"
+      ],
+      "model": "openai-codex/gpt-6.1-sol",
+      "durationSeconds": 74.905
+    },
+    {
+      "case": "naturalistic",
+      "runId": "20261115-line-world-vids-naturalistic-3",
+      "passed": true,
+      "readSurface": [
+        "../prompt.md",
+        "skills/line-world-google-vids/SKILL.md",
+        "skills/line-world-google-vids/references/timing-continuity.md",
+        "skills/line-world-google-vids/references/scene-handoff.md",
+        "release/timing.json",
+        "handoff/scripts.txt",
+        "handoff/observed.json"
+      ],
+      "model": "openai-codex/gpt-6.1-sol",
+      "durationSeconds": 57.715
+    },
+    {
+      "case": "generalization",
+      "runId": "20261115-line-world-vids-generalization-1",
+      "passed": true,
+      "readSurface": [
+        "../prompt.md",
+        "skills/line-world-google-vids/SKILL.md",
+        "skills/line-world-google-vids/references/timing-continuity.md",
+        "skills/line-world-google-vids/scripts/vids_plan.py",
+        "skills/line-world-google-vids/references/scene-handoff.md"
+      ],
+      "model": "openai-codex/gpt-6.1-sol",
+      "durationSeconds": 39.552
+    },
+    {
+      "case": "generalization",
+      "runId": "20261115-line-world-vids-generalization-2",
+      "passed": true,
+      "readSurface": [
+        "../prompt.md",
+        "skills/line-world-google-vids/SKILL.md",
+        "skills/line-world-google-vids/references/scene-handoff.md",
+        "skills/line-world-google-vids/scripts/vids_plan.py",
+        "skills/line-world-google-vids/references/timing-continuity.md"
+      ],
+      "model": "openai-codex/gpt-6.1-sol",
+      "durationSeconds": 58.711
+    },
+    {
+      "case": "generalization",
+      "runId": "20261115-line-world-vids-generalization-3",
+      "passed": true,
+      "readSurface": [
+        "../prompt.md",
+        "skills/line-world-google-vids/SKILL.md",
+        "skills/line-world-google-vids/references/scene-handoff.md",
+        "skills/line-world-google-vids/references/timing-continuity.md",
+        "skills/line-world-google-vids/scripts/vids_plan.py",
+        "handoff/scripts.txt",
+        "handoff/observed.json",
+        "release/timing.json"
+      ],
+      "model": "openai-codex/gpt-6.1-sol",
+      "durationSeconds": 38.659
+    },
+    {
+      "case": "boundary",
+      "runId": "20261115-line-world-vids-boundary-1",
+      "passed": true,
+      "readSurface": [
+        "../prompt.md",
+        "skills/line-world-google-vids/SKILL.md",
+        "skills/line-world-google-vids/references/scene-handoff.md",
+        "skills/line-world-google-vids/references/ui-workflow.md",
+        "skills/line-world-google-vids/references/timing-continuity.md",
+        "skills/line-world-google-vids/references/recovery.md",
+        "skills/line-world-google-vids/scripts/vids_plan.py"
+      ],
+      "model": "openai-codex/gpt-6.1-sol",
+      "durationSeconds": 58.524
+    },
+    {
+      "case": "final-naturalistic",
+      "runId": "20261115-line-world-vids-final-naturalistic-1",
+      "passed": true,
+      "readSurface": [
+        "../prompt.md",
+        "skills/line-world-google-vids/SKILL.md",
+        "skills/line-world-google-vids/references/scene-handoff.md",
+        "skills/line-world-google-vids/references/timing-continuity.md",
+        "handoff/observed.json",
+        "release/timing.json",
+        "handoff/scripts.txt"
+      ],
+      "model": "openai-codex/gpt-6.1-sol",
+      "durationSeconds": 64.512
+    },
+    {
+      "case": "orchestrator-routing",
+      "runId": "20261115-line-world-vids-routing-1",
+      "passed": true,
+      "readSurface": [
+        "../prompt.md",
+        "skills/line-world-video/SKILL.md",
+        "skills/line-world-video/references/visual-direction.md",
+        "skills/line-world-video/references/timing.md",
+        "skills/line-world-video/references/attention-choreography.md",
+        "skills/line-world-video/references/color-priority.md"
+      ],
+      "model": "openai-codex/gpt-6.1-sol",
+      "durationSeconds": 42.85
+    }
+  ],
+  "note": "Offline artifact/read-surface validation only. Native UI and downloaded media are separate evidence."
+}

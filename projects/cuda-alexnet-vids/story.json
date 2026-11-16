@@ -1,0 +1,754 @@
+{
+  "projectTitle": "CUDA y AlexNet: el salto que cambió la IA",
+  "projectUrl": "https://docs.google.com/videos/d/16jOs0a09fPGfJr4Ft3ZjpbCv3RhsEA3ClYEGg7oi_dA/edit",
+  "language": "es",
+  "voice": "Nyla",
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "palette": "colorset1",
+  "presentation": {
+    "visibleTitles": false,
+    "fullFramePartitions": true
+  },
+  "scenes": [
+    {
+      "id": "turning-point",
+      "script": "En 2012, la visión artificial vivió un punto de inflexión. AlexNet mostró que una red profunda podía dar un salto enorme al reconocer imágenes. Pero no fue una pieza aislada: la historia conecta datos, algoritmos y una nueva forma de aprovechar el cómputo.",
+      "visual": "A continuous-world timeline connects CUDA, ImageNet and AlexNet; three semantic branches converge on a learned classifier.",
+      "clipSeconds": 17.4,
+      "essentialAnimationSeconds": 17.4,
+      "cues": [
+        {
+          "target": "year-2012",
+          "phrase": "2012"
+        },
+        {
+          "target": "alexnet",
+          "phrase": "AlexNet"
+        },
+        {
+          "target": "data",
+          "phrase": "datos"
+        },
+        {
+          "target": "algorithm",
+          "phrase": "algoritmos"
+        },
+        {
+          "target": "compute",
+          "phrase": "cómputo"
+        }
+      ]
+    },
+    {
+      "id": "learned-features",
+      "script": "En muchos sistemas anteriores, las personas diseñaban cómo extraer bordes y descriptores; después, un clasificador tomaba la decisión. Una red convolucional permite aprender características a partir de ejemplos. Esa idea ya existía. La dificultad era entrenar redes grandes con suficientes imágenes y recursos.",
+      "visual": "Two full-width native Mermaid process lanes contrast engineered descriptors with learned features, with an explicit historical-precursor note in the source only.",
+      "clipSeconds": 19.7,
+      "essentialAnimationSeconds": 19.43,
+      "cues": [
+        {
+          "target": "edges",
+          "phrase": "bordes"
+        },
+        {
+          "target": "descriptors",
+          "phrase": "descriptores"
+        },
+        {
+          "target": "classifier",
+          "phrase": "clasificador"
+        },
+        {
+          "target": "learned",
+          "phrase": "aprender características"
+        },
+        {
+          "target": "resources",
+          "phrase": "recursos"
+        }
+      ]
+    },
+    {
+      "id": "cuda-platform",
+      "script": "La historia de CUDA también tiene protagonistas. Ian Buck desarrolló Brook con su equipo en Stanford y después lideró el software de CUDA en NVIDIA. La plataforma se presentó en 2006 y abrió su beta pública en 2007. Permitió usar las GPU para cálculos generales. La CPU mantiene el control y la GPU ejecuta muchas operaciones en paralelo. Ese puente facilitó entrenar redes más grandes.",
+      "visual": "A top timeline distinguishes the 2006 unveiling and 2007 beta. A full-height split shows CPU control and a GPU grid; no fabricated speedup ratio.",
+      "clipSeconds": 25.233333333333334,
+      "essentialAnimationSeconds": 22.190999999999995,
+      "cues": [
+        {
+          "target": "person-ian-buck",
+          "phrase": "Ian Buck"
+        },
+        {
+          "target": "cuda-2006",
+          "phrase": "2006"
+        },
+        {
+          "target": "cuda-2007",
+          "phrase": "2007"
+        },
+        {
+          "target": "cpu",
+          "phrase": "CPU"
+        },
+        {
+          "target": "gpu",
+          "phrase": "GPU ejecuta"
+        },
+        {
+          "target": "parallel",
+          "phrase": "en paralelo"
+        }
+      ],
+      "people": [
+        {
+          "id": "ian-buck",
+          "name": "Ian Buck",
+          "caption": [
+            "Lideró el software de CUDA",
+            "NVIDIA · antes, Brook en Stanford"
+          ],
+          "narrationRole": "lideró el software de CUDA",
+          "target": "person-ian-buck",
+          "sources": [
+            "https://developer.nvidia.com/blog/inside-the-programming-evolution-of-gpu-computing/"
+          ]
+        }
+      ],
+      "objects": [
+        {
+          "id": "cpu-photo",
+          "kind": "physical",
+          "purpose": "identity",
+          "depiction": "photo-treatment",
+          "asset": "cpu",
+          "variant": "one-bit"
+        },
+        {
+          "id": "gpu-photo",
+          "kind": "physical",
+          "purpose": "identity",
+          "depiction": "photo-treatment",
+          "asset": "gtx580",
+          "variant": "one-bit"
+        }
+      ]
+    },
+    {
+      "id": "parallel-work",
+      "script": "La CPU prepara los datos y lanza un kernel: una función que ejecutan muchos hilos. Cada hilo calcula una parte del trabajo; los hilos se organizan en bloques. Al multiplicar matrices, muchos de esos cálculos pueden avanzar en paralelo. La GPU entrega los resultados, que se utilizan para continuar el entrenamiento.",
+      "visual": "A linked input table feeds a kernel and four blocks of threads, then a result column. All quantities are schematic, with stable item identities.",
+      "clipSeconds": 20.6,
+      "essentialAnimationSeconds": 17.497999999999998,
+      "cues": [
+        {
+          "target": "input",
+          "phrase": "prepara los datos"
+        },
+        {
+          "target": "kernel",
+          "phrase": "kernel"
+        },
+        {
+          "target": "threads",
+          "phrase": "muchos hilos"
+        },
+        {
+          "target": "blocks",
+          "phrase": "bloques"
+        },
+        {
+          "target": "output",
+          "phrase": "resultados"
+        }
+      ],
+      "objects": [
+        {
+          "id": "parallel-operation",
+          "kind": "concept",
+          "purpose": "mechanism",
+          "depiction": "diagram",
+          "reason": "Matrices and thread blocks explain the work assignment; they do not impersonate a physical card."
+        }
+      ]
+    },
+    {
+      "id": "imagenet-scale",
+      "script": "Para reconocer imágenes también hacían falta datos. Fei-Fei Li impulsó ImageNet, y Jia Deng fue el primer autor de su artículo de 2009. Con un equipo más amplio, construyeron una gran base de imágenes etiquetadas. El concurso permitió comparar los modelos con una prueba común. AlexNet se entrenó con alrededor de un millón doscientas mil imágenes y mil categorías. Esta escala permitió medir el avance con muchos ejemplos.",
+      "visual": "A sparse image-cell field connects to label groups and explicit 1.2 million training images / 1000 categories counts. ImageNet dataset and challenge subset remain distinct.",
+      "clipSeconds": 26.933333333333334,
+      "essentialAnimationSeconds": 23.277999999999984,
+      "cues": [
+        {
+          "target": "person-fei-fei-li",
+          "phrase": "Fei-Fei Li"
+        },
+        {
+          "target": "person-jia-deng",
+          "phrase": "Jia Deng"
+        },
+        {
+          "target": "imagenet-2009",
+          "phrase": "2009"
+        },
+        {
+          "target": "labels",
+          "phrase": "imágenes etiquetadas"
+        },
+        {
+          "target": "challenge",
+          "phrase": "concurso"
+        },
+        {
+          "target": "images-count",
+          "phrase": "un millón doscientas mil"
+        },
+        {
+          "target": "classes-count",
+          "phrase": "mil categorías"
+        }
+      ],
+      "people": [
+        {
+          "id": "fei-fei-li",
+          "name": "Fei-Fei Li",
+          "caption": [
+            "Impulsó el proyecto ImageNet"
+          ],
+          "narrationRole": "impulsó ImageNet",
+          "target": "person-fei-fei-li",
+          "sources": [
+            "https://hai.stanford.edu/people/fei-fei-li"
+          ]
+        },
+        {
+          "id": "jia-deng",
+          "name": "Jia Deng",
+          "caption": [
+            "Primer autor · ImageNet 2009"
+          ],
+          "narrationRole": "primer autor",
+          "target": "person-jia-deng",
+          "sources": [
+            "https://www.image-net.org/static_files/papers/imagenet_cvpr09.pdf"
+          ]
+        }
+      ],
+      "objects": [
+        {
+          "id": "imagenet-photo-0-0",
+          "kind": "physical",
+          "purpose": "identity",
+          "depiction": "photo-treatment",
+          "asset": "imagenet-flower-1",
+          "variant": "gray"
+        },
+        {
+          "id": "imagenet-photo-0-1",
+          "kind": "physical",
+          "purpose": "identity",
+          "depiction": "photo-treatment",
+          "asset": "imagenet-flower-2",
+          "variant": "gray"
+        },
+        {
+          "id": "imagenet-photo-0-2",
+          "kind": "physical",
+          "purpose": "identity",
+          "depiction": "photo-treatment",
+          "asset": "imagenet-flower-3",
+          "variant": "gray"
+        },
+        {
+          "id": "imagenet-photo-0-3",
+          "kind": "physical",
+          "purpose": "identity",
+          "depiction": "photo-treatment",
+          "asset": "imagenet-flower-4",
+          "variant": "gray"
+        },
+        {
+          "id": "imagenet-photo-0-4",
+          "kind": "physical",
+          "purpose": "identity",
+          "depiction": "photo-treatment",
+          "asset": "imagenet-flower-5",
+          "variant": "gray"
+        },
+        {
+          "id": "imagenet-photo-0-5",
+          "kind": "physical",
+          "purpose": "identity",
+          "depiction": "photo-treatment",
+          "asset": "imagenet-flower-6",
+          "variant": "gray"
+        },
+        {
+          "id": "imagenet-photo-1-0",
+          "kind": "physical",
+          "purpose": "identity",
+          "depiction": "photo-treatment",
+          "asset": "imagenet-elephant-1",
+          "variant": "gray"
+        },
+        {
+          "id": "imagenet-photo-1-1",
+          "kind": "physical",
+          "purpose": "identity",
+          "depiction": "photo-treatment",
+          "asset": "imagenet-elephant-2",
+          "variant": "gray"
+        },
+        {
+          "id": "imagenet-photo-1-2",
+          "kind": "physical",
+          "purpose": "identity",
+          "depiction": "photo-treatment",
+          "asset": "imagenet-elephant-3",
+          "variant": "gray"
+        },
+        {
+          "id": "imagenet-photo-1-3",
+          "kind": "physical",
+          "purpose": "identity",
+          "depiction": "photo-treatment",
+          "asset": "imagenet-elephant-4",
+          "variant": "gray"
+        },
+        {
+          "id": "imagenet-photo-1-4",
+          "kind": "physical",
+          "purpose": "identity",
+          "depiction": "photo-treatment",
+          "asset": "imagenet-elephant-5",
+          "variant": "gray"
+        },
+        {
+          "id": "imagenet-photo-1-5",
+          "kind": "physical",
+          "purpose": "identity",
+          "depiction": "photo-treatment",
+          "asset": "imagenet-elephant-6",
+          "variant": "gray"
+        },
+        {
+          "id": "imagenet-photo-2-0",
+          "kind": "physical",
+          "purpose": "identity",
+          "depiction": "photo-treatment",
+          "asset": "imagenet-sailboat-1",
+          "variant": "gray"
+        },
+        {
+          "id": "imagenet-photo-2-1",
+          "kind": "physical",
+          "purpose": "identity",
+          "depiction": "photo-treatment",
+          "asset": "imagenet-sailboat-2",
+          "variant": "gray"
+        },
+        {
+          "id": "imagenet-photo-2-2",
+          "kind": "physical",
+          "purpose": "identity",
+          "depiction": "photo-treatment",
+          "asset": "imagenet-sailboat-3",
+          "variant": "gray"
+        },
+        {
+          "id": "imagenet-photo-2-3",
+          "kind": "physical",
+          "purpose": "identity",
+          "depiction": "photo-treatment",
+          "asset": "imagenet-sailboat-4",
+          "variant": "gray"
+        },
+        {
+          "id": "imagenet-photo-2-4",
+          "kind": "physical",
+          "purpose": "identity",
+          "depiction": "photo-treatment",
+          "asset": "imagenet-sailboat-5",
+          "variant": "gray"
+        },
+        {
+          "id": "imagenet-photo-2-5",
+          "kind": "physical",
+          "purpose": "identity",
+          "depiction": "photo-treatment",
+          "asset": "imagenet-sailboat-6",
+          "variant": "gray"
+        },
+        {
+          "id": "imagenet-photo-3-0",
+          "kind": "physical",
+          "purpose": "identity",
+          "depiction": "photo-treatment",
+          "asset": "imagenet-pumpkin-1",
+          "variant": "gray"
+        },
+        {
+          "id": "imagenet-photo-3-1",
+          "kind": "physical",
+          "purpose": "identity",
+          "depiction": "photo-treatment",
+          "asset": "imagenet-pumpkin-2",
+          "variant": "gray"
+        },
+        {
+          "id": "imagenet-photo-3-2",
+          "kind": "physical",
+          "purpose": "identity",
+          "depiction": "photo-treatment",
+          "asset": "imagenet-pumpkin-3",
+          "variant": "gray"
+        },
+        {
+          "id": "imagenet-photo-3-3",
+          "kind": "physical",
+          "purpose": "identity",
+          "depiction": "photo-treatment",
+          "asset": "imagenet-pumpkin-4",
+          "variant": "gray"
+        },
+        {
+          "id": "imagenet-photo-3-4",
+          "kind": "physical",
+          "purpose": "identity",
+          "depiction": "photo-treatment",
+          "asset": "imagenet-pumpkin-5",
+          "variant": "gray"
+        },
+        {
+          "id": "imagenet-photo-3-5",
+          "kind": "physical",
+          "purpose": "identity",
+          "depiction": "photo-treatment",
+          "asset": "imagenet-pumpkin-6",
+          "variant": "gray"
+        },
+        {
+          "id": "imagenet-photo-4-0",
+          "kind": "physical",
+          "purpose": "identity",
+          "depiction": "photo-treatment",
+          "asset": "imagenet-dog-1",
+          "variant": "gray"
+        },
+        {
+          "id": "imagenet-photo-4-1",
+          "kind": "physical",
+          "purpose": "identity",
+          "depiction": "photo-treatment",
+          "asset": "imagenet-dog-2",
+          "variant": "gray"
+        },
+        {
+          "id": "imagenet-photo-4-2",
+          "kind": "physical",
+          "purpose": "identity",
+          "depiction": "photo-treatment",
+          "asset": "imagenet-dog-3",
+          "variant": "gray"
+        },
+        {
+          "id": "imagenet-photo-4-3",
+          "kind": "physical",
+          "purpose": "identity",
+          "depiction": "photo-treatment",
+          "asset": "imagenet-dog-4",
+          "variant": "gray"
+        },
+        {
+          "id": "imagenet-photo-4-4",
+          "kind": "physical",
+          "purpose": "identity",
+          "depiction": "photo-treatment",
+          "asset": "imagenet-dog-5",
+          "variant": "gray"
+        },
+        {
+          "id": "imagenet-photo-4-5",
+          "kind": "physical",
+          "purpose": "identity",
+          "depiction": "photo-treatment",
+          "asset": "imagenet-dog-6",
+          "variant": "gray"
+        }
+      ]
+    },
+    {
+      "id": "alexnet-model",
+      "script": "En 2012, tres investigadores de la Universidad de Toronto presentaron AlexNet: Alex Krizhevsky, Ilya Sutskever y Geoffrey Hinton. Son los coautores de una red profunda entrenada eficientemente en GPU. Su arquitectura tenía cinco capas convolucionales y tres totalmente conectadas. Los píxeles atraviesan capas que aprenden patrones simples y los combinan en características más complejas. Las capas finales utilizan esa información para asignar categorías.",
+      "visual": "Three verified author portraits above the exact five-convolution/three-dense schematic; the guide follows each spoken name.",
+      "clipSeconds": 30.866666666666667,
+      "essentialAnimationSeconds": 30.866666666666667,
+      "cues": [
+        {
+          "target": "person-alex-krizhevsky",
+          "phrase": "Alex Krizhevsky"
+        },
+        {
+          "target": "person-ilya-sutskever",
+          "phrase": "Ilya Sutskever"
+        },
+        {
+          "target": "person-geoffrey-hinton",
+          "phrase": "Geoffrey Hinton"
+        },
+        {
+          "target": "conv-layers",
+          "phrase": "cinco capas"
+        },
+        {
+          "target": "dense-layers",
+          "phrase": "tres totalmente"
+        },
+        {
+          "target": "pixels",
+          "phrase": "píxeles"
+        },
+        {
+          "target": "categories",
+          "phrase": "categorías"
+        }
+      ],
+      "people": [
+        {
+          "id": "alex-krizhevsky",
+          "name": "Alex Krizhevsky",
+          "caption": [
+            "Coautor de AlexNet · Toronto"
+          ],
+          "narrationRole": "coautores de una red profunda",
+          "target": "person-alex-krizhevsky",
+          "sources": [
+            "https://papers.nips.cc/paper_files/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf"
+          ]
+        },
+        {
+          "id": "ilya-sutskever",
+          "name": "Ilya Sutskever",
+          "caption": [
+            "Coautor de AlexNet · Toronto"
+          ],
+          "narrationRole": "coautores de una red profunda",
+          "target": "person-ilya-sutskever",
+          "sources": [
+            "https://papers.nips.cc/paper_files/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf"
+          ]
+        },
+        {
+          "id": "geoffrey-hinton",
+          "name": "Geoffrey Hinton",
+          "caption": [
+            "Coautor de AlexNet · Toronto"
+          ],
+          "narrationRole": "coautores de una red profunda",
+          "target": "person-geoffrey-hinton",
+          "sources": [
+            "https://papers.nips.cc/paper_files/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf"
+          ]
+        }
+      ],
+      "objects": [
+        {
+          "id": "pixels-photo",
+          "kind": "physical",
+          "purpose": "identity",
+          "depiction": "photo-treatment",
+          "asset": "leopard",
+          "variant": "pixel"
+        },
+        {
+          "id": "learned-layers",
+          "kind": "concept",
+          "purpose": "mechanism",
+          "depiction": "diagram",
+          "reason": "Shows the learned hierarchy and layer sequence rather than physical hardware."
+        }
+      ]
+    },
+    {
+      "id": "two-gpus",
+      "script": "El entrenamiento se realizó con dos tarjetas GTX 580, de tres gigabytes cada una. El equipo repartió la red entre ambas, con comunicación selectiva. Entrenar un modelo llevaba entre cinco y seis días. La capacidad de cálculo y la memoria disponible condicionaban directamente qué red podían construir.",
+      "visual": "Two outlined GTX 580 boards, 3 GB each, share a partitioned model. A five-to-six-day duration interval is an original-paper training measurement, not the total competition ensemble cost.",
+      "clipSeconds": 19.333333333333332,
+      "essentialAnimationSeconds": 16.344999999999978,
+      "cues": [
+        {
+          "target": "gpu-pair",
+          "phrase": "dos tarjetas"
+        },
+        {
+          "target": "memory",
+          "phrase": "tres gigabytes"
+        },
+        {
+          "target": "model-split",
+          "phrase": "repartió la red"
+        },
+        {
+          "target": "training-days",
+          "phrase": "cinco y seis días"
+        },
+        {
+          "target": "capacity",
+          "phrase": "memoria disponible"
+        }
+      ],
+      "objects": [
+        {
+          "id": "gtx-left",
+          "kind": "physical",
+          "purpose": "identity",
+          "depiction": "photo-treatment",
+          "asset": "gtx580",
+          "variant": "one-bit"
+        },
+        {
+          "id": "gtx-right",
+          "kind": "physical",
+          "purpose": "identity",
+          "depiction": "photo-treatment",
+          "asset": "gtx580",
+          "variant": "one-bit"
+        },
+        {
+          "id": "split-model",
+          "kind": "concept",
+          "purpose": "mechanism",
+          "depiction": "diagram",
+          "reason": "Explains partitioning the network between the two real cards."
+        }
+      ]
+    },
+    {
+      "id": "training-recipe",
+      "script": "El resultado tampoco dependía solo del hardware. ReLU ayudaba a entrenar; la aumentación producía variaciones de las imágenes; y dropout desactivaba unidades durante el entrenamiento para reducir el sobreajuste. CUDA hacía viable el cálculo, pero la receta de aprendizaje también importaba.",
+      "visual": "Three complete vertical partitions show ReLU geometry, label-preserving crops and dropout. Sparse line art with live adjacent focus and no decorative headings.",
+      "clipSeconds": 19.533333333333335,
+      "essentialAnimationSeconds": 18.613000000000007,
+      "cues": [
+        {
+          "target": "relu",
+          "phrase": "ReLU"
+        },
+        {
+          "target": "augmentation",
+          "phrase": "aumentación"
+        },
+        {
+          "target": "dropout",
+          "phrase": "dropout"
+        },
+        {
+          "target": "generalization",
+          "phrase": "sobreajuste"
+        },
+        {
+          "target": "recipe",
+          "phrase": "receta de aprendizaje"
+        }
+      ],
+      "objects": [
+        {
+          "id": "augmentation-photo-0",
+          "kind": "physical",
+          "purpose": "identity",
+          "depiction": "photo-treatment",
+          "asset": "leopard",
+          "variant": "gray"
+        },
+        {
+          "id": "augmentation-photo-1",
+          "kind": "physical",
+          "purpose": "identity",
+          "depiction": "photo-treatment",
+          "asset": "leopard-flip",
+          "variant": "gray"
+        },
+        {
+          "id": "augmentation-photo-2",
+          "kind": "physical",
+          "purpose": "identity",
+          "depiction": "photo-treatment",
+          "asset": "leopard-crop",
+          "variant": "gray"
+        },
+        {
+          "id": "augmentation-photo-3",
+          "kind": "physical",
+          "purpose": "identity",
+          "depiction": "photo-treatment",
+          "asset": "leopard-crop-flip",
+          "variant": "gray"
+        }
+      ]
+    },
+    {
+      "id": "imagenet-result",
+      "script": "En el concurso de 2012, la propuesta ganadora combinó siete redes. Su error top cinco fue del quince coma tres por ciento, frente al veintiséis coma dos del segundo puesto. Son diez coma nueve puntos porcentuales. Top cinco significa que la categoría correcta debe aparecer entre las cinco opciones propuestas.",
+      "visual": "Zero-based test-error comparison: winning 7-network submission 15.3 percent, runner-up 26.2 percent, gap 10.9 percentage points. A complementary five-choice schematic defines the metric.",
+      "clipSeconds": 19.4,
+      "essentialAnimationSeconds": 18.740000000000016,
+      "cues": [
+        {
+          "target": "ensemble",
+          "phrase": "siete redes"
+        },
+        {
+          "target": "winner",
+          "phrase": "quince coma tres"
+        },
+        {
+          "target": "runner-up",
+          "phrase": "veintiséis coma dos"
+        },
+        {
+          "target": "gap",
+          "phrase": "diez coma nueve"
+        },
+        {
+          "target": "top-five",
+          "phrase": "cinco opciones"
+        }
+      ]
+    },
+    {
+      "id": "historical-impact",
+      "script": "Así hicieron historia juntos. CUDA acercó el paralelismo de las GPU a los investigadores. Los datos y las redes aportaron el problema y el método. AlexNet mostró el potencial de combinar las tres piezas a escala. No fue el nacimiento de las redes neuronales: fue una demostración decisiva de lo que podían llegar a hacer.",
+      "visual": "The camera reveals the persistent larger world: CUDA, data and learned models converge, followed by an annotated 2006/2007/2009/2012 timeline and restrained final hold.",
+      "clipSeconds": 21.6,
+      "essentialAnimationSeconds": 19.79999999999999,
+      "cues": [
+        {
+          "target": "legacy-cuda",
+          "phrase": "CUDA"
+        },
+        {
+          "target": "legacy-data",
+          "phrase": "datos"
+        },
+        {
+          "target": "legacy-model",
+          "phrase": "redes"
+        },
+        {
+          "target": "legacy-alexnet",
+          "phrase": "AlexNet"
+        },
+        {
+          "target": "legacy-convergence",
+          "phrase": "tres piezas"
+        },
+        {
+          "target": "legacy-2012",
+          "phrase": "demostración decisiva"
+        }
+      ]
+    }
+  ]
+}

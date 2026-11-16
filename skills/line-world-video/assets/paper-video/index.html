@@ -1,0 +1,9 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Paper video preview</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:white;font:16px Arial,sans-serif}svg{display:block;width:100vw;height:100vh;background:white}text{font-family:Arial,sans-serif}#controls{position:fixed;bottom:12px;left:20px;right:20px;padding:12px;background:#fff;border:1px solid #ddd;display:flex;gap:15px;align-items:center}input{flex:1}body.capture #controls{display:none}button{background:#9e1b32;color:white;border:0;padding:8px 16px;cursor:pointer}
+</style>
+<svg id="stage" viewBox="0 0 1920 1080" role="img" aria-label="Guided tour of original research paper pages"><defs><clipPath id="clipA"><rect/></clipPath><clipPath id="clipB"><rect/></clipPath><clipPath id="clipEntry"><rect/></clipPath></defs><g id="previous"></g><g id="current"></g></svg>
+<div id="controls"><button id="play">Play</button><input id="seek" type="range" min="0" step="0.01"><output id="time"></output></div>
+<script src="story.js"></script><script src="paper-motion.js"></script><script src="paper.js"></script></html>

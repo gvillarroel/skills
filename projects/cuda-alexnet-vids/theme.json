@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "palette": "colorset1",
+  "colors": {
+    "background": "#ffffff",
+    "surface": "#ffffff",
+    "primary": "#9e1b32",
+    "secondaryHighlight": "#696969",
+    "ink": "#333e48",
+    "muted": "#696969",
+    "line": "#828282",
+    "quiet": "#e7e7e7"
+  },
+  "fontScale": 1,
+  "lineWidth": 2
+}

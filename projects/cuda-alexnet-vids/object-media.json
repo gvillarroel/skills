@@ -1,0 +1,1461 @@
+{
+  "assets": [
+    {
+      "id": "gtx580",
+      "label": "EVGA GeForce GTX 580 3 GB",
+      "sourceFile": "artifacts/sources/hardware/gtx580-card.jpg",
+      "sourcePage": "https://www.newegg.com/evga-03g-p3-1584-ar-geforce-gtx-580-3gb-graphics-card-single-fan/p/N82E16814130655",
+      "identityEvidence": "Reviewed product photograph shows GTX 580; source product record identifies 03G-P3-1584-AR with 3 GB GDDR5.",
+      "scope": "Photograph of the model/memory variant, not a claim that this exact EVGA specimen was used by the AlexNet authors.",
+      "rights": {
+        "creator": "Product photograph distributed by EVGA/Newegg; individual photographer not credited",
+        "license": "No open license asserted; source product-photograph rights retained",
+        "credit": "EVGA GeForce GTX 580 3 GB product photograph, Newegg item 14-130-655, view 04"
+      },
+      "reviewed": true,
+      "sourceSha256": "8227f3a4d80432b7a768ec420307a14029768df1bdc2467a96d5a6ddd9356f52",
+      "width": 640,
+      "treatments": [
+        {
+          "id": "gray",
+          "mode": "grayscale"
+        },
+        {
+          "id": "edges",
+          "mode": "edges"
+        },
+        {
+          "id": "pixel",
+          "mode": "pixel",
+          "cell": 4,
+          "levels": 4
+        },
+        {
+          "id": "one-bit",
+          "mode": "one-bit",
+          "ink": "#696969",
+          "cell": 2
+        }
+      ],
+      "model": {
+        "expected": "GeForce GTX 580",
+        "observed": "GeForce GTX 580"
+      },
+      "variant": {
+        "expected": "3 GB",
+        "observed": "3 GB"
+      }
+    },
+    {
+      "id": "cpu",
+      "label": "Intel Core i7-920 CPU",
+      "sourceFile": "artifacts/sources/hardware/cpu-core-i7.jpg",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Nehalem_Corei7-920_DSCF1581_(15990812314).jpg",
+      "identityEvidence": "Reviewed source and visible package marking identify Intel Core i7-920.",
+      "scope": "Illustrates the CPU role in a heterogeneous system; the historical experiment host CPU is not specified here.",
+      "rights": {
+        "creator": "Fritzchens Fritz",
+        "license": "CC0 1.0 Universal",
+        "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "credit": "Fritzchens Fritz, Nehalem Corei7-920 DSCF1581, 2009, CC0; via Wikimedia Commons"
+      },
+      "reviewed": true,
+      "sourceSha256": "2964531aec132b73201b57d175a8d8117961acf9e4df80f88b09f03b96031305",
+      "width": 640,
+      "treatments": [
+        {
+          "id": "gray",
+          "mode": "grayscale"
+        },
+        {
+          "id": "edges",
+          "mode": "edges"
+        },
+        {
+          "id": "pixel",
+          "mode": "pixel",
+          "cell": 4,
+          "levels": 4
+        },
+        {
+          "id": "one-bit",
+          "mode": "one-bit",
+          "ink": "#696969",
+          "cell": 2
+        }
+      ],
+      "crop": [
+        650,
+        275,
+        2170,
+        1880
+      ],
+      "subjectPolygon": [
+        [
+          693,
+          317
+        ],
+        [
+          2124,
+          322
+        ],
+        [
+          2119,
+          1849
+        ],
+        [
+          680,
+          1851
+        ]
+      ]
+    },
+    {
+      "id": "imagenet-flower-1",
+      "label": "Published ImageNet training example: flower",
+      "sourceFile": "artifacts/sources/hardware/paper-photos/flower-1.png",
+      "sourcePage": "https://papers.nips.cc/paper_files/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf#page=8",
+      "identityEvidence": "Figure 4 right panel: one of the six training-image neighbours in this row; first test-image column excluded.",
+      "scope": "Published ILSVRC-2010 training example; illustrates ImageNet variety without asserting a specific 2012 training-file inventory.",
+      "rights": {
+        "creator": "Alex Krizhevsky, Ilya Sutskever and Geoffrey Hinton; underlying ImageNet image rights retained",
+        "license": "Original paper/underlying photographs; no Creative Commons license asserted",
+        "credit": "ImageNet photographs reproduced in Figure 4, ImageNet Classification with Deep Convolutional Neural Networks, NeurIPS 2012, page 8"
+      },
+      "reviewed": true,
+      "sourceSha256": "2477e41c7c9b63bc7bc092138acef568617c4230c09a86081f50caa00f76f025",
+      "width": 112,
+      "treatments": [
+        {
+          "id": "gray",
+          "mode": "grayscale"
+        }
+      ],
+      "derivedFrom": {
+        "file": "artifacts/sources/hardware/alexnet-paper.pdf",
+        "sha256": "90137160c57217953d5f61857e64ca58e85f06e1b13b4f475c918b1b582b9771",
+        "page": 8,
+        "figure": "4 right",
+        "imageXref": 102,
+        "imageDimensions": [
+          484,
+          346
+        ],
+        "crop": [
+          69,
+          0,
+          138,
+          69
+        ]
+      }
+    },
+    {
+      "id": "imagenet-flower-2",
+      "label": "Published ImageNet training example: flower",
+      "sourceFile": "artifacts/sources/hardware/paper-photos/flower-2.png",
+      "sourcePage": "https://papers.nips.cc/paper_files/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf#page=8",
+      "identityEvidence": "Figure 4 right panel: one of the six training-image neighbours in this row; first test-image column excluded.",
+      "scope": "Published ILSVRC-2010 training example; illustrates ImageNet variety without asserting a specific 2012 training-file inventory.",
+      "rights": {
+        "creator": "Alex Krizhevsky, Ilya Sutskever and Geoffrey Hinton; underlying ImageNet image rights retained",
+        "license": "Original paper/underlying photographs; no Creative Commons license asserted",
+        "credit": "ImageNet photographs reproduced in Figure 4, ImageNet Classification with Deep Convolutional Neural Networks, NeurIPS 2012, page 8"
+      },
+      "reviewed": true,
+      "sourceSha256": "6aea8360a54c1d1f303a026599bd205991a5bdb5326ec602e851f2370d12d2a8",
+      "width": 112,
+      "treatments": [
+        {
+          "id": "gray",
+          "mode": "grayscale"
+        }
+      ],
+      "derivedFrom": {
+        "file": "artifacts/sources/hardware/alexnet-paper.pdf",
+        "sha256": "90137160c57217953d5f61857e64ca58e85f06e1b13b4f475c918b1b582b9771",
+        "page": 8,
+        "figure": "4 right",
+        "imageXref": 102,
+        "imageDimensions": [
+          484,
+          346
+        ],
+        "crop": [
+          138,
+          0,
+          207,
+          69
+        ]
+      }
+    },
+    {
+      "id": "imagenet-flower-3",
+      "label": "Published ImageNet training example: flower",
+      "sourceFile": "artifacts/sources/hardware/paper-photos/flower-3.png",
+      "sourcePage": "https://papers.nips.cc/paper_files/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf#page=8",
+      "identityEvidence": "Figure 4 right panel: one of the six training-image neighbours in this row; first test-image column excluded.",
+      "scope": "Published ILSVRC-2010 training example; illustrates ImageNet variety without asserting a specific 2012 training-file inventory.",
+      "rights": {
+        "creator": "Alex Krizhevsky, Ilya Sutskever and Geoffrey Hinton; underlying ImageNet image rights retained",
+        "license": "Original paper/underlying photographs; no Creative Commons license asserted",
+        "credit": "ImageNet photographs reproduced in Figure 4, ImageNet Classification with Deep Convolutional Neural Networks, NeurIPS 2012, page 8"
+      },
+      "reviewed": true,
+      "sourceSha256": "80ad4386709ca529623a9a3aeff74d2b2feb762bd5ea5abf82a00cce1d14d40b",
+      "width": 112,
+      "treatments": [
+        {
+          "id": "gray",
+          "mode": "grayscale"
+        }
+      ],
+      "derivedFrom": {
+        "file": "artifacts/sources/hardware/alexnet-paper.pdf",
+        "sha256": "90137160c57217953d5f61857e64ca58e85f06e1b13b4f475c918b1b582b9771",
+        "page": 8,
+        "figure": "4 right",
+        "imageXref": 102,
+        "imageDimensions": [
+          484,
+          346
+        ],
+        "crop": [
+          207,
+          0,
+          277,
+          69
+        ]
+      }
+    },
+    {
+      "id": "imagenet-flower-4",
+      "label": "Published ImageNet training example: flower",
+      "sourceFile": "artifacts/sources/hardware/paper-photos/flower-4.png",
+      "sourcePage": "https://papers.nips.cc/paper_files/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf#page=8",
+      "identityEvidence": "Figure 4 right panel: one of the six training-image neighbours in this row; first test-image column excluded.",
+      "scope": "Published ILSVRC-2010 training example; illustrates ImageNet variety without asserting a specific 2012 training-file inventory.",
+      "rights": {
+        "creator": "Alex Krizhevsky, Ilya Sutskever and Geoffrey Hinton; underlying ImageNet image rights retained",
+        "license": "Original paper/underlying photographs; no Creative Commons license asserted",
+        "credit": "ImageNet photographs reproduced in Figure 4, ImageNet Classification with Deep Convolutional Neural Networks, NeurIPS 2012, page 8"
+      },
+      "reviewed": true,
+      "sourceSha256": "e3e67b3138b17a6192b357afe38970668fa65ade9010895eef093dcf9ce439bc",
+      "width": 112,
+      "treatments": [
+        {
+          "id": "gray",
+          "mode": "grayscale"
+        }
+      ],
+      "derivedFrom": {
+        "file": "artifacts/sources/hardware/alexnet-paper.pdf",
+        "sha256": "90137160c57217953d5f61857e64ca58e85f06e1b13b4f475c918b1b582b9771",
+        "page": 8,
+        "figure": "4 right",
+        "imageXref": 102,
+        "imageDimensions": [
+          484,
+          346
+        ],
+        "crop": [
+          277,
+          0,
+          346,
+          69
+        ]
+      }
+    },
+    {
+      "id": "imagenet-flower-5",
+      "label": "Published ImageNet training example: flower",
+      "sourceFile": "artifacts/sources/hardware/paper-photos/flower-5.png",
+      "sourcePage": "https://papers.nips.cc/paper_files/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf#page=8",
+      "identityEvidence": "Figure 4 right panel: one of the six training-image neighbours in this row; first test-image column excluded.",
+      "scope": "Published ILSVRC-2010 training example; illustrates ImageNet variety without asserting a specific 2012 training-file inventory.",
+      "rights": {
+        "creator": "Alex Krizhevsky, Ilya Sutskever and Geoffrey Hinton; underlying ImageNet image rights retained",
+        "license": "Original paper/underlying photographs; no Creative Commons license asserted",
+        "credit": "ImageNet photographs reproduced in Figure 4, ImageNet Classification with Deep Convolutional Neural Networks, NeurIPS 2012, page 8"
+      },
+      "reviewed": true,
+      "sourceSha256": "eab5d4bcfba4ddd99d7075d721522e29fa900ed9f127a429359ef6859412dc1b",
+      "width": 112,
+      "treatments": [
+        {
+          "id": "gray",
+          "mode": "grayscale"
+        }
+      ],
+      "derivedFrom": {
+        "file": "artifacts/sources/hardware/alexnet-paper.pdf",
+        "sha256": "90137160c57217953d5f61857e64ca58e85f06e1b13b4f475c918b1b582b9771",
+        "page": 8,
+        "figure": "4 right",
+        "imageXref": 102,
+        "imageDimensions": [
+          484,
+          346
+        ],
+        "crop": [
+          346,
+          0,
+          415,
+          69
+        ]
+      }
+    },
+    {
+      "id": "imagenet-flower-6",
+      "label": "Published ImageNet training example: flower",
+      "sourceFile": "artifacts/sources/hardware/paper-photos/flower-6.png",
+      "sourcePage": "https://papers.nips.cc/paper_files/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf#page=8",
+      "identityEvidence": "Figure 4 right panel: one of the six training-image neighbours in this row; first test-image column excluded.",
+      "scope": "Published ILSVRC-2010 training example; illustrates ImageNet variety without asserting a specific 2012 training-file inventory.",
+      "rights": {
+        "creator": "Alex Krizhevsky, Ilya Sutskever and Geoffrey Hinton; underlying ImageNet image rights retained",
+        "license": "Original paper/underlying photographs; no Creative Commons license asserted",
+        "credit": "ImageNet photographs reproduced in Figure 4, ImageNet Classification with Deep Convolutional Neural Networks, NeurIPS 2012, page 8"
+      },
+      "reviewed": true,
+      "sourceSha256": "6497171dc341ab3c4a957bd27615fc4afaa4386b2c01415a8cfa46c4658cad31",
+      "width": 112,
+      "treatments": [
+        {
+          "id": "gray",
+          "mode": "grayscale"
+        }
+      ],
+      "derivedFrom": {
+        "file": "artifacts/sources/hardware/alexnet-paper.pdf",
+        "sha256": "90137160c57217953d5f61857e64ca58e85f06e1b13b4f475c918b1b582b9771",
+        "page": 8,
+        "figure": "4 right",
+        "imageXref": 102,
+        "imageDimensions": [
+          484,
+          346
+        ],
+        "crop": [
+          415,
+          0,
+          484,
+          69
+        ]
+      }
+    },
+    {
+      "id": "imagenet-elephant-1",
+      "label": "Published ImageNet training example: elephant",
+      "sourceFile": "artifacts/sources/hardware/paper-photos/elephant-1.png",
+      "sourcePage": "https://papers.nips.cc/paper_files/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf#page=8",
+      "identityEvidence": "Figure 4 right panel: one of the six training-image neighbours in this row; first test-image column excluded.",
+      "scope": "Published ILSVRC-2010 training example; illustrates ImageNet variety without asserting a specific 2012 training-file inventory.",
+      "rights": {
+        "creator": "Alex Krizhevsky, Ilya Sutskever and Geoffrey Hinton; underlying ImageNet image rights retained",
+        "license": "Original paper/underlying photographs; no Creative Commons license asserted",
+        "credit": "ImageNet photographs reproduced in Figure 4, ImageNet Classification with Deep Convolutional Neural Networks, NeurIPS 2012, page 8"
+      },
+      "reviewed": true,
+      "sourceSha256": "c84d8120293eacb94ddee87f5d8711dd08844327cc13ecafa8eadec502456047",
+      "width": 112,
+      "treatments": [
+        {
+          "id": "gray",
+          "mode": "grayscale"
+        }
+      ],
+      "derivedFrom": {
+        "file": "artifacts/sources/hardware/alexnet-paper.pdf",
+        "sha256": "90137160c57217953d5f61857e64ca58e85f06e1b13b4f475c918b1b582b9771",
+        "page": 8,
+        "figure": "4 right",
+        "imageXref": 102,
+        "imageDimensions": [
+          484,
+          346
+        ],
+        "crop": [
+          69,
+          69,
+          138,
+          138
+        ]
+      }
+    },
+    {
+      "id": "imagenet-elephant-2",
+      "label": "Published ImageNet training example: elephant",
+      "sourceFile": "artifacts/sources/hardware/paper-photos/elephant-2.png",
+      "sourcePage": "https://papers.nips.cc/paper_files/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf#page=8",
+      "identityEvidence": "Figure 4 right panel: one of the six training-image neighbours in this row; first test-image column excluded.",
+      "scope": "Published ILSVRC-2010 training example; illustrates ImageNet variety without asserting a specific 2012 training-file inventory.",
+      "rights": {
+        "creator": "Alex Krizhevsky, Ilya Sutskever and Geoffrey Hinton; underlying ImageNet image rights retained",
+        "license": "Original paper/underlying photographs; no Creative Commons license asserted",
+        "credit": "ImageNet photographs reproduced in Figure 4, ImageNet Classification with Deep Convolutional Neural Networks, NeurIPS 2012, page 8"
+      },
+      "reviewed": true,
+      "sourceSha256": "3596cbaf92c6e2711a2a3d187901cf831c360c1b68369ffd6149aa58c3332435",
+      "width": 112,
+      "treatments": [
+        {
+          "id": "gray",
+          "mode": "grayscale"
+        }
+      ],
+      "derivedFrom": {
+        "file": "artifacts/sources/hardware/alexnet-paper.pdf",
+        "sha256": "90137160c57217953d5f61857e64ca58e85f06e1b13b4f475c918b1b582b9771",
+        "page": 8,
+        "figure": "4 right",
+        "imageXref": 102,
+        "imageDimensions": [
+          484,
+          346
+        ],
+        "crop": [
+          138,
+          69,
+          207,
+          138
+        ]
+      }
+    },
+    {
+      "id": "imagenet-elephant-3",
+      "label": "Published ImageNet training example: elephant",
+      "sourceFile": "artifacts/sources/hardware/paper-photos/elephant-3.png",
+      "sourcePage": "https://papers.nips.cc/paper_files/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf#page=8",
+      "identityEvidence": "Figure 4 right panel: one of the six training-image neighbours in this row; first test-image column excluded.",
+      "scope": "Published ILSVRC-2010 training example; illustrates ImageNet variety without asserting a specific 2012 training-file inventory.",
+      "rights": {
+        "creator": "Alex Krizhevsky, Ilya Sutskever and Geoffrey Hinton; underlying ImageNet image rights retained",
+        "license": "Original paper/underlying photographs; no Creative Commons license asserted",
+        "credit": "ImageNet photographs reproduced in Figure 4, ImageNet Classification with Deep Convolutional Neural Networks, NeurIPS 2012, page 8"
+      },
+      "reviewed": true,
+      "sourceSha256": "3528c9bb2118fe1411fa064abdaaa1d53174c0296bd546a0304b871c14732e32",
+      "width": 112,
+      "treatments": [
+        {
+          "id": "gray",
+          "mode": "grayscale"
+        }
+      ],
+      "derivedFrom": {
+        "file": "artifacts/sources/hardware/alexnet-paper.pdf",
+        "sha256": "90137160c57217953d5f61857e64ca58e85f06e1b13b4f475c918b1b582b9771",
+        "page": 8,
+        "figure": "4 right",
+        "imageXref": 102,
+        "imageDimensions": [
+          484,
+          346
+        ],
+        "crop": [
+          207,
+          69,
+          277,
+          138
+        ]
+      }
+    },
+    {
+      "id": "imagenet-elephant-4",
+      "label": "Published ImageNet training example: elephant",
+      "sourceFile": "artifacts/sources/hardware/paper-photos/elephant-4.png",
+      "sourcePage": "https://papers.nips.cc/paper_files/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf#page=8",
+      "identityEvidence": "Figure 4 right panel: one of the six training-image neighbours in this row; first test-image column excluded.",
+      "scope": "Published ILSVRC-2010 training example; illustrates ImageNet variety without asserting a specific 2012 training-file inventory.",
+      "rights": {
+        "creator": "Alex Krizhevsky, Ilya Sutskever and Geoffrey Hinton; underlying ImageNet image rights retained",
+        "license": "Original paper/underlying photographs; no Creative Commons license asserted",
+        "credit": "ImageNet photographs reproduced in Figure 4, ImageNet Classification with Deep Convolutional Neural Networks, NeurIPS 2012, page 8"
+      },
+      "reviewed": true,
+      "sourceSha256": "93e63b98dee6066b549f2ba1c3744e6d6bde2881aa72d133b2443f6d0f1943b4",
+      "width": 112,
+      "treatments": [
+        {
+          "id": "gray",
+          "mode": "grayscale"
+        }
+      ],
+      "derivedFrom": {
+        "file": "artifacts/sources/hardware/alexnet-paper.pdf",
+        "sha256": "90137160c57217953d5f61857e64ca58e85f06e1b13b4f475c918b1b582b9771",
+        "page": 8,
+        "figure": "4 right",
+        "imageXref": 102,
+        "imageDimensions": [
+          484,
+          346
+        ],
+        "crop": [
+          277,
+          69,
+          346,
+          138
+        ]
+      }
+    },
+    {
+      "id": "imagenet-elephant-5",
+      "label": "Published ImageNet training example: elephant",
+      "sourceFile": "artifacts/sources/hardware/paper-photos/elephant-5.png",
+      "sourcePage": "https://papers.nips.cc/paper_files/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf#page=8",
+      "identityEvidence": "Figure 4 right panel: one of the six training-image neighbours in this row; first test-image column excluded.",
+      "scope": "Published ILSVRC-2010 training example; illustrates ImageNet variety without asserting a specific 2012 training-file inventory.",
+      "rights": {
+        "creator": "Alex Krizhevsky, Ilya Sutskever and Geoffrey Hinton; underlying ImageNet image rights retained",
+        "license": "Original paper/underlying photographs; no Creative Commons license asserted",
+        "credit": "ImageNet photographs reproduced in Figure 4, ImageNet Classification with Deep Convolutional Neural Networks, NeurIPS 2012, page 8"
+      },
+      "reviewed": true,
+      "sourceSha256": "319d155b70ce32aeaa4f9e5a2ab3e38a9096fcf756f1a0a40c47389a084d9e51",
+      "width": 112,
+      "treatments": [
+        {
+          "id": "gray",
+          "mode": "grayscale"
+        }
+      ],
+      "derivedFrom": {
+        "file": "artifacts/sources/hardware/alexnet-paper.pdf",
+        "sha256": "90137160c57217953d5f61857e64ca58e85f06e1b13b4f475c918b1b582b9771",
+        "page": 8,
+        "figure": "4 right",
+        "imageXref": 102,
+        "imageDimensions": [
+          484,
+          346
+        ],
+        "crop": [
+          346,
+          69,
+          415,
+          138
+        ]
+      }
+    },
+    {
+      "id": "imagenet-elephant-6",
+      "label": "Published ImageNet training example: elephant",
+      "sourceFile": "artifacts/sources/hardware/paper-photos/elephant-6.png",
+      "sourcePage": "https://papers.nips.cc/paper_files/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf#page=8",
+      "identityEvidence": "Figure 4 right panel: one of the six training-image neighbours in this row; first test-image column excluded.",
+      "scope": "Published ILSVRC-2010 training example; illustrates ImageNet variety without asserting a specific 2012 training-file inventory.",
+      "rights": {
+        "creator": "Alex Krizhevsky, Ilya Sutskever and Geoffrey Hinton; underlying ImageNet image rights retained",
+        "license": "Original paper/underlying photographs; no Creative Commons license asserted",
+        "credit": "ImageNet photographs reproduced in Figure 4, ImageNet Classification with Deep Convolutional Neural Networks, NeurIPS 2012, page 8"
+      },
+      "reviewed": true,
+      "sourceSha256": "8b2f9b729bc2010513ffa3b7176a18f8a2ff1b0e3eca26bdb4c5358807cfa29d",
+      "width": 112,
+      "treatments": [
+        {
+          "id": "gray",
+          "mode": "grayscale"
+        }
+      ],
+      "derivedFrom": {
+        "file": "artifacts/sources/hardware/alexnet-paper.pdf",
+        "sha256": "90137160c57217953d5f61857e64ca58e85f06e1b13b4f475c918b1b582b9771",
+        "page": 8,
+        "figure": "4 right",
+        "imageXref": 102,
+        "imageDimensions": [
+          484,
+          346
+        ],
+        "crop": [
+          415,
+          69,
+          484,
+          138
+        ]
+      }
+    },
+    {
+      "id": "imagenet-sailboat-1",
+      "label": "Published ImageNet training example: sailboat",
+      "sourceFile": "artifacts/sources/hardware/paper-photos/sailboat-1.png",
+      "sourcePage": "https://papers.nips.cc/paper_files/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf#page=8",
+      "identityEvidence": "Figure 4 right panel: one of the six training-image neighbours in this row; first test-image column excluded.",
+      "scope": "Published ILSVRC-2010 training example; illustrates ImageNet variety without asserting a specific 2012 training-file inventory.",
+      "rights": {
+        "creator": "Alex Krizhevsky, Ilya Sutskever and Geoffrey Hinton; underlying ImageNet image rights retained",
+        "license": "Original paper/underlying photographs; no Creative Commons license asserted",
+        "credit": "ImageNet photographs reproduced in Figure 4, ImageNet Classification with Deep Convolutional Neural Networks, NeurIPS 2012, page 8"
+      },
+      "reviewed": true,
+      "sourceSha256": "d44b71c4060dd5c1aed009e3ec7189535ca4ea66ec96256b3e8cd858802a428a",
+      "width": 112,
+      "treatments": [
+        {
+          "id": "gray",
+          "mode": "grayscale"
+        }
+      ],
+      "derivedFrom": {
+        "file": "artifacts/sources/hardware/alexnet-paper.pdf",
+        "sha256": "90137160c57217953d5f61857e64ca58e85f06e1b13b4f475c918b1b582b9771",
+        "page": 8,
+        "figure": "4 right",
+        "imageXref": 102,
+        "imageDimensions": [
+          484,
+          346
+        ],
+        "crop": [
+          69,
+          138,
+          138,
+          208
+        ]
+      }
+    },
+    {
+      "id": "imagenet-sailboat-2",
+      "label": "Published ImageNet training example: sailboat",
+      "sourceFile": "artifacts/sources/hardware/paper-photos/sailboat-2.png",
+      "sourcePage": "https://papers.nips.cc/paper_files/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf#page=8",
+      "identityEvidence": "Figure 4 right panel: one of the six training-image neighbours in this row; first test-image column excluded.",
+      "scope": "Published ILSVRC-2010 training example; illustrates ImageNet variety without asserting a specific 2012 training-file inventory.",
+      "rights": {
+        "creator": "Alex Krizhevsky, Ilya Sutskever and Geoffrey Hinton; underlying ImageNet image rights retained",
+        "license": "Original paper/underlying photographs; no Creative Commons license asserted",
+        "credit": "ImageNet photographs reproduced in Figure 4, ImageNet Classification with Deep Convolutional Neural Networks, NeurIPS 2012, page 8"
+      },
+      "reviewed": true,
+      "sourceSha256": "c7c08618e9de23ac2a989b5500bbafa42950acd1cfe6bda14f8e5f46a7b24e20",
+      "width": 112,
+      "treatments": [
+        {
+          "id": "gray",
+          "mode": "grayscale"
+        }
+      ],
+      "derivedFrom": {
+        "file": "artifacts/sources/hardware/alexnet-paper.pdf",
+        "sha256": "90137160c57217953d5f61857e64ca58e85f06e1b13b4f475c918b1b582b9771",
+        "page": 8,
+        "figure": "4 right",
+        "imageXref": 102,
+        "imageDimensions": [
+          484,
+          346
+        ],
+        "crop": [
+          138,
+          138,
+          207,
+          208
+        ]
+      }
+    },
+    {
+      "id": "imagenet-sailboat-3",
+      "label": "Published ImageNet training example: sailboat",
+      "sourceFile": "artifacts/sources/hardware/paper-photos/sailboat-3.png",
+      "sourcePage": "https://papers.nips.cc/paper_files/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf#page=8",
+      "identityEvidence": "Figure 4 right panel: one of the six training-image neighbours in this row; first test-image column excluded.",
+      "scope": "Published ILSVRC-2010 training example; illustrates ImageNet variety without asserting a specific 2012 training-file inventory.",
+      "rights": {
+        "creator": "Alex Krizhevsky, Ilya Sutskever and Geoffrey Hinton; underlying ImageNet image rights retained",
+        "license": "Original paper/underlying photographs; no Creative Commons license asserted",
+        "credit": "ImageNet photographs reproduced in Figure 4, ImageNet Classification with Deep Convolutional Neural Networks, NeurIPS 2012, page 8"
+      },
+      "reviewed": true,
+      "sourceSha256": "77ca99097a9a2175243f48aa51f37ec97bf398641644a56675f5e4171641682d",
+      "width": 112,
+      "treatments": [
+        {
+          "id": "gray",
+          "mode": "grayscale"
+        }
+      ],
+      "derivedFrom": {
+        "file": "artifacts/sources/hardware/alexnet-paper.pdf",
+        "sha256": "90137160c57217953d5f61857e64ca58e85f06e1b13b4f475c918b1b582b9771",
+        "page": 8,
+        "figure": "4 right",
+        "imageXref": 102,
+        "imageDimensions": [
+          484,
+          346
+        ],
+        "crop": [
+          207,
+          138,
+          277,
+          208
+        ]
+      }
+    },
+    {
+      "id": "imagenet-sailboat-4",
+      "label": "Published ImageNet training example: sailboat",
+      "sourceFile": "artifacts/sources/hardware/paper-photos/sailboat-4.png",
+      "sourcePage": "https://papers.nips.cc/paper_files/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf#page=8",
+      "identityEvidence": "Figure 4 right panel: one of the six training-image neighbours in this row; first test-image column excluded.",
+      "scope": "Published ILSVRC-2010 training example; illustrates ImageNet variety without asserting a specific 2012 training-file inventory.",
+      "rights": {
+        "creator": "Alex Krizhevsky, Ilya Sutskever and Geoffrey Hinton; underlying ImageNet image rights retained",
+        "license": "Original paper/underlying photographs; no Creative Commons license asserted",
+        "credit": "ImageNet photographs reproduced in Figure 4, ImageNet Classification with Deep Convolutional Neural Networks, NeurIPS 2012, page 8"
+      },
+      "reviewed": true,
+      "sourceSha256": "f31fdcd92a02049e31db2a311cddc192ccadf23a9c6a9b2cef2874cf7336b363",
+      "width": 112,
+      "treatments": [
+        {
+          "id": "gray",
+          "mode": "grayscale"
+        }
+      ],
+      "derivedFrom": {
+        "file": "artifacts/sources/hardware/alexnet-paper.pdf",
+        "sha256": "90137160c57217953d5f61857e64ca58e85f06e1b13b4f475c918b1b582b9771",
+        "page": 8,
+        "figure": "4 right",
+        "imageXref": 102,
+        "imageDimensions": [
+          484,
+          346
+        ],
+        "crop": [
+          277,
+          138,
+          346,
+          208
+        ]
+      }
+    },
+    {
+      "id": "imagenet-sailboat-5",
+      "label": "Published ImageNet training example: sailboat",
+      "sourceFile": "artifacts/sources/hardware/paper-photos/sailboat-5.png",
+      "sourcePage": "https://papers.nips.cc/paper_files/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf#page=8",
+      "identityEvidence": "Figure 4 right panel: one of the six training-image neighbours in this row; first test-image column excluded.",
+      "scope": "Published ILSVRC-2010 training example; illustrates ImageNet variety without asserting a specific 2012 training-file inventory.",
+      "rights": {
+        "creator": "Alex Krizhevsky, Ilya Sutskever and Geoffrey Hinton; underlying ImageNet image rights retained",
+        "license": "Original paper/underlying photographs; no Creative Commons license asserted",
+        "credit": "ImageNet photographs reproduced in Figure 4, ImageNet Classification with Deep Convolutional Neural Networks, NeurIPS 2012, page 8"
+      },
+      "reviewed": true,
+      "sourceSha256": "4cb5cd2de0e6c98510c4e2cfacad778c63f02e4aa7c59b9642be73197b1d45a6",
+      "width": 112,
+      "treatments": [
+        {
+          "id": "gray",
+          "mode": "grayscale"
+        }
+      ],
+      "derivedFrom": {
+        "file": "artifacts/sources/hardware/alexnet-paper.pdf",
+        "sha256": "90137160c57217953d5f61857e64ca58e85f06e1b13b4f475c918b1b582b9771",
+        "page": 8,
+        "figure": "4 right",
+        "imageXref": 102,
+        "imageDimensions": [
+          484,
+          346
+        ],
+        "crop": [
+          346,
+          138,
+          415,
+          208
+        ]
+      }
+    },
+    {
+      "id": "imagenet-sailboat-6",
+      "label": "Published ImageNet training example: sailboat",
+      "sourceFile": "artifacts/sources/hardware/paper-photos/sailboat-6.png",
+      "sourcePage": "https://papers.nips.cc/paper_files/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf#page=8",
+      "identityEvidence": "Figure 4 right panel: one of the six training-image neighbours in this row; first test-image column excluded.",
+      "scope": "Published ILSVRC-2010 training example; illustrates ImageNet variety without asserting a specific 2012 training-file inventory.",
+      "rights": {
+        "creator": "Alex Krizhevsky, Ilya Sutskever and Geoffrey Hinton; underlying ImageNet image rights retained",
+        "license": "Original paper/underlying photographs; no Creative Commons license asserted",
+        "credit": "ImageNet photographs reproduced in Figure 4, ImageNet Classification with Deep Convolutional Neural Networks, NeurIPS 2012, page 8"
+      },
+      "reviewed": true,
+      "sourceSha256": "248cad91a10b73f63cbc70d20b23742e453c8c7f21c5ca00866c54a5861e39d9",
+      "width": 112,
+      "treatments": [
+        {
+          "id": "gray",
+          "mode": "grayscale"
+        }
+      ],
+      "derivedFrom": {
+        "file": "artifacts/sources/hardware/alexnet-paper.pdf",
+        "sha256": "90137160c57217953d5f61857e64ca58e85f06e1b13b4f475c918b1b582b9771",
+        "page": 8,
+        "figure": "4 right",
+        "imageXref": 102,
+        "imageDimensions": [
+          484,
+          346
+        ],
+        "crop": [
+          415,
+          138,
+          484,
+          208
+        ]
+      }
+    },
+    {
+      "id": "imagenet-pumpkin-1",
+      "label": "Published ImageNet training example: pumpkin",
+      "sourceFile": "artifacts/sources/hardware/paper-photos/pumpkin-1.png",
+      "sourcePage": "https://papers.nips.cc/paper_files/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf#page=8",
+      "identityEvidence": "Figure 4 right panel: one of the six training-image neighbours in this row; first test-image column excluded.",
+      "scope": "Published ILSVRC-2010 training example; illustrates ImageNet variety without asserting a specific 2012 training-file inventory.",
+      "rights": {
+        "creator": "Alex Krizhevsky, Ilya Sutskever and Geoffrey Hinton; underlying ImageNet image rights retained",
+        "license": "Original paper/underlying photographs; no Creative Commons license asserted",
+        "credit": "ImageNet photographs reproduced in Figure 4, ImageNet Classification with Deep Convolutional Neural Networks, NeurIPS 2012, page 8"
+      },
+      "reviewed": true,
+      "sourceSha256": "5cb7b1926e91470351219f1fa7ac8b58f83e253fa2bbba237e188476444e9d74",
+      "width": 112,
+      "treatments": [
+        {
+          "id": "gray",
+          "mode": "grayscale"
+        }
+      ],
+      "derivedFrom": {
+        "file": "artifacts/sources/hardware/alexnet-paper.pdf",
+        "sha256": "90137160c57217953d5f61857e64ca58e85f06e1b13b4f475c918b1b582b9771",
+        "page": 8,
+        "figure": "4 right",
+        "imageXref": 102,
+        "imageDimensions": [
+          484,
+          346
+        ],
+        "crop": [
+          69,
+          208,
+          138,
+          277
+        ]
+      }
+    },
+    {
+      "id": "imagenet-pumpkin-2",
+      "label": "Published ImageNet training example: pumpkin",
+      "sourceFile": "artifacts/sources/hardware/paper-photos/pumpkin-2.png",
+      "sourcePage": "https://papers.nips.cc/paper_files/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf#page=8",
+      "identityEvidence": "Figure 4 right panel: one of the six training-image neighbours in this row; first test-image column excluded.",
+      "scope": "Published ILSVRC-2010 training example; illustrates ImageNet variety without asserting a specific 2012 training-file inventory.",
+      "rights": {
+        "creator": "Alex Krizhevsky, Ilya Sutskever and Geoffrey Hinton; underlying ImageNet image rights retained",
+        "license": "Original paper/underlying photographs; no Creative Commons license asserted",
+        "credit": "ImageNet photographs reproduced in Figure 4, ImageNet Classification with Deep Convolutional Neural Networks, NeurIPS 2012, page 8"
+      },
+      "reviewed": true,
+      "sourceSha256": "60f04318195821af1c24d2c1138e9b8af4e42375402bc87a10fd81383c3a286d",
+      "width": 112,
+      "treatments": [
+        {
+          "id": "gray",
+          "mode": "grayscale"
+        }
+      ],
+      "derivedFrom": {
+        "file": "artifacts/sources/hardware/alexnet-paper.pdf",
+        "sha256": "90137160c57217953d5f61857e64ca58e85f06e1b13b4f475c918b1b582b9771",
+        "page": 8,
+        "figure": "4 right",
+        "imageXref": 102,
+        "imageDimensions": [
+          484,
+          346
+        ],
+        "crop": [
+          138,
+          208,
+          207,
+          277
+        ]
+      }
+    },
+    {
+      "id": "imagenet-pumpkin-3",
+      "label": "Published ImageNet training example: pumpkin",
+      "sourceFile": "artifacts/sources/hardware/paper-photos/pumpkin-3.png",
+      "sourcePage": "https://papers.nips.cc/paper_files/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf#page=8",
+      "identityEvidence": "Figure 4 right panel: one of the six training-image neighbours in this row; first test-image column excluded.",
+      "scope": "Published ILSVRC-2010 training example; illustrates ImageNet variety without asserting a specific 2012 training-file inventory.",
+      "rights": {
+        "creator": "Alex Krizhevsky, Ilya Sutskever and Geoffrey Hinton; underlying ImageNet image rights retained",
+        "license": "Original paper/underlying photographs; no Creative Commons license asserted",
+        "credit": "ImageNet photographs reproduced in Figure 4, ImageNet Classification with Deep Convolutional Neural Networks, NeurIPS 2012, page 8"
+      },
+      "reviewed": true,
+      "sourceSha256": "9ae6aa451f27d368b72b8d1900d0ad29a8094065d81821a1d1b9b59104d716bb",
+      "width": 112,
+      "treatments": [
+        {
+          "id": "gray",
+          "mode": "grayscale"
+        }
+      ],
+      "derivedFrom": {
+        "file": "artifacts/sources/hardware/alexnet-paper.pdf",
+        "sha256": "90137160c57217953d5f61857e64ca58e85f06e1b13b4f475c918b1b582b9771",
+        "page": 8,
+        "figure": "4 right",
+        "imageXref": 102,
+        "imageDimensions": [
+          484,
+          346
+        ],
+        "crop": [
+          207,
+          208,
+          277,
+          277
+        ]
+      }
+    },
+    {
+      "id": "imagenet-pumpkin-4",
+      "label": "Published ImageNet training example: pumpkin",
+      "sourceFile": "artifacts/sources/hardware/paper-photos/pumpkin-4.png",
+      "sourcePage": "https://papers.nips.cc/paper_files/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf#page=8",
+      "identityEvidence": "Figure 4 right panel: one of the six training-image neighbours in this row; first test-image column excluded.",
+      "scope": "Published ILSVRC-2010 training example; illustrates ImageNet variety without asserting a specific 2012 training-file inventory.",
+      "rights": {
+        "creator": "Alex Krizhevsky, Ilya Sutskever and Geoffrey Hinton; underlying ImageNet image rights retained",
+        "license": "Original paper/underlying photographs; no Creative Commons license asserted",
+        "credit": "ImageNet photographs reproduced in Figure 4, ImageNet Classification with Deep Convolutional Neural Networks, NeurIPS 2012, page 8"
+      },
+      "reviewed": true,
+      "sourceSha256": "975c1feed274bfefe71f633d6a97795a9fc5214f26308d3a8d1a89eabeeeae97",
+      "width": 112,
+      "treatments": [
+        {
+          "id": "gray",
+          "mode": "grayscale"
+        }
+      ],
+      "derivedFrom": {
+        "file": "artifacts/sources/hardware/alexnet-paper.pdf",
+        "sha256": "90137160c57217953d5f61857e64ca58e85f06e1b13b4f475c918b1b582b9771",
+        "page": 8,
+        "figure": "4 right",
+        "imageXref": 102,
+        "imageDimensions": [
+          484,
+          346
+        ],
+        "crop": [
+          277,
+          208,
+          346,
+          277
+        ]
+      }
+    },
+    {
+      "id": "imagenet-pumpkin-5",
+      "label": "Published ImageNet training example: pumpkin",
+      "sourceFile": "artifacts/sources/hardware/paper-photos/pumpkin-5.png",
+      "sourcePage": "https://papers.nips.cc/paper_files/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf#page=8",
+      "identityEvidence": "Figure 4 right panel: one of the six training-image neighbours in this row; first test-image column excluded.",
+      "scope": "Published ILSVRC-2010 training example; illustrates ImageNet variety without asserting a specific 2012 training-file inventory.",
+      "rights": {
+        "creator": "Alex Krizhevsky, Ilya Sutskever and Geoffrey Hinton; underlying ImageNet image rights retained",
+        "license": "Original paper/underlying photographs; no Creative Commons license asserted",
+        "credit": "ImageNet photographs reproduced in Figure 4, ImageNet Classification with Deep Convolutional Neural Networks, NeurIPS 2012, page 8"
+      },
+      "reviewed": true,
+      "sourceSha256": "33212e27a65d8e462976bffcfead73103c724dd5f8636ba5622458646a3ed6ce",
+      "width": 112,
+      "treatments": [
+        {
+          "id": "gray",
+          "mode": "grayscale"
+        }
+      ],
+      "derivedFrom": {
+        "file": "artifacts/sources/hardware/alexnet-paper.pdf",
+        "sha256": "90137160c57217953d5f61857e64ca58e85f06e1b13b4f475c918b1b582b9771",
+        "page": 8,
+        "figure": "4 right",
+        "imageXref": 102,
+        "imageDimensions": [
+          484,
+          346
+        ],
+        "crop": [
+          346,
+          208,
+          415,
+          277
+        ]
+      }
+    },
+    {
+      "id": "imagenet-pumpkin-6",
+      "label": "Published ImageNet training example: pumpkin",
+      "sourceFile": "artifacts/sources/hardware/paper-photos/pumpkin-6.png",
+      "sourcePage": "https://papers.nips.cc/paper_files/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf#page=8",
+      "identityEvidence": "Figure 4 right panel: one of the six training-image neighbours in this row; first test-image column excluded.",
+      "scope": "Published ILSVRC-2010 training example; illustrates ImageNet variety without asserting a specific 2012 training-file inventory.",
+      "rights": {
+        "creator": "Alex Krizhevsky, Ilya Sutskever and Geoffrey Hinton; underlying ImageNet image rights retained",
+        "license": "Original paper/underlying photographs; no Creative Commons license asserted",
+        "credit": "ImageNet photographs reproduced in Figure 4, ImageNet Classification with Deep Convolutional Neural Networks, NeurIPS 2012, page 8"
+      },
+      "reviewed": true,
+      "sourceSha256": "134b6170d3a03d2321172008d895f1b3de72a395abe9cceb8ce7cb140a170027",
+      "width": 112,
+      "treatments": [
+        {
+          "id": "gray",
+          "mode": "grayscale"
+        }
+      ],
+      "derivedFrom": {
+        "file": "artifacts/sources/hardware/alexnet-paper.pdf",
+        "sha256": "90137160c57217953d5f61857e64ca58e85f06e1b13b4f475c918b1b582b9771",
+        "page": 8,
+        "figure": "4 right",
+        "imageXref": 102,
+        "imageDimensions": [
+          484,
+          346
+        ],
+        "crop": [
+          415,
+          208,
+          484,
+          277
+        ]
+      }
+    },
+    {
+      "id": "imagenet-dog-1",
+      "label": "Published ImageNet training example: dog",
+      "sourceFile": "artifacts/sources/hardware/paper-photos/dog-1.png",
+      "sourcePage": "https://papers.nips.cc/paper_files/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf#page=8",
+      "identityEvidence": "Figure 4 right panel: one of the six training-image neighbours in this row; first test-image column excluded.",
+      "scope": "Published ILSVRC-2010 training example; illustrates ImageNet variety without asserting a specific 2012 training-file inventory.",
+      "rights": {
+        "creator": "Alex Krizhevsky, Ilya Sutskever and Geoffrey Hinton; underlying ImageNet image rights retained",
+        "license": "Original paper/underlying photographs; no Creative Commons license asserted",
+        "credit": "ImageNet photographs reproduced in Figure 4, ImageNet Classification with Deep Convolutional Neural Networks, NeurIPS 2012, page 8"
+      },
+      "reviewed": true,
+      "sourceSha256": "3701e7c0449ca4f1bb0d5fa71e976b6216d8a430d6d73768102aaf2ed36f3900",
+      "width": 112,
+      "treatments": [
+        {
+          "id": "gray",
+          "mode": "grayscale"
+        }
+      ],
+      "derivedFrom": {
+        "file": "artifacts/sources/hardware/alexnet-paper.pdf",
+        "sha256": "90137160c57217953d5f61857e64ca58e85f06e1b13b4f475c918b1b582b9771",
+        "page": 8,
+        "figure": "4 right",
+        "imageXref": 102,
+        "imageDimensions": [
+          484,
+          346
+        ],
+        "crop": [
+          69,
+          277,
+          138,
+          346
+        ]
+      }
+    },
+    {
+      "id": "imagenet-dog-2",
+      "label": "Published ImageNet training example: dog",
+      "sourceFile": "artifacts/sources/hardware/paper-photos/dog-2.png",
+      "sourcePage": "https://papers.nips.cc/paper_files/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf#page=8",
+      "identityEvidence": "Figure 4 right panel: one of the six training-image neighbours in this row; first test-image column excluded.",
+      "scope": "Published ILSVRC-2010 training example; illustrates ImageNet variety without asserting a specific 2012 training-file inventory.",
+      "rights": {
+        "creator": "Alex Krizhevsky, Ilya Sutskever and Geoffrey Hinton; underlying ImageNet image rights retained",
+        "license": "Original paper/underlying photographs; no Creative Commons license asserted",
+        "credit": "ImageNet photographs reproduced in Figure 4, ImageNet Classification with Deep Convolutional Neural Networks, NeurIPS 2012, page 8"
+      },
+      "reviewed": true,
+      "sourceSha256": "4731011c62fa299c31d5f5723d5ac225adcfcd61abe01946294d45b0339b4871",
+      "width": 112,
+      "treatments": [
+        {
+          "id": "gray",
+          "mode": "grayscale"
+        }
+      ],
+      "derivedFrom": {
+        "file": "artifacts/sources/hardware/alexnet-paper.pdf",
+        "sha256": "90137160c57217953d5f61857e64ca58e85f06e1b13b4f475c918b1b582b9771",
+        "page": 8,
+        "figure": "4 right",
+        "imageXref": 102,
+        "imageDimensions": [
+          484,
+          346
+        ],
+        "crop": [
+          138,
+          277,
+          207,
+          346
+        ]
+      }
+    },
+    {
+      "id": "imagenet-dog-3",
+      "label": "Published ImageNet training example: dog",
+      "sourceFile": "artifacts/sources/hardware/paper-photos/dog-3.png",
+      "sourcePage": "https://papers.nips.cc/paper_files/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf#page=8",
+      "identityEvidence": "Figure 4 right panel: one of the six training-image neighbours in this row; first test-image column excluded.",
+      "scope": "Published ILSVRC-2010 training example; illustrates ImageNet variety without asserting a specific 2012 training-file inventory.",
+      "rights": {
+        "creator": "Alex Krizhevsky, Ilya Sutskever and Geoffrey Hinton; underlying ImageNet image rights retained",
+        "license": "Original paper/underlying photographs; no Creative Commons license asserted",
+        "credit": "ImageNet photographs reproduced in Figure 4, ImageNet Classification with Deep Convolutional Neural Networks, NeurIPS 2012, page 8"
+      },
+      "reviewed": true,
+      "sourceSha256": "89a42ed7bcbdda60f049c25214ba6baffb41cc55c4df3b6080eb04b0f45ec469",
+      "width": 112,
+      "treatments": [
+        {
+          "id": "gray",
+          "mode": "grayscale"
+        }
+      ],
+      "derivedFrom": {
+        "file": "artifacts/sources/hardware/alexnet-paper.pdf",
+        "sha256": "90137160c57217953d5f61857e64ca58e85f06e1b13b4f475c918b1b582b9771",
+        "page": 8,
+        "figure": "4 right",
+        "imageXref": 102,
+        "imageDimensions": [
+          484,
+          346
+        ],
+        "crop": [
+          207,
+          277,
+          277,
+          346
+        ]
+      }
+    },
+    {
+      "id": "imagenet-dog-4",
+      "label": "Published ImageNet training example: dog",
+      "sourceFile": "artifacts/sources/hardware/paper-photos/dog-4.png",
+      "sourcePage": "https://papers.nips.cc/paper_files/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf#page=8",
+      "identityEvidence": "Figure 4 right panel: one of the six training-image neighbours in this row; first test-image column excluded.",
+      "scope": "Published ILSVRC-2010 training example; illustrates ImageNet variety without asserting a specific 2012 training-file inventory.",
+      "rights": {
+        "creator": "Alex Krizhevsky, Ilya Sutskever and Geoffrey Hinton; underlying ImageNet image rights retained",
+        "license": "Original paper/underlying photographs; no Creative Commons license asserted",
+        "credit": "ImageNet photographs reproduced in Figure 4, ImageNet Classification with Deep Convolutional Neural Networks, NeurIPS 2012, page 8"
+      },
+      "reviewed": true,
+      "sourceSha256": "2139d743feb6cedffa6f06f479d43a14fa94fb6d66c7dae42b543b63d56cbae2",
+      "width": 112,
+      "treatments": [
+        {
+          "id": "gray",
+          "mode": "grayscale"
+        }
+      ],
+      "derivedFrom": {
+        "file": "artifacts/sources/hardware/alexnet-paper.pdf",
+        "sha256": "90137160c57217953d5f61857e64ca58e85f06e1b13b4f475c918b1b582b9771",
+        "page": 8,
+        "figure": "4 right",
+        "imageXref": 102,
+        "imageDimensions": [
+          484,
+          346
+        ],
+        "crop": [
+          277,
+          277,
+          346,
+          346
+        ]
+      }
+    },
+    {
+      "id": "imagenet-dog-5",
+      "label": "Published ImageNet training example: dog",
+      "sourceFile": "artifacts/sources/hardware/paper-photos/dog-5.png",
+      "sourcePage": "https://papers.nips.cc/paper_files/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf#page=8",
+      "identityEvidence": "Figure 4 right panel: one of the six training-image neighbours in this row; first test-image column excluded.",
+      "scope": "Published ILSVRC-2010 training example; illustrates ImageNet variety without asserting a specific 2012 training-file inventory.",
+      "rights": {
+        "creator": "Alex Krizhevsky, Ilya Sutskever and Geoffrey Hinton; underlying ImageNet image rights retained",
+        "license": "Original paper/underlying photographs; no Creative Commons license asserted",
+        "credit": "ImageNet photographs reproduced in Figure 4, ImageNet Classification with Deep Convolutional Neural Networks, NeurIPS 2012, page 8"
+      },
+      "reviewed": true,
+      "sourceSha256": "6cf6e225928978574482c22f38385ae0eaf1429d87600cb60cac94071a9f0734",
+      "width": 112,
+      "treatments": [
+        {
+          "id": "gray",
+          "mode": "grayscale"
+        }
+      ],
+      "derivedFrom": {
+        "file": "artifacts/sources/hardware/alexnet-paper.pdf",
+        "sha256": "90137160c57217953d5f61857e64ca58e85f06e1b13b4f475c918b1b582b9771",
+        "page": 8,
+        "figure": "4 right",
+        "imageXref": 102,
+        "imageDimensions": [
+          484,
+          346
+        ],
+        "crop": [
+          346,
+          277,
+          415,
+          346
+        ]
+      }
+    },
+    {
+      "id": "imagenet-dog-6",
+      "label": "Published ImageNet training example: dog",
+      "sourceFile": "artifacts/sources/hardware/paper-photos/dog-6.png",
+      "sourcePage": "https://papers.nips.cc/paper_files/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf#page=8",
+      "identityEvidence": "Figure 4 right panel: one of the six training-image neighbours in this row; first test-image column excluded.",
+      "scope": "Published ILSVRC-2010 training example; illustrates ImageNet variety without asserting a specific 2012 training-file inventory.",
+      "rights": {
+        "creator": "Alex Krizhevsky, Ilya Sutskever and Geoffrey Hinton; underlying ImageNet image rights retained",
+        "license": "Original paper/underlying photographs; no Creative Commons license asserted",
+        "credit": "ImageNet photographs reproduced in Figure 4, ImageNet Classification with Deep Convolutional Neural Networks, NeurIPS 2012, page 8"
+      },
+      "reviewed": true,
+      "sourceSha256": "d45418382e1affd790a3f34deeb87a97c9acf8552acfd316249e523433509218",
+      "width": 112,
+      "treatments": [
+        {
+          "id": "gray",
+          "mode": "grayscale"
+        }
+      ],
+      "derivedFrom": {
+        "file": "artifacts/sources/hardware/alexnet-paper.pdf",
+        "sha256": "90137160c57217953d5f61857e64ca58e85f06e1b13b4f475c918b1b582b9771",
+        "page": 8,
+        "figure": "4 right",
+        "imageXref": 102,
+        "imageDimensions": [
+          484,
+          346
+        ],
+        "crop": [
+          415,
+          277,
+          484,
+          346
+        ]
+      }
+    },
+    {
+      "id": "leopard",
+      "label": "Leopard photograph from the AlexNet paper",
+      "sourceFile": "artifacts/sources/hardware/paper-photos/leopard.png",
+      "sourcePage": "https://papers.nips.cc/paper_files/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf#page=8",
+      "identityEvidence": "Figure 4 left panel explicitly labels the upper-right test photograph as leopard.",
+      "scope": "Published test photograph; cropped/mirrored versions illustrate augmentation, not additional historical training examples.",
+      "rights": {
+        "creator": "Alex Krizhevsky, Ilya Sutskever and Geoffrey Hinton; underlying ImageNet image rights retained",
+        "license": "Original paper/underlying photographs; no Creative Commons license asserted",
+        "credit": "ImageNet photographs reproduced in Figure 4, ImageNet Classification with Deep Convolutional Neural Networks, NeurIPS 2012, page 8"
+      },
+      "reviewed": true,
+      "sourceSha256": "fb9d40aa1bbf255b57e985396d9bfe40b8156ef615624c2c8c48a9346f614663",
+      "width": 204,
+      "treatments": [
+        {
+          "id": "gray",
+          "mode": "grayscale"
+        },
+        {
+          "id": "pixel",
+          "mode": "pixel",
+          "cell": 4,
+          "levels": 4
+        }
+      ],
+      "flip": false,
+      "derivedFrom": {
+        "file": "artifacts/sources/hardware/alexnet-paper.pdf",
+        "sha256": "90137160c57217953d5f61857e64ca58e85f06e1b13b4f475c918b1b582b9771",
+        "page": 8,
+        "figure": "4 left",
+        "imageXref": 103,
+        "imageDimensions": [
+          820,
+          670
+        ],
+        "crop": [
+          615,
+          0,
+          820,
+          205
+        ]
+      }
+    },
+    {
+      "id": "leopard-flip",
+      "label": "Leopard photograph from the AlexNet paper",
+      "sourceFile": "artifacts/sources/hardware/paper-photos/leopard.png",
+      "sourcePage": "https://papers.nips.cc/paper_files/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf#page=8",
+      "identityEvidence": "Figure 4 left panel explicitly labels the upper-right test photograph as leopard.",
+      "scope": "Published test photograph; cropped/mirrored versions illustrate augmentation, not additional historical training examples.",
+      "rights": {
+        "creator": "Alex Krizhevsky, Ilya Sutskever and Geoffrey Hinton; underlying ImageNet image rights retained",
+        "license": "Original paper/underlying photographs; no Creative Commons license asserted",
+        "credit": "ImageNet photographs reproduced in Figure 4, ImageNet Classification with Deep Convolutional Neural Networks, NeurIPS 2012, page 8"
+      },
+      "reviewed": true,
+      "sourceSha256": "fb9d40aa1bbf255b57e985396d9bfe40b8156ef615624c2c8c48a9346f614663",
+      "width": 204,
+      "treatments": [
+        {
+          "id": "gray",
+          "mode": "grayscale"
+        }
+      ],
+      "flip": true,
+      "derivedFrom": {
+        "file": "artifacts/sources/hardware/alexnet-paper.pdf",
+        "sha256": "90137160c57217953d5f61857e64ca58e85f06e1b13b4f475c918b1b582b9771",
+        "page": 8,
+        "figure": "4 left",
+        "imageXref": 103,
+        "imageDimensions": [
+          820,
+          670
+        ],
+        "crop": [
+          615,
+          0,
+          820,
+          205
+        ]
+      }
+    },
+    {
+      "id": "leopard-crop",
+      "label": "Leopard photograph from the AlexNet paper",
+      "sourceFile": "artifacts/sources/hardware/paper-photos/leopard.png",
+      "sourcePage": "https://papers.nips.cc/paper_files/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf#page=8",
+      "identityEvidence": "Figure 4 left panel explicitly labels the upper-right test photograph as leopard.",
+      "scope": "Published test photograph; cropped/mirrored versions illustrate augmentation, not additional historical training examples.",
+      "rights": {
+        "creator": "Alex Krizhevsky, Ilya Sutskever and Geoffrey Hinton; underlying ImageNet image rights retained",
+        "license": "Original paper/underlying photographs; no Creative Commons license asserted",
+        "credit": "ImageNet photographs reproduced in Figure 4, ImageNet Classification with Deep Convolutional Neural Networks, NeurIPS 2012, page 8"
+      },
+      "reviewed": true,
+      "sourceSha256": "fb9d40aa1bbf255b57e985396d9bfe40b8156ef615624c2c8c48a9346f614663",
+      "width": 204,
+      "treatments": [
+        {
+          "id": "gray",
+          "mode": "grayscale"
+        }
+      ],
+      "flip": false,
+      "derivedFrom": {
+        "file": "artifacts/sources/hardware/alexnet-paper.pdf",
+        "sha256": "90137160c57217953d5f61857e64ca58e85f06e1b13b4f475c918b1b582b9771",
+        "page": 8,
+        "figure": "4 left",
+        "imageXref": 103,
+        "imageDimensions": [
+          820,
+          670
+        ],
+        "crop": [
+          615,
+          0,
+          820,
+          205
+        ]
+      },
+      "crop": [
+        20,
+        20,
+        185,
+        185
+      ]
+    },
+    {
+      "id": "leopard-crop-flip",
+      "label": "Leopard photograph from the AlexNet paper",
+      "sourceFile": "artifacts/sources/hardware/paper-photos/leopard.png",
+      "sourcePage": "https://papers.nips.cc/paper_files/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf#page=8",
+      "identityEvidence": "Figure 4 left panel explicitly labels the upper-right test photograph as leopard.",
+      "scope": "Published test photograph; cropped/mirrored versions illustrate augmentation, not additional historical training examples.",
+      "rights": {
+        "creator": "Alex Krizhevsky, Ilya Sutskever and Geoffrey Hinton; underlying ImageNet image rights retained",
+        "license": "Original paper/underlying photographs; no Creative Commons license asserted",
+        "credit": "ImageNet photographs reproduced in Figure 4, ImageNet Classification with Deep Convolutional Neural Networks, NeurIPS 2012, page 8"
+      },
+      "reviewed": true,
+      "sourceSha256": "fb9d40aa1bbf255b57e985396d9bfe40b8156ef615624c2c8c48a9346f614663",
+      "width": 204,
+      "treatments": [
+        {
+          "id": "gray",
+          "mode": "grayscale"
+        }
+      ],
+      "flip": true,
+      "derivedFrom": {
+        "file": "artifacts/sources/hardware/alexnet-paper.pdf",
+        "sha256": "90137160c57217953d5f61857e64ca58e85f06e1b13b4f475c918b1b582b9771",
+        "page": 8,
+        "figure": "4 left",
+        "imageXref": 103,
+        "imageDimensions": [
+          820,
+          670
+        ],
+        "crop": [
+          615,
+          0,
+          820,
+          205
+        ]
+      },
+      "crop": [
+        10,
+        10,
+        190,
+        190
+      ]
+    }
+  ]
+}

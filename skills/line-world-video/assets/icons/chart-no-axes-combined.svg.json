@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "provider": "Iconify",
+  "asset_id": "lucide:chart-no-axes-combined",
+  "variant": "svg",
+  "downloaded_at": "2026-11-14T21:22:19.889177+00:00",
+  "source": {
+    "id": "lucide:chart-no-axes-combined",
+    "title": "chart no axes combined",
+    "type": "icon",
+    "family": "lucide",
+    "page_url": "https://icon-sets.iconify.design/lucide/chart-no-axes-combined/",
+    "thumbnail": "https://api.iconify.design/lucide/chart-no-axes-combined.svg?height=128&color=%23333e48",
+    "author": "Lucide Contributors",
+    "license": {
+      "title": "ISC",
+      "spdx": "ISC",
+      "url": "https://github.com/lucide-icons/lucide/blob/main/LICENSE"
+    },
+    "collection": "Lucide",
+    "multicolor": false,
+    "collection_tags": [
+      "Precise Shapes",
+      "Has Padding",
+      "Uses Stroke"
+    ],
+    "export": {
+      "color": "#333e48",
+      "height": 24
+    }
+  },
+  "file": {
+    "path": "skills\\line-world-video\\assets\\icons\\chart-no-axes-combined.svg",
+    "url": "https://api.iconify.design/lucide/chart-no-axes-combined.svg?color=%23333e48&height=24",
+    "final_url": "https://api.iconify.design/lucide/chart-no-axes-combined.svg?color=%23333e48&height=24",
+    "bytes": 318,
+    "sha256": "0811ba583033d8313d49760da3f1192c700a880b5d91bd976e9b08ce67561809",
+    "provider_md5": null,
+    "validation": {
+      "format": "svg",
+      "viewBox": "0 0 24 24"
+    }
+  }
+}

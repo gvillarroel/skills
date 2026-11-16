@@ -21,6 +21,7 @@ A maintained collection of reusable skills, compact references, deterministic he
 - [Pi Durable usage, feature selection, and tested recovery behavior](pi-durable.md)
 - [Install the Pi Durable console extension from this repository](pi-durable-console.md)
 - [Original HyperFrames plugin with colorset1 and colorset2](hyperframes-colorsets.md)
+- [Line World Video plugin, reusable production and verified delivery](line-world-video.md)
 - [Colorset contract and skill output coverage](colorsets.md)
 
 ## Feedback from real projects

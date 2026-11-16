@@ -1,0 +1,62 @@
+---
+# mermaid: config begin
+config:
+  theme: "base"
+  themeVariables:
+    background: "#ffffff"
+    primaryColor: "#9e1b32"
+    primaryTextColor: "#ffffff"
+    primaryBorderColor: "#9e1b32"
+    secondaryColor: "#000000"
+    secondaryTextColor: "#ffffff"
+    secondaryBorderColor: "#000000"
+    tertiaryColor: "#828282"
+    tertiaryTextColor: "#000000"
+    tertiaryBorderColor: "#828282"
+    lineColor: "#696969"
+    textColor: "#333e48"
+    mainBkg: "#9e1b32"
+    nodeBkg: "#9e1b32"
+    nodeBorder: "#9e1b32"
+    clusterBkg: "#e7e7e7"
+    clusterBorder: "#9c9c9c"
+    defaultLinkColor: "#696969"
+    edgeLabelBackground: "#ffffff"
+    noteBkgColor: "#000000"
+    noteTextColor: "#ffffff"
+    noteBorderColor: "#000000"
+    actorBkg: "#9e1b32"
+    actorBorder: "#9e1b32"
+    actorTextColor: "#ffffff"
+    actorLineColor: "#9e1b32"
+    signalColor: "#696969"
+    signalTextColor: "#333e48"
+    activationBorderColor: "#828282"
+    activationBkgColor: "#828282"
+    labelColor: "#ffffff"
+    titleColor: "#333e48"
+  themeCSS: ".node > rect, .node > circle, .node > ellipse, .node > polygon, .node > path, rect.actor, .note, .task, .task0, .task1, .task2, .task3 { stroke-width: 0 !important; }"
+  sequence:
+    height: 36
+    boxMargin: 6
+    noteMargin: 8
+    messageMargin: 28
+# mermaid: config end
+# mermaid: metadata begin
+mermaid:
+  colorset: "colorset1"
+  mode: "standard"
+  palette: "basic-red-neutral-style"
+# mermaid: metadata end
+---
+sequenceDiagram
+accTitle: Illustrative sequence relationships
+accDescr: Synthetic records for Intake, Review, Build and Release. Values are illustrative and make no measured performance claim.
+participant I as Intake
+participant R as Review
+participant B as Build
+participant L as Release
+I->>R: Request
+R->>B: Validate
+B-->>L: Deliver
+L-->>I: Confirm

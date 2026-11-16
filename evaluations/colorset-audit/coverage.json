@@ -518,6 +518,26 @@
       ],
       "scope": "authored-colorset",
       "sourceFidelity": "Use ColorSet 1 by default and ColorSet 2 only when requested for authored pixels. Preserve explicit user/source styling. Native controls and host themes retain host-owned paint; schema, protocol and source checks do not establish actual frontend pixels."
+    },
+    {
+      "skill": "line-world-google-vids",
+      "outputs": [
+        "Ordered scripts, native timing observations and frame-contiguous handoff JSON",
+        "Native Google Vids scene assembly, AI narration and complete MP4 export",
+        "Decode, audio and timing verification reports"
+      ],
+      "scope": "reference-driven",
+      "sourceFidelity": "Preserve the prepared clips and requested presentation style. The adapter does not recolor imported pixels or control Google Vids interface chrome. Line World clips retain primary-red and gray priority; native voiceovers and export codec tones remain separate from authored paint checks."
+    },
+    {
+      "skill": "line-world-video",
+      "outputs": [
+        "Seekable offline HTML/SVG composition and interactive timing preview",
+        "Exact-time PNG frames and H.264 MP4",
+        "Story, timing, selection, browser and media validation JSON"
+      ],
+      "scope": "authored-colorset",
+      "sourceFidelity": "Line art is an explicit requested aesthetic. Use colorset1 by default; document colorset2 for simultaneous category identities. Licensed monochrome SVGs retain source receipts; rasterization, antialiasing and video codec tones are derived colors."
     }
   ],
   "artifactChecks": [

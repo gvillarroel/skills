@@ -1,0 +1,27 @@
+{
+  "name": "line-world-video",
+  "version": "0.22.1",
+  "skills": [
+    "line-world-video",
+    "line-world-d3",
+    "line-world-mermaid",
+    "line-world-icons",
+    "line-world-hyperframes",
+    "line-world-google-vids"
+  ],
+  "sources": {
+    "line-world-d3": "d3",
+    "line-world-mermaid": "mermaid",
+    "line-world-icons": "iconify-icon-search",
+    "line-world-hyperframes": "hyperframes-explainer"
+  },
+  "profiles": {
+    "line-world-d3": "line-world-d3.md.in",
+    "line-world-mermaid": "line-world-mermaid.md.in",
+    "line-world-icons": "line-world-icons.md.in",
+    "line-world-hyperframes": "line-world-hyperframes.md.in"
+  },
+  "payload": "runtime",
+  "primarySkill": "line-world-video",
+  "nativeRenderer": "hyperframes@0.8.111"
+}

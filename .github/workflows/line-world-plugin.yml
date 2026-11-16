@@ -1,0 +1,62 @@
+name: Build Line World plugin
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/line-world-plugin.yml'
+      - 'skills/line-world-video/**'
+      - 'skills/line-world-google-vids/**'
+      - 'skills/d3/**'
+      - 'skills/mermaid/**'
+      - 'skills/iconify-icon-search/**'
+      - 'skills/hyperframes-explainer/**'
+      - 'projects/line-world-video/package-spec.json'
+      - 'projects/line-world-video/plugin.json'
+      - 'projects/line-world-video/scripts/package_plugin.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Ensure local media tools
+        run: |
+          if ! command -v ffmpeg >/dev/null || ! command -v ffprobe >/dev/null; then
+            sudo apt-get update
+            sudo apt-get install -y ffmpeg
+          fi
+      - name: Validate the standalone skills
+        run: |
+          uv run --script scripts/validate-skills.py --skill skills/line-world-video --skill skills/line-world-google-vids
+          uv run --script skills/line-world-video/scripts/test_project_delivery.py
+      - name: Build and extract the actual plugin packages
+        run: uv run --script projects/line-world-video/scripts/package_plugin.py
+      - name: Read the release version
+        id: release
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          version = json.loads(Path('projects/line-world-video/package-spec.json').read_text())['version']
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as output:
+              output.write('version=' + version + '\n')
+          PY
+      - name: Upload installable packages and digest receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: line-world-video-${{ steps.release.outputs.version }}
+          path: |
+            projects/line-world-video/artifacts/packages/line-world-video-${{ steps.release.outputs.version }}.zip
+            projects/line-world-video/artifacts/packages/line-world-video-${{ steps.release.outputs.version }}-marketplace.zip
+            projects/line-world-video/artifacts/packages/package-check-${{ steps.release.outputs.version }}.json
+          if-no-files-found: error
+          retention-days: 30

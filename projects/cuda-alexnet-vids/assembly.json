@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "fps": 30,
+  "voice": {
+    "file": "artifacts/revisions/photo-0210/native-voice-reference.mp4",
+    "provenance": "Google Vids Nyla; actual observed native reference, approved subject-first script"
+  },
+  "scenes": [
+    {
+      "id": "turning-point",
+      "clip": "artifacts/videos/clips/01-turning-point.mp4",
+      "voiceSeconds": 17.4
+    },
+    {
+      "id": "learned-features",
+      "clip": "artifacts/videos/clips/02-learned-features.mp4",
+      "voiceSeconds": 19.699
+    },
+    {
+      "id": "cuda-platform",
+      "clip": "artifacts/videos/clips/03-cuda-platform.mp4",
+      "voiceSeconds": 25.233
+    },
+    {
+      "id": "parallel-work",
+      "clip": "artifacts/videos/clips/04-parallel-work.mp4",
+      "voiceSeconds": 20.6
+    },
+    {
+      "id": "imagenet-scale",
+      "clip": "artifacts/videos/clips/05-imagenet-scale.mp4",
+      "voiceSeconds": 26.932
+    },
+    {
+      "id": "alexnet-model",
+      "clip": "artifacts/videos/clips/06-alexnet-model.mp4",
+      "voiceSeconds": 30.841
+    },
+    {
+      "id": "two-gpus",
+      "clip": "artifacts/videos/clips/07-two-gpus.mp4",
+      "voiceSeconds": 19.332
+    },
+    {
+      "id": "training-recipe",
+      "clip": "artifacts/videos/clips/08-training-recipe.mp4",
+      "voiceSeconds": 19.533
+    },
+    {
+      "id": "imagenet-result",
+      "clip": "artifacts/videos/clips/09-imagenet-result.mp4",
+      "voiceSeconds": 19.4
+    },
+    {
+      "id": "historical-impact",
+      "clip": "artifacts/videos/clips/10-historical-impact.mp4",
+      "voiceSeconds": 21.6
+    }
+  ]
+}
