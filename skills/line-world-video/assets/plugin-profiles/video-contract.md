@@ -143,6 +143,16 @@ decoration. Make red focus move between matching objects without covering text.
 Keep duration and focus windows in editable project data, not scattered magic
 timestamps. Put transport and editing controls outside the film.
 
+When a chart or diagram remains in focus for more than two seconds, keep
+meaningful motion in that figure throughout the hold: trace a real curve,
+follow an actual connection, reveal related parts or add restrained emphasis.
+Preserve fixed values, labels and camera stability. Guide movement alone does
+not qualify. Use the bundled `assets/runtime/focus-motion.js` for deterministic
+trace/pulse overlays from the parent clock, or retain suitable native motion.
+Prefer a calm 3.2-second cycle. Do not distort data or move labels to create
+activity; avoid rapid repeating zooms. Check actual target pixels and reading
+states, including backward seeks. Paper/photo source pixels remain unchanged.
+
 The bundled `assets/runtime/attention.js` exposes pure
 `LineWorldAttention.settings`, `radius`, `tokens`, `sample` and `clearPort`.
 Use the parent clock and project-owned size/emission/flight settings. Keep

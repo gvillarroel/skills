@@ -1,6 +1,6 @@
 # Line World Video plugin
 
-Release **0.22.1**, November 16, 2026. Create explanatory videos with a guiding
+Release **0.23.0**, November 16, 2026. Create explanatory videos with a guiding
 dot, a larger continuous world, full-frame sections, sourced photographs,
 D3/Mermaid diagrams and measured narration. The plugin contains six standalone
 skills: the main orchestrator, dedicated D3, Mermaid, icon and HyperFrames
@@ -56,6 +56,13 @@ Divide the entire frame into related sections. Move the guide beside the thing
 being explained, with separate destinations for repeated values. Preserve
 reading holds, unclipped text and continuity across scene joins.
 
+When a chart or diagram holds focus for more than two seconds, keep meaningful
+motion in that figure: a trace on its actual curve, flow on an actual connection
+or restrained emphasis on the active mark. Keep fixed data, labels and camera
+stable. The parent-clock runtime handles calm trace/pulse overlays, and the
+target-pixel audit rejects an otherwise static graphic even when its guide
+moves. See [long-focus motion](../skills/line-world-video/references/focus-motion.md).
+
 Use researched photographs for documented physical objects and diagrams for
 mechanisms, relations and quantities. Retain originals, identity/variant
 checks, credits and transformation lineage. Compare original, grayscale, edge,
@@ -78,6 +85,7 @@ figures and table values.
 | Prepare portraits, circular logos and credits | `media_assets.py` and `people_context.py` |
 | Review subject-focused narration | `narration_review.py` |
 | Inspect icon/text contrast, alignment or guide clearance | `inspect_items.py`, `inspect_focus.py` |
+| Animate and verify long chart/diagram focus holds | `assets/runtime/focus-motion.js`, `inspect_focus_motion.py` |
 | Capture and navigate an original paper | `paper_video.py` |
 | Assemble rendered clips with measured audio and package inputs | `project_delivery.py prepare`, `assemble`, `bundle` |
 | Check the actual complete film and record visual decisions | `review_video.py` |
@@ -114,7 +122,9 @@ resolved. No native action or account permission is inferred by local tools.
 
 ## Validation and source boundaries
 
-The [0.22.1 release evidence](../evaluations/line-world-video/reusable-delivery-20261116.md)
+The [0.23.0 motion evidence](../evaluations/line-world-video/focus-motion-20261116.md)
+records the long-hold runtime, target-pixel checks and browser tests.
+The earlier [0.22.1 release evidence](../evaluations/line-world-video/reusable-delivery-20261116.md)
 records installed tests, isolated forwards, real CUDA/AlexNet assembly, clean
 bundle rebuilding and publication checks. Historical evidence remains under
 `evaluations/line-world-video/` and `evaluations/line-world-google-vids/`.

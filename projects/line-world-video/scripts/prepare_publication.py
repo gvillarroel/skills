@@ -12,7 +12,7 @@ import subprocess
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[3]
-SHARED = ['package-spec.json', 'plugin.json', *['scripts/' + s for s in ['package_plugin.py', 'verify_plugin.py', 'verify_openai_package.py', 'sync_local.py', 'prepare_publication.py']]]
+SHARED = ['package-spec.json', 'plugin.json', *['scripts/' + s for s in ['package_plugin.py', 'verify_plugin.py', 'verify_openai_package.py', 'sync_local.py', 'prepare_publication.py', 'make_focus_motion_demo.py']]]
 
 
 def main():
@@ -41,7 +41,10 @@ def main():
     insert = next(i for i, l in enumerate(lines) if l.startswith('| ---')) + 1
     lines[insert:insert] = rows
     backlog = '\n'.join(lines) + '\n'
-    marker = '### 2026-11-16 - Reusable Line World production and publication, plugin 0.22.1'
+    version = json.loads((ROOT / 'projects/line-world-video/package-spec.json').read_text(encoding='utf-8'))['version']
+    candidates = [line for line in source_backlog.splitlines() if line.startswith('### ') and line.endswith('plugin ' + version)]
+    if len(candidates) != 1: raise ValueError('Record one recent validation heading for the release version.')
+    marker = candidates[0]
     note = source_backlog.split(marker, 1)[1].split('\n### ', 1)[0]
     if marker not in backlog: backlog = backlog.replace('## Recent Validation Notes\n', '## Recent Validation Notes\n\n' + marker + note + '\n', 1)
     (target / 'SKILLS.md').write_text(backlog, encoding='utf-8'); selected.append('SKILLS.md')
@@ -59,7 +62,8 @@ def main():
     coverage['skills'] = [r for r in coverage['skills'] if r['skill'] not in names] + [r for r in source_coverage['skills'] if r['skill'] in names]
     (target / coverage_path).write_text(json.dumps(coverage, indent=2) + '\n', encoding='utf-8'); selected.append(coverage_path)
     attributes = subprocess.check_output(['git', 'show', 'HEAD:.gitattributes'], cwd=target, text=True)
-    attributes += '\n# Preserve evaluated Line World runtime bytes and source-digest receipts.\n/skills/line-world-video/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol\n/skills/line-world-google-vids/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol\n'
+    if '/skills/line-world-video/** -text' not in attributes:
+        attributes += '\n# Preserve evaluated Line World runtime bytes and source-digest receipts.\n/skills/line-world-video/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol\n/skills/line-world-google-vids/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol\n'
     (target / '.gitattributes').write_text(attributes, encoding='utf-8'); selected.append('.gitattributes')
     report = {'worktree': str(target), 'files': [{'path': name, 'sha256': hashlib.sha256((target / name).read_bytes()).hexdigest()} for name in sorted(set(selected))]}
     output = ROOT / 'projects/line-world-video/artifacts/reviews/publication-inputs.json'; output.parent.mkdir(parents=True, exist_ok=True); output.write_text(json.dumps(report, indent=2) + '\n', encoding='utf-8')

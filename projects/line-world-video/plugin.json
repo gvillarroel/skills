@@ -1,6 +1,6 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "line-world-video",
-  "version": "0.22.1",
+  "version": "0.23.0",
   "description": "Create clean explanatory videos with sourced object photographs, restrained image treatments, original-paper tours, D3/Mermaid diagrams, semantic focus and editable timing. Includes whole-film review and a Google Vids narration and delivery adapter."
 }

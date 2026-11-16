@@ -83,6 +83,12 @@ from emphasis ink. Never pulse in and out for each narrated item.
 
 ## Build and adapt
 
+For each chart/diagram held in focus longer than two seconds, read
+[long-focus motion](references/focus-motion.md). Animate a meaningful relation,
+trace or restrained emphasis throughout the hold while preserving readable
+labels and truthful data. The guide's movement alone does not satisfy this.
+Use the bundled parent-clock runtime and actual-target pixel audit when helpful.
+
 For revisions, read [incremental editing](references/incremental-editing.md)
 before reading source or rewriting arrays. Use the semantic editor's bounded
 inspection, stable-ID patches, shared CSS theme and dependency/continuity plan.

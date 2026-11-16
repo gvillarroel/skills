@@ -89,6 +89,13 @@ const bridge=path(world,`M${nodes.at(-1).x} ${nodes.at(-1).y}C1680 1050 1820 480
 const guide=world.append('g').attr('id','attention-dot');guide.append('circle').attr('r',M.baseRadius+3).attr('fill',C.white);guide.append('circle').attr('r',M.baseRadius).attr('fill',A.PRIMARY_RED);
 const context=text(stage,130,84,'','note').attr('id','context-label').attr('data-role','requested-context');
 let currentState=null;
+const motionWindows=[];
+const registerMotion=(element,id,start,end,kind,mode,scope)=>{if(!element)return;element.setAttribute('data-focus-motion-source',id);motionWindows.push({id,source:`[data-focus-motion-source="${id}"]`,scope,kind,start,end,mode});};
+registerMotion(diagramAsset.node().querySelector('path.flowchart-link,.edgePath path,path.guide-line'),'linked-flow',at('relations').start+2.7,at('relations').end,'diagram','trace','#producer-diagram');
+pairs.select('.after-bar').each(function(d,i){const span=(at('compare').duration-2)/rows.length;registerMotion(this,'linked-bar-'+d.id,at('compare').start+2+i*span,at('compare').start+2+(i+1)*span,'chart','pulse','#paired-chart');});
+histories.each(function(d,i){if(!i)return;const span=at('history').duration/rows.length;registerMotion(this,'linked-history-'+d.id,at('history').start+i*span,at('history').start+(i+1)*span,'chart','trace','#history-chart');});
+window.FOCUS_PLAN={windows:motionWindows};
+const focusMotion=LineWorldFocusMotion.attach(stage.node(),motionWindows);
 
 function camera(t){
   let c={x:960,y:540,z:1};
@@ -130,7 +137,8 @@ window.renderAt=function(seconds,options={}){
   if(beat==='cloud')dot.x-=guideRadius+24;
   guide.attr('transform',`translate(${dot.x} ${dot.y})`);guide.select('circle:first-child').attr('r',guideRadius+3);guide.select('circle:last-child').attr('r',guideRadius).attr('fill',A.PRIMARY_RED);
   const requestedContext=S.presentation?.contextLabels?.[beat]||'';context.text(requestedContext).attr('opacity',requestedContext?ease(local(t,beat)/.35):0);
-  currentState={seconds:t,beat,selectedRowId:row.id,before:row.before,after:row.after,mode,camera:c,dot,palette:S.palette,contextLabel:requestedContext,layout:'balanced-four-islands',guideRadius,guideColor:A.PRIMARY_RED};return currentState;
+  const figureMotion=focusMotion.render(t).filter(s=>s.active);
+  currentState={seconds:t,beat,selectedRowId:row.id,before:row.before,after:row.after,mode,camera:c,dot,palette:S.palette,contextLabel:requestedContext,layout:'balanced-four-islands',guideRadius,guideColor:A.PRIMARY_RED,figureMotion};return currentState;
 };
 window.snapshot=()=>({...currentState});window.renderAt(0);
 })();

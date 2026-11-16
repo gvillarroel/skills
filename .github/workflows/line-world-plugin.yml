@@ -38,6 +38,10 @@ jobs:
         run: |
           uv run --script scripts/validate-skills.py --skill skills/line-world-video --skill skills/line-world-google-vids
           uv run --script skills/line-world-video/scripts/test_project_delivery.py
+      - name: Install the browser for motion checks
+        run: uv run --with "playwright>=1.51,<2" playwright install --with-deps --only-shell chromium
+      - name: Verify actual focused pixels and clock seeking
+        run: uv run --script skills/line-world-video/scripts/test_focus_motion.py
       - name: Build and extract the actual plugin packages
         run: uv run --script projects/line-world-video/scripts/package_plugin.py
       - name: Read the release version
