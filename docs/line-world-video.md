@@ -1,6 +1,6 @@
 # Line World Video plugin
 
-Release **0.23.0**, November 16, 2026. Create explanatory videos with a guiding
+Release **0.23.1**, November 16, 2026. Create explanatory videos with a guiding
 dot, a larger continuous world, full-frame sections, sourced photographs,
 D3/Mermaid diagrams and measured narration. The plugin contains six standalone
 skills: the main orchestrator, dedicated D3, Mermaid, icon and HyperFrames
@@ -122,7 +122,7 @@ resolved. No native action or account permission is inferred by local tools.
 
 ## Validation and source boundaries
 
-The [0.23.0 motion evidence](../evaluations/line-world-video/focus-motion-20261116.md)
+The [0.23.1 motion evidence](../evaluations/line-world-video/focus-motion-20261116.md)
 records the long-hold runtime, target-pixel checks and browser tests.
 The earlier [0.22.1 release evidence](../evaluations/line-world-video/reusable-delivery-20261116.md)
 records installed tests, isolated forwards, real CUDA/AlexNet assembly, clean

@@ -23,6 +23,7 @@
   }
   function attach(root, windows) {
     validate(windows);
+    const lengths = new WeakMap();
     const bindings = windows.map(w => {
       const matches = typeof w.source === 'string' ? root.querySelectorAll(w.source) : [w.source];
       if (matches.length !== 1 || !matches[0] || typeof matches[0].getTotalLength !== 'function') throw Error('Bind each focus source to one real SVG geometry element.');
@@ -40,10 +41,14 @@
       current = bindings.map(({window: w, source, overlay}) => {
         const s = state(w, time);
         if (!s.active) { overlay.style.display = 'none'; return s; }
+        const geometry = [];
         for (const key of ['d', 'x', 'y', 'x1', 'y1', 'x2', 'y2', 'width', 'height', 'rx', 'ry', 'cx', 'cy', 'r', 'points', 'transform', 'clip-path']) {
-          if (source.hasAttribute(key)) overlay.setAttribute(key, source.getAttribute(key)); else overlay.removeAttribute(key);
+          const value = source.getAttribute(key); geometry.push(value);
+          if (value !== null) overlay.setAttribute(key, value); else overlay.removeAttribute(key);
         }
-        const length = source.getTotalLength(), paint = getComputedStyle(source);
+        const key = JSON.stringify(geometry), previous = lengths.get(source);
+        if (previous?.key !== key) lengths.set(source, {key, length: source.getTotalLength()});
+        const length = lengths.get(source).length, paint = getComputedStyle(source);
         overlay.style.strokeWidth = String(Math.min(6, Math.max(3, (parseFloat(paint.strokeWidth) || 1) + 2)));
         overlay.style.clipPath = paint.clipPath;
         overlay.style.display = s.active && length > 0 && paint.display !== 'none' && paint.visibility !== 'hidden' && +paint.opacity > 0 ? '' : 'none';

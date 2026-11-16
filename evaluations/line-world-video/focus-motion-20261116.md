@@ -1,6 +1,6 @@
 # Motion during long chart and diagram focus
 
-Date: November 16, 2026. Release: Line World 0.23.0.
+Date: November 16, 2026. Release: Line World 0.23.1.
 
 ## Behavior and scope
 
@@ -65,7 +65,7 @@ The actual six-skill package has 332 declared files, 144 primary runtime files
 and 22 unchanged native-adapter files. Actual task-local Codex installation,
 six-skill discovery, canonical runtime parity and all 20 installed suites /
 228 tests pass. The local marketplace archive SHA-256 is
-`cf02521341651b3e04de044106c38fd0d6cd284ebc1dc22677c99627d8e1e7f4`.
+`c6c248a3fcd46cec6c2e043e83955183cf536342a2334a62de0b51219b1da284`.
 
 ## Standalone forwards
 
@@ -79,12 +79,13 @@ Prompts are `line-world-focus-motion-contract.md` and
 | --- | --- |
 | `contract-sol` | Initial strict pass. |
 | `natural-1-sol`, `natural-2-sol`, `natural-3-sol` | Initial 3/3 strict passes before the multipart-path guard. Retain as development evidence. |
-| `final-contract-sol` | Exact release-payload strict pass. |
+| `final-contract-sol` | Exact 0.23.0 candidate-payload strict pass. |
 | `final-natural-1-sol` | Strict pass; actual fixed curve and input/model connections animate, with stable labels and encoded reading views. |
 | `final-natural-2-sol` | Retained strict failure: an initial layout/focus check failed; later manual-review data used stale movie/source hashes. The agent corrected the artifacts and target-motion audit, but event errors remain failures. Classify as agent/recovery, not a hidden pass. |
 | `final-natural-3-sol` | Strict pass; actual encoded diagram/curve motion and source geometry checks pass. |
+| `repeat-contract-sol`, `repeat-natural-sol` | Both strict passes on the exact 0.23.1 payload after clock/geometry stabilization and explicit repeat diagnostics. |
 
-The exact-payload natural cohort is 2/3 strict passes, meeting the ordinary
+The 0.23.0 candidate-payload natural cohort is 2/3 strict passes, meeting the ordinary
 naturalistic repetition threshold. The primary remains validating for earlier
 broader-generation limits. Inspect the final posters and actual encoded frames;
 all four final artifacts are eight seconds / 240 frames with no audio. No
@@ -134,3 +135,25 @@ package version and avoids appending duplicate frozen-runtime attributes.
 No new Pages example/catalog is introduced: the demonstration and bulky media
 remain project-owned ignored artifacts. Verify the actual main-branch push and
 CI package/Pages results before reporting publication complete.
+
+
+## Linux repeat diagnostic and 0.23.1 recovery
+
+The first published package workflow (run 43859959142) failed a strict pixel
+repeat on `linked-history-build`, while the other seven default-starter holds
+and all other motion tests passed. Retain that failed run; a Windows pass did
+not establish Linux repeat behavior. The Pages workflow for that commit passed.
+
+Version 0.23.1 settles registered timelines at zero, stops the GSAP ticker
+before capture and after each explicit parent-clock render, and caches path
+length by actual geometry instead of remeasuring fixed curves on each frame.
+It compares normalized RGB images, actual repeated geometry and actual paint
+state. It also records maximum channel difference, changed-pixel count and
+paint diagnostics for any repeated-frame mismatch. Pixel equality is still
+strict; motion thresholds are unchanged. Do not assert a specific rasterizer
+cause from the original boolean-only failure report.
+
+The ten browser tests, all 228 installed tests, current-payload contract/natural
+forwards and the unchanged nine-second demonstration pass locally. Verify the
+new actual Linux workflow before declaring the CI recovery complete. Root
+publication artifacts retain the initial failure and current workflow receipts.

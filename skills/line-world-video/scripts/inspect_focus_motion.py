@@ -40,13 +40,13 @@ def inspect(html, output, screenshot, plan=None, video=None, fps=30, duration=No
             page = browser.new_page(viewport={'width': 1920, 'height': 1080}, device_scale_factor=1)
             page.on('pageerror', lambda e: report['browserErrors'].append(str(e)))
             page.goto(f'http://127.0.0.1:{server.server_port}/{html.name}')
-            page.evaluate('async()=>{await document.fonts.ready;if(window.ready)await window.ready;}')
+            page.evaluate('''async()=>{await document.fonts.ready;if(window.ready)await window.ready;for(const timeline of Object.values(window.__timelines||{}))timeline?.pause?.(0);window.gsap?.ticker?.sleep?.();}''')
             windows = json.loads(plan.read_text(encoding='utf-8-sig'))['windows'] if plan else page.evaluate('window.FOCUS_PLAN?.windows')
             if not windows: raise ValueError('Provide a focus-window plan, including every chart/diagram hold.')
             ids = [w['id'] for w in windows]
             if len(ids) != len(set(ids)): raise ValueError('Focus windows need unique IDs.')
             hide = page.add_style_tag(content='#guide,#guide-dot,#attention-dot,[data-lw-guide]{visibility:hidden!important}')
-            def render(t): page.evaluate('t=>window.renderAt(t)', t)
+            def render(t): page.evaluate('t=>{const state=window.renderAt(t);window.gsap?.ticker?.sleep?.();return state;}', t)
             geometry_js = '''w=>{const e=document.querySelector(w.source),scope=w.scope?document.querySelector(w.scope):e?.ownerSVGElement;if(!e||!scope)throw Error('Missing target or scope');const b=e.getBoundingClientRect();return{box:{x:b.x,y:b.y,width:b.width,height:b.height},geometry:['d','x','y','cx','cy','r','x1','y1','x2','y2','width','height','points','transform'].map(k=>[k,e.getAttribute(k)]),labels:[...scope.querySelectorAll('text')].map(e=>{const b=e.getBoundingClientRect();return{text:e.textContent,box:[b.x,b.y,b.width,b.height].map(v=>Math.round(v*100)/100)}})}}'''
             for window in windows:
                 start, end = window['start'], window['end']
@@ -65,10 +65,17 @@ def inspect(html, output, screenshot, plan=None, video=None, fps=30, duration=No
                 stable = all(s == states[0] for s in states[1:])
                 motion = max((changed_pixels(frames[0], f) for f in frames[1:] if f.size == frames[0].size), default=0)
                 minimum = max(12, round(frames[0].width * frames[0].height * .0001))
+                original_paint = page.evaluate('''w=>{const e=document.querySelector(w.source),overlay=[...document.querySelectorAll('[data-lw-motion-overlay]')].find(e=>e.dataset.lwMotionOverlay===w.id);return[e,overlay].filter(Boolean).map(e=>{const s=getComputedStyle(e);return{stroke:s.stroke,width:s.strokeWidth,opacity:s.opacity,dash:s.strokeDasharray,offset:s.strokeDashoffset,transform:e.getAttribute('transform')}})}''', window)
                 render(times[0]); render(times[-1]); repeated = Image.open(io.BytesIO(page.screenshot()))
                 b = states[-1]['box']; box = (max(0, math.floor(b['x'] - 8)), max(0, math.floor(b['y'] - 8)), min(1920, math.ceil(b['x'] + b['width'] + 8)), min(1080, math.ceil(b['y'] + b['height'] + 8)))
-                repeat = repeated.crop(box).tobytes() == frames[-1].tobytes()
-                item = {'id': window['id'], 'seconds': end - start, 'required': True, 'changedPixels': motion, 'minimumChangedPixels': minimum, 'stableGeometryAndLabels': stable, 'repeatSeek': repeat}
+                last_rgb, repeat_rgb = frames[-1].convert('RGB'), repeated.crop(box).convert('RGB')
+                repeat_geometry = page.evaluate(geometry_js, window) == states[-1]
+                repeat_paint = page.evaluate('''w=>{const e=document.querySelector(w.source),overlay=[...document.querySelectorAll('[data-lw-motion-overlay]')].find(e=>e.dataset.lwMotionOverlay===w.id);return[e,overlay].filter(Boolean).map(e=>{const s=getComputedStyle(e);return{stroke:s.stroke,width:s.strokeWidth,opacity:s.opacity,dash:s.strokeDasharray,offset:s.strokeDashoffset,transform:e.getAttribute('transform')}})}''', window)
+                repeat = repeat_rgb.tobytes() == last_rgb.tobytes() and repeat_geometry and repeat_paint == original_paint
+                difference = ImageChops.difference(last_rgb, repeat_rgb)
+                repeat_maximum = max(high for _, high in difference.getextrema())
+                item = {'id': window['id'], 'seconds': end - start, 'required': True, 'changedPixels': motion, 'minimumChangedPixels': minimum, 'stableGeometryAndLabels': stable, 'repeatSeek': repeat, 'repeatMaxChannelDifference': repeat_maximum, 'repeatChangedPixels': changed_pixels(last_rgb, repeat_rgb), 'repeatGeometryStable': repeat_geometry, 'repeatPaintStable': repeat_paint == original_paint}
+                if not repeat: item['repeatPaintDiagnostics'] = {'original': original_paint, 'repeated': repeat_paint}
                 report['windows'].append(item)
                 if motion < minimum: report['issues'].append(window['id'] + ': long focus is visually static inside its actual target')
                 if not stable: report['issues'].append(window['id'] + ': fixed-data geometry or reading labels move during the hold')
