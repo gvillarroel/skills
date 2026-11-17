@@ -10,6 +10,7 @@ These runtime recipes work without the acceptance movie or another skill.
 | line-world-table-focus | Compare exact paired values for 2–8 rows, with units and stable IDs | Table left, fixed-domain paired marks right. One row focus event updates row line, mark, annotation and dot. Check every selected pair against source data and chart pixel lengths. |
 | line-world-linked-history | Relate entities to equal-length observations over time | Hold a shared x/y domain; reveal paths deterministically, directly label selected endpoint, retain row identity. Verify dates or use a truthful observation-index label; preserve missing-data semantics when extending. |
 | line-world-category-expansion | Simultaneous categories need additional hue | Declare colorset2 and its reason; preserve the red guide and map new hues only to category identities. Validate computed paint against bundled tokens; the colorset1 edition retains labels/shapes. |
+| line-world-gentle-motion | Static logos, photographs or complete concept groups need restrained motion | Read [gentle movement](gentle-motion.md). Use slow bounded floats or one detail entry/hold/return; preserve source/data geometry, fixed photo viewports and adjacent guide ports. Run the actual browser motion tests and inspect the encoded reading states. |
 
 Run `render_line_world.py --audit-only` on the generated project for browser,
 data, palette, determinism and screenshot evidence. For a new geometry form,

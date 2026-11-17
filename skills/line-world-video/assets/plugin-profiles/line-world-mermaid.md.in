@@ -37,3 +37,6 @@ notation and layout while adapting its presentation to the film.
 Use [producer workflows](references/producer-workflows.md) only for the needed
 family syntax and renderer/export operations. Preserve the video contract when
 those general workflows describe standalone solid presentation or title cards.
+
+Read [gentle motion](references/gentle-motion.md) for a static whole-group float.
+Preserve native node/edge relationships and derive ports from displayed bounds.

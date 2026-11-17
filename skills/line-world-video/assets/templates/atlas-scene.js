@@ -67,8 +67,7 @@ S.scenePlan.forEach((s,i)=>{
    if(p.kind==='xy'){content.selectAll('.bar-plot-1 rect').each(function(_,i){if(R[i])entity(d3.select(this),R[i].id).attr('data-base-fill',C.quiet)});txt(content,w-52,h-16,'Before ─    After ▯',22).attr('text-anchor','end');}
    if(p.kind==='pie')content.selectAll('path.pieCircle').each(function(_,i){if(R[i])entity(d3.select(this),R[i].id)});
  }else handlers[p.kind](content,w,h);
- // A separator is a boundary of the complete frame partition, never an inset card.
- pg.append('rect').attr('class','panel-boundary').attr('width',w).attr('height',h).attr('fill','none').attr('stroke',C.line).attr('stroke-width',1.3);
+ // Logical pane bounds use spacing, not painted separators or dashboard frames.
  panes.push({p,pg,content,w,h});
  });
  scenes.push({s,beat,cell,group,panes});

@@ -9,6 +9,8 @@ keep it modest and subordinate to the figures. Accessibility metadata remains
 available independently of visible copy. Keep at least 100 px around reading regions. Use
 intentional open space, measured labels and a few recognizable silhouettes;
 avoid cards, shadows, glossy shapes, persistent chapter bars and ornamental grids.
+Separate concepts with spacing and alignment. Do not add a central dividing
+line or decorative panel borders; logical frame regions need no painted rule.
 
 Compose the objects before allocating any text zones. Distribute meaningful
 geometry across roughly the central 75–90% of the usable width and 60–80% of

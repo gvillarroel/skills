@@ -39,7 +39,6 @@ if(S.diagramSvg){
 if(diagramPorts.length<2)diagramPorts=[{x:2220,y:540},{x:3540,y:540}];
 
 const data=shifted(world.append('g').attr('id','data-island').attr('data-pattern-id','line-world-table-focus'),O.data);
-line(data,920,0,920,1080,C.line).attr('class','full-frame-divider');
 const tableX=130,tableY=205,rowGap=Math.min(150,600/rows.length);
 const table=data.append('g').attr('id','table').attr('transform',`translate(${tableX} ${tableY})`);
 text(table,0,0,S.copy.entity,'small quiet');text(table,390,0,'Before','small quiet').attr('text-anchor','end');text(table,590,0,'After','small quiet').attr('text-anchor','end');

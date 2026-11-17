@@ -11,6 +11,7 @@ import json
 import re
 import shutil
 import subprocess
+import tempfile
 import zipfile
 from pathlib import Path
 
@@ -58,6 +59,9 @@ def main():
             profile=profile_root/spec["profiles"][name]
             shutil.copyfile(profile,dest/"SKILL.md")
             shutil.copyfile(profile_root/"video-contract.md",dest/"references/video-contract.md")
+            shutil.copyfile(REPO/'skills/line-world-video/references/gentle-motion.md',dest/'references/gentle-motion.md')
+            shutil.copyfile(REPO/'skills/line-world-video/scripts/test_gentle_motion.py',dest/'scripts/test_gentle_motion.py')
+            shutil.copyfile(REPO/'skills/line-world-video/scripts/inspect_gentle_motion.py',dest/'scripts/inspect_gentle_motion.py')
             display='Line World '+{'d3':'D3','mermaid':'Mermaid','icons':'Icons','hyperframes':'HyperFrames'}[name.removeprefix('line-world-')]
             (dest/"agents").mkdir(exist_ok=True)
             (dest/"agents/openai.yaml").write_text('interface:\n  display_name: '+json.dumps(display)+'\n  short_description: '+json.dumps('Specialized producer for clean synchronized video')+'\n  default_prompt: '+json.dumps('Use $'+name+' for a clean Line World video asset with full-frame composition, shared focus, one parent clock and no unrequested titles.')+'\n',encoding="utf-8")
@@ -82,7 +86,7 @@ def main():
             shutil.copyfile(motion,dest/"assets/runtime/attention.js")
             focus=REPO/"skills/line-world-video/assets/runtime/focus.js"
             shutil.copyfile(focus,dest/"assets/runtime/focus.js")
-            for resource in ['theme.css','theme.js','focus-motion.js','photo-focus.js','scene-effects.js']:
+            for resource in ['theme.css','theme.js','focus-motion.js','photo-focus.js','scene-effects.js','gentle-motion.js']:
                 shutil.copyfile(REPO/'skills/line-world-video/assets/runtime'/resource,dest/'assets/runtime'/resource)
             patches.append('Share semantic CSS tokens and the theme runtime for project-owned style changes.')
             patches.append('Bind audio word cues to measured adjacent ports and audit label/stroke clearance.')
@@ -124,7 +128,8 @@ def main():
     for record in files:
         if hashlib.sha256((extracted / record["path"]).read_bytes()).hexdigest() != record["sha256"]:
             raise RuntimeError("Extracted payload digest mismatch: " + record["path"])
-    run = subprocess.run(["uv", "run", "--script", str(extracted / "skills/line-world-video/scripts/line_world.py"), "init", "--project", str(PROJECT / "artifacts" / ("package-smoke-" + spec["version"]))], capture_output=True, text=True)
+    smoke = Path(tempfile.mkdtemp(prefix="package-smoke-" + spec["version"] + "-", dir=PROJECT / "artifacts")) / "film"
+    run = subprocess.run(["uv", "run", "--script", str(extracted / "skills/line-world-video/scripts/line_world.py"), "init", "--project", str(smoke)], capture_output=True, text=True)
     report = {"ok": run.returncode == 0, "skills": spec["skills"], "fileCount": len(files), "payloadBytes": sum(f["bytes"] for f in files), "pluginZip": str(plugin_zip), "marketplaceZip": str(market_zip), "archiveSha256": hashlib.sha256(plugin_zip.read_bytes()).hexdigest(), "cleanExtractedSmoke": {"exitCode": run.returncode, "stdout": run.stdout, "stderr": run.stderr}}
     save(packages / "package-check.json", report)
     save(packages / ("package-check-" + spec["version"] + ".json"), report)

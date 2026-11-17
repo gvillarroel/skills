@@ -96,6 +96,18 @@ requests reuse their recorded digest, while changed revisions need a new name.
 
 ## Review and native handoff
 
+When the user needs a download beyond this workspace, deliver an authenticated
+file attachment or a verified web link. A Windows/local path is an editable
+workspace location, not proof of a working download in the user's chat client.
+If the connected Drive tools support local uploads, inspect their current
+argument schema, upload the completed MP4 to the user's drive without changing
+sharing, read back its actual MIME type/size and use the returned URL. Fetch a
+stored video as a complete raw file, not a native-document export, when a
+downloadable attachment is needed. Keep signed bearer URLs out of the reply;
+use the authenticated file reference. Replace an existing owned delivery only
+after grounding its ID and verifying the new bytes. Drive storage of an MP4 is
+distinct from native Google Vids assembly/export.
+
 Run `review_video.py` on the complete movie and inspect encoded reading/cue/join
 samples. Keep exact video/source hashes with actual operator notes. Whole-frame
 content checks, source geometry and manual judgments are different evidence.

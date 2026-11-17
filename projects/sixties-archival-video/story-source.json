@@ -1,0 +1,64 @@
+{
+  "id": "sixties-archival-video",
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "palette": "colorset1",
+  "language": "es-CL",
+  "sourceTextContext": "The Spanish text is the user's requested narration. Project documentation and tool output are in English.",
+  "voice": {"provider": "Microsoft Edge speech via edge-tts", "name": "es-CL-CatalinaNeural", "rate": "-4%", "nativeGoogleVids": false},
+  "timing": {"leadSeconds": 1.9, "tailSeconds": 0.9, "panSeconds": 1.25, "guideTravelSeconds": 0.38},
+  "motion": {"float":{"amplitudeX":2.5,"amplitudeY":6,"period":11,"settleSeconds":1.2},"detail":{"zoom":1.10,"inSeconds":4,"holdSeconds":3,"outSeconds":4,"focus":[0.22,0.18,0.62,0.62]}},
+  "layout": {"main":{"x":128,"y":170,"w":960,"h":720},"television":{"x":1250,"y":170,"w":560,"h":420},"overview":[{"x":180,"y":75,"w":680,"h":382},{"x":1060,"y":75,"w":680,"h":382},{"x":180,"y":595,"w":680,"h":382},{"x":1060,"y":595,"w":680,"h":382}]},
+  "scenes": [
+    {
+      "id": "street",
+      "kind": "street",
+      "context": "1962 · Hampton",
+      "script": "En los años sesenta, una calle era también un lugar para encontrarse. En Hampton, Estados Unidos, este desfile de 1962 reúne automóviles, comercios y vecinos alrededor de una celebración pública. La vida social tenía una presencia muy visible en el espacio compartido.",
+      "phrases": [{"target":"media-main","phrase":"calle"},{"target":"mobility","phrase":"automóviles"},{"target":"shops","phrase":"comercios"},{"target":"meeting","phrase":"vecinos"}],
+      "primary": [{"asset":"street-02","offset":4.5}]
+    },
+    {
+      "id": "fashion",
+      "kind": "fashion",
+      "context": "1964 · Roma",
+      "script": "Viajar y vestirse también expresaban aspiraciones. Un reportaje de 1964 presenta la moda de otoño en Roma: abrigos y sombreros para salir de día, y vestidos para la noche. Es una propuesta de elegancia y consumo, que muestra un ideal de la época, más que un retrato de toda la población.",
+      "phrases": [{"target":"media-main","phrase":"Viajar"},{"target":"day","phrase":"de día"},{"target":"night","phrase":"la noche"},{"target":"aspiration","phrase":"ideal"}],
+      "primary": [{"asset":"travel-01","offset":0.1,"untilPhrase":"moda"},{"asset":"fashion-02","offset":0.3,"untilPhrase":"vestidos"},{"asset":"fashion-03","offset":0.1,"untilPhrase":"consumo"},{"asset":"fashion-02","offset":7.5}]
+    },
+    {
+      "id": "communication",
+      "kind": "communication",
+      "context": "1968 · Chicago",
+      "script": "En Chicago, en 1968, una oficina de campaña se organiza con teléfonos y papeles. Las llamadas conectan a sus equipos; la televisión concentra la atención sobre un mismo acontecimiento. Coordinarse exige lugares y horarios compartidos.",
+      "phrases": [{"target":"media-main","phrase":"oficina"},{"target":"calls","phrase":"llamadas"},{"target":"media-tv","phrase":"televisión"},{"target":"coordination","phrase":"Coordinarse"}],
+      "primary": [{"asset":"phone-01","offset":0.05,"untilPhrase":"papeles"},{"asset":"office-01","offset":0.05,"untilPhrase":"televisión"},{"asset":"phone-02","offset":0.05}],
+      "secondary": "television-01"
+    },
+    {
+      "id": "cinema",
+      "kind": "cinema",
+      "context": "1965 · Hollywood",
+      "script": "El cine ofrecía historias compartidas y modelos de prestigio. En 1965, los premios Óscar convertían las estrellas y sus películas en una gran celebración. Su influencia también alcanzaba la ropa, las conversaciones y las aspiraciones del público.",
+      "phrases": [{"target":"media-main","phrase":"cine"},{"target":"films","phrase":"películas"},{"target":"fashion","phrase":"ropa"},{"target":"conversation","phrase":"conversaciones"}],
+      "primary": [{"asset":"cinema-01","offset":0.1,"untilPhrase":"Óscar"},{"asset":"cinema-02","offset":0.05,"untilPhrase":"influencia"},{"asset":"cinema-03","offset":0.05}]
+    },
+    {
+      "id": "rights",
+      "kind": "rights",
+      "context": "1963 · Somerville, Tennessee",
+      "script": "Pero la vida cotidiana no era igual para todos. En Somerville, Tennessee, estas imágenes de 1963 documentan una protesta por los derechos civiles. Compartir las calles y los comercios también estaba atravesado por la discriminación racial y la lucha por la igualdad.",
+      "phrases": [{"target":"media-main","phrase":"Somerville"},{"target":"rights","phrase":"derechos civiles"},{"target":"public-space","phrase":"calles"},{"target":"equality","phrase":"igualdad"}],
+      "primary": [{"asset":"rights-01","offset":8,"untilPhrase":"derechos civiles"},{"asset":"rights-02","offset":1.5}]
+    },
+    {
+      "id": "connections",
+      "kind": "overview",
+      "context": "",
+      "script": "Moverse por una calle. Elegir cómo vestirse. Reunirse alrededor del cine. Participar en la vida pública. Son gestos que conectan estos años y nos permiten reconocer una época a través de la vida de sus habitantes.",
+      "phrases": [{"target":"overview-street","phrase":"Moverse"},{"target":"overview-fashion","phrase":"vestirse"},{"target":"overview-cinema","phrase":"cine"},{"target":"overview-rights","phrase":"Participar"}],
+      "overview": [{"asset":"street-01","offset":15,"label":"1962 · Hampton","id":"overview-street"},{"asset":"fashion-02","offset":0.2,"label":"1964 · Roma","id":"overview-fashion"},{"asset":"cinema-01","offset":0.1,"label":"1965 · Hollywood","id":"overview-cinema"},{"asset":"rights-02","offset":1,"label":"1963 · Somerville","id":"overview-rights"}]
+    }
+  ]
+}

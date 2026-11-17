@@ -56,7 +56,7 @@ point at a target using stale world coordinates.
 
 Reserve text envelopes before routing connectors. Measure actual loaded fonts,
 including numeric values above tall bars and the first/last labels near axes.
-Keep full-frame dividers intact; fit each section's labels inside its own area.
+Fit each logical section's labels inside its own area; omit decorative dividers.
 Move a connector into an empty lane when it crosses a row label. Grid rules may
 be split around a measured value envelope. Do not move measured data to clear
 labels or hide the conflict by shrinking all text.

@@ -1,10 +1,20 @@
 # Line World Video plugin
 
-Release **0.26.0**, November 16, 2026. Create explanatory videos with a guiding
+Release **0.27.0**, November 17, 2026. Create explanatory videos with a guiding
 dot, a larger continuous world, full-frame sections, sourced photographs,
 D3/Mermaid diagrams and measured narration. The plugin contains six standalone
 skills: the main orchestrator, dedicated D3, Mermaid, icon and HyperFrames
 producers, and the Google Vids adapter.
+
+Version 0.27.0 removes decorative center lines and panel borders from the
+default compositions. Its shared motion helper floats whole logo/label or
+concept groups and gives a static image one slow detail entry, hold and
+return. The reusable browser inspector checks real pixels, fixed captions,
+viewport coverage and repeat seeking with explicit selectors. Use the
+[gentle movement recipe](../skills/line-world-video/references/gentle-motion.md)
+for timing controls and limits, and the
+[release evidence](../evaluations/line-world-video/gentle-motion-20261117.md)
+for the isolated forwards, revised movie and installed-package tests.
 
 ## Build and install
 

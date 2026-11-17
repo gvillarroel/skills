@@ -24,14 +24,15 @@ def main():
     for name in inventory:
         keep = name.startswith(('skills/line-world-video/', 'skills/line-world-google-vids/', 'evaluations/line-world-video/', 'evaluations/line-world-google-vids/'))
         keep |= name.startswith('evaluations/pi-prompts/line-world-') or name.startswith('evaluations/contracts/verify-line-world-')
-        keep |= name in ['docs/line-world-video.md', 'docs/plugins-marketplace.md', '.github/workflows/line-world-plugin.yml', '.github/workflows/skills-marketplace.yml', *['projects/line-world-video/' + s for s in SHARED]]
-        keep |= name.startswith('projects/skills-marketplace/')
-        keep |= name.startswith('evaluations/plugin-marketplace/')
-        for project in ['cuda-alexnet-vids', 'ml-overfitting-vids', 'seal-paper-vids', 'reddit-navigation-video', 'line-world-quality-review']:
+        keep |= name in ['docs/line-world-video.md', '.github/workflows/line-world-plugin.yml', *['projects/line-world-video/' + s for s in SHARED]]
+        # Marketplace infrastructure is already published. Preserve its HEAD
+        # instead of sweeping unrelated concurrent plugin work into this release.
+        for project in ['cuda-alexnet-vids', 'ml-overfitting-vids', 'seal-paper-vids', 'reddit-navigation-video', 'line-world-quality-review', 'sixties-archival-video']:
             prefix = 'projects/' + project + '/'
             if name.startswith(prefix):
                 relative = Path(name[len(prefix):])
-                keep |= relative.parts[0] in {'scripts', 'templates'} or len(relative.parts) == 1 and relative.suffix in {'.md', '.json', '.css'}
+                folders = {'scripts', 'templates', 'composition'} if project == 'sixties-archival-video' else {'scripts', 'templates'}
+                keep |= relative.parts[0] in folders or len(relative.parts) == 1 and (relative.suffix in {'.md', '.json', '.css'} or relative.name == '.gitignore')
         if not keep or any(p in {'.line-world', '__pycache__', 'artifacts', 'node_modules', '.cache'} for p in Path(name).parts): continue
         source, destination = ROOT / name, target / name
         if not source.is_file(): continue
@@ -71,11 +72,6 @@ def main():
         anchor = 'A skill must work as an independent bundle. Repository documentation and example galleries support maintenance but must not become hidden runtime dependencies.\n'
         if anchor not in overview: raise ValueError('Review the README marketplace insertion point.')
         (target / 'README.md').write_text(overview.replace(anchor, anchor + '\nInstall complete plugins from **Skills Marketplace**:' + install + '\n'), encoding='utf-8')
-    else:
-        start = overview.index('Install complete plugins from **Skills Marketplace**:')
-        end = overview.find('\n## ', start)
-        if end < 0: raise ValueError('Review the README marketplace block boundary.')
-        (target / 'README.md').write_text(overview[:start] + 'Install complete plugins from **Skills Marketplace**:' + install.rstrip() + '\n' + overview[end:], encoding='utf-8')
     selected.append('README.md')
     coverage_path = 'evaluations/colorset-audit/coverage.json'
     source_coverage = json.loads((ROOT / coverage_path).read_text(encoding='utf-8'))

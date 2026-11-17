@@ -44,6 +44,8 @@ jobs:
         run: uv run --script skills/line-world-video/scripts/test_focus_motion.py
       - name: Verify original photographic color and neutral recovery
         run: uv run --script skills/line-world-video/scripts/test_photo_focus.py
+      - name: Verify slow floating and image detail motion
+        run: uv run --script skills/line-world-video/scripts/test_gentle_motion.py
       - name: Verify scene effect clocks and collection review
         run: |
           uv run --script skills/line-world-video/scripts/test_scene_effects.py
