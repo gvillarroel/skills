@@ -35,7 +35,9 @@ figures occupy the frame in balance; retain only essential entity labels, values
 units and legends. Add a few contextual words only when the user explicitly asks
 for a title, through `presentation.contextLabels` for the requested beat.
 When dividing the presentation, partition the complete frame; place margins
-inside sections and use each section for a related concept.
+inside sections and use each section for a related concept. Use spacing and
+alignment to distinguish them. Do not draw a decorative center line, column
+border or panel separator. Keep actual axes, table rules and semantic connectors.
 
 ## Plan the story
 
@@ -92,6 +94,12 @@ from emphasis ink. Never pulse in and out for each narrated item.
    cannot explain who contributed or why they matter.
 
 ## Build and adapt
+
+For static logos, photographs or concept groups, read
+[gentle movement](references/gentle-motion.md). Use the bundled parent-clock
+float and detail-camera presets, reserve the complete motion envelope, keep
+the guide beside the displayed target, and use slow entry/hold/return timing.
+Keep paper reading and quantitative geometry stable.
 
 For each chart/diagram held in focus longer than two seconds, read
 [long-focus motion](references/focus-motion.md). Animate a meaningful relation,

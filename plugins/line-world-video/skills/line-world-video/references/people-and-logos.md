@@ -143,6 +143,6 @@ at 1080p. Keep the name and short factual role outside the circular image. Reser
 the entire circle, label and nearby connector envelope as obstacles. Move the red
 guide beside the person when named, never over the eyes, logo or text. Bind each
 speaker reference to its own semantic target and measured voice time. Retain
-unchanged narration when it already provides the portrait's context. Full-frame dividers
-and adequate reading space still apply. Inspect the actual encoded result and
+unchanged narration when it already provides the portrait's context. Logical sections
+and adequate reading space still apply; omit decorative dividers. Inspect the actual encoded result and
 keep attribution accessible with the delivered film and editable sources.

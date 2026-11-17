@@ -36,3 +36,6 @@ The copied [producer workflows](references/producer-workflows.md) provide
 mechanism modeling, asset import and engine operations when needed. Their
 primitive scaffold is a synchronization fallback, not a reason to add UI or
 generic boxes. The video contract sets this plugin copy's default aesthetics.
+
+Read [gentle motion](references/gentle-motion.md) for image/logo float and a slow
+detail camera on the same parent clock. Include its transform in frame-cache state.

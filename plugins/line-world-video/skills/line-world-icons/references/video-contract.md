@@ -20,8 +20,9 @@ defaults. Keep the original general skills available outside this plugin.
 - Preserve essential names, numeric values, axes, units, short legends and the
   symbols required by the notation. Add contextual words only when requested.
 - Partition the entire 1920×1080 logical frame for simultaneous concepts.
-  Put margins inside sections. Extend shared dividers to their actual frame
-  boundaries; do not frame every diagram as an inset dashboard card.
+  Put margins inside sections and distinguish them with spacing/alignment.
+  Omit decorative center lines, column borders and panel separators. Keep
+  meaningful axes, table rules and semantic connector geometry.
 - Use simple geometry on a white field, solid individual marks and outlined
   white grouping shells. Keep an intentional
   size hierarchy. Measure text after fitting the actual producer SVG; aim for
@@ -132,6 +133,13 @@ Do not equate legal transitions with measured events or rank with magnitude.
 
 ## Motion and timing
 
+For static photographs, meaningful logos or whole concept groups, use
+`references/gentle-motion.md` and `assets/runtime/gentle-motion.js`. Start with
+a small 10-second float or one slow detail-camera entry, reading hold and
+return. Keep connected labels/edges together and reserve the motion envelope.
+Include active transforms in PNG cache state. Preserve exact source and data
+geometry; do not apply ambient zoom to paper reading or animate values alone.
+
 Give every delivered asset one `renderAt(seconds)` or equivalent pure state
 function. Make random geometry seeded and pre-tick simulations. Use the parent
 composition's clock when embedded. Do not start a competing autoplay timer,
@@ -166,7 +174,7 @@ Keep the largest guide/keyline clear of labels and essential marks. Prefer
 0.18–0.35-second travel. A decorative sweep does not replace semantic focus.
 Preserve late cues throughout the measured voice instead of freezing early.
 Run its `audit(stageSvg)` after fonts load for text/text, text/frame and actual
-stroke/text conflicts. Reroute arrows around labels; preserve divider continuity
+stroke/text conflicts. Reroute arrows around labels and omit decorative dividers
 by fitting labels inside their sections. Inspect cue arrivals and encoded audio.
 
 ## Incremental changes

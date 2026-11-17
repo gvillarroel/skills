@@ -39,3 +39,6 @@ references remain available for a specific API, builder or exporter. Their
 standalone logo studios, default titles and gallery presentation are not
 the video art direction. Use custom D3 groups for synchronized video geometry;
 do not carry a supported standalone document's UI into the film.
+
+Read [gentle motion](references/gentle-motion.md) for static image/group motion.
+Keep quantitative geometry fixed and move connected groups as one assembly.

@@ -36,3 +36,6 @@ its silhouette adds meaning or makes a repeated entity easier to recognize.
 The [producer workflows](references/producer-workflows.md) retain exact search,
 download and licensing commands. Their numbered selection galleries and filled
 preview chrome belong outside the film.
+
+For meaningful static logos, read [gentle motion](references/gentle-motion.md).
+Float complete logo/label groups with slow, small, stable-ID motion.

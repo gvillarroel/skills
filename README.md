@@ -15,7 +15,7 @@ Restart ChatGPT Desktop, choose **Skills Marketplace** in Plugins, and start a n
 
 | Plugin | Version | Install |
 | --- | --- | --- |
-| Line World Video | 0.26.0 | `codex plugin add line-world-video@skills-marketplace` |
+| Line World Video | 0.27.0 | `codex plugin add line-world-video@skills-marketplace` |
 | HyperFrames by HeyGen | 0.8.199 | `codex plugin add hyperframes@skills-marketplace` |
 
 ## Maintain
@@ -24,6 +24,6 @@ Edit versioned sources and `projects/skills-marketplace/catalog.json` on `main`.
 
 Refresh this source with `codex plugin marketplace upgrade skills-marketplace`.
 
-Source commit: `d76325c1349b905bec54fadd4909819cdd3147cd`.
+Source commit: `fb646f1f648b87072962ac3242bc7c45f1557fd4`.
 
 Catalog availability, installation, external account authentication and frontend activation are separate states. No user account configuration or credentials are bundled.

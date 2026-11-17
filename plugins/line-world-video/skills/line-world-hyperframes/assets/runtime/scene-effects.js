@@ -18,22 +18,26 @@ function attach(root, plan) {
   };
   const windows = (plan.motion || []).map(item => ({...item, ...interval(item)}));
   const photos = (plan.photos || []).map(item => ({...item, windows:item.windows.map(w => interval({...w, sceneId:item.sceneId}))}));
+  const gentleWindows = (plan.gentle || []).map(item => ({...item, ...interval(item)}));
   if (windows.length && !window.LineWorldFocusMotion) throw Error('Load focus-motion.js before the bridge.');
   if (photos.length && !window.LineWorldPhotoFocus) throw Error('Load photo-focus.js before the bridge.');
+  if (gentleWindows.length && !window.LineWorldGentleMotion) throw Error('Load gentle-motion.js before the bridge.');
   const motion = windows.length ? LineWorldFocusMotion.attach(root, windows) : null;
   const photograph = photos.length ? LineWorldPhotoFocus.attach(root, photos) : null;
+  const gentle = gentleWindows.length ? LineWorldGentleMotion.attach(root, gentleWindows) : null;
   let last = null;
   return {
-    scenes, windows, photos,
-    ready: photograph?.ready || Promise.resolve(),
+    scenes, windows, photos, gentleWindows,
+    ready: Promise.all([photograph?.ready, gentle?.ready]),
     frame(index, seconds, authoredState) {
       if (!Number.isInteger(index) || !scenes[index] || !Number.isFinite(seconds)) throw Error('Use a valid scene index and local time.');
       const scene = scenes[index], time = scene.start + Math.max(0, Math.min(scene.duration, seconds));
       const moving = (motion?.render(time) || []).filter(s => s.active && s.eligible);
       const colored = (photograph?.render(time) || []).filter(s => s.color > 0);
+      const floating = (gentle?.render(time) || []).filter(s => s.active);
       // This identity is consumed by PNG hold caches. Inactive effects must not
       // invalidate a static hold; active phases and photo fades must invalidate it.
-      last = {...authoredState, effects:{motion:moving, photos:colored}};
+      last = {...authoredState, effects:{motion:moving, photos:colored, gentle:floating}};
       return structuredClone(last);
     },
     locate(seconds) {
@@ -43,7 +47,7 @@ function attach(root, plan) {
       return {index, seconds:time - scenes[index].start};
     },
     snapshot: () => structuredClone(last),
-    destroy() { motion?.destroy(); photograph?.destroy(); }
+    destroy() { motion?.destroy(); photograph?.destroy(); gentle?.destroy(); }
   };
 }
 window.LineWorldSceneEffects = {attach};

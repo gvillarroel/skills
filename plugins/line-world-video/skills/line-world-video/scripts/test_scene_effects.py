@@ -52,5 +52,14 @@ class SceneEffectsTests(unittest.TestCase):
         self.assertTrue(self.page.evaluate('''()=>{try{LineWorldSceneEffects.attach(document.querySelector('#stage'),{...plan,motion:[{...plan.motion[0],end:8}]});return false}catch(e){return true}}'''))
         self.assertEqual(self.page.locator('[data-lw-motion-overlay]').count(),0)
 
+    def test_gentle_motion_uses_scene_clock_and_invalidates_hold_cache(self):
+        self.page.add_script_tag(path=str(SKILL/'assets/runtime/gentle-motion.js'))
+        self.page.evaluate('''()=>{bridge.destroy();document.querySelector('#stage').insertAdjacentHTML('beforeend','<g id="floating"><circle cx="360" cy="160" r="30" fill="#9e1b32"/></g>');window.bridge=LineWorldSceneEffects.attach(document.querySelector('#stage'),{scenes:plan.scenes,gentle:[{id:'brand',sceneId:'second',type:'float',target:'#floating',start:1,end:6}]})}''')
+        self.assertEqual(self.page.evaluate('bridge.gentleWindows[0].start'),6)
+        a=self.page.evaluate('bridge.frame(1,2,{camera:42})');pixels=self.page.screenshot()
+        b=self.page.evaluate('bridge.frame(1,3,{camera:42})');self.assertNotEqual(a,b);self.assertNotEqual(pixels,self.page.screenshot())
+        self.assertEqual(self.page.evaluate('bridge.frame(0,1,{camera:42})'),self.page.evaluate('bridge.frame(0,4,{camera:42})'))
+        self.page.evaluate('bridge.destroy()');self.assertIsNone(self.page.locator('#floating').get_attribute('transform'))
+
 
 if __name__=='__main__':unittest.main()

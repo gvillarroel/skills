@@ -77,7 +77,7 @@ canonical skills unchanged.
 ## Vivid, semantic emphasis
 
 Use `#828282` for essential neutral contours on white; keep `#cfcfcf` and
-`#e7e7e7` for supporting separators, inactive surfaces and quiet context. Fine
+`#e7e7e7` for supporting connections, inactive surfaces and quiet context. Fine
 mechanism strokes still need to survive the final delivery scale. Do not fade
 all useful objects until a reveal completes.
 

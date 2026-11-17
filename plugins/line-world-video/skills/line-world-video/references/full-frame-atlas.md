@@ -41,7 +41,7 @@ A top strip and two lower views can use `[0,0,1,.35]`, `[0,.35,.5,.65]` and
 frame. `build` rejects gaps, overlap, nonfinite coordinates and out-of-frame
 panels. An area sum alone cannot detect an overlap cancelling a gap.
 
-Draw separators on these shared boundaries. Put breathing room inside each
+Keep these boundaries logical; do not draw decorative separators. Put breathing room inside each
 section; do not add an unused outer title band. Fit the actual content to the
 section's aspect ratio. Use wide strips for sequence, Gantt, timeline or Git
 history; tall sections work for state chains, block chains and compact schemas.
